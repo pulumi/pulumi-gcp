@@ -51,6 +51,7 @@ namespace Pulumi.Gcp.AccessContextManager
     ///     var access_level_service_account = new Gcp.AccessContextManager.AccessLevel("access-level-service-account", new()
     ///     {
     ///         Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
+    ///         Name = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
     ///         Title = "chromeos_no_lock",
     ///         Basic = new Gcp.AccessContextManager.Inputs.AccessLevelBasicArgs
     ///         {

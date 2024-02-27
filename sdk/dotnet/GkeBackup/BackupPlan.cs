@@ -31,6 +31,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// {
     ///     var primary = new Gcp.Container.Cluster("primary", new()
     ///     {
+    ///         Name = "basic-cluster",
     ///         Location = "us-central1",
     ///         InitialNodeCount = 1,
     ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
@@ -51,6 +52,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
     ///     {
+    ///         Name = "basic-plan",
     ///         Cluster = primary.Id,
     ///         Location = "us-central1",
     ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
@@ -75,6 +77,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// {
     ///     var primary = new Gcp.Container.Cluster("primary", new()
     ///     {
+    ///         Name = "autopilot-cluster",
     ///         Location = "us-central1",
     ///         EnableAutopilot = true,
     ///         IpAllocationPolicy = null,
@@ -96,6 +99,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     ///     var autopilot = new Gcp.GkeBackup.BackupPlan("autopilot", new()
     ///     {
+    ///         Name = "autopilot-plan",
     ///         Cluster = primary.Id,
     ///         Location = "us-central1",
     ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
@@ -120,6 +124,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// {
     ///     var primary = new Gcp.Container.Cluster("primary", new()
     ///     {
+    ///         Name = "cmek-cluster",
     ///         Location = "us-central1",
     ///         InitialNodeCount = 1,
     ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
@@ -138,18 +143,21 @@ namespace Pulumi.Gcp.GkeBackup
     ///         Subnetwork = "default",
     ///     });
     /// 
-    ///     var keyRing = new Gcp.Kms.KeyRing("keyRing", new()
+    ///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()
     ///     {
+    ///         Name = "backup-key",
     ///         Location = "us-central1",
     ///     });
     /// 
-    ///     var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("crypto_key", new()
     ///     {
+    ///         Name = "backup-key",
     ///         KeyRing = keyRing.Id,
     ///     });
     /// 
     ///     var cmek = new Gcp.GkeBackup.BackupPlan("cmek", new()
     ///     {
+    ///         Name = "cmek-plan",
     ///         Cluster = primary.Id,
     ///         Location = "us-central1",
     ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
@@ -185,6 +193,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// {
     ///     var primary = new Gcp.Container.Cluster("primary", new()
     ///     {
+    ///         Name = "full-cluster",
     ///         Location = "us-central1",
     ///         InitialNodeCount = 1,
     ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
@@ -205,6 +214,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     ///     var full = new Gcp.GkeBackup.BackupPlan("full", new()
     ///     {
+    ///         Name = "full-plan",
     ///         Cluster = primary.Id,
     ///         Location = "us-central1",
     ///         RetentionPolicy = new Gcp.GkeBackup.Inputs.BackupPlanRetentionPolicyArgs

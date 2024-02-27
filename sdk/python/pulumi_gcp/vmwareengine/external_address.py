@@ -286,11 +286,13 @@ class ExternalAddress(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         external_address_nw = gcp.vmwareengine.Network("external-address-nw",
+            name="pc-nw",
             location="global",
             type="STANDARD",
             description="PC network description.")
         external_address_pc = gcp.vmwareengine.PrivateCloud("external-address-pc",
             location="-a",
+            name="sample-pc",
             description="Sample test PC.",
             network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
                 management_cidr="192.168.50.0/24",
@@ -305,13 +307,14 @@ class ExternalAddress(pulumi.CustomResource):
             ))
         external_address_np = gcp.vmwareengine.NetworkPolicy("external-address-np",
             location="",
+            name="sample-np",
             edge_services_cidr="192.168.30.0/26",
             vmware_engine_network=external_address_nw.id)
         vmw_engine_external_address = gcp.vmwareengine.ExternalAddress("vmw-engine-external-address",
+            name="sample-external-address",
             parent=external_address_pc.id,
             internal_ip="192.168.0.66",
-            description="Sample description.",
-            opts=pulumi.ResourceOptions(depends_on=[external_address_np]))
+            description="Sample description.")
         ```
 
         ## Import
@@ -359,11 +362,13 @@ class ExternalAddress(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         external_address_nw = gcp.vmwareengine.Network("external-address-nw",
+            name="pc-nw",
             location="global",
             type="STANDARD",
             description="PC network description.")
         external_address_pc = gcp.vmwareengine.PrivateCloud("external-address-pc",
             location="-a",
+            name="sample-pc",
             description="Sample test PC.",
             network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
                 management_cidr="192.168.50.0/24",
@@ -378,13 +383,14 @@ class ExternalAddress(pulumi.CustomResource):
             ))
         external_address_np = gcp.vmwareengine.NetworkPolicy("external-address-np",
             location="",
+            name="sample-np",
             edge_services_cidr="192.168.30.0/26",
             vmware_engine_network=external_address_nw.id)
         vmw_engine_external_address = gcp.vmwareengine.ExternalAddress("vmw-engine-external-address",
+            name="sample-external-address",
             parent=external_address_pc.id,
             internal_ip="192.168.0.66",
-            description="Sample description.",
-            opts=pulumi.ResourceOptions(depends_on=[external_address_np]))
+            description="Sample description.")
         ```
 
         ## Import

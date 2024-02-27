@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.binaryauthorization.getAttestorIamPolicy({
- *     project: google_binary_authorization_attestor.attestor.project,
- *     attestor: google_binary_authorization_attestor.attestor.name,
+ *     project: attestor.project,
+ *     attestor: attestor.name,
  * });
  * ```
  */
@@ -73,8 +73,8 @@ export interface GetAttestorIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.binaryauthorization.getAttestorIamPolicy({
- *     project: google_binary_authorization_attestor.attestor.project,
- *     attestor: google_binary_authorization_attestor.attestor.name,
+ *     project: attestor.project,
+ *     attestor: attestor.name,
  * });
  * ```
  */

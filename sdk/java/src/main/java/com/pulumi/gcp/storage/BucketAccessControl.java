@@ -64,6 +64,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+ *             .name(&#34;static-content-bucket&#34;)
  *             .location(&#34;US&#34;)
  *             .build());
  * 

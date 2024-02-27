@@ -46,7 +46,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstanceTemplate, err := compute.NewInstanceTemplate(ctx, "defaultInstanceTemplate", &compute.InstanceTemplateArgs{
+//			defaultInstanceTemplate, err := compute.NewInstanceTemplate(ctx, "default", &compute.InstanceTemplateArgs{
+//				Name:         pulumi.String("my-instance-template"),
 //				MachineType:  pulumi.String("e2-medium"),
 //				CanIpForward: pulumi.Bool(false),
 //				Tags: pulumi.StringArray{
@@ -73,15 +74,18 @@ import (
 //						pulumi.String("storage-ro"),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultTargetPool, err := compute.NewTargetPool(ctx, "defaultTargetPool", nil, pulumi.Provider(google_beta))
+//			defaultTargetPool, err := compute.NewTargetPool(ctx, "default", &compute.TargetPoolArgs{
+//				Name: pulumi.String("my-target-pool"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstanceGroupManager, err := compute.NewInstanceGroupManager(ctx, "defaultInstanceGroupManager", &compute.InstanceGroupManagerArgs{
+//			defaultInstanceGroupManager, err := compute.NewInstanceGroupManager(ctx, "default", &compute.InstanceGroupManagerArgs{
+//				Name: pulumi.String("my-igm"),
 //				Zone: pulumi.String("us-central1-f"),
 //				Versions: compute.InstanceGroupManagerVersionArray{
 //					&compute.InstanceGroupManagerVersionArgs{
@@ -93,11 +97,12 @@ import (
 //					defaultTargetPool.ID(),
 //				},
 //				BaseInstanceName: pulumi.String("autoscaler-sample"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewAutoscaler(ctx, "defaultAutoscaler", &compute.AutoscalerArgs{
+//			_, err = compute.NewAutoscaler(ctx, "default", &compute.AutoscalerArgs{
+//				Name:   pulumi.String("my-autoscaler"),
 //				Zone:   pulumi.String("us-central1-f"),
 //				Target: defaultInstanceGroupManager.ID(),
 //				AutoscalingPolicy: &compute.AutoscalerAutoscalingPolicyArgs{
@@ -112,7 +117,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -142,7 +147,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			foobarInstanceTemplate, err := compute.NewInstanceTemplate(ctx, "foobarInstanceTemplate", &compute.InstanceTemplateArgs{
+//			foobarInstanceTemplate, err := compute.NewInstanceTemplate(ctx, "foobar", &compute.InstanceTemplateArgs{
+//				Name:         pulumi.String("my-instance-template"),
 //				MachineType:  pulumi.String("e2-medium"),
 //				CanIpForward: pulumi.Bool(false),
 //				Tags: pulumi.StringArray{
@@ -173,11 +179,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			foobarTargetPool, err := compute.NewTargetPool(ctx, "foobarTargetPool", nil)
+//			foobarTargetPool, err := compute.NewTargetPool(ctx, "foobar", &compute.TargetPoolArgs{
+//				Name: pulumi.String("my-target-pool"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			foobarInstanceGroupManager, err := compute.NewInstanceGroupManager(ctx, "foobarInstanceGroupManager", &compute.InstanceGroupManagerArgs{
+//			foobarInstanceGroupManager, err := compute.NewInstanceGroupManager(ctx, "foobar", &compute.InstanceGroupManagerArgs{
+//				Name: pulumi.String("my-igm"),
 //				Zone: pulumi.String("us-central1-f"),
 //				Versions: compute.InstanceGroupManagerVersionArray{
 //					&compute.InstanceGroupManagerVersionArgs{
@@ -193,7 +202,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewAutoscaler(ctx, "foobarAutoscaler", &compute.AutoscalerArgs{
+//			_, err = compute.NewAutoscaler(ctx, "foobar", &compute.AutoscalerArgs{
+//				Name:   pulumi.String("my-autoscaler"),
 //				Zone:   pulumi.String("us-central1-f"),
 //				Target: foobarInstanceGroupManager.ID(),
 //				AutoscalingPolicy: &compute.AutoscalerAutoscalingPolicyArgs{

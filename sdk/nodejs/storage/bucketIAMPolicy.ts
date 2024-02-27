@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.storage.BucketIAMPolicy("policy", {
- *     bucket: google_storage_bucket["default"].name,
+ *     bucket: _default.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -57,7 +57,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.storage.BucketIAMPolicy("policy", {
- *     bucket: google_storage_bucket["default"].name,
+ *     bucket: _default.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -68,7 +68,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.storage.BucketIAMBinding("binding", {
- *     bucket: google_storage_bucket["default"].name,
+ *     bucket: _default.name,
  *     role: "roles/storage.admin",
  *     members: ["user:jane@example.com"],
  * });
@@ -81,7 +81,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.storage.BucketIAMBinding("binding", {
- *     bucket: google_storage_bucket["default"].name,
+ *     bucket: _default.name,
  *     role: "roles/storage.admin",
  *     members: ["user:jane@example.com"],
  *     condition: {
@@ -98,7 +98,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.storage.BucketIAMMember("member", {
- *     bucket: google_storage_bucket["default"].name,
+ *     bucket: _default.name,
  *     role: "roles/storage.admin",
  *     member: "user:jane@example.com",
  * });
@@ -111,7 +111,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.storage.BucketIAMMember("member", {
- *     bucket: google_storage_bucket["default"].name,
+ *     bucket: _default.name,
  *     role: "roles/storage.admin",
  *     member: "user:jane@example.com",
  *     condition: {

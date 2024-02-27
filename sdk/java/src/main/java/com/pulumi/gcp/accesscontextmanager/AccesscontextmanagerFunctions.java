@@ -40,7 +40,7 @@ public final class AccesscontextmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = AccesscontextmanagerFunctions.getAccessPolicyIamPolicy(GetAccessPolicyIamPolicyArgs.builder()
-     *             .name(google_access_context_manager_access_policy.access-policy().name())
+     *             .name(access_policy.name())
      *             .build());
      * 
      *     }
@@ -77,7 +77,7 @@ public final class AccesscontextmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = AccesscontextmanagerFunctions.getAccessPolicyIamPolicy(GetAccessPolicyIamPolicyArgs.builder()
-     *             .name(google_access_context_manager_access_policy.access-policy().name())
+     *             .name(access_policy.name())
      *             .build());
      * 
      *     }
@@ -114,7 +114,7 @@ public final class AccesscontextmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = AccesscontextmanagerFunctions.getAccessPolicyIamPolicy(GetAccessPolicyIamPolicyArgs.builder()
-     *             .name(google_access_context_manager_access_policy.access-policy().name())
+     *             .name(access_policy.name())
      *             .build());
      * 
      *     }
@@ -151,7 +151,7 @@ public final class AccesscontextmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = AccesscontextmanagerFunctions.getAccessPolicyIamPolicy(GetAccessPolicyIamPolicyArgs.builder()
-     *             .name(google_access_context_manager_access_policy.access-policy().name())
+     *             .name(access_policy.name())
      *             .build());
      * 
      *     }

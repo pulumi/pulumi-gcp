@@ -35,7 +35,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewGlobalAddress(ctx, "default", nil)
+//			_, err := compute.NewGlobalAddress(ctx, "default", &compute.GlobalAddressArgs{
+//				Name: pulumi.String("global-appserver-ip"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -59,17 +61,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-network-name"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewGlobalAddress(ctx, "default", &compute.GlobalAddressArgs{
+//				Name:        pulumi.String("global-psconnect-ip"),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
 //				Network:     network.ID(),
 //				Address:     pulumi.String("100.100.100.105"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

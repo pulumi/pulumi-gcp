@@ -40,10 +40,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Monitors the default MeshIstio service
 //			_, err := monitoring.GetMeshIstioService(ctx, &monitoring.GetMeshIstioServiceArgs{
 //				MeshUid:          "proj-573164786102",
-//				ServiceName:      "prometheus",
 //				ServiceNamespace: "istio-system",
+//				ServiceName:      "prometheus",
 //			}, nil)
 //			if err != nil {
 //				return err

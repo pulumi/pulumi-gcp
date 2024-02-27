@@ -228,8 +228,8 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.dns.DnsManagedZoneIamPolicy("policy",
-            project=google_dns_managed_zone["default"]["project"],
-            managed_zone=google_dns_managed_zone["default"]["name"],
+            project=default["project"],
+            managed_zone=default["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -240,8 +240,8 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.dns.DnsManagedZoneIamBinding("binding",
-            project=google_dns_managed_zone["default"]["project"],
-            managed_zone=google_dns_managed_zone["default"]["name"],
+            project=default["project"],
+            managed_zone=default["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -253,8 +253,8 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.dns.DnsManagedZoneIamMember("member",
-            project=google_dns_managed_zone["default"]["project"],
-            managed_zone=google_dns_managed_zone["default"]["name"],
+            project=default["project"],
+            managed_zone=default["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -347,8 +347,8 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.dns.DnsManagedZoneIamPolicy("policy",
-            project=google_dns_managed_zone["default"]["project"],
-            managed_zone=google_dns_managed_zone["default"]["name"],
+            project=default["project"],
+            managed_zone=default["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -359,8 +359,8 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.dns.DnsManagedZoneIamBinding("binding",
-            project=google_dns_managed_zone["default"]["project"],
-            managed_zone=google_dns_managed_zone["default"]["name"],
+            project=default["project"],
+            managed_zone=default["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -372,8 +372,8 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.dns.DnsManagedZoneIamMember("member",
-            project=google_dns_managed_zone["default"]["project"],
-            managed_zone=google_dns_managed_zone["default"]["name"],
+            project=default["project"],
+            managed_zone=default["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

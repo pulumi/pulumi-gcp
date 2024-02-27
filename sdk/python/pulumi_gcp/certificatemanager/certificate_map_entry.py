@@ -456,19 +456,23 @@ class CertificateMapEntry(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        certificate_map = gcp.certificatemanager.CertificateMap("certificateMap",
+        certificate_map = gcp.certificatemanager.CertificateMap("certificate_map",
+            name="cert-map-entry",
             description="My acceptance test certificate map",
             labels={
                 "terraform": "true",
                 "acc-test": "true",
             })
         instance = gcp.certificatemanager.DnsAuthorization("instance",
+            name="dns-auth",
             description="The default dnss",
             domain="subdomain.hashicorptest.com")
         instance2 = gcp.certificatemanager.DnsAuthorization("instance2",
+            name="dns-auth2",
             description="The default dnss",
             domain="subdomain2.hashicorptest.com")
         certificate = gcp.certificatemanager.Certificate("certificate",
+            name="cert-map-entry",
             description="The default cert",
             scope="DEFAULT",
             managed=gcp.certificatemanager.CertificateManagedArgs(
@@ -482,6 +486,7 @@ class CertificateMapEntry(pulumi.CustomResource):
                 ],
             ))
         default = gcp.certificatemanager.CertificateMapEntry("default",
+            name="cert-map-entry",
             description="My acceptance test certificate map entry",
             map=certificate_map.name,
             labels={
@@ -559,19 +564,23 @@ class CertificateMapEntry(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        certificate_map = gcp.certificatemanager.CertificateMap("certificateMap",
+        certificate_map = gcp.certificatemanager.CertificateMap("certificate_map",
+            name="cert-map-entry",
             description="My acceptance test certificate map",
             labels={
                 "terraform": "true",
                 "acc-test": "true",
             })
         instance = gcp.certificatemanager.DnsAuthorization("instance",
+            name="dns-auth",
             description="The default dnss",
             domain="subdomain.hashicorptest.com")
         instance2 = gcp.certificatemanager.DnsAuthorization("instance2",
+            name="dns-auth2",
             description="The default dnss",
             domain="subdomain2.hashicorptest.com")
         certificate = gcp.certificatemanager.Certificate("certificate",
+            name="cert-map-entry",
             description="The default cert",
             scope="DEFAULT",
             managed=gcp.certificatemanager.CertificateManagedArgs(
@@ -585,6 +594,7 @@ class CertificateMapEntry(pulumi.CustomResource):
                 ],
             ))
         default = gcp.certificatemanager.CertificateMapEntry("default",
+            name="cert-map-entry",
             description="My acceptance test certificate map entry",
             map=certificate_map.name,
             labels={

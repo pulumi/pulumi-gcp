@@ -62,8 +62,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new FeatureIamPolicy(&#34;policy&#34;, FeatureIamPolicyArgs.builder()        
- *             .project(google_gke_hub_feature.feature().project())
- *             .location(google_gke_hub_feature.feature().location())
+ *             .project(feature.project())
+ *             .location(feature.location())
+ *             .name(feature.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -94,8 +95,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new FeatureIamBinding(&#34;binding&#34;, FeatureIamBindingArgs.builder()        
- *             .project(google_gke_hub_feature.feature().project())
- *             .location(google_gke_hub_feature.feature().location())
+ *             .project(feature.project())
+ *             .location(feature.location())
+ *             .name(feature.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -127,8 +129,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new FeatureIamMember(&#34;member&#34;, FeatureIamMemberArgs.builder()        
- *             .project(google_gke_hub_feature.feature().project())
- *             .location(google_gke_hub_feature.feature().location())
+ *             .project(feature.project())
+ *             .location(feature.location())
+ *             .name(feature.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

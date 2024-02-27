@@ -29,6 +29,11 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const windows = new gcp.compute.Instance("windows", {
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         network: "default",
+ *     }],
+ *     name: "windows-instance",
  *     machineType: "e2-medium",
  *     zone: "us-central1-a",
  *     bootDisk: {
@@ -36,10 +41,6 @@ import * as utilities from "../utilities";
  *             image: "windows-cloud/windows-2019",
  *         },
  *     },
- *     networkInterfaces: [{
- *         network: "default",
- *         accessConfigs: [{}],
- *     }],
  *     metadata: {
  *         "serial-port-logging-enable": "TRUE",
  *         "windows-keys": JSON.stringify({
@@ -145,6 +146,11 @@ export interface GetInstanceSerialPortResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const windows = new gcp.compute.Instance("windows", {
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         network: "default",
+ *     }],
+ *     name: "windows-instance",
  *     machineType: "e2-medium",
  *     zone: "us-central1-a",
  *     bootDisk: {
@@ -152,10 +158,6 @@ export interface GetInstanceSerialPortResult {
  *             image: "windows-cloud/windows-2019",
  *         },
  *     },
- *     networkInterfaces: [{
- *         network: "default",
- *         accessConfigs: [{}],
- *     }],
  *     metadata: {
  *         "serial-port-logging-enable": "TRUE",
  *         "windows-keys": JSON.stringify({

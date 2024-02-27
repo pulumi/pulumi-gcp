@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *         members: ["user:jane@example.com"],
  *     }],
  * });
- * const dicomStore = new gcp.healthcare.DicomStoreIamPolicy("dicomStore", {
+ * const dicomStore = new gcp.healthcare.DicomStoreIamPolicy("dicom_store", {
  *     dicomStoreId: "your-dicom-store-id",
  *     policyData: admin.then(admin => admin.policyData),
  * });
@@ -39,10 +39,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const dicomStore = new gcp.healthcare.DicomStoreIamBinding("dicomStore", {
+ * const dicomStore = new gcp.healthcare.DicomStoreIamBinding("dicom_store", {
  *     dicomStoreId: "your-dicom-store-id",
- *     members: ["user:jane@example.com"],
  *     role: "roles/editor",
+ *     members: ["user:jane@example.com"],
  * });
  * ```
  *
@@ -52,10 +52,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const dicomStore = new gcp.healthcare.DicomStoreIamMember("dicomStore", {
+ * const dicomStore = new gcp.healthcare.DicomStoreIamMember("dicom_store", {
  *     dicomStoreId: "your-dicom-store-id",
- *     member: "user:jane@example.com",
  *     role: "roles/editor",
+ *     member: "user:jane@example.com",
  * });
  * ```
  *

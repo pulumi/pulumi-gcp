@@ -21,6 +21,346 @@ import (
 //   - [Configuring Private Service Connect to access services](https://cloud.google.com/vpc/docs/configure-private-service-connect-services)
 //
 // ## Example Usage
+// ### Service Attachment Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			producerServiceHealthCheck, err := compute.NewHealthCheck(ctx, "producer_service_health_check", &compute.HealthCheckArgs{
+//				Name:             pulumi.String("producer-service-health-check"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//				TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			producerServiceBackend, err := compute.NewRegionBackendService(ctx, "producer_service_backend", &compute.RegionBackendServiceArgs{
+//				Name:         pulumi.String("producer-service"),
+//				Region:       pulumi.String("us-west2"),
+//				HealthChecks: producerServiceHealthCheck.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbNetwork, err := compute.NewNetwork(ctx, "psc_ilb_network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("psc-ilb-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbProducerSubnetwork, err := compute.NewSubnetwork(ctx, "psc_ilb_producer_subnetwork", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("psc-ilb-producer-subnetwork"),
+//				Region:      pulumi.String("us-west2"),
+//				Network:     pscIlbNetwork.ID(),
+//				IpCidrRange: pulumi.String("10.0.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbTargetService, err := compute.NewForwardingRule(ctx, "psc_ilb_target_service", &compute.ForwardingRuleArgs{
+//				Name:                pulumi.String("producer-forwarding-rule"),
+//				Region:              pulumi.String("us-west2"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL"),
+//				BackendService:      producerServiceBackend.ID(),
+//				AllPorts:            pulumi.Bool(true),
+//				Network:             pscIlbNetwork.Name,
+//				Subnetwork:          pscIlbProducerSubnetwork.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbNat, err := compute.NewSubnetwork(ctx, "psc_ilb_nat", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("psc-ilb-nat"),
+//				Region:      pulumi.String("us-west2"),
+//				Network:     pscIlbNetwork.ID(),
+//				Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
+//				IpCidrRange: pulumi.String("10.1.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbServiceAttachment, err := compute.NewServiceAttachment(ctx, "psc_ilb_service_attachment", &compute.ServiceAttachmentArgs{
+//				Name:        pulumi.String("my-psc-ilb"),
+//				Region:      pulumi.String("us-west2"),
+//				Description: pulumi.String("A service attachment configured with Terraform"),
+//				DomainNames: pulumi.StringArray{
+//					pulumi.String("gcp.tfacc.hashicorptest.com."),
+//				},
+//				EnableProxyProtocol:  pulumi.Bool(true),
+//				ConnectionPreference: pulumi.String("ACCEPT_AUTOMATIC"),
+//				NatSubnets: pulumi.StringArray{
+//					pscIlbNat.ID(),
+//				},
+//				TargetService: pscIlbTargetService.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbConsumerAddress, err := compute.NewAddress(ctx, "psc_ilb_consumer_address", &compute.AddressArgs{
+//				Name:        pulumi.String("psc-ilb-consumer-address"),
+//				Region:      pulumi.String("us-west2"),
+//				Subnetwork:  pulumi.String("default"),
+//				AddressType: pulumi.String("INTERNAL"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewForwardingRule(ctx, "psc_ilb_consumer", &compute.ForwardingRuleArgs{
+//				Name:                pulumi.String("psc-ilb-consumer-forwarding-rule"),
+//				Region:              pulumi.String("us-west2"),
+//				Target:              pscIlbServiceAttachment.ID(),
+//				LoadBalancingScheme: pulumi.String(""),
+//				Network:             pulumi.String("default"),
+//				IpAddress:           pscIlbConsumerAddress.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Service Attachment Explicit Projects
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			producerServiceHealthCheck, err := compute.NewHealthCheck(ctx, "producer_service_health_check", &compute.HealthCheckArgs{
+//				Name:             pulumi.String("producer-service-health-check"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//				TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			producerServiceBackend, err := compute.NewRegionBackendService(ctx, "producer_service_backend", &compute.RegionBackendServiceArgs{
+//				Name:         pulumi.String("producer-service"),
+//				Region:       pulumi.String("us-west2"),
+//				HealthChecks: producerServiceHealthCheck.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbNetwork, err := compute.NewNetwork(ctx, "psc_ilb_network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("psc-ilb-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbProducerSubnetwork, err := compute.NewSubnetwork(ctx, "psc_ilb_producer_subnetwork", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("psc-ilb-producer-subnetwork"),
+//				Region:      pulumi.String("us-west2"),
+//				Network:     pscIlbNetwork.ID(),
+//				IpCidrRange: pulumi.String("10.0.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbTargetService, err := compute.NewForwardingRule(ctx, "psc_ilb_target_service", &compute.ForwardingRuleArgs{
+//				Name:                pulumi.String("producer-forwarding-rule"),
+//				Region:              pulumi.String("us-west2"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL"),
+//				BackendService:      producerServiceBackend.ID(),
+//				AllPorts:            pulumi.Bool(true),
+//				Network:             pscIlbNetwork.Name,
+//				Subnetwork:          pscIlbProducerSubnetwork.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbNat, err := compute.NewSubnetwork(ctx, "psc_ilb_nat", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("psc-ilb-nat"),
+//				Region:      pulumi.String("us-west2"),
+//				Network:     pscIlbNetwork.ID(),
+//				Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
+//				IpCidrRange: pulumi.String("10.1.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbServiceAttachment, err := compute.NewServiceAttachment(ctx, "psc_ilb_service_attachment", &compute.ServiceAttachmentArgs{
+//				Name:        pulumi.String("my-psc-ilb"),
+//				Region:      pulumi.String("us-west2"),
+//				Description: pulumi.String("A service attachment configured with Terraform"),
+//				DomainNames: pulumi.StringArray{
+//					pulumi.String("gcp.tfacc.hashicorptest.com."),
+//				},
+//				EnableProxyProtocol:  pulumi.Bool(true),
+//				ConnectionPreference: pulumi.String("ACCEPT_MANUAL"),
+//				NatSubnets: pulumi.StringArray{
+//					pscIlbNat.ID(),
+//				},
+//				TargetService: pscIlbTargetService.ID(),
+//				ConsumerRejectLists: pulumi.StringArray{
+//					pulumi.String("673497134629"),
+//					pulumi.String("482878270665"),
+//				},
+//				ConsumerAcceptLists: compute.ServiceAttachmentConsumerAcceptListArray{
+//					&compute.ServiceAttachmentConsumerAcceptListArgs{
+//						ProjectIdOrNum:  pulumi.String("658859330310"),
+//						ConnectionLimit: pulumi.Int(4),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbConsumerAddress, err := compute.NewAddress(ctx, "psc_ilb_consumer_address", &compute.AddressArgs{
+//				Name:        pulumi.String("psc-ilb-consumer-address"),
+//				Region:      pulumi.String("us-west2"),
+//				Subnetwork:  pulumi.String("default"),
+//				AddressType: pulumi.String("INTERNAL"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewForwardingRule(ctx, "psc_ilb_consumer", &compute.ForwardingRuleArgs{
+//				Name:                pulumi.String("psc-ilb-consumer-forwarding-rule"),
+//				Region:              pulumi.String("us-west2"),
+//				Target:              pscIlbServiceAttachment.ID(),
+//				LoadBalancingScheme: pulumi.String(""),
+//				Network:             pulumi.String("default"),
+//				IpAddress:           pscIlbConsumerAddress.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Service Attachment Reconcile Connections
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			producerServiceHealthCheck, err := compute.NewHealthCheck(ctx, "producer_service_health_check", &compute.HealthCheckArgs{
+//				Name:             pulumi.String("producer-service-health-check"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//				TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			producerServiceBackend, err := compute.NewRegionBackendService(ctx, "producer_service_backend", &compute.RegionBackendServiceArgs{
+//				Name:         pulumi.String("producer-service"),
+//				Region:       pulumi.String("us-west2"),
+//				HealthChecks: producerServiceHealthCheck.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbNetwork, err := compute.NewNetwork(ctx, "psc_ilb_network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("psc-ilb-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbProducerSubnetwork, err := compute.NewSubnetwork(ctx, "psc_ilb_producer_subnetwork", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("psc-ilb-producer-subnetwork"),
+//				Region:      pulumi.String("us-west2"),
+//				Network:     pscIlbNetwork.ID(),
+//				IpCidrRange: pulumi.String("10.0.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbTargetService, err := compute.NewForwardingRule(ctx, "psc_ilb_target_service", &compute.ForwardingRuleArgs{
+//				Name:                pulumi.String("producer-forwarding-rule"),
+//				Region:              pulumi.String("us-west2"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL"),
+//				BackendService:      producerServiceBackend.ID(),
+//				AllPorts:            pulumi.Bool(true),
+//				Network:             pscIlbNetwork.Name,
+//				Subnetwork:          pscIlbProducerSubnetwork.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbNat, err := compute.NewSubnetwork(ctx, "psc_ilb_nat", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("psc-ilb-nat"),
+//				Region:      pulumi.String("us-west2"),
+//				Network:     pscIlbNetwork.ID(),
+//				Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
+//				IpCidrRange: pulumi.String("10.1.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewServiceAttachment(ctx, "psc_ilb_service_attachment", &compute.ServiceAttachmentArgs{
+//				Name:        pulumi.String("my-psc-ilb"),
+//				Region:      pulumi.String("us-west2"),
+//				Description: pulumi.String("A service attachment configured with Terraform"),
+//				DomainNames: pulumi.StringArray{
+//					pulumi.String("gcp.tfacc.hashicorptest.com."),
+//				},
+//				EnableProxyProtocol:  pulumi.Bool(true),
+//				ConnectionPreference: pulumi.String("ACCEPT_MANUAL"),
+//				NatSubnets: pulumi.StringArray{
+//					pscIlbNat.ID(),
+//				},
+//				TargetService: pscIlbTargetService.ID(),
+//				ConsumerRejectLists: pulumi.StringArray{
+//					pulumi.String("673497134629"),
+//					pulumi.String("482878270665"),
+//				},
+//				ConsumerAcceptLists: compute.ServiceAttachmentConsumerAcceptListArray{
+//					&compute.ServiceAttachmentConsumerAcceptListArgs{
+//						ProjectIdOrNum:  pulumi.String("658859330310"),
+//						ConnectionLimit: pulumi.Int(4),
+//					},
+//				},
+//				ReconcileConnections: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

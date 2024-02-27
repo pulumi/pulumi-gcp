@@ -29,14 +29,14 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var basicTaxonomy = new Gcp.DataCatalog.Taxonomy("basicTaxonomy", new()
+    ///     var basicTaxonomy = new Gcp.DataCatalog.Taxonomy("basic_taxonomy", new()
     ///     {
+    ///         DisplayName = "my_taxonomy",
+    ///         Description = "A collection of policy tags",
     ///         ActivatedPolicyTypes = new[]
     ///         {
     ///             "FINE_GRAINED_ACCESS_CONTROL",
     ///         },
-    ///         Description = "A collection of policy tags",
-    ///         DisplayName = "my_taxonomy",
     ///     });
     /// 
     /// });

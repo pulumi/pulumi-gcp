@@ -17,7 +17,8 @@ import * as utilities from "../utilities";
  *
  * const ranges = gcp.compute.getLBIPRanges({});
  * const lb = new gcp.compute.Firewall("lb", {
- *     network: google_compute_network.main.name,
+ *     name: "lb-firewall",
+ *     network: main.name,
  *     allows: [{
  *         protocol: "tcp",
  *         ports: ["80"],
@@ -64,7 +65,8 @@ export interface GetLBIPRangesResult {
  *
  * const ranges = gcp.compute.getLBIPRanges({});
  * const lb = new gcp.compute.Firewall("lb", {
- *     network: google_compute_network.main.name,
+ *     name: "lb-firewall",
+ *     network: main.name,
  *     allows: [{
  *         protocol: "tcp",
  *         ports: ["80"],

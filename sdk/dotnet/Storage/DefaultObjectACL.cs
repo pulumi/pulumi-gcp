@@ -38,6 +38,7 @@ namespace Pulumi.Gcp.Storage
     /// {
     ///     var image_store = new Gcp.Storage.Bucket("image-store", new()
     ///     {
+    ///         Name = "image-store-bucket",
     ///         Location = "EU",
     ///     });
     /// 

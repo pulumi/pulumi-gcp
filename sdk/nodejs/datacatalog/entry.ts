@@ -27,8 +27,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const entryGroup = new gcp.datacatalog.EntryGroup("entryGroup", {entryGroupId: "my_group"});
- * const basicEntry = new gcp.datacatalog.Entry("basicEntry", {
+ * const entryGroup = new gcp.datacatalog.EntryGroup("entry_group", {entryGroupId: "my_group"});
+ * const basicEntry = new gcp.datacatalog.Entry("basic_entry", {
  *     entryGroup: entryGroup.id,
  *     entryId: "my_entry",
  *     userSpecifiedType: "my_custom_type",
@@ -41,8 +41,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const entryGroup = new gcp.datacatalog.EntryGroup("entryGroup", {entryGroupId: "my_group"});
- * const basicEntry = new gcp.datacatalog.Entry("basicEntry", {
+ * const entryGroup = new gcp.datacatalog.EntryGroup("entry_group", {entryGroupId: "my_group"});
+ * const basicEntry = new gcp.datacatalog.Entry("basic_entry", {
  *     entryGroup: entryGroup.id,
  *     entryId: "my_entry",
  *     type: "FILESET",
@@ -57,8 +57,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const entryGroup = new gcp.datacatalog.EntryGroup("entryGroup", {entryGroupId: "my_group"});
- * const basicEntry = new gcp.datacatalog.Entry("basicEntry", {
+ * const entryGroup = new gcp.datacatalog.EntryGroup("entry_group", {entryGroupId: "my_group"});
+ * const basicEntry = new gcp.datacatalog.Entry("basic_entry", {
  *     entryGroup: entryGroup.id,
  *     entryId: "my_entry",
  *     userSpecifiedType: "my_user_specified_type",

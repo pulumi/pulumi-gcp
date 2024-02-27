@@ -29,21 +29,58 @@ namespace Pulumi.Gcp.Firestore
     /// will be the same as the App Engine location specified.
     /// 
     /// ## Example Usage
-    /// ### Firestore Index Datastore Mode
+    /// ### Firestore Index Basic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumi.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var project = new Gcp.Organizations.Project("project", new()
+    ///     {
+    ///         ProjectId = "project-id",
+    ///         Name = "project-id",
+    ///         OrgId = "123456789",
+    ///     });
+    /// 
+    ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
+    ///     {
+    ///         CreateDuration = "60s",
+    ///     });
+    /// 
+    ///     var firestore = new Gcp.Projects.Service("firestore", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "firestore.googleapis.com",
+    ///     });
+    /// 
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         Name = "(default)",
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///     });
+    /// 
+    ///     // Creating a document also creates its collection
+    ///     var document = new Gcp.Firestore.Document("document", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         Database = database.Name,
+    ///         Collection = "somenewcollection",
+    ///         DocumentId = "",
+    ///         Fields = "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
+    ///     });
+    /// 
     ///     var my_index = new Gcp.Firestore.Index("my-index", new()
     ///     {
-    ///         ApiScope = "DATASTORE_MODE_API",
-    ///         Collection = "chatrooms",
-    ///         Database = "(default)",
+    ///         Project = project.ProjectId,
+    ///         Database = database.Name,
+    ///         Collection = document.Collection,
     ///         Fields = new[]
     ///         {
     ///             new Gcp.Firestore.Inputs.IndexFieldArgs
@@ -57,8 +94,40 @@ namespace Pulumi.Gcp.Firestore
     ///                 Order = "DESCENDING",
     ///             },
     ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Firestore Index Datastore Mode
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_index = new Gcp.Firestore.Index("my-index", new()
+    ///     {
     ///         Project = "my-project-name",
+    ///         Database = "(default)",
+    ///         Collection = "chatrooms",
     ///         QueryScope = "COLLECTION_RECURSIVE",
+    ///         ApiScope = "DATASTORE_MODE_API",
+    ///         Fields = new[]
+    ///         {
+    ///             new Gcp.Firestore.Inputs.IndexFieldArgs
+    ///             {
+    ///                 FieldPath = "name",
+    ///                 Order = "ASCENDING",
+    ///             },
+    ///             new Gcp.Firestore.Inputs.IndexFieldArgs
+    ///             {
+    ///                 FieldPath = "description",
+    ///                 Order = "DESCENDING",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });

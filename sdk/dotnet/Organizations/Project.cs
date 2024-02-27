@@ -38,8 +38,10 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myProject = new Gcp.Organizations.Project("myProject", new()
+    ///     var myProject = new Gcp.Organizations.Project("my_project", new()
     ///     {
+    ///         Name = "My Project",
+    ///         ProjectId = "your-project-id",
     ///         OrgId = "1234567",
     ///     });
     /// 
@@ -62,8 +64,10 @@ namespace Pulumi.Gcp.Organizations
     ///         Parent = "organizations/1234567",
     ///     });
     /// 
-    ///     var myProject_in_a_folder = new Gcp.Organizations.Project("myProject-in-a-folder", new()
+    ///     var myProject_in_a_folder = new Gcp.Organizations.Project("my_project-in-a-folder", new()
     ///     {
+    ///         Name = "My Project",
+    ///         ProjectId = "your-project-id",
     ///         FolderId = department1.Name,
     ///     });
     /// 

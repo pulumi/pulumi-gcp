@@ -18,15 +18,6 @@ namespace Pulumi.Gcp.Container.Inputs
         /// where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
         /// 
         /// Examples:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         [Input("dailyMaintenanceWindow")]
         public Input<Inputs.ClusterMaintenancePolicyDailyMaintenanceWindowGetArgs>? DailyMaintenanceWindow { get; set; }
@@ -52,25 +43,6 @@ namespace Pulumi.Gcp.Container.Inputs
         /// Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
         /// 
         /// Examples:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         [Input("recurringWindow")]
         public Input<Inputs.ClusterMaintenancePolicyRecurringWindowGetArgs>? RecurringWindow { get; set; }

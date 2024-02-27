@@ -24,6 +24,7 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * const primary = new gcp.firebaserules.Release("primary", {
+ *     name: "cloud.firestore",
  *     rulesetName: pulumi.interpolate`projects/my-project-name/rulesets/${firestore.name}`,
  *     project: "my-project-name",
  * });
@@ -35,18 +36,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * // Provision a non-default Cloud Storage bucket.
- * const bucketBucket = new gcp.storage.Bucket("bucketBucket", {
+ * const bucket = new gcp.storage.Bucket("bucket", {
  *     project: "my-project-name",
+ *     name: "bucket",
  *     location: "us-west1",
- * }, {
- *     provider: google_beta,
- * });
- * // Make the Storage bucket accessible for Firebase SDKs, authentication, and Firebase Security Rules.
- * const bucketStorageBucket = new gcp.firebase.StorageBucket("bucketStorageBucket", {
- *     project: "my-project-name",
- *     bucketId: bucketBucket.name,
- * }, {
- *     provider: google_beta,
  * });
  * // Create a ruleset of Firebase Security Rules from a local file.
  * const storage = new gcp.firebaserules.Ruleset("storage", {
@@ -57,15 +50,16 @@ import * as utilities from "../utilities";
  *             content: "service firebase.storage {match /b/{bucket}/o {match /{allPaths=**} {allow read, write: if request.auth != null;}}}",
  *         }],
  *     },
- * }, {
- *     provider: google_beta,
- *     dependsOn: [bucketStorageBucket],
  * });
  * const primary = new gcp.firebaserules.Release("primary", {
+ *     name: pulumi.interpolate`firebase.storage/${bucket.name}`,
  *     rulesetName: pulumi.interpolate`projects/my-project-name/rulesets/${storage.name}`,
  *     project: "my-project-name",
- * }, {
- *     provider: google_beta,
+ * });
+ * // Make the Storage bucket accessible for Firebase SDKs, authentication, and Firebase Security Rules.
+ * const bucketStorageBucket = new gcp.firebase.StorageBucket("bucket", {
+ *     project: "my-project-name",
+ *     bucketId: bucket.name,
  * });
  * ```
  *

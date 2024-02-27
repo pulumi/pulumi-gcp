@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.containeranalysis.getNoteIamPolicy({
- *     project: google_container_analysis_note.note.project,
- *     note: google_container_analysis_note.note.name,
+ *     project: note.project,
+ *     note: note.name,
  * });
  * ```
  */
@@ -73,8 +73,8 @@ export interface GetNoteIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.containeranalysis.getNoteIamPolicy({
- *     project: google_container_analysis_note.note.project,
- *     note: google_container_analysis_note.note.name,
+ *     project: note.project,
+ *     note: note.name,
  * });
  * ```
  */

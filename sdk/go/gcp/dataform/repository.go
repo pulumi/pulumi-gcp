@@ -28,7 +28,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			gitRepository, err := sourcerepo.NewRepository(ctx, "gitRepository", nil, pulumi.Provider(google_beta))
+//			gitRepository, err := sourcerepo.NewRepository(ctx, "git_repository", &sourcerepo.RepositoryArgs{
+//				Name: pulumi.String("my/repository"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -37,18 +39,19 @@ import (
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Auto: nil,
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			secretVersion, err := secretmanager.NewSecretVersion(ctx, "secretVersion", &secretmanager.SecretVersionArgs{
+//			secretVersion, err := secretmanager.NewSecretVersion(ctx, "secret_version", &secretmanager.SecretVersionArgs{
 //				Secret:     secret.ID(),
 //				SecretData: pulumi.String("secret-data"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dataform.NewRepository(ctx, "dataformRespository", &dataform.RepositoryArgs{
+//			_, err = dataform.NewRepository(ctx, "dataform_respository", &dataform.RepositoryArgs{
+//				Name:                                   pulumi.String("dataform_repository"),
 //				DisplayName:                            pulumi.String("dataform_repository"),
 //				NpmrcEnvironmentVariablesSecretVersion: secretVersion.ID(),
 //				Labels: pulumi.StringMap{
@@ -64,7 +67,7 @@ import (
 //					SchemaSuffix:    pulumi.String("_suffix"),
 //					TablePrefix:     pulumi.String("prefix_"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -89,7 +92,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			gitRepository, err := sourcerepo.NewRepository(ctx, "gitRepository", nil, pulumi.Provider(google_beta))
+//			gitRepository, err := sourcerepo.NewRepository(ctx, "git_repository", &sourcerepo.RepositoryArgs{
+//				Name: pulumi.String("my/repository"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -98,18 +103,19 @@ import (
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Auto: nil,
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			secretVersion, err := secretmanager.NewSecretVersion(ctx, "secretVersion", &secretmanager.SecretVersionArgs{
+//			secretVersion, err := secretmanager.NewSecretVersion(ctx, "secret_version", &secretmanager.SecretVersionArgs{
 //				Secret:     secret.ID(),
 //				SecretData: pulumi.String("secret-data"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dataform.NewRepository(ctx, "dataformRespository", &dataform.RepositoryArgs{
+//			_, err = dataform.NewRepository(ctx, "dataform_respository", &dataform.RepositoryArgs{
+//				Name: pulumi.String("dataform_repository"),
 //				GitRemoteSettings: &dataform.RepositoryGitRemoteSettingsArgs{
 //					Url:           gitRepository.Url,
 //					DefaultBranch: pulumi.String("main"),
@@ -124,7 +130,7 @@ import (
 //					TablePrefix:     pulumi.String("prefix_"),
 //				},
 //				ServiceAccount: pulumi.String("1234567890-compute@developer.gserviceaccount.com"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

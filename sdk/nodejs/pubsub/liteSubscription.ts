@@ -24,7 +24,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
- * const exampleLiteTopic = new gcp.pubsub.LiteTopic("exampleLiteTopic", {
+ * const example = new gcp.pubsub.LiteTopic("example", {
+ *     name: "example-topic",
  *     project: project.then(project => project.number),
  *     partitionConfig: {
  *         count: 1,
@@ -37,8 +38,9 @@ import * as utilities from "../utilities";
  *         perPartitionBytes: "32212254720",
  *     },
  * });
- * const exampleLiteSubscription = new gcp.pubsub.LiteSubscription("exampleLiteSubscription", {
- *     topic: exampleLiteTopic.name,
+ * const exampleLiteSubscription = new gcp.pubsub.LiteSubscription("example", {
+ *     name: "example-subscription",
+ *     topic: example.name,
  *     deliveryConfig: {
  *         deliveryRequirement: "DELIVER_AFTER_STORED",
  *     },

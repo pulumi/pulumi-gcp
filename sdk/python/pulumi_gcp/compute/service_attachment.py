@@ -575,6 +575,194 @@ class ServiceAttachment(pulumi.CustomResource):
             * [Configuring Private Service Connect to access services](https://cloud.google.com/vpc/docs/configure-private-service-connect-services)
 
         ## Example Usage
+        ### Service Attachment Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer_service_health_check = gcp.compute.HealthCheck("producer_service_health_check",
+            name="producer-service-health-check",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
+            name="producer-service",
+            region="us-west2",
+            health_checks=producer_service_health_check.id)
+        psc_ilb_network = gcp.compute.Network("psc_ilb_network",
+            name="psc-ilb-network",
+            auto_create_subnetworks=False)
+        psc_ilb_producer_subnetwork = gcp.compute.Subnetwork("psc_ilb_producer_subnetwork",
+            name="psc-ilb-producer-subnetwork",
+            region="us-west2",
+            network=psc_ilb_network.id,
+            ip_cidr_range="10.0.0.0/16")
+        psc_ilb_target_service = gcp.compute.ForwardingRule("psc_ilb_target_service",
+            name="producer-forwarding-rule",
+            region="us-west2",
+            load_balancing_scheme="INTERNAL",
+            backend_service=producer_service_backend.id,
+            all_ports=True,
+            network=psc_ilb_network.name,
+            subnetwork=psc_ilb_producer_subnetwork.name)
+        psc_ilb_nat = gcp.compute.Subnetwork("psc_ilb_nat",
+            name="psc-ilb-nat",
+            region="us-west2",
+            network=psc_ilb_network.id,
+            purpose="PRIVATE_SERVICE_CONNECT",
+            ip_cidr_range="10.1.0.0/16")
+        psc_ilb_service_attachment = gcp.compute.ServiceAttachment("psc_ilb_service_attachment",
+            name="my-psc-ilb",
+            region="us-west2",
+            description="A service attachment configured with Terraform",
+            domain_names=["gcp.tfacc.hashicorptest.com."],
+            enable_proxy_protocol=True,
+            connection_preference="ACCEPT_AUTOMATIC",
+            nat_subnets=[psc_ilb_nat.id],
+            target_service=psc_ilb_target_service.id)
+        psc_ilb_consumer_address = gcp.compute.Address("psc_ilb_consumer_address",
+            name="psc-ilb-consumer-address",
+            region="us-west2",
+            subnetwork="default",
+            address_type="INTERNAL")
+        psc_ilb_consumer = gcp.compute.ForwardingRule("psc_ilb_consumer",
+            name="psc-ilb-consumer-forwarding-rule",
+            region="us-west2",
+            target=psc_ilb_service_attachment.id,
+            load_balancing_scheme="",
+            network="default",
+            ip_address=psc_ilb_consumer_address.id)
+        ```
+        ### Service Attachment Explicit Projects
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer_service_health_check = gcp.compute.HealthCheck("producer_service_health_check",
+            name="producer-service-health-check",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
+            name="producer-service",
+            region="us-west2",
+            health_checks=producer_service_health_check.id)
+        psc_ilb_network = gcp.compute.Network("psc_ilb_network",
+            name="psc-ilb-network",
+            auto_create_subnetworks=False)
+        psc_ilb_producer_subnetwork = gcp.compute.Subnetwork("psc_ilb_producer_subnetwork",
+            name="psc-ilb-producer-subnetwork",
+            region="us-west2",
+            network=psc_ilb_network.id,
+            ip_cidr_range="10.0.0.0/16")
+        psc_ilb_target_service = gcp.compute.ForwardingRule("psc_ilb_target_service",
+            name="producer-forwarding-rule",
+            region="us-west2",
+            load_balancing_scheme="INTERNAL",
+            backend_service=producer_service_backend.id,
+            all_ports=True,
+            network=psc_ilb_network.name,
+            subnetwork=psc_ilb_producer_subnetwork.name)
+        psc_ilb_nat = gcp.compute.Subnetwork("psc_ilb_nat",
+            name="psc-ilb-nat",
+            region="us-west2",
+            network=psc_ilb_network.id,
+            purpose="PRIVATE_SERVICE_CONNECT",
+            ip_cidr_range="10.1.0.0/16")
+        psc_ilb_service_attachment = gcp.compute.ServiceAttachment("psc_ilb_service_attachment",
+            name="my-psc-ilb",
+            region="us-west2",
+            description="A service attachment configured with Terraform",
+            domain_names=["gcp.tfacc.hashicorptest.com."],
+            enable_proxy_protocol=True,
+            connection_preference="ACCEPT_MANUAL",
+            nat_subnets=[psc_ilb_nat.id],
+            target_service=psc_ilb_target_service.id,
+            consumer_reject_lists=[
+                "673497134629",
+                "482878270665",
+            ],
+            consumer_accept_lists=[gcp.compute.ServiceAttachmentConsumerAcceptListArgs(
+                project_id_or_num="658859330310",
+                connection_limit=4,
+            )])
+        psc_ilb_consumer_address = gcp.compute.Address("psc_ilb_consumer_address",
+            name="psc-ilb-consumer-address",
+            region="us-west2",
+            subnetwork="default",
+            address_type="INTERNAL")
+        psc_ilb_consumer = gcp.compute.ForwardingRule("psc_ilb_consumer",
+            name="psc-ilb-consumer-forwarding-rule",
+            region="us-west2",
+            target=psc_ilb_service_attachment.id,
+            load_balancing_scheme="",
+            network="default",
+            ip_address=psc_ilb_consumer_address.id)
+        ```
+        ### Service Attachment Reconcile Connections
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer_service_health_check = gcp.compute.HealthCheck("producer_service_health_check",
+            name="producer-service-health-check",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
+            name="producer-service",
+            region="us-west2",
+            health_checks=producer_service_health_check.id)
+        psc_ilb_network = gcp.compute.Network("psc_ilb_network",
+            name="psc-ilb-network",
+            auto_create_subnetworks=False)
+        psc_ilb_producer_subnetwork = gcp.compute.Subnetwork("psc_ilb_producer_subnetwork",
+            name="psc-ilb-producer-subnetwork",
+            region="us-west2",
+            network=psc_ilb_network.id,
+            ip_cidr_range="10.0.0.0/16")
+        psc_ilb_target_service = gcp.compute.ForwardingRule("psc_ilb_target_service",
+            name="producer-forwarding-rule",
+            region="us-west2",
+            load_balancing_scheme="INTERNAL",
+            backend_service=producer_service_backend.id,
+            all_ports=True,
+            network=psc_ilb_network.name,
+            subnetwork=psc_ilb_producer_subnetwork.name)
+        psc_ilb_nat = gcp.compute.Subnetwork("psc_ilb_nat",
+            name="psc-ilb-nat",
+            region="us-west2",
+            network=psc_ilb_network.id,
+            purpose="PRIVATE_SERVICE_CONNECT",
+            ip_cidr_range="10.1.0.0/16")
+        psc_ilb_service_attachment = gcp.compute.ServiceAttachment("psc_ilb_service_attachment",
+            name="my-psc-ilb",
+            region="us-west2",
+            description="A service attachment configured with Terraform",
+            domain_names=["gcp.tfacc.hashicorptest.com."],
+            enable_proxy_protocol=True,
+            connection_preference="ACCEPT_MANUAL",
+            nat_subnets=[psc_ilb_nat.id],
+            target_service=psc_ilb_target_service.id,
+            consumer_reject_lists=[
+                "673497134629",
+                "482878270665",
+            ],
+            consumer_accept_lists=[gcp.compute.ServiceAttachmentConsumerAcceptListArgs(
+                project_id_or_num="658859330310",
+                connection_limit=4,
+            )],
+            reconcile_connections=False)
+        ```
 
         ## Import
 
@@ -658,6 +846,194 @@ class ServiceAttachment(pulumi.CustomResource):
             * [Configuring Private Service Connect to access services](https://cloud.google.com/vpc/docs/configure-private-service-connect-services)
 
         ## Example Usage
+        ### Service Attachment Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer_service_health_check = gcp.compute.HealthCheck("producer_service_health_check",
+            name="producer-service-health-check",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
+            name="producer-service",
+            region="us-west2",
+            health_checks=producer_service_health_check.id)
+        psc_ilb_network = gcp.compute.Network("psc_ilb_network",
+            name="psc-ilb-network",
+            auto_create_subnetworks=False)
+        psc_ilb_producer_subnetwork = gcp.compute.Subnetwork("psc_ilb_producer_subnetwork",
+            name="psc-ilb-producer-subnetwork",
+            region="us-west2",
+            network=psc_ilb_network.id,
+            ip_cidr_range="10.0.0.0/16")
+        psc_ilb_target_service = gcp.compute.ForwardingRule("psc_ilb_target_service",
+            name="producer-forwarding-rule",
+            region="us-west2",
+            load_balancing_scheme="INTERNAL",
+            backend_service=producer_service_backend.id,
+            all_ports=True,
+            network=psc_ilb_network.name,
+            subnetwork=psc_ilb_producer_subnetwork.name)
+        psc_ilb_nat = gcp.compute.Subnetwork("psc_ilb_nat",
+            name="psc-ilb-nat",
+            region="us-west2",
+            network=psc_ilb_network.id,
+            purpose="PRIVATE_SERVICE_CONNECT",
+            ip_cidr_range="10.1.0.0/16")
+        psc_ilb_service_attachment = gcp.compute.ServiceAttachment("psc_ilb_service_attachment",
+            name="my-psc-ilb",
+            region="us-west2",
+            description="A service attachment configured with Terraform",
+            domain_names=["gcp.tfacc.hashicorptest.com."],
+            enable_proxy_protocol=True,
+            connection_preference="ACCEPT_AUTOMATIC",
+            nat_subnets=[psc_ilb_nat.id],
+            target_service=psc_ilb_target_service.id)
+        psc_ilb_consumer_address = gcp.compute.Address("psc_ilb_consumer_address",
+            name="psc-ilb-consumer-address",
+            region="us-west2",
+            subnetwork="default",
+            address_type="INTERNAL")
+        psc_ilb_consumer = gcp.compute.ForwardingRule("psc_ilb_consumer",
+            name="psc-ilb-consumer-forwarding-rule",
+            region="us-west2",
+            target=psc_ilb_service_attachment.id,
+            load_balancing_scheme="",
+            network="default",
+            ip_address=psc_ilb_consumer_address.id)
+        ```
+        ### Service Attachment Explicit Projects
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer_service_health_check = gcp.compute.HealthCheck("producer_service_health_check",
+            name="producer-service-health-check",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
+            name="producer-service",
+            region="us-west2",
+            health_checks=producer_service_health_check.id)
+        psc_ilb_network = gcp.compute.Network("psc_ilb_network",
+            name="psc-ilb-network",
+            auto_create_subnetworks=False)
+        psc_ilb_producer_subnetwork = gcp.compute.Subnetwork("psc_ilb_producer_subnetwork",
+            name="psc-ilb-producer-subnetwork",
+            region="us-west2",
+            network=psc_ilb_network.id,
+            ip_cidr_range="10.0.0.0/16")
+        psc_ilb_target_service = gcp.compute.ForwardingRule("psc_ilb_target_service",
+            name="producer-forwarding-rule",
+            region="us-west2",
+            load_balancing_scheme="INTERNAL",
+            backend_service=producer_service_backend.id,
+            all_ports=True,
+            network=psc_ilb_network.name,
+            subnetwork=psc_ilb_producer_subnetwork.name)
+        psc_ilb_nat = gcp.compute.Subnetwork("psc_ilb_nat",
+            name="psc-ilb-nat",
+            region="us-west2",
+            network=psc_ilb_network.id,
+            purpose="PRIVATE_SERVICE_CONNECT",
+            ip_cidr_range="10.1.0.0/16")
+        psc_ilb_service_attachment = gcp.compute.ServiceAttachment("psc_ilb_service_attachment",
+            name="my-psc-ilb",
+            region="us-west2",
+            description="A service attachment configured with Terraform",
+            domain_names=["gcp.tfacc.hashicorptest.com."],
+            enable_proxy_protocol=True,
+            connection_preference="ACCEPT_MANUAL",
+            nat_subnets=[psc_ilb_nat.id],
+            target_service=psc_ilb_target_service.id,
+            consumer_reject_lists=[
+                "673497134629",
+                "482878270665",
+            ],
+            consumer_accept_lists=[gcp.compute.ServiceAttachmentConsumerAcceptListArgs(
+                project_id_or_num="658859330310",
+                connection_limit=4,
+            )])
+        psc_ilb_consumer_address = gcp.compute.Address("psc_ilb_consumer_address",
+            name="psc-ilb-consumer-address",
+            region="us-west2",
+            subnetwork="default",
+            address_type="INTERNAL")
+        psc_ilb_consumer = gcp.compute.ForwardingRule("psc_ilb_consumer",
+            name="psc-ilb-consumer-forwarding-rule",
+            region="us-west2",
+            target=psc_ilb_service_attachment.id,
+            load_balancing_scheme="",
+            network="default",
+            ip_address=psc_ilb_consumer_address.id)
+        ```
+        ### Service Attachment Reconcile Connections
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer_service_health_check = gcp.compute.HealthCheck("producer_service_health_check",
+            name="producer-service-health-check",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
+            name="producer-service",
+            region="us-west2",
+            health_checks=producer_service_health_check.id)
+        psc_ilb_network = gcp.compute.Network("psc_ilb_network",
+            name="psc-ilb-network",
+            auto_create_subnetworks=False)
+        psc_ilb_producer_subnetwork = gcp.compute.Subnetwork("psc_ilb_producer_subnetwork",
+            name="psc-ilb-producer-subnetwork",
+            region="us-west2",
+            network=psc_ilb_network.id,
+            ip_cidr_range="10.0.0.0/16")
+        psc_ilb_target_service = gcp.compute.ForwardingRule("psc_ilb_target_service",
+            name="producer-forwarding-rule",
+            region="us-west2",
+            load_balancing_scheme="INTERNAL",
+            backend_service=producer_service_backend.id,
+            all_ports=True,
+            network=psc_ilb_network.name,
+            subnetwork=psc_ilb_producer_subnetwork.name)
+        psc_ilb_nat = gcp.compute.Subnetwork("psc_ilb_nat",
+            name="psc-ilb-nat",
+            region="us-west2",
+            network=psc_ilb_network.id,
+            purpose="PRIVATE_SERVICE_CONNECT",
+            ip_cidr_range="10.1.0.0/16")
+        psc_ilb_service_attachment = gcp.compute.ServiceAttachment("psc_ilb_service_attachment",
+            name="my-psc-ilb",
+            region="us-west2",
+            description="A service attachment configured with Terraform",
+            domain_names=["gcp.tfacc.hashicorptest.com."],
+            enable_proxy_protocol=True,
+            connection_preference="ACCEPT_MANUAL",
+            nat_subnets=[psc_ilb_nat.id],
+            target_service=psc_ilb_target_service.id,
+            consumer_reject_lists=[
+                "673497134629",
+                "482878270665",
+            ],
+            consumer_accept_lists=[gcp.compute.ServiceAttachmentConsumerAcceptListArgs(
+                project_id_or_num="658859330310",
+                connection_limit=4,
+            )],
+            reconcile_connections=False)
+        ```
 
         ## Import
 

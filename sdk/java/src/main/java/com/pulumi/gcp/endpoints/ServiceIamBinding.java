@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ServiceIamPolicy(&#34;policy&#34;, ServiceIamPolicyArgs.builder()        
- *             .serviceName(google_endpoints_service.endpoints_service().service_name())
+ *             .serviceName(endpointsService.serviceName())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new ServiceIamBinding(&#34;binding&#34;, ServiceIamBindingArgs.builder()        
- *             .serviceName(google_endpoints_service.endpoints_service().service_name())
+ *             .serviceName(endpointsService.serviceName())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -126,7 +126,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new ServiceIamMember(&#34;member&#34;, ServiceIamMemberArgs.builder()        
- *             .serviceName(google_endpoints_service.endpoints_service().service_name())
+ *             .serviceName(endpointsService.serviceName())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

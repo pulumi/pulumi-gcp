@@ -412,10 +412,11 @@ class AppGateway(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        app_gateway = gcp.beyondcorp.AppGateway("appGateway",
-            host_type="GCP_REGIONAL_MIG",
+        app_gateway = gcp.beyondcorp.AppGateway("app_gateway",
+            name="my-app-gateway",
+            type="TCP_PROXY",
             region="us-central1",
-            type="TCP_PROXY")
+            host_type="GCP_REGIONAL_MIG")
         ```
         ### Beyondcorp App Gateway Full
 
@@ -423,15 +424,16 @@ class AppGateway(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        app_gateway = gcp.beyondcorp.AppGateway("appGateway",
-            display_name="some display name",
-            host_type="GCP_REGIONAL_MIG",
-            labels={
-                "bar": "baz",
-                "foo": "bar",
-            },
+        app_gateway = gcp.beyondcorp.AppGateway("app_gateway",
+            name="my-app-gateway",
+            type="TCP_PROXY",
             region="us-central1",
-            type="TCP_PROXY")
+            display_name="some display name",
+            labels={
+                "foo": "bar",
+                "bar": "baz",
+            },
+            host_type="GCP_REGIONAL_MIG")
         ```
 
         ## Import
@@ -509,10 +511,11 @@ class AppGateway(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        app_gateway = gcp.beyondcorp.AppGateway("appGateway",
-            host_type="GCP_REGIONAL_MIG",
+        app_gateway = gcp.beyondcorp.AppGateway("app_gateway",
+            name="my-app-gateway",
+            type="TCP_PROXY",
             region="us-central1",
-            type="TCP_PROXY")
+            host_type="GCP_REGIONAL_MIG")
         ```
         ### Beyondcorp App Gateway Full
 
@@ -520,15 +523,16 @@ class AppGateway(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        app_gateway = gcp.beyondcorp.AppGateway("appGateway",
-            display_name="some display name",
-            host_type="GCP_REGIONAL_MIG",
-            labels={
-                "bar": "baz",
-                "foo": "bar",
-            },
+        app_gateway = gcp.beyondcorp.AppGateway("app_gateway",
+            name="my-app-gateway",
+            type="TCP_PROXY",
             region="us-central1",
-            type="TCP_PROXY")
+            display_name="some display name",
+            labels={
+                "foo": "bar",
+                "bar": "baz",
+            },
+            host_type="GCP_REGIONAL_MIG")
         ```
 
         ## Import

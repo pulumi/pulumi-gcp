@@ -27,12 +27,12 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var idpConfig = new Gcp.IdentityPlatform.DefaultSupportedIdpConfig("idpConfig", new()
+    ///     var idpConfig = new Gcp.IdentityPlatform.DefaultSupportedIdpConfig("idp_config", new()
     ///     {
-    ///         ClientId = "client-id",
-    ///         ClientSecret = "secret",
     ///         Enabled = true,
     ///         IdpId = "playgames.google.com",
+    ///         ClientId = "client-id",
+    ///         ClientSecret = "secret",
     ///     });
     /// 
     /// });

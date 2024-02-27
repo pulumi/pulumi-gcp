@@ -612,6 +612,7 @@ class Secret(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         secret_basic = gcp.secretmanager.Secret("secret-basic",
+            secret_id="secret",
             labels={
                 "label": "my-label",
             },
@@ -626,8 +627,7 @@ class Secret(pulumi.CustomResource):
                         ),
                     ],
                 ),
-            ),
-            secret_id="secret")
+            ))
         ```
         ### Secret With Annotations
 
@@ -636,6 +636,10 @@ class Secret(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         secret_with_annotations = gcp.secretmanager.Secret("secret-with-annotations",
+            secret_id="secret",
+            labels={
+                "label": "my-label",
+            },
             annotations={
                 "key1": "someval",
                 "key2": "someval2",
@@ -643,13 +647,9 @@ class Secret(pulumi.CustomResource):
                 "key4": "someval4",
                 "key5": "someval5",
             },
-            labels={
-                "label": "my-label",
-            },
             replication=gcp.secretmanager.SecretReplicationArgs(
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ),
-            secret_id="secret")
+            ))
         ```
         ### Secret With Automatic Cmek
 
@@ -670,8 +670,7 @@ class Secret(pulumi.CustomResource):
                         kms_key_name="kms-key",
                     ),
                 ),
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[kms_secret_binding]))
+            ))
         ```
 
         ## Import
@@ -769,6 +768,7 @@ class Secret(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         secret_basic = gcp.secretmanager.Secret("secret-basic",
+            secret_id="secret",
             labels={
                 "label": "my-label",
             },
@@ -783,8 +783,7 @@ class Secret(pulumi.CustomResource):
                         ),
                     ],
                 ),
-            ),
-            secret_id="secret")
+            ))
         ```
         ### Secret With Annotations
 
@@ -793,6 +792,10 @@ class Secret(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         secret_with_annotations = gcp.secretmanager.Secret("secret-with-annotations",
+            secret_id="secret",
+            labels={
+                "label": "my-label",
+            },
             annotations={
                 "key1": "someval",
                 "key2": "someval2",
@@ -800,13 +803,9 @@ class Secret(pulumi.CustomResource):
                 "key4": "someval4",
                 "key5": "someval5",
             },
-            labels={
-                "label": "my-label",
-            },
             replication=gcp.secretmanager.SecretReplicationArgs(
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ),
-            secret_id="secret")
+            ))
         ```
         ### Secret With Automatic Cmek
 
@@ -827,8 +826,7 @@ class Secret(pulumi.CustomResource):
                         kms_key_name="kms-key",
                     ),
                 ),
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[kms_secret_binding]))
+            ))
         ```
 
         ## Import

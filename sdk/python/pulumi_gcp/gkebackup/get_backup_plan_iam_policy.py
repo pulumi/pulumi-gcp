@@ -109,9 +109,9 @@ def get_backup_plan_iam_policy(location: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.gkebackup.get_backup_plan_iam_policy(project=google_gke_backup_backup_plan["basic"]["project"],
-        location=google_gke_backup_backup_plan["basic"]["location"],
-        name=google_gke_backup_backup_plan["basic"]["name"])
+    policy = gcp.gkebackup.get_backup_plan_iam_policy(project=basic["project"],
+        location=basic["location"],
+        name=basic["name"])
     ```
 
 
@@ -151,9 +151,9 @@ def get_backup_plan_iam_policy_output(location: Optional[pulumi.Input[Optional[s
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.gkebackup.get_backup_plan_iam_policy(project=google_gke_backup_backup_plan["basic"]["project"],
-        location=google_gke_backup_backup_plan["basic"]["location"],
-        name=google_gke_backup_backup_plan["basic"]["name"])
+    policy = gcp.gkebackup.get_backup_plan_iam_policy(project=basic["project"],
+        location=basic["location"],
+        name=basic["name"])
     ```
 
 

@@ -32,8 +32,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.containeranalysis.NoteIamPolicy("policy", {
- *     project: google_container_analysis_note.note.project,
- *     note: google_container_analysis_note.note.name,
+ *     project: note.project,
+ *     note: note.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -45,8 +45,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.containeranalysis.NoteIamBinding("binding", {
- *     project: google_container_analysis_note.note.project,
- *     note: google_container_analysis_note.note.name,
+ *     project: note.project,
+ *     note: note.name,
  *     role: "roles/containeranalysis.notes.occurrences.viewer",
  *     members: ["user:jane@example.com"],
  * });
@@ -59,8 +59,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.containeranalysis.NoteIamMember("member", {
- *     project: google_container_analysis_note.note.project,
- *     note: google_container_analysis_note.note.name,
+ *     project: note.project,
+ *     note: note.name,
  *     role: "roles/containeranalysis.notes.occurrences.viewer",
  *     member: "user:jane@example.com",
  * });

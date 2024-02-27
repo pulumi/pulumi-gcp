@@ -722,9 +722,10 @@ class Gateway(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.Gateway("default",
-            ports=[443],
+            name="my-gateway",
             scope="default-scope-basic",
-            type="OPEN_MESH")
+            type="OPEN_MESH",
+            ports=[443])
         ```
         ### Network Services Gateway Advanced
 
@@ -733,121 +734,138 @@ class Gateway(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.Gateway("default",
-            description="my description",
+            name="my-gateway",
             labels={
                 "foo": "bar",
             },
+            description="my description",
+            type="OPEN_MESH",
             ports=[443],
-            scope="default-scope-advance",
-            type="OPEN_MESH")
+            scope="default-scope-advance")
         ```
         ### Network Services Gateway Secure Web Proxy
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
-        default_certificate = gcp.certificatemanager.Certificate("defaultCertificate",
+        default = gcp.certificatemanager.Certificate("default",
+            name="my-certificate",
             location="us-central1",
             self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
-                pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
-                pem_private_key=(lambda path: open(path).read())("test-fixtures/private-key.pem"),
+                pem_certificate=std.file(input="test-fixtures/cert.pem").result,
+                pem_private_key=std.file(input="test-fixtures/private-key.pem").result,
             ))
-        default_network = gcp.compute.Network("defaultNetwork",
+        default_network = gcp.compute.Network("default",
+            name="my-network",
             routing_mode="REGIONAL",
             auto_create_subnetworks=False)
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="my-subnetwork-name",
             purpose="PRIVATE",
             ip_cidr_range="10.128.0.0/20",
             region="us-central1",
             network=default_network.id,
             role="ACTIVE")
         proxyonlysubnet = gcp.compute.Subnetwork("proxyonlysubnet",
+            name="my-proxy-only-subnetwork",
             purpose="REGIONAL_MANAGED_PROXY",
             ip_cidr_range="192.168.0.0/23",
             region="us-central1",
             network=default_network.id,
             role="ACTIVE")
-        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", location="us-central1")
-        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
+        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("default",
+            name="my-policy-name",
+            location="us-central1")
+        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("default",
+            name="my-policyrule-name",
             location="us-central1",
             gateway_security_policy=default_gateway_security_policy.name,
             enabled=True,
             priority=1,
             session_matcher="host() == 'example.com'",
             basic_profile="ALLOW")
-        default_gateway = gcp.networkservices.Gateway("defaultGateway",
+        default_gateway = gcp.networkservices.Gateway("default",
+            name="my-gateway1",
             location="us-central1",
             addresses=["10.128.0.99"],
             type="SECURE_WEB_GATEWAY",
             ports=[443],
             scope="my-default-scope1",
-            certificate_urls=[default_certificate.id],
+            certificate_urls=[default.id],
             gateway_security_policy=default_gateway_security_policy.id,
             network=default_network.id,
             subnetwork=default_subnetwork.id,
-            delete_swg_autogen_router_on_destroy=True,
-            opts=pulumi.ResourceOptions(depends_on=[proxyonlysubnet]))
+            delete_swg_autogen_router_on_destroy=True)
         ```
         ### Network Services Gateway Multiple Swp Same Network
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
-        default_certificate = gcp.certificatemanager.Certificate("defaultCertificate",
+        default = gcp.certificatemanager.Certificate("default",
+            name="my-certificate",
             location="us-south1",
             self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
-                pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
-                pem_private_key=(lambda path: open(path).read())("test-fixtures/private-key.pem"),
+                pem_certificate=std.file(input="test-fixtures/cert.pem").result,
+                pem_private_key=std.file(input="test-fixtures/private-key.pem").result,
             ))
-        default_network = gcp.compute.Network("defaultNetwork",
+        default_network = gcp.compute.Network("default",
+            name="my-network",
             routing_mode="REGIONAL",
             auto_create_subnetworks=False)
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="my-subnetwork-name",
             purpose="PRIVATE",
             ip_cidr_range="10.128.0.0/20",
             region="us-south1",
             network=default_network.id,
             role="ACTIVE")
         proxyonlysubnet = gcp.compute.Subnetwork("proxyonlysubnet",
+            name="my-proxy-only-subnetwork",
             purpose="REGIONAL_MANAGED_PROXY",
             ip_cidr_range="192.168.0.0/23",
             region="us-south1",
             network=default_network.id,
             role="ACTIVE")
-        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", location="us-south1")
-        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
+        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("default",
+            name="my-policy-name",
+            location="us-south1")
+        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("default",
+            name="my-policyrule-name",
             location="us-south1",
             gateway_security_policy=default_gateway_security_policy.name,
             enabled=True,
             priority=1,
             session_matcher="host() == 'example.com'",
             basic_profile="ALLOW")
-        default_gateway = gcp.networkservices.Gateway("defaultGateway",
+        default_gateway = gcp.networkservices.Gateway("default",
+            name="my-gateway1",
             location="us-south1",
             addresses=["10.128.0.99"],
             type="SECURE_WEB_GATEWAY",
             ports=[443],
             scope="my-default-scope1",
-            certificate_urls=[default_certificate.id],
+            certificate_urls=[default.id],
             gateway_security_policy=default_gateway_security_policy.id,
             network=default_network.id,
             subnetwork=default_subnetwork.id,
-            delete_swg_autogen_router_on_destroy=True,
-            opts=pulumi.ResourceOptions(depends_on=[proxyonlysubnet]))
+            delete_swg_autogen_router_on_destroy=True)
         gateway2 = gcp.networkservices.Gateway("gateway2",
+            name="my-gateway2",
             location="us-south1",
             addresses=["10.128.0.98"],
             type="SECURE_WEB_GATEWAY",
             ports=[443],
             scope="my-default-scope2",
-            certificate_urls=[default_certificate.id],
+            certificate_urls=[default.id],
             gateway_security_policy=default_gateway_security_policy.id,
             network=default_network.id,
             subnetwork=default_subnetwork.id,
-            delete_swg_autogen_router_on_destroy=True,
-            opts=pulumi.ResourceOptions(depends_on=[proxyonlysubnet]))
+            delete_swg_autogen_router_on_destroy=True)
         ```
 
         ## Import
@@ -940,9 +958,10 @@ class Gateway(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.Gateway("default",
-            ports=[443],
+            name="my-gateway",
             scope="default-scope-basic",
-            type="OPEN_MESH")
+            type="OPEN_MESH",
+            ports=[443])
         ```
         ### Network Services Gateway Advanced
 
@@ -951,121 +970,138 @@ class Gateway(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.Gateway("default",
-            description="my description",
+            name="my-gateway",
             labels={
                 "foo": "bar",
             },
+            description="my description",
+            type="OPEN_MESH",
             ports=[443],
-            scope="default-scope-advance",
-            type="OPEN_MESH")
+            scope="default-scope-advance")
         ```
         ### Network Services Gateway Secure Web Proxy
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
-        default_certificate = gcp.certificatemanager.Certificate("defaultCertificate",
+        default = gcp.certificatemanager.Certificate("default",
+            name="my-certificate",
             location="us-central1",
             self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
-                pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
-                pem_private_key=(lambda path: open(path).read())("test-fixtures/private-key.pem"),
+                pem_certificate=std.file(input="test-fixtures/cert.pem").result,
+                pem_private_key=std.file(input="test-fixtures/private-key.pem").result,
             ))
-        default_network = gcp.compute.Network("defaultNetwork",
+        default_network = gcp.compute.Network("default",
+            name="my-network",
             routing_mode="REGIONAL",
             auto_create_subnetworks=False)
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="my-subnetwork-name",
             purpose="PRIVATE",
             ip_cidr_range="10.128.0.0/20",
             region="us-central1",
             network=default_network.id,
             role="ACTIVE")
         proxyonlysubnet = gcp.compute.Subnetwork("proxyonlysubnet",
+            name="my-proxy-only-subnetwork",
             purpose="REGIONAL_MANAGED_PROXY",
             ip_cidr_range="192.168.0.0/23",
             region="us-central1",
             network=default_network.id,
             role="ACTIVE")
-        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", location="us-central1")
-        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
+        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("default",
+            name="my-policy-name",
+            location="us-central1")
+        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("default",
+            name="my-policyrule-name",
             location="us-central1",
             gateway_security_policy=default_gateway_security_policy.name,
             enabled=True,
             priority=1,
             session_matcher="host() == 'example.com'",
             basic_profile="ALLOW")
-        default_gateway = gcp.networkservices.Gateway("defaultGateway",
+        default_gateway = gcp.networkservices.Gateway("default",
+            name="my-gateway1",
             location="us-central1",
             addresses=["10.128.0.99"],
             type="SECURE_WEB_GATEWAY",
             ports=[443],
             scope="my-default-scope1",
-            certificate_urls=[default_certificate.id],
+            certificate_urls=[default.id],
             gateway_security_policy=default_gateway_security_policy.id,
             network=default_network.id,
             subnetwork=default_subnetwork.id,
-            delete_swg_autogen_router_on_destroy=True,
-            opts=pulumi.ResourceOptions(depends_on=[proxyonlysubnet]))
+            delete_swg_autogen_router_on_destroy=True)
         ```
         ### Network Services Gateway Multiple Swp Same Network
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
-        default_certificate = gcp.certificatemanager.Certificate("defaultCertificate",
+        default = gcp.certificatemanager.Certificate("default",
+            name="my-certificate",
             location="us-south1",
             self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
-                pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
-                pem_private_key=(lambda path: open(path).read())("test-fixtures/private-key.pem"),
+                pem_certificate=std.file(input="test-fixtures/cert.pem").result,
+                pem_private_key=std.file(input="test-fixtures/private-key.pem").result,
             ))
-        default_network = gcp.compute.Network("defaultNetwork",
+        default_network = gcp.compute.Network("default",
+            name="my-network",
             routing_mode="REGIONAL",
             auto_create_subnetworks=False)
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="my-subnetwork-name",
             purpose="PRIVATE",
             ip_cidr_range="10.128.0.0/20",
             region="us-south1",
             network=default_network.id,
             role="ACTIVE")
         proxyonlysubnet = gcp.compute.Subnetwork("proxyonlysubnet",
+            name="my-proxy-only-subnetwork",
             purpose="REGIONAL_MANAGED_PROXY",
             ip_cidr_range="192.168.0.0/23",
             region="us-south1",
             network=default_network.id,
             role="ACTIVE")
-        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", location="us-south1")
-        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
+        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("default",
+            name="my-policy-name",
+            location="us-south1")
+        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("default",
+            name="my-policyrule-name",
             location="us-south1",
             gateway_security_policy=default_gateway_security_policy.name,
             enabled=True,
             priority=1,
             session_matcher="host() == 'example.com'",
             basic_profile="ALLOW")
-        default_gateway = gcp.networkservices.Gateway("defaultGateway",
+        default_gateway = gcp.networkservices.Gateway("default",
+            name="my-gateway1",
             location="us-south1",
             addresses=["10.128.0.99"],
             type="SECURE_WEB_GATEWAY",
             ports=[443],
             scope="my-default-scope1",
-            certificate_urls=[default_certificate.id],
+            certificate_urls=[default.id],
             gateway_security_policy=default_gateway_security_policy.id,
             network=default_network.id,
             subnetwork=default_subnetwork.id,
-            delete_swg_autogen_router_on_destroy=True,
-            opts=pulumi.ResourceOptions(depends_on=[proxyonlysubnet]))
+            delete_swg_autogen_router_on_destroy=True)
         gateway2 = gcp.networkservices.Gateway("gateway2",
+            name="my-gateway2",
             location="us-south1",
             addresses=["10.128.0.98"],
             type="SECURE_WEB_GATEWAY",
             ports=[443],
             scope="my-default-scope2",
-            certificate_urls=[default_certificate.id],
+            certificate_urls=[default.id],
             gateway_security_policy=default_gateway_security_policy.id,
             network=default_network.id,
             subnetwork=default_subnetwork.id,
-            delete_swg_autogen_router_on_destroy=True,
-            opts=pulumi.ResourceOptions(depends_on=[proxyonlysubnet]))
+            delete_swg_autogen_router_on_destroy=True)
         ```
 
         ## Import

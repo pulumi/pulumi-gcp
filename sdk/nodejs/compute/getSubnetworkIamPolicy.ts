@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.compute.getSubnetworkIamPolicy({
- *     project: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].project,
- *     region: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].region,
- *     subnetwork: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].name,
+ *     project: network_with_private_secondary_ip_ranges.project,
+ *     region: network_with_private_secondary_ip_ranges.region,
+ *     subnetwork: network_with_private_secondary_ip_ranges.name,
  * });
  * ```
  */
@@ -83,9 +83,9 @@ export interface GetSubnetworkIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.compute.getSubnetworkIamPolicy({
- *     project: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].project,
- *     region: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].region,
- *     subnetwork: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].name,
+ *     project: network_with_private_secondary_ip_ranges.project,
+ *     region: network_with_private_secondary_ip_ranges.region,
+ *     subnetwork: network_with_private_secondary_ip_ranges.name,
  * });
  * ```
  */

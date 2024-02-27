@@ -31,8 +31,9 @@ namespace Pulumi.Gcp.Storage
     /// {
     ///     var picture = new Gcp.Storage.BucketObject("picture", new()
     ///     {
-    ///         Bucket = "image-store",
+    ///         Name = "butterfly01",
     ///         Source = new FileAsset("/images/nature/garden-tiger-moth.jpg"),
+    ///         Bucket = "image-store",
     ///     });
     /// 
     /// });
@@ -48,13 +49,13 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var emptyFolder = new Gcp.Storage.BucketObject("emptyFolder", new()
+    ///     var emptyFolder = new Gcp.Storage.BucketObject("empty_folder", new()
     ///     {
-    ///         Bucket = "image-store",
+    ///         Name = "empty_folder/",
     ///         Content = " ",
+    ///         Bucket = "image-store",
     ///     });
     /// 
-    ///     // folder name should end with '/'
     /// });
     /// ```
     /// 

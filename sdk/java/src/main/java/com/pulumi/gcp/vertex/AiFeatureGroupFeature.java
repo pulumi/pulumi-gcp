@@ -89,6 +89,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var sampleFeatureGroup = new AiFeatureGroup(&#34;sampleFeatureGroup&#34;, AiFeatureGroupArgs.builder()        
+ *             .name(&#34;example_feature_group&#34;)
  *             .description(&#34;A sample feature group&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
@@ -106,6 +107,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var featureGroupFeature = new AiFeatureGroupFeature(&#34;featureGroupFeature&#34;, AiFeatureGroupFeatureArgs.builder()        
+ *             .name(&#34;example_feature&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .featureGroup(sampleFeatureGroup.name())
  *             .description(&#34;A sample feature&#34;)

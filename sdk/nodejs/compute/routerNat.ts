@@ -22,13 +22,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const net = new gcp.compute.Network("net", {});
+ * const net = new gcp.compute.Network("net", {name: "my-network"});
  * const subnet = new gcp.compute.Subnetwork("subnet", {
+ *     name: "my-subnetwork",
  *     network: net.id,
  *     ipCidrRange: "10.0.0.0/16",
  *     region: "us-central1",
  * });
  * const router = new gcp.compute.Router("router", {
+ *     name: "my-router",
  *     region: subnet.region,
  *     network: net.id,
  *     bgp: {
@@ -36,6 +38,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const nat = new gcp.compute.RouterNat("nat", {
+ *     name: "my-router-nat",
  *     router: router.name,
  *     region: router.region,
  *     natIpAllocateOption: "AUTO_ONLY",
@@ -52,21 +55,27 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const net = new gcp.compute.Network("net", {});
+ * const net = new gcp.compute.Network("net", {name: "my-network"});
  * const subnet = new gcp.compute.Subnetwork("subnet", {
+ *     name: "my-subnetwork",
  *     network: net.id,
  *     ipCidrRange: "10.0.0.0/16",
  *     region: "us-central1",
  * });
  * const router = new gcp.compute.Router("router", {
+ *     name: "my-router",
  *     region: subnet.region,
  *     network: net.id,
  * });
  * const address: gcp.compute.Address[] = [];
  * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     address.push(new gcp.compute.Address(`address-${range.value}`, {region: subnet.region}));
+ *     address.push(new gcp.compute.Address(`address-${range.value}`, {
+ *         name: `nat-manual-ip-${range.value}`,
+ *         region: subnet.region,
+ *     }));
  * }
- * const natManual = new gcp.compute.RouterNat("natManual", {
+ * const natManual = new gcp.compute.RouterNat("nat_manual", {
+ *     name: "my-router-nat",
  *     router: router.name,
  *     region: router.region,
  *     natIpAllocateOption: "MANUAL_ONLY",
@@ -84,20 +93,35 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const net = new gcp.compute.Network("net", {autoCreateSubnetworks: false});
+ * const net = new gcp.compute.Network("net", {
+ *     name: "my-network",
+ *     autoCreateSubnetworks: false,
+ * });
  * const subnet = new gcp.compute.Subnetwork("subnet", {
+ *     name: "my-subnetwork",
  *     network: net.id,
  *     ipCidrRange: "10.0.0.0/16",
  *     region: "us-central1",
  * });
  * const router = new gcp.compute.Router("router", {
+ *     name: "my-router",
  *     region: subnet.region,
  *     network: net.id,
  * });
- * const addr1 = new gcp.compute.Address("addr1", {region: subnet.region});
- * const addr2 = new gcp.compute.Address("addr2", {region: subnet.region});
- * const addr3 = new gcp.compute.Address("addr3", {region: subnet.region});
- * const natRules = new gcp.compute.RouterNat("natRules", {
+ * const addr1 = new gcp.compute.Address("addr1", {
+ *     name: "nat-address1",
+ *     region: subnet.region,
+ * });
+ * const addr2 = new gcp.compute.Address("addr2", {
+ *     name: "nat-address2",
+ *     region: subnet.region,
+ * });
+ * const addr3 = new gcp.compute.Address("addr3", {
+ *     name: "nat-address3",
+ *     region: subnet.region,
+ * });
+ * const natRules = new gcp.compute.RouterNat("nat_rules", {
+ *     name: "my-router-nat",
  *     router: router.name,
  *     region: router.region,
  *     natIpAllocateOption: "MANUAL_ONLY",
@@ -127,27 +151,25 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const net = new gcp.compute.Network("net", {}, {
- *     provider: google_beta,
- * });
+ * const net = new gcp.compute.Network("net", {name: "my-network"});
  * const subnet = new gcp.compute.Subnetwork("subnet", {
+ *     name: "my-subnetwork",
  *     network: net.id,
  *     ipCidrRange: "10.0.0.0/16",
  *     region: "us-central1",
  *     purpose: "PRIVATE_NAT",
- * }, {
- *     provider: google_beta,
  * });
  * const router = new gcp.compute.Router("router", {
+ *     name: "my-router",
  *     region: subnet.region,
  *     network: net.id,
- * }, {
- *     provider: google_beta,
  * });
- * const hub = new gcp.networkconnectivity.Hub("hub", {description: "vpc hub for inter vpc nat"}, {
- *     provider: google_beta,
+ * const hub = new gcp.networkconnectivity.Hub("hub", {
+ *     name: "my-hub",
+ *     description: "vpc hub for inter vpc nat",
  * });
  * const spoke = new gcp.networkconnectivity.Spoke("spoke", {
+ *     name: "my-spoke",
  *     location: "global",
  *     description: "vpc spoke for inter vpc nat",
  *     hub: hub.id,
@@ -158,10 +180,9 @@ import * as utilities from "../utilities";
  *         ],
  *         uri: net.selfLink,
  *     },
- * }, {
- *     provider: google_beta,
  * });
- * const natType = new gcp.compute.RouterNat("natType", {
+ * const natType = new gcp.compute.RouterNat("nat_type", {
+ *     name: "my-router-nat",
  *     router: router.name,
  *     region: router.region,
  *     sourceSubnetworkIpRangesToNat: "LIST_OF_SUBNETWORKS",
@@ -181,8 +202,6 @@ import * as utilities from "../utilities";
  *             sourceNatActiveRanges: [subnet.selfLink],
  *         },
  *     }],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

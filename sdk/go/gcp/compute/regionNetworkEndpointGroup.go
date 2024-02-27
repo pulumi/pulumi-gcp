@@ -39,19 +39,22 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:     pulumi.String("cloudfunctions-function-example-bucket"),
 //				Location: pulumi.String("US"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			archive, err := storage.NewBucketObject(ctx, "archive", &storage.BucketObjectArgs{
+//				Name:   pulumi.String("index.zip"),
 //				Bucket: bucket.Name,
 //				Source: pulumi.NewFileAsset("path/to/index.zip"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			functionNegFunction, err := cloudfunctions.NewFunction(ctx, "functionNegFunction", &cloudfunctions.FunctionArgs{
+//			functionNegFunction, err := cloudfunctions.NewFunction(ctx, "function_neg", &cloudfunctions.FunctionArgs{
+//				Name:                pulumi.String("function-neg"),
 //				Description:         pulumi.String("My function"),
 //				Runtime:             pulumi.String("nodejs10"),
 //				AvailableMemoryMb:   pulumi.Int(128),
@@ -65,7 +68,8 @@ import (
 //				return err
 //			}
 //			// Cloud Functions Example
-//			_, err = compute.NewRegionNetworkEndpointGroup(ctx, "functionNegRegionNetworkEndpointGroup", &compute.RegionNetworkEndpointGroupArgs{
+//			_, err = compute.NewRegionNetworkEndpointGroup(ctx, "function_neg", &compute.RegionNetworkEndpointGroupArgs{
+//				Name:                pulumi.String("function-neg"),
 //				NetworkEndpointType: pulumi.String("SERVERLESS"),
 //				Region:              pulumi.String("us-central1"),
 //				CloudFunction: &compute.RegionNetworkEndpointGroupCloudFunctionArgs{
@@ -95,7 +99,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cloudrunNegService, err := cloudrun.NewService(ctx, "cloudrunNegService", &cloudrun.ServiceArgs{
+//			cloudrunNegService, err := cloudrun.NewService(ctx, "cloudrun_neg", &cloudrun.ServiceArgs{
+//				Name:     pulumi.String("cloudrun-neg"),
 //				Location: pulumi.String("us-central1"),
 //				Template: &cloudrun.ServiceTemplateArgs{
 //					Spec: &cloudrun.ServiceTemplateSpecArgs{
@@ -117,7 +122,8 @@ import (
 //				return err
 //			}
 //			// Cloud Run Example
-//			_, err = compute.NewRegionNetworkEndpointGroup(ctx, "cloudrunNegRegionNetworkEndpointGroup", &compute.RegionNetworkEndpointGroupArgs{
+//			_, err = compute.NewRegionNetworkEndpointGroup(ctx, "cloudrun_neg", &compute.RegionNetworkEndpointGroupArgs{
+//				Name:                pulumi.String("cloudrun-neg"),
 //				NetworkEndpointType: pulumi.String("SERVERLESS"),
 //				Region:              pulumi.String("us-central1"),
 //				CloudRun: &compute.RegionNetworkEndpointGroupCloudRunArgs{
@@ -150,20 +156,22 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			appengineNegBucket, err := storage.NewBucket(ctx, "appengineNegBucket", &storage.BucketArgs{
+//			appengineNegBucket, err := storage.NewBucket(ctx, "appengine_neg", &storage.BucketArgs{
+//				Name:     pulumi.String("appengine-neg"),
 //				Location: pulumi.String("US"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			appengineNegBucketObject, err := storage.NewBucketObject(ctx, "appengineNegBucketObject", &storage.BucketObjectArgs{
+//			appengineNegBucketObject, err := storage.NewBucketObject(ctx, "appengine_neg", &storage.BucketObjectArgs{
+//				Name:   pulumi.String("hello-world.zip"),
 //				Bucket: appengineNegBucket.Name,
 //				Source: pulumi.NewFileAsset("./test-fixtures/hello-world.zip"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			appengineNegFlexibleAppVersion, err := appengine.NewFlexibleAppVersion(ctx, "appengineNegFlexibleAppVersion", &appengine.FlexibleAppVersionArgs{
+//			appengineNegFlexibleAppVersion, err := appengine.NewFlexibleAppVersion(ctx, "appengine_neg", &appengine.FlexibleAppVersionArgs{
 //				VersionId: pulumi.String("v1"),
 //				Service:   pulumi.String("appengine-network-endpoint-group"),
 //				Runtime:   pulumi.String("nodejs"),
@@ -212,7 +220,8 @@ import (
 //				return err
 //			}
 //			// App Engine Example
-//			_, err = compute.NewRegionNetworkEndpointGroup(ctx, "appengineNegRegionNetworkEndpointGroup", &compute.RegionNetworkEndpointGroupArgs{
+//			_, err = compute.NewRegionNetworkEndpointGroup(ctx, "appengine_neg", &compute.RegionNetworkEndpointGroupArgs{
+//				Name:                pulumi.String("appengine-neg"),
 //				NetworkEndpointType: pulumi.String("SERVERLESS"),
 //				Region:              pulumi.String("us-central1"),
 //				AppEngine: &compute.RegionNetworkEndpointGroupAppEngineArgs{
@@ -242,10 +251,111 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewRegionNetworkEndpointGroup(ctx, "pscNeg", &compute.RegionNetworkEndpointGroupArgs{
+//			_, err := compute.NewRegionNetworkEndpointGroup(ctx, "psc_neg", &compute.RegionNetworkEndpointGroupArgs{
+//				Name:                pulumi.String("psc-neg"),
+//				Region:              pulumi.String("asia-northeast3"),
 //				NetworkEndpointType: pulumi.String("PRIVATE_SERVICE_CONNECT"),
 //				PscTargetService:    pulumi.String("asia-northeast3-cloudkms.googleapis.com"),
-//				Region:              pulumi.String("asia-northeast3"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Region Network Endpoint Group Psc Service Attachment
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name: pulumi.String("psc-network"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("psc-subnetwork"),
+//				IpCidrRange: pulumi.String("10.0.0.0/16"),
+//				Region:      pulumi.String("europe-west4"),
+//				Network:     _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscSubnetwork, err := compute.NewSubnetwork(ctx, "psc_subnetwork", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("psc-subnetwork-nat"),
+//				IpCidrRange: pulumi.String("10.1.0.0/16"),
+//				Region:      pulumi.String("europe-west4"),
+//				Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
+//				Network:     _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//				Name:             pulumi.String("psc-healthcheck"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//				TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegionBackendService, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+//				Name:         pulumi.String("psc-backend"),
+//				Region:       pulumi.String("europe-west4"),
+//				HealthChecks: defaultHealthCheck.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultForwardingRule, err := compute.NewForwardingRule(ctx, "default", &compute.ForwardingRuleArgs{
+//				Name:                pulumi.String("psc-forwarding-rule"),
+//				Region:              pulumi.String("europe-west4"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL"),
+//				BackendService:      defaultRegionBackendService.ID(),
+//				AllPorts:            pulumi.Bool(true),
+//				Network:             _default.Name,
+//				Subnetwork:          defaultSubnetwork.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultServiceAttachment, err := compute.NewServiceAttachment(ctx, "default", &compute.ServiceAttachmentArgs{
+//				Name:                 pulumi.String("psc-service-attachment"),
+//				Region:               pulumi.String("europe-west4"),
+//				Description:          pulumi.String("A service attachment configured with Terraform"),
+//				EnableProxyProtocol:  pulumi.Bool(false),
+//				ConnectionPreference: pulumi.String("ACCEPT_AUTOMATIC"),
+//				NatSubnets: pulumi.StringArray{
+//					pscSubnetwork.SelfLink,
+//				},
+//				TargetService: defaultForwardingRule.SelfLink,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionNetworkEndpointGroup(ctx, "psc_neg_service_attachment", &compute.RegionNetworkEndpointGroupArgs{
+//				Name:                pulumi.String("psc-neg"),
+//				Region:              pulumi.String("europe-west4"),
+//				NetworkEndpointType: pulumi.String("PRIVATE_SERVICE_CONNECT"),
+//				PscTargetService:    defaultServiceAttachment.SelfLink,
+//				Network:             _default.SelfLink,
+//				Subnetwork:          defaultSubnetwork.SelfLink,
 //			})
 //			if err != nil {
 //				return err
@@ -269,11 +379,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "default", nil)
+//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name: pulumi.String("network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewRegionNetworkEndpointGroup(ctx, "regionNetworkEndpointGroupInternetIpPort", &compute.RegionNetworkEndpointGroupArgs{
+//			_, err = compute.NewRegionNetworkEndpointGroup(ctx, "region_network_endpoint_group_internet_ip_port", &compute.RegionNetworkEndpointGroupArgs{
+//				Name:                pulumi.String("ip-port-neg"),
 //				Region:              pulumi.String("us-central1"),
 //				Network:             _default.ID(),
 //				NetworkEndpointType: pulumi.String("INTERNET_IP_PORT"),
@@ -300,11 +413,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "default", nil)
+//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name: pulumi.String("network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewRegionNetworkEndpointGroup(ctx, "regionNetworkEndpointGroupInternetFqdnPort", &compute.RegionNetworkEndpointGroupArgs{
+//			_, err = compute.NewRegionNetworkEndpointGroup(ctx, "region_network_endpoint_group_internet_fqdn_port", &compute.RegionNetworkEndpointGroupArgs{
+//				Name:                pulumi.String("ip-port-neg"),
 //				Region:              pulumi.String("us-central1"),
 //				Network:             _default.ID(),
 //				NetworkEndpointType: pulumi.String("INTERNET_FQDN_PORT"),

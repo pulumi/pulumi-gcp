@@ -31,6 +31,7 @@ import * as utilities from "../utilities";
  *
  * const database = new gcp.firestore.Database("database", {
  *     project: "my-project-name",
+ *     name: "database-id",
  *     locationId: "nam5",
  *     type: "FIRESTORE_NATIVE",
  *     deleteProtectionState: "DELETE_PROTECTION_ENABLED",

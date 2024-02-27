@@ -76,10 +76,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var custom_test = new Network(&#34;custom-test&#34;, NetworkArgs.builder()        
+ *             .name(&#34;test-network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var network_with_private_secondary_ip_ranges = new Subnetwork(&#34;network-with-private-secondary-ip-ranges&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;test-subnetwork&#34;)
  *             .ipCidrRange(&#34;10.2.0.0/16&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(custom_test.id())
@@ -118,10 +120,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var custom_test = new Network(&#34;custom-test&#34;, NetworkArgs.builder()        
+ *             .name(&#34;log-test-network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var subnet_with_logging = new Subnetwork(&#34;subnet-with-logging&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;log-test-subnetwork&#34;)
  *             .ipCidrRange(&#34;10.2.0.0/16&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(custom_test.id())
@@ -146,7 +150,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.Subnetwork;
  * import com.pulumi.gcp.compute.SubnetworkArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -161,20 +164,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var custom_test = new Network(&#34;custom-test&#34;, NetworkArgs.builder()        
+ *             .name(&#34;l7lb-test-network&#34;)
  *             .autoCreateSubnetworks(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var network_for_l7lb = new Subnetwork(&#34;network-for-l7lb&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;l7lb-test-subnetwork&#34;)
  *             .ipCidrRange(&#34;10.0.0.0/22&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .purpose(&#34;REGIONAL_MANAGED_PROXY&#34;)
  *             .role(&#34;ACTIVE&#34;)
  *             .network(custom_test.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -204,10 +205,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var custom_test = new Network(&#34;custom-test&#34;, NetworkArgs.builder()        
+ *             .name(&#34;ipv6-test-network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var subnetwork_ipv6 = new Subnetwork(&#34;subnetwork-ipv6&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;ipv6-test-subnetwork&#34;)
  *             .ipCidrRange(&#34;10.0.0.0/22&#34;)
  *             .region(&#34;us-west2&#34;)
  *             .stackType(&#34;IPV4_IPV6&#34;)
@@ -243,11 +246,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var custom_test = new Network(&#34;custom-test&#34;, NetworkArgs.builder()        
+ *             .name(&#34;internal-ipv6-test-network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .enableUlaInternalIpv6(true)
  *             .build());
  * 
  *         var subnetwork_internal_ipv6 = new Subnetwork(&#34;subnetwork-internal-ipv6&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;internal-ipv6-test-subnetwork&#34;)
  *             .ipCidrRange(&#34;10.0.0.0/22&#34;)
  *             .region(&#34;us-west2&#34;)
  *             .stackType(&#34;IPV4_IPV6&#34;)
@@ -269,7 +274,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.Subnetwork;
  * import com.pulumi.gcp.compute.SubnetworkArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -284,19 +288,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var custom_test = new Network(&#34;custom-test&#34;, NetworkArgs.builder()        
+ *             .name(&#34;subnet-purpose-test-network&#34;)
  *             .autoCreateSubnetworks(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var subnetwork_purpose_private_nat = new Subnetwork(&#34;subnetwork-purpose-private-nat&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;subnet-purpose-test-subnetwork&#34;)
  *             .region(&#34;us-west2&#34;)
  *             .ipCidrRange(&#34;192.168.1.0/24&#34;)
  *             .purpose(&#34;PRIVATE_NAT&#34;)
  *             .network(custom_test.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -312,7 +314,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.Subnetwork;
  * import com.pulumi.gcp.compute.SubnetworkArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -327,19 +328,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var net_cidr_overlap = new Network(&#34;net-cidr-overlap&#34;, NetworkArgs.builder()        
+ *             .name(&#34;net-cidr-overlap&#34;)
  *             .autoCreateSubnetworks(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var subnetwork_cidr_overlap = new Subnetwork(&#34;subnetwork-cidr-overlap&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;subnet-cidr-overlap&#34;)
  *             .region(&#34;us-west2&#34;)
  *             .ipCidrRange(&#34;192.168.1.0/24&#34;)
  *             .allowSubnetCidrRoutesOverlap(true)
  *             .network(net_cidr_overlap.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

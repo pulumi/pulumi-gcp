@@ -77,6 +77,7 @@ public final class TpuFunctions {
      *         final var available = TpuFunctions.getTensorflowVersions();
      * 
      *         var tpu = new Node(&#34;tpu&#34;, NodeArgs.builder()        
+     *             .name(&#34;test-tpu&#34;)
      *             .zone(&#34;us-central1-b&#34;)
      *             .acceleratorType(&#34;v3-8&#34;)
      *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
@@ -148,6 +149,7 @@ public final class TpuFunctions {
      *         final var available = TpuFunctions.getTensorflowVersions();
      * 
      *         var tpu = new Node(&#34;tpu&#34;, NodeArgs.builder()        
+     *             .name(&#34;test-tpu&#34;)
      *             .zone(&#34;us-central1-b&#34;)
      *             .acceleratorType(&#34;v3-8&#34;)
      *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
@@ -219,6 +221,7 @@ public final class TpuFunctions {
      *         final var available = TpuFunctions.getTensorflowVersions();
      * 
      *         var tpu = new Node(&#34;tpu&#34;, NodeArgs.builder()        
+     *             .name(&#34;test-tpu&#34;)
      *             .zone(&#34;us-central1-b&#34;)
      *             .acceleratorType(&#34;v3-8&#34;)
      *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
@@ -290,6 +293,7 @@ public final class TpuFunctions {
      *         final var available = TpuFunctions.getTensorflowVersions();
      * 
      *         var tpu = new Node(&#34;tpu&#34;, NodeArgs.builder()        
+     *             .name(&#34;test-tpu&#34;)
      *             .zone(&#34;us-central1-b&#34;)
      *             .acceleratorType(&#34;v3-8&#34;)
      *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
@@ -361,6 +365,7 @@ public final class TpuFunctions {
      *         final var available = TpuFunctions.getTensorflowVersions();
      * 
      *         var tpu = new Node(&#34;tpu&#34;, NodeArgs.builder()        
+     *             .name(&#34;test-tpu&#34;)
      *             .zone(&#34;us-central1-b&#34;)
      *             .acceleratorType(&#34;v3-8&#34;)
      *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
@@ -432,6 +437,7 @@ public final class TpuFunctions {
      *         final var available = TpuFunctions.getTensorflowVersions();
      * 
      *         var tpu = new Node(&#34;tpu&#34;, NodeArgs.builder()        
+     *             .name(&#34;test-tpu&#34;)
      *             .zone(&#34;us-central1-b&#34;)
      *             .acceleratorType(&#34;v3-8&#34;)
      *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
@@ -501,14 +507,15 @@ public final class TpuFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableV2AcceleratorTypes = TpuFunctions.getV2AcceleratorTypes();
+     *         final var available = TpuFunctions.getV2AcceleratorTypes();
      * 
-     *         final var availableV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
+     *         final var availableGetV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
      * 
      *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
+     *             .name(&#34;test-tpu&#34;)
      *             .zone(&#34;us-central1-b&#34;)
-     *             .runtimeVersion(availableV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
-     *             .acceleratorType(availableV2AcceleratorTypes.applyValue(getV2AcceleratorTypesResult -&gt; getV2AcceleratorTypesResult.types()[0]))
+     *             .runtimeVersion(availableGetV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
+     *             .acceleratorType(available.applyValue(getV2AcceleratorTypesResult -&gt; getV2AcceleratorTypesResult.types()[0]))
      *             .build());
      * 
      *     }
@@ -574,14 +581,15 @@ public final class TpuFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableV2AcceleratorTypes = TpuFunctions.getV2AcceleratorTypes();
+     *         final var available = TpuFunctions.getV2AcceleratorTypes();
      * 
-     *         final var availableV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
+     *         final var availableGetV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
      * 
      *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
+     *             .name(&#34;test-tpu&#34;)
      *             .zone(&#34;us-central1-b&#34;)
-     *             .runtimeVersion(availableV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
-     *             .acceleratorType(availableV2AcceleratorTypes.applyValue(getV2AcceleratorTypesResult -&gt; getV2AcceleratorTypesResult.types()[0]))
+     *             .runtimeVersion(availableGetV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
+     *             .acceleratorType(available.applyValue(getV2AcceleratorTypesResult -&gt; getV2AcceleratorTypesResult.types()[0]))
      *             .build());
      * 
      *     }
@@ -647,14 +655,15 @@ public final class TpuFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableV2AcceleratorTypes = TpuFunctions.getV2AcceleratorTypes();
+     *         final var available = TpuFunctions.getV2AcceleratorTypes();
      * 
-     *         final var availableV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
+     *         final var availableGetV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
      * 
      *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
+     *             .name(&#34;test-tpu&#34;)
      *             .zone(&#34;us-central1-b&#34;)
-     *             .runtimeVersion(availableV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
-     *             .acceleratorType(availableV2AcceleratorTypes.applyValue(getV2AcceleratorTypesResult -&gt; getV2AcceleratorTypesResult.types()[0]))
+     *             .runtimeVersion(availableGetV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
+     *             .acceleratorType(available.applyValue(getV2AcceleratorTypesResult -&gt; getV2AcceleratorTypesResult.types()[0]))
      *             .build());
      * 
      *     }
@@ -720,14 +729,15 @@ public final class TpuFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableV2AcceleratorTypes = TpuFunctions.getV2AcceleratorTypes();
+     *         final var available = TpuFunctions.getV2AcceleratorTypes();
      * 
-     *         final var availableV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
+     *         final var availableGetV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
      * 
      *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
+     *             .name(&#34;test-tpu&#34;)
      *             .zone(&#34;us-central1-b&#34;)
-     *             .runtimeVersion(availableV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
-     *             .acceleratorType(availableV2AcceleratorTypes.applyValue(getV2AcceleratorTypesResult -&gt; getV2AcceleratorTypesResult.types()[0]))
+     *             .runtimeVersion(availableGetV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
+     *             .acceleratorType(available.applyValue(getV2AcceleratorTypesResult -&gt; getV2AcceleratorTypesResult.types()[0]))
      *             .build());
      * 
      *     }
@@ -793,14 +803,15 @@ public final class TpuFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableV2AcceleratorTypes = TpuFunctions.getV2AcceleratorTypes();
+     *         final var available = TpuFunctions.getV2AcceleratorTypes();
      * 
-     *         final var availableV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
+     *         final var availableGetV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
      * 
      *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
+     *             .name(&#34;test-tpu&#34;)
      *             .zone(&#34;us-central1-b&#34;)
-     *             .runtimeVersion(availableV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
-     *             .acceleratorType(availableV2AcceleratorTypes.applyValue(getV2AcceleratorTypesResult -&gt; getV2AcceleratorTypesResult.types()[0]))
+     *             .runtimeVersion(availableGetV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
+     *             .acceleratorType(available.applyValue(getV2AcceleratorTypesResult -&gt; getV2AcceleratorTypesResult.types()[0]))
      *             .build());
      * 
      *     }
@@ -866,14 +877,15 @@ public final class TpuFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableV2AcceleratorTypes = TpuFunctions.getV2AcceleratorTypes();
+     *         final var available = TpuFunctions.getV2AcceleratorTypes();
      * 
-     *         final var availableV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
+     *         final var availableGetV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
      * 
      *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
+     *             .name(&#34;test-tpu&#34;)
      *             .zone(&#34;us-central1-b&#34;)
-     *             .runtimeVersion(availableV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
-     *             .acceleratorType(availableV2AcceleratorTypes.applyValue(getV2AcceleratorTypesResult -&gt; getV2AcceleratorTypesResult.types()[0]))
+     *             .runtimeVersion(availableGetV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
+     *             .acceleratorType(available.applyValue(getV2AcceleratorTypesResult -&gt; getV2AcceleratorTypesResult.types()[0]))
      *             .build());
      * 
      *     }
@@ -941,6 +953,7 @@ public final class TpuFunctions {
      *         final var available = TpuFunctions.getV2RuntimeVersions();
      * 
      *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
+     *             .name(&#34;test-tpu&#34;)
      *             .zone(&#34;us-central1-b&#34;)
      *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
      *             .build());
@@ -1010,6 +1023,7 @@ public final class TpuFunctions {
      *         final var available = TpuFunctions.getV2RuntimeVersions();
      * 
      *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
+     *             .name(&#34;test-tpu&#34;)
      *             .zone(&#34;us-central1-b&#34;)
      *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
      *             .build());
@@ -1079,6 +1093,7 @@ public final class TpuFunctions {
      *         final var available = TpuFunctions.getV2RuntimeVersions();
      * 
      *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
+     *             .name(&#34;test-tpu&#34;)
      *             .zone(&#34;us-central1-b&#34;)
      *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
      *             .build());
@@ -1148,6 +1163,7 @@ public final class TpuFunctions {
      *         final var available = TpuFunctions.getV2RuntimeVersions();
      * 
      *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
+     *             .name(&#34;test-tpu&#34;)
      *             .zone(&#34;us-central1-b&#34;)
      *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
      *             .build());
@@ -1217,6 +1233,7 @@ public final class TpuFunctions {
      *         final var available = TpuFunctions.getV2RuntimeVersions();
      * 
      *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
+     *             .name(&#34;test-tpu&#34;)
      *             .zone(&#34;us-central1-b&#34;)
      *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
      *             .build());
@@ -1286,6 +1303,7 @@ public final class TpuFunctions {
      *         final var available = TpuFunctions.getV2RuntimeVersions();
      * 
      *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
+     *             .name(&#34;test-tpu&#34;)
      *             .zone(&#34;us-central1-b&#34;)
      *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
      *             .build());

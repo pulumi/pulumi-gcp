@@ -995,16 +995,20 @@ class InterconnectAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        foobar_network = gcp.compute.Network("foobarNetwork", auto_create_subnetworks=False)
-        foobar_router = gcp.compute.Router("foobarRouter",
+        foobar_network = gcp.compute.Network("foobar",
+            name="network-1",
+            auto_create_subnetworks=False)
+        foobar = gcp.compute.Router("foobar",
+            name="router-1",
             network=foobar_network.name,
             bgp=gcp.compute.RouterBgpArgs(
                 asn=16550,
             ))
-        on_prem = gcp.compute.InterconnectAttachment("onPrem",
+        on_prem = gcp.compute.InterconnectAttachment("on_prem",
+            name="on-prem-attachment",
             edge_availability_domain="AVAILABILITY_DOMAIN_1",
             type="PARTNER",
-            router=foobar_router.id,
+            router=foobar.id,
             mtu="1500")
         ```
         ### Compute Interconnect Attachment Ipsec Encryption
@@ -1013,20 +1017,25 @@ class InterconnectAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network = gcp.compute.Network("network", auto_create_subnetworks=False)
+        network = gcp.compute.Network("network",
+            name="test-network",
+            auto_create_subnetworks=False)
         address = gcp.compute.Address("address",
+            name="test-address",
             address_type="INTERNAL",
             purpose="IPSEC_INTERCONNECT",
             address="192.168.1.0",
             prefix_length=29,
             network=network.self_link)
         router = gcp.compute.Router("router",
+            name="test-router",
             network=network.name,
             encrypted_interconnect_router=True,
             bgp=gcp.compute.RouterBgpArgs(
                 asn=16550,
             ))
         ipsec_encrypted_interconnect_attachment = gcp.compute.InterconnectAttachment("ipsec-encrypted-interconnect-attachment",
+            name="test-interconnect-attachment",
             edge_availability_domain="AVAILABILITY_DOMAIN_1",
             type="PARTNER",
             router=router.id,
@@ -1165,16 +1174,20 @@ class InterconnectAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        foobar_network = gcp.compute.Network("foobarNetwork", auto_create_subnetworks=False)
-        foobar_router = gcp.compute.Router("foobarRouter",
+        foobar_network = gcp.compute.Network("foobar",
+            name="network-1",
+            auto_create_subnetworks=False)
+        foobar = gcp.compute.Router("foobar",
+            name="router-1",
             network=foobar_network.name,
             bgp=gcp.compute.RouterBgpArgs(
                 asn=16550,
             ))
-        on_prem = gcp.compute.InterconnectAttachment("onPrem",
+        on_prem = gcp.compute.InterconnectAttachment("on_prem",
+            name="on-prem-attachment",
             edge_availability_domain="AVAILABILITY_DOMAIN_1",
             type="PARTNER",
-            router=foobar_router.id,
+            router=foobar.id,
             mtu="1500")
         ```
         ### Compute Interconnect Attachment Ipsec Encryption
@@ -1183,20 +1196,25 @@ class InterconnectAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network = gcp.compute.Network("network", auto_create_subnetworks=False)
+        network = gcp.compute.Network("network",
+            name="test-network",
+            auto_create_subnetworks=False)
         address = gcp.compute.Address("address",
+            name="test-address",
             address_type="INTERNAL",
             purpose="IPSEC_INTERCONNECT",
             address="192.168.1.0",
             prefix_length=29,
             network=network.self_link)
         router = gcp.compute.Router("router",
+            name="test-router",
             network=network.name,
             encrypted_interconnect_router=True,
             bgp=gcp.compute.RouterBgpArgs(
                 asn=16550,
             ))
         ipsec_encrypted_interconnect_attachment = gcp.compute.InterconnectAttachment("ipsec-encrypted-interconnect-attachment",
+            name="test-interconnect-attachment",
             edge_availability_domain="AVAILABILITY_DOMAIN_1",
             type="PARTNER",
             router=router.id,

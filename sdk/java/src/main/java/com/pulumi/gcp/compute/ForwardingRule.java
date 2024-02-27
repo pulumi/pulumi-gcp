@@ -31,7 +31,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * ### Internal Http Lb With Mig Backend
- * 
  * ```java
  * package generated_program;
  * 
@@ -69,7 +68,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -84,46 +82,43 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var ilbNetwork = new Network(&#34;ilbNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;l7-ilb-network&#34;)
  *             .autoCreateSubnetworks(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var proxySubnet = new Subnetwork(&#34;proxySubnet&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;l7-ilb-proxy-subnet&#34;)
  *             .ipCidrRange(&#34;10.0.0.0/24&#34;)
  *             .region(&#34;europe-west1&#34;)
  *             .purpose(&#34;REGIONAL_MANAGED_PROXY&#34;)
  *             .role(&#34;ACTIVE&#34;)
  *             .network(ilbNetwork.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var ilbSubnet = new Subnetwork(&#34;ilbSubnet&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;l7-ilb-subnet&#34;)
  *             .ipCidrRange(&#34;10.0.1.0/24&#34;)
  *             .region(&#34;europe-west1&#34;)
  *             .network(ilbNetwork.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultRegionHealthCheck = new RegionHealthCheck(&#34;defaultRegionHealthCheck&#34;, RegionHealthCheckArgs.builder()        
+ *             .name(&#34;l7-ilb-hc&#34;)
  *             .region(&#34;europe-west1&#34;)
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
  *                 .portSpecification(&#34;USE_SERVING_PORT&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var instanceTemplate = new InstanceTemplate(&#34;instanceTemplate&#34;, InstanceTemplateArgs.builder()        
- *             .machineType(&#34;e2-small&#34;)
- *             .tags(&#34;http-server&#34;)
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
+ *                 .accessConfigs()
  *                 .network(ilbNetwork.id())
  *                 .subnetwork(ilbSubnet.id())
- *                 .accessConfigs()
  *                 .build())
+ *             .name(&#34;l7-ilb-mig-template&#34;)
+ *             .machineType(&#34;e2-small&#34;)
+ *             .tags(&#34;http-server&#34;)
  *             .disks(InstanceTemplateDiskArgs.builder()
  *                 .sourceImage(&#34;debian-cloud/debian-10&#34;)
  *                 .autoDelete(true)
@@ -149,11 +144,10 @@ import javax.annotation.Nullable;
  * &lt;/pre&gt;
  * EOF
  *             &#34;&#34;&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var mig = new RegionInstanceGroupManager(&#34;mig&#34;, RegionInstanceGroupManagerArgs.builder()        
+ *             .name(&#34;l7-ilb-mig1&#34;)
  *             .region(&#34;europe-west1&#34;)
  *             .versions(RegionInstanceGroupManagerVersionArgs.builder()
  *                 .instanceTemplate(instanceTemplate.id())
@@ -161,11 +155,10 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .baseInstanceName(&#34;vm&#34;)
  *             .targetSize(2)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultRegionBackendService = new RegionBackendService(&#34;defaultRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
+ *             .name(&#34;l7-ilb-backend-subnet&#34;)
  *             .region(&#34;europe-west1&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
@@ -176,39 +169,34 @@ import javax.annotation.Nullable;
  *                 .balancingMode(&#34;UTILIZATION&#34;)
  *                 .capacityScaler(1)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultRegionUrlMap = new RegionUrlMap(&#34;defaultRegionUrlMap&#34;, RegionUrlMapArgs.builder()        
+ *             .name(&#34;l7-ilb-regional-url-map&#34;)
  *             .region(&#34;europe-west1&#34;)
  *             .defaultService(defaultRegionBackendService.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
- *         var defaultRegionTargetHttpProxy = new RegionTargetHttpProxy(&#34;defaultRegionTargetHttpProxy&#34;, RegionTargetHttpProxyArgs.builder()        
+ *         var default_ = new RegionTargetHttpProxy(&#34;default&#34;, RegionTargetHttpProxyArgs.builder()        
+ *             .name(&#34;l7-ilb-target-http-proxy&#34;)
  *             .region(&#34;europe-west1&#34;)
  *             .urlMap(defaultRegionUrlMap.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var googleComputeForwardingRule = new ForwardingRule(&#34;googleComputeForwardingRule&#34;, ForwardingRuleArgs.builder()        
+ *             .name(&#34;l7-ilb-forwarding-rule&#34;)
  *             .region(&#34;europe-west1&#34;)
  *             .ipProtocol(&#34;TCP&#34;)
  *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
  *             .portRange(&#34;80&#34;)
- *             .target(defaultRegionTargetHttpProxy.id())
+ *             .target(default_.id())
  *             .network(ilbNetwork.id())
  *             .subnetwork(ilbSubnet.id())
  *             .networkTier(&#34;PREMIUM&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .dependsOn(proxySubnet)
- *                 .build());
+ *             .build());
  * 
  *         var fw_iap = new Firewall(&#34;fw-iap&#34;, FirewallArgs.builder()        
+ *             .name(&#34;l7-ilb-fw-allow-iap-hc&#34;)
  *             .direction(&#34;INGRESS&#34;)
  *             .network(ilbNetwork.id())
  *             .sourceRanges(            
@@ -218,11 +206,10 @@ import javax.annotation.Nullable;
  *             .allows(FirewallAllowArgs.builder()
  *                 .protocol(&#34;tcp&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var fw_ilb_to_backends = new Firewall(&#34;fw-ilb-to-backends&#34;, FirewallArgs.builder()        
+ *             .name(&#34;l7-ilb-fw-allow-ilb-to-backends&#34;)
  *             .direction(&#34;INGRESS&#34;)
  *             .network(ilbNetwork.id())
  *             .sourceRanges(&#34;10.0.0.0/24&#34;)
@@ -234,11 +221,10 @@ import javax.annotation.Nullable;
  *                     &#34;443&#34;,
  *                     &#34;8080&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var vm_test = new Instance(&#34;vm-test&#34;, InstanceArgs.builder()        
+ *             .name(&#34;l7-ilb-test-vm&#34;)
  *             .zone(&#34;europe-west1-b&#34;)
  *             .machineType(&#34;e2-small&#34;)
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
@@ -250,15 +236,12 @@ import javax.annotation.Nullable;
  *                     .image(&#34;debian-cloud/debian-10&#34;)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
  * ```
  * ### Internal Tcp Udp Lb With Mig Backend
- * 
  * ```java
  * package generated_program;
  * 
@@ -292,7 +275,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -307,38 +289,36 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var ilbNetwork = new Network(&#34;ilbNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;l4-ilb-network&#34;)
  *             .autoCreateSubnetworks(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var ilbSubnet = new Subnetwork(&#34;ilbSubnet&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;l4-ilb-subnet&#34;)
  *             .ipCidrRange(&#34;10.0.1.0/24&#34;)
  *             .region(&#34;europe-west1&#34;)
  *             .network(ilbNetwork.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultRegionHealthCheck = new RegionHealthCheck(&#34;defaultRegionHealthCheck&#34;, RegionHealthCheckArgs.builder()        
+ *             .name(&#34;l4-ilb-hc&#34;)
  *             .region(&#34;europe-west1&#34;)
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
  *                 .port(&#34;80&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var instanceTemplate = new InstanceTemplate(&#34;instanceTemplate&#34;, InstanceTemplateArgs.builder()        
+ *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
+ *                 .accessConfigs()
+ *                 .network(ilbNetwork.id())
+ *                 .subnetwork(ilbSubnet.id())
+ *                 .build())
+ *             .name(&#34;l4-ilb-mig-template&#34;)
  *             .machineType(&#34;e2-small&#34;)
  *             .tags(            
  *                 &#34;allow-ssh&#34;,
  *                 &#34;allow-health-check&#34;)
- *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
- *                 .network(ilbNetwork.id())
- *                 .subnetwork(ilbSubnet.id())
- *                 .accessConfigs()
- *                 .build())
  *             .disks(InstanceTemplateDiskArgs.builder()
  *                 .sourceImage(&#34;debian-cloud/debian-10&#34;)
  *                 .autoDelete(true)
@@ -364,11 +344,10 @@ import javax.annotation.Nullable;
  * &lt;/pre&gt;
  * EOF
  *             &#34;&#34;&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var mig = new RegionInstanceGroupManager(&#34;mig&#34;, RegionInstanceGroupManagerArgs.builder()        
+ *             .name(&#34;l4-ilb-mig1&#34;)
  *             .region(&#34;europe-west1&#34;)
  *             .versions(RegionInstanceGroupManagerVersionArgs.builder()
  *                 .instanceTemplate(instanceTemplate.id())
@@ -376,11 +355,10 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .baseInstanceName(&#34;vm&#34;)
  *             .targetSize(2)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
- *         var defaultRegionBackendService = new RegionBackendService(&#34;defaultRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
+ *         var default_ = new RegionBackendService(&#34;default&#34;, RegionBackendServiceArgs.builder()        
+ *             .name(&#34;l4-ilb-backend-subnet&#34;)
  *             .region(&#34;europe-west1&#34;)
  *             .protocol(&#34;TCP&#34;)
  *             .loadBalancingScheme(&#34;INTERNAL&#34;)
@@ -389,12 +367,11 @@ import javax.annotation.Nullable;
  *                 .group(mig.instanceGroup())
  *                 .balancingMode(&#34;CONNECTION&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var googleComputeForwardingRule = new ForwardingRule(&#34;googleComputeForwardingRule&#34;, ForwardingRuleArgs.builder()        
- *             .backendService(defaultRegionBackendService.id())
+ *             .name(&#34;l4-ilb-forwarding-rule&#34;)
+ *             .backendService(default_.id())
  *             .region(&#34;europe-west1&#34;)
  *             .ipProtocol(&#34;TCP&#34;)
  *             .loadBalancingScheme(&#34;INTERNAL&#34;)
@@ -402,11 +379,10 @@ import javax.annotation.Nullable;
  *             .allowGlobalAccess(true)
  *             .network(ilbNetwork.id())
  *             .subnetwork(ilbSubnet.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var fwHc = new Firewall(&#34;fwHc&#34;, FirewallArgs.builder()        
+ *             .name(&#34;l4-ilb-fw-allow-hc&#34;)
  *             .direction(&#34;INGRESS&#34;)
  *             .network(ilbNetwork.id())
  *             .sourceRanges(            
@@ -417,11 +393,10 @@ import javax.annotation.Nullable;
  *                 .protocol(&#34;tcp&#34;)
  *                 .build())
  *             .targetTags(&#34;allow-health-check&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var fwIlbToBackends = new Firewall(&#34;fwIlbToBackends&#34;, FirewallArgs.builder()        
+ *             .name(&#34;l4-ilb-fw-allow-ilb-to-backends&#34;)
  *             .direction(&#34;INGRESS&#34;)
  *             .network(ilbNetwork.id())
  *             .sourceRanges(&#34;10.0.1.0/24&#34;)
@@ -435,11 +410,10 @@ import javax.annotation.Nullable;
  *                 FirewallAllowArgs.builder()
  *                     .protocol(&#34;icmp&#34;)
  *                     .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var fwIlbSsh = new Firewall(&#34;fwIlbSsh&#34;, FirewallArgs.builder()        
+ *             .name(&#34;l4-ilb-fw-ssh&#34;)
  *             .direction(&#34;INGRESS&#34;)
  *             .network(ilbNetwork.id())
  *             .allows(FirewallAllowArgs.builder()
@@ -448,11 +422,10 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .targetTags(&#34;allow-ssh&#34;)
  *             .sourceRanges(&#34;0.0.0.0/0&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var vmTest = new Instance(&#34;vmTest&#34;, InstanceArgs.builder()        
+ *             .name(&#34;l4-ilb-test-vm&#34;)
  *             .zone(&#34;europe-west1-b&#34;)
  *             .machineType(&#34;e2-small&#34;)
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
@@ -464,15 +437,12 @@ import javax.annotation.Nullable;
  *                     .image(&#34;debian-cloud/debian-10&#34;)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
  * ```
  * ### Forwarding Rule Externallb
- * 
  * ```java
  * package generated_program;
  * 
@@ -486,7 +456,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
  * import com.pulumi.gcp.compute.ForwardingRule;
  * import com.pulumi.gcp.compute.ForwardingRuleArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -501,37 +470,33 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var hc = new RegionHealthCheck(&#34;hc&#34;, RegionHealthCheckArgs.builder()        
+ *             .name(&#34;check-website-backend&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .region(&#34;us-central1&#34;)
  *             .tcpHealthCheck(RegionHealthCheckTcpHealthCheckArgs.builder()
  *                 .port(&#34;80&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var backend = new RegionBackendService(&#34;backend&#34;, RegionBackendServiceArgs.builder()        
+ *             .name(&#34;website-backend&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .loadBalancingScheme(&#34;EXTERNAL&#34;)
  *             .healthChecks(hc.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var default_ = new ForwardingRule(&#34;default&#34;, ForwardingRuleArgs.builder()        
+ *             .name(&#34;website-forwarding-rule&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .portRange(80)
  *             .backendService(backend.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
  * ```
  * ### Forwarding Rule Global Internallb
- * 
  * ```java
  * package generated_program;
  * 
@@ -563,6 +528,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var hc = new HealthCheck(&#34;hc&#34;, HealthCheckArgs.builder()        
+ *             .name(&#34;check-website-backend&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
@@ -571,21 +537,25 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var backend = new RegionBackendService(&#34;backend&#34;, RegionBackendServiceArgs.builder()        
+ *             .name(&#34;website-backend&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .healthChecks(hc.id())
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;website-net&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;website-net&#34;)
  *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultForwardingRule = new ForwardingRule(&#34;defaultForwardingRule&#34;, ForwardingRuleArgs.builder()        
+ *         var default_ = new ForwardingRule(&#34;default&#34;, ForwardingRuleArgs.builder()        
+ *             .name(&#34;website-forwarding-rule&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .loadBalancingScheme(&#34;INTERNAL&#34;)
  *             .backendService(backend.id())
@@ -606,6 +576,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.TargetPool;
+ * import com.pulumi.gcp.compute.TargetPoolArgs;
  * import com.pulumi.gcp.compute.ForwardingRule;
  * import com.pulumi.gcp.compute.ForwardingRuleArgs;
  * import java.util.List;
@@ -621,9 +592,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultTargetPool = new TargetPool(&#34;defaultTargetPool&#34;);
+ *         var defaultTargetPool = new TargetPool(&#34;defaultTargetPool&#34;, TargetPoolArgs.builder()        
+ *             .name(&#34;website-target-pool&#34;)
+ *             .build());
  * 
- *         var defaultForwardingRule = new ForwardingRule(&#34;defaultForwardingRule&#34;, ForwardingRuleArgs.builder()        
+ *         var default_ = new ForwardingRule(&#34;default&#34;, ForwardingRuleArgs.builder()        
+ *             .name(&#34;website-forwarding-rule&#34;)
  *             .target(defaultTargetPool.id())
  *             .portRange(&#34;80&#34;)
  *             .build());
@@ -632,7 +606,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Forwarding Rule L3 Default
- * 
  * ```java
  * package generated_program;
  * 
@@ -646,7 +619,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
  * import com.pulumi.gcp.compute.ForwardingRule;
  * import com.pulumi.gcp.compute.ForwardingRuleArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -661,36 +633,32 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var healthCheck = new RegionHealthCheck(&#34;healthCheck&#34;, RegionHealthCheckArgs.builder()        
+ *             .name(&#34;health-check&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .tcpHealthCheck(RegionHealthCheckTcpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var service = new RegionBackendService(&#34;service&#34;, RegionBackendServiceArgs.builder()        
  *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;service&#34;)
  *             .healthChecks(healthCheck.id())
  *             .protocol(&#34;UNSPECIFIED&#34;)
  *             .loadBalancingScheme(&#34;EXTERNAL&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var fwdRule = new ForwardingRule(&#34;fwdRule&#34;, ForwardingRuleArgs.builder()        
+ *             .name(&#34;l3-forwarding-rule&#34;)
  *             .backendService(service.id())
  *             .ipProtocol(&#34;L3_DEFAULT&#34;)
  *             .allPorts(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
  * ```
  * ### Forwarding Rule Internallb
- * 
  * ```java
  * package generated_program;
  * 
@@ -722,6 +690,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var hc = new HealthCheck(&#34;hc&#34;, HealthCheckArgs.builder()        
+ *             .name(&#34;check-website-backend&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
@@ -730,21 +699,25 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var backend = new RegionBackendService(&#34;backend&#34;, RegionBackendServiceArgs.builder()        
+ *             .name(&#34;website-backend&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .healthChecks(hc.id())
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;website-net&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;website-net&#34;)
  *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultForwardingRule = new ForwardingRule(&#34;defaultForwardingRule&#34;, ForwardingRuleArgs.builder()        
+ *         var default_ = new ForwardingRule(&#34;default&#34;, ForwardingRuleArgs.builder()        
+ *             .name(&#34;website-forwarding-rule&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .loadBalancingScheme(&#34;INTERNAL&#34;)
  *             .backendService(backend.id())
@@ -758,7 +731,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Forwarding Rule Http Lb
- * 
  * ```java
  * package generated_program;
  * 
@@ -778,9 +750,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionInstanceGroupManager;
  * import com.pulumi.gcp.compute.RegionInstanceGroupManagerArgs;
  * import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerVersionArgs;
- * import com.pulumi.gcp.compute.Firewall;
- * import com.pulumi.gcp.compute.FirewallArgs;
- * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
  * import com.pulumi.gcp.compute.RegionHealthCheck;
  * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
  * import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
@@ -793,7 +762,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionTargetHttpProxyArgs;
  * import com.pulumi.gcp.compute.ForwardingRule;
  * import com.pulumi.gcp.compute.ForwardingRuleArgs;
- * import com.pulumi.resources.CustomResourceOptions;
+ * import com.pulumi.gcp.compute.Firewall;
+ * import com.pulumi.gcp.compute.FirewallArgs;
+ * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -813,21 +784,20 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;website-net&#34;)
  *             .autoCreateSubnetworks(false)
  *             .routingMode(&#34;REGIONAL&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;website-net-default&#34;)
  *             .ipCidrRange(&#34;10.1.2.0/24&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(defaultNetwork.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var instanceTemplate = new InstanceTemplate(&#34;instanceTemplate&#34;, InstanceTemplateArgs.builder()        
+ *             .name(&#34;template-website-backend&#34;)
  *             .machineType(&#34;e2-medium&#34;)
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
  *                 .network(defaultNetwork.id())
@@ -841,23 +811,67 @@ import javax.annotation.Nullable;
  *             .tags(            
  *                 &#34;allow-ssh&#34;,
  *                 &#34;load-balanced-backend&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var rigm = new RegionInstanceGroupManager(&#34;rigm&#34;, RegionInstanceGroupManagerArgs.builder()        
  *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;website-rigm&#34;)
  *             .versions(RegionInstanceGroupManagerVersionArgs.builder()
  *                 .instanceTemplate(instanceTemplate.id())
  *                 .name(&#34;primary&#34;)
  *                 .build())
  *             .baseInstanceName(&#34;internal-glb&#34;)
  *             .targetSize(1)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
+ * 
+ *         var defaultRegionHealthCheck = new RegionHealthCheck(&#34;defaultRegionHealthCheck&#34;, RegionHealthCheckArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;website-hc&#34;)
+ *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
+ *                 .portSpecification(&#34;USE_SERVING_PORT&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultRegionBackendService = new RegionBackendService(&#34;defaultRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
+ *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *             .backends(RegionBackendServiceBackendArgs.builder()
+ *                 .group(rigm.instanceGroup())
+ *                 .balancingMode(&#34;UTILIZATION&#34;)
+ *                 .capacityScaler(1)
+ *                 .build())
+ *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;website-backend&#34;)
+ *             .protocol(&#34;HTTP&#34;)
+ *             .timeoutSec(10)
+ *             .healthChecks(defaultRegionHealthCheck.id())
+ *             .build());
+ * 
+ *         var defaultRegionUrlMap = new RegionUrlMap(&#34;defaultRegionUrlMap&#34;, RegionUrlMapArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;website-map&#34;)
+ *             .defaultService(defaultRegionBackendService.id())
+ *             .build());
+ * 
+ *         var defaultRegionTargetHttpProxy = new RegionTargetHttpProxy(&#34;defaultRegionTargetHttpProxy&#34;, RegionTargetHttpProxyArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;website-proxy&#34;)
+ *             .urlMap(defaultRegionUrlMap.id())
+ *             .build());
+ * 
+ *         var default_ = new ForwardingRule(&#34;default&#34;, ForwardingRuleArgs.builder()        
+ *             .name(&#34;website-forwarding-rule&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .ipProtocol(&#34;TCP&#34;)
+ *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *             .portRange(&#34;80&#34;)
+ *             .target(defaultRegionTargetHttpProxy.id())
+ *             .network(defaultNetwork.id())
+ *             .subnetwork(defaultSubnetwork.id())
+ *             .networkTier(&#34;PREMIUM&#34;)
+ *             .build());
  * 
  *         var fw1 = new Firewall(&#34;fw1&#34;, FirewallArgs.builder()        
+ *             .name(&#34;website-fw-1&#34;)
  *             .network(defaultNetwork.id())
  *             .sourceRanges(&#34;10.1.2.0/24&#34;)
  *             .allows(            
@@ -871,11 +885,10 @@ import javax.annotation.Nullable;
  *                     .protocol(&#34;icmp&#34;)
  *                     .build())
  *             .direction(&#34;INGRESS&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var fw2 = new Firewall(&#34;fw2&#34;, FirewallArgs.builder()        
+ *             .name(&#34;website-fw-2&#34;)
  *             .network(defaultNetwork.id())
  *             .sourceRanges(&#34;0.0.0.0/0&#34;)
  *             .allows(FirewallAllowArgs.builder()
@@ -884,12 +897,10 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .targetTags(&#34;allow-ssh&#34;)
  *             .direction(&#34;INGRESS&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .dependsOn(fw1)
- *                 .build());
+ *             .build());
  * 
  *         var fw3 = new Firewall(&#34;fw3&#34;, FirewallArgs.builder()        
+ *             .name(&#34;website-fw-3&#34;)
  *             .network(defaultNetwork.id())
  *             .sourceRanges(            
  *                 &#34;130.211.0.0/22&#34;,
@@ -899,12 +910,10 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .targetTags(&#34;load-balanced-backend&#34;)
  *             .direction(&#34;INGRESS&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .dependsOn(fw2)
- *                 .build());
+ *             .build());
  * 
  *         var fw4 = new Firewall(&#34;fw4&#34;, FirewallArgs.builder()        
+ *             .name(&#34;website-fw-4&#34;)
  *             .network(defaultNetwork.id())
  *             .sourceRanges(&#34;10.129.0.0/26&#34;)
  *             .targetTags(&#34;load-balanced-backend&#34;)
@@ -922,79 +931,21 @@ import javax.annotation.Nullable;
  *                     .ports(&#34;8000&#34;)
  *                     .build())
  *             .direction(&#34;INGRESS&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .dependsOn(fw3)
- *                 .build());
- * 
- *         var defaultRegionHealthCheck = new RegionHealthCheck(&#34;defaultRegionHealthCheck&#34;, RegionHealthCheckArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
- *                 .portSpecification(&#34;USE_SERVING_PORT&#34;)
- *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .dependsOn(fw4)
- *                 .build());
- * 
- *         var defaultRegionBackendService = new RegionBackendService(&#34;defaultRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
- *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
- *             .backends(RegionBackendServiceBackendArgs.builder()
- *                 .group(rigm.instanceGroup())
- *                 .balancingMode(&#34;UTILIZATION&#34;)
- *                 .capacityScaler(1)
- *                 .build())
- *             .region(&#34;us-central1&#34;)
- *             .protocol(&#34;HTTP&#34;)
- *             .timeoutSec(10)
- *             .healthChecks(defaultRegionHealthCheck.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var defaultRegionUrlMap = new RegionUrlMap(&#34;defaultRegionUrlMap&#34;, RegionUrlMapArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .defaultService(defaultRegionBackendService.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var defaultRegionTargetHttpProxy = new RegionTargetHttpProxy(&#34;defaultRegionTargetHttpProxy&#34;, RegionTargetHttpProxyArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .urlMap(defaultRegionUrlMap.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var proxy = new Subnetwork(&#34;proxy&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;website-net-proxy&#34;)
  *             .ipCidrRange(&#34;10.129.0.0/26&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(defaultNetwork.id())
  *             .purpose(&#34;REGIONAL_MANAGED_PROXY&#34;)
  *             .role(&#34;ACTIVE&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var defaultForwardingRule = new ForwardingRule(&#34;defaultForwardingRule&#34;, ForwardingRuleArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .ipProtocol(&#34;TCP&#34;)
- *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
- *             .portRange(&#34;80&#34;)
- *             .target(defaultRegionTargetHttpProxy.id())
- *             .network(defaultNetwork.id())
- *             .subnetwork(defaultSubnetwork.id())
- *             .networkTier(&#34;PREMIUM&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .dependsOn(proxy)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
  * ```
  * ### Forwarding Rule Regional Http Xlb
- * 
  * ```java
  * package generated_program;
  * 
@@ -1014,9 +965,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionInstanceGroupManager;
  * import com.pulumi.gcp.compute.RegionInstanceGroupManagerArgs;
  * import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerVersionArgs;
- * import com.pulumi.gcp.compute.Firewall;
- * import com.pulumi.gcp.compute.FirewallArgs;
- * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
  * import com.pulumi.gcp.compute.RegionHealthCheck;
  * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
  * import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
@@ -1031,7 +979,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.AddressArgs;
  * import com.pulumi.gcp.compute.ForwardingRule;
  * import com.pulumi.gcp.compute.ForwardingRuleArgs;
- * import com.pulumi.resources.CustomResourceOptions;
+ * import com.pulumi.gcp.compute.Firewall;
+ * import com.pulumi.gcp.compute.FirewallArgs;
+ * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -1051,21 +1001,20 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;website-net&#34;)
  *             .autoCreateSubnetworks(false)
  *             .routingMode(&#34;REGIONAL&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;website-net-default&#34;)
  *             .ipCidrRange(&#34;10.1.2.0/24&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(defaultNetwork.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var instanceTemplate = new InstanceTemplate(&#34;instanceTemplate&#34;, InstanceTemplateArgs.builder()        
+ *             .name(&#34;template-website-backend&#34;)
  *             .machineType(&#34;e2-medium&#34;)
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
  *                 .network(defaultNetwork.id())
@@ -1079,23 +1028,73 @@ import javax.annotation.Nullable;
  *             .tags(            
  *                 &#34;allow-ssh&#34;,
  *                 &#34;load-balanced-backend&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var rigm = new RegionInstanceGroupManager(&#34;rigm&#34;, RegionInstanceGroupManagerArgs.builder()        
  *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;website-rigm&#34;)
  *             .versions(RegionInstanceGroupManagerVersionArgs.builder()
  *                 .instanceTemplate(instanceTemplate.id())
  *                 .name(&#34;primary&#34;)
  *                 .build())
  *             .baseInstanceName(&#34;internal-glb&#34;)
  *             .targetSize(1)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
+ * 
+ *         var defaultRegionHealthCheck = new RegionHealthCheck(&#34;defaultRegionHealthCheck&#34;, RegionHealthCheckArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;website-hc&#34;)
+ *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
+ *                 .portSpecification(&#34;USE_SERVING_PORT&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultRegionBackendService = new RegionBackendService(&#34;defaultRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
+ *             .loadBalancingScheme(&#34;EXTERNAL_MANAGED&#34;)
+ *             .backends(RegionBackendServiceBackendArgs.builder()
+ *                 .group(rigm.instanceGroup())
+ *                 .balancingMode(&#34;UTILIZATION&#34;)
+ *                 .capacityScaler(1)
+ *                 .build())
+ *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;website-backend&#34;)
+ *             .protocol(&#34;HTTP&#34;)
+ *             .timeoutSec(10)
+ *             .healthChecks(defaultRegionHealthCheck.id())
+ *             .build());
+ * 
+ *         var defaultRegionUrlMap = new RegionUrlMap(&#34;defaultRegionUrlMap&#34;, RegionUrlMapArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;website-map&#34;)
+ *             .defaultService(defaultRegionBackendService.id())
+ *             .build());
+ * 
+ *         var defaultRegionTargetHttpProxy = new RegionTargetHttpProxy(&#34;defaultRegionTargetHttpProxy&#34;, RegionTargetHttpProxyArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;website-proxy&#34;)
+ *             .urlMap(defaultRegionUrlMap.id())
+ *             .build());
+ * 
+ *         var defaultAddress = new Address(&#34;defaultAddress&#34;, AddressArgs.builder()        
+ *             .name(&#34;website-ip-1&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .networkTier(&#34;STANDARD&#34;)
+ *             .build());
+ * 
+ *         var default_ = new ForwardingRule(&#34;default&#34;, ForwardingRuleArgs.builder()        
+ *             .name(&#34;website-forwarding-rule&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .ipProtocol(&#34;TCP&#34;)
+ *             .loadBalancingScheme(&#34;EXTERNAL_MANAGED&#34;)
+ *             .portRange(&#34;80&#34;)
+ *             .target(defaultRegionTargetHttpProxy.id())
+ *             .network(defaultNetwork.id())
+ *             .ipAddress(defaultAddress.id())
+ *             .networkTier(&#34;STANDARD&#34;)
+ *             .build());
  * 
  *         var fw1 = new Firewall(&#34;fw1&#34;, FirewallArgs.builder()        
+ *             .name(&#34;website-fw-1&#34;)
  *             .network(defaultNetwork.id())
  *             .sourceRanges(&#34;10.1.2.0/24&#34;)
  *             .allows(            
@@ -1109,11 +1108,10 @@ import javax.annotation.Nullable;
  *                     .protocol(&#34;icmp&#34;)
  *                     .build())
  *             .direction(&#34;INGRESS&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var fw2 = new Firewall(&#34;fw2&#34;, FirewallArgs.builder()        
+ *             .name(&#34;website-fw-2&#34;)
  *             .network(defaultNetwork.id())
  *             .sourceRanges(&#34;0.0.0.0/0&#34;)
  *             .allows(FirewallAllowArgs.builder()
@@ -1122,12 +1120,10 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .targetTags(&#34;allow-ssh&#34;)
  *             .direction(&#34;INGRESS&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .dependsOn(fw1)
- *                 .build());
+ *             .build());
  * 
  *         var fw3 = new Firewall(&#34;fw3&#34;, FirewallArgs.builder()        
+ *             .name(&#34;website-fw-3&#34;)
  *             .network(defaultNetwork.id())
  *             .sourceRanges(            
  *                 &#34;130.211.0.0/22&#34;,
@@ -1137,12 +1133,10 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .targetTags(&#34;load-balanced-backend&#34;)
  *             .direction(&#34;INGRESS&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .dependsOn(fw2)
- *                 .build());
+ *             .build());
  * 
  *         var fw4 = new Firewall(&#34;fw4&#34;, FirewallArgs.builder()        
+ *             .name(&#34;website-fw-4&#34;)
  *             .network(defaultNetwork.id())
  *             .sourceRanges(&#34;10.129.0.0/26&#34;)
  *             .targetTags(&#34;load-balanced-backend&#34;)
@@ -1160,86 +1154,21 @@ import javax.annotation.Nullable;
  *                     .ports(&#34;8000&#34;)
  *                     .build())
  *             .direction(&#34;INGRESS&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .dependsOn(fw3)
- *                 .build());
- * 
- *         var defaultRegionHealthCheck = new RegionHealthCheck(&#34;defaultRegionHealthCheck&#34;, RegionHealthCheckArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
- *                 .portSpecification(&#34;USE_SERVING_PORT&#34;)
- *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .dependsOn(fw4)
- *                 .build());
- * 
- *         var defaultRegionBackendService = new RegionBackendService(&#34;defaultRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
- *             .loadBalancingScheme(&#34;EXTERNAL_MANAGED&#34;)
- *             .backends(RegionBackendServiceBackendArgs.builder()
- *                 .group(rigm.instanceGroup())
- *                 .balancingMode(&#34;UTILIZATION&#34;)
- *                 .capacityScaler(1)
- *                 .build())
- *             .region(&#34;us-central1&#34;)
- *             .protocol(&#34;HTTP&#34;)
- *             .timeoutSec(10)
- *             .healthChecks(defaultRegionHealthCheck.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var defaultRegionUrlMap = new RegionUrlMap(&#34;defaultRegionUrlMap&#34;, RegionUrlMapArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .defaultService(defaultRegionBackendService.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var defaultRegionTargetHttpProxy = new RegionTargetHttpProxy(&#34;defaultRegionTargetHttpProxy&#34;, RegionTargetHttpProxyArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .urlMap(defaultRegionUrlMap.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var defaultAddress = new Address(&#34;defaultAddress&#34;, AddressArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .networkTier(&#34;STANDARD&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var proxy = new Subnetwork(&#34;proxy&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;website-net-proxy&#34;)
  *             .ipCidrRange(&#34;10.129.0.0/26&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(defaultNetwork.id())
  *             .purpose(&#34;REGIONAL_MANAGED_PROXY&#34;)
  *             .role(&#34;ACTIVE&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var defaultForwardingRule = new ForwardingRule(&#34;defaultForwardingRule&#34;, ForwardingRuleArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .ipProtocol(&#34;TCP&#34;)
- *             .loadBalancingScheme(&#34;EXTERNAL_MANAGED&#34;)
- *             .portRange(&#34;80&#34;)
- *             .target(defaultRegionTargetHttpProxy.id())
- *             .network(defaultNetwork.id())
- *             .ipAddress(defaultAddress.id())
- *             .networkTier(&#34;STANDARD&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .dependsOn(proxy)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
  * ```
  * ### Forwarding Rule Vpc Psc
- * 
  * ```java
  * package generated_program;
  * 
@@ -1275,26 +1204,31 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var consumerNet = new Network(&#34;consumerNet&#34;, NetworkArgs.builder()        
+ *             .name(&#34;consumer-net&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var consumerSubnet = new Subnetwork(&#34;consumerSubnet&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;consumer-net&#34;)
  *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(consumerNet.id())
  *             .build());
  * 
  *         var consumerAddress = new Address(&#34;consumerAddress&#34;, AddressArgs.builder()        
+ *             .name(&#34;website-ip-1&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .subnetwork(consumerSubnet.id())
  *             .addressType(&#34;INTERNAL&#34;)
  *             .build());
  * 
  *         var producerNet = new Network(&#34;producerNet&#34;, NetworkArgs.builder()        
+ *             .name(&#34;producer-net&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var pscProducerSubnet = new Subnetwork(&#34;pscProducerSubnet&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;producer-psc-net&#34;)
  *             .ipCidrRange(&#34;10.1.0.0/16&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .purpose(&#34;PRIVATE_SERVICE_CONNECT&#34;)
@@ -1302,12 +1236,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var producerSubnet = new Subnetwork(&#34;producerSubnet&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;producer-net&#34;)
  *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(producerNet.id())
  *             .build());
  * 
  *         var producerServiceHealthCheck = new HealthCheck(&#34;producerServiceHealthCheck&#34;, HealthCheckArgs.builder()        
+ *             .name(&#34;producer-service-health-check&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
@@ -1316,11 +1252,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var producerServiceBackend = new RegionBackendService(&#34;producerServiceBackend&#34;, RegionBackendServiceArgs.builder()        
+ *             .name(&#34;producer-service-backend&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .healthChecks(producerServiceHealthCheck.id())
  *             .build());
  * 
  *         var producerTargetService = new ForwardingRule(&#34;producerTargetService&#34;, ForwardingRuleArgs.builder()        
+ *             .name(&#34;producer-forwarding-rule&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .loadBalancingScheme(&#34;INTERNAL&#34;)
  *             .backendService(producerServiceBackend.id())
@@ -1330,6 +1268,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var producerServiceAttachment = new ServiceAttachment(&#34;producerServiceAttachment&#34;, ServiceAttachmentArgs.builder()        
+ *             .name(&#34;producer-service&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .description(&#34;A service attachment configured with Terraform&#34;)
  *             .enableProxyProtocol(true)
@@ -1339,6 +1278,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var default_ = new ForwardingRule(&#34;default&#34;, ForwardingRuleArgs.builder()        
+ *             .name(&#34;psc-endpoint&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .loadBalancingScheme(&#34;&#34;)
  *             .target(producerServiceAttachment.id())
@@ -1351,7 +1291,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Forwarding Rule Vpc Psc No Automate Dns
- * 
  * ```java
  * package generated_program;
  * 
@@ -1387,26 +1326,31 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var consumerNet = new Network(&#34;consumerNet&#34;, NetworkArgs.builder()        
+ *             .name(&#34;consumer-net&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var consumerSubnet = new Subnetwork(&#34;consumerSubnet&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;consumer-net&#34;)
  *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(consumerNet.id())
  *             .build());
  * 
  *         var consumerAddress = new Address(&#34;consumerAddress&#34;, AddressArgs.builder()        
+ *             .name(&#34;website-ip-1&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .subnetwork(consumerSubnet.id())
  *             .addressType(&#34;INTERNAL&#34;)
  *             .build());
  * 
  *         var producerNet = new Network(&#34;producerNet&#34;, NetworkArgs.builder()        
+ *             .name(&#34;producer-net&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var pscProducerSubnet = new Subnetwork(&#34;pscProducerSubnet&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;producer-psc-net&#34;)
  *             .ipCidrRange(&#34;10.1.0.0/16&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .purpose(&#34;PRIVATE_SERVICE_CONNECT&#34;)
@@ -1414,12 +1358,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var producerSubnet = new Subnetwork(&#34;producerSubnet&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;producer-net&#34;)
  *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(producerNet.id())
  *             .build());
  * 
  *         var producerServiceHealthCheck = new HealthCheck(&#34;producerServiceHealthCheck&#34;, HealthCheckArgs.builder()        
+ *             .name(&#34;producer-service-health-check&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
@@ -1428,11 +1374,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var producerServiceBackend = new RegionBackendService(&#34;producerServiceBackend&#34;, RegionBackendServiceArgs.builder()        
+ *             .name(&#34;producer-service-backend&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .healthChecks(producerServiceHealthCheck.id())
  *             .build());
  * 
  *         var producerTargetService = new ForwardingRule(&#34;producerTargetService&#34;, ForwardingRuleArgs.builder()        
+ *             .name(&#34;producer-forwarding-rule&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .loadBalancingScheme(&#34;INTERNAL&#34;)
  *             .backendService(producerServiceBackend.id())
@@ -1442,6 +1390,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var producerServiceAttachment = new ServiceAttachment(&#34;producerServiceAttachment&#34;, ServiceAttachmentArgs.builder()        
+ *             .name(&#34;producer-service&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .description(&#34;A service attachment configured with Terraform&#34;)
  *             .enableProxyProtocol(true)
@@ -1451,6 +1400,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var default_ = new ForwardingRule(&#34;default&#34;, ForwardingRuleArgs.builder()        
+ *             .name(&#34;psc-endpoint&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .loadBalancingScheme(&#34;&#34;)
  *             .target(producerServiceAttachment.id())
@@ -1476,7 +1426,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
  * import com.pulumi.gcp.compute.ForwardingRule;
  * import com.pulumi.gcp.compute.ForwardingRuleArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -1491,38 +1440,39 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basic = new Address(&#34;basic&#34;, AddressArgs.builder()        
+ *             .name(&#34;website-ip&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .build());
  * 
- *         var externalRegionBackendService = new RegionBackendService(&#34;externalRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
+ *         var external = new RegionBackendService(&#34;external&#34;, RegionBackendServiceArgs.builder()        
+ *             .name(&#34;service-backend&#34;)
  *             .region(&#34;us-central1&#34;)
- *             .loadBalancingScheme(&#34;EXTERNAL&#34;)
- *             .build());
- * 
- *         var externalForwardingRule = new ForwardingRule(&#34;externalForwardingRule&#34;, ForwardingRuleArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .ipAddress(basic.selfLink())
- *             .backendService(externalRegionBackendService.selfLink())
  *             .loadBalancingScheme(&#34;EXTERNAL&#34;)
  *             .build());
  * 
  *         var steering = new ForwardingRule(&#34;steering&#34;, ForwardingRuleArgs.builder()        
+ *             .name(&#34;steering-rule&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .ipAddress(basic.selfLink())
- *             .backendService(externalRegionBackendService.selfLink())
+ *             .backendService(external.selfLink())
  *             .loadBalancingScheme(&#34;EXTERNAL&#34;)
  *             .sourceIpRanges(            
  *                 &#34;34.121.88.0/24&#34;,
  *                 &#34;35.187.239.137&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(externalForwardingRule)
- *                 .build());
+ *             .build());
+ * 
+ *         var externalForwardingRule = new ForwardingRule(&#34;externalForwardingRule&#34;, ForwardingRuleArgs.builder()        
+ *             .name(&#34;external-forwarding-rule&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .ipAddress(basic.selfLink())
+ *             .backendService(external.selfLink())
+ *             .loadBalancingScheme(&#34;EXTERNAL&#34;)
+ *             .build());
  * 
  *     }
  * }
  * ```
  * ### Forwarding Rule Internallb Ipv6
- * 
  * ```java
  * package generated_program;
  * 
@@ -1554,6 +1504,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var hc = new HealthCheck(&#34;hc&#34;, HealthCheckArgs.builder()        
+ *             .name(&#34;check-ilb-ipv6-backend&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
@@ -1562,16 +1513,19 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var backend = new RegionBackendService(&#34;backend&#34;, RegionBackendServiceArgs.builder()        
+ *             .name(&#34;ilb-ipv6-backend&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .healthChecks(hc.id())
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;net-ipv6&#34;)
  *             .autoCreateSubnetworks(false)
  *             .enableUlaInternalIpv6(true)
  *             .build());
  * 
  *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;subnet-internal-ipv6&#34;)
  *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .stackType(&#34;IPV4_IPV6&#34;)
@@ -1579,7 +1533,8 @@ import javax.annotation.Nullable;
  *             .network(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultForwardingRule = new ForwardingRule(&#34;defaultForwardingRule&#34;, ForwardingRuleArgs.builder()        
+ *         var default_ = new ForwardingRule(&#34;default&#34;, ForwardingRuleArgs.builder()        
+ *             .name(&#34;ilb-ipv6-forwarding-rule&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .loadBalancingScheme(&#34;INTERNAL&#34;)
  *             .backendService(backend.id())

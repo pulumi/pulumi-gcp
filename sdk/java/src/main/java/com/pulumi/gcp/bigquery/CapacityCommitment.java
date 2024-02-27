@@ -51,10 +51,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new CapacityCommitment(&#34;example&#34;, CapacityCommitmentArgs.builder()        
  *             .capacityCommitmentId(&#34;example-commitment&#34;)
- *             .edition(&#34;ENTERPRISE&#34;)
  *             .location(&#34;us-west2&#34;)
- *             .plan(&#34;FLEX_FLAT_RATE&#34;)
  *             .slotCount(100)
+ *             .plan(&#34;FLEX_FLAT_RATE&#34;)
+ *             .edition(&#34;ENTERPRISE&#34;)
  *             .build());
  * 
  *     }

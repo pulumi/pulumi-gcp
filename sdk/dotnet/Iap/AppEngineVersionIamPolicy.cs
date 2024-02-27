@@ -53,10 +53,10 @@ namespace Pulumi.Gcp.Iap
     /// 
     ///     var policy = new Gcp.Iap.AppEngineVersionIamPolicy("policy", new()
     ///     {
-    ///         Project = google_app_engine_standard_app_version.Version.Project,
-    ///         AppId = google_app_engine_standard_app_version.Version.Project,
-    ///         Service = google_app_engine_standard_app_version.Version.Service,
-    ///         VersionId = google_app_engine_standard_app_version.Version.Version_id,
+    ///         Project = version.Project,
+    ///         AppId = version.Project,
+    ///         Service = version.Service,
+    ///         VersionId = version.VersionId,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -96,10 +96,10 @@ namespace Pulumi.Gcp.Iap
     /// 
     ///     var policy = new Gcp.Iap.AppEngineVersionIamPolicy("policy", new()
     ///     {
-    ///         Project = google_app_engine_standard_app_version.Version.Project,
-    ///         AppId = google_app_engine_standard_app_version.Version.Project,
-    ///         Service = google_app_engine_standard_app_version.Version.Service,
-    ///         VersionId = google_app_engine_standard_app_version.Version.Version_id,
+    ///         Project = version.Project,
+    ///         AppId = version.Project,
+    ///         Service = version.Service,
+    ///         VersionId = version.VersionId,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -117,15 +117,15 @@ namespace Pulumi.Gcp.Iap
     /// {
     ///     var binding = new Gcp.Iap.AppEngineVersionIamBinding("binding", new()
     ///     {
-    ///         AppId = google_app_engine_standard_app_version.Version.Project,
+    ///         Project = version.Project,
+    ///         AppId = version.Project,
+    ///         Service = version.Service,
+    ///         VersionId = version.VersionId,
+    ///         Role = "roles/iap.httpsResourceAccessor",
     ///         Members = new[]
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         Project = google_app_engine_standard_app_version.Version.Project,
-    ///         Role = "roles/iap.httpsResourceAccessor",
-    ///         Service = google_app_engine_standard_app_version.Version.Service,
-    ///         VersionId = google_app_engine_standard_app_version.Version.Version_id,
     ///     });
     /// 
     /// });
@@ -143,21 +143,21 @@ namespace Pulumi.Gcp.Iap
     /// {
     ///     var binding = new Gcp.Iap.AppEngineVersionIamBinding("binding", new()
     ///     {
-    ///         AppId = google_app_engine_standard_app_version.Version.Project,
-    ///         Condition = new Gcp.Iap.Inputs.AppEngineVersionIamBindingConditionArgs
-    ///         {
-    ///             Description = "Expiring at midnight of 2019-12-31",
-    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///             Title = "expires_after_2019_12_31",
-    ///         },
+    ///         Project = version.Project,
+    ///         AppId = version.Project,
+    ///         Service = version.Service,
+    ///         VersionId = version.VersionId,
+    ///         Role = "roles/iap.httpsResourceAccessor",
     ///         Members = new[]
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         Project = google_app_engine_standard_app_version.Version.Project,
-    ///         Role = "roles/iap.httpsResourceAccessor",
-    ///         Service = google_app_engine_standard_app_version.Version.Service,
-    ///         VersionId = google_app_engine_standard_app_version.Version.Version_id,
+    ///         Condition = new Gcp.Iap.Inputs.AppEngineVersionIamBindingConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
     ///     });
     /// 
     /// });
@@ -174,12 +174,12 @@ namespace Pulumi.Gcp.Iap
     /// {
     ///     var member = new Gcp.Iap.AppEngineVersionIamMember("member", new()
     ///     {
-    ///         AppId = google_app_engine_standard_app_version.Version.Project,
-    ///         Member = "user:jane@example.com",
-    ///         Project = google_app_engine_standard_app_version.Version.Project,
+    ///         Project = version.Project,
+    ///         AppId = version.Project,
+    ///         Service = version.Service,
+    ///         VersionId = version.VersionId,
     ///         Role = "roles/iap.httpsResourceAccessor",
-    ///         Service = google_app_engine_standard_app_version.Version.Service,
-    ///         VersionId = google_app_engine_standard_app_version.Version.Version_id,
+    ///         Member = "user:jane@example.com",
     ///     });
     /// 
     /// });
@@ -197,18 +197,18 @@ namespace Pulumi.Gcp.Iap
     /// {
     ///     var member = new Gcp.Iap.AppEngineVersionIamMember("member", new()
     ///     {
-    ///         AppId = google_app_engine_standard_app_version.Version.Project,
+    ///         Project = version.Project,
+    ///         AppId = version.Project,
+    ///         Service = version.Service,
+    ///         VersionId = version.VersionId,
+    ///         Role = "roles/iap.httpsResourceAccessor",
+    ///         Member = "user:jane@example.com",
     ///         Condition = new Gcp.Iap.Inputs.AppEngineVersionIamMemberConditionArgs
     ///         {
+    ///             Title = "expires_after_2019_12_31",
     ///             Description = "Expiring at midnight of 2019-12-31",
     ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///             Title = "expires_after_2019_12_31",
     ///         },
-    ///         Member = "user:jane@example.com",
-    ///         Project = google_app_engine_standard_app_version.Version.Project,
-    ///         Role = "roles/iap.httpsResourceAccessor",
-    ///         Service = google_app_engine_standard_app_version.Version.Service,
-    ///         VersionId = google_app_engine_standard_app_version.Version.Version_id,
     ///     });
     /// 
     /// });

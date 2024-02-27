@@ -501,6 +501,7 @@ class NodePool(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         cluster = gcp.edgecontainer.Cluster("cluster",
+            name="default",
             location="us-central1",
             authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
                 admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
@@ -515,6 +516,7 @@ class NodePool(pulumi.CustomResource):
                 project=f"projects/{project.number}",
             ))
         default = gcp.edgecontainer.NodePool("default",
+            name="nodepool-1",
             cluster=cluster.name,
             location="us-central1",
             node_location="us-central1-edge-example-edgesite",
@@ -532,6 +534,7 @@ class NodePool(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         cluster = gcp.edgecontainer.Cluster("cluster",
+            name="default",
             location="us-central1",
             authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
                 admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
@@ -545,21 +548,25 @@ class NodePool(pulumi.CustomResource):
             fleet=gcp.edgecontainer.ClusterFleetArgs(
                 project=f"projects/{project.number}",
             ))
-        key_ring = gcp.kms.KeyRing("keyRing", location="us-central1")
-        crypto_key_crypto_key = gcp.kms.CryptoKey("cryptoKeyCryptoKey", key_ring=key_ring.id)
-        crypto_key_crypto_key_iam_member = gcp.kms.CryptoKeyIAMMember("cryptoKeyCryptoKeyIAMMember",
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="keyring",
+            location="us-central1")
+        crypto_key_crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="key",
+            key_ring=key_ring.id)
+        crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
             crypto_key_id=crypto_key_crypto_key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-edgecontainer.iam.gserviceaccount.com")
         default = gcp.edgecontainer.NodePool("default",
+            name="nodepool-1",
             cluster=cluster.name,
             location="us-central1",
             node_location="us-central1-edge-example-edgesite",
             node_count=3,
             local_disk_encryption=gcp.edgecontainer.NodePoolLocalDiskEncryptionArgs(
                 kms_key=crypto_key_crypto_key.id,
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[crypto_key_crypto_key_iam_member]))
+            ))
         ```
         ### Edgecontainer Local Control Plane Node Pool
 
@@ -568,7 +575,8 @@ class NodePool(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        default_cluster = gcp.edgecontainer.Cluster("defaultCluster",
+        default = gcp.edgecontainer.Cluster("default",
+            name="",
             location="us-central1",
             authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
                 admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
@@ -591,8 +599,9 @@ class NodePool(pulumi.CustomResource):
                     shared_deployment_policy="ALLOWED",
                 ),
             ))
-        default_node_pool = gcp.edgecontainer.NodePool("defaultNodePool",
-            cluster=google_edgecontainer_cluster["cluster"]["name"],
+        default_node_pool = gcp.edgecontainer.NodePool("default",
+            name="nodepool-1",
+            cluster=cluster["name"],
             location="us-central1",
             node_location="us-central1-edge-example-edgesite",
             node_count=3)
@@ -669,6 +678,7 @@ class NodePool(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         cluster = gcp.edgecontainer.Cluster("cluster",
+            name="default",
             location="us-central1",
             authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
                 admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
@@ -683,6 +693,7 @@ class NodePool(pulumi.CustomResource):
                 project=f"projects/{project.number}",
             ))
         default = gcp.edgecontainer.NodePool("default",
+            name="nodepool-1",
             cluster=cluster.name,
             location="us-central1",
             node_location="us-central1-edge-example-edgesite",
@@ -700,6 +711,7 @@ class NodePool(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         cluster = gcp.edgecontainer.Cluster("cluster",
+            name="default",
             location="us-central1",
             authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
                 admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
@@ -713,21 +725,25 @@ class NodePool(pulumi.CustomResource):
             fleet=gcp.edgecontainer.ClusterFleetArgs(
                 project=f"projects/{project.number}",
             ))
-        key_ring = gcp.kms.KeyRing("keyRing", location="us-central1")
-        crypto_key_crypto_key = gcp.kms.CryptoKey("cryptoKeyCryptoKey", key_ring=key_ring.id)
-        crypto_key_crypto_key_iam_member = gcp.kms.CryptoKeyIAMMember("cryptoKeyCryptoKeyIAMMember",
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="keyring",
+            location="us-central1")
+        crypto_key_crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="key",
+            key_ring=key_ring.id)
+        crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
             crypto_key_id=crypto_key_crypto_key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-edgecontainer.iam.gserviceaccount.com")
         default = gcp.edgecontainer.NodePool("default",
+            name="nodepool-1",
             cluster=cluster.name,
             location="us-central1",
             node_location="us-central1-edge-example-edgesite",
             node_count=3,
             local_disk_encryption=gcp.edgecontainer.NodePoolLocalDiskEncryptionArgs(
                 kms_key=crypto_key_crypto_key.id,
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[crypto_key_crypto_key_iam_member]))
+            ))
         ```
         ### Edgecontainer Local Control Plane Node Pool
 
@@ -736,7 +752,8 @@ class NodePool(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        default_cluster = gcp.edgecontainer.Cluster("defaultCluster",
+        default = gcp.edgecontainer.Cluster("default",
+            name="",
             location="us-central1",
             authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
                 admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
@@ -759,8 +776,9 @@ class NodePool(pulumi.CustomResource):
                     shared_deployment_policy="ALLOWED",
                 ),
             ))
-        default_node_pool = gcp.edgecontainer.NodePool("defaultNodePool",
-            cluster=google_edgecontainer_cluster["cluster"]["name"],
+        default_node_pool = gcp.edgecontainer.NodePool("default",
+            name="nodepool-1",
+            cluster=cluster["name"],
             location="us-central1",
             node_location="us-central1-edge-example-edgesite",
             node_count=3)

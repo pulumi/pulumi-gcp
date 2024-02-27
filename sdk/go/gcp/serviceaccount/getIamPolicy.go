@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := serviceaccount.GetIamPolicy(ctx, &serviceaccount.GetIamPolicyArgs{
-//				ServiceAccountId: google_service_account.Test_account.Name,
+//				ServiceAccountId: testAccount.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

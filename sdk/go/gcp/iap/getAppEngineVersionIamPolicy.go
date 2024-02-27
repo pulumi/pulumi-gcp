@@ -28,10 +28,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := iap.LookupAppEngineVersionIamPolicy(ctx, &iap.LookupAppEngineVersionIamPolicyArgs{
-//				AppId:     google_app_engine_standard_app_version.Version.Project,
-//				Project:   pulumi.StringRef(google_app_engine_standard_app_version.Version.Project),
-//				Service:   google_app_engine_standard_app_version.Version.Service,
-//				VersionId: google_app_engine_standard_app_version.Version.Version_id,
+//				Project:   pulumi.StringRef(version.Project),
+//				AppId:     version.Project,
+//				Service:   version.Service,
+//				VersionId: version.VersionId,
 //			}, nil)
 //			if err != nil {
 //				return err

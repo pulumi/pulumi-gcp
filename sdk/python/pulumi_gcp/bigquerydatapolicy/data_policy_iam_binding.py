@@ -312,9 +312,9 @@ class DataPolicyIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.bigquerydatapolicy.DataPolicyIamPolicy("policy",
-            project=google_bigquery_datapolicy_data_policy["data_policy"]["project"],
-            location=google_bigquery_datapolicy_data_policy["data_policy"]["location"],
-            data_policy_id=google_bigquery_datapolicy_data_policy["data_policy"]["data_policy_id"],
+            project=data_policy["project"],
+            location=data_policy["location"],
+            data_policy_id=data_policy["dataPolicyId"],
             policy_data=admin.policy_data)
         ```
 
@@ -325,9 +325,9 @@ class DataPolicyIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.bigquerydatapolicy.DataPolicyIamBinding("binding",
-            project=google_bigquery_datapolicy_data_policy["data_policy"]["project"],
-            location=google_bigquery_datapolicy_data_policy["data_policy"]["location"],
-            data_policy_id=google_bigquery_datapolicy_data_policy["data_policy"]["data_policy_id"],
+            project=data_policy["project"],
+            location=data_policy["location"],
+            data_policy_id=data_policy["dataPolicyId"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -339,9 +339,9 @@ class DataPolicyIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.bigquerydatapolicy.DataPolicyIamMember("member",
-            project=google_bigquery_datapolicy_data_policy["data_policy"]["project"],
-            location=google_bigquery_datapolicy_data_policy["data_policy"]["location"],
-            data_policy_id=google_bigquery_datapolicy_data_policy["data_policy"]["data_policy_id"],
+            project=data_policy["project"],
+            location=data_policy["location"],
+            data_policy_id=data_policy["dataPolicyId"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -438,9 +438,9 @@ class DataPolicyIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.bigquerydatapolicy.DataPolicyIamPolicy("policy",
-            project=google_bigquery_datapolicy_data_policy["data_policy"]["project"],
-            location=google_bigquery_datapolicy_data_policy["data_policy"]["location"],
-            data_policy_id=google_bigquery_datapolicy_data_policy["data_policy"]["data_policy_id"],
+            project=data_policy["project"],
+            location=data_policy["location"],
+            data_policy_id=data_policy["dataPolicyId"],
             policy_data=admin.policy_data)
         ```
 
@@ -451,9 +451,9 @@ class DataPolicyIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.bigquerydatapolicy.DataPolicyIamBinding("binding",
-            project=google_bigquery_datapolicy_data_policy["data_policy"]["project"],
-            location=google_bigquery_datapolicy_data_policy["data_policy"]["location"],
-            data_policy_id=google_bigquery_datapolicy_data_policy["data_policy"]["data_policy_id"],
+            project=data_policy["project"],
+            location=data_policy["location"],
+            data_policy_id=data_policy["dataPolicyId"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -465,9 +465,9 @@ class DataPolicyIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.bigquerydatapolicy.DataPolicyIamMember("member",
-            project=google_bigquery_datapolicy_data_policy["data_policy"]["project"],
-            location=google_bigquery_datapolicy_data_policy["data_policy"]["location"],
-            data_policy_id=google_bigquery_datapolicy_data_policy["data_policy"]["data_policy_id"],
+            project=data_policy["project"],
+            location=data_policy["location"],
+            data_policy_id=data_policy["dataPolicyId"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

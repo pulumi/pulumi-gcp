@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new CertificateMap(&#34;default&#34;, CertificateMapArgs.builder()        
+ *             .name(&#34;cert-map&#34;)
  *             .description(&#34;My acceptance test certificate map&#34;)
  *             .labels(Map.ofEntries(
  *                 Map.entry(&#34;terraform&#34;, true),

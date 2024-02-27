@@ -44,6 +44,9 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     ///     var access_level = new Gcp.AccessContextManager.AccessLevel("access-level", new()
     ///     {
+    ///         Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
+    ///         Name = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
+    ///         Title = "chromeos_no_lock",
     ///         Basic = new Gcp.AccessContextManager.Inputs.AccessLevelBasicArgs
     ///         {
     ///             Conditions = new[]
@@ -52,6 +55,7 @@ namespace Pulumi.Gcp.AccessContextManager
     ///                 {
     ///                     DevicePolicy = new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionDevicePolicyArgs
     ///                     {
+    ///                         RequireScreenLock = true,
     ///                         OsConstraints = new[]
     ///                         {
     ///                             new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionDevicePolicyOsConstraintArgs
@@ -59,7 +63,6 @@ namespace Pulumi.Gcp.AccessContextManager
     ///                                 OsType = "DESKTOP_CHROME_OS",
     ///                             },
     ///                         },
-    ///                         RequireScreenLock = true,
     ///                     },
     ///                     Regions = new[]
     ///                     {
@@ -70,8 +73,6 @@ namespace Pulumi.Gcp.AccessContextManager
     ///                 },
     ///             },
     ///         },
-    ///         Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
-    ///         Title = "chromeos_no_lock",
     ///     });
     /// 
     /// });

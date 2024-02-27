@@ -55,11 +55,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var connection = new Connection(&#34;connection&#34;, ConnectionArgs.builder()        
- *             .cloudResource()
  *             .connectionId(&#34;my-connection&#34;)
- *             .description(&#34;a riveting description&#34;)
- *             .friendlyName(&#34;👋&#34;)
  *             .location(&#34;US&#34;)
+ *             .friendlyName(&#34;👋&#34;)
+ *             .description(&#34;a riveting description&#34;)
+ *             .cloudResource()
  *             .build());
  * 
  *     }
@@ -99,6 +99,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new DatabaseInstance(&#34;instance&#34;, DatabaseInstanceArgs.builder()        
+ *             .name(&#34;my-database-instance&#34;)
  *             .databaseVersion(&#34;POSTGRES_11&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .settings(DatabaseInstanceSettingsArgs.builder()
@@ -109,6 +110,7 @@ import javax.annotation.Nullable;
  * 
  *         var db = new Database(&#34;db&#34;, DatabaseArgs.builder()        
  *             .instance(instance.name())
+ *             .name(&#34;db&#34;)
  *             .build());
  * 
  *         var pwd = new RandomPassword(&#34;pwd&#34;, RandomPasswordArgs.builder()        
@@ -117,6 +119,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var user = new User(&#34;user&#34;, UserArgs.builder()        
+ *             .name(&#34;user&#34;)
  *             .instance(instance.name())
  *             .password(pwd.result())
  *             .build());
@@ -173,6 +176,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new DatabaseInstance(&#34;instance&#34;, DatabaseInstanceArgs.builder()        
+ *             .name(&#34;my-database-instance&#34;)
  *             .databaseVersion(&#34;POSTGRES_11&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .settings(DatabaseInstanceSettingsArgs.builder()
@@ -183,6 +187,7 @@ import javax.annotation.Nullable;
  * 
  *         var db = new Database(&#34;db&#34;, DatabaseArgs.builder()        
  *             .instance(instance.name())
+ *             .name(&#34;db&#34;)
  *             .build());
  * 
  *         var pwd = new RandomPassword(&#34;pwd&#34;, RandomPasswordArgs.builder()        
@@ -191,6 +196,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var user = new User(&#34;user&#34;, UserArgs.builder()        
+ *             .name(&#34;user&#34;)
  *             .instance(instance.name())
  *             .password(pwd.result())
  *             .build());
@@ -239,15 +245,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var connection = new Connection(&#34;connection&#34;, ConnectionArgs.builder()        
+ *             .connectionId(&#34;my-connection&#34;)
+ *             .location(&#34;aws-us-east-1&#34;)
+ *             .friendlyName(&#34;👋&#34;)
+ *             .description(&#34;a riveting description&#34;)
  *             .aws(ConnectionAwsArgs.builder()
  *                 .accessRole(ConnectionAwsAccessRoleArgs.builder()
  *                     .iamRoleId(&#34;arn:aws:iam::999999999999:role/omnirole&#34;)
  *                     .build())
  *                 .build())
- *             .connectionId(&#34;my-connection&#34;)
- *             .description(&#34;a riveting description&#34;)
- *             .friendlyName(&#34;👋&#34;)
- *             .location(&#34;aws-us-east-1&#34;)
  *             .build());
  * 
  *     }
@@ -277,14 +283,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var connection = new Connection(&#34;connection&#34;, ConnectionArgs.builder()        
+ *             .connectionId(&#34;my-connection&#34;)
+ *             .location(&#34;azure-eastus2&#34;)
+ *             .friendlyName(&#34;👋&#34;)
+ *             .description(&#34;a riveting description&#34;)
  *             .azure(ConnectionAzureArgs.builder()
  *                 .customerTenantId(&#34;customer-tenant-id&#34;)
  *                 .federatedApplicationClientId(&#34;b43eeeee-eeee-eeee-eeee-a480155501ce&#34;)
  *                 .build())
- *             .connectionId(&#34;my-connection&#34;)
- *             .description(&#34;a riveting description&#34;)
- *             .friendlyName(&#34;👋&#34;)
- *             .location(&#34;azure-eastus2&#34;)
  *             .build());
  * 
  *     }
@@ -314,14 +320,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var connection = new Connection(&#34;connection&#34;, ConnectionArgs.builder()        
+ *             .connectionId(&#34;my-connection&#34;)
+ *             .location(&#34;US&#34;)
+ *             .friendlyName(&#34;👋&#34;)
+ *             .description(&#34;a riveting description&#34;)
  *             .cloudSpanner(ConnectionCloudSpannerArgs.builder()
  *                 .database(&#34;projects/project/instances/instance/databases/database&#34;)
  *                 .databaseRole(&#34;database_role&#34;)
  *                 .build())
- *             .connectionId(&#34;my-connection&#34;)
- *             .description(&#34;a riveting description&#34;)
- *             .friendlyName(&#34;👋&#34;)
- *             .location(&#34;US&#34;)
  *             .build());
  * 
  *     }
@@ -351,16 +357,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var connection = new Connection(&#34;connection&#34;, ConnectionArgs.builder()        
+ *             .connectionId(&#34;my-connection&#34;)
+ *             .location(&#34;US&#34;)
+ *             .friendlyName(&#34;👋&#34;)
+ *             .description(&#34;a riveting description&#34;)
  *             .cloudSpanner(ConnectionCloudSpannerArgs.builder()
  *                 .database(&#34;projects/project/instances/instance/databases/database&#34;)
- *                 .maxParallelism(100)
- *                 .useDataBoost(true)
  *                 .useParallelism(true)
+ *                 .useDataBoost(true)
+ *                 .maxParallelism(100)
  *                 .build())
- *             .connectionId(&#34;my-connection&#34;)
- *             .description(&#34;a riveting description&#34;)
- *             .friendlyName(&#34;👋&#34;)
- *             .location(&#34;US&#34;)
  *             .build());
  * 
  *     }
@@ -397,6 +403,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basic = new Cluster(&#34;basic&#34;, ClusterArgs.builder()        
+ *             .name(&#34;my-connection&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .clusterConfig(ClusterClusterConfigArgs.builder()
  *                 .softwareConfig(ClusterClusterConfigSoftwareConfigArgs.builder()

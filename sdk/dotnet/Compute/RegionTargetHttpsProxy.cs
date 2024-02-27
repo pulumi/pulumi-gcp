@@ -20,6 +20,102 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
     /// 
     /// ## Example Usage
+    /// ### Region Target Https Proxy Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultRegionSslCertificate = new Gcp.Compute.RegionSslCertificate("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "my-certificate",
+    ///         PrivateKey = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "path/to/private.key",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Certificate = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "path/to/certificate.crt",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "http-health-check",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "backend-service",
+    ///         Protocol = "HTTP",
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         TimeoutSec = 10,
+    ///         HealthChecks = defaultRegionHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var defaultRegionUrlMap = new Gcp.Compute.RegionUrlMap("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "url-map",
+    ///         Description = "a description",
+    ///         DefaultService = defaultRegionBackendService.Id,
+    ///         HostRules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionUrlMapHostRuleArgs
+    ///             {
+    ///                 Hosts = new[]
+    ///                 {
+    ///                     "mysite.com",
+    ///                 },
+    ///                 PathMatcher = "allpaths",
+    ///             },
+    ///         },
+    ///         PathMatchers = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionUrlMapPathMatcherArgs
+    ///             {
+    ///                 Name = "allpaths",
+    ///                 DefaultService = defaultRegionBackendService.Id,
+    ///                 PathRules = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleArgs
+    ///                     {
+    ///                         Paths = new[]
+    ///                         {
+    ///                             "/*",
+    ///                         },
+    ///                         Service = defaultRegionBackendService.Id,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.RegionTargetHttpsProxy("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "test-proxy",
+    ///         UrlMap = defaultRegionUrlMap.Id,
+    ///         SslCertificates = new[]
+    ///         {
+    ///             defaultRegionSslCertificate.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -303,33 +303,35 @@ class VPNGateway(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network1 = gcp.compute.Network("network1")
-        target_gateway = gcp.compute.VPNGateway("targetGateway", network=network1.id)
-        vpn_static_ip = gcp.compute.Address("vpnStaticIp")
-        fr_esp = gcp.compute.ForwardingRule("frEsp",
+        network1 = gcp.compute.Network("network1", name="network-1")
+        target_gateway = gcp.compute.VPNGateway("target_gateway",
+            name="vpn-1",
+            network=network1.id)
+        vpn_static_ip = gcp.compute.Address("vpn_static_ip", name="vpn-static-ip")
+        fr_esp = gcp.compute.ForwardingRule("fr_esp",
+            name="fr-esp",
             ip_protocol="ESP",
             ip_address=vpn_static_ip.address,
             target=target_gateway.id)
-        fr_udp500 = gcp.compute.ForwardingRule("frUdp500",
+        fr_udp500 = gcp.compute.ForwardingRule("fr_udp500",
+            name="fr-udp500",
             ip_protocol="UDP",
             port_range="500",
             ip_address=vpn_static_ip.address,
             target=target_gateway.id)
-        fr_udp4500 = gcp.compute.ForwardingRule("frUdp4500",
+        fr_udp4500 = gcp.compute.ForwardingRule("fr_udp4500",
+            name="fr-udp4500",
             ip_protocol="UDP",
             port_range="4500",
             ip_address=vpn_static_ip.address,
             target=target_gateway.id)
         tunnel1 = gcp.compute.VPNTunnel("tunnel1",
+            name="tunnel1",
             peer_ip="15.0.0.120",
             shared_secret="a secret message",
-            target_vpn_gateway=target_gateway.id,
-            opts=pulumi.ResourceOptions(depends_on=[
-                    fr_esp,
-                    fr_udp500,
-                    fr_udp4500,
-                ]))
+            target_vpn_gateway=target_gateway.id)
         route1 = gcp.compute.Route("route1",
+            name="route1",
             network=network1.name,
             dest_range="15.0.0.0/24",
             priority=1000,
@@ -408,33 +410,35 @@ class VPNGateway(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network1 = gcp.compute.Network("network1")
-        target_gateway = gcp.compute.VPNGateway("targetGateway", network=network1.id)
-        vpn_static_ip = gcp.compute.Address("vpnStaticIp")
-        fr_esp = gcp.compute.ForwardingRule("frEsp",
+        network1 = gcp.compute.Network("network1", name="network-1")
+        target_gateway = gcp.compute.VPNGateway("target_gateway",
+            name="vpn-1",
+            network=network1.id)
+        vpn_static_ip = gcp.compute.Address("vpn_static_ip", name="vpn-static-ip")
+        fr_esp = gcp.compute.ForwardingRule("fr_esp",
+            name="fr-esp",
             ip_protocol="ESP",
             ip_address=vpn_static_ip.address,
             target=target_gateway.id)
-        fr_udp500 = gcp.compute.ForwardingRule("frUdp500",
+        fr_udp500 = gcp.compute.ForwardingRule("fr_udp500",
+            name="fr-udp500",
             ip_protocol="UDP",
             port_range="500",
             ip_address=vpn_static_ip.address,
             target=target_gateway.id)
-        fr_udp4500 = gcp.compute.ForwardingRule("frUdp4500",
+        fr_udp4500 = gcp.compute.ForwardingRule("fr_udp4500",
+            name="fr-udp4500",
             ip_protocol="UDP",
             port_range="4500",
             ip_address=vpn_static_ip.address,
             target=target_gateway.id)
         tunnel1 = gcp.compute.VPNTunnel("tunnel1",
+            name="tunnel1",
             peer_ip="15.0.0.120",
             shared_secret="a secret message",
-            target_vpn_gateway=target_gateway.id,
-            opts=pulumi.ResourceOptions(depends_on=[
-                    fr_esp,
-                    fr_udp500,
-                    fr_udp4500,
-                ]))
+            target_vpn_gateway=target_gateway.id)
         route1 = gcp.compute.Route("route1",
+            name="route1",
             network=network1.name,
             dest_range="15.0.0.0/24",
             priority=1000,

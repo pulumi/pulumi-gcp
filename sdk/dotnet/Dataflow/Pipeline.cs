@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Dataflow
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var serviceAccount = new Gcp.ServiceAccount.Account("serviceAccount", new()
+    ///     var serviceAccount = new Gcp.ServiceAccount.Account("service_account", new()
     ///     {
     ///         AccountId = "my-account",
     ///         DisplayName = "Service Account",
@@ -37,6 +37,7 @@ namespace Pulumi.Gcp.Dataflow
     /// 
     ///     var primary = new Gcp.Dataflow.Pipeline("primary", new()
     ///     {
+    ///         Name = "my-pipeline",
     ///         DisplayName = "my-pipeline",
     ///         Type = "PIPELINE_TYPE_BATCH",
     ///         State = "STATE_ACTIVE",

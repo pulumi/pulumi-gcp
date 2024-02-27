@@ -322,9 +322,9 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.iap.WebRegionBackendServiceIamPolicy("policy",
-            project=google_compute_region_backend_service["default"]["project"],
-            region=google_compute_region_backend_service["default"]["region"],
-            web_region_backend_service=google_compute_region_backend_service["default"]["name"],
+            project=default["project"],
+            region=default["region"],
+            web_region_backend_service=default["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -344,9 +344,9 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
             ),
         )])
         policy = gcp.iap.WebRegionBackendServiceIamPolicy("policy",
-            project=google_compute_region_backend_service["default"]["project"],
-            region=google_compute_region_backend_service["default"]["region"],
-            web_region_backend_service=google_compute_region_backend_service["default"]["name"],
+            project=default["project"],
+            region=default["region"],
+            web_region_backend_service=default["name"],
             policy_data=admin.policy_data)
         ```
         ## google\\_iap\\_web\\_region\\_backend\\_service\\_iam\\_binding
@@ -356,9 +356,9 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.iap.WebRegionBackendServiceIamBinding("binding",
-            project=google_compute_region_backend_service["default"]["project"],
-            region=google_compute_region_backend_service["default"]["region"],
-            web_region_backend_service=google_compute_region_backend_service["default"]["name"],
+            project=default["project"],
+            region=default["region"],
+            web_region_backend_service=default["name"],
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"])
         ```
@@ -370,9 +370,9 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.iap.WebRegionBackendServiceIamBinding("binding",
-            project=google_compute_region_backend_service["default"]["project"],
-            region=google_compute_region_backend_service["default"]["region"],
-            web_region_backend_service=google_compute_region_backend_service["default"]["name"],
+            project=default["project"],
+            region=default["region"],
+            web_region_backend_service=default["name"],
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
             condition=gcp.iap.WebRegionBackendServiceIamBindingConditionArgs(
@@ -388,9 +388,9 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.iap.WebRegionBackendServiceIamMember("member",
-            project=google_compute_region_backend_service["default"]["project"],
-            region=google_compute_region_backend_service["default"]["region"],
-            web_region_backend_service=google_compute_region_backend_service["default"]["name"],
+            project=default["project"],
+            region=default["region"],
+            web_region_backend_service=default["name"],
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com")
         ```
@@ -402,9 +402,9 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.iap.WebRegionBackendServiceIamMember("member",
-            project=google_compute_region_backend_service["default"]["project"],
-            region=google_compute_region_backend_service["default"]["region"],
-            web_region_backend_service=google_compute_region_backend_service["default"]["name"],
+            project=default["project"],
+            region=default["region"],
+            web_region_backend_service=default["name"],
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com",
             condition=gcp.iap.WebRegionBackendServiceIamMemberConditionArgs(
@@ -509,9 +509,9 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.iap.WebRegionBackendServiceIamPolicy("policy",
-            project=google_compute_region_backend_service["default"]["project"],
-            region=google_compute_region_backend_service["default"]["region"],
-            web_region_backend_service=google_compute_region_backend_service["default"]["name"],
+            project=default["project"],
+            region=default["region"],
+            web_region_backend_service=default["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -531,9 +531,9 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
             ),
         )])
         policy = gcp.iap.WebRegionBackendServiceIamPolicy("policy",
-            project=google_compute_region_backend_service["default"]["project"],
-            region=google_compute_region_backend_service["default"]["region"],
-            web_region_backend_service=google_compute_region_backend_service["default"]["name"],
+            project=default["project"],
+            region=default["region"],
+            web_region_backend_service=default["name"],
             policy_data=admin.policy_data)
         ```
         ## google\\_iap\\_web\\_region\\_backend\\_service\\_iam\\_binding
@@ -543,9 +543,9 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.iap.WebRegionBackendServiceIamBinding("binding",
-            project=google_compute_region_backend_service["default"]["project"],
-            region=google_compute_region_backend_service["default"]["region"],
-            web_region_backend_service=google_compute_region_backend_service["default"]["name"],
+            project=default["project"],
+            region=default["region"],
+            web_region_backend_service=default["name"],
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"])
         ```
@@ -557,9 +557,9 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.iap.WebRegionBackendServiceIamBinding("binding",
-            project=google_compute_region_backend_service["default"]["project"],
-            region=google_compute_region_backend_service["default"]["region"],
-            web_region_backend_service=google_compute_region_backend_service["default"]["name"],
+            project=default["project"],
+            region=default["region"],
+            web_region_backend_service=default["name"],
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
             condition=gcp.iap.WebRegionBackendServiceIamBindingConditionArgs(
@@ -575,9 +575,9 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.iap.WebRegionBackendServiceIamMember("member",
-            project=google_compute_region_backend_service["default"]["project"],
-            region=google_compute_region_backend_service["default"]["region"],
-            web_region_backend_service=google_compute_region_backend_service["default"]["name"],
+            project=default["project"],
+            region=default["region"],
+            web_region_backend_service=default["name"],
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com")
         ```
@@ -589,9 +589,9 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.iap.WebRegionBackendServiceIamMember("member",
-            project=google_compute_region_backend_service["default"]["project"],
-            region=google_compute_region_backend_service["default"]["region"],
-            web_region_backend_service=google_compute_region_backend_service["default"]["name"],
+            project=default["project"],
+            region=default["region"],
+            web_region_backend_service=default["name"],
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com",
             condition=gcp.iap.WebRegionBackendServiceIamMemberConditionArgs(

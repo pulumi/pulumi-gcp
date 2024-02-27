@@ -35,14 +35,14 @@ namespace Pulumi.Gcp.SecurityCenter
     /// {
     ///     var example = new Gcp.SecurityCenter.ProjectCustomModule("example", new()
     ///     {
+    ///         DisplayName = "basic_custom_module",
+    ///         EnablementState = "ENABLED",
     ///         CustomConfig = new Gcp.SecurityCenter.Inputs.ProjectCustomModuleCustomConfigArgs
     ///         {
-    ///             Description = "The rotation period of the identified cryptokey resource exceeds 30 days.",
     ///             Predicate = new Gcp.SecurityCenter.Inputs.ProjectCustomModuleCustomConfigPredicateArgs
     ///             {
     ///                 Expression = "resource.rotationPeriod &gt; duration(\"2592000s\")",
     ///             },
-    ///             Recommendation = "Set the rotation period to at most 30 days.",
     ///             ResourceSelector = new Gcp.SecurityCenter.Inputs.ProjectCustomModuleCustomConfigResourceSelectorArgs
     ///             {
     ///                 ResourceTypes = new[]
@@ -50,10 +50,10 @@ namespace Pulumi.Gcp.SecurityCenter
     ///                     "cloudkms.googleapis.com/CryptoKey",
     ///                 },
     ///             },
+    ///             Description = "The rotation period of the identified cryptokey resource exceeds 30 days.",
+    ///             Recommendation = "Set the rotation period to at most 30 days.",
     ///             Severity = "MEDIUM",
     ///         },
-    ///         DisplayName = "basic_custom_module",
-    ///         EnablementState = "ENABLED",
     ///     });
     /// 
     /// });
@@ -70,8 +70,17 @@ namespace Pulumi.Gcp.SecurityCenter
     /// {
     ///     var example = new Gcp.SecurityCenter.ProjectCustomModule("example", new()
     ///     {
+    ///         DisplayName = "full_custom_module",
+    ///         EnablementState = "ENABLED",
     ///         CustomConfig = new Gcp.SecurityCenter.Inputs.ProjectCustomModuleCustomConfigArgs
     ///         {
+    ///             Predicate = new Gcp.SecurityCenter.Inputs.ProjectCustomModuleCustomConfigPredicateArgs
+    ///             {
+    ///                 Expression = "resource.rotationPeriod &gt; duration(\"2592000s\")",
+    ///                 Title = "Purpose of the expression",
+    ///                 Description = "description of the expression",
+    ///                 Location = "location of the expression",
+    ///             },
     ///             CustomOutput = new Gcp.SecurityCenter.Inputs.ProjectCustomModuleCustomConfigCustomOutputArgs
     ///             {
     ///                 Properties = new[]
@@ -81,23 +90,14 @@ namespace Pulumi.Gcp.SecurityCenter
     ///                         Name = "duration",
     ///                         ValueExpression = new Gcp.SecurityCenter.Inputs.ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs
     ///                         {
-    ///                             Description = "description of the expression",
     ///                             Expression = "resource.rotationPeriod",
-    ///                             Location = "location of the expression",
     ///                             Title = "Purpose of the expression",
+    ///                             Description = "description of the expression",
+    ///                             Location = "location of the expression",
     ///                         },
     ///                     },
     ///                 },
     ///             },
-    ///             Description = "Description of the custom module",
-    ///             Predicate = new Gcp.SecurityCenter.Inputs.ProjectCustomModuleCustomConfigPredicateArgs
-    ///             {
-    ///                 Description = "description of the expression",
-    ///                 Expression = "resource.rotationPeriod &gt; duration(\"2592000s\")",
-    ///                 Location = "location of the expression",
-    ///                 Title = "Purpose of the expression",
-    ///             },
-    ///             Recommendation = "Steps to resolve violation",
     ///             ResourceSelector = new Gcp.SecurityCenter.Inputs.ProjectCustomModuleCustomConfigResourceSelectorArgs
     ///             {
     ///                 ResourceTypes = new[]
@@ -106,9 +106,9 @@ namespace Pulumi.Gcp.SecurityCenter
     ///                 },
     ///             },
     ///             Severity = "LOW",
+    ///             Description = "Description of the custom module",
+    ///             Recommendation = "Steps to resolve violation",
     ///         },
-    ///         DisplayName = "full_custom_module",
-    ///         EnablementState = "ENABLED",
     ///     });
     /// 
     /// });

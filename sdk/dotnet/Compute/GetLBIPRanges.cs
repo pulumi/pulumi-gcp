@@ -32,7 +32,8 @@ namespace Pulumi.Gcp.Compute
         /// 
         ///     var lb = new Gcp.Compute.Firewall("lb", new()
         ///     {
-        ///         Network = google_compute_network.Main.Name,
+        ///         Name = "lb-firewall",
+        ///         Network = main.Name,
         ///         Allows = new[]
         ///         {
         ///             new Gcp.Compute.Inputs.FirewallAllowArgs
@@ -80,7 +81,8 @@ namespace Pulumi.Gcp.Compute
         /// 
         ///     var lb = new Gcp.Compute.Firewall("lb", new()
         ///     {
-        ///         Network = google_compute_network.Main.Name,
+        ///         Name = "lb-firewall",
+        ///         Network = main.Name,
         ///         Allows = new[]
         ///         {
         ///             new Gcp.Compute.Inputs.FirewallAllowArgs

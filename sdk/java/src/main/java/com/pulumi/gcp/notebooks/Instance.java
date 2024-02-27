@@ -63,11 +63,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *             .name(&#34;notebooks-instance&#34;)
  *             .location(&#34;us-west1-a&#34;)
  *             .machineType(&#34;e2-medium&#34;)
  *             .vmImage(InstanceVmImageArgs.builder()
- *                 .imageFamily(&#34;tf-latest-cpu&#34;)
  *                 .project(&#34;deeplearning-platform-release&#34;)
+ *                 .imageFamily(&#34;tf-latest-cpu&#34;)
  *                 .build())
  *             .build());
  * 
@@ -98,13 +99,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .desiredState(&#34;STOPPED&#34;)
+ *             .name(&#34;notebooks-instance&#34;)
  *             .location(&#34;us-west1-a&#34;)
  *             .machineType(&#34;e2-medium&#34;)
  *             .vmImage(InstanceVmImageArgs.builder()
- *                 .imageFamily(&#34;tf-latest-cpu&#34;)
  *                 .project(&#34;deeplearning-platform-release&#34;)
+ *                 .imageFamily(&#34;tf-latest-cpu&#34;)
  *                 .build())
+ *             .desiredState(&#34;STOPPED&#34;)
  *             .build());
  * 
  *     }
@@ -134,13 +136,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *             .name(&#34;notebooks-instance&#34;)
+ *             .location(&#34;us-west1-a&#34;)
+ *             .machineType(&#34;e2-medium&#34;)
+ *             .metadata(Map.of(&#34;proxy-mode&#34;, &#34;service_account&#34;))
  *             .containerImage(InstanceContainerImageArgs.builder()
  *                 .repository(&#34;gcr.io/deeplearning-platform-release/base-cpu&#34;)
  *                 .tag(&#34;latest&#34;)
  *                 .build())
- *             .location(&#34;us-west1-a&#34;)
- *             .machineType(&#34;e2-medium&#34;)
- *             .metadata(Map.of(&#34;proxy-mode&#34;, &#34;service_account&#34;))
  *             .build());
  * 
  *     }
@@ -171,16 +174,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .acceleratorConfig(InstanceAcceleratorConfigArgs.builder()
- *                 .coreCount(1)
- *                 .type(&#34;NVIDIA_TESLA_T4&#34;)
- *                 .build())
- *             .installGpuDriver(true)
+ *             .name(&#34;notebooks-instance&#34;)
  *             .location(&#34;us-west1-a&#34;)
  *             .machineType(&#34;n1-standard-1&#34;)
+ *             .installGpuDriver(true)
+ *             .acceleratorConfig(InstanceAcceleratorConfigArgs.builder()
+ *                 .type(&#34;NVIDIA_TESLA_T4&#34;)
+ *                 .coreCount(1)
+ *                 .build())
  *             .vmImage(InstanceVmImageArgs.builder()
- *                 .imageFamily(&#34;tf-latest-gpu&#34;)
  *                 .project(&#34;deeplearning-platform-release&#34;)
+ *                 .imageFamily(&#34;tf-latest-gpu&#34;)
  *                 .build())
  *             .build());
  * 
@@ -223,6 +227,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *             .name(&#34;notebooks-instance&#34;)
  *             .location(&#34;us-central1-a&#34;)
  *             .machineType(&#34;e2-medium&#34;)
  *             .vmImage(InstanceVmImageArgs.builder()

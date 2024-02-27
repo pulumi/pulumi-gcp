@@ -34,9 +34,66 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vmwareengine.NewNetwork(ctx, "vmw-engine-network", &vmwareengine.NetworkArgs{
-//				Description: pulumi.String("VMwareEngine standard network sample"),
+//				Name:        pulumi.String("standard-nw"),
 //				Location:    pulumi.String("global"),
 //				Type:        pulumi.String("STANDARD"),
+//				Description: pulumi.String("VMwareEngine standard network sample"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Vmware Engine Network Legacy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/vmwareengine"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// there can be only 1 Legacy network per region for a given project,
+//			// so creating new project for isolation in CI.
+//			acceptanceProject, err := organizations.NewProject(ctx, "acceptance", &organizations.ProjectArgs{
+//				Name:           pulumi.String("vmw-proj"),
+//				ProjectId:      pulumi.String("vmw-proj"),
+//				OrgId:          pulumi.String("123456789"),
+//				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			acceptance, err := projects.NewService(ctx, "acceptance", &projects.ServiceArgs{
+//				Project: acceptanceProject.ProjectId,
+//				Service: pulumi.String("vmwareengine.googleapis.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vmwareengine.NewNetwork(ctx, "vmw-engine-network", &vmwareengine.NetworkArgs{
+//				Project:     acceptance.Project,
+//				Name:        pulumi.String("us-west1-default"),
+//				Location:    pulumi.String("us-west1"),
+//				Type:        pulumi.String("LEGACY"),
+//				Description: pulumi.String("VMwareEngine legacy network sample"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
+//				CreateDuration: "60s",
 //			})
 //			if err != nil {
 //				return err

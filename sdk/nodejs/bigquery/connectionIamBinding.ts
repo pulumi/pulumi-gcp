@@ -34,9 +34,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.bigquery.ConnectionIamPolicy("policy", {
- *     project: google_bigquery_connection.connection.project,
- *     location: google_bigquery_connection.connection.location,
- *     connectionId: google_bigquery_connection.connection.connection_id,
+ *     project: connection.project,
+ *     location: connection.location,
+ *     connectionId: connection.connectionId,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -48,9 +48,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.bigquery.ConnectionIamBinding("binding", {
- *     project: google_bigquery_connection.connection.project,
- *     location: google_bigquery_connection.connection.location,
- *     connectionId: google_bigquery_connection.connection.connection_id,
+ *     project: connection.project,
+ *     location: connection.location,
+ *     connectionId: connection.connectionId,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
  * });
@@ -63,9 +63,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.bigquery.ConnectionIamMember("member", {
- *     project: google_bigquery_connection.connection.project,
- *     location: google_bigquery_connection.connection.location,
- *     connectionId: google_bigquery_connection.connection.connection_id,
+ *     project: connection.project,
+ *     location: connection.location,
+ *     connectionId: connection.connectionId,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
  * });

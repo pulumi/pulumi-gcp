@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.datacatalog.TaxonomyIamPolicy("policy", {
- *     taxonomy: google_data_catalog_taxonomy.basic_taxonomy.name,
+ *     taxonomy: basicTaxonomy.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.datacatalog.TaxonomyIamBinding("binding", {
- *     taxonomy: google_data_catalog_taxonomy.basic_taxonomy.name,
+ *     taxonomy: basicTaxonomy.name,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
  * });
@@ -57,7 +57,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.datacatalog.TaxonomyIamMember("member", {
- *     taxonomy: google_data_catalog_taxonomy.basic_taxonomy.name,
+ *     taxonomy: basicTaxonomy.name,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
  * });

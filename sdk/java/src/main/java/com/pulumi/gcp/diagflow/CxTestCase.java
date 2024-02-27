@@ -148,7 +148,7 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .injectedParameters(serializeJson(
  *                             jsonObject(
- *                                 jsonProperty(&#34;some_param&#34;, &#34;1&#34;)
+ *                                 jsonProperty(&#34;someParam&#34;, &#34;1&#34;)
  *                             )))
  *                         .isWebhookEnabled(true)
  *                         .enableSentimentAnalysis(true)
@@ -156,7 +156,7 @@ import javax.annotation.Nullable;
  *                     .virtualAgentOutput(CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs.builder()
  *                         .sessionParameters(serializeJson(
  *                             jsonObject(
- *                                 jsonProperty(&#34;some_param&#34;, &#34;1&#34;)
+ *                                 jsonProperty(&#34;someParam&#34;, &#34;1&#34;)
  *                             )))
  *                         .triggeredIntent(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs.builder()
  *                             .name(intent.id())

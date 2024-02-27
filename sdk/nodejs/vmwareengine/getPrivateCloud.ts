@@ -19,8 +19,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const myPc = gcp.vmwareengine.getPrivateCloud({
- *     location: "us-central1-a",
  *     name: "my-pc",
+ *     location: "us-central1-a",
  * });
  * ```
  */
@@ -89,8 +89,8 @@ export interface GetPrivateCloudResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const myPc = gcp.vmwareengine.getPrivateCloud({
- *     location: "us-central1-a",
  *     name: "my-pc",
+ *     location: "us-central1-a",
  * });
  * ```
  */

@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultMetastoreService, err := dataproc.NewMetastoreService(ctx, "defaultMetastoreService", &dataproc.MetastoreServiceArgs{
+//			defaultMetastoreService, err := dataproc.NewMetastoreService(ctx, "default", &dataproc.MetastoreServiceArgs{
 //				ServiceId: pulumi.String(""),
 //				Location:  pulumi.String("us-central1"),
 //				Tier:      pulumi.String("DEVELOPER"),
@@ -35,11 +35,11 @@ import (
 //					Version:          pulumi.String("3.1.2"),
 //					EndpointProtocol: pulumi.String("GRPC"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dataproc.NewMetastoreFederation(ctx, "defaultMetastoreFederation", &dataproc.MetastoreFederationArgs{
+//			_, err = dataproc.NewMetastoreFederation(ctx, "default", &dataproc.MetastoreFederationArgs{
 //				Location:     pulumi.String("us-central1"),
 //				FederationId: pulumi.String(""),
 //				Version:      pulumi.String("3.1.2"),
@@ -50,7 +50,7 @@ import (
 //						MetastoreType: pulumi.String("DATAPROC_METASTORE"),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -74,7 +74,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultMetastoreService, err := dataproc.NewMetastoreService(ctx, "defaultMetastoreService", &dataproc.MetastoreServiceArgs{
+//			defaultMetastoreService, err := dataproc.NewMetastoreService(ctx, "default", &dataproc.MetastoreServiceArgs{
 //				ServiceId: pulumi.String(""),
 //				Location:  pulumi.String("us-central1"),
 //				Tier:      pulumi.String("DEVELOPER"),
@@ -82,7 +82,7 @@ import (
 //					Version:          pulumi.String("3.1.2"),
 //					EndpointProtocol: pulumi.String("GRPC"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -90,7 +90,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dataproc.NewMetastoreFederation(ctx, "defaultMetastoreFederation", &dataproc.MetastoreFederationArgs{
+//			_, err = dataproc.NewMetastoreFederation(ctx, "default", &dataproc.MetastoreFederationArgs{
 //				Location:     pulumi.String("us-central1"),
 //				FederationId: pulumi.String(""),
 //				Version:      pulumi.String("3.1.2"),
@@ -106,7 +106,7 @@ import (
 //						MetastoreType: pulumi.String("DATAPROC_METASTORE"),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

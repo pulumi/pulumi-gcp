@@ -204,11 +204,13 @@ class NetworkFirewallPolicyAssociation(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network_firewall_policy = gcp.compute.NetworkFirewallPolicy("networkFirewallPolicy",
+        network_firewall_policy = gcp.compute.NetworkFirewallPolicy("network_firewall_policy",
+            name="policy",
             project="my-project-name",
             description="Sample global network firewall policy")
-        network = gcp.compute.Network("network")
+        network = gcp.compute.Network("network", name="network")
         primary = gcp.compute.NetworkFirewallPolicyAssociation("primary",
+            name="association",
             attachment_target=network.id,
             firewall_policy=network_firewall_policy.name,
             project="my-project-name")
@@ -258,11 +260,13 @@ class NetworkFirewallPolicyAssociation(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network_firewall_policy = gcp.compute.NetworkFirewallPolicy("networkFirewallPolicy",
+        network_firewall_policy = gcp.compute.NetworkFirewallPolicy("network_firewall_policy",
+            name="policy",
             project="my-project-name",
             description="Sample global network firewall policy")
-        network = gcp.compute.Network("network")
+        network = gcp.compute.Network("network", name="network")
         primary = gcp.compute.NetworkFirewallPolicyAssociation("primary",
+            name="association",
             attachment_target=network.id,
             firewall_policy=network_firewall_policy.name,
             project="my-project-name")

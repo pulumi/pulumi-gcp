@@ -410,12 +410,12 @@ class ClientTlsPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.ClientTlsPolicy("default",
+            name="my-client-tls-policy",
             labels={
                 "foo": "bar",
             },
             description="my description",
-            sni="secure.example.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            sni="secure.example.com")
         ```
         ### Network Security Client Tls Policy Advanced
 
@@ -424,6 +424,7 @@ class ClientTlsPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.ClientTlsPolicy("default",
+            name="my-client-tls-policy",
             labels={
                 "foo": "bar",
             },
@@ -444,8 +445,7 @@ class ClientTlsPolicy(pulumi.CustomResource):
                         target_uri="unix:mypath1",
                     ),
                 ),
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ])
         ```
 
         ## Import
@@ -507,12 +507,12 @@ class ClientTlsPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.ClientTlsPolicy("default",
+            name="my-client-tls-policy",
             labels={
                 "foo": "bar",
             },
             description="my description",
-            sni="secure.example.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            sni="secure.example.com")
         ```
         ### Network Security Client Tls Policy Advanced
 
@@ -521,6 +521,7 @@ class ClientTlsPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.ClientTlsPolicy("default",
+            name="my-client-tls-policy",
             labels={
                 "foo": "bar",
             },
@@ -541,8 +542,7 @@ class ClientTlsPolicy(pulumi.CustomResource):
                         target_uri="unix:mypath1",
                     ),
                 ),
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ])
         ```
 
         ## Import

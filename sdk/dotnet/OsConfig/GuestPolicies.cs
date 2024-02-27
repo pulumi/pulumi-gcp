@@ -39,6 +39,7 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     ///     var foobar = new Gcp.Compute.Instance("foobar", new()
     ///     {
+    ///         Name = "guest-policy-inst",
     ///         MachineType = "e2-medium",
     ///         Zone = "us-central1-a",
     ///         CanIpForward = false,
@@ -65,12 +66,9 @@ namespace Pulumi.Gcp.OsConfig
     ///         {
     ///             { "foo", "bar" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var guestPolicies = new Gcp.OsConfig.GuestPolicies("guestPolicies", new()
+    ///     var guestPolicies = new Gcp.OsConfig.GuestPolicies("guest_policies", new()
     ///     {
     ///         GuestPolicyId = "guest-policy",
     ///         Assignment = new Gcp.OsConfig.Inputs.GuestPoliciesAssignmentArgs
@@ -88,9 +86,6 @@ namespace Pulumi.Gcp.OsConfig
     ///                 DesiredState = "UPDATED",
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -105,7 +100,7 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var guestPolicies = new Gcp.OsConfig.GuestPolicies("guestPolicies", new()
+    ///     var guestPolicies = new Gcp.OsConfig.GuestPolicies("guest_policies", new()
     ///     {
     ///         GuestPolicyId = "guest-policy",
     ///         Assignment = new Gcp.OsConfig.Inputs.GuestPoliciesAssignmentArgs
@@ -179,9 +174,6 @@ namespace Pulumi.Gcp.OsConfig
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -196,7 +188,7 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var guestPolicies = new Gcp.OsConfig.GuestPolicies("guestPolicies", new()
+    ///     var guestPolicies = new Gcp.OsConfig.GuestPolicies("guest_policies", new()
     ///     {
     ///         GuestPolicyId = "guest-policy",
     ///         Assignment = new Gcp.OsConfig.Inputs.GuestPoliciesAssignmentArgs
@@ -238,9 +230,6 @@ namespace Pulumi.Gcp.OsConfig
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

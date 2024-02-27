@@ -32,6 +32,7 @@ namespace Pulumi.Gcp.Kms
     /// {
     ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
     ///     {
+    ///         Name = "keyring-example",
     ///         Location = "global",
     ///     });
     /// 
@@ -50,7 +51,7 @@ namespace Pulumi.Gcp.Kms
     ///         },
     ///     });
     /// 
-    ///     var keyRing = new Gcp.Kms.KeyRingIAMPolicy("keyRing", new()
+    ///     var keyRing = new Gcp.Kms.KeyRingIAMPolicy("key_ring", new()
     ///     {
     ///         KeyRingId = keyring.Id,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
@@ -71,6 +72,7 @@ namespace Pulumi.Gcp.Kms
     /// {
     ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
     ///     {
+    ///         Name = "keyring-example",
     ///         Location = "global",
     ///     });
     /// 
@@ -95,7 +97,7 @@ namespace Pulumi.Gcp.Kms
     ///         },
     ///     });
     /// 
-    ///     var keyRing = new Gcp.Kms.KeyRingIAMPolicy("keyRing", new()
+    ///     var keyRing = new Gcp.Kms.KeyRingIAMPolicy("key_ring", new()
     ///     {
     ///         KeyRingId = keyring.Id,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
@@ -114,14 +116,14 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var keyRing = new Gcp.Kms.KeyRingIAMBinding("keyRing", new()
+    ///     var keyRing = new Gcp.Kms.KeyRingIAMBinding("key_ring", new()
     ///     {
     ///         KeyRingId = "your-key-ring-id",
+    ///         Role = "roles/cloudkms.admin",
     ///         Members = new[]
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         Role = "roles/cloudkms.admin",
     ///     });
     /// 
     /// });
@@ -137,20 +139,20 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var keyRing = new Gcp.Kms.KeyRingIAMBinding("keyRing", new()
+    ///     var keyRing = new Gcp.Kms.KeyRingIAMBinding("key_ring", new()
     ///     {
-    ///         Condition = new Gcp.Kms.Inputs.KeyRingIAMBindingConditionArgs
-    ///         {
-    ///             Description = "Expiring at midnight of 2019-12-31",
-    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///             Title = "expires_after_2019_12_31",
-    ///         },
     ///         KeyRingId = "your-key-ring-id",
+    ///         Role = "roles/cloudkms.admin",
     ///         Members = new[]
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         Role = "roles/cloudkms.admin",
+    ///         Condition = new Gcp.Kms.Inputs.KeyRingIAMBindingConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
     ///     });
     /// 
     /// });
@@ -166,11 +168,11 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var keyRing = new Gcp.Kms.KeyRingIAMMember("keyRing", new()
+    ///     var keyRing = new Gcp.Kms.KeyRingIAMMember("key_ring", new()
     ///     {
     ///         KeyRingId = "your-key-ring-id",
-    ///         Member = "user:jane@example.com",
     ///         Role = "roles/cloudkms.admin",
+    ///         Member = "user:jane@example.com",
     ///     });
     /// 
     /// });
@@ -186,17 +188,17 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var keyRing = new Gcp.Kms.KeyRingIAMMember("keyRing", new()
+    ///     var keyRing = new Gcp.Kms.KeyRingIAMMember("key_ring", new()
     ///     {
+    ///         KeyRingId = "your-key-ring-id",
+    ///         Role = "roles/cloudkms.admin",
+    ///         Member = "user:jane@example.com",
     ///         Condition = new Gcp.Kms.Inputs.KeyRingIAMMemberConditionArgs
     ///         {
+    ///             Title = "expires_after_2019_12_31",
     ///             Description = "Expiring at midnight of 2019-12-31",
     ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///             Title = "expires_after_2019_12_31",
     ///         },
-    ///         KeyRingId = "your-key-ring-id",
-    ///         Member = "user:jane@example.com",
-    ///         Role = "roles/cloudkms.admin",
     ///     });
     /// 
     /// });

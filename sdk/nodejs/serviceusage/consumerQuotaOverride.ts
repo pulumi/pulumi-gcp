@@ -16,6 +16,87 @@ import * as utilities from "../utilities";
  *     * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
  *
  * ## Example Usage
+ * ### Consumer Quota Override
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const myProject = new gcp.organizations.Project("my_project", {
+ *     name: "tf-test-project",
+ *     projectId: "quota",
+ *     orgId: "123456789",
+ * });
+ * const override = new gcp.serviceusage.ConsumerQuotaOverride("override", {
+ *     project: myProject.projectId,
+ *     service: "servicemanagement.googleapis.com",
+ *     metric: std.urlencode({
+ *         input: "servicemanagement.googleapis.com/default_requests",
+ *     }).then(invoke => invoke.result),
+ *     limit: std.urlencode({
+ *         input: "/min/project",
+ *     }).then(invoke => invoke.result),
+ *     overrideValue: "95",
+ *     force: true,
+ * });
+ * ```
+ * ### Region Consumer Quota Override
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const myProject = new gcp.organizations.Project("my_project", {
+ *     name: "tf-test-project",
+ *     projectId: "quota",
+ *     orgId: "123456789",
+ * });
+ * const override = new gcp.serviceusage.ConsumerQuotaOverride("override", {
+ *     dimensions: {
+ *         region: "us-central1",
+ *     },
+ *     project: myProject.projectId,
+ *     service: "compute.googleapis.com",
+ *     metric: std.urlencode({
+ *         input: "compute.googleapis.com/n2_cpus",
+ *     }).then(invoke => invoke.result),
+ *     limit: std.urlencode({
+ *         input: "/project/region",
+ *     }).then(invoke => invoke.result),
+ *     overrideValue: "8",
+ *     force: true,
+ * });
+ * ```
+ * ### Consumer Quota Override Custom Dimension
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const myProject = new gcp.organizations.Project("my_project", {
+ *     name: "tf-test-project",
+ *     projectId: "quota",
+ *     orgId: "123456789",
+ * });
+ * const override = new gcp.serviceusage.ConsumerQuotaOverride("override", {
+ *     project: myProject.projectId,
+ *     service: "libraryagent.googleapis.com",
+ *     metric: std.urlencode({
+ *         input: "libraryagent.googleapis.com/borrows",
+ *     }).then(invoke => invoke.result),
+ *     limit: std.urlencode({
+ *         input: "/author/project",
+ *     }).then(invoke => invoke.result),
+ *     overrideValue: "1",
+ *     force: true,
+ *     dimensions: {
+ *         author: "larry",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

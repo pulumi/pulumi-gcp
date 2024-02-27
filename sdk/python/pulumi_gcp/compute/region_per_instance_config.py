@@ -424,6 +424,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         igm_basic = gcp.compute.InstanceTemplate("igm-basic",
+            name="my-template",
             machine_type="e2-medium",
             can_ip_forward=False,
             tags=[
@@ -447,6 +448,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
             ))
         rigm = gcp.compute.RegionInstanceGroupManager("rigm",
             description="Demo test instance group manager",
+            name="my-rigm",
             versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
                 name="prod",
                 instance_template=igm_basic.self_link,
@@ -460,13 +462,15 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
             region="us-central1",
             target_size=2)
         default = gcp.compute.Disk("default",
+            name="my-disk-name",
             type="pd-ssd",
             zone="us-central1-a",
             image="debian-11-bullseye-v20220719",
             physical_block_size_bytes=4096)
-        with_disk = gcp.compute.RegionPerInstanceConfig("withDisk",
-            region=google_compute_region_instance_group_manager["igm"]["region"],
+        with_disk = gcp.compute.RegionPerInstanceConfig("with_disk",
+            region=igm["region"],
             region_instance_group_manager=rigm.name,
+            name="instance-1",
             preserved_state=gcp.compute.RegionPerInstanceConfigPreservedStateArgs(
                 metadata={
                     "foo": "bar",
@@ -567,6 +571,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         igm_basic = gcp.compute.InstanceTemplate("igm-basic",
+            name="my-template",
             machine_type="e2-medium",
             can_ip_forward=False,
             tags=[
@@ -590,6 +595,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
             ))
         rigm = gcp.compute.RegionInstanceGroupManager("rigm",
             description="Demo test instance group manager",
+            name="my-rigm",
             versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
                 name="prod",
                 instance_template=igm_basic.self_link,
@@ -603,13 +609,15 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
             region="us-central1",
             target_size=2)
         default = gcp.compute.Disk("default",
+            name="my-disk-name",
             type="pd-ssd",
             zone="us-central1-a",
             image="debian-11-bullseye-v20220719",
             physical_block_size_bytes=4096)
-        with_disk = gcp.compute.RegionPerInstanceConfig("withDisk",
-            region=google_compute_region_instance_group_manager["igm"]["region"],
+        with_disk = gcp.compute.RegionPerInstanceConfig("with_disk",
+            region=igm["region"],
             region_instance_group_manager=rigm.name,
+            name="instance-1",
             preserved_state=gcp.compute.RegionPerInstanceConfigPreservedStateArgs(
                 metadata={
                     "foo": "bar",

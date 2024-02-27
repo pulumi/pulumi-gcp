@@ -87,9 +87,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var editor = new SubscriptionIAMBinding(&#34;editor&#34;, SubscriptionIAMBindingArgs.builder()        
- *             .members(&#34;user:jane@example.com&#34;)
- *             .role(&#34;roles/editor&#34;)
  *             .subscription(&#34;your-subscription-name&#34;)
+ *             .role(&#34;roles/editor&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
  * 
  *     }
@@ -119,9 +119,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var editor = new SubscriptionIAMMember(&#34;editor&#34;, SubscriptionIAMMemberArgs.builder()        
- *             .member(&#34;user:jane@example.com&#34;)
- *             .role(&#34;roles/editor&#34;)
  *             .subscription(&#34;your-subscription-name&#34;)
+ *             .role(&#34;roles/editor&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
  *             .build());
  * 
  *     }

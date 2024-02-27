@@ -32,8 +32,8 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// {
     ///     var tenant = new Gcp.IdentityPlatform.Tenant("tenant", new()
     ///     {
-    ///         AllowPasswordSignup = true,
     ///         DisplayName = "tenant",
+    ///         AllowPasswordSignup = true,
     ///     });
     /// 
     /// });

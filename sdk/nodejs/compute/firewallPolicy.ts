@@ -18,9 +18,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.compute.FirewallPolicy("default", {
- *     description: "Example Resource",
  *     parent: "organizations/12345",
  *     shortName: "my-policy",
+ *     description: "Example Resource",
  * });
  * ```
  *

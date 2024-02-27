@@ -21,6 +21,148 @@ import (
 //   - [Official Documentation](https://cloud.google.com/dlp/docs/creating-templates-inspect)
 //
 // ## Example Usage
+// ### Dlp Inspect Template Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataloss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataloss.NewPreventionInspectTemplate(ctx, "basic", &dataloss.PreventionInspectTemplateArgs{
+//				Parent:      pulumi.String("projects/my-project-name"),
+//				Description: pulumi.String("My description"),
+//				DisplayName: pulumi.String("display_name"),
+//				InspectConfig: &dataloss.PreventionInspectTemplateInspectConfigArgs{
+//					InfoTypes: dataloss.PreventionInspectTemplateInspectConfigInfoTypeArray{
+//						&dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs{
+//							Name: pulumi.String("EMAIL_ADDRESS"),
+//						},
+//						&dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs{
+//							Name: pulumi.String("PERSON_NAME"),
+//						},
+//						&dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs{
+//							Name: pulumi.String("LAST_NAME"),
+//						},
+//						&dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs{
+//							Name: pulumi.String("DOMAIN_NAME"),
+//						},
+//						&dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs{
+//							Name: pulumi.String("PHONE_NUMBER"),
+//						},
+//						&dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs{
+//							Name: pulumi.String("FIRST_NAME"),
+//						},
+//					},
+//					MinLikelihood: pulumi.String("UNLIKELY"),
+//					RuleSets: dataloss.PreventionInspectTemplateInspectConfigRuleSetArray{
+//						&dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs{
+//							InfoTypes: dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArray{
+//								&dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs{
+//									Name: pulumi.String("EMAIL_ADDRESS"),
+//								},
+//							},
+//							Rules: dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArray{
+//								&dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs{
+//									ExclusionRule: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs{
+//										Regex: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs{
+//											Pattern: pulumi.String(".+@example.com"),
+//										},
+//										MatchingType: pulumi.String("MATCHING_TYPE_FULL_MATCH"),
+//									},
+//								},
+//							},
+//						},
+//						&dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs{
+//							InfoTypes: dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArray{
+//								&dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs{
+//									Name: pulumi.String("EMAIL_ADDRESS"),
+//								},
+//								&dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs{
+//									Name: pulumi.String("DOMAIN_NAME"),
+//								},
+//								&dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs{
+//									Name: pulumi.String("PHONE_NUMBER"),
+//								},
+//								&dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs{
+//									Name: pulumi.String("PERSON_NAME"),
+//								},
+//								&dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs{
+//									Name: pulumi.String("FIRST_NAME"),
+//								},
+//							},
+//							Rules: dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArray{
+//								&dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs{
+//									ExclusionRule: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs{
+//										Dictionary: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgs{
+//											WordList: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs{
+//												Words: pulumi.StringArray{
+//													pulumi.String("TEST"),
+//												},
+//											},
+//										},
+//										MatchingType: pulumi.String("MATCHING_TYPE_PARTIAL_MATCH"),
+//									},
+//								},
+//							},
+//						},
+//						&dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs{
+//							InfoTypes: dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArray{
+//								&dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs{
+//									Name: pulumi.String("PERSON_NAME"),
+//								},
+//							},
+//							Rules: dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArray{
+//								&dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs{
+//									HotwordRule: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs{
+//										HotwordRegex: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs{
+//											Pattern: pulumi.String("patient"),
+//										},
+//										Proximity: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs{
+//											WindowBefore: pulumi.Int(50),
+//										},
+//										LikelihoodAdjustment: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs{
+//											FixedLikelihood: pulumi.String("VERY_LIKELY"),
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//					Limits: &dataloss.PreventionInspectTemplateInspectConfigLimitsArgs{
+//						MaxFindingsPerItem:    pulumi.Int(10),
+//						MaxFindingsPerRequest: pulumi.Int(50),
+//						MaxFindingsPerInfoTypes: dataloss.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArray{
+//							&dataloss.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs{
+//								MaxFindings: pulumi.Int(75),
+//								InfoType: &dataloss.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs{
+//									Name: pulumi.String("PERSON_NAME"),
+//								},
+//							},
+//							&dataloss.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs{
+//								MaxFindings: pulumi.Int(80),
+//								InfoType: &dataloss.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs{
+//									Name: pulumi.String("LAST_NAME"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Dlp Inspect Template Custom Type
 //
 // ```go
@@ -36,6 +178,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataloss.NewPreventionInspectTemplate(ctx, "custom", &dataloss.PreventionInspectTemplateArgs{
+//				Parent:      pulumi.String("projects/my-project-name"),
 //				Description: pulumi.String("My description"),
 //				DisplayName: pulumi.String("display_name"),
 //				InspectConfig: &dataloss.PreventionInspectTemplateInspectConfigArgs{
@@ -55,10 +198,6 @@ import (
 //							Name: pulumi.String("EMAIL_ADDRESS"),
 //						},
 //					},
-//					Limits: &dataloss.PreventionInspectTemplateInspectConfigLimitsArgs{
-//						MaxFindingsPerItem:    pulumi.Int(10),
-//						MaxFindingsPerRequest: pulumi.Int(50),
-//					},
 //					MinLikelihood: pulumi.String("UNLIKELY"),
 //					RuleSets: dataloss.PreventionInspectTemplateInspectConfigRuleSetArray{
 //						&dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs{
@@ -70,10 +209,10 @@ import (
 //							Rules: dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArray{
 //								&dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs{
 //									ExclusionRule: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs{
-//										MatchingType: pulumi.String("MATCHING_TYPE_FULL_MATCH"),
 //										Regex: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs{
 //											Pattern: pulumi.String(".+@example.com"),
 //										},
+//										MatchingType: pulumi.String("MATCHING_TYPE_FULL_MATCH"),
 //									},
 //								},
 //							},
@@ -90,19 +229,22 @@ import (
 //										HotwordRegex: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs{
 //											Pattern: pulumi.String("example*"),
 //										},
-//										LikelihoodAdjustment: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs{
-//											FixedLikelihood: pulumi.String("VERY_LIKELY"),
-//										},
 //										Proximity: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs{
 //											WindowBefore: pulumi.Int(50),
+//										},
+//										LikelihoodAdjustment: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs{
+//											FixedLikelihood: pulumi.String("VERY_LIKELY"),
 //										},
 //									},
 //								},
 //							},
 //						},
 //					},
+//					Limits: &dataloss.PreventionInspectTemplateInspectConfigLimitsArgs{
+//						MaxFindingsPerItem:    pulumi.Int(10),
+//						MaxFindingsPerRequest: pulumi.Int(50),
+//					},
 //				},
-//				Parent: pulumi.String("projects/my-project-name"),
 //			})
 //			if err != nil {
 //				return err
@@ -126,7 +268,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataloss.NewPreventionInspectTemplate(ctx, "customTypeSurrogate", &dataloss.PreventionInspectTemplateArgs{
+//			_, err := dataloss.NewPreventionInspectTemplate(ctx, "custom_type_surrogate", &dataloss.PreventionInspectTemplateArgs{
+//				Parent:      pulumi.String("projects/my-project-name"),
 //				Description: pulumi.String("My description"),
 //				DisplayName: pulumi.String("display_name"),
 //				InspectConfig: &dataloss.PreventionInspectTemplateInspectConfigArgs{
@@ -144,10 +287,6 @@ import (
 //							Name: pulumi.String("EMAIL_ADDRESS"),
 //						},
 //					},
-//					Limits: &dataloss.PreventionInspectTemplateInspectConfigLimitsArgs{
-//						MaxFindingsPerItem:    pulumi.Int(10),
-//						MaxFindingsPerRequest: pulumi.Int(50),
-//					},
 //					MinLikelihood: pulumi.String("UNLIKELY"),
 //					RuleSets: dataloss.PreventionInspectTemplateInspectConfigRuleSetArray{
 //						&dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs{
@@ -159,10 +298,10 @@ import (
 //							Rules: dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArray{
 //								&dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs{
 //									ExclusionRule: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs{
-//										MatchingType: pulumi.String("MATCHING_TYPE_FULL_MATCH"),
 //										Regex: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs{
 //											Pattern: pulumi.String(".+@example.com"),
 //										},
+//										MatchingType: pulumi.String("MATCHING_TYPE_FULL_MATCH"),
 //									},
 //								},
 //							},
@@ -179,19 +318,22 @@ import (
 //										HotwordRegex: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs{
 //											Pattern: pulumi.String("example*"),
 //										},
-//										LikelihoodAdjustment: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs{
-//											FixedLikelihood: pulumi.String("VERY_LIKELY"),
-//										},
 //										Proximity: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs{
 //											WindowBefore: pulumi.Int(50),
+//										},
+//										LikelihoodAdjustment: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs{
+//											FixedLikelihood: pulumi.String("VERY_LIKELY"),
 //										},
 //									},
 //								},
 //							},
 //						},
 //					},
+//					Limits: &dataloss.PreventionInspectTemplateInspectConfigLimitsArgs{
+//						MaxFindingsPerItem:    pulumi.Int(10),
+//						MaxFindingsPerRequest: pulumi.Int(50),
+//					},
 //				},
-//				Parent: pulumi.String("projects/my-project-name"),
 //			})
 //			if err != nil {
 //				return err

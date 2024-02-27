@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const store = new gcp.vertex.AiMetadataStore("store", {
+ *     name: "test-store",
  *     description: "Store to test the terraform module",
  *     region: "us-central1",
  * });

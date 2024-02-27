@@ -33,6 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewResourcePolicy(ctx, "foo", &compute.ResourcePolicyArgs{
+//				Name:   pulumi.String("gce-policy"),
 //				Region: pulumi.String("us-central1"),
 //				SnapshotSchedulePolicy: &compute.ResourcePolicySnapshotSchedulePolicyArgs{
 //					Schedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs{
@@ -66,24 +67,25 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewResourcePolicy(ctx, "bar", &compute.ResourcePolicyArgs{
+//				Name:   pulumi.String("gce-policy"),
 //				Region: pulumi.String("us-central1"),
 //				SnapshotSchedulePolicy: &compute.ResourcePolicySnapshotSchedulePolicyArgs{
-//					RetentionPolicy: &compute.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs{
-//						MaxRetentionDays:   pulumi.Int(10),
-//						OnSourceDiskDelete: pulumi.String("KEEP_AUTO_SNAPSHOTS"),
-//					},
 //					Schedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs{
 //						HourlySchedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs{
 //							HoursInCycle: pulumi.Int(20),
 //							StartTime:    pulumi.String("23:00"),
 //						},
 //					},
+//					RetentionPolicy: &compute.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs{
+//						MaxRetentionDays:   pulumi.Int(10),
+//						OnSourceDiskDelete: pulumi.String("KEEP_AUTO_SNAPSHOTS"),
+//					},
 //					SnapshotProperties: &compute.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs{
-//						GuestFlush: pulumi.Bool(true),
 //						Labels: pulumi.StringMap{
-//							"myLabel": pulumi.String("value"),
+//							"my_label": pulumi.String("value"),
 //						},
 //						StorageLocations: pulumi.String("us"),
+//						GuestFlush:       pulumi.Bool(true),
 //					},
 //				},
 //			})
@@ -110,11 +112,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewResourcePolicy(ctx, "baz", &compute.ResourcePolicyArgs{
-//				GroupPlacementPolicy: &compute.ResourcePolicyGroupPlacementPolicyArgs{
-//					Collocation: pulumi.String("COLLOCATED"),
-//					VmCount:     pulumi.Int(2),
-//				},
+//				Name:   pulumi.String("gce-policy"),
 //				Region: pulumi.String("us-central1"),
+//				GroupPlacementPolicy: &compute.ResourcePolicyGroupPlacementPolicyArgs{
+//					VmCount:     pulumi.Int(2),
+//					Collocation: pulumi.String("COLLOCATED"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -139,13 +142,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewResourcePolicy(ctx, "baz", &compute.ResourcePolicyArgs{
+//				Name:   pulumi.String("gce-policy"),
 //				Region: pulumi.String("us-central1"),
 //				GroupPlacementPolicy: &compute.ResourcePolicyGroupPlacementPolicyArgs{
 //					VmCount:     pulumi.Int(2),
 //					Collocation: pulumi.String("COLLOCATED"),
 //					MaxDistance: pulumi.Int(2),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -169,17 +173,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewResourcePolicy(ctx, "hourly", &compute.ResourcePolicyArgs{
+//				Name:        pulumi.String("gce-policy"),
+//				Region:      pulumi.String("us-central1"),
 //				Description: pulumi.String("Start and stop instances"),
 //				InstanceSchedulePolicy: &compute.ResourcePolicyInstanceSchedulePolicyArgs{
-//					TimeZone: pulumi.String("US/Central"),
 //					VmStartSchedule: &compute.ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs{
 //						Schedule: pulumi.String("0 * * * *"),
 //					},
 //					VmStopSchedule: &compute.ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs{
 //						Schedule: pulumi.String("15 * * * *"),
 //					},
+//					TimeZone: pulumi.String("US/Central"),
 //				},
-//				Region: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err
@@ -204,26 +209,27 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewResourcePolicy(ctx, "hourly", &compute.ResourcePolicyArgs{
-//				Description: pulumi.String("chain name snapshot"),
+//				Name:        pulumi.String("gce-policy"),
 //				Region:      pulumi.String("us-central1"),
+//				Description: pulumi.String("chain name snapshot"),
 //				SnapshotSchedulePolicy: &compute.ResourcePolicySnapshotSchedulePolicyArgs{
-//					RetentionPolicy: &compute.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs{
-//						MaxRetentionDays:   pulumi.Int(14),
-//						OnSourceDiskDelete: pulumi.String("KEEP_AUTO_SNAPSHOTS"),
-//					},
 //					Schedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs{
 //						HourlySchedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs{
 //							HoursInCycle: pulumi.Int(20),
 //							StartTime:    pulumi.String("23:00"),
 //						},
 //					},
+//					RetentionPolicy: &compute.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs{
+//						MaxRetentionDays:   pulumi.Int(14),
+//						OnSourceDiskDelete: pulumi.String("KEEP_AUTO_SNAPSHOTS"),
+//					},
 //					SnapshotProperties: &compute.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs{
-//						ChainName:  pulumi.String("test-schedule-chain-name"),
-//						GuestFlush: pulumi.Bool(true),
 //						Labels: pulumi.StringMap{
-//							"myLabel": pulumi.String("value"),
+//							"my_label": pulumi.String("value"),
 //						},
 //						StorageLocations: pulumi.String("us"),
+//						GuestFlush:       pulumi.Bool(true),
+//						ChainName:        pulumi.String("test-schedule-chain-name"),
 //					},
 //				},
 //			})
@@ -250,10 +256,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewResourcePolicy(ctx, "cgroup", &compute.ResourcePolicyArgs{
+//				Name:   pulumi.String("gce-policy"),
+//				Region: pulumi.String("europe-west1"),
 //				DiskConsistencyGroupPolicy: &compute.ResourcePolicyDiskConsistencyGroupPolicyArgs{
 //					Enabled: pulumi.Bool(true),
 //				},
-//				Region: pulumi.String("europe-west1"),
 //			})
 //			if err != nil {
 //				return err

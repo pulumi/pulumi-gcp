@@ -32,7 +32,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			basicGlobalNetworksecurityAddressGroup, err := networksecurity.NewAddressGroup(ctx, "basicGlobalNetworksecurityAddressGroup", &networksecurity.AddressGroupArgs{
+//			basicGlobalNetworksecurityAddressGroup, err := networksecurity.NewAddressGroup(ctx, "basic_global_networksecurity_address_group", &networksecurity.AddressGroupArgs{
+//				Name:        pulumi.String("policy"),
 //				Parent:      pulumi.String("projects/my-project-name"),
 //				Description: pulumi.String("Sample global networksecurity_address_group"),
 //				Location:    pulumi.String("global"),
@@ -45,18 +46,21 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			basicNetworkFirewallPolicy, err := compute.NewNetworkFirewallPolicy(ctx, "basicNetworkFirewallPolicy", &compute.NetworkFirewallPolicyArgs{
+//			basicNetworkFirewallPolicy, err := compute.NewNetworkFirewallPolicy(ctx, "basic_network_firewall_policy", &compute.NetworkFirewallPolicyArgs{
+//				Name:        pulumi.String("policy"),
 //				Description: pulumi.String("Sample global network firewall policy"),
 //				Project:     pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			basicNetwork, err := compute.NewNetwork(ctx, "basicNetwork", nil)
+//			basicNetwork, err := compute.NewNetwork(ctx, "basic_network", &compute.NetworkArgs{
+//				Name: pulumi.String("network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			basicKey, err := tags.NewTagKey(ctx, "basicKey", &tags.TagKeyArgs{
+//			basicKey, err := tags.NewTagKey(ctx, "basic_key", &tags.TagKeyArgs{
 //				Description: pulumi.String("For keyname resources."),
 //				Parent:      pulumi.String("organizations/123456789"),
 //				Purpose:     pulumi.String("GCE_FIREWALL"),
@@ -70,7 +74,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			basicValue, err := tags.NewTagValue(ctx, "basicValue", &tags.TagValueArgs{
+//			basicValue, err := tags.NewTagValue(ctx, "basic_value", &tags.TagValueArgs{
 //				Description: pulumi.String("For valuename resources."),
 //				Parent: basicKey.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("tagKeys/%v", name), nil

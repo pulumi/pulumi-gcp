@@ -546,15 +546,16 @@ class Automation(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         pipeline = gcp.clouddeploy.DeliveryPipeline("pipeline",
+            name="cd-pipeline",
             location="us-central1",
             serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
                 stages=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
                     target_id="test",
                     profiles=[],
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         b_automation = gcp.clouddeploy.Automation("b-automation",
+            name="cd-automation",
             project=pipeline.project,
             location=pipeline.location,
             delivery_pipeline=pipeline.name,
@@ -569,8 +570,7 @@ class Automation(pulumi.CustomResource):
                 promote_release_rule=gcp.clouddeploy.AutomationRulePromoteReleaseRuleArgs(
                     id="promote-release",
                 ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
         ### Clouddeploy Automation Full
 
@@ -579,15 +579,16 @@ class Automation(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         pipeline = gcp.clouddeploy.DeliveryPipeline("pipeline",
+            name="cd-pipeline",
             location="us-central1",
             serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
                 stages=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
                     target_id="test",
                     profiles=["test-profile"],
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         f_automation = gcp.clouddeploy.Automation("f-automation",
+            name="cd-automation",
             location="us-central1",
             delivery_pipeline=pipeline.name,
             service_account="my@service-account.com",
@@ -625,8 +626,7 @@ class Automation(pulumi.CustomResource):
                         wait="200s",
                     ),
                 ),
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ])
         ```
 
         ## Import
@@ -689,15 +689,16 @@ class Automation(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         pipeline = gcp.clouddeploy.DeliveryPipeline("pipeline",
+            name="cd-pipeline",
             location="us-central1",
             serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
                 stages=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
                     target_id="test",
                     profiles=[],
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         b_automation = gcp.clouddeploy.Automation("b-automation",
+            name="cd-automation",
             project=pipeline.project,
             location=pipeline.location,
             delivery_pipeline=pipeline.name,
@@ -712,8 +713,7 @@ class Automation(pulumi.CustomResource):
                 promote_release_rule=gcp.clouddeploy.AutomationRulePromoteReleaseRuleArgs(
                     id="promote-release",
                 ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
         ### Clouddeploy Automation Full
 
@@ -722,15 +722,16 @@ class Automation(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         pipeline = gcp.clouddeploy.DeliveryPipeline("pipeline",
+            name="cd-pipeline",
             location="us-central1",
             serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
                 stages=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
                     target_id="test",
                     profiles=["test-profile"],
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         f_automation = gcp.clouddeploy.Automation("f-automation",
+            name="cd-automation",
             location="us-central1",
             delivery_pipeline=pipeline.name,
             service_account="my@service-account.com",
@@ -768,8 +769,7 @@ class Automation(pulumi.CustomResource):
                         wait="200s",
                     ),
                 ),
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ])
         ```
 
         ## Import

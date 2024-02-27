@@ -199,9 +199,9 @@ class IAMBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.organizations.IAMBinding("binding",
-            members=["user:alice@gmail.com"],
             org_id="123456789",
-            role="roles/browser")
+            role="roles/browser",
+            members=["user:alice@gmail.com"])
         ```
 
         ## Import
@@ -251,9 +251,9 @@ class IAMBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.organizations.IAMBinding("binding",
-            members=["user:alice@gmail.com"],
             org_id="123456789",
-            role="roles/browser")
+            role="roles/browser",
+            members=["user:alice@gmail.com"])
         ```
 
         ## Import

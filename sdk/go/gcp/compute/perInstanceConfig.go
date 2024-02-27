@@ -44,6 +44,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewInstanceTemplate(ctx, "igm-basic", &compute.InstanceTemplateArgs{
+//				Name:         pulumi.String("my-template"),
 //				MachineType:  pulumi.String("e2-medium"),
 //				CanIpForward: pulumi.Bool(false),
 //				Tags: pulumi.StringArray{
@@ -75,6 +76,7 @@ import (
 //			}
 //			_, err = compute.NewInstanceGroupManager(ctx, "igm-no-tp", &compute.InstanceGroupManagerArgs{
 //				Description: pulumi.String("Test instance group manager"),
+//				Name:        pulumi.String("my-igm"),
 //				Versions: compute.InstanceGroupManagerVersionArray{
 //					&compute.InstanceGroupManagerVersionArgs{
 //						Name:             pulumi.String("prod"),
@@ -89,17 +91,19 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewDisk(ctx, "default", &compute.DiskArgs{
+//				Name:                   pulumi.String("my-disk-name"),
 //				Type:                   pulumi.String("pd-ssd"),
-//				Zone:                   pulumi.Any(google_compute_instance_group_manager.Igm.Zone),
+//				Zone:                   pulumi.Any(igm.Zone),
 //				Image:                  pulumi.String("debian-11-bullseye-v20220719"),
 //				PhysicalBlockSizeBytes: pulumi.Int(4096),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewPerInstanceConfig(ctx, "withDisk", &compute.PerInstanceConfigArgs{
-//				Zone:                 pulumi.Any(google_compute_instance_group_manager.Igm.Zone),
-//				InstanceGroupManager: pulumi.Any(google_compute_instance_group_manager.Igm.Name),
+//			_, err = compute.NewPerInstanceConfig(ctx, "with_disk", &compute.PerInstanceConfigArgs{
+//				Zone:                 pulumi.Any(igm.Zone),
+//				InstanceGroupManager: pulumi.Any(igm.Name),
+//				Name:                 pulumi.String("instance-1"),
 //				PreservedState: &compute.PerInstanceConfigPreservedStateArgs{
 //					Metadata: pulumi.StringMap{
 //						"foo":               pulumi.String("bar"),

@@ -34,13 +34,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sql.NewSourceRepresentationInstance(ctx, "instance", &sql.SourceRepresentationInstanceArgs{
-//				DatabaseVersion: pulumi.String("MYSQL_8_0"),
-//				DumpFilePath:    pulumi.String("gs://replica-bucket/source-database.sql.gz"),
-//				Host:            pulumi.String("10.20.30.40"),
-//				Password:        pulumi.String("password-for-the-user"),
-//				Port:            pulumi.Int(3306),
+//				Name:            pulumi.String("my-instance"),
 //				Region:          pulumi.String("us-central1"),
+//				DatabaseVersion: pulumi.String("MYSQL_8_0"),
+//				Host:            pulumi.String("10.20.30.40"),
+//				Port:            pulumi.Int(3306),
 //				Username:        pulumi.String("some-user"),
+//				Password:        pulumi.String("password-for-the-user"),
+//				DumpFilePath:    pulumi.String("gs://replica-bucket/source-database.sql.gz"),
 //			})
 //			if err != nil {
 //				return err
@@ -65,13 +66,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sql.NewSourceRepresentationInstance(ctx, "instance", &sql.SourceRepresentationInstanceArgs{
-//				DatabaseVersion: pulumi.String("POSTGRES_9_6"),
-//				DumpFilePath:    pulumi.String("gs://replica-bucket/source-database.sql.gz"),
-//				Host:            pulumi.String("10.20.30.40"),
-//				Password:        pulumi.String("password-for-the-user"),
-//				Port:            pulumi.Int(3306),
+//				Name:            pulumi.String("my-instance"),
 //				Region:          pulumi.String("us-central1"),
+//				DatabaseVersion: pulumi.String("POSTGRES_9_6"),
+//				Host:            pulumi.String("10.20.30.40"),
+//				Port:            pulumi.Int(3306),
 //				Username:        pulumi.String("some-user"),
+//				Password:        pulumi.String("password-for-the-user"),
+//				DumpFilePath:    pulumi.String("gs://replica-bucket/source-database.sql.gz"),
 //			})
 //			if err != nil {
 //				return err

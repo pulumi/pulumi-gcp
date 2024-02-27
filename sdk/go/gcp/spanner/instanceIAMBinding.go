@@ -82,10 +82,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := spanner.NewInstanceIAMBinding(ctx, "instance", &spanner.InstanceIAMBindingArgs{
 //				Instance: pulumi.String("your-instance-name"),
+//				Role:     pulumi.String("roles/spanner.databaseAdmin"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				Role: pulumi.String("roles/spanner.databaseAdmin"),
 //			})
 //			if err != nil {
 //				return err
@@ -112,8 +112,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := spanner.NewInstanceIAMMember(ctx, "instance", &spanner.InstanceIAMMemberArgs{
 //				Instance: pulumi.String("your-instance-name"),
-//				Member:   pulumi.String("user:jane@example.com"),
 //				Role:     pulumi.String("roles/spanner.databaseAdmin"),
+//				Member:   pulumi.String("user:jane@example.com"),
 //			})
 //			if err != nil {
 //				return err

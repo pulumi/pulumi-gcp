@@ -46,6 +46,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			database, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
 //				Project:               pulumi.String("my-project-name"),
+//				Name:                  pulumi.String("database-id"),
 //				LocationId:            pulumi.String("nam5"),
 //				Type:                  pulumi.String("FIRESTORE_NATIVE"),
 //				DeleteProtectionState: pulumi.String("DELETE_PROTECTION_ENABLED"),

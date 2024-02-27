@@ -39,6 +39,7 @@ import (
 //				return err
 //			}
 //			prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
+//				Name:    pulumi.String("prod-zone"),
 //				DnsName: pulumi.String("prod.mydomain.com."),
 //			})
 //			if err != nil {

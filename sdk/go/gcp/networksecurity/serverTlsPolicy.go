@@ -27,6 +27,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networksecurity.NewServerTlsPolicy(ctx, "default", &networksecurity.ServerTlsPolicyArgs{
+//				Name: pulumi.String("my-server-tls-policy"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -56,7 +57,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -80,6 +81,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networksecurity.NewServerTlsPolicy(ctx, "default", &networksecurity.ServerTlsPolicyArgs{
+//				Name: pulumi.String("my-server-tls-policy"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -89,7 +91,7 @@ import (
 //				MtlsPolicy: &networksecurity.ServerTlsPolicyMtlsPolicyArgs{
 //					ClientValidationMode: pulumi.String("ALLOW_INVALID_OR_MISSING_CLIENT_CERT"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -113,6 +115,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networksecurity.NewServerTlsPolicy(ctx, "default", &networksecurity.ServerTlsPolicyArgs{
+//				Name: pulumi.String("my-server-tls-policy"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -124,7 +127,7 @@ import (
 //						TargetUri: pulumi.String("unix:mypath"),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -141,22 +144,14 @@ import (
 // import (
 //
 //	"fmt"
-//	"os"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificatemanager"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networksecurity"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
@@ -164,19 +159,32 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultTrustConfig, err := certificatemanager.NewTrustConfig(ctx, "defaultTrustConfig", &certificatemanager.TrustConfigArgs{
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/ca_cert.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile1, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/ca_cert.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultTrustConfig, err := certificatemanager.NewTrustConfig(ctx, "default", &certificatemanager.TrustConfigArgs{
+//				Name:        pulumi.String("my-trust-config"),
 //				Description: pulumi.String("sample trust config description"),
 //				Location:    pulumi.String("global"),
 //				TrustStores: certificatemanager.TrustConfigTrustStoreArray{
 //					&certificatemanager.TrustConfigTrustStoreArgs{
 //						TrustAnchors: certificatemanager.TrustConfigTrustStoreTrustAnchorArray{
 //							&certificatemanager.TrustConfigTrustStoreTrustAnchorArgs{
-//								PemCertificate: readFileOrPanic("test-fixtures/ca_cert.pem"),
+//								PemCertificate: invokeFile.Result,
 //							},
 //						},
 //						IntermediateCas: certificatemanager.TrustConfigTrustStoreIntermediateCaArray{
 //							&certificatemanager.TrustConfigTrustStoreIntermediateCaArgs{
-//								PemCertificate: readFileOrPanic("test-fixtures/ca_cert.pem"),
+//								PemCertificate: invokeFile1.Result,
 //							},
 //						},
 //					},
@@ -184,11 +192,12 @@ import (
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networksecurity.NewServerTlsPolicy(ctx, "defaultServerTlsPolicy", &networksecurity.ServerTlsPolicyArgs{
+//			_, err = networksecurity.NewServerTlsPolicy(ctx, "default", &networksecurity.ServerTlsPolicyArgs{
+//				Name:        pulumi.String("my-server-tls-policy"),
 //				Description: pulumi.String("my description"),
 //				Location:    pulumi.String("global"),
 //				AllowOpen:   pulumi.Bool(false),
@@ -201,7 +210,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

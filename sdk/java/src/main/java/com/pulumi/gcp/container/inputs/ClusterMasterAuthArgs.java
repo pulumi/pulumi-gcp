@@ -34,28 +34,6 @@ public final class ClusterMasterAuthArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * Whether client certificate authorization is enabled for this cluster.  For example:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
      * 
      * This block also contains several computed attributes, documented below.
      * 
@@ -65,28 +43,6 @@ public final class ClusterMasterAuthArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Whether client certificate authorization is enabled for this cluster.  For example:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
      * 
      * This block also contains several computed attributes, documented below.
      * 
@@ -175,28 +131,6 @@ public final class ClusterMasterAuthArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param clientCertificateConfig Whether client certificate authorization is enabled for this cluster.  For example:
-         * ```java
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *     }
-         * }
-         * ```
          * 
          * This block also contains several computed attributes, documented below.
          * 
@@ -210,28 +144,6 @@ public final class ClusterMasterAuthArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param clientCertificateConfig Whether client certificate authorization is enabled for this cluster.  For example:
-         * ```java
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *     }
-         * }
-         * ```
          * 
          * This block also contains several computed attributes, documented below.
          * 

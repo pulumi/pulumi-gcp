@@ -132,8 +132,8 @@ def get_service(location: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    run_service = gcp.cloudrun.get_service(location="us-central1",
-        name="my-service")
+    run_service = gcp.cloudrun.get_service(name="my-service",
+        location="us-central1")
     ```
 
 
@@ -179,8 +179,8 @@ def get_service_output(location: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    run_service = gcp.cloudrun.get_service(location="us-central1",
-        name="my-service")
+    run_service = gcp.cloudrun.get_service(name="my-service",
+        location="us-central1")
     ```
 
 

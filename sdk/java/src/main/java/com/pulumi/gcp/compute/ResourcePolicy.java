@@ -52,6 +52,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new ResourcePolicy(&#34;foo&#34;, ResourcePolicyArgs.builder()        
+ *             .name(&#34;gce-policy&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .snapshotSchedulePolicy(ResourcePolicySnapshotSchedulePolicyArgs.builder()
  *                 .schedule(ResourcePolicySnapshotSchedulePolicyScheduleArgs.builder()
@@ -76,9 +77,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.ResourcePolicy;
  * import com.pulumi.gcp.compute.ResourcePolicyArgs;
  * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyArgs;
- * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs;
  * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs;
  * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs;
+ * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs;
  * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -94,22 +95,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var bar = new ResourcePolicy(&#34;bar&#34;, ResourcePolicyArgs.builder()        
+ *             .name(&#34;gce-policy&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .snapshotSchedulePolicy(ResourcePolicySnapshotSchedulePolicyArgs.builder()
- *                 .retentionPolicy(ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs.builder()
- *                     .maxRetentionDays(10)
- *                     .onSourceDiskDelete(&#34;KEEP_AUTO_SNAPSHOTS&#34;)
- *                     .build())
  *                 .schedule(ResourcePolicySnapshotSchedulePolicyScheduleArgs.builder()
  *                     .hourlySchedule(ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs.builder()
  *                         .hoursInCycle(20)
  *                         .startTime(&#34;23:00&#34;)
  *                         .build())
  *                     .build())
+ *                 .retentionPolicy(ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs.builder()
+ *                     .maxRetentionDays(10)
+ *                     .onSourceDiskDelete(&#34;KEEP_AUTO_SNAPSHOTS&#34;)
+ *                     .build())
  *                 .snapshotProperties(ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs.builder()
- *                     .guestFlush(true)
- *                     .labels(Map.of(&#34;myLabel&#34;, &#34;value&#34;))
+ *                     .labels(Map.of(&#34;my_label&#34;, &#34;value&#34;))
  *                     .storageLocations(&#34;us&#34;)
+ *                     .guestFlush(true)
  *                     .build())
  *                 .build())
  *             .build());
@@ -141,11 +143,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var baz = new ResourcePolicy(&#34;baz&#34;, ResourcePolicyArgs.builder()        
- *             .groupPlacementPolicy(ResourcePolicyGroupPlacementPolicyArgs.builder()
- *                 .collocation(&#34;COLLOCATED&#34;)
- *                 .vmCount(2)
- *                 .build())
+ *             .name(&#34;gce-policy&#34;)
  *             .region(&#34;us-central1&#34;)
+ *             .groupPlacementPolicy(ResourcePolicyGroupPlacementPolicyArgs.builder()
+ *                 .vmCount(2)
+ *                 .collocation(&#34;COLLOCATED&#34;)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -161,7 +164,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.ResourcePolicy;
  * import com.pulumi.gcp.compute.ResourcePolicyArgs;
  * import com.pulumi.gcp.compute.inputs.ResourcePolicyGroupPlacementPolicyArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -176,15 +178,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var baz = new ResourcePolicy(&#34;baz&#34;, ResourcePolicyArgs.builder()        
+ *             .name(&#34;gce-policy&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .groupPlacementPolicy(ResourcePolicyGroupPlacementPolicyArgs.builder()
  *                 .vmCount(2)
  *                 .collocation(&#34;COLLOCATED&#34;)
  *                 .maxDistance(2)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -215,17 +216,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var hourly = new ResourcePolicy(&#34;hourly&#34;, ResourcePolicyArgs.builder()        
+ *             .name(&#34;gce-policy&#34;)
+ *             .region(&#34;us-central1&#34;)
  *             .description(&#34;Start and stop instances&#34;)
  *             .instanceSchedulePolicy(ResourcePolicyInstanceSchedulePolicyArgs.builder()
- *                 .timeZone(&#34;US/Central&#34;)
  *                 .vmStartSchedule(ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs.builder()
  *                     .schedule(&#34;0 * * * *&#34;)
  *                     .build())
  *                 .vmStopSchedule(ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs.builder()
  *                     .schedule(&#34;15 * * * *&#34;)
  *                     .build())
+ *                 .timeZone(&#34;US/Central&#34;)
  *                 .build())
- *             .region(&#34;us-central1&#34;)
  *             .build());
  * 
  *     }
@@ -241,9 +243,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.ResourcePolicy;
  * import com.pulumi.gcp.compute.ResourcePolicyArgs;
  * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyArgs;
- * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs;
  * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs;
  * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs;
+ * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs;
  * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -259,24 +261,25 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var hourly = new ResourcePolicy(&#34;hourly&#34;, ResourcePolicyArgs.builder()        
- *             .description(&#34;chain name snapshot&#34;)
+ *             .name(&#34;gce-policy&#34;)
  *             .region(&#34;us-central1&#34;)
+ *             .description(&#34;chain name snapshot&#34;)
  *             .snapshotSchedulePolicy(ResourcePolicySnapshotSchedulePolicyArgs.builder()
- *                 .retentionPolicy(ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs.builder()
- *                     .maxRetentionDays(14)
- *                     .onSourceDiskDelete(&#34;KEEP_AUTO_SNAPSHOTS&#34;)
- *                     .build())
  *                 .schedule(ResourcePolicySnapshotSchedulePolicyScheduleArgs.builder()
  *                     .hourlySchedule(ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs.builder()
  *                         .hoursInCycle(20)
  *                         .startTime(&#34;23:00&#34;)
  *                         .build())
  *                     .build())
+ *                 .retentionPolicy(ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs.builder()
+ *                     .maxRetentionDays(14)
+ *                     .onSourceDiskDelete(&#34;KEEP_AUTO_SNAPSHOTS&#34;)
+ *                     .build())
  *                 .snapshotProperties(ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs.builder()
- *                     .chainName(&#34;test-schedule-chain-name&#34;)
- *                     .guestFlush(true)
- *                     .labels(Map.of(&#34;myLabel&#34;, &#34;value&#34;))
+ *                     .labels(Map.of(&#34;my_label&#34;, &#34;value&#34;))
  *                     .storageLocations(&#34;us&#34;)
+ *                     .guestFlush(true)
+ *                     .chainName(&#34;test-schedule-chain-name&#34;)
  *                     .build())
  *                 .build())
  *             .build());
@@ -308,10 +311,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cgroup = new ResourcePolicy(&#34;cgroup&#34;, ResourcePolicyArgs.builder()        
+ *             .name(&#34;gce-policy&#34;)
+ *             .region(&#34;europe-west1&#34;)
  *             .diskConsistencyGroupPolicy(ResourcePolicyDiskConsistencyGroupPolicyArgs.builder()
  *                 .enabled(true)
  *                 .build())
- *             .region(&#34;europe-west1&#34;)
  *             .build());
  * 
  *     }

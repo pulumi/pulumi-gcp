@@ -43,7 +43,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.IAMBindingArgs;
  * import com.pulumi.gcp.apigee.SyncAuthorization;
  * import com.pulumi.gcp.apigee.SyncAuthorizationArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -58,6 +57,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;my-project&#34;)
+ *             .name(&#34;my-project&#34;)
  *             .orgId(&#34;123456789&#34;)
  *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
  *             .build());
@@ -71,9 +72,7 @@ import javax.annotation.Nullable;
  *             .analyticsRegion(&#34;us-central1&#34;)
  *             .projectId(project.projectId())
  *             .runtimeType(&#34;HYBRID&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(apigee)
- *                 .build());
+ *             .build());
  * 
  *         var serviceAccount = new Account(&#34;serviceAccount&#34;, AccountArgs.builder()        
  *             .accountId(&#34;my-account&#34;)
@@ -87,10 +86,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var apigeeSyncAuthorization = new SyncAuthorization(&#34;apigeeSyncAuthorization&#34;, SyncAuthorizationArgs.builder()        
+ *             .name(apigeeOrg.name())
  *             .identities(serviceAccount.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(synchronizer_iam)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

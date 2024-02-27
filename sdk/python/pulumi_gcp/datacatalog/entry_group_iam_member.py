@@ -308,7 +308,7 @@ class EntryGroupIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.datacatalog.EntryGroupIamPolicy("policy",
-            entry_group=google_data_catalog_entry_group["basic_entry_group"]["name"],
+            entry_group=basic_entry_group["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -319,7 +319,7 @@ class EntryGroupIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.datacatalog.EntryGroupIamBinding("binding",
-            entry_group=google_data_catalog_entry_group["basic_entry_group"]["name"],
+            entry_group=basic_entry_group["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -331,7 +331,7 @@ class EntryGroupIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.datacatalog.EntryGroupIamMember("member",
-            entry_group=google_data_catalog_entry_group["basic_entry_group"]["name"],
+            entry_group=basic_entry_group["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -427,7 +427,7 @@ class EntryGroupIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.datacatalog.EntryGroupIamPolicy("policy",
-            entry_group=google_data_catalog_entry_group["basic_entry_group"]["name"],
+            entry_group=basic_entry_group["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -438,7 +438,7 @@ class EntryGroupIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.datacatalog.EntryGroupIamBinding("binding",
-            entry_group=google_data_catalog_entry_group["basic_entry_group"]["name"],
+            entry_group=basic_entry_group["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -450,7 +450,7 @@ class EntryGroupIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.datacatalog.EntryGroupIamMember("member",
-            entry_group=google_data_catalog_entry_group["basic_entry_group"]["name"],
+            entry_group=basic_entry_group["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

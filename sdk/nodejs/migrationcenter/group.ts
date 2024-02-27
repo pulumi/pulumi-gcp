@@ -15,13 +15,13 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.migrationcenter.Group("default", {
+ *     location: "us-central1",
+ *     groupId: "group-test",
  *     description: "Terraform integration test description",
  *     displayName: "Terraform integration test display",
- *     groupId: "group-test",
  *     labels: {
  *         key: "value",
  *     },
- *     location: "us-central1",
  * });
  * ```
  *

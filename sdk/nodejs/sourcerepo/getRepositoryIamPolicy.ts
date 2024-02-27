@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.sourcerepo.getRepositoryIamPolicy({
- *     project: google_sourcerepo_repository["my-repo"].project,
- *     repository: google_sourcerepo_repository["my-repo"].name,
+ *     project: my_repo.project,
+ *     repository: my_repo.name,
  * });
  * ```
  */
@@ -73,8 +73,8 @@ export interface GetRepositoryIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.sourcerepo.getRepositoryIamPolicy({
- *     project: google_sourcerepo_repository["my-repo"].project,
- *     repository: google_sourcerepo_repository["my-repo"].name,
+ *     project: my_repo.project,
+ *     repository: my_repo.name,
  * });
  * ```
  */

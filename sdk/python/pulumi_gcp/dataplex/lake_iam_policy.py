@@ -253,9 +253,9 @@ class LakeIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.dataplex.LakeIamPolicy("policy",
-            project=google_dataplex_lake["example"]["project"],
-            location=google_dataplex_lake["example"]["location"],
-            lake=google_dataplex_lake["example"]["name"],
+            project=example["project"],
+            location=example["location"],
+            lake=example["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -266,9 +266,9 @@ class LakeIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.dataplex.LakeIamBinding("binding",
-            project=google_dataplex_lake["example"]["project"],
-            location=google_dataplex_lake["example"]["location"],
-            lake=google_dataplex_lake["example"]["name"],
+            project=example["project"],
+            location=example["location"],
+            lake=example["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -280,9 +280,9 @@ class LakeIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.dataplex.LakeIamMember("member",
-            project=google_dataplex_lake["example"]["project"],
-            location=google_dataplex_lake["example"]["location"],
-            lake=google_dataplex_lake["example"]["name"],
+            project=example["project"],
+            location=example["location"],
+            lake=example["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -377,9 +377,9 @@ class LakeIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.dataplex.LakeIamPolicy("policy",
-            project=google_dataplex_lake["example"]["project"],
-            location=google_dataplex_lake["example"]["location"],
-            lake=google_dataplex_lake["example"]["name"],
+            project=example["project"],
+            location=example["location"],
+            lake=example["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -390,9 +390,9 @@ class LakeIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.dataplex.LakeIamBinding("binding",
-            project=google_dataplex_lake["example"]["project"],
-            location=google_dataplex_lake["example"]["location"],
-            lake=google_dataplex_lake["example"]["name"],
+            project=example["project"],
+            location=example["location"],
+            lake=example["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -404,9 +404,9 @@ class LakeIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.dataplex.LakeIamMember("member",
-            project=google_dataplex_lake["example"]["project"],
-            location=google_dataplex_lake["example"]["location"],
-            lake=google_dataplex_lake["example"]["name"],
+            project=example["project"],
+            location=example["location"],
+            lake=example["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

@@ -32,20 +32,23 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var containerNetwork = new Gcp.Compute.Network("containerNetwork", new()
+    ///     var containerNetwork = new Gcp.Compute.Network("container_network", new()
     ///     {
+    ///         Name = "container-network",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     var containerSubnetwork = new Gcp.Compute.Subnetwork("containerSubnetwork", new()
+    ///     var containerSubnetwork = new Gcp.Compute.Subnetwork("container_subnetwork", new()
     ///     {
+    ///         Name = "container-subnetwork",
     ///         Region = "us-central1",
     ///         Network = containerNetwork.Name,
     ///         IpCidrRange = "10.0.36.0/24",
     ///     });
     /// 
-    ///     var myCluster = new Gcp.Container.Cluster("myCluster", new()
+    ///     var myCluster = new Gcp.Container.Cluster("my_cluster", new()
     ///     {
+    ///         Name = "my-cluster",
     ///         Location = "us-central1-a",
     ///         InitialNodeCount = 1,
     ///         Network = containerNetwork.Name,
@@ -58,17 +61,19 @@ namespace Pulumi.Gcp.Compute
     ///         DeletionProtection = true,
     ///     });
     /// 
-    ///     var myPort = new Gcp.Compute.InstanceGroupNamedPort("myPort", new()
+    ///     var myPort = new Gcp.Compute.InstanceGroupNamedPort("my_port", new()
     ///     {
     ///         Group = myCluster.NodePools.Apply(nodePools =&gt; nodePools[0].InstanceGroupUrls[0]),
     ///         Zone = "us-central1-a",
+    ///         Name = "http",
     ///         Port = 8080,
     ///     });
     /// 
-    ///     var myPorts = new Gcp.Compute.InstanceGroupNamedPort("myPorts", new()
+    ///     var myPorts = new Gcp.Compute.InstanceGroupNamedPort("my_ports", new()
     ///     {
     ///         Group = myCluster.NodePools.Apply(nodePools =&gt; nodePools[0].InstanceGroupUrls[0]),
     ///         Zone = "us-central1-a",
+    ///         Name = "https",
     ///         Port = 4443,
     ///     });
     /// 

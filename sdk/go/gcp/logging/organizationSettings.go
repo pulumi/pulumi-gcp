@@ -38,28 +38,26 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := logging.NewOrganizationSettings(ctx, "example", &logging.OrganizationSettingsArgs{
+//				DisableDefaultSink: pulumi.Bool(true),
+//				KmsKeyName:         pulumi.String("kms-key"),
+//				Organization:       pulumi.String("123456789"),
+//				StorageLocation:    pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			settings, err := logging.LookupOrganizationSettings(ctx, &logging.LookupOrganizationSettingsArgs{
 //				Organization: "123456789",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			iam, err := kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
+//			_, err = kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: pulumi.String("kms-key"),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      pulumi.String(fmt.Sprintf("serviceAccount:%v", settings.KmsServiceAccountId)),
 //			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = logging.NewOrganizationSettings(ctx, "example", &logging.OrganizationSettingsArgs{
-//				DisableDefaultSink: pulumi.Bool(true),
-//				KmsKeyName:         pulumi.String("kms-key"),
-//				Organization:       pulumi.String("123456789"),
-//				StorageLocation:    pulumi.String("us-central1"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				iam,
-//			}))
 //			if err != nil {
 //				return err
 //			}

@@ -34,9 +34,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.cloudrun.IamPolicy("policy", {
- *     location: google_cloud_run_service["default"].location,
- *     project: google_cloud_run_service["default"].project,
- *     service: google_cloud_run_service["default"].name,
+ *     location: _default.location,
+ *     project: _default.project,
+ *     service: _default.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -48,9 +48,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.cloudrun.IamBinding("binding", {
- *     location: google_cloud_run_service["default"].location,
- *     project: google_cloud_run_service["default"].project,
- *     service: google_cloud_run_service["default"].name,
+ *     location: _default.location,
+ *     project: _default.project,
+ *     service: _default.name,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
  * });
@@ -63,9 +63,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.cloudrun.IamMember("member", {
- *     location: google_cloud_run_service["default"].location,
- *     project: google_cloud_run_service["default"].project,
- *     service: google_cloud_run_service["default"].name,
+ *     location: _default.location,
+ *     project: _default.project,
+ *     service: _default.name,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
  * });

@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.iap.getTunnelInstanceIamPolicy({
- *     project: google_compute_instance.tunnelvm.project,
- *     zone: google_compute_instance.tunnelvm.zone,
- *     instance: google_compute_instance.tunnelvm.name,
+ *     project: tunnelvm.project,
+ *     zone: tunnelvm.zone,
+ *     instance: tunnelvm.name,
  * });
  * ```
  */
@@ -77,9 +77,9 @@ export interface GetTunnelInstanceIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.iap.getTunnelInstanceIamPolicy({
- *     project: google_compute_instance.tunnelvm.project,
- *     zone: google_compute_instance.tunnelvm.zone,
- *     instance: google_compute_instance.tunnelvm.name,
+ *     project: tunnelvm.project,
+ *     zone: tunnelvm.zone,
+ *     instance: tunnelvm.name,
  * });
  * ```
  */

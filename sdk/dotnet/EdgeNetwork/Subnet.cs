@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.EdgeNetwork
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleNetwork = new Gcp.EdgeNetwork.Network("exampleNetwork", new()
+    ///     var exampleNetwork = new Gcp.EdgeNetwork.Network("example_network", new()
     ///     {
     ///         NetworkId = "example-network",
     ///         Location = "us-west1",
@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.EdgeNetwork
     ///         Mtu = 9000,
     ///     });
     /// 
-    ///     var exampleSubnet = new Gcp.EdgeNetwork.Subnet("exampleSubnet", new()
+    ///     var exampleSubnet = new Gcp.EdgeNetwork.Subnet("example_subnet", new()
     ///     {
     ///         SubnetId = "example-subnet",
     ///         Location = "us-west1",
@@ -67,7 +67,7 @@ namespace Pulumi.Gcp.EdgeNetwork
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleNetwork = new Gcp.EdgeNetwork.Network("exampleNetwork", new()
+    ///     var exampleNetwork = new Gcp.EdgeNetwork.Network("example_network", new()
     ///     {
     ///         NetworkId = "example-network",
     ///         Location = "us-west1",
@@ -76,7 +76,7 @@ namespace Pulumi.Gcp.EdgeNetwork
     ///         Mtu = 9000,
     ///     });
     /// 
-    ///     var exampleSubnetWithVlanId = new Gcp.EdgeNetwork.Subnet("exampleSubnetWithVlanId", new()
+    ///     var exampleSubnetWithVlanId = new Gcp.EdgeNetwork.Subnet("example_subnet_with_vlan_id", new()
     ///     {
     ///         SubnetId = "example-subnet-with-vlan-id",
     ///         Location = "us-west1",

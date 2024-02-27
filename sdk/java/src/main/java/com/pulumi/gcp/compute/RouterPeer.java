@@ -56,11 +56,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var peer = new RouterPeer(&#34;peer&#34;, RouterPeerArgs.builder()        
+ *             .name(&#34;my-router-peer&#34;)
+ *             .router(&#34;my-router&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .peerAsn(65513)
  *             .advertisedRoutePriority(100)
  *             .interface_(&#34;interface-1&#34;)
- *             .peerAsn(65513)
- *             .region(&#34;us-central1&#34;)
- *             .router(&#34;my-router&#34;)
  *             .build());
  * 
  *     }
@@ -89,13 +90,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var peer = new RouterPeer(&#34;peer&#34;, RouterPeerArgs.builder()        
- *             .advertisedRoutePriority(100)
- *             .enable(false)
- *             .interface_(&#34;interface-1&#34;)
- *             .peerAsn(65513)
- *             .peerIpAddress(&#34;169.254.1.2&#34;)
- *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;my-router-peer&#34;)
  *             .router(&#34;my-router&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .peerIpAddress(&#34;169.254.1.2&#34;)
+ *             .peerAsn(65513)
+ *             .advertisedRoutePriority(100)
+ *             .interface_(&#34;interface-1&#34;)
+ *             .enable(false)
  *             .build());
  * 
  *     }
@@ -125,18 +127,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var peer = new RouterPeer(&#34;peer&#34;, RouterPeerArgs.builder()        
+ *             .name(&#34;my-router-peer&#34;)
+ *             .router(&#34;my-router&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .peerIpAddress(&#34;169.254.1.2&#34;)
+ *             .peerAsn(65513)
  *             .advertisedRoutePriority(100)
+ *             .interface_(&#34;interface-1&#34;)
  *             .bfd(RouterPeerBfdArgs.builder()
  *                 .minReceiveInterval(1000)
  *                 .minTransmitInterval(1000)
  *                 .multiplier(5)
  *                 .sessionInitializationMode(&#34;ACTIVE&#34;)
  *                 .build())
- *             .interface_(&#34;interface-1&#34;)
- *             .peerAsn(65513)
- *             .peerIpAddress(&#34;169.254.1.2&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .router(&#34;my-router&#34;)
  *             .build());
  * 
  *     }
@@ -161,6 +164,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
  * import com.pulumi.gcp.networkconnectivity.Hub;
+ * import com.pulumi.gcp.networkconnectivity.HubArgs;
  * import com.pulumi.gcp.networkconnectivity.Spoke;
  * import com.pulumi.gcp.networkconnectivity.SpokeArgs;
  * import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedRouterApplianceInstancesArgs;
@@ -185,34 +189,40 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
+ *             .name(&#34;my-router-net&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var subnetwork = new Subnetwork(&#34;subnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;my-router-sub&#34;)
  *             .network(network.selfLink())
  *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .build());
  * 
  *         var addrIntf = new Address(&#34;addrIntf&#34;, AddressArgs.builder()        
+ *             .name(&#34;my-router-addr-intf&#34;)
  *             .region(subnetwork.region())
  *             .subnetwork(subnetwork.id())
  *             .addressType(&#34;INTERNAL&#34;)
  *             .build());
  * 
  *         var addrIntfRedundant = new Address(&#34;addrIntfRedundant&#34;, AddressArgs.builder()        
+ *             .name(&#34;my-router-addr-intf-red&#34;)
  *             .region(subnetwork.region())
  *             .subnetwork(subnetwork.id())
  *             .addressType(&#34;INTERNAL&#34;)
  *             .build());
  * 
  *         var addrPeer = new Address(&#34;addrPeer&#34;, AddressArgs.builder()        
+ *             .name(&#34;my-router-addr-peer&#34;)
  *             .region(subnetwork.region())
  *             .subnetwork(subnetwork.id())
  *             .addressType(&#34;INTERNAL&#34;)
  *             .build());
  * 
  *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *             .name(&#34;router-appliance&#34;)
  *             .zone(&#34;us-central1-a&#34;)
  *             .machineType(&#34;e2-medium&#34;)
  *             .canIpForward(true)
@@ -227,9 +237,12 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var hub = new Hub(&#34;hub&#34;);
+ *         var hub = new Hub(&#34;hub&#34;, HubArgs.builder()        
+ *             .name(&#34;my-router-hub&#34;)
+ *             .build());
  * 
  *         var spoke = new Spoke(&#34;spoke&#34;, SpokeArgs.builder()        
+ *             .name(&#34;my-router-spoke&#34;)
  *             .location(subnetwork.region())
  *             .hub(hub.id())
  *             .linkedRouterApplianceInstances(SpokeLinkedRouterApplianceInstancesArgs.builder()
@@ -242,6 +255,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var router = new Router(&#34;router&#34;, RouterArgs.builder()        
+ *             .name(&#34;my-router-router&#34;)
  *             .region(subnetwork.region())
  *             .network(network.selfLink())
  *             .bgp(RouterBgpArgs.builder()
@@ -250,6 +264,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var interfaceRedundant = new RouterInterface(&#34;interfaceRedundant&#34;, RouterInterfaceArgs.builder()        
+ *             .name(&#34;my-router-intf-red&#34;)
  *             .region(router.region())
  *             .router(router.name())
  *             .subnetwork(subnetwork.selfLink())
@@ -257,6 +272,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var interface_ = new RouterInterface(&#34;interface&#34;, RouterInterfaceArgs.builder()        
+ *             .name(&#34;my-router-intf&#34;)
  *             .region(router.region())
  *             .router(router.name())
  *             .subnetwork(subnetwork.selfLink())
@@ -265,6 +281,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var peer = new RouterPeer(&#34;peer&#34;, RouterPeerArgs.builder()        
+ *             .name(&#34;my-router-peer&#34;)
  *             .router(router.name())
  *             .region(router.region())
  *             .interface_(interface_.name())

@@ -29,8 +29,9 @@ namespace Pulumi.Gcp.Netapp
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testActiveDirectoryFull = new Gcp.Netapp.ActiveDirectory("testActiveDirectoryFull", new()
+    ///     var testActiveDirectoryFull = new Gcp.Netapp.ActiveDirectory("test_active_directory_full", new()
     ///     {
+    ///         Name = "test-active-directory-full",
     ///         Location = "us-central1",
     ///         Domain = "ad.internal",
     ///         Dns = "172.30.64.3",

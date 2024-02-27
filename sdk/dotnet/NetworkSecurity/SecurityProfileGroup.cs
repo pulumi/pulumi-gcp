@@ -21,18 +21,17 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var securityProfile = new Gcp.NetworkSecurity.SecurityProfile("securityProfile", new()
+    ///     var securityProfile = new Gcp.NetworkSecurity.SecurityProfile("security_profile", new()
     ///     {
+    ///         Name = "sec-profile",
     ///         Type = "THREAT_PREVENTION",
     ///         Parent = "organizations/123456789",
     ///         Location = "global",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var @default = new Gcp.NetworkSecurity.SecurityProfileGroup("default", new()
     ///     {
+    ///         Name = "sec-profile-group",
     ///         Parent = "organizations/123456789",
     ///         Description = "my description",
     ///         ThreatPreventionProfile = securityProfile.Id,
@@ -40,9 +39,6 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///         {
     ///             { "foo", "bar" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

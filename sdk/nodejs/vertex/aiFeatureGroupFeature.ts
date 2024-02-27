@@ -20,13 +20,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const sampleDataset = new gcp.bigquery.Dataset("sampleDataset", {
+ * const sampleDataset = new gcp.bigquery.Dataset("sample_dataset", {
  *     datasetId: "job_load_dataset",
  *     friendlyName: "test",
  *     description: "This is a test description",
  *     location: "US",
  * });
- * const sampleTable = new gcp.bigquery.Table("sampleTable", {
+ * const sampleTable = new gcp.bigquery.Table("sample_table", {
  *     deletionProtection: false,
  *     datasetId: sampleDataset.datasetId,
  *     tableId: "job_load_table",
@@ -49,7 +49,8 @@ import * as utilities from "../utilities";
  * ]
  * `,
  * });
- * const sampleFeatureGroup = new gcp.vertex.AiFeatureGroup("sampleFeatureGroup", {
+ * const sampleFeatureGroup = new gcp.vertex.AiFeatureGroup("sample_feature_group", {
+ *     name: "example_feature_group",
  *     description: "A sample feature group",
  *     region: "us-central1",
  *     labels: {
@@ -62,7 +63,8 @@ import * as utilities from "../utilities";
  *         entityIdColumns: ["feature_id"],
  *     },
  * });
- * const featureGroupFeature = new gcp.vertex.AiFeatureGroupFeature("featureGroupFeature", {
+ * const featureGroupFeature = new gcp.vertex.AiFeatureGroupFeature("feature_group_feature", {
+ *     name: "example_feature",
  *     region: "us-central1",
  *     featureGroup: sampleFeatureGroup.name,
  *     description: "A sample feature",

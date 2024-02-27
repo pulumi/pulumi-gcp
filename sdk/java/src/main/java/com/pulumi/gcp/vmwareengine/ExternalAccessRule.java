@@ -55,6 +55,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var external_access_rule_nw = new Network(&#34;external-access-rule-nw&#34;, NetworkArgs.builder()        
+ *             .name(&#34;sample-nw&#34;)
  *             .location(&#34;global&#34;)
  *             .type(&#34;STANDARD&#34;)
  *             .description(&#34;PC network description.&#34;)
@@ -62,11 +63,13 @@ import javax.annotation.Nullable;
  * 
  *         var external_access_rule_np = new NetworkPolicy(&#34;external-access-rule-np&#34;, NetworkPolicyArgs.builder()        
  *             .location(&#34;us-west1&#34;)
+ *             .name(&#34;sample-np&#34;)
  *             .edgeServicesCidr(&#34;192.168.30.0/26&#34;)
  *             .vmwareEngineNetwork(external_access_rule_nw.id())
  *             .build());
  * 
  *         var vmw_engine_external_access_rule = new ExternalAccessRule(&#34;vmw-engine-external-access-rule&#34;, ExternalAccessRuleArgs.builder()        
+ *             .name(&#34;sample-external-access-rule&#34;)
  *             .parent(external_access_rule_np.id())
  *             .priority(101)
  *             .action(&#34;DENY&#34;)
@@ -119,6 +122,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var external_access_rule_nw = new Network(&#34;external-access-rule-nw&#34;, NetworkArgs.builder()        
+ *             .name(&#34;sample-nw&#34;)
  *             .location(&#34;global&#34;)
  *             .type(&#34;STANDARD&#34;)
  *             .description(&#34;PC network description.&#34;)
@@ -126,6 +130,7 @@ import javax.annotation.Nullable;
  * 
  *         var external_access_rule_pc = new PrivateCloud(&#34;external-access-rule-pc&#34;, PrivateCloudArgs.builder()        
  *             .location(&#34;us-west1-a&#34;)
+ *             .name(&#34;sample-pc&#34;)
  *             .description(&#34;Sample test PC.&#34;)
  *             .networkConfig(PrivateCloudNetworkConfigArgs.builder()
  *                 .managementCidr(&#34;192.168.50.0/24&#34;)
@@ -142,16 +147,19 @@ import javax.annotation.Nullable;
  * 
  *         var external_access_rule_np = new NetworkPolicy(&#34;external-access-rule-np&#34;, NetworkPolicyArgs.builder()        
  *             .location(&#34;us-west1&#34;)
+ *             .name(&#34;sample-np&#34;)
  *             .edgeServicesCidr(&#34;192.168.30.0/26&#34;)
  *             .vmwareEngineNetwork(external_access_rule_nw.id())
  *             .build());
  * 
  *         var external_access_rule_ea = new ExternalAddress(&#34;external-access-rule-ea&#34;, ExternalAddressArgs.builder()        
+ *             .name(&#34;sample-ea&#34;)
  *             .parent(external_access_rule_pc.id())
  *             .internalIp(&#34;192.168.0.65&#34;)
  *             .build());
  * 
  *         var vmw_engine_external_access_rule = new ExternalAccessRule(&#34;vmw-engine-external-access-rule&#34;, ExternalAccessRuleArgs.builder()        
+ *             .name(&#34;sample-external-access-rule&#34;)
  *             .parent(external_access_rule_np.id())
  *             .description(&#34;Sample Description&#34;)
  *             .priority(101)

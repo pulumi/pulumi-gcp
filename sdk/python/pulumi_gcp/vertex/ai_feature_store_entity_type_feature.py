@@ -335,6 +335,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            name="terraform",
             labels={
                 "foo": "bar",
             },
@@ -343,11 +344,13 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
                 fixed_node_count=2,
             ))
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
+            name="terraform",
             labels={
                 "foo": "bar",
             },
             featurestore=featurestore.id)
         feature = gcp.vertex.AiFeatureStoreEntityTypeFeature("feature",
+            name="terraform",
             labels={
                 "foo": "bar",
             },
@@ -361,15 +364,16 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            name="terraform2",
             labels={
                 "foo": "bar",
             },
             region="us-central1",
             online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
                 fixed_node_count=2,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
+            name="terraform2",
             labels={
                 "foo": "bar",
             },
@@ -385,15 +389,14 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
                 numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
                     value=0.3,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         feature = gcp.vertex.AiFeatureStoreEntityTypeFeature("feature",
+            name="terraform2",
             labels={
                 "foo": "bar",
             },
             entitytype=entity.id,
-            value_type="INT64_ARRAY",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            value_type="INT64_ARRAY")
         ```
 
         ## Import
@@ -445,6 +448,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            name="terraform",
             labels={
                 "foo": "bar",
             },
@@ -453,11 +457,13 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
                 fixed_node_count=2,
             ))
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
+            name="terraform",
             labels={
                 "foo": "bar",
             },
             featurestore=featurestore.id)
         feature = gcp.vertex.AiFeatureStoreEntityTypeFeature("feature",
+            name="terraform",
             labels={
                 "foo": "bar",
             },
@@ -471,15 +477,16 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            name="terraform2",
             labels={
                 "foo": "bar",
             },
             region="us-central1",
             online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
                 fixed_node_count=2,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
+            name="terraform2",
             labels={
                 "foo": "bar",
             },
@@ -495,15 +502,14 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
                 numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
                     value=0.3,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         feature = gcp.vertex.AiFeatureStoreEntityTypeFeature("feature",
+            name="terraform2",
             labels={
                 "foo": "bar",
             },
             entitytype=entity.id,
-            value_type="INT64_ARRAY",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            value_type="INT64_ARRAY")
         ```
 
         ## Import

@@ -414,18 +414,17 @@ class Repository(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
+        git_repository = gcp.sourcerepo.Repository("git_repository", name="my/repository")
         secret = gcp.secretmanager.Secret("secret",
             secret_id="my-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        secret_version = gcp.secretmanager.SecretVersion("secretVersion",
+            ))
+        secret_version = gcp.secretmanager.SecretVersion("secret_version",
             secret=secret.id,
-            secret_data="secret-data",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        dataform_respository = gcp.dataform.Repository("dataformRespository",
+            secret_data="secret-data")
+        dataform_respository = gcp.dataform.Repository("dataform_respository",
+            name="dataform_repository",
             display_name="dataform_repository",
             npmrc_environment_variables_secret_version=secret_version.id,
             labels={
@@ -440,8 +439,7 @@ class Repository(pulumi.CustomResource):
                 default_database="database",
                 schema_suffix="_suffix",
                 table_prefix="prefix_",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Dataform Repository Ssh
 
@@ -449,18 +447,17 @@ class Repository(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
+        git_repository = gcp.sourcerepo.Repository("git_repository", name="my/repository")
         secret = gcp.secretmanager.Secret("secret",
             secret_id="my-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        secret_version = gcp.secretmanager.SecretVersion("secretVersion",
+            ))
+        secret_version = gcp.secretmanager.SecretVersion("secret_version",
             secret=secret.id,
-            secret_data="secret-data",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        dataform_respository = gcp.dataform.Repository("dataformRespository",
+            secret_data="secret-data")
+        dataform_respository = gcp.dataform.Repository("dataform_respository",
+            name="dataform_repository",
             git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
                 url=git_repository.url,
                 default_branch="main",
@@ -474,8 +471,7 @@ class Repository(pulumi.CustomResource):
                 schema_suffix="_suffix",
                 table_prefix="prefix_",
             ),
-            service_account="1234567890-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            service_account="1234567890-compute@developer.gserviceaccount.com")
         ```
 
         ## Import
@@ -544,18 +540,17 @@ class Repository(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
+        git_repository = gcp.sourcerepo.Repository("git_repository", name="my/repository")
         secret = gcp.secretmanager.Secret("secret",
             secret_id="my-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        secret_version = gcp.secretmanager.SecretVersion("secretVersion",
+            ))
+        secret_version = gcp.secretmanager.SecretVersion("secret_version",
             secret=secret.id,
-            secret_data="secret-data",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        dataform_respository = gcp.dataform.Repository("dataformRespository",
+            secret_data="secret-data")
+        dataform_respository = gcp.dataform.Repository("dataform_respository",
+            name="dataform_repository",
             display_name="dataform_repository",
             npmrc_environment_variables_secret_version=secret_version.id,
             labels={
@@ -570,8 +565,7 @@ class Repository(pulumi.CustomResource):
                 default_database="database",
                 schema_suffix="_suffix",
                 table_prefix="prefix_",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Dataform Repository Ssh
 
@@ -579,18 +573,17 @@ class Repository(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
+        git_repository = gcp.sourcerepo.Repository("git_repository", name="my/repository")
         secret = gcp.secretmanager.Secret("secret",
             secret_id="my-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        secret_version = gcp.secretmanager.SecretVersion("secretVersion",
+            ))
+        secret_version = gcp.secretmanager.SecretVersion("secret_version",
             secret=secret.id,
-            secret_data="secret-data",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        dataform_respository = gcp.dataform.Repository("dataformRespository",
+            secret_data="secret-data")
+        dataform_respository = gcp.dataform.Repository("dataform_respository",
+            name="dataform_repository",
             git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
                 url=git_repository.url,
                 default_branch="main",
@@ -604,8 +597,7 @@ class Repository(pulumi.CustomResource):
                 schema_suffix="_suffix",
                 table_prefix="prefix_",
             ),
-            service_account="1234567890-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            service_account="1234567890-compute@developer.gserviceaccount.com")
         ```
 
         ## Import

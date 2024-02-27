@@ -24,6 +24,7 @@ import * as utilities from "../utilities";
  *
  * const available = gcp.tpu.getTensorflowVersions({});
  * const tpu = new gcp.tpu.Node("tpu", {
+ *     name: "test-tpu",
  *     zone: "us-central1-b",
  *     acceleratorType: "v3-8",
  *     tensorflowVersion: available.then(available => available.versions?.[0]),
@@ -37,19 +38,21 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const available = gcp.tpu.getTensorflowVersions({});
- * const network = new gcp.compute.Network("network", {});
- * const serviceRange = new gcp.compute.GlobalAddress("serviceRange", {
+ * const network = new gcp.compute.Network("network", {name: "tpu-node-network"});
+ * const serviceRange = new gcp.compute.GlobalAddress("service_range", {
+ *     name: "my-global-address",
  *     purpose: "VPC_PEERING",
  *     addressType: "INTERNAL",
  *     prefixLength: 16,
  *     network: network.id,
  * });
- * const privateServiceConnection = new gcp.servicenetworking.Connection("privateServiceConnection", {
+ * const privateServiceConnection = new gcp.servicenetworking.Connection("private_service_connection", {
  *     network: network.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [serviceRange.name],
  * });
  * const tpu = new gcp.tpu.Node("tpu", {
+ *     name: "test-tpu",
  *     zone: "us-central1-b",
  *     acceleratorType: "v3-8",
  *     tensorflowVersion: available.then(available => available.versions?.[0]),

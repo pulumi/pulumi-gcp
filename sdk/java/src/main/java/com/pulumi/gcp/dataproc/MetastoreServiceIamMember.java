@@ -62,9 +62,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new MetastoreServiceIamPolicy(&#34;policy&#34;, MetastoreServiceIamPolicyArgs.builder()        
- *             .project(google_dataproc_metastore_service.default().project())
- *             .location(google_dataproc_metastore_service.default().location())
- *             .serviceId(google_dataproc_metastore_service.default().service_id())
+ *             .project(default_.project())
+ *             .location(default_.location())
+ *             .serviceId(default_.serviceId())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -95,9 +95,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new MetastoreServiceIamBinding(&#34;binding&#34;, MetastoreServiceIamBindingArgs.builder()        
- *             .project(google_dataproc_metastore_service.default().project())
- *             .location(google_dataproc_metastore_service.default().location())
- *             .serviceId(google_dataproc_metastore_service.default().service_id())
+ *             .project(default_.project())
+ *             .location(default_.location())
+ *             .serviceId(default_.serviceId())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -129,9 +129,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new MetastoreServiceIamMember(&#34;member&#34;, MetastoreServiceIamMemberArgs.builder()        
- *             .project(google_dataproc_metastore_service.default().project())
- *             .location(google_dataproc_metastore_service.default().location())
- *             .serviceId(google_dataproc_metastore_service.default().service_id())
+ *             .project(default_.project())
+ *             .location(default_.location())
+ *             .serviceId(default_.serviceId())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

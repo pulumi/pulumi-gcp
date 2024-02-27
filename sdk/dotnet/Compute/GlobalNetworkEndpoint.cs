@@ -33,6 +33,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var neg = new Gcp.Compute.GlobalNetworkEndpointGroup("neg", new()
     ///     {
+    ///         Name = "my-lb-neg",
     ///         DefaultPort = 90,
     ///         NetworkEndpointType = "INTERNET_FQDN_PORT",
     ///     });

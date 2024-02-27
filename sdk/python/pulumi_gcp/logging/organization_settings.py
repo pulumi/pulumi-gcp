@@ -240,17 +240,16 @@ class OrganizationSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        example = gcp.logging.OrganizationSettings("example",
+            disable_default_sink=True,
+            kms_key_name="kms-key",
+            organization="123456789",
+            storage_location="us-central1")
         settings = gcp.logging.get_organization_settings(organization="123456789")
         iam = gcp.kms.CryptoKeyIAMMember("iam",
             crypto_key_id="kms-key",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:{settings.kms_service_account_id}")
-        example = gcp.logging.OrganizationSettings("example",
-            disable_default_sink=True,
-            kms_key_name="kms-key",
-            organization="123456789",
-            storage_location="us-central1",
-            opts=pulumi.ResourceOptions(depends_on=[iam]))
         ```
 
         ## Import
@@ -303,17 +302,16 @@ class OrganizationSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        example = gcp.logging.OrganizationSettings("example",
+            disable_default_sink=True,
+            kms_key_name="kms-key",
+            organization="123456789",
+            storage_location="us-central1")
         settings = gcp.logging.get_organization_settings(organization="123456789")
         iam = gcp.kms.CryptoKeyIAMMember("iam",
             crypto_key_id="kms-key",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:{settings.kms_service_account_id}")
-        example = gcp.logging.OrganizationSettings("example",
-            disable_default_sink=True,
-            kms_key_name="kms-key",
-            organization="123456789",
-            storage_location="us-central1",
-            opts=pulumi.ResourceOptions(depends_on=[iam]))
         ```
 
         ## Import

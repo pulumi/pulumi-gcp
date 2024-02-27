@@ -51,9 +51,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var customSource = new Source(&#34;customSource&#34;, SourceArgs.builder()        
- *             .description(&#34;My custom Cloud Security Command Center Finding Source&#34;)
  *             .displayName(&#34;My Source&#34;)
  *             .organization(&#34;123456789&#34;)
+ *             .description(&#34;My custom Cloud Security Command Center Finding Source&#34;)
  *             .build());
  * 
  *     }

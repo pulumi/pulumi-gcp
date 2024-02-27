@@ -26,8 +26,8 @@ namespace Pulumi.Gcp.Container
     /// {
     ///     var registry = new Gcp.Container.Registry("registry", new()
     ///     {
-    ///         Location = "EU",
     ///         Project = "my-project",
+    ///         Location = "EU",
     ///     });
     /// 
     /// });

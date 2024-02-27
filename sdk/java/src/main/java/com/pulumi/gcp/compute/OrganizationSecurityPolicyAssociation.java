@@ -40,7 +40,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchConfigArgs;
  * import com.pulumi.gcp.compute.OrganizationSecurityPolicyAssociation;
  * import com.pulumi.gcp.compute.OrganizationSecurityPolicyAssociationArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -57,19 +56,15 @@ import javax.annotation.Nullable;
  *         var securityPolicyTarget = new Folder(&#34;securityPolicyTarget&#34;, FolderArgs.builder()        
  *             .displayName(&#34;tf-test-secpol&#34;)
  *             .parent(&#34;organizations/123456789&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
- *         var policyOrganizationSecurityPolicy = new OrganizationSecurityPolicy(&#34;policyOrganizationSecurityPolicy&#34;, OrganizationSecurityPolicyArgs.builder()        
+ *         var policy = new OrganizationSecurityPolicy(&#34;policy&#34;, OrganizationSecurityPolicyArgs.builder()        
  *             .displayName(&#34;tf-test&#34;)
  *             .parent(securityPolicyTarget.name())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var policyOrganizationSecurityPolicyRule = new OrganizationSecurityPolicyRule(&#34;policyOrganizationSecurityPolicyRule&#34;, OrganizationSecurityPolicyRuleArgs.builder()        
- *             .policyId(policyOrganizationSecurityPolicy.id())
+ *             .policyId(policy.id())
  *             .action(&#34;allow&#34;)
  *             .direction(&#34;INGRESS&#34;)
  *             .enableLogging(true)
@@ -89,16 +84,13 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .priority(100)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var policyOrganizationSecurityPolicyAssociation = new OrganizationSecurityPolicyAssociation(&#34;policyOrganizationSecurityPolicyAssociation&#34;, OrganizationSecurityPolicyAssociationArgs.builder()        
- *             .attachmentId(policyOrganizationSecurityPolicy.parent())
- *             .policyId(policyOrganizationSecurityPolicy.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .name(&#34;tf-test&#34;)
+ *             .attachmentId(policy.parent())
+ *             .policyId(policy.id())
+ *             .build());
  * 
  *     }
  * }

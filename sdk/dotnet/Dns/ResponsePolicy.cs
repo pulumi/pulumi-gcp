@@ -26,16 +26,19 @@ namespace Pulumi.Gcp.Dns
     /// {
     ///     var network_1 = new Gcp.Compute.Network("network-1", new()
     ///     {
+    ///         Name = "network-1",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var network_2 = new Gcp.Compute.Network("network-2", new()
     ///     {
+    ///         Name = "network-2",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var subnetwork_1 = new Gcp.Compute.Subnetwork("subnetwork-1", new()
     ///     {
+    ///         Name = network_1.Name,
     ///         Network = network_1.Name,
     ///         IpCidrRange = "10.0.36.0/24",
     ///         Region = "us-central1",
@@ -57,6 +60,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     ///     var cluster_1 = new Gcp.Container.Cluster("cluster-1", new()
     ///     {
+    ///         Name = "cluster-1",
     ///         Location = "us-central1-c",
     ///         InitialNodeCount = 1,
     ///         NetworkingMode = "VPC_NATIVE",

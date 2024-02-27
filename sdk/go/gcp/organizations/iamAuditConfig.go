@@ -29,16 +29,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := organizations.NewIamAuditConfig(ctx, "config", &organizations.IamAuditConfigArgs{
+//				OrgId:   pulumi.String("your-organization-id"),
+//				Service: pulumi.String("allServices"),
 //				AuditLogConfigs: organizations.IamAuditConfigAuditLogConfigArray{
 //					&organizations.IamAuditConfigAuditLogConfigArgs{
+//						LogType: pulumi.String("DATA_READ"),
 //						ExemptedMembers: pulumi.StringArray{
 //							pulumi.String("user:joebloggs@example.com"),
 //						},
-//						LogType: pulumi.String("DATA_READ"),
 //					},
 //				},
-//				OrgId:   pulumi.String("your-organization-id"),
-//				Service: pulumi.String("allServices"),
 //			})
 //			if err != nil {
 //				return err

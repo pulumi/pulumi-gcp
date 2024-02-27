@@ -28,8 +28,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const imageBucket = new gcp.storage.Bucket("imageBucket", {location: "EU"});
- * const imageBackend = new gcp.compute.BackendBucket("imageBackend", {
+ * const imageBucket = new gcp.storage.Bucket("image_bucket", {
+ *     name: "image-store-bucket",
+ *     location: "EU",
+ * });
+ * const imageBackend = new gcp.compute.BackendBucket("image_backend", {
+ *     name: "image-backend-bucket",
  *     description: "Contains beautiful images",
  *     bucketName: imageBucket.name,
  *     enableCdn: true,
@@ -41,12 +45,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const imageBackendBucket = new gcp.storage.Bucket("imageBackendBucket", {location: "EU"});
+ * const imageBackendBucket = new gcp.storage.Bucket("image_backend", {
+ *     name: "image-store-bucket",
+ *     location: "EU",
+ * });
  * const policy = new gcp.compute.SecurityPolicy("policy", {
+ *     name: "image-store-bucket",
  *     description: "basic security policy",
  *     type: "CLOUD_ARMOR_EDGE",
  * });
- * const imageBackendBackendBucket = new gcp.compute.BackendBucket("imageBackendBackendBucket", {
+ * const imageBackend = new gcp.compute.BackendBucket("image_backend", {
+ *     name: "image-backend-bucket",
  *     description: "Contains beautiful images",
  *     bucketName: imageBackendBucket.name,
  *     enableCdn: true,
@@ -59,8 +68,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const imageBucket = new gcp.storage.Bucket("imageBucket", {location: "EU"});
- * const imageBackend = new gcp.compute.BackendBucket("imageBackend", {
+ * const imageBucket = new gcp.storage.Bucket("image_bucket", {
+ *     name: "image-backend-bucket",
+ *     location: "EU",
+ * });
+ * const imageBackend = new gcp.compute.BackendBucket("image_backend", {
+ *     name: "image-backend-bucket",
  *     description: "Contains beautiful images",
  *     bucketName: imageBucket.name,
  *     enableCdn: true,
@@ -77,8 +90,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const imageBucket = new gcp.storage.Bucket("imageBucket", {location: "EU"});
- * const imageBackend = new gcp.compute.BackendBucket("imageBackend", {
+ * const imageBucket = new gcp.storage.Bucket("image_bucket", {
+ *     name: "image-backend-bucket",
+ *     location: "EU",
+ * });
+ * const imageBackend = new gcp.compute.BackendBucket("image_backend", {
+ *     name: "image-backend-bucket",
  *     description: "Contains beautiful images",
  *     bucketName: imageBucket.name,
  *     enableCdn: true,

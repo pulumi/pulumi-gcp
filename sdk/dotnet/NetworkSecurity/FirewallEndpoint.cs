@@ -23,15 +23,13 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// {
     ///     var @default = new Gcp.NetworkSecurity.FirewallEndpoint("default", new()
     ///     {
+    ///         Name = "my-firewall-endpoint",
     ///         Parent = "organizations/123456789",
     ///         Location = "us-central1-a",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

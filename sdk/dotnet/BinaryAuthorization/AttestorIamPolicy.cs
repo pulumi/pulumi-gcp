@@ -51,8 +51,8 @@ namespace Pulumi.Gcp.BinaryAuthorization
     /// 
     ///     var policy = new Gcp.BinaryAuthorization.AttestorIamPolicy("policy", new()
     ///     {
-    ///         Project = google_binary_authorization_attestor.Attestor.Project,
-    ///         Attestor = google_binary_authorization_attestor.Attestor.Name,
+    ///         Project = attestor.Project,
+    ///         Attestor = attestor.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -71,8 +71,8 @@ namespace Pulumi.Gcp.BinaryAuthorization
     /// {
     ///     var binding = new Gcp.BinaryAuthorization.AttestorIamBinding("binding", new()
     ///     {
-    ///         Project = google_binary_authorization_attestor.Attestor.Project,
-    ///         Attestor = google_binary_authorization_attestor.Attestor.Name,
+    ///         Project = attestor.Project,
+    ///         Attestor = attestor.Name,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -95,8 +95,8 @@ namespace Pulumi.Gcp.BinaryAuthorization
     /// {
     ///     var member = new Gcp.BinaryAuthorization.AttestorIamMember("member", new()
     ///     {
-    ///         Project = google_binary_authorization_attestor.Attestor.Project,
-    ///         Attestor = google_binary_authorization_attestor.Attestor.Name,
+    ///         Project = attestor.Project,
+    ///         Attestor = attestor.Name,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

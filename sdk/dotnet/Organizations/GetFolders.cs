@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Organizations
         /// {
         ///     var my_org_folders = Gcp.Organizations.GetFolders.Invoke(new()
         ///     {
-        ///         ParentId = $"organizations/{@var.Organization_id}",
+        ///         ParentId = $"organizations/{organizationId}",
         ///     });
         /// 
         ///     var first_folder = Gcp.Organizations.GetFolder.Invoke(new()
@@ -67,7 +67,7 @@ namespace Pulumi.Gcp.Organizations
         /// {
         ///     var my_org_folders = Gcp.Organizations.GetFolders.Invoke(new()
         ///     {
-        ///         ParentId = $"organizations/{@var.Organization_id}",
+        ///         ParentId = $"organizations/{organizationId}",
         ///     });
         /// 
         ///     var first_folder = Gcp.Organizations.GetFolder.Invoke(new()

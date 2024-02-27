@@ -11,6 +11,545 @@ import * as utilities from "../utilities";
  * that you define for the host and path of an incoming URL.
  *
  * ## Example Usage
+ * ### Region Url Map Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.RegionHealthCheck("default", {
+ *     region: "us-central1",
+ *     name: "health-check",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ *     httpHealthCheck: {
+ *         port: 80,
+ *         requestPath: "/",
+ *     },
+ * });
+ * const login = new gcp.compute.RegionBackendService("login", {
+ *     region: "us-central1",
+ *     name: "login",
+ *     protocol: "HTTP",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     timeoutSec: 10,
+ *     healthChecks: _default.id,
+ * });
+ * const home = new gcp.compute.RegionBackendService("home", {
+ *     region: "us-central1",
+ *     name: "home",
+ *     protocol: "HTTP",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     timeoutSec: 10,
+ *     healthChecks: _default.id,
+ * });
+ * const regionurlmap = new gcp.compute.RegionUrlMap("regionurlmap", {
+ *     region: "us-central1",
+ *     name: "regionurlmap",
+ *     description: "a description",
+ *     defaultService: home.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: home.id,
+ *         pathRules: [
+ *             {
+ *                 paths: ["/home"],
+ *                 service: home.id,
+ *             },
+ *             {
+ *                 paths: ["/login"],
+ *                 service: login.id,
+ *             },
+ *         ],
+ *     }],
+ *     tests: [{
+ *         service: home.id,
+ *         host: "hi.com",
+ *         path: "/home",
+ *     }],
+ * });
+ * ```
+ * ### Region Url Map Default Route Action
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.RegionHealthCheck("default", {
+ *     region: "us-central1",
+ *     name: "health-check",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ *     httpHealthCheck: {
+ *         port: 80,
+ *         requestPath: "/",
+ *     },
+ * });
+ * const login = new gcp.compute.RegionBackendService("login", {
+ *     region: "us-central1",
+ *     name: "login",
+ *     protocol: "HTTP",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     timeoutSec: 10,
+ *     healthChecks: _default.id,
+ * });
+ * const home = new gcp.compute.RegionBackendService("home", {
+ *     region: "us-central1",
+ *     name: "home",
+ *     protocol: "HTTP",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     timeoutSec: 10,
+ *     healthChecks: _default.id,
+ * });
+ * const regionurlmap = new gcp.compute.RegionUrlMap("regionurlmap", {
+ *     region: "us-central1",
+ *     name: "regionurlmap",
+ *     description: "a description",
+ *     defaultRouteAction: {
+ *         retryPolicy: {
+ *             retryConditions: [
+ *                 "5xx",
+ *                 "gateway-error",
+ *             ],
+ *             numRetries: 3,
+ *             perTryTimeout: {
+ *                 seconds: "0",
+ *                 nanos: 500,
+ *             },
+ *         },
+ *         requestMirrorPolicy: {
+ *             backendService: home.id,
+ *         },
+ *         weightedBackendServices: [
+ *             {
+ *                 backendService: login.id,
+ *                 weight: 200,
+ *                 headerAction: {
+ *                     requestHeadersToAdds: [{
+ *                         headerName: "foo-request-1",
+ *                         headerValue: "bar",
+ *                         replace: true,
+ *                     }],
+ *                     requestHeadersToRemoves: ["fizz"],
+ *                     responseHeadersToAdds: [{
+ *                         headerName: "foo-response-1",
+ *                         headerValue: "bar",
+ *                         replace: true,
+ *                     }],
+ *                     responseHeadersToRemoves: ["buzz"],
+ *                 },
+ *             },
+ *             {
+ *                 backendService: home.id,
+ *                 weight: 100,
+ *                 headerAction: {
+ *                     requestHeadersToAdds: [
+ *                         {
+ *                             headerName: "foo-request-1",
+ *                             headerValue: "bar",
+ *                             replace: true,
+ *                         },
+ *                         {
+ *                             headerName: "foo-request-2",
+ *                             headerValue: "bar",
+ *                             replace: true,
+ *                         },
+ *                     ],
+ *                     requestHeadersToRemoves: ["fizz"],
+ *                     responseHeadersToAdds: [
+ *                         {
+ *                             headerName: "foo-response-2",
+ *                             headerValue: "bar",
+ *                             replace: true,
+ *                         },
+ *                         {
+ *                             headerName: "foo-response-1",
+ *                             headerValue: "bar",
+ *                             replace: true,
+ *                         },
+ *                     ],
+ *                     responseHeadersToRemoves: ["buzz"],
+ *                 },
+ *             },
+ *         ],
+ *         urlRewrite: {
+ *             hostRewrite: "dev.example.com",
+ *             pathPrefixRewrite: "/v1/api/",
+ *         },
+ *         corsPolicy: {
+ *             disabled: false,
+ *             allowCredentials: true,
+ *             allowHeaders: ["foobar"],
+ *             allowMethods: [
+ *                 "GET",
+ *                 "POST",
+ *             ],
+ *             allowOrigins: ["example.com"],
+ *             exposeHeaders: ["foobar"],
+ *             maxAge: 60,
+ *         },
+ *         faultInjectionPolicy: {
+ *             delay: {
+ *                 fixedDelay: {
+ *                     seconds: "0",
+ *                     nanos: 500,
+ *                 },
+ *                 percentage: 0.5,
+ *             },
+ *             abort: {
+ *                 httpStatus: 500,
+ *                 percentage: 0.5,
+ *             },
+ *         },
+ *         timeout: {
+ *             seconds: "0",
+ *             nanos: 500,
+ *         },
+ *     },
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: home.id,
+ *         pathRules: [
+ *             {
+ *                 paths: ["/home"],
+ *                 service: home.id,
+ *             },
+ *             {
+ *                 paths: ["/login"],
+ *                 service: login.id,
+ *             },
+ *         ],
+ *     }],
+ *     tests: [{
+ *         service: home.id,
+ *         host: "hi.com",
+ *         path: "/home",
+ *     }],
+ * });
+ * ```
+ * ### Region Url Map L7 Ilb Path
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.RegionHealthCheck("default", {
+ *     name: "health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const home = new gcp.compute.RegionBackendService("home", {
+ *     name: "home",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: _default.id,
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ * });
+ * const regionurlmap = new gcp.compute.RegionUrlMap("regionurlmap", {
+ *     name: "regionurlmap",
+ *     description: "a description",
+ *     defaultService: home.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: home.id,
+ *         pathRules: [{
+ *             paths: ["/home"],
+ *             routeAction: {
+ *                 corsPolicy: {
+ *                     allowCredentials: true,
+ *                     allowHeaders: ["Allowed content"],
+ *                     allowMethods: ["GET"],
+ *                     allowOrigins: ["Allowed origin"],
+ *                     exposeHeaders: ["Exposed header"],
+ *                     maxAge: 30,
+ *                     disabled: false,
+ *                 },
+ *                 faultInjectionPolicy: {
+ *                     abort: {
+ *                         httpStatus: 234,
+ *                         percentage: 5.6,
+ *                     },
+ *                     delay: {
+ *                         fixedDelay: {
+ *                             seconds: "0",
+ *                             nanos: 50000,
+ *                         },
+ *                         percentage: 7.8,
+ *                     },
+ *                 },
+ *                 requestMirrorPolicy: {
+ *                     backendService: home.id,
+ *                 },
+ *                 retryPolicy: {
+ *                     numRetries: 4,
+ *                     perTryTimeout: {
+ *                         seconds: "30",
+ *                     },
+ *                     retryConditions: [
+ *                         "5xx",
+ *                         "deadline-exceeded",
+ *                     ],
+ *                 },
+ *                 timeout: {
+ *                     seconds: "20",
+ *                     nanos: 750000000,
+ *                 },
+ *                 urlRewrite: {
+ *                     hostRewrite: "dev.example.com",
+ *                     pathPrefixRewrite: "/v1/api/",
+ *                 },
+ *                 weightedBackendServices: [{
+ *                     backendService: home.id,
+ *                     weight: 400,
+ *                     headerAction: {
+ *                         requestHeadersToRemoves: ["RemoveMe"],
+ *                         requestHeadersToAdds: [{
+ *                             headerName: "AddMe",
+ *                             headerValue: "MyValue",
+ *                             replace: true,
+ *                         }],
+ *                         responseHeadersToRemoves: ["RemoveMe"],
+ *                         responseHeadersToAdds: [{
+ *                             headerName: "AddMe",
+ *                             headerValue: "MyValue",
+ *                             replace: false,
+ *                         }],
+ *                     },
+ *                 }],
+ *             },
+ *         }],
+ *     }],
+ *     tests: [{
+ *         service: home.id,
+ *         host: "hi.com",
+ *         path: "/home",
+ *     }],
+ * });
+ * ```
+ * ### Region Url Map L7 Ilb Path Partial
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.RegionHealthCheck("default", {
+ *     name: "health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const home = new gcp.compute.RegionBackendService("home", {
+ *     name: "home",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: _default.id,
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ * });
+ * const regionurlmap = new gcp.compute.RegionUrlMap("regionurlmap", {
+ *     name: "regionurlmap",
+ *     description: "a description",
+ *     defaultService: home.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: home.id,
+ *         pathRules: [{
+ *             paths: ["/home"],
+ *             routeAction: {
+ *                 retryPolicy: {
+ *                     numRetries: 4,
+ *                     perTryTimeout: {
+ *                         seconds: "30",
+ *                     },
+ *                     retryConditions: [
+ *                         "5xx",
+ *                         "deadline-exceeded",
+ *                     ],
+ *                 },
+ *                 timeout: {
+ *                     seconds: "20",
+ *                     nanos: 750000000,
+ *                 },
+ *                 urlRewrite: {
+ *                     hostRewrite: "dev.example.com",
+ *                     pathPrefixRewrite: "/v1/api/",
+ *                 },
+ *                 weightedBackendServices: [{
+ *                     backendService: home.id,
+ *                     weight: 400,
+ *                     headerAction: {
+ *                         responseHeadersToAdds: [{
+ *                             headerName: "AddMe",
+ *                             headerValue: "MyValue",
+ *                             replace: false,
+ *                         }],
+ *                     },
+ *                 }],
+ *             },
+ *         }],
+ *     }],
+ *     tests: [{
+ *         service: home.id,
+ *         host: "hi.com",
+ *         path: "/home",
+ *     }],
+ * });
+ * ```
+ * ### Region Url Map L7 Ilb Route
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.RegionHealthCheck("default", {
+ *     name: "health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const home = new gcp.compute.RegionBackendService("home", {
+ *     name: "home",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: _default.id,
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ * });
+ * const regionurlmap = new gcp.compute.RegionUrlMap("regionurlmap", {
+ *     name: "regionurlmap",
+ *     description: "a description",
+ *     defaultService: home.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: home.id,
+ *         routeRules: [{
+ *             priority: 1,
+ *             headerAction: {
+ *                 requestHeadersToRemoves: ["RemoveMe2"],
+ *                 requestHeadersToAdds: [{
+ *                     headerName: "AddSomethingElse",
+ *                     headerValue: "MyOtherValue",
+ *                     replace: true,
+ *                 }],
+ *                 responseHeadersToRemoves: ["RemoveMe3"],
+ *                 responseHeadersToAdds: [{
+ *                     headerName: "AddMe",
+ *                     headerValue: "MyValue",
+ *                     replace: false,
+ *                 }],
+ *             },
+ *             matchRules: [{
+ *                 fullPathMatch: "a full path",
+ *                 headerMatches: [{
+ *                     headerName: "someheader",
+ *                     exactMatch: "match this exactly",
+ *                     invertMatch: true,
+ *                 }],
+ *                 ignoreCase: true,
+ *                 metadataFilters: [{
+ *                     filterMatchCriteria: "MATCH_ANY",
+ *                     filterLabels: [{
+ *                         name: "PLANET",
+ *                         value: "MARS",
+ *                     }],
+ *                 }],
+ *                 queryParameterMatches: [{
+ *                     name: "a query parameter",
+ *                     presentMatch: true,
+ *                 }],
+ *             }],
+ *             urlRedirect: {
+ *                 hostRedirect: "A host",
+ *                 httpsRedirect: false,
+ *                 pathRedirect: "some/path",
+ *                 redirectResponseCode: "TEMPORARY_REDIRECT",
+ *                 stripQuery: true,
+ *             },
+ *         }],
+ *     }],
+ *     tests: [{
+ *         service: home.id,
+ *         host: "hi.com",
+ *         path: "/home",
+ *     }],
+ * });
+ * ```
+ * ### Region Url Map L7 Ilb Route Partial
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.RegionHealthCheck("default", {
+ *     name: "health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const home = new gcp.compute.RegionBackendService("home", {
+ *     name: "home",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: _default.id,
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ * });
+ * const regionurlmap = new gcp.compute.RegionUrlMap("regionurlmap", {
+ *     name: "regionurlmap",
+ *     description: "a description",
+ *     defaultService: home.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: home.id,
+ *         routeRules: [{
+ *             priority: 1,
+ *             service: home.id,
+ *             headerAction: {
+ *                 requestHeadersToRemoves: ["RemoveMe2"],
+ *             },
+ *             matchRules: [{
+ *                 fullPathMatch: "a full path",
+ *                 headerMatches: [{
+ *                     headerName: "someheader",
+ *                     exactMatch: "match this exactly",
+ *                     invertMatch: true,
+ *                 }],
+ *                 queryParameterMatches: [{
+ *                     name: "a query parameter",
+ *                     presentMatch: true,
+ *                 }],
+ *             }],
+ *         }],
+ *     }],
+ *     tests: [{
+ *         service: home.id,
+ *         host: "hi.com",
+ *         path: "/home",
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *

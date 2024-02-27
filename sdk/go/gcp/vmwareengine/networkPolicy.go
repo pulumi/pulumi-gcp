@@ -34,6 +34,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vmwareengine.NewNetwork(ctx, "network-policy-nw", &vmwareengine.NetworkArgs{
+//				Name:        pulumi.String("standard-nw"),
 //				Location:    pulumi.String("global"),
 //				Type:        pulumi.String("STANDARD"),
 //				Description: pulumi.String("VMwareEngine standard network sample"),
@@ -43,6 +44,7 @@ import (
 //			}
 //			_, err = vmwareengine.NewNetworkPolicy(ctx, "vmw-engine-network-policy", &vmwareengine.NetworkPolicyArgs{
 //				Location:            pulumi.String("us-west1"),
+//				Name:                pulumi.String("sample-network-policy"),
 //				EdgeServicesCidr:    pulumi.String("192.168.30.0/26"),
 //				VmwareEngineNetwork: network_policy_nw.ID(),
 //			})
@@ -69,6 +71,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vmwareengine.NewNetwork(ctx, "network-policy-nw", &vmwareengine.NetworkArgs{
+//				Name:        pulumi.String("standard-full-nw"),
 //				Location:    pulumi.String("global"),
 //				Type:        pulumi.String("STANDARD"),
 //				Description: pulumi.String("VMwareEngine standard network sample"),
@@ -78,6 +81,7 @@ import (
 //			}
 //			_, err = vmwareengine.NewNetworkPolicy(ctx, "vmw-engine-network-policy", &vmwareengine.NetworkPolicyArgs{
 //				Location:            pulumi.String("us-west1"),
+//				Name:                pulumi.String("sample-network-policy-full"),
 //				EdgeServicesCidr:    pulumi.String("192.168.30.0/26"),
 //				VmwareEngineNetwork: network_policy_nw.ID(),
 //				Description:         pulumi.String("Sample Network Policy"),

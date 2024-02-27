@@ -92,6 +92,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
+ *             .name(&#34;appeng-flex&#34;)
+ *             .projectId(&#34;appeng-flex&#34;)
  *             .orgId(&#34;123456789&#34;)
  *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
  *             .build());
@@ -133,10 +135,12 @@ import javax.annotation.Nullable;
  * 
  *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
  *             .project(myProject.projectId())
+ *             .name(&#34;appengine-static-content&#34;)
  *             .location(&#34;US&#34;)
  *             .build());
  * 
  *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
+ *             .name(&#34;hello-world.zip&#34;)
  *             .bucket(bucket.name())
  *             .source(new FileAsset(&#34;./test-fixtures/hello-world.zip&#34;))
  *             .build());

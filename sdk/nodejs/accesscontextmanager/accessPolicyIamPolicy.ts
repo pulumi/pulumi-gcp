@@ -31,7 +31,10 @@ import * as utilities from "../utilities";
  *         members: ["user:jane@example.com"],
  *     }],
  * });
- * const policy = new gcp.accesscontextmanager.AccessPolicyIamPolicy("policy", {policyData: admin.then(admin => admin.policyData)});
+ * const policy = new gcp.accesscontextmanager.AccessPolicyIamPolicy("policy", {
+ *     name: access_policy.name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
  * ```
  *
  * ## google\_access\_context\_manager\_access\_policy\_iam\_binding
@@ -41,6 +44,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.accesscontextmanager.AccessPolicyIamBinding("binding", {
+ *     name: access_policy.name,
  *     role: "roles/accesscontextmanager.policyAdmin",
  *     members: ["user:jane@example.com"],
  * });
@@ -53,6 +57,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.accesscontextmanager.AccessPolicyIamMember("member", {
+ *     name: access_policy.name,
  *     role: "roles/accesscontextmanager.policyAdmin",
  *     member: "user:jane@example.com",
  * });

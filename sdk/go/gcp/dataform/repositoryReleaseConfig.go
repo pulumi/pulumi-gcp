@@ -29,7 +29,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			gitRepository, err := sourcerepo.NewRepository(ctx, "gitRepository", nil, pulumi.Provider(google_beta))
+//			gitRepository, err := sourcerepo.NewRepository(ctx, "git_repository", &sourcerepo.RepositoryArgs{
+//				Name: pulumi.String("my/repository"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -38,18 +40,19 @@ import (
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Auto: nil,
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			secretVersion, err := secretmanager.NewSecretVersion(ctx, "secretVersion", &secretmanager.SecretVersionArgs{
+//			secretVersion, err := secretmanager.NewSecretVersion(ctx, "secret_version", &secretmanager.SecretVersionArgs{
 //				Secret:     secret.ID(),
 //				SecretData: pulumi.String("secret-data"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			repository, err := dataform.NewRepository(ctx, "repository", &dataform.RepositoryArgs{
+//				Name:   pulumi.String("dataform_repository"),
 //				Region: pulumi.String("us-central1"),
 //				GitRemoteSettings: &dataform.RepositoryGitRemoteSettingsArgs{
 //					Url:                              gitRepository.Url,
@@ -61,7 +64,7 @@ import (
 //					SchemaSuffix:    pulumi.String("_suffix"),
 //					TablePrefix:     pulumi.String("prefix_"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -69,6 +72,7 @@ import (
 //				Project:      repository.Project,
 //				Region:       repository.Region,
 //				Repository:   repository.Name,
+//				Name:         pulumi.String("my_release"),
 //				GitCommitish: pulumi.String("main"),
 //				CronSchedule: pulumi.String("0 7 * * *"),
 //				TimeZone:     pulumi.String("America/New_York"),
@@ -84,7 +88,7 @@ import (
 //						"var1": pulumi.String("value"),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

@@ -47,7 +47,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myProject, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
+//			myProject, err := organizations.NewProject(ctx, "my_project", &organizations.ProjectArgs{
+//				Name:           pulumi.String("appeng-flex"),
+//				ProjectId:      pulumi.String("appeng-flex"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 //			})
@@ -69,7 +71,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			customServiceAccount, err := serviceaccount.NewAccount(ctx, "customServiceAccount", &serviceaccount.AccountArgs{
+//			customServiceAccount, err := serviceaccount.NewAccount(ctx, "custom_service_account", &serviceaccount.AccountArgs{
 //				Project:     service.Project,
 //				AccountId:   pulumi.String("my-account"),
 //				DisplayName: pulumi.String("Custom Service Account"),
@@ -77,7 +79,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			gaeApi, err := projects.NewIAMMember(ctx, "gaeApi", &projects.IAMMemberArgs{
+//			gaeApi, err := projects.NewIAMMember(ctx, "gae_api", &projects.IAMMemberArgs{
 //				Project: service.Project,
 //				Role:    pulumi.String("roles/compute.networkUser"),
 //				Member: customServiceAccount.Email.ApplyT(func(email string) (string, error) {
@@ -87,7 +89,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "logsWriter", &projects.IAMMemberArgs{
+//			_, err = projects.NewIAMMember(ctx, "logs_writer", &projects.IAMMemberArgs{
 //				Project: service.Project,
 //				Role:    pulumi.String("roles/logging.logWriter"),
 //				Member: customServiceAccount.Email.ApplyT(func(email string) (string, error) {
@@ -97,7 +99,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "storageViewer", &projects.IAMMemberArgs{
+//			_, err = projects.NewIAMMember(ctx, "storage_viewer", &projects.IAMMemberArgs{
 //				Project: service.Project,
 //				Role:    pulumi.String("roles/storage.objectViewer"),
 //				Member: customServiceAccount.Email.ApplyT(func(email string) (string, error) {
@@ -109,19 +111,21 @@ import (
 //			}
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
 //				Project:  myProject.ProjectId,
+//				Name:     pulumi.String("appengine-static-content"),
 //				Location: pulumi.String("US"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+//				Name:   pulumi.String("hello-world.zip"),
 //				Bucket: bucket.Name,
 //				Source: pulumi.NewFileAsset("./test-fixtures/hello-world.zip"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = appengine.NewFlexibleAppVersion(ctx, "myappV1", &appengine.FlexibleAppVersionArgs{
+//			_, err = appengine.NewFlexibleAppVersion(ctx, "myapp_v1", &appengine.FlexibleAppVersionArgs{
 //				VersionId: pulumi.String("v1"),
 //				Project:   gaeApi.Project,
 //				Service:   pulumi.String("default"),

@@ -35,15 +35,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			policyOrganizationSecurityPolicy, err := compute.NewOrganizationSecurityPolicy(ctx, "policyOrganizationSecurityPolicy", &compute.OrganizationSecurityPolicyArgs{
+//			policy, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
 //				DisplayName: pulumi.String("tf-test"),
 //				Parent:      pulumi.String("organizations/123456789"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewOrganizationSecurityPolicyRule(ctx, "policyOrganizationSecurityPolicyRule", &compute.OrganizationSecurityPolicyRuleArgs{
-//				PolicyId:      policyOrganizationSecurityPolicy.ID(),
+//			_, err = compute.NewOrganizationSecurityPolicyRule(ctx, "policy", &compute.OrganizationSecurityPolicyRuleArgs{
+//				PolicyId:      policy.ID(),
 //				Action:        pulumi.String("allow"),
 //				Direction:     pulumi.String("INGRESS"),
 //				EnableLogging: pulumi.Bool(true),
@@ -67,7 +67,7 @@ import (
 //					},
 //				},
 //				Priority: pulumi.Int(100),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

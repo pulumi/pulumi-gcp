@@ -36,7 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			basicAgent, err := diagflow.NewAgent(ctx, "basicAgent", &diagflow.AgentArgs{
+//			_, err := diagflow.NewAgent(ctx, "basic_agent", &diagflow.AgentArgs{
 //				DisplayName:         pulumi.String("example_agent"),
 //				DefaultLanguageCode: pulumi.String("en"),
 //				TimeZone:            pulumi.String("America/New_York"),
@@ -44,11 +44,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = diagflow.NewIntent(ctx, "basicIntent", &diagflow.IntentArgs{
+//			_, err = diagflow.NewIntent(ctx, "basic_intent", &diagflow.IntentArgs{
 //				DisplayName: pulumi.String("basic-intent"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				basicAgent,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -76,27 +74,29 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			agentProjectProject, err := organizations.NewProject(ctx, "agentProjectProject", &organizations.ProjectArgs{
-//				OrgId: pulumi.String("123456789"),
+//			agentProject, err := organizations.NewProject(ctx, "agent_project", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("my-project"),
+//				Name:      pulumi.String("my-project"),
+//				OrgId:     pulumi.String("123456789"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			agentProjectService, err := projects.NewService(ctx, "agentProjectService", &projects.ServiceArgs{
-//				Project:                  agentProjectProject.ProjectId,
+//			agentProjectService, err := projects.NewService(ctx, "agent_project", &projects.ServiceArgs{
+//				Project:                  agentProject.ProjectId,
 //				Service:                  pulumi.String("dialogflow.googleapis.com"),
 //				DisableDependentServices: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			dialogflowServiceAccount, err := serviceaccount.NewAccount(ctx, "dialogflowServiceAccount", &serviceaccount.AccountArgs{
+//			dialogflowServiceAccount, err := serviceaccount.NewAccount(ctx, "dialogflow_service_account", &serviceaccount.AccountArgs{
 //				AccountId: pulumi.String("my-account"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "agentCreate", &projects.IAMMemberArgs{
+//			_, err = projects.NewIAMMember(ctx, "agent_create", &projects.IAMMemberArgs{
 //				Project: agentProjectService.Project,
 //				Role:    pulumi.String("roles/dialogflow.admin"),
 //				Member: dialogflowServiceAccount.Email.ApplyT(func(email string) (string, error) {
@@ -106,8 +106,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			basicAgent, err := diagflow.NewAgent(ctx, "basicAgent", &diagflow.AgentArgs{
-//				Project:             agentProjectProject.ProjectId,
+//			_, err = diagflow.NewAgent(ctx, "basic_agent", &diagflow.AgentArgs{
+//				Project:             agentProject.ProjectId,
 //				DisplayName:         pulumi.String("example_agent"),
 //				DefaultLanguageCode: pulumi.String("en"),
 //				TimeZone:            pulumi.String("America/New_York"),
@@ -115,8 +115,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = diagflow.NewIntent(ctx, "fullIntent", &diagflow.IntentArgs{
-//				Project:       agentProjectProject.ProjectId,
+//			_, err = diagflow.NewIntent(ctx, "full_intent", &diagflow.IntentArgs{
+//				Project:       agentProject.ProjectId,
 //				DisplayName:   pulumi.String("full-intent"),
 //				WebhookState:  pulumi.String("WEBHOOK_STATE_ENABLED"),
 //				Priority:      pulumi.Int(1),
@@ -125,7 +125,7 @@ import (
 //				Action:        pulumi.String("some_action"),
 //				ResetContexts: pulumi.Bool(true),
 //				InputContextNames: pulumi.StringArray{
-//					agentProjectProject.ProjectId.ApplyT(func(projectId string) (string, error) {
+//					agentProject.ProjectId.ApplyT(func(projectId string) (string, error) {
 //						return fmt.Sprintf("projects/%v/agent/sessions/-/contexts/some_id", projectId), nil
 //					}).(pulumi.StringOutput),
 //				},
@@ -136,9 +136,7 @@ import (
 //					pulumi.String("FACEBOOK"),
 //					pulumi.String("SLACK"),
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				basicAgent,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

@@ -109,9 +109,9 @@ def get_table_iam_policy(dataset_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigquery.get_table_iam_policy(project=google_bigquery_table["test"]["project"],
-        dataset_id=google_bigquery_table["test"]["dataset_id"],
-        table_id=google_bigquery_table["test"]["table_id"])
+    policy = gcp.bigquery.get_table_iam_policy(project=test["project"],
+        dataset_id=test["datasetId"],
+        table_id=test["tableId"])
     ```
 
 
@@ -148,9 +148,9 @@ def get_table_iam_policy_output(dataset_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigquery.get_table_iam_policy(project=google_bigquery_table["test"]["project"],
-        dataset_id=google_bigquery_table["test"]["dataset_id"],
-        table_id=google_bigquery_table["test"]["table_id"])
+    policy = gcp.bigquery.get_table_iam_policy(project=test["project"],
+        dataset_id=test["datasetId"],
+        table_id=test["tableId"])
     ```
 
 

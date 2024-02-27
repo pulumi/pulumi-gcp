@@ -123,6 +123,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+ *             .name(&#34;dialogflowcx-bucket&#34;)
  *             .location(&#34;US&#34;)
  *             .uniformBucketLevelAccess(true)
  *             .build());

@@ -25,29 +25,28 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const default = gcp.storage.getTransferProjectServiceAccount({
- *     project: _var.project,
+ *     project: project,
  * });
- * const s3_backup_bucketBucket = new gcp.storage.Bucket("s3-backup-bucketBucket", {
+ * const s3_backup_bucket = new gcp.storage.Bucket("s3-backup-bucket", {
+ *     name: `${awsS3Bucket}-backup`,
  *     storageClass: "NEARLINE",
- *     project: _var.project,
+ *     project: project,
  *     location: "US",
  * });
- * const s3_backup_bucketBucketIAMMember = new gcp.storage.BucketIAMMember("s3-backup-bucketBucketIAMMember", {
- *     bucket: s3_backup_bucketBucket.name,
+ * const s3_backup_bucketBucketIAMMember = new gcp.storage.BucketIAMMember("s3-backup-bucket", {
+ *     bucket: s3_backup_bucket.name,
  *     role: "roles/storage.admin",
  *     member: _default.then(_default => `serviceAccount:${_default.email}`),
- * }, {
- *     dependsOn: [s3_backup_bucketBucket],
  * });
- * const topic = new gcp.pubsub.Topic("topic", {});
- * const notificationConfig = new gcp.pubsub.TopicIAMMember("notificationConfig", {
+ * const topic = new gcp.pubsub.Topic("topic", {name: pubsubTopicName});
+ * const notificationConfig = new gcp.pubsub.TopicIAMMember("notification_config", {
  *     topic: topic.id,
  *     role: "roles/pubsub.publisher",
  *     member: _default.then(_default => `serviceAccount:${_default.email}`),
  * });
  * const s3_bucket_nightly_backup = new gcp.storage.TransferJob("s3-bucket-nightly-backup", {
  *     description: "Nightly backup of S3 bucket",
- *     project: _var.project,
+ *     project: project,
  *     transferSpec: {
  *         objectConditions: {
  *             maxTimeElapsedSinceLastModification: "600s",
@@ -57,14 +56,14 @@ import * as utilities from "../utilities";
  *             deleteObjectsUniqueInSink: false,
  *         },
  *         awsS3DataSource: {
- *             bucketName: _var.aws_s3_bucket,
+ *             bucketName: awsS3Bucket,
  *             awsAccessKey: {
- *                 accessKeyId: _var.aws_access_key,
- *                 secretAccessKey: _var.aws_secret_key,
+ *                 accessKeyId: awsAccessKey,
+ *                 secretAccessKey: awsSecretKey,
  *             },
  *         },
  *         gcsDataSink: {
- *             bucketName: s3_backup_bucketBucket.name,
+ *             bucketName: s3_backup_bucket.name,
  *             path: "foo/bar/",
  *         },
  *     },
@@ -95,11 +94,6 @@ import * as utilities from "../utilities";
  *         ],
  *         payloadFormat: "JSON",
  *     },
- * }, {
- *     dependsOn: [
- *         s3_backup_bucketBucketIAMMember,
- *         notificationConfig,
- *     ],
  * });
  * ```
  *

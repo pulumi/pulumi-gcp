@@ -41,16 +41,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudidentity.NewGroup(ctx, "cloudIdentityGroupBasic", &cloudidentity.GroupArgs{
-//				DisplayName: pulumi.String("my-identity-group"),
+//			_, err := cloudidentity.NewGroup(ctx, "cloud_identity_group_basic", &cloudidentity.GroupArgs{
+//				DisplayName:        pulumi.String("my-identity-group"),
+//				InitialGroupConfig: pulumi.String("WITH_INITIAL_OWNER"),
+//				Parent:             pulumi.String("customers/A01b123xz"),
 //				GroupKey: &cloudidentity.GroupGroupKeyArgs{
 //					Id: pulumi.String("my-identity-group@example.com"),
 //				},
-//				InitialGroupConfig: pulumi.String("WITH_INITIAL_OWNER"),
 //				Labels: pulumi.StringMap{
 //					"cloudidentity.googleapis.com/groups.discussion_forum": pulumi.String(""),
 //				},
-//				Parent: pulumi.String("customers/A01b123xz"),
 //			})
 //			if err != nil {
 //				return err

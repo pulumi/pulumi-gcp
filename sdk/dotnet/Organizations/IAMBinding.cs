@@ -33,12 +33,12 @@ namespace Pulumi.Gcp.Organizations
     /// {
     ///     var binding = new Gcp.Organizations.IAMBinding("binding", new()
     ///     {
+    ///         OrgId = "123456789",
+    ///         Role = "roles/browser",
     ///         Members = new[]
     ///         {
     ///             "user:alice@gmail.com",
     ///         },
-    ///         OrgId = "123456789",
-    ///         Role = "roles/browser",
     ///     });
     /// 
     /// });

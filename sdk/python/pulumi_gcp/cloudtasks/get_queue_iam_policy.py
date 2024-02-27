@@ -109,9 +109,9 @@ def get_queue_iam_policy(location: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.cloudtasks.get_queue_iam_policy(project=google_cloud_tasks_queue["default"]["project"],
-        location=google_cloud_tasks_queue["default"]["location"],
-        name=google_cloud_tasks_queue["default"]["name"])
+    policy = gcp.cloudtasks.get_queue_iam_policy(project=default["project"],
+        location=default["location"],
+        name=default["name"])
     ```
 
 
@@ -150,9 +150,9 @@ def get_queue_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]] 
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.cloudtasks.get_queue_iam_policy(project=google_cloud_tasks_queue["default"]["project"],
-        location=google_cloud_tasks_queue["default"]["location"],
-        name=google_cloud_tasks_queue["default"]["name"])
+    policy = gcp.cloudtasks.get_queue_iam_policy(project=default["project"],
+        location=default["location"],
+        name=default["name"])
     ```
 
 

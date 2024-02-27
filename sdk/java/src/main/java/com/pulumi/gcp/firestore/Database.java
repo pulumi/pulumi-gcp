@@ -53,8 +53,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
- *             .locationId(&#34;nam5&#34;)
  *             .project(&#34;my-project-name&#34;)
+ *             .name(&#34;(default)&#34;)
+ *             .locationId(&#34;nam5&#34;)
  *             .type(&#34;FIRESTORE_NATIVE&#34;)
  *             .build());
  * 
@@ -84,14 +85,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
- *             .appEngineIntegrationMode(&#34;DISABLED&#34;)
+ *             .project(&#34;my-project-name&#34;)
+ *             .name(&#34;database-id&#34;)
+ *             .locationId(&#34;nam5&#34;)
+ *             .type(&#34;FIRESTORE_NATIVE&#34;)
  *             .concurrencyMode(&#34;OPTIMISTIC&#34;)
+ *             .appEngineIntegrationMode(&#34;DISABLED&#34;)
+ *             .pointInTimeRecoveryEnablement(&#34;POINT_IN_TIME_RECOVERY_ENABLED&#34;)
  *             .deleteProtectionState(&#34;DELETE_PROTECTION_ENABLED&#34;)
  *             .deletionPolicy(&#34;DELETE&#34;)
- *             .locationId(&#34;nam5&#34;)
- *             .pointInTimeRecoveryEnablement(&#34;POINT_IN_TIME_RECOVERY_ENABLED&#34;)
- *             .project(&#34;my-project-name&#34;)
- *             .type(&#34;FIRESTORE_NATIVE&#34;)
  *             .build());
  * 
  *     }
@@ -120,8 +122,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var datastoreModeDatabase = new Database(&#34;datastoreModeDatabase&#34;, DatabaseArgs.builder()        
- *             .locationId(&#34;nam5&#34;)
  *             .project(&#34;my-project-name&#34;)
+ *             .name(&#34;(default)&#34;)
+ *             .locationId(&#34;nam5&#34;)
  *             .type(&#34;DATASTORE_MODE&#34;)
  *             .build());
  * 
@@ -151,14 +154,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var datastoreModeDatabase = new Database(&#34;datastoreModeDatabase&#34;, DatabaseArgs.builder()        
- *             .appEngineIntegrationMode(&#34;DISABLED&#34;)
+ *             .project(&#34;my-project-name&#34;)
+ *             .name(&#34;database-id&#34;)
+ *             .locationId(&#34;nam5&#34;)
+ *             .type(&#34;DATASTORE_MODE&#34;)
  *             .concurrencyMode(&#34;OPTIMISTIC&#34;)
+ *             .appEngineIntegrationMode(&#34;DISABLED&#34;)
+ *             .pointInTimeRecoveryEnablement(&#34;POINT_IN_TIME_RECOVERY_ENABLED&#34;)
  *             .deleteProtectionState(&#34;DELETE_PROTECTION_ENABLED&#34;)
  *             .deletionPolicy(&#34;DELETE&#34;)
- *             .locationId(&#34;nam5&#34;)
- *             .pointInTimeRecoveryEnablement(&#34;POINT_IN_TIME_RECOVERY_ENABLED&#34;)
- *             .project(&#34;my-project-name&#34;)
- *             .type(&#34;DATASTORE_MODE&#34;)
  *             .build());
  * 
  *     }

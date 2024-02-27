@@ -51,6 +51,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var certificateMap = new CertificateMap(&#34;certificateMap&#34;, CertificateMapArgs.builder()        
+ *             .name(&#34;cert-map-entry&#34;)
  *             .description(&#34;My acceptance test certificate map&#34;)
  *             .labels(Map.ofEntries(
  *                 Map.entry(&#34;terraform&#34;, true),
@@ -59,16 +60,19 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var instance = new DnsAuthorization(&#34;instance&#34;, DnsAuthorizationArgs.builder()        
+ *             .name(&#34;dns-auth&#34;)
  *             .description(&#34;The default dnss&#34;)
  *             .domain(&#34;subdomain.hashicorptest.com&#34;)
  *             .build());
  * 
  *         var instance2 = new DnsAuthorization(&#34;instance2&#34;, DnsAuthorizationArgs.builder()        
+ *             .name(&#34;dns-auth2&#34;)
  *             .description(&#34;The default dnss&#34;)
  *             .domain(&#34;subdomain2.hashicorptest.com&#34;)
  *             .build());
  * 
  *         var certificate = new Certificate(&#34;certificate&#34;, CertificateArgs.builder()        
+ *             .name(&#34;cert-map-entry&#34;)
  *             .description(&#34;The default cert&#34;)
  *             .scope(&#34;DEFAULT&#34;)
  *             .managed(CertificateManagedArgs.builder()
@@ -82,6 +86,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var default_ = new CertificateMapEntry(&#34;default&#34;, CertificateMapEntryArgs.builder()        
+ *             .name(&#34;cert-map-entry&#34;)
  *             .description(&#34;My acceptance test certificate map entry&#34;)
  *             .map(certificateMap.name())
  *             .labels(Map.ofEntries(

@@ -21,6 +21,23 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
  *
  * ## Example Usage
+ * ### Backend Service Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ *     name: "health-check",
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     healthChecks: defaultHttpHealthCheck.id,
+ * });
+ * ```
  * ### Backend Service External Iap
  *
  * ```typescript
@@ -28,12 +45,34 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.compute.BackendService("default", {
+ *     name: "tf-test-backend-service-external",
+ *     protocol: "HTTP",
+ *     loadBalancingScheme: "EXTERNAL",
  *     iap: {
  *         oauth2ClientId: "abc",
  *         oauth2ClientSecret: "xyz",
  *     },
- *     loadBalancingScheme: "EXTERNAL",
- *     protocol: "HTTP",
+ * });
+ * ```
+ * ### Backend Service Cache Simple
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ *     name: "health-check",
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     healthChecks: defaultHttpHealthCheck.id,
+ *     enableCdn: true,
+ *     cdnPolicy: {
+ *         signedUrlCacheMaxAgeSec: 7200,
+ *     },
  * });
  * ```
  * ### Backend Service Cache Include Http Headers
@@ -43,16 +82,17 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     enableCdn: true,
  *     cdnPolicy: {
+ *         cacheMode: "USE_ORIGIN_HEADERS",
  *         cacheKeyPolicy: {
  *             includeHost: true,
- *             includeHttpHeaders: ["X-My-Header-Field"],
  *             includeProtocol: true,
  *             includeQueryString: true,
+ *             includeHttpHeaders: ["X-My-Header-Field"],
  *         },
- *         cacheMode: "USE_ORIGIN_HEADERS",
  *     },
- *     enableCdn: true,
  * });
  * ```
  * ### Backend Service Cache Include Named Cookies
@@ -62,22 +102,137 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     enableCdn: true,
  *     cdnPolicy: {
+ *         cacheMode: "CACHE_ALL_STATIC",
+ *         defaultTtl: 3600,
+ *         clientTtl: 7200,
+ *         maxTtl: 10800,
  *         cacheKeyPolicy: {
  *             includeHost: true,
+ *             includeProtocol: true,
+ *             includeQueryString: true,
  *             includeNamedCookies: [
  *                 "__next_preview_data",
  *                 "__prerender_bypass",
  *             ],
- *             includeProtocol: true,
- *             includeQueryString: true,
  *         },
- *         cacheMode: "CACHE_ALL_STATIC",
- *         clientTtl: 7200,
- *         defaultTtl: 3600,
- *         maxTtl: 10800,
  *     },
+ * });
+ * ```
+ * ### Backend Service Cache
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ *     name: "health-check",
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     healthChecks: defaultHttpHealthCheck.id,
  *     enableCdn: true,
+ *     cdnPolicy: {
+ *         cacheMode: "CACHE_ALL_STATIC",
+ *         defaultTtl: 3600,
+ *         clientTtl: 7200,
+ *         maxTtl: 10800,
+ *         negativeCaching: true,
+ *         signedUrlCacheMaxAgeSec: 7200,
+ *     },
+ * });
+ * ```
+ * ### Backend Service Cache Bypass Cache On Request Headers
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ *     name: "health-check",
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     healthChecks: defaultHttpHealthCheck.id,
+ *     enableCdn: true,
+ *     cdnPolicy: {
+ *         cacheMode: "CACHE_ALL_STATIC",
+ *         defaultTtl: 3600,
+ *         clientTtl: 7200,
+ *         maxTtl: 10800,
+ *         negativeCaching: true,
+ *         signedUrlCacheMaxAgeSec: 7200,
+ *         bypassCacheOnRequestHeaders: [
+ *             {
+ *                 headerName: "Authorization",
+ *             },
+ *             {
+ *                 headerName: "Proxy-Authorization",
+ *             },
+ *         ],
+ *     },
+ * });
+ * ```
+ * ### Backend Service Traffic Director Round Robin
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const healthCheck = new gcp.compute.HealthCheck("health_check", {
+ *     name: "health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     healthChecks: healthCheck.id,
+ *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+ *     localityLbPolicy: "ROUND_ROBIN",
+ * });
+ * ```
+ * ### Backend Service Traffic Director Ring Hash
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const healthCheck = new gcp.compute.HealthCheck("health_check", {
+ *     name: "health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     healthChecks: healthCheck.id,
+ *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+ *     localityLbPolicy: "RING_HASH",
+ *     sessionAffinity: "HTTP_COOKIE",
+ *     circuitBreakers: {
+ *         maxConnections: 10,
+ *     },
+ *     consistentHash: {
+ *         httpCookie: {
+ *             ttl: {
+ *                 seconds: 11,
+ *                 nanos: 1111,
+ *             },
+ *             name: "mycookie",
+ *         },
+ *     },
+ *     outlierDetection: {
+ *         consecutiveErrors: 2,
+ *     },
  * });
  * ```
  * ### Backend Service Network Endpoint
@@ -86,20 +241,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const externalProxy = new gcp.compute.GlobalNetworkEndpointGroup("externalProxy", {
+ * const externalProxy = new gcp.compute.GlobalNetworkEndpointGroup("external_proxy", {
+ *     name: "network-endpoint",
  *     networkEndpointType: "INTERNET_FQDN_PORT",
  *     defaultPort: 443,
- * }, {
- *     provider: google_beta,
  * });
  * const proxy = new gcp.compute.GlobalNetworkEndpoint("proxy", {
  *     globalNetworkEndpointGroup: externalProxy.id,
  *     fqdn: "test.example.com",
  *     port: externalProxy.defaultPort,
- * }, {
- *     provider: google_beta,
  * });
  * const _default = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
  *     enableCdn: true,
  *     timeoutSec: 10,
  *     connectionDrainingTimeoutSec: 10,
@@ -108,8 +261,24 @@ import * as utilities from "../utilities";
  *     backends: [{
  *         group: externalProxy.id,
  *     }],
- * }, {
- *     provider: google_beta,
+ * });
+ * ```
+ * ### Backend Service External Managed
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+ *     name: "health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     healthChecks: defaultHealthCheck.id,
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
  * });
  * ```
  *

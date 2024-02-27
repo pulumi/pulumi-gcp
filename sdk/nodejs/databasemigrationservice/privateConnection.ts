@@ -22,10 +22,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNetwork = gcp.compute.getNetwork({
+ * const default = gcp.compute.getNetwork({
  *     name: "my-network",
  * });
- * const defaultPrivateConnection = new gcp.databasemigrationservice.PrivateConnection("defaultPrivateConnection", {
+ * const defaultPrivateConnection = new gcp.databasemigrationservice.PrivateConnection("default", {
  *     displayName: "dbms_pc",
  *     location: "us-central1",
  *     privateConnectionId: "my-connection",
@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *         key: "value",
  *     },
  *     vpcPeeringConfig: {
- *         vpcName: defaultNetwork.then(defaultNetwork => defaultNetwork.id),
+ *         vpcName: _default.then(_default => _default.id),
  *         subnet: "10.0.0.0/29",
  *     },
  * });

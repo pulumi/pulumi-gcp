@@ -31,6 +31,7 @@ namespace Pulumi.Gcp.CloudRunV2
     /// {
     ///     var @default = new Gcp.CloudRunV2.Job("default", new()
     ///     {
+    ///         Name = "cloudrun-job",
     ///         Location = "us-central1",
     ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
     ///         {
@@ -61,6 +62,7 @@ namespace Pulumi.Gcp.CloudRunV2
     /// {
     ///     var @default = new Gcp.CloudRunV2.Job("default", new()
     ///     {
+    ///         Name = "cloudrun-job",
     ///         Location = "us-central1",
     ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
     ///         {
@@ -108,6 +110,7 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
     ///     {
+    ///         Name = "cloudrun-sql",
     ///         Region = "us-central1",
     ///         DatabaseVersion = "MYSQL_5_7",
     ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
@@ -119,6 +122,7 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     ///     var @default = new Gcp.CloudRunV2.Job("default", new()
     ///     {
+    ///         Name = "cloudrun-job",
     ///         Location = "us-central1",
     ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
     ///         {
@@ -190,12 +194,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         SecretId = secret.Id,
     ///         Role = "roles/secretmanager.secretAccessor",
     ///         Member = $"serviceAccount:{project.Apply(getProjectResult =&gt; getProjectResult.Number)}-compute@developer.gserviceaccount.com",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             secret,
-    ///         },
     ///     });
     /// 
     /// });
@@ -210,13 +208,15 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var customTestNetwork = new Gcp.Compute.Network("customTestNetwork", new()
+    ///     var customTestNetwork = new Gcp.Compute.Network("custom_test", new()
     ///     {
+    ///         Name = "run-network",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     var customTestSubnetwork = new Gcp.Compute.Subnetwork("customTestSubnetwork", new()
+    ///     var customTest = new Gcp.Compute.Subnetwork("custom_test", new()
     ///     {
+    ///         Name = "run-subnetwork",
     ///         IpCidrRange = "10.2.0.0/28",
     ///         Region = "us-central1",
     ///         Network = customTestNetwork.Id,
@@ -224,9 +224,10 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     ///     var connector = new Gcp.VpcAccess.Connector("connector", new()
     ///     {
+    ///         Name = "run-vpc",
     ///         Subnet = new Gcp.VpcAccess.Inputs.ConnectorSubnetArgs
     ///         {
-    ///             Name = customTestSubnetwork.Name,
+    ///             Name = customTest.Name,
     ///         },
     ///         MachineType = "e2-standard-4",
     ///         MinInstances = 2,
@@ -236,6 +237,7 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     ///     var @default = new Gcp.CloudRunV2.Job("default", new()
     ///     {
+    ///         Name = "cloudrun-job",
     ///         Location = "us-central1",
     ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
     ///         {
@@ -271,8 +273,9 @@ namespace Pulumi.Gcp.CloudRunV2
     /// {
     ///     var @default = new Gcp.CloudRunV2.Job("default", new()
     ///     {
-    ///         LaunchStage = "BETA",
+    ///         Name = "cloudrun-job",
     ///         Location = "us-central1",
+    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
     ///         {
     ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
@@ -286,7 +289,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                 },
     ///                 VpcAccess = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateVpcAccessArgs
     ///                 {
-    ///                     Egress = "ALL_TRAFFIC",
     ///                     NetworkInterfaces = new[]
     ///                     {
     ///                         new Gcp.CloudRunV2.Inputs.JobTemplateTemplateVpcAccessNetworkInterfaceArgs
@@ -301,6 +303,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                             },
     ///                         },
     ///                     },
+    ///                     Egress = "ALL_TRAFFIC",
     ///                 },
     ///             },
     ///         },
@@ -327,29 +330,9 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         },
     ///     });
     /// 
-    ///     var secret_version_data = new Gcp.SecretManager.SecretVersion("secret-version-data", new()
-    ///     {
-    ///         Secret = secret.Name,
-    ///         SecretData = "secret-data",
-    ///     });
-    /// 
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    ///     var secret_access = new Gcp.SecretManager.SecretIamMember("secret-access", new()
-    ///     {
-    ///         SecretId = secret.Id,
-    ///         Role = "roles/secretmanager.secretAccessor",
-    ///         Member = $"serviceAccount:{project.Apply(getProjectResult =&gt; getProjectResult.Number)}-compute@developer.gserviceaccount.com",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             secret,
-    ///         },
-    ///     });
-    /// 
     ///     var @default = new Gcp.CloudRunV2.Job("default", new()
     ///     {
+    ///         Name = "cloudrun-job",
     ///         Location = "us-central1",
     ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
     ///         {
@@ -393,13 +376,21 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var secret_version_data = new Gcp.SecretManager.SecretVersion("secret-version-data", new()
     ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             secret_version_data,
-    ///             secret_access,
-    ///         },
+    ///         Secret = secret.Name,
+    ///         SecretData = "secret-data",
+    ///     });
+    /// 
+    ///     var secret_access = new Gcp.SecretManager.SecretIamMember("secret-access", new()
+    ///     {
+    ///         SecretId = secret.Id,
+    ///         Role = "roles/secretmanager.secretAccessor",
+    ///         Member = $"serviceAccount:{project.Apply(getProjectResult =&gt; getProjectResult.Number)}-compute@developer.gserviceaccount.com",
     ///     });
     /// 
     /// });
@@ -416,6 +407,7 @@ namespace Pulumi.Gcp.CloudRunV2
     /// {
     ///     var @default = new Gcp.CloudRunV2.Job("default", new()
     ///     {
+    ///         Name = "cloudrun-job",
     ///         Location = "us-central1",
     ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
@@ -451,9 +443,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

@@ -30,6 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
+//				Name:     pulumi.String("workbench-instance"),
 //				Location: pulumi.String("us-west1-a"),
 //			})
 //			if err != nil {
@@ -55,20 +56,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
+//				Name:     pulumi.String("workbench-instance"),
+//				Location: pulumi.String("us-central1-a"),
 //				GceSetup: &workbench.InstanceGceSetupArgs{
+//					MachineType: pulumi.String("n1-standard-1"),
 //					AcceleratorConfigs: workbench.InstanceGceSetupAcceleratorConfigArray{
 //						&workbench.InstanceGceSetupAcceleratorConfigArgs{
-//							CoreCount: pulumi.String("1"),
 //							Type:      pulumi.String("NVIDIA_TESLA_T4"),
+//							CoreCount: pulumi.String("1"),
 //						},
 //					},
-//					MachineType: pulumi.String("n1-standard-1"),
 //					VmImage: &workbench.InstanceGceSetupVmImageArgs{
-//						Family:  pulumi.String("tf-latest-gpu"),
 //						Project: pulumi.String("deeplearning-platform-release"),
+//						Family:  pulumi.String("tf-latest-gpu"),
 //					},
 //				},
-//				Location: pulumi.String("us-central1-a"),
 //			})
 //			if err != nil {
 //				return err
@@ -93,16 +95,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
-//				DesiredState: pulumi.String("STOPPED"),
+//				Name:     pulumi.String("workbench-instance"),
+//				Location: pulumi.String("us-central1-a"),
 //				GceSetup: &workbench.InstanceGceSetupArgs{
 //					MachineType: pulumi.String("e2-standard-4"),
-//					Metadata: pulumi.StringMap{
-//						"terraform": pulumi.String("true"),
-//					},
 //					ServiceAccounts: workbench.InstanceGceSetupServiceAccountArray{
 //						&workbench.InstanceGceSetupServiceAccountArgs{
 //							Email: pulumi.String("my@service-account.com"),
 //						},
+//					},
+//					Metadata: pulumi.StringMap{
+//						"terraform": pulumi.String("true"),
 //					},
 //				},
 //				InstanceOwners: pulumi.StringArray{
@@ -111,7 +114,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"k": pulumi.String("val"),
 //				},
-//				Location: pulumi.String("us-central1-a"),
+//				DesiredState: pulumi.String("STOPPED"),
 //			})
 //			if err != nil {
 //				return err
@@ -136,13 +139,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myNetwork, err := compute.NewNetwork(ctx, "myNetwork", &compute.NetworkArgs{
+//			myNetwork, err := compute.NewNetwork(ctx, "my_network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("wbi-test-default"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			mySubnetwork, err := compute.NewSubnetwork(ctx, "mySubnetwork", &compute.SubnetworkArgs{
+//			mySubnetwork, err := compute.NewSubnetwork(ctx, "my_subnetwork", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("wbi-test-default"),
 //				Network:     myNetwork.ID(),
 //				Region:      pulumi.String("us-central1"),
 //				IpCidrRange: pulumi.String("10.0.1.0/24"),
@@ -151,6 +156,7 @@ import (
 //				return err
 //			}
 //			_, err = workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
+//				Name:     pulumi.String("workbench-instance"),
 //				Location: pulumi.String("us-central1-a"),
 //				GceSetup: &workbench.InstanceGceSetupArgs{
 //					MachineType: pulumi.String("n1-standard-4"),

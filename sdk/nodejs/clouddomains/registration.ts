@@ -14,45 +14,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myRegistration = new gcp.clouddomains.Registration("myRegistration", {
- *     contactSettings: {
- *         adminContact: {
- *             email: "user@example.com",
- *             phoneNumber: "+12345000000",
- *             postalAddress: {
- *                 addressLines: ["1234 Example street"],
- *                 administrativeArea: "CA",
- *                 locality: "Example City",
- *                 postalCode: "95050",
- *                 recipients: ["example recipient"],
- *                 regionCode: "US",
- *             },
- *         },
- *         privacy: "REDACTED_CONTACT_DATA",
- *         registrantContact: {
- *             email: "user@example.com",
- *             phoneNumber: "+12345000000",
- *             postalAddress: {
- *                 addressLines: ["1234 Example street"],
- *                 administrativeArea: "CA",
- *                 locality: "Example City",
- *                 postalCode: "95050",
- *                 recipients: ["example recipient"],
- *                 regionCode: "US",
- *             },
- *         },
- *         technicalContact: {
- *             email: "user@example.com",
- *             phoneNumber: "+12345000000",
- *             postalAddress: {
- *                 addressLines: ["1234 Example street"],
- *                 administrativeArea: "CA",
- *                 locality: "Example City",
- *                 postalCode: "95050",
- *                 recipients: ["example recipient"],
- *                 regionCode: "US",
- *             },
- *         },
+ * const myRegistration = new gcp.clouddomains.Registration("my_registration", {
+ *     domainName: "example-domain.com",
+ *     location: "global",
+ *     labels: {
+ *         labelkey: "labelvalue",
+ *     },
+ *     yearlyPrice: {
+ *         currencyCode: "USD",
+ *         units: "12",
  *     },
  *     dnsSettings: {
  *         customDns: {
@@ -64,14 +34,44 @@ import * as utilities from "../utilities";
  *             ],
  *         },
  *     },
- *     domainName: "example-domain.com",
- *     labels: {
- *         labelkey: "labelvalue",
- *     },
- *     location: "global",
- *     yearlyPrice: {
- *         currencyCode: "USD",
- *         units: "12",
+ *     contactSettings: {
+ *         privacy: "REDACTED_CONTACT_DATA",
+ *         registrantContact: {
+ *             phoneNumber: "+12345000000",
+ *             email: "user@example.com",
+ *             postalAddress: {
+ *                 regionCode: "US",
+ *                 postalCode: "95050",
+ *                 administrativeArea: "CA",
+ *                 locality: "Example City",
+ *                 addressLines: ["1234 Example street"],
+ *                 recipients: ["example recipient"],
+ *             },
+ *         },
+ *         adminContact: {
+ *             phoneNumber: "+12345000000",
+ *             email: "user@example.com",
+ *             postalAddress: {
+ *                 regionCode: "US",
+ *                 postalCode: "95050",
+ *                 administrativeArea: "CA",
+ *                 locality: "Example City",
+ *                 addressLines: ["1234 Example street"],
+ *                 recipients: ["example recipient"],
+ *             },
+ *         },
+ *         technicalContact: {
+ *             phoneNumber: "+12345000000",
+ *             email: "user@example.com",
+ *             postalAddress: {
+ *                 regionCode: "US",
+ *                 postalCode: "95050",
+ *                 administrativeArea: "CA",
+ *                 locality: "Example City",
+ *                 addressLines: ["1234 Example street"],
+ *                 recipients: ["example recipient"],
+ *             },
+ *         },
  *     },
  * });
  * ```

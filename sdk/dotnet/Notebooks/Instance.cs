@@ -37,12 +37,13 @@ namespace Pulumi.Gcp.Notebooks
     /// {
     ///     var instance = new Gcp.Notebooks.Instance("instance", new()
     ///     {
+    ///         Name = "notebooks-instance",
     ///         Location = "us-west1-a",
     ///         MachineType = "e2-medium",
     ///         VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
     ///         {
-    ///             ImageFamily = "tf-latest-cpu",
     ///             Project = "deeplearning-platform-release",
+    ///             ImageFamily = "tf-latest-cpu",
     ///         },
     ///     });
     /// 
@@ -60,14 +61,15 @@ namespace Pulumi.Gcp.Notebooks
     /// {
     ///     var instance = new Gcp.Notebooks.Instance("instance", new()
     ///     {
-    ///         DesiredState = "STOPPED",
+    ///         Name = "notebooks-instance",
     ///         Location = "us-west1-a",
     ///         MachineType = "e2-medium",
     ///         VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
     ///         {
-    ///             ImageFamily = "tf-latest-cpu",
     ///             Project = "deeplearning-platform-release",
+    ///             ImageFamily = "tf-latest-cpu",
     ///         },
+    ///         DesiredState = "STOPPED",
     ///     });
     /// 
     /// });
@@ -84,16 +86,17 @@ namespace Pulumi.Gcp.Notebooks
     /// {
     ///     var instance = new Gcp.Notebooks.Instance("instance", new()
     ///     {
-    ///         ContainerImage = new Gcp.Notebooks.Inputs.InstanceContainerImageArgs
-    ///         {
-    ///             Repository = "gcr.io/deeplearning-platform-release/base-cpu",
-    ///             Tag = "latest",
-    ///         },
+    ///         Name = "notebooks-instance",
     ///         Location = "us-west1-a",
     ///         MachineType = "e2-medium",
     ///         Metadata = 
     ///         {
     ///             { "proxy-mode", "service_account" },
+    ///         },
+    ///         ContainerImage = new Gcp.Notebooks.Inputs.InstanceContainerImageArgs
+    ///         {
+    ///             Repository = "gcr.io/deeplearning-platform-release/base-cpu",
+    ///             Tag = "latest",
     ///         },
     ///     });
     /// 
@@ -111,18 +114,19 @@ namespace Pulumi.Gcp.Notebooks
     /// {
     ///     var instance = new Gcp.Notebooks.Instance("instance", new()
     ///     {
-    ///         AcceleratorConfig = new Gcp.Notebooks.Inputs.InstanceAcceleratorConfigArgs
-    ///         {
-    ///             CoreCount = 1,
-    ///             Type = "NVIDIA_TESLA_T4",
-    ///         },
-    ///         InstallGpuDriver = true,
+    ///         Name = "notebooks-instance",
     ///         Location = "us-west1-a",
     ///         MachineType = "n1-standard-1",
+    ///         InstallGpuDriver = true,
+    ///         AcceleratorConfig = new Gcp.Notebooks.Inputs.InstanceAcceleratorConfigArgs
+    ///         {
+    ///             Type = "NVIDIA_TESLA_T4",
+    ///             CoreCount = 1,
+    ///         },
     ///         VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
     ///         {
-    ///             ImageFamily = "tf-latest-gpu",
     ///             Project = "deeplearning-platform-release",
+    ///             ImageFamily = "tf-latest-gpu",
     ///         },
     ///     });
     /// 
@@ -151,6 +155,7 @@ namespace Pulumi.Gcp.Notebooks
     /// 
     ///     var instance = new Gcp.Notebooks.Instance("instance", new()
     ///     {
+    ///         Name = "notebooks-instance",
     ///         Location = "us-central1-a",
     ///         MachineType = "e2-medium",
     ///         VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs

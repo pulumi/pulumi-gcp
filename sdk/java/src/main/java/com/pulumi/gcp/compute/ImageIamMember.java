@@ -64,8 +64,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ImageIamPolicy(&#34;policy&#34;, ImageIamPolicyArgs.builder()        
- *             .project(google_compute_image.example().project())
- *             .image(google_compute_image.example().name())
+ *             .project(example.project())
+ *             .image(example.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -110,8 +110,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ImageIamPolicy(&#34;policy&#34;, ImageIamPolicyArgs.builder()        
- *             .project(google_compute_image.example().project())
- *             .image(google_compute_image.example().name())
+ *             .project(example.project())
+ *             .image(example.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -141,8 +141,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new ImageIamBinding(&#34;binding&#34;, ImageIamBindingArgs.builder()        
- *             .project(google_compute_image.example().project())
- *             .image(google_compute_image.example().name())
+ *             .project(example.project())
+ *             .image(example.name())
  *             .role(&#34;roles/compute.imageUser&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -175,8 +175,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new ImageIamBinding(&#34;binding&#34;, ImageIamBindingArgs.builder()        
- *             .project(google_compute_image.example().project())
- *             .image(google_compute_image.example().name())
+ *             .project(example.project())
+ *             .image(example.name())
  *             .role(&#34;roles/compute.imageUser&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .condition(ImageIamBindingConditionArgs.builder()
@@ -212,8 +212,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new ImageIamMember(&#34;member&#34;, ImageIamMemberArgs.builder()        
- *             .project(google_compute_image.example().project())
- *             .image(google_compute_image.example().name())
+ *             .project(example.project())
+ *             .image(example.name())
  *             .role(&#34;roles/compute.imageUser&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -246,8 +246,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new ImageIamMember(&#34;member&#34;, ImageIamMemberArgs.builder()        
- *             .project(google_compute_image.example().project())
- *             .image(google_compute_image.example().name())
+ *             .project(example.project())
+ *             .image(example.name())
  *             .role(&#34;roles/compute.imageUser&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .condition(ImageIamMemberConditionArgs.builder()

@@ -55,8 +55,9 @@ import (
 //				return err
 //			}
 //			_, err = cloudbuildv2.NewConnectionIAMPolicy(ctx, "policy", &cloudbuildv2.ConnectionIAMPolicyArgs{
-//				Project:    pulumi.Any(google_cloudbuildv2_connection.MyConnection.Project),
-//				Location:   pulumi.Any(google_cloudbuildv2_connection.MyConnection.Location),
+//				Project:    pulumi.Any(my_connection.Project),
+//				Location:   pulumi.Any(my_connection.Location),
+//				Name:       pulumi.Any(my_connection.Name),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -83,8 +84,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudbuildv2.NewConnectionIAMBinding(ctx, "binding", &cloudbuildv2.ConnectionIAMBindingArgs{
-//				Project:  pulumi.Any(google_cloudbuildv2_connection.MyConnection.Project),
-//				Location: pulumi.Any(google_cloudbuildv2_connection.MyConnection.Location),
+//				Project:  pulumi.Any(my_connection.Project),
+//				Location: pulumi.Any(my_connection.Location),
+//				Name:     pulumi.Any(my_connection.Name),
 //				Role:     pulumi.String("roles/cloudbuild.connectionViewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -114,8 +116,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudbuildv2.NewConnectionIAMMember(ctx, "member", &cloudbuildv2.ConnectionIAMMemberArgs{
-//				Project:  pulumi.Any(google_cloudbuildv2_connection.MyConnection.Project),
-//				Location: pulumi.Any(google_cloudbuildv2_connection.MyConnection.Location),
+//				Project:  pulumi.Any(my_connection.Project),
+//				Location: pulumi.Any(my_connection.Location),
+//				Name:     pulumi.Any(my_connection.Name),
 //				Role:     pulumi.String("roles/cloudbuild.connectionViewer"),
 //				Member:   pulumi.String("user:jane@example.com"),
 //			})

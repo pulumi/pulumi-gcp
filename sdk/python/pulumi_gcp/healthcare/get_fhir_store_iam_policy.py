@@ -88,7 +88,7 @@ def get_fhir_store_iam_policy(fhir_store_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.healthcare.get_fhir_store_iam_policy(fhir_store_id=google_healthcare_fhir_store["fhir_store"]["id"])
+    foo = gcp.healthcare.get_fhir_store_iam_policy(fhir_store_id=fhir_store["id"])
     ```
 
 
@@ -121,7 +121,7 @@ def get_fhir_store_iam_policy_output(fhir_store_id: Optional[pulumi.Input[str]] 
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.healthcare.get_fhir_store_iam_policy(fhir_store_id=google_healthcare_fhir_store["fhir_store"]["id"])
+    foo = gcp.healthcare.get_fhir_store_iam_policy(fhir_store_id=fhir_store["id"])
     ```
 
 

@@ -14,10 +14,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.iap.getAppEngineVersionIamPolicy({
- *     appId: google_app_engine_standard_app_version.version.project,
- *     project: google_app_engine_standard_app_version.version.project,
- *     service: google_app_engine_standard_app_version.version.service,
- *     versionId: google_app_engine_standard_app_version.version.version_id,
+ *     project: version.project,
+ *     appId: version.project,
+ *     service: version.service,
+ *     versionId: version.versionId,
  * });
  * ```
  */
@@ -87,10 +87,10 @@ export interface GetAppEngineVersionIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.iap.getAppEngineVersionIamPolicy({
- *     appId: google_app_engine_standard_app_version.version.project,
- *     project: google_app_engine_standard_app_version.version.project,
- *     service: google_app_engine_standard_app_version.version.service,
- *     versionId: google_app_engine_standard_app_version.version.version_id,
+ *     project: version.project,
+ *     appId: version.project,
+ *     service: version.service,
+ *     versionId: version.versionId,
  * });
  * ```
  */

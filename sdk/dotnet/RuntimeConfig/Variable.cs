@@ -24,12 +24,14 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// {
     ///     var my_runtime_config = new Gcp.RuntimeConfig.Config("my-runtime-config", new()
     ///     {
+    ///         Name = "my-service-runtime-config",
     ///         Description = "Runtime configuration values for my service",
     ///     });
     /// 
     ///     var environment = new Gcp.RuntimeConfig.Variable("environment", new()
     ///     {
     ///         Parent = my_runtime_config.Name,
+    ///         Name = "prod-variables/hostname",
     ///         Text = "example.com",
     ///     });
     /// 
@@ -42,30 +44,28 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// Example of using the `value` argument.
     /// 
     /// ```csharp
-    /// using System;
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// 	
-    /// string ReadFileBase64(string path) 
-    /// {
-    ///     return Convert.ToBase64String(Encoding.UTF8.GetBytes(File.ReadAllText(path)));
-    /// }
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var my_runtime_config = new Gcp.RuntimeConfig.Config("my-runtime-config", new()
     ///     {
+    ///         Name = "my-service-runtime-config",
     ///         Description = "Runtime configuration values for my service",
     ///     });
     /// 
     ///     var my_secret = new Gcp.RuntimeConfig.Variable("my-secret", new()
     ///     {
     ///         Parent = my_runtime_config.Name,
-    ///         Value = ReadFileBase64("my-encrypted-secret.dat"),
+    ///         Name = "secret",
+    ///         Value = Std.Filebase64.Invoke(new()
+    ///         {
+    ///             Input = "my-encrypted-secret.dat",
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
     /// });

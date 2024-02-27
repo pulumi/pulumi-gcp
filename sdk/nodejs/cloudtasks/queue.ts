@@ -16,7 +16,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const _default = new gcp.cloudtasks.Queue("default", {location: "us-central1"});
+ * const _default = new gcp.cloudtasks.Queue("default", {
+ *     name: "cloud-tasks-queue-test",
+ *     location: "us-central1",
+ * });
  * ```
  * ### Cloud Tasks Queue Advanced
  *
@@ -24,23 +27,24 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const advancedConfiguration = new gcp.cloudtasks.Queue("advancedConfiguration", {
+ * const advancedConfiguration = new gcp.cloudtasks.Queue("advanced_configuration", {
+ *     name: "instance-name",
+ *     location: "us-central1",
  *     appEngineRoutingOverride: {
- *         instance: "test",
  *         service: "worker",
  *         version: "1.0",
+ *         instance: "test",
  *     },
- *     location: "us-central1",
  *     rateLimits: {
  *         maxConcurrentDispatches: 3,
  *         maxDispatchesPerSecond: 2,
  *     },
  *     retryConfig: {
  *         maxAttempts: 5,
- *         maxBackoff: "3s",
- *         maxDoublings: 1,
  *         maxRetryDuration: "4s",
+ *         maxBackoff: "3s",
  *         minBackoff: "2s",
+ *         maxDoublings: 1,
  *     },
  *     stackdriverLoggingConfig: {
  *         samplingRatio: 0.9,

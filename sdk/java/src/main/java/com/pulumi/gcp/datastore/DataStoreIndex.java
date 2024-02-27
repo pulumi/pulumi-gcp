@@ -59,12 +59,12 @@ import javax.annotation.Nullable;
  *             .kind(&#34;foo&#34;)
  *             .properties(            
  *                 DataStoreIndexPropertyArgs.builder()
- *                     .direction(&#34;ASCENDING&#34;)
  *                     .name(&#34;property_a&#34;)
+ *                     .direction(&#34;ASCENDING&#34;)
  *                     .build(),
  *                 DataStoreIndexPropertyArgs.builder()
- *                     .direction(&#34;ASCENDING&#34;)
  *                     .name(&#34;property_b&#34;)
+ *                     .direction(&#34;ASCENDING&#34;)
  *                     .build())
  *             .build());
  * 

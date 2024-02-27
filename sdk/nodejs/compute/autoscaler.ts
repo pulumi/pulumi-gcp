@@ -30,7 +30,8 @@ import * as utilities from "../utilities";
  *     family: "debian-11",
  *     project: "debian-cloud",
  * });
- * const defaultInstanceTemplate = new gcp.compute.InstanceTemplate("defaultInstanceTemplate", {
+ * const defaultInstanceTemplate = new gcp.compute.InstanceTemplate("default", {
+ *     name: "my-instance-template",
  *     machineType: "e2-medium",
  *     canIpForward: false,
  *     tags: [
@@ -53,13 +54,10 @@ import * as utilities from "../utilities";
  *             "storage-ro",
  *         ],
  *     },
- * }, {
- *     provider: google_beta,
  * });
- * const defaultTargetPool = new gcp.compute.TargetPool("defaultTargetPool", {}, {
- *     provider: google_beta,
- * });
- * const defaultInstanceGroupManager = new gcp.compute.InstanceGroupManager("defaultInstanceGroupManager", {
+ * const defaultTargetPool = new gcp.compute.TargetPool("default", {name: "my-target-pool"});
+ * const defaultInstanceGroupManager = new gcp.compute.InstanceGroupManager("default", {
+ *     name: "my-igm",
  *     zone: "us-central1-f",
  *     versions: [{
  *         instanceTemplate: defaultInstanceTemplate.id,
@@ -67,10 +65,9 @@ import * as utilities from "../utilities";
  *     }],
  *     targetPools: [defaultTargetPool.id],
  *     baseInstanceName: "autoscaler-sample",
- * }, {
- *     provider: google_beta,
  * });
- * const defaultAutoscaler = new gcp.compute.Autoscaler("defaultAutoscaler", {
+ * const _default = new gcp.compute.Autoscaler("default", {
+ *     name: "my-autoscaler",
  *     zone: "us-central1-f",
  *     target: defaultInstanceGroupManager.id,
  *     autoscalingPolicy: {
@@ -83,8 +80,6 @@ import * as utilities from "../utilities";
  *             singleInstanceAssignment: 65535,
  *         }],
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Autoscaler Basic
@@ -97,7 +92,8 @@ import * as utilities from "../utilities";
  *     family: "debian-11",
  *     project: "debian-cloud",
  * });
- * const foobarInstanceTemplate = new gcp.compute.InstanceTemplate("foobarInstanceTemplate", {
+ * const foobarInstanceTemplate = new gcp.compute.InstanceTemplate("foobar", {
+ *     name: "my-instance-template",
  *     machineType: "e2-medium",
  *     canIpForward: false,
  *     tags: [
@@ -121,8 +117,9 @@ import * as utilities from "../utilities";
  *         ],
  *     },
  * });
- * const foobarTargetPool = new gcp.compute.TargetPool("foobarTargetPool", {});
- * const foobarInstanceGroupManager = new gcp.compute.InstanceGroupManager("foobarInstanceGroupManager", {
+ * const foobarTargetPool = new gcp.compute.TargetPool("foobar", {name: "my-target-pool"});
+ * const foobarInstanceGroupManager = new gcp.compute.InstanceGroupManager("foobar", {
+ *     name: "my-igm",
  *     zone: "us-central1-f",
  *     versions: [{
  *         instanceTemplate: foobarInstanceTemplate.id,
@@ -131,7 +128,8 @@ import * as utilities from "../utilities";
  *     targetPools: [foobarTargetPool.id],
  *     baseInstanceName: "foobar",
  * });
- * const foobarAutoscaler = new gcp.compute.Autoscaler("foobarAutoscaler", {
+ * const foobar = new gcp.compute.Autoscaler("foobar", {
+ *     name: "my-autoscaler",
  *     zone: "us-central1-f",
  *     target: foobarInstanceGroupManager.id,
  *     autoscalingPolicy: {

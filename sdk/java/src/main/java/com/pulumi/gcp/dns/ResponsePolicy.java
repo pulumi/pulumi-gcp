@@ -59,14 +59,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network_1 = new Network(&#34;network-1&#34;, NetworkArgs.builder()        
+ *             .name(&#34;network-1&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var network_2 = new Network(&#34;network-2&#34;, NetworkArgs.builder()        
+ *             .name(&#34;network-2&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var subnetwork_1 = new Subnetwork(&#34;subnetwork-1&#34;, SubnetworkArgs.builder()        
+ *             .name(network_1.name())
  *             .network(network_1.name())
  *             .ipCidrRange(&#34;10.0.36.0/24&#34;)
  *             .region(&#34;us-central1&#34;)
@@ -83,6 +86,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var cluster_1 = new Cluster(&#34;cluster-1&#34;, ClusterArgs.builder()        
+ *             .name(&#34;cluster-1&#34;)
  *             .location(&#34;us-central1-c&#34;)
  *             .initialNodeCount(1)
  *             .networkingMode(&#34;VPC_NATIVE&#34;)

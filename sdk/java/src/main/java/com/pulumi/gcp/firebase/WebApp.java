@@ -25,81 +25,6 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://firebase.google.com/)
  * 
  * ## Example Usage
- * ### Firebase Web App Basic
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.firebase.WebApp;
- * import com.pulumi.gcp.firebase.WebAppArgs;
- * import com.pulumi.gcp.firebase.FirebaseFunctions;
- * import com.pulumi.gcp.firebase.inputs.GetWebAppConfigArgs;
- * import com.pulumi.gcp.storage.Bucket;
- * import com.pulumi.gcp.storage.BucketArgs;
- * import com.pulumi.gcp.storage.BucketObject;
- * import com.pulumi.gcp.storage.BucketObjectArgs;
- * import static com.pulumi.codegen.internal.Serialization.*;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var basicWebApp = new WebApp(&#34;basicWebApp&#34;, WebAppArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .displayName(&#34;Display Name Basic&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         final var basicWebAppConfig = FirebaseFunctions.getWebAppConfig(GetWebAppConfigArgs.builder()
- *             .webAppId(basicWebApp.appId())
- *             .build());
- * 
- *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
- *             .location(&#34;US&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var defaultBucketObject = new BucketObject(&#34;defaultBucketObject&#34;, BucketObjectArgs.builder()        
- *             .bucket(defaultBucket.name())
- *             .content(Output.tuple(basicWebApp.appId(), basicWebAppConfig.applyValue(getWebAppConfigResult -&gt; getWebAppConfigResult), basicWebAppConfig.applyValue(getWebAppConfigResult -&gt; getWebAppConfigResult), basicWebAppConfig.applyValue(getWebAppConfigResult -&gt; getWebAppConfigResult)[&#34;database_url&#34;], basicWebAppConfig.applyValue(getWebAppConfigResult -&gt; getWebAppConfigResult)[&#34;storage_bucket&#34;], basicWebAppConfig.applyValue(getWebAppConfigResult -&gt; getWebAppConfigResult)[&#34;messaging_sender_id&#34;], basicWebAppConfig.applyValue(getWebAppConfigResult -&gt; getWebAppConfigResult)[&#34;measurement_id&#34;]).applyValue(values -&gt; {
- *                 var appId = values.t1;
- *                 var basicWebAppConfig = values.t2;
- *                 var basicWebAppConfig1 = values.t3;
- *                 var s = values.t4;
- *                 var s1 = values.t5;
- *                 var s2 = values.t6;
- *                 var s3 = values.t7;
- *                 return serializeJson(
- *                     jsonObject(
- *                         jsonProperty(&#34;appId&#34;, appId),
- *                         jsonProperty(&#34;apiKey&#34;, basicWebAppConfig.applyValue(getWebAppConfigResult -&gt; getWebAppConfigResult.apiKey())),
- *                         jsonProperty(&#34;authDomain&#34;, basicWebAppConfig1.authDomain()),
- *                         jsonProperty(&#34;databaseURL&#34;, s),
- *                         jsonProperty(&#34;storageBucket&#34;, s1),
- *                         jsonProperty(&#34;messagingSenderId&#34;, s2),
- *                         jsonProperty(&#34;measurementId&#34;, s3)
- *                     ));
- *             }))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *     }
- * }
- * ```
  * ### Firebase Web App Custom Api Key
  * ```java
  * package generated_program;
@@ -113,7 +38,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsBrowserKeyRestrictionsArgs;
  * import com.pulumi.gcp.firebase.WebApp;
  * import com.pulumi.gcp.firebase.WebAppArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -129,24 +53,21 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var web = new ApiKey(&#34;web&#34;, ApiKeyArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
+ *             .name(&#34;api-key&#34;)
  *             .displayName(&#34;Display Name&#34;)
  *             .restrictions(ApiKeyRestrictionsArgs.builder()
  *                 .browserKeyRestrictions(ApiKeyRestrictionsBrowserKeyRestrictionsArgs.builder()
  *                     .allowedReferrers(&#34;*&#34;)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var default_ = new WebApp(&#34;default&#34;, WebAppArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .displayName(&#34;Display Name&#34;)
  *             .apiKeyId(web.uid())
  *             .deletionPolicy(&#34;DELETE&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

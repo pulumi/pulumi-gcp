@@ -169,8 +169,8 @@ def get_private_cloud(location: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    my_pc = gcp.vmwareengine.get_private_cloud(location="us-central1-a",
-        name="my-pc")
+    my_pc = gcp.vmwareengine.get_private_cloud(name="my-pc",
+        location="us-central1-a")
     ```
 
 
@@ -221,8 +221,8 @@ def get_private_cloud_output(location: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    my_pc = gcp.vmwareengine.get_private_cloud(location="us-central1-a",
-        name="my-pc")
+    my_pc = gcp.vmwareengine.get_private_cloud(name="my-pc",
+        location="us-central1-a")
     ```
 
 

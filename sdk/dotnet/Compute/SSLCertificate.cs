@@ -25,10 +25,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -36,8 +36,14 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         NamePrefix = "my-certificate-",
     ///         Description = "a description",
-    ///         PrivateKey = File.ReadAllText("path/to/private.key"),
-    ///         Certificate = File.ReadAllText("path/to/certificate.crt"),
+    ///         PrivateKey = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "path/to/private.key",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Certificate = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "path/to/certificate.crt",
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
     /// });
@@ -45,41 +51,138 @@ namespace Pulumi.Gcp.Compute
     /// ### Ssl Certificate Random Provider
     /// 
     /// ```csharp
-    /// using System;
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
-    /// using System.Security.Cryptography;
-    /// using System.Text;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// using Random = Pulumi.Random;
-    /// 
-    /// 	
-    /// string ComputeFileBase64Sha256(string path) 
-    /// {
-    ///     var fileData = Encoding.UTF8.GetBytes(File.ReadAllText(path));
-    ///     var hashData = SHA256.Create().ComputeHash(fileData);
-    ///     return Convert.ToBase64String(hashData);
-    /// }
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // You may also want to control name generation explicitly:
-    ///     var @default = new Gcp.Compute.SSLCertificate("default", new()
-    ///     {
-    ///         PrivateKey = File.ReadAllText("path/to/private.key"),
-    ///         Certificate = File.ReadAllText("path/to/certificate.crt"),
-    ///     });
-    /// 
     ///     var certificate = new Random.RandomId("certificate", new()
     ///     {
     ///         ByteLength = 4,
     ///         Prefix = "my-certificate-",
     ///         Keepers = 
     ///         {
-    ///             { "private_key", ComputeFileBase64Sha256("path/to/private.key") },
-    ///             { "certificate", ComputeFileBase64Sha256("path/to/certificate.crt") },
+    ///             { "private_key", Std.Filebase64sha256.Invoke(new()
+    ///             {
+    ///                 Input = "path/to/private.key",
+    ///             }).Apply(invoke =&gt; invoke.Result) },
+    ///             { "certificate", Std.Filebase64sha256.Invoke(new()
+    ///             {
+    ///                 Input = "path/to/certificate.crt",
+    ///             }).Apply(invoke =&gt; invoke.Result) },
+    ///         },
+    ///     });
+    /// 
+    ///     // You may also want to control name generation explicitly:
+    ///     var @default = new Gcp.Compute.SSLCertificate("default", new()
+    ///     {
+    ///         Name = certificate.Hex,
+    ///         PrivateKey = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "path/to/private.key",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Certificate = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "path/to/certificate.crt",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Ssl Certificate Target Https Proxies
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Using with Target HTTPS Proxies
+    ///     //
+    ///     // SSL certificates cannot be updated after creation. In order to apply
+    ///     // the specified configuration, the provider will destroy the existing
+    ///     // resource and create a replacement. Example:
+    ///     var @default = new Gcp.Compute.SSLCertificate("default", new()
+    ///     {
+    ///         NamePrefix = "my-certificate-",
+    ///         PrivateKey = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "path/to/private.key",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Certificate = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "path/to/certificate.crt",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+    ///     {
+    ///         Name = "http-health-check",
+    ///         RequestPath = "/",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///     });
+    /// 
+    ///     var defaultBackendService = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "backend-service",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         HealthChecks = defaultHttpHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var defaultURLMap = new Gcp.Compute.URLMap("default", new()
+    ///     {
+    ///         Name = "url-map",
+    ///         Description = "a description",
+    ///         DefaultService = defaultBackendService.Id,
+    ///         HostRules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapHostRuleArgs
+    ///             {
+    ///                 Hosts = new[]
+    ///                 {
+    ///                     "mysite.com",
+    ///                 },
+    ///                 PathMatcher = "allpaths",
+    ///             },
+    ///         },
+    ///         PathMatchers = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapPathMatcherArgs
+    ///             {
+    ///                 Name = "allpaths",
+    ///                 DefaultService = defaultBackendService.Id,
+    ///                 PathRules = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleArgs
+    ///                     {
+    ///                         Paths = new[]
+    ///                         {
+    ///                             "/*",
+    ///                         },
+    ///                         Service = defaultBackendService.Id,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultTargetHttpsProxy = new Gcp.Compute.TargetHttpsProxy("default", new()
+    ///     {
+    ///         Name = "test-proxy",
+    ///         UrlMap = defaultURLMap.Id,
+    ///         SslCertificates = new[]
+    ///         {
+    ///             @default.Id,
     ///         },
     ///     });
     /// 

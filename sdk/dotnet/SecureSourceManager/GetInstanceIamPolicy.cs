@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.SecureSourceManager
         /// {
         ///     var policy = Gcp.SecureSourceManager.GetInstanceIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_secure_source_manager_instance.Default.Project,
-        ///         Location = google_secure_source_manager_instance.Default.Location,
-        ///         InstanceId = google_secure_source_manager_instance.Default.Instance_id,
+        ///         Project = @default.Project,
+        ///         Location = @default.Location,
+        ///         InstanceId = @default.InstanceId,
         ///     });
         /// 
         /// });
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.SecureSourceManager
         /// {
         ///     var policy = Gcp.SecureSourceManager.GetInstanceIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_secure_source_manager_instance.Default.Project,
-        ///         Location = google_secure_source_manager_instance.Default.Location,
-        ///         InstanceId = google_secure_source_manager_instance.Default.Instance_id,
+        ///         Project = @default.Project,
+        ///         Location = @default.Location,
+        ///         InstanceId = @default.InstanceId,
         ///     });
         /// 
         /// });

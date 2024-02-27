@@ -38,13 +38,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.ComputeFunctions;
  * import com.pulumi.gcp.compute.inputs.GetImageArgs;
  * import com.pulumi.gcp.compute.Instance;
  * import com.pulumi.gcp.compute.InstanceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
- * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
  * import com.pulumi.gcp.networkmanagement.ConnectivityTest;
  * import com.pulumi.gcp.networkmanagement.ConnectivityTestArgs;
  * import com.pulumi.gcp.networkmanagement.inputs.ConnectivityTestSourceArgs;
@@ -62,7 +63,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vpc = new Network(&#34;vpc&#34;);
+ *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+ *             .name(&#34;conn-test-net&#34;)
+ *             .build());
  * 
  *         final var debian9 = ComputeFunctions.getImage(GetImageArgs.builder()
  *             .family(&#34;debian-11&#34;)
@@ -70,32 +73,35 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var source = new Instance(&#34;source&#34;, InstanceArgs.builder()        
+ *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+ *                 .accessConfigs()
+ *                 .network(vpc.id())
+ *                 .build())
+ *             .name(&#34;source-vm&#34;)
  *             .machineType(&#34;e2-medium&#34;)
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
  *                     .image(debian9.applyValue(getImageResult -&gt; getImageResult.id()))
  *                     .build())
- *                 .build())
- *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
- *                 .network(vpc.id())
- *                 .accessConfigs()
  *                 .build())
  *             .build());
  * 
  *         var destination = new Instance(&#34;destination&#34;, InstanceArgs.builder()        
+ *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+ *                 .accessConfigs()
+ *                 .network(vpc.id())
+ *                 .build())
+ *             .name(&#34;dest-vm&#34;)
  *             .machineType(&#34;e2-medium&#34;)
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
  *                     .image(debian9.applyValue(getImageResult -&gt; getImageResult.id()))
  *                     .build())
  *                 .build())
- *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
- *                 .network(vpc.id())
- *                 .accessConfigs()
- *                 .build())
  *             .build());
  * 
  *         var instance_test = new ConnectivityTest(&#34;instance-test&#34;, ConnectivityTestArgs.builder()        
+ *             .name(&#34;conn-test-instances&#34;)
  *             .source(ConnectivityTestSourceArgs.builder()
  *                 .instance(source.id())
  *                 .build())
@@ -117,6 +123,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.Subnetwork;
  * import com.pulumi.gcp.compute.SubnetworkArgs;
  * import com.pulumi.gcp.compute.Address;
@@ -138,15 +145,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vpc = new Network(&#34;vpc&#34;);
+ *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+ *             .name(&#34;connectivity-vpc&#34;)
+ *             .build());
  * 
  *         var subnet = new Subnetwork(&#34;subnet&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;connectivity-vpc-subnet&#34;)
  *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(vpc.id())
  *             .build());
  * 
  *         var source_addr = new Address(&#34;source-addr&#34;, AddressArgs.builder()        
+ *             .name(&#34;src-addr&#34;)
  *             .subnetwork(subnet.id())
  *             .addressType(&#34;INTERNAL&#34;)
  *             .address(&#34;10.0.42.42&#34;)
@@ -154,6 +165,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var dest_addr = new Address(&#34;dest-addr&#34;, AddressArgs.builder()        
+ *             .name(&#34;dest-addr&#34;)
  *             .subnetwork(subnet.id())
  *             .addressType(&#34;INTERNAL&#34;)
  *             .address(&#34;10.0.43.43&#34;)
@@ -161,6 +173,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var address_test = new ConnectivityTest(&#34;address-test&#34;, ConnectivityTestArgs.builder()        
+ *             .name(&#34;conn-test-addr&#34;)
  *             .source(ConnectivityTestSourceArgs.builder()
  *                 .ipAddress(source_addr.address())
  *                 .projectId(source_addr.project())

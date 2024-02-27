@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const foo = new gcp.dns.ManagedZone("foo", {
+ *     name: "foobar",
  *     dnsName: "foo.bar.",
  *     dnssecConfig: {
  *         state: "on",
@@ -98,6 +99,7 @@ export interface GetKeysResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const foo = new gcp.dns.ManagedZone("foo", {
+ *     name: "foobar",
  *     dnsName: "foo.bar.",
  *     dnssecConfig: {
  *         state: "on",

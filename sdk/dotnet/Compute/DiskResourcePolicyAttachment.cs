@@ -34,20 +34,16 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var ssd = new Gcp.Compute.Disk("ssd", new()
     ///     {
+    ///         Name = "my-disk",
     ///         Image = myImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
     ///         Size = 50,
     ///         Type = "pd-ssd",
     ///         Zone = "us-central1-a",
     ///     });
     /// 
-    ///     var attachment = new Gcp.Compute.DiskResourcePolicyAttachment("attachment", new()
-    ///     {
-    ///         Disk = ssd.Name,
-    ///         Zone = "us-central1-a",
-    ///     });
-    /// 
     ///     var policy = new Gcp.Compute.ResourcePolicy("policy", new()
     ///     {
+    ///         Name = "my-resource-policy",
     ///         Region = "us-central1",
     ///         SnapshotSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyArgs
     ///         {
@@ -60,6 +56,13 @@ namespace Pulumi.Gcp.Compute
     ///                 },
     ///             },
     ///         },
+    ///     });
+    /// 
+    ///     var attachment = new Gcp.Compute.DiskResourcePolicyAttachment("attachment", new()
+    ///     {
+    ///         Name = policy.Name,
+    ///         Disk = ssd.Name,
+    ///         Zone = "us-central1-a",
     ///     });
     /// 
     /// });

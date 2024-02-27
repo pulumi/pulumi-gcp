@@ -30,6 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := certificatemanager.NewDnsAuthorization(ctx, "default", &certificatemanager.DnsAuthorizationArgs{
+//				Name:        pulumi.String("dns-auth"),
 //				Description: pulumi.String("The default dnss"),
 //				Domain:      pulumi.String("subdomain.hashicorptest.com"),
 //			})

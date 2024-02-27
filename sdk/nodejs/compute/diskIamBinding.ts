@@ -34,8 +34,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.compute.DiskIamPolicy("policy", {
- *     project: google_compute_disk["default"].project,
- *     zone: google_compute_disk["default"].zone,
+ *     project: _default.project,
+ *     zone: _default.zone,
+ *     name: _default.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -47,8 +48,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.compute.DiskIamBinding("binding", {
- *     project: google_compute_disk["default"].project,
- *     zone: google_compute_disk["default"].zone,
+ *     project: _default.project,
+ *     zone: _default.zone,
+ *     name: _default.name,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
  * });
@@ -61,8 +63,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.compute.DiskIamMember("member", {
- *     project: google_compute_disk["default"].project,
- *     zone: google_compute_disk["default"].zone,
+ *     project: _default.project,
+ *     zone: _default.zone,
+ *     name: _default.name,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
  * });

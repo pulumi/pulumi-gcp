@@ -33,18 +33,22 @@ namespace Pulumi.Gcp.SecurityPosture
     /// {
     ///     var posture1 = new Gcp.SecurityPosture.Posture("posture1", new()
     ///     {
-    ///         Description = "a new posture",
-    ///         Location = "global",
+    ///         PostureId = "posture_1",
     ///         Parent = "organizations/123456789",
+    ///         Location = "global",
+    ///         State = "ACTIVE",
+    ///         Description = "a new posture",
     ///         PolicySets = new[]
     ///         {
     ///             new Gcp.SecurityPosture.Inputs.PosturePolicySetArgs
     ///             {
+    ///                 PolicySetId = "org_policy_set",
     ///                 Description = "set of org policies",
     ///                 Policies = new[]
     ///                 {
     ///                     new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyArgs
     ///                     {
+    ///                         PolicyId = "canned_org_policy",
     ///                         Constraint = new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintArgs
     ///                         {
     ///                             OrgPolicyConstraint = new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs
@@ -54,37 +58,37 @@ namespace Pulumi.Gcp.SecurityPosture
     ///                                 {
     ///                                     new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs
     ///                                     {
+    ///                                         Enforce = true,
     ///                                         Condition = new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs
     ///                                         {
     ///                                             Description = "condition description",
     ///                                             Expression = "resource.matchTag('org_id/tag_key_short_name,'tag_value_short_name')",
     ///                                             Title = "a CEL condition",
     ///                                         },
-    ///                                         Enforce = true,
     ///                                     },
     ///                                 },
     ///                             },
     ///                         },
-    ///                         PolicyId = "canned_org_policy",
     ///                     },
     ///                     new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyArgs
     ///                     {
+    ///                         PolicyId = "custom_org_policy",
     ///                         Constraint = new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintArgs
     ///                         {
     ///                             OrgPolicyConstraintCustom = new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgs
     ///                             {
     ///                                 CustomConstraint = new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintArgs
     ///                                 {
+    ///                                     Name = "organizations/123456789/customConstraints/custom.disableGkeAutoUpgrade",
+    ///                                     DisplayName = "Disable GKE auto upgrade",
+    ///                                     Description = "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
     ///                                     ActionType = "ALLOW",
     ///                                     Condition = "resource.management.autoUpgrade == false",
-    ///                                     Description = "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
-    ///                                     DisplayName = "Disable GKE auto upgrade",
     ///                                     MethodTypes = new[]
     ///                                     {
     ///                                         "CREATE",
     ///                                         "UPDATE",
     ///                                     },
-    ///                                     Name = "organizations/123456789/customConstraints/custom.disableGkeAutoUpgrade",
     ///                                     ResourceTypes = new[]
     ///                                     {
     ///                                         "container.googleapis.com/NodePool",
@@ -94,48 +98,53 @@ namespace Pulumi.Gcp.SecurityPosture
     ///                                 {
     ///                                     new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs
     ///                                     {
+    ///                                         Enforce = true,
     ///                                         Condition = new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs
     ///                                         {
     ///                                             Description = "condition description",
     ///                                             Expression = "resource.matchTagId('tagKeys/key_id','tagValues/value_id')",
     ///                                             Title = "a CEL condition",
     ///                                         },
-    ///                                         Enforce = true,
     ///                                     },
     ///                                 },
     ///                             },
     ///                         },
-    ///                         PolicyId = "custom_org_policy",
     ///                     },
     ///                 },
-    ///                 PolicySetId = "org_policy_set",
     ///             },
     ///             new Gcp.SecurityPosture.Inputs.PosturePolicySetArgs
     ///             {
+    ///                 PolicySetId = "sha_policy_set",
     ///                 Description = "set of sha policies",
     ///                 Policies = new[]
     ///                 {
     ///                     new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyArgs
     ///                     {
+    ///                         PolicyId = "sha_builtin_module",
     ///                         Constraint = new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintArgs
     ///                         {
     ///                             SecurityHealthAnalyticsModule = new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgs
     ///                             {
-    ///                                 ModuleEnablementState = "ENABLED",
     ///                                 ModuleName = "BIGQUERY_TABLE_CMEK_DISABLED",
+    ///                                 ModuleEnablementState = "ENABLED",
     ///                             },
     ///                         },
     ///                         Description = "enable BIGQUERY_TABLE_CMEK_DISABLED",
-    ///                         PolicyId = "sha_builtin_module",
     ///                     },
     ///                     new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyArgs
     ///                     {
+    ///                         PolicyId = "sha_custom_module",
     ///                         Constraint = new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintArgs
     ///                         {
     ///                             SecurityHealthAnalyticsCustomModule = new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgs
     ///                             {
+    ///                                 DisplayName = "custom_SHA_policy",
     ///                                 Config = new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigArgs
     ///                                 {
+    ///                                     Predicate = new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigPredicateArgs
+    ///                                     {
+    ///                                         Expression = "resource.rotationPeriod &gt; duration('2592000s')",
+    ///                                     },
     ///                                     CustomOutput = new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputArgs
     ///                                     {
     ///                                         Properties = new[]
@@ -150,12 +159,6 @@ namespace Pulumi.Gcp.SecurityPosture
     ///                                             },
     ///                                         },
     ///                                     },
-    ///                                     Description = "Custom Module",
-    ///                                     Predicate = new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigPredicateArgs
-    ///                                     {
-    ///                                         Expression = "resource.rotationPeriod &gt; duration('2592000s')",
-    ///                                     },
-    ///                                     Recommendation = "Testing custom modules",
     ///                                     ResourceSelector = new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelectorArgs
     ///                                     {
     ///                                         ResourceTypes = new[]
@@ -164,19 +167,16 @@ namespace Pulumi.Gcp.SecurityPosture
     ///                                         },
     ///                                     },
     ///                                     Severity = "LOW",
+    ///                                     Description = "Custom Module",
+    ///                                     Recommendation = "Testing custom modules",
     ///                                 },
-    ///                                 DisplayName = "custom_SHA_policy",
     ///                                 ModuleEnablementState = "ENABLED",
     ///                             },
     ///                         },
-    ///                         PolicyId = "sha_custom_module",
     ///                     },
     ///                 },
-    ///                 PolicySetId = "sha_policy_set",
     ///             },
     ///         },
-    ///         PostureId = "posture_1",
-    ///         State = "ACTIVE",
     ///     });
     /// 
     /// });

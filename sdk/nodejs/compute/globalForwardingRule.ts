@@ -16,19 +16,433 @@ import * as utilities from "../utilities";
  * https://cloud.google.com/compute/docs/load-balancing/http/
  *
  * ## Example Usage
- * ### Global Forwarding Rule External Managed
+ * ### External Ssl Proxy Lb Mig Backend
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as tls from "@pulumi/tls";
+ *
+ * // External SSL proxy load balancer with managed instance group backend
+ * // VPC
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "ssl-proxy-xlb-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * // backend subnet
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "ssl-proxy-xlb-subnet",
+ *     ipCidrRange: "10.0.1.0/24",
+ *     region: "us-central1",
+ *     network: _default.id,
+ * });
+ * // reserved IP address
+ * const defaultGlobalAddress = new gcp.compute.GlobalAddress("default", {name: "ssl-proxy-xlb-ip"});
+ * // Self-signed regional SSL certificate for testing
+ * const defaultPrivateKey = new tls.PrivateKey("default", {
+ *     algorithm: "RSA",
+ *     rsaBits: 2048,
+ * });
+ * const defaultSelfSignedCert = new tls.SelfSignedCert("default", {
+ *     keyAlgorithm: defaultPrivateKey.algorithm,
+ *     privateKeyPem: defaultPrivateKey.privateKeyPem,
+ *     validityPeriodHours: 12,
+ *     earlyRenewalHours: 3,
+ *     allowedUses: [
+ *         "key_encipherment",
+ *         "digital_signature",
+ *         "server_auth",
+ *     ],
+ *     dnsNames: ["example.com"],
+ *     subject: {
+ *         commonName: "example.com",
+ *         organization: "ACME Examples, Inc",
+ *     },
+ * });
+ * const defaultSSLCertificate = new gcp.compute.SSLCertificate("default", {
+ *     name: "default-cert",
+ *     privateKey: defaultPrivateKey.privateKeyPem,
+ *     certificate: defaultSelfSignedCert.certPem,
+ * });
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+ *     name: "ssl-proxy-health-check",
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
+ *     tcpHealthCheck: {
+ *         port: 443,
+ *     },
+ * });
+ * // instance template
+ * const defaultInstanceTemplate = new gcp.compute.InstanceTemplate("default", {
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         network: _default.id,
+ *         subnetwork: defaultSubnetwork.id,
+ *     }],
+ *     name: "ssl-proxy-xlb-mig-template",
+ *     machineType: "e2-small",
+ *     tags: ["allow-health-check"],
+ *     disks: [{
+ *         sourceImage: "debian-cloud/debian-10",
+ *         autoDelete: true,
+ *         boot: true,
+ *     }],
+ *     metadata: {
+ *         "startup-script": `#! /bin/bash
+ * set -euo pipefail
+ * export DEBIAN_FRONTEND=noninteractive
+ * sudo apt-get update
+ * sudo apt-get install  -y apache2 jq
+ * sudo a2ensite default-ssl
+ * sudo a2enmod ssl
+ * sudo service apache2 restart
+ * NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+ * IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+ * METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+ * cat <<EOF > /var/www/html/index.html
+ * <h1>SSL Load Balancer</h1>
+ * <pre>
+ * Name: $NAME
+ * IP: $IP
+ * Metadata: $METADATA
+ * </pre>
+ * EOF
+ * `,
+ *     },
+ * });
+ * // MIG
+ * const defaultInstanceGroupManager = new gcp.compute.InstanceGroupManager("default", {
+ *     name: "ssl-proxy-xlb-mig1",
+ *     zone: "us-central1-c",
+ *     namedPorts: [{
+ *         name: "tcp",
+ *         port: 443,
+ *     }],
+ *     versions: [{
+ *         instanceTemplate: defaultInstanceTemplate.id,
+ *         name: "primary",
+ *     }],
+ *     baseInstanceName: "vm",
+ *     targetSize: 2,
+ * });
+ * // backend service
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     name: "ssl-proxy-xlb-backend-service",
+ *     protocol: "SSL",
+ *     portName: "tcp",
+ *     loadBalancingScheme: "EXTERNAL",
+ *     timeoutSec: 10,
+ *     healthChecks: defaultHealthCheck.id,
+ *     backends: [{
+ *         group: defaultInstanceGroupManager.instanceGroup,
+ *         balancingMode: "UTILIZATION",
+ *         maxUtilization: 1,
+ *         capacityScaler: 1,
+ *     }],
+ * });
+ * const defaultTargetSSLProxy = new gcp.compute.TargetSSLProxy("default", {
+ *     name: "test-proxy",
+ *     backendService: defaultBackendService.id,
+ *     sslCertificates: [defaultSSLCertificate.id],
+ * });
+ * // forwarding rule
+ * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("default", {
+ *     name: "ssl-proxy-xlb-forwarding-rule",
+ *     ipProtocol: "TCP",
+ *     loadBalancingScheme: "EXTERNAL",
+ *     portRange: "443",
+ *     target: defaultTargetSSLProxy.id,
+ *     ipAddress: defaultGlobalAddress.id,
+ * });
+ * // allow access from health check ranges
+ * const defaultFirewall = new gcp.compute.Firewall("default", {
+ *     name: "ssl-proxy-xlb-fw-allow-hc",
+ *     direction: "INGRESS",
+ *     network: _default.id,
+ *     sourceRanges: [
+ *         "130.211.0.0/22",
+ *         "35.191.0.0/16",
+ *     ],
+ *     allows: [{
+ *         protocol: "tcp",
+ *     }],
+ *     targetTags: ["allow-health-check"],
+ * });
+ * ```
+ * ### External Tcp Proxy Lb Mig Backend
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
+ * // External TCP proxy load balancer with managed instance group backend
+ * // VPC
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "tcp-proxy-xlb-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * // backend subnet
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "tcp-proxy-xlb-subnet",
+ *     ipCidrRange: "10.0.1.0/24",
+ *     region: "us-central1",
+ *     network: _default.id,
+ * });
+ * // reserved IP address
+ * const defaultGlobalAddress = new gcp.compute.GlobalAddress("default", {name: "tcp-proxy-xlb-ip"});
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+ *     name: "tcp-proxy-health-check",
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
+ *     tcpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * // instance template
+ * const defaultInstanceTemplate = new gcp.compute.InstanceTemplate("default", {
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         network: _default.id,
+ *         subnetwork: defaultSubnetwork.id,
+ *     }],
+ *     name: "tcp-proxy-xlb-mig-template",
+ *     machineType: "e2-small",
+ *     tags: ["allow-health-check"],
+ *     disks: [{
+ *         sourceImage: "debian-cloud/debian-10",
+ *         autoDelete: true,
+ *         boot: true,
+ *     }],
+ *     metadata: {
+ *         "startup-script": `#! /bin/bash
+ * set -euo pipefail
+ * export DEBIAN_FRONTEND=noninteractive
+ * apt-get update
+ * apt-get install -y nginx-light jq
+ * NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+ * IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+ * METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+ * cat <<EOF > /var/www/html/index.html
+ * <pre>
+ * Name: $NAME
+ * IP: $IP
+ * Metadata: $METADATA
+ * </pre>
+ * EOF
+ * `,
+ *     },
+ * });
+ * // MIG
+ * const defaultInstanceGroupManager = new gcp.compute.InstanceGroupManager("default", {
+ *     name: "tcp-proxy-xlb-mig1",
+ *     zone: "us-central1-c",
+ *     namedPorts: [{
+ *         name: "tcp",
+ *         port: 80,
+ *     }],
+ *     versions: [{
+ *         instanceTemplate: defaultInstanceTemplate.id,
+ *         name: "primary",
+ *     }],
+ *     baseInstanceName: "vm",
+ *     targetSize: 2,
+ * });
+ * // backend service
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     name: "tcp-proxy-xlb-backend-service",
+ *     protocol: "TCP",
+ *     portName: "tcp",
+ *     loadBalancingScheme: "EXTERNAL",
+ *     timeoutSec: 10,
+ *     healthChecks: defaultHealthCheck.id,
+ *     backends: [{
+ *         group: defaultInstanceGroupManager.instanceGroup,
+ *         balancingMode: "UTILIZATION",
+ *         maxUtilization: 1,
+ *         capacityScaler: 1,
+ *     }],
+ * });
+ * const defaultTargetTCPProxy = new gcp.compute.TargetTCPProxy("default", {
+ *     name: "test-proxy-health-check",
+ *     backendService: defaultBackendService.id,
+ * });
+ * // forwarding rule
+ * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("default", {
+ *     name: "tcp-proxy-xlb-forwarding-rule",
+ *     ipProtocol: "TCP",
+ *     loadBalancingScheme: "EXTERNAL",
+ *     portRange: "110",
+ *     target: defaultTargetTCPProxy.id,
+ *     ipAddress: defaultGlobalAddress.id,
+ * });
+ * // allow access from health check ranges
+ * const defaultFirewall = new gcp.compute.Firewall("default", {
+ *     name: "tcp-proxy-xlb-fw-allow-hc",
+ *     direction: "INGRESS",
+ *     network: _default.id,
+ *     sourceRanges: [
+ *         "130.211.0.0/22",
+ *         "35.191.0.0/16",
+ *     ],
+ *     allows: [{
+ *         protocol: "tcp",
+ *     }],
+ *     targetTags: ["allow-health-check"],
+ * });
+ * ```
+ * ### External Http Lb Mig Backend Custom Header
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * // External HTTP load balancer with a CDN-enabled managed instance group backend
+ * // and custom request and response headers
+ * // VPC
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "l7-xlb-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * // backend subnet
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "l7-xlb-subnet",
+ *     ipCidrRange: "10.0.1.0/24",
+ *     region: "us-central1",
+ *     network: _default.id,
+ * });
+ * // reserved IP address
+ * const defaultGlobalAddress = new gcp.compute.GlobalAddress("default", {name: "l7-xlb-static-ip"});
+ * // health check
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+ *     name: "l7-xlb-hc",
+ *     httpHealthCheck: {
+ *         portSpecification: "USE_SERVING_PORT",
+ *     },
+ * });
+ * // instance template
+ * const defaultInstanceTemplate = new gcp.compute.InstanceTemplate("default", {
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         network: _default.id,
+ *         subnetwork: defaultSubnetwork.id,
+ *     }],
+ *     name: "l7-xlb-mig-template",
+ *     machineType: "e2-small",
+ *     tags: ["allow-health-check"],
+ *     disks: [{
+ *         sourceImage: "debian-cloud/debian-10",
+ *         autoDelete: true,
+ *         boot: true,
+ *     }],
+ *     metadata: {
+ *         "startup-script": `#! /bin/bash
+ * set -euo pipefail
+ *
+ * export DEBIAN_FRONTEND=noninteractive
+ * apt-get update
+ * apt-get install -y nginx-light jq
+ *
+ * NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+ * IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+ * METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+ *
+ * cat <<EOF > /var/www/html/index.html
+ * <pre>
+ * Name: $NAME
+ * IP: $IP
+ * Metadata: $METADATA
+ * </pre>
+ * EOF
+ * `,
+ *     },
+ * });
+ * // MIG
+ * const defaultInstanceGroupManager = new gcp.compute.InstanceGroupManager("default", {
+ *     name: "l7-xlb-mig1",
+ *     zone: "us-central1-c",
+ *     namedPorts: [{
+ *         name: "http",
+ *         port: 8080,
+ *     }],
+ *     versions: [{
+ *         instanceTemplate: defaultInstanceTemplate.id,
+ *         name: "primary",
+ *     }],
+ *     baseInstanceName: "vm",
+ *     targetSize: 2,
+ * });
+ * // backend service with custom request and response headers
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     name: "l7-xlb-backend-service",
+ *     protocol: "HTTP",
+ *     portName: "my-port",
+ *     loadBalancingScheme: "EXTERNAL",
+ *     timeoutSec: 10,
+ *     enableCdn: true,
+ *     customRequestHeaders: ["X-Client-Geo-Location: {client_region_subdivision}, {client_city}"],
+ *     customResponseHeaders: ["X-Cache-Hit: {cdn_cache_status}"],
+ *     healthChecks: defaultHealthCheck.id,
+ *     backends: [{
+ *         group: defaultInstanceGroupManager.instanceGroup,
+ *         balancingMode: "UTILIZATION",
+ *         capacityScaler: 1,
+ *     }],
+ * });
+ * // url map
+ * const defaultURLMap = new gcp.compute.URLMap("default", {
+ *     name: "l7-xlb-url-map",
+ *     defaultService: defaultBackendService.id,
+ * });
+ * // http proxy
+ * const defaultTargetHttpProxy = new gcp.compute.TargetHttpProxy("default", {
+ *     name: "l7-xlb-target-http-proxy",
+ *     urlMap: defaultURLMap.id,
+ * });
+ * // forwarding rule
+ * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("default", {
+ *     name: "l7-xlb-forwarding-rule",
+ *     ipProtocol: "TCP",
+ *     loadBalancingScheme: "EXTERNAL",
+ *     portRange: "80",
+ *     target: defaultTargetHttpProxy.id,
+ *     ipAddress: defaultGlobalAddress.id,
+ * });
+ * // allow access from health check ranges
+ * const defaultFirewall = new gcp.compute.Firewall("default", {
+ *     name: "l7-xlb-fw-allow-hc",
+ *     direction: "INGRESS",
+ *     network: _default.id,
+ *     sourceRanges: [
+ *         "130.211.0.0/22",
+ *         "35.191.0.0/16",
+ *     ],
+ *     allows: [{
+ *         protocol: "tcp",
+ *     }],
+ *     targetTags: ["allow-health-check"],
+ * });
+ * ```
+ * ### Global Forwarding Rule Http
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ *     name: "check-backend",
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     name: "backend",
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
- *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     healthChecks: defaultHttpHealthCheck.id,
  * });
- * const defaultURLMap = new gcp.compute.URLMap("defaultURLMap", {
+ * const defaultURLMap = new gcp.compute.URLMap("default", {
+ *     name: "url-map-target-proxy",
  *     description: "a description",
  *     defaultService: defaultBackendService.id,
  *     hostRules: [{
@@ -44,14 +458,427 @@ import * as utilities from "../utilities";
  *         }],
  *     }],
  * });
- * const defaultTargetHttpProxy = new gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", {
+ * const defaultTargetHttpProxy = new gcp.compute.TargetHttpProxy("default", {
+ *     name: "target-proxy",
  *     description: "a description",
  *     urlMap: defaultURLMap.id,
  * });
- * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule", {
+ * const _default = new gcp.compute.GlobalForwardingRule("default", {
+ *     name: "global-rule",
+ *     target: defaultTargetHttpProxy.id,
+ *     portRange: "80",
+ * });
+ * ```
+ * ### Global Forwarding Rule Internal
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const debianImage = gcp.compute.getImage({
+ *     family: "debian-11",
+ *     project: "debian-cloud",
+ * });
+ * const instanceTemplate = new gcp.compute.InstanceTemplate("instance_template", {
+ *     name: "template-backend",
+ *     machineType: "e2-medium",
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ *     disks: [{
+ *         sourceImage: debianImage.then(debianImage => debianImage.selfLink),
+ *         autoDelete: true,
+ *         boot: true,
+ *     }],
+ * });
+ * const igm = new gcp.compute.InstanceGroupManager("igm", {
+ *     name: "igm-internal",
+ *     versions: [{
+ *         instanceTemplate: instanceTemplate.id,
+ *         name: "primary",
+ *     }],
+ *     baseInstanceName: "internal-glb",
+ *     zone: "us-central1-f",
+ *     targetSize: 1,
+ * });
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+ *     name: "check-backend",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ *     tcpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     name: "backend",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+ *     backends: [{
+ *         group: igm.instanceGroup,
+ *         balancingMode: "RATE",
+ *         capacityScaler: 0.4,
+ *         maxRatePerInstance: 50,
+ *     }],
+ *     healthChecks: defaultHealthCheck.id,
+ * });
+ * const defaultURLMap = new gcp.compute.URLMap("default", {
+ *     name: "url-map-target-proxy",
+ *     description: "a description",
+ *     defaultService: defaultBackendService.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: defaultBackendService.id,
+ *         pathRules: [{
+ *             paths: ["/*"],
+ *             service: defaultBackendService.id,
+ *         }],
+ *     }],
+ * });
+ * const defaultTargetHttpProxy = new gcp.compute.TargetHttpProxy("default", {
+ *     name: "target-proxy",
+ *     description: "a description",
+ *     urlMap: defaultURLMap.id,
+ * });
+ * const _default = new gcp.compute.GlobalForwardingRule("default", {
+ *     name: "global-rule",
+ *     target: defaultTargetHttpProxy.id,
+ *     portRange: "80",
+ *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+ *     ipAddress: "0.0.0.0",
+ *     metadataFilters: [{
+ *         filterMatchCriteria: "MATCH_ANY",
+ *         filterLabels: [{
+ *             name: "PLANET",
+ *             value: "MARS",
+ *         }],
+ *     }],
+ * });
+ * ```
+ * ### Global Forwarding Rule External Managed
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     name: "backend",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ * });
+ * const defaultURLMap = new gcp.compute.URLMap("default", {
+ *     name: "url-map-target-proxy",
+ *     description: "a description",
+ *     defaultService: defaultBackendService.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: defaultBackendService.id,
+ *         pathRules: [{
+ *             paths: ["/*"],
+ *             service: defaultBackendService.id,
+ *         }],
+ *     }],
+ * });
+ * const defaultTargetHttpProxy = new gcp.compute.TargetHttpProxy("default", {
+ *     name: "target-proxy",
+ *     description: "a description",
+ *     urlMap: defaultURLMap.id,
+ * });
+ * const _default = new gcp.compute.GlobalForwardingRule("default", {
+ *     name: "global-rule",
  *     target: defaultTargetHttpProxy.id,
  *     portRange: "80",
  *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ * });
+ * ```
+ * ### Global Forwarding Rule Hybrid
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const config = new pulumi.Config();
+ * const subnetworkCidr = config.get("subnetworkCidr") || "10.0.0.0/24";
+ * const _default = new gcp.compute.Network("default", {name: "my-network"});
+ * const internal = new gcp.compute.Network("internal", {
+ *     name: "my-internal-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const internalSubnetwork = new gcp.compute.Subnetwork("internal", {
+ *     name: "my-subnetwork",
+ *     network: internal.id,
+ *     ipCidrRange: subnetworkCidr,
+ *     region: "us-central1",
+ *     privateIpGoogleAccess: true,
+ * });
+ * // Zonal NEG with GCE_VM_IP_PORT
+ * const defaultNetworkEndpointGroup = new gcp.compute.NetworkEndpointGroup("default", {
+ *     name: "default-neg",
+ *     network: _default.id,
+ *     defaultPort: 90,
+ *     zone: "us-central1-a",
+ *     networkEndpointType: "GCE_VM_IP_PORT",
+ * });
+ * // Zonal NEG with GCE_VM_IP
+ * const internalNetworkEndpointGroup = new gcp.compute.NetworkEndpointGroup("internal", {
+ *     name: "internal-neg",
+ *     network: internal.id,
+ *     subnetwork: internalSubnetwork.id,
+ *     zone: "us-central1-a",
+ *     networkEndpointType: "GCE_VM_IP",
+ * });
+ * // Hybrid connectivity NEG
+ * const hybrid = new gcp.compute.NetworkEndpointGroup("hybrid", {
+ *     name: "hybrid-neg",
+ *     network: _default.id,
+ *     defaultPort: 90,
+ *     zone: "us-central1-a",
+ *     networkEndpointType: "NON_GCP_PRIVATE_IP_PORT",
+ * });
+ * const hybrid_endpoint = new gcp.compute.NetworkEndpoint("hybrid-endpoint", {
+ *     networkEndpointGroup: hybrid.name,
+ *     port: hybrid.defaultPort,
+ *     ipAddress: "127.0.0.1",
+ * });
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+ *     name: "health-check",
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
+ *     tcpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * // Backend service for Zonal NEG
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     name: "backend-default",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     backends: [{
+ *         group: defaultNetworkEndpointGroup.id,
+ *         balancingMode: "RATE",
+ *         maxRatePerEndpoint: 10,
+ *     }],
+ *     healthChecks: defaultHealthCheck.id,
+ * });
+ * // Backgend service for Hybrid NEG
+ * const hybridBackendService = new gcp.compute.BackendService("hybrid", {
+ *     name: "backend-hybrid",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     backends: [{
+ *         group: hybrid.id,
+ *         balancingMode: "RATE",
+ *         maxRatePerEndpoint: 10,
+ *     }],
+ *     healthChecks: defaultHealthCheck.id,
+ * });
+ * const defaultURLMap = new gcp.compute.URLMap("default", {
+ *     name: "url-map-target-proxy",
+ *     description: "a description",
+ *     defaultService: defaultBackendService.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: defaultBackendService.id,
+ *         pathRules: [
+ *             {
+ *                 paths: ["/*"],
+ *                 service: defaultBackendService.id,
+ *             },
+ *             {
+ *                 paths: ["/hybrid"],
+ *                 service: hybridBackendService.id,
+ *             },
+ *         ],
+ *     }],
+ * });
+ * const defaultTargetHttpProxy = new gcp.compute.TargetHttpProxy("default", {
+ *     name: "target-proxy",
+ *     description: "a description",
+ *     urlMap: defaultURLMap.id,
+ * });
+ * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("default", {
+ *     name: "global-rule",
+ *     target: defaultTargetHttpProxy.id,
+ *     portRange: "80",
+ * });
+ * ```
+ * ### Global Internal Http Lb With Mig Backend
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * // Global Internal HTTP load balancer with a managed instance group backend
+ * // VPC network
+ * const gilbNetwork = new gcp.compute.Network("gilb_network", {
+ *     name: "l7-gilb-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * // proxy-only subnet
+ * const proxySubnet = new gcp.compute.Subnetwork("proxy_subnet", {
+ *     name: "l7-gilb-proxy-subnet",
+ *     ipCidrRange: "10.0.0.0/24",
+ *     region: "europe-west1",
+ *     purpose: "GLOBAL_MANAGED_PROXY",
+ *     role: "ACTIVE",
+ *     network: gilbNetwork.id,
+ * });
+ * // backend subnet
+ * const gilbSubnet = new gcp.compute.Subnetwork("gilb_subnet", {
+ *     name: "l7-gilb-subnet",
+ *     ipCidrRange: "10.0.1.0/24",
+ *     region: "europe-west1",
+ *     network: gilbNetwork.id,
+ * });
+ * // health check
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+ *     name: "l7-gilb-hc",
+ *     httpHealthCheck: {
+ *         portSpecification: "USE_SERVING_PORT",
+ *     },
+ * });
+ * // instance template
+ * const instanceTemplate = new gcp.compute.InstanceTemplate("instance_template", {
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         network: gilbNetwork.id,
+ *         subnetwork: gilbSubnet.id,
+ *     }],
+ *     name: "l7-gilb-mig-template",
+ *     machineType: "e2-small",
+ *     tags: ["http-server"],
+ *     disks: [{
+ *         sourceImage: "debian-cloud/debian-10",
+ *         autoDelete: true,
+ *         boot: true,
+ *     }],
+ *     metadata: {
+ *         "startup-script": `#! /bin/bash
+ * set -euo pipefail
+ *
+ * export DEBIAN_FRONTEND=noninteractive
+ * apt-get update
+ * apt-get install -y nginx-light jq
+ *
+ * NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+ * IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+ * METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+ *
+ * cat <<EOF > /var/www/html/index.html
+ * <pre>
+ * Name: $NAME
+ * IP: $IP
+ * Metadata: $METADATA
+ * </pre>
+ * EOF
+ * `,
+ *     },
+ * });
+ * // MIG
+ * const mig = new gcp.compute.InstanceGroupManager("mig", {
+ *     name: "l7-gilb-mig1",
+ *     zone: "europe-west1-b",
+ *     versions: [{
+ *         instanceTemplate: instanceTemplate.id,
+ *         name: "primary",
+ *     }],
+ *     baseInstanceName: "vm",
+ *     targetSize: 2,
+ * });
+ * // backend service
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     name: "l7-gilb-backend-subnet",
+ *     protocol: "HTTP",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     timeoutSec: 10,
+ *     healthChecks: defaultHealthCheck.id,
+ *     backends: [{
+ *         group: mig.instanceGroup,
+ *         balancingMode: "UTILIZATION",
+ *         capacityScaler: 1,
+ *     }],
+ * });
+ * // URL map
+ * const defaultURLMap = new gcp.compute.URLMap("default", {
+ *     name: "l7-gilb-url-map",
+ *     defaultService: defaultBackendService.id,
+ * });
+ * // HTTP target proxy
+ * const _default = new gcp.compute.TargetHttpProxy("default", {
+ *     name: "l7-gilb-target-http-proxy",
+ *     urlMap: defaultURLMap.id,
+ * });
+ * // forwarding rule
+ * const googleComputeForwardingRule = new gcp.compute.GlobalForwardingRule("google_compute_forwarding_rule", {
+ *     name: "l7-gilb-forwarding-rule",
+ *     ipProtocol: "TCP",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     portRange: "80",
+ *     target: _default.id,
+ *     network: gilbNetwork.id,
+ *     subnetwork: gilbSubnet.id,
+ * });
+ * // allow all access from IAP and health check ranges
+ * const fw_iap = new gcp.compute.Firewall("fw-iap", {
+ *     name: "l7-gilb-fw-allow-iap-hc",
+ *     direction: "INGRESS",
+ *     network: gilbNetwork.id,
+ *     sourceRanges: [
+ *         "130.211.0.0/22",
+ *         "35.191.0.0/16",
+ *         "35.235.240.0/20",
+ *     ],
+ *     allows: [{
+ *         protocol: "tcp",
+ *     }],
+ * });
+ * // allow http from proxy subnet to backends
+ * const fw_gilb_to_backends = new gcp.compute.Firewall("fw-gilb-to-backends", {
+ *     name: "l7-gilb-fw-allow-gilb-to-backends",
+ *     direction: "INGRESS",
+ *     network: gilbNetwork.id,
+ *     sourceRanges: ["10.0.0.0/24"],
+ *     targetTags: ["http-server"],
+ *     allows: [{
+ *         protocol: "tcp",
+ *         ports: [
+ *             "80",
+ *             "443",
+ *             "8080",
+ *         ],
+ *     }],
+ * });
+ * // test instance
+ * const vm_test = new gcp.compute.Instance("vm-test", {
+ *     name: "l7-gilb-test-vm",
+ *     zone: "europe-west1-b",
+ *     machineType: "e2-small",
+ *     networkInterfaces: [{
+ *         network: gilbNetwork.id,
+ *         subnetwork: gilbSubnet.id,
+ *     }],
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: "debian-cloud/debian-10",
+ *         },
+ *     },
  * });
  * ```
  * ### Private Service Connect Google Apis
@@ -62,40 +889,36 @@ import * as utilities from "../utilities";
  *
  * const network = new gcp.compute.Network("network", {
  *     project: "my-project-name",
+ *     name: "my-network",
  *     autoCreateSubnetworks: false,
- * }, {
- *     provider: google_beta,
  * });
- * const vpcSubnetwork = new gcp.compute.Subnetwork("vpcSubnetwork", {
+ * const vpcSubnetwork = new gcp.compute.Subnetwork("vpc_subnetwork", {
  *     project: network.project,
+ *     name: "my-subnetwork",
  *     ipCidrRange: "10.2.0.0/16",
  *     region: "us-central1",
  *     network: network.id,
  *     privateIpGoogleAccess: true,
- * }, {
- *     provider: google_beta,
  * });
- * const defaultGlobalAddress = new gcp.compute.GlobalAddress("defaultGlobalAddress", {
+ * const _default = new gcp.compute.GlobalAddress("default", {
  *     project: network.project,
+ *     name: "global-psconnect-ip",
  *     addressType: "INTERNAL",
  *     purpose: "PRIVATE_SERVICE_CONNECT",
  *     network: network.id,
  *     address: "100.100.100.106",
- * }, {
- *     provider: google_beta,
  * });
- * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule", {
+ * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("default", {
  *     project: network.project,
+ *     name: "globalrule",
  *     target: "all-apis",
  *     network: network.id,
- *     ipAddress: defaultGlobalAddress.id,
+ *     ipAddress: _default.id,
  *     loadBalancingScheme: "",
  *     serviceDirectoryRegistrations: {
  *         namespace: "sd-namespace",
  *         serviceDirectoryRegion: "europe-west3",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Private Service Connect Google Apis No Automate Dns
@@ -106,37 +929,33 @@ import * as utilities from "../utilities";
  *
  * const network = new gcp.compute.Network("network", {
  *     project: "my-project-name",
+ *     name: "my-network",
  *     autoCreateSubnetworks: false,
- * }, {
- *     provider: google_beta,
  * });
- * const vpcSubnetwork = new gcp.compute.Subnetwork("vpcSubnetwork", {
+ * const vpcSubnetwork = new gcp.compute.Subnetwork("vpc_subnetwork", {
  *     project: network.project,
+ *     name: "my-subnetwork",
  *     ipCidrRange: "10.2.0.0/16",
  *     region: "us-central1",
  *     network: network.id,
  *     privateIpGoogleAccess: true,
- * }, {
- *     provider: google_beta,
  * });
- * const defaultGlobalAddress = new gcp.compute.GlobalAddress("defaultGlobalAddress", {
+ * const _default = new gcp.compute.GlobalAddress("default", {
  *     project: network.project,
+ *     name: "global-psconnect-ip",
  *     addressType: "INTERNAL",
  *     purpose: "PRIVATE_SERVICE_CONNECT",
  *     network: network.id,
  *     address: "100.100.100.106",
- * }, {
- *     provider: google_beta,
  * });
- * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule", {
+ * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("default", {
  *     project: network.project,
+ *     name: "globalrule",
  *     target: "all-apis",
  *     network: network.id,
- *     ipAddress: defaultGlobalAddress.id,
+ *     ipAddress: _default.id,
  *     loadBalancingScheme: "",
  *     noAutomateDnsZone: false,
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

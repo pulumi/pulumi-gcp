@@ -60,11 +60,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewNetwork(ctx, "default", nil)
+//			_, err = compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name: pulumi.String("test-network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewFirewall(ctx, "allow-hcs", &compute.FirewallArgs{
+//				Name:    pulumi.String("allow-hcs"),
 //				Network: _default.Name,
 //				Allows: compute.FirewallAllowArray{
 //					&compute.FirewallAllowArgs{

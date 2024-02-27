@@ -32,7 +32,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * ### Url Map Bucket And Service
- * 
  * ```java
  * package generated_program;
  * 
@@ -66,12 +65,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new HttpHealthCheck(&#34;default&#34;, HttpHealthCheckArgs.builder()        
+ *             .name(&#34;health-check&#34;)
  *             .requestPath(&#34;/&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
  *         var login = new BackendService(&#34;login&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;login&#34;)
  *             .portName(&#34;http&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .timeoutSec(10)
@@ -79,17 +80,20 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var staticBucket = new Bucket(&#34;staticBucket&#34;, BucketArgs.builder()        
+ *             .name(&#34;static-asset-bucket&#34;)
  *             .location(&#34;US&#34;)
  *             .build());
  * 
- *         var staticBackendBucket = new BackendBucket(&#34;staticBackendBucket&#34;, BackendBucketArgs.builder()        
+ *         var static_ = new BackendBucket(&#34;static&#34;, BackendBucketArgs.builder()        
+ *             .name(&#34;static-asset-backend-bucket&#34;)
  *             .bucketName(staticBucket.name())
  *             .enableCdn(true)
  *             .build());
  * 
  *         var urlmap = new URLMap(&#34;urlmap&#34;, URLMapArgs.builder()        
+ *             .name(&#34;urlmap&#34;)
  *             .description(&#34;a description&#34;)
- *             .defaultService(staticBackendBucket.id())
+ *             .defaultService(static_.id())
  *             .hostRules(            
  *                 URLMapHostRuleArgs.builder()
  *                     .hosts(&#34;mysite.com&#34;)
@@ -102,11 +106,11 @@ import javax.annotation.Nullable;
  *             .pathMatchers(            
  *                 URLMapPathMatcherArgs.builder()
  *                     .name(&#34;mysite&#34;)
- *                     .defaultService(staticBackendBucket.id())
+ *                     .defaultService(static_.id())
  *                     .pathRules(                    
  *                         URLMapPathMatcherPathRuleArgs.builder()
  *                             .paths(&#34;/home&#34;)
- *                             .service(staticBackendBucket.id())
+ *                             .service(static_.id())
  *                             .build(),
  *                         URLMapPathMatcherPathRuleArgs.builder()
  *                             .paths(&#34;/login&#34;)
@@ -114,15 +118,15 @@ import javax.annotation.Nullable;
  *                             .build(),
  *                         URLMapPathMatcherPathRuleArgs.builder()
  *                             .paths(&#34;/static&#34;)
- *                             .service(staticBackendBucket.id())
+ *                             .service(static_.id())
  *                             .build())
  *                     .build(),
  *                 URLMapPathMatcherArgs.builder()
  *                     .name(&#34;otherpaths&#34;)
- *                     .defaultService(staticBackendBucket.id())
+ *                     .defaultService(static_.id())
  *                     .build())
  *             .tests(URLMapTestArgs.builder()
- *                 .service(staticBackendBucket.id())
+ *                 .service(static_.id())
  *                 .host(&#34;example.com&#34;)
  *                 .path(&#34;/home&#34;)
  *                 .build())
@@ -132,7 +136,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Url Map Traffic Director Route
- * 
  * ```java
  * package generated_program;
  * 
@@ -163,12 +166,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new HealthCheck(&#34;default&#34;, HealthCheckArgs.builder()        
+ *             .name(&#34;health-check&#34;)
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
  *         var home = new BackendService(&#34;home&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;home&#34;)
  *             .portName(&#34;http&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .timeoutSec(10)
@@ -177,6 +182,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var urlmap = new URLMap(&#34;urlmap&#34;, URLMapArgs.builder()        
+ *             .name(&#34;urlmap&#34;)
  *             .description(&#34;a description&#34;)
  *             .defaultService(home.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
@@ -242,7 +248,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Url Map Traffic Director Route Partial
- * 
  * ```java
  * package generated_program;
  * 
@@ -273,12 +278,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new HealthCheck(&#34;default&#34;, HealthCheckArgs.builder()        
+ *             .name(&#34;health-check&#34;)
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
  *         var home = new BackendService(&#34;home&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;home&#34;)
  *             .portName(&#34;http&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .timeoutSec(10)
@@ -287,6 +294,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var urlmap = new URLMap(&#34;urlmap&#34;, URLMapArgs.builder()        
+ *             .name(&#34;urlmap&#34;)
  *             .description(&#34;a description&#34;)
  *             .defaultService(home.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
@@ -323,7 +331,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Url Map Traffic Director Path
- * 
  * ```java
  * package generated_program;
  * 
@@ -354,12 +361,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new HealthCheck(&#34;default&#34;, HealthCheckArgs.builder()        
+ *             .name(&#34;health-check&#34;)
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
  *         var home = new BackendService(&#34;home&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;home&#34;)
  *             .portName(&#34;http&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .timeoutSec(10)
@@ -368,6 +377,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var urlmap = new URLMap(&#34;urlmap&#34;, URLMapArgs.builder()        
+ *             .name(&#34;urlmap&#34;)
  *             .description(&#34;a description&#34;)
  *             .defaultService(home.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
@@ -455,7 +465,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Url Map Traffic Director Path Partial
- * 
  * ```java
  * package generated_program;
  * 
@@ -486,12 +495,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new HealthCheck(&#34;default&#34;, HealthCheckArgs.builder()        
+ *             .name(&#34;health-check&#34;)
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
  *         var home = new BackendService(&#34;home&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;home&#34;)
  *             .portName(&#34;http&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .timeoutSec(10)
@@ -500,6 +511,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var urlmap = new URLMap(&#34;urlmap&#34;, URLMapArgs.builder()        
+ *             .name(&#34;urlmap&#34;)
  *             .description(&#34;a description&#34;)
  *             .defaultService(home.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
@@ -554,7 +566,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Url Map Header Based Routing
- * 
  * ```java
  * package generated_program;
  * 
@@ -583,12 +594,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
+ *             .name(&#34;health-check&#34;)
  *             .requestPath(&#34;/&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
+ *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;default&#34;)
  *             .portName(&#34;http&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .timeoutSec(10)
@@ -596,6 +609,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var service_a = new BackendService(&#34;service-a&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;service-a&#34;)
  *             .portName(&#34;http&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .timeoutSec(10)
@@ -603,6 +617,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var service_b = new BackendService(&#34;service-b&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;service-b&#34;)
  *             .portName(&#34;http&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .timeoutSec(10)
@@ -610,15 +625,16 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var urlmap = new URLMap(&#34;urlmap&#34;, URLMapArgs.builder()        
+ *             .name(&#34;urlmap&#34;)
  *             .description(&#34;header-based routing example&#34;)
- *             .defaultService(defaultBackendService.id())
+ *             .defaultService(default_.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
  *                 .hosts(&#34;*&#34;)
  *                 .pathMatcher(&#34;allpaths&#34;)
  *                 .build())
  *             .pathMatchers(URLMapPathMatcherArgs.builder()
  *                 .name(&#34;allpaths&#34;)
- *                 .defaultService(defaultBackendService.id())
+ *                 .defaultService(default_.id())
  *                 .routeRules(                
  *                     URLMapPathMatcherRouteRuleArgs.builder()
  *                         .priority(1)
@@ -651,7 +667,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Url Map Parameter Based Routing
- * 
  * ```java
  * package generated_program;
  * 
@@ -680,12 +695,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
+ *             .name(&#34;health-check&#34;)
  *             .requestPath(&#34;/&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
+ *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;default&#34;)
  *             .portName(&#34;http&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .timeoutSec(10)
@@ -693,6 +710,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var service_a = new BackendService(&#34;service-a&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;service-a&#34;)
  *             .portName(&#34;http&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .timeoutSec(10)
@@ -700,6 +718,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var service_b = new BackendService(&#34;service-b&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;service-b&#34;)
  *             .portName(&#34;http&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .timeoutSec(10)
@@ -707,15 +726,16 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var urlmap = new URLMap(&#34;urlmap&#34;, URLMapArgs.builder()        
+ *             .name(&#34;urlmap&#34;)
  *             .description(&#34;parameter-based routing example&#34;)
- *             .defaultService(defaultBackendService.id())
+ *             .defaultService(default_.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
  *                 .hosts(&#34;*&#34;)
  *                 .pathMatcher(&#34;allpaths&#34;)
  *                 .build())
  *             .pathMatchers(URLMapPathMatcherArgs.builder()
  *                 .name(&#34;allpaths&#34;)
- *                 .defaultService(defaultBackendService.id())
+ *                 .defaultService(default_.id())
  *                 .routeRules(                
  *                     URLMapPathMatcherRouteRuleArgs.builder()
  *                         .priority(1)
@@ -748,7 +768,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Url Map Path Template Match
- * 
  * ```java
  * package generated_program;
  * 
@@ -781,12 +800,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new HttpHealthCheck(&#34;default&#34;, HttpHealthCheckArgs.builder()        
+ *             .name(&#34;health-check&#34;)
  *             .requestPath(&#34;/&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
  *         var cart_backend = new BackendService(&#34;cart-backend&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;cart-service&#34;)
  *             .portName(&#34;http&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .timeoutSec(10)
@@ -795,6 +816,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var user_backend = new BackendService(&#34;user-backend&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;user-service&#34;)
  *             .portName(&#34;http&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .timeoutSec(10)
@@ -803,24 +825,27 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var staticBucket = new Bucket(&#34;staticBucket&#34;, BucketArgs.builder()        
+ *             .name(&#34;static-asset-bucket&#34;)
  *             .location(&#34;US&#34;)
  *             .build());
  * 
- *         var staticBackendBucket = new BackendBucket(&#34;staticBackendBucket&#34;, BackendBucketArgs.builder()        
+ *         var static_ = new BackendBucket(&#34;static&#34;, BackendBucketArgs.builder()        
+ *             .name(&#34;static-asset-backend-bucket&#34;)
  *             .bucketName(staticBucket.name())
  *             .enableCdn(true)
  *             .build());
  * 
  *         var urlmap = new URLMap(&#34;urlmap&#34;, URLMapArgs.builder()        
+ *             .name(&#34;urlmap&#34;)
  *             .description(&#34;a description&#34;)
- *             .defaultService(staticBackendBucket.id())
+ *             .defaultService(static_.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
  *                 .hosts(&#34;mysite.com&#34;)
  *                 .pathMatcher(&#34;mysite&#34;)
  *                 .build())
  *             .pathMatchers(URLMapPathMatcherArgs.builder()
  *                 .name(&#34;mysite&#34;)
- *                 .defaultService(staticBackendBucket.id())
+ *                 .defaultService(static_.id())
  *                 .routeRules(                
  *                     URLMapPathMatcherRouteRuleArgs.builder()
  *                         .matchRules(URLMapPathMatcherRouteRuleMatchRuleArgs.builder()

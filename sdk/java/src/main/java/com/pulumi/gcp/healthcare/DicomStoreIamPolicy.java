@@ -88,8 +88,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var dicomStore = new DicomStoreIamBinding(&#34;dicomStore&#34;, DicomStoreIamBindingArgs.builder()        
  *             .dicomStoreId(&#34;your-dicom-store-id&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
  *             .role(&#34;roles/editor&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
  * 
  *     }
@@ -120,8 +120,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var dicomStore = new DicomStoreIamMember(&#34;dicomStore&#34;, DicomStoreIamMemberArgs.builder()        
  *             .dicomStoreId(&#34;your-dicom-store-id&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
  *             .role(&#34;roles/editor&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
  *             .build());
  * 
  *     }

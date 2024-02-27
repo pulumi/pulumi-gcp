@@ -11,13 +11,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const bigDataJob = new gcp.dataflow.FlexTemplateJob("bigDataJob", {
+ * const bigDataJob = new gcp.dataflow.FlexTemplateJob("big_data_job", {
+ *     name: "dataflow-flextemplates-job",
  *     containerSpecGcsPath: "gs://my-bucket/templates/template.json",
  *     parameters: {
  *         inputSubscription: "messages",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ## Note on "destroy" / "apply"
@@ -56,22 +55,21 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const bigDataJobSubscriptionId = config.get("bigDataJobSubscriptionId") || "projects/myproject/subscriptions/messages";
- * const bigDataJobNameSuffix = new random.RandomId("bigDataJobNameSuffix", {
+ * const bigDataJobNameSuffix = new random.RandomId("big_data_job_name_suffix", {
  *     byteLength: 4,
  *     keepers: {
- *         region: _var.region,
+ *         region: region,
  *         subscription_id: bigDataJobSubscriptionId,
  *     },
  * });
- * const bigDataJob = new gcp.dataflow.FlexTemplateJob("bigDataJob", {
- *     region: _var.region,
+ * const bigDataJob = new gcp.dataflow.FlexTemplateJob("big_data_job", {
+ *     name: pulumi.interpolate`dataflow-flextemplates-job-${bigDataJobNameSuffix.dec}`,
+ *     region: region,
  *     containerSpecGcsPath: "gs://my-bucket/templates/template.json",
  *     skipWaitOnJobTermination: true,
  *     parameters: {
  *         inputSubscription: bigDataJobSubscriptionId,
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

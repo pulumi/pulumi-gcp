@@ -755,12 +755,13 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         looker_instance = gcp.looker.Instance("looker-instance",
+            name="my-instance",
+            platform_edition="LOOKER_CORE_STANDARD",
+            region="us-central1",
             oauth_config=gcp.looker.InstanceOauthConfigArgs(
                 client_id="my-client-id",
                 client_secret="my-client-secret",
-            ),
-            platform_edition="LOOKER_CORE_STANDARD",
-            region="us-central1")
+            ))
         ```
         ### Looker Instance Full
 
@@ -769,47 +770,48 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         looker_instance = gcp.looker.Instance("looker-instance",
+            name="my-instance",
+            platform_edition="LOOKER_CORE_STANDARD",
+            region="us-central1",
+            public_ip_enabled=True,
             admin_settings=gcp.looker.InstanceAdminSettingsArgs(
                 allowed_email_domains=["google.com"],
             ),
-            deny_maintenance_period=gcp.looker.InstanceDenyMaintenancePeriodArgs(
-                end_date=gcp.looker.InstanceDenyMaintenancePeriodEndDateArgs(
-                    day=1,
-                    month=2,
-                    year=2050,
-                ),
-                start_date=gcp.looker.InstanceDenyMaintenancePeriodStartDateArgs(
-                    day=1,
-                    month=1,
-                    year=2050,
-                ),
-                time=gcp.looker.InstanceDenyMaintenancePeriodTimeArgs(
-                    hours=10,
-                    minutes=0,
-                    nanos=0,
-                    seconds=0,
-                ),
+            user_metadata=gcp.looker.InstanceUserMetadataArgs(
+                additional_developer_user_count=10,
+                additional_standard_user_count=10,
+                additional_viewer_user_count=10,
             ),
             maintenance_window=gcp.looker.InstanceMaintenanceWindowArgs(
                 day_of_week="THURSDAY",
                 start_time=gcp.looker.InstanceMaintenanceWindowStartTimeArgs(
                     hours=22,
                     minutes=0,
-                    nanos=0,
                     seconds=0,
+                    nanos=0,
+                ),
+            ),
+            deny_maintenance_period=gcp.looker.InstanceDenyMaintenancePeriodArgs(
+                start_date=gcp.looker.InstanceDenyMaintenancePeriodStartDateArgs(
+                    year=2050,
+                    month=1,
+                    day=1,
+                ),
+                end_date=gcp.looker.InstanceDenyMaintenancePeriodEndDateArgs(
+                    year=2050,
+                    month=2,
+                    day=1,
+                ),
+                time=gcp.looker.InstanceDenyMaintenancePeriodTimeArgs(
+                    hours=10,
+                    minutes=0,
+                    seconds=0,
+                    nanos=0,
                 ),
             ),
             oauth_config=gcp.looker.InstanceOauthConfigArgs(
                 client_id="my-client-id",
                 client_secret="my-client-secret",
-            ),
-            platform_edition="LOOKER_CORE_STANDARD",
-            public_ip_enabled=True,
-            region="us-central1",
-            user_metadata=gcp.looker.InstanceUserMetadataArgs(
-                additional_developer_user_count=10,
-                additional_standard_user_count=10,
-                additional_viewer_user_count=10,
             ))
         ```
         ### Looker Instance Enterprise Full
@@ -818,17 +820,15 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        looker_network = gcp.compute.Network("lookerNetwork")
-        looker_range = gcp.compute.GlobalAddress("lookerRange",
+        looker_network = gcp.compute.Network("looker_network", name="looker-network")
+        looker_range = gcp.compute.GlobalAddress("looker_range",
+            name="looker-range",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=20,
             network=looker_network.id)
-        looker_vpc_connection = gcp.servicenetworking.Connection("lookerVpcConnection",
-            network=looker_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[looker_range.name])
         looker_instance = gcp.looker.Instance("looker-instance",
+            name="my-instance",
             platform_edition="LOOKER_CORE_ENTERPRISE_ANNUAL",
             region="us-central1",
             private_ip_enabled=True,
@@ -871,10 +871,13 @@ class Instance(pulumi.CustomResource):
             oauth_config=gcp.looker.InstanceOauthConfigArgs(
                 client_id="my-client-id",
                 client_secret="my-client-secret",
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[looker_vpc_connection]))
+            ))
+        looker_vpc_connection = gcp.servicenetworking.Connection("looker_vpc_connection",
+            network=looker_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[looker_range.name])
         project = gcp.organizations.get_project()
-        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
+        crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
             crypto_key_id="looker-kms-key",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-looker.iam.gserviceaccount.com")
@@ -982,12 +985,13 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         looker_instance = gcp.looker.Instance("looker-instance",
+            name="my-instance",
+            platform_edition="LOOKER_CORE_STANDARD",
+            region="us-central1",
             oauth_config=gcp.looker.InstanceOauthConfigArgs(
                 client_id="my-client-id",
                 client_secret="my-client-secret",
-            ),
-            platform_edition="LOOKER_CORE_STANDARD",
-            region="us-central1")
+            ))
         ```
         ### Looker Instance Full
 
@@ -996,47 +1000,48 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         looker_instance = gcp.looker.Instance("looker-instance",
+            name="my-instance",
+            platform_edition="LOOKER_CORE_STANDARD",
+            region="us-central1",
+            public_ip_enabled=True,
             admin_settings=gcp.looker.InstanceAdminSettingsArgs(
                 allowed_email_domains=["google.com"],
             ),
-            deny_maintenance_period=gcp.looker.InstanceDenyMaintenancePeriodArgs(
-                end_date=gcp.looker.InstanceDenyMaintenancePeriodEndDateArgs(
-                    day=1,
-                    month=2,
-                    year=2050,
-                ),
-                start_date=gcp.looker.InstanceDenyMaintenancePeriodStartDateArgs(
-                    day=1,
-                    month=1,
-                    year=2050,
-                ),
-                time=gcp.looker.InstanceDenyMaintenancePeriodTimeArgs(
-                    hours=10,
-                    minutes=0,
-                    nanos=0,
-                    seconds=0,
-                ),
+            user_metadata=gcp.looker.InstanceUserMetadataArgs(
+                additional_developer_user_count=10,
+                additional_standard_user_count=10,
+                additional_viewer_user_count=10,
             ),
             maintenance_window=gcp.looker.InstanceMaintenanceWindowArgs(
                 day_of_week="THURSDAY",
                 start_time=gcp.looker.InstanceMaintenanceWindowStartTimeArgs(
                     hours=22,
                     minutes=0,
-                    nanos=0,
                     seconds=0,
+                    nanos=0,
+                ),
+            ),
+            deny_maintenance_period=gcp.looker.InstanceDenyMaintenancePeriodArgs(
+                start_date=gcp.looker.InstanceDenyMaintenancePeriodStartDateArgs(
+                    year=2050,
+                    month=1,
+                    day=1,
+                ),
+                end_date=gcp.looker.InstanceDenyMaintenancePeriodEndDateArgs(
+                    year=2050,
+                    month=2,
+                    day=1,
+                ),
+                time=gcp.looker.InstanceDenyMaintenancePeriodTimeArgs(
+                    hours=10,
+                    minutes=0,
+                    seconds=0,
+                    nanos=0,
                 ),
             ),
             oauth_config=gcp.looker.InstanceOauthConfigArgs(
                 client_id="my-client-id",
                 client_secret="my-client-secret",
-            ),
-            platform_edition="LOOKER_CORE_STANDARD",
-            public_ip_enabled=True,
-            region="us-central1",
-            user_metadata=gcp.looker.InstanceUserMetadataArgs(
-                additional_developer_user_count=10,
-                additional_standard_user_count=10,
-                additional_viewer_user_count=10,
             ))
         ```
         ### Looker Instance Enterprise Full
@@ -1045,17 +1050,15 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        looker_network = gcp.compute.Network("lookerNetwork")
-        looker_range = gcp.compute.GlobalAddress("lookerRange",
+        looker_network = gcp.compute.Network("looker_network", name="looker-network")
+        looker_range = gcp.compute.GlobalAddress("looker_range",
+            name="looker-range",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=20,
             network=looker_network.id)
-        looker_vpc_connection = gcp.servicenetworking.Connection("lookerVpcConnection",
-            network=looker_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[looker_range.name])
         looker_instance = gcp.looker.Instance("looker-instance",
+            name="my-instance",
             platform_edition="LOOKER_CORE_ENTERPRISE_ANNUAL",
             region="us-central1",
             private_ip_enabled=True,
@@ -1098,10 +1101,13 @@ class Instance(pulumi.CustomResource):
             oauth_config=gcp.looker.InstanceOauthConfigArgs(
                 client_id="my-client-id",
                 client_secret="my-client-secret",
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[looker_vpc_connection]))
+            ))
+        looker_vpc_connection = gcp.servicenetworking.Connection("looker_vpc_connection",
+            network=looker_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[looker_range.name])
         project = gcp.organizations.get_project()
-        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
+        crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
             crypto_key_id="looker-kms-key",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-looker.iam.gserviceaccount.com")

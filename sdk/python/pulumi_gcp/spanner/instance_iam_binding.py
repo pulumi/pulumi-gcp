@@ -282,8 +282,8 @@ class InstanceIAMBinding(pulumi.CustomResource):
 
         instance = gcp.spanner.InstanceIAMBinding("instance",
             instance="your-instance-name",
-            members=["user:jane@example.com"],
-            role="roles/spanner.databaseAdmin")
+            role="roles/spanner.databaseAdmin",
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_spanner\\_instance\\_iam\\_member
@@ -294,8 +294,8 @@ class InstanceIAMBinding(pulumi.CustomResource):
 
         instance = gcp.spanner.InstanceIAMMember("instance",
             instance="your-instance-name",
-            member="user:jane@example.com",
-            role="roles/spanner.databaseAdmin")
+            role="roles/spanner.databaseAdmin",
+            member="user:jane@example.com")
         ```
 
         ## Import
@@ -385,8 +385,8 @@ class InstanceIAMBinding(pulumi.CustomResource):
 
         instance = gcp.spanner.InstanceIAMBinding("instance",
             instance="your-instance-name",
-            members=["user:jane@example.com"],
-            role="roles/spanner.databaseAdmin")
+            role="roles/spanner.databaseAdmin",
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_spanner\\_instance\\_iam\\_member
@@ -397,8 +397,8 @@ class InstanceIAMBinding(pulumi.CustomResource):
 
         instance = gcp.spanner.InstanceIAMMember("instance",
             instance="your-instance-name",
-            member="user:jane@example.com",
-            role="roles/spanner.databaseAdmin")
+            role="roles/spanner.databaseAdmin",
+            member="user:jane@example.com")
         ```
 
         ## Import

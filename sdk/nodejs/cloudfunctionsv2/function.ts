@@ -14,6 +14,178 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/functions/docs/reference/rest/v2beta/projects.locations.functions)
  *
  * ## Example Usage
+ * ### Cloudfunctions2 Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = "my-project-name";
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: `${project}-gcf-source`,
+ *     location: "US",
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const object = new gcp.storage.BucketObject("object", {
+ *     name: "function-source.zip",
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("function-source.zip"),
+ * });
+ * const _function = new gcp.cloudfunctionsv2.Function("function", {
+ *     name: "function-v2",
+ *     location: "us-central1",
+ *     description: "a new function",
+ *     buildConfig: {
+ *         runtime: "nodejs16",
+ *         entryPoint: "helloHttp",
+ *         source: {
+ *             storageSource: {
+ *                 bucket: bucket.name,
+ *                 object: object.name,
+ *             },
+ *         },
+ *     },
+ *     serviceConfig: {
+ *         maxInstanceCount: 1,
+ *         availableMemory: "256M",
+ *         timeoutSeconds: 60,
+ *     },
+ * });
+ * export const functionUri = _function.serviceConfig.apply(serviceConfig => serviceConfig?.uri);
+ * ```
+ * ### Cloudfunctions2 Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = "my-project-name";
+ * const account = new gcp.serviceaccount.Account("account", {
+ *     accountId: "gcf-sa",
+ *     displayName: "Test Service Account",
+ * });
+ * const topic = new gcp.pubsub.Topic("topic", {name: "functions2-topic"});
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: `${project}-gcf-source`,
+ *     location: "US",
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const object = new gcp.storage.BucketObject("object", {
+ *     name: "function-source.zip",
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("function-source.zip"),
+ * });
+ * const _function = new gcp.cloudfunctionsv2.Function("function", {
+ *     name: "gcf-function",
+ *     location: "us-central1",
+ *     description: "a new function",
+ *     buildConfig: {
+ *         runtime: "nodejs16",
+ *         entryPoint: "helloPubSub",
+ *         environmentVariables: {
+ *             BUILD_CONFIG_TEST: "build_test",
+ *         },
+ *         source: {
+ *             storageSource: {
+ *                 bucket: bucket.name,
+ *                 object: object.name,
+ *             },
+ *         },
+ *     },
+ *     serviceConfig: {
+ *         maxInstanceCount: 3,
+ *         minInstanceCount: 1,
+ *         availableMemory: "4Gi",
+ *         timeoutSeconds: 60,
+ *         maxInstanceRequestConcurrency: 80,
+ *         availableCpu: "4",
+ *         environmentVariables: {
+ *             SERVICE_CONFIG_TEST: "config_test",
+ *         },
+ *         ingressSettings: "ALLOW_INTERNAL_ONLY",
+ *         allTrafficOnLatestRevision: true,
+ *         serviceAccountEmail: account.email,
+ *     },
+ *     eventTrigger: {
+ *         triggerRegion: "us-central1",
+ *         eventType: "google.cloud.pubsub.topic.v1.messagePublished",
+ *         pubsubTopic: topic.id,
+ *         retryPolicy: "RETRY_POLICY_RETRY",
+ *     },
+ * });
+ * ```
+ * ### Cloudfunctions2 Scheduler Auth
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = "my-project-name";
+ * const account = new gcp.serviceaccount.Account("account", {
+ *     accountId: "gcf-sa",
+ *     displayName: "Test Service Account",
+ * });
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: `${project}-gcf-source`,
+ *     location: "US",
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const object = new gcp.storage.BucketObject("object", {
+ *     name: "function-source.zip",
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("function-source.zip"),
+ * });
+ * const _function = new gcp.cloudfunctionsv2.Function("function", {
+ *     name: "gcf-function",
+ *     location: "us-central1",
+ *     description: "a new function",
+ *     buildConfig: {
+ *         runtime: "nodejs16",
+ *         entryPoint: "helloHttp",
+ *         source: {
+ *             storageSource: {
+ *                 bucket: bucket.name,
+ *                 object: object.name,
+ *             },
+ *         },
+ *     },
+ *     serviceConfig: {
+ *         minInstanceCount: 1,
+ *         availableMemory: "256M",
+ *         timeoutSeconds: 60,
+ *         serviceAccountEmail: account.email,
+ *     },
+ * });
+ * const invoker = new gcp.cloudfunctionsv2.FunctionIamMember("invoker", {
+ *     project: _function.project,
+ *     location: _function.location,
+ *     cloudFunction: _function.name,
+ *     role: "roles/cloudfunctions.invoker",
+ *     member: pulumi.interpolate`serviceAccount:${account.email}`,
+ * });
+ * const cloudRunInvoker = new gcp.cloudrun.IamMember("cloud_run_invoker", {
+ *     project: _function.project,
+ *     location: _function.location,
+ *     service: _function.name,
+ *     role: "roles/run.invoker",
+ *     member: pulumi.interpolate`serviceAccount:${account.email}`,
+ * });
+ * const invokeCloudFunction = new gcp.cloudscheduler.Job("invoke_cloud_function", {
+ *     name: "invoke-gcf-function",
+ *     description: "Schedule the HTTPS trigger for cloud function",
+ *     schedule: "0 0 * * *",
+ *     project: _function.project,
+ *     region: _function.location,
+ *     httpTarget: {
+ *         uri: _function.serviceConfig.apply(serviceConfig => serviceConfig?.uri),
+ *         httpMethod: "POST",
+ *         oidcToken: {
+ *             audience: _function.serviceConfig.apply(serviceConfig => `${serviceConfig?.uri}/`),
+ *             serviceAccountEmail: account.email,
+ *         },
+ *     },
+ * });
+ * ```
  * ### Cloudfunctions2 Basic Gcs
  *
  * ```typescript
@@ -21,15 +193,17 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const source_bucket = new gcp.storage.Bucket("source-bucket", {
+ *     name: "gcf-source-bucket",
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  * });
  * const object = new gcp.storage.BucketObject("object", {
+ *     name: "function-source.zip",
  *     bucket: source_bucket.name,
  *     source: new pulumi.asset.FileAsset("function-source.zip"),
  * });
- * // Add path to the zipped function source code
  * const trigger_bucket = new gcp.storage.Bucket("trigger-bucket", {
+ *     name: "gcf-trigger-bucket",
  *     location: "us-central1",
  *     uniformBucketLevelAccess: true,
  * });
@@ -50,24 +224,19 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  *     role: "roles/run.invoker",
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,
- * }, {
- *     dependsOn: [gcs_pubsub_publishing],
  * });
  * const event_receiving = new gcp.projects.IAMMember("event-receiving", {
  *     project: "my-project-name",
  *     role: "roles/eventarc.eventReceiver",
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,
- * }, {
- *     dependsOn: [invoking],
  * });
  * const artifactregistry_reader = new gcp.projects.IAMMember("artifactregistry-reader", {
  *     project: "my-project-name",
  *     role: "roles/artifactregistry.reader",
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,
- * }, {
- *     dependsOn: [event_receiving],
  * });
  * const _function = new gcp.cloudfunctionsv2.Function("function", {
+ *     name: "gcf-function",
  *     location: "us-central1",
  *     description: "a new function",
  *     buildConfig: {
@@ -105,11 +274,6 @@ import * as utilities from "../utilities";
  *             value: trigger_bucket.name,
  *         }],
  *     },
- * }, {
- *     dependsOn: [
- *         event_receiving,
- *         artifactregistry_reader,
- *     ],
  * });
  * ```
  * ### Cloudfunctions2 Basic Auditlogs
@@ -123,14 +287,15 @@ import * as utilities from "../utilities";
  * // and the docs:
  * // https://cloud.google.com/eventarc/docs/path-patterns
  * const source_bucket = new gcp.storage.Bucket("source-bucket", {
+ *     name: "gcf-source-bucket",
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  * });
  * const object = new gcp.storage.BucketObject("object", {
+ *     name: "function-source.zip",
  *     bucket: source_bucket.name,
  *     source: new pulumi.asset.FileAsset("function-source.zip"),
  * });
- * // Add path to the zipped function source code
  * const account = new gcp.serviceaccount.Account("account", {
  *     accountId: "gcf-sa",
  *     displayName: "Test Service Account - used for both the cloud function and eventarc trigger in the test",
@@ -139,6 +304,7 @@ import * as utilities from "../utilities";
  * // Here we use Audit Logs to monitor the bucket so path patterns can be used in the example of
  * // google_cloudfunctions2_function below (Audit Log events have path pattern support)
  * const audit_log_bucket = new gcp.storage.Bucket("audit-log-bucket", {
+ *     name: "gcf-auditlog-bucket",
  *     location: "us-central1",
  *     uniformBucketLevelAccess: true,
  * });
@@ -152,17 +318,14 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  *     role: "roles/eventarc.eventReceiver",
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,
- * }, {
- *     dependsOn: [invoking],
  * });
  * const artifactregistry_reader = new gcp.projects.IAMMember("artifactregistry-reader", {
  *     project: "my-project-name",
  *     role: "roles/artifactregistry.reader",
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,
- * }, {
- *     dependsOn: [event_receiving],
  * });
  * const _function = new gcp.cloudfunctionsv2.Function("function", {
+ *     name: "gcf-function",
  *     location: "us-central1",
  *     description: "a new function",
  *     buildConfig: {
@@ -211,11 +374,244 @@ import * as utilities from "../utilities";
  *             },
  *         ],
  *     },
- * }, {
- *     dependsOn: [
- *         event_receiving,
- *         artifactregistry_reader,
+ * });
+ * ```
+ * ### Cloudfunctions2 Secret Env
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = "my-project-name";
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: `${project}-gcf-source`,
+ *     location: "US",
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const object = new gcp.storage.BucketObject("object", {
+ *     name: "function-source.zip",
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("function-source.zip"),
+ * });
+ * const secret = new gcp.secretmanager.Secret("secret", {
+ *     secretId: "secret",
+ *     replication: {
+ *         userManaged: {
+ *             replicas: [{
+ *                 location: "us-central1",
+ *             }],
+ *         },
+ *     },
+ * });
+ * const _function = new gcp.cloudfunctionsv2.Function("function", {
+ *     name: "function-secret",
+ *     location: "us-central1",
+ *     description: "a new function",
+ *     buildConfig: {
+ *         runtime: "nodejs16",
+ *         entryPoint: "helloHttp",
+ *         source: {
+ *             storageSource: {
+ *                 bucket: bucket.name,
+ *                 object: object.name,
+ *             },
+ *         },
+ *     },
+ *     serviceConfig: {
+ *         maxInstanceCount: 1,
+ *         availableMemory: "256M",
+ *         timeoutSeconds: 60,
+ *         secretEnvironmentVariables: [{
+ *             key: "TEST",
+ *             projectId: project,
+ *             secret: secret.secretId,
+ *             version: "latest",
+ *         }],
+ *     },
+ * });
+ * const secretSecretVersion = new gcp.secretmanager.SecretVersion("secret", {
+ *     secret: secret.name,
+ *     secretData: "secret",
+ *     enabled: true,
+ * });
+ * ```
+ * ### Cloudfunctions2 Secret Volume
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = "my-project-name";
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: `${project}-gcf-source`,
+ *     location: "US",
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const object = new gcp.storage.BucketObject("object", {
+ *     name: "function-source.zip",
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("function-source.zip"),
+ * });
+ * const secret = new gcp.secretmanager.Secret("secret", {
+ *     secretId: "secret",
+ *     replication: {
+ *         userManaged: {
+ *             replicas: [{
+ *                 location: "us-central1",
+ *             }],
+ *         },
+ *     },
+ * });
+ * const _function = new gcp.cloudfunctionsv2.Function("function", {
+ *     name: "function-secret",
+ *     location: "us-central1",
+ *     description: "a new function",
+ *     buildConfig: {
+ *         runtime: "nodejs16",
+ *         entryPoint: "helloHttp",
+ *         source: {
+ *             storageSource: {
+ *                 bucket: bucket.name,
+ *                 object: object.name,
+ *             },
+ *         },
+ *     },
+ *     serviceConfig: {
+ *         maxInstanceCount: 1,
+ *         availableMemory: "256M",
+ *         timeoutSeconds: 60,
+ *         secretVolumes: [{
+ *             mountPath: "/etc/secrets",
+ *             projectId: project,
+ *             secret: secret.secretId,
+ *         }],
+ *     },
+ * });
+ * const secretSecretVersion = new gcp.secretmanager.SecretVersion("secret", {
+ *     secret: secret.name,
+ *     secretData: "secret",
+ *     enabled: true,
+ * });
+ * ```
+ * ### Cloudfunctions2 Private Workerpool
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = "my-project-name";
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: `${project}-gcf-source`,
+ *     location: "US",
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const object = new gcp.storage.BucketObject("object", {
+ *     name: "function-source.zip",
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("function-source.zip"),
+ * });
+ * const pool = new gcp.cloudbuild.WorkerPool("pool", {
+ *     name: "workerpool",
+ *     location: "us-central1",
+ *     workerConfig: {
+ *         diskSizeGb: 100,
+ *         machineType: "e2-standard-8",
+ *         noExternalIp: false,
+ *     },
+ * });
+ * const _function = new gcp.cloudfunctionsv2.Function("function", {
+ *     name: "function-workerpool",
+ *     location: "us-central1",
+ *     description: "a new function",
+ *     buildConfig: {
+ *         runtime: "nodejs16",
+ *         entryPoint: "helloHttp",
+ *         source: {
+ *             storageSource: {
+ *                 bucket: bucket.name,
+ *                 object: object.name,
+ *             },
+ *         },
+ *         workerPool: pool.id,
+ *     },
+ *     serviceConfig: {
+ *         maxInstanceCount: 1,
+ *         availableMemory: "256M",
+ *         timeoutSeconds: 60,
+ *     },
+ * });
+ * ```
+ * ### Cloudfunctions2 Cmek Docs
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = "my-project-name";
+ * const projectGetProject = gcp.organizations.getProject({});
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: `${project}-gcf-source`,
+ *     location: "US",
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const object = new gcp.storage.BucketObject("object", {
+ *     name: "function-source.zip",
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("function-source.zip"),
+ * });
+ * const eaSa = new gcp.projects.ServiceIdentity("ea_sa", {
+ *     project: projectGetProject.then(projectGetProject => projectGetProject.projectId),
+ *     service: "eventarc.googleapis.com",
+ * });
+ * const unencoded_ar_repo = new gcp.artifactregistry.Repository("unencoded-ar-repo", {
+ *     repositoryId: "ar-repo",
+ *     location: "us-central1",
+ *     format: "DOCKER",
+ * });
+ * const encoded_ar_repo = new gcp.artifactregistry.Repository("encoded-ar-repo", {
+ *     location: "us-central1",
+ *     repositoryId: "cmek-repo",
+ *     format: "DOCKER",
+ *     kmsKeyName: "cmek-key",
+ * });
+ * const binding = new gcp.artifactregistry.RepositoryIamBinding("binding", {
+ *     location: encoded_ar_repo.location,
+ *     repository: encoded_ar_repo.name,
+ *     role: "roles/artifactregistry.admin",
+ *     members: [projectGetProject.then(projectGetProject => `serviceAccount:service-${projectGetProject.number}@gcf-admin-robot.iam.gserviceaccount.com`)],
+ * });
+ * const gcfCmekKeyuser = new gcp.kms.CryptoKeyIAMBinding("gcf_cmek_keyuser", {
+ *     cryptoKeyId: "cmek-key",
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     members: [
+ *         projectGetProject.then(projectGetProject => `serviceAccount:service-${projectGetProject.number}@gcf-admin-robot.iam.gserviceaccount.com`),
+ *         projectGetProject.then(projectGetProject => `serviceAccount:service-${projectGetProject.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com`),
+ *         projectGetProject.then(projectGetProject => `serviceAccount:service-${projectGetProject.number}@gs-project-accounts.iam.gserviceaccount.com`),
+ *         projectGetProject.then(projectGetProject => `serviceAccount:service-${projectGetProject.number}@serverless-robot-prod.iam.gserviceaccount.com`),
+ *         pulumi.interpolate`serviceAccount:${eaSa.email}`,
  *     ],
+ * });
+ * const _function = new gcp.cloudfunctionsv2.Function("function", {
+ *     name: "function-cmek",
+ *     location: "us-central1",
+ *     description: "CMEK function",
+ *     kmsKeyName: "cmek-key",
+ *     buildConfig: {
+ *         runtime: "nodejs16",
+ *         entryPoint: "helloHttp",
+ *         dockerRepository: encoded_ar_repo.id,
+ *         source: {
+ *             storageSource: {
+ *                 bucket: bucket.name,
+ *                 object: object.name,
+ *             },
+ *         },
+ *     },
+ *     serviceConfig: {
+ *         maxInstanceCount: 1,
+ *         availableMemory: "256M",
+ *         timeoutSeconds: 60,
+ *     },
  * });
  * ```
  *

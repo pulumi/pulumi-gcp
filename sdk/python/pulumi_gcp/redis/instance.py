@@ -1210,14 +1210,33 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
 
         ## Example Usage
+        ### Redis Instance Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cache = gcp.redis.Instance("cache",
+            name="memory-cache",
+            memory_size_gb=1)
+        ```
         ### Redis Instance Full
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
+        # This example assumes this network already exists.
+        # The API creates a tenant network per network authorized for a
+        # Redis instance and that network is not deleted when the user-created
+        # network (authorized_network) is deleted, so this prevents issues
+        # with tenant network quota.
+        # If this network hasn't been created and you are using this example in your
+        # config, add an additional network resource or change
+        # this from "data"to "resource"
         redis_network = gcp.compute.get_network(name="redis-test-network")
         cache = gcp.redis.Instance("cache",
+            name="ha-memory-cache",
             tier="STANDARD_HA",
             memory_size_gb=1,
             location_id="us-central1-a",
@@ -1242,6 +1261,23 @@ class Instance(pulumi.CustomResource):
                 )],
             ))
         ```
+        ### Redis Instance Full With Persistence Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cache_persis = gcp.redis.Instance("cache-persis",
+            name="ha-memory-cache-persis",
+            tier="STANDARD_HA",
+            memory_size_gb=1,
+            location_id="us-central1-a",
+            alternative_location_id="us-central1-f",
+            persistence_config=gcp.redis.InstancePersistenceConfigArgs(
+                persistence_mode="RDB",
+                rdb_snapshot_period="TWELVE_HOURS",
+            ))
+        ```
         ### Redis Instance Private Service
 
         ```python
@@ -1256,17 +1292,19 @@ class Instance(pulumi.CustomResource):
         # If this network hasn't been created and you are using this example in your
         # config, add an additional network resource or change
         # this from "data"to "resource"
-        redis_network = gcp.compute.Network("redis-network")
-        service_range = gcp.compute.GlobalAddress("serviceRange",
+        redis_network = gcp.compute.Network("redis-network", name="redis-test-network")
+        service_range = gcp.compute.GlobalAddress("service_range",
+            name="address",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=16,
             network=redis_network.id)
-        private_service_connection = gcp.servicenetworking.Connection("privateServiceConnection",
+        private_service_connection = gcp.servicenetworking.Connection("private_service_connection",
             network=redis_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[service_range.name])
         cache = gcp.redis.Instance("cache",
+            name="private-cache",
             tier="STANDARD_HA",
             memory_size_gb=1,
             location_id="us-central1-a",
@@ -1274,8 +1312,7 @@ class Instance(pulumi.CustomResource):
             authorized_network=redis_network.id,
             connect_mode="PRIVATE_SERVICE_ACCESS",
             redis_version="REDIS_4_0",
-            display_name="Test Instance",
-            opts=pulumi.ResourceOptions(depends_on=[private_service_connection]))
+            display_name="Test Instance")
         ```
         ### Redis Instance Mrr
 
@@ -1283,8 +1320,17 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        # This example assumes this network already exists.
+        # The API creates a tenant network per network authorized for a
+        # Redis instance and that network is not deleted when the user-created
+        # network (authorized_network) is deleted, so this prevents issues
+        # with tenant network quota.
+        # If this network hasn't been created and you are using this example in your
+        # config, add an additional network resource or change
+        # this from "data"to "resource"
         redis_network = gcp.compute.get_network(name="redis-test-network")
         cache = gcp.redis.Instance("cache",
+            name="mrr-memory-cache",
             tier="STANDARD_HA",
             memory_size_gb=5,
             location_id="us-central1-a",
@@ -1306,10 +1352,23 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        redis_keyring = gcp.kms.KeyRing("redisKeyring", location="us-central1")
-        redis_key = gcp.kms.CryptoKey("redisKey", key_ring=redis_keyring.id)
+        redis_keyring = gcp.kms.KeyRing("redis_keyring",
+            name="redis-keyring",
+            location="us-central1")
+        redis_key = gcp.kms.CryptoKey("redis_key",
+            name="redis-key",
+            key_ring=redis_keyring.id)
+        # This example assumes this network already exists.
+        # The API creates a tenant network per network authorized for a
+        # Redis instance and that network is not deleted when the user-created
+        # network (authorized_network) is deleted, so this prevents issues
+        # with tenant network quota.
+        # If this network hasn't been created and you are using this example in your
+        # config, add an additional network resource or change
+        # this from "data"to "resource"
         redis_network = gcp.compute.get_network(name="redis-test-network")
         cache = gcp.redis.Instance("cache",
+            name="cmek-memory-cache",
             tier="STANDARD_HA",
             memory_size_gb=1,
             location_id="us-central1-a",
@@ -1445,14 +1504,33 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
 
         ## Example Usage
+        ### Redis Instance Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cache = gcp.redis.Instance("cache",
+            name="memory-cache",
+            memory_size_gb=1)
+        ```
         ### Redis Instance Full
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
+        # This example assumes this network already exists.
+        # The API creates a tenant network per network authorized for a
+        # Redis instance and that network is not deleted when the user-created
+        # network (authorized_network) is deleted, so this prevents issues
+        # with tenant network quota.
+        # If this network hasn't been created and you are using this example in your
+        # config, add an additional network resource or change
+        # this from "data"to "resource"
         redis_network = gcp.compute.get_network(name="redis-test-network")
         cache = gcp.redis.Instance("cache",
+            name="ha-memory-cache",
             tier="STANDARD_HA",
             memory_size_gb=1,
             location_id="us-central1-a",
@@ -1477,6 +1555,23 @@ class Instance(pulumi.CustomResource):
                 )],
             ))
         ```
+        ### Redis Instance Full With Persistence Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cache_persis = gcp.redis.Instance("cache-persis",
+            name="ha-memory-cache-persis",
+            tier="STANDARD_HA",
+            memory_size_gb=1,
+            location_id="us-central1-a",
+            alternative_location_id="us-central1-f",
+            persistence_config=gcp.redis.InstancePersistenceConfigArgs(
+                persistence_mode="RDB",
+                rdb_snapshot_period="TWELVE_HOURS",
+            ))
+        ```
         ### Redis Instance Private Service
 
         ```python
@@ -1491,17 +1586,19 @@ class Instance(pulumi.CustomResource):
         # If this network hasn't been created and you are using this example in your
         # config, add an additional network resource or change
         # this from "data"to "resource"
-        redis_network = gcp.compute.Network("redis-network")
-        service_range = gcp.compute.GlobalAddress("serviceRange",
+        redis_network = gcp.compute.Network("redis-network", name="redis-test-network")
+        service_range = gcp.compute.GlobalAddress("service_range",
+            name="address",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=16,
             network=redis_network.id)
-        private_service_connection = gcp.servicenetworking.Connection("privateServiceConnection",
+        private_service_connection = gcp.servicenetworking.Connection("private_service_connection",
             network=redis_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[service_range.name])
         cache = gcp.redis.Instance("cache",
+            name="private-cache",
             tier="STANDARD_HA",
             memory_size_gb=1,
             location_id="us-central1-a",
@@ -1509,8 +1606,7 @@ class Instance(pulumi.CustomResource):
             authorized_network=redis_network.id,
             connect_mode="PRIVATE_SERVICE_ACCESS",
             redis_version="REDIS_4_0",
-            display_name="Test Instance",
-            opts=pulumi.ResourceOptions(depends_on=[private_service_connection]))
+            display_name="Test Instance")
         ```
         ### Redis Instance Mrr
 
@@ -1518,8 +1614,17 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        # This example assumes this network already exists.
+        # The API creates a tenant network per network authorized for a
+        # Redis instance and that network is not deleted when the user-created
+        # network (authorized_network) is deleted, so this prevents issues
+        # with tenant network quota.
+        # If this network hasn't been created and you are using this example in your
+        # config, add an additional network resource or change
+        # this from "data"to "resource"
         redis_network = gcp.compute.get_network(name="redis-test-network")
         cache = gcp.redis.Instance("cache",
+            name="mrr-memory-cache",
             tier="STANDARD_HA",
             memory_size_gb=5,
             location_id="us-central1-a",
@@ -1541,10 +1646,23 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        redis_keyring = gcp.kms.KeyRing("redisKeyring", location="us-central1")
-        redis_key = gcp.kms.CryptoKey("redisKey", key_ring=redis_keyring.id)
+        redis_keyring = gcp.kms.KeyRing("redis_keyring",
+            name="redis-keyring",
+            location="us-central1")
+        redis_key = gcp.kms.CryptoKey("redis_key",
+            name="redis-key",
+            key_ring=redis_keyring.id)
+        # This example assumes this network already exists.
+        # The API creates a tenant network per network authorized for a
+        # Redis instance and that network is not deleted when the user-created
+        # network (authorized_network) is deleted, so this prevents issues
+        # with tenant network quota.
+        # If this network hasn't been created and you are using this example in your
+        # config, add an additional network resource or change
+        # this from "data"to "resource"
         redis_network = gcp.compute.get_network(name="redis-test-network")
         cache = gcp.redis.Instance("cache",
+            name="cmek-memory-cache",
             tier="STANDARD_HA",
             memory_size_gb=1,
             location_id="us-central1-a",

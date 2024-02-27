@@ -31,8 +31,8 @@ namespace Pulumi.Gcp.VMwareEngine
         /// {
         ///     var myPc = Gcp.VMwareEngine.GetPrivateCloud.Invoke(new()
         ///     {
-        ///         Location = "us-central1-a",
         ///         Name = "my-pc",
+        ///         Location = "us-central1-a",
         ///     });
         /// 
         /// });
@@ -63,8 +63,8 @@ namespace Pulumi.Gcp.VMwareEngine
         /// {
         ///     var myPc = Gcp.VMwareEngine.GetPrivateCloud.Invoke(new()
         ///     {
-        ///         Location = "us-central1-a",
         ///         Name = "my-pc",
+        ///         Location = "us-central1-a",
         ///     });
         /// 
         /// });

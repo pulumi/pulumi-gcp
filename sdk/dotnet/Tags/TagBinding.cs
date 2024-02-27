@@ -31,21 +31,23 @@ namespace Pulumi.Gcp.Tags
     /// {
     ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
+    ///         ProjectId = "project_id",
+    ///         Name = "project_id",
     ///         OrgId = "123456789",
     ///     });
     /// 
     ///     var key = new Gcp.Tags.TagKey("key", new()
     ///     {
-    ///         Description = "For keyname resources.",
     ///         Parent = "organizations/123456789",
     ///         ShortName = "keyname",
+    ///         Description = "For keyname resources.",
     ///     });
     /// 
     ///     var @value = new Gcp.Tags.TagValue("value", new()
     ///     {
-    ///         Description = "For valuename resources.",
     ///         Parent = key.Name.Apply(name =&gt; $"tagKeys/{name}"),
     ///         ShortName = "valuename",
+    ///         Description = "For valuename resources.",
     ///     });
     /// 
     ///     var binding = new Gcp.Tags.TagBinding("binding", new()

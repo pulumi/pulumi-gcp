@@ -35,7 +35,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tplInstanceTemplate, err := compute.NewInstanceTemplate(ctx, "tplInstanceTemplate", &compute.InstanceTemplateArgs{
+//			tpl, err := compute.NewInstanceTemplate(ctx, "tpl", &compute.InstanceTemplateArgs{
+//				Name:        pulumi.String("template"),
 //				MachineType: pulumi.String("e2-medium"),
 //				Disks: compute.InstanceTemplateDiskArray{
 //					&compute.InstanceTemplateDiskArgs{
@@ -58,9 +59,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewInstanceFromTemplate(ctx, "tplInstanceFromTemplate", &compute.InstanceFromTemplateArgs{
+//			_, err = compute.NewInstanceFromTemplate(ctx, "tpl", &compute.InstanceFromTemplateArgs{
+//				Name:                   pulumi.String("instance-from-template"),
 //				Zone:                   pulumi.String("us-central1-a"),
-//				SourceInstanceTemplate: tplInstanceTemplate.SelfLinkUnique,
+//				SourceInstanceTemplate: tpl.SelfLinkUnique,
 //				CanIpForward:           pulumi.Bool(false),
 //				Labels: pulumi.StringMap{
 //					"my_key": pulumi.String("my_value"),

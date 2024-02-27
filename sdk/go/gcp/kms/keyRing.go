@@ -40,6 +40,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := kms.NewKeyRing(ctx, "example-keyring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("keyring-example"),
 //				Location: pulumi.String("global"),
 //			})
 //			if err != nil {

@@ -33,6 +33,8 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     ///     var @default = new Gcp.EdgeContainer.Cluster("default", new()
     ///     {
+    ///         Name = "basic-cluster",
+    ///         Location = "us-central1",
     ///         Authorization = new Gcp.EdgeContainer.Inputs.ClusterAuthorizationArgs
     ///         {
     ///             AdminUsers = new Gcp.EdgeContainer.Inputs.ClusterAuthorizationAdminUsersArgs
@@ -40,16 +42,6 @@ namespace Pulumi.Gcp.EdgeContainer
     ///                 Username = "admin@hashicorptest.com",
     ///             },
     ///         },
-    ///         Fleet = new Gcp.EdgeContainer.Inputs.ClusterFleetArgs
-    ///         {
-    ///             Project = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}",
-    ///         },
-    ///         Labels = 
-    ///         {
-    ///             { "my_key", "my_val" },
-    ///             { "other_key", "other_val" },
-    ///         },
-    ///         Location = "us-central1",
     ///         Networking = new Gcp.EdgeContainer.Inputs.ClusterNetworkingArgs
     ///         {
     ///             ClusterIpv4CidrBlocks = new[]
@@ -60,6 +52,15 @@ namespace Pulumi.Gcp.EdgeContainer
     ///             {
     ///                 "10.1.0.0/16",
     ///             },
+    ///         },
+    ///         Fleet = new Gcp.EdgeContainer.Inputs.ClusterFleetArgs
+    ///         {
+    ///             Project = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}",
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "my_key", "my_val" },
+    ///             { "other_key", "other_val" },
     ///         },
     ///     });
     /// 
@@ -79,31 +80,13 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     ///     var @default = new Gcp.EdgeContainer.Cluster("default", new()
     ///     {
+    ///         Name = "cluster-with-maintenance",
+    ///         Location = "us-central1",
     ///         Authorization = new Gcp.EdgeContainer.Inputs.ClusterAuthorizationArgs
     ///         {
     ///             AdminUsers = new Gcp.EdgeContainer.Inputs.ClusterAuthorizationAdminUsersArgs
     ///             {
     ///                 Username = "admin@hashicorptest.com",
-    ///             },
-    ///         },
-    ///         Fleet = new Gcp.EdgeContainer.Inputs.ClusterFleetArgs
-    ///         {
-    ///             Project = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}",
-    ///         },
-    ///         Location = "us-central1",
-    ///         MaintenancePolicy = new Gcp.EdgeContainer.Inputs.ClusterMaintenancePolicyArgs
-    ///         {
-    ///             Window = new Gcp.EdgeContainer.Inputs.ClusterMaintenancePolicyWindowArgs
-    ///             {
-    ///                 RecurringWindow = new Gcp.EdgeContainer.Inputs.ClusterMaintenancePolicyWindowRecurringWindowArgs
-    ///                 {
-    ///                     Recurrence = "FREQ=WEEKLY;BYDAY=SA",
-    ///                     Window = new Gcp.EdgeContainer.Inputs.ClusterMaintenancePolicyWindowRecurringWindowWindowArgs
-    ///                     {
-    ///                         EndTime = "2023-01-01T17:00:00Z",
-    ///                         StartTime = "2023-01-01T08:00:00Z",
-    ///                     },
-    ///                 },
     ///             },
     ///         },
     ///         Networking = new Gcp.EdgeContainer.Inputs.ClusterNetworkingArgs
@@ -115,6 +98,25 @@ namespace Pulumi.Gcp.EdgeContainer
     ///             ServicesIpv4CidrBlocks = new[]
     ///             {
     ///                 "10.1.0.0/16",
+    ///             },
+    ///         },
+    ///         Fleet = new Gcp.EdgeContainer.Inputs.ClusterFleetArgs
+    ///         {
+    ///             Project = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}",
+    ///         },
+    ///         MaintenancePolicy = new Gcp.EdgeContainer.Inputs.ClusterMaintenancePolicyArgs
+    ///         {
+    ///             Window = new Gcp.EdgeContainer.Inputs.ClusterMaintenancePolicyWindowArgs
+    ///             {
+    ///                 RecurringWindow = new Gcp.EdgeContainer.Inputs.ClusterMaintenancePolicyWindowRecurringWindowArgs
+    ///                 {
+    ///                     Window = new Gcp.EdgeContainer.Inputs.ClusterMaintenancePolicyWindowRecurringWindowWindowArgs
+    ///                     {
+    ///                         StartTime = "2023-01-01T08:00:00Z",
+    ///                         EndTime = "2023-01-01T17:00:00Z",
+    ///                     },
+    ///                     Recurrence = "FREQ=WEEKLY;BYDAY=SA",
+    ///                 },
     ///             },
     ///         },
     ///     });
@@ -135,6 +137,8 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     ///     var @default = new Gcp.EdgeContainer.Cluster("default", new()
     ///     {
+    ///         Name = "local-control-plane-cluster",
+    ///         Location = "us-central1",
     ///         Authorization = new Gcp.EdgeContainer.Inputs.ClusterAuthorizationArgs
     ///         {
     ///             AdminUsers = new Gcp.EdgeContainer.Inputs.ClusterAuthorizationAdminUsersArgs
@@ -142,25 +146,6 @@ namespace Pulumi.Gcp.EdgeContainer
     ///                 Username = "admin@hashicorptest.com",
     ///             },
     ///         },
-    ///         ControlPlane = new Gcp.EdgeContainer.Inputs.ClusterControlPlaneArgs
-    ///         {
-    ///             Local = new Gcp.EdgeContainer.Inputs.ClusterControlPlaneLocalArgs
-    ///             {
-    ///                 MachineFilter = "machine-name",
-    ///                 NodeCount = 1,
-    ///                 NodeLocation = "us-central1-edge-example-edgesite",
-    ///                 SharedDeploymentPolicy = "ALLOWED",
-    ///             },
-    ///         },
-    ///         ExternalLoadBalancerIpv4AddressPools = new[]
-    ///         {
-    ///             "10.100.0.0-10.100.0.10",
-    ///         },
-    ///         Fleet = new Gcp.EdgeContainer.Inputs.ClusterFleetArgs
-    ///         {
-    ///             Project = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}",
-    ///         },
-    ///         Location = "us-central1",
     ///         Networking = new Gcp.EdgeContainer.Inputs.ClusterNetworkingArgs
     ///         {
     ///             ClusterIpv4CidrBlocks = new[]
@@ -170,6 +155,24 @@ namespace Pulumi.Gcp.EdgeContainer
     ///             ServicesIpv4CidrBlocks = new[]
     ///             {
     ///                 "10.1.0.0/16",
+    ///             },
+    ///         },
+    ///         Fleet = new Gcp.EdgeContainer.Inputs.ClusterFleetArgs
+    ///         {
+    ///             Project = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}",
+    ///         },
+    ///         ExternalLoadBalancerIpv4AddressPools = new[]
+    ///         {
+    ///             "10.100.0.0-10.100.0.10",
+    ///         },
+    ///         ControlPlane = new Gcp.EdgeContainer.Inputs.ClusterControlPlaneArgs
+    ///         {
+    ///             Local = new Gcp.EdgeContainer.Inputs.ClusterControlPlaneLocalArgs
+    ///             {
+    ///                 NodeLocation = "us-central1-edge-example-edgesite",
+    ///                 NodeCount = 1,
+    ///                 MachineFilter = "machine-name",
+    ///                 SharedDeploymentPolicy = "ALLOWED",
     ///             },
     ///         },
     ///     });

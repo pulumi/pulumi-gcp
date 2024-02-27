@@ -562,8 +562,8 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNw = VmwareengineFunctions.getNetwork(GetNetworkArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;us-central1-default&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }
@@ -603,8 +603,8 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNw = VmwareengineFunctions.getNetwork(GetNetworkArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;us-central1-default&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }
@@ -644,8 +644,8 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNw = VmwareengineFunctions.getNetwork(GetNetworkArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;us-central1-default&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }
@@ -685,8 +685,8 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNw = VmwareengineFunctions.getNetwork(GetNetworkArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;us-central1-default&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }
@@ -886,8 +886,8 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNetworkPolicy = VmwareengineFunctions.getNetworkPolicy(GetNetworkPolicyArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;my-network-policy&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }
@@ -927,8 +927,8 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNetworkPolicy = VmwareengineFunctions.getNetworkPolicy(GetNetworkPolicyArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;my-network-policy&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }
@@ -968,8 +968,8 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNetworkPolicy = VmwareengineFunctions.getNetworkPolicy(GetNetworkPolicyArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;my-network-policy&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }
@@ -1009,8 +1009,8 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNetworkPolicy = VmwareengineFunctions.getNetworkPolicy(GetNetworkPolicyArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;my-network-policy&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }
@@ -1210,8 +1210,8 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myPc = VmwareengineFunctions.getPrivateCloud(GetPrivateCloudArgs.builder()
-     *             .location(&#34;us-central1-a&#34;)
      *             .name(&#34;my-pc&#34;)
+     *             .location(&#34;us-central1-a&#34;)
      *             .build());
      * 
      *     }
@@ -1251,8 +1251,8 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myPc = VmwareengineFunctions.getPrivateCloud(GetPrivateCloudArgs.builder()
-     *             .location(&#34;us-central1-a&#34;)
      *             .name(&#34;my-pc&#34;)
+     *             .location(&#34;us-central1-a&#34;)
      *             .build());
      * 
      *     }
@@ -1292,8 +1292,8 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myPc = VmwareengineFunctions.getPrivateCloud(GetPrivateCloudArgs.builder()
-     *             .location(&#34;us-central1-a&#34;)
      *             .name(&#34;my-pc&#34;)
+     *             .location(&#34;us-central1-a&#34;)
      *             .build());
      * 
      *     }
@@ -1333,8 +1333,8 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myPc = VmwareengineFunctions.getPrivateCloud(GetPrivateCloudArgs.builder()
-     *             .location(&#34;us-central1-a&#34;)
      *             .name(&#34;my-pc&#34;)
+     *             .location(&#34;us-central1-a&#34;)
      *             .build());
      * 
      *     }

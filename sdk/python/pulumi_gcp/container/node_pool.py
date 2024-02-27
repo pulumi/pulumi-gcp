@@ -815,14 +815,47 @@ class NodePool(pulumi.CustomResource):
             account_id="service-account-id",
             display_name="Service Account")
         primary = gcp.container.Cluster("primary",
+            name="my-gke-cluster",
             location="us-central1",
             remove_default_node_pool=True,
             initial_node_count=1)
-        primary_preemptible_nodes = gcp.container.NodePool("primaryPreemptibleNodes",
+        primary_preemptible_nodes = gcp.container.NodePool("primary_preemptible_nodes",
+            name="my-node-pool",
             cluster=primary.id,
             node_count=1,
             node_config=gcp.container.NodePoolNodeConfigArgs(
                 preemptible=True,
+                machine_type="e2-medium",
+                service_account=default.email,
+                oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
+            ))
+        ```
+        ### 2 Node Pools, 1 Separately Managed + The Default Node Pool
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.serviceaccount.Account("default",
+            account_id="service-account-id",
+            display_name="Service Account")
+        primary = gcp.container.Cluster("primary",
+            name="marcellus-wallace",
+            location="us-central1-a",
+            initial_node_count=3,
+            node_locations=["us-central1-c"],
+            node_config=gcp.container.ClusterNodeConfigArgs(
+                service_account=default.email,
+                oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
+                guest_accelerators=[gcp.container.ClusterNodeConfigGuestAcceleratorArgs(
+                    type="nvidia-tesla-k80",
+                    count=1,
+                )],
+            ))
+        np = gcp.container.NodePool("np",
+            name="my-node-pool",
+            cluster=primary.id,
+            node_config=gcp.container.NodePoolNodeConfigArgs(
                 machine_type="e2-medium",
                 service_account=default.email,
                 oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
@@ -931,14 +964,47 @@ class NodePool(pulumi.CustomResource):
             account_id="service-account-id",
             display_name="Service Account")
         primary = gcp.container.Cluster("primary",
+            name="my-gke-cluster",
             location="us-central1",
             remove_default_node_pool=True,
             initial_node_count=1)
-        primary_preemptible_nodes = gcp.container.NodePool("primaryPreemptibleNodes",
+        primary_preemptible_nodes = gcp.container.NodePool("primary_preemptible_nodes",
+            name="my-node-pool",
             cluster=primary.id,
             node_count=1,
             node_config=gcp.container.NodePoolNodeConfigArgs(
                 preemptible=True,
+                machine_type="e2-medium",
+                service_account=default.email,
+                oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
+            ))
+        ```
+        ### 2 Node Pools, 1 Separately Managed + The Default Node Pool
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.serviceaccount.Account("default",
+            account_id="service-account-id",
+            display_name="Service Account")
+        primary = gcp.container.Cluster("primary",
+            name="marcellus-wallace",
+            location="us-central1-a",
+            initial_node_count=3,
+            node_locations=["us-central1-c"],
+            node_config=gcp.container.ClusterNodeConfigArgs(
+                service_account=default.email,
+                oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
+                guest_accelerators=[gcp.container.ClusterNodeConfigGuestAcceleratorArgs(
+                    type="nvidia-tesla-k80",
+                    count=1,
+                )],
+            ))
+        np = gcp.container.NodePool("np",
+            name="my-node-pool",
+            cluster=primary.id,
+            node_config=gcp.container.NodePoolNodeConfigArgs(
                 machine_type="e2-medium",
                 service_account=default.email,
                 oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],

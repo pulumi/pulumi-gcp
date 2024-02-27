@@ -39,7 +39,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foobarInstanceTemplate, err := compute.NewInstanceTemplate(ctx, "foobarInstanceTemplate", &compute.InstanceTemplateArgs{
+//			foobarInstanceTemplate, err := compute.NewInstanceTemplate(ctx, "foobar", &compute.InstanceTemplateArgs{
+//				Name:        pulumi.String("my-instance-template"),
 //				MachineType: pulumi.String("e2-standard-4"),
 //				Disks: compute.InstanceTemplateDiskArray{
 //					&compute.InstanceTemplateDiskArgs{
@@ -72,11 +73,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			foobarTargetPool, err := compute.NewTargetPool(ctx, "foobarTargetPool", nil)
+//			foobarTargetPool, err := compute.NewTargetPool(ctx, "foobar", &compute.TargetPoolArgs{
+//				Name: pulumi.String("my-target-pool"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			foobarRegionInstanceGroupManager, err := compute.NewRegionInstanceGroupManager(ctx, "foobarRegionInstanceGroupManager", &compute.RegionInstanceGroupManagerArgs{
+//			foobarRegionInstanceGroupManager, err := compute.NewRegionInstanceGroupManager(ctx, "foobar", &compute.RegionInstanceGroupManagerArgs{
+//				Name:   pulumi.String("my-region-igm"),
 //				Region: pulumi.String("us-central1"),
 //				Versions: compute.RegionInstanceGroupManagerVersionArray{
 //					&compute.RegionInstanceGroupManagerVersionArgs{
@@ -92,7 +96,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewRegionAutoscaler(ctx, "foobarRegionAutoscaler", &compute.RegionAutoscalerArgs{
+//			_, err = compute.NewRegionAutoscaler(ctx, "foobar", &compute.RegionAutoscalerArgs{
+//				Name:   pulumi.String("my-region-autoscaler"),
 //				Region: pulumi.String("us-central1"),
 //				Target: foobarRegionInstanceGroupManager.ID(),
 //				AutoscalingPolicy: &compute.RegionAutoscalerAutoscalingPolicyArgs{

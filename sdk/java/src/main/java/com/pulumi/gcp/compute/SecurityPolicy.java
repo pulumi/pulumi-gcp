@@ -52,28 +52,29 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var policy = new SecurityPolicy(&#34;policy&#34;, SecurityPolicyArgs.builder()        
+ *             .name(&#34;my-policy&#34;)
  *             .rules(            
  *                 SecurityPolicyRuleArgs.builder()
  *                     .action(&#34;deny(403)&#34;)
- *                     .description(&#34;Deny access to IPs in 9.9.9.0/24&#34;)
+ *                     .priority(&#34;1000&#34;)
  *                     .match(SecurityPolicyRuleMatchArgs.builder()
+ *                         .versionedExpr(&#34;SRC_IPS_V1&#34;)
  *                         .config(SecurityPolicyRuleMatchConfigArgs.builder()
  *                             .srcIpRanges(&#34;9.9.9.0/24&#34;)
  *                             .build())
- *                         .versionedExpr(&#34;SRC_IPS_V1&#34;)
  *                         .build())
- *                     .priority(&#34;1000&#34;)
+ *                     .description(&#34;Deny access to IPs in 9.9.9.0/24&#34;)
  *                     .build(),
  *                 SecurityPolicyRuleArgs.builder()
  *                     .action(&#34;allow&#34;)
- *                     .description(&#34;default rule&#34;)
+ *                     .priority(&#34;2147483647&#34;)
  *                     .match(SecurityPolicyRuleMatchArgs.builder()
+ *                         .versionedExpr(&#34;SRC_IPS_V1&#34;)
  *                         .config(SecurityPolicyRuleMatchConfigArgs.builder()
  *                             .srcIpRanges(&#34;*&#34;)
  *                             .build())
- *                         .versionedExpr(&#34;SRC_IPS_V1&#34;)
  *                         .build())
- *                     .priority(&#34;2147483647&#34;)
+ *                     .description(&#34;default rule&#34;)
  *                     .build())
  *             .build());
  * 
@@ -118,6 +119,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new SecurityPolicy(&#34;policy&#34;, SecurityPolicyArgs.builder()        
+ *             .name(&#34;my-policy&#34;)
  *             .description(&#34;basic security policy&#34;)
  *             .type(&#34;CLOUD_ARMOR&#34;)
  *             .recaptchaOptionsConfig(SecurityPolicyRecaptchaOptionsConfigArgs.builder()
@@ -140,8 +142,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleArgs;
  * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchArgs;
  * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchConfigArgs;
- * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleHeaderActionArgs;
  * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchExprArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleHeaderActionArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -156,20 +158,27 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var policy = new SecurityPolicy(&#34;policy&#34;, SecurityPolicyArgs.builder()        
+ *             .name(&#34;my-policy&#34;)
  *             .rules(            
  *                 SecurityPolicyRuleArgs.builder()
  *                     .action(&#34;allow&#34;)
- *                     .description(&#34;default rule&#34;)
+ *                     .priority(&#34;2147483647&#34;)
  *                     .match(SecurityPolicyRuleMatchArgs.builder()
+ *                         .versionedExpr(&#34;SRC_IPS_V1&#34;)
  *                         .config(SecurityPolicyRuleMatchConfigArgs.builder()
  *                             .srcIpRanges(&#34;*&#34;)
  *                             .build())
- *                         .versionedExpr(&#34;SRC_IPS_V1&#34;)
  *                         .build())
- *                     .priority(&#34;2147483647&#34;)
+ *                     .description(&#34;default rule&#34;)
  *                     .build(),
  *                 SecurityPolicyRuleArgs.builder()
  *                     .action(&#34;allow&#34;)
+ *                     .priority(&#34;1000&#34;)
+ *                     .match(SecurityPolicyRuleMatchArgs.builder()
+ *                         .expr(SecurityPolicyRuleMatchExprArgs.builder()
+ *                             .expression(&#34;request.path.matches(\&#34;/login.html\&#34;) &amp;&amp; token.recaptcha_session.score &lt; 0.2&#34;)
+ *                             .build())
+ *                         .build())
  *                     .headerAction(SecurityPolicyRuleHeaderActionArgs.builder()
  *                         .requestHeadersToAdds(                        
  *                             SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs.builder()
@@ -181,12 +190,6 @@ import javax.annotation.Nullable;
  *                                 .headerValue(&#34;test&#34;)
  *                                 .build())
  *                         .build())
- *                     .match(SecurityPolicyRuleMatchArgs.builder()
- *                         .expr(SecurityPolicyRuleMatchExprArgs.builder()
- *                             .expression(&#34;request.path.matches(\&#34;/login.html\&#34;) &amp;&amp; token.recaptcha_session.score &lt; 0.2&#34;)
- *                             .build())
- *                         .build())
- *                     .priority(&#34;1000&#34;)
  *                     .build())
  *             .build());
  * 
@@ -223,27 +226,28 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var policy = new SecurityPolicy(&#34;policy&#34;, SecurityPolicyArgs.builder()        
+ *             .name(&#34;%s&#34;)
  *             .description(&#34;throttle rule with enforce_on_key_configs&#34;)
  *             .rules(SecurityPolicyRuleArgs.builder()
  *                 .action(&#34;throttle&#34;)
- *                 .description(&#34;default rule&#34;)
+ *                 .priority(&#34;2147483647&#34;)
  *                 .match(SecurityPolicyRuleMatchArgs.builder()
+ *                     .versionedExpr(&#34;SRC_IPS_V1&#34;)
  *                     .config(SecurityPolicyRuleMatchConfigArgs.builder()
  *                         .srcIpRanges(&#34;*&#34;)
  *                         .build())
- *                     .versionedExpr(&#34;SRC_IPS_V1&#34;)
  *                     .build())
- *                 .priority(&#34;2147483647&#34;)
+ *                 .description(&#34;default rule&#34;)
  *                 .rateLimitOptions(SecurityPolicyRuleRateLimitOptionsArgs.builder()
  *                     .conformAction(&#34;allow&#34;)
+ *                     .exceedAction(&#34;redirect&#34;)
  *                     .enforceOnKey(&#34;&#34;)
  *                     .enforceOnKeyConfigs(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs.builder()
  *                         .enforceOnKeyType(&#34;IP&#34;)
  *                         .build())
- *                     .exceedAction(&#34;redirect&#34;)
  *                     .exceedRedirectOptions(SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs.builder()
- *                         .target(&#34;&lt;https://www.example.com&gt;&#34;)
  *                         .type(&#34;EXTERNAL_302&#34;)
+ *                         .target(&#34;&lt;https://www.example.com&gt;&#34;)
  *                         .build())
  *                     .rateLimitThreshold(SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs.builder()
  *                         .count(10)

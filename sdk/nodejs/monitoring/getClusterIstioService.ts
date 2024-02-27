@@ -28,11 +28,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * // Monitors the default ClusterIstio service
  * const default = gcp.monitoring.getClusterIstioService({
- *     clusterName: "west",
  *     location: "us-west2-a",
- *     serviceName: "istio-policy",
+ *     clusterName: "west",
  *     serviceNamespace: "istio-system",
+ *     serviceName: "istio-policy",
  * });
  * ```
  */
@@ -134,11 +135,12 @@ export interface GetClusterIstioServiceResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * // Monitors the default ClusterIstio service
  * const default = gcp.monitoring.getClusterIstioService({
- *     clusterName: "west",
  *     location: "us-west2-a",
- *     serviceName: "istio-policy",
+ *     clusterName: "west",
  *     serviceNamespace: "istio-system",
+ *     serviceName: "istio-policy",
  * });
  * ```
  */

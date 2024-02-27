@@ -29,6 +29,7 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var instance = new Gcp.BigTable.Instance("instance", new()
     ///     {
+    ///         Name = "bt-instance",
     ///         Clusters = new[]
     ///         {
     ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
@@ -78,6 +79,7 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var instance = new Gcp.BigTable.Instance("instance", new()
     ///     {
+    ///         Name = "bt-instance",
     ///         Clusters = new[]
     ///         {
     ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
@@ -117,6 +119,7 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var instance = new Gcp.BigTable.Instance("instance", new()
     ///     {
+    ///         Name = "bt-instance",
     ///         Clusters = new[]
     ///         {
     ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
@@ -171,6 +174,7 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var instance = new Gcp.BigTable.Instance("instance", new()
     ///     {
+    ///         Name = "bt-instance",
     ///         Clusters = new[]
     ///         {
     ///             new Gcp.BigTable.Inputs.InstanceClusterArgs

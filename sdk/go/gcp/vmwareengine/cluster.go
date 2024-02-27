@@ -34,6 +34,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vmwareengine.NewNetwork(ctx, "cluster-nw", &vmwareengine.NetworkArgs{
+//				Name:        pulumi.String("pc-nw"),
 //				Type:        pulumi.String("STANDARD"),
 //				Location:    pulumi.String("global"),
 //				Description: pulumi.String("PC network description."),
@@ -43,6 +44,7 @@ import (
 //			}
 //			_, err = vmwareengine.NewPrivateCloud(ctx, "cluster-pc", &vmwareengine.PrivateCloudArgs{
 //				Location:    pulumi.String("us-west1-a"),
+//				Name:        pulumi.String("sample-pc"),
 //				Description: pulumi.String("Sample test PC."),
 //				NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
 //					ManagementCidr:      pulumi.String("192.168.30.0/24"),
@@ -62,6 +64,7 @@ import (
 //				return err
 //			}
 //			_, err = vmwareengine.NewCluster(ctx, "vmw-engine-ext-cluster", &vmwareengine.ClusterArgs{
+//				Name:   pulumi.String("ext-cluster"),
 //				Parent: cluster_pc.ID(),
 //				NodeTypeConfigs: vmwareengine.ClusterNodeTypeConfigArray{
 //					&vmwareengine.ClusterNodeTypeConfigArgs{
@@ -93,6 +96,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vmwareengine.NewNetwork(ctx, "cluster-nw", &vmwareengine.NetworkArgs{
+//				Name:        pulumi.String("pc-nw"),
 //				Type:        pulumi.String("STANDARD"),
 //				Location:    pulumi.String("global"),
 //				Description: pulumi.String("PC network description."),
@@ -102,6 +106,7 @@ import (
 //			}
 //			_, err = vmwareengine.NewPrivateCloud(ctx, "cluster-pc", &vmwareengine.PrivateCloudArgs{
 //				Location:    pulumi.String("us-west1-a"),
+//				Name:        pulumi.String("sample-pc"),
 //				Description: pulumi.String("Sample test PC."),
 //				NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
 //					ManagementCidr:      pulumi.String("192.168.30.0/24"),
@@ -122,6 +127,7 @@ import (
 //				return err
 //			}
 //			_, err = vmwareengine.NewCluster(ctx, "vmw-ext-cluster", &vmwareengine.ClusterArgs{
+//				Name:   pulumi.String("ext-cluster"),
 //				Parent: cluster_pc.ID(),
 //				NodeTypeConfigs: vmwareengine.ClusterNodeTypeConfigArray{
 //					&vmwareengine.ClusterNodeTypeConfigArgs{

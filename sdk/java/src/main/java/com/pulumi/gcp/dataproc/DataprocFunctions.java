@@ -55,9 +55,9 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getAutoscalingPolicyIamPolicy(GetAutoscalingPolicyIamPolicyArgs.builder()
-     *             .project(google_dataproc_autoscaling_policy.basic().project())
-     *             .location(google_dataproc_autoscaling_policy.basic().location())
-     *             .policyId(google_dataproc_autoscaling_policy.basic().policy_id())
+     *             .project(basic.project())
+     *             .location(basic.location())
+     *             .policyId(basic.policyId())
      *             .build());
      * 
      *     }
@@ -94,9 +94,9 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getAutoscalingPolicyIamPolicy(GetAutoscalingPolicyIamPolicyArgs.builder()
-     *             .project(google_dataproc_autoscaling_policy.basic().project())
-     *             .location(google_dataproc_autoscaling_policy.basic().location())
-     *             .policyId(google_dataproc_autoscaling_policy.basic().policy_id())
+     *             .project(basic.project())
+     *             .location(basic.location())
+     *             .policyId(basic.policyId())
      *             .build());
      * 
      *     }
@@ -133,9 +133,9 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getAutoscalingPolicyIamPolicy(GetAutoscalingPolicyIamPolicyArgs.builder()
-     *             .project(google_dataproc_autoscaling_policy.basic().project())
-     *             .location(google_dataproc_autoscaling_policy.basic().location())
-     *             .policyId(google_dataproc_autoscaling_policy.basic().policy_id())
+     *             .project(basic.project())
+     *             .location(basic.location())
+     *             .policyId(basic.policyId())
      *             .build());
      * 
      *     }
@@ -172,9 +172,9 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getAutoscalingPolicyIamPolicy(GetAutoscalingPolicyIamPolicyArgs.builder()
-     *             .project(google_dataproc_autoscaling_policy.basic().project())
-     *             .location(google_dataproc_autoscaling_policy.basic().location())
-     *             .policyId(google_dataproc_autoscaling_policy.basic().policy_id())
+     *             .project(basic.project())
+     *             .location(basic.location())
+     *             .policyId(basic.policyId())
      *             .build());
      * 
      *     }
@@ -211,7 +211,7 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getClusterIamPolicy(GetClusterIamPolicyArgs.builder()
-     *             .cluster(google_dataproc_cluster.cluster().name())
+     *             .cluster(cluster.name())
      *             .region(&#34;us-central1&#34;)
      *             .build());
      * 
@@ -249,7 +249,7 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getClusterIamPolicy(GetClusterIamPolicyArgs.builder()
-     *             .cluster(google_dataproc_cluster.cluster().name())
+     *             .cluster(cluster.name())
      *             .region(&#34;us-central1&#34;)
      *             .build());
      * 
@@ -287,7 +287,7 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getClusterIamPolicy(GetClusterIamPolicyArgs.builder()
-     *             .cluster(google_dataproc_cluster.cluster().name())
+     *             .cluster(cluster.name())
      *             .region(&#34;us-central1&#34;)
      *             .build());
      * 
@@ -325,7 +325,7 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getClusterIamPolicy(GetClusterIamPolicyArgs.builder()
-     *             .cluster(google_dataproc_cluster.cluster().name())
+     *             .cluster(cluster.name())
      *             .region(&#34;us-central1&#34;)
      *             .build());
      * 
@@ -363,7 +363,7 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getJobIamPolicy(GetJobIamPolicyArgs.builder()
-     *             .jobId(google_dataproc_job.pyspark().reference()[0].job_id())
+     *             .jobId(pyspark.reference()[0].jobId())
      *             .region(&#34;us-central1&#34;)
      *             .build());
      * 
@@ -401,7 +401,7 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getJobIamPolicy(GetJobIamPolicyArgs.builder()
-     *             .jobId(google_dataproc_job.pyspark().reference()[0].job_id())
+     *             .jobId(pyspark.reference()[0].jobId())
      *             .region(&#34;us-central1&#34;)
      *             .build());
      * 
@@ -439,7 +439,7 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getJobIamPolicy(GetJobIamPolicyArgs.builder()
-     *             .jobId(google_dataproc_job.pyspark().reference()[0].job_id())
+     *             .jobId(pyspark.reference()[0].jobId())
      *             .region(&#34;us-central1&#34;)
      *             .build());
      * 
@@ -477,7 +477,7 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getJobIamPolicy(GetJobIamPolicyArgs.builder()
-     *             .jobId(google_dataproc_job.pyspark().reference()[0].job_id())
+     *             .jobId(pyspark.reference()[0].jobId())
      *             .region(&#34;us-central1&#34;)
      *             .build());
      * 
@@ -527,8 +527,8 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = DataprocFunctions.getMetastoreService(GetMetastoreServiceArgs.builder()
-     *             .location(&#34;global&#34;)
      *             .serviceId(&#34;foo-bar&#34;)
+     *             .location(&#34;global&#34;)
      *             .build());
      * 
      *     }
@@ -565,8 +565,8 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = DataprocFunctions.getMetastoreService(GetMetastoreServiceArgs.builder()
-     *             .location(&#34;global&#34;)
      *             .serviceId(&#34;foo-bar&#34;)
+     *             .location(&#34;global&#34;)
      *             .build());
      * 
      *     }
@@ -603,8 +603,8 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = DataprocFunctions.getMetastoreService(GetMetastoreServiceArgs.builder()
-     *             .location(&#34;global&#34;)
      *             .serviceId(&#34;foo-bar&#34;)
+     *             .location(&#34;global&#34;)
      *             .build());
      * 
      *     }
@@ -641,8 +641,8 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = DataprocFunctions.getMetastoreService(GetMetastoreServiceArgs.builder()
-     *             .location(&#34;global&#34;)
      *             .serviceId(&#34;foo-bar&#34;)
+     *             .location(&#34;global&#34;)
      *             .build());
      * 
      *     }
@@ -679,9 +679,9 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getMetastoreServiceIamPolicy(GetMetastoreServiceIamPolicyArgs.builder()
-     *             .project(google_dataproc_metastore_service.default().project())
-     *             .location(google_dataproc_metastore_service.default().location())
-     *             .serviceId(google_dataproc_metastore_service.default().service_id())
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .serviceId(default_.serviceId())
      *             .build());
      * 
      *     }
@@ -718,9 +718,9 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getMetastoreServiceIamPolicy(GetMetastoreServiceIamPolicyArgs.builder()
-     *             .project(google_dataproc_metastore_service.default().project())
-     *             .location(google_dataproc_metastore_service.default().location())
-     *             .serviceId(google_dataproc_metastore_service.default().service_id())
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .serviceId(default_.serviceId())
      *             .build());
      * 
      *     }
@@ -757,9 +757,9 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getMetastoreServiceIamPolicy(GetMetastoreServiceIamPolicyArgs.builder()
-     *             .project(google_dataproc_metastore_service.default().project())
-     *             .location(google_dataproc_metastore_service.default().location())
-     *             .serviceId(google_dataproc_metastore_service.default().service_id())
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .serviceId(default_.serviceId())
      *             .build());
      * 
      *     }
@@ -796,9 +796,9 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getMetastoreServiceIamPolicy(GetMetastoreServiceIamPolicyArgs.builder()
-     *             .project(google_dataproc_metastore_service.default().project())
-     *             .location(google_dataproc_metastore_service.default().location())
-     *             .serviceId(google_dataproc_metastore_service.default().service_id())
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .serviceId(default_.serviceId())
      *             .build());
      * 
      *     }

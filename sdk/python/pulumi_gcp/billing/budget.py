@@ -389,7 +389,7 @@ class Budget(pulumi.CustomResource):
 
         account = gcp.organizations.get_billing_account(billing_account="000000-0000000-0000000-000000")
         project = gcp.organizations.get_project()
-        notification_channel = gcp.monitoring.NotificationChannel("notificationChannel",
+        notification_channel = gcp.monitoring.NotificationChannel("notification_channel",
             display_name="Example Notification Channel",
             type="email",
             labels={
@@ -615,7 +615,7 @@ class Budget(pulumi.CustomResource):
 
         account = gcp.organizations.get_billing_account(billing_account="000000-0000000-0000000-000000")
         project = gcp.organizations.get_project()
-        notification_channel = gcp.monitoring.NotificationChannel("notificationChannel",
+        notification_channel = gcp.monitoring.NotificationChannel("notification_channel",
             display_name="Example Notification Channel",
             type="email",
             labels={

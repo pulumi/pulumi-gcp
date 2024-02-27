@@ -51,9 +51,9 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     ///     var policy = new Gcp.CloudFunctionsV2.FunctionIamPolicy("policy", new()
     ///     {
-    ///         Project = google_cloudfunctions2_function.Function.Project,
-    ///         Location = google_cloudfunctions2_function.Function.Location,
-    ///         CloudFunction = google_cloudfunctions2_function.Function.Name,
+    ///         Project = function.Project,
+    ///         Location = function.Location,
+    ///         CloudFunction = function.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -72,9 +72,9 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// {
     ///     var binding = new Gcp.CloudFunctionsV2.FunctionIamBinding("binding", new()
     ///     {
-    ///         Project = google_cloudfunctions2_function.Function.Project,
-    ///         Location = google_cloudfunctions2_function.Function.Location,
-    ///         CloudFunction = google_cloudfunctions2_function.Function.Name,
+    ///         Project = function.Project,
+    ///         Location = function.Location,
+    ///         CloudFunction = function.Name,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -97,9 +97,9 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// {
     ///     var member = new Gcp.CloudFunctionsV2.FunctionIamMember("member", new()
     ///     {
-    ///         Project = google_cloudfunctions2_function.Function.Project,
-    ///         Location = google_cloudfunctions2_function.Function.Location,
-    ///         CloudFunction = google_cloudfunctions2_function.Function.Name,
+    ///         Project = function.Project,
+    ///         Location = function.Location,
+    ///         CloudFunction = function.Name,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new TagKeyIamPolicy(&#34;policy&#34;, TagKeyIamPolicyArgs.builder()        
- *             .tagKey(google_tags_tag_key.key().name())
+ *             .tagKey(key.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new TagKeyIamBinding(&#34;binding&#34;, TagKeyIamBindingArgs.builder()        
- *             .tagKey(google_tags_tag_key.key().name())
+ *             .tagKey(key.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -126,7 +126,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new TagKeyIamMember(&#34;member&#34;, TagKeyIamMemberArgs.builder()        
- *             .tagKey(google_tags_tag_key.key().name())
+ *             .tagKey(key.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

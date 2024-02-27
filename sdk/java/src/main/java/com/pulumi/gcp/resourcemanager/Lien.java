@@ -26,6 +26,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
  * import com.pulumi.gcp.resourcemanager.Lien;
  * import com.pulumi.gcp.resourcemanager.LienArgs;
  * import java.util.List;
@@ -41,13 +42,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new Project(&#34;project&#34;);
+ *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;staging-project&#34;)
+ *             .name(&#34;A very important project!&#34;)
+ *             .build());
  * 
  *         var lien = new Lien(&#34;lien&#34;, LienArgs.builder()        
- *             .origin(&#34;machine-readable-explanation&#34;)
  *             .parent(project.number().applyValue(number -&gt; String.format(&#34;projects/%s&#34;, number)))
- *             .reason(&#34;This project is an important environment&#34;)
  *             .restrictions(&#34;resourcemanager.projects.delete&#34;)
+ *             .origin(&#34;machine-readable-explanation&#34;)
+ *             .reason(&#34;This project is an important environment&#34;)
  *             .build());
  * 
  *     }

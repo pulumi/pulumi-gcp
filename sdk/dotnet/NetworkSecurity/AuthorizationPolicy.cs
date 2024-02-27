@@ -23,6 +23,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// {
     ///     var @default = new Gcp.NetworkSecurity.AuthorizationPolicy("default", new()
     ///     {
+    ///         Name = "my-authorization-policy",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -49,9 +50,6 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -68,6 +66,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// {
     ///     var @default = new Gcp.NetworkSecurity.AuthorizationPolicy("default", new()
     ///     {
+    ///         Name = "my-authorization-policy",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -117,9 +116,6 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

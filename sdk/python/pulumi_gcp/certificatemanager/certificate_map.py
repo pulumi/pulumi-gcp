@@ -303,6 +303,7 @@ class CertificateMap(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.certificatemanager.CertificateMap("default",
+            name="cert-map",
             description="My acceptance test certificate map",
             labels={
                 "terraform": "true",
@@ -367,6 +368,7 @@ class CertificateMap(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.certificatemanager.CertificateMap("default",
+            name="cert-map",
             description="My acceptance test certificate map",
             labels={
                 "terraform": "true",

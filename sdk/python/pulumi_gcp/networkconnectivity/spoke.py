@@ -480,13 +480,17 @@ class Spoke(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network = gcp.compute.Network("network", auto_create_subnetworks=False)
-        basic_hub = gcp.networkconnectivity.Hub("basicHub",
+        network = gcp.compute.Network("network",
+            name="network",
+            auto_create_subnetworks=False)
+        basic_hub = gcp.networkconnectivity.Hub("basic_hub",
+            name="hub",
             description="A sample hub",
             labels={
                 "label-two": "value-one",
             })
         primary = gcp.networkconnectivity.Spoke("primary",
+            name="name",
             location="global",
             description="A sample spoke with a linked routher appliance instance",
             labels={
@@ -506,12 +510,16 @@ class Spoke(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network = gcp.compute.Network("network", auto_create_subnetworks=False)
+        network = gcp.compute.Network("network",
+            name="network",
+            auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
+            name="subnet",
             ip_cidr_range="10.0.0.0/28",
             region="us-west1",
             network=network.self_link)
         instance = gcp.compute.Instance("instance",
+            name="instance",
             machine_type="e2-medium",
             can_ip_forward=True,
             zone="us-west1-a",
@@ -527,12 +535,14 @@ class Spoke(pulumi.CustomResource):
                     network_tier="PREMIUM",
                 )],
             )])
-        basic_hub = gcp.networkconnectivity.Hub("basicHub",
+        basic_hub = gcp.networkconnectivity.Hub("basic_hub",
+            name="hub",
             description="A sample hub",
             labels={
                 "label-two": "value-one",
             })
         primary = gcp.networkconnectivity.Spoke("primary",
+            name="name",
             location="us-west1",
             description="A sample spoke with a linked routher appliance instance",
             labels={
@@ -603,13 +613,17 @@ class Spoke(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network = gcp.compute.Network("network", auto_create_subnetworks=False)
-        basic_hub = gcp.networkconnectivity.Hub("basicHub",
+        network = gcp.compute.Network("network",
+            name="network",
+            auto_create_subnetworks=False)
+        basic_hub = gcp.networkconnectivity.Hub("basic_hub",
+            name="hub",
             description="A sample hub",
             labels={
                 "label-two": "value-one",
             })
         primary = gcp.networkconnectivity.Spoke("primary",
+            name="name",
             location="global",
             description="A sample spoke with a linked routher appliance instance",
             labels={
@@ -629,12 +643,16 @@ class Spoke(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network = gcp.compute.Network("network", auto_create_subnetworks=False)
+        network = gcp.compute.Network("network",
+            name="network",
+            auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
+            name="subnet",
             ip_cidr_range="10.0.0.0/28",
             region="us-west1",
             network=network.self_link)
         instance = gcp.compute.Instance("instance",
+            name="instance",
             machine_type="e2-medium",
             can_ip_forward=True,
             zone="us-west1-a",
@@ -650,12 +668,14 @@ class Spoke(pulumi.CustomResource):
                     network_tier="PREMIUM",
                 )],
             )])
-        basic_hub = gcp.networkconnectivity.Hub("basicHub",
+        basic_hub = gcp.networkconnectivity.Hub("basic_hub",
+            name="hub",
             description="A sample hub",
             labels={
                 "label-two": "value-one",
             })
         primary = gcp.networkconnectivity.Spoke("primary",
+            name="name",
             location="us-west1",
             description="A sample spoke with a linked routher appliance instance",
             labels={

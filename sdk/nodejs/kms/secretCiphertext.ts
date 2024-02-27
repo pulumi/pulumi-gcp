@@ -25,16 +25,25 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const keyring = new gcp.kms.KeyRing("keyring", {location: "global"});
+ * const keyring = new gcp.kms.KeyRing("keyring", {
+ *     name: "keyring-example",
+ *     location: "global",
+ * });
  * const cryptokey = new gcp.kms.CryptoKey("cryptokey", {
+ *     name: "crypto-key-example",
  *     keyRing: keyring.id,
  *     rotationPeriod: "7776000s",
  * });
- * const myPassword = new gcp.kms.SecretCiphertext("myPassword", {
+ * const myPassword = new gcp.kms.SecretCiphertext("my_password", {
  *     cryptoKey: cryptokey.id,
  *     plaintext: "my-secret-password",
  * });
  * const instance = new gcp.compute.Instance("instance", {
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         network: "default",
+ *     }],
+ *     name: "my-instance",
  *     machineType: "e2-medium",
  *     zone: "us-central1-a",
  *     bootDisk: {
@@ -42,10 +51,6 @@ import * as utilities from "../utilities";
  *             image: "debian-cloud/debian-11",
  *         },
  *     },
- *     networkInterfaces: [{
- *         network: "default",
- *         accessConfigs: [{}],
- *     }],
  *     metadata: {
  *         password: myPassword.ciphertext,
  *     },

@@ -29,14 +29,14 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var basicProfile = new Gcp.DataPlex.Datascan("basicProfile", new()
+    ///     var basicProfile = new Gcp.DataPlex.Datascan("basic_profile", new()
     ///     {
+    ///         Location = "us-central1",
+    ///         DataScanId = "dataprofile-basic",
     ///         Data = new Gcp.DataPlex.Inputs.DatascanDataArgs
     ///         {
     ///             Resource = "//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
     ///         },
-    ///         DataProfileSpec = null,
-    ///         DataScanId = "dataprofile-basic",
     ///         ExecutionSpec = new Gcp.DataPlex.Inputs.DatascanExecutionSpecArgs
     ///         {
     ///             Trigger = new Gcp.DataPlex.Inputs.DatascanExecutionSpecTriggerArgs
@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.DataPlex
     ///                 OnDemand = null,
     ///             },
     ///         },
-    ///         Location = "us-central1",
+    ///         DataProfileSpec = null,
     ///         Project = "my-project-name",
     ///     });
     /// 
@@ -60,16 +60,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var source = new Gcp.BigQuery.Dataset("source", new()
-    ///     {
-    ///         DatasetId = "dataplex_dataset",
-    ///         FriendlyName = "test",
-    ///         Description = "This is a test description",
-    ///         Location = "US",
-    ///         DeleteContentsOnDestroy = true,
-    ///     });
-    /// 
-    ///     var fullProfile = new Gcp.DataPlex.Datascan("fullProfile", new()
+    ///     var fullProfile = new Gcp.DataPlex.Datascan("full_profile", new()
     ///     {
     ///         Location = "us-central1",
     ///         DisplayName = "Full Datascan Profile",
@@ -120,12 +111,15 @@ namespace Pulumi.Gcp.DataPlex
     ///             },
     ///         },
     ///         Project = "my-project-name",
-    ///     }, new CustomResourceOptions
+    ///     });
+    /// 
+    ///     var source = new Gcp.BigQuery.Dataset("source", new()
     ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             source,
-    ///         },
+    ///         DatasetId = "dataplex_dataset",
+    ///         FriendlyName = "test",
+    ///         Description = "This is a test description",
+    ///         Location = "US",
+    ///         DeleteContentsOnDestroy = true,
     ///     });
     /// 
     /// });
@@ -140,29 +134,14 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var basicQuality = new Gcp.DataPlex.Datascan("basicQuality", new()
+    ///     var basicQuality = new Gcp.DataPlex.Datascan("basic_quality", new()
     ///     {
+    ///         Location = "us-central1",
+    ///         DataScanId = "dataquality-basic",
     ///         Data = new Gcp.DataPlex.Inputs.DatascanDataArgs
     ///         {
     ///             Resource = "//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
     ///         },
-    ///         DataQualitySpec = new Gcp.DataPlex.Inputs.DatascanDataQualitySpecArgs
-    ///         {
-    ///             Rules = new[]
-    ///             {
-    ///                 new Gcp.DataPlex.Inputs.DatascanDataQualitySpecRuleArgs
-    ///                 {
-    ///                     Description = "rule 1 for validity dimension",
-    ///                     Dimension = "VALIDITY",
-    ///                     Name = "rule1",
-    ///                     TableConditionExpectation = new Gcp.DataPlex.Inputs.DatascanDataQualitySpecRuleTableConditionExpectationArgs
-    ///                     {
-    ///                         SqlExpression = "COUNT(*) &gt; 0",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///         DataScanId = "dataquality-basic",
     ///         ExecutionSpec = new Gcp.DataPlex.Inputs.DatascanExecutionSpecArgs
     ///         {
     ///             Trigger = new Gcp.DataPlex.Inputs.DatascanExecutionSpecTriggerArgs
@@ -170,7 +149,22 @@ namespace Pulumi.Gcp.DataPlex
     ///                 OnDemand = null,
     ///             },
     ///         },
-    ///         Location = "us-central1",
+    ///         DataQualitySpec = new Gcp.DataPlex.Inputs.DatascanDataQualitySpecArgs
+    ///         {
+    ///             Rules = new[]
+    ///             {
+    ///                 new Gcp.DataPlex.Inputs.DatascanDataQualitySpecRuleArgs
+    ///                 {
+    ///                     Dimension = "VALIDITY",
+    ///                     Name = "rule1",
+    ///                     Description = "rule 1 for validity dimension",
+    ///                     TableConditionExpectation = new Gcp.DataPlex.Inputs.DatascanDataQualitySpecRuleTableConditionExpectationArgs
+    ///                     {
+    ///                         SqlExpression = "COUNT(*) &gt; 0",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
     ///         Project = "my-project-name",
     ///     });
     /// 
@@ -186,14 +180,34 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fullQuality = new Gcp.DataPlex.Datascan("fullQuality", new()
+    ///     var fullQuality = new Gcp.DataPlex.Datascan("full_quality", new()
     ///     {
+    ///         Location = "us-central1",
+    ///         DisplayName = "Full Datascan Quality",
+    ///         DataScanId = "dataquality-full",
+    ///         Description = "Example resource - Full Datascan Quality",
+    ///         Labels = 
+    ///         {
+    ///             { "author", "billing" },
+    ///         },
     ///         Data = new Gcp.DataPlex.Inputs.DatascanDataArgs
     ///         {
     ///             Resource = "//bigquery.googleapis.com/projects/bigquery-public-data/datasets/austin_bikeshare/tables/bikeshare_stations",
     ///         },
+    ///         ExecutionSpec = new Gcp.DataPlex.Inputs.DatascanExecutionSpecArgs
+    ///         {
+    ///             Trigger = new Gcp.DataPlex.Inputs.DatascanExecutionSpecTriggerArgs
+    ///             {
+    ///                 Schedule = new Gcp.DataPlex.Inputs.DatascanExecutionSpecTriggerScheduleArgs
+    ///                 {
+    ///                     Cron = "TZ=America/New_York 1 1 * * *",
+    ///                 },
+    ///             },
+    ///             Field = "modified_date",
+    ///         },
     ///         DataQualitySpec = new Gcp.DataPlex.Inputs.DatascanDataQualitySpecArgs
     ///         {
+    ///             SamplingPercent = 5,
     ///             RowFilter = "station_id &gt; 1000",
     ///             Rules = new[]
     ///             {
@@ -201,22 +215,22 @@ namespace Pulumi.Gcp.DataPlex
     ///                 {
     ///                     Column = "address",
     ///                     Dimension = "VALIDITY",
-    ///                     NonNullExpectation = null,
     ///                     Threshold = 0.99,
+    ///                     NonNullExpectation = null,
     ///                 },
     ///                 new Gcp.DataPlex.Inputs.DatascanDataQualitySpecRuleArgs
     ///                 {
     ///                     Column = "council_district",
     ///                     Dimension = "VALIDITY",
     ///                     IgnoreNull = true,
+    ///                     Threshold = 0.9,
     ///                     RangeExpectation = new Gcp.DataPlex.Inputs.DatascanDataQualitySpecRuleRangeExpectationArgs
     ///                     {
-    ///                         MaxValue = "10",
     ///                         MinValue = "1",
-    ///                         StrictMaxEnabled = false,
+    ///                         MaxValue = "10",
     ///                         StrictMinEnabled = true,
+    ///                         StrictMaxEnabled = false,
     ///                     },
-    ///                     Threshold = 0.9,
     ///                 },
     ///                 new Gcp.DataPlex.Inputs.DatascanDataQualitySpecRuleArgs
     ///                 {
@@ -254,11 +268,11 @@ namespace Pulumi.Gcp.DataPlex
     ///                     Dimension = "VALIDITY",
     ///                     StatisticRangeExpectation = new Gcp.DataPlex.Inputs.DatascanDataQualitySpecRuleStatisticRangeExpectationArgs
     ///                     {
-    ///                         MaxValue = "15",
-    ///                         MinValue = "5",
     ///                         Statistic = "MEAN",
-    ///                         StrictMaxEnabled = true,
+    ///                         MinValue = "5",
+    ///                         MaxValue = "15",
     ///                         StrictMinEnabled = true,
+    ///                         StrictMaxEnabled = true,
     ///                     },
     ///                 },
     ///                 new Gcp.DataPlex.Inputs.DatascanDataQualitySpecRuleArgs
@@ -279,27 +293,7 @@ namespace Pulumi.Gcp.DataPlex
     ///                     },
     ///                 },
     ///             },
-    ///             SamplingPercent = 5,
     ///         },
-    ///         DataScanId = "dataquality-full",
-    ///         Description = "Example resource - Full Datascan Quality",
-    ///         DisplayName = "Full Datascan Quality",
-    ///         ExecutionSpec = new Gcp.DataPlex.Inputs.DatascanExecutionSpecArgs
-    ///         {
-    ///             Field = "modified_date",
-    ///             Trigger = new Gcp.DataPlex.Inputs.DatascanExecutionSpecTriggerArgs
-    ///             {
-    ///                 Schedule = new Gcp.DataPlex.Inputs.DatascanExecutionSpecTriggerScheduleArgs
-    ///                 {
-    ///                     Cron = "TZ=America/New_York 1 1 * * *",
-    ///                 },
-    ///             },
-    ///         },
-    ///         Labels = 
-    ///         {
-    ///             { "author", "billing" },
-    ///         },
-    ///         Location = "us-central1",
     ///         Project = "my-project-name",
     ///     });
     /// 

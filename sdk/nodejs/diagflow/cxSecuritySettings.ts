@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basicSecuritySettings = new gcp.diagflow.CxSecuritySettings("basicSecuritySettings", {
+ * const basicSecuritySettings = new gcp.diagflow.CxSecuritySettings("basic_security_settings", {
  *     displayName: "dialogflowcx-security-settings",
  *     location: "global",
  *     purgeDataTypes: [],
@@ -63,10 +63,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "dialogflowcx-bucket",
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  * });
- * const basicSecuritySettings = new gcp.diagflow.CxSecuritySettings("basicSecuritySettings", {
+ * const basicSecuritySettings = new gcp.diagflow.CxSecuritySettings("basic_security_settings", {
  *     displayName: "dialogflowcx-security-settings",
  *     location: "global",
  *     redactionStrategy: "REDACT_WITH_SERVICE",

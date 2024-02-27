@@ -63,6 +63,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var mycluster = new Cluster(&#34;mycluster&#34;, ClusterArgs.builder()        
+ *             .name(&#34;dproc-cluster-unique-name&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .build());
  * 

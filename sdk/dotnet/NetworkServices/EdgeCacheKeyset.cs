@@ -31,6 +31,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// {
     ///     var @default = new Gcp.NetworkServices.EdgeCacheKeyset("default", new()
     ///     {
+    ///         Name = "my-keyset",
     ///         Description = "The default keyset",
     ///         PublicKeys = new[]
     ///         {
@@ -76,6 +77,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     ///     var @default = new Gcp.NetworkServices.EdgeCacheKeyset("default", new()
     ///     {
+    ///         Name = "my-keyset",
     ///         Description = "The default keyset",
     ///         PublicKeys = new[]
     ///         {

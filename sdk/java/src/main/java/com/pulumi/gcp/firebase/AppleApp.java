@@ -25,7 +25,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.firebase.AppleApp;
  * import com.pulumi.gcp.firebase.AppleAppArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -43,9 +42,7 @@ import javax.annotation.Nullable;
  *             .project(&#34;my-project-name&#34;)
  *             .displayName(&#34;Display Name Basic&#34;)
  *             .bundleId(&#34;apple.app.12345&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -63,7 +60,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsIosKeyRestrictionsArgs;
  * import com.pulumi.gcp.firebase.AppleApp;
  * import com.pulumi.gcp.firebase.AppleAppArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -78,6 +74,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var apple = new ApiKey(&#34;apple&#34;, ApiKeyArgs.builder()        
+ *             .name(&#34;api-key&#34;)
  *             .displayName(&#34;Display Name Full&#34;)
  *             .project(&#34;my-project-name&#34;)
  *             .restrictions(ApiKeyRestrictionsArgs.builder()
@@ -85,9 +82,7 @@ import javax.annotation.Nullable;
  *                     .allowedBundleIds(&#34;apple.app.12345&#34;)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var full = new AppleApp(&#34;full&#34;, AppleAppArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
@@ -96,9 +91,7 @@ import javax.annotation.Nullable;
  *             .appStoreId(&#34;12345&#34;)
  *             .teamId(&#34;9987654321&#34;)
  *             .apiKeyId(apple.uid())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

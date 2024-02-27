@@ -269,10 +269,10 @@ class TableIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         editor = gcp.bigtable.TableIamBinding("editor",
+            table="your-bigtable-table",
             instance="your-bigtable-instance",
-            members=["user:jane@example.com"],
             role="roles/bigtable.user",
-            table="your-bigtable-table")
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_bigtable\\_table\\_iam\\_member
@@ -282,10 +282,10 @@ class TableIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         editor = gcp.bigtable.TableIamMember("editor",
+            table="your-bigtable-table",
             instance="your-bigtable-instance",
-            member="user:jane@example.com",
             role="roles/bigtable.user",
-            table="your-bigtable-table")
+            member="user:jane@example.com")
         ```
 
         ## Import
@@ -376,10 +376,10 @@ class TableIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         editor = gcp.bigtable.TableIamBinding("editor",
+            table="your-bigtable-table",
             instance="your-bigtable-instance",
-            members=["user:jane@example.com"],
             role="roles/bigtable.user",
-            table="your-bigtable-table")
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_bigtable\\_table\\_iam\\_member
@@ -389,10 +389,10 @@ class TableIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         editor = gcp.bigtable.TableIamMember("editor",
+            table="your-bigtable-table",
             instance="your-bigtable-instance",
-            member="user:jane@example.com",
             role="roles/bigtable.user",
-            table="your-bigtable-table")
+            member="user:jane@example.com")
         ```
 
         ## Import

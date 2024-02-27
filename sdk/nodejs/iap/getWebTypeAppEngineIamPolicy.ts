@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.iap.getWebTypeAppEngineIamPolicy({
- *     project: google_app_engine_application.app.project,
- *     appId: google_app_engine_application.app.app_id,
+ *     project: app.project,
+ *     appId: app.appId,
  * });
  * ```
  */
@@ -73,8 +73,8 @@ export interface GetWebTypeAppEngineIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.iap.getWebTypeAppEngineIamPolicy({
- *     project: google_app_engine_application.app.project,
- *     appId: google_app_engine_application.app.app_id,
+ *     project: app.project,
+ *     appId: app.appId,
  * });
  * ```
  */

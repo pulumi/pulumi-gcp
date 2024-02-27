@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * const default = gcp.monitoring.getAppEngineService({
  *     moduleId: "default",
  * });
- * const appengSlo = new gcp.monitoring.Slo("appengSlo", {
+ * const appengSlo = new gcp.monitoring.Slo("appeng_slo", {
  *     service: _default.then(_default => _default.serviceId),
  *     sloId: "ae-slo",
  *     displayName: "Test SLO for App Engine",
@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  *     serviceId: "custom-srv-request-slos",
  *     displayName: "My Custom Service",
  * });
- * const requestBasedSlo = new gcp.monitoring.Slo("requestBasedSlo", {
+ * const requestBasedSlo = new gcp.monitoring.Slo("request_based_slo", {
  *     service: customsrv.serviceId,
  *     sloId: "consumed-api-slo",
  *     displayName: "Test SLO with request based SLI (good total ratio)",
@@ -70,6 +70,139 @@ import * as utilities from "../utilities";
  *             distributionFilter: "metric.type=\"serviceruntime.googleapis.com/api/request_latencies\" resource.type=\"api\"  ",
  *             range: {
  *                 max: 0.5,
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Monitoring Slo Windows Based Good Bad Metric Filter
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const customsrv = new gcp.monitoring.CustomService("customsrv", {
+ *     serviceId: "custom-srv-windows-slos",
+ *     displayName: "My Custom Service",
+ * });
+ * const windowsBased = new gcp.monitoring.Slo("windows_based", {
+ *     service: customsrv.serviceId,
+ *     displayName: "Test SLO with window based SLI",
+ *     goal: 0.95,
+ *     calendarPeriod: "FORTNIGHT",
+ *     windowsBasedSli: {
+ *         windowPeriod: "400s",
+ *         goodBadMetricFilter: std.join({
+ *             separator: " AND ",
+ *             input: [
+ *                 "metric.type=\"monitoring.googleapis.com/uptime_check/check_passed\"",
+ *                 "resource.type=\"uptime_url\"",
+ *             ],
+ *         }).then(invoke => invoke.result),
+ *     },
+ * });
+ * ```
+ * ### Monitoring Slo Windows Based Metric Mean
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const customsrv = new gcp.monitoring.CustomService("customsrv", {
+ *     serviceId: "custom-srv-windows-slos",
+ *     displayName: "My Custom Service",
+ * });
+ * const windowsBased = new gcp.monitoring.Slo("windows_based", {
+ *     service: customsrv.serviceId,
+ *     displayName: "Test SLO with window based SLI",
+ *     goal: 0.9,
+ *     rollingPeriodDays: 20,
+ *     windowsBasedSli: {
+ *         windowPeriod: "600s",
+ *         metricMeanInRange: {
+ *             timeSeries: std.join({
+ *                 separator: " AND ",
+ *                 input: [
+ *                     "metric.type=\"agent.googleapis.com/cassandra/client_request/latency/95p\"",
+ *                     "resource.type=\"gce_instance\"",
+ *                 ],
+ *             }).then(invoke => invoke.result),
+ *             range: {
+ *                 max: 5,
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Monitoring Slo Windows Based Metric Sum
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const customsrv = new gcp.monitoring.CustomService("customsrv", {
+ *     serviceId: "custom-srv-windows-slos",
+ *     displayName: "My Custom Service",
+ * });
+ * const windowsBased = new gcp.monitoring.Slo("windows_based", {
+ *     service: customsrv.serviceId,
+ *     displayName: "Test SLO with window based SLI",
+ *     goal: 0.9,
+ *     rollingPeriodDays: 20,
+ *     windowsBasedSli: {
+ *         windowPeriod: "400s",
+ *         metricSumInRange: {
+ *             timeSeries: std.join({
+ *                 separator: " AND ",
+ *                 input: [
+ *                     "metric.type=\"monitoring.googleapis.com/uptime_check/request_latency\"",
+ *                     "resource.type=\"uptime_url\"",
+ *                 ],
+ *             }).then(invoke => invoke.result),
+ *             range: {
+ *                 max: 5000,
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Monitoring Slo Windows Based Ratio Threshold
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const customsrv = new gcp.monitoring.CustomService("customsrv", {
+ *     serviceId: "custom-srv-windows-slos",
+ *     displayName: "My Custom Service",
+ * });
+ * const windowsBased = new gcp.monitoring.Slo("windows_based", {
+ *     service: customsrv.serviceId,
+ *     displayName: "Test SLO with window based SLI",
+ *     goal: 0.9,
+ *     rollingPeriodDays: 20,
+ *     windowsBasedSli: {
+ *         windowPeriod: "100s",
+ *         goodTotalRatioThreshold: {
+ *             threshold: 0.1,
+ *             performance: {
+ *                 distributionCut: {
+ *                     distributionFilter: std.join({
+ *                         separator: " AND ",
+ *                         input: [
+ *                             "metric.type=\"serviceruntime.googleapis.com/api/request_latencies\"",
+ *                             "resource.type=\"consumed_api\"",
+ *                         ],
+ *                     }).then(invoke => invoke.result),
+ *                     range: {
+ *                         min: 1,
+ *                         max: 9,
+ *                     },
+ *                 },
  *             },
  *         },
  *     },

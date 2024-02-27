@@ -205,7 +205,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testDataset = new Dataset(&#34;testDataset&#34;, DatasetArgs.builder()        
+ *         var test = new Dataset(&#34;test&#34;, DatasetArgs.builder()        
  *             .datasetId(&#34;dataset_id&#34;)
  *             .build());
  * 
@@ -216,7 +216,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var pyspark = new Routine(&#34;pyspark&#34;, RoutineArgs.builder()        
- *             .datasetId(testDataset.datasetId())
+ *             .datasetId(test.datasetId())
  *             .routineId(&#34;routine_id&#34;)
  *             .routineType(&#34;PROCEDURE&#34;)
  *             .language(&#34;PYTHON&#34;)
@@ -278,7 +278,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testDataset = new Dataset(&#34;testDataset&#34;, DatasetArgs.builder()        
+ *         var test = new Dataset(&#34;test&#34;, DatasetArgs.builder()        
  *             .datasetId(&#34;dataset_id&#34;)
  *             .build());
  * 
@@ -289,7 +289,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var pysparkMainfile = new Routine(&#34;pysparkMainfile&#34;, RoutineArgs.builder()        
- *             .datasetId(testDataset.datasetId())
+ *             .datasetId(test.datasetId())
  *             .routineId(&#34;routine_id&#34;)
  *             .routineType(&#34;PROCEDURE&#34;)
  *             .language(&#34;PYTHON&#34;)
@@ -335,7 +335,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testDataset = new Dataset(&#34;testDataset&#34;, DatasetArgs.builder()        
+ *         var test = new Dataset(&#34;test&#34;, DatasetArgs.builder()        
  *             .datasetId(&#34;dataset_id&#34;)
  *             .build());
  * 
@@ -346,7 +346,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var sparkJar = new Routine(&#34;sparkJar&#34;, RoutineArgs.builder()        
- *             .datasetId(testDataset.datasetId())
+ *             .datasetId(test.datasetId())
  *             .routineId(&#34;routine_id&#34;)
  *             .routineType(&#34;PROCEDURE&#34;)
  *             .language(&#34;SCALA&#34;)

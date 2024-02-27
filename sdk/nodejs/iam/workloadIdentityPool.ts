@@ -30,10 +30,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const example = new gcp.iam.WorkloadIdentityPool("example", {
+ *     workloadIdentityPoolId: "example-pool",
+ *     displayName: "Name of pool",
  *     description: "Identity pool for automated test",
  *     disabled: true,
- *     displayName: "Name of pool",
- *     workloadIdentityPoolId: "example-pool",
  * });
  * ```
  *

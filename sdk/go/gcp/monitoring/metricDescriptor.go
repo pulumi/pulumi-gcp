@@ -38,22 +38,22 @@ import (
 //			_, err := monitoring.NewMetricDescriptor(ctx, "basic", &monitoring.MetricDescriptorArgs{
 //				Description: pulumi.String("Daily sales records from all branch stores."),
 //				DisplayName: pulumi.String("metric-descriptor"),
+//				Type:        pulumi.String("custom.googleapis.com/stores/daily_sales"),
+//				MetricKind:  pulumi.String("GAUGE"),
+//				ValueType:   pulumi.String("DOUBLE"),
+//				Unit:        pulumi.String("{USD}"),
 //				Labels: monitoring.MetricDescriptorLabelArray{
 //					&monitoring.MetricDescriptorLabelArgs{
-//						Description: pulumi.String("The ID of the store."),
 //						Key:         pulumi.String("store_id"),
 //						ValueType:   pulumi.String("STRING"),
+//						Description: pulumi.String("The ID of the store."),
 //					},
 //				},
 //				LaunchStage: pulumi.String("BETA"),
 //				Metadata: &monitoring.MetricDescriptorMetadataArgs{
-//					IngestDelay:  pulumi.String("30s"),
 //					SamplePeriod: pulumi.String("60s"),
+//					IngestDelay:  pulumi.String("30s"),
 //				},
-//				MetricKind: pulumi.String("GAUGE"),
-//				Type:       pulumi.String("custom.googleapis.com/stores/daily_sales"),
-//				Unit:       pulumi.String("{USD}"),
-//				ValueType:  pulumi.String("DOUBLE"),
 //			})
 //			if err != nil {
 //				return err
@@ -79,32 +79,32 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			withAlert, err := monitoring.NewMetricDescriptor(ctx, "withAlert", &monitoring.MetricDescriptorArgs{
+//			withAlert, err := monitoring.NewMetricDescriptor(ctx, "with_alert", &monitoring.MetricDescriptorArgs{
 //				Description: pulumi.String("Daily sales records from all branch stores."),
 //				DisplayName: pulumi.String("metric-descriptor"),
-//				MetricKind:  pulumi.String("GAUGE"),
 //				Type:        pulumi.String("custom.googleapis.com/stores/daily_sales"),
-//				Unit:        pulumi.String("{USD}"),
+//				MetricKind:  pulumi.String("GAUGE"),
 //				ValueType:   pulumi.String("DOUBLE"),
+//				Unit:        pulumi.String("{USD}"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = monitoring.NewAlertPolicy(ctx, "alertPolicy", &monitoring.AlertPolicyArgs{
-//				Combiner: pulumi.String("OR"),
+//			_, err = monitoring.NewAlertPolicy(ctx, "alert_policy", &monitoring.AlertPolicyArgs{
+//				DisplayName: pulumi.String("metric-descriptor"),
+//				Combiner:    pulumi.String("OR"),
 //				Conditions: monitoring.AlertPolicyConditionArray{
 //					&monitoring.AlertPolicyConditionArgs{
+//						DisplayName: pulumi.String("test condition"),
 //						ConditionThreshold: &monitoring.AlertPolicyConditionConditionThresholdArgs{
-//							Comparison: pulumi.String("COMPARISON_GT"),
-//							Duration:   pulumi.String("60s"),
 //							Filter: withAlert.Type.ApplyT(func(_type string) (string, error) {
 //								return fmt.Sprintf("metric.type=\"%v\" AND resource.type=\"gce_instance\"", _type), nil
 //							}).(pulumi.StringOutput),
+//							Duration:   pulumi.String("60s"),
+//							Comparison: pulumi.String("COMPARISON_GT"),
 //						},
-//						DisplayName: pulumi.String("test condition"),
 //					},
 //				},
-//				DisplayName: pulumi.String("metric-descriptor"),
 //			})
 //			if err != nil {
 //				return err

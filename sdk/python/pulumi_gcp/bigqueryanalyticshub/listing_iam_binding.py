@@ -352,10 +352,10 @@ class ListingIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.bigqueryanalyticshub.ListingIamPolicy("policy",
-            project=google_bigquery_analytics_hub_listing["listing"]["project"],
-            location=google_bigquery_analytics_hub_listing["listing"]["location"],
-            data_exchange_id=google_bigquery_analytics_hub_listing["listing"]["data_exchange_id"],
-            listing_id=google_bigquery_analytics_hub_listing["listing"]["listing_id"],
+            project=listing["project"],
+            location=listing["location"],
+            data_exchange_id=listing["dataExchangeId"],
+            listing_id=listing["listingId"],
             policy_data=admin.policy_data)
         ```
 
@@ -366,10 +366,10 @@ class ListingIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.bigqueryanalyticshub.ListingIamBinding("binding",
-            project=google_bigquery_analytics_hub_listing["listing"]["project"],
-            location=google_bigquery_analytics_hub_listing["listing"]["location"],
-            data_exchange_id=google_bigquery_analytics_hub_listing["listing"]["data_exchange_id"],
-            listing_id=google_bigquery_analytics_hub_listing["listing"]["listing_id"],
+            project=listing["project"],
+            location=listing["location"],
+            data_exchange_id=listing["dataExchangeId"],
+            listing_id=listing["listingId"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -381,10 +381,10 @@ class ListingIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.bigqueryanalyticshub.ListingIamMember("member",
-            project=google_bigquery_analytics_hub_listing["listing"]["project"],
-            location=google_bigquery_analytics_hub_listing["listing"]["location"],
-            data_exchange_id=google_bigquery_analytics_hub_listing["listing"]["data_exchange_id"],
-            listing_id=google_bigquery_analytics_hub_listing["listing"]["listing_id"],
+            project=listing["project"],
+            location=listing["location"],
+            data_exchange_id=listing["dataExchangeId"],
+            listing_id=listing["listingId"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -483,10 +483,10 @@ class ListingIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.bigqueryanalyticshub.ListingIamPolicy("policy",
-            project=google_bigquery_analytics_hub_listing["listing"]["project"],
-            location=google_bigquery_analytics_hub_listing["listing"]["location"],
-            data_exchange_id=google_bigquery_analytics_hub_listing["listing"]["data_exchange_id"],
-            listing_id=google_bigquery_analytics_hub_listing["listing"]["listing_id"],
+            project=listing["project"],
+            location=listing["location"],
+            data_exchange_id=listing["dataExchangeId"],
+            listing_id=listing["listingId"],
             policy_data=admin.policy_data)
         ```
 
@@ -497,10 +497,10 @@ class ListingIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.bigqueryanalyticshub.ListingIamBinding("binding",
-            project=google_bigquery_analytics_hub_listing["listing"]["project"],
-            location=google_bigquery_analytics_hub_listing["listing"]["location"],
-            data_exchange_id=google_bigquery_analytics_hub_listing["listing"]["data_exchange_id"],
-            listing_id=google_bigquery_analytics_hub_listing["listing"]["listing_id"],
+            project=listing["project"],
+            location=listing["location"],
+            data_exchange_id=listing["dataExchangeId"],
+            listing_id=listing["listingId"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -512,10 +512,10 @@ class ListingIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.bigqueryanalyticshub.ListingIamMember("member",
-            project=google_bigquery_analytics_hub_listing["listing"]["project"],
-            location=google_bigquery_analytics_hub_listing["listing"]["location"],
-            data_exchange_id=google_bigquery_analytics_hub_listing["listing"]["data_exchange_id"],
-            listing_id=google_bigquery_analytics_hub_listing["listing"]["listing_id"],
+            project=listing["project"],
+            location=listing["location"],
+            data_exchange_id=listing["dataExchangeId"],
+            listing_id=listing["listingId"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

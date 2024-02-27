@@ -23,6 +23,123 @@ import (
 //   - [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
 //
 // ## Example Usage
+// ### Compute Packet Mirroring Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name: pulumi.String("my-network"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			mirror, err := compute.NewInstance(ctx, "mirror", &compute.InstanceArgs{
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+//							nil,
+//						},
+//						Network: _default.ID(),
+//					},
+//				},
+//				Name:        pulumi.String("my-instance"),
+//				MachineType: pulumi.String("e2-medium"),
+//				BootDisk: &compute.InstanceBootDiskArgs{
+//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+//						Image: pulumi.String("debian-cloud/debian-11"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("my-subnetwork"),
+//				Network:     _default.ID(),
+//				IpCidrRange: pulumi.String("10.2.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//				Name:             pulumi.String("my-healthcheck"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//				TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegionBackendService, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+//				Name:         pulumi.String("my-service"),
+//				HealthChecks: defaultHealthCheck.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultForwardingRule, err := compute.NewForwardingRule(ctx, "default", &compute.ForwardingRuleArgs{
+//				Name:                 pulumi.String("my-ilb"),
+//				IsMirroringCollector: pulumi.Bool(true),
+//				IpProtocol:           pulumi.String("TCP"),
+//				LoadBalancingScheme:  pulumi.String("INTERNAL"),
+//				BackendService:       defaultRegionBackendService.ID(),
+//				AllPorts:             pulumi.Bool(true),
+//				Network:              _default.ID(),
+//				Subnetwork:           defaultSubnetwork.ID(),
+//				NetworkTier:          pulumi.String("PREMIUM"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewPacketMirroring(ctx, "foobar", &compute.PacketMirroringArgs{
+//				Name:        pulumi.String("my-mirroring"),
+//				Description: pulumi.String("bar"),
+//				Network: &compute.PacketMirroringNetworkArgs{
+//					Url: _default.ID(),
+//				},
+//				CollectorIlb: &compute.PacketMirroringCollectorIlbArgs{
+//					Url: defaultForwardingRule.ID(),
+//				},
+//				MirroredResources: &compute.PacketMirroringMirroredResourcesArgs{
+//					Tags: pulumi.StringArray{
+//						pulumi.String("foo"),
+//					},
+//					Instances: compute.PacketMirroringMirroredResourcesInstanceArray{
+//						&compute.PacketMirroringMirroredResourcesInstanceArgs{
+//							Url: mirror.ID(),
+//						},
+//					},
+//				},
+//				Filter: &compute.PacketMirroringFilterArgs{
+//					IpProtocols: pulumi.StringArray{
+//						pulumi.String("tcp"),
+//					},
+//					CidrRanges: pulumi.StringArray{
+//						pulumi.String("0.0.0.0/0"),
+//					},
+//					Direction: pulumi.String("BOTH"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

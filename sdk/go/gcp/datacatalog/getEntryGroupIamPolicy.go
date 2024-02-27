@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := datacatalog.LookupEntryGroupIamPolicy(ctx, &datacatalog.LookupEntryGroupIamPolicyArgs{
-//				EntryGroup: google_data_catalog_entry_group.Basic_entry_group.Name,
+//				EntryGroup: basicEntryGroup.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

@@ -33,9 +33,12 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork");
+    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "alloydb-cluster",
+    ///     });
     /// 
-    ///     var defaultCluster = new Gcp.Alloydb.Cluster("defaultCluster", new()
+    ///     var @default = new Gcp.Alloydb.Cluster("default", new()
     ///     {
     ///         ClusterId = "alloydb-cluster",
     ///         Location = "us-central1",
@@ -56,7 +59,10 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Gcp.Compute.Network("default");
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "alloydb-cluster-full",
+    ///     });
     /// 
     ///     var full = new Gcp.Alloydb.Cluster("full", new()
     ///     {
@@ -130,7 +136,7 @@ namespace Pulumi.Gcp.Alloydb
     ///         Name = "alloydb-network",
     ///     });
     /// 
-    ///     var sourceCluster = new Gcp.Alloydb.Cluster("sourceCluster", new()
+    ///     var source = new Gcp.Alloydb.Cluster("source", new()
     ///     {
     ///         ClusterId = "alloydb-source-cluster",
     ///         Location = "us-central1",
@@ -141,55 +147,25 @@ namespace Pulumi.Gcp.Alloydb
     ///         },
     ///     });
     /// 
-    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("privateIpAlloc", new()
+    ///     var sourceInstance = new Gcp.Alloydb.Instance("source", new()
     ///     {
-    ///         AddressType = "INTERNAL",
-    ///         Purpose = "VPC_PEERING",
-    ///         PrefixLength = 16,
-    ///         Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
-    ///     });
-    /// 
-    ///     var vpcConnection = new Gcp.ServiceNetworking.Connection("vpcConnection", new()
-    ///     {
-    ///         Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
-    ///         Service = "servicenetworking.googleapis.com",
-    ///         ReservedPeeringRanges = new[]
-    ///         {
-    ///             privateIpAlloc.Name,
-    ///         },
-    ///     });
-    /// 
-    ///     var sourceInstance = new Gcp.Alloydb.Instance("sourceInstance", new()
-    ///     {
-    ///         Cluster = sourceCluster.Name,
+    ///         Cluster = source.Name,
     ///         InstanceId = "alloydb-instance",
     ///         InstanceType = "PRIMARY",
     ///         MachineConfig = new Gcp.Alloydb.Inputs.InstanceMachineConfigArgs
     ///         {
     ///             CpuCount = 2,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             vpcConnection,
-    ///         },
     ///     });
     /// 
-    ///     var sourceBackup = new Gcp.Alloydb.Backup("sourceBackup", new()
+    ///     var sourceBackup = new Gcp.Alloydb.Backup("source", new()
     ///     {
     ///         BackupId = "alloydb-backup",
     ///         Location = "us-central1",
-    ///         ClusterName = sourceCluster.Name,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             sourceInstance,
-    ///         },
+    ///         ClusterName = source.Name,
     ///     });
     /// 
-    ///     var restoredFromBackup = new Gcp.Alloydb.Cluster("restoredFromBackup", new()
+    ///     var restoredFromBackup = new Gcp.Alloydb.Cluster("restored_from_backup", new()
     ///     {
     ///         ClusterId = "alloydb-backup-restored",
     ///         Location = "us-central1",
@@ -200,19 +176,38 @@ namespace Pulumi.Gcp.Alloydb
     ///         },
     ///     });
     /// 
-    ///     var restoredViaPitr = new Gcp.Alloydb.Cluster("restoredViaPitr", new()
+    ///     var restoredViaPitr = new Gcp.Alloydb.Cluster("restored_via_pitr", new()
     ///     {
     ///         ClusterId = "alloydb-pitr-restored",
     ///         Location = "us-central1",
     ///         Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
     ///         RestoreContinuousBackupSource = new Gcp.Alloydb.Inputs.ClusterRestoreContinuousBackupSourceArgs
     ///         {
-    ///             Cluster = sourceCluster.Name,
+    ///             Cluster = source.Name,
     ///             PointInTime = "2023-08-03T19:19:00.094Z",
     ///         },
     ///     });
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
+    ///     {
+    ///         Name = "alloydb-source-cluster",
+    ///         AddressType = "INTERNAL",
+    ///         Purpose = "VPC_PEERING",
+    ///         PrefixLength = 16,
+    ///         Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///     });
+    /// 
+    ///     var vpcConnection = new Gcp.ServiceNetworking.Connection("vpc_connection", new()
+    ///     {
+    ///         Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             privateIpAlloc.Name,
+    ///         },
+    ///     });
     /// 
     /// });
     /// ```
@@ -226,47 +221,26 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Gcp.Compute.Network("default");
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "alloydb-secondary-cluster",
+    ///     });
     /// 
-    ///     var primaryCluster = new Gcp.Alloydb.Cluster("primaryCluster", new()
+    ///     var primary = new Gcp.Alloydb.Cluster("primary", new()
     ///     {
     ///         ClusterId = "alloydb-primary-cluster",
     ///         Location = "us-central1",
     ///         Network = @default.Id,
     ///     });
     /// 
-    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("privateIpAlloc", new()
+    ///     var primaryInstance = new Gcp.Alloydb.Instance("primary", new()
     ///     {
-    ///         AddressType = "INTERNAL",
-    ///         Purpose = "VPC_PEERING",
-    ///         PrefixLength = 16,
-    ///         Network = @default.Id,
-    ///     });
-    /// 
-    ///     var vpcConnection = new Gcp.ServiceNetworking.Connection("vpcConnection", new()
-    ///     {
-    ///         Network = @default.Id,
-    ///         Service = "servicenetworking.googleapis.com",
-    ///         ReservedPeeringRanges = new[]
-    ///         {
-    ///             privateIpAlloc.Name,
-    ///         },
-    ///     });
-    /// 
-    ///     var primaryInstance = new Gcp.Alloydb.Instance("primaryInstance", new()
-    ///     {
-    ///         Cluster = primaryCluster.Name,
+    ///         Cluster = primary.Name,
     ///         InstanceId = "alloydb-primary-instance",
     ///         InstanceType = "PRIMARY",
     ///         MachineConfig = new Gcp.Alloydb.Inputs.InstanceMachineConfigArgs
     ///         {
     ///             CpuCount = 2,
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             vpcConnection,
     ///         },
     ///     });
     /// 
@@ -282,17 +256,30 @@ namespace Pulumi.Gcp.Alloydb
     ///         },
     ///         SecondaryConfig = new Gcp.Alloydb.Inputs.ClusterSecondaryConfigArgs
     ///         {
-    ///             PrimaryClusterName = primaryCluster.Name,
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             primaryInstance,
+    ///             PrimaryClusterName = primary.Name,
     ///         },
     ///     });
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
+    ///     {
+    ///         Name = "alloydb-secondary-cluster",
+    ///         AddressType = "INTERNAL",
+    ///         Purpose = "VPC_PEERING",
+    ///         PrefixLength = 16,
+    ///         Network = @default.Id,
+    ///     });
+    /// 
+    ///     var vpcConnection = new Gcp.ServiceNetworking.Connection("vpc_connection", new()
+    ///     {
+    ///         Network = @default.Id,
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             privateIpAlloc.Name,
+    ///         },
+    ///     });
     /// 
     /// });
     /// ```

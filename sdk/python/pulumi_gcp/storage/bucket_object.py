@@ -722,8 +722,9 @@ class BucketObject(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         picture = gcp.storage.BucketObject("picture",
-            bucket="image-store",
-            source=pulumi.FileAsset("/images/nature/garden-tiger-moth.jpg"))
+            name="butterfly01",
+            source=pulumi.FileAsset("/images/nature/garden-tiger-moth.jpg"),
+            bucket="image-store")
         ```
 
         Example creating an empty folder in an existing `image-store` bucket.
@@ -732,10 +733,10 @@ class BucketObject(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        empty_folder = gcp.storage.BucketObject("emptyFolder",
-            bucket="image-store",
-            content=" ")
-        # folder name should end with '/'
+        empty_folder = gcp.storage.BucketObject("empty_folder",
+            name="empty_folder/",
+            content=" ",
+            bucket="image-store")
         ```
 
         ## Import
@@ -793,8 +794,9 @@ class BucketObject(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         picture = gcp.storage.BucketObject("picture",
-            bucket="image-store",
-            source=pulumi.FileAsset("/images/nature/garden-tiger-moth.jpg"))
+            name="butterfly01",
+            source=pulumi.FileAsset("/images/nature/garden-tiger-moth.jpg"),
+            bucket="image-store")
         ```
 
         Example creating an empty folder in an existing `image-store` bucket.
@@ -803,10 +805,10 @@ class BucketObject(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        empty_folder = gcp.storage.BucketObject("emptyFolder",
-            bucket="image-store",
-            content=" ")
-        # folder name should end with '/'
+        empty_folder = gcp.storage.BucketObject("empty_folder",
+            name="empty_folder/",
+            content=" ",
+            bucket="image-store")
         ```
 
         ## Import

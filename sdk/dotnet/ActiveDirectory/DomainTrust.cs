@@ -32,14 +32,14 @@ namespace Pulumi.Gcp.ActiveDirectory
     ///     var ad_domain_trust = new Gcp.ActiveDirectory.DomainTrust("ad-domain-trust", new()
     ///     {
     ///         Domain = "test-managed-ad.com",
+    ///         TargetDomainName = "example-gcp.com",
     ///         TargetDnsIpAddresses = new[]
     ///         {
     ///             "10.1.0.100",
     ///         },
-    ///         TargetDomainName = "example-gcp.com",
     ///         TrustDirection = "OUTBOUND",
-    ///         TrustHandshakeSecret = "Testing1!",
     ///         TrustType = "FOREST",
+    ///         TrustHandshakeSecret = "Testing1!",
     ///     });
     /// 
     /// });

@@ -106,8 +106,8 @@ def get_account_key(name: Optional[str] = None,
     import pulumi_gcp as gcp
 
     myaccount = gcp.serviceaccount.Account("myaccount", account_id="dev-foo-account")
-    mykey_key = gcp.serviceaccount.Key("mykeyKey", service_account_id=myaccount.name)
-    mykey_account_key = gcp.serviceaccount.get_account_key_output(name=mykey_key.name,
+    mykey_key = gcp.serviceaccount.Key("mykey", service_account_id=myaccount.name)
+    mykey = gcp.serviceaccount.get_account_key_output(name=mykey_key.name,
         public_key_type="TYPE_X509_PEM_FILE")
     ```
 
@@ -150,8 +150,8 @@ def get_account_key_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi_gcp as gcp
 
     myaccount = gcp.serviceaccount.Account("myaccount", account_id="dev-foo-account")
-    mykey_key = gcp.serviceaccount.Key("mykeyKey", service_account_id=myaccount.name)
-    mykey_account_key = gcp.serviceaccount.get_account_key_output(name=mykey_key.name,
+    mykey_key = gcp.serviceaccount.Key("mykey", service_account_id=myaccount.name)
+    mykey = gcp.serviceaccount.get_account_key_output(name=mykey_key.name,
         public_key_type="TYPE_X509_PEM_FILE")
     ```
 

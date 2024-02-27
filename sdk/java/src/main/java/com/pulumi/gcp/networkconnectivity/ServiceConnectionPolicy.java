@@ -56,16 +56,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var producerNet = new Network(&#34;producerNet&#34;, NetworkArgs.builder()        
+ *             .name(&#34;producer-net&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var producerSubnet = new Subnetwork(&#34;producerSubnet&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;producer-subnet&#34;)
  *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(producerNet.id())
  *             .build());
  * 
  *         var default_ = new ServiceConnectionPolicy(&#34;default&#34;, ServiceConnectionPolicyArgs.builder()        
+ *             .name(&#34;my-network-connectivity-policy&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .serviceClass(&#34;my-basic-service-class&#34;)
  *             .description(&#34;my basic service connection policy&#34;)

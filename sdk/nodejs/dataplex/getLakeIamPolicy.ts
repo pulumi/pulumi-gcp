@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.dataplex.getLakeIamPolicy({
- *     project: google_dataplex_lake.example.project,
- *     location: google_dataplex_lake.example.location,
- *     lake: google_dataplex_lake.example.name,
+ *     project: example.project,
+ *     location: example.location,
+ *     lake: example.name,
  * });
  * ```
  */
@@ -77,9 +77,9 @@ export interface GetLakeIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.dataplex.getLakeIamPolicy({
- *     project: google_dataplex_lake.example.project,
- *     location: google_dataplex_lake.example.location,
- *     lake: google_dataplex_lake.example.name,
+ *     project: example.project,
+ *     location: example.location,
+ *     lake: example.name,
  * });
  * ```
  */

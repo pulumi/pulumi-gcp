@@ -29,8 +29,9 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// {
     ///     var @default = new Gcp.NetworkSecurity.GatewaySecurityPolicy("default", new()
     ///     {
-    ///         Description = "my description",
+    ///         Name = "my-gateway-security-policy",
     ///         Location = "us-central1",
+    ///         Description = "my description",
     ///     });
     /// 
     /// });
@@ -45,8 +46,9 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultCaPool = new Gcp.CertificateAuthority.CaPool("defaultCaPool", new()
+    ///     var @default = new Gcp.CertificateAuthority.CaPool("default", new()
     ///     {
+    ///         Name = "my-basic-ca-pool",
     ///         Location = "us-central1",
     ///         Tier = "DEVOPS",
     ///         PublishingOptions = new Gcp.CertificateAuthority.Inputs.CaPoolPublishingOptionsArgs
@@ -73,14 +75,11 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultAuthority = new Gcp.CertificateAuthority.Authority("defaultAuthority", new()
+    ///     var defaultAuthority = new Gcp.CertificateAuthority.Authority("default", new()
     ///     {
-    ///         Pool = defaultCaPool.Name,
+    ///         Pool = @default.Name,
     ///         CertificateAuthorityId = "my-basic-certificate-authority",
     ///         Location = "us-central1",
     ///         Lifetime = "86400s",
@@ -122,56 +121,33 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///         {
     ///             Algorithm = "RSA_PKCS1_4096_SHA256",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var nsSa = new Gcp.Projects.ServiceIdentity("nsSa", new()
+    ///     var nsSa = new Gcp.Projects.ServiceIdentity("ns_sa", new()
     ///     {
     ///         Service = "networksecurity.googleapis.com",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var tlsInspectionPermission = new Gcp.CertificateAuthority.CaPoolIamMember("tlsInspectionPermission", new()
+    ///     var tlsInspectionPermission = new Gcp.CertificateAuthority.CaPoolIamMember("tls_inspection_permission", new()
     ///     {
-    ///         CaPool = defaultCaPool.Id,
+    ///         CaPool = @default.Id,
     ///         Role = "roles/privateca.certificateManager",
     ///         Member = nsSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultTlsInspectionPolicy = new Gcp.NetworkSecurity.TlsInspectionPolicy("defaultTlsInspectionPolicy", new()
+    ///     var defaultTlsInspectionPolicy = new Gcp.NetworkSecurity.TlsInspectionPolicy("default", new()
     ///     {
+    ///         Name = "my-tls-inspection-policy",
     ///         Location = "us-central1",
-    ///         CaPool = defaultCaPool.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///         DependsOn = new[]
-    ///         {
-    ///             defaultCaPool,
-    ///             defaultAuthority,
-    ///             tlsInspectionPermission,
-    ///         },
+    ///         CaPool = @default.Id,
     ///     });
     /// 
-    ///     var defaultGatewaySecurityPolicy = new Gcp.NetworkSecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", new()
+    ///     var defaultGatewaySecurityPolicy = new Gcp.NetworkSecurity.GatewaySecurityPolicy("default", new()
     ///     {
+    ///         Name = "my-gateway-security-policy",
     ///         Location = "us-central1",
     ///         Description = "my description",
     ///         TlsInspectionPolicy = defaultTlsInspectionPolicy.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///         DependsOn = new[]
-    ///         {
-    ///             defaultTlsInspectionPolicy,
-    ///         },
     ///     });
     /// 
     /// });

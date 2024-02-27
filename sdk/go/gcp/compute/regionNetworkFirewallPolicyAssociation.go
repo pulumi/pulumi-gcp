@@ -28,7 +28,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			basicRegionalNetworkFirewallPolicy, err := compute.NewRegionNetworkFirewallPolicy(ctx, "basicRegionalNetworkFirewallPolicy", &compute.RegionNetworkFirewallPolicyArgs{
+//			basicRegionalNetworkFirewallPolicy, err := compute.NewRegionNetworkFirewallPolicy(ctx, "basic_regional_network_firewall_policy", &compute.RegionNetworkFirewallPolicyArgs{
+//				Name:        pulumi.String("policy"),
 //				Project:     pulumi.String("my-project-name"),
 //				Description: pulumi.String("Sample global network firewall policy"),
 //				Region:      pulumi.String("us-west1"),
@@ -36,11 +37,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			basicNetwork, err := compute.NewNetwork(ctx, "basicNetwork", nil)
+//			basicNetwork, err := compute.NewNetwork(ctx, "basic_network", &compute.NetworkArgs{
+//				Name: pulumi.String("network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewRegionNetworkFirewallPolicyAssociation(ctx, "primary", &compute.RegionNetworkFirewallPolicyAssociationArgs{
+//				Name:             pulumi.String("association"),
 //				AttachmentTarget: basicNetwork.ID(),
 //				FirewallPolicy:   basicRegionalNetworkFirewallPolicy.Name,
 //				Project:          pulumi.String("my-project-name"),

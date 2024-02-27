@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkebackup.LookupRestorePlanIamPolicy(ctx, &gkebackup.LookupRestorePlanIamPolicyArgs{
-//				Project:  pulumi.StringRef(google_gke_backup_restore_plan.All_ns.Project),
-//				Location: pulumi.StringRef(google_gke_backup_restore_plan.All_ns.Location),
-//				Name:     google_gke_backup_restore_plan.All_ns.Name,
+//				Project:  pulumi.StringRef(allNs.Project),
+//				Location: pulumi.StringRef(allNs.Location),
+//				Name:     allNs.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

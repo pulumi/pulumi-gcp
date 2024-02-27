@@ -20,37 +20,50 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
     /// 
     /// ## Example Usage
-    /// ### Target Https Proxy Certificate Manager Certificate
+    /// ### Target Https Proxy Basic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultCertificate = new Gcp.CertificateManager.Certificate("defaultCertificate", new()
+    ///     var defaultSSLCertificate = new Gcp.Compute.SSLCertificate("default", new()
     ///     {
-    ///         Scope = "ALL_REGIONS",
-    ///         SelfManaged = new Gcp.CertificateManager.Inputs.CertificateSelfManagedArgs
+    ///         Name = "my-certificate",
+    ///         PrivateKey = Std.File.Invoke(new()
     ///         {
-    ///             PemCertificate = File.ReadAllText("test-fixtures/cert.pem"),
-    ///             PemPrivateKey = File.ReadAllText("test-fixtures/private-key.pem"),
-    ///         },
+    ///             Input = "path/to/private.key",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Certificate = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "path/to/certificate.crt",
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
-    ///     var defaultBackendService = new Gcp.Compute.BackendService("defaultBackendService", new()
+    ///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
     ///     {
+    ///         Name = "http-health-check",
+    ///         RequestPath = "/",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///     });
+    /// 
+    ///     var defaultBackendService = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "backend-service",
     ///         PortName = "http",
     ///         Protocol = "HTTP",
     ///         TimeoutSec = 10,
-    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         HealthChecks = defaultHttpHealthCheck.Id,
     ///     });
     /// 
-    ///     var defaultURLMap = new Gcp.Compute.URLMap("defaultURLMap", new()
+    ///     var defaultURLMap = new Gcp.Compute.URLMap("default", new()
     ///     {
+    ///         Name = "url-map",
     ///         Description = "a description",
     ///         DefaultService = defaultBackendService.Id,
     ///         HostRules = new[]
@@ -85,8 +98,335 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///     });
     /// 
-    ///     var defaultTargetHttpsProxy = new Gcp.Compute.TargetHttpsProxy("defaultTargetHttpsProxy", new()
+    ///     var @default = new Gcp.Compute.TargetHttpsProxy("default", new()
     ///     {
+    ///         Name = "test-proxy",
+    ///         UrlMap = defaultURLMap.Id,
+    ///         SslCertificates = new[]
+    ///         {
+    ///             defaultSSLCertificate.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Target Https Proxy Http Keep Alive Timeout
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultSSLCertificate = new Gcp.Compute.SSLCertificate("default", new()
+    ///     {
+    ///         Name = "my-certificate",
+    ///         PrivateKey = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "path/to/private.key",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Certificate = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "path/to/certificate.crt",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+    ///     {
+    ///         Name = "http-health-check",
+    ///         RequestPath = "/",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///     });
+    /// 
+    ///     var defaultBackendService = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "backend-service",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         HealthChecks = defaultHttpHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var defaultURLMap = new Gcp.Compute.URLMap("default", new()
+    ///     {
+    ///         Name = "url-map",
+    ///         Description = "a description",
+    ///         DefaultService = defaultBackendService.Id,
+    ///         HostRules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapHostRuleArgs
+    ///             {
+    ///                 Hosts = new[]
+    ///                 {
+    ///                     "mysite.com",
+    ///                 },
+    ///                 PathMatcher = "allpaths",
+    ///             },
+    ///         },
+    ///         PathMatchers = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapPathMatcherArgs
+    ///             {
+    ///                 Name = "allpaths",
+    ///                 DefaultService = defaultBackendService.Id,
+    ///                 PathRules = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleArgs
+    ///                     {
+    ///                         Paths = new[]
+    ///                         {
+    ///                             "/*",
+    ///                         },
+    ///                         Service = defaultBackendService.Id,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.TargetHttpsProxy("default", new()
+    ///     {
+    ///         Name = "test-http-keep-alive-timeout-proxy",
+    ///         HttpKeepAliveTimeoutSec = 610,
+    ///         UrlMap = defaultURLMap.Id,
+    ///         SslCertificates = new[]
+    ///         {
+    ///             defaultSSLCertificate.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Target Https Proxy Mtls
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var defaultTrustConfig = new Gcp.CertificateManager.TrustConfig("default", new()
+    ///     {
+    ///         Name = "my-trust-config",
+    ///         Description = "sample description for the trust config",
+    ///         Location = "global",
+    ///         TrustStores = new[]
+    ///         {
+    ///             new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreArgs
+    ///             {
+    ///                 TrustAnchors = new[]
+    ///                 {
+    ///                     new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreTrustAnchorArgs
+    ///                     {
+    ///                         PemCertificate = Std.File.Invoke(new()
+    ///                         {
+    ///                             Input = "test-fixtures/ca_cert.pem",
+    ///                         }).Apply(invoke =&gt; invoke.Result),
+    ///                     },
+    ///                 },
+    ///                 IntermediateCas = new[]
+    ///                 {
+    ///                     new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreIntermediateCaArgs
+    ///                     {
+    ///                         PemCertificate = Std.File.Invoke(new()
+    ///                         {
+    ///                             Input = "test-fixtures/ca_cert.pem",
+    ///                         }).Apply(invoke =&gt; invoke.Result),
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultServerTlsPolicy = new Gcp.NetworkSecurity.ServerTlsPolicy("default", new()
+    ///     {
+    ///         Name = "my-tls-policy",
+    ///         Description = "my description",
+    ///         Location = "global",
+    ///         AllowOpen = false,
+    ///         MtlsPolicy = new Gcp.NetworkSecurity.Inputs.ServerTlsPolicyMtlsPolicyArgs
+    ///         {
+    ///             ClientValidationMode = "ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
+    ///             ClientValidationTrustConfig = Output.Tuple(project, defaultTrustConfig.Name).Apply(values =&gt;
+    ///             {
+    ///                 var project = values.Item1;
+    ///                 var name = values.Item2;
+    ///                 return $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/locations/global/trustConfigs/{name}";
+    ///             }),
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultSSLCertificate = new Gcp.Compute.SSLCertificate("default", new()
+    ///     {
+    ///         Name = "my-certificate",
+    ///         PrivateKey = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "path/to/private.key",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Certificate = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "path/to/certificate.crt",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+    ///     {
+    ///         Name = "http-health-check",
+    ///         RequestPath = "/",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///     });
+    /// 
+    ///     var defaultBackendService = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "backend-service",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         HealthChecks = defaultHttpHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var defaultURLMap = new Gcp.Compute.URLMap("default", new()
+    ///     {
+    ///         Name = "url-map",
+    ///         Description = "a description",
+    ///         DefaultService = defaultBackendService.Id,
+    ///         HostRules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapHostRuleArgs
+    ///             {
+    ///                 Hosts = new[]
+    ///                 {
+    ///                     "mysite.com",
+    ///                 },
+    ///                 PathMatcher = "allpaths",
+    ///             },
+    ///         },
+    ///         PathMatchers = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapPathMatcherArgs
+    ///             {
+    ///                 Name = "allpaths",
+    ///                 DefaultService = defaultBackendService.Id,
+    ///                 PathRules = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleArgs
+    ///                     {
+    ///                         Paths = new[]
+    ///                         {
+    ///                             "/*",
+    ///                         },
+    ///                         Service = defaultBackendService.Id,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.TargetHttpsProxy("default", new()
+    ///     {
+    ///         Name = "test-mtls-proxy",
+    ///         UrlMap = defaultURLMap.Id,
+    ///         SslCertificates = new[]
+    ///         {
+    ///             defaultSSLCertificate.Id,
+    ///         },
+    ///         ServerTlsPolicy = defaultServerTlsPolicy.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Target Https Proxy Certificate Manager Certificate
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultCertificate = new Gcp.CertificateManager.Certificate("default", new()
+    ///     {
+    ///         Name = "my-certificate",
+    ///         Scope = "ALL_REGIONS",
+    ///         SelfManaged = new Gcp.CertificateManager.Inputs.CertificateSelfManagedArgs
+    ///         {
+    ///             PemCertificate = Std.File.Invoke(new()
+    ///             {
+    ///                 Input = "test-fixtures/cert.pem",
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             PemPrivateKey = Std.File.Invoke(new()
+    ///             {
+    ///                 Input = "test-fixtures/private-key.pem",
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultBackendService = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "backend-service",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///     });
+    /// 
+    ///     var defaultURLMap = new Gcp.Compute.URLMap("default", new()
+    ///     {
+    ///         Name = "url-map",
+    ///         Description = "a description",
+    ///         DefaultService = defaultBackendService.Id,
+    ///         HostRules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapHostRuleArgs
+    ///             {
+    ///                 Hosts = new[]
+    ///                 {
+    ///                     "mysite.com",
+    ///                 },
+    ///                 PathMatcher = "allpaths",
+    ///             },
+    ///         },
+    ///         PathMatchers = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapPathMatcherArgs
+    ///             {
+    ///                 Name = "allpaths",
+    ///                 DefaultService = defaultBackendService.Id,
+    ///                 PathRules = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleArgs
+    ///                     {
+    ///                         Paths = new[]
+    ///                         {
+    ///                             "/*",
+    ///                         },
+    ///                         Service = defaultBackendService.Id,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.TargetHttpsProxy("default", new()
+    ///     {
+    ///         Name = "target-http-proxy",
     ///         UrlMap = defaultURLMap.Id,
     ///         CertificateManagerCertificates = new[]
     ///         {
@@ -94,7 +434,6 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///     });
     /// 
-    ///     // [google_certificate_manager_certificate.default.id] is also acceptable
     /// });
     /// ```
     /// 

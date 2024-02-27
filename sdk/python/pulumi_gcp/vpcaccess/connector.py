@@ -483,6 +483,7 @@ class Connector(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         connector = gcp.vpcaccess.Connector("connector",
+            name="vpc-con",
             ip_cidr_range="10.8.0.0/28",
             network="default")
         ```
@@ -492,14 +493,18 @@ class Connector(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        custom_test_network = gcp.compute.Network("customTestNetwork", auto_create_subnetworks=False)
-        custom_test_subnetwork = gcp.compute.Subnetwork("customTestSubnetwork",
+        custom_test_network = gcp.compute.Network("custom_test",
+            name="vpc-con",
+            auto_create_subnetworks=False)
+        custom_test = gcp.compute.Subnetwork("custom_test",
+            name="vpc-con",
             ip_cidr_range="10.2.0.0/28",
             region="us-central1",
             network=custom_test_network.id)
         connector = gcp.vpcaccess.Connector("connector",
+            name="vpc-con",
             subnet=gcp.vpcaccess.ConnectorSubnetArgs(
-                name=custom_test_subnetwork.name,
+                name=custom_test.name,
             ),
             machine_type="e2-standard-4")
         ```
@@ -576,6 +581,7 @@ class Connector(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         connector = gcp.vpcaccess.Connector("connector",
+            name="vpc-con",
             ip_cidr_range="10.8.0.0/28",
             network="default")
         ```
@@ -585,14 +591,18 @@ class Connector(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        custom_test_network = gcp.compute.Network("customTestNetwork", auto_create_subnetworks=False)
-        custom_test_subnetwork = gcp.compute.Subnetwork("customTestSubnetwork",
+        custom_test_network = gcp.compute.Network("custom_test",
+            name="vpc-con",
+            auto_create_subnetworks=False)
+        custom_test = gcp.compute.Subnetwork("custom_test",
+            name="vpc-con",
             ip_cidr_range="10.2.0.0/28",
             region="us-central1",
             network=custom_test_network.id)
         connector = gcp.vpcaccess.Connector("connector",
+            name="vpc-con",
             subnet=gcp.vpcaccess.ConnectorSubnetArgs(
-                name=custom_test_subnetwork.name,
+                name=custom_test.name,
             ),
             machine_type="e2-standard-4")
         ```

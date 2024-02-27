@@ -290,13 +290,14 @@ class LogView(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        logging_log_view_project_bucket_config = gcp.logging.ProjectBucketConfig("loggingLogViewProjectBucketConfig",
+        logging_log_view = gcp.logging.ProjectBucketConfig("logging_log_view",
             project="my-project-name",
             location="global",
             retention_days=30,
             bucket_id="_Default")
-        logging_log_view_log_view = gcp.logging.LogView("loggingLogViewLogView",
-            bucket=logging_log_view_project_bucket_config.id,
+        logging_log_view_log_view = gcp.logging.LogView("logging_log_view",
+            name="my-view",
+            bucket=logging_log_view.id,
             description="A logging view configured with Terraform",
             filter="SOURCE(\\"projects/myproject\\") AND resource.type = \\"gce_instance\\" AND LOG_ID(\\"stdout\\")")
         ```
@@ -347,13 +348,14 @@ class LogView(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        logging_log_view_project_bucket_config = gcp.logging.ProjectBucketConfig("loggingLogViewProjectBucketConfig",
+        logging_log_view = gcp.logging.ProjectBucketConfig("logging_log_view",
             project="my-project-name",
             location="global",
             retention_days=30,
             bucket_id="_Default")
-        logging_log_view_log_view = gcp.logging.LogView("loggingLogViewLogView",
-            bucket=logging_log_view_project_bucket_config.id,
+        logging_log_view_log_view = gcp.logging.LogView("logging_log_view",
+            name="my-view",
+            bucket=logging_log_view.id,
             description="A logging view configured with Terraform",
             filter="SOURCE(\\"projects/myproject\\") AND resource.type = \\"gce_instance\\" AND LOG_ID(\\"stdout\\")")
         ```

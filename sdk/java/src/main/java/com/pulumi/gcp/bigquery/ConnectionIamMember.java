@@ -62,9 +62,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ConnectionIamPolicy(&#34;policy&#34;, ConnectionIamPolicyArgs.builder()        
- *             .project(google_bigquery_connection.connection().project())
- *             .location(google_bigquery_connection.connection().location())
- *             .connectionId(google_bigquery_connection.connection().connection_id())
+ *             .project(connection.project())
+ *             .location(connection.location())
+ *             .connectionId(connection.connectionId())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -95,9 +95,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new ConnectionIamBinding(&#34;binding&#34;, ConnectionIamBindingArgs.builder()        
- *             .project(google_bigquery_connection.connection().project())
- *             .location(google_bigquery_connection.connection().location())
- *             .connectionId(google_bigquery_connection.connection().connection_id())
+ *             .project(connection.project())
+ *             .location(connection.location())
+ *             .connectionId(connection.connectionId())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -129,9 +129,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new ConnectionIamMember(&#34;member&#34;, ConnectionIamMemberArgs.builder()        
- *             .project(google_bigquery_connection.connection().project())
- *             .location(google_bigquery_connection.connection().location())
- *             .connectionId(google_bigquery_connection.connection().connection_id())
+ *             .project(connection.project())
+ *             .location(connection.location())
+ *             .connectionId(connection.connectionId())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

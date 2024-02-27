@@ -346,13 +346,13 @@ class Group(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.migrationcenter.Group("default",
+            location="us-central1",
+            group_id="group-test",
             description="Terraform integration test description",
             display_name="Terraform integration test display",
-            group_id="group-test",
             labels={
                 "key": "value",
-            },
-            location="us-central1")
+            })
         ```
 
         ## Import
@@ -411,13 +411,13 @@ class Group(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.migrationcenter.Group("default",
+            location="us-central1",
+            group_id="group-test",
             description="Terraform integration test description",
             display_name="Terraform integration test display",
-            group_id="group-test",
             labels={
                 "key": "value",
-            },
-            location="us-central1")
+            })
         ```
 
         ## Import

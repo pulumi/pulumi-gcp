@@ -27,6 +27,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.NetworkFirewallPolicy;
  * import com.pulumi.gcp.compute.NetworkFirewallPolicyArgs;
  * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.NetworkFirewallPolicyAssociation;
  * import com.pulumi.gcp.compute.NetworkFirewallPolicyAssociationArgs;
  * import java.util.List;
@@ -43,13 +44,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var networkFirewallPolicy = new NetworkFirewallPolicy(&#34;networkFirewallPolicy&#34;, NetworkFirewallPolicyArgs.builder()        
+ *             .name(&#34;policy&#34;)
  *             .project(&#34;my-project-name&#34;)
  *             .description(&#34;Sample global network firewall policy&#34;)
  *             .build());
  * 
- *         var network = new Network(&#34;network&#34;);
+ *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
+ *             .name(&#34;network&#34;)
+ *             .build());
  * 
  *         var primary = new NetworkFirewallPolicyAssociation(&#34;primary&#34;, NetworkFirewallPolicyAssociationArgs.builder()        
+ *             .name(&#34;association&#34;)
  *             .attachmentTarget(network.id())
  *             .firewallPolicy(networkFirewallPolicy.name())
  *             .project(&#34;my-project-name&#34;)

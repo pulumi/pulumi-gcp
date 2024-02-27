@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.iap.getWebIamPolicy({
- *     project: google_project_service.project_service.project,
+ *     project: projectService.project,
  * });
  * ```
  */
@@ -67,7 +67,7 @@ export interface GetWebIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.iap.getWebIamPolicy({
- *     project: google_project_service.project_service.project,
+ *     project: projectService.project,
  * });
  * ```
  */

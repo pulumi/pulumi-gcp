@@ -109,9 +109,9 @@ def get_autoscaling_policy_iam_policy(location: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataproc.get_autoscaling_policy_iam_policy(project=google_dataproc_autoscaling_policy["basic"]["project"],
-        location=google_dataproc_autoscaling_policy["basic"]["location"],
-        policy_id=google_dataproc_autoscaling_policy["basic"]["policy_id"])
+    policy = gcp.dataproc.get_autoscaling_policy_iam_policy(project=basic["project"],
+        location=basic["location"],
+        policy_id=basic["policyId"])
     ```
 
 
@@ -155,9 +155,9 @@ def get_autoscaling_policy_iam_policy_output(location: Optional[pulumi.Input[Opt
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataproc.get_autoscaling_policy_iam_policy(project=google_dataproc_autoscaling_policy["basic"]["project"],
-        location=google_dataproc_autoscaling_policy["basic"]["location"],
-        policy_id=google_dataproc_autoscaling_policy["basic"]["policy_id"])
+    policy = gcp.dataproc.get_autoscaling_policy_iam_policy(project=basic["project"],
+        location=basic["location"],
+        policy_id=basic["policyId"])
     ```
 
 

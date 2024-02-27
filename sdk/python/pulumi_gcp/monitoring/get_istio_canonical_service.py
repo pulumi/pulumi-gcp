@@ -163,9 +163,10 @@ def get_istio_canonical_service(canonical_service: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    default = gcp.monitoring.get_istio_canonical_service(canonical_service="prometheus",
+    # Monitors the default MeshIstio service
+    default = gcp.monitoring.get_istio_canonical_service(mesh_uid="proj-573164786102",
         canonical_service_namespace="istio-system",
-        mesh_uid="proj-573164786102")
+        canonical_service="prometheus")
     ```
 
 
@@ -231,9 +232,10 @@ def get_istio_canonical_service_output(canonical_service: Optional[pulumi.Input[
     import pulumi
     import pulumi_gcp as gcp
 
-    default = gcp.monitoring.get_istio_canonical_service(canonical_service="prometheus",
+    # Monitors the default MeshIstio service
+    default = gcp.monitoring.get_istio_canonical_service(mesh_uid="proj-573164786102",
         canonical_service_namespace="istio-system",
-        mesh_uid="proj-573164786102")
+        canonical_service="prometheus")
     ```
 
 

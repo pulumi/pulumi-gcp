@@ -64,9 +64,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new IamPolicy(&#34;policy&#34;, IamPolicyArgs.builder()        
- *             .project(google_bigquery_table.test().project())
- *             .datasetId(google_bigquery_table.test().dataset_id())
- *             .tableId(google_bigquery_table.test().table_id())
+ *             .project(test.project())
+ *             .datasetId(test.datasetId())
+ *             .tableId(test.tableId())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -111,9 +111,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new IamPolicy(&#34;policy&#34;, IamPolicyArgs.builder()        
- *             .project(google_bigquery_table.test().project())
- *             .datasetId(google_bigquery_table.test().dataset_id())
- *             .tableId(google_bigquery_table.test().table_id())
+ *             .project(test.project())
+ *             .datasetId(test.datasetId())
+ *             .tableId(test.tableId())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -143,9 +143,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new IamBinding(&#34;binding&#34;, IamBindingArgs.builder()        
- *             .project(google_bigquery_table.test().project())
- *             .datasetId(google_bigquery_table.test().dataset_id())
- *             .tableId(google_bigquery_table.test().table_id())
+ *             .project(test.project())
+ *             .datasetId(test.datasetId())
+ *             .tableId(test.tableId())
  *             .role(&#34;roles/bigquery.dataOwner&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -178,9 +178,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new IamBinding(&#34;binding&#34;, IamBindingArgs.builder()        
- *             .project(google_bigquery_table.test().project())
- *             .datasetId(google_bigquery_table.test().dataset_id())
- *             .tableId(google_bigquery_table.test().table_id())
+ *             .project(test.project())
+ *             .datasetId(test.datasetId())
+ *             .tableId(test.tableId())
  *             .role(&#34;roles/bigquery.dataOwner&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .condition(IamBindingConditionArgs.builder()
@@ -216,9 +216,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new IamMember(&#34;member&#34;, IamMemberArgs.builder()        
- *             .project(google_bigquery_table.test().project())
- *             .datasetId(google_bigquery_table.test().dataset_id())
- *             .tableId(google_bigquery_table.test().table_id())
+ *             .project(test.project())
+ *             .datasetId(test.datasetId())
+ *             .tableId(test.tableId())
  *             .role(&#34;roles/bigquery.dataOwner&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -251,9 +251,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new IamMember(&#34;member&#34;, IamMemberArgs.builder()        
- *             .project(google_bigquery_table.test().project())
- *             .datasetId(google_bigquery_table.test().dataset_id())
- *             .tableId(google_bigquery_table.test().table_id())
+ *             .project(test.project())
+ *             .datasetId(test.datasetId())
+ *             .tableId(test.tableId())
  *             .role(&#34;roles/bigquery.dataOwner&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .condition(IamMemberConditionArgs.builder()

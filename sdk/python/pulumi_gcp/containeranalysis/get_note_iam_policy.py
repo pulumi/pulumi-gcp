@@ -99,8 +99,8 @@ def get_note_iam_policy(note: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.containeranalysis.get_note_iam_policy(project=google_container_analysis_note["note"]["project"],
-        note=google_container_analysis_note["note"]["name"])
+    policy = gcp.containeranalysis.get_note_iam_policy(project=note["project"],
+        note=note["name"])
     ```
 
 
@@ -135,8 +135,8 @@ def get_note_iam_policy_output(note: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.containeranalysis.get_note_iam_policy(project=google_container_analysis_note["note"]["project"],
-        note=google_container_analysis_note["note"]["name"])
+    policy = gcp.containeranalysis.get_note_iam_policy(project=note["project"],
+        note=note["name"])
     ```
 
 

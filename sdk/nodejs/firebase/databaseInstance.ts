@@ -16,8 +16,6 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  *     region: "us-central1",
  *     instanceId: "active-db",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Firebase Database Instance Full
@@ -32,8 +30,6 @@ import * as utilities from "../utilities";
  *     instanceId: "disabled-db",
  *     type: "USER_DATABASE",
  *     desiredState: "DISABLED",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Firebase Database Instance Default Database
@@ -42,31 +38,24 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultProject = new gcp.organizations.Project("defaultProject", {
+ * const _default = new gcp.organizations.Project("default", {
+ *     projectId: "rtdb-project",
+ *     name: "rtdb-project",
  *     orgId: "123456789",
  *     labels: {
  *         firebase: "enabled",
  *     },
- * }, {
- *     provider: google_beta,
  * });
- * const defaultFirebase_projectProject = new gcp.firebase.Project("defaultFirebase/projectProject", {project: defaultProject.projectId}, {
- *     provider: google_beta,
- * });
- * const firebaseDatabase = new gcp.projects.Service("firebaseDatabase", {
- *     project: defaultFirebase / projectProject.project,
+ * const defaultProject = new gcp.firebase.Project("default", {project: _default.projectId});
+ * const firebaseDatabase = new gcp.projects.Service("firebase_database", {
+ *     project: defaultProject.project,
  *     service: "firebasedatabase.googleapis.com",
- * }, {
- *     provider: google_beta,
  * });
- * const defaultDatabaseInstance = new gcp.firebase.DatabaseInstance("defaultDatabaseInstance", {
- *     project: defaultFirebase / projectProject.project,
+ * const defaultDatabaseInstance = new gcp.firebase.DatabaseInstance("default", {
+ *     project: defaultProject.project,
  *     region: "us-central1",
  *     instanceId: "rtdb-project-default-rtdb",
  *     type: "DEFAULT_DATABASE",
- * }, {
- *     provider: google_beta,
- *     dependsOn: [firebaseDatabase],
  * });
  * ```
  *

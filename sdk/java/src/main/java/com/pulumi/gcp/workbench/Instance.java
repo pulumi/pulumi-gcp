@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *             .name(&#34;workbench-instance&#34;)
  *             .location(&#34;us-west1-a&#34;)
  *             .build());
  * 
@@ -78,18 +79,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *             .name(&#34;workbench-instance&#34;)
+ *             .location(&#34;us-central1-a&#34;)
  *             .gceSetup(InstanceGceSetupArgs.builder()
- *                 .acceleratorConfigs(InstanceGceSetupAcceleratorConfigArgs.builder()
- *                     .coreCount(1)
- *                     .type(&#34;NVIDIA_TESLA_T4&#34;)
- *                     .build())
  *                 .machineType(&#34;n1-standard-1&#34;)
+ *                 .acceleratorConfigs(InstanceGceSetupAcceleratorConfigArgs.builder()
+ *                     .type(&#34;NVIDIA_TESLA_T4&#34;)
+ *                     .coreCount(1)
+ *                     .build())
  *                 .vmImage(InstanceGceSetupVmImageArgs.builder()
- *                     .family(&#34;tf-latest-gpu&#34;)
  *                     .project(&#34;deeplearning-platform-release&#34;)
+ *                     .family(&#34;tf-latest-gpu&#34;)
  *                     .build())
  *                 .build())
- *             .location(&#34;us-central1-a&#34;)
  *             .build());
  * 
  *     }
@@ -119,17 +121,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .desiredState(&#34;STOPPED&#34;)
+ *             .name(&#34;workbench-instance&#34;)
+ *             .location(&#34;us-central1-a&#34;)
  *             .gceSetup(InstanceGceSetupArgs.builder()
  *                 .machineType(&#34;e2-standard-4&#34;)
- *                 .metadata(Map.of(&#34;terraform&#34;, &#34;true&#34;))
  *                 .serviceAccounts(InstanceGceSetupServiceAccountArgs.builder()
  *                     .email(&#34;my@service-account.com&#34;)
  *                     .build())
+ *                 .metadata(Map.of(&#34;terraform&#34;, &#34;true&#34;))
  *                 .build())
  *             .instanceOwners(&#34;my@service-account.com&#34;)
  *             .labels(Map.of(&#34;k&#34;, &#34;val&#34;))
- *             .location(&#34;us-central1-a&#34;)
+ *             .desiredState(&#34;STOPPED&#34;)
  *             .build());
  * 
  *     }
@@ -165,16 +168,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myNetwork = new Network(&#34;myNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;wbi-test-default&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var mySubnetwork = new Subnetwork(&#34;mySubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;wbi-test-default&#34;)
  *             .network(myNetwork.id())
  *             .region(&#34;us-central1&#34;)
  *             .ipCidrRange(&#34;10.0.1.0/24&#34;)
  *             .build());
  * 
  *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *             .name(&#34;workbench-instance&#34;)
  *             .location(&#34;us-central1-a&#34;)
  *             .gceSetup(InstanceGceSetupArgs.builder()
  *                 .machineType(&#34;n1-standard-4&#34;)

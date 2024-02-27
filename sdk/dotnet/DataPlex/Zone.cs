@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     var basic = new Gcp.DataPlex.Lake("basic", new()
     ///     {
     ///         Location = "us-west1",
+    ///         Name = "lake",
     ///         Description = "Lake for DCL",
     ///         DisplayName = "Lake for DCL",
     ///         Project = "my-project-name",
@@ -43,6 +44,7 @@ namespace Pulumi.Gcp.DataPlex
     ///         },
     ///         Lake = basic.Name,
     ///         Location = "us-west1",
+    ///         Name = "zone",
     ///         ResourceSpec = new Gcp.DataPlex.Inputs.ZoneResourceSpecArgs
     ///         {
     ///             LocationType = "MULTI_REGION",

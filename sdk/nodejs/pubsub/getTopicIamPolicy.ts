@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.pubsub.getTopicIamPolicy({
- *     project: google_pubsub_topic.example.project,
- *     topic: google_pubsub_topic.example.name,
+ *     project: example.project,
+ *     topic: example.name,
  * });
  * ```
  */
@@ -73,8 +73,8 @@ export interface GetTopicIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.pubsub.getTopicIamPolicy({
- *     project: google_pubsub_topic.example.project,
- *     topic: google_pubsub_topic.example.name,
+ *     project: example.project,
+ *     topic: example.name,
  * });
  * ```
  */

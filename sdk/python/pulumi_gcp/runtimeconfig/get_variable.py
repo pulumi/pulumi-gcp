@@ -109,8 +109,8 @@ def get_variable(name: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    run_service = gcp.runtimeconfig.get_variable(name="prod-variables/hostname",
-        parent="my-service")
+    run_service = gcp.runtimeconfig.get_variable(parent="my-service",
+        name="prod-variables/hostname")
     ```
 
 
@@ -150,8 +150,8 @@ def get_variable_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    run_service = gcp.runtimeconfig.get_variable(name="prod-variables/hostname",
-        parent="my-service")
+    run_service = gcp.runtimeconfig.get_variable(parent="my-service",
+        name="prod-variables/hostname")
     ```
 
 

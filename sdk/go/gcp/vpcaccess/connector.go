@@ -35,6 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vpcaccess.NewConnector(ctx, "connector", &vpcaccess.ConnectorArgs{
+//				Name:        pulumi.String("vpc-con"),
 //				IpCidrRange: pulumi.String("10.8.0.0/28"),
 //				Network:     pulumi.String("default"),
 //			})
@@ -61,13 +62,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			customTestNetwork, err := compute.NewNetwork(ctx, "customTestNetwork", &compute.NetworkArgs{
+//			customTestNetwork, err := compute.NewNetwork(ctx, "custom_test", &compute.NetworkArgs{
+//				Name:                  pulumi.String("vpc-con"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			customTestSubnetwork, err := compute.NewSubnetwork(ctx, "customTestSubnetwork", &compute.SubnetworkArgs{
+//			customTest, err := compute.NewSubnetwork(ctx, "custom_test", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("vpc-con"),
 //				IpCidrRange: pulumi.String("10.2.0.0/28"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     customTestNetwork.ID(),
@@ -76,8 +79,9 @@ import (
 //				return err
 //			}
 //			_, err = vpcaccess.NewConnector(ctx, "connector", &vpcaccess.ConnectorArgs{
+//				Name: pulumi.String("vpc-con"),
 //				Subnet: &vpcaccess.ConnectorSubnetArgs{
-//					Name: customTestSubnetwork.Name,
+//					Name: customTest.Name,
 //				},
 //				MachineType: pulumi.String("e2-standard-4"),
 //			})

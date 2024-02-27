@@ -44,6 +44,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.BucketIAMMember;
  * import com.pulumi.gcp.storage.BucketIAMMemberArgs;
  * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
  * import com.pulumi.gcp.pubsub.TopicIAMMember;
  * import com.pulumi.gcp.pubsub.TopicIAMMemberArgs;
  * import com.pulumi.gcp.storage.TransferJob;
@@ -59,7 +60,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.inputs.TransferJobScheduleScheduleEndDateArgs;
  * import com.pulumi.gcp.storage.inputs.TransferJobScheduleStartTimeOfDayArgs;
  * import com.pulumi.gcp.storage.inputs.TransferJobNotificationConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -74,24 +74,25 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = StorageFunctions.getTransferProjectServiceAccount(GetTransferProjectServiceAccountArgs.builder()
- *             .project(var_.project())
+ *             .project(project)
  *             .build());
  * 
- *         var s3_backup_bucketBucket = new Bucket(&#34;s3-backup-bucketBucket&#34;, BucketArgs.builder()        
+ *         var s3_backup_bucket = new Bucket(&#34;s3-backup-bucket&#34;, BucketArgs.builder()        
+ *             .name(String.format(&#34;%s-backup&#34;, awsS3Bucket))
  *             .storageClass(&#34;NEARLINE&#34;)
- *             .project(var_.project())
+ *             .project(project)
  *             .location(&#34;US&#34;)
  *             .build());
  * 
  *         var s3_backup_bucketBucketIAMMember = new BucketIAMMember(&#34;s3-backup-bucketBucketIAMMember&#34;, BucketIAMMemberArgs.builder()        
- *             .bucket(s3_backup_bucketBucket.name())
+ *             .bucket(s3_backup_bucket.name())
  *             .role(&#34;roles/storage.admin&#34;)
  *             .member(String.format(&#34;serviceAccount:%s&#34;, default_.email()))
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(s3_backup_bucketBucket)
- *                 .build());
+ *             .build());
  * 
- *         var topic = new Topic(&#34;topic&#34;);
+ *         var topic = new Topic(&#34;topic&#34;, TopicArgs.builder()        
+ *             .name(pubsubTopicName)
+ *             .build());
  * 
  *         var notificationConfig = new TopicIAMMember(&#34;notificationConfig&#34;, TopicIAMMemberArgs.builder()        
  *             .topic(topic.id())
@@ -101,7 +102,7 @@ import javax.annotation.Nullable;
  * 
  *         var s3_bucket_nightly_backup = new TransferJob(&#34;s3-bucket-nightly-backup&#34;, TransferJobArgs.builder()        
  *             .description(&#34;Nightly backup of S3 bucket&#34;)
- *             .project(var_.project())
+ *             .project(project)
  *             .transferSpec(TransferJobTransferSpecArgs.builder()
  *                 .objectConditions(TransferJobTransferSpecObjectConditionsArgs.builder()
  *                     .maxTimeElapsedSinceLastModification(&#34;600s&#34;)
@@ -111,14 +112,14 @@ import javax.annotation.Nullable;
  *                     .deleteObjectsUniqueInSink(false)
  *                     .build())
  *                 .awsS3DataSource(TransferJobTransferSpecAwsS3DataSourceArgs.builder()
- *                     .bucketName(var_.aws_s3_bucket())
+ *                     .bucketName(awsS3Bucket)
  *                     .awsAccessKey(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs.builder()
- *                         .accessKeyId(var_.aws_access_key())
- *                         .secretAccessKey(var_.aws_secret_key())
+ *                         .accessKeyId(awsAccessKey)
+ *                         .secretAccessKey(awsSecretKey)
  *                         .build())
  *                     .build())
  *                 .gcsDataSink(TransferJobTransferSpecGcsDataSinkArgs.builder()
- *                     .bucketName(s3_backup_bucketBucket.name())
+ *                     .bucketName(s3_backup_bucket.name())
  *                     .path(&#34;foo/bar/&#34;)
  *                     .build())
  *                 .build())
@@ -148,11 +149,7 @@ import javax.annotation.Nullable;
  *                     &#34;TRANSFER_OPERATION_FAILED&#34;)
  *                 .payloadFormat(&#34;JSON&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
- *                     s3_backup_bucketBucketIAMMember,
- *                     notificationConfig)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

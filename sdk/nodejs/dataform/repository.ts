@@ -14,24 +14,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const gitRepository = new gcp.sourcerepo.Repository("gitRepository", {}, {
- *     provider: google_beta,
- * });
+ * const gitRepository = new gcp.sourcerepo.Repository("git_repository", {name: "my/repository"});
  * const secret = new gcp.secretmanager.Secret("secret", {
  *     secretId: "my-secret",
  *     replication: {
  *         auto: {},
  *     },
- * }, {
- *     provider: google_beta,
  * });
- * const secretVersion = new gcp.secretmanager.SecretVersion("secretVersion", {
+ * const secretVersion = new gcp.secretmanager.SecretVersion("secret_version", {
  *     secret: secret.id,
  *     secretData: "secret-data",
- * }, {
- *     provider: google_beta,
  * });
- * const dataformRespository = new gcp.dataform.Repository("dataformRespository", {
+ * const dataformRespository = new gcp.dataform.Repository("dataform_respository", {
+ *     name: "dataform_repository",
  *     displayName: "dataform_repository",
  *     npmrcEnvironmentVariablesSecretVersion: secretVersion.id,
  *     labels: {
@@ -47,8 +42,6 @@ import * as utilities from "../utilities";
  *         schemaSuffix: "_suffix",
  *         tablePrefix: "prefix_",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Dataform Repository Ssh
@@ -57,24 +50,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const gitRepository = new gcp.sourcerepo.Repository("gitRepository", {}, {
- *     provider: google_beta,
- * });
+ * const gitRepository = new gcp.sourcerepo.Repository("git_repository", {name: "my/repository"});
  * const secret = new gcp.secretmanager.Secret("secret", {
  *     secretId: "my-secret",
  *     replication: {
  *         auto: {},
  *     },
- * }, {
- *     provider: google_beta,
  * });
- * const secretVersion = new gcp.secretmanager.SecretVersion("secretVersion", {
+ * const secretVersion = new gcp.secretmanager.SecretVersion("secret_version", {
  *     secret: secret.id,
  *     secretData: "secret-data",
- * }, {
- *     provider: google_beta,
  * });
- * const dataformRespository = new gcp.dataform.Repository("dataformRespository", {
+ * const dataformRespository = new gcp.dataform.Repository("dataform_respository", {
+ *     name: "dataform_repository",
  *     gitRemoteSettings: {
  *         url: gitRepository.url,
  *         defaultBranch: "main",
@@ -89,8 +77,6 @@ import * as utilities from "../utilities";
  *         tablePrefix: "prefix_",
  *     },
  *     serviceAccount: "1234567890-compute@developer.gserviceaccount.com",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

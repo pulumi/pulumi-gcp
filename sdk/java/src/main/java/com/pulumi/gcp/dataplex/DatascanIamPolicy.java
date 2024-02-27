@@ -60,9 +60,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new DatascanIamPolicy(&#34;policy&#34;, DatascanIamPolicyArgs.builder()        
- *             .project(google_dataplex_datascan.basic_profile().project())
- *             .location(google_dataplex_datascan.basic_profile().location())
- *             .dataScanId(google_dataplex_datascan.basic_profile().data_scan_id())
+ *             .project(basicProfile.project())
+ *             .location(basicProfile.location())
+ *             .dataScanId(basicProfile.dataScanId())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -93,9 +93,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new DatascanIamBinding(&#34;binding&#34;, DatascanIamBindingArgs.builder()        
- *             .project(google_dataplex_datascan.basic_profile().project())
- *             .location(google_dataplex_datascan.basic_profile().location())
- *             .dataScanId(google_dataplex_datascan.basic_profile().data_scan_id())
+ *             .project(basicProfile.project())
+ *             .location(basicProfile.location())
+ *             .dataScanId(basicProfile.dataScanId())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -127,9 +127,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new DatascanIamMember(&#34;member&#34;, DatascanIamMemberArgs.builder()        
- *             .project(google_dataplex_datascan.basic_profile().project())
- *             .location(google_dataplex_datascan.basic_profile().location())
- *             .dataScanId(google_dataplex_datascan.basic_profile().data_scan_id())
+ *             .project(basicProfile.project())
+ *             .location(basicProfile.location())
+ *             .dataScanId(basicProfile.dataScanId())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

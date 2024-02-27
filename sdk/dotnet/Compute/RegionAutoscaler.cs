@@ -33,8 +33,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobarInstanceTemplate = new Gcp.Compute.InstanceTemplate("foobarInstanceTemplate", new()
+    ///     var foobarInstanceTemplate = new Gcp.Compute.InstanceTemplate("foobar", new()
     ///     {
+    ///         Name = "my-instance-template",
     ///         MachineType = "e2-standard-4",
     ///         Disks = new[]
     ///         {
@@ -73,10 +74,14 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///     });
     /// 
-    ///     var foobarTargetPool = new Gcp.Compute.TargetPool("foobarTargetPool");
-    /// 
-    ///     var foobarRegionInstanceGroupManager = new Gcp.Compute.RegionInstanceGroupManager("foobarRegionInstanceGroupManager", new()
+    ///     var foobarTargetPool = new Gcp.Compute.TargetPool("foobar", new()
     ///     {
+    ///         Name = "my-target-pool",
+    ///     });
+    /// 
+    ///     var foobarRegionInstanceGroupManager = new Gcp.Compute.RegionInstanceGroupManager("foobar", new()
+    ///     {
+    ///         Name = "my-region-igm",
     ///         Region = "us-central1",
     ///         Versions = new[]
     ///         {
@@ -93,8 +98,9 @@ namespace Pulumi.Gcp.Compute
     ///         BaseInstanceName = "foobar",
     ///     });
     /// 
-    ///     var foobarRegionAutoscaler = new Gcp.Compute.RegionAutoscaler("foobarRegionAutoscaler", new()
+    ///     var foobar = new Gcp.Compute.RegionAutoscaler("foobar", new()
     ///     {
+    ///         Name = "my-region-autoscaler",
     ///         Region = "us-central1",
     ///         Target = foobarRegionInstanceGroupManager.Id,
     ///         AutoscalingPolicy = new Gcp.Compute.Inputs.RegionAutoscalerAutoscalingPolicyArgs

@@ -16,12 +16,11 @@ import * as utilities from "../utilities";
  *
  * const _default = new gcp.compute.RegionSecurityPolicy("default", {
  *     region: "us-west2",
+ *     name: "policyruletest",
  *     description: "basic region security policy",
  *     type: "CLOUD_ARMOR",
- * }, {
- *     provider: google_beta,
  * });
- * const policyRule = new gcp.compute.RegionSecurityPolicyRule("policyRule", {
+ * const policyRule = new gcp.compute.RegionSecurityPolicyRule("policy_rule", {
  *     region: "us-west2",
  *     securityPolicy: _default.name,
  *     description: "new rule",
@@ -34,8 +33,6 @@ import * as utilities from "../utilities";
  *     },
  *     action: "allow",
  *     preview: true,
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Region Security Policy Rule Multiple Rules
@@ -46,12 +43,11 @@ import * as utilities from "../utilities";
  *
  * const _default = new gcp.compute.RegionSecurityPolicy("default", {
  *     region: "us-west2",
+ *     name: "policywithmultiplerules",
  *     description: "basic region security policy",
  *     type: "CLOUD_ARMOR",
- * }, {
- *     provider: google_beta,
  * });
- * const policyRuleOne = new gcp.compute.RegionSecurityPolicyRule("policyRuleOne", {
+ * const policyRuleOne = new gcp.compute.RegionSecurityPolicyRule("policy_rule_one", {
  *     region: "us-west2",
  *     securityPolicy: _default.name,
  *     description: "new rule one",
@@ -64,10 +60,8 @@ import * as utilities from "../utilities";
  *     },
  *     action: "allow",
  *     preview: true,
- * }, {
- *     provider: google_beta,
  * });
- * const policyRuleTwo = new gcp.compute.RegionSecurityPolicyRule("policyRuleTwo", {
+ * const policyRuleTwo = new gcp.compute.RegionSecurityPolicyRule("policy_rule_two", {
  *     region: "us-west2",
  *     securityPolicy: _default.name,
  *     description: "new rule two",
@@ -83,8 +77,6 @@ import * as utilities from "../utilities";
  *     },
  *     action: "allow",
  *     preview: true,
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Region Security Policy Rule With Network Match
@@ -96,24 +88,23 @@ import * as utilities from "../utilities";
  * // First activate advanced network DDoS protection for the desired region
  * const policyddosprotection = new gcp.compute.RegionSecurityPolicy("policyddosprotection", {
  *     region: "us-west2",
+ *     name: "policyddosprotection",
  *     description: "policy for activating network DDoS protection for the desired region",
  *     type: "CLOUD_ARMOR_NETWORK",
  *     ddosProtectionConfig: {
  *         ddosProtection: "ADVANCED_PREVIEW",
  *     },
- * }, {
- *     provider: google_beta,
  * });
- * const edgeSecService = new gcp.compute.NetworkEdgeSecurityService("edgeSecService", {
+ * const edgeSecService = new gcp.compute.NetworkEdgeSecurityService("edge_sec_service", {
  *     region: "us-west2",
+ *     name: "edgesecservice",
  *     description: "linking policy to edge security service",
  *     securityPolicy: policyddosprotection.selfLink,
- * }, {
- *     provider: google_beta,
  * });
  * // Add the desired policy and custom rule.
  * const policynetworkmatch = new gcp.compute.RegionSecurityPolicy("policynetworkmatch", {
  *     region: "us-west2",
+ *     name: "policyfornetworkmatch",
  *     description: "region security policy for network match",
  *     type: "CLOUD_ARMOR_NETWORK",
  *     userDefinedFields: [{
@@ -123,11 +114,8 @@ import * as utilities from "../utilities";
  *         size: 2,
  *         mask: "0x8F00",
  *     }],
- * }, {
- *     provider: google_beta,
- *     dependsOn: [edgeSecService],
  * });
- * const policyRuleNetworkMatch = new gcp.compute.RegionSecurityPolicyRule("policyRuleNetworkMatch", {
+ * const policyRuleNetworkMatch = new gcp.compute.RegionSecurityPolicyRule("policy_rule_network_match", {
  *     region: "us-west2",
  *     securityPolicy: policynetworkmatch.name,
  *     description: "custom rule for network match",
@@ -141,8 +129,6 @@ import * as utilities from "../utilities";
  *     },
  *     action: "allow",
  *     preview: true,
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

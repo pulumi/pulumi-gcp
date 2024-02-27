@@ -19,6 +19,69 @@ namespace Pulumi.Gcp.CloudAsset
     ///     * [Official Documentation](https://cloud.google.com/asset-inventory/docs)
     /// 
     /// ## Example Usage
+    /// ### Cloud Asset Folder Feed
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // The topic where the resource change notifications will be sent.
+    ///     var feedOutput = new Gcp.PubSub.Topic("feed_output", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "network-updates",
+    ///     });
+    /// 
+    ///     // The folder that will be monitored for resource updates.
+    ///     var myFolder = new Gcp.Organizations.Folder("my_folder", new()
+    ///     {
+    ///         DisplayName = "Networking",
+    ///         Parent = "organizations/123456789",
+    ///     });
+    /// 
+    ///     // Create a feed that sends notifications about network resource updates under a
+    ///     // particular folder.
+    ///     var folderFeed = new Gcp.CloudAsset.FolderFeed("folder_feed", new()
+    ///     {
+    ///         BillingProject = "my-project-name",
+    ///         Folder = myFolder.FolderId,
+    ///         FeedId = "network-updates",
+    ///         ContentType = "RESOURCE",
+    ///         AssetTypes = new[]
+    ///         {
+    ///             "compute.googleapis.com/Subnetwork",
+    ///             "compute.googleapis.com/Network",
+    ///         },
+    ///         FeedOutputConfig = new Gcp.CloudAsset.Inputs.FolderFeedFeedOutputConfigArgs
+    ///         {
+    ///             PubsubDestination = new Gcp.CloudAsset.Inputs.FolderFeedFeedOutputConfigPubsubDestinationArgs
+    ///             {
+    ///                 Topic = feedOutput.Id,
+    ///             },
+    ///         },
+    ///         Condition = new Gcp.CloudAsset.Inputs.FolderFeedConditionArgs
+    ///         {
+    ///             Expression = @"!temporal_asset.deleted &amp;&amp;
+    /// temporal_asset.prior_asset_state == google.cloud.asset.v1.TemporalAsset.PriorAssetState.DOES_NOT_EXIST
+    /// ",
+    ///             Title = "created",
+    ///             Description = "Send notifications on creation events",
+    ///         },
+    ///     });
+    /// 
+    ///     // Find the project number of the project whose identity will be used for sending
+    ///     // the asset change notifications.
+    ///     var project = Gcp.Organizations.GetProject.Invoke(new()
+    ///     {
+    ///         ProjectId = "my-project-name",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

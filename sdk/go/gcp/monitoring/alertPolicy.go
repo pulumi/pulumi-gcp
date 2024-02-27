@@ -37,25 +37,25 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := monitoring.NewAlertPolicy(ctx, "alertPolicy", &monitoring.AlertPolicyArgs{
-//				Combiner: pulumi.String("OR"),
+//			_, err := monitoring.NewAlertPolicy(ctx, "alert_policy", &monitoring.AlertPolicyArgs{
+//				DisplayName: pulumi.String("My Alert Policy"),
+//				Combiner:    pulumi.String("OR"),
 //				Conditions: monitoring.AlertPolicyConditionArray{
 //					&monitoring.AlertPolicyConditionArgs{
+//						DisplayName: pulumi.String("test condition"),
 //						ConditionThreshold: &monitoring.AlertPolicyConditionConditionThresholdArgs{
+//							Filter:     pulumi.String("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\""),
+//							Duration:   pulumi.String("60s"),
+//							Comparison: pulumi.String("COMPARISON_GT"),
 //							Aggregations: monitoring.AlertPolicyConditionConditionThresholdAggregationArray{
 //								&monitoring.AlertPolicyConditionConditionThresholdAggregationArgs{
 //									AlignmentPeriod:  pulumi.String("60s"),
 //									PerSeriesAligner: pulumi.String("ALIGN_RATE"),
 //								},
 //							},
-//							Comparison: pulumi.String("COMPARISON_GT"),
-//							Duration:   pulumi.String("60s"),
-//							Filter:     pulumi.String("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\""),
 //						},
-//						DisplayName: pulumi.String("test condition"),
 //					},
 //				},
-//				DisplayName: pulumi.String("My Alert Policy"),
 //				UserLabels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -82,26 +82,26 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := monitoring.NewAlertPolicy(ctx, "alertPolicy", &monitoring.AlertPolicyArgs{
-//				Combiner: pulumi.String("OR"),
+//			_, err := monitoring.NewAlertPolicy(ctx, "alert_policy", &monitoring.AlertPolicyArgs{
+//				DisplayName: pulumi.String("My Alert Policy"),
+//				Combiner:    pulumi.String("OR"),
 //				Conditions: monitoring.AlertPolicyConditionArray{
 //					&monitoring.AlertPolicyConditionArgs{
+//						DisplayName: pulumi.String("test condition"),
 //						ConditionThreshold: &monitoring.AlertPolicyConditionConditionThresholdArgs{
+//							Filter:     pulumi.String("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\""),
+//							Duration:   pulumi.String("60s"),
+//							Comparison: pulumi.String("COMPARISON_GT"),
 //							Aggregations: monitoring.AlertPolicyConditionConditionThresholdAggregationArray{
 //								&monitoring.AlertPolicyConditionConditionThresholdAggregationArgs{
 //									AlignmentPeriod:  pulumi.String("60s"),
 //									PerSeriesAligner: pulumi.String("ALIGN_RATE"),
 //								},
 //							},
-//							Comparison:            pulumi.String("COMPARISON_GT"),
-//							Duration:              pulumi.String("60s"),
 //							EvaluationMissingData: pulumi.String("EVALUATION_MISSING_DATA_INACTIVE"),
-//							Filter:                pulumi.String("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\""),
 //						},
-//						DisplayName: pulumi.String("test condition"),
 //					},
 //				},
-//				DisplayName: pulumi.String("My Alert Policy"),
 //				UserLabels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -128,28 +128,28 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := monitoring.NewAlertPolicy(ctx, "alertPolicy", &monitoring.AlertPolicyArgs{
-//				Combiner: pulumi.String("OR"),
+//			_, err := monitoring.NewAlertPolicy(ctx, "alert_policy", &monitoring.AlertPolicyArgs{
+//				DisplayName: pulumi.String("My Alert Policy"),
+//				Combiner:    pulumi.String("OR"),
 //				Conditions: monitoring.AlertPolicyConditionArray{
 //					&monitoring.AlertPolicyConditionArgs{
+//						DisplayName: pulumi.String("test condition"),
 //						ConditionThreshold: &monitoring.AlertPolicyConditionConditionThresholdArgs{
+//							Filter:   pulumi.String("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\""),
+//							Duration: pulumi.String("60s"),
+//							ForecastOptions: &monitoring.AlertPolicyConditionConditionThresholdForecastOptionsArgs{
+//								ForecastHorizon: pulumi.String("3600s"),
+//							},
+//							Comparison: pulumi.String("COMPARISON_GT"),
 //							Aggregations: monitoring.AlertPolicyConditionConditionThresholdAggregationArray{
 //								&monitoring.AlertPolicyConditionConditionThresholdAggregationArgs{
 //									AlignmentPeriod:  pulumi.String("60s"),
 //									PerSeriesAligner: pulumi.String("ALIGN_RATE"),
 //								},
 //							},
-//							Comparison: pulumi.String("COMPARISON_GT"),
-//							Duration:   pulumi.String("60s"),
-//							Filter:     pulumi.String("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\""),
-//							ForecastOptions: &monitoring.AlertPolicyConditionConditionThresholdForecastOptionsArgs{
-//								ForecastHorizon: pulumi.String("3600s"),
-//							},
 //						},
-//						DisplayName: pulumi.String("test condition"),
 //					},
 //				},
-//				DisplayName: pulumi.String("My Alert Policy"),
 //				UserLabels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -176,24 +176,24 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := monitoring.NewAlertPolicy(ctx, "alertPolicy", &monitoring.AlertPolicyArgs{
+//			_, err := monitoring.NewAlertPolicy(ctx, "alert_policy", &monitoring.AlertPolicyArgs{
+//				DisplayName: pulumi.String("My Alert Policy"),
+//				Combiner:    pulumi.String("OR"),
+//				Conditions: monitoring.AlertPolicyConditionArray{
+//					&monitoring.AlertPolicyConditionArgs{
+//						DisplayName: pulumi.String("test condition"),
+//						ConditionPrometheusQueryLanguage: &monitoring.AlertPolicyConditionConditionPrometheusQueryLanguageArgs{
+//							Query:              pulumi.String("compute_googleapis_com:instance_cpu_usage_time > 0"),
+//							Duration:           pulumi.String("60s"),
+//							EvaluationInterval: pulumi.String("60s"),
+//							AlertRule:          pulumi.String("AlwaysOn"),
+//							RuleGroup:          pulumi.String("a test"),
+//						},
+//					},
+//				},
 //				AlertStrategy: &monitoring.AlertPolicyAlertStrategyArgs{
 //					AutoClose: pulumi.String("1800s"),
 //				},
-//				Combiner: pulumi.String("OR"),
-//				Conditions: monitoring.AlertPolicyConditionArray{
-//					&monitoring.AlertPolicyConditionArgs{
-//						ConditionPrometheusQueryLanguage: &monitoring.AlertPolicyConditionConditionPrometheusQueryLanguageArgs{
-//							AlertRule:          pulumi.String("AlwaysOn"),
-//							Duration:           pulumi.String("60s"),
-//							EvaluationInterval: pulumi.String("60s"),
-//							Query:              pulumi.String("compute_googleapis_com:instance_cpu_usage_time > 0"),
-//							RuleGroup:          pulumi.String("a test"),
-//						},
-//						DisplayName: pulumi.String("test condition"),
-//					},
-//				},
-//				DisplayName: pulumi.String("My Alert Policy"),
 //			})
 //			if err != nil {
 //				return err

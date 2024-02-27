@@ -33,7 +33,6 @@ namespace Pulumi.Gcp.Compute
         ///         Project = "debian-cloud",
         ///     });
         /// 
-        ///     // ...
         ///     var @default = new Gcp.Compute.Instance("default", new()
         ///     {
         ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
@@ -75,7 +74,6 @@ namespace Pulumi.Gcp.Compute
         ///         Project = "debian-cloud",
         ///     });
         /// 
-        ///     // ...
         ///     var @default = new Gcp.Compute.Instance("default", new()
         ///     {
         ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs

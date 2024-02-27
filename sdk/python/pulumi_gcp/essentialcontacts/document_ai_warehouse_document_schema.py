@@ -233,7 +233,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        example_text = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("exampleText",
+        example_text = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("example_text",
             project_number=project.number,
             display_name="test-property-text",
             location="us",
@@ -261,7 +261,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        example_integer = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("exampleInteger",
+        example_integer = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("example_integer",
             project_number=project.number,
             display_name="test-property-integer",
             location="us",
@@ -288,7 +288,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        example_float = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("exampleFloat",
+        example_float = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("example_float",
             project_number=project.number,
             display_name="test-property-float",
             location="us",
@@ -315,7 +315,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        example_property = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("exampleProperty",
+        example_property = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("example_property",
             project_number=project.number,
             display_name="test-property-property",
             location="us",
@@ -359,7 +359,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        example_property_enum = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("examplePropertyEnum",
+        example_property_enum = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("example_property_enum",
             project_number=project.number,
             display_name="test-property-property",
             location="us",
@@ -410,7 +410,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        example_enum = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("exampleEnum",
+        example_enum = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("example_enum",
             project_number=project.number,
             display_name="test-property-enum",
             location="us",
@@ -444,7 +444,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        example_map = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("exampleMap",
+        example_map = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("example_map",
             project_number=project.number,
             display_name="test-property-map",
             location="us",
@@ -471,7 +471,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        example_datetime = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("exampleDatetime",
+        example_datetime = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("example_datetime",
             project_number=project.number,
             display_name="test-property-date_time",
             location="us",
@@ -498,7 +498,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        example_timestamp = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("exampleTimestamp",
+        example_timestamp = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("example_timestamp",
             project_number=project.number,
             display_name="test-property-timestamp",
             location="us",
@@ -569,7 +569,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        example_text = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("exampleText",
+        example_text = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("example_text",
             project_number=project.number,
             display_name="test-property-text",
             location="us",
@@ -597,7 +597,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        example_integer = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("exampleInteger",
+        example_integer = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("example_integer",
             project_number=project.number,
             display_name="test-property-integer",
             location="us",
@@ -624,7 +624,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        example_float = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("exampleFloat",
+        example_float = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("example_float",
             project_number=project.number,
             display_name="test-property-float",
             location="us",
@@ -651,7 +651,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        example_property = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("exampleProperty",
+        example_property = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("example_property",
             project_number=project.number,
             display_name="test-property-property",
             location="us",
@@ -695,7 +695,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        example_property_enum = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("examplePropertyEnum",
+        example_property_enum = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("example_property_enum",
             project_number=project.number,
             display_name="test-property-property",
             location="us",
@@ -746,7 +746,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        example_enum = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("exampleEnum",
+        example_enum = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("example_enum",
             project_number=project.number,
             display_name="test-property-enum",
             location="us",
@@ -780,7 +780,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        example_map = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("exampleMap",
+        example_map = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("example_map",
             project_number=project.number,
             display_name="test-property-map",
             location="us",
@@ -807,7 +807,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        example_datetime = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("exampleDatetime",
+        example_datetime = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("example_datetime",
             project_number=project.number,
             display_name="test-property-date_time",
             location="us",
@@ -834,7 +834,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        example_timestamp = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("exampleTimestamp",
+        example_timestamp = gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("example_timestamp",
             project_number=project.number,
             display_name="test-property-timestamp",
             location="us",

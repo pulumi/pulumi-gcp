@@ -43,9 +43,9 @@ public final class GkebackupFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GkebackupFunctions.getBackupPlanIamPolicy(GetBackupPlanIamPolicyArgs.builder()
-     *             .project(google_gke_backup_backup_plan.basic().project())
-     *             .location(google_gke_backup_backup_plan.basic().location())
-     *             .name(google_gke_backup_backup_plan.basic().name())
+     *             .project(basic.project())
+     *             .location(basic.location())
+     *             .name(basic.name())
      *             .build());
      * 
      *     }
@@ -82,9 +82,9 @@ public final class GkebackupFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GkebackupFunctions.getBackupPlanIamPolicy(GetBackupPlanIamPolicyArgs.builder()
-     *             .project(google_gke_backup_backup_plan.basic().project())
-     *             .location(google_gke_backup_backup_plan.basic().location())
-     *             .name(google_gke_backup_backup_plan.basic().name())
+     *             .project(basic.project())
+     *             .location(basic.location())
+     *             .name(basic.name())
      *             .build());
      * 
      *     }
@@ -121,9 +121,9 @@ public final class GkebackupFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GkebackupFunctions.getBackupPlanIamPolicy(GetBackupPlanIamPolicyArgs.builder()
-     *             .project(google_gke_backup_backup_plan.basic().project())
-     *             .location(google_gke_backup_backup_plan.basic().location())
-     *             .name(google_gke_backup_backup_plan.basic().name())
+     *             .project(basic.project())
+     *             .location(basic.location())
+     *             .name(basic.name())
      *             .build());
      * 
      *     }
@@ -160,9 +160,9 @@ public final class GkebackupFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GkebackupFunctions.getBackupPlanIamPolicy(GetBackupPlanIamPolicyArgs.builder()
-     *             .project(google_gke_backup_backup_plan.basic().project())
-     *             .location(google_gke_backup_backup_plan.basic().location())
-     *             .name(google_gke_backup_backup_plan.basic().name())
+     *             .project(basic.project())
+     *             .location(basic.location())
+     *             .name(basic.name())
      *             .build());
      * 
      *     }
@@ -199,9 +199,9 @@ public final class GkebackupFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GkebackupFunctions.getRestorePlanIamPolicy(GetRestorePlanIamPolicyArgs.builder()
-     *             .project(google_gke_backup_restore_plan.all_ns().project())
-     *             .location(google_gke_backup_restore_plan.all_ns().location())
-     *             .name(google_gke_backup_restore_plan.all_ns().name())
+     *             .project(allNs.project())
+     *             .location(allNs.location())
+     *             .name(allNs.name())
      *             .build());
      * 
      *     }
@@ -238,9 +238,9 @@ public final class GkebackupFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GkebackupFunctions.getRestorePlanIamPolicy(GetRestorePlanIamPolicyArgs.builder()
-     *             .project(google_gke_backup_restore_plan.all_ns().project())
-     *             .location(google_gke_backup_restore_plan.all_ns().location())
-     *             .name(google_gke_backup_restore_plan.all_ns().name())
+     *             .project(allNs.project())
+     *             .location(allNs.location())
+     *             .name(allNs.name())
      *             .build());
      * 
      *     }
@@ -277,9 +277,9 @@ public final class GkebackupFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GkebackupFunctions.getRestorePlanIamPolicy(GetRestorePlanIamPolicyArgs.builder()
-     *             .project(google_gke_backup_restore_plan.all_ns().project())
-     *             .location(google_gke_backup_restore_plan.all_ns().location())
-     *             .name(google_gke_backup_restore_plan.all_ns().name())
+     *             .project(allNs.project())
+     *             .location(allNs.location())
+     *             .name(allNs.name())
      *             .build());
      * 
      *     }
@@ -316,9 +316,9 @@ public final class GkebackupFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GkebackupFunctions.getRestorePlanIamPolicy(GetRestorePlanIamPolicyArgs.builder()
-     *             .project(google_gke_backup_restore_plan.all_ns().project())
-     *             .location(google_gke_backup_restore_plan.all_ns().location())
-     *             .name(google_gke_backup_restore_plan.all_ns().name())
+     *             .project(allNs.project())
+     *             .location(allNs.location())
+     *             .name(allNs.name())
      *             .build());
      * 
      *     }

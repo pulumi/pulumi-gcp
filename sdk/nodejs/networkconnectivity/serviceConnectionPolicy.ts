@@ -22,13 +22,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const producerNet = new gcp.compute.Network("producerNet", {autoCreateSubnetworks: false});
- * const producerSubnet = new gcp.compute.Subnetwork("producerSubnet", {
+ * const producerNet = new gcp.compute.Network("producer_net", {
+ *     name: "producer-net",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const producerSubnet = new gcp.compute.Subnetwork("producer_subnet", {
+ *     name: "producer-subnet",
  *     ipCidrRange: "10.0.0.0/16",
  *     region: "us-central1",
  *     network: producerNet.id,
  * });
  * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
+ *     name: "my-network-connectivity-policy",
  *     location: "us-central1",
  *     serviceClass: "my-basic-service-class",
  *     description: "my basic service connection policy",

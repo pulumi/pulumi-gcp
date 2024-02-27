@@ -472,17 +472,19 @@ class Config(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_project = gcp.organizations.Project("defaultProject",
+        default = gcp.organizations.Project("default",
+            project_id="my-project",
+            name="my-project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             labels={
                 "firebase": "enabled",
             })
         identitytoolkit = gcp.projects.Service("identitytoolkit",
-            project=default_project.project_id,
+            project=default.project_id,
             service="identitytoolkit.googleapis.com")
-        default_config = gcp.identityplatform.Config("defaultConfig",
-            project=default_project.project_id,
+        default_config = gcp.identityplatform.Config("default",
+            project=default.project_id,
             autodelete_anonymous_users=True,
             sign_in=gcp.identityplatform.ConfigSignInArgs(
                 allow_duplicate_emails=True,
@@ -608,17 +610,19 @@ class Config(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_project = gcp.organizations.Project("defaultProject",
+        default = gcp.organizations.Project("default",
+            project_id="my-project",
+            name="my-project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             labels={
                 "firebase": "enabled",
             })
         identitytoolkit = gcp.projects.Service("identitytoolkit",
-            project=default_project.project_id,
+            project=default.project_id,
             service="identitytoolkit.googleapis.com")
-        default_config = gcp.identityplatform.Config("defaultConfig",
-            project=default_project.project_id,
+        default_config = gcp.identityplatform.Config("default",
+            project=default.project_id,
             autodelete_anonymous_users=True,
             sign_in=gcp.identityplatform.ConfigSignInArgs(
                 allow_duplicate_emails=True,

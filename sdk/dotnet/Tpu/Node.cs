@@ -33,6 +33,7 @@ namespace Pulumi.Gcp.Tpu
     /// 
     ///     var tpu = new Gcp.Tpu.Node("tpu", new()
     ///     {
+    ///         Name = "test-tpu",
     ///         Zone = "us-central1-b",
     ///         AcceleratorType = "v3-8",
     ///         TensorflowVersion = available.Apply(getTensorflowVersionsResult =&gt; getTensorflowVersionsResult.Versions[0]),
@@ -53,17 +54,21 @@ namespace Pulumi.Gcp.Tpu
     /// {
     ///     var available = Gcp.Tpu.GetTensorflowVersions.Invoke();
     /// 
-    ///     var network = new Gcp.Compute.Network("network");
-    /// 
-    ///     var serviceRange = new Gcp.Compute.GlobalAddress("serviceRange", new()
+    ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
+    ///         Name = "tpu-node-network",
+    ///     });
+    /// 
+    ///     var serviceRange = new Gcp.Compute.GlobalAddress("service_range", new()
+    ///     {
+    ///         Name = "my-global-address",
     ///         Purpose = "VPC_PEERING",
     ///         AddressType = "INTERNAL",
     ///         PrefixLength = 16,
     ///         Network = network.Id,
     ///     });
     /// 
-    ///     var privateServiceConnection = new Gcp.ServiceNetworking.Connection("privateServiceConnection", new()
+    ///     var privateServiceConnection = new Gcp.ServiceNetworking.Connection("private_service_connection", new()
     ///     {
     ///         Network = network.Id,
     ///         Service = "servicenetworking.googleapis.com",
@@ -75,6 +80,7 @@ namespace Pulumi.Gcp.Tpu
     /// 
     ///     var tpu = new Gcp.Tpu.Node("tpu", new()
     ///     {
+    ///         Name = "test-tpu",
     ///         Zone = "us-central1-b",
     ///         AcceleratorType = "v3-8",
     ///         TensorflowVersion = available.Apply(getTensorflowVersionsResult =&gt; getTensorflowVersionsResult.Versions[0]),

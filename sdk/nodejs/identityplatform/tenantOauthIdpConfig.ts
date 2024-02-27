@@ -19,7 +19,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const tenant = new gcp.identityplatform.Tenant("tenant", {displayName: "tenant"});
- * const tenantOauthIdpConfig = new gcp.identityplatform.TenantOauthIdpConfig("tenantOauthIdpConfig", {
+ * const tenantOauthIdpConfig = new gcp.identityplatform.TenantOauthIdpConfig("tenant_oauth_idp_config", {
+ *     name: "oidc.oauth-idp-config",
  *     tenant: tenant.name,
  *     displayName: "Display Name",
  *     clientId: "client-id",

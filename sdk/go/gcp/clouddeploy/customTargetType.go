@@ -37,20 +37,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := clouddeploy.NewCustomTargetType(ctx, "custom-target-type", &clouddeploy.CustomTargetTypeArgs{
+//				Location:    pulumi.String("us-central1"),
+//				Name:        pulumi.String("my-custom-target-type"),
+//				Description: pulumi.String("My custom target type"),
 //				Annotations: pulumi.StringMap{
 //					"my_first_annotation":  pulumi.String("example-annotation-1"),
 //					"my_second_annotation": pulumi.String("example-annotation-2"),
 //				},
-//				CustomActions: &clouddeploy.CustomTargetTypeCustomActionsArgs{
-//					DeployAction: pulumi.String("deployAction"),
-//					RenderAction: pulumi.String("renderAction"),
-//				},
-//				Description: pulumi.String("My custom target type"),
 //				Labels: pulumi.StringMap{
 //					"my_first_label":  pulumi.String("example-label-1"),
 //					"my_second_label": pulumi.String("example-label-2"),
 //				},
-//				Location: pulumi.String("us-central1"),
+//				CustomActions: &clouddeploy.CustomTargetTypeCustomActionsArgs{
+//					RenderAction: pulumi.String("renderAction"),
+//					DeployAction: pulumi.String("deployAction"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -75,7 +76,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := clouddeploy.NewCustomTargetType(ctx, "custom-target-type", &clouddeploy.CustomTargetTypeArgs{
+//				Location:    pulumi.String("us-central1"),
+//				Name:        pulumi.String("my-custom-target-type"),
+//				Description: pulumi.String("My custom target type"),
 //				CustomActions: &clouddeploy.CustomTargetTypeCustomActionsArgs{
+//					RenderAction: pulumi.String("renderAction"),
 //					DeployAction: pulumi.String("deployAction"),
 //					IncludeSkaffoldModules: clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleArray{
 //						&clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs{
@@ -83,16 +88,13 @@ import (
 //								pulumi.String("my-config"),
 //							},
 //							Git: &clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs{
+//								Repo: pulumi.String("http://github.com/example/example-repo.git"),
 //								Path: pulumi.String("configs/skaffold.yaml"),
 //								Ref:  pulumi.String("main"),
-//								Repo: pulumi.String("http://github.com/example/example-repo.git"),
 //							},
 //						},
 //					},
-//					RenderAction: pulumi.String("renderAction"),
 //				},
-//				Description: pulumi.String("My custom target type"),
-//				Location:    pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err
@@ -117,7 +119,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := clouddeploy.NewCustomTargetType(ctx, "custom-target-type", &clouddeploy.CustomTargetTypeArgs{
+//				Location:    pulumi.String("us-central1"),
+//				Name:        pulumi.String("my-custom-target-type"),
+//				Description: pulumi.String("My custom target type"),
 //				CustomActions: &clouddeploy.CustomTargetTypeCustomActionsArgs{
+//					RenderAction: pulumi.String("renderAction"),
 //					DeployAction: pulumi.String("deployAction"),
 //					IncludeSkaffoldModules: clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleArray{
 //						&clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs{
@@ -125,15 +131,12 @@ import (
 //								pulumi.String("my-config"),
 //							},
 //							GoogleCloudStorage: &clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs{
-//								Path:   pulumi.String("skaffold.yaml"),
 //								Source: pulumi.String("gs://example-bucket/dir/configs/*"),
+//								Path:   pulumi.String("skaffold.yaml"),
 //							},
 //						},
 //					},
-//					RenderAction: pulumi.String("renderAction"),
 //				},
-//				Description: pulumi.String("My custom target type"),
-//				Location:    pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err

@@ -660,20 +660,21 @@ class AzureCluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        versions = gcp.container.get_azure_versions(location="us-west1",
-            project="my-project-name")
+        versions = gcp.container.get_azure_versions(project="my-project-name",
+            location="us-west1")
         basic = gcp.container.AzureClient("basic",
             application_id="12345678-1234-1234-1234-123456789111",
             location="us-west1",
-            project="my-project-name",
-            tenant_id="12345678-1234-1234-1234-123456789111")
+            name="client-name",
+            tenant_id="12345678-1234-1234-1234-123456789111",
+            project="my-project-name")
         primary = gcp.container.AzureCluster("primary",
             authorization=gcp.container.AzureClusterAuthorizationArgs(
-                admin_groups=[gcp.container.AzureClusterAuthorizationAdminGroupArgs(
-                    group="group@domain.com",
-                )],
                 admin_users=[gcp.container.AzureClusterAuthorizationAdminUserArgs(
                     username="mmv2@google.com",
+                )],
+                admin_groups=[gcp.container.AzureClusterAuthorizationAdminGroupArgs(
+                    group="group@domain.com",
                 )],
             ),
             azure_region="westus2",
@@ -689,13 +690,14 @@ class AzureCluster(pulumi.CustomResource):
                 project="my-project-number",
             ),
             location="us-west1",
+            name="name",
             networking=gcp.container.AzureClusterNetworkingArgs(
                 pod_address_cidr_blocks=["10.200.0.0/16"],
                 service_address_cidr_blocks=["10.32.0.0/24"],
                 virtual_network_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
             ),
-            project="my-project-name",
-            resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster")
+            resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
+            project="my-project-name")
         ```
         ### Beta_basic_enum_azure_cluster
         A basic example of a containerazure azure cluster with lowercase enums (beta)
@@ -708,9 +710,9 @@ class AzureCluster(pulumi.CustomResource):
         basic = gcp.container.AzureClient("basic",
             application_id="12345678-1234-1234-1234-123456789111",
             location="us-west1",
+            name="client-name",
             tenant_id="12345678-1234-1234-1234-123456789111",
-            project="my-project-name",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            project="my-project-name")
         primary = gcp.container.AzureCluster("primary",
             authorization=gcp.container.AzureClusterAuthorizationArgs(
                 admin_users=[gcp.container.AzureClusterAuthorizationAdminUserArgs(
@@ -730,6 +732,7 @@ class AzureCluster(pulumi.CustomResource):
                 project="my-project-number",
             ),
             location="us-west1",
+            name="name",
             networking=gcp.container.AzureClusterNetworkingArgs(
                 pod_address_cidr_blocks=["10.200.0.0/16"],
                 service_address_cidr_blocks=["10.32.0.0/24"],
@@ -744,8 +747,7 @@ class AzureCluster(pulumi.CustomResource):
                         "workloads",
                     ],
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import
@@ -810,20 +812,21 @@ class AzureCluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        versions = gcp.container.get_azure_versions(location="us-west1",
-            project="my-project-name")
+        versions = gcp.container.get_azure_versions(project="my-project-name",
+            location="us-west1")
         basic = gcp.container.AzureClient("basic",
             application_id="12345678-1234-1234-1234-123456789111",
             location="us-west1",
-            project="my-project-name",
-            tenant_id="12345678-1234-1234-1234-123456789111")
+            name="client-name",
+            tenant_id="12345678-1234-1234-1234-123456789111",
+            project="my-project-name")
         primary = gcp.container.AzureCluster("primary",
             authorization=gcp.container.AzureClusterAuthorizationArgs(
-                admin_groups=[gcp.container.AzureClusterAuthorizationAdminGroupArgs(
-                    group="group@domain.com",
-                )],
                 admin_users=[gcp.container.AzureClusterAuthorizationAdminUserArgs(
                     username="mmv2@google.com",
+                )],
+                admin_groups=[gcp.container.AzureClusterAuthorizationAdminGroupArgs(
+                    group="group@domain.com",
                 )],
             ),
             azure_region="westus2",
@@ -839,13 +842,14 @@ class AzureCluster(pulumi.CustomResource):
                 project="my-project-number",
             ),
             location="us-west1",
+            name="name",
             networking=gcp.container.AzureClusterNetworkingArgs(
                 pod_address_cidr_blocks=["10.200.0.0/16"],
                 service_address_cidr_blocks=["10.32.0.0/24"],
                 virtual_network_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
             ),
-            project="my-project-name",
-            resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster")
+            resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
+            project="my-project-name")
         ```
         ### Beta_basic_enum_azure_cluster
         A basic example of a containerazure azure cluster with lowercase enums (beta)
@@ -858,9 +862,9 @@ class AzureCluster(pulumi.CustomResource):
         basic = gcp.container.AzureClient("basic",
             application_id="12345678-1234-1234-1234-123456789111",
             location="us-west1",
+            name="client-name",
             tenant_id="12345678-1234-1234-1234-123456789111",
-            project="my-project-name",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            project="my-project-name")
         primary = gcp.container.AzureCluster("primary",
             authorization=gcp.container.AzureClusterAuthorizationArgs(
                 admin_users=[gcp.container.AzureClusterAuthorizationAdminUserArgs(
@@ -880,6 +884,7 @@ class AzureCluster(pulumi.CustomResource):
                 project="my-project-number",
             ),
             location="us-west1",
+            name="name",
             networking=gcp.container.AzureClusterNetworkingArgs(
                 pod_address_cidr_blocks=["10.200.0.0/16"],
                 service_address_cidr_blocks=["10.32.0.0/24"],
@@ -894,8 +899,7 @@ class AzureCluster(pulumi.CustomResource):
                         "workloads",
                     ],
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import

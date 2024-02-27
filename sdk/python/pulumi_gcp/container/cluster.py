@@ -2961,10 +2961,12 @@ class Cluster(pulumi.CustomResource):
             account_id="service-account-id",
             display_name="Service Account")
         primary = gcp.container.Cluster("primary",
+            name="my-gke-cluster",
             location="us-central1",
             remove_default_node_pool=True,
             initial_node_count=1)
-        primary_preemptible_nodes = gcp.container.NodePool("primaryPreemptibleNodes",
+        primary_preemptible_nodes = gcp.container.NodePool("primary_preemptible_nodes",
+            name="my-node-pool",
             location="us-central1",
             cluster=primary.name,
             node_count=1,
@@ -2979,6 +2981,31 @@ class Cluster(pulumi.CustomResource):
         > **Note:** It is recommended that node pools be created and managed as separate resources as in the example above.
         This allows node pools to be added and removed without recreating the cluster.  Node pools defined directly in the
         `container.Cluster` resource cannot be removed without re-creating the cluster.
+        ### With The Default Node Pool
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.serviceaccount.Account("default",
+            account_id="service-account-id",
+            display_name="Service Account")
+        primary = gcp.container.Cluster("primary",
+            name="marcellus-wallace",
+            location="us-central1-a",
+            initial_node_count=3,
+            node_config=gcp.container.ClusterNodeConfigArgs(
+                service_account=default.email,
+                oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
+                labels={
+                    "foo": "bar",
+                },
+                tags=[
+                    "foo",
+                    "bar",
+                ],
+            ))
+        ```
         ### Autopilot
 
         ```python
@@ -2989,8 +3016,9 @@ class Cluster(pulumi.CustomResource):
             account_id="service-account-id",
             display_name="Service Account")
         primary = gcp.container.Cluster("primary",
-            enable_autopilot=True,
-            location="us-central1-a")
+            name="marcellus-wallace",
+            location="us-central1-a",
+            enable_autopilot=True)
         ```
 
         ## Import
@@ -3260,10 +3288,12 @@ class Cluster(pulumi.CustomResource):
             account_id="service-account-id",
             display_name="Service Account")
         primary = gcp.container.Cluster("primary",
+            name="my-gke-cluster",
             location="us-central1",
             remove_default_node_pool=True,
             initial_node_count=1)
-        primary_preemptible_nodes = gcp.container.NodePool("primaryPreemptibleNodes",
+        primary_preemptible_nodes = gcp.container.NodePool("primary_preemptible_nodes",
+            name="my-node-pool",
             location="us-central1",
             cluster=primary.name,
             node_count=1,
@@ -3278,6 +3308,31 @@ class Cluster(pulumi.CustomResource):
         > **Note:** It is recommended that node pools be created and managed as separate resources as in the example above.
         This allows node pools to be added and removed without recreating the cluster.  Node pools defined directly in the
         `container.Cluster` resource cannot be removed without re-creating the cluster.
+        ### With The Default Node Pool
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.serviceaccount.Account("default",
+            account_id="service-account-id",
+            display_name="Service Account")
+        primary = gcp.container.Cluster("primary",
+            name="marcellus-wallace",
+            location="us-central1-a",
+            initial_node_count=3,
+            node_config=gcp.container.ClusterNodeConfigArgs(
+                service_account=default.email,
+                oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
+                labels={
+                    "foo": "bar",
+                },
+                tags=[
+                    "foo",
+                    "bar",
+                ],
+            ))
+        ```
         ### Autopilot
 
         ```python
@@ -3288,8 +3343,9 @@ class Cluster(pulumi.CustomResource):
             account_id="service-account-id",
             display_name="Service Account")
         primary = gcp.container.Cluster("primary",
-            enable_autopilot=True,
-            location="us-central1-a")
+            name="marcellus-wallace",
+            location="us-central1-a",
+            enable_autopilot=True)
         ```
 
         ## Import

@@ -28,8 +28,8 @@ namespace Pulumi.Gcp.GkeHub
         /// {
         ///     var policy = Gcp.GkeHub.GetScopeIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_gke_hub_scope.Scope.Project,
-        ///         ScopeId = google_gke_hub_scope.Scope.Scope_id,
+        ///         Project = scope.Project,
+        ///         ScopeId = scope.ScopeId,
         ///     });
         /// 
         /// });
@@ -55,8 +55,8 @@ namespace Pulumi.Gcp.GkeHub
         /// {
         ///     var policy = Gcp.GkeHub.GetScopeIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_gke_hub_scope.Scope.Project,
-        ///         ScopeId = google_gke_hub_scope.Scope.Scope_id,
+        ///         Project = scope.Project,
+        ///         ScopeId = scope.ScopeId,
         ///     });
         /// 
         /// });

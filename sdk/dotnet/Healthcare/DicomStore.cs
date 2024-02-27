@@ -30,15 +30,20 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var topic = new Gcp.PubSub.Topic("topic");
+    ///     var topic = new Gcp.PubSub.Topic("topic", new()
+    ///     {
+    ///         Name = "dicom-notifications",
+    ///     });
     /// 
     ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
     ///     {
+    ///         Name = "example-dataset",
     ///         Location = "us-central1",
     ///     });
     /// 
     ///     var @default = new Gcp.Healthcare.DicomStore("default", new()
     ///     {
+    ///         Name = "example-dicom-store",
     ///         Dataset = dataset.Id,
     ///         NotificationConfig = new Gcp.Healthcare.Inputs.DicomStoreNotificationConfigArgs
     ///         {
@@ -64,43 +69,34 @@ namespace Pulumi.Gcp.Healthcare
     /// {
     ///     var topic = new Gcp.PubSub.Topic("topic", new()
     ///     {
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Name = "dicom-notifications",
     ///     });
     /// 
     ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
     ///     {
+    ///         Name = "example-dataset",
     ///         Location = "us-central1",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var bqDataset = new Gcp.BigQuery.Dataset("bqDataset", new()
+    ///     var bqDataset = new Gcp.BigQuery.Dataset("bq_dataset", new()
     ///     {
     ///         DatasetId = "dicom_bq_ds",
     ///         FriendlyName = "test",
     ///         Description = "This is a test description",
     ///         Location = "US",
     ///         DeleteContentsOnDestroy = true,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var bqTable = new Gcp.BigQuery.Table("bqTable", new()
+    ///     var bqTable = new Gcp.BigQuery.Table("bq_table", new()
     ///     {
     ///         DeletionProtection = false,
     ///         DatasetId = bqDataset.DatasetId,
     ///         TableId = "dicom_bq_tb",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var @default = new Gcp.Healthcare.DicomStore("default", new()
     ///     {
+    ///         Name = "example-dicom-store",
     ///         Dataset = dataset.Id,
     ///         NotificationConfig = new Gcp.Healthcare.Inputs.DicomStoreNotificationConfigArgs
     ///         {
@@ -126,9 +122,6 @@ namespace Pulumi.Gcp.Healthcare
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

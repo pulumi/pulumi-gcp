@@ -30,8 +30,9 @@ namespace Pulumi.Gcp.Netapp
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testBackupVault = new Gcp.Netapp.BackupVault("testBackupVault", new()
+    ///     var testBackupVault = new Gcp.Netapp.BackupVault("test_backup_vault", new()
     ///     {
+    ///         Name = "test-backup-vault",
     ///         Location = "us-central1",
     ///         Description = "Terraform created vault",
     ///         Labels = 

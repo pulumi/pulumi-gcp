@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.cloudbuildv2.getConnectionIamPolicy({
- *     project: google_cloudbuildv2_connection["my-connection"].project,
- *     location: google_cloudbuildv2_connection["my-connection"].location,
- *     name: google_cloudbuildv2_connection["my-connection"].name,
+ *     project: my_connection.project,
+ *     location: my_connection.location,
+ *     name: my_connection.name,
  * });
  * ```
  */
@@ -80,9 +80,9 @@ export interface GetConnectionIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.cloudbuildv2.getConnectionIamPolicy({
- *     project: google_cloudbuildv2_connection["my-connection"].project,
- *     location: google_cloudbuildv2_connection["my-connection"].location,
- *     name: google_cloudbuildv2_connection["my-connection"].name,
+ *     project: my_connection.project,
+ *     location: my_connection.location,
+ *     name: my_connection.name,
  * });
  * ```
  */

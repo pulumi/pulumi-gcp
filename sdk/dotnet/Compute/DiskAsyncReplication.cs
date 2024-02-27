@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var primary_disk = new Gcp.Compute.Disk("primary-disk", new()
     ///     {
+    ///         Name = "primary-disk",
     ///         Type = "pd-ssd",
     ///         Zone = "europe-west4-a",
     ///         PhysicalBlockSizeBytes = 4096,
@@ -33,6 +34,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var secondary_disk = new Gcp.Compute.Disk("secondary-disk", new()
     ///     {
+    ///         Name = "secondary-disk",
     ///         Type = "pd-ssd",
     ///         Zone = "europe-west3-a",
     ///         AsyncPrimaryDisk = new Gcp.Compute.Inputs.DiskAsyncPrimaryDiskArgs

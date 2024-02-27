@@ -31,6 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrun.NewService(ctx, "default", &cloudrun.ServiceArgs{
+//				Name:     pulumi.String("eventarc-service"),
 //				Location: pulumi.String("europe-west1"),
 //				Metadata: &cloudrun.ServiceMetadataArgs{
 //					Namespace: pulumi.String("my-project-name"),
@@ -62,6 +63,7 @@ import (
 //				return err
 //			}
 //			_, err = eventarc.NewTrigger(ctx, "primary", &eventarc.TriggerArgs{
+//				Name:     pulumi.String("name"),
 //				Location: pulumi.String("europe-west1"),
 //				MatchingCriterias: eventarc.TriggerMatchingCriteriaArray{
 //					&eventarc.TriggerMatchingCriteriaArgs{
@@ -82,7 +84,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = pubsub.NewTopic(ctx, "foo", nil)
+//			_, err = pubsub.NewTopic(ctx, "foo", &pubsub.TopicArgs{
+//				Name: pulumi.String("topic"),
+//			})
 //			if err != nil {
 //				return err
 //			}

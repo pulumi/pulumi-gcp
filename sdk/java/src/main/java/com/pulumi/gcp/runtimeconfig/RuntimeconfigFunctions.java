@@ -196,8 +196,8 @@ public final class RuntimeconfigFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var run-service = RuntimeconfigFunctions.getVariable(GetVariableArgs.builder()
-     *             .name(&#34;prod-variables/hostname&#34;)
      *             .parent(&#34;my-service&#34;)
+     *             .name(&#34;prod-variables/hostname&#34;)
      *             .build());
      * 
      *     }
@@ -232,8 +232,8 @@ public final class RuntimeconfigFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var run-service = RuntimeconfigFunctions.getVariable(GetVariableArgs.builder()
-     *             .name(&#34;prod-variables/hostname&#34;)
      *             .parent(&#34;my-service&#34;)
+     *             .name(&#34;prod-variables/hostname&#34;)
      *             .build());
      * 
      *     }
@@ -268,8 +268,8 @@ public final class RuntimeconfigFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var run-service = RuntimeconfigFunctions.getVariable(GetVariableArgs.builder()
-     *             .name(&#34;prod-variables/hostname&#34;)
      *             .parent(&#34;my-service&#34;)
+     *             .name(&#34;prod-variables/hostname&#34;)
      *             .build());
      * 
      *     }
@@ -304,8 +304,8 @@ public final class RuntimeconfigFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var run-service = RuntimeconfigFunctions.getVariable(GetVariableArgs.builder()
-     *             .name(&#34;prod-variables/hostname&#34;)
      *             .parent(&#34;my-service&#34;)
+     *             .name(&#34;prod-variables/hostname&#34;)
      *             .build());
      * 
      *     }

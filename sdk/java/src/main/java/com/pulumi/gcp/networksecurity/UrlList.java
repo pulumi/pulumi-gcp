@@ -48,6 +48,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new UrlList(&#34;default&#34;, UrlListArgs.builder()        
+ *             .name(&#34;my-url-lists&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .values(&#34;www.example.com&#34;)
  *             .build());
@@ -78,8 +79,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new UrlList(&#34;default&#34;, UrlListArgs.builder()        
- *             .description(&#34;my description&#34;)
+ *             .name(&#34;my-url-lists&#34;)
  *             .location(&#34;us-central1&#34;)
+ *             .description(&#34;my description&#34;)
  *             .values(            
  *                 &#34;www.example.com&#34;,
  *                 &#34;about.example.com&#34;,

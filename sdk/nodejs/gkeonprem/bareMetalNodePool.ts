@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const default_basic = new gcp.gkeonprem.BareMetalCluster("default-basic", {
+ *     name: "my-cluster",
  *     location: "us-west1",
  *     adminClusterMembership: "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
  *     bareMetalVersion: "1.12.3",
@@ -85,6 +86,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const nodepool_basic = new gcp.gkeonprem.BareMetalNodePool("nodepool-basic", {
+ *     name: "my-nodepool",
  *     bareMetalCluster: default_basic.name,
  *     location: "us-west1",
  *     nodePoolConfig: {
@@ -102,6 +104,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const default_full = new gcp.gkeonprem.BareMetalCluster("default-full", {
+ *     name: "my-cluster",
  *     location: "us-west1",
  *     adminClusterMembership: "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
  *     bareMetalVersion: "1.12.3",
@@ -170,6 +173,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const nodepool_full = new gcp.gkeonprem.BareMetalNodePool("nodepool-full", {
+ *     name: "my-nodepool",
  *     displayName: "test-name",
  *     bareMetalCluster: default_full.name,
  *     location: "us-west1",

@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.AccessApproval
         /// 
         ///     var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new()
         ///     {
-        ///         CryptoKeyId = google_kms_crypto_key.Crypto_key.Id,
+        ///         CryptoKeyId = cryptoKey.Id,
         ///         Role = "roles/cloudkms.signerVerifier",
         ///         Member = $"serviceAccount:{serviceAccount.Apply(getOrganizationServiceAccountResult =&gt; getOrganizationServiceAccountResult.AccountEmail)}",
         ///     });
@@ -80,7 +80,7 @@ namespace Pulumi.Gcp.AccessApproval
         /// 
         ///     var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new()
         ///     {
-        ///         CryptoKeyId = google_kms_crypto_key.Crypto_key.Id,
+        ///         CryptoKeyId = cryptoKey.Id,
         ///         Role = "roles/cloudkms.signerVerifier",
         ///         Member = $"serviceAccount:{serviceAccount.Apply(getOrganizationServiceAccountResult =&gt; getOrganizationServiceAccountResult.AccountEmail)}",
         ///     });

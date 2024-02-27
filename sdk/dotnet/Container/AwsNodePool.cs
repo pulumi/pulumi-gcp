@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Container
     ///         Location = "us-west1",
     ///     });
     /// 
-    ///     var primaryAwsCluster = new Gcp.Container.AwsCluster("primaryAwsCluster", new()
+    ///     var primary = new Gcp.Container.AwsCluster("primary", new()
     ///     {
     ///         Authorization = new Gcp.Container.Inputs.AwsClusterAuthorizationArgs
     ///         {
@@ -103,6 +103,7 @@ namespace Pulumi.Gcp.Container
     ///             Project = "my-project-number",
     ///         },
     ///         Location = "us-west1",
+    ///         Name = "name",
     ///         Networking = new Gcp.Container.Inputs.AwsClusterNetworkingArgs
     ///         {
     ///             PodAddressCidrBlocks = new[]
@@ -123,14 +124,14 @@ namespace Pulumi.Gcp.Container
     ///         Project = "my-project-name",
     ///     });
     /// 
-    ///     var primaryAwsNodePool = new Gcp.Container.AwsNodePool("primaryAwsNodePool", new()
+    ///     var primaryAwsNodePool = new Gcp.Container.AwsNodePool("primary", new()
     ///     {
     ///         Autoscaling = new Gcp.Container.Inputs.AwsNodePoolAutoscalingArgs
     ///         {
     ///             MaxNodeCount = 5,
     ///             MinNodeCount = 1,
     ///         },
-    ///         Cluster = primaryAwsCluster.Name,
+    ///         Cluster = primary.Name,
     ///         Config = new Gcp.Container.Inputs.AwsNodePoolConfigArgs
     ///         {
     ///             ConfigEncryption = new Gcp.Container.Inputs.AwsNodePoolConfigConfigEncryptionArgs
@@ -182,6 +183,7 @@ namespace Pulumi.Gcp.Container
     ///         {
     ///             MaxPodsPerNode = 110,
     ///         },
+    ///         Name = "node-pool-name",
     ///         SubnetId = "subnet-00000000000000000",
     ///         Version = versions.Apply(getAwsVersionsResult =&gt; getAwsVersionsResult.ValidVersions[0]),
     ///         Annotations = 
@@ -213,7 +215,7 @@ namespace Pulumi.Gcp.Container
     ///         Location = "us-west1",
     ///     });
     /// 
-    ///     var primaryAwsCluster = new Gcp.Container.AwsCluster("primaryAwsCluster", new()
+    ///     var primary = new Gcp.Container.AwsCluster("primary", new()
     ///     {
     ///         Authorization = new Gcp.Container.Inputs.AwsClusterAuthorizationArgs
     ///         {
@@ -285,6 +287,7 @@ namespace Pulumi.Gcp.Container
     ///             Project = "my-project-number",
     ///         },
     ///         Location = "us-west1",
+    ///         Name = "name",
     ///         Networking = new Gcp.Container.Inputs.AwsClusterNetworkingArgs
     ///         {
     ///             PodAddressCidrBlocks = new[]
@@ -305,14 +308,14 @@ namespace Pulumi.Gcp.Container
     ///         Project = "my-project-name",
     ///     });
     /// 
-    ///     var primaryAwsNodePool = new Gcp.Container.AwsNodePool("primaryAwsNodePool", new()
+    ///     var primaryAwsNodePool = new Gcp.Container.AwsNodePool("primary", new()
     ///     {
     ///         Autoscaling = new Gcp.Container.Inputs.AwsNodePoolAutoscalingArgs
     ///         {
     ///             MaxNodeCount = 5,
     ///             MinNodeCount = 1,
     ///         },
-    ///         Cluster = primaryAwsCluster.Name,
+    ///         Cluster = primary.Name,
     ///         Config = new Gcp.Container.Inputs.AwsNodePoolConfigArgs
     ///         {
     ///             ConfigEncryption = new Gcp.Container.Inputs.AwsNodePoolConfigConfigEncryptionArgs
@@ -364,6 +367,7 @@ namespace Pulumi.Gcp.Container
     ///         {
     ///             MaxPodsPerNode = 110,
     ///         },
+    ///         Name = "node-pool-name",
     ///         SubnetId = "subnet-00000000000000000",
     ///         Version = versions.Apply(getAwsVersionsResult =&gt; getAwsVersionsResult.ValidVersions[0]),
     ///         Annotations = 
@@ -391,7 +395,7 @@ namespace Pulumi.Gcp.Container
     ///         Location = "us-west1",
     ///     });
     /// 
-    ///     var primaryAwsCluster = new Gcp.Container.AwsCluster("primaryAwsCluster", new()
+    ///     var primary = new Gcp.Container.AwsCluster("primary", new()
     ///     {
     ///         Authorization = new Gcp.Container.Inputs.AwsClusterAuthorizationArgs
     ///         {
@@ -463,6 +467,7 @@ namespace Pulumi.Gcp.Container
     ///             Project = "my-project-number",
     ///         },
     ///         Location = "us-west1",
+    ///         Name = "name",
     ///         Networking = new Gcp.Container.Inputs.AwsClusterNetworkingArgs
     ///         {
     ///             PodAddressCidrBlocks = new[]
@@ -481,19 +486,16 @@ namespace Pulumi.Gcp.Container
     ///         },
     ///         Description = "A sample aws cluster",
     ///         Project = "my-project-name",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var primaryAwsNodePool = new Gcp.Container.AwsNodePool("primaryAwsNodePool", new()
+    ///     var primaryAwsNodePool = new Gcp.Container.AwsNodePool("primary", new()
     ///     {
     ///         Autoscaling = new Gcp.Container.Inputs.AwsNodePoolAutoscalingArgs
     ///         {
     ///             MaxNodeCount = 5,
     ///             MinNodeCount = 1,
     ///         },
-    ///         Cluster = primaryAwsCluster.Name,
+    ///         Cluster = primary.Name,
     ///         Config = new Gcp.Container.Inputs.AwsNodePoolConfigArgs
     ///         {
     ///             ConfigEncryption = new Gcp.Container.Inputs.AwsNodePoolConfigConfigEncryptionArgs
@@ -550,6 +552,7 @@ namespace Pulumi.Gcp.Container
     ///         {
     ///             MaxPodsPerNode = 110,
     ///         },
+    ///         Name = "node-pool-name",
     ///         SubnetId = "subnet-00000000000000000",
     ///         Version = versions.Apply(getAwsVersionsResult =&gt; getAwsVersionsResult.ValidVersions[0]),
     ///         Annotations = 
@@ -557,9 +560,6 @@ namespace Pulumi.Gcp.Container
     ///             { "label-one", "value-one" },
     ///         },
     ///         Project = "my-project-name",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

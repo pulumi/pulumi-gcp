@@ -89,6 +89,7 @@ def get_regions(project: Optional[str] = None,
     cluster = []
     for range in [{"value": i} for i in range(0, len(available.names))]:
         cluster.append(gcp.compute.Subnetwork(f"cluster-{range['value']}",
+            name="my-network",
             ip_cidr_range=f"10.36.{range['value']}.0/24",
             network="my-network",
             region=available.names[range["value"]]))
@@ -128,6 +129,7 @@ def get_regions_output(project: Optional[pulumi.Input[Optional[str]]] = None,
     cluster = []
     for range in [{"value": i} for i in range(0, len(available.names))]:
         cluster.append(gcp.compute.Subnetwork(f"cluster-{range['value']}",
+            name="my-network",
             ip_cidr_range=f"10.36.{range['value']}.0/24",
             network="my-network",
             region=available.names[range["value"]]))

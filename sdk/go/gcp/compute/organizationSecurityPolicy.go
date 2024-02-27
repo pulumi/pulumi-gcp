@@ -38,7 +38,7 @@ import (
 //			_, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
 //				DisplayName: pulumi.String("tf-test"),
 //				Parent:      pulumi.String("organizations/123456789"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

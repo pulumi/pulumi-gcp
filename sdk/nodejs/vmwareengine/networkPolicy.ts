@@ -21,12 +21,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const network_policy_nw = new gcp.vmwareengine.Network("network-policy-nw", {
+ *     name: "standard-nw",
  *     location: "global",
  *     type: "STANDARD",
  *     description: "VMwareEngine standard network sample",
  * });
  * const vmw_engine_network_policy = new gcp.vmwareengine.NetworkPolicy("vmw-engine-network-policy", {
  *     location: "us-west1",
+ *     name: "sample-network-policy",
  *     edgeServicesCidr: "192.168.30.0/26",
  *     vmwareEngineNetwork: network_policy_nw.id,
  * });
@@ -38,12 +40,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const network_policy_nw = new gcp.vmwareengine.Network("network-policy-nw", {
+ *     name: "standard-full-nw",
  *     location: "global",
  *     type: "STANDARD",
  *     description: "VMwareEngine standard network sample",
  * });
  * const vmw_engine_network_policy = new gcp.vmwareengine.NetworkPolicy("vmw-engine-network-policy", {
  *     location: "us-west1",
+ *     name: "sample-network-policy-full",
  *     edgeServicesCidr: "192.168.30.0/26",
  *     vmwareEngineNetwork: network_policy_nw.id,
  *     description: "Sample Network Policy",

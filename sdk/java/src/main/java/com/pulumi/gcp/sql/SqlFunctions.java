@@ -61,7 +61,7 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var backup = SqlFunctions.getBackupRun(GetBackupRunArgs.builder()
-     *             .instance(google_sql_database_instance.main().name())
+     *             .instance(main.name())
      *             .mostRecent(true)
      *             .build());
      * 
@@ -99,7 +99,7 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var backup = SqlFunctions.getBackupRun(GetBackupRunArgs.builder()
-     *             .instance(google_sql_database_instance.main().name())
+     *             .instance(main.name())
      *             .mostRecent(true)
      *             .build());
      * 
@@ -137,7 +137,7 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var backup = SqlFunctions.getBackupRun(GetBackupRunArgs.builder()
-     *             .instance(google_sql_database_instance.main().name())
+     *             .instance(main.name())
      *             .mostRecent(true)
      *             .build());
      * 
@@ -175,7 +175,7 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var backup = SqlFunctions.getBackupRun(GetBackupRunArgs.builder()
-     *             .instance(google_sql_database_instance.main().name())
+     *             .instance(main.name())
      *             .mostRecent(true)
      *             .build());
      * 
@@ -193,6 +193,8 @@ public final class SqlFunctions {
      * and
      * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetCaCertsResult> getCaCerts(GetCaCertsArgs args) {
         return getCaCerts(args, InvokeOptions.Empty);
@@ -202,6 +204,8 @@ public final class SqlFunctions {
      * [official documentation](https://cloud.google.com/sql/)
      * and
      * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetCaCertsResult> getCaCertsPlain(GetCaCertsPlainArgs args) {
@@ -213,6 +217,8 @@ public final class SqlFunctions {
      * and
      * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetCaCertsResult> getCaCerts(GetCaCertsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:sql/getCaCerts:getCaCerts", TypeShape.of(GetCaCertsResult.class), args, Utilities.withVersion(options));
@@ -222,6 +228,8 @@ public final class SqlFunctions {
      * [official documentation](https://cloud.google.com/sql/)
      * and
      * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetCaCertsResult> getCaCertsPlain(GetCaCertsPlainArgs args, InvokeOptions options) {
@@ -254,7 +262,7 @@ public final class SqlFunctions {
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabase(GetDatabaseArgs.builder()
      *             .name(&#34;test-sql-database&#34;)
-     *             .instance(google_sql_database_instance.main().name())
+     *             .instance(main.name())
      *             .build());
      * 
      *     }
@@ -292,7 +300,7 @@ public final class SqlFunctions {
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabase(GetDatabaseArgs.builder()
      *             .name(&#34;test-sql-database&#34;)
-     *             .instance(google_sql_database_instance.main().name())
+     *             .instance(main.name())
      *             .build());
      * 
      *     }
@@ -330,7 +338,7 @@ public final class SqlFunctions {
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabase(GetDatabaseArgs.builder()
      *             .name(&#34;test-sql-database&#34;)
-     *             .instance(google_sql_database_instance.main().name())
+     *             .instance(main.name())
      *             .build());
      * 
      *     }
@@ -368,7 +376,7 @@ public final class SqlFunctions {
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabase(GetDatabaseArgs.builder()
      *             .name(&#34;test-sql-database&#34;)
-     *             .instance(google_sql_database_instance.main().name())
+     *             .instance(main.name())
      *             .build());
      * 
      *     }
@@ -938,7 +946,7 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabases(GetDatabasesArgs.builder()
-     *             .instance(google_sql_database_instance.main().name())
+     *             .instance(main.name())
      *             .build());
      * 
      *     }
@@ -974,7 +982,7 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabases(GetDatabasesArgs.builder()
-     *             .instance(google_sql_database_instance.main().name())
+     *             .instance(main.name())
      *             .build());
      * 
      *     }
@@ -1010,7 +1018,7 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabases(GetDatabasesArgs.builder()
-     *             .instance(google_sql_database_instance.main().name())
+     *             .instance(main.name())
      *             .build());
      * 
      *     }
@@ -1046,7 +1054,7 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabases(GetDatabasesArgs.builder()
-     *             .instance(google_sql_database_instance.main().name())
+     *             .instance(main.name())
      *             .build());
      * 
      *     }

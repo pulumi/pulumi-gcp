@@ -25,9 +25,6 @@ namespace Pulumi.Gcp.Firebase
     ///     {
     ///         Project = "my-project-name",
     ///         SiteId = "site-no-app",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -46,9 +43,6 @@ namespace Pulumi.Gcp.Firebase
     ///     {
     ///         Project = "my-project-name",
     ///         DisplayName = "Test web app for Firebase Hosting",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var full = new Gcp.Firebase.HostingSite("full", new()
@@ -56,9 +50,6 @@ namespace Pulumi.Gcp.Firebase
     ///         Project = "my-project-name",
     ///         SiteId = "site-with-app",
     ///         AppId = @default.AppId,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

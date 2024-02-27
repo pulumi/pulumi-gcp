@@ -31,13 +31,14 @@ namespace Pulumi.Gcp.IntegrationConnectors
     /// {
     ///     var sampleendpointattachment = new Gcp.IntegrationConnectors.EndpointAttachment("sampleendpointattachment", new()
     ///     {
+    ///         Name = "test-endpoint-attachment",
+    ///         Location = "us-central1",
     ///         Description = "tf created description",
+    ///         ServiceAttachment = "projects/connectors-example/regions/us-central1/serviceAttachments/test",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
     ///         },
-    ///         Location = "us-central1",
-    ///         ServiceAttachment = "projects/connectors-example/regions/us-central1/serviceAttachments/test",
     ///     });
     /// 
     /// });

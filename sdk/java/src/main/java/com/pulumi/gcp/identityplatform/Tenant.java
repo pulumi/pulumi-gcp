@@ -49,8 +49,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tenant = new Tenant(&#34;tenant&#34;, TenantArgs.builder()        
- *             .allowPasswordSignup(true)
  *             .displayName(&#34;tenant&#34;)
+ *             .allowPasswordSignup(true)
  *             .build());
  * 
  *     }

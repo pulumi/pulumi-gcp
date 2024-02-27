@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.dataproc.getAutoscalingPolicyIamPolicy({
- *     project: google_dataproc_autoscaling_policy.basic.project,
- *     location: google_dataproc_autoscaling_policy.basic.location,
- *     policyId: google_dataproc_autoscaling_policy.basic.policy_id,
+ *     project: basic.project,
+ *     location: basic.location,
+ *     policyId: basic.policyId,
  * });
  * ```
  */
@@ -85,9 +85,9 @@ export interface GetAutoscalingPolicyIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.dataproc.getAutoscalingPolicyIamPolicy({
- *     project: google_dataproc_autoscaling_policy.basic.project,
- *     location: google_dataproc_autoscaling_policy.basic.location,
- *     policyId: google_dataproc_autoscaling_policy.basic.policy_id,
+ *     project: basic.project,
+ *     location: basic.location,
+ *     policyId: basic.policyId,
  * });
  * ```
  */

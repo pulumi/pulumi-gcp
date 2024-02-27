@@ -28,10 +28,10 @@ namespace Pulumi.Gcp.DataPlex
         /// {
         ///     var policy = Gcp.DataPlex.GetTaskIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_dataplex_task.Example.Project,
-        ///         Location = google_dataplex_task.Example.Location,
-        ///         Lake = google_dataplex_task.Example.Lake,
-        ///         TaskId = google_dataplex_task.Example.Task_id,
+        ///         Project = example.Project,
+        ///         Location = example.Location,
+        ///         Lake = example.Lake,
+        ///         TaskId = example.TaskId,
         ///     });
         /// 
         /// });
@@ -57,10 +57,10 @@ namespace Pulumi.Gcp.DataPlex
         /// {
         ///     var policy = Gcp.DataPlex.GetTaskIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_dataplex_task.Example.Project,
-        ///         Location = google_dataplex_task.Example.Location,
-        ///         Lake = google_dataplex_task.Example.Lake,
-        ///         TaskId = google_dataplex_task.Example.Task_id,
+        ///         Project = example.Project,
+        ///         Location = example.Location,
+        ///         Lake = example.Lake,
+        ///         TaskId = example.TaskId,
         ///     });
         /// 
         /// });

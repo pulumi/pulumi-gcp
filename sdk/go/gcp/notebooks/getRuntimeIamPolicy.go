@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := notebooks.LookupRuntimeIamPolicy(ctx, &notebooks.LookupRuntimeIamPolicyArgs{
-//				Project:     pulumi.StringRef(google_notebooks_runtime.Runtime.Project),
-//				Location:    pulumi.StringRef(google_notebooks_runtime.Runtime.Location),
-//				RuntimeName: google_notebooks_runtime.Runtime.Name,
+//				Project:     pulumi.StringRef(runtime.Project),
+//				Location:    pulumi.StringRef(runtime.Location),
+//				RuntimeName: runtime.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

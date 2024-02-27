@@ -28,13 +28,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networksecurity.NewSecurityProfile(ctx, "default", &networksecurity.SecurityProfileArgs{
+//				Name:        pulumi.String("my-security-profile"),
 //				Parent:      pulumi.String("organizations/123456789"),
 //				Description: pulumi.String("my description"),
 //				Type:        pulumi.String("THREAT_PREVENTION"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -58,6 +59,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networksecurity.NewSecurityProfile(ctx, "default", &networksecurity.SecurityProfileArgs{
+//				Name:        pulumi.String("my-security-profile"),
 //				Parent:      pulumi.String("organizations/123456789"),
 //				Description: pulumi.String("my description"),
 //				Type:        pulumi.String("THREAT_PREVENTION"),
@@ -79,7 +81,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

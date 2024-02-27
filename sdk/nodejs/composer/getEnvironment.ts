@@ -8,6 +8,19 @@ import * as utilities from "../utilities";
 
 /**
  * Provides access to Cloud Composer environment configuration in a region for a given project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const composerEnvEnvironment = new gcp.composer.Environment("composer_env", {name: "composer-environment"});
+ * const composerEnv = gcp.composer.getEnvironment({
+ *     name: test.name,
+ * });
+ * export const debug = composerEnv.then(composerEnv => composerEnv.configs);
+ * ```
  */
 export function getEnvironment(args: GetEnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentResult> {
 
@@ -60,6 +73,19 @@ export interface GetEnvironmentResult {
 }
 /**
  * Provides access to Cloud Composer environment configuration in a region for a given project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const composerEnvEnvironment = new gcp.composer.Environment("composer_env", {name: "composer-environment"});
+ * const composerEnv = gcp.composer.getEnvironment({
+ *     name: test.name,
+ * });
+ * export const debug = composerEnv.then(composerEnv => composerEnv.configs);
+ * ```
  */
 export function getEnvironmentOutput(args: GetEnvironmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentResult> {
     return pulumi.output(args).apply((a: any) => getEnvironment(a, opts))

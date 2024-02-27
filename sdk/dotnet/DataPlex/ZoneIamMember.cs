@@ -51,10 +51,10 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     ///     var policy = new Gcp.DataPlex.ZoneIamPolicy("policy", new()
     ///     {
-    ///         Project = google_dataplex_zone.Example.Project,
-    ///         Location = google_dataplex_zone.Example.Location,
-    ///         Lake = google_dataplex_zone.Example.Lake,
-    ///         DataplexZone = google_dataplex_zone.Example.Name,
+    ///         Project = example.Project,
+    ///         Location = example.Location,
+    ///         Lake = example.Lake,
+    ///         DataplexZone = example.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -73,10 +73,10 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var binding = new Gcp.DataPlex.ZoneIamBinding("binding", new()
     ///     {
-    ///         Project = google_dataplex_zone.Example.Project,
-    ///         Location = google_dataplex_zone.Example.Location,
-    ///         Lake = google_dataplex_zone.Example.Lake,
-    ///         DataplexZone = google_dataplex_zone.Example.Name,
+    ///         Project = example.Project,
+    ///         Location = example.Location,
+    ///         Lake = example.Lake,
+    ///         DataplexZone = example.Name,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -99,10 +99,10 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var member = new Gcp.DataPlex.ZoneIamMember("member", new()
     ///     {
-    ///         Project = google_dataplex_zone.Example.Project,
-    ///         Location = google_dataplex_zone.Example.Location,
-    ///         Lake = google_dataplex_zone.Example.Lake,
-    ///         DataplexZone = google_dataplex_zone.Example.Name,
+    ///         Project = example.Project,
+    ///         Location = example.Location,
+    ///         Lake = example.Lake,
+    ///         DataplexZone = example.Name,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

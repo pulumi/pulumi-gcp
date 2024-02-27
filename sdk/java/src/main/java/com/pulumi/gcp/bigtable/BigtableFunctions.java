@@ -43,7 +43,7 @@ public final class BigtableFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigtableFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .instance(google_bigtable_instance.instance().name())
+     *             .instance(instance.name())
      *             .build());
      * 
      *     }
@@ -80,7 +80,7 @@ public final class BigtableFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigtableFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .instance(google_bigtable_instance.instance().name())
+     *             .instance(instance.name())
      *             .build());
      * 
      *     }
@@ -117,7 +117,7 @@ public final class BigtableFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigtableFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .instance(google_bigtable_instance.instance().name())
+     *             .instance(instance.name())
      *             .build());
      * 
      *     }
@@ -154,7 +154,7 @@ public final class BigtableFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigtableFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .instance(google_bigtable_instance.instance().name())
+     *             .instance(instance.name())
      *             .build());
      * 
      *     }
@@ -191,8 +191,8 @@ public final class BigtableFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigtableFunctions.getTableIamPolicy(GetTableIamPolicyArgs.builder()
-     *             .instance(google_bigtable_instance.instance().name())
-     *             .table(google_bigtable_table.table().name())
+     *             .instance(instance.name())
+     *             .table(table.name())
      *             .build());
      * 
      *     }
@@ -229,8 +229,8 @@ public final class BigtableFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigtableFunctions.getTableIamPolicy(GetTableIamPolicyArgs.builder()
-     *             .instance(google_bigtable_instance.instance().name())
-     *             .table(google_bigtable_table.table().name())
+     *             .instance(instance.name())
+     *             .table(table.name())
      *             .build());
      * 
      *     }
@@ -267,8 +267,8 @@ public final class BigtableFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigtableFunctions.getTableIamPolicy(GetTableIamPolicyArgs.builder()
-     *             .instance(google_bigtable_instance.instance().name())
-     *             .table(google_bigtable_table.table().name())
+     *             .instance(instance.name())
+     *             .table(table.name())
      *             .build());
      * 
      *     }
@@ -305,8 +305,8 @@ public final class BigtableFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigtableFunctions.getTableIamPolicy(GetTableIamPolicyArgs.builder()
-     *             .instance(google_bigtable_instance.instance().name())
-     *             .table(google_bigtable_table.table().name())
+     *             .instance(instance.name())
+     *             .table(table.name())
      *             .build());
      * 
      *     }

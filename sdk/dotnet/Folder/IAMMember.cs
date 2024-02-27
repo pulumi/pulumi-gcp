@@ -82,17 +82,17 @@ namespace Pulumi.Gcp.Folder
     ///         {
     ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
-    ///                 {
-    ///                     Description = "Expiring at midnight of 2019-12-31",
-    ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///                     Title = "expires_after_2019_12_31",
-    ///                 },
+    ///                 Role = "roles/compute.admin",
     ///                 Members = new[]
     ///                 {
     ///                     "user:jane@example.com",
     ///                 },
-    ///                 Role = "roles/compute.admin",
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 {
+    ///                     Title = "expires_after_2019_12_31",
+    ///                     Description = "Expiring at midnight of 2019-12-31",
+    ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///                 },
     ///             },
     ///         },
     ///     });
@@ -119,11 +119,11 @@ namespace Pulumi.Gcp.Folder
     ///     var folder = new Gcp.Folder.IAMBinding("folder", new()
     ///     {
     ///         Folder = "folders/1234567",
+    ///         Role = "roles/editor",
     ///         Members = new[]
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         Role = "roles/editor",
     ///     });
     /// 
     /// });
@@ -141,18 +141,18 @@ namespace Pulumi.Gcp.Folder
     /// {
     ///     var folder = new Gcp.Folder.IAMBinding("folder", new()
     ///     {
-    ///         Condition = new Gcp.Folder.Inputs.IAMBindingConditionArgs
-    ///         {
-    ///             Description = "Expiring at midnight of 2019-12-31",
-    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///             Title = "expires_after_2019_12_31",
-    ///         },
     ///         Folder = "folders/1234567",
+    ///         Role = "roles/container.admin",
     ///         Members = new[]
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         Role = "roles/container.admin",
+    ///         Condition = new Gcp.Folder.Inputs.IAMBindingConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
     ///     });
     /// 
     /// });
@@ -171,8 +171,8 @@ namespace Pulumi.Gcp.Folder
     ///     var folder = new Gcp.Folder.IAMMember("folder", new()
     ///     {
     ///         Folder = "folders/1234567",
-    ///         Member = "user:jane@example.com",
     ///         Role = "roles/editor",
+    ///         Member = "user:jane@example.com",
     ///     });
     /// 
     /// });
@@ -190,15 +190,15 @@ namespace Pulumi.Gcp.Folder
     /// {
     ///     var folder = new Gcp.Folder.IAMMember("folder", new()
     ///     {
+    ///         Folder = "folders/1234567",
+    ///         Role = "roles/firebase.admin",
+    ///         Member = "user:jane@example.com",
     ///         Condition = new Gcp.Folder.Inputs.IAMMemberConditionArgs
     ///         {
+    ///             Title = "expires_after_2019_12_31",
     ///             Description = "Expiring at midnight of 2019-12-31",
     ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///             Title = "expires_after_2019_12_31",
     ///         },
-    ///         Folder = "folders/1234567",
-    ///         Member = "user:jane@example.com",
-    ///         Role = "roles/firebase.admin",
     ///     });
     /// 
     /// });
@@ -216,6 +216,8 @@ namespace Pulumi.Gcp.Folder
     /// {
     ///     var folder = new Gcp.Folder.IamAuditConfig("folder", new()
     ///     {
+    ///         Folder = "folders/1234567",
+    ///         Service = "allServices",
     ///         AuditLogConfigs = new[]
     ///         {
     ///             new Gcp.Folder.Inputs.IamAuditConfigAuditLogConfigArgs
@@ -224,15 +226,13 @@ namespace Pulumi.Gcp.Folder
     ///             },
     ///             new Gcp.Folder.Inputs.IamAuditConfigAuditLogConfigArgs
     ///             {
+    ///                 LogType = "DATA_READ",
     ///                 ExemptedMembers = new[]
     ///                 {
     ///                     "user:joebloggs@example.com",
     ///                 },
-    ///                 LogType = "DATA_READ",
     ///             },
     ///         },
-    ///         Folder = "folders/1234567",
-    ///         Service = "allServices",
     ///     });
     /// 
     /// });

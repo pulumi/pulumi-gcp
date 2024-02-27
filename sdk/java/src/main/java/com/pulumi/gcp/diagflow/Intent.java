@@ -40,7 +40,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.AgentArgs;
  * import com.pulumi.gcp.diagflow.Intent;
  * import com.pulumi.gcp.diagflow.IntentArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -62,9 +61,7 @@ import javax.annotation.Nullable;
  * 
  *         var basicIntent = new Intent(&#34;basicIntent&#34;, IntentArgs.builder()        
  *             .displayName(&#34;basic-intent&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(basicAgent)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -88,7 +85,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.AgentArgs;
  * import com.pulumi.gcp.diagflow.Intent;
  * import com.pulumi.gcp.diagflow.IntentArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -102,12 +98,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var agentProjectProject = new Project(&#34;agentProjectProject&#34;, ProjectArgs.builder()        
+ *         var agentProject = new Project(&#34;agentProject&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;my-project&#34;)
+ *             .name(&#34;my-project&#34;)
  *             .orgId(&#34;123456789&#34;)
  *             .build());
  * 
  *         var agentProjectService = new Service(&#34;agentProjectService&#34;, ServiceArgs.builder()        
- *             .project(agentProjectProject.projectId())
+ *             .project(agentProject.projectId())
  *             .service(&#34;dialogflow.googleapis.com&#34;)
  *             .disableDependentServices(false)
  *             .build());
@@ -123,14 +121,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var basicAgent = new Agent(&#34;basicAgent&#34;, AgentArgs.builder()        
- *             .project(agentProjectProject.projectId())
+ *             .project(agentProject.projectId())
  *             .displayName(&#34;example_agent&#34;)
  *             .defaultLanguageCode(&#34;en&#34;)
  *             .timeZone(&#34;America/New_York&#34;)
  *             .build());
  * 
  *         var fullIntent = new Intent(&#34;fullIntent&#34;, IntentArgs.builder()        
- *             .project(agentProjectProject.projectId())
+ *             .project(agentProject.projectId())
  *             .displayName(&#34;full-intent&#34;)
  *             .webhookState(&#34;WEBHOOK_STATE_ENABLED&#34;)
  *             .priority(1)
@@ -138,14 +136,12 @@ import javax.annotation.Nullable;
  *             .mlDisabled(true)
  *             .action(&#34;some_action&#34;)
  *             .resetContexts(true)
- *             .inputContextNames(agentProjectProject.projectId().applyValue(projectId -&gt; String.format(&#34;projects/%s/agent/sessions/-/contexts/some_id&#34;, projectId)))
+ *             .inputContextNames(agentProject.projectId().applyValue(projectId -&gt; String.format(&#34;projects/%s/agent/sessions/-/contexts/some_id&#34;, projectId)))
  *             .events(&#34;some_event&#34;)
  *             .defaultResponsePlatforms(            
  *                 &#34;FACEBOOK&#34;,
  *                 &#34;SLACK&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(basicAgent)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

@@ -30,25 +30,28 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var urlSignature = new Random.RandomId("urlSignature", new()
+    ///     var urlSignature = new Random.RandomId("url_signature", new()
     ///     {
     ///         ByteLength = 16,
     ///     });
     /// 
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
+    ///         Name = "test-storage-bucket",
     ///         Location = "EU",
     ///     });
     /// 
-    ///     var testBackend = new Gcp.Compute.BackendBucket("testBackend", new()
+    ///     var testBackend = new Gcp.Compute.BackendBucket("test_backend", new()
     ///     {
+    ///         Name = "test-signed-backend-bucket",
     ///         Description = "Contains beautiful images",
     ///         BucketName = bucket.Name,
     ///         EnableCdn = true,
     ///     });
     /// 
-    ///     var backendKey = new Gcp.Compute.BackendBucketSignedUrlKey("backendKey", new()
+    ///     var backendKey = new Gcp.Compute.BackendBucketSignedUrlKey("backend_key", new()
     ///     {
+    ///         Name = "test-key",
     ///         KeyValue = urlSignature.B64Url,
     ///         BackendBucket = testBackend.Name,
     ///     });

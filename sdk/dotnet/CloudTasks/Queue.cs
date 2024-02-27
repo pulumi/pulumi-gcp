@@ -25,6 +25,7 @@ namespace Pulumi.Gcp.CloudTasks
     /// {
     ///     var @default = new Gcp.CloudTasks.Queue("default", new()
     ///     {
+    ///         Name = "cloud-tasks-queue-test",
     ///         Location = "us-central1",
     ///     });
     /// 
@@ -40,15 +41,16 @@ namespace Pulumi.Gcp.CloudTasks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var advancedConfiguration = new Gcp.CloudTasks.Queue("advancedConfiguration", new()
+    ///     var advancedConfiguration = new Gcp.CloudTasks.Queue("advanced_configuration", new()
     ///     {
+    ///         Name = "instance-name",
+    ///         Location = "us-central1",
     ///         AppEngineRoutingOverride = new Gcp.CloudTasks.Inputs.QueueAppEngineRoutingOverrideArgs
     ///         {
-    ///             Instance = "test",
     ///             Service = "worker",
     ///             Version = "1.0",
+    ///             Instance = "test",
     ///         },
-    ///         Location = "us-central1",
     ///         RateLimits = new Gcp.CloudTasks.Inputs.QueueRateLimitsArgs
     ///         {
     ///             MaxConcurrentDispatches = 3,
@@ -57,10 +59,10 @@ namespace Pulumi.Gcp.CloudTasks
     ///         RetryConfig = new Gcp.CloudTasks.Inputs.QueueRetryConfigArgs
     ///         {
     ///             MaxAttempts = 5,
-    ///             MaxBackoff = "3s",
-    ///             MaxDoublings = 1,
     ///             MaxRetryDuration = "4s",
+    ///             MaxBackoff = "3s",
     ///             MinBackoff = "2s",
+    ///             MaxDoublings = 1,
     ///         },
     ///         StackdriverLoggingConfig = new Gcp.CloudTasks.Inputs.QueueStackdriverLoggingConfigArgs
     ///         {

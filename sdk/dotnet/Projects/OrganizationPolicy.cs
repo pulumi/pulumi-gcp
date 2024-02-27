@@ -32,14 +32,14 @@ namespace Pulumi.Gcp.Projects
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var serialPortPolicy = new Gcp.Projects.OrganizationPolicy("serialPortPolicy", new()
+    ///     var serialPortPolicy = new Gcp.Projects.OrganizationPolicy("serial_port_policy", new()
     ///     {
+    ///         Project = "your-project-id",
+    ///         Constraint = "compute.disableSerialPortAccess",
     ///         BooleanPolicy = new Gcp.Projects.Inputs.OrganizationPolicyBooleanPolicyArgs
     ///         {
     ///             Enforced = true,
     ///         },
-    ///         Constraint = "compute.disableSerialPortAccess",
-    ///         Project = "your-project-id",
     ///     });
     /// 
     /// });
@@ -55,8 +55,9 @@ namespace Pulumi.Gcp.Projects
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var servicesPolicy = new Gcp.Projects.OrganizationPolicy("servicesPolicy", new()
+    ///     var servicesPolicy = new Gcp.Projects.OrganizationPolicy("services_policy", new()
     ///     {
+    ///         Project = "your-project-id",
     ///         Constraint = "serviceuser.services",
     ///         ListPolicy = new Gcp.Projects.Inputs.OrganizationPolicyListPolicyArgs
     ///         {
@@ -65,7 +66,6 @@ namespace Pulumi.Gcp.Projects
     ///                 All = true,
     ///             },
     ///         },
-    ///         Project = "your-project-id",
     ///     });
     /// 
     /// });
@@ -81,11 +81,13 @@ namespace Pulumi.Gcp.Projects
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var servicesPolicy = new Gcp.Projects.OrganizationPolicy("servicesPolicy", new()
+    ///     var servicesPolicy = new Gcp.Projects.OrganizationPolicy("services_policy", new()
     ///     {
+    ///         Project = "your-project-id",
     ///         Constraint = "serviceuser.services",
     ///         ListPolicy = new Gcp.Projects.Inputs.OrganizationPolicyListPolicyArgs
     ///         {
+    ///             SuggestedValue = "compute.googleapis.com",
     ///             Deny = new Gcp.Projects.Inputs.OrganizationPolicyListPolicyDenyArgs
     ///             {
     ///                 Values = new[]
@@ -93,9 +95,7 @@ namespace Pulumi.Gcp.Projects
     ///                     "cloudresourcemanager.googleapis.com",
     ///                 },
     ///             },
-    ///             SuggestedValue = "compute.googleapis.com",
     ///         },
-    ///         Project = "your-project-id",
     ///     });
     /// 
     /// });
@@ -111,10 +111,10 @@ namespace Pulumi.Gcp.Projects
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var servicesPolicy = new Gcp.Projects.OrganizationPolicy("servicesPolicy", new()
+    ///     var servicesPolicy = new Gcp.Projects.OrganizationPolicy("services_policy", new()
     ///     {
-    ///         Constraint = "serviceuser.services",
     ///         Project = "your-project-id",
+    ///         Constraint = "serviceuser.services",
     ///         RestorePolicy = new Gcp.Projects.Inputs.OrganizationPolicyRestorePolicyArgs
     ///         {
     ///             Default = true,

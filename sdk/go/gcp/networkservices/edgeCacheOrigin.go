@@ -34,8 +34,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networkservices.NewEdgeCacheOrigin(ctx, "default", &networkservices.EdgeCacheOriginArgs{
-//				Description:   pulumi.String("The default bucket for media edge test"),
+//				Name:          pulumi.String("my-origin"),
 //				OriginAddress: pulumi.String("gs://media-edge-default"),
+//				Description:   pulumi.String("The default bucket for media edge test"),
 //			})
 //			if err != nil {
 //				return err
@@ -60,6 +61,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			fallback, err := networkservices.NewEdgeCacheOrigin(ctx, "fallback", &networkservices.EdgeCacheOriginArgs{
+//				Name:          pulumi.String("my-fallback"),
 //				OriginAddress: pulumi.String("fallback.example.com"),
 //				Description:   pulumi.String("The default bucket for media edge test"),
 //				MaxAttempts:   pulumi.Int(3),
@@ -105,6 +107,7 @@ import (
 //				return err
 //			}
 //			_, err = networkservices.NewEdgeCacheOrigin(ctx, "default", &networkservices.EdgeCacheOriginArgs{
+//				Name:           pulumi.String("my-origin"),
 //				OriginAddress:  pulumi.String("gs://media-edge-default"),
 //				FailoverOrigin: fallback.ID(),
 //				Description:    pulumi.String("The default bucket for media edge test"),
@@ -156,6 +159,7 @@ import (
 //				return err
 //			}
 //			_, err = networkservices.NewEdgeCacheOrigin(ctx, "default", &networkservices.EdgeCacheOriginArgs{
+//				Name:          pulumi.String("my-origin"),
 //				OriginAddress: pulumi.String("gs://media-edge-default"),
 //				Description:   pulumi.String("The default bucket for V4 authentication"),
 //				AwsV4Authentication: &networkservices.EdgeCacheOriginAwsV4AuthenticationArgs{

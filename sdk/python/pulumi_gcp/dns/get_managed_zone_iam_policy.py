@@ -99,8 +99,8 @@ def get_managed_zone_iam_policy(managed_zone: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dns.get_managed_zone_iam_policy(project=google_dns_managed_zone["default"]["project"],
-        managed_zone=google_dns_managed_zone["default"]["name"])
+    policy = gcp.dns.get_managed_zone_iam_policy(project=default["project"],
+        managed_zone=default["name"])
     ```
 
 
@@ -135,8 +135,8 @@ def get_managed_zone_iam_policy_output(managed_zone: Optional[pulumi.Input[str]]
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dns.get_managed_zone_iam_policy(project=google_dns_managed_zone["default"]["project"],
-        managed_zone=google_dns_managed_zone["default"]["name"])
+    policy = gcp.dns.get_managed_zone_iam_policy(project=default["project"],
+        managed_zone=default["name"])
     ```
 
 

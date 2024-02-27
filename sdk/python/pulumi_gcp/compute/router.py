@@ -357,8 +357,11 @@ class Router(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        foobar_network = gcp.compute.Network("foobarNetwork", auto_create_subnetworks=False)
-        foobar_router = gcp.compute.Router("foobarRouter",
+        foobar_network = gcp.compute.Network("foobar",
+            name="my-network",
+            auto_create_subnetworks=False)
+        foobar = gcp.compute.Router("foobar",
+            name="my-router",
             network=foobar_network.name,
             bgp=gcp.compute.RouterBgpArgs(
                 asn=64514,
@@ -380,8 +383,11 @@ class Router(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network = gcp.compute.Network("network", auto_create_subnetworks=False)
+        network = gcp.compute.Network("network",
+            name="test-network",
+            auto_create_subnetworks=False)
         encrypted_interconnect_router = gcp.compute.Router("encrypted-interconnect-router",
+            name="test-router",
             network=network.name,
             encrypted_interconnect_router=True,
             bgp=gcp.compute.RouterBgpArgs(
@@ -462,8 +468,11 @@ class Router(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        foobar_network = gcp.compute.Network("foobarNetwork", auto_create_subnetworks=False)
-        foobar_router = gcp.compute.Router("foobarRouter",
+        foobar_network = gcp.compute.Network("foobar",
+            name="my-network",
+            auto_create_subnetworks=False)
+        foobar = gcp.compute.Router("foobar",
+            name="my-router",
             network=foobar_network.name,
             bgp=gcp.compute.RouterBgpArgs(
                 asn=64514,
@@ -485,8 +494,11 @@ class Router(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network = gcp.compute.Network("network", auto_create_subnetworks=False)
+        network = gcp.compute.Network("network",
+            name="test-network",
+            auto_create_subnetworks=False)
         encrypted_interconnect_router = gcp.compute.Router("encrypted-interconnect-router",
+            name="test-router",
             network=network.name,
             encrypted_interconnect_router=True,
             bgp=gcp.compute.RouterBgpArgs(

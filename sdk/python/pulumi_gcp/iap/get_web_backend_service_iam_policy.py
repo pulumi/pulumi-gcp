@@ -99,8 +99,8 @@ def get_web_backend_service_iam_policy(project: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.iap.get_web_backend_service_iam_policy(project=google_compute_backend_service["default"]["project"],
-        web_backend_service=google_compute_backend_service["default"]["name"])
+    policy = gcp.iap.get_web_backend_service_iam_policy(project=default["project"],
+        web_backend_service=default["name"])
     ```
 
 
@@ -135,8 +135,8 @@ def get_web_backend_service_iam_policy_output(project: Optional[pulumi.Input[Opt
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.iap.get_web_backend_service_iam_policy(project=google_compute_backend_service["default"]["project"],
-        web_backend_service=google_compute_backend_service["default"]["name"])
+    policy = gcp.iap.get_web_backend_service_iam_policy(project=default["project"],
+        web_backend_service=default["name"])
     ```
 
 

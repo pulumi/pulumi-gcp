@@ -23,6 +23,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// {
     ///     var @default = new Gcp.NetworkServices.HttpRoute("default", new()
     ///     {
+    ///         Name = "my-http-route",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -53,9 +54,6 @@ namespace Pulumi.Gcp.NetworkServices
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -72,6 +70,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// {
     ///     var @default = new Gcp.NetworkServices.HttpRoute("default", new()
     ///     {
+    ///         Name = "my-http-route",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -215,9 +214,6 @@ namespace Pulumi.Gcp.NetworkServices
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -234,6 +230,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// {
     ///     var @default = new Gcp.NetworkServices.HttpRoute("default", new()
     ///     {
+    ///         Name = "my-http-route",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -344,9 +341,6 @@ namespace Pulumi.Gcp.NetworkServices
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -361,20 +355,19 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultMesh = new Gcp.NetworkServices.Mesh("defaultMesh", new()
+    ///     var @default = new Gcp.NetworkServices.Mesh("default", new()
     ///     {
+    ///         Name = "my-http-route",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
     ///         },
     ///         Description = "my description",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultHttpRoute = new Gcp.NetworkServices.HttpRoute("defaultHttpRoute", new()
+    ///     var defaultHttpRoute = new Gcp.NetworkServices.HttpRoute("default", new()
     ///     {
+    ///         Name = "my-http-route",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -386,7 +379,7 @@ namespace Pulumi.Gcp.NetworkServices
     ///         },
     ///         Meshes = new[]
     ///         {
-    ///             defaultMesh.Id,
+    ///             @default.Id,
     ///         },
     ///         Rules = new[]
     ///         {
@@ -409,9 +402,6 @@ namespace Pulumi.Gcp.NetworkServices
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

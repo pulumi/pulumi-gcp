@@ -28,11 +28,13 @@ namespace Pulumi.Gcp.Dns
     /// {
     ///     var network_1 = new Gcp.Compute.Network("network-1", new()
     ///     {
+    ///         Name = "network-1",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var network_2 = new Gcp.Compute.Network("network-2", new()
     ///     {
+    ///         Name = "network-2",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 

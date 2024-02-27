@@ -474,8 +474,11 @@ class CryptoKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        keyring = gcp.kms.KeyRing("keyring", location="global")
+        keyring = gcp.kms.KeyRing("keyring",
+            name="keyring-example",
+            location="global")
         example_key = gcp.kms.CryptoKey("example-key",
+            name="crypto-key-example",
             key_ring=keyring.id,
             rotation_period="7776000s")
         ```
@@ -485,8 +488,11 @@ class CryptoKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        keyring = gcp.kms.KeyRing("keyring", location="global")
+        keyring = gcp.kms.KeyRing("keyring",
+            name="keyring-example",
+            location="global")
         example_asymmetric_sign_key = gcp.kms.CryptoKey("example-asymmetric-sign-key",
+            name="crypto-key-example",
             key_ring=keyring.id,
             purpose="ASYMMETRIC_SIGN",
             version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
@@ -571,8 +577,11 @@ class CryptoKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        keyring = gcp.kms.KeyRing("keyring", location="global")
+        keyring = gcp.kms.KeyRing("keyring",
+            name="keyring-example",
+            location="global")
         example_key = gcp.kms.CryptoKey("example-key",
+            name="crypto-key-example",
             key_ring=keyring.id,
             rotation_period="7776000s")
         ```
@@ -582,8 +591,11 @@ class CryptoKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        keyring = gcp.kms.KeyRing("keyring", location="global")
+        keyring = gcp.kms.KeyRing("keyring",
+            name="keyring-example",
+            location="global")
         example_asymmetric_sign_key = gcp.kms.CryptoKey("example-asymmetric-sign-key",
+            name="crypto-key-example",
             key_ring=keyring.id,
             purpose="ASYMMETRIC_SIGN",
             version_template=gcp.kms.CryptoKeyVersionTemplateArgs(

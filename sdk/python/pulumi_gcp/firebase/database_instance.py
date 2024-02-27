@@ -307,8 +307,7 @@ class DatabaseInstance(pulumi.CustomResource):
         basic = gcp.firebase.DatabaseInstance("basic",
             project="my-project-name",
             region="us-central1",
-            instance_id="active-db",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            instance_id="active-db")
         ```
         ### Firebase Database Instance Full
 
@@ -321,8 +320,7 @@ class DatabaseInstance(pulumi.CustomResource):
             region="europe-west1",
             instance_id="disabled-db",
             type="USER_DATABASE",
-            desired_state="DISABLED",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            desired_state="DISABLED")
         ```
         ### Firebase Database Instance Default Database
 
@@ -330,25 +328,22 @@ class DatabaseInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_project = gcp.organizations.Project("defaultProject",
+        default = gcp.organizations.Project("default",
+            project_id="rtdb-project",
+            name="rtdb-project",
             org_id="123456789",
             labels={
                 "firebase": "enabled",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_firebase_project_project = gcp.firebase.Project("defaultFirebase/projectProject", project=default_project.project_id,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        firebase_database = gcp.projects.Service("firebaseDatabase",
-            project=default_firebase / project_project["project"],
-            service="firebasedatabase.googleapis.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_database_instance = gcp.firebase.DatabaseInstance("defaultDatabaseInstance",
-            project=default_firebase / project_project["project"],
+            })
+        default_project = gcp.firebase.Project("default", project=default.project_id)
+        firebase_database = gcp.projects.Service("firebase_database",
+            project=default_project.project,
+            service="firebasedatabase.googleapis.com")
+        default_database_instance = gcp.firebase.DatabaseInstance("default",
+            project=default_project.project,
             region="us-central1",
             instance_id="rtdb-project-default-rtdb",
-            type="DEFAULT_DATABASE",
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[firebase_database]))
+            type="DEFAULT_DATABASE")
         ```
 
         ## Import
@@ -417,8 +412,7 @@ class DatabaseInstance(pulumi.CustomResource):
         basic = gcp.firebase.DatabaseInstance("basic",
             project="my-project-name",
             region="us-central1",
-            instance_id="active-db",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            instance_id="active-db")
         ```
         ### Firebase Database Instance Full
 
@@ -431,8 +425,7 @@ class DatabaseInstance(pulumi.CustomResource):
             region="europe-west1",
             instance_id="disabled-db",
             type="USER_DATABASE",
-            desired_state="DISABLED",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            desired_state="DISABLED")
         ```
         ### Firebase Database Instance Default Database
 
@@ -440,25 +433,22 @@ class DatabaseInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_project = gcp.organizations.Project("defaultProject",
+        default = gcp.organizations.Project("default",
+            project_id="rtdb-project",
+            name="rtdb-project",
             org_id="123456789",
             labels={
                 "firebase": "enabled",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_firebase_project_project = gcp.firebase.Project("defaultFirebase/projectProject", project=default_project.project_id,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        firebase_database = gcp.projects.Service("firebaseDatabase",
-            project=default_firebase / project_project["project"],
-            service="firebasedatabase.googleapis.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_database_instance = gcp.firebase.DatabaseInstance("defaultDatabaseInstance",
-            project=default_firebase / project_project["project"],
+            })
+        default_project = gcp.firebase.Project("default", project=default.project_id)
+        firebase_database = gcp.projects.Service("firebase_database",
+            project=default_project.project,
+            service="firebasedatabase.googleapis.com")
+        default_database_instance = gcp.firebase.DatabaseInstance("default",
+            project=default_project.project,
             region="us-central1",
             instance_id="rtdb-project-default-rtdb",
-            type="DEFAULT_DATABASE",
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[firebase_database]))
+            type="DEFAULT_DATABASE")
         ```
 
         ## Import

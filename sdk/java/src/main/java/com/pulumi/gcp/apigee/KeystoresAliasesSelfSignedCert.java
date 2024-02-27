@@ -55,7 +55,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.apigee.KeystoresAliasesSelfSignedCert;
  * import com.pulumi.gcp.apigee.KeystoresAliasesSelfSignedCertArgs;
  * import com.pulumi.gcp.apigee.inputs.KeystoresAliasesSelfSignedCertSubjectArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -70,6 +69,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;my-project&#34;)
+ *             .name(&#34;my-project&#34;)
  *             .orgId(&#34;123456789&#34;)
  *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
  *             .build());
@@ -82,24 +83,20 @@ import javax.annotation.Nullable;
  *         var servicenetworking = new Service(&#34;servicenetworking&#34;, ServiceArgs.builder()        
  *             .project(project.projectId())
  *             .service(&#34;servicenetworking.googleapis.com&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(apigee)
- *                 .build());
+ *             .build());
  * 
  *         var compute = new Service(&#34;compute&#34;, ServiceArgs.builder()        
  *             .project(project.projectId())
  *             .service(&#34;compute.googleapis.com&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(servicenetworking)
- *                 .build());
+ *             .build());
  * 
  *         var apigeeNetwork = new Network(&#34;apigeeNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;apigee-network&#34;)
  *             .project(project.projectId())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(compute)
- *                 .build());
+ *             .build());
  * 
  *         var apigeeRange = new GlobalAddress(&#34;apigeeRange&#34;, GlobalAddressArgs.builder()        
+ *             .name(&#34;apigee-range&#34;)
  *             .purpose(&#34;VPC_PEERING&#34;)
  *             .addressType(&#34;INTERNAL&#34;)
  *             .prefixLength(16)
@@ -111,32 +108,28 @@ import javax.annotation.Nullable;
  *             .network(apigeeNetwork.id())
  *             .service(&#34;servicenetworking.googleapis.com&#34;)
  *             .reservedPeeringRanges(apigeeRange.name())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(servicenetworking)
- *                 .build());
+ *             .build());
  * 
  *         var apigeeOrg = new Organization(&#34;apigeeOrg&#34;, OrganizationArgs.builder()        
  *             .analyticsRegion(&#34;us-central1&#34;)
  *             .projectId(project.projectId())
  *             .authorizedNetwork(apigeeNetwork.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
- *                     apigeeVpcConnection,
- *                     apigee)
- *                 .build());
+ *             .build());
  * 
- *         var apigeeEnvironmentKeystoreSsAliasEnvironment = new Environment(&#34;apigeeEnvironmentKeystoreSsAliasEnvironment&#34;, EnvironmentArgs.builder()        
+ *         var apigeeEnvironmentKeystoreSsAlias = new Environment(&#34;apigeeEnvironmentKeystoreSsAlias&#34;, EnvironmentArgs.builder()        
  *             .orgId(apigeeOrg.id())
+ *             .name(&#34;env-name&#34;)
  *             .description(&#34;Apigee Environment&#34;)
  *             .displayName(&#34;environment-1&#34;)
  *             .build());
  * 
  *         var apigeeEnvironmentKeystoreAlias = new EnvKeystore(&#34;apigeeEnvironmentKeystoreAlias&#34;, EnvKeystoreArgs.builder()        
- *             .envId(apigeeEnvironmentKeystoreSsAliasEnvironment.id())
+ *             .name(&#34;env-keystore&#34;)
+ *             .envId(apigeeEnvironmentKeystoreSsAlias.id())
  *             .build());
  * 
  *         var apigeeEnvironmentKeystoreSsAliasKeystoresAliasesSelfSignedCert = new KeystoresAliasesSelfSignedCert(&#34;apigeeEnvironmentKeystoreSsAliasKeystoresAliasesSelfSignedCert&#34;, KeystoresAliasesSelfSignedCertArgs.builder()        
- *             .environment(apigeeEnvironmentKeystoreSsAliasEnvironment.name())
+ *             .environment(apigeeEnvironmentKeystoreSsAlias.name())
  *             .orgId(apigeeOrg.name())
  *             .keystore(apigeeEnvironmentKeystoreAlias.name())
  *             .alias(&#34;alias&#34;)

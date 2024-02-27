@@ -21,55 +21,42 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
+    ///     var @default = new Gcp.Compute.Network("default", new()
     ///     {
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Name = "vpc-network",
     ///     });
     /// 
-    ///     var privateIpAddress = new Gcp.Compute.GlobalAddress("privateIpAddress", new()
+    ///     var privateIpAddress = new Gcp.Compute.GlobalAddress("private_ip_address", new()
     ///     {
+    ///         Name = "vpc-network",
     ///         AddressType = "INTERNAL",
     ///         Purpose = "VPC_PEERING",
     ///         PrefixLength = 20,
-    ///         Network = defaultNetwork.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Network = @default.Id,
     ///     });
     /// 
-    ///     var defaultConnection = new Gcp.ServiceNetworking.Connection("defaultConnection", new()
+    ///     var defaultConnection = new Gcp.ServiceNetworking.Connection("default", new()
     ///     {
-    ///         Network = defaultNetwork.Id,
+    ///         Network = @default.Id,
     ///         Service = "servicenetworking.googleapis.com",
     ///         ReservedPeeringRanges = new[]
     ///         {
     ///             privateIpAddress.Name,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var ms_console = new Gcp.BackupDisasterRecovery.ManagementServer("ms-console", new()
     ///     {
     ///         Location = "us-central1",
+    ///         Name = "ms-console",
     ///         Type = "BACKUP_RESTORE",
     ///         Networks = new[]
     ///         {
     ///             new Gcp.BackupDisasterRecovery.Inputs.ManagementServerNetworkArgs
     ///             {
-    ///                 Network = defaultNetwork.Id,
+    ///                 Network = @default.Id,
     ///                 PeeringMode = "PRIVATE_SERVICE_ACCESS",
     ///             },
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///         DependsOn = new[]
-    ///         {
-    ///             defaultConnection,
     ///         },
     ///     });
     /// 

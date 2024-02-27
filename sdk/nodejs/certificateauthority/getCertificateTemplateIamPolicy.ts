@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.certificateauthority.getCertificateTemplateIamPolicy({
- *     certificateTemplate: google_privateca_certificate_template["default"].id,
+ *     certificateTemplate: _default.id,
  * });
  * ```
  */
@@ -75,7 +75,7 @@ export interface GetCertificateTemplateIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.certificateauthority.getCertificateTemplateIamPolicy({
- *     certificateTemplate: google_privateca_certificate_template["default"].id,
+ *     certificateTemplate: _default.id,
  * });
  * ```
  */

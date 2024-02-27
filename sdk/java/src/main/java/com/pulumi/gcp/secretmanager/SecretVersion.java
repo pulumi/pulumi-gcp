@@ -194,7 +194,9 @@ import javax.annotation.Nullable;
  *         var secret_version_base64 = new SecretVersion(&#34;secret-version-base64&#34;, SecretVersionArgs.builder()        
  *             .secret(secret_basic.id())
  *             .isSecretDataBase64(true)
- *             .secretData(Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get(&#34;secret-data.pfx&#34;))))
+ *             .secretData(StdFunctions.filebase64(Filebase64Args.builder()
+ *                 .input(&#34;secret-data.pfx&#34;)
+ *                 .build()).result())
  *             .build());
  * 
  *     }

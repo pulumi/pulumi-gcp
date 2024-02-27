@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  *
  * const primary = new gcp.clouddeploy.Target("primary", {
  *     location: "us-west1",
+ *     name: "target",
  *     deployParameters: {},
  *     description: "multi-target description",
  *     executionConfigs: [{
@@ -43,8 +44,6 @@ import * as utilities from "../utilities";
  *         my_first_label: "example-label-1",
  *         my_second_label: "example-label-2",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Run_target
@@ -55,6 +54,7 @@ import * as utilities from "../utilities";
  *
  * const primary = new gcp.clouddeploy.Target("primary", {
  *     location: "us-west1",
+ *     name: "target",
  *     deployParameters: {},
  *     description: "basic description",
  *     executionConfigs: [{
@@ -77,8 +77,6 @@ import * as utilities from "../utilities";
  *         my_first_label: "example-label-1",
  *         my_second_label: "example-label-2",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Target
@@ -88,10 +86,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const primary = new gcp.clouddeploy.Target("primary", {
- *     annotations: {
- *         my_first_annotation: "example-annotation-1",
- *         my_second_annotation: "example-annotation-2",
- *     },
+ *     location: "us-west1",
+ *     name: "target",
  *     deployParameters: {
  *         deployParameterKey: "deployParameterValue",
  *     },
@@ -99,13 +95,16 @@ import * as utilities from "../utilities";
  *     gke: {
  *         cluster: "projects/my-project-name/locations/us-west1/clusters/example-cluster-name",
  *     },
+ *     project: "my-project-name",
+ *     requireApproval: false,
+ *     annotations: {
+ *         my_first_annotation: "example-annotation-1",
+ *         my_second_annotation: "example-annotation-2",
+ *     },
  *     labels: {
  *         my_first_label: "example-label-1",
  *         my_second_label: "example-label-2",
  *     },
- *     location: "us-west1",
- *     project: "my-project-name",
- *     requireApproval: false,
  * });
  * ```
  *

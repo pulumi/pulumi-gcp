@@ -35,11 +35,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "default", nil)
+//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name: pulumi.String("tf-test-my-network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			serviceRange, err := compute.NewGlobalAddress(ctx, "serviceRange", &compute.GlobalAddressArgs{
+//			serviceRange, err := compute.NewGlobalAddress(ctx, "service_range", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("address"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
@@ -48,7 +51,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			privateServiceConnection, err := servicenetworking.NewConnection(ctx, "privateServiceConnection", &servicenetworking.ConnectionArgs{
+//			_, err = servicenetworking.NewConnection(ctx, "private_service_connection", &servicenetworking.ConnectionArgs{
 //				Network: _default.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
@@ -59,12 +62,11 @@ import (
 //				return err
 //			}
 //			_, err = cloudids.NewEndpoint(ctx, "example-endpoint", &cloudids.EndpointArgs{
+//				Name:     pulumi.String("test"),
 //				Location: pulumi.String("us-central1-f"),
 //				Network:  _default.ID(),
 //				Severity: pulumi.String("INFORMATIONAL"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				privateServiceConnection,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

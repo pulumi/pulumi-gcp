@@ -25,9 +25,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///     {
     ///         Location = "us-central1",
     ///         VpcscPolicy = "ALLOW",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

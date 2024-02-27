@@ -32,24 +32,24 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fullAgent = new Gcp.Diagflow.Agent("fullAgent", new()
+    ///     var fullAgent = new Gcp.Diagflow.Agent("full_agent", new()
     ///     {
-    ///         ApiVersion = "API_VERSION_V2_BETA_1",
-    ///         AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
-    ///         ClassificationThreshold = 0.3,
-    ///         DefaultLanguageCode = "en",
-    ///         Description = "Example description.",
     ///         DisplayName = "dialogflow-agent",
-    ///         EnableLogging = true,
-    ///         MatchMode = "MATCH_MODE_ML_ONLY",
+    ///         DefaultLanguageCode = "en",
     ///         SupportedLanguageCodes = new[]
     ///         {
     ///             "fr",
     ///             "de",
     ///             "es",
     ///         },
-    ///         Tier = "TIER_STANDARD",
     ///         TimeZone = "America/New_York",
+    ///         Description = "Example description.",
+    ///         AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+    ///         EnableLogging = true,
+    ///         MatchMode = "MATCH_MODE_ML_ONLY",
+    ///         ClassificationThreshold = 0.3,
+    ///         ApiVersion = "API_VERSION_V2_BETA_1",
+    ///         Tier = "TIER_STANDARD",
     ///     });
     /// 
     /// });

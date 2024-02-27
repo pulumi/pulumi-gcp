@@ -357,17 +357,95 @@ class TargetHttpProxy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
         ## Example Usage
+        ### Target Http Proxy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="http-health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend-service",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=default_http_health_check.id)
+        default_url_map = gcp.compute.URLMap("default",
+            name="url-map",
+            default_service=default_backend_service.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_backend_service.id,
+                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_backend_service.id,
+                )],
+            )])
+        default = gcp.compute.TargetHttpProxy("default",
+            name="test-proxy",
+            url_map=default_url_map.id)
+        ```
+        ### Target Http Proxy Http Keep Alive Timeout
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="http-health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend-service",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default_http_health_check.id)
+        default_url_map = gcp.compute.URLMap("default",
+            name="url-map",
+            default_service=default_backend_service.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_backend_service.id,
+                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_backend_service.id,
+                )],
+            )])
+        default = gcp.compute.TargetHttpProxy("default",
+            name="test-http-keep-alive-timeout-proxy",
+            http_keep_alive_timeout_sec=610,
+            url_map=default_url_map.id)
+        ```
         ### Target Http Proxy Https Redirect
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        default_url_map = gcp.compute.URLMap("defaultURLMap", default_url_redirect=gcp.compute.URLMapDefaultUrlRedirectArgs(
-            https_redirect=True,
-            strip_query=False,
-        ))
-        default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", url_map=default_url_map.id)
+        default_url_map = gcp.compute.URLMap("default",
+            name="url-map",
+            default_url_redirect=gcp.compute.URLMapDefaultUrlRedirectArgs(
+                https_redirect=True,
+                strip_query=False,
+            ))
+        default = gcp.compute.TargetHttpProxy("default",
+            name="test-https-redirect-proxy",
+            url_map=default_url_map.id)
         ```
 
         ## Import
@@ -437,17 +515,95 @@ class TargetHttpProxy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
         ## Example Usage
+        ### Target Http Proxy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="http-health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend-service",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=default_http_health_check.id)
+        default_url_map = gcp.compute.URLMap("default",
+            name="url-map",
+            default_service=default_backend_service.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_backend_service.id,
+                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_backend_service.id,
+                )],
+            )])
+        default = gcp.compute.TargetHttpProxy("default",
+            name="test-proxy",
+            url_map=default_url_map.id)
+        ```
+        ### Target Http Proxy Http Keep Alive Timeout
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="http-health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend-service",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default_http_health_check.id)
+        default_url_map = gcp.compute.URLMap("default",
+            name="url-map",
+            default_service=default_backend_service.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_backend_service.id,
+                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_backend_service.id,
+                )],
+            )])
+        default = gcp.compute.TargetHttpProxy("default",
+            name="test-http-keep-alive-timeout-proxy",
+            http_keep_alive_timeout_sec=610,
+            url_map=default_url_map.id)
+        ```
         ### Target Http Proxy Https Redirect
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        default_url_map = gcp.compute.URLMap("defaultURLMap", default_url_redirect=gcp.compute.URLMapDefaultUrlRedirectArgs(
-            https_redirect=True,
-            strip_query=False,
-        ))
-        default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", url_map=default_url_map.id)
+        default_url_map = gcp.compute.URLMap("default",
+            name="url-map",
+            default_url_redirect=gcp.compute.URLMapDefaultUrlRedirectArgs(
+                https_redirect=True,
+                strip_query=False,
+            ))
+        default = gcp.compute.TargetHttpProxy("default",
+            name="test-https-redirect-proxy",
+            url_map=default_url_map.id)
         ```
 
         ## Import

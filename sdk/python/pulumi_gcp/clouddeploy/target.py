@@ -645,6 +645,7 @@ class Target(pulumi.CustomResource):
 
         primary = gcp.clouddeploy.Target("primary",
             location="us-west1",
+            name="target",
             deploy_parameters={},
             description="multi-target description",
             execution_configs=[gcp.clouddeploy.TargetExecutionConfigArgs(
@@ -669,8 +670,7 @@ class Target(pulumi.CustomResource):
             labels={
                 "my_first_label": "example-label-1",
                 "my_second_label": "example-label-2",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
         ### Run_target
         tests creating and updating a cloud run target
@@ -680,6 +680,7 @@ class Target(pulumi.CustomResource):
 
         primary = gcp.clouddeploy.Target("primary",
             location="us-west1",
+            name="target",
             deploy_parameters={},
             description="basic description",
             execution_configs=[gcp.clouddeploy.TargetExecutionConfigArgs(
@@ -701,8 +702,7 @@ class Target(pulumi.CustomResource):
             labels={
                 "my_first_label": "example-label-1",
                 "my_second_label": "example-label-2",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
         ### Target
         Creates a basic Cloud Deploy target
@@ -711,10 +711,8 @@ class Target(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.clouddeploy.Target("primary",
-            annotations={
-                "my_first_annotation": "example-annotation-1",
-                "my_second_annotation": "example-annotation-2",
-            },
+            location="us-west1",
+            name="target",
             deploy_parameters={
                 "deployParameterKey": "deployParameterValue",
             },
@@ -722,13 +720,16 @@ class Target(pulumi.CustomResource):
             gke=gcp.clouddeploy.TargetGkeArgs(
                 cluster="projects/my-project-name/locations/us-west1/clusters/example-cluster-name",
             ),
+            project="my-project-name",
+            require_approval=False,
+            annotations={
+                "my_first_annotation": "example-annotation-1",
+                "my_second_annotation": "example-annotation-2",
+            },
             labels={
                 "my_first_label": "example-label-1",
                 "my_second_label": "example-label-2",
-            },
-            location="us-west1",
-            project="my-project-name",
-            require_approval=False)
+            })
         ```
 
         ## Import
@@ -799,6 +800,7 @@ class Target(pulumi.CustomResource):
 
         primary = gcp.clouddeploy.Target("primary",
             location="us-west1",
+            name="target",
             deploy_parameters={},
             description="multi-target description",
             execution_configs=[gcp.clouddeploy.TargetExecutionConfigArgs(
@@ -823,8 +825,7 @@ class Target(pulumi.CustomResource):
             labels={
                 "my_first_label": "example-label-1",
                 "my_second_label": "example-label-2",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
         ### Run_target
         tests creating and updating a cloud run target
@@ -834,6 +835,7 @@ class Target(pulumi.CustomResource):
 
         primary = gcp.clouddeploy.Target("primary",
             location="us-west1",
+            name="target",
             deploy_parameters={},
             description="basic description",
             execution_configs=[gcp.clouddeploy.TargetExecutionConfigArgs(
@@ -855,8 +857,7 @@ class Target(pulumi.CustomResource):
             labels={
                 "my_first_label": "example-label-1",
                 "my_second_label": "example-label-2",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
         ### Target
         Creates a basic Cloud Deploy target
@@ -865,10 +866,8 @@ class Target(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.clouddeploy.Target("primary",
-            annotations={
-                "my_first_annotation": "example-annotation-1",
-                "my_second_annotation": "example-annotation-2",
-            },
+            location="us-west1",
+            name="target",
             deploy_parameters={
                 "deployParameterKey": "deployParameterValue",
             },
@@ -876,13 +875,16 @@ class Target(pulumi.CustomResource):
             gke=gcp.clouddeploy.TargetGkeArgs(
                 cluster="projects/my-project-name/locations/us-west1/clusters/example-cluster-name",
             ),
+            project="my-project-name",
+            require_approval=False,
+            annotations={
+                "my_first_annotation": "example-annotation-1",
+                "my_second_annotation": "example-annotation-2",
+            },
             labels={
                 "my_first_label": "example-label-1",
                 "my_second_label": "example-label-2",
-            },
-            location="us-west1",
-            project="my-project-name",
-            require_approval=False)
+            })
         ```
 
         ## Import

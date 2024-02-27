@@ -43,7 +43,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.apigateway.ApiConfigArgs;
  * import com.pulumi.gcp.apigateway.inputs.ApiConfigOpenapiDocumentArgs;
  * import com.pulumi.gcp.apigateway.inputs.ApiConfigOpenapiDocumentDocumentArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -57,24 +56,73 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var apiCfgApi = new Api(&#34;apiCfgApi&#34;, ApiArgs.builder()        
+ *         var apiCfg = new Api(&#34;apiCfg&#34;, ApiArgs.builder()        
  *             .apiId(&#34;my-api&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var apiCfgApiConfig = new ApiConfig(&#34;apiCfgApiConfig&#34;, ApiConfigArgs.builder()        
- *             .api(apiCfgApi.apiId())
+ *             .api(apiCfg.apiId())
  *             .apiConfigId(&#34;my-config&#34;)
  *             .openapiDocuments(ApiConfigOpenapiDocumentArgs.builder()
  *                 .document(ApiConfigOpenapiDocumentDocumentArgs.builder()
  *                     .path(&#34;spec.yaml&#34;)
- *                     .contents(Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get(&#34;test-fixtures/openapi.yaml&#34;))))
+ *                     .contents(StdFunctions.filebase64(Filebase64Args.builder()
+ *                         .input(&#34;test-fixtures/openapi.yaml&#34;)
+ *                         .build()).result())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Apigateway Api Config Grpc
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.apigateway.Api;
+ * import com.pulumi.gcp.apigateway.ApiArgs;
+ * import com.pulumi.gcp.apigateway.ApiConfig;
+ * import com.pulumi.gcp.apigateway.ApiConfigArgs;
+ * import com.pulumi.gcp.apigateway.inputs.ApiConfigGrpcServiceArgs;
+ * import com.pulumi.gcp.apigateway.inputs.ApiConfigGrpcServiceFileDescriptorSetArgs;
+ * import com.pulumi.gcp.apigateway.inputs.ApiConfigManagedServiceConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var apiCfg = new Api(&#34;apiCfg&#34;, ApiArgs.builder()        
+ *             .apiId(&#34;my-api&#34;)
+ *             .build());
+ * 
+ *         var apiCfgApiConfig = new ApiConfig(&#34;apiCfgApiConfig&#34;, ApiConfigArgs.builder()        
+ *             .api(apiCfg.apiId())
+ *             .apiConfigId(&#34;my-config&#34;)
+ *             .grpcServices(ApiConfigGrpcServiceArgs.builder()
+ *                 .fileDescriptorSet(ApiConfigGrpcServiceFileDescriptorSetArgs.builder()
+ *                     .path(&#34;api_descriptor.pb&#34;)
+ *                     .contents(StdFunctions.filebase64(Filebase64Args.builder()
+ *                         .input(&#34;test-fixtures/api_descriptor.pb&#34;)
+ *                         .build()).result())
+ *                     .build())
+ *                 .build())
+ *             .managedServiceConfigs(ApiConfigManagedServiceConfigArgs.builder()
+ *                 .path(&#34;api_config.yaml&#34;)
+ *                 .contents(StdFunctions.base64encode().applyValue(invoke -&gt; invoke.result()))
+ *                 .build())
+ *             .build());
  * 
  *     }
  * }

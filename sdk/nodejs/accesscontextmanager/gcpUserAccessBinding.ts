@@ -12,6 +12,52 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/organizations.gcpUserAccessBindings)
  *
  * ## Example Usage
+ * ### Access Context Manager Gcp User Access Binding Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const group = new gcp.cloudidentity.Group("group", {
+ *     displayName: "my-identity-group",
+ *     parent: "customers/A01b123xz",
+ *     groupKey: {
+ *         id: "my-identity-group@example.com",
+ *     },
+ *     labels: {
+ *         "cloudidentity.googleapis.com/groups.discussion_forum": "",
+ *     },
+ * });
+ * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
+ *     parent: "organizations/123456789",
+ *     title: "my policy",
+ * });
+ * const accessLevelIdForUserAccessBinding = new gcp.accesscontextmanager.AccessLevel("access_level_id_for_user_access_binding", {
+ *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
+ *     name: pulumi.interpolate`accessPolicies/${access_policy.name}/accessLevels/chromeos_no_lock`,
+ *     title: "chromeos_no_lock",
+ *     basic: {
+ *         conditions: [{
+ *             devicePolicy: {
+ *                 requireScreenLock: true,
+ *                 osConstraints: [{
+ *                     osType: "DESKTOP_CHROME_OS",
+ *                 }],
+ *             },
+ *             regions: ["US"],
+ *         }],
+ *     },
+ * });
+ * const gcpUserAccessBinding = new gcp.accesscontextmanager.GcpUserAccessBinding("gcp_user_access_binding", {
+ *     organizationId: "123456789",
+ *     groupKey: std.trimprefixOutput({
+ *         input: group.id,
+ *         prefix: "groups/",
+ *     }).apply(invoke => invoke.result),
+ *     accessLevels: accessLevelIdForUserAccessBinding.name,
+ * });
+ * ```
  *
  * ## Import
  *

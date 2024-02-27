@@ -43,7 +43,7 @@ public final class FolderFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = FolderFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .folder(google_folder.permissiontest().name())
+     *             .folder(permissiontest.name())
      *             .build());
      * 
      *     }
@@ -80,7 +80,7 @@ public final class FolderFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = FolderFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .folder(google_folder.permissiontest().name())
+     *             .folder(permissiontest.name())
      *             .build());
      * 
      *     }
@@ -117,7 +117,7 @@ public final class FolderFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = FolderFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .folder(google_folder.permissiontest().name())
+     *             .folder(permissiontest.name())
      *             .build());
      * 
      *     }
@@ -154,7 +154,7 @@ public final class FolderFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = FolderFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .folder(google_folder.permissiontest().name())
+     *             .folder(permissiontest.name())
      *             .build());
      * 
      *     }

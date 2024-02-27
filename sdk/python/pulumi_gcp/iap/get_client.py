@@ -94,7 +94,7 @@ def get_client(brand: Optional[str] = None,
 
     project = gcp.organizations.get_project(project_id="foobar")
     project_client = gcp.iap.get_client(brand=f"projects/{project.number}/brands/[BRAND_NUMBER]",
-        client_id=foo["apps"]["googleusercontent"]["com"])
+        client_id=apps["googleusercontent"]["com"])
     ```
 
 
@@ -130,7 +130,7 @@ def get_client_output(brand: Optional[pulumi.Input[str]] = None,
 
     project = gcp.organizations.get_project(project_id="foobar")
     project_client = gcp.iap.get_client(brand=f"projects/{project.number}/brands/[BRAND_NUMBER]",
-        client_id=foo["apps"]["googleusercontent"]["com"])
+        client_id=apps["googleusercontent"]["com"])
     ```
 
 

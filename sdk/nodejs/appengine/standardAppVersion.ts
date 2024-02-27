@@ -25,26 +25,30 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const customServiceAccount = new gcp.serviceaccount.Account("customServiceAccount", {
+ * const customServiceAccount = new gcp.serviceaccount.Account("custom_service_account", {
  *     accountId: "my-account",
  *     displayName: "Custom Service Account",
  * });
- * const gaeApi = new gcp.projects.IAMMember("gaeApi", {
+ * const gaeApi = new gcp.projects.IAMMember("gae_api", {
  *     project: customServiceAccount.project,
  *     role: "roles/compute.networkUser",
  *     member: pulumi.interpolate`serviceAccount:${customServiceAccount.email}`,
  * });
- * const storageViewer = new gcp.projects.IAMMember("storageViewer", {
+ * const storageViewer = new gcp.projects.IAMMember("storage_viewer", {
  *     project: customServiceAccount.project,
  *     role: "roles/storage.objectViewer",
  *     member: pulumi.interpolate`serviceAccount:${customServiceAccount.email}`,
  * });
- * const bucket = new gcp.storage.Bucket("bucket", {location: "US"});
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "appengine-static-content",
+ *     location: "US",
+ * });
  * const object = new gcp.storage.BucketObject("object", {
+ *     name: "hello-world.zip",
  *     bucket: bucket.name,
  *     source: new pulumi.asset.FileAsset("./test-fixtures/hello-world.zip"),
  * });
- * const myappV1 = new gcp.appengine.StandardAppVersion("myappV1", {
+ * const myappV1 = new gcp.appengine.StandardAppVersion("myapp_v1", {
  *     versionId: "v1",
  *     service: "myapp",
  *     runtime: "nodejs10",
@@ -75,7 +79,7 @@ import * as utilities from "../utilities";
  *     deleteServiceOnDestroy: true,
  *     serviceAccount: customServiceAccount.email,
  * });
- * const myappV2 = new gcp.appengine.StandardAppVersion("myappV2", {
+ * const myappV2 = new gcp.appengine.StandardAppVersion("myapp_v2", {
  *     versionId: "v2",
  *     service: "myapp",
  *     runtime: "nodejs10",

@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.eventarc.inputs.TriggerDestinationArgs;
  * import com.pulumi.gcp.eventarc.inputs.TriggerDestinationCloudRunServiceArgs;
  * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -57,6 +58,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
+ *             .name(&#34;eventarc-service&#34;)
  *             .location(&#34;europe-west1&#34;)
  *             .metadata(ServiceMetadataArgs.builder()
  *                 .namespace(&#34;my-project-name&#34;)
@@ -80,6 +82,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary = new Trigger(&#34;primary&#34;, TriggerArgs.builder()        
+ *             .name(&#34;name&#34;)
  *             .location(&#34;europe-west1&#34;)
  *             .matchingCriterias(TriggerMatchingCriteriaArgs.builder()
  *                 .attribute(&#34;type&#34;)
@@ -94,7 +97,9 @@ import javax.annotation.Nullable;
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .build());
  * 
- *         var foo = new Topic(&#34;foo&#34;);
+ *         var foo = new Topic(&#34;foo&#34;, TopicArgs.builder()        
+ *             .name(&#34;topic&#34;)
+ *             .build());
  * 
  *     }
  * }

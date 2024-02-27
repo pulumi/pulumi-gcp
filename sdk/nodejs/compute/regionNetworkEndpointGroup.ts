@@ -23,12 +23,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const bucket = new gcp.storage.Bucket("bucket", {location: "US"});
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "cloudfunctions-function-example-bucket",
+ *     location: "US",
+ * });
  * const archive = new gcp.storage.BucketObject("archive", {
+ *     name: "index.zip",
  *     bucket: bucket.name,
  *     source: new pulumi.asset.FileAsset("path/to/index.zip"),
  * });
- * const functionNegFunction = new gcp.cloudfunctions.Function("functionNegFunction", {
+ * const functionNegFunction = new gcp.cloudfunctions.Function("function_neg", {
+ *     name: "function-neg",
  *     description: "My function",
  *     runtime: "nodejs10",
  *     availableMemoryMb: 128,
@@ -39,7 +44,8 @@ import * as utilities from "../utilities";
  *     entryPoint: "helloGET",
  * });
  * // Cloud Functions Example
- * const functionNegRegionNetworkEndpointGroup = new gcp.compute.RegionNetworkEndpointGroup("functionNegRegionNetworkEndpointGroup", {
+ * const functionNeg = new gcp.compute.RegionNetworkEndpointGroup("function_neg", {
+ *     name: "function-neg",
  *     networkEndpointType: "SERVERLESS",
  *     region: "us-central1",
  *     cloudFunction: {
@@ -53,7 +59,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const cloudrunNegService = new gcp.cloudrun.Service("cloudrunNegService", {
+ * const cloudrunNegService = new gcp.cloudrun.Service("cloudrun_neg", {
+ *     name: "cloudrun-neg",
  *     location: "us-central1",
  *     template: {
  *         spec: {
@@ -68,7 +75,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * // Cloud Run Example
- * const cloudrunNegRegionNetworkEndpointGroup = new gcp.compute.RegionNetworkEndpointGroup("cloudrunNegRegionNetworkEndpointGroup", {
+ * const cloudrunNeg = new gcp.compute.RegionNetworkEndpointGroup("cloudrun_neg", {
+ *     name: "cloudrun-neg",
  *     networkEndpointType: "SERVERLESS",
  *     region: "us-central1",
  *     cloudRun: {
@@ -82,12 +90,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const appengineNegBucket = new gcp.storage.Bucket("appengineNegBucket", {location: "US"});
- * const appengineNegBucketObject = new gcp.storage.BucketObject("appengineNegBucketObject", {
+ * const appengineNegBucket = new gcp.storage.Bucket("appengine_neg", {
+ *     name: "appengine-neg",
+ *     location: "US",
+ * });
+ * const appengineNegBucketObject = new gcp.storage.BucketObject("appengine_neg", {
+ *     name: "hello-world.zip",
  *     bucket: appengineNegBucket.name,
  *     source: new pulumi.asset.FileAsset("./test-fixtures/hello-world.zip"),
  * });
- * const appengineNegFlexibleAppVersion = new gcp.appengine.FlexibleAppVersion("appengineNegFlexibleAppVersion", {
+ * const appengineNegFlexibleAppVersion = new gcp.appengine.FlexibleAppVersion("appengine_neg", {
  *     versionId: "v1",
  *     service: "appengine-network-endpoint-group",
  *     runtime: "nodejs",
@@ -127,7 +139,8 @@ import * as utilities from "../utilities";
  *     deleteServiceOnDestroy: true,
  * });
  * // App Engine Example
- * const appengineNegRegionNetworkEndpointGroup = new gcp.compute.RegionNetworkEndpointGroup("appengineNegRegionNetworkEndpointGroup", {
+ * const appengineNeg = new gcp.compute.RegionNetworkEndpointGroup("appengine_neg", {
+ *     name: "appengine-neg",
  *     networkEndpointType: "SERVERLESS",
  *     region: "us-central1",
  *     appEngine: {
@@ -142,10 +155,71 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const pscNeg = new gcp.compute.RegionNetworkEndpointGroup("pscNeg", {
+ * const pscNeg = new gcp.compute.RegionNetworkEndpointGroup("psc_neg", {
+ *     name: "psc-neg",
+ *     region: "asia-northeast3",
  *     networkEndpointType: "PRIVATE_SERVICE_CONNECT",
  *     pscTargetService: "asia-northeast3-cloudkms.googleapis.com",
- *     region: "asia-northeast3",
+ * });
+ * ```
+ * ### Region Network Endpoint Group Psc Service Attachment
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {name: "psc-network"});
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "psc-subnetwork",
+ *     ipCidrRange: "10.0.0.0/16",
+ *     region: "europe-west4",
+ *     network: _default.id,
+ * });
+ * const pscSubnetwork = new gcp.compute.Subnetwork("psc_subnetwork", {
+ *     name: "psc-subnetwork-nat",
+ *     ipCidrRange: "10.1.0.0/16",
+ *     region: "europe-west4",
+ *     purpose: "PRIVATE_SERVICE_CONNECT",
+ *     network: _default.id,
+ * });
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+ *     name: "psc-healthcheck",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ *     tcpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const defaultRegionBackendService = new gcp.compute.RegionBackendService("default", {
+ *     name: "psc-backend",
+ *     region: "europe-west4",
+ *     healthChecks: defaultHealthCheck.id,
+ * });
+ * const defaultForwardingRule = new gcp.compute.ForwardingRule("default", {
+ *     name: "psc-forwarding-rule",
+ *     region: "europe-west4",
+ *     loadBalancingScheme: "INTERNAL",
+ *     backendService: defaultRegionBackendService.id,
+ *     allPorts: true,
+ *     network: _default.name,
+ *     subnetwork: defaultSubnetwork.name,
+ * });
+ * const defaultServiceAttachment = new gcp.compute.ServiceAttachment("default", {
+ *     name: "psc-service-attachment",
+ *     region: "europe-west4",
+ *     description: "A service attachment configured with Terraform",
+ *     enableProxyProtocol: false,
+ *     connectionPreference: "ACCEPT_AUTOMATIC",
+ *     natSubnets: [pscSubnetwork.selfLink],
+ *     targetService: defaultForwardingRule.selfLink,
+ * });
+ * const pscNegServiceAttachment = new gcp.compute.RegionNetworkEndpointGroup("psc_neg_service_attachment", {
+ *     name: "psc-neg",
+ *     region: "europe-west4",
+ *     networkEndpointType: "PRIVATE_SERVICE_CONNECT",
+ *     pscTargetService: defaultServiceAttachment.selfLink,
+ *     network: _default.selfLink,
+ *     subnetwork: defaultSubnetwork.selfLink,
  * });
  * ```
  * ### Region Network Endpoint Group Internet Ip Port
@@ -154,8 +228,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const _default = new gcp.compute.Network("default", {});
- * const regionNetworkEndpointGroupInternetIpPort = new gcp.compute.RegionNetworkEndpointGroup("regionNetworkEndpointGroupInternetIpPort", {
+ * const _default = new gcp.compute.Network("default", {name: "network"});
+ * const regionNetworkEndpointGroupInternetIpPort = new gcp.compute.RegionNetworkEndpointGroup("region_network_endpoint_group_internet_ip_port", {
+ *     name: "ip-port-neg",
  *     region: "us-central1",
  *     network: _default.id,
  *     networkEndpointType: "INTERNET_IP_PORT",
@@ -167,8 +242,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const _default = new gcp.compute.Network("default", {});
- * const regionNetworkEndpointGroupInternetFqdnPort = new gcp.compute.RegionNetworkEndpointGroup("regionNetworkEndpointGroupInternetFqdnPort", {
+ * const _default = new gcp.compute.Network("default", {name: "network"});
+ * const regionNetworkEndpointGroupInternetFqdnPort = new gcp.compute.RegionNetworkEndpointGroup("region_network_endpoint_group_internet_fqdn_port", {
+ *     name: "ip-port-neg",
  *     region: "us-central1",
  *     network: _default.id,
  *     networkEndpointType: "INTERNET_FQDN_PORT",

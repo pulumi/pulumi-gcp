@@ -36,6 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
+//				Name:     pulumi.String("cloudrun-job"),
 //				Location: pulumi.String("us-central1"),
 //				Template: &cloudrunv2.JobTemplateArgs{
 //					Template: &cloudrunv2.JobTemplateTemplateArgs{
@@ -70,6 +71,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
+//				Name:     pulumi.String("cloudrun-job"),
 //				Location: pulumi.String("us-central1"),
 //				Template: &cloudrunv2.JobTemplateArgs{
 //					Template: &cloudrunv2.JobTemplateTemplateArgs{
@@ -124,6 +126,7 @@ import (
 //				return err
 //			}
 //			instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("cloudrun-sql"),
 //				Region:          pulumi.String("us-central1"),
 //				DatabaseVersion: pulumi.String("MYSQL_5_7"),
 //				Settings: &sql.DatabaseInstanceSettingsArgs{
@@ -135,6 +138,7 @@ import (
 //				return err
 //			}
 //			_, err = cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
+//				Name:     pulumi.String("cloudrun-job"),
 //				Location: pulumi.String("us-central1"),
 //				Template: &cloudrunv2.JobTemplateArgs{
 //					Template: &cloudrunv2.JobTemplateTemplateArgs{
@@ -195,9 +199,7 @@ import (
 //				SecretId: secret.ID(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 //				Member:   pulumi.String(fmt.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", project.Number)),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				secret,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -222,13 +224,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			customTestNetwork, err := compute.NewNetwork(ctx, "customTestNetwork", &compute.NetworkArgs{
+//			customTestNetwork, err := compute.NewNetwork(ctx, "custom_test", &compute.NetworkArgs{
+//				Name:                  pulumi.String("run-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			customTestSubnetwork, err := compute.NewSubnetwork(ctx, "customTestSubnetwork", &compute.SubnetworkArgs{
+//			customTest, err := compute.NewSubnetwork(ctx, "custom_test", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("run-subnetwork"),
 //				IpCidrRange: pulumi.String("10.2.0.0/28"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     customTestNetwork.ID(),
@@ -237,8 +241,9 @@ import (
 //				return err
 //			}
 //			connector, err := vpcaccess.NewConnector(ctx, "connector", &vpcaccess.ConnectorArgs{
+//				Name: pulumi.String("run-vpc"),
 //				Subnet: &vpcaccess.ConnectorSubnetArgs{
-//					Name: customTestSubnetwork.Name,
+//					Name: customTest.Name,
 //				},
 //				MachineType:  pulumi.String("e2-standard-4"),
 //				MinInstances: pulumi.Int(2),
@@ -249,6 +254,7 @@ import (
 //				return err
 //			}
 //			_, err = cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
+//				Name:     pulumi.String("cloudrun-job"),
 //				Location: pulumi.String("us-central1"),
 //				Template: &cloudrunv2.JobTemplateArgs{
 //					Template: &cloudrunv2.JobTemplateTemplateArgs{
@@ -287,8 +293,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
-//				LaunchStage: pulumi.String("BETA"),
+//				Name:        pulumi.String("cloudrun-job"),
 //				Location:    pulumi.String("us-central1"),
+//				LaunchStage: pulumi.String("BETA"),
 //				Template: &cloudrunv2.JobTemplateArgs{
 //					Template: &cloudrunv2.JobTemplateTemplateArgs{
 //						Containers: cloudrunv2.JobTemplateTemplateContainerArray{
@@ -297,7 +304,6 @@ import (
 //							},
 //						},
 //						VpcAccess: &cloudrunv2.JobTemplateTemplateVpcAccessArgs{
-//							Egress: pulumi.String("ALL_TRAFFIC"),
 //							NetworkInterfaces: cloudrunv2.JobTemplateTemplateVpcAccessNetworkInterfaceArray{
 //								&cloudrunv2.JobTemplateTemplateVpcAccessNetworkInterfaceArgs{
 //									Network:    pulumi.String("default"),
@@ -309,6 +315,7 @@ import (
 //									},
 //								},
 //							},
+//							Egress: pulumi.String("ALL_TRAFFIC"),
 //						},
 //					},
 //				},
@@ -348,28 +355,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-data", &secretmanager.SecretVersionArgs{
-//				Secret:     secret.Name,
-//				SecretData: pulumi.String("secret-data"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			project, err := organizations.LookupProject(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-//				SecretId: secret.ID(),
-//				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
-//				Member:   pulumi.String(fmt.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", project.Number)),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				secret,
-//			}))
-//			if err != nil {
-//				return err
-//			}
 //			_, err = cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
+//				Name:     pulumi.String("cloudrun-job"),
 //				Location: pulumi.String("us-central1"),
 //				Template: &cloudrunv2.JobTemplateArgs{
 //					Template: &cloudrunv2.JobTemplateTemplateArgs{
@@ -402,10 +389,26 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				secret_version_data,
-//				secret_access,
-//			}))
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-data", &secretmanager.SecretVersionArgs{
+//				Secret:     secret.Name,
+//				SecretData: pulumi.String("secret-data"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
+//				SecretId: secret.ID(),
+//				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
+//				Member:   pulumi.String(fmt.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", project.Number)),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -429,6 +432,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
+//				Name:        pulumi.String("cloudrun-job"),
 //				Location:    pulumi.String("us-central1"),
 //				LaunchStage: pulumi.String("BETA"),
 //				Template: &cloudrunv2.JobTemplateArgs{
@@ -455,7 +459,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

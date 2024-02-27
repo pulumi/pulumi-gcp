@@ -179,14 +179,13 @@ class InstanceSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        gce_instance_settings = gcp.compute.InstanceSettings("gceInstanceSettings",
+        gce_instance_settings = gcp.compute.InstanceSettings("gce_instance_settings",
             zone="us-east7-b",
             metadata=gcp.compute.InstanceSettingsMetadataArgs(
                 items={
                     "foo": "baz",
                 },
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import
@@ -238,14 +237,13 @@ class InstanceSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        gce_instance_settings = gcp.compute.InstanceSettings("gceInstanceSettings",
+        gce_instance_settings = gcp.compute.InstanceSettings("gce_instance_settings",
             zone="us-east7-b",
             metadata=gcp.compute.InstanceSettingsMetadataArgs(
                 items={
                     "foo": "baz",
                 },
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import

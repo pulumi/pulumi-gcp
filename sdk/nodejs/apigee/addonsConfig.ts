@@ -22,7 +22,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const testOrganization = new gcp.apigee.AddonsConfig("testOrganization", {
+ * const testOrganization = new gcp.apigee.AddonsConfig("test_organization", {
+ *     org: "test_organization",
  *     addonsConfig: {
  *         apiSecurityConfig: {
  *             enabled: true,
@@ -31,7 +32,6 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
- *     org: "test_organization",
  * });
  * ```
  * ### Apigee Addons Full
@@ -53,17 +53,19 @@ import * as utilities from "../utilities";
  *     project: current.then(current => current.project),
  *     service: "servicenetworking.googleapis.com",
  * });
- * const apigeeNetwork = new gcp.compute.Network("apigeeNetwork", {project: current.then(current => current.project)}, {
- *     dependsOn: [compute],
+ * const apigeeNetwork = new gcp.compute.Network("apigee_network", {
+ *     name: "apigee-network",
+ *     project: current.then(current => current.project),
  * });
- * const apigeeRange = new gcp.compute.GlobalAddress("apigeeRange", {
+ * const apigeeRange = new gcp.compute.GlobalAddress("apigee_range", {
+ *     name: "apigee-range",
  *     purpose: "VPC_PEERING",
  *     addressType: "INTERNAL",
  *     prefixLength: 16,
  *     network: apigeeNetwork.id,
  *     project: current.then(current => current.project),
  * });
- * const apigeeVpcConnection = new gcp.servicenetworking.Connection("apigeeVpcConnection", {
+ * const apigeeVpcConnection = new gcp.servicenetworking.Connection("apigee_vpc_connection", {
  *     network: apigeeNetwork.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [apigeeRange.name],
@@ -73,13 +75,8 @@ import * as utilities from "../utilities";
  *     projectId: current.then(current => current.project),
  *     authorizedNetwork: apigeeNetwork.id,
  *     billingType: "EVALUATION",
- * }, {
- *     dependsOn: [
- *         apigeeVpcConnection,
- *         apigee,
- *     ],
  * });
- * const testOrganization = new gcp.apigee.AddonsConfig("testOrganization", {
+ * const testOrganization = new gcp.apigee.AddonsConfig("test_organization", {
  *     org: org.name,
  *     addonsConfig: {
  *         integrationConfig: {

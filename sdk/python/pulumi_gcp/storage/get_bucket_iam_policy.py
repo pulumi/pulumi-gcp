@@ -89,7 +89,7 @@ def get_bucket_iam_policy(bucket: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.storage.get_bucket_iam_policy(bucket=google_storage_bucket["default"]["name"])
+    policy = gcp.storage.get_bucket_iam_policy(bucket=default["name"])
     ```
 
 
@@ -119,7 +119,7 @@ def get_bucket_iam_policy_output(bucket: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.storage.get_bucket_iam_policy(bucket=google_storage_bucket["default"]["name"])
+    policy = gcp.storage.get_bucket_iam_policy(bucket=default["name"])
     ```
 
 

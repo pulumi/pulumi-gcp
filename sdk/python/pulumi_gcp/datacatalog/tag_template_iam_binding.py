@@ -308,7 +308,7 @@ class TagTemplateIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.datacatalog.TagTemplateIamPolicy("policy",
-            tag_template=google_data_catalog_tag_template["basic_tag_template"]["name"],
+            tag_template=basic_tag_template["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -319,7 +319,7 @@ class TagTemplateIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.datacatalog.TagTemplateIamBinding("binding",
-            tag_template=google_data_catalog_tag_template["basic_tag_template"]["name"],
+            tag_template=basic_tag_template["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -331,7 +331,7 @@ class TagTemplateIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.datacatalog.TagTemplateIamMember("member",
-            tag_template=google_data_catalog_tag_template["basic_tag_template"]["name"],
+            tag_template=basic_tag_template["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -427,7 +427,7 @@ class TagTemplateIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.datacatalog.TagTemplateIamPolicy("policy",
-            tag_template=google_data_catalog_tag_template["basic_tag_template"]["name"],
+            tag_template=basic_tag_template["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -438,7 +438,7 @@ class TagTemplateIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.datacatalog.TagTemplateIamBinding("binding",
-            tag_template=google_data_catalog_tag_template["basic_tag_template"]["name"],
+            tag_template=basic_tag_template["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -450,7 +450,7 @@ class TagTemplateIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.datacatalog.TagTemplateIamMember("member",
-            tag_template=google_data_catalog_tag_template["basic_tag_template"]["name"],
+            tag_template=basic_tag_template["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

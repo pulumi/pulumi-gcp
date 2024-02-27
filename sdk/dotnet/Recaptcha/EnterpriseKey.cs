@@ -25,20 +25,20 @@ namespace Pulumi.Gcp.Recaptcha
     /// {
     ///     var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new()
     ///     {
+    ///         DisplayName = "display-name-one",
     ///         AndroidSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyAndroidSettingsArgs
     ///         {
     ///             AllowAllPackageNames = true,
     ///             AllowedPackageNames = new() { },
     ///         },
-    ///         DisplayName = "display-name-one",
-    ///         Labels = 
-    ///         {
-    ///             { "label-one", "value-one" },
-    ///         },
     ///         Project = "my-project-name",
     ///         TestingOptions = new Gcp.Recaptcha.Inputs.EnterpriseKeyTestingOptionsArgs
     ///         {
     ///             TestingScore = 0.8,
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
     ///         },
     ///     });
     /// 
@@ -62,14 +62,14 @@ namespace Pulumi.Gcp.Recaptcha
     ///             AllowAllBundleIds = true,
     ///             AllowedBundleIds = new() { },
     ///         },
-    ///         Labels = 
-    ///         {
-    ///             { "label-one", "value-one" },
-    ///         },
     ///         Project = "my-project-name",
     ///         TestingOptions = new Gcp.Recaptcha.Inputs.EnterpriseKeyTestingOptionsArgs
     ///         {
     ///             TestingScore = 1,
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
     ///         },
     ///     });
     /// 
@@ -88,13 +88,13 @@ namespace Pulumi.Gcp.Recaptcha
     ///     var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new()
     ///     {
     ///         DisplayName = "display-name-one",
-    ///         Labels = null,
     ///         Project = "my-project-name",
     ///         WebSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyWebSettingsArgs
     ///         {
-    ///             AllowAllDomains = true,
     ///             IntegrationType = "SCORE",
+    ///             AllowAllDomains = true,
     ///         },
+    ///         Labels = null,
     ///     });
     /// 
     /// });
@@ -112,10 +112,6 @@ namespace Pulumi.Gcp.Recaptcha
     ///     var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new()
     ///     {
     ///         DisplayName = "display-name-one",
-    ///         Labels = 
-    ///         {
-    ///             { "label-one", "value-one" },
-    ///         },
     ///         Project = "my-project-name",
     ///         TestingOptions = new Gcp.Recaptcha.Inputs.EnterpriseKeyTestingOptionsArgs
     ///         {
@@ -129,10 +125,14 @@ namespace Pulumi.Gcp.Recaptcha
     ///         },
     ///         WebSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyWebSettingsArgs
     ///         {
+    ///             IntegrationType = "INVISIBLE",
     ///             AllowAllDomains = true,
     ///             AllowedDomains = new() { },
     ///             ChallengeSecurityPreference = "USABILITY",
-    ///             IntegrationType = "INVISIBLE",
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
     ///         },
     ///     });
     /// 
@@ -151,10 +151,6 @@ namespace Pulumi.Gcp.Recaptcha
     ///     var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new()
     ///     {
     ///         DisplayName = "display-name-one",
-    ///         Labels = 
-    ///         {
-    ///             { "label-one", "value-one" },
-    ///         },
     ///         Project = "my-project-name",
     ///         TestingOptions = new Gcp.Recaptcha.Inputs.EnterpriseKeyTestingOptionsArgs
     ///         {
@@ -163,10 +159,14 @@ namespace Pulumi.Gcp.Recaptcha
     ///         },
     ///         WebSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyWebSettingsArgs
     ///         {
+    ///             IntegrationType = "CHECKBOX",
     ///             AllowAllDomains = true,
     ///             AllowedDomains = new() { },
     ///             ChallengeSecurityPreference = "USABILITY",
-    ///             IntegrationType = "CHECKBOX",
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
     ///         },
     ///     });
     /// 
@@ -185,10 +185,6 @@ namespace Pulumi.Gcp.Recaptcha
     ///     var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new()
     ///     {
     ///         DisplayName = "display-name-one",
-    ///         Labels = 
-    ///         {
-    ///             { "label-one", "value-one" },
-    ///         },
     ///         Project = "my-project-name",
     ///         TestingOptions = new Gcp.Recaptcha.Inputs.EnterpriseKeyTestingOptionsArgs
     ///         {
@@ -196,10 +192,14 @@ namespace Pulumi.Gcp.Recaptcha
     ///         },
     ///         WebSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyWebSettingsArgs
     ///         {
+    ///             IntegrationType = "SCORE",
     ///             AllowAllDomains = true,
     ///             AllowAmpTraffic = false,
     ///             AllowedDomains = new() { },
-    ///             IntegrationType = "SCORE",
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
     ///         },
     ///     });
     /// 

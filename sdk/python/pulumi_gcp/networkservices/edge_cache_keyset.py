@@ -356,6 +356,7 @@ class EdgeCacheKeyset(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.EdgeCacheKeyset("default",
+            name="my-keyset",
             description="The default keyset",
             public_keys=[
                 gcp.networkservices.EdgeCacheKeysetPublicKeyArgs(
@@ -383,6 +384,7 @@ class EdgeCacheKeyset(pulumi.CustomResource):
             secret=secret_basic.id,
             secret_data="secret-data")
         default = gcp.networkservices.EdgeCacheKeyset("default",
+            name="my-keyset",
             description="The default keyset",
             public_keys=[gcp.networkservices.EdgeCacheKeysetPublicKeyArgs(
                 id="my-public-key",
@@ -467,6 +469,7 @@ class EdgeCacheKeyset(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.EdgeCacheKeyset("default",
+            name="my-keyset",
             description="The default keyset",
             public_keys=[
                 gcp.networkservices.EdgeCacheKeysetPublicKeyArgs(
@@ -494,6 +497,7 @@ class EdgeCacheKeyset(pulumi.CustomResource):
             secret=secret_basic.id,
             secret_data="secret-data")
         default = gcp.networkservices.EdgeCacheKeyset("default",
+            name="my-keyset",
             description="The default keyset",
             public_keys=[gcp.networkservices.EdgeCacheKeysetPublicKeyArgs(
                 id="my-public-key",

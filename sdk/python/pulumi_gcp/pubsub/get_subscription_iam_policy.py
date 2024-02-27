@@ -98,7 +98,7 @@ def get_subscription_iam_policy(project: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.pubsub.get_subscription_iam_policy(subscription=google_pubsub_subscription["subscription"]["id"])
+    policy = gcp.pubsub.get_subscription_iam_policy(subscription=subscription["id"])
     ```
 
 
@@ -133,7 +133,7 @@ def get_subscription_iam_policy_output(project: Optional[pulumi.Input[Optional[s
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.pubsub.get_subscription_iam_policy(subscription=google_pubsub_subscription["subscription"]["id"])
+    policy = gcp.pubsub.get_subscription_iam_policy(subscription=subscription["id"])
     ```
 
 

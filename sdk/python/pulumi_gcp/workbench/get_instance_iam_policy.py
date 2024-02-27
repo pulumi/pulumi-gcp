@@ -109,9 +109,9 @@ def get_instance_iam_policy(location: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.workbench.get_instance_iam_policy(project=google_workbench_instance["instance"]["project"],
-        location=google_workbench_instance["instance"]["location"],
-        name=google_workbench_instance["instance"]["name"])
+    policy = gcp.workbench.get_instance_iam_policy(project=instance["project"],
+        location=instance["location"],
+        name=instance["name"])
     ```
 
 
@@ -150,9 +150,9 @@ def get_instance_iam_policy_output(location: Optional[pulumi.Input[Optional[str]
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.workbench.get_instance_iam_policy(project=google_workbench_instance["instance"]["project"],
-        location=google_workbench_instance["instance"]["location"],
-        name=google_workbench_instance["instance"]["name"])
+    policy = gcp.workbench.get_instance_iam_policy(project=instance["project"],
+        location=instance["location"],
+        name=instance["name"])
     ```
 
 

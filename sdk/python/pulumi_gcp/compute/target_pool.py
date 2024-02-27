@@ -442,6 +442,26 @@ class TargetPool(pulumi.CustomResource):
         documentation](https://cloud.google.com/compute/docs/load-balancing/network/target-pools)
         and [API](https://cloud.google.com/compute/docs/reference/latest/targetPools).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="default",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default = gcp.compute.TargetPool("default",
+            name="instance-pool",
+            instances=[
+                "us-central1-a/myinstance1",
+                "us-central1-b/myinstance2",
+            ],
+            health_checks=default_http_health_check.name)
+        ```
+
         ## Import
 
         Target pools can be imported using any of the following formats:
@@ -511,6 +531,26 @@ class TargetPool(pulumi.CustomResource):
         [the official
         documentation](https://cloud.google.com/compute/docs/load-balancing/network/target-pools)
         and [API](https://cloud.google.com/compute/docs/reference/latest/targetPools).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="default",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default = gcp.compute.TargetPool("default",
+            name="instance-pool",
+            instances=[
+                "us-central1-a/myinstance1",
+                "us-central1-b/myinstance2",
+            ],
+            health_checks=default_http_health_check.name)
+        ```
 
         ## Import
 

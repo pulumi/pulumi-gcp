@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudbuildv2.GetConnectionIamPolicy(ctx, &cloudbuildv2.GetConnectionIamPolicyArgs{
-//				Project:  pulumi.StringRef(google_cloudbuildv2_connection.MyConnection.Project),
-//				Location: pulumi.StringRef(google_cloudbuildv2_connection.MyConnection.Location),
-//				Name:     google_cloudbuildv2_connection.MyConnection.Name,
+//				Project:  pulumi.StringRef(my_connection.Project),
+//				Location: pulumi.StringRef(my_connection.Location),
+//				Name:     my_connection.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

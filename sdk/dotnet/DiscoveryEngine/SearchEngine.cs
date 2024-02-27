@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var basicDataStore = new Gcp.DiscoveryEngine.DataStore("basicDataStore", new()
+    ///     var basic = new Gcp.DiscoveryEngine.DataStore("basic", new()
     ///     {
     ///         Location = "global",
     ///         DataStoreId = "example-datastore-id",
@@ -43,15 +43,15 @@ namespace Pulumi.Gcp.DiscoveryEngine
     ///         CreateAdvancedSiteSearch = false,
     ///     });
     /// 
-    ///     var basicSearchEngine = new Gcp.DiscoveryEngine.SearchEngine("basicSearchEngine", new()
+    ///     var basicSearchEngine = new Gcp.DiscoveryEngine.SearchEngine("basic", new()
     ///     {
     ///         EngineId = "example-engine-id",
     ///         CollectionId = "default_collection",
-    ///         Location = basicDataStore.Location,
+    ///         Location = basic.Location,
     ///         DisplayName = "Example Display Name",
     ///         DataStoreIds = new[]
     ///         {
-    ///             basicDataStore.DataStoreId,
+    ///             basic.DataStoreId,
     ///         },
     ///         SearchEngineConfig = null,
     ///     });

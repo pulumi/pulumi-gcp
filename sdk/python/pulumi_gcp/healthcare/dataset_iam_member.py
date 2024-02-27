@@ -254,8 +254,8 @@ class DatasetIamMember(pulumi.CustomResource):
 
         dataset = gcp.healthcare.DatasetIamBinding("dataset",
             dataset_id="your-dataset-id",
-            members=["user:jane@example.com"],
-            role="roles/editor")
+            role="roles/editor",
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_healthcare\\_dataset\\_iam\\_member
@@ -266,8 +266,8 @@ class DatasetIamMember(pulumi.CustomResource):
 
         dataset = gcp.healthcare.DatasetIamMember("dataset",
             dataset_id="your-dataset-id",
-            member="user:jane@example.com",
-            role="roles/editor")
+            role="roles/editor",
+            member="user:jane@example.com")
         ```
 
         ## Import
@@ -355,8 +355,8 @@ class DatasetIamMember(pulumi.CustomResource):
 
         dataset = gcp.healthcare.DatasetIamBinding("dataset",
             dataset_id="your-dataset-id",
-            members=["user:jane@example.com"],
-            role="roles/editor")
+            role="roles/editor",
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_healthcare\\_dataset\\_iam\\_member
@@ -367,8 +367,8 @@ class DatasetIamMember(pulumi.CustomResource):
 
         dataset = gcp.healthcare.DatasetIamMember("dataset",
             dataset_id="your-dataset-id",
-            member="user:jane@example.com",
-            role="roles/editor")
+            role="roles/editor",
+            member="user:jane@example.com")
         ```
 
         ## Import

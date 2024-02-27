@@ -42,16 +42,18 @@ namespace Pulumi.Gcp.Storage
     /// {
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
+    ///         Name = "static-content-bucket",
     ///         Location = "US",
     ///     });
     /// 
     ///     var @object = new Gcp.Storage.BucketObject("object", new()
     ///     {
+    ///         Name = "public-object",
     ///         Bucket = bucket.Name,
     ///         Source = new FileAsset("../static/img/header-logo.png"),
     ///     });
     /// 
-    ///     var publicRule = new Gcp.Storage.ObjectAccessControl("publicRule", new()
+    ///     var publicRule = new Gcp.Storage.ObjectAccessControl("public_rule", new()
     ///     {
     ///         Object = @object.OutputName,
     ///         Bucket = bucket.Name,

@@ -47,9 +47,65 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var vmw_engine_network = new Network(&#34;vmw-engine-network&#34;, NetworkArgs.builder()        
- *             .description(&#34;VMwareEngine standard network sample&#34;)
+ *             .name(&#34;standard-nw&#34;)
  *             .location(&#34;global&#34;)
  *             .type(&#34;STANDARD&#34;)
+ *             .description(&#34;VMwareEngine standard network sample&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Vmware Engine Network Legacy
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumi.gcp.vmwareengine.Network;
+ * import com.pulumi.gcp.vmwareengine.NetworkArgs;
+ * import com.pulumi.time.sleep;
+ * import com.pulumi.time.SleepArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var acceptanceProject = new Project(&#34;acceptanceProject&#34;, ProjectArgs.builder()        
+ *             .name(&#34;vmw-proj&#34;)
+ *             .projectId(&#34;vmw-proj&#34;)
+ *             .orgId(&#34;123456789&#34;)
+ *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *             .build());
+ * 
+ *         var acceptance = new Service(&#34;acceptance&#34;, ServiceArgs.builder()        
+ *             .project(acceptanceProject.projectId())
+ *             .service(&#34;vmwareengine.googleapis.com&#34;)
+ *             .build());
+ * 
+ *         var vmw_engine_network = new Network(&#34;vmw-engine-network&#34;, NetworkArgs.builder()        
+ *             .project(acceptance.project())
+ *             .name(&#34;us-west1-default&#34;)
+ *             .location(&#34;us-west1&#34;)
+ *             .type(&#34;LEGACY&#34;)
+ *             .description(&#34;VMwareEngine legacy network sample&#34;)
+ *             .build());
+ * 
+ *         var wait60Seconds = new Sleep(&#34;wait60Seconds&#34;, SleepArgs.builder()        
+ *             .createDuration(&#34;60s&#34;)
  *             .build());
  * 
  *     }

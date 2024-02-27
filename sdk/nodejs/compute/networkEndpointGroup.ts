@@ -33,14 +33,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false});
- * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "neg-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "neg-subnetwork",
  *     ipCidrRange: "10.0.0.0/16",
  *     region: "us-central1",
- *     network: defaultNetwork.id,
+ *     network: _default.id,
  * });
  * const neg = new gcp.compute.NetworkEndpointGroup("neg", {
- *     network: defaultNetwork.id,
+ *     name: "my-lb-neg",
+ *     network: _default.id,
  *     subnetwork: defaultSubnetwork.id,
  *     defaultPort: 90,
  *     zone: "us-central1-a",
@@ -52,8 +57,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const _default = new gcp.compute.Network("default", {});
+ * const _default = new gcp.compute.Network("default", {name: "neg-network"});
  * const neg = new gcp.compute.NetworkEndpointGroup("neg", {
+ *     name: "my-lb-neg",
  *     network: _default.id,
  *     defaultPort: 90,
  *     zone: "us-central1-a",

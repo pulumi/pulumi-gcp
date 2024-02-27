@@ -33,12 +33,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a VPC network
-//			peeringNetwork, err := compute.NewNetwork(ctx, "peeringNetwork", nil)
+//			peeringNetwork, err := compute.NewNetwork(ctx, "peering_network", &compute.NetworkArgs{
+//				Name: pulumi.String("peering-network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			// Create an IP address
-//			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "privateIpAlloc", &compute.GlobalAddressArgs{
+//			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "private_ip_alloc", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("private-ip-alloc"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
@@ -59,7 +62,7 @@ import (
 //				return err
 //			}
 //			// (Optional) Import or export custom routes
-//			_, err = compute.NewNetworkPeeringRoutesConfig(ctx, "peeringRoutes", &compute.NetworkPeeringRoutesConfigArgs{
+//			_, err = compute.NewNetworkPeeringRoutesConfig(ctx, "peering_routes", &compute.NetworkPeeringRoutesConfigArgs{
 //				Peering:            _default.Peering,
 //				Network:            peeringNetwork.Name,
 //				ImportCustomRoutes: pulumi.Bool(true),

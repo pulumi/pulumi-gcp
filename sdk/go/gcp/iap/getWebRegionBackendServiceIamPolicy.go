@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := iap.LookupWebRegionBackendServiceIamPolicy(ctx, &iap.LookupWebRegionBackendServiceIamPolicyArgs{
-//				Project:                 pulumi.StringRef(google_compute_region_backend_service.Default.Project),
-//				Region:                  pulumi.StringRef(google_compute_region_backend_service.Default.Region),
-//				WebRegionBackendService: google_compute_region_backend_service.Default.Name,
+//				Project:                 pulumi.StringRef(_default.Project),
+//				Region:                  pulumi.StringRef(_default.Region),
+//				WebRegionBackendService: _default.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

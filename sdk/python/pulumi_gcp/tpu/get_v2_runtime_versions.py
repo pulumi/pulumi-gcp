@@ -96,6 +96,7 @@ def get_v2_runtime_versions(project: Optional[str] = None,
 
     available = gcp.tpu.get_v2_runtime_versions()
     tpu = gcp.tpu.V2Vm("tpu",
+        name="test-tpu",
         zone="us-central1-b",
         runtime_version=available.versions[0])
     ```
@@ -142,6 +143,7 @@ def get_v2_runtime_versions_output(project: Optional[pulumi.Input[Optional[str]]
 
     available = gcp.tpu.get_v2_runtime_versions()
     tpu = gcp.tpu.V2Vm("tpu",
+        name="test-tpu",
         zone="us-central1-b",
         runtime_version=available.versions[0])
     ```

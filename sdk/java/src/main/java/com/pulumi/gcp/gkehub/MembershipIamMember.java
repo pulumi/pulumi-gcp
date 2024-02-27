@@ -62,9 +62,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new MembershipIamPolicy(&#34;policy&#34;, MembershipIamPolicyArgs.builder()        
- *             .project(google_gke_hub_membership.membership().project())
- *             .location(google_gke_hub_membership.membership().location())
- *             .membershipId(google_gke_hub_membership.membership().membership_id())
+ *             .project(membership.project())
+ *             .location(membership.location())
+ *             .membershipId(membership.membershipId())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -95,9 +95,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new MembershipIamBinding(&#34;binding&#34;, MembershipIamBindingArgs.builder()        
- *             .project(google_gke_hub_membership.membership().project())
- *             .location(google_gke_hub_membership.membership().location())
- *             .membershipId(google_gke_hub_membership.membership().membership_id())
+ *             .project(membership.project())
+ *             .location(membership.location())
+ *             .membershipId(membership.membershipId())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -129,9 +129,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new MembershipIamMember(&#34;member&#34;, MembershipIamMemberArgs.builder()        
- *             .project(google_gke_hub_membership.membership().project())
- *             .location(google_gke_hub_membership.membership().location())
- *             .membershipId(google_gke_hub_membership.membership().membership_id())
+ *             .project(membership.project())
+ *             .location(membership.location())
+ *             .membershipId(membership.membershipId())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

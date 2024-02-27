@@ -31,8 +31,8 @@ namespace Pulumi.Gcp.VMwareEngine
         /// {
         ///     var myNw = Gcp.VMwareEngine.GetNetwork.Invoke(new()
         ///     {
-        ///         Location = "us-central1",
         ///         Name = "us-central1-default",
+        ///         Location = "us-central1",
         ///     });
         /// 
         /// });
@@ -63,8 +63,8 @@ namespace Pulumi.Gcp.VMwareEngine
         /// {
         ///     var myNw = Gcp.VMwareEngine.GetNetwork.Invoke(new()
         ///     {
-        ///         Location = "us-central1",
         ///         Name = "us-central1-default",
+        ///         Location = "us-central1",
         ///     });
         /// 
         /// });

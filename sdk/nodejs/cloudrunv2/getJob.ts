@@ -18,8 +18,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const myJob = gcp.cloudrunv2.getJob({
- *     location: "us-central1",
  *     name: "my-job",
+ *     location: "us-central1",
  * });
  * ```
  */
@@ -103,8 +103,8 @@ export interface GetJobResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const myJob = gcp.cloudrunv2.getJob({
- *     location: "us-central1",
  *     name: "my-job",
+ *     location: "us-central1",
  * });
  * ```
  */

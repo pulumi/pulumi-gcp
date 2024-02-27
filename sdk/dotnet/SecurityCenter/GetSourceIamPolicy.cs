@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.SecurityCenter
         /// {
         ///     var policy = Gcp.SecurityCenter.GetSourceIamPolicy.Invoke(new()
         ///     {
-        ///         Source = google_scc_source.Custom_source.Name,
+        ///         Source = customSource.Name,
         ///     });
         /// 
         /// });
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.SecurityCenter
         /// {
         ///     var policy = Gcp.SecurityCenter.GetSourceIamPolicy.Invoke(new()
         ///     {
-        ///         Source = google_scc_source.Custom_source.Name,
+        ///         Source = customSource.Name,
         ///     });
         /// 
         /// });

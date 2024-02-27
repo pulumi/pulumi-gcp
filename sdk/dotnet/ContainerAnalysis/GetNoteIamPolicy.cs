@@ -28,8 +28,8 @@ namespace Pulumi.Gcp.ContainerAnalysis
         /// {
         ///     var policy = Gcp.ContainerAnalysis.GetNoteIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_container_analysis_note.Note.Project,
-        ///         Note = google_container_analysis_note.Note.Name,
+        ///         Project = note.Project,
+        ///         Note = note.Name,
         ///     });
         /// 
         /// });
@@ -55,8 +55,8 @@ namespace Pulumi.Gcp.ContainerAnalysis
         /// {
         ///     var policy = Gcp.ContainerAnalysis.GetNoteIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_container_analysis_note.Note.Project,
-        ///         Note = google_container_analysis_note.Note.Name,
+        ///         Project = note.Project,
+        ///         Note = note.Name,
         ///     });
         /// 
         /// });

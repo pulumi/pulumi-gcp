@@ -39,8 +39,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := monitoring.NewCustomService(ctx, "custom", &monitoring.CustomServiceArgs{
-//				DisplayName: pulumi.String("My Custom Service custom-srv"),
 //				ServiceId:   pulumi.String("custom-srv"),
+//				DisplayName: pulumi.String("My Custom Service custom-srv"),
 //				Telemetry: &monitoring.CustomServiceTelemetryArgs{
 //					ResourceName: pulumi.String("//product.googleapis.com/foo/foo/services/test"),
 //				},

@@ -18,12 +18,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const oauthIdpConfig = new gcp.identityplatform.OauthIdpConfig("oauthIdpConfig", {
- *     clientId: "client-id",
- *     clientSecret: "secret",
+ * const oauthIdpConfig = new gcp.identityplatform.OauthIdpConfig("oauth_idp_config", {
+ *     name: "oidc.oauth-idp-config",
  *     displayName: "Display Name",
- *     enabled: true,
+ *     clientId: "client-id",
  *     issuer: "issuer",
+ *     enabled: true,
+ *     clientSecret: "secret",
  * });
  * ```
  *

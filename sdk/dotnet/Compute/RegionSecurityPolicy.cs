@@ -23,11 +23,9 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var region_sec_policy_basic = new Gcp.Compute.RegionSecurityPolicy("region-sec-policy-basic", new()
     ///     {
+    ///         Name = "my-sec-policy-basic",
     ///         Description = "basic region security policy",
     ///         Type = "CLOUD_ARMOR",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -44,15 +42,13 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var region_sec_policy_ddos_protection = new Gcp.Compute.RegionSecurityPolicy("region-sec-policy-ddos-protection", new()
     ///     {
+    ///         Name = "my-sec-policy-ddos-protection",
     ///         Description = "with ddos protection config",
     ///         Type = "CLOUD_ARMOR_NETWORK",
     ///         DdosProtectionConfig = new Gcp.Compute.Inputs.RegionSecurityPolicyDdosProtectionConfigArgs
     ///         {
     ///             DdosProtection = "ADVANCED_PREVIEW",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -69,6 +65,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var region_sec_policy_user_defined_fields = new Gcp.Compute.RegionSecurityPolicy("region-sec-policy-user-defined-fields", new()
     ///     {
+    ///         Name = "my-sec-policy-user-defined-fields",
     ///         Description = "with user defined fields",
     ///         Type = "CLOUD_ARMOR_NETWORK",
     ///         UserDefinedFields = new[]
@@ -90,9 +87,6 @@ namespace Pulumi.Gcp.Compute
     ///                 Mask = "0xFFFFFFFF",
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

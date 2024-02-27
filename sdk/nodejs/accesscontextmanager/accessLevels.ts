@@ -29,15 +29,18 @@ import * as utilities from "../utilities";
  *     title: "my policy",
  * });
  * const access_levels = new gcp.accesscontextmanager.AccessLevels("access-levels", {
+ *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
  *     accessLevels: [
  *         {
+ *             name: pulumi.interpolate`accessPolicies/${access_policy.name}/accessLevels/chromeos_no_lock`,
+ *             title: "chromeos_no_lock",
  *             basic: {
  *                 conditions: [{
  *                     devicePolicy: {
+ *                         requireScreenLock: true,
  *                         osConstraints: [{
  *                             osType: "DESKTOP_CHROME_OS",
  *                         }],
- *                         requireScreenLock: true,
  *                     },
  *                     regions: [
  *                         "CH",
@@ -46,17 +49,17 @@ import * as utilities from "../utilities";
  *                     ],
  *                 }],
  *             },
- *             name: pulumi.interpolate`accessPolicies/${access_policy.name}/accessLevels/chromeos_no_lock`,
- *             title: "chromeos_no_lock",
  *         },
  *         {
+ *             name: pulumi.interpolate`accessPolicies/${access_policy.name}/accessLevels/mac_no_lock`,
+ *             title: "mac_no_lock",
  *             basic: {
  *                 conditions: [{
  *                     devicePolicy: {
+ *                         requireScreenLock: true,
  *                         osConstraints: [{
  *                             osType: "DESKTOP_MAC",
  *                         }],
- *                         requireScreenLock: true,
  *                     },
  *                     regions: [
  *                         "CH",
@@ -65,11 +68,8 @@ import * as utilities from "../utilities";
  *                     ],
  *                 }],
  *             },
- *             name: pulumi.interpolate`accessPolicies/${access_policy.name}/accessLevels/mac_no_lock`,
- *             title: "mac_no_lock",
  *         },
  *     ],
- *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
  * });
  * ```
  *

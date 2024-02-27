@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.EssentialContacts
     /// {
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var exampleText = new Gcp.EssentialContacts.DocumentAiWarehouseDocumentSchema("exampleText", new()
+    ///     var exampleText = new Gcp.EssentialContacts.DocumentAiWarehouseDocumentSchema("example_text", new()
     ///     {
     ///         ProjectNumber = project.Apply(getProjectResult =&gt; getProjectResult.Number),
     ///         DisplayName = "test-property-text",
@@ -76,7 +76,7 @@ namespace Pulumi.Gcp.EssentialContacts
     /// {
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var exampleInteger = new Gcp.EssentialContacts.DocumentAiWarehouseDocumentSchema("exampleInteger", new()
+    ///     var exampleInteger = new Gcp.EssentialContacts.DocumentAiWarehouseDocumentSchema("example_integer", new()
     ///     {
     ///         ProjectNumber = project.Apply(getProjectResult =&gt; getProjectResult.Number),
     ///         DisplayName = "test-property-integer",
@@ -120,7 +120,7 @@ namespace Pulumi.Gcp.EssentialContacts
     /// {
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var exampleFloat = new Gcp.EssentialContacts.DocumentAiWarehouseDocumentSchema("exampleFloat", new()
+    ///     var exampleFloat = new Gcp.EssentialContacts.DocumentAiWarehouseDocumentSchema("example_float", new()
     ///     {
     ///         ProjectNumber = project.Apply(getProjectResult =&gt; getProjectResult.Number),
     ///         DisplayName = "test-property-float",
@@ -164,7 +164,7 @@ namespace Pulumi.Gcp.EssentialContacts
     /// {
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var exampleProperty = new Gcp.EssentialContacts.DocumentAiWarehouseDocumentSchema("exampleProperty", new()
+    ///     var exampleProperty = new Gcp.EssentialContacts.DocumentAiWarehouseDocumentSchema("example_property", new()
     ///     {
     ///         ProjectNumber = project.Apply(getProjectResult =&gt; getProjectResult.Number),
     ///         DisplayName = "test-property-property",
@@ -234,7 +234,7 @@ namespace Pulumi.Gcp.EssentialContacts
     /// {
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var examplePropertyEnum = new Gcp.EssentialContacts.DocumentAiWarehouseDocumentSchema("examplePropertyEnum", new()
+    ///     var examplePropertyEnum = new Gcp.EssentialContacts.DocumentAiWarehouseDocumentSchema("example_property_enum", new()
     ///     {
     ///         ProjectNumber = project.Apply(getProjectResult =&gt; getProjectResult.Number),
     ///         DisplayName = "test-property-property",
@@ -313,7 +313,7 @@ namespace Pulumi.Gcp.EssentialContacts
     /// {
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var exampleEnum = new Gcp.EssentialContacts.DocumentAiWarehouseDocumentSchema("exampleEnum", new()
+    ///     var exampleEnum = new Gcp.EssentialContacts.DocumentAiWarehouseDocumentSchema("example_enum", new()
     ///     {
     ///         ProjectNumber = project.Apply(getProjectResult =&gt; getProjectResult.Number),
     ///         DisplayName = "test-property-enum",
@@ -366,7 +366,7 @@ namespace Pulumi.Gcp.EssentialContacts
     /// {
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var exampleMap = new Gcp.EssentialContacts.DocumentAiWarehouseDocumentSchema("exampleMap", new()
+    ///     var exampleMap = new Gcp.EssentialContacts.DocumentAiWarehouseDocumentSchema("example_map", new()
     ///     {
     ///         ProjectNumber = project.Apply(getProjectResult =&gt; getProjectResult.Number),
     ///         DisplayName = "test-property-map",
@@ -410,7 +410,7 @@ namespace Pulumi.Gcp.EssentialContacts
     /// {
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var exampleDatetime = new Gcp.EssentialContacts.DocumentAiWarehouseDocumentSchema("exampleDatetime", new()
+    ///     var exampleDatetime = new Gcp.EssentialContacts.DocumentAiWarehouseDocumentSchema("example_datetime", new()
     ///     {
     ///         ProjectNumber = project.Apply(getProjectResult =&gt; getProjectResult.Number),
     ///         DisplayName = "test-property-date_time",
@@ -454,7 +454,7 @@ namespace Pulumi.Gcp.EssentialContacts
     /// {
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var exampleTimestamp = new Gcp.EssentialContacts.DocumentAiWarehouseDocumentSchema("exampleTimestamp", new()
+    ///     var exampleTimestamp = new Gcp.EssentialContacts.DocumentAiWarehouseDocumentSchema("example_timestamp", new()
     ///     {
     ///         ProjectNumber = project.Apply(getProjectResult =&gt; getProjectResult.Number),
     ///         DisplayName = "test-property-timestamp",

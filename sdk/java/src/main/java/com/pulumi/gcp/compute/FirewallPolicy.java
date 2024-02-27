@@ -45,9 +45,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new FirewallPolicy(&#34;default&#34;, FirewallPolicyArgs.builder()        
- *             .description(&#34;Example Resource&#34;)
  *             .parent(&#34;organizations/12345&#34;)
  *             .shortName(&#34;my-policy&#34;)
+ *             .description(&#34;Example Resource&#34;)
  *             .build());
  * 
  *     }

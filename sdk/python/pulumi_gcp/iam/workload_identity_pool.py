@@ -305,10 +305,10 @@ class WorkloadIdentityPool(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.iam.WorkloadIdentityPool("example",
-            description="Identity pool for automated test",
-            disabled=True,
+            workload_identity_pool_id="example-pool",
             display_name="Name of pool",
-            workload_identity_pool_id="example-pool")
+            description="Identity pool for automated test",
+            disabled=True)
         ```
 
         ## Import
@@ -383,10 +383,10 @@ class WorkloadIdentityPool(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.iam.WorkloadIdentityPool("example",
-            description="Identity pool for automated test",
-            disabled=True,
+            workload_identity_pool_id="example-pool",
             display_name="Name of pool",
-            workload_identity_pool_id="example-pool")
+            description="Identity pool for automated test",
+            disabled=True)
         ```
 
         ## Import

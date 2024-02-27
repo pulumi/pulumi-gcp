@@ -183,6 +183,82 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// ### Bigquery Job Load Geojson
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = "my-project-name";
+    /// 
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Name = $"{project}-bq-geojson",
+    ///         Location = "US",
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var @object = new Gcp.Storage.BucketObject("object", new()
+    ///     {
+    ///         Name = "geojson-data.jsonl",
+    ///         Bucket = bucket.Name,
+    ///         Content = @"{""type"":""Feature"",""properties"":{""continent"":""Europe"",""region"":""Scandinavia""},""geometry"":{""type"":""Polygon"",""coordinates"":[[[-30.94,53.33],[33.05,53.33],[33.05,71.86],[-30.94,71.86],[-30.94,53.33]]]}}
+    /// {""type"":""Feature"",""properties"":{""continent"":""Africa"",""region"":""West Africa""},""geometry"":{""type"":""Polygon"",""coordinates"":[[[-23.91,0],[11.95,0],[11.95,18.98],[-23.91,18.98],[-23.91,0]]]}}
+    /// ",
+    ///     });
+    /// 
+    ///     var bar = new Gcp.BigQuery.Dataset("bar", new()
+    ///     {
+    ///         DatasetId = "job_load_dataset",
+    ///         FriendlyName = "test",
+    ///         Description = "This is a test description",
+    ///         Location = "US",
+    ///     });
+    /// 
+    ///     var foo = new Gcp.BigQuery.Table("foo", new()
+    ///     {
+    ///         DeletionProtection = false,
+    ///         DatasetId = bar.DatasetId,
+    ///         TableId = "job_load_table",
+    ///     });
+    /// 
+    ///     var job = new Gcp.BigQuery.Job("job", new()
+    ///     {
+    ///         JobId = "job_load",
+    ///         Labels = 
+    ///         {
+    ///             { "my_job", "load" },
+    ///         },
+    ///         Load = new Gcp.BigQuery.Inputs.JobLoadArgs
+    ///         {
+    ///             SourceUris = new[]
+    ///             {
+    ///                 Output.Tuple(@object.Bucket, @object.Name).Apply(values =&gt;
+    ///                 {
+    ///                     var bucket = values.Item1;
+    ///                     var name = values.Item2;
+    ///                     return $"gs://{bucket}/{name}";
+    ///                 }),
+    ///             },
+    ///             DestinationTable = new Gcp.BigQuery.Inputs.JobLoadDestinationTableArgs
+    ///             {
+    ///                 ProjectId = foo.Project,
+    ///                 DatasetId = foo.DatasetId,
+    ///                 TableId = foo.TableId,
+    ///             },
+    ///             WriteDisposition = "WRITE_TRUNCATE",
+    ///             Autodetect = true,
+    ///             SourceFormat = "NEWLINE_DELIMITED_JSON",
+    ///             JsonExtension = "GEOJSON",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Bigquery Job Load Parquet
     /// 
     /// ```csharp
@@ -193,19 +269,21 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testBucket = new Gcp.Storage.Bucket("testBucket", new()
+    ///     var test = new Gcp.Storage.Bucket("test", new()
     ///     {
+    ///         Name = "job_load_bucket",
     ///         Location = "US",
     ///         UniformBucketLevelAccess = true,
     ///     });
     /// 
-    ///     var testBucketObject = new Gcp.Storage.BucketObject("testBucketObject", new()
+    ///     var testBucketObject = new Gcp.Storage.BucketObject("test", new()
     ///     {
+    ///         Name = "job_load_bucket_object",
     ///         Source = new FileAsset("./test-fixtures/test.parquet.gzip"),
-    ///         Bucket = testBucket.Name,
+    ///         Bucket = test.Name,
     ///     });
     /// 
-    ///     var testDataset = new Gcp.BigQuery.Dataset("testDataset", new()
+    ///     var testDataset = new Gcp.BigQuery.Dataset("test", new()
     ///     {
     ///         DatasetId = "job_load_dataset",
     ///         FriendlyName = "test",
@@ -213,7 +291,7 @@ namespace Pulumi.Gcp.BigQuery
     ///         Location = "US",
     ///     });
     /// 
-    ///     var testTable = new Gcp.BigQuery.Table("testTable", new()
+    ///     var testTable = new Gcp.BigQuery.Table("test", new()
     ///     {
     ///         DeletionProtection = false,
     ///         TableId = "job_load_table",
@@ -262,6 +340,153 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// ### Bigquery Job Copy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sourceDataset = new List&lt;Gcp.BigQuery.Dataset&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         sourceDataset.Add(new Gcp.BigQuery.Dataset($"source-{range.Value}", new()
+    ///         {
+    ///             DatasetId = $"job_copy_{range.Value}_dataset",
+    ///             FriendlyName = "test",
+    ///             Description = "This is a test description",
+    ///             Location = "US",
+    ///         }));
+    ///     }
+    ///     var source = new List&lt;Gcp.BigQuery.Table&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; sourceDataset.Length; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         source.Add(new Gcp.BigQuery.Table($"source-{range.Value}", new()
+    ///         {
+    ///             DeletionProtection = false,
+    ///             DatasetId = sourceDataset[range.Value].DatasetId,
+    ///             TableId = $"job_copy_{range.Value}_table",
+    ///             Schema = @"[
+    ///   {
+    ///     ""name"": ""name"",
+    ///     ""type"": ""STRING"",
+    ///     ""mode"": ""NULLABLE""
+    ///   },
+    ///   {
+    ///     ""name"": ""post_abbr"",
+    ///     ""type"": ""STRING"",
+    ///     ""mode"": ""NULLABLE""
+    ///   },
+    ///   {
+    ///     ""name"": ""date"",
+    ///     ""type"": ""DATE"",
+    ///     ""mode"": ""NULLABLE""
+    ///   }
+    /// ]
+    /// ",
+    ///         }));
+    ///     }
+    ///     var destDataset = new Gcp.BigQuery.Dataset("dest", new()
+    ///     {
+    ///         DatasetId = "job_copy_dest_dataset",
+    ///         FriendlyName = "test",
+    ///         Description = "This is a test description",
+    ///         Location = "US",
+    ///     });
+    /// 
+    ///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()
+    ///     {
+    ///         Name = "example-keyring",
+    ///         Location = "global",
+    ///     });
+    /// 
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("crypto_key", new()
+    ///     {
+    ///         Name = "example-key",
+    ///         KeyRing = keyRing.Id,
+    ///     });
+    /// 
+    ///     var dest = new Gcp.BigQuery.Table("dest", new()
+    ///     {
+    ///         DeletionProtection = false,
+    ///         DatasetId = destDataset.DatasetId,
+    ///         TableId = "job_copy_dest_table",
+    ///         Schema = @"[
+    ///   {
+    ///     ""name"": ""name"",
+    ///     ""type"": ""STRING"",
+    ///     ""mode"": ""NULLABLE""
+    ///   },
+    ///   {
+    ///     ""name"": ""post_abbr"",
+    ///     ""type"": ""STRING"",
+    ///     ""mode"": ""NULLABLE""
+    ///   },
+    ///   {
+    ///     ""name"": ""date"",
+    ///     ""type"": ""DATE"",
+    ///     ""mode"": ""NULLABLE""
+    ///   }
+    /// ]
+    /// ",
+    ///         EncryptionConfiguration = new Gcp.BigQuery.Inputs.TableEncryptionConfigurationArgs
+    ///         {
+    ///             KmsKeyName = cryptoKey.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke(new()
+    ///     {
+    ///         ProjectId = "my-project-name",
+    ///     });
+    /// 
+    ///     var encryptRole = new Gcp.Projects.IAMMember("encrypt_role", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Member = $"serviceAccount:bq-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@bigquery-encryption.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var job = new Gcp.BigQuery.Job("job", new()
+    ///     {
+    ///         JobId = "job_copy",
+    ///         Copy = new Gcp.BigQuery.Inputs.JobCopyArgs
+    ///         {
+    ///             SourceTables = new[]
+    ///             {
+    ///                 new Gcp.BigQuery.Inputs.JobCopySourceTableArgs
+    ///                 {
+    ///                     ProjectId = source[0].Project,
+    ///                     DatasetId = source[0].DatasetId,
+    ///                     TableId = source[0].TableId,
+    ///                 },
+    ///                 new Gcp.BigQuery.Inputs.JobCopySourceTableArgs
+    ///                 {
+    ///                     ProjectId = source[1].Project,
+    ///                     DatasetId = source[1].DatasetId,
+    ///                     TableId = source[1].TableId,
+    ///                 },
+    ///             },
+    ///             DestinationTable = new Gcp.BigQuery.Inputs.JobCopyDestinationTableArgs
+    ///             {
+    ///                 ProjectId = dest.Project,
+    ///                 DatasetId = dest.DatasetId,
+    ///                 TableId = dest.TableId,
+    ///             },
+    ///             DestinationEncryptionConfiguration = new Gcp.BigQuery.Inputs.JobCopyDestinationEncryptionConfigurationArgs
+    ///             {
+    ///                 KmsKeyName = cryptoKey.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Bigquery Job Extract
     /// 
     /// ```csharp
@@ -272,7 +497,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var source_oneDataset = new Gcp.BigQuery.Dataset("source-oneDataset", new()
+    ///     var source_oneDataset = new Gcp.BigQuery.Dataset("source-one", new()
     ///     {
     ///         DatasetId = "job_extract_dataset",
     ///         FriendlyName = "test",
@@ -280,7 +505,7 @@ namespace Pulumi.Gcp.BigQuery
     ///         Location = "US",
     ///     });
     /// 
-    ///     var source_oneTable = new Gcp.BigQuery.Table("source-oneTable", new()
+    ///     var source_one = new Gcp.BigQuery.Table("source-one", new()
     ///     {
     ///         DeletionProtection = false,
     ///         DatasetId = source_oneDataset.DatasetId,
@@ -307,6 +532,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     ///     var dest = new Gcp.Storage.Bucket("dest", new()
     ///     {
+    ///         Name = "job_extract_bucket",
     ///         Location = "US",
     ///         ForceDestroy = true,
     ///     });
@@ -322,9 +548,9 @@ namespace Pulumi.Gcp.BigQuery
     ///             },
     ///             SourceTable = new Gcp.BigQuery.Inputs.JobExtractSourceTableArgs
     ///             {
-    ///                 ProjectId = source_oneTable.Project,
-    ///                 DatasetId = source_oneTable.DatasetId,
-    ///                 TableId = source_oneTable.TableId,
+    ///                 ProjectId = source_one.Project,
+    ///                 DatasetId = source_one.DatasetId,
+    ///                 TableId = source_one.TableId,
     ///             },
     ///             DestinationFormat = "NEWLINE_DELIMITED_JSON",
     ///             Compression = "GZIP",

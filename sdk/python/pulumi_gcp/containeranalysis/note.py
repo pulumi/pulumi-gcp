@@ -408,11 +408,13 @@ class Note(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
-                human_readable_name="Attestor Note",
-            ),
-        ))
+        note = gcp.containeranalysis.Note("note",
+            name="attestor-note",
+            attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
+                hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+                    human_readable_name="Attestor Note",
+                ),
+            ))
         ```
         ### Container Analysis Note Attestation Full
 
@@ -421,23 +423,24 @@ class Note(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         note = gcp.containeranalysis.Note("note",
-            attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-                hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
-                    human_readable_name="Attestor Note",
-                ),
-            ),
-            expiration_time="2120-10-02T15:01:23.045123456Z",
+            name="attestor-note",
+            short_description="test note",
             long_description="a longer description of test note",
+            expiration_time="2120-10-02T15:01:23.045123456Z",
             related_urls=[
                 gcp.containeranalysis.NoteRelatedUrlArgs(
-                    label="foo",
                     url="some.url",
+                    label="foo",
                 ),
                 gcp.containeranalysis.NoteRelatedUrlArgs(
                     url="google.com",
                 ),
             ],
-            short_description="test note")
+            attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
+                hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+                    human_readable_name="Attestor Note",
+                ),
+            ))
         ```
 
         ## Import
@@ -510,11 +513,13 @@ class Note(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
-                human_readable_name="Attestor Note",
-            ),
-        ))
+        note = gcp.containeranalysis.Note("note",
+            name="attestor-note",
+            attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
+                hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+                    human_readable_name="Attestor Note",
+                ),
+            ))
         ```
         ### Container Analysis Note Attestation Full
 
@@ -523,23 +528,24 @@ class Note(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         note = gcp.containeranalysis.Note("note",
-            attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-                hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
-                    human_readable_name="Attestor Note",
-                ),
-            ),
-            expiration_time="2120-10-02T15:01:23.045123456Z",
+            name="attestor-note",
+            short_description="test note",
             long_description="a longer description of test note",
+            expiration_time="2120-10-02T15:01:23.045123456Z",
             related_urls=[
                 gcp.containeranalysis.NoteRelatedUrlArgs(
-                    label="foo",
                     url="some.url",
+                    label="foo",
                 ),
                 gcp.containeranalysis.NoteRelatedUrlArgs(
                     url="google.com",
                 ),
             ],
-            short_description="test note")
+            attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
+                hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+                    human_readable_name="Attestor Note",
+                ),
+            ))
         ```
 
         ## Import

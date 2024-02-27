@@ -21,14 +21,17 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const network = new gcp.compute.Network("network", {
+ *     name: "network-1",
  *     routingMode: "GLOBAL",
  *     autoCreateSubnetworks: false,
  * });
- * const haGateway = new gcp.compute.HaVpnGateway("haGateway", {
+ * const haGateway = new gcp.compute.HaVpnGateway("ha_gateway", {
  *     region: "us-central1",
+ *     name: "ha-vpn",
  *     network: network.id,
  * });
- * const externalGateway = new gcp.compute.ExternalVpnGateway("externalGateway", {
+ * const externalGateway = new gcp.compute.ExternalVpnGateway("external_gateway", {
+ *     name: "external-gateway",
  *     redundancyType: "SINGLE_IP_INTERNALLY_REDUNDANT",
  *     description: "An externally managed VPN gateway",
  *     interfaces: [{
@@ -36,23 +39,27 @@ import * as utilities from "../utilities";
  *         ipAddress: "8.8.8.8",
  *     }],
  * });
- * const networkSubnet1 = new gcp.compute.Subnetwork("networkSubnet1", {
+ * const networkSubnet1 = new gcp.compute.Subnetwork("network_subnet1", {
+ *     name: "ha-vpn-subnet-1",
  *     ipCidrRange: "10.0.1.0/24",
  *     region: "us-central1",
  *     network: network.id,
  * });
- * const networkSubnet2 = new gcp.compute.Subnetwork("networkSubnet2", {
+ * const networkSubnet2 = new gcp.compute.Subnetwork("network_subnet2", {
+ *     name: "ha-vpn-subnet-2",
  *     ipCidrRange: "10.0.2.0/24",
  *     region: "us-west1",
  *     network: network.id,
  * });
  * const router1 = new gcp.compute.Router("router1", {
+ *     name: "ha-vpn-router1",
  *     network: network.name,
  *     bgp: {
  *         asn: 64514,
  *     },
  * });
  * const tunnel1 = new gcp.compute.VPNTunnel("tunnel1", {
+ *     name: "ha-vpn-tunnel1",
  *     region: "us-central1",
  *     vpnGateway: haGateway.id,
  *     peerExternalGateway: externalGateway.id,
@@ -62,6 +69,7 @@ import * as utilities from "../utilities";
  *     vpnGatewayInterface: 0,
  * });
  * const tunnel2 = new gcp.compute.VPNTunnel("tunnel2", {
+ *     name: "ha-vpn-tunnel2",
  *     region: "us-central1",
  *     vpnGateway: haGateway.id,
  *     peerExternalGateway: externalGateway.id,
@@ -70,13 +78,15 @@ import * as utilities from "../utilities";
  *     router: pulumi.interpolate` ${router1.id}`,
  *     vpnGatewayInterface: 1,
  * });
- * const router1Interface1 = new gcp.compute.RouterInterface("router1Interface1", {
+ * const router1Interface1 = new gcp.compute.RouterInterface("router1_interface1", {
+ *     name: "router1-interface1",
  *     router: router1.name,
  *     region: "us-central1",
  *     ipRange: "169.254.0.1/30",
  *     vpnTunnel: tunnel1.name,
  * });
- * const router1Peer1 = new gcp.compute.RouterPeer("router1Peer1", {
+ * const router1Peer1 = new gcp.compute.RouterPeer("router1_peer1", {
+ *     name: "router1-peer1",
  *     router: router1.name,
  *     region: "us-central1",
  *     peerIpAddress: "169.254.0.2",
@@ -84,13 +94,15 @@ import * as utilities from "../utilities";
  *     advertisedRoutePriority: 100,
  *     "interface": router1Interface1.name,
  * });
- * const router1Interface2 = new gcp.compute.RouterInterface("router1Interface2", {
+ * const router1Interface2 = new gcp.compute.RouterInterface("router1_interface2", {
+ *     name: "router1-interface2",
  *     router: router1.name,
  *     region: "us-central1",
  *     ipRange: "169.254.1.1/30",
  *     vpnTunnel: tunnel2.name,
  * });
- * const router1Peer2 = new gcp.compute.RouterPeer("router1Peer2", {
+ * const router1Peer2 = new gcp.compute.RouterPeer("router1_peer2", {
+ *     name: "router1-peer2",
  *     router: router1.name,
  *     region: "us-central1",
  *     peerIpAddress: "169.254.1.2",

@@ -423,6 +423,7 @@ class PerInstanceConfig(pulumi.CustomResource):
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         igm_basic = gcp.compute.InstanceTemplate("igm-basic",
+            name="my-template",
             machine_type="e2-medium",
             can_ip_forward=False,
             tags=[
@@ -446,6 +447,7 @@ class PerInstanceConfig(pulumi.CustomResource):
             ))
         igm_no_tp = gcp.compute.InstanceGroupManager("igm-no-tp",
             description="Test instance group manager",
+            name="my-igm",
             versions=[gcp.compute.InstanceGroupManagerVersionArgs(
                 name="prod",
                 instance_template=igm_basic.self_link,
@@ -454,13 +456,15 @@ class PerInstanceConfig(pulumi.CustomResource):
             zone="us-central1-c",
             target_size=2)
         default = gcp.compute.Disk("default",
+            name="my-disk-name",
             type="pd-ssd",
-            zone=google_compute_instance_group_manager["igm"]["zone"],
+            zone=igm["zone"],
             image="debian-11-bullseye-v20220719",
             physical_block_size_bytes=4096)
-        with_disk = gcp.compute.PerInstanceConfig("withDisk",
-            zone=google_compute_instance_group_manager["igm"]["zone"],
-            instance_group_manager=google_compute_instance_group_manager["igm"]["name"],
+        with_disk = gcp.compute.PerInstanceConfig("with_disk",
+            zone=igm["zone"],
+            instance_group_manager=igm["name"],
+            name="instance-1",
             preserved_state=gcp.compute.PerInstanceConfigPreservedStateArgs(
                 metadata={
                     "foo": "bar",
@@ -560,6 +564,7 @@ class PerInstanceConfig(pulumi.CustomResource):
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         igm_basic = gcp.compute.InstanceTemplate("igm-basic",
+            name="my-template",
             machine_type="e2-medium",
             can_ip_forward=False,
             tags=[
@@ -583,6 +588,7 @@ class PerInstanceConfig(pulumi.CustomResource):
             ))
         igm_no_tp = gcp.compute.InstanceGroupManager("igm-no-tp",
             description="Test instance group manager",
+            name="my-igm",
             versions=[gcp.compute.InstanceGroupManagerVersionArgs(
                 name="prod",
                 instance_template=igm_basic.self_link,
@@ -591,13 +597,15 @@ class PerInstanceConfig(pulumi.CustomResource):
             zone="us-central1-c",
             target_size=2)
         default = gcp.compute.Disk("default",
+            name="my-disk-name",
             type="pd-ssd",
-            zone=google_compute_instance_group_manager["igm"]["zone"],
+            zone=igm["zone"],
             image="debian-11-bullseye-v20220719",
             physical_block_size_bytes=4096)
-        with_disk = gcp.compute.PerInstanceConfig("withDisk",
-            zone=google_compute_instance_group_manager["igm"]["zone"],
-            instance_group_manager=google_compute_instance_group_manager["igm"]["name"],
+        with_disk = gcp.compute.PerInstanceConfig("with_disk",
+            zone=igm["zone"],
+            instance_group_manager=igm["name"],
+            name="instance-1",
             preserved_state=gcp.compute.PerInstanceConfigPreservedStateArgs(
                 metadata={
                     "foo": "bar",

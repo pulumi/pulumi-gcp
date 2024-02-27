@@ -32,24 +32,27 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var prod_ssl_policy = new Gcp.Compute.SSLPolicy("prod-ssl-policy", new()
     ///     {
+    ///         Name = "production-ssl-policy",
     ///         Profile = "MODERN",
     ///     });
     /// 
     ///     var nonprod_ssl_policy = new Gcp.Compute.SSLPolicy("nonprod-ssl-policy", new()
     ///     {
-    ///         MinTlsVersion = "TLS_1_2",
+    ///         Name = "nonprod-ssl-policy",
     ///         Profile = "MODERN",
+    ///         MinTlsVersion = "TLS_1_2",
     ///     });
     /// 
     ///     var custom_ssl_policy = new Gcp.Compute.SSLPolicy("custom-ssl-policy", new()
     ///     {
+    ///         Name = "custom-ssl-policy",
+    ///         MinTlsVersion = "TLS_1_2",
+    ///         Profile = "CUSTOM",
     ///         CustomFeatures = new[]
     ///         {
     ///             "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
     ///             "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
     ///         },
-    ///         MinTlsVersion = "TLS_1_2",
-    ///         Profile = "CUSTOM",
     ///     });
     /// 
     /// });

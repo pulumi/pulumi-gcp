@@ -237,12 +237,14 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic_regional_network_firewall_policy = gcp.compute.RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy",
+        basic_regional_network_firewall_policy = gcp.compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy",
+            name="policy",
             project="my-project-name",
             description="Sample global network firewall policy",
             region="us-west1")
-        basic_network = gcp.compute.Network("basicNetwork")
+        basic_network = gcp.compute.Network("basic_network", name="network")
         primary = gcp.compute.RegionNetworkFirewallPolicyAssociation("primary",
+            name="association",
             attachment_target=basic_network.id,
             firewall_policy=basic_regional_network_firewall_policy.name,
             project="my-project-name",
@@ -294,12 +296,14 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic_regional_network_firewall_policy = gcp.compute.RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy",
+        basic_regional_network_firewall_policy = gcp.compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy",
+            name="policy",
             project="my-project-name",
             description="Sample global network firewall policy",
             region="us-west1")
-        basic_network = gcp.compute.Network("basicNetwork")
+        basic_network = gcp.compute.Network("basic_network", name="network")
         primary = gcp.compute.RegionNetworkFirewallPolicyAssociation("primary",
+            name="association",
             attachment_target=basic_network.id,
             firewall_policy=basic_regional_network_firewall_policy.name,
             project="my-project-name",

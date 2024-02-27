@@ -55,11 +55,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var serialPortPolicy = new OrganizationPolicy(&#34;serialPortPolicy&#34;, OrganizationPolicyArgs.builder()        
+ *             .folder(&#34;folders/123456789&#34;)
+ *             .constraint(&#34;compute.disableSerialPortAccess&#34;)
  *             .booleanPolicy(OrganizationPolicyBooleanPolicyArgs.builder()
  *                 .enforced(true)
  *                 .build())
- *             .constraint(&#34;compute.disableSerialPortAccess&#34;)
- *             .folder(&#34;folders/123456789&#34;)
  *             .build());
  * 
  *     }
@@ -91,8 +91,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var servicesPolicy = new OrganizationPolicy(&#34;servicesPolicy&#34;, OrganizationPolicyArgs.builder()        
- *             .constraint(&#34;serviceuser.services&#34;)
  *             .folder(&#34;folders/123456789&#34;)
+ *             .constraint(&#34;serviceuser.services&#34;)
  *             .listPolicy(OrganizationPolicyListPolicyArgs.builder()
  *                 .allow(OrganizationPolicyListPolicyAllowArgs.builder()
  *                     .all(true)
@@ -129,13 +129,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var servicesPolicy = new OrganizationPolicy(&#34;servicesPolicy&#34;, OrganizationPolicyArgs.builder()        
- *             .constraint(&#34;serviceuser.services&#34;)
  *             .folder(&#34;folders/123456789&#34;)
+ *             .constraint(&#34;serviceuser.services&#34;)
  *             .listPolicy(OrganizationPolicyListPolicyArgs.builder()
+ *                 .suggestedValue(&#34;compute.googleapis.com&#34;)
  *                 .deny(OrganizationPolicyListPolicyDenyArgs.builder()
  *                     .values(&#34;cloudresourcemanager.googleapis.com&#34;)
  *                     .build())
- *                 .suggestedValue(&#34;compute.googleapis.com&#34;)
  *                 .build())
  *             .build());
  * 
@@ -167,8 +167,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var servicesPolicy = new OrganizationPolicy(&#34;servicesPolicy&#34;, OrganizationPolicyArgs.builder()        
- *             .constraint(&#34;serviceuser.services&#34;)
  *             .folder(&#34;folders/123456789&#34;)
+ *             .constraint(&#34;serviceuser.services&#34;)
  *             .restorePolicy(OrganizationPolicyRestorePolicyArgs.builder()
  *                 .default_(true)
  *                 .build())

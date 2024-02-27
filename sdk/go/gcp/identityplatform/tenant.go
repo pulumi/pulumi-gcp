@@ -37,8 +37,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := identityplatform.NewTenant(ctx, "tenant", &identityplatform.TenantArgs{
-//				AllowPasswordSignup: pulumi.Bool(true),
 //				DisplayName:         pulumi.String("tenant"),
+//				AllowPasswordSignup: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

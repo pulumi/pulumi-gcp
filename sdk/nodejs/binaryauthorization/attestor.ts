@@ -22,15 +22,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const note = new gcp.containeranalysis.Note("note", {attestationAuthority: {
- *     hint: {
- *         humanReadableName: "Attestor Note",
+ * const note = new gcp.containeranalysis.Note("note", {
+ *     name: "test-attestor-note",
+ *     attestationAuthority: {
+ *         hint: {
+ *             humanReadableName: "Attestor Note",
+ *         },
  *     },
- * }});
- * const attestor = new gcp.binaryauthorization.Attestor("attestor", {attestationAuthorityNote: {
- *     noteReference: note.name,
- *     publicKeys: [{
- *         asciiArmoredPgpPublicKey: `mQENBFtP0doBCADF+joTiXWKVuP8kJt3fgpBSjT9h8ezMfKA4aXZctYLx5wslWQl
+ * });
+ * const attestor = new gcp.binaryauthorization.Attestor("attestor", {
+ *     name: "test-attestor",
+ *     attestationAuthorityNote: {
+ *         noteReference: note.name,
+ *         publicKeys: [{
+ *             asciiArmoredPgpPublicKey: `mQENBFtP0doBCADF+joTiXWKVuP8kJt3fgpBSjT9h8ezMfKA4aXZctYLx5wslWQl
  * bB7Iu2ezkECNzoEeU7WxUe8a61pMCh9cisS9H5mB2K2uM4Jnf8tgFeXn3akJDVo0
  * oR1IC+Dp9mXbRSK3MAvKkOwWlG99sx3uEdvmeBRHBOO+grchLx24EThXFOyP9Fk6
  * V39j6xMjw4aggLD15B4V0v9JqBDdJiIYFzszZDL6pJwZrzcP0z8JO4rTZd+f64bD
@@ -46,8 +51,9 @@ import * as utilities from "../utilities";
  * qoIRW6y0+UlAc+MbqfL0ziHDOAmcqz1GnROg
  * =6Bvm
  * `,
- *     }],
- * }});
+ *         }],
+ *     },
+ * });
  * ```
  * ### Binary Authorization Attestor Kms
  *
@@ -55,8 +61,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const keyring = new gcp.kms.KeyRing("keyring", {location: "global"});
+ * const keyring = new gcp.kms.KeyRing("keyring", {
+ *     name: "test-attestor-key-ring",
+ *     location: "global",
+ * });
  * const crypto_key = new gcp.kms.CryptoKey("crypto-key", {
+ *     name: "test-attestor-key",
  *     keyRing: keyring.id,
  *     purpose: "ASYMMETRIC_SIGN",
  *     versionTemplate: {
@@ -66,21 +76,27 @@ import * as utilities from "../utilities";
  * const version = gcp.kms.getKMSCryptoKeyVersionOutput({
  *     cryptoKey: crypto_key.id,
  * });
- * const note = new gcp.containeranalysis.Note("note", {attestationAuthority: {
- *     hint: {
- *         humanReadableName: "Attestor Note",
- *     },
- * }});
- * const attestor = new gcp.binaryauthorization.Attestor("attestor", {attestationAuthorityNote: {
- *     noteReference: note.name,
- *     publicKeys: [{
- *         id: version.apply(version => version.id),
- *         pkixPublicKey: {
- *             publicKeyPem: version.apply(version => version.publicKeys?.[0]?.pem),
- *             signatureAlgorithm: version.apply(version => version.publicKeys?.[0]?.algorithm),
+ * const note = new gcp.containeranalysis.Note("note", {
+ *     name: "test-attestor-note",
+ *     attestationAuthority: {
+ *         hint: {
+ *             humanReadableName: "Attestor Note",
  *         },
- *     }],
- * }});
+ *     },
+ * });
+ * const attestor = new gcp.binaryauthorization.Attestor("attestor", {
+ *     name: "test-attestor",
+ *     attestationAuthorityNote: {
+ *         noteReference: note.name,
+ *         publicKeys: [{
+ *             id: version.apply(version => version.id),
+ *             pkixPublicKey: {
+ *                 publicKeyPem: version.apply(version => version.publicKeys?.[0]?.pem),
+ *                 signatureAlgorithm: version.apply(version => version.publicKeys?.[0]?.algorithm),
+ *             },
+ *         }],
+ *     },
+ * });
  * ```
  *
  * ## Import

@@ -31,24 +31,28 @@ namespace Pulumi.Gcp.BigLake
     /// {
     ///     var catalog = new Gcp.BigLake.Catalog("catalog", new()
     ///     {
+    ///         Name = "my_catalog",
     ///         Location = "US",
     ///     });
     /// 
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
+    ///         Name = "my_bucket",
     ///         Location = "US",
     ///         ForceDestroy = true,
     ///         UniformBucketLevelAccess = true,
     ///     });
     /// 
-    ///     var metadataFolder = new Gcp.Storage.BucketObject("metadataFolder", new()
+    ///     var metadataFolder = new Gcp.Storage.BucketObject("metadata_folder", new()
     ///     {
+    ///         Name = "metadata/",
     ///         Content = " ",
     ///         Bucket = bucket.Name,
     ///     });
     /// 
     ///     var database = new Gcp.BigLake.Database("database", new()
     ///     {
+    ///         Name = "my_database",
     ///         Catalog = catalog.Id,
     ///         Type = "HIVE",
     ///         HiveOptions = new Gcp.BigLake.Inputs.DatabaseHiveOptionsArgs

@@ -138,6 +138,231 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Monitoring Slo Windows Based Good Bad Metric Filter
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.monitoring.CustomService;
+ * import com.pulumi.gcp.monitoring.CustomServiceArgs;
+ * import com.pulumi.gcp.monitoring.Slo;
+ * import com.pulumi.gcp.monitoring.SloArgs;
+ * import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var customsrv = new CustomService(&#34;customsrv&#34;, CustomServiceArgs.builder()        
+ *             .serviceId(&#34;custom-srv-windows-slos&#34;)
+ *             .displayName(&#34;My Custom Service&#34;)
+ *             .build());
+ * 
+ *         var windowsBased = new Slo(&#34;windowsBased&#34;, SloArgs.builder()        
+ *             .service(customsrv.serviceId())
+ *             .displayName(&#34;Test SLO with window based SLI&#34;)
+ *             .goal(0.95)
+ *             .calendarPeriod(&#34;FORTNIGHT&#34;)
+ *             .windowsBasedSli(SloWindowsBasedSliArgs.builder()
+ *                 .windowPeriod(&#34;400s&#34;)
+ *                 .goodBadMetricFilter(StdFunctions.join(JoinArgs.builder()
+ *                     .separator(&#34; AND &#34;)
+ *                     .input(                    
+ *                         &#34;metric.type=\&#34;monitoring.googleapis.com/uptime_check/check_passed\&#34;&#34;,
+ *                         &#34;resource.type=\&#34;uptime_url\&#34;&#34;)
+ *                     .build()).result())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Monitoring Slo Windows Based Metric Mean
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.monitoring.CustomService;
+ * import com.pulumi.gcp.monitoring.CustomServiceArgs;
+ * import com.pulumi.gcp.monitoring.Slo;
+ * import com.pulumi.gcp.monitoring.SloArgs;
+ * import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliArgs;
+ * import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliMetricMeanInRangeArgs;
+ * import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliMetricMeanInRangeRangeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var customsrv = new CustomService(&#34;customsrv&#34;, CustomServiceArgs.builder()        
+ *             .serviceId(&#34;custom-srv-windows-slos&#34;)
+ *             .displayName(&#34;My Custom Service&#34;)
+ *             .build());
+ * 
+ *         var windowsBased = new Slo(&#34;windowsBased&#34;, SloArgs.builder()        
+ *             .service(customsrv.serviceId())
+ *             .displayName(&#34;Test SLO with window based SLI&#34;)
+ *             .goal(0.9)
+ *             .rollingPeriodDays(20)
+ *             .windowsBasedSli(SloWindowsBasedSliArgs.builder()
+ *                 .windowPeriod(&#34;600s&#34;)
+ *                 .metricMeanInRange(SloWindowsBasedSliMetricMeanInRangeArgs.builder()
+ *                     .timeSeries(StdFunctions.join(JoinArgs.builder()
+ *                         .separator(&#34; AND &#34;)
+ *                         .input(                        
+ *                             &#34;metric.type=\&#34;agent.googleapis.com/cassandra/client_request/latency/95p\&#34;&#34;,
+ *                             &#34;resource.type=\&#34;gce_instance\&#34;&#34;)
+ *                         .build()).result())
+ *                     .range(SloWindowsBasedSliMetricMeanInRangeRangeArgs.builder()
+ *                         .max(5)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Monitoring Slo Windows Based Metric Sum
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.monitoring.CustomService;
+ * import com.pulumi.gcp.monitoring.CustomServiceArgs;
+ * import com.pulumi.gcp.monitoring.Slo;
+ * import com.pulumi.gcp.monitoring.SloArgs;
+ * import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliArgs;
+ * import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliMetricSumInRangeArgs;
+ * import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliMetricSumInRangeRangeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var customsrv = new CustomService(&#34;customsrv&#34;, CustomServiceArgs.builder()        
+ *             .serviceId(&#34;custom-srv-windows-slos&#34;)
+ *             .displayName(&#34;My Custom Service&#34;)
+ *             .build());
+ * 
+ *         var windowsBased = new Slo(&#34;windowsBased&#34;, SloArgs.builder()        
+ *             .service(customsrv.serviceId())
+ *             .displayName(&#34;Test SLO with window based SLI&#34;)
+ *             .goal(0.9)
+ *             .rollingPeriodDays(20)
+ *             .windowsBasedSli(SloWindowsBasedSliArgs.builder()
+ *                 .windowPeriod(&#34;400s&#34;)
+ *                 .metricSumInRange(SloWindowsBasedSliMetricSumInRangeArgs.builder()
+ *                     .timeSeries(StdFunctions.join(JoinArgs.builder()
+ *                         .separator(&#34; AND &#34;)
+ *                         .input(                        
+ *                             &#34;metric.type=\&#34;monitoring.googleapis.com/uptime_check/request_latency\&#34;&#34;,
+ *                             &#34;resource.type=\&#34;uptime_url\&#34;&#34;)
+ *                         .build()).result())
+ *                     .range(SloWindowsBasedSliMetricSumInRangeRangeArgs.builder()
+ *                         .max(5000)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Monitoring Slo Windows Based Ratio Threshold
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.monitoring.CustomService;
+ * import com.pulumi.gcp.monitoring.CustomServiceArgs;
+ * import com.pulumi.gcp.monitoring.Slo;
+ * import com.pulumi.gcp.monitoring.SloArgs;
+ * import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliArgs;
+ * import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliGoodTotalRatioThresholdArgs;
+ * import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs;
+ * import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs;
+ * import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var customsrv = new CustomService(&#34;customsrv&#34;, CustomServiceArgs.builder()        
+ *             .serviceId(&#34;custom-srv-windows-slos&#34;)
+ *             .displayName(&#34;My Custom Service&#34;)
+ *             .build());
+ * 
+ *         var windowsBased = new Slo(&#34;windowsBased&#34;, SloArgs.builder()        
+ *             .service(customsrv.serviceId())
+ *             .displayName(&#34;Test SLO with window based SLI&#34;)
+ *             .goal(0.9)
+ *             .rollingPeriodDays(20)
+ *             .windowsBasedSli(SloWindowsBasedSliArgs.builder()
+ *                 .windowPeriod(&#34;100s&#34;)
+ *                 .goodTotalRatioThreshold(SloWindowsBasedSliGoodTotalRatioThresholdArgs.builder()
+ *                     .threshold(0.1)
+ *                     .performance(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs.builder()
+ *                         .distributionCut(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs.builder()
+ *                             .distributionFilter(StdFunctions.join(JoinArgs.builder()
+ *                                 .separator(&#34; AND &#34;)
+ *                                 .input(                                
+ *                                     &#34;metric.type=\&#34;serviceruntime.googleapis.com/api/request_latencies\&#34;&#34;,
+ *                                     &#34;resource.type=\&#34;consumed_api\&#34;&#34;)
+ *                                 .build()).result())
+ *                             .range(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs.builder()
+ *                                 .min(1)
+ *                                 .max(9)
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

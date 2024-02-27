@@ -37,7 +37,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewInstance(ctx, "vm", nil)
+//			_, err = compute.NewInstance(ctx, "vm", &compute.InstanceArgs{
+//				Name: pulumi.String("vm"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -53,41 +55,36 @@ import (
 //
 // import (
 //
-//	"os"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.GetObjectSignedUrl(ctx, &storage.GetObjectSignedUrlArgs{
-//				Bucket:      "fried_chicken",
-//				Path:        "path/to/file",
-//				ContentMd5:  pulumi.StringRef("pRviqwS4c4OTJRTe03FD1w=="),
-//				ContentType: pulumi.StringRef("text/plain"),
-//				Duration:    pulumi.StringRef("2d"),
-//				Credentials: pulumi.StringRef(readFileOrPanic("path/to/credentials.json")),
-//				ExtensionHeaders: map[string]interface{}{
-//					"x-goog-if-generation-match": "1",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := storage.GetObjectSignedUrl(ctx, invokeFile, err := std.File(ctx, &std.FileArgs{
+// Input: "path/to/credentials.json",
+// }, nil)
+// if err != nil {
+// return err
+// }
+// &storage.GetObjectSignedUrlArgs{
+// Bucket: "fried_chicken",
+// Path: "path/to/file",
+// ContentMd5: pulumi.StringRef("pRviqwS4c4OTJRTe03FD1w=="),
+// ContentType: pulumi.StringRef("text/plain"),
+// Duration: pulumi.StringRef("2d"),
+// Credentials: pulumi.StringRef(invokeFile.Result),
+// ExtensionHeaders: map[string]interface{}{
+// "x-goog-if-generation-match": "1",
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 func GetObjectSignedUrl(ctx *pulumi.Context, args *GetObjectSignedUrlArgs, opts ...pulumi.InvokeOption) (*GetObjectSignedUrlResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

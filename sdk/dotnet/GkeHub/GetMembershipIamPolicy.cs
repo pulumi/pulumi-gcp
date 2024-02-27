@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.GkeHub
         /// {
         ///     var policy = Gcp.GkeHub.GetMembershipIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_gke_hub_membership.Membership.Project,
-        ///         Location = google_gke_hub_membership.Membership.Location,
-        ///         MembershipId = google_gke_hub_membership.Membership.Membership_id,
+        ///         Project = membership.Project,
+        ///         Location = membership.Location,
+        ///         MembershipId = membership.MembershipId,
         ///     });
         /// 
         /// });
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.GkeHub
         /// {
         ///     var policy = Gcp.GkeHub.GetMembershipIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_gke_hub_membership.Membership.Project,
-        ///         Location = google_gke_hub_membership.Membership.Location,
-        ///         MembershipId = google_gke_hub_membership.Membership.Membership_id,
+        ///         Project = membership.Project,
+        ///         Location = membership.Location,
+        ///         MembershipId = membership.MembershipId,
         ///     });
         /// 
         /// });

@@ -296,10 +296,10 @@ class MuteConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.securitycenter.MuteConfig("default",
-            description="My Mute Config",
-            filter="category: \\"OS_VULNERABILITY\\"",
             mute_config_id="my-config",
-            parent="organizations/123456789")
+            parent="organizations/123456789",
+            filter="category: \\"OS_VULNERABILITY\\"",
+            description="My Mute Config")
         ```
 
         ## Import
@@ -354,10 +354,10 @@ class MuteConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.securitycenter.MuteConfig("default",
-            description="My Mute Config",
-            filter="category: \\"OS_VULNERABILITY\\"",
             mute_config_id="my-config",
-            parent="organizations/123456789")
+            parent="organizations/123456789",
+            filter="category: \\"OS_VULNERABILITY\\"",
+            description="My Mute Config")
         ```
 
         ## Import

@@ -63,6 +63,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary = new Pipeline(&#34;primary&#34;, PipelineArgs.builder()        
+ *             .name(&#34;my-pipeline&#34;)
  *             .displayName(&#34;my-pipeline&#34;)
  *             .type(&#34;PIPELINE_TYPE_BATCH&#34;)
  *             .state(&#34;STATE_ACTIVE&#34;)

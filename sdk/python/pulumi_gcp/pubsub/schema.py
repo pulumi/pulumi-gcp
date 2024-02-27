@@ -231,6 +231,8 @@ class Schema(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.pubsub.Schema("example",
+            name="example-schema",
+            type="AVRO",
             definition=\"\"\"{
           "type" : "record",
           "name" : "Avro",
@@ -245,9 +247,7 @@ class Schema(pulumi.CustomResource):
             }
           ]
         }
-
-        \"\"\",
-            type="AVRO")
+        \"\"\")
         ```
         ### Pubsub Schema Protobuf
 
@@ -255,7 +255,8 @@ class Schema(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        example_schema = gcp.pubsub.Schema("exampleSchema",
+        example = gcp.pubsub.Schema("example",
+            name="example",
             type="PROTOCOL_BUFFER",
             definition=\"\"\"syntax = "proto3";
         message Results {
@@ -264,11 +265,12 @@ class Schema(pulumi.CustomResource):
         string timestamp_request = 3;
         string timestamp_response = 4;
         }\"\"\")
-        example_topic = gcp.pubsub.Topic("exampleTopic", schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
-            schema="projects/my-project-name/schemas/example",
-            encoding="JSON",
-        ),
-        opts=pulumi.ResourceOptions(depends_on=[example_schema]))
+        example_topic = gcp.pubsub.Topic("example",
+            name="example-topic",
+            schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
+                schema="projects/my-project-name/schemas/example",
+                encoding="JSON",
+            ))
         ```
 
         ## Import
@@ -338,6 +340,8 @@ class Schema(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.pubsub.Schema("example",
+            name="example-schema",
+            type="AVRO",
             definition=\"\"\"{
           "type" : "record",
           "name" : "Avro",
@@ -352,9 +356,7 @@ class Schema(pulumi.CustomResource):
             }
           ]
         }
-
-        \"\"\",
-            type="AVRO")
+        \"\"\")
         ```
         ### Pubsub Schema Protobuf
 
@@ -362,7 +364,8 @@ class Schema(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        example_schema = gcp.pubsub.Schema("exampleSchema",
+        example = gcp.pubsub.Schema("example",
+            name="example",
             type="PROTOCOL_BUFFER",
             definition=\"\"\"syntax = "proto3";
         message Results {
@@ -371,11 +374,12 @@ class Schema(pulumi.CustomResource):
         string timestamp_request = 3;
         string timestamp_response = 4;
         }\"\"\")
-        example_topic = gcp.pubsub.Topic("exampleTopic", schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
-            schema="projects/my-project-name/schemas/example",
-            encoding="JSON",
-        ),
-        opts=pulumi.ResourceOptions(depends_on=[example_schema]))
+        example_topic = gcp.pubsub.Topic("example",
+            name="example-topic",
+            schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
+                schema="projects/my-project-name/schemas/example",
+                encoding="JSON",
+            ))
         ```
 
         ## Import

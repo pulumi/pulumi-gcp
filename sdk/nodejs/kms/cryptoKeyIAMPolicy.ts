@@ -19,8 +19,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const keyring = new gcp.kms.KeyRing("keyring", {location: "global"});
+ * const keyring = new gcp.kms.KeyRing("keyring", {
+ *     name: "keyring-example",
+ *     location: "global",
+ * });
  * const key = new gcp.kms.CryptoKey("key", {
+ *     name: "crypto-key-example",
  *     keyRing: keyring.id,
  *     rotationPeriod: "7776000s",
  * });
@@ -30,7 +34,7 @@ import * as utilities from "../utilities";
  *         members: ["user:jane@example.com"],
  *     }],
  * });
- * const cryptoKey = new gcp.kms.CryptoKeyIAMPolicy("cryptoKey", {
+ * const cryptoKey = new gcp.kms.CryptoKeyIAMPolicy("crypto_key", {
  *     cryptoKeyId: key.id,
  *     policyData: admin.then(admin => admin.policyData),
  * });
@@ -44,13 +48,13 @@ import * as utilities from "../utilities";
  *
  * const admin = gcp.organizations.getIAMPolicy({
  *     bindings: [{
+ *         role: "roles/cloudkms.cryptoKeyEncrypter",
+ *         members: ["user:jane@example.com"],
  *         condition: {
+ *             title: "expires_after_2019_12_31",
  *             description: "Expiring at midnight of 2019-12-31",
  *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
- *             title: "expires_after_2019_12_31",
  *         },
- *         members: ["user:jane@example.com"],
- *         role: "roles/cloudkms.cryptoKeyEncrypter",
  *     }],
  * });
  * ```
@@ -59,8 +63,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const cryptoKey = new gcp.kms.CryptoKeyIAMBinding("cryptoKey", {
- *     cryptoKeyId: google_kms_crypto_key.key.id,
+ * const cryptoKey = new gcp.kms.CryptoKeyIAMBinding("crypto_key", {
+ *     cryptoKeyId: key.id,
  *     role: "roles/cloudkms.cryptoKeyEncrypter",
  *     members: ["user:jane@example.com"],
  * });
@@ -72,8 +76,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const cryptoKey = new gcp.kms.CryptoKeyIAMBinding("cryptoKey", {
- *     cryptoKeyId: google_kms_crypto_key.key.id,
+ * const cryptoKey = new gcp.kms.CryptoKeyIAMBinding("crypto_key", {
+ *     cryptoKeyId: key.id,
  *     role: "roles/cloudkms.cryptoKeyEncrypter",
  *     members: ["user:jane@example.com"],
  *     condition: {
@@ -88,8 +92,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("cryptoKey", {
- *     cryptoKeyId: google_kms_crypto_key.key.id,
+ * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("crypto_key", {
+ *     cryptoKeyId: key.id,
  *     role: "roles/cloudkms.cryptoKeyEncrypter",
  *     member: "user:jane@example.com",
  * });
@@ -101,8 +105,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("cryptoKey", {
- *     cryptoKeyId: google_kms_crypto_key.key.id,
+ * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("crypto_key", {
+ *     cryptoKeyId: key.id,
  *     role: "roles/cloudkms.cryptoKeyEncrypter",
  *     member: "user:jane@example.com",
  *     condition: {

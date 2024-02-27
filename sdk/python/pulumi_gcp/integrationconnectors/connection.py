@@ -864,6 +864,10 @@ class Connection(pulumi.CustomResource):
 
         test_project = gcp.organizations.get_project()
         pubsubconnection = gcp.integrationconnectors.Connection("pubsubconnection",
+            name="test-pubsub",
+            location="us-central1",
+            connector_version=f"projects/{test_project.project_id}/locations/global/providers/gcp/connectors/pubsub/versions/1",
+            description="tf created description",
             config_variables=[
                 gcp.integrationconnectors.ConnectionConfigVariableArgs(
                     key="project_id",
@@ -873,10 +877,7 @@ class Connection(pulumi.CustomResource):
                     key="topic_id",
                     string_value="test",
                 ),
-            ],
-            connector_version=f"projects/{test_project.project_id}/locations/global/providers/gcp/connectors/pubsub/versions/1",
-            description="tf created description",
-            location="us-central1")
+            ])
         ```
         ### Integration Connectors Connection Advanced
 
@@ -897,12 +898,12 @@ class Connection(pulumi.CustomResource):
         secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
             secret=secret_basic.id,
             secret_data="dummypassword")
-        secret_iam = gcp.secretmanager.SecretIamMember("secretIam",
+        secret_iam = gcp.secretmanager.SecretIamMember("secret_iam",
             secret_id=secret_basic.id,
             role="roles/secretmanager.admin",
-            member=f"serviceAccount:{test_project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(depends_on=[secret_version_basic]))
+            member=f"serviceAccount:{test_project.number}-compute@developer.gserviceaccount.com")
         zendeskconnection = gcp.integrationconnectors.Connection("zendeskconnection",
+            name="test-zendesk",
             description="tf updated description",
             location="us-central1",
             service_account=f"{test_project.number}-compute@developer.gserviceaccount.com",
@@ -1196,6 +1197,10 @@ class Connection(pulumi.CustomResource):
 
         test_project = gcp.organizations.get_project()
         pubsubconnection = gcp.integrationconnectors.Connection("pubsubconnection",
+            name="test-pubsub",
+            location="us-central1",
+            connector_version=f"projects/{test_project.project_id}/locations/global/providers/gcp/connectors/pubsub/versions/1",
+            description="tf created description",
             config_variables=[
                 gcp.integrationconnectors.ConnectionConfigVariableArgs(
                     key="project_id",
@@ -1205,10 +1210,7 @@ class Connection(pulumi.CustomResource):
                     key="topic_id",
                     string_value="test",
                 ),
-            ],
-            connector_version=f"projects/{test_project.project_id}/locations/global/providers/gcp/connectors/pubsub/versions/1",
-            description="tf created description",
-            location="us-central1")
+            ])
         ```
         ### Integration Connectors Connection Advanced
 
@@ -1229,12 +1231,12 @@ class Connection(pulumi.CustomResource):
         secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
             secret=secret_basic.id,
             secret_data="dummypassword")
-        secret_iam = gcp.secretmanager.SecretIamMember("secretIam",
+        secret_iam = gcp.secretmanager.SecretIamMember("secret_iam",
             secret_id=secret_basic.id,
             role="roles/secretmanager.admin",
-            member=f"serviceAccount:{test_project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(depends_on=[secret_version_basic]))
+            member=f"serviceAccount:{test_project.number}-compute@developer.gserviceaccount.com")
         zendeskconnection = gcp.integrationconnectors.Connection("zendeskconnection",
+            name="test-zendesk",
             description="tf updated description",
             location="us-central1",
             service_account=f"{test_project.number}-compute@developer.gserviceaccount.com",

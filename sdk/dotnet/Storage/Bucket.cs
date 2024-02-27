@@ -34,11 +34,23 @@ namespace Pulumi.Gcp.Storage
     /// {
     ///     var static_site = new Gcp.Storage.Bucket("static-site", new()
     ///     {
+    ///         Name = "image-store.com",
+    ///         Location = "EU",
+    ///         ForceDestroy = true,
+    ///         UniformBucketLevelAccess = true,
+    ///         Website = new Gcp.Storage.Inputs.BucketWebsiteArgs
+    ///         {
+    ///             MainPageSuffix = "index.html",
+    ///             NotFoundPage = "404.html",
+    ///         },
     ///         Cors = new[]
     ///         {
     ///             new Gcp.Storage.Inputs.BucketCorArgs
     ///             {
-    ///                 MaxAgeSeconds = 3600,
+    ///                 Origins = new[]
+    ///                 {
+    ///                     "http://image-store.com",
+    ///                 },
     ///                 Methods = new[]
     ///                 {
     ///                     "GET",
@@ -47,23 +59,12 @@ namespace Pulumi.Gcp.Storage
     ///                     "POST",
     ///                     "DELETE",
     ///                 },
-    ///                 Origins = new[]
-    ///                 {
-    ///                     "http://image-store.com",
-    ///                 },
     ///                 ResponseHeaders = new[]
     ///                 {
     ///                     "*",
     ///                 },
+    ///                 MaxAgeSeconds = 3600,
     ///             },
-    ///         },
-    ///         ForceDestroy = true,
-    ///         Location = "EU",
-    ///         UniformBucketLevelAccess = true,
-    ///         Website = new Gcp.Storage.Inputs.BucketWebsiteArgs
-    ///         {
-    ///             MainPageSuffix = "index.html",
-    ///             NotFoundPage = "404.html",
     ///         },
     ///     });
     /// 
@@ -81,33 +82,34 @@ namespace Pulumi.Gcp.Storage
     /// {
     ///     var auto_expire = new Gcp.Storage.Bucket("auto-expire", new()
     ///     {
+    ///         Name = "auto-expiring-bucket",
+    ///         Location = "US",
     ///         ForceDestroy = true,
     ///         LifecycleRules = new[]
     ///         {
     ///             new Gcp.Storage.Inputs.BucketLifecycleRuleArgs
     ///             {
-    ///                 Action = new Gcp.Storage.Inputs.BucketLifecycleRuleActionArgs
-    ///                 {
-    ///                     Type = "Delete",
-    ///                 },
     ///                 Condition = new Gcp.Storage.Inputs.BucketLifecycleRuleConditionArgs
     ///                 {
     ///                     Age = 3,
     ///                 },
+    ///                 Action = new Gcp.Storage.Inputs.BucketLifecycleRuleActionArgs
+    ///                 {
+    ///                     Type = "Delete",
+    ///                 },
     ///             },
     ///             new Gcp.Storage.Inputs.BucketLifecycleRuleArgs
     ///             {
-    ///                 Action = new Gcp.Storage.Inputs.BucketLifecycleRuleActionArgs
-    ///                 {
-    ///                     Type = "AbortIncompleteMultipartUpload",
-    ///                 },
     ///                 Condition = new Gcp.Storage.Inputs.BucketLifecycleRuleConditionArgs
     ///                 {
     ///                     Age = 1,
     ///                 },
+    ///                 Action = new Gcp.Storage.Inputs.BucketLifecycleRuleActionArgs
+    ///                 {
+    ///                     Type = "AbortIncompleteMultipartUpload",
+    ///                 },
     ///             },
     ///         },
-    ///         Location = "US",
     ///     });
     /// 
     /// });
@@ -124,8 +126,9 @@ namespace Pulumi.Gcp.Storage
     /// {
     ///     var auto_expire = new Gcp.Storage.Bucket("auto-expire", new()
     ///     {
-    ///         ForceDestroy = true,
+    ///         Name = "no-public-access-bucket",
     ///         Location = "US",
+    ///         ForceDestroy = true,
     ///         PublicAccessPrevention = "enforced",
     ///     });
     /// 

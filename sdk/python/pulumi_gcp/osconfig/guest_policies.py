@@ -442,6 +442,7 @@ class GuestPolicies(pulumi.CustomResource):
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         foobar = gcp.compute.Instance("foobar",
+            name="guest-policy-inst",
             machine_type="e2-medium",
             zone="us-central1-a",
             can_ip_forward=False,
@@ -459,9 +460,8 @@ class GuestPolicies(pulumi.CustomResource):
             )],
             metadata={
                 "foo": "bar",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        guest_policies = gcp.osconfig.GuestPolicies("guestPolicies",
+            })
+        guest_policies = gcp.osconfig.GuestPolicies("guest_policies",
             guest_policy_id="guest-policy",
             assignment=gcp.osconfig.GuestPoliciesAssignmentArgs(
                 instances=[foobar.id],
@@ -469,8 +469,7 @@ class GuestPolicies(pulumi.CustomResource):
             packages=[gcp.osconfig.GuestPoliciesPackageArgs(
                 name="my-package",
                 desired_state="UPDATED",
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
         ### Os Config Guest Policies Packages
 
@@ -478,7 +477,7 @@ class GuestPolicies(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        guest_policies = gcp.osconfig.GuestPolicies("guestPolicies",
+        guest_policies = gcp.osconfig.GuestPolicies("guest_policies",
             guest_policy_id="guest-policy",
             assignment=gcp.osconfig.GuestPoliciesAssignmentArgs(
                 group_labels=[
@@ -531,8 +530,7 @@ class GuestPolicies(pulumi.CustomResource):
                         ],
                     ),
                 ),
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ])
         ```
         ### Os Config Guest Policies Recipes
 
@@ -540,7 +538,7 @@ class GuestPolicies(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        guest_policies = gcp.osconfig.GuestPolicies("guestPolicies",
+        guest_policies = gcp.osconfig.GuestPolicies("guest_policies",
             guest_policy_id="guest-policy",
             assignment=gcp.osconfig.GuestPoliciesAssignmentArgs(
                 zones=[
@@ -564,8 +562,7 @@ class GuestPolicies(pulumi.CustomResource):
                         artifact_id="guest-policy-artifact-id",
                     ),
                 )],
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
 
         ## Import
@@ -648,6 +645,7 @@ class GuestPolicies(pulumi.CustomResource):
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         foobar = gcp.compute.Instance("foobar",
+            name="guest-policy-inst",
             machine_type="e2-medium",
             zone="us-central1-a",
             can_ip_forward=False,
@@ -665,9 +663,8 @@ class GuestPolicies(pulumi.CustomResource):
             )],
             metadata={
                 "foo": "bar",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        guest_policies = gcp.osconfig.GuestPolicies("guestPolicies",
+            })
+        guest_policies = gcp.osconfig.GuestPolicies("guest_policies",
             guest_policy_id="guest-policy",
             assignment=gcp.osconfig.GuestPoliciesAssignmentArgs(
                 instances=[foobar.id],
@@ -675,8 +672,7 @@ class GuestPolicies(pulumi.CustomResource):
             packages=[gcp.osconfig.GuestPoliciesPackageArgs(
                 name="my-package",
                 desired_state="UPDATED",
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
         ### Os Config Guest Policies Packages
 
@@ -684,7 +680,7 @@ class GuestPolicies(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        guest_policies = gcp.osconfig.GuestPolicies("guestPolicies",
+        guest_policies = gcp.osconfig.GuestPolicies("guest_policies",
             guest_policy_id="guest-policy",
             assignment=gcp.osconfig.GuestPoliciesAssignmentArgs(
                 group_labels=[
@@ -737,8 +733,7 @@ class GuestPolicies(pulumi.CustomResource):
                         ],
                     ),
                 ),
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ])
         ```
         ### Os Config Guest Policies Recipes
 
@@ -746,7 +741,7 @@ class GuestPolicies(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        guest_policies = gcp.osconfig.GuestPolicies("guestPolicies",
+        guest_policies = gcp.osconfig.GuestPolicies("guest_policies",
             guest_policy_id="guest-policy",
             assignment=gcp.osconfig.GuestPoliciesAssignmentArgs(
                 zones=[
@@ -770,8 +765,7 @@ class GuestPolicies(pulumi.CustomResource):
                         artifact_id="guest-policy-artifact-id",
                     ),
                 )],
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
 
         ## Import

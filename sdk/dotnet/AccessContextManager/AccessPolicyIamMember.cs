@@ -51,6 +51,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     ///     var policy = new Gcp.AccessContextManager.AccessPolicyIamPolicy("policy", new()
     ///     {
+    ///         Name = access_policy.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -69,6 +70,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// {
     ///     var binding = new Gcp.AccessContextManager.AccessPolicyIamBinding("binding", new()
     ///     {
+    ///         Name = access_policy.Name,
     ///         Role = "roles/accesscontextmanager.policyAdmin",
     ///         Members = new[]
     ///         {
@@ -91,6 +93,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// {
     ///     var member = new Gcp.AccessContextManager.AccessPolicyIamMember("member", new()
     ///     {
+    ///         Name = access_policy.Name,
     ///         Role = "roles/accesscontextmanager.policyAdmin",
     ///         Member = "user:jane@example.com",
     ///     });

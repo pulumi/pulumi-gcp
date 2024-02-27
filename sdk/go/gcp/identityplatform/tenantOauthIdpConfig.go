@@ -39,7 +39,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = identityplatform.NewTenantOauthIdpConfig(ctx, "tenantOauthIdpConfig", &identityplatform.TenantOauthIdpConfigArgs{
+//			_, err = identityplatform.NewTenantOauthIdpConfig(ctx, "tenant_oauth_idp_config", &identityplatform.TenantOauthIdpConfigArgs{
+//				Name:         pulumi.String("oidc.oauth-idp-config"),
 //				Tenant:       tenant.Name,
 //				DisplayName:  pulumi.String("Display Name"),
 //				ClientId:     pulumi.String("client-id"),

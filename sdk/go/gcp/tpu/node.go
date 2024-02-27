@@ -40,6 +40,7 @@ import (
 //				return err
 //			}
 //			_, err = tpu.NewNode(ctx, "tpu", &tpu.NodeArgs{
+//				Name:              pulumi.String("test-tpu"),
 //				Zone:              pulumi.String("us-central1-b"),
 //				AcceleratorType:   pulumi.String("v3-8"),
 //				TensorflowVersion: *pulumi.String(available.Versions[0]),
@@ -73,11 +74,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			network, err := compute.NewNetwork(ctx, "network", nil)
+//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Name: pulumi.String("tpu-node-network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			serviceRange, err := compute.NewGlobalAddress(ctx, "serviceRange", &compute.GlobalAddressArgs{
+//			serviceRange, err := compute.NewGlobalAddress(ctx, "service_range", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("my-global-address"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
@@ -86,7 +90,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			privateServiceConnection, err := servicenetworking.NewConnection(ctx, "privateServiceConnection", &servicenetworking.ConnectionArgs{
+//			privateServiceConnection, err := servicenetworking.NewConnection(ctx, "private_service_connection", &servicenetworking.ConnectionArgs{
 //				Network: network.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
@@ -97,6 +101,7 @@ import (
 //				return err
 //			}
 //			_, err = tpu.NewNode(ctx, "tpu", &tpu.NodeArgs{
+//				Name:                 pulumi.String("test-tpu"),
 //				Zone:                 pulumi.String("us-central1-b"),
 //				AcceleratorType:      pulumi.String("v3-8"),
 //				TensorflowVersion:    *pulumi.String(available.Versions[0]),

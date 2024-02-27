@@ -30,14 +30,15 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			images, err := storage.NewBucket(ctx, "images", &storage.BucketArgs{
 //				Project:                  pulumi.String("my-project-name"),
+//				Name:                     pulumi.String("bucket-id"),
 //				Location:                 pulumi.String("US"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //				ForceDestroy:             pulumi.Bool(true),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = firebase.NewExtensionsInstance(ctx, "resizeImage", &firebase.ExtensionsInstanceArgs{
+//			_, err = firebase.NewExtensionsInstance(ctx, "resize_image", &firebase.ExtensionsInstanceArgs{
 //				Project:    pulumi.String("my-project-name"),
 //				InstanceId: pulumi.String("storage-resize-images"),
 //				Config: &firebase.ExtensionsInstanceConfigArgs{
@@ -64,7 +65,7 @@ import (
 //					},
 //					EventarcChannel: pulumi.String("projects/my-project-name/locations//channels/firebase"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

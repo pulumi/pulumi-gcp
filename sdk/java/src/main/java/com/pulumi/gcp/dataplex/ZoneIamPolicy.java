@@ -60,10 +60,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ZoneIamPolicy(&#34;policy&#34;, ZoneIamPolicyArgs.builder()        
- *             .project(google_dataplex_zone.example().project())
- *             .location(google_dataplex_zone.example().location())
- *             .lake(google_dataplex_zone.example().lake())
- *             .dataplexZone(google_dataplex_zone.example().name())
+ *             .project(example.project())
+ *             .location(example.location())
+ *             .lake(example.lake())
+ *             .dataplexZone(example.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -94,10 +94,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new ZoneIamBinding(&#34;binding&#34;, ZoneIamBindingArgs.builder()        
- *             .project(google_dataplex_zone.example().project())
- *             .location(google_dataplex_zone.example().location())
- *             .lake(google_dataplex_zone.example().lake())
- *             .dataplexZone(google_dataplex_zone.example().name())
+ *             .project(example.project())
+ *             .location(example.location())
+ *             .lake(example.lake())
+ *             .dataplexZone(example.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -129,10 +129,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new ZoneIamMember(&#34;member&#34;, ZoneIamMemberArgs.builder()        
- *             .project(google_dataplex_zone.example().project())
- *             .location(google_dataplex_zone.example().location())
- *             .lake(google_dataplex_zone.example().lake())
- *             .dataplexZone(google_dataplex_zone.example().name())
+ *             .project(example.project())
+ *             .location(example.location())
+ *             .lake(example.lake())
+ *             .dataplexZone(example.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

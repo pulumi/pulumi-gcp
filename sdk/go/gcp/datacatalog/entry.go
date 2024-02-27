@@ -40,13 +40,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			entryGroup, err := datacatalog.NewEntryGroup(ctx, "entryGroup", &datacatalog.EntryGroupArgs{
+//			entryGroup, err := datacatalog.NewEntryGroup(ctx, "entry_group", &datacatalog.EntryGroupArgs{
 //				EntryGroupId: pulumi.String("my_group"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = datacatalog.NewEntry(ctx, "basicEntry", &datacatalog.EntryArgs{
+//			_, err = datacatalog.NewEntry(ctx, "basic_entry", &datacatalog.EntryArgs{
 //				EntryGroup:          entryGroup.ID(),
 //				EntryId:             pulumi.String("my_entry"),
 //				UserSpecifiedType:   pulumi.String("my_custom_type"),
@@ -74,13 +74,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			entryGroup, err := datacatalog.NewEntryGroup(ctx, "entryGroup", &datacatalog.EntryGroupArgs{
+//			entryGroup, err := datacatalog.NewEntryGroup(ctx, "entry_group", &datacatalog.EntryGroupArgs{
 //				EntryGroupId: pulumi.String("my_group"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = datacatalog.NewEntry(ctx, "basicEntry", &datacatalog.EntryArgs{
+//			_, err = datacatalog.NewEntry(ctx, "basic_entry", &datacatalog.EntryArgs{
 //				EntryGroup: entryGroup.ID(),
 //				EntryId:    pulumi.String("my_entry"),
 //				Type:       pulumi.String("FILESET"),
@@ -112,13 +112,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			entryGroup, err := datacatalog.NewEntryGroup(ctx, "entryGroup", &datacatalog.EntryGroupArgs{
+//			entryGroup, err := datacatalog.NewEntryGroup(ctx, "entry_group", &datacatalog.EntryGroupArgs{
 //				EntryGroupId: pulumi.String("my_group"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = datacatalog.NewEntry(ctx, "basicEntry", &datacatalog.EntryArgs{
+//			_, err = datacatalog.NewEntry(ctx, "basic_entry", &datacatalog.EntryArgs{
 //				EntryGroup:          entryGroup.ID(),
 //				EntryId:             pulumi.String("my_entry"),
 //				UserSpecifiedType:   pulumi.String("my_user_specified_type"),

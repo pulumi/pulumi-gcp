@@ -250,9 +250,12 @@ class Variable(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_runtime_config = gcp.runtimeconfig.Config("my-runtime-config", description="Runtime configuration values for my service")
+        my_runtime_config = gcp.runtimeconfig.Config("my-runtime-config",
+            name="my-service-runtime-config",
+            description="Runtime configuration values for my service")
         environment = gcp.runtimeconfig.Variable("environment",
             parent=my_runtime_config.name,
+            name="prod-variables/hostname",
             text="example.com")
         ```
 
@@ -263,13 +266,16 @@ class Variable(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import base64
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
-        my_runtime_config = gcp.runtimeconfig.Config("my-runtime-config", description="Runtime configuration values for my service")
+        my_runtime_config = gcp.runtimeconfig.Config("my-runtime-config",
+            name="my-service-runtime-config",
+            description="Runtime configuration values for my service")
         my_secret = gcp.runtimeconfig.Variable("my-secret",
             parent=my_runtime_config.name,
-            value=(lambda path: base64.b64encode(open(path).read().encode()).decode())("my-encrypted-secret.dat"))
+            name="secret",
+            value=std.filebase64(input="my-encrypted-secret.dat").result)
         ```
 
         ## Import
@@ -322,9 +328,12 @@ class Variable(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_runtime_config = gcp.runtimeconfig.Config("my-runtime-config", description="Runtime configuration values for my service")
+        my_runtime_config = gcp.runtimeconfig.Config("my-runtime-config",
+            name="my-service-runtime-config",
+            description="Runtime configuration values for my service")
         environment = gcp.runtimeconfig.Variable("environment",
             parent=my_runtime_config.name,
+            name="prod-variables/hostname",
             text="example.com")
         ```
 
@@ -335,13 +344,16 @@ class Variable(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import base64
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
-        my_runtime_config = gcp.runtimeconfig.Config("my-runtime-config", description="Runtime configuration values for my service")
+        my_runtime_config = gcp.runtimeconfig.Config("my-runtime-config",
+            name="my-service-runtime-config",
+            description="Runtime configuration values for my service")
         my_secret = gcp.runtimeconfig.Variable("my-secret",
             parent=my_runtime_config.name,
-            value=(lambda path: base64.b64encode(open(path).read().encode()).decode())("my-encrypted-secret.dat"))
+            name="secret",
+            value=std.filebase64(input="my-encrypted-secret.dat").result)
         ```
 
         ## Import

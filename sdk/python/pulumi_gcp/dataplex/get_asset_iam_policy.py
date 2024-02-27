@@ -129,11 +129,11 @@ def get_asset_iam_policy(asset: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataplex.get_asset_iam_policy(project=google_dataplex_asset["example"]["project"],
-        location=google_dataplex_asset["example"]["location"],
-        lake=google_dataplex_asset["example"]["lake"],
-        dataplex_zone=google_dataplex_asset["example"]["dataplex_zone"],
-        asset=google_dataplex_asset["example"]["name"])
+    policy = gcp.dataplex.get_asset_iam_policy(project=example["project"],
+        location=example["location"],
+        lake=example["lake"],
+        dataplex_zone=example["dataplexZone"],
+        asset=example["name"])
     ```
 
 
@@ -177,11 +177,11 @@ def get_asset_iam_policy_output(asset: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataplex.get_asset_iam_policy(project=google_dataplex_asset["example"]["project"],
-        location=google_dataplex_asset["example"]["location"],
-        lake=google_dataplex_asset["example"]["lake"],
-        dataplex_zone=google_dataplex_asset["example"]["dataplex_zone"],
-        asset=google_dataplex_asset["example"]["name"])
+    policy = gcp.dataplex.get_asset_iam_policy(project=example["project"],
+        location=example["location"],
+        lake=example["lake"],
+        dataplex_zone=example["dataplexZone"],
+        asset=example["name"])
     ```
 
 

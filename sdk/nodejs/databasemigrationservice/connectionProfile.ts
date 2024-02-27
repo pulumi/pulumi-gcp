@@ -24,6 +24,7 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const cloudsqldb = new gcp.sql.DatabaseInstance("cloudsqldb", {
+ *     name: "my-database",
  *     databaseVersion: "MYSQL_5_7",
  *     settings: {
  *         tier: "db-n1-standard-1",
@@ -31,17 +32,14 @@ import * as utilities from "../utilities";
  *     },
  *     deletionProtection: false,
  * });
- * const sqlClientCert = new gcp.sql.SslCert("sqlClientCert", {
+ * const sqlClientCert = new gcp.sql.SslCert("sql_client_cert", {
  *     commonName: "my-cert",
  *     instance: cloudsqldb.name,
- * }, {
- *     dependsOn: [cloudsqldb],
  * });
- * const sqldbUser = new gcp.sql.User("sqldbUser", {
+ * const sqldbUser = new gcp.sql.User("sqldb_user", {
+ *     name: "my-username",
  *     instance: cloudsqldb.name,
  *     password: "my-password",
- * }, {
- *     dependsOn: [sqlClientCert],
  * });
  * const cloudsqlprofile = new gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofile", {
  *     location: "us-central1",
@@ -62,10 +60,8 @@ import * as utilities from "../utilities";
  *         },
  *         cloudSqlId: "my-database",
  *     },
- * }, {
- *     dependsOn: [sqldbUser],
  * });
- * const cloudsqlprofileDestination = new gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofileDestination", {
+ * const cloudsqlprofileDestination = new gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofile_destination", {
  *     location: "us-central1",
  *     connectionProfileId: "my-toprofileid",
  *     displayName: "my-toprofileid_displayname",
@@ -94,8 +90,6 @@ import * as utilities from "../utilities";
  *             rootPassword: "testpasscloudsql",
  *         },
  *     },
- * }, {
- *     dependsOn: [cloudsqlprofile],
  * });
  * ```
  * ### Database Migration Service Connection Profile Postgres
@@ -105,23 +99,21 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const postgresqldb = new gcp.sql.DatabaseInstance("postgresqldb", {
+ *     name: "my-database",
  *     databaseVersion: "POSTGRES_12",
  *     settings: {
  *         tier: "db-custom-2-13312",
  *     },
  *     deletionProtection: false,
  * });
- * const sqlClientCert = new gcp.sql.SslCert("sqlClientCert", {
+ * const sqlClientCert = new gcp.sql.SslCert("sql_client_cert", {
  *     commonName: "my-cert",
  *     instance: postgresqldb.name,
- * }, {
- *     dependsOn: [postgresqldb],
  * });
- * const sqldbUser = new gcp.sql.User("sqldbUser", {
+ * const sqldbUser = new gcp.sql.User("sqldb_user", {
+ *     name: "my-username",
  *     instance: postgresqldb.name,
  *     password: "my-password",
- * }, {
- *     dependsOn: [sqlClientCert],
  * });
  * const postgresprofile = new gcp.databasemigrationservice.ConnectionProfile("postgresprofile", {
  *     location: "us-central1",
@@ -142,8 +134,6 @@ import * as utilities from "../utilities";
  *         },
  *         cloudSqlId: "my-database",
  *     },
- * }, {
- *     dependsOn: [sqldbUser],
  * });
  * ```
  * ### Database Migration Service Connection Profile Oracle
@@ -153,19 +143,19 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const oracleprofile = new gcp.databasemigrationservice.ConnectionProfile("oracleprofile", {
+ *     location: "us-central1",
  *     connectionProfileId: "my-profileid",
  *     displayName: "my-profileid_display",
  *     labels: {
  *         foo: "bar",
  *     },
- *     location: "us-central1",
  *     oracle: {
- *         databaseService: "dbprovider",
  *         host: "host",
- *         password: "password",
  *         port: 1521,
- *         staticServiceIpConnectivity: {},
  *         username: "username",
+ *         password: "password",
+ *         databaseService: "dbprovider",
+ *         staticServiceIpConnectivity: {},
  *     },
  * });
  * ```

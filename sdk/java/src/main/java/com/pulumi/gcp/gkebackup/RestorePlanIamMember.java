@@ -58,6 +58,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
+ *             .name(&#34;restore-all-ns-cluster&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .initialNodeCount(1)
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
@@ -74,6 +75,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var basic = new BackupPlan(&#34;basic&#34;, BackupPlanArgs.builder()        
+ *             .name(&#34;restore-all-ns&#34;)
  *             .cluster(primary.id())
  *             .location(&#34;us-central1&#34;)
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
@@ -84,6 +86,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var allNs = new RestorePlan(&#34;allNs&#34;, RestorePlanArgs.builder()        
+ *             .name(&#34;restore-all-ns&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .backupPlan(basic.id())
  *             .cluster(primary.id())
@@ -135,6 +138,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
+ *             .name(&#34;rollback-ns-cluster&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .initialNodeCount(1)
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
@@ -151,6 +155,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var basic = new BackupPlan(&#34;basic&#34;, BackupPlanArgs.builder()        
+ *             .name(&#34;rollback-ns&#34;)
  *             .cluster(primary.id())
  *             .location(&#34;us-central1&#34;)
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
@@ -161,6 +166,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var rollbackNs = new RestorePlan(&#34;rollbackNs&#34;, RestorePlanArgs.builder()        
+ *             .name(&#34;rollback-ns-rp&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .backupPlan(basic.id())
  *             .cluster(primary.id())
@@ -222,6 +228,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
+ *             .name(&#34;rollback-app-cluster&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .initialNodeCount(1)
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
@@ -238,6 +245,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var basic = new BackupPlan(&#34;basic&#34;, BackupPlanArgs.builder()        
+ *             .name(&#34;rollback-app&#34;)
  *             .cluster(primary.id())
  *             .location(&#34;us-central1&#34;)
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
@@ -248,6 +256,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var rollbackApp = new RestorePlan(&#34;rollbackApp&#34;, RestorePlanArgs.builder()        
+ *             .name(&#34;rollback-app-rp&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .backupPlan(basic.id())
  *             .cluster(primary.id())
@@ -302,6 +311,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
+ *             .name(&#34;all-groupkinds-cluster&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .initialNodeCount(1)
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
@@ -318,6 +328,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var basic = new BackupPlan(&#34;basic&#34;, BackupPlanArgs.builder()        
+ *             .name(&#34;all-groupkinds&#34;)
  *             .cluster(primary.id())
  *             .location(&#34;us-central1&#34;)
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
@@ -328,6 +339,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var allClusterResources = new RestorePlan(&#34;allClusterResources&#34;, RestorePlanArgs.builder()        
+ *             .name(&#34;all-groupkinds-rp&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .backupPlan(basic.id())
  *             .cluster(primary.id())
@@ -378,6 +390,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
+ *             .name(&#34;rename-ns-cluster&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .initialNodeCount(1)
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
@@ -394,6 +407,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var basic = new BackupPlan(&#34;basic&#34;, BackupPlanArgs.builder()        
+ *             .name(&#34;rename-ns&#34;)
  *             .cluster(primary.id())
  *             .location(&#34;us-central1&#34;)
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
@@ -404,6 +418,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var renameNs = new RestorePlan(&#34;renameNs&#34;, RestorePlanArgs.builder()        
+ *             .name(&#34;rename-ns-rp&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .backupPlan(basic.id())
  *             .cluster(primary.id())
@@ -482,6 +497,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
+ *             .name(&#34;transform-rule-cluster&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .initialNodeCount(1)
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
@@ -498,6 +514,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var basic = new BackupPlan(&#34;basic&#34;, BackupPlanArgs.builder()        
+ *             .name(&#34;transform-rule&#34;)
  *             .cluster(primary.id())
  *             .location(&#34;us-central1&#34;)
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
@@ -508,6 +525,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var transformRule = new RestorePlan(&#34;transformRule&#34;, RestorePlanArgs.builder()        
+ *             .name(&#34;transform-rule-rp&#34;)
  *             .description(&#34;copy nginx env variables&#34;)
  *             .labels(Map.of(&#34;app&#34;, &#34;nginx&#34;))
  *             .location(&#34;us-central1&#34;)

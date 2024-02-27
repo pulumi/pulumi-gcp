@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var listingDataExchange = new DataExchange(&#34;listingDataExchange&#34;, DataExchangeArgs.builder()        
+ *         var listing = new DataExchange(&#34;listing&#34;, DataExchangeArgs.builder()        
  *             .location(&#34;US&#34;)
  *             .dataExchangeId(&#34;my_data_exchange&#34;)
  *             .displayName(&#34;my_data_exchange&#34;)
@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  * 
  *         var listingListing = new Listing(&#34;listingListing&#34;, ListingArgs.builder()        
  *             .location(&#34;US&#34;)
- *             .dataExchangeId(listingDataExchange.dataExchangeId())
+ *             .dataExchangeId(listing.dataExchangeId())
  *             .listingId(&#34;my_listing&#34;)
  *             .displayName(&#34;my_listing&#34;)
  *             .description(&#34;example data exchange&#34;)
@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var listingDataExchange = new DataExchange(&#34;listingDataExchange&#34;, DataExchangeArgs.builder()        
+ *         var listing = new DataExchange(&#34;listing&#34;, DataExchangeArgs.builder()        
  *             .location(&#34;US&#34;)
  *             .dataExchangeId(&#34;my_data_exchange&#34;)
  *             .displayName(&#34;my_data_exchange&#34;)
@@ -128,7 +128,7 @@ import javax.annotation.Nullable;
  * 
  *         var listingListing = new Listing(&#34;listingListing&#34;, ListingArgs.builder()        
  *             .location(&#34;US&#34;)
- *             .dataExchangeId(listingDataExchange.dataExchangeId())
+ *             .dataExchangeId(listing.dataExchangeId())
  *             .listingId(&#34;my_listing&#34;)
  *             .displayName(&#34;my_listing&#34;)
  *             .description(&#34;example data exchange&#34;)

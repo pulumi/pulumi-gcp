@@ -34,9 +34,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.artifactregistry.RepositoryIamPolicy("policy", {
- *     project: google_artifact_registry_repository["my-repo"].project,
- *     location: google_artifact_registry_repository["my-repo"].location,
- *     repository: google_artifact_registry_repository["my-repo"].name,
+ *     project: my_repo.project,
+ *     location: my_repo.location,
+ *     repository: my_repo.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -48,9 +48,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.artifactregistry.RepositoryIamBinding("binding", {
- *     project: google_artifact_registry_repository["my-repo"].project,
- *     location: google_artifact_registry_repository["my-repo"].location,
- *     repository: google_artifact_registry_repository["my-repo"].name,
+ *     project: my_repo.project,
+ *     location: my_repo.location,
+ *     repository: my_repo.name,
  *     role: "roles/artifactregistry.reader",
  *     members: ["user:jane@example.com"],
  * });
@@ -63,9 +63,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.artifactregistry.RepositoryIamMember("member", {
- *     project: google_artifact_registry_repository["my-repo"].project,
- *     location: google_artifact_registry_repository["my-repo"].location,
- *     repository: google_artifact_registry_repository["my-repo"].name,
+ *     project: my_repo.project,
+ *     location: my_repo.location,
+ *     repository: my_repo.name,
  *     role: "roles/artifactregistry.reader",
  *     member: "user:jane@example.com",
  * });

@@ -21,9 +21,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const key = new gcp.tags.TagKey("key", {
- *     description: "For keyname resources.",
  *     parent: "organizations/123456789",
  *     shortName: "keyname",
+ *     description: "For keyname resources.",
  * });
  * ```
  *

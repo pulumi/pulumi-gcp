@@ -45,6 +45,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var disk = new Gcp.Compute.Disk("disk", new()
     ///     {
+    ///         Name = "my-disk",
     ///         Image = "debian-cloud/debian-11",
     ///         Size = 50,
     ///         Type = "pd-ssd",
@@ -53,12 +54,14 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var snapdisk = new Gcp.Compute.Snapshot("snapdisk", new()
     ///     {
+    ///         Name = "my-snapshot",
     ///         SourceDisk = disk.Name,
     ///         Zone = "us-central1-a",
     ///     });
     /// 
     ///     var regiondisk = new Gcp.Compute.RegionDisk("regiondisk", new()
     ///     {
+    ///         Name = "my-region-disk",
     ///         Snapshot = snapdisk.Id,
     ///         Type = "pd-ssd",
     ///         Region = "us-central1",
@@ -84,6 +87,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var primary = new Gcp.Compute.RegionDisk("primary", new()
     ///     {
+    ///         Name = "primary-region-disk",
     ///         Type = "pd-ssd",
     ///         Region = "us-central1",
     ///         PhysicalBlockSizeBytes = 4096,
@@ -96,6 +100,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var secondary = new Gcp.Compute.RegionDisk("secondary", new()
     ///     {
+    ///         Name = "secondary-region-disk",
     ///         Type = "pd-ssd",
     ///         Region = "us-east1",
     ///         PhysicalBlockSizeBytes = 4096,
@@ -124,6 +129,10 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var regiondisk = new Gcp.Compute.RegionDisk("regiondisk", new()
     ///     {
+    ///         Name = "my-region-features-disk",
+    ///         Type = "pd-ssd",
+    ///         Region = "us-central1",
+    ///         PhysicalBlockSizeBytes = 4096,
     ///         GuestOsFeatures = new[]
     ///         {
     ///             new Gcp.Compute.Inputs.RegionDiskGuestOsFeatureArgs
@@ -143,14 +152,11 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core",
     ///         },
-    ///         PhysicalBlockSizeBytes = 4096,
-    ///         Region = "us-central1",
     ///         ReplicaZones = new[]
     ///         {
     ///             "us-central1-a",
     ///             "us-central1-f",
     ///         },
-    ///         Type = "pd-ssd",
     ///     });
     /// 
     /// });

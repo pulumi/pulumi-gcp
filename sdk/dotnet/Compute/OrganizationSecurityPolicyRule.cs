@@ -29,18 +29,15 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var policyOrganizationSecurityPolicy = new Gcp.Compute.OrganizationSecurityPolicy("policyOrganizationSecurityPolicy", new()
+    ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
     ///     {
     ///         DisplayName = "tf-test",
     ///         Parent = "organizations/123456789",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var policyOrganizationSecurityPolicyRule = new Gcp.Compute.OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule", new()
+    ///     var policyOrganizationSecurityPolicyRule = new Gcp.Compute.OrganizationSecurityPolicyRule("policy", new()
     ///     {
-    ///         PolicyId = policyOrganizationSecurityPolicy.Id,
+    ///         PolicyId = policy.Id,
     ///         Action = "allow",
     ///         Direction = "INGRESS",
     ///         EnableLogging = true,
@@ -71,9 +68,6 @@ namespace Pulumi.Gcp.Compute
     ///             },
     ///         },
     ///         Priority = 100,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

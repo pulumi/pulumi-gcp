@@ -409,13 +409,13 @@ class DataStore(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         basic = gcp.discoveryengine.DataStore("basic",
-            content_config="NO_CONTENT",
-            create_advanced_site_search=False,
+            location="global",
             data_store_id="data-store-id",
             display_name="tf-test-structured-datastore",
             industry_vertical="GENERIC",
-            location="global",
-            solution_types=["SOLUTION_TYPE_SEARCH"])
+            content_config="NO_CONTENT",
+            solution_types=["SOLUTION_TYPE_SEARCH"],
+            create_advanced_site_search=False)
         ```
 
         ## Import
@@ -489,13 +489,13 @@ class DataStore(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         basic = gcp.discoveryengine.DataStore("basic",
-            content_config="NO_CONTENT",
-            create_advanced_site_search=False,
+            location="global",
             data_store_id="data-store-id",
             display_name="tf-test-structured-datastore",
             industry_vertical="GENERIC",
-            location="global",
-            solution_types=["SOLUTION_TYPE_SEARCH"])
+            content_config="NO_CONTENT",
+            solution_types=["SOLUTION_TYPE_SEARCH"],
+            create_advanced_site_search=False)
         ```
 
         ## Import

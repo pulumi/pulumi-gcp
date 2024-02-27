@@ -168,8 +168,7 @@ class VpcscConfig(pulumi.CustomResource):
 
         my_config = gcp.artifactregistry.VpcscConfig("my-config",
             location="us-central1",
-            vpcsc_policy="ALLOW",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            vpcsc_policy="ALLOW")
         ```
 
         ## Import
@@ -220,8 +219,7 @@ class VpcscConfig(pulumi.CustomResource):
 
         my_config = gcp.artifactregistry.VpcscConfig("my-config",
             location="us-central1",
-            vpcsc_policy="ALLOW",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            vpcsc_policy="ALLOW")
         ```
 
         ## Import

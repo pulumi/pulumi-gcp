@@ -33,32 +33,30 @@ namespace Pulumi.Gcp.Storage
     /// {
     ///     var @default = Gcp.Storage.GetTransferProjectServiceAccount.Invoke(new()
     ///     {
-    ///         Project = @var.Project,
+    ///         Project = project,
     ///     });
     /// 
-    ///     var s3_backup_bucketBucket = new Gcp.Storage.Bucket("s3-backup-bucketBucket", new()
+    ///     var s3_backup_bucket = new Gcp.Storage.Bucket("s3-backup-bucket", new()
     ///     {
+    ///         Name = $"{awsS3Bucket}-backup",
     ///         StorageClass = "NEARLINE",
-    ///         Project = @var.Project,
+    ///         Project = project,
     ///         Location = "US",
     ///     });
     /// 
-    ///     var s3_backup_bucketBucketIAMMember = new Gcp.Storage.BucketIAMMember("s3-backup-bucketBucketIAMMember", new()
+    ///     var s3_backup_bucketBucketIAMMember = new Gcp.Storage.BucketIAMMember("s3-backup-bucket", new()
     ///     {
-    ///         Bucket = s3_backup_bucketBucket.Name,
+    ///         Bucket = s3_backup_bucket.Name,
     ///         Role = "roles/storage.admin",
     ///         Member = @default.Apply(@default =&gt; $"serviceAccount:{@default.Apply(getTransferProjectServiceAccountResult =&gt; getTransferProjectServiceAccountResult.Email)}"),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             s3_backup_bucketBucket,
-    ///         },
     ///     });
     /// 
-    ///     var topic = new Gcp.PubSub.Topic("topic");
+    ///     var topic = new Gcp.PubSub.Topic("topic", new()
+    ///     {
+    ///         Name = pubsubTopicName,
+    ///     });
     /// 
-    ///     var notificationConfig = new Gcp.PubSub.TopicIAMMember("notificationConfig", new()
+    ///     var notificationConfig = new Gcp.PubSub.TopicIAMMember("notification_config", new()
     ///     {
     ///         Topic = topic.Id,
     ///         Role = "roles/pubsub.publisher",
@@ -68,7 +66,7 @@ namespace Pulumi.Gcp.Storage
     ///     var s3_bucket_nightly_backup = new Gcp.Storage.TransferJob("s3-bucket-nightly-backup", new()
     ///     {
     ///         Description = "Nightly backup of S3 bucket",
-    ///         Project = @var.Project,
+    ///         Project = project,
     ///         TransferSpec = new Gcp.Storage.Inputs.TransferJobTransferSpecArgs
     ///         {
     ///             ObjectConditions = new Gcp.Storage.Inputs.TransferJobTransferSpecObjectConditionsArgs
@@ -85,16 +83,16 @@ namespace Pulumi.Gcp.Storage
     ///             },
     ///             AwsS3DataSource = new Gcp.Storage.Inputs.TransferJobTransferSpecAwsS3DataSourceArgs
     ///             {
-    ///                 BucketName = @var.Aws_s3_bucket,
+    ///                 BucketName = awsS3Bucket,
     ///                 AwsAccessKey = new Gcp.Storage.Inputs.TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs
     ///                 {
-    ///                     AccessKeyId = @var.Aws_access_key,
-    ///                     SecretAccessKey = @var.Aws_secret_key,
+    ///                     AccessKeyId = awsAccessKey,
+    ///                     SecretAccessKey = awsSecretKey,
     ///                 },
     ///             },
     ///             GcsDataSink = new Gcp.Storage.Inputs.TransferJobTransferSpecGcsDataSinkArgs
     ///             {
-    ///                 BucketName = s3_backup_bucketBucket.Name,
+    ///                 BucketName = s3_backup_bucket.Name,
     ///                 Path = "foo/bar/",
     ///             },
     ///         },
@@ -130,13 +128,6 @@ namespace Pulumi.Gcp.Storage
     ///                 "TRANSFER_OPERATION_FAILED",
     ///             },
     ///             PayloadFormat = "JSON",
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             s3_backup_bucketBucketIAMMember,
-    ///             notificationConfig,
     ///         },
     ///     });
     /// 

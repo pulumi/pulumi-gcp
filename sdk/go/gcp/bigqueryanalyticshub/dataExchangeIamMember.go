@@ -55,9 +55,9 @@ import (
 //				return err
 //			}
 //			_, err = bigqueryanalyticshub.NewDataExchangeIamPolicy(ctx, "policy", &bigqueryanalyticshub.DataExchangeIamPolicyArgs{
-//				Project:        pulumi.Any(google_bigquery_analytics_hub_data_exchange.Data_exchange.Project),
-//				Location:       pulumi.Any(google_bigquery_analytics_hub_data_exchange.Data_exchange.Location),
-//				DataExchangeId: pulumi.Any(google_bigquery_analytics_hub_data_exchange.Data_exchange.Data_exchange_id),
+//				Project:        pulumi.Any(dataExchange.Project),
+//				Location:       pulumi.Any(dataExchange.Location),
+//				DataExchangeId: pulumi.Any(dataExchange.DataExchangeId),
 //				PolicyData:     *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -84,9 +84,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigqueryanalyticshub.NewDataExchangeIamBinding(ctx, "binding", &bigqueryanalyticshub.DataExchangeIamBindingArgs{
-//				Project:        pulumi.Any(google_bigquery_analytics_hub_data_exchange.Data_exchange.Project),
-//				Location:       pulumi.Any(google_bigquery_analytics_hub_data_exchange.Data_exchange.Location),
-//				DataExchangeId: pulumi.Any(google_bigquery_analytics_hub_data_exchange.Data_exchange.Data_exchange_id),
+//				Project:        pulumi.Any(dataExchange.Project),
+//				Location:       pulumi.Any(dataExchange.Location),
+//				DataExchangeId: pulumi.Any(dataExchange.DataExchangeId),
 //				Role:           pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -116,9 +116,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigqueryanalyticshub.NewDataExchangeIamMember(ctx, "member", &bigqueryanalyticshub.DataExchangeIamMemberArgs{
-//				Project:        pulumi.Any(google_bigquery_analytics_hub_data_exchange.Data_exchange.Project),
-//				Location:       pulumi.Any(google_bigquery_analytics_hub_data_exchange.Data_exchange.Location),
-//				DataExchangeId: pulumi.Any(google_bigquery_analytics_hub_data_exchange.Data_exchange.Data_exchange_id),
+//				Project:        pulumi.Any(dataExchange.Project),
+//				Location:       pulumi.Any(dataExchange.Location),
+//				DataExchangeId: pulumi.Any(dataExchange.DataExchangeId),
 //				Role:           pulumi.String("roles/viewer"),
 //				Member:         pulumi.String("user:jane@example.com"),
 //			})

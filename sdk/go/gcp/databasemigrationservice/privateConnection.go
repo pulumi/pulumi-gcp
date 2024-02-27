@@ -36,13 +36,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+//			_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
 //				Name: "my-network",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databasemigrationservice.NewPrivateConnection(ctx, "defaultPrivateConnection", &databasemigrationservice.PrivateConnectionArgs{
+//			_, err = databasemigrationservice.NewPrivateConnection(ctx, "default", &databasemigrationservice.PrivateConnectionArgs{
 //				DisplayName:         pulumi.String("dbms_pc"),
 //				Location:            pulumi.String("us-central1"),
 //				PrivateConnectionId: pulumi.String("my-connection"),
@@ -50,7 +50,7 @@ import (
 //					"key": pulumi.String("value"),
 //				},
 //				VpcPeeringConfig: &databasemigrationservice.PrivateConnectionVpcPeeringConfigArgs{
-//					VpcName: *pulumi.String(defaultNetwork.Id),
+//					VpcName: *pulumi.String(_default.Id),
 //					Subnet:  pulumi.String("10.0.0.0/29"),
 //				},
 //			})

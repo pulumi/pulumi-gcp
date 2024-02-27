@@ -19,8 +19,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const myNw = gcp.vmwareengine.getNetwork({
- *     location: "us-central1",
  *     name: "us-central1-default",
+ *     location: "us-central1",
  * });
  * ```
  */
@@ -84,8 +84,8 @@ export interface GetNetworkResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const myNw = gcp.vmwareengine.getNetwork({
- *     location: "us-central1",
  *     name: "us-central1-default",
+ *     location: "us-central1",
  * });
  * ```
  */

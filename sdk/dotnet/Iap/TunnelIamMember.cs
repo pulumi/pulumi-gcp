@@ -53,7 +53,7 @@ namespace Pulumi.Gcp.Iap
     /// 
     ///     var policy = new Gcp.Iap.TunnelIamPolicy("policy", new()
     ///     {
-    ///         Project = google_project_service.Project_service.Project,
+    ///         Project = projectService.Project,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -93,7 +93,7 @@ namespace Pulumi.Gcp.Iap
     /// 
     ///     var policy = new Gcp.Iap.TunnelIamPolicy("policy", new()
     ///     {
-    ///         Project = google_project_service.Project_service.Project,
+    ///         Project = projectService.Project,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -111,7 +111,7 @@ namespace Pulumi.Gcp.Iap
     /// {
     ///     var binding = new Gcp.Iap.TunnelIamBinding("binding", new()
     ///     {
-    ///         Project = google_project_service.Project_service.Project,
+    ///         Project = projectService.Project,
     ///         Role = "roles/iap.tunnelResourceAccessor",
     ///         Members = new[]
     ///         {
@@ -134,7 +134,7 @@ namespace Pulumi.Gcp.Iap
     /// {
     ///     var binding = new Gcp.Iap.TunnelIamBinding("binding", new()
     ///     {
-    ///         Project = google_project_service.Project_service.Project,
+    ///         Project = projectService.Project,
     ///         Role = "roles/iap.tunnelResourceAccessor",
     ///         Members = new[]
     ///         {
@@ -162,7 +162,7 @@ namespace Pulumi.Gcp.Iap
     /// {
     ///     var member = new Gcp.Iap.TunnelIamMember("member", new()
     ///     {
-    ///         Project = google_project_service.Project_service.Project,
+    ///         Project = projectService.Project,
     ///         Role = "roles/iap.tunnelResourceAccessor",
     ///         Member = "user:jane@example.com",
     ///     });
@@ -182,7 +182,7 @@ namespace Pulumi.Gcp.Iap
     /// {
     ///     var member = new Gcp.Iap.TunnelIamMember("member", new()
     ///     {
-    ///         Project = google_project_service.Project_service.Project,
+    ///         Project = projectService.Project,
     ///         Role = "roles/iap.tunnelResourceAccessor",
     ///         Member = "user:jane@example.com",
     ///         Condition = new Gcp.Iap.Inputs.TunnelIamMemberConditionArgs

@@ -53,7 +53,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     ///     var policy = new Gcp.CertificateAuthority.CertificateTemplateIamPolicy("policy", new()
     ///     {
-    ///         CertificateTemplate = google_privateca_certificate_template.Default.Id,
+    ///         CertificateTemplate = @default.Id,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -93,7 +93,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     ///     var policy = new Gcp.CertificateAuthority.CertificateTemplateIamPolicy("policy", new()
     ///     {
-    ///         CertificateTemplate = google_privateca_certificate_template.Default.Id,
+    ///         CertificateTemplate = @default.Id,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -111,7 +111,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// {
     ///     var binding = new Gcp.CertificateAuthority.CertificateTemplateIamBinding("binding", new()
     ///     {
-    ///         CertificateTemplate = google_privateca_certificate_template.Default.Id,
+    ///         CertificateTemplate = @default.Id,
     ///         Role = "roles/privateca.templateUser",
     ///         Members = new[]
     ///         {
@@ -134,7 +134,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// {
     ///     var binding = new Gcp.CertificateAuthority.CertificateTemplateIamBinding("binding", new()
     ///     {
-    ///         CertificateTemplate = google_privateca_certificate_template.Default.Id,
+    ///         CertificateTemplate = @default.Id,
     ///         Role = "roles/privateca.templateUser",
     ///         Members = new[]
     ///         {
@@ -162,7 +162,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// {
     ///     var member = new Gcp.CertificateAuthority.CertificateTemplateIamMember("member", new()
     ///     {
-    ///         CertificateTemplate = google_privateca_certificate_template.Default.Id,
+    ///         CertificateTemplate = @default.Id,
     ///         Role = "roles/privateca.templateUser",
     ///         Member = "user:jane@example.com",
     ///     });
@@ -182,7 +182,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// {
     ///     var member = new Gcp.CertificateAuthority.CertificateTemplateIamMember("member", new()
     ///     {
-    ///         CertificateTemplate = google_privateca_certificate_template.Default.Id,
+    ///         CertificateTemplate = @default.Id,
     ///         Role = "roles/privateca.templateUser",
     ///         Member = "user:jane@example.com",
     ///         Condition = new Gcp.CertificateAuthority.Inputs.CertificateTemplateIamMemberConditionArgs

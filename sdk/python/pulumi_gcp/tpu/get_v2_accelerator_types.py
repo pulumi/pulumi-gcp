@@ -94,12 +94,13 @@ def get_v2_accelerator_types(project: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    available_v2_accelerator_types = gcp.tpu.get_v2_accelerator_types()
-    available_v2_runtime_versions = gcp.tpu.get_v2_runtime_versions()
+    available = gcp.tpu.get_v2_accelerator_types()
+    available_get_v2_runtime_versions = gcp.tpu.get_v2_runtime_versions()
     tpu = gcp.tpu.V2Vm("tpu",
+        name="test-tpu",
         zone="us-central1-b",
-        runtime_version=available_v2_runtime_versions.versions[0],
-        accelerator_type=available_v2_accelerator_types.types[0])
+        runtime_version=available_get_v2_runtime_versions.versions[0],
+        accelerator_type=available.types[0])
     ```
 
 
@@ -142,12 +143,13 @@ def get_v2_accelerator_types_output(project: Optional[pulumi.Input[Optional[str]
     import pulumi
     import pulumi_gcp as gcp
 
-    available_v2_accelerator_types = gcp.tpu.get_v2_accelerator_types()
-    available_v2_runtime_versions = gcp.tpu.get_v2_runtime_versions()
+    available = gcp.tpu.get_v2_accelerator_types()
+    available_get_v2_runtime_versions = gcp.tpu.get_v2_runtime_versions()
     tpu = gcp.tpu.V2Vm("tpu",
+        name="test-tpu",
         zone="us-central1-b",
-        runtime_version=available_v2_runtime_versions.versions[0],
-        accelerator_type=available_v2_accelerator_types.types[0])
+        runtime_version=available_get_v2_runtime_versions.versions[0],
+        accelerator_type=available.types[0])
     ```
 
 

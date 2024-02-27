@@ -132,7 +132,8 @@ class AddonsConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        test_organization = gcp.apigee.AddonsConfig("testOrganization",
+        test_organization = gcp.apigee.AddonsConfig("test_organization",
+            org="test_organization",
             addons_config=gcp.apigee.AddonsConfigAddonsConfigArgs(
                 api_security_config=gcp.apigee.AddonsConfigAddonsConfigApiSecurityConfigArgs(
                     enabled=True,
@@ -140,8 +141,7 @@ class AddonsConfig(pulumi.CustomResource):
                 monetization_config=gcp.apigee.AddonsConfigAddonsConfigMonetizationConfigArgs(
                     enabled=True,
                 ),
-            ),
-            org="test_organization")
+            ))
         ```
         ### Apigee Addons Full
 
@@ -159,15 +159,17 @@ class AddonsConfig(pulumi.CustomResource):
         servicenetworking = gcp.projects.Service("servicenetworking",
             project=current.project,
             service="servicenetworking.googleapis.com")
-        apigee_network = gcp.compute.Network("apigeeNetwork", project=current.project,
-        opts=pulumi.ResourceOptions(depends_on=[compute]))
-        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
+        apigee_network = gcp.compute.Network("apigee_network",
+            name="apigee-network",
+            project=current.project)
+        apigee_range = gcp.compute.GlobalAddress("apigee_range",
+            name="apigee-range",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=16,
             network=apigee_network.id,
             project=current.project)
-        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
+        apigee_vpc_connection = gcp.servicenetworking.Connection("apigee_vpc_connection",
             network=apigee_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[apigee_range.name])
@@ -175,12 +177,8 @@ class AddonsConfig(pulumi.CustomResource):
             analytics_region="us-central1",
             project_id=current.project,
             authorized_network=apigee_network.id,
-            billing_type="EVALUATION",
-            opts=pulumi.ResourceOptions(depends_on=[
-                    apigee_vpc_connection,
-                    apigee,
-                ]))
-        test_organization = gcp.apigee.AddonsConfig("testOrganization",
+            billing_type="EVALUATION")
+        test_organization = gcp.apigee.AddonsConfig("test_organization",
             org=org.name,
             addons_config=gcp.apigee.AddonsConfigAddonsConfigArgs(
                 integration_config=gcp.apigee.AddonsConfigAddonsConfigIntegrationConfigArgs(
@@ -250,7 +248,8 @@ class AddonsConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        test_organization = gcp.apigee.AddonsConfig("testOrganization",
+        test_organization = gcp.apigee.AddonsConfig("test_organization",
+            org="test_organization",
             addons_config=gcp.apigee.AddonsConfigAddonsConfigArgs(
                 api_security_config=gcp.apigee.AddonsConfigAddonsConfigApiSecurityConfigArgs(
                     enabled=True,
@@ -258,8 +257,7 @@ class AddonsConfig(pulumi.CustomResource):
                 monetization_config=gcp.apigee.AddonsConfigAddonsConfigMonetizationConfigArgs(
                     enabled=True,
                 ),
-            ),
-            org="test_organization")
+            ))
         ```
         ### Apigee Addons Full
 
@@ -277,15 +275,17 @@ class AddonsConfig(pulumi.CustomResource):
         servicenetworking = gcp.projects.Service("servicenetworking",
             project=current.project,
             service="servicenetworking.googleapis.com")
-        apigee_network = gcp.compute.Network("apigeeNetwork", project=current.project,
-        opts=pulumi.ResourceOptions(depends_on=[compute]))
-        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
+        apigee_network = gcp.compute.Network("apigee_network",
+            name="apigee-network",
+            project=current.project)
+        apigee_range = gcp.compute.GlobalAddress("apigee_range",
+            name="apigee-range",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=16,
             network=apigee_network.id,
             project=current.project)
-        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
+        apigee_vpc_connection = gcp.servicenetworking.Connection("apigee_vpc_connection",
             network=apigee_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[apigee_range.name])
@@ -293,12 +293,8 @@ class AddonsConfig(pulumi.CustomResource):
             analytics_region="us-central1",
             project_id=current.project,
             authorized_network=apigee_network.id,
-            billing_type="EVALUATION",
-            opts=pulumi.ResourceOptions(depends_on=[
-                    apigee_vpc_connection,
-                    apigee,
-                ]))
-        test_organization = gcp.apigee.AddonsConfig("testOrganization",
+            billing_type="EVALUATION")
+        test_organization = gcp.apigee.AddonsConfig("test_organization",
             org=org.name,
             addons_config=gcp.apigee.AddonsConfigAddonsConfigArgs(
                 integration_config=gcp.apigee.AddonsConfigAddonsConfigIntegrationConfigArgs(

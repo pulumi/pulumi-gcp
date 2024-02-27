@@ -52,11 +52,11 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getAssetIamPolicy(GetAssetIamPolicyArgs.builder()
-     *             .project(google_dataplex_asset.example().project())
-     *             .location(google_dataplex_asset.example().location())
-     *             .lake(google_dataplex_asset.example().lake())
-     *             .dataplexZone(google_dataplex_asset.example().dataplex_zone())
-     *             .asset(google_dataplex_asset.example().name())
+     *             .project(example.project())
+     *             .location(example.location())
+     *             .lake(example.lake())
+     *             .dataplexZone(example.dataplexZone())
+     *             .asset(example.name())
      *             .build());
      * 
      *     }
@@ -93,11 +93,11 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getAssetIamPolicy(GetAssetIamPolicyArgs.builder()
-     *             .project(google_dataplex_asset.example().project())
-     *             .location(google_dataplex_asset.example().location())
-     *             .lake(google_dataplex_asset.example().lake())
-     *             .dataplexZone(google_dataplex_asset.example().dataplex_zone())
-     *             .asset(google_dataplex_asset.example().name())
+     *             .project(example.project())
+     *             .location(example.location())
+     *             .lake(example.lake())
+     *             .dataplexZone(example.dataplexZone())
+     *             .asset(example.name())
      *             .build());
      * 
      *     }
@@ -134,11 +134,11 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getAssetIamPolicy(GetAssetIamPolicyArgs.builder()
-     *             .project(google_dataplex_asset.example().project())
-     *             .location(google_dataplex_asset.example().location())
-     *             .lake(google_dataplex_asset.example().lake())
-     *             .dataplexZone(google_dataplex_asset.example().dataplex_zone())
-     *             .asset(google_dataplex_asset.example().name())
+     *             .project(example.project())
+     *             .location(example.location())
+     *             .lake(example.lake())
+     *             .dataplexZone(example.dataplexZone())
+     *             .asset(example.name())
      *             .build());
      * 
      *     }
@@ -175,11 +175,11 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getAssetIamPolicy(GetAssetIamPolicyArgs.builder()
-     *             .project(google_dataplex_asset.example().project())
-     *             .location(google_dataplex_asset.example().location())
-     *             .lake(google_dataplex_asset.example().lake())
-     *             .dataplexZone(google_dataplex_asset.example().dataplex_zone())
-     *             .asset(google_dataplex_asset.example().name())
+     *             .project(example.project())
+     *             .location(example.location())
+     *             .lake(example.lake())
+     *             .dataplexZone(example.dataplexZone())
+     *             .asset(example.name())
      *             .build());
      * 
      *     }
@@ -216,9 +216,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getDatascanIamPolicy(GetDatascanIamPolicyArgs.builder()
-     *             .project(google_dataplex_datascan.basic_profile().project())
-     *             .location(google_dataplex_datascan.basic_profile().location())
-     *             .dataScanId(google_dataplex_datascan.basic_profile().data_scan_id())
+     *             .project(basicProfile.project())
+     *             .location(basicProfile.location())
+     *             .dataScanId(basicProfile.dataScanId())
      *             .build());
      * 
      *     }
@@ -255,9 +255,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getDatascanIamPolicy(GetDatascanIamPolicyArgs.builder()
-     *             .project(google_dataplex_datascan.basic_profile().project())
-     *             .location(google_dataplex_datascan.basic_profile().location())
-     *             .dataScanId(google_dataplex_datascan.basic_profile().data_scan_id())
+     *             .project(basicProfile.project())
+     *             .location(basicProfile.location())
+     *             .dataScanId(basicProfile.dataScanId())
      *             .build());
      * 
      *     }
@@ -294,9 +294,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getDatascanIamPolicy(GetDatascanIamPolicyArgs.builder()
-     *             .project(google_dataplex_datascan.basic_profile().project())
-     *             .location(google_dataplex_datascan.basic_profile().location())
-     *             .dataScanId(google_dataplex_datascan.basic_profile().data_scan_id())
+     *             .project(basicProfile.project())
+     *             .location(basicProfile.location())
+     *             .dataScanId(basicProfile.dataScanId())
      *             .build());
      * 
      *     }
@@ -333,9 +333,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getDatascanIamPolicy(GetDatascanIamPolicyArgs.builder()
-     *             .project(google_dataplex_datascan.basic_profile().project())
-     *             .location(google_dataplex_datascan.basic_profile().location())
-     *             .dataScanId(google_dataplex_datascan.basic_profile().data_scan_id())
+     *             .project(basicProfile.project())
+     *             .location(basicProfile.location())
+     *             .dataScanId(basicProfile.dataScanId())
      *             .build());
      * 
      *     }
@@ -372,9 +372,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getLakeIamPolicy(GetLakeIamPolicyArgs.builder()
-     *             .project(google_dataplex_lake.example().project())
-     *             .location(google_dataplex_lake.example().location())
-     *             .lake(google_dataplex_lake.example().name())
+     *             .project(example.project())
+     *             .location(example.location())
+     *             .lake(example.name())
      *             .build());
      * 
      *     }
@@ -411,9 +411,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getLakeIamPolicy(GetLakeIamPolicyArgs.builder()
-     *             .project(google_dataplex_lake.example().project())
-     *             .location(google_dataplex_lake.example().location())
-     *             .lake(google_dataplex_lake.example().name())
+     *             .project(example.project())
+     *             .location(example.location())
+     *             .lake(example.name())
      *             .build());
      * 
      *     }
@@ -450,9 +450,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getLakeIamPolicy(GetLakeIamPolicyArgs.builder()
-     *             .project(google_dataplex_lake.example().project())
-     *             .location(google_dataplex_lake.example().location())
-     *             .lake(google_dataplex_lake.example().name())
+     *             .project(example.project())
+     *             .location(example.location())
+     *             .lake(example.name())
      *             .build());
      * 
      *     }
@@ -489,9 +489,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getLakeIamPolicy(GetLakeIamPolicyArgs.builder()
-     *             .project(google_dataplex_lake.example().project())
-     *             .location(google_dataplex_lake.example().location())
-     *             .lake(google_dataplex_lake.example().name())
+     *             .project(example.project())
+     *             .location(example.location())
+     *             .lake(example.name())
      *             .build());
      * 
      *     }
@@ -528,10 +528,10 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getTaskIamPolicy(GetTaskIamPolicyArgs.builder()
-     *             .project(google_dataplex_task.example().project())
-     *             .location(google_dataplex_task.example().location())
-     *             .lake(google_dataplex_task.example().lake())
-     *             .taskId(google_dataplex_task.example().task_id())
+     *             .project(example.project())
+     *             .location(example.location())
+     *             .lake(example.lake())
+     *             .taskId(example.taskId())
      *             .build());
      * 
      *     }
@@ -568,10 +568,10 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getTaskIamPolicy(GetTaskIamPolicyArgs.builder()
-     *             .project(google_dataplex_task.example().project())
-     *             .location(google_dataplex_task.example().location())
-     *             .lake(google_dataplex_task.example().lake())
-     *             .taskId(google_dataplex_task.example().task_id())
+     *             .project(example.project())
+     *             .location(example.location())
+     *             .lake(example.lake())
+     *             .taskId(example.taskId())
      *             .build());
      * 
      *     }
@@ -608,10 +608,10 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getTaskIamPolicy(GetTaskIamPolicyArgs.builder()
-     *             .project(google_dataplex_task.example().project())
-     *             .location(google_dataplex_task.example().location())
-     *             .lake(google_dataplex_task.example().lake())
-     *             .taskId(google_dataplex_task.example().task_id())
+     *             .project(example.project())
+     *             .location(example.location())
+     *             .lake(example.lake())
+     *             .taskId(example.taskId())
      *             .build());
      * 
      *     }
@@ -648,10 +648,10 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getTaskIamPolicy(GetTaskIamPolicyArgs.builder()
-     *             .project(google_dataplex_task.example().project())
-     *             .location(google_dataplex_task.example().location())
-     *             .lake(google_dataplex_task.example().lake())
-     *             .taskId(google_dataplex_task.example().task_id())
+     *             .project(example.project())
+     *             .location(example.location())
+     *             .lake(example.lake())
+     *             .taskId(example.taskId())
      *             .build());
      * 
      *     }
@@ -688,10 +688,10 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getZoneIamPolicy(GetZoneIamPolicyArgs.builder()
-     *             .project(google_dataplex_zone.example().project())
-     *             .location(google_dataplex_zone.example().location())
-     *             .lake(google_dataplex_zone.example().lake())
-     *             .dataplexZone(google_dataplex_zone.example().name())
+     *             .project(example.project())
+     *             .location(example.location())
+     *             .lake(example.lake())
+     *             .dataplexZone(example.name())
      *             .build());
      * 
      *     }
@@ -728,10 +728,10 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getZoneIamPolicy(GetZoneIamPolicyArgs.builder()
-     *             .project(google_dataplex_zone.example().project())
-     *             .location(google_dataplex_zone.example().location())
-     *             .lake(google_dataplex_zone.example().lake())
-     *             .dataplexZone(google_dataplex_zone.example().name())
+     *             .project(example.project())
+     *             .location(example.location())
+     *             .lake(example.lake())
+     *             .dataplexZone(example.name())
      *             .build());
      * 
      *     }
@@ -768,10 +768,10 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getZoneIamPolicy(GetZoneIamPolicyArgs.builder()
-     *             .project(google_dataplex_zone.example().project())
-     *             .location(google_dataplex_zone.example().location())
-     *             .lake(google_dataplex_zone.example().lake())
-     *             .dataplexZone(google_dataplex_zone.example().name())
+     *             .project(example.project())
+     *             .location(example.location())
+     *             .lake(example.lake())
+     *             .dataplexZone(example.name())
      *             .build());
      * 
      *     }
@@ -808,10 +808,10 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getZoneIamPolicy(GetZoneIamPolicyArgs.builder()
-     *             .project(google_dataplex_zone.example().project())
-     *             .location(google_dataplex_zone.example().location())
-     *             .lake(google_dataplex_zone.example().lake())
-     *             .dataplexZone(google_dataplex_zone.example().name())
+     *             .project(example.project())
+     *             .location(example.location())
+     *             .lake(example.lake())
+     *             .dataplexZone(example.name())
      *             .build());
      * 
      *     }

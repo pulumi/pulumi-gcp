@@ -22,6 +22,84 @@ import (
 //   - [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 //
 // ## Example Usage
+// ### Region Target Http Proxy Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
+//				Region: pulumi.String("us-central1"),
+//				Name:   pulumi.String("http-health-check"),
+//				HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegionBackendService, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+//				Region:              pulumi.String("us-central1"),
+//				Name:                pulumi.String("backend-service"),
+//				Protocol:            pulumi.String("HTTP"),
+//				TimeoutSec:          pulumi.Int(10),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+//				HealthChecks:        defaultRegionHealthCheck.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegionUrlMap, err := compute.NewRegionUrlMap(ctx, "default", &compute.RegionUrlMapArgs{
+//				Region:         pulumi.String("us-central1"),
+//				Name:           pulumi.String("url-map"),
+//				DefaultService: defaultRegionBackendService.ID(),
+//				HostRules: compute.RegionUrlMapHostRuleArray{
+//					&compute.RegionUrlMapHostRuleArgs{
+//						Hosts: pulumi.StringArray{
+//							pulumi.String("mysite.com"),
+//						},
+//						PathMatcher: pulumi.String("allpaths"),
+//					},
+//				},
+//				PathMatchers: compute.RegionUrlMapPathMatcherArray{
+//					&compute.RegionUrlMapPathMatcherArgs{
+//						Name:           pulumi.String("allpaths"),
+//						DefaultService: defaultRegionBackendService.ID(),
+//						PathRules: compute.RegionUrlMapPathMatcherPathRuleArray{
+//							&compute.RegionUrlMapPathMatcherPathRuleArgs{
+//								Paths: pulumi.StringArray{
+//									pulumi.String("/*"),
+//								},
+//								Service: defaultRegionBackendService.ID(),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionTargetHttpProxy(ctx, "default", &compute.RegionTargetHttpProxyArgs{
+//				Region: pulumi.String("us-central1"),
+//				Name:   pulumi.String("test-proxy"),
+//				UrlMap: defaultRegionUrlMap.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Region Target Http Proxy Https Redirect
 //
 // ```go
@@ -36,8 +114,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultRegionUrlMap, err := compute.NewRegionUrlMap(ctx, "defaultRegionUrlMap", &compute.RegionUrlMapArgs{
+//			defaultRegionUrlMap, err := compute.NewRegionUrlMap(ctx, "default", &compute.RegionUrlMapArgs{
 //				Region: pulumi.String("us-central1"),
+//				Name:   pulumi.String("url-map"),
 //				DefaultUrlRedirect: &compute.RegionUrlMapDefaultUrlRedirectArgs{
 //					HttpsRedirect: pulumi.Bool(true),
 //					StripQuery:    pulumi.Bool(false),
@@ -46,8 +125,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewRegionTargetHttpProxy(ctx, "defaultRegionTargetHttpProxy", &compute.RegionTargetHttpProxyArgs{
+//			_, err = compute.NewRegionTargetHttpProxy(ctx, "default", &compute.RegionTargetHttpProxyArgs{
 //				Region: pulumi.String("us-central1"),
+//				Name:   pulumi.String("test-https-redirect-proxy"),
 //				UrlMap: defaultRegionUrlMap.ID(),
 //			})
 //			if err != nil {

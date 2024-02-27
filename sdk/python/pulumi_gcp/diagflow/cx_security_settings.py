@@ -556,7 +556,7 @@ class CxSecuritySettings(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic_security_settings = gcp.diagflow.CxSecuritySettings("basicSecuritySettings",
+        basic_security_settings = gcp.diagflow.CxSecuritySettings("basic_security_settings",
             display_name="dialogflowcx-security-settings",
             location="global",
             purge_data_types=[],
@@ -593,9 +593,10 @@ class CxSecuritySettings(pulumi.CustomResource):
                 ),
             ))
         bucket = gcp.storage.Bucket("bucket",
+            name="dialogflowcx-bucket",
             location="US",
             uniform_bucket_level_access=True)
-        basic_security_settings = gcp.diagflow.CxSecuritySettings("basicSecuritySettings",
+        basic_security_settings = gcp.diagflow.CxSecuritySettings("basic_security_settings",
             display_name="dialogflowcx-security-settings",
             location="global",
             redaction_strategy="REDACT_WITH_SERVICE",
@@ -700,7 +701,7 @@ class CxSecuritySettings(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic_security_settings = gcp.diagflow.CxSecuritySettings("basicSecuritySettings",
+        basic_security_settings = gcp.diagflow.CxSecuritySettings("basic_security_settings",
             display_name="dialogflowcx-security-settings",
             location="global",
             purge_data_types=[],
@@ -737,9 +738,10 @@ class CxSecuritySettings(pulumi.CustomResource):
                 ),
             ))
         bucket = gcp.storage.Bucket("bucket",
+            name="dialogflowcx-bucket",
             location="US",
             uniform_bucket_level_access=True)
-        basic_security_settings = gcp.diagflow.CxSecuritySettings("basicSecuritySettings",
+        basic_security_settings = gcp.diagflow.CxSecuritySettings("basic_security_settings",
             display_name="dialogflowcx-security-settings",
             location="global",
             redaction_strategy="REDACT_WITH_SERVICE",

@@ -19,6 +19,62 @@ namespace Pulumi.Gcp.CloudAsset
     ///     * [Official Documentation](https://cloud.google.com/asset-inventory/docs)
     /// 
     /// ## Example Usage
+    /// ### Cloud Asset Organization Feed
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // The topic where the resource change notifications will be sent.
+    ///     var feedOutput = new Gcp.PubSub.Topic("feed_output", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "network-updates",
+    ///     });
+    /// 
+    ///     // Create a feed that sends notifications about network resource updates under a
+    ///     // particular organization.
+    ///     var organizationFeed = new Gcp.CloudAsset.OrganizationFeed("organization_feed", new()
+    ///     {
+    ///         BillingProject = "my-project-name",
+    ///         OrgId = "123456789",
+    ///         FeedId = "network-updates",
+    ///         ContentType = "RESOURCE",
+    ///         AssetTypes = new[]
+    ///         {
+    ///             "compute.googleapis.com/Subnetwork",
+    ///             "compute.googleapis.com/Network",
+    ///         },
+    ///         FeedOutputConfig = new Gcp.CloudAsset.Inputs.OrganizationFeedFeedOutputConfigArgs
+    ///         {
+    ///             PubsubDestination = new Gcp.CloudAsset.Inputs.OrganizationFeedFeedOutputConfigPubsubDestinationArgs
+    ///             {
+    ///                 Topic = feedOutput.Id,
+    ///             },
+    ///         },
+    ///         Condition = new Gcp.CloudAsset.Inputs.OrganizationFeedConditionArgs
+    ///         {
+    ///             Expression = @"!temporal_asset.deleted &amp;&amp;
+    /// temporal_asset.prior_asset_state == google.cloud.asset.v1.TemporalAsset.PriorAssetState.DOES_NOT_EXIST
+    /// ",
+    ///             Title = "created",
+    ///             Description = "Send notifications on creation events",
+    ///         },
+    ///     });
+    /// 
+    ///     // Find the project number of the project whose identity will be used for sending
+    ///     // the asset change notifications.
+    ///     var project = Gcp.Organizations.GetProject.Invoke(new()
+    ///     {
+    ///         ProjectId = "my-project-name",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

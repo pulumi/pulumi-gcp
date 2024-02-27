@@ -54,14 +54,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var networkPrimary = new Network(&#34;networkPrimary&#34;, NetworkArgs.builder()        
+ *             .name(&#34;primary-network&#34;)
  *             .autoCreateSubnetworks(&#34;false&#34;)
  *             .build());
  * 
  *         var networkSecondary = new Network(&#34;networkSecondary&#34;, NetworkArgs.builder()        
+ *             .name(&#34;secondary-network&#34;)
  *             .autoCreateSubnetworks(&#34;false&#34;)
  *             .build());
  * 
  *         var peeringPrimary = new NetworkPeering(&#34;peeringPrimary&#34;, NetworkPeeringArgs.builder()        
+ *             .name(&#34;primary-peering&#34;)
  *             .network(networkPrimary.id())
  *             .peerNetwork(networkSecondary.id())
  *             .importCustomRoutes(true)
@@ -76,6 +79,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var peeringSecondary = new NetworkPeering(&#34;peeringSecondary&#34;, NetworkPeeringArgs.builder()        
+ *             .name(&#34;secondary-peering&#34;)
  *             .network(networkSecondary.id())
  *             .peerNetwork(networkPrimary.id())
  *             .build());
@@ -116,10 +120,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var containerNetwork = new Network(&#34;containerNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;container-network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var containerSubnetwork = new Subnetwork(&#34;containerSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;container-subnetwork&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(containerNetwork.name())
  *             .ipCidrRange(&#34;10.0.36.0/24&#34;)
@@ -136,6 +142,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var privateCluster = new Cluster(&#34;privateCluster&#34;, ClusterArgs.builder()        
+ *             .name(&#34;private-cluster&#34;)
  *             .location(&#34;us-central1-a&#34;)
  *             .initialNodeCount(1)
  *             .network(containerNetwork.name())

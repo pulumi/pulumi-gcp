@@ -123,13 +123,13 @@ class DocumentAiProcessorDefaultVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        processor_document_ai_processor = gcp.essentialcontacts.DocumentAiProcessor("processorDocumentAiProcessor",
+        processor = gcp.essentialcontacts.DocumentAiProcessor("processor",
             location="us",
             display_name="test-processor",
             type="OCR_PROCESSOR")
-        processor_document_ai_processor_default_version = gcp.essentialcontacts.DocumentAiProcessorDefaultVersion("processorDocumentAiProcessorDefaultVersion",
-            processor=processor_document_ai_processor.id,
-            version=processor_document_ai_processor.id.apply(lambda id: f"{id}/processorVersions/stable"))
+        processor_document_ai_processor_default_version = gcp.essentialcontacts.DocumentAiProcessorDefaultVersion("processor",
+            processor=processor.id,
+            version=processor.id.apply(lambda id: f"{id}/processorVersions/stable"))
         ```
 
         ## Import
@@ -169,13 +169,13 @@ class DocumentAiProcessorDefaultVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        processor_document_ai_processor = gcp.essentialcontacts.DocumentAiProcessor("processorDocumentAiProcessor",
+        processor = gcp.essentialcontacts.DocumentAiProcessor("processor",
             location="us",
             display_name="test-processor",
             type="OCR_PROCESSOR")
-        processor_document_ai_processor_default_version = gcp.essentialcontacts.DocumentAiProcessorDefaultVersion("processorDocumentAiProcessorDefaultVersion",
-            processor=processor_document_ai_processor.id,
-            version=processor_document_ai_processor.id.apply(lambda id: f"{id}/processorVersions/stable"))
+        processor_document_ai_processor_default_version = gcp.essentialcontacts.DocumentAiProcessorDefaultVersion("processor",
+            processor=processor.id,
+            version=processor.id.apply(lambda id: f"{id}/processorVersions/stable"))
         ```
 
         ## Import

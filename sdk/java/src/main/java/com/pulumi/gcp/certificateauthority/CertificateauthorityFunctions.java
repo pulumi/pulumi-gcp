@@ -286,7 +286,7 @@ public final class CertificateauthorityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CertificateauthorityFunctions.getCaPoolIamPolicy(GetCaPoolIamPolicyArgs.builder()
-     *             .caPool(google_privateca_ca_pool.default().id())
+     *             .caPool(default_.id())
      *             .build());
      * 
      *     }
@@ -323,7 +323,7 @@ public final class CertificateauthorityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CertificateauthorityFunctions.getCaPoolIamPolicy(GetCaPoolIamPolicyArgs.builder()
-     *             .caPool(google_privateca_ca_pool.default().id())
+     *             .caPool(default_.id())
      *             .build());
      * 
      *     }
@@ -360,7 +360,7 @@ public final class CertificateauthorityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CertificateauthorityFunctions.getCaPoolIamPolicy(GetCaPoolIamPolicyArgs.builder()
-     *             .caPool(google_privateca_ca_pool.default().id())
+     *             .caPool(default_.id())
      *             .build());
      * 
      *     }
@@ -397,7 +397,7 @@ public final class CertificateauthorityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CertificateauthorityFunctions.getCaPoolIamPolicy(GetCaPoolIamPolicyArgs.builder()
-     *             .caPool(google_privateca_ca_pool.default().id())
+     *             .caPool(default_.id())
      *             .build());
      * 
      *     }
@@ -434,7 +434,7 @@ public final class CertificateauthorityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CertificateauthorityFunctions.getCertificateTemplateIamPolicy(GetCertificateTemplateIamPolicyArgs.builder()
-     *             .certificateTemplate(google_privateca_certificate_template.default().id())
+     *             .certificateTemplate(default_.id())
      *             .build());
      * 
      *     }
@@ -471,7 +471,7 @@ public final class CertificateauthorityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CertificateauthorityFunctions.getCertificateTemplateIamPolicy(GetCertificateTemplateIamPolicyArgs.builder()
-     *             .certificateTemplate(google_privateca_certificate_template.default().id())
+     *             .certificateTemplate(default_.id())
      *             .build());
      * 
      *     }
@@ -508,7 +508,7 @@ public final class CertificateauthorityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CertificateauthorityFunctions.getCertificateTemplateIamPolicy(GetCertificateTemplateIamPolicyArgs.builder()
-     *             .certificateTemplate(google_privateca_certificate_template.default().id())
+     *             .certificateTemplate(default_.id())
      *             .build());
      * 
      *     }
@@ -545,7 +545,7 @@ public final class CertificateauthorityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CertificateauthorityFunctions.getCertificateTemplateIamPolicy(GetCertificateTemplateIamPolicyArgs.builder()
-     *             .certificateTemplate(google_privateca_certificate_template.default().id())
+     *             .certificateTemplate(default_.id())
      *             .build());
      * 
      *     }

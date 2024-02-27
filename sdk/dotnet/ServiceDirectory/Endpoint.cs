@@ -29,25 +29,19 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleNamespace = new Gcp.ServiceDirectory.Namespace("exampleNamespace", new()
+    ///     var example = new Gcp.ServiceDirectory.Namespace("example", new()
     ///     {
     ///         NamespaceId = "example-namespace",
     ///         Location = "us-central1",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var exampleService = new Gcp.ServiceDirectory.Service("exampleService", new()
+    ///     var exampleService = new Gcp.ServiceDirectory.Service("example", new()
     ///     {
     ///         ServiceId = "example-service",
-    ///         Namespace = exampleNamespace.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Namespace = example.Id,
     ///     });
     /// 
-    ///     var exampleEndpoint = new Gcp.ServiceDirectory.Endpoint("exampleEndpoint", new()
+    ///     var exampleEndpoint = new Gcp.ServiceDirectory.Endpoint("example", new()
     ///     {
     ///         EndpointId = "example-endpoint",
     ///         Service = exampleService.Id,
@@ -58,9 +52,6 @@ namespace Pulumi.Gcp.ServiceDirectory
     ///         },
     ///         Address = "1.2.3.4",
     ///         Port = 5353,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -77,32 +68,24 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// {
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var exampleNetwork = new Gcp.Compute.Network("exampleNetwork", new()
+    ///     var example = new Gcp.Compute.Network("example", new()
     ///     {
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Name = "example-network",
     ///     });
     /// 
-    ///     var exampleNamespace = new Gcp.ServiceDirectory.Namespace("exampleNamespace", new()
+    ///     var exampleNamespace = new Gcp.ServiceDirectory.Namespace("example", new()
     ///     {
     ///         NamespaceId = "example-namespace",
     ///         Location = "us-central1",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var exampleService = new Gcp.ServiceDirectory.Service("exampleService", new()
+    ///     var exampleService = new Gcp.ServiceDirectory.Service("example", new()
     ///     {
     ///         ServiceId = "example-service",
     ///         Namespace = exampleNamespace.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var exampleEndpoint = new Gcp.ServiceDirectory.Endpoint("exampleEndpoint", new()
+    ///     var exampleEndpoint = new Gcp.ServiceDirectory.Endpoint("example", new()
     ///     {
     ///         EndpointId = "example-endpoint",
     ///         Service = exampleService.Id,
@@ -111,7 +94,7 @@ namespace Pulumi.Gcp.ServiceDirectory
     ///             { "stage", "prod" },
     ///             { "region", "us-central1" },
     ///         },
-    ///         Network = Output.Tuple(project, exampleNetwork.Name).Apply(values =&gt;
+    ///         Network = Output.Tuple(project, example.Name).Apply(values =&gt;
     ///         {
     ///             var project = values.Item1;
     ///             var name = values.Item2;
@@ -119,9 +102,6 @@ namespace Pulumi.Gcp.ServiceDirectory
     ///         }),
     ///         Address = "1.2.3.4",
     ///         Port = 5353,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

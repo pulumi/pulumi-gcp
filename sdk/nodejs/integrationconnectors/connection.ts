@@ -24,6 +24,10 @@ import * as utilities from "../utilities";
  *
  * const testProject = gcp.organizations.getProject({});
  * const pubsubconnection = new gcp.integrationconnectors.Connection("pubsubconnection", {
+ *     name: "test-pubsub",
+ *     location: "us-central1",
+ *     connectorVersion: testProject.then(testProject => `projects/${testProject.projectId}/locations/global/providers/gcp/connectors/pubsub/versions/1`),
+ *     description: "tf created description",
  *     configVariables: [
  *         {
  *             key: "project_id",
@@ -34,9 +38,6 @@ import * as utilities from "../utilities";
  *             stringValue: "test",
  *         },
  *     ],
- *     connectorVersion: testProject.then(testProject => `projects/${testProject.projectId}/locations/global/providers/gcp/connectors/pubsub/versions/1`),
- *     description: "tf created description",
- *     location: "us-central1",
  * });
  * ```
  * ### Integration Connectors Connection Advanced
@@ -60,14 +61,13 @@ import * as utilities from "../utilities";
  *     secret: secret_basic.id,
  *     secretData: "dummypassword",
  * });
- * const secretIam = new gcp.secretmanager.SecretIamMember("secretIam", {
+ * const secretIam = new gcp.secretmanager.SecretIamMember("secret_iam", {
  *     secretId: secret_basic.id,
  *     role: "roles/secretmanager.admin",
  *     member: testProject.then(testProject => `serviceAccount:${testProject.number}-compute@developer.gserviceaccount.com`),
- * }, {
- *     dependsOn: [secret_version_basic],
  * });
  * const zendeskconnection = new gcp.integrationconnectors.Connection("zendeskconnection", {
+ *     name: "test-zendesk",
  *     description: "tf updated description",
  *     location: "us-central1",
  *     serviceAccount: testProject.then(testProject => `${testProject.number}-compute@developer.gserviceaccount.com`),

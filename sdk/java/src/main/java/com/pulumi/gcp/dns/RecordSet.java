@@ -28,9 +28,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Instance;
  * import com.pulumi.gcp.compute.InstanceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
- * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
  * import com.pulumi.gcp.dns.ManagedZone;
  * import com.pulumi.gcp.dns.ManagedZoneArgs;
  * import com.pulumi.gcp.dns.RecordSet;
@@ -49,6 +49,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var frontendInstance = new Instance(&#34;frontendInstance&#34;, InstanceArgs.builder()        
+ *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+ *                 .accessConfigs()
+ *                 .network(&#34;default&#34;)
+ *                 .build())
+ *             .name(&#34;frontend&#34;)
  *             .machineType(&#34;g1-small&#34;)
  *             .zone(&#34;us-central1-b&#34;)
  *             .bootDisk(InstanceBootDiskArgs.builder()
@@ -56,17 +61,14 @@ import javax.annotation.Nullable;
  *                     .image(&#34;debian-cloud/debian-11&#34;)
  *                     .build())
  *                 .build())
- *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
- *                 .network(&#34;default&#34;)
- *                 .accessConfigs()
- *                 .build())
  *             .build());
  * 
  *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
+ *             .name(&#34;prod-zone&#34;)
  *             .dnsName(&#34;prod.mydomain.com.&#34;)
  *             .build());
  * 
- *         var frontendRecordSet = new RecordSet(&#34;frontendRecordSet&#34;, RecordSetArgs.builder()        
+ *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
  *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
  *             .type(&#34;A&#34;)
  *             .ttl(300)
@@ -102,10 +104,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
+ *             .name(&#34;prod-zone&#34;)
  *             .dnsName(&#34;prod.mydomain.com.&#34;)
  *             .build());
  * 
- *         var recordSet = new RecordSet(&#34;recordSet&#34;, RecordSetArgs.builder()        
+ *         var a = new RecordSet(&#34;a&#34;, RecordSetArgs.builder()        
  *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;backend.%s&#34;, dnsName)))
  *             .managedZone(prod.name())
  *             .type(&#34;A&#34;)
@@ -141,6 +144,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
+ *             .name(&#34;prod-zone&#34;)
  *             .dnsName(&#34;prod.mydomain.com.&#34;)
  *             .build());
  * 
@@ -187,6 +191,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
+ *             .name(&#34;prod-zone&#34;)
  *             .dnsName(&#34;prod.mydomain.com.&#34;)
  *             .build());
  * 
@@ -228,6 +233,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
+ *             .name(&#34;prod-zone&#34;)
  *             .dnsName(&#34;prod.mydomain.com.&#34;)
  *             .build());
  * 
@@ -267,8 +273,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var geo = new RecordSet(&#34;geo&#34;, RecordSetArgs.builder()        
- *             .name(String.format(&#34;backend.%s&#34;, google_dns_managed_zone.prod().dns_name()))
- *             .managedZone(google_dns_managed_zone.prod().name())
+ *             .name(String.format(&#34;backend.%s&#34;, prod.dnsName()))
+ *             .managedZone(prod.name())
  *             .type(&#34;A&#34;)
  *             .ttl(300)
  *             .routingPolicy(RecordSetRoutingPolicyArgs.builder()
@@ -299,6 +305,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionBackendService;
  * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
  * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.ForwardingRule;
  * import com.pulumi.gcp.compute.ForwardingRuleArgs;
  * import com.pulumi.gcp.dns.RecordSet;
@@ -319,17 +326,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var prodManagedZone = new ManagedZone(&#34;prodManagedZone&#34;, ManagedZoneArgs.builder()        
+ *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
+ *             .name(&#34;prod-zone&#34;)
  *             .dnsName(&#34;prod.mydomain.com.&#34;)
  *             .build());
  * 
  *         var prodRegionBackendService = new RegionBackendService(&#34;prodRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
+ *             .name(&#34;prod-backend&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .build());
  * 
- *         var prodNetwork = new Network(&#34;prodNetwork&#34;);
+ *         var prodNetwork = new Network(&#34;prodNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;prod-network&#34;)
+ *             .build());
  * 
  *         var prodForwardingRule = new ForwardingRule(&#34;prodForwardingRule&#34;, ForwardingRuleArgs.builder()        
+ *             .name(&#34;prod-ilb&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .loadBalancingScheme(&#34;INTERNAL&#34;)
  *             .backendService(prodRegionBackendService.id())
@@ -338,9 +350,9 @@ import javax.annotation.Nullable;
  *             .allowGlobalAccess(true)
  *             .build());
  * 
- *         var recordSet = new RecordSet(&#34;recordSet&#34;, RecordSetArgs.builder()        
- *             .name(prodManagedZone.dnsName().applyValue(dnsName -&gt; String.format(&#34;backend.%s&#34;, dnsName)))
- *             .managedZone(prodManagedZone.name())
+ *         var a = new RecordSet(&#34;a&#34;, RecordSetArgs.builder()        
+ *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;backend.%s&#34;, dnsName)))
+ *             .managedZone(prod.name())
  *             .type(&#34;A&#34;)
  *             .ttl(300)
  *             .routingPolicy(RecordSetRoutingPolicyArgs.builder()

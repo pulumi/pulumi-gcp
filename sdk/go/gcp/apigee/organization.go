@@ -42,11 +42,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			apigeeNetwork, err := compute.NewNetwork(ctx, "apigeeNetwork", nil)
+//			apigeeNetwork, err := compute.NewNetwork(ctx, "apigee_network", &compute.NetworkArgs{
+//				Name: pulumi.String("apigee-network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			apigeeRange, err := compute.NewGlobalAddress(ctx, "apigeeRange", &compute.GlobalAddressArgs{
+//			apigeeRange, err := compute.NewGlobalAddress(ctx, "apigee_range", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("apigee-range"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
@@ -55,7 +58,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigeeVpcConnection", &servicenetworking.ConnectionArgs{
+//			_, err = servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
 //				Network: apigeeNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
@@ -69,9 +72,7 @@ import (
 //				AnalyticsRegion:   pulumi.String("us-central1"),
 //				ProjectId:         *pulumi.String(current.Project),
 //				AuthorizedNetwork: apigeeNetwork.ID(),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				apigeeVpcConnection,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -138,11 +139,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			apigeeNetwork, err := compute.NewNetwork(ctx, "apigeeNetwork", nil)
+//			apigeeNetwork, err := compute.NewNetwork(ctx, "apigee_network", &compute.NetworkArgs{
+//				Name: pulumi.String("apigee-network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			apigeeRange, err := compute.NewGlobalAddress(ctx, "apigeeRange", &compute.GlobalAddressArgs{
+//			apigeeRange, err := compute.NewGlobalAddress(ctx, "apigee_range", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("apigee-range"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
@@ -151,7 +155,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigeeVpcConnection", &servicenetworking.ConnectionArgs{
+//			_, err = servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
 //				Network: apigeeNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
@@ -161,26 +165,28 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			apigeeKeyring, err := kms.NewKeyRing(ctx, "apigeeKeyring", &kms.KeyRingArgs{
+//			apigeeKeyring, err := kms.NewKeyRing(ctx, "apigee_keyring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("apigee-keyring"),
 //				Location: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			apigeeKey, err := kms.NewCryptoKey(ctx, "apigeeKey", &kms.CryptoKeyArgs{
+//			apigeeKey, err := kms.NewCryptoKey(ctx, "apigee_key", &kms.CryptoKeyArgs{
+//				Name:    pulumi.String("apigee-key"),
 //				KeyRing: apigeeKeyring.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			apigeeSa, err := projects.NewServiceIdentity(ctx, "apigeeSa", &projects.ServiceIdentityArgs{
-//				Project: pulumi.Any(google_project.Project.Project_id),
-//				Service: pulumi.Any(google_project_service.Apigee.Service),
-//			}, pulumi.Provider(google_beta))
+//			apigeeSa, err := projects.NewServiceIdentity(ctx, "apigee_sa", &projects.ServiceIdentityArgs{
+//				Project: pulumi.Any(project.ProjectId),
+//				Service: pulumi.Any(apigee.Service),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			apigeeSaKeyuser, err := kms.NewCryptoKeyIAMMember(ctx, "apigeeSaKeyuser", &kms.CryptoKeyIAMMemberArgs{
+//			_, err = kms.NewCryptoKeyIAMMember(ctx, "apigee_sa_keyuser", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: apigeeKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member: apigeeSa.Email.ApplyT(func(email string) (string, error) {
@@ -197,10 +203,7 @@ import (
 //				ProjectId:                        *pulumi.String(current.Project),
 //				AuthorizedNetwork:                apigeeNetwork.ID(),
 //				RuntimeDatabaseEncryptionKeyName: apigeeKey.ID(),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				apigeeVpcConnection,
-//				apigeeSaKeyuser,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -232,26 +235,28 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			apigeeKeyring, err := kms.NewKeyRing(ctx, "apigeeKeyring", &kms.KeyRingArgs{
+//			apigeeKeyring, err := kms.NewKeyRing(ctx, "apigee_keyring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("apigee-keyring"),
 //				Location: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			apigeeKey, err := kms.NewCryptoKey(ctx, "apigeeKey", &kms.CryptoKeyArgs{
+//			apigeeKey, err := kms.NewCryptoKey(ctx, "apigee_key", &kms.CryptoKeyArgs{
+//				Name:    pulumi.String("apigee-key"),
 //				KeyRing: apigeeKeyring.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			apigeeSa, err := projects.NewServiceIdentity(ctx, "apigeeSa", &projects.ServiceIdentityArgs{
-//				Project: pulumi.Any(google_project.Project.Project_id),
-//				Service: pulumi.Any(google_project_service.Apigee.Service),
-//			}, pulumi.Provider(google_beta))
+//			apigeeSa, err := projects.NewServiceIdentity(ctx, "apigee_sa", &projects.ServiceIdentityArgs{
+//				Project: pulumi.Any(project.ProjectId),
+//				Service: pulumi.Any(apigee.Service),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			apigeeSaKeyuser, err := kms.NewCryptoKeyIAMMember(ctx, "apigeeSaKeyuser", &kms.CryptoKeyIAMMemberArgs{
+//			_, err = kms.NewCryptoKeyIAMMember(ctx, "apigee_sa_keyuser", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: apigeeKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member: apigeeSa.Email.ApplyT(func(email string) (string, error) {
@@ -268,9 +273,7 @@ import (
 //				ProjectId:                        *pulumi.String(current.Project),
 //				DisableVpcPeering:                pulumi.Bool(true),
 //				RuntimeDatabaseEncryptionKeyName: apigeeKey.ID(),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				apigeeSaKeyuser,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

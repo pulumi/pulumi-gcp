@@ -60,6 +60,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AccessPolicyIamPolicy(&#34;policy&#34;, AccessPolicyIamPolicyArgs.builder()        
+ *             .name(access_policy.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -90,6 +91,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new AccessPolicyIamBinding(&#34;binding&#34;, AccessPolicyIamBindingArgs.builder()        
+ *             .name(access_policy.name())
  *             .role(&#34;roles/accesscontextmanager.policyAdmin&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -121,6 +123,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new AccessPolicyIamMember(&#34;member&#34;, AccessPolicyIamMemberArgs.builder()        
+ *             .name(access_policy.name())
  *             .role(&#34;roles/accesscontextmanager.policyAdmin&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

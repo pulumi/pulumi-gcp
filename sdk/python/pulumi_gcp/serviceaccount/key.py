@@ -372,11 +372,33 @@ class Key(pulumi.CustomResource):
             account_id="myaccount",
             display_name="My Service Account")
         # note this requires the terraform to be run regularly
-        mykey_rotation = time.Rotating("mykeyRotation", rotation_days=30)
+        mykey_rotation = time.Rotating("mykey_rotation", rotation_days=30)
         mykey = gcp.serviceaccount.Key("mykey",
             service_account_id=myaccount.name,
             keepers={
                 "rotation_time": mykey_rotation.rotation_rfc3339,
+            })
+        ```
+        ### Save Key In Kubernetes Secret - DEPRECATED
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_kubernetes as kubernetes
+        import pulumi_std as std
+
+        # Workload Identity is the recommended way of accessing Google Cloud APIs from pods.
+        # https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+        myaccount = gcp.serviceaccount.Account("myaccount",
+            account_id="myaccount",
+            display_name="My Service Account")
+        mykey = gcp.serviceaccount.Key("mykey", service_account_id=myaccount.name)
+        google_application_credentials = kubernetes.core.v1.Secret("google-application-credentials",
+            metadata=kubernetes.meta.v1.ObjectMetaArgs(
+                name="google-application-credentials",
+            ),
+            data={
+                "json": std.base64decode_output(input=mykey.private_key).apply(lambda invoke: invoke.result),
             })
         ```
 
@@ -433,11 +455,33 @@ class Key(pulumi.CustomResource):
             account_id="myaccount",
             display_name="My Service Account")
         # note this requires the terraform to be run regularly
-        mykey_rotation = time.Rotating("mykeyRotation", rotation_days=30)
+        mykey_rotation = time.Rotating("mykey_rotation", rotation_days=30)
         mykey = gcp.serviceaccount.Key("mykey",
             service_account_id=myaccount.name,
             keepers={
                 "rotation_time": mykey_rotation.rotation_rfc3339,
+            })
+        ```
+        ### Save Key In Kubernetes Secret - DEPRECATED
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_kubernetes as kubernetes
+        import pulumi_std as std
+
+        # Workload Identity is the recommended way of accessing Google Cloud APIs from pods.
+        # https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+        myaccount = gcp.serviceaccount.Account("myaccount",
+            account_id="myaccount",
+            display_name="My Service Account")
+        mykey = gcp.serviceaccount.Key("mykey", service_account_id=myaccount.name)
+        google_application_credentials = kubernetes.core.v1.Secret("google-application-credentials",
+            metadata=kubernetes.meta.v1.ObjectMetaArgs(
+                name="google-application-credentials",
+            ),
+            data={
+                "json": std.base64decode_output(input=mykey.private_key).apply(lambda invoke: invoke.result),
             })
         ```
 

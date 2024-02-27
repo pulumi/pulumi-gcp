@@ -62,12 +62,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
+ *             .name(&#34;my-gke-cluster&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .removeDefaultNodePool(true)
  *             .initialNodeCount(1)
  *             .build());
  * 
  *         var primaryPreemptibleNodes = new NodePool(&#34;primaryPreemptibleNodes&#34;, NodePoolArgs.builder()        
+ *             .name(&#34;my-node-pool&#34;)
  *             .cluster(primary.id())
  *             .nodeCount(1)
  *             .nodeConfig(NodePoolNodeConfigArgs.builder()
@@ -82,7 +84,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### 2 Node Pools, 1 Separately Managed + The Default Node Pool
- * 
  * ```java
  * package generated_program;
  * 
@@ -116,6 +117,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
+ *             .name(&#34;marcellus-wallace&#34;)
  *             .location(&#34;us-central1-a&#34;)
  *             .initialNodeCount(3)
  *             .nodeLocations(&#34;us-central1-c&#34;)
@@ -130,13 +132,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var np = new NodePool(&#34;np&#34;, NodePoolArgs.builder()        
+ *             .name(&#34;my-node-pool&#34;)
  *             .cluster(primary.id())
  *             .nodeConfig(NodePoolNodeConfigArgs.builder()
  *                 .machineType(&#34;e2-medium&#34;)
  *                 .serviceAccount(default_.email())
  *                 .oauthScopes(&#34;https://www.googleapis.com/auth/cloud-platform&#34;)
  *                 .build())
- *             .timeouts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .build());
  * 
  *     }

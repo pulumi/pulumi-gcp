@@ -338,9 +338,9 @@ class InstanceIAMMember(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.compute.InstanceIAMPolicy("policy",
-            project=google_compute_instance["default"]["project"],
-            zone=google_compute_instance["default"]["zone"],
-            instance_name=google_compute_instance["default"]["name"],
+            project=default["project"],
+            zone=default["zone"],
+            instance_name=default["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -360,9 +360,9 @@ class InstanceIAMMember(pulumi.CustomResource):
             ),
         )])
         policy = gcp.compute.InstanceIAMPolicy("policy",
-            project=google_compute_instance["default"]["project"],
-            zone=google_compute_instance["default"]["zone"],
-            instance_name=google_compute_instance["default"]["name"],
+            project=default["project"],
+            zone=default["zone"],
+            instance_name=default["name"],
             policy_data=admin.policy_data)
         ```
         ## google\\_compute\\_instance\\_iam\\_binding
@@ -372,9 +372,9 @@ class InstanceIAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.compute.InstanceIAMBinding("binding",
-            project=google_compute_instance["default"]["project"],
-            zone=google_compute_instance["default"]["zone"],
-            instance_name=google_compute_instance["default"]["name"],
+            project=default["project"],
+            zone=default["zone"],
+            instance_name=default["name"],
             role="roles/compute.osLogin",
             members=["user:jane@example.com"])
         ```
@@ -386,9 +386,9 @@ class InstanceIAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.compute.InstanceIAMBinding("binding",
-            project=google_compute_instance["default"]["project"],
-            zone=google_compute_instance["default"]["zone"],
-            instance_name=google_compute_instance["default"]["name"],
+            project=default["project"],
+            zone=default["zone"],
+            instance_name=default["name"],
             role="roles/compute.osLogin",
             members=["user:jane@example.com"],
             condition=gcp.compute.InstanceIAMBindingConditionArgs(
@@ -404,9 +404,9 @@ class InstanceIAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.compute.InstanceIAMMember("member",
-            project=google_compute_instance["default"]["project"],
-            zone=google_compute_instance["default"]["zone"],
-            instance_name=google_compute_instance["default"]["name"],
+            project=default["project"],
+            zone=default["zone"],
+            instance_name=default["name"],
             role="roles/compute.osLogin",
             member="user:jane@example.com")
         ```
@@ -418,9 +418,9 @@ class InstanceIAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.compute.InstanceIAMMember("member",
-            project=google_compute_instance["default"]["project"],
-            zone=google_compute_instance["default"]["zone"],
-            instance_name=google_compute_instance["default"]["name"],
+            project=default["project"],
+            zone=default["zone"],
+            instance_name=default["name"],
             role="roles/compute.osLogin",
             member="user:jane@example.com",
             condition=gcp.compute.InstanceIAMMemberConditionArgs(
@@ -528,9 +528,9 @@ class InstanceIAMMember(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.compute.InstanceIAMPolicy("policy",
-            project=google_compute_instance["default"]["project"],
-            zone=google_compute_instance["default"]["zone"],
-            instance_name=google_compute_instance["default"]["name"],
+            project=default["project"],
+            zone=default["zone"],
+            instance_name=default["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -550,9 +550,9 @@ class InstanceIAMMember(pulumi.CustomResource):
             ),
         )])
         policy = gcp.compute.InstanceIAMPolicy("policy",
-            project=google_compute_instance["default"]["project"],
-            zone=google_compute_instance["default"]["zone"],
-            instance_name=google_compute_instance["default"]["name"],
+            project=default["project"],
+            zone=default["zone"],
+            instance_name=default["name"],
             policy_data=admin.policy_data)
         ```
         ## google\\_compute\\_instance\\_iam\\_binding
@@ -562,9 +562,9 @@ class InstanceIAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.compute.InstanceIAMBinding("binding",
-            project=google_compute_instance["default"]["project"],
-            zone=google_compute_instance["default"]["zone"],
-            instance_name=google_compute_instance["default"]["name"],
+            project=default["project"],
+            zone=default["zone"],
+            instance_name=default["name"],
             role="roles/compute.osLogin",
             members=["user:jane@example.com"])
         ```
@@ -576,9 +576,9 @@ class InstanceIAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.compute.InstanceIAMBinding("binding",
-            project=google_compute_instance["default"]["project"],
-            zone=google_compute_instance["default"]["zone"],
-            instance_name=google_compute_instance["default"]["name"],
+            project=default["project"],
+            zone=default["zone"],
+            instance_name=default["name"],
             role="roles/compute.osLogin",
             members=["user:jane@example.com"],
             condition=gcp.compute.InstanceIAMBindingConditionArgs(
@@ -594,9 +594,9 @@ class InstanceIAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.compute.InstanceIAMMember("member",
-            project=google_compute_instance["default"]["project"],
-            zone=google_compute_instance["default"]["zone"],
-            instance_name=google_compute_instance["default"]["name"],
+            project=default["project"],
+            zone=default["zone"],
+            instance_name=default["name"],
             role="roles/compute.osLogin",
             member="user:jane@example.com")
         ```
@@ -608,9 +608,9 @@ class InstanceIAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.compute.InstanceIAMMember("member",
-            project=google_compute_instance["default"]["project"],
-            zone=google_compute_instance["default"]["zone"],
-            instance_name=google_compute_instance["default"]["name"],
+            project=default["project"],
+            zone=default["zone"],
+            instance_name=default["name"],
             role="roles/compute.osLogin",
             member="user:jane@example.com",
             condition=gcp.compute.InstanceIAMMemberConditionArgs(

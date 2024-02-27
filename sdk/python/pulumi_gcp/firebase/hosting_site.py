@@ -202,8 +202,7 @@ class HostingSite(pulumi.CustomResource):
 
         default = gcp.firebase.HostingSite("default",
             project="my-project-name",
-            site_id="site-no-app",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            site_id="site-no-app")
         ```
         ### Firebasehosting Site Full
 
@@ -213,13 +212,11 @@ class HostingSite(pulumi.CustomResource):
 
         default = gcp.firebase.WebApp("default",
             project="my-project-name",
-            display_name="Test web app for Firebase Hosting",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            display_name="Test web app for Firebase Hosting")
         full = gcp.firebase.HostingSite("full",
             project="my-project-name",
             site_id="site-with-app",
-            app_id=default.app_id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            app_id=default.app_id)
         ```
 
         ## Import
@@ -278,8 +275,7 @@ class HostingSite(pulumi.CustomResource):
 
         default = gcp.firebase.HostingSite("default",
             project="my-project-name",
-            site_id="site-no-app",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            site_id="site-no-app")
         ```
         ### Firebasehosting Site Full
 
@@ -289,13 +285,11 @@ class HostingSite(pulumi.CustomResource):
 
         default = gcp.firebase.WebApp("default",
             project="my-project-name",
-            display_name="Test web app for Firebase Hosting",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            display_name="Test web app for Firebase Hosting")
         full = gcp.firebase.HostingSite("full",
             project="my-project-name",
             site_id="site-with-app",
-            app_id=default.app_id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            app_id=default.app_id)
         ```
 
         ## Import

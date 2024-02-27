@@ -13,12 +13,74 @@ namespace Pulumi.Gcp.Composer
     {
         /// <summary>
         /// Provides access to Cloud Composer environment configuration in a region for a given project.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var composerEnvEnvironment = new Gcp.Composer.Environment("composer_env", new()
+        ///     {
+        ///         Name = "composer-environment",
+        ///     });
+        /// 
+        ///     var composerEnv = Gcp.Composer.GetEnvironment.Invoke(new()
+        ///     {
+        ///         Name = test.Name,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["debug"] = composerEnv.Apply(getEnvironmentResult =&gt; getEnvironmentResult.Configs),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEnvironmentResult> InvokeAsync(GetEnvironmentArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnvironmentResult>("gcp:composer/getEnvironment:getEnvironment", args ?? new GetEnvironmentArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides access to Cloud Composer environment configuration in a region for a given project.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var composerEnvEnvironment = new Gcp.Composer.Environment("composer_env", new()
+        ///     {
+        ///         Name = "composer-environment",
+        ///     });
+        /// 
+        ///     var composerEnv = Gcp.Composer.GetEnvironment.Invoke(new()
+        ///     {
+        ///         Name = test.Name,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["debug"] = composerEnv.Apply(getEnvironmentResult =&gt; getEnvironmentResult.Configs),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetEnvironmentResult> Invoke(GetEnvironmentInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnvironmentResult>("gcp:composer/getEnvironment:getEnvironment", args ?? new GetEnvironmentInvokeArgs(), options.WithDefaults());

@@ -52,8 +52,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new EdgeCacheOrigin(&#34;default&#34;, EdgeCacheOriginArgs.builder()        
- *             .description(&#34;The default bucket for media edge test&#34;)
+ *             .name(&#34;my-origin&#34;)
  *             .originAddress(&#34;gs://media-edge-default&#34;)
+ *             .description(&#34;The default bucket for media edge test&#34;)
  *             .build());
  * 
  *     }
@@ -87,6 +88,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var fallback = new EdgeCacheOrigin(&#34;fallback&#34;, EdgeCacheOriginArgs.builder()        
+ *             .name(&#34;my-fallback&#34;)
  *             .originAddress(&#34;fallback.example.com&#34;)
  *             .description(&#34;The default bucket for media edge test&#34;)
  *             .maxAttempts(3)
@@ -126,6 +128,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var default_ = new EdgeCacheOrigin(&#34;default&#34;, EdgeCacheOriginArgs.builder()        
+ *             .name(&#34;my-origin&#34;)
  *             .originAddress(&#34;gs://media-edge-default&#34;)
  *             .failoverOrigin(fallback.id())
  *             .description(&#34;The default bucket for media edge test&#34;)
@@ -181,6 +184,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var default_ = new EdgeCacheOrigin(&#34;default&#34;, EdgeCacheOriginArgs.builder()        
+ *             .name(&#34;my-origin&#34;)
  *             .originAddress(&#34;gs://media-edge-default&#34;)
  *             .description(&#34;The default bucket for V4 authentication&#34;)
  *             .awsV4Authentication(EdgeCacheOriginAwsV4AuthenticationArgs.builder()

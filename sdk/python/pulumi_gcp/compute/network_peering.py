@@ -350,12 +350,18 @@ class NetworkPeering(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.Network("default", auto_create_subnetworks=False)
-        other = gcp.compute.Network("other", auto_create_subnetworks=False)
+        default = gcp.compute.Network("default",
+            name="foobar",
+            auto_create_subnetworks=False)
+        other = gcp.compute.Network("other",
+            name="other",
+            auto_create_subnetworks=False)
         peering1 = gcp.compute.NetworkPeering("peering1",
+            name="peering1",
             network=default.self_link,
             peer_network=other.self_link)
         peering2 = gcp.compute.NetworkPeering("peering2",
+            name="peering2",
             network=other.self_link,
             peer_network=default.self_link)
         ```
@@ -407,12 +413,18 @@ class NetworkPeering(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.Network("default", auto_create_subnetworks=False)
-        other = gcp.compute.Network("other", auto_create_subnetworks=False)
+        default = gcp.compute.Network("default",
+            name="foobar",
+            auto_create_subnetworks=False)
+        other = gcp.compute.Network("other",
+            name="other",
+            auto_create_subnetworks=False)
         peering1 = gcp.compute.NetworkPeering("peering1",
+            name="peering1",
             network=default.self_link,
             peer_network=other.self_link)
         peering2 = gcp.compute.NetworkPeering("peering2",
+            name="peering2",
             network=other.self_link,
             peer_network=default.self_link)
         ```

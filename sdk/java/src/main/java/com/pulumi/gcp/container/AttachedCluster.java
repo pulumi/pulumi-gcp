@@ -73,6 +73,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary = new AttachedCluster(&#34;primary&#34;, AttachedClusterArgs.builder()        
+ *             .name(&#34;basic&#34;)
  *             .location(&#34;us-west1&#34;)
  *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
  *             .description(&#34;Test cluster&#34;)
@@ -83,6 +84,100 @@ import javax.annotation.Nullable;
  *             .platformVersion(versions.applyValue(getAttachedVersionsResult -&gt; getAttachedVersionsResult.validVersions()[0]))
  *             .fleet(AttachedClusterFleetArgs.builder()
  *                 .project(String.format(&#34;projects/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Container Attached Cluster Full
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.container.ContainerFunctions;
+ * import com.pulumi.gcp.container.inputs.GetAttachedVersionsArgs;
+ * import com.pulumi.gcp.container.AttachedCluster;
+ * import com.pulumi.gcp.container.AttachedClusterArgs;
+ * import com.pulumi.gcp.container.inputs.AttachedClusterAuthorizationArgs;
+ * import com.pulumi.gcp.container.inputs.AttachedClusterOidcConfigArgs;
+ * import com.pulumi.gcp.container.inputs.AttachedClusterFleetArgs;
+ * import com.pulumi.gcp.container.inputs.AttachedClusterLoggingConfigArgs;
+ * import com.pulumi.gcp.container.inputs.AttachedClusterLoggingConfigComponentConfigArgs;
+ * import com.pulumi.gcp.container.inputs.AttachedClusterMonitoringConfigArgs;
+ * import com.pulumi.gcp.container.inputs.AttachedClusterMonitoringConfigManagedPrometheusConfigArgs;
+ * import com.pulumi.gcp.container.inputs.AttachedClusterBinaryAuthorizationArgs;
+ * import com.pulumi.gcp.container.inputs.AttachedClusterProxyConfigArgs;
+ * import com.pulumi.gcp.container.inputs.AttachedClusterProxyConfigKubernetesSecretArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         final var versions = ContainerFunctions.getAttachedVersions(GetAttachedVersionsArgs.builder()
+ *             .location(&#34;us-west1&#34;)
+ *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
+ *             .build());
+ * 
+ *         var primary = new AttachedCluster(&#34;primary&#34;, AttachedClusterArgs.builder()        
+ *             .name(&#34;basic&#34;)
+ *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
+ *             .location(&#34;us-west1&#34;)
+ *             .description(&#34;Test cluster&#34;)
+ *             .distribution(&#34;aks&#34;)
+ *             .annotations(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .authorization(AttachedClusterAuthorizationArgs.builder()
+ *                 .adminUsers(                
+ *                     &#34;user1@example.com&#34;,
+ *                     &#34;user2@example.com&#34;)
+ *                 .adminGroups(                
+ *                     &#34;group1@example.com&#34;,
+ *                     &#34;group2@example.com&#34;)
+ *                 .build())
+ *             .oidcConfig(AttachedClusterOidcConfigArgs.builder()
+ *                 .issuerUrl(&#34;https://oidc.issuer.url&#34;)
+ *                 .jwks(StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input(&#34;{\&#34;keys\&#34;:[{\&#34;use\&#34;:\&#34;sig\&#34;,\&#34;kty\&#34;:\&#34;RSA\&#34;,\&#34;kid\&#34;:\&#34;testid\&#34;,\&#34;alg\&#34;:\&#34;RS256\&#34;,\&#34;n\&#34;:\&#34;somedata\&#34;,\&#34;e\&#34;:\&#34;AQAB\&#34;}]}&#34;)
+ *                     .build()).result())
+ *                 .build())
+ *             .platformVersion(versions.applyValue(getAttachedVersionsResult -&gt; getAttachedVersionsResult.validVersions()[0]))
+ *             .fleet(AttachedClusterFleetArgs.builder()
+ *                 .project(String.format(&#34;projects/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *                 .build())
+ *             .loggingConfig(AttachedClusterLoggingConfigArgs.builder()
+ *                 .componentConfig(AttachedClusterLoggingConfigComponentConfigArgs.builder()
+ *                     .enableComponents(                    
+ *                         &#34;SYSTEM_COMPONENTS&#34;,
+ *                         &#34;WORKLOADS&#34;)
+ *                     .build())
+ *                 .build())
+ *             .monitoringConfig(AttachedClusterMonitoringConfigArgs.builder()
+ *                 .managedPrometheusConfig(AttachedClusterMonitoringConfigManagedPrometheusConfigArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .build())
+ *             .binaryAuthorization(AttachedClusterBinaryAuthorizationArgs.builder()
+ *                 .evaluationMode(&#34;PROJECT_SINGLETON_POLICY_ENFORCE&#34;)
+ *                 .build())
+ *             .proxyConfig(AttachedClusterProxyConfigArgs.builder()
+ *                 .kubernetesSecret(AttachedClusterProxyConfigKubernetesSecretArgs.builder()
+ *                     .name(&#34;proxy-config&#34;)
+ *                     .namespace(&#34;default&#34;)
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -125,6 +220,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary = new AttachedCluster(&#34;primary&#34;, AttachedClusterArgs.builder()        
+ *             .name(&#34;basic&#34;)
  *             .location(&#34;us-west1&#34;)
  *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
  *             .description(&#34;Test cluster&#34;)

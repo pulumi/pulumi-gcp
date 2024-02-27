@@ -24,6 +24,7 @@ namespace Pulumi.Gcp.Eventarc
     /// {
     ///     var @default = new Gcp.CloudRun.Service("default", new()
     ///     {
+    ///         Name = "eventarc-service",
     ///         Location = "europe-west1",
     ///         Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
     ///         {
@@ -63,6 +64,7 @@ namespace Pulumi.Gcp.Eventarc
     /// 
     ///     var primary = new Gcp.Eventarc.Trigger("primary", new()
     ///     {
+    ///         Name = "name",
     ///         Location = "europe-west1",
     ///         MatchingCriterias = new[]
     ///         {
@@ -86,7 +88,10 @@ namespace Pulumi.Gcp.Eventarc
     ///         },
     ///     });
     /// 
-    ///     var foo = new Gcp.PubSub.Topic("foo");
+    ///     var foo = new Gcp.PubSub.Topic("foo", new()
+    ///     {
+    ///         Name = "topic",
+    ///     });
     /// 
     /// });
     /// ```

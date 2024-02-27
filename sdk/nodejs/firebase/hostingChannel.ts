@@ -12,17 +12,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultHostingSite = new gcp.firebase.HostingSite("defaultHostingSite", {
+ * const _default = new gcp.firebase.HostingSite("default", {
  *     project: "my-project-name",
  *     siteId: "site-with-channel",
- * }, {
- *     provider: google_beta,
  * });
- * const defaultHostingChannel = new gcp.firebase.HostingChannel("defaultHostingChannel", {
- *     siteId: defaultHostingSite.siteId,
+ * const defaultHostingChannel = new gcp.firebase.HostingChannel("default", {
+ *     siteId: _default.siteId,
  *     channelId: "channel-basic",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Firebasehosting Channel Full
@@ -34,8 +30,6 @@ import * as utilities from "../utilities";
  * const _default = new gcp.firebase.HostingSite("default", {
  *     project: "my-project-name",
  *     siteId: "site-with-channel",
- * }, {
- *     provider: google_beta,
  * });
  * const full = new gcp.firebase.HostingChannel("full", {
  *     siteId: _default.siteId,
@@ -45,8 +39,6 @@ import * as utilities from "../utilities";
  *     labels: {
  *         "some-key": "some-value",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

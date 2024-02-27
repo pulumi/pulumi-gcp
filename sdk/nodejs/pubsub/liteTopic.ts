@@ -23,11 +23,13 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
- * const exampleLiteReservation = new gcp.pubsub.LiteReservation("exampleLiteReservation", {
+ * const example = new gcp.pubsub.LiteReservation("example", {
+ *     name: "example-reservation",
  *     project: project.then(project => project.number),
  *     throughputCapacity: 2,
  * });
- * const exampleLiteTopic = new gcp.pubsub.LiteTopic("exampleLiteTopic", {
+ * const exampleLiteTopic = new gcp.pubsub.LiteTopic("example", {
+ *     name: "example-topic",
  *     project: project.then(project => project.number),
  *     partitionConfig: {
  *         count: 1,
@@ -40,7 +42,7 @@ import * as utilities from "../utilities";
  *         perPartitionBytes: "32212254720",
  *     },
  *     reservationConfig: {
- *         throughputReservation: exampleLiteReservation.name,
+ *         throughputReservation: example.name,
  *     },
  * });
  * ```

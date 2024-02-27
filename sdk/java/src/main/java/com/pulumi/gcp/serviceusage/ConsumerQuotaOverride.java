@@ -28,6 +28,146 @@ import javax.annotation.Nullable;
  *     * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
  * 
  * ## Example Usage
+ * ### Consumer Quota Override
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.serviceusage.ConsumerQuotaOverride;
+ * import com.pulumi.gcp.serviceusage.ConsumerQuotaOverrideArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
+ *             .name(&#34;tf-test-project&#34;)
+ *             .projectId(&#34;quota&#34;)
+ *             .orgId(&#34;123456789&#34;)
+ *             .build());
+ * 
+ *         var override = new ConsumerQuotaOverride(&#34;override&#34;, ConsumerQuotaOverrideArgs.builder()        
+ *             .project(myProject.projectId())
+ *             .service(&#34;servicemanagement.googleapis.com&#34;)
+ *             .metric(StdFunctions.urlencode(UrlencodeArgs.builder()
+ *                 .input(&#34;servicemanagement.googleapis.com/default_requests&#34;)
+ *                 .build()).result())
+ *             .limit(StdFunctions.urlencode(UrlencodeArgs.builder()
+ *                 .input(&#34;/min/project&#34;)
+ *                 .build()).result())
+ *             .overrideValue(&#34;95&#34;)
+ *             .force(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Region Consumer Quota Override
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.serviceusage.ConsumerQuotaOverride;
+ * import com.pulumi.gcp.serviceusage.ConsumerQuotaOverrideArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
+ *             .name(&#34;tf-test-project&#34;)
+ *             .projectId(&#34;quota&#34;)
+ *             .orgId(&#34;123456789&#34;)
+ *             .build());
+ * 
+ *         var override = new ConsumerQuotaOverride(&#34;override&#34;, ConsumerQuotaOverrideArgs.builder()        
+ *             .dimensions(Map.of(&#34;region&#34;, &#34;us-central1&#34;))
+ *             .project(myProject.projectId())
+ *             .service(&#34;compute.googleapis.com&#34;)
+ *             .metric(StdFunctions.urlencode(UrlencodeArgs.builder()
+ *                 .input(&#34;compute.googleapis.com/n2_cpus&#34;)
+ *                 .build()).result())
+ *             .limit(StdFunctions.urlencode(UrlencodeArgs.builder()
+ *                 .input(&#34;/project/region&#34;)
+ *                 .build()).result())
+ *             .overrideValue(&#34;8&#34;)
+ *             .force(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Consumer Quota Override Custom Dimension
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.serviceusage.ConsumerQuotaOverride;
+ * import com.pulumi.gcp.serviceusage.ConsumerQuotaOverrideArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
+ *             .name(&#34;tf-test-project&#34;)
+ *             .projectId(&#34;quota&#34;)
+ *             .orgId(&#34;123456789&#34;)
+ *             .build());
+ * 
+ *         var override = new ConsumerQuotaOverride(&#34;override&#34;, ConsumerQuotaOverrideArgs.builder()        
+ *             .project(myProject.projectId())
+ *             .service(&#34;libraryagent.googleapis.com&#34;)
+ *             .metric(StdFunctions.urlencode(UrlencodeArgs.builder()
+ *                 .input(&#34;libraryagent.googleapis.com/borrows&#34;)
+ *                 .build()).result())
+ *             .limit(StdFunctions.urlencode(UrlencodeArgs.builder()
+ *                 .input(&#34;/author/project&#34;)
+ *                 .build()).result())
+ *             .overrideValue(&#34;1&#34;)
+ *             .force(true)
+ *             .dimensions(Map.of(&#34;author&#34;, &#34;larry&#34;))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

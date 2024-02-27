@@ -573,24 +573,70 @@ class Job(pulumi.CustomResource):
                 autodetect=True,
             ))
         ```
+        ### Bigquery Job Load Geojson
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = "my-project-name"
+        bucket = gcp.storage.Bucket("bucket",
+            name=f"{project}-bq-geojson",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            name="geojson-data.jsonl",
+            bucket=bucket.name,
+            content=\"\"\"{"type":"Feature","properties":{"continent":"Europe","region":"Scandinavia"},"geometry":{"type":"Polygon","coordinates":[[[-30.94,53.33],[33.05,53.33],[33.05,71.86],[-30.94,71.86],[-30.94,53.33]]]}}
+        {"type":"Feature","properties":{"continent":"Africa","region":"West Africa"},"geometry":{"type":"Polygon","coordinates":[[[-23.91,0],[11.95,0],[11.95,18.98],[-23.91,18.98],[-23.91,0]]]}}
+        \"\"\")
+        bar = gcp.bigquery.Dataset("bar",
+            dataset_id="job_load_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="US")
+        foo = gcp.bigquery.Table("foo",
+            deletion_protection=False,
+            dataset_id=bar.dataset_id,
+            table_id="job_load_table")
+        job = gcp.bigquery.Job("job",
+            job_id="job_load",
+            labels={
+                "my_job": "load",
+            },
+            load=gcp.bigquery.JobLoadArgs(
+                source_uris=[pulumi.Output.all(object.bucket, object.name).apply(lambda bucket, name: f"gs://{bucket}/{name}")],
+                destination_table=gcp.bigquery.JobLoadDestinationTableArgs(
+                    project_id=foo.project,
+                    dataset_id=foo.dataset_id,
+                    table_id=foo.table_id,
+                ),
+                write_disposition="WRITE_TRUNCATE",
+                autodetect=True,
+                source_format="NEWLINE_DELIMITED_JSON",
+                json_extension="GEOJSON",
+            ))
+        ```
         ### Bigquery Job Load Parquet
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        test_bucket = gcp.storage.Bucket("testBucket",
+        test = gcp.storage.Bucket("test",
+            name="job_load_bucket",
             location="US",
             uniform_bucket_level_access=True)
-        test_bucket_object = gcp.storage.BucketObject("testBucketObject",
+        test_bucket_object = gcp.storage.BucketObject("test",
+            name="job_load_bucket_object",
             source=pulumi.FileAsset("./test-fixtures/test.parquet.gzip"),
-            bucket=test_bucket.name)
-        test_dataset = gcp.bigquery.Dataset("testDataset",
+            bucket=test.name)
+        test_dataset = gcp.bigquery.Dataset("test",
             dataset_id="job_load_dataset",
             friendly_name="test",
             description="This is a test description",
             location="US")
-        test_table = gcp.bigquery.Table("testTable",
+        test_table = gcp.bigquery.Table("test",
             deletion_protection=False,
             table_id="job_load_table",
             dataset_id=test_dataset.dataset_id)
@@ -619,18 +665,124 @@ class Job(pulumi.CustomResource):
                 ),
             ))
         ```
+        ### Bigquery Job Copy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        source_dataset = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            source_dataset.append(gcp.bigquery.Dataset(f"source-{range['value']}",
+                dataset_id=f"job_copy_{range['value']}_dataset",
+                friendly_name="test",
+                description="This is a test description",
+                location="US"))
+        source = []
+        def create_source(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                source.append(gcp.bigquery.Table(f"source-{range['value']}",
+                    deletion_protection=False,
+                    dataset_id=source_dataset[range["value"]].dataset_id,
+                    table_id=f"job_copy_{range['value']}_table",
+                    schema=\"\"\"[
+          {
+            "name": "name",
+            "type": "STRING",
+            "mode": "NULLABLE"
+          },
+          {
+            "name": "post_abbr",
+            "type": "STRING",
+            "mode": "NULLABLE"
+          },
+          {
+            "name": "date",
+            "type": "DATE",
+            "mode": "NULLABLE"
+          }
+        ]
+        \"\"\"))
+
+        (len(source_dataset)).apply(create_source)
+        dest_dataset = gcp.bigquery.Dataset("dest",
+            dataset_id="job_copy_dest_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="US")
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="example-keyring",
+            location="global")
+        crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="example-key",
+            key_ring=key_ring.id)
+        dest = gcp.bigquery.Table("dest",
+            deletion_protection=False,
+            dataset_id=dest_dataset.dataset_id,
+            table_id="job_copy_dest_table",
+            schema=\"\"\"[
+          {
+            "name": "name",
+            "type": "STRING",
+            "mode": "NULLABLE"
+          },
+          {
+            "name": "post_abbr",
+            "type": "STRING",
+            "mode": "NULLABLE"
+          },
+          {
+            "name": "date",
+            "type": "DATE",
+            "mode": "NULLABLE"
+          }
+        ]
+        \"\"\",
+            encryption_configuration=gcp.bigquery.TableEncryptionConfigurationArgs(
+                kms_key_name=crypto_key.id,
+            ))
+        project = gcp.organizations.get_project(project_id="my-project-name")
+        encrypt_role = gcp.projects.IAMMember("encrypt_role",
+            project=project.project_id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:bq-{project.number}@bigquery-encryption.iam.gserviceaccount.com")
+        job = gcp.bigquery.Job("job",
+            job_id="job_copy",
+            copy=gcp.bigquery.JobCopyArgs(
+                source_tables=[
+                    gcp.bigquery.JobCopySourceTableArgs(
+                        project_id=source[0].project,
+                        dataset_id=source[0].dataset_id,
+                        table_id=source[0].table_id,
+                    ),
+                    gcp.bigquery.JobCopySourceTableArgs(
+                        project_id=source[1].project,
+                        dataset_id=source[1].dataset_id,
+                        table_id=source[1].table_id,
+                    ),
+                ],
+                destination_table=gcp.bigquery.JobCopyDestinationTableArgs(
+                    project_id=dest.project,
+                    dataset_id=dest.dataset_id,
+                    table_id=dest.table_id,
+                ),
+                destination_encryption_configuration=gcp.bigquery.JobCopyDestinationEncryptionConfigurationArgs(
+                    kms_key_name=crypto_key.id,
+                ),
+            ))
+        ```
         ### Bigquery Job Extract
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        source_one_dataset = gcp.bigquery.Dataset("source-oneDataset",
+        source_one_dataset = gcp.bigquery.Dataset("source-one",
             dataset_id="job_extract_dataset",
             friendly_name="test",
             description="This is a test description",
             location="US")
-        source_one_table = gcp.bigquery.Table("source-oneTable",
+        source_one = gcp.bigquery.Table("source-one",
             deletion_protection=False,
             dataset_id=source_one_dataset.dataset_id,
             table_id="job_extract_table",
@@ -653,6 +805,7 @@ class Job(pulumi.CustomResource):
         ]
         \"\"\")
         dest = gcp.storage.Bucket("dest",
+            name="job_extract_bucket",
             location="US",
             force_destroy=True)
         job = gcp.bigquery.Job("job",
@@ -660,9 +813,9 @@ class Job(pulumi.CustomResource):
             extract=gcp.bigquery.JobExtractArgs(
                 destination_uris=[dest.url.apply(lambda url: f"{url}/extract")],
                 source_table=gcp.bigquery.JobExtractSourceTableArgs(
-                    project_id=source_one_table.project,
-                    dataset_id=source_one_table.dataset_id,
-                    table_id=source_one_table.table_id,
+                    project_id=source_one.project,
+                    dataset_id=source_one.dataset_id,
+                    table_id=source_one.table_id,
                 ),
                 destination_format="NEWLINE_DELIMITED_JSON",
                 compression="GZIP",
@@ -854,24 +1007,70 @@ class Job(pulumi.CustomResource):
                 autodetect=True,
             ))
         ```
+        ### Bigquery Job Load Geojson
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = "my-project-name"
+        bucket = gcp.storage.Bucket("bucket",
+            name=f"{project}-bq-geojson",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            name="geojson-data.jsonl",
+            bucket=bucket.name,
+            content=\"\"\"{"type":"Feature","properties":{"continent":"Europe","region":"Scandinavia"},"geometry":{"type":"Polygon","coordinates":[[[-30.94,53.33],[33.05,53.33],[33.05,71.86],[-30.94,71.86],[-30.94,53.33]]]}}
+        {"type":"Feature","properties":{"continent":"Africa","region":"West Africa"},"geometry":{"type":"Polygon","coordinates":[[[-23.91,0],[11.95,0],[11.95,18.98],[-23.91,18.98],[-23.91,0]]]}}
+        \"\"\")
+        bar = gcp.bigquery.Dataset("bar",
+            dataset_id="job_load_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="US")
+        foo = gcp.bigquery.Table("foo",
+            deletion_protection=False,
+            dataset_id=bar.dataset_id,
+            table_id="job_load_table")
+        job = gcp.bigquery.Job("job",
+            job_id="job_load",
+            labels={
+                "my_job": "load",
+            },
+            load=gcp.bigquery.JobLoadArgs(
+                source_uris=[pulumi.Output.all(object.bucket, object.name).apply(lambda bucket, name: f"gs://{bucket}/{name}")],
+                destination_table=gcp.bigquery.JobLoadDestinationTableArgs(
+                    project_id=foo.project,
+                    dataset_id=foo.dataset_id,
+                    table_id=foo.table_id,
+                ),
+                write_disposition="WRITE_TRUNCATE",
+                autodetect=True,
+                source_format="NEWLINE_DELIMITED_JSON",
+                json_extension="GEOJSON",
+            ))
+        ```
         ### Bigquery Job Load Parquet
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        test_bucket = gcp.storage.Bucket("testBucket",
+        test = gcp.storage.Bucket("test",
+            name="job_load_bucket",
             location="US",
             uniform_bucket_level_access=True)
-        test_bucket_object = gcp.storage.BucketObject("testBucketObject",
+        test_bucket_object = gcp.storage.BucketObject("test",
+            name="job_load_bucket_object",
             source=pulumi.FileAsset("./test-fixtures/test.parquet.gzip"),
-            bucket=test_bucket.name)
-        test_dataset = gcp.bigquery.Dataset("testDataset",
+            bucket=test.name)
+        test_dataset = gcp.bigquery.Dataset("test",
             dataset_id="job_load_dataset",
             friendly_name="test",
             description="This is a test description",
             location="US")
-        test_table = gcp.bigquery.Table("testTable",
+        test_table = gcp.bigquery.Table("test",
             deletion_protection=False,
             table_id="job_load_table",
             dataset_id=test_dataset.dataset_id)
@@ -900,18 +1099,124 @@ class Job(pulumi.CustomResource):
                 ),
             ))
         ```
+        ### Bigquery Job Copy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        source_dataset = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            source_dataset.append(gcp.bigquery.Dataset(f"source-{range['value']}",
+                dataset_id=f"job_copy_{range['value']}_dataset",
+                friendly_name="test",
+                description="This is a test description",
+                location="US"))
+        source = []
+        def create_source(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                source.append(gcp.bigquery.Table(f"source-{range['value']}",
+                    deletion_protection=False,
+                    dataset_id=source_dataset[range["value"]].dataset_id,
+                    table_id=f"job_copy_{range['value']}_table",
+                    schema=\"\"\"[
+          {
+            "name": "name",
+            "type": "STRING",
+            "mode": "NULLABLE"
+          },
+          {
+            "name": "post_abbr",
+            "type": "STRING",
+            "mode": "NULLABLE"
+          },
+          {
+            "name": "date",
+            "type": "DATE",
+            "mode": "NULLABLE"
+          }
+        ]
+        \"\"\"))
+
+        (len(source_dataset)).apply(create_source)
+        dest_dataset = gcp.bigquery.Dataset("dest",
+            dataset_id="job_copy_dest_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="US")
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="example-keyring",
+            location="global")
+        crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="example-key",
+            key_ring=key_ring.id)
+        dest = gcp.bigquery.Table("dest",
+            deletion_protection=False,
+            dataset_id=dest_dataset.dataset_id,
+            table_id="job_copy_dest_table",
+            schema=\"\"\"[
+          {
+            "name": "name",
+            "type": "STRING",
+            "mode": "NULLABLE"
+          },
+          {
+            "name": "post_abbr",
+            "type": "STRING",
+            "mode": "NULLABLE"
+          },
+          {
+            "name": "date",
+            "type": "DATE",
+            "mode": "NULLABLE"
+          }
+        ]
+        \"\"\",
+            encryption_configuration=gcp.bigquery.TableEncryptionConfigurationArgs(
+                kms_key_name=crypto_key.id,
+            ))
+        project = gcp.organizations.get_project(project_id="my-project-name")
+        encrypt_role = gcp.projects.IAMMember("encrypt_role",
+            project=project.project_id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:bq-{project.number}@bigquery-encryption.iam.gserviceaccount.com")
+        job = gcp.bigquery.Job("job",
+            job_id="job_copy",
+            copy=gcp.bigquery.JobCopyArgs(
+                source_tables=[
+                    gcp.bigquery.JobCopySourceTableArgs(
+                        project_id=source[0].project,
+                        dataset_id=source[0].dataset_id,
+                        table_id=source[0].table_id,
+                    ),
+                    gcp.bigquery.JobCopySourceTableArgs(
+                        project_id=source[1].project,
+                        dataset_id=source[1].dataset_id,
+                        table_id=source[1].table_id,
+                    ),
+                ],
+                destination_table=gcp.bigquery.JobCopyDestinationTableArgs(
+                    project_id=dest.project,
+                    dataset_id=dest.dataset_id,
+                    table_id=dest.table_id,
+                ),
+                destination_encryption_configuration=gcp.bigquery.JobCopyDestinationEncryptionConfigurationArgs(
+                    kms_key_name=crypto_key.id,
+                ),
+            ))
+        ```
         ### Bigquery Job Extract
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        source_one_dataset = gcp.bigquery.Dataset("source-oneDataset",
+        source_one_dataset = gcp.bigquery.Dataset("source-one",
             dataset_id="job_extract_dataset",
             friendly_name="test",
             description="This is a test description",
             location="US")
-        source_one_table = gcp.bigquery.Table("source-oneTable",
+        source_one = gcp.bigquery.Table("source-one",
             deletion_protection=False,
             dataset_id=source_one_dataset.dataset_id,
             table_id="job_extract_table",
@@ -934,6 +1239,7 @@ class Job(pulumi.CustomResource):
         ]
         \"\"\")
         dest = gcp.storage.Bucket("dest",
+            name="job_extract_bucket",
             location="US",
             force_destroy=True)
         job = gcp.bigquery.Job("job",
@@ -941,9 +1247,9 @@ class Job(pulumi.CustomResource):
             extract=gcp.bigquery.JobExtractArgs(
                 destination_uris=[dest.url.apply(lambda url: f"{url}/extract")],
                 source_table=gcp.bigquery.JobExtractSourceTableArgs(
-                    project_id=source_one_table.project,
-                    dataset_id=source_one_table.dataset_id,
-                    table_id=source_one_table.table_id,
+                    project_id=source_one.project,
+                    dataset_id=source_one.dataset_id,
+                    table_id=source_one.table_id,
                 ),
                 destination_format="NEWLINE_DELIMITED_JSON",
                 compression="GZIP",

@@ -48,6 +48,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Schema(&#34;example&#34;, SchemaArgs.builder()        
+ *             .name(&#34;example-schema&#34;)
+ *             .type(&#34;AVRO&#34;)
  *             .definition(&#34;&#34;&#34;
  * {
  *   &#34;type&#34; : &#34;record&#34;,
@@ -63,9 +65,7 @@ import javax.annotation.Nullable;
  *     }
  *   ]
  * }
- * 
  *             &#34;&#34;&#34;)
- *             .type(&#34;AVRO&#34;)
  *             .build());
  * 
  *     }
@@ -83,7 +83,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.pubsub.Topic;
  * import com.pulumi.gcp.pubsub.TopicArgs;
  * import com.pulumi.gcp.pubsub.inputs.TopicSchemaSettingsArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -97,7 +96,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleSchema = new Schema(&#34;exampleSchema&#34;, SchemaArgs.builder()        
+ *         var example = new Schema(&#34;example&#34;, SchemaArgs.builder()        
+ *             .name(&#34;example&#34;)
  *             .type(&#34;PROTOCOL_BUFFER&#34;)
  *             .definition(&#34;&#34;&#34;
  * syntax = &#34;proto3&#34;;
@@ -110,13 +110,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleTopic = new Topic(&#34;exampleTopic&#34;, TopicArgs.builder()        
+ *             .name(&#34;example-topic&#34;)
  *             .schemaSettings(TopicSchemaSettingsArgs.builder()
  *                 .schema(&#34;projects/my-project-name/schemas/example&#34;)
  *                 .encoding(&#34;JSON&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(exampleSchema)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

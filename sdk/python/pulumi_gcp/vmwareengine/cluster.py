@@ -226,11 +226,13 @@ class Cluster(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         cluster_nw = gcp.vmwareengine.Network("cluster-nw",
+            name="pc-nw",
             type="STANDARD",
             location="global",
             description="PC network description.")
         cluster_pc = gcp.vmwareengine.PrivateCloud("cluster-pc",
             location="us-west1-a",
+            name="sample-pc",
             description="Sample test PC.",
             network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
                 management_cidr="192.168.30.0/24",
@@ -244,6 +246,7 @@ class Cluster(pulumi.CustomResource):
                 )],
             ))
         vmw_engine_ext_cluster = gcp.vmwareengine.Cluster("vmw-engine-ext-cluster",
+            name="ext-cluster",
             parent=cluster_pc.id,
             node_type_configs=[gcp.vmwareengine.ClusterNodeTypeConfigArgs(
                 node_type_id="standard-72",
@@ -257,11 +260,13 @@ class Cluster(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         cluster_nw = gcp.vmwareengine.Network("cluster-nw",
+            name="pc-nw",
             type="STANDARD",
             location="global",
             description="PC network description.")
         cluster_pc = gcp.vmwareengine.PrivateCloud("cluster-pc",
             location="us-west1-a",
+            name="sample-pc",
             description="Sample test PC.",
             network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
                 management_cidr="192.168.30.0/24",
@@ -276,6 +281,7 @@ class Cluster(pulumi.CustomResource):
                 )],
             ))
         vmw_ext_cluster = gcp.vmwareengine.Cluster("vmw-ext-cluster",
+            name="ext-cluster",
             parent=cluster_pc.id,
             node_type_configs=[gcp.vmwareengine.ClusterNodeTypeConfigArgs(
                 node_type_id="standard-72",
@@ -330,11 +336,13 @@ class Cluster(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         cluster_nw = gcp.vmwareengine.Network("cluster-nw",
+            name="pc-nw",
             type="STANDARD",
             location="global",
             description="PC network description.")
         cluster_pc = gcp.vmwareengine.PrivateCloud("cluster-pc",
             location="us-west1-a",
+            name="sample-pc",
             description="Sample test PC.",
             network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
                 management_cidr="192.168.30.0/24",
@@ -348,6 +356,7 @@ class Cluster(pulumi.CustomResource):
                 )],
             ))
         vmw_engine_ext_cluster = gcp.vmwareengine.Cluster("vmw-engine-ext-cluster",
+            name="ext-cluster",
             parent=cluster_pc.id,
             node_type_configs=[gcp.vmwareengine.ClusterNodeTypeConfigArgs(
                 node_type_id="standard-72",
@@ -361,11 +370,13 @@ class Cluster(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         cluster_nw = gcp.vmwareengine.Network("cluster-nw",
+            name="pc-nw",
             type="STANDARD",
             location="global",
             description="PC network description.")
         cluster_pc = gcp.vmwareengine.PrivateCloud("cluster-pc",
             location="us-west1-a",
+            name="sample-pc",
             description="Sample test PC.",
             network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
                 management_cidr="192.168.30.0/24",
@@ -380,6 +391,7 @@ class Cluster(pulumi.CustomResource):
                 )],
             ))
         vmw_ext_cluster = gcp.vmwareengine.Cluster("vmw-ext-cluster",
+            name="ext-cluster",
             parent=cluster_pc.id,
             node_type_configs=[gcp.vmwareengine.ClusterNodeTypeConfigArgs(
                 node_type_id="standard-72",

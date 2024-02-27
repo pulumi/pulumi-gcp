@@ -67,7 +67,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudidentity.NewGroupMembership(ctx, "cloudIdentityGroupMembershipBasic", &cloudidentity.GroupMembershipArgs{
+//			_, err = cloudidentity.NewGroupMembership(ctx, "cloud_identity_group_membership_basic", &cloudidentity.GroupMembershipArgs{
 //				Group: group.ID(),
 //				PreferredMemberKey: &cloudidentity.GroupMembershipPreferredMemberKeyArgs{
 //					Id: child_group.GroupKey.ApplyT(func(groupKey cloudidentity.GroupGroupKey) (*string, error) {
@@ -115,7 +115,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudidentity.NewGroupMembership(ctx, "cloudIdentityGroupMembershipBasic", &cloudidentity.GroupMembershipArgs{
+//			_, err = cloudidentity.NewGroupMembership(ctx, "cloud_identity_group_membership_basic", &cloudidentity.GroupMembershipArgs{
 //				Group: group.ID(),
 //				PreferredMemberKey: &cloudidentity.GroupMembershipPreferredMemberKeyArgs{
 //					Id: pulumi.String("cloud_identity_user@example.com"),

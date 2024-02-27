@@ -22,8 +22,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const tenant = new gcp.identityplatform.Tenant("tenant", {
- *     allowPasswordSignup: true,
  *     displayName: "tenant",
+ *     allowPasswordSignup: true,
  * });
  * ```
  *

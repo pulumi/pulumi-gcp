@@ -52,19 +52,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;project_id&#34;)
+ *             .name(&#34;project_id&#34;)
  *             .orgId(&#34;123456789&#34;)
  *             .build());
  * 
  *         var key = new TagKey(&#34;key&#34;, TagKeyArgs.builder()        
- *             .description(&#34;For keyname resources.&#34;)
  *             .parent(&#34;organizations/123456789&#34;)
  *             .shortName(&#34;keyname&#34;)
+ *             .description(&#34;For keyname resources.&#34;)
  *             .build());
  * 
  *         var value = new TagValue(&#34;value&#34;, TagValueArgs.builder()        
- *             .description(&#34;For valuename resources.&#34;)
  *             .parent(key.name().applyValue(name -&gt; String.format(&#34;tagKeys/%s&#34;, name)))
  *             .shortName(&#34;valuename&#34;)
+ *             .description(&#34;For valuename resources.&#34;)
  *             .build());
  * 
  *         var binding = new TagBinding(&#34;binding&#34;, TagBindingArgs.builder()        

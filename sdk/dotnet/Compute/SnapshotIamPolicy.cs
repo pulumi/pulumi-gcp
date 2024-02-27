@@ -51,7 +51,8 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var policy = new Gcp.Compute.SnapshotIamPolicy("policy", new()
     ///     {
-    ///         Project = google_compute_snapshot.Snapshot.Project,
+    ///         Project = snapshot.Project,
+    ///         Name = snapshot.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -70,7 +71,8 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var binding = new Gcp.Compute.SnapshotIamBinding("binding", new()
     ///     {
-    ///         Project = google_compute_snapshot.Snapshot.Project,
+    ///         Project = snapshot.Project,
+    ///         Name = snapshot.Name,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -93,7 +95,8 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var member = new Gcp.Compute.SnapshotIamMember("member", new()
     ///     {
-    ///         Project = google_compute_snapshot.Snapshot.Project,
+    ///         Project = snapshot.Project,
+    ///         Name = snapshot.Name,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

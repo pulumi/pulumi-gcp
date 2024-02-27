@@ -99,8 +99,8 @@ def get_web_type_app_engine_iam_policy(app_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.iap.get_web_type_app_engine_iam_policy(project=google_app_engine_application["app"]["project"],
-        app_id=google_app_engine_application["app"]["app_id"])
+    policy = gcp.iap.get_web_type_app_engine_iam_policy(project=app["project"],
+        app_id=app["appId"])
     ```
 
 
@@ -135,8 +135,8 @@ def get_web_type_app_engine_iam_policy_output(app_id: Optional[pulumi.Input[str]
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.iap.get_web_type_app_engine_iam_policy(project=google_app_engine_application["app"]["project"],
-        app_id=google_app_engine_application["app"]["app_id"])
+    policy = gcp.iap.get_web_type_app_engine_iam_policy(project=app["project"],
+        app_id=app["appId"])
     ```
 
 

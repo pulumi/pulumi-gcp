@@ -35,6 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance, err := bigtable.NewInstance(ctx, "instance", &bigtable.InstanceArgs{
+//				Name: pulumi.String("bt-instance"),
 //				Clusters: bigtable.InstanceClusterArray{
 //					&bigtable.InstanceClusterArgs{
 //						ClusterId:   pulumi.String("cluster-1"),
@@ -90,6 +91,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance, err := bigtable.NewInstance(ctx, "instance", &bigtable.InstanceArgs{
+//				Name: pulumi.String("bt-instance"),
 //				Clusters: bigtable.InstanceClusterArray{
 //					&bigtable.InstanceClusterArgs{
 //						ClusterId:   pulumi.String("cluster-1"),
@@ -136,6 +138,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance, err := bigtable.NewInstance(ctx, "instance", &bigtable.InstanceArgs{
+//				Name: pulumi.String("bt-instance"),
 //				Clusters: bigtable.InstanceClusterArray{
 //					&bigtable.InstanceClusterArgs{
 //						ClusterId:   pulumi.String("cluster-1"),
@@ -195,6 +198,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance, err := bigtable.NewInstance(ctx, "instance", &bigtable.InstanceArgs{
+//				Name: pulumi.String("bt-instance"),
 //				Clusters: bigtable.InstanceClusterArray{
 //					&bigtable.InstanceClusterArgs{
 //						ClusterId:   pulumi.String("cluster-1"),

@@ -27,13 +27,14 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var oauthIdpConfig = new Gcp.IdentityPlatform.OauthIdpConfig("oauthIdpConfig", new()
+    ///     var oauthIdpConfig = new Gcp.IdentityPlatform.OauthIdpConfig("oauth_idp_config", new()
     ///     {
-    ///         ClientId = "client-id",
-    ///         ClientSecret = "secret",
+    ///         Name = "oidc.oauth-idp-config",
     ///         DisplayName = "Display Name",
-    ///         Enabled = true,
+    ///         ClientId = "client-id",
     ///         Issuer = "issuer",
+    ///         Enabled = true,
+    ///         ClientSecret = "secret",
     ///     });
     /// 
     /// });

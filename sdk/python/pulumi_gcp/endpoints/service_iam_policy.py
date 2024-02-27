@@ -135,7 +135,7 @@ class ServiceIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.endpoints.ServiceIamPolicy("policy",
-            service_name=google_endpoints_service["endpoints_service"]["service_name"],
+            service_name=endpoints_service["serviceName"],
             policy_data=admin.policy_data)
         ```
 
@@ -146,7 +146,7 @@ class ServiceIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.endpoints.ServiceIamBinding("binding",
-            service_name=google_endpoints_service["endpoints_service"]["service_name"],
+            service_name=endpoints_service["serviceName"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -158,7 +158,7 @@ class ServiceIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.endpoints.ServiceIamMember("member",
-            service_name=google_endpoints_service["endpoints_service"]["service_name"],
+            service_name=endpoints_service["serviceName"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -234,7 +234,7 @@ class ServiceIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.endpoints.ServiceIamPolicy("policy",
-            service_name=google_endpoints_service["endpoints_service"]["service_name"],
+            service_name=endpoints_service["serviceName"],
             policy_data=admin.policy_data)
         ```
 
@@ -245,7 +245,7 @@ class ServiceIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.endpoints.ServiceIamBinding("binding",
-            service_name=google_endpoints_service["endpoints_service"]["service_name"],
+            service_name=endpoints_service["serviceName"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -257,7 +257,7 @@ class ServiceIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.endpoints.ServiceIamMember("member",
-            service_name=google_endpoints_service["endpoints_service"]["service_name"],
+            service_name=endpoints_service["serviceName"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

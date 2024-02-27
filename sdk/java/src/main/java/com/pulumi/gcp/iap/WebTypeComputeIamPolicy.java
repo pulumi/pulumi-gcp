@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebTypeComputeIamPolicy(&#34;policy&#34;, WebTypeComputeIamPolicyArgs.builder()        
- *             .project(google_project_service.project_service().project())
+ *             .project(projectService.project())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebTypeComputeIamPolicy(&#34;policy&#34;, WebTypeComputeIamPolicyArgs.builder()        
- *             .project(google_project_service.project_service().project())
+ *             .project(projectService.project())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -137,7 +137,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new WebTypeComputeIamBinding(&#34;binding&#34;, WebTypeComputeIamBindingArgs.builder()        
- *             .project(google_project_service.project_service().project())
+ *             .project(projectService.project())
  *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -170,7 +170,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new WebTypeComputeIamBinding(&#34;binding&#34;, WebTypeComputeIamBindingArgs.builder()        
- *             .project(google_project_service.project_service().project())
+ *             .project(projectService.project())
  *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .condition(WebTypeComputeIamBindingConditionArgs.builder()
@@ -206,7 +206,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new WebTypeComputeIamMember(&#34;member&#34;, WebTypeComputeIamMemberArgs.builder()        
- *             .project(google_project_service.project_service().project())
+ *             .project(projectService.project())
  *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -239,7 +239,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new WebTypeComputeIamMember(&#34;member&#34;, WebTypeComputeIamMemberArgs.builder()        
- *             .project(google_project_service.project_service().project())
+ *             .project(projectService.project())
  *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .condition(WebTypeComputeIamMemberConditionArgs.builder()

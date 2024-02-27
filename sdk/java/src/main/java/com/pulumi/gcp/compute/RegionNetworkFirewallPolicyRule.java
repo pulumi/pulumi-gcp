@@ -35,6 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicy;
  * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyArgs;
  * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.tags.TagKey;
  * import com.pulumi.gcp.tags.TagKeyArgs;
  * import com.pulumi.gcp.tags.TagValue;
@@ -56,6 +57,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basicRegionalNetworksecurityAddressGroup = new AddressGroup(&#34;basicRegionalNetworksecurityAddressGroup&#34;, AddressGroupArgs.builder()        
+ *             .name(&#34;policy&#34;)
  *             .parent(&#34;projects/my-project-name&#34;)
  *             .description(&#34;Sample regional networksecurity_address_group&#34;)
  *             .location(&#34;us-west1&#34;)
@@ -65,12 +67,15 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var basicRegionalNetworkFirewallPolicy = new RegionNetworkFirewallPolicy(&#34;basicRegionalNetworkFirewallPolicy&#34;, RegionNetworkFirewallPolicyArgs.builder()        
+ *             .name(&#34;policy&#34;)
  *             .description(&#34;Sample regional network firewall policy&#34;)
  *             .project(&#34;my-project-name&#34;)
  *             .region(&#34;us-west1&#34;)
  *             .build());
  * 
- *         var basicNetwork = new Network(&#34;basicNetwork&#34;);
+ *         var basicNetwork = new Network(&#34;basicNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;network&#34;)
+ *             .build());
  * 
  *         var basicKey = new TagKey(&#34;basicKey&#34;, TagKeyArgs.builder()        
  *             .description(&#34;For keyname resources.&#34;)

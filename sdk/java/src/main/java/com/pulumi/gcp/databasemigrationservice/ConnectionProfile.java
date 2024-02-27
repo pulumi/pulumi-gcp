@@ -55,7 +55,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileCloudsqlArgs;
  * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileCloudsqlSettingsArgs;
  * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileCloudsqlSettingsIpConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -72,6 +71,7 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var cloudsqldb = new DatabaseInstance(&#34;cloudsqldb&#34;, DatabaseInstanceArgs.builder()        
+ *             .name(&#34;my-database&#34;)
  *             .databaseVersion(&#34;MYSQL_5_7&#34;)
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier(&#34;db-n1-standard-1&#34;)
@@ -83,16 +83,13 @@ import javax.annotation.Nullable;
  *         var sqlClientCert = new SslCert(&#34;sqlClientCert&#34;, SslCertArgs.builder()        
  *             .commonName(&#34;my-cert&#34;)
  *             .instance(cloudsqldb.name())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(cloudsqldb)
- *                 .build());
+ *             .build());
  * 
  *         var sqldbUser = new User(&#34;sqldbUser&#34;, UserArgs.builder()        
+ *             .name(&#34;my-username&#34;)
  *             .instance(cloudsqldb.name())
  *             .password(&#34;my-password&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(sqlClientCert)
- *                 .build());
+ *             .build());
  * 
  *         var cloudsqlprofile = new ConnectionProfile(&#34;cloudsqlprofile&#34;, ConnectionProfileArgs.builder()        
  *             .location(&#34;us-central1&#34;)
@@ -111,9 +108,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .cloudSqlId(&#34;my-database&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(sqldbUser)
- *                 .build());
+ *             .build());
  * 
  *         var cloudsqlprofileDestination = new ConnectionProfile(&#34;cloudsqlprofileDestination&#34;, ConnectionProfileArgs.builder()        
  *             .location(&#34;us-central1&#34;)
@@ -140,9 +135,7 @@ import javax.annotation.Nullable;
  *                     .rootPassword(&#34;testpasscloudsql&#34;)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(cloudsqlprofile)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -165,7 +158,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.databasemigrationservice.ConnectionProfileArgs;
  * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlArgs;
  * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlSslArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -180,6 +172,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var postgresqldb = new DatabaseInstance(&#34;postgresqldb&#34;, DatabaseInstanceArgs.builder()        
+ *             .name(&#34;my-database&#34;)
  *             .databaseVersion(&#34;POSTGRES_12&#34;)
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier(&#34;db-custom-2-13312&#34;)
@@ -190,16 +183,13 @@ import javax.annotation.Nullable;
  *         var sqlClientCert = new SslCert(&#34;sqlClientCert&#34;, SslCertArgs.builder()        
  *             .commonName(&#34;my-cert&#34;)
  *             .instance(postgresqldb.name())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(postgresqldb)
- *                 .build());
+ *             .build());
  * 
  *         var sqldbUser = new User(&#34;sqldbUser&#34;, UserArgs.builder()        
+ *             .name(&#34;my-username&#34;)
  *             .instance(postgresqldb.name())
  *             .password(&#34;my-password&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(sqlClientCert)
- *                 .build());
+ *             .build());
  * 
  *         var postgresprofile = new ConnectionProfile(&#34;postgresprofile&#34;, ConnectionProfileArgs.builder()        
  *             .location(&#34;us-central1&#34;)
@@ -218,9 +208,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .cloudSqlId(&#34;my-database&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(sqldbUser)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -250,17 +238,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var oracleprofile = new ConnectionProfile(&#34;oracleprofile&#34;, ConnectionProfileArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
  *             .connectionProfileId(&#34;my-profileid&#34;)
  *             .displayName(&#34;my-profileid_display&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .location(&#34;us-central1&#34;)
  *             .oracle(ConnectionProfileOracleArgs.builder()
- *                 .databaseService(&#34;dbprovider&#34;)
  *                 .host(&#34;host&#34;)
- *                 .password(&#34;password&#34;)
  *                 .port(1521)
- *                 .staticServiceIpConnectivity()
  *                 .username(&#34;username&#34;)
+ *                 .password(&#34;password&#34;)
+ *                 .databaseService(&#34;dbprovider&#34;)
+ *                 .staticServiceIpConnectivity()
  *                 .build())
  *             .build());
  * 

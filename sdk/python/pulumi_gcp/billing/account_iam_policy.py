@@ -191,8 +191,8 @@ class AccountIamPolicy(pulumi.CustomResource):
 
         editor = gcp.billing.AccountIamBinding("editor",
             billing_account_id="00AA00-000AAA-00AA0A",
-            members=["user:jane@example.com"],
-            role="roles/billing.viewer")
+            role="roles/billing.viewer",
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_billing\\_account\\_iam\\_member
@@ -203,8 +203,8 @@ class AccountIamPolicy(pulumi.CustomResource):
 
         editor = gcp.billing.AccountIamMember("editor",
             billing_account_id="00AA00-000AAA-00AA0A",
-            member="user:jane@example.com",
-            role="roles/billing.viewer")
+            role="roles/billing.viewer",
+            member="user:jane@example.com")
         ```
 
         ## Import
@@ -289,8 +289,8 @@ class AccountIamPolicy(pulumi.CustomResource):
 
         editor = gcp.billing.AccountIamBinding("editor",
             billing_account_id="00AA00-000AAA-00AA0A",
-            members=["user:jane@example.com"],
-            role="roles/billing.viewer")
+            role="roles/billing.viewer",
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_billing\\_account\\_iam\\_member
@@ -301,8 +301,8 @@ class AccountIamPolicy(pulumi.CustomResource):
 
         editor = gcp.billing.AccountIamMember("editor",
             billing_account_id="00AA00-000AAA-00AA0A",
-            member="user:jane@example.com",
-            role="roles/billing.viewer")
+            role="roles/billing.viewer",
+            member="user:jane@example.com")
         ```
 
         ## Import

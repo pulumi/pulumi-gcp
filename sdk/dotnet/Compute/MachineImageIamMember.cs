@@ -52,12 +52,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var policy = new Gcp.Compute.MachineImageIamPolicy("policy", new()
     ///     {
-    ///         Project = google_compute_machine_image.Image.Project,
-    ///         MachineImage = google_compute_machine_image.Image.Name,
+    ///         Project = image.Project,
+    ///         MachineImage = image.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -96,12 +93,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var policy = new Gcp.Compute.MachineImageIamPolicy("policy", new()
     ///     {
-    ///         Project = google_compute_machine_image.Image.Project,
-    ///         MachineImage = google_compute_machine_image.Image.Name,
+    ///         Project = image.Project,
+    ///         MachineImage = image.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -118,16 +112,13 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var binding = new Gcp.Compute.MachineImageIamBinding("binding", new()
     ///     {
-    ///         Project = google_compute_machine_image.Image.Project,
-    ///         MachineImage = google_compute_machine_image.Image.Name,
+    ///         Project = image.Project,
+    ///         MachineImage = image.Name,
     ///         Role = "roles/compute.admin",
     ///         Members = new[]
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -145,8 +136,8 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var binding = new Gcp.Compute.MachineImageIamBinding("binding", new()
     ///     {
-    ///         Project = google_compute_machine_image.Image.Project,
-    ///         MachineImage = google_compute_machine_image.Image.Name,
+    ///         Project = image.Project,
+    ///         MachineImage = image.Name,
     ///         Role = "roles/compute.admin",
     ///         Members = new[]
     ///         {
@@ -158,9 +149,6 @@ namespace Pulumi.Gcp.Compute
     ///             Description = "Expiring at midnight of 2019-12-31",
     ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -177,13 +165,10 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var member = new Gcp.Compute.MachineImageIamMember("member", new()
     ///     {
-    ///         Project = google_compute_machine_image.Image.Project,
-    ///         MachineImage = google_compute_machine_image.Image.Name,
+    ///         Project = image.Project,
+    ///         MachineImage = image.Name,
     ///         Role = "roles/compute.admin",
     ///         Member = "user:jane@example.com",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -201,8 +186,8 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var member = new Gcp.Compute.MachineImageIamMember("member", new()
     ///     {
-    ///         Project = google_compute_machine_image.Image.Project,
-    ///         MachineImage = google_compute_machine_image.Image.Name,
+    ///         Project = image.Project,
+    ///         MachineImage = image.Name,
     ///         Role = "roles/compute.admin",
     ///         Member = "user:jane@example.com",
     ///         Condition = new Gcp.Compute.Inputs.MachineImageIamMemberConditionArgs
@@ -211,9 +196,6 @@ namespace Pulumi.Gcp.Compute
     ///             Description = "Expiring at midnight of 2019-12-31",
     ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

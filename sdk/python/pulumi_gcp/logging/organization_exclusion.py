@@ -224,9 +224,10 @@ class OrganizationExclusion(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_exclusion = gcp.logging.OrganizationExclusion("my-exclusion",
+            name="my-instance-debug-exclusion",
+            org_id="123456789",
             description="Exclude GCE instance debug logs",
-            filter="resource.type = gce_instance AND severity <= DEBUG",
-            org_id="123456789")
+            filter="resource.type = gce_instance AND severity <= DEBUG")
         ```
 
         ## Import
@@ -274,9 +275,10 @@ class OrganizationExclusion(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_exclusion = gcp.logging.OrganizationExclusion("my-exclusion",
+            name="my-instance-debug-exclusion",
+            org_id="123456789",
             description="Exclude GCE instance debug logs",
-            filter="resource.type = gce_instance AND severity <= DEBUG",
-            org_id="123456789")
+            filter="resource.type = gce_instance AND severity <= DEBUG")
         ```
 
         ## Import

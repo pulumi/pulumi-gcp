@@ -67,11 +67,11 @@ namespace Pulumi.Gcp.Healthcare
     ///     var dataset = new Gcp.Healthcare.DatasetIamBinding("dataset", new()
     ///     {
     ///         DatasetId = "your-dataset-id",
+    ///         Role = "roles/editor",
     ///         Members = new[]
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         Role = "roles/editor",
     ///     });
     /// 
     /// });
@@ -90,8 +90,8 @@ namespace Pulumi.Gcp.Healthcare
     ///     var dataset = new Gcp.Healthcare.DatasetIamMember("dataset", new()
     ///     {
     ///         DatasetId = "your-dataset-id",
-    ///         Member = "user:jane@example.com",
     ///         Role = "roles/editor",
+    ///         Member = "user:jane@example.com",
     ///     });
     /// 
     /// });

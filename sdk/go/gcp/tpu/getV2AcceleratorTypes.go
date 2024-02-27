@@ -50,18 +50,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			availableV2AcceleratorTypes, err := tpu.GetV2AcceleratorTypes(ctx, nil, nil)
+//			available, err := tpu.GetV2AcceleratorTypes(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			availableV2RuntimeVersions, err := tpu.GetV2RuntimeVersions(ctx, nil, nil)
+//			availableGetV2RuntimeVersions, err := tpu.GetV2RuntimeVersions(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = tpu.NewV2Vm(ctx, "tpu", &tpu.V2VmArgs{
+//				Name:            pulumi.String("test-tpu"),
 //				Zone:            pulumi.String("us-central1-b"),
-//				RuntimeVersion:  *pulumi.String(availableV2RuntimeVersions.Versions[0]),
-//				AcceleratorType: *pulumi.String(availableV2AcceleratorTypes.Types[0]),
+//				RuntimeVersion:  *pulumi.String(availableGetV2RuntimeVersions.Versions[0]),
+//				AcceleratorType: *pulumi.String(available.Types[0]),
 //			})
 //			if err != nil {
 //				return err

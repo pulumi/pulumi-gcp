@@ -36,12 +36,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.NewScope(ctx, "scope", &gkehub.ScopeArgs{
+//				ScopeId: pulumi.String("my-scope"),
 //				Labels: pulumi.StringMap{
-//					"keya": pulumi.String("valuea"),
 //					"keyb": pulumi.String("valueb"),
+//					"keya": pulumi.String("valuea"),
 //					"keyc": pulumi.String("valuec"),
 //				},
-//				ScopeId: pulumi.String("my-scope"),
 //			})
 //			if err != nil {
 //				return err

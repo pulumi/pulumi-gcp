@@ -500,19 +500,21 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic_regional_networksecurity_address_group = gcp.networksecurity.AddressGroup("basicRegionalNetworksecurityAddressGroup",
+        basic_regional_networksecurity_address_group = gcp.networksecurity.AddressGroup("basic_regional_networksecurity_address_group",
+            name="policy",
             parent="projects/my-project-name",
             description="Sample regional networksecurity_address_group",
             location="us-west1",
             items=["208.80.154.224/32"],
             type="IPV4",
             capacity=100)
-        basic_regional_network_firewall_policy = gcp.compute.RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy",
+        basic_regional_network_firewall_policy = gcp.compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy",
+            name="policy",
             description="Sample regional network firewall policy",
             project="my-project-name",
             region="us-west1")
-        basic_network = gcp.compute.Network("basicNetwork")
-        basic_key = gcp.tags.TagKey("basicKey",
+        basic_network = gcp.compute.Network("basic_network", name="network")
+        basic_key = gcp.tags.TagKey("basic_key",
             description="For keyname resources.",
             parent="organizations/123456789",
             purpose="GCE_FIREWALL",
@@ -520,7 +522,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
             purpose_data={
                 "network": basic_network.name.apply(lambda name: f"my-project-name/{name}"),
             })
-        basic_value = gcp.tags.TagValue("basicValue",
+        basic_value = gcp.tags.TagValue("basic_value",
             description="For valuename resources.",
             parent=basic_key.name.apply(lambda name: f"tagKeys/{name}"),
             short_name="tagvalue")
@@ -611,19 +613,21 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic_regional_networksecurity_address_group = gcp.networksecurity.AddressGroup("basicRegionalNetworksecurityAddressGroup",
+        basic_regional_networksecurity_address_group = gcp.networksecurity.AddressGroup("basic_regional_networksecurity_address_group",
+            name="policy",
             parent="projects/my-project-name",
             description="Sample regional networksecurity_address_group",
             location="us-west1",
             items=["208.80.154.224/32"],
             type="IPV4",
             capacity=100)
-        basic_regional_network_firewall_policy = gcp.compute.RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy",
+        basic_regional_network_firewall_policy = gcp.compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy",
+            name="policy",
             description="Sample regional network firewall policy",
             project="my-project-name",
             region="us-west1")
-        basic_network = gcp.compute.Network("basicNetwork")
-        basic_key = gcp.tags.TagKey("basicKey",
+        basic_network = gcp.compute.Network("basic_network", name="network")
+        basic_key = gcp.tags.TagKey("basic_key",
             description="For keyname resources.",
             parent="organizations/123456789",
             purpose="GCE_FIREWALL",
@@ -631,7 +635,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
             purpose_data={
                 "network": basic_network.name.apply(lambda name: f"my-project-name/{name}"),
             })
-        basic_value = gcp.tags.TagValue("basicValue",
+        basic_value = gcp.tags.TagValue("basic_value",
             description="For valuename resources.",
             parent=basic_key.name.apply(lambda name: f"tagKeys/{name}"),
             short_name="tagvalue")

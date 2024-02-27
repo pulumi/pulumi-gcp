@@ -17,9 +17,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const foobar = new gcp.compute.RouterInterface("foobar", {
- *     ipRange: "169.254.1.1/30",
- *     region: "us-central1",
+ *     name: "interface-1",
  *     router: "router-1",
+ *     region: "us-central1",
+ *     ipRange: "169.254.1.1/30",
  *     vpnTunnel: "tunnel-1",
  * });
  * ```

@@ -720,10 +720,10 @@ class Repository(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_repo = gcp.artifactregistry.Repository("my-repo",
-            description="example docker repository",
-            format="DOCKER",
             location="us-central1",
-            repository_id="my-repository")
+            repository_id="my-repository",
+            description="example docker repository",
+            format="DOCKER")
         ```
         ### Artifact Registry Repository Docker
 
@@ -732,13 +732,13 @@ class Repository(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="my-repository",
             description="example docker repository",
+            format="DOCKER",
             docker_config=gcp.artifactregistry.RepositoryDockerConfigArgs(
                 immutable_tags=True,
-            ),
-            format="DOCKER",
-            location="us-central1",
-            repository_id="my-repository")
+            ))
         ```
         ### Artifact Registry Repository Cmek
 
@@ -746,18 +746,17 @@ class Repository(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.get_project()
-        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
-            crypto_key_id="kms-key",
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
         my_repo = gcp.artifactregistry.Repository("my-repo",
             location="us-central1",
             repository_id="my-repository",
             description="example docker repository with cmek",
             format="DOCKER",
-            kms_key_name="kms-key",
-            opts=pulumi.ResourceOptions(depends_on=[crypto_key]))
+            kms_key_name="kms-key")
+        project = gcp.organizations.get_project()
+        crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
+            crypto_key_id="kms-key",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
         ```
         ### Artifact Registry Repository Virtual
 
@@ -794,8 +793,7 @@ class Repository(pulumi.CustomResource):
                         priority=10,
                     ),
                 ],
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[]))
+            ))
         ```
         ### Artifact Registry Repository Remote
 
@@ -804,17 +802,17 @@ class Repository(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="my-repository",
             description="example remote docker repository",
             format="DOCKER",
-            location="us-central1",
             mode="REMOTE_REPOSITORY",
             remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
                 description="docker hub",
                 docker_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryArgs(
                     public_repository="DOCKER_HUB",
                 ),
-            ),
-            repository_id="my-repository")
+            ))
         ```
         ### Artifact Registry Repository Remote Apt
 
@@ -823,20 +821,20 @@ class Repository(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="debian-buster",
             description="example remote apt repository",
             format="APT",
-            location="us-central1",
             mode="REMOTE_REPOSITORY",
             remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
+                description="Debian buster remote repository",
                 apt_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigAptRepositoryArgs(
                     public_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs(
                         repository_base="DEBIAN",
                         repository_path="debian/dists/buster",
                     ),
                 ),
-                description="Debian buster remote repository",
-            ),
-            repository_id="debian-buster")
+            ))
         ```
         ### Artifact Registry Repository Remote Yum
 
@@ -845,9 +843,10 @@ class Repository(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="centos-8",
             description="example remote yum repository",
             format="YUM",
-            location="us-central1",
             mode="REMOTE_REPOSITORY",
             remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
                 description="Centos 8 remote repository",
@@ -857,8 +856,7 @@ class Repository(pulumi.CustomResource):
                         repository_path="centos/8-stream/BaseOS/x86_64/os",
                     ),
                 ),
-            ),
-            repository_id="centos-8")
+            ))
         ```
         ### Artifact Registry Repository Cleanup
 
@@ -867,49 +865,49 @@ class Repository(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="my-repository",
+            description="example docker repository with cleanup policies",
+            format="DOCKER",
+            cleanup_policy_dry_run=False,
             cleanup_policies=[
                 gcp.artifactregistry.RepositoryCleanupPolicyArgs(
+                    id="delete-prerelease",
                     action="DELETE",
                     condition=gcp.artifactregistry.RepositoryCleanupPolicyConditionArgs(
-                        older_than="2592000s",
+                        tag_state="TAGGED",
                         tag_prefixes=[
                             "alpha",
                             "v0",
                         ],
-                        tag_state="TAGGED",
+                        older_than="2592000s",
                     ),
-                    id="delete-prerelease",
                 ),
                 gcp.artifactregistry.RepositoryCleanupPolicyArgs(
+                    id="keep-tagged-release",
                     action="KEEP",
                     condition=gcp.artifactregistry.RepositoryCleanupPolicyConditionArgs(
+                        tag_state="TAGGED",
+                        tag_prefixes=["release"],
                         package_name_prefixes=[
                             "webapp",
                             "mobile",
                         ],
-                        tag_prefixes=["release"],
-                        tag_state="TAGGED",
                     ),
-                    id="keep-tagged-release",
                 ),
                 gcp.artifactregistry.RepositoryCleanupPolicyArgs(
-                    action="KEEP",
                     id="keep-minimum-versions",
+                    action="KEEP",
                     most_recent_versions=gcp.artifactregistry.RepositoryCleanupPolicyMostRecentVersionsArgs(
-                        keep_count=5,
                         package_name_prefixes=[
                             "webapp",
                             "mobile",
                             "sandbox",
                         ],
+                        keep_count=5,
                     ),
                 ),
-            ],
-            cleanup_policy_dry_run=False,
-            description="example docker repository with cleanup policies",
-            format="DOCKER",
-            location="us-central1",
-            repository_id="my-repository")
+            ])
         ```
         ### Artifact Registry Repository Remote Custom
 
@@ -923,7 +921,7 @@ class Repository(pulumi.CustomResource):
             replication=gcp.secretmanager.SecretReplicationArgs(
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
-        example_custom_remote_secret_version = gcp.secretmanager.SecretVersion("example-custom-remote-secretVersion",
+        example_custom_remote_secret_version = gcp.secretmanager.SecretVersion("example-custom-remote-secret_version",
             secret=example_custom_remote_secret.id,
             secret_data="remote-password")
         secret_access = gcp.secretmanager.SecretIamMember("secret-access",
@@ -1051,10 +1049,10 @@ class Repository(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_repo = gcp.artifactregistry.Repository("my-repo",
-            description="example docker repository",
-            format="DOCKER",
             location="us-central1",
-            repository_id="my-repository")
+            repository_id="my-repository",
+            description="example docker repository",
+            format="DOCKER")
         ```
         ### Artifact Registry Repository Docker
 
@@ -1063,13 +1061,13 @@ class Repository(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="my-repository",
             description="example docker repository",
+            format="DOCKER",
             docker_config=gcp.artifactregistry.RepositoryDockerConfigArgs(
                 immutable_tags=True,
-            ),
-            format="DOCKER",
-            location="us-central1",
-            repository_id="my-repository")
+            ))
         ```
         ### Artifact Registry Repository Cmek
 
@@ -1077,18 +1075,17 @@ class Repository(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.get_project()
-        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
-            crypto_key_id="kms-key",
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
         my_repo = gcp.artifactregistry.Repository("my-repo",
             location="us-central1",
             repository_id="my-repository",
             description="example docker repository with cmek",
             format="DOCKER",
-            kms_key_name="kms-key",
-            opts=pulumi.ResourceOptions(depends_on=[crypto_key]))
+            kms_key_name="kms-key")
+        project = gcp.organizations.get_project()
+        crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
+            crypto_key_id="kms-key",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
         ```
         ### Artifact Registry Repository Virtual
 
@@ -1125,8 +1122,7 @@ class Repository(pulumi.CustomResource):
                         priority=10,
                     ),
                 ],
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[]))
+            ))
         ```
         ### Artifact Registry Repository Remote
 
@@ -1135,17 +1131,17 @@ class Repository(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="my-repository",
             description="example remote docker repository",
             format="DOCKER",
-            location="us-central1",
             mode="REMOTE_REPOSITORY",
             remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
                 description="docker hub",
                 docker_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryArgs(
                     public_repository="DOCKER_HUB",
                 ),
-            ),
-            repository_id="my-repository")
+            ))
         ```
         ### Artifact Registry Repository Remote Apt
 
@@ -1154,20 +1150,20 @@ class Repository(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="debian-buster",
             description="example remote apt repository",
             format="APT",
-            location="us-central1",
             mode="REMOTE_REPOSITORY",
             remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
+                description="Debian buster remote repository",
                 apt_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigAptRepositoryArgs(
                     public_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs(
                         repository_base="DEBIAN",
                         repository_path="debian/dists/buster",
                     ),
                 ),
-                description="Debian buster remote repository",
-            ),
-            repository_id="debian-buster")
+            ))
         ```
         ### Artifact Registry Repository Remote Yum
 
@@ -1176,9 +1172,10 @@ class Repository(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="centos-8",
             description="example remote yum repository",
             format="YUM",
-            location="us-central1",
             mode="REMOTE_REPOSITORY",
             remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
                 description="Centos 8 remote repository",
@@ -1188,8 +1185,7 @@ class Repository(pulumi.CustomResource):
                         repository_path="centos/8-stream/BaseOS/x86_64/os",
                     ),
                 ),
-            ),
-            repository_id="centos-8")
+            ))
         ```
         ### Artifact Registry Repository Cleanup
 
@@ -1198,49 +1194,49 @@ class Repository(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="my-repository",
+            description="example docker repository with cleanup policies",
+            format="DOCKER",
+            cleanup_policy_dry_run=False,
             cleanup_policies=[
                 gcp.artifactregistry.RepositoryCleanupPolicyArgs(
+                    id="delete-prerelease",
                     action="DELETE",
                     condition=gcp.artifactregistry.RepositoryCleanupPolicyConditionArgs(
-                        older_than="2592000s",
+                        tag_state="TAGGED",
                         tag_prefixes=[
                             "alpha",
                             "v0",
                         ],
-                        tag_state="TAGGED",
+                        older_than="2592000s",
                     ),
-                    id="delete-prerelease",
                 ),
                 gcp.artifactregistry.RepositoryCleanupPolicyArgs(
+                    id="keep-tagged-release",
                     action="KEEP",
                     condition=gcp.artifactregistry.RepositoryCleanupPolicyConditionArgs(
+                        tag_state="TAGGED",
+                        tag_prefixes=["release"],
                         package_name_prefixes=[
                             "webapp",
                             "mobile",
                         ],
-                        tag_prefixes=["release"],
-                        tag_state="TAGGED",
                     ),
-                    id="keep-tagged-release",
                 ),
                 gcp.artifactregistry.RepositoryCleanupPolicyArgs(
-                    action="KEEP",
                     id="keep-minimum-versions",
+                    action="KEEP",
                     most_recent_versions=gcp.artifactregistry.RepositoryCleanupPolicyMostRecentVersionsArgs(
-                        keep_count=5,
                         package_name_prefixes=[
                             "webapp",
                             "mobile",
                             "sandbox",
                         ],
+                        keep_count=5,
                     ),
                 ),
-            ],
-            cleanup_policy_dry_run=False,
-            description="example docker repository with cleanup policies",
-            format="DOCKER",
-            location="us-central1",
-            repository_id="my-repository")
+            ])
         ```
         ### Artifact Registry Repository Remote Custom
 
@@ -1254,7 +1250,7 @@ class Repository(pulumi.CustomResource):
             replication=gcp.secretmanager.SecretReplicationArgs(
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
-        example_custom_remote_secret_version = gcp.secretmanager.SecretVersion("example-custom-remote-secretVersion",
+        example_custom_remote_secret_version = gcp.secretmanager.SecretVersion("example-custom-remote-secret_version",
             secret=example_custom_remote_secret.id,
             secret_data="remote-password")
         secret_access = gcp.secretmanager.SecretIamMember("secret-access",

@@ -149,12 +149,12 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testDataset = new Gcp.BigQuery.Dataset("testDataset", new()
+    ///     var test = new Gcp.BigQuery.Dataset("test", new()
     ///     {
     ///         DatasetId = "dataset_id",
     ///     });
     /// 
-    ///     var testConnection = new Gcp.BigQuery.Connection("testConnection", new()
+    ///     var testConnection = new Gcp.BigQuery.Connection("test", new()
     ///     {
     ///         ConnectionId = "connection_id",
     ///         Location = "US",
@@ -163,7 +163,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     ///     var pyspark = new Gcp.BigQuery.Routine("pyspark", new()
     ///     {
-    ///         DatasetId = testDataset.DatasetId,
+    ///         DatasetId = test.DatasetId,
     ///         RoutineId = "routine_id",
     ///         RoutineType = "PROCEDURE",
     ///         Language = "PYTHON",
@@ -206,21 +206,21 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testDataset = new Gcp.BigQuery.Dataset("testDataset", new()
+    ///     var test = new Gcp.BigQuery.Dataset("test", new()
     ///     {
     ///         DatasetId = "dataset_id",
     ///     });
     /// 
-    ///     var testConnection = new Gcp.BigQuery.Connection("testConnection", new()
+    ///     var testConnection = new Gcp.BigQuery.Connection("test", new()
     ///     {
     ///         ConnectionId = "connection_id",
     ///         Location = "US",
     ///         Spark = null,
     ///     });
     /// 
-    ///     var pysparkMainfile = new Gcp.BigQuery.Routine("pysparkMainfile", new()
+    ///     var pysparkMainfile = new Gcp.BigQuery.Routine("pyspark_mainfile", new()
     ///     {
-    ///         DatasetId = testDataset.DatasetId,
+    ///         DatasetId = test.DatasetId,
     ///         RoutineId = "routine_id",
     ///         RoutineType = "PROCEDURE",
     ///         Language = "PYTHON",
@@ -257,21 +257,21 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testDataset = new Gcp.BigQuery.Dataset("testDataset", new()
+    ///     var test = new Gcp.BigQuery.Dataset("test", new()
     ///     {
     ///         DatasetId = "dataset_id",
     ///     });
     /// 
-    ///     var testConnection = new Gcp.BigQuery.Connection("testConnection", new()
+    ///     var testConnection = new Gcp.BigQuery.Connection("test", new()
     ///     {
     ///         ConnectionId = "connection_id",
     ///         Location = "US",
     ///         Spark = null,
     ///     });
     /// 
-    ///     var sparkJar = new Gcp.BigQuery.Routine("sparkJar", new()
+    ///     var sparkJar = new Gcp.BigQuery.Routine("spark_jar", new()
     ///     {
-    ///         DatasetId = testDataset.DatasetId,
+    ///         DatasetId = test.DatasetId,
     ///         RoutineId = "routine_id",
     ///         RoutineType = "PROCEDURE",
     ///         Language = "SCALA",

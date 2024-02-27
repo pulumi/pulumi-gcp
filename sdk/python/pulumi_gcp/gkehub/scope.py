@@ -310,12 +310,12 @@ class Scope(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         scope = gcp.gkehub.Scope("scope",
+            scope_id="my-scope",
             labels={
-                "keya": "valuea",
                 "keyb": "valueb",
+                "keya": "valuea",
                 "keyc": "valuec",
-            },
-            scope_id="my-scope")
+            })
         ```
 
         ## Import
@@ -378,12 +378,12 @@ class Scope(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         scope = gcp.gkehub.Scope("scope",
+            scope_id="my-scope",
             labels={
-                "keya": "valuea",
                 "keyb": "valueb",
+                "keya": "valuea",
                 "keyc": "valuec",
-            },
-            scope_id="my-scope")
+            })
         ```
 
         ## Import

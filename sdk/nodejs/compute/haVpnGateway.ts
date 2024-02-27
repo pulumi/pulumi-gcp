@@ -25,9 +25,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const network1 = new gcp.compute.Network("network1", {autoCreateSubnetworks: false});
- * const haGateway1 = new gcp.compute.HaVpnGateway("haGateway1", {
+ * const network1 = new gcp.compute.Network("network1", {
+ *     name: "network1",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const haGateway1 = new gcp.compute.HaVpnGateway("ha_gateway1", {
  *     region: "us-central1",
+ *     name: "ha-vpn-1",
  *     network: network1.id,
  * });
  * ```
@@ -37,9 +41,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const network1 = new gcp.compute.Network("network1", {autoCreateSubnetworks: false});
- * const haGateway1 = new gcp.compute.HaVpnGateway("haGateway1", {
+ * const network1 = new gcp.compute.Network("network1", {
+ *     name: "network1",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const haGateway1 = new gcp.compute.HaVpnGateway("ha_gateway1", {
  *     region: "us-central1",
+ *     name: "ha-vpn-1",
  *     network: network1.id,
  *     stackType: "IPV4_IPV6",
  * });
@@ -50,8 +58,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false});
+ * const network = new gcp.compute.Network("network", {
+ *     name: "test-network",
+ *     autoCreateSubnetworks: false,
+ * });
  * const address1 = new gcp.compute.Address("address1", {
+ *     name: "test-address1",
  *     addressType: "INTERNAL",
  *     purpose: "IPSEC_INTERCONNECT",
  *     address: "192.168.1.0",
@@ -59,6 +71,7 @@ import * as utilities from "../utilities";
  *     network: network.selfLink,
  * });
  * const router = new gcp.compute.Router("router", {
+ *     name: "test-router",
  *     network: network.name,
  *     encryptedInterconnectRouter: true,
  *     bgp: {
@@ -66,6 +79,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const attachment1 = new gcp.compute.InterconnectAttachment("attachment1", {
+ *     name: "test-interconnect-attachment1",
  *     edgeAvailabilityDomain: "AVAILABILITY_DOMAIN_1",
  *     type: "PARTNER",
  *     router: router.id,
@@ -73,6 +87,7 @@ import * as utilities from "../utilities";
  *     ipsecInternalAddresses: [address1.selfLink],
  * });
  * const address2 = new gcp.compute.Address("address2", {
+ *     name: "test-address2",
  *     addressType: "INTERNAL",
  *     purpose: "IPSEC_INTERCONNECT",
  *     address: "192.168.2.0",
@@ -80,6 +95,7 @@ import * as utilities from "../utilities";
  *     network: network.selfLink,
  * });
  * const attachment2 = new gcp.compute.InterconnectAttachment("attachment2", {
+ *     name: "test-interconnect-attachment2",
  *     edgeAvailabilityDomain: "AVAILABILITY_DOMAIN_2",
  *     type: "PARTNER",
  *     router: router.id,
@@ -87,6 +103,7 @@ import * as utilities from "../utilities";
  *     ipsecInternalAddresses: [address2.selfLink],
  * });
  * const vpn_gateway = new gcp.compute.HaVpnGateway("vpn-gateway", {
+ *     name: "test-ha-vpngw",
  *     network: network.id,
  *     vpnInterfaces: [
  *         {

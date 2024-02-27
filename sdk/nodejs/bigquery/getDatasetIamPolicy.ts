@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.bigquery.getDatasetIamPolicy({
- *     datasetId: google_bigquery_dataset.dataset.dataset_id,
+ *     datasetId: dataset.datasetId,
  * });
  * ```
  */
@@ -71,7 +71,7 @@ export interface GetDatasetIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.bigquery.getDatasetIamPolicy({
- *     datasetId: google_bigquery_dataset.dataset.dataset_id,
+ *     datasetId: dataset.datasetId,
  * });
  * ```
  */

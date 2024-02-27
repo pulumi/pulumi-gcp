@@ -31,17 +31,21 @@ namespace Pulumi.Gcp.Apigee
     /// {
     ///     var current = Gcp.Organizations.GetClientConfig.Invoke();
     /// 
-    ///     var apigeeNetwork = new Gcp.Compute.Network("apigeeNetwork");
-    /// 
-    ///     var apigeeRange = new Gcp.Compute.GlobalAddress("apigeeRange", new()
+    ///     var apigeeNetwork = new Gcp.Compute.Network("apigee_network", new()
     ///     {
+    ///         Name = "apigee-network",
+    ///     });
+    /// 
+    ///     var apigeeRange = new Gcp.Compute.GlobalAddress("apigee_range", new()
+    ///     {
+    ///         Name = "apigee-range",
     ///         Purpose = "VPC_PEERING",
     ///         AddressType = "INTERNAL",
     ///         PrefixLength = 16,
     ///         Network = apigeeNetwork.Id,
     ///     });
     /// 
-    ///     var apigeeVpcConnection = new Gcp.ServiceNetworking.Connection("apigeeVpcConnection", new()
+    ///     var apigeeVpcConnection = new Gcp.ServiceNetworking.Connection("apigee_vpc_connection", new()
     ///     {
     ///         Network = apigeeNetwork.Id,
     ///         Service = "servicenetworking.googleapis.com",
@@ -51,21 +55,16 @@ namespace Pulumi.Gcp.Apigee
     ///         },
     ///     });
     /// 
-    ///     var apigeeOrg = new Gcp.Apigee.Organization("apigeeOrg", new()
+    ///     var apigeeOrg = new Gcp.Apigee.Organization("apigee_org", new()
     ///     {
     ///         AnalyticsRegion = "us-central1",
     ///         ProjectId = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
     ///         AuthorizedNetwork = apigeeNetwork.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             apigeeVpcConnection,
-    ///         },
     ///     });
     /// 
-    ///     var apigeeInstance = new Gcp.Apigee.Instance("apigeeInstance", new()
+    ///     var apigeeInstance = new Gcp.Apigee.Instance("apigee_instance", new()
     ///     {
+    ///         Name = "my-instance-name",
     ///         Location = "us-central1",
     ///         OrgId = apigeeOrg.Id,
     ///     });
@@ -84,17 +83,21 @@ namespace Pulumi.Gcp.Apigee
     /// {
     ///     var current = Gcp.Organizations.GetClientConfig.Invoke();
     /// 
-    ///     var apigeeNetwork = new Gcp.Compute.Network("apigeeNetwork");
-    /// 
-    ///     var apigeeRange = new Gcp.Compute.GlobalAddress("apigeeRange", new()
+    ///     var apigeeNetwork = new Gcp.Compute.Network("apigee_network", new()
     ///     {
+    ///         Name = "apigee-network",
+    ///     });
+    /// 
+    ///     var apigeeRange = new Gcp.Compute.GlobalAddress("apigee_range", new()
+    ///     {
+    ///         Name = "apigee-range",
     ///         Purpose = "VPC_PEERING",
     ///         AddressType = "INTERNAL",
     ///         PrefixLength = 22,
     ///         Network = apigeeNetwork.Id,
     ///     });
     /// 
-    ///     var apigeeVpcConnection = new Gcp.ServiceNetworking.Connection("apigeeVpcConnection", new()
+    ///     var apigeeVpcConnection = new Gcp.ServiceNetworking.Connection("apigee_vpc_connection", new()
     ///     {
     ///         Network = apigeeNetwork.Id,
     ///         Service = "servicenetworking.googleapis.com",
@@ -104,21 +107,16 @@ namespace Pulumi.Gcp.Apigee
     ///         },
     ///     });
     /// 
-    ///     var apigeeOrg = new Gcp.Apigee.Organization("apigeeOrg", new()
+    ///     var apigeeOrg = new Gcp.Apigee.Organization("apigee_org", new()
     ///     {
     ///         AnalyticsRegion = "us-central1",
     ///         ProjectId = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
     ///         AuthorizedNetwork = apigeeNetwork.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             apigeeVpcConnection,
-    ///         },
     ///     });
     /// 
-    ///     var apigeeInstance = new Gcp.Apigee.Instance("apigeeInstance", new()
+    ///     var apigeeInstance = new Gcp.Apigee.Instance("apigee_instance", new()
     ///     {
+    ///         Name = "my-instance-name",
     ///         Location = "us-central1",
     ///         OrgId = apigeeOrg.Id,
     ///         PeeringCidrRange = "SLASH_22",
@@ -138,17 +136,21 @@ namespace Pulumi.Gcp.Apigee
     /// {
     ///     var current = Gcp.Organizations.GetClientConfig.Invoke();
     /// 
-    ///     var apigeeNetwork = new Gcp.Compute.Network("apigeeNetwork");
-    /// 
-    ///     var apigeeRange = new Gcp.Compute.GlobalAddress("apigeeRange", new()
+    ///     var apigeeNetwork = new Gcp.Compute.Network("apigee_network", new()
     ///     {
+    ///         Name = "apigee-network",
+    ///     });
+    /// 
+    ///     var apigeeRange = new Gcp.Compute.GlobalAddress("apigee_range", new()
+    ///     {
+    ///         Name = "apigee-range",
     ///         Purpose = "VPC_PEERING",
     ///         AddressType = "INTERNAL",
     ///         PrefixLength = 22,
     ///         Network = apigeeNetwork.Id,
     ///     });
     /// 
-    ///     var apigeeVpcConnection = new Gcp.ServiceNetworking.Connection("apigeeVpcConnection", new()
+    ///     var apigeeVpcConnection = new Gcp.ServiceNetworking.Connection("apigee_vpc_connection", new()
     ///     {
     ///         Network = apigeeNetwork.Id,
     ///         Service = "servicenetworking.googleapis.com",
@@ -158,21 +160,16 @@ namespace Pulumi.Gcp.Apigee
     ///         },
     ///     });
     /// 
-    ///     var apigeeOrg = new Gcp.Apigee.Organization("apigeeOrg", new()
+    ///     var apigeeOrg = new Gcp.Apigee.Organization("apigee_org", new()
     ///     {
     ///         AnalyticsRegion = "us-central1",
     ///         ProjectId = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
     ///         AuthorizedNetwork = apigeeNetwork.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             apigeeVpcConnection,
-    ///         },
     ///     });
     /// 
-    ///     var apigeeInstance = new Gcp.Apigee.Instance("apigeeInstance", new()
+    ///     var apigeeInstance = new Gcp.Apigee.Instance("apigee_instance", new()
     ///     {
+    ///         Name = "my-instance-name",
     ///         Location = "us-central1",
     ///         OrgId = apigeeOrg.Id,
     ///         IpRange = "10.87.8.0/22",
@@ -192,17 +189,21 @@ namespace Pulumi.Gcp.Apigee
     /// {
     ///     var current = Gcp.Organizations.GetClientConfig.Invoke();
     /// 
-    ///     var apigeeNetwork = new Gcp.Compute.Network("apigeeNetwork");
-    /// 
-    ///     var apigeeRange = new Gcp.Compute.GlobalAddress("apigeeRange", new()
+    ///     var apigeeNetwork = new Gcp.Compute.Network("apigee_network", new()
     ///     {
+    ///         Name = "apigee-network",
+    ///     });
+    /// 
+    ///     var apigeeRange = new Gcp.Compute.GlobalAddress("apigee_range", new()
+    ///     {
+    ///         Name = "apigee-range",
     ///         Purpose = "VPC_PEERING",
     ///         AddressType = "INTERNAL",
     ///         PrefixLength = 16,
     ///         Network = apigeeNetwork.Id,
     ///     });
     /// 
-    ///     var apigeeVpcConnection = new Gcp.ServiceNetworking.Connection("apigeeVpcConnection", new()
+    ///     var apigeeVpcConnection = new Gcp.ServiceNetworking.Connection("apigee_vpc_connection", new()
     ///     {
     ///         Network = apigeeNetwork.Id,
     ///         Service = "servicenetworking.googleapis.com",
@@ -212,33 +213,32 @@ namespace Pulumi.Gcp.Apigee
     ///         },
     ///     });
     /// 
-    ///     var apigeeKeyring = new Gcp.Kms.KeyRing("apigeeKeyring", new()
+    ///     var apigeeKeyring = new Gcp.Kms.KeyRing("apigee_keyring", new()
     ///     {
+    ///         Name = "apigee-keyring",
     ///         Location = "us-central1",
     ///     });
     /// 
-    ///     var apigeeKey = new Gcp.Kms.CryptoKey("apigeeKey", new()
+    ///     var apigeeKey = new Gcp.Kms.CryptoKey("apigee_key", new()
     ///     {
+    ///         Name = "apigee-key",
     ///         KeyRing = apigeeKeyring.Id,
     ///     });
     /// 
-    ///     var apigeeSa = new Gcp.Projects.ServiceIdentity("apigeeSa", new()
+    ///     var apigeeSa = new Gcp.Projects.ServiceIdentity("apigee_sa", new()
     ///     {
-    ///         Project = google_project.Project.Project_id,
-    ///         Service = google_project_service.Apigee.Service,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Project = project.ProjectId,
+    ///         Service = apigee.Service,
     ///     });
     /// 
-    ///     var apigeeSaKeyuser = new Gcp.Kms.CryptoKeyIAMMember("apigeeSaKeyuser", new()
+    ///     var apigeeSaKeyuser = new Gcp.Kms.CryptoKeyIAMMember("apigee_sa_keyuser", new()
     ///     {
     ///         CryptoKeyId = apigeeKey.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
     ///         Member = apigeeSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
     ///     });
     /// 
-    ///     var apigeeOrg = new Gcp.Apigee.Organization("apigeeOrg", new()
+    ///     var apigeeOrg = new Gcp.Apigee.Organization("apigee_org", new()
     ///     {
     ///         AnalyticsRegion = "us-central1",
     ///         DisplayName = "apigee-org",
@@ -246,17 +246,11 @@ namespace Pulumi.Gcp.Apigee
     ///         ProjectId = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
     ///         AuthorizedNetwork = apigeeNetwork.Id,
     ///         RuntimeDatabaseEncryptionKeyName = apigeeKey.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             apigeeVpcConnection,
-    ///             apigeeSaKeyuser,
-    ///         },
     ///     });
     /// 
-    ///     var apigeeInstance = new Gcp.Apigee.Instance("apigeeInstance", new()
+    ///     var apigeeInstance = new Gcp.Apigee.Instance("apigee_instance", new()
     ///     {
+    ///         Name = "my-instance-name",
     ///         Location = "us-central1",
     ///         Description = "Auto-managed Apigee Runtime Instance",
     ///         DisplayName = "my-instance-name",

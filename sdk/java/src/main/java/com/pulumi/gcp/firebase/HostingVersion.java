@@ -31,7 +31,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.firebase.inputs.HostingVersionConfigArgs;
  * import com.pulumi.gcp.firebase.HostingRelease;
  * import com.pulumi.gcp.firebase.HostingReleaseArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -45,15 +44,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHostingSite = new HostingSite(&#34;defaultHostingSite&#34;, HostingSiteArgs.builder()        
+ *         var default_ = new HostingSite(&#34;default&#34;, HostingSiteArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .siteId(&#34;site-id&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultHostingVersion = new HostingVersion(&#34;defaultHostingVersion&#34;, HostingVersionArgs.builder()        
- *             .siteId(defaultHostingSite.siteId())
+ *             .siteId(default_.siteId())
  *             .config(HostingVersionConfigArgs.builder()
  *                 .redirects(HostingVersionConfigRedirectArgs.builder()
  *                     .glob(&#34;/google/**&#34;)
@@ -61,17 +58,13 @@ import javax.annotation.Nullable;
  *                     .location(&#34;https://www.google.com&#34;)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultHostingRelease = new HostingRelease(&#34;defaultHostingRelease&#34;, HostingReleaseArgs.builder()        
- *             .siteId(defaultHostingSite.siteId())
+ *             .siteId(default_.siteId())
  *             .versionName(defaultHostingVersion.name())
  *             .message(&#34;Redirect to Google&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -93,7 +86,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.firebase.inputs.HostingVersionConfigArgs;
  * import com.pulumi.gcp.firebase.HostingRelease;
  * import com.pulumi.gcp.firebase.HostingReleaseArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -107,15 +99,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHostingSite = new HostingSite(&#34;defaultHostingSite&#34;, HostingSiteArgs.builder()        
+ *         var default_ = new HostingSite(&#34;default&#34;, HostingSiteArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .siteId(&#34;site-id&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
+ *             .name(&#34;cloud-run-service-via-hosting&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .ingress(&#34;INGRESS_TRAFFIC_ALL&#34;)
  *             .template(ServiceTemplateArgs.builder()
@@ -123,12 +114,10 @@ import javax.annotation.Nullable;
  *                     .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultHostingVersion = new HostingVersion(&#34;defaultHostingVersion&#34;, HostingVersionArgs.builder()        
- *             .siteId(defaultHostingSite.siteId())
+ *             .siteId(default_.siteId())
  *             .config(HostingVersionConfigArgs.builder()
  *                 .rewrites(HostingVersionConfigRewriteArgs.builder()
  *                     .glob(&#34;/hello/**&#34;)
@@ -138,17 +127,13 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultHostingRelease = new HostingRelease(&#34;defaultHostingRelease&#34;, HostingReleaseArgs.builder()        
- *             .siteId(defaultHostingSite.siteId())
+ *             .siteId(default_.siteId())
  *             .versionName(defaultHostingVersion.name())
  *             .message(&#34;Cloud Run Integration&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -173,7 +158,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.firebase.inputs.HostingVersionConfigArgs;
  * import com.pulumi.gcp.firebase.HostingRelease;
  * import com.pulumi.gcp.firebase.HostingReleaseArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import com.pulumi.asset.FileAsset;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -188,30 +172,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHostingSite = new HostingSite(&#34;defaultHostingSite&#34;, HostingSiteArgs.builder()        
+ *         var default_ = new HostingSite(&#34;default&#34;, HostingSiteArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .siteId(&#34;site-id&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
+ *             .name(&#34;site-id-function-source&#34;)
  *             .location(&#34;US&#34;)
  *             .uniformBucketLevelAccess(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
+ *             .name(&#34;function-source.zip&#34;)
  *             .bucket(bucket.name())
  *             .source(new FileAsset(&#34;function-source.zip&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var function = new Function(&#34;function&#34;, FunctionArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
+ *             .name(&#34;cloud-function-via-hosting&#34;)
  *             .description(&#34;A Cloud Function connected to Firebase Hosing&#34;)
  *             .runtime(&#34;nodejs16&#34;)
  *             .availableMemoryMb(128)
@@ -219,29 +200,23 @@ import javax.annotation.Nullable;
  *             .sourceArchiveObject(object.name())
  *             .triggerHttp(true)
  *             .entryPoint(&#34;helloHttp&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultHostingVersion = new HostingVersion(&#34;defaultHostingVersion&#34;, HostingVersionArgs.builder()        
- *             .siteId(defaultHostingSite.siteId())
+ *             .siteId(default_.siteId())
  *             .config(HostingVersionConfigArgs.builder()
  *                 .rewrites(HostingVersionConfigRewriteArgs.builder()
  *                     .glob(&#34;/hello/**&#34;)
  *                     .function(function.name())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultHostingRelease = new HostingRelease(&#34;defaultHostingRelease&#34;, HostingReleaseArgs.builder()        
- *             .siteId(defaultHostingSite.siteId())
+ *             .siteId(default_.siteId())
  *             .versionName(defaultHostingVersion.name())
  *             .message(&#34;Cloud Functions Integration&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

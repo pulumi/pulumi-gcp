@@ -482,18 +482,19 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        feature_online_store = gcp.vertex.AiFeatureOnlineStore("featureOnlineStore",
-            bigtable=gcp.vertex.AiFeatureOnlineStoreBigtableArgs(
-                auto_scaling=gcp.vertex.AiFeatureOnlineStoreBigtableAutoScalingArgs(
-                    cpu_utilization_target=50,
-                    max_node_count=3,
-                    min_node_count=1,
-                ),
-            ),
+        feature_online_store = gcp.vertex.AiFeatureOnlineStore("feature_online_store",
+            name="example_feature_online_store",
             labels={
                 "foo": "bar",
             },
-            region="us-central1")
+            region="us-central1",
+            bigtable=gcp.vertex.AiFeatureOnlineStoreBigtableArgs(
+                auto_scaling=gcp.vertex.AiFeatureOnlineStoreBigtableAutoScalingArgs(
+                    min_node_count=1,
+                    max_node_count=3,
+                    cpu_utilization_target=50,
+                ),
+            ))
         ```
         ### Vertex Ai Featureonlinestore With Beta Fields Optimized
 
@@ -503,6 +504,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         featureonlinestore = gcp.vertex.AiFeatureOnlineStore("featureonlinestore",
+            name="example_feature_online_store_optimized",
             labels={
                 "foo": "bar",
             },
@@ -513,8 +515,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                     enable_private_service_connect=True,
                     project_allowlists=[project.number],
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Vertex Ai Featureonlinestore With Beta Fields Bigtable
 
@@ -523,6 +524,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featureonlinestore = gcp.vertex.AiFeatureOnlineStore("featureonlinestore",
+            name="example_feature_online_store_beta_bigtable",
             labels={
                 "foo": "bar",
             },
@@ -537,8 +539,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
             embedding_management=gcp.vertex.AiFeatureOnlineStoreEmbeddingManagementArgs(
                 enabled=True,
             ),
-            force_destroy=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            force_destroy=True)
         project = gcp.organizations.get_project()
         ```
 
@@ -615,18 +616,19 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        feature_online_store = gcp.vertex.AiFeatureOnlineStore("featureOnlineStore",
-            bigtable=gcp.vertex.AiFeatureOnlineStoreBigtableArgs(
-                auto_scaling=gcp.vertex.AiFeatureOnlineStoreBigtableAutoScalingArgs(
-                    cpu_utilization_target=50,
-                    max_node_count=3,
-                    min_node_count=1,
-                ),
-            ),
+        feature_online_store = gcp.vertex.AiFeatureOnlineStore("feature_online_store",
+            name="example_feature_online_store",
             labels={
                 "foo": "bar",
             },
-            region="us-central1")
+            region="us-central1",
+            bigtable=gcp.vertex.AiFeatureOnlineStoreBigtableArgs(
+                auto_scaling=gcp.vertex.AiFeatureOnlineStoreBigtableAutoScalingArgs(
+                    min_node_count=1,
+                    max_node_count=3,
+                    cpu_utilization_target=50,
+                ),
+            ))
         ```
         ### Vertex Ai Featureonlinestore With Beta Fields Optimized
 
@@ -636,6 +638,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         featureonlinestore = gcp.vertex.AiFeatureOnlineStore("featureonlinestore",
+            name="example_feature_online_store_optimized",
             labels={
                 "foo": "bar",
             },
@@ -646,8 +649,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                     enable_private_service_connect=True,
                     project_allowlists=[project.number],
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Vertex Ai Featureonlinestore With Beta Fields Bigtable
 
@@ -656,6 +658,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featureonlinestore = gcp.vertex.AiFeatureOnlineStore("featureonlinestore",
+            name="example_feature_online_store_beta_bigtable",
             labels={
                 "foo": "bar",
             },
@@ -670,8 +673,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
             embedding_management=gcp.vertex.AiFeatureOnlineStoreEmbeddingManagementArgs(
                 enabled=True,
             ),
-            force_destroy=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            force_destroy=True)
         project = gcp.organizations.get_project()
         ```
 

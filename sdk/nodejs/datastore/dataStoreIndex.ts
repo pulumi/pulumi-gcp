@@ -32,12 +32,12 @@ import * as utilities from "../utilities";
  *     kind: "foo",
  *     properties: [
  *         {
- *             direction: "ASCENDING",
  *             name: "property_a",
+ *             direction: "ASCENDING",
  *         },
  *         {
- *             direction: "ASCENDING",
  *             name: "property_b",
+ *             direction: "ASCENDING",
  *         },
  *     ],
  * });

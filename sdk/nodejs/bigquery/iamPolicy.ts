@@ -34,9 +34,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.bigquery.IamPolicy("policy", {
- *     project: google_bigquery_table.test.project,
- *     datasetId: google_bigquery_table.test.dataset_id,
- *     tableId: google_bigquery_table.test.table_id,
+ *     project: test.project,
+ *     datasetId: test.datasetId,
+ *     tableId: test.tableId,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -59,9 +59,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.bigquery.IamPolicy("policy", {
- *     project: google_bigquery_table.test.project,
- *     datasetId: google_bigquery_table.test.dataset_id,
- *     tableId: google_bigquery_table.test.table_id,
+ *     project: test.project,
+ *     datasetId: test.datasetId,
+ *     tableId: test.tableId,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -72,9 +72,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.bigquery.IamBinding("binding", {
- *     project: google_bigquery_table.test.project,
- *     datasetId: google_bigquery_table.test.dataset_id,
- *     tableId: google_bigquery_table.test.table_id,
+ *     project: test.project,
+ *     datasetId: test.datasetId,
+ *     tableId: test.tableId,
  *     role: "roles/bigquery.dataOwner",
  *     members: ["user:jane@example.com"],
  * });
@@ -87,9 +87,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.bigquery.IamBinding("binding", {
- *     project: google_bigquery_table.test.project,
- *     datasetId: google_bigquery_table.test.dataset_id,
- *     tableId: google_bigquery_table.test.table_id,
+ *     project: test.project,
+ *     datasetId: test.datasetId,
+ *     tableId: test.tableId,
  *     role: "roles/bigquery.dataOwner",
  *     members: ["user:jane@example.com"],
  *     condition: {
@@ -106,9 +106,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.bigquery.IamMember("member", {
- *     project: google_bigquery_table.test.project,
- *     datasetId: google_bigquery_table.test.dataset_id,
- *     tableId: google_bigquery_table.test.table_id,
+ *     project: test.project,
+ *     datasetId: test.datasetId,
+ *     tableId: test.tableId,
  *     role: "roles/bigquery.dataOwner",
  *     member: "user:jane@example.com",
  * });
@@ -121,9 +121,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.bigquery.IamMember("member", {
- *     project: google_bigquery_table.test.project,
- *     datasetId: google_bigquery_table.test.dataset_id,
- *     tableId: google_bigquery_table.test.table_id,
+ *     project: test.project,
+ *     datasetId: test.datasetId,
+ *     tableId: test.tableId,
  *     role: "roles/bigquery.dataOwner",
  *     member: "user:jane@example.com",
  *     condition: {

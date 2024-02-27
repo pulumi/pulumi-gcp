@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := iap.GetWebTypeAppEngineIamPolicy(ctx, &iap.GetWebTypeAppEngineIamPolicyArgs{
-//				Project: pulumi.StringRef(google_app_engine_application.App.Project),
-//				AppId:   google_app_engine_application.App.App_id,
+//				Project: pulumi.StringRef(app.Project),
+//				AppId:   app.AppId,
 //			}, nil)
 //			if err != nil {
 //				return err

@@ -330,10 +330,12 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         advertised = gcp.compute.PublicAdvertisedPrefix("advertised",
+            name="my-prefix",
             description="description",
             dns_verification_ip="127.127.0.0",
             ip_cidr_range="127.127.0.0/16")
         prefixes = gcp.compute.PublicDelegatedPrefix("prefixes",
+            name="my-prefix",
             region="us-central1",
             description="my description",
             ip_cidr_range="127.127.0.0/24",
@@ -412,10 +414,12 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         advertised = gcp.compute.PublicAdvertisedPrefix("advertised",
+            name="my-prefix",
             description="description",
             dns_verification_ip="127.127.0.0",
             ip_cidr_range="127.127.0.0/16")
         prefixes = gcp.compute.PublicDelegatedPrefix("prefixes",
+            name="my-prefix",
             region="us-central1",
             description="my description",
             ip_cidr_range="127.127.0.0/24",

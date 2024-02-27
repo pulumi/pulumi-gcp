@@ -28,8 +28,8 @@ namespace Pulumi.Gcp.Iap
         /// {
         ///     var policy = Gcp.Iap.GetWebBackendServiceIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_compute_backend_service.Default.Project,
-        ///         WebBackendService = google_compute_backend_service.Default.Name,
+        ///         Project = @default.Project,
+        ///         WebBackendService = @default.Name,
         ///     });
         /// 
         /// });
@@ -55,8 +55,8 @@ namespace Pulumi.Gcp.Iap
         /// {
         ///     var policy = Gcp.Iap.GetWebBackendServiceIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_compute_backend_service.Default.Project,
-        ///         WebBackendService = google_compute_backend_service.Default.Name,
+        ///         Project = @default.Project,
+        ///         WebBackendService = @default.Name,
         ///     });
         /// 
         /// });

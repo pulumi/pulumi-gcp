@@ -255,8 +255,8 @@ class Tenant(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tenant = gcp.identityplatform.Tenant("tenant",
-            allow_password_signup=True,
-            display_name="tenant")
+            display_name="tenant",
+            allow_password_signup=True)
         ```
 
         ## Import
@@ -321,8 +321,8 @@ class Tenant(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tenant = gcp.identityplatform.Tenant("tenant",
-            allow_password_signup=True,
-            display_name="tenant")
+            display_name="tenant",
+            allow_password_signup=True)
         ```
 
         ## Import

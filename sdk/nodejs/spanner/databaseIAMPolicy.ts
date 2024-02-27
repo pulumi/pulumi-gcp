@@ -44,10 +44,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const database = new gcp.spanner.DatabaseIAMBinding("database", {
- *     database: "your-database-name",
  *     instance: "your-instance-name",
- *     members: ["user:jane@example.com"],
+ *     database: "your-database-name",
  *     role: "roles/compute.networkUser",
+ *     members: ["user:jane@example.com"],
  * });
  * ```
  *
@@ -58,10 +58,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const database = new gcp.spanner.DatabaseIAMMember("database", {
- *     database: "your-database-name",
  *     instance: "your-instance-name",
- *     member: "user:jane@example.com",
+ *     database: "your-database-name",
  *     role: "roles/compute.networkUser",
+ *     member: "user:jane@example.com",
  * });
  * ```
  *

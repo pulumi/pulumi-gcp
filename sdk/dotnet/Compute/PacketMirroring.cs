@@ -21,6 +21,124 @@ namespace Pulumi.Gcp.Compute
     ///     * [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
     /// 
     /// ## Example Usage
+    /// ### Compute Packet Mirroring Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "my-network",
+    ///     });
+    /// 
+    ///     var mirror = new Gcp.Compute.Instance("mirror", new()
+    ///     {
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     null,
+    ///                 },
+    ///                 Network = @default.Id,
+    ///             },
+    ///         },
+    ///         Name = "my-instance",
+    ///         MachineType = "e2-medium",
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///         {
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///             {
+    ///                 Image = "debian-cloud/debian-11",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "my-subnetwork",
+    ///         Network = @default.Id,
+    ///         IpCidrRange = "10.2.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
+    ///     {
+    ///         Name = "my-healthcheck",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         Name = "my-service",
+    ///         HealthChecks = defaultHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var defaultForwardingRule = new Gcp.Compute.ForwardingRule("default", new()
+    ///     {
+    ///         Name = "my-ilb",
+    ///         IsMirroringCollector = true,
+    ///         IpProtocol = "TCP",
+    ///         LoadBalancingScheme = "INTERNAL",
+    ///         BackendService = defaultRegionBackendService.Id,
+    ///         AllPorts = true,
+    ///         Network = @default.Id,
+    ///         Subnetwork = defaultSubnetwork.Id,
+    ///         NetworkTier = "PREMIUM",
+    ///     });
+    /// 
+    ///     var foobar = new Gcp.Compute.PacketMirroring("foobar", new()
+    ///     {
+    ///         Name = "my-mirroring",
+    ///         Description = "bar",
+    ///         Network = new Gcp.Compute.Inputs.PacketMirroringNetworkArgs
+    ///         {
+    ///             Url = @default.Id,
+    ///         },
+    ///         CollectorIlb = new Gcp.Compute.Inputs.PacketMirroringCollectorIlbArgs
+    ///         {
+    ///             Url = defaultForwardingRule.Id,
+    ///         },
+    ///         MirroredResources = new Gcp.Compute.Inputs.PacketMirroringMirroredResourcesArgs
+    ///         {
+    ///             Tags = new[]
+    ///             {
+    ///                 "foo",
+    ///             },
+    ///             Instances = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.PacketMirroringMirroredResourcesInstanceArgs
+    ///                 {
+    ///                     Url = mirror.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///         Filter = new Gcp.Compute.Inputs.PacketMirroringFilterArgs
+    ///         {
+    ///             IpProtocols = new[]
+    ///             {
+    ///                 "tcp",
+    ///             },
+    ///             CidrRanges = new[]
+    ///             {
+    ///                 "0.0.0.0/0",
+    ///             },
+    ///             Direction = "BOTH",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -351,7 +351,7 @@ class Network(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        example_network = gcp.edgenetwork.Network("exampleNetwork",
+        example_network = gcp.edgenetwork.Network("example_network",
             network_id="example-network",
             location="us-west1",
             zone="",
@@ -434,7 +434,7 @@ class Network(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        example_network = gcp.edgenetwork.Network("exampleNetwork",
+        example_network = gcp.edgenetwork.Network("example_network",
             network_id="example-network",
             location="us-west1",
             zone="",

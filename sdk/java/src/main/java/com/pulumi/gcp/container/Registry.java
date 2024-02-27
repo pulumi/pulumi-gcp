@@ -42,8 +42,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var registry = new Registry(&#34;registry&#34;, RegistryArgs.builder()        
- *             .location(&#34;EU&#34;)
  *             .project(&#34;my-project&#34;)
+ *             .location(&#34;EU&#34;)
  *             .build());
  * 
  *     }

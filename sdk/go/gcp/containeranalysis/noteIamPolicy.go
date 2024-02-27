@@ -55,8 +55,8 @@ import (
 //				return err
 //			}
 //			_, err = containeranalysis.NewNoteIamPolicy(ctx, "policy", &containeranalysis.NoteIamPolicyArgs{
-//				Project:    pulumi.Any(google_container_analysis_note.Note.Project),
-//				Note:       pulumi.Any(google_container_analysis_note.Note.Name),
+//				Project:    pulumi.Any(note.Project),
+//				Note:       pulumi.Any(note.Name),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -83,8 +83,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := containeranalysis.NewNoteIamBinding(ctx, "binding", &containeranalysis.NoteIamBindingArgs{
-//				Project: pulumi.Any(google_container_analysis_note.Note.Project),
-//				Note:    pulumi.Any(google_container_analysis_note.Note.Name),
+//				Project: pulumi.Any(note.Project),
+//				Note:    pulumi.Any(note.Name),
 //				Role:    pulumi.String("roles/containeranalysis.notes.occurrences.viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -114,8 +114,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := containeranalysis.NewNoteIamMember(ctx, "member", &containeranalysis.NoteIamMemberArgs{
-//				Project: pulumi.Any(google_container_analysis_note.Note.Project),
-//				Note:    pulumi.Any(google_container_analysis_note.Note.Name),
+//				Project: pulumi.Any(note.Project),
+//				Note:    pulumi.Any(note.Name),
 //				Role:    pulumi.String("roles/containeranalysis.notes.occurrences.viewer"),
 //				Member:  pulumi.String("user:jane@example.com"),
 //			})

@@ -18,8 +18,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const run-service = gcp.cloudrun.getService({
- *     location: "us-central1",
  *     name: "my-service",
+ *     location: "us-central1",
  * });
  * ```
  */
@@ -83,8 +83,8 @@ export interface GetServiceResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const run-service = gcp.cloudrun.getService({
- *     location: "us-central1",
  *     name: "my-service",
+ *     location: "us-central1",
  * });
  * ```
  */

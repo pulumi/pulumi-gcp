@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.bigquery.getConnectionIamPolicy({
- *     project: google_bigquery_connection.connection.project,
- *     location: google_bigquery_connection.connection.location,
- *     connectionId: google_bigquery_connection.connection.connection_id,
+ *     project: connection.project,
+ *     location: connection.location,
+ *     connectionId: connection.connectionId,
  * });
  * ```
  */
@@ -87,9 +87,9 @@ export interface GetConnectionIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.bigquery.getConnectionIamPolicy({
- *     project: google_bigquery_connection.connection.project,
- *     location: google_bigquery_connection.connection.location,
- *     connectionId: google_bigquery_connection.connection.connection_id,
+ *     project: connection.project,
+ *     location: connection.location,
+ *     connectionId: connection.connectionId,
  * });
  * ```
  */

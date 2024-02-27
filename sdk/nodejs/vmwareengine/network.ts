@@ -21,10 +21,39 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const vmw_engine_network = new gcp.vmwareengine.Network("vmw-engine-network", {
- *     description: "VMwareEngine standard network sample",
+ *     name: "standard-nw",
  *     location: "global",
  *     type: "STANDARD",
+ *     description: "VMwareEngine standard network sample",
  * });
+ * ```
+ * ### Vmware Engine Network Legacy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumi/time";
+ *
+ * // there can be only 1 Legacy network per region for a given project,
+ * // so creating new project for isolation in CI.
+ * const acceptanceProject = new gcp.organizations.Project("acceptance", {
+ *     name: "vmw-proj",
+ *     projectId: "vmw-proj",
+ *     orgId: "123456789",
+ *     billingAccount: "000000-0000000-0000000-000000",
+ * });
+ * const acceptance = new gcp.projects.Service("acceptance", {
+ *     project: acceptanceProject.projectId,
+ *     service: "vmwareengine.googleapis.com",
+ * });
+ * const vmw_engine_network = new gcp.vmwareengine.Network("vmw-engine-network", {
+ *     project: acceptance.project,
+ *     name: "us-west1-default",
+ *     location: "us-west1",
+ *     type: "LEGACY",
+ *     description: "VMwareEngine legacy network sample",
+ * });
+ * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"});
  * ```
  *
  * ## Import

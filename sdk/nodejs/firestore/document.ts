@@ -26,6 +26,82 @@ import * as utilities from "../utilities";
  * is allowed for the database parameter.
  *
  * ## Example Usage
+ * ### Firestore Document Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumi/time";
+ *
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "project-id",
+ *     name: "project-id",
+ *     orgId: "123456789",
+ * });
+ * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"});
+ * const firestore = new gcp.projects.Service("firestore", {
+ *     project: project.projectId,
+ *     service: "firestore.googleapis.com",
+ * });
+ * const database = new gcp.firestore.Database("database", {
+ *     project: project.projectId,
+ *     name: "(default)",
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ * });
+ * const mydoc = new gcp.firestore.Document("mydoc", {
+ *     project: project.projectId,
+ *     database: database.name,
+ *     collection: "somenewcollection",
+ *     documentId: "my-doc-id",
+ *     fields: "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
+ * });
+ * ```
+ * ### Firestore Document Nested Document
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumi/time";
+ *
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "project-id",
+ *     name: "project-id",
+ *     orgId: "123456789",
+ * });
+ * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"});
+ * const firestore = new gcp.projects.Service("firestore", {
+ *     project: project.projectId,
+ *     service: "firestore.googleapis.com",
+ * });
+ * const database = new gcp.firestore.Database("database", {
+ *     project: project.projectId,
+ *     name: "(default)",
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ * });
+ * const mydoc = new gcp.firestore.Document("mydoc", {
+ *     project: project.projectId,
+ *     database: database.name,
+ *     collection: "somenewcollection",
+ *     documentId: "my-doc-id",
+ *     fields: "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
+ * });
+ * const subDocument = new gcp.firestore.Document("sub_document", {
+ *     project: project.projectId,
+ *     database: database.name,
+ *     collection: pulumi.interpolate`${mydoc.path}/subdocs`,
+ *     documentId: "bitcoinkey",
+ *     fields: "{\"something\":{\"mapValue\":{\"fields\":{\"ayo\":{\"stringValue\":\"val2\"}}}}}",
+ * });
+ * const subSubDocument = new gcp.firestore.Document("sub_sub_document", {
+ *     project: project.projectId,
+ *     database: database.name,
+ *     collection: pulumi.interpolate`${subDocument.path}/subsubdocs`,
+ *     documentId: "asecret",
+ *     fields: "{\"something\":{\"mapValue\":{\"fields\":{\"secret\":{\"stringValue\":\"hithere\"}}}}}",
+ * });
+ * ```
  *
  * ## Import
  *

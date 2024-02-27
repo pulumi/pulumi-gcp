@@ -23,8 +23,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const picture = new gcp.storage.BucketObject("picture", {
- *     bucket: "image-store",
+ *     name: "butterfly01",
  *     source: new pulumi.asset.FileAsset("/images/nature/garden-tiger-moth.jpg"),
+ *     bucket: "image-store",
  * });
  * ```
  *
@@ -34,11 +35,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const emptyFolder = new gcp.storage.BucketObject("emptyFolder", {
- *     bucket: "image-store",
+ * const emptyFolder = new gcp.storage.BucketObject("empty_folder", {
+ *     name: "empty_folder/",
  *     content: " ",
+ *     bucket: "image-store",
  * });
- * // folder name should end with '/'
  * ```
  *
  * ## Import

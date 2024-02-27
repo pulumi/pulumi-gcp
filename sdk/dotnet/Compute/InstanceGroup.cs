@@ -27,9 +27,10 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var test = new Gcp.Compute.InstanceGroup("test", new()
     ///     {
+    ///         Name = "test",
     ///         Description = "Test instance group",
     ///         Zone = "us-central1-a",
-    ///         Network = google_compute_network.Default.Id,
+    ///         Network = @default.Id,
     ///     });
     /// 
     /// });
@@ -46,11 +47,12 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var webservers = new Gcp.Compute.InstanceGroup("webservers", new()
     ///     {
+    ///         Name = "webservers",
     ///         Description = "Test instance group",
     ///         Instances = new[]
     ///         {
-    ///             google_compute_instance.Test.Id,
-    ///             google_compute_instance.Test2.Id,
+    ///             test.Id,
+    ///             test2.Id,
     ///         },
     ///         NamedPorts = new[]
     ///         {
@@ -66,6 +68,92 @@ namespace Pulumi.Gcp.Compute
     ///             },
     ///         },
     ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Example Usage - Recreating an instance group in use
+    /// Recreating an instance group that's in use by another resource will give a
+    /// `resourceInUseByAnotherResource` error. Use `lifecycle.create_before_destroy`
+    /// as shown in this example to avoid this type of error.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var debianImage = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var stagingVm = new Gcp.Compute.Instance("staging_vm", new()
+    ///     {
+    ///         Name = "staging-vm",
+    ///         MachineType = "e2-medium",
+    ///         Zone = "us-central1-c",
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///         {
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///             {
+    ///                 Image = debianImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "default",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var stagingGroup = new Gcp.Compute.InstanceGroup("staging_group", new()
+    ///     {
+    ///         Name = "staging-instance-group",
+    ///         Zone = "us-central1-c",
+    ///         Instances = new[]
+    ///         {
+    ///             stagingVm.Id,
+    ///         },
+    ///         NamedPorts = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceGroupNamedPortArgs
+    ///             {
+    ///                 Name = "http",
+    ///                 Port = 8080,
+    ///             },
+    ///             new Gcp.Compute.Inputs.InstanceGroupNamedPortArgs
+    ///             {
+    ///                 Name = "https",
+    ///                 Port = 8443,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var stagingHealth = new Gcp.Compute.HttpsHealthCheck("staging_health", new()
+    ///     {
+    ///         Name = "staging-health",
+    ///         RequestPath = "/health_check",
+    ///     });
+    /// 
+    ///     var stagingService = new Gcp.Compute.BackendService("staging_service", new()
+    ///     {
+    ///         Name = "staging-service",
+    ///         PortName = "https",
+    ///         Protocol = "HTTPS",
+    ///         Backends = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.BackendServiceBackendArgs
+    ///             {
+    ///                 Group = stagingGroup.Id,
+    ///             },
+    ///         },
+    ///         HealthChecks = stagingHealth.Id,
     ///     });
     /// 
     /// });

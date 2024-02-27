@@ -31,6 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance, err := bigtable.NewInstance(ctx, "instance", &bigtable.InstanceArgs{
+//				Name: pulumi.String("tf-instance"),
 //				Clusters: bigtable.InstanceClusterArray{
 //					&bigtable.InstanceClusterArgs{
 //						ClusterId:   pulumi.String("tf-instance-cluster"),
@@ -44,6 +45,7 @@ import (
 //				return err
 //			}
 //			_, err = bigtable.NewTable(ctx, "table", &bigtable.TableArgs{
+//				Name:         pulumi.String("tf-table"),
 //				InstanceName: instance.Name,
 //				SplitKeys: pulumi.StringArray{
 //					pulumi.String("a"),

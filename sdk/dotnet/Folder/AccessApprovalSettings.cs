@@ -27,13 +27,13 @@ namespace Pulumi.Gcp.Folder
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myFolder = new Gcp.Organizations.Folder("myFolder", new()
+    ///     var myFolder = new Gcp.Organizations.Folder("my_folder", new()
     ///     {
     ///         DisplayName = "my-folder",
     ///         Parent = "organizations/123456789",
     ///     });
     /// 
-    ///     var folderAccessApproval = new Gcp.Folder.AccessApprovalSettings("folderAccessApproval", new()
+    ///     var folderAccessApproval = new Gcp.Folder.AccessApprovalSettings("folder_access_approval", new()
     ///     {
     ///         FolderId = myFolder.FolderId,
     ///         NotificationEmails = new[]
@@ -62,25 +62,29 @@ namespace Pulumi.Gcp.Folder
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myFolder = new Gcp.Organizations.Folder("myFolder", new()
+    ///     var myFolder = new Gcp.Organizations.Folder("my_folder", new()
     ///     {
     ///         DisplayName = "my-folder",
     ///         Parent = "organizations/123456789",
     ///     });
     /// 
-    ///     var myProject = new Gcp.Organizations.Project("myProject", new()
+    ///     var myProject = new Gcp.Organizations.Project("my_project", new()
     ///     {
+    ///         Name = "My Project",
+    ///         ProjectId = "your-project-id",
     ///         FolderId = myFolder.Name,
     ///     });
     /// 
-    ///     var keyRing = new Gcp.Kms.KeyRing("keyRing", new()
+    ///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()
     ///     {
+    ///         Name = "key-ring",
     ///         Location = "global",
     ///         Project = myProject.ProjectId,
     ///     });
     /// 
-    ///     var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("crypto_key", new()
     ///     {
+    ///         Name = "crypto-key",
     ///         KeyRing = keyRing.Id,
     ///         Purpose = "ASYMMETRIC_SIGN",
     ///         VersionTemplate = new Gcp.Kms.Inputs.CryptoKeyVersionTemplateArgs
@@ -106,7 +110,7 @@ namespace Pulumi.Gcp.Folder
     ///         CryptoKey = cryptoKey.Id,
     ///     });
     /// 
-    ///     var folderAccessApproval = new Gcp.Folder.AccessApprovalSettings("folderAccessApproval", new()
+    ///     var folderAccessApproval = new Gcp.Folder.AccessApprovalSettings("folder_access_approval", new()
     ///     {
     ///         FolderId = myFolder.FolderId,
     ///         ActiveKeyVersion = cryptoKeyVersion.Apply(getKMSCryptoKeyVersionResult =&gt; getKMSCryptoKeyVersionResult.Name),
@@ -116,12 +120,6 @@ namespace Pulumi.Gcp.Folder
     ///             {
     ///                 CloudProduct = "all",
     ///             },
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             iam,
     ///         },
     ///     });
     /// 

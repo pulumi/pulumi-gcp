@@ -1080,7 +1080,7 @@ class Table(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_dataset = gcp.bigquery.Dataset("defaultDataset",
+        default = gcp.bigquery.Dataset("default",
             dataset_id="foo",
             friendly_name="test",
             description="This is a test description",
@@ -1089,8 +1089,8 @@ class Table(pulumi.CustomResource):
             labels={
                 "env": "default",
             })
-        default_table = gcp.bigquery.Table("defaultTable",
-            dataset_id=default_dataset.dataset_id,
+        default_table = gcp.bigquery.Table("default",
+            dataset_id=default.dataset_id,
             table_id="bar",
             time_partitioning=gcp.bigquery.TableTimePartitioningArgs(
                 type="DAY",
@@ -1114,7 +1114,7 @@ class Table(pulumi.CustomResource):
         ]
         \"\"\")
         sheet = gcp.bigquery.Table("sheet",
-            dataset_id=default_dataset.dataset_id,
+            dataset_id=default.dataset_id,
             table_id="sheet",
             external_data_configuration=gcp.bigquery.TableExternalDataConfigurationArgs(
                 autodetect=True,
@@ -1235,7 +1235,7 @@ class Table(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_dataset = gcp.bigquery.Dataset("defaultDataset",
+        default = gcp.bigquery.Dataset("default",
             dataset_id="foo",
             friendly_name="test",
             description="This is a test description",
@@ -1244,8 +1244,8 @@ class Table(pulumi.CustomResource):
             labels={
                 "env": "default",
             })
-        default_table = gcp.bigquery.Table("defaultTable",
-            dataset_id=default_dataset.dataset_id,
+        default_table = gcp.bigquery.Table("default",
+            dataset_id=default.dataset_id,
             table_id="bar",
             time_partitioning=gcp.bigquery.TableTimePartitioningArgs(
                 type="DAY",
@@ -1269,7 +1269,7 @@ class Table(pulumi.CustomResource):
         ]
         \"\"\")
         sheet = gcp.bigquery.Table("sheet",
-            dataset_id=default_dataset.dataset_id,
+            dataset_id=default.dataset_id,
             table_id="sheet",
             external_data_configuration=gcp.bigquery.TableExternalDataConfigurationArgs(
                 autodetect=True,

@@ -127,14 +127,13 @@ class StorageBucket(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_bucket = gcp.storage.Bucket("defaultBucket",
+        default = gcp.storage.Bucket("default",
+            name="test_bucket",
             location="US",
-            uniform_bucket_level_access=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_storage_bucket = gcp.firebase.StorageBucket("defaultStorageBucket",
+            uniform_bucket_level_access=True)
+        default_storage_bucket = gcp.firebase.StorageBucket("default",
             project="my-project-name",
-            bucket_id=default_bucket.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            bucket_id=default.id)
         ```
 
         ## Import
@@ -181,14 +180,13 @@ class StorageBucket(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_bucket = gcp.storage.Bucket("defaultBucket",
+        default = gcp.storage.Bucket("default",
+            name="test_bucket",
             location="US",
-            uniform_bucket_level_access=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_storage_bucket = gcp.firebase.StorageBucket("defaultStorageBucket",
+            uniform_bucket_level_access=True)
+        default_storage_bucket = gcp.firebase.StorageBucket("default",
             project="my-project-name",
-            bucket_id=default_bucket.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            bucket_id=default.id)
         ```
 
         ## Import

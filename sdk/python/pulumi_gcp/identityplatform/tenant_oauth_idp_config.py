@@ -324,7 +324,8 @@ class TenantOauthIdpConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tenant = gcp.identityplatform.Tenant("tenant", display_name="tenant")
-        tenant_oauth_idp_config = gcp.identityplatform.TenantOauthIdpConfig("tenantOauthIdpConfig",
+        tenant_oauth_idp_config = gcp.identityplatform.TenantOauthIdpConfig("tenant_oauth_idp_config",
+            name="oidc.oauth-idp-config",
             tenant=tenant.name,
             display_name="Display Name",
             client_id="client-id",
@@ -393,7 +394,8 @@ class TenantOauthIdpConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tenant = gcp.identityplatform.Tenant("tenant", display_name="tenant")
-        tenant_oauth_idp_config = gcp.identityplatform.TenantOauthIdpConfig("tenantOauthIdpConfig",
+        tenant_oauth_idp_config = gcp.identityplatform.TenantOauthIdpConfig("tenant_oauth_idp_config",
+            name="oidc.oauth-idp-config",
             tenant=tenant.name,
             display_name="Display Name",
             client_id="client-id",

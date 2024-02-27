@@ -506,6 +506,7 @@ class Stream(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         instance = gcp.sql.DatabaseInstance("instance",
+            name="my-instance",
             database_version="MYSQL_8_0",
             region="us-central1",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
@@ -535,15 +536,18 @@ class Stream(pulumi.CustomResource):
                 ),
             ),
             deletion_protection=True)
-        db = gcp.sql.Database("db", instance=instance.name)
+        db = gcp.sql.Database("db",
+            instance=instance.name,
+            name="db")
         pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
+            name="user",
             instance=instance.name,
             host="%",
             password=pwd.result)
-        source_connection_profile = gcp.datastream.ConnectionProfile("sourceConnectionProfile",
+        source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
             display_name="Source connection profile",
             location="us-central1",
             connection_profile_id="source-profile",
@@ -553,6 +557,7 @@ class Stream(pulumi.CustomResource):
                 password=user.password,
             ))
         bucket = gcp.storage.Bucket("bucket",
+            name="my-bucket",
             location="US",
             uniform_bucket_level_access=True)
         viewer = gcp.storage.BucketIAMMember("viewer",
@@ -567,11 +572,11 @@ class Stream(pulumi.CustomResource):
             bucket=bucket.name,
             role="roles/storage.legacyBucketReader",
             member=f"serviceAccount:service-{project.number}@gcp-sa-datastream.iam.gserviceaccount.com")
-        key_user = gcp.kms.CryptoKeyIAMMember("keyUser",
+        key_user = gcp.kms.CryptoKeyIAMMember("key_user",
             crypto_key_id="kms-name",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-datastream.iam.gserviceaccount.com")
-        destination_connection_profile = gcp.datastream.ConnectionProfile("destinationConnectionProfile",
+        destination_connection_profile = gcp.datastream.ConnectionProfile("destination_connection_profile",
             display_name="Connection profile",
             location="us-central1",
             connection_profile_id="destination-profile",
@@ -660,8 +665,7 @@ class Stream(pulumi.CustomResource):
                     )],
                 ),
             ),
-            customer_managed_encryption_key="kms-name",
-            opts=pulumi.ResourceOptions(depends_on=[key_user]))
+            customer_managed_encryption_key="kms-name")
         ```
         ### Datastream Stream Postgresql
 
@@ -839,12 +843,13 @@ class Stream(pulumi.CustomResource):
             friendly_name="postgres",
             description="Database of postgres",
             location="us-central1")
-        destination_connection_profile2 = gcp.datastream.ConnectionProfile("destinationConnectionProfile2",
+        destination_connection_profile2 = gcp.datastream.ConnectionProfile("destination_connection_profile2",
             display_name="Connection profile",
             location="us-central1",
             connection_profile_id="dest-profile",
             bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
         instance = gcp.sql.DatabaseInstance("instance",
+            name="instance-name",
             database_version="MYSQL_8_0",
             region="us-central1",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
@@ -878,10 +883,11 @@ class Stream(pulumi.CustomResource):
             length=16,
             special=False)
         user = gcp.sql.User("user",
+            name="my-user",
             instance=instance.name,
             host="%",
             password=pwd.result)
-        source_connection_profile = gcp.datastream.ConnectionProfile("sourceConnectionProfile",
+        source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
             display_name="Source connection profile",
             location="us-central1",
             connection_profile_id="source-profile",
@@ -908,7 +914,9 @@ class Stream(pulumi.CustomResource):
                 ),
             ),
             backfill_all=gcp.datastream.StreamBackfillAllArgs())
-        db = gcp.sql.Database("db", instance=instance.name)
+        db = gcp.sql.Database("db",
+            instance=instance.name,
+            name="db")
         ```
         ### Datastream Stream Bigquery
 
@@ -919,6 +927,7 @@ class Stream(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         instance = gcp.sql.DatabaseInstance("instance",
+            name="my-instance",
             database_version="MYSQL_8_0",
             region="us-central1",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
@@ -948,15 +957,18 @@ class Stream(pulumi.CustomResource):
                 ),
             ),
             deletion_protection=True)
-        db = gcp.sql.Database("db", instance=instance.name)
+        db = gcp.sql.Database("db",
+            instance=instance.name,
+            name="db")
         pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
+            name="user",
             instance=instance.name,
             host="%",
             password=pwd.result)
-        source_connection_profile = gcp.datastream.ConnectionProfile("sourceConnectionProfile",
+        source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
             display_name="Source connection profile",
             location="us-central1",
             connection_profile_id="source-profile",
@@ -966,11 +978,11 @@ class Stream(pulumi.CustomResource):
                 password=user.password,
             ))
         bq_sa = gcp.bigquery.get_default_service_account()
-        bigquery_key_user = gcp.kms.CryptoKeyIAMMember("bigqueryKeyUser",
+        bigquery_key_user = gcp.kms.CryptoKeyIAMMember("bigquery_key_user",
             crypto_key_id="bigquery-kms-name",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:{bq_sa.email}")
-        destination_connection_profile = gcp.datastream.ConnectionProfile("destinationConnectionProfile",
+        destination_connection_profile = gcp.datastream.ConnectionProfile("destination_connection_profile",
             display_name="Connection profile",
             location="us-central1",
             connection_profile_id="destination-profile",
@@ -994,8 +1006,7 @@ class Stream(pulumi.CustomResource):
                     ),
                 ),
             ),
-            backfill_none=gcp.datastream.StreamBackfillNoneArgs(),
-            opts=pulumi.ResourceOptions(depends_on=[bigquery_key_user]))
+            backfill_none=gcp.datastream.StreamBackfillNoneArgs())
         ```
 
         ## Import
@@ -1068,6 +1079,7 @@ class Stream(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         instance = gcp.sql.DatabaseInstance("instance",
+            name="my-instance",
             database_version="MYSQL_8_0",
             region="us-central1",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
@@ -1097,15 +1109,18 @@ class Stream(pulumi.CustomResource):
                 ),
             ),
             deletion_protection=True)
-        db = gcp.sql.Database("db", instance=instance.name)
+        db = gcp.sql.Database("db",
+            instance=instance.name,
+            name="db")
         pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
+            name="user",
             instance=instance.name,
             host="%",
             password=pwd.result)
-        source_connection_profile = gcp.datastream.ConnectionProfile("sourceConnectionProfile",
+        source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
             display_name="Source connection profile",
             location="us-central1",
             connection_profile_id="source-profile",
@@ -1115,6 +1130,7 @@ class Stream(pulumi.CustomResource):
                 password=user.password,
             ))
         bucket = gcp.storage.Bucket("bucket",
+            name="my-bucket",
             location="US",
             uniform_bucket_level_access=True)
         viewer = gcp.storage.BucketIAMMember("viewer",
@@ -1129,11 +1145,11 @@ class Stream(pulumi.CustomResource):
             bucket=bucket.name,
             role="roles/storage.legacyBucketReader",
             member=f"serviceAccount:service-{project.number}@gcp-sa-datastream.iam.gserviceaccount.com")
-        key_user = gcp.kms.CryptoKeyIAMMember("keyUser",
+        key_user = gcp.kms.CryptoKeyIAMMember("key_user",
             crypto_key_id="kms-name",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-datastream.iam.gserviceaccount.com")
-        destination_connection_profile = gcp.datastream.ConnectionProfile("destinationConnectionProfile",
+        destination_connection_profile = gcp.datastream.ConnectionProfile("destination_connection_profile",
             display_name="Connection profile",
             location="us-central1",
             connection_profile_id="destination-profile",
@@ -1222,8 +1238,7 @@ class Stream(pulumi.CustomResource):
                     )],
                 ),
             ),
-            customer_managed_encryption_key="kms-name",
-            opts=pulumi.ResourceOptions(depends_on=[key_user]))
+            customer_managed_encryption_key="kms-name")
         ```
         ### Datastream Stream Postgresql
 
@@ -1401,12 +1416,13 @@ class Stream(pulumi.CustomResource):
             friendly_name="postgres",
             description="Database of postgres",
             location="us-central1")
-        destination_connection_profile2 = gcp.datastream.ConnectionProfile("destinationConnectionProfile2",
+        destination_connection_profile2 = gcp.datastream.ConnectionProfile("destination_connection_profile2",
             display_name="Connection profile",
             location="us-central1",
             connection_profile_id="dest-profile",
             bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
         instance = gcp.sql.DatabaseInstance("instance",
+            name="instance-name",
             database_version="MYSQL_8_0",
             region="us-central1",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
@@ -1440,10 +1456,11 @@ class Stream(pulumi.CustomResource):
             length=16,
             special=False)
         user = gcp.sql.User("user",
+            name="my-user",
             instance=instance.name,
             host="%",
             password=pwd.result)
-        source_connection_profile = gcp.datastream.ConnectionProfile("sourceConnectionProfile",
+        source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
             display_name="Source connection profile",
             location="us-central1",
             connection_profile_id="source-profile",
@@ -1470,7 +1487,9 @@ class Stream(pulumi.CustomResource):
                 ),
             ),
             backfill_all=gcp.datastream.StreamBackfillAllArgs())
-        db = gcp.sql.Database("db", instance=instance.name)
+        db = gcp.sql.Database("db",
+            instance=instance.name,
+            name="db")
         ```
         ### Datastream Stream Bigquery
 
@@ -1481,6 +1500,7 @@ class Stream(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         instance = gcp.sql.DatabaseInstance("instance",
+            name="my-instance",
             database_version="MYSQL_8_0",
             region="us-central1",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
@@ -1510,15 +1530,18 @@ class Stream(pulumi.CustomResource):
                 ),
             ),
             deletion_protection=True)
-        db = gcp.sql.Database("db", instance=instance.name)
+        db = gcp.sql.Database("db",
+            instance=instance.name,
+            name="db")
         pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
+            name="user",
             instance=instance.name,
             host="%",
             password=pwd.result)
-        source_connection_profile = gcp.datastream.ConnectionProfile("sourceConnectionProfile",
+        source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
             display_name="Source connection profile",
             location="us-central1",
             connection_profile_id="source-profile",
@@ -1528,11 +1551,11 @@ class Stream(pulumi.CustomResource):
                 password=user.password,
             ))
         bq_sa = gcp.bigquery.get_default_service_account()
-        bigquery_key_user = gcp.kms.CryptoKeyIAMMember("bigqueryKeyUser",
+        bigquery_key_user = gcp.kms.CryptoKeyIAMMember("bigquery_key_user",
             crypto_key_id="bigquery-kms-name",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:{bq_sa.email}")
-        destination_connection_profile = gcp.datastream.ConnectionProfile("destinationConnectionProfile",
+        destination_connection_profile = gcp.datastream.ConnectionProfile("destination_connection_profile",
             display_name="Connection profile",
             location="us-central1",
             connection_profile_id="destination-profile",
@@ -1556,8 +1579,7 @@ class Stream(pulumi.CustomResource):
                     ),
                 ),
             ),
-            backfill_none=gcp.datastream.StreamBackfillNoneArgs(),
-            opts=pulumi.ResourceOptions(depends_on=[bigquery_key_user]))
+            backfill_none=gcp.datastream.StreamBackfillNoneArgs())
         ```
 
         ## Import

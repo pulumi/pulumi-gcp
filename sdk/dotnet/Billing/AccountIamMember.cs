@@ -67,11 +67,11 @@ namespace Pulumi.Gcp.Billing
     ///     var editor = new Gcp.Billing.AccountIamBinding("editor", new()
     ///     {
     ///         BillingAccountId = "00AA00-000AAA-00AA0A",
+    ///         Role = "roles/billing.viewer",
     ///         Members = new[]
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         Role = "roles/billing.viewer",
     ///     });
     /// 
     /// });
@@ -90,8 +90,8 @@ namespace Pulumi.Gcp.Billing
     ///     var editor = new Gcp.Billing.AccountIamMember("editor", new()
     ///     {
     ///         BillingAccountId = "00AA00-000AAA-00AA0A",
-    ///         Member = "user:jane@example.com",
     ///         Role = "roles/billing.viewer",
+    ///         Member = "user:jane@example.com",
     ///     });
     /// 
     /// });

@@ -25,11 +25,14 @@ namespace Pulumi.Gcp.Projects
     /// {
     ///     var basic = new Gcp.Organizations.Project("basic", new()
     ///     {
+    ///         ProjectId = "app",
+    ///         Name = "app",
     ///         OrgId = "123456789",
     ///     });
     /// 
     ///     var primary = new Gcp.Projects.ApiKey("primary", new()
     ///     {
+    ///         Name = "key",
     ///         DisplayName = "sample-key",
     ///         Project = basic.Name,
     ///         Restrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsArgs
@@ -73,11 +76,14 @@ namespace Pulumi.Gcp.Projects
     /// {
     ///     var basic = new Gcp.Organizations.Project("basic", new()
     ///     {
+    ///         ProjectId = "app",
+    ///         Name = "app",
     ///         OrgId = "123456789",
     ///     });
     /// 
     ///     var primary = new Gcp.Projects.ApiKey("primary", new()
     ///     {
+    ///         Name = "key",
     ///         DisplayName = "sample-key",
     ///         Project = basic.Name,
     ///         Restrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsArgs
@@ -117,11 +123,14 @@ namespace Pulumi.Gcp.Projects
     /// {
     ///     var basic = new Gcp.Organizations.Project("basic", new()
     ///     {
+    ///         ProjectId = "app",
+    ///         Name = "app",
     ///         OrgId = "123456789",
     ///     });
     /// 
     ///     var primary = new Gcp.Projects.ApiKey("primary", new()
     ///     {
+    ///         Name = "key",
     ///         DisplayName = "sample-key",
     ///         Project = basic.Name,
     ///         Restrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsArgs
@@ -161,11 +170,14 @@ namespace Pulumi.Gcp.Projects
     /// {
     ///     var basic = new Gcp.Organizations.Project("basic", new()
     ///     {
+    ///         ProjectId = "app",
+    ///         Name = "app",
     ///         OrgId = "123456789",
     ///     });
     /// 
     ///     var primary = new Gcp.Projects.ApiKey("primary", new()
     ///     {
+    ///         Name = "key",
     ///         DisplayName = "sample-key",
     ///         Project = basic.Name,
     ///     });
@@ -184,11 +196,14 @@ namespace Pulumi.Gcp.Projects
     /// {
     ///     var basic = new Gcp.Organizations.Project("basic", new()
     ///     {
+    ///         ProjectId = "app",
+    ///         Name = "app",
     ///         OrgId = "123456789",
     ///     });
     /// 
     ///     var primary = new Gcp.Projects.ApiKey("primary", new()
     ///     {
+    ///         Name = "key",
     ///         DisplayName = "sample-key",
     ///         Project = basic.Name,
     ///         Restrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsArgs

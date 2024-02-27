@@ -62,10 +62,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ListingIamPolicy(&#34;policy&#34;, ListingIamPolicyArgs.builder()        
- *             .project(google_bigquery_analytics_hub_listing.listing().project())
- *             .location(google_bigquery_analytics_hub_listing.listing().location())
- *             .dataExchangeId(google_bigquery_analytics_hub_listing.listing().data_exchange_id())
- *             .listingId(google_bigquery_analytics_hub_listing.listing().listing_id())
+ *             .project(listing.project())
+ *             .location(listing.location())
+ *             .dataExchangeId(listing.dataExchangeId())
+ *             .listingId(listing.listingId())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -96,10 +96,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new ListingIamBinding(&#34;binding&#34;, ListingIamBindingArgs.builder()        
- *             .project(google_bigquery_analytics_hub_listing.listing().project())
- *             .location(google_bigquery_analytics_hub_listing.listing().location())
- *             .dataExchangeId(google_bigquery_analytics_hub_listing.listing().data_exchange_id())
- *             .listingId(google_bigquery_analytics_hub_listing.listing().listing_id())
+ *             .project(listing.project())
+ *             .location(listing.location())
+ *             .dataExchangeId(listing.dataExchangeId())
+ *             .listingId(listing.listingId())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -131,10 +131,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new ListingIamMember(&#34;member&#34;, ListingIamMemberArgs.builder()        
- *             .project(google_bigquery_analytics_hub_listing.listing().project())
- *             .location(google_bigquery_analytics_hub_listing.listing().location())
- *             .dataExchangeId(google_bigquery_analytics_hub_listing.listing().data_exchange_id())
- *             .listingId(google_bigquery_analytics_hub_listing.listing().listing_id())
+ *             .project(listing.project())
+ *             .location(listing.location())
+ *             .dataExchangeId(listing.dataExchangeId())
+ *             .listingId(listing.listingId())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

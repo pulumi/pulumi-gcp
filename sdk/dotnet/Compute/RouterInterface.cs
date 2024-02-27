@@ -27,9 +27,10 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var foobar = new Gcp.Compute.RouterInterface("foobar", new()
     ///     {
-    ///         IpRange = "169.254.1.1/30",
-    ///         Region = "us-central1",
+    ///         Name = "interface-1",
     ///         Router = "router-1",
+    ///         Region = "us-central1",
+    ///         IpRange = "169.254.1.1/30",
     ///         VpnTunnel = "tunnel-1",
     ///     });
     /// 

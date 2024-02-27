@@ -36,16 +36,18 @@ namespace Pulumi.Gcp.Kms
     /// {
     ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
     ///     {
+    ///         Name = "keyring-example",
     ///         Location = "global",
     ///     });
     /// 
     ///     var cryptokey = new Gcp.Kms.CryptoKey("cryptokey", new()
     ///     {
+    ///         Name = "crypto-key-example",
     ///         KeyRing = keyring.Id,
     ///         RotationPeriod = "7776000s",
     ///     });
     /// 
-    ///     var myPassword = new Gcp.Kms.SecretCiphertext("myPassword", new()
+    ///     var myPassword = new Gcp.Kms.SecretCiphertext("my_password", new()
     ///     {
     ///         CryptoKey = cryptokey.Id,
     ///         Plaintext = "my-secret-password",
@@ -53,6 +55,18 @@ namespace Pulumi.Gcp.Kms
     /// 
     ///     var instance = new Gcp.Compute.Instance("instance", new()
     ///     {
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     null,
+    ///                 },
+    ///                 Network = "default",
+    ///             },
+    ///         },
+    ///         Name = "my-instance",
     ///         MachineType = "e2-medium",
     ///         Zone = "us-central1-a",
     ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
@@ -60,17 +74,6 @@ namespace Pulumi.Gcp.Kms
     ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
     ///             {
     ///                 Image = "debian-cloud/debian-11",
-    ///             },
-    ///         },
-    ///         NetworkInterfaces = new[]
-    ///         {
-    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
-    ///             {
-    ///                 Network = "default",
-    ///                 AccessConfigs = new[]
-    ///                 {
-    ///                     null,
-    ///                 },
     ///             },
     ///         },
     ///         Metadata = 

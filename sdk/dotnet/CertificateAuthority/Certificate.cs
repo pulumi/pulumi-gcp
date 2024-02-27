@@ -16,26 +16,208 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// `tier = "ENTERPRISE"`
     /// 
     /// ## Example Usage
+    /// ### Privateca Certificate Generated Key
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// using Tls = Pulumi.Tls;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CertificateAuthority.CaPool("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Name = "default",
+    ///         Tier = "ENTERPRISE",
+    ///     });
+    /// 
+    ///     var defaultAuthority = new Gcp.CertificateAuthority.Authority("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Pool = @default.Name,
+    ///         CertificateAuthorityId = "my-authority",
+    ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
+    ///         {
+    ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
+    ///             {
+    ///                 Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
+    ///                 {
+    ///                     Organization = "HashiCorp",
+    ///                     CommonName = "my-certificate-authority",
+    ///                 },
+    ///                 SubjectAltName = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectAltNameArgs
+    ///                 {
+    ///                     DnsNames = new[]
+    ///                     {
+    ///                         "hashicorp.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             X509Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigArgs
+    ///             {
+    ///                 CaOptions = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigCaOptionsArgs
+    ///                 {
+    ///                     IsCa = true,
+    ///                 },
+    ///                 KeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageArgs
+    ///                 {
+    ///                     BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
+    ///                     {
+    ///                         CertSign = true,
+    ///                         CrlSign = true,
+    ///                     },
+    ///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
+    ///                     {
+    ///                         ServerAuth = true,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
+    ///         {
+    ///             Algorithm = "RSA_PKCS1_4096_SHA256",
+    ///         },
+    ///         DeletionProtection = false,
+    ///         SkipGracePeriod = true,
+    ///         IgnoreActiveCertificatesOnDeletion = true,
+    ///     });
+    /// 
+    ///     var certKey = new Tls.PrivateKey("cert_key", new()
+    ///     {
+    ///         Algorithm = "RSA",
+    ///     });
+    /// 
+    ///     var defaultCertificate = new Gcp.CertificateAuthority.Certificate("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Pool = @default.Name,
+    ///         CertificateAuthority = defaultAuthority.CertificateAuthorityId,
+    ///         Lifetime = "86000s",
+    ///         Name = "cert-1",
+    ///         Config = new Gcp.CertificateAuthority.Inputs.CertificateConfigArgs
+    ///         {
+    ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.CertificateConfigSubjectConfigArgs
+    ///             {
+    ///                 Subject = new Gcp.CertificateAuthority.Inputs.CertificateConfigSubjectConfigSubjectArgs
+    ///                 {
+    ///                     CommonName = "san1.example.com",
+    ///                     CountryCode = "us",
+    ///                     Organization = "google",
+    ///                     OrganizationalUnit = "enterprise",
+    ///                     Locality = "mountain view",
+    ///                     Province = "california",
+    ///                     StreetAddress = "1600 amphitheatre parkway",
+    ///                 },
+    ///                 SubjectAltName = new Gcp.CertificateAuthority.Inputs.CertificateConfigSubjectConfigSubjectAltNameArgs
+    ///                 {
+    ///                     EmailAddresses = new[]
+    ///                     {
+    ///                         "email@example.com",
+    ///                     },
+    ///                     IpAddresses = new[]
+    ///                     {
+    ///                         "127.0.0.1",
+    ///                     },
+    ///                     Uris = new[]
+    ///                     {
+    ///                         "http://www.ietf.org/rfc/rfc3986.txt",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             X509Config = new Gcp.CertificateAuthority.Inputs.CertificateConfigX509ConfigArgs
+    ///             {
+    ///                 CaOptions = new Gcp.CertificateAuthority.Inputs.CertificateConfigX509ConfigCaOptionsArgs
+    ///                 {
+    ///                     IsCa = true,
+    ///                 },
+    ///                 KeyUsage = new Gcp.CertificateAuthority.Inputs.CertificateConfigX509ConfigKeyUsageArgs
+    ///                 {
+    ///                     BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs
+    ///                     {
+    ///                         CertSign = true,
+    ///                         CrlSign = true,
+    ///                     },
+    ///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs
+    ///                     {
+    ///                         ServerAuth = false,
+    ///                     },
+    ///                 },
+    ///                 NameConstraints = new Gcp.CertificateAuthority.Inputs.CertificateConfigX509ConfigNameConstraintsArgs
+    ///                 {
+    ///                     Critical = true,
+    ///                     PermittedDnsNames = new[]
+    ///                     {
+    ///                         "*.example.com",
+    ///                     },
+    ///                     ExcludedDnsNames = new[]
+    ///                     {
+    ///                         "*.deny.example.com",
+    ///                     },
+    ///                     PermittedIpRanges = new[]
+    ///                     {
+    ///                         "10.0.0.0/8",
+    ///                     },
+    ///                     ExcludedIpRanges = new[]
+    ///                     {
+    ///                         "10.1.1.0/24",
+    ///                     },
+    ///                     PermittedEmailAddresses = new[]
+    ///                     {
+    ///                         ".example.com",
+    ///                     },
+    ///                     ExcludedEmailAddresses = new[]
+    ///                     {
+    ///                         ".deny.example.com",
+    ///                     },
+    ///                     PermittedUris = new[]
+    ///                     {
+    ///                         ".example.com",
+    ///                     },
+    ///                     ExcludedUris = new[]
+    ///                     {
+    ///                         ".deny.example.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             PublicKey = new Gcp.CertificateAuthority.Inputs.CertificateConfigPublicKeyArgs
+    ///             {
+    ///                 Format = "PEM",
+    ///                 Key = Std.Base64encode.Invoke(new()
+    ///                 {
+    ///                     Input = certKey.PublicKeyPem,
+    ///                 }).Apply(invoke =&gt; invoke.Result),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Privateca Certificate With Template
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultCaPool = new Gcp.CertificateAuthority.CaPool("defaultCaPool", new()
+    ///     var @default = new Gcp.CertificateAuthority.CaPool("default", new()
     ///     {
     ///         Location = "us-central1",
+    ///         Name = "my-pool",
     ///         Tier = "ENTERPRISE",
     ///     });
     /// 
-    ///     var defaultCertificateTemplate = new Gcp.CertificateAuthority.CertificateTemplate("defaultCertificateTemplate", new()
+    ///     var defaultCertificateTemplate = new Gcp.CertificateAuthority.CertificateTemplate("default", new()
     ///     {
     ///         Location = "us-central1",
+    ///         Name = "my-certificate-template",
     ///         Description = "An updated sample certificate template",
     ///         IdentityConstraints = new Gcp.CertificateAuthority.Inputs.CertificateTemplateIdentityConstraintsArgs
     ///         {
@@ -143,10 +325,10 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         },
     ///     });
     /// 
-    ///     var defaultAuthority = new Gcp.CertificateAuthority.Authority("defaultAuthority", new()
+    ///     var defaultAuthority = new Gcp.CertificateAuthority.Authority("default", new()
     ///     {
     ///         Location = "us-central1",
-    ///         Pool = defaultCaPool.Name,
+    ///         Pool = @default.Name,
     ///         CertificateAuthorityId = "my-authority",
     ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
     ///         {
@@ -194,13 +376,17 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         IgnoreActiveCertificatesOnDeletion = true,
     ///     });
     /// 
-    ///     var defaultCertificate = new Gcp.CertificateAuthority.Certificate("defaultCertificate", new()
+    ///     var defaultCertificate = new Gcp.CertificateAuthority.Certificate("default", new()
     ///     {
     ///         Location = "us-central1",
-    ///         Pool = defaultCaPool.Name,
+    ///         Pool = @default.Name,
     ///         CertificateAuthority = defaultAuthority.CertificateAuthorityId,
+    ///         Name = "my-certificate",
     ///         Lifetime = "860s",
-    ///         PemCsr = File.ReadAllText("test-fixtures/rsa_csr.pem"),
+    ///         PemCsr = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "test-fixtures/rsa_csr.pem",
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///         CertificateTemplate = defaultCertificateTemplate.Id,
     ///     });
     /// 
@@ -210,23 +396,24 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultCaPool = new Gcp.CertificateAuthority.CaPool("defaultCaPool", new()
+    ///     var @default = new Gcp.CertificateAuthority.CaPool("default", new()
     ///     {
     ///         Location = "us-central1",
+    ///         Name = "my-pool",
     ///         Tier = "ENTERPRISE",
     ///     });
     /// 
-    ///     var defaultAuthority = new Gcp.CertificateAuthority.Authority("defaultAuthority", new()
+    ///     var defaultAuthority = new Gcp.CertificateAuthority.Authority("default", new()
     ///     {
     ///         Location = "us-central1",
-    ///         Pool = defaultCaPool.Name,
+    ///         Pool = @default.Name,
     ///         CertificateAuthorityId = "my-authority",
     ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
     ///         {
@@ -274,13 +461,17 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         IgnoreActiveCertificatesOnDeletion = true,
     ///     });
     /// 
-    ///     var defaultCertificate = new Gcp.CertificateAuthority.Certificate("defaultCertificate", new()
+    ///     var defaultCertificate = new Gcp.CertificateAuthority.Certificate("default", new()
     ///     {
     ///         Location = "us-central1",
-    ///         Pool = defaultCaPool.Name,
+    ///         Pool = @default.Name,
     ///         CertificateAuthority = defaultAuthority.CertificateAuthorityId,
+    ///         Name = "my-certificate",
     ///         Lifetime = "860s",
-    ///         PemCsr = File.ReadAllText("test-fixtures/rsa_csr.pem"),
+    ///         PemCsr = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "test-fixtures/rsa_csr.pem",
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
     /// });
@@ -288,31 +479,25 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// ### Privateca Certificate No Authority
     /// 
     /// ```csharp
-    /// using System;
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// 	
-    /// string ReadFileBase64(string path) 
-    /// {
-    ///     return Convert.ToBase64String(Encoding.UTF8.GetBytes(File.ReadAllText(path)));
-    /// }
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultCaPool = new Gcp.CertificateAuthority.CaPool("defaultCaPool", new()
+    ///     var @default = new Gcp.CertificateAuthority.CaPool("default", new()
     ///     {
     ///         Location = "us-central1",
+    ///         Name = "my-pool",
     ///         Tier = "ENTERPRISE",
     ///     });
     /// 
-    ///     var defaultAuthority = new Gcp.CertificateAuthority.Authority("defaultAuthority", new()
+    ///     var defaultAuthority = new Gcp.CertificateAuthority.Authority("default", new()
     ///     {
     ///         Location = "us-central1",
-    ///         Pool = defaultCaPool.Name,
+    ///         Pool = @default.Name,
     ///         CertificateAuthorityId = "my-authority",
     ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
     ///         {
@@ -362,10 +547,11 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         IgnoreActiveCertificatesOnDeletion = true,
     ///     });
     /// 
-    ///     var defaultCertificate = new Gcp.CertificateAuthority.Certificate("defaultCertificate", new()
+    ///     var defaultCertificate = new Gcp.CertificateAuthority.Certificate("default", new()
     ///     {
     ///         Location = "us-central1",
-    ///         Pool = defaultCaPool.Name,
+    ///         Pool = @default.Name,
+    ///         Name = "my-certificate",
     ///         Lifetime = "860s",
     ///         Config = new Gcp.CertificateAuthority.Inputs.CertificateConfigArgs
     ///         {
@@ -404,14 +590,11 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///             PublicKey = new Gcp.CertificateAuthority.Inputs.CertificateConfigPublicKeyArgs
     ///             {
     ///                 Format = "PEM",
-    ///                 Key = ReadFileBase64("test-fixtures/rsa_public.pem"),
+    ///                 Key = Std.Filebase64.Invoke(new()
+    ///                 {
+    ///                     Input = "test-fixtures/rsa_public.pem",
+    ///                 }).Apply(invoke =&gt; invoke.Result),
     ///             },
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             defaultAuthority,
     ///         },
     ///     });
     /// 

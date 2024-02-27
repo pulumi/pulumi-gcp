@@ -34,9 +34,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.notebooks.RuntimeIamPolicy("policy", {
- *     project: google_notebooks_runtime.runtime.project,
- *     location: google_notebooks_runtime.runtime.location,
- *     runtimeName: google_notebooks_runtime.runtime.name,
+ *     project: runtime.project,
+ *     location: runtime.location,
+ *     runtimeName: runtime.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -48,9 +48,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.notebooks.RuntimeIamBinding("binding", {
- *     project: google_notebooks_runtime.runtime.project,
- *     location: google_notebooks_runtime.runtime.location,
- *     runtimeName: google_notebooks_runtime.runtime.name,
+ *     project: runtime.project,
+ *     location: runtime.location,
+ *     runtimeName: runtime.name,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
  * });
@@ -63,9 +63,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.notebooks.RuntimeIamMember("member", {
- *     project: google_notebooks_runtime.runtime.project,
- *     location: google_notebooks_runtime.runtime.location,
- *     runtimeName: google_notebooks_runtime.runtime.name,
+ *     project: runtime.project,
+ *     location: runtime.location,
+ *     runtimeName: runtime.name,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
  * });

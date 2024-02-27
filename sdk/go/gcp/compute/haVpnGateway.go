@@ -39,13 +39,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			network1, err := compute.NewNetwork(ctx, "network1", &compute.NetworkArgs{
+//				Name:                  pulumi.String("network1"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewHaVpnGateway(ctx, "haGateway1", &compute.HaVpnGatewayArgs{
+//			_, err = compute.NewHaVpnGateway(ctx, "ha_gateway1", &compute.HaVpnGatewayArgs{
 //				Region:  pulumi.String("us-central1"),
+//				Name:    pulumi.String("ha-vpn-1"),
 //				Network: network1.ID(),
 //			})
 //			if err != nil {
@@ -71,13 +73,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			network1, err := compute.NewNetwork(ctx, "network1", &compute.NetworkArgs{
+//				Name:                  pulumi.String("network1"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewHaVpnGateway(ctx, "haGateway1", &compute.HaVpnGatewayArgs{
+//			_, err = compute.NewHaVpnGateway(ctx, "ha_gateway1", &compute.HaVpnGatewayArgs{
 //				Region:    pulumi.String("us-central1"),
+//				Name:      pulumi.String("ha-vpn-1"),
 //				Network:   network1.ID(),
 //				StackType: pulumi.String("IPV4_IPV6"),
 //			})
@@ -104,12 +108,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("test-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			address1, err := compute.NewAddress(ctx, "address1", &compute.AddressArgs{
+//				Name:         pulumi.String("test-address1"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				Purpose:      pulumi.String("IPSEC_INTERCONNECT"),
 //				Address:      pulumi.String("192.168.1.0"),
@@ -120,6 +126,7 @@ import (
 //				return err
 //			}
 //			router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
+//				Name:                        pulumi.String("test-router"),
 //				Network:                     network.Name,
 //				EncryptedInterconnectRouter: pulumi.Bool(true),
 //				Bgp: &compute.RouterBgpArgs{
@@ -130,6 +137,7 @@ import (
 //				return err
 //			}
 //			attachment1, err := compute.NewInterconnectAttachment(ctx, "attachment1", &compute.InterconnectAttachmentArgs{
+//				Name:                   pulumi.String("test-interconnect-attachment1"),
 //				EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
 //				Type:                   pulumi.String("PARTNER"),
 //				Router:                 router.ID(),
@@ -142,6 +150,7 @@ import (
 //				return err
 //			}
 //			address2, err := compute.NewAddress(ctx, "address2", &compute.AddressArgs{
+//				Name:         pulumi.String("test-address2"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				Purpose:      pulumi.String("IPSEC_INTERCONNECT"),
 //				Address:      pulumi.String("192.168.2.0"),
@@ -152,6 +161,7 @@ import (
 //				return err
 //			}
 //			attachment2, err := compute.NewInterconnectAttachment(ctx, "attachment2", &compute.InterconnectAttachmentArgs{
+//				Name:                   pulumi.String("test-interconnect-attachment2"),
 //				EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_2"),
 //				Type:                   pulumi.String("PARTNER"),
 //				Router:                 router.ID(),
@@ -164,6 +174,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewHaVpnGateway(ctx, "vpn-gateway", &compute.HaVpnGatewayArgs{
+//				Name:    pulumi.String("test-ha-vpngw"),
 //				Network: network.ID(),
 //				VpnInterfaces: compute.HaVpnGatewayVpnInterfaceArray{
 //					&compute.HaVpnGatewayVpnInterfaceArgs{

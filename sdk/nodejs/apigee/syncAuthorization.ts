@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = new gcp.organizations.Project("project", {
+ *     projectId: "my-project",
+ *     name: "my-project",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
  * });
@@ -28,14 +30,12 @@ import * as utilities from "../utilities";
  *     project: project.projectId,
  *     service: "apigee.googleapis.com",
  * });
- * const apigeeOrg = new gcp.apigee.Organization("apigeeOrg", {
+ * const apigeeOrg = new gcp.apigee.Organization("apigee_org", {
  *     analyticsRegion: "us-central1",
  *     projectId: project.projectId,
  *     runtimeType: "HYBRID",
- * }, {
- *     dependsOn: [apigee],
  * });
- * const serviceAccount = new gcp.serviceaccount.Account("serviceAccount", {
+ * const serviceAccount = new gcp.serviceaccount.Account("service_account", {
  *     accountId: "my-account",
  *     displayName: "Service Account",
  * });
@@ -44,8 +44,9 @@ import * as utilities from "../utilities";
  *     role: "roles/apigee.synchronizerManager",
  *     members: [pulumi.interpolate`serviceAccount:${serviceAccount.email}`],
  * });
- * const apigeeSyncAuthorization = new gcp.apigee.SyncAuthorization("apigeeSyncAuthorization", {identities: [pulumi.interpolate`serviceAccount:${serviceAccount.email}`]}, {
- *     dependsOn: [synchronizer_iam],
+ * const apigeeSyncAuthorization = new gcp.apigee.SyncAuthorization("apigee_sync_authorization", {
+ *     name: apigeeOrg.name,
+ *     identities: [pulumi.interpolate`serviceAccount:${serviceAccount.email}`],
  * });
  * ```
  *

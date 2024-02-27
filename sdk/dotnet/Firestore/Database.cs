@@ -37,8 +37,9 @@ namespace Pulumi.Gcp.Firestore
     /// {
     ///     var database = new Gcp.Firestore.Database("database", new()
     ///     {
-    ///         LocationId = "nam5",
     ///         Project = "my-project-name",
+    ///         Name = "(default)",
+    ///         LocationId = "nam5",
     ///         Type = "FIRESTORE_NATIVE",
     ///     });
     /// 
@@ -56,14 +57,15 @@ namespace Pulumi.Gcp.Firestore
     /// {
     ///     var database = new Gcp.Firestore.Database("database", new()
     ///     {
-    ///         AppEngineIntegrationMode = "DISABLED",
+    ///         Project = "my-project-name",
+    ///         Name = "database-id",
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
     ///         ConcurrencyMode = "OPTIMISTIC",
+    ///         AppEngineIntegrationMode = "DISABLED",
+    ///         PointInTimeRecoveryEnablement = "POINT_IN_TIME_RECOVERY_ENABLED",
     ///         DeleteProtectionState = "DELETE_PROTECTION_ENABLED",
     ///         DeletionPolicy = "DELETE",
-    ///         LocationId = "nam5",
-    ///         PointInTimeRecoveryEnablement = "POINT_IN_TIME_RECOVERY_ENABLED",
-    ///         Project = "my-project-name",
-    ///         Type = "FIRESTORE_NATIVE",
     ///     });
     /// 
     /// });
@@ -78,10 +80,11 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datastoreModeDatabase = new Gcp.Firestore.Database("datastoreModeDatabase", new()
+    ///     var datastoreModeDatabase = new Gcp.Firestore.Database("datastore_mode_database", new()
     ///     {
-    ///         LocationId = "nam5",
     ///         Project = "my-project-name",
+    ///         Name = "(default)",
+    ///         LocationId = "nam5",
     ///         Type = "DATASTORE_MODE",
     ///     });
     /// 
@@ -97,16 +100,17 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datastoreModeDatabase = new Gcp.Firestore.Database("datastoreModeDatabase", new()
+    ///     var datastoreModeDatabase = new Gcp.Firestore.Database("datastore_mode_database", new()
     ///     {
-    ///         AppEngineIntegrationMode = "DISABLED",
+    ///         Project = "my-project-name",
+    ///         Name = "database-id",
+    ///         LocationId = "nam5",
+    ///         Type = "DATASTORE_MODE",
     ///         ConcurrencyMode = "OPTIMISTIC",
+    ///         AppEngineIntegrationMode = "DISABLED",
+    ///         PointInTimeRecoveryEnablement = "POINT_IN_TIME_RECOVERY_ENABLED",
     ///         DeleteProtectionState = "DELETE_PROTECTION_ENABLED",
     ///         DeletionPolicy = "DELETE",
-    ///         LocationId = "nam5",
-    ///         PointInTimeRecoveryEnablement = "POINT_IN_TIME_RECOVERY_ENABLED",
-    ///         Project = "my-project-name",
-    ///         Type = "DATASTORE_MODE",
     ///     });
     /// 
     /// });

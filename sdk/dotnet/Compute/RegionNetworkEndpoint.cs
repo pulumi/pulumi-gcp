@@ -35,11 +35,13 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var @default = new Gcp.Compute.Network("default", new()
     ///     {
+    ///         Name = "network",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var @group = new Gcp.Compute.RegionNetworkEndpointGroup("group", new()
     ///     {
+    ///         Name = "ip-port-neg",
     ///         Network = @default.Id,
     ///         Region = "us-central1",
     ///         NetworkEndpointType = "INTERNET_IP_PORT",
@@ -67,11 +69,13 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var @default = new Gcp.Compute.Network("default", new()
     ///     {
+    ///         Name = "network",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var @group = new Gcp.Compute.RegionNetworkEndpointGroup("group", new()
     ///     {
+    ///         Name = "fqdn-port-neg",
     ///         Network = @default.Id,
     ///         Region = "us-central1",
     ///         NetworkEndpointType = "INTERNET_FQDN_PORT",

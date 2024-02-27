@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.Healthcare
     ///         },
     ///     });
     /// 
-    ///     var dicomStore = new Gcp.Healthcare.DicomStoreIamPolicy("dicomStore", new()
+    ///     var dicomStore = new Gcp.Healthcare.DicomStoreIamPolicy("dicom_store", new()
     ///     {
     ///         DicomStoreId = "your-dicom-store-id",
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
@@ -64,14 +64,14 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dicomStore = new Gcp.Healthcare.DicomStoreIamBinding("dicomStore", new()
+    ///     var dicomStore = new Gcp.Healthcare.DicomStoreIamBinding("dicom_store", new()
     ///     {
     ///         DicomStoreId = "your-dicom-store-id",
+    ///         Role = "roles/editor",
     ///         Members = new[]
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         Role = "roles/editor",
     ///     });
     /// 
     /// });
@@ -87,11 +87,11 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dicomStore = new Gcp.Healthcare.DicomStoreIamMember("dicomStore", new()
+    ///     var dicomStore = new Gcp.Healthcare.DicomStoreIamMember("dicom_store", new()
     ///     {
     ///         DicomStoreId = "your-dicom-store-id",
-    ///         Member = "user:jane@example.com",
     ///         Role = "roles/editor",
+    ///         Member = "user:jane@example.com",
     ///     });
     /// 
     /// });

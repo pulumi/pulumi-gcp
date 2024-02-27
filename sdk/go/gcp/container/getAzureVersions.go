@@ -34,7 +34,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstAvailableVersion", data.Google_container_azure_versions.Versions.Valid_versions[0])
+//			ctx.Export("firstAvailableVersion", versions.ValidVersions[0])
 //			return nil
 //		})
 //	}

@@ -51,19 +51,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+ *             .name(&#34;foobar&#34;)
  *             .autoCreateSubnetworks(&#34;false&#34;)
  *             .build());
  * 
  *         var other = new Network(&#34;other&#34;, NetworkArgs.builder()        
+ *             .name(&#34;other&#34;)
  *             .autoCreateSubnetworks(&#34;false&#34;)
  *             .build());
  * 
  *         var peering1 = new NetworkPeering(&#34;peering1&#34;, NetworkPeeringArgs.builder()        
+ *             .name(&#34;peering1&#34;)
  *             .network(default_.selfLink())
  *             .peerNetwork(other.selfLink())
  *             .build());
  * 
  *         var peering2 = new NetworkPeering(&#34;peering2&#34;, NetworkPeeringArgs.builder()        
+ *             .name(&#34;peering2&#34;)
  *             .network(other.selfLink())
  *             .peerNetwork(default_.selfLink())
  *             .build());

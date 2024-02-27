@@ -46,9 +46,9 @@ public final class SpannerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = SpannerFunctions.getDatabaseIamPolicy(GetDatabaseIamPolicyArgs.builder()
-     *             .project(google_spanner_database.database().project())
-     *             .database(google_spanner_database.database().name())
-     *             .instance(google_spanner_database.database().instance())
+     *             .project(database.project())
+     *             .database(database.name())
+     *             .instance(database.instance())
      *             .build());
      * 
      *     }
@@ -85,9 +85,9 @@ public final class SpannerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = SpannerFunctions.getDatabaseIamPolicy(GetDatabaseIamPolicyArgs.builder()
-     *             .project(google_spanner_database.database().project())
-     *             .database(google_spanner_database.database().name())
-     *             .instance(google_spanner_database.database().instance())
+     *             .project(database.project())
+     *             .database(database.name())
+     *             .instance(database.instance())
      *             .build());
      * 
      *     }
@@ -124,9 +124,9 @@ public final class SpannerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = SpannerFunctions.getDatabaseIamPolicy(GetDatabaseIamPolicyArgs.builder()
-     *             .project(google_spanner_database.database().project())
-     *             .database(google_spanner_database.database().name())
-     *             .instance(google_spanner_database.database().instance())
+     *             .project(database.project())
+     *             .database(database.name())
+     *             .instance(database.instance())
      *             .build());
      * 
      *     }
@@ -163,9 +163,9 @@ public final class SpannerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = SpannerFunctions.getDatabaseIamPolicy(GetDatabaseIamPolicyArgs.builder()
-     *             .project(google_spanner_database.database().project())
-     *             .database(google_spanner_database.database().name())
-     *             .instance(google_spanner_database.database().instance())
+     *             .project(database.project())
+     *             .database(database.name())
+     *             .instance(database.instance())
      *             .build());
      * 
      *     }
@@ -350,8 +350,8 @@ public final class SpannerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = SpannerFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(google_spanner_instance.instance().project())
-     *             .instance(google_spanner_instance.instance().name())
+     *             .project(instance.project())
+     *             .instance(instance.name())
      *             .build());
      * 
      *     }
@@ -388,8 +388,8 @@ public final class SpannerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = SpannerFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(google_spanner_instance.instance().project())
-     *             .instance(google_spanner_instance.instance().name())
+     *             .project(instance.project())
+     *             .instance(instance.name())
      *             .build());
      * 
      *     }
@@ -426,8 +426,8 @@ public final class SpannerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = SpannerFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(google_spanner_instance.instance().project())
-     *             .instance(google_spanner_instance.instance().name())
+     *             .project(instance.project())
+     *             .instance(instance.name())
      *             .build());
      * 
      *     }
@@ -464,8 +464,8 @@ public final class SpannerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = SpannerFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(google_spanner_instance.instance().project())
-     *             .instance(google_spanner_instance.instance().name())
+     *             .project(instance.project())
+     *             .instance(instance.name())
      *             .build());
      * 
      *     }

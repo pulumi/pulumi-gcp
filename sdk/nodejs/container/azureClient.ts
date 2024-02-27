@@ -19,8 +19,9 @@ import * as utilities from "../utilities";
  * const primary = new gcp.container.AzureClient("primary", {
  *     applicationId: "12345678-1234-1234-1234-123456789111",
  *     location: "us-west1",
- *     project: "my-project-name",
+ *     name: "client-name",
  *     tenantId: "12345678-1234-1234-1234-123456789111",
+ *     project: "my-project-name",
  * });
  * ```
  *

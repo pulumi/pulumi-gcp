@@ -131,27 +131,78 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Bigquery Job Load Geojson
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = "my-project-name";
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: `${project}-bq-geojson`,
+ *     location: "US",
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const object = new gcp.storage.BucketObject("object", {
+ *     name: "geojson-data.jsonl",
+ *     bucket: bucket.name,
+ *     content: `{"type":"Feature","properties":{"continent":"Europe","region":"Scandinavia"},"geometry":{"type":"Polygon","coordinates":[[[-30.94,53.33],[33.05,53.33],[33.05,71.86],[-30.94,71.86],[-30.94,53.33]]]}}
+ * {"type":"Feature","properties":{"continent":"Africa","region":"West Africa"},"geometry":{"type":"Polygon","coordinates":[[[-23.91,0],[11.95,0],[11.95,18.98],[-23.91,18.98],[-23.91,0]]]}}
+ * `,
+ * });
+ * const bar = new gcp.bigquery.Dataset("bar", {
+ *     datasetId: "job_load_dataset",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "US",
+ * });
+ * const foo = new gcp.bigquery.Table("foo", {
+ *     deletionProtection: false,
+ *     datasetId: bar.datasetId,
+ *     tableId: "job_load_table",
+ * });
+ * const job = new gcp.bigquery.Job("job", {
+ *     jobId: "job_load",
+ *     labels: {
+ *         my_job: "load",
+ *     },
+ *     load: {
+ *         sourceUris: [pulumi.interpolate`gs://${object.bucket}/${object.name}`],
+ *         destinationTable: {
+ *             projectId: foo.project,
+ *             datasetId: foo.datasetId,
+ *             tableId: foo.tableId,
+ *         },
+ *         writeDisposition: "WRITE_TRUNCATE",
+ *         autodetect: true,
+ *         sourceFormat: "NEWLINE_DELIMITED_JSON",
+ *         jsonExtension: "GEOJSON",
+ *     },
+ * });
+ * ```
  * ### Bigquery Job Load Parquet
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const testBucket = new gcp.storage.Bucket("testBucket", {
+ * const test = new gcp.storage.Bucket("test", {
+ *     name: "job_load_bucket",
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  * });
- * const testBucketObject = new gcp.storage.BucketObject("testBucketObject", {
+ * const testBucketObject = new gcp.storage.BucketObject("test", {
+ *     name: "job_load_bucket_object",
  *     source: new pulumi.asset.FileAsset("./test-fixtures/test.parquet.gzip"),
- *     bucket: testBucket.name,
+ *     bucket: test.name,
  * });
- * const testDataset = new gcp.bigquery.Dataset("testDataset", {
+ * const testDataset = new gcp.bigquery.Dataset("test", {
  *     datasetId: "job_load_dataset",
  *     friendlyName: "test",
  *     description: "This is a test description",
  *     location: "US",
  * });
- * const testTable = new gcp.bigquery.Table("testTable", {
+ * const testTable = new gcp.bigquery.Table("test", {
  *     deletionProtection: false,
  *     tableId: "job_load_table",
  *     datasetId: testDataset.datasetId,
@@ -182,19 +233,136 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Bigquery Job Copy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const sourceDataset: gcp.bigquery.Dataset[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     sourceDataset.push(new gcp.bigquery.Dataset(`source-${range.value}`, {
+ *         datasetId: `job_copy_${range.value}_dataset`,
+ *         friendlyName: "test",
+ *         description: "This is a test description",
+ *         location: "US",
+ *     }));
+ * }
+ * const source: gcp.bigquery.Table[] = [];
+ * sourceDataset.length.apply(rangeBody => {
+ *     for (const range = {value: 0}; range.value < rangeBody; range.value++) {
+ *         source.push(new gcp.bigquery.Table(`source-${range.value}`, {
+ *             deletionProtection: false,
+ *             datasetId: sourceDataset[range.value].datasetId,
+ *             tableId: `job_copy_${range.value}_table`,
+ *             schema: `[
+ *   {
+ *     "name": "name",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE"
+ *   },
+ *   {
+ *     "name": "post_abbr",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE"
+ *   },
+ *   {
+ *     "name": "date",
+ *     "type": "DATE",
+ *     "mode": "NULLABLE"
+ *   }
+ * ]
+ * `,
+ *         }));
+ *     }
+ * });
+ * const destDataset = new gcp.bigquery.Dataset("dest", {
+ *     datasetId: "job_copy_dest_dataset",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "US",
+ * });
+ * const keyRing = new gcp.kms.KeyRing("key_ring", {
+ *     name: "example-keyring",
+ *     location: "global",
+ * });
+ * const cryptoKey = new gcp.kms.CryptoKey("crypto_key", {
+ *     name: "example-key",
+ *     keyRing: keyRing.id,
+ * });
+ * const dest = new gcp.bigquery.Table("dest", {
+ *     deletionProtection: false,
+ *     datasetId: destDataset.datasetId,
+ *     tableId: "job_copy_dest_table",
+ *     schema: `[
+ *   {
+ *     "name": "name",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE"
+ *   },
+ *   {
+ *     "name": "post_abbr",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE"
+ *   },
+ *   {
+ *     "name": "date",
+ *     "type": "DATE",
+ *     "mode": "NULLABLE"
+ *   }
+ * ]
+ * `,
+ *     encryptionConfiguration: {
+ *         kmsKeyName: cryptoKey.id,
+ *     },
+ * });
+ * const project = gcp.organizations.getProject({
+ *     projectId: "my-project-name",
+ * });
+ * const encryptRole = new gcp.projects.IAMMember("encrypt_role", {
+ *     project: project.then(project => project.projectId),
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     member: project.then(project => `serviceAccount:bq-${project.number}@bigquery-encryption.iam.gserviceaccount.com`),
+ * });
+ * const job = new gcp.bigquery.Job("job", {
+ *     jobId: "job_copy",
+ *     copy: {
+ *         sourceTables: [
+ *             {
+ *                 projectId: source[0].project,
+ *                 datasetId: source[0].datasetId,
+ *                 tableId: source[0].tableId,
+ *             },
+ *             {
+ *                 projectId: source[1].project,
+ *                 datasetId: source[1].datasetId,
+ *                 tableId: source[1].tableId,
+ *             },
+ *         ],
+ *         destinationTable: {
+ *             projectId: dest.project,
+ *             datasetId: dest.datasetId,
+ *             tableId: dest.tableId,
+ *         },
+ *         destinationEncryptionConfiguration: {
+ *             kmsKeyName: cryptoKey.id,
+ *         },
+ *     },
+ * });
+ * ```
  * ### Bigquery Job Extract
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const source_oneDataset = new gcp.bigquery.Dataset("source-oneDataset", {
+ * const source_oneDataset = new gcp.bigquery.Dataset("source-one", {
  *     datasetId: "job_extract_dataset",
  *     friendlyName: "test",
  *     description: "This is a test description",
  *     location: "US",
  * });
- * const source_oneTable = new gcp.bigquery.Table("source-oneTable", {
+ * const source_one = new gcp.bigquery.Table("source-one", {
  *     deletionProtection: false,
  *     datasetId: source_oneDataset.datasetId,
  *     tableId: "job_extract_table",
@@ -218,6 +386,7 @@ import * as utilities from "../utilities";
  * `,
  * });
  * const dest = new gcp.storage.Bucket("dest", {
+ *     name: "job_extract_bucket",
  *     location: "US",
  *     forceDestroy: true,
  * });
@@ -226,9 +395,9 @@ import * as utilities from "../utilities";
  *     extract: {
  *         destinationUris: [pulumi.interpolate`${dest.url}/extract`],
  *         sourceTable: {
- *             projectId: source_oneTable.project,
- *             datasetId: source_oneTable.datasetId,
- *             tableId: source_oneTable.tableId,
+ *             projectId: source_one.project,
+ *             datasetId: source_one.datasetId,
+ *             tableId: source_one.tableId,
  *         },
  *         destinationFormat: "NEWLINE_DELIMITED_JSON",
  *         compression: "GZIP",

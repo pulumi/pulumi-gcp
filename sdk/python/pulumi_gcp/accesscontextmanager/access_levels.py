@@ -142,15 +142,18 @@ class AccessLevels(pulumi.CustomResource):
             parent="organizations/123456789",
             title="my policy")
         access_levels = gcp.accesscontextmanager.AccessLevels("access-levels",
+            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             access_levels=[
                 gcp.accesscontextmanager.AccessLevelsAccessLevelArgs(
+                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
+                    title="chromeos_no_lock",
                     basic=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicArgs(
                         conditions=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionArgs(
                             device_policy=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs(
+                                require_screen_lock=True,
                                 os_constraints=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs(
                                     os_type="DESKTOP_CHROME_OS",
                                 )],
-                                require_screen_lock=True,
                             ),
                             regions=[
                                 "CH",
@@ -159,17 +162,17 @@ class AccessLevels(pulumi.CustomResource):
                             ],
                         )],
                     ),
-                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
-                    title="chromeos_no_lock",
                 ),
                 gcp.accesscontextmanager.AccessLevelsAccessLevelArgs(
+                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/mac_no_lock"),
+                    title="mac_no_lock",
                     basic=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicArgs(
                         conditions=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionArgs(
                             device_policy=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs(
+                                require_screen_lock=True,
                                 os_constraints=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs(
                                     os_type="DESKTOP_MAC",
                                 )],
-                                require_screen_lock=True,
                             ),
                             regions=[
                                 "CH",
@@ -178,11 +181,8 @@ class AccessLevels(pulumi.CustomResource):
                             ],
                         )],
                     ),
-                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/mac_no_lock"),
-                    title="mac_no_lock",
                 ),
-            ],
-            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"))
+            ])
         ```
 
         ## Import
@@ -241,15 +241,18 @@ class AccessLevels(pulumi.CustomResource):
             parent="organizations/123456789",
             title="my policy")
         access_levels = gcp.accesscontextmanager.AccessLevels("access-levels",
+            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             access_levels=[
                 gcp.accesscontextmanager.AccessLevelsAccessLevelArgs(
+                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
+                    title="chromeos_no_lock",
                     basic=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicArgs(
                         conditions=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionArgs(
                             device_policy=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs(
+                                require_screen_lock=True,
                                 os_constraints=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs(
                                     os_type="DESKTOP_CHROME_OS",
                                 )],
-                                require_screen_lock=True,
                             ),
                             regions=[
                                 "CH",
@@ -258,17 +261,17 @@ class AccessLevels(pulumi.CustomResource):
                             ],
                         )],
                     ),
-                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
-                    title="chromeos_no_lock",
                 ),
                 gcp.accesscontextmanager.AccessLevelsAccessLevelArgs(
+                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/mac_no_lock"),
+                    title="mac_no_lock",
                     basic=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicArgs(
                         conditions=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionArgs(
                             device_policy=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs(
+                                require_screen_lock=True,
                                 os_constraints=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs(
                                     os_type="DESKTOP_MAC",
                                 )],
-                                require_screen_lock=True,
                             ),
                             regions=[
                                 "CH",
@@ -277,11 +280,8 @@ class AccessLevels(pulumi.CustomResource):
                             ],
                         )],
                     ),
-                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/mac_no_lock"),
-                    title="mac_no_lock",
                 ),
-            ],
-            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"))
+            ])
         ```
 
         ## Import

@@ -20,7 +20,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myProject = new gcp.organizations.Project("myProject", {orgId: "1234567"});
+ * const myProject = new gcp.organizations.Project("my_project", {
+ *     name: "My Project",
+ *     projectId: "your-project-id",
+ *     orgId: "1234567",
+ * });
  * const app = new gcp.appengine.Application("app", {
  *     project: myProject.projectId,
  *     locationId: "us-central",

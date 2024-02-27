@@ -40,6 +40,7 @@ import (
 //				return err
 //			}
 //			_, err = vpcaccess.NewConnector(ctx, "connector", &vpcaccess.ConnectorArgs{
+//				Name:        pulumi.String("vpc-con"),
 //				IpCidrRange: pulumi.String("10.8.0.0/28"),
 //				Network:     pulumi.String("default"),
 //				Region:      pulumi.String("us-central1"),

@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := certificateauthority.LookupCaPoolIamPolicy(ctx, &certificateauthority.LookupCaPoolIamPolicyArgs{
-//				CaPool: google_privateca_ca_pool.Default.Id,
+//				CaPool: _default.Id,
 //			}, nil)
 //			if err != nil {
 //				return err

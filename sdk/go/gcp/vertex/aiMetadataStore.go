@@ -27,6 +27,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vertex.NewAiMetadataStore(ctx, "store", &vertex.AiMetadataStoreArgs{
+//				Name:        pulumi.String("test-store"),
 //				Description: pulumi.String("Store to test the terraform module"),
 //				Region:      pulumi.String("us-central1"),
 //			})

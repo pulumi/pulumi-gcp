@@ -41,11 +41,12 @@ namespace Pulumi.Gcp.Monitoring
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Monitors the default MeshIstio service
         ///     var @default = Gcp.Monitoring.GetIstioCanonicalService.Invoke(new()
         ///     {
-        ///         CanonicalService = "prometheus",
-        ///         CanonicalServiceNamespace = "istio-system",
         ///         MeshUid = "proj-573164786102",
+        ///         CanonicalServiceNamespace = "istio-system",
+        ///         CanonicalService = "prometheus",
         ///     });
         /// 
         /// });
@@ -86,11 +87,12 @@ namespace Pulumi.Gcp.Monitoring
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Monitors the default MeshIstio service
         ///     var @default = Gcp.Monitoring.GetIstioCanonicalService.Invoke(new()
         ///     {
-        ///         CanonicalService = "prometheus",
-        ///         CanonicalServiceNamespace = "istio-system",
         ///         MeshUid = "proj-573164786102",
+        ///         CanonicalServiceNamespace = "istio-system",
+        ///         CanonicalService = "prometheus",
         ///     });
         /// 
         /// });

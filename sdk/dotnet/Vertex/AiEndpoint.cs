@@ -29,30 +29,16 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vertexNetwork = new Gcp.Compute.Network("vertexNetwork");
-    /// 
-    ///     var vertexRange = new Gcp.Compute.GlobalAddress("vertexRange", new()
+    ///     var vertexNetwork = new Gcp.Compute.Network("vertex_network", new()
     ///     {
-    ///         Purpose = "VPC_PEERING",
-    ///         AddressType = "INTERNAL",
-    ///         PrefixLength = 24,
-    ///         Network = vertexNetwork.Id,
-    ///     });
-    /// 
-    ///     var vertexVpcConnection = new Gcp.ServiceNetworking.Connection("vertexVpcConnection", new()
-    ///     {
-    ///         Network = vertexNetwork.Id,
-    ///         Service = "servicenetworking.googleapis.com",
-    ///         ReservedPeeringRanges = new[]
-    ///         {
-    ///             vertexRange.Name,
-    ///         },
+    ///         Name = "network-name",
     ///     });
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
     ///     var endpoint = new Gcp.Vertex.AiEndpoint("endpoint", new()
     ///     {
+    ///         Name = "endpoint-name",
     ///         DisplayName = "sample-endpoint",
     ///         Description = "A sample vertex endpoint",
     ///         Location = "us-central1",
@@ -71,15 +57,28 @@ namespace Pulumi.Gcp.Vertex
     ///         {
     ///             KmsKeyName = "kms-name",
     ///         },
-    ///     }, new CustomResourceOptions
+    ///     });
+    /// 
+    ///     var vertexRange = new Gcp.Compute.GlobalAddress("vertex_range", new()
     ///     {
-    ///         DependsOn = new[]
+    ///         Name = "address-name",
+    ///         Purpose = "VPC_PEERING",
+    ///         AddressType = "INTERNAL",
+    ///         PrefixLength = 24,
+    ///         Network = vertexNetwork.Id,
+    ///     });
+    /// 
+    ///     var vertexVpcConnection = new Gcp.ServiceNetworking.Connection("vertex_vpc_connection", new()
+    ///     {
+    ///         Network = vertexNetwork.Id,
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
     ///         {
-    ///             vertexVpcConnection,
+    ///             vertexRange.Name,
     ///         },
     ///     });
     /// 
-    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMMember("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMMember("crypto_key", new()
     ///     {
     ///         CryptoKeyId = "kms-name",
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",

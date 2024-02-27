@@ -41,34 +41,35 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := storage.GetTransferProjectServiceAccount(ctx, &storage.GetTransferProjectServiceAccountArgs{
-//				Project: pulumi.StringRef(_var.Project),
+//				Project: pulumi.StringRef(project),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = storage.NewBucket(ctx, "s3-backup-bucketBucket", &storage.BucketArgs{
+//			_, err = storage.NewBucket(ctx, "s3-backup-bucket", &storage.BucketArgs{
+//				Name:         pulumi.String(fmt.Sprintf("%v-backup", awsS3Bucket)),
 //				StorageClass: pulumi.String("NEARLINE"),
-//				Project:      pulumi.Any(_var.Project),
+//				Project:      pulumi.Any(project),
 //				Location:     pulumi.String("US"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = storage.NewBucketIAMMember(ctx, "s3-backup-bucketBucketIAMMember", &storage.BucketIAMMemberArgs{
-//				Bucket: s3_backup_bucketBucket.Name,
+//			_, err = storage.NewBucketIAMMember(ctx, "s3-backup-bucket", &storage.BucketIAMMemberArgs{
+//				Bucket: s3_backup_bucket.Name,
 //				Role:   pulumi.String("roles/storage.admin"),
 //				Member: pulumi.String(fmt.Sprintf("serviceAccount:%v", _default.Email)),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				s3_backup_bucketBucket,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			topic, err := pubsub.NewTopic(ctx, "topic", nil)
+//			topic, err := pubsub.NewTopic(ctx, "topic", &pubsub.TopicArgs{
+//				Name: pulumi.Any(pubsubTopicName),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			notificationConfig, err := pubsub.NewTopicIAMMember(ctx, "notificationConfig", &pubsub.TopicIAMMemberArgs{
+//			_, err = pubsub.NewTopicIAMMember(ctx, "notification_config", &pubsub.TopicIAMMemberArgs{
 //				Topic:  topic.ID(),
 //				Role:   pulumi.String("roles/pubsub.publisher"),
 //				Member: pulumi.String(fmt.Sprintf("serviceAccount:%v", _default.Email)),
@@ -78,7 +79,7 @@ import (
 //			}
 //			_, err = storage.NewTransferJob(ctx, "s3-bucket-nightly-backup", &storage.TransferJobArgs{
 //				Description: pulumi.String("Nightly backup of S3 bucket"),
-//				Project:     pulumi.Any(_var.Project),
+//				Project:     pulumi.Any(project),
 //				TransferSpec: &storage.TransferJobTransferSpecArgs{
 //					ObjectConditions: &storage.TransferJobTransferSpecObjectConditionsArgs{
 //						MaxTimeElapsedSinceLastModification: pulumi.String("600s"),
@@ -90,14 +91,14 @@ import (
 //						DeleteObjectsUniqueInSink: pulumi.Bool(false),
 //					},
 //					AwsS3DataSource: &storage.TransferJobTransferSpecAwsS3DataSourceArgs{
-//						BucketName: pulumi.Any(_var.Aws_s3_bucket),
+//						BucketName: pulumi.Any(awsS3Bucket),
 //						AwsAccessKey: &storage.TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs{
-//							AccessKeyId:     pulumi.Any(_var.Aws_access_key),
-//							SecretAccessKey: pulumi.Any(_var.Aws_secret_key),
+//							AccessKeyId:     pulumi.Any(awsAccessKey),
+//							SecretAccessKey: pulumi.Any(awsSecretKey),
 //						},
 //					},
 //					GcsDataSink: &storage.TransferJobTransferSpecGcsDataSinkArgs{
-//						BucketName: s3_backup_bucketBucket.Name,
+//						BucketName: s3_backup_bucket.Name,
 //						Path:       pulumi.String("foo/bar/"),
 //					},
 //				},
@@ -128,10 +129,7 @@ import (
 //					},
 //					PayloadFormat: pulumi.String("JSON"),
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				s3_backup_bucketBucketIAMMember,
-//				notificationConfig,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

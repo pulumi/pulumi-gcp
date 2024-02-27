@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const foo = gcp.healthcare.getDicomStoreIamPolicy({
- *     dicomStoreId: google_healthcare_dicom_store.dicom_store.id,
+ *     dicomStoreId: dicomStore.id,
  * });
  * ```
  */
@@ -67,7 +67,7 @@ export interface GetDicomStoreIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const foo = gcp.healthcare.getDicomStoreIamPolicy({
- *     dicomStoreId: google_healthcare_dicom_store.dicom_store.id,
+ *     dicomStoreId: dicomStore.id,
  * });
  * ```
  */

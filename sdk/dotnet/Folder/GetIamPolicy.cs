@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Folder
         /// {
         ///     var test = Gcp.Folder.GetIamPolicy.Invoke(new()
         ///     {
-        ///         Folder = google_folder.Permissiontest.Name,
+        ///         Folder = permissiontest.Name,
         ///     });
         /// 
         /// });
@@ -50,7 +50,7 @@ namespace Pulumi.Gcp.Folder
         /// {
         ///     var test = Gcp.Folder.GetIamPolicy.Invoke(new()
         ///     {
-        ///         Folder = google_folder.Permissiontest.Name,
+        ///         Folder = permissiontest.Name,
         ///     });
         /// 
         /// });

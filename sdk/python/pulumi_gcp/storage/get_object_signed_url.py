@@ -150,20 +150,21 @@ def get_object_signed_url(bucket: Optional[str] = None,
 
     artifact = gcp.storage.get_object_signed_url(bucket="install_binaries",
         path="path/to/install_file.bin")
-    vm = gcp.compute.Instance("vm")
+    vm = gcp.compute.Instance("vm", name="vm")
     ```
     ## Full Example
 
     ```python
     import pulumi
     import pulumi_gcp as gcp
+    import pulumi_std as std
 
     get_url = gcp.storage.get_object_signed_url(bucket="fried_chicken",
         path="path/to/file",
         content_md5="pRviqwS4c4OTJRTe03FD1w==",
         content_type="text/plain",
         duration="2d",
-        credentials=(lambda path: open(path).read())("path/to/credentials.json"),
+        credentials=std.file(input="path/to/credentials.json").result,
         extension_headers={
             "x-goog-if-generation-match": "1",
         })
@@ -234,20 +235,21 @@ def get_object_signed_url_output(bucket: Optional[pulumi.Input[str]] = None,
 
     artifact = gcp.storage.get_object_signed_url(bucket="install_binaries",
         path="path/to/install_file.bin")
-    vm = gcp.compute.Instance("vm")
+    vm = gcp.compute.Instance("vm", name="vm")
     ```
     ## Full Example
 
     ```python
     import pulumi
     import pulumi_gcp as gcp
+    import pulumi_std as std
 
     get_url = gcp.storage.get_object_signed_url(bucket="fried_chicken",
         path="path/to/file",
         content_md5="pRviqwS4c4OTJRTe03FD1w==",
         content_type="text/plain",
         duration="2d",
-        credentials=(lambda path: open(path).read())("path/to/credentials.json"),
+        credentials=std.file(input="path/to/credentials.json").result,
         extension_headers={
             "x-goog-if-generation-match": "1",
         })

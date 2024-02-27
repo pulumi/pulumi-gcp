@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var listingDataExchange = new Gcp.BigQueryAnalyticsHub.DataExchange("listingDataExchange", new()
+    ///     var listing = new Gcp.BigQueryAnalyticsHub.DataExchange("listing", new()
     ///     {
     ///         Location = "US",
     ///         DataExchangeId = "my_data_exchange",
@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     ///         Description = "example data exchange",
     ///     });
     /// 
-    ///     var listingDataset = new Gcp.BigQuery.Dataset("listingDataset", new()
+    ///     var listingDataset = new Gcp.BigQuery.Dataset("listing", new()
     ///     {
     ///         DatasetId = "my_listing",
     ///         FriendlyName = "my_listing",
@@ -45,10 +45,10 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     ///         Location = "US",
     ///     });
     /// 
-    ///     var listingListing = new Gcp.BigQueryAnalyticsHub.Listing("listingListing", new()
+    ///     var listingListing = new Gcp.BigQueryAnalyticsHub.Listing("listing", new()
     ///     {
     ///         Location = "US",
-    ///         DataExchangeId = listingDataExchange.DataExchangeId,
+    ///         DataExchangeId = listing.DataExchangeId,
     ///         ListingId = "my_listing",
     ///         DisplayName = "my_listing",
     ///         Description = "example data exchange",
@@ -70,7 +70,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var listingDataExchange = new Gcp.BigQueryAnalyticsHub.DataExchange("listingDataExchange", new()
+    ///     var listing = new Gcp.BigQueryAnalyticsHub.DataExchange("listing", new()
     ///     {
     ///         Location = "US",
     ///         DataExchangeId = "my_data_exchange",
@@ -78,7 +78,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     ///         Description = "example data exchange",
     ///     });
     /// 
-    ///     var listingDataset = new Gcp.BigQuery.Dataset("listingDataset", new()
+    ///     var listingDataset = new Gcp.BigQuery.Dataset("listing", new()
     ///     {
     ///         DatasetId = "my_listing",
     ///         FriendlyName = "my_listing",
@@ -86,10 +86,10 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     ///         Location = "US",
     ///     });
     /// 
-    ///     var listingListing = new Gcp.BigQueryAnalyticsHub.Listing("listingListing", new()
+    ///     var listingListing = new Gcp.BigQueryAnalyticsHub.Listing("listing", new()
     ///     {
     ///         Location = "US",
-    ///         DataExchangeId = listingDataExchange.DataExchangeId,
+    ///         DataExchangeId = listing.DataExchangeId,
     ///         ListingId = "my_listing",
     ///         DisplayName = "my_listing",
     ///         Description = "example data exchange",

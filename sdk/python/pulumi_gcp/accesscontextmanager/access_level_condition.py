@@ -452,6 +452,7 @@ class AccessLevelCondition(pulumi.CustomResource):
             title="my policy")
         access_level_service_account = gcp.accesscontextmanager.AccessLevel("access-level-service-account",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
             title="chromeos_no_lock",
             basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
                 conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
@@ -577,6 +578,7 @@ class AccessLevelCondition(pulumi.CustomResource):
             title="my policy")
         access_level_service_account = gcp.accesscontextmanager.AccessLevel("access-level-service-account",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
             title="chromeos_no_lock",
             basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
                 conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(

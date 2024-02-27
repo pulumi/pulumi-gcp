@@ -336,12 +336,12 @@ class FirewallEndpoint(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.FirewallEndpoint("default",
+            name="my-firewall-endpoint",
             parent="organizations/123456789",
             location="us-central1-a",
             labels={
                 "foo": "bar",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
 
         ## Import
@@ -385,12 +385,12 @@ class FirewallEndpoint(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.FirewallEndpoint("default",
+            name="my-firewall-endpoint",
             parent="organizations/123456789",
             location="us-central1-a",
             labels={
                 "foo": "bar",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
 
         ## Import

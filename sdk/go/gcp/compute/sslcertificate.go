@@ -30,28 +30,31 @@ import (
 //
 // import (
 //
-//	"os"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
-//
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewSSLCertificate(ctx, "default", &compute.SSLCertificateArgs{
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "path/to/private.key",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile1, err := std.File(ctx, &std.FileArgs{
+//				Input: "path/to/certificate.crt",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSSLCertificate(ctx, "default", &compute.SSLCertificateArgs{
 //				NamePrefix:  pulumi.String("my-certificate-"),
 //				Description: pulumi.String("a description"),
-//				PrivateKey:  readFileOrPanic("path/to/private.key"),
-//				Certificate: readFileOrPanic("path/to/certificate.crt"),
+//				PrivateKey:  invokeFile.Result,
+//				Certificate: invokeFile1.Result,
 //			})
 //			if err != nil {
 //				return err
@@ -68,48 +71,158 @@ import (
 //
 // import (
 //
-//	"crypto/sha256"
-//	"os"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
-//	func filebase64sha256OrPanic(path string) string {
-//		if fileData, err := os.ReadFile(path); err == nil {
-//			hashedData := sha256.Sum256([]byte(fileData))
-//			return base64.StdEncoding.EncodeToString(hashedData[:])
-//		} else {
-//			panic(err.Error())
-//		}
-//	}
-//
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
-//
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// You may also want to control name generation explicitly:
-//			_, err := compute.NewSSLCertificate(ctx, "default", &compute.SSLCertificateArgs{
-//				PrivateKey:  readFileOrPanic("path/to/private.key"),
-//				Certificate: readFileOrPanic("path/to/certificate.crt"),
+//			invokeFilebase64sha256, err := std.Filebase64sha256(ctx, &std.Filebase64sha256Args{
+//				Input: "path/to/private.key",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFilebase64sha2561, err := std.Filebase64sha256(ctx, &std.Filebase64sha256Args{
+//				Input: "path/to/certificate.crt",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			certificate, err := random.NewRandomId(ctx, "certificate", &random.RandomIdArgs{
+//				ByteLength: pulumi.Int(4),
+//				Prefix:     pulumi.String("my-certificate-"),
+//				Keepers: pulumi.StringMap{
+//					"private_key": invokeFilebase64sha256.Result,
+//					"certificate": invokeFilebase64sha2561.Result,
+//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = random.NewRandomId(ctx, "certificate", &random.RandomIdArgs{
-//				ByteLength: pulumi.Int(4),
-//				Prefix:     pulumi.String("my-certificate-"),
-//				Keepers: pulumi.StringMap{
-//					"private_key": filebase64sha256OrPanic("path/to/private.key"),
-//					"certificate": filebase64sha256OrPanic("path/to/certificate.crt"),
+//			invokeFile2, err := std.File(ctx, &std.FileArgs{
+//				Input: "path/to/private.key",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile3, err := std.File(ctx, &std.FileArgs{
+//				Input: "path/to/certificate.crt",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// You may also want to control name generation explicitly:
+//			_, err = compute.NewSSLCertificate(ctx, "default", &compute.SSLCertificateArgs{
+//				Name:        certificate.Hex,
+//				PrivateKey:  invokeFile2.Result,
+//				Certificate: invokeFile3.Result,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Ssl Certificate Target Https Proxies
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "path/to/private.key",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile1, err := std.File(ctx, &std.FileArgs{
+//				Input: "path/to/certificate.crt",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Using with Target HTTPS Proxies
+//			//
+//			// SSL certificates cannot be updated after creation. In order to apply
+//			// the specified configuration, the provider will destroy the existing
+//			// resource and create a replacement. Example:
+//			_, err = compute.NewSSLCertificate(ctx, "default", &compute.SSLCertificateArgs{
+//				NamePrefix:  pulumi.String("my-certificate-"),
+//				PrivateKey:  invokeFile.Result,
+//				Certificate: invokeFile1.Result,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+//				Name:             pulumi.String("http-health-check"),
+//				RequestPath:      pulumi.String("/"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBackendService, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:         pulumi.String("backend-service"),
+//				PortName:     pulumi.String("http"),
+//				Protocol:     pulumi.String("HTTP"),
+//				TimeoutSec:   pulumi.Int(10),
+//				HealthChecks: defaultHttpHealthCheck.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultURLMap, err := compute.NewURLMap(ctx, "default", &compute.URLMapArgs{
+//				Name:           pulumi.String("url-map"),
+//				Description:    pulumi.String("a description"),
+//				DefaultService: defaultBackendService.ID(),
+//				HostRules: compute.URLMapHostRuleArray{
+//					&compute.URLMapHostRuleArgs{
+//						Hosts: pulumi.StringArray{
+//							pulumi.String("mysite.com"),
+//						},
+//						PathMatcher: pulumi.String("allpaths"),
+//					},
+//				},
+//				PathMatchers: compute.URLMapPathMatcherArray{
+//					&compute.URLMapPathMatcherArgs{
+//						Name:           pulumi.String("allpaths"),
+//						DefaultService: defaultBackendService.ID(),
+//						PathRules: compute.URLMapPathMatcherPathRuleArray{
+//							&compute.URLMapPathMatcherPathRuleArgs{
+//								Paths: pulumi.StringArray{
+//									pulumi.String("/*"),
+//								},
+//								Service: defaultBackendService.ID(),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewTargetHttpsProxy(ctx, "default", &compute.TargetHttpsProxyArgs{
+//				Name:   pulumi.String("test-proxy"),
+//				UrlMap: defaultURLMap.ID(),
+//				SslCertificates: pulumi.StringArray{
+//					_default.ID(),
 //				},
 //			})
 //			if err != nil {

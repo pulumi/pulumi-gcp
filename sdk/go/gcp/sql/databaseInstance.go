@@ -40,6 +40,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sql.NewDatabaseInstance(ctx, "main", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("main-instance"),
 //				DatabaseVersion: pulumi.String("POSTGRES_15"),
 //				Region:          pulumi.String("us-central1"),
 //				Settings: &sql.DatabaseInstanceSettingsArgs{
@@ -62,6 +63,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/servicenetworking"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sql"
@@ -72,36 +75,42 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			privateNetwork, err := compute.NewNetwork(ctx, "privateNetwork", nil, pulumi.Provider(google_beta))
+//			privateNetwork, err := compute.NewNetwork(ctx, "private_network", &compute.NetworkArgs{
+//				Name: pulumi.String("private-network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			privateIpAddress, err := compute.NewGlobalAddress(ctx, "privateIpAddress", &compute.GlobalAddressArgs{
+//			privateIpAddress, err := compute.NewGlobalAddress(ctx, "private_ip_address", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("private-ip-address"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
 //				Network:      privateNetwork.ID(),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			privateVpcConnection, err := servicenetworking.NewConnection(ctx, "privateVpcConnection", &servicenetworking.ConnectionArgs{
+//			_, err = servicenetworking.NewConnection(ctx, "private_vpc_connection", &servicenetworking.ConnectionArgs{
 //				Network: privateNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					privateIpAddress.Name,
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = random.NewRandomId(ctx, "dbNameSuffix", &random.RandomIdArgs{
+//			dbNameSuffix, err := random.NewRandomId(ctx, "db_name_suffix", &random.RandomIdArgs{
 //				ByteLength: pulumi.Int(4),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+//				Name: dbNameSuffix.Hex.ApplyT(func(hex string) (string, error) {
+//					return fmt.Sprintf("private-instance-%v", hex), nil
+//				}).(pulumi.StringOutput),
 //				Region:          pulumi.String("us-central1"),
 //				DatabaseVersion: pulumi.String("MYSQL_5_7"),
 //				Settings: &sql.DatabaseInstanceSettingsArgs{
@@ -112,9 +121,7 @@ import (
 //						EnablePrivatePathForGoogleCloudServices: pulumi.Bool(true),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
-//				privateVpcConnection,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -138,13 +145,59 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sql.NewDatabaseInstance(ctx, "main", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("enterprise-plus-main-instance"),
 //				DatabaseVersion: pulumi.String("MYSQL_8_0_31"),
 //				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier:    pulumi.String("db-perf-optimized-N-2"),
+//					Edition: pulumi.String("ENTERPRISE_PLUS"),
 //					DataCacheConfig: &sql.DatabaseInstanceSettingsDataCacheConfigArgs{
 //						DataCacheEnabled: pulumi.Bool(true),
 //					},
-//					Edition: pulumi.String("ENTERPRISE_PLUS"),
-//					Tier:    pulumi.String("db-perf-optimized-N-2"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Cloud SQL Instance with PSC connectivity
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sql.NewDatabaseInstance(ctx, "main", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("psc-enabled-main-instance"),
+//				DatabaseVersion: pulumi.String("MYSQL_8_0"),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier: pulumi.String("db-f1-micro"),
+//					IpConfiguration: &sql.DatabaseInstanceSettingsIpConfigurationArgs{
+//						PscConfigs: sql.DatabaseInstanceSettingsIpConfigurationPscConfigArray{
+//							&sql.DatabaseInstanceSettingsIpConfigurationPscConfigArgs{
+//								PscEnabled: pulumi.Bool(true),
+//								AllowedConsumerProjects: pulumi.StringArray{
+//									pulumi.String("allowed-consumer-project-name"),
+//								},
+//							},
+//						},
+//						Ipv4Enabled: pulumi.Bool(false),
+//					},
+//					BackupConfiguration: &sql.DatabaseInstanceSettingsBackupConfigurationArgs{
+//						Enabled:          pulumi.Bool(true),
+//						BinaryLogEnabled: pulumi.Bool(true),
+//					},
+//					AvailabilityType: pulumi.String("REGIONAL"),
 //				},
 //			})
 //			if err != nil {

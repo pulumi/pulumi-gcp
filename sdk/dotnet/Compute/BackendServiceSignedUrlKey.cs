@@ -19,6 +19,95 @@ namespace Pulumi.Gcp.Compute
     ///     * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
     /// 
     /// ## Example Usage
+    /// ### Backend Service Signed Url Key
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var urlSignature = new Random.RandomId("url_signature", new()
+    ///     {
+    ///         ByteLength = 16,
+    ///     });
+    /// 
+    ///     var webserver = new Gcp.Compute.InstanceTemplate("webserver", new()
+    ///     {
+    ///         Name = "standard-webserver",
+    ///         MachineType = "e2-medium",
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "default",
+    ///             },
+    ///         },
+    ///         Disks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///             {
+    ///                 SourceImage = "debian-cloud/debian-11",
+    ///                 AutoDelete = true,
+    ///                 Boot = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var webservers = new Gcp.Compute.InstanceGroupManager("webservers", new()
+    ///     {
+    ///         Name = "my-webservers",
+    ///         Versions = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceGroupManagerVersionArgs
+    ///             {
+    ///                 InstanceTemplate = webserver.Id,
+    ///                 Name = "primary",
+    ///             },
+    ///         },
+    ///         BaseInstanceName = "webserver",
+    ///         Zone = "us-central1-f",
+    ///         TargetSize = 1,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.HttpHealthCheck("default", new()
+    ///     {
+    ///         Name = "test",
+    ///         RequestPath = "/",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///     });
+    /// 
+    ///     var exampleBackend = new Gcp.Compute.BackendService("example_backend", new()
+    ///     {
+    ///         Name = "my-backend-service",
+    ///         Description = "Our company website",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         EnableCdn = true,
+    ///         Backends = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.BackendServiceBackendArgs
+    ///             {
+    ///                 Group = webservers.InstanceGroup,
+    ///             },
+    ///         },
+    ///         HealthChecks = @default.Id,
+    ///     });
+    /// 
+    ///     var backendKey = new Gcp.Compute.BackendServiceSignedUrlKey("backend_key", new()
+    ///     {
+    ///         Name = "test-key",
+    ///         KeyValue = urlSignature.B64Url,
+    ///         BackendService = exampleBackend.Name,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

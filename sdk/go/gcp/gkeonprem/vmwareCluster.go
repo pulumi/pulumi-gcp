@@ -30,53 +30,54 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkeonprem.NewVMwareCluster(ctx, "cluster-basic", &gkeonprem.VMwareClusterArgs{
+//				Name:                   pulumi.String("cluster-basic"),
+//				Location:               pulumi.String("us-west1"),
 //				AdminClusterMembership: pulumi.String("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"),
+//				Description:            pulumi.String("test cluster"),
+//				OnPremVersion:          pulumi.String("1.13.1-gke.35"),
 //				Annotations:            nil,
+//				NetworkConfig: &gkeonprem.VMwareClusterNetworkConfigArgs{
+//					ServiceAddressCidrBlocks: pulumi.StringArray{
+//						pulumi.String("10.96.0.0/12"),
+//					},
+//					PodAddressCidrBlocks: pulumi.StringArray{
+//						pulumi.String("192.168.0.0/16"),
+//					},
+//					DhcpIpConfig: &gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//				},
 //				ControlPlaneNode: &gkeonprem.VMwareClusterControlPlaneNodeArgs{
 //					Cpus:     pulumi.Int(4),
 //					Memory:   pulumi.Int(8192),
 //					Replicas: pulumi.Int(1),
 //				},
-//				Description: pulumi.String("test cluster"),
 //				LoadBalancer: &gkeonprem.VMwareClusterLoadBalancerArgs{
-//					MetalLbConfig: &gkeonprem.VMwareClusterLoadBalancerMetalLbConfigArgs{
-//						AddressPools: gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArray{
-//							&gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs{
-//								Addresses: pulumi.StringArray{
-//									pulumi.String("10.251.135.19"),
-//								},
-//								AvoidBuggyIps: pulumi.Bool(true),
-//								ManualAssign:  pulumi.Bool(true),
-//								Pool:          pulumi.String("ingress-ip"),
-//							},
-//							&gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs{
-//								Addresses: pulumi.StringArray{
-//									pulumi.String("10.251.135.19"),
-//								},
-//								AvoidBuggyIps: pulumi.Bool(true),
-//								ManualAssign:  pulumi.Bool(true),
-//								Pool:          pulumi.String("lb-test-ip"),
-//							},
-//						},
-//					},
 //					VipConfig: &gkeonprem.VMwareClusterLoadBalancerVipConfigArgs{
 //						ControlPlaneVip: pulumi.String("10.251.133.5"),
 //						IngressVip:      pulumi.String("10.251.135.19"),
 //					},
+//					MetalLbConfig: &gkeonprem.VMwareClusterLoadBalancerMetalLbConfigArgs{
+//						AddressPools: gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArray{
+//							&gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs{
+//								Pool:         pulumi.String("ingress-ip"),
+//								ManualAssign: pulumi.Bool(true),
+//								Addresses: pulumi.StringArray{
+//									pulumi.String("10.251.135.19"),
+//								},
+//								AvoidBuggyIps: pulumi.Bool(true),
+//							},
+//							&gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs{
+//								Pool:         pulumi.String("lb-test-ip"),
+//								ManualAssign: pulumi.Bool(true),
+//								Addresses: pulumi.StringArray{
+//									pulumi.String("10.251.135.19"),
+//								},
+//								AvoidBuggyIps: pulumi.Bool(true),
+//							},
+//						},
+//					},
 //				},
-//				Location: pulumi.String("us-west1"),
-//				NetworkConfig: &gkeonprem.VMwareClusterNetworkConfigArgs{
-//					DhcpIpConfig: &gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs{
-//						Enabled: pulumi.Bool(true),
-//					},
-//					PodAddressCidrBlocks: pulumi.StringArray{
-//						pulumi.String("192.168.0.0/16"),
-//					},
-//					ServiceAddressCidrBlocks: pulumi.StringArray{
-//						pulumi.String("10.96.0.0/12"),
-//					},
-//				},
-//				OnPremVersion: pulumi.String("1.13.1-gke.35"),
 //			})
 //			if err != nil {
 //				return err
@@ -101,52 +102,24 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkeonprem.NewVMwareCluster(ctx, "cluster-f5lb", &gkeonprem.VMwareClusterArgs{
+//				Name:                   pulumi.String("cluster-f5lb"),
+//				Location:               pulumi.String("us-west1"),
 //				AdminClusterMembership: pulumi.String("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"),
+//				Description:            pulumi.String("test cluster"),
+//				OnPremVersion:          pulumi.String("1.13.1-gke.35"),
 //				Annotations:            nil,
-//				AntiAffinityGroups: &gkeonprem.VMwareClusterAntiAffinityGroupsArgs{
-//					AagConfigDisabled: pulumi.Bool(true),
-//				},
-//				Authorization: &gkeonprem.VMwareClusterAuthorizationArgs{
-//					AdminUsers: gkeonprem.VMwareClusterAuthorizationAdminUserArray{
-//						&gkeonprem.VMwareClusterAuthorizationAdminUserArgs{
-//							Username: pulumi.String("testuser@gmail.com"),
-//						},
+//				NetworkConfig: &gkeonprem.VMwareClusterNetworkConfigArgs{
+//					ServiceAddressCidrBlocks: pulumi.StringArray{
+//						pulumi.String("10.96.0.0/12"),
 //					},
-//				},
-//				AutoRepairConfig: &gkeonprem.VMwareClusterAutoRepairConfigArgs{
-//					Enabled: pulumi.Bool(true),
-//				},
-//				ControlPlaneNode: &gkeonprem.VMwareClusterControlPlaneNodeArgs{
-//					AutoResizeConfig: &gkeonprem.VMwareClusterControlPlaneNodeAutoResizeConfigArgs{
+//					PodAddressCidrBlocks: pulumi.StringArray{
+//						pulumi.String("192.168.0.0/16"),
+//					},
+//					DhcpIpConfig: &gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs{
 //						Enabled: pulumi.Bool(true),
 //					},
-//					Cpus:     pulumi.Int(4),
-//					Memory:   pulumi.Int(8192),
-//					Replicas: pulumi.Int(1),
-//				},
-//				DataplaneV2: &gkeonprem.VMwareClusterDataplaneV2Args{
-//					AdvancedNetworking:        pulumi.Bool(true),
-//					DataplaneV2Enabled:        pulumi.Bool(true),
-//					WindowsDataplaneV2Enabled: pulumi.Bool(true),
-//				},
-//				Description:          pulumi.String("test cluster"),
-//				EnableControlPlaneV2: pulumi.Bool(true),
-//				LoadBalancer: &gkeonprem.VMwareClusterLoadBalancerArgs{
-//					F5Config: &gkeonprem.VMwareClusterLoadBalancerF5ConfigArgs{
-//						Address:   pulumi.String("10.0.0.1"),
-//						Partition: pulumi.String("test-partition"),
-//						SnatPool:  pulumi.String("test-snap-pool"),
-//					},
-//					VipConfig: &gkeonprem.VMwareClusterLoadBalancerVipConfigArgs{
-//						ControlPlaneVip: pulumi.String("10.251.133.5"),
-//						IngressVip:      pulumi.String("10.251.135.19"),
-//					},
-//				},
-//				Location: pulumi.String("us-west1"),
-//				NetworkConfig: &gkeonprem.VMwareClusterNetworkConfigArgs{
 //					ControlPlaneV2Config: &gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigArgs{
 //						ControlPlaneIpBlock: &gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs{
-//							Gateway: pulumi.String("test-gateway"),
 //							Ips: gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArray{
 //								&gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs{
 //									Hostname: pulumi.String("test-hostname"),
@@ -154,23 +127,52 @@ import (
 //								},
 //							},
 //							Netmask: pulumi.String("10.0.0.1/32"),
+//							Gateway: pulumi.String("test-gateway"),
 //						},
 //					},
-//					DhcpIpConfig: &gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs{
+//				},
+//				ControlPlaneNode: &gkeonprem.VMwareClusterControlPlaneNodeArgs{
+//					Cpus:     pulumi.Int(4),
+//					Memory:   pulumi.Int(8192),
+//					Replicas: pulumi.Int(1),
+//					AutoResizeConfig: &gkeonprem.VMwareClusterControlPlaneNodeAutoResizeConfigArgs{
 //						Enabled: pulumi.Bool(true),
 //					},
-//					PodAddressCidrBlocks: pulumi.StringArray{
-//						pulumi.String("192.168.0.0/16"),
+//				},
+//				LoadBalancer: &gkeonprem.VMwareClusterLoadBalancerArgs{
+//					VipConfig: &gkeonprem.VMwareClusterLoadBalancerVipConfigArgs{
+//						ControlPlaneVip: pulumi.String("10.251.133.5"),
+//						IngressVip:      pulumi.String("10.251.135.19"),
 //					},
-//					ServiceAddressCidrBlocks: pulumi.StringArray{
-//						pulumi.String("10.96.0.0/12"),
+//					F5Config: &gkeonprem.VMwareClusterLoadBalancerF5ConfigArgs{
+//						Address:   pulumi.String("10.0.0.1"),
+//						Partition: pulumi.String("test-partition"),
+//						SnatPool:  pulumi.String("test-snap-pool"),
 //					},
 //				},
-//				OnPremVersion: pulumi.String("1.13.1-gke.35"),
+//				DataplaneV2: &gkeonprem.VMwareClusterDataplaneV2Args{
+//					DataplaneV2Enabled:        pulumi.Bool(true),
+//					WindowsDataplaneV2Enabled: pulumi.Bool(true),
+//					AdvancedNetworking:        pulumi.Bool(true),
+//				},
+//				VmTrackingEnabled:    pulumi.Bool(true),
+//				EnableControlPlaneV2: pulumi.Bool(true),
+//				Authorization: &gkeonprem.VMwareClusterAuthorizationArgs{
+//					AdminUsers: gkeonprem.VMwareClusterAuthorizationAdminUserArray{
+//						&gkeonprem.VMwareClusterAuthorizationAdminUserArgs{
+//							Username: pulumi.String("testuser@gmail.com"),
+//						},
+//					},
+//				},
+//				AntiAffinityGroups: &gkeonprem.VMwareClusterAntiAffinityGroupsArgs{
+//					AagConfigDisabled: pulumi.Bool(true),
+//				},
+//				AutoRepairConfig: &gkeonprem.VMwareClusterAutoRepairConfigArgs{
+//					Enabled: pulumi.Bool(true),
+//				},
 //				Storage: &gkeonprem.VMwareClusterStorageArgs{
 //					VsphereCsiDisabled: pulumi.Bool(true),
 //				},
-//				VmTrackingEnabled: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -195,10 +197,97 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkeonprem.NewVMwareCluster(ctx, "cluster-manuallb", &gkeonprem.VMwareClusterArgs{
+//				Name:                   pulumi.String("cluster-manuallb"),
+//				Location:               pulumi.String("us-west1"),
 //				AdminClusterMembership: pulumi.String("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"),
+//				Description:            pulumi.String("test cluster"),
+//				OnPremVersion:          pulumi.String("1.13.1-gke.35"),
 //				Annotations:            nil,
-//				AntiAffinityGroups: &gkeonprem.VMwareClusterAntiAffinityGroupsArgs{
-//					AagConfigDisabled: pulumi.Bool(true),
+//				NetworkConfig: &gkeonprem.VMwareClusterNetworkConfigArgs{
+//					ServiceAddressCidrBlocks: pulumi.StringArray{
+//						pulumi.String("10.96.0.0/12"),
+//					},
+//					PodAddressCidrBlocks: pulumi.StringArray{
+//						pulumi.String("192.168.0.0/16"),
+//					},
+//					HostConfig: &gkeonprem.VMwareClusterNetworkConfigHostConfigArgs{
+//						DnsServers: pulumi.StringArray{
+//							pulumi.String("10.254.41.1"),
+//						},
+//						NtpServers: pulumi.StringArray{
+//							pulumi.String("216.239.35.8"),
+//						},
+//						DnsSearchDomains: pulumi.StringArray{
+//							pulumi.String("test-domain"),
+//						},
+//					},
+//					StaticIpConfig: &gkeonprem.VMwareClusterNetworkConfigStaticIpConfigArgs{
+//						IpBlocks: gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockArray{
+//							&gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs{
+//								Netmask: pulumi.String("255.255.252.0"),
+//								Gateway: pulumi.String("10.251.31.254"),
+//								Ips: gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArray{
+//									&gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs{
+//										Ip:       pulumi.String("10.251.30.153"),
+//										Hostname: pulumi.String("test-hostname1"),
+//									},
+//									&gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs{
+//										Ip:       pulumi.String("10.251.31.206"),
+//										Hostname: pulumi.String("test-hostname2"),
+//									},
+//									&gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs{
+//										Ip:       pulumi.String("10.251.31.193"),
+//										Hostname: pulumi.String("test-hostname3"),
+//									},
+//									&gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs{
+//										Ip:       pulumi.String("10.251.30.230"),
+//										Hostname: pulumi.String("test-hostname4"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//				ControlPlaneNode: &gkeonprem.VMwareClusterControlPlaneNodeArgs{
+//					Cpus:     pulumi.Int(4),
+//					Memory:   pulumi.Int(8192),
+//					Replicas: pulumi.Int(1),
+//					AutoResizeConfig: &gkeonprem.VMwareClusterControlPlaneNodeAutoResizeConfigArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//				},
+//				LoadBalancer: &gkeonprem.VMwareClusterLoadBalancerArgs{
+//					VipConfig: &gkeonprem.VMwareClusterLoadBalancerVipConfigArgs{
+//						ControlPlaneVip: pulumi.String("10.251.133.5"),
+//						IngressVip:      pulumi.String("10.251.135.19"),
+//					},
+//					ManualLbConfig: &gkeonprem.VMwareClusterLoadBalancerManualLbConfigArgs{
+//						IngressHttpNodePort:        pulumi.Int(30005),
+//						IngressHttpsNodePort:       pulumi.Int(30006),
+//						ControlPlaneNodePort:       pulumi.Int(30007),
+//						KonnectivityServerNodePort: pulumi.Int(30008),
+//					},
+//				},
+//				Vcenters: gkeonprem.VMwareClusterVcenterArray{
+//					&gkeonprem.VMwareClusterVcenterArgs{
+//						ResourcePool:      pulumi.String("test-resource-pool"),
+//						Datastore:         pulumi.String("test-datastore"),
+//						Datacenter:        pulumi.String("test-datacenter"),
+//						Cluster:           pulumi.String("test-cluster"),
+//						Folder:            pulumi.String("test-folder"),
+//						CaCertData:        pulumi.String("test-ca-cert-data"),
+//						StoragePolicyName: pulumi.String("test-storage-policy-name"),
+//					},
+//				},
+//				DataplaneV2: &gkeonprem.VMwareClusterDataplaneV2Args{
+//					DataplaneV2Enabled:        pulumi.Bool(true),
+//					WindowsDataplaneV2Enabled: pulumi.Bool(true),
+//					AdvancedNetworking:        pulumi.Bool(true),
+//				},
+//				VmTrackingEnabled:    pulumi.Bool(true),
+//				EnableControlPlaneV2: pulumi.Bool(true),
+//				UpgradePolicy: &gkeonprem.VMwareClusterUpgradePolicyArgs{
+//					ControlPlaneOnly: pulumi.Bool(true),
 //				},
 //				Authorization: &gkeonprem.VMwareClusterAuthorizationArgs{
 //					AdminUsers: gkeonprem.VMwareClusterAuthorizationAdminUserArray{
@@ -207,98 +296,12 @@ import (
 //						},
 //					},
 //				},
+//				AntiAffinityGroups: &gkeonprem.VMwareClusterAntiAffinityGroupsArgs{
+//					AagConfigDisabled: pulumi.Bool(true),
+//				},
 //				AutoRepairConfig: &gkeonprem.VMwareClusterAutoRepairConfigArgs{
 //					Enabled: pulumi.Bool(true),
 //				},
-//				ControlPlaneNode: &gkeonprem.VMwareClusterControlPlaneNodeArgs{
-//					AutoResizeConfig: &gkeonprem.VMwareClusterControlPlaneNodeAutoResizeConfigArgs{
-//						Enabled: pulumi.Bool(true),
-//					},
-//					Cpus:     pulumi.Int(4),
-//					Memory:   pulumi.Int(8192),
-//					Replicas: pulumi.Int(1),
-//				},
-//				DataplaneV2: &gkeonprem.VMwareClusterDataplaneV2Args{
-//					AdvancedNetworking:        pulumi.Bool(true),
-//					DataplaneV2Enabled:        pulumi.Bool(true),
-//					WindowsDataplaneV2Enabled: pulumi.Bool(true),
-//				},
-//				Description:          pulumi.String("test cluster"),
-//				EnableControlPlaneV2: pulumi.Bool(true),
-//				LoadBalancer: &gkeonprem.VMwareClusterLoadBalancerArgs{
-//					ManualLbConfig: &gkeonprem.VMwareClusterLoadBalancerManualLbConfigArgs{
-//						ControlPlaneNodePort:       pulumi.Int(30007),
-//						IngressHttpNodePort:        pulumi.Int(30005),
-//						IngressHttpsNodePort:       pulumi.Int(30006),
-//						KonnectivityServerNodePort: pulumi.Int(30008),
-//					},
-//					VipConfig: &gkeonprem.VMwareClusterLoadBalancerVipConfigArgs{
-//						ControlPlaneVip: pulumi.String("10.251.133.5"),
-//						IngressVip:      pulumi.String("10.251.135.19"),
-//					},
-//				},
-//				Location: pulumi.String("us-west1"),
-//				NetworkConfig: &gkeonprem.VMwareClusterNetworkConfigArgs{
-//					HostConfig: &gkeonprem.VMwareClusterNetworkConfigHostConfigArgs{
-//						DnsSearchDomains: pulumi.StringArray{
-//							pulumi.String("test-domain"),
-//						},
-//						DnsServers: pulumi.StringArray{
-//							pulumi.String("10.254.41.1"),
-//						},
-//						NtpServers: pulumi.StringArray{
-//							pulumi.String("216.239.35.8"),
-//						},
-//					},
-//					PodAddressCidrBlocks: pulumi.StringArray{
-//						pulumi.String("192.168.0.0/16"),
-//					},
-//					ServiceAddressCidrBlocks: pulumi.StringArray{
-//						pulumi.String("10.96.0.0/12"),
-//					},
-//					StaticIpConfig: &gkeonprem.VMwareClusterNetworkConfigStaticIpConfigArgs{
-//						IpBlocks: gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockArray{
-//							&gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs{
-//								Gateway: pulumi.String("10.251.31.254"),
-//								Ips: gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArray{
-//									&gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs{
-//										Hostname: pulumi.String("test-hostname1"),
-//										Ip:       pulumi.String("10.251.30.153"),
-//									},
-//									&gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs{
-//										Hostname: pulumi.String("test-hostname2"),
-//										Ip:       pulumi.String("10.251.31.206"),
-//									},
-//									&gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs{
-//										Hostname: pulumi.String("test-hostname3"),
-//										Ip:       pulumi.String("10.251.31.193"),
-//									},
-//									&gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs{
-//										Hostname: pulumi.String("test-hostname4"),
-//										Ip:       pulumi.String("10.251.30.230"),
-//									},
-//								},
-//								Netmask: pulumi.String("255.255.252.0"),
-//							},
-//						},
-//					},
-//				},
-//				OnPremVersion: pulumi.String("1.13.1-gke.35"),
-//				UpgradePolicy: &gkeonprem.VMwareClusterUpgradePolicyArgs{
-//					ControlPlaneOnly: pulumi.Bool(true),
-//				},
-//				Vcenters: gkeonprem.VMwareClusterVcenterArray{
-//					&gkeonprem.VMwareClusterVcenterArgs{
-//						CaCertData:        pulumi.String("test-ca-cert-data"),
-//						Cluster:           pulumi.String("test-cluster"),
-//						Datacenter:        pulumi.String("test-datacenter"),
-//						Datastore:         pulumi.String("test-datastore"),
-//						Folder:            pulumi.String("test-folder"),
-//						ResourcePool:      pulumi.String("test-resource-pool"),
-//						StoragePolicyName: pulumi.String("test-storage-policy-name"),
-//					},
-//				},
-//				VmTrackingEnabled: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

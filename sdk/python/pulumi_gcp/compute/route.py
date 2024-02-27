@@ -697,12 +697,113 @@ class Route(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork")
-        default_route = gcp.compute.Route("defaultRoute",
+        default_network = gcp.compute.Network("default", name="compute-network")
+        default = gcp.compute.Route("default",
+            name="network-route",
             dest_range="15.0.0.0/24",
             network=default_network.name,
             next_hop_ip="10.132.1.5",
             priority=100)
+        ```
+        ### Route Ilb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="compute-network",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="compute-subnet",
+            ip_cidr_range="10.0.1.0/24",
+            region="us-central1",
+            network=default.id)
+        hc = gcp.compute.HealthCheck("hc",
+            name="proxy-health-check",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        backend = gcp.compute.RegionBackendService("backend",
+            name="compute-backend",
+            region="us-central1",
+            health_checks=hc.id)
+        default_forwarding_rule = gcp.compute.ForwardingRule("default",
+            name="compute-forwarding-rule",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL",
+            backend_service=backend.id,
+            all_ports=True,
+            network=default.name,
+            subnetwork=default_subnetwork.name)
+        route_ilb = gcp.compute.Route("route-ilb",
+            name="route-ilb",
+            dest_range="0.0.0.0/0",
+            network=default.name,
+            next_hop_ilb=default_forwarding_rule.id,
+            priority=2000)
+        ```
+        ### Route Ilb Vip
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer = gcp.compute.Network("producer",
+            name="producer-vpc",
+            auto_create_subnetworks=False)
+        producer_subnetwork = gcp.compute.Subnetwork("producer",
+            name="producer-subnet",
+            ip_cidr_range="10.0.1.0/24",
+            region="us-central1",
+            network=producer.id)
+        consumer = gcp.compute.Network("consumer",
+            name="consumer-vpc",
+            auto_create_subnetworks=False)
+        consumer_subnetwork = gcp.compute.Subnetwork("consumer",
+            name="consumer-subnet",
+            ip_cidr_range="10.0.2.0/24",
+            region="us-central1",
+            network=consumer.id)
+        peering1 = gcp.compute.NetworkPeering("peering1",
+            name="peering-producer-to-consumer",
+            network=consumer.id,
+            peer_network=producer.id)
+        peering2 = gcp.compute.NetworkPeering("peering2",
+            name="peering-consumer-to-producer",
+            network=producer.id,
+            peer_network=consumer.id)
+        hc = gcp.compute.HealthCheck("hc",
+            name="proxy-health-check",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        backend = gcp.compute.RegionBackendService("backend",
+            name="compute-backend",
+            region="us-central1",
+            health_checks=hc.id)
+        default = gcp.compute.ForwardingRule("default",
+            name="compute-forwarding-rule",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL",
+            backend_service=backend.id,
+            all_ports=True,
+            network=producer.name,
+            subnetwork=producer_subnetwork.name)
+        route_ilb = gcp.compute.Route("route-ilb",
+            name="route-ilb",
+            dest_range="0.0.0.0/0",
+            network=consumer.name,
+            next_hop_ilb=default.ip_address,
+            priority=2000,
+            tags=[
+                "tag1",
+                "tag2",
+            ])
         ```
 
         ## Import
@@ -830,12 +931,113 @@ class Route(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork")
-        default_route = gcp.compute.Route("defaultRoute",
+        default_network = gcp.compute.Network("default", name="compute-network")
+        default = gcp.compute.Route("default",
+            name="network-route",
             dest_range="15.0.0.0/24",
             network=default_network.name,
             next_hop_ip="10.132.1.5",
             priority=100)
+        ```
+        ### Route Ilb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="compute-network",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="compute-subnet",
+            ip_cidr_range="10.0.1.0/24",
+            region="us-central1",
+            network=default.id)
+        hc = gcp.compute.HealthCheck("hc",
+            name="proxy-health-check",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        backend = gcp.compute.RegionBackendService("backend",
+            name="compute-backend",
+            region="us-central1",
+            health_checks=hc.id)
+        default_forwarding_rule = gcp.compute.ForwardingRule("default",
+            name="compute-forwarding-rule",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL",
+            backend_service=backend.id,
+            all_ports=True,
+            network=default.name,
+            subnetwork=default_subnetwork.name)
+        route_ilb = gcp.compute.Route("route-ilb",
+            name="route-ilb",
+            dest_range="0.0.0.0/0",
+            network=default.name,
+            next_hop_ilb=default_forwarding_rule.id,
+            priority=2000)
+        ```
+        ### Route Ilb Vip
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer = gcp.compute.Network("producer",
+            name="producer-vpc",
+            auto_create_subnetworks=False)
+        producer_subnetwork = gcp.compute.Subnetwork("producer",
+            name="producer-subnet",
+            ip_cidr_range="10.0.1.0/24",
+            region="us-central1",
+            network=producer.id)
+        consumer = gcp.compute.Network("consumer",
+            name="consumer-vpc",
+            auto_create_subnetworks=False)
+        consumer_subnetwork = gcp.compute.Subnetwork("consumer",
+            name="consumer-subnet",
+            ip_cidr_range="10.0.2.0/24",
+            region="us-central1",
+            network=consumer.id)
+        peering1 = gcp.compute.NetworkPeering("peering1",
+            name="peering-producer-to-consumer",
+            network=consumer.id,
+            peer_network=producer.id)
+        peering2 = gcp.compute.NetworkPeering("peering2",
+            name="peering-consumer-to-producer",
+            network=producer.id,
+            peer_network=consumer.id)
+        hc = gcp.compute.HealthCheck("hc",
+            name="proxy-health-check",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        backend = gcp.compute.RegionBackendService("backend",
+            name="compute-backend",
+            region="us-central1",
+            health_checks=hc.id)
+        default = gcp.compute.ForwardingRule("default",
+            name="compute-forwarding-rule",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL",
+            backend_service=backend.id,
+            all_ports=True,
+            network=producer.name,
+            subnetwork=producer_subnetwork.name)
+        route_ilb = gcp.compute.Route("route-ilb",
+            name="route-ilb",
+            dest_range="0.0.0.0/0",
+            network=consumer.name,
+            next_hop_ilb=default.ip_address,
+            priority=2000,
+            tags=[
+                "tag1",
+                "tag2",
+            ])
         ```
 
         ## Import

@@ -42,9 +42,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const editor = new gcp.pubsub.SubscriptionIAMBinding("editor", {
- *     members: ["user:jane@example.com"],
- *     role: "roles/editor",
  *     subscription: "your-subscription-name",
+ *     role: "roles/editor",
+ *     members: ["user:jane@example.com"],
  * });
  * ```
  *
@@ -55,9 +55,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const editor = new gcp.pubsub.SubscriptionIAMMember("editor", {
- *     member: "user:jane@example.com",
- *     role: "roles/editor",
  *     subscription: "your-subscription-name",
+ *     role: "roles/editor",
+ *     member: "user:jane@example.com",
  * });
  * ```
  *

@@ -99,8 +99,8 @@ def get_schema_iam_policy(project: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.pubsub.get_schema_iam_policy(project=google_pubsub_schema["example"]["project"],
-        schema=google_pubsub_schema["example"]["name"])
+    policy = gcp.pubsub.get_schema_iam_policy(project=example["project"],
+        schema=example["name"])
     ```
 
 
@@ -135,8 +135,8 @@ def get_schema_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] 
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.pubsub.get_schema_iam_policy(project=google_pubsub_schema["example"]["project"],
-        schema=google_pubsub_schema["example"]["name"])
+    policy = gcp.pubsub.get_schema_iam_policy(project=example["project"],
+        schema=example["name"])
     ```
 
 

@@ -22,22 +22,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const producerNet = new gcp.compute.Network("producerNet", {autoCreateSubnetworks: false});
- * const producerSubnet = new gcp.compute.Subnetwork("producerSubnet", {
- *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-central1",
- *     network: producerNet.id,
- * });
- * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
- *     location: "us-central1",
- *     serviceClass: "gcp-memorystore-redis",
- *     description: "my basic service connection policy",
- *     network: producerNet.id,
- *     pscConfig: {
- *         subnetworks: [producerSubnet.id],
- *     },
+ * const producerNet = new gcp.compute.Network("producer_net", {
+ *     name: "mynetwork",
+ *     autoCreateSubnetworks: false,
  * });
  * const cluster_ha = new gcp.redis.Cluster("cluster-ha", {
+ *     name: "ha-cluster",
  *     shardCount: 3,
  *     pscConfigs: [{
  *         network: producerNet.id,
@@ -46,8 +36,22 @@ import * as utilities from "../utilities";
  *     replicaCount: 1,
  *     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_DISABLED",
  *     authorizationMode: "AUTH_MODE_DISABLED",
- * }, {
- *     dependsOn: [_default],
+ * });
+ * const producerSubnet = new gcp.compute.Subnetwork("producer_subnet", {
+ *     name: "mysubnet",
+ *     ipCidrRange: "10.0.0.248/29",
+ *     region: "us-central1",
+ *     network: producerNet.id,
+ * });
+ * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
+ *     name: "mypolicy",
+ *     location: "us-central1",
+ *     serviceClass: "gcp-memorystore-redis",
+ *     description: "my basic service connection policy",
+ *     network: producerNet.id,
+ *     pscConfig: {
+ *         subnetworks: [producerSubnet.id],
+ *     },
  * });
  * ```
  *

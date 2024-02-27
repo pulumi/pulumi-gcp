@@ -62,27 +62,37 @@ import (
 //				Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("accessPolicies/%v", name), nil
 //				}).(pulumi.StringOutput),
+//				Name: access_policy.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("accessPolicies/%v/servicePerimeters/restrict_storage", name), nil
+//				}).(pulumi.StringOutput),
+//				Title: pulumi.String("restrict_storage"),
 //				Status: &accesscontextmanager.ServicePerimeterStatusArgs{
 //					RestrictedServices: pulumi.StringArray{
 //						pulumi.String("storage.googleapis.com"),
 //					},
 //				},
-//				Title: pulumi.String("restrict_storage"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = accesscontextmanager.NewAccessLevel(ctx, "access-level", &accesscontextmanager.AccessLevelArgs{
+//				Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("accessPolicies/%v", name), nil
+//				}).(pulumi.StringOutput),
+//				Name: access_policy.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("accessPolicies/%v/accessLevels/chromeos_no_lock", name), nil
+//				}).(pulumi.StringOutput),
+//				Title: pulumi.String("chromeos_no_lock"),
 //				Basic: &accesscontextmanager.AccessLevelBasicArgs{
 //					Conditions: accesscontextmanager.AccessLevelBasicConditionArray{
 //						&accesscontextmanager.AccessLevelBasicConditionArgs{
 //							DevicePolicy: &accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs{
+//								RequireScreenLock: pulumi.Bool(false),
 //								OsConstraints: accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArray{
 //									&accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs{
 //										OsType: pulumi.String("DESKTOP_CHROME_OS"),
 //									},
 //								},
-//								RequireScreenLock: pulumi.Bool(false),
 //							},
 //							Regions: pulumi.StringArray{
 //								pulumi.String("CH"),
@@ -92,10 +102,6 @@ import (
 //						},
 //					},
 //				},
-//				Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("accessPolicies/%v", name), nil
-//				}).(pulumi.StringOutput),
-//				Title: pulumi.String("chromeos_no_lock"),
 //			})
 //			if err != nil {
 //				return err
@@ -170,6 +176,9 @@ import (
 //				Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("accessPolicies/%v", name), nil
 //				}).(pulumi.StringOutput),
+//				Name: access_policy.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("accessPolicies/%v/accessLevels/secure_data_exchange", name), nil
+//				}).(pulumi.StringOutput),
 //				Title: pulumi.String("secure_data_exchange"),
 //				Basic: &accesscontextmanager.AccessLevelBasicArgs{
 //					Conditions: accesscontextmanager.AccessLevelBasicConditionArray{
@@ -195,7 +204,8 @@ import (
 //				return err
 //			}
 //			_, err = accesscontextmanager.NewServicePerimeter(ctx, "test-access", &accesscontextmanager.ServicePerimeterArgs{
-//				Parent:        pulumi.String(fmt.Sprintf("accessPolicies/%v", google_access_context_manager_access_policy.TestAccess.Name)),
+//				Parent:        pulumi.String(fmt.Sprintf("accessPolicies/%v", test_accessGoogleAccessContextManagerAccessPolicy.Name)),
+//				Name:          pulumi.String(fmt.Sprintf("accessPolicies/%v%v", test_accessGoogleAccessContextManagerAccessPolicy.Name, "/servicePerimeters/%s")),
 //				Title:         pulumi.String("%s"),
 //				PerimeterType: pulumi.String("PERIMETER_TYPE_REGULAR"),
 //				Status: &accesscontextmanager.ServicePerimeterStatusArgs{
@@ -218,7 +228,7 @@ import (
 //							IngressFrom: &accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFromArgs{
 //								Sources: accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFromSourceArray{
 //									&accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFromSourceArgs{
-//										AccessLevel: pulumi.Any(google_access_context_manager_access_level.TestAccess.Name),
+//										AccessLevel: pulumi.Any(test_accessGoogleAccessContextManagerAccessLevel.Name),
 //									},
 //								},
 //								IdentityType: pulumi.String("ANY_IDENTITY"),
@@ -298,17 +308,20 @@ import (
 //				Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("accessPolicies/%v", name), nil
 //				}).(pulumi.StringOutput),
-//				Spec: &accesscontextmanager.ServicePerimeterSpecArgs{
-//					RestrictedServices: pulumi.StringArray{
-//						pulumi.String("storage.googleapis.com"),
-//					},
-//				},
+//				Name: access_policy.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("accessPolicies/%v/servicePerimeters/restrict_bigquery_dryrun_storage", name), nil
+//				}).(pulumi.StringOutput),
+//				Title: pulumi.String("restrict_bigquery_dryrun_storage"),
 //				Status: &accesscontextmanager.ServicePerimeterStatusArgs{
 //					RestrictedServices: pulumi.StringArray{
 //						pulumi.String("bigquery.googleapis.com"),
 //					},
 //				},
-//				Title:                 pulumi.String("restrict_bigquery_dryrun_storage"),
+//				Spec: &accesscontextmanager.ServicePerimeterSpecArgs{
+//					RestrictedServices: pulumi.StringArray{
+//						pulumi.String("storage.googleapis.com"),
+//					},
+//				},
 //				UseExplicitDryRunSpec: pulumi.Bool(true),
 //			})
 //			if err != nil {

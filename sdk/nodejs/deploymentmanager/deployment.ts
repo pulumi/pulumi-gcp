@@ -26,13 +26,16 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
  *
  * const deployment = new gcp.deploymentmanager.Deployment("deployment", {
+ *     name: "my-deployment",
  *     target: {
  *         config: {
- *             content: fs.readFileSync("path/to/config.yml", "utf8"),
+ *             content: std.file({
+ *                 input: "path/to/config.yml",
+ *             }).then(invoke => invoke.result),
  *         },
  *     },
  *     labels: [{

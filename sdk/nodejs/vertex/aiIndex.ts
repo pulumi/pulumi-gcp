@@ -21,12 +21,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "vertex-ai-index-test",
  *     location: "us-central1",
  *     uniformBucketLevelAccess: true,
  * });
  * // The sample data comes from the following link:
  * // https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
  * const data = new gcp.storage.BucketObject("data", {
+ *     name: "contents/data.json",
  *     bucket: bucket.name,
  *     content: `{"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
  * {"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}
@@ -64,12 +66,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "vertex-ai-index-test",
  *     location: "us-central1",
  *     uniformBucketLevelAccess: true,
  * });
  * // The sample data comes from the following link:
  * // https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
  * const data = new gcp.storage.BucketObject("data", {
+ *     name: "contents/data.json",
  *     bucket: bucket.name,
  *     content: `{"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
  * {"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}

@@ -31,6 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewDisk(ctx, "primary-disk", &compute.DiskArgs{
+//				Name:                   pulumi.String("primary-disk"),
 //				Type:                   pulumi.String("pd-ssd"),
 //				Zone:                   pulumi.String("europe-west4-a"),
 //				PhysicalBlockSizeBytes: pulumi.Int(4096),
@@ -39,6 +40,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewDisk(ctx, "secondary-disk", &compute.DiskArgs{
+//				Name: pulumi.String("secondary-disk"),
 //				Type: pulumi.String("pd-ssd"),
 //				Zone: pulumi.String("europe-west3-a"),
 //				AsyncPrimaryDisk: &compute.DiskAsyncPrimaryDiskArgs{

@@ -29,18 +29,21 @@ namespace Pulumi.Gcp.VMwareEngine
     /// {
     ///     var network_peering_nw = new Gcp.VMwareEngine.Network("network-peering-nw", new()
     ///     {
+    ///         Name = "default-np-nw",
     ///         Location = "global",
     ///         Type = "STANDARD",
     ///     });
     /// 
     ///     var network_peering_peer_nw = new Gcp.VMwareEngine.Network("network-peering-peer-nw", new()
     ///     {
+    ///         Name = "peer-np-nw",
     ///         Location = "global",
     ///         Type = "STANDARD",
     ///     });
     /// 
     ///     var vmw_engine_network_peering = new Gcp.VMwareEngine.NetworkPeering("vmw-engine-network-peering", new()
     ///     {
+    ///         Name = "sample-network-peering",
     ///         Description = "Sample description",
     ///         VmwareEngineNetwork = network_peering_nw.Id,
     ///         PeerNetwork = network_peering_peer_nw.Id,
@@ -63,16 +66,21 @@ namespace Pulumi.Gcp.VMwareEngine
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var network_peering_vpc = new Gcp.Compute.Network("network-peering-vpc");
+    ///     var network_peering_vpc = new Gcp.Compute.Network("network-peering-vpc", new()
+    ///     {
+    ///         Name = "default-vpc",
+    ///     });
     /// 
     ///     var network_peering_standard_nw = new Gcp.VMwareEngine.Network("network-peering-standard-nw", new()
     ///     {
+    ///         Name = "default-standard-nw-np",
     ///         Location = "global",
     ///         Type = "STANDARD",
     ///     });
     /// 
     ///     var vmw_engine_network_peering = new Gcp.VMwareEngine.NetworkPeering("vmw-engine-network-peering", new()
     ///     {
+    ///         Name = "sample-network-peering",
     ///         Description = "Sample description",
     ///         PeerNetwork = network_peering_vpc.Id,
     ///         PeerNetworkType = "STANDARD",

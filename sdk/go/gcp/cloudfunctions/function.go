@@ -41,12 +41,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:     pulumi.String("test-bucket"),
 //				Location: pulumi.String("US"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			archive, err := storage.NewBucketObject(ctx, "archive", &storage.BucketObjectArgs{
+//				Name:   pulumi.String("index.zip"),
 //				Bucket: bucket.Name,
 //				Source: pulumi.NewFileAsset("./path/to/zip/file/which/contains/code"),
 //			})
@@ -54,6 +56,7 @@ import (
 //				return err
 //			}
 //			function, err := cloudfunctions.NewFunction(ctx, "function", &cloudfunctions.FunctionArgs{
+//				Name:                pulumi.String("function-test"),
 //				Description:         pulumi.String("My function"),
 //				Runtime:             pulumi.String("nodejs16"),
 //				AvailableMemoryMb:   pulumi.Int(128),
@@ -97,12 +100,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:     pulumi.String("test-bucket"),
 //				Location: pulumi.String("US"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			archive, err := storage.NewBucketObject(ctx, "archive", &storage.BucketObjectArgs{
+//				Name:   pulumi.String("index.zip"),
 //				Bucket: bucket.Name,
 //				Source: pulumi.NewFileAsset("./path/to/zip/file/which/contains/code"),
 //			})
@@ -110,6 +115,7 @@ import (
 //				return err
 //			}
 //			function, err := cloudfunctions.NewFunction(ctx, "function", &cloudfunctions.FunctionArgs{
+//				Name:                      pulumi.String("function-test"),
 //				Description:               pulumi.String("My function"),
 //				Runtime:                   pulumi.String("nodejs16"),
 //				AvailableMemoryMb:         pulumi.Int(128),

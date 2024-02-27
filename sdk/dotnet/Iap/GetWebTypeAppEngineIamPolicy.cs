@@ -28,8 +28,8 @@ namespace Pulumi.Gcp.Iap
         /// {
         ///     var policy = Gcp.Iap.GetWebTypeAppEngineIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_app_engine_application.App.Project,
-        ///         AppId = google_app_engine_application.App.App_id,
+        ///         Project = app.Project,
+        ///         AppId = app.AppId,
         ///     });
         /// 
         /// });
@@ -55,8 +55,8 @@ namespace Pulumi.Gcp.Iap
         /// {
         ///     var policy = Gcp.Iap.GetWebTypeAppEngineIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_app_engine_application.App.Project,
-        ///         AppId = google_app_engine_application.App.App_id,
+        ///         Project = app.Project,
+        ///         AppId = app.AppId,
         ///     });
         /// 
         /// });

@@ -23,12 +23,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const subnet_nw = new gcp.vmwareengine.Network("subnet-nw", {
+ *     name: "pc-nw",
  *     location: "global",
  *     type: "STANDARD",
  *     description: "PC network description.",
  * });
  * const subnet_pc = new gcp.vmwareengine.PrivateCloud("subnet-pc", {
  *     location: "us-west1-a",
+ *     name: "sample-pc",
  *     description: "Sample test PC.",
  *     networkConfig: {
  *         managementCidr: "192.168.50.0/24",
@@ -43,6 +45,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const vmw_engine_subnet = new gcp.vmwareengine.Subnet("vmw-engine-subnet", {
+ *     name: "service-1",
  *     parent: subnet_pc.id,
  *     ipCidrRange: "192.168.100.0/26",
  * });

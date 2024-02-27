@@ -38,7 +38,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
  * import com.pulumi.gcp.tpu.V2Vm;
  * import com.pulumi.gcp.tpu.V2VmArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -55,11 +54,122 @@ import javax.annotation.Nullable;
  *         final var available = TpuFunctions.getV2RuntimeVersions();
  * 
  *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
+ *             .name(&#34;test-tpu&#34;)
  *             .zone(&#34;us-central1-c&#34;)
  *             .runtimeVersion(&#34;tpu-vm-tf-2.13.0&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Tpu V2 Vm Full
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.tpu.TpuFunctions;
+ * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
+ * import com.pulumi.gcp.tpu.inputs.GetV2AcceleratorTypesArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.compute.Disk;
+ * import com.pulumi.gcp.compute.DiskArgs;
+ * import com.pulumi.gcp.tpu.V2Vm;
+ * import com.pulumi.gcp.tpu.V2VmArgs;
+ * import com.pulumi.gcp.tpu.inputs.V2VmAcceleratorConfigArgs;
+ * import com.pulumi.gcp.tpu.inputs.V2VmNetworkConfigArgs;
+ * import com.pulumi.gcp.tpu.inputs.V2VmSchedulingConfigArgs;
+ * import com.pulumi.gcp.tpu.inputs.V2VmShieldedInstanceConfigArgs;
+ * import com.pulumi.gcp.tpu.inputs.V2VmServiceAccountArgs;
+ * import com.pulumi.gcp.tpu.inputs.V2VmDataDiskArgs;
+ * import com.pulumi.time.sleep;
+ * import com.pulumi.time.SleepArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var available = TpuFunctions.getV2RuntimeVersions();
+ * 
+ *         final var availableGetV2AcceleratorTypes = TpuFunctions.getV2AcceleratorTypes();
+ * 
+ *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
+ *             .name(&#34;tpu-net&#34;)
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var subnet = new Subnetwork(&#34;subnet&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;tpu-subnet&#34;)
+ *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .network(network.id())
+ *             .build());
+ * 
+ *         var sa = new Account(&#34;sa&#34;, AccountArgs.builder()        
+ *             .accountId(&#34;tpu-sa&#34;)
+ *             .displayName(&#34;Test TPU VM&#34;)
+ *             .build());
+ * 
+ *         var disk = new Disk(&#34;disk&#34;, DiskArgs.builder()        
+ *             .name(&#34;tpu-disk&#34;)
+ *             .image(&#34;debian-cloud/debian-11&#34;)
+ *             .size(10)
+ *             .type(&#34;pd-ssd&#34;)
+ *             .zone(&#34;us-central1-c&#34;)
+ *             .build());
+ * 
+ *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
+ *             .name(&#34;test-tpu&#34;)
+ *             .zone(&#34;us-central1-c&#34;)
+ *             .description(&#34;Text description of the TPU.&#34;)
+ *             .runtimeVersion(&#34;tpu-vm-tf-2.13.0&#34;)
+ *             .acceleratorConfig(V2VmAcceleratorConfigArgs.builder()
+ *                 .type(&#34;V2&#34;)
+ *                 .topology(&#34;2x2&#34;)
+ *                 .build())
+ *             .cidrBlock(&#34;10.0.0.0/29&#34;)
+ *             .networkConfig(V2VmNetworkConfigArgs.builder()
+ *                 .canIpForward(true)
+ *                 .enableExternalIps(true)
+ *                 .network(network.id())
+ *                 .subnetwork(subnet.id())
+ *                 .build())
+ *             .schedulingConfig(V2VmSchedulingConfigArgs.builder()
+ *                 .preemptible(true)
+ *                 .build())
+ *             .shieldedInstanceConfig(V2VmShieldedInstanceConfigArgs.builder()
+ *                 .enableSecureBoot(true)
+ *                 .build())
+ *             .serviceAccount(V2VmServiceAccountArgs.builder()
+ *                 .email(sa.email())
+ *                 .scopes(&#34;https://www.googleapis.com/auth/cloud-platform&#34;)
+ *                 .build())
+ *             .dataDisks(V2VmDataDiskArgs.builder()
+ *                 .sourceDisk(disk.id())
+ *                 .mode(&#34;READ_ONLY&#34;)
+ *                 .build())
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .metadata(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .tags(&#34;foo&#34;)
+ *             .build());
+ * 
+ *         var wait60Seconds = new Sleep(&#34;wait60Seconds&#34;, SleepArgs.builder()        
+ *             .createDuration(&#34;60s&#34;)
+ *             .build());
  * 
  *     }
  * }

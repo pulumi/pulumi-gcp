@@ -67,9 +67,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var basic = new NotificationChannel(&#34;basic&#34;, NotificationChannelArgs.builder()        
  *             .displayName(&#34;Test Notification Channel&#34;)
- *             .forceDelete(false)
- *             .labels(Map.of(&#34;email_address&#34;, &#34;fake_email@blahblah.com&#34;))
  *             .type(&#34;email&#34;)
+ *             .labels(Map.of(&#34;email_address&#34;, &#34;fake_email@blahblah.com&#34;))
+ *             .forceDelete(false)
  *             .build());
  * 
  *     }
@@ -100,11 +100,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var default_ = new NotificationChannel(&#34;default&#34;, NotificationChannelArgs.builder()        
  *             .displayName(&#34;Test Slack Channel&#34;)
+ *             .type(&#34;slack&#34;)
  *             .labels(Map.of(&#34;channel_name&#34;, &#34;#foobar&#34;))
  *             .sensitiveLabels(NotificationChannelSensitiveLabelsArgs.builder()
  *                 .authToken(&#34;one&#34;)
  *                 .build())
- *             .type(&#34;slack&#34;)
  *             .build());
  * 
  *     }

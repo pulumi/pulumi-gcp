@@ -53,7 +53,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     ///     var policy = new Gcp.CertificateAuthority.CaPoolIamPolicy("policy", new()
     ///     {
-    ///         CaPool = google_privateca_ca_pool.Default.Id,
+    ///         CaPool = @default.Id,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -93,7 +93,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     ///     var policy = new Gcp.CertificateAuthority.CaPoolIamPolicy("policy", new()
     ///     {
-    ///         CaPool = google_privateca_ca_pool.Default.Id,
+    ///         CaPool = @default.Id,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -111,7 +111,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// {
     ///     var binding = new Gcp.CertificateAuthority.CaPoolIamBinding("binding", new()
     ///     {
-    ///         CaPool = google_privateca_ca_pool.Default.Id,
+    ///         CaPool = @default.Id,
     ///         Role = "roles/privateca.certificateManager",
     ///         Members = new[]
     ///         {
@@ -134,7 +134,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// {
     ///     var binding = new Gcp.CertificateAuthority.CaPoolIamBinding("binding", new()
     ///     {
-    ///         CaPool = google_privateca_ca_pool.Default.Id,
+    ///         CaPool = @default.Id,
     ///         Role = "roles/privateca.certificateManager",
     ///         Members = new[]
     ///         {
@@ -162,7 +162,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// {
     ///     var member = new Gcp.CertificateAuthority.CaPoolIamMember("member", new()
     ///     {
-    ///         CaPool = google_privateca_ca_pool.Default.Id,
+    ///         CaPool = @default.Id,
     ///         Role = "roles/privateca.certificateManager",
     ///         Member = "user:jane@example.com",
     ///     });
@@ -182,7 +182,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// {
     ///     var member = new Gcp.CertificateAuthority.CaPoolIamMember("member", new()
     ///     {
-    ///         CaPool = google_privateca_ca_pool.Default.Id,
+    ///         CaPool = @default.Id,
     ///         Role = "roles/privateca.certificateManager",
     ///         Member = "user:jane@example.com",
     ///         Condition = new Gcp.CertificateAuthority.Inputs.CaPoolIamMemberConditionArgs

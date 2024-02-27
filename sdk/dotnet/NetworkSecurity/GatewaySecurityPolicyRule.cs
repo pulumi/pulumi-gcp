@@ -28,16 +28,18 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultGatewaySecurityPolicy = new Gcp.NetworkSecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", new()
+    ///     var @default = new Gcp.NetworkSecurity.GatewaySecurityPolicy("default", new()
     ///     {
+    ///         Name = "my-gateway-security-policy",
     ///         Location = "us-central1",
     ///         Description = "gateway security policy created to be used as reference by the rule.",
     ///     });
     /// 
-    ///     var defaultGatewaySecurityPolicyRule = new Gcp.NetworkSecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", new()
+    ///     var defaultGatewaySecurityPolicyRule = new Gcp.NetworkSecurity.GatewaySecurityPolicyRule("default", new()
     ///     {
+    ///         Name = "my-gateway-security-policy-rule",
     ///         Location = "us-central1",
-    ///         GatewaySecurityPolicy = defaultGatewaySecurityPolicy.Name,
+    ///         GatewaySecurityPolicy = @default.Name,
     ///         Enabled = true,
     ///         Description = "my description",
     ///         Priority = 0,
@@ -57,16 +59,18 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultGatewaySecurityPolicy = new Gcp.NetworkSecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", new()
+    ///     var @default = new Gcp.NetworkSecurity.GatewaySecurityPolicy("default", new()
     ///     {
+    ///         Name = "my-gateway-security-policy",
     ///         Location = "us-central1",
     ///         Description = "gateway security policy created to be used as reference by the rule.",
     ///     });
     /// 
-    ///     var defaultGatewaySecurityPolicyRule = new Gcp.NetworkSecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", new()
+    ///     var defaultGatewaySecurityPolicyRule = new Gcp.NetworkSecurity.GatewaySecurityPolicyRule("default", new()
     ///     {
+    ///         Name = "my-gateway-security-policy-rule",
     ///         Location = "us-central1",
-    ///         GatewaySecurityPolicy = defaultGatewaySecurityPolicy.Name,
+    ///         GatewaySecurityPolicy = @default.Name,
     ///         Enabled = true,
     ///         Description = "my description",
     ///         Priority = 0,

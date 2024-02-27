@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleNetwork, err := edgenetwork.NewNetwork(ctx, "exampleNetwork", &edgenetwork.NetworkArgs{
+//			exampleNetwork, err := edgenetwork.NewNetwork(ctx, "example_network", &edgenetwork.NetworkArgs{
 //				NetworkId:   pulumi.String("example-network"),
 //				Location:    pulumi.String("us-west1"),
 //				Zone:        pulumi.String(""),
@@ -45,7 +45,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = edgenetwork.NewSubnet(ctx, "exampleSubnet", &edgenetwork.SubnetArgs{
+//			_, err = edgenetwork.NewSubnet(ctx, "example_subnet", &edgenetwork.SubnetArgs{
 //				SubnetId:    pulumi.String("example-subnet"),
 //				Location:    pulumi.String("us-west1"),
 //				Zone:        pulumi.String(""),
@@ -80,7 +80,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleNetwork, err := edgenetwork.NewNetwork(ctx, "exampleNetwork", &edgenetwork.NetworkArgs{
+//			exampleNetwork, err := edgenetwork.NewNetwork(ctx, "example_network", &edgenetwork.NetworkArgs{
 //				NetworkId:   pulumi.String("example-network"),
 //				Location:    pulumi.String("us-west1"),
 //				Zone:        pulumi.String(""),
@@ -90,7 +90,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = edgenetwork.NewSubnet(ctx, "exampleSubnetWithVlanId", &edgenetwork.SubnetArgs{
+//			_, err = edgenetwork.NewSubnet(ctx, "example_subnet_with_vlan_id", &edgenetwork.SubnetArgs{
 //				SubnetId:    pulumi.String("example-subnet-with-vlan-id"),
 //				Location:    pulumi.String("us-west1"),
 //				Zone:        pulumi.String(""),

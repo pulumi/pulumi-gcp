@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const vpcNetwork = new gcp.compute.Network("vpcNetwork", {});
+ * const vpcNetwork = new gcp.compute.Network("vpc_network", {name: "vpc-network"});
  * ```
  * ### Network Custom Mtu
  *
@@ -28,10 +28,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const vpcNetwork = new gcp.compute.Network("vpcNetwork", {
+ * const vpcNetwork = new gcp.compute.Network("vpc_network", {
+ *     project: "my-project-name",
+ *     name: "vpc-network",
  *     autoCreateSubnetworks: true,
  *     mtu: 1460,
- *     project: "my-project-name",
  * });
  * ```
  * ### Network Custom Firewall Enforcement Order
@@ -40,10 +41,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const vpcNetwork = new gcp.compute.Network("vpcNetwork", {
+ * const vpcNetwork = new gcp.compute.Network("vpc_network", {
+ *     project: "my-project-name",
+ *     name: "vpc-network",
  *     autoCreateSubnetworks: true,
  *     networkFirewallPolicyEnforcementOrder: "BEFORE_CLASSIC_FIREWALL",
- *     project: "my-project-name",
  * });
  * ```
  *

@@ -25,20 +25,16 @@ namespace Pulumi.Gcp.AssuredWorkloads
     /// {
     ///     var primary = new Gcp.AssuredWorkloads.Workload("primary", new()
     ///     {
-    ///         BillingAccount = "billingAccounts/000000-0000000-0000000-000000",
     ///         ComplianceRegime = "FEDRAMP_MODERATE",
     ///         DisplayName = "{{display}}",
+    ///         Location = "us-west1",
+    ///         Organization = "123456789",
+    ///         BillingAccount = "billingAccounts/000000-0000000-0000000-000000",
     ///         KmsSettings = new Gcp.AssuredWorkloads.Inputs.WorkloadKmsSettingsArgs
     ///         {
     ///             NextRotationTime = "9999-10-02T15:01:23Z",
     ///             RotationPeriod = "10368000s",
     ///         },
-    ///         Labels = 
-    ///         {
-    ///             { "label-one", "value-one" },
-    ///         },
-    ///         Location = "us-west1",
-    ///         Organization = "123456789",
     ///         ProvisionedResourcesParent = "folders/519620126891",
     ///         ResourceSettings = new[]
     ///         {
@@ -58,6 +54,10 @@ namespace Pulumi.Gcp.AssuredWorkloads
     ///             },
     ///         },
     ///         ViolationNotificationsEnabled = true,
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
     ///     });
     /// 
     /// });
@@ -105,9 +105,6 @@ namespace Pulumi.Gcp.AssuredWorkloads
     ///         {
     ///             { "label-one", "value-one" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

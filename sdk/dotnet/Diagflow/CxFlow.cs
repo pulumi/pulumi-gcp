@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.Diagflow
     ///         },
     ///     });
     /// 
-    ///     var basicFlow = new Gcp.Diagflow.CxFlow("basicFlow", new()
+    ///     var basicFlow = new Gcp.Diagflow.CxFlow("basic_flow", new()
     ///     {
     ///         Parent = agent.Id,
     ///         DisplayName = "MyFlow",
@@ -166,11 +166,12 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
+    ///         Name = "dialogflowcx-bucket",
     ///         Location = "US",
     ///         UniformBucketLevelAccess = true,
     ///     });
     /// 
-    ///     var basicFlow = new Gcp.Diagflow.CxFlow("basicFlow", new()
+    ///     var basicFlow = new Gcp.Diagflow.CxFlow("basic_flow", new()
     ///     {
     ///         Parent = agent.Id,
     ///         DisplayName = "MyFlow",

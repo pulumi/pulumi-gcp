@@ -26,8 +26,8 @@ namespace Pulumi.Gcp.RuntimeConfig
         /// {
         ///     var run_service = Gcp.RuntimeConfig.GetVariable.Invoke(new()
         ///     {
-        ///         Name = "prod-variables/hostname",
         ///         Parent = "my-service",
+        ///         Name = "prod-variables/hostname",
         ///     });
         /// 
         /// });
@@ -53,8 +53,8 @@ namespace Pulumi.Gcp.RuntimeConfig
         /// {
         ///     var run_service = Gcp.RuntimeConfig.GetVariable.Invoke(new()
         ///     {
-        ///         Name = "prod-variables/hostname",
         ///         Parent = "my-service",
+        ///         Name = "prod-variables/hostname",
         ///     });
         /// 
         /// });

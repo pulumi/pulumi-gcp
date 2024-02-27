@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  *     project: "debian-cloud",
  * });
  * const foobar = new gcp.compute.Instance("foobar", {
+ *     name: "guest-policy-inst",
  *     machineType: "e2-medium",
  *     zone: "us-central1-a",
  *     canIpForward: false,
@@ -47,10 +48,8 @@ import * as utilities from "../utilities";
  *     metadata: {
  *         foo: "bar",
  *     },
- * }, {
- *     provider: google_beta,
  * });
- * const guestPolicies = new gcp.osconfig.GuestPolicies("guestPolicies", {
+ * const guestPolicies = new gcp.osconfig.GuestPolicies("guest_policies", {
  *     guestPolicyId: "guest-policy",
  *     assignment: {
  *         instances: [foobar.id],
@@ -59,8 +58,6 @@ import * as utilities from "../utilities";
  *         name: "my-package",
  *         desiredState: "UPDATED",
  *     }],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Os Config Guest Policies Packages
@@ -69,7 +66,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const guestPolicies = new gcp.osconfig.GuestPolicies("guestPolicies", {
+ * const guestPolicies = new gcp.osconfig.GuestPolicies("guest_policies", {
  *     guestPolicyId: "guest-policy",
  *     assignment: {
  *         groupLabels: [
@@ -123,8 +120,6 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     ],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Os Config Guest Policies Recipes
@@ -133,7 +128,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const guestPolicies = new gcp.osconfig.GuestPolicies("guestPolicies", {
+ * const guestPolicies = new gcp.osconfig.GuestPolicies("guest_policies", {
  *     guestPolicyId: "guest-policy",
  *     assignment: {
  *         zones: [
@@ -158,8 +153,6 @@ import * as utilities from "../utilities";
  *             },
  *         }],
  *     }],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

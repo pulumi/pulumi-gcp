@@ -408,11 +408,14 @@ class FolderSink(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        log_bucket = gcp.storage.Bucket("log-bucket", location="US")
+        log_bucket = gcp.storage.Bucket("log-bucket",
+            name="folder-logging-bucket",
+            location="US")
         my_folder = gcp.organizations.Folder("my-folder",
             display_name="My folder",
             parent="organizations/123456")
         my_sink = gcp.logging.FolderSink("my-sink",
+            name="my-sink",
             description="some explanation on what this is",
             folder=my_folder.name,
             destination=log_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"),
@@ -477,11 +480,14 @@ class FolderSink(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        log_bucket = gcp.storage.Bucket("log-bucket", location="US")
+        log_bucket = gcp.storage.Bucket("log-bucket",
+            name="folder-logging-bucket",
+            location="US")
         my_folder = gcp.organizations.Folder("my-folder",
             display_name="My folder",
             parent="organizations/123456")
         my_sink = gcp.logging.FolderSink("my-sink",
+            name="my-sink",
             description="some explanation on what this is",
             folder=my_folder.name,
             destination=log_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"),

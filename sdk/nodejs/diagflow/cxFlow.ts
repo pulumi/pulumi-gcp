@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  *         enableSpeechAdaptation: true,
  *     },
  * });
- * const basicFlow = new gcp.diagflow.CxFlow("basicFlow", {
+ * const basicFlow = new gcp.diagflow.CxFlow("basic_flow", {
  *     parent: agent.id,
  *     displayName: "MyFlow",
  *     description: "Test Flow",
@@ -110,10 +110,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "dialogflowcx-bucket",
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  * });
- * const basicFlow = new gcp.diagflow.CxFlow("basicFlow", {
+ * const basicFlow = new gcp.diagflow.CxFlow("basic_flow", {
  *     parent: agent.id,
  *     displayName: "MyFlow",
  *     description: "Test Flow",

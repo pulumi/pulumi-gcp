@@ -23,6 +23,7 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var store = new Gcp.Vertex.AiMetadataStore("store", new()
     ///     {
+    ///         Name = "test-store",
     ///         Description = "Store to test the terraform module",
     ///         Region = "us-central1",
     ///     });

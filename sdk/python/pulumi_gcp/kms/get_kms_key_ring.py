@@ -90,8 +90,8 @@ def get_kms_key_ring(location: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    my_key_ring = gcp.kms.get_kms_key_ring(location="us-central1",
-        name="my-key-ring")
+    my_key_ring = gcp.kms.get_kms_key_ring(name="my-key-ring",
+        location="us-central1")
     ```
 
 
@@ -138,8 +138,8 @@ def get_kms_key_ring_output(location: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    my_key_ring = gcp.kms.get_kms_key_ring(location="us-central1",
-        name="my-key-ring")
+    my_key_ring = gcp.kms.get_kms_key_ring(name="my-key-ring",
+        location="us-central1")
     ```
 
 

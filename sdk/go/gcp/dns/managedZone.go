@@ -38,8 +38,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dns.NewManagedZone(ctx, "example-zone", &dns.ManagedZoneArgs{
-//				Description: pulumi.String("Example DNS zone"),
+//				Name:        pulumi.String("example-zone"),
 //				DnsName:     pulumi.String("my-domain.com."),
+//				Description: pulumi.String("Example DNS zone"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -68,18 +69,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewNetwork(ctx, "network-1", &compute.NetworkArgs{
+//				Name:                  pulumi.String("network-1"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewNetwork(ctx, "network-2", &compute.NetworkArgs{
+//				Name:                  pulumi.String("network-2"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dns.NewManagedZone(ctx, "private-zone", &dns.ManagedZoneArgs{
+//				Name:        pulumi.String("private-zone"),
 //				DnsName:     pulumi.String("private.example.com."),
 //				Description: pulumi.String("Example private DNS zone"),
 //				Labels: pulumi.StringMap{
@@ -121,18 +125,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewNetwork(ctx, "network-1", &compute.NetworkArgs{
+//				Name:                  pulumi.String("network-1"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewNetwork(ctx, "network-2", &compute.NetworkArgs{
+//				Name:                  pulumi.String("network-2"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dns.NewManagedZone(ctx, "private-zone", &dns.ManagedZoneArgs{
+//				Name:        pulumi.String("private-zone"),
 //				DnsName:     pulumi.String("private.example.com."),
 //				Description: pulumi.String("Example private DNS zone"),
 //				Labels: pulumi.StringMap{
@@ -185,12 +192,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewNetwork(ctx, "network-1", &compute.NetworkArgs{
+//				Name:                  pulumi.String("network-1"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewSubnetwork(ctx, "subnetwork-1", &compute.SubnetworkArgs{
+//				Name:                  network_1.Name,
 //				Network:               network_1.Name,
 //				IpCidrRange:           pulumi.String("10.0.36.0/24"),
 //				Region:                pulumi.String("us-central1"),
@@ -210,6 +219,7 @@ import (
 //				return err
 //			}
 //			_, err = container.NewCluster(ctx, "cluster-1", &container.ClusterArgs{
+//				Name:             pulumi.String("cluster-1"),
 //				Location:         pulumi.String("us-central1-c"),
 //				InitialNodeCount: pulumi.Int(1),
 //				NetworkingMode:   pulumi.String("VPC_NATIVE"),
@@ -241,6 +251,7 @@ import (
 //				return err
 //			}
 //			_, err = dns.NewManagedZone(ctx, "private-zone-gke", &dns.ManagedZoneArgs{
+//				Name:        pulumi.String("private-zone"),
 //				DnsName:     pulumi.String("private.example.com."),
 //				Description: pulumi.String("Example private DNS zone"),
 //				Labels: pulumi.StringMap{
@@ -279,18 +290,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewNetwork(ctx, "network-source", &compute.NetworkArgs{
+//				Name:                  pulumi.String("network-source"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewNetwork(ctx, "network-target", &compute.NetworkArgs{
+//				Name:                  pulumi.String("network-target"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dns.NewManagedZone(ctx, "peering-zone", &dns.ManagedZoneArgs{
+//				Name:        pulumi.String("peering-zone"),
 //				DnsName:     pulumi.String("peering.example.com."),
 //				Description: pulumi.String("Example private DNS peering zone"),
 //				Visibility:  pulumi.String("private"),
@@ -334,11 +348,12 @@ import (
 //			example, err := servicedirectory.NewNamespace(ctx, "example", &servicedirectory.NamespaceArgs{
 //				NamespaceId: pulumi.String("example"),
 //				Location:    pulumi.String("us-central1"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dns.NewManagedZone(ctx, "sd-zone", &dns.ManagedZoneArgs{
+//				Name:        pulumi.String("peering-zone"),
 //				DnsName:     pulumi.String("services.example.com."),
 //				Description: pulumi.String("Example private DNS Service Directory zone"),
 //				Visibility:  pulumi.String("private"),
@@ -347,13 +362,14 @@ import (
 //						NamespaceUrl: example.ID(),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -377,13 +393,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dns.NewManagedZone(ctx, "cloud-logging-enabled-zone", &dns.ManagedZoneArgs{
-//				CloudLoggingConfig: &dns.ManagedZoneCloudLoggingConfigArgs{
-//					EnableLogging: pulumi.Bool(true),
-//				},
-//				Description: pulumi.String("Example cloud logging enabled DNS zone"),
+//				Name:        pulumi.String("cloud-logging-enabled-zone"),
 //				DnsName:     pulumi.String("services.example.com."),
+//				Description: pulumi.String("Example cloud logging enabled DNS zone"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
+//				},
+//				CloudLoggingConfig: &dns.ManagedZoneCloudLoggingConfigArgs{
+//					EnableLogging: pulumi.Bool(true),
 //				},
 //			})
 //			if err != nil {

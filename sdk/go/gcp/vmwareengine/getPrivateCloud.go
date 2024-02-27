@@ -31,8 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vmwareengine.LookupPrivateCloud(ctx, &vmwareengine.LookupPrivateCloudArgs{
-//				Location: "us-central1-a",
 //				Name:     "my-pc",
+//				Location: "us-central1-a",
 //			}, nil)
 //			if err != nil {
 //				return err

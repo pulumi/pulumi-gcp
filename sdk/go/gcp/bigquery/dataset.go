@@ -77,13 +77,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
+//			keyRing, err := kms.NewKeyRing(ctx, "key_ring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("example-keyring"),
 //				Location: pulumi.String("us"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
+//			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
+//				Name:    pulumi.String("example-key"),
 //				KeyRing: keyRing.ID(),
 //			})
 //			if err != nil {
@@ -206,7 +208,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			publicDataset, err := bigquery.NewDataset(ctx, "publicDataset", &bigquery.DatasetArgs{
+//			public, err := bigquery.NewDataset(ctx, "public", &bigquery.DatasetArgs{
 //				DatasetId:   pulumi.String("public_dataset"),
 //				Description: pulumi.String("This dataset is public"),
 //			})
@@ -234,8 +236,8 @@ import (
 //				return err
 //			}
 //			json1 := string(tmpJSON1)
-//			publicRoutine, err := bigquery.NewRoutine(ctx, "publicRoutine", &bigquery.RoutineArgs{
-//				DatasetId:      publicDataset.DatasetId,
+//			publicRoutine, err := bigquery.NewRoutine(ctx, "public", &bigquery.RoutineArgs{
+//				DatasetId:      public.DatasetId,
 //				RoutineId:      pulumi.String("public_routine"),
 //				RoutineType:    pulumi.String("TABLE_VALUED_FUNCTION"),
 //				Language:       pulumi.String("SQL"),
@@ -300,7 +302,7 @@ import (
 //					ExternalSource: pulumi.String("aws-glue://arn:aws:glue:us-east-1:999999999999:database/database"),
 //					Connection:     pulumi.String("projects/project/locations/aws-us-east-1/connections/connection"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

@@ -46,7 +46,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.bigquery.DatasetArgs;
  * import com.pulumi.gcp.bigquery.DataTransferConfig;
  * import com.pulumi.gcp.bigquery.DataTransferConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -73,9 +72,7 @@ import javax.annotation.Nullable;
  *             .friendlyName(&#34;foo&#34;)
  *             .description(&#34;bar&#34;)
  *             .location(&#34;asia-northeast1&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(permissions)
- *                 .build());
+ *             .build());
  * 
  *         var queryConfig = new DataTransferConfig(&#34;queryConfig&#34;, DataTransferConfigArgs.builder()        
  *             .displayName(&#34;my-query&#34;)
@@ -88,9 +85,7 @@ import javax.annotation.Nullable;
  *                 Map.entry(&#34;write_disposition&#34;, &#34;WRITE_APPEND&#34;),
  *                 Map.entry(&#34;query&#34;, &#34;SELECT name FROM tabl WHERE x = &#39;y&#39;&#34;)
  *             ))
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(permissions)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

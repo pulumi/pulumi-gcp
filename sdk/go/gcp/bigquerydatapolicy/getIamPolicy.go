@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigquerydatapolicy.GetIamPolicy(ctx, &bigquerydatapolicy.GetIamPolicyArgs{
-//				Project:      pulumi.StringRef(google_bigquery_datapolicy_data_policy.Data_policy.Project),
-//				Location:     pulumi.StringRef(google_bigquery_datapolicy_data_policy.Data_policy.Location),
-//				DataPolicyId: google_bigquery_datapolicy_data_policy.Data_policy.Data_policy_id,
+//				Project:      pulumi.StringRef(dataPolicy.Project),
+//				Location:     pulumi.StringRef(dataPolicy.Location),
+//				DataPolicyId: dataPolicy.DataPolicyId,
 //			}, nil)
 //			if err != nil {
 //				return err

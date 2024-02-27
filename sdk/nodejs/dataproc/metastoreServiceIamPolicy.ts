@@ -32,9 +32,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.dataproc.MetastoreServiceIamPolicy("policy", {
- *     project: google_dataproc_metastore_service["default"].project,
- *     location: google_dataproc_metastore_service["default"].location,
- *     serviceId: google_dataproc_metastore_service["default"].service_id,
+ *     project: _default.project,
+ *     location: _default.location,
+ *     serviceId: _default.serviceId,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -46,9 +46,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.dataproc.MetastoreServiceIamBinding("binding", {
- *     project: google_dataproc_metastore_service["default"].project,
- *     location: google_dataproc_metastore_service["default"].location,
- *     serviceId: google_dataproc_metastore_service["default"].service_id,
+ *     project: _default.project,
+ *     location: _default.location,
+ *     serviceId: _default.serviceId,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
  * });
@@ -61,9 +61,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.dataproc.MetastoreServiceIamMember("member", {
- *     project: google_dataproc_metastore_service["default"].project,
- *     location: google_dataproc_metastore_service["default"].location,
- *     serviceId: google_dataproc_metastore_service["default"].service_id,
+ *     project: _default.project,
+ *     location: _default.location,
+ *     serviceId: _default.serviceId,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
  * });

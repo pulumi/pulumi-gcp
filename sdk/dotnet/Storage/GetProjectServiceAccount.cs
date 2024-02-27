@@ -62,7 +62,7 @@ namespace Pulumi.Gcp.Storage
         /// 
         ///     var binding = new Gcp.PubSub.TopicIAMBinding("binding", new()
         ///     {
-        ///         Topic = google_pubsub_topic.Topic.Name,
+        ///         Topic = topic.Name,
         ///         Role = "roles/pubsub.publisher",
         ///         Members = new[]
         ///         {
@@ -99,16 +99,11 @@ namespace Pulumi.Gcp.Storage
         /// 
         ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
         ///     {
+        ///         Name = "kms-protected-bucket",
         ///         Location = "US",
         ///         Encryption = new Gcp.Storage.Inputs.BucketEncryptionArgs
         ///         {
         ///             DefaultKmsKeyName = "your-crypto-key-id",
-        ///         },
-        ///     }, new CustomResourceOptions
-        ///     {
-        ///         DependsOn = new[]
-        ///         {
-        ///             binding,
         ///         },
         ///     });
         /// 
@@ -171,7 +166,7 @@ namespace Pulumi.Gcp.Storage
         /// 
         ///     var binding = new Gcp.PubSub.TopicIAMBinding("binding", new()
         ///     {
-        ///         Topic = google_pubsub_topic.Topic.Name,
+        ///         Topic = topic.Name,
         ///         Role = "roles/pubsub.publisher",
         ///         Members = new[]
         ///         {
@@ -208,16 +203,11 @@ namespace Pulumi.Gcp.Storage
         /// 
         ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
         ///     {
+        ///         Name = "kms-protected-bucket",
         ///         Location = "US",
         ///         Encryption = new Gcp.Storage.Inputs.BucketEncryptionArgs
         ///         {
         ///             DefaultKmsKeyName = "your-crypto-key-id",
-        ///         },
-        ///     }, new CustomResourceOptions
-        ///     {
-        ///         DependsOn = new[]
-        ///         {
-        ///             binding,
         ///         },
         ///     });
         /// 

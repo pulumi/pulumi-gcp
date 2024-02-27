@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := datacatalog.LookupTaxonomyIamPolicy(ctx, &datacatalog.LookupTaxonomyIamPolicyArgs{
-//				Taxonomy: google_data_catalog_taxonomy.Basic_taxonomy.Name,
+//				Taxonomy: basicTaxonomy.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

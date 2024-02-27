@@ -34,10 +34,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.dataplex.TaskIamPolicy("policy", {
- *     project: google_dataplex_task.example.project,
- *     location: google_dataplex_task.example.location,
- *     lake: google_dataplex_task.example.lake,
- *     taskId: google_dataplex_task.example.task_id,
+ *     project: example.project,
+ *     location: example.location,
+ *     lake: example.lake,
+ *     taskId: example.taskId,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -49,10 +49,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.dataplex.TaskIamBinding("binding", {
- *     project: google_dataplex_task.example.project,
- *     location: google_dataplex_task.example.location,
- *     lake: google_dataplex_task.example.lake,
- *     taskId: google_dataplex_task.example.task_id,
+ *     project: example.project,
+ *     location: example.location,
+ *     lake: example.lake,
+ *     taskId: example.taskId,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
  * });
@@ -65,10 +65,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.dataplex.TaskIamMember("member", {
- *     project: google_dataplex_task.example.project,
- *     location: google_dataplex_task.example.location,
- *     lake: google_dataplex_task.example.lake,
- *     taskId: google_dataplex_task.example.task_id,
+ *     project: example.project,
+ *     location: example.location,
+ *     lake: example.lake,
+ *     taskId: example.taskId,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
  * });

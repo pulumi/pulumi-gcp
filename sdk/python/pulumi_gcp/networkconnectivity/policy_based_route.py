@@ -544,8 +544,11 @@ class PolicyBasedRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_network = gcp.compute.Network("myNetwork", auto_create_subnetworks=False)
+        my_network = gcp.compute.Network("my_network",
+            name="my-network",
+            auto_create_subnetworks=False)
         default = gcp.networkconnectivity.PolicyBasedRoute("default",
+            name="my-pbr",
             network=my_network.id,
             filter=gcp.networkconnectivity.PolicyBasedRouteFilterArgs(
                 protocol_version="IPV4",
@@ -558,12 +561,15 @@ class PolicyBasedRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_network = gcp.compute.Network("myNetwork", auto_create_subnetworks=False)
+        my_network = gcp.compute.Network("my_network",
+            name="my-network",
+            auto_create_subnetworks=False)
         # This example substitutes an arbitrary internal IP for an internal network
         # load balancer for brevity. Consult https://cloud.google.com/load-balancing/docs/internal
         # to set one up.
-        ilb = gcp.compute.GlobalAddress("ilb")
+        ilb = gcp.compute.GlobalAddress("ilb", name="my-ilb")
         default = gcp.networkconnectivity.PolicyBasedRoute("default",
+            name="my-pbr",
             description="My routing policy",
             network=my_network.id,
             priority=2302,
@@ -650,8 +656,11 @@ class PolicyBasedRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_network = gcp.compute.Network("myNetwork", auto_create_subnetworks=False)
+        my_network = gcp.compute.Network("my_network",
+            name="my-network",
+            auto_create_subnetworks=False)
         default = gcp.networkconnectivity.PolicyBasedRoute("default",
+            name="my-pbr",
             network=my_network.id,
             filter=gcp.networkconnectivity.PolicyBasedRouteFilterArgs(
                 protocol_version="IPV4",
@@ -664,12 +673,15 @@ class PolicyBasedRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_network = gcp.compute.Network("myNetwork", auto_create_subnetworks=False)
+        my_network = gcp.compute.Network("my_network",
+            name="my-network",
+            auto_create_subnetworks=False)
         # This example substitutes an arbitrary internal IP for an internal network
         # load balancer for brevity. Consult https://cloud.google.com/load-balancing/docs/internal
         # to set one up.
-        ilb = gcp.compute.GlobalAddress("ilb")
+        ilb = gcp.compute.GlobalAddress("ilb", name="my-ilb")
         default = gcp.networkconnectivity.PolicyBasedRoute("default",
+            name="my-pbr",
             description="My routing policy",
             network=my_network.id,
             priority=2302,

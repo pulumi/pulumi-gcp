@@ -14,6 +14,57 @@ import * as utilities from "../utilities";
  *     * [Managing Workflows](https://cloud.google.com/workflows/docs/creating-updating-workflow)
  *
  * ## Example Usage
+ * ### Workflow Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const testAccount = new gcp.serviceaccount.Account("test_account", {
+ *     accountId: "my-account",
+ *     displayName: "Test Service Account",
+ * });
+ * const example = new gcp.workflows.Workflow("example", {
+ *     name: "workflow",
+ *     region: "us-central1",
+ *     description: "Magic",
+ *     serviceAccount: testAccount.id,
+ *     callLogLevel: "LOG_ERRORS_ONLY",
+ *     labels: {
+ *         env: "test",
+ *     },
+ *     userEnvVars: {
+ *         url: "https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam",
+ *     },
+ *     sourceContents: `# This is a sample workflow. You can replace it with your source code.
+ * #
+ * # This workflow does the following:
+ * # - reads current time and date information from an external API and stores
+ * #   the response in currentTime variable
+ * # - retrieves a list of Wikipedia articles related to the day of the week
+ * #   from currentTime
+ * # - returns the list of articles as an output of the workflow
+ * #
+ * # Note: In Terraform you need to escape the $$ or it will cause errors.
+ *
+ * - getCurrentTime:
+ *     call: http.get
+ *     args:
+ *         url: \${sys.get_env("url")}
+ *     result: currentTime
+ * - readWikipedia:
+ *     call: http.get
+ *     args:
+ *         url: https://en.wikipedia.org/w/api.php
+ *         query:
+ *             action: opensearch
+ *             search: \${currentTime.body.dayOfWeek}
+ *     result: wikiResult
+ * - returnOutput:
+ *     return: \${wikiResult.body[1]}
+ * `,
+ * });
+ * ```
  *
  * ## Import
  *

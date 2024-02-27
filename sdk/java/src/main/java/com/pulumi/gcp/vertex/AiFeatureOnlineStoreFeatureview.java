@@ -65,6 +65,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var featureonlinestore = new AiFeatureOnlineStore(&#34;featureonlinestore&#34;, AiFeatureOnlineStoreArgs.builder()        
+ *             .name(&#34;example_feature_view&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .region(&#34;us-central1&#34;)
  *             .bigtable(AiFeatureOnlineStoreBigtableArgs.builder()
@@ -112,6 +113,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var featureview = new AiFeatureOnlineStoreFeatureview(&#34;featureview&#34;, AiFeatureOnlineStoreFeatureviewArgs.builder()        
+ *             .name(&#34;example_feature_view&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .featureOnlineStore(featureonlinestore.name())
  *             .syncConfig(AiFeatureOnlineStoreFeatureviewSyncConfigArgs.builder()
@@ -172,6 +174,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var featureonlinestore = new AiFeatureOnlineStore(&#34;featureonlinestore&#34;, AiFeatureOnlineStoreArgs.builder()        
+ *             .name(&#34;example_feature_view_feature_registry&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .region(&#34;us-central1&#34;)
  *             .bigtable(AiFeatureOnlineStoreBigtableArgs.builder()
@@ -216,6 +219,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var sampleFeatureGroup = new AiFeatureGroup(&#34;sampleFeatureGroup&#34;, AiFeatureGroupArgs.builder()        
+ *             .name(&#34;example_feature_view_feature_registry&#34;)
  *             .description(&#34;A sample feature group&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
@@ -233,6 +237,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var sampleFeature = new AiFeatureGroupFeature(&#34;sampleFeature&#34;, AiFeatureGroupFeatureArgs.builder()        
+ *             .name(&#34;example_feature_view_feature_registry&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .featureGroup(sampleFeatureGroup.name())
  *             .description(&#34;A sample feature&#34;)
@@ -240,6 +245,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var featureviewFeatureregistry = new AiFeatureOnlineStoreFeatureview(&#34;featureviewFeatureregistry&#34;, AiFeatureOnlineStoreFeatureviewArgs.builder()        
+ *             .name(&#34;example_feature_view_feature_registry&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .featureOnlineStore(featureonlinestore.name())
  *             .syncConfig(AiFeatureOnlineStoreFeatureviewSyncConfigArgs.builder()
@@ -280,7 +286,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -295,6 +300,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var featureonlinestore = new AiFeatureOnlineStore(&#34;featureonlinestore&#34;, AiFeatureOnlineStoreArgs.builder()        
+ *             .name(&#34;example_feature_view_vector_search&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .region(&#34;us-central1&#34;)
  *             .bigtable(AiFeatureOnlineStoreBigtableArgs.builder()
@@ -307,18 +313,14 @@ import javax.annotation.Nullable;
  *             .embeddingManagement(AiFeatureOnlineStoreEmbeddingManagementArgs.builder()
  *                 .enabled(true)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var tf_test_dataset = new Dataset(&#34;tf-test-dataset&#34;, DatasetArgs.builder()        
  *             .datasetId(&#34;example_feature_view_vector_search&#34;)
  *             .friendlyName(&#34;test&#34;)
  *             .description(&#34;This is a test description&#34;)
  *             .location(&#34;US&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var tf_test_table = new Table(&#34;tf-test-table&#34;, TableArgs.builder()        
  *             .deletionProtection(false)
@@ -370,11 +372,10 @@ import javax.annotation.Nullable;
  * }
  * ]
  *             &#34;&#34;&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var featureviewVectorSearch = new AiFeatureOnlineStoreFeatureview(&#34;featureviewVectorSearch&#34;, AiFeatureOnlineStoreFeatureviewArgs.builder()        
+ *             .name(&#34;example_feature_view_vector_search&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .featureOnlineStore(featureonlinestore.name())
  *             .syncConfig(AiFeatureOnlineStoreFeatureviewSyncConfigArgs.builder()
@@ -399,9 +400,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .embeddingDimension(&#34;2&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 

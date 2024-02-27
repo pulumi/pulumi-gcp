@@ -270,7 +270,8 @@ class LiteSubscription(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        example_lite_topic = gcp.pubsub.LiteTopic("exampleLiteTopic",
+        example = gcp.pubsub.LiteTopic("example",
+            name="example-topic",
             project=project.number,
             partition_config=gcp.pubsub.LiteTopicPartitionConfigArgs(
                 count=1,
@@ -282,8 +283,9 @@ class LiteSubscription(pulumi.CustomResource):
             retention_config=gcp.pubsub.LiteTopicRetentionConfigArgs(
                 per_partition_bytes="32212254720",
             ))
-        example_lite_subscription = gcp.pubsub.LiteSubscription("exampleLiteSubscription",
-            topic=example_lite_topic.name,
+        example_lite_subscription = gcp.pubsub.LiteSubscription("example",
+            name="example-subscription",
+            topic=example.name,
             delivery_config=gcp.pubsub.LiteSubscriptionDeliveryConfigArgs(
                 delivery_requirement="DELIVER_AFTER_STORED",
             ))
@@ -357,7 +359,8 @@ class LiteSubscription(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        example_lite_topic = gcp.pubsub.LiteTopic("exampleLiteTopic",
+        example = gcp.pubsub.LiteTopic("example",
+            name="example-topic",
             project=project.number,
             partition_config=gcp.pubsub.LiteTopicPartitionConfigArgs(
                 count=1,
@@ -369,8 +372,9 @@ class LiteSubscription(pulumi.CustomResource):
             retention_config=gcp.pubsub.LiteTopicRetentionConfigArgs(
                 per_partition_bytes="32212254720",
             ))
-        example_lite_subscription = gcp.pubsub.LiteSubscription("exampleLiteSubscription",
-            topic=example_lite_topic.name,
+        example_lite_subscription = gcp.pubsub.LiteSubscription("example",
+            name="example-subscription",
+            topic=example.name,
             delivery_config=gcp.pubsub.LiteSubscriptionDeliveryConfigArgs(
                 delivery_requirement="DELIVER_AFTER_STORED",
             ))

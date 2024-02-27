@@ -32,25 +32,28 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var networkPrimary = new Gcp.Compute.Network("networkPrimary", new()
+    ///     var networkPrimary = new Gcp.Compute.Network("network_primary", new()
     ///     {
+    ///         Name = "primary-network",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     var networkSecondary = new Gcp.Compute.Network("networkSecondary", new()
+    ///     var networkSecondary = new Gcp.Compute.Network("network_secondary", new()
     ///     {
+    ///         Name = "secondary-network",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     var peeringPrimary = new Gcp.Compute.NetworkPeering("peeringPrimary", new()
+    ///     var peeringPrimary = new Gcp.Compute.NetworkPeering("peering_primary", new()
     ///     {
+    ///         Name = "primary-peering",
     ///         Network = networkPrimary.Id,
     ///         PeerNetwork = networkSecondary.Id,
     ///         ImportCustomRoutes = true,
     ///         ExportCustomRoutes = true,
     ///     });
     /// 
-    ///     var peeringPrimaryRoutes = new Gcp.Compute.NetworkPeeringRoutesConfig("peeringPrimaryRoutes", new()
+    ///     var peeringPrimaryRoutes = new Gcp.Compute.NetworkPeeringRoutesConfig("peering_primary_routes", new()
     ///     {
     ///         Peering = peeringPrimary.Name,
     ///         Network = networkPrimary.Name,
@@ -58,8 +61,9 @@ namespace Pulumi.Gcp.Compute
     ///         ExportCustomRoutes = true,
     ///     });
     /// 
-    ///     var peeringSecondary = new Gcp.Compute.NetworkPeering("peeringSecondary", new()
+    ///     var peeringSecondary = new Gcp.Compute.NetworkPeering("peering_secondary", new()
     ///     {
+    ///         Name = "secondary-peering",
     ///         Network = networkSecondary.Id,
     ///         PeerNetwork = networkPrimary.Id,
     ///     });
@@ -76,13 +80,15 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var containerNetwork = new Gcp.Compute.Network("containerNetwork", new()
+    ///     var containerNetwork = new Gcp.Compute.Network("container_network", new()
     ///     {
+    ///         Name = "container-network",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     var containerSubnetwork = new Gcp.Compute.Subnetwork("containerSubnetwork", new()
+    ///     var containerSubnetwork = new Gcp.Compute.Subnetwork("container_subnetwork", new()
     ///     {
+    ///         Name = "container-subnetwork",
     ///         Region = "us-central1",
     ///         Network = containerNetwork.Name,
     ///         IpCidrRange = "10.0.36.0/24",
@@ -102,8 +108,9 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///     });
     /// 
-    ///     var privateCluster = new Gcp.Container.Cluster("privateCluster", new()
+    ///     var privateCluster = new Gcp.Container.Cluster("private_cluster", new()
     ///     {
+    ///         Name = "private-cluster",
     ///         Location = "us-central1-a",
     ///         InitialNodeCount = 1,
     ///         Network = containerNetwork.Name,
@@ -123,7 +130,7 @@ namespace Pulumi.Gcp.Compute
     ///         DeletionProtection = true,
     ///     });
     /// 
-    ///     var peeringGkeRoutes = new Gcp.Compute.NetworkPeeringRoutesConfig("peeringGkeRoutes", new()
+    ///     var peeringGkeRoutes = new Gcp.Compute.NetworkPeeringRoutesConfig("peering_gke_routes", new()
     ///     {
     ///         Peering = privateCluster.PrivateClusterConfig.Apply(privateClusterConfig =&gt; privateClusterConfig.PeeringName),
     ///         Network = containerNetwork.Name,

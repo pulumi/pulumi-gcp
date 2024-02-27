@@ -37,7 +37,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.workstations.WorkstationClusterArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -52,29 +51,25 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;workstation-cluster&#34;)
  *             .autoCreateSubnetworks(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;workstation-cluster&#34;)
  *             .ipCidrRange(&#34;10.0.0.0/24&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(defaultNetwork.name())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
- *         var defaultWorkstationCluster = new WorkstationCluster(&#34;defaultWorkstationCluster&#34;, WorkstationClusterArgs.builder()        
+ *         var default_ = new WorkstationCluster(&#34;default&#34;, WorkstationClusterArgs.builder()        
  *             .workstationClusterId(&#34;workstation-cluster&#34;)
  *             .network(defaultNetwork.id())
  *             .subnetwork(defaultSubnetwork.id())
  *             .location(&#34;us-central1&#34;)
  *             .labels(Map.of(&#34;label&#34;, &#34;key&#34;))
  *             .annotations(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
@@ -97,7 +92,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.workstations.inputs.WorkstationClusterPrivateClusterConfigArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -112,20 +106,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;workstation-cluster-private&#34;)
  *             .autoCreateSubnetworks(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;workstation-cluster-private&#34;)
  *             .ipCidrRange(&#34;10.0.0.0/24&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(defaultNetwork.name())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
- *         var defaultWorkstationCluster = new WorkstationCluster(&#34;defaultWorkstationCluster&#34;, WorkstationClusterArgs.builder()        
+ *         var default_ = new WorkstationCluster(&#34;default&#34;, WorkstationClusterArgs.builder()        
  *             .workstationClusterId(&#34;workstation-cluster-private&#34;)
  *             .network(defaultNetwork.id())
  *             .subnetwork(defaultSubnetwork.id())
@@ -135,9 +127,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .labels(Map.of(&#34;label&#34;, &#34;key&#34;))
  *             .annotations(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
@@ -161,7 +151,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.workstations.inputs.WorkstationClusterDomainConfigArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -176,20 +165,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;workstation-cluster-custom-domain&#34;)
  *             .autoCreateSubnetworks(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;workstation-cluster-custom-domain&#34;)
  *             .ipCidrRange(&#34;10.0.0.0/24&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(defaultNetwork.name())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
- *         var defaultWorkstationCluster = new WorkstationCluster(&#34;defaultWorkstationCluster&#34;, WorkstationClusterArgs.builder()        
+ *         var default_ = new WorkstationCluster(&#34;default&#34;, WorkstationClusterArgs.builder()        
  *             .workstationClusterId(&#34;workstation-cluster-custom-domain&#34;)
  *             .network(defaultNetwork.id())
  *             .subnetwork(defaultSubnetwork.id())
@@ -202,9 +189,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .labels(Map.of(&#34;label&#34;, &#34;key&#34;))
  *             .annotations(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 

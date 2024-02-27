@@ -19,8 +19,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const network_1 = new gcp.compute.Network("network-1", {autoCreateSubnetworks: false});
- * const network_2 = new gcp.compute.Network("network-2", {autoCreateSubnetworks: false});
+ * const network_1 = new gcp.compute.Network("network-1", {
+ *     name: "network-1",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const network_2 = new gcp.compute.Network("network-2", {
+ *     name: "network-2",
+ *     autoCreateSubnetworks: false,
+ * });
  * const response_policy = new gcp.dns.ResponsePolicy("response-policy", {
  *     responsePolicyName: "example-response-policy",
  *     networks: [

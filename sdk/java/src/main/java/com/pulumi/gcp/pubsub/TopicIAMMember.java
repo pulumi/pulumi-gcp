@@ -62,8 +62,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new TopicIAMPolicy(&#34;policy&#34;, TopicIAMPolicyArgs.builder()        
- *             .project(google_pubsub_topic.example().project())
- *             .topic(google_pubsub_topic.example().name())
+ *             .project(example.project())
+ *             .topic(example.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -94,8 +94,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
- *             .project(google_pubsub_topic.example().project())
- *             .topic(google_pubsub_topic.example().name())
+ *             .project(example.project())
+ *             .topic(example.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -127,8 +127,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new TopicIAMMember(&#34;member&#34;, TopicIAMMemberArgs.builder()        
- *             .project(google_pubsub_topic.example().project())
- *             .topic(google_pubsub_topic.example().name())
+ *             .project(example.project())
+ *             .topic(example.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

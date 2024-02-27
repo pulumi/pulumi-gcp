@@ -39,7 +39,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.servicedirectory.ServiceArgs;
  * import com.pulumi.gcp.servicedirectory.Endpoint;
  * import com.pulumi.gcp.servicedirectory.EndpointArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -53,19 +52,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleNamespace = new Namespace(&#34;exampleNamespace&#34;, NamespaceArgs.builder()        
+ *         var example = new Namespace(&#34;example&#34;, NamespaceArgs.builder()        
  *             .namespaceId(&#34;example-namespace&#34;)
  *             .location(&#34;us-central1&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var exampleService = new Service(&#34;exampleService&#34;, ServiceArgs.builder()        
  *             .serviceId(&#34;example-service&#34;)
- *             .namespace(exampleNamespace.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .namespace(example.id())
+ *             .build());
  * 
  *         var exampleEndpoint = new Endpoint(&#34;exampleEndpoint&#34;, EndpointArgs.builder()        
  *             .endpointId(&#34;example-endpoint&#34;)
@@ -76,9 +71,7 @@ import javax.annotation.Nullable;
  *             ))
  *             .address(&#34;1.2.3.4&#34;)
  *             .port(5353)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -100,7 +93,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.servicedirectory.ServiceArgs;
  * import com.pulumi.gcp.servicedirectory.Endpoint;
  * import com.pulumi.gcp.servicedirectory.EndpointArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -116,23 +108,19 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.Empty, CustomResourceOptions.builder()
- *             .provider(google_beta)
+ *         var example = new Network(&#34;example&#34;, NetworkArgs.builder()        
+ *             .name(&#34;example-network&#34;)
  *             .build());
  * 
  *         var exampleNamespace = new Namespace(&#34;exampleNamespace&#34;, NamespaceArgs.builder()        
  *             .namespaceId(&#34;example-namespace&#34;)
  *             .location(&#34;us-central1&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var exampleService = new Service(&#34;exampleService&#34;, ServiceArgs.builder()        
  *             .serviceId(&#34;example-service&#34;)
  *             .namespace(exampleNamespace.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var exampleEndpoint = new Endpoint(&#34;exampleEndpoint&#34;, EndpointArgs.builder()        
  *             .endpointId(&#34;example-endpoint&#34;)
@@ -141,12 +129,10 @@ import javax.annotation.Nullable;
  *                 Map.entry(&#34;stage&#34;, &#34;prod&#34;),
  *                 Map.entry(&#34;region&#34;, &#34;us-central1&#34;)
  *             ))
- *             .network(exampleNetwork.name().applyValue(name -&gt; String.format(&#34;projects/%s/locations/global/networks/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()),name)))
+ *             .network(example.name().applyValue(name -&gt; String.format(&#34;projects/%s/locations/global/networks/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()),name)))
  *             .address(&#34;1.2.3.4&#34;)
  *             .port(5353)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

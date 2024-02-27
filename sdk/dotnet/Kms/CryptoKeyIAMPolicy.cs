@@ -30,11 +30,13 @@ namespace Pulumi.Gcp.Kms
     /// {
     ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
     ///     {
+    ///         Name = "keyring-example",
     ///         Location = "global",
     ///     });
     /// 
     ///     var key = new Gcp.Kms.CryptoKey("key", new()
     ///     {
+    ///         Name = "crypto-key-example",
     ///         KeyRing = keyring.Id,
     ///         RotationPeriod = "7776000s",
     ///     });
@@ -54,7 +56,7 @@ namespace Pulumi.Gcp.Kms
     ///         },
     ///     });
     /// 
-    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMPolicy("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMPolicy("crypto_key", new()
     ///     {
     ///         CryptoKeyId = key.Id,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
@@ -79,17 +81,17 @@ namespace Pulumi.Gcp.Kms
     ///         {
     ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
-    ///                 {
-    ///                     Description = "Expiring at midnight of 2019-12-31",
-    ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///                     Title = "expires_after_2019_12_31",
-    ///                 },
+    ///                 Role = "roles/cloudkms.cryptoKeyEncrypter",
     ///                 Members = new[]
     ///                 {
     ///                     "user:jane@example.com",
     ///                 },
-    ///                 Role = "roles/cloudkms.cryptoKeyEncrypter",
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 {
+    ///                     Title = "expires_after_2019_12_31",
+    ///                     Description = "Expiring at midnight of 2019-12-31",
+    ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///                 },
     ///             },
     ///         },
     ///     });
@@ -105,9 +107,9 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMBinding("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMBinding("crypto_key", new()
     ///     {
-    ///         CryptoKeyId = google_kms_crypto_key.Key.Id,
+    ///         CryptoKeyId = key.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypter",
     ///         Members = new[]
     ///         {
@@ -128,9 +130,9 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMBinding("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMBinding("crypto_key", new()
     ///     {
-    ///         CryptoKeyId = google_kms_crypto_key.Key.Id,
+    ///         CryptoKeyId = key.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypter",
     ///         Members = new[]
     ///         {
@@ -155,9 +157,9 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMMember("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMMember("crypto_key", new()
     ///     {
-    ///         CryptoKeyId = google_kms_crypto_key.Key.Id,
+    ///         CryptoKeyId = key.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypter",
     ///         Member = "user:jane@example.com",
     ///     });
@@ -175,9 +177,9 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMMember("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMMember("crypto_key", new()
     ///     {
-    ///         CryptoKeyId = google_kms_crypto_key.Key.Id,
+    ///         CryptoKeyId = key.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypter",
     ///         Member = "user:jane@example.com",
     ///         Condition = new Gcp.Kms.Inputs.CryptoKeyIAMMemberConditionArgs

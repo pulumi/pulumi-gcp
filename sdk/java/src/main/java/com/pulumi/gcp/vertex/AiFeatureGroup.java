@@ -83,6 +83,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var featureGroup = new AiFeatureGroup(&#34;featureGroup&#34;, AiFeatureGroupArgs.builder()        
+ *             .name(&#34;example_feature_group&#34;)
  *             .description(&#34;A sample feature group&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))

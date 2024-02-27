@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myTaxonomy = new Gcp.DataCatalog.Taxonomy("myTaxonomy", new()
+    ///     var myTaxonomy = new Gcp.DataCatalog.Taxonomy("my_taxonomy", new()
     ///     {
     ///         DisplayName = "taxonomy_display_name",
     ///         Description = "A collection of policy tags",
@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.DataCatalog
     ///         },
     ///     });
     /// 
-    ///     var basicPolicyTag = new Gcp.DataCatalog.PolicyTag("basicPolicyTag", new()
+    ///     var basicPolicyTag = new Gcp.DataCatalog.PolicyTag("basic_policy_tag", new()
     ///     {
     ///         Taxonomy = myTaxonomy.Id,
     ///         DisplayName = "Low security",
@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myTaxonomy = new Gcp.DataCatalog.Taxonomy("myTaxonomy", new()
+    ///     var myTaxonomy = new Gcp.DataCatalog.Taxonomy("my_taxonomy", new()
     ///     {
     ///         DisplayName = "taxonomy_display_name",
     ///         Description = "A collection of policy tags",
@@ -68,14 +68,14 @@ namespace Pulumi.Gcp.DataCatalog
     ///         },
     ///     });
     /// 
-    ///     var parentPolicy = new Gcp.DataCatalog.PolicyTag("parentPolicy", new()
+    ///     var parentPolicy = new Gcp.DataCatalog.PolicyTag("parent_policy", new()
     ///     {
     ///         Taxonomy = myTaxonomy.Id,
     ///         DisplayName = "High",
     ///         Description = "A policy tag category used for high security access",
     ///     });
     /// 
-    ///     var childPolicy = new Gcp.DataCatalog.PolicyTag("childPolicy", new()
+    ///     var childPolicy = new Gcp.DataCatalog.PolicyTag("child_policy", new()
     ///     {
     ///         Taxonomy = myTaxonomy.Id,
     ///         DisplayName = "ssn",
@@ -83,18 +83,12 @@ namespace Pulumi.Gcp.DataCatalog
     ///         ParentPolicyTag = parentPolicy.Id,
     ///     });
     /// 
-    ///     var childPolicy2 = new Gcp.DataCatalog.PolicyTag("childPolicy2", new()
+    ///     var childPolicy2 = new Gcp.DataCatalog.PolicyTag("child_policy2", new()
     ///     {
     ///         Taxonomy = myTaxonomy.Id,
     ///         DisplayName = "dob",
     ///         Description = "The users date of birth",
     ///         ParentPolicyTag = parentPolicy.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             childPolicy,
-    ///         },
     ///     });
     /// 
     /// });

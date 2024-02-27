@@ -35,7 +35,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := netapp.NewActiveDirectory(ctx, "testActiveDirectoryFull", &netapp.ActiveDirectoryArgs{
+//			_, err := netapp.NewActiveDirectory(ctx, "test_active_directory_full", &netapp.ActiveDirectoryArgs{
+//				Name:          pulumi.String("test-active-directory-full"),
 //				Location:      pulumi.String("us-central1"),
 //				Domain:        pulumi.String("ad.internal"),
 //				Dns:           pulumi.String("172.30.64.3"),

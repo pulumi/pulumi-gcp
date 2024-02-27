@@ -38,7 +38,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			vpc, err := compute.NewNetwork(ctx, "vpc", nil)
+//			vpc, err := compute.NewNetwork(ctx, "vpc", &compute.NetworkArgs{
+//				Name: pulumi.String("conn-test-net"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -50,18 +52,19 @@ import (
 //				return err
 //			}
 //			source, err := compute.NewInstance(ctx, "source", &compute.InstanceArgs{
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+//							nil,
+//						},
+//						Network: vpc.ID(),
+//					},
+//				},
+//				Name:        pulumi.String("source-vm"),
 //				MachineType: pulumi.String("e2-medium"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
 //						Image: *pulumi.String(debian9.Id),
-//					},
-//				},
-//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-//					&compute.InstanceNetworkInterfaceArgs{
-//						Network: vpc.ID(),
-//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
-//							nil,
-//						},
 //					},
 //				},
 //			})
@@ -69,18 +72,19 @@ import (
 //				return err
 //			}
 //			destination, err := compute.NewInstance(ctx, "destination", &compute.InstanceArgs{
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+//							nil,
+//						},
+//						Network: vpc.ID(),
+//					},
+//				},
+//				Name:        pulumi.String("dest-vm"),
 //				MachineType: pulumi.String("e2-medium"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
 //						Image: *pulumi.String(debian9.Id),
-//					},
-//				},
-//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-//					&compute.InstanceNetworkInterfaceArgs{
-//						Network: vpc.ID(),
-//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
-//							nil,
-//						},
 //					},
 //				},
 //			})
@@ -88,6 +92,7 @@ import (
 //				return err
 //			}
 //			_, err = networkmanagement.NewConnectivityTest(ctx, "instance-test", &networkmanagement.ConnectivityTestArgs{
+//				Name: pulumi.String("conn-test-instances"),
 //				Source: &networkmanagement.ConnectivityTestSourceArgs{
 //					Instance: source.ID(),
 //				},
@@ -122,11 +127,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			vpc, err := compute.NewNetwork(ctx, "vpc", nil)
+//			vpc, err := compute.NewNetwork(ctx, "vpc", &compute.NetworkArgs{
+//				Name: pulumi.String("connectivity-vpc"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("connectivity-vpc-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     vpc.ID(),
@@ -135,6 +143,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewAddress(ctx, "source-addr", &compute.AddressArgs{
+//				Name:        pulumi.String("src-addr"),
 //				Subnetwork:  subnet.ID(),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Address:     pulumi.String("10.0.42.42"),
@@ -144,6 +153,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewAddress(ctx, "dest-addr", &compute.AddressArgs{
+//				Name:        pulumi.String("dest-addr"),
 //				Subnetwork:  subnet.ID(),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Address:     pulumi.String("10.0.43.43"),
@@ -153,6 +163,7 @@ import (
 //				return err
 //			}
 //			_, err = networkmanagement.NewConnectivityTest(ctx, "address-test", &networkmanagement.ConnectivityTestArgs{
+//				Name: pulumi.String("conn-test-addr"),
 //				Source: &networkmanagement.ConnectivityTestSourceArgs{
 //					IpAddress:   source_addr.Address,
 //					ProjectId:   source_addr.Project,

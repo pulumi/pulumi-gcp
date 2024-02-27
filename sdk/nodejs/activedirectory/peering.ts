@@ -12,31 +12,26 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const source_network = new gcp.compute.Network("source-network", {}, {
- *     provider: google_beta,
- * });
+ * const source_network = new gcp.compute.Network("source-network", {name: "ad-network"});
  * const ad_domain = new gcp.activedirectory.Domain("ad-domain", {
  *     domainName: "ad.test.hashicorptest.com",
  *     locations: ["us-central1"],
  *     reservedIpRange: "192.168.255.0/24",
  *     authorizedNetworks: [source_network.id],
- * }, {
- *     provider: google_beta,
  * });
  * const peered_project = new gcp.organizations.Project("peered-project", {
+ *     name: "my-peered-project",
+ *     projectId: "my-peered-project",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
- * }, {
- *     provider: google_beta,
  * });
  * const compute = new gcp.projects.Service("compute", {
  *     project: peered_project.projectId,
  *     service: "compute.googleapis.com",
- * }, {
- *     provider: google_beta,
  * });
- * const peered_network = new gcp.compute.Network("peered-network", {project: compute.project}, {
- *     provider: google_beta,
+ * const peered_network = new gcp.compute.Network("peered-network", {
+ *     project: compute.project,
+ *     name: "ad-peered-network",
  * });
  * const ad_domain_peering = new gcp.activedirectory.Peering("ad-domain-peering", {
  *     domainResource: ad_domain.name,
@@ -45,8 +40,6 @@ import * as utilities from "../utilities";
  *     labels: {
  *         foo: "bar",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

@@ -30,8 +30,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrunv2.LookupJob(ctx, &cloudrunv2.LookupJobArgs{
-//				Location: pulumi.StringRef("us-central1"),
 //				Name:     "my-job",
+//				Location: pulumi.StringRef("us-central1"),
 //			}, nil)
 //			if err != nil {
 //				return err

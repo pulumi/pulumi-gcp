@@ -34,15 +34,15 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Network;
- * import com.pulumi.gcp.compute.GlobalAddress;
- * import com.pulumi.gcp.compute.GlobalAddressArgs;
- * import com.pulumi.gcp.servicenetworking.Connection;
- * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.vertex.AiIndexEndpoint;
  * import com.pulumi.gcp.vertex.AiIndexEndpointArgs;
- * import com.pulumi.resources.CustomResourceOptions;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.servicenetworking.Connection;
+ * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -56,9 +56,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vertexNetwork = new Network(&#34;vertexNetwork&#34;);
+ *         var vertexNetwork = new Network(&#34;vertexNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;network-name&#34;)
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var indexEndpoint = new AiIndexEndpoint(&#34;indexEndpoint&#34;, AiIndexEndpointArgs.builder()        
+ *             .displayName(&#34;sample-endpoint&#34;)
+ *             .description(&#34;A sample vertex endpoint&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .network(vertexNetwork.name().applyValue(name -&gt; String.format(&#34;projects/%s/global/networks/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()),name)))
+ *             .build());
  * 
  *         var vertexRange = new GlobalAddress(&#34;vertexRange&#34;, GlobalAddressArgs.builder()        
+ *             .name(&#34;address-name&#34;)
  *             .purpose(&#34;VPC_PEERING&#34;)
  *             .addressType(&#34;INTERNAL&#34;)
  *             .prefixLength(24)
@@ -70,18 +83,6 @@ import javax.annotation.Nullable;
  *             .service(&#34;servicenetworking.googleapis.com&#34;)
  *             .reservedPeeringRanges(vertexRange.name())
  *             .build());
- * 
- *         final var project = OrganizationsFunctions.getProject();
- * 
- *         var indexEndpoint = new AiIndexEndpoint(&#34;indexEndpoint&#34;, AiIndexEndpointArgs.builder()        
- *             .displayName(&#34;sample-endpoint&#34;)
- *             .description(&#34;A sample vertex endpoint&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
- *             .network(vertexNetwork.name().applyValue(name -&gt; String.format(&#34;projects/%s/global/networks/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()),name)))
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(vertexVpcConnection)
- *                 .build());
  * 
  *     }
  * }
@@ -150,11 +151,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var indexEndpoint = new AiIndexEndpoint(&#34;indexEndpoint&#34;, AiIndexEndpointArgs.builder()        
- *             .description(&#34;A sample vertex endpoint with an public endpoint&#34;)
  *             .displayName(&#34;sample-endpoint&#34;)
+ *             .description(&#34;A sample vertex endpoint with an public endpoint&#34;)
+ *             .region(&#34;us-central1&#34;)
  *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
  *             .publicEndpointEnabled(true)
- *             .region(&#34;us-central1&#34;)
  *             .build());
  * 
  *     }

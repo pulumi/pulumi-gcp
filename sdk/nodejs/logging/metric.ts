@@ -24,38 +24,39 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const loggingMetric = new gcp.logging.Metric("loggingMetric", {
- *     bucketOptions: {
- *         linearBuckets: {
- *             numFiniteBuckets: 3,
- *             offset: 1,
- *             width: 1,
- *         },
- *     },
+ * const loggingMetric = new gcp.logging.Metric("logging_metric", {
+ *     name: "my-(custom)/metric",
  *     filter: "resource.type=gae_app AND severity>=ERROR",
+ *     metricDescriptor: {
+ *         metricKind: "DELTA",
+ *         valueType: "DISTRIBUTION",
+ *         unit: "1",
+ *         labels: [
+ *             {
+ *                 key: "mass",
+ *                 valueType: "STRING",
+ *                 description: "amount of matter",
+ *             },
+ *             {
+ *                 key: "sku",
+ *                 valueType: "INT64",
+ *                 description: "Identifying number for item",
+ *             },
+ *         ],
+ *         displayName: "My metric",
+ *     },
+ *     valueExtractor: "EXTRACT(jsonPayload.request)",
  *     labelExtractors: {
  *         mass: "EXTRACT(jsonPayload.request)",
  *         sku: "EXTRACT(jsonPayload.id)",
  *     },
- *     metricDescriptor: {
- *         displayName: "My metric",
- *         labels: [
- *             {
- *                 description: "amount of matter",
- *                 key: "mass",
- *                 valueType: "STRING",
- *             },
- *             {
- *                 description: "Identifying number for item",
- *                 key: "sku",
- *                 valueType: "INT64",
- *             },
- *         ],
- *         metricKind: "DELTA",
- *         unit: "1",
- *         valueType: "DISTRIBUTION",
+ *     bucketOptions: {
+ *         linearBuckets: {
+ *             numFiniteBuckets: 3,
+ *             width: 1,
+ *             offset: 1,
+ *         },
  *     },
- *     valueExtractor: "EXTRACT(jsonPayload.request)",
  * });
  * ```
  * ### Logging Metric Counter Basic
@@ -64,7 +65,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const loggingMetric = new gcp.logging.Metric("loggingMetric", {
+ * const loggingMetric = new gcp.logging.Metric("logging_metric", {
+ *     name: "my-(custom)/metric",
  *     filter: "resource.type=gae_app AND severity>=ERROR",
  *     metricDescriptor: {
  *         metricKind: "DELTA",
@@ -78,19 +80,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const loggingMetric = new gcp.logging.Metric("loggingMetric", {
+ * const loggingMetric = new gcp.logging.Metric("logging_metric", {
+ *     name: "my-(custom)/metric",
  *     filter: "resource.type=gae_app AND severity>=ERROR",
- *     labelExtractors: {
- *         mass: "EXTRACT(jsonPayload.request)",
- *     },
  *     metricDescriptor: {
- *         labels: [{
- *             description: "amount of matter",
- *             key: "mass",
- *             valueType: "STRING",
- *         }],
  *         metricKind: "DELTA",
  *         valueType: "INT64",
+ *         labels: [{
+ *             key: "mass",
+ *             valueType: "STRING",
+ *             description: "amount of matter",
+ *         }],
+ *     },
+ *     labelExtractors: {
+ *         mass: "EXTRACT(jsonPayload.request)",
  *     },
  * });
  * ```
@@ -100,14 +103,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const loggingMetricProjectBucketConfig = new gcp.logging.ProjectBucketConfig("loggingMetricProjectBucketConfig", {
+ * const loggingMetric = new gcp.logging.ProjectBucketConfig("logging_metric", {
  *     location: "global",
  *     project: "my-project-name",
  *     bucketId: "_Default",
  * });
- * const loggingMetricMetric = new gcp.logging.Metric("loggingMetricMetric", {
+ * const loggingMetricMetric = new gcp.logging.Metric("logging_metric", {
+ *     name: "my-(custom)/metric",
  *     filter: "resource.type=gae_app AND severity>=ERROR",
- *     bucketName: loggingMetricProjectBucketConfig.id,
+ *     bucketName: loggingMetric.id,
  * });
  * ```
  * ### Logging Metric Disabled
@@ -116,13 +120,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const loggingMetric = new gcp.logging.Metric("loggingMetric", {
- *     disabled: true,
+ * const loggingMetric = new gcp.logging.Metric("logging_metric", {
+ *     name: "my-(custom)/metric",
  *     filter: "resource.type=gae_app AND severity>=ERROR",
  *     metricDescriptor: {
  *         metricKind: "DELTA",
  *         valueType: "INT64",
  *     },
+ *     disabled: true,
  * });
  * ```
  *

@@ -20,12 +20,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const bucket = new gcp.storage.Bucket("bucket", {location: "US"});
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "appengine-test-bucket",
+ *     location: "US",
+ * });
  * const object = new gcp.storage.BucketObject("object", {
+ *     name: "hello-world.zip",
  *     bucket: bucket.name,
  *     source: new pulumi.asset.FileAsset("./test-fixtures/hello-world.zip"),
  * });
- * const adminV3 = new gcp.appengine.StandardAppVersion("adminV3", {
+ * const adminV3 = new gcp.appengine.StandardAppVersion("admin_v3", {
  *     versionId: "v3",
  *     service: "admin",
  *     runtime: "nodejs10",
@@ -42,7 +46,7 @@ import * as utilities from "../utilities";
  *     },
  *     deleteServiceOnDestroy: true,
  * });
- * const webService = new gcp.appengine.ApplicationUrlDispatchRules("webService", {dispatchRules: [
+ * const webService = new gcp.appengine.ApplicationUrlDispatchRules("web_service", {dispatchRules: [
  *     {
  *         domain: "*",
  *         path: "/*",

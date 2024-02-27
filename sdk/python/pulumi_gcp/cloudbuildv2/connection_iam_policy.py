@@ -262,8 +262,9 @@ class ConnectionIAMPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.cloudbuildv2.ConnectionIAMPolicy("policy",
-            project=google_cloudbuildv2_connection["my-connection"]["project"],
-            location=google_cloudbuildv2_connection["my-connection"]["location"],
+            project=my_connection["project"],
+            location=my_connection["location"],
+            name=my_connection["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -274,8 +275,9 @@ class ConnectionIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.cloudbuildv2.ConnectionIAMBinding("binding",
-            project=google_cloudbuildv2_connection["my-connection"]["project"],
-            location=google_cloudbuildv2_connection["my-connection"]["location"],
+            project=my_connection["project"],
+            location=my_connection["location"],
+            name=my_connection["name"],
             role="roles/cloudbuild.connectionViewer",
             members=["user:jane@example.com"])
         ```
@@ -287,8 +289,9 @@ class ConnectionIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.cloudbuildv2.ConnectionIAMMember("member",
-            project=google_cloudbuildv2_connection["my-connection"]["project"],
-            location=google_cloudbuildv2_connection["my-connection"]["location"],
+            project=my_connection["project"],
+            location=my_connection["location"],
+            name=my_connection["name"],
             role="roles/cloudbuild.connectionViewer",
             member="user:jane@example.com")
         ```
@@ -384,8 +387,9 @@ class ConnectionIAMPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.cloudbuildv2.ConnectionIAMPolicy("policy",
-            project=google_cloudbuildv2_connection["my-connection"]["project"],
-            location=google_cloudbuildv2_connection["my-connection"]["location"],
+            project=my_connection["project"],
+            location=my_connection["location"],
+            name=my_connection["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -396,8 +400,9 @@ class ConnectionIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.cloudbuildv2.ConnectionIAMBinding("binding",
-            project=google_cloudbuildv2_connection["my-connection"]["project"],
-            location=google_cloudbuildv2_connection["my-connection"]["location"],
+            project=my_connection["project"],
+            location=my_connection["location"],
+            name=my_connection["name"],
             role="roles/cloudbuild.connectionViewer",
             members=["user:jane@example.com"])
         ```
@@ -409,8 +414,9 @@ class ConnectionIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.cloudbuildv2.ConnectionIAMMember("member",
-            project=google_cloudbuildv2_connection["my-connection"]["project"],
-            location=google_cloudbuildv2_connection["my-connection"]["location"],
+            project=my_connection["project"],
+            location=my_connection["location"],
+            name=my_connection["name"],
             role="roles/cloudbuild.connectionViewer",
             member="user:jane@example.com")
         ```

@@ -814,10 +814,16 @@ class Cluster(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         default = gcp.edgecontainer.Cluster("default",
+            name="basic-cluster",
+            location="us-central1",
             authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
                 admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
                     username="admin@hashicorptest.com",
                 ),
+            ),
+            networking=gcp.edgecontainer.ClusterNetworkingArgs(
+                cluster_ipv4_cidr_blocks=["10.0.0.0/16"],
+                services_ipv4_cidr_blocks=["10.1.0.0/16"],
             ),
             fleet=gcp.edgecontainer.ClusterFleetArgs(
                 project=f"projects/{project.number}",
@@ -825,12 +831,7 @@ class Cluster(pulumi.CustomResource):
             labels={
                 "my_key": "my_val",
                 "other_key": "other_val",
-            },
-            location="us-central1",
-            networking=gcp.edgecontainer.ClusterNetworkingArgs(
-                cluster_ipv4_cidr_blocks=["10.0.0.0/16"],
-                services_ipv4_cidr_blocks=["10.1.0.0/16"],
-            ))
+            })
         ```
         ### Edgecontainer Cluster With Maintenance Window
 
@@ -840,29 +841,30 @@ class Cluster(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         default = gcp.edgecontainer.Cluster("default",
+            name="cluster-with-maintenance",
+            location="us-central1",
             authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
                 admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
                     username="admin@hashicorptest.com",
                 ),
             ),
-            fleet=gcp.edgecontainer.ClusterFleetArgs(
-                project=f"projects/{project.number}",
-            ),
-            location="us-central1",
-            maintenance_policy=gcp.edgecontainer.ClusterMaintenancePolicyArgs(
-                window=gcp.edgecontainer.ClusterMaintenancePolicyWindowArgs(
-                    recurring_window=gcp.edgecontainer.ClusterMaintenancePolicyWindowRecurringWindowArgs(
-                        recurrence="FREQ=WEEKLY;BYDAY=SA",
-                        window=gcp.edgecontainer.ClusterMaintenancePolicyWindowRecurringWindowWindowArgs(
-                            end_time="2023-01-01T17:00:00Z",
-                            start_time="2023-01-01T08:00:00Z",
-                        ),
-                    ),
-                ),
-            ),
             networking=gcp.edgecontainer.ClusterNetworkingArgs(
                 cluster_ipv4_cidr_blocks=["10.0.0.0/16"],
                 services_ipv4_cidr_blocks=["10.1.0.0/16"],
+            ),
+            fleet=gcp.edgecontainer.ClusterFleetArgs(
+                project=f"projects/{project.number}",
+            ),
+            maintenance_policy=gcp.edgecontainer.ClusterMaintenancePolicyArgs(
+                window=gcp.edgecontainer.ClusterMaintenancePolicyWindowArgs(
+                    recurring_window=gcp.edgecontainer.ClusterMaintenancePolicyWindowRecurringWindowArgs(
+                        window=gcp.edgecontainer.ClusterMaintenancePolicyWindowRecurringWindowWindowArgs(
+                            start_time="2023-01-01T08:00:00Z",
+                            end_time="2023-01-01T17:00:00Z",
+                        ),
+                        recurrence="FREQ=WEEKLY;BYDAY=SA",
+                    ),
+                ),
             ))
         ```
         ### Edgecontainer Local Control Plane Cluster
@@ -873,27 +875,28 @@ class Cluster(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         default = gcp.edgecontainer.Cluster("default",
+            name="local-control-plane-cluster",
+            location="us-central1",
             authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
                 admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
                     username="admin@hashicorptest.com",
                 ),
             ),
-            control_plane=gcp.edgecontainer.ClusterControlPlaneArgs(
-                local=gcp.edgecontainer.ClusterControlPlaneLocalArgs(
-                    machine_filter="machine-name",
-                    node_count=1,
-                    node_location="us-central1-edge-example-edgesite",
-                    shared_deployment_policy="ALLOWED",
-                ),
-            ),
-            external_load_balancer_ipv4_address_pools=["10.100.0.0-10.100.0.10"],
-            fleet=gcp.edgecontainer.ClusterFleetArgs(
-                project=f"projects/{project.number}",
-            ),
-            location="us-central1",
             networking=gcp.edgecontainer.ClusterNetworkingArgs(
                 cluster_ipv4_cidr_blocks=["10.0.0.0/16"],
                 services_ipv4_cidr_blocks=["10.1.0.0/16"],
+            ),
+            fleet=gcp.edgecontainer.ClusterFleetArgs(
+                project=f"projects/{project.number}",
+            ),
+            external_load_balancer_ipv4_address_pools=["10.100.0.0-10.100.0.10"],
+            control_plane=gcp.edgecontainer.ClusterControlPlaneArgs(
+                local=gcp.edgecontainer.ClusterControlPlaneLocalArgs(
+                    node_location="us-central1-edge-example-edgesite",
+                    node_count=1,
+                    machine_filter="machine-name",
+                    shared_deployment_policy="ALLOWED",
+                ),
             ))
         ```
 
@@ -983,10 +986,16 @@ class Cluster(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         default = gcp.edgecontainer.Cluster("default",
+            name="basic-cluster",
+            location="us-central1",
             authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
                 admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
                     username="admin@hashicorptest.com",
                 ),
+            ),
+            networking=gcp.edgecontainer.ClusterNetworkingArgs(
+                cluster_ipv4_cidr_blocks=["10.0.0.0/16"],
+                services_ipv4_cidr_blocks=["10.1.0.0/16"],
             ),
             fleet=gcp.edgecontainer.ClusterFleetArgs(
                 project=f"projects/{project.number}",
@@ -994,12 +1003,7 @@ class Cluster(pulumi.CustomResource):
             labels={
                 "my_key": "my_val",
                 "other_key": "other_val",
-            },
-            location="us-central1",
-            networking=gcp.edgecontainer.ClusterNetworkingArgs(
-                cluster_ipv4_cidr_blocks=["10.0.0.0/16"],
-                services_ipv4_cidr_blocks=["10.1.0.0/16"],
-            ))
+            })
         ```
         ### Edgecontainer Cluster With Maintenance Window
 
@@ -1009,29 +1013,30 @@ class Cluster(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         default = gcp.edgecontainer.Cluster("default",
+            name="cluster-with-maintenance",
+            location="us-central1",
             authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
                 admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
                     username="admin@hashicorptest.com",
                 ),
             ),
-            fleet=gcp.edgecontainer.ClusterFleetArgs(
-                project=f"projects/{project.number}",
-            ),
-            location="us-central1",
-            maintenance_policy=gcp.edgecontainer.ClusterMaintenancePolicyArgs(
-                window=gcp.edgecontainer.ClusterMaintenancePolicyWindowArgs(
-                    recurring_window=gcp.edgecontainer.ClusterMaintenancePolicyWindowRecurringWindowArgs(
-                        recurrence="FREQ=WEEKLY;BYDAY=SA",
-                        window=gcp.edgecontainer.ClusterMaintenancePolicyWindowRecurringWindowWindowArgs(
-                            end_time="2023-01-01T17:00:00Z",
-                            start_time="2023-01-01T08:00:00Z",
-                        ),
-                    ),
-                ),
-            ),
             networking=gcp.edgecontainer.ClusterNetworkingArgs(
                 cluster_ipv4_cidr_blocks=["10.0.0.0/16"],
                 services_ipv4_cidr_blocks=["10.1.0.0/16"],
+            ),
+            fleet=gcp.edgecontainer.ClusterFleetArgs(
+                project=f"projects/{project.number}",
+            ),
+            maintenance_policy=gcp.edgecontainer.ClusterMaintenancePolicyArgs(
+                window=gcp.edgecontainer.ClusterMaintenancePolicyWindowArgs(
+                    recurring_window=gcp.edgecontainer.ClusterMaintenancePolicyWindowRecurringWindowArgs(
+                        window=gcp.edgecontainer.ClusterMaintenancePolicyWindowRecurringWindowWindowArgs(
+                            start_time="2023-01-01T08:00:00Z",
+                            end_time="2023-01-01T17:00:00Z",
+                        ),
+                        recurrence="FREQ=WEEKLY;BYDAY=SA",
+                    ),
+                ),
             ))
         ```
         ### Edgecontainer Local Control Plane Cluster
@@ -1042,27 +1047,28 @@ class Cluster(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         default = gcp.edgecontainer.Cluster("default",
+            name="local-control-plane-cluster",
+            location="us-central1",
             authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
                 admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
                     username="admin@hashicorptest.com",
                 ),
             ),
-            control_plane=gcp.edgecontainer.ClusterControlPlaneArgs(
-                local=gcp.edgecontainer.ClusterControlPlaneLocalArgs(
-                    machine_filter="machine-name",
-                    node_count=1,
-                    node_location="us-central1-edge-example-edgesite",
-                    shared_deployment_policy="ALLOWED",
-                ),
-            ),
-            external_load_balancer_ipv4_address_pools=["10.100.0.0-10.100.0.10"],
-            fleet=gcp.edgecontainer.ClusterFleetArgs(
-                project=f"projects/{project.number}",
-            ),
-            location="us-central1",
             networking=gcp.edgecontainer.ClusterNetworkingArgs(
                 cluster_ipv4_cidr_blocks=["10.0.0.0/16"],
                 services_ipv4_cidr_blocks=["10.1.0.0/16"],
+            ),
+            fleet=gcp.edgecontainer.ClusterFleetArgs(
+                project=f"projects/{project.number}",
+            ),
+            external_load_balancer_ipv4_address_pools=["10.100.0.0-10.100.0.10"],
+            control_plane=gcp.edgecontainer.ClusterControlPlaneArgs(
+                local=gcp.edgecontainer.ClusterControlPlaneLocalArgs(
+                    node_location="us-central1-edge-example-edgesite",
+                    node_count=1,
+                    machine_filter="machine-name",
+                    shared_deployment_policy="ALLOWED",
+                ),
             ))
         ```
 

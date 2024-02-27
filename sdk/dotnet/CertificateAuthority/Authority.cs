@@ -36,15 +36,18 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// {
     ///     var @default = new Gcp.CertificateAuthority.Authority("default", new()
     ///     {
+    ///         Pool = "ca-pool",
     ///         CertificateAuthorityId = "my-certificate-authority",
+    ///         Location = "us-central1",
+    ///         DeletionProtection = true,
     ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
     ///         {
     ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
     ///             {
     ///                 Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
     ///                 {
-    ///                     CommonName = "my-certificate-authority",
     ///                     Organization = "HashiCorp",
+    ///                     CommonName = "my-certificate-authority",
     ///                 },
     ///                 SubjectAltName = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectAltNameArgs
     ///                 {
@@ -65,34 +68,31 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                 {
     ///                     BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
     ///                     {
-    ///                         CertSign = true,
-    ///                         ContentCommitment = true,
-    ///                         CrlSign = true,
-    ///                         DataEncipherment = true,
-    ///                         DecipherOnly = true,
     ///                         DigitalSignature = true,
-    ///                         KeyAgreement = true,
+    ///                         ContentCommitment = true,
     ///                         KeyEncipherment = false,
+    ///                         DataEncipherment = true,
+    ///                         KeyAgreement = true,
+    ///                         CertSign = true,
+    ///                         CrlSign = true,
+    ///                         DecipherOnly = true,
     ///                     },
     ///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
     ///                     {
-    ///                         ClientAuth = false,
-    ///                         CodeSigning = true,
-    ///                         EmailProtection = true,
     ///                         ServerAuth = true,
+    ///                         ClientAuth = false,
+    ///                         EmailProtection = true,
+    ///                         CodeSigning = true,
     ///                         TimeStamping = true,
     ///                     },
     ///                 },
     ///             },
     ///         },
-    ///         DeletionProtection = true,
+    ///         Lifetime = "86400s",
     ///         KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
     ///         {
     ///             Algorithm = "RSA_PKCS1_4096_SHA256",
     ///         },
-    ///         Lifetime = "86400s",
-    ///         Location = "us-central1",
-    ///         Pool = "ca-pool",
     ///     });
     /// 
     /// });
@@ -236,19 +236,19 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var privatecaSa = new Gcp.Projects.ServiceIdentity("privatecaSa", new()
+    ///     var privatecaSa = new Gcp.Projects.ServiceIdentity("privateca_sa", new()
     ///     {
     ///         Service = "privateca.googleapis.com",
     ///     });
     /// 
-    ///     var privatecaSaKeyuserSignerverifier = new Gcp.Kms.CryptoKeyIAMMember("privatecaSaKeyuserSignerverifier", new()
+    ///     var privatecaSaKeyuserSignerverifier = new Gcp.Kms.CryptoKeyIAMMember("privateca_sa_keyuser_signerverifier", new()
     ///     {
     ///         CryptoKeyId = "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
     ///         Role = "roles/cloudkms.signerVerifier",
     ///         Member = privatecaSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
     ///     });
     /// 
-    ///     var privatecaSaKeyuserViewer = new Gcp.Kms.CryptoKeyIAMMember("privatecaSaKeyuserViewer", new()
+    ///     var privatecaSaKeyuserViewer = new Gcp.Kms.CryptoKeyIAMMember("privateca_sa_keyuser_viewer", new()
     ///     {
     ///         CryptoKeyId = "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
     ///         Role = "roles/viewer",
@@ -331,13 +331,6 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                     },
     ///                 },
     ///             },
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             privatecaSaKeyuserSignerverifier,
-    ///             privatecaSaKeyuserViewer,
     ///         },
     ///     });
     /// 

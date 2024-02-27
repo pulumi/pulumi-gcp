@@ -312,8 +312,8 @@ def get_job(location: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    my_job = gcp.cloudrunv2.get_job(location="us-central1",
-        name="my-job")
+    my_job = gcp.cloudrunv2.get_job(name="my-job",
+        location="us-central1")
     ```
 
 
@@ -379,8 +379,8 @@ def get_job_output(location: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    my_job = gcp.cloudrunv2.get_job(location="us-central1",
-        name="my-job")
+    my_job = gcp.cloudrunv2.get_job(name="my-job",
+        location="us-central1")
     ```
 
 

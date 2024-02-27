@@ -1026,14 +1026,17 @@ class RegionDisk(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         disk = gcp.compute.Disk("disk",
+            name="my-disk",
             image="debian-cloud/debian-11",
             size=50,
             type="pd-ssd",
             zone="us-central1-a")
         snapdisk = gcp.compute.Snapshot("snapdisk",
+            name="my-snapshot",
             source_disk=disk.name,
             zone="us-central1-a")
         regiondisk = gcp.compute.RegionDisk("regiondisk",
+            name="my-region-disk",
             snapshot=snapdisk.id,
             type="pd-ssd",
             region="us-central1",
@@ -1050,6 +1053,7 @@ class RegionDisk(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.compute.RegionDisk("primary",
+            name="primary-region-disk",
             type="pd-ssd",
             region="us-central1",
             physical_block_size_bytes=4096,
@@ -1058,6 +1062,7 @@ class RegionDisk(pulumi.CustomResource):
                 "us-central1-f",
             ])
         secondary = gcp.compute.RegionDisk("secondary",
+            name="secondary-region-disk",
             type="pd-ssd",
             region="us-east1",
             physical_block_size_bytes=4096,
@@ -1076,6 +1081,10 @@ class RegionDisk(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         regiondisk = gcp.compute.RegionDisk("regiondisk",
+            name="my-region-features-disk",
+            type="pd-ssd",
+            region="us-central1",
+            physical_block_size_bytes=4096,
             guest_os_features=[
                 gcp.compute.RegionDiskGuestOsFeatureArgs(
                     type="SECURE_BOOT",
@@ -1088,13 +1097,10 @@ class RegionDisk(pulumi.CustomResource):
                 ),
             ],
             licenses=["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
-            physical_block_size_bytes=4096,
-            region="us-central1",
             replica_zones=[
                 "us-central1-a",
                 "us-central1-f",
-            ],
-            type="pd-ssd")
+            ])
         ```
 
         ## Import
@@ -1236,14 +1242,17 @@ class RegionDisk(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         disk = gcp.compute.Disk("disk",
+            name="my-disk",
             image="debian-cloud/debian-11",
             size=50,
             type="pd-ssd",
             zone="us-central1-a")
         snapdisk = gcp.compute.Snapshot("snapdisk",
+            name="my-snapshot",
             source_disk=disk.name,
             zone="us-central1-a")
         regiondisk = gcp.compute.RegionDisk("regiondisk",
+            name="my-region-disk",
             snapshot=snapdisk.id,
             type="pd-ssd",
             region="us-central1",
@@ -1260,6 +1269,7 @@ class RegionDisk(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.compute.RegionDisk("primary",
+            name="primary-region-disk",
             type="pd-ssd",
             region="us-central1",
             physical_block_size_bytes=4096,
@@ -1268,6 +1278,7 @@ class RegionDisk(pulumi.CustomResource):
                 "us-central1-f",
             ])
         secondary = gcp.compute.RegionDisk("secondary",
+            name="secondary-region-disk",
             type="pd-ssd",
             region="us-east1",
             physical_block_size_bytes=4096,
@@ -1286,6 +1297,10 @@ class RegionDisk(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         regiondisk = gcp.compute.RegionDisk("regiondisk",
+            name="my-region-features-disk",
+            type="pd-ssd",
+            region="us-central1",
+            physical_block_size_bytes=4096,
             guest_os_features=[
                 gcp.compute.RegionDiskGuestOsFeatureArgs(
                     type="SECURE_BOOT",
@@ -1298,13 +1313,10 @@ class RegionDisk(pulumi.CustomResource):
                 ),
             ],
             licenses=["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
-            physical_block_size_bytes=4096,
-            region="us-central1",
             replica_zones=[
                 "us-central1-a",
                 "us-central1-f",
-            ],
-            type="pd-ssd")
+            ])
         ```
 
         ## Import

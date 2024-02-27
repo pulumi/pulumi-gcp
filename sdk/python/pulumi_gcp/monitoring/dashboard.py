@@ -133,7 +133,6 @@ class Dashboard(pulumi.CustomResource):
           }
         }
 
-
         \"\"\")
         ```
         ### Monitoring Dashboard GridLayout
@@ -200,7 +199,6 @@ class Dashboard(pulumi.CustomResource):
             ]
           }
         }
-
 
         \"\"\")
         ```
@@ -263,7 +261,6 @@ class Dashboard(pulumi.CustomResource):
           }
         }
 
-
         \"\"\")
         ```
         ### Monitoring Dashboard GridLayout
@@ -330,7 +327,6 @@ class Dashboard(pulumi.CustomResource):
             ]
           }
         }
-
 
         \"\"\")
         ```

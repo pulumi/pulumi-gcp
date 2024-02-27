@@ -35,8 +35,10 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultProject = new Gcp.Organizations.Project("defaultProject", new()
+    ///     var @default = new Gcp.Organizations.Project("default", new()
     ///     {
+    ///         ProjectId = "my-project",
+    ///         Name = "my-project",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
     ///         Labels = 
@@ -47,13 +49,13 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// 
     ///     var identitytoolkit = new Gcp.Projects.Service("identitytoolkit", new()
     ///     {
-    ///         Project = defaultProject.ProjectId,
+    ///         Project = @default.ProjectId,
     ///         ServiceName = "identitytoolkit.googleapis.com",
     ///     });
     /// 
-    ///     var defaultConfig = new Gcp.IdentityPlatform.Config("defaultConfig", new()
+    ///     var defaultConfig = new Gcp.IdentityPlatform.Config("default", new()
     ///     {
-    ///         Project = defaultProject.ProjectId,
+    ///         Project = @default.ProjectId,
     ///         AutodeleteAnonymousUsers = true,
     ///         SignIn = new Gcp.IdentityPlatform.Inputs.ConfigSignInArgs
     ///         {

@@ -25,6 +25,7 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var cluster = new Gcp.Container.Cluster("cluster", new()
     ///     {
+    ///         Name = "my-cluster",
     ///         Location = "us-central1-a",
     ///         InitialNodeCount = 1,
     ///     });
@@ -43,6 +44,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     ///     var feature = new Gcp.GkeHub.Feature("feature", new()
     ///     {
+    ///         Name = "configmanagement",
     ///         Location = "global",
     ///         Labels = 
     ///         {
@@ -50,7 +52,7 @@ namespace Pulumi.Gcp.GkeHub
     ///         },
     ///     });
     /// 
-    ///     var featureMember = new Gcp.GkeHub.FeatureMembership("featureMember", new()
+    ///     var featureMember = new Gcp.GkeHub.FeatureMembership("feature_member", new()
     ///     {
     ///         Location = "global",
     ///         Feature = feature.Name,
@@ -82,6 +84,7 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var cluster = new Gcp.Container.Cluster("cluster", new()
     ///     {
+    ///         Name = "my-cluster",
     ///         Location = "us-central1-a",
     ///         InitialNodeCount = 1,
     ///     });
@@ -100,6 +103,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     ///     var feature = new Gcp.GkeHub.Feature("feature", new()
     ///     {
+    ///         Name = "configmanagement",
     ///         Location = "global",
     ///         Labels = 
     ///         {
@@ -107,7 +111,7 @@ namespace Pulumi.Gcp.GkeHub
     ///         },
     ///     });
     /// 
-    ///     var featureMember = new Gcp.GkeHub.FeatureMembership("featureMember", new()
+    ///     var featureMember = new Gcp.GkeHub.FeatureMembership("feature_member", new()
     ///     {
     ///         Location = "global",
     ///         Feature = feature.Name,
@@ -143,11 +147,12 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var feature = new Gcp.GkeHub.Feature("feature", new()
     ///     {
+    ///         Name = "multiclusterservicediscovery",
+    ///         Location = "global",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
     ///         },
-    ///         Location = "global",
     ///     });
     /// 
     /// });
@@ -164,6 +169,7 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var cluster = new Gcp.Container.Cluster("cluster", new()
     ///     {
+    ///         Name = "my-cluster",
     ///         Location = "us-central1-a",
     ///         InitialNodeCount = 1,
     ///     });
@@ -182,10 +188,11 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     ///     var feature = new Gcp.GkeHub.Feature("feature", new()
     ///     {
+    ///         Name = "servicemesh",
     ///         Location = "global",
     ///     });
     /// 
-    ///     var featureMember = new Gcp.GkeHub.FeatureMembership("featureMember", new()
+    ///     var featureMember = new Gcp.GkeHub.FeatureMembership("feature_member", new()
     ///     {
     ///         Location = "global",
     ///         Feature = feature.Name,
@@ -210,6 +217,7 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var cluster = new Gcp.Container.Cluster("cluster", new()
     ///     {
+    ///         Name = "my-cluster",
     ///         Location = "us-central1-a",
     ///         InitialNodeCount = 1,
     ///     });
@@ -229,6 +237,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     ///     var feature = new Gcp.GkeHub.Feature("feature", new()
     ///     {
+    ///         Name = "configmanagement",
     ///         Location = "global",
     ///         Labels = 
     ///         {
@@ -236,7 +245,7 @@ namespace Pulumi.Gcp.GkeHub
     ///         },
     ///     });
     /// 
-    ///     var featureMember = new Gcp.GkeHub.FeatureMembership("featureMember", new()
+    ///     var featureMember = new Gcp.GkeHub.FeatureMembership("feature_member", new()
     ///     {
     ///         Location = "global",
     ///         Feature = feature.Name,
@@ -269,6 +278,7 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var cluster = new Gcp.Container.Cluster("cluster", new()
     ///     {
+    ///         Name = "my-cluster",
     ///         Location = "us-central1-a",
     ///         InitialNodeCount = 1,
     ///     });
@@ -287,10 +297,11 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     ///     var feature = new Gcp.GkeHub.Feature("feature", new()
     ///     {
+    ///         Name = "policycontroller",
     ///         Location = "global",
     ///     });
     /// 
-    ///     var featureMember = new Gcp.GkeHub.FeatureMembership("featureMember", new()
+    ///     var featureMember = new Gcp.GkeHub.FeatureMembership("feature_member", new()
     ///     {
     ///         Location = "global",
     ///         Feature = feature.Name,
@@ -318,6 +329,7 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var cluster = new Gcp.Container.Cluster("cluster", new()
     ///     {
+    ///         Name = "my-cluster",
     ///         Location = "us-central1-a",
     ///         InitialNodeCount = 1,
     ///     });
@@ -336,10 +348,11 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     ///     var feature = new Gcp.GkeHub.Feature("feature", new()
     ///     {
+    ///         Name = "policycontroller",
     ///         Location = "global",
     ///     });
     /// 
-    ///     var featureMember = new Gcp.GkeHub.FeatureMembership("featureMember", new()
+    ///     var featureMember = new Gcp.GkeHub.FeatureMembership("feature_member", new()
     ///     {
     ///         Location = "global",
     ///         Feature = feature.Name,

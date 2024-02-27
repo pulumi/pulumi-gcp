@@ -29,11 +29,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.notebooks.Instance("instance", {
+ *     name: "notebooks-instance",
  *     location: "us-west1-a",
  *     machineType: "e2-medium",
  *     vmImage: {
- *         imageFamily: "tf-latest-cpu",
  *         project: "deeplearning-platform-release",
+ *         imageFamily: "tf-latest-cpu",
  *     },
  * });
  * ```
@@ -44,13 +45,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.notebooks.Instance("instance", {
- *     desiredState: "STOPPED",
+ *     name: "notebooks-instance",
  *     location: "us-west1-a",
  *     machineType: "e2-medium",
  *     vmImage: {
- *         imageFamily: "tf-latest-cpu",
  *         project: "deeplearning-platform-release",
+ *         imageFamily: "tf-latest-cpu",
  *     },
+ *     desiredState: "STOPPED",
  * });
  * ```
  * ### Notebook Instance Basic Container
@@ -60,14 +62,15 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.notebooks.Instance("instance", {
- *     containerImage: {
- *         repository: "gcr.io/deeplearning-platform-release/base-cpu",
- *         tag: "latest",
- *     },
+ *     name: "notebooks-instance",
  *     location: "us-west1-a",
  *     machineType: "e2-medium",
  *     metadata: {
  *         "proxy-mode": "service_account",
+ *     },
+ *     containerImage: {
+ *         repository: "gcr.io/deeplearning-platform-release/base-cpu",
+ *         tag: "latest",
  *     },
  * });
  * ```
@@ -78,16 +81,17 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.notebooks.Instance("instance", {
- *     acceleratorConfig: {
- *         coreCount: 1,
- *         type: "NVIDIA_TESLA_T4",
- *     },
- *     installGpuDriver: true,
+ *     name: "notebooks-instance",
  *     location: "us-west1-a",
  *     machineType: "n1-standard-1",
+ *     installGpuDriver: true,
+ *     acceleratorConfig: {
+ *         type: "NVIDIA_TESLA_T4",
+ *         coreCount: 1,
+ *     },
  *     vmImage: {
- *         imageFamily: "tf-latest-gpu",
  *         project: "deeplearning-platform-release",
+ *         imageFamily: "tf-latest-gpu",
  *     },
  * });
  * ```
@@ -105,6 +109,7 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * const instance = new gcp.notebooks.Instance("instance", {
+ *     name: "notebooks-instance",
  *     location: "us-central1-a",
  *     machineType: "e2-medium",
  *     vmImage: {

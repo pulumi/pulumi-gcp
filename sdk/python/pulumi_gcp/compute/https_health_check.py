@@ -499,9 +499,10 @@ class HttpsHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.HttpsHealthCheck("default",
-            check_interval_sec=1,
+            name="authentication-health-check",
             request_path="/health_check",
-            timeout_sec=1)
+            timeout_sec=1,
+            check_interval_sec=1)
         ```
 
         ## Import
@@ -591,9 +592,10 @@ class HttpsHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.HttpsHealthCheck("default",
-            check_interval_sec=1,
+            name="authentication-health-check",
             request_path="/health_check",
-            timeout_sec=1)
+            timeout_sec=1,
+            check_interval_sec=1)
         ```
 
         ## Import

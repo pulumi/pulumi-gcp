@@ -21,12 +21,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const pc_nw = new gcp.vmwareengine.Network("pc-nw", {
+ *     name: "pc-nw",
  *     location: "global",
  *     type: "STANDARD",
  *     description: "PC network description.",
  * });
  * const vmw_engine_pc = new gcp.vmwareengine.PrivateCloud("vmw-engine-pc", {
  *     location: "us-west1-a",
+ *     name: "sample-pc",
  *     description: "Sample test PC.",
  *     networkConfig: {
  *         managementCidr: "192.168.30.0/24",
@@ -48,12 +50,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const pc_nw = new gcp.vmwareengine.Network("pc-nw", {
+ *     name: "pc-nw",
  *     location: "global",
  *     type: "STANDARD",
  *     description: "PC network description.",
  * });
  * const vmw_engine_pc = new gcp.vmwareengine.PrivateCloud("vmw-engine-pc", {
  *     location: "us-west1-a",
+ *     name: "sample-pc",
  *     description: "Sample test PC.",
  *     type: "TIME_LIMITED",
  *     networkConfig: {

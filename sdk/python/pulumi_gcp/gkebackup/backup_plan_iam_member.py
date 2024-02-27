@@ -321,8 +321,9 @@ class BackupPlanIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.gkebackup.BackupPlanIamPolicy("policy",
-            project=google_gke_backup_backup_plan["basic"]["project"],
-            location=google_gke_backup_backup_plan["basic"]["location"],
+            project=basic["project"],
+            location=basic["location"],
+            name=basic["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -333,8 +334,9 @@ class BackupPlanIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.gkebackup.BackupPlanIamBinding("binding",
-            project=google_gke_backup_backup_plan["basic"]["project"],
-            location=google_gke_backup_backup_plan["basic"]["location"],
+            project=basic["project"],
+            location=basic["location"],
+            name=basic["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -346,8 +348,9 @@ class BackupPlanIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.gkebackup.BackupPlanIamMember("member",
-            project=google_gke_backup_backup_plan["basic"]["project"],
-            location=google_gke_backup_backup_plan["basic"]["location"],
+            project=basic["project"],
+            location=basic["location"],
+            name=basic["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -445,8 +448,9 @@ class BackupPlanIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.gkebackup.BackupPlanIamPolicy("policy",
-            project=google_gke_backup_backup_plan["basic"]["project"],
-            location=google_gke_backup_backup_plan["basic"]["location"],
+            project=basic["project"],
+            location=basic["location"],
+            name=basic["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -457,8 +461,9 @@ class BackupPlanIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.gkebackup.BackupPlanIamBinding("binding",
-            project=google_gke_backup_backup_plan["basic"]["project"],
-            location=google_gke_backup_backup_plan["basic"]["location"],
+            project=basic["project"],
+            location=basic["location"],
+            name=basic["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -470,8 +475,9 @@ class BackupPlanIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.gkebackup.BackupPlanIamMember("member",
-            project=google_gke_backup_backup_plan["basic"]["project"],
-            location=google_gke_backup_backup_plan["basic"]["location"],
+            project=basic["project"],
+            location=basic["location"],
+            name=basic["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

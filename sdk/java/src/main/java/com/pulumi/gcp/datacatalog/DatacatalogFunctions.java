@@ -49,7 +49,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getEntryGroupIamPolicy(GetEntryGroupIamPolicyArgs.builder()
-     *             .entryGroup(google_data_catalog_entry_group.basic_entry_group().name())
+     *             .entryGroup(basicEntryGroup.name())
      *             .build());
      * 
      *     }
@@ -86,7 +86,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getEntryGroupIamPolicy(GetEntryGroupIamPolicyArgs.builder()
-     *             .entryGroup(google_data_catalog_entry_group.basic_entry_group().name())
+     *             .entryGroup(basicEntryGroup.name())
      *             .build());
      * 
      *     }
@@ -123,7 +123,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getEntryGroupIamPolicy(GetEntryGroupIamPolicyArgs.builder()
-     *             .entryGroup(google_data_catalog_entry_group.basic_entry_group().name())
+     *             .entryGroup(basicEntryGroup.name())
      *             .build());
      * 
      *     }
@@ -160,7 +160,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getEntryGroupIamPolicy(GetEntryGroupIamPolicyArgs.builder()
-     *             .entryGroup(google_data_catalog_entry_group.basic_entry_group().name())
+     *             .entryGroup(basicEntryGroup.name())
      *             .build());
      * 
      *     }
@@ -197,7 +197,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getPolicyTagIamPolicy(GetPolicyTagIamPolicyArgs.builder()
-     *             .policyTag(google_data_catalog_policy_tag.basic_policy_tag().name())
+     *             .policyTag(basicPolicyTag.name())
      *             .build());
      * 
      *     }
@@ -234,7 +234,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getPolicyTagIamPolicy(GetPolicyTagIamPolicyArgs.builder()
-     *             .policyTag(google_data_catalog_policy_tag.basic_policy_tag().name())
+     *             .policyTag(basicPolicyTag.name())
      *             .build());
      * 
      *     }
@@ -271,7 +271,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getPolicyTagIamPolicy(GetPolicyTagIamPolicyArgs.builder()
-     *             .policyTag(google_data_catalog_policy_tag.basic_policy_tag().name())
+     *             .policyTag(basicPolicyTag.name())
      *             .build());
      * 
      *     }
@@ -308,7 +308,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getPolicyTagIamPolicy(GetPolicyTagIamPolicyArgs.builder()
-     *             .policyTag(google_data_catalog_policy_tag.basic_policy_tag().name())
+     *             .policyTag(basicPolicyTag.name())
      *             .build());
      * 
      *     }
@@ -345,7 +345,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getTagTemplateIamPolicy(GetTagTemplateIamPolicyArgs.builder()
-     *             .tagTemplate(google_data_catalog_tag_template.basic_tag_template().name())
+     *             .tagTemplate(basicTagTemplate.name())
      *             .build());
      * 
      *     }
@@ -382,7 +382,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getTagTemplateIamPolicy(GetTagTemplateIamPolicyArgs.builder()
-     *             .tagTemplate(google_data_catalog_tag_template.basic_tag_template().name())
+     *             .tagTemplate(basicTagTemplate.name())
      *             .build());
      * 
      *     }
@@ -419,7 +419,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getTagTemplateIamPolicy(GetTagTemplateIamPolicyArgs.builder()
-     *             .tagTemplate(google_data_catalog_tag_template.basic_tag_template().name())
+     *             .tagTemplate(basicTagTemplate.name())
      *             .build());
      * 
      *     }
@@ -456,7 +456,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getTagTemplateIamPolicy(GetTagTemplateIamPolicyArgs.builder()
-     *             .tagTemplate(google_data_catalog_tag_template.basic_tag_template().name())
+     *             .tagTemplate(basicTagTemplate.name())
      *             .build());
      * 
      *     }
@@ -493,7 +493,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getTaxonomyIamPolicy(GetTaxonomyIamPolicyArgs.builder()
-     *             .taxonomy(google_data_catalog_taxonomy.basic_taxonomy().name())
+     *             .taxonomy(basicTaxonomy.name())
      *             .build());
      * 
      *     }
@@ -530,7 +530,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getTaxonomyIamPolicy(GetTaxonomyIamPolicyArgs.builder()
-     *             .taxonomy(google_data_catalog_taxonomy.basic_taxonomy().name())
+     *             .taxonomy(basicTaxonomy.name())
      *             .build());
      * 
      *     }
@@ -567,7 +567,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getTaxonomyIamPolicy(GetTaxonomyIamPolicyArgs.builder()
-     *             .taxonomy(google_data_catalog_taxonomy.basic_taxonomy().name())
+     *             .taxonomy(basicTaxonomy.name())
      *             .build());
      * 
      *     }
@@ -604,7 +604,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getTaxonomyIamPolicy(GetTaxonomyIamPolicyArgs.builder()
-     *             .taxonomy(google_data_catalog_taxonomy.basic_taxonomy().name())
+     *             .taxonomy(basicTaxonomy.name())
      *             .build());
      * 
      *     }

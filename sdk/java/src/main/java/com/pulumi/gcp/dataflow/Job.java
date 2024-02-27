@@ -47,12 +47,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var bigDataJob = new Job(&#34;bigDataJob&#34;, JobArgs.builder()        
- *             .parameters(Map.ofEntries(
- *                 Map.entry(&#34;baz&#34;, &#34;qux&#34;),
- *                 Map.entry(&#34;foo&#34;, &#34;bar&#34;)
- *             ))
- *             .tempGcsLocation(&#34;gs://my-bucket/tmp_dir&#34;)
+ *             .name(&#34;dataflow-job&#34;)
  *             .templateGcsPath(&#34;gs://my-bucket/templates/template_file&#34;)
+ *             .tempGcsLocation(&#34;gs://my-bucket/tmp_dir&#34;)
+ *             .parameters(Map.ofEntries(
+ *                 Map.entry(&#34;foo&#34;, &#34;bar&#34;),
+ *                 Map.entry(&#34;baz&#34;, &#34;qux&#34;)
+ *             ))
  *             .build());
  * 
  *     }
@@ -66,6 +67,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
  * import com.pulumi.gcp.storage.Bucket;
  * import com.pulumi.gcp.storage.BucketArgs;
  * import com.pulumi.gcp.dataflow.Job;
@@ -83,19 +85,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var topic = new Topic(&#34;topic&#34;);
+ *         var topic = new Topic(&#34;topic&#34;, TopicArgs.builder()        
+ *             .name(&#34;dataflow-job1&#34;)
+ *             .build());
  * 
  *         var bucket1 = new Bucket(&#34;bucket1&#34;, BucketArgs.builder()        
+ *             .name(&#34;tf-test-bucket1&#34;)
  *             .location(&#34;US&#34;)
  *             .forceDestroy(true)
  *             .build());
  * 
  *         var bucket2 = new Bucket(&#34;bucket2&#34;, BucketArgs.builder()        
+ *             .name(&#34;tf-test-bucket2&#34;)
  *             .location(&#34;US&#34;)
  *             .forceDestroy(true)
  *             .build());
  * 
  *         var pubsubStream = new Job(&#34;pubsubStream&#34;, JobArgs.builder()        
+ *             .name(&#34;tf-test-dataflow-job1&#34;)
  *             .templateGcsPath(&#34;gs://my-bucket/templates/template_file&#34;)
  *             .tempGcsLocation(&#34;gs://my-bucket/tmp_dir&#34;)
  *             .enableStreamingEngine(true)
@@ -132,7 +139,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.random.RandomIdArgs;
  * import com.pulumi.gcp.dataflow.FlexTemplateJob;
  * import com.pulumi.gcp.dataflow.FlexTemplateJobArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -151,19 +157,18 @@ import javax.annotation.Nullable;
  *         var bigDataJobNameSuffix = new RandomId(&#34;bigDataJobNameSuffix&#34;, RandomIdArgs.builder()        
  *             .byteLength(4)
  *             .keepers(Map.ofEntries(
- *                 Map.entry(&#34;region&#34;, var_.region()),
+ *                 Map.entry(&#34;region&#34;, region),
  *                 Map.entry(&#34;subscription_id&#34;, bigDataJobSubscriptionId)
  *             ))
  *             .build());
  * 
  *         var bigDataJob = new FlexTemplateJob(&#34;bigDataJob&#34;, FlexTemplateJobArgs.builder()        
- *             .region(var_.region())
+ *             .name(bigDataJobNameSuffix.dec().applyValue(dec -&gt; String.format(&#34;dataflow-flextemplates-job-%s&#34;, dec)))
+ *             .region(region)
  *             .containerSpecGcsPath(&#34;gs://my-bucket/templates/template.json&#34;)
  *             .skipWaitOnJobTermination(true)
  *             .parameters(Map.of(&#34;inputSubscription&#34;, bigDataJobSubscriptionId))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

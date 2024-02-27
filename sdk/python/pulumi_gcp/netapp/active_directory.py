@@ -837,7 +837,8 @@ class ActiveDirectory(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        test_active_directory_full = gcp.netapp.ActiveDirectory("testActiveDirectoryFull",
+        test_active_directory_full = gcp.netapp.ActiveDirectory("test_active_directory_full",
+            name="test-active-directory-full",
             location="us-central1",
             domain="ad.internal",
             dns="172.30.64.3",
@@ -948,7 +949,8 @@ class ActiveDirectory(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        test_active_directory_full = gcp.netapp.ActiveDirectory("testActiveDirectoryFull",
+        test_active_directory_full = gcp.netapp.ActiveDirectory("test_active_directory_full",
+            name="test-active-directory-full",
             location="us-central1",
             domain="ad.internal",
             dns="172.30.64.3",

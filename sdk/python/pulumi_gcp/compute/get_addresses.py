@@ -103,7 +103,9 @@ def get_addresses(filter: Optional[str] = None,
     import pulumi_gcp as gcp
 
     test = gcp.compute.get_addresses(filter="name:test-*")
-    prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+    prod = gcp.dns.ManagedZone("prod",
+        name="prod-zone",
+        dns_name="prod.mydomain.com.")
     frontend = gcp.dns.RecordSet("frontend",
         name=prod.dns_name.apply(lambda dns_name: f"frontend.{dns_name}"),
         type="A",
@@ -172,7 +174,9 @@ def get_addresses_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi_gcp as gcp
 
     test = gcp.compute.get_addresses(filter="name:test-*")
-    prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+    prod = gcp.dns.ManagedZone("prod",
+        name="prod-zone",
+        dns_name="prod.mydomain.com.")
     frontend = gcp.dns.RecordSet("frontend",
         name=prod.dns_name.apply(lambda dns_name: f"frontend.{dns_name}"),
         type="A",

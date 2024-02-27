@@ -531,7 +531,7 @@ class CxFlow(pulumi.CustomResource):
             speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
                 enable_speech_adaptation=True,
             ))
-        basic_flow = gcp.diagflow.CxFlow("basicFlow",
+        basic_flow = gcp.diagflow.CxFlow("basic_flow",
             parent=agent.id,
             display_name="MyFlow",
             description="Test Flow",
@@ -600,9 +600,10 @@ class CxFlow(pulumi.CustomResource):
                 enable_speech_adaptation=True,
             ))
         bucket = gcp.storage.Bucket("bucket",
+            name="dialogflowcx-bucket",
             location="US",
             uniform_bucket_level_access=True)
-        basic_flow = gcp.diagflow.CxFlow("basicFlow",
+        basic_flow = gcp.diagflow.CxFlow("basic_flow",
             parent=agent.id,
             display_name="MyFlow",
             description="Test Flow",
@@ -957,7 +958,7 @@ class CxFlow(pulumi.CustomResource):
             speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
                 enable_speech_adaptation=True,
             ))
-        basic_flow = gcp.diagflow.CxFlow("basicFlow",
+        basic_flow = gcp.diagflow.CxFlow("basic_flow",
             parent=agent.id,
             display_name="MyFlow",
             description="Test Flow",
@@ -1026,9 +1027,10 @@ class CxFlow(pulumi.CustomResource):
                 enable_speech_adaptation=True,
             ))
         bucket = gcp.storage.Bucket("bucket",
+            name="dialogflowcx-bucket",
             location="US",
             uniform_bucket_level_access=True)
-        basic_flow = gcp.diagflow.CxFlow("basicFlow",
+        basic_flow = gcp.diagflow.CxFlow("basic_flow",
             parent=agent.id,
             display_name="MyFlow",
             description="Test Flow",

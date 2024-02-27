@@ -27,12 +27,14 @@ namespace Pulumi.Gcp.NetworkServices
     /// {
     ///     var dest = new Gcp.Storage.Bucket("dest", new()
     ///     {
+    ///         Name = "my-bucket",
     ///         Location = "US",
     ///         ForceDestroy = true,
     ///     });
     /// 
-    ///     var instanceEdgeCacheOrigin = new Gcp.NetworkServices.EdgeCacheOrigin("instanceEdgeCacheOrigin", new()
+    ///     var instance = new Gcp.NetworkServices.EdgeCacheOrigin("instance", new()
     ///     {
+    ///         Name = "my-origin",
     ///         OriginAddress = dest.Url,
     ///         Description = "The default bucket for media edge test",
     ///         MaxAttempts = 2,
@@ -42,8 +44,9 @@ namespace Pulumi.Gcp.NetworkServices
     ///         },
     ///     });
     /// 
-    ///     var instanceEdgeCacheService = new Gcp.NetworkServices.EdgeCacheService("instanceEdgeCacheService", new()
+    ///     var instanceEdgeCacheService = new Gcp.NetworkServices.EdgeCacheService("instance", new()
     ///     {
+    ///         Name = "my-service",
     ///         Description = "some description",
     ///         Routing = new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingArgs
     ///         {
@@ -77,7 +80,7 @@ namespace Pulumi.Gcp.NetworkServices
     ///                                     PrefixMatch = "/",
     ///                                 },
     ///                             },
-    ///                             Origin = instanceEdgeCacheOrigin.Name,
+    ///                             Origin = instance.Name,
     ///                             RouteAction = new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs
     ///                             {
     ///                                 CdnPolicy = new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs
@@ -118,12 +121,14 @@ namespace Pulumi.Gcp.NetworkServices
     /// {
     ///     var dest = new Gcp.Storage.Bucket("dest", new()
     ///     {
+    ///         Name = "my-bucket",
     ///         Location = "US",
     ///         ForceDestroy = true,
     ///     });
     /// 
     ///     var google = new Gcp.NetworkServices.EdgeCacheOrigin("google", new()
     ///     {
+    ///         Name = "origin-google",
     ///         OriginAddress = "google.com",
     ///         Description = "The default bucket for media edge test",
     ///         MaxAttempts = 2,
@@ -133,8 +138,9 @@ namespace Pulumi.Gcp.NetworkServices
     ///         },
     ///     });
     /// 
-    ///     var instanceEdgeCacheOrigin = new Gcp.NetworkServices.EdgeCacheOrigin("instanceEdgeCacheOrigin", new()
+    ///     var instance = new Gcp.NetworkServices.EdgeCacheOrigin("instance", new()
     ///     {
+    ///         Name = "my-origin",
     ///         OriginAddress = dest.Url,
     ///         Description = "The default bucket for media edge test",
     ///         MaxAttempts = 2,
@@ -144,8 +150,9 @@ namespace Pulumi.Gcp.NetworkServices
     ///         },
     ///     });
     /// 
-    ///     var instanceEdgeCacheService = new Gcp.NetworkServices.EdgeCacheService("instanceEdgeCacheService", new()
+    ///     var instanceEdgeCacheService = new Gcp.NetworkServices.EdgeCacheService("instance", new()
     ///     {
+    ///         Name = "my-service",
     ///         Description = "some description",
     ///         DisableQuic = true,
     ///         DisableHttp2 = true,
@@ -203,7 +210,7 @@ namespace Pulumi.Gcp.NetworkServices
     ///                                     PrefixMatch = "/",
     ///                                 },
     ///                             },
-    ///                             Origin = instanceEdgeCacheOrigin.Name,
+    ///                             Origin = instance.Name,
     ///                             RouteAction = new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs
     ///                             {
     ///                                 CdnPolicy = new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs
@@ -300,7 +307,7 @@ namespace Pulumi.Gcp.NetworkServices
     ///                                     },
     ///                                 },
     ///                             },
-    ///                             Origin = instanceEdgeCacheOrigin.Name,
+    ///                             Origin = instance.Name,
     ///                             RouteAction = new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs
     ///                             {
     ///                                 CdnPolicy = new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs
@@ -375,7 +382,7 @@ namespace Pulumi.Gcp.NetworkServices
     ///                                     FullPathMatch = "/yay",
     ///                                 },
     ///                             },
-    ///                             Origin = instanceEdgeCacheOrigin.Name,
+    ///                             Origin = instance.Name,
     ///                             RouteAction = new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs
     ///                             {
     ///                                 CdnPolicy = new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs
@@ -409,6 +416,200 @@ namespace Pulumi.Gcp.NetworkServices
     ///         {
     ///             Enable = true,
     ///             SampleRate = 0.01,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Network Services Edge Cache Service Dual Token
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var secret_basic = new Gcp.SecretManager.Secret("secret-basic", new()
+    ///     {
+    ///         SecretId = "secret-name",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var secret_version_basic = new Gcp.SecretManager.SecretVersion("secret-version-basic", new()
+    ///     {
+    ///         Secret = secret_basic.Id,
+    ///         SecretData = "secret-data",
+    ///     });
+    /// 
+    ///     var keyset = new Gcp.NetworkServices.EdgeCacheKeyset("keyset", new()
+    ///     {
+    ///         Name = "keyset-name",
+    ///         Description = "The default keyset",
+    ///         PublicKeys = new[]
+    ///         {
+    ///             new Gcp.NetworkServices.Inputs.EdgeCacheKeysetPublicKeyArgs
+    ///             {
+    ///                 Id = "my-public-key",
+    ///                 Managed = true,
+    ///             },
+    ///         },
+    ///         ValidationSharedKeys = new[]
+    ///         {
+    ///             new Gcp.NetworkServices.Inputs.EdgeCacheKeysetValidationSharedKeyArgs
+    ///             {
+    ///                 SecretVersion = secret_version_basic.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var instance = new Gcp.NetworkServices.EdgeCacheOrigin("instance", new()
+    ///     {
+    ///         Name = "my-origin",
+    ///         OriginAddress = "gs://media-edge-default",
+    ///         Description = "The default bucket for media edge test",
+    ///     });
+    /// 
+    ///     var instanceEdgeCacheService = new Gcp.NetworkServices.EdgeCacheService("instance", new()
+    ///     {
+    ///         Name = "my-service",
+    ///         Description = "some description",
+    ///         Routing = new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingArgs
+    ///         {
+    ///             HostRules = new[]
+    ///             {
+    ///                 new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingHostRuleArgs
+    ///                 {
+    ///                     Description = "host rule description",
+    ///                     Hosts = new[]
+    ///                     {
+    ///                         "sslcert.tf-test.club",
+    ///                     },
+    ///                     PathMatcher = "routes",
+    ///                 },
+    ///             },
+    ///             PathMatchers = new[]
+    ///             {
+    ///                 new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingPathMatcherArgs
+    ///                 {
+    ///                     Name = "routes",
+    ///                     RouteRules = new[]
+    ///                     {
+    ///                         new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleArgs
+    ///                         {
+    ///                             Description = "a route rule to match against master playlist",
+    ///                             Priority = "1",
+    ///                             MatchRules = new[]
+    ///                             {
+    ///                                 new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs
+    ///                                 {
+    ///                                     PathTemplateMatch = "/master.m3u8",
+    ///                                 },
+    ///                             },
+    ///                             Origin = instance.Name,
+    ///                             RouteAction = new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs
+    ///                             {
+    ///                                 CdnPolicy = new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs
+    ///                                 {
+    ///                                     SignedRequestMode = "REQUIRE_TOKENS",
+    ///                                     SignedRequestKeyset = keyset.Id,
+    ///                                     SignedTokenOptions = new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs
+    ///                                     {
+    ///                                         TokenQueryParameter = "edge-cache-token",
+    ///                                     },
+    ///                                     SignedRequestMaximumExpirationTtl = "600s",
+    ///                                     AddSignatures = new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs
+    ///                                     {
+    ///                                         Actions = "GENERATE_COOKIE",
+    ///                                         Keyset = keyset.Id,
+    ///                                         CopiedParameters = new[]
+    ///                                         {
+    ///                                             "PathGlobs",
+    ///                                             "SessionID",
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                         new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleArgs
+    ///                         {
+    ///                             Description = "a route rule to match against all playlists",
+    ///                             Priority = "2",
+    ///                             MatchRules = new[]
+    ///                             {
+    ///                                 new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs
+    ///                                 {
+    ///                                     PathTemplateMatch = "/*.m3u8",
+    ///                                 },
+    ///                             },
+    ///                             Origin = instance.Name,
+    ///                             RouteAction = new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs
+    ///                             {
+    ///                                 CdnPolicy = new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs
+    ///                                 {
+    ///                                     SignedRequestMode = "REQUIRE_TOKENS",
+    ///                                     SignedRequestKeyset = keyset.Id,
+    ///                                     SignedTokenOptions = new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs
+    ///                                     {
+    ///                                         TokenQueryParameter = "hdnts",
+    ///                                         AllowedSignatureAlgorithms = new[]
+    ///                                         {
+    ///                                             "ED25519",
+    ///                                             "HMAC_SHA_256",
+    ///                                             "HMAC_SHA1",
+    ///                                         },
+    ///                                     },
+    ///                                     AddSignatures = new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs
+    ///                                     {
+    ///                                         Actions = "GENERATE_TOKEN_HLS_COOKIELESS",
+    ///                                         Keyset = keyset.Id,
+    ///                                         TokenTtl = "1200s",
+    ///                                         TokenQueryParameter = "hdntl",
+    ///                                         CopiedParameters = new[]
+    ///                                         {
+    ///                                             "URLPrefix",
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                         new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleArgs
+    ///                         {
+    ///                             Description = "a route rule to match against",
+    ///                             Priority = "3",
+    ///                             MatchRules = new[]
+    ///                             {
+    ///                                 new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs
+    ///                                 {
+    ///                                     PathTemplateMatch = "/**.m3u8",
+    ///                                 },
+    ///                             },
+    ///                             Origin = instance.Name,
+    ///                             RouteAction = new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs
+    ///                             {
+    ///                                 CdnPolicy = new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs
+    ///                                 {
+    ///                                     SignedRequestMode = "REQUIRE_TOKENS",
+    ///                                     SignedRequestKeyset = keyset.Id,
+    ///                                     SignedTokenOptions = new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs
+    ///                                     {
+    ///                                         TokenQueryParameter = "hdntl",
+    ///                                     },
+    ///                                     AddSignatures = new Gcp.NetworkServices.Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs
+    ///                                     {
+    ///                                         Actions = "PROPAGATE_TOKEN_HLS_COOKIELESS",
+    ///                                         TokenQueryParameter = "hdntl",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
     ///         },
     ///     });
     /// 

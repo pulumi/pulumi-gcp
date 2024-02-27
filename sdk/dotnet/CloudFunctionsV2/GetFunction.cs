@@ -30,8 +30,8 @@ namespace Pulumi.Gcp.CloudFunctionsV2
         /// {
         ///     var my_function = Gcp.CloudFunctionsV2.GetFunction.Invoke(new()
         ///     {
-        ///         Location = "us-central1",
         ///         Name = "function",
+        ///         Location = "us-central1",
         ///     });
         /// 
         /// });
@@ -61,8 +61,8 @@ namespace Pulumi.Gcp.CloudFunctionsV2
         /// {
         ///     var my_function = Gcp.CloudFunctionsV2.GetFunction.Invoke(new()
         ///     {
-        ///         Location = "us-central1",
         ///         Name = "function",
+        ///         Location = "us-central1",
         ///     });
         /// 
         /// });

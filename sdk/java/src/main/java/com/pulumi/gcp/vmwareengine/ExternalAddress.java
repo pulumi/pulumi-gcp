@@ -39,7 +39,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vmwareengine.NetworkPolicyArgs;
  * import com.pulumi.gcp.vmwareengine.ExternalAddress;
  * import com.pulumi.gcp.vmwareengine.ExternalAddressArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -54,6 +53,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var external_address_nw = new Network(&#34;external-address-nw&#34;, NetworkArgs.builder()        
+ *             .name(&#34;pc-nw&#34;)
  *             .location(&#34;global&#34;)
  *             .type(&#34;STANDARD&#34;)
  *             .description(&#34;PC network description.&#34;)
@@ -61,6 +61,7 @@ import javax.annotation.Nullable;
  * 
  *         var external_address_pc = new PrivateCloud(&#34;external-address-pc&#34;, PrivateCloudArgs.builder()        
  *             .location(&#34;-a&#34;)
+ *             .name(&#34;sample-pc&#34;)
  *             .description(&#34;Sample test PC.&#34;)
  *             .networkConfig(PrivateCloudNetworkConfigArgs.builder()
  *                 .managementCidr(&#34;192.168.50.0/24&#34;)
@@ -77,17 +78,17 @@ import javax.annotation.Nullable;
  * 
  *         var external_address_np = new NetworkPolicy(&#34;external-address-np&#34;, NetworkPolicyArgs.builder()        
  *             .location(&#34;&#34;)
+ *             .name(&#34;sample-np&#34;)
  *             .edgeServicesCidr(&#34;192.168.30.0/26&#34;)
  *             .vmwareEngineNetwork(external_address_nw.id())
  *             .build());
  * 
  *         var vmw_engine_external_address = new ExternalAddress(&#34;vmw-engine-external-address&#34;, ExternalAddressArgs.builder()        
+ *             .name(&#34;sample-external-address&#34;)
  *             .parent(external_address_pc.id())
  *             .internalIp(&#34;192.168.0.66&#34;)
  *             .description(&#34;Sample description.&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(external_address_np)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

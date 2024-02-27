@@ -51,8 +51,9 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// 
     ///     var policy = new Gcp.CloudBuildV2.ConnectionIAMPolicy("policy", new()
     ///     {
-    ///         Project = google_cloudbuildv2_connection.My_connection.Project,
-    ///         Location = google_cloudbuildv2_connection.My_connection.Location,
+    ///         Project = my_connection.Project,
+    ///         Location = my_connection.Location,
+    ///         Name = my_connection.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -71,8 +72,9 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// {
     ///     var binding = new Gcp.CloudBuildV2.ConnectionIAMBinding("binding", new()
     ///     {
-    ///         Project = google_cloudbuildv2_connection.My_connection.Project,
-    ///         Location = google_cloudbuildv2_connection.My_connection.Location,
+    ///         Project = my_connection.Project,
+    ///         Location = my_connection.Location,
+    ///         Name = my_connection.Name,
     ///         Role = "roles/cloudbuild.connectionViewer",
     ///         Members = new[]
     ///         {
@@ -95,8 +97,9 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// {
     ///     var member = new Gcp.CloudBuildV2.ConnectionIAMMember("member", new()
     ///     {
-    ///         Project = google_cloudbuildv2_connection.My_connection.Project,
-    ///         Location = google_cloudbuildv2_connection.My_connection.Location,
+    ///         Project = my_connection.Project,
+    ///         Location = my_connection.Location,
+    ///         Name = my_connection.Name,
     ///         Role = "roles/cloudbuild.connectionViewer",
     ///         Member = "user:jane@example.com",
     ///     });

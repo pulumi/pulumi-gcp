@@ -577,19 +577,19 @@ class Listing(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        listing_data_exchange = gcp.bigqueryanalyticshub.DataExchange("listingDataExchange",
+        listing = gcp.bigqueryanalyticshub.DataExchange("listing",
             location="US",
             data_exchange_id="my_data_exchange",
             display_name="my_data_exchange",
             description="example data exchange")
-        listing_dataset = gcp.bigquery.Dataset("listingDataset",
+        listing_dataset = gcp.bigquery.Dataset("listing",
             dataset_id="my_listing",
             friendly_name="my_listing",
             description="example data exchange",
             location="US")
-        listing_listing = gcp.bigqueryanalyticshub.Listing("listingListing",
+        listing_listing = gcp.bigqueryanalyticshub.Listing("listing",
             location="US",
-            data_exchange_id=listing_data_exchange.data_exchange_id,
+            data_exchange_id=listing.data_exchange_id,
             listing_id="my_listing",
             display_name="my_listing",
             description="example data exchange",
@@ -603,19 +603,19 @@ class Listing(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        listing_data_exchange = gcp.bigqueryanalyticshub.DataExchange("listingDataExchange",
+        listing = gcp.bigqueryanalyticshub.DataExchange("listing",
             location="US",
             data_exchange_id="my_data_exchange",
             display_name="my_data_exchange",
             description="example data exchange")
-        listing_dataset = gcp.bigquery.Dataset("listingDataset",
+        listing_dataset = gcp.bigquery.Dataset("listing",
             dataset_id="my_listing",
             friendly_name="my_listing",
             description="example data exchange",
             location="US")
-        listing_listing = gcp.bigqueryanalyticshub.Listing("listingListing",
+        listing_listing = gcp.bigqueryanalyticshub.Listing("listing",
             location="US",
-            data_exchange_id=listing_data_exchange.data_exchange_id,
+            data_exchange_id=listing.data_exchange_id,
             listing_id="my_listing",
             display_name="my_listing",
             description="example data exchange",
@@ -697,19 +697,19 @@ class Listing(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        listing_data_exchange = gcp.bigqueryanalyticshub.DataExchange("listingDataExchange",
+        listing = gcp.bigqueryanalyticshub.DataExchange("listing",
             location="US",
             data_exchange_id="my_data_exchange",
             display_name="my_data_exchange",
             description="example data exchange")
-        listing_dataset = gcp.bigquery.Dataset("listingDataset",
+        listing_dataset = gcp.bigquery.Dataset("listing",
             dataset_id="my_listing",
             friendly_name="my_listing",
             description="example data exchange",
             location="US")
-        listing_listing = gcp.bigqueryanalyticshub.Listing("listingListing",
+        listing_listing = gcp.bigqueryanalyticshub.Listing("listing",
             location="US",
-            data_exchange_id=listing_data_exchange.data_exchange_id,
+            data_exchange_id=listing.data_exchange_id,
             listing_id="my_listing",
             display_name="my_listing",
             description="example data exchange",
@@ -723,19 +723,19 @@ class Listing(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        listing_data_exchange = gcp.bigqueryanalyticshub.DataExchange("listingDataExchange",
+        listing = gcp.bigqueryanalyticshub.DataExchange("listing",
             location="US",
             data_exchange_id="my_data_exchange",
             display_name="my_data_exchange",
             description="example data exchange")
-        listing_dataset = gcp.bigquery.Dataset("listingDataset",
+        listing_dataset = gcp.bigquery.Dataset("listing",
             dataset_id="my_listing",
             friendly_name="my_listing",
             description="example data exchange",
             location="US")
-        listing_listing = gcp.bigqueryanalyticshub.Listing("listingListing",
+        listing_listing = gcp.bigqueryanalyticshub.Listing("listing",
             location="US",
-            data_exchange_id=listing_data_exchange.data_exchange_id,
+            data_exchange_id=listing.data_exchange_id,
             listing_id="my_listing",
             display_name="my_listing",
             description="example data exchange",

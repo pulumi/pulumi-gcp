@@ -33,6 +33,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// 
     ///     var cloudsqldb = new Gcp.Sql.DatabaseInstance("cloudsqldb", new()
     ///     {
+    ///         Name = "my-database",
     ///         DatabaseVersion = "MYSQL_5_7",
     ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
     ///         {
@@ -42,28 +43,17 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///         DeletionProtection = false,
     ///     });
     /// 
-    ///     var sqlClientCert = new Gcp.Sql.SslCert("sqlClientCert", new()
+    ///     var sqlClientCert = new Gcp.Sql.SslCert("sql_client_cert", new()
     ///     {
     ///         CommonName = "my-cert",
     ///         Instance = cloudsqldb.Name,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             cloudsqldb,
-    ///         },
     ///     });
     /// 
-    ///     var sqldbUser = new Gcp.Sql.User("sqldbUser", new()
+    ///     var sqldbUser = new Gcp.Sql.User("sqldb_user", new()
     ///     {
+    ///         Name = "my-username",
     ///         Instance = cloudsqldb.Name,
     ///         Password = "my-password",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             sqlClientCert,
-    ///         },
     ///     });
     /// 
     ///     var cloudsqlprofile = new Gcp.DatabaseMigrationService.ConnectionProfile("cloudsqlprofile", new()
@@ -89,15 +79,9 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///             },
     ///             CloudSqlId = "my-database",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             sqldbUser,
-    ///         },
     ///     });
     /// 
-    ///     var cloudsqlprofileDestination = new Gcp.DatabaseMigrationService.ConnectionProfile("cloudsqlprofileDestination", new()
+    ///     var cloudsqlprofileDestination = new Gcp.DatabaseMigrationService.ConnectionProfile("cloudsqlprofile_destination", new()
     ///     {
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "my-toprofileid",
@@ -132,12 +116,6 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///                 RootPassword = "testpasscloudsql",
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             cloudsqlprofile,
-    ///         },
     ///     });
     /// 
     /// });
@@ -154,6 +132,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// {
     ///     var postgresqldb = new Gcp.Sql.DatabaseInstance("postgresqldb", new()
     ///     {
+    ///         Name = "my-database",
     ///         DatabaseVersion = "POSTGRES_12",
     ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
     ///         {
@@ -162,28 +141,17 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///         DeletionProtection = false,
     ///     });
     /// 
-    ///     var sqlClientCert = new Gcp.Sql.SslCert("sqlClientCert", new()
+    ///     var sqlClientCert = new Gcp.Sql.SslCert("sql_client_cert", new()
     ///     {
     ///         CommonName = "my-cert",
     ///         Instance = postgresqldb.Name,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             postgresqldb,
-    ///         },
     ///     });
     /// 
-    ///     var sqldbUser = new Gcp.Sql.User("sqldbUser", new()
+    ///     var sqldbUser = new Gcp.Sql.User("sqldb_user", new()
     ///     {
+    ///         Name = "my-username",
     ///         Instance = postgresqldb.Name,
     ///         Password = "my-password",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             sqlClientCert,
-    ///         },
     ///     });
     /// 
     ///     var postgresprofile = new Gcp.DatabaseMigrationService.ConnectionProfile("postgresprofile", new()
@@ -209,12 +177,6 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///             },
     ///             CloudSqlId = "my-database",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             sqldbUser,
-    ///         },
     ///     });
     /// 
     /// });
@@ -231,21 +193,21 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// {
     ///     var oracleprofile = new Gcp.DatabaseMigrationService.ConnectionProfile("oracleprofile", new()
     ///     {
+    ///         Location = "us-central1",
     ///         ConnectionProfileId = "my-profileid",
     ///         DisplayName = "my-profileid_display",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
     ///         },
-    ///         Location = "us-central1",
     ///         Oracle = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileOracleArgs
     ///         {
-    ///             DatabaseService = "dbprovider",
     ///             Host = "host",
-    ///             Password = "password",
     ///             Port = 1521,
-    ///             StaticServiceIpConnectivity = null,
     ///             Username = "username",
+    ///             Password = "password",
+    ///             DatabaseService = "dbprovider",
+    ///             StaticServiceIpConnectivity = null,
     ///         },
     ///     });
     /// 

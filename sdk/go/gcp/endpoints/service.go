@@ -21,45 +21,45 @@ import (
 //
 // import (
 //
-//	"encoding/base64"
-//	"os"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/endpoints"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
-//	func filebase64OrPanic(path string) string {
-//		if fileData, err := os.ReadFile(path); err == nil {
-//			return base64.StdEncoding.EncodeToString(fileData[:])
-//		} else {
-//			panic(err.Error())
-//		}
-//	}
-//
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
-//
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := endpoints.NewService(ctx, "openapiService", &endpoints.ServiceArgs{
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "openapi_spec.yml",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = endpoints.NewService(ctx, "openapi_service", &endpoints.ServiceArgs{
 //				ServiceName:   pulumi.String("api-name.endpoints.project-id.cloud.goog"),
 //				Project:       pulumi.String("project-id"),
-//				OpenapiConfig: readFileOrPanic("openapi_spec.yml"),
+//				OpenapiConfig: invokeFile.Result,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = endpoints.NewService(ctx, "grpcService", &endpoints.ServiceArgs{
+//			invokeFile1, err := std.File(ctx, &std.FileArgs{
+//				Input: "service_spec.yml",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFilebase642, err := std.Filebase64(ctx, &std.Filebase64Args{
+//				Input: "compiled_descriptor_file.pb",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = endpoints.NewService(ctx, "grpc_service", &endpoints.ServiceArgs{
 //				ServiceName:        pulumi.String("api-name.endpoints.project-id.cloud.goog"),
 //				Project:            pulumi.String("project-id"),
-//				GrpcConfig:         readFileOrPanic("service_spec.yml"),
-//				ProtocOutputBase64: filebase64OrPanic("compiled_descriptor_file.pb"),
+//				GrpcConfig:         invokeFile1.Result,
+//				ProtocOutputBase64: invokeFilebase642.Result,
 //			})
 //			if err != nil {
 //				return err

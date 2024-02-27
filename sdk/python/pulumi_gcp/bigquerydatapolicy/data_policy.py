@@ -290,11 +290,11 @@ class DataPolicy(pulumi.CustomResource):
             display_name="taxonomy",
             description="A collection of policy tags",
             activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
-        policy_tag = gcp.datacatalog.PolicyTag("policyTag",
+        policy_tag = gcp.datacatalog.PolicyTag("policy_tag",
             taxonomy=taxonomy.id,
             display_name="Low security",
             description="A policy tag normally associated with low security items")
-        data_policy = gcp.bigquerydatapolicy.DataPolicy("dataPolicy",
+        data_policy = gcp.bigquerydatapolicy.DataPolicy("data_policy",
             location="us-central1",
             data_policy_id="data_policy",
             policy_tag=policy_tag.name,
@@ -367,11 +367,11 @@ class DataPolicy(pulumi.CustomResource):
             display_name="taxonomy",
             description="A collection of policy tags",
             activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
-        policy_tag = gcp.datacatalog.PolicyTag("policyTag",
+        policy_tag = gcp.datacatalog.PolicyTag("policy_tag",
             taxonomy=taxonomy.id,
             display_name="Low security",
             description="A policy tag normally associated with low security items")
-        data_policy = gcp.bigquerydatapolicy.DataPolicy("dataPolicy",
+        data_policy = gcp.bigquerydatapolicy.DataPolicy("data_policy",
             location="us-central1",
             data_policy_id="data_policy",
             policy_tag=policy_tag.name,

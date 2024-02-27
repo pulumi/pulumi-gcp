@@ -25,12 +25,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// {
     ///     var primary = new Gcp.NetworkConnectivity.Hub("primary", new()
     ///     {
+    ///         Name = "hub",
     ///         Description = "A sample hub",
+    ///         Project = "my-project-name",
     ///         Labels = 
     ///         {
     ///             { "label-one", "value-one" },
     ///         },
-    ///         Project = "my-project-name",
     ///     });
     /// 
     /// });

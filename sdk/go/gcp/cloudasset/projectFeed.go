@@ -21,6 +21,66 @@ import (
 //   - [Official Documentation](https://cloud.google.com/asset-inventory/docs)
 //
 // ## Example Usage
+// ### Cloud Asset Project Feed
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudasset"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// The topic where the resource change notifications will be sent.
+//			feedOutput, err := pubsub.NewTopic(ctx, "feed_output", &pubsub.TopicArgs{
+//				Project: pulumi.String("my-project-name"),
+//				Name:    pulumi.String("network-updates"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a feed that sends notifications about network resource updates.
+//			_, err = cloudasset.NewProjectFeed(ctx, "project_feed", &cloudasset.ProjectFeedArgs{
+//				Project:     pulumi.String("my-project-name"),
+//				FeedId:      pulumi.String("network-updates"),
+//				ContentType: pulumi.String("RESOURCE"),
+//				AssetTypes: pulumi.StringArray{
+//					pulumi.String("compute.googleapis.com/Subnetwork"),
+//					pulumi.String("compute.googleapis.com/Network"),
+//				},
+//				FeedOutputConfig: &cloudasset.ProjectFeedFeedOutputConfigArgs{
+//					PubsubDestination: &cloudasset.ProjectFeedFeedOutputConfigPubsubDestinationArgs{
+//						Topic: feedOutput.ID(),
+//					},
+//				},
+//				Condition: &cloudasset.ProjectFeedConditionArgs{
+//					Expression:  pulumi.String("!temporal_asset.deleted &&\ntemporal_asset.prior_asset_state == google.cloud.asset.v1.TemporalAsset.PriorAssetState.DOES_NOT_EXIST\n"),
+//					Title:       pulumi.String("created"),
+//					Description: pulumi.String("Send notifications on creation events"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Find the project number of the project whose identity will be used for sending
+//			// the asset change notifications.
+//			_, err = organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
+//				ProjectId: pulumi.StringRef("my-project-name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

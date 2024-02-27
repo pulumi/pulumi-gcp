@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.AppEngine
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var domainMapping = new Gcp.AppEngine.DomainMapping("domainMapping", new()
+    ///     var domainMapping = new Gcp.AppEngine.DomainMapping("domain_mapping", new()
     ///     {
     ///         DomainName = "verified-domain.com",
     ///         SslSettings = new Gcp.AppEngine.Inputs.DomainMappingSslSettingsArgs

@@ -65,7 +65,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tplInstanceTemplate = new InstanceTemplate(&#34;tplInstanceTemplate&#34;, InstanceTemplateArgs.builder()        
+ *         var tpl = new InstanceTemplate(&#34;tpl&#34;, InstanceTemplateArgs.builder()        
+ *             .name(&#34;template&#34;)
  *             .machineType(&#34;e2-medium&#34;)
  *             .disks(InstanceTemplateDiskArgs.builder()
  *                 .sourceImage(&#34;debian-cloud/debian-11&#34;)
@@ -81,8 +82,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var tplInstanceFromTemplate = new InstanceFromTemplate(&#34;tplInstanceFromTemplate&#34;, InstanceFromTemplateArgs.builder()        
+ *             .name(&#34;instance-from-template&#34;)
  *             .zone(&#34;us-central1-a&#34;)
- *             .sourceInstanceTemplate(tplInstanceTemplate.selfLinkUnique())
+ *             .sourceInstanceTemplate(tpl.selfLinkUnique())
  *             .canIpForward(false)
  *             .labels(Map.of(&#34;my_key&#34;, &#34;my_value&#34;))
  *             .build());

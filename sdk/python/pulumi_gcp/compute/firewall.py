@@ -938,8 +938,9 @@ class Firewall(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork")
-        default_firewall = gcp.compute.Firewall("defaultFirewall",
+        default_network = gcp.compute.Network("default", name="test-network")
+        default = gcp.compute.Firewall("default",
+            name="test-firewall",
             network=default_network.name,
             allows=[
                 gcp.compute.FirewallAllowArgs(
@@ -963,17 +964,18 @@ class Firewall(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         rules = gcp.compute.Firewall("rules",
+            project="my-project-name",
+            name="my-firewall-rule",
+            network="default",
+            description="Creates firewall rule targeting tagged instances",
             allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
                 ports=[
                     "80",
                     "8080",
                     "1000-2000",
                 ],
-                protocol="tcp",
             )],
-            description="Creates firewall rule targeting tagged instances",
-            network="default",
-            project="my-project-name",
             source_tags=["foo"],
             target_tags=["web"])
         ```
@@ -1123,8 +1125,9 @@ class Firewall(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork")
-        default_firewall = gcp.compute.Firewall("defaultFirewall",
+        default_network = gcp.compute.Network("default", name="test-network")
+        default = gcp.compute.Firewall("default",
+            name="test-firewall",
             network=default_network.name,
             allows=[
                 gcp.compute.FirewallAllowArgs(
@@ -1148,17 +1151,18 @@ class Firewall(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         rules = gcp.compute.Firewall("rules",
+            project="my-project-name",
+            name="my-firewall-rule",
+            network="default",
+            description="Creates firewall rule targeting tagged instances",
             allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
                 ports=[
                     "80",
                     "8080",
                     "1000-2000",
                 ],
-                protocol="tcp",
             )],
-            description="Creates firewall rule targeting tagged instances",
-            network="default",
-            project="my-project-name",
             source_tags=["foo"],
             target_tags=["web"])
         ```

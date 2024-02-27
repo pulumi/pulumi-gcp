@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.CloudBuildV2
         /// {
         ///     var policy = Gcp.CloudBuildV2.GetConnectionIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_cloudbuildv2_connection.My_connection.Project,
-        ///         Location = google_cloudbuildv2_connection.My_connection.Location,
-        ///         Name = google_cloudbuildv2_connection.My_connection.Name,
+        ///         Project = my_connection.Project,
+        ///         Location = my_connection.Location,
+        ///         Name = my_connection.Name,
         ///     });
         /// 
         /// });
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.CloudBuildV2
         /// {
         ///     var policy = Gcp.CloudBuildV2.GetConnectionIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_cloudbuildv2_connection.My_connection.Project,
-        ///         Location = google_cloudbuildv2_connection.My_connection.Location,
-        ///         Name = google_cloudbuildv2_connection.My_connection.Name,
+        ///         Project = my_connection.Project,
+        ///         Location = my_connection.Location,
+        ///         Name = my_connection.Name,
         ///     });
         /// 
         /// });

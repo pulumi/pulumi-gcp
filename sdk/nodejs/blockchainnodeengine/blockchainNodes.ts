@@ -22,27 +22,27 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNode = new gcp.blockchainnodeengine.BlockchainNodes("defaultNode", {
- *     blockchainNodeId: "blockchain_basic_node",
+ * const defaultNode = new gcp.blockchainnodeengine.BlockchainNodes("default_node", {
+ *     location: "us-central1",
  *     blockchainType: "ETHEREUM",
+ *     blockchainNodeId: "blockchain_basic_node",
  *     ethereumDetails: {
  *         apiEnableAdmin: true,
  *         apiEnableDebug: true,
- *         consensusClient: "LIGHTHOUSE",
- *         executionClient: "ERIGON",
- *         network: "MAINNET",
- *         nodeType: "ARCHIVE",
  *         validatorConfig: {
  *             mevRelayUrls: [
  *                 "https://mev1.example.org/",
  *                 "https://mev2.example.org/",
  *             ],
  *         },
+ *         nodeType: "ARCHIVE",
+ *         consensusClient: "LIGHTHOUSE",
+ *         executionClient: "ERIGON",
+ *         network: "MAINNET",
  *     },
  *     labels: {
  *         environment: "dev",
  *     },
- *     location: "us-central1",
  * });
  * ```
  * ### Blockchain Nodes Geth Details
@@ -51,30 +51,30 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNodeGeth = new gcp.blockchainnodeengine.BlockchainNodes("defaultNodeGeth", {
- *     blockchainNodeId: "blockchain_geth_node",
+ * const defaultNodeGeth = new gcp.blockchainnodeengine.BlockchainNodes("default_node_geth", {
+ *     location: "us-central1",
  *     blockchainType: "ETHEREUM",
+ *     blockchainNodeId: "blockchain_geth_node",
  *     ethereumDetails: {
  *         apiEnableAdmin: true,
  *         apiEnableDebug: true,
- *         consensusClient: "LIGHTHOUSE",
- *         executionClient: "GETH",
- *         gethDetails: {
- *             garbageCollectionMode: "FULL",
- *         },
- *         network: "MAINNET",
- *         nodeType: "FULL",
  *         validatorConfig: {
  *             mevRelayUrls: [
  *                 "https://mev1.example.org/",
  *                 "https://mev2.example.org/",
  *             ],
  *         },
+ *         nodeType: "FULL",
+ *         consensusClient: "LIGHTHOUSE",
+ *         executionClient: "GETH",
+ *         network: "MAINNET",
+ *         gethDetails: {
+ *             garbageCollectionMode: "FULL",
+ *         },
  *     },
  *     labels: {
  *         environment: "dev",
  *     },
- *     location: "us-central1",
  * });
  * ```
  *

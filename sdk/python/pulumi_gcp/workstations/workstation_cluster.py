@@ -572,14 +572,15 @@ class WorkstationCluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+        default_network = gcp.compute.Network("default",
+            name="workstation-cluster",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstation-cluster",
             ip_cidr_range="10.0.0.0/24",
             region="us-central1",
-            network=default_network.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
+            network=default_network.name)
+        default = gcp.workstations.WorkstationCluster("default",
             workstation_cluster_id="workstation-cluster",
             network=default_network.id,
             subnetwork=default_subnetwork.id,
@@ -589,8 +590,7 @@ class WorkstationCluster(pulumi.CustomResource):
             },
             annotations={
                 "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         project = gcp.organizations.get_project()
         ```
         ### Workstation Cluster Private
@@ -599,14 +599,15 @@ class WorkstationCluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+        default_network = gcp.compute.Network("default",
+            name="workstation-cluster-private",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstation-cluster-private",
             ip_cidr_range="10.0.0.0/24",
             region="us-central1",
-            network=default_network.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
+            network=default_network.name)
+        default = gcp.workstations.WorkstationCluster("default",
             workstation_cluster_id="workstation-cluster-private",
             network=default_network.id,
             subnetwork=default_subnetwork.id,
@@ -619,8 +620,7 @@ class WorkstationCluster(pulumi.CustomResource):
             },
             annotations={
                 "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         project = gcp.organizations.get_project()
         ```
         ### Workstation Cluster Custom Domain
@@ -629,14 +629,15 @@ class WorkstationCluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+        default_network = gcp.compute.Network("default",
+            name="workstation-cluster-custom-domain",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstation-cluster-custom-domain",
             ip_cidr_range="10.0.0.0/24",
             region="us-central1",
-            network=default_network.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
+            network=default_network.name)
+        default = gcp.workstations.WorkstationCluster("default",
             workstation_cluster_id="workstation-cluster-custom-domain",
             network=default_network.id,
             subnetwork=default_subnetwork.id,
@@ -652,8 +653,7 @@ class WorkstationCluster(pulumi.CustomResource):
             },
             annotations={
                 "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         project = gcp.organizations.get_project()
         ```
 
@@ -720,14 +720,15 @@ class WorkstationCluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+        default_network = gcp.compute.Network("default",
+            name="workstation-cluster",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstation-cluster",
             ip_cidr_range="10.0.0.0/24",
             region="us-central1",
-            network=default_network.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
+            network=default_network.name)
+        default = gcp.workstations.WorkstationCluster("default",
             workstation_cluster_id="workstation-cluster",
             network=default_network.id,
             subnetwork=default_subnetwork.id,
@@ -737,8 +738,7 @@ class WorkstationCluster(pulumi.CustomResource):
             },
             annotations={
                 "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         project = gcp.organizations.get_project()
         ```
         ### Workstation Cluster Private
@@ -747,14 +747,15 @@ class WorkstationCluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+        default_network = gcp.compute.Network("default",
+            name="workstation-cluster-private",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstation-cluster-private",
             ip_cidr_range="10.0.0.0/24",
             region="us-central1",
-            network=default_network.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
+            network=default_network.name)
+        default = gcp.workstations.WorkstationCluster("default",
             workstation_cluster_id="workstation-cluster-private",
             network=default_network.id,
             subnetwork=default_subnetwork.id,
@@ -767,8 +768,7 @@ class WorkstationCluster(pulumi.CustomResource):
             },
             annotations={
                 "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         project = gcp.organizations.get_project()
         ```
         ### Workstation Cluster Custom Domain
@@ -777,14 +777,15 @@ class WorkstationCluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+        default_network = gcp.compute.Network("default",
+            name="workstation-cluster-custom-domain",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstation-cluster-custom-domain",
             ip_cidr_range="10.0.0.0/24",
             region="us-central1",
-            network=default_network.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
+            network=default_network.name)
+        default = gcp.workstations.WorkstationCluster("default",
             workstation_cluster_id="workstation-cluster-custom-domain",
             network=default_network.id,
             subnetwork=default_subnetwork.id,
@@ -800,8 +801,7 @@ class WorkstationCluster(pulumi.CustomResource):
             },
             annotations={
                 "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         project = gcp.organizations.get_project()
         ```
 

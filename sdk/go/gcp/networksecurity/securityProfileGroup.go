@@ -26,22 +26,24 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			securityProfile, err := networksecurity.NewSecurityProfile(ctx, "securityProfile", &networksecurity.SecurityProfileArgs{
+//			securityProfile, err := networksecurity.NewSecurityProfile(ctx, "security_profile", &networksecurity.SecurityProfileArgs{
+//				Name:     pulumi.String("sec-profile"),
 //				Type:     pulumi.String("THREAT_PREVENTION"),
 //				Parent:   pulumi.String("organizations/123456789"),
 //				Location: pulumi.String("global"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = networksecurity.NewSecurityProfileGroup(ctx, "default", &networksecurity.SecurityProfileGroupArgs{
+//				Name:                    pulumi.String("sec-profile-group"),
 //				Parent:                  pulumi.String("organizations/123456789"),
 //				Description:             pulumi.String("my description"),
 //				ThreatPreventionProfile: securityProfile.ID(),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

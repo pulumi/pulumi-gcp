@@ -31,13 +31,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.inputs.GetImageArgs;
  * import com.pulumi.gcp.compute.Disk;
  * import com.pulumi.gcp.compute.DiskArgs;
- * import com.pulumi.gcp.compute.DiskResourcePolicyAttachment;
- * import com.pulumi.gcp.compute.DiskResourcePolicyAttachmentArgs;
  * import com.pulumi.gcp.compute.ResourcePolicy;
  * import com.pulumi.gcp.compute.ResourcePolicyArgs;
  * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyArgs;
  * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs;
  * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs;
+ * import com.pulumi.gcp.compute.DiskResourcePolicyAttachment;
+ * import com.pulumi.gcp.compute.DiskResourcePolicyAttachmentArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -57,18 +57,15 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var ssd = new Disk(&#34;ssd&#34;, DiskArgs.builder()        
+ *             .name(&#34;my-disk&#34;)
  *             .image(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
  *             .size(50)
  *             .type(&#34;pd-ssd&#34;)
  *             .zone(&#34;us-central1-a&#34;)
  *             .build());
  * 
- *         var attachment = new DiskResourcePolicyAttachment(&#34;attachment&#34;, DiskResourcePolicyAttachmentArgs.builder()        
- *             .disk(ssd.name())
- *             .zone(&#34;us-central1-a&#34;)
- *             .build());
- * 
  *         var policy = new ResourcePolicy(&#34;policy&#34;, ResourcePolicyArgs.builder()        
+ *             .name(&#34;my-resource-policy&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .snapshotSchedulePolicy(ResourcePolicySnapshotSchedulePolicyArgs.builder()
  *                 .schedule(ResourcePolicySnapshotSchedulePolicyScheduleArgs.builder()
@@ -78,6 +75,12 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
+ *             .build());
+ * 
+ *         var attachment = new DiskResourcePolicyAttachment(&#34;attachment&#34;, DiskResourcePolicyAttachmentArgs.builder()        
+ *             .name(policy.name())
+ *             .disk(ssd.name())
+ *             .zone(&#34;us-central1-a&#34;)
  *             .build());
  * 
  *     }

@@ -39,14 +39,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleLiteReservation, err := pubsub.NewLiteReservation(ctx, "exampleLiteReservation", &pubsub.LiteReservationArgs{
+//			example, err := pubsub.NewLiteReservation(ctx, "example", &pubsub.LiteReservationArgs{
+//				Name:               pulumi.String("example-reservation"),
 //				Project:            *pulumi.String(project.Number),
 //				ThroughputCapacity: pulumi.Int(2),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = pubsub.NewLiteTopic(ctx, "exampleLiteTopic", &pubsub.LiteTopicArgs{
+//			_, err = pubsub.NewLiteTopic(ctx, "example", &pubsub.LiteTopicArgs{
+//				Name:    pulumi.String("example-topic"),
 //				Project: *pulumi.String(project.Number),
 //				PartitionConfig: &pubsub.LiteTopicPartitionConfigArgs{
 //					Count: pulumi.Int(1),
@@ -59,7 +61,7 @@ import (
 //					PerPartitionBytes: pulumi.String("32212254720"),
 //				},
 //				ReservationConfig: &pubsub.LiteTopicReservationConfigArgs{
-//					ThroughputReservation: exampleLiteReservation.Name,
+//					ThroughputReservation: example.Name,
 //				},
 //			})
 //			if err != nil {

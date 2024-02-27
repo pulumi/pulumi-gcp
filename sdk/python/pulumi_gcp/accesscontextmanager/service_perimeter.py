@@ -512,18 +512,22 @@ class ServicePerimeter(pulumi.CustomResource):
             title="my policy")
         service_perimeter = gcp.accesscontextmanager.ServicePerimeter("service-perimeter",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/restrict_storage"),
+            title="restrict_storage",
             status=gcp.accesscontextmanager.ServicePerimeterStatusArgs(
                 restricted_services=["storage.googleapis.com"],
-            ),
-            title="restrict_storage")
+            ))
         access_level = gcp.accesscontextmanager.AccessLevel("access-level",
+            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
+            title="chromeos_no_lock",
             basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
                 conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
                     device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
+                        require_screen_lock=False,
                         os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
                             os_type="DESKTOP_CHROME_OS",
                         )],
-                        require_screen_lock=False,
                     ),
                     regions=[
                         "CH",
@@ -531,9 +535,7 @@ class ServicePerimeter(pulumi.CustomResource):
                         "US",
                     ],
                 )],
-            ),
-            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
-            title="chromeos_no_lock")
+            ))
         ```
         ### Access Context Manager Service Perimeter Secure Data Exchange
 
@@ -568,6 +570,7 @@ class ServicePerimeter(pulumi.CustomResource):
             ])
         access_level = gcp.accesscontextmanager.AccessLevel("access-level",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/secure_data_exchange"),
             title="secure_data_exchange",
             basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
                 conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
@@ -585,7 +588,8 @@ class ServicePerimeter(pulumi.CustomResource):
                 )],
             ))
         test_access = gcp.accesscontextmanager.ServicePerimeter("test-access",
-            parent=f"accessPolicies/{google_access_context_manager_access_policy['test-access']['name']}",
+            parent=f"accessPolicies/{test_access_google_access_context_manager_access_policy['name']}",
+            name=f"accessPolicies/{test_access_google_access_context_manager_access_policy['name']}/servicePerimeters/%s",
             title="%s",
             perimeter_type="PERIMETER_TYPE_REGULAR",
             status=gcp.accesscontextmanager.ServicePerimeterStatusArgs(
@@ -604,7 +608,7 @@ class ServicePerimeter(pulumi.CustomResource):
                 ingress_policies=[gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyArgs(
                     ingress_from=gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFromArgs(
                         sources=[gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFromSourceArgs(
-                            access_level=google_access_context_manager_access_level["test-access"]["name"],
+                            access_level=test_access_google_access_context_manager_access_level["name"],
                         )],
                         identity_type="ANY_IDENTITY",
                     ),
@@ -652,13 +656,14 @@ class ServicePerimeter(pulumi.CustomResource):
             title="my policy")
         service_perimeter = gcp.accesscontextmanager.ServicePerimeter("service-perimeter",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
-            spec=gcp.accesscontextmanager.ServicePerimeterSpecArgs(
-                restricted_services=["storage.googleapis.com"],
-            ),
+            name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/restrict_bigquery_dryrun_storage"),
+            title="restrict_bigquery_dryrun_storage",
             status=gcp.accesscontextmanager.ServicePerimeterStatusArgs(
                 restricted_services=["bigquery.googleapis.com"],
             ),
-            title="restrict_bigquery_dryrun_storage",
+            spec=gcp.accesscontextmanager.ServicePerimeterSpecArgs(
+                restricted_services=["storage.googleapis.com"],
+            ),
             use_explicit_dry_run_spec=True)
         ```
 
@@ -763,18 +768,22 @@ class ServicePerimeter(pulumi.CustomResource):
             title="my policy")
         service_perimeter = gcp.accesscontextmanager.ServicePerimeter("service-perimeter",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/restrict_storage"),
+            title="restrict_storage",
             status=gcp.accesscontextmanager.ServicePerimeterStatusArgs(
                 restricted_services=["storage.googleapis.com"],
-            ),
-            title="restrict_storage")
+            ))
         access_level = gcp.accesscontextmanager.AccessLevel("access-level",
+            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
+            title="chromeos_no_lock",
             basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
                 conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
                     device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
+                        require_screen_lock=False,
                         os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
                             os_type="DESKTOP_CHROME_OS",
                         )],
-                        require_screen_lock=False,
                     ),
                     regions=[
                         "CH",
@@ -782,9 +791,7 @@ class ServicePerimeter(pulumi.CustomResource):
                         "US",
                     ],
                 )],
-            ),
-            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
-            title="chromeos_no_lock")
+            ))
         ```
         ### Access Context Manager Service Perimeter Secure Data Exchange
 
@@ -819,6 +826,7 @@ class ServicePerimeter(pulumi.CustomResource):
             ])
         access_level = gcp.accesscontextmanager.AccessLevel("access-level",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/secure_data_exchange"),
             title="secure_data_exchange",
             basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
                 conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
@@ -836,7 +844,8 @@ class ServicePerimeter(pulumi.CustomResource):
                 )],
             ))
         test_access = gcp.accesscontextmanager.ServicePerimeter("test-access",
-            parent=f"accessPolicies/{google_access_context_manager_access_policy['test-access']['name']}",
+            parent=f"accessPolicies/{test_access_google_access_context_manager_access_policy['name']}",
+            name=f"accessPolicies/{test_access_google_access_context_manager_access_policy['name']}/servicePerimeters/%s",
             title="%s",
             perimeter_type="PERIMETER_TYPE_REGULAR",
             status=gcp.accesscontextmanager.ServicePerimeterStatusArgs(
@@ -855,7 +864,7 @@ class ServicePerimeter(pulumi.CustomResource):
                 ingress_policies=[gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyArgs(
                     ingress_from=gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFromArgs(
                         sources=[gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFromSourceArgs(
-                            access_level=google_access_context_manager_access_level["test-access"]["name"],
+                            access_level=test_access_google_access_context_manager_access_level["name"],
                         )],
                         identity_type="ANY_IDENTITY",
                     ),
@@ -903,13 +912,14 @@ class ServicePerimeter(pulumi.CustomResource):
             title="my policy")
         service_perimeter = gcp.accesscontextmanager.ServicePerimeter("service-perimeter",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
-            spec=gcp.accesscontextmanager.ServicePerimeterSpecArgs(
-                restricted_services=["storage.googleapis.com"],
-            ),
+            name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/restrict_bigquery_dryrun_storage"),
+            title="restrict_bigquery_dryrun_storage",
             status=gcp.accesscontextmanager.ServicePerimeterStatusArgs(
                 restricted_services=["bigquery.googleapis.com"],
             ),
-            title="restrict_bigquery_dryrun_storage",
+            spec=gcp.accesscontextmanager.ServicePerimeterSpecArgs(
+                restricted_services=["storage.googleapis.com"],
+            ),
             use_explicit_dry_run_spec=True)
         ```
 

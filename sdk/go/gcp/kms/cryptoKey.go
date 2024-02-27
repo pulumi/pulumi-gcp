@@ -45,12 +45,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("keyring-example"),
 //				Location: pulumi.String("global"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = kms.NewCryptoKey(ctx, "example-key", &kms.CryptoKeyArgs{
+//				Name:           pulumi.String("crypto-key-example"),
 //				KeyRing:        keyring.ID(),
 //				RotationPeriod: pulumi.String("7776000s"),
 //			})
@@ -77,12 +79,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("keyring-example"),
 //				Location: pulumi.String("global"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = kms.NewCryptoKey(ctx, "example-asymmetric-sign-key", &kms.CryptoKeyArgs{
+//				Name:    pulumi.String("crypto-key-example"),
 //				KeyRing: keyring.ID(),
 //				Purpose: pulumi.String("ASYMMETRIC_SIGN"),
 //				VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{

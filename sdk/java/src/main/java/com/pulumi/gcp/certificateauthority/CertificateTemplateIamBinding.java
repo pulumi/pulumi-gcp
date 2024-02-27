@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new CertificateTemplateIamPolicy(&#34;policy&#34;, CertificateTemplateIamPolicyArgs.builder()        
- *             .certificateTemplate(google_privateca_certificate_template.default().id())
+ *             .certificateTemplate(default_.id())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new CertificateTemplateIamPolicy(&#34;policy&#34;, CertificateTemplateIamPolicyArgs.builder()        
- *             .certificateTemplate(google_privateca_certificate_template.default().id())
+ *             .certificateTemplate(default_.id())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -140,7 +140,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new CertificateTemplateIamBinding(&#34;binding&#34;, CertificateTemplateIamBindingArgs.builder()        
- *             .certificateTemplate(google_privateca_certificate_template.default().id())
+ *             .certificateTemplate(default_.id())
  *             .role(&#34;roles/privateca.templateUser&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -173,7 +173,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new CertificateTemplateIamBinding(&#34;binding&#34;, CertificateTemplateIamBindingArgs.builder()        
- *             .certificateTemplate(google_privateca_certificate_template.default().id())
+ *             .certificateTemplate(default_.id())
  *             .role(&#34;roles/privateca.templateUser&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .condition(CertificateTemplateIamBindingConditionArgs.builder()
@@ -209,7 +209,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new CertificateTemplateIamMember(&#34;member&#34;, CertificateTemplateIamMemberArgs.builder()        
- *             .certificateTemplate(google_privateca_certificate_template.default().id())
+ *             .certificateTemplate(default_.id())
  *             .role(&#34;roles/privateca.templateUser&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -242,7 +242,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new CertificateTemplateIamMember(&#34;member&#34;, CertificateTemplateIamMemberArgs.builder()        
- *             .certificateTemplate(google_privateca_certificate_template.default().id())
+ *             .certificateTemplate(default_.id())
  *             .role(&#34;roles/privateca.templateUser&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .condition(CertificateTemplateIamMemberConditionArgs.builder()

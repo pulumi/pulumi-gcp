@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// {
         ///     var foo = Gcp.ServiceAccount.GetIamPolicy.Invoke(new()
         ///     {
-        ///         ServiceAccountId = google_service_account.Test_account.Name,
+        ///         ServiceAccountId = testAccount.Name,
         ///     });
         /// 
         /// });
@@ -50,7 +50,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// {
         ///     var foo = Gcp.ServiceAccount.GetIamPolicy.Invoke(new()
         ///     {
-        ///         ServiceAccountId = google_service_account.Test_account.Name,
+        ///         ServiceAccountId = testAccount.Name,
         ///     });
         /// 
         /// });

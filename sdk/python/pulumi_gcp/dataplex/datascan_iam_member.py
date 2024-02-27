@@ -312,9 +312,9 @@ class DatascanIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.dataplex.DatascanIamPolicy("policy",
-            project=google_dataplex_datascan["basic_profile"]["project"],
-            location=google_dataplex_datascan["basic_profile"]["location"],
-            data_scan_id=google_dataplex_datascan["basic_profile"]["data_scan_id"],
+            project=basic_profile["project"],
+            location=basic_profile["location"],
+            data_scan_id=basic_profile["dataScanId"],
             policy_data=admin.policy_data)
         ```
 
@@ -325,9 +325,9 @@ class DatascanIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.dataplex.DatascanIamBinding("binding",
-            project=google_dataplex_datascan["basic_profile"]["project"],
-            location=google_dataplex_datascan["basic_profile"]["location"],
-            data_scan_id=google_dataplex_datascan["basic_profile"]["data_scan_id"],
+            project=basic_profile["project"],
+            location=basic_profile["location"],
+            data_scan_id=basic_profile["dataScanId"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -339,9 +339,9 @@ class DatascanIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.dataplex.DatascanIamMember("member",
-            project=google_dataplex_datascan["basic_profile"]["project"],
-            location=google_dataplex_datascan["basic_profile"]["location"],
-            data_scan_id=google_dataplex_datascan["basic_profile"]["data_scan_id"],
+            project=basic_profile["project"],
+            location=basic_profile["location"],
+            data_scan_id=basic_profile["dataScanId"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -438,9 +438,9 @@ class DatascanIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.dataplex.DatascanIamPolicy("policy",
-            project=google_dataplex_datascan["basic_profile"]["project"],
-            location=google_dataplex_datascan["basic_profile"]["location"],
-            data_scan_id=google_dataplex_datascan["basic_profile"]["data_scan_id"],
+            project=basic_profile["project"],
+            location=basic_profile["location"],
+            data_scan_id=basic_profile["dataScanId"],
             policy_data=admin.policy_data)
         ```
 
@@ -451,9 +451,9 @@ class DatascanIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.dataplex.DatascanIamBinding("binding",
-            project=google_dataplex_datascan["basic_profile"]["project"],
-            location=google_dataplex_datascan["basic_profile"]["location"],
-            data_scan_id=google_dataplex_datascan["basic_profile"]["data_scan_id"],
+            project=basic_profile["project"],
+            location=basic_profile["location"],
+            data_scan_id=basic_profile["dataScanId"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -465,9 +465,9 @@ class DatascanIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.dataplex.DatascanIamMember("member",
-            project=google_dataplex_datascan["basic_profile"]["project"],
-            location=google_dataplex_datascan["basic_profile"]["location"],
-            data_scan_id=google_dataplex_datascan["basic_profile"]["data_scan_id"],
+            project=basic_profile["project"],
+            location=basic_profile["location"],
+            data_scan_id=basic_profile["dataScanId"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

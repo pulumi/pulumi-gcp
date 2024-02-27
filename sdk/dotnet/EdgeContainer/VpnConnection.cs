@@ -33,6 +33,7 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     ///     var cluster = new Gcp.EdgeContainer.Cluster("cluster", new()
     ///     {
+    ///         Name = "default",
     ///         Location = "us-central1",
     ///         Authorization = new Gcp.EdgeContainer.Inputs.ClusterAuthorizationArgs
     ///         {
@@ -58,18 +59,23 @@ namespace Pulumi.Gcp.EdgeContainer
     ///         },
     ///     });
     /// 
-    ///     var nodePool = new Gcp.EdgeContainer.NodePool("nodePool", new()
+    ///     var nodePool = new Gcp.EdgeContainer.NodePool("node_pool", new()
     ///     {
+    ///         Name = "nodepool-1",
     ///         Cluster = cluster.Name,
     ///         Location = "us-central1",
     ///         NodeLocation = "us-central1-edge-example-edgesite",
     ///         NodeCount = 3,
     ///     });
     /// 
-    ///     var vpc = new Gcp.Compute.Network("vpc");
+    ///     var vpc = new Gcp.Compute.Network("vpc", new()
+    ///     {
+    ///         Name = "example-vpc",
+    ///     });
     /// 
     ///     var @default = new Gcp.EdgeContainer.VpnConnection("default", new()
     ///     {
+    ///         Name = "vpn-connection-1",
     ///         Location = "us-central1",
     ///         Cluster = Output.Tuple(project, cluster.Name).Apply(values =&gt;
     ///         {
@@ -83,12 +89,6 @@ namespace Pulumi.Gcp.EdgeContainer
     ///         {
     ///             { "my_key", "my_val" },
     ///             { "other_key", "other_val" },
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             nodePool,
     ///         },
     ///     });
     /// 

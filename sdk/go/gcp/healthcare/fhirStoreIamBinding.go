@@ -50,7 +50,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = healthcare.NewFhirStoreIamPolicy(ctx, "fhirStore", &healthcare.FhirStoreIamPolicyArgs{
+//			_, err = healthcare.NewFhirStoreIamPolicy(ctx, "fhir_store", &healthcare.FhirStoreIamPolicyArgs{
 //				FhirStoreId: pulumi.String("your-fhir-store-id"),
 //				PolicyData:  *pulumi.String(admin.PolicyData),
 //			})
@@ -77,12 +77,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := healthcare.NewFhirStoreIamBinding(ctx, "fhirStore", &healthcare.FhirStoreIamBindingArgs{
+//			_, err := healthcare.NewFhirStoreIamBinding(ctx, "fhir_store", &healthcare.FhirStoreIamBindingArgs{
 //				FhirStoreId: pulumi.String("your-fhir-store-id"),
+//				Role:        pulumi.String("roles/editor"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				Role: pulumi.String("roles/editor"),
 //			})
 //			if err != nil {
 //				return err
@@ -107,10 +107,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := healthcare.NewFhirStoreIamMember(ctx, "fhirStore", &healthcare.FhirStoreIamMemberArgs{
+//			_, err := healthcare.NewFhirStoreIamMember(ctx, "fhir_store", &healthcare.FhirStoreIamMemberArgs{
 //				FhirStoreId: pulumi.String("your-fhir-store-id"),
-//				Member:      pulumi.String("user:jane@example.com"),
 //				Role:        pulumi.String("roles/editor"),
+//				Member:      pulumi.String("user:jane@example.com"),
 //			})
 //			if err != nil {
 //				return err

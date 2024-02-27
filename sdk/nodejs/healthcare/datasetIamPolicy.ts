@@ -41,8 +41,8 @@ import * as utilities from "../utilities";
  *
  * const dataset = new gcp.healthcare.DatasetIamBinding("dataset", {
  *     datasetId: "your-dataset-id",
- *     members: ["user:jane@example.com"],
  *     role: "roles/editor",
+ *     members: ["user:jane@example.com"],
  * });
  * ```
  *
@@ -54,8 +54,8 @@ import * as utilities from "../utilities";
  *
  * const dataset = new gcp.healthcare.DatasetIamMember("dataset", {
  *     datasetId: "your-dataset-id",
- *     member: "user:jane@example.com",
  *     role: "roles/editor",
+ *     member: "user:jane@example.com",
  * });
  * ```
  *

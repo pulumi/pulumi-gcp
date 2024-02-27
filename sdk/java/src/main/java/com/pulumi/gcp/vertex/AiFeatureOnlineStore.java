@@ -56,15 +56,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var featureOnlineStore = new AiFeatureOnlineStore(&#34;featureOnlineStore&#34;, AiFeatureOnlineStoreArgs.builder()        
- *             .bigtable(AiFeatureOnlineStoreBigtableArgs.builder()
- *                 .autoScaling(AiFeatureOnlineStoreBigtableAutoScalingArgs.builder()
- *                     .cpuUtilizationTarget(50)
- *                     .maxNodeCount(3)
- *                     .minNodeCount(1)
- *                     .build())
- *                 .build())
+ *             .name(&#34;example_feature_online_store&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .region(&#34;us-central1&#34;)
+ *             .bigtable(AiFeatureOnlineStoreBigtableArgs.builder()
+ *                 .autoScaling(AiFeatureOnlineStoreBigtableAutoScalingArgs.builder()
+ *                     .minNodeCount(1)
+ *                     .maxNodeCount(3)
+ *                     .cpuUtilizationTarget(50)
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -84,7 +85,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreOptimizedArgs;
  * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreDedicatedServingEndpointArgs;
  * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -101,6 +101,7 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var featureonlinestore = new AiFeatureOnlineStore(&#34;featureonlinestore&#34;, AiFeatureOnlineStoreArgs.builder()        
+ *             .name(&#34;example_feature_online_store_optimized&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .region(&#34;us-central1&#34;)
  *             .optimized()
@@ -110,9 +111,7 @@ import javax.annotation.Nullable;
  *                     .projectAllowlists(project.applyValue(getProjectResult -&gt; getProjectResult.number()))
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -131,7 +130,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreEmbeddingManagementArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -146,6 +144,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var featureonlinestore = new AiFeatureOnlineStore(&#34;featureonlinestore&#34;, AiFeatureOnlineStoreArgs.builder()        
+ *             .name(&#34;example_feature_online_store_beta_bigtable&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .region(&#34;us-central1&#34;)
  *             .bigtable(AiFeatureOnlineStoreBigtableArgs.builder()
@@ -159,9 +158,7 @@ import javax.annotation.Nullable;
  *                 .enabled(true)
  *                 .build())
  *             .forceDestroy(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 

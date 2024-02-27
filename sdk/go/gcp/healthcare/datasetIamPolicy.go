@@ -79,10 +79,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := healthcare.NewDatasetIamBinding(ctx, "dataset", &healthcare.DatasetIamBindingArgs{
 //				DatasetId: pulumi.String("your-dataset-id"),
+//				Role:      pulumi.String("roles/editor"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				Role: pulumi.String("roles/editor"),
 //			})
 //			if err != nil {
 //				return err
@@ -109,8 +109,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := healthcare.NewDatasetIamMember(ctx, "dataset", &healthcare.DatasetIamMemberArgs{
 //				DatasetId: pulumi.String("your-dataset-id"),
-//				Member:    pulumi.String("user:jane@example.com"),
 //				Role:      pulumi.String("roles/editor"),
+//				Member:    pulumi.String("user:jane@example.com"),
 //			})
 //			if err != nil {
 //				return err

@@ -357,19 +357,19 @@ class SecurityProfileGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        security_profile = gcp.networksecurity.SecurityProfile("securityProfile",
+        security_profile = gcp.networksecurity.SecurityProfile("security_profile",
+            name="sec-profile",
             type="THREAT_PREVENTION",
             parent="organizations/123456789",
-            location="global",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            location="global")
         default = gcp.networksecurity.SecurityProfileGroup("default",
+            name="sec-profile-group",
             parent="organizations/123456789",
             description="my description",
             threat_prevention_profile=security_profile.id,
             labels={
                 "foo": "bar",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
 
         ## Import
@@ -415,19 +415,19 @@ class SecurityProfileGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        security_profile = gcp.networksecurity.SecurityProfile("securityProfile",
+        security_profile = gcp.networksecurity.SecurityProfile("security_profile",
+            name="sec-profile",
             type="THREAT_PREVENTION",
             parent="organizations/123456789",
-            location="global",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            location="global")
         default = gcp.networksecurity.SecurityProfileGroup("default",
+            name="sec-profile-group",
             parent="organizations/123456789",
             description="my description",
             threat_prevention_profile=security_profile.id,
             labels={
                 "foo": "bar",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
 
         ## Import

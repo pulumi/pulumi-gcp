@@ -35,8 +35,10 @@ namespace Pulumi.Gcp.AppEngine
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myProject = new Gcp.Organizations.Project("myProject", new()
+    ///     var myProject = new Gcp.Organizations.Project("my_project", new()
     ///     {
+    ///         Name = "appeng-flex",
+    ///         ProjectId = "appeng-flex",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
     ///     });
@@ -54,28 +56,28 @@ namespace Pulumi.Gcp.AppEngine
     ///         DisableDependentServices = false,
     ///     });
     /// 
-    ///     var customServiceAccount = new Gcp.ServiceAccount.Account("customServiceAccount", new()
+    ///     var customServiceAccount = new Gcp.ServiceAccount.Account("custom_service_account", new()
     ///     {
     ///         Project = service.Project,
     ///         AccountId = "my-account",
     ///         DisplayName = "Custom Service Account",
     ///     });
     /// 
-    ///     var gaeApi = new Gcp.Projects.IAMMember("gaeApi", new()
+    ///     var gaeApi = new Gcp.Projects.IAMMember("gae_api", new()
     ///     {
     ///         Project = service.Project,
     ///         Role = "roles/compute.networkUser",
     ///         Member = customServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
     ///     });
     /// 
-    ///     var logsWriter = new Gcp.Projects.IAMMember("logsWriter", new()
+    ///     var logsWriter = new Gcp.Projects.IAMMember("logs_writer", new()
     ///     {
     ///         Project = service.Project,
     ///         Role = "roles/logging.logWriter",
     ///         Member = customServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
     ///     });
     /// 
-    ///     var storageViewer = new Gcp.Projects.IAMMember("storageViewer", new()
+    ///     var storageViewer = new Gcp.Projects.IAMMember("storage_viewer", new()
     ///     {
     ///         Project = service.Project,
     ///         Role = "roles/storage.objectViewer",
@@ -85,16 +87,18 @@ namespace Pulumi.Gcp.AppEngine
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
     ///         Project = myProject.ProjectId,
+    ///         Name = "appengine-static-content",
     ///         Location = "US",
     ///     });
     /// 
     ///     var @object = new Gcp.Storage.BucketObject("object", new()
     ///     {
+    ///         Name = "hello-world.zip",
     ///         Bucket = bucket.Name,
     ///         Source = new FileAsset("./test-fixtures/hello-world.zip"),
     ///     });
     /// 
-    ///     var myappV1 = new Gcp.AppEngine.FlexibleAppVersion("myappV1", new()
+    ///     var myappV1 = new Gcp.AppEngine.FlexibleAppVersion("myapp_v1", new()
     ///     {
     ///         VersionId = "v1",
     ///         Project = gaeApi.Project,

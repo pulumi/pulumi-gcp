@@ -109,9 +109,9 @@ def get_connection_iam_policy(location: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.cloudbuildv2.get_connection_iam_policy(project=google_cloudbuildv2_connection["my-connection"]["project"],
-        location=google_cloudbuildv2_connection["my-connection"]["location"],
-        name=google_cloudbuildv2_connection["my-connection"]["name"])
+    policy = gcp.cloudbuildv2.get_connection_iam_policy(project=my_connection["project"],
+        location=my_connection["location"],
+        name=my_connection["name"])
     ```
 
 
@@ -150,9 +150,9 @@ def get_connection_iam_policy_output(location: Optional[pulumi.Input[Optional[st
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.cloudbuildv2.get_connection_iam_policy(project=google_cloudbuildv2_connection["my-connection"]["project"],
-        location=google_cloudbuildv2_connection["my-connection"]["location"],
-        name=google_cloudbuildv2_connection["my-connection"]["name"])
+    policy = gcp.cloudbuildv2.get_connection_iam_policy(project=my_connection["project"],
+        location=my_connection["location"],
+        name=my_connection["name"])
     ```
 
 

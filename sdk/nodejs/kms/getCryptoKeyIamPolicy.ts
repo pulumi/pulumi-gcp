@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const foo = gcp.kms.getCryptoKeyIamPolicy({
- *     cryptoKeyId: google_kms_crypto_key.crypto_key.id,
+ *     cryptoKeyId: cryptoKey.id,
  * });
  * ```
  */
@@ -64,7 +64,7 @@ export interface GetCryptoKeyIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const foo = gcp.kms.getCryptoKeyIamPolicy({
- *     cryptoKeyId: google_kms_crypto_key.crypto_key.id,
+ *     cryptoKeyId: cryptoKey.id,
  * });
  * ```
  */

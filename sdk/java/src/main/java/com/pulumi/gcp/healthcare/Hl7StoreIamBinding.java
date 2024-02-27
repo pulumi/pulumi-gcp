@@ -91,8 +91,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var hl7V2Store = new Hl7StoreIamBinding(&#34;hl7V2Store&#34;, Hl7StoreIamBindingArgs.builder()        
  *             .hl7V2StoreId(&#34;your-hl7-v2-store-id&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
  *             .role(&#34;roles/editor&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
  * 
  *     }
@@ -123,8 +123,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var hl7V2Store = new Hl7StoreIamMember(&#34;hl7V2Store&#34;, Hl7StoreIamMemberArgs.builder()        
  *             .hl7V2StoreId(&#34;your-hl7-v2-store-id&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
  *             .role(&#34;roles/editor&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
  *             .build());
  * 
  *     }

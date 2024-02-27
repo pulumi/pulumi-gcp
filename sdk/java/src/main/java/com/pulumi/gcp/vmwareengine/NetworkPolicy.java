@@ -49,6 +49,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network_policy_nw = new Network(&#34;network-policy-nw&#34;, NetworkArgs.builder()        
+ *             .name(&#34;standard-nw&#34;)
  *             .location(&#34;global&#34;)
  *             .type(&#34;STANDARD&#34;)
  *             .description(&#34;VMwareEngine standard network sample&#34;)
@@ -56,6 +57,7 @@ import javax.annotation.Nullable;
  * 
  *         var vmw_engine_network_policy = new NetworkPolicy(&#34;vmw-engine-network-policy&#34;, NetworkPolicyArgs.builder()        
  *             .location(&#34;us-west1&#34;)
+ *             .name(&#34;sample-network-policy&#34;)
  *             .edgeServicesCidr(&#34;192.168.30.0/26&#34;)
  *             .vmwareEngineNetwork(network_policy_nw.id())
  *             .build());
@@ -90,6 +92,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network_policy_nw = new Network(&#34;network-policy-nw&#34;, NetworkArgs.builder()        
+ *             .name(&#34;standard-full-nw&#34;)
  *             .location(&#34;global&#34;)
  *             .type(&#34;STANDARD&#34;)
  *             .description(&#34;VMwareEngine standard network sample&#34;)
@@ -97,6 +100,7 @@ import javax.annotation.Nullable;
  * 
  *         var vmw_engine_network_policy = new NetworkPolicy(&#34;vmw-engine-network-policy&#34;, NetworkPolicyArgs.builder()        
  *             .location(&#34;us-west1&#34;)
+ *             .name(&#34;sample-network-policy-full&#34;)
  *             .edgeServicesCidr(&#34;192.168.30.0/26&#34;)
  *             .vmwareEngineNetwork(network_policy_nw.id())
  *             .description(&#34;Sample Network Policy&#34;)

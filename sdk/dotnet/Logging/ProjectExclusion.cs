@@ -30,6 +30,7 @@ namespace Pulumi.Gcp.Logging
     /// {
     ///     var my_exclusion = new Gcp.Logging.ProjectExclusion("my-exclusion", new()
     ///     {
+    ///         Name = "my-instance-debug-exclusion",
     ///         Description = "Exclude GCE instance debug logs",
     ///         Filter = "resource.type = gce_instance AND severity &lt;= DEBUG",
     ///     });

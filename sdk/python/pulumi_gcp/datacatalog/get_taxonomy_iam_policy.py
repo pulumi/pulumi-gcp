@@ -109,7 +109,7 @@ def get_taxonomy_iam_policy(project: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.datacatalog.get_taxonomy_iam_policy(taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"])
+    policy = gcp.datacatalog.get_taxonomy_iam_policy(taxonomy=basic_taxonomy["name"])
     ```
 
 
@@ -147,7 +147,7 @@ def get_taxonomy_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.datacatalog.get_taxonomy_iam_policy(taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"])
+    policy = gcp.datacatalog.get_taxonomy_iam_policy(taxonomy=basic_taxonomy["name"])
     ```
 
 

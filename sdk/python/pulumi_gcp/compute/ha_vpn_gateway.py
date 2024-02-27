@@ -356,9 +356,12 @@ class HaVpnGateway(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network1 = gcp.compute.Network("network1", auto_create_subnetworks=False)
-        ha_gateway1 = gcp.compute.HaVpnGateway("haGateway1",
+        network1 = gcp.compute.Network("network1",
+            name="network1",
+            auto_create_subnetworks=False)
+        ha_gateway1 = gcp.compute.HaVpnGateway("ha_gateway1",
             region="us-central1",
+            name="ha-vpn-1",
             network=network1.id)
         ```
         ### Ha Vpn Gateway Ipv6
@@ -367,9 +370,12 @@ class HaVpnGateway(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network1 = gcp.compute.Network("network1", auto_create_subnetworks=False)
-        ha_gateway1 = gcp.compute.HaVpnGateway("haGateway1",
+        network1 = gcp.compute.Network("network1",
+            name="network1",
+            auto_create_subnetworks=False)
+        ha_gateway1 = gcp.compute.HaVpnGateway("ha_gateway1",
             region="us-central1",
+            name="ha-vpn-1",
             network=network1.id,
             stack_type="IPV4_IPV6")
         ```
@@ -379,38 +385,46 @@ class HaVpnGateway(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network = gcp.compute.Network("network", auto_create_subnetworks=False)
+        network = gcp.compute.Network("network",
+            name="test-network",
+            auto_create_subnetworks=False)
         address1 = gcp.compute.Address("address1",
+            name="test-address1",
             address_type="INTERNAL",
             purpose="IPSEC_INTERCONNECT",
             address="192.168.1.0",
             prefix_length=29,
             network=network.self_link)
         router = gcp.compute.Router("router",
+            name="test-router",
             network=network.name,
             encrypted_interconnect_router=True,
             bgp=gcp.compute.RouterBgpArgs(
                 asn=16550,
             ))
         attachment1 = gcp.compute.InterconnectAttachment("attachment1",
+            name="test-interconnect-attachment1",
             edge_availability_domain="AVAILABILITY_DOMAIN_1",
             type="PARTNER",
             router=router.id,
             encryption="IPSEC",
             ipsec_internal_addresses=[address1.self_link])
         address2 = gcp.compute.Address("address2",
+            name="test-address2",
             address_type="INTERNAL",
             purpose="IPSEC_INTERCONNECT",
             address="192.168.2.0",
             prefix_length=29,
             network=network.self_link)
         attachment2 = gcp.compute.InterconnectAttachment("attachment2",
+            name="test-interconnect-attachment2",
             edge_availability_domain="AVAILABILITY_DOMAIN_2",
             type="PARTNER",
             router=router.id,
             encryption="IPSEC",
             ipsec_internal_addresses=[address2.self_link])
         vpn_gateway = gcp.compute.HaVpnGateway("vpn-gateway",
+            name="test-ha-vpngw",
             network=network.id,
             vpn_interfaces=[
                 gcp.compute.HaVpnGatewayVpnInterfaceArgs(
@@ -503,9 +517,12 @@ class HaVpnGateway(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network1 = gcp.compute.Network("network1", auto_create_subnetworks=False)
-        ha_gateway1 = gcp.compute.HaVpnGateway("haGateway1",
+        network1 = gcp.compute.Network("network1",
+            name="network1",
+            auto_create_subnetworks=False)
+        ha_gateway1 = gcp.compute.HaVpnGateway("ha_gateway1",
             region="us-central1",
+            name="ha-vpn-1",
             network=network1.id)
         ```
         ### Ha Vpn Gateway Ipv6
@@ -514,9 +531,12 @@ class HaVpnGateway(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network1 = gcp.compute.Network("network1", auto_create_subnetworks=False)
-        ha_gateway1 = gcp.compute.HaVpnGateway("haGateway1",
+        network1 = gcp.compute.Network("network1",
+            name="network1",
+            auto_create_subnetworks=False)
+        ha_gateway1 = gcp.compute.HaVpnGateway("ha_gateway1",
             region="us-central1",
+            name="ha-vpn-1",
             network=network1.id,
             stack_type="IPV4_IPV6")
         ```
@@ -526,38 +546,46 @@ class HaVpnGateway(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network = gcp.compute.Network("network", auto_create_subnetworks=False)
+        network = gcp.compute.Network("network",
+            name="test-network",
+            auto_create_subnetworks=False)
         address1 = gcp.compute.Address("address1",
+            name="test-address1",
             address_type="INTERNAL",
             purpose="IPSEC_INTERCONNECT",
             address="192.168.1.0",
             prefix_length=29,
             network=network.self_link)
         router = gcp.compute.Router("router",
+            name="test-router",
             network=network.name,
             encrypted_interconnect_router=True,
             bgp=gcp.compute.RouterBgpArgs(
                 asn=16550,
             ))
         attachment1 = gcp.compute.InterconnectAttachment("attachment1",
+            name="test-interconnect-attachment1",
             edge_availability_domain="AVAILABILITY_DOMAIN_1",
             type="PARTNER",
             router=router.id,
             encryption="IPSEC",
             ipsec_internal_addresses=[address1.self_link])
         address2 = gcp.compute.Address("address2",
+            name="test-address2",
             address_type="INTERNAL",
             purpose="IPSEC_INTERCONNECT",
             address="192.168.2.0",
             prefix_length=29,
             network=network.self_link)
         attachment2 = gcp.compute.InterconnectAttachment("attachment2",
+            name="test-interconnect-attachment2",
             edge_availability_domain="AVAILABILITY_DOMAIN_2",
             type="PARTNER",
             router=router.id,
             encryption="IPSEC",
             ipsec_internal_addresses=[address2.self_link])
         vpn_gateway = gcp.compute.HaVpnGateway("vpn-gateway",
+            name="test-ha-vpngw",
             network=network.id,
             vpn_interfaces=[
                 gcp.compute.HaVpnGatewayVpnInterfaceArgs(

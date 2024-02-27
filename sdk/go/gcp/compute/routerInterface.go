@@ -32,9 +32,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewRouterInterface(ctx, "foobar", &compute.RouterInterfaceArgs{
-//				IpRange:   pulumi.String("169.254.1.1/30"),
-//				Region:    pulumi.String("us-central1"),
+//				Name:      pulumi.String("interface-1"),
 //				Router:    pulumi.String("router-1"),
+//				Region:    pulumi.String("us-central1"),
+//				IpRange:   pulumi.String("169.254.1.1/30"),
 //				VpnTunnel: pulumi.String("tunnel-1"),
 //			})
 //			if err != nil {

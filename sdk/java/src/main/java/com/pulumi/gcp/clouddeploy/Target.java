@@ -39,7 +39,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.clouddeploy.TargetArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.TargetExecutionConfigArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.TargetMultiTargetArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -55,6 +54,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new Target(&#34;primary&#34;, TargetArgs.builder()        
  *             .location(&#34;us-west1&#34;)
+ *             .name(&#34;target&#34;)
  *             .deployParameters()
  *             .description(&#34;multi-target description&#34;)
  *             .executionConfigs(TargetExecutionConfigArgs.builder()
@@ -78,9 +78,7 @@ import javax.annotation.Nullable;
  *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
  *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
  *             ))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -97,7 +95,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.clouddeploy.TargetArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.TargetExecutionConfigArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.TargetRunArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -113,6 +110,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new Target(&#34;primary&#34;, TargetArgs.builder()        
  *             .location(&#34;us-west1&#34;)
+ *             .name(&#34;target&#34;)
  *             .deployParameters()
  *             .description(&#34;basic description&#34;)
  *             .executionConfigs(TargetExecutionConfigArgs.builder()
@@ -134,9 +132,7 @@ import javax.annotation.Nullable;
  *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
  *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
  *             ))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -166,22 +162,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var primary = new Target(&#34;primary&#34;, TargetArgs.builder()        
- *             .annotations(Map.ofEntries(
- *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
- *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
- *             ))
+ *             .location(&#34;us-west1&#34;)
+ *             .name(&#34;target&#34;)
  *             .deployParameters(Map.of(&#34;deployParameterKey&#34;, &#34;deployParameterValue&#34;))
  *             .description(&#34;basic description&#34;)
  *             .gke(TargetGkeArgs.builder()
  *                 .cluster(&#34;projects/my-project-name/locations/us-west1/clusters/example-cluster-name&#34;)
  *                 .build())
+ *             .project(&#34;my-project-name&#34;)
+ *             .requireApproval(false)
+ *             .annotations(Map.ofEntries(
+ *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
+ *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
+ *             ))
  *             .labels(Map.ofEntries(
  *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
  *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
  *             ))
- *             .location(&#34;us-west1&#34;)
- *             .project(&#34;my-project-name&#34;)
- *             .requireApproval(false)
  *             .build());
  * 
  *     }

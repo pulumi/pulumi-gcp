@@ -28,7 +28,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultProject = new gcp.organizations.Project("defaultProject", {
+ * const _default = new gcp.organizations.Project("default", {
+ *     projectId: "my-project",
+ *     name: "my-project",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
  *     labels: {
@@ -36,11 +38,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const identitytoolkit = new gcp.projects.Service("identitytoolkit", {
- *     project: defaultProject.projectId,
+ *     project: _default.projectId,
  *     service: "identitytoolkit.googleapis.com",
  * });
- * const defaultConfig = new gcp.identityplatform.Config("defaultConfig", {
- *     project: defaultProject.projectId,
+ * const defaultConfig = new gcp.identityplatform.Config("default", {
+ *     project: _default.projectId,
  *     autodeleteAnonymousUsers: true,
  *     signIn: {
  *         allowDuplicateEmails: true,

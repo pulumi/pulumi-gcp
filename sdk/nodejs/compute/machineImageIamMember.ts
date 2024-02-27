@@ -35,11 +35,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.compute.MachineImageIamPolicy("policy", {
- *     project: google_compute_machine_image.image.project,
- *     machineImage: google_compute_machine_image.image.name,
+ *     project: image.project,
+ *     machineImage: image.name,
  *     policyData: admin.then(admin => admin.policyData),
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *
@@ -61,11 +59,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.compute.MachineImageIamPolicy("policy", {
- *     project: google_compute_machine_image.image.project,
- *     machineImage: google_compute_machine_image.image.name,
+ *     project: image.project,
+ *     machineImage: image.name,
  *     policyData: admin.then(admin => admin.policyData),
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ## google\_compute\_machine\_image\_iam\_binding
@@ -75,12 +71,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.compute.MachineImageIamBinding("binding", {
- *     project: google_compute_machine_image.image.project,
- *     machineImage: google_compute_machine_image.image.name,
+ *     project: image.project,
+ *     machineImage: image.name,
  *     role: "roles/compute.admin",
  *     members: ["user:jane@example.com"],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *
@@ -91,8 +85,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.compute.MachineImageIamBinding("binding", {
- *     project: google_compute_machine_image.image.project,
- *     machineImage: google_compute_machine_image.image.name,
+ *     project: image.project,
+ *     machineImage: image.name,
  *     role: "roles/compute.admin",
  *     members: ["user:jane@example.com"],
  *     condition: {
@@ -100,8 +94,6 @@ import * as utilities from "../utilities";
  *         description: "Expiring at midnight of 2019-12-31",
  *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ## google\_compute\_machine\_image\_iam\_member
@@ -111,12 +103,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.compute.MachineImageIamMember("member", {
- *     project: google_compute_machine_image.image.project,
- *     machineImage: google_compute_machine_image.image.name,
+ *     project: image.project,
+ *     machineImage: image.name,
  *     role: "roles/compute.admin",
  *     member: "user:jane@example.com",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *
@@ -127,8 +117,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.compute.MachineImageIamMember("member", {
- *     project: google_compute_machine_image.image.project,
- *     machineImage: google_compute_machine_image.image.name,
+ *     project: image.project,
+ *     machineImage: image.name,
  *     role: "roles/compute.admin",
  *     member: "user:jane@example.com",
  *     condition: {
@@ -136,8 +126,6 @@ import * as utilities from "../utilities";
  *         description: "Expiring at midnight of 2019-12-31",
  *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

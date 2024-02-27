@@ -36,14 +36,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := monitoring.NewMonitoredProject(ctx, "primary", &monitoring.MonitoredProjectArgs{
-//				MetricsScope: pulumi.String("my-project-name"),
+//			basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("m-id"),
+//				Name:      pulumi.String("m-id-display"),
+//				OrgId:     pulumi.String("123456789"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
-//				OrgId: pulumi.String("123456789"),
+//			_, err = monitoring.NewMonitoredProject(ctx, "primary", &monitoring.MonitoredProjectArgs{
+//				MetricsScope: pulumi.String("my-project-name"),
+//				Name:         basic.ProjectId,
 //			})
 //			if err != nil {
 //				return err

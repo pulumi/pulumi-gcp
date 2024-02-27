@@ -32,12 +32,13 @@ namespace Pulumi.Gcp.NetworkServices
     /// {
     ///     var @default = new Gcp.NetworkServices.Gateway("default", new()
     ///     {
+    ///         Name = "my-gateway",
+    ///         Scope = "default-scope-basic",
+    ///         Type = "OPEN_MESH",
     ///         Ports = new[]
     ///         {
     ///             443,
     ///         },
-    ///         Scope = "default-scope-basic",
-    ///         Type = "OPEN_MESH",
     ///     });
     /// 
     /// });
@@ -54,17 +55,18 @@ namespace Pulumi.Gcp.NetworkServices
     /// {
     ///     var @default = new Gcp.NetworkServices.Gateway("default", new()
     ///     {
-    ///         Description = "my description",
+    ///         Name = "my-gateway",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
     ///         },
+    ///         Description = "my description",
+    ///         Type = "OPEN_MESH",
     ///         Ports = new[]
     ///         {
     ///             443,
     ///         },
     ///         Scope = "default-scope-advance",
-    ///         Type = "OPEN_MESH",
     ///     });
     /// 
     /// });
@@ -73,31 +75,40 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultCertificate = new Gcp.CertificateManager.Certificate("defaultCertificate", new()
+    ///     var @default = new Gcp.CertificateManager.Certificate("default", new()
     ///     {
+    ///         Name = "my-certificate",
     ///         Location = "us-central1",
     ///         SelfManaged = new Gcp.CertificateManager.Inputs.CertificateSelfManagedArgs
     ///         {
-    ///             PemCertificate = File.ReadAllText("test-fixtures/cert.pem"),
-    ///             PemPrivateKey = File.ReadAllText("test-fixtures/private-key.pem"),
+    ///             PemCertificate = Std.File.Invoke(new()
+    ///             {
+    ///                 Input = "test-fixtures/cert.pem",
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             PemPrivateKey = Std.File.Invoke(new()
+    ///             {
+    ///                 Input = "test-fixtures/private-key.pem",
+    ///             }).Apply(invoke =&gt; invoke.Result),
     ///         },
     ///     });
     /// 
-    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
     ///     {
+    ///         Name = "my-network",
     ///         RoutingMode = "REGIONAL",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new()
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
     ///     {
+    ///         Name = "my-subnetwork-name",
     ///         Purpose = "PRIVATE",
     ///         IpCidrRange = "10.128.0.0/20",
     ///         Region = "us-central1",
@@ -107,6 +118,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     ///     var proxyonlysubnet = new Gcp.Compute.Subnetwork("proxyonlysubnet", new()
     ///     {
+    ///         Name = "my-proxy-only-subnetwork",
     ///         Purpose = "REGIONAL_MANAGED_PROXY",
     ///         IpCidrRange = "192.168.0.0/23",
     ///         Region = "us-central1",
@@ -114,13 +126,15 @@ namespace Pulumi.Gcp.NetworkServices
     ///         Role = "ACTIVE",
     ///     });
     /// 
-    ///     var defaultGatewaySecurityPolicy = new Gcp.NetworkSecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", new()
+    ///     var defaultGatewaySecurityPolicy = new Gcp.NetworkSecurity.GatewaySecurityPolicy("default", new()
     ///     {
+    ///         Name = "my-policy-name",
     ///         Location = "us-central1",
     ///     });
     /// 
-    ///     var defaultGatewaySecurityPolicyRule = new Gcp.NetworkSecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", new()
+    ///     var defaultGatewaySecurityPolicyRule = new Gcp.NetworkSecurity.GatewaySecurityPolicyRule("default", new()
     ///     {
+    ///         Name = "my-policyrule-name",
     ///         Location = "us-central1",
     ///         GatewaySecurityPolicy = defaultGatewaySecurityPolicy.Name,
     ///         Enabled = true,
@@ -129,8 +143,9 @@ namespace Pulumi.Gcp.NetworkServices
     ///         BasicProfile = "ALLOW",
     ///     });
     /// 
-    ///     var defaultGateway = new Gcp.NetworkServices.Gateway("defaultGateway", new()
+    ///     var defaultGateway = new Gcp.NetworkServices.Gateway("default", new()
     ///     {
+    ///         Name = "my-gateway1",
     ///         Location = "us-central1",
     ///         Addresses = new[]
     ///         {
@@ -144,18 +159,12 @@ namespace Pulumi.Gcp.NetworkServices
     ///         Scope = "my-default-scope1",
     ///         CertificateUrls = new[]
     ///         {
-    ///             defaultCertificate.Id,
+    ///             @default.Id,
     ///         },
     ///         GatewaySecurityPolicy = defaultGatewaySecurityPolicy.Id,
     ///         Network = defaultNetwork.Id,
     ///         Subnetwork = defaultSubnetwork.Id,
     ///         DeleteSwgAutogenRouterOnDestroy = true,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             proxyonlysubnet,
-    ///         },
     ///     });
     /// 
     /// });
@@ -164,31 +173,40 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultCertificate = new Gcp.CertificateManager.Certificate("defaultCertificate", new()
+    ///     var @default = new Gcp.CertificateManager.Certificate("default", new()
     ///     {
+    ///         Name = "my-certificate",
     ///         Location = "us-south1",
     ///         SelfManaged = new Gcp.CertificateManager.Inputs.CertificateSelfManagedArgs
     ///         {
-    ///             PemCertificate = File.ReadAllText("test-fixtures/cert.pem"),
-    ///             PemPrivateKey = File.ReadAllText("test-fixtures/private-key.pem"),
+    ///             PemCertificate = Std.File.Invoke(new()
+    ///             {
+    ///                 Input = "test-fixtures/cert.pem",
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             PemPrivateKey = Std.File.Invoke(new()
+    ///             {
+    ///                 Input = "test-fixtures/private-key.pem",
+    ///             }).Apply(invoke =&gt; invoke.Result),
     ///         },
     ///     });
     /// 
-    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
     ///     {
+    ///         Name = "my-network",
     ///         RoutingMode = "REGIONAL",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new()
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
     ///     {
+    ///         Name = "my-subnetwork-name",
     ///         Purpose = "PRIVATE",
     ///         IpCidrRange = "10.128.0.0/20",
     ///         Region = "us-south1",
@@ -198,6 +216,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     ///     var proxyonlysubnet = new Gcp.Compute.Subnetwork("proxyonlysubnet", new()
     ///     {
+    ///         Name = "my-proxy-only-subnetwork",
     ///         Purpose = "REGIONAL_MANAGED_PROXY",
     ///         IpCidrRange = "192.168.0.0/23",
     ///         Region = "us-south1",
@@ -205,13 +224,15 @@ namespace Pulumi.Gcp.NetworkServices
     ///         Role = "ACTIVE",
     ///     });
     /// 
-    ///     var defaultGatewaySecurityPolicy = new Gcp.NetworkSecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", new()
+    ///     var defaultGatewaySecurityPolicy = new Gcp.NetworkSecurity.GatewaySecurityPolicy("default", new()
     ///     {
+    ///         Name = "my-policy-name",
     ///         Location = "us-south1",
     ///     });
     /// 
-    ///     var defaultGatewaySecurityPolicyRule = new Gcp.NetworkSecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", new()
+    ///     var defaultGatewaySecurityPolicyRule = new Gcp.NetworkSecurity.GatewaySecurityPolicyRule("default", new()
     ///     {
+    ///         Name = "my-policyrule-name",
     ///         Location = "us-south1",
     ///         GatewaySecurityPolicy = defaultGatewaySecurityPolicy.Name,
     ///         Enabled = true,
@@ -220,8 +241,9 @@ namespace Pulumi.Gcp.NetworkServices
     ///         BasicProfile = "ALLOW",
     ///     });
     /// 
-    ///     var defaultGateway = new Gcp.NetworkServices.Gateway("defaultGateway", new()
+    ///     var defaultGateway = new Gcp.NetworkServices.Gateway("default", new()
     ///     {
+    ///         Name = "my-gateway1",
     ///         Location = "us-south1",
     ///         Addresses = new[]
     ///         {
@@ -235,22 +257,17 @@ namespace Pulumi.Gcp.NetworkServices
     ///         Scope = "my-default-scope1",
     ///         CertificateUrls = new[]
     ///         {
-    ///             defaultCertificate.Id,
+    ///             @default.Id,
     ///         },
     ///         GatewaySecurityPolicy = defaultGatewaySecurityPolicy.Id,
     ///         Network = defaultNetwork.Id,
     ///         Subnetwork = defaultSubnetwork.Id,
     ///         DeleteSwgAutogenRouterOnDestroy = true,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             proxyonlysubnet,
-    ///         },
     ///     });
     /// 
     ///     var gateway2 = new Gcp.NetworkServices.Gateway("gateway2", new()
     ///     {
+    ///         Name = "my-gateway2",
     ///         Location = "us-south1",
     ///         Addresses = new[]
     ///         {
@@ -264,18 +281,12 @@ namespace Pulumi.Gcp.NetworkServices
     ///         Scope = "my-default-scope2",
     ///         CertificateUrls = new[]
     ///         {
-    ///             defaultCertificate.Id,
+    ///             @default.Id,
     ///         },
     ///         GatewaySecurityPolicy = defaultGatewaySecurityPolicy.Id,
     ///         Network = defaultNetwork.Id,
     ///         Subnetwork = defaultSubnetwork.Id,
     ///         DeleteSwgAutogenRouterOnDestroy = true,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             proxyonlysubnet,
-    ///         },
     ///     });
     /// 
     /// });

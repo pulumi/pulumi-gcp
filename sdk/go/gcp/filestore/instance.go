@@ -38,20 +38,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
+//				Name:     pulumi.String("test-instance"),
+//				Location: pulumi.String("us-central1-b"),
+//				Tier:     pulumi.String("BASIC_HDD"),
 //				FileShares: &filestore.InstanceFileSharesArgs{
 //					CapacityGb: pulumi.Int(1024),
 //					Name:       pulumi.String("share1"),
 //				},
-//				Location: pulumi.String("us-central1-b"),
 //				Networks: filestore.InstanceNetworkArray{
 //					&filestore.InstanceNetworkArgs{
+//						Network: pulumi.String("default"),
 //						Modes: pulumi.StringArray{
 //							pulumi.String("MODE_IPV4"),
 //						},
-//						Network: pulumi.String("default"),
 //					},
 //				},
-//				Tier: pulumi.String("BASIC_HDD"),
 //			})
 //			if err != nil {
 //				return err
@@ -76,39 +77,40 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
+//				Name:     pulumi.String("test-instance"),
+//				Location: pulumi.String("us-central1-b"),
+//				Tier:     pulumi.String("BASIC_SSD"),
 //				FileShares: &filestore.InstanceFileSharesArgs{
 //					CapacityGb: pulumi.Int(2560),
 //					Name:       pulumi.String("share1"),
 //					NfsExportOptions: filestore.InstanceFileSharesNfsExportOptionArray{
 //						&filestore.InstanceFileSharesNfsExportOptionArgs{
-//							AccessMode: pulumi.String("READ_WRITE"),
 //							IpRanges: pulumi.StringArray{
 //								pulumi.String("10.0.0.0/24"),
 //							},
+//							AccessMode: pulumi.String("READ_WRITE"),
 //							SquashMode: pulumi.String("NO_ROOT_SQUASH"),
 //						},
 //						&filestore.InstanceFileSharesNfsExportOptionArgs{
-//							AccessMode: pulumi.String("READ_ONLY"),
-//							AnonGid:    pulumi.Int(456),
-//							AnonUid:    pulumi.Int(123),
 //							IpRanges: pulumi.StringArray{
 //								pulumi.String("10.10.0.0/24"),
 //							},
+//							AccessMode: pulumi.String("READ_ONLY"),
 //							SquashMode: pulumi.String("ROOT_SQUASH"),
+//							AnonUid:    pulumi.Int(123),
+//							AnonGid:    pulumi.Int(456),
 //						},
 //					},
 //				},
-//				Location: pulumi.String("us-central1-b"),
 //				Networks: filestore.InstanceNetworkArray{
 //					&filestore.InstanceNetworkArgs{
-//						ConnectMode: pulumi.String("DIRECT_PEERING"),
+//						Network: pulumi.String("default"),
 //						Modes: pulumi.StringArray{
 //							pulumi.String("MODE_IPV4"),
 //						},
-//						Network: pulumi.String("default"),
+//						ConnectMode: pulumi.String("DIRECT_PEERING"),
 //					},
 //				},
-//				Tier: pulumi.String("BASIC_SSD"),
 //			})
 //			if err != nil {
 //				return err
@@ -133,19 +135,22 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			filestoreKeyring, err := kms.NewKeyRing(ctx, "filestoreKeyring", &kms.KeyRingArgs{
+//			filestoreKeyring, err := kms.NewKeyRing(ctx, "filestore_keyring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("filestore-keyring"),
 //				Location: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			filestoreKey, err := kms.NewCryptoKey(ctx, "filestoreKey", &kms.CryptoKeyArgs{
+//			filestoreKey, err := kms.NewCryptoKey(ctx, "filestore_key", &kms.CryptoKeyArgs{
+//				Name:    pulumi.String("filestore-key"),
 //				KeyRing: filestoreKeyring.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
+//				Name:     pulumi.String("test-instance"),
 //				Location: pulumi.String("us-central1"),
 //				Tier:     pulumi.String("ENTERPRISE"),
 //				FileShares: &filestore.InstanceFileSharesArgs{

@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  *
  * const gcsAccount = gcp.storage.getProjectServiceAccount({});
  * const binding = new gcp.pubsub.TopicIAMBinding("binding", {
- *     topic: google_pubsub_topic.topic.name,
+ *     topic: topic.name,
  *     role: "roles/pubsub.publisher",
  *     members: [gcsAccount.then(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`)],
  * });
@@ -65,12 +65,11 @@ import * as utilities from "../utilities";
  *     members: [gcsAccount.then(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`)],
  * });
  * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "kms-protected-bucket",
  *     location: "US",
  *     encryption: {
  *         defaultKmsKeyName: "your-crypto-key-id",
  *     },
- * }, {
- *     dependsOn: [binding],
  * });
  * ```
  */
@@ -162,7 +161,7 @@ export interface GetProjectServiceAccountResult {
  *
  * const gcsAccount = gcp.storage.getProjectServiceAccount({});
  * const binding = new gcp.pubsub.TopicIAMBinding("binding", {
- *     topic: google_pubsub_topic.topic.name,
+ *     topic: topic.name,
  *     role: "roles/pubsub.publisher",
  *     members: [gcsAccount.then(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`)],
  * });
@@ -180,12 +179,11 @@ export interface GetProjectServiceAccountResult {
  *     members: [gcsAccount.then(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`)],
  * });
  * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "kms-protected-bucket",
  *     location: "US",
  *     encryption: {
  *         defaultKmsKeyName: "your-crypto-key-id",
  *     },
- * }, {
- *     dependsOn: [binding],
  * });
  * ```
  */

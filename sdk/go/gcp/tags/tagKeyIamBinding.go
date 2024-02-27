@@ -55,7 +55,7 @@ import (
 //				return err
 //			}
 //			_, err = tags.NewTagKeyIamPolicy(ctx, "policy", &tags.TagKeyIamPolicyArgs{
-//				TagKey:     pulumi.Any(google_tags_tag_key.Key.Name),
+//				TagKey:     pulumi.Any(key.Name),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -82,7 +82,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := tags.NewTagKeyIamBinding(ctx, "binding", &tags.TagKeyIamBindingArgs{
-//				TagKey: pulumi.Any(google_tags_tag_key.Key.Name),
+//				TagKey: pulumi.Any(key.Name),
 //				Role:   pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -112,7 +112,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := tags.NewTagKeyIamMember(ctx, "member", &tags.TagKeyIamMemberArgs{
-//				TagKey: pulumi.Any(google_tags_tag_key.Key.Name),
+//				TagKey: pulumi.Any(key.Name),
 //				Role:   pulumi.String("roles/viewer"),
 //				Member: pulumi.String("user:jane@example.com"),
 //			})

@@ -51,9 +51,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var dataset = new AiDataset(&#34;dataset&#34;, AiDatasetArgs.builder()        
  *             .displayName(&#34;terraform&#34;)
- *             .labels(Map.of(&#34;env&#34;, &#34;test&#34;))
  *             .metadataSchemaUri(&#34;gs://google-cloud-aiplatform/schema/dataset/metadata/image_1.0.0.yaml&#34;)
  *             .region(&#34;us-central1&#34;)
+ *             .labels(Map.of(&#34;env&#34;, &#34;test&#34;))
  *             .build());
  * 
  *     }

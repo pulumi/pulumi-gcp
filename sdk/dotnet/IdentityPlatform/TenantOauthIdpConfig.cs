@@ -32,8 +32,9 @@ namespace Pulumi.Gcp.IdentityPlatform
     ///         DisplayName = "tenant",
     ///     });
     /// 
-    ///     var tenantOauthIdpConfig = new Gcp.IdentityPlatform.TenantOauthIdpConfig("tenantOauthIdpConfig", new()
+    ///     var tenantOauthIdpConfig = new Gcp.IdentityPlatform.TenantOauthIdpConfig("tenant_oauth_idp_config", new()
     ///     {
+    ///         Name = "oidc.oauth-idp-config",
     ///         Tenant = tenant.Name,
     ///         DisplayName = "Display Name",
     ///         ClientId = "client-id",

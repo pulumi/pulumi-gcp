@@ -148,11 +148,10 @@ class ServiceIdentity(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        hc_sa = gcp.projects.ServiceIdentity("hcSa",
+        hc_sa = gcp.projects.ServiceIdentity("hc_sa",
             project=project.project_id,
-            service="healthcare.googleapis.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        hc_sa_bq_jobuser = gcp.projects.IAMMember("hcSaBqJobuser",
+            service="healthcare.googleapis.com")
+        hc_sa_bq_jobuser = gcp.projects.IAMMember("hc_sa_bq_jobuser",
             project=project.project_id,
             role="roles/bigquery.jobUser",
             member=hc_sa.email.apply(lambda email: f"serviceAccount:{email}"))
@@ -198,11 +197,10 @@ class ServiceIdentity(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        hc_sa = gcp.projects.ServiceIdentity("hcSa",
+        hc_sa = gcp.projects.ServiceIdentity("hc_sa",
             project=project.project_id,
-            service="healthcare.googleapis.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        hc_sa_bq_jobuser = gcp.projects.IAMMember("hcSaBqJobuser",
+            service="healthcare.googleapis.com")
+        hc_sa_bq_jobuser = gcp.projects.IAMMember("hc_sa_bq_jobuser",
             project=project.project_id,
             role="roles/bigquery.jobUser",
             member=hc_sa.email.apply(lambda email: f"serviceAccount:{email}"))

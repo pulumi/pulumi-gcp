@@ -88,7 +88,7 @@ def get_crypto_key_iam_policy(crypto_key_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.kms.get_crypto_key_iam_policy(crypto_key_id=google_kms_crypto_key["crypto_key"]["id"])
+    foo = gcp.kms.get_crypto_key_iam_policy(crypto_key_id=crypto_key["id"])
     ```
 
 
@@ -118,7 +118,7 @@ def get_crypto_key_iam_policy_output(crypto_key_id: Optional[pulumi.Input[str]] 
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.kms.get_crypto_key_iam_policy(crypto_key_id=google_kms_crypto_key["crypto_key"]["id"])
+    foo = gcp.kms.get_crypto_key_iam_policy(crypto_key_id=crypto_key["id"])
     ```
 
 

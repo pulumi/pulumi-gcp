@@ -27,29 +27,14 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vertexNetwork = new Gcp.Compute.Network("vertexNetwork");
-    /// 
-    ///     var vertexRange = new Gcp.Compute.GlobalAddress("vertexRange", new()
+    ///     var vertexNetwork = new Gcp.Compute.Network("vertex_network", new()
     ///     {
-    ///         Purpose = "VPC_PEERING",
-    ///         AddressType = "INTERNAL",
-    ///         PrefixLength = 24,
-    ///         Network = vertexNetwork.Id,
-    ///     });
-    /// 
-    ///     var vertexVpcConnection = new Gcp.ServiceNetworking.Connection("vertexVpcConnection", new()
-    ///     {
-    ///         Network = vertexNetwork.Id,
-    ///         Service = "servicenetworking.googleapis.com",
-    ///         ReservedPeeringRanges = new[]
-    ///         {
-    ///             vertexRange.Name,
-    ///         },
+    ///         Name = "network-name",
     ///     });
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var indexEndpoint = new Gcp.Vertex.AiIndexEndpoint("indexEndpoint", new()
+    ///     var indexEndpoint = new Gcp.Vertex.AiIndexEndpoint("index_endpoint", new()
     ///     {
     ///         DisplayName = "sample-endpoint",
     ///         Description = "A sample vertex endpoint",
@@ -64,11 +49,24 @@ namespace Pulumi.Gcp.Vertex
     ///             var name = values.Item2;
     ///             return $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/global/networks/{name}";
     ///         }),
-    ///     }, new CustomResourceOptions
+    ///     });
+    /// 
+    ///     var vertexRange = new Gcp.Compute.GlobalAddress("vertex_range", new()
     ///     {
-    ///         DependsOn = new[]
+    ///         Name = "address-name",
+    ///         Purpose = "VPC_PEERING",
+    ///         AddressType = "INTERNAL",
+    ///         PrefixLength = 24,
+    ///         Network = vertexNetwork.Id,
+    ///     });
+    /// 
+    ///     var vertexVpcConnection = new Gcp.ServiceNetworking.Connection("vertex_vpc_connection", new()
+    ///     {
+    ///         Network = vertexNetwork.Id,
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
     ///         {
-    ///             vertexVpcConnection,
+    ///             vertexRange.Name,
     ///         },
     ///     });
     /// 
@@ -86,7 +84,7 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var indexEndpoint = new Gcp.Vertex.AiIndexEndpoint("indexEndpoint", new()
+    ///     var indexEndpoint = new Gcp.Vertex.AiIndexEndpoint("index_endpoint", new()
     ///     {
     ///         DisplayName = "sample-endpoint",
     ///         Description = "A sample vertex endpoint",
@@ -117,16 +115,16 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var indexEndpoint = new Gcp.Vertex.AiIndexEndpoint("indexEndpoint", new()
+    ///     var indexEndpoint = new Gcp.Vertex.AiIndexEndpoint("index_endpoint", new()
     ///     {
-    ///         Description = "A sample vertex endpoint with an public endpoint",
     ///         DisplayName = "sample-endpoint",
+    ///         Description = "A sample vertex endpoint with an public endpoint",
+    ///         Region = "us-central1",
     ///         Labels = 
     ///         {
     ///             { "label-one", "value-one" },
     ///         },
     ///         PublicEndpointEnabled = true,
-    ///         Region = "us-central1",
     ///     });
     /// 
     /// });

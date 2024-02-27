@@ -25,10 +25,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -37,8 +37,14 @@ namespace Pulumi.Gcp.Compute
     ///         Region = "us-central1",
     ///         NamePrefix = "my-certificate-",
     ///         Description = "a description",
-    ///         PrivateKey = File.ReadAllText("path/to/private.key"),
-    ///         Certificate = File.ReadAllText("path/to/certificate.crt"),
+    ///         PrivateKey = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "path/to/private.key",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Certificate = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "path/to/certificate.crt",
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
     /// });
@@ -46,42 +52,149 @@ namespace Pulumi.Gcp.Compute
     /// ### Region Ssl Certificate Random Provider
     /// 
     /// ```csharp
-    /// using System;
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
-    /// using System.Security.Cryptography;
-    /// using System.Text;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// using Random = Pulumi.Random;
-    /// 
-    /// 	
-    /// string ComputeFileBase64Sha256(string path) 
-    /// {
-    ///     var fileData = Encoding.UTF8.GetBytes(File.ReadAllText(path));
-    ///     var hashData = SHA256.Create().ComputeHash(fileData);
-    ///     return Convert.ToBase64String(hashData);
-    /// }
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // You may also want to control name generation explicitly:
-    ///     var @default = new Gcp.Compute.RegionSslCertificate("default", new()
-    ///     {
-    ///         Region = "us-central1",
-    ///         PrivateKey = File.ReadAllText("path/to/private.key"),
-    ///         Certificate = File.ReadAllText("path/to/certificate.crt"),
-    ///     });
-    /// 
     ///     var certificate = new Random.RandomId("certificate", new()
     ///     {
     ///         ByteLength = 4,
     ///         Prefix = "my-certificate-",
     ///         Keepers = 
     ///         {
-    ///             { "private_key", ComputeFileBase64Sha256("path/to/private.key") },
-    ///             { "certificate", ComputeFileBase64Sha256("path/to/certificate.crt") },
+    ///             { "private_key", Std.Filebase64sha256.Invoke(new()
+    ///             {
+    ///                 Input = "path/to/private.key",
+    ///             }).Apply(invoke =&gt; invoke.Result) },
+    ///             { "certificate", Std.Filebase64sha256.Invoke(new()
+    ///             {
+    ///                 Input = "path/to/certificate.crt",
+    ///             }).Apply(invoke =&gt; invoke.Result) },
+    ///         },
+    ///     });
+    /// 
+    ///     // You may also want to control name generation explicitly:
+    ///     var @default = new Gcp.Compute.RegionSslCertificate("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = certificate.Hex,
+    ///         PrivateKey = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "path/to/private.key",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Certificate = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "path/to/certificate.crt",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Region Ssl Certificate Target Https Proxies
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Using with Region Target HTTPS Proxies
+    ///     //
+    ///     // SSL certificates cannot be updated after creation. In order to apply
+    ///     // the specified configuration, the provider will destroy the existing
+    ///     // resource and create a replacement. To effectively use an SSL
+    ///     // certificate resource with a Target HTTPS Proxy resource, it's
+    ///     // recommended to specify create_before_destroy in a lifecycle block.
+    ///     // Either omit the Instance Template name attribute, specify a partial
+    ///     // name with name_prefix, or use random_id resource. Example:
+    ///     var @default = new Gcp.Compute.RegionSslCertificate("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         NamePrefix = "my-certificate-",
+    ///         PrivateKey = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "path/to/private.key",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Certificate = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "path/to/certificate.crt",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "http-health-check",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "backend-service",
+    ///         Protocol = "HTTP",
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         TimeoutSec = 10,
+    ///         HealthChecks = defaultRegionHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var defaultRegionUrlMap = new Gcp.Compute.RegionUrlMap("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "url-map",
+    ///         Description = "a description",
+    ///         DefaultService = defaultRegionBackendService.Id,
+    ///         HostRules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionUrlMapHostRuleArgs
+    ///             {
+    ///                 Hosts = new[]
+    ///                 {
+    ///                     "mysite.com",
+    ///                 },
+    ///                 PathMatcher = "allpaths",
+    ///             },
+    ///         },
+    ///         PathMatchers = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionUrlMapPathMatcherArgs
+    ///             {
+    ///                 Name = "allpaths",
+    ///                 DefaultService = defaultRegionBackendService.Id,
+    ///                 PathRules = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleArgs
+    ///                     {
+    ///                         Paths = new[]
+    ///                         {
+    ///                             "/*",
+    ///                         },
+    ///                         Service = defaultRegionBackendService.Id,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultRegionTargetHttpsProxy = new Gcp.Compute.RegionTargetHttpsProxy("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "test-proxy",
+    ///         UrlMap = defaultRegionUrlMap.Id,
+    ///         SslCertificates = new[]
+    ///         {
+    ///             @default.Id,
     ///         },
     ///     });
     /// 

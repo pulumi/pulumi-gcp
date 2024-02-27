@@ -267,15 +267,17 @@ class InboundSamlConfig(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
-        saml_config = gcp.identityplatform.InboundSamlConfig("samlConfig",
+        saml_config = gcp.identityplatform.InboundSamlConfig("saml_config",
+            name="saml.tf-config",
             display_name="Display Name",
             idp_config=gcp.identityplatform.InboundSamlConfigIdpConfigArgs(
                 idp_entity_id="tf-idp",
                 sign_request=True,
                 sso_url="https://example.com",
                 idp_certificates=[gcp.identityplatform.InboundSamlConfigIdpConfigIdpCertificateArgs(
-                    x509_certificate=(lambda path: open(path).read())("test-fixtures/rsa_cert.pem"),
+                    x509_certificate=std.file(input="test-fixtures/rsa_cert.pem").result,
                 )],
             ),
             sp_config=gcp.identityplatform.InboundSamlConfigSpConfigArgs(
@@ -342,15 +344,17 @@ class InboundSamlConfig(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
-        saml_config = gcp.identityplatform.InboundSamlConfig("samlConfig",
+        saml_config = gcp.identityplatform.InboundSamlConfig("saml_config",
+            name="saml.tf-config",
             display_name="Display Name",
             idp_config=gcp.identityplatform.InboundSamlConfigIdpConfigArgs(
                 idp_entity_id="tf-idp",
                 sign_request=True,
                 sso_url="https://example.com",
                 idp_certificates=[gcp.identityplatform.InboundSamlConfigIdpConfigIdpCertificateArgs(
-                    x509_certificate=(lambda path: open(path).read())("test-fixtures/rsa_cert.pem"),
+                    x509_certificate=std.file(input="test-fixtures/rsa_cert.pem").result,
                 )],
             ),
             sp_config=gcp.identityplatform.InboundSamlConfigSpConfigArgs(

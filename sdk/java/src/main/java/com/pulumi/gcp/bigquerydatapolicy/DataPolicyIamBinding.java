@@ -63,9 +63,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new DataPolicyIamPolicy(&#34;policy&#34;, DataPolicyIamPolicyArgs.builder()        
- *             .project(google_bigquery_datapolicy_data_policy.data_policy().project())
- *             .location(google_bigquery_datapolicy_data_policy.data_policy().location())
- *             .dataPolicyId(google_bigquery_datapolicy_data_policy.data_policy().data_policy_id())
+ *             .project(dataPolicy.project())
+ *             .location(dataPolicy.location())
+ *             .dataPolicyId(dataPolicy.dataPolicyId())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -96,9 +96,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new DataPolicyIamBinding(&#34;binding&#34;, DataPolicyIamBindingArgs.builder()        
- *             .project(google_bigquery_datapolicy_data_policy.data_policy().project())
- *             .location(google_bigquery_datapolicy_data_policy.data_policy().location())
- *             .dataPolicyId(google_bigquery_datapolicy_data_policy.data_policy().data_policy_id())
+ *             .project(dataPolicy.project())
+ *             .location(dataPolicy.location())
+ *             .dataPolicyId(dataPolicy.dataPolicyId())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -130,9 +130,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new DataPolicyIamMember(&#34;member&#34;, DataPolicyIamMemberArgs.builder()        
- *             .project(google_bigquery_datapolicy_data_policy.data_policy().project())
- *             .location(google_bigquery_datapolicy_data_policy.data_policy().location())
- *             .dataPolicyId(google_bigquery_datapolicy_data_policy.data_policy().data_policy_id())
+ *             .project(dataPolicy.project())
+ *             .location(dataPolicy.location())
+ *             .dataPolicyId(dataPolicy.dataPolicyId())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

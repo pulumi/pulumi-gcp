@@ -34,8 +34,8 @@ namespace Pulumi.Gcp.Kms
         /// {
         ///     var myKeyRing = Gcp.Kms.GetKMSKeyRing.Invoke(new()
         ///     {
-        ///         Location = "us-central1",
         ///         Name = "my-key-ring",
+        ///         Location = "us-central1",
         ///     });
         /// 
         /// });
@@ -69,8 +69,8 @@ namespace Pulumi.Gcp.Kms
         /// {
         ///     var myKeyRing = Gcp.Kms.GetKMSKeyRing.Invoke(new()
         ///     {
-        ///         Location = "us-central1",
         ///         Name = "my-key-ring",
+        ///         Location = "us-central1",
         ///     });
         /// 
         /// });

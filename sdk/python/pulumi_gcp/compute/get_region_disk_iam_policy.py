@@ -109,9 +109,9 @@ def get_region_disk_iam_policy(name: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.compute.get_region_disk_iam_policy(project=google_compute_region_disk["regiondisk"]["project"],
-        region=google_compute_region_disk["regiondisk"]["region"],
-        name=google_compute_region_disk["regiondisk"]["name"])
+    policy = gcp.compute.get_region_disk_iam_policy(project=regiondisk["project"],
+        region=regiondisk["region"],
+        name=regiondisk["name"])
     ```
 
 
@@ -152,9 +152,9 @@ def get_region_disk_iam_policy_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.compute.get_region_disk_iam_policy(project=google_compute_region_disk["regiondisk"]["project"],
-        region=google_compute_region_disk["regiondisk"]["region"],
-        name=google_compute_region_disk["regiondisk"]["name"])
+    policy = gcp.compute.get_region_disk_iam_policy(project=regiondisk["project"],
+        region=regiondisk["region"],
+        name=regiondisk["name"])
     ```
 
 

@@ -1414,10 +1414,15 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_account = gcp.serviceaccount.Account("defaultAccount",
+        default = gcp.serviceaccount.Account("default",
             account_id="my-custom-sa",
             display_name="Custom SA for VM Instance")
-        default_instance = gcp.compute.Instance("defaultInstance",
+        default_instance = gcp.compute.Instance("default",
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                network="default",
+            )],
+            name="my-instance",
             machine_type="n2-standard-2",
             zone="us-central1-a",
             tags=[
@@ -1435,16 +1440,12 @@ class Instance(pulumi.CustomResource):
             scratch_disks=[gcp.compute.InstanceScratchDiskArgs(
                 interface="NVME",
             )],
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-            )],
             metadata={
                 "foo": "bar",
             },
             metadata_startup_script="echo hi > /test.txt",
             service_account=gcp.compute.InstanceServiceAccountArgs(
-                email=default_account.email,
+                email=default.email,
                 scopes=["cloud-platform"],
             ))
         ```
@@ -1583,10 +1584,15 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_account = gcp.serviceaccount.Account("defaultAccount",
+        default = gcp.serviceaccount.Account("default",
             account_id="my-custom-sa",
             display_name="Custom SA for VM Instance")
-        default_instance = gcp.compute.Instance("defaultInstance",
+        default_instance = gcp.compute.Instance("default",
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                network="default",
+            )],
+            name="my-instance",
             machine_type="n2-standard-2",
             zone="us-central1-a",
             tags=[
@@ -1604,16 +1610,12 @@ class Instance(pulumi.CustomResource):
             scratch_disks=[gcp.compute.InstanceScratchDiskArgs(
                 interface="NVME",
             )],
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-            )],
             metadata={
                 "foo": "bar",
             },
             metadata_startup_script="echo hi > /test.txt",
             service_account=gcp.compute.InstanceServiceAccountArgs(
-                email=default_account.email,
+                email=default.email,
                 scopes=["cloud-platform"],
             ))
         ```

@@ -29,15 +29,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const gceReservation = new gcp.compute.Reservation("gceReservation", {
+ * const gceReservation = new gcp.compute.Reservation("gce_reservation", {
+ *     name: "gce-reservation",
+ *     zone: "us-central1-a",
  *     specificReservation: {
  *         count: 1,
  *         instanceProperties: {
- *             machineType: "n2-standard-2",
  *             minCpuPlatform: "Intel Cascade Lake",
+ *             machineType: "n2-standard-2",
  *         },
  *     },
- *     zone: "us-central1-a",
  * });
  * ```
  *

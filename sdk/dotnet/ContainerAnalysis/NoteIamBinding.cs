@@ -51,8 +51,8 @@ namespace Pulumi.Gcp.ContainerAnalysis
     /// 
     ///     var policy = new Gcp.ContainerAnalysis.NoteIamPolicy("policy", new()
     ///     {
-    ///         Project = google_container_analysis_note.Note.Project,
-    ///         Note = google_container_analysis_note.Note.Name,
+    ///         Project = note.Project,
+    ///         Note = note.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -71,8 +71,8 @@ namespace Pulumi.Gcp.ContainerAnalysis
     /// {
     ///     var binding = new Gcp.ContainerAnalysis.NoteIamBinding("binding", new()
     ///     {
-    ///         Project = google_container_analysis_note.Note.Project,
-    ///         Note = google_container_analysis_note.Note.Name,
+    ///         Project = note.Project,
+    ///         Note = note.Name,
     ///         Role = "roles/containeranalysis.notes.occurrences.viewer",
     ///         Members = new[]
     ///         {
@@ -95,8 +95,8 @@ namespace Pulumi.Gcp.ContainerAnalysis
     /// {
     ///     var member = new Gcp.ContainerAnalysis.NoteIamMember("member", new()
     ///     {
-    ///         Project = google_container_analysis_note.Note.Project,
-    ///         Note = google_container_analysis_note.Note.Name,
+    ///         Project = note.Project,
+    ///         Note = note.Name,
     ///         Role = "roles/containeranalysis.notes.occurrences.viewer",
     ///         Member = "user:jane@example.com",
     ///     });

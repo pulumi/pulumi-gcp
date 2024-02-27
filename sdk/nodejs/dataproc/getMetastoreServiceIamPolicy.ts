@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.dataproc.getMetastoreServiceIamPolicy({
- *     project: google_dataproc_metastore_service["default"].project,
- *     location: google_dataproc_metastore_service["default"].location,
- *     serviceId: google_dataproc_metastore_service["default"].service_id,
+ *     project: _default.project,
+ *     location: _default.location,
+ *     serviceId: _default.serviceId,
  * });
  * ```
  */
@@ -79,9 +79,9 @@ export interface GetMetastoreServiceIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.dataproc.getMetastoreServiceIamPolicy({
- *     project: google_dataproc_metastore_service["default"].project,
- *     location: google_dataproc_metastore_service["default"].location,
- *     serviceId: google_dataproc_metastore_service["default"].service_id,
+ *     project: _default.project,
+ *     location: _default.location,
+ *     serviceId: _default.serviceId,
  * });
  * ```
  */

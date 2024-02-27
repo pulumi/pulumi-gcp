@@ -54,10 +54,14 @@ namespace Pulumi.Gcp.Compute
         ///         RangeType = "legacy-health-checkers",
         ///     });
         /// 
-        ///     var @default = new Gcp.Compute.Network("default");
+        ///     var @default = new Gcp.Compute.Network("default", new()
+        ///     {
+        ///         Name = "test-network",
+        ///     });
         /// 
         ///     var allow_hcs = new Gcp.Compute.Firewall("allow-hcs", new()
         ///     {
+        ///         Name = "allow-hcs",
         ///         Network = @default.Name,
         ///         Allows = new[]
         ///         {
@@ -124,10 +128,14 @@ namespace Pulumi.Gcp.Compute
         ///         RangeType = "legacy-health-checkers",
         ///     });
         /// 
-        ///     var @default = new Gcp.Compute.Network("default");
+        ///     var @default = new Gcp.Compute.Network("default", new()
+        ///     {
+        ///         Name = "test-network",
+        ///     });
         /// 
         ///     var allow_hcs = new Gcp.Compute.Firewall("allow-hcs", new()
         ///     {
+        ///         Name = "allow-hcs",
         ///         Network = @default.Name,
         ///         Allows = new[]
         ///         {

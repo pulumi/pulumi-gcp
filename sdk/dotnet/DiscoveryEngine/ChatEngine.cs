@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testDataStore = new Gcp.DiscoveryEngine.DataStore("testDataStore", new()
+    ///     var testDataStore = new Gcp.DiscoveryEngine.DataStore("test_data_store", new()
     ///     {
     ///         Location = "global",
     ///         DataStoreId = "data-store",
@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
     ///         },
     ///     });
     /// 
-    ///     var testDataStore2 = new Gcp.DiscoveryEngine.DataStore("testDataStore2", new()
+    ///     var testDataStore2 = new Gcp.DiscoveryEngine.DataStore("test_data_store_2", new()
     ///     {
     ///         Location = testDataStore.Location,
     ///         DataStoreId = "data-store-2",

@@ -39,10 +39,13 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     ///     var access_levels = new Gcp.AccessContextManager.AccessLevels("access-levels", new()
     ///     {
+    ///         Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
     ///         AccessLevelDetails = new[]
     ///         {
     ///             new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelArgs
     ///             {
+    ///                 Name = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
+    ///                 Title = "chromeos_no_lock",
     ///                 Basic = new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicArgs
     ///                 {
     ///                     Conditions = new[]
@@ -51,6 +54,7 @@ namespace Pulumi.Gcp.AccessContextManager
     ///                         {
     ///                             DevicePolicy = new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs
     ///                             {
+    ///                                 RequireScreenLock = true,
     ///                                 OsConstraints = new[]
     ///                                 {
     ///                                     new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs
@@ -58,7 +62,6 @@ namespace Pulumi.Gcp.AccessContextManager
     ///                                         OsType = "DESKTOP_CHROME_OS",
     ///                                     },
     ///                                 },
-    ///                                 RequireScreenLock = true,
     ///                             },
     ///                             Regions = new[]
     ///                             {
@@ -69,11 +72,11 @@ namespace Pulumi.Gcp.AccessContextManager
     ///                         },
     ///                     },
     ///                 },
-    ///                 Name = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
-    ///                 Title = "chromeos_no_lock",
     ///             },
     ///             new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelArgs
     ///             {
+    ///                 Name = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}/accessLevels/mac_no_lock"),
+    ///                 Title = "mac_no_lock",
     ///                 Basic = new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicArgs
     ///                 {
     ///                     Conditions = new[]
@@ -82,6 +85,7 @@ namespace Pulumi.Gcp.AccessContextManager
     ///                         {
     ///                             DevicePolicy = new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs
     ///                             {
+    ///                                 RequireScreenLock = true,
     ///                                 OsConstraints = new[]
     ///                                 {
     ///                                     new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs
@@ -89,7 +93,6 @@ namespace Pulumi.Gcp.AccessContextManager
     ///                                         OsType = "DESKTOP_MAC",
     ///                                     },
     ///                                 },
-    ///                                 RequireScreenLock = true,
     ///                             },
     ///                             Regions = new[]
     ///                             {
@@ -100,11 +103,8 @@ namespace Pulumi.Gcp.AccessContextManager
     ///                         },
     ///                     },
     ///                 },
-    ///                 Name = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}/accessLevels/mac_no_lock"),
-    ///                 Title = "mac_no_lock",
     ///             },
     ///         },
-    ///         Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
     ///     });
     /// 
     /// });

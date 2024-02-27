@@ -31,12 +31,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// by name
 //			_, err := compute.LookupSnapshot(ctx, &compute.LookupSnapshotArgs{
 //				Name: pulumi.StringRef("my-snapshot"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			// using a filter
 //			_, err = compute.LookupSnapshot(ctx, &compute.LookupSnapshotArgs{
 //				Filter:     pulumi.StringRef("name != my-snapshot"),
 //				MostRecent: pulumi.BoolRef(true),

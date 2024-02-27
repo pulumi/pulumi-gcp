@@ -29,8 +29,9 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testOrganization = new Gcp.Apigee.AddonsConfig("testOrganization", new()
+    ///     var testOrganization = new Gcp.Apigee.AddonsConfig("test_organization", new()
     ///     {
+    ///         Org = "test_organization",
     ///         AddonsConfigDetails = new Gcp.Apigee.Inputs.AddonsConfigAddonsConfigArgs
     ///         {
     ///             ApiSecurityConfig = new Gcp.Apigee.Inputs.AddonsConfigAddonsConfigApiSecurityConfigArgs
@@ -42,7 +43,6 @@ namespace Pulumi.Gcp.Apigee
     ///                 Enabled = true,
     ///             },
     ///         },
-    ///         Org = "test_organization",
     ///     });
     /// 
     /// });
@@ -77,19 +77,15 @@ namespace Pulumi.Gcp.Apigee
     ///         ServiceName = "servicenetworking.googleapis.com",
     ///     });
     /// 
-    ///     var apigeeNetwork = new Gcp.Compute.Network("apigeeNetwork", new()
+    ///     var apigeeNetwork = new Gcp.Compute.Network("apigee_network", new()
     ///     {
+    ///         Name = "apigee-network",
     ///         Project = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             compute,
-    ///         },
     ///     });
     /// 
-    ///     var apigeeRange = new Gcp.Compute.GlobalAddress("apigeeRange", new()
+    ///     var apigeeRange = new Gcp.Compute.GlobalAddress("apigee_range", new()
     ///     {
+    ///         Name = "apigee-range",
     ///         Purpose = "VPC_PEERING",
     ///         AddressType = "INTERNAL",
     ///         PrefixLength = 16,
@@ -97,7 +93,7 @@ namespace Pulumi.Gcp.Apigee
     ///         Project = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
     ///     });
     /// 
-    ///     var apigeeVpcConnection = new Gcp.ServiceNetworking.Connection("apigeeVpcConnection", new()
+    ///     var apigeeVpcConnection = new Gcp.ServiceNetworking.Connection("apigee_vpc_connection", new()
     ///     {
     ///         Network = apigeeNetwork.Id,
     ///         Service = "servicenetworking.googleapis.com",
@@ -113,16 +109,9 @@ namespace Pulumi.Gcp.Apigee
     ///         ProjectId = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
     ///         AuthorizedNetwork = apigeeNetwork.Id,
     ///         BillingType = "EVALUATION",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             apigeeVpcConnection,
-    ///             apigee,
-    ///         },
     ///     });
     /// 
-    ///     var testOrganization = new Gcp.Apigee.AddonsConfig("testOrganization", new()
+    ///     var testOrganization = new Gcp.Apigee.AddonsConfig("test_organization", new()
     ///     {
     ///         Org = org.Name,
     ///         AddonsConfigDetails = new Gcp.Apigee.Inputs.AddonsConfigAddonsConfigArgs

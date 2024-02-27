@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.datacatalog.getPolicyTagIamPolicy({
- *     policyTag: google_data_catalog_policy_tag.basic_policy_tag.name,
+ *     policyTag: basicPolicyTag.name,
  * });
  * ```
  */
@@ -65,7 +65,7 @@ export interface GetPolicyTagIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.datacatalog.getPolicyTagIamPolicy({
- *     policyTag: google_data_catalog_policy_tag.basic_policy_tag.name,
+ *     policyTag: basicPolicyTag.name,
  * });
  * ```
  */

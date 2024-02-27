@@ -29,6 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewNetworkFirewallPolicy(ctx, "policy", &compute.NetworkFirewallPolicyArgs{
+//				Name:        pulumi.String("tf-test-policy"),
 //				Description: pulumi.String("Terraform test"),
 //			})
 //			if err != nil {

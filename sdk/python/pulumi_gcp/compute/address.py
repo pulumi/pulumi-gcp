@@ -796,7 +796,7 @@ class Address(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        ip_address = gcp.compute.Address("ipAddress")
+        ip_address = gcp.compute.Address("ip_address", name="my-address")
         ```
         ### Address With Subnetwork
 
@@ -804,12 +804,14 @@ class Address(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork")
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+        default = gcp.compute.Network("default", name="my-network")
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="my-subnet",
             ip_cidr_range="10.0.0.0/16",
             region="us-central1",
-            network=default_network.id)
-        internal_with_subnet_and_address = gcp.compute.Address("internalWithSubnetAndAddress",
+            network=default.id)
+        internal_with_subnet_and_address = gcp.compute.Address("internal_with_subnet_and_address",
+            name="my-internal-address",
             subnetwork=default_subnetwork.id,
             address_type="INTERNAL",
             address="10.0.42.42",
@@ -821,7 +823,8 @@ class Address(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        internal_with_gce_endpoint = gcp.compute.Address("internalWithGceEndpoint",
+        internal_with_gce_endpoint = gcp.compute.Address("internal_with_gce_endpoint",
+            name="my-internal-address-",
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
         ```
@@ -831,10 +834,11 @@ class Address(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        static = gcp.compute.Address("static")
+        static = gcp.compute.Address("static", name="ipv4-address")
         debian_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
-        instance_with_ip = gcp.compute.Instance("instanceWithIp",
+        instance_with_ip = gcp.compute.Instance("instance_with_ip",
+            name="vm-instance",
             machine_type="f1-micro",
             zone="us-central1-a",
             boot_disk=gcp.compute.InstanceBootDiskArgs(
@@ -855,8 +859,11 @@ class Address(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network = gcp.compute.Network("network", auto_create_subnetworks=False)
+        network = gcp.compute.Network("network",
+            name="test-network",
+            auto_create_subnetworks=False)
         ipsec_interconnect_address = gcp.compute.Address("ipsec-interconnect-address",
+            name="test-address",
             address_type="INTERNAL",
             purpose="IPSEC_INTERCONNECT",
             address="192.168.1.0",
@@ -989,7 +996,7 @@ class Address(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        ip_address = gcp.compute.Address("ipAddress")
+        ip_address = gcp.compute.Address("ip_address", name="my-address")
         ```
         ### Address With Subnetwork
 
@@ -997,12 +1004,14 @@ class Address(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork")
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+        default = gcp.compute.Network("default", name="my-network")
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="my-subnet",
             ip_cidr_range="10.0.0.0/16",
             region="us-central1",
-            network=default_network.id)
-        internal_with_subnet_and_address = gcp.compute.Address("internalWithSubnetAndAddress",
+            network=default.id)
+        internal_with_subnet_and_address = gcp.compute.Address("internal_with_subnet_and_address",
+            name="my-internal-address",
             subnetwork=default_subnetwork.id,
             address_type="INTERNAL",
             address="10.0.42.42",
@@ -1014,7 +1023,8 @@ class Address(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        internal_with_gce_endpoint = gcp.compute.Address("internalWithGceEndpoint",
+        internal_with_gce_endpoint = gcp.compute.Address("internal_with_gce_endpoint",
+            name="my-internal-address-",
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
         ```
@@ -1024,10 +1034,11 @@ class Address(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        static = gcp.compute.Address("static")
+        static = gcp.compute.Address("static", name="ipv4-address")
         debian_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
-        instance_with_ip = gcp.compute.Instance("instanceWithIp",
+        instance_with_ip = gcp.compute.Instance("instance_with_ip",
+            name="vm-instance",
             machine_type="f1-micro",
             zone="us-central1-a",
             boot_disk=gcp.compute.InstanceBootDiskArgs(
@@ -1048,8 +1059,11 @@ class Address(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network = gcp.compute.Network("network", auto_create_subnetworks=False)
+        network = gcp.compute.Network("network",
+            name="test-network",
+            auto_create_subnetworks=False)
         ipsec_interconnect_address = gcp.compute.Address("ipsec-interconnect-address",
+            name="test-address",
             address_type="INTERNAL",
             purpose="IPSEC_INTERCONNECT",
             address="192.168.1.0",

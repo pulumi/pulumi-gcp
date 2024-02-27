@@ -23,6 +23,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// {
     ///     var @default = new Gcp.NetworkSecurity.ServerTlsPolicy("default", new()
     ///     {
+    ///         Name = "my-server-tls-policy",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -63,9 +64,6 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -82,6 +80,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// {
     ///     var @default = new Gcp.NetworkSecurity.ServerTlsPolicy("default", new()
     ///     {
+    ///         Name = "my-server-tls-policy",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -93,9 +92,6 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///         {
     ///             ClientValidationMode = "ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -112,6 +108,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// {
     ///     var @default = new Gcp.NetworkSecurity.ServerTlsPolicy("default", new()
     ///     {
+    ///         Name = "my-server-tls-policy",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -126,9 +123,6 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///                 TargetUri = "unix:mypath",
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -137,17 +131,18 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var defaultTrustConfig = new Gcp.CertificateManager.TrustConfig("defaultTrustConfig", new()
+    ///     var defaultTrustConfig = new Gcp.CertificateManager.TrustConfig("default", new()
     ///     {
+    ///         Name = "my-trust-config",
     ///         Description = "sample trust config description",
     ///         Location = "global",
     ///         TrustStores = new[]
@@ -158,14 +153,20 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///                 {
     ///                     new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreTrustAnchorArgs
     ///                     {
-    ///                         PemCertificate = File.ReadAllText("test-fixtures/ca_cert.pem"),
+    ///                         PemCertificate = Std.File.Invoke(new()
+    ///                         {
+    ///                             Input = "test-fixtures/ca_cert.pem",
+    ///                         }).Apply(invoke =&gt; invoke.Result),
     ///                     },
     ///                 },
     ///                 IntermediateCas = new[]
     ///                 {
     ///                     new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreIntermediateCaArgs
     ///                     {
-    ///                         PemCertificate = File.ReadAllText("test-fixtures/ca_cert.pem"),
+    ///                         PemCertificate = Std.File.Invoke(new()
+    ///                         {
+    ///                             Input = "test-fixtures/ca_cert.pem",
+    ///                         }).Apply(invoke =&gt; invoke.Result),
     ///                     },
     ///                 },
     ///             },
@@ -174,13 +175,11 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///         {
     ///             { "foo", "bar" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultServerTlsPolicy = new Gcp.NetworkSecurity.ServerTlsPolicy("defaultServerTlsPolicy", new()
+    ///     var @default = new Gcp.NetworkSecurity.ServerTlsPolicy("default", new()
     ///     {
+    ///         Name = "my-server-tls-policy",
     ///         Description = "my description",
     ///         Location = "global",
     ///         AllowOpen = false,
@@ -198,9 +197,6 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///         {
     ///             { "foo", "bar" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

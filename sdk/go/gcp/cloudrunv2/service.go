@@ -36,8 +36,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
-//				Ingress:  pulumi.String("INGRESS_TRAFFIC_ALL"),
+//				Name:     pulumi.String("cloudrun-service"),
 //				Location: pulumi.String("us-central1"),
+//				Ingress:  pulumi.String("INGRESS_TRAFFIC_ALL"),
 //				Template: &cloudrunv2.ServiceTemplateArgs{
 //					Containers: cloudrunv2.ServiceTemplateContainerArray{
 //						&cloudrunv2.ServiceTemplateContainerArgs{
@@ -69,8 +70,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
-//				Ingress:  pulumi.String("INGRESS_TRAFFIC_ALL"),
+//				Name:     pulumi.String("cloudrun-service"),
 //				Location: pulumi.String("us-central1"),
+//				Ingress:  pulumi.String("INGRESS_TRAFFIC_ALL"),
 //				Template: &cloudrunv2.ServiceTemplateArgs{
 //					Containers: cloudrunv2.ServiceTemplateContainerArray{
 //						&cloudrunv2.ServiceTemplateContainerArgs{
@@ -121,14 +123,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-data", &secretmanager.SecretVersionArgs{
-//				Secret:     secret.Name,
-//				SecretData: pulumi.String("secret-data"),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("cloudrun-sql"),
 //				Region:          pulumi.String("us-central1"),
 //				DatabaseVersion: pulumi.String("MYSQL_5_7"),
 //				Settings: &sql.DatabaseInstanceSettingsArgs{
@@ -140,6 +136,7 @@ import (
 //				return err
 //			}
 //			_, err = cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
+//				Name:     pulumi.String("cloudrun-service"),
 //				Location: pulumi.String("us-central1"),
 //				Ingress:  pulumi.String("INGRESS_TRAFFIC_ALL"),
 //				Template: &cloudrunv2.ServiceTemplateArgs{
@@ -189,9 +186,7 @@ import (
 //						Percent: pulumi.Int(100),
 //					},
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				secret_version_data,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -199,13 +194,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-data", &secretmanager.SecretVersionArgs{
+//				Secret:     secret.Name,
+//				SecretData: pulumi.String("secret-data"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
 //				SecretId: secret.ID(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 //				Member:   pulumi.String(fmt.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", project.Number)),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				secret,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -230,13 +230,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			customTestNetwork, err := compute.NewNetwork(ctx, "customTestNetwork", &compute.NetworkArgs{
+//			customTestNetwork, err := compute.NewNetwork(ctx, "custom_test", &compute.NetworkArgs{
+//				Name:                  pulumi.String("run-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			customTestSubnetwork, err := compute.NewSubnetwork(ctx, "customTestSubnetwork", &compute.SubnetworkArgs{
+//			customTest, err := compute.NewSubnetwork(ctx, "custom_test", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("run-subnetwork"),
 //				IpCidrRange: pulumi.String("10.2.0.0/28"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     customTestNetwork.ID(),
@@ -245,8 +247,9 @@ import (
 //				return err
 //			}
 //			connector, err := vpcaccess.NewConnector(ctx, "connector", &vpcaccess.ConnectorArgs{
+//				Name: pulumi.String("run-vpc"),
 //				Subnet: &vpcaccess.ConnectorSubnetArgs{
-//					Name: customTestSubnetwork.Name,
+//					Name: customTest.Name,
 //				},
 //				MachineType:  pulumi.String("e2-standard-4"),
 //				MinInstances: pulumi.Int(2),
@@ -257,6 +260,7 @@ import (
 //				return err
 //			}
 //			_, err = cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
+//				Name:     pulumi.String("cloudrun-service"),
 //				Location: pulumi.String("us-central1"),
 //				Template: &cloudrunv2.ServiceTemplateArgs{
 //					Containers: cloudrunv2.ServiceTemplateContainerArray{
@@ -293,8 +297,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
-//				LaunchStage: pulumi.String("BETA"),
+//				Name:        pulumi.String("cloudrun-service"),
 //				Location:    pulumi.String("us-central1"),
+//				LaunchStage: pulumi.String("BETA"),
 //				Template: &cloudrunv2.ServiceTemplateArgs{
 //					Containers: cloudrunv2.ServiceTemplateContainerArray{
 //						&cloudrunv2.ServiceTemplateContainerArgs{
@@ -302,7 +307,6 @@ import (
 //						},
 //					},
 //					VpcAccess: &cloudrunv2.ServiceTemplateVpcAccessArgs{
-//						Egress: pulumi.String("ALL_TRAFFIC"),
 //						NetworkInterfaces: cloudrunv2.ServiceTemplateVpcAccessNetworkInterfaceArray{
 //							&cloudrunv2.ServiceTemplateVpcAccessNetworkInterfaceArgs{
 //								Network:    pulumi.String("default"),
@@ -314,6 +318,7 @@ import (
 //								},
 //							},
 //						},
+//						Egress: pulumi.String("ALL_TRAFFIC"),
 //					},
 //				},
 //			})
@@ -340,24 +345,25 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
+//				Name:     pulumi.String("cloudrun-service"),
 //				Location: pulumi.String("us-central1"),
 //				Template: &cloudrunv2.ServiceTemplateArgs{
 //					Containers: cloudrunv2.ServiceTemplateContainerArray{
 //						&cloudrunv2.ServiceTemplateContainerArgs{
 //							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//							StartupProbe: &cloudrunv2.ServiceTemplateContainerStartupProbeArgs{
+//								InitialDelaySeconds: pulumi.Int(0),
+//								TimeoutSeconds:      pulumi.Int(1),
+//								PeriodSeconds:       pulumi.Int(3),
+//								FailureThreshold:    pulumi.Int(1),
+//								TcpSocket: &cloudrunv2.ServiceTemplateContainerStartupProbeTcpSocketArgs{
+//									Port: pulumi.Int(8080),
+//								},
+//							},
 //							LivenessProbe: &cloudrunv2.ServiceTemplateContainerLivenessProbeArgs{
 //								HttpGet: &cloudrunv2.ServiceTemplateContainerLivenessProbeHttpGetArgs{
 //									Path: pulumi.String("/"),
 //								},
-//							},
-//							StartupProbe: &cloudrunv2.ServiceTemplateContainerStartupProbeArgs{
-//								FailureThreshold:    pulumi.Int(1),
-//								InitialDelaySeconds: pulumi.Int(0),
-//								PeriodSeconds:       pulumi.Int(3),
-//								TcpSocket: &cloudrunv2.ServiceTemplateContainerStartupProbeTcpSocketArgs{
-//									Port: pulumi.Int(8080),
-//								},
-//								TimeoutSeconds: pulumi.Int(1),
 //							},
 //						},
 //					},
@@ -398,14 +404,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-data", &secretmanager.SecretVersionArgs{
-//				Secret:     secret.Name,
-//				SecretData: pulumi.String("secret-data"),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			_, err = cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
+//				Name:     pulumi.String("cloudrun-service"),
 //				Location: pulumi.String("us-central1"),
 //				Ingress:  pulumi.String("INGRESS_TRAFFIC_ALL"),
 //				Template: &cloudrunv2.ServiceTemplateArgs{
@@ -436,9 +436,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				secret_version_data,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -446,13 +444,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-data", &secretmanager.SecretVersionArgs{
+//				Secret:     secret.Name,
+//				SecretData: pulumi.String("secret-data"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
 //				SecretId: secret.ID(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 //				Member:   pulumi.String(fmt.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", project.Number)),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				secret,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -476,6 +479,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
+//				Name:        pulumi.String("cloudrun-service"),
 //				Location:    pulumi.String("us-central1"),
 //				LaunchStage: pulumi.String("BETA"),
 //				Ingress:     pulumi.String("INGRESS_TRAFFIC_ALL"),
@@ -525,7 +529,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -549,13 +553,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultBucket, err := storage.NewBucket(ctx, "defaultBucket", &storage.BucketArgs{
+//			defaultBucket, err := storage.NewBucket(ctx, "default", &storage.BucketArgs{
+//				Name:     pulumi.String("cloudrun-service"),
 //				Location: pulumi.String("US"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudrunv2.NewService(ctx, "defaultService", &cloudrunv2.ServiceArgs{
+//			_, err = cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
+//				Name:        pulumi.String("cloudrun-service"),
 //				Location:    pulumi.String("us-central1"),
 //				LaunchStage: pulumi.String("BETA"),
 //				Template: &cloudrunv2.ServiceTemplateArgs{
@@ -605,7 +611,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultInstance, err := filestore.NewInstance(ctx, "defaultInstance", &filestore.InstanceArgs{
+//			defaultInstance, err := filestore.NewInstance(ctx, "default", &filestore.InstanceArgs{
+//				Name:     pulumi.String("cloudrun-service"),
 //				Location: pulumi.String("us-central1-b"),
 //				Tier:     pulumi.String("BASIC_HDD"),
 //				FileShares: &filestore.InstanceFileSharesArgs{
@@ -624,7 +631,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudrunv2.NewService(ctx, "defaultService", &cloudrunv2.ServiceArgs{
+//			_, err = cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
+//				Name:        pulumi.String("cloudrun-service"),
 //				Location:    pulumi.String("us-central1"),
 //				Ingress:     pulumi.String("INGRESS_TRAFFIC_ALL"),
 //				LaunchStage: pulumi.String("BETA"),

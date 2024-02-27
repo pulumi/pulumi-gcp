@@ -47,7 +47,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.netapp.VolumeArgs;
  * import com.pulumi.gcp.netapp.VolumeSnapshot;
  * import com.pulumi.gcp.netapp.VolumeSnapshotArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -61,19 +60,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultNetwork = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+ *         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
  *             .name(&#34;test-network&#34;)
  *             .build());
  * 
  *         var defaultStoragePool = new StoragePool(&#34;defaultStoragePool&#34;, StoragePoolArgs.builder()        
+ *             .name(&#34;test-pool&#34;)
  *             .location(&#34;us-west2&#34;)
  *             .serviceLevel(&#34;PREMIUM&#34;)
  *             .capacityGib(2048)
- *             .network(defaultNetwork.applyValue(getNetworkResult -&gt; getNetworkResult.id()))
+ *             .network(default_.id())
  *             .build());
  * 
  *         var defaultVolume = new Volume(&#34;defaultVolume&#34;, VolumeArgs.builder()        
  *             .location(defaultStoragePool.location())
+ *             .name(&#34;test-volume&#34;)
  *             .capacityGib(100)
  *             .shareName(&#34;test-volume&#34;)
  *             .storagePool(defaultStoragePool.name())
@@ -83,9 +84,8 @@ import javax.annotation.Nullable;
  *         var testSnapshot = new VolumeSnapshot(&#34;testSnapshot&#34;, VolumeSnapshotArgs.builder()        
  *             .location(defaultVolume.location())
  *             .volumeName(defaultVolume.name())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(defaultVolume)
- *                 .build());
+ *             .name(&#34;testvolumesnap&#34;)
+ *             .build());
  * 
  *     }
  * }

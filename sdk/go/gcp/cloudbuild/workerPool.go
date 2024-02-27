@@ -29,6 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudbuild.NewWorkerPool(ctx, "pool", &cloudbuild.WorkerPoolArgs{
+//				Name:     pulumi.String("my-pool"),
 //				Location: pulumi.String("europe-west1"),
 //				WorkerConfig: &cloudbuild.WorkerPoolWorkerConfigArgs{
 //					DiskSizeGb:   pulumi.Int(100),
@@ -61,7 +62,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			servicenetworking, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
+//			_, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
 //				Service:          pulumi.String("servicenetworking.googleapis.com"),
 //				DisableOnDestroy: pulumi.Bool(false),
 //			})
@@ -69,14 +70,14 @@ import (
 //				return err
 //			}
 //			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				servicenetworking,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			workerRange, err := compute.NewGlobalAddress(ctx, "workerRange", &compute.GlobalAddressArgs{
+//			workerRange, err := compute.NewGlobalAddress(ctx, "worker_range", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("worker-pool-range"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
@@ -85,19 +86,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			workerPoolConn, err := servicenetworking.NewConnection(ctx, "workerPoolConn", &servicenetworking.ConnectionArgs{
+//			_, err = servicenetworking.NewConnection(ctx, "worker_pool_conn", &servicenetworking.ConnectionArgs{
 //				Network: network.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					workerRange.Name,
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				servicenetworking,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cloudbuild.NewWorkerPool(ctx, "pool", &cloudbuild.WorkerPoolArgs{
+//				Name:     pulumi.String("my-pool"),
 //				Location: pulumi.String("europe-west1"),
 //				WorkerConfig: &cloudbuild.WorkerPoolWorkerConfigArgs{
 //					DiskSizeGb:   pulumi.Int(100),
@@ -108,9 +108,7 @@ import (
 //					PeeredNetwork:        network.ID(),
 //					PeeredNetworkIpRange: pulumi.String("/29"),
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				workerPoolConn,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

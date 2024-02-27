@@ -30,7 +30,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.firebase.inputs.HostingVersionConfigArgs;
  * import com.pulumi.gcp.firebase.HostingRelease;
  * import com.pulumi.gcp.firebase.HostingReleaseArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -44,15 +43,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHostingSite = new HostingSite(&#34;defaultHostingSite&#34;, HostingSiteArgs.builder()        
+ *         var default_ = new HostingSite(&#34;default&#34;, HostingSiteArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .siteId(&#34;site-id&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultHostingVersion = new HostingVersion(&#34;defaultHostingVersion&#34;, HostingVersionArgs.builder()        
- *             .siteId(defaultHostingSite.siteId())
+ *             .siteId(default_.siteId())
  *             .config(HostingVersionConfigArgs.builder()
  *                 .redirects(HostingVersionConfigRedirectArgs.builder()
  *                     .glob(&#34;/google/**&#34;)
@@ -60,17 +57,13 @@ import javax.annotation.Nullable;
  *                     .location(&#34;https://www.google.com&#34;)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultHostingRelease = new HostingRelease(&#34;defaultHostingRelease&#34;, HostingReleaseArgs.builder()        
- *             .siteId(defaultHostingSite.siteId())
+ *             .siteId(default_.siteId())
  *             .versionName(defaultHostingVersion.name())
  *             .message(&#34;Test release&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -91,7 +84,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.firebase.HostingChannelArgs;
  * import com.pulumi.gcp.firebase.HostingRelease;
  * import com.pulumi.gcp.firebase.HostingReleaseArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -105,15 +97,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHostingSite = new HostingSite(&#34;defaultHostingSite&#34;, HostingSiteArgs.builder()        
+ *         var default_ = new HostingSite(&#34;default&#34;, HostingSiteArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .siteId(&#34;site-with-channel&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultHostingVersion = new HostingVersion(&#34;defaultHostingVersion&#34;, HostingVersionArgs.builder()        
- *             .siteId(defaultHostingSite.siteId())
+ *             .siteId(default_.siteId())
  *             .config(HostingVersionConfigArgs.builder()
  *                 .redirects(HostingVersionConfigRedirectArgs.builder()
  *                     .glob(&#34;/google/**&#34;)
@@ -121,25 +111,19 @@ import javax.annotation.Nullable;
  *                     .location(&#34;https://www.google.com&#34;)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultHostingChannel = new HostingChannel(&#34;defaultHostingChannel&#34;, HostingChannelArgs.builder()        
- *             .siteId(defaultHostingSite.siteId())
+ *             .siteId(default_.siteId())
  *             .channelId(&#34;channel-id&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultHostingRelease = new HostingRelease(&#34;defaultHostingRelease&#34;, HostingReleaseArgs.builder()        
- *             .siteId(defaultHostingSite.siteId())
+ *             .siteId(default_.siteId())
  *             .channelId(defaultHostingChannel.channelId())
  *             .versionName(defaultHostingVersion.name())
  *             .message(&#34;Test release in channel&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -155,7 +139,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.firebase.HostingSiteArgs;
  * import com.pulumi.gcp.firebase.HostingRelease;
  * import com.pulumi.gcp.firebase.HostingReleaseArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -169,20 +152,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHostingSite = new HostingSite(&#34;defaultHostingSite&#34;, HostingSiteArgs.builder()        
+ *         var default_ = new HostingSite(&#34;default&#34;, HostingSiteArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .siteId(&#34;site-id&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultHostingRelease = new HostingRelease(&#34;defaultHostingRelease&#34;, HostingReleaseArgs.builder()        
- *             .siteId(defaultHostingSite.siteId())
+ *             .siteId(default_.siteId())
  *             .type(&#34;SITE_DISABLE&#34;)
  *             .message(&#34;Take down site&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

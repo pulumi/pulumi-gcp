@@ -23,13 +23,13 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.datastream.ConnectionProfile("default", {
- *     connectionProfileId: "my-profile",
  *     displayName: "Connection profile",
+ *     location: "us-central1",
+ *     connectionProfileId: "my-profile",
  *     gcsProfile: {
  *         bucket: "my-bucket",
  *         rootPath: "/path",
  *     },
- *     location: "us-central1",
  * });
  * ```
  * ### Datastream Connection Profile Postgresql Private Connection
@@ -39,8 +39,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * import * as random from "@pulumi/random";
  *
- * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
- * const privateConnection = new gcp.datastream.PrivateConnection("privateConnection", {
+ * const _default = new gcp.compute.Network("default", {name: "my-network"});
+ * const privateConnection = new gcp.datastream.PrivateConnection("private_connection", {
  *     displayName: "Connection profile",
  *     location: "us-central1",
  *     privateConnectionId: "my-connection",
@@ -48,11 +48,12 @@ import * as utilities from "../utilities";
  *         key: "value",
  *     },
  *     vpcPeeringConfig: {
- *         vpc: defaultNetwork.id,
+ *         vpc: _default.id,
  *         subnet: "10.0.0.0/29",
  *     },
  * });
  * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     name: "my-instance",
  *     databaseVersion: "POSTGRES_14",
  *     region: "us-central1",
  *     settings: {
@@ -79,16 +80,20 @@ import * as utilities from "../utilities";
  *     },
  *     deletionProtection: true,
  * });
- * const db = new gcp.sql.Database("db", {instance: instance.name});
+ * const db = new gcp.sql.Database("db", {
+ *     instance: instance.name,
+ *     name: "db",
+ * });
  * const pwd = new random.RandomPassword("pwd", {
  *     length: 16,
  *     special: false,
  * });
  * const user = new gcp.sql.User("user", {
+ *     name: "user",
  *     instance: instance.name,
  *     password: pwd.result,
  * });
- * const defaultConnectionProfile = new gcp.datastream.ConnectionProfile("defaultConnectionProfile", {
+ * const defaultConnectionProfile = new gcp.datastream.ConnectionProfile("default", {
  *     displayName: "Connection profile",
  *     location: "us-central1",
  *     connectionProfileId: "my-profile",
@@ -110,22 +115,22 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.datastream.ConnectionProfile("default", {
- *     connectionProfileId: "my-profile",
  *     displayName: "Connection profile",
- *     forwardSshConnectivity: {
- *         hostname: "google.com",
- *         password: "swordfish",
- *         port: 8022,
- *         username: "my-user",
- *     },
+ *     location: "us-central1",
+ *     connectionProfileId: "my-profile",
  *     gcsProfile: {
  *         bucket: "my-bucket",
  *         rootPath: "/path",
  *     },
+ *     forwardSshConnectivity: {
+ *         hostname: "google.com",
+ *         username: "my-user",
+ *         port: 8022,
+ *         password: "swordfish",
+ *     },
  *     labels: {
  *         key: "value",
  *     },
- *     location: "us-central1",
  * });
  * ```
  * ### Datastream Connection Profile Postgres
@@ -136,6 +141,7 @@ import * as utilities from "../utilities";
  * import * as random from "@pulumi/random";
  *
  * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     name: "my-instance",
  *     databaseVersion: "POSTGRES_14",
  *     region: "us-central1",
  *     settings: {
@@ -162,12 +168,16 @@ import * as utilities from "../utilities";
  *     },
  *     deletionProtection: true,
  * });
- * const db = new gcp.sql.Database("db", {instance: instance.name});
+ * const db = new gcp.sql.Database("db", {
+ *     instance: instance.name,
+ *     name: "db",
+ * });
  * const pwd = new random.RandomPassword("pwd", {
  *     length: 16,
  *     special: false,
  * });
  * const user = new gcp.sql.User("user", {
+ *     name: "user",
  *     instance: instance.name,
  *     password: pwd.result,
  * });

@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  *   }
  * }
  *
- *
  * `});
  * ```
  * ### Monitoring Dashboard GridLayout
@@ -98,7 +97,6 @@ import * as utilities from "../utilities";
  *     ]
  *   }
  * }
- *
  *
  * `});
  * ```

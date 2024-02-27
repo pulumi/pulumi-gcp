@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.datacatalog.getTagTemplateIamPolicy({
- *     tagTemplate: google_data_catalog_tag_template.basic_tag_template.name,
+ *     tagTemplate: basicTagTemplate.name,
  * });
  * ```
  */
@@ -75,7 +75,7 @@ export interface GetTagTemplateIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.datacatalog.getTagTemplateIamPolicy({
- *     tagTemplate: google_data_catalog_tag_template.basic_tag_template.name,
+ *     tagTemplate: basicTagTemplate.name,
  * });
  * ```
  */

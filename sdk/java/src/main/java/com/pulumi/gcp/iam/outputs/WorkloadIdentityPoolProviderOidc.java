@@ -21,28 +21,6 @@ public final class WorkloadIdentityPoolProviderOidc {
      * If this list is empty, the OIDC token audience must be equal to the full canonical
      * resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
      * For example:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
      * 
      */
     private @Nullable List<String> allowedAudiences;
@@ -58,28 +36,6 @@ public final class WorkloadIdentityPoolProviderOidc {
      * .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
      * keys are supported. The JWK must use following format and include only
      * the following fields:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
      * 
      */
     private @Nullable String jwksJson;
@@ -93,28 +49,6 @@ public final class WorkloadIdentityPoolProviderOidc {
      * If this list is empty, the OIDC token audience must be equal to the full canonical
      * resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
      * For example:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
      * 
      */
     public List<String> allowedAudiences() {
@@ -134,28 +68,6 @@ public final class WorkloadIdentityPoolProviderOidc {
      * .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
      * keys are supported. The JWK must use following format and include only
      * the following fields:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
      * 
      */
     public Optional<String> jwksJson() {

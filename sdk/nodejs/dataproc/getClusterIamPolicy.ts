@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.dataproc.getClusterIamPolicy({
- *     cluster: google_dataproc_cluster.cluster.name,
+ *     cluster: cluster.name,
  *     region: "us-central1",
  * });
  * ```
@@ -71,7 +71,7 @@ export interface GetClusterIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.dataproc.getClusterIamPolicy({
- *     cluster: google_dataproc_cluster.cluster.name,
+ *     cluster: cluster.name,
  *     region: "us-central1",
  * });
  * ```

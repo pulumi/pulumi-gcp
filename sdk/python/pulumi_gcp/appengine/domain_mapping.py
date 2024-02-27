@@ -250,7 +250,7 @@ class DomainMapping(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        domain_mapping = gcp.appengine.DomainMapping("domainMapping",
+        domain_mapping = gcp.appengine.DomainMapping("domain_mapping",
             domain_name="verified-domain.com",
             ssl_settings=gcp.appengine.DomainMappingSslSettingsArgs(
                 ssl_management_type="AUTOMATIC",
@@ -318,7 +318,7 @@ class DomainMapping(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        domain_mapping = gcp.appengine.DomainMapping("domainMapping",
+        domain_mapping = gcp.appengine.DomainMapping("domain_mapping",
             domain_name="verified-domain.com",
             ssl_settings=gcp.appengine.DomainMappingSslSettingsArgs(
                 ssl_management_type="AUTOMATIC",

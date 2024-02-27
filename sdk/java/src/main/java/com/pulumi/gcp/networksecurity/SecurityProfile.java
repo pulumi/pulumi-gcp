@@ -28,7 +28,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.networksecurity.SecurityProfile;
  * import com.pulumi.gcp.networksecurity.SecurityProfileArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -43,13 +42,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new SecurityProfile(&#34;default&#34;, SecurityProfileArgs.builder()        
+ *             .name(&#34;my-security-profile&#34;)
  *             .parent(&#34;organizations/123456789&#34;)
  *             .description(&#34;my description&#34;)
  *             .type(&#34;THREAT_PREVENTION&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -64,7 +62,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networksecurity.SecurityProfile;
  * import com.pulumi.gcp.networksecurity.SecurityProfileArgs;
  * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileThreatPreventionProfileArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -79,6 +76,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new SecurityProfile(&#34;default&#34;, SecurityProfileArgs.builder()        
+ *             .name(&#34;my-security-profile&#34;)
  *             .parent(&#34;organizations/123456789&#34;)
  *             .description(&#34;my description&#34;)
  *             .type(&#34;THREAT_PREVENTION&#34;)
@@ -97,9 +95,7 @@ import javax.annotation.Nullable;
  *                     .threatId(&#34;280647&#34;)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

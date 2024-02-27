@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basicDataStore = new gcp.discoveryengine.DataStore("basicDataStore", {
+ * const basic = new gcp.discoveryengine.DataStore("basic", {
  *     location: "global",
  *     dataStoreId: "example-datastore-id",
  *     displayName: "tf-test-structured-datastore",
@@ -31,12 +31,12 @@ import * as utilities from "../utilities";
  *     solutionTypes: ["SOLUTION_TYPE_SEARCH"],
  *     createAdvancedSiteSearch: false,
  * });
- * const basicSearchEngine = new gcp.discoveryengine.SearchEngine("basicSearchEngine", {
+ * const basicSearchEngine = new gcp.discoveryengine.SearchEngine("basic", {
  *     engineId: "example-engine-id",
  *     collectionId: "default_collection",
- *     location: basicDataStore.location,
+ *     location: basic.location,
  *     displayName: "Example Display Name",
- *     dataStoreIds: [basicDataStore.dataStoreId],
+ *     dataStoreIds: [basic.dataStoreId],
  *     searchEngineConfig: {},
  * });
  * ```

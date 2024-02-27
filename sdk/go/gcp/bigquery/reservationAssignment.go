@@ -29,6 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			basic, err := bigquery.NewReservation(ctx, "basic", &bigquery.ReservationArgs{
+//				Name:            pulumi.String("tf-test-my-reservation"),
 //				Project:         pulumi.String("my-project-name"),
 //				Location:        pulumi.String("us-central1"),
 //				SlotCapacity:    pulumi.Int(0),

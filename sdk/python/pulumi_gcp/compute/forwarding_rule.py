@@ -1706,16 +1706,882 @@ class ForwardingRule(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
 
         ## Example Usage
+        ### Internal Http Lb With Mig Backend
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Internal HTTP load balancer with a managed instance group backend
+        # VPC network
+        ilb_network = gcp.compute.Network("ilb_network",
+            name="l7-ilb-network",
+            auto_create_subnetworks=False)
+        # proxy-only subnet
+        proxy_subnet = gcp.compute.Subnetwork("proxy_subnet",
+            name="l7-ilb-proxy-subnet",
+            ip_cidr_range="10.0.0.0/24",
+            region="europe-west1",
+            purpose="REGIONAL_MANAGED_PROXY",
+            role="ACTIVE",
+            network=ilb_network.id)
+        # backend subnet
+        ilb_subnet = gcp.compute.Subnetwork("ilb_subnet",
+            name="l7-ilb-subnet",
+            ip_cidr_range="10.0.1.0/24",
+            region="europe-west1",
+            network=ilb_network.id)
+        # health check
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            name="l7-ilb-hc",
+            region="europe-west1",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port_specification="USE_SERVING_PORT",
+            ))
+        # instance template
+        instance_template = gcp.compute.InstanceTemplate("instance_template",
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs()],
+                network=ilb_network.id,
+                subnetwork=ilb_subnet.id,
+            )],
+            name="l7-ilb-mig-template",
+            machine_type="e2-small",
+            tags=["http-server"],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-10",
+                auto_delete=True,
+                boot=True,
+            )],
+            metadata={
+                "startup-script": \"\"\"#! /bin/bash
+        set -euo pipefail
+
+        export DEBIAN_FRONTEND=noninteractive
+        apt-get update
+        apt-get install -y nginx-light jq
+
+        NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+        IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+        METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+
+        cat <<EOF > /var/www/html/index.html
+        <pre>
+        Name: $NAME
+        IP: $IP
+        Metadata: $METADATA
+        </pre>
+        EOF
+        \"\"\",
+            })
+        # MIG
+        mig = gcp.compute.RegionInstanceGroupManager("mig",
+            name="l7-ilb-mig1",
+            region="europe-west1",
+            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
+                instance_template=instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="vm",
+            target_size=2)
+        # backend service
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            name="l7-ilb-backend-subnet",
+            region="europe-west1",
+            protocol="HTTP",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            timeout_sec=10,
+            health_checks=default_region_health_check.id,
+            backends=[gcp.compute.RegionBackendServiceBackendArgs(
+                group=mig.instance_group,
+                balancing_mode="UTILIZATION",
+                capacity_scaler=1,
+            )])
+        # URL map
+        default_region_url_map = gcp.compute.RegionUrlMap("default",
+            name="l7-ilb-regional-url-map",
+            region="europe-west1",
+            default_service=default_region_backend_service.id)
+        # HTTP target proxy
+        default = gcp.compute.RegionTargetHttpProxy("default",
+            name="l7-ilb-target-http-proxy",
+            region="europe-west1",
+            url_map=default_region_url_map.id)
+        # forwarding rule
+        google_compute_forwarding_rule = gcp.compute.ForwardingRule("google_compute_forwarding_rule",
+            name="l7-ilb-forwarding-rule",
+            region="europe-west1",
+            ip_protocol="TCP",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            port_range="80",
+            target=default.id,
+            network=ilb_network.id,
+            subnetwork=ilb_subnet.id,
+            network_tier="PREMIUM")
+        # allow all access from IAP and health check ranges
+        fw_iap = gcp.compute.Firewall("fw-iap",
+            name="l7-ilb-fw-allow-iap-hc",
+            direction="INGRESS",
+            network=ilb_network.id,
+            source_ranges=[
+                "130.211.0.0/22",
+                "35.191.0.0/16",
+                "35.235.240.0/20",
+            ],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+            )])
+        # allow http from proxy subnet to backends
+        fw_ilb_to_backends = gcp.compute.Firewall("fw-ilb-to-backends",
+            name="l7-ilb-fw-allow-ilb-to-backends",
+            direction="INGRESS",
+            network=ilb_network.id,
+            source_ranges=["10.0.0.0/24"],
+            target_tags=["http-server"],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+                ports=[
+                    "80",
+                    "443",
+                    "8080",
+                ],
+            )])
+        # test instance
+        vm_test = gcp.compute.Instance("vm-test",
+            name="l7-ilb-test-vm",
+            zone="europe-west1-b",
+            machine_type="e2-small",
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network=ilb_network.id,
+                subnetwork=ilb_subnet.id,
+            )],
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-10",
+                ),
+            ))
+        ```
+        ### Internal Tcp Udp Lb With Mig Backend
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Internal TCP/UDP load balancer with a managed instance group backend
+        # VPC
+        ilb_network = gcp.compute.Network("ilb_network",
+            name="l4-ilb-network",
+            auto_create_subnetworks=False)
+        # backed subnet
+        ilb_subnet = gcp.compute.Subnetwork("ilb_subnet",
+            name="l4-ilb-subnet",
+            ip_cidr_range="10.0.1.0/24",
+            region="europe-west1",
+            network=ilb_network.id)
+        # health check
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            name="l4-ilb-hc",
+            region="europe-west1",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port=80,
+            ))
+        # instance template
+        instance_template = gcp.compute.InstanceTemplate("instance_template",
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs()],
+                network=ilb_network.id,
+                subnetwork=ilb_subnet.id,
+            )],
+            name="l4-ilb-mig-template",
+            machine_type="e2-small",
+            tags=[
+                "allow-ssh",
+                "allow-health-check",
+            ],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-10",
+                auto_delete=True,
+                boot=True,
+            )],
+            metadata={
+                "startup-script": \"\"\"#! /bin/bash
+        set -euo pipefail
+
+        export DEBIAN_FRONTEND=noninteractive
+        apt-get update
+        apt-get install -y nginx-light jq
+
+        NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+        IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+        METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+
+        cat <<EOF > /var/www/html/index.html
+        <pre>
+        Name: $NAME
+        IP: $IP
+        Metadata: $METADATA
+        </pre>
+        EOF
+        \"\"\",
+            })
+        # MIG
+        mig = gcp.compute.RegionInstanceGroupManager("mig",
+            name="l4-ilb-mig1",
+            region="europe-west1",
+            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
+                instance_template=instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="vm",
+            target_size=2)
+        # backend service
+        default = gcp.compute.RegionBackendService("default",
+            name="l4-ilb-backend-subnet",
+            region="europe-west1",
+            protocol="TCP",
+            load_balancing_scheme="INTERNAL",
+            health_checks=default_region_health_check.id,
+            backends=[gcp.compute.RegionBackendServiceBackendArgs(
+                group=mig.instance_group,
+                balancing_mode="CONNECTION",
+            )])
+        # forwarding rule
+        google_compute_forwarding_rule = gcp.compute.ForwardingRule("google_compute_forwarding_rule",
+            name="l4-ilb-forwarding-rule",
+            backend_service=default.id,
+            region="europe-west1",
+            ip_protocol="TCP",
+            load_balancing_scheme="INTERNAL",
+            all_ports=True,
+            allow_global_access=True,
+            network=ilb_network.id,
+            subnetwork=ilb_subnet.id)
+        # allow all access from health check ranges
+        fw_hc = gcp.compute.Firewall("fw_hc",
+            name="l4-ilb-fw-allow-hc",
+            direction="INGRESS",
+            network=ilb_network.id,
+            source_ranges=[
+                "130.211.0.0/22",
+                "35.191.0.0/16",
+                "35.235.240.0/20",
+            ],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+            )],
+            target_tags=["allow-health-check"])
+        # allow communication within the subnet 
+        fw_ilb_to_backends = gcp.compute.Firewall("fw_ilb_to_backends",
+            name="l4-ilb-fw-allow-ilb-to-backends",
+            direction="INGRESS",
+            network=ilb_network.id,
+            source_ranges=["10.0.1.0/24"],
+            allows=[
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="udp",
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="icmp",
+                ),
+            ])
+        # allow SSH
+        fw_ilb_ssh = gcp.compute.Firewall("fw_ilb_ssh",
+            name="l4-ilb-fw-ssh",
+            direction="INGRESS",
+            network=ilb_network.id,
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+                ports=["22"],
+            )],
+            target_tags=["allow-ssh"],
+            source_ranges=["0.0.0.0/0"])
+        # test instance
+        vm_test = gcp.compute.Instance("vm_test",
+            name="l4-ilb-test-vm",
+            zone="europe-west1-b",
+            machine_type="e2-small",
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network=ilb_network.id,
+                subnetwork=ilb_subnet.id,
+            )],
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-10",
+                ),
+            ))
+        ```
+        ### Forwarding Rule Externallb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hc = gcp.compute.RegionHealthCheck("hc",
+            name="check-website-backend",
+            check_interval_sec=1,
+            timeout_sec=1,
+            region="us-central1",
+            tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        backend = gcp.compute.RegionBackendService("backend",
+            name="website-backend",
+            region="us-central1",
+            load_balancing_scheme="EXTERNAL",
+            health_checks=hc.id)
+        # Forwarding rule for External Network Load Balancing using Backend Services
+        default = gcp.compute.ForwardingRule("default",
+            name="website-forwarding-rule",
+            region="us-central1",
+            port_range="80",
+            backend_service=backend.id)
+        ```
+        ### Forwarding Rule Global Internallb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hc = gcp.compute.HealthCheck("hc",
+            name="check-website-backend",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        backend = gcp.compute.RegionBackendService("backend",
+            name="website-backend",
+            region="us-central1",
+            health_checks=hc.id)
+        default_network = gcp.compute.Network("default",
+            name="website-net",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="website-net",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=default_network.id)
+        # Forwarding rule for Internal Load Balancing
+        default = gcp.compute.ForwardingRule("default",
+            name="website-forwarding-rule",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL",
+            backend_service=backend.id,
+            all_ports=True,
+            allow_global_access=True,
+            network=default_network.name,
+            subnetwork=default_subnetwork.name)
+        ```
         ### Forwarding Rule Basic
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        default_target_pool = gcp.compute.TargetPool("defaultTargetPool")
-        default_forwarding_rule = gcp.compute.ForwardingRule("defaultForwardingRule",
+        default_target_pool = gcp.compute.TargetPool("default", name="website-target-pool")
+        default = gcp.compute.ForwardingRule("default",
+            name="website-forwarding-rule",
             target=default_target_pool.id,
             port_range="80")
+        ```
+        ### Forwarding Rule L3 Default
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.RegionHealthCheck("health_check",
+            name="health-check",
+            region="us-central1",
+            tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        service = gcp.compute.RegionBackendService("service",
+            region="us-central1",
+            name="service",
+            health_checks=health_check.id,
+            protocol="UNSPECIFIED",
+            load_balancing_scheme="EXTERNAL")
+        fwd_rule = gcp.compute.ForwardingRule("fwd_rule",
+            name="l3-forwarding-rule",
+            backend_service=service.id,
+            ip_protocol="L3_DEFAULT",
+            all_ports=True)
+        ```
+        ### Forwarding Rule Internallb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hc = gcp.compute.HealthCheck("hc",
+            name="check-website-backend",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        backend = gcp.compute.RegionBackendService("backend",
+            name="website-backend",
+            region="us-central1",
+            health_checks=hc.id)
+        default_network = gcp.compute.Network("default",
+            name="website-net",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="website-net",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=default_network.id)
+        # Forwarding rule for Internal Load Balancing
+        default = gcp.compute.ForwardingRule("default",
+            name="website-forwarding-rule",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL",
+            backend_service=backend.id,
+            all_ports=True,
+            network=default_network.name,
+            subnetwork=default_subnetwork.name,
+            ip_version="IPV4")
+        ```
+        ### Forwarding Rule Http Lb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        default_network = gcp.compute.Network("default",
+            name="website-net",
+            auto_create_subnetworks=False,
+            routing_mode="REGIONAL")
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="website-net-default",
+            ip_cidr_range="10.1.2.0/24",
+            region="us-central1",
+            network=default_network.id)
+        instance_template = gcp.compute.InstanceTemplate("instance_template",
+            name="template-website-backend",
+            machine_type="e2-medium",
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network=default_network.id,
+                subnetwork=default_subnetwork.id,
+            )],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image=debian_image.self_link,
+                auto_delete=True,
+                boot=True,
+            )],
+            tags=[
+                "allow-ssh",
+                "load-balanced-backend",
+            ])
+        rigm = gcp.compute.RegionInstanceGroupManager("rigm",
+            region="us-central1",
+            name="website-rigm",
+            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
+                instance_template=instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="internal-glb",
+            target_size=1)
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            region="us-central1",
+            name="website-hc",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port_specification="USE_SERVING_PORT",
+            ))
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            backends=[gcp.compute.RegionBackendServiceBackendArgs(
+                group=rigm.instance_group,
+                balancing_mode="UTILIZATION",
+                capacity_scaler=1,
+            )],
+            region="us-central1",
+            name="website-backend",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=default_region_health_check.id)
+        default_region_url_map = gcp.compute.RegionUrlMap("default",
+            region="us-central1",
+            name="website-map",
+            default_service=default_region_backend_service.id)
+        default_region_target_http_proxy = gcp.compute.RegionTargetHttpProxy("default",
+            region="us-central1",
+            name="website-proxy",
+            url_map=default_region_url_map.id)
+        # Forwarding rule for Internal Load Balancing
+        default = gcp.compute.ForwardingRule("default",
+            name="website-forwarding-rule",
+            region="us-central1",
+            ip_protocol="TCP",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            port_range="80",
+            target=default_region_target_http_proxy.id,
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            network_tier="PREMIUM")
+        fw1 = gcp.compute.Firewall("fw1",
+            name="website-fw-1",
+            network=default_network.id,
+            source_ranges=["10.1.2.0/24"],
+            allows=[
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="udp",
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="icmp",
+                ),
+            ],
+            direction="INGRESS")
+        fw2 = gcp.compute.Firewall("fw2",
+            name="website-fw-2",
+            network=default_network.id,
+            source_ranges=["0.0.0.0/0"],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+                ports=["22"],
+            )],
+            target_tags=["allow-ssh"],
+            direction="INGRESS")
+        fw3 = gcp.compute.Firewall("fw3",
+            name="website-fw-3",
+            network=default_network.id,
+            source_ranges=[
+                "130.211.0.0/22",
+                "35.191.0.0/16",
+            ],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+            )],
+            target_tags=["load-balanced-backend"],
+            direction="INGRESS")
+        fw4 = gcp.compute.Firewall("fw4",
+            name="website-fw-4",
+            network=default_network.id,
+            source_ranges=["10.129.0.0/26"],
+            target_tags=["load-balanced-backend"],
+            allows=[
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                    ports=["80"],
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                    ports=["443"],
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                    ports=["8000"],
+                ),
+            ],
+            direction="INGRESS")
+        proxy = gcp.compute.Subnetwork("proxy",
+            name="website-net-proxy",
+            ip_cidr_range="10.129.0.0/26",
+            region="us-central1",
+            network=default_network.id,
+            purpose="REGIONAL_MANAGED_PROXY",
+            role="ACTIVE")
+        ```
+        ### Forwarding Rule Regional Http Xlb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        default_network = gcp.compute.Network("default",
+            name="website-net",
+            auto_create_subnetworks=False,
+            routing_mode="REGIONAL")
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="website-net-default",
+            ip_cidr_range="10.1.2.0/24",
+            region="us-central1",
+            network=default_network.id)
+        instance_template = gcp.compute.InstanceTemplate("instance_template",
+            name="template-website-backend",
+            machine_type="e2-medium",
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network=default_network.id,
+                subnetwork=default_subnetwork.id,
+            )],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image=debian_image.self_link,
+                auto_delete=True,
+                boot=True,
+            )],
+            tags=[
+                "allow-ssh",
+                "load-balanced-backend",
+            ])
+        rigm = gcp.compute.RegionInstanceGroupManager("rigm",
+            region="us-central1",
+            name="website-rigm",
+            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
+                instance_template=instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="internal-glb",
+            target_size=1)
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            region="us-central1",
+            name="website-hc",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port_specification="USE_SERVING_PORT",
+            ))
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            backends=[gcp.compute.RegionBackendServiceBackendArgs(
+                group=rigm.instance_group,
+                balancing_mode="UTILIZATION",
+                capacity_scaler=1,
+            )],
+            region="us-central1",
+            name="website-backend",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=default_region_health_check.id)
+        default_region_url_map = gcp.compute.RegionUrlMap("default",
+            region="us-central1",
+            name="website-map",
+            default_service=default_region_backend_service.id)
+        default_region_target_http_proxy = gcp.compute.RegionTargetHttpProxy("default",
+            region="us-central1",
+            name="website-proxy",
+            url_map=default_region_url_map.id)
+        default_address = gcp.compute.Address("default",
+            name="website-ip-1",
+            region="us-central1",
+            network_tier="STANDARD")
+        # Forwarding rule for Regional External Load Balancing
+        default = gcp.compute.ForwardingRule("default",
+            name="website-forwarding-rule",
+            region="us-central1",
+            ip_protocol="TCP",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            port_range="80",
+            target=default_region_target_http_proxy.id,
+            network=default_network.id,
+            ip_address=default_address.id,
+            network_tier="STANDARD")
+        fw1 = gcp.compute.Firewall("fw1",
+            name="website-fw-1",
+            network=default_network.id,
+            source_ranges=["10.1.2.0/24"],
+            allows=[
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="udp",
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="icmp",
+                ),
+            ],
+            direction="INGRESS")
+        fw2 = gcp.compute.Firewall("fw2",
+            name="website-fw-2",
+            network=default_network.id,
+            source_ranges=["0.0.0.0/0"],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+                ports=["22"],
+            )],
+            target_tags=["allow-ssh"],
+            direction="INGRESS")
+        fw3 = gcp.compute.Firewall("fw3",
+            name="website-fw-3",
+            network=default_network.id,
+            source_ranges=[
+                "130.211.0.0/22",
+                "35.191.0.0/16",
+            ],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+            )],
+            target_tags=["load-balanced-backend"],
+            direction="INGRESS")
+        fw4 = gcp.compute.Firewall("fw4",
+            name="website-fw-4",
+            network=default_network.id,
+            source_ranges=["10.129.0.0/26"],
+            target_tags=["load-balanced-backend"],
+            allows=[
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                    ports=["80"],
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                    ports=["443"],
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                    ports=["8000"],
+                ),
+            ],
+            direction="INGRESS")
+        proxy = gcp.compute.Subnetwork("proxy",
+            name="website-net-proxy",
+            ip_cidr_range="10.129.0.0/26",
+            region="us-central1",
+            network=default_network.id,
+            purpose="REGIONAL_MANAGED_PROXY",
+            role="ACTIVE")
+        ```
+        ### Forwarding Rule Vpc Psc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Consumer service endpoint
+        consumer_net = gcp.compute.Network("consumer_net",
+            name="consumer-net",
+            auto_create_subnetworks=False)
+        consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
+            name="consumer-net",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=consumer_net.id)
+        consumer_address = gcp.compute.Address("consumer_address",
+            name="website-ip-1",
+            region="us-central1",
+            subnetwork=consumer_subnet.id,
+            address_type="INTERNAL")
+        # Producer service attachment
+        producer_net = gcp.compute.Network("producer_net",
+            name="producer-net",
+            auto_create_subnetworks=False)
+        psc_producer_subnet = gcp.compute.Subnetwork("psc_producer_subnet",
+            name="producer-psc-net",
+            ip_cidr_range="10.1.0.0/16",
+            region="us-central1",
+            purpose="PRIVATE_SERVICE_CONNECT",
+            network=producer_net.id)
+        producer_subnet = gcp.compute.Subnetwork("producer_subnet",
+            name="producer-net",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=producer_net.id)
+        producer_service_health_check = gcp.compute.HealthCheck("producer_service_health_check",
+            name="producer-service-health-check",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
+            name="producer-service-backend",
+            region="us-central1",
+            health_checks=producer_service_health_check.id)
+        producer_target_service = gcp.compute.ForwardingRule("producer_target_service",
+            name="producer-forwarding-rule",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL",
+            backend_service=producer_service_backend.id,
+            all_ports=True,
+            network=producer_net.name,
+            subnetwork=producer_subnet.name)
+        producer_service_attachment = gcp.compute.ServiceAttachment("producer_service_attachment",
+            name="producer-service",
+            region="us-central1",
+            description="A service attachment configured with Terraform",
+            enable_proxy_protocol=True,
+            connection_preference="ACCEPT_AUTOMATIC",
+            nat_subnets=[psc_producer_subnet.name],
+            target_service=producer_target_service.id)
+        # Forwarding rule for VPC private service connect
+        default = gcp.compute.ForwardingRule("default",
+            name="psc-endpoint",
+            region="us-central1",
+            load_balancing_scheme="",
+            target=producer_service_attachment.id,
+            network=consumer_net.name,
+            ip_address=consumer_address.id,
+            allow_psc_global_access=True)
+        ```
+        ### Forwarding Rule Vpc Psc No Automate Dns
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        consumer_net = gcp.compute.Network("consumer_net",
+            name="consumer-net",
+            auto_create_subnetworks=False)
+        consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
+            name="consumer-net",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=consumer_net.id)
+        consumer_address = gcp.compute.Address("consumer_address",
+            name="website-ip-1",
+            region="us-central1",
+            subnetwork=consumer_subnet.id,
+            address_type="INTERNAL")
+        producer_net = gcp.compute.Network("producer_net",
+            name="producer-net",
+            auto_create_subnetworks=False)
+        psc_producer_subnet = gcp.compute.Subnetwork("psc_producer_subnet",
+            name="producer-psc-net",
+            ip_cidr_range="10.1.0.0/16",
+            region="us-central1",
+            purpose="PRIVATE_SERVICE_CONNECT",
+            network=producer_net.id)
+        producer_subnet = gcp.compute.Subnetwork("producer_subnet",
+            name="producer-net",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=producer_net.id)
+        producer_service_health_check = gcp.compute.HealthCheck("producer_service_health_check",
+            name="producer-service-health-check",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
+            name="producer-service-backend",
+            region="us-central1",
+            health_checks=producer_service_health_check.id)
+        producer_target_service = gcp.compute.ForwardingRule("producer_target_service",
+            name="producer-forwarding-rule",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL",
+            backend_service=producer_service_backend.id,
+            all_ports=True,
+            network=producer_net.name,
+            subnetwork=producer_subnet.name)
+        producer_service_attachment = gcp.compute.ServiceAttachment("producer_service_attachment",
+            name="producer-service",
+            region="us-central1",
+            description="A service attachment configured with Terraform",
+            enable_proxy_protocol=True,
+            connection_preference="ACCEPT_AUTOMATIC",
+            nat_subnets=[psc_producer_subnet.name],
+            target_service=producer_target_service.id)
+        default = gcp.compute.ForwardingRule("default",
+            name="psc-endpoint",
+            region="us-central1",
+            load_balancing_scheme="",
+            target=producer_service_attachment.id,
+            network=consumer_net.name,
+            ip_address=consumer_address.id,
+            allow_psc_global_access=True,
+            no_automate_dns_zone=True)
         ```
         ### Forwarding Rule Regional Steering
 
@@ -1723,25 +2589,68 @@ class ForwardingRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.compute.Address("basic", region="us-central1")
-        external_region_backend_service = gcp.compute.RegionBackendService("externalRegionBackendService",
+        basic = gcp.compute.Address("basic",
+            name="website-ip",
+            region="us-central1")
+        external = gcp.compute.RegionBackendService("external",
+            name="service-backend",
             region="us-central1",
-            load_balancing_scheme="EXTERNAL")
-        external_forwarding_rule = gcp.compute.ForwardingRule("externalForwardingRule",
-            region="us-central1",
-            ip_address=basic.self_link,
-            backend_service=external_region_backend_service.self_link,
             load_balancing_scheme="EXTERNAL")
         steering = gcp.compute.ForwardingRule("steering",
+            name="steering-rule",
             region="us-central1",
             ip_address=basic.self_link,
-            backend_service=external_region_backend_service.self_link,
+            backend_service=external.self_link,
             load_balancing_scheme="EXTERNAL",
             source_ip_ranges=[
                 "34.121.88.0/24",
                 "35.187.239.137",
-            ],
-            opts=pulumi.ResourceOptions(depends_on=[external_forwarding_rule]))
+            ])
+        external_forwarding_rule = gcp.compute.ForwardingRule("external",
+            name="external-forwarding-rule",
+            region="us-central1",
+            ip_address=basic.self_link,
+            backend_service=external.self_link,
+            load_balancing_scheme="EXTERNAL")
+        ```
+        ### Forwarding Rule Internallb Ipv6
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hc = gcp.compute.HealthCheck("hc",
+            name="check-ilb-ipv6-backend",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        backend = gcp.compute.RegionBackendService("backend",
+            name="ilb-ipv6-backend",
+            region="us-central1",
+            health_checks=hc.id)
+        default_network = gcp.compute.Network("default",
+            name="net-ipv6",
+            auto_create_subnetworks=False,
+            enable_ula_internal_ipv6=True)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="subnet-internal-ipv6",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            stack_type="IPV4_IPV6",
+            ipv6_access_type="INTERNAL",
+            network=default_network.id)
+        # Forwarding rule for Internal Load Balancing
+        default = gcp.compute.ForwardingRule("default",
+            name="ilb-ipv6-forwarding-rule",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL",
+            backend_service=backend.id,
+            all_ports=True,
+            network=default_network.name,
+            subnetwork=default_subnetwork.name,
+            ip_version="IPV6")
         ```
 
         ## Import
@@ -1991,16 +2900,882 @@ class ForwardingRule(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
 
         ## Example Usage
+        ### Internal Http Lb With Mig Backend
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Internal HTTP load balancer with a managed instance group backend
+        # VPC network
+        ilb_network = gcp.compute.Network("ilb_network",
+            name="l7-ilb-network",
+            auto_create_subnetworks=False)
+        # proxy-only subnet
+        proxy_subnet = gcp.compute.Subnetwork("proxy_subnet",
+            name="l7-ilb-proxy-subnet",
+            ip_cidr_range="10.0.0.0/24",
+            region="europe-west1",
+            purpose="REGIONAL_MANAGED_PROXY",
+            role="ACTIVE",
+            network=ilb_network.id)
+        # backend subnet
+        ilb_subnet = gcp.compute.Subnetwork("ilb_subnet",
+            name="l7-ilb-subnet",
+            ip_cidr_range="10.0.1.0/24",
+            region="europe-west1",
+            network=ilb_network.id)
+        # health check
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            name="l7-ilb-hc",
+            region="europe-west1",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port_specification="USE_SERVING_PORT",
+            ))
+        # instance template
+        instance_template = gcp.compute.InstanceTemplate("instance_template",
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs()],
+                network=ilb_network.id,
+                subnetwork=ilb_subnet.id,
+            )],
+            name="l7-ilb-mig-template",
+            machine_type="e2-small",
+            tags=["http-server"],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-10",
+                auto_delete=True,
+                boot=True,
+            )],
+            metadata={
+                "startup-script": \"\"\"#! /bin/bash
+        set -euo pipefail
+
+        export DEBIAN_FRONTEND=noninteractive
+        apt-get update
+        apt-get install -y nginx-light jq
+
+        NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+        IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+        METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+
+        cat <<EOF > /var/www/html/index.html
+        <pre>
+        Name: $NAME
+        IP: $IP
+        Metadata: $METADATA
+        </pre>
+        EOF
+        \"\"\",
+            })
+        # MIG
+        mig = gcp.compute.RegionInstanceGroupManager("mig",
+            name="l7-ilb-mig1",
+            region="europe-west1",
+            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
+                instance_template=instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="vm",
+            target_size=2)
+        # backend service
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            name="l7-ilb-backend-subnet",
+            region="europe-west1",
+            protocol="HTTP",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            timeout_sec=10,
+            health_checks=default_region_health_check.id,
+            backends=[gcp.compute.RegionBackendServiceBackendArgs(
+                group=mig.instance_group,
+                balancing_mode="UTILIZATION",
+                capacity_scaler=1,
+            )])
+        # URL map
+        default_region_url_map = gcp.compute.RegionUrlMap("default",
+            name="l7-ilb-regional-url-map",
+            region="europe-west1",
+            default_service=default_region_backend_service.id)
+        # HTTP target proxy
+        default = gcp.compute.RegionTargetHttpProxy("default",
+            name="l7-ilb-target-http-proxy",
+            region="europe-west1",
+            url_map=default_region_url_map.id)
+        # forwarding rule
+        google_compute_forwarding_rule = gcp.compute.ForwardingRule("google_compute_forwarding_rule",
+            name="l7-ilb-forwarding-rule",
+            region="europe-west1",
+            ip_protocol="TCP",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            port_range="80",
+            target=default.id,
+            network=ilb_network.id,
+            subnetwork=ilb_subnet.id,
+            network_tier="PREMIUM")
+        # allow all access from IAP and health check ranges
+        fw_iap = gcp.compute.Firewall("fw-iap",
+            name="l7-ilb-fw-allow-iap-hc",
+            direction="INGRESS",
+            network=ilb_network.id,
+            source_ranges=[
+                "130.211.0.0/22",
+                "35.191.0.0/16",
+                "35.235.240.0/20",
+            ],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+            )])
+        # allow http from proxy subnet to backends
+        fw_ilb_to_backends = gcp.compute.Firewall("fw-ilb-to-backends",
+            name="l7-ilb-fw-allow-ilb-to-backends",
+            direction="INGRESS",
+            network=ilb_network.id,
+            source_ranges=["10.0.0.0/24"],
+            target_tags=["http-server"],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+                ports=[
+                    "80",
+                    "443",
+                    "8080",
+                ],
+            )])
+        # test instance
+        vm_test = gcp.compute.Instance("vm-test",
+            name="l7-ilb-test-vm",
+            zone="europe-west1-b",
+            machine_type="e2-small",
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network=ilb_network.id,
+                subnetwork=ilb_subnet.id,
+            )],
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-10",
+                ),
+            ))
+        ```
+        ### Internal Tcp Udp Lb With Mig Backend
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Internal TCP/UDP load balancer with a managed instance group backend
+        # VPC
+        ilb_network = gcp.compute.Network("ilb_network",
+            name="l4-ilb-network",
+            auto_create_subnetworks=False)
+        # backed subnet
+        ilb_subnet = gcp.compute.Subnetwork("ilb_subnet",
+            name="l4-ilb-subnet",
+            ip_cidr_range="10.0.1.0/24",
+            region="europe-west1",
+            network=ilb_network.id)
+        # health check
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            name="l4-ilb-hc",
+            region="europe-west1",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port=80,
+            ))
+        # instance template
+        instance_template = gcp.compute.InstanceTemplate("instance_template",
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs()],
+                network=ilb_network.id,
+                subnetwork=ilb_subnet.id,
+            )],
+            name="l4-ilb-mig-template",
+            machine_type="e2-small",
+            tags=[
+                "allow-ssh",
+                "allow-health-check",
+            ],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-10",
+                auto_delete=True,
+                boot=True,
+            )],
+            metadata={
+                "startup-script": \"\"\"#! /bin/bash
+        set -euo pipefail
+
+        export DEBIAN_FRONTEND=noninteractive
+        apt-get update
+        apt-get install -y nginx-light jq
+
+        NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+        IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+        METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+
+        cat <<EOF > /var/www/html/index.html
+        <pre>
+        Name: $NAME
+        IP: $IP
+        Metadata: $METADATA
+        </pre>
+        EOF
+        \"\"\",
+            })
+        # MIG
+        mig = gcp.compute.RegionInstanceGroupManager("mig",
+            name="l4-ilb-mig1",
+            region="europe-west1",
+            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
+                instance_template=instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="vm",
+            target_size=2)
+        # backend service
+        default = gcp.compute.RegionBackendService("default",
+            name="l4-ilb-backend-subnet",
+            region="europe-west1",
+            protocol="TCP",
+            load_balancing_scheme="INTERNAL",
+            health_checks=default_region_health_check.id,
+            backends=[gcp.compute.RegionBackendServiceBackendArgs(
+                group=mig.instance_group,
+                balancing_mode="CONNECTION",
+            )])
+        # forwarding rule
+        google_compute_forwarding_rule = gcp.compute.ForwardingRule("google_compute_forwarding_rule",
+            name="l4-ilb-forwarding-rule",
+            backend_service=default.id,
+            region="europe-west1",
+            ip_protocol="TCP",
+            load_balancing_scheme="INTERNAL",
+            all_ports=True,
+            allow_global_access=True,
+            network=ilb_network.id,
+            subnetwork=ilb_subnet.id)
+        # allow all access from health check ranges
+        fw_hc = gcp.compute.Firewall("fw_hc",
+            name="l4-ilb-fw-allow-hc",
+            direction="INGRESS",
+            network=ilb_network.id,
+            source_ranges=[
+                "130.211.0.0/22",
+                "35.191.0.0/16",
+                "35.235.240.0/20",
+            ],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+            )],
+            target_tags=["allow-health-check"])
+        # allow communication within the subnet 
+        fw_ilb_to_backends = gcp.compute.Firewall("fw_ilb_to_backends",
+            name="l4-ilb-fw-allow-ilb-to-backends",
+            direction="INGRESS",
+            network=ilb_network.id,
+            source_ranges=["10.0.1.0/24"],
+            allows=[
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="udp",
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="icmp",
+                ),
+            ])
+        # allow SSH
+        fw_ilb_ssh = gcp.compute.Firewall("fw_ilb_ssh",
+            name="l4-ilb-fw-ssh",
+            direction="INGRESS",
+            network=ilb_network.id,
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+                ports=["22"],
+            )],
+            target_tags=["allow-ssh"],
+            source_ranges=["0.0.0.0/0"])
+        # test instance
+        vm_test = gcp.compute.Instance("vm_test",
+            name="l4-ilb-test-vm",
+            zone="europe-west1-b",
+            machine_type="e2-small",
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network=ilb_network.id,
+                subnetwork=ilb_subnet.id,
+            )],
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-10",
+                ),
+            ))
+        ```
+        ### Forwarding Rule Externallb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hc = gcp.compute.RegionHealthCheck("hc",
+            name="check-website-backend",
+            check_interval_sec=1,
+            timeout_sec=1,
+            region="us-central1",
+            tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        backend = gcp.compute.RegionBackendService("backend",
+            name="website-backend",
+            region="us-central1",
+            load_balancing_scheme="EXTERNAL",
+            health_checks=hc.id)
+        # Forwarding rule for External Network Load Balancing using Backend Services
+        default = gcp.compute.ForwardingRule("default",
+            name="website-forwarding-rule",
+            region="us-central1",
+            port_range="80",
+            backend_service=backend.id)
+        ```
+        ### Forwarding Rule Global Internallb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hc = gcp.compute.HealthCheck("hc",
+            name="check-website-backend",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        backend = gcp.compute.RegionBackendService("backend",
+            name="website-backend",
+            region="us-central1",
+            health_checks=hc.id)
+        default_network = gcp.compute.Network("default",
+            name="website-net",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="website-net",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=default_network.id)
+        # Forwarding rule for Internal Load Balancing
+        default = gcp.compute.ForwardingRule("default",
+            name="website-forwarding-rule",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL",
+            backend_service=backend.id,
+            all_ports=True,
+            allow_global_access=True,
+            network=default_network.name,
+            subnetwork=default_subnetwork.name)
+        ```
         ### Forwarding Rule Basic
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        default_target_pool = gcp.compute.TargetPool("defaultTargetPool")
-        default_forwarding_rule = gcp.compute.ForwardingRule("defaultForwardingRule",
+        default_target_pool = gcp.compute.TargetPool("default", name="website-target-pool")
+        default = gcp.compute.ForwardingRule("default",
+            name="website-forwarding-rule",
             target=default_target_pool.id,
             port_range="80")
+        ```
+        ### Forwarding Rule L3 Default
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.RegionHealthCheck("health_check",
+            name="health-check",
+            region="us-central1",
+            tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        service = gcp.compute.RegionBackendService("service",
+            region="us-central1",
+            name="service",
+            health_checks=health_check.id,
+            protocol="UNSPECIFIED",
+            load_balancing_scheme="EXTERNAL")
+        fwd_rule = gcp.compute.ForwardingRule("fwd_rule",
+            name="l3-forwarding-rule",
+            backend_service=service.id,
+            ip_protocol="L3_DEFAULT",
+            all_ports=True)
+        ```
+        ### Forwarding Rule Internallb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hc = gcp.compute.HealthCheck("hc",
+            name="check-website-backend",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        backend = gcp.compute.RegionBackendService("backend",
+            name="website-backend",
+            region="us-central1",
+            health_checks=hc.id)
+        default_network = gcp.compute.Network("default",
+            name="website-net",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="website-net",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=default_network.id)
+        # Forwarding rule for Internal Load Balancing
+        default = gcp.compute.ForwardingRule("default",
+            name="website-forwarding-rule",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL",
+            backend_service=backend.id,
+            all_ports=True,
+            network=default_network.name,
+            subnetwork=default_subnetwork.name,
+            ip_version="IPV4")
+        ```
+        ### Forwarding Rule Http Lb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        default_network = gcp.compute.Network("default",
+            name="website-net",
+            auto_create_subnetworks=False,
+            routing_mode="REGIONAL")
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="website-net-default",
+            ip_cidr_range="10.1.2.0/24",
+            region="us-central1",
+            network=default_network.id)
+        instance_template = gcp.compute.InstanceTemplate("instance_template",
+            name="template-website-backend",
+            machine_type="e2-medium",
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network=default_network.id,
+                subnetwork=default_subnetwork.id,
+            )],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image=debian_image.self_link,
+                auto_delete=True,
+                boot=True,
+            )],
+            tags=[
+                "allow-ssh",
+                "load-balanced-backend",
+            ])
+        rigm = gcp.compute.RegionInstanceGroupManager("rigm",
+            region="us-central1",
+            name="website-rigm",
+            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
+                instance_template=instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="internal-glb",
+            target_size=1)
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            region="us-central1",
+            name="website-hc",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port_specification="USE_SERVING_PORT",
+            ))
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            backends=[gcp.compute.RegionBackendServiceBackendArgs(
+                group=rigm.instance_group,
+                balancing_mode="UTILIZATION",
+                capacity_scaler=1,
+            )],
+            region="us-central1",
+            name="website-backend",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=default_region_health_check.id)
+        default_region_url_map = gcp.compute.RegionUrlMap("default",
+            region="us-central1",
+            name="website-map",
+            default_service=default_region_backend_service.id)
+        default_region_target_http_proxy = gcp.compute.RegionTargetHttpProxy("default",
+            region="us-central1",
+            name="website-proxy",
+            url_map=default_region_url_map.id)
+        # Forwarding rule for Internal Load Balancing
+        default = gcp.compute.ForwardingRule("default",
+            name="website-forwarding-rule",
+            region="us-central1",
+            ip_protocol="TCP",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            port_range="80",
+            target=default_region_target_http_proxy.id,
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            network_tier="PREMIUM")
+        fw1 = gcp.compute.Firewall("fw1",
+            name="website-fw-1",
+            network=default_network.id,
+            source_ranges=["10.1.2.0/24"],
+            allows=[
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="udp",
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="icmp",
+                ),
+            ],
+            direction="INGRESS")
+        fw2 = gcp.compute.Firewall("fw2",
+            name="website-fw-2",
+            network=default_network.id,
+            source_ranges=["0.0.0.0/0"],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+                ports=["22"],
+            )],
+            target_tags=["allow-ssh"],
+            direction="INGRESS")
+        fw3 = gcp.compute.Firewall("fw3",
+            name="website-fw-3",
+            network=default_network.id,
+            source_ranges=[
+                "130.211.0.0/22",
+                "35.191.0.0/16",
+            ],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+            )],
+            target_tags=["load-balanced-backend"],
+            direction="INGRESS")
+        fw4 = gcp.compute.Firewall("fw4",
+            name="website-fw-4",
+            network=default_network.id,
+            source_ranges=["10.129.0.0/26"],
+            target_tags=["load-balanced-backend"],
+            allows=[
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                    ports=["80"],
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                    ports=["443"],
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                    ports=["8000"],
+                ),
+            ],
+            direction="INGRESS")
+        proxy = gcp.compute.Subnetwork("proxy",
+            name="website-net-proxy",
+            ip_cidr_range="10.129.0.0/26",
+            region="us-central1",
+            network=default_network.id,
+            purpose="REGIONAL_MANAGED_PROXY",
+            role="ACTIVE")
+        ```
+        ### Forwarding Rule Regional Http Xlb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        default_network = gcp.compute.Network("default",
+            name="website-net",
+            auto_create_subnetworks=False,
+            routing_mode="REGIONAL")
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="website-net-default",
+            ip_cidr_range="10.1.2.0/24",
+            region="us-central1",
+            network=default_network.id)
+        instance_template = gcp.compute.InstanceTemplate("instance_template",
+            name="template-website-backend",
+            machine_type="e2-medium",
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network=default_network.id,
+                subnetwork=default_subnetwork.id,
+            )],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image=debian_image.self_link,
+                auto_delete=True,
+                boot=True,
+            )],
+            tags=[
+                "allow-ssh",
+                "load-balanced-backend",
+            ])
+        rigm = gcp.compute.RegionInstanceGroupManager("rigm",
+            region="us-central1",
+            name="website-rigm",
+            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
+                instance_template=instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="internal-glb",
+            target_size=1)
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            region="us-central1",
+            name="website-hc",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port_specification="USE_SERVING_PORT",
+            ))
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            backends=[gcp.compute.RegionBackendServiceBackendArgs(
+                group=rigm.instance_group,
+                balancing_mode="UTILIZATION",
+                capacity_scaler=1,
+            )],
+            region="us-central1",
+            name="website-backend",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=default_region_health_check.id)
+        default_region_url_map = gcp.compute.RegionUrlMap("default",
+            region="us-central1",
+            name="website-map",
+            default_service=default_region_backend_service.id)
+        default_region_target_http_proxy = gcp.compute.RegionTargetHttpProxy("default",
+            region="us-central1",
+            name="website-proxy",
+            url_map=default_region_url_map.id)
+        default_address = gcp.compute.Address("default",
+            name="website-ip-1",
+            region="us-central1",
+            network_tier="STANDARD")
+        # Forwarding rule for Regional External Load Balancing
+        default = gcp.compute.ForwardingRule("default",
+            name="website-forwarding-rule",
+            region="us-central1",
+            ip_protocol="TCP",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            port_range="80",
+            target=default_region_target_http_proxy.id,
+            network=default_network.id,
+            ip_address=default_address.id,
+            network_tier="STANDARD")
+        fw1 = gcp.compute.Firewall("fw1",
+            name="website-fw-1",
+            network=default_network.id,
+            source_ranges=["10.1.2.0/24"],
+            allows=[
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="udp",
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="icmp",
+                ),
+            ],
+            direction="INGRESS")
+        fw2 = gcp.compute.Firewall("fw2",
+            name="website-fw-2",
+            network=default_network.id,
+            source_ranges=["0.0.0.0/0"],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+                ports=["22"],
+            )],
+            target_tags=["allow-ssh"],
+            direction="INGRESS")
+        fw3 = gcp.compute.Firewall("fw3",
+            name="website-fw-3",
+            network=default_network.id,
+            source_ranges=[
+                "130.211.0.0/22",
+                "35.191.0.0/16",
+            ],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+            )],
+            target_tags=["load-balanced-backend"],
+            direction="INGRESS")
+        fw4 = gcp.compute.Firewall("fw4",
+            name="website-fw-4",
+            network=default_network.id,
+            source_ranges=["10.129.0.0/26"],
+            target_tags=["load-balanced-backend"],
+            allows=[
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                    ports=["80"],
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                    ports=["443"],
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                    ports=["8000"],
+                ),
+            ],
+            direction="INGRESS")
+        proxy = gcp.compute.Subnetwork("proxy",
+            name="website-net-proxy",
+            ip_cidr_range="10.129.0.0/26",
+            region="us-central1",
+            network=default_network.id,
+            purpose="REGIONAL_MANAGED_PROXY",
+            role="ACTIVE")
+        ```
+        ### Forwarding Rule Vpc Psc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Consumer service endpoint
+        consumer_net = gcp.compute.Network("consumer_net",
+            name="consumer-net",
+            auto_create_subnetworks=False)
+        consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
+            name="consumer-net",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=consumer_net.id)
+        consumer_address = gcp.compute.Address("consumer_address",
+            name="website-ip-1",
+            region="us-central1",
+            subnetwork=consumer_subnet.id,
+            address_type="INTERNAL")
+        # Producer service attachment
+        producer_net = gcp.compute.Network("producer_net",
+            name="producer-net",
+            auto_create_subnetworks=False)
+        psc_producer_subnet = gcp.compute.Subnetwork("psc_producer_subnet",
+            name="producer-psc-net",
+            ip_cidr_range="10.1.0.0/16",
+            region="us-central1",
+            purpose="PRIVATE_SERVICE_CONNECT",
+            network=producer_net.id)
+        producer_subnet = gcp.compute.Subnetwork("producer_subnet",
+            name="producer-net",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=producer_net.id)
+        producer_service_health_check = gcp.compute.HealthCheck("producer_service_health_check",
+            name="producer-service-health-check",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
+            name="producer-service-backend",
+            region="us-central1",
+            health_checks=producer_service_health_check.id)
+        producer_target_service = gcp.compute.ForwardingRule("producer_target_service",
+            name="producer-forwarding-rule",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL",
+            backend_service=producer_service_backend.id,
+            all_ports=True,
+            network=producer_net.name,
+            subnetwork=producer_subnet.name)
+        producer_service_attachment = gcp.compute.ServiceAttachment("producer_service_attachment",
+            name="producer-service",
+            region="us-central1",
+            description="A service attachment configured with Terraform",
+            enable_proxy_protocol=True,
+            connection_preference="ACCEPT_AUTOMATIC",
+            nat_subnets=[psc_producer_subnet.name],
+            target_service=producer_target_service.id)
+        # Forwarding rule for VPC private service connect
+        default = gcp.compute.ForwardingRule("default",
+            name="psc-endpoint",
+            region="us-central1",
+            load_balancing_scheme="",
+            target=producer_service_attachment.id,
+            network=consumer_net.name,
+            ip_address=consumer_address.id,
+            allow_psc_global_access=True)
+        ```
+        ### Forwarding Rule Vpc Psc No Automate Dns
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        consumer_net = gcp.compute.Network("consumer_net",
+            name="consumer-net",
+            auto_create_subnetworks=False)
+        consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
+            name="consumer-net",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=consumer_net.id)
+        consumer_address = gcp.compute.Address("consumer_address",
+            name="website-ip-1",
+            region="us-central1",
+            subnetwork=consumer_subnet.id,
+            address_type="INTERNAL")
+        producer_net = gcp.compute.Network("producer_net",
+            name="producer-net",
+            auto_create_subnetworks=False)
+        psc_producer_subnet = gcp.compute.Subnetwork("psc_producer_subnet",
+            name="producer-psc-net",
+            ip_cidr_range="10.1.0.0/16",
+            region="us-central1",
+            purpose="PRIVATE_SERVICE_CONNECT",
+            network=producer_net.id)
+        producer_subnet = gcp.compute.Subnetwork("producer_subnet",
+            name="producer-net",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=producer_net.id)
+        producer_service_health_check = gcp.compute.HealthCheck("producer_service_health_check",
+            name="producer-service-health-check",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
+            name="producer-service-backend",
+            region="us-central1",
+            health_checks=producer_service_health_check.id)
+        producer_target_service = gcp.compute.ForwardingRule("producer_target_service",
+            name="producer-forwarding-rule",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL",
+            backend_service=producer_service_backend.id,
+            all_ports=True,
+            network=producer_net.name,
+            subnetwork=producer_subnet.name)
+        producer_service_attachment = gcp.compute.ServiceAttachment("producer_service_attachment",
+            name="producer-service",
+            region="us-central1",
+            description="A service attachment configured with Terraform",
+            enable_proxy_protocol=True,
+            connection_preference="ACCEPT_AUTOMATIC",
+            nat_subnets=[psc_producer_subnet.name],
+            target_service=producer_target_service.id)
+        default = gcp.compute.ForwardingRule("default",
+            name="psc-endpoint",
+            region="us-central1",
+            load_balancing_scheme="",
+            target=producer_service_attachment.id,
+            network=consumer_net.name,
+            ip_address=consumer_address.id,
+            allow_psc_global_access=True,
+            no_automate_dns_zone=True)
         ```
         ### Forwarding Rule Regional Steering
 
@@ -2008,25 +3783,68 @@ class ForwardingRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.compute.Address("basic", region="us-central1")
-        external_region_backend_service = gcp.compute.RegionBackendService("externalRegionBackendService",
+        basic = gcp.compute.Address("basic",
+            name="website-ip",
+            region="us-central1")
+        external = gcp.compute.RegionBackendService("external",
+            name="service-backend",
             region="us-central1",
-            load_balancing_scheme="EXTERNAL")
-        external_forwarding_rule = gcp.compute.ForwardingRule("externalForwardingRule",
-            region="us-central1",
-            ip_address=basic.self_link,
-            backend_service=external_region_backend_service.self_link,
             load_balancing_scheme="EXTERNAL")
         steering = gcp.compute.ForwardingRule("steering",
+            name="steering-rule",
             region="us-central1",
             ip_address=basic.self_link,
-            backend_service=external_region_backend_service.self_link,
+            backend_service=external.self_link,
             load_balancing_scheme="EXTERNAL",
             source_ip_ranges=[
                 "34.121.88.0/24",
                 "35.187.239.137",
-            ],
-            opts=pulumi.ResourceOptions(depends_on=[external_forwarding_rule]))
+            ])
+        external_forwarding_rule = gcp.compute.ForwardingRule("external",
+            name="external-forwarding-rule",
+            region="us-central1",
+            ip_address=basic.self_link,
+            backend_service=external.self_link,
+            load_balancing_scheme="EXTERNAL")
+        ```
+        ### Forwarding Rule Internallb Ipv6
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hc = gcp.compute.HealthCheck("hc",
+            name="check-ilb-ipv6-backend",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        backend = gcp.compute.RegionBackendService("backend",
+            name="ilb-ipv6-backend",
+            region="us-central1",
+            health_checks=hc.id)
+        default_network = gcp.compute.Network("default",
+            name="net-ipv6",
+            auto_create_subnetworks=False,
+            enable_ula_internal_ipv6=True)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="subnet-internal-ipv6",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            stack_type="IPV4_IPV6",
+            ipv6_access_type="INTERNAL",
+            network=default_network.id)
+        # Forwarding rule for Internal Load Balancing
+        default = gcp.compute.ForwardingRule("default",
+            name="ilb-ipv6-forwarding-rule",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL",
+            backend_service=backend.id,
+            all_ports=True,
+            network=default_network.name,
+            subnetwork=default_subnetwork.name,
+            ip_version="IPV6")
         ```
 
         ## Import

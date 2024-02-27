@@ -40,21 +40,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := securitycenter.NewProjectCustomModule(ctx, "example", &securitycenter.ProjectCustomModuleArgs{
+//				DisplayName:     pulumi.String("basic_custom_module"),
+//				EnablementState: pulumi.String("ENABLED"),
 //				CustomConfig: &securitycenter.ProjectCustomModuleCustomConfigArgs{
-//					Description: pulumi.String("The rotation period of the identified cryptokey resource exceeds 30 days."),
 //					Predicate: &securitycenter.ProjectCustomModuleCustomConfigPredicateArgs{
 //						Expression: pulumi.String("resource.rotationPeriod > duration(\"2592000s\")"),
 //					},
-//					Recommendation: pulumi.String("Set the rotation period to at most 30 days."),
 //					ResourceSelector: &securitycenter.ProjectCustomModuleCustomConfigResourceSelectorArgs{
 //						ResourceTypes: pulumi.StringArray{
 //							pulumi.String("cloudkms.googleapis.com/CryptoKey"),
 //						},
 //					},
-//					Severity: pulumi.String("MEDIUM"),
+//					Description:    pulumi.String("The rotation period of the identified cryptokey resource exceeds 30 days."),
+//					Recommendation: pulumi.String("Set the rotation period to at most 30 days."),
+//					Severity:       pulumi.String("MEDIUM"),
 //				},
-//				DisplayName:     pulumi.String("basic_custom_module"),
-//				EnablementState: pulumi.String("ENABLED"),
 //			})
 //			if err != nil {
 //				return err
@@ -79,37 +79,37 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := securitycenter.NewProjectCustomModule(ctx, "example", &securitycenter.ProjectCustomModuleArgs{
+//				DisplayName:     pulumi.String("full_custom_module"),
+//				EnablementState: pulumi.String("ENABLED"),
 //				CustomConfig: &securitycenter.ProjectCustomModuleCustomConfigArgs{
+//					Predicate: &securitycenter.ProjectCustomModuleCustomConfigPredicateArgs{
+//						Expression:  pulumi.String("resource.rotationPeriod > duration(\"2592000s\")"),
+//						Title:       pulumi.String("Purpose of the expression"),
+//						Description: pulumi.String("description of the expression"),
+//						Location:    pulumi.String("location of the expression"),
+//					},
 //					CustomOutput: securitycenter.ProjectCustomModuleCustomConfigCustomOutputArgs{
 //						Properties: securitycenter.ProjectCustomModuleCustomConfigCustomOutputPropertyArray{
 //							&securitycenter.ProjectCustomModuleCustomConfigCustomOutputPropertyArgs{
 //								Name: pulumi.String("duration"),
 //								ValueExpression: &securitycenter.ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs{
-//									Description: pulumi.String("description of the expression"),
 //									Expression:  pulumi.String("resource.rotationPeriod"),
-//									Location:    pulumi.String("location of the expression"),
 //									Title:       pulumi.String("Purpose of the expression"),
+//									Description: pulumi.String("description of the expression"),
+//									Location:    pulumi.String("location of the expression"),
 //								},
 //							},
 //						},
 //					},
-//					Description: pulumi.String("Description of the custom module"),
-//					Predicate: &securitycenter.ProjectCustomModuleCustomConfigPredicateArgs{
-//						Description: pulumi.String("description of the expression"),
-//						Expression:  pulumi.String("resource.rotationPeriod > duration(\"2592000s\")"),
-//						Location:    pulumi.String("location of the expression"),
-//						Title:       pulumi.String("Purpose of the expression"),
-//					},
-//					Recommendation: pulumi.String("Steps to resolve violation"),
 //					ResourceSelector: &securitycenter.ProjectCustomModuleCustomConfigResourceSelectorArgs{
 //						ResourceTypes: pulumi.StringArray{
 //							pulumi.String("cloudkms.googleapis.com/CryptoKey"),
 //						},
 //					},
-//					Severity: pulumi.String("LOW"),
+//					Severity:       pulumi.String("LOW"),
+//					Description:    pulumi.String("Description of the custom module"),
+//					Recommendation: pulumi.String("Steps to resolve violation"),
 //				},
-//				DisplayName:     pulumi.String("full_custom_module"),
-//				EnablementState: pulumi.String("ENABLED"),
 //			})
 //			if err != nil {
 //				return err

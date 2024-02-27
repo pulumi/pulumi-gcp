@@ -18,6 +18,113 @@ namespace Pulumi.Gcp.Compute
     /// [API](https://cloud.google.com/compute/docs/reference/latest/instanceTemplates).
     /// 
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.ServiceAccount.Account("default", new()
+    ///     {
+    ///         AccountId = "service-account-id",
+    ///         DisplayName = "Service Account",
+    ///     });
+    /// 
+    ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var foobar = new Gcp.Compute.Disk("foobar", new()
+    ///     {
+    ///         Name = "existing-disk",
+    ///         Image = myImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///         Size = 10,
+    ///         Type = "pd-ssd",
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var dailyBackup = new Gcp.Compute.ResourcePolicy("daily_backup", new()
+    ///     {
+    ///         Name = "every-day-4am",
+    ///         Region = "us-central1",
+    ///         SnapshotSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyArgs
+    ///         {
+    ///             Schedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs
+    ///             {
+    ///                 DailySchedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs
+    ///                 {
+    ///                     DaysInCycle = 1,
+    ///                     StartTime = "04:00",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultInstanceTemplate = new Gcp.Compute.InstanceTemplate("default", new()
+    ///     {
+    ///         Name = "appserver-template",
+    ///         Description = "This template is used to create app server instances.",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo",
+    ///             "bar",
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "environment", "dev" },
+    ///         },
+    ///         InstanceDescription = "description assigned to instances",
+    ///         MachineType = "e2-medium",
+    ///         CanIpForward = false,
+    ///         Scheduling = new Gcp.Compute.Inputs.InstanceTemplateSchedulingArgs
+    ///         {
+    ///             AutomaticRestart = true,
+    ///             OnHostMaintenance = "MIGRATE",
+    ///         },
+    ///         Disks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///             {
+    ///                 SourceImage = "debian-cloud/debian-11",
+    ///                 AutoDelete = true,
+    ///                 Boot = true,
+    ///                 ResourcePolicies = dailyBackup.Id,
+    ///             },
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///             {
+    ///                 Source = foobar.Name,
+    ///                 AutoDelete = false,
+    ///                 Boot = false,
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "default",
+    ///             },
+    ///         },
+    ///         Metadata = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         ServiceAccount = new Gcp.Compute.Inputs.InstanceTemplateServiceAccountArgs
+    ///         {
+    ///             Email = @default.Email,
+    ///             Scopes = new[]
+    ///             {
+    ///                 "cloud-platform",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Automatic Envoy Deployment
     /// 
     /// ```csharp
@@ -38,6 +145,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var foobar = new Gcp.Compute.InstanceTemplate("foobar", new()
     ///     {
+    ///         Name = "appserver-template",
     ///         MachineType = "e2-medium",
     ///         CanIpForward = false,
     ///         Tags = new[]
@@ -147,7 +255,7 @@ namespace Pulumi.Gcp.Compute
     ///         Project = "debian-cloud",
     ///     });
     /// 
-    ///     var instanceTemplate = new Gcp.Compute.InstanceTemplate("instanceTemplate", new()
+    ///     var instanceTemplate = new Gcp.Compute.InstanceTemplate("instance_template", new()
     ///     {
     ///         NamePrefix = "instance-template-",
     ///         MachineType = "e2-medium",
@@ -176,8 +284,11 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var instanceTemplate = new Gcp.Compute.InstanceTemplate("instanceTemplate", new()
+    ///     var instanceTemplate = new Gcp.Compute.InstanceTemplate("instance_template", new()
     ///     {
+    ///         NamePrefix = "instance-template-",
+    ///         MachineType = "e2-medium",
+    ///         Region = "us-central1",
     ///         Disks = new[]
     ///         {
     ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
@@ -185,9 +296,6 @@ namespace Pulumi.Gcp.Compute
     ///                 SourceImage = "debian-cloud/debian-11",
     ///             },
     ///         },
-    ///         MachineType = "e2-medium",
-    ///         NamePrefix = "instance-template-",
-    ///         Region = "us-central1",
     ///     });
     /// 
     /// });

@@ -204,6 +204,7 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
+     *             .name(&#34;prod-zone&#34;)
      *             .dnsName(&#34;prod.mydomain.com.&#34;)
      *             .build());
      * 
@@ -258,6 +259,7 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
+     *             .name(&#34;prod-zone&#34;)
      *             .dnsName(&#34;prod.mydomain.com.&#34;)
      *             .build());
      * 
@@ -312,6 +314,7 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
+     *             .name(&#34;prod-zone&#34;)
      *             .dnsName(&#34;prod.mydomain.com.&#34;)
      *             .build());
      * 
@@ -366,6 +369,7 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
+     *             .name(&#34;prod-zone&#34;)
      *             .dnsName(&#34;prod.mydomain.com.&#34;)
      *             .build());
      * 
@@ -421,6 +425,7 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
+     *             .name(&#34;prod-zone&#34;)
      *             .dnsName(&#34;prod.mydomain.com.&#34;)
      *             .build());
      * 
@@ -476,6 +481,7 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
+     *             .name(&#34;prod-zone&#34;)
      *             .dnsName(&#34;prod.mydomain.com.&#34;)
      *             .build());
      * 
@@ -531,6 +537,7 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
+     *             .name(&#34;prod-zone&#34;)
      *             .dnsName(&#34;prod.mydomain.com.&#34;)
      *             .build());
      * 
@@ -586,6 +593,7 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
+     *             .name(&#34;prod-zone&#34;)
      *             .dnsName(&#34;prod.mydomain.com.&#34;)
      *             .build());
      * 
@@ -641,6 +649,7 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
+     *             .name(&#34;prod-zone&#34;)
      *             .dnsName(&#34;prod.mydomain.com.&#34;)
      *             .build());
      * 
@@ -696,6 +705,7 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
+     *             .name(&#34;prod-zone&#34;)
      *             .dnsName(&#34;prod.mydomain.com.&#34;)
      *             .build());
      * 
@@ -880,6 +890,8 @@ public final class ComputeFunctions {
      * see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
      * and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetBackendServiceResult> getBackendService(GetBackendServiceArgs args) {
         return getBackendService(args, InvokeOptions.Empty);
@@ -888,6 +900,8 @@ public final class ComputeFunctions {
      * Provide access to a Backend Service&#39;s attribute. For more information
      * see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
      * and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetBackendServiceResult> getBackendServicePlain(GetBackendServicePlainArgs args) {
@@ -898,6 +912,8 @@ public final class ComputeFunctions {
      * see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
      * and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetBackendServiceResult> getBackendService(GetBackendServiceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getBackendService:getBackendService", TypeShape.of(GetBackendServiceResult.class), args, Utilities.withVersion(options));
@@ -906,6 +922,8 @@ public final class ComputeFunctions {
      * Provide access to a Backend Service&#39;s attribute. For more information
      * see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
      * and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetBackendServiceResult> getBackendServicePlain(GetBackendServicePlainArgs args, InvokeOptions options) {
@@ -1525,9 +1543,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getDiskIamPolicy(GetDiskIamPolicyArgs.builder()
-     *             .project(google_compute_disk.default().project())
-     *             .zone(google_compute_disk.default().zone())
-     *             .name(google_compute_disk.default().name())
+     *             .project(default_.project())
+     *             .zone(default_.zone())
+     *             .name(default_.name())
      *             .build());
      * 
      *     }
@@ -1564,9 +1582,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getDiskIamPolicy(GetDiskIamPolicyArgs.builder()
-     *             .project(google_compute_disk.default().project())
-     *             .zone(google_compute_disk.default().zone())
-     *             .name(google_compute_disk.default().name())
+     *             .project(default_.project())
+     *             .zone(default_.zone())
+     *             .name(default_.name())
      *             .build());
      * 
      *     }
@@ -1603,9 +1621,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getDiskIamPolicy(GetDiskIamPolicyArgs.builder()
-     *             .project(google_compute_disk.default().project())
-     *             .zone(google_compute_disk.default().zone())
-     *             .name(google_compute_disk.default().name())
+     *             .project(default_.project())
+     *             .zone(default_.zone())
+     *             .name(default_.name())
      *             .build());
      * 
      *     }
@@ -1642,9 +1660,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getDiskIamPolicy(GetDiskIamPolicyArgs.builder()
-     *             .project(google_compute_disk.default().project())
-     *             .zone(google_compute_disk.default().zone())
-     *             .name(google_compute_disk.default().name())
+     *             .project(default_.project())
+     *             .zone(default_.zone())
+     *             .name(default_.name())
      *             .build());
      * 
      *     }
@@ -1838,6 +1856,7 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
+     *             .name(&#34;prod-zone&#34;)
      *             .dnsName(&#34;prod.mydomain.com.&#34;)
      *             .build());
      * 
@@ -1892,6 +1911,7 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
+     *             .name(&#34;prod-zone&#34;)
      *             .dnsName(&#34;prod.mydomain.com.&#34;)
      *             .build());
      * 
@@ -1946,6 +1966,7 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
+     *             .name(&#34;prod-zone&#34;)
      *             .dnsName(&#34;prod.mydomain.com.&#34;)
      *             .build());
      * 
@@ -2000,6 +2021,7 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
+     *             .name(&#34;prod-zone&#34;)
      *             .dnsName(&#34;prod.mydomain.com.&#34;)
      *             .build());
      * 
@@ -2795,8 +2817,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getImageIamPolicy(GetImageIamPolicyArgs.builder()
-     *             .project(google_compute_image.example().project())
-     *             .image(google_compute_image.example().name())
+     *             .project(example.project())
+     *             .image(example.name())
      *             .build());
      * 
      *     }
@@ -2833,8 +2855,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getImageIamPolicy(GetImageIamPolicyArgs.builder()
-     *             .project(google_compute_image.example().project())
-     *             .image(google_compute_image.example().name())
+     *             .project(example.project())
+     *             .image(example.name())
      *             .build());
      * 
      *     }
@@ -2871,8 +2893,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getImageIamPolicy(GetImageIamPolicyArgs.builder()
-     *             .project(google_compute_image.example().project())
-     *             .image(google_compute_image.example().name())
+     *             .project(example.project())
+     *             .image(example.name())
      *             .build());
      * 
      *     }
@@ -2909,8 +2931,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getImageIamPolicy(GetImageIamPolicyArgs.builder()
-     *             .project(google_compute_image.example().project())
-     *             .image(google_compute_image.example().name())
+     *             .project(example.project())
+     *             .image(example.name())
      *             .build());
      * 
      *     }
@@ -3685,9 +3707,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(google_compute_instance.default().project())
-     *             .zone(google_compute_instance.default().zone())
-     *             .instanceName(google_compute_instance.default().name())
+     *             .project(default_.project())
+     *             .zone(default_.zone())
+     *             .instanceName(default_.name())
      *             .build());
      * 
      *     }
@@ -3724,9 +3746,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(google_compute_instance.default().project())
-     *             .zone(google_compute_instance.default().zone())
-     *             .instanceName(google_compute_instance.default().name())
+     *             .project(default_.project())
+     *             .zone(default_.zone())
+     *             .instanceName(default_.name())
      *             .build());
      * 
      *     }
@@ -3763,9 +3785,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(google_compute_instance.default().project())
-     *             .zone(google_compute_instance.default().zone())
-     *             .instanceName(google_compute_instance.default().name())
+     *             .project(default_.project())
+     *             .zone(default_.zone())
+     *             .instanceName(default_.name())
      *             .build());
      * 
      *     }
@@ -3802,9 +3824,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(google_compute_instance.default().project())
-     *             .zone(google_compute_instance.default().zone())
-     *             .instanceName(google_compute_instance.default().name())
+     *             .project(default_.project())
+     *             .zone(default_.zone())
+     *             .instanceName(default_.name())
      *             .build());
      * 
      *     }
@@ -3861,9 +3883,9 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
-     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceServiceAccountArgs;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortArgs;
@@ -3882,16 +3904,17 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var windows = new Instance(&#34;windows&#34;, InstanceArgs.builder()        
+     *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+     *                 .accessConfigs()
+     *                 .network(&#34;default&#34;)
+     *                 .build())
+     *             .name(&#34;windows-instance&#34;)
      *             .machineType(&#34;e2-medium&#34;)
      *             .zone(&#34;us-central1-a&#34;)
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
      *                     .image(&#34;windows-cloud/windows-2019&#34;)
      *                     .build())
-     *                 .build())
-     *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
-     *                 .network(&#34;default&#34;)
-     *                 .accessConfigs()
      *                 .build())
      *             .metadata(Map.ofEntries(
      *                 Map.entry(&#34;serial-port-logging-enable&#34;, &#34;TRUE&#34;),
@@ -3973,9 +3996,9 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
-     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceServiceAccountArgs;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortArgs;
@@ -3994,16 +4017,17 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var windows = new Instance(&#34;windows&#34;, InstanceArgs.builder()        
+     *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+     *                 .accessConfigs()
+     *                 .network(&#34;default&#34;)
+     *                 .build())
+     *             .name(&#34;windows-instance&#34;)
      *             .machineType(&#34;e2-medium&#34;)
      *             .zone(&#34;us-central1-a&#34;)
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
      *                     .image(&#34;windows-cloud/windows-2019&#34;)
      *                     .build())
-     *                 .build())
-     *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
-     *                 .network(&#34;default&#34;)
-     *                 .accessConfigs()
      *                 .build())
      *             .metadata(Map.ofEntries(
      *                 Map.entry(&#34;serial-port-logging-enable&#34;, &#34;TRUE&#34;),
@@ -4085,9 +4109,9 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
-     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceServiceAccountArgs;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortArgs;
@@ -4106,16 +4130,17 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var windows = new Instance(&#34;windows&#34;, InstanceArgs.builder()        
+     *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+     *                 .accessConfigs()
+     *                 .network(&#34;default&#34;)
+     *                 .build())
+     *             .name(&#34;windows-instance&#34;)
      *             .machineType(&#34;e2-medium&#34;)
      *             .zone(&#34;us-central1-a&#34;)
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
      *                     .image(&#34;windows-cloud/windows-2019&#34;)
      *                     .build())
-     *                 .build())
-     *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
-     *                 .network(&#34;default&#34;)
-     *                 .accessConfigs()
      *                 .build())
      *             .metadata(Map.ofEntries(
      *                 Map.entry(&#34;serial-port-logging-enable&#34;, &#34;TRUE&#34;),
@@ -4197,9 +4222,9 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
-     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceServiceAccountArgs;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortArgs;
@@ -4218,16 +4243,17 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var windows = new Instance(&#34;windows&#34;, InstanceArgs.builder()        
+     *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+     *                 .accessConfigs()
+     *                 .network(&#34;default&#34;)
+     *                 .build())
+     *             .name(&#34;windows-instance&#34;)
      *             .machineType(&#34;e2-medium&#34;)
      *             .zone(&#34;us-central1-a&#34;)
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
      *                     .image(&#34;windows-cloud/windows-2019&#34;)
      *                     .build())
-     *                 .build())
-     *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
-     *                 .network(&#34;default&#34;)
-     *                 .accessConfigs()
      *                 .build())
      *             .metadata(Map.ofEntries(
      *                 Map.entry(&#34;serial-port-logging-enable&#34;, &#34;TRUE&#34;),
@@ -4271,41 +4297,6 @@ public final class ComputeFunctions {
      * and
      * [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates).
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.compute.inputs.GetInstanceTemplateArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var generic-regex = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
-     *             .filter(&#34;name != generic-tpl-20200107&#34;)
-     *             .mostRecent(true)
-     *             .build());
-     * 
-     *         final var generic = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
-     *             .selfLinkUnique(&#34;https://www.googleapis.com/compute/v1/projects/your-project-name/global/instanceTemplates/example-template-custom?uniqueId=1234&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetInstanceTemplateResult> getInstanceTemplate() {
         return getInstanceTemplate(GetInstanceTemplateArgs.Empty, InvokeOptions.Empty);
@@ -4317,41 +4308,6 @@ public final class ComputeFunctions {
      * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
      * and
      * [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates).
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.compute.inputs.GetInstanceTemplateArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var generic-regex = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
-     *             .filter(&#34;name != generic-tpl-20200107&#34;)
-     *             .mostRecent(true)
-     *             .build());
-     * 
-     *         final var generic = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
-     *             .selfLinkUnique(&#34;https://www.googleapis.com/compute/v1/projects/your-project-name/global/instanceTemplates/example-template-custom?uniqueId=1234&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetInstanceTemplateResult> getInstanceTemplatePlain() {
@@ -4365,41 +4321,6 @@ public final class ComputeFunctions {
      * and
      * [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates).
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.compute.inputs.GetInstanceTemplateArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var generic-regex = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
-     *             .filter(&#34;name != generic-tpl-20200107&#34;)
-     *             .mostRecent(true)
-     *             .build());
-     * 
-     *         final var generic = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
-     *             .selfLinkUnique(&#34;https://www.googleapis.com/compute/v1/projects/your-project-name/global/instanceTemplates/example-template-custom?uniqueId=1234&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetInstanceTemplateResult> getInstanceTemplate(GetInstanceTemplateArgs args) {
         return getInstanceTemplate(args, InvokeOptions.Empty);
@@ -4411,41 +4332,6 @@ public final class ComputeFunctions {
      * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
      * and
      * [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates).
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.compute.inputs.GetInstanceTemplateArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var generic-regex = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
-     *             .filter(&#34;name != generic-tpl-20200107&#34;)
-     *             .mostRecent(true)
-     *             .build());
-     * 
-     *         final var generic = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
-     *             .selfLinkUnique(&#34;https://www.googleapis.com/compute/v1/projects/your-project-name/global/instanceTemplates/example-template-custom?uniqueId=1234&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetInstanceTemplateResult> getInstanceTemplatePlain(GetInstanceTemplatePlainArgs args) {
@@ -4459,41 +4345,6 @@ public final class ComputeFunctions {
      * and
      * [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates).
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.compute.inputs.GetInstanceTemplateArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var generic-regex = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
-     *             .filter(&#34;name != generic-tpl-20200107&#34;)
-     *             .mostRecent(true)
-     *             .build());
-     * 
-     *         final var generic = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
-     *             .selfLinkUnique(&#34;https://www.googleapis.com/compute/v1/projects/your-project-name/global/instanceTemplates/example-template-custom?uniqueId=1234&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetInstanceTemplateResult> getInstanceTemplate(GetInstanceTemplateArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getInstanceTemplate:getInstanceTemplate", TypeShape.of(GetInstanceTemplateResult.class), args, Utilities.withVersion(options));
@@ -4505,41 +4356,6 @@ public final class ComputeFunctions {
      * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
      * and
      * [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates).
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.compute.inputs.GetInstanceTemplateArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var generic-regex = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
-     *             .filter(&#34;name != generic-tpl-20200107&#34;)
-     *             .mostRecent(true)
-     *             .build());
-     * 
-     *         final var generic = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
-     *             .selfLinkUnique(&#34;https://www.googleapis.com/compute/v1/projects/your-project-name/global/instanceTemplates/example-template-custom?uniqueId=1234&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetInstanceTemplateResult> getInstanceTemplatePlain(GetInstanceTemplatePlainArgs args, InvokeOptions options) {
@@ -4577,7 +4393,8 @@ public final class ComputeFunctions {
      *         final var ranges = ComputeFunctions.getLBIPRanges();
      * 
      *         var lb = new Firewall(&#34;lb&#34;, FirewallArgs.builder()        
-     *             .network(google_compute_network.main().name())
+     *             .name(&#34;lb-firewall&#34;)
+     *             .network(main.name())
      *             .allows(FirewallAllowArgs.builder()
      *                 .protocol(&#34;tcp&#34;)
      *                 .ports(&#34;80&#34;)
@@ -4626,7 +4443,8 @@ public final class ComputeFunctions {
      *         final var ranges = ComputeFunctions.getLBIPRanges();
      * 
      *         var lb = new Firewall(&#34;lb&#34;, FirewallArgs.builder()        
-     *             .network(google_compute_network.main().name())
+     *             .name(&#34;lb-firewall&#34;)
+     *             .network(main.name())
      *             .allows(FirewallAllowArgs.builder()
      *                 .protocol(&#34;tcp&#34;)
      *                 .ports(&#34;80&#34;)
@@ -4675,7 +4493,8 @@ public final class ComputeFunctions {
      *         final var ranges = ComputeFunctions.getLBIPRanges();
      * 
      *         var lb = new Firewall(&#34;lb&#34;, FirewallArgs.builder()        
-     *             .network(google_compute_network.main().name())
+     *             .name(&#34;lb-firewall&#34;)
+     *             .network(main.name())
      *             .allows(FirewallAllowArgs.builder()
      *                 .protocol(&#34;tcp&#34;)
      *                 .ports(&#34;80&#34;)
@@ -4724,7 +4543,8 @@ public final class ComputeFunctions {
      *         final var ranges = ComputeFunctions.getLBIPRanges();
      * 
      *         var lb = new Firewall(&#34;lb&#34;, FirewallArgs.builder()        
-     *             .network(google_compute_network.main().name())
+     *             .name(&#34;lb-firewall&#34;)
+     *             .network(main.name())
      *             .allows(FirewallAllowArgs.builder()
      *                 .protocol(&#34;tcp&#34;)
      *                 .ports(&#34;80&#34;)
@@ -4773,7 +4593,8 @@ public final class ComputeFunctions {
      *         final var ranges = ComputeFunctions.getLBIPRanges();
      * 
      *         var lb = new Firewall(&#34;lb&#34;, FirewallArgs.builder()        
-     *             .network(google_compute_network.main().name())
+     *             .name(&#34;lb-firewall&#34;)
+     *             .network(main.name())
      *             .allows(FirewallAllowArgs.builder()
      *                 .protocol(&#34;tcp&#34;)
      *                 .ports(&#34;80&#34;)
@@ -4822,7 +4643,8 @@ public final class ComputeFunctions {
      *         final var ranges = ComputeFunctions.getLBIPRanges();
      * 
      *         var lb = new Firewall(&#34;lb&#34;, FirewallArgs.builder()        
-     *             .network(google_compute_network.main().name())
+     *             .name(&#34;lb-firewall&#34;)
+     *             .network(main.name())
      *             .allows(FirewallAllowArgs.builder()
      *                 .protocol(&#34;tcp&#34;)
      *                 .ports(&#34;80&#34;)
@@ -4985,6 +4807,7 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
      * import com.pulumi.gcp.compute.Network;
+     * import com.pulumi.gcp.compute.NetworkArgs;
      * import com.pulumi.gcp.compute.Firewall;
      * import com.pulumi.gcp.compute.FirewallArgs;
      * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
@@ -5005,9 +4828,12 @@ public final class ComputeFunctions {
      *             .rangeType(&#34;legacy-health-checkers&#34;)
      *             .build());
      * 
-     *         var default_ = new Network(&#34;default&#34;);
+     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+     *             .name(&#34;test-network&#34;)
+     *             .build());
      * 
      *         var allow_hcs = new Firewall(&#34;allow-hcs&#34;, FirewallArgs.builder()        
+     *             .name(&#34;allow-hcs&#34;)
      *             .network(default_.name())
      *             .allows(FirewallAllowArgs.builder()
      *                 .protocol(&#34;tcp&#34;)
@@ -5068,6 +4894,7 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
      * import com.pulumi.gcp.compute.Network;
+     * import com.pulumi.gcp.compute.NetworkArgs;
      * import com.pulumi.gcp.compute.Firewall;
      * import com.pulumi.gcp.compute.FirewallArgs;
      * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
@@ -5088,9 +4915,12 @@ public final class ComputeFunctions {
      *             .rangeType(&#34;legacy-health-checkers&#34;)
      *             .build());
      * 
-     *         var default_ = new Network(&#34;default&#34;);
+     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+     *             .name(&#34;test-network&#34;)
+     *             .build());
      * 
      *         var allow_hcs = new Firewall(&#34;allow-hcs&#34;, FirewallArgs.builder()        
+     *             .name(&#34;allow-hcs&#34;)
      *             .network(default_.name())
      *             .allows(FirewallAllowArgs.builder()
      *                 .protocol(&#34;tcp&#34;)
@@ -5151,6 +4981,7 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
      * import com.pulumi.gcp.compute.Network;
+     * import com.pulumi.gcp.compute.NetworkArgs;
      * import com.pulumi.gcp.compute.Firewall;
      * import com.pulumi.gcp.compute.FirewallArgs;
      * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
@@ -5171,9 +5002,12 @@ public final class ComputeFunctions {
      *             .rangeType(&#34;legacy-health-checkers&#34;)
      *             .build());
      * 
-     *         var default_ = new Network(&#34;default&#34;);
+     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+     *             .name(&#34;test-network&#34;)
+     *             .build());
      * 
      *         var allow_hcs = new Firewall(&#34;allow-hcs&#34;, FirewallArgs.builder()        
+     *             .name(&#34;allow-hcs&#34;)
      *             .network(default_.name())
      *             .allows(FirewallAllowArgs.builder()
      *                 .protocol(&#34;tcp&#34;)
@@ -5234,6 +5068,7 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
      * import com.pulumi.gcp.compute.Network;
+     * import com.pulumi.gcp.compute.NetworkArgs;
      * import com.pulumi.gcp.compute.Firewall;
      * import com.pulumi.gcp.compute.FirewallArgs;
      * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
@@ -5254,9 +5089,12 @@ public final class ComputeFunctions {
      *             .rangeType(&#34;legacy-health-checkers&#34;)
      *             .build());
      * 
-     *         var default_ = new Network(&#34;default&#34;);
+     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+     *             .name(&#34;test-network&#34;)
+     *             .build());
      * 
      *         var allow_hcs = new Firewall(&#34;allow-hcs&#34;, FirewallArgs.builder()        
+     *             .name(&#34;allow-hcs&#34;)
      *             .network(default_.name())
      *             .allows(FirewallAllowArgs.builder()
      *                 .protocol(&#34;tcp&#34;)
@@ -5317,6 +5155,7 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
      * import com.pulumi.gcp.compute.Network;
+     * import com.pulumi.gcp.compute.NetworkArgs;
      * import com.pulumi.gcp.compute.Firewall;
      * import com.pulumi.gcp.compute.FirewallArgs;
      * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
@@ -5337,9 +5176,12 @@ public final class ComputeFunctions {
      *             .rangeType(&#34;legacy-health-checkers&#34;)
      *             .build());
      * 
-     *         var default_ = new Network(&#34;default&#34;);
+     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+     *             .name(&#34;test-network&#34;)
+     *             .build());
      * 
      *         var allow_hcs = new Firewall(&#34;allow-hcs&#34;, FirewallArgs.builder()        
+     *             .name(&#34;allow-hcs&#34;)
      *             .network(default_.name())
      *             .allows(FirewallAllowArgs.builder()
      *                 .protocol(&#34;tcp&#34;)
@@ -5400,6 +5242,7 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
      * import com.pulumi.gcp.compute.Network;
+     * import com.pulumi.gcp.compute.NetworkArgs;
      * import com.pulumi.gcp.compute.Firewall;
      * import com.pulumi.gcp.compute.FirewallArgs;
      * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
@@ -5420,9 +5263,12 @@ public final class ComputeFunctions {
      *             .rangeType(&#34;legacy-health-checkers&#34;)
      *             .build());
      * 
-     *         var default_ = new Network(&#34;default&#34;);
+     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+     *             .name(&#34;test-network&#34;)
+     *             .build());
      * 
      *         var allow_hcs = new Firewall(&#34;allow-hcs&#34;, FirewallArgs.builder()        
+     *             .name(&#34;allow-hcs&#34;)
      *             .network(default_.name())
      *             .allows(FirewallAllowArgs.builder()
      *                 .protocol(&#34;tcp&#34;)
@@ -5884,19 +5730,23 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+     *             .name(&#34;foobar&#34;)
      *             .autoCreateSubnetworks(&#34;false&#34;)
      *             .build());
      * 
      *         var other = new Network(&#34;other&#34;, NetworkArgs.builder()        
+     *             .name(&#34;other&#34;)
      *             .autoCreateSubnetworks(&#34;false&#34;)
      *             .build());
      * 
      *         var peering1 = new NetworkPeering(&#34;peering1&#34;, NetworkPeeringArgs.builder()        
+     *             .name(&#34;peering1&#34;)
      *             .network(default_.selfLink())
      *             .peerNetwork(other.selfLink())
      *             .build());
      * 
      *         var peering2 = new NetworkPeering(&#34;peering2&#34;, NetworkPeeringArgs.builder()        
+     *             .name(&#34;peering2&#34;)
      *             .network(other.selfLink())
      *             .peerNetwork(default_.selfLink())
      *             .build());
@@ -5947,19 +5797,23 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+     *             .name(&#34;foobar&#34;)
      *             .autoCreateSubnetworks(&#34;false&#34;)
      *             .build());
      * 
      *         var other = new Network(&#34;other&#34;, NetworkArgs.builder()        
+     *             .name(&#34;other&#34;)
      *             .autoCreateSubnetworks(&#34;false&#34;)
      *             .build());
      * 
      *         var peering1 = new NetworkPeering(&#34;peering1&#34;, NetworkPeeringArgs.builder()        
+     *             .name(&#34;peering1&#34;)
      *             .network(default_.selfLink())
      *             .peerNetwork(other.selfLink())
      *             .build());
      * 
      *         var peering2 = new NetworkPeering(&#34;peering2&#34;, NetworkPeeringArgs.builder()        
+     *             .name(&#34;peering2&#34;)
      *             .network(other.selfLink())
      *             .peerNetwork(default_.selfLink())
      *             .build());
@@ -6010,19 +5864,23 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+     *             .name(&#34;foobar&#34;)
      *             .autoCreateSubnetworks(&#34;false&#34;)
      *             .build());
      * 
      *         var other = new Network(&#34;other&#34;, NetworkArgs.builder()        
+     *             .name(&#34;other&#34;)
      *             .autoCreateSubnetworks(&#34;false&#34;)
      *             .build());
      * 
      *         var peering1 = new NetworkPeering(&#34;peering1&#34;, NetworkPeeringArgs.builder()        
+     *             .name(&#34;peering1&#34;)
      *             .network(default_.selfLink())
      *             .peerNetwork(other.selfLink())
      *             .build());
      * 
      *         var peering2 = new NetworkPeering(&#34;peering2&#34;, NetworkPeeringArgs.builder()        
+     *             .name(&#34;peering2&#34;)
      *             .network(other.selfLink())
      *             .peerNetwork(default_.selfLink())
      *             .build());
@@ -6073,19 +5931,23 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+     *             .name(&#34;foobar&#34;)
      *             .autoCreateSubnetworks(&#34;false&#34;)
      *             .build());
      * 
      *         var other = new Network(&#34;other&#34;, NetworkArgs.builder()        
+     *             .name(&#34;other&#34;)
      *             .autoCreateSubnetworks(&#34;false&#34;)
      *             .build());
      * 
      *         var peering1 = new NetworkPeering(&#34;peering1&#34;, NetworkPeeringArgs.builder()        
+     *             .name(&#34;peering1&#34;)
      *             .network(default_.selfLink())
      *             .peerNetwork(other.selfLink())
      *             .build());
      * 
      *         var peering2 = new NetworkPeering(&#34;peering2&#34;, NetworkPeeringArgs.builder()        
+     *             .name(&#34;peering2&#34;)
      *             .network(other.selfLink())
      *             .peerNetwork(default_.selfLink())
      *             .build());
@@ -6358,8 +6220,9 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var tmpl = new NodeTemplate(&#34;tmpl&#34;, NodeTemplateArgs.builder()        
+     *             .name(&#34;test-tmpl&#34;)
      *             .region(&#34;us-central1&#34;)
-     *             .nodeType(data.google_compute_node_types().types().names()[0])
+     *             .nodeType(types.names()[0])
      *             .build());
      * 
      *     }
@@ -6403,8 +6266,9 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var tmpl = new NodeTemplate(&#34;tmpl&#34;, NodeTemplateArgs.builder()        
+     *             .name(&#34;test-tmpl&#34;)
      *             .region(&#34;us-central1&#34;)
-     *             .nodeType(data.google_compute_node_types().types().names()[0])
+     *             .nodeType(types.names()[0])
      *             .build());
      * 
      *     }
@@ -6448,8 +6312,9 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var tmpl = new NodeTemplate(&#34;tmpl&#34;, NodeTemplateArgs.builder()        
+     *             .name(&#34;test-tmpl&#34;)
      *             .region(&#34;us-central1&#34;)
-     *             .nodeType(data.google_compute_node_types().types().names()[0])
+     *             .nodeType(types.names()[0])
      *             .build());
      * 
      *     }
@@ -6493,8 +6358,9 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var tmpl = new NodeTemplate(&#34;tmpl&#34;, NodeTemplateArgs.builder()        
+     *             .name(&#34;test-tmpl&#34;)
      *             .region(&#34;us-central1&#34;)
-     *             .nodeType(data.google_compute_node_types().types().names()[0])
+     *             .nodeType(types.names()[0])
      *             .build());
      * 
      *     }
@@ -6538,8 +6404,9 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var tmpl = new NodeTemplate(&#34;tmpl&#34;, NodeTemplateArgs.builder()        
+     *             .name(&#34;test-tmpl&#34;)
      *             .region(&#34;us-central1&#34;)
-     *             .nodeType(data.google_compute_node_types().types().names()[0])
+     *             .nodeType(types.names()[0])
      *             .build());
      * 
      *     }
@@ -6583,8 +6450,9 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var tmpl = new NodeTemplate(&#34;tmpl&#34;, NodeTemplateArgs.builder()        
+     *             .name(&#34;test-tmpl&#34;)
      *             .region(&#34;us-central1&#34;)
-     *             .nodeType(data.google_compute_node_types().types().names()[0])
+     *             .nodeType(types.names()[0])
      *             .build());
      * 
      *     }
@@ -6651,7 +6519,7 @@ public final class ComputeFunctions {
      * 
      *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
      *             .attachedDisks(InstanceAttachedDiskArgs.builder()
-     *                 .source(data.google_compute_disk().disk().self_link())
+     *                 .source(diskGoogleComputeDisk.selfLink())
      *                 .build())
      *             .build());
      * 
@@ -6707,7 +6575,7 @@ public final class ComputeFunctions {
      * 
      *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
      *             .attachedDisks(InstanceAttachedDiskArgs.builder()
-     *                 .source(data.google_compute_disk().disk().self_link())
+     *                 .source(diskGoogleComputeDisk.selfLink())
      *                 .build())
      *             .build());
      * 
@@ -6763,7 +6631,7 @@ public final class ComputeFunctions {
      * 
      *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
      *             .attachedDisks(InstanceAttachedDiskArgs.builder()
-     *                 .source(data.google_compute_disk().disk().self_link())
+     *                 .source(diskGoogleComputeDisk.selfLink())
      *                 .build())
      *             .build());
      * 
@@ -6819,7 +6687,7 @@ public final class ComputeFunctions {
      * 
      *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
      *             .attachedDisks(InstanceAttachedDiskArgs.builder()
-     *                 .source(data.google_compute_disk().disk().self_link())
+     *                 .source(diskGoogleComputeDisk.selfLink())
      *                 .build())
      *             .build());
      * 
@@ -6857,9 +6725,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionDiskIamPolicy(GetRegionDiskIamPolicyArgs.builder()
-     *             .project(google_compute_region_disk.regiondisk().project())
-     *             .region(google_compute_region_disk.regiondisk().region())
-     *             .name(google_compute_region_disk.regiondisk().name())
+     *             .project(regiondisk.project())
+     *             .region(regiondisk.region())
+     *             .name(regiondisk.name())
      *             .build());
      * 
      *     }
@@ -6896,9 +6764,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionDiskIamPolicy(GetRegionDiskIamPolicyArgs.builder()
-     *             .project(google_compute_region_disk.regiondisk().project())
-     *             .region(google_compute_region_disk.regiondisk().region())
-     *             .name(google_compute_region_disk.regiondisk().name())
+     *             .project(regiondisk.project())
+     *             .region(regiondisk.region())
+     *             .name(regiondisk.name())
      *             .build());
      * 
      *     }
@@ -6935,9 +6803,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionDiskIamPolicy(GetRegionDiskIamPolicyArgs.builder()
-     *             .project(google_compute_region_disk.regiondisk().project())
-     *             .region(google_compute_region_disk.regiondisk().region())
-     *             .name(google_compute_region_disk.regiondisk().name())
+     *             .project(regiondisk.project())
+     *             .region(regiondisk.region())
+     *             .name(regiondisk.name())
      *             .build());
      * 
      *     }
@@ -6974,9 +6842,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionDiskIamPolicy(GetRegionDiskIamPolicyArgs.builder()
-     *             .project(google_compute_region_disk.regiondisk().project())
-     *             .region(google_compute_region_disk.regiondisk().region())
-     *             .name(google_compute_region_disk.regiondisk().name())
+     *             .project(regiondisk.project())
+     *             .region(regiondisk.region())
+     *             .name(regiondisk.name())
      *             .build());
      * 
      *     }
@@ -7940,6 +7808,7 @@ public final class ComputeFunctions {
      * 
      *         for (var i = 0; i &lt; available.applyValue(getRegionsResult -&gt; getRegionsResult.names()).length(); i++) {
      *             new Subnetwork(&#34;cluster-&#34; + i, SubnetworkArgs.builder()            
+     *                 .name(&#34;my-network&#34;)
      *                 .ipCidrRange(String.format(&#34;10.36.%s.0/24&#34;, range.value()))
      *                 .network(&#34;my-network&#34;)
      *                 .region(available.applyValue(getRegionsResult -&gt; getRegionsResult.names())[range.value()])
@@ -7986,6 +7855,7 @@ public final class ComputeFunctions {
      * 
      *         for (var i = 0; i &lt; available.applyValue(getRegionsResult -&gt; getRegionsResult.names()).length(); i++) {
      *             new Subnetwork(&#34;cluster-&#34; + i, SubnetworkArgs.builder()            
+     *                 .name(&#34;my-network&#34;)
      *                 .ipCidrRange(String.format(&#34;10.36.%s.0/24&#34;, range.value()))
      *                 .network(&#34;my-network&#34;)
      *                 .region(available.applyValue(getRegionsResult -&gt; getRegionsResult.names())[range.value()])
@@ -8032,6 +7902,7 @@ public final class ComputeFunctions {
      * 
      *         for (var i = 0; i &lt; available.applyValue(getRegionsResult -&gt; getRegionsResult.names()).length(); i++) {
      *             new Subnetwork(&#34;cluster-&#34; + i, SubnetworkArgs.builder()            
+     *                 .name(&#34;my-network&#34;)
      *                 .ipCidrRange(String.format(&#34;10.36.%s.0/24&#34;, range.value()))
      *                 .network(&#34;my-network&#34;)
      *                 .region(available.applyValue(getRegionsResult -&gt; getRegionsResult.names())[range.value()])
@@ -8078,6 +7949,7 @@ public final class ComputeFunctions {
      * 
      *         for (var i = 0; i &lt; available.applyValue(getRegionsResult -&gt; getRegionsResult.names()).length(); i++) {
      *             new Subnetwork(&#34;cluster-&#34; + i, SubnetworkArgs.builder()            
+     *                 .name(&#34;my-network&#34;)
      *                 .ipCidrRange(String.format(&#34;10.36.%s.0/24&#34;, range.value()))
      *                 .network(&#34;my-network&#34;)
      *                 .region(available.applyValue(getRegionsResult -&gt; getRegionsResult.names())[range.value()])
@@ -8124,6 +7996,7 @@ public final class ComputeFunctions {
      * 
      *         for (var i = 0; i &lt; available.applyValue(getRegionsResult -&gt; getRegionsResult.names()).length(); i++) {
      *             new Subnetwork(&#34;cluster-&#34; + i, SubnetworkArgs.builder()            
+     *                 .name(&#34;my-network&#34;)
      *                 .ipCidrRange(String.format(&#34;10.36.%s.0/24&#34;, range.value()))
      *                 .network(&#34;my-network&#34;)
      *                 .region(available.applyValue(getRegionsResult -&gt; getRegionsResult.names())[range.value()])
@@ -8170,6 +8043,7 @@ public final class ComputeFunctions {
      * 
      *         for (var i = 0; i &lt; available.applyValue(getRegionsResult -&gt; getRegionsResult.names()).length(); i++) {
      *             new Subnetwork(&#34;cluster-&#34; + i, SubnetworkArgs.builder()            
+     *                 .name(&#34;my-network&#34;)
      *                 .ipCidrRange(String.format(&#34;10.36.%s.0/24&#34;, range.value()))
      *                 .network(&#34;my-network&#34;)
      *                 .region(available.applyValue(getRegionsResult -&gt; getRegionsResult.names())[range.value()])
@@ -9419,8 +9293,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getSnapshotIamPolicy(GetSnapshotIamPolicyArgs.builder()
-     *             .project(google_compute_snapshot.snapshot().project())
-     *             .name(google_compute_snapshot.snapshot().name())
+     *             .project(snapshot.project())
+     *             .name(snapshot.name())
      *             .build());
      * 
      *     }
@@ -9457,8 +9331,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getSnapshotIamPolicy(GetSnapshotIamPolicyArgs.builder()
-     *             .project(google_compute_snapshot.snapshot().project())
-     *             .name(google_compute_snapshot.snapshot().name())
+     *             .project(snapshot.project())
+     *             .name(snapshot.name())
      *             .build());
      * 
      *     }
@@ -9495,8 +9369,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getSnapshotIamPolicy(GetSnapshotIamPolicyArgs.builder()
-     *             .project(google_compute_snapshot.snapshot().project())
-     *             .name(google_compute_snapshot.snapshot().name())
+     *             .project(snapshot.project())
+     *             .name(snapshot.name())
      *             .build());
      * 
      *     }
@@ -9533,8 +9407,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getSnapshotIamPolicy(GetSnapshotIamPolicyArgs.builder()
-     *             .project(google_compute_snapshot.snapshot().project())
-     *             .name(google_compute_snapshot.snapshot().name())
+     *             .project(snapshot.project())
+     *             .name(snapshot.name())
      *             .build());
      * 
      *     }
@@ -9799,9 +9673,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getSubnetworkIamPolicy(GetSubnetworkIamPolicyArgs.builder()
-     *             .project(google_compute_subnetwork.network-with-private-secondary-ip-ranges().project())
-     *             .region(google_compute_subnetwork.network-with-private-secondary-ip-ranges().region())
-     *             .subnetwork(google_compute_subnetwork.network-with-private-secondary-ip-ranges().name())
+     *             .project(network_with_private_secondary_ip_ranges.project())
+     *             .region(network_with_private_secondary_ip_ranges.region())
+     *             .subnetwork(network_with_private_secondary_ip_ranges.name())
      *             .build());
      * 
      *     }
@@ -9838,9 +9712,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getSubnetworkIamPolicy(GetSubnetworkIamPolicyArgs.builder()
-     *             .project(google_compute_subnetwork.network-with-private-secondary-ip-ranges().project())
-     *             .region(google_compute_subnetwork.network-with-private-secondary-ip-ranges().region())
-     *             .subnetwork(google_compute_subnetwork.network-with-private-secondary-ip-ranges().name())
+     *             .project(network_with_private_secondary_ip_ranges.project())
+     *             .region(network_with_private_secondary_ip_ranges.region())
+     *             .subnetwork(network_with_private_secondary_ip_ranges.name())
      *             .build());
      * 
      *     }
@@ -9877,9 +9751,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getSubnetworkIamPolicy(GetSubnetworkIamPolicyArgs.builder()
-     *             .project(google_compute_subnetwork.network-with-private-secondary-ip-ranges().project())
-     *             .region(google_compute_subnetwork.network-with-private-secondary-ip-ranges().region())
-     *             .subnetwork(google_compute_subnetwork.network-with-private-secondary-ip-ranges().name())
+     *             .project(network_with_private_secondary_ip_ranges.project())
+     *             .region(network_with_private_secondary_ip_ranges.region())
+     *             .subnetwork(network_with_private_secondary_ip_ranges.name())
      *             .build());
      * 
      *     }
@@ -9916,9 +9790,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getSubnetworkIamPolicy(GetSubnetworkIamPolicyArgs.builder()
-     *             .project(google_compute_subnetwork.network-with-private-secondary-ip-ranges().project())
-     *             .region(google_compute_subnetwork.network-with-private-secondary-ip-ranges().region())
-     *             .subnetwork(google_compute_subnetwork.network-with-private-secondary-ip-ranges().name())
+     *             .project(network_with_private_secondary_ip_ranges.project())
+     *             .region(network_with_private_secondary_ip_ranges.region())
+     *             .subnetwork(network_with_private_secondary_ip_ranges.name())
      *             .build());
      * 
      *     }
@@ -10109,7 +9983,8 @@ public final class ComputeFunctions {
      * 
      *         for (var i = 0; i &lt; available.applyValue(getZonesResult -&gt; getZonesResult.names()).length(); i++) {
      *             new InstanceGroupManager(&#34;foo-&#34; + i, InstanceGroupManagerArgs.builder()            
-     *                 .instanceTemplate(google_compute_instance_template.foobar().self_link())
+     *                 .name(String.format(&#34;test-%s&#34;, range.value()))
+     *                 .instanceTemplate(foobar.selfLink())
      *                 .baseInstanceName(String.format(&#34;foobar-%s&#34;, range.value()))
      *                 .zone(available.applyValue(getZonesResult -&gt; getZonesResult.names())[range.value()])
      *                 .targetSize(1)
@@ -10157,7 +10032,8 @@ public final class ComputeFunctions {
      * 
      *         for (var i = 0; i &lt; available.applyValue(getZonesResult -&gt; getZonesResult.names()).length(); i++) {
      *             new InstanceGroupManager(&#34;foo-&#34; + i, InstanceGroupManagerArgs.builder()            
-     *                 .instanceTemplate(google_compute_instance_template.foobar().self_link())
+     *                 .name(String.format(&#34;test-%s&#34;, range.value()))
+     *                 .instanceTemplate(foobar.selfLink())
      *                 .baseInstanceName(String.format(&#34;foobar-%s&#34;, range.value()))
      *                 .zone(available.applyValue(getZonesResult -&gt; getZonesResult.names())[range.value()])
      *                 .targetSize(1)
@@ -10205,7 +10081,8 @@ public final class ComputeFunctions {
      * 
      *         for (var i = 0; i &lt; available.applyValue(getZonesResult -&gt; getZonesResult.names()).length(); i++) {
      *             new InstanceGroupManager(&#34;foo-&#34; + i, InstanceGroupManagerArgs.builder()            
-     *                 .instanceTemplate(google_compute_instance_template.foobar().self_link())
+     *                 .name(String.format(&#34;test-%s&#34;, range.value()))
+     *                 .instanceTemplate(foobar.selfLink())
      *                 .baseInstanceName(String.format(&#34;foobar-%s&#34;, range.value()))
      *                 .zone(available.applyValue(getZonesResult -&gt; getZonesResult.names())[range.value()])
      *                 .targetSize(1)
@@ -10253,7 +10130,8 @@ public final class ComputeFunctions {
      * 
      *         for (var i = 0; i &lt; available.applyValue(getZonesResult -&gt; getZonesResult.names()).length(); i++) {
      *             new InstanceGroupManager(&#34;foo-&#34; + i, InstanceGroupManagerArgs.builder()            
-     *                 .instanceTemplate(google_compute_instance_template.foobar().self_link())
+     *                 .name(String.format(&#34;test-%s&#34;, range.value()))
+     *                 .instanceTemplate(foobar.selfLink())
      *                 .baseInstanceName(String.format(&#34;foobar-%s&#34;, range.value()))
      *                 .zone(available.applyValue(getZonesResult -&gt; getZonesResult.names())[range.value()])
      *                 .targetSize(1)
@@ -10301,7 +10179,8 @@ public final class ComputeFunctions {
      * 
      *         for (var i = 0; i &lt; available.applyValue(getZonesResult -&gt; getZonesResult.names()).length(); i++) {
      *             new InstanceGroupManager(&#34;foo-&#34; + i, InstanceGroupManagerArgs.builder()            
-     *                 .instanceTemplate(google_compute_instance_template.foobar().self_link())
+     *                 .name(String.format(&#34;test-%s&#34;, range.value()))
+     *                 .instanceTemplate(foobar.selfLink())
      *                 .baseInstanceName(String.format(&#34;foobar-%s&#34;, range.value()))
      *                 .zone(available.applyValue(getZonesResult -&gt; getZonesResult.names())[range.value()])
      *                 .targetSize(1)
@@ -10349,7 +10228,8 @@ public final class ComputeFunctions {
      * 
      *         for (var i = 0; i &lt; available.applyValue(getZonesResult -&gt; getZonesResult.names()).length(); i++) {
      *             new InstanceGroupManager(&#34;foo-&#34; + i, InstanceGroupManagerArgs.builder()            
-     *                 .instanceTemplate(google_compute_instance_template.foobar().self_link())
+     *                 .name(String.format(&#34;test-%s&#34;, range.value()))
+     *                 .instanceTemplate(foobar.selfLink())
      *                 .baseInstanceName(String.format(&#34;foobar-%s&#34;, range.value()))
      *                 .zone(available.applyValue(getZonesResult -&gt; getZonesResult.names())[range.value()])
      *                 .targetSize(1)

@@ -422,7 +422,7 @@ class CxWebhook(pulumi.CustomResource):
             speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
                 enable_speech_adaptation=True,
             ))
-        basic_webhook = gcp.diagflow.CxWebhook("basicWebhook",
+        basic_webhook = gcp.diagflow.CxWebhook("basic_webhook",
             parent=agent.id,
             display_name="MyFlow",
             generic_web_service=gcp.diagflow.CxWebhookGenericWebServiceArgs(
@@ -505,7 +505,7 @@ class CxWebhook(pulumi.CustomResource):
             speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
                 enable_speech_adaptation=True,
             ))
-        basic_webhook = gcp.diagflow.CxWebhook("basicWebhook",
+        basic_webhook = gcp.diagflow.CxWebhook("basic_webhook",
             parent=agent.id,
             display_name="MyFlow",
             generic_web_service=gcp.diagflow.CxWebhookGenericWebServiceArgs(

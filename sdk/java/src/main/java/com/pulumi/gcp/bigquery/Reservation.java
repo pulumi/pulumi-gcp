@@ -51,14 +51,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var reservation = new Reservation(&#34;reservation&#34;, ReservationArgs.builder()        
+ *             .name(&#34;my-reservation&#34;)
+ *             .location(&#34;us-west2&#34;)
+ *             .slotCapacity(0)
+ *             .edition(&#34;STANDARD&#34;)
+ *             .ignoreIdleSlots(true)
+ *             .concurrency(0)
  *             .autoscale(ReservationAutoscaleArgs.builder()
  *                 .maxSlots(100)
  *                 .build())
- *             .concurrency(0)
- *             .edition(&#34;STANDARD&#34;)
- *             .ignoreIdleSlots(true)
- *             .location(&#34;us-west2&#34;)
- *             .slotCapacity(0)
  *             .build());
  * 
  *     }

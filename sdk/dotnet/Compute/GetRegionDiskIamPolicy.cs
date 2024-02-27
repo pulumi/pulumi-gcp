@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.Compute
         /// {
         ///     var policy = Gcp.Compute.GetRegionDiskIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_compute_region_disk.Regiondisk.Project,
-        ///         Region = google_compute_region_disk.Regiondisk.Region,
-        ///         Name = google_compute_region_disk.Regiondisk.Name,
+        ///         Project = regiondisk.Project,
+        ///         Region = regiondisk.Region,
+        ///         Name = regiondisk.Name,
         ///     });
         /// 
         /// });
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.Compute
         /// {
         ///     var policy = Gcp.Compute.GetRegionDiskIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_compute_region_disk.Regiondisk.Project,
-        ///         Region = google_compute_region_disk.Regiondisk.Region,
-        ///         Name = google_compute_region_disk.Regiondisk.Name,
+        ///         Project = regiondisk.Project,
+        ///         Region = regiondisk.Region,
+        ///         Name = regiondisk.Name,
         ///     });
         /// 
         /// });

@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := workbench.LookupInstanceIamPolicy(ctx, &workbench.LookupInstanceIamPolicyArgs{
-//				Project:  pulumi.StringRef(google_workbench_instance.Instance.Project),
-//				Location: pulumi.StringRef(google_workbench_instance.Instance.Location),
-//				Name:     google_workbench_instance.Instance.Name,
+//				Project:  pulumi.StringRef(instance.Project),
+//				Location: pulumi.StringRef(instance.Location),
+//				Name:     instance.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

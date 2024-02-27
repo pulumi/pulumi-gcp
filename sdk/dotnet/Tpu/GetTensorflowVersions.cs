@@ -47,6 +47,7 @@ namespace Pulumi.Gcp.Tpu
         /// 
         ///     var tpu = new Gcp.Tpu.Node("tpu", new()
         ///     {
+        ///         Name = "test-tpu",
         ///         Zone = "us-central1-b",
         ///         AcceleratorType = "v3-8",
         ///         TensorflowVersion = available.Apply(getTensorflowVersionsResult =&gt; getTensorflowVersionsResult.Versions[0]),
@@ -97,6 +98,7 @@ namespace Pulumi.Gcp.Tpu
         /// 
         ///     var tpu = new Gcp.Tpu.Node("tpu", new()
         ///     {
+        ///         Name = "test-tpu",
         ///         Zone = "us-central1-b",
         ///         AcceleratorType = "v3-8",
         ///         TensorflowVersion = available.Apply(getTensorflowVersionsResult =&gt; getTensorflowVersionsResult.Versions[0]),

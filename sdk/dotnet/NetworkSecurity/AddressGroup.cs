@@ -31,14 +31,15 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// {
     ///     var @default = new Gcp.NetworkSecurity.AddressGroup("default", new()
     ///     {
+    ///         Name = "my-address-groups",
+    ///         Parent = "projects/my-project-name",
+    ///         Location = "us-central1",
+    ///         Type = "IPV4",
     ///         Capacity = 100,
     ///         Items = new[]
     ///         {
     ///             "208.80.154.224/32",
     ///         },
-    ///         Location = "us-central1",
-    ///         Parent = "projects/my-project-name",
-    ///         Type = "IPV4",
     ///     });
     /// 
     /// });
@@ -55,14 +56,15 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// {
     ///     var @default = new Gcp.NetworkSecurity.AddressGroup("default", new()
     ///     {
+    ///         Name = "my-address-groups",
+    ///         Parent = "organizations/123456789",
+    ///         Location = "us-central1",
+    ///         Type = "IPV4",
     ///         Capacity = 100,
     ///         Items = new[]
     ///         {
     ///             "208.80.154.224/32",
     ///         },
-    ///         Location = "us-central1",
-    ///         Parent = "organizations/123456789",
-    ///         Type = "IPV4",
     ///     });
     /// 
     /// });
@@ -79,15 +81,16 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// {
     ///     var @default = new Gcp.NetworkSecurity.AddressGroup("default", new()
     ///     {
-    ///         Capacity = 100,
+    ///         Name = "my-address-groups",
+    ///         Parent = "projects/my-project-name",
+    ///         Location = "us-central1",
     ///         Description = "my description",
+    ///         Type = "IPV4",
+    ///         Capacity = 100,
     ///         Items = new[]
     ///         {
     ///             "208.80.154.224/32",
     ///         },
-    ///         Location = "us-central1",
-    ///         Parent = "projects/my-project-name",
-    ///         Type = "IPV4",
     ///     });
     /// 
     /// });

@@ -16,6 +16,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const pool = new gcp.cloudbuild.WorkerPool("pool", {
+ *     name: "my-pool",
  *     location: "europe-west1",
  *     workerConfig: {
  *         diskSizeGb: 100,
@@ -34,23 +35,24 @@ import * as utilities from "../utilities";
  *     service: "servicenetworking.googleapis.com",
  *     disableOnDestroy: false,
  * });
- * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false}, {
- *     dependsOn: [servicenetworking],
+ * const network = new gcp.compute.Network("network", {
+ *     name: "my-network",
+ *     autoCreateSubnetworks: false,
  * });
- * const workerRange = new gcp.compute.GlobalAddress("workerRange", {
+ * const workerRange = new gcp.compute.GlobalAddress("worker_range", {
+ *     name: "worker-pool-range",
  *     purpose: "VPC_PEERING",
  *     addressType: "INTERNAL",
  *     prefixLength: 16,
  *     network: network.id,
  * });
- * const workerPoolConn = new gcp.servicenetworking.Connection("workerPoolConn", {
+ * const workerPoolConn = new gcp.servicenetworking.Connection("worker_pool_conn", {
  *     network: network.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [workerRange.name],
- * }, {
- *     dependsOn: [servicenetworking],
  * });
  * const pool = new gcp.cloudbuild.WorkerPool("pool", {
+ *     name: "my-pool",
  *     location: "europe-west1",
  *     workerConfig: {
  *         diskSizeGb: 100,
@@ -61,8 +63,6 @@ import * as utilities from "../utilities";
  *         peeredNetwork: network.id,
  *         peeredNetworkIpRange: "/29",
  *     },
- * }, {
- *     dependsOn: [workerPoolConn],
  * });
  * ```
  *

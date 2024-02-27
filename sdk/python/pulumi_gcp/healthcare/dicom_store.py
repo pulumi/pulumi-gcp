@@ -338,9 +338,12 @@ class DicomStore(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        topic = gcp.pubsub.Topic("topic")
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        topic = gcp.pubsub.Topic("topic", name="dicom-notifications")
+        dataset = gcp.healthcare.Dataset("dataset",
+            name="example-dataset",
+            location="us-central1")
         default = gcp.healthcare.DicomStore("default",
+            name="example-dicom-store",
             dataset=dataset.id,
             notification_config=gcp.healthcare.DicomStoreNotificationConfigArgs(
                 pubsub_topic=topic.id,
@@ -355,22 +358,22 @@ class DicomStore(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        topic = gcp.pubsub.Topic("topic", opts=pulumi.ResourceOptions(provider=google_beta))
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        bq_dataset = gcp.bigquery.Dataset("bqDataset",
+        topic = gcp.pubsub.Topic("topic", name="dicom-notifications")
+        dataset = gcp.healthcare.Dataset("dataset",
+            name="example-dataset",
+            location="us-central1")
+        bq_dataset = gcp.bigquery.Dataset("bq_dataset",
             dataset_id="dicom_bq_ds",
             friendly_name="test",
             description="This is a test description",
             location="US",
-            delete_contents_on_destroy=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        bq_table = gcp.bigquery.Table("bqTable",
+            delete_contents_on_destroy=True)
+        bq_table = gcp.bigquery.Table("bq_table",
             deletion_protection=False,
             dataset_id=bq_dataset.dataset_id,
-            table_id="dicom_bq_tb",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            table_id="dicom_bq_tb")
         default = gcp.healthcare.DicomStore("default",
+            name="example-dicom-store",
             dataset=dataset.id,
             notification_config=gcp.healthcare.DicomStoreNotificationConfigArgs(
                 pubsub_topic=topic.id,
@@ -382,8 +385,7 @@ class DicomStore(pulumi.CustomResource):
                 bigquery_destination=gcp.healthcare.DicomStoreStreamConfigBigqueryDestinationArgs(
                     table_uri=pulumi.Output.all(bq_dataset.project, bq_dataset.dataset_id, bq_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
                 ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
 
         ## Import
@@ -453,9 +455,12 @@ class DicomStore(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        topic = gcp.pubsub.Topic("topic")
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        topic = gcp.pubsub.Topic("topic", name="dicom-notifications")
+        dataset = gcp.healthcare.Dataset("dataset",
+            name="example-dataset",
+            location="us-central1")
         default = gcp.healthcare.DicomStore("default",
+            name="example-dicom-store",
             dataset=dataset.id,
             notification_config=gcp.healthcare.DicomStoreNotificationConfigArgs(
                 pubsub_topic=topic.id,
@@ -470,22 +475,22 @@ class DicomStore(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        topic = gcp.pubsub.Topic("topic", opts=pulumi.ResourceOptions(provider=google_beta))
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        bq_dataset = gcp.bigquery.Dataset("bqDataset",
+        topic = gcp.pubsub.Topic("topic", name="dicom-notifications")
+        dataset = gcp.healthcare.Dataset("dataset",
+            name="example-dataset",
+            location="us-central1")
+        bq_dataset = gcp.bigquery.Dataset("bq_dataset",
             dataset_id="dicom_bq_ds",
             friendly_name="test",
             description="This is a test description",
             location="US",
-            delete_contents_on_destroy=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        bq_table = gcp.bigquery.Table("bqTable",
+            delete_contents_on_destroy=True)
+        bq_table = gcp.bigquery.Table("bq_table",
             deletion_protection=False,
             dataset_id=bq_dataset.dataset_id,
-            table_id="dicom_bq_tb",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            table_id="dicom_bq_tb")
         default = gcp.healthcare.DicomStore("default",
+            name="example-dicom-store",
             dataset=dataset.id,
             notification_config=gcp.healthcare.DicomStoreNotificationConfigArgs(
                 pubsub_topic=topic.id,
@@ -497,8 +502,7 @@ class DicomStore(pulumi.CustomResource):
                 bigquery_destination=gcp.healthcare.DicomStoreStreamConfigBigqueryDestinationArgs(
                     table_uri=pulumi.Output.all(bq_dataset.project, bq_dataset.dataset_id, bq_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
                 ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
 
         ## Import

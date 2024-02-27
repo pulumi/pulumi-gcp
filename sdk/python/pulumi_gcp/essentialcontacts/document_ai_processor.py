@@ -244,8 +244,8 @@ class DocumentAiProcessor(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         processor = gcp.essentialcontacts.DocumentAiProcessor("processor",
-            display_name="test-processor",
             location="us",
+            display_name="test-processor",
             type="OCR_PROCESSOR")
         ```
 
@@ -308,8 +308,8 @@ class DocumentAiProcessor(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         processor = gcp.essentialcontacts.DocumentAiProcessor("processor",
-            display_name="test-processor",
             location="us",
+            display_name="test-processor",
             type="OCR_PROCESSOR")
         ```
 

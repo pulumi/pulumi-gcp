@@ -25,7 +25,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultInstance = new gcp.compute.Instance("defaultInstance", {
+ * const defaultInstance = new gcp.compute.Instance("default", {
+ *     name: "attached-disk-instance",
  *     machineType: "e2-medium",
  *     zone: "us-west1-a",
  *     bootDisk: {
@@ -37,8 +38,8 @@ import * as utilities from "../utilities";
  *         network: "default",
  *     }],
  * });
- * const defaultAttachedDisk = new gcp.compute.AttachedDisk("defaultAttachedDisk", {
- *     disk: google_compute_disk["default"].id,
+ * const _default = new gcp.compute.AttachedDisk("default", {
+ *     disk: defaultGoogleComputeDisk.id,
  *     instance: defaultInstance.id,
  * });
  * ```

@@ -312,6 +312,7 @@ class AutoscalingPolicy(pulumi.CustomResource):
                 ),
             ))
         basic = gcp.dataproc.Cluster("basic",
+            name="dataproc-policy",
             region="us-central1",
             cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
                 autoscaling_config=gcp.dataproc.ClusterClusterConfigAutoscalingConfigArgs(
@@ -393,6 +394,7 @@ class AutoscalingPolicy(pulumi.CustomResource):
                 ),
             ))
         basic = gcp.dataproc.Cluster("basic",
+            name="dataproc-policy",
             region="us-central1",
             cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
                 autoscaling_config=gcp.dataproc.ClusterClusterConfigAutoscalingConfigArgs(

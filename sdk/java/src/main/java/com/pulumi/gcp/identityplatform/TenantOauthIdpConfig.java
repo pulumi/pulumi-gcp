@@ -52,6 +52,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var tenantOauthIdpConfig = new TenantOauthIdpConfig(&#34;tenantOauthIdpConfig&#34;, TenantOauthIdpConfigArgs.builder()        
+ *             .name(&#34;oidc.oauth-idp-config&#34;)
  *             .tenant(tenant.name())
  *             .displayName(&#34;Display Name&#34;)
  *             .clientId(&#34;client-id&#34;)

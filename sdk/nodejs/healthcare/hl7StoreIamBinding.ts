@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *         members: ["user:jane@example.com"],
  *     }],
  * });
- * const hl7V2Store = new gcp.healthcare.Hl7StoreIamPolicy("hl7V2Store", {
+ * const hl7V2Store = new gcp.healthcare.Hl7StoreIamPolicy("hl7_v2_store", {
  *     hl7V2StoreId: "your-hl7-v2-store-id",
  *     policyData: admin.then(admin => admin.policyData),
  * });
@@ -41,10 +41,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const hl7V2Store = new gcp.healthcare.Hl7StoreIamBinding("hl7V2Store", {
+ * const hl7V2Store = new gcp.healthcare.Hl7StoreIamBinding("hl7_v2_store", {
  *     hl7V2StoreId: "your-hl7-v2-store-id",
- *     members: ["user:jane@example.com"],
  *     role: "roles/editor",
+ *     members: ["user:jane@example.com"],
  * });
  * ```
  *
@@ -54,10 +54,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const hl7V2Store = new gcp.healthcare.Hl7StoreIamMember("hl7V2Store", {
+ * const hl7V2Store = new gcp.healthcare.Hl7StoreIamMember("hl7_v2_store", {
  *     hl7V2StoreId: "your-hl7-v2-store-id",
- *     member: "user:jane@example.com",
  *     role: "roles/editor",
+ *     member: "user:jane@example.com",
  * });
  * ```
  *

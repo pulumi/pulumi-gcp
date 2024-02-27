@@ -308,7 +308,8 @@ class BackupVault(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        test_backup_vault = gcp.netapp.BackupVault("testBackupVault",
+        test_backup_vault = gcp.netapp.BackupVault("test_backup_vault",
+            name="test-backup-vault",
             location="us-central1",
             description="Terraform created vault",
             labels={
@@ -378,7 +379,8 @@ class BackupVault(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        test_backup_vault = gcp.netapp.BackupVault("testBackupVault",
+        test_backup_vault = gcp.netapp.BackupVault("test_backup_vault",
+            name="test-backup-vault",
             location="us-central1",
             description="Terraform created vault",
             labels={

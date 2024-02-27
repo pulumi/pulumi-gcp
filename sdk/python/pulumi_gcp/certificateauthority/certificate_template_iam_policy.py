@@ -255,7 +255,7 @@ class CertificateTemplateIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.certificateauthority.CertificateTemplateIamPolicy("policy",
-            certificate_template=google_privateca_certificate_template["default"]["id"],
+            certificate_template=default["id"],
             policy_data=admin.policy_data)
         ```
 
@@ -275,7 +275,7 @@ class CertificateTemplateIamPolicy(pulumi.CustomResource):
             ),
         )])
         policy = gcp.certificateauthority.CertificateTemplateIamPolicy("policy",
-            certificate_template=google_privateca_certificate_template["default"]["id"],
+            certificate_template=default["id"],
             policy_data=admin.policy_data)
         ```
         ## google\\_privateca\\_certificate\\_template\\_iam\\_binding
@@ -285,7 +285,7 @@ class CertificateTemplateIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.certificateauthority.CertificateTemplateIamBinding("binding",
-            certificate_template=google_privateca_certificate_template["default"]["id"],
+            certificate_template=default["id"],
             role="roles/privateca.templateUser",
             members=["user:jane@example.com"])
         ```
@@ -297,7 +297,7 @@ class CertificateTemplateIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.certificateauthority.CertificateTemplateIamBinding("binding",
-            certificate_template=google_privateca_certificate_template["default"]["id"],
+            certificate_template=default["id"],
             role="roles/privateca.templateUser",
             members=["user:jane@example.com"],
             condition=gcp.certificateauthority.CertificateTemplateIamBindingConditionArgs(
@@ -313,7 +313,7 @@ class CertificateTemplateIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.certificateauthority.CertificateTemplateIamMember("member",
-            certificate_template=google_privateca_certificate_template["default"]["id"],
+            certificate_template=default["id"],
             role="roles/privateca.templateUser",
             member="user:jane@example.com")
         ```
@@ -325,7 +325,7 @@ class CertificateTemplateIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.certificateauthority.CertificateTemplateIamMember("member",
-            certificate_template=google_privateca_certificate_template["default"]["id"],
+            certificate_template=default["id"],
             role="roles/privateca.templateUser",
             member="user:jane@example.com",
             condition=gcp.certificateauthority.CertificateTemplateIamMemberConditionArgs(
@@ -425,7 +425,7 @@ class CertificateTemplateIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.certificateauthority.CertificateTemplateIamPolicy("policy",
-            certificate_template=google_privateca_certificate_template["default"]["id"],
+            certificate_template=default["id"],
             policy_data=admin.policy_data)
         ```
 
@@ -445,7 +445,7 @@ class CertificateTemplateIamPolicy(pulumi.CustomResource):
             ),
         )])
         policy = gcp.certificateauthority.CertificateTemplateIamPolicy("policy",
-            certificate_template=google_privateca_certificate_template["default"]["id"],
+            certificate_template=default["id"],
             policy_data=admin.policy_data)
         ```
         ## google\\_privateca\\_certificate\\_template\\_iam\\_binding
@@ -455,7 +455,7 @@ class CertificateTemplateIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.certificateauthority.CertificateTemplateIamBinding("binding",
-            certificate_template=google_privateca_certificate_template["default"]["id"],
+            certificate_template=default["id"],
             role="roles/privateca.templateUser",
             members=["user:jane@example.com"])
         ```
@@ -467,7 +467,7 @@ class CertificateTemplateIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.certificateauthority.CertificateTemplateIamBinding("binding",
-            certificate_template=google_privateca_certificate_template["default"]["id"],
+            certificate_template=default["id"],
             role="roles/privateca.templateUser",
             members=["user:jane@example.com"],
             condition=gcp.certificateauthority.CertificateTemplateIamBindingConditionArgs(
@@ -483,7 +483,7 @@ class CertificateTemplateIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.certificateauthority.CertificateTemplateIamMember("member",
-            certificate_template=google_privateca_certificate_template["default"]["id"],
+            certificate_template=default["id"],
             role="roles/privateca.templateUser",
             member="user:jane@example.com")
         ```
@@ -495,7 +495,7 @@ class CertificateTemplateIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.certificateauthority.CertificateTemplateIamMember("member",
-            certificate_template=google_privateca_certificate_template["default"]["id"],
+            certificate_template=default["id"],
             role="roles/privateca.templateUser",
             member="user:jane@example.com",
             condition=gcp.certificateauthority.CertificateTemplateIamMemberConditionArgs(

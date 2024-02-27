@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			basicAgent, err := diagflow.NewAgent(ctx, "basicAgent", &diagflow.AgentArgs{
+//			_, err := diagflow.NewAgent(ctx, "basic_agent", &diagflow.AgentArgs{
 //				DisplayName:         pulumi.String("example_agent"),
 //				DefaultLanguageCode: pulumi.String("en"),
 //				TimeZone:            pulumi.String("America/New_York"),
@@ -43,7 +43,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = diagflow.NewEntityType(ctx, "basicEntityType", &diagflow.EntityTypeArgs{
+//			_, err = diagflow.NewEntityType(ctx, "basic_entity_type", &diagflow.EntityTypeArgs{
 //				DisplayName: pulumi.String(""),
 //				Kind:        pulumi.String("KIND_MAP"),
 //				Entities: diagflow.EntityTypeEntityArray{
@@ -62,9 +62,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				basicAgent,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

@@ -119,10 +119,10 @@ def get_listing_iam_policy(data_exchange_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigqueryanalyticshub.get_listing_iam_policy(project=google_bigquery_analytics_hub_listing["listing"]["project"],
-        location=google_bigquery_analytics_hub_listing["listing"]["location"],
-        data_exchange_id=google_bigquery_analytics_hub_listing["listing"]["data_exchange_id"],
-        listing_id=google_bigquery_analytics_hub_listing["listing"]["listing_id"])
+    policy = gcp.bigqueryanalyticshub.get_listing_iam_policy(project=listing["project"],
+        location=listing["location"],
+        data_exchange_id=listing["dataExchangeId"],
+        listing_id=listing["listingId"])
     ```
 
 
@@ -166,10 +166,10 @@ def get_listing_iam_policy_output(data_exchange_id: Optional[pulumi.Input[str]] 
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigqueryanalyticshub.get_listing_iam_policy(project=google_bigquery_analytics_hub_listing["listing"]["project"],
-        location=google_bigquery_analytics_hub_listing["listing"]["location"],
-        data_exchange_id=google_bigquery_analytics_hub_listing["listing"]["data_exchange_id"],
-        listing_id=google_bigquery_analytics_hub_listing["listing"]["listing_id"])
+    policy = gcp.bigqueryanalyticshub.get_listing_iam_policy(project=listing["project"],
+        location=listing["location"],
+        data_exchange_id=listing["dataExchangeId"],
+        listing_id=listing["listingId"])
     ```
 
 

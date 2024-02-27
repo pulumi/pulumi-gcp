@@ -28,10 +28,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataplex.LookupZoneIamPolicy(ctx, &dataplex.LookupZoneIamPolicyArgs{
-//				Project:      pulumi.StringRef(google_dataplex_zone.Example.Project),
-//				Location:     pulumi.StringRef(google_dataplex_zone.Example.Location),
-//				Lake:         google_dataplex_zone.Example.Lake,
-//				DataplexZone: google_dataplex_zone.Example.Name,
+//				Project:      pulumi.StringRef(example.Project),
+//				Location:     pulumi.StringRef(example.Location),
+//				Lake:         example.Lake,
+//				DataplexZone: example.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

@@ -41,7 +41,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.apigateway.inputs.ApiConfigOpenapiDocumentDocumentArgs;
  * import com.pulumi.gcp.apigateway.Gateway;
  * import com.pulumi.gcp.apigateway.GatewayArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -55,31 +54,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var apiGwApi = new Api(&#34;apiGwApi&#34;, ApiArgs.builder()        
+ *         var apiGw = new Api(&#34;apiGw&#34;, ApiArgs.builder()        
  *             .apiId(&#34;my-api&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var apiGwApiConfig = new ApiConfig(&#34;apiGwApiConfig&#34;, ApiConfigArgs.builder()        
- *             .api(apiGwApi.apiId())
+ *             .api(apiGw.apiId())
  *             .apiConfigId(&#34;my-config&#34;)
  *             .openapiDocuments(ApiConfigOpenapiDocumentArgs.builder()
  *                 .document(ApiConfigOpenapiDocumentDocumentArgs.builder()
  *                     .path(&#34;spec.yaml&#34;)
- *                     .contents(Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get(&#34;test-fixtures/openapi.yaml&#34;))))
+ *                     .contents(StdFunctions.filebase64(Filebase64Args.builder()
+ *                         .input(&#34;test-fixtures/openapi.yaml&#34;)
+ *                         .build()).result())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var apiGwGateway = new Gateway(&#34;apiGwGateway&#34;, GatewayArgs.builder()        
  *             .apiConfig(apiGwApiConfig.id())
  *             .gatewayId(&#34;my-gateway&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

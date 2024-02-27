@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.filestore.Instance("instance", {
+ *     name: "test-instance-for-snapshot",
  *     location: "us-east1",
  *     tier: "ENTERPRISE",
  *     fileShares: {
@@ -34,6 +35,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const snapshot = new gcp.filestore.Snapshot("snapshot", {
+ *     name: "test-snapshot",
  *     instance: instance.name,
  *     location: "us-east1",
  * });
@@ -45,6 +47,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.filestore.Instance("instance", {
+ *     name: "test-instance-for-snapshot",
  *     location: "us-west1",
  *     tier: "ENTERPRISE",
  *     fileShares: {
@@ -57,6 +60,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const snapshot = new gcp.filestore.Snapshot("snapshot", {
+ *     name: "test-snapshot",
  *     instance: instance.name,
  *     location: "us-west1",
  *     description: "Snapshot of test-instance-for-snapshot",

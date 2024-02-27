@@ -334,6 +334,7 @@ class Repository(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         private_key_secret = gcp.secretmanager.Secret("private-key-secret",
             secret_id="ghe-pk-secret",
@@ -342,7 +343,7 @@ class Repository(pulumi.CustomResource):
             ))
         private_key_secret_version = gcp.secretmanager.SecretVersion("private-key-secret-version",
             secret=private_key_secret.id,
-            secret_data=(lambda path: open(path).read())("private-key.pem"))
+            secret_data=std.file(input="private-key.pem").result)
         webhook_secret_secret = gcp.secretmanager.Secret("webhook-secret-secret",
             secret_id="github-token-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
@@ -363,6 +364,7 @@ class Repository(pulumi.CustomResource):
             policy_data=p4sa_secret_accessor.policy_data)
         my_connection = gcp.cloudbuildv2.Connection("my-connection",
             location="us-central1",
+            name="my-terraform-ghe-connection",
             github_enterprise_config=gcp.cloudbuildv2.ConnectionGithubEnterpriseConfigArgs(
                 host_uri="https://ghe.com",
                 private_key_secret_version=private_key_secret_version.id,
@@ -370,12 +372,9 @@ class Repository(pulumi.CustomResource):
                 app_id=200,
                 app_slug="gcb-app",
                 app_installation_id=300,
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[
-                    policy_pk,
-                    policy_whs,
-                ]))
+            ))
         my_repository = gcp.cloudbuildv2.Repository("my-repository",
+            name="my-terraform-ghe-repo",
             location="us-central1",
             parent_connection=my_connection.id,
             remote_uri="https://ghe.com/hashicorp/terraform-provider-google.git")
@@ -385,6 +384,7 @@ class Repository(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         github_token_secret = gcp.secretmanager.Secret("github-token-secret",
             secret_id="github-token-secret",
@@ -393,7 +393,7 @@ class Repository(pulumi.CustomResource):
             ))
         github_token_secret_version = gcp.secretmanager.SecretVersion("github-token-secret-version",
             secret=github_token_secret.id,
-            secret_data=(lambda path: open(path).read())("my-github-token.txt"))
+            secret_data=std.file(input="my-github-token.txt").result)
         p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
             role="roles/secretmanager.secretAccessor",
             members=["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
@@ -403,6 +403,7 @@ class Repository(pulumi.CustomResource):
             policy_data=p4sa_secret_accessor.policy_data)
         my_connection = gcp.cloudbuildv2.Connection("my-connection",
             location="us-central1",
+            name="my-connection",
             github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
                 app_installation_id=123123,
                 authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
@@ -411,6 +412,7 @@ class Repository(pulumi.CustomResource):
             ))
         my_repository = gcp.cloudbuildv2.Repository("my-repository",
             location="us-central1",
+            name="my-repo",
             parent_connection=my_connection.name,
             remote_uri="https://github.com/myuser/myrepo.git")
         ```
@@ -475,6 +477,7 @@ class Repository(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         private_key_secret = gcp.secretmanager.Secret("private-key-secret",
             secret_id="ghe-pk-secret",
@@ -483,7 +486,7 @@ class Repository(pulumi.CustomResource):
             ))
         private_key_secret_version = gcp.secretmanager.SecretVersion("private-key-secret-version",
             secret=private_key_secret.id,
-            secret_data=(lambda path: open(path).read())("private-key.pem"))
+            secret_data=std.file(input="private-key.pem").result)
         webhook_secret_secret = gcp.secretmanager.Secret("webhook-secret-secret",
             secret_id="github-token-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
@@ -504,6 +507,7 @@ class Repository(pulumi.CustomResource):
             policy_data=p4sa_secret_accessor.policy_data)
         my_connection = gcp.cloudbuildv2.Connection("my-connection",
             location="us-central1",
+            name="my-terraform-ghe-connection",
             github_enterprise_config=gcp.cloudbuildv2.ConnectionGithubEnterpriseConfigArgs(
                 host_uri="https://ghe.com",
                 private_key_secret_version=private_key_secret_version.id,
@@ -511,12 +515,9 @@ class Repository(pulumi.CustomResource):
                 app_id=200,
                 app_slug="gcb-app",
                 app_installation_id=300,
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[
-                    policy_pk,
-                    policy_whs,
-                ]))
+            ))
         my_repository = gcp.cloudbuildv2.Repository("my-repository",
+            name="my-terraform-ghe-repo",
             location="us-central1",
             parent_connection=my_connection.id,
             remote_uri="https://ghe.com/hashicorp/terraform-provider-google.git")
@@ -526,6 +527,7 @@ class Repository(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         github_token_secret = gcp.secretmanager.Secret("github-token-secret",
             secret_id="github-token-secret",
@@ -534,7 +536,7 @@ class Repository(pulumi.CustomResource):
             ))
         github_token_secret_version = gcp.secretmanager.SecretVersion("github-token-secret-version",
             secret=github_token_secret.id,
-            secret_data=(lambda path: open(path).read())("my-github-token.txt"))
+            secret_data=std.file(input="my-github-token.txt").result)
         p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
             role="roles/secretmanager.secretAccessor",
             members=["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
@@ -544,6 +546,7 @@ class Repository(pulumi.CustomResource):
             policy_data=p4sa_secret_accessor.policy_data)
         my_connection = gcp.cloudbuildv2.Connection("my-connection",
             location="us-central1",
+            name="my-connection",
             github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
                 app_installation_id=123123,
                 authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
@@ -552,6 +555,7 @@ class Repository(pulumi.CustomResource):
             ))
         my_repository = gcp.cloudbuildv2.Repository("my-repository",
             location="us-central1",
+            name="my-repo",
             parent_connection=my_connection.name,
             remote_uri="https://github.com/myuser/myrepo.git")
         ```

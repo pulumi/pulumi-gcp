@@ -951,8 +951,12 @@ class Dataset(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        key_ring = gcp.kms.KeyRing("keyRing", location="us")
-        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="example-keyring",
+            location="us")
+        crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="example-key",
+            key_ring=key_ring.id)
         dataset = gcp.bigquery.Dataset("dataset",
             dataset_id="example_dataset",
             friendly_name="test",
@@ -1025,11 +1029,11 @@ class Dataset(pulumi.CustomResource):
         import json
         import pulumi_gcp as gcp
 
-        public_dataset = gcp.bigquery.Dataset("publicDataset",
+        public = gcp.bigquery.Dataset("public",
             dataset_id="public_dataset",
             description="This dataset is public")
-        public_routine = gcp.bigquery.Routine("publicRoutine",
-            dataset_id=public_dataset.dataset_id,
+        public_routine = gcp.bigquery.Routine("public",
+            dataset_id=public.dataset_id,
             routine_id="public_routine",
             routine_type="TABLE_VALUED_FUNCTION",
             language="SQL",
@@ -1080,8 +1084,7 @@ class Dataset(pulumi.CustomResource):
             external_dataset_reference=gcp.bigquery.DatasetExternalDatasetReferenceArgs(
                 external_source="aws-glue://arn:aws:glue:us-east-1:999999999999:database/database",
                 connection="projects/project/locations/aws-us-east-1/connections/connection",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import
@@ -1231,8 +1234,12 @@ class Dataset(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        key_ring = gcp.kms.KeyRing("keyRing", location="us")
-        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="example-keyring",
+            location="us")
+        crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="example-key",
+            key_ring=key_ring.id)
         dataset = gcp.bigquery.Dataset("dataset",
             dataset_id="example_dataset",
             friendly_name="test",
@@ -1305,11 +1312,11 @@ class Dataset(pulumi.CustomResource):
         import json
         import pulumi_gcp as gcp
 
-        public_dataset = gcp.bigquery.Dataset("publicDataset",
+        public = gcp.bigquery.Dataset("public",
             dataset_id="public_dataset",
             description="This dataset is public")
-        public_routine = gcp.bigquery.Routine("publicRoutine",
-            dataset_id=public_dataset.dataset_id,
+        public_routine = gcp.bigquery.Routine("public",
+            dataset_id=public.dataset_id,
             routine_id="public_routine",
             routine_type="TABLE_VALUED_FUNCTION",
             language="SQL",
@@ -1360,8 +1367,7 @@ class Dataset(pulumi.CustomResource):
             external_dataset_reference=gcp.bigquery.DatasetExternalDatasetReferenceArgs(
                 external_source="aws-glue://arn:aws:glue:us-east-1:999999999999:database/database",
                 connection="projects/project/locations/aws-us-east-1/connections/connection",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import

@@ -496,6 +496,7 @@ class Trigger(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrun.Service("default",
+            name="eventarc-service",
             location="europe-west1",
             metadata=gcp.cloudrun.ServiceMetadataArgs(
                 namespace="my-project-name",
@@ -517,6 +518,7 @@ class Trigger(pulumi.CustomResource):
                 latest_revision=True,
             )])
         primary = gcp.eventarc.Trigger("primary",
+            name="name",
             location="europe-west1",
             matching_criterias=[gcp.eventarc.TriggerMatchingCriteriaArgs(
                 attribute="type",
@@ -531,7 +533,7 @@ class Trigger(pulumi.CustomResource):
             labels={
                 "foo": "bar",
             })
-        foo = gcp.pubsub.Topic("foo")
+        foo = gcp.pubsub.Topic("foo", name="topic")
         ```
 
         ## Import
@@ -590,6 +592,7 @@ class Trigger(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrun.Service("default",
+            name="eventarc-service",
             location="europe-west1",
             metadata=gcp.cloudrun.ServiceMetadataArgs(
                 namespace="my-project-name",
@@ -611,6 +614,7 @@ class Trigger(pulumi.CustomResource):
                 latest_revision=True,
             )])
         primary = gcp.eventarc.Trigger("primary",
+            name="name",
             location="europe-west1",
             matching_criterias=[gcp.eventarc.TriggerMatchingCriteriaArgs(
                 attribute="type",
@@ -625,7 +629,7 @@ class Trigger(pulumi.CustomResource):
             labels={
                 "foo": "bar",
             })
-        foo = gcp.pubsub.Topic("foo")
+        foo = gcp.pubsub.Topic("foo", name="topic")
         ```
 
         ## Import

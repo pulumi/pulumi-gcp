@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *         members: ["user:jane@example.com"],
  *     }],
  * });
- * const fhirStore = new gcp.healthcare.FhirStoreIamPolicy("fhirStore", {
+ * const fhirStore = new gcp.healthcare.FhirStoreIamPolicy("fhir_store", {
  *     fhirStoreId: "your-fhir-store-id",
  *     policyData: admin.then(admin => admin.policyData),
  * });
@@ -39,10 +39,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const fhirStore = new gcp.healthcare.FhirStoreIamBinding("fhirStore", {
+ * const fhirStore = new gcp.healthcare.FhirStoreIamBinding("fhir_store", {
  *     fhirStoreId: "your-fhir-store-id",
- *     members: ["user:jane@example.com"],
  *     role: "roles/editor",
+ *     members: ["user:jane@example.com"],
  * });
  * ```
  *
@@ -52,10 +52,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const fhirStore = new gcp.healthcare.FhirStoreIamMember("fhirStore", {
+ * const fhirStore = new gcp.healthcare.FhirStoreIamMember("fhir_store", {
  *     fhirStoreId: "your-fhir-store-id",
- *     member: "user:jane@example.com",
  *     role: "roles/editor",
+ *     member: "user:jane@example.com",
  * });
  * ```
  *

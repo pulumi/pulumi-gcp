@@ -23,11 +23,11 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const connection = new gcp.bigquery.Connection("connection", {
- *     cloudResource: {},
  *     connectionId: "my-connection",
- *     description: "a riveting description",
- *     friendlyName: "👋",
  *     location: "US",
+ *     friendlyName: "👋",
+ *     description: "a riveting description",
+ *     cloudResource: {},
  * });
  * ```
  * ### Bigquery Connection Basic
@@ -38,6 +38,7 @@ import * as utilities from "../utilities";
  * import * as random from "@pulumi/random";
  *
  * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     name: "my-database-instance",
  *     databaseVersion: "POSTGRES_11",
  *     region: "us-central1",
  *     settings: {
@@ -45,12 +46,16 @@ import * as utilities from "../utilities";
  *     },
  *     deletionProtection: true,
  * });
- * const db = new gcp.sql.Database("db", {instance: instance.name});
+ * const db = new gcp.sql.Database("db", {
+ *     instance: instance.name,
+ *     name: "db",
+ * });
  * const pwd = new random.RandomPassword("pwd", {
  *     length: 16,
  *     special: false,
  * });
  * const user = new gcp.sql.User("user", {
+ *     name: "user",
  *     instance: instance.name,
  *     password: pwd.result,
  * });
@@ -77,6 +82,7 @@ import * as utilities from "../utilities";
  * import * as random from "@pulumi/random";
  *
  * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     name: "my-database-instance",
  *     databaseVersion: "POSTGRES_11",
  *     region: "us-central1",
  *     settings: {
@@ -84,12 +90,16 @@ import * as utilities from "../utilities";
  *     },
  *     deletionProtection: true,
  * });
- * const db = new gcp.sql.Database("db", {instance: instance.name});
+ * const db = new gcp.sql.Database("db", {
+ *     instance: instance.name,
+ *     name: "db",
+ * });
  * const pwd = new random.RandomPassword("pwd", {
  *     length: 16,
  *     special: false,
  * });
  * const user = new gcp.sql.User("user", {
+ *     name: "user",
  *     instance: instance.name,
  *     password: pwd.result,
  * });
@@ -116,15 +126,15 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const connection = new gcp.bigquery.Connection("connection", {
+ *     connectionId: "my-connection",
+ *     location: "aws-us-east-1",
+ *     friendlyName: "👋",
+ *     description: "a riveting description",
  *     aws: {
  *         accessRole: {
  *             iamRoleId: "arn:aws:iam::999999999999:role/omnirole",
  *         },
  *     },
- *     connectionId: "my-connection",
- *     description: "a riveting description",
- *     friendlyName: "👋",
- *     location: "aws-us-east-1",
  * });
  * ```
  * ### Bigquery Connection Azure
@@ -134,14 +144,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const connection = new gcp.bigquery.Connection("connection", {
+ *     connectionId: "my-connection",
+ *     location: "azure-eastus2",
+ *     friendlyName: "👋",
+ *     description: "a riveting description",
  *     azure: {
  *         customerTenantId: "customer-tenant-id",
  *         federatedApplicationClientId: "b43eeeee-eeee-eeee-eeee-a480155501ce",
  *     },
- *     connectionId: "my-connection",
- *     description: "a riveting description",
- *     friendlyName: "👋",
- *     location: "azure-eastus2",
  * });
  * ```
  * ### Bigquery Connection Cloudspanner
@@ -151,14 +161,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const connection = new gcp.bigquery.Connection("connection", {
+ *     connectionId: "my-connection",
+ *     location: "US",
+ *     friendlyName: "👋",
+ *     description: "a riveting description",
  *     cloudSpanner: {
  *         database: "projects/project/instances/instance/databases/database",
  *         databaseRole: "database_role",
  *     },
- *     connectionId: "my-connection",
- *     description: "a riveting description",
- *     friendlyName: "👋",
- *     location: "US",
  * });
  * ```
  * ### Bigquery Connection Cloudspanner Databoost
@@ -168,16 +178,16 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const connection = new gcp.bigquery.Connection("connection", {
+ *     connectionId: "my-connection",
+ *     location: "US",
+ *     friendlyName: "👋",
+ *     description: "a riveting description",
  *     cloudSpanner: {
  *         database: "projects/project/instances/instance/databases/database",
- *         maxParallelism: 100,
- *         useDataBoost: true,
  *         useParallelism: true,
+ *         useDataBoost: true,
+ *         maxParallelism: 100,
  *     },
- *     connectionId: "my-connection",
- *     description: "a riveting description",
- *     friendlyName: "👋",
- *     location: "US",
  * });
  * ```
  * ### Bigquery Connection Spark
@@ -187,6 +197,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const basic = new gcp.dataproc.Cluster("basic", {
+ *     name: "my-connection",
  *     region: "us-central1",
  *     clusterConfig: {
  *         softwareConfig: {

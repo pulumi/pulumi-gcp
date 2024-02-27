@@ -45,12 +45,12 @@ import (
 //				Kind: pulumi.String("foo"),
 //				Properties: datastore.DataStoreIndexPropertyArray{
 //					&datastore.DataStoreIndexPropertyArgs{
-//						Direction: pulumi.String("ASCENDING"),
 //						Name:      pulumi.String("property_a"),
+//						Direction: pulumi.String("ASCENDING"),
 //					},
 //					&datastore.DataStoreIndexPropertyArgs{
-//						Direction: pulumi.String("ASCENDING"),
 //						Name:      pulumi.String("property_b"),
+//						Direction: pulumi.String("ASCENDING"),
 //					},
 //				},
 //			})

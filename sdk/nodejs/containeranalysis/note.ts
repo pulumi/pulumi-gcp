@@ -24,11 +24,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const note = new gcp.containeranalysis.Note("note", {attestationAuthority: {
- *     hint: {
- *         humanReadableName: "Attestor Note",
+ * const note = new gcp.containeranalysis.Note("note", {
+ *     name: "attestor-note",
+ *     attestationAuthority: {
+ *         hint: {
+ *             humanReadableName: "Attestor Note",
+ *         },
  *     },
- * }});
+ * });
  * ```
  * ### Container Analysis Note Attestation Full
  *
@@ -37,23 +40,24 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const note = new gcp.containeranalysis.Note("note", {
- *     attestationAuthority: {
- *         hint: {
- *             humanReadableName: "Attestor Note",
- *         },
- *     },
- *     expirationTime: "2120-10-02T15:01:23.045123456Z",
+ *     name: "attestor-note",
+ *     shortDescription: "test note",
  *     longDescription: "a longer description of test note",
+ *     expirationTime: "2120-10-02T15:01:23.045123456Z",
  *     relatedUrls: [
  *         {
- *             label: "foo",
  *             url: "some.url",
+ *             label: "foo",
  *         },
  *         {
  *             url: "google.com",
  *         },
  *     ],
- *     shortDescription: "test note",
+ *     attestationAuthority: {
+ *         hint: {
+ *             humanReadableName: "Attestor Note",
+ *         },
+ *     },
  * });
  * ```
  *

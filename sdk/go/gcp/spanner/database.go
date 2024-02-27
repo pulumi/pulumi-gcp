@@ -51,6 +51,7 @@ import (
 //			}
 //			_, err = spanner.NewDatabase(ctx, "database", &spanner.DatabaseArgs{
 //				Instance:               main.Name,
+//				Name:                   pulumi.String("my-database"),
 //				VersionRetentionPeriod: pulumi.String("3d"),
 //				Ddls: pulumi.StringArray{
 //					pulumi.String("CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)"),

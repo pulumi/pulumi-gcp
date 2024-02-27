@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  *
  * const available = gcp.tpu.getV2RuntimeVersions({});
  * const tpu = new gcp.tpu.V2Vm("tpu", {
+ *     name: "test-tpu",
  *     zone: "us-central1-b",
  *     runtimeVersion: available.then(available => available.versions?.[0]),
  * });
@@ -88,6 +89,7 @@ export interface GetV2RuntimeVersionsResult {
  *
  * const available = gcp.tpu.getV2RuntimeVersions({});
  * const tpu = new gcp.tpu.V2Vm("tpu", {
+ *     name: "test-tpu",
  *     zone: "us-central1-b",
  *     runtimeVersion: available.then(available => available.versions?.[0]),
  * });

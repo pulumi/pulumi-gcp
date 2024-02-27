@@ -26,18 +26,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myService = new gcp.monitoring.GenericService("myService", {
- *     basicService: {
- *         serviceLabels: {
- *             moduleId: "another-module-id",
- *         },
- *         serviceType: "APP_ENGINE",
- *     },
- *     displayName: "My Service my-service",
+ * const myService = new gcp.monitoring.GenericService("my_service", {
  *     serviceId: "my-service",
+ *     displayName: "My Service my-service",
  *     userLabels: {
  *         my_key: "my_value",
  *         my_other_key: "my_other_value",
+ *     },
+ *     basicService: {
+ *         serviceType: "APP_ENGINE",
+ *         serviceLabels: {
+ *             module_id: "another-module-id",
+ *         },
  *     },
  * });
  * ```

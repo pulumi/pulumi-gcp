@@ -23,10 +23,27 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const pool = new gcp.certificateauthority.CaPool("pool", {
+ *     name: "ca-pool",
  *     location: "us-central1",
  *     tier: "ENTERPRISE",
  * });
- * const caAuthority = new gcp.certificateauthority.Authority("caAuthority", {
+ * const _default = new gcp.certificatemanager.CertificateIssuanceConfig("default", {
+ *     name: "issuance-config",
+ *     description: "sample description for the certificate issuanceConfigs",
+ *     certificateAuthorityConfig: {
+ *         certificateAuthorityServiceConfig: {
+ *             caPool: pool.id,
+ *         },
+ *     },
+ *     lifetime: "1814400s",
+ *     rotationWindowPercentage: 34,
+ *     keyAlgorithm: "ECDSA_P256",
+ *     labels: {
+ *         name: "wrench",
+ *         count: "3",
+ *     },
+ * });
+ * const caAuthority = new gcp.certificateauthority.Authority("ca_authority", {
  *     location: "us-central1",
  *     pool: pool.name,
  *     certificateAuthorityId: "ca-authority",
@@ -61,23 +78,6 @@ import * as utilities from "../utilities";
  *     deletionProtection: false,
  *     skipGracePeriod: true,
  *     ignoreActiveCertificatesOnDeletion: true,
- * });
- * const _default = new gcp.certificatemanager.CertificateIssuanceConfig("default", {
- *     description: "sample description for the certificate issuanceConfigs",
- *     certificateAuthorityConfig: {
- *         certificateAuthorityServiceConfig: {
- *             caPool: pool.id,
- *         },
- *     },
- *     lifetime: "1814400s",
- *     rotationWindowPercentage: 34,
- *     keyAlgorithm: "ECDSA_P256",
- *     labels: {
- *         name: "wrench",
- *         count: "3",
- *     },
- * }, {
- *     dependsOn: [caAuthority],
  * });
  * ```
  *

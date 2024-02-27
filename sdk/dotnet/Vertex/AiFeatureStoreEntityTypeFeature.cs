@@ -31,6 +31,7 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new()
     ///     {
+    ///         Name = "terraform",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -44,6 +45,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     ///     var entity = new Gcp.Vertex.AiFeatureStoreEntityType("entity", new()
     ///     {
+    ///         Name = "terraform",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -53,6 +55,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     ///     var feature = new Gcp.Vertex.AiFeatureStoreEntityTypeFeature("feature", new()
     ///     {
+    ///         Name = "terraform",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -75,6 +78,7 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new()
     ///     {
+    ///         Name = "terraform2",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -84,13 +88,11 @@ namespace Pulumi.Gcp.Vertex
     ///         {
     ///             FixedNodeCount = 2,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var entity = new Gcp.Vertex.AiFeatureStoreEntityType("entity", new()
     ///     {
+    ///         Name = "terraform2",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -112,22 +114,17 @@ namespace Pulumi.Gcp.Vertex
     ///                 Value = 0.3,
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var feature = new Gcp.Vertex.AiFeatureStoreEntityTypeFeature("feature", new()
     ///     {
+    ///         Name = "terraform2",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
     ///         },
     ///         Entitytype = entity.Id,
     ///         ValueType = "INT64_ARRAY",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

@@ -31,14 +31,16 @@ namespace Pulumi.Gcp.PubSub
     /// {
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var exampleLiteReservation = new Gcp.PubSub.LiteReservation("exampleLiteReservation", new()
+    ///     var example = new Gcp.PubSub.LiteReservation("example", new()
     ///     {
+    ///         Name = "example-reservation",
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.Number),
     ///         ThroughputCapacity = 2,
     ///     });
     /// 
-    ///     var exampleLiteTopic = new Gcp.PubSub.LiteTopic("exampleLiteTopic", new()
+    ///     var exampleLiteTopic = new Gcp.PubSub.LiteTopic("example", new()
     ///     {
+    ///         Name = "example-topic",
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.Number),
     ///         PartitionConfig = new Gcp.PubSub.Inputs.LiteTopicPartitionConfigArgs
     ///         {
@@ -55,7 +57,7 @@ namespace Pulumi.Gcp.PubSub
     ///         },
     ///         ReservationConfig = new Gcp.PubSub.Inputs.LiteTopicReservationConfigArgs
     ///         {
-    ///             ThroughputReservation = exampleLiteReservation.Name,
+    ///             ThroughputReservation = example.Name,
     ///         },
     ///     });
     /// 

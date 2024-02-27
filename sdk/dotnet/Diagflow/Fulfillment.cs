@@ -29,14 +29,14 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var basicAgent = new Gcp.Diagflow.Agent("basicAgent", new()
+    ///     var basicAgent = new Gcp.Diagflow.Agent("basic_agent", new()
     ///     {
     ///         DisplayName = "example_agent",
     ///         DefaultLanguageCode = "en",
     ///         TimeZone = "America/New_York",
     ///     });
     /// 
-    ///     var basicFulfillment = new Gcp.Diagflow.Fulfillment("basicFulfillment", new()
+    ///     var basicFulfillment = new Gcp.Diagflow.Fulfillment("basic_fulfillment", new()
     ///     {
     ///         DisplayName = "basic-fulfillment",
     ///         Enabled = true,
@@ -49,12 +49,6 @@ namespace Pulumi.Gcp.Diagflow
     ///             {
     ///                 { "name", "wrench" },
     ///             },
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             basicAgent,
     ///         },
     ///     });
     /// 

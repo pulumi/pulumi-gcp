@@ -40,9 +40,9 @@ public final class BigquerydatapolicyFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigquerydatapolicyFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .project(google_bigquery_datapolicy_data_policy.data_policy().project())
-     *             .location(google_bigquery_datapolicy_data_policy.data_policy().location())
-     *             .dataPolicyId(google_bigquery_datapolicy_data_policy.data_policy().data_policy_id())
+     *             .project(dataPolicy.project())
+     *             .location(dataPolicy.location())
+     *             .dataPolicyId(dataPolicy.dataPolicyId())
      *             .build());
      * 
      *     }
@@ -79,9 +79,9 @@ public final class BigquerydatapolicyFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigquerydatapolicyFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .project(google_bigquery_datapolicy_data_policy.data_policy().project())
-     *             .location(google_bigquery_datapolicy_data_policy.data_policy().location())
-     *             .dataPolicyId(google_bigquery_datapolicy_data_policy.data_policy().data_policy_id())
+     *             .project(dataPolicy.project())
+     *             .location(dataPolicy.location())
+     *             .dataPolicyId(dataPolicy.dataPolicyId())
      *             .build());
      * 
      *     }
@@ -118,9 +118,9 @@ public final class BigquerydatapolicyFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigquerydatapolicyFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .project(google_bigquery_datapolicy_data_policy.data_policy().project())
-     *             .location(google_bigquery_datapolicy_data_policy.data_policy().location())
-     *             .dataPolicyId(google_bigquery_datapolicy_data_policy.data_policy().data_policy_id())
+     *             .project(dataPolicy.project())
+     *             .location(dataPolicy.location())
+     *             .dataPolicyId(dataPolicy.dataPolicyId())
      *             .build());
      * 
      *     }
@@ -157,9 +157,9 @@ public final class BigquerydatapolicyFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigquerydatapolicyFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .project(google_bigquery_datapolicy_data_policy.data_policy().project())
-     *             .location(google_bigquery_datapolicy_data_policy.data_policy().location())
-     *             .dataPolicyId(google_bigquery_datapolicy_data_policy.data_policy().data_policy_id())
+     *             .project(dataPolicy.project())
+     *             .location(dataPolicy.location())
+     *             .dataPolicyId(dataPolicy.dataPolicyId())
      *             .build());
      * 
      *     }

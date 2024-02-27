@@ -37,18 +37,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewNetwork(ctx, "network-1", &compute.NetworkArgs{
+//				Name:                  pulumi.String("network-1"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewNetwork(ctx, "network-2", &compute.NetworkArgs{
+//				Name:                  pulumi.String("network-2"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dns.NewPolicy(ctx, "example-policy", &dns.PolicyArgs{
+//				Name:                    pulumi.String("example-policy"),
 //				EnableInboundForwarding: pulumi.Bool(true),
 //				EnableLogging:           pulumi.Bool(true),
 //				AlternativeNameServerConfig: &dns.PolicyAlternativeNameServerConfigArgs{

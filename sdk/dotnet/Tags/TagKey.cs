@@ -31,9 +31,9 @@ namespace Pulumi.Gcp.Tags
     /// {
     ///     var key = new Gcp.Tags.TagKey("key", new()
     ///     {
-    ///         Description = "For keyname resources.",
     ///         Parent = "organizations/123456789",
     ///         ShortName = "keyname",
+    ///         Description = "For keyname resources.",
     ///     });
     /// 
     /// });

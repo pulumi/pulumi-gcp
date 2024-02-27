@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.iap.getWebBackendServiceIamPolicy({
- *     project: google_compute_backend_service["default"].project,
- *     webBackendService: google_compute_backend_service["default"].name,
+ *     project: _default.project,
+ *     webBackendService: _default.name,
  * });
  * ```
  */
@@ -73,8 +73,8 @@ export interface GetWebBackendServiceIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.iap.getWebBackendServiceIamPolicy({
- *     project: google_compute_backend_service["default"].project,
- *     webBackendService: google_compute_backend_service["default"].name,
+ *     project: _default.project,
+ *     webBackendService: _default.name,
  * });
  * ```
  */

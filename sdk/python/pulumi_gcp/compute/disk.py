@@ -1361,13 +1361,14 @@ class Disk(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.Disk("default",
+            name="test-disk",
+            type="pd-ssd",
+            zone="us-central1-a",
             image="debian-11-bullseye-v20220719",
             labels={
                 "environment": "dev",
             },
-            physical_block_size_bytes=4096,
-            type="pd-ssd",
-            zone="us-central1-a")
+            physical_block_size_bytes=4096)
         ```
         ### Disk Async
 
@@ -1376,10 +1377,12 @@ class Disk(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.compute.Disk("primary",
+            name="async-test-disk",
             type="pd-ssd",
             zone="us-central1-a",
             physical_block_size_bytes=4096)
         secondary = gcp.compute.Disk("secondary",
+            name="async-secondary-test-disk",
             type="pd-ssd",
             zone="us-east1-c",
             async_primary_disk=gcp.compute.DiskAsyncPrimaryDiskArgs(
@@ -1394,6 +1397,12 @@ class Disk(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.Disk("default",
+            name="test-disk-features",
+            type="pd-ssd",
+            zone="us-central1-a",
+            labels={
+                "environment": "dev",
+            },
             guest_os_features=[
                 gcp.compute.DiskGuestOsFeatureArgs(
                     type="SECURE_BOOT",
@@ -1405,13 +1414,8 @@ class Disk(pulumi.CustomResource):
                     type="WINDOWS",
                 ),
             ],
-            labels={
-                "environment": "dev",
-            },
             licenses=["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
-            physical_block_size_bytes=4096,
-            type="pd-ssd",
-            zone="us-central1-a")
+            physical_block_size_bytes=4096)
         ```
 
         ## Import
@@ -1583,13 +1587,14 @@ class Disk(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.Disk("default",
+            name="test-disk",
+            type="pd-ssd",
+            zone="us-central1-a",
             image="debian-11-bullseye-v20220719",
             labels={
                 "environment": "dev",
             },
-            physical_block_size_bytes=4096,
-            type="pd-ssd",
-            zone="us-central1-a")
+            physical_block_size_bytes=4096)
         ```
         ### Disk Async
 
@@ -1598,10 +1603,12 @@ class Disk(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.compute.Disk("primary",
+            name="async-test-disk",
             type="pd-ssd",
             zone="us-central1-a",
             physical_block_size_bytes=4096)
         secondary = gcp.compute.Disk("secondary",
+            name="async-secondary-test-disk",
             type="pd-ssd",
             zone="us-east1-c",
             async_primary_disk=gcp.compute.DiskAsyncPrimaryDiskArgs(
@@ -1616,6 +1623,12 @@ class Disk(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.Disk("default",
+            name="test-disk-features",
+            type="pd-ssd",
+            zone="us-central1-a",
+            labels={
+                "environment": "dev",
+            },
             guest_os_features=[
                 gcp.compute.DiskGuestOsFeatureArgs(
                     type="SECURE_BOOT",
@@ -1627,13 +1640,8 @@ class Disk(pulumi.CustomResource):
                     type="WINDOWS",
                 ),
             ],
-            labels={
-                "environment": "dev",
-            },
             licenses=["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
-            physical_block_size_bytes=4096,
-            type="pd-ssd",
-            zone="us-central1-a")
+            physical_block_size_bytes=4096)
         ```
 
         ## Import

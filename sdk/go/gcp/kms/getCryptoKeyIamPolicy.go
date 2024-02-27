@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := kms.GetCryptoKeyIamPolicy(ctx, &kms.GetCryptoKeyIamPolicyArgs{
-//				CryptoKeyId: google_kms_crypto_key.Crypto_key.Id,
+//				CryptoKeyId: cryptoKey.Id,
 //			}, nil)
 //			if err != nil {
 //				return err

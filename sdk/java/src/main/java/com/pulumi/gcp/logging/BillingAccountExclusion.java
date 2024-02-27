@@ -39,6 +39,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var my_exclusion = new BillingAccountExclusion(&#34;my-exclusion&#34;, BillingAccountExclusionArgs.builder()        
+ *             .name(&#34;my-instance-debug-exclusion&#34;)
  *             .billingAccount(&#34;ABCDEF-012345-GHIJKL&#34;)
  *             .description(&#34;Exclude GCE instance debug logs&#34;)
  *             .filter(&#34;resource.type = gce_instance AND severity &lt;= DEBUG&#34;)

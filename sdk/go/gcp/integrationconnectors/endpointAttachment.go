@@ -36,12 +36,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := integrationconnectors.NewEndpointAttachment(ctx, "sampleendpointattachment", &integrationconnectors.EndpointAttachmentArgs{
-//				Description: pulumi.String("tf created description"),
+//				Name:              pulumi.String("test-endpoint-attachment"),
+//				Location:          pulumi.String("us-central1"),
+//				Description:       pulumi.String("tf created description"),
+//				ServiceAttachment: pulumi.String("projects/connectors-example/regions/us-central1/serviceAttachments/test"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//				Location:          pulumi.String("us-central1"),
-//				ServiceAttachment: pulumi.String("projects/connectors-example/regions/us-central1/serviceAttachments/test"),
 //			})
 //			if err != nil {
 //				return err

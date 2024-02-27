@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Container
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstAvailableVersion"] = data.Google_container_azure_versions.Versions.Valid_versions[0],
+        ///         ["firstAvailableVersion"] = versions.ValidVersions[0],
         ///     };
         /// });
         /// ```
@@ -67,7 +67,7 @@ namespace Pulumi.Gcp.Container
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstAvailableVersion"] = data.Google_container_azure_versions.Versions.Valid_versions[0],
+        ///         ["firstAvailableVersion"] = versions.ValidVersions[0],
         ///     };
         /// });
         /// ```

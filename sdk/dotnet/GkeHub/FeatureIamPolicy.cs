@@ -51,8 +51,9 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     ///     var policy = new Gcp.GkeHub.FeatureIamPolicy("policy", new()
     ///     {
-    ///         Project = google_gke_hub_feature.Feature.Project,
-    ///         Location = google_gke_hub_feature.Feature.Location,
+    ///         Project = feature.Project,
+    ///         Location = feature.Location,
+    ///         Name = feature.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -71,8 +72,9 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var binding = new Gcp.GkeHub.FeatureIamBinding("binding", new()
     ///     {
-    ///         Project = google_gke_hub_feature.Feature.Project,
-    ///         Location = google_gke_hub_feature.Feature.Location,
+    ///         Project = feature.Project,
+    ///         Location = feature.Location,
+    ///         Name = feature.Name,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -95,8 +97,9 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var member = new Gcp.GkeHub.FeatureIamMember("member", new()
     ///     {
-    ///         Project = google_gke_hub_feature.Feature.Project,
-    ///         Location = google_gke_hub_feature.Feature.Location,
+    ///         Project = feature.Project,
+    ///         Location = feature.Location,
+    ///         Name = feature.Name,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

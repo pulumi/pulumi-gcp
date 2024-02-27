@@ -38,19 +38,22 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			networkPrimary, err := compute.NewNetwork(ctx, "networkPrimary", &compute.NetworkArgs{
+//			networkPrimary, err := compute.NewNetwork(ctx, "network_primary", &compute.NetworkArgs{
+//				Name:                  pulumi.String("primary-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			networkSecondary, err := compute.NewNetwork(ctx, "networkSecondary", &compute.NetworkArgs{
+//			networkSecondary, err := compute.NewNetwork(ctx, "network_secondary", &compute.NetworkArgs{
+//				Name:                  pulumi.String("secondary-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			peeringPrimary, err := compute.NewNetworkPeering(ctx, "peeringPrimary", &compute.NetworkPeeringArgs{
+//			peeringPrimary, err := compute.NewNetworkPeering(ctx, "peering_primary", &compute.NetworkPeeringArgs{
+//				Name:               pulumi.String("primary-peering"),
 //				Network:            networkPrimary.ID(),
 //				PeerNetwork:        networkSecondary.ID(),
 //				ImportCustomRoutes: pulumi.Bool(true),
@@ -59,7 +62,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewNetworkPeeringRoutesConfig(ctx, "peeringPrimaryRoutes", &compute.NetworkPeeringRoutesConfigArgs{
+//			_, err = compute.NewNetworkPeeringRoutesConfig(ctx, "peering_primary_routes", &compute.NetworkPeeringRoutesConfigArgs{
 //				Peering:            peeringPrimary.Name,
 //				Network:            networkPrimary.Name,
 //				ImportCustomRoutes: pulumi.Bool(true),
@@ -68,7 +71,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewNetworkPeering(ctx, "peeringSecondary", &compute.NetworkPeeringArgs{
+//			_, err = compute.NewNetworkPeering(ctx, "peering_secondary", &compute.NetworkPeeringArgs{
+//				Name:        pulumi.String("secondary-peering"),
 //				Network:     networkSecondary.ID(),
 //				PeerNetwork: networkPrimary.ID(),
 //			})
@@ -95,13 +99,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			containerNetwork, err := compute.NewNetwork(ctx, "containerNetwork", &compute.NetworkArgs{
+//			containerNetwork, err := compute.NewNetwork(ctx, "container_network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("container-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			containerSubnetwork, err := compute.NewSubnetwork(ctx, "containerSubnetwork", &compute.SubnetworkArgs{
+//			containerSubnetwork, err := compute.NewSubnetwork(ctx, "container_subnetwork", &compute.SubnetworkArgs{
+//				Name:                  pulumi.String("container-subnetwork"),
 //				Region:                pulumi.String("us-central1"),
 //				Network:               containerNetwork.Name,
 //				IpCidrRange:           pulumi.String("10.0.36.0/24"),
@@ -120,7 +126,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			privateCluster, err := container.NewCluster(ctx, "privateCluster", &container.ClusterArgs{
+//			privateCluster, err := container.NewCluster(ctx, "private_cluster", &container.ClusterArgs{
+//				Name:             pulumi.String("private-cluster"),
 //				Location:         pulumi.String("us-central1-a"),
 //				InitialNodeCount: pulumi.Int(1),
 //				Network:          containerNetwork.Name,
@@ -144,7 +151,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewNetworkPeeringRoutesConfig(ctx, "peeringGkeRoutes", &compute.NetworkPeeringRoutesConfigArgs{
+//			_, err = compute.NewNetworkPeeringRoutesConfig(ctx, "peering_gke_routes", &compute.NetworkPeeringRoutesConfigArgs{
 //				Peering: privateCluster.PrivateClusterConfig.ApplyT(func(privateClusterConfig container.ClusterPrivateClusterConfig) (*string, error) {
 //					return &privateClusterConfig.PeeringName, nil
 //				}).(pulumi.StringPtrOutput),

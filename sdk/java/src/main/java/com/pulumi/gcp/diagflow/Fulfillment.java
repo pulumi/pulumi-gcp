@@ -40,7 +40,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.Fulfillment;
  * import com.pulumi.gcp.diagflow.FulfillmentArgs;
  * import com.pulumi.gcp.diagflow.inputs.FulfillmentGenericWebServiceArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -69,9 +68,7 @@ import javax.annotation.Nullable;
  *                 .password(&#34;password&#34;)
  *                 .requestHeaders(Map.of(&#34;name&#34;, &#34;wrench&#34;))
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(basicAgent)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

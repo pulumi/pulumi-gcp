@@ -57,7 +57,7 @@ import (
 //				return err
 //			}
 //			_, err = iap.NewTunnelIamPolicy(ctx, "policy", &iap.TunnelIamPolicyArgs{
-//				Project:    pulumi.Any(google_project_service.Project_service.Project),
+//				Project:    pulumi.Any(projectService.Project),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -103,7 +103,7 @@ import (
 //				return err
 //			}
 //			_, err = iap.NewTunnelIamPolicy(ctx, "policy", &iap.TunnelIamPolicyArgs{
-//				Project:    pulumi.Any(google_project_service.Project_service.Project),
+//				Project:    pulumi.Any(projectService.Project),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -129,7 +129,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := iap.NewTunnelIamBinding(ctx, "binding", &iap.TunnelIamBindingArgs{
-//				Project: pulumi.Any(google_project_service.Project_service.Project),
+//				Project: pulumi.Any(projectService.Project),
 //				Role:    pulumi.String("roles/iap.tunnelResourceAccessor"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -159,7 +159,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := iap.NewTunnelIamBinding(ctx, "binding", &iap.TunnelIamBindingArgs{
-//				Project: pulumi.Any(google_project_service.Project_service.Project),
+//				Project: pulumi.Any(projectService.Project),
 //				Role:    pulumi.String("roles/iap.tunnelResourceAccessor"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -193,7 +193,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := iap.NewTunnelIamMember(ctx, "member", &iap.TunnelIamMemberArgs{
-//				Project: pulumi.Any(google_project_service.Project_service.Project),
+//				Project: pulumi.Any(projectService.Project),
 //				Role:    pulumi.String("roles/iap.tunnelResourceAccessor"),
 //				Member:  pulumi.String("user:jane@example.com"),
 //			})
@@ -221,7 +221,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := iap.NewTunnelIamMember(ctx, "member", &iap.TunnelIamMemberArgs{
-//				Project: pulumi.Any(google_project_service.Project_service.Project),
+//				Project: pulumi.Any(projectService.Project),
 //				Role:    pulumi.String("roles/iap.tunnelResourceAccessor"),
 //				Member:  pulumi.String("user:jane@example.com"),
 //				Condition: &iap.TunnelIamMemberConditionArgs{

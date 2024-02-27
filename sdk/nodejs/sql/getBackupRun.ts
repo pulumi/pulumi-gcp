@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const backup = gcp.sql.getBackupRun({
- *     instance: google_sql_database_instance.main.name,
+ *     instance: main.name,
  *     mostRecent: true,
  * });
  * ```
@@ -91,7 +91,7 @@ export interface GetBackupRunResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const backup = gcp.sql.getBackupRun({
- *     instance: google_sql_database_instance.main.name,
+ *     instance: main.name,
  *     mostRecent: true,
  * });
  * ```

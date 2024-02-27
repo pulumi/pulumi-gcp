@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.CloudTasks
         /// {
         ///     var policy = Gcp.CloudTasks.GetQueueIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_cloud_tasks_queue.Default.Project,
-        ///         Location = google_cloud_tasks_queue.Default.Location,
-        ///         Name = google_cloud_tasks_queue.Default.Name,
+        ///         Project = @default.Project,
+        ///         Location = @default.Location,
+        ///         Name = @default.Name,
         ///     });
         /// 
         /// });
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.CloudTasks
         /// {
         ///     var policy = Gcp.CloudTasks.GetQueueIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_cloud_tasks_queue.Default.Project,
-        ///         Location = google_cloud_tasks_queue.Default.Location,
-        ///         Name = google_cloud_tasks_queue.Default.Name,
+        ///         Project = @default.Project,
+        ///         Location = @default.Location,
+        ///         Name = @default.Name,
         ///     });
         /// 
         /// });

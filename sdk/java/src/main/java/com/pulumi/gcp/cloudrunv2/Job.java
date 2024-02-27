@@ -58,6 +58,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Job(&#34;default&#34;, JobArgs.builder()        
+ *             .name(&#34;cloudrun-job&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
@@ -96,6 +97,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Job(&#34;default&#34;, JobArgs.builder()        
+ *             .name(&#34;cloudrun-job&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
@@ -139,7 +141,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
  * import com.pulumi.gcp.secretmanager.SecretIamMember;
  * import com.pulumi.gcp.secretmanager.SecretIamMemberArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -161,6 +162,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var instance = new DatabaseInstance(&#34;instance&#34;, DatabaseInstanceArgs.builder()        
+ *             .name(&#34;cloudrun-sql&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .databaseVersion(&#34;MYSQL_5_7&#34;)
  *             .settings(DatabaseInstanceSettingsArgs.builder()
@@ -170,6 +172,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var default_ = new Job(&#34;default&#34;, JobArgs.builder()        
+ *             .name(&#34;cloudrun-job&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
@@ -215,9 +218,7 @@ import javax.annotation.Nullable;
  *             .secretId(secret.id())
  *             .role(&#34;roles/secretmanager.secretAccessor&#34;)
  *             .member(String.format(&#34;serviceAccount:%s-compute@developer.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(secret)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -255,18 +256,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var customTestNetwork = new Network(&#34;customTestNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;run-network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var customTestSubnetwork = new Subnetwork(&#34;customTestSubnetwork&#34;, SubnetworkArgs.builder()        
+ *         var customTest = new Subnetwork(&#34;customTest&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;run-subnetwork&#34;)
  *             .ipCidrRange(&#34;10.2.0.0/28&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(customTestNetwork.id())
  *             .build());
  * 
  *         var connector = new Connector(&#34;connector&#34;, ConnectorArgs.builder()        
+ *             .name(&#34;run-vpc&#34;)
  *             .subnet(ConnectorSubnetArgs.builder()
- *                 .name(customTestSubnetwork.name())
+ *                 .name(customTest.name())
  *                 .build())
  *             .machineType(&#34;e2-standard-4&#34;)
  *             .minInstances(2)
@@ -275,6 +279,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var default_ = new Job(&#34;default&#34;, JobArgs.builder()        
+ *             .name(&#34;cloudrun-job&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
@@ -318,15 +323,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Job(&#34;default&#34;, JobArgs.builder()        
- *             .launchStage(&#34;BETA&#34;)
+ *             .name(&#34;cloudrun-job&#34;)
  *             .location(&#34;us-central1&#34;)
+ *             .launchStage(&#34;BETA&#34;)
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
  *                     .containers(JobTemplateTemplateContainerArgs.builder()
  *                         .image(&#34;us-docker.pkg.dev/cloudrun/container/job&#34;)
  *                         .build())
  *                     .vpcAccess(JobTemplateTemplateVpcAccessArgs.builder()
- *                         .egress(&#34;ALL_TRAFFIC&#34;)
  *                         .networkInterfaces(JobTemplateTemplateVpcAccessNetworkInterfaceArgs.builder()
  *                             .network(&#34;default&#34;)
  *                             .subnetwork(&#34;default&#34;)
@@ -335,6 +340,7 @@ import javax.annotation.Nullable;
  *                                 &#34;tag2&#34;,
  *                                 &#34;tag3&#34;)
  *                             .build())
+ *                         .egress(&#34;ALL_TRAFFIC&#34;)
  *                         .build())
  *                     .build())
  *                 .build())
@@ -354,17 +360,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.SecretArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
- * import com.pulumi.gcp.secretmanager.SecretVersion;
- * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.secretmanager.SecretIamMember;
- * import com.pulumi.gcp.secretmanager.SecretIamMemberArgs;
  * import com.pulumi.gcp.cloudrunv2.Job;
  * import com.pulumi.gcp.cloudrunv2.JobArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateArgs;
- * import com.pulumi.resources.CustomResourceOptions;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.secretmanager.SecretVersion;
+ * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.gcp.secretmanager.SecretIamMember;
+ * import com.pulumi.gcp.secretmanager.SecretIamMemberArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -385,22 +390,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var secret_version_data = new SecretVersion(&#34;secret-version-data&#34;, SecretVersionArgs.builder()        
- *             .secret(secret.name())
- *             .secretData(&#34;secret-data&#34;)
- *             .build());
- * 
- *         final var project = OrganizationsFunctions.getProject();
- * 
- *         var secret_access = new SecretIamMember(&#34;secret-access&#34;, SecretIamMemberArgs.builder()        
- *             .secretId(secret.id())
- *             .role(&#34;roles/secretmanager.secretAccessor&#34;)
- *             .member(String.format(&#34;serviceAccount:%s-compute@developer.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(secret)
- *                 .build());
- * 
  *         var default_ = new Job(&#34;default&#34;, JobArgs.builder()        
+ *             .name(&#34;cloudrun-job&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
@@ -425,11 +416,20 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
- *                     secret_version_data,
- *                     secret_access)
- *                 .build());
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var secret_version_data = new SecretVersion(&#34;secret-version-data&#34;, SecretVersionArgs.builder()        
+ *             .secret(secret.name())
+ *             .secretData(&#34;secret-data&#34;)
+ *             .build());
+ * 
+ *         var secret_access = new SecretIamMember(&#34;secret-access&#34;, SecretIamMemberArgs.builder()        
+ *             .secretId(secret.id())
+ *             .role(&#34;roles/secretmanager.secretAccessor&#34;)
+ *             .member(String.format(&#34;serviceAccount:%s-compute@developer.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .build());
  * 
  *     }
  * }
@@ -445,7 +445,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.JobArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -460,6 +459,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Job(&#34;default&#34;, JobArgs.builder()        
+ *             .name(&#34;cloudrun-job&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .launchStage(&#34;BETA&#34;)
  *             .template(JobTemplateArgs.builder()
@@ -480,9 +480,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

@@ -89,7 +89,7 @@ def get_service_iam_policy(service_name: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.endpoints.get_service_iam_policy(service_name=google_endpoints_service["endpoints_service"]["service_name"])
+    policy = gcp.endpoints.get_service_iam_policy(service_name=endpoints_service["serviceName"])
     ```
     """
     __args__ = dict()
@@ -116,7 +116,7 @@ def get_service_iam_policy_output(service_name: Optional[pulumi.Input[str]] = No
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.endpoints.get_service_iam_policy(service_name=google_endpoints_service["endpoints_service"]["service_name"])
+    policy = gcp.endpoints.get_service_iam_policy(service_name=endpoints_service["serviceName"])
     ```
     """
     ...

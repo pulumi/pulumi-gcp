@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const secret_basic = new gcp.secretmanager.Secret("secret-basic", {
+ *     secretId: "secret",
  *     labels: {
  *         label: "my-label",
  *     },
@@ -36,7 +37,6 @@ import * as utilities from "../utilities";
  *             ],
  *         },
  *     },
- *     secretId: "secret",
  * });
  * ```
  * ### Secret With Annotations
@@ -46,6 +46,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const secret_with_annotations = new gcp.secretmanager.Secret("secret-with-annotations", {
+ *     secretId: "secret",
+ *     labels: {
+ *         label: "my-label",
+ *     },
  *     annotations: {
  *         key1: "someval",
  *         key2: "someval2",
@@ -53,13 +57,9 @@ import * as utilities from "../utilities";
  *         key4: "someval4",
  *         key5: "someval5",
  *     },
- *     labels: {
- *         label: "my-label",
- *     },
  *     replication: {
  *         auto: {},
  *     },
- *     secretId: "secret",
  * });
  * ```
  * ### Secret With Automatic Cmek
@@ -83,8 +83,6 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
- * }, {
- *     dependsOn: [kms_secret_binding],
  * });
  * ```
  *

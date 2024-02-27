@@ -96,6 +96,22 @@ def get_ca_certs(instance: Optional[str] = None,
     and
     [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+
+    def not_implemented(msg):
+        raise NotImplementedError(msg)
+
+    ca_certs = gcp.sql.get_ca_certs(instance="primary-database-server")
+    furthest_expiration_time = not_implemented("reverse(sort([fork,vindata.google_sql_ca_certs.ca_certs.certs:v.expiration_time]))")[0]
+    latest_ca_cert = [v.cert for v in ca_certs.certs if v.expiration_time == furthest_expiration_time]
+    pulumi.export("dbLatestCaCert", latest_ca_cert)
+    ```
+
 
     :param str instance: The name or self link of the instance.
     :param str project: The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
@@ -123,6 +139,22 @@ def get_ca_certs_output(instance: Optional[pulumi.Input[str]] = None,
     [official documentation](https://cloud.google.com/sql/)
     and
     [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+
+    def not_implemented(msg):
+        raise NotImplementedError(msg)
+
+    ca_certs = gcp.sql.get_ca_certs(instance="primary-database-server")
+    furthest_expiration_time = not_implemented("reverse(sort([fork,vindata.google_sql_ca_certs.ca_certs.certs:v.expiration_time]))")[0]
+    latest_ca_cert = [v.cert for v in ca_certs.certs if v.expiration_time == furthest_expiration_time]
+    pulumi.export("dbLatestCaCert", latest_ca_cert)
+    ```
 
 
     :param str instance: The name or self link of the instance.

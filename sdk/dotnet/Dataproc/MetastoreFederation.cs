@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultMetastoreService = new Gcp.Dataproc.MetastoreService("defaultMetastoreService", new()
+    ///     var defaultMetastoreService = new Gcp.Dataproc.MetastoreService("default", new()
     ///     {
     ///         ServiceId = "",
     ///         Location = "us-central1",
@@ -31,12 +31,9 @@ namespace Pulumi.Gcp.Dataproc
     ///             Version = "3.1.2",
     ///             EndpointProtocol = "GRPC",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultMetastoreFederation = new Gcp.Dataproc.MetastoreFederation("defaultMetastoreFederation", new()
+    ///     var @default = new Gcp.Dataproc.MetastoreFederation("default", new()
     ///     {
     ///         Location = "us-central1",
     ///         FederationId = "",
@@ -50,9 +47,6 @@ namespace Pulumi.Gcp.Dataproc
     ///                 MetastoreType = "DATAPROC_METASTORE",
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -67,7 +61,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultMetastoreService = new Gcp.Dataproc.MetastoreService("defaultMetastoreService", new()
+    ///     var defaultMetastoreService = new Gcp.Dataproc.MetastoreService("default", new()
     ///     {
     ///         ServiceId = "",
     ///         Location = "us-central1",
@@ -77,14 +71,11 @@ namespace Pulumi.Gcp.Dataproc
     ///             Version = "3.1.2",
     ///             EndpointProtocol = "GRPC",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var defaultMetastoreFederation = new Gcp.Dataproc.MetastoreFederation("defaultMetastoreFederation", new()
+    ///     var @default = new Gcp.Dataproc.MetastoreFederation("default", new()
     ///     {
     ///         Location = "us-central1",
     ///         FederationId = "",
@@ -104,9 +95,6 @@ namespace Pulumi.Gcp.Dataproc
     ///                 MetastoreType = "DATAPROC_METASTORE",
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

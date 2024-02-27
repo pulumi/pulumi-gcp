@@ -51,10 +51,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobarNetwork = new Network(&#34;foobarNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;network-1&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var foobarRouter = new Router(&#34;foobarRouter&#34;, RouterArgs.builder()        
+ *         var foobar = new Router(&#34;foobar&#34;, RouterArgs.builder()        
+ *             .name(&#34;router-1&#34;)
  *             .network(foobarNetwork.name())
  *             .bgp(RouterBgpArgs.builder()
  *                 .asn(16550)
@@ -62,9 +64,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var onPrem = new InterconnectAttachment(&#34;onPrem&#34;, InterconnectAttachmentArgs.builder()        
+ *             .name(&#34;on-prem-attachment&#34;)
  *             .edgeAvailabilityDomain(&#34;AVAILABILITY_DOMAIN_1&#34;)
  *             .type(&#34;PARTNER&#34;)
- *             .router(foobarRouter.id())
+ *             .router(foobar.id())
  *             .mtu(1500)
  *             .build());
  * 
@@ -101,10 +104,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
+ *             .name(&#34;test-network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var address = new Address(&#34;address&#34;, AddressArgs.builder()        
+ *             .name(&#34;test-address&#34;)
  *             .addressType(&#34;INTERNAL&#34;)
  *             .purpose(&#34;IPSEC_INTERCONNECT&#34;)
  *             .address(&#34;192.168.1.0&#34;)
@@ -113,6 +118,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var router = new Router(&#34;router&#34;, RouterArgs.builder()        
+ *             .name(&#34;test-router&#34;)
  *             .network(network.name())
  *             .encryptedInterconnectRouter(true)
  *             .bgp(RouterBgpArgs.builder()
@@ -121,6 +127,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var ipsec_encrypted_interconnect_attachment = new InterconnectAttachment(&#34;ipsec-encrypted-interconnect-attachment&#34;, InterconnectAttachmentArgs.builder()        
+ *             .name(&#34;test-interconnect-attachment&#34;)
  *             .edgeAvailabilityDomain(&#34;AVAILABILITY_DOMAIN_1&#34;)
  *             .type(&#34;PARTNER&#34;)
  *             .router(router.id())

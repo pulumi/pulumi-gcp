@@ -400,14 +400,15 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
             parent="organizations/",
             title="my policy")
         authorized_orgs_desc = gcp.accesscontextmanager.AuthorizedOrgsDesc("authorized-orgs-desc",
+            parent=test_access.name.apply(lambda name: f"accessPolicies/{name}"),
+            name=test_access.name.apply(lambda name: f"accessPolicies/{name}/authorizedOrgsDescs/fakeDescName"),
+            authorization_type="AUTHORIZATION_TYPE_TRUST",
             asset_type="ASSET_TYPE_CREDENTIAL_STRENGTH",
             authorization_direction="AUTHORIZATION_DIRECTION_TO",
-            authorization_type="AUTHORIZATION_TYPE_TRUST",
             orgs=[
                 "organizations/12345",
                 "organizations/98765",
-            ],
-            parent=test_access.name.apply(lambda name: f"accessPolicies/{name}"))
+            ])
         ```
 
         ## Import
@@ -494,14 +495,15 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
             parent="organizations/",
             title="my policy")
         authorized_orgs_desc = gcp.accesscontextmanager.AuthorizedOrgsDesc("authorized-orgs-desc",
+            parent=test_access.name.apply(lambda name: f"accessPolicies/{name}"),
+            name=test_access.name.apply(lambda name: f"accessPolicies/{name}/authorizedOrgsDescs/fakeDescName"),
+            authorization_type="AUTHORIZATION_TYPE_TRUST",
             asset_type="ASSET_TYPE_CREDENTIAL_STRENGTH",
             authorization_direction="AUTHORIZATION_DIRECTION_TO",
-            authorization_type="AUTHORIZATION_TYPE_TRUST",
             orgs=[
                 "organizations/12345",
                 "organizations/98765",
-            ],
-            parent=test_access.name.apply(lambda name: f"accessPolicies/{name}"))
+            ])
         ```
 
         ## Import

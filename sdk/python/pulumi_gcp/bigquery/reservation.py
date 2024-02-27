@@ -388,14 +388,15 @@ class Reservation(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         reservation = gcp.bigquery.Reservation("reservation",
-            autoscale=gcp.bigquery.ReservationAutoscaleArgs(
-                max_slots=100,
-            ),
-            concurrency=0,
+            name="my-reservation",
+            location="us-west2",
+            slot_capacity=0,
             edition="STANDARD",
             ignore_idle_slots=True,
-            location="us-west2",
-            slot_capacity=0)
+            concurrency=0,
+            autoscale=gcp.bigquery.ReservationAutoscaleArgs(
+                max_slots=100,
+            ))
         ```
 
         ## Import
@@ -467,14 +468,15 @@ class Reservation(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         reservation = gcp.bigquery.Reservation("reservation",
-            autoscale=gcp.bigquery.ReservationAutoscaleArgs(
-                max_slots=100,
-            ),
-            concurrency=0,
+            name="my-reservation",
+            location="us-west2",
+            slot_capacity=0,
             edition="STANDARD",
             ignore_idle_slots=True,
-            location="us-west2",
-            slot_capacity=0)
+            concurrency=0,
+            autoscale=gcp.bigquery.ReservationAutoscaleArgs(
+                max_slots=100,
+            ))
         ```
 
         ## Import

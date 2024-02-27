@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.certificateauthority.CertificateTemplateIamPolicy("policy", {
- *     certificateTemplate: google_privateca_certificate_template["default"].id,
+ *     certificateTemplate: _default.id,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -57,7 +57,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.certificateauthority.CertificateTemplateIamPolicy("policy", {
- *     certificateTemplate: google_privateca_certificate_template["default"].id,
+ *     certificateTemplate: _default.id,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -68,7 +68,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.certificateauthority.CertificateTemplateIamBinding("binding", {
- *     certificateTemplate: google_privateca_certificate_template["default"].id,
+ *     certificateTemplate: _default.id,
  *     role: "roles/privateca.templateUser",
  *     members: ["user:jane@example.com"],
  * });
@@ -81,7 +81,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.certificateauthority.CertificateTemplateIamBinding("binding", {
- *     certificateTemplate: google_privateca_certificate_template["default"].id,
+ *     certificateTemplate: _default.id,
  *     role: "roles/privateca.templateUser",
  *     members: ["user:jane@example.com"],
  *     condition: {
@@ -98,7 +98,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.certificateauthority.CertificateTemplateIamMember("member", {
- *     certificateTemplate: google_privateca_certificate_template["default"].id,
+ *     certificateTemplate: _default.id,
  *     role: "roles/privateca.templateUser",
  *     member: "user:jane@example.com",
  * });
@@ -111,7 +111,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.certificateauthority.CertificateTemplateIamMember("member", {
- *     certificateTemplate: google_privateca_certificate_template["default"].id,
+ *     certificateTemplate: _default.id,
  *     role: "roles/privateca.templateUser",
  *     member: "user:jane@example.com",
  *     condition: {

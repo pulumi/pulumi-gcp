@@ -32,12 +32,12 @@ namespace Pulumi.Gcp.Vertex
     ///     var dataset = new Gcp.Vertex.AiDataset("dataset", new()
     ///     {
     ///         DisplayName = "terraform",
+    ///         MetadataSchemaUri = "gs://google-cloud-aiplatform/schema/dataset/metadata/image_1.0.0.yaml",
+    ///         Region = "us-central1",
     ///         Labels = 
     ///         {
     ///             { "env", "test" },
     ///         },
-    ///         MetadataSchemaUri = "gs://google-cloud-aiplatform/schema/dataset/metadata/image_1.0.0.yaml",
-    ///         Region = "us-central1",
     ///     });
     /// 
     /// });

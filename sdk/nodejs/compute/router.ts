@@ -22,8 +22,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const foobarNetwork = new gcp.compute.Network("foobarNetwork", {autoCreateSubnetworks: false});
- * const foobarRouter = new gcp.compute.Router("foobarRouter", {
+ * const foobarNetwork = new gcp.compute.Network("foobar", {
+ *     name: "my-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const foobar = new gcp.compute.Router("foobar", {
+ *     name: "my-router",
  *     network: foobarNetwork.name,
  *     bgp: {
  *         asn: 64514,
@@ -46,8 +50,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false});
+ * const network = new gcp.compute.Network("network", {
+ *     name: "test-network",
+ *     autoCreateSubnetworks: false,
+ * });
  * const encrypted_interconnect_router = new gcp.compute.Router("encrypted-interconnect-router", {
+ *     name: "test-router",
  *     network: network.name,
  *     encryptedInterconnectRouter: true,
  *     bgp: {

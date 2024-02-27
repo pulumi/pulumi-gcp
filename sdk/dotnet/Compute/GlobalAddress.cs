@@ -30,7 +30,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Gcp.Compute.GlobalAddress("default");
+    ///     var @default = new Gcp.Compute.GlobalAddress("default", new()
+    ///     {
+    ///         Name = "global-appserver-ip",
+    ///     });
     /// 
     /// });
     /// ```
@@ -46,21 +49,17 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
+    ///         Name = "my-network-name",
     ///         AutoCreateSubnetworks = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var @default = new Gcp.Compute.GlobalAddress("default", new()
     ///     {
+    ///         Name = "global-psconnect-ip",
     ///         AddressType = "INTERNAL",
     ///         Purpose = "PRIVATE_SERVICE_CONNECT",
     ///         Network = network.Id,
     ///         Address = "100.100.100.105",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

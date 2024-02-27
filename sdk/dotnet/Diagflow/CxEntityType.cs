@@ -52,7 +52,7 @@ namespace Pulumi.Gcp.Diagflow
     ///         },
     ///     });
     /// 
-    ///     var basicEntityType = new Gcp.Diagflow.CxEntityType("basicEntityType", new()
+    ///     var basicEntityType = new Gcp.Diagflow.CxEntityType("basic_entity_type", new()
     ///     {
     ///         Parent = agent.Id,
     ///         DisplayName = "MyEntity",

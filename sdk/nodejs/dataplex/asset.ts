@@ -15,16 +15,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basicBucket = new gcp.storage.Bucket("basicBucket", {
+ * const basicBucket = new gcp.storage.Bucket("basic_bucket", {
+ *     name: "bucket",
  *     location: "us-west1",
  *     uniformBucketLevelAccess: true,
  *     project: "my-project-name",
  * });
- * const basicLake = new gcp.dataplex.Lake("basicLake", {
+ * const basicLake = new gcp.dataplex.Lake("basic_lake", {
+ *     name: "lake",
  *     location: "us-west1",
  *     project: "my-project-name",
  * });
- * const basicZone = new gcp.dataplex.Zone("basicZone", {
+ * const basicZone = new gcp.dataplex.Zone("basic_zone", {
+ *     name: "zone",
  *     location: "us-west1",
  *     lake: basicLake.name,
  *     type: "RAW",
@@ -37,6 +40,7 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * const primary = new gcp.dataplex.Asset("primary", {
+ *     name: "asset",
  *     location: "us-west1",
  *     lake: basicLake.name,
  *     dataplexZone: basicZone.name,
@@ -52,8 +56,6 @@ import * as utilities from "../utilities";
  *         "my-asset": "exists",
  *     },
  *     project: "my-project-name",
- * }, {
- *     dependsOn: [basicBucket],
  * });
  * ```
  *

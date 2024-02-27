@@ -27,15 +27,16 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const foobar = new gcp.compute.RegionCommitment("foobar", {
+ *     name: "my-region-commitment",
  *     plan: "THIRTY_SIX_MONTH",
  *     resources: [
  *         {
- *             amount: "4",
  *             type: "VCPU",
+ *             amount: "4",
  *         },
  *         {
- *             amount: "9",
  *             type: "MEMORY",
+ *             amount: "9",
  *         },
  *     ],
  * });
@@ -47,21 +48,22 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const foobar = new gcp.compute.RegionCommitment("foobar", {
- *     autoRenew: true,
- *     category: "MACHINE",
+ *     name: "my-full-commitment",
  *     description: "some description",
  *     plan: "THIRTY_SIX_MONTH",
+ *     type: "MEMORY_OPTIMIZED",
+ *     category: "MACHINE",
+ *     autoRenew: true,
  *     resources: [
  *         {
- *             amount: "4",
  *             type: "VCPU",
+ *             amount: "4",
  *         },
  *         {
- *             amount: "9",
  *             type: "MEMORY",
+ *             amount: "9",
  *         },
  *     ],
- *     type: "MEMORY_OPTIMIZED",
  * });
  * ```
  *

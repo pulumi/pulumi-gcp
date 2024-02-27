@@ -287,7 +287,7 @@ class GroupMembership(pulumi.CustomResource):
             labels={
                 "cloudidentity.googleapis.com/groups.discussion_forum": "",
             })
-        cloud_identity_group_membership_basic = gcp.cloudidentity.GroupMembership("cloudIdentityGroupMembershipBasic",
+        cloud_identity_group_membership_basic = gcp.cloudidentity.GroupMembership("cloud_identity_group_membership_basic",
             group=group.id,
             preferred_member_key=gcp.cloudidentity.GroupMembershipPreferredMemberKeyArgs(
                 id=child_group.group_key.id,
@@ -311,7 +311,7 @@ class GroupMembership(pulumi.CustomResource):
             labels={
                 "cloudidentity.googleapis.com/groups.discussion_forum": "",
             })
-        cloud_identity_group_membership_basic = gcp.cloudidentity.GroupMembership("cloudIdentityGroupMembershipBasic",
+        cloud_identity_group_membership_basic = gcp.cloudidentity.GroupMembership("cloud_identity_group_membership_basic",
             group=group.id,
             preferred_member_key=gcp.cloudidentity.GroupMembershipPreferredMemberKeyArgs(
                 id="cloud_identity_user@example.com",
@@ -395,7 +395,7 @@ class GroupMembership(pulumi.CustomResource):
             labels={
                 "cloudidentity.googleapis.com/groups.discussion_forum": "",
             })
-        cloud_identity_group_membership_basic = gcp.cloudidentity.GroupMembership("cloudIdentityGroupMembershipBasic",
+        cloud_identity_group_membership_basic = gcp.cloudidentity.GroupMembership("cloud_identity_group_membership_basic",
             group=group.id,
             preferred_member_key=gcp.cloudidentity.GroupMembershipPreferredMemberKeyArgs(
                 id=child_group.group_key.id,
@@ -419,7 +419,7 @@ class GroupMembership(pulumi.CustomResource):
             labels={
                 "cloudidentity.googleapis.com/groups.discussion_forum": "",
             })
-        cloud_identity_group_membership_basic = gcp.cloudidentity.GroupMembership("cloudIdentityGroupMembershipBasic",
+        cloud_identity_group_membership_basic = gcp.cloudidentity.GroupMembership("cloud_identity_group_membership_basic",
             group=group.id,
             preferred_member_key=gcp.cloudidentity.GroupMembershipPreferredMemberKeyArgs(
                 id="cloud_identity_user@example.com",

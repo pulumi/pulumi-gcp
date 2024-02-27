@@ -35,9 +35,9 @@ namespace Pulumi.Gcp.Iam
     /// {
     ///     var example = new Gcp.Iam.WorkforcePool("example", new()
     ///     {
-    ///         Location = "global",
-    ///         Parent = "organizations/123456789",
     ///         WorkforcePoolId = "example-pool",
+    ///         Parent = "organizations/123456789",
+    ///         Location = "global",
     ///     });
     /// 
     /// });
@@ -54,6 +54,13 @@ namespace Pulumi.Gcp.Iam
     /// {
     ///     var example = new Gcp.Iam.WorkforcePool("example", new()
     ///     {
+    ///         WorkforcePoolId = "example-pool",
+    ///         Parent = "organizations/123456789",
+    ///         Location = "global",
+    ///         DisplayName = "Display name",
+    ///         Description = "A sample workforce pool.",
+    ///         Disabled = false,
+    ///         SessionDuration = "7200s",
     ///         AccessRestrictions = new Gcp.Iam.Inputs.WorkforcePoolAccessRestrictionsArgs
     ///         {
     ///             AllowedServices = new[]
@@ -65,13 +72,6 @@ namespace Pulumi.Gcp.Iam
     ///             },
     ///             DisableProgrammaticSignin = false,
     ///         },
-    ///         Description = "A sample workforce pool.",
-    ///         Disabled = false,
-    ///         DisplayName = "Display name",
-    ///         Location = "global",
-    ///         Parent = "organizations/123456789",
-    ///         SessionDuration = "7200s",
-    ///         WorkforcePoolId = "example-pool",
     ///     });
     /// 
     /// });

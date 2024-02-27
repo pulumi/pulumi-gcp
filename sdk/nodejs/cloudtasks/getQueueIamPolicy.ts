@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.cloudtasks.getQueueIamPolicy({
- *     project: google_cloud_tasks_queue["default"].project,
- *     location: google_cloud_tasks_queue["default"].location,
- *     name: google_cloud_tasks_queue["default"].name,
+ *     project: _default.project,
+ *     location: _default.location,
+ *     name: _default.name,
  * });
  * ```
  */
@@ -80,9 +80,9 @@ export interface GetQueueIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.cloudtasks.getQueueIamPolicy({
- *     project: google_cloud_tasks_queue["default"].project,
- *     location: google_cloud_tasks_queue["default"].location,
- *     name: google_cloud_tasks_queue["default"].name,
+ *     project: _default.project,
+ *     location: _default.location,
+ *     name: _default.name,
  * });
  * ```
  */

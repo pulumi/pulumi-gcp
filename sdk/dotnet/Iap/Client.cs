@@ -35,23 +35,25 @@ namespace Pulumi.Gcp.Iap
     /// {
     ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
+    ///         ProjectId = "my-project",
+    ///         Name = "my-project",
     ///         OrgId = "123456789",
     ///     });
     /// 
-    ///     var projectService = new Gcp.Projects.Service("projectService", new()
+    ///     var projectService = new Gcp.Projects.Service("project_service", new()
     ///     {
     ///         Project = project.ProjectId,
     ///         ServiceName = "iap.googleapis.com",
     ///     });
     /// 
-    ///     var projectBrand = new Gcp.Iap.Brand("projectBrand", new()
+    ///     var projectBrand = new Gcp.Iap.Brand("project_brand", new()
     ///     {
     ///         SupportEmail = "support@example.com",
     ///         ApplicationTitle = "Cloud IAP protected Application",
     ///         Project = projectService.Project,
     ///     });
     /// 
-    ///     var projectClient = new Gcp.Iap.Client("projectClient", new()
+    ///     var projectClient = new Gcp.Iap.Client("project_client", new()
     ///     {
     ///         DisplayName = "Test Client",
     ///         Brand = projectBrand.Name,

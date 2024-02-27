@@ -33,8 +33,9 @@ import * as utilities from "../utilities";
  *         members: ["user:jane@example.com"],
  *     }],
  * });
- * const policy = new gcp.servicedirectory.NamespaceIamPolicy("policy", {policyData: admin.then(admin => admin.policyData)}, {
- *     provider: google_beta,
+ * const policy = new gcp.servicedirectory.NamespaceIamPolicy("policy", {
+ *     name: example.name,
+ *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
  *
@@ -45,10 +46,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.servicedirectory.NamespaceIamBinding("binding", {
+ *     name: example.name,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *
@@ -59,10 +59,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.servicedirectory.NamespaceIamMember("member", {
+ *     name: example.name,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

@@ -31,18 +31,19 @@ namespace Pulumi.Gcp.Netapp
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testBackupPolicyFull = new Gcp.Netapp.BackupPolicy("testBackupPolicyFull", new()
+    ///     var testBackupPolicyFull = new Gcp.Netapp.BackupPolicy("test_backup_policy_full", new()
     ///     {
+    ///         Name = "test-backup-policy-full",
+    ///         Location = "us-central1",
     ///         DailyBackupLimit = 2,
+    ///         WeeklyBackupLimit = 1,
+    ///         MonthlyBackupLimit = 1,
     ///         Description = "TF test backup schedule",
     ///         Enabled = true,
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
     ///         },
-    ///         Location = "us-central1",
-    ///         MonthlyBackupLimit = 1,
-    ///         WeeklyBackupLimit = 1,
     ///     });
     /// 
     /// });

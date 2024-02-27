@@ -56,15 +56,206 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil)
+//			defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name: pulumi.String("compute-network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewRoute(ctx, "defaultRoute", &compute.RouteArgs{
+//			_, err = compute.NewRoute(ctx, "default", &compute.RouteArgs{
+//				Name:      pulumi.String("network-route"),
 //				DestRange: pulumi.String("15.0.0.0/24"),
 //				Network:   defaultNetwork.Name,
 //				NextHopIp: pulumi.String("10.132.1.5"),
 //				Priority:  pulumi.Int(100),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Route Ilb
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("compute-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("compute-subnet"),
+//				IpCidrRange: pulumi.String("10.0.1.0/24"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			hc, err := compute.NewHealthCheck(ctx, "hc", &compute.HealthCheckArgs{
+//				Name:             pulumi.String("proxy-health-check"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//				TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			backend, err := compute.NewRegionBackendService(ctx, "backend", &compute.RegionBackendServiceArgs{
+//				Name:         pulumi.String("compute-backend"),
+//				Region:       pulumi.String("us-central1"),
+//				HealthChecks: hc.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultForwardingRule, err := compute.NewForwardingRule(ctx, "default", &compute.ForwardingRuleArgs{
+//				Name:                pulumi.String("compute-forwarding-rule"),
+//				Region:              pulumi.String("us-central1"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL"),
+//				BackendService:      backend.ID(),
+//				AllPorts:            pulumi.Bool(true),
+//				Network:             _default.Name,
+//				Subnetwork:          defaultSubnetwork.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRoute(ctx, "route-ilb", &compute.RouteArgs{
+//				Name:       pulumi.String("route-ilb"),
+//				DestRange:  pulumi.String("0.0.0.0/0"),
+//				Network:    _default.Name,
+//				NextHopIlb: defaultForwardingRule.ID(),
+//				Priority:   pulumi.Int(2000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Route Ilb Vip
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			producer, err := compute.NewNetwork(ctx, "producer", &compute.NetworkArgs{
+//				Name:                  pulumi.String("producer-vpc"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			producerSubnetwork, err := compute.NewSubnetwork(ctx, "producer", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("producer-subnet"),
+//				IpCidrRange: pulumi.String("10.0.1.0/24"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     producer.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			consumer, err := compute.NewNetwork(ctx, "consumer", &compute.NetworkArgs{
+//				Name:                  pulumi.String("consumer-vpc"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSubnetwork(ctx, "consumer", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("consumer-subnet"),
+//				IpCidrRange: pulumi.String("10.0.2.0/24"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     consumer.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNetworkPeering(ctx, "peering1", &compute.NetworkPeeringArgs{
+//				Name:        pulumi.String("peering-producer-to-consumer"),
+//				Network:     consumer.ID(),
+//				PeerNetwork: producer.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNetworkPeering(ctx, "peering2", &compute.NetworkPeeringArgs{
+//				Name:        pulumi.String("peering-consumer-to-producer"),
+//				Network:     producer.ID(),
+//				PeerNetwork: consumer.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			hc, err := compute.NewHealthCheck(ctx, "hc", &compute.HealthCheckArgs{
+//				Name:             pulumi.String("proxy-health-check"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//				TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			backend, err := compute.NewRegionBackendService(ctx, "backend", &compute.RegionBackendServiceArgs{
+//				Name:         pulumi.String("compute-backend"),
+//				Region:       pulumi.String("us-central1"),
+//				HealthChecks: hc.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewForwardingRule(ctx, "default", &compute.ForwardingRuleArgs{
+//				Name:                pulumi.String("compute-forwarding-rule"),
+//				Region:              pulumi.String("us-central1"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL"),
+//				BackendService:      backend.ID(),
+//				AllPorts:            pulumi.Bool(true),
+//				Network:             producer.Name,
+//				Subnetwork:          producerSubnetwork.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRoute(ctx, "route-ilb", &compute.RouteArgs{
+//				Name:       pulumi.String("route-ilb"),
+//				DestRange:  pulumi.String("0.0.0.0/0"),
+//				Network:    consumer.Name,
+//				NextHopIlb: _default.IpAddress,
+//				Priority:   pulumi.Int(2000),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("tag1"),
+//					pulumi.String("tag2"),
+//				},
 //			})
 //			if err != nil {
 //				return err

@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			basicDataStore, err := discoveryengine.NewDataStore(ctx, "basicDataStore", &discoveryengine.DataStoreArgs{
+//			basic, err := discoveryengine.NewDataStore(ctx, "basic", &discoveryengine.DataStoreArgs{
 //				Location:         pulumi.String("global"),
 //				DataStoreId:      pulumi.String("example-datastore-id"),
 //				DisplayName:      pulumi.String("tf-test-structured-datastore"),
@@ -49,13 +49,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = discoveryengine.NewSearchEngine(ctx, "basicSearchEngine", &discoveryengine.SearchEngineArgs{
+//			_, err = discoveryengine.NewSearchEngine(ctx, "basic", &discoveryengine.SearchEngineArgs{
 //				EngineId:     pulumi.String("example-engine-id"),
 //				CollectionId: pulumi.String("default_collection"),
-//				Location:     basicDataStore.Location,
+//				Location:     basic.Location,
 //				DisplayName:  pulumi.String("Example Display Name"),
 //				DataStoreIds: pulumi.StringArray{
-//					basicDataStore.DataStoreId,
+//					basic.DataStoreId,
 //				},
 //				SearchEngineConfig: nil,
 //			})

@@ -421,11 +421,12 @@ class AddressGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.AddressGroup("default",
-            capacity=100,
-            items=["208.80.154.224/32"],
-            location="us-central1",
+            name="my-address-groups",
             parent="projects/my-project-name",
-            type="IPV4")
+            location="us-central1",
+            type="IPV4",
+            capacity=100,
+            items=["208.80.154.224/32"])
         ```
         ### Network Security Address Groups Organization Basic
 
@@ -434,11 +435,12 @@ class AddressGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.AddressGroup("default",
-            capacity=100,
-            items=["208.80.154.224/32"],
-            location="us-central1",
+            name="my-address-groups",
             parent="organizations/123456789",
-            type="IPV4")
+            location="us-central1",
+            type="IPV4",
+            capacity=100,
+            items=["208.80.154.224/32"])
         ```
         ### Network Security Address Groups Advanced
 
@@ -447,12 +449,13 @@ class AddressGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.AddressGroup("default",
-            capacity=100,
-            description="my description",
-            items=["208.80.154.224/32"],
-            location="us-central1",
+            name="my-address-groups",
             parent="projects/my-project-name",
-            type="IPV4")
+            location="us-central1",
+            description="my description",
+            type="IPV4",
+            capacity=100,
+            items=["208.80.154.224/32"])
         ```
 
         ## Import
@@ -510,11 +513,12 @@ class AddressGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.AddressGroup("default",
-            capacity=100,
-            items=["208.80.154.224/32"],
-            location="us-central1",
+            name="my-address-groups",
             parent="projects/my-project-name",
-            type="IPV4")
+            location="us-central1",
+            type="IPV4",
+            capacity=100,
+            items=["208.80.154.224/32"])
         ```
         ### Network Security Address Groups Organization Basic
 
@@ -523,11 +527,12 @@ class AddressGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.AddressGroup("default",
-            capacity=100,
-            items=["208.80.154.224/32"],
-            location="us-central1",
+            name="my-address-groups",
             parent="organizations/123456789",
-            type="IPV4")
+            location="us-central1",
+            type="IPV4",
+            capacity=100,
+            items=["208.80.154.224/32"])
         ```
         ### Network Security Address Groups Advanced
 
@@ -536,12 +541,13 @@ class AddressGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.AddressGroup("default",
-            capacity=100,
-            description="my description",
-            items=["208.80.154.224/32"],
-            location="us-central1",
+            name="my-address-groups",
             parent="projects/my-project-name",
-            type="IPV4")
+            location="us-central1",
+            description="my description",
+            type="IPV4",
+            capacity=100,
+            items=["208.80.154.224/32"])
         ```
 
         ## Import

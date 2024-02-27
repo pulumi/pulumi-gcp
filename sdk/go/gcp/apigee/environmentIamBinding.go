@@ -55,8 +55,8 @@ import (
 //				return err
 //			}
 //			_, err = apigee.NewEnvironmentIamPolicy(ctx, "policy", &apigee.EnvironmentIamPolicyArgs{
-//				OrgId:      pulumi.Any(google_apigee_environment.Apigee_environment.Org_id),
-//				EnvId:      pulumi.Any(google_apigee_environment.Apigee_environment.Name),
+//				OrgId:      pulumi.Any(apigeeEnvironment.OrgId),
+//				EnvId:      pulumi.Any(apigeeEnvironment.Name),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -83,8 +83,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := apigee.NewEnvironmentIamBinding(ctx, "binding", &apigee.EnvironmentIamBindingArgs{
-//				OrgId: pulumi.Any(google_apigee_environment.Apigee_environment.Org_id),
-//				EnvId: pulumi.Any(google_apigee_environment.Apigee_environment.Name),
+//				OrgId: pulumi.Any(apigeeEnvironment.OrgId),
+//				EnvId: pulumi.Any(apigeeEnvironment.Name),
 //				Role:  pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -114,8 +114,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := apigee.NewEnvironmentIamMember(ctx, "member", &apigee.EnvironmentIamMemberArgs{
-//				OrgId:  pulumi.Any(google_apigee_environment.Apigee_environment.Org_id),
-//				EnvId:  pulumi.Any(google_apigee_environment.Apigee_environment.Name),
+//				OrgId:  pulumi.Any(apigeeEnvironment.OrgId),
+//				EnvId:  pulumi.Any(apigeeEnvironment.Name),
 //				Role:   pulumi.String("roles/viewer"),
 //				Member: pulumi.String("user:jane@example.com"),
 //			})

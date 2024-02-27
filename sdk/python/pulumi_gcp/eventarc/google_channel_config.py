@@ -210,15 +210,15 @@ class GoogleChannelConfig(pulumi.CustomResource):
             location="us-west1")
         key = gcp.kms.get_kms_crypto_key(name="key",
             key_ring=test_key_ring.id)
-        key1_member = gcp.kms.CryptoKeyIAMMember("key1Member",
-            crypto_key_id=data["google_kms_crypto_key"]["key1"]["id"],
+        key1_member = gcp.kms.CryptoKeyIAMMember("key1_member",
+            crypto_key_id=key1["id"],
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{test_project.number}@gcp-sa-eventarc.iam.gserviceaccount.com")
         primary = gcp.eventarc.GoogleChannelConfig("primary",
             location="us-west1",
+            name="channel",
             project=test_project.project_id,
-            crypto_key_name=data["google_kms_crypto_key"]["key1"]["id"],
-            opts=pulumi.ResourceOptions(depends_on=[key1_member]))
+            crypto_key_name=key1["id"])
         ```
 
         ## Import
@@ -276,15 +276,15 @@ class GoogleChannelConfig(pulumi.CustomResource):
             location="us-west1")
         key = gcp.kms.get_kms_crypto_key(name="key",
             key_ring=test_key_ring.id)
-        key1_member = gcp.kms.CryptoKeyIAMMember("key1Member",
-            crypto_key_id=data["google_kms_crypto_key"]["key1"]["id"],
+        key1_member = gcp.kms.CryptoKeyIAMMember("key1_member",
+            crypto_key_id=key1["id"],
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{test_project.number}@gcp-sa-eventarc.iam.gserviceaccount.com")
         primary = gcp.eventarc.GoogleChannelConfig("primary",
             location="us-west1",
+            name="channel",
             project=test_project.project_id,
-            crypto_key_name=data["google_kms_crypto_key"]["key1"]["id"],
-            opts=pulumi.ResourceOptions(depends_on=[key1_member]))
+            crypto_key_name=key1["id"])
         ```
 
         ## Import

@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.dataproc.getJobIamPolicy({
- *     jobId: google_dataproc_job.pyspark.reference[0].job_id,
+ *     jobId: pyspark.reference[0].jobId,
  *     region: "us-central1",
  * });
  * ```
@@ -71,7 +71,7 @@ export interface GetJobIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.dataproc.getJobIamPolicy({
- *     jobId: google_dataproc_job.pyspark.reference[0].job_id,
+ *     jobId: pyspark.reference[0].jobId,
  *     region: "us-central1",
  * });
  * ```

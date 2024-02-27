@@ -401,9 +401,9 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         region_sec_policy_basic = gcp.compute.RegionSecurityPolicy("region-sec-policy-basic",
+            name="my-sec-policy-basic",
             description="basic region security policy",
-            type="CLOUD_ARMOR",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            type="CLOUD_ARMOR")
         ```
         ### Region Security Policy With Ddos Protection Config
 
@@ -412,12 +412,12 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         region_sec_policy_ddos_protection = gcp.compute.RegionSecurityPolicy("region-sec-policy-ddos-protection",
+            name="my-sec-policy-ddos-protection",
             description="with ddos protection config",
             type="CLOUD_ARMOR_NETWORK",
             ddos_protection_config=gcp.compute.RegionSecurityPolicyDdosProtectionConfigArgs(
                 ddos_protection="ADVANCED_PREVIEW",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Region Security Policy With User Defined Fields
 
@@ -426,6 +426,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         region_sec_policy_user_defined_fields = gcp.compute.RegionSecurityPolicy("region-sec-policy-user-defined-fields",
+            name="my-sec-policy-user-defined-fields",
             description="with user defined fields",
             type="CLOUD_ARMOR_NETWORK",
             user_defined_fields=[
@@ -443,8 +444,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                     size=4,
                     mask="0xFFFFFFFF",
                 ),
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ])
         ```
 
         ## Import
@@ -517,9 +517,9 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         region_sec_policy_basic = gcp.compute.RegionSecurityPolicy("region-sec-policy-basic",
+            name="my-sec-policy-basic",
             description="basic region security policy",
-            type="CLOUD_ARMOR",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            type="CLOUD_ARMOR")
         ```
         ### Region Security Policy With Ddos Protection Config
 
@@ -528,12 +528,12 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         region_sec_policy_ddos_protection = gcp.compute.RegionSecurityPolicy("region-sec-policy-ddos-protection",
+            name="my-sec-policy-ddos-protection",
             description="with ddos protection config",
             type="CLOUD_ARMOR_NETWORK",
             ddos_protection_config=gcp.compute.RegionSecurityPolicyDdosProtectionConfigArgs(
                 ddos_protection="ADVANCED_PREVIEW",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Region Security Policy With User Defined Fields
 
@@ -542,6 +542,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         region_sec_policy_user_defined_fields = gcp.compute.RegionSecurityPolicy("region-sec-policy-user-defined-fields",
+            name="my-sec-policy-user-defined-fields",
             description="with user defined fields",
             type="CLOUD_ARMOR_NETWORK",
             user_defined_fields=[
@@ -559,8 +560,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                     size=4,
                     mask="0xFFFFFFFF",
                 ),
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ])
         ```
 
         ## Import

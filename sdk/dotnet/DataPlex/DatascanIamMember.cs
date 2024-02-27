@@ -51,9 +51,9 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     ///     var policy = new Gcp.DataPlex.DatascanIamPolicy("policy", new()
     ///     {
-    ///         Project = google_dataplex_datascan.Basic_profile.Project,
-    ///         Location = google_dataplex_datascan.Basic_profile.Location,
-    ///         DataScanId = google_dataplex_datascan.Basic_profile.Data_scan_id,
+    ///         Project = basicProfile.Project,
+    ///         Location = basicProfile.Location,
+    ///         DataScanId = basicProfile.DataScanId,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -72,9 +72,9 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var binding = new Gcp.DataPlex.DatascanIamBinding("binding", new()
     ///     {
-    ///         Project = google_dataplex_datascan.Basic_profile.Project,
-    ///         Location = google_dataplex_datascan.Basic_profile.Location,
-    ///         DataScanId = google_dataplex_datascan.Basic_profile.Data_scan_id,
+    ///         Project = basicProfile.Project,
+    ///         Location = basicProfile.Location,
+    ///         DataScanId = basicProfile.DataScanId,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -97,9 +97,9 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var member = new Gcp.DataPlex.DatascanIamMember("member", new()
     ///     {
-    ///         Project = google_dataplex_datascan.Basic_profile.Project,
-    ///         Location = google_dataplex_datascan.Basic_profile.Location,
-    ///         DataScanId = google_dataplex_datascan.Basic_profile.Data_scan_id,
+    ///         Project = basicProfile.Project,
+    ///         Location = basicProfile.Location,
+    ///         DataScanId = basicProfile.DataScanId,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

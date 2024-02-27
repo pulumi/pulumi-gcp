@@ -127,6 +127,17 @@ def get_environment(name: Optional[str] = None,
     """
     Provides access to Cloud Composer environment configuration in a region for a given project.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    composer_env_environment = gcp.composer.Environment("composer_env", name="composer-environment")
+    composer_env = gcp.composer.get_environment(name=test["name"])
+    pulumi.export("debug", composer_env.configs)
+    ```
+
 
     :param str name: Name of the environment.
     :param str project: The ID of the project in which the resource belongs.
@@ -159,6 +170,17 @@ def get_environment_output(name: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnvironmentResult]:
     """
     Provides access to Cloud Composer environment configuration in a region for a given project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    composer_env_environment = gcp.composer.Environment("composer_env", name="composer-environment")
+    composer_env = gcp.composer.get_environment(name=test["name"])
+    pulumi.export("debug", composer_env.configs)
+    ```
 
 
     :param str name: Name of the environment.

@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultNetwork = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+ *         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
  *             .name(&#34;my-network&#34;)
  *             .build());
  * 
@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .privateConnectionId(&#34;my-connection&#34;)
  *             .labels(Map.of(&#34;key&#34;, &#34;value&#34;))
  *             .vpcPeeringConfig(PrivateConnectionVpcPeeringConfigArgs.builder()
- *                 .vpcName(defaultNetwork.applyValue(getNetworkResult -&gt; getNetworkResult.id()))
+ *                 .vpcName(default_.id())
  *                 .subnet(&#34;10.0.0.0/29&#34;)
  *                 .build())
  *             .build());

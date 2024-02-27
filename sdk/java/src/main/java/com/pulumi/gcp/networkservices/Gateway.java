@@ -52,9 +52,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Gateway(&#34;default&#34;, GatewayArgs.builder()        
- *             .ports(443)
+ *             .name(&#34;my-gateway&#34;)
  *             .scope(&#34;default-scope-basic&#34;)
  *             .type(&#34;OPEN_MESH&#34;)
+ *             .ports(443)
  *             .build());
  * 
  *     }
@@ -83,11 +84,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Gateway(&#34;default&#34;, GatewayArgs.builder()        
- *             .description(&#34;my description&#34;)
+ *             .name(&#34;my-gateway&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .description(&#34;my description&#34;)
+ *             .type(&#34;OPEN_MESH&#34;)
  *             .ports(443)
  *             .scope(&#34;default-scope-advance&#34;)
- *             .type(&#34;OPEN_MESH&#34;)
  *             .build());
  * 
  *     }
@@ -113,7 +115,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyRuleArgs;
  * import com.pulumi.gcp.networkservices.Gateway;
  * import com.pulumi.gcp.networkservices.GatewayArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -127,20 +128,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultCertificate = new Certificate(&#34;defaultCertificate&#34;, CertificateArgs.builder()        
+ *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
+ *             .name(&#34;my-certificate&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .selfManaged(CertificateSelfManagedArgs.builder()
- *                 .pemCertificate(Files.readString(Paths.get(&#34;test-fixtures/cert.pem&#34;)))
- *                 .pemPrivateKey(Files.readString(Paths.get(&#34;test-fixtures/private-key.pem&#34;)))
+ *                 .pemCertificate(StdFunctions.file(FileArgs.builder()
+ *                     .input(&#34;test-fixtures/cert.pem&#34;)
+ *                     .build()).result())
+ *                 .pemPrivateKey(StdFunctions.file(FileArgs.builder()
+ *                     .input(&#34;test-fixtures/private-key.pem&#34;)
+ *                     .build()).result())
  *                 .build())
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;my-network&#34;)
  *             .routingMode(&#34;REGIONAL&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;my-subnetwork-name&#34;)
  *             .purpose(&#34;PRIVATE&#34;)
  *             .ipCidrRange(&#34;10.128.0.0/20&#34;)
  *             .region(&#34;us-central1&#34;)
@@ -149,6 +157,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var proxyonlysubnet = new Subnetwork(&#34;proxyonlysubnet&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;my-proxy-only-subnetwork&#34;)
  *             .purpose(&#34;REGIONAL_MANAGED_PROXY&#34;)
  *             .ipCidrRange(&#34;192.168.0.0/23&#34;)
  *             .region(&#34;us-central1&#34;)
@@ -157,10 +166,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultGatewaySecurityPolicy = new GatewaySecurityPolicy(&#34;defaultGatewaySecurityPolicy&#34;, GatewaySecurityPolicyArgs.builder()        
+ *             .name(&#34;my-policy-name&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .build());
  * 
  *         var defaultGatewaySecurityPolicyRule = new GatewaySecurityPolicyRule(&#34;defaultGatewaySecurityPolicyRule&#34;, GatewaySecurityPolicyRuleArgs.builder()        
+ *             .name(&#34;my-policyrule-name&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .gatewaySecurityPolicy(defaultGatewaySecurityPolicy.name())
  *             .enabled(true)
@@ -170,19 +181,18 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
+ *             .name(&#34;my-gateway1&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .addresses(&#34;10.128.0.99&#34;)
  *             .type(&#34;SECURE_WEB_GATEWAY&#34;)
  *             .ports(443)
  *             .scope(&#34;my-default-scope1&#34;)
- *             .certificateUrls(defaultCertificate.id())
+ *             .certificateUrls(default_.id())
  *             .gatewaySecurityPolicy(defaultGatewaySecurityPolicy.id())
  *             .network(defaultNetwork.id())
  *             .subnetwork(defaultSubnetwork.id())
  *             .deleteSwgAutogenRouterOnDestroy(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(proxyonlysubnet)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -207,7 +217,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyRuleArgs;
  * import com.pulumi.gcp.networkservices.Gateway;
  * import com.pulumi.gcp.networkservices.GatewayArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -221,20 +230,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultCertificate = new Certificate(&#34;defaultCertificate&#34;, CertificateArgs.builder()        
+ *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
+ *             .name(&#34;my-certificate&#34;)
  *             .location(&#34;us-south1&#34;)
  *             .selfManaged(CertificateSelfManagedArgs.builder()
- *                 .pemCertificate(Files.readString(Paths.get(&#34;test-fixtures/cert.pem&#34;)))
- *                 .pemPrivateKey(Files.readString(Paths.get(&#34;test-fixtures/private-key.pem&#34;)))
+ *                 .pemCertificate(StdFunctions.file(FileArgs.builder()
+ *                     .input(&#34;test-fixtures/cert.pem&#34;)
+ *                     .build()).result())
+ *                 .pemPrivateKey(StdFunctions.file(FileArgs.builder()
+ *                     .input(&#34;test-fixtures/private-key.pem&#34;)
+ *                     .build()).result())
  *                 .build())
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;my-network&#34;)
  *             .routingMode(&#34;REGIONAL&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;my-subnetwork-name&#34;)
  *             .purpose(&#34;PRIVATE&#34;)
  *             .ipCidrRange(&#34;10.128.0.0/20&#34;)
  *             .region(&#34;us-south1&#34;)
@@ -243,6 +259,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var proxyonlysubnet = new Subnetwork(&#34;proxyonlysubnet&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;my-proxy-only-subnetwork&#34;)
  *             .purpose(&#34;REGIONAL_MANAGED_PROXY&#34;)
  *             .ipCidrRange(&#34;192.168.0.0/23&#34;)
  *             .region(&#34;us-south1&#34;)
@@ -251,10 +268,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultGatewaySecurityPolicy = new GatewaySecurityPolicy(&#34;defaultGatewaySecurityPolicy&#34;, GatewaySecurityPolicyArgs.builder()        
+ *             .name(&#34;my-policy-name&#34;)
  *             .location(&#34;us-south1&#34;)
  *             .build());
  * 
  *         var defaultGatewaySecurityPolicyRule = new GatewaySecurityPolicyRule(&#34;defaultGatewaySecurityPolicyRule&#34;, GatewaySecurityPolicyRuleArgs.builder()        
+ *             .name(&#34;my-policyrule-name&#34;)
  *             .location(&#34;us-south1&#34;)
  *             .gatewaySecurityPolicy(defaultGatewaySecurityPolicy.name())
  *             .enabled(true)
@@ -264,34 +283,32 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
+ *             .name(&#34;my-gateway1&#34;)
  *             .location(&#34;us-south1&#34;)
  *             .addresses(&#34;10.128.0.99&#34;)
  *             .type(&#34;SECURE_WEB_GATEWAY&#34;)
  *             .ports(443)
  *             .scope(&#34;my-default-scope1&#34;)
- *             .certificateUrls(defaultCertificate.id())
+ *             .certificateUrls(default_.id())
  *             .gatewaySecurityPolicy(defaultGatewaySecurityPolicy.id())
  *             .network(defaultNetwork.id())
  *             .subnetwork(defaultSubnetwork.id())
  *             .deleteSwgAutogenRouterOnDestroy(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(proxyonlysubnet)
- *                 .build());
+ *             .build());
  * 
  *         var gateway2 = new Gateway(&#34;gateway2&#34;, GatewayArgs.builder()        
+ *             .name(&#34;my-gateway2&#34;)
  *             .location(&#34;us-south1&#34;)
  *             .addresses(&#34;10.128.0.98&#34;)
  *             .type(&#34;SECURE_WEB_GATEWAY&#34;)
  *             .ports(443)
  *             .scope(&#34;my-default-scope2&#34;)
- *             .certificateUrls(defaultCertificate.id())
+ *             .certificateUrls(default_.id())
  *             .gatewaySecurityPolicy(defaultGatewaySecurityPolicy.id())
  *             .network(defaultNetwork.id())
  *             .subnetwork(defaultSubnetwork.id())
  *             .deleteSwgAutogenRouterOnDestroy(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(proxyonlysubnet)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

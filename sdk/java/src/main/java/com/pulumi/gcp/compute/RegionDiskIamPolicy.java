@@ -60,8 +60,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new DiskIamPolicy(&#34;policy&#34;, DiskIamPolicyArgs.builder()        
- *             .project(google_compute_disk.default().project())
- *             .zone(google_compute_disk.default().zone())
+ *             .project(default_.project())
+ *             .zone(default_.zone())
+ *             .name(default_.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -92,8 +93,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new DiskIamBinding(&#34;binding&#34;, DiskIamBindingArgs.builder()        
- *             .project(google_compute_disk.default().project())
- *             .zone(google_compute_disk.default().zone())
+ *             .project(default_.project())
+ *             .zone(default_.zone())
+ *             .name(default_.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -125,8 +127,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new DiskIamMember(&#34;member&#34;, DiskIamMemberArgs.builder()        
- *             .project(google_compute_disk.default().project())
- *             .zone(google_compute_disk.default().zone())
+ *             .project(default_.project())
+ *             .zone(default_.zone())
+ *             .name(default_.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

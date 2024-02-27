@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.gkehub.getMembershipIamPolicy({
- *     project: google_gke_hub_membership.membership.project,
- *     location: google_gke_hub_membership.membership.location,
- *     membershipId: google_gke_hub_membership.membership.membership_id,
+ *     project: membership.project,
+ *     location: membership.location,
+ *     membershipId: membership.membershipId,
  * });
  * ```
  */
@@ -79,9 +79,9 @@ export interface GetMembershipIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.gkehub.getMembershipIamPolicy({
- *     project: google_gke_hub_membership.membership.project,
- *     location: google_gke_hub_membership.membership.location,
- *     membershipId: google_gke_hub_membership.membership.membership_id,
+ *     project: membership.project,
+ *     location: membership.location,
+ *     membershipId: membership.membershipId,
  * });
  * ```
  */

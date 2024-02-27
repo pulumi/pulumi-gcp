@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const foo = new gcp.compute.ResourcePolicy("foo", {
+ *     name: "gce-policy",
  *     region: "us-central1",
  *     snapshotSchedulePolicy: {
  *         schedule: {
@@ -39,24 +40,25 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const bar = new gcp.compute.ResourcePolicy("bar", {
+ *     name: "gce-policy",
  *     region: "us-central1",
  *     snapshotSchedulePolicy: {
- *         retentionPolicy: {
- *             maxRetentionDays: 10,
- *             onSourceDiskDelete: "KEEP_AUTO_SNAPSHOTS",
- *         },
  *         schedule: {
  *             hourlySchedule: {
  *                 hoursInCycle: 20,
  *                 startTime: "23:00",
  *             },
  *         },
+ *         retentionPolicy: {
+ *             maxRetentionDays: 10,
+ *             onSourceDiskDelete: "KEEP_AUTO_SNAPSHOTS",
+ *         },
  *         snapshotProperties: {
- *             guestFlush: true,
  *             labels: {
- *                 myLabel: "value",
+ *                 my_label: "value",
  *             },
  *             storageLocations: "us",
+ *             guestFlush: true,
  *         },
  *     },
  * });
@@ -68,11 +70,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const baz = new gcp.compute.ResourcePolicy("baz", {
- *     groupPlacementPolicy: {
- *         collocation: "COLLOCATED",
- *         vmCount: 2,
- *     },
+ *     name: "gce-policy",
  *     region: "us-central1",
+ *     groupPlacementPolicy: {
+ *         vmCount: 2,
+ *         collocation: "COLLOCATED",
+ *     },
  * });
  * ```
  * ### Resource Policy Placement Policy Max Distance
@@ -82,14 +85,13 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const baz = new gcp.compute.ResourcePolicy("baz", {
+ *     name: "gce-policy",
  *     region: "us-central1",
  *     groupPlacementPolicy: {
  *         vmCount: 2,
  *         collocation: "COLLOCATED",
  *         maxDistance: 2,
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Resource Policy Instance Schedule Policy
@@ -99,17 +101,18 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const hourly = new gcp.compute.ResourcePolicy("hourly", {
+ *     name: "gce-policy",
+ *     region: "us-central1",
  *     description: "Start and stop instances",
  *     instanceSchedulePolicy: {
- *         timeZone: "US/Central",
  *         vmStartSchedule: {
  *             schedule: "0 * * * *",
  *         },
  *         vmStopSchedule: {
  *             schedule: "15 * * * *",
  *         },
+ *         timeZone: "US/Central",
  *     },
- *     region: "us-central1",
  * });
  * ```
  * ### Resource Policy Snapshot Schedule Chain Name
@@ -119,26 +122,27 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const hourly = new gcp.compute.ResourcePolicy("hourly", {
- *     description: "chain name snapshot",
+ *     name: "gce-policy",
  *     region: "us-central1",
+ *     description: "chain name snapshot",
  *     snapshotSchedulePolicy: {
- *         retentionPolicy: {
- *             maxRetentionDays: 14,
- *             onSourceDiskDelete: "KEEP_AUTO_SNAPSHOTS",
- *         },
  *         schedule: {
  *             hourlySchedule: {
  *                 hoursInCycle: 20,
  *                 startTime: "23:00",
  *             },
  *         },
+ *         retentionPolicy: {
+ *             maxRetentionDays: 14,
+ *             onSourceDiskDelete: "KEEP_AUTO_SNAPSHOTS",
+ *         },
  *         snapshotProperties: {
- *             chainName: "test-schedule-chain-name",
- *             guestFlush: true,
  *             labels: {
- *                 myLabel: "value",
+ *                 my_label: "value",
  *             },
  *             storageLocations: "us",
+ *             guestFlush: true,
+ *             chainName: "test-schedule-chain-name",
  *         },
  *     },
  * });
@@ -150,10 +154,11 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const cgroup = new gcp.compute.ResourcePolicy("cgroup", {
+ *     name: "gce-policy",
+ *     region: "europe-west1",
  *     diskConsistencyGroupPolicy: {
  *         enabled: true,
  *     },
- *     region: "europe-west1",
  * });
  * ```
  *

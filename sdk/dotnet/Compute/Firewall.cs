@@ -40,10 +40,14 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork");
-    /// 
-    ///     var defaultFirewall = new Gcp.Compute.Firewall("defaultFirewall", new()
+    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
     ///     {
+    ///         Name = "test-network",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.Firewall("default", new()
+    ///     {
+    ///         Name = "test-firewall",
     ///         Network = defaultNetwork.Name,
     ///         Allows = new[]
     ///         {
@@ -82,22 +86,23 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var rules = new Gcp.Compute.Firewall("rules", new()
     ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "my-firewall-rule",
+    ///         Network = "default",
+    ///         Description = "Creates firewall rule targeting tagged instances",
     ///         Allows = new[]
     ///         {
     ///             new Gcp.Compute.Inputs.FirewallAllowArgs
     ///             {
+    ///                 Protocol = "tcp",
     ///                 Ports = new[]
     ///                 {
     ///                     "80",
     ///                     "8080",
     ///                     "1000-2000",
     ///                 },
-    ///                 Protocol = "tcp",
     ///             },
     ///         },
-    ///         Description = "Creates firewall rule targeting tagged instances",
-    ///         Network = "default",
-    ///         Project = "my-project-name",
     ///         SourceTags = new[]
     ///         {
     ///             "foo",

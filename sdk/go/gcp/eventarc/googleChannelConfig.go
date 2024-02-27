@@ -52,8 +52,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			key1Member, err := kms.NewCryptoKeyIAMMember(ctx, "key1Member", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: pulumi.Any(data.Google_kms_crypto_key.Key1.Id),
+//			_, err = kms.NewCryptoKeyIAMMember(ctx, "key1_member", &kms.CryptoKeyIAMMemberArgs{
+//				CryptoKeyId: pulumi.Any(key1.Id),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-eventarc.iam.gserviceaccount.com", testProject.Number)),
 //			})
@@ -62,11 +62,10 @@ import (
 //			}
 //			_, err = eventarc.NewGoogleChannelConfig(ctx, "primary", &eventarc.GoogleChannelConfigArgs{
 //				Location:      pulumi.String("us-west1"),
+//				Name:          pulumi.String("channel"),
 //				Project:       *pulumi.String(testProject.ProjectId),
-//				CryptoKeyName: pulumi.Any(data.Google_kms_crypto_key.Key1.Id),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				key1Member,
-//			}))
+//				CryptoKeyName: pulumi.Any(key1.Id),
+//			})
 //			if err != nil {
 //				return err
 //			}

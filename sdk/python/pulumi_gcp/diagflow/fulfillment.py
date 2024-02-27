@@ -257,11 +257,11 @@ class Fulfillment(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic_agent = gcp.diagflow.Agent("basicAgent",
+        basic_agent = gcp.diagflow.Agent("basic_agent",
             display_name="example_agent",
             default_language_code="en",
             time_zone="America/New_York")
-        basic_fulfillment = gcp.diagflow.Fulfillment("basicFulfillment",
+        basic_fulfillment = gcp.diagflow.Fulfillment("basic_fulfillment",
             display_name="basic-fulfillment",
             enabled=True,
             generic_web_service=gcp.diagflow.FulfillmentGenericWebServiceArgs(
@@ -271,8 +271,7 @@ class Fulfillment(pulumi.CustomResource):
                 request_headers={
                     "name": "wrench",
                 },
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
+            ))
         ```
 
         ## Import
@@ -323,11 +322,11 @@ class Fulfillment(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic_agent = gcp.diagflow.Agent("basicAgent",
+        basic_agent = gcp.diagflow.Agent("basic_agent",
             display_name="example_agent",
             default_language_code="en",
             time_zone="America/New_York")
-        basic_fulfillment = gcp.diagflow.Fulfillment("basicFulfillment",
+        basic_fulfillment = gcp.diagflow.Fulfillment("basic_fulfillment",
             display_name="basic-fulfillment",
             enabled=True,
             generic_web_service=gcp.diagflow.FulfillmentGenericWebServiceArgs(
@@ -337,8 +336,7 @@ class Fulfillment(pulumi.CustomResource):
                 request_headers={
                     "name": "wrench",
                 },
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
+            ))
         ```
 
         ## Import

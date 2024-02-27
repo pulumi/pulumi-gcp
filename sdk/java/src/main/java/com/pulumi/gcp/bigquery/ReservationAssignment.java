@@ -42,6 +42,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basic = new Reservation(&#34;basic&#34;, ReservationArgs.builder()        
+ *             .name(&#34;tf-test-my-reservation&#34;)
  *             .project(&#34;my-project-name&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .slotCapacity(0)

@@ -27,12 +27,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networkservices.NewMesh(ctx, "default", &networkservices.MeshArgs{
+//				Name: pulumi.String("my-mesh"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
 //				Description:      pulumi.String("my description"),
 //				InterceptionPort: pulumi.Int(443),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -56,11 +57,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networkservices.NewMesh(ctx, "default", &networkservices.MeshArgs{
+//				Name: pulumi.String("my-mesh-noport"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
 //				Description: pulumi.String("my description"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

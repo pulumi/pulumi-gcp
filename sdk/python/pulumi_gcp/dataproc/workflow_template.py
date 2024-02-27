@@ -417,40 +417,34 @@ class WorkflowTemplate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         template = gcp.dataproc.WorkflowTemplate("template",
-            jobs=[
-                gcp.dataproc.WorkflowTemplateJobArgs(
-                    spark_job=gcp.dataproc.WorkflowTemplateJobSparkJobArgs(
-                        main_class="SomeClass",
-                    ),
-                    step_id="someJob",
-                ),
-                gcp.dataproc.WorkflowTemplateJobArgs(
-                    prerequisite_step_ids=["someJob"],
-                    presto_job=gcp.dataproc.WorkflowTemplateJobPrestoJobArgs(
-                        query_file_uri="someuri",
-                    ),
-                    step_id="otherJob",
-                ),
-            ],
+            name="template-example",
             location="us-central1",
             placement=gcp.dataproc.WorkflowTemplatePlacementArgs(
                 managed_cluster=gcp.dataproc.WorkflowTemplatePlacementManagedClusterArgs(
                     cluster_name="my-cluster",
                     config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigArgs(
                         gce_cluster_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs(
+                            zone="us-central1-a",
                             tags=[
                                 "foo",
                                 "bar",
                             ],
-                            zone="us-central1-a",
                         ),
                         master_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs(
-                            disk_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs(
-                                boot_disk_size_gb=15,
-                                boot_disk_type="pd-ssd",
-                            ),
-                            machine_type="n1-standard-1",
                             num_instances=1,
+                            machine_type="n1-standard-1",
+                            disk_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs(
+                                boot_disk_type="pd-ssd",
+                                boot_disk_size_gb=15,
+                            ),
+                        ),
+                        worker_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs(
+                            num_instances=3,
+                            machine_type="n1-standard-2",
+                            disk_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs(
+                                boot_disk_size_gb=10,
+                                num_local_ssds=2,
+                            ),
                         ),
                         secondary_worker_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs(
                             num_instances=2,
@@ -458,17 +452,24 @@ class WorkflowTemplate(pulumi.CustomResource):
                         software_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs(
                             image_version="2.0.35-debian10",
                         ),
-                        worker_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs(
-                            disk_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs(
-                                boot_disk_size_gb=10,
-                                num_local_ssds=2,
-                            ),
-                            machine_type="n1-standard-2",
-                            num_instances=3,
-                        ),
                     ),
                 ),
-            ))
+            ),
+            jobs=[
+                gcp.dataproc.WorkflowTemplateJobArgs(
+                    step_id="someJob",
+                    spark_job=gcp.dataproc.WorkflowTemplateJobSparkJobArgs(
+                        main_class="SomeClass",
+                    ),
+                ),
+                gcp.dataproc.WorkflowTemplateJobArgs(
+                    step_id="otherJob",
+                    prerequisite_step_ids=["someJob"],
+                    presto_job=gcp.dataproc.WorkflowTemplateJobPrestoJobArgs(
+                        query_file_uri="someuri",
+                    ),
+                ),
+            ])
         ```
 
         ## Import
@@ -523,40 +524,34 @@ class WorkflowTemplate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         template = gcp.dataproc.WorkflowTemplate("template",
-            jobs=[
-                gcp.dataproc.WorkflowTemplateJobArgs(
-                    spark_job=gcp.dataproc.WorkflowTemplateJobSparkJobArgs(
-                        main_class="SomeClass",
-                    ),
-                    step_id="someJob",
-                ),
-                gcp.dataproc.WorkflowTemplateJobArgs(
-                    prerequisite_step_ids=["someJob"],
-                    presto_job=gcp.dataproc.WorkflowTemplateJobPrestoJobArgs(
-                        query_file_uri="someuri",
-                    ),
-                    step_id="otherJob",
-                ),
-            ],
+            name="template-example",
             location="us-central1",
             placement=gcp.dataproc.WorkflowTemplatePlacementArgs(
                 managed_cluster=gcp.dataproc.WorkflowTemplatePlacementManagedClusterArgs(
                     cluster_name="my-cluster",
                     config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigArgs(
                         gce_cluster_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs(
+                            zone="us-central1-a",
                             tags=[
                                 "foo",
                                 "bar",
                             ],
-                            zone="us-central1-a",
                         ),
                         master_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs(
-                            disk_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs(
-                                boot_disk_size_gb=15,
-                                boot_disk_type="pd-ssd",
-                            ),
-                            machine_type="n1-standard-1",
                             num_instances=1,
+                            machine_type="n1-standard-1",
+                            disk_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs(
+                                boot_disk_type="pd-ssd",
+                                boot_disk_size_gb=15,
+                            ),
+                        ),
+                        worker_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs(
+                            num_instances=3,
+                            machine_type="n1-standard-2",
+                            disk_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs(
+                                boot_disk_size_gb=10,
+                                num_local_ssds=2,
+                            ),
                         ),
                         secondary_worker_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs(
                             num_instances=2,
@@ -564,17 +559,24 @@ class WorkflowTemplate(pulumi.CustomResource):
                         software_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs(
                             image_version="2.0.35-debian10",
                         ),
-                        worker_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs(
-                            disk_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs(
-                                boot_disk_size_gb=10,
-                                num_local_ssds=2,
-                            ),
-                            machine_type="n1-standard-2",
-                            num_instances=3,
-                        ),
                     ),
                 ),
-            ))
+            ),
+            jobs=[
+                gcp.dataproc.WorkflowTemplateJobArgs(
+                    step_id="someJob",
+                    spark_job=gcp.dataproc.WorkflowTemplateJobSparkJobArgs(
+                        main_class="SomeClass",
+                    ),
+                ),
+                gcp.dataproc.WorkflowTemplateJobArgs(
+                    step_id="otherJob",
+                    prerequisite_step_ids=["someJob"],
+                    presto_job=gcp.dataproc.WorkflowTemplateJobPrestoJobArgs(
+                        query_file_uri="someuri",
+                    ),
+                ),
+            ])
         ```
 
         ## Import

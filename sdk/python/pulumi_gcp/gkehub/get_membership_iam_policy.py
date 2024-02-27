@@ -109,9 +109,9 @@ def get_membership_iam_policy(location: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.gkehub.get_membership_iam_policy(project=google_gke_hub_membership["membership"]["project"],
-        location=google_gke_hub_membership["membership"]["location"],
-        membership_id=google_gke_hub_membership["membership"]["membership_id"])
+    policy = gcp.gkehub.get_membership_iam_policy(project=membership["project"],
+        location=membership["location"],
+        membership_id=membership["membershipId"])
     ```
 
 
@@ -151,9 +151,9 @@ def get_membership_iam_policy_output(location: Optional[pulumi.Input[Optional[st
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.gkehub.get_membership_iam_policy(project=google_gke_hub_membership["membership"]["project"],
-        location=google_gke_hub_membership["membership"]["location"],
-        membership_id=google_gke_hub_membership["membership"]["membership_id"])
+    policy = gcp.gkehub.get_membership_iam_policy(project=membership["project"],
+        location=membership["location"],
+        membership_id=membership["membershipId"])
     ```
 
 

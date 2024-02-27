@@ -275,9 +275,9 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.compute.SubnetworkIAMPolicy("policy",
-            project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
-            region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
-            subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
+            project=network_with_private_secondary_ip_ranges["project"],
+            region=network_with_private_secondary_ip_ranges["region"],
+            subnetwork=network_with_private_secondary_ip_ranges["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -297,9 +297,9 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             ),
         )])
         policy = gcp.compute.SubnetworkIAMPolicy("policy",
-            project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
-            region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
-            subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
+            project=network_with_private_secondary_ip_ranges["project"],
+            region=network_with_private_secondary_ip_ranges["region"],
+            subnetwork=network_with_private_secondary_ip_ranges["name"],
             policy_data=admin.policy_data)
         ```
         ## google\\_compute\\_subnetwork\\_iam\\_binding
@@ -309,9 +309,9 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.compute.SubnetworkIAMBinding("binding",
-            project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
-            region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
-            subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
+            project=network_with_private_secondary_ip_ranges["project"],
+            region=network_with_private_secondary_ip_ranges["region"],
+            subnetwork=network_with_private_secondary_ip_ranges["name"],
             role="roles/compute.networkUser",
             members=["user:jane@example.com"])
         ```
@@ -323,9 +323,9 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.compute.SubnetworkIAMBinding("binding",
-            project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
-            region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
-            subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
+            project=network_with_private_secondary_ip_ranges["project"],
+            region=network_with_private_secondary_ip_ranges["region"],
+            subnetwork=network_with_private_secondary_ip_ranges["name"],
             role="roles/compute.networkUser",
             members=["user:jane@example.com"],
             condition=gcp.compute.SubnetworkIAMBindingConditionArgs(
@@ -341,9 +341,9 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.compute.SubnetworkIAMMember("member",
-            project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
-            region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
-            subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
+            project=network_with_private_secondary_ip_ranges["project"],
+            region=network_with_private_secondary_ip_ranges["region"],
+            subnetwork=network_with_private_secondary_ip_ranges["name"],
             role="roles/compute.networkUser",
             member="user:jane@example.com")
         ```
@@ -355,9 +355,9 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.compute.SubnetworkIAMMember("member",
-            project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
-            region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
-            subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
+            project=network_with_private_secondary_ip_ranges["project"],
+            region=network_with_private_secondary_ip_ranges["region"],
+            subnetwork=network_with_private_secondary_ip_ranges["name"],
             role="roles/compute.networkUser",
             member="user:jane@example.com",
             condition=gcp.compute.SubnetworkIAMMemberConditionArgs(
@@ -463,9 +463,9 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.compute.SubnetworkIAMPolicy("policy",
-            project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
-            region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
-            subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
+            project=network_with_private_secondary_ip_ranges["project"],
+            region=network_with_private_secondary_ip_ranges["region"],
+            subnetwork=network_with_private_secondary_ip_ranges["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -485,9 +485,9 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
             ),
         )])
         policy = gcp.compute.SubnetworkIAMPolicy("policy",
-            project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
-            region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
-            subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
+            project=network_with_private_secondary_ip_ranges["project"],
+            region=network_with_private_secondary_ip_ranges["region"],
+            subnetwork=network_with_private_secondary_ip_ranges["name"],
             policy_data=admin.policy_data)
         ```
         ## google\\_compute\\_subnetwork\\_iam\\_binding
@@ -497,9 +497,9 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.compute.SubnetworkIAMBinding("binding",
-            project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
-            region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
-            subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
+            project=network_with_private_secondary_ip_ranges["project"],
+            region=network_with_private_secondary_ip_ranges["region"],
+            subnetwork=network_with_private_secondary_ip_ranges["name"],
             role="roles/compute.networkUser",
             members=["user:jane@example.com"])
         ```
@@ -511,9 +511,9 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.compute.SubnetworkIAMBinding("binding",
-            project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
-            region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
-            subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
+            project=network_with_private_secondary_ip_ranges["project"],
+            region=network_with_private_secondary_ip_ranges["region"],
+            subnetwork=network_with_private_secondary_ip_ranges["name"],
             role="roles/compute.networkUser",
             members=["user:jane@example.com"],
             condition=gcp.compute.SubnetworkIAMBindingConditionArgs(
@@ -529,9 +529,9 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.compute.SubnetworkIAMMember("member",
-            project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
-            region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
-            subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
+            project=network_with_private_secondary_ip_ranges["project"],
+            region=network_with_private_secondary_ip_ranges["region"],
+            subnetwork=network_with_private_secondary_ip_ranges["name"],
             role="roles/compute.networkUser",
             member="user:jane@example.com")
         ```
@@ -543,9 +543,9 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.compute.SubnetworkIAMMember("member",
-            project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
-            region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
-            subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
+            project=network_with_private_secondary_ip_ranges["project"],
+            region=network_with_private_secondary_ip_ranges["region"],
+            subnetwork=network_with_private_secondary_ip_ranges["name"],
             role="roles/compute.networkUser",
             member="user:jane@example.com",
             condition=gcp.compute.SubnetworkIAMMemberConditionArgs(

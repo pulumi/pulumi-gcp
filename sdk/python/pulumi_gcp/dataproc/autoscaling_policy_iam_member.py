@@ -336,9 +336,9 @@ class AutoscalingPolicyIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.dataproc.AutoscalingPolicyIamPolicy("policy",
-            project=google_dataproc_autoscaling_policy["basic"]["project"],
-            location=google_dataproc_autoscaling_policy["basic"]["location"],
-            policy_id=google_dataproc_autoscaling_policy["basic"]["policy_id"],
+            project=basic["project"],
+            location=basic["location"],
+            policy_id=basic["policyId"],
             policy_data=admin.policy_data)
         ```
 
@@ -349,9 +349,9 @@ class AutoscalingPolicyIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.dataproc.AutoscalingPolicyIamBinding("binding",
-            project=google_dataproc_autoscaling_policy["basic"]["project"],
-            location=google_dataproc_autoscaling_policy["basic"]["location"],
-            policy_id=google_dataproc_autoscaling_policy["basic"]["policy_id"],
+            project=basic["project"],
+            location=basic["location"],
+            policy_id=basic["policyId"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -363,9 +363,9 @@ class AutoscalingPolicyIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.dataproc.AutoscalingPolicyIamMember("member",
-            project=google_dataproc_autoscaling_policy["basic"]["project"],
-            location=google_dataproc_autoscaling_policy["basic"]["location"],
-            policy_id=google_dataproc_autoscaling_policy["basic"]["policy_id"],
+            project=basic["project"],
+            location=basic["location"],
+            policy_id=basic["policyId"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -467,9 +467,9 @@ class AutoscalingPolicyIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.dataproc.AutoscalingPolicyIamPolicy("policy",
-            project=google_dataproc_autoscaling_policy["basic"]["project"],
-            location=google_dataproc_autoscaling_policy["basic"]["location"],
-            policy_id=google_dataproc_autoscaling_policy["basic"]["policy_id"],
+            project=basic["project"],
+            location=basic["location"],
+            policy_id=basic["policyId"],
             policy_data=admin.policy_data)
         ```
 
@@ -480,9 +480,9 @@ class AutoscalingPolicyIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.dataproc.AutoscalingPolicyIamBinding("binding",
-            project=google_dataproc_autoscaling_policy["basic"]["project"],
-            location=google_dataproc_autoscaling_policy["basic"]["location"],
-            policy_id=google_dataproc_autoscaling_policy["basic"]["policy_id"],
+            project=basic["project"],
+            location=basic["location"],
+            policy_id=basic["policyId"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -494,9 +494,9 @@ class AutoscalingPolicyIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.dataproc.AutoscalingPolicyIamMember("member",
-            project=google_dataproc_autoscaling_policy["basic"]["project"],
-            location=google_dataproc_autoscaling_policy["basic"]["location"],
-            policy_id=google_dataproc_autoscaling_policy["basic"]["policy_id"],
+            project=basic["project"],
+            location=basic["location"],
+            policy_id=basic["policyId"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

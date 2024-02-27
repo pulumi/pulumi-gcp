@@ -15,7 +15,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const certificateMap = new gcp.certificatemanager.CertificateMap("certificateMap", {
+ * const certificateMap = new gcp.certificatemanager.CertificateMap("certificate_map", {
+ *     name: "cert-map-entry",
  *     description: "My acceptance test certificate map",
  *     labels: {
  *         terraform: "true",
@@ -23,14 +24,17 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const instance = new gcp.certificatemanager.DnsAuthorization("instance", {
+ *     name: "dns-auth",
  *     description: "The default dnss",
  *     domain: "subdomain.hashicorptest.com",
  * });
  * const instance2 = new gcp.certificatemanager.DnsAuthorization("instance2", {
+ *     name: "dns-auth2",
  *     description: "The default dnss",
  *     domain: "subdomain2.hashicorptest.com",
  * });
  * const certificate = new gcp.certificatemanager.Certificate("certificate", {
+ *     name: "cert-map-entry",
  *     description: "The default cert",
  *     scope: "DEFAULT",
  *     managed: {
@@ -45,6 +49,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const _default = new gcp.certificatemanager.CertificateMapEntry("default", {
+ *     name: "cert-map-entry",
  *     description: "My acceptance test certificate map entry",
  *     map: certificateMap.name,
  *     labels: {

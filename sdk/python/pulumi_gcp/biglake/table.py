@@ -317,18 +317,24 @@ class Table(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        catalog = gcp.biglake.Catalog("catalog", location="US")
+        catalog = gcp.biglake.Catalog("catalog",
+            name="my_catalog",
+            location="US")
         bucket = gcp.storage.Bucket("bucket",
+            name="my_bucket",
             location="US",
             force_destroy=True,
             uniform_bucket_level_access=True)
-        metadata_folder = gcp.storage.BucketObject("metadataFolder",
+        metadata_folder = gcp.storage.BucketObject("metadata_folder",
+            name="metadata/",
             content=" ",
             bucket=bucket.name)
-        data_folder = gcp.storage.BucketObject("dataFolder",
+        data_folder = gcp.storage.BucketObject("data_folder",
+            name="data/",
             content=" ",
             bucket=bucket.name)
         database = gcp.biglake.Database("database",
+            name="my_database",
             catalog=catalog.id,
             type="HIVE",
             hive_options=gcp.biglake.DatabaseHiveOptionsArgs(
@@ -338,6 +344,7 @@ class Table(pulumi.CustomResource):
                 },
             ))
         table = gcp.biglake.Table("table",
+            name="my_table",
             database=database.id,
             type="HIVE",
             hive_options=gcp.biglake.TableHiveOptionsArgs(
@@ -407,18 +414,24 @@ class Table(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        catalog = gcp.biglake.Catalog("catalog", location="US")
+        catalog = gcp.biglake.Catalog("catalog",
+            name="my_catalog",
+            location="US")
         bucket = gcp.storage.Bucket("bucket",
+            name="my_bucket",
             location="US",
             force_destroy=True,
             uniform_bucket_level_access=True)
-        metadata_folder = gcp.storage.BucketObject("metadataFolder",
+        metadata_folder = gcp.storage.BucketObject("metadata_folder",
+            name="metadata/",
             content=" ",
             bucket=bucket.name)
-        data_folder = gcp.storage.BucketObject("dataFolder",
+        data_folder = gcp.storage.BucketObject("data_folder",
+            name="data/",
             content=" ",
             bucket=bucket.name)
         database = gcp.biglake.Database("database",
+            name="my_database",
             catalog=catalog.id,
             type="HIVE",
             hive_options=gcp.biglake.DatabaseHiveOptionsArgs(
@@ -428,6 +441,7 @@ class Table(pulumi.CustomResource):
                 },
             ))
         table = gcp.biglake.Table("table",
+            name="my_table",
             database=database.id,
             type="HIVE",
             hive_options=gcp.biglake.TableHiveOptionsArgs(

@@ -109,9 +109,9 @@ def get_instance_iam_policy(instance_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.securesourcemanager.get_instance_iam_policy(project=google_secure_source_manager_instance["default"]["project"],
-        location=google_secure_source_manager_instance["default"]["location"],
-        instance_id=google_secure_source_manager_instance["default"]["instance_id"])
+    policy = gcp.securesourcemanager.get_instance_iam_policy(project=default["project"],
+        location=default["location"],
+        instance_id=default["instanceId"])
     ```
 
 
@@ -152,9 +152,9 @@ def get_instance_iam_policy_output(instance_id: Optional[pulumi.Input[str]] = No
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.securesourcemanager.get_instance_iam_policy(project=google_secure_source_manager_instance["default"]["project"],
-        location=google_secure_source_manager_instance["default"]["location"],
-        instance_id=google_secure_source_manager_instance["default"]["instance_id"])
+    policy = gcp.securesourcemanager.get_instance_iam_policy(project=default["project"],
+        location=default["location"],
+        instance_id=default["instanceId"])
     ```
 
 

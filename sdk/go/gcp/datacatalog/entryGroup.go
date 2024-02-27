@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := datacatalog.NewEntryGroup(ctx, "basicEntryGroup", &datacatalog.EntryGroupArgs{
+//			_, err := datacatalog.NewEntryGroup(ctx, "basic_entry_group", &datacatalog.EntryGroupArgs{
 //				EntryGroupId: pulumi.String("my_group"),
 //			})
 //			if err != nil {
@@ -60,10 +60,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := datacatalog.NewEntryGroup(ctx, "basicEntryGroup", &datacatalog.EntryGroupArgs{
-//				Description:  pulumi.String("example entry group"),
-//				DisplayName:  pulumi.String("entry group"),
+//			_, err := datacatalog.NewEntryGroup(ctx, "basic_entry_group", &datacatalog.EntryGroupArgs{
 //				EntryGroupId: pulumi.String("my_group"),
+//				DisplayName:  pulumi.String("entry group"),
+//				Description:  pulumi.String("example entry group"),
 //			})
 //			if err != nil {
 //				return err

@@ -33,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			my_org_folders, err := organizations.GetFolders(ctx, &organizations.GetFoldersArgs{
-//				ParentId: fmt.Sprintf("organizations/%v", _var.Organization_id),
+//				ParentId: fmt.Sprintf("organizations/%v", organizationId),
 //			}, nil)
 //			if err != nil {
 //				return err

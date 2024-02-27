@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.CloudRun
         /// {
         ///     var policy = Gcp.CloudRun.GetServiceIamPolicy.Invoke(new()
         ///     {
-        ///         Location = google_cloud_run_service.Default.Location,
-        ///         Project = google_cloud_run_service.Default.Project,
-        ///         Service = google_cloud_run_service.Default.Name,
+        ///         Location = @default.Location,
+        ///         Project = @default.Project,
+        ///         Service = @default.Name,
         ///     });
         /// 
         /// });
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.CloudRun
         /// {
         ///     var policy = Gcp.CloudRun.GetServiceIamPolicy.Invoke(new()
         ///     {
-        ///         Location = google_cloud_run_service.Default.Location,
-        ///         Project = google_cloud_run_service.Default.Project,
-        ///         Service = google_cloud_run_service.Default.Name,
+        ///         Location = @default.Location,
+        ///         Project = @default.Project,
+        ///         Service = @default.Name,
         ///     });
         /// 
         /// });

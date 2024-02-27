@@ -36,6 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewPublicAdvertisedPrefix(ctx, "prefixes", &compute.PublicAdvertisedPrefixArgs{
+//				Name:              pulumi.String("my-prefix"),
 //				Description:       pulumi.String("description"),
 //				DnsVerificationIp: pulumi.String("127.127.0.0"),
 //				IpCidrRange:       pulumi.String("127.127.0.0/16"),

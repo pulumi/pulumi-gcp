@@ -53,9 +53,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var policy = new Gcp.Compute.InstanceIAMPolicy("policy", new()
     ///     {
-    ///         Project = google_compute_instance.Default.Project,
-    ///         Zone = google_compute_instance.Default.Zone,
-    ///         InstanceName = google_compute_instance.Default.Name,
+    ///         Project = @default.Project,
+    ///         Zone = @default.Zone,
+    ///         InstanceName = @default.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -95,9 +95,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var policy = new Gcp.Compute.InstanceIAMPolicy("policy", new()
     ///     {
-    ///         Project = google_compute_instance.Default.Project,
-    ///         Zone = google_compute_instance.Default.Zone,
-    ///         InstanceName = google_compute_instance.Default.Name,
+    ///         Project = @default.Project,
+    ///         Zone = @default.Zone,
+    ///         InstanceName = @default.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -115,9 +115,9 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var binding = new Gcp.Compute.InstanceIAMBinding("binding", new()
     ///     {
-    ///         Project = google_compute_instance.Default.Project,
-    ///         Zone = google_compute_instance.Default.Zone,
-    ///         InstanceName = google_compute_instance.Default.Name,
+    ///         Project = @default.Project,
+    ///         Zone = @default.Zone,
+    ///         InstanceName = @default.Name,
     ///         Role = "roles/compute.osLogin",
     ///         Members = new[]
     ///         {
@@ -140,9 +140,9 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var binding = new Gcp.Compute.InstanceIAMBinding("binding", new()
     ///     {
-    ///         Project = google_compute_instance.Default.Project,
-    ///         Zone = google_compute_instance.Default.Zone,
-    ///         InstanceName = google_compute_instance.Default.Name,
+    ///         Project = @default.Project,
+    ///         Zone = @default.Zone,
+    ///         InstanceName = @default.Name,
     ///         Role = "roles/compute.osLogin",
     ///         Members = new[]
     ///         {
@@ -170,9 +170,9 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var member = new Gcp.Compute.InstanceIAMMember("member", new()
     ///     {
-    ///         Project = google_compute_instance.Default.Project,
-    ///         Zone = google_compute_instance.Default.Zone,
-    ///         InstanceName = google_compute_instance.Default.Name,
+    ///         Project = @default.Project,
+    ///         Zone = @default.Zone,
+    ///         InstanceName = @default.Name,
     ///         Role = "roles/compute.osLogin",
     ///         Member = "user:jane@example.com",
     ///     });
@@ -192,9 +192,9 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var member = new Gcp.Compute.InstanceIAMMember("member", new()
     ///     {
-    ///         Project = google_compute_instance.Default.Project,
-    ///         Zone = google_compute_instance.Default.Zone,
-    ///         InstanceName = google_compute_instance.Default.Name,
+    ///         Project = @default.Project,
+    ///         Zone = @default.Zone,
+    ///         InstanceName = @default.Name,
     ///         Role = "roles/compute.osLogin",
     ///         Member = "user:jane@example.com",
     ///         Condition = new Gcp.Compute.Inputs.InstanceIAMMemberConditionArgs

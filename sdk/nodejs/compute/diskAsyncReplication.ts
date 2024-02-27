@@ -18,11 +18,13 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const primary_disk = new gcp.compute.Disk("primary-disk", {
+ *     name: "primary-disk",
  *     type: "pd-ssd",
  *     zone: "europe-west4-a",
  *     physicalBlockSizeBytes: 4096,
  * });
  * const secondary_disk = new gcp.compute.Disk("secondary-disk", {
+ *     name: "secondary-disk",
  *     type: "pd-ssd",
  *     zone: "europe-west3-a",
  *     asyncPrimaryDisk: {

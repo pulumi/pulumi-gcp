@@ -51,8 +51,8 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     ///     var policy = new Gcp.SecretManager.SecretIamPolicy("policy", new()
     ///     {
-    ///         Project = google_secret_manager_secret.Secret_basic.Project,
-    ///         SecretId = google_secret_manager_secret.Secret_basic.Secret_id,
+    ///         Project = secret_basic.Project,
+    ///         SecretId = secret_basic.SecretId,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -71,8 +71,8 @@ namespace Pulumi.Gcp.SecretManager
     /// {
     ///     var binding = new Gcp.SecretManager.SecretIamBinding("binding", new()
     ///     {
-    ///         Project = google_secret_manager_secret.Secret_basic.Project,
-    ///         SecretId = google_secret_manager_secret.Secret_basic.Secret_id,
+    ///         Project = secret_basic.Project,
+    ///         SecretId = secret_basic.SecretId,
     ///         Role = "roles/secretmanager.secretAccessor",
     ///         Members = new[]
     ///         {
@@ -95,8 +95,8 @@ namespace Pulumi.Gcp.SecretManager
     /// {
     ///     var member = new Gcp.SecretManager.SecretIamMember("member", new()
     ///     {
-    ///         Project = google_secret_manager_secret.Secret_basic.Project,
-    ///         SecretId = google_secret_manager_secret.Secret_basic.Secret_id,
+    ///         Project = secret_basic.Project,
+    ///         SecretId = secret_basic.SecretId,
     ///         Role = "roles/secretmanager.secretAccessor",
     ///         Member = "user:jane@example.com",
     ///     });

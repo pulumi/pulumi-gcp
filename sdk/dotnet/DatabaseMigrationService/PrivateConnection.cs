@@ -29,12 +29,12 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = Gcp.Compute.GetNetwork.Invoke(new()
+    ///     var @default = Gcp.Compute.GetNetwork.Invoke(new()
     ///     {
     ///         Name = "my-network",
     ///     });
     /// 
-    ///     var defaultPrivateConnection = new Gcp.DatabaseMigrationService.PrivateConnection("defaultPrivateConnection", new()
+    ///     var defaultPrivateConnection = new Gcp.DatabaseMigrationService.PrivateConnection("default", new()
     ///     {
     ///         DisplayName = "dbms_pc",
     ///         Location = "us-central1",
@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///         },
     ///         VpcPeeringConfig = new Gcp.DatabaseMigrationService.Inputs.PrivateConnectionVpcPeeringConfigArgs
     ///         {
-    ///             VpcName = defaultNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///             VpcName = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
     ///             Subnet = "10.0.0.0/29",
     ///         },
     ///     });

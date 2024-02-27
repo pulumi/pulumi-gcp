@@ -16,6 +16,134 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// * [Understanding Certificate Templates](https://cloud.google.com/certificate-authority-service/docs/certificate-template)
     /// * [Common configurations and Certificate Profiles](https://cloud.google.com/certificate-authority-service/docs/certificate-profile)
     /// ## Example Usage
+    /// ### Basic_certificate_template
+    /// An example of a basic privateca certificate template
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.CertificateAuthority.CertificateTemplate("primary", new()
+    ///     {
+    ///         Location = "us-west1",
+    ///         Name = "template",
+    ///         Description = "An updated sample certificate template",
+    ///         IdentityConstraints = new Gcp.CertificateAuthority.Inputs.CertificateTemplateIdentityConstraintsArgs
+    ///         {
+    ///             AllowSubjectAltNamesPassthrough = true,
+    ///             AllowSubjectPassthrough = true,
+    ///             CelExpression = new Gcp.CertificateAuthority.Inputs.CertificateTemplateIdentityConstraintsCelExpressionArgs
+    ///             {
+    ///                 Description = "Always true",
+    ///                 Expression = "true",
+    ///                 Location = "any.file.anywhere",
+    ///                 Title = "Sample expression",
+    ///             },
+    ///         },
+    ///         PassthroughExtensions = new Gcp.CertificateAuthority.Inputs.CertificateTemplatePassthroughExtensionsArgs
+    ///         {
+    ///             AdditionalExtensions = new[]
+    ///             {
+    ///                 new Gcp.CertificateAuthority.Inputs.CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs
+    ///                 {
+    ///                     ObjectIdPaths = new[]
+    ///                     {
+    ///                         1,
+    ///                         6,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             KnownExtensions = new[]
+    ///             {
+    ///                 "EXTENDED_KEY_USAGE",
+    ///             },
+    ///         },
+    ///         PredefinedValues = new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesArgs
+    ///         {
+    ///             AdditionalExtensions = new[]
+    ///             {
+    ///                 new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesAdditionalExtensionArgs
+    ///                 {
+    ///                     ObjectId = new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs
+    ///                     {
+    ///                         ObjectIdPaths = new[]
+    ///                         {
+    ///                             1,
+    ///                             6,
+    ///                         },
+    ///                     },
+    ///                     Value = "c3RyaW5nCg==",
+    ///                     Critical = true,
+    ///                 },
+    ///             },
+    ///             AiaOcspServers = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             CaOptions = new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesCaOptionsArgs
+    ///             {
+    ///                 IsCa = false,
+    ///                 MaxIssuerPathLength = 6,
+    ///             },
+    ///             KeyUsage = new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesKeyUsageArgs
+    ///             {
+    ///                 BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs
+    ///                 {
+    ///                     CertSign = false,
+    ///                     ContentCommitment = true,
+    ///                     CrlSign = false,
+    ///                     DataEncipherment = true,
+    ///                     DecipherOnly = true,
+    ///                     DigitalSignature = true,
+    ///                     EncipherOnly = true,
+    ///                     KeyAgreement = true,
+    ///                     KeyEncipherment = true,
+    ///                 },
+    ///                 ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs
+    ///                 {
+    ///                     ClientAuth = true,
+    ///                     CodeSigning = true,
+    ///                     EmailProtection = true,
+    ///                     OcspSigning = true,
+    ///                     ServerAuth = true,
+    ///                     TimeStamping = true,
+    ///                 },
+    ///                 UnknownExtendedKeyUsages = new[]
+    ///                 {
+    ///                     new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs
+    ///                     {
+    ///                         ObjectIdPaths = new[]
+    ///                         {
+    ///                             1,
+    ///                             6,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             PolicyIds = new[]
+    ///             {
+    ///                 new Gcp.CertificateAuthority.Inputs.CertificateTemplatePredefinedValuesPolicyIdArgs
+    ///                 {
+    ///                     ObjectIdPaths = new[]
+    ///                     {
+    ///                         1,
+    ///                         6,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Project = "my-project-name",
+    ///         Labels = 
+    ///         {
+    ///             { "label-two", "value-two" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

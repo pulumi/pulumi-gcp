@@ -34,8 +34,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.gkebackup.BackupPlanIamPolicy("policy", {
- *     project: google_gke_backup_backup_plan.basic.project,
- *     location: google_gke_backup_backup_plan.basic.location,
+ *     project: basic.project,
+ *     location: basic.location,
+ *     name: basic.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -47,8 +48,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.gkebackup.BackupPlanIamBinding("binding", {
- *     project: google_gke_backup_backup_plan.basic.project,
- *     location: google_gke_backup_backup_plan.basic.location,
+ *     project: basic.project,
+ *     location: basic.location,
+ *     name: basic.name,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
  * });
@@ -61,8 +63,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.gkebackup.BackupPlanIamMember("member", {
- *     project: google_gke_backup_backup_plan.basic.project,
- *     location: google_gke_backup_backup_plan.basic.location,
+ *     project: basic.project,
+ *     location: basic.location,
+ *     name: basic.name,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
  * });

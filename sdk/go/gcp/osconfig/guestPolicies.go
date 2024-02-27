@@ -46,6 +46,7 @@ import (
 //				return err
 //			}
 //			foobar, err := compute.NewInstance(ctx, "foobar", &compute.InstanceArgs{
+//				Name:         pulumi.String("guest-policy-inst"),
 //				MachineType:  pulumi.String("e2-medium"),
 //				Zone:         pulumi.String("us-central1-a"),
 //				CanIpForward: pulumi.Bool(false),
@@ -66,11 +67,11 @@ import (
 //				Metadata: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = osconfig.NewGuestPolicies(ctx, "guestPolicies", &osconfig.GuestPoliciesArgs{
+//			_, err = osconfig.NewGuestPolicies(ctx, "guest_policies", &osconfig.GuestPoliciesArgs{
 //				GuestPolicyId: pulumi.String("guest-policy"),
 //				Assignment: &osconfig.GuestPoliciesAssignmentArgs{
 //					Instances: pulumi.StringArray{
@@ -83,7 +84,7 @@ import (
 //						DesiredState: pulumi.String("UPDATED"),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -106,7 +107,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := osconfig.NewGuestPolicies(ctx, "guestPolicies", &osconfig.GuestPoliciesArgs{
+//			_, err := osconfig.NewGuestPolicies(ctx, "guest_policies", &osconfig.GuestPoliciesArgs{
 //				GuestPolicyId: pulumi.String("guest-policy"),
 //				Assignment: &osconfig.GuestPoliciesAssignmentArgs{
 //					GroupLabels: osconfig.GuestPoliciesAssignmentGroupLabelArray{
@@ -162,7 +163,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -185,7 +186,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := osconfig.NewGuestPolicies(ctx, "guestPolicies", &osconfig.GuestPoliciesArgs{
+//			_, err := osconfig.NewGuestPolicies(ctx, "guest_policies", &osconfig.GuestPoliciesArgs{
 //				GuestPolicyId: pulumi.String("guest-policy"),
 //				Assignment: &osconfig.GuestPoliciesAssignmentArgs{
 //					Zones: pulumi.StringArray{
@@ -216,7 +217,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

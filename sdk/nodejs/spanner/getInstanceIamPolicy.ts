@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const foo = gcp.spanner.getInstanceIamPolicy({
- *     project: google_spanner_instance.instance.project,
- *     instance: google_spanner_instance.instance.name,
+ *     project: instance.project,
+ *     instance: instance.name,
  * });
  * ```
  */
@@ -72,8 +72,8 @@ export interface GetInstanceIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const foo = gcp.spanner.getInstanceIamPolicy({
- *     project: google_spanner_instance.instance.project,
- *     instance: google_spanner_instance.instance.name,
+ *     project: instance.project,
+ *     instance: instance.name,
  * });
  * ```
  */

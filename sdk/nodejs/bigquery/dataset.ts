@@ -42,8 +42,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "us"});
- * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.id});
+ * const keyRing = new gcp.kms.KeyRing("key_ring", {
+ *     name: "example-keyring",
+ *     location: "us",
+ * });
+ * const cryptoKey = new gcp.kms.CryptoKey("crypto_key", {
+ *     name: "example-key",
+ *     keyRing: keyRing.id,
+ * });
  * const dataset = new gcp.bigquery.Dataset("dataset", {
  *     datasetId: "example_dataset",
  *     friendlyName: "test",
@@ -118,12 +124,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const publicDataset = new gcp.bigquery.Dataset("publicDataset", {
+ * const _public = new gcp.bigquery.Dataset("public", {
  *     datasetId: "public_dataset",
  *     description: "This dataset is public",
  * });
- * const publicRoutine = new gcp.bigquery.Routine("publicRoutine", {
- *     datasetId: publicDataset.datasetId,
+ * const publicRoutine = new gcp.bigquery.Routine("public", {
+ *     datasetId: _public.datasetId,
  *     routineId: "public_routine",
  *     routineType: "TABLE_VALUED_FUNCTION",
  *     language: "SQL",
@@ -177,8 +183,6 @@ import * as utilities from "../utilities";
  *         externalSource: "aws-glue://arn:aws:glue:us-east-1:999999999999:database/database",
  *         connection: "projects/project/locations/aws-us-east-1/connections/connection",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

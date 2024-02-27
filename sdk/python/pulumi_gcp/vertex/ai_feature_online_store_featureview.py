@@ -457,6 +457,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featureonlinestore = gcp.vertex.AiFeatureOnlineStore("featureonlinestore",
+            name="example_feature_view",
             labels={
                 "foo": "bar",
             },
@@ -499,6 +500,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         ]
         \"\"\")
         featureview = gcp.vertex.AiFeatureOnlineStoreFeatureview("featureview",
+            name="example_feature_view",
             region="us-central1",
             feature_online_store=featureonlinestore.name,
             sync_config=gcp.vertex.AiFeatureOnlineStoreFeatureviewSyncConfigArgs(
@@ -517,6 +519,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featureonlinestore = gcp.vertex.AiFeatureOnlineStore("featureonlinestore",
+            name="example_feature_view_feature_registry",
             labels={
                 "foo": "bar",
             },
@@ -528,12 +531,12 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                     cpu_utilization_target=80,
                 ),
             ))
-        sample_dataset = gcp.bigquery.Dataset("sampleDataset",
+        sample_dataset = gcp.bigquery.Dataset("sample_dataset",
             dataset_id="example_feature_view_feature_registry",
             friendly_name="test",
             description="This is a test description",
             location="US")
-        sample_table = gcp.bigquery.Table("sampleTable",
+        sample_table = gcp.bigquery.Table("sample_table",
             deletion_protection=False,
             dataset_id=sample_dataset.dataset_id,
             table_id="example_feature_view_feature_registry",
@@ -555,7 +558,8 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             }
         ]
         \"\"\")
-        sample_feature_group = gcp.vertex.AiFeatureGroup("sampleFeatureGroup",
+        sample_feature_group = gcp.vertex.AiFeatureGroup("sample_feature_group",
+            name="example_feature_view_feature_registry",
             description="A sample feature group",
             region="us-central1",
             labels={
@@ -567,14 +571,16 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                 ),
                 entity_id_columns=["feature_id"],
             ))
-        sample_feature = gcp.vertex.AiFeatureGroupFeature("sampleFeature",
+        sample_feature = gcp.vertex.AiFeatureGroupFeature("sample_feature",
+            name="example_feature_view_feature_registry",
             region="us-central1",
             feature_group=sample_feature_group.name,
             description="A sample feature",
             labels={
                 "label-one": "value-one",
             })
-        featureview_featureregistry = gcp.vertex.AiFeatureOnlineStoreFeatureview("featureviewFeatureregistry",
+        featureview_featureregistry = gcp.vertex.AiFeatureOnlineStoreFeatureview("featureview_featureregistry",
+            name="example_feature_view_feature_registry",
             region="us-central1",
             feature_online_store=featureonlinestore.name,
             sync_config=gcp.vertex.AiFeatureOnlineStoreFeatureviewSyncConfigArgs(
@@ -594,6 +600,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featureonlinestore = gcp.vertex.AiFeatureOnlineStore("featureonlinestore",
+            name="example_feature_view_vector_search",
             labels={
                 "foo": "bar",
             },
@@ -607,14 +614,12 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             ),
             embedding_management=gcp.vertex.AiFeatureOnlineStoreEmbeddingManagementArgs(
                 enabled=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         tf_test_dataset = gcp.bigquery.Dataset("tf-test-dataset",
             dataset_id="example_feature_view_vector_search",
             friendly_name="test",
             description="This is a test description",
-            location="US",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            location="US")
         tf_test_table = gcp.bigquery.Table("tf-test-table",
             deletion_protection=False,
             dataset_id=tf_test_dataset.dataset_id,
@@ -663,9 +668,9 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
           "description": "Default timestamp value"
         }
         ]
-        \"\"\",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        featureview_vector_search = gcp.vertex.AiFeatureOnlineStoreFeatureview("featureviewVectorSearch",
+        \"\"\")
+        featureview_vector_search = gcp.vertex.AiFeatureOnlineStoreFeatureview("featureview_vector_search",
+            name="example_feature_view_vector_search",
             region="us-central1",
             feature_online_store=featureonlinestore.name,
             sync_config=gcp.vertex.AiFeatureOnlineStoreFeatureviewSyncConfigArgs(
@@ -684,8 +689,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                     leaf_node_embedding_count="1000",
                 ),
                 embedding_dimension=2,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         project = gcp.organizations.get_project()
         ```
 
@@ -765,6 +769,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featureonlinestore = gcp.vertex.AiFeatureOnlineStore("featureonlinestore",
+            name="example_feature_view",
             labels={
                 "foo": "bar",
             },
@@ -807,6 +812,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         ]
         \"\"\")
         featureview = gcp.vertex.AiFeatureOnlineStoreFeatureview("featureview",
+            name="example_feature_view",
             region="us-central1",
             feature_online_store=featureonlinestore.name,
             sync_config=gcp.vertex.AiFeatureOnlineStoreFeatureviewSyncConfigArgs(
@@ -825,6 +831,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featureonlinestore = gcp.vertex.AiFeatureOnlineStore("featureonlinestore",
+            name="example_feature_view_feature_registry",
             labels={
                 "foo": "bar",
             },
@@ -836,12 +843,12 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                     cpu_utilization_target=80,
                 ),
             ))
-        sample_dataset = gcp.bigquery.Dataset("sampleDataset",
+        sample_dataset = gcp.bigquery.Dataset("sample_dataset",
             dataset_id="example_feature_view_feature_registry",
             friendly_name="test",
             description="This is a test description",
             location="US")
-        sample_table = gcp.bigquery.Table("sampleTable",
+        sample_table = gcp.bigquery.Table("sample_table",
             deletion_protection=False,
             dataset_id=sample_dataset.dataset_id,
             table_id="example_feature_view_feature_registry",
@@ -863,7 +870,8 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             }
         ]
         \"\"\")
-        sample_feature_group = gcp.vertex.AiFeatureGroup("sampleFeatureGroup",
+        sample_feature_group = gcp.vertex.AiFeatureGroup("sample_feature_group",
+            name="example_feature_view_feature_registry",
             description="A sample feature group",
             region="us-central1",
             labels={
@@ -875,14 +883,16 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                 ),
                 entity_id_columns=["feature_id"],
             ))
-        sample_feature = gcp.vertex.AiFeatureGroupFeature("sampleFeature",
+        sample_feature = gcp.vertex.AiFeatureGroupFeature("sample_feature",
+            name="example_feature_view_feature_registry",
             region="us-central1",
             feature_group=sample_feature_group.name,
             description="A sample feature",
             labels={
                 "label-one": "value-one",
             })
-        featureview_featureregistry = gcp.vertex.AiFeatureOnlineStoreFeatureview("featureviewFeatureregistry",
+        featureview_featureregistry = gcp.vertex.AiFeatureOnlineStoreFeatureview("featureview_featureregistry",
+            name="example_feature_view_feature_registry",
             region="us-central1",
             feature_online_store=featureonlinestore.name,
             sync_config=gcp.vertex.AiFeatureOnlineStoreFeatureviewSyncConfigArgs(
@@ -902,6 +912,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featureonlinestore = gcp.vertex.AiFeatureOnlineStore("featureonlinestore",
+            name="example_feature_view_vector_search",
             labels={
                 "foo": "bar",
             },
@@ -915,14 +926,12 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             ),
             embedding_management=gcp.vertex.AiFeatureOnlineStoreEmbeddingManagementArgs(
                 enabled=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         tf_test_dataset = gcp.bigquery.Dataset("tf-test-dataset",
             dataset_id="example_feature_view_vector_search",
             friendly_name="test",
             description="This is a test description",
-            location="US",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            location="US")
         tf_test_table = gcp.bigquery.Table("tf-test-table",
             deletion_protection=False,
             dataset_id=tf_test_dataset.dataset_id,
@@ -971,9 +980,9 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
           "description": "Default timestamp value"
         }
         ]
-        \"\"\",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        featureview_vector_search = gcp.vertex.AiFeatureOnlineStoreFeatureview("featureviewVectorSearch",
+        \"\"\")
+        featureview_vector_search = gcp.vertex.AiFeatureOnlineStoreFeatureview("featureview_vector_search",
+            name="example_feature_view_vector_search",
             region="us-central1",
             feature_online_store=featureonlinestore.name,
             sync_config=gcp.vertex.AiFeatureOnlineStoreFeatureviewSyncConfigArgs(
@@ -992,8 +1001,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                     leaf_node_embedding_count="1000",
                 ),
                 embedding_dimension=2,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         project = gcp.organizations.get_project()
         ```
 

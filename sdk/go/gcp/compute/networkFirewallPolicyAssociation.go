@@ -28,18 +28,22 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			networkFirewallPolicy, err := compute.NewNetworkFirewallPolicy(ctx, "networkFirewallPolicy", &compute.NetworkFirewallPolicyArgs{
+//			networkFirewallPolicy, err := compute.NewNetworkFirewallPolicy(ctx, "network_firewall_policy", &compute.NetworkFirewallPolicyArgs{
+//				Name:        pulumi.String("policy"),
 //				Project:     pulumi.String("my-project-name"),
 //				Description: pulumi.String("Sample global network firewall policy"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			network, err := compute.NewNetwork(ctx, "network", nil)
+//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Name: pulumi.String("network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewNetworkFirewallPolicyAssociation(ctx, "primary", &compute.NetworkFirewallPolicyAssociationArgs{
+//				Name:             pulumi.String("association"),
 //				AttachmentTarget: network.ID(),
 //				FirewallPolicy:   networkFirewallPolicy.Name,
 //				Project:          pulumi.String("my-project-name"),

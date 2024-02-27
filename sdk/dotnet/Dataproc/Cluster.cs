@@ -33,6 +33,7 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var simplecluster = new Gcp.Dataproc.Cluster("simplecluster", new()
     ///     {
+    ///         Name = "simplecluster",
     ///         Region = "us-central1",
     ///     });
     /// 
@@ -56,6 +57,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     ///     var mycluster = new Gcp.Dataproc.Cluster("mycluster", new()
     ///     {
+    ///         Name = "mycluster",
     ///         Region = "us-central1",
     ///         GracefulDecommissionTimeout = "120s",
     ///         Labels = 
@@ -134,8 +136,10 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var acceleratedCluster = new Gcp.Dataproc.Cluster("acceleratedCluster", new()
+    ///     var acceleratedCluster = new Gcp.Dataproc.Cluster("accelerated_cluster", new()
     ///     {
+    ///         Name = "my-cluster-with-gpu",
+    ///         Region = "us-central1",
     ///         ClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigArgs
     ///         {
     ///             GceClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigGceClusterConfigArgs
@@ -148,13 +152,12 @@ namespace Pulumi.Gcp.Dataproc
     ///                 {
     ///                     new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigAcceleratorArgs
     ///                     {
-    ///                         AcceleratorCount = 1,
     ///                         AcceleratorType = "nvidia-tesla-k80",
+    ///                         AcceleratorCount = 1,
     ///                     },
     ///                 },
     ///             },
     ///         },
-    ///         Region = "us-central1",
     ///     });
     /// 
     /// });

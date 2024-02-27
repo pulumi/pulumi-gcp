@@ -13,7 +13,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my_runtime_config = new gcp.runtimeconfig.Config("my-runtime-config", {description: "Runtime configuration values for my service"});
+ * const my_runtime_config = new gcp.runtimeconfig.Config("my-runtime-config", {
+ *     name: "my-service-runtime-config",
+ *     description: "Runtime configuration values for my service",
+ * });
  * ```
  *
  * ## Import

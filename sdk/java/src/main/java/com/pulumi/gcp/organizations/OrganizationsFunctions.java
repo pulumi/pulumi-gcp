@@ -218,6 +218,8 @@ public final class OrganizationsFunctions {
      *             .build());
      * 
      *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
+     *             .name(&#34;My Project&#34;)
+     *             .projectId(&#34;your-project-id&#34;)
      *             .orgId(&#34;1234567&#34;)
      *             .billingAccount(acct.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
      *             .build());
@@ -261,6 +263,8 @@ public final class OrganizationsFunctions {
      *             .build());
      * 
      *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
+     *             .name(&#34;My Project&#34;)
+     *             .projectId(&#34;your-project-id&#34;)
      *             .orgId(&#34;1234567&#34;)
      *             .billingAccount(acct.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
      *             .build());
@@ -304,6 +308,8 @@ public final class OrganizationsFunctions {
      *             .build());
      * 
      *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
+     *             .name(&#34;My Project&#34;)
+     *             .projectId(&#34;your-project-id&#34;)
      *             .orgId(&#34;1234567&#34;)
      *             .billingAccount(acct.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
      *             .build());
@@ -347,6 +353,8 @@ public final class OrganizationsFunctions {
      *             .build());
      * 
      *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
+     *             .name(&#34;My Project&#34;)
+     *             .projectId(&#34;your-project-id&#34;)
      *             .orgId(&#34;1234567&#34;)
      *             .billingAccount(acct.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
      *             .build());
@@ -390,6 +398,8 @@ public final class OrganizationsFunctions {
      *             .build());
      * 
      *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
+     *             .name(&#34;My Project&#34;)
+     *             .projectId(&#34;your-project-id&#34;)
      *             .orgId(&#34;1234567&#34;)
      *             .billingAccount(acct.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
      *             .build());
@@ -433,6 +443,8 @@ public final class OrganizationsFunctions {
      *             .build());
      * 
      *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
+     *             .name(&#34;My Project&#34;)
+     *             .projectId(&#34;your-project-id&#34;)
      *             .orgId(&#34;1234567&#34;)
      *             .billingAccount(acct.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
      *             .build());
@@ -473,6 +485,40 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * ### Configure Kubernetes Provider With OAuth2 Access Token
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = OrganizationsFunctions.getClientConfig();
+     * 
+     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
+     *             .name(&#34;my-cluster&#34;)
+     *             .zone(&#34;us-east1-a&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClientConfigResult> getClientConfig() {
@@ -503,6 +549,40 @@ public final class OrganizationsFunctions {
      *         final var current = OrganizationsFunctions.getClientConfig();
      * 
      *         ctx.export(&#34;project&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()));
+     *     }
+     * }
+     * ```
+     * ### Configure Kubernetes Provider With OAuth2 Access Token
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = OrganizationsFunctions.getClientConfig();
+     * 
+     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
+     *             .name(&#34;my-cluster&#34;)
+     *             .zone(&#34;us-east1-a&#34;)
+     *             .build());
+     * 
      *     }
      * }
      * ```
@@ -539,6 +619,40 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * ### Configure Kubernetes Provider With OAuth2 Access Token
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = OrganizationsFunctions.getClientConfig();
+     * 
+     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
+     *             .name(&#34;my-cluster&#34;)
+     *             .zone(&#34;us-east1-a&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClientConfigResult> getClientConfig(InvokeArgs args) {
@@ -569,6 +683,40 @@ public final class OrganizationsFunctions {
      *         final var current = OrganizationsFunctions.getClientConfig();
      * 
      *         ctx.export(&#34;project&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()));
+     *     }
+     * }
+     * ```
+     * ### Configure Kubernetes Provider With OAuth2 Access Token
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = OrganizationsFunctions.getClientConfig();
+     * 
+     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
+     *             .name(&#34;my-cluster&#34;)
+     *             .zone(&#34;us-east1-a&#34;)
+     *             .build());
+     * 
      *     }
      * }
      * ```
@@ -605,6 +753,40 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * ### Configure Kubernetes Provider With OAuth2 Access Token
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = OrganizationsFunctions.getClientConfig();
+     * 
+     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
+     *             .name(&#34;my-cluster&#34;)
+     *             .zone(&#34;us-east1-a&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClientConfigResult> getClientConfig(InvokeArgs args, InvokeOptions options) {
@@ -635,6 +817,40 @@ public final class OrganizationsFunctions {
      *         final var current = OrganizationsFunctions.getClientConfig();
      * 
      *         ctx.export(&#34;project&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()));
+     *     }
+     * }
+     * ```
+     * ### Configure Kubernetes Provider With OAuth2 Access Token
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = OrganizationsFunctions.getClientConfig();
+     * 
+     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
+     *             .name(&#34;my-cluster&#34;)
+     *             .zone(&#34;us-east1-a&#34;)
+     *             .build());
+     * 
      *     }
      * }
      * ```
@@ -684,6 +900,58 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBinding;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBindingArgs;
+     * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.inputs.RoleRefArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var providerIdentity = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         final var provider = OrganizationsFunctions.getClientConfig();
+     * 
+     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
+     *             .name(&#34;my-cluster&#34;)
+     *             .zone(&#34;us-east1-a&#34;)
+     *             .build());
+     * 
+     *         var user = new ClusterRoleBinding(&#34;user&#34;, ClusterRoleBindingArgs.builder()        
+     *             .metadata(ObjectMetaArgs.builder()
+     *                 .name(&#34;provider-user-admin&#34;)
+     *                 .build())
+     *             .roleRef(RoleRefArgs.builder()
+     *                 .apiGroup(&#34;rbac.authorization.k8s.io&#34;)
+     *                 .kind(&#34;ClusterRole&#34;)
+     *                 .name(&#34;cluster-admin&#34;)
+     *                 .build())
+     *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfo() {
@@ -727,6 +995,58 @@ public final class OrganizationsFunctions {
      *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
      * 
      *         ctx.export(&#34;my-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *     }
+     * }
+     * ```
+     * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBinding;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBindingArgs;
+     * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.inputs.RoleRefArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var providerIdentity = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         final var provider = OrganizationsFunctions.getClientConfig();
+     * 
+     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
+     *             .name(&#34;my-cluster&#34;)
+     *             .zone(&#34;us-east1-a&#34;)
+     *             .build());
+     * 
+     *         var user = new ClusterRoleBinding(&#34;user&#34;, ClusterRoleBindingArgs.builder()        
+     *             .metadata(ObjectMetaArgs.builder()
+     *                 .name(&#34;provider-user-admin&#34;)
+     *                 .build())
+     *             .roleRef(RoleRefArgs.builder()
+     *                 .apiGroup(&#34;rbac.authorization.k8s.io&#34;)
+     *                 .kind(&#34;ClusterRole&#34;)
+     *                 .name(&#34;cluster-admin&#34;)
+     *                 .build())
+     *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .build());
+     * 
      *     }
      * }
      * ```
@@ -776,6 +1096,58 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBinding;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBindingArgs;
+     * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.inputs.RoleRefArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var providerIdentity = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         final var provider = OrganizationsFunctions.getClientConfig();
+     * 
+     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
+     *             .name(&#34;my-cluster&#34;)
+     *             .zone(&#34;us-east1-a&#34;)
+     *             .build());
+     * 
+     *         var user = new ClusterRoleBinding(&#34;user&#34;, ClusterRoleBindingArgs.builder()        
+     *             .metadata(ObjectMetaArgs.builder()
+     *                 .name(&#34;provider-user-admin&#34;)
+     *                 .build())
+     *             .roleRef(RoleRefArgs.builder()
+     *                 .apiGroup(&#34;rbac.authorization.k8s.io&#34;)
+     *                 .kind(&#34;ClusterRole&#34;)
+     *                 .name(&#34;cluster-admin&#34;)
+     *                 .build())
+     *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfo(InvokeArgs args) {
@@ -819,6 +1191,58 @@ public final class OrganizationsFunctions {
      *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
      * 
      *         ctx.export(&#34;my-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *     }
+     * }
+     * ```
+     * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBinding;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBindingArgs;
+     * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.inputs.RoleRefArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var providerIdentity = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         final var provider = OrganizationsFunctions.getClientConfig();
+     * 
+     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
+     *             .name(&#34;my-cluster&#34;)
+     *             .zone(&#34;us-east1-a&#34;)
+     *             .build());
+     * 
+     *         var user = new ClusterRoleBinding(&#34;user&#34;, ClusterRoleBindingArgs.builder()        
+     *             .metadata(ObjectMetaArgs.builder()
+     *                 .name(&#34;provider-user-admin&#34;)
+     *                 .build())
+     *             .roleRef(RoleRefArgs.builder()
+     *                 .apiGroup(&#34;rbac.authorization.k8s.io&#34;)
+     *                 .kind(&#34;ClusterRole&#34;)
+     *                 .name(&#34;cluster-admin&#34;)
+     *                 .build())
+     *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .build());
+     * 
      *     }
      * }
      * ```
@@ -868,6 +1292,58 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBinding;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBindingArgs;
+     * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.inputs.RoleRefArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var providerIdentity = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         final var provider = OrganizationsFunctions.getClientConfig();
+     * 
+     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
+     *             .name(&#34;my-cluster&#34;)
+     *             .zone(&#34;us-east1-a&#34;)
+     *             .build());
+     * 
+     *         var user = new ClusterRoleBinding(&#34;user&#34;, ClusterRoleBindingArgs.builder()        
+     *             .metadata(ObjectMetaArgs.builder()
+     *                 .name(&#34;provider-user-admin&#34;)
+     *                 .build())
+     *             .roleRef(RoleRefArgs.builder()
+     *                 .apiGroup(&#34;rbac.authorization.k8s.io&#34;)
+     *                 .kind(&#34;ClusterRole&#34;)
+     *                 .name(&#34;cluster-admin&#34;)
+     *                 .build())
+     *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfo(InvokeArgs args, InvokeOptions options) {
@@ -911,6 +1387,58 @@ public final class OrganizationsFunctions {
      *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
      * 
      *         ctx.export(&#34;my-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *     }
+     * }
+     * ```
+     * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBinding;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBindingArgs;
+     * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.inputs.RoleRefArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var providerIdentity = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         final var provider = OrganizationsFunctions.getClientConfig();
+     * 
+     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
+     *             .name(&#34;my-cluster&#34;)
+     *             .zone(&#34;us-east1-a&#34;)
+     *             .build());
+     * 
+     *         var user = new ClusterRoleBinding(&#34;user&#34;, ClusterRoleBindingArgs.builder()        
+     *             .metadata(ObjectMetaArgs.builder()
+     *                 .name(&#34;provider-user-admin&#34;)
+     *                 .build())
+     *             .roleRef(RoleRefArgs.builder()
+     *                 .apiGroup(&#34;rbac.authorization.k8s.io&#34;)
+     *                 .kind(&#34;ClusterRole&#34;)
+     *                 .name(&#34;cluster-admin&#34;)
+     *                 .build())
+     *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .build());
+     * 
      *     }
      * }
      * ```
@@ -1117,7 +1645,7 @@ public final class OrganizationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-org-folders = OrganizationsFunctions.getFolders(GetFoldersArgs.builder()
-     *             .parentId(String.format(&#34;organizations/%s&#34;, var_.organization_id()))
+     *             .parentId(String.format(&#34;organizations/%s&#34;, organizationId))
      *             .build());
      * 
      *         final var first-folder = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
@@ -1162,7 +1690,7 @@ public final class OrganizationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-org-folders = OrganizationsFunctions.getFolders(GetFoldersArgs.builder()
-     *             .parentId(String.format(&#34;organizations/%s&#34;, var_.organization_id()))
+     *             .parentId(String.format(&#34;organizations/%s&#34;, organizationId))
      *             .build());
      * 
      *         final var first-folder = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
@@ -1207,7 +1735,7 @@ public final class OrganizationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-org-folders = OrganizationsFunctions.getFolders(GetFoldersArgs.builder()
-     *             .parentId(String.format(&#34;organizations/%s&#34;, var_.organization_id()))
+     *             .parentId(String.format(&#34;organizations/%s&#34;, organizationId))
      *             .build());
      * 
      *         final var first-folder = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
@@ -1252,7 +1780,7 @@ public final class OrganizationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-org-folders = OrganizationsFunctions.getFolders(GetFoldersArgs.builder()
-     *             .parentId(String.format(&#34;organizations/%s&#34;, var_.organization_id()))
+     *             .parentId(String.format(&#34;organizations/%s&#34;, organizationId))
      *             .build());
      * 
      *         final var first-folder = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
@@ -1272,56 +1800,6 @@ public final class OrganizationsFunctions {
      * other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
      * 
      * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
-     *             .auditConfigs(GetIAMPolicyAuditConfigArgs.builder()
-     *                 .auditLogConfigs(                
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
-     *                         .exemptedMembers(&#34;user:you@domain.com&#34;)
-     *                         .logType(&#34;DATA_READ&#34;)
-     *                         .build(),
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
-     *                         .logType(&#34;DATA_WRITE&#34;)
-     *                         .build(),
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
-     *                         .logType(&#34;ADMIN_READ&#34;)
-     *                         .build())
-     *                 .service(&#34;cloudkms.googleapis.com&#34;)
-     *                 .build())
-     *             .bindings(            
-     *                 GetIAMPolicyBindingArgs.builder()
-     *                     .members(&#34;serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com&#34;)
-     *                     .role(&#34;roles/compute.instanceAdmin&#34;)
-     *                     .build(),
-     *                 GetIAMPolicyBindingArgs.builder()
-     *                     .members(&#34;user:alice@gmail.com&#34;)
-     *                     .role(&#34;roles/storage.objectViewer&#34;)
-     *                     .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      * This data source is used to define IAM policies to apply to other resources.
      * Currently, defining a policy through a datasource and referencing that policy
@@ -1336,56 +1814,6 @@ public final class OrganizationsFunctions {
      * other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
      * 
      * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
-     *             .auditConfigs(GetIAMPolicyAuditConfigArgs.builder()
-     *                 .auditLogConfigs(                
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
-     *                         .exemptedMembers(&#34;user:you@domain.com&#34;)
-     *                         .logType(&#34;DATA_READ&#34;)
-     *                         .build(),
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
-     *                         .logType(&#34;DATA_WRITE&#34;)
-     *                         .build(),
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
-     *                         .logType(&#34;ADMIN_READ&#34;)
-     *                         .build())
-     *                 .service(&#34;cloudkms.googleapis.com&#34;)
-     *                 .build())
-     *             .bindings(            
-     *                 GetIAMPolicyBindingArgs.builder()
-     *                     .members(&#34;serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com&#34;)
-     *                     .role(&#34;roles/compute.instanceAdmin&#34;)
-     *                     .build(),
-     *                 GetIAMPolicyBindingArgs.builder()
-     *                     .members(&#34;user:alice@gmail.com&#34;)
-     *                     .role(&#34;roles/storage.objectViewer&#34;)
-     *                     .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      * This data source is used to define IAM policies to apply to other resources.
      * Currently, defining a policy through a datasource and referencing that policy
@@ -1400,56 +1828,6 @@ public final class OrganizationsFunctions {
      * other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
      * 
      * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
-     *             .auditConfigs(GetIAMPolicyAuditConfigArgs.builder()
-     *                 .auditLogConfigs(                
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
-     *                         .exemptedMembers(&#34;user:you@domain.com&#34;)
-     *                         .logType(&#34;DATA_READ&#34;)
-     *                         .build(),
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
-     *                         .logType(&#34;DATA_WRITE&#34;)
-     *                         .build(),
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
-     *                         .logType(&#34;ADMIN_READ&#34;)
-     *                         .build())
-     *                 .service(&#34;cloudkms.googleapis.com&#34;)
-     *                 .build())
-     *             .bindings(            
-     *                 GetIAMPolicyBindingArgs.builder()
-     *                     .members(&#34;serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com&#34;)
-     *                     .role(&#34;roles/compute.instanceAdmin&#34;)
-     *                     .build(),
-     *                 GetIAMPolicyBindingArgs.builder()
-     *                     .members(&#34;user:alice@gmail.com&#34;)
-     *                     .role(&#34;roles/storage.objectViewer&#34;)
-     *                     .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      * This data source is used to define IAM policies to apply to other resources.
      * Currently, defining a policy through a datasource and referencing that policy
@@ -1464,56 +1842,6 @@ public final class OrganizationsFunctions {
      * other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
      * 
      * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
-     *             .auditConfigs(GetIAMPolicyAuditConfigArgs.builder()
-     *                 .auditLogConfigs(                
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
-     *                         .exemptedMembers(&#34;user:you@domain.com&#34;)
-     *                         .logType(&#34;DATA_READ&#34;)
-     *                         .build(),
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
-     *                         .logType(&#34;DATA_WRITE&#34;)
-     *                         .build(),
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
-     *                         .logType(&#34;ADMIN_READ&#34;)
-     *                         .build())
-     *                 .service(&#34;cloudkms.googleapis.com&#34;)
-     *                 .build())
-     *             .bindings(            
-     *                 GetIAMPolicyBindingArgs.builder()
-     *                     .members(&#34;serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com&#34;)
-     *                     .role(&#34;roles/compute.instanceAdmin&#34;)
-     *                     .build(),
-     *                 GetIAMPolicyBindingArgs.builder()
-     *                     .members(&#34;user:alice@gmail.com&#34;)
-     *                     .role(&#34;roles/storage.objectViewer&#34;)
-     *                     .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      * This data source is used to define IAM policies to apply to other resources.
      * Currently, defining a policy through a datasource and referencing that policy
@@ -1528,56 +1856,6 @@ public final class OrganizationsFunctions {
      * other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
      * 
      * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
-     *             .auditConfigs(GetIAMPolicyAuditConfigArgs.builder()
-     *                 .auditLogConfigs(                
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
-     *                         .exemptedMembers(&#34;user:you@domain.com&#34;)
-     *                         .logType(&#34;DATA_READ&#34;)
-     *                         .build(),
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
-     *                         .logType(&#34;DATA_WRITE&#34;)
-     *                         .build(),
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
-     *                         .logType(&#34;ADMIN_READ&#34;)
-     *                         .build())
-     *                 .service(&#34;cloudkms.googleapis.com&#34;)
-     *                 .build())
-     *             .bindings(            
-     *                 GetIAMPolicyBindingArgs.builder()
-     *                     .members(&#34;serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com&#34;)
-     *                     .role(&#34;roles/compute.instanceAdmin&#34;)
-     *                     .build(),
-     *                 GetIAMPolicyBindingArgs.builder()
-     *                     .members(&#34;user:alice@gmail.com&#34;)
-     *                     .role(&#34;roles/storage.objectViewer&#34;)
-     *                     .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      * This data source is used to define IAM policies to apply to other resources.
      * Currently, defining a policy through a datasource and referencing that policy
@@ -1592,56 +1870,6 @@ public final class OrganizationsFunctions {
      * other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
      * 
      * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
-     *             .auditConfigs(GetIAMPolicyAuditConfigArgs.builder()
-     *                 .auditLogConfigs(                
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
-     *                         .exemptedMembers(&#34;user:you@domain.com&#34;)
-     *                         .logType(&#34;DATA_READ&#34;)
-     *                         .build(),
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
-     *                         .logType(&#34;DATA_WRITE&#34;)
-     *                         .build(),
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
-     *                         .logType(&#34;ADMIN_READ&#34;)
-     *                         .build())
-     *                 .service(&#34;cloudkms.googleapis.com&#34;)
-     *                 .build())
-     *             .bindings(            
-     *                 GetIAMPolicyBindingArgs.builder()
-     *                     .members(&#34;serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com&#34;)
-     *                     .role(&#34;roles/compute.instanceAdmin&#34;)
-     *                     .build(),
-     *                 GetIAMPolicyBindingArgs.builder()
-     *                     .members(&#34;user:alice@gmail.com&#34;)
-     *                     .role(&#34;roles/storage.objectViewer&#34;)
-     *                     .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      * This data source is used to define IAM policies to apply to other resources.
      * Currently, defining a policy through a datasource and referencing that policy

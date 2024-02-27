@@ -33,6 +33,7 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     ///     var cluster = new Gcp.EdgeContainer.Cluster("cluster", new()
     ///     {
+    ///         Name = "default",
     ///         Location = "us-central1",
     ///         Authorization = new Gcp.EdgeContainer.Inputs.ClusterAuthorizationArgs
     ///         {
@@ -60,6 +61,7 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     ///     var @default = new Gcp.EdgeContainer.NodePool("default", new()
     ///     {
+    ///         Name = "nodepool-1",
     ///         Cluster = cluster.Name,
     ///         Location = "us-central1",
     ///         NodeLocation = "us-central1-edge-example-edgesite",
@@ -87,6 +89,7 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     ///     var cluster = new Gcp.EdgeContainer.Cluster("cluster", new()
     ///     {
+    ///         Name = "default",
     ///         Location = "us-central1",
     ///         Authorization = new Gcp.EdgeContainer.Inputs.ClusterAuthorizationArgs
     ///         {
@@ -112,17 +115,19 @@ namespace Pulumi.Gcp.EdgeContainer
     ///         },
     ///     });
     /// 
-    ///     var keyRing = new Gcp.Kms.KeyRing("keyRing", new()
+    ///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()
     ///     {
+    ///         Name = "keyring",
     ///         Location = "us-central1",
     ///     });
     /// 
-    ///     var cryptoKeyCryptoKey = new Gcp.Kms.CryptoKey("cryptoKeyCryptoKey", new()
+    ///     var cryptoKeyCryptoKey = new Gcp.Kms.CryptoKey("crypto_key", new()
     ///     {
+    ///         Name = "key",
     ///         KeyRing = keyRing.Id,
     ///     });
     /// 
-    ///     var cryptoKeyCryptoKeyIAMMember = new Gcp.Kms.CryptoKeyIAMMember("cryptoKeyCryptoKeyIAMMember", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMMember("crypto_key", new()
     ///     {
     ///         CryptoKeyId = cryptoKeyCryptoKey.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
@@ -131,6 +136,7 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     ///     var @default = new Gcp.EdgeContainer.NodePool("default", new()
     ///     {
+    ///         Name = "nodepool-1",
     ///         Cluster = cluster.Name,
     ///         Location = "us-central1",
     ///         NodeLocation = "us-central1-edge-example-edgesite",
@@ -138,12 +144,6 @@ namespace Pulumi.Gcp.EdgeContainer
     ///         LocalDiskEncryption = new Gcp.EdgeContainer.Inputs.NodePoolLocalDiskEncryptionArgs
     ///         {
     ///             KmsKey = cryptoKeyCryptoKey.Id,
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             cryptoKeyCryptoKeyIAMMember,
     ///         },
     ///     });
     /// 
@@ -161,8 +161,9 @@ namespace Pulumi.Gcp.EdgeContainer
     /// {
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var defaultCluster = new Gcp.EdgeContainer.Cluster("defaultCluster", new()
+    ///     var @default = new Gcp.EdgeContainer.Cluster("default", new()
     ///     {
+    ///         Name = "",
     ///         Location = "us-central1",
     ///         Authorization = new Gcp.EdgeContainer.Inputs.ClusterAuthorizationArgs
     ///         {
@@ -202,9 +203,10 @@ namespace Pulumi.Gcp.EdgeContainer
     ///         },
     ///     });
     /// 
-    ///     var defaultNodePool = new Gcp.EdgeContainer.NodePool("defaultNodePool", new()
+    ///     var defaultNodePool = new Gcp.EdgeContainer.NodePool("default", new()
     ///     {
-    ///         Cluster = google_edgecontainer_cluster.Cluster.Name,
+    ///         Name = "nodepool-1",
+    ///         Cluster = cluster.Name,
     ///         Location = "us-central1",
     ///         NodeLocation = "us-central1-edge-example-edgesite",
     ///         NodeCount = 3,

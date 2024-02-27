@@ -20,6 +20,79 @@ import (
 //   - [Managing Workflows](https://cloud.google.com/workflows/docs/creating-updating-workflow)
 //
 // ## Example Usage
+// ### Workflow Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/workflows"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			testAccount, err := serviceaccount.NewAccount(ctx, "test_account", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("my-account"),
+//				DisplayName: pulumi.String("Test Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = workflows.NewWorkflow(ctx, "example", &workflows.WorkflowArgs{
+//				Name:           pulumi.String("workflow"),
+//				Region:         pulumi.String("us-central1"),
+//				Description:    pulumi.String("Magic"),
+//				ServiceAccount: testAccount.ID(),
+//				CallLogLevel:   pulumi.String("LOG_ERRORS_ONLY"),
+//				Labels: pulumi.StringMap{
+//					"env": pulumi.String("test"),
+//				},
+//				UserEnvVars: pulumi.StringMap{
+//					"url": pulumi.String("https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam"),
+//				},
+//				SourceContents: pulumi.String(`# This is a sample workflow. You can replace it with your source code.
+//
+// #
+// # This workflow does the following:
+// # - reads current time and date information from an external API and stores
+// #   the response in currentTime variable
+// # - retrieves a list of Wikipedia articles related to the day of the week
+// #   from currentTime
+// # - returns the list of articles as an output of the workflow
+// #
+// # Note: In Terraform you need to escape the $$ or it will cause errors.
+//
+//   - getCurrentTime:
+//     call: http.get
+//     args:
+//     url: ${sys.get_env("url")}
+//     result: currentTime
+//   - readWikipedia:
+//     call: http.get
+//     args:
+//     url: https://en.wikipedia.org/w/api.php
+//     query:
+//     action: opensearch
+//     search: ${currentTime.body.dayOfWeek}
+//     result: wikiResult
+//   - returnOutput:
+//     return: ${wikiResult.body[1]}
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

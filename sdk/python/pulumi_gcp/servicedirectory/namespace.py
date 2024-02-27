@@ -286,8 +286,7 @@ class Namespace(pulumi.CustomResource):
             labels={
                 "key": "value",
                 "foo": "bar",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
 
         ## Import
@@ -362,8 +361,7 @@ class Namespace(pulumi.CustomResource):
             labels={
                 "key": "value",
                 "foo": "bar",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
 
         ## Import

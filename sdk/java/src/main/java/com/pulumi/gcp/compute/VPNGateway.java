@@ -35,16 +35,17 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.VPNGateway;
  * import com.pulumi.gcp.compute.VPNGatewayArgs;
  * import com.pulumi.gcp.compute.Address;
+ * import com.pulumi.gcp.compute.AddressArgs;
  * import com.pulumi.gcp.compute.ForwardingRule;
  * import com.pulumi.gcp.compute.ForwardingRuleArgs;
  * import com.pulumi.gcp.compute.VPNTunnel;
  * import com.pulumi.gcp.compute.VPNTunnelArgs;
  * import com.pulumi.gcp.compute.Route;
  * import com.pulumi.gcp.compute.RouteArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -58,21 +59,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network(&#34;network1&#34;);
+ *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
+ *             .name(&#34;network-1&#34;)
+ *             .build());
  * 
  *         var targetGateway = new VPNGateway(&#34;targetGateway&#34;, VPNGatewayArgs.builder()        
+ *             .name(&#34;vpn-1&#34;)
  *             .network(network1.id())
  *             .build());
  * 
- *         var vpnStaticIp = new Address(&#34;vpnStaticIp&#34;);
+ *         var vpnStaticIp = new Address(&#34;vpnStaticIp&#34;, AddressArgs.builder()        
+ *             .name(&#34;vpn-static-ip&#34;)
+ *             .build());
  * 
  *         var frEsp = new ForwardingRule(&#34;frEsp&#34;, ForwardingRuleArgs.builder()        
+ *             .name(&#34;fr-esp&#34;)
  *             .ipProtocol(&#34;ESP&#34;)
  *             .ipAddress(vpnStaticIp.address())
  *             .target(targetGateway.id())
  *             .build());
  * 
  *         var frUdp500 = new ForwardingRule(&#34;frUdp500&#34;, ForwardingRuleArgs.builder()        
+ *             .name(&#34;fr-udp500&#34;)
  *             .ipProtocol(&#34;UDP&#34;)
  *             .portRange(&#34;500&#34;)
  *             .ipAddress(vpnStaticIp.address())
@@ -80,6 +88,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var frUdp4500 = new ForwardingRule(&#34;frUdp4500&#34;, ForwardingRuleArgs.builder()        
+ *             .name(&#34;fr-udp4500&#34;)
  *             .ipProtocol(&#34;UDP&#34;)
  *             .portRange(&#34;4500&#34;)
  *             .ipAddress(vpnStaticIp.address())
@@ -87,17 +96,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var tunnel1 = new VPNTunnel(&#34;tunnel1&#34;, VPNTunnelArgs.builder()        
+ *             .name(&#34;tunnel1&#34;)
  *             .peerIp(&#34;15.0.0.120&#34;)
  *             .sharedSecret(&#34;a secret message&#34;)
  *             .targetVpnGateway(targetGateway.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
- *                     frEsp,
- *                     frUdp500,
- *                     frUdp4500)
- *                 .build());
+ *             .build());
  * 
  *         var route1 = new Route(&#34;route1&#34;, RouteArgs.builder()        
+ *             .name(&#34;route1&#34;)
  *             .network(network1.name())
  *             .destRange(&#34;15.0.0.0/24&#34;)
  *             .priority(1000)

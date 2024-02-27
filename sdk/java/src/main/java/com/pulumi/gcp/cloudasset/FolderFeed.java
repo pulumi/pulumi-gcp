@@ -27,6 +27,77 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/asset-inventory/docs)
  * 
  * ## Example Usage
+ * ### Cloud Asset Folder Feed
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.organizations.Folder;
+ * import com.pulumi.gcp.organizations.FolderArgs;
+ * import com.pulumi.gcp.cloudasset.FolderFeed;
+ * import com.pulumi.gcp.cloudasset.FolderFeedArgs;
+ * import com.pulumi.gcp.cloudasset.inputs.FolderFeedFeedOutputConfigArgs;
+ * import com.pulumi.gcp.cloudasset.inputs.FolderFeedFeedOutputConfigPubsubDestinationArgs;
+ * import com.pulumi.gcp.cloudasset.inputs.FolderFeedConditionArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var feedOutput = new Topic(&#34;feedOutput&#34;, TopicArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .name(&#34;network-updates&#34;)
+ *             .build());
+ * 
+ *         var myFolder = new Folder(&#34;myFolder&#34;, FolderArgs.builder()        
+ *             .displayName(&#34;Networking&#34;)
+ *             .parent(&#34;organizations/123456789&#34;)
+ *             .build());
+ * 
+ *         var folderFeed = new FolderFeed(&#34;folderFeed&#34;, FolderFeedArgs.builder()        
+ *             .billingProject(&#34;my-project-name&#34;)
+ *             .folder(myFolder.folderId())
+ *             .feedId(&#34;network-updates&#34;)
+ *             .contentType(&#34;RESOURCE&#34;)
+ *             .assetTypes(            
+ *                 &#34;compute.googleapis.com/Subnetwork&#34;,
+ *                 &#34;compute.googleapis.com/Network&#34;)
+ *             .feedOutputConfig(FolderFeedFeedOutputConfigArgs.builder()
+ *                 .pubsubDestination(FolderFeedFeedOutputConfigPubsubDestinationArgs.builder()
+ *                     .topic(feedOutput.id())
+ *                     .build())
+ *                 .build())
+ *             .condition(FolderFeedConditionArgs.builder()
+ *                 .expression(&#34;&#34;&#34;
+ * !temporal_asset.deleted &amp;&amp;
+ * temporal_asset.prior_asset_state == google.cloud.asset.v1.TemporalAsset.PriorAssetState.DOES_NOT_EXIST
+ *                 &#34;&#34;&#34;)
+ *                 .title(&#34;created&#34;)
+ *                 .description(&#34;Send notifications on creation events&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .projectId(&#34;my-project-name&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

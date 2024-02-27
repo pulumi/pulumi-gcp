@@ -55,9 +55,9 @@ import (
 //				return err
 //			}
 //			_, err = notebooks.NewInstanceIamPolicy(ctx, "policy", &notebooks.InstanceIamPolicyArgs{
-//				Project:      pulumi.Any(google_notebooks_instance.Instance.Project),
-//				Location:     pulumi.Any(google_notebooks_instance.Instance.Location),
-//				InstanceName: pulumi.Any(google_notebooks_instance.Instance.Name),
+//				Project:      pulumi.Any(instance.Project),
+//				Location:     pulumi.Any(instance.Location),
+//				InstanceName: pulumi.Any(instance.Name),
 //				PolicyData:   *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -84,9 +84,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := notebooks.NewInstanceIamBinding(ctx, "binding", &notebooks.InstanceIamBindingArgs{
-//				Project:      pulumi.Any(google_notebooks_instance.Instance.Project),
-//				Location:     pulumi.Any(google_notebooks_instance.Instance.Location),
-//				InstanceName: pulumi.Any(google_notebooks_instance.Instance.Name),
+//				Project:      pulumi.Any(instance.Project),
+//				Location:     pulumi.Any(instance.Location),
+//				InstanceName: pulumi.Any(instance.Name),
 //				Role:         pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -116,9 +116,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := notebooks.NewInstanceIamMember(ctx, "member", &notebooks.InstanceIamMemberArgs{
-//				Project:      pulumi.Any(google_notebooks_instance.Instance.Project),
-//				Location:     pulumi.Any(google_notebooks_instance.Instance.Location),
-//				InstanceName: pulumi.Any(google_notebooks_instance.Instance.Name),
+//				Project:      pulumi.Any(instance.Project),
+//				Location:     pulumi.Any(instance.Location),
+//				InstanceName: pulumi.Any(instance.Name),
 //				Role:         pulumi.String("roles/viewer"),
 //				Member:       pulumi.String("user:jane@example.com"),
 //			})

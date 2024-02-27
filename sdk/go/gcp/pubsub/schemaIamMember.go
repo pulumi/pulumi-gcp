@@ -55,8 +55,8 @@ import (
 //				return err
 //			}
 //			_, err = pubsub.NewSchemaIamPolicy(ctx, "policy", &pubsub.SchemaIamPolicyArgs{
-//				Project:    pulumi.Any(google_pubsub_schema.Example.Project),
-//				Schema:     pulumi.Any(google_pubsub_schema.Example.Name),
+//				Project:    pulumi.Any(example.Project),
+//				Schema:     pulumi.Any(example.Name),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -83,8 +83,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := pubsub.NewSchemaIamBinding(ctx, "binding", &pubsub.SchemaIamBindingArgs{
-//				Project: pulumi.Any(google_pubsub_schema.Example.Project),
-//				Schema:  pulumi.Any(google_pubsub_schema.Example.Name),
+//				Project: pulumi.Any(example.Project),
+//				Schema:  pulumi.Any(example.Name),
 //				Role:    pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -114,8 +114,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := pubsub.NewSchemaIamMember(ctx, "member", &pubsub.SchemaIamMemberArgs{
-//				Project: pulumi.Any(google_pubsub_schema.Example.Project),
-//				Schema:  pulumi.Any(google_pubsub_schema.Example.Name),
+//				Project: pulumi.Any(example.Project),
+//				Schema:  pulumi.Any(example.Name),
 //				Role:    pulumi.String("roles/viewer"),
 //				Member:  pulumi.String("user:jane@example.com"),
 //			})

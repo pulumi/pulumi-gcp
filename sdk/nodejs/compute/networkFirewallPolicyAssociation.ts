@@ -13,12 +13,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const networkFirewallPolicy = new gcp.compute.NetworkFirewallPolicy("networkFirewallPolicy", {
+ * const networkFirewallPolicy = new gcp.compute.NetworkFirewallPolicy("network_firewall_policy", {
+ *     name: "policy",
  *     project: "my-project-name",
  *     description: "Sample global network firewall policy",
  * });
- * const network = new gcp.compute.Network("network", {});
+ * const network = new gcp.compute.Network("network", {name: "network"});
  * const primary = new gcp.compute.NetworkFirewallPolicyAssociation("primary", {
+ *     name: "association",
  *     attachmentTarget: network.id,
  *     firewallPolicy: networkFirewallPolicy.name,
  *     project: "my-project-name",

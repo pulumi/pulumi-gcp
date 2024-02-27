@@ -30,6 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkeonprem.NewBareMetalCluster(ctx, "default-basic", &gkeonprem.BareMetalClusterArgs{
+//				Name:                   pulumi.String("my-cluster"),
 //				Location:               pulumi.String("us-west1"),
 //				AdminClusterMembership: pulumi.String("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"),
 //				BareMetalVersion:       pulumi.String("1.12.3"),
@@ -111,6 +112,7 @@ import (
 //				return err
 //			}
 //			_, err = gkeonprem.NewBareMetalNodePool(ctx, "nodepool-basic", &gkeonprem.BareMetalNodePoolArgs{
+//				Name:             pulumi.String("my-nodepool"),
 //				BareMetalCluster: default_basic.Name,
 //				Location:         pulumi.String("us-west1"),
 //				NodePoolConfig: &gkeonprem.BareMetalNodePoolNodePoolConfigArgs{
@@ -145,6 +147,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkeonprem.NewBareMetalCluster(ctx, "default-full", &gkeonprem.BareMetalClusterArgs{
+//				Name:                   pulumi.String("my-cluster"),
 //				Location:               pulumi.String("us-west1"),
 //				AdminClusterMembership: pulumi.String("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"),
 //				BareMetalVersion:       pulumi.String("1.12.3"),
@@ -226,6 +229,7 @@ import (
 //				return err
 //			}
 //			_, err = gkeonprem.NewBareMetalNodePool(ctx, "nodepool-full", &gkeonprem.BareMetalNodePoolArgs{
+//				Name:             pulumi.String("my-nodepool"),
 //				DisplayName:      pulumi.String("test-name"),
 //				BareMetalCluster: default_full.Name,
 //				Location:         pulumi.String("us-west1"),

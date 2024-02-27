@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *     name: "vpc-con",
  * });
  * const connector = new gcp.vpcaccess.Connector("connector", {
+ *     name: "vpc-con",
  *     ipCidrRange: "10.8.0.0/28",
  *     network: "default",
  *     region: "us-central1",
@@ -105,6 +106,7 @@ export interface GetConnectorResult {
  *     name: "vpc-con",
  * });
  * const connector = new gcp.vpcaccess.Connector("connector", {
+ *     name: "vpc-con",
  *     ipCidrRange: "10.8.0.0/28",
  *     network: "default",
  *     region: "us-central1",

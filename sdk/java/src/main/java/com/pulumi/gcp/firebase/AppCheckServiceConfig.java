@@ -35,7 +35,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.firebase.AppCheckServiceConfig;
  * import com.pulumi.gcp.firebase.AppCheckServiceConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -58,9 +57,7 @@ import javax.annotation.Nullable;
  *         var default_ = new AppCheckServiceConfig(&#34;default&#34;, AppCheckServiceConfigArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .serviceId(&#34;firestore.googleapis.com&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(appcheck)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -76,7 +73,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.firebase.AppCheckServiceConfig;
  * import com.pulumi.gcp.firebase.AppCheckServiceConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -100,9 +96,7 @@ import javax.annotation.Nullable;
  *             .project(&#34;my-project-name&#34;)
  *             .serviceId(&#34;firebasestorage.googleapis.com&#34;)
  *             .enforcementMode(&#34;ENFORCED&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(appcheck)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -118,7 +112,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.firebase.AppCheckServiceConfig;
  * import com.pulumi.gcp.firebase.AppCheckServiceConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -142,9 +135,7 @@ import javax.annotation.Nullable;
  *             .project(&#34;my-project-name&#34;)
  *             .serviceId(&#34;firebasedatabase.googleapis.com&#34;)
  *             .enforcementMode(&#34;UNENFORCED&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(appcheck)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.compute.getImageIamPolicy({
- *     project: google_compute_image.example.project,
- *     image: google_compute_image.example.name,
+ *     project: example.project,
+ *     image: example.name,
  * });
  * ```
  */
@@ -73,8 +73,8 @@ export interface GetImageIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.compute.getImageIamPolicy({
- *     project: google_compute_image.example.project,
- *     image: google_compute_image.example.name,
+ *     project: example.project,
+ *     image: example.name,
  * });
  * ```
  */

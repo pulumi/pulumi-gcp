@@ -61,6 +61,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var note = new Note(&#34;note&#34;, NoteArgs.builder()        
+ *             .name(&#34;test-attestor-note&#34;)
  *             .attestationAuthority(NoteAttestationAuthorityArgs.builder()
  *                 .hint(NoteAttestationAuthorityHintArgs.builder()
  *                     .humanReadableName(&#34;My attestor&#34;)
@@ -69,6 +70,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var attestor = new Attestor(&#34;attestor&#34;, AttestorArgs.builder()        
+ *             .name(&#34;test-attestor&#34;)
  *             .attestationAuthorityNote(AttestorAttestationAuthorityNoteArgs.builder()
  *                 .noteReference(note.name())
  *                 .build())
@@ -124,6 +126,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var note = new Note(&#34;note&#34;, NoteArgs.builder()        
+ *             .name(&#34;test-attestor-note&#34;)
  *             .attestationAuthority(NoteAttestationAuthorityArgs.builder()
  *                 .hint(NoteAttestationAuthorityHintArgs.builder()
  *                     .humanReadableName(&#34;My attestor&#34;)
@@ -132,6 +135,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var attestor = new Attestor(&#34;attestor&#34;, AttestorArgs.builder()        
+ *             .name(&#34;test-attestor&#34;)
  *             .attestationAuthorityNote(AttestorAttestationAuthorityNoteArgs.builder()
  *                 .noteReference(note.name())
  *                 .build())

@@ -262,8 +262,9 @@ class QueueIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.cloudtasks.QueueIamPolicy("policy",
-            project=google_cloud_tasks_queue["default"]["project"],
-            location=google_cloud_tasks_queue["default"]["location"],
+            project=default["project"],
+            location=default["location"],
+            name=default["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -274,8 +275,9 @@ class QueueIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.cloudtasks.QueueIamBinding("binding",
-            project=google_cloud_tasks_queue["default"]["project"],
-            location=google_cloud_tasks_queue["default"]["location"],
+            project=default["project"],
+            location=default["location"],
+            name=default["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -287,8 +289,9 @@ class QueueIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.cloudtasks.QueueIamMember("member",
-            project=google_cloud_tasks_queue["default"]["project"],
-            location=google_cloud_tasks_queue["default"]["location"],
+            project=default["project"],
+            location=default["location"],
+            name=default["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -384,8 +387,9 @@ class QueueIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.cloudtasks.QueueIamPolicy("policy",
-            project=google_cloud_tasks_queue["default"]["project"],
-            location=google_cloud_tasks_queue["default"]["location"],
+            project=default["project"],
+            location=default["location"],
+            name=default["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -396,8 +400,9 @@ class QueueIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.cloudtasks.QueueIamBinding("binding",
-            project=google_cloud_tasks_queue["default"]["project"],
-            location=google_cloud_tasks_queue["default"]["location"],
+            project=default["project"],
+            location=default["location"],
+            name=default["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -409,8 +414,9 @@ class QueueIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.cloudtasks.QueueIamMember("member",
-            project=google_cloud_tasks_queue["default"]["project"],
-            location=google_cloud_tasks_queue["default"]["location"],
+            project=default["project"],
+            location=default["location"],
+            name=default["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

@@ -437,8 +437,11 @@ class BackendBucket(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        image_bucket = gcp.storage.Bucket("imageBucket", location="EU")
-        image_backend = gcp.compute.BackendBucket("imageBackend",
+        image_bucket = gcp.storage.Bucket("image_bucket",
+            name="image-store-bucket",
+            location="EU")
+        image_backend = gcp.compute.BackendBucket("image_backend",
+            name="image-backend-bucket",
             description="Contains beautiful images",
             bucket_name=image_bucket.name,
             enable_cdn=True)
@@ -449,11 +452,15 @@ class BackendBucket(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        image_backend_bucket = gcp.storage.Bucket("imageBackendBucket", location="EU")
+        image_backend_bucket = gcp.storage.Bucket("image_backend",
+            name="image-store-bucket",
+            location="EU")
         policy = gcp.compute.SecurityPolicy("policy",
+            name="image-store-bucket",
             description="basic security policy",
             type="CLOUD_ARMOR_EDGE")
-        image_backend_backend_bucket = gcp.compute.BackendBucket("imageBackendBackendBucket",
+        image_backend = gcp.compute.BackendBucket("image_backend",
+            name="image-backend-bucket",
             description="Contains beautiful images",
             bucket_name=image_backend_bucket.name,
             enable_cdn=True,
@@ -465,8 +472,11 @@ class BackendBucket(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        image_bucket = gcp.storage.Bucket("imageBucket", location="EU")
-        image_backend = gcp.compute.BackendBucket("imageBackend",
+        image_bucket = gcp.storage.Bucket("image_bucket",
+            name="image-backend-bucket",
+            location="EU")
+        image_backend = gcp.compute.BackendBucket("image_backend",
+            name="image-backend-bucket",
             description="Contains beautiful images",
             bucket_name=image_bucket.name,
             enable_cdn=True,
@@ -482,8 +492,11 @@ class BackendBucket(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        image_bucket = gcp.storage.Bucket("imageBucket", location="EU")
-        image_backend = gcp.compute.BackendBucket("imageBackend",
+        image_bucket = gcp.storage.Bucket("image_bucket",
+            name="image-backend-bucket",
+            location="EU")
+        image_backend = gcp.compute.BackendBucket("image_backend",
+            name="image-backend-bucket",
             description="Contains beautiful images",
             bucket_name=image_bucket.name,
             enable_cdn=True,
@@ -571,8 +584,11 @@ class BackendBucket(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        image_bucket = gcp.storage.Bucket("imageBucket", location="EU")
-        image_backend = gcp.compute.BackendBucket("imageBackend",
+        image_bucket = gcp.storage.Bucket("image_bucket",
+            name="image-store-bucket",
+            location="EU")
+        image_backend = gcp.compute.BackendBucket("image_backend",
+            name="image-backend-bucket",
             description="Contains beautiful images",
             bucket_name=image_bucket.name,
             enable_cdn=True)
@@ -583,11 +599,15 @@ class BackendBucket(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        image_backend_bucket = gcp.storage.Bucket("imageBackendBucket", location="EU")
+        image_backend_bucket = gcp.storage.Bucket("image_backend",
+            name="image-store-bucket",
+            location="EU")
         policy = gcp.compute.SecurityPolicy("policy",
+            name="image-store-bucket",
             description="basic security policy",
             type="CLOUD_ARMOR_EDGE")
-        image_backend_backend_bucket = gcp.compute.BackendBucket("imageBackendBackendBucket",
+        image_backend = gcp.compute.BackendBucket("image_backend",
+            name="image-backend-bucket",
             description="Contains beautiful images",
             bucket_name=image_backend_bucket.name,
             enable_cdn=True,
@@ -599,8 +619,11 @@ class BackendBucket(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        image_bucket = gcp.storage.Bucket("imageBucket", location="EU")
-        image_backend = gcp.compute.BackendBucket("imageBackend",
+        image_bucket = gcp.storage.Bucket("image_bucket",
+            name="image-backend-bucket",
+            location="EU")
+        image_backend = gcp.compute.BackendBucket("image_backend",
+            name="image-backend-bucket",
             description="Contains beautiful images",
             bucket_name=image_bucket.name,
             enable_cdn=True,
@@ -616,8 +639,11 @@ class BackendBucket(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        image_bucket = gcp.storage.Bucket("imageBucket", location="EU")
-        image_backend = gcp.compute.BackendBucket("imageBackend",
+        image_bucket = gcp.storage.Bucket("image_bucket",
+            name="image-backend-bucket",
+            location="EU")
+        image_backend = gcp.compute.BackendBucket("image_backend",
+            name="image-backend-bucket",
             description="Contains beautiful images",
             bucket_name=image_bucket.name,
             enable_cdn=True,

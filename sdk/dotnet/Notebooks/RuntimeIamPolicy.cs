@@ -51,9 +51,9 @@ namespace Pulumi.Gcp.Notebooks
     /// 
     ///     var policy = new Gcp.Notebooks.RuntimeIamPolicy("policy", new()
     ///     {
-    ///         Project = google_notebooks_runtime.Runtime.Project,
-    ///         Location = google_notebooks_runtime.Runtime.Location,
-    ///         RuntimeName = google_notebooks_runtime.Runtime.Name,
+    ///         Project = runtime.Project,
+    ///         Location = runtime.Location,
+    ///         RuntimeName = runtime.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -72,9 +72,9 @@ namespace Pulumi.Gcp.Notebooks
     /// {
     ///     var binding = new Gcp.Notebooks.RuntimeIamBinding("binding", new()
     ///     {
-    ///         Project = google_notebooks_runtime.Runtime.Project,
-    ///         Location = google_notebooks_runtime.Runtime.Location,
-    ///         RuntimeName = google_notebooks_runtime.Runtime.Name,
+    ///         Project = runtime.Project,
+    ///         Location = runtime.Location,
+    ///         RuntimeName = runtime.Name,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -97,9 +97,9 @@ namespace Pulumi.Gcp.Notebooks
     /// {
     ///     var member = new Gcp.Notebooks.RuntimeIamMember("member", new()
     ///     {
-    ///         Project = google_notebooks_runtime.Runtime.Project,
-    ///         Location = google_notebooks_runtime.Runtime.Location,
-    ///         RuntimeName = google_notebooks_runtime.Runtime.Name,
+    ///         Project = runtime.Project,
+    ///         Location = runtime.Location,
+    ///         RuntimeName = runtime.Name,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

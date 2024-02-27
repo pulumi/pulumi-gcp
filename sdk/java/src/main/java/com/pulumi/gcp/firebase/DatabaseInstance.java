@@ -25,7 +25,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.firebase.DatabaseInstance;
  * import com.pulumi.gcp.firebase.DatabaseInstanceArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -43,9 +42,7 @@ import javax.annotation.Nullable;
  *             .project(&#34;my-project-name&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .instanceId(&#34;active-db&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -59,7 +56,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.firebase.DatabaseInstance;
  * import com.pulumi.gcp.firebase.DatabaseInstanceArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -79,9 +75,7 @@ import javax.annotation.Nullable;
  *             .instanceId(&#34;disabled-db&#34;)
  *             .type(&#34;USER_DATABASE&#34;)
  *             .desiredState(&#34;DISABLED&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -101,7 +95,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.firebase.DatabaseInstance;
  * import com.pulumi.gcp.firebase.DatabaseInstanceArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -115,35 +108,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
+ *         var default_ = new Project(&#34;default&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;rtdb-project&#34;)
+ *             .name(&#34;rtdb-project&#34;)
  *             .orgId(&#34;123456789&#34;)
  *             .labels(Map.of(&#34;firebase&#34;, &#34;enabled&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
- *         var defaultFirebase_projectProject = new Project(&#34;defaultFirebase/projectProject&#34;, ProjectArgs.builder()        
- *             .project(defaultProject.projectId())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
+ *             .project(default_.projectId())
+ *             .build());
  * 
  *         var firebaseDatabase = new Service(&#34;firebaseDatabase&#34;, ServiceArgs.builder()        
- *             .project(defaultFirebase / projectProject.project())
+ *             .project(defaultProject.project())
  *             .service(&#34;firebasedatabase.googleapis.com&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultDatabaseInstance = new DatabaseInstance(&#34;defaultDatabaseInstance&#34;, DatabaseInstanceArgs.builder()        
- *             .project(defaultFirebase / projectProject.project())
+ *             .project(defaultProject.project())
  *             .region(&#34;us-central1&#34;)
  *             .instanceId(&#34;rtdb-project-default-rtdb&#34;)
  *             .type(&#34;DEFAULT_DATABASE&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .dependsOn(firebaseDatabase)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

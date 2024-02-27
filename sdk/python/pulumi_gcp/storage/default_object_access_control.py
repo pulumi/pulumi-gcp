@@ -322,8 +322,10 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket", location="US")
-        public_rule = gcp.storage.DefaultObjectAccessControl("publicRule",
+        bucket = gcp.storage.Bucket("bucket",
+            name="static-content-bucket",
+            location="US")
+        public_rule = gcp.storage.DefaultObjectAccessControl("public_rule",
             bucket=bucket.name,
             role="READER",
             entity="allUsers")
@@ -394,8 +396,10 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket", location="US")
-        public_rule = gcp.storage.DefaultObjectAccessControl("publicRule",
+        bucket = gcp.storage.Bucket("bucket",
+            name="static-content-bucket",
+            location="US")
+        public_rule = gcp.storage.DefaultObjectAccessControl("public_rule",
             bucket=bucket.name,
             role="READER",
             entity="allUsers")

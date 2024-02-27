@@ -35,17 +35,20 @@ namespace Pulumi.Gcp.CloudFunctions
     /// {
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
+    ///         Name = "test-bucket",
     ///         Location = "US",
     ///     });
     /// 
     ///     var archive = new Gcp.Storage.BucketObject("archive", new()
     ///     {
+    ///         Name = "index.zip",
     ///         Bucket = bucket.Name,
     ///         Source = new FileAsset("./path/to/zip/file/which/contains/code"),
     ///     });
     /// 
     ///     var function = new Gcp.CloudFunctions.Function("function", new()
     ///     {
+    ///         Name = "function-test",
     ///         Description = "My function",
     ///         Runtime = "nodejs16",
     ///         AvailableMemoryMb = 128,
@@ -79,17 +82,20 @@ namespace Pulumi.Gcp.CloudFunctions
     /// {
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
+    ///         Name = "test-bucket",
     ///         Location = "US",
     ///     });
     /// 
     ///     var archive = new Gcp.Storage.BucketObject("archive", new()
     ///     {
+    ///         Name = "index.zip",
     ///         Bucket = bucket.Name,
     ///         Source = new FileAsset("./path/to/zip/file/which/contains/code"),
     ///     });
     /// 
     ///     var function = new Gcp.CloudFunctions.Function("function", new()
     ///     {
+    ///         Name = "function-test",
     ///         Description = "My function",
     ///         Runtime = "nodejs16",
     ///         AvailableMemoryMb = 128,

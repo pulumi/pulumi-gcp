@@ -47,6 +47,7 @@ import (
 //				return err
 //			}
 //			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Name:                  pulumi.String("my-gke-cluster"),
 //				Location:              pulumi.String("us-central1"),
 //				RemoveDefaultNodePool: pulumi.Bool(true),
 //				InitialNodeCount:      pulumi.Int(1),
@@ -54,7 +55,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = container.NewNodePool(ctx, "primaryPreemptibleNodes", &container.NodePoolArgs{
+//			_, err = container.NewNodePool(ctx, "primary_preemptible_nodes", &container.NodePoolArgs{
+//				Name:      pulumi.String("my-node-pool"),
 //				Location:  pulumi.String("us-central1"),
 //				Cluster:   primary.Name,
 //				NodeCount: pulumi.Int(1),
@@ -79,6 +81,54 @@ import (
 // > **Note:** It is recommended that node pools be created and managed as separate resources as in the example above.
 // This allows node pools to be added and removed without recreating the cluster.  Node pools defined directly in the
 // `container.Cluster` resource cannot be removed without re-creating the cluster.
+// ### With The Default Node Pool
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := serviceaccount.NewAccount(ctx, "default", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("service-account-id"),
+//				DisplayName: pulumi.String("Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Name:             pulumi.String("marcellus-wallace"),
+//				Location:         pulumi.String("us-central1-a"),
+//				InitialNodeCount: pulumi.Int(3),
+//				NodeConfig: &container.ClusterNodeConfigArgs{
+//					ServiceAccount: _default.Email,
+//					OauthScopes: pulumi.StringArray{
+//						pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
+//					},
+//					Labels: pulumi.StringMap{
+//						"foo": pulumi.String("bar"),
+//					},
+//					Tags: pulumi.StringArray{
+//						pulumi.String("foo"),
+//						pulumi.String("bar"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Autopilot
 //
 // ```go
@@ -102,8 +152,9 @@ import (
 //				return err
 //			}
 //			_, err = container.NewCluster(ctx, "primary", &container.ClusterArgs{
-//				EnableAutopilot: pulumi.Bool(true),
+//				Name:            pulumi.String("marcellus-wallace"),
 //				Location:        pulumi.String("us-central1-a"),
+//				EnableAutopilot: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

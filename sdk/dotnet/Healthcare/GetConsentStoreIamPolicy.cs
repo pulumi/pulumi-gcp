@@ -28,8 +28,8 @@ namespace Pulumi.Gcp.Healthcare
         /// {
         ///     var policy = Gcp.Healthcare.GetConsentStoreIamPolicy.Invoke(new()
         ///     {
-        ///         Dataset = google_healthcare_consent_store.My_consent.Dataset,
-        ///         ConsentStoreId = google_healthcare_consent_store.My_consent.Name,
+        ///         Dataset = my_consent.Dataset,
+        ///         ConsentStoreId = my_consent.Name,
         ///     });
         /// 
         /// });
@@ -55,8 +55,8 @@ namespace Pulumi.Gcp.Healthcare
         /// {
         ///     var policy = Gcp.Healthcare.GetConsentStoreIamPolicy.Invoke(new()
         ///     {
-        ///         Dataset = google_healthcare_consent_store.My_consent.Dataset,
-        ///         ConsentStoreId = google_healthcare_consent_store.My_consent.Name,
+        ///         Dataset = my_consent.Dataset,
+        ///         ConsentStoreId = my_consent.Name,
         ///     });
         /// 
         /// });

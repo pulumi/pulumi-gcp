@@ -17,6 +17,83 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/scheduler/)
  *
  * ## Example Usage
+ * ### Scheduler Job Pubsub
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const topic = new gcp.pubsub.Topic("topic", {name: "job-topic"});
+ * const job = new gcp.cloudscheduler.Job("job", {
+ *     name: "test-job",
+ *     description: "test job",
+ *     schedule: "*&#47;2 * * * *",
+ *     pubsubTarget: {
+ *         topicName: topic.id,
+ *         data: std.base64encode({
+ *             input: "test",
+ *         }).then(invoke => invoke.result),
+ *     },
+ * });
+ * ```
+ * ### Scheduler Job Http
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const job = new gcp.cloudscheduler.Job("job", {
+ *     name: "test-job",
+ *     description: "test http job",
+ *     schedule: "*&#47;8 * * * *",
+ *     timeZone: "America/New_York",
+ *     attemptDeadline: "320s",
+ *     retryConfig: {
+ *         retryCount: 1,
+ *     },
+ *     httpTarget: {
+ *         httpMethod: "POST",
+ *         uri: "https://example.com/",
+ *         body: std.base64encode({
+ *             input: "{\"foo\":\"bar\"}",
+ *         }).then(invoke => invoke.result),
+ *         headers: {
+ *             "Content-Type": "application/json",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Scheduler Job Paused
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const job = new gcp.cloudscheduler.Job("job", {
+ *     paused: true,
+ *     name: "test-job",
+ *     description: "test http job with updated fields",
+ *     schedule: "*&#47;8 * * * *",
+ *     timeZone: "America/New_York",
+ *     attemptDeadline: "320s",
+ *     retryConfig: {
+ *         retryCount: 1,
+ *     },
+ *     httpTarget: {
+ *         httpMethod: "POST",
+ *         uri: "https://example.com/ping",
+ *         body: std.base64encode({
+ *             input: "{\"foo\":\"bar\"}",
+ *         }).then(invoke => invoke.result),
+ *         headers: {
+ *             "Content-Type": "application/json",
+ *         },
+ *     },
+ * });
+ * ```
  * ### Scheduler Job App Engine
  *
  * ```typescript
@@ -24,25 +101,26 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const job = new gcp.cloudscheduler.Job("job", {
- *     appEngineHttpTarget: {
- *         appEngineRouting: {
- *             instance: "my-instance-001",
- *             service: "web",
- *             version: "prod",
- *         },
- *         httpMethod: "POST",
- *         relativeUri: "/ping",
- *     },
- *     attemptDeadline: "320s",
+ *     name: "test-job",
+ *     schedule: "*&#47;4 * * * *",
  *     description: "test app engine job",
+ *     timeZone: "Europe/London",
+ *     attemptDeadline: "320s",
  *     retryConfig: {
- *         maxDoublings: 2,
- *         maxRetryDuration: "10s",
  *         minBackoffDuration: "1s",
+ *         maxRetryDuration: "10s",
+ *         maxDoublings: 2,
  *         retryCount: 3,
  *     },
- *     schedule: "*&#47;4 * * * *",
- *     timeZone: "Europe/London",
+ *     appEngineHttpTarget: {
+ *         httpMethod: "POST",
+ *         appEngineRouting: {
+ *             service: "web",
+ *             version: "prod",
+ *             instance: "my-instance-001",
+ *         },
+ *         relativeUri: "/ping",
+ *     },
  * });
  * ```
  * ### Scheduler Job Oauth
@@ -53,6 +131,7 @@ import * as utilities from "../utilities";
  *
  * const default = gcp.compute.getDefaultServiceAccount({});
  * const job = new gcp.cloudscheduler.Job("job", {
+ *     name: "test-job",
  *     description: "test http job",
  *     schedule: "*&#47;8 * * * *",
  *     timeZone: "America/New_York",
@@ -74,6 +153,7 @@ import * as utilities from "../utilities";
  *
  * const default = gcp.compute.getDefaultServiceAccount({});
  * const job = new gcp.cloudscheduler.Job("job", {
+ *     name: "test-job",
  *     description: "test http job",
  *     schedule: "*&#47;8 * * * *",
  *     timeZone: "America/New_York",

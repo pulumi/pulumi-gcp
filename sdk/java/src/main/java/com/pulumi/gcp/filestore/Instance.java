@@ -55,16 +55,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *             .name(&#34;test-instance&#34;)
+ *             .location(&#34;us-central1-b&#34;)
+ *             .tier(&#34;BASIC_HDD&#34;)
  *             .fileShares(InstanceFileSharesArgs.builder()
  *                 .capacityGb(1024)
  *                 .name(&#34;share1&#34;)
  *                 .build())
- *             .location(&#34;us-central1-b&#34;)
  *             .networks(InstanceNetworkArgs.builder()
- *                 .modes(&#34;MODE_IPV4&#34;)
  *                 .network(&#34;default&#34;)
+ *                 .modes(&#34;MODE_IPV4&#34;)
  *                 .build())
- *             .tier(&#34;BASIC_HDD&#34;)
  *             .build());
  * 
  *     }
@@ -95,30 +96,31 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *             .name(&#34;test-instance&#34;)
+ *             .location(&#34;us-central1-b&#34;)
+ *             .tier(&#34;BASIC_SSD&#34;)
  *             .fileShares(InstanceFileSharesArgs.builder()
  *                 .capacityGb(2560)
  *                 .name(&#34;share1&#34;)
  *                 .nfsExportOptions(                
  *                     InstanceFileSharesNfsExportOptionArgs.builder()
- *                         .accessMode(&#34;READ_WRITE&#34;)
  *                         .ipRanges(&#34;10.0.0.0/24&#34;)
+ *                         .accessMode(&#34;READ_WRITE&#34;)
  *                         .squashMode(&#34;NO_ROOT_SQUASH&#34;)
  *                         .build(),
  *                     InstanceFileSharesNfsExportOptionArgs.builder()
- *                         .accessMode(&#34;READ_ONLY&#34;)
- *                         .anonGid(456)
- *                         .anonUid(123)
  *                         .ipRanges(&#34;10.10.0.0/24&#34;)
+ *                         .accessMode(&#34;READ_ONLY&#34;)
  *                         .squashMode(&#34;ROOT_SQUASH&#34;)
+ *                         .anonUid(123)
+ *                         .anonGid(456)
  *                         .build())
  *                 .build())
- *             .location(&#34;us-central1-b&#34;)
  *             .networks(InstanceNetworkArgs.builder()
- *                 .connectMode(&#34;DIRECT_PEERING&#34;)
- *                 .modes(&#34;MODE_IPV4&#34;)
  *                 .network(&#34;default&#34;)
+ *                 .modes(&#34;MODE_IPV4&#34;)
+ *                 .connectMode(&#34;DIRECT_PEERING&#34;)
  *                 .build())
- *             .tier(&#34;BASIC_SSD&#34;)
  *             .build());
  * 
  *     }
@@ -153,14 +155,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var filestoreKeyring = new KeyRing(&#34;filestoreKeyring&#34;, KeyRingArgs.builder()        
+ *             .name(&#34;filestore-keyring&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .build());
  * 
  *         var filestoreKey = new CryptoKey(&#34;filestoreKey&#34;, CryptoKeyArgs.builder()        
+ *             .name(&#34;filestore-key&#34;)
  *             .keyRing(filestoreKeyring.id())
  *             .build());
  * 
  *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *             .name(&#34;test-instance&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .tier(&#34;ENTERPRISE&#34;)
  *             .fileShares(InstanceFileSharesArgs.builder()

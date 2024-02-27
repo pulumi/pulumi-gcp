@@ -192,18 +192,16 @@ class Service(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        example_namespace = gcp.servicedirectory.Namespace("exampleNamespace",
+        example = gcp.servicedirectory.Namespace("example",
             namespace_id="example-namespace",
-            location="us-central1",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        example_service = gcp.servicedirectory.Service("exampleService",
+            location="us-central1")
+        example_service = gcp.servicedirectory.Service("example",
             service_id="example-service",
-            namespace=example_namespace.id,
+            namespace=example.id,
             metadata={
                 "stage": "prod",
                 "region": "us-central1",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
 
         ## Import
@@ -265,18 +263,16 @@ class Service(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        example_namespace = gcp.servicedirectory.Namespace("exampleNamespace",
+        example = gcp.servicedirectory.Namespace("example",
             namespace_id="example-namespace",
-            location="us-central1",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        example_service = gcp.servicedirectory.Service("exampleService",
+            location="us-central1")
+        example_service = gcp.servicedirectory.Service("example",
             service_id="example-service",
-            namespace=example_namespace.id,
+            namespace=example.id,
             metadata={
                 "stage": "prod",
                 "region": "us-central1",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
 
         ## Import

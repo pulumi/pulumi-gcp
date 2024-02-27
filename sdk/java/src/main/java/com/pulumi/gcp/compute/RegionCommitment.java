@@ -57,15 +57,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new RegionCommitment(&#34;foobar&#34;, RegionCommitmentArgs.builder()        
+ *             .name(&#34;my-region-commitment&#34;)
  *             .plan(&#34;THIRTY_SIX_MONTH&#34;)
  *             .resources(            
  *                 RegionCommitmentResourceArgs.builder()
- *                     .amount(&#34;4&#34;)
  *                     .type(&#34;VCPU&#34;)
+ *                     .amount(&#34;4&#34;)
  *                     .build(),
  *                 RegionCommitmentResourceArgs.builder()
- *                     .amount(&#34;9&#34;)
  *                     .type(&#34;MEMORY&#34;)
+ *                     .amount(&#34;9&#34;)
  *                     .build())
  *             .build());
  * 
@@ -96,20 +97,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new RegionCommitment(&#34;foobar&#34;, RegionCommitmentArgs.builder()        
- *             .autoRenew(true)
- *             .category(&#34;MACHINE&#34;)
+ *             .name(&#34;my-full-commitment&#34;)
  *             .description(&#34;some description&#34;)
  *             .plan(&#34;THIRTY_SIX_MONTH&#34;)
+ *             .type(&#34;MEMORY_OPTIMIZED&#34;)
+ *             .category(&#34;MACHINE&#34;)
+ *             .autoRenew(true)
  *             .resources(            
  *                 RegionCommitmentResourceArgs.builder()
- *                     .amount(&#34;4&#34;)
  *                     .type(&#34;VCPU&#34;)
+ *                     .amount(&#34;4&#34;)
  *                     .build(),
  *                 RegionCommitmentResourceArgs.builder()
- *                     .amount(&#34;9&#34;)
  *                     .type(&#34;MEMORY&#34;)
+ *                     .amount(&#34;9&#34;)
  *                     .build())
- *             .type(&#34;MEMORY_OPTIMIZED&#34;)
  *             .build());
  * 
  *     }

@@ -13,13 +13,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basicRegionalNetworkFirewallPolicy = new gcp.compute.RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy", {
+ * const basicRegionalNetworkFirewallPolicy = new gcp.compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy", {
+ *     name: "policy",
  *     project: "my-project-name",
  *     description: "Sample global network firewall policy",
  *     region: "us-west1",
  * });
- * const basicNetwork = new gcp.compute.Network("basicNetwork", {});
+ * const basicNetwork = new gcp.compute.Network("basic_network", {name: "network"});
  * const primary = new gcp.compute.RegionNetworkFirewallPolicyAssociation("primary", {
+ *     name: "association",
  *     attachmentTarget: basicNetwork.id,
  *     firewallPolicy: basicRegionalNetworkFirewallPolicy.name,
  *     project: "my-project-name",

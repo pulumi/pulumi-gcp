@@ -20,6 +20,118 @@ namespace Pulumi.Gcp.CloudScheduler
     ///     * [Official Documentation](https://cloud.google.com/scheduler/)
     /// 
     /// ## Example Usage
+    /// ### Scheduler Job Pubsub
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var topic = new Gcp.PubSub.Topic("topic", new()
+    ///     {
+    ///         Name = "job-topic",
+    ///     });
+    /// 
+    ///     var job = new Gcp.CloudScheduler.Job("job", new()
+    ///     {
+    ///         Name = "test-job",
+    ///         Description = "test job",
+    ///         Schedule = "*/2 * * * *",
+    ///         PubsubTarget = new Gcp.CloudScheduler.Inputs.JobPubsubTargetArgs
+    ///         {
+    ///             TopicName = topic.Id,
+    ///             Data = Std.Base64encode.Invoke(new()
+    ///             {
+    ///                 Input = "test",
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Scheduler Job Http
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var job = new Gcp.CloudScheduler.Job("job", new()
+    ///     {
+    ///         Name = "test-job",
+    ///         Description = "test http job",
+    ///         Schedule = "*/8 * * * *",
+    ///         TimeZone = "America/New_York",
+    ///         AttemptDeadline = "320s",
+    ///         RetryConfig = new Gcp.CloudScheduler.Inputs.JobRetryConfigArgs
+    ///         {
+    ///             RetryCount = 1,
+    ///         },
+    ///         HttpTarget = new Gcp.CloudScheduler.Inputs.JobHttpTargetArgs
+    ///         {
+    ///             HttpMethod = "POST",
+    ///             Uri = "https://example.com/",
+    ///             Body = Std.Base64encode.Invoke(new()
+    ///             {
+    ///                 Input = "{\"foo\":\"bar\"}",
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             Headers = 
+    ///             {
+    ///                 { "Content-Type", "application/json" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Scheduler Job Paused
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var job = new Gcp.CloudScheduler.Job("job", new()
+    ///     {
+    ///         Paused = true,
+    ///         Name = "test-job",
+    ///         Description = "test http job with updated fields",
+    ///         Schedule = "*/8 * * * *",
+    ///         TimeZone = "America/New_York",
+    ///         AttemptDeadline = "320s",
+    ///         RetryConfig = new Gcp.CloudScheduler.Inputs.JobRetryConfigArgs
+    ///         {
+    ///             RetryCount = 1,
+    ///         },
+    ///         HttpTarget = new Gcp.CloudScheduler.Inputs.JobHttpTargetArgs
+    ///         {
+    ///             HttpMethod = "POST",
+    ///             Uri = "https://example.com/ping",
+    ///             Body = Std.Base64encode.Invoke(new()
+    ///             {
+    ///                 Input = "{\"foo\":\"bar\"}",
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             Headers = 
+    ///             {
+    ///                 { "Content-Type", "application/json" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Scheduler Job App Engine
     /// 
     /// ```csharp
@@ -32,28 +144,29 @@ namespace Pulumi.Gcp.CloudScheduler
     /// {
     ///     var job = new Gcp.CloudScheduler.Job("job", new()
     ///     {
-    ///         AppEngineHttpTarget = new Gcp.CloudScheduler.Inputs.JobAppEngineHttpTargetArgs
-    ///         {
-    ///             AppEngineRouting = new Gcp.CloudScheduler.Inputs.JobAppEngineHttpTargetAppEngineRoutingArgs
-    ///             {
-    ///                 Instance = "my-instance-001",
-    ///                 Service = "web",
-    ///                 Version = "prod",
-    ///             },
-    ///             HttpMethod = "POST",
-    ///             RelativeUri = "/ping",
-    ///         },
-    ///         AttemptDeadline = "320s",
+    ///         Name = "test-job",
+    ///         Schedule = "*/4 * * * *",
     ///         Description = "test app engine job",
+    ///         TimeZone = "Europe/London",
+    ///         AttemptDeadline = "320s",
     ///         RetryConfig = new Gcp.CloudScheduler.Inputs.JobRetryConfigArgs
     ///         {
-    ///             MaxDoublings = 2,
-    ///             MaxRetryDuration = "10s",
     ///             MinBackoffDuration = "1s",
+    ///             MaxRetryDuration = "10s",
+    ///             MaxDoublings = 2,
     ///             RetryCount = 3,
     ///         },
-    ///         Schedule = "*/4 * * * *",
-    ///         TimeZone = "Europe/London",
+    ///         AppEngineHttpTarget = new Gcp.CloudScheduler.Inputs.JobAppEngineHttpTargetArgs
+    ///         {
+    ///             HttpMethod = "POST",
+    ///             AppEngineRouting = new Gcp.CloudScheduler.Inputs.JobAppEngineHttpTargetAppEngineRoutingArgs
+    ///             {
+    ///                 Service = "web",
+    ///                 Version = "prod",
+    ///                 Instance = "my-instance-001",
+    ///             },
+    ///             RelativeUri = "/ping",
+    ///         },
     ///     });
     /// 
     /// });
@@ -72,6 +185,7 @@ namespace Pulumi.Gcp.CloudScheduler
     /// 
     ///     var job = new Gcp.CloudScheduler.Job("job", new()
     ///     {
+    ///         Name = "test-job",
     ///         Description = "test http job",
     ///         Schedule = "*/8 * * * *",
     ///         TimeZone = "America/New_York",
@@ -103,6 +217,7 @@ namespace Pulumi.Gcp.CloudScheduler
     /// 
     ///     var job = new Gcp.CloudScheduler.Job("job", new()
     ///     {
+    ///         Name = "test-job",
     ///         Description = "test http job",
     ///         Schedule = "*/8 * * * *",
     ///         TimeZone = "America/New_York",

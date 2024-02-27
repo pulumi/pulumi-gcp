@@ -37,6 +37,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Name:             pulumi.String("basic-cluster"),
 //				Location:         pulumi.String("us-central1"),
 //				InitialNodeCount: pulumi.Int(1),
 //				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
@@ -55,6 +56,7 @@ import (
 //				return err
 //			}
 //			_, err = gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
+//				Name:     pulumi.String("basic-plan"),
 //				Cluster:  primary.ID(),
 //				Location: pulumi.String("us-central1"),
 //				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
@@ -87,6 +89,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Name:               pulumi.String("autopilot-cluster"),
 //				Location:           pulumi.String("us-central1"),
 //				EnableAutopilot:    pulumi.Bool(true),
 //				IpAllocationPolicy: nil,
@@ -106,6 +109,7 @@ import (
 //				return err
 //			}
 //			_, err = gkebackup.NewBackupPlan(ctx, "autopilot", &gkebackup.BackupPlanArgs{
+//				Name:     pulumi.String("autopilot-plan"),
 //				Cluster:  primary.ID(),
 //				Location: pulumi.String("us-central1"),
 //				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
@@ -139,6 +143,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Name:             pulumi.String("cmek-cluster"),
 //				Location:         pulumi.String("us-central1"),
 //				InitialNodeCount: pulumi.Int(1),
 //				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
@@ -156,19 +161,22 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
+//			keyRing, err := kms.NewKeyRing(ctx, "key_ring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("backup-key"),
 //				Location: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
+//			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
+//				Name:    pulumi.String("backup-key"),
 //				KeyRing: keyRing.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = gkebackup.NewBackupPlan(ctx, "cmek", &gkebackup.BackupPlanArgs{
+//				Name:     pulumi.String("cmek-plan"),
 //				Cluster:  primary.ID(),
 //				Location: pulumi.String("us-central1"),
 //				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
@@ -209,6 +217,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Name:             pulumi.String("full-cluster"),
 //				Location:         pulumi.String("us-central1"),
 //				InitialNodeCount: pulumi.Int(1),
 //				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
@@ -227,6 +236,7 @@ import (
 //				return err
 //			}
 //			_, err = gkebackup.NewBackupPlan(ctx, "full", &gkebackup.BackupPlanArgs{
+//				Name:     pulumi.String("full-plan"),
 //				Cluster:  primary.ID(),
 //				Location: pulumi.String("us-central1"),
 //				RetentionPolicy: &gkebackup.BackupPlanRetentionPolicyArgs{

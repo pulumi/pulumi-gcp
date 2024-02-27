@@ -572,6 +572,7 @@ class Node(pulumi.CustomResource):
 
         available = gcp.tpu.get_tensorflow_versions()
         tpu = gcp.tpu.Node("tpu",
+            name="test-tpu",
             zone="us-central1-b",
             accelerator_type="v3-8",
             tensorflow_version=available.versions[0],
@@ -584,17 +585,19 @@ class Node(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         available = gcp.tpu.get_tensorflow_versions()
-        network = gcp.compute.Network("network")
-        service_range = gcp.compute.GlobalAddress("serviceRange",
+        network = gcp.compute.Network("network", name="tpu-node-network")
+        service_range = gcp.compute.GlobalAddress("service_range",
+            name="my-global-address",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=16,
             network=network.id)
-        private_service_connection = gcp.servicenetworking.Connection("privateServiceConnection",
+        private_service_connection = gcp.servicenetworking.Connection("private_service_connection",
             network=network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[service_range.name])
         tpu = gcp.tpu.Node("tpu",
+            name="test-tpu",
             zone="us-central1-b",
             accelerator_type="v3-8",
             tensorflow_version=available.versions[0],
@@ -697,6 +700,7 @@ class Node(pulumi.CustomResource):
 
         available = gcp.tpu.get_tensorflow_versions()
         tpu = gcp.tpu.Node("tpu",
+            name="test-tpu",
             zone="us-central1-b",
             accelerator_type="v3-8",
             tensorflow_version=available.versions[0],
@@ -709,17 +713,19 @@ class Node(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         available = gcp.tpu.get_tensorflow_versions()
-        network = gcp.compute.Network("network")
-        service_range = gcp.compute.GlobalAddress("serviceRange",
+        network = gcp.compute.Network("network", name="tpu-node-network")
+        service_range = gcp.compute.GlobalAddress("service_range",
+            name="my-global-address",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=16,
             network=network.id)
-        private_service_connection = gcp.servicenetworking.Connection("privateServiceConnection",
+        private_service_connection = gcp.servicenetworking.Connection("private_service_connection",
             network=network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[service_range.name])
         tpu = gcp.tpu.Node("tpu",
+            name="test-tpu",
             zone="us-central1-b",
             accelerator_type="v3-8",
             tensorflow_version=available.versions[0],

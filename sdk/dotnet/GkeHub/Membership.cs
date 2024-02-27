@@ -31,15 +31,18 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var primary = new Gcp.Container.Cluster("primary", new()
     ///     {
-    ///         DeletionProtection = false,
-    ///         InitialNodeCount = 1,
+    ///         Name = "basic-cluster",
     ///         Location = "us-central1-a",
+    ///         InitialNodeCount = 1,
+    ///         DeletionProtection = false,
     ///         Network = "default",
     ///         Subnetwork = "default",
     ///     });
     /// 
     ///     var membership = new Gcp.GkeHub.Membership("membership", new()
     ///     {
+    ///         MembershipId = "basic",
+    ///         Location = "us-west1",
     ///         Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
     ///         {
     ///             GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
@@ -47,8 +50,6 @@ namespace Pulumi.Gcp.GkeHub
     ///                 ResourceLink = primary.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
     ///             },
     ///         },
-    ///         Location = "us-west1",
-    ///         MembershipId = "basic",
     ///     });
     /// 
     /// });
@@ -65,15 +66,17 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var primary = new Gcp.Container.Cluster("primary", new()
     ///     {
-    ///         DeletionProtection = true,
-    ///         InitialNodeCount = 1,
+    ///         Name = "basic-cluster",
     ///         Location = "us-central1-a",
+    ///         InitialNodeCount = 1,
+    ///         DeletionProtection = true,
     ///         Network = "default",
     ///         Subnetwork = "default",
     ///     });
     /// 
     ///     var membership = new Gcp.GkeHub.Membership("membership", new()
     ///     {
+    ///         MembershipId = "basic",
     ///         Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
     ///         {
     ///             GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
@@ -85,7 +88,6 @@ namespace Pulumi.Gcp.GkeHub
     ///         {
     ///             { "env", "test" },
     ///         },
-    ///         MembershipId = "basic",
     ///     });
     /// 
     /// });
@@ -102,6 +104,7 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var primary = new Gcp.Container.Cluster("primary", new()
     ///     {
+    ///         Name = "basic-cluster",
     ///         Location = "us-central1-a",
     ///         InitialNodeCount = 1,
     ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs

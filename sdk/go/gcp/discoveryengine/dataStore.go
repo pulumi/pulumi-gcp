@@ -38,15 +38,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := discoveryengine.NewDataStore(ctx, "basic", &discoveryengine.DataStoreArgs{
-//				ContentConfig:            pulumi.String("NO_CONTENT"),
-//				CreateAdvancedSiteSearch: pulumi.Bool(false),
-//				DataStoreId:              pulumi.String("data-store-id"),
-//				DisplayName:              pulumi.String("tf-test-structured-datastore"),
-//				IndustryVertical:         pulumi.String("GENERIC"),
-//				Location:                 pulumi.String("global"),
+//				Location:         pulumi.String("global"),
+//				DataStoreId:      pulumi.String("data-store-id"),
+//				DisplayName:      pulumi.String("tf-test-structured-datastore"),
+//				IndustryVertical: pulumi.String("GENERIC"),
+//				ContentConfig:    pulumi.String("NO_CONTENT"),
 //				SolutionTypes: pulumi.StringArray{
 //					pulumi.String("SOLUTION_TYPE_SEARCH"),
 //				},
+//				CreateAdvancedSiteSearch: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err

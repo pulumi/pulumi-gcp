@@ -51,8 +51,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var policy = new Gcp.Compute.DiskIamPolicy("policy", new()
     ///     {
-    ///         Project = google_compute_disk.Default.Project,
-    ///         Zone = google_compute_disk.Default.Zone,
+    ///         Project = @default.Project,
+    ///         Zone = @default.Zone,
+    ///         Name = @default.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -71,8 +72,9 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var binding = new Gcp.Compute.DiskIamBinding("binding", new()
     ///     {
-    ///         Project = google_compute_disk.Default.Project,
-    ///         Zone = google_compute_disk.Default.Zone,
+    ///         Project = @default.Project,
+    ///         Zone = @default.Zone,
+    ///         Name = @default.Name,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -95,8 +97,9 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var member = new Gcp.Compute.DiskIamMember("member", new()
     ///     {
-    ///         Project = google_compute_disk.Default.Project,
-    ///         Zone = google_compute_disk.Default.Zone,
+    ///         Project = @default.Project,
+    ///         Zone = @default.Zone,
+    ///         Name = @default.Name,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

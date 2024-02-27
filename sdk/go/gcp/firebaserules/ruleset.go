@@ -30,17 +30,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := firebaserules.NewRuleset(ctx, "primary", &firebaserules.RulesetArgs{
-//				Project: pulumi.String("my-project-name"),
 //				Source: &firebaserules.RulesetSourceArgs{
 //					Files: firebaserules.RulesetSourceFileArray{
 //						&firebaserules.RulesetSourceFileArgs{
 //							Content:     pulumi.String("service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }"),
-//							Fingerprint: pulumi.String(""),
 //							Name:        pulumi.String("firestore.rules"),
+//							Fingerprint: pulumi.String(""),
 //						},
 //					},
 //					Language: pulumi.String(""),
 //				},
+//				Project: pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
 //				return err
@@ -65,7 +65,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := firebaserules.NewRuleset(ctx, "primary", &firebaserules.RulesetArgs{
-//				Project: pulumi.String("my-project-name"),
 //				Source: &firebaserules.RulesetSourceArgs{
 //					Files: firebaserules.RulesetSourceFileArray{
 //						&firebaserules.RulesetSourceFileArgs{
@@ -74,6 +73,7 @@ import (
 //						},
 //					},
 //				},
+//				Project: pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
 //				return err

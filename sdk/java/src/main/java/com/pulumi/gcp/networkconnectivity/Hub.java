@@ -46,9 +46,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var primary = new Hub(&#34;primary&#34;, HubArgs.builder()        
+ *             .name(&#34;hub&#34;)
  *             .description(&#34;A sample hub&#34;)
- *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
  *             .project(&#34;my-project-name&#34;)
+ *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
  *             .build());
  * 
  *     }

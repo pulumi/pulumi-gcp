@@ -64,18 +64,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+ *             .name(&#34;neg-network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;neg-subnetwork&#34;)
  *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
  *             .region(&#34;us-central1&#34;)
- *             .network(defaultNetwork.id())
+ *             .network(default_.id())
  *             .build());
  * 
  *         var neg = new NetworkEndpointGroup(&#34;neg&#34;, NetworkEndpointGroupArgs.builder()        
- *             .network(defaultNetwork.id())
+ *             .name(&#34;my-lb-neg&#34;)
+ *             .network(default_.id())
  *             .subnetwork(defaultSubnetwork.id())
  *             .defaultPort(&#34;90&#34;)
  *             .zone(&#34;us-central1-a&#34;)
@@ -92,6 +95,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.NetworkEndpointGroup;
  * import com.pulumi.gcp.compute.NetworkEndpointGroupArgs;
  * import com.pulumi.gcp.compute.NetworkEndpoint;
@@ -109,9 +113,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network(&#34;default&#34;);
+ *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+ *             .name(&#34;neg-network&#34;)
+ *             .build());
  * 
  *         var neg = new NetworkEndpointGroup(&#34;neg&#34;, NetworkEndpointGroupArgs.builder()        
+ *             .name(&#34;my-lb-neg&#34;)
  *             .network(default_.id())
  *             .defaultPort(&#34;90&#34;)
  *             .zone(&#34;us-central1-a&#34;)

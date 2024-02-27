@@ -292,12 +292,13 @@ class OauthIdpConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        oauth_idp_config = gcp.identityplatform.OauthIdpConfig("oauthIdpConfig",
-            client_id="client-id",
-            client_secret="secret",
+        oauth_idp_config = gcp.identityplatform.OauthIdpConfig("oauth_idp_config",
+            name="oidc.oauth-idp-config",
             display_name="Display Name",
+            client_id="client-id",
+            issuer="issuer",
             enabled=True,
-            issuer="issuer")
+            client_secret="secret")
         ```
 
         ## Import
@@ -358,12 +359,13 @@ class OauthIdpConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        oauth_idp_config = gcp.identityplatform.OauthIdpConfig("oauthIdpConfig",
-            client_id="client-id",
-            client_secret="secret",
+        oauth_idp_config = gcp.identityplatform.OauthIdpConfig("oauth_idp_config",
+            name="oidc.oauth-idp-config",
             display_name="Display Name",
+            client_id="client-id",
+            issuer="issuer",
             enabled=True,
-            issuer="issuer")
+            client_secret="secret")
         ```
 
         ## Import

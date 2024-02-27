@@ -37,7 +37,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			scannerStaticIp, err := compute.NewAddress(ctx, "scannerStaticIp", nil, pulumi.Provider(google_beta))
+//			scannerStaticIp, err := compute.NewAddress(ctx, "scanner_static_ip", &compute.AddressArgs{
+//				Name: pulumi.String("scan-basic-static-ip"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -51,7 +53,7 @@ import (
 //				TargetPlatforms: pulumi.StringArray{
 //					pulumi.String("COMPUTE"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

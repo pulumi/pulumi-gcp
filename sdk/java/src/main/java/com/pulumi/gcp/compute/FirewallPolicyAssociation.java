@@ -42,15 +42,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultFirewallPolicy = new FirewallPolicy(&#34;defaultFirewallPolicy&#34;, FirewallPolicyArgs.builder()        
+ *         var default_ = new FirewallPolicy(&#34;default&#34;, FirewallPolicyArgs.builder()        
  *             .parent(&#34;organizations/12345&#34;)
  *             .shortName(&#34;my-policy&#34;)
  *             .description(&#34;Example Resource&#34;)
  *             .build());
  * 
  *         var defaultFirewallPolicyAssociation = new FirewallPolicyAssociation(&#34;defaultFirewallPolicyAssociation&#34;, FirewallPolicyAssociationArgs.builder()        
- *             .firewallPolicy(defaultFirewallPolicy.id())
- *             .attachmentTarget(google_folder.folder().name())
+ *             .firewallPolicy(default_.id())
+ *             .attachmentTarget(folder.name())
+ *             .name(&#34;my-association&#34;)
  *             .build());
  * 
  *     }

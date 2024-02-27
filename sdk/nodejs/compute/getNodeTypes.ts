@@ -18,8 +18,9 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-b",
  * });
  * const tmpl = new gcp.compute.NodeTemplate("tmpl", {
+ *     name: "test-tmpl",
  *     region: "us-central1",
- *     nodeType: data.google_compute_node_types.types.names[0],
+ *     nodeType: types.names[0],
  * });
  * ```
  */
@@ -79,8 +80,9 @@ export interface GetNodeTypesResult {
  *     zone: "us-central1-b",
  * });
  * const tmpl = new gcp.compute.NodeTemplate("tmpl", {
+ *     name: "test-tmpl",
  *     region: "us-central1",
- *     nodeType: data.google_compute_node_types.types.names[0],
+ *     nodeType: types.names[0],
  * });
  * ```
  */

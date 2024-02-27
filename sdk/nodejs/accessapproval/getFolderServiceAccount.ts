@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     folderId: "my-folder",
  * });
  * const iam = new gcp.kms.CryptoKeyIAMMember("iam", {
- *     cryptoKeyId: google_kms_crypto_key.crypto_key.id,
+ *     cryptoKeyId: cryptoKey.id,
  *     role: "roles/cloudkms.signerVerifier",
  *     member: serviceAccount.then(serviceAccount => `serviceAccount:${serviceAccount.accountEmail}`),
  * });
@@ -85,7 +85,7 @@ export interface GetFolderServiceAccountResult {
  *     folderId: "my-folder",
  * });
  * const iam = new gcp.kms.CryptoKeyIAMMember("iam", {
- *     cryptoKeyId: google_kms_crypto_key.crypto_key.id,
+ *     cryptoKeyId: cryptoKey.id,
  *     role: "roles/cloudkms.signerVerifier",
  *     member: serviceAccount.then(serviceAccount => `serviceAccount:${serviceAccount.accountEmail}`),
  * });

@@ -55,6 +55,7 @@ import (
 //				return err
 //			}
 //			_, err = tpu.NewNode(ctx, "tpu", &tpu.NodeArgs{
+//				Name:              pulumi.String("test-tpu"),
 //				Zone:              pulumi.String("us-central1-b"),
 //				AcceleratorType:   pulumi.String("v3-8"),
 //				TensorflowVersion: *pulumi.String(available.Versions[0]),

@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var entryGroup = new Gcp.DataCatalog.EntryGroup("entryGroup", new()
+    ///     var entryGroup = new Gcp.DataCatalog.EntryGroup("entry_group", new()
     ///     {
     ///         EntryGroupId = "my_entry_group",
     ///     });
@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.DataCatalog
     ///         UserSpecifiedSystem = "SomethingExternal",
     ///     });
     /// 
-    ///     var tagTemplate = new Gcp.DataCatalog.TagTemplate("tagTemplate", new()
+    ///     var tagTemplate = new Gcp.DataCatalog.TagTemplate("tag_template", new()
     ///     {
     ///         TagTemplateId = "my_template",
     ///         Region = "us-central1",
@@ -100,7 +100,7 @@ namespace Pulumi.Gcp.DataCatalog
     ///         ForceDelete = false,
     ///     });
     /// 
-    ///     var basicTag = new Gcp.DataCatalog.Tag("basicTag", new()
+    ///     var basicTag = new Gcp.DataCatalog.Tag("basic_tag", new()
     ///     {
     ///         Parent = entry.Id,
     ///         Template = tagTemplate.Id,
@@ -126,12 +126,12 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var entryGroup = new Gcp.DataCatalog.EntryGroup("entryGroup", new()
+    ///     var entryGroup = new Gcp.DataCatalog.EntryGroup("entry_group", new()
     ///     {
     ///         EntryGroupId = "my_entry_group",
     ///     });
     /// 
-    ///     var firstEntry = new Gcp.DataCatalog.Entry("firstEntry", new()
+    ///     var firstEntry = new Gcp.DataCatalog.Entry("first_entry", new()
     ///     {
     ///         EntryGroup = entryGroup.Id,
     ///         EntryId = "first_entry",
@@ -139,7 +139,7 @@ namespace Pulumi.Gcp.DataCatalog
     ///         UserSpecifiedSystem = "SomethingExternal",
     ///     });
     /// 
-    ///     var secondEntry = new Gcp.DataCatalog.Entry("secondEntry", new()
+    ///     var secondEntry = new Gcp.DataCatalog.Entry("second_entry", new()
     ///     {
     ///         EntryGroup = entryGroup.Id,
     ///         EntryId = "second_entry",
@@ -147,7 +147,7 @@ namespace Pulumi.Gcp.DataCatalog
     ///         UserSpecifiedSystem = "SomethingElseExternal",
     ///     });
     /// 
-    ///     var tagTemplate = new Gcp.DataCatalog.TagTemplate("tagTemplate", new()
+    ///     var tagTemplate = new Gcp.DataCatalog.TagTemplate("tag_template", new()
     ///     {
     ///         TagTemplateId = "my_template",
     ///         Region = "us-central1",
@@ -203,7 +203,7 @@ namespace Pulumi.Gcp.DataCatalog
     ///         ForceDelete = false,
     ///     });
     /// 
-    ///     var entryGroupTag = new Gcp.DataCatalog.Tag("entryGroupTag", new()
+    ///     var entryGroupTag = new Gcp.DataCatalog.Tag("entry_group_tag", new()
     ///     {
     ///         Parent = entryGroup.Id,
     ///         Template = tagTemplate.Id,
@@ -229,7 +229,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var entryGroup = new Gcp.DataCatalog.EntryGroup("entryGroup", new()
+    ///     var entryGroup = new Gcp.DataCatalog.EntryGroup("entry_group", new()
     ///     {
     ///         EntryGroupId = "my_entry_group",
     ///     });
@@ -279,7 +279,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// ",
     ///     });
     /// 
-    ///     var tagTemplate = new Gcp.DataCatalog.TagTemplate("tagTemplate", new()
+    ///     var tagTemplate = new Gcp.DataCatalog.TagTemplate("tag_template", new()
     ///     {
     ///         TagTemplateId = "my_template",
     ///         Region = "us-central1",
@@ -335,7 +335,7 @@ namespace Pulumi.Gcp.DataCatalog
     ///         ForceDelete = false,
     ///     });
     /// 
-    ///     var basicTag = new Gcp.DataCatalog.Tag("basicTag", new()
+    ///     var basicTag = new Gcp.DataCatalog.Tag("basic_tag", new()
     ///     {
     ///         Parent = entry.Id,
     ///         Template = tagTemplate.Id,

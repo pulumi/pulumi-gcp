@@ -24,21 +24,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const alertPolicy = new gcp.monitoring.AlertPolicy("alertPolicy", {
+ * const alertPolicy = new gcp.monitoring.AlertPolicy("alert_policy", {
+ *     displayName: "My Alert Policy",
  *     combiner: "OR",
  *     conditions: [{
+ *         displayName: "test condition",
  *         conditionThreshold: {
+ *             filter: "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
+ *             duration: "60s",
+ *             comparison: "COMPARISON_GT",
  *             aggregations: [{
  *                 alignmentPeriod: "60s",
  *                 perSeriesAligner: "ALIGN_RATE",
  *             }],
- *             comparison: "COMPARISON_GT",
- *             duration: "60s",
- *             filter: "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
  *         },
- *         displayName: "test condition",
  *     }],
- *     displayName: "My Alert Policy",
  *     userLabels: {
  *         foo: "bar",
  *     },
@@ -50,22 +50,22 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const alertPolicy = new gcp.monitoring.AlertPolicy("alertPolicy", {
+ * const alertPolicy = new gcp.monitoring.AlertPolicy("alert_policy", {
+ *     displayName: "My Alert Policy",
  *     combiner: "OR",
  *     conditions: [{
+ *         displayName: "test condition",
  *         conditionThreshold: {
+ *             filter: "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
+ *             duration: "60s",
+ *             comparison: "COMPARISON_GT",
  *             aggregations: [{
  *                 alignmentPeriod: "60s",
  *                 perSeriesAligner: "ALIGN_RATE",
  *             }],
- *             comparison: "COMPARISON_GT",
- *             duration: "60s",
  *             evaluationMissingData: "EVALUATION_MISSING_DATA_INACTIVE",
- *             filter: "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
  *         },
- *         displayName: "test condition",
  *     }],
- *     displayName: "My Alert Policy",
  *     userLabels: {
  *         foo: "bar",
  *     },
@@ -77,24 +77,24 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const alertPolicy = new gcp.monitoring.AlertPolicy("alertPolicy", {
+ * const alertPolicy = new gcp.monitoring.AlertPolicy("alert_policy", {
+ *     displayName: "My Alert Policy",
  *     combiner: "OR",
  *     conditions: [{
+ *         displayName: "test condition",
  *         conditionThreshold: {
+ *             filter: "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
+ *             duration: "60s",
+ *             forecastOptions: {
+ *                 forecastHorizon: "3600s",
+ *             },
+ *             comparison: "COMPARISON_GT",
  *             aggregations: [{
  *                 alignmentPeriod: "60s",
  *                 perSeriesAligner: "ALIGN_RATE",
  *             }],
- *             comparison: "COMPARISON_GT",
- *             duration: "60s",
- *             filter: "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
- *             forecastOptions: {
- *                 forecastHorizon: "3600s",
- *             },
  *         },
- *         displayName: "test condition",
  *     }],
- *     displayName: "My Alert Policy",
  *     userLabels: {
  *         foo: "bar",
  *     },
@@ -106,22 +106,22 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const alertPolicy = new gcp.monitoring.AlertPolicy("alertPolicy", {
+ * const alertPolicy = new gcp.monitoring.AlertPolicy("alert_policy", {
+ *     displayName: "My Alert Policy",
+ *     combiner: "OR",
+ *     conditions: [{
+ *         displayName: "test condition",
+ *         conditionPrometheusQueryLanguage: {
+ *             query: "compute_googleapis_com:instance_cpu_usage_time > 0",
+ *             duration: "60s",
+ *             evaluationInterval: "60s",
+ *             alertRule: "AlwaysOn",
+ *             ruleGroup: "a test",
+ *         },
+ *     }],
  *     alertStrategy: {
  *         autoClose: "1800s",
  *     },
- *     combiner: "OR",
- *     conditions: [{
- *         conditionPrometheusQueryLanguage: {
- *             alertRule: "AlwaysOn",
- *             duration: "60s",
- *             evaluationInterval: "60s",
- *             query: "compute_googleapis_com:instance_cpu_usage_time > 0",
- *             ruleGroup: "a test",
- *         },
- *         displayName: "test condition",
- *     }],
- *     displayName: "My Alert Policy",
  * });
  * ```
  *

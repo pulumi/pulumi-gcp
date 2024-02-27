@@ -403,6 +403,47 @@ class FolderFeed(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/asset-inventory/docs)
 
         ## Example Usage
+        ### Cloud Asset Folder Feed
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # The topic where the resource change notifications will be sent.
+        feed_output = gcp.pubsub.Topic("feed_output",
+            project="my-project-name",
+            name="network-updates")
+        # The folder that will be monitored for resource updates.
+        my_folder = gcp.organizations.Folder("my_folder",
+            display_name="Networking",
+            parent="organizations/123456789")
+        # Create a feed that sends notifications about network resource updates under a
+        # particular folder.
+        folder_feed = gcp.cloudasset.FolderFeed("folder_feed",
+            billing_project="my-project-name",
+            folder=my_folder.folder_id,
+            feed_id="network-updates",
+            content_type="RESOURCE",
+            asset_types=[
+                "compute.googleapis.com/Subnetwork",
+                "compute.googleapis.com/Network",
+            ],
+            feed_output_config=gcp.cloudasset.FolderFeedFeedOutputConfigArgs(
+                pubsub_destination=gcp.cloudasset.FolderFeedFeedOutputConfigPubsubDestinationArgs(
+                    topic=feed_output.id,
+                ),
+            ),
+            condition=gcp.cloudasset.FolderFeedConditionArgs(
+                expression=\"\"\"!temporal_asset.deleted &&
+        temporal_asset.prior_asset_state == google.cloud.asset.v1.TemporalAsset.PriorAssetState.DOES_NOT_EXIST
+        \"\"\",
+                title="created",
+                description="Send notifications on creation events",
+            ))
+        # Find the project number of the project whose identity will be used for sending
+        # the asset change notifications.
+        project = gcp.organizations.get_project(project_id="my-project-name")
+        ```
 
         ## Import
 
@@ -465,6 +506,47 @@ class FolderFeed(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/asset-inventory/docs)
 
         ## Example Usage
+        ### Cloud Asset Folder Feed
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # The topic where the resource change notifications will be sent.
+        feed_output = gcp.pubsub.Topic("feed_output",
+            project="my-project-name",
+            name="network-updates")
+        # The folder that will be monitored for resource updates.
+        my_folder = gcp.organizations.Folder("my_folder",
+            display_name="Networking",
+            parent="organizations/123456789")
+        # Create a feed that sends notifications about network resource updates under a
+        # particular folder.
+        folder_feed = gcp.cloudasset.FolderFeed("folder_feed",
+            billing_project="my-project-name",
+            folder=my_folder.folder_id,
+            feed_id="network-updates",
+            content_type="RESOURCE",
+            asset_types=[
+                "compute.googleapis.com/Subnetwork",
+                "compute.googleapis.com/Network",
+            ],
+            feed_output_config=gcp.cloudasset.FolderFeedFeedOutputConfigArgs(
+                pubsub_destination=gcp.cloudasset.FolderFeedFeedOutputConfigPubsubDestinationArgs(
+                    topic=feed_output.id,
+                ),
+            ),
+            condition=gcp.cloudasset.FolderFeedConditionArgs(
+                expression=\"\"\"!temporal_asset.deleted &&
+        temporal_asset.prior_asset_state == google.cloud.asset.v1.TemporalAsset.PriorAssetState.DOES_NOT_EXIST
+        \"\"\",
+                title="created",
+                description="Send notifications on creation events",
+            ))
+        # Find the project number of the project whose identity will be used for sending
+        # the asset change notifications.
+        project = gcp.organizations.get_project(project_id="my-project-name")
+        ```
 
         ## Import
 

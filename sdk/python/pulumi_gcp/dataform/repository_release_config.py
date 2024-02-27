@@ -344,18 +344,17 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
+        git_repository = gcp.sourcerepo.Repository("git_repository", name="my/repository")
         secret = gcp.secretmanager.Secret("secret",
             secret_id="my_secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        secret_version = gcp.secretmanager.SecretVersion("secretVersion",
+            ))
+        secret_version = gcp.secretmanager.SecretVersion("secret_version",
             secret=secret.id,
-            secret_data="secret-data",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            secret_data="secret-data")
         repository = gcp.dataform.Repository("repository",
+            name="dataform_repository",
             region="us-central1",
             git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
                 url=git_repository.url,
@@ -366,12 +365,12 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                 default_database="database",
                 schema_suffix="_suffix",
                 table_prefix="prefix_",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         release = gcp.dataform.RepositoryReleaseConfig("release",
             project=repository.project,
             region=repository.region,
             repository=repository.name,
+            name="my_release",
             git_commitish="main",
             cron_schedule="0 7 * * *",
             time_zone="America/New_York",
@@ -386,8 +385,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                 vars={
                     "var1": "value",
                 },
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import
@@ -450,18 +448,17 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
+        git_repository = gcp.sourcerepo.Repository("git_repository", name="my/repository")
         secret = gcp.secretmanager.Secret("secret",
             secret_id="my_secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        secret_version = gcp.secretmanager.SecretVersion("secretVersion",
+            ))
+        secret_version = gcp.secretmanager.SecretVersion("secret_version",
             secret=secret.id,
-            secret_data="secret-data",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            secret_data="secret-data")
         repository = gcp.dataform.Repository("repository",
+            name="dataform_repository",
             region="us-central1",
             git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
                 url=git_repository.url,
@@ -472,12 +469,12 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                 default_database="database",
                 schema_suffix="_suffix",
                 table_prefix="prefix_",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         release = gcp.dataform.RepositoryReleaseConfig("release",
             project=repository.project,
             region=repository.region,
             repository=repository.name,
+            name="my_release",
             git_commitish="main",
             cron_schedule="0 7 * * *",
             time_zone="America/New_York",
@@ -492,8 +489,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                 vars={
                     "var1": "value",
                 },
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import

@@ -24,17 +24,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const project = new gcp.organizations.Project("project", {orgId: "123456789"});
- * const projectService = new gcp.projects.Service("projectService", {
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "my-project",
+ *     name: "my-project",
+ *     orgId: "123456789",
+ * });
+ * const projectService = new gcp.projects.Service("project_service", {
  *     project: project.projectId,
  *     service: "iap.googleapis.com",
  * });
- * const projectBrand = new gcp.iap.Brand("projectBrand", {
+ * const projectBrand = new gcp.iap.Brand("project_brand", {
  *     supportEmail: "support@example.com",
  *     applicationTitle: "Cloud IAP protected Application",
  *     project: projectService.project,
  * });
- * const projectClient = new gcp.iap.Client("projectClient", {
+ * const projectClient = new gcp.iap.Client("project_client", {
  *     displayName: "Test Client",
  *     brand: projectBrand.name,
  * });

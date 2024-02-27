@@ -19,9 +19,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const test = new gcp.compute.InstanceGroup("test", {
+ *     name: "test",
  *     description: "Test instance group",
  *     zone: "us-central1-a",
- *     network: google_compute_network["default"].id,
+ *     network: _default.id,
  * });
  * ```
  * ### Example Usage - With instances and named ports
@@ -31,10 +32,11 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const webservers = new gcp.compute.InstanceGroup("webservers", {
+ *     name: "webservers",
  *     description: "Test instance group",
  *     instances: [
- *         google_compute_instance.test.id,
- *         google_compute_instance.test2.id,
+ *         test.id,
+ *         test2.id,
  *     ],
  *     namedPorts: [
  *         {
@@ -47,6 +49,61 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  *     zone: "us-central1-a",
+ * });
+ * ```
+ * ### Example Usage - Recreating an instance group in use
+ * Recreating an instance group that's in use by another resource will give a
+ * `resourceInUseByAnotherResource` error. Use `lifecycle.create_before_destroy`
+ * as shown in this example to avoid this type of error.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const debianImage = gcp.compute.getImage({
+ *     family: "debian-11",
+ *     project: "debian-cloud",
+ * });
+ * const stagingVm = new gcp.compute.Instance("staging_vm", {
+ *     name: "staging-vm",
+ *     machineType: "e2-medium",
+ *     zone: "us-central1-c",
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: debianImage.then(debianImage => debianImage.selfLink),
+ *         },
+ *     },
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ * });
+ * const stagingGroup = new gcp.compute.InstanceGroup("staging_group", {
+ *     name: "staging-instance-group",
+ *     zone: "us-central1-c",
+ *     instances: [stagingVm.id],
+ *     namedPorts: [
+ *         {
+ *             name: "http",
+ *             port: 8080,
+ *         },
+ *         {
+ *             name: "https",
+ *             port: 8443,
+ *         },
+ *     ],
+ * });
+ * const stagingHealth = new gcp.compute.HttpsHealthCheck("staging_health", {
+ *     name: "staging-health",
+ *     requestPath: "/health_check",
+ * });
+ * const stagingService = new gcp.compute.BackendService("staging_service", {
+ *     name: "staging-service",
+ *     portName: "https",
+ *     protocol: "HTTPS",
+ *     backends: [{
+ *         group: stagingGroup.id,
+ *     }],
+ *     healthChecks: stagingHealth.id,
  * });
  * ```
  *

@@ -204,13 +204,17 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        url_signature = random.RandomId("urlSignature", byte_length=16)
-        bucket = gcp.storage.Bucket("bucket", location="EU")
-        test_backend = gcp.compute.BackendBucket("testBackend",
+        url_signature = random.RandomId("url_signature", byte_length=16)
+        bucket = gcp.storage.Bucket("bucket",
+            name="test-storage-bucket",
+            location="EU")
+        test_backend = gcp.compute.BackendBucket("test_backend",
+            name="test-signed-backend-bucket",
             description="Contains beautiful images",
             bucket_name=bucket.name,
             enable_cdn=True)
-        backend_key = gcp.compute.BackendBucketSignedUrlKey("backendKey",
+        backend_key = gcp.compute.BackendBucketSignedUrlKey("backend_key",
+            name="test-key",
             key_value=url_signature.b64_url,
             backend_bucket=test_backend.name)
         ```
@@ -255,13 +259,17 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        url_signature = random.RandomId("urlSignature", byte_length=16)
-        bucket = gcp.storage.Bucket("bucket", location="EU")
-        test_backend = gcp.compute.BackendBucket("testBackend",
+        url_signature = random.RandomId("url_signature", byte_length=16)
+        bucket = gcp.storage.Bucket("bucket",
+            name="test-storage-bucket",
+            location="EU")
+        test_backend = gcp.compute.BackendBucket("test_backend",
+            name="test-signed-backend-bucket",
             description="Contains beautiful images",
             bucket_name=bucket.name,
             enable_cdn=True)
-        backend_key = gcp.compute.BackendBucketSignedUrlKey("backendKey",
+        backend_key = gcp.compute.BackendBucketSignedUrlKey("backend_key",
+            name="test-key",
             key_value=url_signature.b64_url,
             backend_bucket=test_backend.name)
         ```

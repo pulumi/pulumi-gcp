@@ -23,10 +23,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
- *     description: "example docker repository",
- *     format: "DOCKER",
  *     location: "us-central1",
  *     repositoryId: "my-repository",
+ *     description: "example docker repository",
+ *     format: "DOCKER",
  * });
  * ```
  * ### Artifact Registry Repository Docker
@@ -36,13 +36,13 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     location: "us-central1",
+ *     repositoryId: "my-repository",
  *     description: "example docker repository",
+ *     format: "DOCKER",
  *     dockerConfig: {
  *         immutableTags: true,
  *     },
- *     format: "DOCKER",
- *     location: "us-central1",
- *     repositoryId: "my-repository",
  * });
  * ```
  * ### Artifact Registry Repository Cmek
@@ -51,20 +51,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const project = gcp.organizations.getProject({});
- * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("cryptoKey", {
- *     cryptoKeyId: "kms-key",
- *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
- *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com`),
- * });
  * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
  *     location: "us-central1",
  *     repositoryId: "my-repository",
  *     description: "example docker repository with cmek",
  *     format: "DOCKER",
  *     kmsKeyName: "kms-key",
- * }, {
- *     dependsOn: [cryptoKey],
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("crypto_key", {
+ *     cryptoKeyId: "kms-key",
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com`),
  * });
  * ```
  * ### Artifact Registry Repository Virtual
@@ -105,8 +103,6 @@ import * as utilities from "../utilities";
  *             },
  *         ],
  *     },
- * }, {
- *     dependsOn: [],
  * });
  * ```
  * ### Artifact Registry Repository Remote
@@ -116,9 +112,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     location: "us-central1",
+ *     repositoryId: "my-repository",
  *     description: "example remote docker repository",
  *     format: "DOCKER",
- *     location: "us-central1",
  *     mode: "REMOTE_REPOSITORY",
  *     remoteRepositoryConfig: {
  *         description: "docker hub",
@@ -126,7 +123,6 @@ import * as utilities from "../utilities";
  *             publicRepository: "DOCKER_HUB",
  *         },
  *     },
- *     repositoryId: "my-repository",
  * });
  * ```
  * ### Artifact Registry Repository Remote Apt
@@ -136,20 +132,20 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     location: "us-central1",
+ *     repositoryId: "debian-buster",
  *     description: "example remote apt repository",
  *     format: "APT",
- *     location: "us-central1",
  *     mode: "REMOTE_REPOSITORY",
  *     remoteRepositoryConfig: {
+ *         description: "Debian buster remote repository",
  *         aptRepository: {
  *             publicRepository: {
  *                 repositoryBase: "DEBIAN",
  *                 repositoryPath: "debian/dists/buster",
  *             },
  *         },
- *         description: "Debian buster remote repository",
  *     },
- *     repositoryId: "debian-buster",
  * });
  * ```
  * ### Artifact Registry Repository Remote Yum
@@ -159,9 +155,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     location: "us-central1",
+ *     repositoryId: "centos-8",
  *     description: "example remote yum repository",
  *     format: "YUM",
- *     location: "us-central1",
  *     mode: "REMOTE_REPOSITORY",
  *     remoteRepositoryConfig: {
  *         description: "Centos 8 remote repository",
@@ -172,7 +169,6 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
- *     repositoryId: "centos-8",
  * });
  * ```
  * ### Artifact Registry Repository Cleanup
@@ -182,49 +178,49 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     location: "us-central1",
+ *     repositoryId: "my-repository",
+ *     description: "example docker repository with cleanup policies",
+ *     format: "DOCKER",
+ *     cleanupPolicyDryRun: false,
  *     cleanupPolicies: [
  *         {
+ *             id: "delete-prerelease",
  *             action: "DELETE",
  *             condition: {
- *                 olderThan: "2592000s",
+ *                 tagState: "TAGGED",
  *                 tagPrefixes: [
  *                     "alpha",
  *                     "v0",
  *                 ],
- *                 tagState: "TAGGED",
+ *                 olderThan: "2592000s",
  *             },
- *             id: "delete-prerelease",
  *         },
  *         {
+ *             id: "keep-tagged-release",
  *             action: "KEEP",
  *             condition: {
+ *                 tagState: "TAGGED",
+ *                 tagPrefixes: ["release"],
  *                 packageNamePrefixes: [
  *                     "webapp",
  *                     "mobile",
  *                 ],
- *                 tagPrefixes: ["release"],
- *                 tagState: "TAGGED",
  *             },
- *             id: "keep-tagged-release",
  *         },
  *         {
- *             action: "KEEP",
  *             id: "keep-minimum-versions",
+ *             action: "KEEP",
  *             mostRecentVersions: {
- *                 keepCount: 5,
  *                 packageNamePrefixes: [
  *                     "webapp",
  *                     "mobile",
  *                     "sandbox",
  *                 ],
+ *                 keepCount: 5,
  *             },
  *         },
  *     ],
- *     cleanupPolicyDryRun: false,
- *     description: "example docker repository with cleanup policies",
- *     format: "DOCKER",
- *     location: "us-central1",
- *     repositoryId: "my-repository",
  * });
  * ```
  * ### Artifact Registry Repository Remote Custom
@@ -240,7 +236,7 @@ import * as utilities from "../utilities";
  *         auto: {},
  *     },
  * });
- * const example_custom_remote_secretVersion = new gcp.secretmanager.SecretVersion("example-custom-remote-secretVersion", {
+ * const example_custom_remote_secretVersion = new gcp.secretmanager.SecretVersion("example-custom-remote-secret_version", {
  *     secret: example_custom_remote_secret.id,
  *     secretData: "remote-password",
  * });

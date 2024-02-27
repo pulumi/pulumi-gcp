@@ -52,16 +52,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var primary = new EnterpriseKey(&#34;primary&#34;, EnterpriseKeyArgs.builder()        
+ *             .displayName(&#34;display-name-one&#34;)
  *             .androidSettings(EnterpriseKeyAndroidSettingsArgs.builder()
  *                 .allowAllPackageNames(true)
  *                 .allowedPackageNames()
  *                 .build())
- *             .displayName(&#34;display-name-one&#34;)
- *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
  *             .project(&#34;my-project-name&#34;)
  *             .testingOptions(EnterpriseKeyTestingOptionsArgs.builder()
  *                 .testingScore(0.8)
  *                 .build())
+ *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
  *             .build());
  * 
  *     }
@@ -98,11 +98,11 @@ import javax.annotation.Nullable;
  *                 .allowAllBundleIds(true)
  *                 .allowedBundleIds()
  *                 .build())
- *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
  *             .project(&#34;my-project-name&#34;)
  *             .testingOptions(EnterpriseKeyTestingOptionsArgs.builder()
  *                 .testingScore(1)
  *                 .build())
+ *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
  *             .build());
  * 
  *     }
@@ -134,12 +134,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new EnterpriseKey(&#34;primary&#34;, EnterpriseKeyArgs.builder()        
  *             .displayName(&#34;display-name-one&#34;)
- *             .labels()
  *             .project(&#34;my-project-name&#34;)
  *             .webSettings(EnterpriseKeyWebSettingsArgs.builder()
- *                 .allowAllDomains(true)
  *                 .integrationType(&#34;SCORE&#34;)
+ *                 .allowAllDomains(true)
  *                 .build())
+ *             .labels()
  *             .build());
  * 
  *     }
@@ -173,7 +173,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new EnterpriseKey(&#34;primary&#34;, EnterpriseKeyArgs.builder()        
  *             .displayName(&#34;display-name-one&#34;)
- *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
  *             .project(&#34;my-project-name&#34;)
  *             .testingOptions(EnterpriseKeyTestingOptionsArgs.builder()
  *                 .testingChallenge(&#34;NOCAPTCHA&#34;)
@@ -184,11 +183,12 @@ import javax.annotation.Nullable;
  *                 .wafService(&#34;CA&#34;)
  *                 .build())
  *             .webSettings(EnterpriseKeyWebSettingsArgs.builder()
+ *                 .integrationType(&#34;INVISIBLE&#34;)
  *                 .allowAllDomains(true)
  *                 .allowedDomains()
  *                 .challengeSecurityPreference(&#34;USABILITY&#34;)
- *                 .integrationType(&#34;INVISIBLE&#34;)
  *                 .build())
+ *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
  *             .build());
  * 
  *     }
@@ -221,18 +221,18 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new EnterpriseKey(&#34;primary&#34;, EnterpriseKeyArgs.builder()        
  *             .displayName(&#34;display-name-one&#34;)
- *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
  *             .project(&#34;my-project-name&#34;)
  *             .testingOptions(EnterpriseKeyTestingOptionsArgs.builder()
  *                 .testingChallenge(&#34;NOCAPTCHA&#34;)
  *                 .testingScore(0.5)
  *                 .build())
  *             .webSettings(EnterpriseKeyWebSettingsArgs.builder()
+ *                 .integrationType(&#34;CHECKBOX&#34;)
  *                 .allowAllDomains(true)
  *                 .allowedDomains()
  *                 .challengeSecurityPreference(&#34;USABILITY&#34;)
- *                 .integrationType(&#34;CHECKBOX&#34;)
  *                 .build())
+ *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
  *             .build());
  * 
  *     }
@@ -265,17 +265,17 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new EnterpriseKey(&#34;primary&#34;, EnterpriseKeyArgs.builder()        
  *             .displayName(&#34;display-name-one&#34;)
- *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
  *             .project(&#34;my-project-name&#34;)
  *             .testingOptions(EnterpriseKeyTestingOptionsArgs.builder()
  *                 .testingScore(0.5)
  *                 .build())
  *             .webSettings(EnterpriseKeyWebSettingsArgs.builder()
+ *                 .integrationType(&#34;SCORE&#34;)
  *                 .allowAllDomains(true)
  *                 .allowAmpTraffic(false)
  *                 .allowedDomains()
- *                 .integrationType(&#34;SCORE&#34;)
  *                 .build())
+ *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
  *             .build());
  * 
  *     }

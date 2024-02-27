@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const foo = gcp.serviceaccount.getIamPolicy({
- *     serviceAccountId: google_service_account.test_account.name,
+ *     serviceAccountId: testAccount.name,
  * });
  * ```
  */
@@ -64,7 +64,7 @@ export interface GetIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const foo = gcp.serviceaccount.getIamPolicy({
- *     serviceAccountId: google_service_account.test_account.name,
+ *     serviceAccountId: testAccount.name,
  * });
  * ```
  */

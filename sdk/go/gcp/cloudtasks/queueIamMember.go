@@ -55,8 +55,9 @@ import (
 //				return err
 //			}
 //			_, err = cloudtasks.NewQueueIamPolicy(ctx, "policy", &cloudtasks.QueueIamPolicyArgs{
-//				Project:    pulumi.Any(google_cloud_tasks_queue.Default.Project),
-//				Location:   pulumi.Any(google_cloud_tasks_queue.Default.Location),
+//				Project:    pulumi.Any(_default.Project),
+//				Location:   pulumi.Any(_default.Location),
+//				Name:       pulumi.Any(_default.Name),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -83,8 +84,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudtasks.NewQueueIamBinding(ctx, "binding", &cloudtasks.QueueIamBindingArgs{
-//				Project:  pulumi.Any(google_cloud_tasks_queue.Default.Project),
-//				Location: pulumi.Any(google_cloud_tasks_queue.Default.Location),
+//				Project:  pulumi.Any(_default.Project),
+//				Location: pulumi.Any(_default.Location),
+//				Name:     pulumi.Any(_default.Name),
 //				Role:     pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -114,8 +116,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudtasks.NewQueueIamMember(ctx, "member", &cloudtasks.QueueIamMemberArgs{
-//				Project:  pulumi.Any(google_cloud_tasks_queue.Default.Project),
-//				Location: pulumi.Any(google_cloud_tasks_queue.Default.Location),
+//				Project:  pulumi.Any(_default.Project),
+//				Location: pulumi.Any(_default.Location),
+//				Name:     pulumi.Any(_default.Name),
 //				Role:     pulumi.String("roles/viewer"),
 //				Member:   pulumi.String("user:jane@example.com"),
 //			})

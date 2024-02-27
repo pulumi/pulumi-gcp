@@ -12,6 +12,39 @@ import (
 )
 
 // Provides access to Cloud Composer environment configuration in a region for a given project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/composer"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := composer.NewEnvironment(ctx, "composer_env", &composer.EnvironmentArgs{
+//				Name: pulumi.String("composer-environment"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			composerEnv, err := composer.LookupEnvironment(ctx, &composer.LookupEnvironmentArgs{
+//				Name: test.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("debug", composerEnv.Configs)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupEnvironment(ctx *pulumi.Context, args *LookupEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupEnvironmentResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEnvironmentResult

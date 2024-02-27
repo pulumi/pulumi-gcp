@@ -13,13 +13,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networkservices.Mesh("default", {
+ *     name: "my-mesh",
  *     labels: {
  *         foo: "bar",
  *     },
  *     description: "my description",
  *     interceptionPort: 443,
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Network Services Mesh No Port
@@ -29,12 +28,11 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networkservices.Mesh("default", {
+ *     name: "my-mesh-noport",
  *     labels: {
  *         foo: "bar",
  *     },
  *     description: "my description",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

@@ -17,11 +17,23 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const admin_cluster_basic = new gcp.gkeonprem.BareMetalAdminCluster("admin-cluster-basic", {
+ *     name: "my-cluster",
+ *     location: "us-west1",
  *     bareMetalVersion: "1.13.4",
+ *     networkConfig: {
+ *         islandModeCidr: {
+ *             serviceAddressCidrBlocks: ["172.26.0.0/16"],
+ *             podAddressCidrBlocks: ["10.240.0.0/13"],
+ *         },
+ *     },
+ *     nodeConfig: {
+ *         maxPodsPerNode: 250,
+ *     },
  *     controlPlane: {
  *         controlPlaneNodePoolConfig: {
  *             nodePoolConfig: {
  *                 labels: {},
+ *                 operatingSystem: "LINUX",
  *                 nodeConfigs: [
  *                     {
  *                         labels: {},
@@ -36,7 +48,6 @@ import * as utilities from "../utilities";
  *                         nodeIp: "10.200.0.4",
  *                     },
  *                 ],
- *                 operatingSystem: "LINUX",
  *             },
  *         },
  *     },
@@ -48,24 +59,7 @@ import * as utilities from "../utilities";
  *             controlPlaneVip: "10.200.0.5",
  *         },
  *     },
- *     location: "us-west1",
- *     networkConfig: {
- *         islandModeCidr: {
- *             podAddressCidrBlocks: ["10.240.0.0/13"],
- *             serviceAddressCidrBlocks: ["172.26.0.0/16"],
- *         },
- *     },
- *     nodeAccessConfig: {
- *         loginUser: "root",
- *     },
- *     nodeConfig: {
- *         maxPodsPerNode: 250,
- *     },
  *     storage: {
- *         lvpNodeMountsConfig: {
- *             path: "/mnt/localpv-disk",
- *             storageClass: "local-disks",
- *         },
  *         lvpShareConfig: {
  *             lvpConfig: {
  *                 path: "/mnt/localpv-share",
@@ -73,6 +67,13 @@ import * as utilities from "../utilities";
  *             },
  *             sharedPathPvCount: 5,
  *         },
+ *         lvpNodeMountsConfig: {
+ *             path: "/mnt/localpv-disk",
+ *             storageClass: "local-disks",
+ *         },
+ *     },
+ *     nodeAccessConfig: {
+ *         loginUser: "root",
  *     },
  * });
  * ```
@@ -83,21 +84,27 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const admin_cluster_basic = new gcp.gkeonprem.BareMetalAdminCluster("admin-cluster-basic", {
+ *     name: "my-cluster",
+ *     location: "us-west1",
+ *     description: "test description",
+ *     bareMetalVersion: "1.13.4",
  *     annotations: {
  *         env: "test",
  *     },
- *     bareMetalVersion: "1.13.4",
- *     clusterOperations: {
- *         enableApplicationLogs: true,
+ *     networkConfig: {
+ *         islandModeCidr: {
+ *             serviceAddressCidrBlocks: ["172.26.0.0/16"],
+ *             podAddressCidrBlocks: ["10.240.0.0/13"],
+ *         },
+ *     },
+ *     nodeConfig: {
+ *         maxPodsPerNode: 250,
  *     },
  *     controlPlane: {
- *         apiServerArgs: [{
- *             argument: "test argument",
- *             value: "test value",
- *         }],
  *         controlPlaneNodePoolConfig: {
  *             nodePoolConfig: {
  *                 labels: {},
+ *                 operatingSystem: "LINUX",
  *                 nodeConfigs: [
  *                     {
  *                         labels: {},
@@ -112,49 +119,44 @@ import * as utilities from "../utilities";
  *                         nodeIp: "10.200.0.4",
  *                     },
  *                 ],
- *                 operatingSystem: "LINUX",
  *                 taints: [{
- *                     effect: "NO_EXECUTE",
  *                     key: "test-key",
  *                     value: "test-value",
+ *                     effect: "NO_EXECUTE",
  *                 }],
  *             },
  *         },
+ *         apiServerArgs: [{
+ *             argument: "test argument",
+ *             value: "test value",
+ *         }],
  *     },
- *     description: "test description",
  *     loadBalancer: {
- *         manualLbConfig: {
- *             enabled: true,
- *         },
  *         portConfig: {
  *             controlPlaneLoadBalancerPort: 443,
  *         },
  *         vipConfig: {
  *             controlPlaneVip: "10.200.0.5",
  *         },
+ *         manualLbConfig: {
+ *             enabled: true,
+ *         },
  *     },
- *     location: "us-west1",
- *     maintenanceConfig: {
- *         maintenanceAddressCidrBlocks: [
- *             "10.0.0.1/32",
- *             "10.0.0.2/32",
- *         ],
- *     },
- *     networkConfig: {
- *         islandModeCidr: {
- *             podAddressCidrBlocks: ["10.240.0.0/13"],
- *             serviceAddressCidrBlocks: ["172.26.0.0/16"],
+ *     storage: {
+ *         lvpShareConfig: {
+ *             lvpConfig: {
+ *                 path: "/mnt/localpv-share",
+ *                 storageClass: "local-shared",
+ *             },
+ *             sharedPathPvCount: 5,
+ *         },
+ *         lvpNodeMountsConfig: {
+ *             path: "/mnt/localpv-disk",
+ *             storageClass: "local-disks",
  *         },
  *     },
  *     nodeAccessConfig: {
  *         loginUser: "root",
- *     },
- *     nodeConfig: {
- *         maxPodsPerNode: 250,
- *     },
- *     proxy: {
- *         noProxies: ["127.0.0.1"],
- *         uri: "test proxy uri",
  *     },
  *     securityConfig: {
  *         authorization: {
@@ -163,18 +165,18 @@ import * as utilities from "../utilities";
  *             }],
  *         },
  *     },
- *     storage: {
- *         lvpNodeMountsConfig: {
- *             path: "/mnt/localpv-disk",
- *             storageClass: "local-disks",
- *         },
- *         lvpShareConfig: {
- *             lvpConfig: {
- *                 path: "/mnt/localpv-share",
- *                 storageClass: "local-shared",
- *             },
- *             sharedPathPvCount: 5,
- *         },
+ *     maintenanceConfig: {
+ *         maintenanceAddressCidrBlocks: [
+ *             "10.0.0.1/32",
+ *             "10.0.0.2/32",
+ *         ],
+ *     },
+ *     clusterOperations: {
+ *         enableApplicationLogs: true,
+ *     },
+ *     proxy: {
+ *         uri: "test proxy uri",
+ *         noProxies: ["127.0.0.1"],
  *     },
  * });
  * ```

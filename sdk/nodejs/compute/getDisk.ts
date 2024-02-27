@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  *     name: "persistent-boot-disk",
  *     project: "example",
  * });
- * // ...
  * const _default = new gcp.compute.Instance("default", {bootDisk: {
  *     source: persistent_boot_disk.then(persistent_boot_disk => persistent_boot_disk.selfLink),
  *     autoDelete: false,
@@ -184,7 +183,6 @@ export interface GetDiskResult {
  *     name: "persistent-boot-disk",
  *     project: "example",
  * });
- * // ...
  * const _default = new gcp.compute.Instance("default", {bootDisk: {
  *     source: persistent_boot_disk.then(persistent_boot_disk => persistent_boot_disk.selfLink),
  *     autoDelete: false,

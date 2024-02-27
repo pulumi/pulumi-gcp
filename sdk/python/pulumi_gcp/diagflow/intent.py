@@ -585,12 +585,11 @@ class Intent(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic_agent = gcp.diagflow.Agent("basicAgent",
+        basic_agent = gcp.diagflow.Agent("basic_agent",
             display_name="example_agent",
             default_language_code="en",
             time_zone="America/New_York")
-        basic_intent = gcp.diagflow.Intent("basicIntent", display_name="basic-intent",
-        opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
+        basic_intent = gcp.diagflow.Intent("basic_intent", display_name="basic-intent")
         ```
         ### Dialogflow Intent Full
 
@@ -598,23 +597,26 @@ class Intent(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        agent_project_project = gcp.organizations.Project("agentProjectProject", org_id="123456789")
-        agent_project_service = gcp.projects.Service("agentProjectService",
-            project=agent_project_project.project_id,
+        agent_project = gcp.organizations.Project("agent_project",
+            project_id="my-project",
+            name="my-project",
+            org_id="123456789")
+        agent_project_service = gcp.projects.Service("agent_project",
+            project=agent_project.project_id,
             service="dialogflow.googleapis.com",
             disable_dependent_services=False)
-        dialogflow_service_account = gcp.serviceaccount.Account("dialogflowServiceAccount", account_id="my-account")
-        agent_create = gcp.projects.IAMMember("agentCreate",
+        dialogflow_service_account = gcp.serviceaccount.Account("dialogflow_service_account", account_id="my-account")
+        agent_create = gcp.projects.IAMMember("agent_create",
             project=agent_project_service.project,
             role="roles/dialogflow.admin",
             member=dialogflow_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        basic_agent = gcp.diagflow.Agent("basicAgent",
-            project=agent_project_project.project_id,
+        basic_agent = gcp.diagflow.Agent("basic_agent",
+            project=agent_project.project_id,
             display_name="example_agent",
             default_language_code="en",
             time_zone="America/New_York")
-        full_intent = gcp.diagflow.Intent("fullIntent",
-            project=agent_project_project.project_id,
+        full_intent = gcp.diagflow.Intent("full_intent",
+            project=agent_project.project_id,
             display_name="full-intent",
             webhook_state="WEBHOOK_STATE_ENABLED",
             priority=1,
@@ -622,13 +624,12 @@ class Intent(pulumi.CustomResource):
             ml_disabled=True,
             action="some_action",
             reset_contexts=True,
-            input_context_names=[agent_project_project.project_id.apply(lambda project_id: f"projects/{project_id}/agent/sessions/-/contexts/some_id")],
+            input_context_names=[agent_project.project_id.apply(lambda project_id: f"projects/{project_id}/agent/sessions/-/contexts/some_id")],
             events=["some_event"],
             default_response_platforms=[
                 "FACEBOOK",
                 "SLACK",
-            ],
-            opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
+            ])
         ```
 
         ## Import
@@ -701,12 +702,11 @@ class Intent(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic_agent = gcp.diagflow.Agent("basicAgent",
+        basic_agent = gcp.diagflow.Agent("basic_agent",
             display_name="example_agent",
             default_language_code="en",
             time_zone="America/New_York")
-        basic_intent = gcp.diagflow.Intent("basicIntent", display_name="basic-intent",
-        opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
+        basic_intent = gcp.diagflow.Intent("basic_intent", display_name="basic-intent")
         ```
         ### Dialogflow Intent Full
 
@@ -714,23 +714,26 @@ class Intent(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        agent_project_project = gcp.organizations.Project("agentProjectProject", org_id="123456789")
-        agent_project_service = gcp.projects.Service("agentProjectService",
-            project=agent_project_project.project_id,
+        agent_project = gcp.organizations.Project("agent_project",
+            project_id="my-project",
+            name="my-project",
+            org_id="123456789")
+        agent_project_service = gcp.projects.Service("agent_project",
+            project=agent_project.project_id,
             service="dialogflow.googleapis.com",
             disable_dependent_services=False)
-        dialogflow_service_account = gcp.serviceaccount.Account("dialogflowServiceAccount", account_id="my-account")
-        agent_create = gcp.projects.IAMMember("agentCreate",
+        dialogflow_service_account = gcp.serviceaccount.Account("dialogflow_service_account", account_id="my-account")
+        agent_create = gcp.projects.IAMMember("agent_create",
             project=agent_project_service.project,
             role="roles/dialogflow.admin",
             member=dialogflow_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        basic_agent = gcp.diagflow.Agent("basicAgent",
-            project=agent_project_project.project_id,
+        basic_agent = gcp.diagflow.Agent("basic_agent",
+            project=agent_project.project_id,
             display_name="example_agent",
             default_language_code="en",
             time_zone="America/New_York")
-        full_intent = gcp.diagflow.Intent("fullIntent",
-            project=agent_project_project.project_id,
+        full_intent = gcp.diagflow.Intent("full_intent",
+            project=agent_project.project_id,
             display_name="full-intent",
             webhook_state="WEBHOOK_STATE_ENABLED",
             priority=1,
@@ -738,13 +741,12 @@ class Intent(pulumi.CustomResource):
             ml_disabled=True,
             action="some_action",
             reset_contexts=True,
-            input_context_names=[agent_project_project.project_id.apply(lambda project_id: f"projects/{project_id}/agent/sessions/-/contexts/some_id")],
+            input_context_names=[agent_project.project_id.apply(lambda project_id: f"projects/{project_id}/agent/sessions/-/contexts/some_id")],
             events=["some_event"],
             default_response_platforms=[
                 "FACEBOOK",
                 "SLACK",
-            ],
-            opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
+            ])
         ```
 
         ## Import

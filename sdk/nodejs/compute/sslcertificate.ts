@@ -20,42 +20,106 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
  *
  * const _default = new gcp.compute.SSLCertificate("default", {
  *     namePrefix: "my-certificate-",
  *     description: "a description",
- *     privateKey: fs.readFileSync("path/to/private.key", "utf8"),
- *     certificate: fs.readFileSync("path/to/certificate.crt", "utf8"),
+ *     privateKey: std.file({
+ *         input: "path/to/private.key",
+ *     }).then(invoke => invoke.result),
+ *     certificate: std.file({
+ *         input: "path/to/certificate.crt",
+ *     }).then(invoke => invoke.result),
  * });
  * ```
  * ### Ssl Certificate Random Provider
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as crypto from "crypto";
- * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
  * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
  *
- * function computeFilebase64sha256(path: string): string {
- * 	const fileData = Buffer.from(fs.readFileSync(path, 'binary'))
- * 	return crypto.createHash('sha256').update(fileData).digest('hex')
- * }
- *
- * // You may also want to control name generation explicitly:
- * const _default = new gcp.compute.SSLCertificate("default", {
- *     privateKey: fs.readFileSync("path/to/private.key", "utf8"),
- *     certificate: fs.readFileSync("path/to/certificate.crt", "utf8"),
- * });
  * const certificate = new random.RandomId("certificate", {
  *     byteLength: 4,
  *     prefix: "my-certificate-",
  *     keepers: {
- *         private_key: computeFilebase64sha256("path/to/private.key"),
- *         certificate: computeFilebase64sha256("path/to/certificate.crt"),
+ *         private_key: std.filebase64sha256({
+ *             input: "path/to/private.key",
+ *         }).then(invoke => invoke.result),
+ *         certificate: std.filebase64sha256({
+ *             input: "path/to/certificate.crt",
+ *         }).then(invoke => invoke.result),
  *     },
+ * });
+ * // You may also want to control name generation explicitly:
+ * const _default = new gcp.compute.SSLCertificate("default", {
+ *     name: certificate.hex,
+ *     privateKey: std.file({
+ *         input: "path/to/private.key",
+ *     }).then(invoke => invoke.result),
+ *     certificate: std.file({
+ *         input: "path/to/certificate.crt",
+ *     }).then(invoke => invoke.result),
+ * });
+ * ```
+ * ### Ssl Certificate Target Https Proxies
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * // Using with Target HTTPS Proxies
+ * //
+ * // SSL certificates cannot be updated after creation. In order to apply
+ * // the specified configuration, the provider will destroy the existing
+ * // resource and create a replacement. Example:
+ * const _default = new gcp.compute.SSLCertificate("default", {
+ *     namePrefix: "my-certificate-",
+ *     privateKey: std.file({
+ *         input: "path/to/private.key",
+ *     }).then(invoke => invoke.result),
+ *     certificate: std.file({
+ *         input: "path/to/certificate.crt",
+ *     }).then(invoke => invoke.result),
+ * });
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ *     name: "http-health-check",
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: defaultHttpHealthCheck.id,
+ * });
+ * const defaultURLMap = new gcp.compute.URLMap("default", {
+ *     name: "url-map",
+ *     description: "a description",
+ *     defaultService: defaultBackendService.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: defaultBackendService.id,
+ *         pathRules: [{
+ *             paths: ["/*"],
+ *             service: defaultBackendService.id,
+ *         }],
+ *     }],
+ * });
+ * const defaultTargetHttpsProxy = new gcp.compute.TargetHttpsProxy("default", {
+ *     name: "test-proxy",
+ *     urlMap: defaultURLMap.id,
+ *     sslCertificates: [_default.id],
  * });
  * ```
  *

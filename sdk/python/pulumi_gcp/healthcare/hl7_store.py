@@ -436,9 +436,12 @@ class Hl7Store(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        topic = gcp.pubsub.Topic("topic")
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        topic = gcp.pubsub.Topic("topic", name="hl7-v2-notifications")
+        dataset = gcp.healthcare.Dataset("dataset",
+            name="example-dataset",
+            location="us-central1")
         store = gcp.healthcare.Hl7Store("store",
+            name="example-hl7-v2-store",
             dataset=dataset.id,
             reject_duplicate_message=True,
             notification_configs=[gcp.healthcare.Hl7StoreNotificationConfigsArgs(
@@ -454,9 +457,11 @@ class Hl7Store(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        dataset = gcp.healthcare.Dataset("dataset",
+            name="example-dataset",
+            location="us-central1")
         store = gcp.healthcare.Hl7Store("store",
+            name="example-hl7-v2-store",
             dataset=dataset.id,
             parser_config=gcp.healthcare.Hl7StoreParserConfigArgs(
                 allow_null_header=False,
@@ -540,8 +545,7 @@ class Hl7Store(pulumi.CustomResource):
           "ignoreMinOccurs": true
         }
         \"\"\",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Healthcare Hl7 V2 Store Unschematized
 
@@ -549,16 +553,17 @@ class Hl7Store(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        dataset = gcp.healthcare.Dataset("dataset",
+            name="example-dataset",
+            location="us-central1")
         store = gcp.healthcare.Hl7Store("store",
+            name="example-hl7-v2-store",
             dataset=dataset.id,
             parser_config=gcp.healthcare.Hl7StoreParserConfigArgs(
                 allow_null_header=False,
                 segment_terminator="Jw==",
                 version="V2",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import
@@ -635,9 +640,12 @@ class Hl7Store(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        topic = gcp.pubsub.Topic("topic")
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        topic = gcp.pubsub.Topic("topic", name="hl7-v2-notifications")
+        dataset = gcp.healthcare.Dataset("dataset",
+            name="example-dataset",
+            location="us-central1")
         store = gcp.healthcare.Hl7Store("store",
+            name="example-hl7-v2-store",
             dataset=dataset.id,
             reject_duplicate_message=True,
             notification_configs=[gcp.healthcare.Hl7StoreNotificationConfigsArgs(
@@ -653,9 +661,11 @@ class Hl7Store(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        dataset = gcp.healthcare.Dataset("dataset",
+            name="example-dataset",
+            location="us-central1")
         store = gcp.healthcare.Hl7Store("store",
+            name="example-hl7-v2-store",
             dataset=dataset.id,
             parser_config=gcp.healthcare.Hl7StoreParserConfigArgs(
                 allow_null_header=False,
@@ -739,8 +749,7 @@ class Hl7Store(pulumi.CustomResource):
           "ignoreMinOccurs": true
         }
         \"\"\",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Healthcare Hl7 V2 Store Unschematized
 
@@ -748,16 +757,17 @@ class Hl7Store(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        dataset = gcp.healthcare.Dataset("dataset",
+            name="example-dataset",
+            location="us-central1")
         store = gcp.healthcare.Hl7Store("store",
+            name="example-hl7-v2-store",
             dataset=dataset.id,
             parser_config=gcp.healthcare.Hl7StoreParserConfigArgs(
                 allow_null_header=False,
                 segment_terminator="Jw==",
                 version="V2",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import

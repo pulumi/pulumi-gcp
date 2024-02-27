@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const primary = new gcp.osconfig.OsPolicyAssignment("primary", {
- *     description: "A test os policy assignment",
  *     instanceFilter: {
  *         all: false,
  *         exclusionLabels: [{
@@ -48,16 +47,11 @@ import * as utilities from "../utilities";
  *         }],
  *     },
  *     location: "us-central1-a",
+ *     name: "policy-assignment",
  *     osPolicies: [{
- *         allowNoResourceGroupMatch: false,
- *         description: "A test os policy",
  *         id: "policy",
  *         mode: "VALIDATION",
  *         resourceGroups: [{
- *             inventoryFilters: [{
- *                 osShortName: "centos",
- *                 osVersion: "8.*",
- *             }],
  *             resources: [
  *                 {
  *                     id: "apt-to-yum",
@@ -66,38 +60,44 @@ import * as utilities from "../utilities";
  *                             archiveType: "DEB",
  *                             components: ["doc"],
  *                             distribution: "debian",
- *                             gpgKey: ".gnupg/pubring.kbx",
  *                             uri: "https://atl.mirrors.clouvider.net/debian",
+ *                             gpgKey: ".gnupg/pubring.kbx",
  *                         },
  *                     },
  *                 },
  *                 {
+ *                     id: "exec1",
  *                     exec: {
- *                         enforce: {
- *                             args: ["arg1"],
- *                             file: {
- *                                 allowInsecure: true,
- *                                 remote: {
- *                                     sha256Checksum: "c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
- *                                     uri: "https://www.example.com/script.sh",
- *                                 },
- *                             },
- *                             interpreter: "SHELL",
- *                             outputFilePath: "$HOME/out",
- *                         },
  *                         validate: {
+ *                             interpreter: "SHELL",
  *                             args: ["arg1"],
  *                             file: {
  *                                 localPath: "$HOME/script.sh",
  *                             },
+ *                             outputFilePath: "$HOME/out",
+ *                         },
+ *                         enforce: {
  *                             interpreter: "SHELL",
+ *                             args: ["arg1"],
+ *                             file: {
+ *                                 allowInsecure: true,
+ *                                 remote: {
+ *                                     uri: "https://www.example.com/script.sh",
+ *                                     sha256Checksum: "c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
+ *                                 },
+ *                             },
  *                             outputFilePath: "$HOME/out",
  *                         },
  *                     },
- *                     id: "exec1",
  *                 },
  *             ],
+ *             inventoryFilters: [{
+ *                 osShortName: "centos",
+ *                 osVersion: "8.*",
+ *             }],
  *         }],
+ *         allowNoResourceGroupMatch: false,
+ *         description: "A test os policy",
  *     }],
  *     rollout: {
  *         disruptionBudget: {
@@ -105,6 +105,7 @@ import * as utilities from "../utilities";
  *         },
  *         minWaitDuration: "3s",
  *     },
+ *     description: "A test os policy assignment",
  * });
  * ```
  *

@@ -44,10 +44,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const editor = new gcp.bigtable.TableIamBinding("editor", {
- *     instance: "your-bigtable-instance",
- *     members: ["user:jane@example.com"],
- *     role: "roles/bigtable.user",
  *     table: "your-bigtable-table",
+ *     instance: "your-bigtable-instance",
+ *     role: "roles/bigtable.user",
+ *     members: ["user:jane@example.com"],
  * });
  * ```
  *
@@ -58,10 +58,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const editor = new gcp.bigtable.TableIamMember("editor", {
- *     instance: "your-bigtable-instance",
- *     member: "user:jane@example.com",
- *     role: "roles/bigtable.user",
  *     table: "your-bigtable-table",
+ *     instance: "your-bigtable-instance",
+ *     role: "roles/bigtable.user",
+ *     member: "user:jane@example.com",
  * });
  * ```
  *

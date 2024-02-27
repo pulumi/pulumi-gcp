@@ -51,10 +51,8 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// 
     ///     var policy = new Gcp.ServiceDirectory.ServiceIamPolicy("policy", new()
     ///     {
+    ///         Name = example.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -72,14 +70,12 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// {
     ///     var binding = new Gcp.ServiceDirectory.ServiceIamBinding("binding", new()
     ///     {
+    ///         Name = example.Name,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -97,11 +93,9 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// {
     ///     var member = new Gcp.ServiceDirectory.ServiceIamMember("member", new()
     ///     {
+    ///         Name = example.Name,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

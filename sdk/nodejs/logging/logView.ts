@@ -20,14 +20,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const loggingLogViewProjectBucketConfig = new gcp.logging.ProjectBucketConfig("loggingLogViewProjectBucketConfig", {
+ * const loggingLogView = new gcp.logging.ProjectBucketConfig("logging_log_view", {
  *     project: "my-project-name",
  *     location: "global",
  *     retentionDays: 30,
  *     bucketId: "_Default",
  * });
- * const loggingLogViewLogView = new gcp.logging.LogView("loggingLogViewLogView", {
- *     bucket: loggingLogViewProjectBucketConfig.id,
+ * const loggingLogViewLogView = new gcp.logging.LogView("logging_log_view", {
+ *     name: "my-view",
+ *     bucket: loggingLogView.id,
  *     description: "A logging view configured with Terraform",
  *     filter: "SOURCE(\"projects/myproject\") AND resource.type = \"gce_instance\" AND LOG_ID(\"stdout\")",
  * });

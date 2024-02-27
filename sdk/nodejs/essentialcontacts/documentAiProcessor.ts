@@ -21,8 +21,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const processor = new gcp.essentialcontacts.DocumentAiProcessor("processor", {
- *     displayName: "test-processor",
  *     location: "us",
+ *     displayName: "test-processor",
  *     type: "OCR_PROCESSOR",
  * });
  * ```

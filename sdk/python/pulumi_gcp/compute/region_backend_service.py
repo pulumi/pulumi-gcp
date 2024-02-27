@@ -1198,6 +1198,26 @@ class RegionBackendService(pulumi.CustomResource):
             * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
 
         ## Example Usage
+        ### Region Backend Service Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="rbs-health-check",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        default = gcp.compute.RegionBackendService("default",
+            name="region-service",
+            region="us-central1",
+            health_checks=default_health_check.id,
+            connection_draining_timeout_sec=10,
+            session_affinity="CLIENT_IP")
+        ```
         ### Region Backend Service External Iap
 
         ```python
@@ -1205,13 +1225,223 @@ class RegionBackendService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.RegionBackendService("default",
+            name="tf-test-region-service-external",
+            region="us-central1",
+            protocol="HTTP",
+            load_balancing_scheme="EXTERNAL",
             iap=gcp.compute.RegionBackendServiceIapArgs(
                 oauth2_client_id="abc",
                 oauth2_client_secret="xyz",
+            ))
+        ```
+        ### Region Backend Service Cache
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            name="rbs-health-check",
+            region="us-central1",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port=80,
+            ))
+        default = gcp.compute.RegionBackendService("default",
+            name="region-service",
+            region="us-central1",
+            health_checks=default_region_health_check.id,
+            enable_cdn=True,
+            cdn_policy=gcp.compute.RegionBackendServiceCdnPolicyArgs(
+                cache_mode="CACHE_ALL_STATIC",
+                default_ttl=3600,
+                client_ttl=7200,
+                max_ttl=10800,
+                negative_caching=True,
+                signed_url_cache_max_age_sec=7200,
             ),
             load_balancing_scheme="EXTERNAL",
+            protocol="HTTP")
+        ```
+        ### Region Backend Service Ilb Round Robin
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.HealthCheck("health_check",
+            name="rbs-health-check",
+            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+                port=80,
+            ))
+        default = gcp.compute.RegionBackendService("default",
+            region="us-central1",
+            name="region-service",
+            health_checks=health_check.id,
             protocol="HTTP",
-            region="us-central1")
+            load_balancing_scheme="INTERNAL_MANAGED",
+            locality_lb_policy="ROUND_ROBIN")
+        ```
+        ### Region Backend Service External
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.RegionHealthCheck("health_check",
+            name="rbs-health-check",
+            region="us-central1",
+            tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        default = gcp.compute.RegionBackendService("default",
+            region="us-central1",
+            name="region-service",
+            health_checks=health_check.id,
+            protocol="TCP",
+            load_balancing_scheme="EXTERNAL")
+        ```
+        ### Region Backend Service External Weighted
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.RegionHealthCheck("health_check",
+            name="rbs-health-check",
+            region="us-central1",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port=80,
+            ))
+        default = gcp.compute.RegionBackendService("default",
+            region="us-central1",
+            name="region-service",
+            health_checks=health_check.id,
+            protocol="TCP",
+            load_balancing_scheme="EXTERNAL",
+            locality_lb_policy="WEIGHTED_MAGLEV")
+        ```
+        ### Region Backend Service Ilb Ring Hash
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.HealthCheck("health_check",
+            name="rbs-health-check",
+            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+                port=80,
+            ))
+        default = gcp.compute.RegionBackendService("default",
+            region="us-central1",
+            name="region-service",
+            health_checks=health_check.id,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            locality_lb_policy="RING_HASH",
+            session_affinity="HTTP_COOKIE",
+            protocol="HTTP",
+            circuit_breakers=gcp.compute.RegionBackendServiceCircuitBreakersArgs(
+                max_connections=10,
+            ),
+            consistent_hash=gcp.compute.RegionBackendServiceConsistentHashArgs(
+                http_cookie=gcp.compute.RegionBackendServiceConsistentHashHttpCookieArgs(
+                    ttl=gcp.compute.RegionBackendServiceConsistentHashHttpCookieTtlArgs(
+                        seconds=11,
+                        nanos=1111,
+                    ),
+                    name="mycookie",
+                ),
+            ),
+            outlier_detection=gcp.compute.RegionBackendServiceOutlierDetectionArgs(
+                consecutive_errors=2,
+            ))
+        ```
+        ### Region Backend Service Balancing Mode
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        default_network = gcp.compute.Network("default",
+            name="rbs-net",
+            auto_create_subnetworks=False,
+            routing_mode="REGIONAL")
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="rbs-net-default",
+            ip_cidr_range="10.1.2.0/24",
+            region="us-central1",
+            network=default_network.id)
+        instance_template = gcp.compute.InstanceTemplate("instance_template",
+            name="template-region-service",
+            machine_type="e2-medium",
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network=default_network.id,
+                subnetwork=default_subnetwork.id,
+            )],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image=debian_image.self_link,
+                auto_delete=True,
+                boot=True,
+            )],
+            tags=[
+                "allow-ssh",
+                "load-balanced-backend",
+            ])
+        rigm = gcp.compute.RegionInstanceGroupManager("rigm",
+            region="us-central1",
+            name="rbs-rigm",
+            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
+                instance_template=instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="internal-glb",
+            target_size=1)
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            region="us-central1",
+            name="rbs-health-check",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port_specification="USE_SERVING_PORT",
+            ))
+        default = gcp.compute.RegionBackendService("default",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            backends=[gcp.compute.RegionBackendServiceBackendArgs(
+                group=rigm.instance_group,
+                balancing_mode="UTILIZATION",
+                capacity_scaler=1,
+            )],
+            region="us-central1",
+            name="region-service",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=default_region_health_check.id)
+        ```
+        ### Region Backend Service Connection Tracking
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.RegionHealthCheck("health_check",
+            name="rbs-health-check",
+            region="us-central1",
+            tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
+                port=22,
+            ))
+        default = gcp.compute.RegionBackendService("default",
+            name="region-service",
+            region="us-central1",
+            health_checks=health_check.id,
+            connection_draining_timeout_sec=10,
+            session_affinity="CLIENT_IP",
+            protocol="TCP",
+            load_balancing_scheme="EXTERNAL",
+            connection_tracking_policy=gcp.compute.RegionBackendServiceConnectionTrackingPolicyArgs(
+                tracking_mode="PER_SESSION",
+                connection_persistence_on_unhealthy_backends="NEVER_PERSIST",
+                idle_timeout_sec=60,
+                enable_strong_affinity=True,
+            ))
         ```
 
         ## Import
@@ -1351,6 +1581,26 @@ class RegionBackendService(pulumi.CustomResource):
             * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
 
         ## Example Usage
+        ### Region Backend Service Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="rbs-health-check",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        default = gcp.compute.RegionBackendService("default",
+            name="region-service",
+            region="us-central1",
+            health_checks=default_health_check.id,
+            connection_draining_timeout_sec=10,
+            session_affinity="CLIENT_IP")
+        ```
         ### Region Backend Service External Iap
 
         ```python
@@ -1358,13 +1608,223 @@ class RegionBackendService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.RegionBackendService("default",
+            name="tf-test-region-service-external",
+            region="us-central1",
+            protocol="HTTP",
+            load_balancing_scheme="EXTERNAL",
             iap=gcp.compute.RegionBackendServiceIapArgs(
                 oauth2_client_id="abc",
                 oauth2_client_secret="xyz",
+            ))
+        ```
+        ### Region Backend Service Cache
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            name="rbs-health-check",
+            region="us-central1",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port=80,
+            ))
+        default = gcp.compute.RegionBackendService("default",
+            name="region-service",
+            region="us-central1",
+            health_checks=default_region_health_check.id,
+            enable_cdn=True,
+            cdn_policy=gcp.compute.RegionBackendServiceCdnPolicyArgs(
+                cache_mode="CACHE_ALL_STATIC",
+                default_ttl=3600,
+                client_ttl=7200,
+                max_ttl=10800,
+                negative_caching=True,
+                signed_url_cache_max_age_sec=7200,
             ),
             load_balancing_scheme="EXTERNAL",
+            protocol="HTTP")
+        ```
+        ### Region Backend Service Ilb Round Robin
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.HealthCheck("health_check",
+            name="rbs-health-check",
+            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+                port=80,
+            ))
+        default = gcp.compute.RegionBackendService("default",
+            region="us-central1",
+            name="region-service",
+            health_checks=health_check.id,
             protocol="HTTP",
-            region="us-central1")
+            load_balancing_scheme="INTERNAL_MANAGED",
+            locality_lb_policy="ROUND_ROBIN")
+        ```
+        ### Region Backend Service External
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.RegionHealthCheck("health_check",
+            name="rbs-health-check",
+            region="us-central1",
+            tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        default = gcp.compute.RegionBackendService("default",
+            region="us-central1",
+            name="region-service",
+            health_checks=health_check.id,
+            protocol="TCP",
+            load_balancing_scheme="EXTERNAL")
+        ```
+        ### Region Backend Service External Weighted
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.RegionHealthCheck("health_check",
+            name="rbs-health-check",
+            region="us-central1",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port=80,
+            ))
+        default = gcp.compute.RegionBackendService("default",
+            region="us-central1",
+            name="region-service",
+            health_checks=health_check.id,
+            protocol="TCP",
+            load_balancing_scheme="EXTERNAL",
+            locality_lb_policy="WEIGHTED_MAGLEV")
+        ```
+        ### Region Backend Service Ilb Ring Hash
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.HealthCheck("health_check",
+            name="rbs-health-check",
+            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+                port=80,
+            ))
+        default = gcp.compute.RegionBackendService("default",
+            region="us-central1",
+            name="region-service",
+            health_checks=health_check.id,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            locality_lb_policy="RING_HASH",
+            session_affinity="HTTP_COOKIE",
+            protocol="HTTP",
+            circuit_breakers=gcp.compute.RegionBackendServiceCircuitBreakersArgs(
+                max_connections=10,
+            ),
+            consistent_hash=gcp.compute.RegionBackendServiceConsistentHashArgs(
+                http_cookie=gcp.compute.RegionBackendServiceConsistentHashHttpCookieArgs(
+                    ttl=gcp.compute.RegionBackendServiceConsistentHashHttpCookieTtlArgs(
+                        seconds=11,
+                        nanos=1111,
+                    ),
+                    name="mycookie",
+                ),
+            ),
+            outlier_detection=gcp.compute.RegionBackendServiceOutlierDetectionArgs(
+                consecutive_errors=2,
+            ))
+        ```
+        ### Region Backend Service Balancing Mode
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        default_network = gcp.compute.Network("default",
+            name="rbs-net",
+            auto_create_subnetworks=False,
+            routing_mode="REGIONAL")
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="rbs-net-default",
+            ip_cidr_range="10.1.2.0/24",
+            region="us-central1",
+            network=default_network.id)
+        instance_template = gcp.compute.InstanceTemplate("instance_template",
+            name="template-region-service",
+            machine_type="e2-medium",
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network=default_network.id,
+                subnetwork=default_subnetwork.id,
+            )],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image=debian_image.self_link,
+                auto_delete=True,
+                boot=True,
+            )],
+            tags=[
+                "allow-ssh",
+                "load-balanced-backend",
+            ])
+        rigm = gcp.compute.RegionInstanceGroupManager("rigm",
+            region="us-central1",
+            name="rbs-rigm",
+            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
+                instance_template=instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="internal-glb",
+            target_size=1)
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            region="us-central1",
+            name="rbs-health-check",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port_specification="USE_SERVING_PORT",
+            ))
+        default = gcp.compute.RegionBackendService("default",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            backends=[gcp.compute.RegionBackendServiceBackendArgs(
+                group=rigm.instance_group,
+                balancing_mode="UTILIZATION",
+                capacity_scaler=1,
+            )],
+            region="us-central1",
+            name="region-service",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=default_region_health_check.id)
+        ```
+        ### Region Backend Service Connection Tracking
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.RegionHealthCheck("health_check",
+            name="rbs-health-check",
+            region="us-central1",
+            tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
+                port=22,
+            ))
+        default = gcp.compute.RegionBackendService("default",
+            name="region-service",
+            region="us-central1",
+            health_checks=health_check.id,
+            connection_draining_timeout_sec=10,
+            session_affinity="CLIENT_IP",
+            protocol="TCP",
+            load_balancing_scheme="EXTERNAL",
+            connection_tracking_policy=gcp.compute.RegionBackendServiceConnectionTrackingPolicyArgs(
+                tracking_mode="PER_SESSION",
+                connection_persistence_on_unhealthy_backends="NEVER_PERSIST",
+                idle_timeout_sec=60,
+                enable_strong_affinity=True,
+            ))
         ```
 
         ## Import

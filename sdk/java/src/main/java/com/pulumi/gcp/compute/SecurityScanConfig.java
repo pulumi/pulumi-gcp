@@ -39,7 +39,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.AddressArgs;
  * import com.pulumi.gcp.compute.SecurityScanConfig;
  * import com.pulumi.gcp.compute.SecurityScanConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -53,17 +52,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var scannerStaticIp = new Address(&#34;scannerStaticIp&#34;, AddressArgs.Empty, CustomResourceOptions.builder()
- *             .provider(google_beta)
+ *         var scannerStaticIp = new Address(&#34;scannerStaticIp&#34;, AddressArgs.builder()        
+ *             .name(&#34;scan-basic-static-ip&#34;)
  *             .build());
  * 
  *         var scan_config = new SecurityScanConfig(&#34;scan-config&#34;, SecurityScanConfigArgs.builder()        
  *             .displayName(&#34;scan-config&#34;)
  *             .startingUrls(scannerStaticIp.address().applyValue(address -&gt; String.format(&#34;http://%s&#34;, address)))
  *             .targetPlatforms(&#34;COMPUTE&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

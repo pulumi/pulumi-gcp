@@ -14,14 +14,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const processorDocumentAiProcessor = new gcp.essentialcontacts.DocumentAiProcessor("processorDocumentAiProcessor", {
+ * const processor = new gcp.essentialcontacts.DocumentAiProcessor("processor", {
  *     location: "us",
  *     displayName: "test-processor",
  *     type: "OCR_PROCESSOR",
  * });
- * const processorDocumentAiProcessorDefaultVersion = new gcp.essentialcontacts.DocumentAiProcessorDefaultVersion("processorDocumentAiProcessorDefaultVersion", {
- *     processor: processorDocumentAiProcessor.id,
- *     version: pulumi.interpolate`${processorDocumentAiProcessor.id}/processorVersions/stable`,
+ * const processorDocumentAiProcessorDefaultVersion = new gcp.essentialcontacts.DocumentAiProcessorDefaultVersion("processor", {
+ *     processor: processor.id,
+ *     version: pulumi.interpolate`${processor.id}/processorVersions/stable`,
  * });
  * ```
  *

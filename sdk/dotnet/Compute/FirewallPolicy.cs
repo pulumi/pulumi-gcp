@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var @default = new Gcp.Compute.FirewallPolicy("default", new()
     ///     {
-    ///         Description = "Example Resource",
     ///         Parent = "organizations/12345",
     ///         ShortName = "my-policy",
+    ///         Description = "Example Resource",
     ///     });
     /// 
     /// });

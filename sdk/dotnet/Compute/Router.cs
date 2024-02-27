@@ -29,13 +29,15 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobarNetwork = new Gcp.Compute.Network("foobarNetwork", new()
+    ///     var foobarNetwork = new Gcp.Compute.Network("foobar", new()
     ///     {
+    ///         Name = "my-network",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     var foobarRouter = new Gcp.Compute.Router("foobarRouter", new()
+    ///     var foobar = new Gcp.Compute.Router("foobar", new()
     ///     {
+    ///         Name = "my-router",
     ///         Network = foobarNetwork.Name,
     ///         Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
     ///         {
@@ -73,11 +75,13 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
+    ///         Name = "test-network",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var encrypted_interconnect_router = new Gcp.Compute.Router("encrypted-interconnect-router", new()
     ///     {
+    ///         Name = "test-router",
     ///         Network = network.Name,
     ///         EncryptedInterconnectRouter = true,
     ///         Bgp = new Gcp.Compute.Inputs.RouterBgpArgs

@@ -35,7 +35,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.clouddeploy.DeliveryPipeline;
  * import com.pulumi.gcp.clouddeploy.DeliveryPipelineArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -51,6 +50,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new DeliveryPipeline(&#34;primary&#34;, DeliveryPipelineArgs.builder()        
  *             .location(&#34;us-west1&#34;)
+ *             .name(&#34;pipeline&#34;)
  *             .description(&#34;basic description&#34;)
  *             .project(&#34;my-project-name&#34;)
  *             .serialPipeline(DeliveryPipelineSerialPipelineArgs.builder()
@@ -78,9 +78,7 @@ import javax.annotation.Nullable;
  *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
  *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
  *             ))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -96,7 +94,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.clouddeploy.DeliveryPipeline;
  * import com.pulumi.gcp.clouddeploy.DeliveryPipelineArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -112,6 +109,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new DeliveryPipeline(&#34;primary&#34;, DeliveryPipelineArgs.builder()        
  *             .location(&#34;us-west1&#34;)
+ *             .name(&#34;pipeline&#34;)
  *             .description(&#34;basic description&#34;)
  *             .project(&#34;my-project-name&#34;)
  *             .serialPipeline(DeliveryPipelineSerialPipelineArgs.builder()
@@ -139,9 +137,7 @@ import javax.annotation.Nullable;
  *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
  *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
  *             ))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -157,7 +153,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.clouddeploy.DeliveryPipeline;
  * import com.pulumi.gcp.clouddeploy.DeliveryPipelineArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -173,6 +168,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new DeliveryPipeline(&#34;primary&#34;, DeliveryPipelineArgs.builder()        
  *             .location(&#34;us-west1&#34;)
+ *             .name(&#34;pipeline&#34;)
  *             .description(&#34;basic description&#34;)
  *             .project(&#34;my-project-name&#34;)
  *             .serialPipeline(DeliveryPipelineSerialPipelineArgs.builder()
@@ -200,9 +196,7 @@ import javax.annotation.Nullable;
  *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
  *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
  *             ))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -232,23 +226,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var primary = new DeliveryPipeline(&#34;primary&#34;, DeliveryPipelineArgs.builder()        
- *             .annotations(Map.ofEntries(
- *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
- *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
- *             ))
- *             .description(&#34;basic description&#34;)
- *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
- *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
- *             ))
  *             .location(&#34;us-west1&#34;)
+ *             .name(&#34;pipeline&#34;)
+ *             .description(&#34;basic description&#34;)
  *             .project(&#34;my-project-name&#34;)
  *             .serialPipeline(DeliveryPipelineSerialPipelineArgs.builder()
  *                 .stages(                
  *                     DeliveryPipelineSerialPipelineStageArgs.builder()
  *                         .deployParameters(DeliveryPipelineSerialPipelineStageDeployParameterArgs.builder()
- *                             .matchTargetLabels()
  *                             .values(Map.of(&#34;deployParameterKey&#34;, &#34;deployParameterValue&#34;))
+ *                             .matchTargetLabels()
  *                             .build())
  *                         .profiles(                        
  *                             &#34;example-profile-one&#34;,
@@ -260,6 +247,14 @@ import javax.annotation.Nullable;
  *                         .targetId(&#34;example-target-two&#34;)
  *                         .build())
  *                 .build())
+ *             .annotations(Map.ofEntries(
+ *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
+ *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
+ *             ))
+ *             .labels(Map.ofEntries(
+ *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
+ *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
+ *             ))
  *             .build());
  * 
  *     }
@@ -276,7 +271,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.clouddeploy.DeliveryPipeline;
  * import com.pulumi.gcp.clouddeploy.DeliveryPipelineArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -292,6 +286,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new DeliveryPipeline(&#34;primary&#34;, DeliveryPipelineArgs.builder()        
  *             .location(&#34;us-west1&#34;)
+ *             .name(&#34;pipeline&#34;)
  *             .description(&#34;basic description&#34;)
  *             .project(&#34;my-project-name&#34;)
  *             .serialPipeline(DeliveryPipelineSerialPipelineArgs.builder()
@@ -319,9 +314,7 @@ import javax.annotation.Nullable;
  *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
  *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
  *             ))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

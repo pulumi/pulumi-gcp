@@ -31,6 +31,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := clouddeploy.NewDeliveryPipeline(ctx, "primary", &clouddeploy.DeliveryPipelineArgs{
 //				Location:    pulumi.String("us-west1"),
+//				Name:        pulumi.String("pipeline"),
 //				Description: pulumi.String("basic description"),
 //				Project:     pulumi.String("my-project-name"),
 //				SerialPipeline: &clouddeploy.DeliveryPipelineSerialPipelineArgs{
@@ -64,7 +65,7 @@ import (
 //					"my_first_label":  pulumi.String("example-label-1"),
 //					"my_second_label": pulumi.String("example-label-2"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -89,6 +90,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := clouddeploy.NewDeliveryPipeline(ctx, "primary", &clouddeploy.DeliveryPipelineArgs{
 //				Location:    pulumi.String("us-west1"),
+//				Name:        pulumi.String("pipeline"),
 //				Description: pulumi.String("basic description"),
 //				Project:     pulumi.String("my-project-name"),
 //				SerialPipeline: &clouddeploy.DeliveryPipelineSerialPipelineArgs{
@@ -122,7 +124,7 @@ import (
 //					"my_first_label":  pulumi.String("example-label-1"),
 //					"my_second_label": pulumi.String("example-label-2"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -147,6 +149,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := clouddeploy.NewDeliveryPipeline(ctx, "primary", &clouddeploy.DeliveryPipelineArgs{
 //				Location:    pulumi.String("us-west1"),
+//				Name:        pulumi.String("pipeline"),
 //				Description: pulumi.String("basic description"),
 //				Project:     pulumi.String("my-project-name"),
 //				SerialPipeline: &clouddeploy.DeliveryPipelineSerialPipelineArgs{
@@ -180,7 +183,7 @@ import (
 //					"my_first_label":  pulumi.String("example-label-1"),
 //					"my_second_label": pulumi.String("example-label-2"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -204,26 +207,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := clouddeploy.NewDeliveryPipeline(ctx, "primary", &clouddeploy.DeliveryPipelineArgs{
-//				Annotations: pulumi.StringMap{
-//					"my_first_annotation":  pulumi.String("example-annotation-1"),
-//					"my_second_annotation": pulumi.String("example-annotation-2"),
-//				},
+//				Location:    pulumi.String("us-west1"),
+//				Name:        pulumi.String("pipeline"),
 //				Description: pulumi.String("basic description"),
-//				Labels: pulumi.StringMap{
-//					"my_first_label":  pulumi.String("example-label-1"),
-//					"my_second_label": pulumi.String("example-label-2"),
-//				},
-//				Location: pulumi.String("us-west1"),
-//				Project:  pulumi.String("my-project-name"),
+//				Project:     pulumi.String("my-project-name"),
 //				SerialPipeline: &clouddeploy.DeliveryPipelineSerialPipelineArgs{
 //					Stages: clouddeploy.DeliveryPipelineSerialPipelineStageArray{
 //						&clouddeploy.DeliveryPipelineSerialPipelineStageArgs{
 //							DeployParameters: clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArray{
 //								&clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs{
-//									MatchTargetLabels: nil,
 //									Values: pulumi.StringMap{
 //										"deployParameterKey": pulumi.String("deployParameterValue"),
 //									},
+//									MatchTargetLabels: nil,
 //								},
 //							},
 //							Profiles: pulumi.StringArray{
@@ -237,6 +233,14 @@ import (
 //							TargetId: pulumi.String("example-target-two"),
 //						},
 //					},
+//				},
+//				Annotations: pulumi.StringMap{
+//					"my_first_annotation":  pulumi.String("example-annotation-1"),
+//					"my_second_annotation": pulumi.String("example-annotation-2"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"my_first_label":  pulumi.String("example-label-1"),
+//					"my_second_label": pulumi.String("example-label-2"),
 //				},
 //			})
 //			if err != nil {
@@ -263,6 +267,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := clouddeploy.NewDeliveryPipeline(ctx, "primary", &clouddeploy.DeliveryPipelineArgs{
 //				Location:    pulumi.String("us-west1"),
+//				Name:        pulumi.String("pipeline"),
 //				Description: pulumi.String("basic description"),
 //				Project:     pulumi.String("my-project-name"),
 //				SerialPipeline: &clouddeploy.DeliveryPipelineSerialPipelineArgs{
@@ -296,7 +301,7 @@ import (
 //					"my_first_label":  pulumi.String("example-label-1"),
 //					"my_second_label": pulumi.String("example-label-2"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

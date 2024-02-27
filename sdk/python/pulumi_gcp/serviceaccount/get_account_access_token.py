@@ -114,9 +114,9 @@ def get_account_access_token(delegates: Optional[Sequence[str]] = None,
     import pulumi_gcp as gcp
 
     token_creator_iam = gcp.serviceaccount.IAMBinding("token-creator-iam",
-        members=["serviceAccount:service_A@projectA.iam.gserviceaccount.com"],
+        service_account_id="projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com",
         role="roles/iam.serviceAccountTokenCreator",
-        service_account_id="projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com")
+        members=["serviceAccount:service_A@projectA.iam.gserviceaccount.com"])
     ```
 
     Once the IAM permissions are set, you can apply the new token to a provider bootstrapped with it.  Any resources that references the aliased provider will run as the new identity.
@@ -127,14 +127,13 @@ def get_account_access_token(delegates: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    default_client_config = gcp.organizations.get_client_config()
-    default_account_access_token = gcp.serviceaccount.get_account_access_token(target_service_account="service_B@projectB.iam.gserviceaccount.com",
+    default = gcp.organizations.get_client_config()
+    default_get_account_access_token = gcp.serviceaccount.get_account_access_token(target_service_account="service_B@projectB.iam.gserviceaccount.com",
         scopes=[
             "userinfo-email",
             "cloud-platform",
         ],
         lifetime="300s")
-    impersonated = pulumi.providers.Google("impersonated", access_token=default_account_access_token.access_token)
     me = gcp.organizations.get_client_open_id_user_info()
     pulumi.export("target-email", me.email)
     ```
@@ -187,9 +186,9 @@ def get_account_access_token_output(delegates: Optional[pulumi.Input[Optional[Se
     import pulumi_gcp as gcp
 
     token_creator_iam = gcp.serviceaccount.IAMBinding("token-creator-iam",
-        members=["serviceAccount:service_A@projectA.iam.gserviceaccount.com"],
+        service_account_id="projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com",
         role="roles/iam.serviceAccountTokenCreator",
-        service_account_id="projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com")
+        members=["serviceAccount:service_A@projectA.iam.gserviceaccount.com"])
     ```
 
     Once the IAM permissions are set, you can apply the new token to a provider bootstrapped with it.  Any resources that references the aliased provider will run as the new identity.
@@ -200,14 +199,13 @@ def get_account_access_token_output(delegates: Optional[pulumi.Input[Optional[Se
     import pulumi
     import pulumi_gcp as gcp
 
-    default_client_config = gcp.organizations.get_client_config()
-    default_account_access_token = gcp.serviceaccount.get_account_access_token(target_service_account="service_B@projectB.iam.gserviceaccount.com",
+    default = gcp.organizations.get_client_config()
+    default_get_account_access_token = gcp.serviceaccount.get_account_access_token(target_service_account="service_B@projectB.iam.gserviceaccount.com",
         scopes=[
             "userinfo-email",
             "cloud-platform",
         ],
         lifetime="300s")
-    impersonated = pulumi.providers.Google("impersonated", access_token=default_account_access_token.access_token)
     me = gcp.organizations.get_client_open_id_user_info()
     pulumi.export("target-email", me.email)
     ```

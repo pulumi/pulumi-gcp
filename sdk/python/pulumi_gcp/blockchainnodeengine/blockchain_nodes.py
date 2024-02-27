@@ -383,27 +383,27 @@ class BlockchainNodes(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_node = gcp.blockchainnodeengine.BlockchainNodes("defaultNode",
-            blockchain_node_id="blockchain_basic_node",
+        default_node = gcp.blockchainnodeengine.BlockchainNodes("default_node",
+            location="us-central1",
             blockchain_type="ETHEREUM",
+            blockchain_node_id="blockchain_basic_node",
             ethereum_details=gcp.blockchainnodeengine.BlockchainNodesEthereumDetailsArgs(
                 api_enable_admin=True,
                 api_enable_debug=True,
-                consensus_client="LIGHTHOUSE",
-                execution_client="ERIGON",
-                network="MAINNET",
-                node_type="ARCHIVE",
                 validator_config=gcp.blockchainnodeengine.BlockchainNodesEthereumDetailsValidatorConfigArgs(
                     mev_relay_urls=[
                         "https://mev1.example.org/",
                         "https://mev2.example.org/",
                     ],
                 ),
+                node_type="ARCHIVE",
+                consensus_client="LIGHTHOUSE",
+                execution_client="ERIGON",
+                network="MAINNET",
             ),
             labels={
                 "environment": "dev",
-            },
-            location="us-central1")
+            })
         ```
         ### Blockchain Nodes Geth Details
 
@@ -411,30 +411,30 @@ class BlockchainNodes(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_node_geth = gcp.blockchainnodeengine.BlockchainNodes("defaultNodeGeth",
-            blockchain_node_id="blockchain_geth_node",
+        default_node_geth = gcp.blockchainnodeengine.BlockchainNodes("default_node_geth",
+            location="us-central1",
             blockchain_type="ETHEREUM",
+            blockchain_node_id="blockchain_geth_node",
             ethereum_details=gcp.blockchainnodeengine.BlockchainNodesEthereumDetailsArgs(
                 api_enable_admin=True,
                 api_enable_debug=True,
-                consensus_client="LIGHTHOUSE",
-                execution_client="GETH",
-                geth_details=gcp.blockchainnodeengine.BlockchainNodesEthereumDetailsGethDetailsArgs(
-                    garbage_collection_mode="FULL",
-                ),
-                network="MAINNET",
-                node_type="FULL",
                 validator_config=gcp.blockchainnodeengine.BlockchainNodesEthereumDetailsValidatorConfigArgs(
                     mev_relay_urls=[
                         "https://mev1.example.org/",
                         "https://mev2.example.org/",
                     ],
                 ),
+                node_type="FULL",
+                consensus_client="LIGHTHOUSE",
+                execution_client="GETH",
+                network="MAINNET",
+                geth_details=gcp.blockchainnodeengine.BlockchainNodesEthereumDetailsGethDetailsArgs(
+                    garbage_collection_mode="FULL",
+                ),
             ),
             labels={
                 "environment": "dev",
-            },
-            location="us-central1")
+            })
         ```
 
         ## Import
@@ -501,27 +501,27 @@ class BlockchainNodes(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_node = gcp.blockchainnodeengine.BlockchainNodes("defaultNode",
-            blockchain_node_id="blockchain_basic_node",
+        default_node = gcp.blockchainnodeengine.BlockchainNodes("default_node",
+            location="us-central1",
             blockchain_type="ETHEREUM",
+            blockchain_node_id="blockchain_basic_node",
             ethereum_details=gcp.blockchainnodeengine.BlockchainNodesEthereumDetailsArgs(
                 api_enable_admin=True,
                 api_enable_debug=True,
-                consensus_client="LIGHTHOUSE",
-                execution_client="ERIGON",
-                network="MAINNET",
-                node_type="ARCHIVE",
                 validator_config=gcp.blockchainnodeengine.BlockchainNodesEthereumDetailsValidatorConfigArgs(
                     mev_relay_urls=[
                         "https://mev1.example.org/",
                         "https://mev2.example.org/",
                     ],
                 ),
+                node_type="ARCHIVE",
+                consensus_client="LIGHTHOUSE",
+                execution_client="ERIGON",
+                network="MAINNET",
             ),
             labels={
                 "environment": "dev",
-            },
-            location="us-central1")
+            })
         ```
         ### Blockchain Nodes Geth Details
 
@@ -529,30 +529,30 @@ class BlockchainNodes(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_node_geth = gcp.blockchainnodeengine.BlockchainNodes("defaultNodeGeth",
-            blockchain_node_id="blockchain_geth_node",
+        default_node_geth = gcp.blockchainnodeengine.BlockchainNodes("default_node_geth",
+            location="us-central1",
             blockchain_type="ETHEREUM",
+            blockchain_node_id="blockchain_geth_node",
             ethereum_details=gcp.blockchainnodeengine.BlockchainNodesEthereumDetailsArgs(
                 api_enable_admin=True,
                 api_enable_debug=True,
-                consensus_client="LIGHTHOUSE",
-                execution_client="GETH",
-                geth_details=gcp.blockchainnodeengine.BlockchainNodesEthereumDetailsGethDetailsArgs(
-                    garbage_collection_mode="FULL",
-                ),
-                network="MAINNET",
-                node_type="FULL",
                 validator_config=gcp.blockchainnodeengine.BlockchainNodesEthereumDetailsValidatorConfigArgs(
                     mev_relay_urls=[
                         "https://mev1.example.org/",
                         "https://mev2.example.org/",
                     ],
                 ),
+                node_type="FULL",
+                consensus_client="LIGHTHOUSE",
+                execution_client="GETH",
+                network="MAINNET",
+                geth_details=gcp.blockchainnodeengine.BlockchainNodesEthereumDetailsGethDetailsArgs(
+                    garbage_collection_mode="FULL",
+                ),
             ),
             labels={
                 "environment": "dev",
-            },
-            location="us-central1")
+            })
         ```
 
         ## Import

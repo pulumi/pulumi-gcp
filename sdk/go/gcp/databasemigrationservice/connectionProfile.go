@@ -44,6 +44,7 @@ import (
 //				return err
 //			}
 //			cloudsqldb, err := sql.NewDatabaseInstance(ctx, "cloudsqldb", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("my-database"),
 //				DatabaseVersion: pulumi.String("MYSQL_5_7"),
 //				Settings: &sql.DatabaseInstanceSettingsArgs{
 //					Tier:                      pulumi.String("db-n1-standard-1"),
@@ -54,25 +55,22 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			sqlClientCert, err := sql.NewSslCert(ctx, "sqlClientCert", &sql.SslCertArgs{
+//			sqlClientCert, err := sql.NewSslCert(ctx, "sql_client_cert", &sql.SslCertArgs{
 //				CommonName: pulumi.String("my-cert"),
 //				Instance:   cloudsqldb.Name,
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				cloudsqldb,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			sqldbUser, err := sql.NewUser(ctx, "sqldbUser", &sql.UserArgs{
+//			sqldbUser, err := sql.NewUser(ctx, "sqldb_user", &sql.UserArgs{
+//				Name:     pulumi.String("my-username"),
 //				Instance: cloudsqldb.Name,
 //				Password: pulumi.String("my-password"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				sqlClientCert,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			cloudsqlprofile, err := databasemigrationservice.NewConnectionProfile(ctx, "cloudsqlprofile", &databasemigrationservice.ConnectionProfileArgs{
+//			_, err = databasemigrationservice.NewConnectionProfile(ctx, "cloudsqlprofile", &databasemigrationservice.ConnectionProfileArgs{
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("my-fromprofileid"),
 //				DisplayName:         pulumi.String("my-fromprofileid_display"),
@@ -93,13 +91,11 @@ import (
 //					},
 //					CloudSqlId: pulumi.String("my-database"),
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				sqldbUser,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databasemigrationservice.NewConnectionProfile(ctx, "cloudsqlprofileDestination", &databasemigrationservice.ConnectionProfileArgs{
+//			_, err = databasemigrationservice.NewConnectionProfile(ctx, "cloudsqlprofile_destination", &databasemigrationservice.ConnectionProfileArgs{
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("my-toprofileid"),
 //				DisplayName:         pulumi.String("my-toprofileid_displayname"),
@@ -128,9 +124,7 @@ import (
 //						RootPassword:        pulumi.String("testpasscloudsql"),
 //					},
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				cloudsqlprofile,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -155,6 +149,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			postgresqldb, err := sql.NewDatabaseInstance(ctx, "postgresqldb", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("my-database"),
 //				DatabaseVersion: pulumi.String("POSTGRES_12"),
 //				Settings: &sql.DatabaseInstanceSettingsArgs{
 //					Tier: pulumi.String("db-custom-2-13312"),
@@ -164,21 +159,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			sqlClientCert, err := sql.NewSslCert(ctx, "sqlClientCert", &sql.SslCertArgs{
+//			sqlClientCert, err := sql.NewSslCert(ctx, "sql_client_cert", &sql.SslCertArgs{
 //				CommonName: pulumi.String("my-cert"),
 //				Instance:   postgresqldb.Name,
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				postgresqldb,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			sqldbUser, err := sql.NewUser(ctx, "sqldbUser", &sql.UserArgs{
+//			sqldbUser, err := sql.NewUser(ctx, "sqldb_user", &sql.UserArgs{
+//				Name:     pulumi.String("my-username"),
 //				Instance: postgresqldb.Name,
 //				Password: pulumi.String("my-password"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				sqlClientCert,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -203,9 +195,7 @@ import (
 //					},
 //					CloudSqlId: pulumi.String("my-database"),
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				sqldbUser,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -229,19 +219,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databasemigrationservice.NewConnectionProfile(ctx, "oracleprofile", &databasemigrationservice.ConnectionProfileArgs{
+//				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("my-profileid"),
 //				DisplayName:         pulumi.String("my-profileid_display"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//				Location: pulumi.String("us-central1"),
 //				Oracle: &databasemigrationservice.ConnectionProfileOracleArgs{
-//					DatabaseService:             pulumi.String("dbprovider"),
 //					Host:                        pulumi.String("host"),
-//					Password:                    pulumi.String("password"),
 //					Port:                        pulumi.Int(1521),
-//					StaticServiceIpConnectivity: nil,
 //					Username:                    pulumi.String("username"),
+//					Password:                    pulumi.String("password"),
+//					DatabaseService:             pulumi.String("dbprovider"),
+//					StaticServiceIpConnectivity: nil,
 //				},
 //			})
 //			if err != nil {

@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.CloudRun
     /// {
     ///     var @default = new Gcp.CloudRun.Service("default", new()
     ///     {
+    ///         Name = "cloud_run_service_name",
     ///         Location = "us-central1",
     ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
     ///         {
@@ -84,10 +85,14 @@ namespace Pulumi.Gcp.CloudRun
     ///         },
     ///     });
     /// 
-    ///     var topic = new Gcp.PubSub.Topic("topic");
+    ///     var topic = new Gcp.PubSub.Topic("topic", new()
+    ///     {
+    ///         Name = "pubsub_topic",
+    ///     });
     /// 
     ///     var subscription = new Gcp.PubSub.Subscription("subscription", new()
     ///     {
+    ///         Name = "pubsub_subscription",
     ///         Topic = topic.Name,
     ///         PushConfig = new Gcp.PubSub.Inputs.SubscriptionPushConfigArgs
     ///         {
@@ -117,6 +122,7 @@ namespace Pulumi.Gcp.CloudRun
     /// {
     ///     var @default = new Gcp.CloudRun.Service("default", new()
     ///     {
+    ///         Name = "cloudrun-srv",
     ///         Location = "us-central1",
     ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
     ///         {
@@ -135,8 +141,8 @@ namespace Pulumi.Gcp.CloudRun
     ///         {
     ///             new Gcp.CloudRun.Inputs.ServiceTrafficArgs
     ///             {
-    ///                 LatestRevision = true,
     ///                 Percent = 100,
+    ///                 LatestRevision = true,
     ///             },
     ///         },
     ///     });
@@ -155,6 +161,7 @@ namespace Pulumi.Gcp.CloudRun
     /// {
     ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
     ///     {
+    ///         Name = "cloudrun-sql",
     ///         Region = "us-east1",
     ///         DatabaseVersion = "MYSQL_5_7",
     ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
@@ -166,6 +173,7 @@ namespace Pulumi.Gcp.CloudRun
     /// 
     ///     var @default = new Gcp.CloudRun.Service("default", new()
     ///     {
+    ///         Name = "cloudrun-srv",
     ///         Location = "us-central1",
     ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
     ///         {
@@ -206,6 +214,7 @@ namespace Pulumi.Gcp.CloudRun
     /// {
     ///     var @default = new Gcp.CloudRun.Service("default", new()
     ///     {
+    ///         Name = "cloudrun-srv",
     ///         Location = "us-central1",
     ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
     ///         {
@@ -222,7 +231,7 @@ namespace Pulumi.Gcp.CloudRun
     ///         },
     ///     });
     /// 
-    ///     var noauthIAMPolicy = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var noauth = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
@@ -237,12 +246,12 @@ namespace Pulumi.Gcp.CloudRun
     ///         },
     ///     });
     /// 
-    ///     var noauthIamPolicy = new Gcp.CloudRun.IamPolicy("noauthIamPolicy", new()
+    ///     var noauthIamPolicy = new Gcp.CloudRun.IamPolicy("noauth", new()
     ///     {
     ///         Location = @default.Location,
     ///         Project = @default.Project,
     ///         Service = @default.Name,
-    ///         PolicyData = noauthIAMPolicy.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = noauth.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
@@ -259,6 +268,7 @@ namespace Pulumi.Gcp.CloudRun
     /// {
     ///     var @default = new Gcp.CloudRun.Service("default", new()
     ///     {
+    ///         Name = "cloudrun-srv",
     ///         Location = "us-central1",
     ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
     ///         {
@@ -316,6 +326,7 @@ namespace Pulumi.Gcp.CloudRun
     /// {
     ///     var @default = new Gcp.CloudRun.Service("default", new()
     ///     {
+    ///         Name = "cloudrun-srv",
     ///         Location = "us-central1",
     ///         Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
     ///         {
@@ -406,9 +417,6 @@ namespace Pulumi.Gcp.CloudRun
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

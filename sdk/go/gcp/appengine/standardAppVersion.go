@@ -43,14 +43,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			customServiceAccount, err := serviceaccount.NewAccount(ctx, "customServiceAccount", &serviceaccount.AccountArgs{
+//			customServiceAccount, err := serviceaccount.NewAccount(ctx, "custom_service_account", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("my-account"),
 //				DisplayName: pulumi.String("Custom Service Account"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "gaeApi", &projects.IAMMemberArgs{
+//			_, err = projects.NewIAMMember(ctx, "gae_api", &projects.IAMMemberArgs{
 //				Project: customServiceAccount.Project,
 //				Role:    pulumi.String("roles/compute.networkUser"),
 //				Member: customServiceAccount.Email.ApplyT(func(email string) (string, error) {
@@ -60,7 +60,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "storageViewer", &projects.IAMMemberArgs{
+//			_, err = projects.NewIAMMember(ctx, "storage_viewer", &projects.IAMMemberArgs{
 //				Project: customServiceAccount.Project,
 //				Role:    pulumi.String("roles/storage.objectViewer"),
 //				Member: customServiceAccount.Email.ApplyT(func(email string) (string, error) {
@@ -71,19 +71,21 @@ import (
 //				return err
 //			}
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:     pulumi.String("appengine-static-content"),
 //				Location: pulumi.String("US"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+//				Name:   pulumi.String("hello-world.zip"),
 //				Bucket: bucket.Name,
 //				Source: pulumi.NewFileAsset("./test-fixtures/hello-world.zip"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = appengine.NewStandardAppVersion(ctx, "myappV1", &appengine.StandardAppVersionArgs{
+//			_, err = appengine.NewStandardAppVersion(ctx, "myapp_v1", &appengine.StandardAppVersionArgs{
 //				VersionId: pulumi.String("v1"),
 //				Service:   pulumi.String("myapp"),
 //				Runtime:   pulumi.String("nodejs10"),
@@ -121,7 +123,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = appengine.NewStandardAppVersion(ctx, "myappV2", &appengine.StandardAppVersionArgs{
+//			_, err = appengine.NewStandardAppVersion(ctx, "myapp_v2", &appengine.StandardAppVersionArgs{
 //				VersionId:     pulumi.String("v2"),
 //				Service:       pulumi.String("myapp"),
 //				Runtime:       pulumi.String("nodejs10"),

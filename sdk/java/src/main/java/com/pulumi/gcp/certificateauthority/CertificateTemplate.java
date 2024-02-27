@@ -59,6 +59,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var primary = new CertificateTemplate(&#34;primary&#34;, CertificateTemplateArgs.builder()        
+ *             .location(&#34;us-west1&#34;)
+ *             .name(&#34;template&#34;)
  *             .description(&#34;An updated sample certificate template&#34;)
  *             .identityConstraints(CertificateTemplateIdentityConstraintsArgs.builder()
  *                 .allowSubjectAltNamesPassthrough(true)
@@ -70,11 +72,9 @@ import javax.annotation.Nullable;
  *                     .title(&#34;Sample expression&#34;)
  *                     .build())
  *                 .build())
- *             .labels(Map.of(&#34;label-two&#34;, &#34;value-two&#34;))
- *             .location(&#34;us-west1&#34;)
  *             .passthroughExtensions(CertificateTemplatePassthroughExtensionsArgs.builder()
  *                 .additionalExtensions(CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs.builder()
- *                     .objectIdPath(                    
+ *                     .objectIdPaths(                    
  *                         1,
  *                         6)
  *                     .build())
@@ -82,13 +82,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .predefinedValues(CertificateTemplatePredefinedValuesArgs.builder()
  *                 .additionalExtensions(CertificateTemplatePredefinedValuesAdditionalExtensionArgs.builder()
- *                     .critical(true)
  *                     .objectId(CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs.builder()
- *                         .objectIdPath(                        
+ *                         .objectIdPaths(                        
  *                             1,
  *                             6)
  *                         .build())
  *                     .value(&#34;c3RyaW5nCg==&#34;)
+ *                     .critical(true)
  *                     .build())
  *                 .aiaOcspServers(&#34;string&#34;)
  *                 .caOptions(CertificateTemplatePredefinedValuesCaOptionsArgs.builder()
@@ -116,18 +116,19 @@ import javax.annotation.Nullable;
  *                         .timeStamping(true)
  *                         .build())
  *                     .unknownExtendedKeyUsages(CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs.builder()
- *                         .objectIdPath(                        
+ *                         .objectIdPaths(                        
  *                             1,
  *                             6)
  *                         .build())
  *                     .build())
  *                 .policyIds(CertificateTemplatePredefinedValuesPolicyIdArgs.builder()
- *                     .objectIdPath(                    
+ *                     .objectIdPaths(                    
  *                         1,
  *                         6)
  *                     .build())
  *                 .build())
  *             .project(&#34;my-project-name&#34;)
+ *             .labels(Map.of(&#34;label-two&#34;, &#34;value-two&#34;))
  *             .build());
  * 
  *     }

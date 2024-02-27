@@ -36,16 +36,13 @@ namespace Pulumi.Gcp.Projects
     /// {
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var hcSa = new Gcp.Projects.ServiceIdentity("hcSa", new()
+    ///     var hcSa = new Gcp.Projects.ServiceIdentity("hc_sa", new()
     ///     {
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///         Service = "healthcare.googleapis.com",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var hcSaBqJobuser = new Gcp.Projects.IAMMember("hcSaBqJobuser", new()
+    ///     var hcSaBqJobuser = new Gcp.Projects.IAMMember("hc_sa_bq_jobuser", new()
     ///     {
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///         Role = "roles/bigquery.jobUser",

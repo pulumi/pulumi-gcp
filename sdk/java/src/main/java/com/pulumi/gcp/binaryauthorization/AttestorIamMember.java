@@ -62,8 +62,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AttestorIamPolicy(&#34;policy&#34;, AttestorIamPolicyArgs.builder()        
- *             .project(google_binary_authorization_attestor.attestor().project())
- *             .attestor(google_binary_authorization_attestor.attestor().name())
+ *             .project(attestor.project())
+ *             .attestor(attestor.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -94,8 +94,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new AttestorIamBinding(&#34;binding&#34;, AttestorIamBindingArgs.builder()        
- *             .project(google_binary_authorization_attestor.attestor().project())
- *             .attestor(google_binary_authorization_attestor.attestor().name())
+ *             .project(attestor.project())
+ *             .attestor(attestor.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -127,8 +127,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new AttestorIamMember(&#34;member&#34;, AttestorIamMemberArgs.builder()        
- *             .project(google_binary_authorization_attestor.attestor().project())
- *             .attestor(google_binary_authorization_attestor.attestor().name())
+ *             .project(attestor.project())
+ *             .attestor(attestor.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

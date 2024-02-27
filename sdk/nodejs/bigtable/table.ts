@@ -17,13 +17,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const instance = new gcp.bigtable.Instance("instance", {clusters: [{
- *     clusterId: "tf-instance-cluster",
- *     zone: "us-central1-b",
- *     numNodes: 3,
- *     storageType: "HDD",
- * }]});
+ * const instance = new gcp.bigtable.Instance("instance", {
+ *     name: "tf-instance",
+ *     clusters: [{
+ *         clusterId: "tf-instance-cluster",
+ *         zone: "us-central1-b",
+ *         numNodes: 3,
+ *         storageType: "HDD",
+ *     }],
+ * });
  * const table = new gcp.bigtable.Table("table", {
+ *     name: "tf-table",
  *     instanceName: instance.name,
  *     splitKeys: [
  *         "a",

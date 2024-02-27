@@ -19,15 +19,6 @@ namespace Pulumi.Gcp.Container.Outputs
         /// where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
         /// 
         /// Examples:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         public readonly Outputs.ClusterMaintenancePolicyDailyMaintenanceWindow? DailyMaintenanceWindow;
         /// <summary>
@@ -43,25 +34,6 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
         /// 
         /// Examples:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         public readonly Outputs.ClusterMaintenancePolicyRecurringWindow? RecurringWindow;
 

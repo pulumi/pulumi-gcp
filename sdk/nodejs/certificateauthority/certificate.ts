@@ -13,19 +13,128 @@ import * as utilities from "../utilities";
  * `tier = "ENTERPRISE"`
  *
  * ## Example Usage
+ * ### Privateca Certificate Generated Key
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ * import * as tls from "@pulumi/tls";
+ *
+ * const _default = new gcp.certificateauthority.CaPool("default", {
+ *     location: "us-central1",
+ *     name: "default",
+ *     tier: "ENTERPRISE",
+ * });
+ * const defaultAuthority = new gcp.certificateauthority.Authority("default", {
+ *     location: "us-central1",
+ *     pool: _default.name,
+ *     certificateAuthorityId: "my-authority",
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 organization: "HashiCorp",
+ *                 commonName: "my-certificate-authority",
+ *             },
+ *             subjectAltName: {
+ *                 dnsNames: ["hashicorp.com"],
+ *             },
+ *         },
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: true,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     certSign: true,
+ *                     crlSign: true,
+ *                 },
+ *                 extendedKeyUsage: {
+ *                     serverAuth: true,
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     keySpec: {
+ *         algorithm: "RSA_PKCS1_4096_SHA256",
+ *     },
+ *     deletionProtection: false,
+ *     skipGracePeriod: true,
+ *     ignoreActiveCertificatesOnDeletion: true,
+ * });
+ * const certKey = new tls.PrivateKey("cert_key", {algorithm: "RSA"});
+ * const defaultCertificate = new gcp.certificateauthority.Certificate("default", {
+ *     location: "us-central1",
+ *     pool: _default.name,
+ *     certificateAuthority: defaultAuthority.certificateAuthorityId,
+ *     lifetime: "86000s",
+ *     name: "cert-1",
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 commonName: "san1.example.com",
+ *                 countryCode: "us",
+ *                 organization: "google",
+ *                 organizationalUnit: "enterprise",
+ *                 locality: "mountain view",
+ *                 province: "california",
+ *                 streetAddress: "1600 amphitheatre parkway",
+ *             },
+ *             subjectAltName: {
+ *                 emailAddresses: ["email@example.com"],
+ *                 ipAddresses: ["127.0.0.1"],
+ *                 uris: ["http://www.ietf.org/rfc/rfc3986.txt"],
+ *             },
+ *         },
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: true,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     certSign: true,
+ *                     crlSign: true,
+ *                 },
+ *                 extendedKeyUsage: {
+ *                     serverAuth: false,
+ *                 },
+ *             },
+ *             nameConstraints: {
+ *                 critical: true,
+ *                 permittedDnsNames: ["*.example.com"],
+ *                 excludedDnsNames: ["*.deny.example.com"],
+ *                 permittedIpRanges: ["10.0.0.0/8"],
+ *                 excludedIpRanges: ["10.1.1.0/24"],
+ *                 permittedEmailAddresses: [".example.com"],
+ *                 excludedEmailAddresses: [".deny.example.com"],
+ *                 permittedUris: [".example.com"],
+ *                 excludedUris: [".deny.example.com"],
+ *             },
+ *         },
+ *         publicKey: {
+ *             format: "PEM",
+ *             key: std.base64encodeOutput({
+ *                 input: certKey.publicKeyPem,
+ *             }).apply(invoke => invoke.result),
+ *         },
+ *     },
+ * });
+ * ```
  * ### Privateca Certificate With Template
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
  *
- * const defaultCaPool = new gcp.certificateauthority.CaPool("defaultCaPool", {
+ * const _default = new gcp.certificateauthority.CaPool("default", {
  *     location: "us-central1",
+ *     name: "my-pool",
  *     tier: "ENTERPRISE",
  * });
- * const defaultCertificateTemplate = new gcp.certificateauthority.CertificateTemplate("defaultCertificateTemplate", {
+ * const defaultCertificateTemplate = new gcp.certificateauthority.CertificateTemplate("default", {
  *     location: "us-central1",
+ *     name: "my-certificate-template",
  *     description: "An updated sample certificate template",
  *     identityConstraints: {
  *         allowSubjectAltNamesPassthrough: true,
@@ -97,9 +206,9 @@ import * as utilities from "../utilities";
  *         }],
  *     },
  * });
- * const defaultAuthority = new gcp.certificateauthority.Authority("defaultAuthority", {
+ * const defaultAuthority = new gcp.certificateauthority.Authority("default", {
  *     location: "us-central1",
- *     pool: defaultCaPool.name,
+ *     pool: _default.name,
  *     certificateAuthorityId: "my-authority",
  *     config: {
  *         subjectConfig: {
@@ -133,12 +242,15 @@ import * as utilities from "../utilities";
  *     skipGracePeriod: true,
  *     ignoreActiveCertificatesOnDeletion: true,
  * });
- * const defaultCertificate = new gcp.certificateauthority.Certificate("defaultCertificate", {
+ * const defaultCertificate = new gcp.certificateauthority.Certificate("default", {
  *     location: "us-central1",
- *     pool: defaultCaPool.name,
+ *     pool: _default.name,
  *     certificateAuthority: defaultAuthority.certificateAuthorityId,
+ *     name: "my-certificate",
  *     lifetime: "860s",
- *     pemCsr: fs.readFileSync("test-fixtures/rsa_csr.pem", "utf8"),
+ *     pemCsr: std.file({
+ *         input: "test-fixtures/rsa_csr.pem",
+ *     }).then(invoke => invoke.result),
  *     certificateTemplate: defaultCertificateTemplate.id,
  * });
  * ```
@@ -146,16 +258,17 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
  *
- * const defaultCaPool = new gcp.certificateauthority.CaPool("defaultCaPool", {
+ * const _default = new gcp.certificateauthority.CaPool("default", {
  *     location: "us-central1",
+ *     name: "my-pool",
  *     tier: "ENTERPRISE",
  * });
- * const defaultAuthority = new gcp.certificateauthority.Authority("defaultAuthority", {
+ * const defaultAuthority = new gcp.certificateauthority.Authority("default", {
  *     location: "us-central1",
- *     pool: defaultCaPool.name,
+ *     pool: _default.name,
  *     certificateAuthorityId: "my-authority",
  *     config: {
  *         subjectConfig: {
@@ -189,28 +302,32 @@ import * as utilities from "../utilities";
  *     skipGracePeriod: true,
  *     ignoreActiveCertificatesOnDeletion: true,
  * });
- * const defaultCertificate = new gcp.certificateauthority.Certificate("defaultCertificate", {
+ * const defaultCertificate = new gcp.certificateauthority.Certificate("default", {
  *     location: "us-central1",
- *     pool: defaultCaPool.name,
+ *     pool: _default.name,
  *     certificateAuthority: defaultAuthority.certificateAuthorityId,
+ *     name: "my-certificate",
  *     lifetime: "860s",
- *     pemCsr: fs.readFileSync("test-fixtures/rsa_csr.pem", "utf8"),
+ *     pemCsr: std.file({
+ *         input: "test-fixtures/rsa_csr.pem",
+ *     }).then(invoke => invoke.result),
  * });
  * ```
  * ### Privateca Certificate No Authority
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
  *
- * const defaultCaPool = new gcp.certificateauthority.CaPool("defaultCaPool", {
+ * const _default = new gcp.certificateauthority.CaPool("default", {
  *     location: "us-central1",
+ *     name: "my-pool",
  *     tier: "ENTERPRISE",
  * });
- * const defaultAuthority = new gcp.certificateauthority.Authority("defaultAuthority", {
+ * const defaultAuthority = new gcp.certificateauthority.Authority("default", {
  *     location: "us-central1",
- *     pool: defaultCaPool.name,
+ *     pool: _default.name,
  *     certificateAuthorityId: "my-authority",
  *     config: {
  *         subjectConfig: {
@@ -246,9 +363,10 @@ import * as utilities from "../utilities";
  *     skipGracePeriod: true,
  *     ignoreActiveCertificatesOnDeletion: true,
  * });
- * const defaultCertificate = new gcp.certificateauthority.Certificate("defaultCertificate", {
+ * const defaultCertificate = new gcp.certificateauthority.Certificate("default", {
  *     location: "us-central1",
- *     pool: defaultCaPool.name,
+ *     pool: _default.name,
+ *     name: "my-certificate",
  *     lifetime: "860s",
  *     config: {
  *         subjectConfig: {
@@ -278,11 +396,11 @@ import * as utilities from "../utilities";
  *         },
  *         publicKey: {
  *             format: "PEM",
- *             key: fs.readFileSync("test-fixtures/rsa_public.pem", { encoding: "base64" }),
+ *             key: std.filebase64({
+ *                 input: "test-fixtures/rsa_public.pem",
+ *             }).then(invoke => invoke.result),
  *         },
  *     },
- * }, {
- *     dependsOn: [defaultAuthority],
  * });
  * ```
  *

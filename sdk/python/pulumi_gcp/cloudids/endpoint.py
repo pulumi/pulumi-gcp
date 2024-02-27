@@ -359,21 +359,22 @@ class Endpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.Network("default")
-        service_range = gcp.compute.GlobalAddress("serviceRange",
+        default = gcp.compute.Network("default", name="tf-test-my-network")
+        service_range = gcp.compute.GlobalAddress("service_range",
+            name="address",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=16,
             network=default.id)
-        private_service_connection = gcp.servicenetworking.Connection("privateServiceConnection",
+        private_service_connection = gcp.servicenetworking.Connection("private_service_connection",
             network=default.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[service_range.name])
         example_endpoint = gcp.cloudids.Endpoint("example-endpoint",
+            name="test",
             location="us-central1-f",
             network=default.id,
-            severity="INFORMATIONAL",
-            opts=pulumi.ResourceOptions(depends_on=[private_service_connection]))
+            severity="INFORMATIONAL")
         ```
 
         ## Import
@@ -435,21 +436,22 @@ class Endpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.Network("default")
-        service_range = gcp.compute.GlobalAddress("serviceRange",
+        default = gcp.compute.Network("default", name="tf-test-my-network")
+        service_range = gcp.compute.GlobalAddress("service_range",
+            name="address",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=16,
             network=default.id)
-        private_service_connection = gcp.servicenetworking.Connection("privateServiceConnection",
+        private_service_connection = gcp.servicenetworking.Connection("private_service_connection",
             network=default.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[service_range.name])
         example_endpoint = gcp.cloudids.Endpoint("example-endpoint",
+            name="test",
             location="us-central1-f",
             network=default.id,
-            severity="INFORMATIONAL",
-            opts=pulumi.ResourceOptions(depends_on=[private_service_connection]))
+            severity="INFORMATIONAL")
         ```
 
         ## Import

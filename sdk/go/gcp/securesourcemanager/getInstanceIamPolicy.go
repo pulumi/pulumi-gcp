@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := securesourcemanager.LookupInstanceIamPolicy(ctx, &securesourcemanager.LookupInstanceIamPolicyArgs{
-//				Project:    pulumi.StringRef(google_secure_source_manager_instance.Default.Project),
-//				Location:   pulumi.StringRef(google_secure_source_manager_instance.Default.Location),
-//				InstanceId: google_secure_source_manager_instance.Default.Instance_id,
+//				Project:    pulumi.StringRef(_default.Project),
+//				Location:   pulumi.StringRef(_default.Location),
+//				InstanceId: _default.InstanceId,
 //			}, nil)
 //			if err != nil {
 //				return err

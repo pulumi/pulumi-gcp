@@ -45,12 +45,13 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var tcp_health_check = new Gcp.Compute.HealthCheck("tcp-health-check", new()
     ///     {
+    ///         Name = "tcp-health-check",
+    ///         TimeoutSec = 1,
     ///         CheckIntervalSec = 1,
     ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
     ///         {
     ///             Port = 80,
     ///         },
-    ///         TimeoutSec = 1,
     ///     });
     /// 
     /// });
@@ -67,19 +68,20 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var tcp_health_check = new Gcp.Compute.HealthCheck("tcp-health-check", new()
     ///     {
-    ///         CheckIntervalSec = 1,
+    ///         Name = "tcp-health-check",
     ///         Description = "Health check via tcp",
+    ///         TimeoutSec = 1,
+    ///         CheckIntervalSec = 1,
     ///         HealthyThreshold = 4,
+    ///         UnhealthyThreshold = 5,
     ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
     ///         {
     ///             PortName = "health-check-port",
     ///             PortSpecification = "USE_NAMED_PORT",
-    ///             ProxyHeader = "NONE",
     ///             Request = "ARE YOU HEALTHY?",
+    ///             ProxyHeader = "NONE",
     ///             Response = "I AM HEALTHY",
     ///         },
-    ///         TimeoutSec = 1,
-    ///         UnhealthyThreshold = 5,
     ///     });
     /// 
     /// });
@@ -96,12 +98,13 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var ssl_health_check = new Gcp.Compute.HealthCheck("ssl-health-check", new()
     ///     {
+    ///         Name = "ssl-health-check",
+    ///         TimeoutSec = 1,
     ///         CheckIntervalSec = 1,
     ///         SslHealthCheck = new Gcp.Compute.Inputs.HealthCheckSslHealthCheckArgs
     ///         {
     ///             Port = 443,
     ///         },
-    ///         TimeoutSec = 1,
     ///     });
     /// 
     /// });
@@ -118,19 +121,20 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var ssl_health_check = new Gcp.Compute.HealthCheck("ssl-health-check", new()
     ///     {
-    ///         CheckIntervalSec = 1,
+    ///         Name = "ssl-health-check",
     ///         Description = "Health check via ssl",
+    ///         TimeoutSec = 1,
+    ///         CheckIntervalSec = 1,
     ///         HealthyThreshold = 4,
+    ///         UnhealthyThreshold = 5,
     ///         SslHealthCheck = new Gcp.Compute.Inputs.HealthCheckSslHealthCheckArgs
     ///         {
     ///             PortName = "health-check-port",
     ///             PortSpecification = "USE_NAMED_PORT",
-    ///             ProxyHeader = "NONE",
     ///             Request = "ARE YOU HEALTHY?",
+    ///             ProxyHeader = "NONE",
     ///             Response = "I AM HEALTHY",
     ///         },
-    ///         TimeoutSec = 1,
-    ///         UnhealthyThreshold = 5,
     ///     });
     /// 
     /// });
@@ -147,12 +151,13 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var http_health_check = new Gcp.Compute.HealthCheck("http-health-check", new()
     ///     {
+    ///         Name = "http-health-check",
+    ///         TimeoutSec = 1,
     ///         CheckIntervalSec = 1,
     ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
     ///         {
     ///             Port = 80,
     ///         },
-    ///         TimeoutSec = 1,
     ///     });
     /// 
     /// });
@@ -169,20 +174,21 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var http_health_check = new Gcp.Compute.HealthCheck("http-health-check", new()
     ///     {
-    ///         CheckIntervalSec = 1,
+    ///         Name = "http-health-check",
     ///         Description = "Health check via http",
+    ///         TimeoutSec = 1,
+    ///         CheckIntervalSec = 1,
     ///         HealthyThreshold = 4,
+    ///         UnhealthyThreshold = 5,
     ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
     ///         {
-    ///             Host = "1.2.3.4",
     ///             PortName = "health-check-port",
     ///             PortSpecification = "USE_NAMED_PORT",
-    ///             ProxyHeader = "NONE",
+    ///             Host = "1.2.3.4",
     ///             RequestPath = "/mypath",
+    ///             ProxyHeader = "NONE",
     ///             Response = "I AM HEALTHY",
     ///         },
-    ///         TimeoutSec = 1,
-    ///         UnhealthyThreshold = 5,
     ///     });
     /// 
     /// });
@@ -199,12 +205,13 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var https_health_check = new Gcp.Compute.HealthCheck("https-health-check", new()
     ///     {
+    ///         Name = "https-health-check",
+    ///         TimeoutSec = 1,
     ///         CheckIntervalSec = 1,
     ///         HttpsHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpsHealthCheckArgs
     ///         {
     ///             Port = 443,
     ///         },
-    ///         TimeoutSec = 1,
     ///     });
     /// 
     /// });
@@ -221,20 +228,21 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var https_health_check = new Gcp.Compute.HealthCheck("https-health-check", new()
     ///     {
-    ///         CheckIntervalSec = 1,
+    ///         Name = "https-health-check",
     ///         Description = "Health check via https",
+    ///         TimeoutSec = 1,
+    ///         CheckIntervalSec = 1,
     ///         HealthyThreshold = 4,
+    ///         UnhealthyThreshold = 5,
     ///         HttpsHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpsHealthCheckArgs
     ///         {
-    ///             Host = "1.2.3.4",
     ///             PortName = "health-check-port",
     ///             PortSpecification = "USE_NAMED_PORT",
-    ///             ProxyHeader = "NONE",
+    ///             Host = "1.2.3.4",
     ///             RequestPath = "/mypath",
+    ///             ProxyHeader = "NONE",
     ///             Response = "I AM HEALTHY",
     ///         },
-    ///         TimeoutSec = 1,
-    ///         UnhealthyThreshold = 5,
     ///     });
     /// 
     /// });
@@ -251,12 +259,13 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var http2_health_check = new Gcp.Compute.HealthCheck("http2-health-check", new()
     ///     {
+    ///         Name = "http2-health-check",
+    ///         TimeoutSec = 1,
     ///         CheckIntervalSec = 1,
     ///         Http2HealthCheck = new Gcp.Compute.Inputs.HealthCheckHttp2HealthCheckArgs
     ///         {
     ///             Port = 443,
     ///         },
-    ///         TimeoutSec = 1,
     ///     });
     /// 
     /// });
@@ -273,20 +282,21 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var http2_health_check = new Gcp.Compute.HealthCheck("http2-health-check", new()
     ///     {
-    ///         CheckIntervalSec = 1,
+    ///         Name = "http2-health-check",
     ///         Description = "Health check via http2",
+    ///         TimeoutSec = 1,
+    ///         CheckIntervalSec = 1,
     ///         HealthyThreshold = 4,
+    ///         UnhealthyThreshold = 5,
     ///         Http2HealthCheck = new Gcp.Compute.Inputs.HealthCheckHttp2HealthCheckArgs
     ///         {
-    ///             Host = "1.2.3.4",
     ///             PortName = "health-check-port",
     ///             PortSpecification = "USE_NAMED_PORT",
-    ///             ProxyHeader = "NONE",
+    ///             Host = "1.2.3.4",
     ///             RequestPath = "/mypath",
+    ///             ProxyHeader = "NONE",
     ///             Response = "I AM HEALTHY",
     ///         },
-    ///         TimeoutSec = 1,
-    ///         UnhealthyThreshold = 5,
     ///     });
     /// 
     /// });
@@ -303,12 +313,13 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var grpc_health_check = new Gcp.Compute.HealthCheck("grpc-health-check", new()
     ///     {
+    ///         Name = "grpc-health-check",
+    ///         TimeoutSec = 1,
     ///         CheckIntervalSec = 1,
     ///         GrpcHealthCheck = new Gcp.Compute.Inputs.HealthCheckGrpcHealthCheckArgs
     ///         {
     ///             Port = 443,
     ///         },
-    ///         TimeoutSec = 1,
     ///     });
     /// 
     /// });
@@ -325,14 +336,15 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var grpc_health_check = new Gcp.Compute.HealthCheck("grpc-health-check", new()
     ///     {
+    ///         Name = "grpc-health-check",
+    ///         TimeoutSec = 1,
     ///         CheckIntervalSec = 1,
     ///         GrpcHealthCheck = new Gcp.Compute.Inputs.HealthCheckGrpcHealthCheckArgs
     ///         {
-    ///             GrpcServiceName = "testservice",
     ///             PortName = "health-check-port",
     ///             PortSpecification = "USE_NAMED_PORT",
+    ///             GrpcServiceName = "testservice",
     ///         },
-    ///         TimeoutSec = 1,
     ///     });
     /// 
     /// });
@@ -349,6 +361,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var health_check_with_logging = new Gcp.Compute.HealthCheck("health-check-with-logging", new()
     ///     {
+    ///         Name = "tcp-health-check",
     ///         TimeoutSec = 1,
     ///         CheckIntervalSec = 1,
     ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
@@ -359,9 +372,6 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             Enable = true,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

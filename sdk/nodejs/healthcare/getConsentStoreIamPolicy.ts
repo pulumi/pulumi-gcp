@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.healthcare.getConsentStoreIamPolicy({
- *     dataset: google_healthcare_consent_store["my-consent"].dataset,
- *     consentStoreId: google_healthcare_consent_store["my-consent"].name,
+ *     dataset: my_consent.dataset,
+ *     consentStoreId: my_consent.name,
  * });
  * ```
  */
@@ -74,8 +74,8 @@ export interface GetConsentStoreIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.healthcare.getConsentStoreIamPolicy({
- *     dataset: google_healthcare_consent_store["my-consent"].dataset,
- *     consentStoreId: google_healthcare_consent_store["my-consent"].name,
+ *     dataset: my_consent.dataset,
+ *     consentStoreId: my_consent.name,
  * });
  * ```
  */

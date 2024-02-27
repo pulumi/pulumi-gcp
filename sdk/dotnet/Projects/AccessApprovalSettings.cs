@@ -27,8 +27,14 @@ namespace Pulumi.Gcp.Projects
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var projectAccessApproval = new Gcp.Projects.AccessApprovalSettings("projectAccessApproval", new()
+    ///     var projectAccessApproval = new Gcp.Projects.AccessApprovalSettings("project_access_approval", new()
     ///     {
+    ///         ProjectId = "my-project-name",
+    ///         NotificationEmails = new[]
+    ///         {
+    ///             "testuser@example.com",
+    ///             "example.user@example.com",
+    ///         },
     ///         EnrolledServices = new[]
     ///         {
     ///             new Gcp.Projects.Inputs.AccessApprovalSettingsEnrolledServiceArgs
@@ -37,12 +43,6 @@ namespace Pulumi.Gcp.Projects
     ///                 EnrollmentLevel = "BLOCK_ALL",
     ///             },
     ///         },
-    ///         NotificationEmails = new[]
-    ///         {
-    ///             "testuser@example.com",
-    ///             "example.user@example.com",
-    ///         },
-    ///         ProjectId = "my-project-name",
     ///     });
     /// 
     /// });
@@ -57,14 +57,16 @@ namespace Pulumi.Gcp.Projects
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var keyRing = new Gcp.Kms.KeyRing("keyRing", new()
+    ///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()
     ///     {
+    ///         Name = "key-ring",
     ///         Location = "global",
     ///         Project = "my-project-name",
     ///     });
     /// 
-    ///     var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("crypto_key", new()
     ///     {
+    ///         Name = "crypto-key",
     ///         KeyRing = keyRing.Id,
     ///         Purpose = "ASYMMETRIC_SIGN",
     ///         VersionTemplate = new Gcp.Kms.Inputs.CryptoKeyVersionTemplateArgs
@@ -90,7 +92,7 @@ namespace Pulumi.Gcp.Projects
     ///         CryptoKey = cryptoKey.Id,
     ///     });
     /// 
-    ///     var projectAccessApproval = new Gcp.Projects.AccessApprovalSettings("projectAccessApproval", new()
+    ///     var projectAccessApproval = new Gcp.Projects.AccessApprovalSettings("project_access_approval", new()
     ///     {
     ///         ProjectId = "my-project-name",
     ///         ActiveKeyVersion = cryptoKeyVersion.Apply(getKMSCryptoKeyVersionResult =&gt; getKMSCryptoKeyVersionResult.Name),
@@ -100,12 +102,6 @@ namespace Pulumi.Gcp.Projects
     ///             {
     ///                 CloudProduct = "all",
     ///             },
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             iam,
     ///         },
     ///     });
     /// 

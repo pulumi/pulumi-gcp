@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.LookupAutoscalingPolicyIamPolicy(ctx, &dataproc.LookupAutoscalingPolicyIamPolicyArgs{
-//				Project:  pulumi.StringRef(google_dataproc_autoscaling_policy.Basic.Project),
-//				Location: pulumi.StringRef(google_dataproc_autoscaling_policy.Basic.Location),
-//				PolicyId: google_dataproc_autoscaling_policy.Basic.Policy_id,
+//				Project:  pulumi.StringRef(basic.Project),
+//				Location: pulumi.StringRef(basic.Location),
+//				PolicyId: basic.PolicyId,
 //			}, nil)
 //			if err != nil {
 //				return err

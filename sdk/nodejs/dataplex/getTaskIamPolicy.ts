@@ -14,10 +14,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.dataplex.getTaskIamPolicy({
- *     project: google_dataplex_task.example.project,
- *     location: google_dataplex_task.example.location,
- *     lake: google_dataplex_task.example.lake,
- *     taskId: google_dataplex_task.example.task_id,
+ *     project: example.project,
+ *     location: example.location,
+ *     lake: example.lake,
+ *     taskId: example.taskId,
  * });
  * ```
  */
@@ -86,10 +86,10 @@ export interface GetTaskIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.dataplex.getTaskIamPolicy({
- *     project: google_dataplex_task.example.project,
- *     location: google_dataplex_task.example.location,
- *     lake: google_dataplex_task.example.lake,
- *     taskId: google_dataplex_task.example.task_id,
+ *     project: example.project,
+ *     location: example.location,
+ *     lake: example.lake,
+ *     taskId: example.taskId,
  * });
  * ```
  */

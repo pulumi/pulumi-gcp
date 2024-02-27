@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.certificateauthority.getCaPoolIamPolicy({
- *     caPool: google_privateca_ca_pool["default"].id,
+ *     caPool: _default.id,
  * });
  * ```
  */
@@ -80,7 +80,7 @@ export interface GetCaPoolIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.certificateauthority.getCaPoolIamPolicy({
- *     caPool: google_privateca_ca_pool["default"].id,
+ *     caPool: _default.id,
  * });
  * ```
  */

@@ -39,7 +39,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
  * import com.pulumi.gcp.servicedirectory.ServiceIamPolicy;
  * import com.pulumi.gcp.servicedirectory.ServiceIamPolicyArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -61,10 +60,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ServiceIamPolicy(&#34;policy&#34;, ServiceIamPolicyArgs.builder()        
+ *             .name(example.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -79,7 +77,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.servicedirectory.ServiceIamBinding;
  * import com.pulumi.gcp.servicedirectory.ServiceIamBindingArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -94,11 +91,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new ServiceIamBinding(&#34;binding&#34;, ServiceIamBindingArgs.builder()        
+ *             .name(example.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -113,7 +109,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.servicedirectory.ServiceIamMember;
  * import com.pulumi.gcp.servicedirectory.ServiceIamMemberArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -128,11 +123,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new ServiceIamMember(&#34;member&#34;, ServiceIamMemberArgs.builder()        
+ *             .name(example.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

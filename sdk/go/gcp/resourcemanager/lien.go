@@ -32,19 +32,22 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.NewProject(ctx, "project", nil)
+//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("staging-project"),
+//				Name:      pulumi.String("A very important project!"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = resourcemanager.NewLien(ctx, "lien", &resourcemanager.LienArgs{
-//				Origin: pulumi.String("machine-readable-explanation"),
 //				Parent: project.Number.ApplyT(func(number string) (string, error) {
 //					return fmt.Sprintf("projects/%v", number), nil
 //				}).(pulumi.StringOutput),
-//				Reason: pulumi.String("This project is an important environment"),
 //				Restrictions: pulumi.StringArray{
 //					pulumi.String("resourcemanager.projects.delete"),
 //				},
+//				Origin: pulumi.String("machine-readable-explanation"),
+//				Reason: pulumi.String("This project is an important environment"),
 //			})
 //			if err != nil {
 //				return err

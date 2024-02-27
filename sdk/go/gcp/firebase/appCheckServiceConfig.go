@@ -36,7 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			appcheck, err := projects.NewService(ctx, "appcheck", &projects.ServiceArgs{
+//			_, err := projects.NewService(ctx, "appcheck", &projects.ServiceArgs{
 //				Project:          pulumi.String("my-project-name"),
 //				Service:          pulumi.String("firebaseappcheck.googleapis.com"),
 //				DisableOnDestroy: pulumi.Bool(false),
@@ -47,9 +47,7 @@ import (
 //			_, err = firebase.NewAppCheckServiceConfig(ctx, "default", &firebase.AppCheckServiceConfigArgs{
 //				Project:   pulumi.String("my-project-name"),
 //				ServiceId: pulumi.String("firestore.googleapis.com"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				appcheck,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -73,7 +71,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			appcheck, err := projects.NewService(ctx, "appcheck", &projects.ServiceArgs{
+//			_, err := projects.NewService(ctx, "appcheck", &projects.ServiceArgs{
 //				Project:          pulumi.String("my-project-name"),
 //				Service:          pulumi.String("firebaseappcheck.googleapis.com"),
 //				DisableOnDestroy: pulumi.Bool(false),
@@ -85,9 +83,7 @@ import (
 //				Project:         pulumi.String("my-project-name"),
 //				ServiceId:       pulumi.String("firebasestorage.googleapis.com"),
 //				EnforcementMode: pulumi.String("ENFORCED"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				appcheck,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -111,7 +107,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			appcheck, err := projects.NewService(ctx, "appcheck", &projects.ServiceArgs{
+//			_, err := projects.NewService(ctx, "appcheck", &projects.ServiceArgs{
 //				Project:          pulumi.String("my-project-name"),
 //				Service:          pulumi.String("firebaseappcheck.googleapis.com"),
 //				DisableOnDestroy: pulumi.Bool(false),
@@ -123,9 +119,7 @@ import (
 //				Project:         pulumi.String("my-project-name"),
 //				ServiceId:       pulumi.String("firebasedatabase.googleapis.com"),
 //				EnforcementMode: pulumi.String("UNENFORCED"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				appcheck,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

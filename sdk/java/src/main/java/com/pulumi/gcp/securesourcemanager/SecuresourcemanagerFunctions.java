@@ -40,9 +40,9 @@ public final class SecuresourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecuresourcemanagerFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(google_secure_source_manager_instance.default().project())
-     *             .location(google_secure_source_manager_instance.default().location())
-     *             .instanceId(google_secure_source_manager_instance.default().instance_id())
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .instanceId(default_.instanceId())
      *             .build());
      * 
      *     }
@@ -79,9 +79,9 @@ public final class SecuresourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecuresourcemanagerFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(google_secure_source_manager_instance.default().project())
-     *             .location(google_secure_source_manager_instance.default().location())
-     *             .instanceId(google_secure_source_manager_instance.default().instance_id())
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .instanceId(default_.instanceId())
      *             .build());
      * 
      *     }
@@ -118,9 +118,9 @@ public final class SecuresourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecuresourcemanagerFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(google_secure_source_manager_instance.default().project())
-     *             .location(google_secure_source_manager_instance.default().location())
-     *             .instanceId(google_secure_source_manager_instance.default().instance_id())
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .instanceId(default_.instanceId())
      *             .build());
      * 
      *     }
@@ -157,9 +157,9 @@ public final class SecuresourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecuresourcemanagerFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(google_secure_source_manager_instance.default().project())
-     *             .location(google_secure_source_manager_instance.default().location())
-     *             .instanceId(google_secure_source_manager_instance.default().instance_id())
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .instanceId(default_.instanceId())
      *             .build());
      * 
      *     }

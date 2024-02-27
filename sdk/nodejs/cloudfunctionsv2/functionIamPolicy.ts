@@ -32,9 +32,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.cloudfunctionsv2.FunctionIamPolicy("policy", {
- *     project: google_cloudfunctions2_function["function"].project,
- *     location: google_cloudfunctions2_function["function"].location,
- *     cloudFunction: google_cloudfunctions2_function["function"].name,
+ *     project: _function.project,
+ *     location: _function.location,
+ *     cloudFunction: _function.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -46,9 +46,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.cloudfunctionsv2.FunctionIamBinding("binding", {
- *     project: google_cloudfunctions2_function["function"].project,
- *     location: google_cloudfunctions2_function["function"].location,
- *     cloudFunction: google_cloudfunctions2_function["function"].name,
+ *     project: _function.project,
+ *     location: _function.location,
+ *     cloudFunction: _function.name,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
  * });
@@ -61,9 +61,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.cloudfunctionsv2.FunctionIamMember("member", {
- *     project: google_cloudfunctions2_function["function"].project,
- *     location: google_cloudfunctions2_function["function"].location,
- *     cloudFunction: google_cloudfunctions2_function["function"].name,
+ *     project: _function.project,
+ *     location: _function.location,
+ *     cloudFunction: _function.name,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
  * });

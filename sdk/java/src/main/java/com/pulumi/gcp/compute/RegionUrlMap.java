@@ -27,7 +27,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * ### Region Url Map Basic
- * 
  * ```java
  * package generated_program;
  * 
@@ -59,6 +58,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var default_ = new RegionHealthCheck(&#34;default&#34;, RegionHealthCheckArgs.builder()        
  *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;health-check&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
@@ -69,6 +69,7 @@ import javax.annotation.Nullable;
  * 
  *         var login = new RegionBackendService(&#34;login&#34;, RegionBackendServiceArgs.builder()        
  *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;login&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
  *             .timeoutSec(10)
@@ -77,6 +78,7 @@ import javax.annotation.Nullable;
  * 
  *         var home = new RegionBackendService(&#34;home&#34;, RegionBackendServiceArgs.builder()        
  *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;home&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
  *             .timeoutSec(10)
@@ -85,6 +87,7 @@ import javax.annotation.Nullable;
  * 
  *         var regionurlmap = new RegionUrlMap(&#34;regionurlmap&#34;, RegionUrlMapArgs.builder()        
  *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;regionurlmap&#34;)
  *             .description(&#34;a description&#34;)
  *             .defaultService(home.id())
  *             .hostRules(RegionUrlMapHostRuleArgs.builder()
@@ -115,7 +118,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Region Url Map Default Route Action
- * 
  * ```java
  * package generated_program;
  * 
@@ -158,6 +160,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var default_ = new RegionHealthCheck(&#34;default&#34;, RegionHealthCheckArgs.builder()        
  *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;health-check&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
@@ -168,6 +171,7 @@ import javax.annotation.Nullable;
  * 
  *         var login = new RegionBackendService(&#34;login&#34;, RegionBackendServiceArgs.builder()        
  *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;login&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
  *             .timeoutSec(10)
@@ -176,6 +180,7 @@ import javax.annotation.Nullable;
  * 
  *         var home = new RegionBackendService(&#34;home&#34;, RegionBackendServiceArgs.builder()        
  *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;home&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
  *             .timeoutSec(10)
@@ -184,6 +189,7 @@ import javax.annotation.Nullable;
  * 
  *         var regionurlmap = new RegionUrlMap(&#34;regionurlmap&#34;, RegionUrlMapArgs.builder()        
  *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;regionurlmap&#34;)
  *             .description(&#34;a description&#34;)
  *             .defaultRouteAction(RegionUrlMapDefaultRouteActionArgs.builder()
  *                 .retryPolicy(RegionUrlMapDefaultRouteActionRetryPolicyArgs.builder()
@@ -309,7 +315,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Region Url Map L7 Ilb Path
- * 
  * ```java
  * package generated_program;
  * 
@@ -340,12 +345,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new RegionHealthCheck(&#34;default&#34;, RegionHealthCheckArgs.builder()        
+ *             .name(&#34;health-check&#34;)
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
  *         var home = new RegionBackendService(&#34;home&#34;, RegionBackendServiceArgs.builder()        
+ *             .name(&#34;home&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .timeoutSec(10)
  *             .healthChecks(default_.id())
@@ -353,6 +360,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var regionurlmap = new RegionUrlMap(&#34;regionurlmap&#34;, RegionUrlMapArgs.builder()        
+ *             .name(&#34;regionurlmap&#34;)
  *             .description(&#34;a description&#34;)
  *             .defaultService(home.id())
  *             .hostRules(RegionUrlMapHostRuleArgs.builder()
@@ -439,7 +447,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Region Url Map L7 Ilb Path Partial
- * 
  * ```java
  * package generated_program;
  * 
@@ -470,12 +477,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new RegionHealthCheck(&#34;default&#34;, RegionHealthCheckArgs.builder()        
+ *             .name(&#34;health-check&#34;)
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
  *         var home = new RegionBackendService(&#34;home&#34;, RegionBackendServiceArgs.builder()        
+ *             .name(&#34;home&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .timeoutSec(10)
  *             .healthChecks(default_.id())
@@ -483,6 +492,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var regionurlmap = new RegionUrlMap(&#34;regionurlmap&#34;, RegionUrlMapArgs.builder()        
+ *             .name(&#34;regionurlmap&#34;)
  *             .description(&#34;a description&#34;)
  *             .defaultService(home.id())
  *             .hostRules(RegionUrlMapHostRuleArgs.builder()
@@ -537,7 +547,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Region Url Map L7 Ilb Route
- * 
  * ```java
  * package generated_program;
  * 
@@ -568,12 +577,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new RegionHealthCheck(&#34;default&#34;, RegionHealthCheckArgs.builder()        
+ *             .name(&#34;health-check&#34;)
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
  *         var home = new RegionBackendService(&#34;home&#34;, RegionBackendServiceArgs.builder()        
+ *             .name(&#34;home&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .timeoutSec(10)
  *             .healthChecks(default_.id())
@@ -581,6 +592,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var regionurlmap = new RegionUrlMap(&#34;regionurlmap&#34;, RegionUrlMapArgs.builder()        
+ *             .name(&#34;regionurlmap&#34;)
  *             .description(&#34;a description&#34;)
  *             .defaultService(home.id())
  *             .hostRules(RegionUrlMapHostRuleArgs.builder()
@@ -646,7 +658,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Region Url Map L7 Ilb Route Partial
- * 
  * ```java
  * package generated_program;
  * 
@@ -677,12 +688,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new RegionHealthCheck(&#34;default&#34;, RegionHealthCheckArgs.builder()        
+ *             .name(&#34;health-check&#34;)
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
  *         var home = new RegionBackendService(&#34;home&#34;, RegionBackendServiceArgs.builder()        
+ *             .name(&#34;home&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .timeoutSec(10)
  *             .healthChecks(default_.id())
@@ -690,6 +703,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var regionurlmap = new RegionUrlMap(&#34;regionurlmap&#34;, RegionUrlMapArgs.builder()        
+ *             .name(&#34;regionurlmap&#34;)
  *             .description(&#34;a description&#34;)
  *             .defaultService(home.id())
  *             .hostRules(RegionUrlMapHostRuleArgs.builder()

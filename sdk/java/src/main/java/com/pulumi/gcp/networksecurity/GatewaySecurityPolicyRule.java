@@ -49,14 +49,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultGatewaySecurityPolicy = new GatewaySecurityPolicy(&#34;defaultGatewaySecurityPolicy&#34;, GatewaySecurityPolicyArgs.builder()        
+ *         var default_ = new GatewaySecurityPolicy(&#34;default&#34;, GatewaySecurityPolicyArgs.builder()        
+ *             .name(&#34;my-gateway-security-policy&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .description(&#34;gateway security policy created to be used as reference by the rule.&#34;)
  *             .build());
  * 
  *         var defaultGatewaySecurityPolicyRule = new GatewaySecurityPolicyRule(&#34;defaultGatewaySecurityPolicyRule&#34;, GatewaySecurityPolicyRuleArgs.builder()        
+ *             .name(&#34;my-gateway-security-policy-rule&#34;)
  *             .location(&#34;us-central1&#34;)
- *             .gatewaySecurityPolicy(defaultGatewaySecurityPolicy.name())
+ *             .gatewaySecurityPolicy(default_.name())
  *             .enabled(true)
  *             .description(&#34;my description&#34;)
  *             .priority(0)
@@ -91,14 +93,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultGatewaySecurityPolicy = new GatewaySecurityPolicy(&#34;defaultGatewaySecurityPolicy&#34;, GatewaySecurityPolicyArgs.builder()        
+ *         var default_ = new GatewaySecurityPolicy(&#34;default&#34;, GatewaySecurityPolicyArgs.builder()        
+ *             .name(&#34;my-gateway-security-policy&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .description(&#34;gateway security policy created to be used as reference by the rule.&#34;)
  *             .build());
  * 
  *         var defaultGatewaySecurityPolicyRule = new GatewaySecurityPolicyRule(&#34;defaultGatewaySecurityPolicyRule&#34;, GatewaySecurityPolicyRuleArgs.builder()        
+ *             .name(&#34;my-gateway-security-policy-rule&#34;)
  *             .location(&#34;us-central1&#34;)
- *             .gatewaySecurityPolicy(defaultGatewaySecurityPolicy.name())
+ *             .gatewaySecurityPolicy(default_.name())
  *             .enabled(true)
  *             .description(&#34;my description&#34;)
  *             .priority(0)

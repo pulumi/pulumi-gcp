@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.Endpoints
     /// 
     ///     var policy = new Gcp.Endpoints.ServiceIamPolicy("policy", new()
     ///     {
-    ///         ServiceName = google_endpoints_service.Endpoints_service.Service_name,
+    ///         ServiceName = endpointsService.ServiceName,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -70,7 +70,7 @@ namespace Pulumi.Gcp.Endpoints
     /// {
     ///     var binding = new Gcp.Endpoints.ServiceIamBinding("binding", new()
     ///     {
-    ///         ServiceName = google_endpoints_service.Endpoints_service.Service_name,
+    ///         ServiceName = endpointsService.ServiceName,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -93,7 +93,7 @@ namespace Pulumi.Gcp.Endpoints
     /// {
     ///     var member = new Gcp.Endpoints.ServiceIamMember("member", new()
     ///     {
-    ///         ServiceName = google_endpoints_service.Endpoints_service.Service_name,
+    ///         ServiceName = endpointsService.ServiceName,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

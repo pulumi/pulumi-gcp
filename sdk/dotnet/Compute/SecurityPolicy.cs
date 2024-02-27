@@ -28,14 +28,16 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var policy = new Gcp.Compute.SecurityPolicy("policy", new()
     ///     {
+    ///         Name = "my-policy",
     ///         Rules = new[]
     ///         {
     ///             new Gcp.Compute.Inputs.SecurityPolicyRuleArgs
     ///             {
     ///                 Action = "deny(403)",
-    ///                 Description = "Deny access to IPs in 9.9.9.0/24",
+    ///                 Priority = 1000,
     ///                 Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
     ///                 {
+    ///                     VersionedExpr = "SRC_IPS_V1",
     ///                     Config = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchConfigArgs
     ///                     {
     ///                         SrcIpRanges = new[]
@@ -43,16 +45,16 @@ namespace Pulumi.Gcp.Compute
     ///                             "9.9.9.0/24",
     ///                         },
     ///                     },
-    ///                     VersionedExpr = "SRC_IPS_V1",
     ///                 },
-    ///                 Priority = 1000,
+    ///                 Description = "Deny access to IPs in 9.9.9.0/24",
     ///             },
     ///             new Gcp.Compute.Inputs.SecurityPolicyRuleArgs
     ///             {
     ///                 Action = "allow",
-    ///                 Description = "default rule",
+    ///                 Priority = 2147483647,
     ///                 Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
     ///                 {
+    ///                     VersionedExpr = "SRC_IPS_V1",
     ///                     Config = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchConfigArgs
     ///                     {
     ///                         SrcIpRanges = new[]
@@ -60,9 +62,8 @@ namespace Pulumi.Gcp.Compute
     ///                             "*",
     ///                         },
     ///                     },
-    ///                     VersionedExpr = "SRC_IPS_V1",
     ///                 },
-    ///                 Priority = 2147483647,
+    ///                 Description = "default rule",
     ///             },
     ///         },
     ///     });
@@ -100,6 +101,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var policy = new Gcp.Compute.SecurityPolicy("policy", new()
     ///     {
+    ///         Name = "my-policy",
     ///         Description = "basic security policy",
     ///         Type = "CLOUD_ARMOR",
     ///         RecaptchaOptionsConfig = new Gcp.Compute.Inputs.SecurityPolicyRecaptchaOptionsConfigArgs
@@ -122,14 +124,16 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var policy = new Gcp.Compute.SecurityPolicy("policy", new()
     ///     {
+    ///         Name = "my-policy",
     ///         Rules = new[]
     ///         {
     ///             new Gcp.Compute.Inputs.SecurityPolicyRuleArgs
     ///             {
     ///                 Action = "allow",
-    ///                 Description = "default rule",
+    ///                 Priority = 2147483647,
     ///                 Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
     ///                 {
+    ///                     VersionedExpr = "SRC_IPS_V1",
     ///                     Config = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchConfigArgs
     ///                     {
     ///                         SrcIpRanges = new[]
@@ -137,13 +141,20 @@ namespace Pulumi.Gcp.Compute
     ///                             "*",
     ///                         },
     ///                     },
-    ///                     VersionedExpr = "SRC_IPS_V1",
     ///                 },
-    ///                 Priority = 2147483647,
+    ///                 Description = "default rule",
     ///             },
     ///             new Gcp.Compute.Inputs.SecurityPolicyRuleArgs
     ///             {
     ///                 Action = "allow",
+    ///                 Priority = 1000,
+    ///                 Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
+    ///                 {
+    ///                     Expr = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchExprArgs
+    ///                     {
+    ///                         Expression = "request.path.matches(\"/login.html\") &amp;&amp; token.recaptcha_session.score &lt; 0.2",
+    ///                     },
+    ///                 },
     ///                 HeaderAction = new Gcp.Compute.Inputs.SecurityPolicyRuleHeaderActionArgs
     ///                 {
     ///                     RequestHeadersToAdds = new[]
@@ -160,14 +171,6 @@ namespace Pulumi.Gcp.Compute
     ///                         },
     ///                     },
     ///                 },
-    ///                 Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
-    ///                 {
-    ///                     Expr = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchExprArgs
-    ///                     {
-    ///                         Expression = "request.path.matches(\"/login.html\") &amp;&amp; token.recaptcha_session.score &lt; 0.2",
-    ///                     },
-    ///                 },
-    ///                 Priority = 1000,
     ///             },
     ///         },
     ///     });
@@ -187,15 +190,17 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var policy = new Gcp.Compute.SecurityPolicy("policy", new()
     ///     {
+    ///         Name = "%s",
     ///         Description = "throttle rule with enforce_on_key_configs",
     ///         Rules = new[]
     ///         {
     ///             new Gcp.Compute.Inputs.SecurityPolicyRuleArgs
     ///             {
     ///                 Action = "throttle",
-    ///                 Description = "default rule",
+    ///                 Priority = 2147483647,
     ///                 Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
     ///                 {
+    ///                     VersionedExpr = "SRC_IPS_V1",
     ///                     Config = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchConfigArgs
     ///                     {
     ///                         SrcIpRanges = new[]
@@ -203,12 +208,12 @@ namespace Pulumi.Gcp.Compute
     ///                             "*",
     ///                         },
     ///                     },
-    ///                     VersionedExpr = "SRC_IPS_V1",
     ///                 },
-    ///                 Priority = 2147483647,
+    ///                 Description = "default rule",
     ///                 RateLimitOptions = new Gcp.Compute.Inputs.SecurityPolicyRuleRateLimitOptionsArgs
     ///                 {
     ///                     ConformAction = "allow",
+    ///                     ExceedAction = "redirect",
     ///                     EnforceOnKey = "",
     ///                     EnforceOnKeyConfigs = new[]
     ///                     {
@@ -217,11 +222,10 @@ namespace Pulumi.Gcp.Compute
     ///                             EnforceOnKeyType = "IP",
     ///                         },
     ///                     },
-    ///                     ExceedAction = "redirect",
     ///                     ExceedRedirectOptions = new Gcp.Compute.Inputs.SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs
     ///                     {
-    ///                         Target = "&lt;https://www.example.com&gt;",
     ///                         Type = "EXTERNAL_302",
+    ///                         Target = "&lt;https://www.example.com&gt;",
     ///                     },
     ///                     RateLimitThreshold = new Gcp.Compute.Inputs.SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs
     ///                     {

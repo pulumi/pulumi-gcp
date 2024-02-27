@@ -36,16 +36,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudbuild.NewBitbucketServerConfig(ctx, "bbs-config", &cloudbuild.BitbucketServerConfigArgs{
-//				ApiKey:   pulumi.String("<api-key>"),
 //				ConfigId: pulumi.String("bbs-config"),
-//				HostUri:  pulumi.String("https://bbs.com"),
 //				Location: pulumi.String("us-central1"),
+//				HostUri:  pulumi.String("https://bbs.com"),
 //				Secrets: &cloudbuild.BitbucketServerConfigSecretsArgs{
 //					AdminAccessTokenVersionName: pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
 //					ReadAccessTokenVersionName:  pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
 //					WebhookSecretVersionName:    pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
 //				},
 //				Username: pulumi.String("test"),
+//				ApiKey:   pulumi.String("<api-key>"),
 //			})
 //			if err != nil {
 //				return err
@@ -70,8 +70,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudbuild.NewBitbucketServerConfig(ctx, "bbs-config-with-repos", &cloudbuild.BitbucketServerConfigArgs{
-//				ApiKey:   pulumi.String("<api-key>"),
 //				ConfigId: pulumi.String("bbs-config"),
+//				Location: pulumi.String("us-central1"),
+//				HostUri:  pulumi.String("https://bbs.com"),
+//				Secrets: &cloudbuild.BitbucketServerConfigSecretsArgs{
+//					AdminAccessTokenVersionName: pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
+//					ReadAccessTokenVersionName:  pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
+//					WebhookSecretVersionName:    pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
+//				},
+//				Username: pulumi.String("test"),
+//				ApiKey:   pulumi.String("<api-key>"),
 //				ConnectedRepositories: cloudbuild.BitbucketServerConfigConnectedRepositoryArray{
 //					&cloudbuild.BitbucketServerConfigConnectedRepositoryArgs{
 //						ProjectKey: pulumi.String("DEV"),
@@ -82,14 +90,92 @@ import (
 //						RepoSlug:   pulumi.String("repo1"),
 //					},
 //				},
-//				HostUri:  pulumi.String("https://bbs.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Cloudbuild Bitbucket Server Config Peered Network
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
+//				Service:          pulumi.String("servicenetworking.googleapis.com"),
+//				DisableOnDestroy: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vpcNetwork, err := compute.NewNetwork(ctx, "vpc_network", &compute.NetworkArgs{
+//				Name: pulumi.String("vpc-network"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "private_ip_alloc", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("private-ip-alloc"),
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				AddressType:  pulumi.String("INTERNAL"),
+//				PrefixLength: pulumi.Int(16),
+//				Network:      vpcNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
+//				Network: vpcNetwork.ID(),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					privateIpAlloc.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudbuild.NewBitbucketServerConfig(ctx, "bbs-config-with-peered-network", &cloudbuild.BitbucketServerConfigArgs{
+//				ConfigId: pulumi.String("bbs-config"),
 //				Location: pulumi.String("us-central1"),
+//				HostUri:  pulumi.String("https://bbs.com"),
 //				Secrets: &cloudbuild.BitbucketServerConfigSecretsArgs{
 //					AdminAccessTokenVersionName: pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
 //					ReadAccessTokenVersionName:  pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
 //					WebhookSecretVersionName:    pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
 //				},
 //				Username: pulumi.String("test"),
+//				ApiKey:   pulumi.String("<api-key>"),
+//				PeeredNetwork: vpcNetwork.ID().ApplyT(func(id string) (std.ReplaceResult, error) {
+//					return std.ReplaceOutput(ctx, std.ReplaceOutputArgs{
+//						Text:    id,
+//						Search:  project.Name,
+//						Replace: project.Number,
+//					}, nil), nil
+//				}).(std.ReplaceResultOutput).ApplyT(func(invoke std.ReplaceResult) (*string, error) {
+//					return invoke.Result, nil
+//				}).(pulumi.StringPtrOutput),
+//				SslCa: pulumi.String("-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n"),
 //			})
 //			if err != nil {
 //				return err

@@ -36,11 +36,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil)
+//			defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name: pulumi.String("my-network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = datastream.NewPrivateConnection(ctx, "defaultPrivateConnection", &datastream.PrivateConnectionArgs{
+//			_, err = datastream.NewPrivateConnection(ctx, "default", &datastream.PrivateConnectionArgs{
 //				DisplayName:         pulumi.String("Connection profile"),
 //				Location:            pulumi.String("us-central1"),
 //				PrivateConnectionId: pulumi.String("my-connection"),

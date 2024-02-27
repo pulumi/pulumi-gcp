@@ -360,7 +360,9 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        simplecluster = gcp.dataproc.Cluster("simplecluster", region="us-central1")
+        simplecluster = gcp.dataproc.Cluster("simplecluster",
+            name="simplecluster",
+            region="us-central1")
         ```
         ### Advanced
 
@@ -372,6 +374,7 @@ class Cluster(pulumi.CustomResource):
             account_id="service-account-id",
             display_name="Service Account")
         mycluster = gcp.dataproc.Cluster("mycluster",
+            name="mycluster",
             region="us-central1",
             graceful_decommission_timeout="120s",
             labels={
@@ -425,19 +428,20 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        accelerated_cluster = gcp.dataproc.Cluster("acceleratedCluster",
+        accelerated_cluster = gcp.dataproc.Cluster("accelerated_cluster",
+            name="my-cluster-with-gpu",
+            region="us-central1",
             cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
                 gce_cluster_config=gcp.dataproc.ClusterClusterConfigGceClusterConfigArgs(
                     zone="us-central1-a",
                 ),
                 master_config=gcp.dataproc.ClusterClusterConfigMasterConfigArgs(
                     accelerators=[gcp.dataproc.ClusterClusterConfigMasterConfigAcceleratorArgs(
-                        accelerator_count=1,
                         accelerator_type="nvidia-tesla-k80",
+                        accelerator_count=1,
                     )],
                 ),
-            ),
-            region="us-central1")
+            ))
         ```
 
         ## Import
@@ -488,7 +492,9 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        simplecluster = gcp.dataproc.Cluster("simplecluster", region="us-central1")
+        simplecluster = gcp.dataproc.Cluster("simplecluster",
+            name="simplecluster",
+            region="us-central1")
         ```
         ### Advanced
 
@@ -500,6 +506,7 @@ class Cluster(pulumi.CustomResource):
             account_id="service-account-id",
             display_name="Service Account")
         mycluster = gcp.dataproc.Cluster("mycluster",
+            name="mycluster",
             region="us-central1",
             graceful_decommission_timeout="120s",
             labels={
@@ -553,19 +560,20 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        accelerated_cluster = gcp.dataproc.Cluster("acceleratedCluster",
+        accelerated_cluster = gcp.dataproc.Cluster("accelerated_cluster",
+            name="my-cluster-with-gpu",
+            region="us-central1",
             cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
                 gce_cluster_config=gcp.dataproc.ClusterClusterConfigGceClusterConfigArgs(
                     zone="us-central1-a",
                 ),
                 master_config=gcp.dataproc.ClusterClusterConfigMasterConfigArgs(
                     accelerators=[gcp.dataproc.ClusterClusterConfigMasterConfigAcceleratorArgs(
-                        accelerator_count=1,
                         accelerator_type="nvidia-tesla-k80",
+                        accelerator_count=1,
                     )],
                 ),
-            ),
-            region="us-central1")
+            ))
         ```
 
         ## Import

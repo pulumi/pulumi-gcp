@@ -20,6 +20,173 @@ import javax.annotation.Nullable;
 /**
  * Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
  * 
+ * ## Example Usage
+ * 
+ * Example creating a SQL User.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomId;
+ * import com.pulumi.random.RandomIdArgs;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.User;
+ * import com.pulumi.gcp.sql.UserArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var dbNameSuffix = new RandomId(&#34;dbNameSuffix&#34;, RandomIdArgs.builder()        
+ *             .byteLength(4)
+ *             .build());
+ * 
+ *         var main = new DatabaseInstance(&#34;main&#34;, DatabaseInstanceArgs.builder()        
+ *             .name(dbNameSuffix.hex().applyValue(hex -&gt; String.format(&#34;main-instance-%s&#34;, hex)))
+ *             .databaseVersion(&#34;MYSQL_5_7&#34;)
+ *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .tier(&#34;db-f1-micro&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var users = new User(&#34;users&#34;, UserArgs.builder()        
+ *             .name(&#34;me&#34;)
+ *             .instance(main.name())
+ *             .host(&#34;me.com&#34;)
+ *             .password(&#34;changeme&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Example using [Cloud SQL IAM database authentication](https://cloud.google.com/sql/docs/mysql/authentication).
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomId;
+ * import com.pulumi.random.RandomIdArgs;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.User;
+ * import com.pulumi.gcp.sql.UserArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var dbNameSuffix = new RandomId(&#34;dbNameSuffix&#34;, RandomIdArgs.builder()        
+ *             .byteLength(4)
+ *             .build());
+ * 
+ *         var main = new DatabaseInstance(&#34;main&#34;, DatabaseInstanceArgs.builder()        
+ *             .name(dbNameSuffix.hex().applyValue(hex -&gt; String.format(&#34;main-instance-%s&#34;, hex)))
+ *             .databaseVersion(&#34;POSTGRES_15&#34;)
+ *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .tier(&#34;db-f1-micro&#34;)
+ *                 .databaseFlags(DatabaseInstanceSettingsDatabaseFlagArgs.builder()
+ *                     .name(&#34;cloudsql.iam_authentication&#34;)
+ *                     .value(&#34;on&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var iamUser = new User(&#34;iamUser&#34;, UserArgs.builder()        
+ *             .name(&#34;me@example.com&#34;)
+ *             .instance(main.name())
+ *             .type(&#34;CLOUD_IAM_USER&#34;)
+ *             .build());
+ * 
+ *         var iamServiceAccountUser = new User(&#34;iamServiceAccountUser&#34;, UserArgs.builder()        
+ *             .name(StdFunctions.trimsuffix(TrimsuffixArgs.builder()
+ *                 .input(serviceAccount.email())
+ *                 .suffix(&#34;.gserviceaccount.com&#34;)
+ *                 .build()).result())
+ *             .instance(main.name())
+ *             .type(&#34;CLOUD_IAM_SERVICE_ACCOUNT&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Example using [Cloud SQL IAM Group authentication](https://cloud.google.com/sql/docs/mysql/iam-authentication#iam-group-auth).
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomId;
+ * import com.pulumi.random.RandomIdArgs;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.User;
+ * import com.pulumi.gcp.sql.UserArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var dbNameSuffix = new RandomId(&#34;dbNameSuffix&#34;, RandomIdArgs.builder()        
+ *             .byteLength(4)
+ *             .build());
+ * 
+ *         var main = new DatabaseInstance(&#34;main&#34;, DatabaseInstanceArgs.builder()        
+ *             .name(dbNameSuffix.hex().applyValue(hex -&gt; String.format(&#34;main-instance-%s&#34;, hex)))
+ *             .databaseVersion(&#34;MYSQL_8_0&#34;)
+ *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .tier(&#34;db-f1-micro&#34;)
+ *                 .databaseFlags(DatabaseInstanceSettingsDatabaseFlagArgs.builder()
+ *                     .name(&#34;cloudsql.iam_authentication&#34;)
+ *                     .value(&#34;on&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var iamGroupUser = new User(&#34;iamGroupUser&#34;, UserArgs.builder()        
+ *             .name(&#34;iam_group@example.com&#34;)
+ *             .instance(main.name())
+ *             .type(&#34;CLOUD_IAM_GROUP&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.

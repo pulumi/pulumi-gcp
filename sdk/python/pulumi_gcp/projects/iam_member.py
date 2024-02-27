@@ -233,17 +233,17 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/compute.admin",
+            members=["user:jane@example.com"],
             condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
             ),
-            members=["user:jane@example.com"],
-            role="roles/compute.admin",
         )])
         project = gcp.projects.IAMPolicy("project",
-            policy_data=admin.policy_data,
-            project="your-project-id")
+            project="your-project-id",
+            policy_data=admin.policy_data)
         ```
 
         ## google\\_project\\_iam\\_binding
@@ -253,9 +253,9 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.projects.IAMBinding("project",
-            members=["user:jane@example.com"],
             project="your-project-id",
-            role="roles/editor")
+            role="roles/editor",
+            members=["user:jane@example.com"])
         ```
 
         With IAM Conditions:
@@ -265,14 +265,14 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.projects.IAMBinding("project",
+            project="your-project-id",
+            role="roles/container.admin",
+            members=["user:jane@example.com"],
             condition=gcp.projects.IAMBindingConditionArgs(
+                title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
-            ),
-            members=["user:jane@example.com"],
-            project="your-project-id",
-            role="roles/container.admin")
+            ))
         ```
 
         ## google\\_project\\_iam\\_member
@@ -282,9 +282,9 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.projects.IAMMember("project",
-            member="user:jane@example.com",
             project="your-project-id",
-            role="roles/editor")
+            role="roles/editor",
+            member="user:jane@example.com")
         ```
 
         With IAM Conditions:
@@ -294,14 +294,14 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.projects.IAMMember("project",
+            project="your-project-id",
+            role="roles/firebase.admin",
+            member="user:jane@example.com",
             condition=gcp.projects.IAMMemberConditionArgs(
+                title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
-            ),
-            member="user:jane@example.com",
-            project="your-project-id",
-            role="roles/firebase.admin")
+            ))
         ```
 
         ## google\\_project\\_iam\\_audit\\_config
@@ -311,17 +311,17 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.projects.IAMAuditConfig("project",
+            project="your-project-id",
+            service="allServices",
             audit_log_configs=[
                 gcp.projects.IAMAuditConfigAuditLogConfigArgs(
                     log_type="ADMIN_READ",
                 ),
                 gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    exempted_members=["user:joebloggs@example.com"],
                     log_type="DATA_READ",
+                    exempted_members=["user:joebloggs@example.com"],
                 ),
-            ],
-            project="your-project-id",
-            service="allServices")
+            ])
         ```
 
         ## Import
@@ -411,17 +411,17 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/compute.admin",
+            members=["user:jane@example.com"],
             condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
             ),
-            members=["user:jane@example.com"],
-            role="roles/compute.admin",
         )])
         project = gcp.projects.IAMPolicy("project",
-            policy_data=admin.policy_data,
-            project="your-project-id")
+            project="your-project-id",
+            policy_data=admin.policy_data)
         ```
 
         ## google\\_project\\_iam\\_binding
@@ -431,9 +431,9 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.projects.IAMBinding("project",
-            members=["user:jane@example.com"],
             project="your-project-id",
-            role="roles/editor")
+            role="roles/editor",
+            members=["user:jane@example.com"])
         ```
 
         With IAM Conditions:
@@ -443,14 +443,14 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.projects.IAMBinding("project",
+            project="your-project-id",
+            role="roles/container.admin",
+            members=["user:jane@example.com"],
             condition=gcp.projects.IAMBindingConditionArgs(
+                title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
-            ),
-            members=["user:jane@example.com"],
-            project="your-project-id",
-            role="roles/container.admin")
+            ))
         ```
 
         ## google\\_project\\_iam\\_member
@@ -460,9 +460,9 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.projects.IAMMember("project",
-            member="user:jane@example.com",
             project="your-project-id",
-            role="roles/editor")
+            role="roles/editor",
+            member="user:jane@example.com")
         ```
 
         With IAM Conditions:
@@ -472,14 +472,14 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.projects.IAMMember("project",
+            project="your-project-id",
+            role="roles/firebase.admin",
+            member="user:jane@example.com",
             condition=gcp.projects.IAMMemberConditionArgs(
+                title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
-            ),
-            member="user:jane@example.com",
-            project="your-project-id",
-            role="roles/firebase.admin")
+            ))
         ```
 
         ## google\\_project\\_iam\\_audit\\_config
@@ -489,17 +489,17 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.projects.IAMAuditConfig("project",
+            project="your-project-id",
+            service="allServices",
             audit_log_configs=[
                 gcp.projects.IAMAuditConfigAuditLogConfigArgs(
                     log_type="ADMIN_READ",
                 ),
                 gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    exempted_members=["user:joebloggs@example.com"],
                     log_type="DATA_READ",
+                    exempted_members=["user:joebloggs@example.com"],
                 ),
-            ],
-            project="your-project-id",
-            service="allServices")
+            ])
         ```
 
         ## Import

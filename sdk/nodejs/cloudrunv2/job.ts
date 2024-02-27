@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.cloudrunv2.Job("default", {
+ *     name: "cloudrun-job",
  *     location: "us-central1",
  *     template: {
  *         template: {
@@ -40,6 +41,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.cloudrunv2.Job("default", {
+ *     name: "cloudrun-job",
  *     location: "us-central1",
  *     template: {
  *         template: {
@@ -69,6 +71,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     name: "cloudrun-sql",
  *     region: "us-central1",
  *     databaseVersion: "MYSQL_5_7",
  *     settings: {
@@ -77,6 +80,7 @@ import * as utilities from "../utilities";
  *     deletionProtection: true,
  * });
  * const _default = new gcp.cloudrunv2.Job("default", {
+ *     name: "cloudrun-job",
  *     location: "us-central1",
  *     template: {
  *         template: {
@@ -120,8 +124,6 @@ import * as utilities from "../utilities";
  *     secretId: secret.id,
  *     role: "roles/secretmanager.secretAccessor",
  *     member: project.then(project => `serviceAccount:${project.number}-compute@developer.gserviceaccount.com`),
- * }, {
- *     dependsOn: [secret],
  * });
  * ```
  * ### Cloudrunv2 Job Vpcaccess
@@ -130,15 +132,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const customTestNetwork = new gcp.compute.Network("customTestNetwork", {autoCreateSubnetworks: false});
- * const customTestSubnetwork = new gcp.compute.Subnetwork("customTestSubnetwork", {
+ * const customTestNetwork = new gcp.compute.Network("custom_test", {
+ *     name: "run-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const customTest = new gcp.compute.Subnetwork("custom_test", {
+ *     name: "run-subnetwork",
  *     ipCidrRange: "10.2.0.0/28",
  *     region: "us-central1",
  *     network: customTestNetwork.id,
  * });
  * const connector = new gcp.vpcaccess.Connector("connector", {
+ *     name: "run-vpc",
  *     subnet: {
- *         name: customTestSubnetwork.name,
+ *         name: customTest.name,
  *     },
  *     machineType: "e2-standard-4",
  *     minInstances: 2,
@@ -146,6 +153,7 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * const _default = new gcp.cloudrunv2.Job("default", {
+ *     name: "cloudrun-job",
  *     location: "us-central1",
  *     template: {
  *         template: {
@@ -167,15 +175,15 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.cloudrunv2.Job("default", {
- *     launchStage: "BETA",
+ *     name: "cloudrun-job",
  *     location: "us-central1",
+ *     launchStage: "BETA",
  *     template: {
  *         template: {
  *             containers: [{
  *                 image: "us-docker.pkg.dev/cloudrun/container/job",
  *             }],
  *             vpcAccess: {
- *                 egress: "ALL_TRAFFIC",
  *                 networkInterfaces: [{
  *                     network: "default",
  *                     subnetwork: "default",
@@ -185,6 +193,7 @@ import * as utilities from "../utilities";
  *                         "tag3",
  *                     ],
  *                 }],
+ *                 egress: "ALL_TRAFFIC",
  *             },
  *         },
  *     },
@@ -202,19 +211,8 @@ import * as utilities from "../utilities";
  *         auto: {},
  *     },
  * });
- * const secret_version_data = new gcp.secretmanager.SecretVersion("secret-version-data", {
- *     secret: secret.name,
- *     secretData: "secret-data",
- * });
- * const project = gcp.organizations.getProject({});
- * const secret_access = new gcp.secretmanager.SecretIamMember("secret-access", {
- *     secretId: secret.id,
- *     role: "roles/secretmanager.secretAccessor",
- *     member: project.then(project => `serviceAccount:${project.number}-compute@developer.gserviceaccount.com`),
- * }, {
- *     dependsOn: [secret],
- * });
  * const _default = new gcp.cloudrunv2.Job("default", {
+ *     name: "cloudrun-job",
  *     location: "us-central1",
  *     template: {
  *         template: {
@@ -239,11 +237,16 @@ import * as utilities from "../utilities";
  *             }],
  *         },
  *     },
- * }, {
- *     dependsOn: [
- *         secret_version_data,
- *         secret_access,
- *     ],
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const secret_version_data = new gcp.secretmanager.SecretVersion("secret-version-data", {
+ *     secret: secret.name,
+ *     secretData: "secret-data",
+ * });
+ * const secret_access = new gcp.secretmanager.SecretIamMember("secret-access", {
+ *     secretId: secret.id,
+ *     role: "roles/secretmanager.secretAccessor",
+ *     member: project.then(project => `serviceAccount:${project.number}-compute@developer.gserviceaccount.com`),
  * });
  * ```
  * ### Cloudrunv2 Job Emptydir
@@ -253,6 +256,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.cloudrunv2.Job("default", {
+ *     name: "cloudrun-job",
  *     location: "us-central1",
  *     launchStage: "BETA",
  *     template: {
@@ -273,8 +277,6 @@ import * as utilities from "../utilities";
  *             }],
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

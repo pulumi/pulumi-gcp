@@ -42,21 +42,24 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
+    ///     var @default = new Gcp.Compute.Network("default", new()
     ///     {
+    ///         Name = "neg-network",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new()
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
     ///     {
+    ///         Name = "neg-subnetwork",
     ///         IpCidrRange = "10.0.0.0/16",
     ///         Region = "us-central1",
-    ///         Network = defaultNetwork.Id,
+    ///         Network = @default.Id,
     ///     });
     /// 
     ///     var neg = new Gcp.Compute.NetworkEndpointGroup("neg", new()
     ///     {
-    ///         Network = defaultNetwork.Id,
+    ///         Name = "my-lb-neg",
+    ///         Network = @default.Id,
     ///         Subnetwork = defaultSubnetwork.Id,
     ///         DefaultPort = 90,
     ///         Zone = "us-central1-a",
@@ -74,10 +77,14 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Gcp.Compute.Network("default");
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "neg-network",
+    ///     });
     /// 
     ///     var neg = new Gcp.Compute.NetworkEndpointGroup("neg", new()
     ///     {
+    ///         Name = "my-lb-neg",
     ///         Network = @default.Id,
     ///         DefaultPort = 90,
     ///         Zone = "us-central1-a",

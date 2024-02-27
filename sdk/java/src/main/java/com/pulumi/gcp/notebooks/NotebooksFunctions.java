@@ -43,9 +43,9 @@ public final class NotebooksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = NotebooksFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(google_notebooks_instance.instance().project())
-     *             .location(google_notebooks_instance.instance().location())
-     *             .instanceName(google_notebooks_instance.instance().name())
+     *             .project(instance.project())
+     *             .location(instance.location())
+     *             .instanceName(instance.name())
      *             .build());
      * 
      *     }
@@ -82,9 +82,9 @@ public final class NotebooksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = NotebooksFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(google_notebooks_instance.instance().project())
-     *             .location(google_notebooks_instance.instance().location())
-     *             .instanceName(google_notebooks_instance.instance().name())
+     *             .project(instance.project())
+     *             .location(instance.location())
+     *             .instanceName(instance.name())
      *             .build());
      * 
      *     }
@@ -121,9 +121,9 @@ public final class NotebooksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = NotebooksFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(google_notebooks_instance.instance().project())
-     *             .location(google_notebooks_instance.instance().location())
-     *             .instanceName(google_notebooks_instance.instance().name())
+     *             .project(instance.project())
+     *             .location(instance.location())
+     *             .instanceName(instance.name())
      *             .build());
      * 
      *     }
@@ -160,9 +160,9 @@ public final class NotebooksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = NotebooksFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(google_notebooks_instance.instance().project())
-     *             .location(google_notebooks_instance.instance().location())
-     *             .instanceName(google_notebooks_instance.instance().name())
+     *             .project(instance.project())
+     *             .location(instance.location())
+     *             .instanceName(instance.name())
      *             .build());
      * 
      *     }
@@ -199,9 +199,9 @@ public final class NotebooksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = NotebooksFunctions.getRuntimeIamPolicy(GetRuntimeIamPolicyArgs.builder()
-     *             .project(google_notebooks_runtime.runtime().project())
-     *             .location(google_notebooks_runtime.runtime().location())
-     *             .runtimeName(google_notebooks_runtime.runtime().name())
+     *             .project(runtime.project())
+     *             .location(runtime.location())
+     *             .runtimeName(runtime.name())
      *             .build());
      * 
      *     }
@@ -238,9 +238,9 @@ public final class NotebooksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = NotebooksFunctions.getRuntimeIamPolicy(GetRuntimeIamPolicyArgs.builder()
-     *             .project(google_notebooks_runtime.runtime().project())
-     *             .location(google_notebooks_runtime.runtime().location())
-     *             .runtimeName(google_notebooks_runtime.runtime().name())
+     *             .project(runtime.project())
+     *             .location(runtime.location())
+     *             .runtimeName(runtime.name())
      *             .build());
      * 
      *     }
@@ -277,9 +277,9 @@ public final class NotebooksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = NotebooksFunctions.getRuntimeIamPolicy(GetRuntimeIamPolicyArgs.builder()
-     *             .project(google_notebooks_runtime.runtime().project())
-     *             .location(google_notebooks_runtime.runtime().location())
-     *             .runtimeName(google_notebooks_runtime.runtime().name())
+     *             .project(runtime.project())
+     *             .location(runtime.location())
+     *             .runtimeName(runtime.name())
      *             .build());
      * 
      *     }
@@ -316,9 +316,9 @@ public final class NotebooksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = NotebooksFunctions.getRuntimeIamPolicy(GetRuntimeIamPolicyArgs.builder()
-     *             .project(google_notebooks_runtime.runtime().project())
-     *             .location(google_notebooks_runtime.runtime().location())
-     *             .runtimeName(google_notebooks_runtime.runtime().name())
+     *             .project(runtime.project())
+     *             .location(runtime.location())
+     *             .runtimeName(runtime.name())
      *             .build());
      * 
      *     }

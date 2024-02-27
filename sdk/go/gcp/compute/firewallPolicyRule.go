@@ -30,7 +30,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			basicGlobalNetworksecurityAddressGroup, err := networksecurity.NewAddressGroup(ctx, "basicGlobalNetworksecurityAddressGroup", &networksecurity.AddressGroupArgs{
+//			basicGlobalNetworksecurityAddressGroup, err := networksecurity.NewAddressGroup(ctx, "basic_global_networksecurity_address_group", &networksecurity.AddressGroupArgs{
+//				Name:        pulumi.String("policy"),
 //				Parent:      pulumi.String("organizations/123456789"),
 //				Description: pulumi.String("Sample global networksecurity_address_group"),
 //				Location:    pulumi.String("global"),

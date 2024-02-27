@@ -109,9 +109,9 @@ def get_instance_iam_policy(name: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.datafusion.get_instance_iam_policy(project=google_data_fusion_instance["basic_instance"]["project"],
-        region=google_data_fusion_instance["basic_instance"]["region"],
-        name=google_data_fusion_instance["basic_instance"]["name"])
+    policy = gcp.datafusion.get_instance_iam_policy(project=basic_instance["project"],
+        region=basic_instance["region"],
+        name=basic_instance["name"])
     ```
 
 
@@ -153,9 +153,9 @@ def get_instance_iam_policy_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.datafusion.get_instance_iam_policy(project=google_data_fusion_instance["basic_instance"]["project"],
-        region=google_data_fusion_instance["basic_instance"]["region"],
-        name=google_data_fusion_instance["basic_instance"]["name"])
+    policy = gcp.datafusion.get_instance_iam_policy(project=basic_instance["project"],
+        region=basic_instance["region"],
+        name=basic_instance["name"])
     ```
 
 

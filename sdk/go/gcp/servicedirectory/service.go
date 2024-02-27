@@ -35,21 +35,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleNamespace, err := servicedirectory.NewNamespace(ctx, "exampleNamespace", &servicedirectory.NamespaceArgs{
+//			example, err := servicedirectory.NewNamespace(ctx, "example", &servicedirectory.NamespaceArgs{
 //				NamespaceId: pulumi.String("example-namespace"),
 //				Location:    pulumi.String("us-central1"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = servicedirectory.NewService(ctx, "exampleService", &servicedirectory.ServiceArgs{
+//			_, err = servicedirectory.NewService(ctx, "example", &servicedirectory.ServiceArgs{
 //				ServiceId: pulumi.String("example-service"),
-//				Namespace: exampleNamespace.ID(),
+//				Namespace: example.ID(),
 //				Metadata: pulumi.StringMap{
 //					"stage":  pulumi.String("prod"),
 //					"region": pulumi.String("us-central1"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

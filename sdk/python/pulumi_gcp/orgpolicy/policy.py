@@ -212,8 +212,12 @@ class Policy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic", org_id="123456789")
+        basic = gcp.organizations.Project("basic",
+            project_id="id",
+            name="id",
+            org_id="123456789")
         primary = gcp.orgpolicy.Policy("primary",
+            name=basic.name.apply(lambda name: f"projects/{name}/policies/iam.disableServiceAccountKeyUpload"),
             parent=basic.name.apply(lambda name: f"projects/{name}"),
             spec=gcp.orgpolicy.PolicySpecArgs(
                 rules=[gcp.orgpolicy.PolicySpecRuleArgs(
@@ -231,6 +235,7 @@ class Policy(pulumi.CustomResource):
             parent="organizations/123456789",
             display_name="folder")
         primary = gcp.orgpolicy.Policy("primary",
+            name=basic.name.apply(lambda name: f"{name}/policies/gcp.resourceLocations"),
             parent=basic.name,
             spec=gcp.orgpolicy.PolicySpecArgs(
                 inherit_from_parent=True,
@@ -246,6 +251,7 @@ class Policy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.orgpolicy.Policy("primary",
+            name="organizations/123456789/policies/gcp.detailedAuditLoggingMode",
             parent="organizations/123456789",
             spec=gcp.orgpolicy.PolicySpecArgs(
                 reset=True,
@@ -257,8 +263,12 @@ class Policy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic", org_id="123456789")
+        basic = gcp.organizations.Project("basic",
+            project_id="id",
+            name="id",
+            org_id="123456789")
         primary = gcp.orgpolicy.Policy("primary",
+            name=basic.name.apply(lambda name: f"projects/{name}/policies/gcp.resourceLocations"),
             parent=basic.name.apply(lambda name: f"projects/{name}"),
             spec=gcp.orgpolicy.PolicySpecArgs(
                 rules=[
@@ -278,34 +288,6 @@ class Policy(pulumi.CustomResource):
                         allow_all="TRUE",
                     ),
                 ],
-            ))
-        ```
-        ### Dry_run_spec
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        constraint = gcp.orgpolicy.CustomConstraint("constraint",
-            action_type="ALLOW",
-            condition="resource.management.autoUpgrade == false",
-            description="Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
-            display_name="Disable GKE auto upgrade",
-            method_types=["CREATE"],
-            parent="organizations/123456789",
-            resource_types=["container.googleapis.com/NodePool"])
-        primary = gcp.orgpolicy.Policy("primary",
-            dry_run_spec=gcp.orgpolicy.PolicyDryRunSpecArgs(
-                inherit_from_parent=False,
-                reset=False,
-                rules=[gcp.orgpolicy.PolicyDryRunSpecRuleArgs(
-                    enforce="FALSE",
-                )],
-            ),
-            parent="organizations/123456789",
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
-                    enforce="FALSE",
-                )],
             ))
         ```
 
@@ -350,8 +332,12 @@ class Policy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic", org_id="123456789")
+        basic = gcp.organizations.Project("basic",
+            project_id="id",
+            name="id",
+            org_id="123456789")
         primary = gcp.orgpolicy.Policy("primary",
+            name=basic.name.apply(lambda name: f"projects/{name}/policies/iam.disableServiceAccountKeyUpload"),
             parent=basic.name.apply(lambda name: f"projects/{name}"),
             spec=gcp.orgpolicy.PolicySpecArgs(
                 rules=[gcp.orgpolicy.PolicySpecRuleArgs(
@@ -369,6 +355,7 @@ class Policy(pulumi.CustomResource):
             parent="organizations/123456789",
             display_name="folder")
         primary = gcp.orgpolicy.Policy("primary",
+            name=basic.name.apply(lambda name: f"{name}/policies/gcp.resourceLocations"),
             parent=basic.name,
             spec=gcp.orgpolicy.PolicySpecArgs(
                 inherit_from_parent=True,
@@ -384,6 +371,7 @@ class Policy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.orgpolicy.Policy("primary",
+            name="organizations/123456789/policies/gcp.detailedAuditLoggingMode",
             parent="organizations/123456789",
             spec=gcp.orgpolicy.PolicySpecArgs(
                 reset=True,
@@ -395,8 +383,12 @@ class Policy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic", org_id="123456789")
+        basic = gcp.organizations.Project("basic",
+            project_id="id",
+            name="id",
+            org_id="123456789")
         primary = gcp.orgpolicy.Policy("primary",
+            name=basic.name.apply(lambda name: f"projects/{name}/policies/gcp.resourceLocations"),
             parent=basic.name.apply(lambda name: f"projects/{name}"),
             spec=gcp.orgpolicy.PolicySpecArgs(
                 rules=[
@@ -416,34 +408,6 @@ class Policy(pulumi.CustomResource):
                         allow_all="TRUE",
                     ),
                 ],
-            ))
-        ```
-        ### Dry_run_spec
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        constraint = gcp.orgpolicy.CustomConstraint("constraint",
-            action_type="ALLOW",
-            condition="resource.management.autoUpgrade == false",
-            description="Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
-            display_name="Disable GKE auto upgrade",
-            method_types=["CREATE"],
-            parent="organizations/123456789",
-            resource_types=["container.googleapis.com/NodePool"])
-        primary = gcp.orgpolicy.Policy("primary",
-            dry_run_spec=gcp.orgpolicy.PolicyDryRunSpecArgs(
-                inherit_from_parent=False,
-                reset=False,
-                rules=[gcp.orgpolicy.PolicyDryRunSpecRuleArgs(
-                    enforce="FALSE",
-                )],
-            ),
-            parent="organizations/123456789",
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
-                    enforce="FALSE",
-                )],
             ))
         ```
 

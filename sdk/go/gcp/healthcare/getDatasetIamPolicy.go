@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := healthcare.LookupDatasetIamPolicy(ctx, &healthcare.LookupDatasetIamPolicyArgs{
-//				DatasetId: google_healthcare_dataset.Dataset.Id,
+//				DatasetId: dataset.Id,
 //			}, nil)
 //			if err != nil {
 //				return err

@@ -34,9 +34,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.gkehub.MembershipIamPolicy("policy", {
- *     project: google_gke_hub_membership.membership.project,
- *     location: google_gke_hub_membership.membership.location,
- *     membershipId: google_gke_hub_membership.membership.membership_id,
+ *     project: membership.project,
+ *     location: membership.location,
+ *     membershipId: membership.membershipId,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -48,9 +48,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.gkehub.MembershipIamBinding("binding", {
- *     project: google_gke_hub_membership.membership.project,
- *     location: google_gke_hub_membership.membership.location,
- *     membershipId: google_gke_hub_membership.membership.membership_id,
+ *     project: membership.project,
+ *     location: membership.location,
+ *     membershipId: membership.membershipId,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
  * });
@@ -63,9 +63,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.gkehub.MembershipIamMember("member", {
- *     project: google_gke_hub_membership.membership.project,
- *     location: google_gke_hub_membership.membership.location,
- *     membershipId: google_gke_hub_membership.membership.membership_id,
+ *     project: membership.project,
+ *     location: membership.location,
+ *     membershipId: membership.membershipId,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
  * });

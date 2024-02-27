@@ -45,11 +45,14 @@ import (
 //			// If this network hasn't been created and you are using this example in your
 //			// config, add an additional network resource or change
 //			// this from "data"to "resource"
-//			memcacheNetwork, err := compute.NewNetwork(ctx, "memcacheNetwork", nil)
+//			memcacheNetwork, err := compute.NewNetwork(ctx, "memcache_network", &compute.NetworkArgs{
+//				Name: pulumi.String("test-network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			serviceRange, err := compute.NewGlobalAddress(ctx, "serviceRange", &compute.GlobalAddressArgs{
+//			serviceRange, err := compute.NewGlobalAddress(ctx, "service_range", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("address"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
@@ -58,7 +61,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			privateServiceConnection, err := servicenetworking.NewConnection(ctx, "privateServiceConnection", &servicenetworking.ConnectionArgs{
+//			privateServiceConnection, err := servicenetworking.NewConnection(ctx, "private_service_connection", &servicenetworking.ConnectionArgs{
 //				Network: memcacheNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
@@ -69,6 +72,7 @@ import (
 //				return err
 //			}
 //			_, err = memcache.NewInstance(ctx, "instance", &memcache.InstanceArgs{
+//				Name:              pulumi.String("test-instance"),
 //				AuthorizedNetwork: privateServiceConnection.Network,
 //				Labels: pulumi.StringMap{
 //					"env": pulumi.String("test"),

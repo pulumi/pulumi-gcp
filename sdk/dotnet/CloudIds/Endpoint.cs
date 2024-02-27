@@ -27,17 +27,21 @@ namespace Pulumi.Gcp.CloudIds
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Gcp.Compute.Network("default");
-    /// 
-    ///     var serviceRange = new Gcp.Compute.GlobalAddress("serviceRange", new()
+    ///     var @default = new Gcp.Compute.Network("default", new()
     ///     {
+    ///         Name = "tf-test-my-network",
+    ///     });
+    /// 
+    ///     var serviceRange = new Gcp.Compute.GlobalAddress("service_range", new()
+    ///     {
+    ///         Name = "address",
     ///         Purpose = "VPC_PEERING",
     ///         AddressType = "INTERNAL",
     ///         PrefixLength = 16,
     ///         Network = @default.Id,
     ///     });
     /// 
-    ///     var privateServiceConnection = new Gcp.ServiceNetworking.Connection("privateServiceConnection", new()
+    ///     var privateServiceConnection = new Gcp.ServiceNetworking.Connection("private_service_connection", new()
     ///     {
     ///         Network = @default.Id,
     ///         Service = "servicenetworking.googleapis.com",
@@ -49,15 +53,10 @@ namespace Pulumi.Gcp.CloudIds
     /// 
     ///     var example_endpoint = new Gcp.CloudIds.Endpoint("example-endpoint", new()
     ///     {
+    ///         Name = "test",
     ///         Location = "us-central1-f",
     ///         Network = @default.Id,
     ///         Severity = "INFORMATIONAL",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             privateServiceConnection,
-    ///         },
     ///     });
     /// 
     /// });

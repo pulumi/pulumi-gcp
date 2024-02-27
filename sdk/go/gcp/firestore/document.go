@@ -33,6 +33,156 @@ import (
 // is allowed for the database parameter.
 //
 // ## Example Usage
+// ### Firestore Document Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/firestore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("project-id"),
+//				Name:      pulumi.String("project-id"),
+//				OrgId:     pulumi.String("123456789"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
+//				CreateDuration: "60s",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewService(ctx, "firestore", &projects.ServiceArgs{
+//				Project: project.ProjectId,
+//				Service: pulumi.String("firestore.googleapis.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			database, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
+//				Project:    project.ProjectId,
+//				Name:       pulumi.String("(default)"),
+//				LocationId: pulumi.String("nam5"),
+//				Type:       pulumi.String("FIRESTORE_NATIVE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firestore.NewDocument(ctx, "mydoc", &firestore.DocumentArgs{
+//				Project:    project.ProjectId,
+//				Database:   database.Name,
+//				Collection: pulumi.String("somenewcollection"),
+//				DocumentId: pulumi.String("my-doc-id"),
+//				Fields:     pulumi.String("{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Firestore Document Nested Document
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/firestore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("project-id"),
+//				Name:      pulumi.String("project-id"),
+//				OrgId:     pulumi.String("123456789"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
+//				CreateDuration: "60s",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewService(ctx, "firestore", &projects.ServiceArgs{
+//				Project: project.ProjectId,
+//				Service: pulumi.String("firestore.googleapis.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			database, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
+//				Project:    project.ProjectId,
+//				Name:       pulumi.String("(default)"),
+//				LocationId: pulumi.String("nam5"),
+//				Type:       pulumi.String("FIRESTORE_NATIVE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			mydoc, err := firestore.NewDocument(ctx, "mydoc", &firestore.DocumentArgs{
+//				Project:    project.ProjectId,
+//				Database:   database.Name,
+//				Collection: pulumi.String("somenewcollection"),
+//				DocumentId: pulumi.String("my-doc-id"),
+//				Fields:     pulumi.String("{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subDocument, err := firestore.NewDocument(ctx, "sub_document", &firestore.DocumentArgs{
+//				Project:  project.ProjectId,
+//				Database: database.Name,
+//				Collection: mydoc.Path.ApplyT(func(path string) (string, error) {
+//					return fmt.Sprintf("%v/subdocs", path), nil
+//				}).(pulumi.StringOutput),
+//				DocumentId: pulumi.String("bitcoinkey"),
+//				Fields:     pulumi.String("{\"something\":{\"mapValue\":{\"fields\":{\"ayo\":{\"stringValue\":\"val2\"}}}}}"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firestore.NewDocument(ctx, "sub_sub_document", &firestore.DocumentArgs{
+//				Project:  project.ProjectId,
+//				Database: database.Name,
+//				Collection: subDocument.Path.ApplyT(func(path string) (string, error) {
+//					return fmt.Sprintf("%v/subsubdocs", path), nil
+//				}).(pulumi.StringOutput),
+//				DocumentId: pulumi.String("asecret"),
+//				Fields:     pulumi.String("{\"something\":{\"mapValue\":{\"fields\":{\"secret\":{\"stringValue\":\"hithere\"}}}}}"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

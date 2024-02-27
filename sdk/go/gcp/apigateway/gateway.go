@@ -28,49 +28,45 @@ import (
 //
 // import (
 //
-//	"encoding/base64"
-//	"os"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/apigateway"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
-//	func filebase64OrPanic(path string) string {
-//		if fileData, err := os.ReadFile(path); err == nil {
-//			return base64.StdEncoding.EncodeToString(fileData[:])
-//		} else {
-//			panic(err.Error())
-//		}
-//	}
-//
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			apiGwApi, err := apigateway.NewApi(ctx, "apiGwApi", &apigateway.ApiArgs{
+//			apiGw, err := apigateway.NewApi(ctx, "api_gw", &apigateway.ApiArgs{
 //				ApiId: pulumi.String("my-api"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			apiGwApiConfig, err := apigateway.NewApiConfig(ctx, "apiGwApiConfig", &apigateway.ApiConfigArgs{
-//				Api:         apiGwApi.ApiId,
+//			invokeFilebase64, err := std.Filebase64(ctx, &std.Filebase64Args{
+//				Input: "test-fixtures/openapi.yaml",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			apiGwApiConfig, err := apigateway.NewApiConfig(ctx, "api_gw", &apigateway.ApiConfigArgs{
+//				Api:         apiGw.ApiId,
 //				ApiConfigId: pulumi.String("my-config"),
 //				OpenapiDocuments: apigateway.ApiConfigOpenapiDocumentArray{
 //					&apigateway.ApiConfigOpenapiDocumentArgs{
 //						Document: &apigateway.ApiConfigOpenapiDocumentDocumentArgs{
 //							Path:     pulumi.String("spec.yaml"),
-//							Contents: filebase64OrPanic("test-fixtures/openapi.yaml"),
+//							Contents: invokeFilebase64.Result,
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = apigateway.NewGateway(ctx, "apiGwGateway", &apigateway.GatewayArgs{
+//			_, err = apigateway.NewGateway(ctx, "api_gw", &apigateway.GatewayArgs{
 //				ApiConfig: apiGwApiConfig.ID(),
 //				GatewayId: pulumi.String("my-gateway"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

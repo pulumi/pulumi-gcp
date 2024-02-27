@@ -55,16 +55,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var primary = new Workload(&#34;primary&#34;, WorkloadArgs.builder()        
- *             .billingAccount(&#34;billingAccounts/000000-0000000-0000000-000000&#34;)
  *             .complianceRegime(&#34;FEDRAMP_MODERATE&#34;)
  *             .displayName(&#34;{{display}}&#34;)
+ *             .location(&#34;us-west1&#34;)
+ *             .organization(&#34;123456789&#34;)
+ *             .billingAccount(&#34;billingAccounts/000000-0000000-0000000-000000&#34;)
  *             .kmsSettings(WorkloadKmsSettingsArgs.builder()
  *                 .nextRotationTime(&#34;9999-10-02T15:01:23Z&#34;)
  *                 .rotationPeriod(&#34;10368000s&#34;)
  *                 .build())
- *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
- *             .location(&#34;us-west1&#34;)
- *             .organization(&#34;123456789&#34;)
  *             .provisionedResourcesParent(&#34;folders/519620126891&#34;)
  *             .resourceSettings(            
  *                 WorkloadResourceSettingArgs.builder()
@@ -79,6 +78,7 @@ import javax.annotation.Nullable;
  *                     .resourceType(&#34;KEYRING&#34;)
  *                     .build())
  *             .violationNotificationsEnabled(true)
+ *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
  *             .build());
  * 
  *     }
@@ -96,7 +96,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.assuredworkloads.WorkloadArgs;
  * import com.pulumi.gcp.assuredworkloads.inputs.WorkloadKmsSettingsArgs;
  * import com.pulumi.gcp.assuredworkloads.inputs.WorkloadResourceSettingArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -133,9 +132,7 @@ import javax.annotation.Nullable;
  *                     .resourceType(&#34;KEYRING&#34;)
  *                     .build())
  *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

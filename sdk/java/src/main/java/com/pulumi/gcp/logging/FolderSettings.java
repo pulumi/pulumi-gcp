@@ -33,13 +33,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.Folder;
  * import com.pulumi.gcp.organizations.FolderArgs;
+ * import com.pulumi.gcp.logging.FolderSettings;
+ * import com.pulumi.gcp.logging.FolderSettingsArgs;
  * import com.pulumi.gcp.logging.LoggingFunctions;
  * import com.pulumi.gcp.logging.inputs.GetFolderSettingsArgs;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
- * import com.pulumi.gcp.logging.FolderSettings;
- * import com.pulumi.gcp.logging.FolderSettingsArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -58,6 +57,13 @@ import javax.annotation.Nullable;
  *             .parent(&#34;organizations/123456789&#34;)
  *             .build());
  * 
+ *         var example = new FolderSettings(&#34;example&#34;, FolderSettingsArgs.builder()        
+ *             .disableDefaultSink(true)
+ *             .folder(myFolder.folderId())
+ *             .kmsKeyName(&#34;kms-key&#34;)
+ *             .storageLocation(&#34;us-central1&#34;)
+ *             .build());
+ * 
  *         final var settings = LoggingFunctions.getFolderSettings(GetFolderSettingsArgs.builder()
  *             .folder(myFolder.folderId())
  *             .build());
@@ -67,15 +73,6 @@ import javax.annotation.Nullable;
  *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
  *             .member(settings.applyValue(getFolderSettingsResult -&gt; getFolderSettingsResult).applyValue(settings -&gt; String.format(&#34;serviceAccount:%s&#34;, settings.applyValue(getFolderSettingsResult -&gt; getFolderSettingsResult.kmsServiceAccountId()))))
  *             .build());
- * 
- *         var example = new FolderSettings(&#34;example&#34;, FolderSettingsArgs.builder()        
- *             .disableDefaultSink(true)
- *             .folder(myFolder.folderId())
- *             .kmsKeyName(&#34;kms-key&#34;)
- *             .storageLocation(&#34;us-central1&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(iam)
- *                 .build());
  * 
  *     }
  * }

@@ -23,17 +23,17 @@ namespace Pulumi.Gcp.EssentialContacts
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var processorDocumentAiProcessor = new Gcp.EssentialContacts.DocumentAiProcessor("processorDocumentAiProcessor", new()
+    ///     var processor = new Gcp.EssentialContacts.DocumentAiProcessor("processor", new()
     ///     {
     ///         Location = "us",
     ///         DisplayName = "test-processor",
     ///         Type = "OCR_PROCESSOR",
     ///     });
     /// 
-    ///     var processorDocumentAiProcessorDefaultVersion = new Gcp.EssentialContacts.DocumentAiProcessorDefaultVersion("processorDocumentAiProcessorDefaultVersion", new()
+    ///     var processorDocumentAiProcessorDefaultVersion = new Gcp.EssentialContacts.DocumentAiProcessorDefaultVersion("processor", new()
     ///     {
-    ///         Processor = processorDocumentAiProcessor.Id,
-    ///         Version = processorDocumentAiProcessor.Id.Apply(id =&gt; $"{id}/processorVersions/stable"),
+    ///         Processor = processor.Id,
+    ///         Version = processor.Id.Apply(id =&gt; $"{id}/processorVersions/stable"),
     ///     });
     /// 
     /// });

@@ -53,6 +53,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var log_bucket = new Bucket(&#34;log-bucket&#34;, BucketArgs.builder()        
+ *             .name(&#34;folder-logging-bucket&#34;)
  *             .location(&#34;US&#34;)
  *             .build());
  * 
@@ -62,6 +63,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var my_sink = new FolderSink(&#34;my-sink&#34;, FolderSinkArgs.builder()        
+ *             .name(&#34;my-sink&#34;)
  *             .description(&#34;some explanation on what this is&#34;)
  *             .folder(my_folder.name())
  *             .destination(log_bucket.name().applyValue(name -&gt; String.format(&#34;storage.googleapis.com/%s&#34;, name)))

@@ -25,18 +25,17 @@ import * as utilities from "../utilities";
  * const default = gcp.storage.getTransferProjectServiceAccount({
  *     project: "my-project-name",
  * });
- * const pubsubEditorRole = new gcp.projects.IAMMember("pubsubEditorRole", {
+ * const pubsubEditorRole = new gcp.projects.IAMMember("pubsub_editor_role", {
  *     project: "my-project-name",
  *     role: "roles/pubsub.editor",
  *     member: _default.then(_default => `serviceAccount:${_default.email}`),
  * });
  * const example = new gcp.storage.TransferAgentPool("example", {
+ *     name: "agent-pool-example",
  *     displayName: "Source A to destination Z",
  *     bandwidthLimit: {
  *         limitMbps: "120",
  *     },
- * }, {
- *     dependsOn: [pubsubEditorRole],
  * });
  * ```
  *

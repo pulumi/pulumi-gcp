@@ -197,6 +197,55 @@ class BackendServiceSignedUrlKey(pulumi.CustomResource):
             * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
 
         ## Example Usage
+        ### Backend Service Signed Url Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        url_signature = random.RandomId("url_signature", byte_length=16)
+        webserver = gcp.compute.InstanceTemplate("webserver",
+            name="standard-webserver",
+            machine_type="e2-medium",
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network="default",
+            )],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-11",
+                auto_delete=True,
+                boot=True,
+            )])
+        webservers = gcp.compute.InstanceGroupManager("webservers",
+            name="my-webservers",
+            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
+                instance_template=webserver.id,
+                name="primary",
+            )],
+            base_instance_name="webserver",
+            zone="us-central1-f",
+            target_size=1)
+        default = gcp.compute.HttpHealthCheck("default",
+            name="test",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        example_backend = gcp.compute.BackendService("example_backend",
+            name="my-backend-service",
+            description="Our company website",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            enable_cdn=True,
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=webservers.instance_group,
+            )],
+            health_checks=default.id)
+        backend_key = gcp.compute.BackendServiceSignedUrlKey("backend_key",
+            name="test-key",
+            key_value=url_signature.b64_url,
+            backend_service=example_backend.name)
+        ```
 
         ## Import
 
@@ -231,6 +280,55 @@ class BackendServiceSignedUrlKey(pulumi.CustomResource):
             * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
 
         ## Example Usage
+        ### Backend Service Signed Url Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        url_signature = random.RandomId("url_signature", byte_length=16)
+        webserver = gcp.compute.InstanceTemplate("webserver",
+            name="standard-webserver",
+            machine_type="e2-medium",
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network="default",
+            )],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-11",
+                auto_delete=True,
+                boot=True,
+            )])
+        webservers = gcp.compute.InstanceGroupManager("webservers",
+            name="my-webservers",
+            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
+                instance_template=webserver.id,
+                name="primary",
+            )],
+            base_instance_name="webserver",
+            zone="us-central1-f",
+            target_size=1)
+        default = gcp.compute.HttpHealthCheck("default",
+            name="test",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        example_backend = gcp.compute.BackendService("example_backend",
+            name="my-backend-service",
+            description="Our company website",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            enable_cdn=True,
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=webservers.instance_group,
+            )],
+            health_checks=default.id)
+        backend_key = gcp.compute.BackendServiceSignedUrlKey("backend_key",
+            name="test-key",
+            key_value=url_signature.b64_url,
+            backend_service=example_backend.name)
+        ```
 
         ## Import
 

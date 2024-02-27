@@ -55,6 +55,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.Route;
  * import com.pulumi.gcp.compute.RouteArgs;
  * import java.util.List;
@@ -70,9 +71,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;);
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;compute-network&#34;)
+ *             .build());
  * 
- *         var defaultRoute = new Route(&#34;defaultRoute&#34;, RouteArgs.builder()        
+ *         var default_ = new Route(&#34;default&#34;, RouteArgs.builder()        
+ *             .name(&#34;network-route&#34;)
  *             .destRange(&#34;15.0.0.0/24&#34;)
  *             .network(defaultNetwork.name())
  *             .nextHopIp(&#34;10.132.1.5&#34;)
@@ -83,7 +87,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Route Ilb
- * 
  * ```java
  * package generated_program;
  * 
@@ -116,17 +119,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+ *             .name(&#34;compute-network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;compute-subnet&#34;)
  *             .ipCidrRange(&#34;10.0.1.0/24&#34;)
  *             .region(&#34;us-central1&#34;)
- *             .network(defaultNetwork.id())
+ *             .network(default_.id())
  *             .build());
  * 
  *         var hc = new HealthCheck(&#34;hc&#34;, HealthCheckArgs.builder()        
+ *             .name(&#34;proxy-health-check&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
@@ -135,22 +141,25 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var backend = new RegionBackendService(&#34;backend&#34;, RegionBackendServiceArgs.builder()        
+ *             .name(&#34;compute-backend&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .healthChecks(hc.id())
  *             .build());
  * 
  *         var defaultForwardingRule = new ForwardingRule(&#34;defaultForwardingRule&#34;, ForwardingRuleArgs.builder()        
+ *             .name(&#34;compute-forwarding-rule&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .loadBalancingScheme(&#34;INTERNAL&#34;)
  *             .backendService(backend.id())
  *             .allPorts(true)
- *             .network(defaultNetwork.name())
+ *             .network(default_.name())
  *             .subnetwork(defaultSubnetwork.name())
  *             .build());
  * 
  *         var route_ilb = new Route(&#34;route-ilb&#34;, RouteArgs.builder()        
+ *             .name(&#34;route-ilb&#34;)
  *             .destRange(&#34;0.0.0.0/0&#34;)
- *             .network(defaultNetwork.name())
+ *             .network(default_.name())
  *             .nextHopIlb(defaultForwardingRule.id())
  *             .priority(2000)
  *             .build());
@@ -159,7 +168,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Route Ilb Vip
- * 
  * ```java
  * package generated_program;
  * 
@@ -181,7 +189,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.ForwardingRuleArgs;
  * import com.pulumi.gcp.compute.Route;
  * import com.pulumi.gcp.compute.RouteArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -195,90 +202,77 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var producerNetwork = new Network(&#34;producerNetwork&#34;, NetworkArgs.builder()        
+ *         var producer = new Network(&#34;producer&#34;, NetworkArgs.builder()        
+ *             .name(&#34;producer-vpc&#34;)
  *             .autoCreateSubnetworks(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var producerSubnetwork = new Subnetwork(&#34;producerSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;producer-subnet&#34;)
  *             .ipCidrRange(&#34;10.0.1.0/24&#34;)
  *             .region(&#34;us-central1&#34;)
- *             .network(producerNetwork.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .network(producer.id())
+ *             .build());
  * 
- *         var consumerNetwork = new Network(&#34;consumerNetwork&#34;, NetworkArgs.builder()        
+ *         var consumer = new Network(&#34;consumer&#34;, NetworkArgs.builder()        
+ *             .name(&#34;consumer-vpc&#34;)
  *             .autoCreateSubnetworks(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var consumerSubnetwork = new Subnetwork(&#34;consumerSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;consumer-subnet&#34;)
  *             .ipCidrRange(&#34;10.0.2.0/24&#34;)
  *             .region(&#34;us-central1&#34;)
- *             .network(consumerNetwork.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .network(consumer.id())
+ *             .build());
  * 
  *         var peering1 = new NetworkPeering(&#34;peering1&#34;, NetworkPeeringArgs.builder()        
- *             .network(consumerNetwork.id())
- *             .peerNetwork(producerNetwork.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .name(&#34;peering-producer-to-consumer&#34;)
+ *             .network(consumer.id())
+ *             .peerNetwork(producer.id())
+ *             .build());
  * 
  *         var peering2 = new NetworkPeering(&#34;peering2&#34;, NetworkPeeringArgs.builder()        
- *             .network(producerNetwork.id())
- *             .peerNetwork(consumerNetwork.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .name(&#34;peering-consumer-to-producer&#34;)
+ *             .network(producer.id())
+ *             .peerNetwork(consumer.id())
+ *             .build());
  * 
  *         var hc = new HealthCheck(&#34;hc&#34;, HealthCheckArgs.builder()        
+ *             .name(&#34;proxy-health-check&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
  *                 .port(&#34;80&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var backend = new RegionBackendService(&#34;backend&#34;, RegionBackendServiceArgs.builder()        
+ *             .name(&#34;compute-backend&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .healthChecks(hc.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var default_ = new ForwardingRule(&#34;default&#34;, ForwardingRuleArgs.builder()        
+ *             .name(&#34;compute-forwarding-rule&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .loadBalancingScheme(&#34;INTERNAL&#34;)
  *             .backendService(backend.id())
  *             .allPorts(true)
- *             .network(producerNetwork.name())
+ *             .network(producer.name())
  *             .subnetwork(producerSubnetwork.name())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var route_ilb = new Route(&#34;route-ilb&#34;, RouteArgs.builder()        
+ *             .name(&#34;route-ilb&#34;)
  *             .destRange(&#34;0.0.0.0/0&#34;)
- *             .network(consumerNetwork.name())
+ *             .network(consumer.name())
  *             .nextHopIlb(default_.ipAddress())
  *             .priority(2000)
  *             .tags(            
  *                 &#34;tag1&#34;,
  *                 &#34;tag2&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .dependsOn(                
- *                     peering1,
- *                     peering2)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

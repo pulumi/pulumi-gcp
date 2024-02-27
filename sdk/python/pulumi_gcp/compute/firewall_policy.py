@@ -272,9 +272,9 @@ class FirewallPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.FirewallPolicy("default",
-            description="Example Resource",
             parent="organizations/12345",
-            short_name="my-policy")
+            short_name="my-policy",
+            description="Example Resource")
         ```
 
         ## Import
@@ -319,9 +319,9 @@ class FirewallPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.FirewallPolicy("default",
-            description="Example Resource",
             parent="organizations/12345",
-            short_name="my-policy")
+            short_name="my-policy",
+            description="Example Resource")
         ```
 
         ## Import

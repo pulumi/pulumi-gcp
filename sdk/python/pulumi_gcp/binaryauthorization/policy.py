@@ -320,14 +320,18 @@ class Policy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
-                human_readable_name="My attestor",
-            ),
-        ))
-        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
-            note_reference=note.name,
-        ))
+        note = gcp.containeranalysis.Note("note",
+            name="test-attestor-note",
+            attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
+                hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+                    human_readable_name="My attestor",
+                ),
+            ))
+        attestor = gcp.binaryauthorization.Attestor("attestor",
+            name="test-attestor",
+            attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
+                note_reference=note.name,
+            ))
         policy = gcp.binaryauthorization.Policy("policy",
             admission_whitelist_patterns=[gcp.binaryauthorization.PolicyAdmissionWhitelistPatternArgs(
                 name_pattern="gcr.io/google_containers/*",
@@ -349,14 +353,18 @@ class Policy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
-                human_readable_name="My attestor",
-            ),
-        ))
-        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
-            note_reference=note.name,
-        ))
+        note = gcp.containeranalysis.Note("note",
+            name="test-attestor-note",
+            attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
+                hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+                    human_readable_name="My attestor",
+                ),
+            ))
+        attestor = gcp.binaryauthorization.Attestor("attestor",
+            name="test-attestor",
+            attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
+                note_reference=note.name,
+            ))
         policy = gcp.binaryauthorization.Policy("policy",
             default_admission_rule=gcp.binaryauthorization.PolicyDefaultAdmissionRuleArgs(
                 evaluation_mode="REQUIRE_ATTESTATION",
@@ -433,14 +441,18 @@ class Policy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
-                human_readable_name="My attestor",
-            ),
-        ))
-        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
-            note_reference=note.name,
-        ))
+        note = gcp.containeranalysis.Note("note",
+            name="test-attestor-note",
+            attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
+                hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+                    human_readable_name="My attestor",
+                ),
+            ))
+        attestor = gcp.binaryauthorization.Attestor("attestor",
+            name="test-attestor",
+            attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
+                note_reference=note.name,
+            ))
         policy = gcp.binaryauthorization.Policy("policy",
             admission_whitelist_patterns=[gcp.binaryauthorization.PolicyAdmissionWhitelistPatternArgs(
                 name_pattern="gcr.io/google_containers/*",
@@ -462,14 +474,18 @@ class Policy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
-                human_readable_name="My attestor",
-            ),
-        ))
-        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
-            note_reference=note.name,
-        ))
+        note = gcp.containeranalysis.Note("note",
+            name="test-attestor-note",
+            attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
+                hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+                    human_readable_name="My attestor",
+                ),
+            ))
+        attestor = gcp.binaryauthorization.Attestor("attestor",
+            name="test-attestor",
+            attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
+                note_reference=note.name,
+            ))
         policy = gcp.binaryauthorization.Policy("policy",
             default_admission_rule=gcp.binaryauthorization.PolicyDefaultAdmissionRuleArgs(
                 evaluation_mode="REQUIRE_ATTESTATION",

@@ -45,8 +45,8 @@ public final class Cloudfunctionsv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-function = Cloudfunctionsv2Functions.getFunction(GetFunctionArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;function&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }
@@ -85,8 +85,8 @@ public final class Cloudfunctionsv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-function = Cloudfunctionsv2Functions.getFunction(GetFunctionArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;function&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }
@@ -125,8 +125,8 @@ public final class Cloudfunctionsv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-function = Cloudfunctionsv2Functions.getFunction(GetFunctionArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;function&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }
@@ -165,8 +165,8 @@ public final class Cloudfunctionsv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-function = Cloudfunctionsv2Functions.getFunction(GetFunctionArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;function&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }
@@ -203,9 +203,9 @@ public final class Cloudfunctionsv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = Cloudfunctionsv2Functions.getFunctionIamPolicy(GetFunctionIamPolicyArgs.builder()
-     *             .project(google_cloudfunctions2_function.function().project())
-     *             .location(google_cloudfunctions2_function.function().location())
-     *             .cloudFunction(google_cloudfunctions2_function.function().name())
+     *             .project(function.project())
+     *             .location(function.location())
+     *             .cloudFunction(function.name())
      *             .build());
      * 
      *     }
@@ -242,9 +242,9 @@ public final class Cloudfunctionsv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = Cloudfunctionsv2Functions.getFunctionIamPolicy(GetFunctionIamPolicyArgs.builder()
-     *             .project(google_cloudfunctions2_function.function().project())
-     *             .location(google_cloudfunctions2_function.function().location())
-     *             .cloudFunction(google_cloudfunctions2_function.function().name())
+     *             .project(function.project())
+     *             .location(function.location())
+     *             .cloudFunction(function.name())
      *             .build());
      * 
      *     }
@@ -281,9 +281,9 @@ public final class Cloudfunctionsv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = Cloudfunctionsv2Functions.getFunctionIamPolicy(GetFunctionIamPolicyArgs.builder()
-     *             .project(google_cloudfunctions2_function.function().project())
-     *             .location(google_cloudfunctions2_function.function().location())
-     *             .cloudFunction(google_cloudfunctions2_function.function().name())
+     *             .project(function.project())
+     *             .location(function.location())
+     *             .cloudFunction(function.name())
      *             .build());
      * 
      *     }
@@ -320,9 +320,9 @@ public final class Cloudfunctionsv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = Cloudfunctionsv2Functions.getFunctionIamPolicy(GetFunctionIamPolicyArgs.builder()
-     *             .project(google_cloudfunctions2_function.function().project())
-     *             .location(google_cloudfunctions2_function.function().location())
-     *             .cloudFunction(google_cloudfunctions2_function.function().name())
+     *             .project(function.project())
+     *             .location(function.location())
+     *             .cloudFunction(function.name())
      *             .build());
      * 
      *     }

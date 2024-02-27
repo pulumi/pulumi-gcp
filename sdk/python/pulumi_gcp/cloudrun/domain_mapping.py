@@ -244,7 +244,8 @@ class DomainMapping(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_service = gcp.cloudrun.Service("defaultService",
+        default = gcp.cloudrun.Service("default",
+            name="cloudrun-srv",
             location="us-central1",
             metadata=gcp.cloudrun.ServiceMetadataArgs(
                 namespace="my-project-name",
@@ -256,13 +257,14 @@ class DomainMapping(pulumi.CustomResource):
                     )],
                 ),
             ))
-        default_domain_mapping = gcp.cloudrun.DomainMapping("defaultDomainMapping",
+        default_domain_mapping = gcp.cloudrun.DomainMapping("default",
             location="us-central1",
+            name="verified-domain.com",
             metadata=gcp.cloudrun.DomainMappingMetadataArgs(
                 namespace="my-project-name",
             ),
             spec=gcp.cloudrun.DomainMappingSpecArgs(
-                route_name=default_service.name,
+                route_name=default.name,
             ))
         ```
 
@@ -323,7 +325,8 @@ class DomainMapping(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_service = gcp.cloudrun.Service("defaultService",
+        default = gcp.cloudrun.Service("default",
+            name="cloudrun-srv",
             location="us-central1",
             metadata=gcp.cloudrun.ServiceMetadataArgs(
                 namespace="my-project-name",
@@ -335,13 +338,14 @@ class DomainMapping(pulumi.CustomResource):
                     )],
                 ),
             ))
-        default_domain_mapping = gcp.cloudrun.DomainMapping("defaultDomainMapping",
+        default_domain_mapping = gcp.cloudrun.DomainMapping("default",
             location="us-central1",
+            name="verified-domain.com",
             metadata=gcp.cloudrun.DomainMappingMetadataArgs(
                 namespace="my-project-name",
             ),
             spec=gcp.cloudrun.DomainMappingSpecArgs(
-                route_name=default_service.name,
+                route_name=default.name,
             ))
         ```
 

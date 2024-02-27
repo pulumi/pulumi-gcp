@@ -15,6 +15,63 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
  *
  * ## Example Usage
+ * ### Region Target Https Proxy Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const defaultRegionSslCertificate = new gcp.compute.RegionSslCertificate("default", {
+ *     region: "us-central1",
+ *     name: "my-certificate",
+ *     privateKey: std.file({
+ *         input: "path/to/private.key",
+ *     }).then(invoke => invoke.result),
+ *     certificate: std.file({
+ *         input: "path/to/certificate.crt",
+ *     }).then(invoke => invoke.result),
+ * });
+ * const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("default", {
+ *     region: "us-central1",
+ *     name: "http-health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const defaultRegionBackendService = new gcp.compute.RegionBackendService("default", {
+ *     region: "us-central1",
+ *     name: "backend-service",
+ *     protocol: "HTTP",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     timeoutSec: 10,
+ *     healthChecks: defaultRegionHealthCheck.id,
+ * });
+ * const defaultRegionUrlMap = new gcp.compute.RegionUrlMap("default", {
+ *     region: "us-central1",
+ *     name: "url-map",
+ *     description: "a description",
+ *     defaultService: defaultRegionBackendService.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: defaultRegionBackendService.id,
+ *         pathRules: [{
+ *             paths: ["/*"],
+ *             service: defaultRegionBackendService.id,
+ *         }],
+ *     }],
+ * });
+ * const _default = new gcp.compute.RegionTargetHttpsProxy("default", {
+ *     region: "us-central1",
+ *     name: "test-proxy",
+ *     urlMap: defaultRegionUrlMap.id,
+ *     sslCertificates: [defaultRegionSslCertificate.id],
+ * });
+ * ```
  *
  * ## Import
  *

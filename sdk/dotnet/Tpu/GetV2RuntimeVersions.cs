@@ -47,6 +47,7 @@ namespace Pulumi.Gcp.Tpu
         /// 
         ///     var tpu = new Gcp.Tpu.V2Vm("tpu", new()
         ///     {
+        ///         Name = "test-tpu",
         ///         Zone = "us-central1-b",
         ///         RuntimeVersion = available.Apply(getV2RuntimeVersionsResult =&gt; getV2RuntimeVersionsResult.Versions[0]),
         ///     });
@@ -95,6 +96,7 @@ namespace Pulumi.Gcp.Tpu
         /// 
         ///     var tpu = new Gcp.Tpu.V2Vm("tpu", new()
         ///     {
+        ///         Name = "test-tpu",
         ///         Zone = "us-central1-b",
         ///         RuntimeVersion = available.Apply(getV2RuntimeVersionsResult =&gt; getV2RuntimeVersionsResult.Versions[0]),
         ///     });

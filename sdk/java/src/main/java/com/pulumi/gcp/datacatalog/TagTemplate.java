@@ -54,26 +54,28 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basicTagTemplate = new TagTemplate(&#34;basicTagTemplate&#34;, TagTemplateArgs.builder()        
+ *             .tagTemplateId(&#34;my_template&#34;)
+ *             .region(&#34;us-central1&#34;)
  *             .displayName(&#34;Demo Tag Template&#34;)
  *             .fields(            
  *                 TagTemplateFieldArgs.builder()
- *                     .displayName(&#34;Source of data asset&#34;)
  *                     .fieldId(&#34;source&#34;)
- *                     .isRequired(true)
+ *                     .displayName(&#34;Source of data asset&#34;)
  *                     .type(TagTemplateFieldTypeArgs.builder()
  *                         .primitiveType(&#34;STRING&#34;)
  *                         .build())
+ *                     .isRequired(true)
  *                     .build(),
  *                 TagTemplateFieldArgs.builder()
- *                     .displayName(&#34;Number of rows in the data asset&#34;)
  *                     .fieldId(&#34;num_rows&#34;)
+ *                     .displayName(&#34;Number of rows in the data asset&#34;)
  *                     .type(TagTemplateFieldTypeArgs.builder()
  *                         .primitiveType(&#34;DOUBLE&#34;)
  *                         .build())
  *                     .build(),
  *                 TagTemplateFieldArgs.builder()
- *                     .displayName(&#34;PII type&#34;)
  *                     .fieldId(&#34;pii_type&#34;)
+ *                     .displayName(&#34;PII type&#34;)
  *                     .type(TagTemplateFieldTypeArgs.builder()
  *                         .enumType(TagTemplateFieldTypeEnumTypeArgs.builder()
  *                             .allowedValues(                            
@@ -90,8 +92,6 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *             .forceDelete(&#34;false&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .tagTemplateId(&#34;my_template&#34;)
  *             .build());
  * 
  *     }

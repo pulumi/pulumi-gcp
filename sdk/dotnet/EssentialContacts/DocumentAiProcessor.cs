@@ -31,8 +31,8 @@ namespace Pulumi.Gcp.EssentialContacts
     /// {
     ///     var processor = new Gcp.EssentialContacts.DocumentAiProcessor("processor", new()
     ///     {
-    ///         DisplayName = "test-processor",
     ///         Location = "us",
+    ///         DisplayName = "test-processor",
     ///         Type = "OCR_PROCESSOR",
     ///     });
     /// 

@@ -12,19 +12,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false}, {
- *     provider: google_beta,
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "workstation-cluster",
+ *     autoCreateSubnetworks: false,
  * });
- * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "workstation-cluster",
  *     ipCidrRange: "10.0.0.0/24",
  *     region: "us-central1",
- *     network: defaultNetwork.name,
- * }, {
- *     provider: google_beta,
+ *     network: _default.name,
  * });
- * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("defaultWorkstationCluster", {
+ * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("default", {
  *     workstationClusterId: "workstation-cluster",
- *     network: defaultNetwork.id,
+ *     network: _default.id,
  *     subnetwork: defaultSubnetwork.id,
  *     location: "us-central1",
  *     labels: {
@@ -33,10 +33,8 @@ import * as utilities from "../utilities";
  *     annotations: {
  *         "label-one": "value-one",
  *     },
- * }, {
- *     provider: google_beta,
  * });
- * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("defaultWorkstationConfig", {
+ * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {
  *     workstationConfigId: "workstation-config",
  *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
  *     location: "us-central1",
@@ -47,10 +45,8 @@ import * as utilities from "../utilities";
  *             disablePublicIpAddresses: true,
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
- * const defaultWorkstation = new gcp.workstations.Workstation("defaultWorkstation", {
+ * const defaultWorkstation = new gcp.workstations.Workstation("default", {
  *     workstationId: "work-station",
  *     workstationConfigId: defaultWorkstationConfig.workstationConfigId,
  *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
@@ -64,8 +60,6 @@ import * as utilities from "../utilities";
  *     annotations: {
  *         "label-one": "value-one",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

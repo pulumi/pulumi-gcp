@@ -19,26 +19,28 @@ import * as utilities from "../utilities";
  *     bucket: "install_binaries",
  *     path: "path/to/install_file.bin",
  * });
- * const vm = new gcp.compute.Instance("vm", {});
+ * const vm = new gcp.compute.Instance("vm", {name: "vm"});
  * ```
  * ## Full Example
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
  *
- * const getUrl = gcp.storage.getObjectSignedUrl({
+ * const getUrl = std.file({
+ *     input: "path/to/credentials.json",
+ * }).then(invoke => gcp.storage.getObjectSignedUrl({
  *     bucket: "fried_chicken",
  *     path: "path/to/file",
  *     contentMd5: "pRviqwS4c4OTJRTe03FD1w==",
  *     contentType: "text/plain",
  *     duration: "2d",
- *     credentials: fs.readFileSync("path/to/credentials.json", "utf8"),
+ *     credentials: invoke.result,
  *     extensionHeaders: {
  *         "x-goog-if-generation-match": "1",
  *     },
- * });
+ * }));
  * ```
  */
 export function getObjectSignedUrl(args: GetObjectSignedUrlArgs, opts?: pulumi.InvokeOptions): Promise<GetObjectSignedUrlResult> {
@@ -137,26 +139,28 @@ export interface GetObjectSignedUrlResult {
  *     bucket: "install_binaries",
  *     path: "path/to/install_file.bin",
  * });
- * const vm = new gcp.compute.Instance("vm", {});
+ * const vm = new gcp.compute.Instance("vm", {name: "vm"});
  * ```
  * ## Full Example
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
  *
- * const getUrl = gcp.storage.getObjectSignedUrl({
+ * const getUrl = std.file({
+ *     input: "path/to/credentials.json",
+ * }).then(invoke => gcp.storage.getObjectSignedUrl({
  *     bucket: "fried_chicken",
  *     path: "path/to/file",
  *     contentMd5: "pRviqwS4c4OTJRTe03FD1w==",
  *     contentType: "text/plain",
  *     duration: "2d",
- *     credentials: fs.readFileSync("path/to/credentials.json", "utf8"),
+ *     credentials: invoke.result,
  *     extensionHeaders: {
  *         "x-goog-if-generation-match": "1",
  *     },
- * });
+ * }));
  * ```
  */
 export function getObjectSignedUrlOutput(args: GetObjectSignedUrlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetObjectSignedUrlResult> {

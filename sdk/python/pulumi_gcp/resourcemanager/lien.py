@@ -255,12 +255,14 @@ class Lien(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.Project("project")
+        project = gcp.organizations.Project("project",
+            project_id="staging-project",
+            name="A very important project!")
         lien = gcp.resourcemanager.Lien("lien",
-            origin="machine-readable-explanation",
             parent=project.number.apply(lambda number: f"projects/{number}"),
-            reason="This project is an important environment",
-            restrictions=["resourcemanager.projects.delete"])
+            restrictions=["resourcemanager.projects.delete"],
+            origin="machine-readable-explanation",
+            reason="This project is an important environment")
         ```
 
         ## Import
@@ -311,12 +313,14 @@ class Lien(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.Project("project")
+        project = gcp.organizations.Project("project",
+            project_id="staging-project",
+            name="A very important project!")
         lien = gcp.resourcemanager.Lien("lien",
-            origin="machine-readable-explanation",
             parent=project.number.apply(lambda number: f"projects/{number}"),
-            reason="This project is an important environment",
-            restrictions=["resourcemanager.projects.delete"])
+            restrictions=["resourcemanager.projects.delete"],
+            origin="machine-readable-explanation",
+            reason="This project is an important environment")
         ```
 
         ## Import

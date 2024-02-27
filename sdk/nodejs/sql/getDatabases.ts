@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const qa = gcp.sql.getDatabases({
- *     instance: google_sql_database_instance.main.name,
+ *     instance: main.name,
  * });
  * ```
  */
@@ -65,7 +65,7 @@ export interface GetDatabasesResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const qa = gcp.sql.getDatabases({
- *     instance: google_sql_database_instance.main.name,
+ *     instance: main.name,
  * });
  * ```
  */

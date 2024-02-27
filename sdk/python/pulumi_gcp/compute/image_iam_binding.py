@@ -297,8 +297,8 @@ class ImageIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.compute.ImageIamPolicy("policy",
-            project=google_compute_image["example"]["project"],
-            image=google_compute_image["example"]["name"],
+            project=example["project"],
+            image=example["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -318,8 +318,8 @@ class ImageIamBinding(pulumi.CustomResource):
             ),
         )])
         policy = gcp.compute.ImageIamPolicy("policy",
-            project=google_compute_image["example"]["project"],
-            image=google_compute_image["example"]["name"],
+            project=example["project"],
+            image=example["name"],
             policy_data=admin.policy_data)
         ```
         ## google\\_compute\\_image\\_iam\\_binding
@@ -329,8 +329,8 @@ class ImageIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.compute.ImageIamBinding("binding",
-            project=google_compute_image["example"]["project"],
-            image=google_compute_image["example"]["name"],
+            project=example["project"],
+            image=example["name"],
             role="roles/compute.imageUser",
             members=["user:jane@example.com"])
         ```
@@ -342,8 +342,8 @@ class ImageIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.compute.ImageIamBinding("binding",
-            project=google_compute_image["example"]["project"],
-            image=google_compute_image["example"]["name"],
+            project=example["project"],
+            image=example["name"],
             role="roles/compute.imageUser",
             members=["user:jane@example.com"],
             condition=gcp.compute.ImageIamBindingConditionArgs(
@@ -359,8 +359,8 @@ class ImageIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.compute.ImageIamMember("member",
-            project=google_compute_image["example"]["project"],
-            image=google_compute_image["example"]["name"],
+            project=example["project"],
+            image=example["name"],
             role="roles/compute.imageUser",
             member="user:jane@example.com")
         ```
@@ -372,8 +372,8 @@ class ImageIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.compute.ImageIamMember("member",
-            project=google_compute_image["example"]["project"],
-            image=google_compute_image["example"]["name"],
+            project=example["project"],
+            image=example["name"],
             role="roles/compute.imageUser",
             member="user:jane@example.com",
             condition=gcp.compute.ImageIamMemberConditionArgs(
@@ -476,8 +476,8 @@ class ImageIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.compute.ImageIamPolicy("policy",
-            project=google_compute_image["example"]["project"],
-            image=google_compute_image["example"]["name"],
+            project=example["project"],
+            image=example["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -497,8 +497,8 @@ class ImageIamBinding(pulumi.CustomResource):
             ),
         )])
         policy = gcp.compute.ImageIamPolicy("policy",
-            project=google_compute_image["example"]["project"],
-            image=google_compute_image["example"]["name"],
+            project=example["project"],
+            image=example["name"],
             policy_data=admin.policy_data)
         ```
         ## google\\_compute\\_image\\_iam\\_binding
@@ -508,8 +508,8 @@ class ImageIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.compute.ImageIamBinding("binding",
-            project=google_compute_image["example"]["project"],
-            image=google_compute_image["example"]["name"],
+            project=example["project"],
+            image=example["name"],
             role="roles/compute.imageUser",
             members=["user:jane@example.com"])
         ```
@@ -521,8 +521,8 @@ class ImageIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.compute.ImageIamBinding("binding",
-            project=google_compute_image["example"]["project"],
-            image=google_compute_image["example"]["name"],
+            project=example["project"],
+            image=example["name"],
             role="roles/compute.imageUser",
             members=["user:jane@example.com"],
             condition=gcp.compute.ImageIamBindingConditionArgs(
@@ -538,8 +538,8 @@ class ImageIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.compute.ImageIamMember("member",
-            project=google_compute_image["example"]["project"],
-            image=google_compute_image["example"]["name"],
+            project=example["project"],
+            image=example["name"],
             role="roles/compute.imageUser",
             member="user:jane@example.com")
         ```
@@ -551,8 +551,8 @@ class ImageIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.compute.ImageIamMember("member",
-            project=google_compute_image["example"]["project"],
-            image=google_compute_image["example"]["name"],
+            project=example["project"],
+            image=example["name"],
             role="roles/compute.imageUser",
             member="user:jane@example.com",
             condition=gcp.compute.ImageIamMemberConditionArgs(

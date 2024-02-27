@@ -109,9 +109,9 @@ def get_function_iam_policy(cloud_function: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.cloudfunctions.get_function_iam_policy(project=google_cloudfunctions_function["function"]["project"],
-        region=google_cloudfunctions_function["function"]["region"],
-        cloud_function=google_cloudfunctions_function["function"]["name"])
+    policy = gcp.cloudfunctions.get_function_iam_policy(project=function["project"],
+        region=function["region"],
+        cloud_function=function["name"])
     ```
 
 
@@ -152,9 +152,9 @@ def get_function_iam_policy_output(cloud_function: Optional[pulumi.Input[str]] =
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.cloudfunctions.get_function_iam_policy(project=google_cloudfunctions_function["function"]["project"],
-        region=google_cloudfunctions_function["function"]["region"],
-        cloud_function=google_cloudfunctions_function["function"]["name"])
+    policy = gcp.cloudfunctions.get_function_iam_policy(project=function["project"],
+        region=function["region"],
+        cloud_function=function["name"])
     ```
 
 

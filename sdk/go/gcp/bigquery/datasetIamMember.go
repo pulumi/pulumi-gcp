@@ -58,13 +58,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			datasetDataset, err := bigquery.NewDataset(ctx, "datasetDataset", &bigquery.DatasetArgs{
+//			datasetDataset, err := bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
 //				DatasetId: pulumi.String("example_dataset"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bigquery.NewDatasetIamPolicy(ctx, "datasetDatasetIamPolicy", &bigquery.DatasetIamPolicyArgs{
+//			_, err = bigquery.NewDatasetIamPolicy(ctx, "dataset", &bigquery.DatasetIamPolicyArgs{
 //				DatasetId:  datasetDataset.DatasetId,
 //				PolicyData: *pulumi.String(owner.PolicyData),
 //			})

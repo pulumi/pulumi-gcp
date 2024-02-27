@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new BucketIAMPolicy(&#34;policy&#34;, BucketIAMPolicyArgs.builder()        
- *             .bucket(google_storage_bucket.default().name())
+ *             .bucket(default_.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new BucketIAMPolicy(&#34;policy&#34;, BucketIAMPolicyArgs.builder()        
- *             .bucket(google_storage_bucket.default().name())
+ *             .bucket(default_.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new BucketIAMBinding(&#34;binding&#34;, BucketIAMBindingArgs.builder()        
- *             .bucket(google_storage_bucket.default().name())
+ *             .bucket(default_.name())
  *             .role(&#34;roles/storage.admin&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -172,7 +172,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new BucketIAMBinding(&#34;binding&#34;, BucketIAMBindingArgs.builder()        
- *             .bucket(google_storage_bucket.default().name())
+ *             .bucket(default_.name())
  *             .role(&#34;roles/storage.admin&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .condition(BucketIAMBindingConditionArgs.builder()
@@ -208,7 +208,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new BucketIAMMember(&#34;member&#34;, BucketIAMMemberArgs.builder()        
- *             .bucket(google_storage_bucket.default().name())
+ *             .bucket(default_.name())
  *             .role(&#34;roles/storage.admin&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -241,7 +241,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new BucketIAMMember(&#34;member&#34;, BucketIAMMemberArgs.builder()        
- *             .bucket(google_storage_bucket.default().name())
+ *             .bucket(default_.name())
  *             .role(&#34;roles/storage.admin&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .condition(BucketIAMMemberConditionArgs.builder()

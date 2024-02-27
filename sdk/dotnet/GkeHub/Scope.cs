@@ -31,13 +31,13 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var scope = new Gcp.GkeHub.Scope("scope", new()
     ///     {
+    ///         ScopeId = "my-scope",
     ///         Labels = 
     ///         {
-    ///             { "keya", "valuea" },
     ///             { "keyb", "valueb" },
+    ///             { "keya", "valuea" },
     ///             { "keyc", "valuec" },
     ///         },
-    ///         ScopeId = "my-scope",
     ///     });
     /// 
     /// });

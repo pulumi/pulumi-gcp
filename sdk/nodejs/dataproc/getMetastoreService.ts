@@ -16,8 +16,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const foo = gcp.dataproc.getMetastoreService({
- *     location: "global",
  *     serviceId: "foo-bar",
+ *     location: "global",
  * });
  * ```
  */
@@ -95,8 +95,8 @@ export interface GetMetastoreServiceResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const foo = gcp.dataproc.getMetastoreService({
- *     location: "global",
  *     serviceId: "foo-bar",
+ *     location: "global",
  * });
  * ```
  */

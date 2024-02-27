@@ -37,19 +37,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:     pulumi.String("appengine-test-bucket"),
 //				Location: pulumi.String("US"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+//				Name:   pulumi.String("hello-world.zip"),
 //				Bucket: bucket.Name,
 //				Source: pulumi.NewFileAsset("./test-fixtures/hello-world.zip"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			adminV3, err := appengine.NewStandardAppVersion(ctx, "adminV3", &appengine.StandardAppVersionArgs{
+//			adminV3, err := appengine.NewStandardAppVersion(ctx, "admin_v3", &appengine.StandardAppVersionArgs{
 //				VersionId: pulumi.String("v3"),
 //				Service:   pulumi.String("admin"),
 //				Runtime:   pulumi.String("nodejs10"),
@@ -73,7 +75,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = appengine.NewApplicationUrlDispatchRules(ctx, "webService", &appengine.ApplicationUrlDispatchRulesArgs{
+//			_, err = appengine.NewApplicationUrlDispatchRules(ctx, "web_service", &appengine.ApplicationUrlDispatchRulesArgs{
 //				DispatchRules: appengine.ApplicationUrlDispatchRulesDispatchRuleArray{
 //					&appengine.ApplicationUrlDispatchRulesDispatchRuleArgs{
 //						Domain:  pulumi.String("*"),

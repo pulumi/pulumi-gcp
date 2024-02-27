@@ -42,12 +42,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var config = new IamAuditConfig(&#34;config&#34;, IamAuditConfigArgs.builder()        
- *             .auditLogConfigs(IamAuditConfigAuditLogConfigArgs.builder()
- *                 .exemptedMembers(&#34;user:joebloggs@example.com&#34;)
- *                 .logType(&#34;DATA_READ&#34;)
- *                 .build())
  *             .orgId(&#34;your-organization-id&#34;)
  *             .service(&#34;allServices&#34;)
+ *             .auditLogConfigs(IamAuditConfigAuditLogConfigArgs.builder()
+ *                 .logType(&#34;DATA_READ&#34;)
+ *                 .exemptedMembers(&#34;user:joebloggs@example.com&#34;)
+ *                 .build())
  *             .build());
  * 
  *     }

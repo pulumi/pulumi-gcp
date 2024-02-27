@@ -38,10 +38,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := securitycenter.NewSource(ctx, "customSource", &securitycenter.SourceArgs{
-//				Description:  pulumi.String("My custom Cloud Security Command Center Finding Source"),
+//			_, err := securitycenter.NewSource(ctx, "custom_source", &securitycenter.SourceArgs{
 //				DisplayName:  pulumi.String("My Source"),
 //				Organization: pulumi.String("123456789"),
+//				Description:  pulumi.String("My custom Cloud Security Command Center Finding Source"),
 //			})
 //			if err != nil {
 //				return err

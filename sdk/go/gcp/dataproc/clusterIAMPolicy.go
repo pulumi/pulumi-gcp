@@ -81,10 +81,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.NewClusterIAMBinding(ctx, "editor", &dataproc.ClusterIAMBindingArgs{
 //				Cluster: pulumi.String("your-dataproc-cluster"),
+//				Role:    pulumi.String("roles/editor"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				Role: pulumi.String("roles/editor"),
 //			})
 //			if err != nil {
 //				return err
@@ -111,8 +111,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.NewClusterIAMMember(ctx, "editor", &dataproc.ClusterIAMMemberArgs{
 //				Cluster: pulumi.String("your-dataproc-cluster"),
-//				Member:  pulumi.String("user:jane@example.com"),
 //				Role:    pulumi.String("roles/editor"),
+//				Member:  pulumi.String("user:jane@example.com"),
 //			})
 //			if err != nil {
 //				return err

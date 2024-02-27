@@ -36,16 +36,16 @@ namespace Pulumi.Gcp.Organizations
     /// {
     ///     var my_custom_role = new Gcp.Organizations.IAMCustomRole("my-custom-role", new()
     ///     {
-    ///         Description = "A description",
+    ///         RoleId = "myCustomRole",
     ///         OrgId = "123456789",
+    ///         Title = "My Custom Role",
+    ///         Description = "A description",
     ///         Permissions = new[]
     ///         {
     ///             "iam.roles.list",
     ///             "iam.roles.create",
     ///             "iam.roles.delete",
     ///         },
-    ///         RoleId = "myCustomRole",
-    ///         Title = "My Custom Role",
     ///     });
     /// 
     /// });

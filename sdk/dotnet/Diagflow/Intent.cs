@@ -30,22 +30,16 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var basicAgent = new Gcp.Diagflow.Agent("basicAgent", new()
+    ///     var basicAgent = new Gcp.Diagflow.Agent("basic_agent", new()
     ///     {
     ///         DisplayName = "example_agent",
     ///         DefaultLanguageCode = "en",
     ///         TimeZone = "America/New_York",
     ///     });
     /// 
-    ///     var basicIntent = new Gcp.Diagflow.Intent("basicIntent", new()
+    ///     var basicIntent = new Gcp.Diagflow.Intent("basic_intent", new()
     ///     {
     ///         DisplayName = "basic-intent",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             basicAgent,
-    ///         },
     ///     });
     /// 
     /// });
@@ -60,41 +54,43 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var agentProjectProject = new Gcp.Organizations.Project("agentProjectProject", new()
+    ///     var agentProject = new Gcp.Organizations.Project("agent_project", new()
     ///     {
+    ///         ProjectId = "my-project",
+    ///         Name = "my-project",
     ///         OrgId = "123456789",
     ///     });
     /// 
-    ///     var agentProjectService = new Gcp.Projects.Service("agentProjectService", new()
+    ///     var agentProjectService = new Gcp.Projects.Service("agent_project", new()
     ///     {
-    ///         Project = agentProjectProject.ProjectId,
+    ///         Project = agentProject.ProjectId,
     ///         ServiceName = "dialogflow.googleapis.com",
     ///         DisableDependentServices = false,
     ///     });
     /// 
-    ///     var dialogflowServiceAccount = new Gcp.ServiceAccount.Account("dialogflowServiceAccount", new()
+    ///     var dialogflowServiceAccount = new Gcp.ServiceAccount.Account("dialogflow_service_account", new()
     ///     {
     ///         AccountId = "my-account",
     ///     });
     /// 
-    ///     var agentCreate = new Gcp.Projects.IAMMember("agentCreate", new()
+    ///     var agentCreate = new Gcp.Projects.IAMMember("agent_create", new()
     ///     {
     ///         Project = agentProjectService.Project,
     ///         Role = "roles/dialogflow.admin",
     ///         Member = dialogflowServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
     ///     });
     /// 
-    ///     var basicAgent = new Gcp.Diagflow.Agent("basicAgent", new()
+    ///     var basicAgent = new Gcp.Diagflow.Agent("basic_agent", new()
     ///     {
-    ///         Project = agentProjectProject.ProjectId,
+    ///         Project = agentProject.ProjectId,
     ///         DisplayName = "example_agent",
     ///         DefaultLanguageCode = "en",
     ///         TimeZone = "America/New_York",
     ///     });
     /// 
-    ///     var fullIntent = new Gcp.Diagflow.Intent("fullIntent", new()
+    ///     var fullIntent = new Gcp.Diagflow.Intent("full_intent", new()
     ///     {
-    ///         Project = agentProjectProject.ProjectId,
+    ///         Project = agentProject.ProjectId,
     ///         DisplayName = "full-intent",
     ///         WebhookState = "WEBHOOK_STATE_ENABLED",
     ///         Priority = 1,
@@ -104,7 +100,7 @@ namespace Pulumi.Gcp.Diagflow
     ///         ResetContexts = true,
     ///         InputContextNames = new[]
     ///         {
-    ///             agentProjectProject.ProjectId.Apply(projectId =&gt; $"projects/{projectId}/agent/sessions/-/contexts/some_id"),
+    ///             agentProject.ProjectId.Apply(projectId =&gt; $"projects/{projectId}/agent/sessions/-/contexts/some_id"),
     ///         },
     ///         Events = new[]
     ///         {
@@ -114,12 +110,6 @@ namespace Pulumi.Gcp.Diagflow
     ///         {
     ///             "FACEBOOK",
     ///             "SLACK",
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             basicAgent,
     ///         },
     ///     });
     /// 

@@ -36,6 +36,7 @@ namespace Pulumi.Gcp.Logging
     /// 
     ///     var my_exclusion = new Gcp.Logging.FolderExclusion("my-exclusion", new()
     ///     {
+    ///         Name = "my-instance-debug-exclusion",
     ///         Folder = my_folder.Name,
     ///         Description = "Exclude GCE instance debug logs",
     ///         Filter = "resource.type = gce_instance AND severity &lt;= DEBUG",

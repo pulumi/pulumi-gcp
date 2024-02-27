@@ -380,6 +380,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.AuthorizationPolicy("default",
+            name="my-authorization-policy",
             labels={
                 "foo": "bar",
             },
@@ -390,8 +391,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
                     principals=["namespace/*"],
                     ip_blocks=["1.2.3.0/24"],
                 )],
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
         ### Network Security Authorization Policy Destinations
 
@@ -400,6 +400,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.AuthorizationPolicy("default",
+            name="my-authorization-policy",
             labels={
                 "foo": "bar",
             },
@@ -419,8 +420,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
                         regex_match="GET",
                     ),
                 )],
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
 
         ## Import
@@ -482,6 +482,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.AuthorizationPolicy("default",
+            name="my-authorization-policy",
             labels={
                 "foo": "bar",
             },
@@ -492,8 +493,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
                     principals=["namespace/*"],
                     ip_blocks=["1.2.3.0/24"],
                 )],
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
         ### Network Security Authorization Policy Destinations
 
@@ -502,6 +502,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.AuthorizationPolicy("default",
+            name="my-authorization-policy",
             labels={
                 "foo": "bar",
             },
@@ -521,8 +522,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
                         regex_match="GET",
                     ),
                 )],
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
 
         ## Import

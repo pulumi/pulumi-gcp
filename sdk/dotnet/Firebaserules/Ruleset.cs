@@ -25,7 +25,6 @@ namespace Pulumi.Gcp.Firebaserules
     /// {
     ///     var primary = new Gcp.Firebaserules.Ruleset("primary", new()
     ///     {
-    ///         Project = "my-project-name",
     ///         Source = new Gcp.Firebaserules.Inputs.RulesetSourceArgs
     ///         {
     ///             Files = new[]
@@ -33,12 +32,13 @@ namespace Pulumi.Gcp.Firebaserules
     ///                 new Gcp.Firebaserules.Inputs.RulesetSourceFileArgs
     ///                 {
     ///                     Content = "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
-    ///                     Fingerprint = "",
     ///                     Name = "firestore.rules",
+    ///                     Fingerprint = "",
     ///                 },
     ///             },
     ///             Language = "",
     ///         },
+    ///         Project = "my-project-name",
     ///     });
     /// 
     /// });
@@ -55,7 +55,6 @@ namespace Pulumi.Gcp.Firebaserules
     /// {
     ///     var primary = new Gcp.Firebaserules.Ruleset("primary", new()
     ///     {
-    ///         Project = "my-project-name",
     ///         Source = new Gcp.Firebaserules.Inputs.RulesetSourceArgs
     ///         {
     ///             Files = new[]
@@ -67,6 +66,7 @@ namespace Pulumi.Gcp.Firebaserules
     ///                 },
     ///             },
     ///         },
+    ///         Project = "my-project-name",
     ///     });
     /// 
     /// });

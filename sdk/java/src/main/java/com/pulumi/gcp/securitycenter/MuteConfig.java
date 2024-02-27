@@ -48,10 +48,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new MuteConfig(&#34;default&#34;, MuteConfigArgs.builder()        
- *             .description(&#34;My Mute Config&#34;)
- *             .filter(&#34;category: \&#34;OS_VULNERABILITY\&#34;&#34;)
  *             .muteConfigId(&#34;my-config&#34;)
  *             .parent(&#34;organizations/123456789&#34;)
+ *             .filter(&#34;category: \&#34;OS_VULNERABILITY\&#34;&#34;)
+ *             .description(&#34;My Mute Config&#34;)
  *             .build());
  * 
  *     }

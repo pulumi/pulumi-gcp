@@ -38,9 +38,10 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var @default = new Gcp.Compute.HttpHealthCheck("default", new()
     ///     {
-    ///         CheckIntervalSec = 1,
+    ///         Name = "authentication-health-check",
     ///         RequestPath = "/health_check",
     ///         TimeoutSec = 1,
+    ///         CheckIntervalSec = 1,
     ///     });
     /// 
     /// });

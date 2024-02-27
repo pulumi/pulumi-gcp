@@ -198,14 +198,17 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         disk = gcp.compute.Disk("disk",
+            name="my-base-disk",
             image="debian-cloud/debian-11",
             size=50,
             type="pd-ssd",
             zone="us-central1-a")
         snapdisk = gcp.compute.Snapshot("snapdisk",
+            name="my-snapshot",
             source_disk=disk.name,
             zone="us-central1-a")
         ssd = gcp.compute.RegionDisk("ssd",
+            name="my-disk",
             replica_zones=[
                 "us-central1-a",
                 "us-central1-f",
@@ -214,10 +217,8 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
             size=50,
             type="pd-ssd",
             region="us-central1")
-        attachment = gcp.compute.RegionDiskResourcePolicyAttachment("attachment",
-            disk=ssd.name,
-            region="us-central1")
         policy = gcp.compute.ResourcePolicy("policy",
+            name="my-resource-policy",
             region="us-central1",
             snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
                 schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
@@ -227,6 +228,10 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
                     ),
                 ),
             ))
+        attachment = gcp.compute.RegionDiskResourcePolicyAttachment("attachment",
+            name=policy.name,
+            disk=ssd.name,
+            region="us-central1")
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         ```
@@ -293,14 +298,17 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         disk = gcp.compute.Disk("disk",
+            name="my-base-disk",
             image="debian-cloud/debian-11",
             size=50,
             type="pd-ssd",
             zone="us-central1-a")
         snapdisk = gcp.compute.Snapshot("snapdisk",
+            name="my-snapshot",
             source_disk=disk.name,
             zone="us-central1-a")
         ssd = gcp.compute.RegionDisk("ssd",
+            name="my-disk",
             replica_zones=[
                 "us-central1-a",
                 "us-central1-f",
@@ -309,10 +317,8 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
             size=50,
             type="pd-ssd",
             region="us-central1")
-        attachment = gcp.compute.RegionDiskResourcePolicyAttachment("attachment",
-            disk=ssd.name,
-            region="us-central1")
         policy = gcp.compute.ResourcePolicy("policy",
+            name="my-resource-policy",
             region="us-central1",
             snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
                 schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
@@ -322,6 +328,10 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
                     ),
                 ),
             ))
+        attachment = gcp.compute.RegionDiskResourcePolicyAttachment("attachment",
+            name=policy.name,
+            disk=ssd.name,
+            region="us-central1")
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         ```

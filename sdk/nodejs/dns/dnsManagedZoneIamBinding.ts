@@ -34,8 +34,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.dns.DnsManagedZoneIamPolicy("policy", {
- *     project: google_dns_managed_zone["default"].project,
- *     managedZone: google_dns_managed_zone["default"].name,
+ *     project: _default.project,
+ *     managedZone: _default.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -47,8 +47,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.dns.DnsManagedZoneIamBinding("binding", {
- *     project: google_dns_managed_zone["default"].project,
- *     managedZone: google_dns_managed_zone["default"].name,
+ *     project: _default.project,
+ *     managedZone: _default.name,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
  * });
@@ -61,8 +61,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.dns.DnsManagedZoneIamMember("member", {
- *     project: google_dns_managed_zone["default"].project,
- *     managedZone: google_dns_managed_zone["default"].name,
+ *     project: _default.project,
+ *     managedZone: _default.name,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
  * });

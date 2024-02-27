@@ -109,9 +109,9 @@ def get_repository_iam_policy(location: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.artifactregistry.get_repository_iam_policy(project=google_artifact_registry_repository["my-repo"]["project"],
-        location=google_artifact_registry_repository["my-repo"]["location"],
-        repository=google_artifact_registry_repository["my-repo"]["name"])
+    policy = gcp.artifactregistry.get_repository_iam_policy(project=my_repo["project"],
+        location=my_repo["location"],
+        repository=my_repo["name"])
     ```
 
 
@@ -151,9 +151,9 @@ def get_repository_iam_policy_output(location: Optional[pulumi.Input[Optional[st
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.artifactregistry.get_repository_iam_policy(project=google_artifact_registry_repository["my-repo"]["project"],
-        location=google_artifact_registry_repository["my-repo"]["location"],
-        repository=google_artifact_registry_repository["my-repo"]["name"])
+    policy = gcp.artifactregistry.get_repository_iam_policy(project=my_repo["project"],
+        location=my_repo["location"],
+        repository=my_repo["name"])
     ```
 
 

@@ -40,14 +40,14 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
     ///         },
     ///     });
     /// 
-    ///     var policyTag = new Gcp.DataCatalog.PolicyTag("policyTag", new()
+    ///     var policyTag = new Gcp.DataCatalog.PolicyTag("policy_tag", new()
     ///     {
     ///         Taxonomy = taxonomy.Id,
     ///         DisplayName = "Low security",
     ///         Description = "A policy tag normally associated with low security items",
     ///     });
     /// 
-    ///     var dataPolicy = new Gcp.BigQueryDataPolicy.DataPolicy("dataPolicy", new()
+    ///     var dataPolicy = new Gcp.BigQueryDataPolicy.DataPolicy("data_policy", new()
     ///     {
     ///         Location = "us-central1",
     ///         DataPolicyId = "data_policy",

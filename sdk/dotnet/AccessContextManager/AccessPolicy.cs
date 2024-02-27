@@ -59,14 +59,16 @@ namespace Pulumi.Gcp.AccessContextManager
     /// {
     ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
+    ///         ProjectId = "acm-test-proj-123",
+    ///         Name = "acm-test-proj-123",
     ///         OrgId = "123456789",
     ///     });
     /// 
     ///     var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new()
     ///     {
     ///         Parent = "organizations/123456789",
-    ///         Scopes = project.Number.Apply(number =&gt; $"projects/{number}"),
     ///         Title = "Scoped Access Policy",
+    ///         Scopes = project.Number.Apply(number =&gt; $"projects/{number}"),
     ///     });
     /// 
     /// });

@@ -36,14 +36,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := activedirectory.NewDomainTrust(ctx, "ad-domain-trust", &activedirectory.DomainTrustArgs{
-//				Domain: pulumi.String("test-managed-ad.com"),
+//				Domain:           pulumi.String("test-managed-ad.com"),
+//				TargetDomainName: pulumi.String("example-gcp.com"),
 //				TargetDnsIpAddresses: pulumi.StringArray{
 //					pulumi.String("10.1.0.100"),
 //				},
-//				TargetDomainName:     pulumi.String("example-gcp.com"),
 //				TrustDirection:       pulumi.String("OUTBOUND"),
-//				TrustHandshakeSecret: pulumi.String("Testing1!"),
 //				TrustType:            pulumi.String("FOREST"),
+//				TrustHandshakeSecret: pulumi.String("Testing1!"),
 //			})
 //			if err != nil {
 //				return err

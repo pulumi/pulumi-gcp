@@ -43,6 +43,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := storage.NewBucket(ctx, "image-store", &storage.BucketArgs{
+//				Name:     pulumi.String("image-store-bucket"),
 //				Location: pulumi.String("EU"),
 //			})
 //			if err != nil {

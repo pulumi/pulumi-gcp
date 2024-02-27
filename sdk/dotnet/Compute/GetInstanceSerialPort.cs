@@ -54,6 +54,18 @@ namespace Pulumi.Gcp.Compute
         /// {
         ///     var windows = new Gcp.Compute.Instance("windows", new()
         ///     {
+        ///         NetworkInterfaces = new[]
+        ///         {
+        ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+        ///             {
+        ///                 AccessConfigs = new[]
+        ///                 {
+        ///                     null,
+        ///                 },
+        ///                 Network = "default",
+        ///             },
+        ///         },
+        ///         Name = "windows-instance",
         ///         MachineType = "e2-medium",
         ///         Zone = "us-central1-a",
         ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
@@ -61,17 +73,6 @@ namespace Pulumi.Gcp.Compute
         ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
         ///             {
         ///                 Image = "windows-cloud/windows-2019",
-        ///             },
-        ///         },
-        ///         NetworkInterfaces = new[]
-        ///         {
-        ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
-        ///             {
-        ///                 Network = "default",
-        ///                 AccessConfigs = new[]
-        ///                 {
-        ///                     null,
-        ///                 },
         ///             },
         ///         },
         ///         Metadata = 
@@ -159,6 +160,18 @@ namespace Pulumi.Gcp.Compute
         /// {
         ///     var windows = new Gcp.Compute.Instance("windows", new()
         ///     {
+        ///         NetworkInterfaces = new[]
+        ///         {
+        ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+        ///             {
+        ///                 AccessConfigs = new[]
+        ///                 {
+        ///                     null,
+        ///                 },
+        ///                 Network = "default",
+        ///             },
+        ///         },
+        ///         Name = "windows-instance",
         ///         MachineType = "e2-medium",
         ///         Zone = "us-central1-a",
         ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
@@ -166,17 +179,6 @@ namespace Pulumi.Gcp.Compute
         ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
         ///             {
         ///                 Image = "windows-cloud/windows-2019",
-        ///             },
-        ///         },
-        ///         NetworkInterfaces = new[]
-        ///         {
-        ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
-        ///             {
-        ///                 Network = "default",
-        ///                 AccessConfigs = new[]
-        ///                 {
-        ///                     null,
-        ///                 },
         ///             },
         ///         },
         ///         Metadata = 

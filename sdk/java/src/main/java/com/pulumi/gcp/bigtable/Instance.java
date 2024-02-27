@@ -59,6 +59,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var production_instance = new Instance(&#34;production-instance&#34;, InstanceArgs.builder()        
+ *             .name(&#34;tf-instance&#34;)
  *             .clusters(InstanceClusterArgs.builder()
  *                 .clusterId(&#34;tf-instance-cluster&#34;)
  *                 .numNodes(1)
@@ -95,6 +96,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var production_instance = new Instance(&#34;production-instance&#34;, InstanceArgs.builder()        
+ *             .name(&#34;tf-instance&#34;)
  *             .clusters(            
  *                 InstanceClusterArgs.builder()
  *                     .clusterId(&#34;tf-instance-cluster1&#34;)
@@ -103,14 +105,14 @@ import javax.annotation.Nullable;
  *                     .zone(&#34;us-central1-c&#34;)
  *                     .build(),
  *                 InstanceClusterArgs.builder()
- *                     .autoscalingConfig(InstanceClusterAutoscalingConfigArgs.builder()
- *                         .cpuTarget(50)
- *                         .maxNodes(3)
- *                         .minNodes(1)
- *                         .build())
  *                     .clusterId(&#34;tf-instance-cluster2&#34;)
  *                     .storageType(&#34;HDD&#34;)
  *                     .zone(&#34;us-central1-b&#34;)
+ *                     .autoscalingConfig(InstanceClusterAutoscalingConfigArgs.builder()
+ *                         .minNodes(1)
+ *                         .maxNodes(3)
+ *                         .cpuTarget(50)
+ *                         .build())
  *                     .build())
  *             .labels(Map.of(&#34;my-label&#34;, &#34;prod-label&#34;))
  *             .build());

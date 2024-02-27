@@ -43,12 +43,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.Instance;
  * import com.pulumi.gcp.compute.InstanceArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
  * import com.pulumi.gcp.compute.InstanceGroup;
+ * import com.pulumi.gcp.compute.InstanceGroupArgs;
  * import com.pulumi.gcp.compute.InstanceGroupMembership;
  * import com.pulumi.gcp.compute.InstanceGroupMembershipArgs;
  * import java.util.List;
@@ -64,9 +66,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_network = new Network(&#34;default-network&#34;);
+ *         var default_network = new Network(&#34;default-network&#34;, NetworkArgs.builder()        
+ *             .name(&#34;network&#34;)
+ *             .build());
  * 
  *         var default_instance = new Instance(&#34;default-instance&#34;, InstanceArgs.builder()        
+ *             .name(&#34;instance&#34;)
  *             .machineType(&#34;e2-medium&#34;)
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
@@ -78,7 +83,9 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var default_instance_group = new InstanceGroup(&#34;default-instance-group&#34;);
+ *         var default_instance_group = new InstanceGroup(&#34;default-instance-group&#34;, InstanceGroupArgs.builder()        
+ *             .name(&#34;instance-group&#34;)
+ *             .build());
  * 
  *         var default_ig_membership = new InstanceGroupMembership(&#34;default-ig-membership&#34;, InstanceGroupMembershipArgs.builder()        
  *             .instance(default_instance.selfLink())

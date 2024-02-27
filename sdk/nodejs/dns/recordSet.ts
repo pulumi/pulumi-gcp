@@ -14,7 +14,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const frontendInstance = new gcp.compute.Instance("frontendInstance", {
+ * const frontendInstance = new gcp.compute.Instance("frontend", {
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         network: "default",
+ *     }],
+ *     name: "frontend",
  *     machineType: "g1-small",
  *     zone: "us-central1-b",
  *     bootDisk: {
@@ -22,13 +27,12 @@ import * as utilities from "../utilities";
  *             image: "debian-cloud/debian-11",
  *         },
  *     },
- *     networkInterfaces: [{
- *         network: "default",
- *         accessConfigs: [{}],
- *     }],
  * });
- * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
- * const frontendRecordSet = new gcp.dns.RecordSet("frontendRecordSet", {
+ * const prod = new gcp.dns.ManagedZone("prod", {
+ *     name: "prod-zone",
+ *     dnsName: "prod.mydomain.com.",
+ * });
+ * const frontend = new gcp.dns.RecordSet("frontend", {
  *     name: pulumi.interpolate`frontend.${prod.dnsName}`,
  *     type: "A",
  *     ttl: 300,
@@ -42,8 +46,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
- * const recordSet = new gcp.dns.RecordSet("recordSet", {
+ * const prod = new gcp.dns.ManagedZone("prod", {
+ *     name: "prod-zone",
+ *     dnsName: "prod.mydomain.com.",
+ * });
+ * const a = new gcp.dns.RecordSet("a", {
  *     name: pulumi.interpolate`backend.${prod.dnsName}`,
  *     managedZone: prod.name,
  *     type: "A",
@@ -57,7 +64,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
+ * const prod = new gcp.dns.ManagedZone("prod", {
+ *     name: "prod-zone",
+ *     dnsName: "prod.mydomain.com.",
+ * });
  * const mx = new gcp.dns.RecordSet("mx", {
  *     name: prod.dnsName,
  *     managedZone: prod.name,
@@ -80,7 +90,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
+ * const prod = new gcp.dns.ManagedZone("prod", {
+ *     name: "prod-zone",
+ *     dnsName: "prod.mydomain.com.",
+ * });
  * const spf = new gcp.dns.RecordSet("spf", {
  *     name: pulumi.interpolate`frontend.${prod.dnsName}`,
  *     managedZone: prod.name,
@@ -97,7 +110,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
+ * const prod = new gcp.dns.ManagedZone("prod", {
+ *     name: "prod-zone",
+ *     dnsName: "prod.mydomain.com.",
+ * });
  * const cname = new gcp.dns.RecordSet("cname", {
  *     name: pulumi.interpolate`frontend.${prod.dnsName}`,
  *     managedZone: prod.name,
@@ -114,8 +130,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const geo = new gcp.dns.RecordSet("geo", {
- *     name: `backend.${google_dns_managed_zone.prod.dns_name}`,
- *     managedZone: google_dns_managed_zone.prod.name,
+ *     name: `backend.${prod.dnsName}`,
+ *     managedZone: prod.name,
  *     type: "A",
  *     ttl: 300,
  *     routingPolicy: {
@@ -138,10 +154,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const prodManagedZone = new gcp.dns.ManagedZone("prodManagedZone", {dnsName: "prod.mydomain.com."});
- * const prodRegionBackendService = new gcp.compute.RegionBackendService("prodRegionBackendService", {region: "us-central1"});
- * const prodNetwork = new gcp.compute.Network("prodNetwork", {});
- * const prodForwardingRule = new gcp.compute.ForwardingRule("prodForwardingRule", {
+ * const prod = new gcp.dns.ManagedZone("prod", {
+ *     name: "prod-zone",
+ *     dnsName: "prod.mydomain.com.",
+ * });
+ * const prodRegionBackendService = new gcp.compute.RegionBackendService("prod", {
+ *     name: "prod-backend",
+ *     region: "us-central1",
+ * });
+ * const prodNetwork = new gcp.compute.Network("prod", {name: "prod-network"});
+ * const prodForwardingRule = new gcp.compute.ForwardingRule("prod", {
+ *     name: "prod-ilb",
  *     region: "us-central1",
  *     loadBalancingScheme: "INTERNAL",
  *     backendService: prodRegionBackendService.id,
@@ -149,9 +172,9 @@ import * as utilities from "../utilities";
  *     network: prodNetwork.name,
  *     allowGlobalAccess: true,
  * });
- * const recordSet = new gcp.dns.RecordSet("recordSet", {
- *     name: pulumi.interpolate`backend.${prodManagedZone.dnsName}`,
- *     managedZone: prodManagedZone.name,
+ * const a = new gcp.dns.RecordSet("a", {
+ *     name: pulumi.interpolate`backend.${prod.dnsName}`,
+ *     managedZone: prod.name,
  *     type: "A",
  *     ttl: 300,
  *     routingPolicy: {

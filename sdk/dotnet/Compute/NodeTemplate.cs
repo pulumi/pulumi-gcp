@@ -33,8 +33,9 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var template = new Gcp.Compute.NodeTemplate("template", new()
     ///     {
-    ///         NodeType = "n1-node-96-624",
+    ///         Name = "soletenant-tmpl",
     ///         Region = "us-central1",
+    ///         NodeType = "n1-node-96-624",
     ///     });
     /// 
     /// });
@@ -56,12 +57,13 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var template = new Gcp.Compute.NodeTemplate("template", new()
     ///     {
+    ///         Name = "soletenant-with-licenses",
+    ///         Region = "us-central1",
+    ///         NodeType = "n1-node-96-624",
     ///         NodeAffinityLabels = 
     ///         {
     ///             { "foo", "baz" },
     ///         },
-    ///         NodeType = "n1-node-96-624",
-    ///         Region = "us-central1",
     ///         ServerBinding = new Gcp.Compute.Inputs.NodeTemplateServerBindingArgs
     ///         {
     ///             Type = "RESTART_NODE_ON_MINIMAL_SERVERS",

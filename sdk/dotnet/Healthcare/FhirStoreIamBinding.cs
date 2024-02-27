@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.Healthcare
     ///         },
     ///     });
     /// 
-    ///     var fhirStore = new Gcp.Healthcare.FhirStoreIamPolicy("fhirStore", new()
+    ///     var fhirStore = new Gcp.Healthcare.FhirStoreIamPolicy("fhir_store", new()
     ///     {
     ///         FhirStoreId = "your-fhir-store-id",
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
@@ -64,14 +64,14 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fhirStore = new Gcp.Healthcare.FhirStoreIamBinding("fhirStore", new()
+    ///     var fhirStore = new Gcp.Healthcare.FhirStoreIamBinding("fhir_store", new()
     ///     {
     ///         FhirStoreId = "your-fhir-store-id",
+    ///         Role = "roles/editor",
     ///         Members = new[]
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         Role = "roles/editor",
     ///     });
     /// 
     /// });
@@ -87,11 +87,11 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fhirStore = new Gcp.Healthcare.FhirStoreIamMember("fhirStore", new()
+    ///     var fhirStore = new Gcp.Healthcare.FhirStoreIamMember("fhir_store", new()
     ///     {
     ///         FhirStoreId = "your-fhir-store-id",
-    ///         Member = "user:jane@example.com",
     ///         Role = "roles/editor",
+    ///         Member = "user:jane@example.com",
     ///     });
     /// 
     /// });

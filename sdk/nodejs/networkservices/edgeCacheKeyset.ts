@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networkservices.EdgeCacheKeyset("default", {
+ *     name: "my-keyset",
  *     description: "The default keyset",
  *     publicKeys: [
  *         {
@@ -53,6 +54,7 @@ import * as utilities from "../utilities";
  *     secretData: "secret-data",
  * });
  * const _default = new gcp.networkservices.EdgeCacheKeyset("default", {
+ *     name: "my-keyset",
  *     description: "The default keyset",
  *     publicKeys: [{
  *         id: "my-public-key",

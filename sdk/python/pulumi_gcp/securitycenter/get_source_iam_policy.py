@@ -99,7 +99,7 @@ def get_source_iam_policy(organization: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.securitycenter.get_source_iam_policy(source=google_scc_source["custom_source"]["name"])
+    policy = gcp.securitycenter.get_source_iam_policy(source=custom_source["name"])
     ```
 
 
@@ -132,7 +132,7 @@ def get_source_iam_policy_output(organization: Optional[pulumi.Input[str]] = Non
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.securitycenter.get_source_iam_policy(source=google_scc_source["custom_source"]["name"])
+    policy = gcp.securitycenter.get_source_iam_policy(source=custom_source["name"])
     ```
 
 

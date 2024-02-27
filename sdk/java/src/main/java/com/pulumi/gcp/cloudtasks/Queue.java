@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Queue(&#34;default&#34;, QueueArgs.builder()        
+ *             .name(&#34;cloud-tasks-queue-test&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .build());
  * 
@@ -78,22 +79,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var advancedConfiguration = new Queue(&#34;advancedConfiguration&#34;, QueueArgs.builder()        
+ *             .name(&#34;instance-name&#34;)
+ *             .location(&#34;us-central1&#34;)
  *             .appEngineRoutingOverride(QueueAppEngineRoutingOverrideArgs.builder()
- *                 .instance(&#34;test&#34;)
  *                 .service(&#34;worker&#34;)
  *                 .version(&#34;1.0&#34;)
+ *                 .instance(&#34;test&#34;)
  *                 .build())
- *             .location(&#34;us-central1&#34;)
  *             .rateLimits(QueueRateLimitsArgs.builder()
  *                 .maxConcurrentDispatches(3)
  *                 .maxDispatchesPerSecond(2)
  *                 .build())
  *             .retryConfig(QueueRetryConfigArgs.builder()
  *                 .maxAttempts(5)
- *                 .maxBackoff(&#34;3s&#34;)
- *                 .maxDoublings(1)
  *                 .maxRetryDuration(&#34;4s&#34;)
+ *                 .maxBackoff(&#34;3s&#34;)
  *                 .minBackoff(&#34;2s&#34;)
+ *                 .maxDoublings(1)
  *                 .build())
  *             .stackdriverLoggingConfig(QueueStackdriverLoggingConfigArgs.builder()
  *                 .samplingRatio(0.9)

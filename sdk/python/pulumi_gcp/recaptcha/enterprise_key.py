@@ -401,18 +401,18 @@ class EnterpriseKey(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.recaptcha.EnterpriseKey("primary",
+            display_name="display-name-one",
             android_settings=gcp.recaptcha.EnterpriseKeyAndroidSettingsArgs(
                 allow_all_package_names=True,
                 allowed_package_names=[],
             ),
-            display_name="display-name-one",
-            labels={
-                "label-one": "value-one",
-            },
             project="my-project-name",
             testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
                 testing_score=0.8,
-            ))
+            ),
+            labels={
+                "label-one": "value-one",
+            })
         ```
         ### Ios_key
         A basic test of recaptcha enterprise key that can be used by iOS apps
@@ -426,13 +426,13 @@ class EnterpriseKey(pulumi.CustomResource):
                 allow_all_bundle_ids=True,
                 allowed_bundle_ids=[],
             ),
-            labels={
-                "label-one": "value-one",
-            },
             project="my-project-name",
             testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
                 testing_score=1,
-            ))
+            ),
+            labels={
+                "label-one": "value-one",
+            })
         ```
         ### Minimal_key
         A minimal test of recaptcha enterprise key
@@ -442,12 +442,12 @@ class EnterpriseKey(pulumi.CustomResource):
 
         primary = gcp.recaptcha.EnterpriseKey("primary",
             display_name="display-name-one",
-            labels={},
             project="my-project-name",
             web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
-                allow_all_domains=True,
                 integration_type="SCORE",
-            ))
+                allow_all_domains=True,
+            ),
+            labels={})
         ```
         ### Waf_key
         A basic test of recaptcha enterprise key that includes WAF settings
@@ -457,9 +457,6 @@ class EnterpriseKey(pulumi.CustomResource):
 
         primary = gcp.recaptcha.EnterpriseKey("primary",
             display_name="display-name-one",
-            labels={
-                "label-one": "value-one",
-            },
             project="my-project-name",
             testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
                 testing_challenge="NOCAPTCHA",
@@ -470,11 +467,14 @@ class EnterpriseKey(pulumi.CustomResource):
                 waf_service="CA",
             ),
             web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
+                integration_type="INVISIBLE",
                 allow_all_domains=True,
                 allowed_domains=[],
                 challenge_security_preference="USABILITY",
-                integration_type="INVISIBLE",
-            ))
+            ),
+            labels={
+                "label-one": "value-one",
+            })
         ```
         ### Web_key
         A basic test of recaptcha enterprise key that can be used by websites
@@ -484,20 +484,20 @@ class EnterpriseKey(pulumi.CustomResource):
 
         primary = gcp.recaptcha.EnterpriseKey("primary",
             display_name="display-name-one",
-            labels={
-                "label-one": "value-one",
-            },
             project="my-project-name",
             testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
                 testing_challenge="NOCAPTCHA",
                 testing_score=0.5,
             ),
             web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
+                integration_type="CHECKBOX",
                 allow_all_domains=True,
                 allowed_domains=[],
                 challenge_security_preference="USABILITY",
-                integration_type="CHECKBOX",
-            ))
+            ),
+            labels={
+                "label-one": "value-one",
+            })
         ```
         ### Web_score_key
         A basic test of recaptcha enterprise key with score integration type that can be used by websites
@@ -507,19 +507,19 @@ class EnterpriseKey(pulumi.CustomResource):
 
         primary = gcp.recaptcha.EnterpriseKey("primary",
             display_name="display-name-one",
-            labels={
-                "label-one": "value-one",
-            },
             project="my-project-name",
             testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
                 testing_score=0.5,
             ),
             web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
+                integration_type="SCORE",
                 allow_all_domains=True,
                 allow_amp_traffic=False,
                 allowed_domains=[],
-                integration_type="SCORE",
-            ))
+            ),
+            labels={
+                "label-one": "value-one",
+            })
         ```
 
         ## Import
@@ -581,18 +581,18 @@ class EnterpriseKey(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.recaptcha.EnterpriseKey("primary",
+            display_name="display-name-one",
             android_settings=gcp.recaptcha.EnterpriseKeyAndroidSettingsArgs(
                 allow_all_package_names=True,
                 allowed_package_names=[],
             ),
-            display_name="display-name-one",
-            labels={
-                "label-one": "value-one",
-            },
             project="my-project-name",
             testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
                 testing_score=0.8,
-            ))
+            ),
+            labels={
+                "label-one": "value-one",
+            })
         ```
         ### Ios_key
         A basic test of recaptcha enterprise key that can be used by iOS apps
@@ -606,13 +606,13 @@ class EnterpriseKey(pulumi.CustomResource):
                 allow_all_bundle_ids=True,
                 allowed_bundle_ids=[],
             ),
-            labels={
-                "label-one": "value-one",
-            },
             project="my-project-name",
             testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
                 testing_score=1,
-            ))
+            ),
+            labels={
+                "label-one": "value-one",
+            })
         ```
         ### Minimal_key
         A minimal test of recaptcha enterprise key
@@ -622,12 +622,12 @@ class EnterpriseKey(pulumi.CustomResource):
 
         primary = gcp.recaptcha.EnterpriseKey("primary",
             display_name="display-name-one",
-            labels={},
             project="my-project-name",
             web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
-                allow_all_domains=True,
                 integration_type="SCORE",
-            ))
+                allow_all_domains=True,
+            ),
+            labels={})
         ```
         ### Waf_key
         A basic test of recaptcha enterprise key that includes WAF settings
@@ -637,9 +637,6 @@ class EnterpriseKey(pulumi.CustomResource):
 
         primary = gcp.recaptcha.EnterpriseKey("primary",
             display_name="display-name-one",
-            labels={
-                "label-one": "value-one",
-            },
             project="my-project-name",
             testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
                 testing_challenge="NOCAPTCHA",
@@ -650,11 +647,14 @@ class EnterpriseKey(pulumi.CustomResource):
                 waf_service="CA",
             ),
             web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
+                integration_type="INVISIBLE",
                 allow_all_domains=True,
                 allowed_domains=[],
                 challenge_security_preference="USABILITY",
-                integration_type="INVISIBLE",
-            ))
+            ),
+            labels={
+                "label-one": "value-one",
+            })
         ```
         ### Web_key
         A basic test of recaptcha enterprise key that can be used by websites
@@ -664,20 +664,20 @@ class EnterpriseKey(pulumi.CustomResource):
 
         primary = gcp.recaptcha.EnterpriseKey("primary",
             display_name="display-name-one",
-            labels={
-                "label-one": "value-one",
-            },
             project="my-project-name",
             testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
                 testing_challenge="NOCAPTCHA",
                 testing_score=0.5,
             ),
             web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
+                integration_type="CHECKBOX",
                 allow_all_domains=True,
                 allowed_domains=[],
                 challenge_security_preference="USABILITY",
-                integration_type="CHECKBOX",
-            ))
+            ),
+            labels={
+                "label-one": "value-one",
+            })
         ```
         ### Web_score_key
         A basic test of recaptcha enterprise key with score integration type that can be used by websites
@@ -687,19 +687,19 @@ class EnterpriseKey(pulumi.CustomResource):
 
         primary = gcp.recaptcha.EnterpriseKey("primary",
             display_name="display-name-one",
-            labels={
-                "label-one": "value-one",
-            },
             project="my-project-name",
             testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
                 testing_score=0.5,
             ),
             web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
+                integration_type="SCORE",
                 allow_all_domains=True,
                 allow_amp_traffic=False,
                 allowed_domains=[],
-                integration_type="SCORE",
-            ))
+            ),
+            labels={
+                "label-one": "value-one",
+            })
         ```
 
         ## Import

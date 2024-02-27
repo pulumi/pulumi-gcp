@@ -441,7 +441,7 @@ class CxEntityType(pulumi.CustomResource):
             speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
                 enable_speech_adaptation=True,
             ))
-        basic_entity_type = gcp.diagflow.CxEntityType("basicEntityType",
+        basic_entity_type = gcp.diagflow.CxEntityType("basic_entity_type",
             parent=agent.id,
             display_name="MyEntity",
             kind="KIND_MAP",
@@ -549,7 +549,7 @@ class CxEntityType(pulumi.CustomResource):
             speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
                 enable_speech_adaptation=True,
             ))
-        basic_entity_type = gcp.diagflow.CxEntityType("basicEntityType",
+        basic_entity_type = gcp.diagflow.CxEntityType("basic_entity_type",
             parent=agent.id,
             display_name="MyEntity",
             kind="KIND_MAP",

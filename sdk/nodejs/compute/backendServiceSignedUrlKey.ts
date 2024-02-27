@@ -14,6 +14,60 @@ import * as utilities from "../utilities";
  *     * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
  *
  * ## Example Usage
+ * ### Backend Service Signed Url Key
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
+ *
+ * const urlSignature = new random.RandomId("url_signature", {byteLength: 16});
+ * const webserver = new gcp.compute.InstanceTemplate("webserver", {
+ *     name: "standard-webserver",
+ *     machineType: "e2-medium",
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ *     disks: [{
+ *         sourceImage: "debian-cloud/debian-11",
+ *         autoDelete: true,
+ *         boot: true,
+ *     }],
+ * });
+ * const webservers = new gcp.compute.InstanceGroupManager("webservers", {
+ *     name: "my-webservers",
+ *     versions: [{
+ *         instanceTemplate: webserver.id,
+ *         name: "primary",
+ *     }],
+ *     baseInstanceName: "webserver",
+ *     zone: "us-central1-f",
+ *     targetSize: 1,
+ * });
+ * const _default = new gcp.compute.HttpHealthCheck("default", {
+ *     name: "test",
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const exampleBackend = new gcp.compute.BackendService("example_backend", {
+ *     name: "my-backend-service",
+ *     description: "Our company website",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     enableCdn: true,
+ *     backends: [{
+ *         group: webservers.instanceGroup,
+ *     }],
+ *     healthChecks: _default.id,
+ * });
+ * const backendKey = new gcp.compute.BackendServiceSignedUrlKey("backend_key", {
+ *     name: "test-key",
+ *     keyValue: urlSignature.b64Url,
+ *     backendService: exampleBackend.name,
+ * });
+ * ```
  *
  * ## Import
  *

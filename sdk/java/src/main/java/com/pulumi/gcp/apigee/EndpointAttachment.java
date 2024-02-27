@@ -32,6 +32,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.GlobalAddress;
  * import com.pulumi.gcp.compute.GlobalAddressArgs;
  * import com.pulumi.gcp.servicenetworking.Connection;
@@ -40,7 +41,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.apigee.OrganizationArgs;
  * import com.pulumi.gcp.apigee.EndpointAttachment;
  * import com.pulumi.gcp.apigee.EndpointAttachmentArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -56,9 +56,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = OrganizationsFunctions.getClientConfig();
  * 
- *         var apigeeNetwork = new Network(&#34;apigeeNetwork&#34;);
+ *         var apigeeNetwork = new Network(&#34;apigeeNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;apigee-network&#34;)
+ *             .build());
  * 
  *         var apigeeRange = new GlobalAddress(&#34;apigeeRange&#34;, GlobalAddressArgs.builder()        
+ *             .name(&#34;apigee-range&#34;)
  *             .purpose(&#34;VPC_PEERING&#34;)
  *             .addressType(&#34;INTERNAL&#34;)
  *             .prefixLength(16)
@@ -75,9 +78,7 @@ import javax.annotation.Nullable;
  *             .analyticsRegion(&#34;us-central1&#34;)
  *             .projectId(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()))
  *             .authorizedNetwork(apigeeNetwork.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(apigeeVpcConnection)
- *                 .build());
+ *             .build());
  * 
  *         var apigeeEndpointAttachment = new EndpointAttachment(&#34;apigeeEndpointAttachment&#34;, EndpointAttachmentArgs.builder()        
  *             .orgId(apigeeOrg.id())

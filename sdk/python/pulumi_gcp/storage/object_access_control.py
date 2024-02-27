@@ -320,11 +320,14 @@ class ObjectAccessControl(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket", location="US")
+        bucket = gcp.storage.Bucket("bucket",
+            name="static-content-bucket",
+            location="US")
         object = gcp.storage.BucketObject("object",
+            name="public-object",
             bucket=bucket.name,
             source=pulumi.FileAsset("../static/img/header-logo.png"))
-        public_rule = gcp.storage.ObjectAccessControl("publicRule",
+        public_rule = gcp.storage.ObjectAccessControl("public_rule",
             object=object.output_name,
             bucket=bucket.name,
             role="READER",
@@ -395,11 +398,14 @@ class ObjectAccessControl(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket", location="US")
+        bucket = gcp.storage.Bucket("bucket",
+            name="static-content-bucket",
+            location="US")
         object = gcp.storage.BucketObject("object",
+            name="public-object",
             bucket=bucket.name,
             source=pulumi.FileAsset("../static/img/header-logo.png"))
-        public_rule = gcp.storage.ObjectAccessControl("publicRule",
+        public_rule = gcp.storage.ObjectAccessControl("public_rule",
             object=object.output_name,
             bucket=bucket.name,
             role="READER",

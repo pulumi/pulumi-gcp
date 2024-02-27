@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataplex.LookupLakeIamPolicy(ctx, &dataplex.LookupLakeIamPolicyArgs{
-//				Project:  pulumi.StringRef(google_dataplex_lake.Example.Project),
-//				Location: pulumi.StringRef(google_dataplex_lake.Example.Location),
-//				Lake:     google_dataplex_lake.Example.Name,
+//				Project:  pulumi.StringRef(example.Project),
+//				Location: pulumi.StringRef(example.Location),
+//				Lake:     example.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

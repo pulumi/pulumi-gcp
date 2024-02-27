@@ -32,15 +32,169 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := certificateauthority.NewCaPool(ctx, "default", &certificateauthority.CaPoolArgs{
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
+//				Name:     pulumi.String("my-pool"),
 //				Location: pulumi.String("us-central1"),
+//				Tier:     pulumi.String("ENTERPRISE"),
 //				PublishingOptions: &certificateauthority.CaPoolPublishingOptionsArgs{
 //					PublishCaCert: pulumi.Bool(true),
 //					PublishCrl:    pulumi.Bool(true),
 //				},
-//				Tier: pulumi.String("ENTERPRISE"),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Privateca Capool All Fields
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := certificateauthority.NewCaPool(ctx, "default", &certificateauthority.CaPoolArgs{
+//				Name:     pulumi.String("my-pool"),
+//				Location: pulumi.String("us-central1"),
+//				Tier:     pulumi.String("ENTERPRISE"),
+//				PublishingOptions: &certificateauthority.CaPoolPublishingOptionsArgs{
+//					PublishCaCert:  pulumi.Bool(false),
+//					PublishCrl:     pulumi.Bool(true),
+//					EncodingFormat: pulumi.String("PEM"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				IssuancePolicy: &certificateauthority.CaPoolIssuancePolicyArgs{
+//					AllowedKeyTypes: certificateauthority.CaPoolIssuancePolicyAllowedKeyTypeArray{
+//						&certificateauthority.CaPoolIssuancePolicyAllowedKeyTypeArgs{
+//							EllipticCurve: &certificateauthority.CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs{
+//								SignatureAlgorithm: pulumi.String("ECDSA_P256"),
+//							},
+//						},
+//						&certificateauthority.CaPoolIssuancePolicyAllowedKeyTypeArgs{
+//							Rsa: &certificateauthority.CaPoolIssuancePolicyAllowedKeyTypeRsaArgs{
+//								MinModulusSize: pulumi.String("5"),
+//								MaxModulusSize: pulumi.String("10"),
+//							},
+//						},
+//					},
+//					MaximumLifetime: pulumi.String("50000s"),
+//					AllowedIssuanceModes: &certificateauthority.CaPoolIssuancePolicyAllowedIssuanceModesArgs{
+//						AllowCsrBasedIssuance:    pulumi.Bool(true),
+//						AllowConfigBasedIssuance: pulumi.Bool(true),
+//					},
+//					IdentityConstraints: &certificateauthority.CaPoolIssuancePolicyIdentityConstraintsArgs{
+//						AllowSubjectPassthrough:         pulumi.Bool(true),
+//						AllowSubjectAltNamesPassthrough: pulumi.Bool(true),
+//						CelExpression: &certificateauthority.CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs{
+//							Expression: pulumi.String("subject_alt_names.all(san, san.type == DNS || san.type == EMAIL )"),
+//							Title:      pulumi.String("My title"),
+//						},
+//					},
+//					BaselineValues: &certificateauthority.CaPoolIssuancePolicyBaselineValuesArgs{
+//						AiaOcspServers: pulumi.StringArray{
+//							pulumi.String("example.com"),
+//						},
+//						AdditionalExtensions: certificateauthority.CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArray{
+//							&certificateauthority.CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs{
+//								Critical: pulumi.Bool(true),
+//								Value:    pulumi.String("asdf"),
+//								ObjectId: &certificateauthority.CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgs{
+//									ObjectIdPaths: pulumi.IntArray{
+//										pulumi.Int(1),
+//										pulumi.Int(7),
+//									},
+//								},
+//							},
+//						},
+//						PolicyIds: certificateauthority.CaPoolIssuancePolicyBaselineValuesPolicyIdArray{
+//							&certificateauthority.CaPoolIssuancePolicyBaselineValuesPolicyIdArgs{
+//								ObjectIdPaths: pulumi.IntArray{
+//									pulumi.Int(1),
+//									pulumi.Int(5),
+//								},
+//							},
+//							&certificateauthority.CaPoolIssuancePolicyBaselineValuesPolicyIdArgs{
+//								ObjectIdPaths: pulumi.IntArray{
+//									pulumi.Int(1),
+//									pulumi.Int(5),
+//									pulumi.Int(7),
+//								},
+//							},
+//						},
+//						CaOptions: &certificateauthority.CaPoolIssuancePolicyBaselineValuesCaOptionsArgs{
+//							IsCa:                pulumi.Bool(true),
+//							MaxIssuerPathLength: pulumi.Int(10),
+//						},
+//						KeyUsage: &certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs{
+//							BaseKeyUsage: &certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs{
+//								DigitalSignature:  pulumi.Bool(true),
+//								ContentCommitment: pulumi.Bool(true),
+//								KeyEncipherment:   pulumi.Bool(false),
+//								DataEncipherment:  pulumi.Bool(true),
+//								KeyAgreement:      pulumi.Bool(true),
+//								CertSign:          pulumi.Bool(false),
+//								CrlSign:           pulumi.Bool(true),
+//								DecipherOnly:      pulumi.Bool(true),
+//							},
+//							ExtendedKeyUsage: &certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs{
+//								ServerAuth:      pulumi.Bool(true),
+//								ClientAuth:      pulumi.Bool(false),
+//								EmailProtection: pulumi.Bool(true),
+//								CodeSigning:     pulumi.Bool(true),
+//								TimeStamping:    pulumi.Bool(true),
+//							},
+//						},
+//						NameConstraints: &certificateauthority.CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs{
+//							Critical: pulumi.Bool(true),
+//							PermittedDnsNames: pulumi.StringArray{
+//								pulumi.String("*.example1.com"),
+//								pulumi.String("*.example2.com"),
+//							},
+//							ExcludedDnsNames: pulumi.StringArray{
+//								pulumi.String("*.deny.example1.com"),
+//								pulumi.String("*.deny.example2.com"),
+//							},
+//							PermittedIpRanges: pulumi.StringArray{
+//								pulumi.String("10.0.0.0/8"),
+//								pulumi.String("11.0.0.0/8"),
+//							},
+//							ExcludedIpRanges: pulumi.StringArray{
+//								pulumi.String("10.1.1.0/24"),
+//								pulumi.String("11.1.1.0/24"),
+//							},
+//							PermittedEmailAddresses: pulumi.StringArray{
+//								pulumi.String(".example1.com"),
+//								pulumi.String(".example2.com"),
+//							},
+//							ExcludedEmailAddresses: pulumi.StringArray{
+//								pulumi.String(".deny.example1.com"),
+//								pulumi.String(".deny.example2.com"),
+//							},
+//							PermittedUris: pulumi.StringArray{
+//								pulumi.String(".example1.com"),
+//								pulumi.String(".example2.com"),
+//							},
+//							ExcludedUris: pulumi.StringArray{
+//								pulumi.String(".deny.example1.com"),
+//								pulumi.String(".deny.example2.com"),
+//							},
+//						},
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err

@@ -19,12 +19,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const external_address_nw = new gcp.vmwareengine.Network("external-address-nw", {
+ *     name: "pc-nw",
  *     location: "global",
  *     type: "STANDARD",
  *     description: "PC network description.",
  * });
  * const external_address_pc = new gcp.vmwareengine.PrivateCloud("external-address-pc", {
  *     location: "-a",
+ *     name: "sample-pc",
  *     description: "Sample test PC.",
  *     networkConfig: {
  *         managementCidr: "192.168.50.0/24",
@@ -40,15 +42,15 @@ import * as utilities from "../utilities";
  * });
  * const external_address_np = new gcp.vmwareengine.NetworkPolicy("external-address-np", {
  *     location: "",
+ *     name: "sample-np",
  *     edgeServicesCidr: "192.168.30.0/26",
  *     vmwareEngineNetwork: external_address_nw.id,
  * });
  * const vmw_engine_external_address = new gcp.vmwareengine.ExternalAddress("vmw-engine-external-address", {
+ *     name: "sample-external-address",
  *     parent: external_address_pc.id,
  *     internalIp: "192.168.0.66",
  *     description: "Sample description.",
- * }, {
- *     dependsOn: [external_address_np],
  * });
  * ```
  *

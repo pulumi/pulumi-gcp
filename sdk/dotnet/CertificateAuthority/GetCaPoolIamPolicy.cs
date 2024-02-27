@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// {
         ///     var policy = Gcp.CertificateAuthority.GetCaPoolIamPolicy.Invoke(new()
         ///     {
-        ///         CaPool = google_privateca_ca_pool.Default.Id,
+        ///         CaPool = @default.Id,
         ///     });
         /// 
         /// });
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// {
         ///     var policy = Gcp.CertificateAuthority.GetCaPoolIamPolicy.Invoke(new()
         ///     {
-        ///         CaPool = google_privateca_ca_pool.Default.Id,
+        ///         CaPool = @default.Id,
         ///     });
         /// 
         /// });

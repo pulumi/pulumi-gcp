@@ -569,18 +569,18 @@ class Datascan(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic_profile = gcp.dataplex.Datascan("basicProfile",
+        basic_profile = gcp.dataplex.Datascan("basic_profile",
+            location="us-central1",
+            data_scan_id="dataprofile-basic",
             data=gcp.dataplex.DatascanDataArgs(
                 resource="//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
             ),
-            data_profile_spec=gcp.dataplex.DatascanDataProfileSpecArgs(),
-            data_scan_id="dataprofile-basic",
             execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
                 trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
                     on_demand=gcp.dataplex.DatascanExecutionSpecTriggerOnDemandArgs(),
                 ),
             ),
-            location="us-central1",
+            data_profile_spec=gcp.dataplex.DatascanDataProfileSpecArgs(),
             project="my-project-name")
         ```
         ### Dataplex Datascan Full Profile
@@ -589,13 +589,7 @@ class Datascan(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        source = gcp.bigquery.Dataset("source",
-            dataset_id="dataplex_dataset",
-            friendly_name="test",
-            description="This is a test description",
-            location="US",
-            delete_contents_on_destroy=True)
-        full_profile = gcp.dataplex.Datascan("fullProfile",
+        full_profile = gcp.dataplex.Datascan("full_profile",
             location="us-central1",
             display_name="Full Datascan Profile",
             data_scan_id="dataprofile-full",
@@ -628,8 +622,13 @@ class Datascan(pulumi.CustomResource):
                     ),
                 ),
             ),
-            project="my-project-name",
-            opts=pulumi.ResourceOptions(depends_on=[source]))
+            project="my-project-name")
+        source = gcp.bigquery.Dataset("source",
+            dataset_id="dataplex_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="US",
+            delete_contents_on_destroy=True)
         ```
         ### Dataplex Datascan Basic Quality
 
@@ -637,27 +636,27 @@ class Datascan(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic_quality = gcp.dataplex.Datascan("basicQuality",
+        basic_quality = gcp.dataplex.Datascan("basic_quality",
+            location="us-central1",
+            data_scan_id="dataquality-basic",
             data=gcp.dataplex.DatascanDataArgs(
                 resource="//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
             ),
-            data_quality_spec=gcp.dataplex.DatascanDataQualitySpecArgs(
-                rules=[gcp.dataplex.DatascanDataQualitySpecRuleArgs(
-                    description="rule 1 for validity dimension",
-                    dimension="VALIDITY",
-                    name="rule1",
-                    table_condition_expectation=gcp.dataplex.DatascanDataQualitySpecRuleTableConditionExpectationArgs(
-                        sql_expression="COUNT(*) > 0",
-                    ),
-                )],
-            ),
-            data_scan_id="dataquality-basic",
             execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
                 trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
                     on_demand=gcp.dataplex.DatascanExecutionSpecTriggerOnDemandArgs(),
                 ),
             ),
-            location="us-central1",
+            data_quality_spec=gcp.dataplex.DatascanDataQualitySpecArgs(
+                rules=[gcp.dataplex.DatascanDataQualitySpecRuleArgs(
+                    dimension="VALIDITY",
+                    name="rule1",
+                    description="rule 1 for validity dimension",
+                    table_condition_expectation=gcp.dataplex.DatascanDataQualitySpecRuleTableConditionExpectationArgs(
+                        sql_expression="COUNT(*) > 0",
+                    ),
+                )],
+            ),
             project="my-project-name")
         ```
         ### Dataplex Datascan Full Quality
@@ -666,30 +665,46 @@ class Datascan(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        full_quality = gcp.dataplex.Datascan("fullQuality",
+        full_quality = gcp.dataplex.Datascan("full_quality",
+            location="us-central1",
+            display_name="Full Datascan Quality",
+            data_scan_id="dataquality-full",
+            description="Example resource - Full Datascan Quality",
+            labels={
+                "author": "billing",
+            },
             data=gcp.dataplex.DatascanDataArgs(
                 resource="//bigquery.googleapis.com/projects/bigquery-public-data/datasets/austin_bikeshare/tables/bikeshare_stations",
             ),
+            execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
+                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
+                    schedule=gcp.dataplex.DatascanExecutionSpecTriggerScheduleArgs(
+                        cron="TZ=America/New_York 1 1 * * *",
+                    ),
+                ),
+                field="modified_date",
+            ),
             data_quality_spec=gcp.dataplex.DatascanDataQualitySpecArgs(
+                sampling_percent=5,
                 row_filter="station_id > 1000",
                 rules=[
                     gcp.dataplex.DatascanDataQualitySpecRuleArgs(
                         column="address",
                         dimension="VALIDITY",
-                        non_null_expectation=gcp.dataplex.DatascanDataQualitySpecRuleNonNullExpectationArgs(),
                         threshold=0.99,
+                        non_null_expectation=gcp.dataplex.DatascanDataQualitySpecRuleNonNullExpectationArgs(),
                     ),
                     gcp.dataplex.DatascanDataQualitySpecRuleArgs(
                         column="council_district",
                         dimension="VALIDITY",
                         ignore_null=True,
-                        range_expectation=gcp.dataplex.DatascanDataQualitySpecRuleRangeExpectationArgs(
-                            max_value="10",
-                            min_value="1",
-                            strict_max_enabled=False,
-                            strict_min_enabled=True,
-                        ),
                         threshold=0.9,
+                        range_expectation=gcp.dataplex.DatascanDataQualitySpecRuleRangeExpectationArgs(
+                            min_value="1",
+                            max_value="10",
+                            strict_min_enabled=True,
+                            strict_max_enabled=False,
+                        ),
                     ),
                     gcp.dataplex.DatascanDataQualitySpecRuleArgs(
                         column="power_type",
@@ -719,11 +734,11 @@ class Datascan(pulumi.CustomResource):
                         column="number_of_docks",
                         dimension="VALIDITY",
                         statistic_range_expectation=gcp.dataplex.DatascanDataQualitySpecRuleStatisticRangeExpectationArgs(
-                            max_value="15",
-                            min_value="5",
                             statistic="MEAN",
-                            strict_max_enabled=True,
+                            min_value="5",
+                            max_value="15",
                             strict_min_enabled=True,
+                            strict_max_enabled=True,
                         ),
                     ),
                     gcp.dataplex.DatascanDataQualitySpecRuleArgs(
@@ -740,23 +755,7 @@ class Datascan(pulumi.CustomResource):
                         ),
                     ),
                 ],
-                sampling_percent=5,
             ),
-            data_scan_id="dataquality-full",
-            description="Example resource - Full Datascan Quality",
-            display_name="Full Datascan Quality",
-            execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
-                field="modified_date",
-                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
-                    schedule=gcp.dataplex.DatascanExecutionSpecTriggerScheduleArgs(
-                        cron="TZ=America/New_York 1 1 * * *",
-                    ),
-                ),
-            ),
-            labels={
-                "author": "billing",
-            },
-            location="us-central1",
             project="my-project-name")
         ```
 
@@ -834,18 +833,18 @@ class Datascan(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic_profile = gcp.dataplex.Datascan("basicProfile",
+        basic_profile = gcp.dataplex.Datascan("basic_profile",
+            location="us-central1",
+            data_scan_id="dataprofile-basic",
             data=gcp.dataplex.DatascanDataArgs(
                 resource="//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
             ),
-            data_profile_spec=gcp.dataplex.DatascanDataProfileSpecArgs(),
-            data_scan_id="dataprofile-basic",
             execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
                 trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
                     on_demand=gcp.dataplex.DatascanExecutionSpecTriggerOnDemandArgs(),
                 ),
             ),
-            location="us-central1",
+            data_profile_spec=gcp.dataplex.DatascanDataProfileSpecArgs(),
             project="my-project-name")
         ```
         ### Dataplex Datascan Full Profile
@@ -854,13 +853,7 @@ class Datascan(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        source = gcp.bigquery.Dataset("source",
-            dataset_id="dataplex_dataset",
-            friendly_name="test",
-            description="This is a test description",
-            location="US",
-            delete_contents_on_destroy=True)
-        full_profile = gcp.dataplex.Datascan("fullProfile",
+        full_profile = gcp.dataplex.Datascan("full_profile",
             location="us-central1",
             display_name="Full Datascan Profile",
             data_scan_id="dataprofile-full",
@@ -893,8 +886,13 @@ class Datascan(pulumi.CustomResource):
                     ),
                 ),
             ),
-            project="my-project-name",
-            opts=pulumi.ResourceOptions(depends_on=[source]))
+            project="my-project-name")
+        source = gcp.bigquery.Dataset("source",
+            dataset_id="dataplex_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="US",
+            delete_contents_on_destroy=True)
         ```
         ### Dataplex Datascan Basic Quality
 
@@ -902,27 +900,27 @@ class Datascan(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic_quality = gcp.dataplex.Datascan("basicQuality",
+        basic_quality = gcp.dataplex.Datascan("basic_quality",
+            location="us-central1",
+            data_scan_id="dataquality-basic",
             data=gcp.dataplex.DatascanDataArgs(
                 resource="//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
             ),
-            data_quality_spec=gcp.dataplex.DatascanDataQualitySpecArgs(
-                rules=[gcp.dataplex.DatascanDataQualitySpecRuleArgs(
-                    description="rule 1 for validity dimension",
-                    dimension="VALIDITY",
-                    name="rule1",
-                    table_condition_expectation=gcp.dataplex.DatascanDataQualitySpecRuleTableConditionExpectationArgs(
-                        sql_expression="COUNT(*) > 0",
-                    ),
-                )],
-            ),
-            data_scan_id="dataquality-basic",
             execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
                 trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
                     on_demand=gcp.dataplex.DatascanExecutionSpecTriggerOnDemandArgs(),
                 ),
             ),
-            location="us-central1",
+            data_quality_spec=gcp.dataplex.DatascanDataQualitySpecArgs(
+                rules=[gcp.dataplex.DatascanDataQualitySpecRuleArgs(
+                    dimension="VALIDITY",
+                    name="rule1",
+                    description="rule 1 for validity dimension",
+                    table_condition_expectation=gcp.dataplex.DatascanDataQualitySpecRuleTableConditionExpectationArgs(
+                        sql_expression="COUNT(*) > 0",
+                    ),
+                )],
+            ),
             project="my-project-name")
         ```
         ### Dataplex Datascan Full Quality
@@ -931,30 +929,46 @@ class Datascan(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        full_quality = gcp.dataplex.Datascan("fullQuality",
+        full_quality = gcp.dataplex.Datascan("full_quality",
+            location="us-central1",
+            display_name="Full Datascan Quality",
+            data_scan_id="dataquality-full",
+            description="Example resource - Full Datascan Quality",
+            labels={
+                "author": "billing",
+            },
             data=gcp.dataplex.DatascanDataArgs(
                 resource="//bigquery.googleapis.com/projects/bigquery-public-data/datasets/austin_bikeshare/tables/bikeshare_stations",
             ),
+            execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
+                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
+                    schedule=gcp.dataplex.DatascanExecutionSpecTriggerScheduleArgs(
+                        cron="TZ=America/New_York 1 1 * * *",
+                    ),
+                ),
+                field="modified_date",
+            ),
             data_quality_spec=gcp.dataplex.DatascanDataQualitySpecArgs(
+                sampling_percent=5,
                 row_filter="station_id > 1000",
                 rules=[
                     gcp.dataplex.DatascanDataQualitySpecRuleArgs(
                         column="address",
                         dimension="VALIDITY",
-                        non_null_expectation=gcp.dataplex.DatascanDataQualitySpecRuleNonNullExpectationArgs(),
                         threshold=0.99,
+                        non_null_expectation=gcp.dataplex.DatascanDataQualitySpecRuleNonNullExpectationArgs(),
                     ),
                     gcp.dataplex.DatascanDataQualitySpecRuleArgs(
                         column="council_district",
                         dimension="VALIDITY",
                         ignore_null=True,
-                        range_expectation=gcp.dataplex.DatascanDataQualitySpecRuleRangeExpectationArgs(
-                            max_value="10",
-                            min_value="1",
-                            strict_max_enabled=False,
-                            strict_min_enabled=True,
-                        ),
                         threshold=0.9,
+                        range_expectation=gcp.dataplex.DatascanDataQualitySpecRuleRangeExpectationArgs(
+                            min_value="1",
+                            max_value="10",
+                            strict_min_enabled=True,
+                            strict_max_enabled=False,
+                        ),
                     ),
                     gcp.dataplex.DatascanDataQualitySpecRuleArgs(
                         column="power_type",
@@ -984,11 +998,11 @@ class Datascan(pulumi.CustomResource):
                         column="number_of_docks",
                         dimension="VALIDITY",
                         statistic_range_expectation=gcp.dataplex.DatascanDataQualitySpecRuleStatisticRangeExpectationArgs(
-                            max_value="15",
-                            min_value="5",
                             statistic="MEAN",
-                            strict_max_enabled=True,
+                            min_value="5",
+                            max_value="15",
                             strict_min_enabled=True,
+                            strict_max_enabled=True,
                         ),
                     ),
                     gcp.dataplex.DatascanDataQualitySpecRuleArgs(
@@ -1005,23 +1019,7 @@ class Datascan(pulumi.CustomResource):
                         ),
                     ),
                 ],
-                sampling_percent=5,
             ),
-            data_scan_id="dataquality-full",
-            description="Example resource - Full Datascan Quality",
-            display_name="Full Datascan Quality",
-            execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
-                field="modified_date",
-                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
-                    schedule=gcp.dataplex.DatascanExecutionSpecTriggerScheduleArgs(
-                        cron="TZ=America/New_York 1 1 * * *",
-                    ),
-                ),
-            ),
-            labels={
-                "author": "billing",
-            },
-            location="us-central1",
             project="my-project-name")
         ```
 

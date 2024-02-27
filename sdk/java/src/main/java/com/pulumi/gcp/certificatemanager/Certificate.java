@@ -48,16 +48,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new DnsAuthorization(&#34;instance&#34;, DnsAuthorizationArgs.builder()        
+ *             .name(&#34;dns-auth&#34;)
  *             .description(&#34;The default dnss&#34;)
  *             .domain(&#34;subdomain.hashicorptest.com&#34;)
  *             .build());
  * 
  *         var instance2 = new DnsAuthorization(&#34;instance2&#34;, DnsAuthorizationArgs.builder()        
+ *             .name(&#34;dns-auth2&#34;)
  *             .description(&#34;The default dnss&#34;)
  *             .domain(&#34;subdomain2.hashicorptest.com&#34;)
  *             .build());
  * 
  *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
+ *             .name(&#34;dns-cert&#34;)
  *             .description(&#34;The default cert&#34;)
  *             .scope(&#34;EDGE_CACHE&#34;)
  *             .labels(Map.of(&#34;env&#34;, &#34;test&#34;))
@@ -83,6 +86,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.certificateauthority.CaPool;
  * import com.pulumi.gcp.certificateauthority.CaPoolArgs;
+ * import com.pulumi.gcp.certificatemanager.CertificateIssuanceConfig;
+ * import com.pulumi.gcp.certificatemanager.CertificateIssuanceConfigArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.CertificateIssuanceConfigCertificateAuthorityConfigArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs;
+ * import com.pulumi.gcp.certificatemanager.Certificate;
+ * import com.pulumi.gcp.certificatemanager.CertificateArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.CertificateManagedArgs;
  * import com.pulumi.gcp.certificateauthority.Authority;
  * import com.pulumi.gcp.certificateauthority.AuthorityArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
@@ -95,14 +105,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
- * import com.pulumi.gcp.certificatemanager.CertificateIssuanceConfig;
- * import com.pulumi.gcp.certificatemanager.CertificateIssuanceConfigArgs;
- * import com.pulumi.gcp.certificatemanager.inputs.CertificateIssuanceConfigCertificateAuthorityConfigArgs;
- * import com.pulumi.gcp.certificatemanager.inputs.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs;
- * import com.pulumi.gcp.certificatemanager.Certificate;
- * import com.pulumi.gcp.certificatemanager.CertificateArgs;
- * import com.pulumi.gcp.certificatemanager.inputs.CertificateManagedArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -117,8 +119,32 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var pool = new CaPool(&#34;pool&#34;, CaPoolArgs.builder()        
+ *             .name(&#34;ca-pool&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .tier(&#34;ENTERPRISE&#34;)
+ *             .build());
+ * 
+ *         var issuanceconfig = new CertificateIssuanceConfig(&#34;issuanceconfig&#34;, CertificateIssuanceConfigArgs.builder()        
+ *             .name(&#34;issuance-config&#34;)
+ *             .description(&#34;sample description for the certificate issuanceConfigs&#34;)
+ *             .certificateAuthorityConfig(CertificateIssuanceConfigCertificateAuthorityConfigArgs.builder()
+ *                 .certificateAuthorityServiceConfig(CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs.builder()
+ *                     .caPool(pool.id())
+ *                     .build())
+ *                 .build())
+ *             .lifetime(&#34;1814400s&#34;)
+ *             .rotationWindowPercentage(34)
+ *             .keyAlgorithm(&#34;ECDSA_P256&#34;)
+ *             .build());
+ * 
+ *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
+ *             .name(&#34;issuance-config-cert&#34;)
+ *             .description(&#34;The default cert&#34;)
+ *             .scope(&#34;EDGE_CACHE&#34;)
+ *             .managed(CertificateManagedArgs.builder()
+ *                 .domains(&#34;terraform.subdomain1.com&#34;)
+ *                 .issuanceConfig(issuanceconfig.id())
+ *                 .build())
  *             .build());
  * 
  *         var caAuthority = new Authority(&#34;caAuthority&#34;, AuthorityArgs.builder()        
@@ -158,29 +184,6 @@ import javax.annotation.Nullable;
  *             .ignoreActiveCertificatesOnDeletion(true)
  *             .build());
  * 
- *         var issuanceconfig = new CertificateIssuanceConfig(&#34;issuanceconfig&#34;, CertificateIssuanceConfigArgs.builder()        
- *             .description(&#34;sample description for the certificate issuanceConfigs&#34;)
- *             .certificateAuthorityConfig(CertificateIssuanceConfigCertificateAuthorityConfigArgs.builder()
- *                 .certificateAuthorityServiceConfig(CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs.builder()
- *                     .caPool(pool.id())
- *                     .build())
- *                 .build())
- *             .lifetime(&#34;1814400s&#34;)
- *             .rotationWindowPercentage(34)
- *             .keyAlgorithm(&#34;ECDSA_P256&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(caAuthority)
- *                 .build());
- * 
- *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
- *             .description(&#34;The default cert&#34;)
- *             .scope(&#34;EDGE_CACHE&#34;)
- *             .managed(CertificateManagedArgs.builder()
- *                 .domains(&#34;terraform.subdomain1.com&#34;)
- *                 .issuanceConfig(issuanceconfig.id())
- *                 .build())
- *             .build());
- * 
  *     }
  * }
  * ```
@@ -210,16 +213,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new DnsAuthorization(&#34;instance&#34;, DnsAuthorizationArgs.builder()        
+ *             .name(&#34;dns-auth&#34;)
  *             .description(&#34;The default dnss&#34;)
  *             .domain(&#34;subdomain.hashicorptest.com&#34;)
  *             .build());
  * 
  *         var instance2 = new DnsAuthorization(&#34;instance2&#34;, DnsAuthorizationArgs.builder()        
+ *             .name(&#34;dns-auth2&#34;)
  *             .description(&#34;The default dnss&#34;)
  *             .domain(&#34;subdomain2.hashicorptest.com&#34;)
  *             .build());
  * 
  *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
+ *             .name(&#34;self-managed-cert&#34;)
  *             .description(&#34;Global cert&#34;)
  *             .scope(&#34;EDGE_CACHE&#34;)
  *             .managed(CertificateManagedArgs.builder()
@@ -259,11 +265,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
+ *             .name(&#34;self-managed-cert&#34;)
  *             .description(&#34;Regional cert&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .selfManaged(CertificateSelfManagedArgs.builder()
- *                 .pemCertificate(Files.readString(Paths.get(&#34;test-fixtures/cert.pem&#34;)))
- *                 .pemPrivateKey(Files.readString(Paths.get(&#34;test-fixtures/private-key.pem&#34;)))
+ *                 .pemCertificate(StdFunctions.file(FileArgs.builder()
+ *                     .input(&#34;test-fixtures/cert.pem&#34;)
+ *                     .build()).result())
+ *                 .pemPrivateKey(StdFunctions.file(FileArgs.builder()
+ *                     .input(&#34;test-fixtures/private-key.pem&#34;)
+ *                     .build()).result())
  *                 .build())
  *             .build());
  * 
@@ -279,6 +290,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.certificateauthority.CaPool;
  * import com.pulumi.gcp.certificateauthority.CaPoolArgs;
+ * import com.pulumi.gcp.certificatemanager.CertificateIssuanceConfig;
+ * import com.pulumi.gcp.certificatemanager.CertificateIssuanceConfigArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.CertificateIssuanceConfigCertificateAuthorityConfigArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs;
+ * import com.pulumi.gcp.certificatemanager.Certificate;
+ * import com.pulumi.gcp.certificatemanager.CertificateArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.CertificateManagedArgs;
  * import com.pulumi.gcp.certificateauthority.Authority;
  * import com.pulumi.gcp.certificateauthority.AuthorityArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
@@ -291,14 +309,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
- * import com.pulumi.gcp.certificatemanager.CertificateIssuanceConfig;
- * import com.pulumi.gcp.certificatemanager.CertificateIssuanceConfigArgs;
- * import com.pulumi.gcp.certificatemanager.inputs.CertificateIssuanceConfigCertificateAuthorityConfigArgs;
- * import com.pulumi.gcp.certificatemanager.inputs.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs;
- * import com.pulumi.gcp.certificatemanager.Certificate;
- * import com.pulumi.gcp.certificatemanager.CertificateArgs;
- * import com.pulumi.gcp.certificatemanager.inputs.CertificateManagedArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -313,8 +323,32 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var pool = new CaPool(&#34;pool&#34;, CaPoolArgs.builder()        
+ *             .name(&#34;ca-pool&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .tier(&#34;ENTERPRISE&#34;)
+ *             .build());
+ * 
+ *         var issuanceconfig = new CertificateIssuanceConfig(&#34;issuanceconfig&#34;, CertificateIssuanceConfigArgs.builder()        
+ *             .name(&#34;issuance-config&#34;)
+ *             .description(&#34;sample description for the certificate issuanceConfigs&#34;)
+ *             .certificateAuthorityConfig(CertificateIssuanceConfigCertificateAuthorityConfigArgs.builder()
+ *                 .certificateAuthorityServiceConfig(CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs.builder()
+ *                     .caPool(pool.id())
+ *                     .build())
+ *                 .build())
+ *             .lifetime(&#34;1814400s&#34;)
+ *             .rotationWindowPercentage(34)
+ *             .keyAlgorithm(&#34;ECDSA_P256&#34;)
+ *             .build());
+ * 
+ *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
+ *             .name(&#34;issuance-config-cert&#34;)
+ *             .description(&#34;sample google managed all_regions certificate with issuance config for terraform&#34;)
+ *             .scope(&#34;ALL_REGIONS&#34;)
+ *             .managed(CertificateManagedArgs.builder()
+ *                 .domains(&#34;terraform.subdomain1.com&#34;)
+ *                 .issuanceConfig(issuanceconfig.id())
+ *                 .build())
  *             .build());
  * 
  *         var caAuthority = new Authority(&#34;caAuthority&#34;, AuthorityArgs.builder()        
@@ -354,29 +388,6 @@ import javax.annotation.Nullable;
  *             .ignoreActiveCertificatesOnDeletion(true)
  *             .build());
  * 
- *         var issuanceconfig = new CertificateIssuanceConfig(&#34;issuanceconfig&#34;, CertificateIssuanceConfigArgs.builder()        
- *             .description(&#34;sample description for the certificate issuanceConfigs&#34;)
- *             .certificateAuthorityConfig(CertificateIssuanceConfigCertificateAuthorityConfigArgs.builder()
- *                 .certificateAuthorityServiceConfig(CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs.builder()
- *                     .caPool(pool.id())
- *                     .build())
- *                 .build())
- *             .lifetime(&#34;1814400s&#34;)
- *             .rotationWindowPercentage(34)
- *             .keyAlgorithm(&#34;ECDSA_P256&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(caAuthority)
- *                 .build());
- * 
- *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
- *             .description(&#34;sample google managed all_regions certificate with issuance config for terraform&#34;)
- *             .scope(&#34;ALL_REGIONS&#34;)
- *             .managed(CertificateManagedArgs.builder()
- *                 .domains(&#34;terraform.subdomain1.com&#34;)
- *                 .issuanceConfig(issuanceconfig.id())
- *                 .build())
- *             .build());
- * 
  *     }
  * }
  * ```
@@ -406,16 +417,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new DnsAuthorization(&#34;instance&#34;, DnsAuthorizationArgs.builder()        
+ *             .name(&#34;dns-auth&#34;)
  *             .description(&#34;The default dnss&#34;)
  *             .domain(&#34;subdomain.hashicorptest.com&#34;)
  *             .build());
  * 
  *         var instance2 = new DnsAuthorization(&#34;instance2&#34;, DnsAuthorizationArgs.builder()        
+ *             .name(&#34;dns-auth2&#34;)
  *             .description(&#34;The default dnss&#34;)
  *             .domain(&#34;subdomain2.hashicorptest.com&#34;)
  *             .build());
  * 
  *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
+ *             .name(&#34;dns-cert&#34;)
  *             .description(&#34;The default cert&#34;)
  *             .scope(&#34;ALL_REGIONS&#34;)
  *             .managed(CertificateManagedArgs.builder()

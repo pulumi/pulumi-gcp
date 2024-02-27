@@ -24,17 +24,18 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultFirewallPolicy = new Gcp.Compute.FirewallPolicy("defaultFirewallPolicy", new()
+    ///     var @default = new Gcp.Compute.FirewallPolicy("default", new()
     ///     {
     ///         Parent = "organizations/12345",
     ///         ShortName = "my-policy",
     ///         Description = "Example Resource",
     ///     });
     /// 
-    ///     var defaultFirewallPolicyAssociation = new Gcp.Compute.FirewallPolicyAssociation("defaultFirewallPolicyAssociation", new()
+    ///     var defaultFirewallPolicyAssociation = new Gcp.Compute.FirewallPolicyAssociation("default", new()
     ///     {
-    ///         FirewallPolicy = defaultFirewallPolicy.Id,
-    ///         AttachmentTarget = google_folder.Folder.Name,
+    ///         FirewallPolicy = @default.Id,
+    ///         AttachmentTarget = folder.Name,
+    ///         Name = "my-association",
     ///     });
     /// 
     /// });

@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *             .location(&#34;us-west1&#34;)
  *             .build());
  * 
- *         var primaryAwsCluster = new AwsCluster(&#34;primaryAwsCluster&#34;, AwsClusterArgs.builder()        
+ *         var primary = new AwsCluster(&#34;primary&#34;, AwsClusterArgs.builder()        
  *             .authorization(AwsClusterAuthorizationArgs.builder()
  *                 .adminUsers(AwsClusterAuthorizationAdminUserArgs.builder()
  *                     .username(&#34;my@service-account.com&#34;)
@@ -127,6 +127,7 @@ import javax.annotation.Nullable;
  *                 .project(&#34;my-project-number&#34;)
  *                 .build())
  *             .location(&#34;us-west1&#34;)
+ *             .name(&#34;name&#34;)
  *             .networking(AwsClusterNetworkingArgs.builder()
  *                 .podAddressCidrBlocks(&#34;10.2.0.0/16&#34;)
  *                 .serviceAddressCidrBlocks(&#34;10.1.0.0/16&#34;)
@@ -142,7 +143,7 @@ import javax.annotation.Nullable;
  *                 .maxNodeCount(5)
  *                 .minNodeCount(1)
  *                 .build())
- *             .cluster(primaryAwsCluster.name())
+ *             .cluster(primary.name())
  *             .config(AwsNodePoolConfigArgs.builder()
  *                 .configEncryption(AwsNodePoolConfigConfigEncryptionArgs.builder()
  *                     .kmsKeyArn(&#34;arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111&#34;)
@@ -175,6 +176,7 @@ import javax.annotation.Nullable;
  *             .maxPodsConstraint(AwsNodePoolMaxPodsConstraintArgs.builder()
  *                 .maxPodsPerNode(110)
  *                 .build())
+ *             .name(&#34;node-pool-name&#34;)
  *             .subnetId(&#34;subnet-00000000000000000&#34;)
  *             .version(versions.applyValue(getAwsVersionsResult -&gt; getAwsVersionsResult.validVersions()[0]))
  *             .annotations(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
@@ -237,7 +239,7 @@ import javax.annotation.Nullable;
  *             .location(&#34;us-west1&#34;)
  *             .build());
  * 
- *         var primaryAwsCluster = new AwsCluster(&#34;primaryAwsCluster&#34;, AwsClusterArgs.builder()        
+ *         var primary = new AwsCluster(&#34;primary&#34;, AwsClusterArgs.builder()        
  *             .authorization(AwsClusterAuthorizationArgs.builder()
  *                 .adminUsers(AwsClusterAuthorizationAdminUserArgs.builder()
  *                     .username(&#34;my@service-account.com&#34;)
@@ -285,6 +287,7 @@ import javax.annotation.Nullable;
  *                 .project(&#34;my-project-number&#34;)
  *                 .build())
  *             .location(&#34;us-west1&#34;)
+ *             .name(&#34;name&#34;)
  *             .networking(AwsClusterNetworkingArgs.builder()
  *                 .podAddressCidrBlocks(&#34;10.2.0.0/16&#34;)
  *                 .serviceAddressCidrBlocks(&#34;10.1.0.0/16&#34;)
@@ -300,7 +303,7 @@ import javax.annotation.Nullable;
  *                 .maxNodeCount(5)
  *                 .minNodeCount(1)
  *                 .build())
- *             .cluster(primaryAwsCluster.name())
+ *             .cluster(primary.name())
  *             .config(AwsNodePoolConfigArgs.builder()
  *                 .configEncryption(AwsNodePoolConfigConfigEncryptionArgs.builder()
  *                     .kmsKeyArn(&#34;arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111&#34;)
@@ -333,6 +336,7 @@ import javax.annotation.Nullable;
  *             .maxPodsConstraint(AwsNodePoolMaxPodsConstraintArgs.builder()
  *                 .maxPodsPerNode(110)
  *                 .build())
+ *             .name(&#34;node-pool-name&#34;)
  *             .subnetId(&#34;subnet-00000000000000000&#34;)
  *             .version(versions.applyValue(getAwsVersionsResult -&gt; getAwsVersionsResult.validVersions()[0]))
  *             .annotations(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
@@ -375,7 +379,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.container.inputs.AwsNodePoolConfigSshConfigArgs;
  * import com.pulumi.gcp.container.inputs.AwsNodePoolConfigInstancePlacementArgs;
  * import com.pulumi.gcp.container.inputs.AwsNodePoolMaxPodsConstraintArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -394,7 +397,7 @@ import javax.annotation.Nullable;
  *             .location(&#34;us-west1&#34;)
  *             .build());
  * 
- *         var primaryAwsCluster = new AwsCluster(&#34;primaryAwsCluster&#34;, AwsClusterArgs.builder()        
+ *         var primary = new AwsCluster(&#34;primary&#34;, AwsClusterArgs.builder()        
  *             .authorization(AwsClusterAuthorizationArgs.builder()
  *                 .adminUsers(AwsClusterAuthorizationAdminUserArgs.builder()
  *                     .username(&#34;my@service-account.com&#34;)
@@ -442,6 +445,7 @@ import javax.annotation.Nullable;
  *                 .project(&#34;my-project-number&#34;)
  *                 .build())
  *             .location(&#34;us-west1&#34;)
+ *             .name(&#34;name&#34;)
  *             .networking(AwsClusterNetworkingArgs.builder()
  *                 .podAddressCidrBlocks(&#34;10.2.0.0/16&#34;)
  *                 .serviceAddressCidrBlocks(&#34;10.1.0.0/16&#34;)
@@ -450,16 +454,14 @@ import javax.annotation.Nullable;
  *             .annotations(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
  *             .description(&#34;A sample aws cluster&#34;)
  *             .project(&#34;my-project-name&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var primaryAwsNodePool = new AwsNodePool(&#34;primaryAwsNodePool&#34;, AwsNodePoolArgs.builder()        
  *             .autoscaling(AwsNodePoolAutoscalingArgs.builder()
  *                 .maxNodeCount(5)
  *                 .minNodeCount(1)
  *                 .build())
- *             .cluster(primaryAwsCluster.name())
+ *             .cluster(primary.name())
  *             .config(AwsNodePoolConfigArgs.builder()
  *                 .configEncryption(AwsNodePoolConfigConfigEncryptionArgs.builder()
  *                     .kmsKeyArn(&#34;arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111&#34;)
@@ -496,13 +498,12 @@ import javax.annotation.Nullable;
  *             .maxPodsConstraint(AwsNodePoolMaxPodsConstraintArgs.builder()
  *                 .maxPodsPerNode(110)
  *                 .build())
+ *             .name(&#34;node-pool-name&#34;)
  *             .subnetId(&#34;subnet-00000000000000000&#34;)
  *             .version(versions.applyValue(getAwsVersionsResult -&gt; getAwsVersionsResult.validVersions()[0]))
  *             .annotations(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
  *             .project(&#34;my-project-name&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

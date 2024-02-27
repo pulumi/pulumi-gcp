@@ -23,10 +23,10 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -42,7 +42,10 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///     var private_key_secret_version = new Gcp.SecretManager.SecretVersion("private-key-secret-version", new()
     ///     {
     ///         Secret = private_key_secret.Id,
-    ///         SecretData = File.ReadAllText("private-key.pem"),
+    ///         SecretData = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "private-key.pem",
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
     ///     var webhook_secret_secret = new Gcp.SecretManager.Secret("webhook-secret-secret", new()
@@ -90,6 +93,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///     var my_connection = new Gcp.CloudBuildV2.Connection("my-connection", new()
     ///     {
     ///         Location = "us-central1",
+    ///         Name = "my-terraform-ghe-connection",
     ///         GithubEnterpriseConfig = new Gcp.CloudBuildV2.Inputs.ConnectionGithubEnterpriseConfigArgs
     ///         {
     ///             HostUri = "https://ghe.com",
@@ -99,17 +103,11 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///             AppSlug = "gcb-app",
     ///             AppInstallationId = 300,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             policy_pk,
-    ///             policy_whs,
-    ///         },
     ///     });
     /// 
     ///     var my_repository = new Gcp.CloudBuildV2.Repository("my-repository", new()
     ///     {
+    ///         Name = "my-terraform-ghe-repo",
     ///         Location = "us-central1",
     ///         ParentConnection = my_connection.Id,
     ///         RemoteUri = "https://ghe.com/hashicorp/terraform-provider-google.git",
@@ -121,10 +119,10 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -140,7 +138,10 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///     var github_token_secret_version = new Gcp.SecretManager.SecretVersion("github-token-secret-version", new()
     ///     {
     ///         Secret = github_token_secret.Id,
-    ///         SecretData = File.ReadAllText("my-github-token.txt"),
+    ///         SecretData = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "my-github-token.txt",
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
     ///     var p4sa_secretAccessor = Gcp.Organizations.GetIAMPolicy.Invoke(new()
@@ -167,6 +168,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///     var my_connection = new Gcp.CloudBuildV2.Connection("my-connection", new()
     ///     {
     ///         Location = "us-central1",
+    ///         Name = "my-connection",
     ///         GithubConfig = new Gcp.CloudBuildV2.Inputs.ConnectionGithubConfigArgs
     ///         {
     ///             AppInstallationId = 123123,
@@ -180,6 +182,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///     var my_repository = new Gcp.CloudBuildV2.Repository("my-repository", new()
     ///     {
     ///         Location = "us-central1",
+    ///         Name = "my-repo",
     ///         ParentConnection = my_connection.Name,
     ///         RemoteUri = "https://github.com/myuser/myrepo.git",
     ///     });

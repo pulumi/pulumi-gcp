@@ -28,6 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networkservices.NewEndpointPolicy(ctx, "default", &networkservices.EndpointPolicyArgs{
+//				Name: pulumi.String("my-endpoint-policy"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -49,7 +50,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -73,6 +74,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networkservices.NewEndpointPolicy(ctx, "default", &networkservices.EndpointPolicyArgs{
+//				Name: pulumi.String("my-endpoint-policy"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -88,7 +90,7 @@ import (
 //						MetadataLabelMatchCriteria: pulumi.String("MATCH_ANY"),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

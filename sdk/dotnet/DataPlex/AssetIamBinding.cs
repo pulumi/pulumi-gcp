@@ -51,11 +51,11 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     ///     var policy = new Gcp.DataPlex.AssetIamPolicy("policy", new()
     ///     {
-    ///         Project = google_dataplex_asset.Example.Project,
-    ///         Location = google_dataplex_asset.Example.Location,
-    ///         Lake = google_dataplex_asset.Example.Lake,
-    ///         DataplexZone = google_dataplex_asset.Example.Dataplex_zone,
-    ///         Asset = google_dataplex_asset.Example.Name,
+    ///         Project = example.Project,
+    ///         Location = example.Location,
+    ///         Lake = example.Lake,
+    ///         DataplexZone = example.DataplexZone,
+    ///         Asset = example.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -74,11 +74,11 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var binding = new Gcp.DataPlex.AssetIamBinding("binding", new()
     ///     {
-    ///         Project = google_dataplex_asset.Example.Project,
-    ///         Location = google_dataplex_asset.Example.Location,
-    ///         Lake = google_dataplex_asset.Example.Lake,
-    ///         DataplexZone = google_dataplex_asset.Example.Dataplex_zone,
-    ///         Asset = google_dataplex_asset.Example.Name,
+    ///         Project = example.Project,
+    ///         Location = example.Location,
+    ///         Lake = example.Lake,
+    ///         DataplexZone = example.DataplexZone,
+    ///         Asset = example.Name,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -101,11 +101,11 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var member = new Gcp.DataPlex.AssetIamMember("member", new()
     ///     {
-    ///         Project = google_dataplex_asset.Example.Project,
-    ///         Location = google_dataplex_asset.Example.Location,
-    ///         Lake = google_dataplex_asset.Example.Lake,
-    ///         DataplexZone = google_dataplex_asset.Example.Dataplex_zone,
-    ///         Asset = google_dataplex_asset.Example.Name,
+    ///         Project = example.Project,
+    ///         Location = example.Location,
+    ///         Lake = example.Lake,
+    ///         DataplexZone = example.DataplexZone,
+    ///         Asset = example.Name,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

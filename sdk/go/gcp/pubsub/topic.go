@@ -38,6 +38,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+//				Name: pulumi.String("example-topic"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -66,19 +67,22 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
+//			keyRing, err := kms.NewKeyRing(ctx, "key_ring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("example-keyring"),
 //				Location: pulumi.String("global"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
+//			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
+//				Name:    pulumi.String("example-key"),
 //				KeyRing: keyRing.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+//				Name:       pulumi.String("example-topic"),
 //				KmsKeyName: cryptoKey.ID(),
 //			})
 //			if err != nil {
@@ -104,6 +108,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+//				Name: pulumi.String("example-topic"),
 //				MessageStoragePolicy: &pubsub.TopicMessageStoragePolicyArgs{
 //					AllowedPersistenceRegions: pulumi.StringArray{
 //						pulumi.String("europe-west3"),
@@ -132,7 +137,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleSchema, err := pubsub.NewSchema(ctx, "exampleSchema", &pubsub.SchemaArgs{
+//			_, err := pubsub.NewSchema(ctx, "example", &pubsub.SchemaArgs{
+//				Name: pulumi.String("example"),
 //				Type: pulumi.String("AVRO"),
 //				Definition: pulumi.String(`{
 //	  "type" : "record",
@@ -155,14 +161,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = pubsub.NewTopic(ctx, "exampleTopic", &pubsub.TopicArgs{
+//			_, err = pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+//				Name: pulumi.String("example-topic"),
 //				SchemaSettings: &pubsub.TopicSchemaSettingsArgs{
 //					Schema:   pulumi.String("projects/my-project-name/schemas/example"),
 //					Encoding: pulumi.String("JSON"),
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				exampleSchema,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

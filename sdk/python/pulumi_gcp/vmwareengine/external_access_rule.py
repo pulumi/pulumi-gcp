@@ -472,14 +472,17 @@ class ExternalAccessRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         external_access_rule_nw = gcp.vmwareengine.Network("external-access-rule-nw",
+            name="sample-nw",
             location="global",
             type="STANDARD",
             description="PC network description.")
         external_access_rule_np = gcp.vmwareengine.NetworkPolicy("external-access-rule-np",
             location="us-west1",
+            name="sample-np",
             edge_services_cidr="192.168.30.0/26",
             vmware_engine_network=external_access_rule_nw.id)
         vmw_engine_external_access_rule = gcp.vmwareengine.ExternalAccessRule("vmw-engine-external-access-rule",
+            name="sample-external-access-rule",
             parent=external_access_rule_np.id,
             priority=101,
             action="DENY",
@@ -500,11 +503,13 @@ class ExternalAccessRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         external_access_rule_nw = gcp.vmwareengine.Network("external-access-rule-nw",
+            name="sample-nw",
             location="global",
             type="STANDARD",
             description="PC network description.")
         external_access_rule_pc = gcp.vmwareengine.PrivateCloud("external-access-rule-pc",
             location="us-west1-a",
+            name="sample-pc",
             description="Sample test PC.",
             network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
                 management_cidr="192.168.50.0/24",
@@ -519,12 +524,15 @@ class ExternalAccessRule(pulumi.CustomResource):
             ))
         external_access_rule_np = gcp.vmwareengine.NetworkPolicy("external-access-rule-np",
             location="us-west1",
+            name="sample-np",
             edge_services_cidr="192.168.30.0/26",
             vmware_engine_network=external_access_rule_nw.id)
         external_access_rule_ea = gcp.vmwareengine.ExternalAddress("external-access-rule-ea",
+            name="sample-ea",
             parent=external_access_rule_pc.id,
             internal_ip="192.168.0.65")
         vmw_engine_external_access_rule = gcp.vmwareengine.ExternalAccessRule("vmw-engine-external-access-rule",
+            name="sample-external-access-rule",
             parent=external_access_rule_np.id,
             description="Sample Description",
             priority=101,
@@ -593,14 +601,17 @@ class ExternalAccessRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         external_access_rule_nw = gcp.vmwareengine.Network("external-access-rule-nw",
+            name="sample-nw",
             location="global",
             type="STANDARD",
             description="PC network description.")
         external_access_rule_np = gcp.vmwareengine.NetworkPolicy("external-access-rule-np",
             location="us-west1",
+            name="sample-np",
             edge_services_cidr="192.168.30.0/26",
             vmware_engine_network=external_access_rule_nw.id)
         vmw_engine_external_access_rule = gcp.vmwareengine.ExternalAccessRule("vmw-engine-external-access-rule",
+            name="sample-external-access-rule",
             parent=external_access_rule_np.id,
             priority=101,
             action="DENY",
@@ -621,11 +632,13 @@ class ExternalAccessRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         external_access_rule_nw = gcp.vmwareengine.Network("external-access-rule-nw",
+            name="sample-nw",
             location="global",
             type="STANDARD",
             description="PC network description.")
         external_access_rule_pc = gcp.vmwareengine.PrivateCloud("external-access-rule-pc",
             location="us-west1-a",
+            name="sample-pc",
             description="Sample test PC.",
             network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
                 management_cidr="192.168.50.0/24",
@@ -640,12 +653,15 @@ class ExternalAccessRule(pulumi.CustomResource):
             ))
         external_access_rule_np = gcp.vmwareengine.NetworkPolicy("external-access-rule-np",
             location="us-west1",
+            name="sample-np",
             edge_services_cidr="192.168.30.0/26",
             vmware_engine_network=external_access_rule_nw.id)
         external_access_rule_ea = gcp.vmwareengine.ExternalAddress("external-access-rule-ea",
+            name="sample-ea",
             parent=external_access_rule_pc.id,
             internal_ip="192.168.0.65")
         vmw_engine_external_access_rule = gcp.vmwareengine.ExternalAccessRule("vmw-engine-external-access-rule",
+            name="sample-external-access-rule",
             parent=external_access_rule_np.id,
             description="Sample Description",
             priority=101,

@@ -281,10 +281,10 @@ class AccessApprovalSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_folder = gcp.organizations.Folder("myFolder",
+        my_folder = gcp.organizations.Folder("my_folder",
             display_name="my-folder",
             parent="organizations/123456789")
-        folder_access_approval = gcp.folder.AccessApprovalSettings("folderAccessApproval",
+        folder_access_approval = gcp.folder.AccessApprovalSettings("folder_access_approval",
             folder_id=my_folder.folder_id,
             notification_emails=[
                 "testuser@example.com",
@@ -300,14 +300,19 @@ class AccessApprovalSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_folder = gcp.organizations.Folder("myFolder",
+        my_folder = gcp.organizations.Folder("my_folder",
             display_name="my-folder",
             parent="organizations/123456789")
-        my_project = gcp.organizations.Project("myProject", folder_id=my_folder.name)
-        key_ring = gcp.kms.KeyRing("keyRing",
+        my_project = gcp.organizations.Project("my_project",
+            name="My Project",
+            project_id="your-project-id",
+            folder_id=my_folder.name)
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="key-ring",
             location="global",
             project=my_project.project_id)
-        crypto_key = gcp.kms.CryptoKey("cryptoKey",
+        crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="crypto-key",
             key_ring=key_ring.id,
             purpose="ASYMMETRIC_SIGN",
             version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
@@ -319,13 +324,12 @@ class AccessApprovalSettings(pulumi.CustomResource):
             role="roles/cloudkms.signerVerifier",
             member=service_account.apply(lambda service_account: f"serviceAccount:{service_account.account_email}"))
         crypto_key_version = gcp.kms.get_kms_crypto_key_version_output(crypto_key=crypto_key.id)
-        folder_access_approval = gcp.folder.AccessApprovalSettings("folderAccessApproval",
+        folder_access_approval = gcp.folder.AccessApprovalSettings("folder_access_approval",
             folder_id=my_folder.folder_id,
             active_key_version=crypto_key_version.name,
             enrolled_services=[gcp.folder.AccessApprovalSettingsEnrolledServiceArgs(
                 cloud_product="all",
-            )],
-            opts=pulumi.ResourceOptions(depends_on=[iam]))
+            )])
         ```
 
         ## Import
@@ -381,10 +385,10 @@ class AccessApprovalSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_folder = gcp.organizations.Folder("myFolder",
+        my_folder = gcp.organizations.Folder("my_folder",
             display_name="my-folder",
             parent="organizations/123456789")
-        folder_access_approval = gcp.folder.AccessApprovalSettings("folderAccessApproval",
+        folder_access_approval = gcp.folder.AccessApprovalSettings("folder_access_approval",
             folder_id=my_folder.folder_id,
             notification_emails=[
                 "testuser@example.com",
@@ -400,14 +404,19 @@ class AccessApprovalSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_folder = gcp.organizations.Folder("myFolder",
+        my_folder = gcp.organizations.Folder("my_folder",
             display_name="my-folder",
             parent="organizations/123456789")
-        my_project = gcp.organizations.Project("myProject", folder_id=my_folder.name)
-        key_ring = gcp.kms.KeyRing("keyRing",
+        my_project = gcp.organizations.Project("my_project",
+            name="My Project",
+            project_id="your-project-id",
+            folder_id=my_folder.name)
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="key-ring",
             location="global",
             project=my_project.project_id)
-        crypto_key = gcp.kms.CryptoKey("cryptoKey",
+        crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="crypto-key",
             key_ring=key_ring.id,
             purpose="ASYMMETRIC_SIGN",
             version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
@@ -419,13 +428,12 @@ class AccessApprovalSettings(pulumi.CustomResource):
             role="roles/cloudkms.signerVerifier",
             member=service_account.apply(lambda service_account: f"serviceAccount:{service_account.account_email}"))
         crypto_key_version = gcp.kms.get_kms_crypto_key_version_output(crypto_key=crypto_key.id)
-        folder_access_approval = gcp.folder.AccessApprovalSettings("folderAccessApproval",
+        folder_access_approval = gcp.folder.AccessApprovalSettings("folder_access_approval",
             folder_id=my_folder.folder_id,
             active_key_version=crypto_key_version.name,
             enrolled_services=[gcp.folder.AccessApprovalSettingsEnrolledServiceArgs(
                 cloud_product="all",
-            )],
-            opts=pulumi.ResourceOptions(depends_on=[iam]))
+            )])
         ```
 
         ## Import

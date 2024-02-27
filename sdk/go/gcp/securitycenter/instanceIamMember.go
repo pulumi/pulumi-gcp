@@ -35,7 +35,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := datafusion.NewInstance(ctx, "basicInstance", &datafusion.InstanceArgs{
+//			_, err := datafusion.NewInstance(ctx, "basic_instance", &datafusion.InstanceArgs{
+//				Name:   pulumi.String("my-instance"),
 //				Region: pulumi.String("us-central1"),
 //				Type:   pulumi.String("BASIC"),
 //			})
@@ -69,11 +70,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			network, err := compute.NewNetwork(ctx, "network", nil)
+//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Name: pulumi.String("datafusion-full-network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "privateIpAlloc", &compute.GlobalAddressArgs{
+//			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "private_ip_alloc", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("datafusion-ip-alloc"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				PrefixLength: pulumi.Int(22),
@@ -82,7 +86,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = datafusion.NewInstance(ctx, "extendedInstance", &datafusion.InstanceArgs{
+//			_, err = datafusion.NewInstance(ctx, "extended_instance", &datafusion.InstanceArgs{
+//				Name:                        pulumi.String("my-instance"),
 //				Description:                 pulumi.String("My Data Fusion instance"),
 //				DisplayName:                 pulumi.String("My Data Fusion instance"),
 //				Region:                      pulumi.String("us-central1"),
@@ -135,14 +140,27 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
+//			keyRing, err := kms.NewKeyRing(ctx, "key_ring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("my-instance"),
 //				Location: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
+//			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
+//				Name:    pulumi.String("my-instance"),
 //				KeyRing: keyRing.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datafusion.NewInstance(ctx, "cmek", &datafusion.InstanceArgs{
+//				Name:   pulumi.String("my-instance"),
+//				Region: pulumi.String("us-central1"),
+//				Type:   pulumi.String("BASIC"),
+//				CryptoKeyConfig: &datafusion.InstanceCryptoKeyConfigArgs{
+//					KeyReference: cryptoKey.ID(),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -151,23 +169,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			cryptoKeyMember, err := kms.NewCryptoKeyIAMMember(ctx, "cryptoKeyMember", &kms.CryptoKeyIAMMemberArgs{
+//			_, err = kms.NewCryptoKeyIAMMember(ctx, "crypto_key_member", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: cryptoKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-datafusion.iam.gserviceaccount.com", project.Number)),
 //			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = datafusion.NewInstance(ctx, "cmek", &datafusion.InstanceArgs{
-//				Region: pulumi.String("us-central1"),
-//				Type:   pulumi.String("BASIC"),
-//				CryptoKeyConfig: &datafusion.InstanceCryptoKeyConfigArgs{
-//					KeyReference: cryptoKey.ID(),
-//				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				cryptoKeyMember,
-//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -190,10 +196,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := datafusion.NewInstance(ctx, "enterpriseInstance", &datafusion.InstanceArgs{
-//				EnableRbac: pulumi.Bool(true),
+//			_, err := datafusion.NewInstance(ctx, "enterprise_instance", &datafusion.InstanceArgs{
+//				Name:       pulumi.String("my-instance"),
 //				Region:     pulumi.String("us-central1"),
 //				Type:       pulumi.String("ENTERPRISE"),
+//				EnableRbac: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -218,11 +225,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			eventTopic, err := pubsub.NewTopic(ctx, "eventTopic", nil)
+//			eventTopic, err := pubsub.NewTopic(ctx, "event", &pubsub.TopicArgs{
+//				Name: pulumi.String("my-instance"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = datafusion.NewInstance(ctx, "eventInstance", &datafusion.InstanceArgs{
+//			_, err = datafusion.NewInstance(ctx, "event", &datafusion.InstanceArgs{
+//				Name:   pulumi.String("my-instance"),
 //				Region: pulumi.String("us-central1"),
 //				Type:   pulumi.String("BASIC"),
 //				EventPublishConfig: &datafusion.InstanceEventPublishConfigArgs{
@@ -253,9 +263,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := datafusion.NewInstance(ctx, "zone", &datafusion.InstanceArgs{
+//				Name:   pulumi.String("my-instance"),
 //				Region: pulumi.String("us-central1"),
-//				Type:   pulumi.String("DEVELOPER"),
 //				Zone:   pulumi.String("us-central1-a"),
+//				Type:   pulumi.String("DEVELOPER"),
 //			})
 //			if err != nil {
 //				return err

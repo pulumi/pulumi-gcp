@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.gkebackup.getRestorePlanIamPolicy({
- *     project: google_gke_backup_restore_plan.all_ns.project,
- *     location: google_gke_backup_restore_plan.all_ns.location,
- *     name: google_gke_backup_restore_plan.all_ns.name,
+ *     project: allNs.project,
+ *     location: allNs.location,
+ *     name: allNs.name,
  * });
  * ```
  */
@@ -81,9 +81,9 @@ export interface GetRestorePlanIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.gkebackup.getRestorePlanIamPolicy({
- *     project: google_gke_backup_restore_plan.all_ns.project,
- *     location: google_gke_backup_restore_plan.all_ns.location,
- *     name: google_gke_backup_restore_plan.all_ns.name,
+ *     project: allNs.project,
+ *     location: allNs.location,
+ *     name: allNs.name,
  * });
  * ```
  */

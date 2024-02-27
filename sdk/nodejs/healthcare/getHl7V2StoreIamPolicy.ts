@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const foo = gcp.healthcare.getHl7V2StoreIamPolicy({
- *     hl7V2StoreId: google_healthcare_hl7_v2_store.hl7_v2_store.id,
+ *     hl7V2StoreId: hl7V2Store.id,
  * });
  * ```
  */
@@ -67,7 +67,7 @@ export interface GetHl7V2StoreIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const foo = gcp.healthcare.getHl7V2StoreIamPolicy({
- *     hl7V2StoreId: google_healthcare_hl7_v2_store.hl7_v2_store.id,
+ *     hl7V2StoreId: hl7V2Store.id,
  * });
  * ```
  */

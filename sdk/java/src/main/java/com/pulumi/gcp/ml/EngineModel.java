@@ -54,6 +54,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new EngineModel(&#34;default&#34;, EngineModelArgs.builder()        
+ *             .name(&#34;default&#34;)
  *             .description(&#34;My model&#34;)
  *             .regions(&#34;us-central1&#34;)
  *             .build());
@@ -84,11 +85,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new EngineModel(&#34;default&#34;, EngineModelArgs.builder()        
+ *             .name(&#34;default&#34;)
  *             .description(&#34;My model&#34;)
- *             .labels(Map.of(&#34;my_model&#34;, &#34;foo&#34;))
- *             .onlinePredictionConsoleLogging(true)
- *             .onlinePredictionLogging(true)
  *             .regions(&#34;us-central1&#34;)
+ *             .labels(Map.of(&#34;my_model&#34;, &#34;foo&#34;))
+ *             .onlinePredictionLogging(true)
+ *             .onlinePredictionConsoleLogging(true)
  *             .build());
  * 
  *     }

@@ -53,6 +53,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var keyring = new KeyRing(&#34;keyring&#34;, KeyRingArgs.builder()        
+ *             .name(&#34;keyring-example&#34;)
  *             .location(&#34;global&#34;)
  *             .build());
  * 
@@ -99,6 +100,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var keyring = new KeyRing(&#34;keyring&#34;, KeyRingArgs.builder()        
+ *             .name(&#34;keyring-example&#34;)
  *             .location(&#34;global&#34;)
  *             .build());
  * 
@@ -147,8 +149,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var keyRing = new KeyRingIAMBinding(&#34;keyRing&#34;, KeyRingIAMBindingArgs.builder()        
  *             .keyRingId(&#34;your-key-ring-id&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
  *             .role(&#34;roles/cloudkms.admin&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
  * 
  *     }
@@ -179,14 +181,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var keyRing = new KeyRingIAMBinding(&#34;keyRing&#34;, KeyRingIAMBindingArgs.builder()        
+ *             .keyRingId(&#34;your-key-ring-id&#34;)
+ *             .role(&#34;roles/cloudkms.admin&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
  *             .condition(KeyRingIAMBindingConditionArgs.builder()
+ *                 .title(&#34;expires_after_2019_12_31&#34;)
  *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
  *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
- *                 .title(&#34;expires_after_2019_12_31&#34;)
  *                 .build())
- *             .keyRingId(&#34;your-key-ring-id&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
- *             .role(&#34;roles/cloudkms.admin&#34;)
  *             .build());
  * 
  *     }
@@ -217,8 +219,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var keyRing = new KeyRingIAMMember(&#34;keyRing&#34;, KeyRingIAMMemberArgs.builder()        
  *             .keyRingId(&#34;your-key-ring-id&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
  *             .role(&#34;roles/cloudkms.admin&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
  *             .build());
  * 
  *     }
@@ -249,14 +251,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var keyRing = new KeyRingIAMMember(&#34;keyRing&#34;, KeyRingIAMMemberArgs.builder()        
+ *             .keyRingId(&#34;your-key-ring-id&#34;)
+ *             .role(&#34;roles/cloudkms.admin&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
  *             .condition(KeyRingIAMMemberConditionArgs.builder()
+ *                 .title(&#34;expires_after_2019_12_31&#34;)
  *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
  *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
- *                 .title(&#34;expires_after_2019_12_31&#34;)
  *                 .build())
- *             .keyRingId(&#34;your-key-ring-id&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
- *             .role(&#34;roles/cloudkms.admin&#34;)
  *             .build());
  * 
  *     }

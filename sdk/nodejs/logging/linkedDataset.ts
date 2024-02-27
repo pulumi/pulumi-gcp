@@ -22,15 +22,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const loggingLinkedDatasetProjectBucketConfig = new gcp.logging.ProjectBucketConfig("loggingLinkedDatasetProjectBucketConfig", {
+ * const loggingLinkedDataset = new gcp.logging.ProjectBucketConfig("logging_linked_dataset", {
  *     location: "global",
  *     project: "my-project-name",
  *     enableAnalytics: true,
  *     bucketId: "my-bucket",
  * });
- * const loggingLinkedDatasetLinkedDataset = new gcp.logging.LinkedDataset("loggingLinkedDatasetLinkedDataset", {
+ * const loggingLinkedDatasetLinkedDataset = new gcp.logging.LinkedDataset("logging_linked_dataset", {
  *     linkId: "mylink",
- *     bucket: loggingLinkedDatasetProjectBucketConfig.id,
+ *     bucket: loggingLinkedDataset.id,
  *     description: "Linked dataset test",
  * });
  * ```
@@ -40,20 +40,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const loggingLinkedDatasetProjectBucketConfig = new gcp.logging.ProjectBucketConfig("loggingLinkedDatasetProjectBucketConfig", {
- *     bucketId: "my-bucket",
- *     enableAnalytics: true,
+ * const loggingLinkedDataset = new gcp.logging.ProjectBucketConfig("logging_linked_dataset", {
  *     location: "global",
  *     project: "my-project-name",
+ *     enableAnalytics: true,
+ *     bucketId: "my-bucket",
  * });
- * const loggingLinkedDatasetLinkedDataset = new gcp.logging.LinkedDataset("loggingLinkedDatasetLinkedDataset", {
- *     bucket: "my-bucket",
- *     description: "Linked dataset test",
+ * const loggingLinkedDatasetLinkedDataset = new gcp.logging.LinkedDataset("logging_linked_dataset", {
  *     linkId: "mylink",
- *     location: "global",
+ *     bucket: "my-bucket",
  *     parent: "projects/my-project-name",
- * }, {
- *     dependsOn: ["google_logging_project_bucket_config.logging_linked_dataset"],
+ *     location: "global",
+ *     description: "Linked dataset test",
  * });
  * ```
  *

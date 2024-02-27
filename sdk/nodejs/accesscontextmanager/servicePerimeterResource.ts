@@ -37,14 +37,15 @@ import * as utilities from "../utilities";
  *     parent: "organizations/123456789",
  *     title: "my policy",
  * });
- * const service_perimeter_resourceServicePerimeter = new gcp.accesscontextmanager.ServicePerimeter("service-perimeter-resourceServicePerimeter", {
+ * const service_perimeter_resourceServicePerimeter = new gcp.accesscontextmanager.ServicePerimeter("service-perimeter-resource", {
  *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
+ *     name: pulumi.interpolate`accessPolicies/${access_policy.name}/servicePerimeters/restrict_all`,
  *     title: "restrict_all",
  *     status: {
  *         restrictedServices: ["storage.googleapis.com"],
  *     },
  * });
- * const service_perimeter_resourceServicePerimeterResource = new gcp.accesscontextmanager.ServicePerimeterResource("service-perimeter-resourceServicePerimeterResource", {
+ * const service_perimeter_resource = new gcp.accesscontextmanager.ServicePerimeterResource("service-perimeter-resource", {
  *     perimeterName: service_perimeter_resourceServicePerimeter.name,
  *     resource: "projects/987654321",
  * });

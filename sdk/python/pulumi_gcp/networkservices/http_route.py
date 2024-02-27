@@ -416,6 +416,7 @@ class HttpRoute(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.HttpRoute("default",
+            name="my-http-route",
             labels={
                 "foo": "bar",
             },
@@ -429,8 +430,7 @@ class HttpRoute(pulumi.CustomResource):
                     )],
                     full_path_match="example",
                 )],
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
         ### Network Services Http Route Matches And Actions
 
@@ -439,6 +439,7 @@ class HttpRoute(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.HttpRoute("default",
+            name="my-http-route",
             labels={
                 "foo": "bar",
             },
@@ -529,8 +530,7 @@ class HttpRoute(pulumi.CustomResource):
                         disabled=False,
                     ),
                 ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
         ### Network Services Http Route Actions
 
@@ -539,6 +539,7 @@ class HttpRoute(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.HttpRoute("default",
+            name="my-http-route",
             labels={
                 "foo": "bar",
             },
@@ -610,8 +611,7 @@ class HttpRoute(pulumi.CustomResource):
                         removes=["removearg"],
                     ),
                 ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
         ### Network Services Http Route Mesh Basic
 
@@ -619,19 +619,20 @@ class HttpRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_mesh = gcp.networkservices.Mesh("defaultMesh",
+        default = gcp.networkservices.Mesh("default",
+            name="my-http-route",
             labels={
                 "foo": "bar",
             },
-            description="my description",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_http_route = gcp.networkservices.HttpRoute("defaultHttpRoute",
+            description="my description")
+        default_http_route = gcp.networkservices.HttpRoute("default",
+            name="my-http-route",
             labels={
                 "foo": "bar",
             },
             description="my description",
             hostnames=["example"],
-            meshes=[default_mesh.id],
+            meshes=[default.id],
             rules=[gcp.networkservices.HttpRouteRuleArgs(
                 matches=[gcp.networkservices.HttpRouteRuleMatchArgs(
                     query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
@@ -640,8 +641,7 @@ class HttpRoute(pulumi.CustomResource):
                     )],
                     full_path_match="example",
                 )],
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
 
         ## Import
@@ -701,6 +701,7 @@ class HttpRoute(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.HttpRoute("default",
+            name="my-http-route",
             labels={
                 "foo": "bar",
             },
@@ -714,8 +715,7 @@ class HttpRoute(pulumi.CustomResource):
                     )],
                     full_path_match="example",
                 )],
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
         ### Network Services Http Route Matches And Actions
 
@@ -724,6 +724,7 @@ class HttpRoute(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.HttpRoute("default",
+            name="my-http-route",
             labels={
                 "foo": "bar",
             },
@@ -814,8 +815,7 @@ class HttpRoute(pulumi.CustomResource):
                         disabled=False,
                     ),
                 ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
         ### Network Services Http Route Actions
 
@@ -824,6 +824,7 @@ class HttpRoute(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.HttpRoute("default",
+            name="my-http-route",
             labels={
                 "foo": "bar",
             },
@@ -895,8 +896,7 @@ class HttpRoute(pulumi.CustomResource):
                         removes=["removearg"],
                     ),
                 ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
         ### Network Services Http Route Mesh Basic
 
@@ -904,19 +904,20 @@ class HttpRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_mesh = gcp.networkservices.Mesh("defaultMesh",
+        default = gcp.networkservices.Mesh("default",
+            name="my-http-route",
             labels={
                 "foo": "bar",
             },
-            description="my description",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_http_route = gcp.networkservices.HttpRoute("defaultHttpRoute",
+            description="my description")
+        default_http_route = gcp.networkservices.HttpRoute("default",
+            name="my-http-route",
             labels={
                 "foo": "bar",
             },
             description="my description",
             hostnames=["example"],
-            meshes=[default_mesh.id],
+            meshes=[default.id],
             rules=[gcp.networkservices.HttpRouteRuleArgs(
                 matches=[gcp.networkservices.HttpRouteRuleMatchArgs(
                     query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
@@ -925,8 +926,7 @@ class HttpRoute(pulumi.CustomResource):
                     )],
                     full_path_match="example",
                 )],
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
 
         ## Import

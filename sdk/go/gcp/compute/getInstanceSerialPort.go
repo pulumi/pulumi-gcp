@@ -71,19 +71,20 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			windows, err := compute.NewInstance(ctx, "windows", &compute.InstanceArgs{
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+//							nil,
+//						},
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//				Name:        pulumi.String("windows-instance"),
 //				MachineType: pulumi.String("e2-medium"),
 //				Zone:        pulumi.String("us-central1-a"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
 //						Image: pulumi.String("windows-cloud/windows-2019"),
-//					},
-//				},
-//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-//					&compute.InstanceNetworkInterfaceArgs{
-//						Network: pulumi.String("default"),
-//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
-//							nil,
-//						},
 //					},
 //				},
 //				Metadata: pulumi.StringMap{

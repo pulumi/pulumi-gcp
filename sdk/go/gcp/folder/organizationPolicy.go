@@ -38,12 +38,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := folder.NewOrganizationPolicy(ctx, "serialPortPolicy", &folder.OrganizationPolicyArgs{
+//			_, err := folder.NewOrganizationPolicy(ctx, "serial_port_policy", &folder.OrganizationPolicyArgs{
+//				Folder:     pulumi.String("folders/123456789"),
+//				Constraint: pulumi.String("compute.disableSerialPortAccess"),
 //				BooleanPolicy: &folder.OrganizationPolicyBooleanPolicyArgs{
 //					Enforced: pulumi.Bool(true),
 //				},
-//				Constraint: pulumi.String("compute.disableSerialPortAccess"),
-//				Folder:     pulumi.String("folders/123456789"),
 //			})
 //			if err != nil {
 //				return err
@@ -68,9 +68,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := folder.NewOrganizationPolicy(ctx, "servicesPolicy", &folder.OrganizationPolicyArgs{
-//				Constraint: pulumi.String("serviceuser.services"),
+//			_, err := folder.NewOrganizationPolicy(ctx, "services_policy", &folder.OrganizationPolicyArgs{
 //				Folder:     pulumi.String("folders/123456789"),
+//				Constraint: pulumi.String("serviceuser.services"),
 //				ListPolicy: &folder.OrganizationPolicyListPolicyArgs{
 //					Allow: &folder.OrganizationPolicyListPolicyAllowArgs{
 //						All: pulumi.Bool(true),
@@ -100,16 +100,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := folder.NewOrganizationPolicy(ctx, "servicesPolicy", &folder.OrganizationPolicyArgs{
-//				Constraint: pulumi.String("serviceuser.services"),
+//			_, err := folder.NewOrganizationPolicy(ctx, "services_policy", &folder.OrganizationPolicyArgs{
 //				Folder:     pulumi.String("folders/123456789"),
+//				Constraint: pulumi.String("serviceuser.services"),
 //				ListPolicy: &folder.OrganizationPolicyListPolicyArgs{
+//					SuggestedValue: pulumi.String("compute.googleapis.com"),
 //					Deny: &folder.OrganizationPolicyListPolicyDenyArgs{
 //						Values: pulumi.StringArray{
 //							pulumi.String("cloudresourcemanager.googleapis.com"),
 //						},
 //					},
-//					SuggestedValue: pulumi.String("compute.googleapis.com"),
 //				},
 //			})
 //			if err != nil {
@@ -135,9 +135,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := folder.NewOrganizationPolicy(ctx, "servicesPolicy", &folder.OrganizationPolicyArgs{
-//				Constraint: pulumi.String("serviceuser.services"),
+//			_, err := folder.NewOrganizationPolicy(ctx, "services_policy", &folder.OrganizationPolicyArgs{
 //				Folder:     pulumi.String("folders/123456789"),
+//				Constraint: pulumi.String("serviceuser.services"),
 //				RestorePolicy: &folder.OrganizationPolicyRestorePolicyArgs{
 //					Default: pulumi.Bool(true),
 //				},

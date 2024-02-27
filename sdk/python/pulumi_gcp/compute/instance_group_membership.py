@@ -206,8 +206,9 @@ class InstanceGroupMembership(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("default-network")
+        default_network = gcp.compute.Network("default-network", name="network")
         default_instance = gcp.compute.Instance("default-instance",
+            name="instance",
             machine_type="e2-medium",
             boot_disk=gcp.compute.InstanceBootDiskArgs(
                 initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
@@ -217,7 +218,7 @@ class InstanceGroupMembership(pulumi.CustomResource):
             network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
                 network=default_network.name,
             )])
-        default_instance_group = gcp.compute.InstanceGroup("default-instance-group")
+        default_instance_group = gcp.compute.InstanceGroup("default-instance-group", name="instance-group")
         default_ig_membership = gcp.compute.InstanceGroupMembership("default-ig-membership",
             instance=default_instance.self_link,
             instance_group=default_instance_group.name)
@@ -297,8 +298,9 @@ class InstanceGroupMembership(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("default-network")
+        default_network = gcp.compute.Network("default-network", name="network")
         default_instance = gcp.compute.Instance("default-instance",
+            name="instance",
             machine_type="e2-medium",
             boot_disk=gcp.compute.InstanceBootDiskArgs(
                 initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
@@ -308,7 +310,7 @@ class InstanceGroupMembership(pulumi.CustomResource):
             network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
                 network=default_network.name,
             )])
-        default_instance_group = gcp.compute.InstanceGroup("default-instance-group")
+        default_instance_group = gcp.compute.InstanceGroup("default-instance-group", name="instance-group")
         default_ig_membership = gcp.compute.InstanceGroupMembership("default-ig-membership",
             instance=default_instance.self_link,
             instance_group=default_instance_group.name)

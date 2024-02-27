@@ -33,7 +33,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionSecurityPolicyRuleArgs;
  * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchArgs;
  * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -49,11 +48,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var default_ = new RegionSecurityPolicy(&#34;default&#34;, RegionSecurityPolicyArgs.builder()        
  *             .region(&#34;us-west2&#34;)
+ *             .name(&#34;policyruletest&#34;)
  *             .description(&#34;basic region security policy&#34;)
  *             .type(&#34;CLOUD_ARMOR&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var policyRule = new RegionSecurityPolicyRule(&#34;policyRule&#34;, RegionSecurityPolicyRuleArgs.builder()        
  *             .region(&#34;us-west2&#34;)
@@ -68,9 +66,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .action(&#34;allow&#34;)
  *             .preview(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -88,7 +84,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionSecurityPolicyRuleArgs;
  * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchArgs;
  * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -104,11 +99,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var default_ = new RegionSecurityPolicy(&#34;default&#34;, RegionSecurityPolicyArgs.builder()        
  *             .region(&#34;us-west2&#34;)
+ *             .name(&#34;policywithmultiplerules&#34;)
  *             .description(&#34;basic region security policy&#34;)
  *             .type(&#34;CLOUD_ARMOR&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var policyRuleOne = new RegionSecurityPolicyRule(&#34;policyRuleOne&#34;, RegionSecurityPolicyRuleArgs.builder()        
  *             .region(&#34;us-west2&#34;)
@@ -123,9 +117,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .action(&#34;allow&#34;)
  *             .preview(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var policyRuleTwo = new RegionSecurityPolicyRule(&#34;policyRuleTwo&#34;, RegionSecurityPolicyRuleArgs.builder()        
  *             .region(&#34;us-west2&#34;)
@@ -142,9 +134,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .action(&#34;allow&#34;)
  *             .preview(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -165,7 +155,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionSecurityPolicyRule;
  * import com.pulumi.gcp.compute.RegionSecurityPolicyRuleArgs;
  * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleNetworkMatchArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -181,25 +170,24 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var policyddosprotection = new RegionSecurityPolicy(&#34;policyddosprotection&#34;, RegionSecurityPolicyArgs.builder()        
  *             .region(&#34;us-west2&#34;)
+ *             .name(&#34;policyddosprotection&#34;)
  *             .description(&#34;policy for activating network DDoS protection for the desired region&#34;)
  *             .type(&#34;CLOUD_ARMOR_NETWORK&#34;)
  *             .ddosProtectionConfig(RegionSecurityPolicyDdosProtectionConfigArgs.builder()
  *                 .ddosProtection(&#34;ADVANCED_PREVIEW&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var edgeSecService = new NetworkEdgeSecurityService(&#34;edgeSecService&#34;, NetworkEdgeSecurityServiceArgs.builder()        
  *             .region(&#34;us-west2&#34;)
+ *             .name(&#34;edgesecservice&#34;)
  *             .description(&#34;linking policy to edge security service&#34;)
  *             .securityPolicy(policyddosprotection.selfLink())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var policynetworkmatch = new RegionSecurityPolicy(&#34;policynetworkmatch&#34;, RegionSecurityPolicyArgs.builder()        
  *             .region(&#34;us-west2&#34;)
+ *             .name(&#34;policyfornetworkmatch&#34;)
  *             .description(&#34;region security policy for network match&#34;)
  *             .type(&#34;CLOUD_ARMOR_NETWORK&#34;)
  *             .userDefinedFields(RegionSecurityPolicyUserDefinedFieldArgs.builder()
@@ -209,10 +197,7 @@ import javax.annotation.Nullable;
  *                 .size(2)
  *                 .mask(&#34;0x8F00&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .dependsOn(edgeSecService)
- *                 .build());
+ *             .build());
  * 
  *         var policyRuleNetworkMatch = new RegionSecurityPolicyRule(&#34;policyRuleNetworkMatch&#34;, RegionSecurityPolicyRuleArgs.builder()        
  *             .region(&#34;us-west2&#34;)
@@ -228,9 +213,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .action(&#34;allow&#34;)
  *             .preview(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

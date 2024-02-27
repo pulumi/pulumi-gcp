@@ -51,10 +51,10 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     ///     var policy = new Gcp.BigQueryAnalyticsHub.ListingIamPolicy("policy", new()
     ///     {
-    ///         Project = google_bigquery_analytics_hub_listing.Listing.Project,
-    ///         Location = google_bigquery_analytics_hub_listing.Listing.Location,
-    ///         DataExchangeId = google_bigquery_analytics_hub_listing.Listing.Data_exchange_id,
-    ///         ListingId = google_bigquery_analytics_hub_listing.Listing.Listing_id,
+    ///         Project = listing.Project,
+    ///         Location = listing.Location,
+    ///         DataExchangeId = listing.DataExchangeId,
+    ///         ListingId = listing.ListingId,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -73,10 +73,10 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// {
     ///     var binding = new Gcp.BigQueryAnalyticsHub.ListingIamBinding("binding", new()
     ///     {
-    ///         Project = google_bigquery_analytics_hub_listing.Listing.Project,
-    ///         Location = google_bigquery_analytics_hub_listing.Listing.Location,
-    ///         DataExchangeId = google_bigquery_analytics_hub_listing.Listing.Data_exchange_id,
-    ///         ListingId = google_bigquery_analytics_hub_listing.Listing.Listing_id,
+    ///         Project = listing.Project,
+    ///         Location = listing.Location,
+    ///         DataExchangeId = listing.DataExchangeId,
+    ///         ListingId = listing.ListingId,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -99,10 +99,10 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// {
     ///     var member = new Gcp.BigQueryAnalyticsHub.ListingIamMember("member", new()
     ///     {
-    ///         Project = google_bigquery_analytics_hub_listing.Listing.Project,
-    ///         Location = google_bigquery_analytics_hub_listing.Listing.Location,
-    ///         DataExchangeId = google_bigquery_analytics_hub_listing.Listing.Data_exchange_id,
-    ///         ListingId = google_bigquery_analytics_hub_listing.Listing.Listing_id,
+    ///         Project = listing.Project,
+    ///         Location = listing.Location,
+    ///         DataExchangeId = listing.DataExchangeId,
+    ///         ListingId = listing.ListingId,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

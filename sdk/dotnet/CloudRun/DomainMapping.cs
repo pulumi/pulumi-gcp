@@ -29,8 +29,9 @@ namespace Pulumi.Gcp.CloudRun
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultService = new Gcp.CloudRun.Service("defaultService", new()
+    ///     var @default = new Gcp.CloudRun.Service("default", new()
     ///     {
+    ///         Name = "cloudrun-srv",
     ///         Location = "us-central1",
     ///         Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
     ///         {
@@ -51,16 +52,17 @@ namespace Pulumi.Gcp.CloudRun
     ///         },
     ///     });
     /// 
-    ///     var defaultDomainMapping = new Gcp.CloudRun.DomainMapping("defaultDomainMapping", new()
+    ///     var defaultDomainMapping = new Gcp.CloudRun.DomainMapping("default", new()
     ///     {
     ///         Location = "us-central1",
+    ///         Name = "verified-domain.com",
     ///         Metadata = new Gcp.CloudRun.Inputs.DomainMappingMetadataArgs
     ///         {
     ///             Namespace = "my-project-name",
     ///         },
     ///         Spec = new Gcp.CloudRun.Inputs.DomainMappingSpecArgs
     ///         {
-    ///             RouteName = defaultService.Name,
+    ///             RouteName = @default.Name,
     ///         },
     ///     });
     /// 

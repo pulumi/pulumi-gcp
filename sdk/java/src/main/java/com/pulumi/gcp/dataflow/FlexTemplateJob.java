@@ -29,7 +29,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.dataflow.FlexTemplateJob;
  * import com.pulumi.gcp.dataflow.FlexTemplateJobArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -44,11 +43,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var bigDataJob = new FlexTemplateJob(&#34;bigDataJob&#34;, FlexTemplateJobArgs.builder()        
+ *             .name(&#34;dataflow-flextemplates-job&#34;)
  *             .containerSpecGcsPath(&#34;gs://my-bucket/templates/template.json&#34;)
  *             .parameters(Map.of(&#34;inputSubscription&#34;, &#34;messages&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -91,7 +89,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.random.RandomIdArgs;
  * import com.pulumi.gcp.dataflow.FlexTemplateJob;
  * import com.pulumi.gcp.dataflow.FlexTemplateJobArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -110,19 +107,18 @@ import javax.annotation.Nullable;
  *         var bigDataJobNameSuffix = new RandomId(&#34;bigDataJobNameSuffix&#34;, RandomIdArgs.builder()        
  *             .byteLength(4)
  *             .keepers(Map.ofEntries(
- *                 Map.entry(&#34;region&#34;, var_.region()),
+ *                 Map.entry(&#34;region&#34;, region),
  *                 Map.entry(&#34;subscription_id&#34;, bigDataJobSubscriptionId)
  *             ))
  *             .build());
  * 
  *         var bigDataJob = new FlexTemplateJob(&#34;bigDataJob&#34;, FlexTemplateJobArgs.builder()        
- *             .region(var_.region())
+ *             .name(bigDataJobNameSuffix.dec().applyValue(dec -&gt; String.format(&#34;dataflow-flextemplates-job-%s&#34;, dec)))
+ *             .region(region)
  *             .containerSpecGcsPath(&#34;gs://my-bucket/templates/template.json&#34;)
  *             .skipWaitOnJobTermination(true)
  *             .parameters(Map.of(&#34;inputSubscription&#34;, bigDataJobSubscriptionId))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

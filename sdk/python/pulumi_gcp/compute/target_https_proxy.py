@@ -643,24 +643,30 @@ class TargetHttpsProxy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
         ## Example Usage
-        ### Target Https Proxy Certificate Manager Certificate
+        ### Target Https Proxy Basic
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
-        default_certificate = gcp.certificatemanager.Certificate("defaultCertificate",
-            scope="ALL_REGIONS",
-            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
-                pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
-                pem_private_key=(lambda path: open(path).read())("test-fixtures/private-key.pem"),
-            ))
-        default_backend_service = gcp.compute.BackendService("defaultBackendService",
+        default_ssl_certificate = gcp.compute.SSLCertificate("default",
+            name="my-certificate",
+            private_key=std.file(input="path/to/private.key").result,
+            certificate=std.file(input="path/to/certificate.crt").result)
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="http-health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend-service",
             port_name="http",
             protocol="HTTP",
             timeout_sec=10,
-            load_balancing_scheme="INTERNAL_MANAGED")
-        default_url_map = gcp.compute.URLMap("defaultURLMap",
+            health_checks=default_http_health_check.id)
+        default_url_map = gcp.compute.URLMap("default",
+            name="url-map",
             description="a description",
             default_service=default_backend_service.id,
             host_rules=[gcp.compute.URLMapHostRuleArgs(
@@ -675,10 +681,165 @@ class TargetHttpsProxy(pulumi.CustomResource):
                     service=default_backend_service.id,
                 )],
             )])
-        default_target_https_proxy = gcp.compute.TargetHttpsProxy("defaultTargetHttpsProxy",
+        default = gcp.compute.TargetHttpsProxy("default",
+            name="test-proxy",
+            url_map=default_url_map.id,
+            ssl_certificates=[default_ssl_certificate.id])
+        ```
+        ### Target Https Proxy Http Keep Alive Timeout
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        default_ssl_certificate = gcp.compute.SSLCertificate("default",
+            name="my-certificate",
+            private_key=std.file(input="path/to/private.key").result,
+            certificate=std.file(input="path/to/certificate.crt").result)
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="http-health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend-service",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default_http_health_check.id)
+        default_url_map = gcp.compute.URLMap("default",
+            name="url-map",
+            description="a description",
+            default_service=default_backend_service.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_backend_service.id,
+                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_backend_service.id,
+                )],
+            )])
+        default = gcp.compute.TargetHttpsProxy("default",
+            name="test-http-keep-alive-timeout-proxy",
+            http_keep_alive_timeout_sec=610,
+            url_map=default_url_map.id,
+            ssl_certificates=[default_ssl_certificate.id])
+        ```
+        ### Target Https Proxy Mtls
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        project = gcp.organizations.get_project()
+        default_trust_config = gcp.certificatemanager.TrustConfig("default",
+            name="my-trust-config",
+            description="sample description for the trust config",
+            location="global",
+            trust_stores=[gcp.certificatemanager.TrustConfigTrustStoreArgs(
+                trust_anchors=[gcp.certificatemanager.TrustConfigTrustStoreTrustAnchorArgs(
+                    pem_certificate=std.file(input="test-fixtures/ca_cert.pem").result,
+                )],
+                intermediate_cas=[gcp.certificatemanager.TrustConfigTrustStoreIntermediateCaArgs(
+                    pem_certificate=std.file(input="test-fixtures/ca_cert.pem").result,
+                )],
+            )],
+            labels={
+                "foo": "bar",
+            })
+        default_server_tls_policy = gcp.networksecurity.ServerTlsPolicy("default",
+            name="my-tls-policy",
+            description="my description",
+            location="global",
+            allow_open=False,
+            mtls_policy=gcp.networksecurity.ServerTlsPolicyMtlsPolicyArgs(
+                client_validation_mode="ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
+                client_validation_trust_config=default_trust_config.name.apply(lambda name: f"projects/{project.number}/locations/global/trustConfigs/{name}"),
+            ))
+        default_ssl_certificate = gcp.compute.SSLCertificate("default",
+            name="my-certificate",
+            private_key=std.file(input="path/to/private.key").result,
+            certificate=std.file(input="path/to/certificate.crt").result)
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="http-health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend-service",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=default_http_health_check.id)
+        default_url_map = gcp.compute.URLMap("default",
+            name="url-map",
+            description="a description",
+            default_service=default_backend_service.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_backend_service.id,
+                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_backend_service.id,
+                )],
+            )])
+        default = gcp.compute.TargetHttpsProxy("default",
+            name="test-mtls-proxy",
+            url_map=default_url_map.id,
+            ssl_certificates=[default_ssl_certificate.id],
+            server_tls_policy=default_server_tls_policy.id)
+        ```
+        ### Target Https Proxy Certificate Manager Certificate
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        default_certificate = gcp.certificatemanager.Certificate("default",
+            name="my-certificate",
+            scope="ALL_REGIONS",
+            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
+                pem_certificate=std.file(input="test-fixtures/cert.pem").result,
+                pem_private_key=std.file(input="test-fixtures/private-key.pem").result,
+            ))
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend-service",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_MANAGED")
+        default_url_map = gcp.compute.URLMap("default",
+            name="url-map",
+            description="a description",
+            default_service=default_backend_service.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_backend_service.id,
+                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_backend_service.id,
+                )],
+            )])
+        default = gcp.compute.TargetHttpsProxy("default",
+            name="target-http-proxy",
             url_map=default_url_map.id,
             certificate_manager_certificates=[default_certificate.id.apply(lambda id: f"//certificatemanager.googleapis.com/{id}")])
-        # [google_certificate_manager_certificate.default.id] is also acceptable
         ```
 
         ## Import
@@ -776,24 +937,30 @@ class TargetHttpsProxy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
         ## Example Usage
-        ### Target Https Proxy Certificate Manager Certificate
+        ### Target Https Proxy Basic
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
-        default_certificate = gcp.certificatemanager.Certificate("defaultCertificate",
-            scope="ALL_REGIONS",
-            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
-                pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
-                pem_private_key=(lambda path: open(path).read())("test-fixtures/private-key.pem"),
-            ))
-        default_backend_service = gcp.compute.BackendService("defaultBackendService",
+        default_ssl_certificate = gcp.compute.SSLCertificate("default",
+            name="my-certificate",
+            private_key=std.file(input="path/to/private.key").result,
+            certificate=std.file(input="path/to/certificate.crt").result)
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="http-health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend-service",
             port_name="http",
             protocol="HTTP",
             timeout_sec=10,
-            load_balancing_scheme="INTERNAL_MANAGED")
-        default_url_map = gcp.compute.URLMap("defaultURLMap",
+            health_checks=default_http_health_check.id)
+        default_url_map = gcp.compute.URLMap("default",
+            name="url-map",
             description="a description",
             default_service=default_backend_service.id,
             host_rules=[gcp.compute.URLMapHostRuleArgs(
@@ -808,10 +975,165 @@ class TargetHttpsProxy(pulumi.CustomResource):
                     service=default_backend_service.id,
                 )],
             )])
-        default_target_https_proxy = gcp.compute.TargetHttpsProxy("defaultTargetHttpsProxy",
+        default = gcp.compute.TargetHttpsProxy("default",
+            name="test-proxy",
+            url_map=default_url_map.id,
+            ssl_certificates=[default_ssl_certificate.id])
+        ```
+        ### Target Https Proxy Http Keep Alive Timeout
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        default_ssl_certificate = gcp.compute.SSLCertificate("default",
+            name="my-certificate",
+            private_key=std.file(input="path/to/private.key").result,
+            certificate=std.file(input="path/to/certificate.crt").result)
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="http-health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend-service",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default_http_health_check.id)
+        default_url_map = gcp.compute.URLMap("default",
+            name="url-map",
+            description="a description",
+            default_service=default_backend_service.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_backend_service.id,
+                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_backend_service.id,
+                )],
+            )])
+        default = gcp.compute.TargetHttpsProxy("default",
+            name="test-http-keep-alive-timeout-proxy",
+            http_keep_alive_timeout_sec=610,
+            url_map=default_url_map.id,
+            ssl_certificates=[default_ssl_certificate.id])
+        ```
+        ### Target Https Proxy Mtls
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        project = gcp.organizations.get_project()
+        default_trust_config = gcp.certificatemanager.TrustConfig("default",
+            name="my-trust-config",
+            description="sample description for the trust config",
+            location="global",
+            trust_stores=[gcp.certificatemanager.TrustConfigTrustStoreArgs(
+                trust_anchors=[gcp.certificatemanager.TrustConfigTrustStoreTrustAnchorArgs(
+                    pem_certificate=std.file(input="test-fixtures/ca_cert.pem").result,
+                )],
+                intermediate_cas=[gcp.certificatemanager.TrustConfigTrustStoreIntermediateCaArgs(
+                    pem_certificate=std.file(input="test-fixtures/ca_cert.pem").result,
+                )],
+            )],
+            labels={
+                "foo": "bar",
+            })
+        default_server_tls_policy = gcp.networksecurity.ServerTlsPolicy("default",
+            name="my-tls-policy",
+            description="my description",
+            location="global",
+            allow_open=False,
+            mtls_policy=gcp.networksecurity.ServerTlsPolicyMtlsPolicyArgs(
+                client_validation_mode="ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
+                client_validation_trust_config=default_trust_config.name.apply(lambda name: f"projects/{project.number}/locations/global/trustConfigs/{name}"),
+            ))
+        default_ssl_certificate = gcp.compute.SSLCertificate("default",
+            name="my-certificate",
+            private_key=std.file(input="path/to/private.key").result,
+            certificate=std.file(input="path/to/certificate.crt").result)
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="http-health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend-service",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=default_http_health_check.id)
+        default_url_map = gcp.compute.URLMap("default",
+            name="url-map",
+            description="a description",
+            default_service=default_backend_service.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_backend_service.id,
+                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_backend_service.id,
+                )],
+            )])
+        default = gcp.compute.TargetHttpsProxy("default",
+            name="test-mtls-proxy",
+            url_map=default_url_map.id,
+            ssl_certificates=[default_ssl_certificate.id],
+            server_tls_policy=default_server_tls_policy.id)
+        ```
+        ### Target Https Proxy Certificate Manager Certificate
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        default_certificate = gcp.certificatemanager.Certificate("default",
+            name="my-certificate",
+            scope="ALL_REGIONS",
+            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
+                pem_certificate=std.file(input="test-fixtures/cert.pem").result,
+                pem_private_key=std.file(input="test-fixtures/private-key.pem").result,
+            ))
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend-service",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_MANAGED")
+        default_url_map = gcp.compute.URLMap("default",
+            name="url-map",
+            description="a description",
+            default_service=default_backend_service.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_backend_service.id,
+                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_backend_service.id,
+                )],
+            )])
+        default = gcp.compute.TargetHttpsProxy("default",
+            name="target-http-proxy",
             url_map=default_url_map.id,
             certificate_manager_certificates=[default_certificate.id.apply(lambda id: f"//certificatemanager.googleapis.com/{id}")])
-        # [google_certificate_manager_certificate.default.id] is also acceptable
         ```
 
         ## Import

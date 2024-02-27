@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.gkehub.getFeatureIamPolicy({
- *     project: google_gke_hub_feature.feature.project,
- *     location: google_gke_hub_feature.feature.location,
- *     name: google_gke_hub_feature.feature.name,
+ *     project: feature.project,
+ *     location: feature.location,
+ *     name: feature.name,
  * });
  * ```
  */
@@ -80,9 +80,9 @@ export interface GetFeatureIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.gkehub.getFeatureIamPolicy({
- *     project: google_gke_hub_feature.feature.project,
- *     location: google_gke_hub_feature.feature.location,
- *     name: google_gke_hub_feature.feature.name,
+ *     project: feature.project,
+ *     location: feature.location,
+ *     name: feature.name,
  * });
  * ```
  */

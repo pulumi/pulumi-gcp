@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultMetastoreService = new gcp.dataproc.MetastoreService("defaultMetastoreService", {
+ * const defaultMetastoreService = new gcp.dataproc.MetastoreService("default", {
  *     serviceId: "",
  *     location: "us-central1",
  *     tier: "DEVELOPER",
@@ -22,10 +22,8 @@ import * as utilities from "../utilities";
  *         version: "3.1.2",
  *         endpointProtocol: "GRPC",
  *     },
- * }, {
- *     provider: google_beta,
  * });
- * const defaultMetastoreFederation = new gcp.dataproc.MetastoreFederation("defaultMetastoreFederation", {
+ * const _default = new gcp.dataproc.MetastoreFederation("default", {
  *     location: "us-central1",
  *     federationId: "",
  *     version: "3.1.2",
@@ -34,8 +32,6 @@ import * as utilities from "../utilities";
  *         name: defaultMetastoreService.id,
  *         metastoreType: "DATAPROC_METASTORE",
  *     }],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Dataproc Metastore Federation Bigquery
@@ -44,7 +40,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultMetastoreService = new gcp.dataproc.MetastoreService("defaultMetastoreService", {
+ * const defaultMetastoreService = new gcp.dataproc.MetastoreService("default", {
  *     serviceId: "",
  *     location: "us-central1",
  *     tier: "DEVELOPER",
@@ -52,11 +48,9 @@ import * as utilities from "../utilities";
  *         version: "3.1.2",
  *         endpointProtocol: "GRPC",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const project = gcp.organizations.getProject({});
- * const defaultMetastoreFederation = new gcp.dataproc.MetastoreFederation("defaultMetastoreFederation", {
+ * const _default = new gcp.dataproc.MetastoreFederation("default", {
  *     location: "us-central1",
  *     federationId: "",
  *     version: "3.1.2",
@@ -72,8 +66,6 @@ import * as utilities from "../utilities";
  *             metastoreType: "DATAPROC_METASTORE",
  *         },
  *     ],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

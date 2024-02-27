@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// {
         ///     var policy = Gcp.CertificateAuthority.GetCertificateTemplateIamPolicy.Invoke(new()
         ///     {
-        ///         CertificateTemplate = google_privateca_certificate_template.Default.Id,
+        ///         CertificateTemplate = @default.Id,
         ///     });
         /// 
         /// });
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// {
         ///     var policy = Gcp.CertificateAuthority.GetCertificateTemplateIamPolicy.Invoke(new()
         ///     {
-        ///         CertificateTemplate = google_privateca_certificate_template.Default.Id,
+        ///         CertificateTemplate = @default.Id,
         ///     });
         /// 
         /// });

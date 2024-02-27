@@ -20,8 +20,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const myKeyRing = gcp.kms.getKMSKeyRing({
- *     location: "us-central1",
  *     name: "my-key-ring",
+ *     location: "us-central1",
  * });
  * ```
  */
@@ -86,8 +86,8 @@ export interface GetKMSKeyRingResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const myKeyRing = gcp.kms.getKMSKeyRing({
- *     location: "us-central1",
  *     name: "my-key-ring",
+ *     location: "us-central1",
  * });
  * ```
  */

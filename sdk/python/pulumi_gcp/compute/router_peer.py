@@ -847,11 +847,12 @@ class RouterPeer(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         peer = gcp.compute.RouterPeer("peer",
-            advertised_route_priority=100,
-            interface="interface-1",
-            peer_asn=65513,
+            name="my-router-peer",
+            router="my-router",
             region="us-central1",
-            router="my-router")
+            peer_asn=65513,
+            advertised_route_priority=100,
+            interface="interface-1")
         ```
         ### Router Peer Disabled
 
@@ -860,13 +861,14 @@ class RouterPeer(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         peer = gcp.compute.RouterPeer("peer",
-            advertised_route_priority=100,
-            enable=False,
-            interface="interface-1",
-            peer_asn=65513,
-            peer_ip_address="169.254.1.2",
+            name="my-router-peer",
+            router="my-router",
             region="us-central1",
-            router="my-router")
+            peer_ip_address="169.254.1.2",
+            peer_asn=65513,
+            advertised_route_priority=100,
+            interface="interface-1",
+            enable=False)
         ```
         ### Router Peer Bfd
 
@@ -875,18 +877,19 @@ class RouterPeer(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         peer = gcp.compute.RouterPeer("peer",
+            name="my-router-peer",
+            router="my-router",
+            region="us-central1",
+            peer_ip_address="169.254.1.2",
+            peer_asn=65513,
             advertised_route_priority=100,
+            interface="interface-1",
             bfd=gcp.compute.RouterPeerBfdArgs(
                 min_receive_interval=1000,
                 min_transmit_interval=1000,
                 multiplier=5,
                 session_initialization_mode="ACTIVE",
-            ),
-            interface="interface-1",
-            peer_asn=65513,
-            peer_ip_address="169.254.1.2",
-            region="us-central1",
-            router="my-router")
+            ))
         ```
         ### Router Peer Router Appliance
 
@@ -894,24 +897,31 @@ class RouterPeer(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network = gcp.compute.Network("network", auto_create_subnetworks=False)
+        network = gcp.compute.Network("network",
+            name="my-router-net",
+            auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
+            name="my-router-sub",
             network=network.self_link,
             ip_cidr_range="10.0.0.0/16",
             region="us-central1")
-        addr_intf = gcp.compute.Address("addrIntf",
+        addr_intf = gcp.compute.Address("addr_intf",
+            name="my-router-addr-intf",
             region=subnetwork.region,
             subnetwork=subnetwork.id,
             address_type="INTERNAL")
-        addr_intf_redundant = gcp.compute.Address("addrIntfRedundant",
+        addr_intf_redundant = gcp.compute.Address("addr_intf_redundant",
+            name="my-router-addr-intf-red",
             region=subnetwork.region,
             subnetwork=subnetwork.id,
             address_type="INTERNAL")
-        addr_peer = gcp.compute.Address("addrPeer",
+        addr_peer = gcp.compute.Address("addr_peer",
+            name="my-router-addr-peer",
             region=subnetwork.region,
             subnetwork=subnetwork.id,
             address_type="INTERNAL")
         instance = gcp.compute.Instance("instance",
+            name="router-appliance",
             zone="us-central1-a",
             machine_type="e2-medium",
             can_ip_forward=True,
@@ -924,8 +934,9 @@ class RouterPeer(pulumi.CustomResource):
                 network_ip=addr_peer.address,
                 subnetwork=subnetwork.self_link,
             )])
-        hub = gcp.networkconnectivity.Hub("hub")
+        hub = gcp.networkconnectivity.Hub("hub", name="my-router-hub")
         spoke = gcp.networkconnectivity.Spoke("spoke",
+            name="my-router-spoke",
             location=subnetwork.region,
             hub=hub.id,
             linked_router_appliance_instances=gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesArgs(
@@ -936,23 +947,27 @@ class RouterPeer(pulumi.CustomResource):
                 site_to_site_data_transfer=False,
             ))
         router = gcp.compute.Router("router",
+            name="my-router-router",
             region=subnetwork.region,
             network=network.self_link,
             bgp=gcp.compute.RouterBgpArgs(
                 asn=64514,
             ))
-        interface_redundant = gcp.compute.RouterInterface("interfaceRedundant",
+        interface_redundant = gcp.compute.RouterInterface("interface_redundant",
+            name="my-router-intf-red",
             region=router.region,
             router=router.name,
             subnetwork=subnetwork.self_link,
             private_ip_address=addr_intf_redundant.address)
         interface = gcp.compute.RouterInterface("interface",
+            name="my-router-intf",
             region=router.region,
             router=router.name,
             subnetwork=subnetwork.self_link,
             private_ip_address=addr_intf.address,
             redundant_interface=interface_redundant.name)
         peer = gcp.compute.RouterPeer("peer",
+            name="my-router-peer",
             router=router.name,
             region=router.region,
             interface=interface.name,
@@ -1077,11 +1092,12 @@ class RouterPeer(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         peer = gcp.compute.RouterPeer("peer",
-            advertised_route_priority=100,
-            interface="interface-1",
-            peer_asn=65513,
+            name="my-router-peer",
+            router="my-router",
             region="us-central1",
-            router="my-router")
+            peer_asn=65513,
+            advertised_route_priority=100,
+            interface="interface-1")
         ```
         ### Router Peer Disabled
 
@@ -1090,13 +1106,14 @@ class RouterPeer(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         peer = gcp.compute.RouterPeer("peer",
-            advertised_route_priority=100,
-            enable=False,
-            interface="interface-1",
-            peer_asn=65513,
-            peer_ip_address="169.254.1.2",
+            name="my-router-peer",
+            router="my-router",
             region="us-central1",
-            router="my-router")
+            peer_ip_address="169.254.1.2",
+            peer_asn=65513,
+            advertised_route_priority=100,
+            interface="interface-1",
+            enable=False)
         ```
         ### Router Peer Bfd
 
@@ -1105,18 +1122,19 @@ class RouterPeer(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         peer = gcp.compute.RouterPeer("peer",
+            name="my-router-peer",
+            router="my-router",
+            region="us-central1",
+            peer_ip_address="169.254.1.2",
+            peer_asn=65513,
             advertised_route_priority=100,
+            interface="interface-1",
             bfd=gcp.compute.RouterPeerBfdArgs(
                 min_receive_interval=1000,
                 min_transmit_interval=1000,
                 multiplier=5,
                 session_initialization_mode="ACTIVE",
-            ),
-            interface="interface-1",
-            peer_asn=65513,
-            peer_ip_address="169.254.1.2",
-            region="us-central1",
-            router="my-router")
+            ))
         ```
         ### Router Peer Router Appliance
 
@@ -1124,24 +1142,31 @@ class RouterPeer(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network = gcp.compute.Network("network", auto_create_subnetworks=False)
+        network = gcp.compute.Network("network",
+            name="my-router-net",
+            auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
+            name="my-router-sub",
             network=network.self_link,
             ip_cidr_range="10.0.0.0/16",
             region="us-central1")
-        addr_intf = gcp.compute.Address("addrIntf",
+        addr_intf = gcp.compute.Address("addr_intf",
+            name="my-router-addr-intf",
             region=subnetwork.region,
             subnetwork=subnetwork.id,
             address_type="INTERNAL")
-        addr_intf_redundant = gcp.compute.Address("addrIntfRedundant",
+        addr_intf_redundant = gcp.compute.Address("addr_intf_redundant",
+            name="my-router-addr-intf-red",
             region=subnetwork.region,
             subnetwork=subnetwork.id,
             address_type="INTERNAL")
-        addr_peer = gcp.compute.Address("addrPeer",
+        addr_peer = gcp.compute.Address("addr_peer",
+            name="my-router-addr-peer",
             region=subnetwork.region,
             subnetwork=subnetwork.id,
             address_type="INTERNAL")
         instance = gcp.compute.Instance("instance",
+            name="router-appliance",
             zone="us-central1-a",
             machine_type="e2-medium",
             can_ip_forward=True,
@@ -1154,8 +1179,9 @@ class RouterPeer(pulumi.CustomResource):
                 network_ip=addr_peer.address,
                 subnetwork=subnetwork.self_link,
             )])
-        hub = gcp.networkconnectivity.Hub("hub")
+        hub = gcp.networkconnectivity.Hub("hub", name="my-router-hub")
         spoke = gcp.networkconnectivity.Spoke("spoke",
+            name="my-router-spoke",
             location=subnetwork.region,
             hub=hub.id,
             linked_router_appliance_instances=gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesArgs(
@@ -1166,23 +1192,27 @@ class RouterPeer(pulumi.CustomResource):
                 site_to_site_data_transfer=False,
             ))
         router = gcp.compute.Router("router",
+            name="my-router-router",
             region=subnetwork.region,
             network=network.self_link,
             bgp=gcp.compute.RouterBgpArgs(
                 asn=64514,
             ))
-        interface_redundant = gcp.compute.RouterInterface("interfaceRedundant",
+        interface_redundant = gcp.compute.RouterInterface("interface_redundant",
+            name="my-router-intf-red",
             region=router.region,
             router=router.name,
             subnetwork=subnetwork.self_link,
             private_ip_address=addr_intf_redundant.address)
         interface = gcp.compute.RouterInterface("interface",
+            name="my-router-intf",
             region=router.region,
             router=router.name,
             subnetwork=subnetwork.self_link,
             private_ip_address=addr_intf.address,
             redundant_interface=interface_redundant.name)
         peer = gcp.compute.RouterPeer("peer",
+            name="my-router-peer",
             router=router.name,
             region=router.region,
             interface=interface.name,

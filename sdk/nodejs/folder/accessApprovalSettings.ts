@@ -20,11 +20,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myFolder = new gcp.organizations.Folder("myFolder", {
+ * const myFolder = new gcp.organizations.Folder("my_folder", {
  *     displayName: "my-folder",
  *     parent: "organizations/123456789",
  * });
- * const folderAccessApproval = new gcp.folder.AccessApprovalSettings("folderAccessApproval", {
+ * const folderAccessApproval = new gcp.folder.AccessApprovalSettings("folder_access_approval", {
  *     folderId: myFolder.folderId,
  *     notificationEmails: [
  *         "testuser@example.com",
@@ -41,16 +41,22 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myFolder = new gcp.organizations.Folder("myFolder", {
+ * const myFolder = new gcp.organizations.Folder("my_folder", {
  *     displayName: "my-folder",
  *     parent: "organizations/123456789",
  * });
- * const myProject = new gcp.organizations.Project("myProject", {folderId: myFolder.name});
- * const keyRing = new gcp.kms.KeyRing("keyRing", {
+ * const myProject = new gcp.organizations.Project("my_project", {
+ *     name: "My Project",
+ *     projectId: "your-project-id",
+ *     folderId: myFolder.name,
+ * });
+ * const keyRing = new gcp.kms.KeyRing("key_ring", {
+ *     name: "key-ring",
  *     location: "global",
  *     project: myProject.projectId,
  * });
- * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {
+ * const cryptoKey = new gcp.kms.CryptoKey("crypto_key", {
+ *     name: "crypto-key",
  *     keyRing: keyRing.id,
  *     purpose: "ASYMMETRIC_SIGN",
  *     versionTemplate: {
@@ -68,14 +74,12 @@ import * as utilities from "../utilities";
  * const cryptoKeyVersion = gcp.kms.getKMSCryptoKeyVersionOutput({
  *     cryptoKey: cryptoKey.id,
  * });
- * const folderAccessApproval = new gcp.folder.AccessApprovalSettings("folderAccessApproval", {
+ * const folderAccessApproval = new gcp.folder.AccessApprovalSettings("folder_access_approval", {
  *     folderId: myFolder.folderId,
  *     activeKeyVersion: cryptoKeyVersion.apply(cryptoKeyVersion => cryptoKeyVersion.name),
  *     enrolledServices: [{
  *         cloudProduct: "all",
  *     }],
- * }, {
- *     dependsOn: [iam],
  * });
  * ```
  *

@@ -54,6 +54,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *             .name(&#34;tf-fs-inst&#34;)
  *             .location(&#34;us-central1-b&#34;)
  *             .tier(&#34;BASIC_HDD&#34;)
  *             .fileShares(InstanceFileSharesArgs.builder()
@@ -68,6 +69,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var backup = new Backup(&#34;backup&#34;, BackupArgs.builder()        
+ *             .name(&#34;tf-fs-bkup&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .description(&#34;This is a filestore backup for the test instance&#34;)
  *             .sourceInstance(instance.id())

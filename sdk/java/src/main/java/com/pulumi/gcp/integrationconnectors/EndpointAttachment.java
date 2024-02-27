@@ -49,10 +49,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var sampleendpointattachment = new EndpointAttachment(&#34;sampleendpointattachment&#34;, EndpointAttachmentArgs.builder()        
- *             .description(&#34;tf created description&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .name(&#34;test-endpoint-attachment&#34;)
  *             .location(&#34;us-central1&#34;)
+ *             .description(&#34;tf created description&#34;)
  *             .serviceAttachment(&#34;projects/connectors-example/regions/us-central1/serviceAttachments/test&#34;)
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .build());
  * 
  *     }

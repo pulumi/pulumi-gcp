@@ -15,7 +15,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basicRegionalNetworksecurityAddressGroup = new gcp.networksecurity.AddressGroup("basicRegionalNetworksecurityAddressGroup", {
+ * const basicRegionalNetworksecurityAddressGroup = new gcp.networksecurity.AddressGroup("basic_regional_networksecurity_address_group", {
+ *     name: "policy",
  *     parent: "projects/my-project-name",
  *     description: "Sample regional networksecurity_address_group",
  *     location: "us-west1",
@@ -23,13 +24,14 @@ import * as utilities from "../utilities";
  *     type: "IPV4",
  *     capacity: 100,
  * });
- * const basicRegionalNetworkFirewallPolicy = new gcp.compute.RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy", {
+ * const basicRegionalNetworkFirewallPolicy = new gcp.compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy", {
+ *     name: "policy",
  *     description: "Sample regional network firewall policy",
  *     project: "my-project-name",
  *     region: "us-west1",
  * });
- * const basicNetwork = new gcp.compute.Network("basicNetwork", {});
- * const basicKey = new gcp.tags.TagKey("basicKey", {
+ * const basicNetwork = new gcp.compute.Network("basic_network", {name: "network"});
+ * const basicKey = new gcp.tags.TagKey("basic_key", {
  *     description: "For keyname resources.",
  *     parent: "organizations/123456789",
  *     purpose: "GCE_FIREWALL",
@@ -38,7 +40,7 @@ import * as utilities from "../utilities";
  *         network: pulumi.interpolate`my-project-name/${basicNetwork.name}`,
  *     },
  * });
- * const basicValue = new gcp.tags.TagValue("basicValue", {
+ * const basicValue = new gcp.tags.TagValue("basic_value", {
  *     description: "For valuename resources.",
  *     parent: pulumi.interpolate`tagKeys/${basicKey.name}`,
  *     shortName: "tagvalue",

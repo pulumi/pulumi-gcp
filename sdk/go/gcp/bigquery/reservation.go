@@ -36,14 +36,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigquery.NewReservation(ctx, "reservation", &bigquery.ReservationArgs{
+//				Name:            pulumi.String("my-reservation"),
+//				Location:        pulumi.String("us-west2"),
+//				SlotCapacity:    pulumi.Int(0),
+//				Edition:         pulumi.String("STANDARD"),
+//				IgnoreIdleSlots: pulumi.Bool(true),
+//				Concurrency:     pulumi.Int(0),
 //				Autoscale: &bigquery.ReservationAutoscaleArgs{
 //					MaxSlots: pulumi.Int(100),
 //				},
-//				Concurrency:     pulumi.Int(0),
-//				Edition:         pulumi.String("STANDARD"),
-//				IgnoreIdleSlots: pulumi.Bool(true),
-//				Location:        pulumi.String("us-west2"),
-//				SlotCapacity:    pulumi.Int(0),
 //			})
 //			if err != nil {
 //				return err

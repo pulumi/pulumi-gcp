@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.BigTable
     /// {
     ///     var instance = new Gcp.BigTable.Instance("instance", new()
     ///     {
+    ///         Name = "tf-instance",
     ///         Clusters = new[]
     ///         {
     ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
@@ -40,6 +41,7 @@ namespace Pulumi.Gcp.BigTable
     /// 
     ///     var table = new Gcp.BigTable.Table("table", new()
     ///     {
+    ///         Name = "tf-table",
     ///         InstanceName = instance.Name,
     ///         SplitKeys = new[]
     ///         {

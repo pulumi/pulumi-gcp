@@ -41,6 +41,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewNodeTemplate(ctx, "soletenant-tmpl", &compute.NodeTemplateArgs{
+//				Name:     pulumi.String("soletenant-tmpl"),
 //				Region:   pulumi.String("us-central1"),
 //				NodeType: pulumi.String("n1-node-96-624"),
 //			})
@@ -48,6 +49,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewNodeGroup(ctx, "nodes", &compute.NodeGroupArgs{
+//				Name:         pulumi.String("soletenant-group"),
 //				Zone:         pulumi.String("us-central1-a"),
 //				Description:  pulumi.String("example google_compute_node_group for the Google Provider"),
 //				InitialSize:  pulumi.Int(1),
@@ -76,19 +78,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewNodeTemplate(ctx, "soletenant-tmpl", &compute.NodeTemplateArgs{
+//				Name:     pulumi.String("soletenant-tmpl"),
 //				Region:   pulumi.String("us-central1"),
 //				NodeType: pulumi.String("c2-node-60-240"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewNodeGroup(ctx, "nodes", &compute.NodeGroupArgs{
+//				Name:                pulumi.String("soletenant-group"),
 //				Zone:                pulumi.String("us-central1-a"),
 //				Description:         pulumi.String("example google_compute_node_group for Terraform Google Provider"),
 //				InitialSize:         pulumi.Int(1),
 //				NodeTemplate:        soletenant_tmpl.ID(),
 //				MaintenanceInterval: pulumi.String("RECURRENT"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -112,6 +116,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewNodeTemplate(ctx, "soletenant-tmpl", &compute.NodeTemplateArgs{
+//				Name:     pulumi.String("soletenant-tmpl"),
 //				Region:   pulumi.String("us-central1"),
 //				NodeType: pulumi.String("n1-node-96-624"),
 //			})
@@ -119,6 +124,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewNodeGroup(ctx, "nodes", &compute.NodeGroupArgs{
+//				Name:              pulumi.String("soletenant-group"),
 //				Zone:              pulumi.String("us-central1-a"),
 //				Description:       pulumi.String("example google_compute_node_group for Google Provider"),
 //				MaintenancePolicy: pulumi.String("RESTART_IN_PLACE"),
@@ -156,13 +162,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			guestProject, err := organizations.NewProject(ctx, "guestProject", &organizations.ProjectArgs{
-//				OrgId: pulumi.String("123456789"),
+//			guestProject, err := organizations.NewProject(ctx, "guest_project", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("project-id"),
+//				Name:      pulumi.String("project-name"),
+//				OrgId:     pulumi.String("123456789"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewNodeTemplate(ctx, "soletenant-tmpl", &compute.NodeTemplateArgs{
+//				Name:     pulumi.String("soletenant-tmpl"),
 //				Region:   pulumi.String("us-central1"),
 //				NodeType: pulumi.String("n1-node-96-624"),
 //			})
@@ -170,6 +179,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewNodeGroup(ctx, "nodes", &compute.NodeGroupArgs{
+//				Name:         pulumi.String("soletenant-group"),
 //				Zone:         pulumi.String("us-central1-f"),
 //				Description:  pulumi.String("example google_compute_node_group for Terraform Google Provider"),
 //				InitialSize:  pulumi.Int(1),

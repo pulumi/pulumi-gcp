@@ -27,20 +27,21 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const runtime = new gcp.notebooks.Runtime("runtime", {
+ *     name: "notebooks-runtime",
+ *     location: "us-central1",
  *     accessConfig: {
  *         accessType: "SINGLE_USER",
  *         runtimeOwner: "admin@hashicorptest.com",
  *     },
- *     location: "us-central1",
  *     virtualMachine: {
  *         virtualMachineConfig: {
+ *             machineType: "n1-standard-4",
  *             dataDisk: {
  *                 initializeParams: {
  *                     diskSizeGb: 100,
  *                     diskType: "PD_STANDARD",
  *                 },
  *             },
- *             machineType: "n1-standard-4",
  *         },
  *     },
  * });
@@ -51,28 +52,29 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const runtimeGpu = new gcp.notebooks.Runtime("runtimeGpu", {
+ * const runtimeGpu = new gcp.notebooks.Runtime("runtime_gpu", {
+ *     name: "notebooks-runtime-gpu",
+ *     location: "us-central1",
  *     accessConfig: {
  *         accessType: "SINGLE_USER",
  *         runtimeOwner: "admin@hashicorptest.com",
  *     },
- *     location: "us-central1",
  *     softwareConfig: {
  *         installGpuDriver: true,
  *     },
  *     virtualMachine: {
  *         virtualMachineConfig: {
- *             acceleratorConfig: {
- *                 coreCount: 1,
- *                 type: "NVIDIA_TESLA_V100",
- *             },
+ *             machineType: "n1-standard-4",
  *             dataDisk: {
  *                 initializeParams: {
  *                     diskSizeGb: 100,
  *                     diskType: "PD_STANDARD",
  *                 },
  *             },
- *             machineType: "n1-standard-4",
+ *             acceleratorConfig: {
+ *                 coreCount: 1,
+ *                 type: "NVIDIA_TESLA_V100",
+ *             },
  *         },
  *     },
  * });
@@ -83,14 +85,22 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const runtimeContainer = new gcp.notebooks.Runtime("runtimeContainer", {
+ * const runtimeContainer = new gcp.notebooks.Runtime("runtime_container", {
+ *     name: "notebooks-runtime-container",
+ *     location: "us-central1",
  *     accessConfig: {
  *         accessType: "SINGLE_USER",
  *         runtimeOwner: "admin@hashicorptest.com",
  *     },
- *     location: "us-central1",
  *     virtualMachine: {
  *         virtualMachineConfig: {
+ *             machineType: "n1-standard-4",
+ *             dataDisk: {
+ *                 initializeParams: {
+ *                     diskSizeGb: 100,
+ *                     diskType: "PD_STANDARD",
+ *                 },
+ *             },
  *             containerImages: [
  *                 {
  *                     repository: "gcr.io/deeplearning-platform-release/base-cpu",
@@ -101,13 +111,6 @@ import * as utilities from "../utilities";
  *                     tag: "latest",
  *                 },
  *             ],
- *             dataDisk: {
- *                 initializeParams: {
- *                     diskSizeGb: 100,
- *                     diskType: "PD_STANDARD",
- *                 },
- *             },
- *             machineType: "n1-standard-4",
  *         },
  *     },
  * });
@@ -118,15 +121,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const runtimeContainer = new gcp.notebooks.Runtime("runtimeContainer", {
+ * const runtimeContainer = new gcp.notebooks.Runtime("runtime_container", {
+ *     name: "notebooks-runtime-kernel",
+ *     location: "us-central1",
  *     accessConfig: {
  *         accessType: "SINGLE_USER",
  *         runtimeOwner: "admin@hashicorptest.com",
  *     },
- *     labels: {
- *         k: "val",
- *     },
- *     location: "us-central1",
  *     softwareConfig: {
  *         kernels: [{
  *             repository: "gcr.io/deeplearning-platform-release/base-cpu",
@@ -135,14 +136,17 @@ import * as utilities from "../utilities";
  *     },
  *     virtualMachine: {
  *         virtualMachineConfig: {
+ *             machineType: "n1-standard-4",
  *             dataDisk: {
  *                 initializeParams: {
  *                     diskSizeGb: 100,
  *                     diskType: "PD_STANDARD",
  *                 },
  *             },
- *             machineType: "n1-standard-4",
  *         },
+ *     },
+ *     labels: {
+ *         k: "val",
  *     },
  * });
  * ```
@@ -152,28 +156,29 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const runtimeContainer = new gcp.notebooks.Runtime("runtimeContainer", {
+ * const runtimeContainer = new gcp.notebooks.Runtime("runtime_container", {
+ *     name: "notebooks-runtime-script",
+ *     location: "us-central1",
  *     accessConfig: {
  *         accessType: "SINGLE_USER",
  *         runtimeOwner: "admin@hashicorptest.com",
  *     },
- *     labels: {
- *         k: "val",
- *     },
- *     location: "us-central1",
  *     softwareConfig: {
  *         postStartupScriptBehavior: "RUN_EVERY_START",
  *     },
  *     virtualMachine: {
  *         virtualMachineConfig: {
+ *             machineType: "n1-standard-4",
  *             dataDisk: {
  *                 initializeParams: {
  *                     diskSizeGb: 100,
  *                     diskType: "PD_STANDARD",
  *                 },
  *             },
- *             machineType: "n1-standard-4",
  *         },
+ *     },
+ *     labels: {
+ *         k: "val",
  *     },
  * });
  * ```

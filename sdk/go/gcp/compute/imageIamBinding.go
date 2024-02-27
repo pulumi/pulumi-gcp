@@ -57,8 +57,8 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewImageIamPolicy(ctx, "policy", &compute.ImageIamPolicyArgs{
-//				Project:    pulumi.Any(google_compute_image.Example.Project),
-//				Image:      pulumi.Any(google_compute_image.Example.Name),
+//				Project:    pulumi.Any(example.Project),
+//				Image:      pulumi.Any(example.Name),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -104,8 +104,8 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewImageIamPolicy(ctx, "policy", &compute.ImageIamPolicyArgs{
-//				Project:    pulumi.Any(google_compute_image.Example.Project),
-//				Image:      pulumi.Any(google_compute_image.Example.Name),
+//				Project:    pulumi.Any(example.Project),
+//				Image:      pulumi.Any(example.Name),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -131,8 +131,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewImageIamBinding(ctx, "binding", &compute.ImageIamBindingArgs{
-//				Project: pulumi.Any(google_compute_image.Example.Project),
-//				Image:   pulumi.Any(google_compute_image.Example.Name),
+//				Project: pulumi.Any(example.Project),
+//				Image:   pulumi.Any(example.Name),
 //				Role:    pulumi.String("roles/compute.imageUser"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -162,8 +162,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewImageIamBinding(ctx, "binding", &compute.ImageIamBindingArgs{
-//				Project: pulumi.Any(google_compute_image.Example.Project),
-//				Image:   pulumi.Any(google_compute_image.Example.Name),
+//				Project: pulumi.Any(example.Project),
+//				Image:   pulumi.Any(example.Name),
 //				Role:    pulumi.String("roles/compute.imageUser"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -197,8 +197,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewImageIamMember(ctx, "member", &compute.ImageIamMemberArgs{
-//				Project: pulumi.Any(google_compute_image.Example.Project),
-//				Image:   pulumi.Any(google_compute_image.Example.Name),
+//				Project: pulumi.Any(example.Project),
+//				Image:   pulumi.Any(example.Name),
 //				Role:    pulumi.String("roles/compute.imageUser"),
 //				Member:  pulumi.String("user:jane@example.com"),
 //			})
@@ -226,8 +226,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewImageIamMember(ctx, "member", &compute.ImageIamMemberArgs{
-//				Project: pulumi.Any(google_compute_image.Example.Project),
-//				Image:   pulumi.Any(google_compute_image.Example.Name),
+//				Project: pulumi.Any(example.Project),
+//				Image:   pulumi.Any(example.Name),
 //				Role:    pulumi.String("roles/compute.imageUser"),
 //				Member:  pulumi.String("user:jane@example.com"),
 //				Condition: &compute.ImageIamMemberConditionArgs{

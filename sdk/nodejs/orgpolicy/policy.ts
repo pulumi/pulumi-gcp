@@ -20,8 +20,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basic = new gcp.organizations.Project("basic", {orgId: "123456789"});
+ * const basic = new gcp.organizations.Project("basic", {
+ *     projectId: "id",
+ *     name: "id",
+ *     orgId: "123456789",
+ * });
  * const primary = new gcp.orgpolicy.Policy("primary", {
+ *     name: pulumi.interpolate`projects/${basic.name}/policies/iam.disableServiceAccountKeyUpload`,
  *     parent: pulumi.interpolate`projects/${basic.name}`,
  *     spec: {
  *         rules: [{
@@ -41,6 +46,7 @@ import * as utilities from "../utilities";
  *     displayName: "folder",
  * });
  * const primary = new gcp.orgpolicy.Policy("primary", {
+ *     name: pulumi.interpolate`${basic.name}/policies/gcp.resourceLocations`,
  *     parent: basic.name,
  *     spec: {
  *         inheritFromParent: true,
@@ -57,6 +63,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const primary = new gcp.orgpolicy.Policy("primary", {
+ *     name: "organizations/123456789/policies/gcp.detailedAuditLoggingMode",
  *     parent: "organizations/123456789",
  *     spec: {
  *         reset: true,
@@ -69,8 +76,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basic = new gcp.organizations.Project("basic", {orgId: "123456789"});
+ * const basic = new gcp.organizations.Project("basic", {
+ *     projectId: "id",
+ *     name: "id",
+ *     orgId: "123456789",
+ * });
  * const primary = new gcp.orgpolicy.Policy("primary", {
+ *     name: pulumi.interpolate`projects/${basic.name}/policies/gcp.resourceLocations`,
  *     parent: pulumi.interpolate`projects/${basic.name}`,
  *     spec: {
  *         rules: [
@@ -90,36 +102,6 @@ import * as utilities from "../utilities";
  *                 allowAll: "TRUE",
  *             },
  *         ],
- *     },
- * });
- * ```
- * ### Dry_run_spec
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const constraint = new gcp.orgpolicy.CustomConstraint("constraint", {
- *     actionType: "ALLOW",
- *     condition: "resource.management.autoUpgrade == false",
- *     description: "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
- *     displayName: "Disable GKE auto upgrade",
- *     methodTypes: ["CREATE"],
- *     parent: "organizations/123456789",
- *     resourceTypes: ["container.googleapis.com/NodePool"],
- * });
- * const primary = new gcp.orgpolicy.Policy("primary", {
- *     dryRunSpec: {
- *         inheritFromParent: false,
- *         reset: false,
- *         rules: [{
- *             enforce: "FALSE",
- *         }],
- *     },
- *     parent: "organizations/123456789",
- *     spec: {
- *         rules: [{
- *             enforce: "FALSE",
- *         }],
  *     },
  * });
  * ```

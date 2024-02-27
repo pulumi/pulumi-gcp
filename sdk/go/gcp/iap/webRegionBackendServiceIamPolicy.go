@@ -57,9 +57,9 @@ import (
 //				return err
 //			}
 //			_, err = iap.NewWebRegionBackendServiceIamPolicy(ctx, "policy", &iap.WebRegionBackendServiceIamPolicyArgs{
-//				Project:                 pulumi.Any(google_compute_region_backend_service.Default.Project),
-//				Region:                  pulumi.Any(google_compute_region_backend_service.Default.Region),
-//				WebRegionBackendService: pulumi.Any(google_compute_region_backend_service.Default.Name),
+//				Project:                 pulumi.Any(_default.Project),
+//				Region:                  pulumi.Any(_default.Region),
+//				WebRegionBackendService: pulumi.Any(_default.Name),
 //				PolicyData:              *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -105,9 +105,9 @@ import (
 //				return err
 //			}
 //			_, err = iap.NewWebRegionBackendServiceIamPolicy(ctx, "policy", &iap.WebRegionBackendServiceIamPolicyArgs{
-//				Project:                 pulumi.Any(google_compute_region_backend_service.Default.Project),
-//				Region:                  pulumi.Any(google_compute_region_backend_service.Default.Region),
-//				WebRegionBackendService: pulumi.Any(google_compute_region_backend_service.Default.Name),
+//				Project:                 pulumi.Any(_default.Project),
+//				Region:                  pulumi.Any(_default.Region),
+//				WebRegionBackendService: pulumi.Any(_default.Name),
 //				PolicyData:              *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -133,9 +133,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := iap.NewWebRegionBackendServiceIamBinding(ctx, "binding", &iap.WebRegionBackendServiceIamBindingArgs{
-//				Project:                 pulumi.Any(google_compute_region_backend_service.Default.Project),
-//				Region:                  pulumi.Any(google_compute_region_backend_service.Default.Region),
-//				WebRegionBackendService: pulumi.Any(google_compute_region_backend_service.Default.Name),
+//				Project:                 pulumi.Any(_default.Project),
+//				Region:                  pulumi.Any(_default.Region),
+//				WebRegionBackendService: pulumi.Any(_default.Name),
 //				Role:                    pulumi.String("roles/iap.httpsResourceAccessor"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -165,9 +165,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := iap.NewWebRegionBackendServiceIamBinding(ctx, "binding", &iap.WebRegionBackendServiceIamBindingArgs{
-//				Project:                 pulumi.Any(google_compute_region_backend_service.Default.Project),
-//				Region:                  pulumi.Any(google_compute_region_backend_service.Default.Region),
-//				WebRegionBackendService: pulumi.Any(google_compute_region_backend_service.Default.Name),
+//				Project:                 pulumi.Any(_default.Project),
+//				Region:                  pulumi.Any(_default.Region),
+//				WebRegionBackendService: pulumi.Any(_default.Name),
 //				Role:                    pulumi.String("roles/iap.httpsResourceAccessor"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -201,9 +201,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := iap.NewWebRegionBackendServiceIamMember(ctx, "member", &iap.WebRegionBackendServiceIamMemberArgs{
-//				Project:                 pulumi.Any(google_compute_region_backend_service.Default.Project),
-//				Region:                  pulumi.Any(google_compute_region_backend_service.Default.Region),
-//				WebRegionBackendService: pulumi.Any(google_compute_region_backend_service.Default.Name),
+//				Project:                 pulumi.Any(_default.Project),
+//				Region:                  pulumi.Any(_default.Region),
+//				WebRegionBackendService: pulumi.Any(_default.Name),
 //				Role:                    pulumi.String("roles/iap.httpsResourceAccessor"),
 //				Member:                  pulumi.String("user:jane@example.com"),
 //			})
@@ -231,9 +231,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := iap.NewWebRegionBackendServiceIamMember(ctx, "member", &iap.WebRegionBackendServiceIamMemberArgs{
-//				Project:                 pulumi.Any(google_compute_region_backend_service.Default.Project),
-//				Region:                  pulumi.Any(google_compute_region_backend_service.Default.Region),
-//				WebRegionBackendService: pulumi.Any(google_compute_region_backend_service.Default.Name),
+//				Project:                 pulumi.Any(_default.Project),
+//				Region:                  pulumi.Any(_default.Region),
+//				WebRegionBackendService: pulumi.Any(_default.Name),
 //				Role:                    pulumi.String("roles/iap.httpsResourceAccessor"),
 //				Member:                  pulumi.String("user:jane@example.com"),
 //				Condition: &iap.WebRegionBackendServiceIamMemberConditionArgs{

@@ -42,7 +42,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ipAddress = new Gcp.Compute.Address("ipAddress");
+    ///     var ipAddress = new Gcp.Compute.Address("ip_address", new()
+    ///     {
+    ///         Name = "my-address",
+    ///     });
     /// 
     /// });
     /// ```
@@ -56,17 +59,22 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork");
-    /// 
-    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new()
+    ///     var @default = new Gcp.Compute.Network("default", new()
     ///     {
-    ///         IpCidrRange = "10.0.0.0/16",
-    ///         Region = "us-central1",
-    ///         Network = defaultNetwork.Id,
+    ///         Name = "my-network",
     ///     });
     /// 
-    ///     var internalWithSubnetAndAddress = new Gcp.Compute.Address("internalWithSubnetAndAddress", new()
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
     ///     {
+    ///         Name = "my-subnet",
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///         Region = "us-central1",
+    ///         Network = @default.Id,
+    ///     });
+    /// 
+    ///     var internalWithSubnetAndAddress = new Gcp.Compute.Address("internal_with_subnet_and_address", new()
+    ///     {
+    ///         Name = "my-internal-address",
     ///         Subnetwork = defaultSubnetwork.Id,
     ///         AddressType = "INTERNAL",
     ///         IPAddress = "10.0.42.42",
@@ -85,8 +93,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var internalWithGceEndpoint = new Gcp.Compute.Address("internalWithGceEndpoint", new()
+    ///     var internalWithGceEndpoint = new Gcp.Compute.Address("internal_with_gce_endpoint", new()
     ///     {
+    ///         Name = "my-internal-address-",
     ///         AddressType = "INTERNAL",
     ///         Purpose = "GCE_ENDPOINT",
     ///     });
@@ -103,7 +112,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @static = new Gcp.Compute.Address("static");
+    ///     var @static = new Gcp.Compute.Address("static", new()
+    ///     {
+    ///         Name = "ipv4-address",
+    ///     });
     /// 
     ///     var debianImage = Gcp.Compute.GetImage.Invoke(new()
     ///     {
@@ -111,8 +123,9 @@ namespace Pulumi.Gcp.Compute
     ///         Project = "debian-cloud",
     ///     });
     /// 
-    ///     var instanceWithIp = new Gcp.Compute.Instance("instanceWithIp", new()
+    ///     var instanceWithIp = new Gcp.Compute.Instance("instance_with_ip", new()
     ///     {
+    ///         Name = "vm-instance",
     ///         MachineType = "f1-micro",
     ///         Zone = "us-central1-a",
     ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
@@ -152,11 +165,13 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
+    ///         Name = "test-network",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var ipsec_interconnect_address = new Gcp.Compute.Address("ipsec-interconnect-address", new()
     ///     {
+    ///         Name = "test-address",
     ///         AddressType = "INTERNAL",
     ///         Purpose = "IPSEC_INTERCONNECT",
     ///         IPAddress = "192.168.1.0",

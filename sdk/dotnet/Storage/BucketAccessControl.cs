@@ -46,10 +46,11 @@ namespace Pulumi.Gcp.Storage
     /// {
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
+    ///         Name = "static-content-bucket",
     ///         Location = "US",
     ///     });
     /// 
-    ///     var publicRule = new Gcp.Storage.BucketAccessControl("publicRule", new()
+    ///     var publicRule = new Gcp.Storage.BucketAccessControl("public_rule", new()
     ///     {
     ///         Bucket = bucket.Name,
     ///         Role = "READER",

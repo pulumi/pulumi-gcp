@@ -49,14 +49,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var projectAccessApproval = new AccessApprovalSettings(&#34;projectAccessApproval&#34;, AccessApprovalSettingsArgs.builder()        
+ *             .projectId(&#34;my-project-name&#34;)
+ *             .notificationEmails(            
+ *                 &#34;testuser@example.com&#34;,
+ *                 &#34;example.user@example.com&#34;)
  *             .enrolledServices(AccessApprovalSettingsEnrolledServiceArgs.builder()
  *                 .cloudProduct(&#34;all&#34;)
  *                 .enrollmentLevel(&#34;BLOCK_ALL&#34;)
  *                 .build())
- *             .notificationEmails(            
- *                 &#34;testuser@example.com&#34;,
- *                 &#34;example.user@example.com&#34;)
- *             .projectId(&#34;my-project-name&#34;)
  *             .build());
  * 
  *     }
@@ -83,7 +83,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.AccessApprovalSettings;
  * import com.pulumi.gcp.projects.AccessApprovalSettingsArgs;
  * import com.pulumi.gcp.projects.inputs.AccessApprovalSettingsEnrolledServiceArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -98,11 +97,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
+ *             .name(&#34;key-ring&#34;)
  *             .location(&#34;global&#34;)
  *             .project(&#34;my-project-name&#34;)
  *             .build());
  * 
  *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
+ *             .name(&#34;crypto-key&#34;)
  *             .keyRing(keyRing.id())
  *             .purpose(&#34;ASYMMETRIC_SIGN&#34;)
  *             .versionTemplate(CryptoKeyVersionTemplateArgs.builder()
@@ -130,9 +131,7 @@ import javax.annotation.Nullable;
  *             .enrolledServices(AccessApprovalSettingsEnrolledServiceArgs.builder()
  *                 .cloudProduct(&#34;all&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(iam)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

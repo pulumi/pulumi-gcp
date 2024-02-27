@@ -40,6 +40,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:                     pulumi.String("dialogflowcx-bucket"),
 //				Location:                 pulumi.String("US"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
@@ -62,7 +63,7 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			_, err = diagflow.NewCxAgent(ctx, "fullAgent", &diagflow.CxAgentArgs{
+//			_, err = diagflow.NewCxAgent(ctx, "full_agent", &diagflow.CxAgentArgs{
 //				DisplayName:         pulumi.String("dialogflowcx-agent"),
 //				Location:            pulumi.String("global"),
 //				DefaultLanguageCode: pulumi.String("en"),

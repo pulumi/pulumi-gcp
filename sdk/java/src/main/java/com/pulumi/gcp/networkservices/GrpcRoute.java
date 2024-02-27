@@ -31,7 +31,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleArgs;
  * import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleActionArgs;
  * import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleActionRetryPolicyArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -46,6 +45,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new GrpcRoute(&#34;default&#34;, GrpcRouteArgs.builder()        
+ *             .name(&#34;my-grpc-route&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .description(&#34;my description&#34;)
  *             .hostnames(&#34;example&#34;)
@@ -63,9 +63,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -85,7 +83,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleActionFaultInjectionPolicyDelayArgs;
  * import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleActionFaultInjectionPolicyAbortArgs;
  * import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleActionRetryPolicyArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -100,6 +97,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new GrpcRoute(&#34;default&#34;, GrpcRouteArgs.builder()        
+ *             .name(&#34;my-grpc-route&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .description(&#34;my description&#34;)
  *             .hostnames(&#34;example&#34;)
@@ -139,9 +137,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -161,7 +157,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleActionFaultInjectionPolicyDelayArgs;
  * import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleActionFaultInjectionPolicyAbortArgs;
  * import com.pulumi.gcp.networkservices.inputs.GrpcRouteRuleActionRetryPolicyArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -176,6 +171,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new GrpcRoute(&#34;default&#34;, GrpcRouteArgs.builder()        
+ *             .name(&#34;my-grpc-route&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .description(&#34;my description&#34;)
  *             .hostnames(&#34;example&#34;)
@@ -197,9 +193,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

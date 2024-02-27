@@ -55,6 +55,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary = new Release(&#34;primary&#34;, ReleaseArgs.builder()        
+ *             .name(&#34;cloud.firestore&#34;)
  *             .rulesetName(firestore.name().applyValue(name -&gt; String.format(&#34;projects/my-project-name/rulesets/%s&#34;, name)))
  *             .project(&#34;my-project-name&#34;)
  *             .build());
@@ -72,14 +73,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.storage.Bucket;
  * import com.pulumi.gcp.storage.BucketArgs;
- * import com.pulumi.gcp.firebase.StorageBucket;
- * import com.pulumi.gcp.firebase.StorageBucketArgs;
  * import com.pulumi.gcp.firebaserules.Ruleset;
  * import com.pulumi.gcp.firebaserules.RulesetArgs;
  * import com.pulumi.gcp.firebaserules.inputs.RulesetSourceArgs;
  * import com.pulumi.gcp.firebaserules.Release;
  * import com.pulumi.gcp.firebaserules.ReleaseArgs;
- * import com.pulumi.resources.CustomResourceOptions;
+ * import com.pulumi.gcp.firebase.StorageBucket;
+ * import com.pulumi.gcp.firebase.StorageBucketArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -93,19 +93,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucketBucket = new Bucket(&#34;bucketBucket&#34;, BucketArgs.builder()        
+ *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
+ *             .name(&#34;bucket&#34;)
  *             .location(&#34;us-west1&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var bucketStorageBucket = new StorageBucket(&#34;bucketStorageBucket&#34;, StorageBucketArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .bucketId(bucketBucket.name())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var storage = new Ruleset(&#34;storage&#34;, RulesetArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
@@ -115,17 +107,18 @@ import javax.annotation.Nullable;
  *                     .content(&#34;service firebase.storage {match /b/{bucket}/o {match /{allPaths=**} {allow read, write: if request.auth != null;}}}&#34;)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .dependsOn(bucketStorageBucket)
- *                 .build());
+ *             .build());
  * 
  *         var primary = new Release(&#34;primary&#34;, ReleaseArgs.builder()        
+ *             .name(bucket.name().applyValue(name -&gt; String.format(&#34;firebase.storage/%s&#34;, name)))
  *             .rulesetName(storage.name().applyValue(name -&gt; String.format(&#34;projects/my-project-name/rulesets/%s&#34;, name)))
  *             .project(&#34;my-project-name&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
+ * 
+ *         var bucketStorageBucket = new StorageBucket(&#34;bucketStorageBucket&#34;, StorageBucketArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .bucketId(bucket.name())
+ *             .build());
  * 
  *     }
  * }

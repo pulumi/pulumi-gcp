@@ -64,16 +64,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
+ *             .name(&#34;network-1&#34;)
  *             .routingMode(&#34;GLOBAL&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var haGateway = new HaVpnGateway(&#34;haGateway&#34;, HaVpnGatewayArgs.builder()        
  *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;ha-vpn&#34;)
  *             .network(network.id())
  *             .build());
  * 
  *         var externalGateway = new ExternalVpnGateway(&#34;externalGateway&#34;, ExternalVpnGatewayArgs.builder()        
+ *             .name(&#34;external-gateway&#34;)
  *             .redundancyType(&#34;SINGLE_IP_INTERNALLY_REDUNDANT&#34;)
  *             .description(&#34;An externally managed VPN gateway&#34;)
  *             .interfaces(ExternalVpnGatewayInterfaceArgs.builder()
@@ -83,18 +86,21 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var networkSubnet1 = new Subnetwork(&#34;networkSubnet1&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;ha-vpn-subnet-1&#34;)
  *             .ipCidrRange(&#34;10.0.1.0/24&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(network.id())
  *             .build());
  * 
  *         var networkSubnet2 = new Subnetwork(&#34;networkSubnet2&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;ha-vpn-subnet-2&#34;)
  *             .ipCidrRange(&#34;10.0.2.0/24&#34;)
  *             .region(&#34;us-west1&#34;)
  *             .network(network.id())
  *             .build());
  * 
  *         var router1 = new Router(&#34;router1&#34;, RouterArgs.builder()        
+ *             .name(&#34;ha-vpn-router1&#34;)
  *             .network(network.name())
  *             .bgp(RouterBgpArgs.builder()
  *                 .asn(64514)
@@ -102,6 +108,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var tunnel1 = new VPNTunnel(&#34;tunnel1&#34;, VPNTunnelArgs.builder()        
+ *             .name(&#34;ha-vpn-tunnel1&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .vpnGateway(haGateway.id())
  *             .peerExternalGateway(externalGateway.id())
@@ -112,6 +119,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var tunnel2 = new VPNTunnel(&#34;tunnel2&#34;, VPNTunnelArgs.builder()        
+ *             .name(&#34;ha-vpn-tunnel2&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .vpnGateway(haGateway.id())
  *             .peerExternalGateway(externalGateway.id())
@@ -122,6 +130,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var router1Interface1 = new RouterInterface(&#34;router1Interface1&#34;, RouterInterfaceArgs.builder()        
+ *             .name(&#34;router1-interface1&#34;)
  *             .router(router1.name())
  *             .region(&#34;us-central1&#34;)
  *             .ipRange(&#34;169.254.0.1/30&#34;)
@@ -129,6 +138,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var router1Peer1 = new RouterPeer(&#34;router1Peer1&#34;, RouterPeerArgs.builder()        
+ *             .name(&#34;router1-peer1&#34;)
  *             .router(router1.name())
  *             .region(&#34;us-central1&#34;)
  *             .peerIpAddress(&#34;169.254.0.2&#34;)
@@ -138,6 +148,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var router1Interface2 = new RouterInterface(&#34;router1Interface2&#34;, RouterInterfaceArgs.builder()        
+ *             .name(&#34;router1-interface2&#34;)
  *             .router(router1.name())
  *             .region(&#34;us-central1&#34;)
  *             .ipRange(&#34;169.254.1.1/30&#34;)
@@ -145,6 +156,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var router1Peer2 = new RouterPeer(&#34;router1Peer2&#34;, RouterPeerArgs.builder()        
+ *             .name(&#34;router1-peer2&#34;)
  *             .router(router1.name())
  *             .region(&#34;us-central1&#34;)
  *             .peerIpAddress(&#34;169.254.1.2&#34;)

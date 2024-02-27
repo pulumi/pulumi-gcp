@@ -21,10 +21,10 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -33,8 +33,9 @@ namespace Pulumi.Gcp.IdentityPlatform
     ///         DisplayName = "tenant",
     ///     });
     /// 
-    ///     var tenantSamlConfig = new Gcp.IdentityPlatform.TenantInboundSamlConfig("tenantSamlConfig", new()
+    ///     var tenantSamlConfig = new Gcp.IdentityPlatform.TenantInboundSamlConfig("tenant_saml_config", new()
     ///     {
+    ///         Name = "saml.tf-config",
     ///         DisplayName = "Display Name",
     ///         Tenant = tenant.Name,
     ///         IdpConfig = new Gcp.IdentityPlatform.Inputs.TenantInboundSamlConfigIdpConfigArgs
@@ -46,7 +47,10 @@ namespace Pulumi.Gcp.IdentityPlatform
     ///             {
     ///                 new Gcp.IdentityPlatform.Inputs.TenantInboundSamlConfigIdpConfigIdpCertificateArgs
     ///                 {
-    ///                     X509Certificate = File.ReadAllText("test-fixtures/rsa_cert.pem"),
+    ///                     X509Certificate = Std.File.Invoke(new()
+    ///                     {
+    ///                         Input = "test-fixtures/rsa_cert.pem",
+    ///                     }).Apply(invoke =&gt; invoke.Result),
     ///                 },
     ///             },
     ///         },

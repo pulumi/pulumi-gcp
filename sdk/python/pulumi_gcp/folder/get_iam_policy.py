@@ -88,7 +88,7 @@ def get_iam_policy(folder: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    test = gcp.folder.get_iam_policy(folder=google_folder["permissiontest"]["name"])
+    test = gcp.folder.get_iam_policy(folder=permissiontest["name"])
     ```
 
 
@@ -118,7 +118,7 @@ def get_iam_policy_output(folder: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    test = gcp.folder.get_iam_policy(folder=google_folder["permissiontest"]["name"])
+    test = gcp.folder.get_iam_policy(folder=permissiontest["name"])
     ```
 
 

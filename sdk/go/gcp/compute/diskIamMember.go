@@ -55,8 +55,9 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewDiskIamPolicy(ctx, "policy", &compute.DiskIamPolicyArgs{
-//				Project:    pulumi.Any(google_compute_disk.Default.Project),
-//				Zone:       pulumi.Any(google_compute_disk.Default.Zone),
+//				Project:    pulumi.Any(_default.Project),
+//				Zone:       pulumi.Any(_default.Zone),
+//				Name:       pulumi.Any(_default.Name),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -83,8 +84,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewDiskIamBinding(ctx, "binding", &compute.DiskIamBindingArgs{
-//				Project: pulumi.Any(google_compute_disk.Default.Project),
-//				Zone:    pulumi.Any(google_compute_disk.Default.Zone),
+//				Project: pulumi.Any(_default.Project),
+//				Zone:    pulumi.Any(_default.Zone),
+//				Name:    pulumi.Any(_default.Name),
 //				Role:    pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -114,8 +116,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewDiskIamMember(ctx, "member", &compute.DiskIamMemberArgs{
-//				Project: pulumi.Any(google_compute_disk.Default.Project),
-//				Zone:    pulumi.Any(google_compute_disk.Default.Zone),
+//				Project: pulumi.Any(_default.Project),
+//				Zone:    pulumi.Any(_default.Zone),
+//				Name:    pulumi.Any(_default.Name),
 //				Role:    pulumi.String("roles/viewer"),
 //				Member:  pulumi.String("user:jane@example.com"),
 //			})

@@ -424,12 +424,15 @@ class Certificate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.certificatemanager.DnsAuthorization("instance",
+            name="dns-auth",
             description="The default dnss",
             domain="subdomain.hashicorptest.com")
         instance2 = gcp.certificatemanager.DnsAuthorization("instance2",
+            name="dns-auth2",
             description="The default dnss",
             domain="subdomain2.hashicorptest.com")
         default = gcp.certificatemanager.Certificate("default",
+            name="dns-cert",
             description="The default cert",
             scope="EDGE_CACHE",
             labels={
@@ -453,9 +456,30 @@ class Certificate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         pool = gcp.certificateauthority.CaPool("pool",
+            name="ca-pool",
             location="us-central1",
             tier="ENTERPRISE")
-        ca_authority = gcp.certificateauthority.Authority("caAuthority",
+        # creating certificate_issuance_config to use it in the managed certificate
+        issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
+            name="issuance-config",
+            description="sample description for the certificate issuanceConfigs",
+            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
+                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
+                    ca_pool=pool.id,
+                ),
+            ),
+            lifetime="1814400s",
+            rotation_window_percentage=34,
+            key_algorithm="ECDSA_P256")
+        default = gcp.certificatemanager.Certificate("default",
+            name="issuance-config-cert",
+            description="The default cert",
+            scope="EDGE_CACHE",
+            managed=gcp.certificatemanager.CertificateManagedArgs(
+                domains=["terraform.subdomain1.com"],
+                issuance_config=issuanceconfig.id,
+            ))
+        ca_authority = gcp.certificateauthority.Authority("ca_authority",
             location="us-central1",
             pool=pool.name,
             certificate_authority_id="ca-authority",
@@ -490,25 +514,6 @@ class Certificate(pulumi.CustomResource):
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
-        # creating certificate_issuance_config to use it in the managed certificate
-        issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
-            description="sample description for the certificate issuanceConfigs",
-            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
-                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
-                    ca_pool=pool.id,
-                ),
-            ),
-            lifetime="1814400s",
-            rotation_window_percentage=34,
-            key_algorithm="ECDSA_P256",
-            opts=pulumi.ResourceOptions(depends_on=[ca_authority]))
-        default = gcp.certificatemanager.Certificate("default",
-            description="The default cert",
-            scope="EDGE_CACHE",
-            managed=gcp.certificatemanager.CertificateManagedArgs(
-                domains=["terraform.subdomain1.com"],
-                issuance_config=issuanceconfig.id,
-            ))
         ```
         ### Certificate Manager Certificate Basic
 
@@ -517,12 +522,15 @@ class Certificate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.certificatemanager.DnsAuthorization("instance",
+            name="dns-auth",
             description="The default dnss",
             domain="subdomain.hashicorptest.com")
         instance2 = gcp.certificatemanager.DnsAuthorization("instance2",
+            name="dns-auth2",
             description="The default dnss",
             domain="subdomain2.hashicorptest.com")
         default = gcp.certificatemanager.Certificate("default",
+            name="self-managed-cert",
             description="Global cert",
             scope="EDGE_CACHE",
             managed=gcp.certificatemanager.CertificateManagedArgs(
@@ -541,13 +549,15 @@ class Certificate(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         default = gcp.certificatemanager.Certificate("default",
+            name="self-managed-cert",
             description="Regional cert",
             location="us-central1",
             self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
-                pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
-                pem_private_key=(lambda path: open(path).read())("test-fixtures/private-key.pem"),
+                pem_certificate=std.file(input="test-fixtures/cert.pem").result,
+                pem_private_key=std.file(input="test-fixtures/private-key.pem").result,
             ))
         ```
         ### Certificate Manager Google Managed Certificate Issuance Config All Regions
@@ -557,9 +567,30 @@ class Certificate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         pool = gcp.certificateauthority.CaPool("pool",
+            name="ca-pool",
             location="us-central1",
             tier="ENTERPRISE")
-        ca_authority = gcp.certificateauthority.Authority("caAuthority",
+        # creating certificate_issuance_config to use it in the managed certificate
+        issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
+            name="issuance-config",
+            description="sample description for the certificate issuanceConfigs",
+            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
+                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
+                    ca_pool=pool.id,
+                ),
+            ),
+            lifetime="1814400s",
+            rotation_window_percentage=34,
+            key_algorithm="ECDSA_P256")
+        default = gcp.certificatemanager.Certificate("default",
+            name="issuance-config-cert",
+            description="sample google managed all_regions certificate with issuance config for terraform",
+            scope="ALL_REGIONS",
+            managed=gcp.certificatemanager.CertificateManagedArgs(
+                domains=["terraform.subdomain1.com"],
+                issuance_config=issuanceconfig.id,
+            ))
+        ca_authority = gcp.certificateauthority.Authority("ca_authority",
             location="us-central1",
             pool=pool.name,
             certificate_authority_id="ca-authority",
@@ -594,25 +625,6 @@ class Certificate(pulumi.CustomResource):
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
-        # creating certificate_issuance_config to use it in the managed certificate
-        issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
-            description="sample description for the certificate issuanceConfigs",
-            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
-                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
-                    ca_pool=pool.id,
-                ),
-            ),
-            lifetime="1814400s",
-            rotation_window_percentage=34,
-            key_algorithm="ECDSA_P256",
-            opts=pulumi.ResourceOptions(depends_on=[ca_authority]))
-        default = gcp.certificatemanager.Certificate("default",
-            description="sample google managed all_regions certificate with issuance config for terraform",
-            scope="ALL_REGIONS",
-            managed=gcp.certificatemanager.CertificateManagedArgs(
-                domains=["terraform.subdomain1.com"],
-                issuance_config=issuanceconfig.id,
-            ))
         ```
         ### Certificate Manager Google Managed Certificate Dns All Regions
 
@@ -621,12 +633,15 @@ class Certificate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.certificatemanager.DnsAuthorization("instance",
+            name="dns-auth",
             description="The default dnss",
             domain="subdomain.hashicorptest.com")
         instance2 = gcp.certificatemanager.DnsAuthorization("instance2",
+            name="dns-auth2",
             description="The default dnss",
             domain="subdomain2.hashicorptest.com")
         default = gcp.certificatemanager.Certificate("default",
+            name="dns-cert",
             description="The default cert",
             scope="ALL_REGIONS",
             managed=gcp.certificatemanager.CertificateManagedArgs(
@@ -713,12 +728,15 @@ class Certificate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.certificatemanager.DnsAuthorization("instance",
+            name="dns-auth",
             description="The default dnss",
             domain="subdomain.hashicorptest.com")
         instance2 = gcp.certificatemanager.DnsAuthorization("instance2",
+            name="dns-auth2",
             description="The default dnss",
             domain="subdomain2.hashicorptest.com")
         default = gcp.certificatemanager.Certificate("default",
+            name="dns-cert",
             description="The default cert",
             scope="EDGE_CACHE",
             labels={
@@ -742,9 +760,30 @@ class Certificate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         pool = gcp.certificateauthority.CaPool("pool",
+            name="ca-pool",
             location="us-central1",
             tier="ENTERPRISE")
-        ca_authority = gcp.certificateauthority.Authority("caAuthority",
+        # creating certificate_issuance_config to use it in the managed certificate
+        issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
+            name="issuance-config",
+            description="sample description for the certificate issuanceConfigs",
+            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
+                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
+                    ca_pool=pool.id,
+                ),
+            ),
+            lifetime="1814400s",
+            rotation_window_percentage=34,
+            key_algorithm="ECDSA_P256")
+        default = gcp.certificatemanager.Certificate("default",
+            name="issuance-config-cert",
+            description="The default cert",
+            scope="EDGE_CACHE",
+            managed=gcp.certificatemanager.CertificateManagedArgs(
+                domains=["terraform.subdomain1.com"],
+                issuance_config=issuanceconfig.id,
+            ))
+        ca_authority = gcp.certificateauthority.Authority("ca_authority",
             location="us-central1",
             pool=pool.name,
             certificate_authority_id="ca-authority",
@@ -779,25 +818,6 @@ class Certificate(pulumi.CustomResource):
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
-        # creating certificate_issuance_config to use it in the managed certificate
-        issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
-            description="sample description for the certificate issuanceConfigs",
-            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
-                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
-                    ca_pool=pool.id,
-                ),
-            ),
-            lifetime="1814400s",
-            rotation_window_percentage=34,
-            key_algorithm="ECDSA_P256",
-            opts=pulumi.ResourceOptions(depends_on=[ca_authority]))
-        default = gcp.certificatemanager.Certificate("default",
-            description="The default cert",
-            scope="EDGE_CACHE",
-            managed=gcp.certificatemanager.CertificateManagedArgs(
-                domains=["terraform.subdomain1.com"],
-                issuance_config=issuanceconfig.id,
-            ))
         ```
         ### Certificate Manager Certificate Basic
 
@@ -806,12 +826,15 @@ class Certificate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.certificatemanager.DnsAuthorization("instance",
+            name="dns-auth",
             description="The default dnss",
             domain="subdomain.hashicorptest.com")
         instance2 = gcp.certificatemanager.DnsAuthorization("instance2",
+            name="dns-auth2",
             description="The default dnss",
             domain="subdomain2.hashicorptest.com")
         default = gcp.certificatemanager.Certificate("default",
+            name="self-managed-cert",
             description="Global cert",
             scope="EDGE_CACHE",
             managed=gcp.certificatemanager.CertificateManagedArgs(
@@ -830,13 +853,15 @@ class Certificate(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         default = gcp.certificatemanager.Certificate("default",
+            name="self-managed-cert",
             description="Regional cert",
             location="us-central1",
             self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
-                pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
-                pem_private_key=(lambda path: open(path).read())("test-fixtures/private-key.pem"),
+                pem_certificate=std.file(input="test-fixtures/cert.pem").result,
+                pem_private_key=std.file(input="test-fixtures/private-key.pem").result,
             ))
         ```
         ### Certificate Manager Google Managed Certificate Issuance Config All Regions
@@ -846,9 +871,30 @@ class Certificate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         pool = gcp.certificateauthority.CaPool("pool",
+            name="ca-pool",
             location="us-central1",
             tier="ENTERPRISE")
-        ca_authority = gcp.certificateauthority.Authority("caAuthority",
+        # creating certificate_issuance_config to use it in the managed certificate
+        issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
+            name="issuance-config",
+            description="sample description for the certificate issuanceConfigs",
+            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
+                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
+                    ca_pool=pool.id,
+                ),
+            ),
+            lifetime="1814400s",
+            rotation_window_percentage=34,
+            key_algorithm="ECDSA_P256")
+        default = gcp.certificatemanager.Certificate("default",
+            name="issuance-config-cert",
+            description="sample google managed all_regions certificate with issuance config for terraform",
+            scope="ALL_REGIONS",
+            managed=gcp.certificatemanager.CertificateManagedArgs(
+                domains=["terraform.subdomain1.com"],
+                issuance_config=issuanceconfig.id,
+            ))
+        ca_authority = gcp.certificateauthority.Authority("ca_authority",
             location="us-central1",
             pool=pool.name,
             certificate_authority_id="ca-authority",
@@ -883,25 +929,6 @@ class Certificate(pulumi.CustomResource):
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
-        # creating certificate_issuance_config to use it in the managed certificate
-        issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
-            description="sample description for the certificate issuanceConfigs",
-            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
-                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
-                    ca_pool=pool.id,
-                ),
-            ),
-            lifetime="1814400s",
-            rotation_window_percentage=34,
-            key_algorithm="ECDSA_P256",
-            opts=pulumi.ResourceOptions(depends_on=[ca_authority]))
-        default = gcp.certificatemanager.Certificate("default",
-            description="sample google managed all_regions certificate with issuance config for terraform",
-            scope="ALL_REGIONS",
-            managed=gcp.certificatemanager.CertificateManagedArgs(
-                domains=["terraform.subdomain1.com"],
-                issuance_config=issuanceconfig.id,
-            ))
         ```
         ### Certificate Manager Google Managed Certificate Dns All Regions
 
@@ -910,12 +937,15 @@ class Certificate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.certificatemanager.DnsAuthorization("instance",
+            name="dns-auth",
             description="The default dnss",
             domain="subdomain.hashicorptest.com")
         instance2 = gcp.certificatemanager.DnsAuthorization("instance2",
+            name="dns-auth2",
             description="The default dnss",
             domain="subdomain2.hashicorptest.com")
         default = gcp.certificatemanager.Certificate("default",
+            name="dns-cert",
             description="The default cert",
             scope="ALL_REGIONS",
             managed=gcp.certificatemanager.CertificateManagedArgs(

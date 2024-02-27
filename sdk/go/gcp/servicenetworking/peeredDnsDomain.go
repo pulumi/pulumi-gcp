@@ -31,9 +31,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := servicenetworking.NewPeeredDnsDomain(ctx, "name", &servicenetworking.PeeredDnsDomainArgs{
-//				DnsSuffix: pulumi.String("example.com."),
-//				Network:   pulumi.String("default"),
 //				Project:   pulumi.String("10000000"),
+//				Name:      pulumi.String("example-com"),
+//				Network:   pulumi.String("default"),
+//				DnsSuffix: pulumi.String("example.com."),
 //				Service:   pulumi.String("peering-service"),
 //			})
 //			if err != nil {

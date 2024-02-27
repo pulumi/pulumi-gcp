@@ -19,7 +19,6 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * ### Network Services Tls Route Basic
- * 
  * ```java
  * package generated_program;
  * 
@@ -34,7 +33,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networkservices.TlsRouteArgs;
  * import com.pulumi.gcp.networkservices.inputs.TlsRouteRuleArgs;
  * import com.pulumi.gcp.networkservices.inputs.TlsRouteRuleActionArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -49,20 +47,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
+ *             .name(&#34;backend-service-health-check&#34;)
  *             .requestPath(&#34;/&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
- *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
+ *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;my-backend-service&#34;)
  *             .healthChecks(defaultHttpHealthCheck.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultTlsRoute = new TlsRoute(&#34;defaultTlsRoute&#34;, TlsRouteArgs.builder()        
+ *             .name(&#34;my-tls-route&#34;)
  *             .description(&#34;my description&#34;)
  *             .rules(TlsRouteRuleArgs.builder()
  *                 .matches(TlsRouteRuleMatchArgs.builder()
@@ -71,20 +68,17 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .action(TlsRouteRuleActionArgs.builder()
  *                     .destinations(TlsRouteRuleActionDestinationArgs.builder()
- *                         .serviceName(defaultBackendService.id())
+ *                         .serviceName(default_.id())
  *                         .weight(1)
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
  * ```
  * ### Network Services Tls Route Mesh Basic
- * 
  * ```java
  * package generated_program;
  * 
@@ -101,7 +95,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networkservices.TlsRouteArgs;
  * import com.pulumi.gcp.networkservices.inputs.TlsRouteRuleArgs;
  * import com.pulumi.gcp.networkservices.inputs.TlsRouteRuleActionArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -116,27 +109,25 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
+ *             .name(&#34;backend-service-health-check&#34;)
  *             .requestPath(&#34;/&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
- *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
+ *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;my-backend-service&#34;)
  *             .healthChecks(defaultHttpHealthCheck.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultMesh = new Mesh(&#34;defaultMesh&#34;, MeshArgs.builder()        
+ *             .name(&#34;my-tls-route&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .description(&#34;my description&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultTlsRoute = new TlsRoute(&#34;defaultTlsRoute&#34;, TlsRouteArgs.builder()        
+ *             .name(&#34;my-tls-route&#34;)
  *             .description(&#34;my description&#34;)
  *             .meshes(defaultMesh.id())
  *             .rules(TlsRouteRuleArgs.builder()
@@ -146,20 +137,17 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .action(TlsRouteRuleActionArgs.builder()
  *                     .destinations(TlsRouteRuleActionDestinationArgs.builder()
- *                         .serviceName(defaultBackendService.id())
+ *                         .serviceName(default_.id())
  *                         .weight(1)
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
  * ```
  * ### Network Services Tls Route Gateway Basic
- * 
  * ```java
  * package generated_program;
  * 
@@ -176,7 +164,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networkservices.TlsRouteArgs;
  * import com.pulumi.gcp.networkservices.inputs.TlsRouteRuleArgs;
  * import com.pulumi.gcp.networkservices.inputs.TlsRouteRuleActionArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -191,30 +178,28 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
+ *             .name(&#34;backend-service-health-check&#34;)
  *             .requestPath(&#34;/&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
- *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
+ *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;my-backend-service&#34;)
  *             .healthChecks(defaultHttpHealthCheck.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
+ *             .name(&#34;my-tls-route&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .description(&#34;my description&#34;)
  *             .scope(&#34;my-scope&#34;)
  *             .type(&#34;OPEN_MESH&#34;)
  *             .ports(443)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultTlsRoute = new TlsRoute(&#34;defaultTlsRoute&#34;, TlsRouteArgs.builder()        
+ *             .name(&#34;my-tls-route&#34;)
  *             .description(&#34;my description&#34;)
  *             .gateways(defaultGateway.id())
  *             .rules(TlsRouteRuleArgs.builder()
@@ -224,14 +209,12 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .action(TlsRouteRuleActionArgs.builder()
  *                     .destinations(TlsRouteRuleActionDestinationArgs.builder()
- *                         .serviceName(defaultBackendService.id())
+ *                         .serviceName(default_.id())
  *                         .weight(1)
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

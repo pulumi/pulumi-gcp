@@ -98,8 +98,8 @@ def get_default_service_account(project: Optional[str] = None,
     import pulumi_gcp as gcp
 
     bq_sa = gcp.bigquery.get_default_service_account()
-    key_sa_user = gcp.kms.CryptoKeyIAMMember("keySaUser",
-        crypto_key_id=google_kms_crypto_key["key"]["id"],
+    key_sa_user = gcp.kms.CryptoKeyIAMMember("key_sa_user",
+        crypto_key_id=key["id"],
         role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
         member=f"serviceAccount:{bq_sa.email}")
     ```
@@ -140,8 +140,8 @@ def get_default_service_account_output(project: Optional[pulumi.Input[Optional[s
     import pulumi_gcp as gcp
 
     bq_sa = gcp.bigquery.get_default_service_account()
-    key_sa_user = gcp.kms.CryptoKeyIAMMember("keySaUser",
-        crypto_key_id=google_kms_crypto_key["key"]["id"],
+    key_sa_user = gcp.kms.CryptoKeyIAMMember("key_sa_user",
+        crypto_key_id=key["id"],
         role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
         member=f"serviceAccount:{bq_sa.email}")
     ```

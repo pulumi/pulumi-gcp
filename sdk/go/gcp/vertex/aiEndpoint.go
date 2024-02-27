@@ -41,25 +41,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			vertexNetwork, err := compute.NewNetwork(ctx, "vertexNetwork", nil)
-//			if err != nil {
-//				return err
-//			}
-//			vertexRange, err := compute.NewGlobalAddress(ctx, "vertexRange", &compute.GlobalAddressArgs{
-//				Purpose:      pulumi.String("VPC_PEERING"),
-//				AddressType:  pulumi.String("INTERNAL"),
-//				PrefixLength: pulumi.Int(24),
-//				Network:      vertexNetwork.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			vertexVpcConnection, err := servicenetworking.NewConnection(ctx, "vertexVpcConnection", &servicenetworking.ConnectionArgs{
-//				Network: vertexNetwork.ID(),
-//				Service: pulumi.String("servicenetworking.googleapis.com"),
-//				ReservedPeeringRanges: pulumi.StringArray{
-//					vertexRange.Name,
-//				},
+//			vertexNetwork, err := compute.NewNetwork(ctx, "vertex_network", &compute.NetworkArgs{
+//				Name: pulumi.String("network-name"),
 //			})
 //			if err != nil {
 //				return err
@@ -69,6 +52,7 @@ import (
 //				return err
 //			}
 //			_, err = vertex.NewAiEndpoint(ctx, "endpoint", &vertex.AiEndpointArgs{
+//				Name:        pulumi.String("endpoint-name"),
 //				DisplayName: pulumi.String("sample-endpoint"),
 //				Description: pulumi.String("A sample vertex endpoint"),
 //				Location:    pulumi.String("us-central1"),
@@ -82,13 +66,31 @@ import (
 //				EncryptionSpec: &vertex.AiEndpointEncryptionSpecArgs{
 //					KmsKeyName: pulumi.String("kms-name"),
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				vertexVpcConnection,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = kms.NewCryptoKeyIAMMember(ctx, "cryptoKey", &kms.CryptoKeyIAMMemberArgs{
+//			vertexRange, err := compute.NewGlobalAddress(ctx, "vertex_range", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("address-name"),
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				AddressType:  pulumi.String("INTERNAL"),
+//				PrefixLength: pulumi.Int(24),
+//				Network:      vertexNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = servicenetworking.NewConnection(ctx, "vertex_vpc_connection", &servicenetworking.ConnectionArgs{
+//				Network: vertexNetwork.ID(),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					vertexRange.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kms.NewCryptoKeyIAMMember(ctx, "crypto_key", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: pulumi.String("kms-name"),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-aiplatform.iam.gserviceaccount.com", project.Number)),

@@ -253,6 +253,7 @@ class ReservationAssignment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         basic = gcp.bigquery.Reservation("basic",
+            name="tf-test-my-reservation",
             project="my-project-name",
             location="us-central1",
             slot_capacity=0,
@@ -315,6 +316,7 @@ class ReservationAssignment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         basic = gcp.bigquery.Reservation("basic",
+            name="tf-test-my-reservation",
             project="my-project-name",
             location="us-central1",
             slot_capacity=0,

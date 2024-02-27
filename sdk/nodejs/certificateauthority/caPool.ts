@@ -19,15 +19,150 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.certificateauthority.CaPool("default", {
- *     labels: {
- *         foo: "bar",
- *     },
+ *     name: "my-pool",
  *     location: "us-central1",
+ *     tier: "ENTERPRISE",
  *     publishingOptions: {
  *         publishCaCert: true,
  *         publishCrl: true,
  *     },
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * });
+ * ```
+ * ### Privateca Capool All Fields
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.certificateauthority.CaPool("default", {
+ *     name: "my-pool",
+ *     location: "us-central1",
  *     tier: "ENTERPRISE",
+ *     publishingOptions: {
+ *         publishCaCert: false,
+ *         publishCrl: true,
+ *         encodingFormat: "PEM",
+ *     },
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     issuancePolicy: {
+ *         allowedKeyTypes: [
+ *             {
+ *                 ellipticCurve: {
+ *                     signatureAlgorithm: "ECDSA_P256",
+ *                 },
+ *             },
+ *             {
+ *                 rsa: {
+ *                     minModulusSize: "5",
+ *                     maxModulusSize: "10",
+ *                 },
+ *             },
+ *         ],
+ *         maximumLifetime: "50000s",
+ *         allowedIssuanceModes: {
+ *             allowCsrBasedIssuance: true,
+ *             allowConfigBasedIssuance: true,
+ *         },
+ *         identityConstraints: {
+ *             allowSubjectPassthrough: true,
+ *             allowSubjectAltNamesPassthrough: true,
+ *             celExpression: {
+ *                 expression: "subject_alt_names.all(san, san.type == DNS || san.type == EMAIL )",
+ *                 title: "My title",
+ *             },
+ *         },
+ *         baselineValues: {
+ *             aiaOcspServers: ["example.com"],
+ *             additionalExtensions: [{
+ *                 critical: true,
+ *                 value: "asdf",
+ *                 objectId: {
+ *                     objectIdPaths: [
+ *                         1,
+ *                         7,
+ *                     ],
+ *                 },
+ *             }],
+ *             policyIds: [
+ *                 {
+ *                     objectIdPaths: [
+ *                         1,
+ *                         5,
+ *                     ],
+ *                 },
+ *                 {
+ *                     objectIdPaths: [
+ *                         1,
+ *                         5,
+ *                         7,
+ *                     ],
+ *                 },
+ *             ],
+ *             caOptions: {
+ *                 isCa: true,
+ *                 maxIssuerPathLength: 10,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     digitalSignature: true,
+ *                     contentCommitment: true,
+ *                     keyEncipherment: false,
+ *                     dataEncipherment: true,
+ *                     keyAgreement: true,
+ *                     certSign: false,
+ *                     crlSign: true,
+ *                     decipherOnly: true,
+ *                 },
+ *                 extendedKeyUsage: {
+ *                     serverAuth: true,
+ *                     clientAuth: false,
+ *                     emailProtection: true,
+ *                     codeSigning: true,
+ *                     timeStamping: true,
+ *                 },
+ *             },
+ *             nameConstraints: {
+ *                 critical: true,
+ *                 permittedDnsNames: [
+ *                     "*.example1.com",
+ *                     "*.example2.com",
+ *                 ],
+ *                 excludedDnsNames: [
+ *                     "*.deny.example1.com",
+ *                     "*.deny.example2.com",
+ *                 ],
+ *                 permittedIpRanges: [
+ *                     "10.0.0.0/8",
+ *                     "11.0.0.0/8",
+ *                 ],
+ *                 excludedIpRanges: [
+ *                     "10.1.1.0/24",
+ *                     "11.1.1.0/24",
+ *                 ],
+ *                 permittedEmailAddresses: [
+ *                     ".example1.com",
+ *                     ".example2.com",
+ *                 ],
+ *                 excludedEmailAddresses: [
+ *                     ".deny.example1.com",
+ *                     ".deny.example2.com",
+ *                 ],
+ *                 permittedUris: [
+ *                     ".example1.com",
+ *                     ".example2.com",
+ *                 ],
+ *                 excludedUris: [
+ *                     ".deny.example1.com",
+ *                     ".deny.example2.com",
+ *                 ],
+ *             },
+ *         },
+ *     },
  * });
  * ```
  *

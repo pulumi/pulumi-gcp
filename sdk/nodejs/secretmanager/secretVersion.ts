@@ -76,8 +76,8 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
  *
  * const secret_basic = new gcp.secretmanager.Secret("secret-basic", {
  *     secretId: "secret-version",
@@ -92,7 +92,9 @@ import * as utilities from "../utilities";
  * const secret_version_base64 = new gcp.secretmanager.SecretVersion("secret-version-base64", {
  *     secret: secret_basic.id,
  *     isSecretDataBase64: true,
- *     secretData: fs.readFileSync("secret-data.pfx", { encoding: "base64" }),
+ *     secretData: std.filebase64({
+ *         input: "secret-data.pfx",
+ *     }).then(invoke => invoke.result),
  * });
  * ```
  *

@@ -27,8 +27,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const custom = new gcp.monitoring.CustomService("custom", {
- *     displayName: "My Custom Service custom-srv",
  *     serviceId: "custom-srv",
+ *     displayName: "My Custom Service custom-srv",
  *     telemetry: {
  *         resourceName: "//product.googleapis.com/foo/foo/services/test",
  *     },

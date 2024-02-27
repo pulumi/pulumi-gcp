@@ -46,30 +46,10 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly bool? EnableConfidentialStorage;
         /// <summary>
         /// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         public readonly Outputs.ClusterNodeConfigEphemeralStorageConfig? EphemeralStorageConfig;
         /// <summary>
         /// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         public readonly Outputs.ClusterNodeConfigEphemeralStorageLocalSsdConfig? EphemeralStorageLocalSsdConfig;
         /// <summary>
@@ -86,16 +66,6 @@ namespace Pulumi.Gcp.Container.Outputs
         /// A `machine_type` that has more than 16 GiB of memory is also recommended.
         /// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
         /// Structure is documented below.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         public readonly Outputs.ClusterNodeConfigGcfsConfig? GcfsConfig;
         /// <summary>
@@ -109,17 +79,6 @@ namespace Pulumi.Gcp.Container.Outputs
         /// gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
         /// GKE node version 1.15.11-gke.15 or later
         /// Structure is documented below.
-        /// 
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         public readonly Outputs.ClusterNodeConfigGvnic? Gvnic;
         /// <summary>
@@ -134,16 +93,6 @@ namespace Pulumi.Gcp.Container.Outputs
         /// <summary>
         /// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
         /// Structure is documented below.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         public readonly Outputs.ClusterNodeConfigKubeletConfig? KubeletConfig;
         /// <summary>
@@ -232,16 +181,6 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly Outputs.ClusterNodeConfigShieldedInstanceConfig? ShieldedInstanceConfig;
         /// <summary>
         /// Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         public readonly Outputs.ClusterNodeConfigSoleTenantConfig? SoleTenantConfig;
         /// <summary>

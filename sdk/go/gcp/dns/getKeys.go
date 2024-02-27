@@ -37,6 +37,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			foo, err := dns.NewManagedZone(ctx, "foo", &dns.ManagedZoneArgs{
+//				Name:    pulumi.String("foobar"),
 //				DnsName: pulumi.String("foo.bar."),
 //				DnssecConfig: &dns.ManagedZoneDnssecConfigArgs{
 //					State:        pulumi.String("on"),

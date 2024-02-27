@@ -247,36 +247,35 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork")
-        default_cluster = gcp.alloydb.Cluster("defaultCluster",
+        default_network = gcp.compute.Network("default", name="alloydb-network")
+        default_cluster = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
             location="us-central1",
             network=default_network.id,
             initial_user=gcp.alloydb.ClusterInitialUserArgs(
                 password="cluster_secret",
             ))
-        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
+        default = gcp.alloydb.Instance("default",
+            cluster=default_cluster.name,
+            instance_id="alloydb-instance",
+            instance_type="PRIMARY")
+        project = gcp.organizations.get_project()
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name="alloydb-cluster",
             address_type="INTERNAL",
             purpose="VPC_PEERING",
             prefix_length=16,
             network=default_network.id)
-        vpc_connection = gcp.servicenetworking.Connection("vpcConnection",
+        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
             network=default_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
-        default_instance = gcp.alloydb.Instance("defaultInstance",
-            cluster=default_cluster.name,
-            instance_id="alloydb-instance",
-            instance_type="PRIMARY",
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
-        project = gcp.organizations.get_project()
         user1 = gcp.alloydb.User("user1",
             cluster=default_cluster.name,
             user_id="user1",
             user_type="ALLOYDB_BUILT_IN",
             password="user_secret",
-            database_roles=["alloydbsuperuser"],
-            opts=pulumi.ResourceOptions(depends_on=[default_instance]))
+            database_roles=["alloydbsuperuser"])
         ```
         ### Alloydb User Iam
 
@@ -284,35 +283,34 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork")
-        default_cluster = gcp.alloydb.Cluster("defaultCluster",
+        default_network = gcp.compute.Network("default", name="alloydb-network")
+        default_cluster = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
             location="us-central1",
             network=default_network.id,
             initial_user=gcp.alloydb.ClusterInitialUserArgs(
                 password="cluster_secret",
             ))
-        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
+        default = gcp.alloydb.Instance("default",
+            cluster=default_cluster.name,
+            instance_id="alloydb-instance",
+            instance_type="PRIMARY")
+        project = gcp.organizations.get_project()
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name="alloydb-cluster",
             address_type="INTERNAL",
             purpose="VPC_PEERING",
             prefix_length=16,
             network=default_network.id)
-        vpc_connection = gcp.servicenetworking.Connection("vpcConnection",
+        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
             network=default_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
-        default_instance = gcp.alloydb.Instance("defaultInstance",
-            cluster=default_cluster.name,
-            instance_id="alloydb-instance",
-            instance_type="PRIMARY",
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
-        project = gcp.organizations.get_project()
         user2 = gcp.alloydb.User("user2",
             cluster=default_cluster.name,
             user_id="user2@foo.com",
             user_type="ALLOYDB_IAM_USER",
-            database_roles=["alloydbiamuser"],
-            opts=pulumi.ResourceOptions(depends_on=[default_instance]))
+            database_roles=["alloydbiamuser"])
         ```
 
         ## Import
@@ -374,36 +372,35 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork")
-        default_cluster = gcp.alloydb.Cluster("defaultCluster",
+        default_network = gcp.compute.Network("default", name="alloydb-network")
+        default_cluster = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
             location="us-central1",
             network=default_network.id,
             initial_user=gcp.alloydb.ClusterInitialUserArgs(
                 password="cluster_secret",
             ))
-        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
+        default = gcp.alloydb.Instance("default",
+            cluster=default_cluster.name,
+            instance_id="alloydb-instance",
+            instance_type="PRIMARY")
+        project = gcp.organizations.get_project()
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name="alloydb-cluster",
             address_type="INTERNAL",
             purpose="VPC_PEERING",
             prefix_length=16,
             network=default_network.id)
-        vpc_connection = gcp.servicenetworking.Connection("vpcConnection",
+        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
             network=default_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
-        default_instance = gcp.alloydb.Instance("defaultInstance",
-            cluster=default_cluster.name,
-            instance_id="alloydb-instance",
-            instance_type="PRIMARY",
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
-        project = gcp.organizations.get_project()
         user1 = gcp.alloydb.User("user1",
             cluster=default_cluster.name,
             user_id="user1",
             user_type="ALLOYDB_BUILT_IN",
             password="user_secret",
-            database_roles=["alloydbsuperuser"],
-            opts=pulumi.ResourceOptions(depends_on=[default_instance]))
+            database_roles=["alloydbsuperuser"])
         ```
         ### Alloydb User Iam
 
@@ -411,35 +408,34 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork")
-        default_cluster = gcp.alloydb.Cluster("defaultCluster",
+        default_network = gcp.compute.Network("default", name="alloydb-network")
+        default_cluster = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
             location="us-central1",
             network=default_network.id,
             initial_user=gcp.alloydb.ClusterInitialUserArgs(
                 password="cluster_secret",
             ))
-        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
+        default = gcp.alloydb.Instance("default",
+            cluster=default_cluster.name,
+            instance_id="alloydb-instance",
+            instance_type="PRIMARY")
+        project = gcp.organizations.get_project()
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name="alloydb-cluster",
             address_type="INTERNAL",
             purpose="VPC_PEERING",
             prefix_length=16,
             network=default_network.id)
-        vpc_connection = gcp.servicenetworking.Connection("vpcConnection",
+        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
             network=default_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
-        default_instance = gcp.alloydb.Instance("defaultInstance",
-            cluster=default_cluster.name,
-            instance_id="alloydb-instance",
-            instance_type="PRIMARY",
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
-        project = gcp.organizations.get_project()
         user2 = gcp.alloydb.User("user2",
             cluster=default_cluster.name,
             user_id="user2@foo.com",
             user_type="ALLOYDB_IAM_USER",
-            database_roles=["alloydbiamuser"],
-            opts=pulumi.ResourceOptions(depends_on=[default_instance]))
+            database_roles=["alloydbiamuser"])
         ```
 
         ## Import

@@ -561,16 +561,19 @@ class EdgeCacheService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         dest = gcp.storage.Bucket("dest",
+            name="my-bucket",
             location="US",
             force_destroy=True)
-        instance_edge_cache_origin = gcp.networkservices.EdgeCacheOrigin("instanceEdgeCacheOrigin",
+        instance = gcp.networkservices.EdgeCacheOrigin("instance",
+            name="my-origin",
             origin_address=dest.url,
             description="The default bucket for media edge test",
             max_attempts=2,
             timeout=gcp.networkservices.EdgeCacheOriginTimeoutArgs(
                 connect_timeout="10s",
             ))
-        instance_edge_cache_service = gcp.networkservices.EdgeCacheService("instanceEdgeCacheService",
+        instance_edge_cache_service = gcp.networkservices.EdgeCacheService("instance",
+            name="my-service",
             description="some description",
             routing=gcp.networkservices.EdgeCacheServiceRoutingArgs(
                 host_rules=[gcp.networkservices.EdgeCacheServiceRoutingHostRuleArgs(
@@ -586,7 +589,7 @@ class EdgeCacheService(pulumi.CustomResource):
                         match_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs(
                             prefix_match="/",
                         )],
-                        origin=instance_edge_cache_origin.name,
+                        origin=instance.name,
                         route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs(
                             cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs(
                                 cache_mode="CACHE_ALL_STATIC",
@@ -610,23 +613,27 @@ class EdgeCacheService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         dest = gcp.storage.Bucket("dest",
+            name="my-bucket",
             location="US",
             force_destroy=True)
         google = gcp.networkservices.EdgeCacheOrigin("google",
+            name="origin-google",
             origin_address="google.com",
             description="The default bucket for media edge test",
             max_attempts=2,
             timeout=gcp.networkservices.EdgeCacheOriginTimeoutArgs(
                 connect_timeout="10s",
             ))
-        instance_edge_cache_origin = gcp.networkservices.EdgeCacheOrigin("instanceEdgeCacheOrigin",
+        instance = gcp.networkservices.EdgeCacheOrigin("instance",
+            name="my-origin",
             origin_address=dest.url,
             description="The default bucket for media edge test",
             max_attempts=2,
             timeout=gcp.networkservices.EdgeCacheOriginTimeoutArgs(
                 connect_timeout="10s",
             ))
-        instance_edge_cache_service = gcp.networkservices.EdgeCacheService("instanceEdgeCacheService",
+        instance_edge_cache_service = gcp.networkservices.EdgeCacheService("instance",
+            name="my-service",
             description="some description",
             disable_quic=True,
             disable_http2=True,
@@ -660,7 +667,7 @@ class EdgeCacheService(pulumi.CustomResource):
                             match_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs(
                                 prefix_match="/",
                             )],
-                            origin=instance_edge_cache_origin.name,
+                            origin=instance.name,
                             route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs(
                                 cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs(
                                     cache_mode="CACHE_ALL_STATIC",
@@ -724,7 +731,7 @@ class EdgeCacheService(pulumi.CustomResource):
                                         header_name="prod",
                                     )],
                                 ),
-                                origin=instance_edge_cache_origin.name,
+                                origin=instance.name,
                                 route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs(
                                     cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs(
                                         cache_mode="CACHE_ALL_STATIC",
@@ -769,7 +776,7 @@ class EdgeCacheService(pulumi.CustomResource):
                                 match_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs(
                                     full_path_match="/yay",
                                 )],
-                                origin=instance_edge_cache_origin.name,
+                                origin=instance.name,
                                 route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs(
                                     cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs(
                                         cache_mode="CACHE_ALL_STATIC",
@@ -792,6 +799,126 @@ class EdgeCacheService(pulumi.CustomResource):
             log_config=gcp.networkservices.EdgeCacheServiceLogConfigArgs(
                 enable=True,
                 sample_rate=0.01,
+            ))
+        ```
+        ### Network Services Edge Cache Service Dual Token
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_basic = gcp.secretmanager.Secret("secret-basic",
+            secret_id="secret-name",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            ))
+        secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
+            secret=secret_basic.id,
+            secret_data="secret-data")
+        keyset = gcp.networkservices.EdgeCacheKeyset("keyset",
+            name="keyset-name",
+            description="The default keyset",
+            public_keys=[gcp.networkservices.EdgeCacheKeysetPublicKeyArgs(
+                id="my-public-key",
+                managed=True,
+            )],
+            validation_shared_keys=[gcp.networkservices.EdgeCacheKeysetValidationSharedKeyArgs(
+                secret_version=secret_version_basic.id,
+            )])
+        instance = gcp.networkservices.EdgeCacheOrigin("instance",
+            name="my-origin",
+            origin_address="gs://media-edge-default",
+            description="The default bucket for media edge test")
+        instance_edge_cache_service = gcp.networkservices.EdgeCacheService("instance",
+            name="my-service",
+            description="some description",
+            routing=gcp.networkservices.EdgeCacheServiceRoutingArgs(
+                host_rules=[gcp.networkservices.EdgeCacheServiceRoutingHostRuleArgs(
+                    description="host rule description",
+                    hosts=["sslcert.tf-test.club"],
+                    path_matcher="routes",
+                )],
+                path_matchers=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherArgs(
+                    name="routes",
+                    route_rules=[
+                        gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleArgs(
+                            description="a route rule to match against master playlist",
+                            priority="1",
+                            match_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs(
+                                path_template_match="/master.m3u8",
+                            )],
+                            origin=instance.name,
+                            route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs(
+                                cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs(
+                                    signed_request_mode="REQUIRE_TOKENS",
+                                    signed_request_keyset=keyset.id,
+                                    signed_token_options=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs(
+                                        token_query_parameter="edge-cache-token",
+                                    ),
+                                    signed_request_maximum_expiration_ttl="600s",
+                                    add_signatures=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs(
+                                        actions="GENERATE_COOKIE",
+                                        keyset=keyset.id,
+                                        copied_parameters=[
+                                            "PathGlobs",
+                                            "SessionID",
+                                        ],
+                                    ),
+                                ),
+                            ),
+                        ),
+                        gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleArgs(
+                            description="a route rule to match against all playlists",
+                            priority="2",
+                            match_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs(
+                                path_template_match="/*.m3u8",
+                            )],
+                            origin=instance.name,
+                            route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs(
+                                cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs(
+                                    signed_request_mode="REQUIRE_TOKENS",
+                                    signed_request_keyset=keyset.id,
+                                    signed_token_options=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs(
+                                        token_query_parameter="hdnts",
+                                        allowed_signature_algorithms=[
+                                            "ED25519",
+                                            "HMAC_SHA_256",
+                                            "HMAC_SHA1",
+                                        ],
+                                    ),
+                                    add_signatures=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs(
+                                        actions="GENERATE_TOKEN_HLS_COOKIELESS",
+                                        keyset=keyset.id,
+                                        token_ttl="1200s",
+                                        token_query_parameter="hdntl",
+                                        copied_parameters=["URLPrefix"],
+                                    ),
+                                ),
+                            ),
+                        ),
+                        gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleArgs(
+                            description="a route rule to match against",
+                            priority="3",
+                            match_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs(
+                                path_template_match="/**.m3u8",
+                            )],
+                            origin=instance.name,
+                            route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs(
+                                cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs(
+                                    signed_request_mode="REQUIRE_TOKENS",
+                                    signed_request_keyset=keyset.id,
+                                    signed_token_options=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs(
+                                        token_query_parameter="hdntl",
+                                    ),
+                                    add_signatures=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs(
+                                        actions="PROPAGATE_TOKEN_HLS_COOKIELESS",
+                                        token_query_parameter="hdntl",
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ],
+                )],
             ))
         ```
 
@@ -866,16 +993,19 @@ class EdgeCacheService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         dest = gcp.storage.Bucket("dest",
+            name="my-bucket",
             location="US",
             force_destroy=True)
-        instance_edge_cache_origin = gcp.networkservices.EdgeCacheOrigin("instanceEdgeCacheOrigin",
+        instance = gcp.networkservices.EdgeCacheOrigin("instance",
+            name="my-origin",
             origin_address=dest.url,
             description="The default bucket for media edge test",
             max_attempts=2,
             timeout=gcp.networkservices.EdgeCacheOriginTimeoutArgs(
                 connect_timeout="10s",
             ))
-        instance_edge_cache_service = gcp.networkservices.EdgeCacheService("instanceEdgeCacheService",
+        instance_edge_cache_service = gcp.networkservices.EdgeCacheService("instance",
+            name="my-service",
             description="some description",
             routing=gcp.networkservices.EdgeCacheServiceRoutingArgs(
                 host_rules=[gcp.networkservices.EdgeCacheServiceRoutingHostRuleArgs(
@@ -891,7 +1021,7 @@ class EdgeCacheService(pulumi.CustomResource):
                         match_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs(
                             prefix_match="/",
                         )],
-                        origin=instance_edge_cache_origin.name,
+                        origin=instance.name,
                         route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs(
                             cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs(
                                 cache_mode="CACHE_ALL_STATIC",
@@ -915,23 +1045,27 @@ class EdgeCacheService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         dest = gcp.storage.Bucket("dest",
+            name="my-bucket",
             location="US",
             force_destroy=True)
         google = gcp.networkservices.EdgeCacheOrigin("google",
+            name="origin-google",
             origin_address="google.com",
             description="The default bucket for media edge test",
             max_attempts=2,
             timeout=gcp.networkservices.EdgeCacheOriginTimeoutArgs(
                 connect_timeout="10s",
             ))
-        instance_edge_cache_origin = gcp.networkservices.EdgeCacheOrigin("instanceEdgeCacheOrigin",
+        instance = gcp.networkservices.EdgeCacheOrigin("instance",
+            name="my-origin",
             origin_address=dest.url,
             description="The default bucket for media edge test",
             max_attempts=2,
             timeout=gcp.networkservices.EdgeCacheOriginTimeoutArgs(
                 connect_timeout="10s",
             ))
-        instance_edge_cache_service = gcp.networkservices.EdgeCacheService("instanceEdgeCacheService",
+        instance_edge_cache_service = gcp.networkservices.EdgeCacheService("instance",
+            name="my-service",
             description="some description",
             disable_quic=True,
             disable_http2=True,
@@ -965,7 +1099,7 @@ class EdgeCacheService(pulumi.CustomResource):
                             match_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs(
                                 prefix_match="/",
                             )],
-                            origin=instance_edge_cache_origin.name,
+                            origin=instance.name,
                             route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs(
                                 cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs(
                                     cache_mode="CACHE_ALL_STATIC",
@@ -1029,7 +1163,7 @@ class EdgeCacheService(pulumi.CustomResource):
                                         header_name="prod",
                                     )],
                                 ),
-                                origin=instance_edge_cache_origin.name,
+                                origin=instance.name,
                                 route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs(
                                     cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs(
                                         cache_mode="CACHE_ALL_STATIC",
@@ -1074,7 +1208,7 @@ class EdgeCacheService(pulumi.CustomResource):
                                 match_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs(
                                     full_path_match="/yay",
                                 )],
-                                origin=instance_edge_cache_origin.name,
+                                origin=instance.name,
                                 route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs(
                                     cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs(
                                         cache_mode="CACHE_ALL_STATIC",
@@ -1097,6 +1231,126 @@ class EdgeCacheService(pulumi.CustomResource):
             log_config=gcp.networkservices.EdgeCacheServiceLogConfigArgs(
                 enable=True,
                 sample_rate=0.01,
+            ))
+        ```
+        ### Network Services Edge Cache Service Dual Token
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_basic = gcp.secretmanager.Secret("secret-basic",
+            secret_id="secret-name",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            ))
+        secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
+            secret=secret_basic.id,
+            secret_data="secret-data")
+        keyset = gcp.networkservices.EdgeCacheKeyset("keyset",
+            name="keyset-name",
+            description="The default keyset",
+            public_keys=[gcp.networkservices.EdgeCacheKeysetPublicKeyArgs(
+                id="my-public-key",
+                managed=True,
+            )],
+            validation_shared_keys=[gcp.networkservices.EdgeCacheKeysetValidationSharedKeyArgs(
+                secret_version=secret_version_basic.id,
+            )])
+        instance = gcp.networkservices.EdgeCacheOrigin("instance",
+            name="my-origin",
+            origin_address="gs://media-edge-default",
+            description="The default bucket for media edge test")
+        instance_edge_cache_service = gcp.networkservices.EdgeCacheService("instance",
+            name="my-service",
+            description="some description",
+            routing=gcp.networkservices.EdgeCacheServiceRoutingArgs(
+                host_rules=[gcp.networkservices.EdgeCacheServiceRoutingHostRuleArgs(
+                    description="host rule description",
+                    hosts=["sslcert.tf-test.club"],
+                    path_matcher="routes",
+                )],
+                path_matchers=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherArgs(
+                    name="routes",
+                    route_rules=[
+                        gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleArgs(
+                            description="a route rule to match against master playlist",
+                            priority="1",
+                            match_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs(
+                                path_template_match="/master.m3u8",
+                            )],
+                            origin=instance.name,
+                            route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs(
+                                cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs(
+                                    signed_request_mode="REQUIRE_TOKENS",
+                                    signed_request_keyset=keyset.id,
+                                    signed_token_options=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs(
+                                        token_query_parameter="edge-cache-token",
+                                    ),
+                                    signed_request_maximum_expiration_ttl="600s",
+                                    add_signatures=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs(
+                                        actions="GENERATE_COOKIE",
+                                        keyset=keyset.id,
+                                        copied_parameters=[
+                                            "PathGlobs",
+                                            "SessionID",
+                                        ],
+                                    ),
+                                ),
+                            ),
+                        ),
+                        gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleArgs(
+                            description="a route rule to match against all playlists",
+                            priority="2",
+                            match_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs(
+                                path_template_match="/*.m3u8",
+                            )],
+                            origin=instance.name,
+                            route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs(
+                                cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs(
+                                    signed_request_mode="REQUIRE_TOKENS",
+                                    signed_request_keyset=keyset.id,
+                                    signed_token_options=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs(
+                                        token_query_parameter="hdnts",
+                                        allowed_signature_algorithms=[
+                                            "ED25519",
+                                            "HMAC_SHA_256",
+                                            "HMAC_SHA1",
+                                        ],
+                                    ),
+                                    add_signatures=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs(
+                                        actions="GENERATE_TOKEN_HLS_COOKIELESS",
+                                        keyset=keyset.id,
+                                        token_ttl="1200s",
+                                        token_query_parameter="hdntl",
+                                        copied_parameters=["URLPrefix"],
+                                    ),
+                                ),
+                            ),
+                        ),
+                        gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleArgs(
+                            description="a route rule to match against",
+                            priority="3",
+                            match_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs(
+                                path_template_match="/**.m3u8",
+                            )],
+                            origin=instance.name,
+                            route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs(
+                                cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs(
+                                    signed_request_mode="REQUIRE_TOKENS",
+                                    signed_request_keyset=keyset.id,
+                                    signed_token_options=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs(
+                                        token_query_parameter="hdntl",
+                                    ),
+                                    add_signatures=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs(
+                                        actions="PROPAGATE_TOKEN_HLS_COOKIELESS",
+                                        token_query_parameter="hdntl",
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ],
+                )],
             ))
         ```
 

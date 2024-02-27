@@ -32,7 +32,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * ### Compute Packet Mirroring Full
- * 
  * ```java
  * package generated_program;
  * 
@@ -40,11 +39,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.Instance;
  * import com.pulumi.gcp.compute.InstanceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
- * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
  * import com.pulumi.gcp.compute.Subnetwork;
  * import com.pulumi.gcp.compute.SubnetworkArgs;
  * import com.pulumi.gcp.compute.HealthCheck;
@@ -60,7 +60,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.inputs.PacketMirroringCollectorIlbArgs;
  * import com.pulumi.gcp.compute.inputs.PacketMirroringMirroredResourcesArgs;
  * import com.pulumi.gcp.compute.inputs.PacketMirroringFilterArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -74,27 +73,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;);
+ *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+ *             .name(&#34;my-network&#34;)
+ *             .build());
  * 
  *         var mirror = new Instance(&#34;mirror&#34;, InstanceArgs.builder()        
+ *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+ *                 .accessConfigs()
+ *                 .network(default_.id())
+ *                 .build())
+ *             .name(&#34;my-instance&#34;)
  *             .machineType(&#34;e2-medium&#34;)
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
  *                     .image(&#34;debian-cloud/debian-11&#34;)
  *                     .build())
  *                 .build())
- *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
- *                 .network(defaultNetwork.id())
- *                 .accessConfigs()
- *                 .build())
  *             .build());
  * 
  *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
- *             .network(defaultNetwork.id())
+ *             .name(&#34;my-subnetwork&#34;)
+ *             .network(default_.id())
  *             .ipCidrRange(&#34;10.2.0.0/16&#34;)
  *             .build());
  * 
  *         var defaultHealthCheck = new HealthCheck(&#34;defaultHealthCheck&#34;, HealthCheckArgs.builder()        
+ *             .name(&#34;my-healthcheck&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
@@ -103,26 +107,27 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultRegionBackendService = new RegionBackendService(&#34;defaultRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
+ *             .name(&#34;my-service&#34;)
  *             .healthChecks(defaultHealthCheck.id())
  *             .build());
  * 
  *         var defaultForwardingRule = new ForwardingRule(&#34;defaultForwardingRule&#34;, ForwardingRuleArgs.builder()        
+ *             .name(&#34;my-ilb&#34;)
  *             .isMirroringCollector(true)
  *             .ipProtocol(&#34;TCP&#34;)
  *             .loadBalancingScheme(&#34;INTERNAL&#34;)
  *             .backendService(defaultRegionBackendService.id())
  *             .allPorts(true)
- *             .network(defaultNetwork.id())
+ *             .network(default_.id())
  *             .subnetwork(defaultSubnetwork.id())
  *             .networkTier(&#34;PREMIUM&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(defaultSubnetwork)
- *                 .build());
+ *             .build());
  * 
  *         var foobar = new PacketMirroring(&#34;foobar&#34;, PacketMirroringArgs.builder()        
+ *             .name(&#34;my-mirroring&#34;)
  *             .description(&#34;bar&#34;)
  *             .network(PacketMirroringNetworkArgs.builder()
- *                 .url(defaultNetwork.id())
+ *                 .url(default_.id())
  *                 .build())
  *             .collectorIlb(PacketMirroringCollectorIlbArgs.builder()
  *                 .url(defaultForwardingRule.id())

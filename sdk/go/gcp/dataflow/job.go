@@ -30,13 +30,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataflow.NewJob(ctx, "bigDataJob", &dataflow.JobArgs{
-//				Parameters: pulumi.Map{
-//					"baz": pulumi.Any("qux"),
-//					"foo": pulumi.Any("bar"),
-//				},
-//				TempGcsLocation: pulumi.String("gs://my-bucket/tmp_dir"),
+//			_, err := dataflow.NewJob(ctx, "big_data_job", &dataflow.JobArgs{
+//				Name:            pulumi.String("dataflow-job"),
 //				TemplateGcsPath: pulumi.String("gs://my-bucket/templates/template_file"),
+//				TempGcsLocation: pulumi.String("gs://my-bucket/tmp_dir"),
+//				Parameters: pulumi.Map{
+//					"foo": pulumi.Any("bar"),
+//					"baz": pulumi.Any("qux"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -64,11 +65,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			topic, err := pubsub.NewTopic(ctx, "topic", nil)
+//			topic, err := pubsub.NewTopic(ctx, "topic", &pubsub.TopicArgs{
+//				Name: pulumi.String("dataflow-job1"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			bucket1, err := storage.NewBucket(ctx, "bucket1", &storage.BucketArgs{
+//				Name:         pulumi.String("tf-test-bucket1"),
 //				Location:     pulumi.String("US"),
 //				ForceDestroy: pulumi.Bool(true),
 //			})
@@ -76,13 +80,15 @@ import (
 //				return err
 //			}
 //			_, err = storage.NewBucket(ctx, "bucket2", &storage.BucketArgs{
+//				Name:         pulumi.String("tf-test-bucket2"),
 //				Location:     pulumi.String("US"),
 //				ForceDestroy: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dataflow.NewJob(ctx, "pubsubStream", &dataflow.JobArgs{
+//			_, err = dataflow.NewJob(ctx, "pubsub_stream", &dataflow.JobArgs{
+//				Name:                  pulumi.String("tf-test-dataflow-job1"),
 //				TemplateGcsPath:       pulumi.String("gs://my-bucket/templates/template_file"),
 //				TempGcsLocation:       pulumi.String("gs://my-bucket/tmp_dir"),
 //				EnableStreamingEngine: pulumi.Bool(true),
@@ -121,6 +127,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataflow"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -135,24 +143,27 @@ import (
 //			if param := cfg.Get("bigDataJobSubscriptionId"); param != "" {
 //				bigDataJobSubscriptionId = param
 //			}
-//			_, err := random.NewRandomId(ctx, "bigDataJobNameSuffix", &random.RandomIdArgs{
+//			bigDataJobNameSuffix, err := random.NewRandomId(ctx, "big_data_job_name_suffix", &random.RandomIdArgs{
 //				ByteLength: pulumi.Int(4),
 //				Keepers: pulumi.StringMap{
-//					"region":          pulumi.Any(_var.Region),
+//					"region":          pulumi.Any(region),
 //					"subscription_id": pulumi.String(bigDataJobSubscriptionId),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dataflow.NewFlexTemplateJob(ctx, "bigDataJob", &dataflow.FlexTemplateJobArgs{
-//				Region:                   pulumi.Any(_var.Region),
+//			_, err = dataflow.NewFlexTemplateJob(ctx, "big_data_job", &dataflow.FlexTemplateJobArgs{
+//				Name: bigDataJobNameSuffix.Dec.ApplyT(func(dec string) (string, error) {
+//					return fmt.Sprintf("dataflow-flextemplates-job-%v", dec), nil
+//				}).(pulumi.StringOutput),
+//				Region:                   pulumi.Any(region),
 //				ContainerSpecGcsPath:     pulumi.String("gs://my-bucket/templates/template.json"),
 //				SkipWaitOnJobTermination: pulumi.Bool(true),
 //				Parameters: pulumi.Map{
 //					"inputSubscription": pulumi.String(bigDataJobSubscriptionId),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

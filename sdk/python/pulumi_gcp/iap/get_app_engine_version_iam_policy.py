@@ -119,10 +119,10 @@ def get_app_engine_version_iam_policy(app_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.iap.get_app_engine_version_iam_policy(app_id=google_app_engine_standard_app_version["version"]["project"],
-        project=google_app_engine_standard_app_version["version"]["project"],
-        service=google_app_engine_standard_app_version["version"]["service"],
-        version_id=google_app_engine_standard_app_version["version"]["version_id"])
+    policy = gcp.iap.get_app_engine_version_iam_policy(project=version["project"],
+        app_id=version["project"],
+        service=version["service"],
+        version_id=version["versionId"])
     ```
 
 
@@ -165,10 +165,10 @@ def get_app_engine_version_iam_policy_output(app_id: Optional[pulumi.Input[str]]
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.iap.get_app_engine_version_iam_policy(app_id=google_app_engine_standard_app_version["version"]["project"],
-        project=google_app_engine_standard_app_version["version"]["project"],
-        service=google_app_engine_standard_app_version["version"]["service"],
-        version_id=google_app_engine_standard_app_version["version"]["version_id"])
+    policy = gcp.iap.get_app_engine_version_iam_policy(project=version["project"],
+        app_id=version["project"],
+        service=version["service"],
+        version_id=version["versionId"])
     ```
 
 

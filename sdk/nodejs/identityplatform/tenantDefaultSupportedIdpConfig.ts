@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const tenant = new gcp.identityplatform.Tenant("tenant", {displayName: "tenant"});
- * const idpConfig = new gcp.identityplatform.TenantDefaultSupportedIdpConfig("idpConfig", {
+ * const idpConfig = new gcp.identityplatform.TenantDefaultSupportedIdpConfig("idp_config", {
  *     enabled: true,
  *     tenant: tenant.name,
  *     idpId: "playgames.google.com",

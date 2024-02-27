@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const domainMapping = new gcp.appengine.DomainMapping("domainMapping", {
+ * const domainMapping = new gcp.appengine.DomainMapping("domain_mapping", {
  *     domainName: "verified-domain.com",
  *     sslSettings: {
  *         sslManagementType: "AUTOMATIC",

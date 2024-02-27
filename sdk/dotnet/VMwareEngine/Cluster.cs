@@ -29,6 +29,7 @@ namespace Pulumi.Gcp.VMwareEngine
     /// {
     ///     var cluster_nw = new Gcp.VMwareEngine.Network("cluster-nw", new()
     ///     {
+    ///         Name = "pc-nw",
     ///         Type = "STANDARD",
     ///         Location = "global",
     ///         Description = "PC network description.",
@@ -37,6 +38,7 @@ namespace Pulumi.Gcp.VMwareEngine
     ///     var cluster_pc = new Gcp.VMwareEngine.PrivateCloud("cluster-pc", new()
     ///     {
     ///         Location = "us-west1-a",
+    ///         Name = "sample-pc",
     ///         Description = "Sample test PC.",
     ///         NetworkConfig = new Gcp.VMwareEngine.Inputs.PrivateCloudNetworkConfigArgs
     ///         {
@@ -59,6 +61,7 @@ namespace Pulumi.Gcp.VMwareEngine
     /// 
     ///     var vmw_engine_ext_cluster = new Gcp.VMwareEngine.Cluster("vmw-engine-ext-cluster", new()
     ///     {
+    ///         Name = "ext-cluster",
     ///         Parent = cluster_pc.Id,
     ///         NodeTypeConfigs = new[]
     ///         {
@@ -84,6 +87,7 @@ namespace Pulumi.Gcp.VMwareEngine
     /// {
     ///     var cluster_nw = new Gcp.VMwareEngine.Network("cluster-nw", new()
     ///     {
+    ///         Name = "pc-nw",
     ///         Type = "STANDARD",
     ///         Location = "global",
     ///         Description = "PC network description.",
@@ -92,6 +96,7 @@ namespace Pulumi.Gcp.VMwareEngine
     ///     var cluster_pc = new Gcp.VMwareEngine.PrivateCloud("cluster-pc", new()
     ///     {
     ///         Location = "us-west1-a",
+    ///         Name = "sample-pc",
     ///         Description = "Sample test PC.",
     ///         NetworkConfig = new Gcp.VMwareEngine.Inputs.PrivateCloudNetworkConfigArgs
     ///         {
@@ -115,6 +120,7 @@ namespace Pulumi.Gcp.VMwareEngine
     /// 
     ///     var vmw_ext_cluster = new Gcp.VMwareEngine.Cluster("vmw-ext-cluster", new()
     ///     {
+    ///         Name = "ext-cluster",
     ///         Parent = cluster_pc.Id,
     ///         NodeTypeConfigs = new[]
     ///         {

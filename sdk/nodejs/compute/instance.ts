@@ -18,11 +18,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultAccount = new gcp.serviceaccount.Account("defaultAccount", {
+ * const _default = new gcp.serviceaccount.Account("default", {
  *     accountId: "my-custom-sa",
  *     displayName: "Custom SA for VM Instance",
  * });
- * const defaultInstance = new gcp.compute.Instance("defaultInstance", {
+ * const defaultInstance = new gcp.compute.Instance("default", {
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         network: "default",
+ *     }],
+ *     name: "my-instance",
  *     machineType: "n2-standard-2",
  *     zone: "us-central1-a",
  *     tags: [
@@ -40,16 +45,12 @@ import * as utilities from "../utilities";
  *     scratchDisks: [{
  *         "interface": "NVME",
  *     }],
- *     networkInterfaces: [{
- *         network: "default",
- *         accessConfigs: [{}],
- *     }],
  *     metadata: {
  *         foo: "bar",
  *     },
  *     metadataStartupScript: "echo hi > /test.txt",
  *     serviceAccount: {
- *         email: defaultAccount.email,
+ *         email: _default.email,
  *         scopes: ["cloud-platform"],
  *     },
  * });

@@ -33,28 +33,30 @@ namespace Pulumi.Gcp.Tags
     /// {
     ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
+    ///         ProjectId = "project_id",
+    ///         Name = "project_id",
     ///         OrgId = "123456789",
     ///     });
     /// 
     ///     var key = new Gcp.Tags.TagKey("key", new()
     ///     {
-    ///         Description = "For keyname resources.",
     ///         Parent = "organizations/123456789",
     ///         ShortName = "keyname",
+    ///         Description = "For keyname resources.",
     ///     });
     /// 
     ///     var @value = new Gcp.Tags.TagValue("value", new()
     ///     {
-    ///         Description = "For valuename resources.",
     ///         Parent = key.Name.Apply(name =&gt; $"tagKeys/{name}"),
     ///         ShortName = "valuename",
+    ///         Description = "For valuename resources.",
     ///     });
     /// 
     ///     var binding = new Gcp.Tags.LocationTagBinding("binding", new()
     ///     {
-    ///         Location = "us-central1",
-    ///         Parent = project.Number.Apply(number =&gt; $"//run.googleapis.com/projects/{number}/locations/{google_cloud_run_service.Default.Location}/services/{google_cloud_run_service.Default.Name}"),
+    ///         Parent = $"//run.googleapis.com/projects/{projectGoogleProject.Number}/locations/{@default.Location}/services/{@default.Name}",
     ///         TagValue = @value.Name.Apply(name =&gt; $"tagValues/{name}"),
+    ///         Location = "us-central1",
     ///     });
     /// 
     /// });
@@ -71,28 +73,30 @@ namespace Pulumi.Gcp.Tags
     /// {
     ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
+    ///         ProjectId = "project_id",
+    ///         Name = "project_id",
     ///         OrgId = "123456789",
     ///     });
     /// 
     ///     var key = new Gcp.Tags.TagKey("key", new()
     ///     {
-    ///         Description = "For keyname resources.",
     ///         Parent = "organizations/123456789",
     ///         ShortName = "keyname",
+    ///         Description = "For keyname resources.",
     ///     });
     /// 
     ///     var @value = new Gcp.Tags.TagValue("value", new()
     ///     {
-    ///         Description = "For valuename resources.",
     ///         Parent = key.Name.Apply(name =&gt; $"tagKeys/{name}"),
     ///         ShortName = "valuename",
+    ///         Description = "For valuename resources.",
     ///     });
     /// 
     ///     var binding = new Gcp.Tags.LocationTagBinding("binding", new()
     ///     {
-    ///         Location = "us-central1-a",
-    ///         Parent = project.Number.Apply(number =&gt; $"//compute.googleapis.com/projects/{number}/zones/us-central1-a/instances/{google_compute_instance.Instance.Instance_id}"),
+    ///         Parent = project.Number.Apply(number =&gt; $"//compute.googleapis.com/projects/{number}/zones/us-central1-a/instances/{instance.InstanceId}"),
     ///         TagValue = @value.Name.Apply(name =&gt; $"tagValues/{name}"),
+    ///         Location = "us-central1-a",
     ///     });
     /// 
     /// });

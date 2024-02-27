@@ -23,27 +23,29 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basicTagTemplate = new gcp.datacatalog.TagTemplate("basicTagTemplate", {
+ * const basicTagTemplate = new gcp.datacatalog.TagTemplate("basic_tag_template", {
+ *     tagTemplateId: "my_template",
+ *     region: "us-central1",
  *     displayName: "Demo Tag Template",
  *     fields: [
  *         {
- *             displayName: "Source of data asset",
  *             fieldId: "source",
- *             isRequired: true,
+ *             displayName: "Source of data asset",
  *             type: {
  *                 primitiveType: "STRING",
  *             },
+ *             isRequired: true,
  *         },
  *         {
- *             displayName: "Number of rows in the data asset",
  *             fieldId: "num_rows",
+ *             displayName: "Number of rows in the data asset",
  *             type: {
  *                 primitiveType: "DOUBLE",
  *             },
  *         },
  *         {
- *             displayName: "PII type",
  *             fieldId: "pii_type",
+ *             displayName: "PII type",
  *             type: {
  *                 enumType: {
  *                     allowedValues: [
@@ -62,8 +64,6 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  *     forceDelete: false,
- *     region: "us-central1",
- *     tagTemplateId: "my_template",
  * });
  * ```
  *

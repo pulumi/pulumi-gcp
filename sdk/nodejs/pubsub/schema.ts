@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const example = new gcp.pubsub.Schema("example", {
+ *     name: "example-schema",
+ *     type: "AVRO",
  *     definition: `{
  *   "type" : "record",
  *   "name" : "Avro",
@@ -36,9 +38,7 @@ import * as utilities from "../utilities";
  *     }
  *   ]
  * }
- *
  * `,
- *     type: "AVRO",
  * });
  * ```
  * ### Pubsub Schema Protobuf
@@ -47,7 +47,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const exampleSchema = new gcp.pubsub.Schema("exampleSchema", {
+ * const example = new gcp.pubsub.Schema("example", {
+ *     name: "example",
  *     type: "PROTOCOL_BUFFER",
  *     definition: `syntax = "proto3";
  * message Results {
@@ -57,11 +58,12 @@ import * as utilities from "../utilities";
  * string timestamp_response = 4;
  * }`,
  * });
- * const exampleTopic = new gcp.pubsub.Topic("exampleTopic", {schemaSettings: {
- *     schema: "projects/my-project-name/schemas/example",
- *     encoding: "JSON",
- * }}, {
- *     dependsOn: [exampleSchema],
+ * const exampleTopic = new gcp.pubsub.Topic("example", {
+ *     name: "example-topic",
+ *     schemaSettings: {
+ *         schema: "projects/my-project-name/schemas/example",
+ *         encoding: "JSON",
+ *     },
  * });
  * ```
  *

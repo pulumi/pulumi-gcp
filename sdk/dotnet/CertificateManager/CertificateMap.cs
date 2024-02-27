@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.CertificateManager
     /// {
     ///     var @default = new Gcp.CertificateManager.CertificateMap("default", new()
     ///     {
+    ///         Name = "cert-map",
     ///         Description = "My acceptance test certificate map",
     ///         Labels = 
     ///         {

@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.GkeBackup
         /// {
         ///     var policy = Gcp.GkeBackup.GetBackupPlanIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_gke_backup_backup_plan.Basic.Project,
-        ///         Location = google_gke_backup_backup_plan.Basic.Location,
-        ///         Name = google_gke_backup_backup_plan.Basic.Name,
+        ///         Project = basic.Project,
+        ///         Location = basic.Location,
+        ///         Name = basic.Name,
         ///     });
         /// 
         /// });
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.GkeBackup
         /// {
         ///     var policy = Gcp.GkeBackup.GetBackupPlanIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_gke_backup_backup_plan.Basic.Project,
-        ///         Location = google_gke_backup_backup_plan.Basic.Location,
-        ///         Name = google_gke_backup_backup_plan.Basic.Name,
+        ///         Project = basic.Project,
+        ///         Location = basic.Location,
+        ///         Name = basic.Name,
         ///     });
         /// 
         /// });

@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new PolicyTagIamPolicy(&#34;policy&#34;, PolicyTagIamPolicyArgs.builder()        
- *             .policyTag(google_data_catalog_policy_tag.basic_policy_tag().name())
+ *             .policyTag(basicPolicyTag.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new PolicyTagIamBinding(&#34;binding&#34;, PolicyTagIamBindingArgs.builder()        
- *             .policyTag(google_data_catalog_policy_tag.basic_policy_tag().name())
+ *             .policyTag(basicPolicyTag.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new PolicyTagIamMember(&#34;member&#34;, PolicyTagIamMemberArgs.builder()        
- *             .policyTag(google_data_catalog_policy_tag.basic_policy_tag().name())
+ *             .policyTag(basicPolicyTag.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

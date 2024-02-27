@@ -34,8 +34,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultInstance = new Gcp.Compute.Instance("defaultInstance", new()
+    ///     var defaultInstance = new Gcp.Compute.Instance("default", new()
     ///     {
+    ///         Name = "attached-disk-instance",
     ///         MachineType = "e2-medium",
     ///         Zone = "us-west1-a",
     ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
@@ -54,9 +55,9 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///     });
     /// 
-    ///     var defaultAttachedDisk = new Gcp.Compute.AttachedDisk("defaultAttachedDisk", new()
+    ///     var @default = new Gcp.Compute.AttachedDisk("default", new()
     ///     {
-    ///         Disk = google_compute_disk.Default.Id,
+    ///         Disk = defaultGoogleComputeDisk.Id,
     ///         Instance = defaultInstance.Id,
     ///     });
     /// 

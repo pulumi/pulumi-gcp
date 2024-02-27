@@ -61,19 +61,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultNetwork = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+ *         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
  *             .name(&#34;test-network&#34;)
  *             .build());
  * 
  *         var defaultStoragePool = new StoragePool(&#34;defaultStoragePool&#34;, StoragePoolArgs.builder()        
+ *             .name(&#34;test-pool&#34;)
  *             .location(&#34;us-west2&#34;)
  *             .serviceLevel(&#34;PREMIUM&#34;)
  *             .capacityGib(&#34;2048&#34;)
- *             .network(defaultNetwork.applyValue(getNetworkResult -&gt; getNetworkResult.id()))
+ *             .network(default_.id())
  *             .build());
  * 
  *         var testVolume = new Volume(&#34;testVolume&#34;, VolumeArgs.builder()        
  *             .location(&#34;us-west2&#34;)
+ *             .name(&#34;test-volume&#34;)
  *             .capacityGib(&#34;100&#34;)
  *             .shareName(&#34;test-volume&#34;)
  *             .storagePool(defaultStoragePool.name())

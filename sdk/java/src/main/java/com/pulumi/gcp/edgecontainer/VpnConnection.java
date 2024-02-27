@@ -47,9 +47,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.edgecontainer.NodePool;
  * import com.pulumi.gcp.edgecontainer.NodePoolArgs;
  * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.edgecontainer.VpnConnection;
  * import com.pulumi.gcp.edgecontainer.VpnConnectionArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -66,6 +66,7 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
+ *             .name(&#34;default&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .authorization(ClusterAuthorizationArgs.builder()
  *                 .adminUsers(ClusterAuthorizationAdminUsersArgs.builder()
@@ -82,15 +83,19 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var nodePool = new NodePool(&#34;nodePool&#34;, NodePoolArgs.builder()        
+ *             .name(&#34;nodepool-1&#34;)
  *             .cluster(cluster.name())
  *             .location(&#34;us-central1&#34;)
  *             .nodeLocation(&#34;us-central1-edge-example-edgesite&#34;)
  *             .nodeCount(3)
  *             .build());
  * 
- *         var vpc = new Network(&#34;vpc&#34;);
+ *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+ *             .name(&#34;example-vpc&#34;)
+ *             .build());
  * 
  *         var default_ = new VpnConnection(&#34;default&#34;, VpnConnectionArgs.builder()        
+ *             .name(&#34;vpn-connection-1&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .cluster(cluster.name().applyValue(name -&gt; String.format(&#34;projects/%s/locations/us-east1/clusters/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()),name)))
  *             .vpc(vpc.name())
@@ -99,9 +104,7 @@ import javax.annotation.Nullable;
  *                 Map.entry(&#34;my_key&#34;, &#34;my_val&#34;),
  *                 Map.entry(&#34;other_key&#34;, &#34;other_val&#34;)
  *             ))
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(nodePool)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

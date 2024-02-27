@@ -31,6 +31,7 @@ namespace Pulumi.Gcp.BinaryAuthorization
     /// {
     ///     var note = new Gcp.ContainerAnalysis.Note("note", new()
     ///     {
+    ///         Name = "test-attestor-note",
     ///         AttestationAuthority = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityArgs
     ///         {
     ///             Hint = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityHintArgs
@@ -42,6 +43,7 @@ namespace Pulumi.Gcp.BinaryAuthorization
     /// 
     ///     var attestor = new Gcp.BinaryAuthorization.Attestor("attestor", new()
     ///     {
+    ///         Name = "test-attestor",
     ///         AttestationAuthorityNote = new Gcp.BinaryAuthorization.Inputs.AttestorAttestationAuthorityNoteArgs
     ///         {
     ///             NoteReference = note.Name,
@@ -84,11 +86,13 @@ namespace Pulumi.Gcp.BinaryAuthorization
     /// {
     ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
     ///     {
+    ///         Name = "test-attestor-key-ring",
     ///         Location = "global",
     ///     });
     /// 
     ///     var crypto_key = new Gcp.Kms.CryptoKey("crypto-key", new()
     ///     {
+    ///         Name = "test-attestor-key",
     ///         KeyRing = keyring.Id,
     ///         Purpose = "ASYMMETRIC_SIGN",
     ///         VersionTemplate = new Gcp.Kms.Inputs.CryptoKeyVersionTemplateArgs
@@ -104,6 +108,7 @@ namespace Pulumi.Gcp.BinaryAuthorization
     /// 
     ///     var note = new Gcp.ContainerAnalysis.Note("note", new()
     ///     {
+    ///         Name = "test-attestor-note",
     ///         AttestationAuthority = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityArgs
     ///         {
     ///             Hint = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityHintArgs
@@ -115,6 +120,7 @@ namespace Pulumi.Gcp.BinaryAuthorization
     /// 
     ///     var attestor = new Gcp.BinaryAuthorization.Attestor("attestor", new()
     ///     {
+    ///         Name = "test-attestor",
     ///         AttestationAuthorityNote = new Gcp.BinaryAuthorization.Inputs.AttestorAttestationAuthorityNoteArgs
     ///         {
     ///             NoteReference = note.Name,

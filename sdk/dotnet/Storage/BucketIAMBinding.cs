@@ -53,7 +53,7 @@ namespace Pulumi.Gcp.Storage
     /// 
     ///     var policy = new Gcp.Storage.BucketIAMPolicy("policy", new()
     ///     {
-    ///         Bucket = google_storage_bucket.Default.Name,
+    ///         Bucket = @default.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -93,7 +93,7 @@ namespace Pulumi.Gcp.Storage
     /// 
     ///     var policy = new Gcp.Storage.BucketIAMPolicy("policy", new()
     ///     {
-    ///         Bucket = google_storage_bucket.Default.Name,
+    ///         Bucket = @default.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -111,7 +111,7 @@ namespace Pulumi.Gcp.Storage
     /// {
     ///     var binding = new Gcp.Storage.BucketIAMBinding("binding", new()
     ///     {
-    ///         Bucket = google_storage_bucket.Default.Name,
+    ///         Bucket = @default.Name,
     ///         Role = "roles/storage.admin",
     ///         Members = new[]
     ///         {
@@ -134,7 +134,7 @@ namespace Pulumi.Gcp.Storage
     /// {
     ///     var binding = new Gcp.Storage.BucketIAMBinding("binding", new()
     ///     {
-    ///         Bucket = google_storage_bucket.Default.Name,
+    ///         Bucket = @default.Name,
     ///         Role = "roles/storage.admin",
     ///         Members = new[]
     ///         {
@@ -162,7 +162,7 @@ namespace Pulumi.Gcp.Storage
     /// {
     ///     var member = new Gcp.Storage.BucketIAMMember("member", new()
     ///     {
-    ///         Bucket = google_storage_bucket.Default.Name,
+    ///         Bucket = @default.Name,
     ///         Role = "roles/storage.admin",
     ///         Member = "user:jane@example.com",
     ///     });
@@ -182,7 +182,7 @@ namespace Pulumi.Gcp.Storage
     /// {
     ///     var member = new Gcp.Storage.BucketIAMMember("member", new()
     ///     {
-    ///         Bucket = google_storage_bucket.Default.Name,
+    ///         Bucket = @default.Name,
     ///         Role = "roles/storage.admin",
     ///         Member = "user:jane@example.com",
     ///         Condition = new Gcp.Storage.Inputs.BucketIAMMemberConditionArgs

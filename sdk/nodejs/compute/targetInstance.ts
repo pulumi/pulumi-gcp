@@ -30,6 +30,7 @@ import * as utilities from "../utilities";
  *     project: "debian-cloud",
  * });
  * const target_vm = new gcp.compute.Instance("target-vm", {
+ *     name: "target-vm",
  *     machineType: "e2-medium",
  *     zone: "us-central1-a",
  *     bootDisk: {
@@ -41,7 +42,10 @@ import * as utilities from "../utilities";
  *         network: "default",
  *     }],
  * });
- * const _default = new gcp.compute.TargetInstance("default", {instance: target_vm.id});
+ * const _default = new gcp.compute.TargetInstance("default", {
+ *     name: "target",
+ *     instance: target_vm.id,
+ * });
  * ```
  * ### Target Instance Custom Network
  *
@@ -49,14 +53,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const target-vmNetwork = gcp.compute.getNetwork({
+ * const target-vm = gcp.compute.getNetwork({
  *     name: "default",
  * });
  * const vmimage = gcp.compute.getImage({
  *     family: "debian-10",
  *     project: "debian-cloud",
  * });
- * const target_vmInstance = new gcp.compute.Instance("target-vmInstance", {
+ * const target_vmInstance = new gcp.compute.Instance("target-vm", {
+ *     name: "custom-network-target-vm",
  *     machineType: "e2-medium",
  *     zone: "us-central1-a",
  *     bootDisk: {
@@ -67,14 +72,11 @@ import * as utilities from "../utilities";
  *     networkInterfaces: [{
  *         network: "default",
  *     }],
- * }, {
- *     provider: google_beta,
  * });
- * const customNetwork = new gcp.compute.TargetInstance("customNetwork", {
+ * const customNetwork = new gcp.compute.TargetInstance("custom_network", {
+ *     name: "custom-network",
  *     instance: target_vmInstance.id,
- *     network: target_vmNetwork.then(target_vmNetwork => target_vmNetwork.selfLink),
- * }, {
- *     provider: google_beta,
+ *     network: target_vm.then(target_vm => target_vm.selfLink),
  * });
  * ```
  *

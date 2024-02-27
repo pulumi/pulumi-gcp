@@ -52,6 +52,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new EdgeCacheKeyset(&#34;default&#34;, EdgeCacheKeysetArgs.builder()        
+ *             .name(&#34;my-keyset&#34;)
  *             .description(&#34;The default keyset&#34;)
  *             .publicKeys(            
  *                 EdgeCacheKeysetPublicKeyArgs.builder()
@@ -110,6 +111,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var default_ = new EdgeCacheKeyset(&#34;default&#34;, EdgeCacheKeysetArgs.builder()        
+ *             .name(&#34;my-keyset&#34;)
  *             .description(&#34;The default keyset&#34;)
  *             .publicKeys(EdgeCacheKeysetPublicKeyArgs.builder()
  *                 .id(&#34;my-public-key&#34;)

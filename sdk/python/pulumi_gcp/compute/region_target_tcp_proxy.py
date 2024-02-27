@@ -383,6 +383,32 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/tcp/internal-proxy)
 
         ## Example Usage
+        ### Region Target Tcp Proxy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            name="health-check",
+            region="europe-west4",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            name="backend-service",
+            protocol="TCP",
+            timeout_sec=10,
+            region="europe-west4",
+            health_checks=default_region_health_check.id,
+            load_balancing_scheme="INTERNAL_MANAGED")
+        default = gcp.compute.RegionTargetTcpProxy("default",
+            name="test-proxy",
+            region="europe-west4",
+            backend_service=default_region_backend_service.id)
+        ```
 
         ## Import
 
@@ -457,6 +483,32 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/tcp/internal-proxy)
 
         ## Example Usage
+        ### Region Target Tcp Proxy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            name="health-check",
+            region="europe-west4",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            name="backend-service",
+            protocol="TCP",
+            timeout_sec=10,
+            region="europe-west4",
+            health_checks=default_region_health_check.id,
+            load_balancing_scheme="INTERNAL_MANAGED")
+        default = gcp.compute.RegionTargetTcpProxy("default",
+            name="test-proxy",
+            region="europe-west4",
+            backend_service=default_region_backend_service.id)
+        ```
 
         ## Import
 

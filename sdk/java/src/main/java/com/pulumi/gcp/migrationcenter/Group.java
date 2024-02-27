@@ -43,11 +43,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Group(&#34;default&#34;, GroupArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .groupId(&#34;group-test&#34;)
  *             .description(&#34;Terraform integration test description&#34;)
  *             .displayName(&#34;Terraform integration test display&#34;)
- *             .groupId(&#34;group-test&#34;)
  *             .labels(Map.of(&#34;key&#34;, &#34;value&#34;))
- *             .location(&#34;us-central1&#34;)
  *             .build());
  * 
  *     }

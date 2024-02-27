@@ -22,7 +22,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultService = new gcp.cloudrun.Service("defaultService", {
+ * const _default = new gcp.cloudrun.Service("default", {
+ *     name: "cloudrun-srv",
  *     location: "us-central1",
  *     metadata: {
  *         namespace: "my-project-name",
@@ -35,13 +36,14 @@ import * as utilities from "../utilities";
  *         },
  *     },
  * });
- * const defaultDomainMapping = new gcp.cloudrun.DomainMapping("defaultDomainMapping", {
+ * const defaultDomainMapping = new gcp.cloudrun.DomainMapping("default", {
  *     location: "us-central1",
+ *     name: "verified-domain.com",
  *     metadata: {
  *         namespace: "my-project-name",
  *     },
  *     spec: {
- *         routeName: defaultService.name,
+ *         routeName: _default.name,
  *     },
  * });
  * ```

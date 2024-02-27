@@ -229,6 +229,7 @@ class ProjectExclusion(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_exclusion = gcp.logging.ProjectExclusion("my-exclusion",
+            name="my-instance-debug-exclusion",
             description="Exclude GCE instance debug logs",
             filter="resource.type = gce_instance AND severity <= DEBUG")
         ```
@@ -279,6 +280,7 @@ class ProjectExclusion(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_exclusion = gcp.logging.ProjectExclusion("my-exclusion",
+            name="my-instance-debug-exclusion",
             description="Exclude GCE instance debug logs",
             filter="resource.type = gce_instance AND severity <= DEBUG")
         ```

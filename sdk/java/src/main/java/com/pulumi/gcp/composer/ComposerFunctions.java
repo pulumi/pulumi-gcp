@@ -20,12 +20,86 @@ public final class ComposerFunctions {
     /**
      * Provides access to Cloud Composer environment configuration in a region for a given project.
      * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.composer.Environment;
+     * import com.pulumi.gcp.composer.EnvironmentArgs;
+     * import com.pulumi.gcp.composer.ComposerFunctions;
+     * import com.pulumi.gcp.composer.inputs.GetEnvironmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var composerEnvEnvironment = new Environment(&#34;composerEnvEnvironment&#34;, EnvironmentArgs.builder()        
+     *             .name(&#34;composer-environment&#34;)
+     *             .build());
+     * 
+     *         final var composerEnv = ComposerFunctions.getEnvironment(GetEnvironmentArgs.builder()
+     *             .name(test.name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;debug&#34;, composerEnv.applyValue(getEnvironmentResult -&gt; getEnvironmentResult.configs()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEnvironmentResult> getEnvironment(GetEnvironmentArgs args) {
         return getEnvironment(args, InvokeOptions.Empty);
     }
     /**
      * Provides access to Cloud Composer environment configuration in a region for a given project.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.composer.Environment;
+     * import com.pulumi.gcp.composer.EnvironmentArgs;
+     * import com.pulumi.gcp.composer.ComposerFunctions;
+     * import com.pulumi.gcp.composer.inputs.GetEnvironmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var composerEnvEnvironment = new Environment(&#34;composerEnvEnvironment&#34;, EnvironmentArgs.builder()        
+     *             .name(&#34;composer-environment&#34;)
+     *             .build());
+     * 
+     *         final var composerEnv = ComposerFunctions.getEnvironment(GetEnvironmentArgs.builder()
+     *             .name(test.name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;debug&#34;, composerEnv.applyValue(getEnvironmentResult -&gt; getEnvironmentResult.configs()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEnvironmentResult> getEnvironmentPlain(GetEnvironmentPlainArgs args) {
@@ -34,12 +108,86 @@ public final class ComposerFunctions {
     /**
      * Provides access to Cloud Composer environment configuration in a region for a given project.
      * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.composer.Environment;
+     * import com.pulumi.gcp.composer.EnvironmentArgs;
+     * import com.pulumi.gcp.composer.ComposerFunctions;
+     * import com.pulumi.gcp.composer.inputs.GetEnvironmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var composerEnvEnvironment = new Environment(&#34;composerEnvEnvironment&#34;, EnvironmentArgs.builder()        
+     *             .name(&#34;composer-environment&#34;)
+     *             .build());
+     * 
+     *         final var composerEnv = ComposerFunctions.getEnvironment(GetEnvironmentArgs.builder()
+     *             .name(test.name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;debug&#34;, composerEnv.applyValue(getEnvironmentResult -&gt; getEnvironmentResult.configs()));
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetEnvironmentResult> getEnvironment(GetEnvironmentArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:composer/getEnvironment:getEnvironment", TypeShape.of(GetEnvironmentResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides access to Cloud Composer environment configuration in a region for a given project.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.composer.Environment;
+     * import com.pulumi.gcp.composer.EnvironmentArgs;
+     * import com.pulumi.gcp.composer.ComposerFunctions;
+     * import com.pulumi.gcp.composer.inputs.GetEnvironmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var composerEnvEnvironment = new Environment(&#34;composerEnvEnvironment&#34;, EnvironmentArgs.builder()        
+     *             .name(&#34;composer-environment&#34;)
+     *             .build());
+     * 
+     *         final var composerEnv = ComposerFunctions.getEnvironment(GetEnvironmentArgs.builder()
+     *             .name(test.name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;debug&#34;, composerEnv.applyValue(getEnvironmentResult -&gt; getEnvironmentResult.configs()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetEnvironmentResult> getEnvironmentPlain(GetEnvironmentPlainArgs args, InvokeOptions options) {
@@ -77,6 +225,7 @@ public final class ComposerFunctions {
      *         final var all = ComposerFunctions.getImageVersions();
      * 
      *         var test = new Environment(&#34;test&#34;, EnvironmentArgs.builder()        
+     *             .name(&#34;test-env&#34;)
      *             .region(&#34;us-central1&#34;)
      *             .config(EnvironmentConfigArgs.builder()
      *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
@@ -125,6 +274,7 @@ public final class ComposerFunctions {
      *         final var all = ComposerFunctions.getImageVersions();
      * 
      *         var test = new Environment(&#34;test&#34;, EnvironmentArgs.builder()        
+     *             .name(&#34;test-env&#34;)
      *             .region(&#34;us-central1&#34;)
      *             .config(EnvironmentConfigArgs.builder()
      *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
@@ -173,6 +323,7 @@ public final class ComposerFunctions {
      *         final var all = ComposerFunctions.getImageVersions();
      * 
      *         var test = new Environment(&#34;test&#34;, EnvironmentArgs.builder()        
+     *             .name(&#34;test-env&#34;)
      *             .region(&#34;us-central1&#34;)
      *             .config(EnvironmentConfigArgs.builder()
      *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
@@ -221,6 +372,7 @@ public final class ComposerFunctions {
      *         final var all = ComposerFunctions.getImageVersions();
      * 
      *         var test = new Environment(&#34;test&#34;, EnvironmentArgs.builder()        
+     *             .name(&#34;test-env&#34;)
      *             .region(&#34;us-central1&#34;)
      *             .config(EnvironmentConfigArgs.builder()
      *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
@@ -269,6 +421,7 @@ public final class ComposerFunctions {
      *         final var all = ComposerFunctions.getImageVersions();
      * 
      *         var test = new Environment(&#34;test&#34;, EnvironmentArgs.builder()        
+     *             .name(&#34;test-env&#34;)
      *             .region(&#34;us-central1&#34;)
      *             .config(EnvironmentConfigArgs.builder()
      *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
@@ -317,6 +470,7 @@ public final class ComposerFunctions {
      *         final var all = ComposerFunctions.getImageVersions();
      * 
      *         var test = new Environment(&#34;test&#34;, EnvironmentArgs.builder()        
+     *             .name(&#34;test-env&#34;)
      *             .region(&#34;us-central1&#34;)
      *             .config(EnvironmentConfigArgs.builder()
      *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()

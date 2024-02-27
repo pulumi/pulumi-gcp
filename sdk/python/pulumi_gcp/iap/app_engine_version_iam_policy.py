@@ -294,10 +294,10 @@ class AppEngineVersionIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.iap.AppEngineVersionIamPolicy("policy",
-            project=google_app_engine_standard_app_version["version"]["project"],
-            app_id=google_app_engine_standard_app_version["version"]["project"],
-            service=google_app_engine_standard_app_version["version"]["service"],
-            version_id=google_app_engine_standard_app_version["version"]["version_id"],
+            project=version["project"],
+            app_id=version["project"],
+            service=version["service"],
+            version_id=version["versionId"],
             policy_data=admin.policy_data)
         ```
 
@@ -317,10 +317,10 @@ class AppEngineVersionIamPolicy(pulumi.CustomResource):
             ),
         )])
         policy = gcp.iap.AppEngineVersionIamPolicy("policy",
-            project=google_app_engine_standard_app_version["version"]["project"],
-            app_id=google_app_engine_standard_app_version["version"]["project"],
-            service=google_app_engine_standard_app_version["version"]["service"],
-            version_id=google_app_engine_standard_app_version["version"]["version_id"],
+            project=version["project"],
+            app_id=version["project"],
+            service=version["service"],
+            version_id=version["versionId"],
             policy_data=admin.policy_data)
         ```
         ## google\\_iap\\_app\\_engine\\_version\\_iam\\_binding
@@ -330,12 +330,12 @@ class AppEngineVersionIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.iap.AppEngineVersionIamBinding("binding",
-            app_id=google_app_engine_standard_app_version["version"]["project"],
-            members=["user:jane@example.com"],
-            project=google_app_engine_standard_app_version["version"]["project"],
+            project=version["project"],
+            app_id=version["project"],
+            service=version["service"],
+            version_id=version["versionId"],
             role="roles/iap.httpsResourceAccessor",
-            service=google_app_engine_standard_app_version["version"]["service"],
-            version_id=google_app_engine_standard_app_version["version"]["version_id"])
+            members=["user:jane@example.com"])
         ```
 
         With IAM Conditions:
@@ -345,17 +345,17 @@ class AppEngineVersionIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.iap.AppEngineVersionIamBinding("binding",
-            app_id=google_app_engine_standard_app_version["version"]["project"],
+            project=version["project"],
+            app_id=version["project"],
+            service=version["service"],
+            version_id=version["versionId"],
+            role="roles/iap.httpsResourceAccessor",
+            members=["user:jane@example.com"],
             condition=gcp.iap.AppEngineVersionIamBindingConditionArgs(
+                title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
-            ),
-            members=["user:jane@example.com"],
-            project=google_app_engine_standard_app_version["version"]["project"],
-            role="roles/iap.httpsResourceAccessor",
-            service=google_app_engine_standard_app_version["version"]["service"],
-            version_id=google_app_engine_standard_app_version["version"]["version_id"])
+            ))
         ```
         ## google\\_iap\\_app\\_engine\\_version\\_iam\\_member
 
@@ -364,12 +364,12 @@ class AppEngineVersionIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.iap.AppEngineVersionIamMember("member",
-            app_id=google_app_engine_standard_app_version["version"]["project"],
-            member="user:jane@example.com",
-            project=google_app_engine_standard_app_version["version"]["project"],
+            project=version["project"],
+            app_id=version["project"],
+            service=version["service"],
+            version_id=version["versionId"],
             role="roles/iap.httpsResourceAccessor",
-            service=google_app_engine_standard_app_version["version"]["service"],
-            version_id=google_app_engine_standard_app_version["version"]["version_id"])
+            member="user:jane@example.com")
         ```
 
         With IAM Conditions:
@@ -379,17 +379,17 @@ class AppEngineVersionIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.iap.AppEngineVersionIamMember("member",
-            app_id=google_app_engine_standard_app_version["version"]["project"],
+            project=version["project"],
+            app_id=version["project"],
+            service=version["service"],
+            version_id=version["versionId"],
+            role="roles/iap.httpsResourceAccessor",
+            member="user:jane@example.com",
             condition=gcp.iap.AppEngineVersionIamMemberConditionArgs(
+                title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
-            ),
-            member="user:jane@example.com",
-            project=google_app_engine_standard_app_version["version"]["project"],
-            role="roles/iap.httpsResourceAccessor",
-            service=google_app_engine_standard_app_version["version"]["service"],
-            version_id=google_app_engine_standard_app_version["version"]["version_id"])
+            ))
         ```
 
         ## Import
@@ -486,10 +486,10 @@ class AppEngineVersionIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.iap.AppEngineVersionIamPolicy("policy",
-            project=google_app_engine_standard_app_version["version"]["project"],
-            app_id=google_app_engine_standard_app_version["version"]["project"],
-            service=google_app_engine_standard_app_version["version"]["service"],
-            version_id=google_app_engine_standard_app_version["version"]["version_id"],
+            project=version["project"],
+            app_id=version["project"],
+            service=version["service"],
+            version_id=version["versionId"],
             policy_data=admin.policy_data)
         ```
 
@@ -509,10 +509,10 @@ class AppEngineVersionIamPolicy(pulumi.CustomResource):
             ),
         )])
         policy = gcp.iap.AppEngineVersionIamPolicy("policy",
-            project=google_app_engine_standard_app_version["version"]["project"],
-            app_id=google_app_engine_standard_app_version["version"]["project"],
-            service=google_app_engine_standard_app_version["version"]["service"],
-            version_id=google_app_engine_standard_app_version["version"]["version_id"],
+            project=version["project"],
+            app_id=version["project"],
+            service=version["service"],
+            version_id=version["versionId"],
             policy_data=admin.policy_data)
         ```
         ## google\\_iap\\_app\\_engine\\_version\\_iam\\_binding
@@ -522,12 +522,12 @@ class AppEngineVersionIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.iap.AppEngineVersionIamBinding("binding",
-            app_id=google_app_engine_standard_app_version["version"]["project"],
-            members=["user:jane@example.com"],
-            project=google_app_engine_standard_app_version["version"]["project"],
+            project=version["project"],
+            app_id=version["project"],
+            service=version["service"],
+            version_id=version["versionId"],
             role="roles/iap.httpsResourceAccessor",
-            service=google_app_engine_standard_app_version["version"]["service"],
-            version_id=google_app_engine_standard_app_version["version"]["version_id"])
+            members=["user:jane@example.com"])
         ```
 
         With IAM Conditions:
@@ -537,17 +537,17 @@ class AppEngineVersionIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.iap.AppEngineVersionIamBinding("binding",
-            app_id=google_app_engine_standard_app_version["version"]["project"],
+            project=version["project"],
+            app_id=version["project"],
+            service=version["service"],
+            version_id=version["versionId"],
+            role="roles/iap.httpsResourceAccessor",
+            members=["user:jane@example.com"],
             condition=gcp.iap.AppEngineVersionIamBindingConditionArgs(
+                title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
-            ),
-            members=["user:jane@example.com"],
-            project=google_app_engine_standard_app_version["version"]["project"],
-            role="roles/iap.httpsResourceAccessor",
-            service=google_app_engine_standard_app_version["version"]["service"],
-            version_id=google_app_engine_standard_app_version["version"]["version_id"])
+            ))
         ```
         ## google\\_iap\\_app\\_engine\\_version\\_iam\\_member
 
@@ -556,12 +556,12 @@ class AppEngineVersionIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.iap.AppEngineVersionIamMember("member",
-            app_id=google_app_engine_standard_app_version["version"]["project"],
-            member="user:jane@example.com",
-            project=google_app_engine_standard_app_version["version"]["project"],
+            project=version["project"],
+            app_id=version["project"],
+            service=version["service"],
+            version_id=version["versionId"],
             role="roles/iap.httpsResourceAccessor",
-            service=google_app_engine_standard_app_version["version"]["service"],
-            version_id=google_app_engine_standard_app_version["version"]["version_id"])
+            member="user:jane@example.com")
         ```
 
         With IAM Conditions:
@@ -571,17 +571,17 @@ class AppEngineVersionIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.iap.AppEngineVersionIamMember("member",
-            app_id=google_app_engine_standard_app_version["version"]["project"],
+            project=version["project"],
+            app_id=version["project"],
+            service=version["service"],
+            version_id=version["versionId"],
+            role="roles/iap.httpsResourceAccessor",
+            member="user:jane@example.com",
             condition=gcp.iap.AppEngineVersionIamMemberConditionArgs(
+                title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
-            ),
-            member="user:jane@example.com",
-            project=google_app_engine_standard_app_version["version"]["project"],
-            role="roles/iap.httpsResourceAccessor",
-            service=google_app_engine_standard_app_version["version"]["service"],
-            version_id=google_app_engine_standard_app_version["version"]["version_id"])
+            ))
         ```
 
         ## Import

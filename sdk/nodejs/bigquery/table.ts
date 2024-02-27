@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultDataset = new gcp.bigquery.Dataset("defaultDataset", {
+ * const _default = new gcp.bigquery.Dataset("default", {
  *     datasetId: "foo",
  *     friendlyName: "test",
  *     description: "This is a test description",
@@ -31,8 +31,8 @@ import * as utilities from "../utilities";
  *         env: "default",
  *     },
  * });
- * const defaultTable = new gcp.bigquery.Table("defaultTable", {
- *     datasetId: defaultDataset.datasetId,
+ * const defaultTable = new gcp.bigquery.Table("default", {
+ *     datasetId: _default.datasetId,
  *     tableId: "bar",
  *     timePartitioning: {
  *         type: "DAY",
@@ -57,7 +57,7 @@ import * as utilities from "../utilities";
  * `,
  * });
  * const sheet = new gcp.bigquery.Table("sheet", {
- *     datasetId: defaultDataset.datasetId,
+ *     datasetId: _default.datasetId,
  *     tableId: "sheet",
  *     externalDataConfiguration: {
  *         autodetect: true,

@@ -37,35 +37,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			producerNet, err := compute.NewNetwork(ctx, "producerNet", &compute.NetworkArgs{
+//			producerNet, err := compute.NewNetwork(ctx, "producer_net", &compute.NetworkArgs{
+//				Name:                  pulumi.String("mynetwork"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			producerSubnet, err := compute.NewSubnetwork(ctx, "producerSubnet", &compute.SubnetworkArgs{
-//				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-central1"),
-//				Network:     producerNet.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
-//				Location:     pulumi.String("us-central1"),
-//				ServiceClass: pulumi.String("gcp-memorystore-redis"),
-//				Description:  pulumi.String("my basic service connection policy"),
-//				Network:      producerNet.ID(),
-//				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
-//					Subnetworks: pulumi.StringArray{
-//						producerSubnet.ID(),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			_, err = redis.NewCluster(ctx, "cluster-ha", &redis.ClusterArgs{
+//				Name:       pulumi.String("ha-cluster"),
 //				ShardCount: pulumi.Int(3),
 //				PscConfigs: redis.ClusterPscConfigArray{
 //					&redis.ClusterPscConfigArgs{
@@ -76,9 +56,31 @@ import (
 //				ReplicaCount:          pulumi.Int(1),
 //				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_MODE_DISABLED"),
 //				AuthorizationMode:     pulumi.String("AUTH_MODE_DISABLED"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				_default,
-//			}))
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("mysubnet"),
+//				IpCidrRange: pulumi.String("10.0.0.248/29"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     producerNet.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
+//				Name:         pulumi.String("mypolicy"),
+//				Location:     pulumi.String("us-central1"),
+//				ServiceClass: pulumi.String("gcp-memorystore-redis"),
+//				Description:  pulumi.String("my basic service connection policy"),
+//				Network:      producerNet.ID(),
+//				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
+//					Subnetworks: pulumi.StringArray{
+//						producerSubnet.ID(),
+//					},
+//				},
+//			})
 //			if err != nil {
 //				return err
 //			}

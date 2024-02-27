@@ -59,14 +59,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var gceReservation = new Reservation(&#34;gceReservation&#34;, ReservationArgs.builder()        
+ *             .name(&#34;gce-reservation&#34;)
+ *             .zone(&#34;us-central1-a&#34;)
  *             .specificReservation(ReservationSpecificReservationArgs.builder()
  *                 .count(1)
  *                 .instanceProperties(ReservationSpecificReservationInstancePropertiesArgs.builder()
- *                     .machineType(&#34;n2-standard-2&#34;)
  *                     .minCpuPlatform(&#34;Intel Cascade Lake&#34;)
+ *                     .machineType(&#34;n2-standard-2&#34;)
  *                     .build())
  *                 .build())
- *             .zone(&#34;us-central1-a&#34;)
  *             .build());
  * 
  *     }

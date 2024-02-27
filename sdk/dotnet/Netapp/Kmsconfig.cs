@@ -33,17 +33,19 @@ namespace Pulumi.Gcp.Netapp
     /// {
     ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
     ///     {
+    ///         Name = "key-ring",
     ///         Location = "us-central1",
     ///     });
     /// 
-    ///     var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("crypto_key", new()
     ///     {
+    ///         Name = "crypto-name",
     ///         KeyRing = keyring.Id,
     ///     });
     /// 
-    ///     // rotation_period = "7776000s"
     ///     var kmsConfig = new Gcp.Netapp.Kmsconfig("kmsConfig", new()
     ///     {
+    ///         Name = "kms-test",
     ///         Description = "this is a test description",
     ///         CryptoKeyName = cryptoKey.Id,
     ///         Location = "us-central1",

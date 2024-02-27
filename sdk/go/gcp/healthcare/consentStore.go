@@ -37,12 +37,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
 //				Location: pulumi.String("us-central1"),
+//				Name:     pulumi.String("my-dataset"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = healthcare.NewConsentStore(ctx, "my-consent", &healthcare.ConsentStoreArgs{
 //				Dataset: dataset.ID(),
+//				Name:    pulumi.String("my-consent-store"),
 //			})
 //			if err != nil {
 //				return err
@@ -68,12 +70,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
 //				Location: pulumi.String("us-central1"),
+//				Name:     pulumi.String("my-dataset"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = healthcare.NewConsentStore(ctx, "my-consent", &healthcare.ConsentStoreArgs{
 //				Dataset:                     dataset.ID(),
+//				Name:                        pulumi.String("my-consent-store"),
 //				EnableConsentCreateOnUpdate: pulumi.Bool(true),
 //				DefaultConsentTtl:           pulumi.String("90000s"),
 //				Labels: pulumi.StringMap{
@@ -107,12 +111,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
 //				Location: pulumi.String("us-central1"),
+//				Name:     pulumi.String("my-dataset"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = healthcare.NewConsentStore(ctx, "my-consent", &healthcare.ConsentStoreArgs{
 //				Dataset: dataset.ID(),
+//				Name:    pulumi.String("my-consent-store"),
 //			})
 //			if err != nil {
 //				return err

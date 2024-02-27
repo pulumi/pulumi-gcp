@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var loggingLinkedDatasetProjectBucketConfig = new Gcp.Logging.ProjectBucketConfig("loggingLinkedDatasetProjectBucketConfig", new()
+    ///     var loggingLinkedDataset = new Gcp.Logging.ProjectBucketConfig("logging_linked_dataset", new()
     ///     {
     ///         Location = "global",
     ///         Project = "my-project-name",
@@ -37,10 +37,10 @@ namespace Pulumi.Gcp.Logging
     ///         BucketId = "my-bucket",
     ///     });
     /// 
-    ///     var loggingLinkedDatasetLinkedDataset = new Gcp.Logging.LinkedDataset("loggingLinkedDatasetLinkedDataset", new()
+    ///     var loggingLinkedDatasetLinkedDataset = new Gcp.Logging.LinkedDataset("logging_linked_dataset", new()
     ///     {
     ///         LinkId = "mylink",
-    ///         Bucket = loggingLinkedDatasetProjectBucketConfig.Id,
+    ///         Bucket = loggingLinkedDataset.Id,
     ///         Description = "Linked dataset test",
     ///     });
     /// 
@@ -56,27 +56,21 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var loggingLinkedDatasetProjectBucketConfig = new Gcp.Logging.ProjectBucketConfig("loggingLinkedDatasetProjectBucketConfig", new()
+    ///     var loggingLinkedDataset = new Gcp.Logging.ProjectBucketConfig("logging_linked_dataset", new()
     ///     {
-    ///         BucketId = "my-bucket",
-    ///         EnableAnalytics = true,
     ///         Location = "global",
     ///         Project = "my-project-name",
+    ///         EnableAnalytics = true,
+    ///         BucketId = "my-bucket",
     ///     });
     /// 
-    ///     var loggingLinkedDatasetLinkedDataset = new Gcp.Logging.LinkedDataset("loggingLinkedDatasetLinkedDataset", new()
+    ///     var loggingLinkedDatasetLinkedDataset = new Gcp.Logging.LinkedDataset("logging_linked_dataset", new()
     ///     {
-    ///         Bucket = "my-bucket",
-    ///         Description = "Linked dataset test",
     ///         LinkId = "mylink",
-    ///         Location = "global",
+    ///         Bucket = "my-bucket",
     ///         Parent = "projects/my-project-name",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             "google_logging_project_bucket_config.logging_linked_dataset",
-    ///         },
+    ///         Location = "global",
+    ///         Description = "Linked dataset test",
     ///     });
     /// 
     /// });

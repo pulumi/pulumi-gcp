@@ -42,6 +42,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var policy = new NetworkFirewallPolicy(&#34;policy&#34;, NetworkFirewallPolicyArgs.builder()        
+ *             .name(&#34;tf-test-policy&#34;)
  *             .description(&#34;Terraform test&#34;)
  *             .build());
  * 

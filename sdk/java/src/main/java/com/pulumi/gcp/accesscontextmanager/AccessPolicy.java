@@ -89,13 +89,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;acm-test-proj-123&#34;)
+ *             .name(&#34;acm-test-proj-123&#34;)
  *             .orgId(&#34;123456789&#34;)
  *             .build());
  * 
  *         var access_policy = new AccessPolicy(&#34;access-policy&#34;, AccessPolicyArgs.builder()        
  *             .parent(&#34;organizations/123456789&#34;)
- *             .scopes(project.number().applyValue(number -&gt; String.format(&#34;projects/%s&#34;, number)))
  *             .title(&#34;Scoped Access Policy&#34;)
+ *             .scopes(project.number().applyValue(number -&gt; String.format(&#34;projects/%s&#34;, number)))
  *             .build());
  * 
  *     }

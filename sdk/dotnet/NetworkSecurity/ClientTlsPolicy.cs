@@ -23,15 +23,13 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// {
     ///     var @default = new Gcp.NetworkSecurity.ClientTlsPolicy("default", new()
     ///     {
+    ///         Name = "my-client-tls-policy",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
     ///         },
     ///         Description = "my description",
     ///         Sni = "secure.example.com",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -48,6 +46,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// {
     ///     var @default = new Gcp.NetworkSecurity.ClientTlsPolicy("default", new()
     ///     {
+    ///         Name = "my-client-tls-policy",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -77,9 +76,6 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

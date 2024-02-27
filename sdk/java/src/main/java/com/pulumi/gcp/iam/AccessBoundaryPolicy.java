@@ -22,6 +22,94 @@ import javax.annotation.Nullable;
  * if they would like to test it.
  * 
  * ## Example Usage
+ * ### Iam Access Boundary Policy Basic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.accesscontextmanager.AccessPolicy;
+ * import com.pulumi.gcp.accesscontextmanager.AccessPolicyArgs;
+ * import com.pulumi.gcp.accesscontextmanager.AccessLevel;
+ * import com.pulumi.gcp.accesscontextmanager.AccessLevelArgs;
+ * import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicArgs;
+ * import com.pulumi.gcp.iam.AccessBoundaryPolicy;
+ * import com.pulumi.gcp.iam.AccessBoundaryPolicyArgs;
+ * import com.pulumi.gcp.iam.inputs.AccessBoundaryPolicyRuleArgs;
+ * import com.pulumi.gcp.iam.inputs.AccessBoundaryPolicyRuleAccessBoundaryRuleArgs;
+ * import com.pulumi.gcp.iam.inputs.AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;my-project&#34;)
+ *             .name(&#34;my-project&#34;)
+ *             .orgId(&#34;123456789&#34;)
+ *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *             .build());
+ * 
+ *         var access_policy = new AccessPolicy(&#34;access-policy&#34;, AccessPolicyArgs.builder()        
+ *             .parent(project.orgId().applyValue(orgId -&gt; String.format(&#34;organizations/%s&#34;, orgId)))
+ *             .title(&#34;my policy&#34;)
+ *             .build());
+ * 
+ *         var test_access = new AccessLevel(&#34;test-access&#34;, AccessLevelArgs.builder()        
+ *             .parent(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
+ *             .name(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s/accessLevels/chromeos_no_lock&#34;, name)))
+ *             .title(&#34;chromeos_no_lock&#34;)
+ *             .basic(AccessLevelBasicArgs.builder()
+ *                 .conditions(AccessLevelBasicConditionArgs.builder()
+ *                     .devicePolicy(AccessLevelBasicConditionDevicePolicyArgs.builder()
+ *                         .requireScreenLock(true)
+ *                         .osConstraints(AccessLevelBasicConditionDevicePolicyOsConstraintArgs.builder()
+ *                             .osType(&#34;DESKTOP_CHROME_OS&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .regions(                    
+ *                         &#34;CH&#34;,
+ *                         &#34;IT&#34;,
+ *                         &#34;US&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var example = new AccessBoundaryPolicy(&#34;example&#34;, AccessBoundaryPolicyArgs.builder()        
+ *             .parent(StdFunctions.urlencode().applyValue(invoke -&gt; invoke.result()))
+ *             .name(&#34;my-ab-policy&#34;)
+ *             .displayName(&#34;My AB policy&#34;)
+ *             .rules(AccessBoundaryPolicyRuleArgs.builder()
+ *                 .description(&#34;AB rule&#34;)
+ *                 .accessBoundaryRule(AccessBoundaryPolicyRuleAccessBoundaryRuleArgs.builder()
+ *                     .availableResource(&#34;*&#34;)
+ *                     .availablePermissions(&#34;*&#34;)
+ *                     .availabilityCondition(AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs.builder()
+ *                         .title(&#34;Access level expr&#34;)
+ *                         .expression(Output.tuple(project.orgId(), test_access.name()).applyValue(values -&gt; {
+ *                             var orgId = values.t1;
+ *                             var name = values.t2;
+ *                             return String.format(&#34;request.matchAccessLevels(&#39;%s&#39;, [&#39;%s&#39;])&#34;, orgId,name);
+ *                         }))
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

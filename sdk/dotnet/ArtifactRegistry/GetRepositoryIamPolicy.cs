@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// {
         ///     var policy = Gcp.ArtifactRegistry.GetRepositoryIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_artifact_registry_repository.My_repo.Project,
-        ///         Location = google_artifact_registry_repository.My_repo.Location,
-        ///         Repository = google_artifact_registry_repository.My_repo.Name,
+        ///         Project = my_repo.Project,
+        ///         Location = my_repo.Location,
+        ///         Repository = my_repo.Name,
         ///     });
         /// 
         /// });
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// {
         ///     var policy = Gcp.ArtifactRegistry.GetRepositoryIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_artifact_registry_repository.My_repo.Project,
-        ///         Location = google_artifact_registry_repository.My_repo.Location,
-        ///         Repository = google_artifact_registry_repository.My_repo.Name,
+        ///         Project = my_repo.Project,
+        ///         Location = my_repo.Location,
+        ///         Repository = my_repo.Name,
         ///     });
         /// 
         /// });

@@ -33,7 +33,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			mykeyKey, err := serviceaccount.NewKey(ctx, "mykeyKey", &serviceaccount.KeyArgs{
+//			mykeyKey, err := serviceaccount.NewKey(ctx, "mykey", &serviceaccount.KeyArgs{
 //				ServiceAccountId: myaccount.Name,
 //			})
 //			if err != nil {

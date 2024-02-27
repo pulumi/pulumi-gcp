@@ -88,7 +88,7 @@ def get_iam_policy(service_account_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.serviceaccount.get_iam_policy(service_account_id=google_service_account["test_account"]["name"])
+    foo = gcp.serviceaccount.get_iam_policy(service_account_id=test_account["name"])
     ```
 
 
@@ -118,7 +118,7 @@ def get_iam_policy_output(service_account_id: Optional[pulumi.Input[str]] = None
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.serviceaccount.get_iam_policy(service_account_id=google_service_account["test_account"]["name"])
+    foo = gcp.serviceaccount.get_iam_policy(service_account_id=test_account["name"])
     ```
 
 

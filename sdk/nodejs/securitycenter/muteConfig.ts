@@ -22,10 +22,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.securitycenter.MuteConfig("default", {
- *     description: "My Mute Config",
- *     filter: "category: \"OS_VULNERABILITY\"",
  *     muteConfigId: "my-config",
  *     parent: "organizations/123456789",
+ *     filter: "category: \"OS_VULNERABILITY\"",
+ *     description: "My Mute Config",
  * });
  * ```
  *

@@ -29,8 +29,9 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var basicInstance = new Gcp.DataFusion.Instance("basicInstance", new()
+    ///     var basicInstance = new Gcp.DataFusion.Instance("basic_instance", new()
     ///     {
+    ///         Name = "my-instance",
     ///         Region = "us-central1",
     ///         Type = "BASIC",
     ///     });
@@ -49,18 +50,23 @@ namespace Pulumi.Gcp.DataFusion
     /// {
     ///     var @default = Gcp.AppEngine.GetDefaultServiceAccount.Invoke();
     /// 
-    ///     var network = new Gcp.Compute.Network("network");
-    /// 
-    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("privateIpAlloc", new()
+    ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
+    ///         Name = "datafusion-full-network",
+    ///     });
+    /// 
+    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
+    ///     {
+    ///         Name = "datafusion-ip-alloc",
     ///         AddressType = "INTERNAL",
     ///         Purpose = "VPC_PEERING",
     ///         PrefixLength = 22,
     ///         Network = network.Id,
     ///     });
     /// 
-    ///     var extendedInstance = new Gcp.DataFusion.Instance("extendedInstance", new()
+    ///     var extendedInstance = new Gcp.DataFusion.Instance("extended_instance", new()
     ///     {
+    ///         Name = "my-instance",
     ///         Description = "My Data Fusion instance",
     ///         DisplayName = "My Data Fusion instance",
     ///         Region = "us-central1",
@@ -105,39 +111,36 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var keyRing = new Gcp.Kms.KeyRing("keyRing", new()
+    ///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()
     ///     {
+    ///         Name = "my-instance",
     ///         Location = "us-central1",
     ///     });
     /// 
-    ///     var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("crypto_key", new()
     ///     {
+    ///         Name = "my-instance",
     ///         KeyRing = keyRing.Id,
-    ///     });
-    /// 
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    ///     var cryptoKeyMember = new Gcp.Kms.CryptoKeyIAMMember("cryptoKeyMember", new()
-    ///     {
-    ///         CryptoKeyId = cryptoKey.Id,
-    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
-    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-datafusion.iam.gserviceaccount.com",
     ///     });
     /// 
     ///     var cmek = new Gcp.DataFusion.Instance("cmek", new()
     ///     {
+    ///         Name = "my-instance",
     ///         Region = "us-central1",
     ///         Type = "BASIC",
     ///         CryptoKeyConfig = new Gcp.DataFusion.Inputs.InstanceCryptoKeyConfigArgs
     ///         {
     ///             KeyReference = cryptoKey.Id,
     ///         },
-    ///     }, new CustomResourceOptions
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var cryptoKeyMember = new Gcp.Kms.CryptoKeyIAMMember("crypto_key_member", new()
     ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             cryptoKeyMember,
-    ///         },
+    ///         CryptoKeyId = cryptoKey.Id,
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-datafusion.iam.gserviceaccount.com",
     ///     });
     /// 
     /// });
@@ -152,11 +155,12 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var enterpriseInstance = new Gcp.DataFusion.Instance("enterpriseInstance", new()
+    ///     var enterpriseInstance = new Gcp.DataFusion.Instance("enterprise_instance", new()
     ///     {
-    ///         EnableRbac = true,
+    ///         Name = "my-instance",
     ///         Region = "us-central1",
     ///         Type = "ENTERPRISE",
+    ///         EnableRbac = true,
     ///     });
     /// 
     /// });
@@ -171,10 +175,14 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var eventTopic = new Gcp.PubSub.Topic("eventTopic");
-    /// 
-    ///     var eventInstance = new Gcp.DataFusion.Instance("eventInstance", new()
+    ///     var eventTopic = new Gcp.PubSub.Topic("event", new()
     ///     {
+    ///         Name = "my-instance",
+    ///     });
+    /// 
+    ///     var @event = new Gcp.DataFusion.Instance("event", new()
+    ///     {
+    ///         Name = "my-instance",
     ///         Region = "us-central1",
     ///         Type = "BASIC",
     ///         EventPublishConfig = new Gcp.DataFusion.Inputs.InstanceEventPublishConfigArgs
@@ -198,9 +206,10 @@ namespace Pulumi.Gcp.DataFusion
     /// {
     ///     var zone = new Gcp.DataFusion.Instance("zone", new()
     ///     {
+    ///         Name = "my-instance",
     ///         Region = "us-central1",
-    ///         Type = "DEVELOPER",
     ///         Zone = "us-central1-a",
+    ///         Type = "DEVELOPER",
     ///     });
     /// 
     /// });

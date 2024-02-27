@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.datacatalog.getTaxonomyIamPolicy({
- *     taxonomy: google_data_catalog_taxonomy.basic_taxonomy.name,
+ *     taxonomy: basicTaxonomy.name,
  * });
  * ```
  */
@@ -75,7 +75,7 @@ export interface GetTaxonomyIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.datacatalog.getTaxonomyIamPolicy({
- *     taxonomy: google_data_catalog_taxonomy.basic_taxonomy.name,
+ *     taxonomy: basicTaxonomy.name,
  * });
  * ```
  */

@@ -12,7 +12,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultCaPool = new gcp.certificateauthority.CaPool("defaultCaPool", {
+ * const _default = new gcp.certificateauthority.CaPool("default", {
+ *     name: "my-basic-ca-pool",
  *     location: "us-central1",
  *     tier: "DEVOPS",
  *     publishingOptions: {
@@ -33,11 +34,9 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
- * const defaultAuthority = new gcp.certificateauthority.Authority("defaultAuthority", {
- *     pool: defaultCaPool.name,
+ * const defaultAuthority = new gcp.certificateauthority.Authority("default", {
+ *     pool: _default.name,
  *     certificateAuthorityId: "my-basic-certificate-authority",
  *     location: "us-central1",
  *     lifetime: "86400s",
@@ -70,30 +69,18 @@ import * as utilities from "../utilities";
  *     keySpec: {
  *         algorithm: "RSA_PKCS1_4096_SHA256",
  *     },
- * }, {
- *     provider: google_beta,
  * });
- * const nsSa = new gcp.projects.ServiceIdentity("nsSa", {service: "networksecurity.googleapis.com"}, {
- *     provider: google_beta,
- * });
- * const tlsInspectionPermission = new gcp.certificateauthority.CaPoolIamMember("tlsInspectionPermission", {
- *     caPool: defaultCaPool.id,
+ * const nsSa = new gcp.projects.ServiceIdentity("ns_sa", {service: "networksecurity.googleapis.com"});
+ * const tlsInspectionPermission = new gcp.certificateauthority.CaPoolIamMember("tls_inspection_permission", {
+ *     caPool: _default.id,
  *     role: "roles/privateca.certificateManager",
  *     member: pulumi.interpolate`serviceAccount:${nsSa.email}`,
- * }, {
- *     provider: google_beta,
  * });
- * const defaultTlsInspectionPolicy = new gcp.networksecurity.TlsInspectionPolicy("defaultTlsInspectionPolicy", {
+ * const defaultTlsInspectionPolicy = new gcp.networksecurity.TlsInspectionPolicy("default", {
+ *     name: "my-tls-inspection-policy",
  *     location: "us-central1",
- *     caPool: defaultCaPool.id,
+ *     caPool: _default.id,
  *     excludePublicCaSet: false,
- * }, {
- *     provider: google_beta,
- *     dependsOn: [
- *         defaultCaPool,
- *         defaultAuthority,
- *         tlsInspectionPermission,
- *     ],
  * });
  * ```
  *

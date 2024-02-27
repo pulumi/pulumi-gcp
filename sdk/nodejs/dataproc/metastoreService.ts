@@ -23,20 +23,20 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.dataproc.MetastoreService("default", {
+ *     serviceId: "metastore-srv",
+ *     location: "us-central1",
+ *     port: 9080,
+ *     tier: "DEVELOPER",
+ *     maintenanceWindow: {
+ *         hourOfDay: 2,
+ *         dayOfWeek: "SUNDAY",
+ *     },
  *     hiveMetastoreConfig: {
  *         version: "2.3.6",
  *     },
  *     labels: {
  *         env: "test",
  *     },
- *     location: "us-central1",
- *     maintenanceWindow: {
- *         dayOfWeek: "SUNDAY",
- *         hourOfDay: 2,
- *     },
- *     port: 9080,
- *     serviceId: "metastore-srv",
- *     tier: "DEVELOPER",
  * });
  * ```
  * ### Dataproc Metastore Service Cmek Example
@@ -45,14 +45,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "us-central1"}, {
- *     provider: google_beta,
+ * const keyRing = new gcp.kms.KeyRing("key_ring", {
+ *     name: "example-keyring",
+ *     location: "us-central1",
  * });
- * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {
+ * const cryptoKey = new gcp.kms.CryptoKey("crypto_key", {
+ *     name: "example-key",
  *     keyRing: keyRing.id,
  *     purpose: "ENCRYPT_DECRYPT",
- * }, {
- *     provider: google_beta,
  * });
  * const _default = new gcp.dataproc.MetastoreService("default", {
  *     serviceId: "example-service",
@@ -71,8 +71,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const net = new gcp.compute.Network("net", {autoCreateSubnetworks: false});
+ * const net = new gcp.compute.Network("net", {
+ *     name: "my-network",
+ *     autoCreateSubnetworks: false,
+ * });
  * const subnet = new gcp.compute.Subnetwork("subnet", {
+ *     name: "my-subnetwork",
  *     region: "us-central1",
  *     network: net.id,
  *     ipCidrRange: "10.0.0.0/22",
@@ -97,16 +101,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const net = new gcp.compute.Network("net", {autoCreateSubnetworks: false}, {
- *     provider: google_beta,
+ * const net = new gcp.compute.Network("net", {
+ *     name: "my-network",
+ *     autoCreateSubnetworks: false,
  * });
  * const subnet = new gcp.compute.Subnetwork("subnet", {
+ *     name: "my-subnetwork",
  *     region: "us-central1",
  *     network: net.id,
  *     ipCidrRange: "10.0.0.0/22",
  *     privateIpGoogleAccess: true,
- * }, {
- *     provider: google_beta,
  * });
  * const _default = new gcp.dataproc.MetastoreService("default", {
  *     serviceId: "metastore-srv",
@@ -120,8 +124,6 @@ import * as utilities from "../utilities";
  *         }],
  *         customRoutesEnabled: true,
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Dataproc Metastore Service Dpms2
@@ -131,15 +133,15 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const dpms2 = new gcp.dataproc.MetastoreService("dpms2", {
+ *     serviceId: "ms-dpms2",
+ *     location: "us-central1",
  *     databaseType: "SPANNER",
  *     hiveMetastoreConfig: {
  *         version: "3.1.2",
  *     },
- *     location: "us-central1",
  *     scalingConfig: {
  *         instanceSize: "EXTRA_SMALL",
  *     },
- *     serviceId: "ms-dpms2",
  * });
  * ```
  * ### Dataproc Metastore Service Dpms2 Scaling Factor
@@ -148,16 +150,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const dpms2ScalingFactor = new gcp.dataproc.MetastoreService("dpms2ScalingFactor", {
+ * const dpms2ScalingFactor = new gcp.dataproc.MetastoreService("dpms2_scaling_factor", {
+ *     serviceId: "ms-dpms2sf",
+ *     location: "us-central1",
  *     databaseType: "SPANNER",
  *     hiveMetastoreConfig: {
  *         version: "3.1.2",
  *     },
- *     location: "us-central1",
  *     scalingConfig: {
  *         scalingFactor: 2,
  *     },
- *     serviceId: "ms-dpms2sf",
  * });
  * ```
  *

@@ -35,19 +35,19 @@ namespace Pulumi.Gcp.CloudIdentity
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var cloudIdentityGroupBasic = new Gcp.CloudIdentity.Group("cloudIdentityGroupBasic", new()
+    ///     var cloudIdentityGroupBasic = new Gcp.CloudIdentity.Group("cloud_identity_group_basic", new()
     ///     {
     ///         DisplayName = "my-identity-group",
+    ///         InitialGroupConfig = "WITH_INITIAL_OWNER",
+    ///         Parent = "customers/A01b123xz",
     ///         GroupKey = new Gcp.CloudIdentity.Inputs.GroupGroupKeyArgs
     ///         {
     ///             Id = "my-identity-group@example.com",
     ///         },
-    ///         InitialGroupConfig = "WITH_INITIAL_OWNER",
     ///         Labels = 
     ///         {
     ///             { "cloudidentity.googleapis.com/groups.discussion_forum", "" },
     ///         },
-    ///         Parent = "customers/A01b123xz",
     ///     });
     /// 
     /// });

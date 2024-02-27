@@ -515,9 +515,11 @@ class NodeGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
+            name="soletenant-tmpl",
             region="us-central1",
             node_type="n1-node-96-624")
         nodes = gcp.compute.NodeGroup("nodes",
+            name="soletenant-group",
             zone="us-central1-a",
             description="example google_compute_node_group for the Google Provider",
             initial_size=1,
@@ -530,16 +532,16 @@ class NodeGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
+            name="soletenant-tmpl",
             region="us-central1",
-            node_type="c2-node-60-240",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            node_type="c2-node-60-240")
         nodes = gcp.compute.NodeGroup("nodes",
+            name="soletenant-group",
             zone="us-central1-a",
             description="example google_compute_node_group for Terraform Google Provider",
             initial_size=1,
             node_template=soletenant_tmpl.id,
-            maintenance_interval="RECURRENT",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            maintenance_interval="RECURRENT")
         ```
         ### Node Group Autoscaling Policy
 
@@ -548,9 +550,11 @@ class NodeGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
+            name="soletenant-tmpl",
             region="us-central1",
             node_type="n1-node-96-624")
         nodes = gcp.compute.NodeGroup("nodes",
+            name="soletenant-group",
             zone="us-central1-a",
             description="example google_compute_node_group for Google Provider",
             maintenance_policy="RESTART_IN_PLACE",
@@ -571,11 +575,16 @@ class NodeGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        guest_project = gcp.organizations.Project("guestProject", org_id="123456789")
+        guest_project = gcp.organizations.Project("guest_project",
+            project_id="project-id",
+            name="project-name",
+            org_id="123456789")
         soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
+            name="soletenant-tmpl",
             region="us-central1",
             node_type="n1-node-96-624")
         nodes = gcp.compute.NodeGroup("nodes",
+            name="soletenant-group",
             zone="us-central1-f",
             description="example google_compute_node_group for Terraform Google Provider",
             initial_size=1,
@@ -673,9 +682,11 @@ class NodeGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
+            name="soletenant-tmpl",
             region="us-central1",
             node_type="n1-node-96-624")
         nodes = gcp.compute.NodeGroup("nodes",
+            name="soletenant-group",
             zone="us-central1-a",
             description="example google_compute_node_group for the Google Provider",
             initial_size=1,
@@ -688,16 +699,16 @@ class NodeGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
+            name="soletenant-tmpl",
             region="us-central1",
-            node_type="c2-node-60-240",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            node_type="c2-node-60-240")
         nodes = gcp.compute.NodeGroup("nodes",
+            name="soletenant-group",
             zone="us-central1-a",
             description="example google_compute_node_group for Terraform Google Provider",
             initial_size=1,
             node_template=soletenant_tmpl.id,
-            maintenance_interval="RECURRENT",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            maintenance_interval="RECURRENT")
         ```
         ### Node Group Autoscaling Policy
 
@@ -706,9 +717,11 @@ class NodeGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
+            name="soletenant-tmpl",
             region="us-central1",
             node_type="n1-node-96-624")
         nodes = gcp.compute.NodeGroup("nodes",
+            name="soletenant-group",
             zone="us-central1-a",
             description="example google_compute_node_group for Google Provider",
             maintenance_policy="RESTART_IN_PLACE",
@@ -729,11 +742,16 @@ class NodeGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        guest_project = gcp.organizations.Project("guestProject", org_id="123456789")
+        guest_project = gcp.organizations.Project("guest_project",
+            project_id="project-id",
+            name="project-name",
+            org_id="123456789")
         soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
+            name="soletenant-tmpl",
             region="us-central1",
             node_type="n1-node-96-624")
         nodes = gcp.compute.NodeGroup("nodes",
+            name="soletenant-group",
             zone="us-central1-f",
             description="example google_compute_node_group for Terraform Google Provider",
             initial_size=1,

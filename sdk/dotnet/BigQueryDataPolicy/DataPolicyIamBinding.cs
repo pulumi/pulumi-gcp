@@ -51,9 +51,9 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
     /// 
     ///     var policy = new Gcp.BigQueryDataPolicy.DataPolicyIamPolicy("policy", new()
     ///     {
-    ///         Project = google_bigquery_datapolicy_data_policy.Data_policy.Project,
-    ///         Location = google_bigquery_datapolicy_data_policy.Data_policy.Location,
-    ///         DataPolicyId = google_bigquery_datapolicy_data_policy.Data_policy.Data_policy_id,
+    ///         Project = dataPolicy.Project,
+    ///         Location = dataPolicy.Location,
+    ///         DataPolicyId = dataPolicy.DataPolicyId,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -72,9 +72,9 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
     /// {
     ///     var binding = new Gcp.BigQueryDataPolicy.DataPolicyIamBinding("binding", new()
     ///     {
-    ///         Project = google_bigquery_datapolicy_data_policy.Data_policy.Project,
-    ///         Location = google_bigquery_datapolicy_data_policy.Data_policy.Location,
-    ///         DataPolicyId = google_bigquery_datapolicy_data_policy.Data_policy.Data_policy_id,
+    ///         Project = dataPolicy.Project,
+    ///         Location = dataPolicy.Location,
+    ///         DataPolicyId = dataPolicy.DataPolicyId,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -97,9 +97,9 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
     /// {
     ///     var member = new Gcp.BigQueryDataPolicy.DataPolicyIamMember("member", new()
     ///     {
-    ///         Project = google_bigquery_datapolicy_data_policy.Data_policy.Project,
-    ///         Location = google_bigquery_datapolicy_data_policy.Data_policy.Location,
-    ///         DataPolicyId = google_bigquery_datapolicy_data_policy.Data_policy.Data_policy_id,
+    ///         Project = dataPolicy.Project,
+    ///         Location = dataPolicy.Location,
+    ///         DataPolicyId = dataPolicy.DataPolicyId,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basicEntryGroup = new gcp.datacatalog.EntryGroup("basicEntryGroup", {entryGroupId: "my_group"});
+ * const basicEntryGroup = new gcp.datacatalog.EntryGroup("basic_entry_group", {entryGroupId: "my_group"});
  * ```
  * ### Data Catalog Entry Group Full
  *
@@ -28,10 +28,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basicEntryGroup = new gcp.datacatalog.EntryGroup("basicEntryGroup", {
- *     description: "example entry group",
- *     displayName: "entry group",
+ * const basicEntryGroup = new gcp.datacatalog.EntryGroup("basic_entry_group", {
  *     entryGroupId: "my_group",
+ *     displayName: "entry group",
+ *     description: "example entry group",
  * });
  * ```
  *

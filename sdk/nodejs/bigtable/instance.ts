@@ -30,6 +30,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const production_instance = new gcp.bigtable.Instance("production-instance", {
+ *     name: "tf-instance",
  *     clusters: [{
  *         clusterId: "tf-instance-cluster",
  *         numNodes: 1,
@@ -47,6 +48,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const production_instance = new gcp.bigtable.Instance("production-instance", {
+ *     name: "tf-instance",
  *     clusters: [
  *         {
  *             clusterId: "tf-instance-cluster1",
@@ -55,14 +57,14 @@ import * as utilities from "../utilities";
  *             zone: "us-central1-c",
  *         },
  *         {
- *             autoscalingConfig: {
- *                 cpuTarget: 50,
- *                 maxNodes: 3,
- *                 minNodes: 1,
- *             },
  *             clusterId: "tf-instance-cluster2",
  *             storageType: "HDD",
  *             zone: "us-central1-b",
+ *             autoscalingConfig: {
+ *                 minNodes: 1,
+ *                 maxNodes: 3,
+ *                 cpuTarget: 50,
+ *             },
  *         },
  *     ],
  *     labels: {

@@ -229,19 +229,25 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network_primary = gcp.compute.Network("networkPrimary", auto_create_subnetworks=False)
-        network_secondary = gcp.compute.Network("networkSecondary", auto_create_subnetworks=False)
-        peering_primary = gcp.compute.NetworkPeering("peeringPrimary",
+        network_primary = gcp.compute.Network("network_primary",
+            name="primary-network",
+            auto_create_subnetworks=False)
+        network_secondary = gcp.compute.Network("network_secondary",
+            name="secondary-network",
+            auto_create_subnetworks=False)
+        peering_primary = gcp.compute.NetworkPeering("peering_primary",
+            name="primary-peering",
             network=network_primary.id,
             peer_network=network_secondary.id,
             import_custom_routes=True,
             export_custom_routes=True)
-        peering_primary_routes = gcp.compute.NetworkPeeringRoutesConfig("peeringPrimaryRoutes",
+        peering_primary_routes = gcp.compute.NetworkPeeringRoutesConfig("peering_primary_routes",
             peering=peering_primary.name,
             network=network_primary.name,
             import_custom_routes=True,
             export_custom_routes=True)
-        peering_secondary = gcp.compute.NetworkPeering("peeringSecondary",
+        peering_secondary = gcp.compute.NetworkPeering("peering_secondary",
+            name="secondary-peering",
             network=network_secondary.id,
             peer_network=network_primary.id)
         ```
@@ -251,8 +257,11 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        container_network = gcp.compute.Network("containerNetwork", auto_create_subnetworks=False)
-        container_subnetwork = gcp.compute.Subnetwork("containerSubnetwork",
+        container_network = gcp.compute.Network("container_network",
+            name="container-network",
+            auto_create_subnetworks=False)
+        container_subnetwork = gcp.compute.Subnetwork("container_subnetwork",
+            name="container-subnetwork",
             region="us-central1",
             network=container_network.name,
             ip_cidr_range="10.0.36.0/24",
@@ -267,7 +276,8 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
                     ip_cidr_range="10.0.32.0/22",
                 ),
             ])
-        private_cluster = gcp.container.Cluster("privateCluster",
+        private_cluster = gcp.container.Cluster("private_cluster",
+            name="private-cluster",
             location="us-central1-a",
             initial_node_count=1,
             network=container_network.name,
@@ -283,7 +293,7 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
                 services_secondary_range_name=container_subnetwork.secondary_ip_ranges[1].range_name,
             ),
             deletion_protection=True)
-        peering_gke_routes = gcp.compute.NetworkPeeringRoutesConfig("peeringGkeRoutes",
+        peering_gke_routes = gcp.compute.NetworkPeeringRoutesConfig("peering_gke_routes",
             peering=private_cluster.private_cluster_config.peering_name,
             network=container_network.name,
             import_custom_routes=True,
@@ -351,19 +361,25 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network_primary = gcp.compute.Network("networkPrimary", auto_create_subnetworks=False)
-        network_secondary = gcp.compute.Network("networkSecondary", auto_create_subnetworks=False)
-        peering_primary = gcp.compute.NetworkPeering("peeringPrimary",
+        network_primary = gcp.compute.Network("network_primary",
+            name="primary-network",
+            auto_create_subnetworks=False)
+        network_secondary = gcp.compute.Network("network_secondary",
+            name="secondary-network",
+            auto_create_subnetworks=False)
+        peering_primary = gcp.compute.NetworkPeering("peering_primary",
+            name="primary-peering",
             network=network_primary.id,
             peer_network=network_secondary.id,
             import_custom_routes=True,
             export_custom_routes=True)
-        peering_primary_routes = gcp.compute.NetworkPeeringRoutesConfig("peeringPrimaryRoutes",
+        peering_primary_routes = gcp.compute.NetworkPeeringRoutesConfig("peering_primary_routes",
             peering=peering_primary.name,
             network=network_primary.name,
             import_custom_routes=True,
             export_custom_routes=True)
-        peering_secondary = gcp.compute.NetworkPeering("peeringSecondary",
+        peering_secondary = gcp.compute.NetworkPeering("peering_secondary",
+            name="secondary-peering",
             network=network_secondary.id,
             peer_network=network_primary.id)
         ```
@@ -373,8 +389,11 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        container_network = gcp.compute.Network("containerNetwork", auto_create_subnetworks=False)
-        container_subnetwork = gcp.compute.Subnetwork("containerSubnetwork",
+        container_network = gcp.compute.Network("container_network",
+            name="container-network",
+            auto_create_subnetworks=False)
+        container_subnetwork = gcp.compute.Subnetwork("container_subnetwork",
+            name="container-subnetwork",
             region="us-central1",
             network=container_network.name,
             ip_cidr_range="10.0.36.0/24",
@@ -389,7 +408,8 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
                     ip_cidr_range="10.0.32.0/22",
                 ),
             ])
-        private_cluster = gcp.container.Cluster("privateCluster",
+        private_cluster = gcp.container.Cluster("private_cluster",
+            name="private-cluster",
             location="us-central1-a",
             initial_node_count=1,
             network=container_network.name,
@@ -405,7 +425,7 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
                 services_secondary_range_name=container_subnetwork.secondary_ip_ranges[1].range_name,
             ),
             deletion_protection=True)
-        peering_gke_routes = gcp.compute.NetworkPeeringRoutesConfig("peeringGkeRoutes",
+        peering_gke_routes = gcp.compute.NetworkPeeringRoutesConfig("peering_gke_routes",
             peering=private_cluster.private_cluster_config.peering_name,
             network=container_network.name,
             import_custom_routes=True,

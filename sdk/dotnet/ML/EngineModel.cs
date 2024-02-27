@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.ML
     /// {
     ///     var @default = new Gcp.ML.EngineModel("default", new()
     ///     {
+    ///         Name = "default",
     ///         Description = "My model",
     ///         Regions = "us-central1",
     ///     });
@@ -52,14 +53,15 @@ namespace Pulumi.Gcp.ML
     /// {
     ///     var @default = new Gcp.ML.EngineModel("default", new()
     ///     {
+    ///         Name = "default",
     ///         Description = "My model",
+    ///         Regions = "us-central1",
     ///         Labels = 
     ///         {
     ///             { "my_model", "foo" },
     ///         },
-    ///         OnlinePredictionConsoleLogging = true,
     ///         OnlinePredictionLogging = true,
-    ///         Regions = "us-central1",
+    ///         OnlinePredictionConsoleLogging = true,
     ///     });
     /// 
     /// });

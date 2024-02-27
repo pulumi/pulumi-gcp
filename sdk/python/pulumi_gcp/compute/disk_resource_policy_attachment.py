@@ -200,14 +200,13 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         ssd = gcp.compute.Disk("ssd",
+            name="my-disk",
             image=my_image.self_link,
             size=50,
             type="pd-ssd",
             zone="us-central1-a")
-        attachment = gcp.compute.DiskResourcePolicyAttachment("attachment",
-            disk=ssd.name,
-            zone="us-central1-a")
         policy = gcp.compute.ResourcePolicy("policy",
+            name="my-resource-policy",
             region="us-central1",
             snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
                 schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
@@ -217,6 +216,10 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
                     ),
                 ),
             ))
+        attachment = gcp.compute.DiskResourcePolicyAttachment("attachment",
+            name=policy.name,
+            disk=ssd.name,
+            zone="us-central1-a")
         ```
 
         ## Import
@@ -283,14 +286,13 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         ssd = gcp.compute.Disk("ssd",
+            name="my-disk",
             image=my_image.self_link,
             size=50,
             type="pd-ssd",
             zone="us-central1-a")
-        attachment = gcp.compute.DiskResourcePolicyAttachment("attachment",
-            disk=ssd.name,
-            zone="us-central1-a")
         policy = gcp.compute.ResourcePolicy("policy",
+            name="my-resource-policy",
             region="us-central1",
             snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
                 schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
@@ -300,6 +302,10 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
                     ),
                 ),
             ))
+        attachment = gcp.compute.DiskResourcePolicyAttachment("attachment",
+            name=policy.name,
+            disk=ssd.name,
+            zone="us-central1-a")
         ```
 
         ## Import

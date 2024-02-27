@@ -32,10 +32,10 @@ namespace Pulumi.Gcp.SecurityCenter
     /// {
     ///     var @default = new Gcp.SecurityCenter.MuteConfig("default", new()
     ///     {
-    ///         Description = "My Mute Config",
-    ///         Filter = "category: \"OS_VULNERABILITY\"",
     ///         MuteConfigId = "my-config",
     ///         Parent = "organizations/123456789",
+    ///         Filter = "category: \"OS_VULNERABILITY\"",
+    ///         Description = "My Mute Config",
     ///     });
     /// 
     /// });

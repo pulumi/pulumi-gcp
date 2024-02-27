@@ -31,6 +31,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var tpl = new Gcp.Compute.InstanceFromMachineImage("tpl", new()
     ///     {
+    ///         Name = "instance-from-machine-image",
     ///         Zone = "us-central1-a",
     ///         SourceMachineImage = "projects/PROJECT-ID/global/machineImages/NAME",
     ///         CanIpForward = false,
@@ -38,9 +39,6 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             { "my_key", "my_value" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

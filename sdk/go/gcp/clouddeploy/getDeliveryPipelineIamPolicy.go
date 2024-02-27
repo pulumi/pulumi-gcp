@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := clouddeploy.LookupDeliveryPipelineIamPolicy(ctx, &clouddeploy.LookupDeliveryPipelineIamPolicyArgs{
-//				Project:  pulumi.StringRef(google_clouddeploy_delivery_pipeline.Default.Project),
-//				Location: pulumi.StringRef(google_clouddeploy_delivery_pipeline.Default.Location),
-//				Name:     google_clouddeploy_delivery_pipeline.Default.Name,
+//				Project:  pulumi.StringRef(_default.Project),
+//				Location: pulumi.StringRef(_default.Location),
+//				Name:     _default.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const my_exclusion = new gcp.logging.ProjectExclusion("my-exclusion", {
+ *     name: "my-instance-debug-exclusion",
  *     description: "Exclude GCE instance debug logs",
  *     filter: "resource.type = gce_instance AND severity <= DEBUG",
  * });

@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := accesscontextmanager.LookupAccessPolicyIamPolicy(ctx, &accesscontextmanager.LookupAccessPolicyIamPolicyArgs{
-//				Name: google_access_context_manager_access_policy.AccessPolicy.Name,
+//				Name: access_policy.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

@@ -36,8 +36,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.compute.ImageIamPolicy("policy", {
- *     project: google_compute_image.example.project,
- *     image: google_compute_image.example.name,
+ *     project: example.project,
+ *     image: example.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -60,8 +60,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.compute.ImageIamPolicy("policy", {
- *     project: google_compute_image.example.project,
- *     image: google_compute_image.example.name,
+ *     project: example.project,
+ *     image: example.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -72,8 +72,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.compute.ImageIamBinding("binding", {
- *     project: google_compute_image.example.project,
- *     image: google_compute_image.example.name,
+ *     project: example.project,
+ *     image: example.name,
  *     role: "roles/compute.imageUser",
  *     members: ["user:jane@example.com"],
  * });
@@ -86,8 +86,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.compute.ImageIamBinding("binding", {
- *     project: google_compute_image.example.project,
- *     image: google_compute_image.example.name,
+ *     project: example.project,
+ *     image: example.name,
  *     role: "roles/compute.imageUser",
  *     members: ["user:jane@example.com"],
  *     condition: {
@@ -104,8 +104,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.compute.ImageIamMember("member", {
- *     project: google_compute_image.example.project,
- *     image: google_compute_image.example.name,
+ *     project: example.project,
+ *     image: example.name,
  *     role: "roles/compute.imageUser",
  *     member: "user:jane@example.com",
  * });
@@ -118,8 +118,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.compute.ImageIamMember("member", {
- *     project: google_compute_image.example.project,
- *     image: google_compute_image.example.name,
+ *     project: example.project,
+ *     image: example.name,
  *     role: "roles/compute.imageUser",
  *     member: "user:jane@example.com",
  *     condition: {

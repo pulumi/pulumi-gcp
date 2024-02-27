@@ -75,7 +75,7 @@ import * as utilities from "../utilities";
  *         },
  *     }],
  * });
- * const basicTestCase = new gcp.diagflow.CxTestCase("basicTestCase", {
+ * const basicTestCase = new gcp.diagflow.CxTestCase("basic_test_case", {
  *     parent: agent.id,
  *     displayName: "MyTestCase",
  *     tags: ["#tag1"],
@@ -94,14 +94,14 @@ import * as utilities from "../utilities";
  *                     },
  *                 },
  *                 injectedParameters: JSON.stringify({
- *                     some_param: "1",
+ *                     someParam: "1",
  *                 }),
  *                 isWebhookEnabled: true,
  *                 enableSentimentAnalysis: true,
  *             },
  *             virtualAgentOutput: {
  *                 sessionParameters: JSON.stringify({
- *                     some_param: "1",
+ *                     someParam: "1",
  *                 }),
  *                 triggeredIntent: {
  *                     name: intent.id,

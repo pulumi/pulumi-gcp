@@ -29,6 +29,14 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var example = new Gcp.Logging.OrganizationSettings("example", new()
+    ///     {
+    ///         DisableDefaultSink = true,
+    ///         KmsKeyName = "kms-key",
+    ///         Organization = "123456789",
+    ///         StorageLocation = "us-central1",
+    ///     });
+    /// 
     ///     var settings = Gcp.Logging.GetOrganizationSettings.Invoke(new()
     ///     {
     ///         Organization = "123456789",
@@ -39,20 +47,6 @@ namespace Pulumi.Gcp.Logging
     ///         CryptoKeyId = "kms-key",
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
     ///         Member = $"serviceAccount:{settings.Apply(getOrganizationSettingsResult =&gt; getOrganizationSettingsResult.KmsServiceAccountId)}",
-    ///     });
-    /// 
-    ///     var example = new Gcp.Logging.OrganizationSettings("example", new()
-    ///     {
-    ///         DisableDefaultSink = true,
-    ///         KmsKeyName = "kms-key",
-    ///         Organization = "123456789",
-    ///         StorageLocation = "us-central1",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             iam,
-    ///         },
     ///     });
     /// 
     /// });

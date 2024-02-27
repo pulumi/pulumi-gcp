@@ -274,8 +274,8 @@ def get_metastore_service(location: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.dataproc.get_metastore_service(location="global",
-        service_id="foo-bar")
+    foo = gcp.dataproc.get_metastore_service(service_id="foo-bar",
+        location="global")
     ```
 
 
@@ -335,8 +335,8 @@ def get_metastore_service_output(location: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.dataproc.get_metastore_service(location="global",
-        service_id="foo-bar")
+    foo = gcp.dataproc.get_metastore_service(service_id="foo-bar",
+        location="global")
     ```
 
 

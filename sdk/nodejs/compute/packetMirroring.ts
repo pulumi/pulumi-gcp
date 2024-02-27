@@ -18,6 +18,76 @@ import * as utilities from "../utilities";
  *     * [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
  *
  * ## Example Usage
+ * ### Compute Packet Mirroring Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {name: "my-network"});
+ * const mirror = new gcp.compute.Instance("mirror", {
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         network: _default.id,
+ *     }],
+ *     name: "my-instance",
+ *     machineType: "e2-medium",
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: "debian-cloud/debian-11",
+ *         },
+ *     },
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "my-subnetwork",
+ *     network: _default.id,
+ *     ipCidrRange: "10.2.0.0/16",
+ * });
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+ *     name: "my-healthcheck",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ *     tcpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const defaultRegionBackendService = new gcp.compute.RegionBackendService("default", {
+ *     name: "my-service",
+ *     healthChecks: defaultHealthCheck.id,
+ * });
+ * const defaultForwardingRule = new gcp.compute.ForwardingRule("default", {
+ *     name: "my-ilb",
+ *     isMirroringCollector: true,
+ *     ipProtocol: "TCP",
+ *     loadBalancingScheme: "INTERNAL",
+ *     backendService: defaultRegionBackendService.id,
+ *     allPorts: true,
+ *     network: _default.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     networkTier: "PREMIUM",
+ * });
+ * const foobar = new gcp.compute.PacketMirroring("foobar", {
+ *     name: "my-mirroring",
+ *     description: "bar",
+ *     network: {
+ *         url: _default.id,
+ *     },
+ *     collectorIlb: {
+ *         url: defaultForwardingRule.id,
+ *     },
+ *     mirroredResources: {
+ *         tags: ["foo"],
+ *         instances: [{
+ *             url: mirror.id,
+ *         }],
+ *     },
+ *     filter: {
+ *         ipProtocols: ["tcp"],
+ *         cidrRanges: ["0.0.0.0/0"],
+ *         direction: "BOTH",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

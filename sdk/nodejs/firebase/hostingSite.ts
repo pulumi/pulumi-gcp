@@ -15,8 +15,6 @@ import * as utilities from "../utilities";
  * const _default = new gcp.firebase.HostingSite("default", {
  *     project: "my-project-name",
  *     siteId: "site-no-app",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Firebasehosting Site Full
@@ -28,15 +26,11 @@ import * as utilities from "../utilities";
  * const _default = new gcp.firebase.WebApp("default", {
  *     project: "my-project-name",
  *     displayName: "Test web app for Firebase Hosting",
- * }, {
- *     provider: google_beta,
  * });
  * const full = new gcp.firebase.HostingSite("full", {
  *     project: "my-project-name",
  *     siteId: "site-with-app",
  *     appId: _default.appId,
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

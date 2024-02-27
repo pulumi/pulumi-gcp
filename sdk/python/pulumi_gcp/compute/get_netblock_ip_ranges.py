@@ -113,8 +113,9 @@ def get_netblock_ip_ranges(range_type: Optional[str] = None,
     import pulumi_gcp as gcp
 
     legacy_hcs = gcp.compute.get_netblock_ip_ranges(range_type="legacy-health-checkers")
-    default = gcp.compute.Network("default")
+    default = gcp.compute.Network("default", name="test-network")
     allow_hcs = gcp.compute.Firewall("allow-hcs",
+        name="allow-hcs",
         network=default.name,
         allows=[gcp.compute.FirewallAllowArgs(
             protocol="tcp",
@@ -182,8 +183,9 @@ def get_netblock_ip_ranges_output(range_type: Optional[pulumi.Input[Optional[str
     import pulumi_gcp as gcp
 
     legacy_hcs = gcp.compute.get_netblock_ip_ranges(range_type="legacy-health-checkers")
-    default = gcp.compute.Network("default")
+    default = gcp.compute.Network("default", name="test-network")
     allow_hcs = gcp.compute.Firewall("allow-hcs",
+        name="allow-hcs",
         network=default.name,
         allows=[gcp.compute.FirewallAllowArgs(
             protocol="tcp",

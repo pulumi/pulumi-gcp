@@ -60,9 +60,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var deployment = new Deployment(&#34;deployment&#34;, DeploymentArgs.builder()        
+ *             .name(&#34;my-deployment&#34;)
  *             .target(DeploymentTargetArgs.builder()
  *                 .config(DeploymentTargetConfigArgs.builder()
- *                     .content(Files.readString(Paths.get(&#34;path/to/config.yml&#34;)))
+ *                     .content(StdFunctions.file(FileArgs.builder()
+ *                         .input(&#34;path/to/config.yml&#34;)
+ *                         .build()).result())
  *                     .build())
  *                 .build())
  *             .labels(DeploymentLabelArgs.builder()

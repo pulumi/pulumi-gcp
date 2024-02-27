@@ -24,7 +24,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const simplecluster = new gcp.dataproc.Cluster("simplecluster", {region: "us-central1"});
+ * const simplecluster = new gcp.dataproc.Cluster("simplecluster", {
+ *     name: "simplecluster",
+ *     region: "us-central1",
+ * });
  * ```
  * ### Advanced
  *
@@ -37,6 +40,7 @@ import * as utilities from "../utilities";
  *     displayName: "Service Account",
  * });
  * const mycluster = new gcp.dataproc.Cluster("mycluster", {
+ *     name: "mycluster",
  *     region: "us-central1",
  *     gracefulDecommissionTimeout: "120s",
  *     labels: {
@@ -91,19 +95,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const acceleratedCluster = new gcp.dataproc.Cluster("acceleratedCluster", {
+ * const acceleratedCluster = new gcp.dataproc.Cluster("accelerated_cluster", {
+ *     name: "my-cluster-with-gpu",
+ *     region: "us-central1",
  *     clusterConfig: {
  *         gceClusterConfig: {
  *             zone: "us-central1-a",
  *         },
  *         masterConfig: {
  *             accelerators: [{
- *                 acceleratorCount: 1,
  *                 acceleratorType: "nvidia-tesla-k80",
+ *                 acceleratorCount: 1,
  *             }],
  *         },
  *     },
- *     region: "us-central1",
  * });
  * ```
  *

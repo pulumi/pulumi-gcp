@@ -41,6 +41,7 @@ import * as utilities from "../utilities";
  * });
  * const access_level_service_account = new gcp.accesscontextmanager.AccessLevel("access-level-service-account", {
  *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
+ *     name: pulumi.interpolate`accessPolicies/${access_policy.name}/accessLevels/chromeos_no_lock`,
  *     title: "chromeos_no_lock",
  *     basic: {
  *         conditions: [{

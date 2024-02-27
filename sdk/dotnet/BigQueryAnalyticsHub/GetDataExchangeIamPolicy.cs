@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// {
         ///     var policy = Gcp.BigQueryAnalyticsHub.GetDataExchangeIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_bigquery_analytics_hub_data_exchange.Data_exchange.Project,
-        ///         Location = google_bigquery_analytics_hub_data_exchange.Data_exchange.Location,
-        ///         DataExchangeId = google_bigquery_analytics_hub_data_exchange.Data_exchange.Data_exchange_id,
+        ///         Project = dataExchange.Project,
+        ///         Location = dataExchange.Location,
+        ///         DataExchangeId = dataExchange.DataExchangeId,
         ///     });
         /// 
         /// });
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// {
         ///     var policy = Gcp.BigQueryAnalyticsHub.GetDataExchangeIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_bigquery_analytics_hub_data_exchange.Data_exchange.Project,
-        ///         Location = google_bigquery_analytics_hub_data_exchange.Data_exchange.Location,
-        ///         DataExchangeId = google_bigquery_analytics_hub_data_exchange.Data_exchange.Data_exchange_id,
+        ///         Project = dataExchange.Project,
+        ///         Location = dataExchange.Location,
+        ///         DataExchangeId = dataExchange.DataExchangeId,
         ///     });
         /// 
         /// });

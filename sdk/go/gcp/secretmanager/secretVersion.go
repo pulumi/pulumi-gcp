@@ -144,21 +144,11 @@ import (
 //
 // import (
 //
-//	"encoding/base64"
-//	"os"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func filebase64OrPanic(path string) string {
-//		if fileData, err := os.ReadFile(path); err == nil {
-//			return base64.StdEncoding.EncodeToString(fileData[:])
-//		} else {
-//			panic(err.Error())
-//		}
-//	}
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
@@ -177,10 +167,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			invokeFilebase64, err := std.Filebase64(ctx, &std.Filebase64Args{
+//				Input: "secret-data.pfx",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-base64", &secretmanager.SecretVersionArgs{
 //				Secret:             secret_basic.ID(),
 //				IsSecretDataBase64: pulumi.Bool(true),
-//				SecretData:         filebase64OrPanic("secret-data.pfx"),
+//				SecretData:         invokeFilebase64.Result,
 //			})
 //			if err != nil {
 //				return err

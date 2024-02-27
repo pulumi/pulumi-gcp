@@ -51,8 +51,9 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     ///     var policy = new Gcp.GkeBackup.BackupPlanIamPolicy("policy", new()
     ///     {
-    ///         Project = google_gke_backup_backup_plan.Basic.Project,
-    ///         Location = google_gke_backup_backup_plan.Basic.Location,
+    ///         Project = basic.Project,
+    ///         Location = basic.Location,
+    ///         Name = basic.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -71,8 +72,9 @@ namespace Pulumi.Gcp.GkeBackup
     /// {
     ///     var binding = new Gcp.GkeBackup.BackupPlanIamBinding("binding", new()
     ///     {
-    ///         Project = google_gke_backup_backup_plan.Basic.Project,
-    ///         Location = google_gke_backup_backup_plan.Basic.Location,
+    ///         Project = basic.Project,
+    ///         Location = basic.Location,
+    ///         Name = basic.Name,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -95,8 +97,9 @@ namespace Pulumi.Gcp.GkeBackup
     /// {
     ///     var member = new Gcp.GkeBackup.BackupPlanIamMember("member", new()
     ///     {
-    ///         Project = google_gke_backup_backup_plan.Basic.Project,
-    ///         Location = google_gke_backup_backup_plan.Basic.Location,
+    ///         Project = basic.Project,
+    ///         Location = basic.Location,
+    ///         Name = basic.Name,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

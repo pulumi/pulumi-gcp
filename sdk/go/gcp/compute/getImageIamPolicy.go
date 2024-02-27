@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.LookupImageIamPolicy(ctx, &compute.LookupImageIamPolicyArgs{
-//				Project: pulumi.StringRef(google_compute_image.Example.Project),
-//				Image:   google_compute_image.Example.Name,
+//				Project: pulumi.StringRef(example.Project),
+//				Image:   example.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

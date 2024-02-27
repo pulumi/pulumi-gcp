@@ -43,6 +43,10 @@ import (
 //				return err
 //			}
 //			_, err = integrationconnectors.NewConnection(ctx, "pubsubconnection", &integrationconnectors.ConnectionArgs{
+//				Name:             pulumi.String("test-pubsub"),
+//				Location:         pulumi.String("us-central1"),
+//				ConnectorVersion: pulumi.String(fmt.Sprintf("projects/%v/locations/global/providers/gcp/connectors/pubsub/versions/1", testProject.ProjectId)),
+//				Description:      pulumi.String("tf created description"),
 //				ConfigVariables: integrationconnectors.ConnectionConfigVariableArray{
 //					&integrationconnectors.ConnectionConfigVariableArgs{
 //						Key:         pulumi.String("project_id"),
@@ -53,9 +57,6 @@ import (
 //						StringValue: pulumi.String("test"),
 //					},
 //				},
-//				ConnectorVersion: pulumi.String(fmt.Sprintf("projects/%v/locations/global/providers/gcp/connectors/pubsub/versions/1", testProject.ProjectId)),
-//				Description:      pulumi.String("tf created description"),
-//				Location:         pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err
@@ -109,17 +110,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretIamMember(ctx, "secretIam", &secretmanager.SecretIamMemberArgs{
+//			_, err = secretmanager.NewSecretIamMember(ctx, "secret_iam", &secretmanager.SecretIamMemberArgs{
 //				SecretId: secret_basic.ID(),
 //				Role:     pulumi.String("roles/secretmanager.admin"),
 //				Member:   pulumi.String(fmt.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", testProject.Number)),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				secret_version_basic,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = integrationconnectors.NewConnection(ctx, "zendeskconnection", &integrationconnectors.ConnectionArgs{
+//				Name:             pulumi.String("test-zendesk"),
 //				Description:      pulumi.String("tf updated description"),
 //				Location:         pulumi.String("us-central1"),
 //				ServiceAccount:   pulumi.String(fmt.Sprintf("%v-compute@developer.gserviceaccount.com", testProject.Number)),

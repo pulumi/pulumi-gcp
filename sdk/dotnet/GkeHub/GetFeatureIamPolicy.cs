@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.GkeHub
         /// {
         ///     var policy = Gcp.GkeHub.GetFeatureIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_gke_hub_feature.Feature.Project,
-        ///         Location = google_gke_hub_feature.Feature.Location,
-        ///         Name = google_gke_hub_feature.Feature.Name,
+        ///         Project = feature.Project,
+        ///         Location = feature.Location,
+        ///         Name = feature.Name,
         ///     });
         /// 
         /// });
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.GkeHub
         /// {
         ///     var policy = Gcp.GkeHub.GetFeatureIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_gke_hub_feature.Feature.Project,
-        ///         Location = google_gke_hub_feature.Feature.Location,
-        ///         Name = google_gke_hub_feature.Feature.Name,
+        ///         Project = feature.Project,
+        ///         Location = feature.Location,
+        ///         Name = feature.Name,
         ///     });
         /// 
         /// });

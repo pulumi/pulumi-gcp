@@ -31,10 +31,9 @@ namespace Pulumi.Gcp.CloudBuild
     /// {
     ///     var bbs_config = new Gcp.CloudBuild.BitbucketServerConfig("bbs-config", new()
     ///     {
-    ///         ApiKey = "&lt;api-key&gt;",
     ///         ConfigId = "bbs-config",
-    ///         HostUri = "https://bbs.com",
     ///         Location = "us-central1",
+    ///         HostUri = "https://bbs.com",
     ///         Secrets = new Gcp.CloudBuild.Inputs.BitbucketServerConfigSecretsArgs
     ///         {
     ///             AdminAccessTokenVersionName = "projects/myProject/secrets/mybbspat/versions/1",
@@ -42,6 +41,7 @@ namespace Pulumi.Gcp.CloudBuild
     ///             WebhookSecretVersionName = "projects/myProject/secrets/mybbspat/versions/1",
     ///         },
     ///         Username = "test",
+    ///         ApiKey = "&lt;api-key&gt;",
     ///     });
     /// 
     /// });
@@ -58,8 +58,17 @@ namespace Pulumi.Gcp.CloudBuild
     /// {
     ///     var bbs_config_with_repos = new Gcp.CloudBuild.BitbucketServerConfig("bbs-config-with-repos", new()
     ///     {
-    ///         ApiKey = "&lt;api-key&gt;",
     ///         ConfigId = "bbs-config",
+    ///         Location = "us-central1",
+    ///         HostUri = "https://bbs.com",
+    ///         Secrets = new Gcp.CloudBuild.Inputs.BitbucketServerConfigSecretsArgs
+    ///         {
+    ///             AdminAccessTokenVersionName = "projects/myProject/secrets/mybbspat/versions/1",
+    ///             ReadAccessTokenVersionName = "projects/myProject/secrets/mybbspat/versions/1",
+    ///             WebhookSecretVersionName = "projects/myProject/secrets/mybbspat/versions/1",
+    ///         },
+    ///         Username = "test",
+    ///         ApiKey = "&lt;api-key&gt;",
     ///         ConnectedRepositories = new[]
     ///         {
     ///             new Gcp.CloudBuild.Inputs.BitbucketServerConfigConnectedRepositoryArgs
@@ -73,8 +82,58 @@ namespace Pulumi.Gcp.CloudBuild
     ///                 RepoSlug = "repo1",
     ///             },
     ///         },
-    ///         HostUri = "https://bbs.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudbuild Bitbucket Server Config Peered Network
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var servicenetworking = new Gcp.Projects.Service("servicenetworking", new()
+    ///     {
+    ///         ServiceName = "servicenetworking.googleapis.com",
+    ///         DisableOnDestroy = false,
+    ///     });
+    /// 
+    ///     var vpcNetwork = new Gcp.Compute.Network("vpc_network", new()
+    ///     {
+    ///         Name = "vpc-network",
+    ///     });
+    /// 
+    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
+    ///     {
+    ///         Name = "private-ip-alloc",
+    ///         Purpose = "VPC_PEERING",
+    ///         AddressType = "INTERNAL",
+    ///         PrefixLength = 16,
+    ///         Network = vpcNetwork.Id,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.ServiceNetworking.Connection("default", new()
+    ///     {
+    ///         Network = vpcNetwork.Id,
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             privateIpAlloc.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var bbs_config_with_peered_network = new Gcp.CloudBuild.BitbucketServerConfig("bbs-config-with-peered-network", new()
+    ///     {
+    ///         ConfigId = "bbs-config",
     ///         Location = "us-central1",
+    ///         HostUri = "https://bbs.com",
     ///         Secrets = new Gcp.CloudBuild.Inputs.BitbucketServerConfigSecretsArgs
     ///         {
     ///             AdminAccessTokenVersionName = "projects/myProject/secrets/mybbspat/versions/1",
@@ -82,6 +141,24 @@ namespace Pulumi.Gcp.CloudBuild
     ///             WebhookSecretVersionName = "projects/myProject/secrets/mybbspat/versions/1",
     ///         },
     ///         Username = "test",
+    ///         ApiKey = "&lt;api-key&gt;",
+    ///         PeeredNetwork = Output.Tuple(vpcNetwork.Id, project, project).Apply(values =&gt;
+    ///         {
+    ///             var id = values.Item1;
+    ///             var project = values.Item2;
+    ///             var project1 = values.Item3;
+    ///             return Std.Replace.Invoke(new()
+    ///             {
+    ///                 Text = id,
+    ///                 Search = project.Apply(getProjectResult =&gt; getProjectResult.Name),
+    ///                 Replace = project1.Number,
+    ///             });
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         SslCa = @"-----BEGIN CERTIFICATE-----
+    /// -----END CERTIFICATE-----
+    /// -----BEGIN CERTIFICATE-----
+    /// -----END CERTIFICATE-----
+    /// ",
     ///     });
     /// 
     /// });

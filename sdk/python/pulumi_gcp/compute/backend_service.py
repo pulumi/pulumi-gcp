@@ -1275,6 +1275,21 @@ class BackendService(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 
         ## Example Usage
+        ### Backend Service Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default = gcp.compute.BackendService("default",
+            name="backend-service",
+            health_checks=default_http_health_check.id)
+        ```
         ### Backend Service External Iap
 
         ```python
@@ -1282,12 +1297,32 @@ class BackendService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.BackendService("default",
+            name="tf-test-backend-service-external",
+            protocol="HTTP",
+            load_balancing_scheme="EXTERNAL",
             iap=gcp.compute.BackendServiceIapArgs(
                 oauth2_client_id="abc",
                 oauth2_client_secret="xyz",
-            ),
-            load_balancing_scheme="EXTERNAL",
-            protocol="HTTP")
+            ))
+        ```
+        ### Backend Service Cache Simple
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default = gcp.compute.BackendService("default",
+            name="backend-service",
+            health_checks=default_http_health_check.id,
+            enable_cdn=True,
+            cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
+                signed_url_cache_max_age_sec=7200,
+            ))
         ```
         ### Backend Service Cache Include Http Headers
 
@@ -1296,16 +1331,17 @@ class BackendService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.BackendService("default",
+            name="backend-service",
+            enable_cdn=True,
             cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
+                cache_mode="USE_ORIGIN_HEADERS",
                 cache_key_policy=gcp.compute.BackendServiceCdnPolicyCacheKeyPolicyArgs(
                     include_host=True,
-                    include_http_headers=["X-My-Header-Field"],
                     include_protocol=True,
                     include_query_string=True,
+                    include_http_headers=["X-My-Header-Field"],
                 ),
-                cache_mode="USE_ORIGIN_HEADERS",
-            ),
-            enable_cdn=True)
+            ))
         ```
         ### Backend Service Cache Include Named Cookies
 
@@ -1314,22 +1350,129 @@ class BackendService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.BackendService("default",
+            name="backend-service",
+            enable_cdn=True,
             cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
+                cache_mode="CACHE_ALL_STATIC",
+                default_ttl=3600,
+                client_ttl=7200,
+                max_ttl=10800,
                 cache_key_policy=gcp.compute.BackendServiceCdnPolicyCacheKeyPolicyArgs(
                     include_host=True,
+                    include_protocol=True,
+                    include_query_string=True,
                     include_named_cookies=[
                         "__next_preview_data",
                         "__prerender_bypass",
                     ],
-                    include_protocol=True,
-                    include_query_string=True,
                 ),
+            ))
+        ```
+        ### Backend Service Cache
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default = gcp.compute.BackendService("default",
+            name="backend-service",
+            health_checks=default_http_health_check.id,
+            enable_cdn=True,
+            cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
                 cache_mode="CACHE_ALL_STATIC",
-                client_ttl=7200,
                 default_ttl=3600,
+                client_ttl=7200,
                 max_ttl=10800,
+                negative_caching=True,
+                signed_url_cache_max_age_sec=7200,
+            ))
+        ```
+        ### Backend Service Cache Bypass Cache On Request Headers
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default = gcp.compute.BackendService("default",
+            name="backend-service",
+            health_checks=default_http_health_check.id,
+            enable_cdn=True,
+            cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
+                cache_mode="CACHE_ALL_STATIC",
+                default_ttl=3600,
+                client_ttl=7200,
+                max_ttl=10800,
+                negative_caching=True,
+                signed_url_cache_max_age_sec=7200,
+                bypass_cache_on_request_headers=[
+                    gcp.compute.BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs(
+                        header_name="Authorization",
+                    ),
+                    gcp.compute.BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs(
+                        header_name="Proxy-Authorization",
+                    ),
+                ],
+            ))
+        ```
+        ### Backend Service Traffic Director Round Robin
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.HealthCheck("health_check",
+            name="health-check",
+            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+                port=80,
+            ))
+        default = gcp.compute.BackendService("default",
+            name="backend-service",
+            health_checks=health_check.id,
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            locality_lb_policy="ROUND_ROBIN")
+        ```
+        ### Backend Service Traffic Director Ring Hash
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.HealthCheck("health_check",
+            name="health-check",
+            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+                port=80,
+            ))
+        default = gcp.compute.BackendService("default",
+            name="backend-service",
+            health_checks=health_check.id,
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            locality_lb_policy="RING_HASH",
+            session_affinity="HTTP_COOKIE",
+            circuit_breakers=gcp.compute.BackendServiceCircuitBreakersArgs(
+                max_connections=10,
             ),
-            enable_cdn=True)
+            consistent_hash=gcp.compute.BackendServiceConsistentHashArgs(
+                http_cookie=gcp.compute.BackendServiceConsistentHashHttpCookieArgs(
+                    ttl=gcp.compute.BackendServiceConsistentHashHttpCookieTtlArgs(
+                        seconds=11,
+                        nanos=1111,
+                    ),
+                    name="mycookie",
+                ),
+            ),
+            outlier_detection=gcp.compute.BackendServiceOutlierDetectionArgs(
+                consecutive_errors=2,
+            ))
         ```
         ### Backend Service Network Endpoint
 
@@ -1337,16 +1480,16 @@ class BackendService(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        external_proxy = gcp.compute.GlobalNetworkEndpointGroup("externalProxy",
+        external_proxy = gcp.compute.GlobalNetworkEndpointGroup("external_proxy",
+            name="network-endpoint",
             network_endpoint_type="INTERNET_FQDN_PORT",
-            default_port=443,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            default_port=443)
         proxy = gcp.compute.GlobalNetworkEndpoint("proxy",
             global_network_endpoint_group=external_proxy.id,
             fqdn="test.example.com",
-            port=external_proxy.default_port,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            port=external_proxy.default_port)
         default = gcp.compute.BackendService("default",
+            name="backend-service",
             enable_cdn=True,
             timeout_sec=10,
             connection_draining_timeout_sec=10,
@@ -1354,8 +1497,23 @@ class BackendService(pulumi.CustomResource):
             custom_response_headers=["X-Cache-Hit: {cdn_cache_status}"],
             backends=[gcp.compute.BackendServiceBackendArgs(
                 group=external_proxy.id,
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
+        ```
+        ### Backend Service External Managed
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+                port=80,
+            ))
+        default = gcp.compute.BackendService("default",
+            name="backend-service",
+            health_checks=default_health_check.id,
+            load_balancing_scheme="EXTERNAL_MANAGED")
         ```
 
         ## Import
@@ -1500,6 +1658,21 @@ class BackendService(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 
         ## Example Usage
+        ### Backend Service Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default = gcp.compute.BackendService("default",
+            name="backend-service",
+            health_checks=default_http_health_check.id)
+        ```
         ### Backend Service External Iap
 
         ```python
@@ -1507,12 +1680,32 @@ class BackendService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.BackendService("default",
+            name="tf-test-backend-service-external",
+            protocol="HTTP",
+            load_balancing_scheme="EXTERNAL",
             iap=gcp.compute.BackendServiceIapArgs(
                 oauth2_client_id="abc",
                 oauth2_client_secret="xyz",
-            ),
-            load_balancing_scheme="EXTERNAL",
-            protocol="HTTP")
+            ))
+        ```
+        ### Backend Service Cache Simple
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default = gcp.compute.BackendService("default",
+            name="backend-service",
+            health_checks=default_http_health_check.id,
+            enable_cdn=True,
+            cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
+                signed_url_cache_max_age_sec=7200,
+            ))
         ```
         ### Backend Service Cache Include Http Headers
 
@@ -1521,16 +1714,17 @@ class BackendService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.BackendService("default",
+            name="backend-service",
+            enable_cdn=True,
             cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
+                cache_mode="USE_ORIGIN_HEADERS",
                 cache_key_policy=gcp.compute.BackendServiceCdnPolicyCacheKeyPolicyArgs(
                     include_host=True,
-                    include_http_headers=["X-My-Header-Field"],
                     include_protocol=True,
                     include_query_string=True,
+                    include_http_headers=["X-My-Header-Field"],
                 ),
-                cache_mode="USE_ORIGIN_HEADERS",
-            ),
-            enable_cdn=True)
+            ))
         ```
         ### Backend Service Cache Include Named Cookies
 
@@ -1539,22 +1733,129 @@ class BackendService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.BackendService("default",
+            name="backend-service",
+            enable_cdn=True,
             cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
+                cache_mode="CACHE_ALL_STATIC",
+                default_ttl=3600,
+                client_ttl=7200,
+                max_ttl=10800,
                 cache_key_policy=gcp.compute.BackendServiceCdnPolicyCacheKeyPolicyArgs(
                     include_host=True,
+                    include_protocol=True,
+                    include_query_string=True,
                     include_named_cookies=[
                         "__next_preview_data",
                         "__prerender_bypass",
                     ],
-                    include_protocol=True,
-                    include_query_string=True,
                 ),
+            ))
+        ```
+        ### Backend Service Cache
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default = gcp.compute.BackendService("default",
+            name="backend-service",
+            health_checks=default_http_health_check.id,
+            enable_cdn=True,
+            cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
                 cache_mode="CACHE_ALL_STATIC",
-                client_ttl=7200,
                 default_ttl=3600,
+                client_ttl=7200,
                 max_ttl=10800,
+                negative_caching=True,
+                signed_url_cache_max_age_sec=7200,
+            ))
+        ```
+        ### Backend Service Cache Bypass Cache On Request Headers
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default = gcp.compute.BackendService("default",
+            name="backend-service",
+            health_checks=default_http_health_check.id,
+            enable_cdn=True,
+            cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
+                cache_mode="CACHE_ALL_STATIC",
+                default_ttl=3600,
+                client_ttl=7200,
+                max_ttl=10800,
+                negative_caching=True,
+                signed_url_cache_max_age_sec=7200,
+                bypass_cache_on_request_headers=[
+                    gcp.compute.BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs(
+                        header_name="Authorization",
+                    ),
+                    gcp.compute.BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs(
+                        header_name="Proxy-Authorization",
+                    ),
+                ],
+            ))
+        ```
+        ### Backend Service Traffic Director Round Robin
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.HealthCheck("health_check",
+            name="health-check",
+            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+                port=80,
+            ))
+        default = gcp.compute.BackendService("default",
+            name="backend-service",
+            health_checks=health_check.id,
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            locality_lb_policy="ROUND_ROBIN")
+        ```
+        ### Backend Service Traffic Director Ring Hash
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.HealthCheck("health_check",
+            name="health-check",
+            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+                port=80,
+            ))
+        default = gcp.compute.BackendService("default",
+            name="backend-service",
+            health_checks=health_check.id,
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            locality_lb_policy="RING_HASH",
+            session_affinity="HTTP_COOKIE",
+            circuit_breakers=gcp.compute.BackendServiceCircuitBreakersArgs(
+                max_connections=10,
             ),
-            enable_cdn=True)
+            consistent_hash=gcp.compute.BackendServiceConsistentHashArgs(
+                http_cookie=gcp.compute.BackendServiceConsistentHashHttpCookieArgs(
+                    ttl=gcp.compute.BackendServiceConsistentHashHttpCookieTtlArgs(
+                        seconds=11,
+                        nanos=1111,
+                    ),
+                    name="mycookie",
+                ),
+            ),
+            outlier_detection=gcp.compute.BackendServiceOutlierDetectionArgs(
+                consecutive_errors=2,
+            ))
         ```
         ### Backend Service Network Endpoint
 
@@ -1562,16 +1863,16 @@ class BackendService(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        external_proxy = gcp.compute.GlobalNetworkEndpointGroup("externalProxy",
+        external_proxy = gcp.compute.GlobalNetworkEndpointGroup("external_proxy",
+            name="network-endpoint",
             network_endpoint_type="INTERNET_FQDN_PORT",
-            default_port=443,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            default_port=443)
         proxy = gcp.compute.GlobalNetworkEndpoint("proxy",
             global_network_endpoint_group=external_proxy.id,
             fqdn="test.example.com",
-            port=external_proxy.default_port,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            port=external_proxy.default_port)
         default = gcp.compute.BackendService("default",
+            name="backend-service",
             enable_cdn=True,
             timeout_sec=10,
             connection_draining_timeout_sec=10,
@@ -1579,8 +1880,23 @@ class BackendService(pulumi.CustomResource):
             custom_response_headers=["X-Cache-Hit: {cdn_cache_status}"],
             backends=[gcp.compute.BackendServiceBackendArgs(
                 group=external_proxy.id,
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
+        ```
+        ### Backend Service External Managed
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+                port=80,
+            ))
+        default = gcp.compute.BackendService("default",
+            name="backend-service",
+            health_checks=default_health_check.id,
+            load_balancing_scheme="EXTERNAL_MANAGED")
         ```
 
         ## Import

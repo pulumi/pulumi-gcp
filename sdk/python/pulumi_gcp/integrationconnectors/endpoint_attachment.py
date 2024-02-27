@@ -356,12 +356,13 @@ class EndpointAttachment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         sampleendpointattachment = gcp.integrationconnectors.EndpointAttachment("sampleendpointattachment",
+            name="test-endpoint-attachment",
+            location="us-central1",
             description="tf created description",
+            service_attachment="projects/connectors-example/regions/us-central1/serviceAttachments/test",
             labels={
                 "foo": "bar",
-            },
-            location="us-central1",
-            service_attachment="projects/connectors-example/regions/us-central1/serviceAttachments/test")
+            })
         ```
 
         ## Import
@@ -427,12 +428,13 @@ class EndpointAttachment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         sampleendpointattachment = gcp.integrationconnectors.EndpointAttachment("sampleendpointattachment",
+            name="test-endpoint-attachment",
+            location="us-central1",
             description="tf created description",
+            service_attachment="projects/connectors-example/regions/us-central1/serviceAttachments/test",
             labels={
                 "foo": "bar",
-            },
-            location="us-central1",
-            service_attachment="projects/connectors-example/regions/us-central1/serviceAttachments/test")
+            })
         ```
 
         ## Import

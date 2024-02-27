@@ -41,12 +41,129 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
- * const defaultRoute = new gcp.compute.Route("defaultRoute", {
+ * const defaultNetwork = new gcp.compute.Network("default", {name: "compute-network"});
+ * const _default = new gcp.compute.Route("default", {
+ *     name: "network-route",
  *     destRange: "15.0.0.0/24",
  *     network: defaultNetwork.name,
  *     nextHopIp: "10.132.1.5",
  *     priority: 100,
+ * });
+ * ```
+ * ### Route Ilb
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "compute-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "compute-subnet",
+ *     ipCidrRange: "10.0.1.0/24",
+ *     region: "us-central1",
+ *     network: _default.id,
+ * });
+ * const hc = new gcp.compute.HealthCheck("hc", {
+ *     name: "proxy-health-check",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ *     tcpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const backend = new gcp.compute.RegionBackendService("backend", {
+ *     name: "compute-backend",
+ *     region: "us-central1",
+ *     healthChecks: hc.id,
+ * });
+ * const defaultForwardingRule = new gcp.compute.ForwardingRule("default", {
+ *     name: "compute-forwarding-rule",
+ *     region: "us-central1",
+ *     loadBalancingScheme: "INTERNAL",
+ *     backendService: backend.id,
+ *     allPorts: true,
+ *     network: _default.name,
+ *     subnetwork: defaultSubnetwork.name,
+ * });
+ * const route_ilb = new gcp.compute.Route("route-ilb", {
+ *     name: "route-ilb",
+ *     destRange: "0.0.0.0/0",
+ *     network: _default.name,
+ *     nextHopIlb: defaultForwardingRule.id,
+ *     priority: 2000,
+ * });
+ * ```
+ * ### Route Ilb Vip
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const producer = new gcp.compute.Network("producer", {
+ *     name: "producer-vpc",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const producerSubnetwork = new gcp.compute.Subnetwork("producer", {
+ *     name: "producer-subnet",
+ *     ipCidrRange: "10.0.1.0/24",
+ *     region: "us-central1",
+ *     network: producer.id,
+ * });
+ * const consumer = new gcp.compute.Network("consumer", {
+ *     name: "consumer-vpc",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const consumerSubnetwork = new gcp.compute.Subnetwork("consumer", {
+ *     name: "consumer-subnet",
+ *     ipCidrRange: "10.0.2.0/24",
+ *     region: "us-central1",
+ *     network: consumer.id,
+ * });
+ * const peering1 = new gcp.compute.NetworkPeering("peering1", {
+ *     name: "peering-producer-to-consumer",
+ *     network: consumer.id,
+ *     peerNetwork: producer.id,
+ * });
+ * const peering2 = new gcp.compute.NetworkPeering("peering2", {
+ *     name: "peering-consumer-to-producer",
+ *     network: producer.id,
+ *     peerNetwork: consumer.id,
+ * });
+ * const hc = new gcp.compute.HealthCheck("hc", {
+ *     name: "proxy-health-check",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ *     tcpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const backend = new gcp.compute.RegionBackendService("backend", {
+ *     name: "compute-backend",
+ *     region: "us-central1",
+ *     healthChecks: hc.id,
+ * });
+ * const _default = new gcp.compute.ForwardingRule("default", {
+ *     name: "compute-forwarding-rule",
+ *     region: "us-central1",
+ *     loadBalancingScheme: "INTERNAL",
+ *     backendService: backend.id,
+ *     allPorts: true,
+ *     network: producer.name,
+ *     subnetwork: producerSubnetwork.name,
+ * });
+ * const route_ilb = new gcp.compute.Route("route-ilb", {
+ *     name: "route-ilb",
+ *     destRange: "0.0.0.0/0",
+ *     network: consumer.name,
+ *     nextHopIlb: _default.ipAddress,
+ *     priority: 2000,
+ *     tags: [
+ *         "tag1",
+ *         "tag2",
+ *     ],
  * });
  * ```
  *

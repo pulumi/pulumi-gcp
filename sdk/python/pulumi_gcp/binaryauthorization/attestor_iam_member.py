@@ -283,8 +283,8 @@ class AttestorIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.binaryauthorization.AttestorIamPolicy("policy",
-            project=google_binary_authorization_attestor["attestor"]["project"],
-            attestor=google_binary_authorization_attestor["attestor"]["name"],
+            project=attestor["project"],
+            attestor=attestor["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -295,8 +295,8 @@ class AttestorIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.binaryauthorization.AttestorIamBinding("binding",
-            project=google_binary_authorization_attestor["attestor"]["project"],
-            attestor=google_binary_authorization_attestor["attestor"]["name"],
+            project=attestor["project"],
+            attestor=attestor["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -308,8 +308,8 @@ class AttestorIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.binaryauthorization.AttestorIamMember("member",
-            project=google_binary_authorization_attestor["attestor"]["project"],
-            attestor=google_binary_authorization_attestor["attestor"]["name"],
+            project=attestor["project"],
+            attestor=attestor["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -403,8 +403,8 @@ class AttestorIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.binaryauthorization.AttestorIamPolicy("policy",
-            project=google_binary_authorization_attestor["attestor"]["project"],
-            attestor=google_binary_authorization_attestor["attestor"]["name"],
+            project=attestor["project"],
+            attestor=attestor["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -415,8 +415,8 @@ class AttestorIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.binaryauthorization.AttestorIamBinding("binding",
-            project=google_binary_authorization_attestor["attestor"]["project"],
-            attestor=google_binary_authorization_attestor["attestor"]["name"],
+            project=attestor["project"],
+            attestor=attestor["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -428,8 +428,8 @@ class AttestorIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.binaryauthorization.AttestorIamMember("member",
-            project=google_binary_authorization_attestor["attestor"]["project"],
-            attestor=google_binary_authorization_attestor["attestor"]["name"],
+            project=attestor["project"],
+            attestor=attestor["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

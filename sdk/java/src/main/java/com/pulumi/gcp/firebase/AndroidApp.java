@@ -26,7 +26,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.firebase.AndroidApp;
  * import com.pulumi.gcp.firebase.AndroidAppArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -46,9 +45,7 @@ import javax.annotation.Nullable;
  *             .packageName(&#34;android.package.app&#34;)
  *             .sha1Hashes(&#34;2145bdf698b8715039bd0e83f2069bed435ac21c&#34;)
  *             .sha256Hashes(&#34;2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -66,7 +63,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsAndroidKeyRestrictionsArgs;
  * import com.pulumi.gcp.firebase.AndroidApp;
  * import com.pulumi.gcp.firebase.AndroidAppArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -81,6 +77,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var android = new ApiKey(&#34;android&#34;, ApiKeyArgs.builder()        
+ *             .name(&#34;api-key&#34;)
  *             .displayName(&#34;Display Name&#34;)
  *             .project(&#34;my-project-name&#34;)
  *             .restrictions(ApiKeyRestrictionsArgs.builder()
@@ -91,9 +88,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var default_ = new AndroidApp(&#34;default&#34;, AndroidAppArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
@@ -102,9 +97,7 @@ import javax.annotation.Nullable;
  *             .sha1Hashes(&#34;2145bdf698b8715039bd0e83f2069bed435ac21c&#34;)
  *             .sha256Hashes(&#34;2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc&#34;)
  *             .apiKeyId(android.uid())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

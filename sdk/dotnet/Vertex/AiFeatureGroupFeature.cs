@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sampleDataset = new Gcp.BigQuery.Dataset("sampleDataset", new()
+    ///     var sampleDataset = new Gcp.BigQuery.Dataset("sample_dataset", new()
     ///     {
     ///         DatasetId = "job_load_dataset",
     ///         FriendlyName = "test",
@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.Vertex
     ///         Location = "US",
     ///     });
     /// 
-    ///     var sampleTable = new Gcp.BigQuery.Table("sampleTable", new()
+    ///     var sampleTable = new Gcp.BigQuery.Table("sample_table", new()
     ///     {
     ///         DeletionProtection = false,
     ///         DatasetId = sampleDataset.DatasetId,
@@ -62,8 +62,9 @@ namespace Pulumi.Gcp.Vertex
     /// ",
     ///     });
     /// 
-    ///     var sampleFeatureGroup = new Gcp.Vertex.AiFeatureGroup("sampleFeatureGroup", new()
+    ///     var sampleFeatureGroup = new Gcp.Vertex.AiFeatureGroup("sample_feature_group", new()
     ///     {
+    ///         Name = "example_feature_group",
     ///         Description = "A sample feature group",
     ///         Region = "us-central1",
     ///         Labels = 
@@ -89,8 +90,9 @@ namespace Pulumi.Gcp.Vertex
     ///         },
     ///     });
     /// 
-    ///     var featureGroupFeature = new Gcp.Vertex.AiFeatureGroupFeature("featureGroupFeature", new()
+    ///     var featureGroupFeature = new Gcp.Vertex.AiFeatureGroupFeature("feature_group_feature", new()
     ///     {
+    ///         Name = "example_feature",
     ///         Region = "us-central1",
     ///         FeatureGroup = sampleFeatureGroup.Name,
     ///         Description = "A sample feature",

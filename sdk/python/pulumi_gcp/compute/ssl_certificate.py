@@ -378,38 +378,82 @@ class SSLCertificate(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         default = gcp.compute.SSLCertificate("default",
             name_prefix="my-certificate-",
             description="a description",
-            private_key=(lambda path: open(path).read())("path/to/private.key"),
-            certificate=(lambda path: open(path).read())("path/to/certificate.crt"))
+            private_key=std.file(input="path/to/private.key").result,
+            certificate=std.file(input="path/to/certificate.crt").result)
         ```
         ### Ssl Certificate Random Provider
 
         ```python
         import pulumi
-        import base64
-        import hashlib
         import pulumi_gcp as gcp
         import pulumi_random as random
+        import pulumi_std as std
 
-        def computeFilebase64sha256(path):
-        	fileData = open(path).read().encode()
-        	hashedData = hashlib.sha256(fileData.encode()).digest()
-        	return base64.b64encode(hashedData).decode()
-
-        # You may also want to control name generation explicitly:
-        default = gcp.compute.SSLCertificate("default",
-            private_key=(lambda path: open(path).read())("path/to/private.key"),
-            certificate=(lambda path: open(path).read())("path/to/certificate.crt"))
         certificate = random.RandomId("certificate",
             byte_length=4,
             prefix="my-certificate-",
             keepers={
-                "private_key": computeFilebase64sha256("path/to/private.key"),
-                "certificate": computeFilebase64sha256("path/to/certificate.crt"),
+                "private_key": std.filebase64sha256(input="path/to/private.key").result,
+                "certificate": std.filebase64sha256(input="path/to/certificate.crt").result,
             })
+        # You may also want to control name generation explicitly:
+        default = gcp.compute.SSLCertificate("default",
+            name=certificate.hex,
+            private_key=std.file(input="path/to/private.key").result,
+            certificate=std.file(input="path/to/certificate.crt").result)
+        ```
+        ### Ssl Certificate Target Https Proxies
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        # Using with Target HTTPS Proxies
+        #
+        # SSL certificates cannot be updated after creation. In order to apply
+        # the specified configuration, the provider will destroy the existing
+        # resource and create a replacement. Example:
+        default = gcp.compute.SSLCertificate("default",
+            name_prefix="my-certificate-",
+            private_key=std.file(input="path/to/private.key").result,
+            certificate=std.file(input="path/to/certificate.crt").result)
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="http-health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend-service",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=default_http_health_check.id)
+        default_url_map = gcp.compute.URLMap("default",
+            name="url-map",
+            description="a description",
+            default_service=default_backend_service.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_backend_service.id,
+                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_backend_service.id,
+                )],
+            )])
+        default_target_https_proxy = gcp.compute.TargetHttpsProxy("default",
+            name="test-proxy",
+            url_map=default_url_map.id,
+            ssl_certificates=[default.id])
         ```
 
         ## Import
@@ -485,38 +529,82 @@ class SSLCertificate(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         default = gcp.compute.SSLCertificate("default",
             name_prefix="my-certificate-",
             description="a description",
-            private_key=(lambda path: open(path).read())("path/to/private.key"),
-            certificate=(lambda path: open(path).read())("path/to/certificate.crt"))
+            private_key=std.file(input="path/to/private.key").result,
+            certificate=std.file(input="path/to/certificate.crt").result)
         ```
         ### Ssl Certificate Random Provider
 
         ```python
         import pulumi
-        import base64
-        import hashlib
         import pulumi_gcp as gcp
         import pulumi_random as random
+        import pulumi_std as std
 
-        def computeFilebase64sha256(path):
-        	fileData = open(path).read().encode()
-        	hashedData = hashlib.sha256(fileData.encode()).digest()
-        	return base64.b64encode(hashedData).decode()
-
-        # You may also want to control name generation explicitly:
-        default = gcp.compute.SSLCertificate("default",
-            private_key=(lambda path: open(path).read())("path/to/private.key"),
-            certificate=(lambda path: open(path).read())("path/to/certificate.crt"))
         certificate = random.RandomId("certificate",
             byte_length=4,
             prefix="my-certificate-",
             keepers={
-                "private_key": computeFilebase64sha256("path/to/private.key"),
-                "certificate": computeFilebase64sha256("path/to/certificate.crt"),
+                "private_key": std.filebase64sha256(input="path/to/private.key").result,
+                "certificate": std.filebase64sha256(input="path/to/certificate.crt").result,
             })
+        # You may also want to control name generation explicitly:
+        default = gcp.compute.SSLCertificate("default",
+            name=certificate.hex,
+            private_key=std.file(input="path/to/private.key").result,
+            certificate=std.file(input="path/to/certificate.crt").result)
+        ```
+        ### Ssl Certificate Target Https Proxies
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        # Using with Target HTTPS Proxies
+        #
+        # SSL certificates cannot be updated after creation. In order to apply
+        # the specified configuration, the provider will destroy the existing
+        # resource and create a replacement. Example:
+        default = gcp.compute.SSLCertificate("default",
+            name_prefix="my-certificate-",
+            private_key=std.file(input="path/to/private.key").result,
+            certificate=std.file(input="path/to/certificate.crt").result)
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="http-health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend-service",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=default_http_health_check.id)
+        default_url_map = gcp.compute.URLMap("default",
+            name="url-map",
+            description="a description",
+            default_service=default_backend_service.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_backend_service.id,
+                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_backend_service.id,
+                )],
+            )])
+        default_target_https_proxy = gcp.compute.TargetHttpsProxy("default",
+            name="test-proxy",
+            url_map=default_url_map.id,
+            ssl_certificates=[default.id])
         ```
 
         ## Import

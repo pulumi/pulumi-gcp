@@ -192,7 +192,9 @@ class BucketACL(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        image_store = gcp.storage.Bucket("image-store", location="EU")
+        image_store = gcp.storage.Bucket("image-store",
+            name="image-store-bucket",
+            location="EU")
         image_store_acl = gcp.storage.BucketACL("image-store-acl",
             bucket=image_store.name,
             role_entities=[
@@ -240,7 +242,9 @@ class BucketACL(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        image_store = gcp.storage.Bucket("image-store", location="EU")
+        image_store = gcp.storage.Bucket("image-store",
+            name="image-store-bucket",
+            location="EU")
         image_store_acl = gcp.storage.BucketACL("image-store-acl",
             bucket=image_store.name,
             role_entities=[

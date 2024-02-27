@@ -29,7 +29,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * ### Target Https Proxy Basic
- * 
  * ```java
  * package generated_program;
  * 
@@ -62,17 +61,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultSSLCertificate = new SSLCertificate(&#34;defaultSSLCertificate&#34;, SSLCertificateArgs.builder()        
- *             .privateKey(Files.readString(Paths.get(&#34;path/to/private.key&#34;)))
- *             .certificate(Files.readString(Paths.get(&#34;path/to/certificate.crt&#34;)))
+ *             .name(&#34;my-certificate&#34;)
+ *             .privateKey(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;path/to/private.key&#34;)
+ *                 .build()).result())
+ *             .certificate(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;path/to/certificate.crt&#34;)
+ *                 .build()).result())
  *             .build());
  * 
  *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
+ *             .name(&#34;http-health-check&#34;)
  *             .requestPath(&#34;/&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
  *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;backend-service&#34;)
  *             .portName(&#34;http&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .timeoutSec(10)
@@ -80,6 +86,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultURLMap = new URLMap(&#34;defaultURLMap&#34;, URLMapArgs.builder()        
+ *             .name(&#34;url-map&#34;)
  *             .description(&#34;a description&#34;)
  *             .defaultService(defaultBackendService.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
@@ -96,7 +103,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultTargetHttpsProxy = new TargetHttpsProxy(&#34;defaultTargetHttpsProxy&#34;, TargetHttpsProxyArgs.builder()        
+ *         var default_ = new TargetHttpsProxy(&#34;default&#34;, TargetHttpsProxyArgs.builder()        
+ *             .name(&#34;test-proxy&#34;)
  *             .urlMap(defaultURLMap.id())
  *             .sslCertificates(defaultSSLCertificate.id())
  *             .build());
@@ -105,7 +113,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Target Https Proxy Http Keep Alive Timeout
- * 
  * ```java
  * package generated_program;
  * 
@@ -138,17 +145,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultSSLCertificate = new SSLCertificate(&#34;defaultSSLCertificate&#34;, SSLCertificateArgs.builder()        
- *             .privateKey(Files.readString(Paths.get(&#34;path/to/private.key&#34;)))
- *             .certificate(Files.readString(Paths.get(&#34;path/to/certificate.crt&#34;)))
+ *             .name(&#34;my-certificate&#34;)
+ *             .privateKey(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;path/to/private.key&#34;)
+ *                 .build()).result())
+ *             .certificate(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;path/to/certificate.crt&#34;)
+ *                 .build()).result())
  *             .build());
  * 
  *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
+ *             .name(&#34;http-health-check&#34;)
  *             .requestPath(&#34;/&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
  *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;backend-service&#34;)
  *             .portName(&#34;http&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .timeoutSec(10)
@@ -157,6 +171,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultURLMap = new URLMap(&#34;defaultURLMap&#34;, URLMapArgs.builder()        
+ *             .name(&#34;url-map&#34;)
  *             .description(&#34;a description&#34;)
  *             .defaultService(defaultBackendService.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
@@ -173,7 +188,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultTargetHttpsProxy = new TargetHttpsProxy(&#34;defaultTargetHttpsProxy&#34;, TargetHttpsProxyArgs.builder()        
+ *         var default_ = new TargetHttpsProxy(&#34;default&#34;, TargetHttpsProxyArgs.builder()        
+ *             .name(&#34;test-http-keep-alive-timeout-proxy&#34;)
  *             .httpKeepAliveTimeoutSec(610)
  *             .urlMap(defaultURLMap.id())
  *             .sslCertificates(defaultSSLCertificate.id())
@@ -183,7 +199,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Target Https Proxy Mtls
- * 
  * ```java
  * package generated_program;
  * 
@@ -210,7 +225,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
  * import com.pulumi.gcp.compute.TargetHttpsProxy;
  * import com.pulumi.gcp.compute.TargetHttpsProxyArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -227,22 +241,26 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var defaultTrustConfig = new TrustConfig(&#34;defaultTrustConfig&#34;, TrustConfigArgs.builder()        
+ *             .name(&#34;my-trust-config&#34;)
  *             .description(&#34;sample description for the trust config&#34;)
  *             .location(&#34;global&#34;)
  *             .trustStores(TrustConfigTrustStoreArgs.builder()
  *                 .trustAnchors(TrustConfigTrustStoreTrustAnchorArgs.builder()
- *                     .pemCertificate(Files.readString(Paths.get(&#34;test-fixtures/ca_cert.pem&#34;)))
+ *                     .pemCertificate(StdFunctions.file(FileArgs.builder()
+ *                         .input(&#34;test-fixtures/ca_cert.pem&#34;)
+ *                         .build()).result())
  *                     .build())
  *                 .intermediateCas(TrustConfigTrustStoreIntermediateCaArgs.builder()
- *                     .pemCertificate(Files.readString(Paths.get(&#34;test-fixtures/ca_cert.pem&#34;)))
+ *                     .pemCertificate(StdFunctions.file(FileArgs.builder()
+ *                         .input(&#34;test-fixtures/ca_cert.pem&#34;)
+ *                         .build()).result())
  *                     .build())
  *                 .build())
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultServerTlsPolicy = new ServerTlsPolicy(&#34;defaultServerTlsPolicy&#34;, ServerTlsPolicyArgs.builder()        
+ *             .name(&#34;my-tls-policy&#34;)
  *             .description(&#34;my description&#34;)
  *             .location(&#34;global&#34;)
  *             .allowOpen(&#34;false&#34;)
@@ -250,35 +268,35 @@ import javax.annotation.Nullable;
  *                 .clientValidationMode(&#34;ALLOW_INVALID_OR_MISSING_CLIENT_CERT&#34;)
  *                 .clientValidationTrustConfig(defaultTrustConfig.name().applyValue(name -&gt; String.format(&#34;projects/%s/locations/global/trustConfigs/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()),name)))
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultSSLCertificate = new SSLCertificate(&#34;defaultSSLCertificate&#34;, SSLCertificateArgs.builder()        
- *             .privateKey(Files.readString(Paths.get(&#34;path/to/private.key&#34;)))
- *             .certificate(Files.readString(Paths.get(&#34;path/to/certificate.crt&#34;)))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .name(&#34;my-certificate&#34;)
+ *             .privateKey(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;path/to/private.key&#34;)
+ *                 .build()).result())
+ *             .certificate(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;path/to/certificate.crt&#34;)
+ *                 .build()).result())
+ *             .build());
  * 
  *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
+ *             .name(&#34;http-health-check&#34;)
  *             .requestPath(&#34;/&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;backend-service&#34;)
  *             .portName(&#34;http&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .timeoutSec(10)
  *             .healthChecks(defaultHttpHealthCheck.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultURLMap = new URLMap(&#34;defaultURLMap&#34;, URLMapArgs.builder()        
+ *             .name(&#34;url-map&#34;)
  *             .description(&#34;a description&#34;)
  *             .defaultService(defaultBackendService.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
@@ -293,17 +311,14 @@ import javax.annotation.Nullable;
  *                     .service(defaultBackendService.id())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
- *         var defaultTargetHttpsProxy = new TargetHttpsProxy(&#34;defaultTargetHttpsProxy&#34;, TargetHttpsProxyArgs.builder()        
+ *         var default_ = new TargetHttpsProxy(&#34;default&#34;, TargetHttpsProxyArgs.builder()        
+ *             .name(&#34;test-mtls-proxy&#34;)
  *             .urlMap(defaultURLMap.id())
  *             .sslCertificates(defaultSSLCertificate.id())
  *             .serverTlsPolicy(defaultServerTlsPolicy.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -340,14 +355,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultCertificate = new Certificate(&#34;defaultCertificate&#34;, CertificateArgs.builder()        
+ *             .name(&#34;my-certificate&#34;)
  *             .scope(&#34;ALL_REGIONS&#34;)
  *             .selfManaged(CertificateSelfManagedArgs.builder()
- *                 .pemCertificate(Files.readString(Paths.get(&#34;test-fixtures/cert.pem&#34;)))
- *                 .pemPrivateKey(Files.readString(Paths.get(&#34;test-fixtures/private-key.pem&#34;)))
+ *                 .pemCertificate(StdFunctions.file(FileArgs.builder()
+ *                     .input(&#34;test-fixtures/cert.pem&#34;)
+ *                     .build()).result())
+ *                 .pemPrivateKey(StdFunctions.file(FileArgs.builder()
+ *                     .input(&#34;test-fixtures/private-key.pem&#34;)
+ *                     .build()).result())
  *                 .build())
  *             .build());
  * 
  *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;backend-service&#34;)
  *             .portName(&#34;http&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .timeoutSec(10)
@@ -355,6 +376,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultURLMap = new URLMap(&#34;defaultURLMap&#34;, URLMapArgs.builder()        
+ *             .name(&#34;url-map&#34;)
  *             .description(&#34;a description&#34;)
  *             .defaultService(defaultBackendService.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
@@ -371,7 +393,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultTargetHttpsProxy = new TargetHttpsProxy(&#34;defaultTargetHttpsProxy&#34;, TargetHttpsProxyArgs.builder()        
+ *         var default_ = new TargetHttpsProxy(&#34;default&#34;, TargetHttpsProxyArgs.builder()        
+ *             .name(&#34;target-http-proxy&#34;)
  *             .urlMap(defaultURLMap.id())
  *             .certificateManagerCertificates(defaultCertificate.id().applyValue(id -&gt; String.format(&#34;//certificatemanager.googleapis.com/%s&#34;, id)))
  *             .build());

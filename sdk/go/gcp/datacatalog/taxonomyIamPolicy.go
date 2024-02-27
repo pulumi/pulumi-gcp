@@ -55,7 +55,7 @@ import (
 //				return err
 //			}
 //			_, err = datacatalog.NewTaxonomyIamPolicy(ctx, "policy", &datacatalog.TaxonomyIamPolicyArgs{
-//				Taxonomy:   pulumi.Any(google_data_catalog_taxonomy.Basic_taxonomy.Name),
+//				Taxonomy:   pulumi.Any(basicTaxonomy.Name),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -82,7 +82,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := datacatalog.NewTaxonomyIamBinding(ctx, "binding", &datacatalog.TaxonomyIamBindingArgs{
-//				Taxonomy: pulumi.Any(google_data_catalog_taxonomy.Basic_taxonomy.Name),
+//				Taxonomy: pulumi.Any(basicTaxonomy.Name),
 //				Role:     pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -112,7 +112,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := datacatalog.NewTaxonomyIamMember(ctx, "member", &datacatalog.TaxonomyIamMemberArgs{
-//				Taxonomy: pulumi.Any(google_data_catalog_taxonomy.Basic_taxonomy.Name),
+//				Taxonomy: pulumi.Any(basicTaxonomy.Name),
 //				Role:     pulumi.String("roles/viewer"),
 //				Member:   pulumi.String("user:jane@example.com"),
 //			})

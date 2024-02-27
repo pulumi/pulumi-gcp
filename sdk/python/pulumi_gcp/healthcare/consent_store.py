@@ -311,8 +311,12 @@ class ConsentStore(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
-        my_consent = gcp.healthcare.ConsentStore("my-consent", dataset=dataset.id)
+        dataset = gcp.healthcare.Dataset("dataset",
+            location="us-central1",
+            name="my-dataset")
+        my_consent = gcp.healthcare.ConsentStore("my-consent",
+            dataset=dataset.id,
+            name="my-consent-store")
         ```
         ### Healthcare Consent Store Full
 
@@ -320,9 +324,12 @@ class ConsentStore(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        dataset = gcp.healthcare.Dataset("dataset",
+            location="us-central1",
+            name="my-dataset")
         my_consent = gcp.healthcare.ConsentStore("my-consent",
             dataset=dataset.id,
+            name="my-consent-store",
             enable_consent_create_on_update=True,
             default_consent_ttl="90000s",
             labels={
@@ -335,8 +342,12 @@ class ConsentStore(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
-        my_consent = gcp.healthcare.ConsentStore("my-consent", dataset=dataset.id)
+        dataset = gcp.healthcare.Dataset("dataset",
+            location="us-central1",
+            name="my-dataset")
+        my_consent = gcp.healthcare.ConsentStore("my-consent",
+            dataset=dataset.id,
+            name="my-consent-store")
         test_account = gcp.serviceaccount.Account("test-account",
             account_id="my-account",
             display_name="Test Service Account")
@@ -405,8 +416,12 @@ class ConsentStore(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
-        my_consent = gcp.healthcare.ConsentStore("my-consent", dataset=dataset.id)
+        dataset = gcp.healthcare.Dataset("dataset",
+            location="us-central1",
+            name="my-dataset")
+        my_consent = gcp.healthcare.ConsentStore("my-consent",
+            dataset=dataset.id,
+            name="my-consent-store")
         ```
         ### Healthcare Consent Store Full
 
@@ -414,9 +429,12 @@ class ConsentStore(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        dataset = gcp.healthcare.Dataset("dataset",
+            location="us-central1",
+            name="my-dataset")
         my_consent = gcp.healthcare.ConsentStore("my-consent",
             dataset=dataset.id,
+            name="my-consent-store",
             enable_consent_create_on_update=True,
             default_consent_ttl="90000s",
             labels={
@@ -429,8 +447,12 @@ class ConsentStore(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
-        my_consent = gcp.healthcare.ConsentStore("my-consent", dataset=dataset.id)
+        dataset = gcp.healthcare.Dataset("dataset",
+            location="us-central1",
+            name="my-dataset")
+        my_consent = gcp.healthcare.ConsentStore("my-consent",
+            dataset=dataset.id,
+            name="my-consent-store")
         test_account = gcp.serviceaccount.Account("test-account",
             account_id="my-account",
             display_name="Test Service Account")

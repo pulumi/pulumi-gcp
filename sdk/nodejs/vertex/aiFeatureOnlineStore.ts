@@ -22,18 +22,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const featureOnlineStore = new gcp.vertex.AiFeatureOnlineStore("featureOnlineStore", {
- *     bigtable: {
- *         autoScaling: {
- *             cpuUtilizationTarget: 50,
- *             maxNodeCount: 3,
- *             minNodeCount: 1,
- *         },
- *     },
+ * const featureOnlineStore = new gcp.vertex.AiFeatureOnlineStore("feature_online_store", {
+ *     name: "example_feature_online_store",
  *     labels: {
  *         foo: "bar",
  *     },
  *     region: "us-central1",
+ *     bigtable: {
+ *         autoScaling: {
+ *             minNodeCount: 1,
+ *             maxNodeCount: 3,
+ *             cpuUtilizationTarget: 50,
+ *         },
+ *     },
  * });
  * ```
  * ### Vertex Ai Featureonlinestore With Beta Fields Optimized
@@ -44,6 +45,7 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const featureonlinestore = new gcp.vertex.AiFeatureOnlineStore("featureonlinestore", {
+ *     name: "example_feature_online_store_optimized",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -55,8 +57,6 @@ import * as utilities from "../utilities";
  *             projectAllowlists: [project.then(project => project.number)],
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Vertex Ai Featureonlinestore With Beta Fields Bigtable
@@ -66,6 +66,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const featureonlinestore = new gcp.vertex.AiFeatureOnlineStore("featureonlinestore", {
+ *     name: "example_feature_online_store_beta_bigtable",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -81,8 +82,6 @@ import * as utilities from "../utilities";
  *         enabled: true,
  *     },
  *     forceDestroy: true,
- * }, {
- *     provider: google_beta,
  * });
  * const project = gcp.organizations.getProject({});
  * ```

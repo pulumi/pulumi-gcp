@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.cloudrun.getServiceIamPolicy({
- *     location: google_cloud_run_service["default"].location,
- *     project: google_cloud_run_service["default"].project,
- *     service: google_cloud_run_service["default"].name,
+ *     location: _default.location,
+ *     project: _default.project,
+ *     service: _default.name,
  * });
  * ```
  */
@@ -80,9 +80,9 @@ export interface GetServiceIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.cloudrun.getServiceIamPolicy({
- *     location: google_cloud_run_service["default"].location,
- *     project: google_cloud_run_service["default"].project,
- *     service: google_cloud_run_service["default"].name,
+ *     location: _default.location,
+ *     project: _default.project,
+ *     service: _default.name,
  * });
  * ```
  */

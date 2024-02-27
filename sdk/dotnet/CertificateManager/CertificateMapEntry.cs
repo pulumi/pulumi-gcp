@@ -24,8 +24,9 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var certificateMap = new Gcp.CertificateManager.CertificateMap("certificateMap", new()
+    ///     var certificateMap = new Gcp.CertificateManager.CertificateMap("certificate_map", new()
     ///     {
+    ///         Name = "cert-map-entry",
     ///         Description = "My acceptance test certificate map",
     ///         Labels = 
     ///         {
@@ -36,18 +37,21 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     ///     var instance = new Gcp.CertificateManager.DnsAuthorization("instance", new()
     ///     {
+    ///         Name = "dns-auth",
     ///         Description = "The default dnss",
     ///         Domain = "subdomain.hashicorptest.com",
     ///     });
     /// 
     ///     var instance2 = new Gcp.CertificateManager.DnsAuthorization("instance2", new()
     ///     {
+    ///         Name = "dns-auth2",
     ///         Description = "The default dnss",
     ///         Domain = "subdomain2.hashicorptest.com",
     ///     });
     /// 
     ///     var certificate = new Gcp.CertificateManager.Certificate("certificate", new()
     ///     {
+    ///         Name = "cert-map-entry",
     ///         Description = "The default cert",
     ///         Scope = "DEFAULT",
     ///         Managed = new Gcp.CertificateManager.Inputs.CertificateManagedArgs
@@ -67,6 +71,7 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     ///     var @default = new Gcp.CertificateManager.CertificateMapEntry("default", new()
     ///     {
+    ///         Name = "cert-map-entry",
     ///         Description = "My acceptance test certificate map entry",
     ///         Map = certificateMap.Name,
     ///         Labels = 

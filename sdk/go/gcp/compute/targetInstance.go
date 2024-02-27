@@ -48,6 +48,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewInstance(ctx, "target-vm", &compute.InstanceArgs{
+//				Name:        pulumi.String("target-vm"),
 //				MachineType: pulumi.String("e2-medium"),
 //				Zone:        pulumi.String("us-central1-a"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
@@ -65,6 +66,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewTargetInstance(ctx, "default", &compute.TargetInstanceArgs{
+//				Name:     pulumi.String("target"),
 //				Instance: target_vm.ID(),
 //			})
 //			if err != nil {
@@ -89,7 +91,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			target_vmNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+//			target_vm, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
 //				Name: "default",
 //			}, nil)
 //			if err != nil {
@@ -102,7 +104,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewInstance(ctx, "target-vmInstance", &compute.InstanceArgs{
+//			_, err = compute.NewInstance(ctx, "target-vm", &compute.InstanceArgs{
+//				Name:        pulumi.String("custom-network-target-vm"),
 //				MachineType: pulumi.String("e2-medium"),
 //				Zone:        pulumi.String("us-central1-a"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
@@ -115,14 +118,15 @@ import (
 //						Network: pulumi.String("default"),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewTargetInstance(ctx, "customNetwork", &compute.TargetInstanceArgs{
+//			_, err = compute.NewTargetInstance(ctx, "custom_network", &compute.TargetInstanceArgs{
+//				Name:     pulumi.String("custom-network"),
 //				Instance: target_vmInstance.ID(),
-//				Network:  *pulumi.String(target_vmNetwork.SelfLink),
-//			}, pulumi.Provider(google_beta))
+//				Network:  *pulumi.String(target_vm.SelfLink),
+//			})
 //			if err != nil {
 //				return err
 //			}

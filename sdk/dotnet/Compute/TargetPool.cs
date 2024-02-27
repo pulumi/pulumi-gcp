@@ -16,6 +16,38 @@ namespace Pulumi.Gcp.Compute
     /// documentation](https://cloud.google.com/compute/docs/load-balancing/network/target-pools)
     /// and [API](https://cloud.google.com/compute/docs/reference/latest/targetPools).
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+    ///     {
+    ///         Name = "default",
+    ///         RequestPath = "/",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.TargetPool("default", new()
+    ///     {
+    ///         Name = "instance-pool",
+    ///         Instances = new[]
+    ///         {
+    ///             "us-central1-a/myinstance1",
+    ///             "us-central1-b/myinstance2",
+    ///         },
+    ///         HealthChecks = defaultHttpHealthCheck.Name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Target pools can be imported using any of the following formats:

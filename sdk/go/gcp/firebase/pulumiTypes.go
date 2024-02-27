@@ -3038,19 +3038,6 @@ type HostingVersionConfigRedirect struct {
 	// The value to put in the HTTP location header of the response.
 	// The location can contain capture group values from the pattern using a : prefix to identify
 	// the segment and an optional * to capture the rest of the URL. For example:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Location string `pulumi:"location"`
 	// The user-supplied RE2 regular expression to match against the request URL path.
 	Regex *string `pulumi:"regex"`
@@ -3075,19 +3062,6 @@ type HostingVersionConfigRedirectArgs struct {
 	// The value to put in the HTTP location header of the response.
 	// The location can contain capture group values from the pattern using a : prefix to identify
 	// the segment and an optional * to capture the rest of the URL. For example:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Location pulumi.StringInput `pulumi:"location"`
 	// The user-supplied RE2 regular expression to match against the request URL path.
 	Regex pulumi.StringPtrInput `pulumi:"regex"`
@@ -3154,22 +3128,6 @@ func (o HostingVersionConfigRedirectOutput) Glob() pulumi.StringPtrOutput {
 // The value to put in the HTTP location header of the response.
 // The location can contain capture group values from the pattern using a : prefix to identify
 // the segment and an optional * to capture the rest of the URL. For example:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o HostingVersionConfigRedirectOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v HostingVersionConfigRedirect) string { return v.Location }).(pulumi.StringOutput)
 }

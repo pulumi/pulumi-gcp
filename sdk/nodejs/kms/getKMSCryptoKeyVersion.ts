@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *     keyRing: myKeyRing.id,
  * }));
  * const myCryptoKeyVersion = gcp.kms.getKMSCryptoKeyVersion({
- *     cryptoKey: data.google_kms_crypto_key.my_key.id,
+ *     cryptoKey: myKey.id,
  * });
  * ```
  */
@@ -111,7 +111,7 @@ export interface GetKMSCryptoKeyVersionResult {
  *     keyRing: myKeyRing.id,
  * }));
  * const myCryptoKeyVersion = gcp.kms.getKMSCryptoKeyVersion({
- *     cryptoKey: data.google_kms_crypto_key.my_key.id,
+ *     cryptoKey: myKey.id,
  * });
  * ```
  */

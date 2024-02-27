@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.secretmanager.getSecretIamPolicy({
- *     project: google_secret_manager_secret["secret-basic"].project,
- *     secretId: google_secret_manager_secret["secret-basic"].secret_id,
+ *     project: secret_basic.project,
+ *     secretId: secret_basic.secretId,
  * });
  * ```
  */
@@ -70,8 +70,8 @@ export interface GetSecretIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.secretmanager.getSecretIamPolicy({
- *     project: google_secret_manager_secret["secret-basic"].project,
- *     secretId: google_secret_manager_secret["secret-basic"].secret_id,
+ *     project: secret_basic.project,
+ *     secretId: secret_basic.secretId,
  * });
  * ```
  */

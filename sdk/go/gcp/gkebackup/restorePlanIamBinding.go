@@ -37,6 +37,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Name:             pulumi.String("restore-all-ns-cluster"),
 //				Location:         pulumi.String("us-central1"),
 //				InitialNodeCount: pulumi.Int(1),
 //				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
@@ -55,6 +56,7 @@ import (
 //				return err
 //			}
 //			basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
+//				Name:     pulumi.String("restore-all-ns"),
 //				Cluster:  primary.ID(),
 //				Location: pulumi.String("us-central1"),
 //				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
@@ -66,7 +68,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gkebackup.NewRestorePlan(ctx, "allNs", &gkebackup.RestorePlanArgs{
+//			_, err = gkebackup.NewRestorePlan(ctx, "all_ns", &gkebackup.RestorePlanArgs{
+//				Name:       pulumi.String("restore-all-ns"),
 //				Location:   pulumi.String("us-central1"),
 //				BackupPlan: basic.ID(),
 //				Cluster:    primary.ID(),
@@ -104,6 +107,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Name:             pulumi.String("rollback-ns-cluster"),
 //				Location:         pulumi.String("us-central1"),
 //				InitialNodeCount: pulumi.Int(1),
 //				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
@@ -122,6 +126,7 @@ import (
 //				return err
 //			}
 //			basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
+//				Name:     pulumi.String("rollback-ns"),
 //				Cluster:  primary.ID(),
 //				Location: pulumi.String("us-central1"),
 //				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
@@ -133,7 +138,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gkebackup.NewRestorePlan(ctx, "rollbackNs", &gkebackup.RestorePlanArgs{
+//			_, err = gkebackup.NewRestorePlan(ctx, "rollback_ns", &gkebackup.RestorePlanArgs{
+//				Name:       pulumi.String("rollback-ns-rp"),
 //				Location:   pulumi.String("us-central1"),
 //				BackupPlan: basic.ID(),
 //				Cluster:    primary.ID(),
@@ -184,6 +190,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Name:             pulumi.String("rollback-app-cluster"),
 //				Location:         pulumi.String("us-central1"),
 //				InitialNodeCount: pulumi.Int(1),
 //				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
@@ -202,6 +209,7 @@ import (
 //				return err
 //			}
 //			basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
+//				Name:     pulumi.String("rollback-app"),
 //				Cluster:  primary.ID(),
 //				Location: pulumi.String("us-central1"),
 //				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
@@ -213,7 +221,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gkebackup.NewRestorePlan(ctx, "rollbackApp", &gkebackup.RestorePlanArgs{
+//			_, err = gkebackup.NewRestorePlan(ctx, "rollback_app", &gkebackup.RestorePlanArgs{
+//				Name:       pulumi.String("rollback-app-rp"),
 //				Location:   pulumi.String("us-central1"),
 //				BackupPlan: basic.ID(),
 //				Cluster:    primary.ID(),
@@ -257,6 +266,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Name:             pulumi.String("all-groupkinds-cluster"),
 //				Location:         pulumi.String("us-central1"),
 //				InitialNodeCount: pulumi.Int(1),
 //				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
@@ -275,6 +285,7 @@ import (
 //				return err
 //			}
 //			basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
+//				Name:     pulumi.String("all-groupkinds"),
 //				Cluster:  primary.ID(),
 //				Location: pulumi.String("us-central1"),
 //				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
@@ -286,7 +297,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gkebackup.NewRestorePlan(ctx, "allClusterResources", &gkebackup.RestorePlanArgs{
+//			_, err = gkebackup.NewRestorePlan(ctx, "all_cluster_resources", &gkebackup.RestorePlanArgs{
+//				Name:       pulumi.String("all-groupkinds-rp"),
 //				Location:   pulumi.String("us-central1"),
 //				BackupPlan: basic.ID(),
 //				Cluster:    primary.ID(),
@@ -323,6 +335,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Name:             pulumi.String("rename-ns-cluster"),
 //				Location:         pulumi.String("us-central1"),
 //				InitialNodeCount: pulumi.Int(1),
 //				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
@@ -341,6 +354,7 @@ import (
 //				return err
 //			}
 //			basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
+//				Name:     pulumi.String("rename-ns"),
 //				Cluster:  primary.ID(),
 //				Location: pulumi.String("us-central1"),
 //				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
@@ -352,7 +366,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gkebackup.NewRestorePlan(ctx, "renameNs", &gkebackup.RestorePlanArgs{
+//			_, err = gkebackup.NewRestorePlan(ctx, "rename_ns", &gkebackup.RestorePlanArgs{
+//				Name:       pulumi.String("rename-ns-rp"),
 //				Location:   pulumi.String("us-central1"),
 //				BackupPlan: basic.ID(),
 //				Cluster:    primary.ID(),
@@ -428,6 +443,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Name:             pulumi.String("transform-rule-cluster"),
 //				Location:         pulumi.String("us-central1"),
 //				InitialNodeCount: pulumi.Int(1),
 //				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
@@ -446,6 +462,7 @@ import (
 //				return err
 //			}
 //			basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
+//				Name:     pulumi.String("transform-rule"),
 //				Cluster:  primary.ID(),
 //				Location: pulumi.String("us-central1"),
 //				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
@@ -457,7 +474,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gkebackup.NewRestorePlan(ctx, "transformRule", &gkebackup.RestorePlanArgs{
+//			_, err = gkebackup.NewRestorePlan(ctx, "transform_rule", &gkebackup.RestorePlanArgs{
+//				Name:        pulumi.String("transform-rule-rp"),
 //				Description: pulumi.String("copy nginx env variables"),
 //				Labels: pulumi.StringMap{
 //					"app": pulumi.String("nginx"),

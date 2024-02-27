@@ -22,11 +22,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const serviceAccount = new gcp.serviceaccount.Account("serviceAccount", {
+ * const serviceAccount = new gcp.serviceaccount.Account("service_account", {
  *     accountId: "my-account",
  *     displayName: "Service Account",
  * });
  * const primary = new gcp.dataflow.Pipeline("primary", {
+ *     name: "my-pipeline",
  *     displayName: "my-pipeline",
  *     type: "PIPELINE_TYPE_BATCH",
  *     state: "STATE_ACTIVE",

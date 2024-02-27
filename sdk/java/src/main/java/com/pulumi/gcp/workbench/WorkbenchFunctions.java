@@ -40,9 +40,9 @@ public final class WorkbenchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = WorkbenchFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(google_workbench_instance.instance().project())
-     *             .location(google_workbench_instance.instance().location())
-     *             .name(google_workbench_instance.instance().name())
+     *             .project(instance.project())
+     *             .location(instance.location())
+     *             .name(instance.name())
      *             .build());
      * 
      *     }
@@ -79,9 +79,9 @@ public final class WorkbenchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = WorkbenchFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(google_workbench_instance.instance().project())
-     *             .location(google_workbench_instance.instance().location())
-     *             .name(google_workbench_instance.instance().name())
+     *             .project(instance.project())
+     *             .location(instance.location())
+     *             .name(instance.name())
      *             .build());
      * 
      *     }
@@ -118,9 +118,9 @@ public final class WorkbenchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = WorkbenchFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(google_workbench_instance.instance().project())
-     *             .location(google_workbench_instance.instance().location())
-     *             .name(google_workbench_instance.instance().name())
+     *             .project(instance.project())
+     *             .location(instance.location())
+     *             .name(instance.name())
      *             .build());
      * 
      *     }
@@ -157,9 +157,9 @@ public final class WorkbenchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = WorkbenchFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(google_workbench_instance.instance().project())
-     *             .location(google_workbench_instance.instance().location())
-     *             .name(google_workbench_instance.instance().name())
+     *             .project(instance.project())
+     *             .location(instance.location())
+     *             .name(instance.name())
      *             .build());
      * 
      *     }

@@ -29,18 +29,21 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
+    ///         Name = "network-1",
     ///         RoutingMode = "GLOBAL",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     var haGateway = new Gcp.Compute.HaVpnGateway("haGateway", new()
+    ///     var haGateway = new Gcp.Compute.HaVpnGateway("ha_gateway", new()
     ///     {
     ///         Region = "us-central1",
+    ///         Name = "ha-vpn",
     ///         Network = network.Id,
     ///     });
     /// 
-    ///     var externalGateway = new Gcp.Compute.ExternalVpnGateway("externalGateway", new()
+    ///     var externalGateway = new Gcp.Compute.ExternalVpnGateway("external_gateway", new()
     ///     {
+    ///         Name = "external-gateway",
     ///         RedundancyType = "SINGLE_IP_INTERNALLY_REDUNDANT",
     ///         Description = "An externally managed VPN gateway",
     ///         Interfaces = new[]
@@ -53,15 +56,17 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///     });
     /// 
-    ///     var networkSubnet1 = new Gcp.Compute.Subnetwork("networkSubnet1", new()
+    ///     var networkSubnet1 = new Gcp.Compute.Subnetwork("network_subnet1", new()
     ///     {
+    ///         Name = "ha-vpn-subnet-1",
     ///         IpCidrRange = "10.0.1.0/24",
     ///         Region = "us-central1",
     ///         Network = network.Id,
     ///     });
     /// 
-    ///     var networkSubnet2 = new Gcp.Compute.Subnetwork("networkSubnet2", new()
+    ///     var networkSubnet2 = new Gcp.Compute.Subnetwork("network_subnet2", new()
     ///     {
+    ///         Name = "ha-vpn-subnet-2",
     ///         IpCidrRange = "10.0.2.0/24",
     ///         Region = "us-west1",
     ///         Network = network.Id,
@@ -69,6 +74,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var router1 = new Gcp.Compute.Router("router1", new()
     ///     {
+    ///         Name = "ha-vpn-router1",
     ///         Network = network.Name,
     ///         Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
     ///         {
@@ -78,6 +84,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var tunnel1 = new Gcp.Compute.VPNTunnel("tunnel1", new()
     ///     {
+    ///         Name = "ha-vpn-tunnel1",
     ///         Region = "us-central1",
     ///         VpnGateway = haGateway.Id,
     ///         PeerExternalGateway = externalGateway.Id,
@@ -89,6 +96,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var tunnel2 = new Gcp.Compute.VPNTunnel("tunnel2", new()
     ///     {
+    ///         Name = "ha-vpn-tunnel2",
     ///         Region = "us-central1",
     ///         VpnGateway = haGateway.Id,
     ///         PeerExternalGateway = externalGateway.Id,
@@ -98,16 +106,18 @@ namespace Pulumi.Gcp.Compute
     ///         VpnGatewayInterface = 1,
     ///     });
     /// 
-    ///     var router1Interface1 = new Gcp.Compute.RouterInterface("router1Interface1", new()
+    ///     var router1Interface1 = new Gcp.Compute.RouterInterface("router1_interface1", new()
     ///     {
+    ///         Name = "router1-interface1",
     ///         Router = router1.Name,
     ///         Region = "us-central1",
     ///         IpRange = "169.254.0.1/30",
     ///         VpnTunnel = tunnel1.Name,
     ///     });
     /// 
-    ///     var router1Peer1 = new Gcp.Compute.RouterPeer("router1Peer1", new()
+    ///     var router1Peer1 = new Gcp.Compute.RouterPeer("router1_peer1", new()
     ///     {
+    ///         Name = "router1-peer1",
     ///         Router = router1.Name,
     ///         Region = "us-central1",
     ///         PeerIpAddress = "169.254.0.2",
@@ -116,16 +126,18 @@ namespace Pulumi.Gcp.Compute
     ///         Interface = router1Interface1.Name,
     ///     });
     /// 
-    ///     var router1Interface2 = new Gcp.Compute.RouterInterface("router1Interface2", new()
+    ///     var router1Interface2 = new Gcp.Compute.RouterInterface("router1_interface2", new()
     ///     {
+    ///         Name = "router1-interface2",
     ///         Router = router1.Name,
     ///         Region = "us-central1",
     ///         IpRange = "169.254.1.1/30",
     ///         VpnTunnel = tunnel2.Name,
     ///     });
     /// 
-    ///     var router1Peer2 = new Gcp.Compute.RouterPeer("router1Peer2", new()
+    ///     var router1Peer2 = new Gcp.Compute.RouterPeer("router1_peer2", new()
     ///     {
+    ///         Name = "router1-peer2",
     ///         Router = router1.Name,
     ///         Region = "us-central1",
     ///         PeerIpAddress = "169.254.1.2",

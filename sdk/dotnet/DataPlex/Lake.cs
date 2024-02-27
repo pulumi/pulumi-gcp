@@ -25,14 +25,15 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var primary = new Gcp.DataPlex.Lake("primary", new()
     ///     {
+    ///         Location = "us-west1",
+    ///         Name = "lake",
     ///         Description = "Lake for DCL",
     ///         DisplayName = "Lake for DCL",
+    ///         Project = "my-project-name",
     ///         Labels = 
     ///         {
     ///             { "my-lake", "exists" },
     ///         },
-    ///         Location = "us-west1",
-    ///         Project = "my-project-name",
     ///     });
     /// 
     /// });

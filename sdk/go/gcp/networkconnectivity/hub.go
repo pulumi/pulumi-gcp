@@ -29,11 +29,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networkconnectivity.NewHub(ctx, "primary", &networkconnectivity.HubArgs{
+//				Name:        pulumi.String("hub"),
 //				Description: pulumi.String("A sample hub"),
+//				Project:     pulumi.String("my-project-name"),
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
-//				Project: pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
 //				return err

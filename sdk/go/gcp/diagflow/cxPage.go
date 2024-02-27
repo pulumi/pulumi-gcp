@@ -58,14 +58,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			myPage2, err := diagflow.NewCxPage(ctx, "myPage2", &diagflow.CxPageArgs{
+//			myPage2, err := diagflow.NewCxPage(ctx, "my_page2", &diagflow.CxPageArgs{
 //				Parent:      agent.StartFlow,
 //				DisplayName: pulumi.String("MyPage2"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			myWebhook, err := diagflow.NewCxWebhook(ctx, "myWebhook", &diagflow.CxWebhookArgs{
+//			myWebhook, err := diagflow.NewCxWebhook(ctx, "my_webhook", &diagflow.CxWebhookArgs{
 //				Parent:      agent.ID(),
 //				DisplayName: pulumi.String("MyWebhook"),
 //				GenericWebService: &diagflow.CxWebhookGenericWebServiceArgs{
@@ -405,7 +405,7 @@ import (
 //				return err
 //			}
 //			json15 := string(tmpJSON15)
-//			_, err = diagflow.NewCxPage(ctx, "basicPage", &diagflow.CxPageArgs{
+//			_, err = diagflow.NewCxPage(ctx, "basic_page", &diagflow.CxPageArgs{
 //				Parent:      agent.StartFlow,
 //				DisplayName: pulumi.String("MyPage"),
 //				EntryFulfillment: &diagflow.CxPageEntryFulfillmentArgs{

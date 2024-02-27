@@ -14,15 +14,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const gceInstanceSettings = new gcp.compute.InstanceSettings("gceInstanceSettings", {
+ * const gceInstanceSettings = new gcp.compute.InstanceSettings("gce_instance_settings", {
  *     zone: "us-east7-b",
  *     metadata: {
  *         items: {
  *             foo: "baz",
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

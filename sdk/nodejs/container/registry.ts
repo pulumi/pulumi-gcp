@@ -16,8 +16,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const registry = new gcp.container.Registry("registry", {
- *     location: "EU",
  *     project: "my-project",
+ *     location: "EU",
  * });
  * ```
  *

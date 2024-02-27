@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.bigtable.Instance("instance", {
+ *     name: "bt-instance",
  *     clusters: [
  *         {
  *             clusterId: "cluster-1",
@@ -57,6 +58,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.bigtable.Instance("instance", {
+ *     name: "bt-instance",
  *     clusters: [{
  *         clusterId: "cluster-1",
  *         zone: "us-central1-b",
@@ -82,6 +84,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.bigtable.Instance("instance", {
+ *     name: "bt-instance",
  *     clusters: [
  *         {
  *             clusterId: "cluster-1",
@@ -122,6 +125,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.bigtable.Instance("instance", {
+ *     name: "bt-instance",
  *     clusters: [{
  *         clusterId: "cluster-1",
  *         zone: "us-central1-b",

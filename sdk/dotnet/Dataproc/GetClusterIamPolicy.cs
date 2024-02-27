@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Dataproc
         /// {
         ///     var policy = Gcp.Dataproc.GetClusterIamPolicy.Invoke(new()
         ///     {
-        ///         Cluster = google_dataproc_cluster.Cluster.Name,
+        ///         Cluster = cluster.Name,
         ///         Region = "us-central1",
         ///     });
         /// 
@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.Dataproc
         /// {
         ///     var policy = Gcp.Dataproc.GetClusterIamPolicy.Invoke(new()
         ///     {
-        ///         Cluster = google_dataproc_cluster.Cluster.Name,
+        ///         Cluster = cluster.Name,
         ///         Region = "us-central1",
         ///     });
         /// 

@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basicInstance = new Instance(&#34;basicInstance&#34;, InstanceArgs.builder()        
+ *             .name(&#34;my-instance&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .type(&#34;BASIC&#34;)
  *             .build());
@@ -63,6 +64,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.appengine.AppengineFunctions;
  * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
  * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.GlobalAddress;
  * import com.pulumi.gcp.compute.GlobalAddressArgs;
  * import com.pulumi.gcp.datafusion.Instance;
@@ -84,9 +86,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = AppengineFunctions.getDefaultServiceAccount();
  * 
- *         var network = new Network(&#34;network&#34;);
+ *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
+ *             .name(&#34;datafusion-full-network&#34;)
+ *             .build());
  * 
  *         var privateIpAlloc = new GlobalAddress(&#34;privateIpAlloc&#34;, GlobalAddressArgs.builder()        
+ *             .name(&#34;datafusion-ip-alloc&#34;)
  *             .addressType(&#34;INTERNAL&#34;)
  *             .purpose(&#34;VPC_PEERING&#34;)
  *             .prefixLength(22)
@@ -94,6 +99,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var extendedInstance = new Instance(&#34;extendedInstance&#34;, InstanceArgs.builder()        
+ *             .name(&#34;my-instance&#34;)
  *             .description(&#34;My Data Fusion instance&#34;)
  *             .displayName(&#34;My Data Fusion instance&#34;)
  *             .region(&#34;us-central1&#34;)
@@ -131,14 +137,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.KeyRingArgs;
  * import com.pulumi.gcp.kms.CryptoKey;
  * import com.pulumi.gcp.kms.CryptoKeyArgs;
+ * import com.pulumi.gcp.datafusion.Instance;
+ * import com.pulumi.gcp.datafusion.InstanceArgs;
+ * import com.pulumi.gcp.datafusion.inputs.InstanceCryptoKeyConfigArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
- * import com.pulumi.gcp.datafusion.Instance;
- * import com.pulumi.gcp.datafusion.InstanceArgs;
- * import com.pulumi.gcp.datafusion.inputs.InstanceCryptoKeyConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -153,11 +158,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
+ *             .name(&#34;my-instance&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .build());
  * 
  *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
+ *             .name(&#34;my-instance&#34;)
  *             .keyRing(keyRing.id())
+ *             .build());
+ * 
+ *         var cmek = new Instance(&#34;cmek&#34;, InstanceArgs.builder()        
+ *             .name(&#34;my-instance&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .type(&#34;BASIC&#34;)
+ *             .cryptoKeyConfig(InstanceCryptoKeyConfigArgs.builder()
+ *                 .keyReference(cryptoKey.id())
+ *                 .build())
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
@@ -167,16 +183,6 @@ import javax.annotation.Nullable;
  *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
  *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-datafusion.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
  *             .build());
- * 
- *         var cmek = new Instance(&#34;cmek&#34;, InstanceArgs.builder()        
- *             .region(&#34;us-central1&#34;)
- *             .type(&#34;BASIC&#34;)
- *             .cryptoKeyConfig(InstanceCryptoKeyConfigArgs.builder()
- *                 .keyReference(cryptoKey.id())
- *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(cryptoKeyMember)
- *                 .build());
  * 
  *     }
  * }
@@ -204,9 +210,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var enterpriseInstance = new Instance(&#34;enterpriseInstance&#34;, InstanceArgs.builder()        
- *             .enableRbac(true)
+ *             .name(&#34;my-instance&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .type(&#34;ENTERPRISE&#34;)
+ *             .enableRbac(true)
  *             .build());
  * 
  *     }
@@ -220,6 +227,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
  * import com.pulumi.gcp.datafusion.Instance;
  * import com.pulumi.gcp.datafusion.InstanceArgs;
  * import com.pulumi.gcp.datafusion.inputs.InstanceEventPublishConfigArgs;
@@ -236,9 +244,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var eventTopic = new Topic(&#34;eventTopic&#34;);
+ *         var eventTopic = new Topic(&#34;eventTopic&#34;, TopicArgs.builder()        
+ *             .name(&#34;my-instance&#34;)
+ *             .build());
  * 
- *         var eventInstance = new Instance(&#34;eventInstance&#34;, InstanceArgs.builder()        
+ *         var event = new Instance(&#34;event&#34;, InstanceArgs.builder()        
+ *             .name(&#34;my-instance&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .type(&#34;BASIC&#34;)
  *             .eventPublishConfig(InstanceEventPublishConfigArgs.builder()
@@ -273,9 +284,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var zone = new Instance(&#34;zone&#34;, InstanceArgs.builder()        
+ *             .name(&#34;my-instance&#34;)
  *             .region(&#34;us-central1&#34;)
- *             .type(&#34;DEVELOPER&#34;)
  *             .zone(&#34;us-central1-a&#34;)
+ *             .type(&#34;DEVELOPER&#34;)
  *             .build());
  * 
  *     }

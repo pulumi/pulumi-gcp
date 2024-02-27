@@ -22,7 +22,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const tplInstanceTemplate = new gcp.compute.InstanceTemplate("tplInstanceTemplate", {
+ * const tpl = new gcp.compute.InstanceTemplate("tpl", {
+ *     name: "template",
  *     machineType: "e2-medium",
  *     disks: [{
  *         sourceImage: "debian-cloud/debian-11",
@@ -38,9 +39,10 @@ import * as utilities from "../utilities";
  *     },
  *     canIpForward: true,
  * });
- * const tplInstanceFromTemplate = new gcp.compute.InstanceFromTemplate("tplInstanceFromTemplate", {
+ * const tplInstanceFromTemplate = new gcp.compute.InstanceFromTemplate("tpl", {
+ *     name: "instance-from-template",
  *     zone: "us-central1-a",
- *     sourceInstanceTemplate: tplInstanceTemplate.selfLinkUnique,
+ *     sourceInstanceTemplate: tpl.selfLinkUnique,
  *     canIpForward: false,
  *     labels: {
  *         my_key: "my_value",

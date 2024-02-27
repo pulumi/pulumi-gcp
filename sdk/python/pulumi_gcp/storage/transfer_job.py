@@ -375,24 +375,24 @@ class TransferJob(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.storage.get_transfer_project_service_account(project=var["project"])
-        s3_backup_bucket_bucket = gcp.storage.Bucket("s3-backup-bucketBucket",
+        default = gcp.storage.get_transfer_project_service_account(project=project)
+        s3_backup_bucket = gcp.storage.Bucket("s3-backup-bucket",
+            name=f"{aws_s3_bucket}-backup",
             storage_class="NEARLINE",
-            project=var["project"],
+            project=project,
             location="US")
-        s3_backup_bucket_bucket_iam_member = gcp.storage.BucketIAMMember("s3-backup-bucketBucketIAMMember",
-            bucket=s3_backup_bucket_bucket.name,
+        s3_backup_bucket_bucket_iam_member = gcp.storage.BucketIAMMember("s3-backup-bucket",
+            bucket=s3_backup_bucket.name,
             role="roles/storage.admin",
-            member=f"serviceAccount:{default.email}",
-            opts=pulumi.ResourceOptions(depends_on=[s3_backup_bucket_bucket]))
-        topic = gcp.pubsub.Topic("topic")
-        notification_config = gcp.pubsub.TopicIAMMember("notificationConfig",
+            member=f"serviceAccount:{default.email}")
+        topic = gcp.pubsub.Topic("topic", name=pubsub_topic_name)
+        notification_config = gcp.pubsub.TopicIAMMember("notification_config",
             topic=topic.id,
             role="roles/pubsub.publisher",
             member=f"serviceAccount:{default.email}")
         s3_bucket_nightly_backup = gcp.storage.TransferJob("s3-bucket-nightly-backup",
             description="Nightly backup of S3 bucket",
-            project=var["project"],
+            project=project,
             transfer_spec=gcp.storage.TransferJobTransferSpecArgs(
                 object_conditions=gcp.storage.TransferJobTransferSpecObjectConditionsArgs(
                     max_time_elapsed_since_last_modification="600s",
@@ -402,14 +402,14 @@ class TransferJob(pulumi.CustomResource):
                     delete_objects_unique_in_sink=False,
                 ),
                 aws_s3_data_source=gcp.storage.TransferJobTransferSpecAwsS3DataSourceArgs(
-                    bucket_name=var["aws_s3_bucket"],
+                    bucket_name=aws_s3_bucket,
                     aws_access_key=gcp.storage.TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs(
-                        access_key_id=var["aws_access_key"],
-                        secret_access_key=var["aws_secret_key"],
+                        access_key_id=aws_access_key,
+                        secret_access_key=aws_secret_key,
                     ),
                 ),
                 gcs_data_sink=gcp.storage.TransferJobTransferSpecGcsDataSinkArgs(
-                    bucket_name=s3_backup_bucket_bucket.name,
+                    bucket_name=s3_backup_bucket.name,
                     path="foo/bar/",
                 ),
             ),
@@ -439,11 +439,7 @@ class TransferJob(pulumi.CustomResource):
                     "TRANSFER_OPERATION_FAILED",
                 ],
                 payload_format="JSON",
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[
-                    s3_backup_bucket_bucket_iam_member,
-                    notification_config,
-                ]))
+            ))
         ```
 
         ## Import
@@ -496,24 +492,24 @@ class TransferJob(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.storage.get_transfer_project_service_account(project=var["project"])
-        s3_backup_bucket_bucket = gcp.storage.Bucket("s3-backup-bucketBucket",
+        default = gcp.storage.get_transfer_project_service_account(project=project)
+        s3_backup_bucket = gcp.storage.Bucket("s3-backup-bucket",
+            name=f"{aws_s3_bucket}-backup",
             storage_class="NEARLINE",
-            project=var["project"],
+            project=project,
             location="US")
-        s3_backup_bucket_bucket_iam_member = gcp.storage.BucketIAMMember("s3-backup-bucketBucketIAMMember",
-            bucket=s3_backup_bucket_bucket.name,
+        s3_backup_bucket_bucket_iam_member = gcp.storage.BucketIAMMember("s3-backup-bucket",
+            bucket=s3_backup_bucket.name,
             role="roles/storage.admin",
-            member=f"serviceAccount:{default.email}",
-            opts=pulumi.ResourceOptions(depends_on=[s3_backup_bucket_bucket]))
-        topic = gcp.pubsub.Topic("topic")
-        notification_config = gcp.pubsub.TopicIAMMember("notificationConfig",
+            member=f"serviceAccount:{default.email}")
+        topic = gcp.pubsub.Topic("topic", name=pubsub_topic_name)
+        notification_config = gcp.pubsub.TopicIAMMember("notification_config",
             topic=topic.id,
             role="roles/pubsub.publisher",
             member=f"serviceAccount:{default.email}")
         s3_bucket_nightly_backup = gcp.storage.TransferJob("s3-bucket-nightly-backup",
             description="Nightly backup of S3 bucket",
-            project=var["project"],
+            project=project,
             transfer_spec=gcp.storage.TransferJobTransferSpecArgs(
                 object_conditions=gcp.storage.TransferJobTransferSpecObjectConditionsArgs(
                     max_time_elapsed_since_last_modification="600s",
@@ -523,14 +519,14 @@ class TransferJob(pulumi.CustomResource):
                     delete_objects_unique_in_sink=False,
                 ),
                 aws_s3_data_source=gcp.storage.TransferJobTransferSpecAwsS3DataSourceArgs(
-                    bucket_name=var["aws_s3_bucket"],
+                    bucket_name=aws_s3_bucket,
                     aws_access_key=gcp.storage.TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs(
-                        access_key_id=var["aws_access_key"],
-                        secret_access_key=var["aws_secret_key"],
+                        access_key_id=aws_access_key,
+                        secret_access_key=aws_secret_key,
                     ),
                 ),
                 gcs_data_sink=gcp.storage.TransferJobTransferSpecGcsDataSinkArgs(
-                    bucket_name=s3_backup_bucket_bucket.name,
+                    bucket_name=s3_backup_bucket.name,
                     path="foo/bar/",
                 ),
             ),
@@ -560,11 +556,7 @@ class TransferJob(pulumi.CustomResource):
                     "TRANSFER_OPERATION_FAILED",
                 ],
                 payload_format="JSON",
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[
-                    s3_backup_bucket_bucket_iam_member,
-                    notification_config,
-                ]))
+            ))
         ```
 
         ## Import

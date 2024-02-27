@@ -21,12 +21,13 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const sampleendpointattachment = new gcp.integrationconnectors.EndpointAttachment("sampleendpointattachment", {
+ *     name: "test-endpoint-attachment",
+ *     location: "us-central1",
  *     description: "tf created description",
+ *     serviceAttachment: "projects/connectors-example/regions/us-central1/serviceAttachments/test",
  *     labels: {
  *         foo: "bar",
  *     },
- *     location: "us-central1",
- *     serviceAttachment: "projects/connectors-example/regions/us-central1/serviceAttachments/test",
  * });
  * ```
  *

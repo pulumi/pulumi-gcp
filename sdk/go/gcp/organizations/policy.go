@@ -38,12 +38,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.NewPolicy(ctx, "serialPortPolicy", &organizations.PolicyArgs{
+//			_, err := organizations.NewPolicy(ctx, "serial_port_policy", &organizations.PolicyArgs{
+//				OrgId:      pulumi.String("123456789"),
+//				Constraint: pulumi.String("compute.disableSerialPortAccess"),
 //				BooleanPolicy: &organizations.PolicyBooleanPolicyArgs{
 //					Enforced: pulumi.Bool(true),
 //				},
-//				Constraint: pulumi.String("compute.disableSerialPortAccess"),
-//				OrgId:      pulumi.String("123456789"),
 //			})
 //			if err != nil {
 //				return err
@@ -68,14 +68,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.NewPolicy(ctx, "servicesPolicy", &organizations.PolicyArgs{
+//			_, err := organizations.NewPolicy(ctx, "services_policy", &organizations.PolicyArgs{
+//				OrgId:      pulumi.String("123456789"),
 //				Constraint: pulumi.String("serviceuser.services"),
 //				ListPolicy: &organizations.PolicyListPolicyArgs{
 //					Allow: &organizations.PolicyListPolicyAllowArgs{
 //						All: pulumi.Bool(true),
 //					},
 //				},
-//				OrgId: pulumi.String("123456789"),
 //			})
 //			if err != nil {
 //				return err
@@ -100,17 +100,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.NewPolicy(ctx, "servicesPolicy", &organizations.PolicyArgs{
+//			_, err := organizations.NewPolicy(ctx, "services_policy", &organizations.PolicyArgs{
+//				OrgId:      pulumi.String("123456789"),
 //				Constraint: pulumi.String("serviceuser.services"),
 //				ListPolicy: &organizations.PolicyListPolicyArgs{
+//					SuggestedValue: pulumi.String("compute.googleapis.com"),
 //					Deny: &organizations.PolicyListPolicyDenyArgs{
 //						Values: pulumi.StringArray{
 //							pulumi.String("cloudresourcemanager.googleapis.com"),
 //						},
 //					},
-//					SuggestedValue: pulumi.String("compute.googleapis.com"),
 //				},
-//				OrgId: pulumi.String("123456789"),
 //			})
 //			if err != nil {
 //				return err
@@ -135,9 +135,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.NewPolicy(ctx, "servicesPolicy", &organizations.PolicyArgs{
-//				Constraint: pulumi.String("serviceuser.services"),
+//			_, err := organizations.NewPolicy(ctx, "services_policy", &organizations.PolicyArgs{
 //				OrgId:      pulumi.String("123456789"),
+//				Constraint: pulumi.String("serviceuser.services"),
 //				RestorePolicy: &organizations.PolicyRestorePolicyArgs{
 //					Default: pulumi.Bool(true),
 //				},

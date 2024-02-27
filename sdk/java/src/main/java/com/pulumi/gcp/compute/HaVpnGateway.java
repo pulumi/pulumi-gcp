@@ -54,11 +54,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
+ *             .name(&#34;network1&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var haGateway1 = new HaVpnGateway(&#34;haGateway1&#34;, HaVpnGatewayArgs.builder()        
  *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;ha-vpn-1&#34;)
  *             .network(network1.id())
  *             .build());
  * 
@@ -90,11 +92,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
+ *             .name(&#34;network1&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var haGateway1 = new HaVpnGateway(&#34;haGateway1&#34;, HaVpnGatewayArgs.builder()        
  *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;ha-vpn-1&#34;)
  *             .network(network1.id())
  *             .stackType(&#34;IPV4_IPV6&#34;)
  *             .build());
@@ -135,10 +139,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
+ *             .name(&#34;test-network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var address1 = new Address(&#34;address1&#34;, AddressArgs.builder()        
+ *             .name(&#34;test-address1&#34;)
  *             .addressType(&#34;INTERNAL&#34;)
  *             .purpose(&#34;IPSEC_INTERCONNECT&#34;)
  *             .address(&#34;192.168.1.0&#34;)
@@ -147,6 +153,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var router = new Router(&#34;router&#34;, RouterArgs.builder()        
+ *             .name(&#34;test-router&#34;)
  *             .network(network.name())
  *             .encryptedInterconnectRouter(true)
  *             .bgp(RouterBgpArgs.builder()
@@ -155,6 +162,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var attachment1 = new InterconnectAttachment(&#34;attachment1&#34;, InterconnectAttachmentArgs.builder()        
+ *             .name(&#34;test-interconnect-attachment1&#34;)
  *             .edgeAvailabilityDomain(&#34;AVAILABILITY_DOMAIN_1&#34;)
  *             .type(&#34;PARTNER&#34;)
  *             .router(router.id())
@@ -163,6 +171,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var address2 = new Address(&#34;address2&#34;, AddressArgs.builder()        
+ *             .name(&#34;test-address2&#34;)
  *             .addressType(&#34;INTERNAL&#34;)
  *             .purpose(&#34;IPSEC_INTERCONNECT&#34;)
  *             .address(&#34;192.168.2.0&#34;)
@@ -171,6 +180,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var attachment2 = new InterconnectAttachment(&#34;attachment2&#34;, InterconnectAttachmentArgs.builder()        
+ *             .name(&#34;test-interconnect-attachment2&#34;)
  *             .edgeAvailabilityDomain(&#34;AVAILABILITY_DOMAIN_2&#34;)
  *             .type(&#34;PARTNER&#34;)
  *             .router(router.id())
@@ -179,6 +189,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var vpn_gateway = new HaVpnGateway(&#34;vpn-gateway&#34;, HaVpnGatewayArgs.builder()        
+ *             .name(&#34;test-ha-vpngw&#34;)
  *             .network(network.id())
  *             .vpnInterfaces(            
  *                 HaVpnGatewayVpnInterfaceArgs.builder()

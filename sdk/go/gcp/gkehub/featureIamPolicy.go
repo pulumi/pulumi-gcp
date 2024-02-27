@@ -55,8 +55,9 @@ import (
 //				return err
 //			}
 //			_, err = gkehub.NewFeatureIamPolicy(ctx, "policy", &gkehub.FeatureIamPolicyArgs{
-//				Project:    pulumi.Any(google_gke_hub_feature.Feature.Project),
-//				Location:   pulumi.Any(google_gke_hub_feature.Feature.Location),
+//				Project:    pulumi.Any(feature.Project),
+//				Location:   pulumi.Any(feature.Location),
+//				Name:       pulumi.Any(feature.Name),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -83,8 +84,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.NewFeatureIamBinding(ctx, "binding", &gkehub.FeatureIamBindingArgs{
-//				Project:  pulumi.Any(google_gke_hub_feature.Feature.Project),
-//				Location: pulumi.Any(google_gke_hub_feature.Feature.Location),
+//				Project:  pulumi.Any(feature.Project),
+//				Location: pulumi.Any(feature.Location),
+//				Name:     pulumi.Any(feature.Name),
 //				Role:     pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -114,8 +116,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.NewFeatureIamMember(ctx, "member", &gkehub.FeatureIamMemberArgs{
-//				Project:  pulumi.Any(google_gke_hub_feature.Feature.Project),
-//				Location: pulumi.Any(google_gke_hub_feature.Feature.Location),
+//				Project:  pulumi.Any(feature.Project),
+//				Location: pulumi.Any(feature.Location),
+//				Name:     pulumi.Any(feature.Name),
 //				Role:     pulumi.String("roles/viewer"),
 //				Member:   pulumi.String("user:jane@example.com"),
 //			})

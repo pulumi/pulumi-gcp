@@ -31,7 +31,7 @@ import (
 //				Project:      pulumi.String("my-project-name"),
 //				SiteId:       pulumi.String("site-id"),
 //				CustomDomain: pulumi.String("custom.domain.com"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -54,21 +54,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultHostingSite, err := firebase.NewHostingSite(ctx, "defaultHostingSite", &firebase.HostingSiteArgs{
+//			_, err := firebase.NewHostingSite(ctx, "default", &firebase.HostingSiteArgs{
 //				Project: pulumi.String("my-project-name"),
 //				SiteId:  pulumi.String("site-id-full"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = firebase.NewHostingCustomDomain(ctx, "defaultHostingCustomDomain", &firebase.HostingCustomDomainArgs{
+//			_, err = firebase.NewHostingCustomDomain(ctx, "default", &firebase.HostingCustomDomainArgs{
 //				Project:             pulumi.String("my-project-name"),
-//				SiteId:              defaultHostingSite.SiteId,
+//				SiteId:              _default.SiteId,
 //				CustomDomain:        pulumi.String("source.domain.com"),
 //				CertPreference:      pulumi.String("GROUPED"),
 //				RedirectTarget:      pulumi.String("destination.domain.com"),
 //				WaitDnsVerification: pulumi.Bool(false),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -92,15 +92,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultHostingSite, err := firebase.NewHostingSite(ctx, "defaultHostingSite", &firebase.HostingSiteArgs{
+//			_, err := firebase.NewHostingSite(ctx, "default", &firebase.HostingSiteArgs{
 //				Project: pulumi.String("my-project-name"),
 //				SiteId:  pulumi.String("site-id"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultService, err := cloudrunv2.NewService(ctx, "defaultService", &cloudrunv2.ServiceArgs{
+//			defaultService, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
 //				Project:  pulumi.String("my-project-name"),
+//				Name:     pulumi.String("cloud-run-service-via-hosting"),
 //				Location: pulumi.String("us-central1"),
 //				Ingress:  pulumi.String("INGRESS_TRAFFIC_ALL"),
 //				Template: &cloudrunv2.ServiceTemplateArgs{
@@ -110,12 +111,12 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultHostingVersion, err := firebase.NewHostingVersion(ctx, "defaultHostingVersion", &firebase.HostingVersionArgs{
-//				SiteId: defaultHostingSite.SiteId,
+//			defaultHostingVersion, err := firebase.NewHostingVersion(ctx, "default", &firebase.HostingVersionArgs{
+//				SiteId: _default.SiteId,
 //				Config: &firebase.HostingVersionConfigArgs{
 //					Rewrites: firebase.HostingVersionConfigRewriteArray{
 //						&firebase.HostingVersionConfigRewriteArgs{
@@ -127,24 +128,24 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = firebase.NewHostingRelease(ctx, "defaultHostingRelease", &firebase.HostingReleaseArgs{
-//				SiteId:      defaultHostingSite.SiteId,
+//			_, err = firebase.NewHostingRelease(ctx, "default", &firebase.HostingReleaseArgs{
+//				SiteId:      _default.SiteId,
 //				VersionName: defaultHostingVersion.Name,
 //				Message:     pulumi.String("Cloud Run Integration"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = firebase.NewHostingCustomDomain(ctx, "defaultHostingCustomDomain", &firebase.HostingCustomDomainArgs{
+//			_, err = firebase.NewHostingCustomDomain(ctx, "default", &firebase.HostingCustomDomainArgs{
 //				Project:             pulumi.String("my-project-name"),
-//				SiteId:              defaultHostingSite.SiteId,
+//				SiteId:              _default.SiteId,
 //				CustomDomain:        pulumi.String("run.custom.domain.com"),
 //				WaitDnsVerification: pulumi.Bool(false),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

@@ -38,12 +38,14 @@ import * as utilities from "../utilities";
  *     project: "debian-cloud",
  * });
  * const persistent = new gcp.compute.Disk("persistent", {
+ *     name: "debian-disk",
  *     image: debian.then(debian => debian.selfLink),
  *     size: 10,
  *     type: "pd-ssd",
  *     zone: "us-central1-a",
  * });
  * const snapshot = new gcp.compute.Snapshot("snapshot", {
+ *     name: "my-snapshot",
  *     sourceDisk: persistent.id,
  *     zone: "us-central1-a",
  *     labels: {
@@ -63,12 +65,14 @@ import * as utilities from "../utilities";
  *     project: "debian-cloud",
  * });
  * const persistent = new gcp.compute.Disk("persistent", {
+ *     name: "debian-disk",
  *     image: debian.then(debian => debian.selfLink),
  *     size: 10,
  *     type: "pd-ssd",
  *     zone: "us-central1-a",
  * });
  * const snapshot = new gcp.compute.Snapshot("snapshot", {
+ *     name: "my-snapshot",
  *     sourceDisk: persistent.id,
  *     zone: "us-central1-a",
  *     chainName: "snapshot-chain",

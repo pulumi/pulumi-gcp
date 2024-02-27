@@ -36,10 +36,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := beyondcorp.NewAppGateway(ctx, "appGateway", &beyondcorp.AppGatewayArgs{
-//				HostType: pulumi.String("GCP_REGIONAL_MIG"),
-//				Region:   pulumi.String("us-central1"),
+//			_, err := beyondcorp.NewAppGateway(ctx, "app_gateway", &beyondcorp.AppGatewayArgs{
+//				Name:     pulumi.String("my-app-gateway"),
 //				Type:     pulumi.String("TCP_PROXY"),
+//				Region:   pulumi.String("us-central1"),
+//				HostType: pulumi.String("GCP_REGIONAL_MIG"),
 //			})
 //			if err != nil {
 //				return err
@@ -63,15 +64,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := beyondcorp.NewAppGateway(ctx, "appGateway", &beyondcorp.AppGatewayArgs{
+//			_, err := beyondcorp.NewAppGateway(ctx, "app_gateway", &beyondcorp.AppGatewayArgs{
+//				Name:        pulumi.String("my-app-gateway"),
+//				Type:        pulumi.String("TCP_PROXY"),
+//				Region:      pulumi.String("us-central1"),
 //				DisplayName: pulumi.String("some display name"),
-//				HostType:    pulumi.String("GCP_REGIONAL_MIG"),
 //				Labels: pulumi.StringMap{
-//					"bar": pulumi.String("baz"),
 //					"foo": pulumi.String("bar"),
+//					"bar": pulumi.String("baz"),
 //				},
-//				Region: pulumi.String("us-central1"),
-//				Type:   pulumi.String("TCP_PROXY"),
+//				HostType: pulumi.String("GCP_REGIONAL_MIG"),
 //			})
 //			if err != nil {
 //				return err

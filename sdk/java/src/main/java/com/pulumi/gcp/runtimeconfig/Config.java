@@ -40,6 +40,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var my_runtime_config = new Config(&#34;my-runtime-config&#34;, ConfigArgs.builder()        
+ *             .name(&#34;my-service-runtime-config&#34;)
  *             .description(&#34;Runtime configuration values for my service&#34;)
  *             .build());
  * 

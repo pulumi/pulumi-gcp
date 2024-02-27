@@ -27,12 +27,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networksecurity.NewClientTlsPolicy(ctx, "default", &networksecurity.ClientTlsPolicyArgs{
+//				Name: pulumi.String("my-client-tls-policy"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
 //				Description: pulumi.String("my description"),
 //				Sni:         pulumi.String("secure.example.com"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -56,6 +57,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networksecurity.NewClientTlsPolicy(ctx, "default", &networksecurity.ClientTlsPolicyArgs{
+//				Name: pulumi.String("my-client-tls-policy"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -77,7 +79,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

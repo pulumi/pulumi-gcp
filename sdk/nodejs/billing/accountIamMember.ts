@@ -43,8 +43,8 @@ import * as utilities from "../utilities";
  *
  * const editor = new gcp.billing.AccountIamBinding("editor", {
  *     billingAccountId: "00AA00-000AAA-00AA0A",
- *     members: ["user:jane@example.com"],
  *     role: "roles/billing.viewer",
+ *     members: ["user:jane@example.com"],
  * });
  * ```
  *
@@ -56,8 +56,8 @@ import * as utilities from "../utilities";
  *
  * const editor = new gcp.billing.AccountIamMember("editor", {
  *     billingAccountId: "00AA00-000AAA-00AA0A",
- *     member: "user:jane@example.com",
  *     role: "roles/billing.viewer",
+ *     member: "user:jane@example.com",
  * });
  * ```
  *

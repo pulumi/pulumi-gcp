@@ -37,24 +37,16 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var gcsAccount = Gcp.Storage.GetProjectServiceAccount.Invoke();
-    /// 
-    ///     var topic = new Gcp.PubSub.Topic("topic");
-    /// 
-    ///     var binding = new Gcp.PubSub.TopicIAMBinding("binding", new()
-    ///     {
-    ///         Topic = topic.Id,
-    ///         Role = "roles/pubsub.publisher",
-    ///         Members = new[]
-    ///         {
-    ///             $"serviceAccount:{gcsAccount.Apply(getProjectServiceAccountResult =&gt; getProjectServiceAccountResult.EmailAddress)}",
-    ///         },
-    ///     });
-    /// 
     ///     // End enabling notifications
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
+    ///         Name = "default_bucket",
     ///         Location = "US",
+    ///     });
+    /// 
+    ///     var topic = new Gcp.PubSub.Topic("topic", new()
+    ///     {
+    ///         Name = "default_topic",
     ///     });
     /// 
     ///     var notification = new Gcp.Storage.Notification("notification", new()
@@ -71,15 +63,21 @@ namespace Pulumi.Gcp.Storage
     ///         {
     ///             { "new-attribute", "new-attribute-value" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             binding,
-    ///         },
     ///     });
     /// 
     ///     // Enable notifications by giving the correct IAM permission to the unique service account.
+    ///     var gcsAccount = Gcp.Storage.GetProjectServiceAccount.Invoke();
+    /// 
+    ///     var binding = new Gcp.PubSub.TopicIAMBinding("binding", new()
+    ///     {
+    ///         Topic = topic.Id,
+    ///         Role = "roles/pubsub.publisher",
+    ///         Members = new[]
+    ///         {
+    ///             $"serviceAccount:{gcsAccount.Apply(getProjectServiceAccountResult =&gt; getProjectServiceAccountResult.EmailAddress)}",
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 

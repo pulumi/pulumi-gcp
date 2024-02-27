@@ -23,13 +23,13 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.gkehub.Fleet("default", {
+ *     displayName: "my production fleet",
  *     defaultClusterConfig: {
  *         securityPostureConfig: {
  *             mode: "DISABLED",
  *             vulnerabilityMode: "VULNERABILITY_DISABLED",
  *         },
  *     },
- *     displayName: "my production fleet",
  * });
  * ```
  *

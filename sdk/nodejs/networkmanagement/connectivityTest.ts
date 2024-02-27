@@ -24,36 +24,39 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const vpc = new gcp.compute.Network("vpc", {});
+ * const vpc = new gcp.compute.Network("vpc", {name: "conn-test-net"});
  * const debian9 = gcp.compute.getImage({
  *     family: "debian-11",
  *     project: "debian-cloud",
  * });
  * const source = new gcp.compute.Instance("source", {
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         network: vpc.id,
+ *     }],
+ *     name: "source-vm",
  *     machineType: "e2-medium",
  *     bootDisk: {
  *         initializeParams: {
  *             image: debian9.then(debian9 => debian9.id),
  *         },
  *     },
- *     networkInterfaces: [{
- *         network: vpc.id,
- *         accessConfigs: [{}],
- *     }],
  * });
  * const destination = new gcp.compute.Instance("destination", {
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         network: vpc.id,
+ *     }],
+ *     name: "dest-vm",
  *     machineType: "e2-medium",
  *     bootDisk: {
  *         initializeParams: {
  *             image: debian9.then(debian9 => debian9.id),
  *         },
  *     },
- *     networkInterfaces: [{
- *         network: vpc.id,
- *         accessConfigs: [{}],
- *     }],
  * });
  * const instance_test = new gcp.networkmanagement.ConnectivityTest("instance-test", {
+ *     name: "conn-test-instances",
  *     source: {
  *         instance: source.id,
  *     },
@@ -72,25 +75,29 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const vpc = new gcp.compute.Network("vpc", {});
+ * const vpc = new gcp.compute.Network("vpc", {name: "connectivity-vpc"});
  * const subnet = new gcp.compute.Subnetwork("subnet", {
+ *     name: "connectivity-vpc-subnet",
  *     ipCidrRange: "10.0.0.0/16",
  *     region: "us-central1",
  *     network: vpc.id,
  * });
  * const source_addr = new gcp.compute.Address("source-addr", {
+ *     name: "src-addr",
  *     subnetwork: subnet.id,
  *     addressType: "INTERNAL",
  *     address: "10.0.42.42",
  *     region: "us-central1",
  * });
  * const dest_addr = new gcp.compute.Address("dest-addr", {
+ *     name: "dest-addr",
  *     subnetwork: subnet.id,
  *     addressType: "INTERNAL",
  *     address: "10.0.43.43",
  *     region: "us-central1",
  * });
  * const address_test = new gcp.networkmanagement.ConnectivityTest("address-test", {
+ *     name: "conn-test-addr",
  *     source: {
  *         ipAddress: source_addr.address,
  *         projectId: source_addr.project,

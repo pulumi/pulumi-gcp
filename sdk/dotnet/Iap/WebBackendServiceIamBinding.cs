@@ -53,8 +53,8 @@ namespace Pulumi.Gcp.Iap
     /// 
     ///     var policy = new Gcp.Iap.WebBackendServiceIamPolicy("policy", new()
     ///     {
-    ///         Project = google_compute_backend_service.Default.Project,
-    ///         WebBackendService = google_compute_backend_service.Default.Name,
+    ///         Project = @default.Project,
+    ///         WebBackendService = @default.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -94,8 +94,8 @@ namespace Pulumi.Gcp.Iap
     /// 
     ///     var policy = new Gcp.Iap.WebBackendServiceIamPolicy("policy", new()
     ///     {
-    ///         Project = google_compute_backend_service.Default.Project,
-    ///         WebBackendService = google_compute_backend_service.Default.Name,
+    ///         Project = @default.Project,
+    ///         WebBackendService = @default.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -113,8 +113,8 @@ namespace Pulumi.Gcp.Iap
     /// {
     ///     var binding = new Gcp.Iap.WebBackendServiceIamBinding("binding", new()
     ///     {
-    ///         Project = google_compute_backend_service.Default.Project,
-    ///         WebBackendService = google_compute_backend_service.Default.Name,
+    ///         Project = @default.Project,
+    ///         WebBackendService = @default.Name,
     ///         Role = "roles/iap.httpsResourceAccessor",
     ///         Members = new[]
     ///         {
@@ -137,8 +137,8 @@ namespace Pulumi.Gcp.Iap
     /// {
     ///     var binding = new Gcp.Iap.WebBackendServiceIamBinding("binding", new()
     ///     {
-    ///         Project = google_compute_backend_service.Default.Project,
-    ///         WebBackendService = google_compute_backend_service.Default.Name,
+    ///         Project = @default.Project,
+    ///         WebBackendService = @default.Name,
     ///         Role = "roles/iap.httpsResourceAccessor",
     ///         Members = new[]
     ///         {
@@ -166,8 +166,8 @@ namespace Pulumi.Gcp.Iap
     /// {
     ///     var member = new Gcp.Iap.WebBackendServiceIamMember("member", new()
     ///     {
-    ///         Project = google_compute_backend_service.Default.Project,
-    ///         WebBackendService = google_compute_backend_service.Default.Name,
+    ///         Project = @default.Project,
+    ///         WebBackendService = @default.Name,
     ///         Role = "roles/iap.httpsResourceAccessor",
     ///         Member = "user:jane@example.com",
     ///     });
@@ -187,8 +187,8 @@ namespace Pulumi.Gcp.Iap
     /// {
     ///     var member = new Gcp.Iap.WebBackendServiceIamMember("member", new()
     ///     {
-    ///         Project = google_compute_backend_service.Default.Project,
-    ///         WebBackendService = google_compute_backend_service.Default.Name,
+    ///         Project = @default.Project,
+    ///         WebBackendService = @default.Name,
     ///         Role = "roles/iap.httpsResourceAccessor",
     ///         Member = "user:jane@example.com",
     ///         Condition = new Gcp.Iap.Inputs.WebBackendServiceIamMemberConditionArgs

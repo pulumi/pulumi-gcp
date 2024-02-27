@@ -40,7 +40,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := serviceaccount.NewAccount(ctx, "serviceAccount", &serviceaccount.AccountArgs{
+//			_, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("service-account-id"),
 //				DisplayName: pulumi.String("Service Account"),
 //			})

@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * const basic = gcp.monitoring.getNotificationChannel({
  *     displayName: "Test Notification Channel",
  * });
- * const alertPolicy = new gcp.monitoring.AlertPolicy("alertPolicy", {
+ * const alertPolicy = new gcp.monitoring.AlertPolicy("alert_policy", {
  *     displayName: "My Alert Policy",
  *     notificationChannels: [basic.then(basic => basic.name)],
  *     combiner: "OR",
@@ -155,7 +155,7 @@ export interface GetNotificationChannelResult {
  * const basic = gcp.monitoring.getNotificationChannel({
  *     displayName: "Test Notification Channel",
  * });
- * const alertPolicy = new gcp.monitoring.AlertPolicy("alertPolicy", {
+ * const alertPolicy = new gcp.monitoring.AlertPolicy("alert_policy", {
  *     displayName: "My Alert Policy",
  *     notificationChannels: [basic.then(basic => basic.name)],
  *     combiner: "OR",

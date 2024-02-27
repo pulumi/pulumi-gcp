@@ -364,8 +364,8 @@ class SecretVersion(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import base64
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-version",
@@ -379,7 +379,7 @@ class SecretVersion(pulumi.CustomResource):
         secret_version_base64 = gcp.secretmanager.SecretVersion("secret-version-base64",
             secret=secret_basic.id,
             is_secret_data_base64=True,
-            secret_data=(lambda path: base64.b64encode(open(path).read().encode()).decode())("secret-data.pfx"))
+            secret_data=std.filebase64(input="secret-data.pfx").result)
         ```
 
         ## Import
@@ -483,8 +483,8 @@ class SecretVersion(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import base64
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-version",
@@ -498,7 +498,7 @@ class SecretVersion(pulumi.CustomResource):
         secret_version_base64 = gcp.secretmanager.SecretVersion("secret-version-base64",
             secret=secret_basic.id,
             is_secret_data_base64=True,
-            secret_data=(lambda path: base64.b64encode(open(path).read().encode()).decode())("secret-data.pfx"))
+            secret_data=std.filebase64(input="secret-data.pfx").result)
         ```
 
         ## Import

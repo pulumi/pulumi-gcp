@@ -275,8 +275,8 @@ class RepositoryIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.pubsub.TopicIAMPolicy("policy",
-            project=google_pubsub_topic["example"]["project"],
-            topic=google_pubsub_topic["example"]["name"],
+            project=example["project"],
+            topic=example["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -287,8 +287,8 @@ class RepositoryIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.pubsub.TopicIAMBinding("binding",
-            project=google_pubsub_topic["example"]["project"],
-            topic=google_pubsub_topic["example"]["name"],
+            project=example["project"],
+            topic=example["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -300,8 +300,8 @@ class RepositoryIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.pubsub.TopicIAMMember("member",
-            project=google_pubsub_topic["example"]["project"],
-            topic=google_pubsub_topic["example"]["name"],
+            project=example["project"],
+            topic=example["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -394,8 +394,8 @@ class RepositoryIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.pubsub.TopicIAMPolicy("policy",
-            project=google_pubsub_topic["example"]["project"],
-            topic=google_pubsub_topic["example"]["name"],
+            project=example["project"],
+            topic=example["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -406,8 +406,8 @@ class RepositoryIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.pubsub.TopicIAMBinding("binding",
-            project=google_pubsub_topic["example"]["project"],
-            topic=google_pubsub_topic["example"]["name"],
+            project=example["project"],
+            topic=example["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -419,8 +419,8 @@ class RepositoryIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.pubsub.TopicIAMMember("member",
-            project=google_pubsub_topic["example"]["project"],
-            topic=google_pubsub_topic["example"]["name"],
+            project=example["project"],
+            topic=example["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

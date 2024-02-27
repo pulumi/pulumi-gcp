@@ -29,7 +29,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myProject = new gcp.organizations.Project("myProject", {orgId: "1234567"});
+ * const myProject = new gcp.organizations.Project("my_project", {
+ *     name: "My Project",
+ *     projectId: "your-project-id",
+ *     orgId: "1234567",
+ * });
  * ```
  *
  * To create a project under a specific folder
@@ -42,7 +46,11 @@ import * as utilities from "../utilities";
  *     displayName: "Department 1",
  *     parent: "organizations/1234567",
  * });
- * const myProject_in_a_folder = new gcp.organizations.Project("myProject-in-a-folder", {folderId: department1.name});
+ * const myProject_in_a_folder = new gcp.organizations.Project("my_project-in-a-folder", {
+ *     name: "My Project",
+ *     projectId: "your-project-id",
+ *     folderId: department1.name,
+ * });
  * ```
  *
  * ## Import

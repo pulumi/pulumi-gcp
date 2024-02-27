@@ -317,7 +317,7 @@ public final class TagsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = TagsFunctions.getTagKeyIamPolicy(GetTagKeyIamPolicyArgs.builder()
-     *             .tagKey(google_tags_tag_key.key().name())
+     *             .tagKey(key.name())
      *             .build());
      * 
      *     }
@@ -354,7 +354,7 @@ public final class TagsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = TagsFunctions.getTagKeyIamPolicy(GetTagKeyIamPolicyArgs.builder()
-     *             .tagKey(google_tags_tag_key.key().name())
+     *             .tagKey(key.name())
      *             .build());
      * 
      *     }
@@ -391,7 +391,7 @@ public final class TagsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = TagsFunctions.getTagKeyIamPolicy(GetTagKeyIamPolicyArgs.builder()
-     *             .tagKey(google_tags_tag_key.key().name())
+     *             .tagKey(key.name())
      *             .build());
      * 
      *     }
@@ -428,7 +428,7 @@ public final class TagsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = TagsFunctions.getTagKeyIamPolicy(GetTagKeyIamPolicyArgs.builder()
-     *             .tagKey(google_tags_tag_key.key().name())
+     *             .tagKey(key.name())
      *             .build());
      * 
      *     }
@@ -617,7 +617,7 @@ public final class TagsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = TagsFunctions.getTagValueIamPolicy(GetTagValueIamPolicyArgs.builder()
-     *             .tagValue(google_tags_tag_value.value().name())
+     *             .tagValue(value.name())
      *             .build());
      * 
      *     }
@@ -654,7 +654,7 @@ public final class TagsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = TagsFunctions.getTagValueIamPolicy(GetTagValueIamPolicyArgs.builder()
-     *             .tagValue(google_tags_tag_value.value().name())
+     *             .tagValue(value.name())
      *             .build());
      * 
      *     }
@@ -691,7 +691,7 @@ public final class TagsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = TagsFunctions.getTagValueIamPolicy(GetTagValueIamPolicyArgs.builder()
-     *             .tagValue(google_tags_tag_value.value().name())
+     *             .tagValue(value.name())
      *             .build());
      * 
      *     }
@@ -728,7 +728,7 @@ public final class TagsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = TagsFunctions.getTagValueIamPolicy(GetTagValueIamPolicyArgs.builder()
-     *             .tagValue(google_tags_tag_value.value().name())
+     *             .tagValue(value.name())
      *             .build());
      * 
      *     }

@@ -19,6 +19,24 @@ namespace Pulumi.Gcp.Redis
     ///     * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
     /// 
     /// ## Example Usage
+    /// ### Redis Instance Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cache = new Gcp.Redis.Instance("cache", new()
+    ///     {
+    ///         Name = "memory-cache",
+    ///         MemorySizeGb = 1,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Redis Instance Full
     /// 
     /// ```csharp
@@ -29,6 +47,14 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // This example assumes this network already exists.
+    ///     // The API creates a tenant network per network authorized for a
+    ///     // Redis instance and that network is not deleted when the user-created
+    ///     // network (authorized_network) is deleted, so this prevents issues
+    ///     // with tenant network quota.
+    ///     // If this network hasn't been created and you are using this example in your
+    ///     // config, add an additional network resource or change
+    ///     // this from "data"to "resource"
     ///     var redis_network = Gcp.Compute.GetNetwork.Invoke(new()
     ///     {
     ///         Name = "redis-test-network",
@@ -36,6 +62,7 @@ namespace Pulumi.Gcp.Redis
     /// 
     ///     var cache = new Gcp.Redis.Instance("cache", new()
     ///     {
+    ///         Name = "ha-memory-cache",
     ///         Tier = "STANDARD_HA",
     ///         MemorySizeGb = 1,
     ///         LocationId = "us-central1-a",
@@ -70,6 +97,32 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
+    /// ### Redis Instance Full With Persistence Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cache_persis = new Gcp.Redis.Instance("cache-persis", new()
+    ///     {
+    ///         Name = "ha-memory-cache-persis",
+    ///         Tier = "STANDARD_HA",
+    ///         MemorySizeGb = 1,
+    ///         LocationId = "us-central1-a",
+    ///         AlternativeLocationId = "us-central1-f",
+    ///         PersistenceConfig = new Gcp.Redis.Inputs.InstancePersistenceConfigArgs
+    ///         {
+    ///             PersistenceMode = "RDB",
+    ///             RdbSnapshotPeriod = "TWELVE_HOURS",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Redis Instance Private Service
     /// 
     /// ```csharp
@@ -88,17 +141,21 @@ namespace Pulumi.Gcp.Redis
     ///     // If this network hasn't been created and you are using this example in your
     ///     // config, add an additional network resource or change
     ///     // this from "data"to "resource"
-    ///     var redis_network = new Gcp.Compute.Network("redis-network");
-    /// 
-    ///     var serviceRange = new Gcp.Compute.GlobalAddress("serviceRange", new()
+    ///     var redis_network = new Gcp.Compute.Network("redis-network", new()
     ///     {
+    ///         Name = "redis-test-network",
+    ///     });
+    /// 
+    ///     var serviceRange = new Gcp.Compute.GlobalAddress("service_range", new()
+    ///     {
+    ///         Name = "address",
     ///         Purpose = "VPC_PEERING",
     ///         AddressType = "INTERNAL",
     ///         PrefixLength = 16,
     ///         Network = redis_network.Id,
     ///     });
     /// 
-    ///     var privateServiceConnection = new Gcp.ServiceNetworking.Connection("privateServiceConnection", new()
+    ///     var privateServiceConnection = new Gcp.ServiceNetworking.Connection("private_service_connection", new()
     ///     {
     ///         Network = redis_network.Id,
     ///         Service = "servicenetworking.googleapis.com",
@@ -110,6 +167,7 @@ namespace Pulumi.Gcp.Redis
     /// 
     ///     var cache = new Gcp.Redis.Instance("cache", new()
     ///     {
+    ///         Name = "private-cache",
     ///         Tier = "STANDARD_HA",
     ///         MemorySizeGb = 1,
     ///         LocationId = "us-central1-a",
@@ -118,12 +176,6 @@ namespace Pulumi.Gcp.Redis
     ///         ConnectMode = "PRIVATE_SERVICE_ACCESS",
     ///         RedisVersion = "REDIS_4_0",
     ///         DisplayName = "Test Instance",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             privateServiceConnection,
-    ///         },
     ///     });
     /// 
     /// });
@@ -138,6 +190,14 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // This example assumes this network already exists.
+    ///     // The API creates a tenant network per network authorized for a
+    ///     // Redis instance and that network is not deleted when the user-created
+    ///     // network (authorized_network) is deleted, so this prevents issues
+    ///     // with tenant network quota.
+    ///     // If this network hasn't been created and you are using this example in your
+    ///     // config, add an additional network resource or change
+    ///     // this from "data"to "resource"
     ///     var redis_network = Gcp.Compute.GetNetwork.Invoke(new()
     ///     {
     ///         Name = "redis-test-network",
@@ -145,6 +205,7 @@ namespace Pulumi.Gcp.Redis
     /// 
     ///     var cache = new Gcp.Redis.Instance("cache", new()
     ///     {
+    ///         Name = "mrr-memory-cache",
     ///         Tier = "STANDARD_HA",
     ///         MemorySizeGb = 5,
     ///         LocationId = "us-central1-a",
@@ -174,16 +235,26 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var redisKeyring = new Gcp.Kms.KeyRing("redisKeyring", new()
+    ///     var redisKeyring = new Gcp.Kms.KeyRing("redis_keyring", new()
     ///     {
+    ///         Name = "redis-keyring",
     ///         Location = "us-central1",
     ///     });
     /// 
-    ///     var redisKey = new Gcp.Kms.CryptoKey("redisKey", new()
+    ///     var redisKey = new Gcp.Kms.CryptoKey("redis_key", new()
     ///     {
+    ///         Name = "redis-key",
     ///         KeyRing = redisKeyring.Id,
     ///     });
     /// 
+    ///     // This example assumes this network already exists.
+    ///     // The API creates a tenant network per network authorized for a
+    ///     // Redis instance and that network is not deleted when the user-created
+    ///     // network (authorized_network) is deleted, so this prevents issues
+    ///     // with tenant network quota.
+    ///     // If this network hasn't been created and you are using this example in your
+    ///     // config, add an additional network resource or change
+    ///     // this from "data"to "resource"
     ///     var redis_network = Gcp.Compute.GetNetwork.Invoke(new()
     ///     {
     ///         Name = "redis-test-network",
@@ -191,6 +262,7 @@ namespace Pulumi.Gcp.Redis
     /// 
     ///     var cache = new Gcp.Redis.Instance("cache", new()
     ///     {
+    ///         Name = "cmek-memory-cache",
     ///         Tier = "STANDARD_HA",
     ///         MemorySizeGb = 1,
     ///         LocationId = "us-central1-a",

@@ -40,8 +40,8 @@ public final class ContaineranalysisFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ContaineranalysisFunctions.getNoteIamPolicy(GetNoteIamPolicyArgs.builder()
-     *             .project(google_container_analysis_note.note().project())
-     *             .note(google_container_analysis_note.note().name())
+     *             .project(note.project())
+     *             .note(note.name())
      *             .build());
      * 
      *     }
@@ -78,8 +78,8 @@ public final class ContaineranalysisFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ContaineranalysisFunctions.getNoteIamPolicy(GetNoteIamPolicyArgs.builder()
-     *             .project(google_container_analysis_note.note().project())
-     *             .note(google_container_analysis_note.note().name())
+     *             .project(note.project())
+     *             .note(note.name())
      *             .build());
      * 
      *     }
@@ -116,8 +116,8 @@ public final class ContaineranalysisFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ContaineranalysisFunctions.getNoteIamPolicy(GetNoteIamPolicyArgs.builder()
-     *             .project(google_container_analysis_note.note().project())
-     *             .note(google_container_analysis_note.note().name())
+     *             .project(note.project())
+     *             .note(note.name())
      *             .build());
      * 
      *     }
@@ -154,8 +154,8 @@ public final class ContaineranalysisFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ContaineranalysisFunctions.getNoteIamPolicy(GetNoteIamPolicyArgs.builder()
-     *             .project(google_container_analysis_note.note().project())
-     *             .note(google_container_analysis_note.note().name())
+     *             .project(note.project())
+     *             .note(note.name())
      *             .build());
      * 
      *     }

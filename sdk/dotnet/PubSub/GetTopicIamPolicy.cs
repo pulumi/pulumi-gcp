@@ -28,8 +28,8 @@ namespace Pulumi.Gcp.PubSub
         /// {
         ///     var policy = Gcp.PubSub.GetTopicIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_pubsub_topic.Example.Project,
-        ///         Topic = google_pubsub_topic.Example.Name,
+        ///         Project = example.Project,
+        ///         Topic = example.Name,
         ///     });
         /// 
         /// });
@@ -55,8 +55,8 @@ namespace Pulumi.Gcp.PubSub
         /// {
         ///     var policy = Gcp.PubSub.GetTopicIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_pubsub_topic.Example.Project,
-        ///         Topic = google_pubsub_topic.Example.Name,
+        ///         Project = example.Project,
+        ///         Topic = example.Name,
         ///     });
         /// 
         /// });

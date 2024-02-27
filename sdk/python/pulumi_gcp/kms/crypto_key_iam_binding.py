@@ -243,15 +243,18 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        keyring = gcp.kms.KeyRing("keyring", location="global")
+        keyring = gcp.kms.KeyRing("keyring",
+            name="keyring-example",
+            location="global")
         key = gcp.kms.CryptoKey("key",
+            name="crypto-key-example",
             key_ring=keyring.id,
             rotation_period="7776000s")
         admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
             role="roles/cloudkms.cryptoKeyEncrypter",
             members=["user:jane@example.com"],
         )])
-        crypto_key = gcp.kms.CryptoKeyIAMPolicy("cryptoKey",
+        crypto_key = gcp.kms.CryptoKeyIAMPolicy("crypto_key",
             crypto_key_id=key.id,
             policy_data=admin.policy_data)
         ```
@@ -263,13 +266,13 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/cloudkms.cryptoKeyEncrypter",
+            members=["user:jane@example.com"],
             condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
             ),
-            members=["user:jane@example.com"],
-            role="roles/cloudkms.cryptoKeyEncrypter",
         )])
         ```
 
@@ -277,8 +280,8 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        crypto_key = gcp.kms.CryptoKeyIAMBinding("cryptoKey",
-            crypto_key_id=google_kms_crypto_key["key"]["id"],
+        crypto_key = gcp.kms.CryptoKeyIAMBinding("crypto_key",
+            crypto_key_id=key["id"],
             role="roles/cloudkms.cryptoKeyEncrypter",
             members=["user:jane@example.com"])
         ```
@@ -289,8 +292,8 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        crypto_key = gcp.kms.CryptoKeyIAMBinding("cryptoKey",
-            crypto_key_id=google_kms_crypto_key["key"]["id"],
+        crypto_key = gcp.kms.CryptoKeyIAMBinding("crypto_key",
+            crypto_key_id=key["id"],
             role="roles/cloudkms.cryptoKeyEncrypter",
             members=["user:jane@example.com"],
             condition=gcp.kms.CryptoKeyIAMBindingConditionArgs(
@@ -304,8 +307,8 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
-            crypto_key_id=google_kms_crypto_key["key"]["id"],
+        crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
+            crypto_key_id=key["id"],
             role="roles/cloudkms.cryptoKeyEncrypter",
             member="user:jane@example.com")
         ```
@@ -316,8 +319,8 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
-            crypto_key_id=google_kms_crypto_key["key"]["id"],
+        crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
+            crypto_key_id=key["id"],
             role="roles/cloudkms.cryptoKeyEncrypter",
             member="user:jane@example.com",
             condition=gcp.kms.CryptoKeyIAMMemberConditionArgs(
@@ -394,15 +397,18 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        keyring = gcp.kms.KeyRing("keyring", location="global")
+        keyring = gcp.kms.KeyRing("keyring",
+            name="keyring-example",
+            location="global")
         key = gcp.kms.CryptoKey("key",
+            name="crypto-key-example",
             key_ring=keyring.id,
             rotation_period="7776000s")
         admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
             role="roles/cloudkms.cryptoKeyEncrypter",
             members=["user:jane@example.com"],
         )])
-        crypto_key = gcp.kms.CryptoKeyIAMPolicy("cryptoKey",
+        crypto_key = gcp.kms.CryptoKeyIAMPolicy("crypto_key",
             crypto_key_id=key.id,
             policy_data=admin.policy_data)
         ```
@@ -414,13 +420,13 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/cloudkms.cryptoKeyEncrypter",
+            members=["user:jane@example.com"],
             condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
             ),
-            members=["user:jane@example.com"],
-            role="roles/cloudkms.cryptoKeyEncrypter",
         )])
         ```
 
@@ -428,8 +434,8 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        crypto_key = gcp.kms.CryptoKeyIAMBinding("cryptoKey",
-            crypto_key_id=google_kms_crypto_key["key"]["id"],
+        crypto_key = gcp.kms.CryptoKeyIAMBinding("crypto_key",
+            crypto_key_id=key["id"],
             role="roles/cloudkms.cryptoKeyEncrypter",
             members=["user:jane@example.com"])
         ```
@@ -440,8 +446,8 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        crypto_key = gcp.kms.CryptoKeyIAMBinding("cryptoKey",
-            crypto_key_id=google_kms_crypto_key["key"]["id"],
+        crypto_key = gcp.kms.CryptoKeyIAMBinding("crypto_key",
+            crypto_key_id=key["id"],
             role="roles/cloudkms.cryptoKeyEncrypter",
             members=["user:jane@example.com"],
             condition=gcp.kms.CryptoKeyIAMBindingConditionArgs(
@@ -455,8 +461,8 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
-            crypto_key_id=google_kms_crypto_key["key"]["id"],
+        crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
+            crypto_key_id=key["id"],
             role="roles/cloudkms.cryptoKeyEncrypter",
             member="user:jane@example.com")
         ```
@@ -467,8 +473,8 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
-            crypto_key_id=google_kms_crypto_key["key"]["id"],
+        crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
+            crypto_key_id=key["id"],
             role="roles/cloudkms.cryptoKeyEncrypter",
             member="user:jane@example.com",
             condition=gcp.kms.CryptoKeyIAMMemberConditionArgs(

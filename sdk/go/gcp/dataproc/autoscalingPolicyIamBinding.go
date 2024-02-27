@@ -55,9 +55,9 @@ import (
 //				return err
 //			}
 //			_, err = dataproc.NewAutoscalingPolicyIamPolicy(ctx, "policy", &dataproc.AutoscalingPolicyIamPolicyArgs{
-//				Project:    pulumi.Any(google_dataproc_autoscaling_policy.Basic.Project),
-//				Location:   pulumi.Any(google_dataproc_autoscaling_policy.Basic.Location),
-//				PolicyId:   pulumi.Any(google_dataproc_autoscaling_policy.Basic.Policy_id),
+//				Project:    pulumi.Any(basic.Project),
+//				Location:   pulumi.Any(basic.Location),
+//				PolicyId:   pulumi.Any(basic.PolicyId),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -84,9 +84,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.NewAutoscalingPolicyIamBinding(ctx, "binding", &dataproc.AutoscalingPolicyIamBindingArgs{
-//				Project:  pulumi.Any(google_dataproc_autoscaling_policy.Basic.Project),
-//				Location: pulumi.Any(google_dataproc_autoscaling_policy.Basic.Location),
-//				PolicyId: pulumi.Any(google_dataproc_autoscaling_policy.Basic.Policy_id),
+//				Project:  pulumi.Any(basic.Project),
+//				Location: pulumi.Any(basic.Location),
+//				PolicyId: pulumi.Any(basic.PolicyId),
 //				Role:     pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -116,9 +116,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.NewAutoscalingPolicyIamMember(ctx, "member", &dataproc.AutoscalingPolicyIamMemberArgs{
-//				Project:  pulumi.Any(google_dataproc_autoscaling_policy.Basic.Project),
-//				Location: pulumi.Any(google_dataproc_autoscaling_policy.Basic.Location),
-//				PolicyId: pulumi.Any(google_dataproc_autoscaling_policy.Basic.Policy_id),
+//				Project:  pulumi.Any(basic.Project),
+//				Location: pulumi.Any(basic.Location),
+//				PolicyId: pulumi.Any(basic.PolicyId),
 //				Role:     pulumi.String("roles/viewer"),
 //				Member:   pulumi.String("user:jane@example.com"),
 //			})

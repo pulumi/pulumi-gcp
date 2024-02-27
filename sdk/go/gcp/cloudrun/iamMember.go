@@ -55,9 +55,9 @@ import (
 //				return err
 //			}
 //			_, err = cloudrun.NewIamPolicy(ctx, "policy", &cloudrun.IamPolicyArgs{
-//				Location:   pulumi.Any(google_cloud_run_service.Default.Location),
-//				Project:    pulumi.Any(google_cloud_run_service.Default.Project),
-//				Service:    pulumi.Any(google_cloud_run_service.Default.Name),
+//				Location:   pulumi.Any(_default.Location),
+//				Project:    pulumi.Any(_default.Project),
+//				Service:    pulumi.Any(_default.Name),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -84,9 +84,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrun.NewIamBinding(ctx, "binding", &cloudrun.IamBindingArgs{
-//				Location: pulumi.Any(google_cloud_run_service.Default.Location),
-//				Project:  pulumi.Any(google_cloud_run_service.Default.Project),
-//				Service:  pulumi.Any(google_cloud_run_service.Default.Name),
+//				Location: pulumi.Any(_default.Location),
+//				Project:  pulumi.Any(_default.Project),
+//				Service:  pulumi.Any(_default.Name),
 //				Role:     pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -116,9 +116,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrun.NewIamMember(ctx, "member", &cloudrun.IamMemberArgs{
-//				Location: pulumi.Any(google_cloud_run_service.Default.Location),
-//				Project:  pulumi.Any(google_cloud_run_service.Default.Project),
-//				Service:  pulumi.Any(google_cloud_run_service.Default.Name),
+//				Location: pulumi.Any(_default.Location),
+//				Project:  pulumi.Any(_default.Project),
+//				Service:  pulumi.Any(_default.Name),
 //				Role:     pulumi.String("roles/viewer"),
 //				Member:   pulumi.String("user:jane@example.com"),
 //			})

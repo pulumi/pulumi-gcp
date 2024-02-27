@@ -465,11 +465,13 @@ class Deployment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         deployment = gcp.deploymentmanager.Deployment("deployment",
+            name="my-deployment",
             target=gcp.deploymentmanager.DeploymentTargetArgs(
                 config=gcp.deploymentmanager.DeploymentTargetConfigArgs(
-                    content=(lambda path: open(path).read())("path/to/config.yml"),
+                    content=std.file(input="path/to/config.yml").result,
                 ),
             ),
             labels=[gcp.deploymentmanager.DeploymentLabelArgs(
@@ -564,11 +566,13 @@ class Deployment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         deployment = gcp.deploymentmanager.Deployment("deployment",
+            name="my-deployment",
             target=gcp.deploymentmanager.DeploymentTargetArgs(
                 config=gcp.deploymentmanager.DeploymentTargetConfigArgs(
-                    content=(lambda path: open(path).read())("path/to/config.yml"),
+                    content=std.file(input="path/to/config.yml").result,
                 ),
             ),
             labels=[gcp.deploymentmanager.DeploymentLabelArgs(

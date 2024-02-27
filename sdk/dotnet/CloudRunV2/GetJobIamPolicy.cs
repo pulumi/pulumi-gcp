@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.CloudRunV2
         /// {
         ///     var policy = Gcp.CloudRunV2.GetJobIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_cloud_run_v2_job.Default.Project,
-        ///         Location = google_cloud_run_v2_job.Default.Location,
-        ///         Name = google_cloud_run_v2_job.Default.Name,
+        ///         Project = @default.Project,
+        ///         Location = @default.Location,
+        ///         Name = @default.Name,
         ///     });
         /// 
         /// });
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.CloudRunV2
         /// {
         ///     var policy = Gcp.CloudRunV2.GetJobIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_cloud_run_v2_job.Default.Project,
-        ///         Location = google_cloud_run_v2_job.Default.Location,
-        ///         Name = google_cloud_run_v2_job.Default.Name,
+        ///         Project = @default.Project,
+        ///         Location = @default.Location,
+        ///         Name = @default.Name,
         ///     });
         /// 
         /// });

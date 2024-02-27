@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.bigtable.getTableIamPolicy({
- *     instance: google_bigtable_instance.instance.name,
- *     table: google_bigtable_table.table.name,
+ *     instance: instance.name,
+ *     table: table.name,
  * });
  * ```
  */
@@ -74,8 +74,8 @@ export interface GetTableIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.bigtable.getTableIamPolicy({
- *     instance: google_bigtable_instance.instance.name,
- *     table: google_bigtable_table.table.name,
+ *     instance: instance.name,
+ *     table: table.name,
  * });
  * ```
  */

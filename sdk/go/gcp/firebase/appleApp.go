@@ -31,7 +31,7 @@ import (
 //				Project:     pulumi.String("my-project-name"),
 //				DisplayName: pulumi.String("Display Name Basic"),
 //				BundleId:    pulumi.String("apple.app.12345"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -56,6 +56,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			apple, err := projects.NewApiKey(ctx, "apple", &projects.ApiKeyArgs{
+//				Name:        pulumi.String("api-key"),
 //				DisplayName: pulumi.String("Display Name Full"),
 //				Project:     pulumi.String("my-project-name"),
 //				Restrictions: &projects.ApiKeyRestrictionsArgs{
@@ -65,7 +66,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -76,7 +77,7 @@ import (
 //				AppStoreId:  pulumi.String("12345"),
 //				TeamId:      pulumi.String("9987654321"),
 //				ApiKeyId:    apple.Uid,
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

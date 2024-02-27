@@ -141,15 +141,18 @@ class TagBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.Project("project", org_id="123456789")
+        project = gcp.organizations.Project("project",
+            project_id="project_id",
+            name="project_id",
+            org_id="123456789")
         key = gcp.tags.TagKey("key",
-            description="For keyname resources.",
             parent="organizations/123456789",
-            short_name="keyname")
+            short_name="keyname",
+            description="For keyname resources.")
         value = gcp.tags.TagValue("value",
-            description="For valuename resources.",
             parent=key.name.apply(lambda name: f"tagKeys/{name}"),
-            short_name="valuename")
+            short_name="valuename",
+            description="For valuename resources.")
         binding = gcp.tags.TagBinding("binding",
             parent=project.number.apply(lambda number: f"//cloudresourcemanager.googleapis.com/projects/{number}"),
             tag_value=value.name.apply(lambda name: f"tagValues/{name}"))
@@ -203,15 +206,18 @@ class TagBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.Project("project", org_id="123456789")
+        project = gcp.organizations.Project("project",
+            project_id="project_id",
+            name="project_id",
+            org_id="123456789")
         key = gcp.tags.TagKey("key",
-            description="For keyname resources.",
             parent="organizations/123456789",
-            short_name="keyname")
+            short_name="keyname",
+            description="For keyname resources.")
         value = gcp.tags.TagValue("value",
-            description="For valuename resources.",
             parent=key.name.apply(lambda name: f"tagKeys/{name}"),
-            short_name="valuename")
+            short_name="valuename",
+            description="For valuename resources.")
         binding = gcp.tags.TagBinding("binding",
             parent=project.number.apply(lambda number: f"//cloudresourcemanager.googleapis.com/projects/{number}"),
             tag_value=value.name.apply(lambda name: f"tagValues/{name}"))

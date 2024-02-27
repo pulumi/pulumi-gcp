@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.securesourcemanager.getInstanceIamPolicy({
- *     project: google_secure_source_manager_instance["default"].project,
- *     location: google_secure_source_manager_instance["default"].location,
- *     instanceId: google_secure_source_manager_instance["default"].instance_id,
+ *     project: _default.project,
+ *     location: _default.location,
+ *     instanceId: _default.instanceId,
  * });
  * ```
  */
@@ -82,9 +82,9 @@ export interface GetInstanceIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.securesourcemanager.getInstanceIamPolicy({
- *     project: google_secure_source_manager_instance["default"].project,
- *     location: google_secure_source_manager_instance["default"].location,
- *     instanceId: google_secure_source_manager_instance["default"].instance_id,
+ *     project: _default.project,
+ *     location: _default.location,
+ *     instanceId: _default.instanceId,
  * });
  * ```
  */

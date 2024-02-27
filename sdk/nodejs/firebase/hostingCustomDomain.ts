@@ -18,8 +18,6 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  *     siteId: "site-id",
  *     customDomain: "custom.domain.com",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Firebasehosting Customdomain Full
@@ -28,21 +26,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultHostingSite = new gcp.firebase.HostingSite("defaultHostingSite", {
+ * const _default = new gcp.firebase.HostingSite("default", {
  *     project: "my-project-name",
  *     siteId: "site-id-full",
- * }, {
- *     provider: google_beta,
  * });
- * const defaultHostingCustomDomain = new gcp.firebase.HostingCustomDomain("defaultHostingCustomDomain", {
+ * const defaultHostingCustomDomain = new gcp.firebase.HostingCustomDomain("default", {
  *     project: "my-project-name",
- *     siteId: defaultHostingSite.siteId,
+ *     siteId: _default.siteId,
  *     customDomain: "source.domain.com",
  *     certPreference: "GROUPED",
  *     redirectTarget: "destination.domain.com",
  *     waitDnsVerification: false,
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Firebasehosting Customdomain Cloud Run
@@ -51,14 +45,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultHostingSite = new gcp.firebase.HostingSite("defaultHostingSite", {
+ * const _default = new gcp.firebase.HostingSite("default", {
  *     project: "my-project-name",
  *     siteId: "site-id",
- * }, {
- *     provider: google_beta,
  * });
- * const defaultService = new gcp.cloudrunv2.Service("defaultService", {
+ * const defaultService = new gcp.cloudrunv2.Service("default", {
  *     project: "my-project-name",
+ *     name: "cloud-run-service-via-hosting",
  *     location: "us-central1",
  *     ingress: "INGRESS_TRAFFIC_ALL",
  *     template: {
@@ -66,11 +59,9 @@ import * as utilities from "../utilities";
  *             image: "us-docker.pkg.dev/cloudrun/container/hello",
  *         }],
  *     },
- * }, {
- *     provider: google_beta,
  * });
- * const defaultHostingVersion = new gcp.firebase.HostingVersion("defaultHostingVersion", {
- *     siteId: defaultHostingSite.siteId,
+ * const defaultHostingVersion = new gcp.firebase.HostingVersion("default", {
+ *     siteId: _default.siteId,
  *     config: {
  *         rewrites: [{
  *             glob: "/hello/**",
@@ -80,23 +71,17 @@ import * as utilities from "../utilities";
  *             },
  *         }],
  *     },
- * }, {
- *     provider: google_beta,
  * });
- * const defaultHostingRelease = new gcp.firebase.HostingRelease("defaultHostingRelease", {
- *     siteId: defaultHostingSite.siteId,
+ * const defaultHostingRelease = new gcp.firebase.HostingRelease("default", {
+ *     siteId: _default.siteId,
  *     versionName: defaultHostingVersion.name,
  *     message: "Cloud Run Integration",
- * }, {
- *     provider: google_beta,
  * });
- * const defaultHostingCustomDomain = new gcp.firebase.HostingCustomDomain("defaultHostingCustomDomain", {
+ * const defaultHostingCustomDomain = new gcp.firebase.HostingCustomDomain("default", {
  *     project: "my-project-name",
- *     siteId: defaultHostingSite.siteId,
+ *     siteId: _default.siteId,
  *     customDomain: "run.custom.domain.com",
  *     waitDnsVerification: false,
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

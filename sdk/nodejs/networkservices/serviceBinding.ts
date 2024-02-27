@@ -12,30 +12,25 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNamespace = new gcp.servicedirectory.Namespace("defaultNamespace", {
+ * const _default = new gcp.servicedirectory.Namespace("default", {
  *     namespaceId: "my-namespace",
  *     location: "us-central1",
- * }, {
- *     provider: google_beta,
  * });
- * const defaultService = new gcp.servicedirectory.Service("defaultService", {
+ * const defaultService = new gcp.servicedirectory.Service("default", {
  *     serviceId: "my-service",
- *     namespace: defaultNamespace.id,
+ *     namespace: _default.id,
  *     metadata: {
  *         stage: "prod",
  *         region: "us-central1",
  *     },
- * }, {
- *     provider: google_beta,
  * });
- * const defaultServiceBinding = new gcp.networkservices.ServiceBinding("defaultServiceBinding", {
+ * const defaultServiceBinding = new gcp.networkservices.ServiceBinding("default", {
+ *     name: "my-service-binding",
  *     labels: {
  *         foo: "bar",
  *     },
  *     description: "my description",
  *     service: defaultService.id,
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

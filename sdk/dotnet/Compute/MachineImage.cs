@@ -33,6 +33,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var vm = new Gcp.Compute.Instance("vm", new()
     ///     {
+    ///         Name = "my-vm",
     ///         MachineType = "e2-medium",
     ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
     ///         {
@@ -48,17 +49,12 @@ namespace Pulumi.Gcp.Compute
     ///                 Network = "default",
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var image = new Gcp.Compute.MachineImage("image", new()
     ///     {
+    ///         Name = "my-image",
     ///         SourceInstance = vm.SelfLink,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -75,6 +71,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var vm = new Gcp.Compute.Instance("vm", new()
     ///     {
+    ///         Name = "my-vm",
     ///         MachineType = "e2-medium",
     ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
     ///         {
@@ -90,37 +87,28 @@ namespace Pulumi.Gcp.Compute
     ///                 Network = "default",
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var keyRing = new Gcp.Kms.KeyRing("keyRing", new()
+    ///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()
     ///     {
+    ///         Name = "keyring",
     ///         Location = "us",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("crypto_key", new()
     ///     {
+    ///         Name = "key",
     ///         KeyRing = keyRing.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var image = new Gcp.Compute.MachineImage("image", new()
     ///     {
+    ///         Name = "my-image",
     ///         SourceInstance = vm.SelfLink,
     ///         MachineImageEncryptionKey = new Gcp.Compute.Inputs.MachineImageMachineImageEncryptionKeyArgs
     ///         {
     ///             KmsKeyName = cryptoKey.Id,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

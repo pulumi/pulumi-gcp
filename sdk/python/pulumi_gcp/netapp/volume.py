@@ -909,14 +909,16 @@ class Volume(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.get_network(name="test-network")
-        default_storage_pool = gcp.netapp.StoragePool("defaultStoragePool",
+        default = gcp.compute.get_network(name="test-network")
+        default_storage_pool = gcp.netapp.StoragePool("default",
+            name="test-pool",
             location="us-west2",
             service_level="PREMIUM",
             capacity_gib="2048",
-            network=default_network.id)
-        test_volume = gcp.netapp.Volume("testVolume",
+            network=default.id)
+        test_volume = gcp.netapp.Volume("test_volume",
             location="us-west2",
+            name="test-volume",
             capacity_gib="100",
             share_name="test-volume",
             storage_pool=default_storage_pool.name,
@@ -1013,14 +1015,16 @@ class Volume(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.get_network(name="test-network")
-        default_storage_pool = gcp.netapp.StoragePool("defaultStoragePool",
+        default = gcp.compute.get_network(name="test-network")
+        default_storage_pool = gcp.netapp.StoragePool("default",
+            name="test-pool",
             location="us-west2",
             service_level="PREMIUM",
             capacity_gib="2048",
-            network=default_network.id)
-        test_volume = gcp.netapp.Volume("testVolume",
+            network=default.id)
+        test_volume = gcp.netapp.Volume("test_volume",
             location="us-west2",
+            name="test-volume",
             capacity_gib="100",
             share_name="test-volume",
             storage_pool=default_storage_pool.name,

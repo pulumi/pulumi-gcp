@@ -296,13 +296,16 @@ class Table(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        instance = gcp.bigtable.Instance("instance", clusters=[gcp.bigtable.InstanceClusterArgs(
-            cluster_id="tf-instance-cluster",
-            zone="us-central1-b",
-            num_nodes=3,
-            storage_type="HDD",
-        )])
+        instance = gcp.bigtable.Instance("instance",
+            name="tf-instance",
+            clusters=[gcp.bigtable.InstanceClusterArgs(
+                cluster_id="tf-instance-cluster",
+                zone="us-central1-b",
+                num_nodes=3,
+                storage_type="HDD",
+            )])
         table = gcp.bigtable.Table("table",
+            name="tf-table",
             instance_name=instance.name,
             split_keys=[
                 "a",
@@ -378,13 +381,16 @@ class Table(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        instance = gcp.bigtable.Instance("instance", clusters=[gcp.bigtable.InstanceClusterArgs(
-            cluster_id="tf-instance-cluster",
-            zone="us-central1-b",
-            num_nodes=3,
-            storage_type="HDD",
-        )])
+        instance = gcp.bigtable.Instance("instance",
+            name="tf-instance",
+            clusters=[gcp.bigtable.InstanceClusterArgs(
+                cluster_id="tf-instance-cluster",
+                zone="us-central1-b",
+                num_nodes=3,
+                storage_type="HDD",
+            )])
         table = gcp.bigtable.Table("table",
+            name="tf-table",
             instance_name=instance.name,
             split_keys=[
                 "a",

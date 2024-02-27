@@ -22,21 +22,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const listingDataExchange = new gcp.bigqueryanalyticshub.DataExchange("listingDataExchange", {
+ * const listing = new gcp.bigqueryanalyticshub.DataExchange("listing", {
  *     location: "US",
  *     dataExchangeId: "my_data_exchange",
  *     displayName: "my_data_exchange",
  *     description: "example data exchange",
  * });
- * const listingDataset = new gcp.bigquery.Dataset("listingDataset", {
+ * const listingDataset = new gcp.bigquery.Dataset("listing", {
  *     datasetId: "my_listing",
  *     friendlyName: "my_listing",
  *     description: "example data exchange",
  *     location: "US",
  * });
- * const listingListing = new gcp.bigqueryanalyticshub.Listing("listingListing", {
+ * const listingListing = new gcp.bigqueryanalyticshub.Listing("listing", {
  *     location: "US",
- *     dataExchangeId: listingDataExchange.dataExchangeId,
+ *     dataExchangeId: listing.dataExchangeId,
  *     listingId: "my_listing",
  *     displayName: "my_listing",
  *     description: "example data exchange",
@@ -51,21 +51,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const listingDataExchange = new gcp.bigqueryanalyticshub.DataExchange("listingDataExchange", {
+ * const listing = new gcp.bigqueryanalyticshub.DataExchange("listing", {
  *     location: "US",
  *     dataExchangeId: "my_data_exchange",
  *     displayName: "my_data_exchange",
  *     description: "example data exchange",
  * });
- * const listingDataset = new gcp.bigquery.Dataset("listingDataset", {
+ * const listingDataset = new gcp.bigquery.Dataset("listing", {
  *     datasetId: "my_listing",
  *     friendlyName: "my_listing",
  *     description: "example data exchange",
  *     location: "US",
  * });
- * const listingListing = new gcp.bigqueryanalyticshub.Listing("listingListing", {
+ * const listingListing = new gcp.bigqueryanalyticshub.Listing("listing", {
  *     location: "US",
- *     dataExchangeId: listingDataExchange.dataExchangeId,
+ *     dataExchangeId: listing.dataExchangeId,
  *     listingId: "my_listing",
  *     displayName: "my_listing",
  *     description: "example data exchange",

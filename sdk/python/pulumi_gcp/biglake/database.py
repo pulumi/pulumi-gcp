@@ -272,15 +272,20 @@ class Database(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        catalog = gcp.biglake.Catalog("catalog", location="US")
+        catalog = gcp.biglake.Catalog("catalog",
+            name="my_catalog",
+            location="US")
         bucket = gcp.storage.Bucket("bucket",
+            name="my_bucket",
             location="US",
             force_destroy=True,
             uniform_bucket_level_access=True)
-        metadata_folder = gcp.storage.BucketObject("metadataFolder",
+        metadata_folder = gcp.storage.BucketObject("metadata_folder",
+            name="metadata/",
             content=" ",
             bucket=bucket.name)
         database = gcp.biglake.Database("database",
+            name="my_database",
             catalog=catalog.id,
             type="HIVE",
             hive_options=gcp.biglake.DatabaseHiveOptionsArgs(
@@ -333,15 +338,20 @@ class Database(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        catalog = gcp.biglake.Catalog("catalog", location="US")
+        catalog = gcp.biglake.Catalog("catalog",
+            name="my_catalog",
+            location="US")
         bucket = gcp.storage.Bucket("bucket",
+            name="my_bucket",
             location="US",
             force_destroy=True,
             uniform_bucket_level_access=True)
-        metadata_folder = gcp.storage.BucketObject("metadataFolder",
+        metadata_folder = gcp.storage.BucketObject("metadata_folder",
+            name="metadata/",
             content=" ",
             bucket=bucket.name)
         database = gcp.biglake.Database("database",
+            name="my_database",
             catalog=catalog.id,
             type="HIVE",
             hive_options=gcp.biglake.DatabaseHiveOptionsArgs(

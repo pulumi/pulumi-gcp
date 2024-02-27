@@ -20,8 +20,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const primary = new gcp.monitoring.MonitoredProject("primary", {metricsScope: "my-project-name"});
- * const basic = new gcp.organizations.Project("basic", {orgId: "123456789"});
+ * const basic = new gcp.organizations.Project("basic", {
+ *     projectId: "m-id",
+ *     name: "m-id-display",
+ *     orgId: "123456789",
+ * });
+ * const primary = new gcp.monitoring.MonitoredProject("primary", {
+ *     metricsScope: "my-project-name",
+ *     name: basic.projectId,
+ * });
  * ```
  *
  * ## Import

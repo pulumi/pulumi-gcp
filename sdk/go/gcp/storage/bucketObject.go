@@ -38,8 +38,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := storage.NewBucketObject(ctx, "picture", &storage.BucketObjectArgs{
-//				Bucket: pulumi.String("image-store"),
+//				Name:   pulumi.String("butterfly01"),
 //				Source: pulumi.NewFileAsset("/images/nature/garden-tiger-moth.jpg"),
+//				Bucket: pulumi.String("image-store"),
 //			})
 //			if err != nil {
 //				return err
@@ -64,9 +65,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewBucketObject(ctx, "emptyFolder", &storage.BucketObjectArgs{
-//				Bucket:  pulumi.String("image-store"),
+//			_, err := storage.NewBucketObject(ctx, "empty_folder", &storage.BucketObjectArgs{
+//				Name:    pulumi.String("empty_folder/"),
 //				Content: pulumi.String(" "),
+//				Bucket:  pulumi.String("image-store"),
 //			})
 //			if err != nil {
 //				return err

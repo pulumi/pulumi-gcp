@@ -379,6 +379,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            name="terraform",
             labels={
                 "foo": "bar",
             },
@@ -390,6 +391,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                 kms_key_name="kms-name",
             ))
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
+            name="terraform",
             labels={
                 "foo": "bar",
             },
@@ -420,6 +422,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            name="terraform2",
             labels={
                 "foo": "bar",
             },
@@ -429,9 +432,9 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             ),
             encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
                 kms_key_name="kms-name",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
+            name="terraform2",
             labels={
                 "foo": "bar",
             },
@@ -448,8 +451,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                     value=0.3,
                 ),
             ),
-            offline_storage_ttl_days=30,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            offline_storage_ttl_days=30)
         ```
 
         ## Import
@@ -504,6 +506,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            name="terraform",
             labels={
                 "foo": "bar",
             },
@@ -515,6 +518,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                 kms_key_name="kms-name",
             ))
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
+            name="terraform",
             labels={
                 "foo": "bar",
             },
@@ -545,6 +549,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            name="terraform2",
             labels={
                 "foo": "bar",
             },
@@ -554,9 +559,9 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             ),
             encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
                 kms_key_name="kms-name",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
+            name="terraform2",
             labels={
                 "foo": "bar",
             },
@@ -573,8 +578,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                     value=0.3,
                 ),
             ),
-            offline_storage_ttl_days=30,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            offline_storage_ttl_days=30)
         ```
 
         ## Import

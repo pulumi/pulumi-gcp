@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  *         enableSpeechAdaptation: true,
  *     },
  * });
- * const basicWebhook = new gcp.diagflow.CxWebhook("basicWebhook", {
+ * const basicWebhook = new gcp.diagflow.CxWebhook("basic_webhook", {
  *     parent: agent.id,
  *     displayName: "MyFlow",
  *     genericWebService: {

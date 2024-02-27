@@ -75,17 +75,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				OrgId: pulumi.String("123456789"),
+//				ProjectId: pulumi.String("acm-test-proj-123"),
+//				Name:      pulumi.String("acm-test-proj-123"),
+//				OrgId:     pulumi.String("123456789"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = accesscontextmanager.NewAccessPolicy(ctx, "access-policy", &accesscontextmanager.AccessPolicyArgs{
 //				Parent: pulumi.String("organizations/123456789"),
+//				Title:  pulumi.String("Scoped Access Policy"),
 //				Scopes: project.Number.ApplyT(func(number string) (string, error) {
 //					return fmt.Sprintf("projects/%v", number), nil
 //				}).(pulumi.StringOutput),
-//				Title: pulumi.String("Scoped Access Policy"),
 //			})
 //			if err != nil {
 //				return err

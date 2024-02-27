@@ -26,11 +26,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const peer = new gcp.compute.RouterPeer("peer", {
+ *     name: "my-router-peer",
+ *     router: "my-router",
+ *     region: "us-central1",
+ *     peerAsn: 65513,
  *     advertisedRoutePriority: 100,
  *     "interface": "interface-1",
- *     peerAsn: 65513,
- *     region: "us-central1",
- *     router: "my-router",
  * });
  * ```
  * ### Router Peer Disabled
@@ -40,13 +41,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const peer = new gcp.compute.RouterPeer("peer", {
- *     advertisedRoutePriority: 100,
- *     enable: false,
- *     "interface": "interface-1",
- *     peerAsn: 65513,
- *     peerIpAddress: "169.254.1.2",
- *     region: "us-central1",
+ *     name: "my-router-peer",
  *     router: "my-router",
+ *     region: "us-central1",
+ *     peerIpAddress: "169.254.1.2",
+ *     peerAsn: 65513,
+ *     advertisedRoutePriority: 100,
+ *     "interface": "interface-1",
+ *     enable: false,
  * });
  * ```
  * ### Router Peer Bfd
@@ -56,18 +58,19 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const peer = new gcp.compute.RouterPeer("peer", {
+ *     name: "my-router-peer",
+ *     router: "my-router",
+ *     region: "us-central1",
+ *     peerIpAddress: "169.254.1.2",
+ *     peerAsn: 65513,
  *     advertisedRoutePriority: 100,
+ *     "interface": "interface-1",
  *     bfd: {
  *         minReceiveInterval: 1000,
  *         minTransmitInterval: 1000,
  *         multiplier: 5,
  *         sessionInitializationMode: "ACTIVE",
  *     },
- *     "interface": "interface-1",
- *     peerAsn: 65513,
- *     peerIpAddress: "169.254.1.2",
- *     region: "us-central1",
- *     router: "my-router",
  * });
  * ```
  * ### Router Peer Router Appliance
@@ -76,28 +79,36 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false});
+ * const network = new gcp.compute.Network("network", {
+ *     name: "my-router-net",
+ *     autoCreateSubnetworks: false,
+ * });
  * const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
+ *     name: "my-router-sub",
  *     network: network.selfLink,
  *     ipCidrRange: "10.0.0.0/16",
  *     region: "us-central1",
  * });
- * const addrIntf = new gcp.compute.Address("addrIntf", {
+ * const addrIntf = new gcp.compute.Address("addr_intf", {
+ *     name: "my-router-addr-intf",
  *     region: subnetwork.region,
  *     subnetwork: subnetwork.id,
  *     addressType: "INTERNAL",
  * });
- * const addrIntfRedundant = new gcp.compute.Address("addrIntfRedundant", {
+ * const addrIntfRedundant = new gcp.compute.Address("addr_intf_redundant", {
+ *     name: "my-router-addr-intf-red",
  *     region: subnetwork.region,
  *     subnetwork: subnetwork.id,
  *     addressType: "INTERNAL",
  * });
- * const addrPeer = new gcp.compute.Address("addrPeer", {
+ * const addrPeer = new gcp.compute.Address("addr_peer", {
+ *     name: "my-router-addr-peer",
  *     region: subnetwork.region,
  *     subnetwork: subnetwork.id,
  *     addressType: "INTERNAL",
  * });
  * const instance = new gcp.compute.Instance("instance", {
+ *     name: "router-appliance",
  *     zone: "us-central1-a",
  *     machineType: "e2-medium",
  *     canIpForward: true,
@@ -111,8 +122,9 @@ import * as utilities from "../utilities";
  *         subnetwork: subnetwork.selfLink,
  *     }],
  * });
- * const hub = new gcp.networkconnectivity.Hub("hub", {});
+ * const hub = new gcp.networkconnectivity.Hub("hub", {name: "my-router-hub"});
  * const spoke = new gcp.networkconnectivity.Spoke("spoke", {
+ *     name: "my-router-spoke",
  *     location: subnetwork.region,
  *     hub: hub.id,
  *     linkedRouterApplianceInstances: {
@@ -124,19 +136,22 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const router = new gcp.compute.Router("router", {
+ *     name: "my-router-router",
  *     region: subnetwork.region,
  *     network: network.selfLink,
  *     bgp: {
  *         asn: 64514,
  *     },
  * });
- * const interfaceRedundant = new gcp.compute.RouterInterface("interfaceRedundant", {
+ * const interfaceRedundant = new gcp.compute.RouterInterface("interface_redundant", {
+ *     name: "my-router-intf-red",
  *     region: router.region,
  *     router: router.name,
  *     subnetwork: subnetwork.selfLink,
  *     privateIpAddress: addrIntfRedundant.address,
  * });
  * const _interface = new gcp.compute.RouterInterface("interface", {
+ *     name: "my-router-intf",
  *     region: router.region,
  *     router: router.name,
  *     subnetwork: subnetwork.selfLink,
@@ -144,6 +159,7 @@ import * as utilities from "../utilities";
  *     redundantInterface: interfaceRedundant.name,
  * });
  * const peer = new gcp.compute.RouterPeer("peer", {
+ *     name: "my-router-peer",
  *     router: router.name,
  *     region: router.region,
  *     "interface": _interface.name,

@@ -56,6 +56,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_basic = new VMwareCluster(&#34;default-basic&#34;, VMwareClusterArgs.builder()        
+ *             .name(&#34;my-cluster&#34;)
  *             .location(&#34;us-west1&#34;)
  *             .adminClusterMembership(&#34;projects/870316890899/locations/global/memberships/gkeonprem-terraform-test&#34;)
  *             .description(&#34;test cluster&#34;)
@@ -94,6 +95,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var nodepool_basic = new VMwareNodePool(&#34;nodepool-basic&#34;, VMwareNodePoolArgs.builder()        
+ *             .name(&#34;my-nodepool&#34;)
  *             .location(&#34;us-west1&#34;)
  *             .vmwareCluster(default_basic.name())
  *             .config(VMwareNodePoolConfigArgs.builder()
@@ -107,6 +109,7 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Gkeonprem Vmware Node Pool Full
+ * 
  * ```java
  * package generated_program;
  * 
@@ -139,6 +142,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_full = new VMwareCluster(&#34;default-full&#34;, VMwareClusterArgs.builder()        
+ *             .name(&#34;my-cluster&#34;)
  *             .location(&#34;us-west1&#34;)
  *             .adminClusterMembership(&#34;projects/870316890899/locations/global/memberships/gkeonprem-terraform-test&#34;)
  *             .description(&#34;test cluster&#34;)
@@ -177,6 +181,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var nodepool_full = new VMwareNodePool(&#34;nodepool-full&#34;, VMwareNodePoolArgs.builder()        
+ *             .name(&#34;my-nodepool&#34;)
  *             .location(&#34;us-west1&#34;)
  *             .vmwareCluster(default_full.name())
  *             .annotations()
@@ -198,21 +203,7 @@ import javax.annotation.Nullable;
  *                         .effect(&#34;NO_SCHEDULE&#34;)
  *                         .build())
  *                 .labels()
- *                 .vsphereConfigs(VMwareNodePoolConfigVsphereConfigArgs.builder()
- *                     .datastore(&#34;test-datastore&#34;)
- *                     .tags(                    
- *                         VMwareNodePoolConfigVsphereConfigTagArgs.builder()
- *                             .category(&#34;test-category-1&#34;)
- *                             .tag(&#34;tag-1&#34;)
- *                             .build(),
- *                         VMwareNodePoolConfigVsphereConfigTagArgs.builder()
- *                             .category(&#34;test-category-2&#34;)
- *                             .tag(&#34;tag-2&#34;)
- *                             .build())
- *                     .hostGroups(                    
- *                         &#34;host1&#34;,
- *                         &#34;host2&#34;)
- *                     .build())
+ *                 .vsphereConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *                 .enableLoadBalancer(true)
  *                 .build())
  *             .nodePoolAutoscaling(VMwareNodePoolNodePoolAutoscalingArgs.builder()

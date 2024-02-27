@@ -20,7 +20,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const testActiveDirectoryFull = new gcp.netapp.ActiveDirectory("testActiveDirectoryFull", {
+ * const testActiveDirectoryFull = new gcp.netapp.ActiveDirectory("test_active_directory_full", {
+ *     name: "test-active-directory-full",
  *     location: "us-central1",
  *     domain: "ad.internal",
  *     dns: "172.30.64.3",

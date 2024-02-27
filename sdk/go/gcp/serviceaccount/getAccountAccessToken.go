@@ -35,11 +35,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := serviceaccount.NewIAMBinding(ctx, "token-creator-iam", &serviceaccount.IAMBindingArgs{
+//				ServiceAccountId: pulumi.String("projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com"),
+//				Role:             pulumi.String("roles/iam.serviceAccountTokenCreator"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("serviceAccount:service_A@projectA.iam.gserviceaccount.com"),
 //				},
-//				Role:             pulumi.String("roles/iam.serviceAccountTokenCreator"),
-//				ServiceAccountId: pulumi.String("projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -61,7 +61,6 @@ import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
-//	"github.com/pulumi/pulumi-google/sdk/v1/go/google"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -72,7 +71,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultAccountAccessToken, err := serviceaccount.GetAccountAccessToken(ctx, &serviceaccount.GetAccountAccessTokenArgs{
+//			_, err = serviceaccount.GetAccountAccessToken(ctx, &serviceaccount.GetAccountAccessTokenArgs{
 //				TargetServiceAccount: "service_B@projectB.iam.gserviceaccount.com",
 //				Scopes: []string{
 //					"userinfo-email",
@@ -80,12 +79,6 @@ import (
 //				},
 //				Lifetime: pulumi.StringRef("300s"),
 //			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = google.NewProvider(ctx, "impersonated", &google.ProviderArgs{
-//				AccessToken: defaultAccountAccessToken.AccessToken,
-//			})
 //			if err != nil {
 //				return err
 //			}

@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  *
  * const available = gcp.tpu.getTensorflowVersions({});
  * const tpu = new gcp.tpu.Node("tpu", {
+ *     name: "test-tpu",
  *     zone: "us-central1-b",
  *     acceleratorType: "v3-8",
  *     tensorflowVersion: available.then(available => available.versions?.[0]),
@@ -90,6 +91,7 @@ export interface GetTensorflowVersionsResult {
  *
  * const available = gcp.tpu.getTensorflowVersions({});
  * const tpu = new gcp.tpu.Node("tpu", {
+ *     name: "test-tpu",
  *     zone: "us-central1-b",
  *     acceleratorType: "v3-8",
  *     tensorflowVersion: available.then(available => available.versions?.[0]),

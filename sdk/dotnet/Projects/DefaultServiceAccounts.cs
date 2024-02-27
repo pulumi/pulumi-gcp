@@ -35,10 +35,10 @@ namespace Pulumi.Gcp.Projects
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myProject = new Gcp.Projects.DefaultServiceAccounts("myProject", new()
+    ///     var myProject = new Gcp.Projects.DefaultServiceAccounts("my_project", new()
     ///     {
-    ///         Action = "DELETE",
     ///         Project = "my-project-id",
+    ///         Action = "DELETE",
     ///     });
     /// 
     /// });
@@ -54,10 +54,10 @@ namespace Pulumi.Gcp.Projects
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myProject = new Gcp.Projects.DefaultServiceAccounts("myProject", new()
+    ///     var myProject = new Gcp.Projects.DefaultServiceAccounts("my_project", new()
     ///     {
-    ///         Action = "DISABLE",
     ///         Project = "my-project-id",
+    ///         Action = "DISABLE",
     ///         RestorePolicy = "REVERT",
     ///     });
     /// 

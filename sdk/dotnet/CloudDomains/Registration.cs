@@ -21,71 +21,18 @@ namespace Pulumi.Gcp.CloudDomains
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myRegistration = new Gcp.CloudDomains.Registration("myRegistration", new()
+    ///     var myRegistration = new Gcp.CloudDomains.Registration("my_registration", new()
     ///     {
-    ///         ContactSettings = new Gcp.CloudDomains.Inputs.RegistrationContactSettingsArgs
+    ///         DomainName = "example-domain.com",
+    ///         Location = "global",
+    ///         Labels = 
     ///         {
-    ///             AdminContact = new Gcp.CloudDomains.Inputs.RegistrationContactSettingsAdminContactArgs
-    ///             {
-    ///                 Email = "user@example.com",
-    ///                 PhoneNumber = "+12345000000",
-    ///                 PostalAddress = new Gcp.CloudDomains.Inputs.RegistrationContactSettingsAdminContactPostalAddressArgs
-    ///                 {
-    ///                     AddressLines = new[]
-    ///                     {
-    ///                         "1234 Example street",
-    ///                     },
-    ///                     AdministrativeArea = "CA",
-    ///                     Locality = "Example City",
-    ///                     PostalCode = "95050",
-    ///                     Recipients = new[]
-    ///                     {
-    ///                         "example recipient",
-    ///                     },
-    ///                     RegionCode = "US",
-    ///                 },
-    ///             },
-    ///             Privacy = "REDACTED_CONTACT_DATA",
-    ///             RegistrantContact = new Gcp.CloudDomains.Inputs.RegistrationContactSettingsRegistrantContactArgs
-    ///             {
-    ///                 Email = "user@example.com",
-    ///                 PhoneNumber = "+12345000000",
-    ///                 PostalAddress = new Gcp.CloudDomains.Inputs.RegistrationContactSettingsRegistrantContactPostalAddressArgs
-    ///                 {
-    ///                     AddressLines = new[]
-    ///                     {
-    ///                         "1234 Example street",
-    ///                     },
-    ///                     AdministrativeArea = "CA",
-    ///                     Locality = "Example City",
-    ///                     PostalCode = "95050",
-    ///                     Recipients = new[]
-    ///                     {
-    ///                         "example recipient",
-    ///                     },
-    ///                     RegionCode = "US",
-    ///                 },
-    ///             },
-    ///             TechnicalContact = new Gcp.CloudDomains.Inputs.RegistrationContactSettingsTechnicalContactArgs
-    ///             {
-    ///                 Email = "user@example.com",
-    ///                 PhoneNumber = "+12345000000",
-    ///                 PostalAddress = new Gcp.CloudDomains.Inputs.RegistrationContactSettingsTechnicalContactPostalAddressArgs
-    ///                 {
-    ///                     AddressLines = new[]
-    ///                     {
-    ///                         "1234 Example street",
-    ///                     },
-    ///                     AdministrativeArea = "CA",
-    ///                     Locality = "Example City",
-    ///                     PostalCode = "95050",
-    ///                     Recipients = new[]
-    ///                     {
-    ///                         "example recipient",
-    ///                     },
-    ///                     RegionCode = "US",
-    ///                 },
-    ///             },
+    ///             { "labelkey", "labelvalue" },
+    ///         },
+    ///         YearlyPrice = new Gcp.CloudDomains.Inputs.RegistrationYearlyPriceArgs
+    ///         {
+    ///             CurrencyCode = "USD",
+    ///             Units = "12",
     ///         },
     ///         DnsSettings = new Gcp.CloudDomains.Inputs.RegistrationDnsSettingsArgs
     ///         {
@@ -100,16 +47,69 @@ namespace Pulumi.Gcp.CloudDomains
     ///                 },
     ///             },
     ///         },
-    ///         DomainName = "example-domain.com",
-    ///         Labels = 
+    ///         ContactSettings = new Gcp.CloudDomains.Inputs.RegistrationContactSettingsArgs
     ///         {
-    ///             { "labelkey", "labelvalue" },
-    ///         },
-    ///         Location = "global",
-    ///         YearlyPrice = new Gcp.CloudDomains.Inputs.RegistrationYearlyPriceArgs
-    ///         {
-    ///             CurrencyCode = "USD",
-    ///             Units = "12",
+    ///             Privacy = "REDACTED_CONTACT_DATA",
+    ///             RegistrantContact = new Gcp.CloudDomains.Inputs.RegistrationContactSettingsRegistrantContactArgs
+    ///             {
+    ///                 PhoneNumber = "+12345000000",
+    ///                 Email = "user@example.com",
+    ///                 PostalAddress = new Gcp.CloudDomains.Inputs.RegistrationContactSettingsRegistrantContactPostalAddressArgs
+    ///                 {
+    ///                     RegionCode = "US",
+    ///                     PostalCode = "95050",
+    ///                     AdministrativeArea = "CA",
+    ///                     Locality = "Example City",
+    ///                     AddressLines = new[]
+    ///                     {
+    ///                         "1234 Example street",
+    ///                     },
+    ///                     Recipients = new[]
+    ///                     {
+    ///                         "example recipient",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             AdminContact = new Gcp.CloudDomains.Inputs.RegistrationContactSettingsAdminContactArgs
+    ///             {
+    ///                 PhoneNumber = "+12345000000",
+    ///                 Email = "user@example.com",
+    ///                 PostalAddress = new Gcp.CloudDomains.Inputs.RegistrationContactSettingsAdminContactPostalAddressArgs
+    ///                 {
+    ///                     RegionCode = "US",
+    ///                     PostalCode = "95050",
+    ///                     AdministrativeArea = "CA",
+    ///                     Locality = "Example City",
+    ///                     AddressLines = new[]
+    ///                     {
+    ///                         "1234 Example street",
+    ///                     },
+    ///                     Recipients = new[]
+    ///                     {
+    ///                         "example recipient",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             TechnicalContact = new Gcp.CloudDomains.Inputs.RegistrationContactSettingsTechnicalContactArgs
+    ///             {
+    ///                 PhoneNumber = "+12345000000",
+    ///                 Email = "user@example.com",
+    ///                 PostalAddress = new Gcp.CloudDomains.Inputs.RegistrationContactSettingsTechnicalContactPostalAddressArgs
+    ///                 {
+    ///                     RegionCode = "US",
+    ///                     PostalCode = "95050",
+    ///                     AdministrativeArea = "CA",
+    ///                     Locality = "Example City",
+    ///                     AddressLines = new[]
+    ///                     {
+    ///                         "1234 Example street",
+    ///                     },
+    ///                     Recipients = new[]
+    ///                     {
+    ///                         "example recipient",
+    ///                     },
+    ///                 },
+    ///             },
     ///         },
     ///     });
     /// 

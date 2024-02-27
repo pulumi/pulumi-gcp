@@ -36,7 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			serviceAccount, err := serviceaccount.NewAccount(ctx, "serviceAccount", &serviceaccount.AccountArgs{
+//			serviceAccount, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("my-account"),
 //				DisplayName: pulumi.String("Service Account"),
 //			})
@@ -44,6 +44,7 @@ import (
 //				return err
 //			}
 //			_, err = dataflow.NewPipeline(ctx, "primary", &dataflow.PipelineArgs{
+//				Name:        pulumi.String("my-pipeline"),
 //				DisplayName: pulumi.String("my-pipeline"),
 //				Type:        pulumi.String("PIPELINE_TYPE_BATCH"),
 //				State:       pulumi.String("STATE_ACTIVE"),

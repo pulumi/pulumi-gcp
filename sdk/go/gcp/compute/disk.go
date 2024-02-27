@@ -49,13 +49,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewDisk(ctx, "default", &compute.DiskArgs{
+//				Name:  pulumi.String("test-disk"),
+//				Type:  pulumi.String("pd-ssd"),
+//				Zone:  pulumi.String("us-central1-a"),
 //				Image: pulumi.String("debian-11-bullseye-v20220719"),
 //				Labels: pulumi.StringMap{
 //					"environment": pulumi.String("dev"),
 //				},
 //				PhysicalBlockSizeBytes: pulumi.Int(4096),
-//				Type:                   pulumi.String("pd-ssd"),
-//				Zone:                   pulumi.String("us-central1-a"),
 //			})
 //			if err != nil {
 //				return err
@@ -80,6 +81,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			primary, err := compute.NewDisk(ctx, "primary", &compute.DiskArgs{
+//				Name:                   pulumi.String("async-test-disk"),
 //				Type:                   pulumi.String("pd-ssd"),
 //				Zone:                   pulumi.String("us-central1-a"),
 //				PhysicalBlockSizeBytes: pulumi.Int(4096),
@@ -88,6 +90,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewDisk(ctx, "secondary", &compute.DiskArgs{
+//				Name: pulumi.String("async-secondary-test-disk"),
 //				Type: pulumi.String("pd-ssd"),
 //				Zone: pulumi.String("us-east1-c"),
 //				AsyncPrimaryDisk: &compute.DiskAsyncPrimaryDiskArgs{
@@ -118,6 +121,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewDisk(ctx, "default", &compute.DiskArgs{
+//				Name: pulumi.String("test-disk-features"),
+//				Type: pulumi.String("pd-ssd"),
+//				Zone: pulumi.String("us-central1-a"),
+//				Labels: pulumi.StringMap{
+//					"environment": pulumi.String("dev"),
+//				},
 //				GuestOsFeatures: compute.DiskGuestOsFeatureArray{
 //					&compute.DiskGuestOsFeatureArgs{
 //						Type: pulumi.String("SECURE_BOOT"),
@@ -129,15 +138,10 @@ import (
 //						Type: pulumi.String("WINDOWS"),
 //					},
 //				},
-//				Labels: pulumi.StringMap{
-//					"environment": pulumi.String("dev"),
-//				},
 //				Licenses: pulumi.StringArray{
 //					pulumi.String("https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"),
 //				},
 //				PhysicalBlockSizeBytes: pulumi.Int(4096),
-//				Type:                   pulumi.String("pd-ssd"),
-//				Zone:                   pulumi.String("us-central1-a"),
 //			})
 //			if err != nil {
 //				return err

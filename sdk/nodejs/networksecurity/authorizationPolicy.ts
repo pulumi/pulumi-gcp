@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networksecurity.AuthorizationPolicy("default", {
+ *     name: "my-authorization-policy",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -26,8 +27,6 @@ import * as utilities from "../utilities";
  *             ipBlocks: ["1.2.3.0/24"],
  *         }],
  *     }],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Network Security Authorization Policy Destinations
@@ -37,6 +36,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networksecurity.AuthorizationPolicy("default", {
+ *     name: "my-authorization-policy",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -57,8 +57,6 @@ import * as utilities from "../utilities";
  *             },
  *         }],
  *     }],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

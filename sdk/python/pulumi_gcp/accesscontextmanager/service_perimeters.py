@@ -146,27 +146,30 @@ class ServicePerimeters(pulumi.CustomResource):
             service_perimeters=[
                 gcp.accesscontextmanager.ServicePerimetersServicePerimeterArgs(
                     name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
+                    title="",
                     status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs(
                         restricted_services=["storage.googleapis.com"],
                     ),
-                    title="",
                 ),
                 gcp.accesscontextmanager.ServicePerimetersServicePerimeterArgs(
                     name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
+                    title="",
                     status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs(
                         restricted_services=["bigtable.googleapis.com"],
                     ),
-                    title="",
                 ),
             ])
         access_level = gcp.accesscontextmanager.AccessLevel("access-level",
+            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
+            title="chromeos_no_lock",
             basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
                 conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
                     device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
+                        require_screen_lock=False,
                         os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
                             os_type="DESKTOP_CHROME_OS",
                         )],
-                        require_screen_lock=False,
                     ),
                     regions=[
                         "CH",
@@ -174,9 +177,7 @@ class ServicePerimeters(pulumi.CustomResource):
                         "US",
                     ],
                 )],
-            ),
-            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
-            title="chromeos_no_lock")
+            ))
         ```
 
         ## Import
@@ -239,27 +240,30 @@ class ServicePerimeters(pulumi.CustomResource):
             service_perimeters=[
                 gcp.accesscontextmanager.ServicePerimetersServicePerimeterArgs(
                     name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
+                    title="",
                     status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs(
                         restricted_services=["storage.googleapis.com"],
                     ),
-                    title="",
                 ),
                 gcp.accesscontextmanager.ServicePerimetersServicePerimeterArgs(
                     name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
+                    title="",
                     status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs(
                         restricted_services=["bigtable.googleapis.com"],
                     ),
-                    title="",
                 ),
             ])
         access_level = gcp.accesscontextmanager.AccessLevel("access-level",
+            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
+            title="chromeos_no_lock",
             basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
                 conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
                     device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
+                        require_screen_lock=False,
                         os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
                             os_type="DESKTOP_CHROME_OS",
                         )],
-                        require_screen_lock=False,
                     ),
                     regions=[
                         "CH",
@@ -267,9 +271,7 @@ class ServicePerimeters(pulumi.CustomResource):
                         "US",
                     ],
                 )],
-            ),
-            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
-            title="chromeos_no_lock")
+            ))
         ```
 
         ## Import

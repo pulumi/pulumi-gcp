@@ -823,22 +823,25 @@ class StandardAppVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        custom_service_account = gcp.serviceaccount.Account("customServiceAccount",
+        custom_service_account = gcp.serviceaccount.Account("custom_service_account",
             account_id="my-account",
             display_name="Custom Service Account")
-        gae_api = gcp.projects.IAMMember("gaeApi",
+        gae_api = gcp.projects.IAMMember("gae_api",
             project=custom_service_account.project,
             role="roles/compute.networkUser",
             member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        storage_viewer = gcp.projects.IAMMember("storageViewer",
+        storage_viewer = gcp.projects.IAMMember("storage_viewer",
             project=custom_service_account.project,
             role="roles/storage.objectViewer",
             member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        bucket = gcp.storage.Bucket("bucket", location="US")
+        bucket = gcp.storage.Bucket("bucket",
+            name="appengine-static-content",
+            location="US")
         object = gcp.storage.BucketObject("object",
+            name="hello-world.zip",
             bucket=bucket.name,
             source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
-        myapp_v1 = gcp.appengine.StandardAppVersion("myappV1",
+        myapp_v1 = gcp.appengine.StandardAppVersion("myapp_v1",
             version_id="v1",
             service="myapp",
             runtime="nodejs10",
@@ -868,7 +871,7 @@ class StandardAppVersion(pulumi.CustomResource):
             ),
             delete_service_on_destroy=True,
             service_account=custom_service_account.email)
-        myapp_v2 = gcp.appengine.StandardAppVersion("myappV2",
+        myapp_v2 = gcp.appengine.StandardAppVersion("myapp_v2",
             version_id="v2",
             service="myapp",
             runtime="nodejs10",
@@ -980,22 +983,25 @@ class StandardAppVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        custom_service_account = gcp.serviceaccount.Account("customServiceAccount",
+        custom_service_account = gcp.serviceaccount.Account("custom_service_account",
             account_id="my-account",
             display_name="Custom Service Account")
-        gae_api = gcp.projects.IAMMember("gaeApi",
+        gae_api = gcp.projects.IAMMember("gae_api",
             project=custom_service_account.project,
             role="roles/compute.networkUser",
             member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        storage_viewer = gcp.projects.IAMMember("storageViewer",
+        storage_viewer = gcp.projects.IAMMember("storage_viewer",
             project=custom_service_account.project,
             role="roles/storage.objectViewer",
             member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        bucket = gcp.storage.Bucket("bucket", location="US")
+        bucket = gcp.storage.Bucket("bucket",
+            name="appengine-static-content",
+            location="US")
         object = gcp.storage.BucketObject("object",
+            name="hello-world.zip",
             bucket=bucket.name,
             source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
-        myapp_v1 = gcp.appengine.StandardAppVersion("myappV1",
+        myapp_v1 = gcp.appengine.StandardAppVersion("myapp_v1",
             version_id="v1",
             service="myapp",
             runtime="nodejs10",
@@ -1025,7 +1031,7 @@ class StandardAppVersion(pulumi.CustomResource):
             ),
             delete_service_on_destroy=True,
             service_account=custom_service_account.email)
-        myapp_v2 = gcp.appengine.StandardAppVersion("myappV2",
+        myapp_v2 = gcp.appengine.StandardAppVersion("myapp_v2",
             version_id="v2",
             service="myapp",
             runtime="nodejs10",

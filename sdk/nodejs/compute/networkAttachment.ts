@@ -14,37 +14,36 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false}, {
- *     provider: google_beta,
+ * const defaultNetwork = new gcp.compute.Network("default", {
+ *     name: "basic-network",
+ *     autoCreateSubnetworks: false,
  * });
- * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "basic-subnetwork",
  *     region: "us-central1",
  *     network: defaultNetwork.id,
  *     ipCidrRange: "10.0.0.0/16",
- * }, {
- *     provider: google_beta,
  * });
- * const rejectedProducerProject = new gcp.organizations.Project("rejectedProducerProject", {
+ * const rejectedProducerProject = new gcp.organizations.Project("rejected_producer_project", {
+ *     projectId: "prj-rejected",
+ *     name: "prj-rejected",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
- * }, {
- *     provider: google_beta,
  * });
- * const acceptedProducerProject = new gcp.organizations.Project("acceptedProducerProject", {
+ * const acceptedProducerProject = new gcp.organizations.Project("accepted_producer_project", {
+ *     projectId: "prj-accepted",
+ *     name: "prj-accepted",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
- * }, {
- *     provider: google_beta,
  * });
- * const defaultNetworkAttachment = new gcp.compute.NetworkAttachment("defaultNetworkAttachment", {
+ * const _default = new gcp.compute.NetworkAttachment("default", {
+ *     name: "basic-network-attachment",
  *     region: "us-central1",
  *     description: "basic network attachment description",
  *     connectionPreference: "ACCEPT_MANUAL",
  *     subnetworks: [defaultSubnetwork.selfLink],
  *     producerAcceptLists: [acceptedProducerProject.projectId],
  *     producerRejectLists: [rejectedProducerProject.projectId],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Network Attachment Instance Usage
@@ -53,25 +52,25 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false}, {
- *     provider: google_beta,
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "basic-network",
+ *     autoCreateSubnetworks: false,
  * });
- * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "basic-subnetwork",
  *     region: "us-central1",
- *     network: defaultNetwork.id,
+ *     network: _default.id,
  *     ipCidrRange: "10.0.0.0/16",
- * }, {
- *     provider: google_beta,
  * });
- * const defaultNetworkAttachment = new gcp.compute.NetworkAttachment("defaultNetworkAttachment", {
+ * const defaultNetworkAttachment = new gcp.compute.NetworkAttachment("default", {
+ *     name: "basic-network-attachment",
  *     region: "us-central1",
  *     description: "my basic network attachment",
  *     subnetworks: [defaultSubnetwork.id],
  *     connectionPreference: "ACCEPT_AUTOMATIC",
- * }, {
- *     provider: google_beta,
  * });
- * const defaultInstance = new gcp.compute.Instance("defaultInstance", {
+ * const defaultInstance = new gcp.compute.Instance("default", {
+ *     name: "basic-instance",
  *     zone: "us-central1-a",
  *     machineType: "e2-micro",
  *     bootDisk: {
@@ -87,8 +86,6 @@ import * as utilities from "../utilities";
  *             networkAttachment: defaultNetworkAttachment.selfLink,
  *         },
  *     ],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

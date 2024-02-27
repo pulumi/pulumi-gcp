@@ -450,7 +450,9 @@ def get_region_instance_template(filter: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
+    # by name
     generic = gcp.compute.get_region_instance_template(name="generic-tpl-20200107")
+    # using a filter
     generic_regex = gcp.compute.get_region_instance_template(filter="name != generic-tpl-20200107",
         most_recent=True)
     ```
@@ -531,7 +533,9 @@ def get_region_instance_template_output(filter: Optional[pulumi.Input[Optional[s
     import pulumi
     import pulumi_gcp as gcp
 
+    # by name
     generic = gcp.compute.get_region_instance_template(name="generic-tpl-20200107")
+    # using a filter
     generic_regex = gcp.compute.get_region_instance_template(filter="name != generic-tpl-20200107",
         most_recent=True)
     ```

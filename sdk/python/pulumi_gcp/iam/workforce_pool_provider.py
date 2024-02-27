@@ -81,9 +81,6 @@ class WorkforcePoolProviderArgs:
                For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
                For example, the following maps the sub claim of the incoming credential to the `subject` attribute
                on a Google token:
-               ```python
-               import pulumi
-               ```
                An object containing a list of `"key": value` pairs.
                Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[str] description: A user-specified description of the provider. Cannot exceed 256 characters.
@@ -214,9 +211,6 @@ class WorkforcePoolProviderArgs:
         For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
         For example, the following maps the sub claim of the incoming credential to the `subject` attribute
         on a Google token:
-        ```python
-        import pulumi
-        ```
         An object containing a list of `"key": value` pairs.
         Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         """
@@ -349,9 +343,6 @@ class _WorkforcePoolProviderState:
                For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
                For example, the following maps the sub claim of the incoming credential to the `subject` attribute
                on a Google token:
-               ```python
-               import pulumi
-               ```
                An object containing a list of `"key": value` pairs.
                Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[str] description: A user-specified description of the provider. Cannot exceed 256 characters.
@@ -464,9 +455,6 @@ class _WorkforcePoolProviderState:
         For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
         For example, the following maps the sub claim of the incoming credential to the `subject` attribute
         on a Google token:
-        ```python
-        import pulumi
-        ```
         An object containing a list of `"key": value` pairs.
         Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         """
@@ -822,9 +810,6 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
                For example, the following maps the sub claim of the incoming credential to the `subject` attribute
                on a Google token:
-               ```python
-               import pulumi
-               ```
                An object containing a list of `"key": value` pairs.
                Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[str] description: A user-specified description of the provider. Cannot exceed 256 characters.
@@ -1124,9 +1109,6 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
                For example, the following maps the sub claim of the incoming credential to the `subject` attribute
                on a Google token:
-               ```python
-               import pulumi
-               ```
                An object containing a list of `"key": value` pairs.
                Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[str] description: A user-specified description of the provider. Cannot exceed 256 characters.
@@ -1228,9 +1210,6 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
         For example, the following maps the sub claim of the incoming credential to the `subject` attribute
         on a Google token:
-        ```python
-        import pulumi
-        ```
         An object containing a list of `"key": value` pairs.
         Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         """

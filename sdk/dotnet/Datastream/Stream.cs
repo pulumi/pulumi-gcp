@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
     ///     {
+    ///         Name = "my-instance",
     ///         DatabaseVersion = "MYSQL_8_0",
     ///         Region = "us-central1",
     ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
@@ -77,6 +78,7 @@ namespace Pulumi.Gcp.Datastream
     ///     var db = new Gcp.Sql.Database("db", new()
     ///     {
     ///         Instance = instance.Name,
+    ///         Name = "db",
     ///     });
     /// 
     ///     var pwd = new Random.RandomPassword("pwd", new()
@@ -87,12 +89,13 @@ namespace Pulumi.Gcp.Datastream
     /// 
     ///     var user = new Gcp.Sql.User("user", new()
     ///     {
+    ///         Name = "user",
     ///         Instance = instance.Name,
     ///         Host = "%",
     ///         Password = pwd.Result,
     ///     });
     /// 
-    ///     var sourceConnectionProfile = new Gcp.Datastream.ConnectionProfile("sourceConnectionProfile", new()
+    ///     var sourceConnectionProfile = new Gcp.Datastream.ConnectionProfile("source_connection_profile", new()
     ///     {
     ///         DisplayName = "Source connection profile",
     ///         Location = "us-central1",
@@ -107,6 +110,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
+    ///         Name = "my-bucket",
     ///         Location = "US",
     ///         UniformBucketLevelAccess = true,
     ///     });
@@ -132,14 +136,14 @@ namespace Pulumi.Gcp.Datastream
     ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-datastream.iam.gserviceaccount.com",
     ///     });
     /// 
-    ///     var keyUser = new Gcp.Kms.CryptoKeyIAMMember("keyUser", new()
+    ///     var keyUser = new Gcp.Kms.CryptoKeyIAMMember("key_user", new()
     ///     {
     ///         CryptoKeyId = "kms-name",
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
     ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-datastream.iam.gserviceaccount.com",
     ///     });
     /// 
-    ///     var destinationConnectionProfile = new Gcp.Datastream.ConnectionProfile("destinationConnectionProfile", new()
+    ///     var destinationConnectionProfile = new Gcp.Datastream.ConnectionProfile("destination_connection_profile", new()
     ///     {
     ///         DisplayName = "Connection profile",
     ///         Location = "us-central1",
@@ -279,12 +283,6 @@ namespace Pulumi.Gcp.Datastream
     ///             },
     ///         },
     ///         CustomerManagedEncryptionKey = "kms-name",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             keyUser,
-    ///         },
     ///     });
     /// 
     /// });
@@ -594,7 +592,7 @@ namespace Pulumi.Gcp.Datastream
     ///         Location = "us-central1",
     ///     });
     /// 
-    ///     var destinationConnectionProfile2 = new Gcp.Datastream.ConnectionProfile("destinationConnectionProfile2", new()
+    ///     var destinationConnectionProfile2 = new Gcp.Datastream.ConnectionProfile("destination_connection_profile2", new()
     ///     {
     ///         DisplayName = "Connection profile",
     ///         Location = "us-central1",
@@ -604,6 +602,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
     ///     {
+    ///         Name = "instance-name",
     ///         DatabaseVersion = "MYSQL_8_0",
     ///         Region = "us-central1",
     ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
@@ -652,12 +651,13 @@ namespace Pulumi.Gcp.Datastream
     /// 
     ///     var user = new Gcp.Sql.User("user", new()
     ///     {
+    ///         Name = "my-user",
     ///         Instance = instance.Name,
     ///         Host = "%",
     ///         Password = pwd.Result,
     ///     });
     /// 
-    ///     var sourceConnectionProfile = new Gcp.Datastream.ConnectionProfile("sourceConnectionProfile", new()
+    ///     var sourceConnectionProfile = new Gcp.Datastream.ConnectionProfile("source_connection_profile", new()
     ///     {
     ///         DisplayName = "Source connection profile",
     ///         Location = "us-central1",
@@ -698,6 +698,7 @@ namespace Pulumi.Gcp.Datastream
     ///     var db = new Gcp.Sql.Database("db", new()
     ///     {
     ///         Instance = instance.Name,
+    ///         Name = "db",
     ///     });
     /// 
     /// });
@@ -717,6 +718,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
     ///     {
+    ///         Name = "my-instance",
     ///         DatabaseVersion = "MYSQL_8_0",
     ///         Region = "us-central1",
     ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
@@ -760,6 +762,7 @@ namespace Pulumi.Gcp.Datastream
     ///     var db = new Gcp.Sql.Database("db", new()
     ///     {
     ///         Instance = instance.Name,
+    ///         Name = "db",
     ///     });
     /// 
     ///     var pwd = new Random.RandomPassword("pwd", new()
@@ -770,12 +773,13 @@ namespace Pulumi.Gcp.Datastream
     /// 
     ///     var user = new Gcp.Sql.User("user", new()
     ///     {
+    ///         Name = "user",
     ///         Instance = instance.Name,
     ///         Host = "%",
     ///         Password = pwd.Result,
     ///     });
     /// 
-    ///     var sourceConnectionProfile = new Gcp.Datastream.ConnectionProfile("sourceConnectionProfile", new()
+    ///     var sourceConnectionProfile = new Gcp.Datastream.ConnectionProfile("source_connection_profile", new()
     ///     {
     ///         DisplayName = "Source connection profile",
     ///         Location = "us-central1",
@@ -790,14 +794,14 @@ namespace Pulumi.Gcp.Datastream
     /// 
     ///     var bqSa = Gcp.BigQuery.GetDefaultServiceAccount.Invoke();
     /// 
-    ///     var bigqueryKeyUser = new Gcp.Kms.CryptoKeyIAMMember("bigqueryKeyUser", new()
+    ///     var bigqueryKeyUser = new Gcp.Kms.CryptoKeyIAMMember("bigquery_key_user", new()
     ///     {
     ///         CryptoKeyId = "bigquery-kms-name",
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
     ///         Member = $"serviceAccount:{bqSa.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)}",
     ///     });
     /// 
-    ///     var destinationConnectionProfile = new Gcp.Datastream.ConnectionProfile("destinationConnectionProfile", new()
+    ///     var destinationConnectionProfile = new Gcp.Datastream.ConnectionProfile("destination_connection_profile", new()
     ///     {
     ///         DisplayName = "Connection profile",
     ///         Location = "us-central1",
@@ -831,12 +835,6 @@ namespace Pulumi.Gcp.Datastream
     ///             },
     ///         },
     ///         BackfillNone = null,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             bigqueryKeyUser,
-    ///         },
     ///     });
     /// 
     /// });

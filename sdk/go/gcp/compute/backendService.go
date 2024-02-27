@@ -25,6 +25,41 @@ import (
 //   - [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 //
 // ## Example Usage
+// ### Backend Service Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+//				Name:             pulumi.String("health-check"),
+//				RequestPath:      pulumi.String("/"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:         pulumi.String("backend-service"),
+//				HealthChecks: defaultHttpHealthCheck.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Backend Service External Iap
 //
 // ```go
@@ -40,12 +75,52 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("tf-test-backend-service-external"),
+//				Protocol:            pulumi.String("HTTP"),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL"),
 //				Iap: &compute.BackendServiceIapArgs{
 //					Oauth2ClientId:     pulumi.String("abc"),
 //					Oauth2ClientSecret: pulumi.String("xyz"),
 //				},
-//				LoadBalancingScheme: pulumi.String("EXTERNAL"),
-//				Protocol:            pulumi.String("HTTP"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Backend Service Cache Simple
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+//				Name:             pulumi.String("health-check"),
+//				RequestPath:      pulumi.String("/"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:         pulumi.String("backend-service"),
+//				HealthChecks: defaultHttpHealthCheck.ID(),
+//				EnableCdn:    pulumi.Bool(true),
+//				CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
+//					SignedUrlCacheMaxAgeSec: pulumi.Int(7200),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -70,18 +145,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:      pulumi.String("backend-service"),
+//				EnableCdn: pulumi.Bool(true),
 //				CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
+//					CacheMode: pulumi.String("USE_ORIGIN_HEADERS"),
 //					CacheKeyPolicy: &compute.BackendServiceCdnPolicyCacheKeyPolicyArgs{
-//						IncludeHost: pulumi.Bool(true),
+//						IncludeHost:        pulumi.Bool(true),
+//						IncludeProtocol:    pulumi.Bool(true),
+//						IncludeQueryString: pulumi.Bool(true),
 //						IncludeHttpHeaders: pulumi.StringArray{
 //							pulumi.String("X-My-Header-Field"),
 //						},
-//						IncludeProtocol:    pulumi.Bool(true),
-//						IncludeQueryString: pulumi.Bool(true),
 //					},
-//					CacheMode: pulumi.String("USE_ORIGIN_HEADERS"),
 //				},
-//				EnableCdn: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -106,22 +182,209 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:      pulumi.String("backend-service"),
+//				EnableCdn: pulumi.Bool(true),
 //				CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
+//					CacheMode:  pulumi.String("CACHE_ALL_STATIC"),
+//					DefaultTtl: pulumi.Int(3600),
+//					ClientTtl:  pulumi.Int(7200),
+//					MaxTtl:     pulumi.Int(10800),
 //					CacheKeyPolicy: &compute.BackendServiceCdnPolicyCacheKeyPolicyArgs{
-//						IncludeHost: pulumi.Bool(true),
+//						IncludeHost:        pulumi.Bool(true),
+//						IncludeProtocol:    pulumi.Bool(true),
+//						IncludeQueryString: pulumi.Bool(true),
 //						IncludeNamedCookies: pulumi.StringArray{
 //							pulumi.String("__next_preview_data"),
 //							pulumi.String("__prerender_bypass"),
 //						},
-//						IncludeProtocol:    pulumi.Bool(true),
-//						IncludeQueryString: pulumi.Bool(true),
 //					},
-//					CacheMode:  pulumi.String("CACHE_ALL_STATIC"),
-//					ClientTtl:  pulumi.Int(7200),
-//					DefaultTtl: pulumi.Int(3600),
-//					MaxTtl:     pulumi.Int(10800),
 //				},
-//				EnableCdn: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Backend Service Cache
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+//				Name:             pulumi.String("health-check"),
+//				RequestPath:      pulumi.String("/"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:         pulumi.String("backend-service"),
+//				HealthChecks: defaultHttpHealthCheck.ID(),
+//				EnableCdn:    pulumi.Bool(true),
+//				CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
+//					CacheMode:               pulumi.String("CACHE_ALL_STATIC"),
+//					DefaultTtl:              pulumi.Int(3600),
+//					ClientTtl:               pulumi.Int(7200),
+//					MaxTtl:                  pulumi.Int(10800),
+//					NegativeCaching:         pulumi.Bool(true),
+//					SignedUrlCacheMaxAgeSec: pulumi.Int(7200),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Backend Service Cache Bypass Cache On Request Headers
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+//				Name:             pulumi.String("health-check"),
+//				RequestPath:      pulumi.String("/"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:         pulumi.String("backend-service"),
+//				HealthChecks: defaultHttpHealthCheck.ID(),
+//				EnableCdn:    pulumi.Bool(true),
+//				CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
+//					CacheMode:               pulumi.String("CACHE_ALL_STATIC"),
+//					DefaultTtl:              pulumi.Int(3600),
+//					ClientTtl:               pulumi.Int(7200),
+//					MaxTtl:                  pulumi.Int(10800),
+//					NegativeCaching:         pulumi.Bool(true),
+//					SignedUrlCacheMaxAgeSec: pulumi.Int(7200),
+//					BypassCacheOnRequestHeaders: compute.BackendServiceCdnPolicyBypassCacheOnRequestHeaderArray{
+//						&compute.BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs{
+//							HeaderName: pulumi.String("Authorization"),
+//						},
+//						&compute.BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs{
+//							HeaderName: pulumi.String("Proxy-Authorization"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Backend Service Traffic Director Round Robin
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			healthCheck, err := compute.NewHealthCheck(ctx, "health_check", &compute.HealthCheckArgs{
+//				Name: pulumi.String("health-check"),
+//				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("backend-service"),
+//				HealthChecks:        healthCheck.ID(),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
+//				LocalityLbPolicy:    pulumi.String("ROUND_ROBIN"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Backend Service Traffic Director Ring Hash
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			healthCheck, err := compute.NewHealthCheck(ctx, "health_check", &compute.HealthCheckArgs{
+//				Name: pulumi.String("health-check"),
+//				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("backend-service"),
+//				HealthChecks:        healthCheck.ID(),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
+//				LocalityLbPolicy:    pulumi.String("RING_HASH"),
+//				SessionAffinity:     pulumi.String("HTTP_COOKIE"),
+//				CircuitBreakers: &compute.BackendServiceCircuitBreakersArgs{
+//					MaxConnections: pulumi.Int(10),
+//				},
+//				ConsistentHash: &compute.BackendServiceConsistentHashArgs{
+//					HttpCookie: &compute.BackendServiceConsistentHashHttpCookieArgs{
+//						Ttl: &compute.BackendServiceConsistentHashHttpCookieTtlArgs{
+//							Seconds: pulumi.Int(11),
+//							Nanos:   pulumi.Int(1111),
+//						},
+//						Name: pulumi.String("mycookie"),
+//					},
+//				},
+//				OutlierDetection: &compute.BackendServiceOutlierDetectionArgs{
+//					ConsecutiveErrors: pulumi.Int(2),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -147,10 +410,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			externalProxy, err := compute.NewGlobalNetworkEndpointGroup(ctx, "externalProxy", &compute.GlobalNetworkEndpointGroupArgs{
+//			externalProxy, err := compute.NewGlobalNetworkEndpointGroup(ctx, "external_proxy", &compute.GlobalNetworkEndpointGroupArgs{
+//				Name:                pulumi.String("network-endpoint"),
 //				NetworkEndpointType: pulumi.String("INTERNET_FQDN_PORT"),
 //				DefaultPort:         pulumi.Int(443),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -158,11 +422,12 @@ import (
 //				GlobalNetworkEndpointGroup: externalProxy.ID(),
 //				Fqdn:                       pulumi.String("test.example.com"),
 //				Port:                       externalProxy.DefaultPort,
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:                         pulumi.String("backend-service"),
 //				EnableCdn:                    pulumi.Bool(true),
 //				TimeoutSec:                   pulumi.Int(10),
 //				ConnectionDrainingTimeoutSec: pulumi.Int(10),
@@ -179,7 +444,43 @@ import (
 //						Group: externalProxy.ID(),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Backend Service External Managed
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//				Name: pulumi.String("health-check"),
+//				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("backend-service"),
+//				HealthChecks:        defaultHealthCheck.ID(),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//			})
 //			if err != nil {
 //				return err
 //			}

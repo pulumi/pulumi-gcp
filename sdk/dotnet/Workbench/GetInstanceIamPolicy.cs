@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.Workbench
         /// {
         ///     var policy = Gcp.Workbench.GetInstanceIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_workbench_instance.Instance.Project,
-        ///         Location = google_workbench_instance.Instance.Location,
-        ///         Name = google_workbench_instance.Instance.Name,
+        ///         Project = instance.Project,
+        ///         Location = instance.Location,
+        ///         Name = instance.Name,
         ///     });
         /// 
         /// });
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.Workbench
         /// {
         ///     var policy = Gcp.Workbench.GetInstanceIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_workbench_instance.Instance.Project,
-        ///         Location = google_workbench_instance.Instance.Location,
-        ///         Name = google_workbench_instance.Instance.Name,
+        ///         Project = instance.Project,
+        ///         Location = instance.Location,
+        ///         Name = instance.Name,
         ///     });
         /// 
         /// });

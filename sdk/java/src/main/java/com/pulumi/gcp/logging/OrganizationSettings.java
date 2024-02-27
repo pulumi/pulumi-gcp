@@ -31,13 +31,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.logging.OrganizationSettings;
+ * import com.pulumi.gcp.logging.OrganizationSettingsArgs;
  * import com.pulumi.gcp.logging.LoggingFunctions;
  * import com.pulumi.gcp.logging.inputs.GetOrganizationSettingsArgs;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
- * import com.pulumi.gcp.logging.OrganizationSettings;
- * import com.pulumi.gcp.logging.OrganizationSettingsArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -51,6 +50,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var example = new OrganizationSettings(&#34;example&#34;, OrganizationSettingsArgs.builder()        
+ *             .disableDefaultSink(true)
+ *             .kmsKeyName(&#34;kms-key&#34;)
+ *             .organization(&#34;123456789&#34;)
+ *             .storageLocation(&#34;us-central1&#34;)
+ *             .build());
+ * 
  *         final var settings = LoggingFunctions.getOrganizationSettings(GetOrganizationSettingsArgs.builder()
  *             .organization(&#34;123456789&#34;)
  *             .build());
@@ -60,15 +66,6 @@ import javax.annotation.Nullable;
  *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
  *             .member(String.format(&#34;serviceAccount:%s&#34;, settings.applyValue(getOrganizationSettingsResult -&gt; getOrganizationSettingsResult.kmsServiceAccountId())))
  *             .build());
- * 
- *         var example = new OrganizationSettings(&#34;example&#34;, OrganizationSettingsArgs.builder()        
- *             .disableDefaultSink(true)
- *             .kmsKeyName(&#34;kms-key&#34;)
- *             .organization(&#34;123456789&#34;)
- *             .storageLocation(&#34;us-central1&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(iam)
- *                 .build());
  * 
  *     }
  * }

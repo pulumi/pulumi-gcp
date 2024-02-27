@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.CloudDeploy
     ///     var primary = new Gcp.CloudDeploy.DeliveryPipeline("primary", new()
     ///     {
     ///         Location = "us-west1",
+    ///         Name = "pipeline",
     ///         Description = "basic description",
     ///         Project = "my-project-name",
     ///         SerialPipeline = new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineArgs
@@ -69,9 +70,6 @@ namespace Pulumi.Gcp.CloudDeploy
     ///             { "my_first_label", "example-label-1" },
     ///             { "my_second_label", "example-label-2" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -89,6 +87,7 @@ namespace Pulumi.Gcp.CloudDeploy
     ///     var primary = new Gcp.CloudDeploy.DeliveryPipeline("primary", new()
     ///     {
     ///         Location = "us-west1",
+    ///         Name = "pipeline",
     ///         Description = "basic description",
     ///         Project = "my-project-name",
     ///         SerialPipeline = new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineArgs
@@ -132,9 +131,6 @@ namespace Pulumi.Gcp.CloudDeploy
     ///             { "my_first_label", "example-label-1" },
     ///             { "my_second_label", "example-label-2" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -152,6 +148,7 @@ namespace Pulumi.Gcp.CloudDeploy
     ///     var primary = new Gcp.CloudDeploy.DeliveryPipeline("primary", new()
     ///     {
     ///         Location = "us-west1",
+    ///         Name = "pipeline",
     ///         Description = "basic description",
     ///         Project = "my-project-name",
     ///         SerialPipeline = new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineArgs
@@ -195,9 +192,6 @@ namespace Pulumi.Gcp.CloudDeploy
     ///             { "my_first_label", "example-label-1" },
     ///             { "my_second_label", "example-label-2" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -214,18 +208,9 @@ namespace Pulumi.Gcp.CloudDeploy
     /// {
     ///     var primary = new Gcp.CloudDeploy.DeliveryPipeline("primary", new()
     ///     {
-    ///         Annotations = 
-    ///         {
-    ///             { "my_first_annotation", "example-annotation-1" },
-    ///             { "my_second_annotation", "example-annotation-2" },
-    ///         },
-    ///         Description = "basic description",
-    ///         Labels = 
-    ///         {
-    ///             { "my_first_label", "example-label-1" },
-    ///             { "my_second_label", "example-label-2" },
-    ///         },
     ///         Location = "us-west1",
+    ///         Name = "pipeline",
+    ///         Description = "basic description",
     ///         Project = "my-project-name",
     ///         SerialPipeline = new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineArgs
     ///         {
@@ -237,11 +222,11 @@ namespace Pulumi.Gcp.CloudDeploy
     ///                     {
     ///                         new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineStageDeployParameterArgs
     ///                         {
-    ///                             MatchTargetLabels = null,
     ///                             Values = 
     ///                             {
     ///                                 { "deployParameterKey", "deployParameterValue" },
     ///                             },
+    ///                             MatchTargetLabels = null,
     ///                         },
     ///                     },
     ///                     Profiles = new[]
@@ -257,6 +242,16 @@ namespace Pulumi.Gcp.CloudDeploy
     ///                     TargetId = "example-target-two",
     ///                 },
     ///             },
+    ///         },
+    ///         Annotations = 
+    ///         {
+    ///             { "my_first_annotation", "example-annotation-1" },
+    ///             { "my_second_annotation", "example-annotation-2" },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "my_first_label", "example-label-1" },
+    ///             { "my_second_label", "example-label-2" },
     ///         },
     ///     });
     /// 
@@ -275,6 +270,7 @@ namespace Pulumi.Gcp.CloudDeploy
     ///     var primary = new Gcp.CloudDeploy.DeliveryPipeline("primary", new()
     ///     {
     ///         Location = "us-west1",
+    ///         Name = "pipeline",
     ///         Description = "basic description",
     ///         Project = "my-project-name",
     ///         SerialPipeline = new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineArgs
@@ -318,9 +314,6 @@ namespace Pulumi.Gcp.CloudDeploy
     ///             { "my_first_label", "example-label-1" },
     ///             { "my_second_label", "example-label-2" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

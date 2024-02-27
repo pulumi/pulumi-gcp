@@ -22,8 +22,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
- * const defaultPrivateConnection = new gcp.datastream.PrivateConnection("defaultPrivateConnection", {
+ * const defaultNetwork = new gcp.compute.Network("default", {name: "my-network"});
+ * const _default = new gcp.datastream.PrivateConnection("default", {
  *     displayName: "Connection profile",
  *     location: "us-central1",
  *     privateConnectionId: "my-connection",

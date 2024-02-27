@@ -31,6 +31,7 @@ namespace Pulumi.Gcp.Healthcare
     /// {
     ///     var @default = new Gcp.Healthcare.Dataset("default", new()
     ///     {
+    ///         Name = "example-dataset",
     ///         Location = "us-central1",
     ///         TimeZone = "UTC",
     ///     });

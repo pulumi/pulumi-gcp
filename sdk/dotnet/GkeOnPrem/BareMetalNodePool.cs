@@ -25,6 +25,7 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// {
     ///     var default_basic = new Gcp.GkeOnPrem.BareMetalCluster("default-basic", new()
     ///     {
+    ///         Name = "my-cluster",
     ///         Location = "us-west1",
     ///         AdminClusterMembership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
     ///         BareMetalVersion = "1.12.3",
@@ -129,6 +130,7 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// 
     ///     var nodepool_basic = new Gcp.GkeOnPrem.BareMetalNodePool("nodepool-basic", new()
     ///     {
+    ///         Name = "my-nodepool",
     ///         BareMetalCluster = default_basic.Name,
     ///         Location = "us-west1",
     ///         NodePoolConfig = new Gcp.GkeOnPrem.Inputs.BareMetalNodePoolNodePoolConfigArgs
@@ -158,6 +160,7 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// {
     ///     var default_full = new Gcp.GkeOnPrem.BareMetalCluster("default-full", new()
     ///     {
+    ///         Name = "my-cluster",
     ///         Location = "us-west1",
     ///         AdminClusterMembership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
     ///         BareMetalVersion = "1.12.3",
@@ -262,6 +265,7 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// 
     ///     var nodepool_full = new Gcp.GkeOnPrem.BareMetalNodePool("nodepool-full", new()
     ///     {
+    ///         Name = "my-nodepool",
     ///         DisplayName = "test-name",
     ///         BareMetalCluster = default_full.Name,
     ///         Location = "us-west1",

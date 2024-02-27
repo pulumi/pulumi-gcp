@@ -33,9 +33,6 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         DisplayName = "tf-test",
     ///         Parent = "organizations/123456789",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

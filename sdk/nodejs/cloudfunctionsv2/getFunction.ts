@@ -18,8 +18,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const my-function = gcp.cloudfunctionsv2.getFunction({
- *     location: "us-central1",
  *     name: "function",
+ *     location: "us-central1",
  * });
  * ```
  */
@@ -90,8 +90,8 @@ export interface GetFunctionResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const my-function = gcp.cloudfunctionsv2.getFunction({
- *     location: "us-central1",
  *     name: "function",
+ *     location: "us-central1",
  * });
  * ```
  */

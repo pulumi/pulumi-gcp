@@ -31,11 +31,12 @@ namespace Pulumi.Gcp.Notebooks
     /// {
     ///     var environment = new Gcp.Notebooks.Environment("environment", new()
     ///     {
+    ///         Name = "notebooks-environment",
+    ///         Location = "us-west1-a",
     ///         ContainerImage = new Gcp.Notebooks.Inputs.EnvironmentContainerImageArgs
     ///         {
     ///             Repository = "gcr.io/deeplearning-platform-release/base-cpu",
     ///         },
-    ///         Location = "us-west1-a",
     ///     });
     /// 
     /// });

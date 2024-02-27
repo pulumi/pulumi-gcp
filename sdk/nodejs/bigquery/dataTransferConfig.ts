@@ -29,15 +29,13 @@ import * as utilities from "../utilities";
  *     role: "roles/iam.serviceAccountTokenCreator",
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com`),
  * });
- * const myDataset = new gcp.bigquery.Dataset("myDataset", {
+ * const myDataset = new gcp.bigquery.Dataset("my_dataset", {
  *     datasetId: "my_dataset",
  *     friendlyName: "foo",
  *     description: "bar",
  *     location: "asia-northeast1",
- * }, {
- *     dependsOn: [permissions],
  * });
- * const queryConfig = new gcp.bigquery.DataTransferConfig("queryConfig", {
+ * const queryConfig = new gcp.bigquery.DataTransferConfig("query_config", {
  *     displayName: "my-query",
  *     location: "asia-northeast1",
  *     dataSourceId: "scheduled_query",
@@ -48,8 +46,6 @@ import * as utilities from "../utilities";
  *         write_disposition: "WRITE_APPEND",
  *         query: "SELECT name FROM tabl WHERE x = 'y'",
  *     },
- * }, {
- *     dependsOn: [permissions],
  * });
  * ```
  *

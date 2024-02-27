@@ -26,10 +26,10 @@ import * as utilities from "../utilities";
  * const example = new gcp.spanner.Instance("example", {
  *     config: "regional-us-central1",
  *     displayName: "Test Spanner Instance",
+ *     numNodes: 2,
  *     labels: {
  *         foo: "bar",
  *     },
- *     numNodes: 2,
  * });
  * ```
  * ### Spanner Instance Processing Units
@@ -41,10 +41,10 @@ import * as utilities from "../utilities";
  * const example = new gcp.spanner.Instance("example", {
  *     config: "regional-us-central1",
  *     displayName: "Test Spanner Instance",
+ *     processingUnits: 200,
  *     labels: {
  *         foo: "bar",
  *     },
- *     processingUnits: 200,
  * });
  * ```
  * ### Spanner Instance With Autoscaling
@@ -54,6 +54,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const example = new gcp.spanner.Instance("example", {
+ *     config: "regional-us-central1",
+ *     displayName: "Test Spanner Instance",
  *     autoscalingConfig: {
  *         autoscalingLimits: {
  *             maxProcessingUnits: 3000,
@@ -64,8 +66,6 @@ import * as utilities from "../utilities";
  *             storageUtilizationPercent: 90,
  *         },
  *     },
- *     config: "regional-us-central1",
- *     displayName: "Test Spanner Instance",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -80,10 +80,10 @@ import * as utilities from "../utilities";
  * const example = new gcp.spanner.Instance("example", {
  *     config: "nam-eur-asia1",
  *     displayName: "Multi Regional Instance",
+ *     numNodes: 2,
  *     labels: {
  *         foo: "bar",
  *     },
- *     numNodes: 2,
  * });
  * ```
  *

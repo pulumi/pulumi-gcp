@@ -37,11 +37,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networkservices.NewGateway(ctx, "default", &networkservices.GatewayArgs{
+//				Name:  pulumi.String("my-gateway"),
+//				Scope: pulumi.String("default-scope-basic"),
+//				Type:  pulumi.String("OPEN_MESH"),
 //				Ports: pulumi.IntArray{
 //					pulumi.Int(443),
 //				},
-//				Scope: pulumi.String("default-scope-basic"),
-//				Type:  pulumi.String("OPEN_MESH"),
 //			})
 //			if err != nil {
 //				return err
@@ -66,15 +67,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networkservices.NewGateway(ctx, "default", &networkservices.GatewayArgs{
-//				Description: pulumi.String("my description"),
+//				Name: pulumi.String("my-gateway"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
+//				Description: pulumi.String("my description"),
+//				Type:        pulumi.String("OPEN_MESH"),
 //				Ports: pulumi.IntArray{
 //					pulumi.Int(443),
 //				},
 //				Scope: pulumi.String("default-scope-advance"),
-//				Type:  pulumi.String("OPEN_MESH"),
 //			})
 //			if err != nil {
 //				return err
@@ -91,44 +93,50 @@ import (
 //
 // import (
 //
-//	"os"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificatemanager"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networksecurity"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
-//
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultCertificate, err := certificatemanager.NewCertificate(ctx, "defaultCertificate", &certificatemanager.CertificateArgs{
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/cert.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile1, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/private-key.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
+//				Name:     pulumi.String("my-certificate"),
 //				Location: pulumi.String("us-central1"),
 //				SelfManaged: &certificatemanager.CertificateSelfManagedArgs{
-//					PemCertificate: readFileOrPanic("test-fixtures/cert.pem"),
-//					PemPrivateKey:  readFileOrPanic("test-fixtures/private-key.pem"),
+//					PemCertificate: invokeFile.Result,
+//					PemPrivateKey:  invokeFile1.Result,
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
+//			defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-network"),
 //				RoutingMode:           pulumi.String("REGIONAL"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("my-subnetwork-name"),
 //				Purpose:     pulumi.String("PRIVATE"),
 //				IpCidrRange: pulumi.String("10.128.0.0/20"),
 //				Region:      pulumi.String("us-central1"),
@@ -138,7 +146,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			proxyonlysubnet, err := compute.NewSubnetwork(ctx, "proxyonlysubnet", &compute.SubnetworkArgs{
+//			_, err = compute.NewSubnetwork(ctx, "proxyonlysubnet", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("my-proxy-only-subnetwork"),
 //				Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
 //				IpCidrRange: pulumi.String("192.168.0.0/23"),
 //				Region:      pulumi.String("us-central1"),
@@ -148,13 +157,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultGatewaySecurityPolicy, err := networksecurity.NewGatewaySecurityPolicy(ctx, "defaultGatewaySecurityPolicy", &networksecurity.GatewaySecurityPolicyArgs{
+//			defaultGatewaySecurityPolicy, err := networksecurity.NewGatewaySecurityPolicy(ctx, "default", &networksecurity.GatewaySecurityPolicyArgs{
+//				Name:     pulumi.String("my-policy-name"),
 //				Location: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networksecurity.NewGatewaySecurityPolicyRule(ctx, "defaultGatewaySecurityPolicyRule", &networksecurity.GatewaySecurityPolicyRuleArgs{
+//			_, err = networksecurity.NewGatewaySecurityPolicyRule(ctx, "default", &networksecurity.GatewaySecurityPolicyRuleArgs{
+//				Name:                  pulumi.String("my-policyrule-name"),
 //				Location:              pulumi.String("us-central1"),
 //				GatewaySecurityPolicy: defaultGatewaySecurityPolicy.Name,
 //				Enabled:               pulumi.Bool(true),
@@ -165,7 +176,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networkservices.NewGateway(ctx, "defaultGateway", &networkservices.GatewayArgs{
+//			_, err = networkservices.NewGateway(ctx, "default", &networkservices.GatewayArgs{
+//				Name:     pulumi.String("my-gateway1"),
 //				Location: pulumi.String("us-central1"),
 //				Addresses: pulumi.StringArray{
 //					pulumi.String("10.128.0.99"),
@@ -176,15 +188,13 @@ import (
 //				},
 //				Scope: pulumi.String("my-default-scope1"),
 //				CertificateUrls: pulumi.StringArray{
-//					defaultCertificate.ID(),
+//					_default.ID(),
 //				},
 //				GatewaySecurityPolicy:           defaultGatewaySecurityPolicy.ID(),
 //				Network:                         defaultNetwork.ID(),
 //				Subnetwork:                      defaultSubnetwork.ID(),
 //				DeleteSwgAutogenRouterOnDestroy: pulumi.Bool(true),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				proxyonlysubnet,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -200,44 +210,50 @@ import (
 //
 // import (
 //
-//	"os"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificatemanager"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networksecurity"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
-//
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultCertificate, err := certificatemanager.NewCertificate(ctx, "defaultCertificate", &certificatemanager.CertificateArgs{
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/cert.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile1, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/private-key.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
+//				Name:     pulumi.String("my-certificate"),
 //				Location: pulumi.String("us-south1"),
 //				SelfManaged: &certificatemanager.CertificateSelfManagedArgs{
-//					PemCertificate: readFileOrPanic("test-fixtures/cert.pem"),
-//					PemPrivateKey:  readFileOrPanic("test-fixtures/private-key.pem"),
+//					PemCertificate: invokeFile.Result,
+//					PemPrivateKey:  invokeFile1.Result,
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
+//			defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-network"),
 //				RoutingMode:           pulumi.String("REGIONAL"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("my-subnetwork-name"),
 //				Purpose:     pulumi.String("PRIVATE"),
 //				IpCidrRange: pulumi.String("10.128.0.0/20"),
 //				Region:      pulumi.String("us-south1"),
@@ -247,7 +263,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			proxyonlysubnet, err := compute.NewSubnetwork(ctx, "proxyonlysubnet", &compute.SubnetworkArgs{
+//			_, err = compute.NewSubnetwork(ctx, "proxyonlysubnet", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("my-proxy-only-subnetwork"),
 //				Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
 //				IpCidrRange: pulumi.String("192.168.0.0/23"),
 //				Region:      pulumi.String("us-south1"),
@@ -257,13 +274,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultGatewaySecurityPolicy, err := networksecurity.NewGatewaySecurityPolicy(ctx, "defaultGatewaySecurityPolicy", &networksecurity.GatewaySecurityPolicyArgs{
+//			defaultGatewaySecurityPolicy, err := networksecurity.NewGatewaySecurityPolicy(ctx, "default", &networksecurity.GatewaySecurityPolicyArgs{
+//				Name:     pulumi.String("my-policy-name"),
 //				Location: pulumi.String("us-south1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networksecurity.NewGatewaySecurityPolicyRule(ctx, "defaultGatewaySecurityPolicyRule", &networksecurity.GatewaySecurityPolicyRuleArgs{
+//			_, err = networksecurity.NewGatewaySecurityPolicyRule(ctx, "default", &networksecurity.GatewaySecurityPolicyRuleArgs{
+//				Name:                  pulumi.String("my-policyrule-name"),
 //				Location:              pulumi.String("us-south1"),
 //				GatewaySecurityPolicy: defaultGatewaySecurityPolicy.Name,
 //				Enabled:               pulumi.Bool(true),
@@ -274,7 +293,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networkservices.NewGateway(ctx, "defaultGateway", &networkservices.GatewayArgs{
+//			_, err = networkservices.NewGateway(ctx, "default", &networkservices.GatewayArgs{
+//				Name:     pulumi.String("my-gateway1"),
 //				Location: pulumi.String("us-south1"),
 //				Addresses: pulumi.StringArray{
 //					pulumi.String("10.128.0.99"),
@@ -285,19 +305,18 @@ import (
 //				},
 //				Scope: pulumi.String("my-default-scope1"),
 //				CertificateUrls: pulumi.StringArray{
-//					defaultCertificate.ID(),
+//					_default.ID(),
 //				},
 //				GatewaySecurityPolicy:           defaultGatewaySecurityPolicy.ID(),
 //				Network:                         defaultNetwork.ID(),
 //				Subnetwork:                      defaultSubnetwork.ID(),
 //				DeleteSwgAutogenRouterOnDestroy: pulumi.Bool(true),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				proxyonlysubnet,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = networkservices.NewGateway(ctx, "gateway2", &networkservices.GatewayArgs{
+//				Name:     pulumi.String("my-gateway2"),
 //				Location: pulumi.String("us-south1"),
 //				Addresses: pulumi.StringArray{
 //					pulumi.String("10.128.0.98"),
@@ -308,15 +327,13 @@ import (
 //				},
 //				Scope: pulumi.String("my-default-scope2"),
 //				CertificateUrls: pulumi.StringArray{
-//					defaultCertificate.ID(),
+//					_default.ID(),
 //				},
 //				GatewaySecurityPolicy:           defaultGatewaySecurityPolicy.ID(),
 //				Network:                         defaultNetwork.ID(),
 //				Subnetwork:                      defaultSubnetwork.ID(),
 //				DeleteSwgAutogenRouterOnDestroy: pulumi.Bool(true),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				proxyonlysubnet,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

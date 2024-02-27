@@ -30,7 +30,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			certificateMap, err := certificatemanager.NewCertificateMap(ctx, "certificateMap", &certificatemanager.CertificateMapArgs{
+//			certificateMap, err := certificatemanager.NewCertificateMap(ctx, "certificate_map", &certificatemanager.CertificateMapArgs{
+//				Name:        pulumi.String("cert-map-entry"),
 //				Description: pulumi.String("My acceptance test certificate map"),
 //				Labels: pulumi.StringMap{
 //					"terraform": pulumi.String("true"),
@@ -41,6 +42,7 @@ import (
 //				return err
 //			}
 //			instance, err := certificatemanager.NewDnsAuthorization(ctx, "instance", &certificatemanager.DnsAuthorizationArgs{
+//				Name:        pulumi.String("dns-auth"),
 //				Description: pulumi.String("The default dnss"),
 //				Domain:      pulumi.String("subdomain.hashicorptest.com"),
 //			})
@@ -48,6 +50,7 @@ import (
 //				return err
 //			}
 //			instance2, err := certificatemanager.NewDnsAuthorization(ctx, "instance2", &certificatemanager.DnsAuthorizationArgs{
+//				Name:        pulumi.String("dns-auth2"),
 //				Description: pulumi.String("The default dnss"),
 //				Domain:      pulumi.String("subdomain2.hashicorptest.com"),
 //			})
@@ -55,6 +58,7 @@ import (
 //				return err
 //			}
 //			certificate, err := certificatemanager.NewCertificate(ctx, "certificate", &certificatemanager.CertificateArgs{
+//				Name:        pulumi.String("cert-map-entry"),
 //				Description: pulumi.String("The default cert"),
 //				Scope:       pulumi.String("DEFAULT"),
 //				Managed: &certificatemanager.CertificateManagedArgs{
@@ -72,6 +76,7 @@ import (
 //				return err
 //			}
 //			_, err = certificatemanager.NewCertificateMapEntry(ctx, "default", &certificatemanager.CertificateMapEntryArgs{
+//				Name:        pulumi.String("cert-map-entry"),
 //				Description: pulumi.String("My acceptance test certificate map entry"),
 //				Map:         certificateMap.Name,
 //				Labels: pulumi.StringMap{

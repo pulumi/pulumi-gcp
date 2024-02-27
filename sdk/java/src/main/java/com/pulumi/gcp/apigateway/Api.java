@@ -35,7 +35,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.apigateway.Api;
  * import com.pulumi.gcp.apigateway.ApiArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -51,9 +50,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var api = new Api(&#34;api&#34;, ApiArgs.builder()        
  *             .apiId(&#34;my-api&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

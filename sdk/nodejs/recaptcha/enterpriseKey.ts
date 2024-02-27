@@ -17,17 +17,17 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const primary = new gcp.recaptcha.EnterpriseKey("primary", {
+ *     displayName: "display-name-one",
  *     androidSettings: {
  *         allowAllPackageNames: true,
  *         allowedPackageNames: [],
  *     },
- *     displayName: "display-name-one",
- *     labels: {
- *         "label-one": "value-one",
- *     },
  *     project: "my-project-name",
  *     testingOptions: {
  *         testingScore: 0.8,
+ *     },
+ *     labels: {
+ *         "label-one": "value-one",
  *     },
  * });
  * ```
@@ -43,12 +43,12 @@ import * as utilities from "../utilities";
  *         allowAllBundleIds: true,
  *         allowedBundleIds: [],
  *     },
- *     labels: {
- *         "label-one": "value-one",
- *     },
  *     project: "my-project-name",
  *     testingOptions: {
  *         testingScore: 1,
+ *     },
+ *     labels: {
+ *         "label-one": "value-one",
  *     },
  * });
  * ```
@@ -60,12 +60,12 @@ import * as utilities from "../utilities";
  *
  * const primary = new gcp.recaptcha.EnterpriseKey("primary", {
  *     displayName: "display-name-one",
- *     labels: {},
  *     project: "my-project-name",
  *     webSettings: {
- *         allowAllDomains: true,
  *         integrationType: "SCORE",
+ *         allowAllDomains: true,
  *     },
+ *     labels: {},
  * });
  * ```
  * ### Waf_key
@@ -76,9 +76,6 @@ import * as utilities from "../utilities";
  *
  * const primary = new gcp.recaptcha.EnterpriseKey("primary", {
  *     displayName: "display-name-one",
- *     labels: {
- *         "label-one": "value-one",
- *     },
  *     project: "my-project-name",
  *     testingOptions: {
  *         testingChallenge: "NOCAPTCHA",
@@ -89,10 +86,13 @@ import * as utilities from "../utilities";
  *         wafService: "CA",
  *     },
  *     webSettings: {
+ *         integrationType: "INVISIBLE",
  *         allowAllDomains: true,
  *         allowedDomains: [],
  *         challengeSecurityPreference: "USABILITY",
- *         integrationType: "INVISIBLE",
+ *     },
+ *     labels: {
+ *         "label-one": "value-one",
  *     },
  * });
  * ```
@@ -104,19 +104,19 @@ import * as utilities from "../utilities";
  *
  * const primary = new gcp.recaptcha.EnterpriseKey("primary", {
  *     displayName: "display-name-one",
- *     labels: {
- *         "label-one": "value-one",
- *     },
  *     project: "my-project-name",
  *     testingOptions: {
  *         testingChallenge: "NOCAPTCHA",
  *         testingScore: 0.5,
  *     },
  *     webSettings: {
+ *         integrationType: "CHECKBOX",
  *         allowAllDomains: true,
  *         allowedDomains: [],
  *         challengeSecurityPreference: "USABILITY",
- *         integrationType: "CHECKBOX",
+ *     },
+ *     labels: {
+ *         "label-one": "value-one",
  *     },
  * });
  * ```
@@ -128,18 +128,18 @@ import * as utilities from "../utilities";
  *
  * const primary = new gcp.recaptcha.EnterpriseKey("primary", {
  *     displayName: "display-name-one",
- *     labels: {
- *         "label-one": "value-one",
- *     },
  *     project: "my-project-name",
  *     testingOptions: {
  *         testingScore: 0.5,
  *     },
  *     webSettings: {
+ *         integrationType: "SCORE",
  *         allowAllDomains: true,
  *         allowAmpTraffic: false,
  *         allowedDomains: [],
- *         integrationType: "SCORE",
+ *     },
+ *     labels: {
+ *         "label-one": "value-one",
  *     },
  * });
  * ```

@@ -51,9 +51,9 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     ///     var policy = new Gcp.Dataproc.MetastoreServiceIamPolicy("policy", new()
     ///     {
-    ///         Project = google_dataproc_metastore_service.Default.Project,
-    ///         Location = google_dataproc_metastore_service.Default.Location,
-    ///         ServiceId = google_dataproc_metastore_service.Default.Service_id,
+    ///         Project = @default.Project,
+    ///         Location = @default.Location,
+    ///         ServiceId = @default.ServiceId,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -72,9 +72,9 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var binding = new Gcp.Dataproc.MetastoreServiceIamBinding("binding", new()
     ///     {
-    ///         Project = google_dataproc_metastore_service.Default.Project,
-    ///         Location = google_dataproc_metastore_service.Default.Location,
-    ///         ServiceId = google_dataproc_metastore_service.Default.Service_id,
+    ///         Project = @default.Project,
+    ///         Location = @default.Location,
+    ///         ServiceId = @default.ServiceId,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -97,9 +97,9 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var member = new Gcp.Dataproc.MetastoreServiceIamMember("member", new()
     ///     {
-    ///         Project = google_dataproc_metastore_service.Default.Project,
-    ///         Location = google_dataproc_metastore_service.Default.Location,
-    ///         ServiceId = google_dataproc_metastore_service.Default.Service_id,
+    ///         Project = @default.Project,
+    ///         Location = @default.Location,
+    ///         ServiceId = @default.ServiceId,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

@@ -19,8 +19,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const myNetworkPolicy = gcp.vmwareengine.getNetworkPolicy({
- *     location: "us-central1",
  *     name: "my-network-policy",
+ *     location: "us-central1",
  * });
  * ```
  */
@@ -83,8 +83,8 @@ export interface GetNetworkPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const myNetworkPolicy = gcp.vmwareengine.getNetworkPolicy({
- *     location: "us-central1",
  *     name: "my-network-policy",
+ *     location: "us-central1",
  * });
  * ```
  */

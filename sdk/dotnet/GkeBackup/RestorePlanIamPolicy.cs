@@ -31,6 +31,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// {
     ///     var primary = new Gcp.Container.Cluster("primary", new()
     ///     {
+    ///         Name = "restore-all-ns-cluster",
     ///         Location = "us-central1",
     ///         InitialNodeCount = 1,
     ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
@@ -51,6 +52,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
     ///     {
+    ///         Name = "restore-all-ns",
     ///         Cluster = primary.Id,
     ///         Location = "us-central1",
     ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
@@ -61,8 +63,9 @@ namespace Pulumi.Gcp.GkeBackup
     ///         },
     ///     });
     /// 
-    ///     var allNs = new Gcp.GkeBackup.RestorePlan("allNs", new()
+    ///     var allNs = new Gcp.GkeBackup.RestorePlan("all_ns", new()
     ///     {
+    ///         Name = "restore-all-ns",
     ///         Location = "us-central1",
     ///         BackupPlan = basic.Id,
     ///         Cluster = primary.Id,
@@ -93,6 +96,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// {
     ///     var primary = new Gcp.Container.Cluster("primary", new()
     ///     {
+    ///         Name = "rollback-ns-cluster",
     ///         Location = "us-central1",
     ///         InitialNodeCount = 1,
     ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
@@ -113,6 +117,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
     ///     {
+    ///         Name = "rollback-ns",
     ///         Cluster = primary.Id,
     ///         Location = "us-central1",
     ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
@@ -123,8 +128,9 @@ namespace Pulumi.Gcp.GkeBackup
     ///         },
     ///     });
     /// 
-    ///     var rollbackNs = new Gcp.GkeBackup.RestorePlan("rollbackNs", new()
+    ///     var rollbackNs = new Gcp.GkeBackup.RestorePlan("rollback_ns", new()
     ///     {
+    ///         Name = "rollback-ns-rp",
     ///         Location = "us-central1",
     ///         BackupPlan = basic.Id,
     ///         Cluster = primary.Id,
@@ -173,6 +179,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// {
     ///     var primary = new Gcp.Container.Cluster("primary", new()
     ///     {
+    ///         Name = "rollback-app-cluster",
     ///         Location = "us-central1",
     ///         InitialNodeCount = 1,
     ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
@@ -193,6 +200,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
     ///     {
+    ///         Name = "rollback-app",
     ///         Cluster = primary.Id,
     ///         Location = "us-central1",
     ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
@@ -203,8 +211,9 @@ namespace Pulumi.Gcp.GkeBackup
     ///         },
     ///     });
     /// 
-    ///     var rollbackApp = new Gcp.GkeBackup.RestorePlan("rollbackApp", new()
+    ///     var rollbackApp = new Gcp.GkeBackup.RestorePlan("rollback_app", new()
     ///     {
+    ///         Name = "rollback-app-rp",
     ///         Location = "us-central1",
     ///         BackupPlan = basic.Id,
     ///         Cluster = primary.Id,
@@ -244,6 +253,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// {
     ///     var primary = new Gcp.Container.Cluster("primary", new()
     ///     {
+    ///         Name = "all-groupkinds-cluster",
     ///         Location = "us-central1",
     ///         InitialNodeCount = 1,
     ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
@@ -264,6 +274,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
     ///     {
+    ///         Name = "all-groupkinds",
     ///         Cluster = primary.Id,
     ///         Location = "us-central1",
     ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
@@ -274,8 +285,9 @@ namespace Pulumi.Gcp.GkeBackup
     ///         },
     ///     });
     /// 
-    ///     var allClusterResources = new Gcp.GkeBackup.RestorePlan("allClusterResources", new()
+    ///     var allClusterResources = new Gcp.GkeBackup.RestorePlan("all_cluster_resources", new()
     ///     {
+    ///         Name = "all-groupkinds-rp",
     ///         Location = "us-central1",
     ///         BackupPlan = basic.Id,
     ///         Cluster = primary.Id,
@@ -305,6 +317,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// {
     ///     var primary = new Gcp.Container.Cluster("primary", new()
     ///     {
+    ///         Name = "rename-ns-cluster",
     ///         Location = "us-central1",
     ///         InitialNodeCount = 1,
     ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
@@ -325,6 +338,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
     ///     {
+    ///         Name = "rename-ns",
     ///         Cluster = primary.Id,
     ///         Location = "us-central1",
     ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
@@ -335,8 +349,9 @@ namespace Pulumi.Gcp.GkeBackup
     ///         },
     ///     });
     /// 
-    ///     var renameNs = new Gcp.GkeBackup.RestorePlan("renameNs", new()
+    ///     var renameNs = new Gcp.GkeBackup.RestorePlan("rename_ns", new()
     ///     {
+    ///         Name = "rename-ns-rp",
     ///         Location = "us-central1",
     ///         BackupPlan = basic.Id,
     ///         Cluster = primary.Id,
@@ -419,6 +434,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// {
     ///     var primary = new Gcp.Container.Cluster("primary", new()
     ///     {
+    ///         Name = "transform-rule-cluster",
     ///         Location = "us-central1",
     ///         InitialNodeCount = 1,
     ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
@@ -439,6 +455,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
     ///     {
+    ///         Name = "transform-rule",
     ///         Cluster = primary.Id,
     ///         Location = "us-central1",
     ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
@@ -449,8 +466,9 @@ namespace Pulumi.Gcp.GkeBackup
     ///         },
     ///     });
     /// 
-    ///     var transformRule = new Gcp.GkeBackup.RestorePlan("transformRule", new()
+    ///     var transformRule = new Gcp.GkeBackup.RestorePlan("transform_rule", new()
     ///     {
+    ///         Name = "transform-rule-rp",
     ///         Description = "copy nginx env variables",
     ///         Labels = 
     ///         {

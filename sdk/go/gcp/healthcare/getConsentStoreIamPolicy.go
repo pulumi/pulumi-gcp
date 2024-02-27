@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := healthcare.LookupConsentStoreIamPolicy(ctx, &healthcare.LookupConsentStoreIamPolicyArgs{
-//				Dataset:        google_healthcare_consent_store.MyConsent.Dataset,
-//				ConsentStoreId: google_healthcare_consent_store.MyConsent.Name,
+//				Dataset:        my_consent.Dataset,
+//				ConsentStoreId: my_consent.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

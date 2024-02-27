@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.Dataproc
         /// {
         ///     var policy = Gcp.Dataproc.GetMetastoreServiceIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_dataproc_metastore_service.Default.Project,
-        ///         Location = google_dataproc_metastore_service.Default.Location,
-        ///         ServiceId = google_dataproc_metastore_service.Default.Service_id,
+        ///         Project = @default.Project,
+        ///         Location = @default.Location,
+        ///         ServiceId = @default.ServiceId,
         ///     });
         /// 
         /// });
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.Dataproc
         /// {
         ///     var policy = Gcp.Dataproc.GetMetastoreServiceIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_dataproc_metastore_service.Default.Project,
-        ///         Location = google_dataproc_metastore_service.Default.Location,
-        ///         ServiceId = google_dataproc_metastore_service.Default.Service_id,
+        ///         Project = @default.Project,
+        ///         Location = @default.Location,
+        ///         ServiceId = @default.ServiceId,
         ///     });
         /// 
         /// });

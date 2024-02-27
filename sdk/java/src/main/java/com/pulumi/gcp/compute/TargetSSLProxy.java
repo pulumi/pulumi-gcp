@@ -29,7 +29,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * ### Target Ssl Proxy Basic
- * 
  * ```java
  * package generated_program;
  * 
@@ -59,11 +58,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultSSLCertificate = new SSLCertificate(&#34;defaultSSLCertificate&#34;, SSLCertificateArgs.builder()        
- *             .privateKey(Files.readString(Paths.get(&#34;path/to/private.key&#34;)))
- *             .certificate(Files.readString(Paths.get(&#34;path/to/certificate.crt&#34;)))
+ *             .name(&#34;default-cert&#34;)
+ *             .privateKey(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;path/to/private.key&#34;)
+ *                 .build()).result())
+ *             .certificate(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;path/to/certificate.crt&#34;)
+ *                 .build()).result())
  *             .build());
  * 
  *         var defaultHealthCheck = new HealthCheck(&#34;defaultHealthCheck&#34;, HealthCheckArgs.builder()        
+ *             .name(&#34;health-check&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
@@ -72,11 +77,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;backend-service&#34;)
  *             .protocol(&#34;SSL&#34;)
  *             .healthChecks(defaultHealthCheck.id())
  *             .build());
  * 
- *         var defaultTargetSSLProxy = new TargetSSLProxy(&#34;defaultTargetSSLProxy&#34;, TargetSSLProxyArgs.builder()        
+ *         var default_ = new TargetSSLProxy(&#34;default&#34;, TargetSSLProxyArgs.builder()        
+ *             .name(&#34;test-proxy&#34;)
  *             .backendService(defaultBackendService.id())
  *             .sslCertificates(defaultSSLCertificate.id())
  *             .build());

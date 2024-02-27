@@ -27,6 +27,51 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://firebase.google.com/docs/app-check)
  * 
  * ## Example Usage
+ * ### Firebase App Check Debug Token Basic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firebase.WebApp;
+ * import com.pulumi.gcp.firebase.WebAppArgs;
+ * import com.pulumi.time.sleep;
+ * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.gcp.firebase.AppCheckDebugToken;
+ * import com.pulumi.gcp.firebase.AppCheckDebugTokenArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new WebApp(&#34;default&#34;, WebAppArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .displayName(&#34;Web App for debug token&#34;)
+ *             .build());
+ * 
+ *         var wait30s = new Sleep(&#34;wait30s&#34;, SleepArgs.builder()        
+ *             .createDuration(&#34;30s&#34;)
+ *             .build());
+ * 
+ *         var defaultAppCheckDebugToken = new AppCheckDebugToken(&#34;defaultAppCheckDebugToken&#34;, AppCheckDebugTokenArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .appId(default_.appId())
+ *             .displayName(&#34;Debug Token&#34;)
+ *             .token(&#34;00000000-AAAA-BBBB-CCCC-000000000000&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

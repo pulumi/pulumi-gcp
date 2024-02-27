@@ -71,6 +71,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var autohealing = new HealthCheck(&#34;autohealing&#34;, HealthCheckArgs.builder()        
+ *             .name(&#34;autohealing-health-check&#34;)
  *             .checkIntervalSec(5)
  *             .timeoutSec(5)
  *             .healthyThreshold(2)
@@ -82,19 +83,20 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var appserver = new RegionInstanceGroupManager(&#34;appserver&#34;, RegionInstanceGroupManagerArgs.builder()        
+ *             .name(&#34;appserver-igm&#34;)
  *             .baseInstanceName(&#34;app&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .distributionPolicyZones(            
  *                 &#34;us-central1-a&#34;,
  *                 &#34;us-central1-f&#34;)
  *             .versions(RegionInstanceGroupManagerVersionArgs.builder()
- *                 .instanceTemplate(google_compute_instance_template.appserver().self_link_unique())
+ *                 .instanceTemplate(appserverGoogleComputeInstanceTemplate.selfLinkUnique())
  *                 .build())
  *             .allInstancesConfig(RegionInstanceGroupManagerAllInstancesConfigArgs.builder()
  *                 .metadata(Map.of(&#34;metadata_key&#34;, &#34;metadata_value&#34;))
  *                 .labels(Map.of(&#34;label_key&#34;, &#34;label_value&#34;))
  *                 .build())
- *             .targetPools(google_compute_target_pool.appserver().id())
+ *             .targetPools(appserverGoogleComputeTargetPool.id())
  *             .targetSize(2)
  *             .namedPorts(RegionInstanceGroupManagerNamedPortArgs.builder()
  *                 .name(&#34;custom&#34;)
@@ -134,15 +136,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var appserver = new RegionInstanceGroupManager(&#34;appserver&#34;, RegionInstanceGroupManagerArgs.builder()        
+ *             .name(&#34;appserver-igm&#34;)
  *             .baseInstanceName(&#34;app&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .targetSize(5)
  *             .versions(            
  *                 RegionInstanceGroupManagerVersionArgs.builder()
- *                     .instanceTemplate(google_compute_instance_template.appserver().self_link_unique())
+ *                     .instanceTemplate(appserverGoogleComputeInstanceTemplate.selfLinkUnique())
  *                     .build(),
  *                 RegionInstanceGroupManagerVersionArgs.builder()
- *                     .instanceTemplate(google_compute_instance_template.appserver-canary().self_link_unique())
+ *                     .instanceTemplate(appserver_canary.selfLinkUnique())
  *                     .targetSize(RegionInstanceGroupManagerVersionTargetSizeArgs.builder()
  *                         .fixed(1)
  *                         .build())

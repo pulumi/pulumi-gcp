@@ -591,8 +591,9 @@ class Database(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         database = gcp.firestore.Database("database",
-            location_id="nam5",
             project="my-project-name",
+            name="(default)",
+            location_id="nam5",
             type="FIRESTORE_NATIVE")
         ```
         ### Firestore Database
@@ -602,14 +603,15 @@ class Database(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         database = gcp.firestore.Database("database",
-            app_engine_integration_mode="DISABLED",
-            concurrency_mode="OPTIMISTIC",
-            delete_protection_state="DELETE_PROTECTION_ENABLED",
-            deletion_policy="DELETE",
-            location_id="nam5",
-            point_in_time_recovery_enablement="POINT_IN_TIME_RECOVERY_ENABLED",
             project="my-project-name",
-            type="FIRESTORE_NATIVE")
+            name="database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            concurrency_mode="OPTIMISTIC",
+            app_engine_integration_mode="DISABLED",
+            point_in_time_recovery_enablement="POINT_IN_TIME_RECOVERY_ENABLED",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE")
         ```
         ### Firestore Default Database In Datastore Mode
 
@@ -617,9 +619,10 @@ class Database(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        datastore_mode_database = gcp.firestore.Database("datastoreModeDatabase",
-            location_id="nam5",
+        datastore_mode_database = gcp.firestore.Database("datastore_mode_database",
             project="my-project-name",
+            name="(default)",
+            location_id="nam5",
             type="DATASTORE_MODE")
         ```
         ### Firestore Database In Datastore Mode
@@ -628,15 +631,16 @@ class Database(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        datastore_mode_database = gcp.firestore.Database("datastoreModeDatabase",
-            app_engine_integration_mode="DISABLED",
-            concurrency_mode="OPTIMISTIC",
-            delete_protection_state="DELETE_PROTECTION_ENABLED",
-            deletion_policy="DELETE",
-            location_id="nam5",
-            point_in_time_recovery_enablement="POINT_IN_TIME_RECOVERY_ENABLED",
+        datastore_mode_database = gcp.firestore.Database("datastore_mode_database",
             project="my-project-name",
-            type="DATASTORE_MODE")
+            name="database-id",
+            location_id="nam5",
+            type="DATASTORE_MODE",
+            concurrency_mode="OPTIMISTIC",
+            app_engine_integration_mode="DISABLED",
+            point_in_time_recovery_enablement="POINT_IN_TIME_RECOVERY_ENABLED",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE")
         ```
 
         ## Import
@@ -731,8 +735,9 @@ class Database(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         database = gcp.firestore.Database("database",
-            location_id="nam5",
             project="my-project-name",
+            name="(default)",
+            location_id="nam5",
             type="FIRESTORE_NATIVE")
         ```
         ### Firestore Database
@@ -742,14 +747,15 @@ class Database(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         database = gcp.firestore.Database("database",
-            app_engine_integration_mode="DISABLED",
-            concurrency_mode="OPTIMISTIC",
-            delete_protection_state="DELETE_PROTECTION_ENABLED",
-            deletion_policy="DELETE",
-            location_id="nam5",
-            point_in_time_recovery_enablement="POINT_IN_TIME_RECOVERY_ENABLED",
             project="my-project-name",
-            type="FIRESTORE_NATIVE")
+            name="database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            concurrency_mode="OPTIMISTIC",
+            app_engine_integration_mode="DISABLED",
+            point_in_time_recovery_enablement="POINT_IN_TIME_RECOVERY_ENABLED",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE")
         ```
         ### Firestore Default Database In Datastore Mode
 
@@ -757,9 +763,10 @@ class Database(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        datastore_mode_database = gcp.firestore.Database("datastoreModeDatabase",
-            location_id="nam5",
+        datastore_mode_database = gcp.firestore.Database("datastore_mode_database",
             project="my-project-name",
+            name="(default)",
+            location_id="nam5",
             type="DATASTORE_MODE")
         ```
         ### Firestore Database In Datastore Mode
@@ -768,15 +775,16 @@ class Database(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        datastore_mode_database = gcp.firestore.Database("datastoreModeDatabase",
-            app_engine_integration_mode="DISABLED",
-            concurrency_mode="OPTIMISTIC",
-            delete_protection_state="DELETE_PROTECTION_ENABLED",
-            deletion_policy="DELETE",
-            location_id="nam5",
-            point_in_time_recovery_enablement="POINT_IN_TIME_RECOVERY_ENABLED",
+        datastore_mode_database = gcp.firestore.Database("datastore_mode_database",
             project="my-project-name",
-            type="DATASTORE_MODE")
+            name="database-id",
+            location_id="nam5",
+            type="DATASTORE_MODE",
+            concurrency_mode="OPTIMISTIC",
+            app_engine_integration_mode="DISABLED",
+            point_in_time_recovery_enablement="POINT_IN_TIME_RECOVERY_ENABLED",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE")
         ```
 
         ## Import

@@ -28,42 +28,121 @@ import (
 //
 // import (
 //
-//	"encoding/base64"
-//	"os"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/apigateway"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
-//	func filebase64OrPanic(path string) string {
-//		if fileData, err := os.ReadFile(path); err == nil {
-//			return base64.StdEncoding.EncodeToString(fileData[:])
-//		} else {
-//			panic(err.Error())
-//		}
-//	}
-//
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			apiCfgApi, err := apigateway.NewApi(ctx, "apiCfgApi", &apigateway.ApiArgs{
+//			apiCfg, err := apigateway.NewApi(ctx, "api_cfg", &apigateway.ApiArgs{
 //				ApiId: pulumi.String("my-api"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = apigateway.NewApiConfig(ctx, "apiCfgApiConfig", &apigateway.ApiConfigArgs{
-//				Api:         apiCfgApi.ApiId,
+//			invokeFilebase64, err := std.Filebase64(ctx, &std.Filebase64Args{
+//				Input: "test-fixtures/openapi.yaml",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = apigateway.NewApiConfig(ctx, "api_cfg", &apigateway.ApiConfigArgs{
+//				Api:         apiCfg.ApiId,
 //				ApiConfigId: pulumi.String("my-config"),
 //				OpenapiDocuments: apigateway.ApiConfigOpenapiDocumentArray{
 //					&apigateway.ApiConfigOpenapiDocumentArgs{
 //						Document: &apigateway.ApiConfigOpenapiDocumentDocumentArgs{
 //							Path:     pulumi.String("spec.yaml"),
-//							Contents: filebase64OrPanic("test-fixtures/openapi.yaml"),
+//							Contents: invokeFilebase64.Result,
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Apigateway Api Config Grpc
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/apigateway"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			apiCfg, err := apigateway.NewApi(ctx, "api_cfg", &apigateway.ApiArgs{
+//				ApiId: pulumi.String("my-api"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFilebase64, err := std.Filebase64(ctx, &std.Filebase64Args{
+//				Input: "test-fixtures/api_descriptor.pb",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = apigateway.NewApiConfig(ctx, "api_cfg", &apigateway.ApiConfigArgs{
+//				Api:         apiCfg.ApiId,
+//				ApiConfigId: pulumi.String("my-config"),
+//				GrpcServices: apigateway.ApiConfigGrpcServiceArray{
+//					&apigateway.ApiConfigGrpcServiceArgs{
+//						FileDescriptorSet: &apigateway.ApiConfigGrpcServiceFileDescriptorSetArgs{
+//							Path:     pulumi.String("api_descriptor.pb"),
+//							Contents: invokeFilebase64.Result,
+//						},
+//					},
+//				},
+//				ManagedServiceConfigs: apigateway.ApiConfigManagedServiceConfigArray{
+//					&apigateway.ApiConfigManagedServiceConfigArgs{
+//						Path: pulumi.String("api_config.yaml"),
+//						Contents: std.Base64encodeOutput(ctx, std.Base64encodeOutputArgs{
+//							Input: apiCfg.ManagedService.ApplyT(func(managedService string) (string, error) {
+//								return fmt.Sprintf(`type: google.api.Service
+//
+// config_version: 3
+// name: %v
+// title: gRPC API example
+// apis:
+//   - name: endpoints.examples.bookstore.Bookstore
+//
+// usage:
+//
+//	rules:
+//	- selector: endpoints.examples.bookstore.Bookstore.ListShelves
+//	  allow_unregistered_calls: true
+//
+// backend:
+//
+//	rules:
+//	  - selector: "*"
+//	    address: grpcs://example.com
+//	    disable_auth: true
+//
+// `, managedService), nil
+//
+//							}).(pulumi.StringOutput),
+//						}, nil).ApplyT(func(invoke std.Base64encodeResult) (*string, error) {
+//							return invoke.Result, nil
+//						}).(pulumi.StringPtrOutput),
+//					},
+//				},
+//			})
 //			if err != nil {
 //				return err
 //			}

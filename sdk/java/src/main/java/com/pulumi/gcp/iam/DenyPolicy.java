@@ -26,6 +26,81 @@ import javax.annotation.Nullable;
  *     * [Permissions supported in deny policies](https://cloud.google.com/iam/docs/deny-permissions-support)
  * 
  * ## Example Usage
+ * ### Iam Deny Policy Basic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.iam.DenyPolicy;
+ * import com.pulumi.gcp.iam.DenyPolicyArgs;
+ * import com.pulumi.gcp.iam.inputs.DenyPolicyRuleArgs;
+ * import com.pulumi.gcp.iam.inputs.DenyPolicyRuleDenyRuleArgs;
+ * import com.pulumi.gcp.iam.inputs.DenyPolicyRuleDenyRuleDenialConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;my-project&#34;)
+ *             .name(&#34;my-project&#34;)
+ *             .orgId(&#34;123456789&#34;)
+ *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *             .build());
+ * 
+ *         var test_account = new Account(&#34;test-account&#34;, AccountArgs.builder()        
+ *             .accountId(&#34;svc-acc&#34;)
+ *             .displayName(&#34;Test Service Account&#34;)
+ *             .project(project.projectId())
+ *             .build());
+ * 
+ *         var example = new DenyPolicy(&#34;example&#34;, DenyPolicyArgs.builder()        
+ *             .parent(StdFunctions.urlencode().applyValue(invoke -&gt; invoke.result()))
+ *             .name(&#34;my-deny-policy&#34;)
+ *             .displayName(&#34;A deny rule&#34;)
+ *             .rules(            
+ *                 DenyPolicyRuleArgs.builder()
+ *                     .description(&#34;First rule&#34;)
+ *                     .denyRule(DenyPolicyRuleDenyRuleArgs.builder()
+ *                         .deniedPrincipals(&#34;principalSet://goog/public:all&#34;)
+ *                         .denialCondition(DenyPolicyRuleDenyRuleDenialConditionArgs.builder()
+ *                             .title(&#34;Some expr&#34;)
+ *                             .expression(&#34;!resource.matchTag(&#39;12345678/env&#39;, &#39;test&#39;)&#34;)
+ *                             .build())
+ *                         .deniedPermissions(&#34;cloudresourcemanager.googleapis.com/projects.update&#34;)
+ *                         .build())
+ *                     .build(),
+ *                 DenyPolicyRuleArgs.builder()
+ *                     .description(&#34;Second rule&#34;)
+ *                     .denyRule(DenyPolicyRuleDenyRuleArgs.builder()
+ *                         .deniedPrincipals(&#34;principalSet://goog/public:all&#34;)
+ *                         .denialCondition(DenyPolicyRuleDenyRuleDenialConditionArgs.builder()
+ *                             .title(&#34;Some expr&#34;)
+ *                             .expression(&#34;!resource.matchTag(&#39;12345678/env&#39;, &#39;test&#39;)&#34;)
+ *                             .build())
+ *                         .deniedPermissions(&#34;cloudresourcemanager.googleapis.com/projects.update&#34;)
+ *                         .exceptionPrincipals(test_account.email().applyValue(email -&gt; String.format(&#34;principal://iam.googleapis.com/projects/-/serviceAccounts/%s&#34;, email)))
+ *                         .build())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

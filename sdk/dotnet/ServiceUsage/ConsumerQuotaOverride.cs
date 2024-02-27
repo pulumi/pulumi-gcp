@@ -21,6 +21,122 @@ namespace Pulumi.Gcp.ServiceUsage
     ///     * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
     /// 
     /// ## Example Usage
+    /// ### Consumer Quota Override
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myProject = new Gcp.Organizations.Project("my_project", new()
+    ///     {
+    ///         Name = "tf-test-project",
+    ///         ProjectId = "quota",
+    ///         OrgId = "123456789",
+    ///     });
+    /// 
+    ///     var @override = new Gcp.ServiceUsage.ConsumerQuotaOverride("override", new()
+    ///     {
+    ///         Project = myProject.ProjectId,
+    ///         Service = "servicemanagement.googleapis.com",
+    ///         Metric = Std.Urlencode.Invoke(new()
+    ///         {
+    ///             Input = "servicemanagement.googleapis.com/default_requests",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Limit = Std.Urlencode.Invoke(new()
+    ///         {
+    ///             Input = "/min/project",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         OverrideValue = "95",
+    ///         Force = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Region Consumer Quota Override
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myProject = new Gcp.Organizations.Project("my_project", new()
+    ///     {
+    ///         Name = "tf-test-project",
+    ///         ProjectId = "quota",
+    ///         OrgId = "123456789",
+    ///     });
+    /// 
+    ///     var @override = new Gcp.ServiceUsage.ConsumerQuotaOverride("override", new()
+    ///     {
+    ///         Dimensions = 
+    ///         {
+    ///             { "region", "us-central1" },
+    ///         },
+    ///         Project = myProject.ProjectId,
+    ///         Service = "compute.googleapis.com",
+    ///         Metric = Std.Urlencode.Invoke(new()
+    ///         {
+    ///             Input = "compute.googleapis.com/n2_cpus",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Limit = Std.Urlencode.Invoke(new()
+    ///         {
+    ///             Input = "/project/region",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         OverrideValue = "8",
+    ///         Force = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Consumer Quota Override Custom Dimension
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myProject = new Gcp.Organizations.Project("my_project", new()
+    ///     {
+    ///         Name = "tf-test-project",
+    ///         ProjectId = "quota",
+    ///         OrgId = "123456789",
+    ///     });
+    /// 
+    ///     var @override = new Gcp.ServiceUsage.ConsumerQuotaOverride("override", new()
+    ///     {
+    ///         Project = myProject.ProjectId,
+    ///         Service = "libraryagent.googleapis.com",
+    ///         Metric = Std.Urlencode.Invoke(new()
+    ///         {
+    ///             Input = "libraryagent.googleapis.com/borrows",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Limit = Std.Urlencode.Invoke(new()
+    ///         {
+    ///             Input = "/author/project",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         OverrideValue = "1",
+    ///         Force = true,
+    ///         Dimensions = 
+    ///         {
+    ///             { "author", "larry" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

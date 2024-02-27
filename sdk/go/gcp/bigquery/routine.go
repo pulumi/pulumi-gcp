@@ -182,13 +182,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			testDataset, err := bigquery.NewDataset(ctx, "testDataset", &bigquery.DatasetArgs{
+//			test, err := bigquery.NewDataset(ctx, "test", &bigquery.DatasetArgs{
 //				DatasetId: pulumi.String("dataset_id"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			testConnection, err := bigquery.NewConnection(ctx, "testConnection", &bigquery.ConnectionArgs{
+//			testConnection, err := bigquery.NewConnection(ctx, "test", &bigquery.ConnectionArgs{
 //				ConnectionId: pulumi.String("connection_id"),
 //				Location:     pulumi.String("US"),
 //				Spark:        nil,
@@ -197,7 +197,7 @@ import (
 //				return err
 //			}
 //			_, err = bigquery.NewRoutine(ctx, "pyspark", &bigquery.RoutineArgs{
-//				DatasetId:   testDataset.DatasetId,
+//				DatasetId:   test.DatasetId,
 //				RoutineId:   pulumi.String("routine_id"),
 //				RoutineType: pulumi.String("PROCEDURE"),
 //				Language:    pulumi.String("PYTHON"),
@@ -253,13 +253,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			testDataset, err := bigquery.NewDataset(ctx, "testDataset", &bigquery.DatasetArgs{
+//			test, err := bigquery.NewDataset(ctx, "test", &bigquery.DatasetArgs{
 //				DatasetId: pulumi.String("dataset_id"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			testConnection, err := bigquery.NewConnection(ctx, "testConnection", &bigquery.ConnectionArgs{
+//			testConnection, err := bigquery.NewConnection(ctx, "test", &bigquery.ConnectionArgs{
 //				ConnectionId: pulumi.String("connection_id"),
 //				Location:     pulumi.String("US"),
 //				Spark:        nil,
@@ -267,8 +267,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bigquery.NewRoutine(ctx, "pysparkMainfile", &bigquery.RoutineArgs{
-//				DatasetId:      testDataset.DatasetId,
+//			_, err = bigquery.NewRoutine(ctx, "pyspark_mainfile", &bigquery.RoutineArgs{
+//				DatasetId:      test.DatasetId,
 //				RoutineId:      pulumi.String("routine_id"),
 //				RoutineType:    pulumi.String("PROCEDURE"),
 //				Language:       pulumi.String("PYTHON"),
@@ -310,13 +310,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			testDataset, err := bigquery.NewDataset(ctx, "testDataset", &bigquery.DatasetArgs{
+//			test, err := bigquery.NewDataset(ctx, "test", &bigquery.DatasetArgs{
 //				DatasetId: pulumi.String("dataset_id"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			testConnection, err := bigquery.NewConnection(ctx, "testConnection", &bigquery.ConnectionArgs{
+//			testConnection, err := bigquery.NewConnection(ctx, "test", &bigquery.ConnectionArgs{
 //				ConnectionId: pulumi.String("connection_id"),
 //				Location:     pulumi.String("US"),
 //				Spark:        nil,
@@ -324,8 +324,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bigquery.NewRoutine(ctx, "sparkJar", &bigquery.RoutineArgs{
-//				DatasetId:      testDataset.DatasetId,
+//			_, err = bigquery.NewRoutine(ctx, "spark_jar", &bigquery.RoutineArgs{
+//				DatasetId:      test.DatasetId,
 //				RoutineId:      pulumi.String("routine_id"),
 //				RoutineType:    pulumi.String("PROCEDURE"),
 //				Language:       pulumi.String("SCALA"),

@@ -40,6 +40,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			featureonlinestore, err := vertex.NewAiFeatureOnlineStore(ctx, "featureonlinestore", &vertex.AiFeatureOnlineStoreArgs{
+//				Name: pulumi.String("example_feature_view"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -96,6 +97,7 @@ import (
 //				return err
 //			}
 //			_, err = vertex.NewAiFeatureOnlineStoreFeatureview(ctx, "featureview", &vertex.AiFeatureOnlineStoreFeatureviewArgs{
+//				Name:               pulumi.String("example_feature_view"),
 //				Region:             pulumi.String("us-central1"),
 //				FeatureOnlineStore: featureonlinestore.Name,
 //				SyncConfig: &vertex.AiFeatureOnlineStoreFeatureviewSyncConfigArgs{
@@ -143,6 +145,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			featureonlinestore, err := vertex.NewAiFeatureOnlineStore(ctx, "featureonlinestore", &vertex.AiFeatureOnlineStoreArgs{
+//				Name: pulumi.String("example_feature_view_feature_registry"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -158,7 +161,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			sampleDataset, err := bigquery.NewDataset(ctx, "sampleDataset", &bigquery.DatasetArgs{
+//			sampleDataset, err := bigquery.NewDataset(ctx, "sample_dataset", &bigquery.DatasetArgs{
 //				DatasetId:    pulumi.String("example_feature_view_feature_registry"),
 //				FriendlyName: pulumi.String("test"),
 //				Description:  pulumi.String("This is a test description"),
@@ -167,7 +170,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			sampleTable, err := bigquery.NewTable(ctx, "sampleTable", &bigquery.TableArgs{
+//			sampleTable, err := bigquery.NewTable(ctx, "sample_table", &bigquery.TableArgs{
 //				DeletionProtection: pulumi.Bool(false),
 //				DatasetId:          sampleDataset.DatasetId,
 //				TableId:            pulumi.String("example_feature_view_feature_registry"),
@@ -195,7 +198,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			sampleFeatureGroup, err := vertex.NewAiFeatureGroup(ctx, "sampleFeatureGroup", &vertex.AiFeatureGroupArgs{
+//			sampleFeatureGroup, err := vertex.NewAiFeatureGroup(ctx, "sample_feature_group", &vertex.AiFeatureGroupArgs{
+//				Name:        pulumi.String("example_feature_view_feature_registry"),
 //				Description: pulumi.String("A sample feature group"),
 //				Region:      pulumi.String("us-central1"),
 //				Labels: pulumi.StringMap{
@@ -218,7 +222,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			sampleFeature, err := vertex.NewAiFeatureGroupFeature(ctx, "sampleFeature", &vertex.AiFeatureGroupFeatureArgs{
+//			sampleFeature, err := vertex.NewAiFeatureGroupFeature(ctx, "sample_feature", &vertex.AiFeatureGroupFeatureArgs{
+//				Name:         pulumi.String("example_feature_view_feature_registry"),
 //				Region:       pulumi.String("us-central1"),
 //				FeatureGroup: sampleFeatureGroup.Name,
 //				Description:  pulumi.String("A sample feature"),
@@ -229,7 +234,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vertex.NewAiFeatureOnlineStoreFeatureview(ctx, "featureviewFeatureregistry", &vertex.AiFeatureOnlineStoreFeatureviewArgs{
+//			_, err = vertex.NewAiFeatureOnlineStoreFeatureview(ctx, "featureview_featureregistry", &vertex.AiFeatureOnlineStoreFeatureviewArgs{
+//				Name:               pulumi.String("example_feature_view_feature_registry"),
 //				Region:             pulumi.String("us-central1"),
 //				FeatureOnlineStore: featureonlinestore.Name,
 //				SyncConfig: &vertex.AiFeatureOnlineStoreFeatureviewSyncConfigArgs{
@@ -273,6 +279,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			featureonlinestore, err := vertex.NewAiFeatureOnlineStore(ctx, "featureonlinestore", &vertex.AiFeatureOnlineStoreArgs{
+//				Name: pulumi.String("example_feature_view_vector_search"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -287,7 +294,7 @@ import (
 //				EmbeddingManagement: &vertex.AiFeatureOnlineStoreEmbeddingManagementArgs{
 //					Enabled: pulumi.Bool(true),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -296,7 +303,7 @@ import (
 //				FriendlyName: pulumi.String("test"),
 //				Description:  pulumi.String("This is a test description"),
 //				Location:     pulumi.String("US"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -358,11 +365,12 @@ import (
 // ]
 // `),
 //
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vertex.NewAiFeatureOnlineStoreFeatureview(ctx, "featureviewVectorSearch", &vertex.AiFeatureOnlineStoreFeatureviewArgs{
+//			_, err = vertex.NewAiFeatureOnlineStoreFeatureview(ctx, "featureview_vector_search", &vertex.AiFeatureOnlineStoreFeatureviewArgs{
+//				Name:               pulumi.String("example_feature_view_vector_search"),
 //				Region:             pulumi.String("us-central1"),
 //				FeatureOnlineStore: featureonlinestore.Name,
 //				SyncConfig: &vertex.AiFeatureOnlineStoreFeatureviewSyncConfigArgs{
@@ -391,7 +399,7 @@ import (
 //					},
 //					EmbeddingDimension: pulumi.Int(2),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

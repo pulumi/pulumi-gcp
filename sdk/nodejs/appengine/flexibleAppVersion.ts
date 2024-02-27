@@ -28,7 +28,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myProject = new gcp.organizations.Project("myProject", {
+ * const myProject = new gcp.organizations.Project("my_project", {
+ *     name: "appeng-flex",
+ *     projectId: "appeng-flex",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
  * });
@@ -41,35 +43,37 @@ import * as utilities from "../utilities";
  *     service: "appengineflex.googleapis.com",
  *     disableDependentServices: false,
  * });
- * const customServiceAccount = new gcp.serviceaccount.Account("customServiceAccount", {
+ * const customServiceAccount = new gcp.serviceaccount.Account("custom_service_account", {
  *     project: service.project,
  *     accountId: "my-account",
  *     displayName: "Custom Service Account",
  * });
- * const gaeApi = new gcp.projects.IAMMember("gaeApi", {
+ * const gaeApi = new gcp.projects.IAMMember("gae_api", {
  *     project: service.project,
  *     role: "roles/compute.networkUser",
  *     member: pulumi.interpolate`serviceAccount:${customServiceAccount.email}`,
  * });
- * const logsWriter = new gcp.projects.IAMMember("logsWriter", {
+ * const logsWriter = new gcp.projects.IAMMember("logs_writer", {
  *     project: service.project,
  *     role: "roles/logging.logWriter",
  *     member: pulumi.interpolate`serviceAccount:${customServiceAccount.email}`,
  * });
- * const storageViewer = new gcp.projects.IAMMember("storageViewer", {
+ * const storageViewer = new gcp.projects.IAMMember("storage_viewer", {
  *     project: service.project,
  *     role: "roles/storage.objectViewer",
  *     member: pulumi.interpolate`serviceAccount:${customServiceAccount.email}`,
  * });
  * const bucket = new gcp.storage.Bucket("bucket", {
  *     project: myProject.projectId,
+ *     name: "appengine-static-content",
  *     location: "US",
  * });
  * const object = new gcp.storage.BucketObject("object", {
+ *     name: "hello-world.zip",
  *     bucket: bucket.name,
  *     source: new pulumi.asset.FileAsset("./test-fixtures/hello-world.zip"),
  * });
- * const myappV1 = new gcp.appengine.FlexibleAppVersion("myappV1", {
+ * const myappV1 = new gcp.appengine.FlexibleAppVersion("myapp_v1", {
  *     versionId: "v1",
  *     project: gaeApi.project,
  *     service: "default",

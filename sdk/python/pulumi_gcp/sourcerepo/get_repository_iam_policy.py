@@ -99,8 +99,8 @@ def get_repository_iam_policy(project: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.sourcerepo.get_repository_iam_policy(project=google_sourcerepo_repository["my-repo"]["project"],
-        repository=google_sourcerepo_repository["my-repo"]["name"])
+    policy = gcp.sourcerepo.get_repository_iam_policy(project=my_repo["project"],
+        repository=my_repo["name"])
     ```
 
 
@@ -135,8 +135,8 @@ def get_repository_iam_policy_output(project: Optional[pulumi.Input[Optional[str
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.sourcerepo.get_repository_iam_policy(project=google_sourcerepo_repository["my-repo"]["project"],
-        repository=google_sourcerepo_repository["my-repo"]["name"])
+    policy = gcp.sourcerepo.get_repository_iam_policy(project=my_repo["project"],
+        repository=my_repo["name"])
     ```
 
 

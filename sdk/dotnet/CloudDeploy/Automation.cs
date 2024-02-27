@@ -23,6 +23,7 @@ namespace Pulumi.Gcp.CloudDeploy
     /// {
     ///     var pipeline = new Gcp.CloudDeploy.DeliveryPipeline("pipeline", new()
     ///     {
+    ///         Name = "cd-pipeline",
     ///         Location = "us-central1",
     ///         SerialPipeline = new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineArgs
     ///         {
@@ -35,13 +36,11 @@ namespace Pulumi.Gcp.CloudDeploy
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var b_automation = new Gcp.CloudDeploy.Automation("b-automation", new()
     ///     {
+    ///         Name = "cd-automation",
     ///         Project = pipeline.Project,
     ///         Location = pipeline.Location,
     ///         DeliveryPipeline = pipeline.Name,
@@ -67,9 +66,6 @@ namespace Pulumi.Gcp.CloudDeploy
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -86,6 +82,7 @@ namespace Pulumi.Gcp.CloudDeploy
     /// {
     ///     var pipeline = new Gcp.CloudDeploy.DeliveryPipeline("pipeline", new()
     ///     {
+    ///         Name = "cd-pipeline",
     ///         Location = "us-central1",
     ///         SerialPipeline = new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineArgs
     ///         {
@@ -101,13 +98,11 @@ namespace Pulumi.Gcp.CloudDeploy
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var f_automation = new Gcp.CloudDeploy.Automation("f-automation", new()
     ///     {
+    ///         Name = "cd-automation",
     ///         Location = "us-central1",
     ///         DeliveryPipeline = pipeline.Name,
     ///         ServiceAccount = "my@service-account.com",
@@ -162,9 +157,6 @@ namespace Pulumi.Gcp.CloudDeploy
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

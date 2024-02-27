@@ -285,9 +285,35 @@ class Network(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         vmw_engine_network = gcp.vmwareengine.Network("vmw-engine-network",
-            description="VMwareEngine standard network sample",
+            name="standard-nw",
             location="global",
-            type="STANDARD")
+            type="STANDARD",
+            description="VMwareEngine standard network sample")
+        ```
+        ### Vmware Engine Network Legacy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        # there can be only 1 Legacy network per region for a given project,
+        # so creating new project for isolation in CI.
+        acceptance_project = gcp.organizations.Project("acceptance",
+            name="vmw-proj",
+            project_id="vmw-proj",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000")
+        acceptance = gcp.projects.Service("acceptance",
+            project=acceptance_project.project_id,
+            service="vmwareengine.googleapis.com")
+        vmw_engine_network = gcp.vmwareengine.Network("vmw-engine-network",
+            project=acceptance.project,
+            name="us-west1-default",
+            location="us-west1",
+            type="LEGACY",
+            description="VMwareEngine legacy network sample")
+        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s)
         ```
 
         ## Import
@@ -348,9 +374,35 @@ class Network(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         vmw_engine_network = gcp.vmwareengine.Network("vmw-engine-network",
-            description="VMwareEngine standard network sample",
+            name="standard-nw",
             location="global",
-            type="STANDARD")
+            type="STANDARD",
+            description="VMwareEngine standard network sample")
+        ```
+        ### Vmware Engine Network Legacy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        # there can be only 1 Legacy network per region for a given project,
+        # so creating new project for isolation in CI.
+        acceptance_project = gcp.organizations.Project("acceptance",
+            name="vmw-proj",
+            project_id="vmw-proj",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000")
+        acceptance = gcp.projects.Service("acceptance",
+            project=acceptance_project.project_id,
+            service="vmwareengine.googleapis.com")
+        vmw_engine_network = gcp.vmwareengine.Network("vmw-engine-network",
+            project=acceptance.project,
+            name="us-west1-default",
+            location="us-west1",
+            type="LEGACY",
+            description="VMwareEngine legacy network sample")
+        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s)
         ```
 
         ## Import

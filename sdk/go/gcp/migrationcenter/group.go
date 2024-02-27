@@ -30,13 +30,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := migrationcenter.NewGroup(ctx, "default", &migrationcenter.GroupArgs{
+//				Location:    pulumi.String("us-central1"),
+//				GroupId:     pulumi.String("group-test"),
 //				Description: pulumi.String("Terraform integration test description"),
 //				DisplayName: pulumi.String("Terraform integration test display"),
-//				GroupId:     pulumi.String("group-test"),
 //				Labels: pulumi.StringMap{
 //					"key": pulumi.String("value"),
 //				},
-//				Location: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err

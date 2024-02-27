@@ -38,18 +38,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultProject, err := organizations.NewProject(ctx, "defaultProject", &organizations.ProjectArgs{
-//				OrgId: pulumi.String("123456789"),
+//			_, err := organizations.NewProject(ctx, "default", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("my-project"),
+//				Name:      pulumi.String("my-project"),
+//				OrgId:     pulumi.String("123456789"),
 //				Labels: pulumi.StringMap{
 //					"firebase": pulumi.String("enabled"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = firebase.NewProject(ctx, "defaultFirebase/projectProject", &firebase.ProjectArgs{
-//				Project: defaultProject.ProjectId,
-//			}, pulumi.Provider(google_beta))
+//			_, err = firebase.NewProject(ctx, "default", &firebase.ProjectArgs{
+//				Project: _default.ProjectId,
+//			})
 //			if err != nil {
 //				return err
 //			}

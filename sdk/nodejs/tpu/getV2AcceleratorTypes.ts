@@ -21,12 +21,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const availableV2AcceleratorTypes = gcp.tpu.getV2AcceleratorTypes({});
- * const availableV2RuntimeVersions = gcp.tpu.getV2RuntimeVersions({});
+ * const available = gcp.tpu.getV2AcceleratorTypes({});
+ * const availableGetV2RuntimeVersions = gcp.tpu.getV2RuntimeVersions({});
  * const tpu = new gcp.tpu.V2Vm("tpu", {
+ *     name: "test-tpu",
  *     zone: "us-central1-b",
- *     runtimeVersion: availableV2RuntimeVersions.then(availableV2RuntimeVersions => availableV2RuntimeVersions.versions?.[0]),
- *     acceleratorType: availableV2AcceleratorTypes.then(availableV2AcceleratorTypes => availableV2AcceleratorTypes.types?.[0]),
+ *     runtimeVersion: availableGetV2RuntimeVersions.then(availableGetV2RuntimeVersions => availableGetV2RuntimeVersions.versions?.[0]),
+ *     acceleratorType: available.then(available => available.types?.[0]),
  * });
  * ```
  */
@@ -88,12 +89,13 @@ export interface GetV2AcceleratorTypesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const availableV2AcceleratorTypes = gcp.tpu.getV2AcceleratorTypes({});
- * const availableV2RuntimeVersions = gcp.tpu.getV2RuntimeVersions({});
+ * const available = gcp.tpu.getV2AcceleratorTypes({});
+ * const availableGetV2RuntimeVersions = gcp.tpu.getV2RuntimeVersions({});
  * const tpu = new gcp.tpu.V2Vm("tpu", {
+ *     name: "test-tpu",
  *     zone: "us-central1-b",
- *     runtimeVersion: availableV2RuntimeVersions.then(availableV2RuntimeVersions => availableV2RuntimeVersions.versions?.[0]),
- *     acceleratorType: availableV2AcceleratorTypes.then(availableV2AcceleratorTypes => availableV2AcceleratorTypes.types?.[0]),
+ *     runtimeVersion: availableGetV2RuntimeVersions.then(availableGetV2RuntimeVersions => availableGetV2RuntimeVersions.versions?.[0]),
+ *     acceleratorType: available.then(available => available.types?.[0]),
  * });
  * ```
  */

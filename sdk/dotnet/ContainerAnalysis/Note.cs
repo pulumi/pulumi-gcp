@@ -33,6 +33,7 @@ namespace Pulumi.Gcp.ContainerAnalysis
     /// {
     ///     var note = new Gcp.ContainerAnalysis.Note("note", new()
     ///     {
+    ///         Name = "attestor-note",
     ///         AttestationAuthority = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityArgs
     ///         {
     ///             Hint = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityHintArgs
@@ -56,6 +57,22 @@ namespace Pulumi.Gcp.ContainerAnalysis
     /// {
     ///     var note = new Gcp.ContainerAnalysis.Note("note", new()
     ///     {
+    ///         Name = "attestor-note",
+    ///         ShortDescription = "test note",
+    ///         LongDescription = "a longer description of test note",
+    ///         ExpirationTime = "2120-10-02T15:01:23.045123456Z",
+    ///         RelatedUrls = new[]
+    ///         {
+    ///             new Gcp.ContainerAnalysis.Inputs.NoteRelatedUrlArgs
+    ///             {
+    ///                 Url = "some.url",
+    ///                 Label = "foo",
+    ///             },
+    ///             new Gcp.ContainerAnalysis.Inputs.NoteRelatedUrlArgs
+    ///             {
+    ///                 Url = "google.com",
+    ///             },
+    ///         },
     ///         AttestationAuthority = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityArgs
     ///         {
     ///             Hint = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityHintArgs
@@ -63,21 +80,6 @@ namespace Pulumi.Gcp.ContainerAnalysis
     ///                 HumanReadableName = "Attestor Note",
     ///             },
     ///         },
-    ///         ExpirationTime = "2120-10-02T15:01:23.045123456Z",
-    ///         LongDescription = "a longer description of test note",
-    ///         RelatedUrls = new[]
-    ///         {
-    ///             new Gcp.ContainerAnalysis.Inputs.NoteRelatedUrlArgs
-    ///             {
-    ///                 Label = "foo",
-    ///                 Url = "some.url",
-    ///             },
-    ///             new Gcp.ContainerAnalysis.Inputs.NoteRelatedUrlArgs
-    ///             {
-    ///                 Url = "google.com",
-    ///             },
-    ///         },
-    ///         ShortDescription = "test note",
     ///     });
     /// 
     /// });

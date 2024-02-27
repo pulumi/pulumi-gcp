@@ -40,6 +40,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			autohealing, err := compute.NewHealthCheck(ctx, "autohealing", &compute.HealthCheckArgs{
+//				Name:               pulumi.String("autohealing-health-check"),
 //				CheckIntervalSec:   pulumi.Int(5),
 //				TimeoutSec:         pulumi.Int(5),
 //				HealthyThreshold:   pulumi.Int(2),
@@ -53,6 +54,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewRegionInstanceGroupManager(ctx, "appserver", &compute.RegionInstanceGroupManagerArgs{
+//				Name:             pulumi.String("appserver-igm"),
 //				BaseInstanceName: pulumi.String("app"),
 //				Region:           pulumi.String("us-central1"),
 //				DistributionPolicyZones: pulumi.StringArray{
@@ -61,7 +63,7 @@ import (
 //				},
 //				Versions: compute.RegionInstanceGroupManagerVersionArray{
 //					&compute.RegionInstanceGroupManagerVersionArgs{
-//						InstanceTemplate: pulumi.Any(google_compute_instance_template.Appserver.Self_link_unique),
+//						InstanceTemplate: pulumi.Any(appserverGoogleComputeInstanceTemplate.SelfLinkUnique),
 //					},
 //				},
 //				AllInstancesConfig: &compute.RegionInstanceGroupManagerAllInstancesConfigArgs{
@@ -73,7 +75,7 @@ import (
 //					},
 //				},
 //				TargetPools: pulumi.StringArray{
-//					google_compute_target_pool.Appserver.Id,
+//					appserverGoogleComputeTargetPool.Id,
 //				},
 //				TargetSize: pulumi.Int(2),
 //				NamedPorts: compute.RegionInstanceGroupManagerNamedPortArray{
@@ -109,15 +111,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewRegionInstanceGroupManager(ctx, "appserver", &compute.RegionInstanceGroupManagerArgs{
+//				Name:             pulumi.String("appserver-igm"),
 //				BaseInstanceName: pulumi.String("app"),
 //				Region:           pulumi.String("us-central1"),
 //				TargetSize:       pulumi.Int(5),
 //				Versions: compute.RegionInstanceGroupManagerVersionArray{
 //					&compute.RegionInstanceGroupManagerVersionArgs{
-//						InstanceTemplate: pulumi.Any(google_compute_instance_template.Appserver.Self_link_unique),
+//						InstanceTemplate: pulumi.Any(appserverGoogleComputeInstanceTemplate.SelfLinkUnique),
 //					},
 //					&compute.RegionInstanceGroupManagerVersionArgs{
-//						InstanceTemplate: pulumi.Any(google_compute_instance_template.AppserverCanary.Self_link_unique),
+//						InstanceTemplate: pulumi.Any(appserver_canary.SelfLinkUnique),
 //						TargetSize: &compute.RegionInstanceGroupManagerVersionTargetSizeArgs{
 //							Fixed: pulumi.Int(1),
 //						},

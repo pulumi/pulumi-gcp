@@ -31,11 +31,11 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var connection = new Gcp.BigQuery.Connection("connection", new()
     ///     {
-    ///         CloudResource = null,
     ///         ConnectionId = "my-connection",
-    ///         Description = "a riveting description",
-    ///         FriendlyName = "👋",
     ///         Location = "US",
+    ///         FriendlyName = "👋",
+    ///         Description = "a riveting description",
+    ///         CloudResource = null,
     ///     });
     /// 
     /// });
@@ -53,6 +53,7 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
     ///     {
+    ///         Name = "my-database-instance",
     ///         DatabaseVersion = "POSTGRES_11",
     ///         Region = "us-central1",
     ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
@@ -65,6 +66,7 @@ namespace Pulumi.Gcp.BigQuery
     ///     var db = new Gcp.Sql.Database("db", new()
     ///     {
     ///         Instance = instance.Name,
+    ///         Name = "db",
     ///     });
     /// 
     ///     var pwd = new Random.RandomPassword("pwd", new()
@@ -75,6 +77,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     ///     var user = new Gcp.Sql.User("user", new()
     ///     {
+    ///         Name = "user",
     ///         Instance = instance.Name,
     ///         Password = pwd.Result,
     ///     });
@@ -112,6 +115,7 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
     ///     {
+    ///         Name = "my-database-instance",
     ///         DatabaseVersion = "POSTGRES_11",
     ///         Region = "us-central1",
     ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
@@ -124,6 +128,7 @@ namespace Pulumi.Gcp.BigQuery
     ///     var db = new Gcp.Sql.Database("db", new()
     ///     {
     ///         Instance = instance.Name,
+    ///         Name = "db",
     ///     });
     /// 
     ///     var pwd = new Random.RandomPassword("pwd", new()
@@ -134,6 +139,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     ///     var user = new Gcp.Sql.User("user", new()
     ///     {
+    ///         Name = "user",
     ///         Instance = instance.Name,
     ///         Password = pwd.Result,
     ///     });
@@ -171,6 +177,10 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var connection = new Gcp.BigQuery.Connection("connection", new()
     ///     {
+    ///         ConnectionId = "my-connection",
+    ///         Location = "aws-us-east-1",
+    ///         FriendlyName = "👋",
+    ///         Description = "a riveting description",
     ///         Aws = new Gcp.BigQuery.Inputs.ConnectionAwsArgs
     ///         {
     ///             AccessRole = new Gcp.BigQuery.Inputs.ConnectionAwsAccessRoleArgs
@@ -178,10 +188,6 @@ namespace Pulumi.Gcp.BigQuery
     ///                 IamRoleId = "arn:aws:iam::999999999999:role/omnirole",
     ///             },
     ///         },
-    ///         ConnectionId = "my-connection",
-    ///         Description = "a riveting description",
-    ///         FriendlyName = "👋",
-    ///         Location = "aws-us-east-1",
     ///     });
     /// 
     /// });
@@ -198,15 +204,15 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var connection = new Gcp.BigQuery.Connection("connection", new()
     ///     {
+    ///         ConnectionId = "my-connection",
+    ///         Location = "azure-eastus2",
+    ///         FriendlyName = "👋",
+    ///         Description = "a riveting description",
     ///         Azure = new Gcp.BigQuery.Inputs.ConnectionAzureArgs
     ///         {
     ///             CustomerTenantId = "customer-tenant-id",
     ///             FederatedApplicationClientId = "b43eeeee-eeee-eeee-eeee-a480155501ce",
     ///         },
-    ///         ConnectionId = "my-connection",
-    ///         Description = "a riveting description",
-    ///         FriendlyName = "👋",
-    ///         Location = "azure-eastus2",
     ///     });
     /// 
     /// });
@@ -223,15 +229,15 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var connection = new Gcp.BigQuery.Connection("connection", new()
     ///     {
+    ///         ConnectionId = "my-connection",
+    ///         Location = "US",
+    ///         FriendlyName = "👋",
+    ///         Description = "a riveting description",
     ///         CloudSpanner = new Gcp.BigQuery.Inputs.ConnectionCloudSpannerArgs
     ///         {
     ///             Database = "projects/project/instances/instance/databases/database",
     ///             DatabaseRole = "database_role",
     ///         },
-    ///         ConnectionId = "my-connection",
-    ///         Description = "a riveting description",
-    ///         FriendlyName = "👋",
-    ///         Location = "US",
     ///     });
     /// 
     /// });
@@ -248,17 +254,17 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var connection = new Gcp.BigQuery.Connection("connection", new()
     ///     {
+    ///         ConnectionId = "my-connection",
+    ///         Location = "US",
+    ///         FriendlyName = "👋",
+    ///         Description = "a riveting description",
     ///         CloudSpanner = new Gcp.BigQuery.Inputs.ConnectionCloudSpannerArgs
     ///         {
     ///             Database = "projects/project/instances/instance/databases/database",
-    ///             MaxParallelism = 100,
-    ///             UseDataBoost = true,
     ///             UseParallelism = true,
+    ///             UseDataBoost = true,
+    ///             MaxParallelism = 100,
     ///         },
-    ///         ConnectionId = "my-connection",
-    ///         Description = "a riveting description",
-    ///         FriendlyName = "👋",
-    ///         Location = "US",
     ///     });
     /// 
     /// });
@@ -275,6 +281,7 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var basic = new Gcp.Dataproc.Cluster("basic", new()
     ///     {
+    ///         Name = "my-connection",
     ///         Region = "us-central1",
     ///         ClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigArgs
     ///         {

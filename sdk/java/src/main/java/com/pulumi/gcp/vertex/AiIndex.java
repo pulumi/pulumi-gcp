@@ -58,11 +58,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+ *             .name(&#34;vertex-ai-index-test&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
  *         var data = new BucketObject(&#34;data&#34;, BucketObjectArgs.builder()        
+ *             .name(&#34;contents/data.json&#34;)
  *             .bucket(bucket.name())
  *             .content(&#34;&#34;&#34;
  * {&#34;id&#34;: &#34;42&#34;, &#34;embedding&#34;: [0.5, 1.0], &#34;restricts&#34;: [{&#34;namespace&#34;: &#34;class&#34;, &#34;allow&#34;: [&#34;cat&#34;, &#34;pet&#34;]},{&#34;namespace&#34;: &#34;category&#34;, &#34;allow&#34;: [&#34;feline&#34;]}]}
@@ -127,11 +129,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+ *             .name(&#34;vertex-ai-index-test&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
  *         var data = new BucketObject(&#34;data&#34;, BucketObjectArgs.builder()        
+ *             .name(&#34;contents/data.json&#34;)
  *             .bucket(bucket.name())
  *             .content(&#34;&#34;&#34;
  * {&#34;id&#34;: &#34;42&#34;, &#34;embedding&#34;: [0.5, 1.0], &#34;restricts&#34;: [{&#34;namespace&#34;: &#34;class&#34;, &#34;allow&#34;: [&#34;cat&#34;, &#34;pet&#34;]},{&#34;namespace&#34;: &#34;category&#34;, &#34;allow&#34;: [&#34;feline&#34;]}]}

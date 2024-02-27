@@ -50,6 +50,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var connector = new Connector(&#34;connector&#34;, ConnectorArgs.builder()        
+ *             .name(&#34;vpc-con&#34;)
  *             .ipCidrRange(&#34;10.8.0.0/28&#34;)
  *             .network(&#34;default&#34;)
  *             .build());
@@ -85,18 +86,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var customTestNetwork = new Network(&#34;customTestNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;vpc-con&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var customTestSubnetwork = new Subnetwork(&#34;customTestSubnetwork&#34;, SubnetworkArgs.builder()        
+ *         var customTest = new Subnetwork(&#34;customTest&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;vpc-con&#34;)
  *             .ipCidrRange(&#34;10.2.0.0/28&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(customTestNetwork.id())
  *             .build());
  * 
  *         var connector = new Connector(&#34;connector&#34;, ConnectorArgs.builder()        
+ *             .name(&#34;vpc-con&#34;)
  *             .subnet(ConnectorSubnetArgs.builder()
- *                 .name(customTestSubnetwork.name())
+ *                 .name(customTest.name())
  *                 .build())
  *             .machineType(&#34;e2-standard-4&#34;)
  *             .build());

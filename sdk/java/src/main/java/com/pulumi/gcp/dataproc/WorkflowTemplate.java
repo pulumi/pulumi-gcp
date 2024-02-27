@@ -33,19 +33,19 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.dataproc.WorkflowTemplate;
  * import com.pulumi.gcp.dataproc.WorkflowTemplateArgs;
- * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplateJobArgs;
- * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplateJobSparkJobArgs;
- * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplateJobPrestoJobArgs;
  * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementArgs;
  * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterArgs;
  * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs;
- * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs;
- * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplateJobArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplateJobSparkJobArgs;
+ * import com.pulumi.gcp.dataproc.inputs.WorkflowTemplateJobPrestoJobArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -60,38 +60,33 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var template = new WorkflowTemplate(&#34;template&#34;, WorkflowTemplateArgs.builder()        
- *             .jobs(            
- *                 WorkflowTemplateJobArgs.builder()
- *                     .sparkJob(WorkflowTemplateJobSparkJobArgs.builder()
- *                         .mainClass(&#34;SomeClass&#34;)
- *                         .build())
- *                     .stepId(&#34;someJob&#34;)
- *                     .build(),
- *                 WorkflowTemplateJobArgs.builder()
- *                     .prerequisiteStepIds(&#34;someJob&#34;)
- *                     .prestoJob(WorkflowTemplateJobPrestoJobArgs.builder()
- *                         .queryFileUri(&#34;someuri&#34;)
- *                         .build())
- *                     .stepId(&#34;otherJob&#34;)
- *                     .build())
+ *             .name(&#34;template-example&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .placement(WorkflowTemplatePlacementArgs.builder()
  *                 .managedCluster(WorkflowTemplatePlacementManagedClusterArgs.builder()
  *                     .clusterName(&#34;my-cluster&#34;)
  *                     .config(WorkflowTemplatePlacementManagedClusterConfigArgs.builder()
  *                         .gceClusterConfig(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs.builder()
+ *                             .zone(&#34;us-central1-a&#34;)
  *                             .tags(                            
  *                                 &#34;foo&#34;,
  *                                 &#34;bar&#34;)
- *                             .zone(&#34;us-central1-a&#34;)
  *                             .build())
  *                         .masterConfig(WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs.builder()
- *                             .diskConfig(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs.builder()
- *                                 .bootDiskSizeGb(15)
- *                                 .bootDiskType(&#34;pd-ssd&#34;)
- *                                 .build())
- *                             .machineType(&#34;n1-standard-1&#34;)
  *                             .numInstances(1)
+ *                             .machineType(&#34;n1-standard-1&#34;)
+ *                             .diskConfig(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs.builder()
+ *                                 .bootDiskType(&#34;pd-ssd&#34;)
+ *                                 .bootDiskSizeGb(15)
+ *                                 .build())
+ *                             .build())
+ *                         .workerConfig(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs.builder()
+ *                             .numInstances(3)
+ *                             .machineType(&#34;n1-standard-2&#34;)
+ *                             .diskConfig(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs.builder()
+ *                                 .bootDiskSizeGb(10)
+ *                                 .numLocalSsds(2)
+ *                                 .build())
  *                             .build())
  *                         .secondaryWorkerConfig(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs.builder()
  *                             .numInstances(2)
@@ -99,17 +94,23 @@ import javax.annotation.Nullable;
  *                         .softwareConfig(WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs.builder()
  *                             .imageVersion(&#34;2.0.35-debian10&#34;)
  *                             .build())
- *                         .workerConfig(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs.builder()
- *                             .diskConfig(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs.builder()
- *                                 .bootDiskSizeGb(10)
- *                                 .numLocalSsds(2)
- *                                 .build())
- *                             .machineType(&#34;n1-standard-2&#34;)
- *                             .numInstances(3)
- *                             .build())
  *                         .build())
  *                     .build())
  *                 .build())
+ *             .jobs(            
+ *                 WorkflowTemplateJobArgs.builder()
+ *                     .stepId(&#34;someJob&#34;)
+ *                     .sparkJob(WorkflowTemplateJobSparkJobArgs.builder()
+ *                         .mainClass(&#34;SomeClass&#34;)
+ *                         .build())
+ *                     .build(),
+ *                 WorkflowTemplateJobArgs.builder()
+ *                     .stepId(&#34;otherJob&#34;)
+ *                     .prerequisiteStepIds(&#34;someJob&#34;)
+ *                     .prestoJob(WorkflowTemplateJobPrestoJobArgs.builder()
+ *                         .queryFileUri(&#34;someuri&#34;)
+ *                         .build())
+ *                     .build())
  *             .build());
  * 
  *     }

@@ -174,16 +174,14 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        security_policy_target = gcp.organizations.Folder("securityPolicyTarget",
+        security_policy_target = gcp.organizations.Folder("security_policy_target",
             display_name="tf-test-secpol",
-            parent="organizations/123456789",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_organization_security_policy = gcp.compute.OrganizationSecurityPolicy("policyOrganizationSecurityPolicy",
+            parent="organizations/123456789")
+        policy = gcp.compute.OrganizationSecurityPolicy("policy",
             display_name="tf-test",
-            parent=security_policy_target.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule",
-            policy_id=policy_organization_security_policy.id,
+            parent=security_policy_target.name)
+        policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
+            policy_id=policy.id,
             action="allow",
             direction="INGRESS",
             enable_logging=True,
@@ -204,12 +202,11 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
                     ],
                 ),
             ),
-            priority=100,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_organization_security_policy_association = gcp.compute.OrganizationSecurityPolicyAssociation("policyOrganizationSecurityPolicyAssociation",
-            attachment_id=policy_organization_security_policy.parent,
-            policy_id=policy_organization_security_policy.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            priority=100)
+        policy_organization_security_policy_association = gcp.compute.OrganizationSecurityPolicyAssociation("policy",
+            name="tf-test",
+            attachment_id=policy.parent,
+            policy_id=policy.id)
         ```
 
         ## Import
@@ -255,16 +252,14 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        security_policy_target = gcp.organizations.Folder("securityPolicyTarget",
+        security_policy_target = gcp.organizations.Folder("security_policy_target",
             display_name="tf-test-secpol",
-            parent="organizations/123456789",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_organization_security_policy = gcp.compute.OrganizationSecurityPolicy("policyOrganizationSecurityPolicy",
+            parent="organizations/123456789")
+        policy = gcp.compute.OrganizationSecurityPolicy("policy",
             display_name="tf-test",
-            parent=security_policy_target.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule",
-            policy_id=policy_organization_security_policy.id,
+            parent=security_policy_target.name)
+        policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
+            policy_id=policy.id,
             action="allow",
             direction="INGRESS",
             enable_logging=True,
@@ -285,12 +280,11 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
                     ],
                 ),
             ),
-            priority=100,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_organization_security_policy_association = gcp.compute.OrganizationSecurityPolicyAssociation("policyOrganizationSecurityPolicyAssociation",
-            attachment_id=policy_organization_security_policy.parent,
-            policy_id=policy_organization_security_policy.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            priority=100)
+        policy_organization_security_policy_association = gcp.compute.OrganizationSecurityPolicyAssociation("policy",
+            name="tf-test",
+            attachment_id=policy.parent,
+            policy_id=policy.id)
         ```
 
         ## Import

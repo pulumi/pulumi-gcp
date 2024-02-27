@@ -67,9 +67,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAppEngineServiceIamPolicy(GetAppEngineServiceIamPolicyArgs.builder()
-     *             .appId(google_app_engine_standard_app_version.version().project())
-     *             .project(google_app_engine_standard_app_version.version().project())
-     *             .service(google_app_engine_standard_app_version.version().service())
+     *             .project(version.project())
+     *             .appId(version.project())
+     *             .service(version.service())
      *             .build());
      * 
      *     }
@@ -106,9 +106,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAppEngineServiceIamPolicy(GetAppEngineServiceIamPolicyArgs.builder()
-     *             .appId(google_app_engine_standard_app_version.version().project())
-     *             .project(google_app_engine_standard_app_version.version().project())
-     *             .service(google_app_engine_standard_app_version.version().service())
+     *             .project(version.project())
+     *             .appId(version.project())
+     *             .service(version.service())
      *             .build());
      * 
      *     }
@@ -145,9 +145,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAppEngineServiceIamPolicy(GetAppEngineServiceIamPolicyArgs.builder()
-     *             .appId(google_app_engine_standard_app_version.version().project())
-     *             .project(google_app_engine_standard_app_version.version().project())
-     *             .service(google_app_engine_standard_app_version.version().service())
+     *             .project(version.project())
+     *             .appId(version.project())
+     *             .service(version.service())
      *             .build());
      * 
      *     }
@@ -184,9 +184,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAppEngineServiceIamPolicy(GetAppEngineServiceIamPolicyArgs.builder()
-     *             .appId(google_app_engine_standard_app_version.version().project())
-     *             .project(google_app_engine_standard_app_version.version().project())
-     *             .service(google_app_engine_standard_app_version.version().service())
+     *             .project(version.project())
+     *             .appId(version.project())
+     *             .service(version.service())
      *             .build());
      * 
      *     }
@@ -223,10 +223,10 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAppEngineVersionIamPolicy(GetAppEngineVersionIamPolicyArgs.builder()
-     *             .appId(google_app_engine_standard_app_version.version().project())
-     *             .project(google_app_engine_standard_app_version.version().project())
-     *             .service(google_app_engine_standard_app_version.version().service())
-     *             .versionId(google_app_engine_standard_app_version.version().version_id())
+     *             .project(version.project())
+     *             .appId(version.project())
+     *             .service(version.service())
+     *             .versionId(version.versionId())
      *             .build());
      * 
      *     }
@@ -263,10 +263,10 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAppEngineVersionIamPolicy(GetAppEngineVersionIamPolicyArgs.builder()
-     *             .appId(google_app_engine_standard_app_version.version().project())
-     *             .project(google_app_engine_standard_app_version.version().project())
-     *             .service(google_app_engine_standard_app_version.version().service())
-     *             .versionId(google_app_engine_standard_app_version.version().version_id())
+     *             .project(version.project())
+     *             .appId(version.project())
+     *             .service(version.service())
+     *             .versionId(version.versionId())
      *             .build());
      * 
      *     }
@@ -303,10 +303,10 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAppEngineVersionIamPolicy(GetAppEngineVersionIamPolicyArgs.builder()
-     *             .appId(google_app_engine_standard_app_version.version().project())
-     *             .project(google_app_engine_standard_app_version.version().project())
-     *             .service(google_app_engine_standard_app_version.version().service())
-     *             .versionId(google_app_engine_standard_app_version.version().version_id())
+     *             .project(version.project())
+     *             .appId(version.project())
+     *             .service(version.service())
+     *             .versionId(version.versionId())
      *             .build());
      * 
      *     }
@@ -343,10 +343,10 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAppEngineVersionIamPolicy(GetAppEngineVersionIamPolicyArgs.builder()
-     *             .appId(google_app_engine_standard_app_version.version().project())
-     *             .project(google_app_engine_standard_app_version.version().project())
-     *             .service(google_app_engine_standard_app_version.version().service())
-     *             .versionId(google_app_engine_standard_app_version.version().version_id())
+     *             .project(version.project())
+     *             .appId(version.project())
+     *             .service(version.service())
+     *             .versionId(version.versionId())
      *             .build());
      * 
      *     }
@@ -390,7 +390,7 @@ public final class IapFunctions {
      * 
      *         final var projectClient = IapFunctions.getClient(GetClientArgs.builder()
      *             .brand(String.format(&#34;projects/%s/brands/[BRAND_NUMBER]&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
-     *             .clientId(FOO.apps().googleusercontent().com())
+     *             .clientId(apps.googleusercontent().com())
      *             .build());
      * 
      *     }
@@ -434,7 +434,7 @@ public final class IapFunctions {
      * 
      *         final var projectClient = IapFunctions.getClient(GetClientArgs.builder()
      *             .brand(String.format(&#34;projects/%s/brands/[BRAND_NUMBER]&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
-     *             .clientId(FOO.apps().googleusercontent().com())
+     *             .clientId(apps.googleusercontent().com())
      *             .build());
      * 
      *     }
@@ -478,7 +478,7 @@ public final class IapFunctions {
      * 
      *         final var projectClient = IapFunctions.getClient(GetClientArgs.builder()
      *             .brand(String.format(&#34;projects/%s/brands/[BRAND_NUMBER]&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
-     *             .clientId(FOO.apps().googleusercontent().com())
+     *             .clientId(apps.googleusercontent().com())
      *             .build());
      * 
      *     }
@@ -522,7 +522,7 @@ public final class IapFunctions {
      * 
      *         final var projectClient = IapFunctions.getClient(GetClientArgs.builder()
      *             .brand(String.format(&#34;projects/%s/brands/[BRAND_NUMBER]&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
-     *             .clientId(FOO.apps().googleusercontent().com())
+     *             .clientId(apps.googleusercontent().com())
      *             .build());
      * 
      *     }
@@ -559,7 +559,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getTunnelIamPolicy(GetTunnelIamPolicyArgs.builder()
-     *             .project(google_project_service.project_service().project())
+     *             .project(projectService.project())
      *             .build());
      * 
      *     }
@@ -596,7 +596,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getTunnelIamPolicy(GetTunnelIamPolicyArgs.builder()
-     *             .project(google_project_service.project_service().project())
+     *             .project(projectService.project())
      *             .build());
      * 
      *     }
@@ -633,7 +633,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getTunnelIamPolicy(GetTunnelIamPolicyArgs.builder()
-     *             .project(google_project_service.project_service().project())
+     *             .project(projectService.project())
      *             .build());
      * 
      *     }
@@ -670,7 +670,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getTunnelIamPolicy(GetTunnelIamPolicyArgs.builder()
-     *             .project(google_project_service.project_service().project())
+     *             .project(projectService.project())
      *             .build());
      * 
      *     }
@@ -707,7 +707,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getTunnelIamPolicy(GetTunnelIamPolicyArgs.builder()
-     *             .project(google_project_service.project_service().project())
+     *             .project(projectService.project())
      *             .build());
      * 
      *     }
@@ -744,7 +744,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getTunnelIamPolicy(GetTunnelIamPolicyArgs.builder()
-     *             .project(google_project_service.project_service().project())
+     *             .project(projectService.project())
      *             .build());
      * 
      *     }
@@ -781,9 +781,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getTunnelInstanceIamPolicy(GetTunnelInstanceIamPolicyArgs.builder()
-     *             .project(google_compute_instance.tunnelvm().project())
-     *             .zone(google_compute_instance.tunnelvm().zone())
-     *             .instance(google_compute_instance.tunnelvm().name())
+     *             .project(tunnelvm.project())
+     *             .zone(tunnelvm.zone())
+     *             .instance(tunnelvm.name())
      *             .build());
      * 
      *     }
@@ -820,9 +820,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getTunnelInstanceIamPolicy(GetTunnelInstanceIamPolicyArgs.builder()
-     *             .project(google_compute_instance.tunnelvm().project())
-     *             .zone(google_compute_instance.tunnelvm().zone())
-     *             .instance(google_compute_instance.tunnelvm().name())
+     *             .project(tunnelvm.project())
+     *             .zone(tunnelvm.zone())
+     *             .instance(tunnelvm.name())
      *             .build());
      * 
      *     }
@@ -859,9 +859,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getTunnelInstanceIamPolicy(GetTunnelInstanceIamPolicyArgs.builder()
-     *             .project(google_compute_instance.tunnelvm().project())
-     *             .zone(google_compute_instance.tunnelvm().zone())
-     *             .instance(google_compute_instance.tunnelvm().name())
+     *             .project(tunnelvm.project())
+     *             .zone(tunnelvm.zone())
+     *             .instance(tunnelvm.name())
      *             .build());
      * 
      *     }
@@ -898,9 +898,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getTunnelInstanceIamPolicy(GetTunnelInstanceIamPolicyArgs.builder()
-     *             .project(google_compute_instance.tunnelvm().project())
-     *             .zone(google_compute_instance.tunnelvm().zone())
-     *             .instance(google_compute_instance.tunnelvm().name())
+     *             .project(tunnelvm.project())
+     *             .zone(tunnelvm.zone())
+     *             .instance(tunnelvm.name())
      *             .build());
      * 
      *     }
@@ -937,8 +937,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebBackendServiceIamPolicy(GetWebBackendServiceIamPolicyArgs.builder()
-     *             .project(google_compute_backend_service.default().project())
-     *             .webBackendService(google_compute_backend_service.default().name())
+     *             .project(default_.project())
+     *             .webBackendService(default_.name())
      *             .build());
      * 
      *     }
@@ -975,8 +975,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebBackendServiceIamPolicy(GetWebBackendServiceIamPolicyArgs.builder()
-     *             .project(google_compute_backend_service.default().project())
-     *             .webBackendService(google_compute_backend_service.default().name())
+     *             .project(default_.project())
+     *             .webBackendService(default_.name())
      *             .build());
      * 
      *     }
@@ -1013,8 +1013,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebBackendServiceIamPolicy(GetWebBackendServiceIamPolicyArgs.builder()
-     *             .project(google_compute_backend_service.default().project())
-     *             .webBackendService(google_compute_backend_service.default().name())
+     *             .project(default_.project())
+     *             .webBackendService(default_.name())
      *             .build());
      * 
      *     }
@@ -1051,8 +1051,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebBackendServiceIamPolicy(GetWebBackendServiceIamPolicyArgs.builder()
-     *             .project(google_compute_backend_service.default().project())
-     *             .webBackendService(google_compute_backend_service.default().name())
+     *             .project(default_.project())
+     *             .webBackendService(default_.name())
      *             .build());
      * 
      *     }
@@ -1089,7 +1089,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebIamPolicy(GetWebIamPolicyArgs.builder()
-     *             .project(google_project_service.project_service().project())
+     *             .project(projectService.project())
      *             .build());
      * 
      *     }
@@ -1126,7 +1126,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebIamPolicy(GetWebIamPolicyArgs.builder()
-     *             .project(google_project_service.project_service().project())
+     *             .project(projectService.project())
      *             .build());
      * 
      *     }
@@ -1163,7 +1163,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebIamPolicy(GetWebIamPolicyArgs.builder()
-     *             .project(google_project_service.project_service().project())
+     *             .project(projectService.project())
      *             .build());
      * 
      *     }
@@ -1200,7 +1200,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebIamPolicy(GetWebIamPolicyArgs.builder()
-     *             .project(google_project_service.project_service().project())
+     *             .project(projectService.project())
      *             .build());
      * 
      *     }
@@ -1237,7 +1237,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebIamPolicy(GetWebIamPolicyArgs.builder()
-     *             .project(google_project_service.project_service().project())
+     *             .project(projectService.project())
      *             .build());
      * 
      *     }
@@ -1274,7 +1274,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebIamPolicy(GetWebIamPolicyArgs.builder()
-     *             .project(google_project_service.project_service().project())
+     *             .project(projectService.project())
      *             .build());
      * 
      *     }
@@ -1311,9 +1311,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebRegionBackendServiceIamPolicy(GetWebRegionBackendServiceIamPolicyArgs.builder()
-     *             .project(google_compute_region_backend_service.default().project())
-     *             .region(google_compute_region_backend_service.default().region())
-     *             .webRegionBackendService(google_compute_region_backend_service.default().name())
+     *             .project(default_.project())
+     *             .region(default_.region())
+     *             .webRegionBackendService(default_.name())
      *             .build());
      * 
      *     }
@@ -1350,9 +1350,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebRegionBackendServiceIamPolicy(GetWebRegionBackendServiceIamPolicyArgs.builder()
-     *             .project(google_compute_region_backend_service.default().project())
-     *             .region(google_compute_region_backend_service.default().region())
-     *             .webRegionBackendService(google_compute_region_backend_service.default().name())
+     *             .project(default_.project())
+     *             .region(default_.region())
+     *             .webRegionBackendService(default_.name())
      *             .build());
      * 
      *     }
@@ -1389,9 +1389,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebRegionBackendServiceIamPolicy(GetWebRegionBackendServiceIamPolicyArgs.builder()
-     *             .project(google_compute_region_backend_service.default().project())
-     *             .region(google_compute_region_backend_service.default().region())
-     *             .webRegionBackendService(google_compute_region_backend_service.default().name())
+     *             .project(default_.project())
+     *             .region(default_.region())
+     *             .webRegionBackendService(default_.name())
      *             .build());
      * 
      *     }
@@ -1428,9 +1428,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebRegionBackendServiceIamPolicy(GetWebRegionBackendServiceIamPolicyArgs.builder()
-     *             .project(google_compute_region_backend_service.default().project())
-     *             .region(google_compute_region_backend_service.default().region())
-     *             .webRegionBackendService(google_compute_region_backend_service.default().name())
+     *             .project(default_.project())
+     *             .region(default_.region())
+     *             .webRegionBackendService(default_.name())
      *             .build());
      * 
      *     }
@@ -1467,8 +1467,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebTypeAppEngineIamPolicy(GetWebTypeAppEngineIamPolicyArgs.builder()
-     *             .project(google_app_engine_application.app().project())
-     *             .appId(google_app_engine_application.app().app_id())
+     *             .project(app.project())
+     *             .appId(app.appId())
      *             .build());
      * 
      *     }
@@ -1505,8 +1505,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebTypeAppEngineIamPolicy(GetWebTypeAppEngineIamPolicyArgs.builder()
-     *             .project(google_app_engine_application.app().project())
-     *             .appId(google_app_engine_application.app().app_id())
+     *             .project(app.project())
+     *             .appId(app.appId())
      *             .build());
      * 
      *     }
@@ -1543,8 +1543,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebTypeAppEngineIamPolicy(GetWebTypeAppEngineIamPolicyArgs.builder()
-     *             .project(google_app_engine_application.app().project())
-     *             .appId(google_app_engine_application.app().app_id())
+     *             .project(app.project())
+     *             .appId(app.appId())
      *             .build());
      * 
      *     }
@@ -1581,8 +1581,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebTypeAppEngineIamPolicy(GetWebTypeAppEngineIamPolicyArgs.builder()
-     *             .project(google_app_engine_application.app().project())
-     *             .appId(google_app_engine_application.app().app_id())
+     *             .project(app.project())
+     *             .appId(app.appId())
      *             .build());
      * 
      *     }
@@ -1619,7 +1619,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebTypeComputeIamPolicy(GetWebTypeComputeIamPolicyArgs.builder()
-     *             .project(google_project_service.project_service().project())
+     *             .project(projectService.project())
      *             .build());
      * 
      *     }
@@ -1656,7 +1656,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebTypeComputeIamPolicy(GetWebTypeComputeIamPolicyArgs.builder()
-     *             .project(google_project_service.project_service().project())
+     *             .project(projectService.project())
      *             .build());
      * 
      *     }
@@ -1693,7 +1693,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebTypeComputeIamPolicy(GetWebTypeComputeIamPolicyArgs.builder()
-     *             .project(google_project_service.project_service().project())
+     *             .project(projectService.project())
      *             .build());
      * 
      *     }
@@ -1730,7 +1730,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebTypeComputeIamPolicy(GetWebTypeComputeIamPolicyArgs.builder()
-     *             .project(google_project_service.project_service().project())
+     *             .project(projectService.project())
      *             .build());
      * 
      *     }
@@ -1767,7 +1767,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebTypeComputeIamPolicy(GetWebTypeComputeIamPolicyArgs.builder()
-     *             .project(google_project_service.project_service().project())
+     *             .project(projectService.project())
      *             .build());
      * 
      *     }
@@ -1804,7 +1804,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebTypeComputeIamPolicy(GetWebTypeComputeIamPolicyArgs.builder()
-     *             .project(google_project_service.project_service().project())
+     *             .project(projectService.project())
      *             .build());
      * 
      *     }

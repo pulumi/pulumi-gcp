@@ -247,8 +247,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
             display_name="tf-test",
-            parent="organizations/123456789",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            parent="organizations/123456789")
         ```
 
         ## Import
@@ -308,8 +307,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
             display_name="tf-test",
-            parent="organizations/123456789",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            parent="organizations/123456789")
         ```
 
         ## Import

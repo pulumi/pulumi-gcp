@@ -34,12 +34,14 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var network1 = new Gcp.Compute.Network("network1", new()
     ///     {
+    ///         Name = "network1",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     var haGateway1 = new Gcp.Compute.HaVpnGateway("haGateway1", new()
+    ///     var haGateway1 = new Gcp.Compute.HaVpnGateway("ha_gateway1", new()
     ///     {
     ///         Region = "us-central1",
+    ///         Name = "ha-vpn-1",
     ///         Network = network1.Id,
     ///     });
     /// 
@@ -57,12 +59,14 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var network1 = new Gcp.Compute.Network("network1", new()
     ///     {
+    ///         Name = "network1",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     var haGateway1 = new Gcp.Compute.HaVpnGateway("haGateway1", new()
+    ///     var haGateway1 = new Gcp.Compute.HaVpnGateway("ha_gateway1", new()
     ///     {
     ///         Region = "us-central1",
+    ///         Name = "ha-vpn-1",
     ///         Network = network1.Id,
     ///         StackType = "IPV4_IPV6",
     ///     });
@@ -81,11 +85,13 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
+    ///         Name = "test-network",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var address1 = new Gcp.Compute.Address("address1", new()
     ///     {
+    ///         Name = "test-address1",
     ///         AddressType = "INTERNAL",
     ///         Purpose = "IPSEC_INTERCONNECT",
     ///         IPAddress = "192.168.1.0",
@@ -95,6 +101,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var router = new Gcp.Compute.Router("router", new()
     ///     {
+    ///         Name = "test-router",
     ///         Network = network.Name,
     ///         EncryptedInterconnectRouter = true,
     ///         Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
@@ -105,6 +112,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var attachment1 = new Gcp.Compute.InterconnectAttachment("attachment1", new()
     ///     {
+    ///         Name = "test-interconnect-attachment1",
     ///         EdgeAvailabilityDomain = "AVAILABILITY_DOMAIN_1",
     ///         Type = "PARTNER",
     ///         Router = router.Id,
@@ -117,6 +125,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var address2 = new Gcp.Compute.Address("address2", new()
     ///     {
+    ///         Name = "test-address2",
     ///         AddressType = "INTERNAL",
     ///         Purpose = "IPSEC_INTERCONNECT",
     ///         IPAddress = "192.168.2.0",
@@ -126,6 +135,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var attachment2 = new Gcp.Compute.InterconnectAttachment("attachment2", new()
     ///     {
+    ///         Name = "test-interconnect-attachment2",
     ///         EdgeAvailabilityDomain = "AVAILABILITY_DOMAIN_2",
     ///         Type = "PARTNER",
     ///         Router = router.Id,
@@ -138,6 +148,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var vpn_gateway = new Gcp.Compute.HaVpnGateway("vpn-gateway", new()
     ///     {
+    ///         Name = "test-ha-vpngw",
     ///         Network = network.Id,
     ///         VpnInterfaces = new[]
     ///         {

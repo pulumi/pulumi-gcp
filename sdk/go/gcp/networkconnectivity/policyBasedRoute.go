@@ -36,13 +36,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myNetwork, err := compute.NewNetwork(ctx, "myNetwork", &compute.NetworkArgs{
+//			myNetwork, err := compute.NewNetwork(ctx, "my_network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = networkconnectivity.NewPolicyBasedRoute(ctx, "default", &networkconnectivity.PolicyBasedRouteArgs{
+//				Name:    pulumi.String("my-pbr"),
 //				Network: myNetwork.ID(),
 //				Filter: &networkconnectivity.PolicyBasedRouteFilterArgs{
 //					ProtocolVersion: pulumi.String("IPV4"),
@@ -72,7 +74,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myNetwork, err := compute.NewNetwork(ctx, "myNetwork", &compute.NetworkArgs{
+//			myNetwork, err := compute.NewNetwork(ctx, "my_network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
@@ -81,11 +84,14 @@ import (
 //			// This example substitutes an arbitrary internal IP for an internal network
 //			// load balancer for brevity. Consult https://cloud.google.com/load-balancing/docs/internal
 //			// to set one up.
-//			ilb, err := compute.NewGlobalAddress(ctx, "ilb", nil)
+//			ilb, err := compute.NewGlobalAddress(ctx, "ilb", &compute.GlobalAddressArgs{
+//				Name: pulumi.String("my-ilb"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = networkconnectivity.NewPolicyBasedRoute(ctx, "default", &networkconnectivity.PolicyBasedRouteArgs{
+//				Name:        pulumi.String("my-pbr"),
 //				Description: pulumi.String("My routing policy"),
 //				Network:     myNetwork.ID(),
 //				Priority:    pulumi.Int(2302),

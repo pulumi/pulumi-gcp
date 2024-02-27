@@ -109,9 +109,9 @@ def get_data_exchange_iam_policy(data_exchange_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigqueryanalyticshub.get_data_exchange_iam_policy(project=google_bigquery_analytics_hub_data_exchange["data_exchange"]["project"],
-        location=google_bigquery_analytics_hub_data_exchange["data_exchange"]["location"],
-        data_exchange_id=google_bigquery_analytics_hub_data_exchange["data_exchange"]["data_exchange_id"])
+    policy = gcp.bigqueryanalyticshub.get_data_exchange_iam_policy(project=data_exchange["project"],
+        location=data_exchange["location"],
+        data_exchange_id=data_exchange["dataExchangeId"])
     ```
 
 
@@ -151,9 +151,9 @@ def get_data_exchange_iam_policy_output(data_exchange_id: Optional[pulumi.Input[
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigqueryanalyticshub.get_data_exchange_iam_policy(project=google_bigquery_analytics_hub_data_exchange["data_exchange"]["project"],
-        location=google_bigquery_analytics_hub_data_exchange["data_exchange"]["location"],
-        data_exchange_id=google_bigquery_analytics_hub_data_exchange["data_exchange"]["data_exchange_id"])
+    policy = gcp.bigqueryanalyticshub.get_data_exchange_iam_policy(project=data_exchange["project"],
+        location=data_exchange["location"],
+        data_exchange_id=data_exchange["dataExchangeId"])
     ```
 
 

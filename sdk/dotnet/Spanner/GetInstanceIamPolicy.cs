@@ -26,8 +26,8 @@ namespace Pulumi.Gcp.Spanner
         /// {
         ///     var foo = Gcp.Spanner.GetInstanceIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_spanner_instance.Instance.Project,
-        ///         Instance = google_spanner_instance.Instance.Name,
+        ///         Project = instance.Project,
+        ///         Instance = instance.Name,
         ///     });
         /// 
         /// });
@@ -51,8 +51,8 @@ namespace Pulumi.Gcp.Spanner
         /// {
         ///     var foo = Gcp.Spanner.GetInstanceIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_spanner_instance.Instance.Project,
-        ///         Instance = google_spanner_instance.Instance.Name,
+        ///         Project = instance.Project,
+        ///         Instance = instance.Name,
         ///     });
         /// 
         /// });

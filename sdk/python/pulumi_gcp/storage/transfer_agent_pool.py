@@ -248,16 +248,16 @@ class TransferAgentPool(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.storage.get_transfer_project_service_account(project="my-project-name")
-        pubsub_editor_role = gcp.projects.IAMMember("pubsubEditorRole",
+        pubsub_editor_role = gcp.projects.IAMMember("pubsub_editor_role",
             project="my-project-name",
             role="roles/pubsub.editor",
             member=f"serviceAccount:{default.email}")
         example = gcp.storage.TransferAgentPool("example",
+            name="agent-pool-example",
             display_name="Source A to destination Z",
             bandwidth_limit=gcp.storage.TransferAgentPoolBandwidthLimitArgs(
                 limit_mbps="120",
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[pubsub_editor_role]))
+            ))
         ```
 
         ## Import
@@ -326,16 +326,16 @@ class TransferAgentPool(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.storage.get_transfer_project_service_account(project="my-project-name")
-        pubsub_editor_role = gcp.projects.IAMMember("pubsubEditorRole",
+        pubsub_editor_role = gcp.projects.IAMMember("pubsub_editor_role",
             project="my-project-name",
             role="roles/pubsub.editor",
             member=f"serviceAccount:{default.email}")
         example = gcp.storage.TransferAgentPool("example",
+            name="agent-pool-example",
             display_name="Source A to destination Z",
             bandwidth_limit=gcp.storage.TransferAgentPoolBandwidthLimitArgs(
                 limit_mbps="120",
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[pubsub_editor_role]))
+            ))
         ```
 
         ## Import

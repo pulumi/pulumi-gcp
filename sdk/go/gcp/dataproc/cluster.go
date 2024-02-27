@@ -37,6 +37,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.NewCluster(ctx, "simplecluster", &dataproc.ClusterArgs{
+//				Name:   pulumi.String("simplecluster"),
 //				Region: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
@@ -70,6 +71,7 @@ import (
 //				return err
 //			}
 //			_, err = dataproc.NewCluster(ctx, "mycluster", &dataproc.ClusterArgs{
+//				Name:                        pulumi.String("mycluster"),
 //				Region:                      pulumi.String("us-central1"),
 //				GracefulDecommissionTimeout: pulumi.String("120s"),
 //				Labels: pulumi.StringMap{
@@ -143,7 +145,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataproc.NewCluster(ctx, "acceleratedCluster", &dataproc.ClusterArgs{
+//			_, err := dataproc.NewCluster(ctx, "accelerated_cluster", &dataproc.ClusterArgs{
+//				Name:   pulumi.String("my-cluster-with-gpu"),
+//				Region: pulumi.String("us-central1"),
 //				ClusterConfig: &dataproc.ClusterClusterConfigArgs{
 //					GceClusterConfig: &dataproc.ClusterClusterConfigGceClusterConfigArgs{
 //						Zone: pulumi.String("us-central1-a"),
@@ -151,13 +155,12 @@ import (
 //					MasterConfig: &dataproc.ClusterClusterConfigMasterConfigArgs{
 //						Accelerators: dataproc.ClusterClusterConfigMasterConfigAcceleratorArray{
 //							&dataproc.ClusterClusterConfigMasterConfigAcceleratorArgs{
-//								AcceleratorCount: pulumi.Int(1),
 //								AcceleratorType:  pulumi.String("nvidia-tesla-k80"),
+//								AcceleratorCount: pulumi.Int(1),
 //							},
 //						},
 //					},
 //				},
-//				Region: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err

@@ -40,8 +40,8 @@ public final class ApigeeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ApigeeFunctions.getEnvironmentIamPolicy(GetEnvironmentIamPolicyArgs.builder()
-     *             .orgId(google_apigee_environment.apigee_environment().org_id())
-     *             .envId(google_apigee_environment.apigee_environment().name())
+     *             .orgId(apigeeEnvironment.orgId())
+     *             .envId(apigeeEnvironment.name())
      *             .build());
      * 
      *     }
@@ -78,8 +78,8 @@ public final class ApigeeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ApigeeFunctions.getEnvironmentIamPolicy(GetEnvironmentIamPolicyArgs.builder()
-     *             .orgId(google_apigee_environment.apigee_environment().org_id())
-     *             .envId(google_apigee_environment.apigee_environment().name())
+     *             .orgId(apigeeEnvironment.orgId())
+     *             .envId(apigeeEnvironment.name())
      *             .build());
      * 
      *     }
@@ -116,8 +116,8 @@ public final class ApigeeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ApigeeFunctions.getEnvironmentIamPolicy(GetEnvironmentIamPolicyArgs.builder()
-     *             .orgId(google_apigee_environment.apigee_environment().org_id())
-     *             .envId(google_apigee_environment.apigee_environment().name())
+     *             .orgId(apigeeEnvironment.orgId())
+     *             .envId(apigeeEnvironment.name())
      *             .build());
      * 
      *     }
@@ -154,8 +154,8 @@ public final class ApigeeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ApigeeFunctions.getEnvironmentIamPolicy(GetEnvironmentIamPolicyArgs.builder()
-     *             .orgId(google_apigee_environment.apigee_environment().org_id())
-     *             .envId(google_apigee_environment.apigee_environment().name())
+     *             .orgId(apigeeEnvironment.orgId())
+     *             .envId(apigeeEnvironment.name())
      *             .build());
      * 
      *     }

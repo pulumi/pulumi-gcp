@@ -328,22 +328,24 @@ class VolumeSnapshot(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.get_network(name="test-network")
-        default_storage_pool = gcp.netapp.StoragePool("defaultStoragePool",
+        default = gcp.compute.get_network(name="test-network")
+        default_storage_pool = gcp.netapp.StoragePool("default",
+            name="test-pool",
             location="us-west2",
             service_level="PREMIUM",
             capacity_gib="2048",
-            network=default_network.id)
-        default_volume = gcp.netapp.Volume("defaultVolume",
+            network=default.id)
+        default_volume = gcp.netapp.Volume("default",
             location=default_storage_pool.location,
+            name="test-volume",
             capacity_gib="100",
             share_name="test-volume",
             storage_pool=default_storage_pool.name,
             protocols=["NFSV3"])
-        test_snapshot = gcp.netapp.VolumeSnapshot("testSnapshot",
+        test_snapshot = gcp.netapp.VolumeSnapshot("test_snapshot",
             location=default_volume.location,
             volume_name=default_volume.name,
-            opts=pulumi.ResourceOptions(depends_on=[default_volume]))
+            name="testvolumesnap")
         ```
 
         ## Import
@@ -413,22 +415,24 @@ class VolumeSnapshot(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.get_network(name="test-network")
-        default_storage_pool = gcp.netapp.StoragePool("defaultStoragePool",
+        default = gcp.compute.get_network(name="test-network")
+        default_storage_pool = gcp.netapp.StoragePool("default",
+            name="test-pool",
             location="us-west2",
             service_level="PREMIUM",
             capacity_gib="2048",
-            network=default_network.id)
-        default_volume = gcp.netapp.Volume("defaultVolume",
+            network=default.id)
+        default_volume = gcp.netapp.Volume("default",
             location=default_storage_pool.location,
+            name="test-volume",
             capacity_gib="100",
             share_name="test-volume",
             storage_pool=default_storage_pool.name,
             protocols=["NFSV3"])
-        test_snapshot = gcp.netapp.VolumeSnapshot("testSnapshot",
+        test_snapshot = gcp.netapp.VolumeSnapshot("test_snapshot",
             location=default_volume.location,
             volume_name=default_volume.name,
-            opts=pulumi.ResourceOptions(depends_on=[default_volume]))
+            name="testvolumesnap")
         ```
 
         ## Import

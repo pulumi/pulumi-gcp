@@ -48,7 +48,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.InstanceFromMachineImage;
  * import com.pulumi.gcp.compute.InstanceFromMachineImageArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -63,13 +62,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tpl = new InstanceFromMachineImage(&#34;tpl&#34;, InstanceFromMachineImageArgs.builder()        
+ *             .name(&#34;instance-from-machine-image&#34;)
  *             .zone(&#34;us-central1-a&#34;)
  *             .sourceMachineImage(&#34;projects/PROJECT-ID/global/machineImages/NAME&#34;)
  *             .canIpForward(false)
  *             .labels(Map.of(&#34;my_key&#34;, &#34;my_value&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

@@ -109,9 +109,9 @@ def get_feature_iam_policy(location: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.gkehub.get_feature_iam_policy(project=google_gke_hub_feature["feature"]["project"],
-        location=google_gke_hub_feature["feature"]["location"],
-        name=google_gke_hub_feature["feature"]["name"])
+    policy = gcp.gkehub.get_feature_iam_policy(project=feature["project"],
+        location=feature["location"],
+        name=feature["name"])
     ```
 
 
@@ -150,9 +150,9 @@ def get_feature_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.gkehub.get_feature_iam_policy(project=google_gke_hub_feature["feature"]["project"],
-        location=google_gke_hub_feature["feature"]["location"],
-        name=google_gke_hub_feature["feature"]["name"])
+    policy = gcp.gkehub.get_feature_iam_policy(project=feature["project"],
+        location=feature["location"],
+        name=feature["name"])
     ```
 
 

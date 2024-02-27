@@ -42,9 +42,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var name = new PeeredDnsDomain(&#34;name&#34;, PeeredDnsDomainArgs.builder()        
- *             .dnsSuffix(&#34;example.com.&#34;)
- *             .network(&#34;default&#34;)
  *             .project(10000000)
+ *             .name(&#34;example-com&#34;)
+ *             .network(&#34;default&#34;)
+ *             .dnsSuffix(&#34;example.com.&#34;)
  *             .service(&#34;peering-service&#34;)
  *             .build());
  * 

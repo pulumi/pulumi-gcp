@@ -249,13 +249,13 @@ class Fleet(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.gkehub.Fleet("default",
+            display_name="my production fleet",
             default_cluster_config=gcp.gkehub.FleetDefaultClusterConfigArgs(
                 security_posture_config=gcp.gkehub.FleetDefaultClusterConfigSecurityPostureConfigArgs(
                     mode="DISABLED",
                     vulnerability_mode="VULNERABILITY_DISABLED",
                 ),
-            ),
-            display_name="my production fleet")
+            ))
         ```
 
         ## Import
@@ -308,13 +308,13 @@ class Fleet(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.gkehub.Fleet("default",
+            display_name="my production fleet",
             default_cluster_config=gcp.gkehub.FleetDefaultClusterConfigArgs(
                 security_posture_config=gcp.gkehub.FleetDefaultClusterConfigSecurityPostureConfigArgs(
                     mode="DISABLED",
                     vulnerability_mode="VULNERABILITY_DISABLED",
                 ),
-            ),
-            display_name="my production fleet")
+            ))
         ```
 
         ## Import

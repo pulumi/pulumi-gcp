@@ -42,11 +42,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := notebooks.NewInstance(ctx, "instance", &notebooks.InstanceArgs{
+//				Name:        pulumi.String("notebooks-instance"),
 //				Location:    pulumi.String("us-west1-a"),
 //				MachineType: pulumi.String("e2-medium"),
 //				VmImage: &notebooks.InstanceVmImageArgs{
-//					ImageFamily: pulumi.String("tf-latest-cpu"),
 //					Project:     pulumi.String("deeplearning-platform-release"),
+//					ImageFamily: pulumi.String("tf-latest-cpu"),
 //				},
 //			})
 //			if err != nil {
@@ -72,13 +73,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := notebooks.NewInstance(ctx, "instance", &notebooks.InstanceArgs{
-//				DesiredState: pulumi.String("STOPPED"),
-//				Location:     pulumi.String("us-west1-a"),
-//				MachineType:  pulumi.String("e2-medium"),
+//				Name:        pulumi.String("notebooks-instance"),
+//				Location:    pulumi.String("us-west1-a"),
+//				MachineType: pulumi.String("e2-medium"),
 //				VmImage: &notebooks.InstanceVmImageArgs{
-//					ImageFamily: pulumi.String("tf-latest-cpu"),
 //					Project:     pulumi.String("deeplearning-platform-release"),
+//					ImageFamily: pulumi.String("tf-latest-cpu"),
 //				},
+//				DesiredState: pulumi.String("STOPPED"),
 //			})
 //			if err != nil {
 //				return err
@@ -103,14 +105,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := notebooks.NewInstance(ctx, "instance", &notebooks.InstanceArgs{
-//				ContainerImage: &notebooks.InstanceContainerImageArgs{
-//					Repository: pulumi.String("gcr.io/deeplearning-platform-release/base-cpu"),
-//					Tag:        pulumi.String("latest"),
-//				},
+//				Name:        pulumi.String("notebooks-instance"),
 //				Location:    pulumi.String("us-west1-a"),
 //				MachineType: pulumi.String("e2-medium"),
 //				Metadata: pulumi.StringMap{
 //					"proxy-mode": pulumi.String("service_account"),
+//				},
+//				ContainerImage: &notebooks.InstanceContainerImageArgs{
+//					Repository: pulumi.String("gcr.io/deeplearning-platform-release/base-cpu"),
+//					Tag:        pulumi.String("latest"),
 //				},
 //			})
 //			if err != nil {
@@ -136,16 +139,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := notebooks.NewInstance(ctx, "instance", &notebooks.InstanceArgs{
-//				AcceleratorConfig: &notebooks.InstanceAcceleratorConfigArgs{
-//					CoreCount: pulumi.Int(1),
-//					Type:      pulumi.String("NVIDIA_TESLA_T4"),
-//				},
-//				InstallGpuDriver: pulumi.Bool(true),
+//				Name:             pulumi.String("notebooks-instance"),
 //				Location:         pulumi.String("us-west1-a"),
 //				MachineType:      pulumi.String("n1-standard-1"),
+//				InstallGpuDriver: pulumi.Bool(true),
+//				AcceleratorConfig: &notebooks.InstanceAcceleratorConfigArgs{
+//					Type:      pulumi.String("NVIDIA_TESLA_T4"),
+//					CoreCount: pulumi.Int(1),
+//				},
 //				VmImage: &notebooks.InstanceVmImageArgs{
-//					ImageFamily: pulumi.String("tf-latest-gpu"),
 //					Project:     pulumi.String("deeplearning-platform-release"),
+//					ImageFamily: pulumi.String("tf-latest-gpu"),
 //				},
 //			})
 //			if err != nil {
@@ -185,6 +189,7 @@ import (
 //				return err
 //			}
 //			_, err = notebooks.NewInstance(ctx, "instance", &notebooks.InstanceArgs{
+//				Name:        pulumi.String("notebooks-instance"),
 //				Location:    pulumi.String("us-central1-a"),
 //				MachineType: pulumi.String("e2-medium"),
 //				VmImage: &notebooks.InstanceVmImageArgs{

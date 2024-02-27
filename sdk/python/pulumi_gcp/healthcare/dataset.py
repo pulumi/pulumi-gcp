@@ -221,6 +221,7 @@ class Dataset(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.healthcare.Dataset("default",
+            name="example-dataset",
             location="us-central1",
             time_zone="UTC")
         ```
@@ -285,6 +286,7 @@ class Dataset(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.healthcare.Dataset("default",
+            name="example-dataset",
             location="us-central1",
             time_zone="UTC")
         ```

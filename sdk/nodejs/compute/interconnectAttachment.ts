@@ -17,17 +17,22 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const foobarNetwork = new gcp.compute.Network("foobarNetwork", {autoCreateSubnetworks: false});
- * const foobarRouter = new gcp.compute.Router("foobarRouter", {
+ * const foobarNetwork = new gcp.compute.Network("foobar", {
+ *     name: "network-1",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const foobar = new gcp.compute.Router("foobar", {
+ *     name: "router-1",
  *     network: foobarNetwork.name,
  *     bgp: {
  *         asn: 16550,
  *     },
  * });
- * const onPrem = new gcp.compute.InterconnectAttachment("onPrem", {
+ * const onPrem = new gcp.compute.InterconnectAttachment("on_prem", {
+ *     name: "on-prem-attachment",
  *     edgeAvailabilityDomain: "AVAILABILITY_DOMAIN_1",
  *     type: "PARTNER",
- *     router: foobarRouter.id,
+ *     router: foobar.id,
  *     mtu: "1500",
  * });
  * ```
@@ -37,8 +42,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false});
+ * const network = new gcp.compute.Network("network", {
+ *     name: "test-network",
+ *     autoCreateSubnetworks: false,
+ * });
  * const address = new gcp.compute.Address("address", {
+ *     name: "test-address",
  *     addressType: "INTERNAL",
  *     purpose: "IPSEC_INTERCONNECT",
  *     address: "192.168.1.0",
@@ -46,6 +55,7 @@ import * as utilities from "../utilities";
  *     network: network.selfLink,
  * });
  * const router = new gcp.compute.Router("router", {
+ *     name: "test-router",
  *     network: network.name,
  *     encryptedInterconnectRouter: true,
  *     bgp: {
@@ -53,6 +63,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const ipsec_encrypted_interconnect_attachment = new gcp.compute.InterconnectAttachment("ipsec-encrypted-interconnect-attachment", {
+ *     name: "test-interconnect-attachment",
  *     edgeAvailabilityDomain: "AVAILABILITY_DOMAIN_1",
  *     type: "PARTNER",
  *     router: router.id,

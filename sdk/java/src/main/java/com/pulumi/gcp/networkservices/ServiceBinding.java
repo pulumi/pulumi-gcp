@@ -31,7 +31,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.servicedirectory.ServiceArgs;
  * import com.pulumi.gcp.networkservices.ServiceBinding;
  * import com.pulumi.gcp.networkservices.ServiceBindingArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -45,31 +44,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
+ *         var default_ = new Namespace(&#34;default&#34;, NamespaceArgs.builder()        
  *             .namespaceId(&#34;my-namespace&#34;)
  *             .location(&#34;us-central1&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
  *             .serviceId(&#34;my-service&#34;)
- *             .namespace(defaultNamespace.id())
+ *             .namespace(default_.id())
  *             .metadata(Map.ofEntries(
  *                 Map.entry(&#34;stage&#34;, &#34;prod&#34;),
  *                 Map.entry(&#34;region&#34;, &#34;us-central1&#34;)
  *             ))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultServiceBinding = new ServiceBinding(&#34;defaultServiceBinding&#34;, ServiceBindingArgs.builder()        
+ *             .name(&#34;my-service-binding&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .description(&#34;my description&#34;)
  *             .service(defaultService.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

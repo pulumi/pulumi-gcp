@@ -36,7 +36,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.servicedirectory.Namespace;
  * import com.pulumi.gcp.servicedirectory.NamespaceArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -57,9 +56,7 @@ import javax.annotation.Nullable;
  *                 Map.entry(&#34;key&#34;, &#34;value&#34;),
  *                 Map.entry(&#34;foo&#34;, &#34;bar&#34;)
  *             ))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

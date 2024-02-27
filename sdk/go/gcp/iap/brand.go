@@ -30,19 +30,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				OrgId: pulumi.String("123456789"),
+//				ProjectId: pulumi.String("my-project"),
+//				Name:      pulumi.String("my-project"),
+//				OrgId:     pulumi.String("123456789"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			projectService, err := projects.NewService(ctx, "projectService", &projects.ServiceArgs{
+//			projectService, err := projects.NewService(ctx, "project_service", &projects.ServiceArgs{
 //				Project: project.ProjectId,
 //				Service: pulumi.String("iap.googleapis.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = iap.NewBrand(ctx, "projectBrand", &iap.BrandArgs{
+//			_, err = iap.NewBrand(ctx, "project_brand", &iap.BrandArgs{
 //				SupportEmail:     pulumi.String("support@example.com"),
 //				ApplicationTitle: pulumi.String("Cloud IAP protected Application"),
 //				Project:          projectService.Project,

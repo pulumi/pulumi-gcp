@@ -20,8 +20,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
- * const my_consent = new gcp.healthcare.ConsentStore("my-consent", {dataset: dataset.id});
+ * const dataset = new gcp.healthcare.Dataset("dataset", {
+ *     location: "us-central1",
+ *     name: "my-dataset",
+ * });
+ * const my_consent = new gcp.healthcare.ConsentStore("my-consent", {
+ *     dataset: dataset.id,
+ *     name: "my-consent-store",
+ * });
  * ```
  * ### Healthcare Consent Store Full
  *
@@ -29,9 +35,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
+ * const dataset = new gcp.healthcare.Dataset("dataset", {
+ *     location: "us-central1",
+ *     name: "my-dataset",
+ * });
  * const my_consent = new gcp.healthcare.ConsentStore("my-consent", {
  *     dataset: dataset.id,
+ *     name: "my-consent-store",
  *     enableConsentCreateOnUpdate: true,
  *     defaultConsentTtl: "90000s",
  *     labels: {
@@ -45,8 +55,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
- * const my_consent = new gcp.healthcare.ConsentStore("my-consent", {dataset: dataset.id});
+ * const dataset = new gcp.healthcare.Dataset("dataset", {
+ *     location: "us-central1",
+ *     name: "my-dataset",
+ * });
+ * const my_consent = new gcp.healthcare.ConsentStore("my-consent", {
+ *     dataset: dataset.id,
+ *     name: "my-consent-store",
+ * });
  * const test_account = new gcp.serviceaccount.Account("test-account", {
  *     accountId: "my-account",
  *     displayName: "Test Service Account",

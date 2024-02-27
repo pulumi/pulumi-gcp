@@ -109,6 +109,7 @@ def get_keys(managed_zone: Optional[str] = None,
     import pulumi_gcp as gcp
 
     foo = gcp.dns.ManagedZone("foo",
+        name="foobar",
         dns_name="foo.bar.",
         dnssec_config=gcp.dns.ManagedZoneDnssecConfigArgs(
             state="on",
@@ -159,6 +160,7 @@ def get_keys_output(managed_zone: Optional[pulumi.Input[str]] = None,
     import pulumi_gcp as gcp
 
     foo = gcp.dns.ManagedZone("foo",
+        name="foobar",
         dns_name="foo.bar.",
         dnssec_config=gcp.dns.ManagedZoneDnssecConfigArgs(
             state="on",

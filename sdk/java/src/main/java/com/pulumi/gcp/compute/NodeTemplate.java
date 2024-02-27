@@ -52,8 +52,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var template = new NodeTemplate(&#34;template&#34;, NodeTemplateArgs.builder()        
- *             .nodeType(&#34;n1-node-96-624&#34;)
+ *             .name(&#34;soletenant-tmpl&#34;)
  *             .region(&#34;us-central1&#34;)
+ *             .nodeType(&#34;n1-node-96-624&#34;)
  *             .build());
  * 
  *     }
@@ -89,9 +90,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var template = new NodeTemplate(&#34;template&#34;, NodeTemplateArgs.builder()        
- *             .nodeAffinityLabels(Map.of(&#34;foo&#34;, &#34;baz&#34;))
- *             .nodeType(&#34;n1-node-96-624&#34;)
+ *             .name(&#34;soletenant-with-licenses&#34;)
  *             .region(&#34;us-central1&#34;)
+ *             .nodeType(&#34;n1-node-96-624&#34;)
+ *             .nodeAffinityLabels(Map.of(&#34;foo&#34;, &#34;baz&#34;))
  *             .serverBinding(NodeTemplateServerBindingArgs.builder()
  *                 .type(&#34;RESTART_NODE_ON_MINIMAL_SERVERS&#34;)
  *                 .build())

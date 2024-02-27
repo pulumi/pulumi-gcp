@@ -95,15 +95,15 @@ import (
 //			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				Bindings: []organizations.GetIAMPolicyBinding{
 //					{
-//						Condition: {
-//							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
-//							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
-//							Title:       "expires_after_2019_12_31",
-//						},
+//						Role: "roles/compute.admin",
 //						Members: []string{
 //							"user:jane@example.com",
 //						},
-//						Role: "roles/compute.admin",
+//						Condition: {
+//							Title:       "expires_after_2019_12_31",
+//							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
+//							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+//						},
 //					},
 //				},
 //			}, nil)
@@ -111,8 +111,8 @@ import (
 //				return err
 //			}
 //			_, err = projects.NewIAMPolicy(ctx, "project", &projects.IAMPolicyArgs{
-//				PolicyData: *pulumi.String(admin.PolicyData),
 //				Project:    pulumi.String("your-project-id"),
+//				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -138,11 +138,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := projects.NewIAMBinding(ctx, "project", &projects.IAMBindingArgs{
+//				Project: pulumi.String("your-project-id"),
+//				Role:    pulumi.String("roles/editor"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				Project: pulumi.String("your-project-id"),
-//				Role:    pulumi.String("roles/editor"),
 //			})
 //			if err != nil {
 //				return err
@@ -168,16 +168,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := projects.NewIAMBinding(ctx, "project", &projects.IAMBindingArgs{
-//				Condition: &projects.IAMBindingConditionArgs{
-//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
-//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
-//					Title:       pulumi.String("expires_after_2019_12_31"),
-//				},
+//				Project: pulumi.String("your-project-id"),
+//				Role:    pulumi.String("roles/container.admin"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				Project: pulumi.String("your-project-id"),
-//				Role:    pulumi.String("roles/container.admin"),
+//				Condition: &projects.IAMBindingConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -203,9 +203,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := projects.NewIAMMember(ctx, "project", &projects.IAMMemberArgs{
-//				Member:  pulumi.String("user:jane@example.com"),
 //				Project: pulumi.String("your-project-id"),
 //				Role:    pulumi.String("roles/editor"),
+//				Member:  pulumi.String("user:jane@example.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -231,14 +231,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := projects.NewIAMMember(ctx, "project", &projects.IAMMemberArgs{
-//				Condition: &projects.IAMMemberConditionArgs{
-//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
-//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
-//					Title:       pulumi.String("expires_after_2019_12_31"),
-//				},
-//				Member:  pulumi.String("user:jane@example.com"),
 //				Project: pulumi.String("your-project-id"),
 //				Role:    pulumi.String("roles/firebase.admin"),
+//				Member:  pulumi.String("user:jane@example.com"),
+//				Condition: &projects.IAMMemberConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -264,19 +264,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := projects.NewIAMAuditConfig(ctx, "project", &projects.IAMAuditConfigArgs{
+//				Project: pulumi.String("your-project-id"),
+//				Service: pulumi.String("allServices"),
 //				AuditLogConfigs: projects.IAMAuditConfigAuditLogConfigArray{
 //					&projects.IAMAuditConfigAuditLogConfigArgs{
 //						LogType: pulumi.String("ADMIN_READ"),
 //					},
 //					&projects.IAMAuditConfigAuditLogConfigArgs{
+//						LogType: pulumi.String("DATA_READ"),
 //						ExemptedMembers: pulumi.StringArray{
 //							pulumi.String("user:joebloggs@example.com"),
 //						},
-//						LogType: pulumi.String("DATA_READ"),
 //					},
 //				},
-//				Project: pulumi.String("your-project-id"),
-//				Service: pulumi.String("allServices"),
 //			})
 //			if err != nil {
 //				return err

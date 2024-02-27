@@ -36,6 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networksecurity.NewUrlList(ctx, "default", &networksecurity.UrlListArgs{
+//				Name:     pulumi.String("my-url-lists"),
 //				Location: pulumi.String("us-central1"),
 //				Values: pulumi.StringArray{
 //					pulumi.String("www.example.com"),
@@ -64,8 +65,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networksecurity.NewUrlList(ctx, "default", &networksecurity.UrlListArgs{
-//				Description: pulumi.String("my description"),
+//				Name:        pulumi.String("my-url-lists"),
 //				Location:    pulumi.String("us-central1"),
+//				Description: pulumi.String("my description"),
 //				Values: pulumi.StringArray{
 //					pulumi.String("www.example.com"),
 //					pulumi.String("about.example.com"),

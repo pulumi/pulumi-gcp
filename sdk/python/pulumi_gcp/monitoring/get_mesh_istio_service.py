@@ -163,9 +163,10 @@ def get_mesh_istio_service(mesh_uid: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
+    # Monitors the default MeshIstio service
     default = gcp.monitoring.get_mesh_istio_service(mesh_uid="proj-573164786102",
-        service_name="prometheus",
-        service_namespace="istio-system")
+        service_namespace="istio-system",
+        service_name="prometheus")
     ```
 
 
@@ -231,9 +232,10 @@ def get_mesh_istio_service_output(mesh_uid: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
+    # Monitors the default MeshIstio service
     default = gcp.monitoring.get_mesh_istio_service(mesh_uid="proj-573164786102",
-        service_name="prometheus",
-        service_namespace="istio-system")
+        service_namespace="istio-system",
+        service_name="prometheus")
     ```
 
 

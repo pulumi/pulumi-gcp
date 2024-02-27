@@ -27,17 +27,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultHostingSite, err := firebase.NewHostingSite(ctx, "defaultHostingSite", &firebase.HostingSiteArgs{
+//			_, err := firebase.NewHostingSite(ctx, "default", &firebase.HostingSiteArgs{
 //				Project: pulumi.String("my-project-name"),
 //				SiteId:  pulumi.String("site-with-channel"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = firebase.NewHostingChannel(ctx, "defaultHostingChannel", &firebase.HostingChannelArgs{
-//				SiteId:    defaultHostingSite.SiteId,
+//			_, err = firebase.NewHostingChannel(ctx, "default", &firebase.HostingChannelArgs{
+//				SiteId:    _default.SiteId,
 //				ChannelId: pulumi.String("channel-basic"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -63,7 +63,7 @@ import (
 //			_, err := firebase.NewHostingSite(ctx, "default", &firebase.HostingSiteArgs{
 //				Project: pulumi.String("my-project-name"),
 //				SiteId:  pulumi.String("site-with-channel"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -75,7 +75,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"some-key": pulumi.String("some-value"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

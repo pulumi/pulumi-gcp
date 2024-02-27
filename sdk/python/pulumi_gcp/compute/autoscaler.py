@@ -325,64 +325,8 @@ class Autoscaler(pulumi.CustomResource):
 
         debian9 = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
-        default_instance_template = gcp.compute.InstanceTemplate("defaultInstanceTemplate",
-            machine_type="e2-medium",
-            can_ip_forward=False,
-            tags=[
-                "foo",
-                "bar",
-            ],
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image=debian9.id,
-            )],
-            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
-                network="default",
-            )],
-            metadata={
-                "foo": "bar",
-            },
-            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
-                scopes=[
-                    "userinfo-email",
-                    "compute-ro",
-                    "storage-ro",
-                ],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_target_pool = gcp.compute.TargetPool("defaultTargetPool", opts=pulumi.ResourceOptions(provider=google_beta))
-        default_instance_group_manager = gcp.compute.InstanceGroupManager("defaultInstanceGroupManager",
-            zone="us-central1-f",
-            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
-                instance_template=default_instance_template.id,
-                name="primary",
-            )],
-            target_pools=[default_target_pool.id],
-            base_instance_name="autoscaler-sample",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_autoscaler = gcp.compute.Autoscaler("defaultAutoscaler",
-            zone="us-central1-f",
-            target=default_instance_group_manager.id,
-            autoscaling_policy=gcp.compute.AutoscalerAutoscalingPolicyArgs(
-                max_replicas=5,
-                min_replicas=1,
-                cooldown_period=60,
-                metrics=[gcp.compute.AutoscalerAutoscalingPolicyMetricArgs(
-                    name="pubsub.googleapis.com/subscription/num_undelivered_messages",
-                    filter="resource.type = pubsub_subscription AND resource.label.subscription_id = our-subscription",
-                    single_instance_assignment=65535,
-                )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Autoscaler Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        debian9 = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        foobar_instance_template = gcp.compute.InstanceTemplate("foobarInstanceTemplate",
+        default_instance_template = gcp.compute.InstanceTemplate("default",
+            name="my-instance-template",
             machine_type="e2-medium",
             can_ip_forward=False,
             tags=[
@@ -405,8 +349,66 @@ class Autoscaler(pulumi.CustomResource):
                     "storage-ro",
                 ],
             ))
-        foobar_target_pool = gcp.compute.TargetPool("foobarTargetPool")
-        foobar_instance_group_manager = gcp.compute.InstanceGroupManager("foobarInstanceGroupManager",
+        default_target_pool = gcp.compute.TargetPool("default", name="my-target-pool")
+        default_instance_group_manager = gcp.compute.InstanceGroupManager("default",
+            name="my-igm",
+            zone="us-central1-f",
+            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
+                instance_template=default_instance_template.id,
+                name="primary",
+            )],
+            target_pools=[default_target_pool.id],
+            base_instance_name="autoscaler-sample")
+        default = gcp.compute.Autoscaler("default",
+            name="my-autoscaler",
+            zone="us-central1-f",
+            target=default_instance_group_manager.id,
+            autoscaling_policy=gcp.compute.AutoscalerAutoscalingPolicyArgs(
+                max_replicas=5,
+                min_replicas=1,
+                cooldown_period=60,
+                metrics=[gcp.compute.AutoscalerAutoscalingPolicyMetricArgs(
+                    name="pubsub.googleapis.com/subscription/num_undelivered_messages",
+                    filter="resource.type = pubsub_subscription AND resource.label.subscription_id = our-subscription",
+                    single_instance_assignment=65535,
+                )],
+            ))
+        ```
+        ### Autoscaler Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian9 = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        foobar_instance_template = gcp.compute.InstanceTemplate("foobar",
+            name="my-instance-template",
+            machine_type="e2-medium",
+            can_ip_forward=False,
+            tags=[
+                "foo",
+                "bar",
+            ],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image=debian9.id,
+            )],
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network="default",
+            )],
+            metadata={
+                "foo": "bar",
+            },
+            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
+                scopes=[
+                    "userinfo-email",
+                    "compute-ro",
+                    "storage-ro",
+                ],
+            ))
+        foobar_target_pool = gcp.compute.TargetPool("foobar", name="my-target-pool")
+        foobar_instance_group_manager = gcp.compute.InstanceGroupManager("foobar",
+            name="my-igm",
             zone="us-central1-f",
             versions=[gcp.compute.InstanceGroupManagerVersionArgs(
                 instance_template=foobar_instance_template.id,
@@ -414,7 +416,8 @@ class Autoscaler(pulumi.CustomResource):
             )],
             target_pools=[foobar_target_pool.id],
             base_instance_name="foobar")
-        foobar_autoscaler = gcp.compute.Autoscaler("foobarAutoscaler",
+        foobar = gcp.compute.Autoscaler("foobar",
+            name="my-autoscaler",
             zone="us-central1-f",
             target=foobar_instance_group_manager.id,
             autoscaling_policy=gcp.compute.AutoscalerAutoscalingPolicyArgs(
@@ -504,64 +507,8 @@ class Autoscaler(pulumi.CustomResource):
 
         debian9 = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
-        default_instance_template = gcp.compute.InstanceTemplate("defaultInstanceTemplate",
-            machine_type="e2-medium",
-            can_ip_forward=False,
-            tags=[
-                "foo",
-                "bar",
-            ],
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image=debian9.id,
-            )],
-            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
-                network="default",
-            )],
-            metadata={
-                "foo": "bar",
-            },
-            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
-                scopes=[
-                    "userinfo-email",
-                    "compute-ro",
-                    "storage-ro",
-                ],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_target_pool = gcp.compute.TargetPool("defaultTargetPool", opts=pulumi.ResourceOptions(provider=google_beta))
-        default_instance_group_manager = gcp.compute.InstanceGroupManager("defaultInstanceGroupManager",
-            zone="us-central1-f",
-            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
-                instance_template=default_instance_template.id,
-                name="primary",
-            )],
-            target_pools=[default_target_pool.id],
-            base_instance_name="autoscaler-sample",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_autoscaler = gcp.compute.Autoscaler("defaultAutoscaler",
-            zone="us-central1-f",
-            target=default_instance_group_manager.id,
-            autoscaling_policy=gcp.compute.AutoscalerAutoscalingPolicyArgs(
-                max_replicas=5,
-                min_replicas=1,
-                cooldown_period=60,
-                metrics=[gcp.compute.AutoscalerAutoscalingPolicyMetricArgs(
-                    name="pubsub.googleapis.com/subscription/num_undelivered_messages",
-                    filter="resource.type = pubsub_subscription AND resource.label.subscription_id = our-subscription",
-                    single_instance_assignment=65535,
-                )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Autoscaler Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        debian9 = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        foobar_instance_template = gcp.compute.InstanceTemplate("foobarInstanceTemplate",
+        default_instance_template = gcp.compute.InstanceTemplate("default",
+            name="my-instance-template",
             machine_type="e2-medium",
             can_ip_forward=False,
             tags=[
@@ -584,8 +531,66 @@ class Autoscaler(pulumi.CustomResource):
                     "storage-ro",
                 ],
             ))
-        foobar_target_pool = gcp.compute.TargetPool("foobarTargetPool")
-        foobar_instance_group_manager = gcp.compute.InstanceGroupManager("foobarInstanceGroupManager",
+        default_target_pool = gcp.compute.TargetPool("default", name="my-target-pool")
+        default_instance_group_manager = gcp.compute.InstanceGroupManager("default",
+            name="my-igm",
+            zone="us-central1-f",
+            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
+                instance_template=default_instance_template.id,
+                name="primary",
+            )],
+            target_pools=[default_target_pool.id],
+            base_instance_name="autoscaler-sample")
+        default = gcp.compute.Autoscaler("default",
+            name="my-autoscaler",
+            zone="us-central1-f",
+            target=default_instance_group_manager.id,
+            autoscaling_policy=gcp.compute.AutoscalerAutoscalingPolicyArgs(
+                max_replicas=5,
+                min_replicas=1,
+                cooldown_period=60,
+                metrics=[gcp.compute.AutoscalerAutoscalingPolicyMetricArgs(
+                    name="pubsub.googleapis.com/subscription/num_undelivered_messages",
+                    filter="resource.type = pubsub_subscription AND resource.label.subscription_id = our-subscription",
+                    single_instance_assignment=65535,
+                )],
+            ))
+        ```
+        ### Autoscaler Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian9 = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        foobar_instance_template = gcp.compute.InstanceTemplate("foobar",
+            name="my-instance-template",
+            machine_type="e2-medium",
+            can_ip_forward=False,
+            tags=[
+                "foo",
+                "bar",
+            ],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image=debian9.id,
+            )],
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network="default",
+            )],
+            metadata={
+                "foo": "bar",
+            },
+            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
+                scopes=[
+                    "userinfo-email",
+                    "compute-ro",
+                    "storage-ro",
+                ],
+            ))
+        foobar_target_pool = gcp.compute.TargetPool("foobar", name="my-target-pool")
+        foobar_instance_group_manager = gcp.compute.InstanceGroupManager("foobar",
+            name="my-igm",
             zone="us-central1-f",
             versions=[gcp.compute.InstanceGroupManagerVersionArgs(
                 instance_template=foobar_instance_template.id,
@@ -593,7 +598,8 @@ class Autoscaler(pulumi.CustomResource):
             )],
             target_pools=[foobar_target_pool.id],
             base_instance_name="foobar")
-        foobar_autoscaler = gcp.compute.Autoscaler("foobarAutoscaler",
+        foobar = gcp.compute.Autoscaler("foobar",
+            name="my-autoscaler",
             zone="us-central1-f",
             target=foobar_instance_group_manager.id,
             autoscaling_policy=gcp.compute.AutoscalerAutoscalingPolicyArgs(

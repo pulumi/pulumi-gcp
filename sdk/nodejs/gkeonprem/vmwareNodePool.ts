@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const default_basic = new gcp.gkeonprem.VMwareCluster("default-basic", {
+ *     name: "my-cluster",
  *     location: "us-west1",
  *     adminClusterMembership: "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
  *     description: "test cluster",
@@ -55,104 +56,13 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const nodepool_basic = new gcp.gkeonprem.VMwareNodePool("nodepool-basic", {
+ *     name: "my-nodepool",
  *     location: "us-west1",
  *     vmwareCluster: default_basic.name,
  *     config: {
  *         replicas: 3,
  *         imageType: "ubuntu_containerd",
  *         enableLoadBalancer: true,
- *     },
- * });
- * ```
- * ### Gkeonprem Vmware Node Pool Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const default_full = new gcp.gkeonprem.VMwareCluster("default-full", {
- *     location: "us-west1",
- *     adminClusterMembership: "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
- *     description: "test cluster",
- *     onPremVersion: "1.13.1-gke.35",
- *     networkConfig: {
- *         serviceAddressCidrBlocks: ["10.96.0.0/12"],
- *         podAddressCidrBlocks: ["192.168.0.0/16"],
- *         dhcpIpConfig: {
- *             enabled: true,
- *         },
- *     },
- *     controlPlaneNode: {
- *         cpus: 4,
- *         memory: 8192,
- *         replicas: 1,
- *     },
- *     loadBalancer: {
- *         vipConfig: {
- *             controlPlaneVip: "10.251.133.5",
- *             ingressVip: "10.251.135.19",
- *         },
- *         metalLbConfig: {
- *             addressPools: [
- *                 {
- *                     pool: "ingress-ip",
- *                     manualAssign: true,
- *                     addresses: ["10.251.135.19"],
- *                 },
- *                 {
- *                     pool: "lb-test-ip",
- *                     manualAssign: true,
- *                     addresses: ["10.251.135.19"],
- *                 },
- *             ],
- *         },
- *     },
- * });
- * const nodepool_full = new gcp.gkeonprem.VMwareNodePool("nodepool-full", {
- *     location: "us-west1",
- *     vmwareCluster: default_full.name,
- *     annotations: {},
- *     config: {
- *         cpus: 4,
- *         memoryMb: 8196,
- *         replicas: 3,
- *         imageType: "ubuntu_containerd",
- *         image: "image",
- *         bootDiskSizeGb: 10,
- *         taints: [
- *             {
- *                 key: "key",
- *                 value: "value",
- *             },
- *             {
- *                 key: "key",
- *                 value: "value",
- *                 effect: "NO_SCHEDULE",
- *             },
- *         ],
- *         labels: {},
- *         vsphereConfigs: [{
- *             datastore: "test-datastore",
- *             tags: [
- *                 {
- *                     category: "test-category-1",
- *                     tag: "tag-1",
- *                 },
- *                 {
- *                     category: "test-category-2",
- *                     tag: "tag-2",
- *                 },
- *             ],
- *             hostGroups: [
- *                 "host1",
- *                 "host2",
- *             ],
- *         }],
- *         enableLoadBalancer: true,
- *     },
- *     nodePoolAutoscaling: {
- *         minReplicas: 1,
- *         maxReplicas: 5,
  *     },
  * });
  * ```

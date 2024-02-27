@@ -158,25 +158,22 @@ class HostingVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_hosting_site = gcp.firebase.HostingSite("defaultHostingSite",
+        default = gcp.firebase.HostingSite("default",
             project="my-project-name",
-            site_id="site-id",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_version = gcp.firebase.HostingVersion("defaultHostingVersion",
-            site_id=default_hosting_site.site_id,
+            site_id="site-id")
+        default_hosting_version = gcp.firebase.HostingVersion("default",
+            site_id=default.site_id,
             config=gcp.firebase.HostingVersionConfigArgs(
                 redirects=[gcp.firebase.HostingVersionConfigRedirectArgs(
                     glob="/google/**",
                     status_code=302,
                     location="https://www.google.com",
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_release = gcp.firebase.HostingRelease("defaultHostingRelease",
-            site_id=default_hosting_site.site_id,
+            ))
+        default_hosting_release = gcp.firebase.HostingRelease("default",
+            site_id=default.site_id,
             version_name=default_hosting_version.name,
-            message="Redirect to Google",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            message="Redirect to Google")
         ```
         ### Firebasehosting Version Cloud Run
 
@@ -184,22 +181,21 @@ class HostingVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_hosting_site = gcp.firebase.HostingSite("defaultHostingSite",
+        default = gcp.firebase.HostingSite("default",
             project="my-project-name",
-            site_id="site-id",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_service = gcp.cloudrunv2.Service("defaultService",
+            site_id="site-id")
+        default_service = gcp.cloudrunv2.Service("default",
             project="my-project-name",
+            name="cloud-run-service-via-hosting",
             location="us-central1",
             ingress="INGRESS_TRAFFIC_ALL",
             template=gcp.cloudrunv2.ServiceTemplateArgs(
                 containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_version = gcp.firebase.HostingVersion("defaultHostingVersion",
-            site_id=default_hosting_site.site_id,
+            ))
+        default_hosting_version = gcp.firebase.HostingVersion("default",
+            site_id=default.site_id,
             config=gcp.firebase.HostingVersionConfigArgs(
                 rewrites=[gcp.firebase.HostingVersionConfigRewriteArgs(
                     glob="/hello/**",
@@ -208,13 +204,11 @@ class HostingVersion(pulumi.CustomResource):
                         region=default_service.location,
                     ),
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_release = gcp.firebase.HostingRelease("defaultHostingRelease",
-            site_id=default_hosting_site.site_id,
+            ))
+        default_hosting_release = gcp.firebase.HostingRelease("default",
+            site_id=default.site_id,
             version_name=default_hosting_version.name,
-            message="Cloud Run Integration",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            message="Cloud Run Integration")
         ```
         ### Firebasehosting Version Cloud Functions
 
@@ -222,44 +216,40 @@ class HostingVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_hosting_site = gcp.firebase.HostingSite("defaultHostingSite",
+        default = gcp.firebase.HostingSite("default",
             project="my-project-name",
-            site_id="site-id",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            site_id="site-id")
         bucket = gcp.storage.Bucket("bucket",
             project="my-project-name",
+            name="site-id-function-source",
             location="US",
-            uniform_bucket_level_access=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
             bucket=bucket.name,
-            source=pulumi.FileAsset("function-source.zip"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        # Add path to the zipped function source code
+            source=pulumi.FileAsset("function-source.zip"))
         function = gcp.cloudfunctions.Function("function",
             project="my-project-name",
+            name="cloud-function-via-hosting",
             description="A Cloud Function connected to Firebase Hosing",
             runtime="nodejs16",
             available_memory_mb=128,
             source_archive_bucket=bucket.name,
             source_archive_object=object.name,
             trigger_http=True,
-            entry_point="helloHttp",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_version = gcp.firebase.HostingVersion("defaultHostingVersion",
-            site_id=default_hosting_site.site_id,
+            entry_point="helloHttp")
+        default_hosting_version = gcp.firebase.HostingVersion("default",
+            site_id=default.site_id,
             config=gcp.firebase.HostingVersionConfigArgs(
                 rewrites=[gcp.firebase.HostingVersionConfigRewriteArgs(
                     glob="/hello/**",
                     function=function.name,
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_release = gcp.firebase.HostingRelease("defaultHostingRelease",
-            site_id=default_hosting_site.site_id,
+            ))
+        default_hosting_release = gcp.firebase.HostingRelease("default",
+            site_id=default.site_id,
             version_name=default_hosting_version.name,
-            message="Cloud Functions Integration",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            message="Cloud Functions Integration")
         ```
 
         ## Import
@@ -303,25 +293,22 @@ class HostingVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_hosting_site = gcp.firebase.HostingSite("defaultHostingSite",
+        default = gcp.firebase.HostingSite("default",
             project="my-project-name",
-            site_id="site-id",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_version = gcp.firebase.HostingVersion("defaultHostingVersion",
-            site_id=default_hosting_site.site_id,
+            site_id="site-id")
+        default_hosting_version = gcp.firebase.HostingVersion("default",
+            site_id=default.site_id,
             config=gcp.firebase.HostingVersionConfigArgs(
                 redirects=[gcp.firebase.HostingVersionConfigRedirectArgs(
                     glob="/google/**",
                     status_code=302,
                     location="https://www.google.com",
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_release = gcp.firebase.HostingRelease("defaultHostingRelease",
-            site_id=default_hosting_site.site_id,
+            ))
+        default_hosting_release = gcp.firebase.HostingRelease("default",
+            site_id=default.site_id,
             version_name=default_hosting_version.name,
-            message="Redirect to Google",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            message="Redirect to Google")
         ```
         ### Firebasehosting Version Cloud Run
 
@@ -329,22 +316,21 @@ class HostingVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_hosting_site = gcp.firebase.HostingSite("defaultHostingSite",
+        default = gcp.firebase.HostingSite("default",
             project="my-project-name",
-            site_id="site-id",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_service = gcp.cloudrunv2.Service("defaultService",
+            site_id="site-id")
+        default_service = gcp.cloudrunv2.Service("default",
             project="my-project-name",
+            name="cloud-run-service-via-hosting",
             location="us-central1",
             ingress="INGRESS_TRAFFIC_ALL",
             template=gcp.cloudrunv2.ServiceTemplateArgs(
                 containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_version = gcp.firebase.HostingVersion("defaultHostingVersion",
-            site_id=default_hosting_site.site_id,
+            ))
+        default_hosting_version = gcp.firebase.HostingVersion("default",
+            site_id=default.site_id,
             config=gcp.firebase.HostingVersionConfigArgs(
                 rewrites=[gcp.firebase.HostingVersionConfigRewriteArgs(
                     glob="/hello/**",
@@ -353,13 +339,11 @@ class HostingVersion(pulumi.CustomResource):
                         region=default_service.location,
                     ),
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_release = gcp.firebase.HostingRelease("defaultHostingRelease",
-            site_id=default_hosting_site.site_id,
+            ))
+        default_hosting_release = gcp.firebase.HostingRelease("default",
+            site_id=default.site_id,
             version_name=default_hosting_version.name,
-            message="Cloud Run Integration",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            message="Cloud Run Integration")
         ```
         ### Firebasehosting Version Cloud Functions
 
@@ -367,44 +351,40 @@ class HostingVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_hosting_site = gcp.firebase.HostingSite("defaultHostingSite",
+        default = gcp.firebase.HostingSite("default",
             project="my-project-name",
-            site_id="site-id",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            site_id="site-id")
         bucket = gcp.storage.Bucket("bucket",
             project="my-project-name",
+            name="site-id-function-source",
             location="US",
-            uniform_bucket_level_access=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
             bucket=bucket.name,
-            source=pulumi.FileAsset("function-source.zip"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        # Add path to the zipped function source code
+            source=pulumi.FileAsset("function-source.zip"))
         function = gcp.cloudfunctions.Function("function",
             project="my-project-name",
+            name="cloud-function-via-hosting",
             description="A Cloud Function connected to Firebase Hosing",
             runtime="nodejs16",
             available_memory_mb=128,
             source_archive_bucket=bucket.name,
             source_archive_object=object.name,
             trigger_http=True,
-            entry_point="helloHttp",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_version = gcp.firebase.HostingVersion("defaultHostingVersion",
-            site_id=default_hosting_site.site_id,
+            entry_point="helloHttp")
+        default_hosting_version = gcp.firebase.HostingVersion("default",
+            site_id=default.site_id,
             config=gcp.firebase.HostingVersionConfigArgs(
                 rewrites=[gcp.firebase.HostingVersionConfigRewriteArgs(
                     glob="/hello/**",
                     function=function.name,
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_release = gcp.firebase.HostingRelease("defaultHostingRelease",
-            site_id=default_hosting_site.site_id,
+            ))
+        default_hosting_release = gcp.firebase.HostingRelease("default",
+            site_id=default.site_id,
             version_name=default_hosting_version.name,
-            message="Cloud Functions Integration",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            message="Cloud Functions Integration")
         ```
 
         ## Import

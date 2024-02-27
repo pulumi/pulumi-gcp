@@ -547,45 +547,15 @@ class Registration(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_registration = gcp.clouddomains.Registration("myRegistration",
-            contact_settings=gcp.clouddomains.RegistrationContactSettingsArgs(
-                admin_contact=gcp.clouddomains.RegistrationContactSettingsAdminContactArgs(
-                    email="user@example.com",
-                    phone_number="+12345000000",
-                    postal_address=gcp.clouddomains.RegistrationContactSettingsAdminContactPostalAddressArgs(
-                        address_lines=["1234 Example street"],
-                        administrative_area="CA",
-                        locality="Example City",
-                        postal_code="95050",
-                        recipients=["example recipient"],
-                        region_code="US",
-                    ),
-                ),
-                privacy="REDACTED_CONTACT_DATA",
-                registrant_contact=gcp.clouddomains.RegistrationContactSettingsRegistrantContactArgs(
-                    email="user@example.com",
-                    phone_number="+12345000000",
-                    postal_address=gcp.clouddomains.RegistrationContactSettingsRegistrantContactPostalAddressArgs(
-                        address_lines=["1234 Example street"],
-                        administrative_area="CA",
-                        locality="Example City",
-                        postal_code="95050",
-                        recipients=["example recipient"],
-                        region_code="US",
-                    ),
-                ),
-                technical_contact=gcp.clouddomains.RegistrationContactSettingsTechnicalContactArgs(
-                    email="user@example.com",
-                    phone_number="+12345000000",
-                    postal_address=gcp.clouddomains.RegistrationContactSettingsTechnicalContactPostalAddressArgs(
-                        address_lines=["1234 Example street"],
-                        administrative_area="CA",
-                        locality="Example City",
-                        postal_code="95050",
-                        recipients=["example recipient"],
-                        region_code="US",
-                    ),
-                ),
+        my_registration = gcp.clouddomains.Registration("my_registration",
+            domain_name="example-domain.com",
+            location="global",
+            labels={
+                "labelkey": "labelvalue",
+            },
+            yearly_price=gcp.clouddomains.RegistrationYearlyPriceArgs(
+                currency_code="USD",
+                units="12",
             ),
             dns_settings=gcp.clouddomains.RegistrationDnsSettingsArgs(
                 custom_dns=gcp.clouddomains.RegistrationDnsSettingsCustomDnsArgs(
@@ -597,14 +567,44 @@ class Registration(pulumi.CustomResource):
                     ],
                 ),
             ),
-            domain_name="example-domain.com",
-            labels={
-                "labelkey": "labelvalue",
-            },
-            location="global",
-            yearly_price=gcp.clouddomains.RegistrationYearlyPriceArgs(
-                currency_code="USD",
-                units="12",
+            contact_settings=gcp.clouddomains.RegistrationContactSettingsArgs(
+                privacy="REDACTED_CONTACT_DATA",
+                registrant_contact=gcp.clouddomains.RegistrationContactSettingsRegistrantContactArgs(
+                    phone_number="+12345000000",
+                    email="user@example.com",
+                    postal_address=gcp.clouddomains.RegistrationContactSettingsRegistrantContactPostalAddressArgs(
+                        region_code="US",
+                        postal_code="95050",
+                        administrative_area="CA",
+                        locality="Example City",
+                        address_lines=["1234 Example street"],
+                        recipients=["example recipient"],
+                    ),
+                ),
+                admin_contact=gcp.clouddomains.RegistrationContactSettingsAdminContactArgs(
+                    phone_number="+12345000000",
+                    email="user@example.com",
+                    postal_address=gcp.clouddomains.RegistrationContactSettingsAdminContactPostalAddressArgs(
+                        region_code="US",
+                        postal_code="95050",
+                        administrative_area="CA",
+                        locality="Example City",
+                        address_lines=["1234 Example street"],
+                        recipients=["example recipient"],
+                    ),
+                ),
+                technical_contact=gcp.clouddomains.RegistrationContactSettingsTechnicalContactArgs(
+                    phone_number="+12345000000",
+                    email="user@example.com",
+                    postal_address=gcp.clouddomains.RegistrationContactSettingsTechnicalContactPostalAddressArgs(
+                        region_code="US",
+                        postal_code="95050",
+                        administrative_area="CA",
+                        locality="Example City",
+                        address_lines=["1234 Example street"],
+                        recipients=["example recipient"],
+                    ),
+                ),
             ))
         ```
 
@@ -667,45 +667,15 @@ class Registration(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_registration = gcp.clouddomains.Registration("myRegistration",
-            contact_settings=gcp.clouddomains.RegistrationContactSettingsArgs(
-                admin_contact=gcp.clouddomains.RegistrationContactSettingsAdminContactArgs(
-                    email="user@example.com",
-                    phone_number="+12345000000",
-                    postal_address=gcp.clouddomains.RegistrationContactSettingsAdminContactPostalAddressArgs(
-                        address_lines=["1234 Example street"],
-                        administrative_area="CA",
-                        locality="Example City",
-                        postal_code="95050",
-                        recipients=["example recipient"],
-                        region_code="US",
-                    ),
-                ),
-                privacy="REDACTED_CONTACT_DATA",
-                registrant_contact=gcp.clouddomains.RegistrationContactSettingsRegistrantContactArgs(
-                    email="user@example.com",
-                    phone_number="+12345000000",
-                    postal_address=gcp.clouddomains.RegistrationContactSettingsRegistrantContactPostalAddressArgs(
-                        address_lines=["1234 Example street"],
-                        administrative_area="CA",
-                        locality="Example City",
-                        postal_code="95050",
-                        recipients=["example recipient"],
-                        region_code="US",
-                    ),
-                ),
-                technical_contact=gcp.clouddomains.RegistrationContactSettingsTechnicalContactArgs(
-                    email="user@example.com",
-                    phone_number="+12345000000",
-                    postal_address=gcp.clouddomains.RegistrationContactSettingsTechnicalContactPostalAddressArgs(
-                        address_lines=["1234 Example street"],
-                        administrative_area="CA",
-                        locality="Example City",
-                        postal_code="95050",
-                        recipients=["example recipient"],
-                        region_code="US",
-                    ),
-                ),
+        my_registration = gcp.clouddomains.Registration("my_registration",
+            domain_name="example-domain.com",
+            location="global",
+            labels={
+                "labelkey": "labelvalue",
+            },
+            yearly_price=gcp.clouddomains.RegistrationYearlyPriceArgs(
+                currency_code="USD",
+                units="12",
             ),
             dns_settings=gcp.clouddomains.RegistrationDnsSettingsArgs(
                 custom_dns=gcp.clouddomains.RegistrationDnsSettingsCustomDnsArgs(
@@ -717,14 +687,44 @@ class Registration(pulumi.CustomResource):
                     ],
                 ),
             ),
-            domain_name="example-domain.com",
-            labels={
-                "labelkey": "labelvalue",
-            },
-            location="global",
-            yearly_price=gcp.clouddomains.RegistrationYearlyPriceArgs(
-                currency_code="USD",
-                units="12",
+            contact_settings=gcp.clouddomains.RegistrationContactSettingsArgs(
+                privacy="REDACTED_CONTACT_DATA",
+                registrant_contact=gcp.clouddomains.RegistrationContactSettingsRegistrantContactArgs(
+                    phone_number="+12345000000",
+                    email="user@example.com",
+                    postal_address=gcp.clouddomains.RegistrationContactSettingsRegistrantContactPostalAddressArgs(
+                        region_code="US",
+                        postal_code="95050",
+                        administrative_area="CA",
+                        locality="Example City",
+                        address_lines=["1234 Example street"],
+                        recipients=["example recipient"],
+                    ),
+                ),
+                admin_contact=gcp.clouddomains.RegistrationContactSettingsAdminContactArgs(
+                    phone_number="+12345000000",
+                    email="user@example.com",
+                    postal_address=gcp.clouddomains.RegistrationContactSettingsAdminContactPostalAddressArgs(
+                        region_code="US",
+                        postal_code="95050",
+                        administrative_area="CA",
+                        locality="Example City",
+                        address_lines=["1234 Example street"],
+                        recipients=["example recipient"],
+                    ),
+                ),
+                technical_contact=gcp.clouddomains.RegistrationContactSettingsTechnicalContactArgs(
+                    phone_number="+12345000000",
+                    email="user@example.com",
+                    postal_address=gcp.clouddomains.RegistrationContactSettingsTechnicalContactPostalAddressArgs(
+                        region_code="US",
+                        postal_code="95050",
+                        administrative_area="CA",
+                        locality="Example City",
+                        address_lines=["1234 Example street"],
+                        recipients=["example recipient"],
+                    ),
+                ),
             ))
         ```
 

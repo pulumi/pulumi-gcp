@@ -31,6 +31,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := clouddeploy.NewTarget(ctx, "primary", &clouddeploy.TargetArgs{
 //				Location:         pulumi.String("us-west1"),
+//				Name:             pulumi.String("target"),
 //				DeployParameters: nil,
 //				Description:      pulumi.String("multi-target description"),
 //				ExecutionConfigs: clouddeploy.TargetExecutionConfigArray{
@@ -58,7 +59,7 @@ import (
 //					"my_first_label":  pulumi.String("example-label-1"),
 //					"my_second_label": pulumi.String("example-label-2"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -83,6 +84,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := clouddeploy.NewTarget(ctx, "primary", &clouddeploy.TargetArgs{
 //				Location:         pulumi.String("us-west1"),
+//				Name:             pulumi.String("target"),
 //				DeployParameters: nil,
 //				Description:      pulumi.String("basic description"),
 //				ExecutionConfigs: clouddeploy.TargetExecutionConfigArray{
@@ -107,7 +109,7 @@ import (
 //					"my_first_label":  pulumi.String("example-label-1"),
 //					"my_second_label": pulumi.String("example-label-2"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -131,10 +133,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := clouddeploy.NewTarget(ctx, "primary", &clouddeploy.TargetArgs{
-//				Annotations: pulumi.StringMap{
-//					"my_first_annotation":  pulumi.String("example-annotation-1"),
-//					"my_second_annotation": pulumi.String("example-annotation-2"),
-//				},
+//				Location: pulumi.String("us-west1"),
+//				Name:     pulumi.String("target"),
 //				DeployParameters: pulumi.StringMap{
 //					"deployParameterKey": pulumi.String("deployParameterValue"),
 //				},
@@ -142,13 +142,16 @@ import (
 //				Gke: &clouddeploy.TargetGkeArgs{
 //					Cluster: pulumi.String("projects/my-project-name/locations/us-west1/clusters/example-cluster-name"),
 //				},
+//				Project:         pulumi.String("my-project-name"),
+//				RequireApproval: pulumi.Bool(false),
+//				Annotations: pulumi.StringMap{
+//					"my_first_annotation":  pulumi.String("example-annotation-1"),
+//					"my_second_annotation": pulumi.String("example-annotation-2"),
+//				},
 //				Labels: pulumi.StringMap{
 //					"my_first_label":  pulumi.String("example-label-1"),
 //					"my_second_label": pulumi.String("example-label-2"),
 //				},
-//				Location:        pulumi.String("us-west1"),
-//				Project:         pulumi.String("my-project-name"),
-//				RequireApproval: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err

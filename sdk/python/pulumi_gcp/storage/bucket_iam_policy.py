@@ -193,7 +193,7 @@ class BucketIAMPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.storage.BucketIAMPolicy("policy",
-            bucket=google_storage_bucket["default"]["name"],
+            bucket=default["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -213,7 +213,7 @@ class BucketIAMPolicy(pulumi.CustomResource):
             ),
         )])
         policy = gcp.storage.BucketIAMPolicy("policy",
-            bucket=google_storage_bucket["default"]["name"],
+            bucket=default["name"],
             policy_data=admin.policy_data)
         ```
         ## google\\_storage\\_bucket\\_iam\\_binding
@@ -223,7 +223,7 @@ class BucketIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.storage.BucketIAMBinding("binding",
-            bucket=google_storage_bucket["default"]["name"],
+            bucket=default["name"],
             role="roles/storage.admin",
             members=["user:jane@example.com"])
         ```
@@ -235,7 +235,7 @@ class BucketIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.storage.BucketIAMBinding("binding",
-            bucket=google_storage_bucket["default"]["name"],
+            bucket=default["name"],
             role="roles/storage.admin",
             members=["user:jane@example.com"],
             condition=gcp.storage.BucketIAMBindingConditionArgs(
@@ -251,7 +251,7 @@ class BucketIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.storage.BucketIAMMember("member",
-            bucket=google_storage_bucket["default"]["name"],
+            bucket=default["name"],
             role="roles/storage.admin",
             member="user:jane@example.com")
         ```
@@ -263,7 +263,7 @@ class BucketIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.storage.BucketIAMMember("member",
-            bucket=google_storage_bucket["default"]["name"],
+            bucket=default["name"],
             role="roles/storage.admin",
             member="user:jane@example.com",
             condition=gcp.storage.BucketIAMMemberConditionArgs(
@@ -359,7 +359,7 @@ class BucketIAMPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.storage.BucketIAMPolicy("policy",
-            bucket=google_storage_bucket["default"]["name"],
+            bucket=default["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -379,7 +379,7 @@ class BucketIAMPolicy(pulumi.CustomResource):
             ),
         )])
         policy = gcp.storage.BucketIAMPolicy("policy",
-            bucket=google_storage_bucket["default"]["name"],
+            bucket=default["name"],
             policy_data=admin.policy_data)
         ```
         ## google\\_storage\\_bucket\\_iam\\_binding
@@ -389,7 +389,7 @@ class BucketIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.storage.BucketIAMBinding("binding",
-            bucket=google_storage_bucket["default"]["name"],
+            bucket=default["name"],
             role="roles/storage.admin",
             members=["user:jane@example.com"])
         ```
@@ -401,7 +401,7 @@ class BucketIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.storage.BucketIAMBinding("binding",
-            bucket=google_storage_bucket["default"]["name"],
+            bucket=default["name"],
             role="roles/storage.admin",
             members=["user:jane@example.com"],
             condition=gcp.storage.BucketIAMBindingConditionArgs(
@@ -417,7 +417,7 @@ class BucketIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.storage.BucketIAMMember("member",
-            bucket=google_storage_bucket["default"]["name"],
+            bucket=default["name"],
             role="roles/storage.admin",
             member="user:jane@example.com")
         ```
@@ -429,7 +429,7 @@ class BucketIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.storage.BucketIAMMember("member",
-            bucket=google_storage_bucket["default"]["name"],
+            bucket=default["name"],
             role="roles/storage.admin",
             member="user:jane@example.com",
             condition=gcp.storage.BucketIAMMemberConditionArgs(

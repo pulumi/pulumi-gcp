@@ -29,8 +29,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var tplInstanceTemplate = new Gcp.Compute.InstanceTemplate("tplInstanceTemplate", new()
+    ///     var tpl = new Gcp.Compute.InstanceTemplate("tpl", new()
     ///     {
+    ///         Name = "template",
     ///         MachineType = "e2-medium",
     ///         Disks = new[]
     ///         {
@@ -56,10 +57,11 @@ namespace Pulumi.Gcp.Compute
     ///         CanIpForward = true,
     ///     });
     /// 
-    ///     var tplInstanceFromTemplate = new Gcp.Compute.InstanceFromTemplate("tplInstanceFromTemplate", new()
+    ///     var tplInstanceFromTemplate = new Gcp.Compute.InstanceFromTemplate("tpl", new()
     ///     {
+    ///         Name = "instance-from-template",
     ///         Zone = "us-central1-a",
-    ///         SourceInstanceTemplate = tplInstanceTemplate.SelfLinkUnique,
+    ///         SourceInstanceTemplate = tpl.SelfLinkUnique,
     ///         CanIpForward = false,
     ///         Labels = 
     ///         {

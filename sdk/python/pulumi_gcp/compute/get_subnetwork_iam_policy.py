@@ -109,9 +109,9 @@ def get_subnetwork_iam_policy(project: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.compute.get_subnetwork_iam_policy(project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
-        region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
-        subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"])
+    policy = gcp.compute.get_subnetwork_iam_policy(project=network_with_private_secondary_ip_ranges["project"],
+        region=network_with_private_secondary_ip_ranges["region"],
+        subnetwork=network_with_private_secondary_ip_ranges["name"])
     ```
 
 
@@ -153,9 +153,9 @@ def get_subnetwork_iam_policy_output(project: Optional[pulumi.Input[Optional[str
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.compute.get_subnetwork_iam_policy(project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
-        region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
-        subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"])
+    policy = gcp.compute.get_subnetwork_iam_policy(project=network_with_private_secondary_ip_ranges["project"],
+        region=network_with_private_secondary_ip_ranges["region"],
+        subnetwork=network_with_private_secondary_ip_ranges["name"])
     ```
 
 

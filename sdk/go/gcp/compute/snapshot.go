@@ -54,6 +54,7 @@ import (
 //				return err
 //			}
 //			persistent, err := compute.NewDisk(ctx, "persistent", &compute.DiskArgs{
+//				Name:  pulumi.String("debian-disk"),
 //				Image: *pulumi.String(debian.SelfLink),
 //				Size:  pulumi.Int(10),
 //				Type:  pulumi.String("pd-ssd"),
@@ -63,6 +64,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewSnapshot(ctx, "snapshot", &compute.SnapshotArgs{
+//				Name:       pulumi.String("my-snapshot"),
 //				SourceDisk: persistent.ID(),
 //				Zone:       pulumi.String("us-central1-a"),
 //				Labels: pulumi.StringMap{
@@ -102,6 +104,7 @@ import (
 //				return err
 //			}
 //			persistent, err := compute.NewDisk(ctx, "persistent", &compute.DiskArgs{
+//				Name:  pulumi.String("debian-disk"),
 //				Image: *pulumi.String(debian.SelfLink),
 //				Size:  pulumi.Int(10),
 //				Type:  pulumi.String("pd-ssd"),
@@ -111,6 +114,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewSnapshot(ctx, "snapshot", &compute.SnapshotArgs{
+//				Name:       pulumi.String("my-snapshot"),
 //				SourceDisk: persistent.ID(),
 //				Zone:       pulumi.String("us-central1-a"),
 //				ChainName:  pulumi.String("snapshot-chain"),

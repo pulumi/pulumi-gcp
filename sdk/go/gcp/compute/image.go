@@ -50,6 +50,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewImage(ctx, "example", &compute.ImageArgs{
+//				Name: pulumi.String("example-image"),
 //				RawDisk: &compute.ImageRawDiskArgs{
 //					Source: pulumi.String("https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz"),
 //				},
@@ -77,6 +78,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewImage(ctx, "example", &compute.ImageArgs{
+//				Name: pulumi.String("example-image"),
+//				RawDisk: &compute.ImageRawDiskArgs{
+//					Source: pulumi.String("https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz"),
+//				},
 //				GuestOsFeatures: compute.ImageGuestOsFeatureArray{
 //					&compute.ImageGuestOsFeatureArgs{
 //						Type: pulumi.String("SECURE_BOOT"),
@@ -84,9 +89,6 @@ import (
 //					&compute.ImageGuestOsFeatureArgs{
 //						Type: pulumi.String("MULTI_IP_SUBNET"),
 //					},
-//				},
-//				RawDisk: &compute.ImageRawDiskArgs{
-//					Source: pulumi.String("https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz"),
 //				},
 //			})
 //			if err != nil {
@@ -112,6 +114,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewImage(ctx, "example", &compute.ImageArgs{
+//				Name: pulumi.String("example-sl-image"),
 //				RawDisk: &compute.ImageRawDiskArgs{
 //					Source: pulumi.String("https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz"),
 //				},

@@ -61,7 +61,7 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = KmsFunctions.getCryptoKeyIamPolicy(GetCryptoKeyIamPolicyArgs.builder()
-     *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
+     *             .cryptoKeyId(cryptoKey.id())
      *             .build());
      * 
      *     }
@@ -98,7 +98,7 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = KmsFunctions.getCryptoKeyIamPolicy(GetCryptoKeyIamPolicyArgs.builder()
-     *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
+     *             .cryptoKeyId(cryptoKey.id())
      *             .build());
      * 
      *     }
@@ -135,7 +135,7 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = KmsFunctions.getCryptoKeyIamPolicy(GetCryptoKeyIamPolicyArgs.builder()
-     *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
+     *             .cryptoKeyId(cryptoKey.id())
      *             .build());
      * 
      *     }
@@ -172,7 +172,7 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = KmsFunctions.getCryptoKeyIamPolicy(GetCryptoKeyIamPolicyArgs.builder()
-     *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
+     *             .cryptoKeyId(cryptoKey.id())
      *             .build());
      * 
      *     }
@@ -426,7 +426,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         final var myCryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
-     *             .cryptoKey(data.google_kms_crypto_key().my_key().id())
+     *             .cryptoKey(myKey.id())
      *             .build());
      * 
      *     }
@@ -480,7 +480,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         final var myCryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
-     *             .cryptoKey(data.google_kms_crypto_key().my_key().id())
+     *             .cryptoKey(myKey.id())
      *             .build());
      * 
      *     }
@@ -534,7 +534,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         final var myCryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
-     *             .cryptoKey(data.google_kms_crypto_key().my_key().id())
+     *             .cryptoKey(myKey.id())
      *             .build());
      * 
      *     }
@@ -588,7 +588,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         final var myCryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
-     *             .cryptoKey(data.google_kms_crypto_key().my_key().id())
+     *             .cryptoKey(myKey.id())
      *             .build());
      * 
      *     }
@@ -631,8 +631,8 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;my-key-ring&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }
@@ -675,8 +675,8 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;my-key-ring&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }
@@ -719,8 +719,8 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;my-key-ring&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }
@@ -763,8 +763,8 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;my-key-ring&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }

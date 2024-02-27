@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  *     location: "us-west1",
  * });
- * const primaryAwsCluster = new gcp.container.AwsCluster("primaryAwsCluster", {
+ * const primary = new gcp.container.AwsCluster("primary", {
  *     authorization: {
  *         adminUsers: [{
  *             username: "my@service-account.com",
@@ -72,6 +72,7 @@ import * as utilities from "../utilities";
  *         project: "my-project-number",
  *     },
  *     location: "us-west1",
+ *     name: "name",
  *     networking: {
  *         podAddressCidrBlocks: ["10.2.0.0/16"],
  *         serviceAddressCidrBlocks: ["10.1.0.0/16"],
@@ -83,12 +84,12 @@ import * as utilities from "../utilities";
  *     description: "A sample aws cluster",
  *     project: "my-project-name",
  * });
- * const primaryAwsNodePool = new gcp.container.AwsNodePool("primaryAwsNodePool", {
+ * const primaryAwsNodePool = new gcp.container.AwsNodePool("primary", {
  *     autoscaling: {
  *         maxNodeCount: 5,
  *         minNodeCount: 1,
  *     },
- *     cluster: primaryAwsCluster.name,
+ *     cluster: primary.name,
  *     config: {
  *         configEncryption: {
  *             kmsKeyArn: "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
@@ -125,6 +126,7 @@ import * as utilities from "../utilities";
  *     maxPodsConstraint: {
  *         maxPodsPerNode: 110,
  *     },
+ *     name: "node-pool-name",
  *     subnetId: "subnet-00000000000000000",
  *     version: versions.then(versions => versions.validVersions?.[0]),
  *     annotations: {
@@ -146,7 +148,7 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  *     location: "us-west1",
  * });
- * const primaryAwsCluster = new gcp.container.AwsCluster("primaryAwsCluster", {
+ * const primary = new gcp.container.AwsCluster("primary", {
  *     authorization: {
  *         adminUsers: [{
  *             username: "my@service-account.com",
@@ -196,6 +198,7 @@ import * as utilities from "../utilities";
  *         project: "my-project-number",
  *     },
  *     location: "us-west1",
+ *     name: "name",
  *     networking: {
  *         podAddressCidrBlocks: ["10.2.0.0/16"],
  *         serviceAddressCidrBlocks: ["10.1.0.0/16"],
@@ -207,12 +210,12 @@ import * as utilities from "../utilities";
  *     description: "A sample aws cluster",
  *     project: "my-project-name",
  * });
- * const primaryAwsNodePool = new gcp.container.AwsNodePool("primaryAwsNodePool", {
+ * const primaryAwsNodePool = new gcp.container.AwsNodePool("primary", {
  *     autoscaling: {
  *         maxNodeCount: 5,
  *         minNodeCount: 1,
  *     },
- *     cluster: primaryAwsCluster.name,
+ *     cluster: primary.name,
  *     config: {
  *         configEncryption: {
  *             kmsKeyArn: "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
@@ -249,6 +252,7 @@ import * as utilities from "../utilities";
  *     maxPodsConstraint: {
  *         maxPodsPerNode: 110,
  *     },
+ *     name: "node-pool-name",
  *     subnetId: "subnet-00000000000000000",
  *     version: versions.then(versions => versions.validVersions?.[0]),
  *     annotations: {
@@ -267,7 +271,7 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  *     location: "us-west1",
  * });
- * const primaryAwsCluster = new gcp.container.AwsCluster("primaryAwsCluster", {
+ * const primary = new gcp.container.AwsCluster("primary", {
  *     authorization: {
  *         adminUsers: [{
  *             username: "my@service-account.com",
@@ -317,6 +321,7 @@ import * as utilities from "../utilities";
  *         project: "my-project-number",
  *     },
  *     location: "us-west1",
+ *     name: "name",
  *     networking: {
  *         podAddressCidrBlocks: ["10.2.0.0/16"],
  *         serviceAddressCidrBlocks: ["10.1.0.0/16"],
@@ -327,15 +332,13 @@ import * as utilities from "../utilities";
  *     },
  *     description: "A sample aws cluster",
  *     project: "my-project-name",
- * }, {
- *     provider: google_beta,
  * });
- * const primaryAwsNodePool = new gcp.container.AwsNodePool("primaryAwsNodePool", {
+ * const primaryAwsNodePool = new gcp.container.AwsNodePool("primary", {
  *     autoscaling: {
  *         maxNodeCount: 5,
  *         minNodeCount: 1,
  *     },
- *     cluster: primaryAwsCluster.name,
+ *     cluster: primary.name,
  *     config: {
  *         configEncryption: {
  *             kmsKeyArn: "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
@@ -376,14 +379,13 @@ import * as utilities from "../utilities";
  *     maxPodsConstraint: {
  *         maxPodsPerNode: 110,
  *     },
+ *     name: "node-pool-name",
  *     subnetId: "subnet-00000000000000000",
  *     version: versions.then(versions => versions.validVersions?.[0]),
  *     annotations: {
  *         "label-one": "value-one",
  *     },
  *     project: "my-project-name",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

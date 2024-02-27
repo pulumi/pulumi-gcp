@@ -38,6 +38,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := containeranalysis.NewNote(ctx, "note", &containeranalysis.NoteArgs{
+//				Name: pulumi.String("attestor-note"),
 //				AttestationAuthority: &containeranalysis.NoteAttestationAuthorityArgs{
 //					Hint: &containeranalysis.NoteAttestationAuthorityHintArgs{
 //						HumanReadableName: pulumi.String("Attestor Note"),
@@ -67,23 +68,24 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := containeranalysis.NewNote(ctx, "note", &containeranalysis.NoteArgs{
-//				AttestationAuthority: &containeranalysis.NoteAttestationAuthorityArgs{
-//					Hint: &containeranalysis.NoteAttestationAuthorityHintArgs{
-//						HumanReadableName: pulumi.String("Attestor Note"),
-//					},
-//				},
-//				ExpirationTime:  pulumi.String("2120-10-02T15:01:23.045123456Z"),
-//				LongDescription: pulumi.String("a longer description of test note"),
+//				Name:             pulumi.String("attestor-note"),
+//				ShortDescription: pulumi.String("test note"),
+//				LongDescription:  pulumi.String("a longer description of test note"),
+//				ExpirationTime:   pulumi.String("2120-10-02T15:01:23.045123456Z"),
 //				RelatedUrls: containeranalysis.NoteRelatedUrlArray{
 //					&containeranalysis.NoteRelatedUrlArgs{
-//						Label: pulumi.String("foo"),
 //						Url:   pulumi.String("some.url"),
+//						Label: pulumi.String("foo"),
 //					},
 //					&containeranalysis.NoteRelatedUrlArgs{
 //						Url: pulumi.String("google.com"),
 //					},
 //				},
-//				ShortDescription: pulumi.String("test note"),
+//				AttestationAuthority: &containeranalysis.NoteAttestationAuthorityArgs{
+//					Hint: &containeranalysis.NoteAttestationAuthorityHintArgs{
+//						HumanReadableName: pulumi.String("Attestor Note"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err

@@ -35,17 +35,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vertex.NewAiFeatureStore(ctx, "featurestore", &vertex.AiFeatureStoreArgs{
+//				Name: pulumi.String("terraform"),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Region: pulumi.String("us-central1"),
+//				OnlineServingConfig: &vertex.AiFeatureStoreOnlineServingConfigArgs{
+//					FixedNodeCount: pulumi.Int(2),
+//				},
 //				EncryptionSpec: &vertex.AiFeatureStoreEncryptionSpecArgs{
 //					KmsKeyName: pulumi.String("kms-name"),
 //				},
 //				ForceDestroy: pulumi.Bool(true),
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
-//				OnlineServingConfig: &vertex.AiFeatureStoreOnlineServingConfigArgs{
-//					FixedNodeCount: pulumi.Int(2),
-//				},
-//				Region: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err
@@ -70,6 +71,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vertex.NewAiFeatureStore(ctx, "featurestore", &vertex.AiFeatureStoreArgs{
+//				Name: pulumi.String("terraform2"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -82,7 +84,7 @@ import (
 //				},
 //				OnlineStorageTtlDays: pulumi.Int(30),
 //				ForceDestroy:         pulumi.Bool(true),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -106,20 +108,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vertex.NewAiFeatureStore(ctx, "featurestore", &vertex.AiFeatureStoreArgs{
+//				Name: pulumi.String("terraform3"),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Region: pulumi.String("us-central1"),
+//				OnlineServingConfig: &vertex.AiFeatureStoreOnlineServingConfigArgs{
+//					Scaling: &vertex.AiFeatureStoreOnlineServingConfigScalingArgs{
+//						MinNodeCount: pulumi.Int(2),
+//						MaxNodeCount: pulumi.Int(10),
+//					},
+//				},
 //				EncryptionSpec: &vertex.AiFeatureStoreEncryptionSpecArgs{
 //					KmsKeyName: pulumi.String("kms-name"),
 //				},
 //				ForceDestroy: pulumi.Bool(true),
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
-//				OnlineServingConfig: &vertex.AiFeatureStoreOnlineServingConfigArgs{
-//					Scaling: &vertex.AiFeatureStoreOnlineServingConfigScalingArgs{
-//						MaxNodeCount: pulumi.Int(10),
-//						MinNodeCount: pulumi.Int(2),
-//					},
-//				},
-//				Region: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err

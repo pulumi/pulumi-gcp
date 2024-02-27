@@ -39,9 +39,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-//				DeletionProtection: pulumi.Bool(false),
-//				InitialNodeCount:   pulumi.Int(1),
+//				Name:               pulumi.String("basic-cluster"),
 //				Location:           pulumi.String("us-central1-a"),
+//				InitialNodeCount:   pulumi.Int(1),
+//				DeletionProtection: pulumi.Bool(false),
 //				Network:            pulumi.String("default"),
 //				Subnetwork:         pulumi.String("default"),
 //			})
@@ -49,6 +50,8 @@ import (
 //				return err
 //			}
 //			_, err = gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
+//				MembershipId: pulumi.String("basic"),
+//				Location:     pulumi.String("us-west1"),
 //				Endpoint: &gkehub.MembershipEndpointArgs{
 //					GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
 //						ResourceLink: primary.ID().ApplyT(func(id string) (string, error) {
@@ -56,8 +59,6 @@ import (
 //						}).(pulumi.StringOutput),
 //					},
 //				},
-//				Location:     pulumi.String("us-west1"),
-//				MembershipId: pulumi.String("basic"),
 //			})
 //			if err != nil {
 //				return err
@@ -85,9 +86,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-//				DeletionProtection: pulumi.Bool(true),
-//				InitialNodeCount:   pulumi.Int(1),
+//				Name:               pulumi.String("basic-cluster"),
 //				Location:           pulumi.String("us-central1-a"),
+//				InitialNodeCount:   pulumi.Int(1),
+//				DeletionProtection: pulumi.Bool(true),
 //				Network:            pulumi.String("default"),
 //				Subnetwork:         pulumi.String("default"),
 //			})
@@ -95,6 +97,7 @@ import (
 //				return err
 //			}
 //			_, err = gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
+//				MembershipId: pulumi.String("basic"),
 //				Endpoint: &gkehub.MembershipEndpointArgs{
 //					GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
 //						ResourceLink: primary.ID().ApplyT(func(id string) (string, error) {
@@ -105,7 +108,6 @@ import (
 //				Labels: pulumi.StringMap{
 //					"env": pulumi.String("test"),
 //				},
-//				MembershipId: pulumi.String("basic"),
 //			})
 //			if err != nil {
 //				return err
@@ -133,6 +135,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Name:             pulumi.String("basic-cluster"),
 //				Location:         pulumi.String("us-central1-a"),
 //				InitialNodeCount: pulumi.Int(1),
 //				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{

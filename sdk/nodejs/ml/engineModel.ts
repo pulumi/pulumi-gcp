@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.ml.EngineModel("default", {
+ *     name: "default",
  *     description: "My model",
  *     regions: "us-central1",
  * });
@@ -37,13 +38,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.ml.EngineModel("default", {
+ *     name: "default",
  *     description: "My model",
+ *     regions: "us-central1",
  *     labels: {
  *         my_model: "foo",
  *     },
- *     onlinePredictionConsoleLogging: true,
  *     onlinePredictionLogging: true,
- *     regions: "us-central1",
+ *     onlinePredictionConsoleLogging: true,
  * });
  * ```
  *

@@ -382,11 +382,13 @@ class PrivateCloud(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         pc_nw = gcp.vmwareengine.Network("pc-nw",
+            name="pc-nw",
             location="global",
             type="STANDARD",
             description="PC network description.")
         vmw_engine_pc = gcp.vmwareengine.PrivateCloud("vmw-engine-pc",
             location="us-west1-a",
+            name="sample-pc",
             description="Sample test PC.",
             network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
                 management_cidr="192.168.30.0/24",
@@ -407,11 +409,13 @@ class PrivateCloud(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         pc_nw = gcp.vmwareengine.Network("pc-nw",
+            name="pc-nw",
             location="global",
             type="STANDARD",
             description="PC network description.")
         vmw_engine_pc = gcp.vmwareengine.PrivateCloud("vmw-engine-pc",
             location="us-west1-a",
+            name="sample-pc",
             description="Sample test PC.",
             type="TIME_LIMITED",
             network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
@@ -487,11 +491,13 @@ class PrivateCloud(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         pc_nw = gcp.vmwareengine.Network("pc-nw",
+            name="pc-nw",
             location="global",
             type="STANDARD",
             description="PC network description.")
         vmw_engine_pc = gcp.vmwareengine.PrivateCloud("vmw-engine-pc",
             location="us-west1-a",
+            name="sample-pc",
             description="Sample test PC.",
             network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
                 management_cidr="192.168.30.0/24",
@@ -512,11 +518,13 @@ class PrivateCloud(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         pc_nw = gcp.vmwareengine.Network("pc-nw",
+            name="pc-nw",
             location="global",
             type="STANDARD",
             description="PC network description.")
         vmw_engine_pc = gcp.vmwareengine.PrivateCloud("vmw-engine-pc",
             location="us-west1-a",
+            name="sample-pc",
             description="Sample test PC.",
             type="TIME_LIMITED",
             network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(

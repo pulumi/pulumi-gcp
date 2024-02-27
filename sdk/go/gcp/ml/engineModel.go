@@ -38,6 +38,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ml.NewEngineModel(ctx, "default", &ml.EngineModelArgs{
+//				Name:        pulumi.String("default"),
 //				Description: pulumi.String("My model"),
 //				Regions:     pulumi.String("us-central1"),
 //			})
@@ -64,13 +65,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ml.NewEngineModel(ctx, "default", &ml.EngineModelArgs{
+//				Name:        pulumi.String("default"),
 //				Description: pulumi.String("My model"),
+//				Regions:     pulumi.String("us-central1"),
 //				Labels: pulumi.StringMap{
 //					"my_model": pulumi.String("foo"),
 //				},
-//				OnlinePredictionConsoleLogging: pulumi.Bool(true),
 //				OnlinePredictionLogging:        pulumi.Bool(true),
-//				Regions:                        pulumi.String("us-central1"),
+//				OnlinePredictionConsoleLogging: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

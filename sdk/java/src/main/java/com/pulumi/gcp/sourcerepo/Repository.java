@@ -35,6 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.sourcerepo.Repository;
+ * import com.pulumi.gcp.sourcerepo.RepositoryArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -48,7 +49,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_repo = new Repository(&#34;my-repo&#34;);
+ *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
+ *             .name(&#34;my/repository&#34;)
+ *             .build());
  * 
  *     }
  * }
@@ -63,6 +66,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.serviceaccount.Account;
  * import com.pulumi.gcp.serviceaccount.AccountArgs;
  * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
  * import com.pulumi.gcp.sourcerepo.Repository;
  * import com.pulumi.gcp.sourcerepo.RepositoryArgs;
  * import com.pulumi.gcp.sourcerepo.inputs.RepositoryPubsubConfigArgs;
@@ -84,9 +88,12 @@ import javax.annotation.Nullable;
  *             .displayName(&#34;Test Service Account&#34;)
  *             .build());
  * 
- *         var topic = new Topic(&#34;topic&#34;);
+ *         var topic = new Topic(&#34;topic&#34;, TopicArgs.builder()        
+ *             .name(&#34;my-topic&#34;)
+ *             .build());
  * 
  *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
+ *             .name(&#34;my-repository&#34;)
  *             .pubsubConfigs(RepositoryPubsubConfigArgs.builder()
  *                 .topic(topic.id())
  *                 .messageFormat(&#34;JSON&#34;)

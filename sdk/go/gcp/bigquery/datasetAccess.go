@@ -73,15 +73,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			publicDataset, err := bigquery.NewDataset(ctx, "publicDataset", &bigquery.DatasetArgs{
+//			public, err := bigquery.NewDataset(ctx, "public", &bigquery.DatasetArgs{
 //				DatasetId: pulumi.String("example_dataset2"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			publicTable, err := bigquery.NewTable(ctx, "publicTable", &bigquery.TableArgs{
+//			publicTable, err := bigquery.NewTable(ctx, "public", &bigquery.TableArgs{
 //				DeletionProtection: pulumi.Bool(false),
-//				DatasetId:          publicDataset.DatasetId,
+//				DatasetId:          public.DatasetId,
 //				TableId:            pulumi.String("example_table"),
 //				View: &bigquery.TableViewArgs{
 //					Query:        pulumi.String("SELECT state FROM [lookerdata:cdc.project_tycho_reports]"),
@@ -95,7 +95,7 @@ import (
 //				DatasetId: private.DatasetId,
 //				View: &bigquery.DatasetAccessViewArgs{
 //					ProjectId: publicTable.Project,
-//					DatasetId: publicDataset.DatasetId,
+//					DatasetId: public.DatasetId,
 //					TableId:   publicTable.TableId,
 //				},
 //			})
@@ -169,7 +169,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			publicDataset, err := bigquery.NewDataset(ctx, "publicDataset", &bigquery.DatasetArgs{
+//			public, err := bigquery.NewDataset(ctx, "public", &bigquery.DatasetArgs{
 //				DatasetId:   pulumi.String("public_dataset"),
 //				Description: pulumi.String("This dataset is public"),
 //			})
@@ -197,8 +197,8 @@ import (
 //				return err
 //			}
 //			json1 := string(tmpJSON1)
-//			publicRoutine, err := bigquery.NewRoutine(ctx, "publicRoutine", &bigquery.RoutineArgs{
-//				DatasetId:      publicDataset.DatasetId,
+//			publicRoutine, err := bigquery.NewRoutine(ctx, "public", &bigquery.RoutineArgs{
+//				DatasetId:      public.DatasetId,
 //				RoutineId:      pulumi.String("public_routine"),
 //				RoutineType:    pulumi.String("TABLE_VALUED_FUNCTION"),
 //				Language:       pulumi.String("SQL"),
@@ -222,7 +222,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bigquery.NewDatasetAccess(ctx, "authorizedRoutine", &bigquery.DatasetAccessArgs{
+//			_, err = bigquery.NewDatasetAccess(ctx, "authorized_routine", &bigquery.DatasetAccessArgs{
 //				DatasetId: private.DatasetId,
 //				Routine: &bigquery.DatasetAccessRoutineArgs{
 //					ProjectId: publicRoutine.Project,

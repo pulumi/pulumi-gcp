@@ -60,6 +60,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var main = new DatabaseInstance(&#34;main&#34;, DatabaseInstanceArgs.builder()        
+ *             .name(&#34;main-instance&#34;)
  *             .databaseVersion(&#34;POSTGRES_15&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .settings(DatabaseInstanceSettingsArgs.builder()
@@ -90,7 +91,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -104,32 +104,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var privateNetwork = new Network(&#34;privateNetwork&#34;, NetworkArgs.Empty, CustomResourceOptions.builder()
- *             .provider(google_beta)
+ *         var privateNetwork = new Network(&#34;privateNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;private-network&#34;)
  *             .build());
  * 
  *         var privateIpAddress = new GlobalAddress(&#34;privateIpAddress&#34;, GlobalAddressArgs.builder()        
+ *             .name(&#34;private-ip-address&#34;)
  *             .purpose(&#34;VPC_PEERING&#34;)
  *             .addressType(&#34;INTERNAL&#34;)
  *             .prefixLength(16)
  *             .network(privateNetwork.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var privateVpcConnection = new Connection(&#34;privateVpcConnection&#34;, ConnectionArgs.builder()        
  *             .network(privateNetwork.id())
  *             .service(&#34;servicenetworking.googleapis.com&#34;)
  *             .reservedPeeringRanges(privateIpAddress.name())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var dbNameSuffix = new RandomId(&#34;dbNameSuffix&#34;, RandomIdArgs.builder()        
  *             .byteLength(4)
  *             .build());
  * 
  *         var instance = new DatabaseInstance(&#34;instance&#34;, DatabaseInstanceArgs.builder()        
+ *             .name(dbNameSuffix.hex().applyValue(hex -&gt; String.format(&#34;private-instance-%s&#34;, hex)))
  *             .region(&#34;us-central1&#34;)
  *             .databaseVersion(&#34;MYSQL_5_7&#34;)
  *             .settings(DatabaseInstanceSettingsArgs.builder()
@@ -140,10 +138,7 @@ import javax.annotation.Nullable;
  *                     .enablePrivatePathForGoogleCloudServices(true)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .dependsOn(privateVpcConnection)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -173,13 +168,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var main = new DatabaseInstance(&#34;main&#34;, DatabaseInstanceArgs.builder()        
+ *             .name(&#34;enterprise-plus-main-instance&#34;)
  *             .databaseVersion(&#34;MYSQL_8_0_31&#34;)
  *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .tier(&#34;db-perf-optimized-N-2&#34;)
+ *                 .edition(&#34;ENTERPRISE_PLUS&#34;)
  *                 .dataCacheConfig(DatabaseInstanceSettingsDataCacheConfigArgs.builder()
  *                     .dataCacheEnabled(true)
  *                     .build())
- *                 .edition(&#34;ENTERPRISE_PLUS&#34;)
- *                 .tier(&#34;db-perf-optimized-N-2&#34;)
  *                 .build())
  *             .build());
  * 
@@ -187,7 +183,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Cloud SQL Instance with PSC connectivity
- * 
  * ```java
  * package generated_program;
  * 
@@ -197,8 +192,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.sql.DatabaseInstance;
  * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
- * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -213,18 +208,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var main = new DatabaseInstance(&#34;main&#34;, DatabaseInstanceArgs.builder()        
+ *             .name(&#34;psc-enabled-main-instance&#34;)
  *             .databaseVersion(&#34;MYSQL_8_0&#34;)
  *             .settings(DatabaseInstanceSettingsArgs.builder()
- *                 .availabilityType(&#34;REGIONAL&#34;)
- *                 .backupConfiguration(DatabaseInstanceSettingsBackupConfigurationArgs.builder()
- *                     .binaryLogEnabled(true)
- *                     .enabled(true)
- *                     .build())
- *                 .ipConfiguration(DatabaseInstanceSettingsIpConfigurationArgs.builder()
- *                     .ipv4Enabled(false)
- *                     .pscConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .build())
  *                 .tier(&#34;db-f1-micro&#34;)
+ *                 .ipConfiguration(DatabaseInstanceSettingsIpConfigurationArgs.builder()
+ *                     .pscConfigs(DatabaseInstanceSettingsIpConfigurationPscConfigArgs.builder()
+ *                         .pscEnabled(true)
+ *                         .allowedConsumerProjects(&#34;allowed-consumer-project-name&#34;)
+ *                         .build())
+ *                     .ipv4Enabled(false)
+ *                     .build())
+ *                 .backupConfiguration(DatabaseInstanceSettingsBackupConfigurationArgs.builder()
+ *                     .enabled(true)
+ *                     .binaryLogEnabled(true)
+ *                     .build())
+ *                 .availabilityType(&#34;REGIONAL&#34;)
  *                 .build())
  *             .build());
  * 

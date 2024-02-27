@@ -19,22 +19,23 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const versions = gcp.container.getAzureVersions({
- *     location: "us-west1",
  *     project: "my-project-name",
+ *     location: "us-west1",
  * });
  * const basic = new gcp.container.AzureClient("basic", {
  *     applicationId: "12345678-1234-1234-1234-123456789111",
  *     location: "us-west1",
- *     project: "my-project-name",
+ *     name: "client-name",
  *     tenantId: "12345678-1234-1234-1234-123456789111",
+ *     project: "my-project-name",
  * });
  * const primary = new gcp.container.AzureCluster("primary", {
  *     authorization: {
- *         adminGroups: [{
- *             group: "group@domain.com",
- *         }],
  *         adminUsers: [{
  *             username: "mmv2@google.com",
+ *         }],
+ *         adminGroups: [{
+ *             group: "group@domain.com",
  *         }],
  *     },
  *     azureRegion: "westus2",
@@ -50,13 +51,14 @@ import * as utilities from "../utilities";
  *         project: "my-project-number",
  *     },
  *     location: "us-west1",
+ *     name: "name",
  *     networking: {
  *         podAddressCidrBlocks: ["10.200.0.0/16"],
  *         serviceAddressCidrBlocks: ["10.32.0.0/24"],
  *         virtualNetworkId: "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
  *     },
- *     project: "my-project-name",
  *     resourceGroupId: "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
+ *     project: "my-project-name",
  * });
  * ```
  * ### Beta_basic_enum_azure_cluster
@@ -72,10 +74,9 @@ import * as utilities from "../utilities";
  * const basic = new gcp.container.AzureClient("basic", {
  *     applicationId: "12345678-1234-1234-1234-123456789111",
  *     location: "us-west1",
+ *     name: "client-name",
  *     tenantId: "12345678-1234-1234-1234-123456789111",
  *     project: "my-project-name",
- * }, {
- *     provider: google_beta,
  * });
  * const primary = new gcp.container.AzureCluster("primary", {
  *     authorization: {
@@ -96,6 +97,7 @@ import * as utilities from "../utilities";
  *         project: "my-project-number",
  *     },
  *     location: "us-west1",
+ *     name: "name",
  *     networking: {
  *         podAddressCidrBlocks: ["10.200.0.0/16"],
  *         serviceAddressCidrBlocks: ["10.32.0.0/24"],
@@ -111,8 +113,6 @@ import * as utilities from "../utilities";
  *             ],
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

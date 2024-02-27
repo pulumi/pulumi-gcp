@@ -40,12 +40,16 @@ namespace Pulumi.Gcp.Netapp
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a network or use datasource to reference existing network
-    ///     var peeringNetwork = new Gcp.Compute.Network("peeringNetwork");
+    ///     var peeringNetwork = new Gcp.Compute.Network("peering_network", new()
+    ///     {
+    ///         Name = "test-network",
+    ///     });
     /// 
     ///     // Reserve a CIDR for NetApp Volumes to use
     ///     // When using shared-VPCs, this resource needs to be created in host project
-    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("privateIpAlloc", new()
+    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
     ///     {
+    ///         Name = "test-address",
     ///         Purpose = "VPC_PEERING",
     ///         AddressType = "INTERNAL",
     ///         PrefixLength = 16,
@@ -66,7 +70,7 @@ namespace Pulumi.Gcp.Netapp
     /// 
     ///     // Modify the PSA Connection to allow import/export of custom routes
     ///     // When using shared-VPCs, this resource needs to be created in host project
-    ///     var routeUpdates = new Gcp.Compute.NetworkPeeringRoutesConfig("routeUpdates", new()
+    ///     var routeUpdates = new Gcp.Compute.NetworkPeeringRoutesConfig("route_updates", new()
     ///     {
     ///         Peering = @default.Peering,
     ///         Network = peeringNetwork.Name,
@@ -76,8 +80,9 @@ namespace Pulumi.Gcp.Netapp
     /// 
     ///     // Create a storage pool
     ///     // Create this resource in the project which is expected to own the volumes
-    ///     var testPool = new Gcp.Netapp.StoragePool("testPool", new()
+    ///     var testPool = new Gcp.Netapp.StoragePool("test_pool", new()
     ///     {
+    ///         Name = "test-pool",
     ///         Location = "us-central1",
     ///         ServiceLevel = "PREMIUM",
     ///         CapacityGib = "2048",

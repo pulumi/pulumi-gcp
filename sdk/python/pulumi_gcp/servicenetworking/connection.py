@@ -211,9 +211,10 @@ class Connection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         # Create a VPC network
-        peering_network = gcp.compute.Network("peeringNetwork")
+        peering_network = gcp.compute.Network("peering_network", name="peering-network")
         # Create an IP address
-        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name="private-ip-alloc",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=16,
@@ -224,7 +225,7 @@ class Connection(pulumi.CustomResource):
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
         # (Optional) Import or export custom routes
-        peering_routes = gcp.compute.NetworkPeeringRoutesConfig("peeringRoutes",
+        peering_routes = gcp.compute.NetworkPeeringRoutesConfig("peering_routes",
             peering=default.peering,
             network=peering_network.name,
             import_custom_routes=True,
@@ -280,9 +281,10 @@ class Connection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         # Create a VPC network
-        peering_network = gcp.compute.Network("peeringNetwork")
+        peering_network = gcp.compute.Network("peering_network", name="peering-network")
         # Create an IP address
-        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name="private-ip-alloc",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=16,
@@ -293,7 +295,7 @@ class Connection(pulumi.CustomResource):
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
         # (Optional) Import or export custom routes
-        peering_routes = gcp.compute.NetworkPeeringRoutesConfig("peeringRoutes",
+        peering_routes = gcp.compute.NetworkPeeringRoutesConfig("peering_routes",
             peering=default.peering,
             network=peering_network.name,
             import_custom_routes=True,

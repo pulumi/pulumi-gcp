@@ -43,7 +43,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			pubsubEditorRole, err := projects.NewIAMMember(ctx, "pubsubEditorRole", &projects.IAMMemberArgs{
+//			_, err = projects.NewIAMMember(ctx, "pubsub_editor_role", &projects.IAMMemberArgs{
 //				Project: pulumi.String("my-project-name"),
 //				Role:    pulumi.String("roles/pubsub.editor"),
 //				Member:  pulumi.String(fmt.Sprintf("serviceAccount:%v", _default.Email)),
@@ -52,13 +52,12 @@ import (
 //				return err
 //			}
 //			_, err = storage.NewTransferAgentPool(ctx, "example", &storage.TransferAgentPoolArgs{
+//				Name:        pulumi.String("agent-pool-example"),
 //				DisplayName: pulumi.String("Source A to destination Z"),
 //				BandwidthLimit: &storage.TransferAgentPoolBandwidthLimitArgs{
 //					LimitMbps: pulumi.String("120"),
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				pubsubEditorRole,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

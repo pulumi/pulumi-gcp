@@ -33,11 +33,13 @@ namespace Pulumi.Gcp.Kms
     /// {
     ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
     ///     {
+    ///         Name = "keyring-example",
     ///         Location = "global",
     ///     });
     /// 
     ///     var cryptokey = new Gcp.Kms.CryptoKey("cryptokey", new()
     ///     {
+    ///         Name = "crypto-key-example",
     ///         KeyRing = keyring.Id,
     ///         RotationPeriod = "7776000s",
     ///     });

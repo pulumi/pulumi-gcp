@@ -40,9 +40,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := iam.NewWorkforcePool(ctx, "example", &iam.WorkforcePoolArgs{
-//				Location:        pulumi.String("global"),
-//				Parent:          pulumi.String("organizations/123456789"),
 //				WorkforcePoolId: pulumi.String("example-pool"),
+//				Parent:          pulumi.String("organizations/123456789"),
+//				Location:        pulumi.String("global"),
 //			})
 //			if err != nil {
 //				return err
@@ -67,6 +67,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := iam.NewWorkforcePool(ctx, "example", &iam.WorkforcePoolArgs{
+//				WorkforcePoolId: pulumi.String("example-pool"),
+//				Parent:          pulumi.String("organizations/123456789"),
+//				Location:        pulumi.String("global"),
+//				DisplayName:     pulumi.String("Display name"),
+//				Description:     pulumi.String("A sample workforce pool."),
+//				Disabled:        pulumi.Bool(false),
+//				SessionDuration: pulumi.String("7200s"),
 //				AccessRestrictions: &iam.WorkforcePoolAccessRestrictionsArgs{
 //					AllowedServices: iam.WorkforcePoolAccessRestrictionsAllowedServiceArray{
 //						&iam.WorkforcePoolAccessRestrictionsAllowedServiceArgs{
@@ -75,13 +82,6 @@ import (
 //					},
 //					DisableProgrammaticSignin: pulumi.Bool(false),
 //				},
-//				Description:     pulumi.String("A sample workforce pool."),
-//				Disabled:        pulumi.Bool(false),
-//				DisplayName:     pulumi.String("Display name"),
-//				Location:        pulumi.String("global"),
-//				Parent:          pulumi.String("organizations/123456789"),
-//				SessionDuration: pulumi.String("7200s"),
-//				WorkforcePoolId: pulumi.String("example-pool"),
 //			})
 //			if err != nil {
 //				return err

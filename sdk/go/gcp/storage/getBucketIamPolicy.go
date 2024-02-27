@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := storage.GetBucketIamPolicy(ctx, &storage.GetBucketIamPolicyArgs{
-//				Bucket: google_storage_bucket.Default.Name,
+//				Bucket: _default.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

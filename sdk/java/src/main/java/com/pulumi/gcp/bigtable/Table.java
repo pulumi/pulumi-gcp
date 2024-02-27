@@ -48,6 +48,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *             .name(&#34;tf-instance&#34;)
  *             .clusters(InstanceClusterArgs.builder()
  *                 .clusterId(&#34;tf-instance-cluster&#34;)
  *                 .zone(&#34;us-central1-b&#34;)
@@ -57,6 +58,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var table = new Table(&#34;table&#34;, TableArgs.builder()        
+ *             .name(&#34;tf-table&#34;)
  *             .instanceName(instance.name())
  *             .splitKeys(            
  *                 &#34;a&#34;,

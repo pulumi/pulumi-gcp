@@ -64,9 +64,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebRegionBackendServiceIamPolicy(&#34;policy&#34;, WebRegionBackendServiceIamPolicyArgs.builder()        
- *             .project(google_compute_region_backend_service.default().project())
- *             .region(google_compute_region_backend_service.default().region())
- *             .webRegionBackendService(google_compute_region_backend_service.default().name())
+ *             .project(default_.project())
+ *             .region(default_.region())
+ *             .webRegionBackendService(default_.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -111,9 +111,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebRegionBackendServiceIamPolicy(&#34;policy&#34;, WebRegionBackendServiceIamPolicyArgs.builder()        
- *             .project(google_compute_region_backend_service.default().project())
- *             .region(google_compute_region_backend_service.default().region())
- *             .webRegionBackendService(google_compute_region_backend_service.default().name())
+ *             .project(default_.project())
+ *             .region(default_.region())
+ *             .webRegionBackendService(default_.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -143,9 +143,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new WebRegionBackendServiceIamBinding(&#34;binding&#34;, WebRegionBackendServiceIamBindingArgs.builder()        
- *             .project(google_compute_region_backend_service.default().project())
- *             .region(google_compute_region_backend_service.default().region())
- *             .webRegionBackendService(google_compute_region_backend_service.default().name())
+ *             .project(default_.project())
+ *             .region(default_.region())
+ *             .webRegionBackendService(default_.name())
  *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -178,9 +178,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new WebRegionBackendServiceIamBinding(&#34;binding&#34;, WebRegionBackendServiceIamBindingArgs.builder()        
- *             .project(google_compute_region_backend_service.default().project())
- *             .region(google_compute_region_backend_service.default().region())
- *             .webRegionBackendService(google_compute_region_backend_service.default().name())
+ *             .project(default_.project())
+ *             .region(default_.region())
+ *             .webRegionBackendService(default_.name())
  *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .condition(WebRegionBackendServiceIamBindingConditionArgs.builder()
@@ -216,9 +216,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new WebRegionBackendServiceIamMember(&#34;member&#34;, WebRegionBackendServiceIamMemberArgs.builder()        
- *             .project(google_compute_region_backend_service.default().project())
- *             .region(google_compute_region_backend_service.default().region())
- *             .webRegionBackendService(google_compute_region_backend_service.default().name())
+ *             .project(default_.project())
+ *             .region(default_.region())
+ *             .webRegionBackendService(default_.name())
  *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -251,9 +251,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new WebRegionBackendServiceIamMember(&#34;member&#34;, WebRegionBackendServiceIamMemberArgs.builder()        
- *             .project(google_compute_region_backend_service.default().project())
- *             .region(google_compute_region_backend_service.default().region())
- *             .webRegionBackendService(google_compute_region_backend_service.default().name())
+ *             .project(default_.project())
+ *             .region(default_.region())
+ *             .webRegionBackendService(default_.name())
  *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .condition(WebRegionBackendServiceIamMemberConditionArgs.builder()

@@ -51,9 +51,9 @@ namespace Pulumi.Gcp.CloudRun
     /// 
     ///     var policy = new Gcp.CloudRun.IamPolicy("policy", new()
     ///     {
-    ///         Location = google_cloud_run_service.Default.Location,
-    ///         Project = google_cloud_run_service.Default.Project,
-    ///         Service = google_cloud_run_service.Default.Name,
+    ///         Location = @default.Location,
+    ///         Project = @default.Project,
+    ///         Service = @default.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -72,9 +72,9 @@ namespace Pulumi.Gcp.CloudRun
     /// {
     ///     var binding = new Gcp.CloudRun.IamBinding("binding", new()
     ///     {
-    ///         Location = google_cloud_run_service.Default.Location,
-    ///         Project = google_cloud_run_service.Default.Project,
-    ///         Service = google_cloud_run_service.Default.Name,
+    ///         Location = @default.Location,
+    ///         Project = @default.Project,
+    ///         Service = @default.Name,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -97,9 +97,9 @@ namespace Pulumi.Gcp.CloudRun
     /// {
     ///     var member = new Gcp.CloudRun.IamMember("member", new()
     ///     {
-    ///         Location = google_cloud_run_service.Default.Location,
-    ///         Project = google_cloud_run_service.Default.Project,
-    ///         Service = google_cloud_run_service.Default.Name,
+    ///         Location = @default.Location,
+    ///         Project = @default.Project,
+    ///         Service = @default.Name,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

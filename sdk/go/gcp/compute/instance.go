@@ -32,14 +32,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultAccount, err := serviceaccount.NewAccount(ctx, "defaultAccount", &serviceaccount.AccountArgs{
+//			_, err := serviceaccount.NewAccount(ctx, "default", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("my-custom-sa"),
 //				DisplayName: pulumi.String("Custom SA for VM Instance"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewInstance(ctx, "defaultInstance", &compute.InstanceArgs{
+//			_, err = compute.NewInstance(ctx, "default", &compute.InstanceArgs{
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+//							nil,
+//						},
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//				Name:        pulumi.String("my-instance"),
 //				MachineType: pulumi.String("n2-standard-2"),
 //				Zone:        pulumi.String("us-central1-a"),
 //				Tags: pulumi.StringArray{
@@ -59,20 +68,12 @@ import (
 //						Interface: pulumi.String("NVME"),
 //					},
 //				},
-//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-//					&compute.InstanceNetworkInterfaceArgs{
-//						Network: pulumi.String("default"),
-//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
-//							nil,
-//						},
-//					},
-//				},
 //				Metadata: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
 //				MetadataStartupScript: pulumi.String("echo hi > /test.txt"),
 //				ServiceAccount: &compute.InstanceServiceAccountArgs{
-//					Email: defaultAccount.Email,
+//					Email: _default.Email,
 //					Scopes: pulumi.StringArray{
 //						pulumi.String("cloud-platform"),
 //					},

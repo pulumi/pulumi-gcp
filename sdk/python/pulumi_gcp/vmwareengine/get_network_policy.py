@@ -169,8 +169,8 @@ def get_network_policy(location: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    my_network_policy = gcp.vmwareengine.get_network_policy(location="us-central1",
-        name="my-network-policy")
+    my_network_policy = gcp.vmwareengine.get_network_policy(name="my-network-policy",
+        location="us-central1")
     ```
 
 
@@ -217,8 +217,8 @@ def get_network_policy_output(location: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    my_network_policy = gcp.vmwareengine.get_network_policy(location="us-central1",
-        name="my-network-policy")
+    my_network_policy = gcp.vmwareengine.get_network_policy(name="my-network-policy",
+        location="us-central1")
     ```
 
 

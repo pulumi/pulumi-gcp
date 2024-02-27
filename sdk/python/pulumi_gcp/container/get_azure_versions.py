@@ -100,7 +100,7 @@ def get_azure_versions(location: Optional[str] = None,
 
     central1b = gcp.container.get_azure_versions(location="us-west1",
         project="my-project")
-    pulumi.export("firstAvailableVersion", data["google_container_azure_versions"]["versions"]["valid_versions"])
+    pulumi.export("firstAvailableVersion", versions["validVersions"])
     ```
 
 
@@ -137,7 +137,7 @@ def get_azure_versions_output(location: Optional[pulumi.Input[Optional[str]]] = 
 
     central1b = gcp.container.get_azure_versions(location="us-west1",
         project="my-project")
-    pulumi.export("firstAvailableVersion", data["google_container_azure_versions"]["versions"]["valid_versions"])
+    pulumi.export("firstAvailableVersion", versions["validVersions"])
     ```
 
 

@@ -108,8 +108,8 @@ def get_table_iam_policy(instance: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigtable.get_table_iam_policy(instance=google_bigtable_instance["instance"]["name"],
-        table=google_bigtable_table["table"]["name"])
+    policy = gcp.bigtable.get_table_iam_policy(instance=instance["name"],
+        table=table["name"])
     ```
 
 
@@ -146,8 +146,8 @@ def get_table_iam_policy_output(instance: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigtable.get_table_iam_policy(instance=google_bigtable_instance["instance"]["name"],
-        table=google_bigtable_table["table"]["name"])
+    policy = gcp.bigtable.get_table_iam_policy(instance=instance["name"],
+        table=table["name"])
     ```
 
 

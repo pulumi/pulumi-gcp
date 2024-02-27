@@ -64,9 +64,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new SubnetworkIAMPolicy(&#34;policy&#34;, SubnetworkIAMPolicyArgs.builder()        
- *             .project(google_compute_subnetwork.network-with-private-secondary-ip-ranges().project())
- *             .region(google_compute_subnetwork.network-with-private-secondary-ip-ranges().region())
- *             .subnetwork(google_compute_subnetwork.network-with-private-secondary-ip-ranges().name())
+ *             .project(network_with_private_secondary_ip_ranges.project())
+ *             .region(network_with_private_secondary_ip_ranges.region())
+ *             .subnetwork(network_with_private_secondary_ip_ranges.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -111,9 +111,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new SubnetworkIAMPolicy(&#34;policy&#34;, SubnetworkIAMPolicyArgs.builder()        
- *             .project(google_compute_subnetwork.network-with-private-secondary-ip-ranges().project())
- *             .region(google_compute_subnetwork.network-with-private-secondary-ip-ranges().region())
- *             .subnetwork(google_compute_subnetwork.network-with-private-secondary-ip-ranges().name())
+ *             .project(network_with_private_secondary_ip_ranges.project())
+ *             .region(network_with_private_secondary_ip_ranges.region())
+ *             .subnetwork(network_with_private_secondary_ip_ranges.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -143,9 +143,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new SubnetworkIAMBinding(&#34;binding&#34;, SubnetworkIAMBindingArgs.builder()        
- *             .project(google_compute_subnetwork.network-with-private-secondary-ip-ranges().project())
- *             .region(google_compute_subnetwork.network-with-private-secondary-ip-ranges().region())
- *             .subnetwork(google_compute_subnetwork.network-with-private-secondary-ip-ranges().name())
+ *             .project(network_with_private_secondary_ip_ranges.project())
+ *             .region(network_with_private_secondary_ip_ranges.region())
+ *             .subnetwork(network_with_private_secondary_ip_ranges.name())
  *             .role(&#34;roles/compute.networkUser&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -178,9 +178,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new SubnetworkIAMBinding(&#34;binding&#34;, SubnetworkIAMBindingArgs.builder()        
- *             .project(google_compute_subnetwork.network-with-private-secondary-ip-ranges().project())
- *             .region(google_compute_subnetwork.network-with-private-secondary-ip-ranges().region())
- *             .subnetwork(google_compute_subnetwork.network-with-private-secondary-ip-ranges().name())
+ *             .project(network_with_private_secondary_ip_ranges.project())
+ *             .region(network_with_private_secondary_ip_ranges.region())
+ *             .subnetwork(network_with_private_secondary_ip_ranges.name())
  *             .role(&#34;roles/compute.networkUser&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .condition(SubnetworkIAMBindingConditionArgs.builder()
@@ -216,9 +216,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new SubnetworkIAMMember(&#34;member&#34;, SubnetworkIAMMemberArgs.builder()        
- *             .project(google_compute_subnetwork.network-with-private-secondary-ip-ranges().project())
- *             .region(google_compute_subnetwork.network-with-private-secondary-ip-ranges().region())
- *             .subnetwork(google_compute_subnetwork.network-with-private-secondary-ip-ranges().name())
+ *             .project(network_with_private_secondary_ip_ranges.project())
+ *             .region(network_with_private_secondary_ip_ranges.region())
+ *             .subnetwork(network_with_private_secondary_ip_ranges.name())
  *             .role(&#34;roles/compute.networkUser&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -251,9 +251,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new SubnetworkIAMMember(&#34;member&#34;, SubnetworkIAMMemberArgs.builder()        
- *             .project(google_compute_subnetwork.network-with-private-secondary-ip-ranges().project())
- *             .region(google_compute_subnetwork.network-with-private-secondary-ip-ranges().region())
- *             .subnetwork(google_compute_subnetwork.network-with-private-secondary-ip-ranges().name())
+ *             .project(network_with_private_secondary_ip_ranges.project())
+ *             .region(network_with_private_secondary_ip_ranges.region())
+ *             .subnetwork(network_with_private_secondary_ip_ranges.name())
  *             .role(&#34;roles/compute.networkUser&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .condition(SubnetworkIAMMemberConditionArgs.builder()

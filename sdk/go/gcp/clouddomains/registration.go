@@ -27,57 +27,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := clouddomains.NewRegistration(ctx, "myRegistration", &clouddomains.RegistrationArgs{
-//				ContactSettings: &clouddomains.RegistrationContactSettingsArgs{
-//					AdminContact: &clouddomains.RegistrationContactSettingsAdminContactArgs{
-//						Email:       pulumi.String("user@example.com"),
-//						PhoneNumber: pulumi.String("+12345000000"),
-//						PostalAddress: &clouddomains.RegistrationContactSettingsAdminContactPostalAddressArgs{
-//							AddressLines: pulumi.StringArray{
-//								pulumi.String("1234 Example street"),
-//							},
-//							AdministrativeArea: pulumi.String("CA"),
-//							Locality:           pulumi.String("Example City"),
-//							PostalCode:         pulumi.String("95050"),
-//							Recipients: pulumi.StringArray{
-//								pulumi.String("example recipient"),
-//							},
-//							RegionCode: pulumi.String("US"),
-//						},
-//					},
-//					Privacy: pulumi.String("REDACTED_CONTACT_DATA"),
-//					RegistrantContact: &clouddomains.RegistrationContactSettingsRegistrantContactArgs{
-//						Email:       pulumi.String("user@example.com"),
-//						PhoneNumber: pulumi.String("+12345000000"),
-//						PostalAddress: &clouddomains.RegistrationContactSettingsRegistrantContactPostalAddressArgs{
-//							AddressLines: pulumi.StringArray{
-//								pulumi.String("1234 Example street"),
-//							},
-//							AdministrativeArea: pulumi.String("CA"),
-//							Locality:           pulumi.String("Example City"),
-//							PostalCode:         pulumi.String("95050"),
-//							Recipients: pulumi.StringArray{
-//								pulumi.String("example recipient"),
-//							},
-//							RegionCode: pulumi.String("US"),
-//						},
-//					},
-//					TechnicalContact: &clouddomains.RegistrationContactSettingsTechnicalContactArgs{
-//						Email:       pulumi.String("user@example.com"),
-//						PhoneNumber: pulumi.String("+12345000000"),
-//						PostalAddress: &clouddomains.RegistrationContactSettingsTechnicalContactPostalAddressArgs{
-//							AddressLines: pulumi.StringArray{
-//								pulumi.String("1234 Example street"),
-//							},
-//							AdministrativeArea: pulumi.String("CA"),
-//							Locality:           pulumi.String("Example City"),
-//							PostalCode:         pulumi.String("95050"),
-//							Recipients: pulumi.StringArray{
-//								pulumi.String("example recipient"),
-//							},
-//							RegionCode: pulumi.String("US"),
-//						},
-//					},
+//			_, err := clouddomains.NewRegistration(ctx, "my_registration", &clouddomains.RegistrationArgs{
+//				DomainName: pulumi.String("example-domain.com"),
+//				Location:   pulumi.String("global"),
+//				Labels: pulumi.StringMap{
+//					"labelkey": pulumi.String("labelvalue"),
+//				},
+//				YearlyPrice: &clouddomains.RegistrationYearlyPriceArgs{
+//					CurrencyCode: pulumi.String("USD"),
+//					Units:        pulumi.String("12"),
 //				},
 //				DnsSettings: &clouddomains.RegistrationDnsSettingsArgs{
 //					CustomDns: &clouddomains.RegistrationDnsSettingsCustomDnsArgs{
@@ -89,14 +47,56 @@ import (
 //						},
 //					},
 //				},
-//				DomainName: pulumi.String("example-domain.com"),
-//				Labels: pulumi.StringMap{
-//					"labelkey": pulumi.String("labelvalue"),
-//				},
-//				Location: pulumi.String("global"),
-//				YearlyPrice: &clouddomains.RegistrationYearlyPriceArgs{
-//					CurrencyCode: pulumi.String("USD"),
-//					Units:        pulumi.String("12"),
+//				ContactSettings: &clouddomains.RegistrationContactSettingsArgs{
+//					Privacy: pulumi.String("REDACTED_CONTACT_DATA"),
+//					RegistrantContact: &clouddomains.RegistrationContactSettingsRegistrantContactArgs{
+//						PhoneNumber: pulumi.String("+12345000000"),
+//						Email:       pulumi.String("user@example.com"),
+//						PostalAddress: &clouddomains.RegistrationContactSettingsRegistrantContactPostalAddressArgs{
+//							RegionCode:         pulumi.String("US"),
+//							PostalCode:         pulumi.String("95050"),
+//							AdministrativeArea: pulumi.String("CA"),
+//							Locality:           pulumi.String("Example City"),
+//							AddressLines: pulumi.StringArray{
+//								pulumi.String("1234 Example street"),
+//							},
+//							Recipients: pulumi.StringArray{
+//								pulumi.String("example recipient"),
+//							},
+//						},
+//					},
+//					AdminContact: &clouddomains.RegistrationContactSettingsAdminContactArgs{
+//						PhoneNumber: pulumi.String("+12345000000"),
+//						Email:       pulumi.String("user@example.com"),
+//						PostalAddress: &clouddomains.RegistrationContactSettingsAdminContactPostalAddressArgs{
+//							RegionCode:         pulumi.String("US"),
+//							PostalCode:         pulumi.String("95050"),
+//							AdministrativeArea: pulumi.String("CA"),
+//							Locality:           pulumi.String("Example City"),
+//							AddressLines: pulumi.StringArray{
+//								pulumi.String("1234 Example street"),
+//							},
+//							Recipients: pulumi.StringArray{
+//								pulumi.String("example recipient"),
+//							},
+//						},
+//					},
+//					TechnicalContact: &clouddomains.RegistrationContactSettingsTechnicalContactArgs{
+//						PhoneNumber: pulumi.String("+12345000000"),
+//						Email:       pulumi.String("user@example.com"),
+//						PostalAddress: &clouddomains.RegistrationContactSettingsTechnicalContactPostalAddressArgs{
+//							RegionCode:         pulumi.String("US"),
+//							PostalCode:         pulumi.String("95050"),
+//							AdministrativeArea: pulumi.String("CA"),
+//							Locality:           pulumi.String("Example City"),
+//							AddressLines: pulumi.StringArray{
+//								pulumi.String("1234 Example street"),
+//							},
+//							Recipients: pulumi.StringArray{
+//								pulumi.String("example recipient"),
+//							},
+//						},
+//					},
 //				},
 //			})
 //			if err != nil {

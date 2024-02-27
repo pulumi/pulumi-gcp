@@ -314,7 +314,7 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tenant = gcp.identityplatform.Tenant("tenant", display_name="tenant")
-        idp_config = gcp.identityplatform.TenantDefaultSupportedIdpConfig("idpConfig",
+        idp_config = gcp.identityplatform.TenantDefaultSupportedIdpConfig("idp_config",
             enabled=True,
             tenant=tenant.name,
             idp_id="playgames.google.com",
@@ -390,7 +390,7 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tenant = gcp.identityplatform.Tenant("tenant", display_name="tenant")
-        idp_config = gcp.identityplatform.TenantDefaultSupportedIdpConfig("idpConfig",
+        idp_config = gcp.identityplatform.TenantDefaultSupportedIdpConfig("idp_config",
             enabled=True,
             tenant=tenant.name,
             idp_id="playgames.google.com",

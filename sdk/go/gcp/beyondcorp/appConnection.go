@@ -38,14 +38,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			serviceAccount, err := serviceaccount.NewAccount(ctx, "serviceAccount", &serviceaccount.AccountArgs{
+//			serviceAccount, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("my-account"),
 //				DisplayName: pulumi.String("Test Service Account"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			appConnector, err := beyondcorp.NewAppConnector(ctx, "appConnector", &beyondcorp.AppConnectorArgs{
+//			appConnector, err := beyondcorp.NewAppConnector(ctx, "app_connector", &beyondcorp.AppConnectorArgs{
+//				Name: pulumi.String("my-app-connector"),
 //				PrincipalInfo: &beyondcorp.AppConnectorPrincipalInfoArgs{
 //					ServiceAccount: &beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs{
 //						Email: serviceAccount.Email,
@@ -55,7 +56,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = beyondcorp.NewAppConnection(ctx, "appConnection", &beyondcorp.AppConnectionArgs{
+//			_, err = beyondcorp.NewAppConnection(ctx, "app_connection", &beyondcorp.AppConnectionArgs{
+//				Name: pulumi.String("my-app-connection"),
 //				Type: pulumi.String("TCP_PROXY"),
 //				ApplicationEndpoint: &beyondcorp.AppConnectionApplicationEndpointArgs{
 //					Host: pulumi.String("foo-host"),
@@ -88,21 +90,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			serviceAccount, err := serviceaccount.NewAccount(ctx, "serviceAccount", &serviceaccount.AccountArgs{
+//			serviceAccount, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("my-account"),
 //				DisplayName: pulumi.String("Test Service Account"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			appGateway, err := beyondcorp.NewAppGateway(ctx, "appGateway", &beyondcorp.AppGatewayArgs{
+//			appGateway, err := beyondcorp.NewAppGateway(ctx, "app_gateway", &beyondcorp.AppGatewayArgs{
+//				Name:     pulumi.String("my-app-gateway"),
 //				Type:     pulumi.String("TCP_PROXY"),
 //				HostType: pulumi.String("GCP_REGIONAL_MIG"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			appConnector, err := beyondcorp.NewAppConnector(ctx, "appConnector", &beyondcorp.AppConnectorArgs{
+//			appConnector, err := beyondcorp.NewAppConnector(ctx, "app_connector", &beyondcorp.AppConnectorArgs{
+//				Name: pulumi.String("my-app-connector"),
 //				PrincipalInfo: &beyondcorp.AppConnectorPrincipalInfoArgs{
 //					ServiceAccount: &beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs{
 //						Email: serviceAccount.Email,
@@ -112,7 +116,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = beyondcorp.NewAppConnection(ctx, "appConnection", &beyondcorp.AppConnectionArgs{
+//			_, err = beyondcorp.NewAppConnection(ctx, "app_connection", &beyondcorp.AppConnectionArgs{
+//				Name:        pulumi.String("my-app-connection"),
 //				Type:        pulumi.String("TCP_PROXY"),
 //				DisplayName: pulumi.String("some display name"),
 //				ApplicationEndpoint: &beyondcorp.AppConnectionApplicationEndpointArgs{

@@ -23,20 +23,21 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const primary = new gcp.container.Cluster("primary", {
- *     deletionProtection: false,
- *     initialNodeCount: 1,
+ *     name: "basic-cluster",
  *     location: "us-central1-a",
+ *     initialNodeCount: 1,
+ *     deletionProtection: false,
  *     network: "default",
  *     subnetwork: "default",
  * });
  * const membership = new gcp.gkehub.Membership("membership", {
+ *     membershipId: "basic",
+ *     location: "us-west1",
  *     endpoint: {
  *         gkeCluster: {
  *             resourceLink: pulumi.interpolate`//container.googleapis.com/${primary.id}`,
  *         },
  *     },
- *     location: "us-west1",
- *     membershipId: "basic",
  * });
  * ```
  * ### Gkehub Membership Basic
@@ -46,13 +47,15 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const primary = new gcp.container.Cluster("primary", {
- *     deletionProtection: true,
- *     initialNodeCount: 1,
+ *     name: "basic-cluster",
  *     location: "us-central1-a",
+ *     initialNodeCount: 1,
+ *     deletionProtection: true,
  *     network: "default",
  *     subnetwork: "default",
  * });
  * const membership = new gcp.gkehub.Membership("membership", {
+ *     membershipId: "basic",
  *     endpoint: {
  *         gkeCluster: {
  *             resourceLink: pulumi.interpolate`//container.googleapis.com/${primary.id}`,
@@ -61,7 +64,6 @@ import * as utilities from "../utilities";
  *     labels: {
  *         env: "test",
  *     },
- *     membershipId: "basic",
  * });
  * ```
  * ### Gkehub Membership Issuer
@@ -71,6 +73,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const primary = new gcp.container.Cluster("primary", {
+ *     name: "basic-cluster",
  *     location: "us-central1-a",
  *     initialNodeCount: 1,
  *     workloadIdentityConfig: {

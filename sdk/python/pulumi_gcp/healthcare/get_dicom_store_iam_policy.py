@@ -88,7 +88,7 @@ def get_dicom_store_iam_policy(dicom_store_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.healthcare.get_dicom_store_iam_policy(dicom_store_id=google_healthcare_dicom_store["dicom_store"]["id"])
+    foo = gcp.healthcare.get_dicom_store_iam_policy(dicom_store_id=dicom_store["id"])
     ```
 
 
@@ -121,7 +121,7 @@ def get_dicom_store_iam_policy_output(dicom_store_id: Optional[pulumi.Input[str]
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.healthcare.get_dicom_store_iam_policy(dicom_store_id=google_healthcare_dicom_store["dicom_store"]["id"])
+    foo = gcp.healthcare.get_dicom_store_iam_policy(dicom_store_id=dicom_store["id"])
     ```
 
 

@@ -20,14 +20,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const exampleNetwork = new gcp.edgenetwork.Network("exampleNetwork", {
+ * const exampleNetwork = new gcp.edgenetwork.Network("example_network", {
  *     networkId: "example-network",
  *     location: "us-west1",
  *     zone: "",
  *     description: "Example network.",
  *     mtu: 9000,
  * });
- * const exampleSubnet = new gcp.edgenetwork.Subnet("exampleSubnet", {
+ * const exampleSubnet = new gcp.edgenetwork.Subnet("example_subnet", {
  *     subnetId: "example-subnet",
  *     location: "us-west1",
  *     zone: "",
@@ -45,14 +45,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const exampleNetwork = new gcp.edgenetwork.Network("exampleNetwork", {
+ * const exampleNetwork = new gcp.edgenetwork.Network("example_network", {
  *     networkId: "example-network",
  *     location: "us-west1",
  *     zone: "",
  *     description: "Example network.",
  *     mtu: 9000,
  * });
- * const exampleSubnetWithVlanId = new gcp.edgenetwork.Subnet("exampleSubnetWithVlanId", {
+ * const exampleSubnetWithVlanId = new gcp.edgenetwork.Subnet("example_subnet_with_vlan_id", {
  *     subnetId: "example-subnet-with-vlan-id",
  *     location: "us-west1",
  *     zone: "",

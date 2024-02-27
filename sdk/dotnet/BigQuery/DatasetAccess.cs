@@ -55,15 +55,15 @@ namespace Pulumi.Gcp.BigQuery
     ///         DatasetId = "example_dataset",
     ///     });
     /// 
-    ///     var publicDataset = new Gcp.BigQuery.Dataset("publicDataset", new()
+    ///     var @public = new Gcp.BigQuery.Dataset("public", new()
     ///     {
     ///         DatasetId = "example_dataset2",
     ///     });
     /// 
-    ///     var publicTable = new Gcp.BigQuery.Table("publicTable", new()
+    ///     var publicTable = new Gcp.BigQuery.Table("public", new()
     ///     {
     ///         DeletionProtection = false,
-    ///         DatasetId = publicDataset.DatasetId,
+    ///         DatasetId = @public.DatasetId,
     ///         TableId = "example_table",
     ///         View = new Gcp.BigQuery.Inputs.TableViewArgs
     ///         {
@@ -78,7 +78,7 @@ namespace Pulumi.Gcp.BigQuery
     ///         View = new Gcp.BigQuery.Inputs.DatasetAccessViewArgs
     ///         {
     ///             ProjectId = publicTable.Project,
-    ///             DatasetId = publicDataset.DatasetId,
+    ///             DatasetId = @public.DatasetId,
     ///             TableId = publicTable.TableId,
     ///         },
     ///     });
@@ -135,15 +135,15 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var publicDataset = new Gcp.BigQuery.Dataset("publicDataset", new()
+    ///     var @public = new Gcp.BigQuery.Dataset("public", new()
     ///     {
     ///         DatasetId = "public_dataset",
     ///         Description = "This dataset is public",
     ///     });
     /// 
-    ///     var publicRoutine = new Gcp.BigQuery.Routine("publicRoutine", new()
+    ///     var publicRoutine = new Gcp.BigQuery.Routine("public", new()
     ///     {
-    ///         DatasetId = publicDataset.DatasetId,
+    ///         DatasetId = @public.DatasetId,
     ///         RoutineId = "public_routine",
     ///         RoutineType = "TABLE_VALUED_FUNCTION",
     ///         Language = "SQL",
@@ -183,7 +183,7 @@ namespace Pulumi.Gcp.BigQuery
     ///         Description = "This dataset is private",
     ///     });
     /// 
-    ///     var authorizedRoutine = new Gcp.BigQuery.DatasetAccess("authorizedRoutine", new()
+    ///     var authorizedRoutine = new Gcp.BigQuery.DatasetAccess("authorized_routine", new()
     ///     {
     ///         DatasetId = @private.DatasetId,
     ///         Routine = new Gcp.BigQuery.Inputs.DatasetAccessRoutineArgs

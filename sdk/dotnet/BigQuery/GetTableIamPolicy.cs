@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.BigQuery
         /// {
         ///     var policy = Gcp.BigQuery.GetTableIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_bigquery_table.Test.Project,
-        ///         DatasetId = google_bigquery_table.Test.Dataset_id,
-        ///         TableId = google_bigquery_table.Test.Table_id,
+        ///         Project = test.Project,
+        ///         DatasetId = test.DatasetId,
+        ///         TableId = test.TableId,
         ///     });
         /// 
         /// });
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.BigQuery
         /// {
         ///     var policy = Gcp.BigQuery.GetTableIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_bigquery_table.Test.Project,
-        ///         DatasetId = google_bigquery_table.Test.Dataset_id,
-        ///         TableId = google_bigquery_table.Test.Table_id,
+        ///         Project = test.Project,
+        ///         DatasetId = test.DatasetId,
+        ///         TableId = test.TableId,
         ///     });
         /// 
         /// });

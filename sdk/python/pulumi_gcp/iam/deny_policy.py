@@ -195,6 +195,52 @@ class DenyPolicy(pulumi.CustomResource):
             * [Permissions supported in deny policies](https://cloud.google.com/iam/docs/deny-permissions-support)
 
         ## Example Usage
+        ### Iam Deny Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        project = gcp.organizations.Project("project",
+            project_id="my-project",
+            name="my-project",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000")
+        test_account = gcp.serviceaccount.Account("test-account",
+            account_id="svc-acc",
+            display_name="Test Service Account",
+            project=project.project_id)
+        example = gcp.iam.DenyPolicy("example",
+            parent=std.urlencode_output(input=project.project_id.apply(lambda project_id: f"cloudresourcemanager.googleapis.com/projects/{project_id}")).apply(lambda invoke: invoke.result),
+            name="my-deny-policy",
+            display_name="A deny rule",
+            rules=[
+                gcp.iam.DenyPolicyRuleArgs(
+                    description="First rule",
+                    deny_rule=gcp.iam.DenyPolicyRuleDenyRuleArgs(
+                        denied_principals=["principalSet://goog/public:all"],
+                        denial_condition=gcp.iam.DenyPolicyRuleDenyRuleDenialConditionArgs(
+                            title="Some expr",
+                            expression="!resource.matchTag('12345678/env', 'test')",
+                        ),
+                        denied_permissions=["cloudresourcemanager.googleapis.com/projects.update"],
+                    ),
+                ),
+                gcp.iam.DenyPolicyRuleArgs(
+                    description="Second rule",
+                    deny_rule=gcp.iam.DenyPolicyRuleDenyRuleArgs(
+                        denied_principals=["principalSet://goog/public:all"],
+                        denial_condition=gcp.iam.DenyPolicyRuleDenyRuleDenialConditionArgs(
+                            title="Some expr",
+                            expression="!resource.matchTag('12345678/env', 'test')",
+                        ),
+                        denied_permissions=["cloudresourcemanager.googleapis.com/projects.update"],
+                        exception_principals=[test_account.email.apply(lambda email: f"principal://iam.googleapis.com/projects/-/serviceAccounts/{email}")],
+                    ),
+                ),
+            ])
+        ```
 
         ## Import
 
@@ -232,6 +278,52 @@ class DenyPolicy(pulumi.CustomResource):
             * [Permissions supported in deny policies](https://cloud.google.com/iam/docs/deny-permissions-support)
 
         ## Example Usage
+        ### Iam Deny Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        project = gcp.organizations.Project("project",
+            project_id="my-project",
+            name="my-project",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000")
+        test_account = gcp.serviceaccount.Account("test-account",
+            account_id="svc-acc",
+            display_name="Test Service Account",
+            project=project.project_id)
+        example = gcp.iam.DenyPolicy("example",
+            parent=std.urlencode_output(input=project.project_id.apply(lambda project_id: f"cloudresourcemanager.googleapis.com/projects/{project_id}")).apply(lambda invoke: invoke.result),
+            name="my-deny-policy",
+            display_name="A deny rule",
+            rules=[
+                gcp.iam.DenyPolicyRuleArgs(
+                    description="First rule",
+                    deny_rule=gcp.iam.DenyPolicyRuleDenyRuleArgs(
+                        denied_principals=["principalSet://goog/public:all"],
+                        denial_condition=gcp.iam.DenyPolicyRuleDenyRuleDenialConditionArgs(
+                            title="Some expr",
+                            expression="!resource.matchTag('12345678/env', 'test')",
+                        ),
+                        denied_permissions=["cloudresourcemanager.googleapis.com/projects.update"],
+                    ),
+                ),
+                gcp.iam.DenyPolicyRuleArgs(
+                    description="Second rule",
+                    deny_rule=gcp.iam.DenyPolicyRuleDenyRuleArgs(
+                        denied_principals=["principalSet://goog/public:all"],
+                        denial_condition=gcp.iam.DenyPolicyRuleDenyRuleDenialConditionArgs(
+                            title="Some expr",
+                            expression="!resource.matchTag('12345678/env', 'test')",
+                        ),
+                        denied_permissions=["cloudresourcemanager.googleapis.com/projects.update"],
+                        exception_principals=[test_account.email.apply(lambda email: f"principal://iam.googleapis.com/projects/-/serviceAccounts/{email}")],
+                    ),
+                ),
+            ])
+        ```
 
         ## Import
 

@@ -21,22 +21,17 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultBucket = new Gcp.Storage.Bucket("defaultBucket", new()
+    ///     var @default = new Gcp.Storage.Bucket("default", new()
     ///     {
+    ///         Name = "test_bucket",
     ///         Location = "US",
     ///         UniformBucketLevelAccess = true,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultStorageBucket = new Gcp.Firebase.StorageBucket("defaultStorageBucket", new()
+    ///     var defaultStorageBucket = new Gcp.Firebase.StorageBucket("default", new()
     ///     {
     ///         Project = "my-project-name",
-    ///         BucketId = defaultBucket.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         BucketId = @default.Id,
     ///     });
     /// 
     /// });

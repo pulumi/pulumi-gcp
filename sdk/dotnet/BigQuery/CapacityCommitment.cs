@@ -34,10 +34,10 @@ namespace Pulumi.Gcp.BigQuery
     ///     var example = new Gcp.BigQuery.CapacityCommitment("example", new()
     ///     {
     ///         CapacityCommitmentId = "example-commitment",
-    ///         Edition = "ENTERPRISE",
     ///         Location = "us-west2",
-    ///         Plan = "FLEX_FLAT_RATE",
     ///         SlotCount = 100,
+    ///         Plan = "FLEX_FLAT_RATE",
+    ///         Edition = "ENTERPRISE",
     ///     });
     /// 
     /// });

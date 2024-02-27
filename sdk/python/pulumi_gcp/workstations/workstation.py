@@ -502,16 +502,17 @@ class Workstation(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+        default = gcp.compute.Network("default",
+            name="workstation-cluster",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstation-cluster",
             ip_cidr_range="10.0.0.0/24",
             region="us-central1",
-            network=default_network.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
+            network=default.name)
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("default",
             workstation_cluster_id="workstation-cluster",
-            network=default_network.id,
+            network=default.id,
             subnetwork=default_subnetwork.id,
             location="us-central1",
             labels={
@@ -519,9 +520,8 @@ class Workstation(pulumi.CustomResource):
             },
             annotations={
                 "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_config = gcp.workstations.WorkstationConfig("defaultWorkstationConfig",
+            })
+        default_workstation_config = gcp.workstations.WorkstationConfig("default",
             workstation_config_id="workstation-config",
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
@@ -531,9 +531,8 @@ class Workstation(pulumi.CustomResource):
                     boot_disk_size_gb=35,
                     disable_public_ip_addresses=True,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation = gcp.workstations.Workstation("defaultWorkstation",
+            ))
+        default_workstation = gcp.workstations.Workstation("default",
             workstation_id="work-station",
             workstation_config_id=default_workstation_config.workstation_config_id,
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
@@ -546,8 +545,7 @@ class Workstation(pulumi.CustomResource):
             },
             annotations={
                 "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
 
         ## Import
@@ -608,16 +606,17 @@ class Workstation(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+        default = gcp.compute.Network("default",
+            name="workstation-cluster",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstation-cluster",
             ip_cidr_range="10.0.0.0/24",
             region="us-central1",
-            network=default_network.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
+            network=default.name)
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("default",
             workstation_cluster_id="workstation-cluster",
-            network=default_network.id,
+            network=default.id,
             subnetwork=default_subnetwork.id,
             location="us-central1",
             labels={
@@ -625,9 +624,8 @@ class Workstation(pulumi.CustomResource):
             },
             annotations={
                 "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_config = gcp.workstations.WorkstationConfig("defaultWorkstationConfig",
+            })
+        default_workstation_config = gcp.workstations.WorkstationConfig("default",
             workstation_config_id="workstation-config",
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
@@ -637,9 +635,8 @@ class Workstation(pulumi.CustomResource):
                     boot_disk_size_gb=35,
                     disable_public_ip_addresses=True,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation = gcp.workstations.Workstation("defaultWorkstation",
+            ))
+        default_workstation = gcp.workstations.Workstation("default",
             workstation_id="work-station",
             workstation_config_id=default_workstation_config.workstation_config_id,
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
@@ -652,8 +649,7 @@ class Workstation(pulumi.CustomResource):
             },
             annotations={
                 "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
 
         ## Import

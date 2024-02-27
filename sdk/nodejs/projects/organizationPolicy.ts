@@ -25,12 +25,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const serialPortPolicy = new gcp.projects.OrganizationPolicy("serialPortPolicy", {
+ * const serialPortPolicy = new gcp.projects.OrganizationPolicy("serial_port_policy", {
+ *     project: "your-project-id",
+ *     constraint: "compute.disableSerialPortAccess",
  *     booleanPolicy: {
  *         enforced: true,
  *     },
- *     constraint: "compute.disableSerialPortAccess",
- *     project: "your-project-id",
  * });
  * ```
  *
@@ -40,14 +40,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const servicesPolicy = new gcp.projects.OrganizationPolicy("servicesPolicy", {
+ * const servicesPolicy = new gcp.projects.OrganizationPolicy("services_policy", {
+ *     project: "your-project-id",
  *     constraint: "serviceuser.services",
  *     listPolicy: {
  *         allow: {
  *             all: true,
  *         },
  *     },
- *     project: "your-project-id",
  * });
  * ```
  *
@@ -57,15 +57,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const servicesPolicy = new gcp.projects.OrganizationPolicy("servicesPolicy", {
+ * const servicesPolicy = new gcp.projects.OrganizationPolicy("services_policy", {
+ *     project: "your-project-id",
  *     constraint: "serviceuser.services",
  *     listPolicy: {
+ *         suggestedValue: "compute.googleapis.com",
  *         deny: {
  *             values: ["cloudresourcemanager.googleapis.com"],
  *         },
- *         suggestedValue: "compute.googleapis.com",
  *     },
- *     project: "your-project-id",
  * });
  * ```
  *
@@ -75,9 +75,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const servicesPolicy = new gcp.projects.OrganizationPolicy("servicesPolicy", {
- *     constraint: "serviceuser.services",
+ * const servicesPolicy = new gcp.projects.OrganizationPolicy("services_policy", {
  *     project: "your-project-id",
+ *     constraint: "serviceuser.services",
  *     restorePolicy: {
  *         "default": true,
  *     },

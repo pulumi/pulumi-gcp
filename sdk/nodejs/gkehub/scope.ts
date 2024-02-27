@@ -23,12 +23,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const scope = new gcp.gkehub.Scope("scope", {
+ *     scopeId: "my-scope",
  *     labels: {
- *         keya: "valuea",
  *         keyb: "valueb",
+ *         keya: "valuea",
  *         keyc: "valuec",
  *     },
- *     scopeId: "my-scope",
  * });
  * ```
  *

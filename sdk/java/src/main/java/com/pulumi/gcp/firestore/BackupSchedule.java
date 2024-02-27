@@ -60,6 +60,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
+ *             .name(&#34;database-id&#34;)
  *             .locationId(&#34;nam5&#34;)
  *             .type(&#34;FIRESTORE_NATIVE&#34;)
  *             .deleteProtectionState(&#34;DELETE_PROTECTION_ENABLED&#34;)
@@ -103,6 +104,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
+ *             .name(&#34;database-id&#34;)
  *             .locationId(&#34;nam5&#34;)
  *             .type(&#34;FIRESTORE_NATIVE&#34;)
  *             .deleteProtectionState(&#34;DELETE_PROTECTION_ENABLED&#34;)

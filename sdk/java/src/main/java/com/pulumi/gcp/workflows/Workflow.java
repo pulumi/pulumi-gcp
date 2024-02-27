@@ -26,6 +26,76 @@ import javax.annotation.Nullable;
  *     * [Managing Workflows](https://cloud.google.com/workflows/docs/creating-updating-workflow)
  * 
  * ## Example Usage
+ * ### Workflow Basic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.workflows.Workflow;
+ * import com.pulumi.gcp.workflows.WorkflowArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var testAccount = new Account(&#34;testAccount&#34;, AccountArgs.builder()        
+ *             .accountId(&#34;my-account&#34;)
+ *             .displayName(&#34;Test Service Account&#34;)
+ *             .build());
+ * 
+ *         var example = new Workflow(&#34;example&#34;, WorkflowArgs.builder()        
+ *             .name(&#34;workflow&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .description(&#34;Magic&#34;)
+ *             .serviceAccount(testAccount.id())
+ *             .callLogLevel(&#34;LOG_ERRORS_ONLY&#34;)
+ *             .labels(Map.of(&#34;env&#34;, &#34;test&#34;))
+ *             .userEnvVars(Map.of(&#34;url&#34;, &#34;https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam&#34;))
+ *             .sourceContents(&#34;&#34;&#34;
+ * # This is a sample workflow. You can replace it with your source code.
+ * #
+ * # This workflow does the following:
+ * # - reads current time and date information from an external API and stores
+ * #   the response in currentTime variable
+ * # - retrieves a list of Wikipedia articles related to the day of the week
+ * #   from currentTime
+ * # - returns the list of articles as an output of the workflow
+ * #
+ * # Note: In Terraform you need to escape the $$ or it will cause errors.
+ * 
+ * - getCurrentTime:
+ *     call: http.get
+ *     args:
+ *         url: ${sys.get_env(&#34;url&#34;)}
+ *     result: currentTime
+ * - readWikipedia:
+ *     call: http.get
+ *     args:
+ *         url: https://en.wikipedia.org/w/api.php
+ *         query:
+ *             action: opensearch
+ *             search: ${currentTime.body.dayOfWeek}
+ *     result: wikiResult
+ * - returnOutput:
+ *     return: ${wikiResult.body[1]}
+ *             &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

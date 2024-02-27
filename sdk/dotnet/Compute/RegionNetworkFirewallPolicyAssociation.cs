@@ -22,17 +22,22 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var basicRegionalNetworkFirewallPolicy = new Gcp.Compute.RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy", new()
+    ///     var basicRegionalNetworkFirewallPolicy = new Gcp.Compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy", new()
     ///     {
+    ///         Name = "policy",
     ///         Project = "my-project-name",
     ///         Description = "Sample global network firewall policy",
     ///         Region = "us-west1",
     ///     });
     /// 
-    ///     var basicNetwork = new Gcp.Compute.Network("basicNetwork");
+    ///     var basicNetwork = new Gcp.Compute.Network("basic_network", new()
+    ///     {
+    ///         Name = "network",
+    ///     });
     /// 
     ///     var primary = new Gcp.Compute.RegionNetworkFirewallPolicyAssociation("primary", new()
     ///     {
+    ///         Name = "association",
     ///         AttachmentTarget = basicNetwork.Id,
     ///         FirewallPolicy = basicRegionalNetworkFirewallPolicy.Name,
     ///         Project = "my-project-name",

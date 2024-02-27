@@ -13,6 +13,232 @@ import (
 )
 
 // ## Example Usage
+// ### Network Services Tls Route Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+//				Name:             pulumi.String("backend-service-health-check"),
+//				RequestPath:      pulumi.String("/"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:         pulumi.String("my-backend-service"),
+//				HealthChecks: defaultHttpHealthCheck.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkservices.NewTlsRoute(ctx, "default", &networkservices.TlsRouteArgs{
+//				Name:        pulumi.String("my-tls-route"),
+//				Description: pulumi.String("my description"),
+//				Rules: networkservices.TlsRouteRuleArray{
+//					&networkservices.TlsRouteRuleArgs{
+//						Matches: networkservices.TlsRouteRuleMatchArray{
+//							&networkservices.TlsRouteRuleMatchArgs{
+//								SniHosts: pulumi.StringArray{
+//									pulumi.String("example.com"),
+//								},
+//								Alpns: pulumi.StringArray{
+//									pulumi.String("http/1.1"),
+//								},
+//							},
+//						},
+//						Action: &networkservices.TlsRouteRuleActionArgs{
+//							Destinations: networkservices.TlsRouteRuleActionDestinationArray{
+//								&networkservices.TlsRouteRuleActionDestinationArgs{
+//									ServiceName: _default.ID(),
+//									Weight:      pulumi.Int(1),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Network Services Tls Route Mesh Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+//				Name:             pulumi.String("backend-service-health-check"),
+//				RequestPath:      pulumi.String("/"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:         pulumi.String("my-backend-service"),
+//				HealthChecks: defaultHttpHealthCheck.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultMesh, err := networkservices.NewMesh(ctx, "default", &networkservices.MeshArgs{
+//				Name: pulumi.String("my-tls-route"),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Description: pulumi.String("my description"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkservices.NewTlsRoute(ctx, "default", &networkservices.TlsRouteArgs{
+//				Name:        pulumi.String("my-tls-route"),
+//				Description: pulumi.String("my description"),
+//				Meshes: pulumi.StringArray{
+//					defaultMesh.ID(),
+//				},
+//				Rules: networkservices.TlsRouteRuleArray{
+//					&networkservices.TlsRouteRuleArgs{
+//						Matches: networkservices.TlsRouteRuleMatchArray{
+//							&networkservices.TlsRouteRuleMatchArgs{
+//								SniHosts: pulumi.StringArray{
+//									pulumi.String("example.com"),
+//								},
+//								Alpns: pulumi.StringArray{
+//									pulumi.String("http/1.1"),
+//								},
+//							},
+//						},
+//						Action: &networkservices.TlsRouteRuleActionArgs{
+//							Destinations: networkservices.TlsRouteRuleActionDestinationArray{
+//								&networkservices.TlsRouteRuleActionDestinationArgs{
+//									ServiceName: _default.ID(),
+//									Weight:      pulumi.Int(1),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Network Services Tls Route Gateway Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+//				Name:             pulumi.String("backend-service-health-check"),
+//				RequestPath:      pulumi.String("/"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:         pulumi.String("my-backend-service"),
+//				HealthChecks: defaultHttpHealthCheck.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultGateway, err := networkservices.NewGateway(ctx, "default", &networkservices.GatewayArgs{
+//				Name: pulumi.String("my-tls-route"),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Description: pulumi.String("my description"),
+//				Scope:       pulumi.String("my-scope"),
+//				Type:        pulumi.String("OPEN_MESH"),
+//				Ports: pulumi.IntArray{
+//					pulumi.Int(443),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkservices.NewTlsRoute(ctx, "default", &networkservices.TlsRouteArgs{
+//				Name:        pulumi.String("my-tls-route"),
+//				Description: pulumi.String("my description"),
+//				Gateways: pulumi.StringArray{
+//					defaultGateway.ID(),
+//				},
+//				Rules: networkservices.TlsRouteRuleArray{
+//					&networkservices.TlsRouteRuleArgs{
+//						Matches: networkservices.TlsRouteRuleMatchArray{
+//							&networkservices.TlsRouteRuleMatchArgs{
+//								SniHosts: pulumi.StringArray{
+//									pulumi.String("example.com"),
+//								},
+//								Alpns: pulumi.StringArray{
+//									pulumi.String("http/1.1"),
+//								},
+//							},
+//						},
+//						Action: &networkservices.TlsRouteRuleActionArgs{
+//							Destinations: networkservices.TlsRouteRuleActionDestinationArray{
+//								&networkservices.TlsRouteRuleActionDestinationArgs{
+//									ServiceName: _default.ID(),
+//									Weight:      pulumi.Int(1),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

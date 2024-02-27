@@ -39,8 +39,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.vertex.AiFeatureStore;
  * import com.pulumi.gcp.vertex.AiFeatureStoreArgs;
- * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEncryptionSpecArgs;
  * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreOnlineServingConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEncryptionSpecArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -55,15 +55,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var featurestore = new AiFeatureStore(&#34;featurestore&#34;, AiFeatureStoreArgs.builder()        
+ *             .name(&#34;terraform&#34;)
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .region(&#34;us-central1&#34;)
+ *             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
+ *                 .fixedNodeCount(2)
+ *                 .build())
  *             .encryptionSpec(AiFeatureStoreEncryptionSpecArgs.builder()
  *                 .kmsKeyName(&#34;kms-name&#34;)
  *                 .build())
  *             .forceDestroy(true)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
- *                 .fixedNodeCount(2)
- *                 .build())
- *             .region(&#34;us-central1&#34;)
  *             .build());
  * 
  *     }
@@ -80,7 +81,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.AiFeatureStoreArgs;
  * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreOnlineServingConfigArgs;
  * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEncryptionSpecArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -95,6 +95,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var featurestore = new AiFeatureStore(&#34;featurestore&#34;, AiFeatureStoreArgs.builder()        
+ *             .name(&#34;terraform2&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .region(&#34;us-central1&#34;)
  *             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
@@ -105,9 +106,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .onlineStorageTtlDays(30)
  *             .forceDestroy(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -121,9 +120,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.vertex.AiFeatureStore;
  * import com.pulumi.gcp.vertex.AiFeatureStoreArgs;
- * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEncryptionSpecArgs;
  * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreOnlineServingConfigArgs;
  * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreOnlineServingConfigScalingArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEncryptionSpecArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -138,18 +137,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var featurestore = new AiFeatureStore(&#34;featurestore&#34;, AiFeatureStoreArgs.builder()        
+ *             .name(&#34;terraform3&#34;)
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .region(&#34;us-central1&#34;)
+ *             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
+ *                 .scaling(AiFeatureStoreOnlineServingConfigScalingArgs.builder()
+ *                     .minNodeCount(2)
+ *                     .maxNodeCount(10)
+ *                     .build())
+ *                 .build())
  *             .encryptionSpec(AiFeatureStoreEncryptionSpecArgs.builder()
  *                 .kmsKeyName(&#34;kms-name&#34;)
  *                 .build())
  *             .forceDestroy(true)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
- *                 .scaling(AiFeatureStoreOnlineServingConfigScalingArgs.builder()
- *                     .maxNodeCount(10)
- *                     .minNodeCount(2)
- *                     .build())
- *                 .build())
- *             .region(&#34;us-central1&#34;)
  *             .build());
  * 
  *     }

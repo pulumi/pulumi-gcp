@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.endpoints.ServiceIamPolicy("policy", {
- *     serviceName: google_endpoints_service.endpoints_service.service_name,
+ *     serviceName: endpointsService.serviceName,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.endpoints.ServiceIamBinding("binding", {
- *     serviceName: google_endpoints_service.endpoints_service.service_name,
+ *     serviceName: endpointsService.serviceName,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
  * });
@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.endpoints.ServiceIamMember("member", {
- *     serviceName: google_endpoints_service.endpoints_service.service_name,
+ *     serviceName: endpointsService.serviceName,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
  * });

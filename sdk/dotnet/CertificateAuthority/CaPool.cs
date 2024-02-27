@@ -27,17 +27,198 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// {
     ///     var @default = new Gcp.CertificateAuthority.CaPool("default", new()
     ///     {
-    ///         Labels = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
+    ///         Name = "my-pool",
     ///         Location = "us-central1",
+    ///         Tier = "ENTERPRISE",
     ///         PublishingOptions = new Gcp.CertificateAuthority.Inputs.CaPoolPublishingOptionsArgs
     ///         {
     ///             PublishCaCert = true,
     ///             PublishCrl = true,
     ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Privateca Capool All Fields
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CertificateAuthority.CaPool("default", new()
+    ///     {
+    ///         Name = "my-pool",
+    ///         Location = "us-central1",
     ///         Tier = "ENTERPRISE",
+    ///         PublishingOptions = new Gcp.CertificateAuthority.Inputs.CaPoolPublishingOptionsArgs
+    ///         {
+    ///             PublishCaCert = false,
+    ///             PublishCrl = true,
+    ///             EncodingFormat = "PEM",
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         IssuancePolicy = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyArgs
+    ///         {
+    ///             AllowedKeyTypes = new[]
+    ///             {
+    ///                 new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyAllowedKeyTypeArgs
+    ///                 {
+    ///                     EllipticCurve = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs
+    ///                     {
+    ///                         SignatureAlgorithm = "ECDSA_P256",
+    ///                     },
+    ///                 },
+    ///                 new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyAllowedKeyTypeArgs
+    ///                 {
+    ///                     Rsa = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyAllowedKeyTypeRsaArgs
+    ///                     {
+    ///                         MinModulusSize = "5",
+    ///                         MaxModulusSize = "10",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             MaximumLifetime = "50000s",
+    ///             AllowedIssuanceModes = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyAllowedIssuanceModesArgs
+    ///             {
+    ///                 AllowCsrBasedIssuance = true,
+    ///                 AllowConfigBasedIssuance = true,
+    ///             },
+    ///             IdentityConstraints = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyIdentityConstraintsArgs
+    ///             {
+    ///                 AllowSubjectPassthrough = true,
+    ///                 AllowSubjectAltNamesPassthrough = true,
+    ///                 CelExpression = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs
+    ///                 {
+    ///                     Expression = "subject_alt_names.all(san, san.type == DNS || san.type == EMAIL )",
+    ///                     Title = "My title",
+    ///                 },
+    ///             },
+    ///             BaselineValues = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyBaselineValuesArgs
+    ///             {
+    ///                 AiaOcspServers = new[]
+    ///                 {
+    ///                     "example.com",
+    ///                 },
+    ///                 AdditionalExtensions = new[]
+    ///                 {
+    ///                     new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs
+    ///                     {
+    ///                         Critical = true,
+    ///                         Value = "asdf",
+    ///                         ObjectId = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgs
+    ///                         {
+    ///                             ObjectIdPaths = new[]
+    ///                             {
+    ///                                 1,
+    ///                                 7,
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 PolicyIds = new[]
+    ///                 {
+    ///                     new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyBaselineValuesPolicyIdArgs
+    ///                     {
+    ///                         ObjectIdPaths = new[]
+    ///                         {
+    ///                             1,
+    ///                             5,
+    ///                         },
+    ///                     },
+    ///                     new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyBaselineValuesPolicyIdArgs
+    ///                     {
+    ///                         ObjectIdPaths = new[]
+    ///                         {
+    ///                             1,
+    ///                             5,
+    ///                             7,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 CaOptions = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyBaselineValuesCaOptionsArgs
+    ///                 {
+    ///                     IsCa = true,
+    ///                     MaxIssuerPathLength = 10,
+    ///                 },
+    ///                 KeyUsage = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs
+    ///                 {
+    ///                     BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs
+    ///                     {
+    ///                         DigitalSignature = true,
+    ///                         ContentCommitment = true,
+    ///                         KeyEncipherment = false,
+    ///                         DataEncipherment = true,
+    ///                         KeyAgreement = true,
+    ///                         CertSign = false,
+    ///                         CrlSign = true,
+    ///                         DecipherOnly = true,
+    ///                     },
+    ///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs
+    ///                     {
+    ///                         ServerAuth = true,
+    ///                         ClientAuth = false,
+    ///                         EmailProtection = true,
+    ///                         CodeSigning = true,
+    ///                         TimeStamping = true,
+    ///                     },
+    ///                 },
+    ///                 NameConstraints = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs
+    ///                 {
+    ///                     Critical = true,
+    ///                     PermittedDnsNames = new[]
+    ///                     {
+    ///                         "*.example1.com",
+    ///                         "*.example2.com",
+    ///                     },
+    ///                     ExcludedDnsNames = new[]
+    ///                     {
+    ///                         "*.deny.example1.com",
+    ///                         "*.deny.example2.com",
+    ///                     },
+    ///                     PermittedIpRanges = new[]
+    ///                     {
+    ///                         "10.0.0.0/8",
+    ///                         "11.0.0.0/8",
+    ///                     },
+    ///                     ExcludedIpRanges = new[]
+    ///                     {
+    ///                         "10.1.1.0/24",
+    ///                         "11.1.1.0/24",
+    ///                     },
+    ///                     PermittedEmailAddresses = new[]
+    ///                     {
+    ///                         ".example1.com",
+    ///                         ".example2.com",
+    ///                     },
+    ///                     ExcludedEmailAddresses = new[]
+    ///                     {
+    ///                         ".deny.example1.com",
+    ///                         ".deny.example2.com",
+    ///                     },
+    ///                     PermittedUris = new[]
+    ///                     {
+    ///                         ".example1.com",
+    ///                         ".example2.com",
+    ///                     },
+    ///                     ExcludedUris = new[]
+    ///                     {
+    ///                         ".deny.example1.com",
+    ///                         ".deny.example2.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });

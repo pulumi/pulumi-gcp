@@ -314,10 +314,10 @@ class DatabaseIAMBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         database = gcp.spanner.DatabaseIAMBinding("database",
-            database="your-database-name",
             instance="your-instance-name",
-            members=["user:jane@example.com"],
-            role="roles/compute.networkUser")
+            database="your-database-name",
+            role="roles/compute.networkUser",
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_spanner\\_database\\_iam\\_member
@@ -327,10 +327,10 @@ class DatabaseIAMBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         database = gcp.spanner.DatabaseIAMMember("database",
-            database="your-database-name",
             instance="your-instance-name",
-            member="user:jane@example.com",
-            role="roles/compute.networkUser")
+            database="your-database-name",
+            role="roles/compute.networkUser",
+            member="user:jane@example.com")
         ```
 
         ## Import
@@ -421,10 +421,10 @@ class DatabaseIAMBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         database = gcp.spanner.DatabaseIAMBinding("database",
-            database="your-database-name",
             instance="your-instance-name",
-            members=["user:jane@example.com"],
-            role="roles/compute.networkUser")
+            database="your-database-name",
+            role="roles/compute.networkUser",
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_spanner\\_database\\_iam\\_member
@@ -434,10 +434,10 @@ class DatabaseIAMBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         database = gcp.spanner.DatabaseIAMMember("database",
-            database="your-database-name",
             instance="your-instance-name",
-            member="user:jane@example.com",
-            role="roles/compute.networkUser")
+            database="your-database-name",
+            role="roles/compute.networkUser",
+            member="user:jane@example.com")
         ```
 
         ## Import

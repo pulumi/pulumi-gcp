@@ -23,14 +23,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basicAgent = new gcp.diagflow.Agent("basicAgent", {
+ * const basicAgent = new gcp.diagflow.Agent("basic_agent", {
  *     displayName: "example_agent",
  *     defaultLanguageCode: "en",
  *     timeZone: "America/New_York",
  * });
- * const basicIntent = new gcp.diagflow.Intent("basicIntent", {displayName: "basic-intent"}, {
- *     dependsOn: [basicAgent],
- * });
+ * const basicIntent = new gcp.diagflow.Intent("basic_intent", {displayName: "basic-intent"});
  * ```
  * ### Dialogflow Intent Full
  *
@@ -38,26 +36,30 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const agentProjectProject = new gcp.organizations.Project("agentProjectProject", {orgId: "123456789"});
- * const agentProjectService = new gcp.projects.Service("agentProjectService", {
- *     project: agentProjectProject.projectId,
+ * const agentProject = new gcp.organizations.Project("agent_project", {
+ *     projectId: "my-project",
+ *     name: "my-project",
+ *     orgId: "123456789",
+ * });
+ * const agentProjectService = new gcp.projects.Service("agent_project", {
+ *     project: agentProject.projectId,
  *     service: "dialogflow.googleapis.com",
  *     disableDependentServices: false,
  * });
- * const dialogflowServiceAccount = new gcp.serviceaccount.Account("dialogflowServiceAccount", {accountId: "my-account"});
- * const agentCreate = new gcp.projects.IAMMember("agentCreate", {
+ * const dialogflowServiceAccount = new gcp.serviceaccount.Account("dialogflow_service_account", {accountId: "my-account"});
+ * const agentCreate = new gcp.projects.IAMMember("agent_create", {
  *     project: agentProjectService.project,
  *     role: "roles/dialogflow.admin",
  *     member: pulumi.interpolate`serviceAccount:${dialogflowServiceAccount.email}`,
  * });
- * const basicAgent = new gcp.diagflow.Agent("basicAgent", {
- *     project: agentProjectProject.projectId,
+ * const basicAgent = new gcp.diagflow.Agent("basic_agent", {
+ *     project: agentProject.projectId,
  *     displayName: "example_agent",
  *     defaultLanguageCode: "en",
  *     timeZone: "America/New_York",
  * });
- * const fullIntent = new gcp.diagflow.Intent("fullIntent", {
- *     project: agentProjectProject.projectId,
+ * const fullIntent = new gcp.diagflow.Intent("full_intent", {
+ *     project: agentProject.projectId,
  *     displayName: "full-intent",
  *     webhookState: "WEBHOOK_STATE_ENABLED",
  *     priority: 1,
@@ -65,14 +67,12 @@ import * as utilities from "../utilities";
  *     mlDisabled: true,
  *     action: "some_action",
  *     resetContexts: true,
- *     inputContextNames: [pulumi.interpolate`projects/${agentProjectProject.projectId}/agent/sessions/-/contexts/some_id`],
+ *     inputContextNames: [pulumi.interpolate`projects/${agentProject.projectId}/agent/sessions/-/contexts/some_id`],
  *     events: ["some_event"],
  *     defaultResponsePlatforms: [
  *         "FACEBOOK",
  *         "SLACK",
  *     ],
- * }, {
- *     dependsOn: [basicAgent],
  * });
  * ```
  *

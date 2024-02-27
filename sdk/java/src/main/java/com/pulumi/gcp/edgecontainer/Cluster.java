@@ -48,8 +48,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.edgecontainer.ClusterArgs;
  * import com.pulumi.gcp.edgecontainer.inputs.ClusterAuthorizationArgs;
  * import com.pulumi.gcp.edgecontainer.inputs.ClusterAuthorizationAdminUsersArgs;
- * import com.pulumi.gcp.edgecontainer.inputs.ClusterFleetArgs;
  * import com.pulumi.gcp.edgecontainer.inputs.ClusterNetworkingArgs;
+ * import com.pulumi.gcp.edgecontainer.inputs.ClusterFleetArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -66,10 +66,16 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var default_ = new Cluster(&#34;default&#34;, ClusterArgs.builder()        
+ *             .name(&#34;basic-cluster&#34;)
+ *             .location(&#34;us-central1&#34;)
  *             .authorization(ClusterAuthorizationArgs.builder()
  *                 .adminUsers(ClusterAuthorizationAdminUsersArgs.builder()
  *                     .username(&#34;admin@hashicorptest.com&#34;)
  *                     .build())
+ *                 .build())
+ *             .networking(ClusterNetworkingArgs.builder()
+ *                 .clusterIpv4CidrBlocks(&#34;10.0.0.0/16&#34;)
+ *                 .servicesIpv4CidrBlocks(&#34;10.1.0.0/16&#34;)
  *                 .build())
  *             .fleet(ClusterFleetArgs.builder()
  *                 .project(String.format(&#34;projects/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
@@ -78,11 +84,6 @@ import javax.annotation.Nullable;
  *                 Map.entry(&#34;my_key&#34;, &#34;my_val&#34;),
  *                 Map.entry(&#34;other_key&#34;, &#34;other_val&#34;)
  *             ))
- *             .location(&#34;us-central1&#34;)
- *             .networking(ClusterNetworkingArgs.builder()
- *                 .clusterIpv4CidrBlocks(&#34;10.0.0.0/16&#34;)
- *                 .servicesIpv4CidrBlocks(&#34;10.1.0.0/16&#34;)
- *                 .build())
  *             .build());
  * 
  *     }
@@ -101,12 +102,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.edgecontainer.ClusterArgs;
  * import com.pulumi.gcp.edgecontainer.inputs.ClusterAuthorizationArgs;
  * import com.pulumi.gcp.edgecontainer.inputs.ClusterAuthorizationAdminUsersArgs;
+ * import com.pulumi.gcp.edgecontainer.inputs.ClusterNetworkingArgs;
  * import com.pulumi.gcp.edgecontainer.inputs.ClusterFleetArgs;
  * import com.pulumi.gcp.edgecontainer.inputs.ClusterMaintenancePolicyArgs;
  * import com.pulumi.gcp.edgecontainer.inputs.ClusterMaintenancePolicyWindowArgs;
  * import com.pulumi.gcp.edgecontainer.inputs.ClusterMaintenancePolicyWindowRecurringWindowArgs;
  * import com.pulumi.gcp.edgecontainer.inputs.ClusterMaintenancePolicyWindowRecurringWindowWindowArgs;
- * import com.pulumi.gcp.edgecontainer.inputs.ClusterNetworkingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -123,29 +124,30 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var default_ = new Cluster(&#34;default&#34;, ClusterArgs.builder()        
+ *             .name(&#34;cluster-with-maintenance&#34;)
+ *             .location(&#34;us-central1&#34;)
  *             .authorization(ClusterAuthorizationArgs.builder()
  *                 .adminUsers(ClusterAuthorizationAdminUsersArgs.builder()
  *                     .username(&#34;admin@hashicorptest.com&#34;)
  *                     .build())
  *                 .build())
- *             .fleet(ClusterFleetArgs.builder()
- *                 .project(String.format(&#34;projects/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
- *                 .build())
- *             .location(&#34;us-central1&#34;)
- *             .maintenancePolicy(ClusterMaintenancePolicyArgs.builder()
- *                 .window(ClusterMaintenancePolicyWindowArgs.builder()
- *                     .recurringWindow(ClusterMaintenancePolicyWindowRecurringWindowArgs.builder()
- *                         .recurrence(&#34;FREQ=WEEKLY;BYDAY=SA&#34;)
- *                         .window(ClusterMaintenancePolicyWindowRecurringWindowWindowArgs.builder()
- *                             .endTime(&#34;2023-01-01T17:00:00Z&#34;)
- *                             .startTime(&#34;2023-01-01T08:00:00Z&#34;)
- *                             .build())
- *                         .build())
- *                     .build())
- *                 .build())
  *             .networking(ClusterNetworkingArgs.builder()
  *                 .clusterIpv4CidrBlocks(&#34;10.0.0.0/16&#34;)
  *                 .servicesIpv4CidrBlocks(&#34;10.1.0.0/16&#34;)
+ *                 .build())
+ *             .fleet(ClusterFleetArgs.builder()
+ *                 .project(String.format(&#34;projects/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *                 .build())
+ *             .maintenancePolicy(ClusterMaintenancePolicyArgs.builder()
+ *                 .window(ClusterMaintenancePolicyWindowArgs.builder()
+ *                     .recurringWindow(ClusterMaintenancePolicyWindowRecurringWindowArgs.builder()
+ *                         .window(ClusterMaintenancePolicyWindowRecurringWindowWindowArgs.builder()
+ *                             .startTime(&#34;2023-01-01T08:00:00Z&#34;)
+ *                             .endTime(&#34;2023-01-01T17:00:00Z&#34;)
+ *                             .build())
+ *                         .recurrence(&#34;FREQ=WEEKLY;BYDAY=SA&#34;)
+ *                         .build())
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -165,10 +167,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.edgecontainer.ClusterArgs;
  * import com.pulumi.gcp.edgecontainer.inputs.ClusterAuthorizationArgs;
  * import com.pulumi.gcp.edgecontainer.inputs.ClusterAuthorizationAdminUsersArgs;
+ * import com.pulumi.gcp.edgecontainer.inputs.ClusterNetworkingArgs;
+ * import com.pulumi.gcp.edgecontainer.inputs.ClusterFleetArgs;
  * import com.pulumi.gcp.edgecontainer.inputs.ClusterControlPlaneArgs;
  * import com.pulumi.gcp.edgecontainer.inputs.ClusterControlPlaneLocalArgs;
- * import com.pulumi.gcp.edgecontainer.inputs.ClusterFleetArgs;
- * import com.pulumi.gcp.edgecontainer.inputs.ClusterNetworkingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -185,27 +187,28 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var default_ = new Cluster(&#34;default&#34;, ClusterArgs.builder()        
+ *             .name(&#34;local-control-plane-cluster&#34;)
+ *             .location(&#34;us-central1&#34;)
  *             .authorization(ClusterAuthorizationArgs.builder()
  *                 .adminUsers(ClusterAuthorizationAdminUsersArgs.builder()
  *                     .username(&#34;admin@hashicorptest.com&#34;)
  *                     .build())
  *                 .build())
- *             .controlPlane(ClusterControlPlaneArgs.builder()
- *                 .local(ClusterControlPlaneLocalArgs.builder()
- *                     .machineFilter(&#34;machine-name&#34;)
- *                     .nodeCount(1)
- *                     .nodeLocation(&#34;us-central1-edge-example-edgesite&#34;)
- *                     .sharedDeploymentPolicy(&#34;ALLOWED&#34;)
- *                     .build())
- *                 .build())
- *             .externalLoadBalancerIpv4AddressPools(&#34;10.100.0.0-10.100.0.10&#34;)
- *             .fleet(ClusterFleetArgs.builder()
- *                 .project(String.format(&#34;projects/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
- *                 .build())
- *             .location(&#34;us-central1&#34;)
  *             .networking(ClusterNetworkingArgs.builder()
  *                 .clusterIpv4CidrBlocks(&#34;10.0.0.0/16&#34;)
  *                 .servicesIpv4CidrBlocks(&#34;10.1.0.0/16&#34;)
+ *                 .build())
+ *             .fleet(ClusterFleetArgs.builder()
+ *                 .project(String.format(&#34;projects/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *                 .build())
+ *             .externalLoadBalancerIpv4AddressPools(&#34;10.100.0.0-10.100.0.10&#34;)
+ *             .controlPlane(ClusterControlPlaneArgs.builder()
+ *                 .local(ClusterControlPlaneLocalArgs.builder()
+ *                     .nodeLocation(&#34;us-central1-edge-example-edgesite&#34;)
+ *                     .nodeCount(1)
+ *                     .machineFilter(&#34;machine-name&#34;)
+ *                     .sharedDeploymentPolicy(&#34;ALLOWED&#34;)
+ *                     .build())
  *                 .build())
  *             .build());
  * 

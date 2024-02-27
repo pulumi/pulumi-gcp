@@ -177,6 +177,7 @@ def get_engine_versions(location: Optional[str] = None,
     central1b = gcp.container.get_engine_versions(location="us-central1-b",
         version_prefix="1.12.")
     foo = gcp.container.Cluster("foo",
+        name="test-cluster",
         location="us-central1-b",
         node_version=central1b.latest_node_version,
         initial_node_count=1)
@@ -242,6 +243,7 @@ def get_engine_versions_output(location: Optional[pulumi.Input[Optional[str]]] =
     central1b = gcp.container.get_engine_versions(location="us-central1-b",
         version_prefix="1.12.")
     foo = gcp.container.Cluster("foo",
+        name="test-cluster",
         location="us-central1-b",
         node_version=central1b.latest_node_version,
         initial_node_count=1)

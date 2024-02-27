@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const exampleNetwork = new gcp.edgenetwork.Network("exampleNetwork", {
+ * const exampleNetwork = new gcp.edgenetwork.Network("example_network", {
  *     networkId: "example-network",
  *     location: "us-west1",
  *     zone: "",

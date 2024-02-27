@@ -36,9 +36,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.iap.WebRegionBackendServiceIamPolicy("policy", {
- *     project: google_compute_region_backend_service["default"].project,
- *     region: google_compute_region_backend_service["default"].region,
- *     webRegionBackendService: google_compute_region_backend_service["default"].name,
+ *     project: _default.project,
+ *     region: _default.region,
+ *     webRegionBackendService: _default.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -61,9 +61,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.iap.WebRegionBackendServiceIamPolicy("policy", {
- *     project: google_compute_region_backend_service["default"].project,
- *     region: google_compute_region_backend_service["default"].region,
- *     webRegionBackendService: google_compute_region_backend_service["default"].name,
+ *     project: _default.project,
+ *     region: _default.region,
+ *     webRegionBackendService: _default.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -74,9 +74,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.iap.WebRegionBackendServiceIamBinding("binding", {
- *     project: google_compute_region_backend_service["default"].project,
- *     region: google_compute_region_backend_service["default"].region,
- *     webRegionBackendService: google_compute_region_backend_service["default"].name,
+ *     project: _default.project,
+ *     region: _default.region,
+ *     webRegionBackendService: _default.name,
  *     role: "roles/iap.httpsResourceAccessor",
  *     members: ["user:jane@example.com"],
  * });
@@ -89,9 +89,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.iap.WebRegionBackendServiceIamBinding("binding", {
- *     project: google_compute_region_backend_service["default"].project,
- *     region: google_compute_region_backend_service["default"].region,
- *     webRegionBackendService: google_compute_region_backend_service["default"].name,
+ *     project: _default.project,
+ *     region: _default.region,
+ *     webRegionBackendService: _default.name,
  *     role: "roles/iap.httpsResourceAccessor",
  *     members: ["user:jane@example.com"],
  *     condition: {
@@ -108,9 +108,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.iap.WebRegionBackendServiceIamMember("member", {
- *     project: google_compute_region_backend_service["default"].project,
- *     region: google_compute_region_backend_service["default"].region,
- *     webRegionBackendService: google_compute_region_backend_service["default"].name,
+ *     project: _default.project,
+ *     region: _default.region,
+ *     webRegionBackendService: _default.name,
  *     role: "roles/iap.httpsResourceAccessor",
  *     member: "user:jane@example.com",
  * });
@@ -123,9 +123,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.iap.WebRegionBackendServiceIamMember("member", {
- *     project: google_compute_region_backend_service["default"].project,
- *     region: google_compute_region_backend_service["default"].region,
- *     webRegionBackendService: google_compute_region_backend_service["default"].name,
+ *     project: _default.project,
+ *     region: _default.region,
+ *     webRegionBackendService: _default.name,
  *     role: "roles/iap.httpsResourceAccessor",
  *     member: "user:jane@example.com",
  *     condition: {

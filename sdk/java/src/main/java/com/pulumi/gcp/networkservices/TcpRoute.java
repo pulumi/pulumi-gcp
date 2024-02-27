@@ -20,7 +20,6 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * ### Network Services Tcp Route Basic
- * 
  * ```java
  * package generated_program;
  * 
@@ -35,7 +34,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networkservices.TcpRouteArgs;
  * import com.pulumi.gcp.networkservices.inputs.TcpRouteRuleArgs;
  * import com.pulumi.gcp.networkservices.inputs.TcpRouteRuleActionArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -50,20 +48,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
+ *             .name(&#34;backend-service-health-check&#34;)
  *             .requestPath(&#34;/&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
- *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
+ *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;my-backend-service&#34;)
  *             .healthChecks(defaultHttpHealthCheck.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultTcpRoute = new TcpRoute(&#34;defaultTcpRoute&#34;, TcpRouteArgs.builder()        
+ *             .name(&#34;my-tcp-route&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .description(&#34;my description&#34;)
  *             .rules(TcpRouteRuleArgs.builder()
@@ -73,21 +70,18 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .action(TcpRouteRuleActionArgs.builder()
  *                     .destinations(TcpRouteRuleActionDestinationArgs.builder()
- *                         .serviceName(defaultBackendService.id())
+ *                         .serviceName(default_.id())
  *                         .weight(1)
  *                         .build())
  *                     .originalDestination(false)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
  * ```
  * ### Network Services Tcp Route Actions
- * 
  * ```java
  * package generated_program;
  * 
@@ -102,7 +96,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networkservices.TcpRouteArgs;
  * import com.pulumi.gcp.networkservices.inputs.TcpRouteRuleArgs;
  * import com.pulumi.gcp.networkservices.inputs.TcpRouteRuleActionArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -117,40 +110,36 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
+ *             .name(&#34;backend-service-health-check&#34;)
  *             .requestPath(&#34;/&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
- *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
+ *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;my-backend-service&#34;)
  *             .healthChecks(defaultHttpHealthCheck.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultTcpRoute = new TcpRoute(&#34;defaultTcpRoute&#34;, TcpRouteArgs.builder()        
+ *             .name(&#34;my-tcp-route&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .description(&#34;my description&#34;)
  *             .rules(TcpRouteRuleArgs.builder()
  *                 .action(TcpRouteRuleActionArgs.builder()
  *                     .destinations(TcpRouteRuleActionDestinationArgs.builder()
- *                         .serviceName(defaultBackendService.id())
+ *                         .serviceName(default_.id())
  *                         .weight(1)
  *                         .build())
  *                     .originalDestination(false)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
  * ```
  * ### Network Services Tcp Route Mesh Basic
- * 
  * ```java
  * package generated_program;
  * 
@@ -167,7 +156,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networkservices.TcpRouteArgs;
  * import com.pulumi.gcp.networkservices.inputs.TcpRouteRuleArgs;
  * import com.pulumi.gcp.networkservices.inputs.TcpRouteRuleActionArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -182,27 +170,25 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
+ *             .name(&#34;backend-service-health-check&#34;)
  *             .requestPath(&#34;/&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
- *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
+ *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;my-backend-service&#34;)
  *             .healthChecks(defaultHttpHealthCheck.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultMesh = new Mesh(&#34;defaultMesh&#34;, MeshArgs.builder()        
+ *             .name(&#34;my-tcp-route&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .description(&#34;my description&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultTcpRoute = new TcpRoute(&#34;defaultTcpRoute&#34;, TcpRouteArgs.builder()        
+ *             .name(&#34;my-tcp-route&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .description(&#34;my description&#34;)
  *             .meshes(defaultMesh.id())
@@ -213,21 +199,18 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .action(TcpRouteRuleActionArgs.builder()
  *                     .destinations(TcpRouteRuleActionDestinationArgs.builder()
- *                         .serviceName(defaultBackendService.id())
+ *                         .serviceName(default_.id())
  *                         .weight(1)
  *                         .build())
  *                     .originalDestination(false)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
  * ```
  * ### Network Services Tcp Route Gateway Basic
- * 
  * ```java
  * package generated_program;
  * 
@@ -244,7 +227,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networkservices.TcpRouteArgs;
  * import com.pulumi.gcp.networkservices.inputs.TcpRouteRuleArgs;
  * import com.pulumi.gcp.networkservices.inputs.TcpRouteRuleActionArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -259,30 +241,28 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
+ *             .name(&#34;backend-service-health-check&#34;)
  *             .requestPath(&#34;/&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
- *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
+ *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;my-backend-service&#34;)
  *             .healthChecks(defaultHttpHealthCheck.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
+ *             .name(&#34;my-tcp-route&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .description(&#34;my description&#34;)
  *             .scope(&#34;my-scope&#34;)
  *             .type(&#34;OPEN_MESH&#34;)
  *             .ports(443)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultTcpRoute = new TcpRoute(&#34;defaultTcpRoute&#34;, TcpRouteArgs.builder()        
+ *             .name(&#34;my-tcp-route&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .description(&#34;my description&#34;)
  *             .gateways(defaultGateway.id())
@@ -293,15 +273,13 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .action(TcpRouteRuleActionArgs.builder()
  *                     .destinations(TcpRouteRuleActionDestinationArgs.builder()
- *                         .serviceName(defaultBackendService.id())
+ *                         .serviceName(default_.id())
  *                         .weight(1)
  *                         .build())
  *                     .originalDestination(false)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.artifactregistry.getRepositoryIamPolicy({
- *     project: google_artifact_registry_repository["my-repo"].project,
- *     location: google_artifact_registry_repository["my-repo"].location,
- *     repository: google_artifact_registry_repository["my-repo"].name,
+ *     project: my_repo.project,
+ *     location: my_repo.location,
+ *     repository: my_repo.name,
  * });
  * ```
  */
@@ -81,9 +81,9 @@ export interface GetRepositoryIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.artifactregistry.getRepositoryIamPolicy({
- *     project: google_artifact_registry_repository["my-repo"].project,
- *     location: google_artifact_registry_repository["my-repo"].location,
- *     repository: google_artifact_registry_repository["my-repo"].name,
+ *     project: my_repo.project,
+ *     location: my_repo.location,
+ *     repository: my_repo.name,
  * });
  * ```
  */

@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.cloudrunv2.getJobIamPolicy({
- *     project: google_cloud_run_v2_job["default"].project,
- *     location: google_cloud_run_v2_job["default"].location,
- *     name: google_cloud_run_v2_job["default"].name,
+ *     project: _default.project,
+ *     location: _default.location,
+ *     name: _default.name,
  * });
  * ```
  */
@@ -80,9 +80,9 @@ export interface GetJobIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.cloudrunv2.getJobIamPolicy({
- *     project: google_cloud_run_v2_job["default"].project,
- *     location: google_cloud_run_v2_job["default"].location,
- *     name: google_cloud_run_v2_job["default"].name,
+ *     project: _default.project,
+ *     location: _default.location,
+ *     name: _default.name,
  * });
  * ```
  */

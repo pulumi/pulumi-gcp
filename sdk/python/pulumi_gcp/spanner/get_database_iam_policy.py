@@ -108,9 +108,9 @@ def get_database_iam_policy(database: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.spanner.get_database_iam_policy(project=google_spanner_database["database"]["project"],
-        database=google_spanner_database["database"]["name"],
-        instance=google_spanner_database["database"]["instance"])
+    foo = gcp.spanner.get_database_iam_policy(project=database["project"],
+        database=database["name"],
+        instance=database["instance"])
     ```
 
 
@@ -149,9 +149,9 @@ def get_database_iam_policy_output(database: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.spanner.get_database_iam_policy(project=google_spanner_database["database"]["project"],
-        database=google_spanner_database["database"]["name"],
-        instance=google_spanner_database["database"]["instance"])
+    foo = gcp.spanner.get_database_iam_policy(project=database["project"],
+        database=database["name"],
+        instance=database["instance"])
     ```
 
 

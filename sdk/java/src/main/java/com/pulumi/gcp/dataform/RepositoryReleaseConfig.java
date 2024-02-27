@@ -41,7 +41,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataform.RepositoryReleaseConfig;
  * import com.pulumi.gcp.dataform.RepositoryReleaseConfigArgs;
  * import com.pulumi.gcp.dataform.inputs.RepositoryReleaseConfigCodeCompilationConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -55,8 +54,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var gitRepository = new Repository(&#34;gitRepository&#34;, RepositoryArgs.Empty, CustomResourceOptions.builder()
- *             .provider(google_beta)
+ *         var gitRepository = new Repository(&#34;gitRepository&#34;, RepositoryArgs.builder()        
+ *             .name(&#34;my/repository&#34;)
  *             .build());
  * 
  *         var secret = new Secret(&#34;secret&#34;, SecretArgs.builder()        
@@ -64,18 +63,15 @@ import javax.annotation.Nullable;
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var secretVersion = new SecretVersion(&#34;secretVersion&#34;, SecretVersionArgs.builder()        
  *             .secret(secret.id())
  *             .secretData(&#34;secret-data&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var repository = new Repository(&#34;repository&#34;, RepositoryArgs.builder()        
+ *             .name(&#34;dataform_repository&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .gitRemoteSettings(RepositoryGitRemoteSettingsArgs.builder()
  *                 .url(gitRepository.url())
@@ -87,14 +83,13 @@ import javax.annotation.Nullable;
  *                 .schemaSuffix(&#34;_suffix&#34;)
  *                 .tablePrefix(&#34;prefix_&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var release = new RepositoryReleaseConfig(&#34;release&#34;, RepositoryReleaseConfigArgs.builder()        
  *             .project(repository.project())
  *             .region(repository.region())
  *             .repository(repository.name())
+ *             .name(&#34;my_release&#34;)
  *             .gitCommitish(&#34;main&#34;)
  *             .cronSchedule(&#34;0 7 * * *&#34;)
  *             .timeZone(&#34;America/New_York&#34;)
@@ -108,9 +103,7 @@ import javax.annotation.Nullable;
  *                 .tablePrefix(&#34;&#34;)
  *                 .vars(Map.of(&#34;var1&#34;, &#34;value&#34;))
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

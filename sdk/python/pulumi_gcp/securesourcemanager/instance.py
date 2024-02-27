@@ -412,11 +412,11 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.securesourcemanager.Instance("default",
+            location="us-central1",
             instance_id="my-instance",
             labels={
                 "foo": "bar",
-            },
-            location="us-central1")
+            })
         ```
         ### Secure Source Manager Instance Cmek
 
@@ -424,18 +424,83 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        key_ring = gcp.kms.KeyRing("keyRing", location="us-central1")
-        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="my-keyring",
+            location="us-central1")
+        crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="my-key",
+            key_ring=key_ring.id)
         project = gcp.organizations.get_project()
-        crypto_key_binding = gcp.kms.CryptoKeyIAMMember("cryptoKeyBinding",
+        crypto_key_binding = gcp.kms.CryptoKeyIAMMember("crypto_key_binding",
             crypto_key_id=crypto_key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com")
         default = gcp.securesourcemanager.Instance("default",
             location="us-central1",
             instance_id="my-instance",
-            kms_key=crypto_key.id,
-            opts=pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
+            kms_key=crypto_key.id)
+        ```
+        ### Secure Source Manager Instance Private
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        ca_pool = gcp.certificateauthority.CaPool("ca_pool",
+            name="ca-pool",
+            location="us-central1",
+            tier="ENTERPRISE",
+            publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArgs(
+                publish_ca_cert=True,
+                publish_crl=True,
+            ))
+        root_ca = gcp.certificateauthority.Authority("root_ca",
+            pool=ca_pool.name,
+            certificate_authority_id="root-ca",
+            location="us-central1",
+            config=gcp.certificateauthority.AuthorityConfigArgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+                        organization="google",
+                        common_name="my-certificate-authority",
+                    ),
+                ),
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                        is_ca=True,
+                    ),
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                            cert_sign=True,
+                            crl_sign=True,
+                        ),
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                            server_auth=True,
+                        ),
+                    ),
+                ),
+            ),
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+                algorithm="RSA_PKCS1_4096_SHA256",
+            ),
+            deletion_protection=False,
+            ignore_active_certificates_on_deletion=True,
+            skip_grace_period=True)
+        project = gcp.organizations.get_project()
+        ca_pool_binding = gcp.certificateauthority.CaPoolIamBinding("ca_pool_binding",
+            ca_pool=ca_pool.id,
+            role="roles/privateca.certificateRequester",
+            members=[f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"])
+        default = gcp.securesourcemanager.Instance("default",
+            instance_id="my-instance",
+            location="us-central1",
+            private_config=gcp.securesourcemanager.InstancePrivateConfigArgs(
+                is_private=True,
+                ca_pool=ca_pool.id,
+            ))
+        # ca pool IAM permissions can take time to propagate
+        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s)
         ```
 
         ## Import
@@ -508,11 +573,11 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.securesourcemanager.Instance("default",
+            location="us-central1",
             instance_id="my-instance",
             labels={
                 "foo": "bar",
-            },
-            location="us-central1")
+            })
         ```
         ### Secure Source Manager Instance Cmek
 
@@ -520,18 +585,83 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        key_ring = gcp.kms.KeyRing("keyRing", location="us-central1")
-        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="my-keyring",
+            location="us-central1")
+        crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="my-key",
+            key_ring=key_ring.id)
         project = gcp.organizations.get_project()
-        crypto_key_binding = gcp.kms.CryptoKeyIAMMember("cryptoKeyBinding",
+        crypto_key_binding = gcp.kms.CryptoKeyIAMMember("crypto_key_binding",
             crypto_key_id=crypto_key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com")
         default = gcp.securesourcemanager.Instance("default",
             location="us-central1",
             instance_id="my-instance",
-            kms_key=crypto_key.id,
-            opts=pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
+            kms_key=crypto_key.id)
+        ```
+        ### Secure Source Manager Instance Private
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        ca_pool = gcp.certificateauthority.CaPool("ca_pool",
+            name="ca-pool",
+            location="us-central1",
+            tier="ENTERPRISE",
+            publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArgs(
+                publish_ca_cert=True,
+                publish_crl=True,
+            ))
+        root_ca = gcp.certificateauthority.Authority("root_ca",
+            pool=ca_pool.name,
+            certificate_authority_id="root-ca",
+            location="us-central1",
+            config=gcp.certificateauthority.AuthorityConfigArgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+                        organization="google",
+                        common_name="my-certificate-authority",
+                    ),
+                ),
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                        is_ca=True,
+                    ),
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                            cert_sign=True,
+                            crl_sign=True,
+                        ),
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                            server_auth=True,
+                        ),
+                    ),
+                ),
+            ),
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+                algorithm="RSA_PKCS1_4096_SHA256",
+            ),
+            deletion_protection=False,
+            ignore_active_certificates_on_deletion=True,
+            skip_grace_period=True)
+        project = gcp.organizations.get_project()
+        ca_pool_binding = gcp.certificateauthority.CaPoolIamBinding("ca_pool_binding",
+            ca_pool=ca_pool.id,
+            role="roles/privateca.certificateRequester",
+            members=[f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"])
+        default = gcp.securesourcemanager.Instance("default",
+            instance_id="my-instance",
+            location="us-central1",
+            private_config=gcp.securesourcemanager.InstancePrivateConfigArgs(
+                is_private=True,
+                ca_pool=ca_pool.id,
+            ))
+        # ca pool IAM permissions can take time to propagate
+        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s)
         ```
 
         ## Import

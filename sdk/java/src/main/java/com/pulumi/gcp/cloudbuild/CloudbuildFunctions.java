@@ -45,7 +45,7 @@ public final class CloudbuildFunctions {
      *     public static void stack(Context ctx) {
      *         final var name = CloudbuildFunctions.getTrigger(GetTriggerArgs.builder()
      *             .project(&#34;your-project-id&#34;)
-     *             .triggerId(google_cloudbuild_trigger.filename-trigger().trigger_id())
+     *             .triggerId(filename_trigger.triggerId())
      *             .location(&#34;location of trigger build&#34;)
      *             .build());
      * 
@@ -88,7 +88,7 @@ public final class CloudbuildFunctions {
      *     public static void stack(Context ctx) {
      *         final var name = CloudbuildFunctions.getTrigger(GetTriggerArgs.builder()
      *             .project(&#34;your-project-id&#34;)
-     *             .triggerId(google_cloudbuild_trigger.filename-trigger().trigger_id())
+     *             .triggerId(filename_trigger.triggerId())
      *             .location(&#34;location of trigger build&#34;)
      *             .build());
      * 
@@ -131,7 +131,7 @@ public final class CloudbuildFunctions {
      *     public static void stack(Context ctx) {
      *         final var name = CloudbuildFunctions.getTrigger(GetTriggerArgs.builder()
      *             .project(&#34;your-project-id&#34;)
-     *             .triggerId(google_cloudbuild_trigger.filename-trigger().trigger_id())
+     *             .triggerId(filename_trigger.triggerId())
      *             .location(&#34;location of trigger build&#34;)
      *             .build());
      * 
@@ -174,7 +174,7 @@ public final class CloudbuildFunctions {
      *     public static void stack(Context ctx) {
      *         final var name = CloudbuildFunctions.getTrigger(GetTriggerArgs.builder()
      *             .project(&#34;your-project-id&#34;)
-     *             .triggerId(google_cloudbuild_trigger.filename-trigger().trigger_id())
+     *             .triggerId(filename_trigger.triggerId())
      *             .location(&#34;location of trigger build&#34;)
      *             .build());
      * 

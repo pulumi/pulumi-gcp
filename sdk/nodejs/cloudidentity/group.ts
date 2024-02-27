@@ -28,16 +28,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const cloudIdentityGroupBasic = new gcp.cloudidentity.Group("cloudIdentityGroupBasic", {
+ * const cloudIdentityGroupBasic = new gcp.cloudidentity.Group("cloud_identity_group_basic", {
  *     displayName: "my-identity-group",
+ *     initialGroupConfig: "WITH_INITIAL_OWNER",
+ *     parent: "customers/A01b123xz",
  *     groupKey: {
  *         id: "my-identity-group@example.com",
  *     },
- *     initialGroupConfig: "WITH_INITIAL_OWNER",
  *     labels: {
  *         "cloudidentity.googleapis.com/groups.discussion_forum": "",
  *     },
- *     parent: "customers/A01b123xz",
  * });
  * ```
  *

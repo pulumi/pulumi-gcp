@@ -48,10 +48,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var dataExchange = new DataExchange(&#34;dataExchange&#34;, DataExchangeArgs.builder()        
- *             .dataExchangeId(&#34;my_data_exchange&#34;)
- *             .description(&#34;example data exchange&#34;)
- *             .displayName(&#34;my_data_exchange&#34;)
  *             .location(&#34;US&#34;)
+ *             .dataExchangeId(&#34;my_data_exchange&#34;)
+ *             .displayName(&#34;my_data_exchange&#34;)
+ *             .description(&#34;example data exchange&#34;)
  *             .build());
  * 
  *     }

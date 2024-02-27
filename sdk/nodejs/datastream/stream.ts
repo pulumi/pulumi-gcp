@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     name: "my-instance",
  *     databaseVersion: "MYSQL_8_0",
  *     region: "us-central1",
  *     settings: {
@@ -55,17 +56,21 @@ import * as utilities from "../utilities";
  *     },
  *     deletionProtection: true,
  * });
- * const db = new gcp.sql.Database("db", {instance: instance.name});
+ * const db = new gcp.sql.Database("db", {
+ *     instance: instance.name,
+ *     name: "db",
+ * });
  * const pwd = new random.RandomPassword("pwd", {
  *     length: 16,
  *     special: false,
  * });
  * const user = new gcp.sql.User("user", {
+ *     name: "user",
  *     instance: instance.name,
  *     host: "%",
  *     password: pwd.result,
  * });
- * const sourceConnectionProfile = new gcp.datastream.ConnectionProfile("sourceConnectionProfile", {
+ * const sourceConnectionProfile = new gcp.datastream.ConnectionProfile("source_connection_profile", {
  *     displayName: "Source connection profile",
  *     location: "us-central1",
  *     connectionProfileId: "source-profile",
@@ -76,6 +81,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "my-bucket",
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  * });
@@ -94,12 +100,12 @@ import * as utilities from "../utilities";
  *     role: "roles/storage.legacyBucketReader",
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-datastream.iam.gserviceaccount.com`),
  * });
- * const keyUser = new gcp.kms.CryptoKeyIAMMember("keyUser", {
+ * const keyUser = new gcp.kms.CryptoKeyIAMMember("key_user", {
  *     cryptoKeyId: "kms-name",
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-datastream.iam.gserviceaccount.com`),
  * });
- * const destinationConnectionProfile = new gcp.datastream.ConnectionProfile("destinationConnectionProfile", {
+ * const destinationConnectionProfile = new gcp.datastream.ConnectionProfile("destination_connection_profile", {
  *     displayName: "Connection profile",
  *     location: "us-central1",
  *     connectionProfileId: "destination-profile",
@@ -190,8 +196,6 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     customerManagedEncryptionKey: "kms-name",
- * }, {
- *     dependsOn: [keyUser],
  * });
  * ```
  * ### Datastream Stream Postgresql
@@ -377,13 +381,14 @@ import * as utilities from "../utilities";
  *     description: "Database of postgres",
  *     location: "us-central1",
  * });
- * const destinationConnectionProfile2 = new gcp.datastream.ConnectionProfile("destinationConnectionProfile2", {
+ * const destinationConnectionProfile2 = new gcp.datastream.ConnectionProfile("destination_connection_profile2", {
  *     displayName: "Connection profile",
  *     location: "us-central1",
  *     connectionProfileId: "dest-profile",
  *     bigqueryProfile: {},
  * });
  * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     name: "instance-name",
  *     databaseVersion: "MYSQL_8_0",
  *     region: "us-central1",
  *     settings: {
@@ -419,11 +424,12 @@ import * as utilities from "../utilities";
  *     special: false,
  * });
  * const user = new gcp.sql.User("user", {
+ *     name: "my-user",
  *     instance: instance.name,
  *     host: "%",
  *     password: pwd.result,
  * });
- * const sourceConnectionProfile = new gcp.datastream.ConnectionProfile("sourceConnectionProfile", {
+ * const sourceConnectionProfile = new gcp.datastream.ConnectionProfile("source_connection_profile", {
  *     displayName: "Source connection profile",
  *     location: "us-central1",
  *     connectionProfileId: "source-profile",
@@ -452,7 +458,10 @@ import * as utilities from "../utilities";
  *     },
  *     backfillAll: {},
  * });
- * const db = new gcp.sql.Database("db", {instance: instance.name});
+ * const db = new gcp.sql.Database("db", {
+ *     instance: instance.name,
+ *     name: "db",
+ * });
  * ```
  * ### Datastream Stream Bigquery
  *
@@ -463,6 +472,7 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     name: "my-instance",
  *     databaseVersion: "MYSQL_8_0",
  *     region: "us-central1",
  *     settings: {
@@ -493,17 +503,21 @@ import * as utilities from "../utilities";
  *     },
  *     deletionProtection: true,
  * });
- * const db = new gcp.sql.Database("db", {instance: instance.name});
+ * const db = new gcp.sql.Database("db", {
+ *     instance: instance.name,
+ *     name: "db",
+ * });
  * const pwd = new random.RandomPassword("pwd", {
  *     length: 16,
  *     special: false,
  * });
  * const user = new gcp.sql.User("user", {
+ *     name: "user",
  *     instance: instance.name,
  *     host: "%",
  *     password: pwd.result,
  * });
- * const sourceConnectionProfile = new gcp.datastream.ConnectionProfile("sourceConnectionProfile", {
+ * const sourceConnectionProfile = new gcp.datastream.ConnectionProfile("source_connection_profile", {
  *     displayName: "Source connection profile",
  *     location: "us-central1",
  *     connectionProfileId: "source-profile",
@@ -514,12 +528,12 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const bqSa = gcp.bigquery.getDefaultServiceAccount({});
- * const bigqueryKeyUser = new gcp.kms.CryptoKeyIAMMember("bigqueryKeyUser", {
+ * const bigqueryKeyUser = new gcp.kms.CryptoKeyIAMMember("bigquery_key_user", {
  *     cryptoKeyId: "bigquery-kms-name",
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     member: bqSa.then(bqSa => `serviceAccount:${bqSa.email}`),
  * });
- * const destinationConnectionProfile = new gcp.datastream.ConnectionProfile("destinationConnectionProfile", {
+ * const destinationConnectionProfile = new gcp.datastream.ConnectionProfile("destination_connection_profile", {
  *     displayName: "Connection profile",
  *     location: "us-central1",
  *     connectionProfileId: "destination-profile",
@@ -545,8 +559,6 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     backfillNone: {},
- * }, {
- *     dependsOn: [bigqueryKeyUser],
  * });
  * ```
  *

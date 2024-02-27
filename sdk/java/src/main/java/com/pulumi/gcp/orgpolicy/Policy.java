@@ -51,10 +51,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basic = new Project(&#34;basic&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;id&#34;)
+ *             .name(&#34;id&#34;)
  *             .orgId(&#34;123456789&#34;)
  *             .build());
  * 
  *         var primary = new Policy(&#34;primary&#34;, PolicyArgs.builder()        
+ *             .name(basic.name().applyValue(name -&gt; String.format(&#34;projects/%s/policies/iam.disableServiceAccountKeyUpload&#34;, name)))
  *             .parent(basic.name().applyValue(name -&gt; String.format(&#34;projects/%s&#34;, name)))
  *             .spec(PolicySpecArgs.builder()
  *                 .rules(PolicySpecRuleArgs.builder()
@@ -98,6 +101,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary = new Policy(&#34;primary&#34;, PolicyArgs.builder()        
+ *             .name(basic.name().applyValue(name -&gt; String.format(&#34;%s/policies/gcp.resourceLocations&#34;, name)))
  *             .parent(basic.name())
  *             .spec(PolicySpecArgs.builder()
  *                 .inheritFromParent(true)
@@ -135,6 +139,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var primary = new Policy(&#34;primary&#34;, PolicyArgs.builder()        
+ *             .name(&#34;organizations/123456789/policies/gcp.detailedAuditLoggingMode&#34;)
  *             .parent(&#34;organizations/123456789&#34;)
  *             .spec(PolicySpecArgs.builder()
  *                 .reset(true)
@@ -171,10 +176,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basic = new Project(&#34;basic&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;id&#34;)
+ *             .name(&#34;id&#34;)
  *             .orgId(&#34;123456789&#34;)
  *             .build());
  * 
  *         var primary = new Policy(&#34;primary&#34;, PolicyArgs.builder()        
+ *             .name(basic.name().applyValue(name -&gt; String.format(&#34;projects/%s/policies/gcp.resourceLocations&#34;, name)))
  *             .parent(basic.name().applyValue(name -&gt; String.format(&#34;projects/%s&#34;, name)))
  *             .spec(PolicySpecArgs.builder()
  *                 .rules(                
@@ -193,61 +201,6 @@ import javax.annotation.Nullable;
  *                     PolicySpecRuleArgs.builder()
  *                         .allowAll(&#34;TRUE&#34;)
  *                         .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * ### Dry_run_spec
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.orgpolicy.CustomConstraint;
- * import com.pulumi.gcp.orgpolicy.CustomConstraintArgs;
- * import com.pulumi.gcp.orgpolicy.Policy;
- * import com.pulumi.gcp.orgpolicy.PolicyArgs;
- * import com.pulumi.gcp.orgpolicy.inputs.PolicyDryRunSpecArgs;
- * import com.pulumi.gcp.orgpolicy.inputs.PolicySpecArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var constraint = new CustomConstraint(&#34;constraint&#34;, CustomConstraintArgs.builder()        
- *             .actionType(&#34;ALLOW&#34;)
- *             .condition(&#34;resource.management.autoUpgrade == false&#34;)
- *             .description(&#34;Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.&#34;)
- *             .displayName(&#34;Disable GKE auto upgrade&#34;)
- *             .methodTypes(&#34;CREATE&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
- *             .resourceTypes(&#34;container.googleapis.com/NodePool&#34;)
- *             .build());
- * 
- *         var primary = new Policy(&#34;primary&#34;, PolicyArgs.builder()        
- *             .dryRunSpec(PolicyDryRunSpecArgs.builder()
- *                 .inheritFromParent(false)
- *                 .reset(false)
- *                 .rules(PolicyDryRunSpecRuleArgs.builder()
- *                     .enforce(&#34;FALSE&#34;)
- *                     .build())
- *                 .build())
- *             .parent(&#34;organizations/123456789&#34;)
- *             .spec(PolicySpecArgs.builder()
- *                 .rules(PolicySpecRuleArgs.builder()
- *                     .enforce(&#34;FALSE&#34;)
- *                     .build())
  *                 .build())
  *             .build());
  * 

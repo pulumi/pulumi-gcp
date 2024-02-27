@@ -119,7 +119,9 @@ def get_billing_account(billing_account: Optional[str] = None,
 
     acct = gcp.organizations.get_billing_account(display_name="My Billing Account",
         open=True)
-    my_project = gcp.organizations.Project("myProject",
+    my_project = gcp.organizations.Project("my_project",
+        name="My Project",
+        project_id="your-project-id",
         org_id="1234567",
         billing_account=acct.id)
     ```
@@ -166,7 +168,9 @@ def get_billing_account_output(billing_account: Optional[pulumi.Input[Optional[s
 
     acct = gcp.organizations.get_billing_account(display_name="My Billing Account",
         open=True)
-    my_project = gcp.organizations.Project("myProject",
+    my_project = gcp.organizations.Project("my_project",
+        name="My Project",
+        project_id="your-project-id",
         org_id="1234567",
         billing_account=acct.id)
     ```

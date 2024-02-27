@@ -19,30 +19,33 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const policy = new gcp.compute.SecurityPolicy("policy", {rules: [
- *     {
- *         action: "deny(403)",
- *         description: "Deny access to IPs in 9.9.9.0/24",
- *         match: {
- *             config: {
- *                 srcIpRanges: ["9.9.9.0/24"],
+ * const policy = new gcp.compute.SecurityPolicy("policy", {
+ *     name: "my-policy",
+ *     rules: [
+ *         {
+ *             action: "deny(403)",
+ *             priority: 1000,
+ *             match: {
+ *                 versionedExpr: "SRC_IPS_V1",
+ *                 config: {
+ *                     srcIpRanges: ["9.9.9.0/24"],
+ *                 },
  *             },
- *             versionedExpr: "SRC_IPS_V1",
+ *             description: "Deny access to IPs in 9.9.9.0/24",
  *         },
- *         priority: 1000,
- *     },
- *     {
- *         action: "allow",
- *         description: "default rule",
- *         match: {
- *             config: {
- *                 srcIpRanges: ["*"],
+ *         {
+ *             action: "allow",
+ *             priority: 2147483647,
+ *             match: {
+ *                 versionedExpr: "SRC_IPS_V1",
+ *                 config: {
+ *                     srcIpRanges: ["*"],
+ *                 },
  *             },
- *             versionedExpr: "SRC_IPS_V1",
+ *             description: "default rule",
  *         },
- *         priority: 2147483647,
- *     },
- * ]});
+ *     ],
+ * });
  * ```
  * ### With ReCAPTCHA Configuration Options
  *
@@ -63,6 +66,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const policy = new gcp.compute.SecurityPolicy("policy", {
+ *     name: "my-policy",
  *     description: "basic security policy",
  *     type: "CLOUD_ARMOR",
  *     recaptchaOptionsConfig: {
@@ -76,40 +80,43 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const policy = new gcp.compute.SecurityPolicy("policy", {rules: [
- *     {
- *         action: "allow",
- *         description: "default rule",
- *         match: {
- *             config: {
- *                 srcIpRanges: ["*"],
- *             },
- *             versionedExpr: "SRC_IPS_V1",
- *         },
- *         priority: 2147483647,
- *     },
- *     {
- *         action: "allow",
- *         headerAction: {
- *             requestHeadersToAdds: [
- *                 {
- *                     headerName: "reCAPTCHA-Warning",
- *                     headerValue: "high",
+ * const policy = new gcp.compute.SecurityPolicy("policy", {
+ *     name: "my-policy",
+ *     rules: [
+ *         {
+ *             action: "allow",
+ *             priority: 2147483647,
+ *             match: {
+ *                 versionedExpr: "SRC_IPS_V1",
+ *                 config: {
+ *                     srcIpRanges: ["*"],
  *                 },
- *                 {
- *                     headerName: "X-Resource",
- *                     headerValue: "test",
- *                 },
- *             ],
+ *             },
+ *             description: "default rule",
  *         },
- *         match: {
- *             expr: {
- *                 expression: "request.path.matches(\"/login.html\") && token.recaptcha_session.score < 0.2",
+ *         {
+ *             action: "allow",
+ *             priority: 1000,
+ *             match: {
+ *                 expr: {
+ *                     expression: "request.path.matches(\"/login.html\") && token.recaptcha_session.score < 0.2",
+ *                 },
+ *             },
+ *             headerAction: {
+ *                 requestHeadersToAdds: [
+ *                     {
+ *                         headerName: "reCAPTCHA-Warning",
+ *                         headerValue: "high",
+ *                     },
+ *                     {
+ *                         headerName: "X-Resource",
+ *                         headerValue: "test",
+ *                     },
+ *                 ],
  *             },
  *         },
- *         priority: 1000,
- *     },
- * ]});
+ *     ],
+ * });
  * ```
  * ### With EnforceOnKey Value As Empty String
  * A scenario example that won't cause any conflict between `enforceOnKey` and `enforceOnKeyConfigs`, because `enforceOnKey` was specified as an empty string:
@@ -119,27 +126,28 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = new gcp.compute.SecurityPolicy("policy", {
+ *     name: "%s",
  *     description: "throttle rule with enforce_on_key_configs",
  *     rules: [{
  *         action: "throttle",
- *         description: "default rule",
+ *         priority: 2147483647,
  *         match: {
+ *             versionedExpr: "SRC_IPS_V1",
  *             config: {
  *                 srcIpRanges: ["*"],
  *             },
- *             versionedExpr: "SRC_IPS_V1",
  *         },
- *         priority: 2147483647,
+ *         description: "default rule",
  *         rateLimitOptions: {
  *             conformAction: "allow",
+ *             exceedAction: "redirect",
  *             enforceOnKey: "",
  *             enforceOnKeyConfigs: [{
  *                 enforceOnKeyType: "IP",
  *             }],
- *             exceedAction: "redirect",
  *             exceedRedirectOptions: {
- *                 target: "<https://www.example.com>",
  *                 type: "EXTERNAL_302",
+ *                 target: "<https://www.example.com>",
  *             },
  *             rateLimitThreshold: {
  *                 count: 10,

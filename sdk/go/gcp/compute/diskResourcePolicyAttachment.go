@@ -40,6 +40,7 @@ import (
 //				return err
 //			}
 //			ssd, err := compute.NewDisk(ctx, "ssd", &compute.DiskArgs{
+//				Name:  pulumi.String("my-disk"),
 //				Image: *pulumi.String(myImage.SelfLink),
 //				Size:  pulumi.Int(50),
 //				Type:  pulumi.String("pd-ssd"),
@@ -48,14 +49,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewDiskResourcePolicyAttachment(ctx, "attachment", &compute.DiskResourcePolicyAttachmentArgs{
-//				Disk: ssd.Name,
-//				Zone: pulumi.String("us-central1-a"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewResourcePolicy(ctx, "policy", &compute.ResourcePolicyArgs{
+//			policy, err := compute.NewResourcePolicy(ctx, "policy", &compute.ResourcePolicyArgs{
+//				Name:   pulumi.String("my-resource-policy"),
 //				Region: pulumi.String("us-central1"),
 //				SnapshotSchedulePolicy: &compute.ResourcePolicySnapshotSchedulePolicyArgs{
 //					Schedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs{
@@ -65,6 +60,14 @@ import (
 //						},
 //					},
 //				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewDiskResourcePolicyAttachment(ctx, "attachment", &compute.DiskResourcePolicyAttachmentArgs{
+//				Name: policy.Name,
+//				Disk: ssd.Name,
+//				Zone: pulumi.String("us-central1-a"),
 //			})
 //			if err != nil {
 //				return err

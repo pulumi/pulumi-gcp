@@ -191,7 +191,7 @@ class TagKeyIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.tags.TagKeyIamPolicy("policy",
-            tag_key=google_tags_tag_key["key"]["name"],
+            tag_key=key["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -202,7 +202,7 @@ class TagKeyIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.tags.TagKeyIamBinding("binding",
-            tag_key=google_tags_tag_key["key"]["name"],
+            tag_key=key["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -214,7 +214,7 @@ class TagKeyIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.tags.TagKeyIamMember("member",
-            tag_key=google_tags_tag_key["key"]["name"],
+            tag_key=key["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -303,7 +303,7 @@ class TagKeyIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.tags.TagKeyIamPolicy("policy",
-            tag_key=google_tags_tag_key["key"]["name"],
+            tag_key=key["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -314,7 +314,7 @@ class TagKeyIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.tags.TagKeyIamBinding("binding",
-            tag_key=google_tags_tag_key["key"]["name"],
+            tag_key=key["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -326,7 +326,7 @@ class TagKeyIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.tags.TagKeyIamMember("member",
-            tag_key=google_tags_tag_key["key"]["name"],
+            tag_key=key["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

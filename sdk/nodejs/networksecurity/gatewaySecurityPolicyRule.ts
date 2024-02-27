@@ -19,13 +19,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultGatewaySecurityPolicy = new gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", {
+ * const _default = new gcp.networksecurity.GatewaySecurityPolicy("default", {
+ *     name: "my-gateway-security-policy",
  *     location: "us-central1",
  *     description: "gateway security policy created to be used as reference by the rule.",
  * });
- * const defaultGatewaySecurityPolicyRule = new gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", {
+ * const defaultGatewaySecurityPolicyRule = new gcp.networksecurity.GatewaySecurityPolicyRule("default", {
+ *     name: "my-gateway-security-policy-rule",
  *     location: "us-central1",
- *     gatewaySecurityPolicy: defaultGatewaySecurityPolicy.name,
+ *     gatewaySecurityPolicy: _default.name,
  *     enabled: true,
  *     description: "my description",
  *     priority: 0,
@@ -39,13 +41,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultGatewaySecurityPolicy = new gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", {
+ * const _default = new gcp.networksecurity.GatewaySecurityPolicy("default", {
+ *     name: "my-gateway-security-policy",
  *     location: "us-central1",
  *     description: "gateway security policy created to be used as reference by the rule.",
  * });
- * const defaultGatewaySecurityPolicyRule = new gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", {
+ * const defaultGatewaySecurityPolicyRule = new gcp.networksecurity.GatewaySecurityPolicyRule("default", {
+ *     name: "my-gateway-security-policy-rule",
  *     location: "us-central1",
- *     gatewaySecurityPolicy: defaultGatewaySecurityPolicy.name,
+ *     gatewaySecurityPolicy: _default.name,
  *     enabled: true,
  *     description: "my description",
  *     priority: 0,

@@ -46,33 +46,36 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
+//			_, err = compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("neg-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("neg-subnetwork"),
 //				IpCidrRange: pulumi.String("10.0.0.1/16"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     defaultNetwork.ID(),
+//				Network:     _default.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewInstance(ctx, "endpoint-instance", &compute.InstanceArgs{
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+//							nil,
+//						},
+//						Subnetwork: defaultSubnetwork.ID(),
+//					},
+//				},
+//				Name:        pulumi.String("endpoint-instance"),
 //				MachineType: pulumi.String("e2-medium"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
 //						Image: *pulumi.String(myImage.SelfLink),
-//					},
-//				},
-//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-//					&compute.InstanceNetworkInterfaceArgs{
-//						Subnetwork: defaultSubnetwork.ID(),
-//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
-//							nil,
-//						},
 //					},
 //				},
 //			})
@@ -80,9 +83,9 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewNetworkEndpoint(ctx, "default-endpoint", &compute.NetworkEndpointArgs{
-//				NetworkEndpointGroup: pulumi.Any(google_compute_network_endpoint_group.Neg.Name),
+//				NetworkEndpointGroup: pulumi.Any(neg.Name),
 //				Instance:             endpoint_instance.Name,
-//				Port:                 pulumi.Any(google_compute_network_endpoint_group.Neg.Default_port),
+//				Port:                 pulumi.Any(neg.DefaultPort),
 //				IpAddress: endpoint_instance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
 //					return &networkInterfaces[0].NetworkIp, nil
 //				}).(pulumi.StringPtrOutput),
@@ -91,7 +94,8 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewNetworkEndpointGroup(ctx, "group", &compute.NetworkEndpointGroupArgs{
-//				Network:     defaultNetwork.ID(),
+//				Name:        pulumi.String("my-lb-neg"),
+//				Network:     _default.ID(),
 //				Subnetwork:  defaultSubnetwork.ID(),
 //				DefaultPort: pulumi.Int(90),
 //				Zone:        pulumi.String("us-central1-a"),

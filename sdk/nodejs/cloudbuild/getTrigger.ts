@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const name = gcp.cloudbuild.getTrigger({
  *     project: "your-project-id",
- *     triggerId: google_cloudbuild_trigger["filename-trigger"].trigger_id,
+ *     triggerId: filename_trigger.triggerId,
  *     location: "location of trigger build",
  * });
  * ```
@@ -105,7 +105,7 @@ export interface GetTriggerResult {
  *
  * const name = gcp.cloudbuild.getTrigger({
  *     project: "your-project-id",
- *     triggerId: google_cloudbuild_trigger["filename-trigger"].trigger_id,
+ *     triggerId: filename_trigger.triggerId,
  *     location: "location of trigger build",
  * });
  * ```

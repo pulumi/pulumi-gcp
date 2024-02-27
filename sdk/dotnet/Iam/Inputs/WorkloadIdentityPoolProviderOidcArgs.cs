@@ -23,15 +23,6 @@ namespace Pulumi.Gcp.Iam.Inputs
         /// If this list is empty, the OIDC token audience must be equal to the full canonical
         /// resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
         /// For example:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         public InputList<string> AllowedAudiences
         {
@@ -52,15 +43,6 @@ namespace Pulumi.Gcp.Iam.Inputs
         /// .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
         /// keys are supported. The JWK must use following format and include only
         /// the following fields:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         [Input("jwksJson")]
         public Input<string>? JwksJson { get; set; }

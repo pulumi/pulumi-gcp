@@ -24,6 +24,7 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const cluster = new gcp.edgecontainer.Cluster("cluster", {
+ *     name: "default",
  *     location: "us-central1",
  *     authorization: {
  *         adminUsers: {
@@ -39,6 +40,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const _default = new gcp.edgecontainer.NodePool("default", {
+ *     name: "nodepool-1",
  *     cluster: cluster.name,
  *     location: "us-central1",
  *     nodeLocation: "us-central1-edge-example-edgesite",
@@ -57,6 +59,7 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const cluster = new gcp.edgecontainer.Cluster("cluster", {
+ *     name: "default",
  *     location: "us-central1",
  *     authorization: {
  *         adminUsers: {
@@ -71,14 +74,21 @@ import * as utilities from "../utilities";
  *         project: project.then(project => `projects/${project.number}`),
  *     },
  * });
- * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "us-central1"});
- * const cryptoKeyCryptoKey = new gcp.kms.CryptoKey("cryptoKeyCryptoKey", {keyRing: keyRing.id});
- * const cryptoKeyCryptoKeyIAMMember = new gcp.kms.CryptoKeyIAMMember("cryptoKeyCryptoKeyIAMMember", {
+ * const keyRing = new gcp.kms.KeyRing("key_ring", {
+ *     name: "keyring",
+ *     location: "us-central1",
+ * });
+ * const cryptoKeyCryptoKey = new gcp.kms.CryptoKey("crypto_key", {
+ *     name: "key",
+ *     keyRing: keyRing.id,
+ * });
+ * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("crypto_key", {
  *     cryptoKeyId: cryptoKeyCryptoKey.id,
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-edgecontainer.iam.gserviceaccount.com`),
  * });
  * const _default = new gcp.edgecontainer.NodePool("default", {
+ *     name: "nodepool-1",
  *     cluster: cluster.name,
  *     location: "us-central1",
  *     nodeLocation: "us-central1-edge-example-edgesite",
@@ -86,8 +96,6 @@ import * as utilities from "../utilities";
  *     localDiskEncryption: {
  *         kmsKey: cryptoKeyCryptoKey.id,
  *     },
- * }, {
- *     dependsOn: [cryptoKeyCryptoKeyIAMMember],
  * });
  * ```
  * ### Edgecontainer Local Control Plane Node Pool
@@ -97,7 +105,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
- * const defaultCluster = new gcp.edgecontainer.Cluster("defaultCluster", {
+ * const _default = new gcp.edgecontainer.Cluster("default", {
+ *     name: "",
  *     location: "us-central1",
  *     authorization: {
  *         adminUsers: {
@@ -121,8 +130,9 @@ import * as utilities from "../utilities";
  *         },
  *     },
  * });
- * const defaultNodePool = new gcp.edgecontainer.NodePool("defaultNodePool", {
- *     cluster: google_edgecontainer_cluster.cluster.name,
+ * const defaultNodePool = new gcp.edgecontainer.NodePool("default", {
+ *     name: "nodepool-1",
+ *     cluster: cluster.name,
  *     location: "us-central1",
  *     nodeLocation: "us-central1-edge-example-edgesite",
  *     nodeCount: 3,

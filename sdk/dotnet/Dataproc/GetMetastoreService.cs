@@ -28,8 +28,8 @@ namespace Pulumi.Gcp.Dataproc
         /// {
         ///     var foo = Gcp.Dataproc.GetMetastoreService.Invoke(new()
         ///     {
-        ///         Location = "global",
         ///         ServiceId = "foo-bar",
+        ///         Location = "global",
         ///     });
         /// 
         /// });
@@ -57,8 +57,8 @@ namespace Pulumi.Gcp.Dataproc
         /// {
         ///     var foo = Gcp.Dataproc.GetMetastoreService.Invoke(new()
         ///     {
-        ///         Location = "global",
         ///         ServiceId = "foo-bar",
+        ///         Location = "global",
         ///     });
         /// 
         /// });

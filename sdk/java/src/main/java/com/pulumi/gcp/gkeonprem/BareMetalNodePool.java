@@ -64,6 +64,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_basic = new BareMetalCluster(&#34;default-basic&#34;, BareMetalClusterArgs.builder()        
+ *             .name(&#34;my-cluster&#34;)
  *             .location(&#34;us-west1&#34;)
  *             .adminClusterMembership(&#34;projects/870316890899/locations/global/memberships/gkeonprem-terraform-test&#34;)
  *             .bareMetalVersion(&#34;1.12.3&#34;)
@@ -132,6 +133,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var nodepool_basic = new BareMetalNodePool(&#34;nodepool-basic&#34;, BareMetalNodePoolArgs.builder()        
+ *             .name(&#34;my-nodepool&#34;)
  *             .bareMetalCluster(default_basic.name())
  *             .location(&#34;us-west1&#34;)
  *             .nodePoolConfig(BareMetalNodePoolNodePoolConfigArgs.builder()
@@ -186,6 +188,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_full = new BareMetalCluster(&#34;default-full&#34;, BareMetalClusterArgs.builder()        
+ *             .name(&#34;my-cluster&#34;)
  *             .location(&#34;us-west1&#34;)
  *             .adminClusterMembership(&#34;projects/870316890899/locations/global/memberships/gkeonprem-terraform-test&#34;)
  *             .bareMetalVersion(&#34;1.12.3&#34;)
@@ -254,6 +257,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var nodepool_full = new BareMetalNodePool(&#34;nodepool-full&#34;, BareMetalNodePoolArgs.builder()        
+ *             .name(&#34;my-nodepool&#34;)
  *             .displayName(&#34;test-name&#34;)
  *             .bareMetalCluster(default_full.name())
  *             .location(&#34;us-west1&#34;)

@@ -31,7 +31,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.firebase.ExtensionsInstance;
  * import com.pulumi.gcp.firebase.ExtensionsInstanceArgs;
  * import com.pulumi.gcp.firebase.inputs.ExtensionsInstanceConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -47,12 +46,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var images = new Bucket(&#34;images&#34;, BucketArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
+ *             .name(&#34;bucket-id&#34;)
  *             .location(&#34;US&#34;)
  *             .uniformBucketLevelAccess(true)
  *             .forceDestroy(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var resizeImage = new ExtensionsInstance(&#34;resizeImage&#34;, ExtensionsInstanceArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
@@ -79,9 +77,7 @@ import javax.annotation.Nullable;
  *                 .allowedEventTypes(&#34;firebase.extensions.storage-resize-images.v1.onCompletion&#34;)
  *                 .eventarcChannel(&#34;projects/my-project-name/locations//channels/firebase&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

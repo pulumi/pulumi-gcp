@@ -360,11 +360,11 @@ class DataExchange(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        data_exchange = gcp.bigqueryanalyticshub.DataExchange("dataExchange",
+        data_exchange = gcp.bigqueryanalyticshub.DataExchange("data_exchange",
+            location="US",
             data_exchange_id="my_data_exchange",
-            description="example data exchange",
             display_name="my_data_exchange",
-            location="US")
+            description="example data exchange")
         ```
 
         ## Import
@@ -434,11 +434,11 @@ class DataExchange(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        data_exchange = gcp.bigqueryanalyticshub.DataExchange("dataExchange",
+        data_exchange = gcp.bigqueryanalyticshub.DataExchange("data_exchange",
+            location="US",
             data_exchange_id="my_data_exchange",
-            description="example data exchange",
             display_name="my_data_exchange",
-            location="US")
+            description="example data exchange")
         ```
 
         ## Import

@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  *     project: project.projectId,
  * }));
  * const primary = new gcp.container.AttachedCluster("primary", {
+ *     name: "basic",
  *     location: "us-west1",
  *     project: project.then(project => project.projectId),
  *     description: "Test cluster",
@@ -39,6 +40,71 @@ import * as utilities from "../utilities";
  *     platformVersion: versions.then(versions => versions.validVersions?.[0]),
  *     fleet: {
  *         project: project.then(project => `projects/${project.number}`),
+ *     },
+ * });
+ * ```
+ * ### Container Attached Cluster Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const versions = project.then(project => gcp.container.getAttachedVersions({
+ *     location: "us-west1",
+ *     project: project.projectId,
+ * }));
+ * const primary = new gcp.container.AttachedCluster("primary", {
+ *     name: "basic",
+ *     project: project.then(project => project.projectId),
+ *     location: "us-west1",
+ *     description: "Test cluster",
+ *     distribution: "aks",
+ *     annotations: {
+ *         "label-one": "value-one",
+ *     },
+ *     authorization: {
+ *         adminUsers: [
+ *             "user1@example.com",
+ *             "user2@example.com",
+ *         ],
+ *         adminGroups: [
+ *             "group1@example.com",
+ *             "group2@example.com",
+ *         ],
+ *     },
+ *     oidcConfig: {
+ *         issuerUrl: "https://oidc.issuer.url",
+ *         jwks: std.base64encode({
+ *             input: "{\"keys\":[{\"use\":\"sig\",\"kty\":\"RSA\",\"kid\":\"testid\",\"alg\":\"RS256\",\"n\":\"somedata\",\"e\":\"AQAB\"}]}",
+ *         }).then(invoke => invoke.result),
+ *     },
+ *     platformVersion: versions.then(versions => versions.validVersions?.[0]),
+ *     fleet: {
+ *         project: project.then(project => `projects/${project.number}`),
+ *     },
+ *     loggingConfig: {
+ *         componentConfig: {
+ *             enableComponents: [
+ *                 "SYSTEM_COMPONENTS",
+ *                 "WORKLOADS",
+ *             ],
+ *         },
+ *     },
+ *     monitoringConfig: {
+ *         managedPrometheusConfig: {
+ *             enabled: true,
+ *         },
+ *     },
+ *     binaryAuthorization: {
+ *         evaluationMode: "PROJECT_SINGLETON_POLICY_ENFORCE",
+ *     },
+ *     proxyConfig: {
+ *         kubernetesSecret: {
+ *             name: "proxy-config",
+ *             namespace: "default",
+ *         },
  *     },
  * });
  * ```
@@ -54,6 +120,7 @@ import * as utilities from "../utilities";
  *     project: project.projectId,
  * }));
  * const primary = new gcp.container.AttachedCluster("primary", {
+ *     name: "basic",
  *     location: "us-west1",
  *     project: project.then(project => project.projectId),
  *     description: "Test cluster",

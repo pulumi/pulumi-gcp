@@ -415,15 +415,18 @@ class AppConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        service_account = gcp.serviceaccount.Account("serviceAccount",
+        service_account = gcp.serviceaccount.Account("service_account",
             account_id="my-account",
             display_name="Test Service Account")
-        app_connector = gcp.beyondcorp.AppConnector("appConnector", principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-            service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
-                email=service_account.email,
-            ),
-        ))
-        app_connection = gcp.beyondcorp.AppConnection("appConnection",
+        app_connector = gcp.beyondcorp.AppConnector("app_connector",
+            name="my-app-connector",
+            principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
+                service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
+                    email=service_account.email,
+                ),
+            ))
+        app_connection = gcp.beyondcorp.AppConnection("app_connection",
+            name="my-app-connection",
             type="TCP_PROXY",
             application_endpoint=gcp.beyondcorp.AppConnectionApplicationEndpointArgs(
                 host="foo-host",
@@ -437,18 +440,22 @@ class AppConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        service_account = gcp.serviceaccount.Account("serviceAccount",
+        service_account = gcp.serviceaccount.Account("service_account",
             account_id="my-account",
             display_name="Test Service Account")
-        app_gateway = gcp.beyondcorp.AppGateway("appGateway",
+        app_gateway = gcp.beyondcorp.AppGateway("app_gateway",
+            name="my-app-gateway",
             type="TCP_PROXY",
             host_type="GCP_REGIONAL_MIG")
-        app_connector = gcp.beyondcorp.AppConnector("appConnector", principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-            service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
-                email=service_account.email,
-            ),
-        ))
-        app_connection = gcp.beyondcorp.AppConnection("appConnection",
+        app_connector = gcp.beyondcorp.AppConnector("app_connector",
+            name="my-app-connector",
+            principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
+                service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
+                    email=service_account.email,
+                ),
+            ))
+        app_connection = gcp.beyondcorp.AppConnection("app_connection",
+            name="my-app-connection",
             type="TCP_PROXY",
             display_name="some display name",
             application_endpoint=gcp.beyondcorp.AppConnectionApplicationEndpointArgs(
@@ -539,15 +546,18 @@ class AppConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        service_account = gcp.serviceaccount.Account("serviceAccount",
+        service_account = gcp.serviceaccount.Account("service_account",
             account_id="my-account",
             display_name="Test Service Account")
-        app_connector = gcp.beyondcorp.AppConnector("appConnector", principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-            service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
-                email=service_account.email,
-            ),
-        ))
-        app_connection = gcp.beyondcorp.AppConnection("appConnection",
+        app_connector = gcp.beyondcorp.AppConnector("app_connector",
+            name="my-app-connector",
+            principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
+                service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
+                    email=service_account.email,
+                ),
+            ))
+        app_connection = gcp.beyondcorp.AppConnection("app_connection",
+            name="my-app-connection",
             type="TCP_PROXY",
             application_endpoint=gcp.beyondcorp.AppConnectionApplicationEndpointArgs(
                 host="foo-host",
@@ -561,18 +571,22 @@ class AppConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        service_account = gcp.serviceaccount.Account("serviceAccount",
+        service_account = gcp.serviceaccount.Account("service_account",
             account_id="my-account",
             display_name="Test Service Account")
-        app_gateway = gcp.beyondcorp.AppGateway("appGateway",
+        app_gateway = gcp.beyondcorp.AppGateway("app_gateway",
+            name="my-app-gateway",
             type="TCP_PROXY",
             host_type="GCP_REGIONAL_MIG")
-        app_connector = gcp.beyondcorp.AppConnector("appConnector", principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-            service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
-                email=service_account.email,
-            ),
-        ))
-        app_connection = gcp.beyondcorp.AppConnection("appConnection",
+        app_connector = gcp.beyondcorp.AppConnector("app_connector",
+            name="my-app-connector",
+            principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
+                service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
+                    email=service_account.email,
+                ),
+            ))
+        app_connection = gcp.beyondcorp.AppConnection("app_connection",
+            name="my-app-connection",
             type="TCP_PROXY",
             display_name="some display name",
             application_endpoint=gcp.beyondcorp.AppConnectionApplicationEndpointArgs(

@@ -557,7 +557,7 @@ class Network(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        vpc_network = gcp.compute.Network("vpcNetwork")
+        vpc_network = gcp.compute.Network("vpc_network", name="vpc-network")
         ```
         ### Network Custom Mtu
 
@@ -565,10 +565,11 @@ class Network(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        vpc_network = gcp.compute.Network("vpcNetwork",
+        vpc_network = gcp.compute.Network("vpc_network",
+            project="my-project-name",
+            name="vpc-network",
             auto_create_subnetworks=True,
-            mtu=1460,
-            project="my-project-name")
+            mtu=1460)
         ```
         ### Network Custom Firewall Enforcement Order
 
@@ -576,10 +577,11 @@ class Network(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        vpc_network = gcp.compute.Network("vpcNetwork",
+        vpc_network = gcp.compute.Network("vpc_network",
+            project="my-project-name",
+            name="vpc-network",
             auto_create_subnetworks=True,
-            network_firewall_policy_enforcement_order="BEFORE_CLASSIC_FIREWALL",
-            project="my-project-name")
+            network_firewall_policy_enforcement_order="BEFORE_CLASSIC_FIREWALL")
         ```
 
         ## Import
@@ -673,7 +675,7 @@ class Network(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        vpc_network = gcp.compute.Network("vpcNetwork")
+        vpc_network = gcp.compute.Network("vpc_network", name="vpc-network")
         ```
         ### Network Custom Mtu
 
@@ -681,10 +683,11 @@ class Network(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        vpc_network = gcp.compute.Network("vpcNetwork",
+        vpc_network = gcp.compute.Network("vpc_network",
+            project="my-project-name",
+            name="vpc-network",
             auto_create_subnetworks=True,
-            mtu=1460,
-            project="my-project-name")
+            mtu=1460)
         ```
         ### Network Custom Firewall Enforcement Order
 
@@ -692,10 +695,11 @@ class Network(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        vpc_network = gcp.compute.Network("vpcNetwork",
+        vpc_network = gcp.compute.Network("vpc_network",
+            project="my-project-name",
+            name="vpc-network",
             auto_create_subnetworks=True,
-            network_firewall_policy_enforcement_order="BEFORE_CLASSIC_FIREWALL",
-            project="my-project-name")
+            network_firewall_policy_enforcement_order="BEFORE_CLASSIC_FIREWALL")
         ```
 
         ## Import

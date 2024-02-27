@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.Compute
         /// {
         ///     var policy = Gcp.Compute.GetDiskIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_compute_disk.Default.Project,
-        ///         Zone = google_compute_disk.Default.Zone,
-        ///         Name = google_compute_disk.Default.Name,
+        ///         Project = @default.Project,
+        ///         Zone = @default.Zone,
+        ///         Name = @default.Name,
         ///     });
         /// 
         /// });
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.Compute
         /// {
         ///     var policy = Gcp.Compute.GetDiskIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_compute_disk.Default.Project,
-        ///         Zone = google_compute_disk.Default.Zone,
-        ///         Name = google_compute_disk.Default.Name,
+        ///         Project = @default.Project,
+        ///         Zone = @default.Zone,
+        ///         Name = @default.Name,
         ///     });
         /// 
         /// });

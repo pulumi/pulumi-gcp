@@ -37,8 +37,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewNodeTemplate(ctx, "template", &compute.NodeTemplateArgs{
-//				NodeType: pulumi.String("n1-node-96-624"),
+//				Name:     pulumi.String("soletenant-tmpl"),
 //				Region:   pulumi.String("us-central1"),
+//				NodeType: pulumi.String("n1-node-96-624"),
 //			})
 //			if err != nil {
 //				return err
@@ -69,11 +70,12 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewNodeTemplate(ctx, "template", &compute.NodeTemplateArgs{
+//				Name:     pulumi.String("soletenant-with-licenses"),
+//				Region:   pulumi.String("us-central1"),
+//				NodeType: pulumi.String("n1-node-96-624"),
 //				NodeAffinityLabels: pulumi.StringMap{
 //					"foo": pulumi.String("baz"),
 //				},
-//				NodeType: pulumi.String("n1-node-96-624"),
-//				Region:   pulumi.String("us-central1"),
 //				ServerBinding: &compute.NodeTemplateServerBindingArgs{
 //					Type: pulumi.String("RESTART_NODE_ON_MINIMAL_SERVERS"),
 //				},

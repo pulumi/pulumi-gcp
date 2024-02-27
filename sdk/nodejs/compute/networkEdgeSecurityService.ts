@@ -13,10 +13,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.compute.NetworkEdgeSecurityService("default", {
+ *     name: "my-edge-security-service",
  *     region: "us-east1",
  *     description: "My basic resource",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

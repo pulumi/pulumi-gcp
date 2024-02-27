@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const featureonlinestore = new gcp.vertex.AiFeatureOnlineStore("featureonlinestore", {
+ *     name: "example_feature_view",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -68,6 +69,7 @@ import * as utilities from "../utilities";
  * `,
  * });
  * const featureview = new gcp.vertex.AiFeatureOnlineStoreFeatureview("featureview", {
+ *     name: "example_feature_view",
  *     region: "us-central1",
  *     featureOnlineStore: featureonlinestore.name,
  *     syncConfig: {
@@ -87,6 +89,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const featureonlinestore = new gcp.vertex.AiFeatureOnlineStore("featureonlinestore", {
+ *     name: "example_feature_view_feature_registry",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -99,13 +102,13 @@ import * as utilities from "../utilities";
  *         },
  *     },
  * });
- * const sampleDataset = new gcp.bigquery.Dataset("sampleDataset", {
+ * const sampleDataset = new gcp.bigquery.Dataset("sample_dataset", {
  *     datasetId: "example_feature_view_feature_registry",
  *     friendlyName: "test",
  *     description: "This is a test description",
  *     location: "US",
  * });
- * const sampleTable = new gcp.bigquery.Table("sampleTable", {
+ * const sampleTable = new gcp.bigquery.Table("sample_table", {
  *     deletionProtection: false,
  *     datasetId: sampleDataset.datasetId,
  *     tableId: "example_feature_view_feature_registry",
@@ -128,7 +131,8 @@ import * as utilities from "../utilities";
  * ]
  * `,
  * });
- * const sampleFeatureGroup = new gcp.vertex.AiFeatureGroup("sampleFeatureGroup", {
+ * const sampleFeatureGroup = new gcp.vertex.AiFeatureGroup("sample_feature_group", {
+ *     name: "example_feature_view_feature_registry",
  *     description: "A sample feature group",
  *     region: "us-central1",
  *     labels: {
@@ -141,7 +145,8 @@ import * as utilities from "../utilities";
  *         entityIdColumns: ["feature_id"],
  *     },
  * });
- * const sampleFeature = new gcp.vertex.AiFeatureGroupFeature("sampleFeature", {
+ * const sampleFeature = new gcp.vertex.AiFeatureGroupFeature("sample_feature", {
+ *     name: "example_feature_view_feature_registry",
  *     region: "us-central1",
  *     featureGroup: sampleFeatureGroup.name,
  *     description: "A sample feature",
@@ -149,7 +154,8 @@ import * as utilities from "../utilities";
  *         "label-one": "value-one",
  *     },
  * });
- * const featureviewFeatureregistry = new gcp.vertex.AiFeatureOnlineStoreFeatureview("featureviewFeatureregistry", {
+ * const featureviewFeatureregistry = new gcp.vertex.AiFeatureOnlineStoreFeatureview("featureview_featureregistry", {
+ *     name: "example_feature_view_feature_registry",
  *     region: "us-central1",
  *     featureOnlineStore: featureonlinestore.name,
  *     syncConfig: {
@@ -170,6 +176,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const featureonlinestore = new gcp.vertex.AiFeatureOnlineStore("featureonlinestore", {
+ *     name: "example_feature_view_vector_search",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -184,16 +191,12 @@ import * as utilities from "../utilities";
  *     embeddingManagement: {
  *         enabled: true,
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const tf_test_dataset = new gcp.bigquery.Dataset("tf-test-dataset", {
  *     datasetId: "example_feature_view_vector_search",
  *     friendlyName: "test",
  *     description: "This is a test description",
  *     location: "US",
- * }, {
- *     provider: google_beta,
  * });
  * const tf_test_table = new gcp.bigquery.Table("tf-test-table", {
  *     deletionProtection: false,
@@ -244,10 +247,9 @@ import * as utilities from "../utilities";
  * }
  * ]
  * `,
- * }, {
- *     provider: google_beta,
  * });
- * const featureviewVectorSearch = new gcp.vertex.AiFeatureOnlineStoreFeatureview("featureviewVectorSearch", {
+ * const featureviewVectorSearch = new gcp.vertex.AiFeatureOnlineStoreFeatureview("featureview_vector_search", {
+ *     name: "example_feature_view_vector_search",
  *     region: "us-central1",
  *     featureOnlineStore: featureonlinestore.name,
  *     syncConfig: {
@@ -267,8 +269,6 @@ import * as utilities from "../utilities";
  *         },
  *         embeddingDimension: 2,
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const project = gcp.organizations.getProject({});
  * ```

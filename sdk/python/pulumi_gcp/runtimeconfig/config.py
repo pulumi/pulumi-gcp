@@ -157,7 +157,9 @@ class Config(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_runtime_config = gcp.runtimeconfig.Config("my-runtime-config", description="Runtime configuration values for my service")
+        my_runtime_config = gcp.runtimeconfig.Config("my-runtime-config",
+            name="my-service-runtime-config",
+            description="Runtime configuration values for my service")
         ```
 
         ## Import
@@ -205,7 +207,9 @@ class Config(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_runtime_config = gcp.runtimeconfig.Config("my-runtime-config", description="Runtime configuration values for my service")
+        my_runtime_config = gcp.runtimeconfig.Config("my-runtime-config",
+            name="my-service-runtime-config",
+            description="Runtime configuration values for my service")
         ```
 
         ## Import

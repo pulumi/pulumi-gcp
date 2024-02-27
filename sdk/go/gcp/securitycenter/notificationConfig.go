@@ -42,11 +42,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sccNotification, err := pubsub.NewTopic(ctx, "sccNotification", nil)
+//			sccNotification, err := pubsub.NewTopic(ctx, "scc_notification", &pubsub.TopicArgs{
+//				Name: pulumi.String("my-topic"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = securitycenter.NewNotificationConfig(ctx, "customNotificationConfig", &securitycenter.NotificationConfigArgs{
+//			_, err = securitycenter.NewNotificationConfig(ctx, "custom_notification_config", &securitycenter.NotificationConfigArgs{
 //				ConfigId:     pulumi.String("my-config"),
 //				Organization: pulumi.String("123456789"),
 //				Description:  pulumi.String("My custom Cloud Security Command Center Finding Notification Configuration"),

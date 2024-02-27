@@ -53,6 +53,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var note = new Note(&#34;note&#34;, NoteArgs.builder()        
+ *             .name(&#34;test-attestor-note&#34;)
  *             .attestationAuthority(NoteAttestationAuthorityArgs.builder()
  *                 .hint(NoteAttestationAuthorityHintArgs.builder()
  *                     .humanReadableName(&#34;Attestor Note&#34;)
@@ -61,6 +62,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var attestor = new Attestor(&#34;attestor&#34;, AttestorArgs.builder()        
+ *             .name(&#34;test-attestor&#34;)
  *             .attestationAuthorityNote(AttestorAttestationAuthorityNoteArgs.builder()
  *                 .noteReference(note.name())
  *                 .publicKeys(AttestorAttestationAuthorityNotePublicKeyArgs.builder()
@@ -123,10 +125,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var keyring = new KeyRing(&#34;keyring&#34;, KeyRingArgs.builder()        
+ *             .name(&#34;test-attestor-key-ring&#34;)
  *             .location(&#34;global&#34;)
  *             .build());
  * 
  *         var crypto_key = new CryptoKey(&#34;crypto-key&#34;, CryptoKeyArgs.builder()        
+ *             .name(&#34;test-attestor-key&#34;)
  *             .keyRing(keyring.id())
  *             .purpose(&#34;ASYMMETRIC_SIGN&#34;)
  *             .versionTemplate(CryptoKeyVersionTemplateArgs.builder()
@@ -139,6 +143,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var note = new Note(&#34;note&#34;, NoteArgs.builder()        
+ *             .name(&#34;test-attestor-note&#34;)
  *             .attestationAuthority(NoteAttestationAuthorityArgs.builder()
  *                 .hint(NoteAttestationAuthorityHintArgs.builder()
  *                     .humanReadableName(&#34;Attestor Note&#34;)
@@ -147,6 +152,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var attestor = new Attestor(&#34;attestor&#34;, AttestorArgs.builder()        
+ *             .name(&#34;test-attestor&#34;)
  *             .attestationAuthorityNote(AttestorAttestationAuthorityNoteArgs.builder()
  *                 .noteReference(note.name())
  *                 .publicKeys(AttestorAttestationAuthorityNotePublicKeyArgs.builder()

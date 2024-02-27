@@ -17,9 +17,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const network_1 = new gcp.compute.Network("network-1", {autoCreateSubnetworks: false});
- * const network_2 = new gcp.compute.Network("network-2", {autoCreateSubnetworks: false});
+ * const network_1 = new gcp.compute.Network("network-1", {
+ *     name: "network-1",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const network_2 = new gcp.compute.Network("network-2", {
+ *     name: "network-2",
+ *     autoCreateSubnetworks: false,
+ * });
  * const subnetwork_1 = new gcp.compute.Subnetwork("subnetwork-1", {
+ *     name: network_1.name,
  *     network: network_1.name,
  *     ipCidrRange: "10.0.36.0/24",
  *     region: "us-central1",
@@ -36,6 +43,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * const cluster_1 = new gcp.container.Cluster("cluster-1", {
+ *     name: "cluster-1",
  *     location: "us-central1-c",
  *     initialNodeCount: 1,
  *     networkingMode: "VPC_NATIVE",

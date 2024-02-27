@@ -14,34 +14,27 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {}, {
- *     provider: google_beta,
- * });
- * const privateIpAddress = new gcp.compute.GlobalAddress("privateIpAddress", {
+ * const _default = new gcp.compute.Network("default", {name: "vpc-network"});
+ * const privateIpAddress = new gcp.compute.GlobalAddress("private_ip_address", {
+ *     name: "vpc-network",
  *     addressType: "INTERNAL",
  *     purpose: "VPC_PEERING",
  *     prefixLength: 20,
- *     network: defaultNetwork.id,
- * }, {
- *     provider: google_beta,
+ *     network: _default.id,
  * });
- * const defaultConnection = new gcp.servicenetworking.Connection("defaultConnection", {
- *     network: defaultNetwork.id,
+ * const defaultConnection = new gcp.servicenetworking.Connection("default", {
+ *     network: _default.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [privateIpAddress.name],
- * }, {
- *     provider: google_beta,
  * });
  * const ms_console = new gcp.backupdisasterrecovery.ManagementServer("ms-console", {
  *     location: "us-central1",
+ *     name: "ms-console",
  *     type: "BACKUP_RESTORE",
  *     networks: [{
- *         network: defaultNetwork.id,
+ *         network: _default.id,
  *         peeringMode: "PRIVATE_SERVICE_ACCESS",
  *     }],
- * }, {
- *     provider: google_beta,
- *     dependsOn: [defaultConnection],
  * });
  * ```
  *

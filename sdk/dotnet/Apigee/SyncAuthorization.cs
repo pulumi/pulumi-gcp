@@ -31,6 +31,8 @@ namespace Pulumi.Gcp.Apigee
     /// {
     ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
+    ///         ProjectId = "my-project",
+    ///         Name = "my-project",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
     ///     });
@@ -41,20 +43,14 @@ namespace Pulumi.Gcp.Apigee
     ///         ServiceName = "apigee.googleapis.com",
     ///     });
     /// 
-    ///     var apigeeOrg = new Gcp.Apigee.Organization("apigeeOrg", new()
+    ///     var apigeeOrg = new Gcp.Apigee.Organization("apigee_org", new()
     ///     {
     ///         AnalyticsRegion = "us-central1",
     ///         ProjectId = project.ProjectId,
     ///         RuntimeType = "HYBRID",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             apigee,
-    ///         },
     ///     });
     /// 
-    ///     var serviceAccount = new Gcp.ServiceAccount.Account("serviceAccount", new()
+    ///     var serviceAccount = new Gcp.ServiceAccount.Account("service_account", new()
     ///     {
     ///         AccountId = "my-account",
     ///         DisplayName = "Service Account",
@@ -70,17 +66,12 @@ namespace Pulumi.Gcp.Apigee
     ///         },
     ///     });
     /// 
-    ///     var apigeeSyncAuthorization = new Gcp.Apigee.SyncAuthorization("apigeeSyncAuthorization", new()
+    ///     var apigeeSyncAuthorization = new Gcp.Apigee.SyncAuthorization("apigee_sync_authorization", new()
     ///     {
+    ///         Name = apigeeOrg.Name,
     ///         Identities = new[]
     ///         {
     ///             serviceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             synchronizer_iam,
     ///         },
     ///     });
     /// 

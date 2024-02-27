@@ -42,7 +42,6 @@ namespace Pulumi.Gcp.Monitoring
     ///   }
     /// }
     /// 
-    /// 
     /// ",
     ///     });
     /// 
@@ -118,7 +117,6 @@ namespace Pulumi.Gcp.Monitoring
     ///     ]
     ///   }
     /// }
-    /// 
     /// 
     /// ",
     ///     });

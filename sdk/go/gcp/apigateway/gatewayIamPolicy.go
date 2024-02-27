@@ -55,11 +55,11 @@ import (
 //				return err
 //			}
 //			_, err = apigateway.NewGatewayIamPolicy(ctx, "policy", &apigateway.GatewayIamPolicyArgs{
-//				Project:    pulumi.Any(google_api_gateway_gateway.Api_gw.Project),
-//				Region:     pulumi.Any(google_api_gateway_gateway.Api_gw.Region),
-//				Gateway:    pulumi.Any(google_api_gateway_gateway.Api_gw.Gateway_id),
+//				Project:    pulumi.Any(apiGw.Project),
+//				Region:     pulumi.Any(apiGw.Region),
+//				Gateway:    pulumi.Any(apiGw.GatewayId),
 //				PolicyData: *pulumi.String(admin.PolicyData),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -84,14 +84,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := apigateway.NewGatewayIamBinding(ctx, "binding", &apigateway.GatewayIamBindingArgs{
-//				Project: pulumi.Any(google_api_gateway_gateway.Api_gw.Project),
-//				Region:  pulumi.Any(google_api_gateway_gateway.Api_gw.Region),
-//				Gateway: pulumi.Any(google_api_gateway_gateway.Api_gw.Gateway_id),
+//				Project: pulumi.Any(apiGw.Project),
+//				Region:  pulumi.Any(apiGw.Region),
+//				Gateway: pulumi.Any(apiGw.GatewayId),
 //				Role:    pulumi.String("roles/apigateway.viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -116,12 +116,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := apigateway.NewGatewayIamMember(ctx, "member", &apigateway.GatewayIamMemberArgs{
-//				Project: pulumi.Any(google_api_gateway_gateway.Api_gw.Project),
-//				Region:  pulumi.Any(google_api_gateway_gateway.Api_gw.Region),
-//				Gateway: pulumi.Any(google_api_gateway_gateway.Api_gw.Gateway_id),
+//				Project: pulumi.Any(apiGw.Project),
+//				Region:  pulumi.Any(apiGw.Region),
+//				Gateway: pulumi.Any(apiGw.GatewayId),
 //				Role:    pulumi.String("roles/apigateway.viewer"),
 //				Member:  pulumi.String("user:jane@example.com"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

@@ -338,7 +338,7 @@ class CaPoolIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.certificateauthority.CaPoolIamPolicy("policy",
-            ca_pool=google_privateca_ca_pool["default"]["id"],
+            ca_pool=default["id"],
             policy_data=admin.policy_data)
         ```
 
@@ -358,7 +358,7 @@ class CaPoolIamBinding(pulumi.CustomResource):
             ),
         )])
         policy = gcp.certificateauthority.CaPoolIamPolicy("policy",
-            ca_pool=google_privateca_ca_pool["default"]["id"],
+            ca_pool=default["id"],
             policy_data=admin.policy_data)
         ```
         ## google\\_privateca\\_ca\\_pool\\_iam\\_binding
@@ -368,7 +368,7 @@ class CaPoolIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.certificateauthority.CaPoolIamBinding("binding",
-            ca_pool=google_privateca_ca_pool["default"]["id"],
+            ca_pool=default["id"],
             role="roles/privateca.certificateManager",
             members=["user:jane@example.com"])
         ```
@@ -380,7 +380,7 @@ class CaPoolIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.certificateauthority.CaPoolIamBinding("binding",
-            ca_pool=google_privateca_ca_pool["default"]["id"],
+            ca_pool=default["id"],
             role="roles/privateca.certificateManager",
             members=["user:jane@example.com"],
             condition=gcp.certificateauthority.CaPoolIamBindingConditionArgs(
@@ -396,7 +396,7 @@ class CaPoolIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.certificateauthority.CaPoolIamMember("member",
-            ca_pool=google_privateca_ca_pool["default"]["id"],
+            ca_pool=default["id"],
             role="roles/privateca.certificateManager",
             member="user:jane@example.com")
         ```
@@ -408,7 +408,7 @@ class CaPoolIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.certificateauthority.CaPoolIamMember("member",
-            ca_pool=google_privateca_ca_pool["default"]["id"],
+            ca_pool=default["id"],
             role="roles/privateca.certificateManager",
             member="user:jane@example.com",
             condition=gcp.certificateauthority.CaPoolIamMemberConditionArgs(
@@ -514,7 +514,7 @@ class CaPoolIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.certificateauthority.CaPoolIamPolicy("policy",
-            ca_pool=google_privateca_ca_pool["default"]["id"],
+            ca_pool=default["id"],
             policy_data=admin.policy_data)
         ```
 
@@ -534,7 +534,7 @@ class CaPoolIamBinding(pulumi.CustomResource):
             ),
         )])
         policy = gcp.certificateauthority.CaPoolIamPolicy("policy",
-            ca_pool=google_privateca_ca_pool["default"]["id"],
+            ca_pool=default["id"],
             policy_data=admin.policy_data)
         ```
         ## google\\_privateca\\_ca\\_pool\\_iam\\_binding
@@ -544,7 +544,7 @@ class CaPoolIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.certificateauthority.CaPoolIamBinding("binding",
-            ca_pool=google_privateca_ca_pool["default"]["id"],
+            ca_pool=default["id"],
             role="roles/privateca.certificateManager",
             members=["user:jane@example.com"])
         ```
@@ -556,7 +556,7 @@ class CaPoolIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.certificateauthority.CaPoolIamBinding("binding",
-            ca_pool=google_privateca_ca_pool["default"]["id"],
+            ca_pool=default["id"],
             role="roles/privateca.certificateManager",
             members=["user:jane@example.com"],
             condition=gcp.certificateauthority.CaPoolIamBindingConditionArgs(
@@ -572,7 +572,7 @@ class CaPoolIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.certificateauthority.CaPoolIamMember("member",
-            ca_pool=google_privateca_ca_pool["default"]["id"],
+            ca_pool=default["id"],
             role="roles/privateca.certificateManager",
             member="user:jane@example.com")
         ```
@@ -584,7 +584,7 @@ class CaPoolIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.certificateauthority.CaPoolIamMember("member",
-            ca_pool=google_privateca_ca_pool["default"]["id"],
+            ca_pool=default["id"],
             role="roles/privateca.certificateManager",
             member="user:jane@example.com",
             condition=gcp.certificateauthority.CaPoolIamMemberConditionArgs(

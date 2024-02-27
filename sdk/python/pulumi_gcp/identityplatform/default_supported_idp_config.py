@@ -281,11 +281,11 @@ class DefaultSupportedIdpConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        idp_config = gcp.identityplatform.DefaultSupportedIdpConfig("idpConfig",
-            client_id="client-id",
-            client_secret="secret",
+        idp_config = gcp.identityplatform.DefaultSupportedIdpConfig("idp_config",
             enabled=True,
-            idp_id="playgames.google.com")
+            idp_id="playgames.google.com",
+            client_id="client-id",
+            client_secret="secret")
         ```
 
         ## Import
@@ -354,11 +354,11 @@ class DefaultSupportedIdpConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        idp_config = gcp.identityplatform.DefaultSupportedIdpConfig("idpConfig",
-            client_id="client-id",
-            client_secret="secret",
+        idp_config = gcp.identityplatform.DefaultSupportedIdpConfig("idp_config",
             enabled=True,
-            idp_id="playgames.google.com")
+            idp_id="playgames.google.com",
+            client_id="client-id",
+            client_secret="secret")
         ```
 
         ## Import

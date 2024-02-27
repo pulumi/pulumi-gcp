@@ -28,8 +28,8 @@ namespace Pulumi.Gcp.Dns
         /// {
         ///     var policy = Gcp.Dns.GetManagedZoneIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_dns_managed_zone.Default.Project,
-        ///         ManagedZone = google_dns_managed_zone.Default.Name,
+        ///         Project = @default.Project,
+        ///         ManagedZone = @default.Name,
         ///     });
         /// 
         /// });
@@ -55,8 +55,8 @@ namespace Pulumi.Gcp.Dns
         /// {
         ///     var policy = Gcp.Dns.GetManagedZoneIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_dns_managed_zone.Default.Project,
-        ///         ManagedZone = google_dns_managed_zone.Default.Name,
+        ///         Project = @default.Project,
+        ///         ManagedZone = @default.Name,
         ///     });
         /// 
         /// });

@@ -101,10 +101,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
+ *             .name(&#34;example-keyring&#34;)
  *             .location(&#34;us&#34;)
  *             .build());
  * 
  *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
+ *             .name(&#34;example-key&#34;)
  *             .keyRing(keyRing.id())
  *             .build());
  * 
@@ -229,13 +231,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var publicDataset = new Dataset(&#34;publicDataset&#34;, DatasetArgs.builder()        
+ *         var public_ = new Dataset(&#34;public&#34;, DatasetArgs.builder()        
  *             .datasetId(&#34;public_dataset&#34;)
  *             .description(&#34;This dataset is public&#34;)
  *             .build());
  * 
  *         var publicRoutine = new Routine(&#34;publicRoutine&#34;, RoutineArgs.builder()        
- *             .datasetId(publicDataset.datasetId())
+ *             .datasetId(public_.datasetId())
  *             .routineId(&#34;public_routine&#34;)
  *             .routineType(&#34;TABLE_VALUED_FUNCTION&#34;)
  *             .language(&#34;SQL&#34;)
@@ -291,7 +293,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.bigquery.Dataset;
  * import com.pulumi.gcp.bigquery.DatasetArgs;
  * import com.pulumi.gcp.bigquery.inputs.DatasetExternalDatasetReferenceArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -314,9 +315,7 @@ import javax.annotation.Nullable;
  *                 .externalSource(&#34;aws-glue://arn:aws:glue:us-east-1:999999999999:database/database&#34;)
  *                 .connection(&#34;projects/project/locations/aws-us-east-1/connections/connection&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

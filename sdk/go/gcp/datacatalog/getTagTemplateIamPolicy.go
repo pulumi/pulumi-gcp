@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := datacatalog.LookupTagTemplateIamPolicy(ctx, &datacatalog.LookupTagTemplateIamPolicyArgs{
-//				TagTemplate: google_data_catalog_tag_template.Basic_tag_template.Name,
+//				TagTemplate: basicTagTemplate.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

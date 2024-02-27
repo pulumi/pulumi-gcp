@@ -33,16 +33,16 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// {
     ///     var basic = new Gcp.DiscoveryEngine.DataStore("basic", new()
     ///     {
-    ///         ContentConfig = "NO_CONTENT",
-    ///         CreateAdvancedSiteSearch = false,
+    ///         Location = "global",
     ///         DataStoreId = "data-store-id",
     ///         DisplayName = "tf-test-structured-datastore",
     ///         IndustryVertical = "GENERIC",
-    ///         Location = "global",
+    ///         ContentConfig = "NO_CONTENT",
     ///         SolutionTypes = new[]
     ///         {
     ///             "SOLUTION_TYPE_SEARCH",
     ///         },
+    ///         CreateAdvancedSiteSearch = false,
     ///     });
     /// 
     /// });

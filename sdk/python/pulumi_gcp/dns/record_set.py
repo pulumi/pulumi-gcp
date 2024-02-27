@@ -307,20 +307,23 @@ class RecordSet(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        frontend_instance = gcp.compute.Instance("frontendInstance",
+        frontend_instance = gcp.compute.Instance("frontend",
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                network="default",
+            )],
+            name="frontend",
             machine_type="g1-small",
             zone="us-central1-b",
             boot_disk=gcp.compute.InstanceBootDiskArgs(
                 initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
                     image="debian-cloud/debian-11",
                 ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-            )])
-        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
-        frontend_record_set = gcp.dns.RecordSet("frontendRecordSet",
+            ))
+        prod = gcp.dns.ManagedZone("prod",
+            name="prod-zone",
+            dns_name="prod.mydomain.com.")
+        frontend = gcp.dns.RecordSet("frontend",
             name=prod.dns_name.apply(lambda dns_name: f"frontend.{dns_name}"),
             type="A",
             ttl=300,
@@ -333,8 +336,10 @@ class RecordSet(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
-        record_set = gcp.dns.RecordSet("recordSet",
+        prod = gcp.dns.ManagedZone("prod",
+            name="prod-zone",
+            dns_name="prod.mydomain.com.")
+        a = gcp.dns.RecordSet("a",
             name=prod.dns_name.apply(lambda dns_name: f"backend.{dns_name}"),
             managed_zone=prod.name,
             type="A",
@@ -347,7 +352,9 @@ class RecordSet(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        prod = gcp.dns.ManagedZone("prod",
+            name="prod-zone",
+            dns_name="prod.mydomain.com.")
         mx = gcp.dns.RecordSet("mx",
             name=prod.dns_name,
             managed_zone=prod.name,
@@ -369,7 +376,9 @@ class RecordSet(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        prod = gcp.dns.ManagedZone("prod",
+            name="prod-zone",
+            dns_name="prod.mydomain.com.")
         spf = gcp.dns.RecordSet("spf",
             name=prod.dns_name.apply(lambda dns_name: f"frontend.{dns_name}"),
             managed_zone=prod.name,
@@ -385,7 +394,9 @@ class RecordSet(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        prod = gcp.dns.ManagedZone("prod",
+            name="prod-zone",
+            dns_name="prod.mydomain.com.")
         cname = gcp.dns.RecordSet("cname",
             name=prod.dns_name.apply(lambda dns_name: f"frontend.{dns_name}"),
             managed_zone=prod.name,
@@ -401,8 +412,8 @@ class RecordSet(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         geo = gcp.dns.RecordSet("geo",
-            name=f"backend.{google_dns_managed_zone['prod']['dns_name']}",
-            managed_zone=google_dns_managed_zone["prod"]["name"],
+            name=f"backend.{prod['dnsName']}",
+            managed_zone=prod["name"],
             type="A",
             ttl=300,
             routing_policy=gcp.dns.RecordSetRoutingPolicyArgs(
@@ -424,19 +435,24 @@ class RecordSet(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        prod_managed_zone = gcp.dns.ManagedZone("prodManagedZone", dns_name="prod.mydomain.com.")
-        prod_region_backend_service = gcp.compute.RegionBackendService("prodRegionBackendService", region="us-central1")
-        prod_network = gcp.compute.Network("prodNetwork")
-        prod_forwarding_rule = gcp.compute.ForwardingRule("prodForwardingRule",
+        prod = gcp.dns.ManagedZone("prod",
+            name="prod-zone",
+            dns_name="prod.mydomain.com.")
+        prod_region_backend_service = gcp.compute.RegionBackendService("prod",
+            name="prod-backend",
+            region="us-central1")
+        prod_network = gcp.compute.Network("prod", name="prod-network")
+        prod_forwarding_rule = gcp.compute.ForwardingRule("prod",
+            name="prod-ilb",
             region="us-central1",
             load_balancing_scheme="INTERNAL",
             backend_service=prod_region_backend_service.id,
             all_ports=True,
             network=prod_network.name,
             allow_global_access=True)
-        record_set = gcp.dns.RecordSet("recordSet",
-            name=prod_managed_zone.dns_name.apply(lambda dns_name: f"backend.{dns_name}"),
-            managed_zone=prod_managed_zone.name,
+        a = gcp.dns.RecordSet("a",
+            name=prod.dns_name.apply(lambda dns_name: f"backend.{dns_name}"),
+            managed_zone=prod.name,
             type="A",
             ttl=300,
             routing_policy=gcp.dns.RecordSetRoutingPolicyArgs(
@@ -526,20 +542,23 @@ class RecordSet(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        frontend_instance = gcp.compute.Instance("frontendInstance",
+        frontend_instance = gcp.compute.Instance("frontend",
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                network="default",
+            )],
+            name="frontend",
             machine_type="g1-small",
             zone="us-central1-b",
             boot_disk=gcp.compute.InstanceBootDiskArgs(
                 initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
                     image="debian-cloud/debian-11",
                 ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-            )])
-        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
-        frontend_record_set = gcp.dns.RecordSet("frontendRecordSet",
+            ))
+        prod = gcp.dns.ManagedZone("prod",
+            name="prod-zone",
+            dns_name="prod.mydomain.com.")
+        frontend = gcp.dns.RecordSet("frontend",
             name=prod.dns_name.apply(lambda dns_name: f"frontend.{dns_name}"),
             type="A",
             ttl=300,
@@ -552,8 +571,10 @@ class RecordSet(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
-        record_set = gcp.dns.RecordSet("recordSet",
+        prod = gcp.dns.ManagedZone("prod",
+            name="prod-zone",
+            dns_name="prod.mydomain.com.")
+        a = gcp.dns.RecordSet("a",
             name=prod.dns_name.apply(lambda dns_name: f"backend.{dns_name}"),
             managed_zone=prod.name,
             type="A",
@@ -566,7 +587,9 @@ class RecordSet(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        prod = gcp.dns.ManagedZone("prod",
+            name="prod-zone",
+            dns_name="prod.mydomain.com.")
         mx = gcp.dns.RecordSet("mx",
             name=prod.dns_name,
             managed_zone=prod.name,
@@ -588,7 +611,9 @@ class RecordSet(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        prod = gcp.dns.ManagedZone("prod",
+            name="prod-zone",
+            dns_name="prod.mydomain.com.")
         spf = gcp.dns.RecordSet("spf",
             name=prod.dns_name.apply(lambda dns_name: f"frontend.{dns_name}"),
             managed_zone=prod.name,
@@ -604,7 +629,9 @@ class RecordSet(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        prod = gcp.dns.ManagedZone("prod",
+            name="prod-zone",
+            dns_name="prod.mydomain.com.")
         cname = gcp.dns.RecordSet("cname",
             name=prod.dns_name.apply(lambda dns_name: f"frontend.{dns_name}"),
             managed_zone=prod.name,
@@ -620,8 +647,8 @@ class RecordSet(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         geo = gcp.dns.RecordSet("geo",
-            name=f"backend.{google_dns_managed_zone['prod']['dns_name']}",
-            managed_zone=google_dns_managed_zone["prod"]["name"],
+            name=f"backend.{prod['dnsName']}",
+            managed_zone=prod["name"],
             type="A",
             ttl=300,
             routing_policy=gcp.dns.RecordSetRoutingPolicyArgs(
@@ -643,19 +670,24 @@ class RecordSet(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        prod_managed_zone = gcp.dns.ManagedZone("prodManagedZone", dns_name="prod.mydomain.com.")
-        prod_region_backend_service = gcp.compute.RegionBackendService("prodRegionBackendService", region="us-central1")
-        prod_network = gcp.compute.Network("prodNetwork")
-        prod_forwarding_rule = gcp.compute.ForwardingRule("prodForwardingRule",
+        prod = gcp.dns.ManagedZone("prod",
+            name="prod-zone",
+            dns_name="prod.mydomain.com.")
+        prod_region_backend_service = gcp.compute.RegionBackendService("prod",
+            name="prod-backend",
+            region="us-central1")
+        prod_network = gcp.compute.Network("prod", name="prod-network")
+        prod_forwarding_rule = gcp.compute.ForwardingRule("prod",
+            name="prod-ilb",
             region="us-central1",
             load_balancing_scheme="INTERNAL",
             backend_service=prod_region_backend_service.id,
             all_ports=True,
             network=prod_network.name,
             allow_global_access=True)
-        record_set = gcp.dns.RecordSet("recordSet",
-            name=prod_managed_zone.dns_name.apply(lambda dns_name: f"backend.{dns_name}"),
-            managed_zone=prod_managed_zone.name,
+        a = gcp.dns.RecordSet("a",
+            name=prod.dns_name.apply(lambda dns_name: f"backend.{dns_name}"),
+            managed_zone=prod.name,
             type="A",
             ttl=300,
             routing_policy=gcp.dns.RecordSetRoutingPolicyArgs(

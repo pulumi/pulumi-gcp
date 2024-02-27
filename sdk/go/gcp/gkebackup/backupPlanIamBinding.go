@@ -55,8 +55,9 @@ import (
 //				return err
 //			}
 //			_, err = gkebackup.NewBackupPlanIamPolicy(ctx, "policy", &gkebackup.BackupPlanIamPolicyArgs{
-//				Project:    pulumi.Any(google_gke_backup_backup_plan.Basic.Project),
-//				Location:   pulumi.Any(google_gke_backup_backup_plan.Basic.Location),
+//				Project:    pulumi.Any(basic.Project),
+//				Location:   pulumi.Any(basic.Location),
+//				Name:       pulumi.Any(basic.Name),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -83,8 +84,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkebackup.NewBackupPlanIamBinding(ctx, "binding", &gkebackup.BackupPlanIamBindingArgs{
-//				Project:  pulumi.Any(google_gke_backup_backup_plan.Basic.Project),
-//				Location: pulumi.Any(google_gke_backup_backup_plan.Basic.Location),
+//				Project:  pulumi.Any(basic.Project),
+//				Location: pulumi.Any(basic.Location),
+//				Name:     pulumi.Any(basic.Name),
 //				Role:     pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -114,8 +116,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkebackup.NewBackupPlanIamMember(ctx, "member", &gkebackup.BackupPlanIamMemberArgs{
-//				Project:  pulumi.Any(google_gke_backup_backup_plan.Basic.Project),
-//				Location: pulumi.Any(google_gke_backup_backup_plan.Basic.Location),
+//				Project:  pulumi.Any(basic.Project),
+//				Location: pulumi.Any(basic.Location),
+//				Name:     pulumi.Any(basic.Name),
 //				Role:     pulumi.String("roles/viewer"),
 //				Member:   pulumi.String("user:jane@example.com"),
 //			})

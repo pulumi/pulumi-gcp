@@ -34,7 +34,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "vpcNetwork", nil)
+//			_, err := compute.NewNetwork(ctx, "vpc_network", &compute.NetworkArgs{
+//				Name: pulumi.String("vpc-network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -57,10 +59,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "vpcNetwork", &compute.NetworkArgs{
+//			_, err := compute.NewNetwork(ctx, "vpc_network", &compute.NetworkArgs{
+//				Project:               pulumi.String("my-project-name"),
+//				Name:                  pulumi.String("vpc-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(true),
 //				Mtu:                   pulumi.Int(1460),
-//				Project:               pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
 //				return err
@@ -84,10 +87,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "vpcNetwork", &compute.NetworkArgs{
+//			_, err := compute.NewNetwork(ctx, "vpc_network", &compute.NetworkArgs{
+//				Project:                               pulumi.String("my-project-name"),
+//				Name:                                  pulumi.String("vpc-network"),
 //				AutoCreateSubnetworks:                 pulumi.Bool(true),
 //				NetworkFirewallPolicyEnforcementOrder: pulumi.String("BEFORE_CLASSIC_FIREWALL"),
-//				Project:                               pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
 //				return err

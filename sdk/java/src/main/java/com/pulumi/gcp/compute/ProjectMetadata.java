@@ -49,9 +49,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var default_ = new ProjectMetadata(&#34;default&#34;, ProjectMetadataArgs.builder()        
  *             .metadata(Map.ofEntries(
- *                 Map.entry(&#34;13&#34;, &#34;42&#34;),
+ *                 Map.entry(&#34;foo&#34;, &#34;bar&#34;),
  *                 Map.entry(&#34;fizz&#34;, &#34;buzz&#34;),
- *                 Map.entry(&#34;foo&#34;, &#34;bar&#34;)
+ *                 Map.entry(&#34;13&#34;, &#34;42&#34;)
  *             ))
  *             .build());
  * 
@@ -84,7 +84,6 @@ import javax.annotation.Nullable;
  *             .metadata(Map.of(&#34;ssh-keys&#34;, &#34;&#34;&#34;
  *       dev:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT dev
  *       foo:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT bar
- *     
  *             &#34;&#34;&#34;))
  *             .build());
  * 

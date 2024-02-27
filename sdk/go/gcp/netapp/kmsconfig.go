@@ -39,18 +39,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("key-ring"),
 //				Location: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
+//			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
+//				Name:    pulumi.String("crypto-name"),
 //				KeyRing: keyring.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = netapp.NewKmsconfig(ctx, "kmsConfig", &netapp.KmsconfigArgs{
+//				Name:          pulumi.String("kms-test"),
 //				Description:   pulumi.String("this is a test description"),
 //				CryptoKeyName: cryptoKey.ID(),
 //				Location:      pulumi.String("us-central1"),

@@ -338,7 +338,8 @@ class AttachedDisk(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_instance = gcp.compute.Instance("defaultInstance",
+        default_instance = gcp.compute.Instance("default",
+            name="attached-disk-instance",
             machine_type="e2-medium",
             zone="us-west1-a",
             boot_disk=gcp.compute.InstanceBootDiskArgs(
@@ -349,8 +350,8 @@ class AttachedDisk(pulumi.CustomResource):
             network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
                 network="default",
             )])
-        default_attached_disk = gcp.compute.AttachedDisk("defaultAttachedDisk",
-            disk=google_compute_disk["default"]["id"],
+        default = gcp.compute.AttachedDisk("default",
+            disk=default_google_compute_disk["id"],
             instance=default_instance.id)
         ```
 
@@ -430,7 +431,8 @@ class AttachedDisk(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_instance = gcp.compute.Instance("defaultInstance",
+        default_instance = gcp.compute.Instance("default",
+            name="attached-disk-instance",
             machine_type="e2-medium",
             zone="us-west1-a",
             boot_disk=gcp.compute.InstanceBootDiskArgs(
@@ -441,8 +443,8 @@ class AttachedDisk(pulumi.CustomResource):
             network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
                 network="default",
             )])
-        default_attached_disk = gcp.compute.AttachedDisk("defaultAttachedDisk",
-            disk=google_compute_disk["default"]["id"],
+        default = gcp.compute.AttachedDisk("default",
+            disk=default_google_compute_disk["id"],
             instance=default_instance.id)
         ```
 

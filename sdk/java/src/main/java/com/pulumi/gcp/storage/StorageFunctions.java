@@ -221,7 +221,7 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = StorageFunctions.getBucketIamPolicy(GetBucketIamPolicyArgs.builder()
-     *             .bucket(google_storage_bucket.default().name())
+     *             .bucket(default_.name())
      *             .build());
      * 
      *     }
@@ -258,7 +258,7 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = StorageFunctions.getBucketIamPolicy(GetBucketIamPolicyArgs.builder()
-     *             .bucket(google_storage_bucket.default().name())
+     *             .bucket(default_.name())
      *             .build());
      * 
      *     }
@@ -295,7 +295,7 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = StorageFunctions.getBucketIamPolicy(GetBucketIamPolicyArgs.builder()
-     *             .bucket(google_storage_bucket.default().name())
+     *             .bucket(default_.name())
      *             .build());
      * 
      *     }
@@ -332,7 +332,7 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = StorageFunctions.getBucketIamPolicy(GetBucketIamPolicyArgs.builder()
-     *             .bucket(google_storage_bucket.default().name())
+     *             .bucket(default_.name())
      *             .build());
      * 
      *     }
@@ -374,8 +374,8 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var picture = StorageFunctions.getBucketObject(GetBucketObjectArgs.builder()
-     *             .bucket(&#34;image-store&#34;)
      *             .name(&#34;folder/butterfly01.jpg&#34;)
+     *             .bucket(&#34;image-store&#34;)
      *             .build());
      * 
      *     }
@@ -417,8 +417,8 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var picture = StorageFunctions.getBucketObject(GetBucketObjectArgs.builder()
-     *             .bucket(&#34;image-store&#34;)
      *             .name(&#34;folder/butterfly01.jpg&#34;)
+     *             .bucket(&#34;image-store&#34;)
      *             .build());
      * 
      *     }
@@ -460,8 +460,8 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var picture = StorageFunctions.getBucketObject(GetBucketObjectArgs.builder()
-     *             .bucket(&#34;image-store&#34;)
      *             .name(&#34;folder/butterfly01.jpg&#34;)
+     *             .bucket(&#34;image-store&#34;)
      *             .build());
      * 
      *     }
@@ -503,8 +503,8 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var picture = StorageFunctions.getBucketObject(GetBucketObjectArgs.builder()
-     *             .bucket(&#34;image-store&#34;)
      *             .name(&#34;folder/butterfly01.jpg&#34;)
+     *             .bucket(&#34;image-store&#34;)
      *             .build());
      * 
      *     }
@@ -546,8 +546,8 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var picture = StorageFunctions.getBucketObject(GetBucketObjectArgs.builder()
-     *             .bucket(&#34;image-store&#34;)
      *             .name(&#34;folder/butterfly01.jpg&#34;)
+     *             .bucket(&#34;image-store&#34;)
      *             .build());
      * 
      *     }
@@ -589,8 +589,8 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var picture = StorageFunctions.getBucketObject(GetBucketObjectArgs.builder()
-     *             .bucket(&#34;image-store&#34;)
      *             .name(&#34;folder/butterfly01.jpg&#34;)
+     *             .bucket(&#34;image-store&#34;)
      *             .build());
      * 
      *     }
@@ -800,6 +800,7 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
      * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -818,7 +819,9 @@ public final class StorageFunctions {
      *             .path(&#34;path/to/install_file.bin&#34;)
      *             .build());
      * 
-     *         var vm = new Instance(&#34;vm&#34;);
+     *         var vm = new Instance(&#34;vm&#34;, InstanceArgs.builder()        
+     *             .name(&#34;vm&#34;)
+     *             .build());
      * 
      *     }
      * }
@@ -851,7 +854,9 @@ public final class StorageFunctions {
      *             .contentMd5(&#34;pRviqwS4c4OTJRTe03FD1w==&#34;)
      *             .contentType(&#34;text/plain&#34;)
      *             .duration(&#34;2d&#34;)
-     *             .credentials(Files.readString(Paths.get(&#34;path/to/credentials.json&#34;)))
+     *             .credentials(StdFunctions.file(FileArgs.builder()
+     *                 .input(&#34;path/to/credentials.json&#34;)
+     *                 .build()).result())
      *             .extensionHeaders(Map.of(&#34;x-goog-if-generation-match&#34;, 1))
      *             .build());
      * 
@@ -878,6 +883,7 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
      * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -896,7 +902,9 @@ public final class StorageFunctions {
      *             .path(&#34;path/to/install_file.bin&#34;)
      *             .build());
      * 
-     *         var vm = new Instance(&#34;vm&#34;);
+     *         var vm = new Instance(&#34;vm&#34;, InstanceArgs.builder()        
+     *             .name(&#34;vm&#34;)
+     *             .build());
      * 
      *     }
      * }
@@ -929,7 +937,9 @@ public final class StorageFunctions {
      *             .contentMd5(&#34;pRviqwS4c4OTJRTe03FD1w==&#34;)
      *             .contentType(&#34;text/plain&#34;)
      *             .duration(&#34;2d&#34;)
-     *             .credentials(Files.readString(Paths.get(&#34;path/to/credentials.json&#34;)))
+     *             .credentials(StdFunctions.file(FileArgs.builder()
+     *                 .input(&#34;path/to/credentials.json&#34;)
+     *                 .build()).result())
      *             .extensionHeaders(Map.of(&#34;x-goog-if-generation-match&#34;, 1))
      *             .build());
      * 
@@ -956,6 +966,7 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
      * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -974,7 +985,9 @@ public final class StorageFunctions {
      *             .path(&#34;path/to/install_file.bin&#34;)
      *             .build());
      * 
-     *         var vm = new Instance(&#34;vm&#34;);
+     *         var vm = new Instance(&#34;vm&#34;, InstanceArgs.builder()        
+     *             .name(&#34;vm&#34;)
+     *             .build());
      * 
      *     }
      * }
@@ -1007,7 +1020,9 @@ public final class StorageFunctions {
      *             .contentMd5(&#34;pRviqwS4c4OTJRTe03FD1w==&#34;)
      *             .contentType(&#34;text/plain&#34;)
      *             .duration(&#34;2d&#34;)
-     *             .credentials(Files.readString(Paths.get(&#34;path/to/credentials.json&#34;)))
+     *             .credentials(StdFunctions.file(FileArgs.builder()
+     *                 .input(&#34;path/to/credentials.json&#34;)
+     *                 .build()).result())
      *             .extensionHeaders(Map.of(&#34;x-goog-if-generation-match&#34;, 1))
      *             .build());
      * 
@@ -1034,6 +1049,7 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
      * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1052,7 +1068,9 @@ public final class StorageFunctions {
      *             .path(&#34;path/to/install_file.bin&#34;)
      *             .build());
      * 
-     *         var vm = new Instance(&#34;vm&#34;);
+     *         var vm = new Instance(&#34;vm&#34;, InstanceArgs.builder()        
+     *             .name(&#34;vm&#34;)
+     *             .build());
      * 
      *     }
      * }
@@ -1085,7 +1103,9 @@ public final class StorageFunctions {
      *             .contentMd5(&#34;pRviqwS4c4OTJRTe03FD1w==&#34;)
      *             .contentType(&#34;text/plain&#34;)
      *             .duration(&#34;2d&#34;)
-     *             .credentials(Files.readString(Paths.get(&#34;path/to/credentials.json&#34;)))
+     *             .credentials(StdFunctions.file(FileArgs.builder()
+     *                 .input(&#34;path/to/credentials.json&#34;)
+     *                 .build()).result())
      *             .extensionHeaders(Map.of(&#34;x-goog-if-generation-match&#34;, 1))
      *             .build());
      * 
@@ -1159,7 +1179,7 @@ public final class StorageFunctions {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
      *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
-     *             .topic(google_pubsub_topic.topic().name())
+     *             .topic(topic.name())
      *             .role(&#34;roles/pubsub.publisher&#34;)
      *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
      *             .build());
@@ -1181,7 +1201,6 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.Bucket;
      * import com.pulumi.gcp.storage.BucketArgs;
      * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
-     * import com.pulumi.resources.CustomResourceOptions;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1204,13 +1223,12 @@ public final class StorageFunctions {
      *             .build());
      * 
      *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+     *             .name(&#34;kms-protected-bucket&#34;)
      *             .location(&#34;US&#34;)
      *             .encryption(BucketEncryptionArgs.builder()
      *                 .defaultKmsKeyName(&#34;your-crypto-key-id&#34;)
      *                 .build())
-     *             .build(), CustomResourceOptions.builder()
-     *                 .dependsOn(binding)
-     *                 .build());
+     *             .build());
      * 
      *     }
      * }
@@ -1282,7 +1300,7 @@ public final class StorageFunctions {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
      *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
-     *             .topic(google_pubsub_topic.topic().name())
+     *             .topic(topic.name())
      *             .role(&#34;roles/pubsub.publisher&#34;)
      *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
      *             .build());
@@ -1304,7 +1322,6 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.Bucket;
      * import com.pulumi.gcp.storage.BucketArgs;
      * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
-     * import com.pulumi.resources.CustomResourceOptions;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1327,13 +1344,12 @@ public final class StorageFunctions {
      *             .build());
      * 
      *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+     *             .name(&#34;kms-protected-bucket&#34;)
      *             .location(&#34;US&#34;)
      *             .encryption(BucketEncryptionArgs.builder()
      *                 .defaultKmsKeyName(&#34;your-crypto-key-id&#34;)
      *                 .build())
-     *             .build(), CustomResourceOptions.builder()
-     *                 .dependsOn(binding)
-     *                 .build());
+     *             .build());
      * 
      *     }
      * }
@@ -1405,7 +1421,7 @@ public final class StorageFunctions {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
      *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
-     *             .topic(google_pubsub_topic.topic().name())
+     *             .topic(topic.name())
      *             .role(&#34;roles/pubsub.publisher&#34;)
      *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
      *             .build());
@@ -1427,7 +1443,6 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.Bucket;
      * import com.pulumi.gcp.storage.BucketArgs;
      * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
-     * import com.pulumi.resources.CustomResourceOptions;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1450,13 +1465,12 @@ public final class StorageFunctions {
      *             .build());
      * 
      *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+     *             .name(&#34;kms-protected-bucket&#34;)
      *             .location(&#34;US&#34;)
      *             .encryption(BucketEncryptionArgs.builder()
      *                 .defaultKmsKeyName(&#34;your-crypto-key-id&#34;)
      *                 .build())
-     *             .build(), CustomResourceOptions.builder()
-     *                 .dependsOn(binding)
-     *                 .build());
+     *             .build());
      * 
      *     }
      * }
@@ -1528,7 +1542,7 @@ public final class StorageFunctions {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
      *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
-     *             .topic(google_pubsub_topic.topic().name())
+     *             .topic(topic.name())
      *             .role(&#34;roles/pubsub.publisher&#34;)
      *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
      *             .build());
@@ -1550,7 +1564,6 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.Bucket;
      * import com.pulumi.gcp.storage.BucketArgs;
      * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
-     * import com.pulumi.resources.CustomResourceOptions;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1573,13 +1586,12 @@ public final class StorageFunctions {
      *             .build());
      * 
      *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+     *             .name(&#34;kms-protected-bucket&#34;)
      *             .location(&#34;US&#34;)
      *             .encryption(BucketEncryptionArgs.builder()
      *                 .defaultKmsKeyName(&#34;your-crypto-key-id&#34;)
      *                 .build())
-     *             .build(), CustomResourceOptions.builder()
-     *                 .dependsOn(binding)
-     *                 .build());
+     *             .build());
      * 
      *     }
      * }
@@ -1651,7 +1663,7 @@ public final class StorageFunctions {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
      *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
-     *             .topic(google_pubsub_topic.topic().name())
+     *             .topic(topic.name())
      *             .role(&#34;roles/pubsub.publisher&#34;)
      *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
      *             .build());
@@ -1673,7 +1685,6 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.Bucket;
      * import com.pulumi.gcp.storage.BucketArgs;
      * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
-     * import com.pulumi.resources.CustomResourceOptions;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1696,13 +1707,12 @@ public final class StorageFunctions {
      *             .build());
      * 
      *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+     *             .name(&#34;kms-protected-bucket&#34;)
      *             .location(&#34;US&#34;)
      *             .encryption(BucketEncryptionArgs.builder()
      *                 .defaultKmsKeyName(&#34;your-crypto-key-id&#34;)
      *                 .build())
-     *             .build(), CustomResourceOptions.builder()
-     *                 .dependsOn(binding)
-     *                 .build());
+     *             .build());
      * 
      *     }
      * }
@@ -1774,7 +1784,7 @@ public final class StorageFunctions {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
      *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
-     *             .topic(google_pubsub_topic.topic().name())
+     *             .topic(topic.name())
      *             .role(&#34;roles/pubsub.publisher&#34;)
      *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
      *             .build());
@@ -1796,7 +1806,6 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.Bucket;
      * import com.pulumi.gcp.storage.BucketArgs;
      * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
-     * import com.pulumi.resources.CustomResourceOptions;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1819,13 +1828,12 @@ public final class StorageFunctions {
      *             .build());
      * 
      *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+     *             .name(&#34;kms-protected-bucket&#34;)
      *             .location(&#34;US&#34;)
      *             .encryption(BucketEncryptionArgs.builder()
      *                 .defaultKmsKeyName(&#34;your-crypto-key-id&#34;)
      *                 .build())
-     *             .build(), CustomResourceOptions.builder()
-     *                 .dependsOn(binding)
-     *                 .build());
+     *             .build());
      * 
      *     }
      * }

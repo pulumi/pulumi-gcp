@@ -109,7 +109,7 @@ def get_ca_pool_iam_policy(ca_pool: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.certificateauthority.get_ca_pool_iam_policy(ca_pool=google_privateca_ca_pool["default"]["id"])
+    policy = gcp.certificateauthority.get_ca_pool_iam_policy(ca_pool=default["id"])
     ```
 
 
@@ -150,7 +150,7 @@ def get_ca_pool_iam_policy_output(ca_pool: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.certificateauthority.get_ca_pool_iam_policy(ca_pool=google_privateca_ca_pool["default"]["id"])
+    policy = gcp.certificateauthority.get_ca_pool_iam_policy(ca_pool=default["id"])
     ```
 
 

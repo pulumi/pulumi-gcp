@@ -29,11 +29,14 @@ namespace Pulumi.Gcp.OrgPolicy
     /// {
     ///     var basic = new Gcp.Organizations.Project("basic", new()
     ///     {
+    ///         ProjectId = "id",
+    ///         Name = "id",
     ///         OrgId = "123456789",
     ///     });
     /// 
     ///     var primary = new Gcp.OrgPolicy.Policy("primary", new()
     ///     {
+    ///         Name = basic.Name.Apply(name =&gt; $"projects/{name}/policies/iam.disableServiceAccountKeyUpload"),
     ///         Parent = basic.Name.Apply(name =&gt; $"projects/{name}"),
     ///         Spec = new Gcp.OrgPolicy.Inputs.PolicySpecArgs
     ///         {
@@ -67,6 +70,7 @@ namespace Pulumi.Gcp.OrgPolicy
     /// 
     ///     var primary = new Gcp.OrgPolicy.Policy("primary", new()
     ///     {
+    ///         Name = basic.Name.Apply(name =&gt; $"{name}/policies/gcp.resourceLocations"),
     ///         Parent = basic.Name,
     ///         Spec = new Gcp.OrgPolicy.Inputs.PolicySpecArgs
     ///         {
@@ -95,6 +99,7 @@ namespace Pulumi.Gcp.OrgPolicy
     /// {
     ///     var primary = new Gcp.OrgPolicy.Policy("primary", new()
     ///     {
+    ///         Name = "organizations/123456789/policies/gcp.detailedAuditLoggingMode",
     ///         Parent = "organizations/123456789",
     ///         Spec = new Gcp.OrgPolicy.Inputs.PolicySpecArgs
     ///         {
@@ -116,11 +121,14 @@ namespace Pulumi.Gcp.OrgPolicy
     /// {
     ///     var basic = new Gcp.Organizations.Project("basic", new()
     ///     {
+    ///         ProjectId = "id",
+    ///         Name = "id",
     ///         OrgId = "123456789",
     ///     });
     /// 
     ///     var primary = new Gcp.OrgPolicy.Policy("primary", new()
     ///     {
+    ///         Name = basic.Name.Apply(name =&gt; $"projects/{name}/policies/gcp.resourceLocations"),
     ///         Parent = basic.Name.Apply(name =&gt; $"projects/{name}"),
     ///         Spec = new Gcp.OrgPolicy.Inputs.PolicySpecArgs
     ///         {
@@ -150,61 +158,6 @@ namespace Pulumi.Gcp.OrgPolicy
     ///                 new Gcp.OrgPolicy.Inputs.PolicySpecRuleArgs
     ///                 {
     ///                     AllowAll = "TRUE",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Dry_run_spec
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var constraint = new Gcp.OrgPolicy.CustomConstraint("constraint", new()
-    ///     {
-    ///         ActionType = "ALLOW",
-    ///         Condition = "resource.management.autoUpgrade == false",
-    ///         Description = "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
-    ///         DisplayName = "Disable GKE auto upgrade",
-    ///         MethodTypes = new[]
-    ///         {
-    ///             "CREATE",
-    ///         },
-    ///         Parent = "organizations/123456789",
-    ///         ResourceTypes = new[]
-    ///         {
-    ///             "container.googleapis.com/NodePool",
-    ///         },
-    ///     });
-    /// 
-    ///     var primary = new Gcp.OrgPolicy.Policy("primary", new()
-    ///     {
-    ///         DryRunSpec = new Gcp.OrgPolicy.Inputs.PolicyDryRunSpecArgs
-    ///         {
-    ///             InheritFromParent = false,
-    ///             Reset = false,
-    ///             Rules = new[]
-    ///             {
-    ///                 new Gcp.OrgPolicy.Inputs.PolicyDryRunSpecRuleArgs
-    ///                 {
-    ///                     Enforce = "FALSE",
-    ///                 },
-    ///             },
-    ///         },
-    ///         Parent = "organizations/123456789",
-    ///         Spec = new Gcp.OrgPolicy.Inputs.PolicySpecArgs
-    ///         {
-    ///             Rules = new[]
-    ///             {
-    ///                 new Gcp.OrgPolicy.Inputs.PolicySpecRuleArgs
-    ///                 {
-    ///                     Enforce = "FALSE",
     ///                 },
     ///             },
     ///         },

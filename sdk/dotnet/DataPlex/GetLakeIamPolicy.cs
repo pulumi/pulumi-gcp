@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.DataPlex
         /// {
         ///     var policy = Gcp.DataPlex.GetLakeIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_dataplex_lake.Example.Project,
-        ///         Location = google_dataplex_lake.Example.Location,
-        ///         Lake = google_dataplex_lake.Example.Name,
+        ///         Project = example.Project,
+        ///         Location = example.Location,
+        ///         Lake = example.Name,
         ///     });
         /// 
         /// });
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.DataPlex
         /// {
         ///     var policy = Gcp.DataPlex.GetLakeIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_dataplex_lake.Example.Project,
-        ///         Location = google_dataplex_lake.Example.Location,
-        ///         Lake = google_dataplex_lake.Example.Name,
+        ///         Project = example.Project,
+        ///         Location = example.Location,
+        ///         Lake = example.Name,
         ///     });
         /// 
         /// });

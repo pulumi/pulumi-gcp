@@ -82,12 +82,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := spanner.NewDatabaseIAMBinding(ctx, "database", &spanner.DatabaseIAMBindingArgs{
-//				Database: pulumi.String("your-database-name"),
 //				Instance: pulumi.String("your-instance-name"),
+//				Database: pulumi.String("your-database-name"),
+//				Role:     pulumi.String("roles/compute.networkUser"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				Role: pulumi.String("roles/compute.networkUser"),
 //			})
 //			if err != nil {
 //				return err
@@ -113,10 +113,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := spanner.NewDatabaseIAMMember(ctx, "database", &spanner.DatabaseIAMMemberArgs{
-//				Database: pulumi.String("your-database-name"),
 //				Instance: pulumi.String("your-instance-name"),
-//				Member:   pulumi.String("user:jane@example.com"),
+//				Database: pulumi.String("your-database-name"),
 //				Role:     pulumi.String("roles/compute.networkUser"),
+//				Member:   pulumi.String("user:jane@example.com"),
 //			})
 //			if err != nil {
 //				return err

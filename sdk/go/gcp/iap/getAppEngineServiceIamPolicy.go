@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := iap.LookupAppEngineServiceIamPolicy(ctx, &iap.LookupAppEngineServiceIamPolicyArgs{
-//				AppId:   google_app_engine_standard_app_version.Version.Project,
-//				Project: pulumi.StringRef(google_app_engine_standard_app_version.Version.Project),
-//				Service: google_app_engine_standard_app_version.Version.Service,
+//				Project: pulumi.StringRef(version.Project),
+//				AppId:   version.Project,
+//				Service: version.Service,
 //			}, nil)
 //			if err != nil {
 //				return err
