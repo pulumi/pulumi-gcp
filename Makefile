@@ -97,6 +97,7 @@ install_nodejs_sdk:
 install_plugins: .pulumi/bin/pulumi
 	.pulumi/bin/pulumi plugin install resource random 4.14.0
 	.pulumi/bin/pulumi plugin install resource kubernetes 4.5.4
+	.pulumi/bin/pulumi plugin install resource std 1.6.2
 	.pulumi/bin/pulumi plugin install resource tls 4.11.1
 	.pulumi/bin/pulumi plugin install resource http 0.0.1
 	.pulumi/bin/pulumi plugin install resource time 0.0.15
