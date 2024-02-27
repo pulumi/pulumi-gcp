@@ -78,6 +78,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// This example substitutes an arbitrary internal IP for an internal network
+//			// load balancer for brevity. Consult https://cloud.google.com/load-balancing/docs/internal
+//			// to set one up.
 //			ilb, err := compute.NewGlobalAddress(ctx, "ilb", nil)
 //			if err != nil {
 //				return err
