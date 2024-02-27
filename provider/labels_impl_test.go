@@ -3,9 +3,11 @@
 package gcp
 
 import (
+	"context"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 )
@@ -110,6 +112,115 @@ func TestAddPrefix(t *testing.T) {
 		tt := tt
 		t.Run("", func(t *testing.T) {
 			actual := addPrefix(tt.prefix, tt.ends)
+			assert.Equal(t, tt.expected, actual)
+		})
+	}
+}
+
+func TestEnsureLabelPathsExist(t *testing.T) {
+	tests := []struct {
+		name     string
+		paths    []resource.PropertyPath
+		input    resource.PropertyMap
+		expected resource.PropertyMap
+	}{
+		{
+			name: "insert top level labels",
+			paths: []resource.PropertyPath{
+				{"pulumiLabels"},
+			},
+			input: resource.PropertyMap{
+				"s": resource.NewStringProperty("v"),
+			},
+			expected: resource.PropertyMap{
+				"s":            resource.NewStringProperty("v"),
+				"pulumiLabels": resource.NewObjectProperty(resource.PropertyMap{}),
+			},
+		},
+		{
+			name: "ignore existing labels",
+			paths: []resource.PropertyPath{
+				{"pulumiLabels"},
+			},
+			input: resource.PropertyMap{
+				"s": resource.NewStringProperty("v"),
+				"pulumiLabels": resource.NewObjectProperty(resource.PropertyMap{
+					"label": resource.NewStringProperty("value"),
+				}),
+			},
+			expected: resource.PropertyMap{
+				"s": resource.NewStringProperty("v"),
+				"pulumiLabels": resource.NewObjectProperty(resource.PropertyMap{
+					"label": resource.NewStringProperty("value"),
+				}),
+			},
+		},
+		{
+			name: "insert nested labels",
+			paths: []resource.PropertyPath{
+				{"foo", "labels"},
+			},
+			input: resource.PropertyMap{
+				"foo": resource.NewObjectProperty(resource.PropertyMap{}),
+			},
+			expected: resource.PropertyMap{
+				"foo": resource.NewObjectProperty(resource.PropertyMap{
+					"labels": resource.NewObjectProperty(resource.PropertyMap{}),
+				}),
+			},
+		},
+		{
+			name: "insert nested labels (missing container)",
+			paths: []resource.PropertyPath{
+				{"foo", "labels"},
+			},
+			input:    resource.PropertyMap{},
+			expected: resource.PropertyMap{},
+		},
+		{
+			name: "insert globed labels",
+			paths: []resource.PropertyPath{
+				{"foo", "*", "labels"},
+			},
+			input: resource.PropertyMap{
+				"foo": resource.NewObjectProperty(resource.PropertyMap{
+					"elem1": resource.NewObjectProperty(resource.PropertyMap{}),
+					"elem2": resource.NewObjectProperty(resource.PropertyMap{
+						"fizz": resource.NewStringProperty("buzz"),
+					}),
+					"elem3": resource.NewObjectProperty(resource.PropertyMap{
+						"labels": resource.NewObjectProperty(resource.PropertyMap{
+							"label1": resource.NewStringProperty("value1"),
+						}),
+					}),
+				}),
+			},
+			expected: resource.PropertyMap{
+				"foo": resource.NewObjectProperty(resource.PropertyMap{
+					"elem1": resource.NewObjectProperty(resource.PropertyMap{
+						"labels": resource.NewObjectProperty(resource.PropertyMap{}),
+					}),
+					"elem2": resource.NewObjectProperty(resource.PropertyMap{
+						"fizz":   resource.NewStringProperty("buzz"),
+						"labels": resource.NewObjectProperty(resource.PropertyMap{}),
+					}),
+					"elem3": resource.NewObjectProperty(resource.PropertyMap{
+						"labels": resource.NewObjectProperty(resource.PropertyMap{
+							"label1": resource.NewStringProperty("value1"),
+						}),
+					}),
+				}),
+			},
+		},
+	}
+
+	for _, tt := range tests {
+		tt := tt
+		t.Run(tt.name, func(t *testing.T) {
+			transform := ensureLabelPathsExist(tt.paths)
+			actual, err := transform(context.Background(), tt.input)
+			require.NoError(t, err)
+
 			assert.Equal(t, tt.expected, actual)
 		})
 	}
