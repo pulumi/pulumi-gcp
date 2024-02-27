@@ -2840,7 +2840,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProviderArgs build() {
-            $.accessToken = Codegen.stringProp("accessToken").output().arg($.accessToken).env("GOOGLE_OAUTH_ACCESS_TOKEN").getNullable();
+            $.accessToken = Codegen.stringProp("accessToken").secret().arg($.accessToken).env("GOOGLE_OAUTH_ACCESS_TOKEN").getNullable();
             $.credentials = Codegen.stringProp("credentials").output().arg($.credentials).env("GOOGLE_CREDENTIALS", "GOOGLE_CLOUD_KEYFILE_JSON", "GCLOUD_KEYFILE_JSON").getNullable();
             $.project = Codegen.stringProp("project").output().arg($.project).env("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT").getNullable();
             $.region = Codegen.stringProp("region").output().arg($.region).env("GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION").getNullable();
