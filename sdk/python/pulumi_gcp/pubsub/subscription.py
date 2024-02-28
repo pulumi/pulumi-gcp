@@ -1022,6 +1022,63 @@ class Subscription(pulumi.CustomResource):
             role="roles/bigquery.dataEditor",
             member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         ```
+        ### Pubsub Subscription Push Cloudstorage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.storage.Bucket("example",
+            name="example-bucket",
+            location="US",
+            uniform_bucket_level_access=True)
+        example_topic = gcp.pubsub.Topic("example", name="example-topic")
+        example_subscription = gcp.pubsub.Subscription("example",
+            name="example-subscription",
+            topic=example_topic.id,
+            cloud_storage_config=gcp.pubsub.SubscriptionCloudStorageConfigArgs(
+                bucket=example.name,
+                filename_prefix="pre-",
+                filename_suffix="-_41819",
+                max_bytes=1000,
+                max_duration="300s",
+            ))
+        project = gcp.organizations.get_project()
+        admin = gcp.storage.BucketIAMMember("admin",
+            bucket=example.name,
+            role="roles/storage.admin",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
+        ```
+        ### Pubsub Subscription Push Cloudstorage Avro
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.storage.Bucket("example",
+            name="example-bucket",
+            location="US",
+            uniform_bucket_level_access=True)
+        example_topic = gcp.pubsub.Topic("example", name="example-topic")
+        example_subscription = gcp.pubsub.Subscription("example",
+            name="example-subscription",
+            topic=example_topic.id,
+            cloud_storage_config=gcp.pubsub.SubscriptionCloudStorageConfigArgs(
+                bucket=example.name,
+                filename_prefix="pre-",
+                filename_suffix="-_75092",
+                max_bytes=1000,
+                max_duration="300s",
+                avro_config=gcp.pubsub.SubscriptionCloudStorageConfigAvroConfigArgs(
+                    write_metadata=True,
+                ),
+            ))
+        project = gcp.organizations.get_project()
+        admin = gcp.storage.BucketIAMMember("admin",
+            bucket=example.name,
+            role="roles/storage.admin",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
+        ```
 
         ## Import
 
@@ -1289,6 +1346,63 @@ class Subscription(pulumi.CustomResource):
         editor = gcp.projects.IAMMember("editor",
             project=project.project_id,
             role="roles/bigquery.dataEditor",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
+        ```
+        ### Pubsub Subscription Push Cloudstorage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.storage.Bucket("example",
+            name="example-bucket",
+            location="US",
+            uniform_bucket_level_access=True)
+        example_topic = gcp.pubsub.Topic("example", name="example-topic")
+        example_subscription = gcp.pubsub.Subscription("example",
+            name="example-subscription",
+            topic=example_topic.id,
+            cloud_storage_config=gcp.pubsub.SubscriptionCloudStorageConfigArgs(
+                bucket=example.name,
+                filename_prefix="pre-",
+                filename_suffix="-_41819",
+                max_bytes=1000,
+                max_duration="300s",
+            ))
+        project = gcp.organizations.get_project()
+        admin = gcp.storage.BucketIAMMember("admin",
+            bucket=example.name,
+            role="roles/storage.admin",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
+        ```
+        ### Pubsub Subscription Push Cloudstorage Avro
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.storage.Bucket("example",
+            name="example-bucket",
+            location="US",
+            uniform_bucket_level_access=True)
+        example_topic = gcp.pubsub.Topic("example", name="example-topic")
+        example_subscription = gcp.pubsub.Subscription("example",
+            name="example-subscription",
+            topic=example_topic.id,
+            cloud_storage_config=gcp.pubsub.SubscriptionCloudStorageConfigArgs(
+                bucket=example.name,
+                filename_prefix="pre-",
+                filename_suffix="-_75092",
+                max_bytes=1000,
+                max_duration="300s",
+                avro_config=gcp.pubsub.SubscriptionCloudStorageConfigAvroConfigArgs(
+                    write_metadata=True,
+                ),
+            ))
+        project = gcp.organizations.get_project()
+        admin = gcp.storage.BucketIAMMember("admin",
+            bucket=example.name,
+            role="roles/storage.admin",
             member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         ```
 

@@ -272,6 +272,104 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// ### Pubsub Subscription Push Cloudstorage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.Storage.Bucket("example", new()
+    ///     {
+    ///         Name = "example-bucket",
+    ///         Location = "US",
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var exampleTopic = new Gcp.PubSub.Topic("example", new()
+    ///     {
+    ///         Name = "example-topic",
+    ///     });
+    /// 
+    ///     var exampleSubscription = new Gcp.PubSub.Subscription("example", new()
+    ///     {
+    ///         Name = "example-subscription",
+    ///         Topic = exampleTopic.Id,
+    ///         CloudStorageConfig = new Gcp.PubSub.Inputs.SubscriptionCloudStorageConfigArgs
+    ///         {
+    ///             Bucket = example.Name,
+    ///             FilenamePrefix = "pre-",
+    ///             FilenameSuffix = "-_41819",
+    ///             MaxBytes = 1000,
+    ///             MaxDuration = "300s",
+    ///         },
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var admin = new Gcp.Storage.BucketIAMMember("admin", new()
+    ///     {
+    ///         Bucket = example.Name,
+    ///         Role = "roles/storage.admin",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-pubsub.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Pubsub Subscription Push Cloudstorage Avro
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.Storage.Bucket("example", new()
+    ///     {
+    ///         Name = "example-bucket",
+    ///         Location = "US",
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var exampleTopic = new Gcp.PubSub.Topic("example", new()
+    ///     {
+    ///         Name = "example-topic",
+    ///     });
+    /// 
+    ///     var exampleSubscription = new Gcp.PubSub.Subscription("example", new()
+    ///     {
+    ///         Name = "example-subscription",
+    ///         Topic = exampleTopic.Id,
+    ///         CloudStorageConfig = new Gcp.PubSub.Inputs.SubscriptionCloudStorageConfigArgs
+    ///         {
+    ///             Bucket = example.Name,
+    ///             FilenamePrefix = "pre-",
+    ///             FilenameSuffix = "-_75092",
+    ///             MaxBytes = 1000,
+    ///             MaxDuration = "300s",
+    ///             AvroConfig = new Gcp.PubSub.Inputs.SubscriptionCloudStorageConfigAvroConfigArgs
+    ///             {
+    ///                 WriteMetadata = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var admin = new Gcp.Storage.BucketIAMMember("admin", new()
+    ///     {
+    ///         Bucket = example.Name,
+    ///         Role = "roles/storage.admin",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-pubsub.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

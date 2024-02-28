@@ -8,6 +8,39 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Gkehub Membership Rbac Role Binding Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     name: "basic-cluster",
+ *     location: "us-central1-a",
+ *     initialNodeCount: 1,
+ *     deletionProtection: true,
+ *     network: "default",
+ *     subnetwork: "default",
+ * });
+ * const membership = new gcp.gkehub.Membership("membership", {
+ *     membershipId: "tf-test-membership_39249",
+ *     endpoint: {
+ *         gkeCluster: {
+ *             resourceLink: pulumi.interpolate`//container.googleapis.com/${primary.id}`,
+ *         },
+ *     },
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const membershipRbacRoleBinding = new gcp.gkehub.MembershipRbacRoleBinding("membership_rbac_role_binding", {
+ *     membershipRbacRoleBindingId: "tf-test-membership-rbac-role-binding_74391",
+ *     membershipId: membership.membershipId,
+ *     user: project.then(project => `service-${project.number}@gcp-sa-anthossupport.iam.gserviceaccount.com`),
+ *     role: {
+ *         predefinedRole: "ANTHOS_SUPPORT",
+ *     },
+ *     location: "global",
+ * });
+ * ```
  *
  * ## Import
  *

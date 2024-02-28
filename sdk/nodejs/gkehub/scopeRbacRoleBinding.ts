@@ -16,6 +16,25 @@ import * as utilities from "../utilities";
  *     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
  *
  * ## Example Usage
+ * ### Gkehub Scope Rbac Role Binding Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_9106"});
+ * const scopeRbacRoleBinding = new gcp.gkehub.ScopeRbacRoleBinding("scope_rbac_role_binding", {
+ *     scopeRbacRoleBindingId: "tf-test-scope-rbac-role-binding_27169",
+ *     scopeId: scope.scopeId,
+ *     user: "test-email@gmail.com",
+ *     role: {
+ *         predefinedRole: "ADMIN",
+ *     },
+ *     labels: {
+ *         key: "value",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

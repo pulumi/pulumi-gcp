@@ -79,6 +79,72 @@ import * as utilities from "../utilities";
  *     network: target_vm.then(target_vm => target_vm.selfLink),
  * });
  * ```
+ * ### Target Instance With Security Policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "custom-default-network",
+ *     autoCreateSubnetworks: false,
+ *     routingMode: "REGIONAL",
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "custom-default-subnet",
+ *     ipCidrRange: "10.1.2.0/24",
+ *     network: _default.id,
+ *     privateIpv6GoogleAccess: "DISABLE_GOOGLE_ACCESS",
+ *     purpose: "PRIVATE",
+ *     region: "southamerica-west1",
+ *     stackType: "IPV4_ONLY",
+ * });
+ * const vmimage = gcp.compute.getImage({
+ *     family: "debian-11",
+ *     project: "debian-cloud",
+ * });
+ * const target_vm = new gcp.compute.Instance("target-vm", {
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         network: _default.selfLink,
+ *         subnetwork: defaultSubnetwork.selfLink,
+ *     }],
+ *     name: "target-vm",
+ *     machineType: "e2-medium",
+ *     zone: "southamerica-west1-a",
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: vmimage.then(vmimage => vmimage.selfLink),
+ *         },
+ *     },
+ * });
+ * const policyddosprotection = new gcp.compute.RegionSecurityPolicy("policyddosprotection", {
+ *     region: "southamerica-west1",
+ *     name: "tf-test-policyddos_81126",
+ *     description: "ddos protection security policy to set target instance",
+ *     type: "CLOUD_ARMOR_NETWORK",
+ *     ddosProtectionConfig: {
+ *         ddosProtection: "ADVANCED_PREVIEW",
+ *     },
+ * });
+ * const edgeSecService = new gcp.compute.NetworkEdgeSecurityService("edge_sec_service", {
+ *     region: "southamerica-west1",
+ *     name: "tf-test-edgesec_88717",
+ *     securityPolicy: policyddosprotection.selfLink,
+ * });
+ * const regionsecuritypolicy = new gcp.compute.RegionSecurityPolicy("regionsecuritypolicy", {
+ *     name: "region-secpolicy",
+ *     region: "southamerica-west1",
+ *     description: "basic security policy for target instance",
+ *     type: "CLOUD_ARMOR_NETWORK",
+ * });
+ * const defaultTargetInstance = new gcp.compute.TargetInstance("default", {
+ *     name: "target-instance",
+ *     zone: "southamerica-west1-a",
+ *     instance: target_vm.id,
+ *     securityPolicy: regionsecuritypolicy.selfLink,
+ * });
+ * ```
  *
  * ## Import
  *

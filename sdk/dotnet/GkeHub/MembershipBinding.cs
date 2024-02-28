@@ -19,6 +19,59 @@ namespace Pulumi.Gcp.GkeHub
     ///     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
     /// 
     /// ## Example Usage
+    /// ### Gkehub Membership Binding Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.Container.Cluster("primary", new()
+    ///     {
+    ///         Name = "basic-cluster",
+    ///         Location = "us-central1-a",
+    ///         InitialNodeCount = 1,
+    ///         DeletionProtection = true,
+    ///         Network = "default",
+    ///         Subnetwork = "default",
+    ///     });
+    /// 
+    ///     var membership = new Gcp.GkeHub.Membership("membership", new()
+    ///     {
+    ///         MembershipId = "tf-test-membership_74000",
+    ///         Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
+    ///         {
+    ///             GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
+    ///             {
+    ///                 ResourceLink = primary.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var scope = new Gcp.GkeHub.Scope("scope", new()
+    ///     {
+    ///         ScopeId = "tf-test-scope_75125",
+    ///     });
+    /// 
+    ///     var membershipBinding = new Gcp.GkeHub.MembershipBinding("membership_binding", new()
+    ///     {
+    ///         MembershipBindingId = "tf-test-membership-binding_88722",
+    ///         Scope = scope.Name,
+    ///         MembershipId = membership.MembershipId,
+    ///         Location = "global",
+    ///         Labels = 
+    ///         {
+    ///             { "keyb", "valueb" },
+    ///             { "keya", "valuea" },
+    ///             { "keyc", "valuec" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

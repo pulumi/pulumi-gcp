@@ -350,6 +350,138 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Pubsub Subscription Push Cloudstorage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.pubsub.Subscription;
+ * import com.pulumi.gcp.pubsub.SubscriptionArgs;
+ * import com.pulumi.gcp.pubsub.inputs.SubscriptionCloudStorageConfigArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.storage.BucketIAMMember;
+ * import com.pulumi.gcp.storage.BucketIAMMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Bucket(&#34;example&#34;, BucketArgs.builder()        
+ *             .name(&#34;example-bucket&#34;)
+ *             .location(&#34;US&#34;)
+ *             .uniformBucketLevelAccess(true)
+ *             .build());
+ * 
+ *         var exampleTopic = new Topic(&#34;exampleTopic&#34;, TopicArgs.builder()        
+ *             .name(&#34;example-topic&#34;)
+ *             .build());
+ * 
+ *         var exampleSubscription = new Subscription(&#34;exampleSubscription&#34;, SubscriptionArgs.builder()        
+ *             .name(&#34;example-subscription&#34;)
+ *             .topic(exampleTopic.id())
+ *             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
+ *                 .bucket(example.name())
+ *                 .filenamePrefix(&#34;pre-&#34;)
+ *                 .filenameSuffix(&#34;-_41819&#34;)
+ *                 .maxBytes(1000)
+ *                 .maxDuration(&#34;300s&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var admin = new BucketIAMMember(&#34;admin&#34;, BucketIAMMemberArgs.builder()        
+ *             .bucket(example.name())
+ *             .role(&#34;roles/storage.admin&#34;)
+ *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-pubsub.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Pubsub Subscription Push Cloudstorage Avro
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.pubsub.Subscription;
+ * import com.pulumi.gcp.pubsub.SubscriptionArgs;
+ * import com.pulumi.gcp.pubsub.inputs.SubscriptionCloudStorageConfigArgs;
+ * import com.pulumi.gcp.pubsub.inputs.SubscriptionCloudStorageConfigAvroConfigArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.storage.BucketIAMMember;
+ * import com.pulumi.gcp.storage.BucketIAMMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Bucket(&#34;example&#34;, BucketArgs.builder()        
+ *             .name(&#34;example-bucket&#34;)
+ *             .location(&#34;US&#34;)
+ *             .uniformBucketLevelAccess(true)
+ *             .build());
+ * 
+ *         var exampleTopic = new Topic(&#34;exampleTopic&#34;, TopicArgs.builder()        
+ *             .name(&#34;example-topic&#34;)
+ *             .build());
+ * 
+ *         var exampleSubscription = new Subscription(&#34;exampleSubscription&#34;, SubscriptionArgs.builder()        
+ *             .name(&#34;example-subscription&#34;)
+ *             .topic(exampleTopic.id())
+ *             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
+ *                 .bucket(example.name())
+ *                 .filenamePrefix(&#34;pre-&#34;)
+ *                 .filenameSuffix(&#34;-_75092&#34;)
+ *                 .maxBytes(1000)
+ *                 .maxDuration(&#34;300s&#34;)
+ *                 .avroConfig(SubscriptionCloudStorageConfigAvroConfigArgs.builder()
+ *                     .writeMetadata(true)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var admin = new BucketIAMMember(&#34;admin&#34;, BucketIAMMemberArgs.builder()        
+ *             .bucket(example.name())
+ *             .role(&#34;roles/storage.admin&#34;)
+ *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-pubsub.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

@@ -26,6 +26,51 @@ namespace Pulumi.Gcp.Firestore
     /// chosen location.
     /// 
     /// ## Example Usage
+    /// ### Firestore Field Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "database-id",
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_ENABLED",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
+    ///     var basic = new Gcp.Firestore.Field("basic", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Database = database.Name,
+    ///         Collection = "chatrooms__64336",
+    ///         FieldId = "basic",
+    ///         IndexConfig = new Gcp.Firestore.Inputs.FieldIndexConfigArgs
+    ///         {
+    ///             Indexes = new[]
+    ///             {
+    ///                 new Gcp.Firestore.Inputs.FieldIndexConfigIndexArgs
+    ///                 {
+    ///                     Order = "ASCENDING",
+    ///                     QueryScope = "COLLECTION_GROUP",
+    ///                 },
+    ///                 new Gcp.Firestore.Inputs.FieldIndexConfigIndexArgs
+    ///                 {
+    ///                     ArrayConfig = "CONTAINS",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Firestore Field Timestamp
     /// 
     /// ```csharp
@@ -54,6 +99,54 @@ namespace Pulumi.Gcp.Firestore
     ///         FieldId = "timestamp",
     ///         TtlConfig = null,
     ///         IndexConfig = null,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Firestore Field Match Override
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "database-id",
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_ENABLED",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
+    ///     var matchOverride = new Gcp.Firestore.Field("match_override", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Database = database.Name,
+    ///         Collection = "chatrooms__34962",
+    ///         FieldId = "field_with_same_configuration_as_ancestor",
+    ///         IndexConfig = new Gcp.Firestore.Inputs.FieldIndexConfigArgs
+    ///         {
+    ///             Indexes = new[]
+    ///             {
+    ///                 new Gcp.Firestore.Inputs.FieldIndexConfigIndexArgs
+    ///                 {
+    ///                     Order = "ASCENDING",
+    ///                 },
+    ///                 new Gcp.Firestore.Inputs.FieldIndexConfigIndexArgs
+    ///                 {
+    ///                     Order = "DESCENDING",
+    ///                 },
+    ///                 new Gcp.Firestore.Inputs.FieldIndexConfigIndexArgs
+    ///                 {
+    ///                     ArrayConfig = "CONTAINS",
+    ///                 },
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });

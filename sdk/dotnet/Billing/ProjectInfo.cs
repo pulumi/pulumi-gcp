@@ -19,6 +19,31 @@ namespace Pulumi.Gcp.Billing
     ///     * [Enable, disable, or change billing for a project](https://cloud.google.com/billing/docs/how-to/modify-project)
     /// 
     /// ## Example Usage
+    /// ### Billing Project Info Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = new Gcp.Organizations.Project("project", new()
+    ///     {
+    ///         ProjectId = "tf-test_77884",
+    ///         Name = "tf-test_15222",
+    ///         OrgId = "123456789",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Billing.ProjectInfo("default", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

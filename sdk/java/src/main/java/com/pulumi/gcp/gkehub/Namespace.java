@@ -26,6 +26,53 @@ import javax.annotation.Nullable;
  *     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
  * 
  * ## Example Usage
+ * ### Gkehub Namespace Basic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.gkehub.Scope;
+ * import com.pulumi.gcp.gkehub.ScopeArgs;
+ * import com.pulumi.gcp.gkehub.Namespace;
+ * import com.pulumi.gcp.gkehub.NamespaceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var scope = new Scope(&#34;scope&#34;, ScopeArgs.builder()        
+ *             .scopeId(&#34;tf-test-scope_16511&#34;)
+ *             .build());
+ * 
+ *         var namespace = new Namespace(&#34;namespace&#34;, NamespaceArgs.builder()        
+ *             .scopeNamespaceId(&#34;tf-test-namespace_8493&#34;)
+ *             .scopeId(scope.scopeId())
+ *             .scope(scope.name())
+ *             .namespaceLabels(Map.ofEntries(
+ *                 Map.entry(&#34;keyb&#34;, &#34;valueb&#34;),
+ *                 Map.entry(&#34;keya&#34;, &#34;valuea&#34;),
+ *                 Map.entry(&#34;keyc&#34;, &#34;valuec&#34;)
+ *             ))
+ *             .labels(Map.ofEntries(
+ *                 Map.entry(&#34;keyb&#34;, &#34;valueb&#34;),
+ *                 Map.entry(&#34;keya&#34;, &#34;valuea&#34;),
+ *                 Map.entry(&#34;keyc&#34;, &#34;valuec&#34;)
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

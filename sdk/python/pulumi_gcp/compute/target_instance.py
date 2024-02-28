@@ -465,6 +465,63 @@ class TargetInstance(pulumi.CustomResource):
             instance=target_vm_instance.id,
             network=target_vm.self_link)
         ```
+        ### Target Instance With Security Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="custom-default-network",
+            auto_create_subnetworks=False,
+            routing_mode="REGIONAL")
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="custom-default-subnet",
+            ip_cidr_range="10.1.2.0/24",
+            network=default.id,
+            private_ipv6_google_access="DISABLE_GOOGLE_ACCESS",
+            purpose="PRIVATE",
+            region="southamerica-west1",
+            stack_type="IPV4_ONLY")
+        vmimage = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        target_vm = gcp.compute.Instance("target-vm",
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                network=default.self_link,
+                subnetwork=default_subnetwork.self_link,
+            )],
+            name="target-vm",
+            machine_type="e2-medium",
+            zone="southamerica-west1-a",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image=vmimage.self_link,
+                ),
+            ))
+        policyddosprotection = gcp.compute.RegionSecurityPolicy("policyddosprotection",
+            region="southamerica-west1",
+            name="tf-test-policyddos_81126",
+            description="ddos protection security policy to set target instance",
+            type="CLOUD_ARMOR_NETWORK",
+            ddos_protection_config=gcp.compute.RegionSecurityPolicyDdosProtectionConfigArgs(
+                ddos_protection="ADVANCED_PREVIEW",
+            ))
+        edge_sec_service = gcp.compute.NetworkEdgeSecurityService("edge_sec_service",
+            region="southamerica-west1",
+            name="tf-test-edgesec_88717",
+            security_policy=policyddosprotection.self_link)
+        regionsecuritypolicy = gcp.compute.RegionSecurityPolicy("regionsecuritypolicy",
+            name="region-secpolicy",
+            region="southamerica-west1",
+            description="basic security policy for target instance",
+            type="CLOUD_ARMOR_NETWORK")
+        default_target_instance = gcp.compute.TargetInstance("default",
+            name="target-instance",
+            zone="southamerica-west1-a",
+            instance=target_vm.id,
+            security_policy=regionsecuritypolicy.self_link)
+        ```
 
         ## Import
 
@@ -595,6 +652,63 @@ class TargetInstance(pulumi.CustomResource):
             name="custom-network",
             instance=target_vm_instance.id,
             network=target_vm.self_link)
+        ```
+        ### Target Instance With Security Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="custom-default-network",
+            auto_create_subnetworks=False,
+            routing_mode="REGIONAL")
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="custom-default-subnet",
+            ip_cidr_range="10.1.2.0/24",
+            network=default.id,
+            private_ipv6_google_access="DISABLE_GOOGLE_ACCESS",
+            purpose="PRIVATE",
+            region="southamerica-west1",
+            stack_type="IPV4_ONLY")
+        vmimage = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        target_vm = gcp.compute.Instance("target-vm",
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                network=default.self_link,
+                subnetwork=default_subnetwork.self_link,
+            )],
+            name="target-vm",
+            machine_type="e2-medium",
+            zone="southamerica-west1-a",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image=vmimage.self_link,
+                ),
+            ))
+        policyddosprotection = gcp.compute.RegionSecurityPolicy("policyddosprotection",
+            region="southamerica-west1",
+            name="tf-test-policyddos_81126",
+            description="ddos protection security policy to set target instance",
+            type="CLOUD_ARMOR_NETWORK",
+            ddos_protection_config=gcp.compute.RegionSecurityPolicyDdosProtectionConfigArgs(
+                ddos_protection="ADVANCED_PREVIEW",
+            ))
+        edge_sec_service = gcp.compute.NetworkEdgeSecurityService("edge_sec_service",
+            region="southamerica-west1",
+            name="tf-test-edgesec_88717",
+            security_policy=policyddosprotection.self_link)
+        regionsecuritypolicy = gcp.compute.RegionSecurityPolicy("regionsecuritypolicy",
+            name="region-secpolicy",
+            region="southamerica-west1",
+            description="basic security policy for target instance",
+            type="CLOUD_ARMOR_NETWORK")
+        default_target_instance = gcp.compute.TargetInstance("default",
+            name="target-instance",
+            zone="southamerica-west1-a",
+            instance=target_vm.id,
+            security_policy=regionsecuritypolicy.self_link)
         ```
 
         ## Import

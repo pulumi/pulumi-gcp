@@ -302,6 +302,36 @@ class Field(pulumi.CustomResource):
         chosen location.
 
         ## Example Usage
+        ### Firestore Field Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE")
+        basic = gcp.firestore.Field("basic",
+            project="my-project-name",
+            database=database.name,
+            collection="chatrooms__64336",
+            field="basic",
+            index_config=gcp.firestore.FieldIndexConfigArgs(
+                indexes=[
+                    gcp.firestore.FieldIndexConfigIndexArgs(
+                        order="ASCENDING",
+                        query_scope="COLLECTION_GROUP",
+                    ),
+                    gcp.firestore.FieldIndexConfigIndexArgs(
+                        array_config="CONTAINS",
+                    ),
+                ],
+            ))
+        ```
         ### Firestore Field Timestamp
 
         ```python
@@ -322,6 +352,38 @@ class Field(pulumi.CustomResource):
             field="timestamp",
             ttl_config=gcp.firestore.FieldTtlConfigArgs(),
             index_config=gcp.firestore.FieldIndexConfigArgs())
+        ```
+        ### Firestore Field Match Override
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE")
+        match_override = gcp.firestore.Field("match_override",
+            project="my-project-name",
+            database=database.name,
+            collection="chatrooms__34962",
+            field="field_with_same_configuration_as_ancestor",
+            index_config=gcp.firestore.FieldIndexConfigArgs(
+                indexes=[
+                    gcp.firestore.FieldIndexConfigIndexArgs(
+                        order="ASCENDING",
+                    ),
+                    gcp.firestore.FieldIndexConfigIndexArgs(
+                        order="DESCENDING",
+                    ),
+                    gcp.firestore.FieldIndexConfigIndexArgs(
+                        array_config="CONTAINS",
+                    ),
+                ],
+            ))
         ```
 
         ## Import
@@ -377,6 +439,36 @@ class Field(pulumi.CustomResource):
         chosen location.
 
         ## Example Usage
+        ### Firestore Field Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE")
+        basic = gcp.firestore.Field("basic",
+            project="my-project-name",
+            database=database.name,
+            collection="chatrooms__64336",
+            field="basic",
+            index_config=gcp.firestore.FieldIndexConfigArgs(
+                indexes=[
+                    gcp.firestore.FieldIndexConfigIndexArgs(
+                        order="ASCENDING",
+                        query_scope="COLLECTION_GROUP",
+                    ),
+                    gcp.firestore.FieldIndexConfigIndexArgs(
+                        array_config="CONTAINS",
+                    ),
+                ],
+            ))
+        ```
         ### Firestore Field Timestamp
 
         ```python
@@ -397,6 +489,38 @@ class Field(pulumi.CustomResource):
             field="timestamp",
             ttl_config=gcp.firestore.FieldTtlConfigArgs(),
             index_config=gcp.firestore.FieldIndexConfigArgs())
+        ```
+        ### Firestore Field Match Override
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE")
+        match_override = gcp.firestore.Field("match_override",
+            project="my-project-name",
+            database=database.name,
+            collection="chatrooms__34962",
+            field="field_with_same_configuration_as_ancestor",
+            index_config=gcp.firestore.FieldIndexConfigArgs(
+                indexes=[
+                    gcp.firestore.FieldIndexConfigIndexArgs(
+                        order="ASCENDING",
+                    ),
+                    gcp.firestore.FieldIndexConfigIndexArgs(
+                        order="DESCENDING",
+                    ),
+                    gcp.firestore.FieldIndexConfigIndexArgs(
+                        array_config="CONTAINS",
+                    ),
+                ],
+            ))
         ```
 
         ## Import

@@ -26,6 +26,73 @@ import javax.annotation.Nullable;
  *     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
  * 
  * ## Example Usage
+ * ### Gkehub Membership Binding Basic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.gkehub.Membership;
+ * import com.pulumi.gcp.gkehub.MembershipArgs;
+ * import com.pulumi.gcp.gkehub.inputs.MembershipEndpointArgs;
+ * import com.pulumi.gcp.gkehub.inputs.MembershipEndpointGkeClusterArgs;
+ * import com.pulumi.gcp.gkehub.Scope;
+ * import com.pulumi.gcp.gkehub.ScopeArgs;
+ * import com.pulumi.gcp.gkehub.MembershipBinding;
+ * import com.pulumi.gcp.gkehub.MembershipBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
+ *             .name(&#34;basic-cluster&#34;)
+ *             .location(&#34;us-central1-a&#34;)
+ *             .initialNodeCount(1)
+ *             .deletionProtection(&#34;true&#34;)
+ *             .network(&#34;default&#34;)
+ *             .subnetwork(&#34;default&#34;)
+ *             .build());
+ * 
+ *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
+ *             .membershipId(&#34;tf-test-membership_74000&#34;)
+ *             .endpoint(MembershipEndpointArgs.builder()
+ *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
+ *                     .resourceLink(primary.id().applyValue(id -&gt; String.format(&#34;//container.googleapis.com/%s&#34;, id)))
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var scope = new Scope(&#34;scope&#34;, ScopeArgs.builder()        
+ *             .scopeId(&#34;tf-test-scope_75125&#34;)
+ *             .build());
+ * 
+ *         var membershipBinding = new MembershipBinding(&#34;membershipBinding&#34;, MembershipBindingArgs.builder()        
+ *             .membershipBindingId(&#34;tf-test-membership-binding_88722&#34;)
+ *             .scope(scope.name())
+ *             .membershipId(membership.membershipId())
+ *             .location(&#34;global&#34;)
+ *             .labels(Map.ofEntries(
+ *                 Map.entry(&#34;keyb&#34;, &#34;valueb&#34;),
+ *                 Map.entry(&#34;keya&#34;, &#34;valuea&#34;),
+ *                 Map.entry(&#34;keyc&#34;, &#34;valuec&#34;)
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

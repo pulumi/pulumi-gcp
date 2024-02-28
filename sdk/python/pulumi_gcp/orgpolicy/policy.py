@@ -290,6 +290,36 @@ class Policy(pulumi.CustomResource):
                 ],
             ))
         ```
+        ### Dry_run_spec
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        constraint = gcp.orgpolicy.CustomConstraint("constraint",
+            name="custom.disableGkeAutoUpgrade_75223",
+            parent="organizations/123456789",
+            display_name="Disable GKE auto upgrade",
+            description="Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
+            action_type="ALLOW",
+            condition="resource.management.autoUpgrade == false",
+            method_types=["CREATE"],
+            resource_types=["container.googleapis.com/NodePool"])
+        primary = gcp.orgpolicy.Policy("primary",
+            name=constraint.name.apply(lambda name: f"organizations/123456789/policies/{name}"),
+            parent="organizations/123456789",
+            spec=gcp.orgpolicy.PolicySpecArgs(
+                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
+                    enforce="FALSE",
+                )],
+            ),
+            dry_run_spec=gcp.orgpolicy.PolicyDryRunSpecArgs(
+                inherit_from_parent=False,
+                reset=False,
+                rules=[gcp.orgpolicy.PolicyDryRunSpecRuleArgs(
+                    enforce="FALSE",
+                )],
+            ))
+        ```
 
         ## Import
 
@@ -408,6 +438,36 @@ class Policy(pulumi.CustomResource):
                         allow_all="TRUE",
                     ),
                 ],
+            ))
+        ```
+        ### Dry_run_spec
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        constraint = gcp.orgpolicy.CustomConstraint("constraint",
+            name="custom.disableGkeAutoUpgrade_75223",
+            parent="organizations/123456789",
+            display_name="Disable GKE auto upgrade",
+            description="Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
+            action_type="ALLOW",
+            condition="resource.management.autoUpgrade == false",
+            method_types=["CREATE"],
+            resource_types=["container.googleapis.com/NodePool"])
+        primary = gcp.orgpolicy.Policy("primary",
+            name=constraint.name.apply(lambda name: f"organizations/123456789/policies/{name}"),
+            parent="organizations/123456789",
+            spec=gcp.orgpolicy.PolicySpecArgs(
+                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
+                    enforce="FALSE",
+                )],
+            ),
+            dry_run_spec=gcp.orgpolicy.PolicyDryRunSpecArgs(
+                inherit_from_parent=False,
+                reset=False,
+                rules=[gcp.orgpolicy.PolicyDryRunSpecRuleArgs(
+                    enforce="FALSE",
+                )],
             ))
         ```
 

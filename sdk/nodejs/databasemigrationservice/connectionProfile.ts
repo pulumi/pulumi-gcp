@@ -159,6 +159,58 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Database Migration Service Connection Profile Alloydb
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const _default = new gcp.compute.Network("default", {name: "vpc-network"});
+ * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
+ *     name: "private-ip-alloc",
+ *     addressType: "INTERNAL",
+ *     purpose: "VPC_PEERING",
+ *     prefixLength: 16,
+ *     network: _default.id,
+ * });
+ * const vpcConnection = new gcp.servicenetworking.Connection("vpc_connection", {
+ *     network: _default.id,
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [privateIpAlloc.name],
+ * });
+ * const alloydbprofile = new gcp.databasemigrationservice.ConnectionProfile("alloydbprofile", {
+ *     location: "us-central1",
+ *     connectionProfileId: "my-profileid",
+ *     displayName: "my-profileid_display",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     alloydb: {
+ *         clusterId: "tf-test-dbmsalloycluster_85794",
+ *         settings: {
+ *             initialUser: {
+ *                 user: "alloyuser_21197",
+ *                 password: "alloypass_52865",
+ *             },
+ *             vpcNetwork: _default.id,
+ *             labels: {
+ *                 alloyfoo: "alloybar",
+ *             },
+ *             primaryInstanceSettings: {
+ *                 id: "priminstid",
+ *                 machineConfig: {
+ *                     cpuCount: 2,
+ *                 },
+ *                 databaseFlags: {},
+ *                 labels: {
+ *                     alloysinstfoo: "allowinstbar",
+ *                 },
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

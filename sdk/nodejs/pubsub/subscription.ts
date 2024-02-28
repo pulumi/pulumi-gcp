@@ -167,6 +167,69 @@ import * as utilities from "../utilities";
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-pubsub.iam.gserviceaccount.com`),
  * });
  * ```
+ * ### Pubsub Subscription Push Cloudstorage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.storage.Bucket("example", {
+ *     name: "example-bucket",
+ *     location: "US",
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const exampleTopic = new gcp.pubsub.Topic("example", {name: "example-topic"});
+ * const exampleSubscription = new gcp.pubsub.Subscription("example", {
+ *     name: "example-subscription",
+ *     topic: exampleTopic.id,
+ *     cloudStorageConfig: {
+ *         bucket: example.name,
+ *         filenamePrefix: "pre-",
+ *         filenameSuffix: "-_41819",
+ *         maxBytes: 1000,
+ *         maxDuration: "300s",
+ *     },
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const admin = new gcp.storage.BucketIAMMember("admin", {
+ *     bucket: example.name,
+ *     role: "roles/storage.admin",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-pubsub.iam.gserviceaccount.com`),
+ * });
+ * ```
+ * ### Pubsub Subscription Push Cloudstorage Avro
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.storage.Bucket("example", {
+ *     name: "example-bucket",
+ *     location: "US",
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const exampleTopic = new gcp.pubsub.Topic("example", {name: "example-topic"});
+ * const exampleSubscription = new gcp.pubsub.Subscription("example", {
+ *     name: "example-subscription",
+ *     topic: exampleTopic.id,
+ *     cloudStorageConfig: {
+ *         bucket: example.name,
+ *         filenamePrefix: "pre-",
+ *         filenameSuffix: "-_75092",
+ *         maxBytes: 1000,
+ *         maxDuration: "300s",
+ *         avroConfig: {
+ *             writeMetadata: true,
+ *         },
+ *     },
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const admin = new gcp.storage.BucketIAMMember("admin", {
+ *     bucket: example.name,
+ *     role: "roles/storage.admin",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-pubsub.iam.gserviceaccount.com`),
+ * });
+ * ```
  *
  * ## Import
  *

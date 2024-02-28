@@ -16,6 +16,41 @@ import * as utilities from "../utilities";
  *     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
  *
  * ## Example Usage
+ * ### Gkehub Membership Binding Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     name: "basic-cluster",
+ *     location: "us-central1-a",
+ *     initialNodeCount: 1,
+ *     deletionProtection: true,
+ *     network: "default",
+ *     subnetwork: "default",
+ * });
+ * const membership = new gcp.gkehub.Membership("membership", {
+ *     membershipId: "tf-test-membership_74000",
+ *     endpoint: {
+ *         gkeCluster: {
+ *             resourceLink: pulumi.interpolate`//container.googleapis.com/${primary.id}`,
+ *         },
+ *     },
+ * });
+ * const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_75125"});
+ * const membershipBinding = new gcp.gkehub.MembershipBinding("membership_binding", {
+ *     membershipBindingId: "tf-test-membership-binding_88722",
+ *     scope: scope.name,
+ *     membershipId: membership.membershipId,
+ *     location: "global",
+ *     labels: {
+ *         keyb: "valueb",
+ *         keya: "valuea",
+ *         keyc: "valuec",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

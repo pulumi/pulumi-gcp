@@ -16,6 +16,164 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dataplex/docs)
  *
  * ## Example Usage
+ * ### Dataplex Task Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const example = new gcp.dataplex.Lake("example", {
+ *     name: "tf-test-lake_85840",
+ *     location: "us-central1",
+ *     project: "my-project-name",
+ * });
+ * const exampleTask = new gcp.dataplex.Task("example", {
+ *     taskId: "tf-test-task_60302",
+ *     location: "us-central1",
+ *     lake: example.name,
+ *     description: "Test Task Basic",
+ *     displayName: "task-basic",
+ *     labels: {
+ *         count: "3",
+ *     },
+ *     triggerSpec: {
+ *         type: "RECURRING",
+ *         disabled: false,
+ *         maxRetries: 3,
+ *         startTime: "2023-10-02T15:01:23Z",
+ *         schedule: "1 * * * *",
+ *     },
+ *     executionSpec: {
+ *         serviceAccount: project.then(project => `${project.number}-compute@developer.gserviceaccount.com`),
+ *         project: "my-project-name",
+ *         maxJobExecutionLifetime: "100s",
+ *         kmsKey: "234jn2kjn42k3n423",
+ *     },
+ *     spark: {
+ *         pythonScriptFile: "gs://dataproc-examples/pyspark/hello-world/hello-world.py",
+ *     },
+ *     project: "my-project-name",
+ * });
+ * ```
+ * ### Dataplex Task Spark
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * // VPC network
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "tf-test-workstation-cluster_22811",
+ *     autoCreateSubnetworks: true,
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const exampleSpark = new gcp.dataplex.Lake("example_spark", {
+ *     name: "tf-test-lake_91042",
+ *     location: "us-central1",
+ *     project: "my-project-name",
+ * });
+ * const exampleSparkTask = new gcp.dataplex.Task("example_spark", {
+ *     taskId: "tf-test-task_72490",
+ *     location: "us-central1",
+ *     lake: exampleSpark.name,
+ *     triggerSpec: {
+ *         type: "ON_DEMAND",
+ *     },
+ *     description: "task-spark-terraform",
+ *     executionSpec: {
+ *         serviceAccount: project.then(project => `${project.number}-compute@developer.gserviceaccount.com`),
+ *         args: {
+ *             TASK_ARGS: "--output_location,gs://spark-job/task-result, --output_format, json",
+ *         },
+ *     },
+ *     spark: {
+ *         infrastructureSpec: {
+ *             batch: {
+ *                 executorsCount: 2,
+ *                 maxExecutorsCount: 100,
+ *             },
+ *             containerImage: {
+ *                 image: "test-image",
+ *                 javaJars: ["test-java-jars.jar"],
+ *                 pythonPackages: ["gs://bucket-name/my/path/to/lib.tar.gz"],
+ *                 properties: {
+ *                     name: "wrench",
+ *                     mass: "1.3kg",
+ *                     count: "3",
+ *                 },
+ *             },
+ *             vpcNetwork: {
+ *                 networkTags: ["test-network-tag"],
+ *                 subNetwork: _default.id,
+ *             },
+ *         },
+ *         fileUris: ["gs://terrafrom-test/test.csv"],
+ *         archiveUris: ["gs://terraform-test/test.csv"],
+ *         sqlScript: "show databases",
+ *     },
+ *     project: "my-project-name",
+ * });
+ * ```
+ * ### Dataplex Task Notebook
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * // VPC network
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "tf-test-workstation-cluster_89605",
+ *     autoCreateSubnetworks: true,
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const exampleNotebook = new gcp.dataplex.Lake("example_notebook", {
+ *     name: "tf-test-lake_56730",
+ *     location: "us-central1",
+ *     project: "my-project-name",
+ * });
+ * const exampleNotebookTask = new gcp.dataplex.Task("example_notebook", {
+ *     taskId: "tf-test-task_95154",
+ *     location: "us-central1",
+ *     lake: exampleNotebook.name,
+ *     triggerSpec: {
+ *         type: "RECURRING",
+ *         schedule: "1 * * * *",
+ *     },
+ *     executionSpec: {
+ *         serviceAccount: project.then(project => `${project.number}-compute@developer.gserviceaccount.com`),
+ *         args: {
+ *             TASK_ARGS: "--output_location,gs://spark-job-jars-anrajitha/task-result, --output_format, json",
+ *         },
+ *     },
+ *     notebook: {
+ *         notebook: "gs://terraform-test/test-notebook.ipynb",
+ *         infrastructureSpec: {
+ *             batch: {
+ *                 executorsCount: 2,
+ *                 maxExecutorsCount: 100,
+ *             },
+ *             containerImage: {
+ *                 image: "test-image",
+ *                 javaJars: ["test-java-jars.jar"],
+ *                 pythonPackages: ["gs://bucket-name/my/path/to/lib.tar.gz"],
+ *                 properties: {
+ *                     name: "wrench",
+ *                     mass: "1.3kg",
+ *                     count: "3",
+ *                 },
+ *             },
+ *             vpcNetwork: {
+ *                 networkTags: ["test-network-tag"],
+ *                 network: _default.id,
+ *             },
+ *         },
+ *         fileUris: ["gs://terraform-test/test.csv"],
+ *         archiveUris: ["gs://terraform-test/test.csv"],
+ *     },
+ *     project: "my-project-name",
+ * });
+ * ```
  *
  * ## Import
  *

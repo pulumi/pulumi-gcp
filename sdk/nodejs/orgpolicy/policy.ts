@@ -105,6 +105,38 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Dry_run_spec
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const constraint = new gcp.orgpolicy.CustomConstraint("constraint", {
+ *     name: "custom.disableGkeAutoUpgrade_75223",
+ *     parent: "organizations/123456789",
+ *     displayName: "Disable GKE auto upgrade",
+ *     description: "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
+ *     actionType: "ALLOW",
+ *     condition: "resource.management.autoUpgrade == false",
+ *     methodTypes: ["CREATE"],
+ *     resourceTypes: ["container.googleapis.com/NodePool"],
+ * });
+ * const primary = new gcp.orgpolicy.Policy("primary", {
+ *     name: pulumi.interpolate`organizations/123456789/policies/${constraint.name}`,
+ *     parent: "organizations/123456789",
+ *     spec: {
+ *         rules: [{
+ *             enforce: "FALSE",
+ *         }],
+ *     },
+ *     dryRunSpec: {
+ *         inheritFromParent: false,
+ *         reset: false,
+ *         rules: [{
+ *             enforce: "FALSE",
+ *         }],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

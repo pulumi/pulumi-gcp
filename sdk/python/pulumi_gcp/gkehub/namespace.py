@@ -416,6 +416,28 @@ class Namespace(pulumi.CustomResource):
             * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
+        ### Gkehub Namespace Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_16511")
+        namespace = gcp.gkehub.Namespace("namespace",
+            scope_namespace_id="tf-test-namespace_8493",
+            scope_id=scope.scope_id,
+            scope=scope.name,
+            namespace_labels={
+                "keyb": "valueb",
+                "keya": "valuea",
+                "keyc": "valuec",
+            },
+            labels={
+                "keyb": "valueb",
+                "keya": "valuea",
+                "keyc": "valuec",
+            })
+        ```
 
         ## Import
 
@@ -477,6 +499,28 @@ class Namespace(pulumi.CustomResource):
             * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
+        ### Gkehub Namespace Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_16511")
+        namespace = gcp.gkehub.Namespace("namespace",
+            scope_namespace_id="tf-test-namespace_8493",
+            scope_id=scope.scope_id,
+            scope=scope.name,
+            namespace_labels={
+                "keyb": "valueb",
+                "keya": "valuea",
+                "keyc": "valuec",
+            },
+            labels={
+                "keyb": "valueb",
+                "keya": "valuea",
+                "keyc": "valuec",
+            })
+        ```
 
         ## Import
 

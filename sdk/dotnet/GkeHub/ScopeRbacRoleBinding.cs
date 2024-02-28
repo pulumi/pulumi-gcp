@@ -19,6 +19,38 @@ namespace Pulumi.Gcp.GkeHub
     ///     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
     /// 
     /// ## Example Usage
+    /// ### Gkehub Scope Rbac Role Binding Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var scope = new Gcp.GkeHub.Scope("scope", new()
+    ///     {
+    ///         ScopeId = "tf-test-scope_9106",
+    ///     });
+    /// 
+    ///     var scopeRbacRoleBinding = new Gcp.GkeHub.ScopeRbacRoleBinding("scope_rbac_role_binding", new()
+    ///     {
+    ///         ScopeRbacRoleBindingId = "tf-test-scope-rbac-role-binding_27169",
+    ///         ScopeId = scope.ScopeId,
+    ///         User = "test-email@gmail.com",
+    ///         Role = new Gcp.GkeHub.Inputs.ScopeRbacRoleBindingRoleArgs
+    ///         {
+    ///             PredefinedRole = "ADMIN",
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "key", "value" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

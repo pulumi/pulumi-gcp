@@ -120,6 +120,103 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Target Instance With Security Policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "custom-default-network",
+    ///         AutoCreateSubnetworks = false,
+    ///         RoutingMode = "REGIONAL",
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "custom-default-subnet",
+    ///         IpCidrRange = "10.1.2.0/24",
+    ///         Network = @default.Id,
+    ///         PrivateIpv6GoogleAccess = "DISABLE_GOOGLE_ACCESS",
+    ///         Purpose = "PRIVATE",
+    ///         Region = "southamerica-west1",
+    ///         StackType = "IPV4_ONLY",
+    ///     });
+    /// 
+    ///     var vmimage = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var target_vm = new Gcp.Compute.Instance("target-vm", new()
+    ///     {
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     null,
+    ///                 },
+    ///                 Network = @default.SelfLink,
+    ///                 Subnetwork = defaultSubnetwork.SelfLink,
+    ///             },
+    ///         },
+    ///         Name = "target-vm",
+    ///         MachineType = "e2-medium",
+    ///         Zone = "southamerica-west1-a",
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///         {
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///             {
+    ///                 Image = vmimage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policyddosprotection = new Gcp.Compute.RegionSecurityPolicy("policyddosprotection", new()
+    ///     {
+    ///         Region = "southamerica-west1",
+    ///         Name = "tf-test-policyddos_81126",
+    ///         Description = "ddos protection security policy to set target instance",
+    ///         Type = "CLOUD_ARMOR_NETWORK",
+    ///         DdosProtectionConfig = new Gcp.Compute.Inputs.RegionSecurityPolicyDdosProtectionConfigArgs
+    ///         {
+    ///             DdosProtection = "ADVANCED_PREVIEW",
+    ///         },
+    ///     });
+    /// 
+    ///     var edgeSecService = new Gcp.Compute.NetworkEdgeSecurityService("edge_sec_service", new()
+    ///     {
+    ///         Region = "southamerica-west1",
+    ///         Name = "tf-test-edgesec_88717",
+    ///         SecurityPolicy = policyddosprotection.SelfLink,
+    ///     });
+    /// 
+    ///     var regionsecuritypolicy = new Gcp.Compute.RegionSecurityPolicy("regionsecuritypolicy", new()
+    ///     {
+    ///         Name = "region-secpolicy",
+    ///         Region = "southamerica-west1",
+    ///         Description = "basic security policy for target instance",
+    ///         Type = "CLOUD_ARMOR_NETWORK",
+    ///     });
+    /// 
+    ///     var defaultTargetInstance = new Gcp.Compute.TargetInstance("default", new()
+    ///     {
+    ///         Name = "target-instance",
+    ///         Zone = "southamerica-west1-a",
+    ///         Instance = target_vm.Id,
+    ///         SecurityPolicy = regionsecuritypolicy.SelfLink,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -445,6 +445,24 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
             * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
+        ### Gkehub Scope Rbac Role Binding Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_9106")
+        scope_rbac_role_binding = gcp.gkehub.ScopeRbacRoleBinding("scope_rbac_role_binding",
+            scope_rbac_role_binding_id="tf-test-scope-rbac-role-binding_27169",
+            scope_id=scope.scope_id,
+            user="test-email@gmail.com",
+            role=gcp.gkehub.ScopeRbacRoleBindingRoleArgs(
+                predefined_role="ADMIN",
+            ),
+            labels={
+                "key": "value",
+            })
+        ```
 
         ## Import
 
@@ -506,6 +524,24 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
             * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
+        ### Gkehub Scope Rbac Role Binding Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_9106")
+        scope_rbac_role_binding = gcp.gkehub.ScopeRbacRoleBinding("scope_rbac_role_binding",
+            scope_rbac_role_binding_id="tf-test-scope-rbac-role-binding_27169",
+            scope_id=scope.scope_id,
+            user="test-email@gmail.com",
+            role=gcp.gkehub.ScopeRbacRoleBindingRoleArgs(
+                predefined_role="ADMIN",
+            ),
+            labels={
+                "key": "value",
+            })
+        ```
 
         ## Import
 

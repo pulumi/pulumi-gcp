@@ -21,6 +21,72 @@ import (
 //   - [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 //
 // ## Example Usage
+// ### Gkehub Membership Binding Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Name:               pulumi.String("basic-cluster"),
+//				Location:           pulumi.String("us-central1-a"),
+//				InitialNodeCount:   pulumi.Int(1),
+//				DeletionProtection: pulumi.Bool(true),
+//				Network:            pulumi.String("default"),
+//				Subnetwork:         pulumi.String("default"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			membership, err := gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
+//				MembershipId: pulumi.String("tf-test-membership_74000"),
+//				Endpoint: &gkehub.MembershipEndpointArgs{
+//					GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
+//						ResourceLink: primary.ID().ApplyT(func(id string) (string, error) {
+//							return fmt.Sprintf("//container.googleapis.com/%v", id), nil
+//						}).(pulumi.StringOutput),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			scope, err := gkehub.NewScope(ctx, "scope", &gkehub.ScopeArgs{
+//				ScopeId: pulumi.String("tf-test-scope_75125"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkehub.NewMembershipBinding(ctx, "membership_binding", &gkehub.MembershipBindingArgs{
+//				MembershipBindingId: pulumi.String("tf-test-membership-binding_88722"),
+//				Scope:               scope.Name,
+//				MembershipId:        membership.MembershipId,
+//				Location:            pulumi.String("global"),
+//				Labels: pulumi.StringMap{
+//					"keyb": pulumi.String("valueb"),
+//					"keya": pulumi.String("valuea"),
+//					"keyc": pulumi.String("valuec"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

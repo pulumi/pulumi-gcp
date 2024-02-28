@@ -21,6 +21,264 @@ import (
 //   - [Official Documentation](https://cloud.google.com/dataplex/docs)
 //
 // ## Example Usage
+// ### Dataplex Task Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			example, err := dataplex.NewLake(ctx, "example", &dataplex.LakeArgs{
+//				Name:     pulumi.String("tf-test-lake_85840"),
+//				Location: pulumi.String("us-central1"),
+//				Project:  pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataplex.NewTask(ctx, "example", &dataplex.TaskArgs{
+//				TaskId:      pulumi.String("tf-test-task_60302"),
+//				Location:    pulumi.String("us-central1"),
+//				Lake:        example.Name,
+//				Description: pulumi.String("Test Task Basic"),
+//				DisplayName: pulumi.String("task-basic"),
+//				Labels: pulumi.StringMap{
+//					"count": pulumi.String("3"),
+//				},
+//				TriggerSpec: &dataplex.TaskTriggerSpecArgs{
+//					Type:       pulumi.String("RECURRING"),
+//					Disabled:   pulumi.Bool(false),
+//					MaxRetries: pulumi.Int(3),
+//					StartTime:  pulumi.String("2023-10-02T15:01:23Z"),
+//					Schedule:   pulumi.String("1 * * * *"),
+//				},
+//				ExecutionSpec: &dataplex.TaskExecutionSpecArgs{
+//					ServiceAccount:          pulumi.String(fmt.Sprintf("%v-compute@developer.gserviceaccount.com", project.Number)),
+//					Project:                 pulumi.String("my-project-name"),
+//					MaxJobExecutionLifetime: pulumi.String("100s"),
+//					KmsKey:                  pulumi.String("234jn2kjn42k3n423"),
+//				},
+//				Spark: &dataplex.TaskSparkArgs{
+//					PythonScriptFile: pulumi.String("gs://dataproc-examples/pyspark/hello-world/hello-world.py"),
+//				},
+//				Project: pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Dataplex Task Spark
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// VPC network
+//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("tf-test-workstation-cluster_22811"),
+//				AutoCreateSubnetworks: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleSpark, err := dataplex.NewLake(ctx, "example_spark", &dataplex.LakeArgs{
+//				Name:     pulumi.String("tf-test-lake_91042"),
+//				Location: pulumi.String("us-central1"),
+//				Project:  pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataplex.NewTask(ctx, "example_spark", &dataplex.TaskArgs{
+//				TaskId:   pulumi.String("tf-test-task_72490"),
+//				Location: pulumi.String("us-central1"),
+//				Lake:     exampleSpark.Name,
+//				TriggerSpec: &dataplex.TaskTriggerSpecArgs{
+//					Type: pulumi.String("ON_DEMAND"),
+//				},
+//				Description: pulumi.String("task-spark-terraform"),
+//				ExecutionSpec: &dataplex.TaskExecutionSpecArgs{
+//					ServiceAccount: pulumi.String(fmt.Sprintf("%v-compute@developer.gserviceaccount.com", project.Number)),
+//					Args: pulumi.StringMap{
+//						"TASK_ARGS": pulumi.String("--output_location,gs://spark-job/task-result, --output_format, json"),
+//					},
+//				},
+//				Spark: &dataplex.TaskSparkArgs{
+//					InfrastructureSpec: &dataplex.TaskSparkInfrastructureSpecArgs{
+//						Batch: &dataplex.TaskSparkInfrastructureSpecBatchArgs{
+//							ExecutorsCount:    pulumi.Int(2),
+//							MaxExecutorsCount: pulumi.Int(100),
+//						},
+//						ContainerImage: &dataplex.TaskSparkInfrastructureSpecContainerImageArgs{
+//							Image: pulumi.String("test-image"),
+//							JavaJars: pulumi.StringArray{
+//								pulumi.String("test-java-jars.jar"),
+//							},
+//							PythonPackages: pulumi.StringArray{
+//								pulumi.String("gs://bucket-name/my/path/to/lib.tar.gz"),
+//							},
+//							Properties: pulumi.StringMap{
+//								"name":  pulumi.String("wrench"),
+//								"mass":  pulumi.String("1.3kg"),
+//								"count": pulumi.String("3"),
+//							},
+//						},
+//						VpcNetwork: &dataplex.TaskSparkInfrastructureSpecVpcNetworkArgs{
+//							NetworkTags: pulumi.StringArray{
+//								pulumi.String("test-network-tag"),
+//							},
+//							SubNetwork: _default.ID(),
+//						},
+//					},
+//					FileUris: pulumi.StringArray{
+//						pulumi.String("gs://terrafrom-test/test.csv"),
+//					},
+//					ArchiveUris: pulumi.StringArray{
+//						pulumi.String("gs://terraform-test/test.csv"),
+//					},
+//					SqlScript: pulumi.String("show databases"),
+//				},
+//				Project: pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Dataplex Task Notebook
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// VPC network
+//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("tf-test-workstation-cluster_89605"),
+//				AutoCreateSubnetworks: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleNotebook, err := dataplex.NewLake(ctx, "example_notebook", &dataplex.LakeArgs{
+//				Name:     pulumi.String("tf-test-lake_56730"),
+//				Location: pulumi.String("us-central1"),
+//				Project:  pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataplex.NewTask(ctx, "example_notebook", &dataplex.TaskArgs{
+//				TaskId:   pulumi.String("tf-test-task_95154"),
+//				Location: pulumi.String("us-central1"),
+//				Lake:     exampleNotebook.Name,
+//				TriggerSpec: &dataplex.TaskTriggerSpecArgs{
+//					Type:     pulumi.String("RECURRING"),
+//					Schedule: pulumi.String("1 * * * *"),
+//				},
+//				ExecutionSpec: &dataplex.TaskExecutionSpecArgs{
+//					ServiceAccount: pulumi.String(fmt.Sprintf("%v-compute@developer.gserviceaccount.com", project.Number)),
+//					Args: pulumi.StringMap{
+//						"TASK_ARGS": pulumi.String("--output_location,gs://spark-job-jars-anrajitha/task-result, --output_format, json"),
+//					},
+//				},
+//				Notebook: &dataplex.TaskNotebookArgs{
+//					Notebook: pulumi.String("gs://terraform-test/test-notebook.ipynb"),
+//					InfrastructureSpec: &dataplex.TaskNotebookInfrastructureSpecArgs{
+//						Batch: &dataplex.TaskNotebookInfrastructureSpecBatchArgs{
+//							ExecutorsCount:    pulumi.Int(2),
+//							MaxExecutorsCount: pulumi.Int(100),
+//						},
+//						ContainerImage: &dataplex.TaskNotebookInfrastructureSpecContainerImageArgs{
+//							Image: pulumi.String("test-image"),
+//							JavaJars: pulumi.StringArray{
+//								pulumi.String("test-java-jars.jar"),
+//							},
+//							PythonPackages: pulumi.StringArray{
+//								pulumi.String("gs://bucket-name/my/path/to/lib.tar.gz"),
+//							},
+//							Properties: pulumi.StringMap{
+//								"name":  pulumi.String("wrench"),
+//								"mass":  pulumi.String("1.3kg"),
+//								"count": pulumi.String("3"),
+//							},
+//						},
+//						VpcNetwork: &dataplex.TaskNotebookInfrastructureSpecVpcNetworkArgs{
+//							NetworkTags: pulumi.StringArray{
+//								pulumi.String("test-network-tag"),
+//							},
+//							Network: _default.ID(),
+//						},
+//					},
+//					FileUris: pulumi.StringArray{
+//						pulumi.String("gs://terraform-test/test.csv"),
+//					},
+//					ArchiveUris: pulumi.StringArray{
+//						pulumi.String("gs://terraform-test/test.csv"),
+//					},
+//				},
+//				Project: pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

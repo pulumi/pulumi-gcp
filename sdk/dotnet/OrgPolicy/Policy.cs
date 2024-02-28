@@ -165,6 +165,63 @@ namespace Pulumi.Gcp.OrgPolicy
     /// 
     /// });
     /// ```
+    /// ### Dry_run_spec
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var constraint = new Gcp.OrgPolicy.CustomConstraint("constraint", new()
+    ///     {
+    ///         Name = "custom.disableGkeAutoUpgrade_75223",
+    ///         Parent = "organizations/123456789",
+    ///         DisplayName = "Disable GKE auto upgrade",
+    ///         Description = "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
+    ///         ActionType = "ALLOW",
+    ///         Condition = "resource.management.autoUpgrade == false",
+    ///         MethodTypes = new[]
+    ///         {
+    ///             "CREATE",
+    ///         },
+    ///         ResourceTypes = new[]
+    ///         {
+    ///             "container.googleapis.com/NodePool",
+    ///         },
+    ///     });
+    /// 
+    ///     var primary = new Gcp.OrgPolicy.Policy("primary", new()
+    ///     {
+    ///         Name = constraint.Name.Apply(name =&gt; $"organizations/123456789/policies/{name}"),
+    ///         Parent = "organizations/123456789",
+    ///         Spec = new Gcp.OrgPolicy.Inputs.PolicySpecArgs
+    ///         {
+    ///             Rules = new[]
+    ///             {
+    ///                 new Gcp.OrgPolicy.Inputs.PolicySpecRuleArgs
+    ///                 {
+    ///                     Enforce = "FALSE",
+    ///                 },
+    ///             },
+    ///         },
+    ///         DryRunSpec = new Gcp.OrgPolicy.Inputs.PolicyDryRunSpecArgs
+    ///         {
+    ///             InheritFromParent = false,
+    ///             Reset = false,
+    ///             Rules = new[]
+    ///             {
+    ///                 new Gcp.OrgPolicy.Inputs.PolicyDryRunSpecRuleArgs
+    ///                 {
+    ///                     Enforce = "FALSE",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

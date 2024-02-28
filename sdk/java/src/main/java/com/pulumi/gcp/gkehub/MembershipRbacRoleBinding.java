@@ -17,6 +17,70 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * ### Gkehub Membership Rbac Role Binding Basic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.gkehub.Membership;
+ * import com.pulumi.gcp.gkehub.MembershipArgs;
+ * import com.pulumi.gcp.gkehub.inputs.MembershipEndpointArgs;
+ * import com.pulumi.gcp.gkehub.inputs.MembershipEndpointGkeClusterArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.gkehub.MembershipRbacRoleBinding;
+ * import com.pulumi.gcp.gkehub.MembershipRbacRoleBindingArgs;
+ * import com.pulumi.gcp.gkehub.inputs.MembershipRbacRoleBindingRoleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
+ *             .name(&#34;basic-cluster&#34;)
+ *             .location(&#34;us-central1-a&#34;)
+ *             .initialNodeCount(1)
+ *             .deletionProtection(&#34;true&#34;)
+ *             .network(&#34;default&#34;)
+ *             .subnetwork(&#34;default&#34;)
+ *             .build());
+ * 
+ *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
+ *             .membershipId(&#34;tf-test-membership_39249&#34;)
+ *             .endpoint(MembershipEndpointArgs.builder()
+ *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
+ *                     .resourceLink(primary.id().applyValue(id -&gt; String.format(&#34;//container.googleapis.com/%s&#34;, id)))
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var membershipRbacRoleBinding = new MembershipRbacRoleBinding(&#34;membershipRbacRoleBinding&#34;, MembershipRbacRoleBindingArgs.builder()        
+ *             .membershipRbacRoleBindingId(&#34;tf-test-membership-rbac-role-binding_74391&#34;)
+ *             .membershipId(membership.membershipId())
+ *             .user(String.format(&#34;service-%s@gcp-sa-anthossupport.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .role(MembershipRbacRoleBindingRoleArgs.builder()
+ *                 .predefinedRole(&#34;ANTHOS_SUPPORT&#34;)
+ *                 .build())
+ *             .location(&#34;global&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
