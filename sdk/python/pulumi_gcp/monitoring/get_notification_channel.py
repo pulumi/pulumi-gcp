@@ -190,7 +190,7 @@ def get_notification_channel(display_name: Optional[str] = None,
     import pulumi_gcp as gcp
 
     basic = gcp.monitoring.get_notification_channel(display_name="Test Notification Channel")
-    alert_policy = gcp.monitoring.AlertPolicy("alertPolicy",
+    alert_policy = gcp.monitoring.AlertPolicy("alert_policy",
         display_name="My Alert Policy",
         notification_channels=[basic.name],
         combiner="OR",
@@ -273,7 +273,7 @@ def get_notification_channel_output(display_name: Optional[pulumi.Input[Optional
     import pulumi_gcp as gcp
 
     basic = gcp.monitoring.get_notification_channel(display_name="Test Notification Channel")
-    alert_policy = gcp.monitoring.AlertPolicy("alertPolicy",
+    alert_policy = gcp.monitoring.AlertPolicy("alert_policy",
         display_name="My Alert Policy",
         notification_channels=[basic.name],
         combiner="OR",

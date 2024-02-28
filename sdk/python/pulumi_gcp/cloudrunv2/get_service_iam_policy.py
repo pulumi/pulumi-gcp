@@ -109,9 +109,9 @@ def get_service_iam_policy(location: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.cloudrunv2.get_service_iam_policy(project=google_cloud_run_v2_service["default"]["project"],
-        location=google_cloud_run_v2_service["default"]["location"],
-        name=google_cloud_run_v2_service["default"]["name"])
+    policy = gcp.cloudrunv2.get_service_iam_policy(project=default["project"],
+        location=default["location"],
+        name=default["name"])
     ```
 
 
@@ -150,9 +150,9 @@ def get_service_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.cloudrunv2.get_service_iam_policy(project=google_cloud_run_v2_service["default"]["project"],
-        location=google_cloud_run_v2_service["default"]["location"],
-        name=google_cloud_run_v2_service["default"]["name"])
+    policy = gcp.cloudrunv2.get_service_iam_policy(project=default["project"],
+        location=default["location"],
+        name=default["name"])
     ```
 
 

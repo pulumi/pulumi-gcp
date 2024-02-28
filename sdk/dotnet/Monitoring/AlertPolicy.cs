@@ -31,15 +31,20 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var alertPolicy = new Gcp.Monitoring.AlertPolicy("alertPolicy", new()
+    ///     var alertPolicy = new Gcp.Monitoring.AlertPolicy("alert_policy", new()
     ///     {
+    ///         DisplayName = "My Alert Policy",
     ///         Combiner = "OR",
     ///         Conditions = new[]
     ///         {
     ///             new Gcp.Monitoring.Inputs.AlertPolicyConditionArgs
     ///             {
+    ///                 DisplayName = "test condition",
     ///                 ConditionThreshold = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdArgs
     ///                 {
+    ///                     Filter = "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
+    ///                     Duration = "60s",
+    ///                     Comparison = "COMPARISON_GT",
     ///                     Aggregations = new[]
     ///                     {
     ///                         new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdAggregationArgs
@@ -48,14 +53,9 @@ namespace Pulumi.Gcp.Monitoring
     ///                             PerSeriesAligner = "ALIGN_RATE",
     ///                         },
     ///                     },
-    ///                     Comparison = "COMPARISON_GT",
-    ///                     Duration = "60s",
-    ///                     Filter = "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
     ///                 },
-    ///                 DisplayName = "test condition",
     ///             },
     ///         },
-    ///         DisplayName = "My Alert Policy",
     ///         UserLabels = 
     ///         {
     ///             { "foo", "bar" },
@@ -74,15 +74,20 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var alertPolicy = new Gcp.Monitoring.AlertPolicy("alertPolicy", new()
+    ///     var alertPolicy = new Gcp.Monitoring.AlertPolicy("alert_policy", new()
     ///     {
+    ///         DisplayName = "My Alert Policy",
     ///         Combiner = "OR",
     ///         Conditions = new[]
     ///         {
     ///             new Gcp.Monitoring.Inputs.AlertPolicyConditionArgs
     ///             {
+    ///                 DisplayName = "test condition",
     ///                 ConditionThreshold = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdArgs
     ///                 {
+    ///                     Filter = "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
+    ///                     Duration = "60s",
+    ///                     Comparison = "COMPARISON_GT",
     ///                     Aggregations = new[]
     ///                     {
     ///                         new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdAggregationArgs
@@ -91,15 +96,10 @@ namespace Pulumi.Gcp.Monitoring
     ///                             PerSeriesAligner = "ALIGN_RATE",
     ///                         },
     ///                     },
-    ///                     Comparison = "COMPARISON_GT",
-    ///                     Duration = "60s",
     ///                     EvaluationMissingData = "EVALUATION_MISSING_DATA_INACTIVE",
-    ///                     Filter = "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
     ///                 },
-    ///                 DisplayName = "test condition",
     ///             },
     ///         },
-    ///         DisplayName = "My Alert Policy",
     ///         UserLabels = 
     ///         {
     ///             { "foo", "bar" },
@@ -118,15 +118,24 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var alertPolicy = new Gcp.Monitoring.AlertPolicy("alertPolicy", new()
+    ///     var alertPolicy = new Gcp.Monitoring.AlertPolicy("alert_policy", new()
     ///     {
+    ///         DisplayName = "My Alert Policy",
     ///         Combiner = "OR",
     ///         Conditions = new[]
     ///         {
     ///             new Gcp.Monitoring.Inputs.AlertPolicyConditionArgs
     ///             {
+    ///                 DisplayName = "test condition",
     ///                 ConditionThreshold = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdArgs
     ///                 {
+    ///                     Filter = "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
+    ///                     Duration = "60s",
+    ///                     ForecastOptions = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdForecastOptionsArgs
+    ///                     {
+    ///                         ForecastHorizon = "3600s",
+    ///                     },
+    ///                     Comparison = "COMPARISON_GT",
     ///                     Aggregations = new[]
     ///                     {
     ///                         new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdAggregationArgs
@@ -135,18 +144,9 @@ namespace Pulumi.Gcp.Monitoring
     ///                             PerSeriesAligner = "ALIGN_RATE",
     ///                         },
     ///                     },
-    ///                     Comparison = "COMPARISON_GT",
-    ///                     Duration = "60s",
-    ///                     Filter = "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
-    ///                     ForecastOptions = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdForecastOptionsArgs
-    ///                     {
-    ///                         ForecastHorizon = "3600s",
-    ///                     },
     ///                 },
-    ///                 DisplayName = "test condition",
     ///             },
     ///         },
-    ///         DisplayName = "My Alert Policy",
     ///         UserLabels = 
     ///         {
     ///             { "foo", "bar" },
@@ -165,29 +165,29 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var alertPolicy = new Gcp.Monitoring.AlertPolicy("alertPolicy", new()
+    ///     var alertPolicy = new Gcp.Monitoring.AlertPolicy("alert_policy", new()
     ///     {
-    ///         AlertStrategy = new Gcp.Monitoring.Inputs.AlertPolicyAlertStrategyArgs
-    ///         {
-    ///             AutoClose = "1800s",
-    ///         },
+    ///         DisplayName = "My Alert Policy",
     ///         Combiner = "OR",
     ///         Conditions = new[]
     ///         {
     ///             new Gcp.Monitoring.Inputs.AlertPolicyConditionArgs
     ///             {
+    ///                 DisplayName = "test condition",
     ///                 ConditionPrometheusQueryLanguage = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionPrometheusQueryLanguageArgs
     ///                 {
-    ///                     AlertRule = "AlwaysOn",
+    ///                     Query = "compute_googleapis_com:instance_cpu_usage_time &gt; 0",
     ///                     Duration = "60s",
     ///                     EvaluationInterval = "60s",
-    ///                     Query = "compute_googleapis_com:instance_cpu_usage_time &gt; 0",
+    ///                     AlertRule = "AlwaysOn",
     ///                     RuleGroup = "a test",
     ///                 },
-    ///                 DisplayName = "test condition",
     ///             },
     ///         },
-    ///         DisplayName = "My Alert Policy",
+    ///         AlertStrategy = new Gcp.Monitoring.Inputs.AlertPolicyAlertStrategyArgs
+    ///         {
+    ///             AutoClose = "1800s",
+    ///         },
     ///     });
     /// 
     /// });

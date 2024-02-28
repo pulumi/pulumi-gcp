@@ -41,7 +41,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.ServiceIdentityArgs;
  * import com.pulumi.gcp.projects.IAMMember;
  * import com.pulumi.gcp.projects.IAMMemberArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -60,9 +59,7 @@ import javax.annotation.Nullable;
  *         var hcSa = new ServiceIdentity(&#34;hcSa&#34;, ServiceIdentityArgs.builder()        
  *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
  *             .service(&#34;healthcare.googleapis.com&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var hcSaBqJobuser = new IAMMember(&#34;hcSaBqJobuser&#34;, IAMMemberArgs.builder()        
  *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))

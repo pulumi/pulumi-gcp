@@ -42,19 +42,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("keyring-example"),
 //				Location: pulumi.String("global"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			cryptokey, err := kms.NewCryptoKey(ctx, "cryptokey", &kms.CryptoKeyArgs{
+//				Name:           pulumi.String("crypto-key-example"),
 //				KeyRing:        keyring.ID(),
 //				RotationPeriod: pulumi.String("7776000s"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			myPassword, err := kms.NewSecretCiphertext(ctx, "myPassword", &kms.SecretCiphertextArgs{
+//			myPassword, err := kms.NewSecretCiphertext(ctx, "my_password", &kms.SecretCiphertextArgs{
 //				CryptoKey: cryptokey.ID(),
 //				Plaintext: pulumi.String("my-secret-password"),
 //			})
@@ -62,19 +64,20 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewInstance(ctx, "instance", &compute.InstanceArgs{
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+//							nil,
+//						},
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//				Name:        pulumi.String("my-instance"),
 //				MachineType: pulumi.String("e2-medium"),
 //				Zone:        pulumi.String("us-central1-a"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
 //						Image: pulumi.String("debian-cloud/debian-11"),
-//					},
-//				},
-//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-//					&compute.InstanceNetworkInterfaceArgs{
-//						Network: pulumi.String("default"),
-//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
-//							nil,
-//						},
 //					},
 //				},
 //				Metadata: pulumi.StringMap{

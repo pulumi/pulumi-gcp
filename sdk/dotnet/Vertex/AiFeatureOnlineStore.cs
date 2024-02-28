@@ -29,22 +29,23 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var featureOnlineStore = new Gcp.Vertex.AiFeatureOnlineStore("featureOnlineStore", new()
+    ///     var featureOnlineStore = new Gcp.Vertex.AiFeatureOnlineStore("feature_online_store", new()
     ///     {
-    ///         Bigtable = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreBigtableArgs
-    ///         {
-    ///             AutoScaling = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreBigtableAutoScalingArgs
-    ///             {
-    ///                 CpuUtilizationTarget = 50,
-    ///                 MaxNodeCount = 3,
-    ///                 MinNodeCount = 1,
-    ///             },
-    ///         },
+    ///         Name = "example_feature_online_store",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
     ///         },
     ///         Region = "us-central1",
+    ///         Bigtable = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreBigtableArgs
+    ///         {
+    ///             AutoScaling = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreBigtableAutoScalingArgs
+    ///             {
+    ///                 MinNodeCount = 1,
+    ///                 MaxNodeCount = 3,
+    ///                 CpuUtilizationTarget = 50,
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -63,6 +64,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     ///     var featureonlinestore = new Gcp.Vertex.AiFeatureOnlineStore("featureonlinestore", new()
     ///     {
+    ///         Name = "example_feature_online_store_optimized",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -80,9 +82,6 @@ namespace Pulumi.Gcp.Vertex
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -99,6 +98,7 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var featureonlinestore = new Gcp.Vertex.AiFeatureOnlineStore("featureonlinestore", new()
     ///     {
+    ///         Name = "example_feature_online_store_beta_bigtable",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -118,9 +118,6 @@ namespace Pulumi.Gcp.Vertex
     ///             Enabled = true,
     ///         },
     ///         ForceDestroy = true,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();

@@ -41,11 +41,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const project = new gcp.organizations.Project("project", {orgId: "123456789"});
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "acm-test-proj-123",
+ *     name: "acm-test-proj-123",
+ *     orgId: "123456789",
+ * });
  * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
  *     parent: "organizations/123456789",
- *     scopes: pulumi.interpolate`projects/${project.number}`,
  *     title: "Scoped Access Policy",
+ *     scopes: pulumi.interpolate`projects/${project.number}`,
  * });
  * ```
  *

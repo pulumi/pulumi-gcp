@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Dataproc
         /// {
         ///     var policy = Gcp.Dataproc.GetJobIamPolicy.Invoke(new()
         ///     {
-        ///         JobId = google_dataproc_job.Pyspark.Reference[0].Job_id,
+        ///         JobId = pyspark.Reference[0].JobId,
         ///         Region = "us-central1",
         ///     });
         /// 
@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.Dataproc
         /// {
         ///     var policy = Gcp.Dataproc.GetJobIamPolicy.Invoke(new()
         ///     {
-        ///         JobId = google_dataproc_job.Pyspark.Reference[0].Job_id,
+        ///         JobId = pyspark.Reference[0].JobId,
         ///         Region = "us-central1",
         ///     });
         /// 

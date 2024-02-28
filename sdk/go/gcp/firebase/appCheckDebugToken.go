@@ -24,6 +24,50 @@ import (
 //   - [Official Documentation](https://firebase.google.com/docs/app-check)
 //
 // ## Example Usage
+// ### Firebase App Check Debug Token Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := firebase.NewWebApp(ctx, "default", &firebase.WebAppArgs{
+//				Project:     pulumi.String("my-project-name"),
+//				DisplayName: pulumi.String("Web App for debug token"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// It takes a while for App Check to recognize the new app
+//			// If your app already exists, you don't have to wait 30 seconds.
+//			_, err = time.NewSleep(ctx, "wait_30s", &time.SleepArgs{
+//				CreateDuration: "30s",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firebase.NewAppCheckDebugToken(ctx, "default", &firebase.AppCheckDebugTokenArgs{
+//				Project:     pulumi.String("my-project-name"),
+//				AppId:       _default.AppId,
+//				DisplayName: pulumi.String("Debug Token"),
+//				Token:       pulumi.String("00000000-AAAA-BBBB-CCCC-000000000000"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

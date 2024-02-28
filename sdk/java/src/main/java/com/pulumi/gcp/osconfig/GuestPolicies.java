@@ -49,7 +49,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.osconfig.GuestPoliciesArgs;
  * import com.pulumi.gcp.osconfig.inputs.GuestPoliciesAssignmentArgs;
  * import com.pulumi.gcp.osconfig.inputs.GuestPoliciesPackageArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -69,6 +68,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var foobar = new Instance(&#34;foobar&#34;, InstanceArgs.builder()        
+ *             .name(&#34;guest-policy-inst&#34;)
  *             .machineType(&#34;e2-medium&#34;)
  *             .zone(&#34;us-central1-a&#34;)
  *             .canIpForward(false)
@@ -84,9 +84,7 @@ import javax.annotation.Nullable;
  *                 .network(&#34;default&#34;)
  *                 .build())
  *             .metadata(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var guestPolicies = new GuestPolicies(&#34;guestPolicies&#34;, GuestPoliciesArgs.builder()        
  *             .guestPolicyId(&#34;guest-policy&#34;)
@@ -97,9 +95,7 @@ import javax.annotation.Nullable;
  *                 .name(&#34;my-package&#34;)
  *                 .desiredState(&#34;UPDATED&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -118,7 +114,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.osconfig.inputs.GuestPoliciesPackageRepositoryArgs;
  * import com.pulumi.gcp.osconfig.inputs.GuestPoliciesPackageRepositoryAptArgs;
  * import com.pulumi.gcp.osconfig.inputs.GuestPoliciesPackageRepositoryYumArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -182,9 +177,7 @@ import javax.annotation.Nullable;
  *                             &#34;https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg&#34;)
  *                         .build())
  *                     .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -200,7 +193,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.osconfig.GuestPoliciesArgs;
  * import com.pulumi.gcp.osconfig.inputs.GuestPoliciesAssignmentArgs;
  * import com.pulumi.gcp.osconfig.inputs.GuestPoliciesRecipeArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -238,9 +230,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

@@ -26,8 +26,16 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const static_site = new gcp.storage.Bucket("static-site", {
+ *     name: "image-store.com",
+ *     location: "EU",
+ *     forceDestroy: true,
+ *     uniformBucketLevelAccess: true,
+ *     website: {
+ *         mainPageSuffix: "index.html",
+ *         notFoundPage: "404.html",
+ *     },
  *     cors: [{
- *         maxAgeSeconds: 3600,
+ *         origins: ["http://image-store.com"],
  *         methods: [
  *             "GET",
  *             "HEAD",
@@ -35,16 +43,9 @@ import * as utilities from "../utilities";
  *             "POST",
  *             "DELETE",
  *         ],
- *         origins: ["http://image-store.com"],
  *         responseHeaders: ["*"],
+ *         maxAgeSeconds: 3600,
  *     }],
- *     forceDestroy: true,
- *     location: "EU",
- *     uniformBucketLevelAccess: true,
- *     website: {
- *         mainPageSuffix: "index.html",
- *         notFoundPage: "404.html",
- *     },
  * });
  * ```
  * ### Life Cycle Settings For Storage Bucket Objects
@@ -54,26 +55,27 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const auto_expire = new gcp.storage.Bucket("auto-expire", {
+ *     name: "auto-expiring-bucket",
+ *     location: "US",
  *     forceDestroy: true,
  *     lifecycleRules: [
  *         {
- *             action: {
- *                 type: "Delete",
- *             },
  *             condition: {
  *                 age: 3,
  *             },
+ *             action: {
+ *                 type: "Delete",
+ *             },
  *         },
  *         {
- *             action: {
- *                 type: "AbortIncompleteMultipartUpload",
- *             },
  *             condition: {
  *                 age: 1,
  *             },
+ *             action: {
+ *                 type: "AbortIncompleteMultipartUpload",
+ *             },
  *         },
  *     ],
- *     location: "US",
  * });
  * ```
  * ### Enabling Public Access Prevention
@@ -83,8 +85,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const auto_expire = new gcp.storage.Bucket("auto-expire", {
- *     forceDestroy: true,
+ *     name: "no-public-access-bucket",
  *     location: "US",
+ *     forceDestroy: true,
  *     publicAccessPrevention: "enforced",
  * });
  * ```

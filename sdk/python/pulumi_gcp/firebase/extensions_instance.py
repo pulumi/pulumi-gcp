@@ -332,11 +332,11 @@ class ExtensionsInstance(pulumi.CustomResource):
 
         images = gcp.storage.Bucket("images",
             project="my-project-name",
+            name="bucket-id",
             location="US",
             uniform_bucket_level_access=True,
-            force_destroy=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        resize_image = gcp.firebase.ExtensionsInstance("resizeImage",
+            force_destroy=True)
+        resize_image = gcp.firebase.ExtensionsInstance("resize_image",
             project="my-project-name",
             instance_id="storage-resize-images",
             config=gcp.firebase.ExtensionsInstanceConfigArgs(
@@ -360,8 +360,7 @@ class ExtensionsInstance(pulumi.CustomResource):
                 },
                 allowed_event_types=["firebase.extensions.storage-resize-images.v1.onCompletion"],
                 eventarc_channel="projects/my-project-name/locations//channels/firebase",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import
@@ -413,11 +412,11 @@ class ExtensionsInstance(pulumi.CustomResource):
 
         images = gcp.storage.Bucket("images",
             project="my-project-name",
+            name="bucket-id",
             location="US",
             uniform_bucket_level_access=True,
-            force_destroy=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        resize_image = gcp.firebase.ExtensionsInstance("resizeImage",
+            force_destroy=True)
+        resize_image = gcp.firebase.ExtensionsInstance("resize_image",
             project="my-project-name",
             instance_id="storage-resize-images",
             config=gcp.firebase.ExtensionsInstanceConfigArgs(
@@ -441,8 +440,7 @@ class ExtensionsInstance(pulumi.CustomResource):
                 },
                 allowed_event_types=["firebase.extensions.storage-resize-images.v1.onCompletion"],
                 eventarc_channel="projects/my-project-name/locations//channels/firebase",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import

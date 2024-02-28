@@ -28,46 +28,45 @@ namespace Pulumi.Gcp.Firebase
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
+    /// 	
+    /// object NotImplemented(string errorMessage) 
+    /// {
+    ///     throw new System.NotImplementedException(errorMessage);
+    /// }
+    /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var basicWebApp = new Gcp.Firebase.WebApp("basicWebApp", new()
+    ///     var basicWebApp = new Gcp.Firebase.WebApp("basic", new()
     ///     {
     ///         Project = "my-project-name",
     ///         DisplayName = "Display Name Basic",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var basicWebAppConfig = Gcp.Firebase.GetWebAppConfig.Invoke(new()
+    ///     var basic = Gcp.Firebase.GetWebAppConfig.Invoke(new()
     ///     {
     ///         WebAppId = basicWebApp.AppId,
     ///     });
     /// 
-    ///     var defaultBucket = new Gcp.Storage.Bucket("defaultBucket", new()
+    ///     var @default = new Gcp.Storage.Bucket("default", new()
     ///     {
+    ///         Name = "fb-webapp-",
     ///         Location = "US",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultBucketObject = new Gcp.Storage.BucketObject("defaultBucketObject", new()
+    ///     var defaultBucketObject = new Gcp.Storage.BucketObject("default", new()
     ///     {
-    ///         Bucket = defaultBucket.Name,
+    ///         Bucket = @default.Name,
+    ///         Name = "firebase-config.json",
     ///         Content = Output.JsonSerialize(Output.Create(new Dictionary&lt;string, object?&gt;
     ///         {
     ///             ["appId"] = basicWebApp.AppId,
-    ///             ["apiKey"] = basicWebAppConfig.Apply(getWebAppConfigResult =&gt; getWebAppConfigResult.ApiKey),
-    ///             ["authDomain"] = basicWebAppConfig.Apply(getWebAppConfigResult =&gt; getWebAppConfigResult.AuthDomain),
-    ///             ["databaseURL"] = basicWebAppConfig["database_url"] ?? "",
-    ///             ["storageBucket"] = basicWebAppConfig["storage_bucket"] ?? "",
-    ///             ["messagingSenderId"] = basicWebAppConfig["messaging_sender_id"] ?? "",
-    ///             ["measurementId"] = basicWebAppConfig["measurement_id"] ?? "",
+    ///             ["apiKey"] = basic.Apply(getWebAppConfigResult =&gt; getWebAppConfigResult.ApiKey),
+    ///             ["authDomain"] = basic.Apply(getWebAppConfigResult =&gt; getWebAppConfigResult.AuthDomain),
+    ///             ["databaseURL"] = NotImplemented("lookup(data.google_firebase_web_app_config.basic,\"database_url\",\"\")"),
+    ///             ["storageBucket"] = NotImplemented("lookup(data.google_firebase_web_app_config.basic,\"storage_bucket\",\"\")"),
+    ///             ["messagingSenderId"] = NotImplemented("lookup(data.google_firebase_web_app_config.basic,\"messaging_sender_id\",\"\")"),
+    ///             ["measurementId"] = NotImplemented("lookup(data.google_firebase_web_app_config.basic,\"measurement_id\",\"\")"),
     ///         })),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -85,6 +84,7 @@ namespace Pulumi.Gcp.Firebase
     ///     var web = new Gcp.Projects.ApiKey("web", new()
     ///     {
     ///         Project = "my-project-name",
+    ///         Name = "api-key",
     ///         DisplayName = "Display Name",
     ///         Restrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsArgs
     ///         {
@@ -96,9 +96,6 @@ namespace Pulumi.Gcp.Firebase
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var @default = new Gcp.Firebase.WebApp("default", new()
@@ -107,9 +104,6 @@ namespace Pulumi.Gcp.Firebase
     ///         DisplayName = "Display Name",
     ///         ApiKeyId = web.Uid,
     ///         DeletionPolicy = "DELETE",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

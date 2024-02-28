@@ -47,13 +47,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new SourceRepresentationInstance(&#34;instance&#34;, SourceRepresentationInstanceArgs.builder()        
- *             .databaseVersion(&#34;MYSQL_8_0&#34;)
- *             .dumpFilePath(&#34;gs://replica-bucket/source-database.sql.gz&#34;)
- *             .host(&#34;10.20.30.40&#34;)
- *             .password(&#34;password-for-the-user&#34;)
- *             .port(3306)
+ *             .name(&#34;my-instance&#34;)
  *             .region(&#34;us-central1&#34;)
+ *             .databaseVersion(&#34;MYSQL_8_0&#34;)
+ *             .host(&#34;10.20.30.40&#34;)
+ *             .port(3306)
  *             .username(&#34;some-user&#34;)
+ *             .password(&#34;password-for-the-user&#34;)
+ *             .dumpFilePath(&#34;gs://replica-bucket/source-database.sql.gz&#34;)
  *             .build());
  * 
  *     }
@@ -82,13 +83,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new SourceRepresentationInstance(&#34;instance&#34;, SourceRepresentationInstanceArgs.builder()        
- *             .databaseVersion(&#34;POSTGRES_9_6&#34;)
- *             .dumpFilePath(&#34;gs://replica-bucket/source-database.sql.gz&#34;)
- *             .host(&#34;10.20.30.40&#34;)
- *             .password(&#34;password-for-the-user&#34;)
- *             .port(3306)
+ *             .name(&#34;my-instance&#34;)
  *             .region(&#34;us-central1&#34;)
+ *             .databaseVersion(&#34;POSTGRES_9_6&#34;)
+ *             .host(&#34;10.20.30.40&#34;)
+ *             .port(3306)
  *             .username(&#34;some-user&#34;)
+ *             .password(&#34;password-for-the-user&#34;)
+ *             .dumpFilePath(&#34;gs://replica-bucket/source-database.sql.gz&#34;)
  *             .build());
  * 
  *     }

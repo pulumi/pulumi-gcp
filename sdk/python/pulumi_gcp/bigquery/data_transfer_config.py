@@ -664,13 +664,12 @@ class DataTransferConfig(pulumi.CustomResource):
             project=project.project_id,
             role="roles/iam.serviceAccountTokenCreator",
             member=f"serviceAccount:service-{project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com")
-        my_dataset = gcp.bigquery.Dataset("myDataset",
+        my_dataset = gcp.bigquery.Dataset("my_dataset",
             dataset_id="my_dataset",
             friendly_name="foo",
             description="bar",
-            location="asia-northeast1",
-            opts=pulumi.ResourceOptions(depends_on=[permissions]))
-        query_config = gcp.bigquery.DataTransferConfig("queryConfig",
+            location="asia-northeast1")
+        query_config = gcp.bigquery.DataTransferConfig("query_config",
             display_name="my-query",
             location="asia-northeast1",
             data_source_id="scheduled_query",
@@ -680,8 +679,7 @@ class DataTransferConfig(pulumi.CustomResource):
                 "destination_table_name_template": "my_table",
                 "write_disposition": "WRITE_APPEND",
                 "query": "SELECT name FROM tabl WHERE x = 'y'",
-            },
-            opts=pulumi.ResourceOptions(depends_on=[permissions]))
+            })
         ```
 
         ## Import
@@ -772,13 +770,12 @@ class DataTransferConfig(pulumi.CustomResource):
             project=project.project_id,
             role="roles/iam.serviceAccountTokenCreator",
             member=f"serviceAccount:service-{project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com")
-        my_dataset = gcp.bigquery.Dataset("myDataset",
+        my_dataset = gcp.bigquery.Dataset("my_dataset",
             dataset_id="my_dataset",
             friendly_name="foo",
             description="bar",
-            location="asia-northeast1",
-            opts=pulumi.ResourceOptions(depends_on=[permissions]))
-        query_config = gcp.bigquery.DataTransferConfig("queryConfig",
+            location="asia-northeast1")
+        query_config = gcp.bigquery.DataTransferConfig("query_config",
             display_name="my-query",
             location="asia-northeast1",
             data_source_id="scheduled_query",
@@ -788,8 +785,7 @@ class DataTransferConfig(pulumi.CustomResource):
                 "destination_table_name_template": "my_table",
                 "write_disposition": "WRITE_APPEND",
                 "query": "SELECT name FROM tabl WHERE x = 'y'",
-            },
-            opts=pulumi.ResourceOptions(depends_on=[permissions]))
+            })
         ```
 
         ## Import

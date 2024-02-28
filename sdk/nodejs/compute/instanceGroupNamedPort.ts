@@ -23,13 +23,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const containerNetwork = new gcp.compute.Network("containerNetwork", {autoCreateSubnetworks: false});
- * const containerSubnetwork = new gcp.compute.Subnetwork("containerSubnetwork", {
+ * const containerNetwork = new gcp.compute.Network("container_network", {
+ *     name: "container-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const containerSubnetwork = new gcp.compute.Subnetwork("container_subnetwork", {
+ *     name: "container-subnetwork",
  *     region: "us-central1",
  *     network: containerNetwork.name,
  *     ipCidrRange: "10.0.36.0/24",
  * });
- * const myCluster = new gcp.container.Cluster("myCluster", {
+ * const myCluster = new gcp.container.Cluster("my_cluster", {
+ *     name: "my-cluster",
  *     location: "us-central1-a",
  *     initialNodeCount: 1,
  *     network: containerNetwork.name,
@@ -40,14 +45,16 @@ import * as utilities from "../utilities";
  *     },
  *     deletionProtection: true,
  * });
- * const myPort = new gcp.compute.InstanceGroupNamedPort("myPort", {
+ * const myPort = new gcp.compute.InstanceGroupNamedPort("my_port", {
  *     group: myCluster.nodePools.apply(nodePools => nodePools[0].instanceGroupUrls?.[0]),
  *     zone: "us-central1-a",
+ *     name: "http",
  *     port: 8080,
  * });
- * const myPorts = new gcp.compute.InstanceGroupNamedPort("myPorts", {
+ * const myPorts = new gcp.compute.InstanceGroupNamedPort("my_ports", {
  *     group: myCluster.nodePools.apply(nodePools => nodePools[0].instanceGroupUrls?.[0]),
  *     zone: "us-central1-a",
+ *     name: "https",
  *     port: 4443,
  * });
  * ```

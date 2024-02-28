@@ -99,8 +99,8 @@ def get_attestor_iam_policy(attestor: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.binaryauthorization.get_attestor_iam_policy(project=google_binary_authorization_attestor["attestor"]["project"],
-        attestor=google_binary_authorization_attestor["attestor"]["name"])
+    policy = gcp.binaryauthorization.get_attestor_iam_policy(project=attestor["project"],
+        attestor=attestor["name"])
     ```
 
 
@@ -135,8 +135,8 @@ def get_attestor_iam_policy_output(attestor: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.binaryauthorization.get_attestor_iam_policy(project=google_binary_authorization_attestor["attestor"]["project"],
-        attestor=google_binary_authorization_attestor["attestor"]["name"])
+    policy = gcp.binaryauthorization.get_attestor_iam_policy(project=attestor["project"],
+        attestor=attestor["name"])
     ```
 
 

@@ -63,10 +63,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var keyring = new KeyRing(&#34;keyring&#34;, KeyRingArgs.builder()        
+ *             .name(&#34;keyring-example&#34;)
  *             .location(&#34;global&#34;)
  *             .build());
  * 
  *         var example_key = new CryptoKey(&#34;example-key&#34;, CryptoKeyArgs.builder()        
+ *             .name(&#34;crypto-key-example&#34;)
  *             .keyRing(keyring.id())
  *             .rotationPeriod(&#34;7776000s&#34;)
  *             .build());
@@ -100,10 +102,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var keyring = new KeyRing(&#34;keyring&#34;, KeyRingArgs.builder()        
+ *             .name(&#34;keyring-example&#34;)
  *             .location(&#34;global&#34;)
  *             .build());
  * 
  *         var example_asymmetric_sign_key = new CryptoKey(&#34;example-asymmetric-sign-key&#34;, CryptoKeyArgs.builder()        
+ *             .name(&#34;crypto-key-example&#34;)
  *             .keyRing(keyring.id())
  *             .purpose(&#34;ASYMMETRIC_SIGN&#34;)
  *             .versionTemplate(CryptoKeyVersionTemplateArgs.builder()

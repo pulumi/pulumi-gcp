@@ -60,9 +60,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new InstanceIamPolicy(&#34;policy&#34;, InstanceIamPolicyArgs.builder()        
- *             .project(google_notebooks_instance.instance().project())
- *             .location(google_notebooks_instance.instance().location())
- *             .instanceName(google_notebooks_instance.instance().name())
+ *             .project(instance.project())
+ *             .location(instance.location())
+ *             .instanceName(instance.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -93,9 +93,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new InstanceIamBinding(&#34;binding&#34;, InstanceIamBindingArgs.builder()        
- *             .project(google_notebooks_instance.instance().project())
- *             .location(google_notebooks_instance.instance().location())
- *             .instanceName(google_notebooks_instance.instance().name())
+ *             .project(instance.project())
+ *             .location(instance.location())
+ *             .instanceName(instance.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -127,9 +127,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new InstanceIamMember(&#34;member&#34;, InstanceIamMemberArgs.builder()        
- *             .project(google_notebooks_instance.instance().project())
- *             .location(google_notebooks_instance.instance().location())
- *             .instanceName(google_notebooks_instance.instance().name())
+ *             .project(instance.project())
+ *             .location(instance.location())
+ *             .instanceName(instance.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

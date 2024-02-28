@@ -36,7 +36,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.servicedirectory.NamespaceArgs;
  * import com.pulumi.gcp.servicedirectory.Service;
  * import com.pulumi.gcp.servicedirectory.ServiceArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -50,23 +49,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleNamespace = new Namespace(&#34;exampleNamespace&#34;, NamespaceArgs.builder()        
+ *         var example = new Namespace(&#34;example&#34;, NamespaceArgs.builder()        
  *             .namespaceId(&#34;example-namespace&#34;)
  *             .location(&#34;us-central1&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var exampleService = new Service(&#34;exampleService&#34;, ServiceArgs.builder()        
  *             .serviceId(&#34;example-service&#34;)
- *             .namespace(exampleNamespace.id())
+ *             .namespace(example.id())
  *             .metadata(Map.ofEntries(
  *                 Map.entry(&#34;stage&#34;, &#34;prod&#34;),
  *                 Map.entry(&#34;region&#34;, &#34;us-central1&#34;)
  *             ))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

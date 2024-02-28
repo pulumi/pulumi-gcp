@@ -40,6 +40,7 @@ import (
 //				return err
 //			}
 //			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Name:                  pulumi.String("my-gke-cluster"),
 //				Location:              pulumi.String("us-central1"),
 //				RemoveDefaultNodePool: pulumi.Bool(true),
 //				InitialNodeCount:      pulumi.Int(1),
@@ -47,11 +48,76 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = container.NewNodePool(ctx, "primaryPreemptibleNodes", &container.NodePoolArgs{
+//			_, err = container.NewNodePool(ctx, "primary_preemptible_nodes", &container.NodePoolArgs{
+//				Name:      pulumi.String("my-node-pool"),
 //				Cluster:   primary.ID(),
 //				NodeCount: pulumi.Int(1),
 //				NodeConfig: &container.NodePoolNodeConfigArgs{
 //					Preemptible:    pulumi.Bool(true),
+//					MachineType:    pulumi.String("e2-medium"),
+//					ServiceAccount: _default.Email,
+//					OauthScopes: pulumi.StringArray{
+//						pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### 2 Node Pools, 1 Separately Managed + The Default Node Pool
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := serviceaccount.NewAccount(ctx, "default", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("service-account-id"),
+//				DisplayName: pulumi.String("Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Name:             pulumi.String("marcellus-wallace"),
+//				Location:         pulumi.String("us-central1-a"),
+//				InitialNodeCount: pulumi.Int(3),
+//				NodeLocations: pulumi.StringArray{
+//					pulumi.String("us-central1-c"),
+//				},
+//				NodeConfig: &container.ClusterNodeConfigArgs{
+//					ServiceAccount: _default.Email,
+//					OauthScopes: pulumi.StringArray{
+//						pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
+//					},
+//					GuestAccelerators: container.ClusterNodeConfigGuestAcceleratorArray{
+//						&container.ClusterNodeConfigGuestAcceleratorArgs{
+//							Type:  pulumi.String("nvidia-tesla-k80"),
+//							Count: pulumi.Int(1),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = container.NewNodePool(ctx, "np", &container.NodePoolArgs{
+//				Name:    pulumi.String("my-node-pool"),
+//				Cluster: primary.ID(),
+//				NodeConfig: &container.NodePoolNodeConfigArgs{
 //					MachineType:    pulumi.String("e2-medium"),
 //					ServiceAccount: _default.Email,
 //					OauthScopes: pulumi.StringArray{

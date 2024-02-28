@@ -37,7 +37,7 @@ import (
 //				Sha256Hashes: pulumi.StringArray{
 //					pulumi.String("2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -62,6 +62,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			android, err := projects.NewApiKey(ctx, "android", &projects.ApiKeyArgs{
+//				Name:        pulumi.String("api-key"),
 //				DisplayName: pulumi.String("Display Name"),
 //				Project:     pulumi.String("my-project-name"),
 //				Restrictions: &projects.ApiKeyRestrictionsArgs{
@@ -74,7 +75,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -89,7 +90,7 @@ import (
 //					pulumi.String("2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"),
 //				},
 //				ApiKeyId: android.Uid,
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

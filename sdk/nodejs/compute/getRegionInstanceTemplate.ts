@@ -18,9 +18,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * // by name
  * const generic = gcp.compute.getRegionInstanceTemplate({
  *     name: "generic-tpl-20200107",
  * });
+ * // using a filter
  * const generic-regex = gcp.compute.getRegionInstanceTemplate({
  *     filter: "name != generic-tpl-20200107",
  *     mostRecent: true,
@@ -214,9 +216,11 @@ export interface GetRegionInstanceTemplateResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * // by name
  * const generic = gcp.compute.getRegionInstanceTemplate({
  *     name: "generic-tpl-20200107",
  * });
+ * // using a filter
  * const generic-regex = gcp.compute.getRegionInstanceTemplate({
  *     filter: "name != generic-tpl-20200107",
  *     mostRecent: true,

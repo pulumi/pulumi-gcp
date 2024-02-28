@@ -30,11 +30,13 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     //by name 
         ///     var snapshot = Gcp.Compute.GetSnapshot.Invoke(new()
         ///     {
         ///         Name = "my-snapshot",
         ///     });
         /// 
+        ///     // using a filter
         ///     var latest_snapshot = Gcp.Compute.GetSnapshot.Invoke(new()
         ///     {
         ///         Filter = "name != my-snapshot",
@@ -68,11 +70,13 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     //by name 
         ///     var snapshot = Gcp.Compute.GetSnapshot.Invoke(new()
         ///     {
         ///         Name = "my-snapshot",
         ///     });
         /// 
+        ///     // using a filter
         ///     var latest_snapshot = Gcp.Compute.GetSnapshot.Invoke(new()
         ///     {
         ///         Filter = "name != my-snapshot",

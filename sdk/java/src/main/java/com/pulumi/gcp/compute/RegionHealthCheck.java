@@ -66,11 +66,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tcp_region_health_check = new RegionHealthCheck(&#34;tcp-region-health-check&#34;, RegionHealthCheckArgs.builder()        
+ *             .name(&#34;tcp-region-health-check&#34;)
+ *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .tcpHealthCheck(RegionHealthCheckTcpHealthCheckArgs.builder()
  *                 .port(&#34;80&#34;)
  *                 .build())
- *             .timeoutSec(1)
  *             .build());
  * 
  *     }
@@ -100,18 +101,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tcp_region_health_check = new RegionHealthCheck(&#34;tcp-region-health-check&#34;, RegionHealthCheckArgs.builder()        
- *             .checkIntervalSec(1)
+ *             .name(&#34;tcp-region-health-check&#34;)
  *             .description(&#34;Health check via tcp&#34;)
+ *             .timeoutSec(1)
+ *             .checkIntervalSec(1)
  *             .healthyThreshold(4)
+ *             .unhealthyThreshold(5)
  *             .tcpHealthCheck(RegionHealthCheckTcpHealthCheckArgs.builder()
  *                 .portName(&#34;health-check-port&#34;)
  *                 .portSpecification(&#34;USE_NAMED_PORT&#34;)
- *                 .proxyHeader(&#34;NONE&#34;)
  *                 .request(&#34;ARE YOU HEALTHY?&#34;)
+ *                 .proxyHeader(&#34;NONE&#34;)
  *                 .response(&#34;I AM HEALTHY&#34;)
  *                 .build())
- *             .timeoutSec(1)
- *             .unhealthyThreshold(5)
  *             .build());
  * 
  *     }
@@ -141,11 +143,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var ssl_region_health_check = new RegionHealthCheck(&#34;ssl-region-health-check&#34;, RegionHealthCheckArgs.builder()        
+ *             .name(&#34;ssl-region-health-check&#34;)
+ *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .sslHealthCheck(RegionHealthCheckSslHealthCheckArgs.builder()
  *                 .port(&#34;443&#34;)
  *                 .build())
- *             .timeoutSec(1)
  *             .build());
  * 
  *     }
@@ -175,18 +178,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var ssl_region_health_check = new RegionHealthCheck(&#34;ssl-region-health-check&#34;, RegionHealthCheckArgs.builder()        
- *             .checkIntervalSec(1)
+ *             .name(&#34;ssl-region-health-check&#34;)
  *             .description(&#34;Health check via ssl&#34;)
+ *             .timeoutSec(1)
+ *             .checkIntervalSec(1)
  *             .healthyThreshold(4)
+ *             .unhealthyThreshold(5)
  *             .sslHealthCheck(RegionHealthCheckSslHealthCheckArgs.builder()
  *                 .portName(&#34;health-check-port&#34;)
  *                 .portSpecification(&#34;USE_NAMED_PORT&#34;)
- *                 .proxyHeader(&#34;NONE&#34;)
  *                 .request(&#34;ARE YOU HEALTHY?&#34;)
+ *                 .proxyHeader(&#34;NONE&#34;)
  *                 .response(&#34;I AM HEALTHY&#34;)
  *                 .build())
- *             .timeoutSec(1)
- *             .unhealthyThreshold(5)
  *             .build());
  * 
  *     }
@@ -216,11 +220,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var http_region_health_check = new RegionHealthCheck(&#34;http-region-health-check&#34;, RegionHealthCheckArgs.builder()        
+ *             .name(&#34;http-region-health-check&#34;)
+ *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
  *                 .port(&#34;80&#34;)
  *                 .build())
- *             .timeoutSec(1)
  *             .build());
  * 
  *     }
@@ -237,7 +242,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
  * import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
  * import com.pulumi.gcp.compute.inputs.RegionHealthCheckLogConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -252,6 +256,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var http_region_health_check = new RegionHealthCheck(&#34;http-region-health-check&#34;, RegionHealthCheckArgs.builder()        
+ *             .name(&#34;http-region-health-check&#34;)
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
@@ -260,9 +265,7 @@ import javax.annotation.Nullable;
  *             .logConfig(RegionHealthCheckLogConfigArgs.builder()
  *                 .enable(true)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -291,19 +294,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var http_region_health_check = new RegionHealthCheck(&#34;http-region-health-check&#34;, RegionHealthCheckArgs.builder()        
- *             .checkIntervalSec(1)
+ *             .name(&#34;http-region-health-check&#34;)
  *             .description(&#34;Health check via http&#34;)
+ *             .timeoutSec(1)
+ *             .checkIntervalSec(1)
  *             .healthyThreshold(4)
+ *             .unhealthyThreshold(5)
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
- *                 .host(&#34;1.2.3.4&#34;)
  *                 .portName(&#34;health-check-port&#34;)
  *                 .portSpecification(&#34;USE_NAMED_PORT&#34;)
- *                 .proxyHeader(&#34;NONE&#34;)
+ *                 .host(&#34;1.2.3.4&#34;)
  *                 .requestPath(&#34;/mypath&#34;)
+ *                 .proxyHeader(&#34;NONE&#34;)
  *                 .response(&#34;I AM HEALTHY&#34;)
  *                 .build())
- *             .timeoutSec(1)
- *             .unhealthyThreshold(5)
  *             .build());
  * 
  *     }
@@ -333,11 +337,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var https_region_health_check = new RegionHealthCheck(&#34;https-region-health-check&#34;, RegionHealthCheckArgs.builder()        
+ *             .name(&#34;https-region-health-check&#34;)
+ *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .httpsHealthCheck(RegionHealthCheckHttpsHealthCheckArgs.builder()
  *                 .port(&#34;443&#34;)
  *                 .build())
- *             .timeoutSec(1)
  *             .build());
  * 
  *     }
@@ -367,19 +372,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var https_region_health_check = new RegionHealthCheck(&#34;https-region-health-check&#34;, RegionHealthCheckArgs.builder()        
- *             .checkIntervalSec(1)
+ *             .name(&#34;https-region-health-check&#34;)
  *             .description(&#34;Health check via https&#34;)
+ *             .timeoutSec(1)
+ *             .checkIntervalSec(1)
  *             .healthyThreshold(4)
+ *             .unhealthyThreshold(5)
  *             .httpsHealthCheck(RegionHealthCheckHttpsHealthCheckArgs.builder()
- *                 .host(&#34;1.2.3.4&#34;)
  *                 .portName(&#34;health-check-port&#34;)
  *                 .portSpecification(&#34;USE_NAMED_PORT&#34;)
- *                 .proxyHeader(&#34;NONE&#34;)
+ *                 .host(&#34;1.2.3.4&#34;)
  *                 .requestPath(&#34;/mypath&#34;)
+ *                 .proxyHeader(&#34;NONE&#34;)
  *                 .response(&#34;I AM HEALTHY&#34;)
  *                 .build())
- *             .timeoutSec(1)
- *             .unhealthyThreshold(5)
  *             .build());
  * 
  *     }
@@ -409,11 +415,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var http2_region_health_check = new RegionHealthCheck(&#34;http2-region-health-check&#34;, RegionHealthCheckArgs.builder()        
+ *             .name(&#34;http2-region-health-check&#34;)
+ *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .http2HealthCheck(RegionHealthCheckHttp2HealthCheckArgs.builder()
  *                 .port(&#34;443&#34;)
  *                 .build())
- *             .timeoutSec(1)
  *             .build());
  * 
  *     }
@@ -443,19 +450,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var http2_region_health_check = new RegionHealthCheck(&#34;http2-region-health-check&#34;, RegionHealthCheckArgs.builder()        
- *             .checkIntervalSec(1)
+ *             .name(&#34;http2-region-health-check&#34;)
  *             .description(&#34;Health check via http2&#34;)
+ *             .timeoutSec(1)
+ *             .checkIntervalSec(1)
  *             .healthyThreshold(4)
+ *             .unhealthyThreshold(5)
  *             .http2HealthCheck(RegionHealthCheckHttp2HealthCheckArgs.builder()
- *                 .host(&#34;1.2.3.4&#34;)
  *                 .portName(&#34;health-check-port&#34;)
  *                 .portSpecification(&#34;USE_NAMED_PORT&#34;)
- *                 .proxyHeader(&#34;NONE&#34;)
+ *                 .host(&#34;1.2.3.4&#34;)
  *                 .requestPath(&#34;/mypath&#34;)
+ *                 .proxyHeader(&#34;NONE&#34;)
  *                 .response(&#34;I AM HEALTHY&#34;)
  *                 .build())
- *             .timeoutSec(1)
- *             .unhealthyThreshold(5)
  *             .build());
  * 
  *     }
@@ -485,11 +493,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var grpc_region_health_check = new RegionHealthCheck(&#34;grpc-region-health-check&#34;, RegionHealthCheckArgs.builder()        
+ *             .name(&#34;grpc-region-health-check&#34;)
+ *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .grpcHealthCheck(RegionHealthCheckGrpcHealthCheckArgs.builder()
  *                 .port(&#34;443&#34;)
  *                 .build())
- *             .timeoutSec(1)
  *             .build());
  * 
  *     }
@@ -519,13 +528,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var grpc_region_health_check = new RegionHealthCheck(&#34;grpc-region-health-check&#34;, RegionHealthCheckArgs.builder()        
+ *             .name(&#34;grpc-region-health-check&#34;)
+ *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .grpcHealthCheck(RegionHealthCheckGrpcHealthCheckArgs.builder()
- *                 .grpcServiceName(&#34;testservice&#34;)
  *                 .portName(&#34;health-check-port&#34;)
  *                 .portSpecification(&#34;USE_NAMED_PORT&#34;)
+ *                 .grpcServiceName(&#34;testservice&#34;)
  *                 .build())
- *             .timeoutSec(1)
  *             .build());
  * 
  *     }

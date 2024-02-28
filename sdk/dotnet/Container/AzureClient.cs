@@ -29,8 +29,9 @@ namespace Pulumi.Gcp.Container
     ///     {
     ///         ApplicationId = "12345678-1234-1234-1234-123456789111",
     ///         Location = "us-west1",
-    ///         Project = "my-project-name",
+    ///         Name = "client-name",
     ///         TenantId = "12345678-1234-1234-1234-123456789111",
+    ///         Project = "my-project-name",
     ///     });
     /// 
     /// });

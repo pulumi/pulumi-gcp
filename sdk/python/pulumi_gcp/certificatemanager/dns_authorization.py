@@ -306,6 +306,7 @@ class DnsAuthorization(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.certificatemanager.DnsAuthorization("default",
+            name="dns-auth",
             description="The default dnss",
             domain="subdomain.hashicorptest.com")
         pulumi.export("recordNameToInsert", default.dns_resource_records[0].name)
@@ -372,6 +373,7 @@ class DnsAuthorization(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.certificatemanager.DnsAuthorization("default",
+            name="dns-auth",
             description="The default dnss",
             domain="subdomain.hashicorptest.com")
         pulumi.export("recordNameToInsert", default.dns_resource_records[0].name)

@@ -203,9 +203,9 @@ public final class ArtifactregistryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ArtifactregistryFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(google_artifact_registry_repository.my-repo().project())
-     *             .location(google_artifact_registry_repository.my-repo().location())
-     *             .repository(google_artifact_registry_repository.my-repo().name())
+     *             .project(my_repo.project())
+     *             .location(my_repo.location())
+     *             .repository(my_repo.name())
      *             .build());
      * 
      *     }
@@ -242,9 +242,9 @@ public final class ArtifactregistryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ArtifactregistryFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(google_artifact_registry_repository.my-repo().project())
-     *             .location(google_artifact_registry_repository.my-repo().location())
-     *             .repository(google_artifact_registry_repository.my-repo().name())
+     *             .project(my_repo.project())
+     *             .location(my_repo.location())
+     *             .repository(my_repo.name())
      *             .build());
      * 
      *     }
@@ -281,9 +281,9 @@ public final class ArtifactregistryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ArtifactregistryFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(google_artifact_registry_repository.my-repo().project())
-     *             .location(google_artifact_registry_repository.my-repo().location())
-     *             .repository(google_artifact_registry_repository.my-repo().name())
+     *             .project(my_repo.project())
+     *             .location(my_repo.location())
+     *             .repository(my_repo.name())
      *             .build());
      * 
      *     }
@@ -320,9 +320,9 @@ public final class ArtifactregistryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ArtifactregistryFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(google_artifact_registry_repository.my-repo().project())
-     *             .location(google_artifact_registry_repository.my-repo().location())
-     *             .repository(google_artifact_registry_repository.my-repo().name())
+     *             .project(my_repo.project())
+     *             .location(my_repo.location())
+     *             .repository(my_repo.name())
      *             .build());
      * 
      *     }

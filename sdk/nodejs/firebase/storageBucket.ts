@@ -12,17 +12,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultBucket = new gcp.storage.Bucket("defaultBucket", {
+ * const _default = new gcp.storage.Bucket("default", {
+ *     name: "test_bucket",
  *     location: "US",
  *     uniformBucketLevelAccess: true,
- * }, {
- *     provider: google_beta,
  * });
- * const defaultStorageBucket = new gcp.firebase.StorageBucket("defaultStorageBucket", {
+ * const defaultStorageBucket = new gcp.firebase.StorageBucket("default", {
  *     project: "my-project-name",
- *     bucketId: defaultBucket.id,
- * }, {
- *     provider: google_beta,
+ *     bucketId: _default.id,
  * });
  * ```
  *

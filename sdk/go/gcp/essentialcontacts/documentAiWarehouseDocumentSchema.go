@@ -40,7 +40,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "exampleText", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
+//			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "example_text", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
 //				ProjectNumber:    *pulumi.String(project.Number),
 //				DisplayName:      pulumi.String("test-property-text"),
 //				Location:         pulumi.String("us"),
@@ -92,7 +92,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "exampleInteger", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
+//			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "example_integer", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
 //				ProjectNumber: *pulumi.String(project.Number),
 //				DisplayName:   pulumi.String("test-property-integer"),
 //				Location:      pulumi.String("us"),
@@ -143,7 +143,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "exampleFloat", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
+//			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "example_float", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
 //				ProjectNumber: *pulumi.String(project.Number),
 //				DisplayName:   pulumi.String("test-property-float"),
 //				Location:      pulumi.String("us"),
@@ -194,7 +194,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "exampleProperty", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
+//			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "example_property", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
 //				ProjectNumber:    *pulumi.String(project.Number),
 //				DisplayName:      pulumi.String("test-property-property"),
 //				Location:         pulumi.String("us"),
@@ -266,7 +266,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "examplePropertyEnum", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
+//			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "example_property_enum", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
 //				ProjectNumber:    *pulumi.String(project.Number),
 //				DisplayName:      pulumi.String("test-property-property"),
 //				Location:         pulumi.String("us"),
@@ -345,7 +345,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "exampleEnum", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
+//			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "example_enum", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
 //				ProjectNumber: *pulumi.String(project.Number),
 //				DisplayName:   pulumi.String("test-property-enum"),
 //				Location:      pulumi.String("us"),
@@ -403,7 +403,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "exampleMap", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
+//			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "example_map", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
 //				ProjectNumber: *pulumi.String(project.Number),
 //				DisplayName:   pulumi.String("test-property-map"),
 //				Location:      pulumi.String("us"),
@@ -454,7 +454,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "exampleDatetime", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
+//			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "example_datetime", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
 //				ProjectNumber: *pulumi.String(project.Number),
 //				DisplayName:   pulumi.String("test-property-date_time"),
 //				Location:      pulumi.String("us"),
@@ -505,7 +505,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "exampleTimestamp", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
+//			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "example_timestamp", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
 //				ProjectNumber: *pulumi.String(project.Number),
 //				DisplayName:   pulumi.String("test-property-timestamp"),
 //				Location:      pulumi.String("us"),

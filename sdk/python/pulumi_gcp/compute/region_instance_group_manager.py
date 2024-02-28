@@ -963,6 +963,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         autohealing = gcp.compute.HealthCheck("autohealing",
+            name="autohealing-health-check",
             check_interval_sec=5,
             timeout_sec=5,
             healthy_threshold=2,
@@ -972,6 +973,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                 port=8080,
             ))
         appserver = gcp.compute.RegionInstanceGroupManager("appserver",
+            name="appserver-igm",
             base_instance_name="app",
             region="us-central1",
             distribution_policy_zones=[
@@ -979,7 +981,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                 "us-central1-f",
             ],
             versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
-                instance_template=google_compute_instance_template["appserver"]["self_link_unique"],
+                instance_template=appserver_google_compute_instance_template["selfLinkUnique"],
             )],
             all_instances_config=gcp.compute.RegionInstanceGroupManagerAllInstancesConfigArgs(
                 metadata={
@@ -989,7 +991,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                     "label_key": "label_value",
                 },
             ),
-            target_pools=[google_compute_target_pool["appserver"]["id"]],
+            target_pools=[appserver_google_compute_target_pool["id"]],
             target_size=2,
             named_ports=[gcp.compute.RegionInstanceGroupManagerNamedPortArgs(
                 name="custom",
@@ -1006,15 +1008,16 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         appserver = gcp.compute.RegionInstanceGroupManager("appserver",
+            name="appserver-igm",
             base_instance_name="app",
             region="us-central1",
             target_size=5,
             versions=[
                 gcp.compute.RegionInstanceGroupManagerVersionArgs(
-                    instance_template=google_compute_instance_template["appserver"]["self_link_unique"],
+                    instance_template=appserver_google_compute_instance_template["selfLinkUnique"],
                 ),
                 gcp.compute.RegionInstanceGroupManagerVersionArgs(
-                    instance_template=google_compute_instance_template["appserver-canary"]["self_link_unique"],
+                    instance_template=appserver_canary["selfLinkUnique"],
                     target_size=gcp.compute.RegionInstanceGroupManagerVersionTargetSizeArgs(
                         fixed=1,
                     ),
@@ -1119,6 +1122,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         autohealing = gcp.compute.HealthCheck("autohealing",
+            name="autohealing-health-check",
             check_interval_sec=5,
             timeout_sec=5,
             healthy_threshold=2,
@@ -1128,6 +1132,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                 port=8080,
             ))
         appserver = gcp.compute.RegionInstanceGroupManager("appserver",
+            name="appserver-igm",
             base_instance_name="app",
             region="us-central1",
             distribution_policy_zones=[
@@ -1135,7 +1140,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                 "us-central1-f",
             ],
             versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
-                instance_template=google_compute_instance_template["appserver"]["self_link_unique"],
+                instance_template=appserver_google_compute_instance_template["selfLinkUnique"],
             )],
             all_instances_config=gcp.compute.RegionInstanceGroupManagerAllInstancesConfigArgs(
                 metadata={
@@ -1145,7 +1150,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                     "label_key": "label_value",
                 },
             ),
-            target_pools=[google_compute_target_pool["appserver"]["id"]],
+            target_pools=[appserver_google_compute_target_pool["id"]],
             target_size=2,
             named_ports=[gcp.compute.RegionInstanceGroupManagerNamedPortArgs(
                 name="custom",
@@ -1162,15 +1167,16 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         appserver = gcp.compute.RegionInstanceGroupManager("appserver",
+            name="appserver-igm",
             base_instance_name="app",
             region="us-central1",
             target_size=5,
             versions=[
                 gcp.compute.RegionInstanceGroupManagerVersionArgs(
-                    instance_template=google_compute_instance_template["appserver"]["self_link_unique"],
+                    instance_template=appserver_google_compute_instance_template["selfLinkUnique"],
                 ),
                 gcp.compute.RegionInstanceGroupManagerVersionArgs(
-                    instance_template=google_compute_instance_template["appserver-canary"]["self_link_unique"],
+                    instance_template=appserver_canary["selfLinkUnique"],
                     target_size=gcp.compute.RegionInstanceGroupManagerVersionTargetSizeArgs(
                         fixed=1,
                     ),

@@ -29,35 +29,15 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var producerNet = new Gcp.Compute.Network("producerNet", new()
+    ///     var producerNet = new Gcp.Compute.Network("producer_net", new()
     ///     {
+    ///         Name = "mynetwork",
     ///         AutoCreateSubnetworks = false,
-    ///     });
-    /// 
-    ///     var producerSubnet = new Gcp.Compute.Subnetwork("producerSubnet", new()
-    ///     {
-    ///         IpCidrRange = "10.0.0.248/29",
-    ///         Region = "us-central1",
-    ///         Network = producerNet.Id,
-    ///     });
-    /// 
-    ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
-    ///     {
-    ///         Location = "us-central1",
-    ///         ServiceClass = "gcp-memorystore-redis",
-    ///         Description = "my basic service connection policy",
-    ///         Network = producerNet.Id,
-    ///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
-    ///         {
-    ///             Subnetworks = new[]
-    ///             {
-    ///                 producerSubnet.Id,
-    ///             },
-    ///         },
     ///     });
     /// 
     ///     var cluster_ha = new Gcp.Redis.Cluster("cluster-ha", new()
     ///     {
+    ///         Name = "ha-cluster",
     ///         ShardCount = 3,
     ///         PscConfigs = new[]
     ///         {
@@ -70,11 +50,29 @@ namespace Pulumi.Gcp.Redis
     ///         ReplicaCount = 1,
     ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_MODE_DISABLED",
     ///         AuthorizationMode = "AUTH_MODE_DISABLED",
-    ///     }, new CustomResourceOptions
+    ///     });
+    /// 
+    ///     var producerSubnet = new Gcp.Compute.Subnetwork("producer_subnet", new()
     ///     {
-    ///         DependsOn = new[]
+    ///         Name = "mysubnet",
+    ///         IpCidrRange = "10.0.0.248/29",
+    ///         Region = "us-central1",
+    ///         Network = producerNet.Id,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
+    ///     {
+    ///         Name = "mypolicy",
+    ///         Location = "us-central1",
+    ///         ServiceClass = "gcp-memorystore-redis",
+    ///         Description = "my basic service connection policy",
+    ///         Network = producerNet.Id,
+    ///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
     ///         {
-    ///             @default,
+    ///             Subnetworks = new[]
+    ///             {
+    ///                 producerSubnet.Id,
+    ///             },
     ///         },
     ///     });
     /// 

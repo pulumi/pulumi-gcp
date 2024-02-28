@@ -209,8 +209,12 @@ class ApiKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic", org_id="123456789")
+        basic = gcp.organizations.Project("basic",
+            project_id="app",
+            name="app",
+            org_id="123456789")
         primary = gcp.projects.ApiKey("primary",
+            name="key",
             display_name="sample-key",
             project=basic.name,
             restrictions=gcp.projects.ApiKeyRestrictionsArgs(
@@ -232,8 +236,12 @@ class ApiKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic", org_id="123456789")
+        basic = gcp.organizations.Project("basic",
+            project_id="app",
+            name="app",
+            org_id="123456789")
         primary = gcp.projects.ApiKey("primary",
+            name="key",
             display_name="sample-key",
             project=basic.name,
             restrictions=gcp.projects.ApiKeyRestrictionsArgs(
@@ -252,8 +260,12 @@ class ApiKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic", org_id="123456789")
+        basic = gcp.organizations.Project("basic",
+            project_id="app",
+            name="app",
+            org_id="123456789")
         primary = gcp.projects.ApiKey("primary",
+            name="key",
             display_name="sample-key",
             project=basic.name,
             restrictions=gcp.projects.ApiKeyRestrictionsArgs(
@@ -272,8 +284,12 @@ class ApiKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic", org_id="123456789")
+        basic = gcp.organizations.Project("basic",
+            project_id="app",
+            name="app",
+            org_id="123456789")
         primary = gcp.projects.ApiKey("primary",
+            name="key",
             display_name="sample-key",
             project=basic.name)
         ```
@@ -283,8 +299,12 @@ class ApiKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic", org_id="123456789")
+        basic = gcp.organizations.Project("basic",
+            project_id="app",
+            name="app",
+            org_id="123456789")
         primary = gcp.projects.ApiKey("primary",
+            name="key",
             display_name="sample-key",
             project=basic.name,
             restrictions=gcp.projects.ApiKeyRestrictionsArgs(
@@ -345,8 +365,12 @@ class ApiKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic", org_id="123456789")
+        basic = gcp.organizations.Project("basic",
+            project_id="app",
+            name="app",
+            org_id="123456789")
         primary = gcp.projects.ApiKey("primary",
+            name="key",
             display_name="sample-key",
             project=basic.name,
             restrictions=gcp.projects.ApiKeyRestrictionsArgs(
@@ -368,8 +392,12 @@ class ApiKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic", org_id="123456789")
+        basic = gcp.organizations.Project("basic",
+            project_id="app",
+            name="app",
+            org_id="123456789")
         primary = gcp.projects.ApiKey("primary",
+            name="key",
             display_name="sample-key",
             project=basic.name,
             restrictions=gcp.projects.ApiKeyRestrictionsArgs(
@@ -388,8 +416,12 @@ class ApiKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic", org_id="123456789")
+        basic = gcp.organizations.Project("basic",
+            project_id="app",
+            name="app",
+            org_id="123456789")
         primary = gcp.projects.ApiKey("primary",
+            name="key",
             display_name="sample-key",
             project=basic.name,
             restrictions=gcp.projects.ApiKeyRestrictionsArgs(
@@ -408,8 +440,12 @@ class ApiKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic", org_id="123456789")
+        basic = gcp.organizations.Project("basic",
+            project_id="app",
+            name="app",
+            org_id="123456789")
         primary = gcp.projects.ApiKey("primary",
+            name="key",
             display_name="sample-key",
             project=basic.name)
         ```
@@ -419,8 +455,12 @@ class ApiKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic", org_id="123456789")
+        basic = gcp.organizations.Project("basic",
+            project_id="app",
+            name="app",
+            org_id="123456789")
         primary = gcp.projects.ApiKey("primary",
+            name="key",
             display_name="sample-key",
             project=basic.name,
             restrictions=gcp.projects.ApiKeyRestrictionsArgs(

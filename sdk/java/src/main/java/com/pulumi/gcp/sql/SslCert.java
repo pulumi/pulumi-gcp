@@ -51,6 +51,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var main = new DatabaseInstance(&#34;main&#34;, DatabaseInstanceArgs.builder()        
+ *             .name(dbNameSuffix.hex().applyValue(hex -&gt; String.format(&#34;main-instance-%s&#34;, hex)))
  *             .databaseVersion(&#34;MYSQL_5_7&#34;)
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier(&#34;db-f1-micro&#34;)

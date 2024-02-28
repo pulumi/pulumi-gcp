@@ -81,10 +81,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.NewJobIAMBinding(ctx, "editor", &dataproc.JobIAMBindingArgs{
 //				JobId: pulumi.String("your-dataproc-job"),
+//				Role:  pulumi.String("roles/editor"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				Role: pulumi.String("roles/editor"),
 //			})
 //			if err != nil {
 //				return err
@@ -111,8 +111,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.NewJobIAMMember(ctx, "editor", &dataproc.JobIAMMemberArgs{
 //				JobId:  pulumi.String("your-dataproc-job"),
-//				Member: pulumi.String("user:jane@example.com"),
 //				Role:   pulumi.String("roles/editor"),
+//				Member: pulumi.String("user:jane@example.com"),
 //			})
 //			if err != nil {
 //				return err

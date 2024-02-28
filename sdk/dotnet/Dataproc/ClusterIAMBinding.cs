@@ -69,11 +69,11 @@ namespace Pulumi.Gcp.Dataproc
     ///     var editor = new Gcp.Dataproc.ClusterIAMBinding("editor", new()
     ///     {
     ///         Cluster = "your-dataproc-cluster",
+    ///         Role = "roles/editor",
     ///         Members = new[]
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         Role = "roles/editor",
     ///     });
     /// 
     /// });
@@ -92,8 +92,8 @@ namespace Pulumi.Gcp.Dataproc
     ///     var editor = new Gcp.Dataproc.ClusterIAMMember("editor", new()
     ///     {
     ///         Cluster = "your-dataproc-cluster",
-    ///         Member = "user:jane@example.com",
     ///         Role = "roles/editor",
+    ///         Member = "user:jane@example.com",
     ///     });
     /// 
     /// });

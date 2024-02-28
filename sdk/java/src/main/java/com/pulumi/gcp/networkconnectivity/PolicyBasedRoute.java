@@ -57,10 +57,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myNetwork = new Network(&#34;myNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;my-network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var default_ = new PolicyBasedRoute(&#34;default&#34;, PolicyBasedRouteArgs.builder()        
+ *             .name(&#34;my-pbr&#34;)
  *             .network(myNetwork.id())
  *             .filter(PolicyBasedRouteFilterArgs.builder()
  *                 .protocolVersion(&#34;IPV4&#34;)
@@ -81,6 +83,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.Network;
  * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
  * import com.pulumi.gcp.networkconnectivity.PolicyBasedRoute;
  * import com.pulumi.gcp.networkconnectivity.PolicyBasedRouteArgs;
  * import com.pulumi.gcp.networkconnectivity.inputs.PolicyBasedRouteFilterArgs;
@@ -99,12 +102,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myNetwork = new Network(&#34;myNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;my-network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var ilb = new GlobalAddress(&#34;ilb&#34;);
+ *         var ilb = new GlobalAddress(&#34;ilb&#34;, GlobalAddressArgs.builder()        
+ *             .name(&#34;my-ilb&#34;)
+ *             .build());
  * 
  *         var default_ = new PolicyBasedRoute(&#34;default&#34;, PolicyBasedRouteArgs.builder()        
+ *             .name(&#34;my-pbr&#34;)
  *             .description(&#34;My routing policy&#34;)
  *             .network(myNetwork.id())
  *             .priority(2302)

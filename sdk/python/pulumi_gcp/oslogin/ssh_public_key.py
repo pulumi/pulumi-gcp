@@ -206,11 +206,12 @@ class SshPublicKey(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         me = gcp.organizations.get_client_open_id_user_info()
         cache = gcp.oslogin.SshPublicKey("cache",
             user=me.email,
-            key=(lambda path: open(path).read())("path/to/id_rsa.pub"))
+            key=std.file(input="path/to/id_rsa.pub").result)
         ```
 
         ## Import
@@ -262,11 +263,12 @@ class SshPublicKey(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         me = gcp.organizations.get_client_open_id_user_info()
         cache = gcp.oslogin.SshPublicKey("cache",
             user=me.email,
-            key=(lambda path: open(path).read())("path/to/id_rsa.pub"))
+            key=std.file(input="path/to/id_rsa.pub").result)
         ```
 
         ## Import

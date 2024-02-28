@@ -29,6 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := runtimeconfig.NewConfig(ctx, "my-runtime-config", &runtimeconfig.ConfigArgs{
+//				Name:        pulumi.String("my-service-runtime-config"),
 //				Description: pulumi.String("Runtime configuration values for my service"),
 //			})
 //			if err != nil {
@@ -36,6 +37,7 @@ import (
 //			}
 //			_, err = runtimeconfig.NewVariable(ctx, "environment", &runtimeconfig.VariableArgs{
 //				Parent: my_runtime_config.Name,
+//				Name:   pulumi.String("prod-variables/hostname"),
 //				Text:   pulumi.String("example.com"),
 //			})
 //			if err != nil {
@@ -57,33 +59,31 @@ import (
 //
 // import (
 //
-//	"encoding/base64"
-//	"os"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/runtimeconfig"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
-//	func filebase64OrPanic(path string) string {
-//		if fileData, err := os.ReadFile(path); err == nil {
-//			return base64.StdEncoding.EncodeToString(fileData[:])
-//		} else {
-//			panic(err.Error())
-//		}
-//	}
-//
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := runtimeconfig.NewConfig(ctx, "my-runtime-config", &runtimeconfig.ConfigArgs{
+//				Name:        pulumi.String("my-service-runtime-config"),
 //				Description: pulumi.String("Runtime configuration values for my service"),
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			invokeFilebase64, err := std.Filebase64(ctx, &std.Filebase64Args{
+//				Input: "my-encrypted-secret.dat",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			_, err = runtimeconfig.NewVariable(ctx, "my-secret", &runtimeconfig.VariableArgs{
 //				Parent: my_runtime_config.Name,
-//				Value:  filebase64OrPanic("my-encrypted-secret.dat"),
+//				Name:   pulumi.String("secret"),
+//				Value:  invokeFilebase64.Result,
 //			})
 //			if err != nil {
 //				return err

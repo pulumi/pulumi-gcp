@@ -284,6 +284,104 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dlp/docs/concepts-templates)
 
         ## Example Usage
+        ### Dlp Deidentify Template Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.dataloss.PreventionDeidentifyTemplate("basic",
+            parent="projects/my-project-name",
+            description="Description",
+            display_name="Displayname",
+            deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs(
+                info_type_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs(
+                    transformations=[
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
+                            info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
+                                name="FIRST_NAME",
+                            )],
+                            primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
+                                replace_with_info_type_config=True,
+                            ),
+                        ),
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
+                            info_types=[
+                                gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
+                                    name="PHONE_NUMBER",
+                                ),
+                                gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
+                                    name="AGE",
+                                ),
+                            ],
+                            primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
+                                replace_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs(
+                                    new_value=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs(
+                                        integer_value=9,
+                                    ),
+                                ),
+                            ),
+                        ),
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
+                            info_types=[
+                                gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
+                                    name="EMAIL_ADDRESS",
+                                ),
+                                gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
+                                    name="LAST_NAME",
+                                ),
+                            ],
+                            primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
+                                character_mask_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs(
+                                    masking_character="X",
+                                    number_to_mask=4,
+                                    reverse_order=True,
+                                    characters_to_ignores=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs(
+                                        common_characters_to_ignore="PUNCTUATION",
+                                    )],
+                                ),
+                            ),
+                        ),
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
+                            info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
+                                name="DATE_OF_BIRTH",
+                            )],
+                            primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
+                                replace_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs(
+                                    new_value=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs(
+                                        date_value=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs(
+                                            year=2020,
+                                            month=1,
+                                            day=1,
+                                        ),
+                                    ),
+                                ),
+                            ),
+                        ),
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
+                            info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
+                                name="CREDIT_CARD_NUMBER",
+                            )],
+                            primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
+                                crypto_deterministic_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs(
+                                    context=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs(
+                                        name="sometweak",
+                                    ),
+                                    crypto_key=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs(
+                                        transient=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs(
+                                            name="beep",
+                                        ),
+                                    ),
+                                    surrogate_info_type=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs(
+                                        name="abc",
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ],
+                ),
+            ))
+        ```
         ### Dlp Deidentify Template Image Transformations
 
         ```python
@@ -291,14 +389,17 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         basic = gcp.dataloss.PreventionDeidentifyTemplate("basic",
+            parent="projects/my-project-name",
+            description="Description",
+            display_name="Displayname",
             deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs(
                 image_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs(
                     transforms=[
                         gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
                             redaction_color=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs(
+                                red=0.5,
                                 blue=1,
                                 green=0.2,
-                                red=0.5,
                             ),
                             selected_info_types=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs(
                                 info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgs(
@@ -315,10 +416,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                         ),
                     ],
                 ),
-            ),
-            description="Description",
-            display_name="Displayname",
-            parent="projects/my-project-name")
+            ))
         ```
 
         ## Import
@@ -370,6 +468,104 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dlp/docs/concepts-templates)
 
         ## Example Usage
+        ### Dlp Deidentify Template Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.dataloss.PreventionDeidentifyTemplate("basic",
+            parent="projects/my-project-name",
+            description="Description",
+            display_name="Displayname",
+            deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs(
+                info_type_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs(
+                    transformations=[
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
+                            info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
+                                name="FIRST_NAME",
+                            )],
+                            primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
+                                replace_with_info_type_config=True,
+                            ),
+                        ),
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
+                            info_types=[
+                                gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
+                                    name="PHONE_NUMBER",
+                                ),
+                                gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
+                                    name="AGE",
+                                ),
+                            ],
+                            primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
+                                replace_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs(
+                                    new_value=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs(
+                                        integer_value=9,
+                                    ),
+                                ),
+                            ),
+                        ),
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
+                            info_types=[
+                                gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
+                                    name="EMAIL_ADDRESS",
+                                ),
+                                gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
+                                    name="LAST_NAME",
+                                ),
+                            ],
+                            primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
+                                character_mask_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs(
+                                    masking_character="X",
+                                    number_to_mask=4,
+                                    reverse_order=True,
+                                    characters_to_ignores=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs(
+                                        common_characters_to_ignore="PUNCTUATION",
+                                    )],
+                                ),
+                            ),
+                        ),
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
+                            info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
+                                name="DATE_OF_BIRTH",
+                            )],
+                            primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
+                                replace_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs(
+                                    new_value=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs(
+                                        date_value=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs(
+                                            year=2020,
+                                            month=1,
+                                            day=1,
+                                        ),
+                                    ),
+                                ),
+                            ),
+                        ),
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
+                            info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
+                                name="CREDIT_CARD_NUMBER",
+                            )],
+                            primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
+                                crypto_deterministic_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs(
+                                    context=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs(
+                                        name="sometweak",
+                                    ),
+                                    crypto_key=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs(
+                                        transient=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs(
+                                            name="beep",
+                                        ),
+                                    ),
+                                    surrogate_info_type=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs(
+                                        name="abc",
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ],
+                ),
+            ))
+        ```
         ### Dlp Deidentify Template Image Transformations
 
         ```python
@@ -377,14 +573,17 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         basic = gcp.dataloss.PreventionDeidentifyTemplate("basic",
+            parent="projects/my-project-name",
+            description="Description",
+            display_name="Displayname",
             deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs(
                 image_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs(
                     transforms=[
                         gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
                             redaction_color=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs(
+                                red=0.5,
                                 blue=1,
                                 green=0.2,
-                                red=0.5,
                             ),
                             selected_info_types=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs(
                                 info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgs(
@@ -401,10 +600,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                         ),
                     ],
                 ),
-            ),
-            description="Description",
-            display_name="Displayname",
-            parent="projects/my-project-name")
+            ))
         ```
 
         ## Import

@@ -22,20 +22,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const vertexNetwork = new gcp.compute.Network("vertexNetwork", {});
- * const vertexRange = new gcp.compute.GlobalAddress("vertexRange", {
- *     purpose: "VPC_PEERING",
- *     addressType: "INTERNAL",
- *     prefixLength: 24,
- *     network: vertexNetwork.id,
- * });
- * const vertexVpcConnection = new gcp.servicenetworking.Connection("vertexVpcConnection", {
- *     network: vertexNetwork.id,
- *     service: "servicenetworking.googleapis.com",
- *     reservedPeeringRanges: [vertexRange.name],
- * });
+ * const vertexNetwork = new gcp.compute.Network("vertex_network", {name: "network-name"});
  * const project = gcp.organizations.getProject({});
  * const endpoint = new gcp.vertex.AiEndpoint("endpoint", {
+ *     name: "endpoint-name",
  *     displayName: "sample-endpoint",
  *     description: "A sample vertex endpoint",
  *     location: "us-central1",
@@ -47,10 +37,20 @@ import * as utilities from "../utilities";
  *     encryptionSpec: {
  *         kmsKeyName: "kms-name",
  *     },
- * }, {
- *     dependsOn: [vertexVpcConnection],
  * });
- * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("cryptoKey", {
+ * const vertexRange = new gcp.compute.GlobalAddress("vertex_range", {
+ *     name: "address-name",
+ *     purpose: "VPC_PEERING",
+ *     addressType: "INTERNAL",
+ *     prefixLength: 24,
+ *     network: vertexNetwork.id,
+ * });
+ * const vertexVpcConnection = new gcp.servicenetworking.Connection("vertex_vpc_connection", {
+ *     network: vertexNetwork.id,
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [vertexRange.name],
+ * });
+ * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("crypto_key", {
  *     cryptoKeyId: "kms-name",
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com`),

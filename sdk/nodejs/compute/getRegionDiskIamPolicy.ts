@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.compute.getRegionDiskIamPolicy({
- *     project: google_compute_region_disk.regiondisk.project,
- *     region: google_compute_region_disk.regiondisk.region,
- *     name: google_compute_region_disk.regiondisk.name,
+ *     project: regiondisk.project,
+ *     region: regiondisk.region,
+ *     name: regiondisk.name,
  * });
  * ```
  */
@@ -82,9 +82,9 @@ export interface GetRegionDiskIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.compute.getRegionDiskIamPolicy({
- *     project: google_compute_region_disk.regiondisk.project,
- *     region: google_compute_region_disk.regiondisk.region,
- *     name: google_compute_region_disk.regiondisk.name,
+ *     project: regiondisk.project,
+ *     region: regiondisk.region,
+ *     name: regiondisk.name,
  * });
  * ```
  */

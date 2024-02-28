@@ -45,14 +45,20 @@ import javax.annotation.Nullable;
  *         var openapiService = new Service(&#34;openapiService&#34;, ServiceArgs.builder()        
  *             .serviceName(&#34;api-name.endpoints.project-id.cloud.goog&#34;)
  *             .project(&#34;project-id&#34;)
- *             .openapiConfig(Files.readString(Paths.get(&#34;openapi_spec.yml&#34;)))
+ *             .openapiConfig(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;openapi_spec.yml&#34;)
+ *                 .build()).result())
  *             .build());
  * 
  *         var grpcService = new Service(&#34;grpcService&#34;, ServiceArgs.builder()        
  *             .serviceName(&#34;api-name.endpoints.project-id.cloud.goog&#34;)
  *             .project(&#34;project-id&#34;)
- *             .grpcConfig(Files.readString(Paths.get(&#34;service_spec.yml&#34;)))
- *             .protocOutputBase64(Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get(&#34;compiled_descriptor_file.pb&#34;))))
+ *             .grpcConfig(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;service_spec.yml&#34;)
+ *                 .build()).result())
+ *             .protocOutputBase64(StdFunctions.filebase64(Filebase64Args.builder()
+ *                 .input(&#34;compiled_descriptor_file.pb&#34;)
+ *                 .build()).result())
  *             .build());
  * 
  *     }

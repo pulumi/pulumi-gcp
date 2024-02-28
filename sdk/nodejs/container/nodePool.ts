@@ -23,15 +23,51 @@ import * as utilities from "../utilities";
  *     displayName: "Service Account",
  * });
  * const primary = new gcp.container.Cluster("primary", {
+ *     name: "my-gke-cluster",
  *     location: "us-central1",
  *     removeDefaultNodePool: true,
  *     initialNodeCount: 1,
  * });
- * const primaryPreemptibleNodes = new gcp.container.NodePool("primaryPreemptibleNodes", {
+ * const primaryPreemptibleNodes = new gcp.container.NodePool("primary_preemptible_nodes", {
+ *     name: "my-node-pool",
  *     cluster: primary.id,
  *     nodeCount: 1,
  *     nodeConfig: {
  *         preemptible: true,
+ *         machineType: "e2-medium",
+ *         serviceAccount: _default.email,
+ *         oauthScopes: ["https://www.googleapis.com/auth/cloud-platform"],
+ *     },
+ * });
+ * ```
+ * ### 2 Node Pools, 1 Separately Managed + The Default Node Pool
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.serviceaccount.Account("default", {
+ *     accountId: "service-account-id",
+ *     displayName: "Service Account",
+ * });
+ * const primary = new gcp.container.Cluster("primary", {
+ *     name: "marcellus-wallace",
+ *     location: "us-central1-a",
+ *     initialNodeCount: 3,
+ *     nodeLocations: ["us-central1-c"],
+ *     nodeConfig: {
+ *         serviceAccount: _default.email,
+ *         oauthScopes: ["https://www.googleapis.com/auth/cloud-platform"],
+ *         guestAccelerators: [{
+ *             type: "nvidia-tesla-k80",
+ *             count: 1,
+ *         }],
+ *     },
+ * });
+ * const np = new gcp.container.NodePool("np", {
+ *     name: "my-node-pool",
+ *     cluster: primary.id,
+ *     nodeConfig: {
  *         machineType: "e2-medium",
  *         serviceAccount: _default.email,
  *         oauthScopes: ["https://www.googleapis.com/auth/cloud-platform"],

@@ -23,6 +23,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// {
     ///     var @default = new Gcp.NetworkServices.EndpointPolicy("default", new()
     ///     {
+    ///         Name = "my-endpoint-policy",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -51,9 +52,6 @@ namespace Pulumi.Gcp.NetworkServices
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -70,6 +68,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// {
     ///     var @default = new Gcp.NetworkServices.EndpointPolicy("default", new()
     ///     {
+    ///         Name = "my-endpoint-policy",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -90,9 +89,6 @@ namespace Pulumi.Gcp.NetworkServices
     ///                 MetadataLabelMatchCriteria = "MATCH_ANY",
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

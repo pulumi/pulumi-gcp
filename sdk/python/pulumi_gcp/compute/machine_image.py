@@ -319,6 +319,7 @@ class MachineImage(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         vm = gcp.compute.Instance("vm",
+            name="my-vm",
             machine_type="e2-medium",
             boot_disk=gcp.compute.InstanceBootDiskArgs(
                 initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
@@ -327,10 +328,10 @@ class MachineImage(pulumi.CustomResource):
             ),
             network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
                 network="default",
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        image = gcp.compute.MachineImage("image", source_instance=vm.self_link,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
+        image = gcp.compute.MachineImage("image",
+            name="my-image",
+            source_instance=vm.self_link)
         ```
         ### Compute Machine Image Kms
 
@@ -339,6 +340,7 @@ class MachineImage(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         vm = gcp.compute.Instance("vm",
+            name="my-vm",
             machine_type="e2-medium",
             boot_disk=gcp.compute.InstanceBootDiskArgs(
                 initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
@@ -347,18 +349,19 @@ class MachineImage(pulumi.CustomResource):
             ),
             network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
                 network="default",
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        key_ring = gcp.kms.KeyRing("keyRing", location="us",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="keyring",
+            location="us")
+        crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="key",
+            key_ring=key_ring.id)
         image = gcp.compute.MachineImage("image",
+            name="my-image",
             source_instance=vm.self_link,
             machine_image_encryption_key=gcp.compute.MachineImageMachineImageEncryptionKeyArgs(
                 kms_key_name=crypto_key.id,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import
@@ -428,6 +431,7 @@ class MachineImage(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         vm = gcp.compute.Instance("vm",
+            name="my-vm",
             machine_type="e2-medium",
             boot_disk=gcp.compute.InstanceBootDiskArgs(
                 initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
@@ -436,10 +440,10 @@ class MachineImage(pulumi.CustomResource):
             ),
             network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
                 network="default",
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        image = gcp.compute.MachineImage("image", source_instance=vm.self_link,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
+        image = gcp.compute.MachineImage("image",
+            name="my-image",
+            source_instance=vm.self_link)
         ```
         ### Compute Machine Image Kms
 
@@ -448,6 +452,7 @@ class MachineImage(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         vm = gcp.compute.Instance("vm",
+            name="my-vm",
             machine_type="e2-medium",
             boot_disk=gcp.compute.InstanceBootDiskArgs(
                 initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
@@ -456,18 +461,19 @@ class MachineImage(pulumi.CustomResource):
             ),
             network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
                 network="default",
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        key_ring = gcp.kms.KeyRing("keyRing", location="us",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="keyring",
+            location="us")
+        crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="key",
+            key_ring=key_ring.id)
         image = gcp.compute.MachineImage("image",
+            name="my-image",
             source_instance=vm.self_link,
             machine_image_encryption_key=gcp.compute.MachineImageMachineImageEncryptionKeyArgs(
                 kms_key_name=crypto_key.id,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import

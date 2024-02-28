@@ -32,11 +32,13 @@ namespace Pulumi.Gcp.Healthcare
     ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
     ///     {
     ///         Location = "us-central1",
+    ///         Name = "my-dataset",
     ///     });
     /// 
     ///     var my_consent = new Gcp.Healthcare.ConsentStore("my-consent", new()
     ///     {
     ///         Dataset = dataset.Id,
+    ///         Name = "my-consent-store",
     ///     });
     /// 
     /// });
@@ -54,11 +56,13 @@ namespace Pulumi.Gcp.Healthcare
     ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
     ///     {
     ///         Location = "us-central1",
+    ///         Name = "my-dataset",
     ///     });
     /// 
     ///     var my_consent = new Gcp.Healthcare.ConsentStore("my-consent", new()
     ///     {
     ///         Dataset = dataset.Id,
+    ///         Name = "my-consent-store",
     ///         EnableConsentCreateOnUpdate = true,
     ///         DefaultConsentTtl = "90000s",
     ///         Labels = 
@@ -82,11 +86,13 @@ namespace Pulumi.Gcp.Healthcare
     ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
     ///     {
     ///         Location = "us-central1",
+    ///         Name = "my-dataset",
     ///     });
     /// 
     ///     var my_consent = new Gcp.Healthcare.ConsentStore("my-consent", new()
     ///     {
     ///         Dataset = dataset.Id,
+    ///         Name = "my-consent-store",
     ///     });
     /// 
     ///     var test_account = new Gcp.ServiceAccount.Account("test-account", new()

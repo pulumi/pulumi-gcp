@@ -21,6 +21,128 @@ import (
 //   - [Official Documentation](https://cloud.google.com/dlp/docs/concepts-templates)
 //
 // ## Example Usage
+// ### Dlp Deidentify Template Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataloss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataloss.NewPreventionDeidentifyTemplate(ctx, "basic", &dataloss.PreventionDeidentifyTemplateArgs{
+//				Parent:      pulumi.String("projects/my-project-name"),
+//				Description: pulumi.String("Description"),
+//				DisplayName: pulumi.String("Displayname"),
+//				DeidentifyConfig: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs{
+//					InfoTypeTransformations: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs{
+//						Transformations: dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArray{
+//							&dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs{
+//								InfoTypes: dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArray{
+//									&dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs{
+//										Name: pulumi.String("FIRST_NAME"),
+//									},
+//								},
+//								PrimitiveTransformation: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs{
+//									ReplaceWithInfoTypeConfig: pulumi.Bool(true),
+//								},
+//							},
+//							&dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs{
+//								InfoTypes: dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArray{
+//									&dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs{
+//										Name: pulumi.String("PHONE_NUMBER"),
+//									},
+//									&dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs{
+//										Name: pulumi.String("AGE"),
+//									},
+//								},
+//								PrimitiveTransformation: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs{
+//									ReplaceConfig: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs{
+//										NewValue: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs{
+//											IntegerValue: pulumi.Int(9),
+//										},
+//									},
+//								},
+//							},
+//							&dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs{
+//								InfoTypes: dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArray{
+//									&dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs{
+//										Name: pulumi.String("EMAIL_ADDRESS"),
+//									},
+//									&dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs{
+//										Name: pulumi.String("LAST_NAME"),
+//									},
+//								},
+//								PrimitiveTransformation: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs{
+//									CharacterMaskConfig: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs{
+//										MaskingCharacter: pulumi.String("X"),
+//										NumberToMask:     pulumi.Int(4),
+//										ReverseOrder:     pulumi.Bool(true),
+//										CharactersToIgnores: dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArray{
+//											&dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs{
+//												CommonCharactersToIgnore: pulumi.String("PUNCTUATION"),
+//											},
+//										},
+//									},
+//								},
+//							},
+//							&dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs{
+//								InfoTypes: dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArray{
+//									&dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs{
+//										Name: pulumi.String("DATE_OF_BIRTH"),
+//									},
+//								},
+//								PrimitiveTransformation: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs{
+//									ReplaceConfig: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs{
+//										NewValue: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs{
+//											DateValue: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs{
+//												Year:  pulumi.Int(2020),
+//												Month: pulumi.Int(1),
+//												Day:   pulumi.Int(1),
+//											},
+//										},
+//									},
+//								},
+//							},
+//							&dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs{
+//								InfoTypes: dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArray{
+//									&dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs{
+//										Name: pulumi.String("CREDIT_CARD_NUMBER"),
+//									},
+//								},
+//								PrimitiveTransformation: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs{
+//									CryptoDeterministicConfig: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs{
+//										Context: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs{
+//											Name: pulumi.String("sometweak"),
+//										},
+//										CryptoKey: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs{
+//											Transient: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs{
+//												Name: pulumi.String("beep"),
+//											},
+//										},
+//										SurrogateInfoType: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs{
+//											Name: pulumi.String("abc"),
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Dlp Deidentify Template Image Transformations
 //
 // ```go
@@ -36,14 +158,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataloss.NewPreventionDeidentifyTemplate(ctx, "basic", &dataloss.PreventionDeidentifyTemplateArgs{
+//				Parent:      pulumi.String("projects/my-project-name"),
+//				Description: pulumi.String("Description"),
+//				DisplayName: pulumi.String("Displayname"),
 //				DeidentifyConfig: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs{
 //					ImageTransformations: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs{
 //						Transforms: dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArray{
 //							&dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs{
 //								RedactionColor: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs{
+//									Red:   pulumi.Float64(0.5),
 //									Blue:  pulumi.Float64(1),
 //									Green: pulumi.Float64(0.2),
-//									Red:   pulumi.Float64(0.5),
 //								},
 //								SelectedInfoTypes: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs{
 //									InfoTypes: dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArray{
@@ -63,9 +188,6 @@ import (
 //						},
 //					},
 //				},
-//				Description: pulumi.String("Description"),
-//				DisplayName: pulumi.String("Displayname"),
-//				Parent:      pulumi.String("projects/my-project-name"),
 //			})
 //			if err != nil {
 //				return err

@@ -32,8 +32,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.cloudtasks.QueueIamPolicy("policy", {
- *     project: google_cloud_tasks_queue["default"].project,
- *     location: google_cloud_tasks_queue["default"].location,
+ *     project: _default.project,
+ *     location: _default.location,
+ *     name: _default.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -45,8 +46,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.cloudtasks.QueueIamBinding("binding", {
- *     project: google_cloud_tasks_queue["default"].project,
- *     location: google_cloud_tasks_queue["default"].location,
+ *     project: _default.project,
+ *     location: _default.location,
+ *     name: _default.name,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
  * });
@@ -59,8 +61,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.cloudtasks.QueueIamMember("member", {
- *     project: google_cloud_tasks_queue["default"].project,
- *     location: google_cloud_tasks_queue["default"].location,
+ *     project: _default.project,
+ *     location: _default.location,
+ *     name: _default.name,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
  * });

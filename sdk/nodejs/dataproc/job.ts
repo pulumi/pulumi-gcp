@@ -18,7 +18,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const mycluster = new gcp.dataproc.Cluster("mycluster", {region: "us-central1"});
+ * const mycluster = new gcp.dataproc.Cluster("mycluster", {
+ *     name: "dproc-cluster-unique-name",
+ *     region: "us-central1",
+ * });
  * // Submit an example spark job to a dataproc cluster
  * const spark = new gcp.dataproc.Job("spark", {
  *     region: mycluster.region,

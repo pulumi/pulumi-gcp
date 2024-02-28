@@ -39,21 +39,15 @@ namespace Pulumi.Gcp.BigQuery
     ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com",
     ///     });
     /// 
-    ///     var myDataset = new Gcp.BigQuery.Dataset("myDataset", new()
+    ///     var myDataset = new Gcp.BigQuery.Dataset("my_dataset", new()
     ///     {
     ///         DatasetId = "my_dataset",
     ///         FriendlyName = "foo",
     ///         Description = "bar",
     ///         Location = "asia-northeast1",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             permissions,
-    ///         },
     ///     });
     /// 
-    ///     var queryConfig = new Gcp.BigQuery.DataTransferConfig("queryConfig", new()
+    ///     var queryConfig = new Gcp.BigQuery.DataTransferConfig("query_config", new()
     ///     {
     ///         DisplayName = "my-query",
     ///         Location = "asia-northeast1",
@@ -65,12 +59,6 @@ namespace Pulumi.Gcp.BigQuery
     ///             { "destination_table_name_template", "my_table" },
     ///             { "write_disposition", "WRITE_APPEND" },
     ///             { "query", "SELECT name FROM tabl WHERE x = 'y'" },
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             permissions,
     ///         },
     ///     });
     /// 

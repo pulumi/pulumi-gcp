@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Endpoints
         /// {
         ///     var policy = Gcp.Endpoints.GetServiceIamPolicy.Invoke(new()
         ///     {
-        ///         ServiceName = google_endpoints_service.Endpoints_service.Service_name,
+        ///         ServiceName = endpointsService.ServiceName,
         ///     });
         /// 
         /// });
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.Endpoints
         /// {
         ///     var policy = Gcp.Endpoints.GetServiceIamPolicy.Invoke(new()
         ///     {
-        ///         ServiceName = google_endpoints_service.Endpoints_service.Service_name,
+        ///         ServiceName = endpointsService.ServiceName,
         ///     });
         /// 
         /// });

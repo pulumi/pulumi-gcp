@@ -54,6 +54,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var my_exclusion = new FolderExclusion(&#34;my-exclusion&#34;, FolderExclusionArgs.builder()        
+ *             .name(&#34;my-instance-debug-exclusion&#34;)
  *             .folder(my_folder.name())
  *             .description(&#34;Exclude GCE instance debug logs&#34;)
  *             .filter(&#34;resource.type = gce_instance AND severity &lt;= DEBUG&#34;)

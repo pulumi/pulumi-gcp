@@ -63,8 +63,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new BackupPlanIamPolicy(&#34;policy&#34;, BackupPlanIamPolicyArgs.builder()        
- *             .project(google_gke_backup_backup_plan.basic().project())
- *             .location(google_gke_backup_backup_plan.basic().location())
+ *             .project(basic.project())
+ *             .location(basic.location())
+ *             .name(basic.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -95,8 +96,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new BackupPlanIamBinding(&#34;binding&#34;, BackupPlanIamBindingArgs.builder()        
- *             .project(google_gke_backup_backup_plan.basic().project())
- *             .location(google_gke_backup_backup_plan.basic().location())
+ *             .project(basic.project())
+ *             .location(basic.location())
+ *             .name(basic.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -128,8 +130,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new BackupPlanIamMember(&#34;member&#34;, BackupPlanIamMemberArgs.builder()        
- *             .project(google_gke_backup_backup_plan.basic().project())
- *             .location(google_gke_backup_backup_plan.basic().location())
+ *             .project(basic.project())
+ *             .location(basic.location())
+ *             .name(basic.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

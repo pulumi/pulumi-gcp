@@ -40,12 +40,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			group, err := compute.NewRegionNetworkEndpointGroup(ctx, "group", &compute.RegionNetworkEndpointGroupArgs{
+//				Name:                pulumi.String("ip-port-neg"),
 //				Network:             _default.ID(),
 //				Region:              pulumi.String("us-central1"),
 //				NetworkEndpointType: pulumi.String("INTERNET_IP_PORT"),
@@ -82,12 +84,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			group, err := compute.NewRegionNetworkEndpointGroup(ctx, "group", &compute.RegionNetworkEndpointGroupArgs{
+//				Name:                pulumi.String("fqdn-port-neg"),
 //				Network:             _default.ID(),
 //				Region:              pulumi.String("us-central1"),
 //				NetworkEndpointType: pulumi.String("INTERNET_FQDN_PORT"),

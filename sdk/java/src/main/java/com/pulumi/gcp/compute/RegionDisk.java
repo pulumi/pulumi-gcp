@@ -72,6 +72,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var disk = new Disk(&#34;disk&#34;, DiskArgs.builder()        
+ *             .name(&#34;my-disk&#34;)
  *             .image(&#34;debian-cloud/debian-11&#34;)
  *             .size(50)
  *             .type(&#34;pd-ssd&#34;)
@@ -79,11 +80,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var snapdisk = new Snapshot(&#34;snapdisk&#34;, SnapshotArgs.builder()        
+ *             .name(&#34;my-snapshot&#34;)
  *             .sourceDisk(disk.name())
  *             .zone(&#34;us-central1-a&#34;)
  *             .build());
  * 
  *         var regiondisk = new RegionDisk(&#34;regiondisk&#34;, RegionDiskArgs.builder()        
+ *             .name(&#34;my-region-disk&#34;)
  *             .snapshot(snapdisk.id())
  *             .type(&#34;pd-ssd&#34;)
  *             .region(&#34;us-central1&#34;)
@@ -120,6 +123,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var primary = new RegionDisk(&#34;primary&#34;, RegionDiskArgs.builder()        
+ *             .name(&#34;primary-region-disk&#34;)
  *             .type(&#34;pd-ssd&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .physicalBlockSizeBytes(4096)
@@ -129,6 +133,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var secondary = new RegionDisk(&#34;secondary&#34;, RegionDiskArgs.builder()        
+ *             .name(&#34;secondary-region-disk&#34;)
  *             .type(&#34;pd-ssd&#34;)
  *             .region(&#34;us-east1&#34;)
  *             .physicalBlockSizeBytes(4096)
@@ -167,6 +172,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var regiondisk = new RegionDisk(&#34;regiondisk&#34;, RegionDiskArgs.builder()        
+ *             .name(&#34;my-region-features-disk&#34;)
+ *             .type(&#34;pd-ssd&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .physicalBlockSizeBytes(4096)
  *             .guestOsFeatures(            
  *                 RegionDiskGuestOsFeatureArgs.builder()
  *                     .type(&#34;SECURE_BOOT&#34;)
@@ -178,12 +187,9 @@ import javax.annotation.Nullable;
  *                     .type(&#34;WINDOWS&#34;)
  *                     .build())
  *             .licenses(&#34;https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core&#34;)
- *             .physicalBlockSizeBytes(4096)
- *             .region(&#34;us-central1&#34;)
  *             .replicaZones(            
  *                 &#34;us-central1-a&#34;,
  *                 &#34;us-central1-f&#34;)
- *             .type(&#34;pd-ssd&#34;)
  *             .build());
  * 
  *     }

@@ -53,7 +53,7 @@ namespace Pulumi.Gcp.ServiceAccount
     ///     });
     /// 
     ///     // note this requires the terraform to be run regularly
-    ///     var mykeyRotation = new Time.Rotating("mykeyRotation", new()
+    ///     var mykeyRotation = new Time.Rotating("mykey_rotation", new()
     ///     {
     ///         RotationDays = 30,
     ///     });
@@ -64,6 +64,48 @@ namespace Pulumi.Gcp.ServiceAccount
     ///         Keepers = 
     ///         {
     ///             { "rotation_time", mykeyRotation.RotationRfc3339 },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Save Key In Kubernetes Secret - DEPRECATED
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Kubernetes = Pulumi.Kubernetes;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Workload Identity is the recommended way of accessing Google Cloud APIs from pods.
+    ///     // https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+    ///     var myaccount = new Gcp.ServiceAccount.Account("myaccount", new()
+    ///     {
+    ///         AccountId = "myaccount",
+    ///         DisplayName = "My Service Account",
+    ///     });
+    /// 
+    ///     var mykey = new Gcp.ServiceAccount.Key("mykey", new()
+    ///     {
+    ///         ServiceAccountId = myaccount.Name,
+    ///     });
+    /// 
+    ///     var google_application_credentials = new Kubernetes.Core.V1.Secret("google-application-credentials", new()
+    ///     {
+    ///         Metadata = new Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs
+    ///         {
+    ///             Name = "google-application-credentials",
+    ///         },
+    ///         Data = 
+    ///         {
+    ///             { "json", Std.Base64decode.Invoke(new()
+    ///             {
+    ///                 Input = mykey.PrivateKey,
+    ///             }).Apply(invoke =&gt; invoke.Result) },
     ///         },
     ///     });
     /// 

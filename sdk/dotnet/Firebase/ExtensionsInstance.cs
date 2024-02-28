@@ -24,15 +24,13 @@ namespace Pulumi.Gcp.Firebase
     ///     var images = new Gcp.Storage.Bucket("images", new()
     ///     {
     ///         Project = "my-project-name",
+    ///         Name = "bucket-id",
     ///         Location = "US",
     ///         UniformBucketLevelAccess = true,
     ///         ForceDestroy = true,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var resizeImage = new Gcp.Firebase.ExtensionsInstance("resizeImage", new()
+    ///     var resizeImage = new Gcp.Firebase.ExtensionsInstance("resize_image", new()
     ///     {
     ///         Project = "my-project-name",
     ///         InstanceId = "storage-resize-images",
@@ -64,9 +62,6 @@ namespace Pulumi.Gcp.Firebase
     ///             },
     ///             EventarcChannel = "projects/my-project-name/locations//channels/firebase",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

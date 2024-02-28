@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.notebooks.getInstanceIamPolicy({
- *     project: google_notebooks_instance.instance.project,
- *     location: google_notebooks_instance.instance.location,
- *     instanceName: google_notebooks_instance.instance.name,
+ *     project: instance.project,
+ *     location: instance.location,
+ *     instanceName: instance.name,
  * });
  * ```
  */
@@ -80,9 +80,9 @@ export interface GetInstanceIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.notebooks.getInstanceIamPolicy({
- *     project: google_notebooks_instance.instance.project,
- *     location: google_notebooks_instance.instance.location,
- *     instanceName: google_notebooks_instance.instance.name,
+ *     project: instance.project,
+ *     location: instance.location,
+ *     instanceName: instance.name,
  * });
  * ```
  */

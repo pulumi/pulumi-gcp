@@ -34,11 +34,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.apigateway.ApiConfigIamPolicy("policy", {
- *     api: google_api_gateway_api_config.api_cfg.api,
- *     apiConfig: google_api_gateway_api_config.api_cfg.api_config_id,
+ *     api: apiCfg.api,
+ *     apiConfig: apiCfg.apiConfigId,
  *     policyData: admin.then(admin => admin.policyData),
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *
@@ -49,12 +47,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.apigateway.ApiConfigIamBinding("binding", {
- *     api: google_api_gateway_api_config.api_cfg.api,
- *     apiConfig: google_api_gateway_api_config.api_cfg.api_config_id,
+ *     api: apiCfg.api,
+ *     apiConfig: apiCfg.apiConfigId,
  *     role: "roles/apigateway.viewer",
  *     members: ["user:jane@example.com"],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *
@@ -65,12 +61,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.apigateway.ApiConfigIamMember("member", {
- *     api: google_api_gateway_api_config.api_cfg.api,
- *     apiConfig: google_api_gateway_api_config.api_cfg.api_config_id,
+ *     api: apiCfg.api,
+ *     apiConfig: apiCfg.apiConfigId,
  *     role: "roles/apigateway.viewer",
  *     member: "user:jane@example.com",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

@@ -22,32 +22,22 @@ namespace Pulumi.Gcp.ApiGateway
     /// ### Apigateway Gateway Basic
     /// 
     /// ```csharp
-    /// using System;
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// 	
-    /// string ReadFileBase64(string path) 
-    /// {
-    ///     return Convert.ToBase64String(Encoding.UTF8.GetBytes(File.ReadAllText(path)));
-    /// }
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var apiGwApi = new Gcp.ApiGateway.Api("apiGwApi", new()
+    ///     var apiGw = new Gcp.ApiGateway.Api("api_gw", new()
     ///     {
     ///         ApiId = "my-api",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var apiGwApiConfig = new Gcp.ApiGateway.ApiConfig("apiGwApiConfig", new()
+    ///     var apiGwApiConfig = new Gcp.ApiGateway.ApiConfig("api_gw", new()
     ///     {
-    ///         Api = apiGwApi.ApiId,
+    ///         Api = apiGw.ApiId,
     ///         ApiConfigId = "my-config",
     ///         OpenapiDocuments = new[]
     ///         {
@@ -56,22 +46,19 @@ namespace Pulumi.Gcp.ApiGateway
     ///                 Document = new Gcp.ApiGateway.Inputs.ApiConfigOpenapiDocumentDocumentArgs
     ///                 {
     ///                     Path = "spec.yaml",
-    ///                     Contents = ReadFileBase64("test-fixtures/openapi.yaml"),
+    ///                     Contents = Std.Filebase64.Invoke(new()
+    ///                     {
+    ///                         Input = "test-fixtures/openapi.yaml",
+    ///                     }).Apply(invoke =&gt; invoke.Result),
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var apiGwGateway = new Gcp.ApiGateway.Gateway("apiGwGateway", new()
+    ///     var apiGwGateway = new Gcp.ApiGateway.Gateway("api_gw", new()
     ///     {
     ///         ApiConfig = apiGwApiConfig.Id,
     ///         GatewayId = "my-gateway",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

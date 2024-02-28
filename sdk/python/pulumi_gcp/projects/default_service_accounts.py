@@ -180,9 +180,9 @@ class DefaultServiceAccounts(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_project = gcp.projects.DefaultServiceAccounts("myProject",
-            action="DELETE",
-            project="my-project-id")
+        my_project = gcp.projects.DefaultServiceAccounts("my_project",
+            project="my-project-id",
+            action="DELETE")
         ```
 
         To enable the default service accounts on the resource destroy:
@@ -191,9 +191,9 @@ class DefaultServiceAccounts(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_project = gcp.projects.DefaultServiceAccounts("myProject",
-            action="DISABLE",
+        my_project = gcp.projects.DefaultServiceAccounts("my_project",
             project="my-project-id",
+            action="DISABLE",
             restore_policy="REVERT")
         ```
 
@@ -238,9 +238,9 @@ class DefaultServiceAccounts(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_project = gcp.projects.DefaultServiceAccounts("myProject",
-            action="DELETE",
-            project="my-project-id")
+        my_project = gcp.projects.DefaultServiceAccounts("my_project",
+            project="my-project-id",
+            action="DELETE")
         ```
 
         To enable the default service accounts on the resource destroy:
@@ -249,9 +249,9 @@ class DefaultServiceAccounts(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_project = gcp.projects.DefaultServiceAccounts("myProject",
-            action="DISABLE",
+        my_project = gcp.projects.DefaultServiceAccounts("my_project",
             project="my-project-id",
+            action="DISABLE",
             restore_policy="REVERT")
         ```
 

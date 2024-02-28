@@ -31,16 +31,16 @@ namespace Pulumi.Gcp.DataLoss
     /// {
     ///     var basic = new Gcp.DataLoss.PreventionStoredInfoType("basic", new()
     ///     {
+    ///         Parent = "projects/my-project-name",
     ///         Description = "Description",
     ///         DisplayName = "Displayname",
-    ///         Parent = "projects/my-project-name",
     ///         Regex = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeRegexArgs
     ///         {
+    ///             Pattern = "patient",
     ///             GroupIndexes = new[]
     ///             {
     ///                 2,
     ///             },
-    ///             Pattern = "patient",
     ///         },
     ///     });
     /// 
@@ -58,7 +58,9 @@ namespace Pulumi.Gcp.DataLoss
     /// {
     ///     var dictionary = new Gcp.DataLoss.PreventionStoredInfoType("dictionary", new()
     ///     {
+    ///         Parent = "projects/my-project-name",
     ///         Description = "Description",
+    ///         DisplayName = "Displayname",
     ///         Dictionary = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeDictionaryArgs
     ///         {
     ///             WordList = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeDictionaryWordListArgs
@@ -70,8 +72,6 @@ namespace Pulumi.Gcp.DataLoss
     ///                 },
     ///             },
     ///         },
-    ///         DisplayName = "Displayname",
-    ///         Parent = "projects/my-project-name",
     ///     });
     /// 
     /// });
@@ -88,12 +88,14 @@ namespace Pulumi.Gcp.DataLoss
     /// {
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
+    ///         Name = "tf-test-bucket",
     ///         Location = "US",
     ///         ForceDestroy = true,
     ///     });
     /// 
     ///     var @object = new Gcp.Storage.BucketObject("object", new()
     ///     {
+    ///         Name = "tf-test-object",
     ///         Bucket = bucket.Name,
     ///         Source = new FileAsset("./test-fixtures/words.txt"),
     ///     });
@@ -133,20 +135,20 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var withStoredInfoTypeId = new Gcp.DataLoss.PreventionStoredInfoType("withStoredInfoTypeId", new()
+    ///     var withStoredInfoTypeId = new Gcp.DataLoss.PreventionStoredInfoType("with_stored_info_type_id", new()
     ///     {
+    ///         Parent = "projects/my-project-name",
     ///         Description = "Description",
     ///         DisplayName = "Displayname",
-    ///         Parent = "projects/my-project-name",
+    ///         StoredInfoTypeId = "id-",
     ///         Regex = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeRegexArgs
     ///         {
+    ///             Pattern = "patient",
     ///             GroupIndexes = new[]
     ///             {
     ///                 2,
     ///             },
-    ///             Pattern = "patient",
     ///         },
-    ///         StoredInfoTypeId = "id-",
     ///     });
     /// 
     /// });

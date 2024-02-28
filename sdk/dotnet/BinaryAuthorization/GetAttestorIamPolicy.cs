@@ -28,8 +28,8 @@ namespace Pulumi.Gcp.BinaryAuthorization
         /// {
         ///     var policy = Gcp.BinaryAuthorization.GetAttestorIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_binary_authorization_attestor.Attestor.Project,
-        ///         Attestor = google_binary_authorization_attestor.Attestor.Name,
+        ///         Project = attestor.Project,
+        ///         Attestor = attestor.Name,
         ///     });
         /// 
         /// });
@@ -55,8 +55,8 @@ namespace Pulumi.Gcp.BinaryAuthorization
         /// {
         ///     var policy = Gcp.BinaryAuthorization.GetAttestorIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_binary_authorization_attestor.Attestor.Project,
-        ///         Attestor = google_binary_authorization_attestor.Attestor.Name,
+        ///         Project = attestor.Project,
+        ///         Attestor = attestor.Name,
         ///     });
         /// 
         /// });

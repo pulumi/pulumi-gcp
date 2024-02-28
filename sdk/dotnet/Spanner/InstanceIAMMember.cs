@@ -70,11 +70,11 @@ namespace Pulumi.Gcp.Spanner
     ///     var instance = new Gcp.Spanner.InstanceIAMBinding("instance", new()
     ///     {
     ///         Instance = "your-instance-name",
+    ///         Role = "roles/spanner.databaseAdmin",
     ///         Members = new[]
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         Role = "roles/spanner.databaseAdmin",
     ///     });
     /// 
     /// });
@@ -93,8 +93,8 @@ namespace Pulumi.Gcp.Spanner
     ///     var instance = new Gcp.Spanner.InstanceIAMMember("instance", new()
     ///     {
     ///         Instance = "your-instance-name",
-    ///         Member = "user:jane@example.com",
     ///         Role = "roles/spanner.databaseAdmin",
+    ///         Member = "user:jane@example.com",
     ///     });
     /// 
     /// });

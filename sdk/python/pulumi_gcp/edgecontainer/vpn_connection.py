@@ -497,6 +497,7 @@ class VpnConnection(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         cluster = gcp.edgecontainer.Cluster("cluster",
+            name="default",
             location="us-central1",
             authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
                 admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
@@ -510,13 +511,15 @@ class VpnConnection(pulumi.CustomResource):
             fleet=gcp.edgecontainer.ClusterFleetArgs(
                 project=f"projects/{project.number}",
             ))
-        node_pool = gcp.edgecontainer.NodePool("nodePool",
+        node_pool = gcp.edgecontainer.NodePool("node_pool",
+            name="nodepool-1",
             cluster=cluster.name,
             location="us-central1",
             node_location="us-central1-edge-example-edgesite",
             node_count=3)
-        vpc = gcp.compute.Network("vpc")
+        vpc = gcp.compute.Network("vpc", name="example-vpc")
         default = gcp.edgecontainer.VpnConnection("default",
+            name="vpn-connection-1",
             location="us-central1",
             cluster=cluster.name.apply(lambda name: f"projects/{project.number}/locations/us-east1/clusters/{name}"),
             vpc=vpc.name,
@@ -524,8 +527,7 @@ class VpnConnection(pulumi.CustomResource):
             labels={
                 "my_key": "my_val",
                 "other_key": "other_val",
-            },
-            opts=pulumi.ResourceOptions(depends_on=[node_pool]))
+            })
         ```
 
         ## Import
@@ -597,6 +599,7 @@ class VpnConnection(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         cluster = gcp.edgecontainer.Cluster("cluster",
+            name="default",
             location="us-central1",
             authorization=gcp.edgecontainer.ClusterAuthorizationArgs(
                 admin_users=gcp.edgecontainer.ClusterAuthorizationAdminUsersArgs(
@@ -610,13 +613,15 @@ class VpnConnection(pulumi.CustomResource):
             fleet=gcp.edgecontainer.ClusterFleetArgs(
                 project=f"projects/{project.number}",
             ))
-        node_pool = gcp.edgecontainer.NodePool("nodePool",
+        node_pool = gcp.edgecontainer.NodePool("node_pool",
+            name="nodepool-1",
             cluster=cluster.name,
             location="us-central1",
             node_location="us-central1-edge-example-edgesite",
             node_count=3)
-        vpc = gcp.compute.Network("vpc")
+        vpc = gcp.compute.Network("vpc", name="example-vpc")
         default = gcp.edgecontainer.VpnConnection("default",
+            name="vpn-connection-1",
             location="us-central1",
             cluster=cluster.name.apply(lambda name: f"projects/{project.number}/locations/us-east1/clusters/{name}"),
             vpc=vpc.name,
@@ -624,8 +629,7 @@ class VpnConnection(pulumi.CustomResource):
             labels={
                 "my_key": "my_val",
                 "other_key": "other_val",
-            },
-            opts=pulumi.ResourceOptions(depends_on=[node_pool]))
+            })
         ```
 
         ## Import

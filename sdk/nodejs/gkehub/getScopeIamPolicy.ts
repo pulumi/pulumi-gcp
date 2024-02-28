@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.gkehub.getScopeIamPolicy({
- *     project: google_gke_hub_scope.scope.project,
- *     scopeId: google_gke_hub_scope.scope.scope_id,
+ *     project: scope.project,
+ *     scopeId: scope.scopeId,
  * });
  * ```
  */
@@ -70,8 +70,8 @@ export interface GetScopeIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.gkehub.getScopeIamPolicy({
- *     project: google_gke_hub_scope.scope.project,
- *     scopeId: google_gke_hub_scope.scope.scope_id,
+ *     project: scope.project,
+ *     scopeId: scope.scopeId,
  * });
  * ```
  */

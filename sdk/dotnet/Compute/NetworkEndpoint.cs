@@ -39,20 +39,34 @@ namespace Pulumi.Gcp.Compute
     ///         Project = "debian-cloud",
     ///     });
     /// 
-    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
+    ///     var @default = new Gcp.Compute.Network("default", new()
     ///     {
+    ///         Name = "neg-network",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new()
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
     ///     {
+    ///         Name = "neg-subnetwork",
     ///         IpCidrRange = "10.0.0.1/16",
     ///         Region = "us-central1",
-    ///         Network = defaultNetwork.Id,
+    ///         Network = @default.Id,
     ///     });
     /// 
     ///     var endpoint_instance = new Gcp.Compute.Instance("endpoint-instance", new()
     ///     {
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     null,
+    ///                 },
+    ///                 Subnetwork = defaultSubnetwork.Id,
+    ///             },
+    ///         },
+    ///         Name = "endpoint-instance",
     ///         MachineType = "e2-medium",
     ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
     ///         {
@@ -61,30 +75,20 @@ namespace Pulumi.Gcp.Compute
     ///                 Image = myImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
     ///             },
     ///         },
-    ///         NetworkInterfaces = new[]
-    ///         {
-    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
-    ///             {
-    ///                 Subnetwork = defaultSubnetwork.Id,
-    ///                 AccessConfigs = new[]
-    ///                 {
-    ///                     null,
-    ///                 },
-    ///             },
-    ///         },
     ///     });
     /// 
     ///     var default_endpoint = new Gcp.Compute.NetworkEndpoint("default-endpoint", new()
     ///     {
-    ///         NetworkEndpointGroup = google_compute_network_endpoint_group.Neg.Name,
+    ///         NetworkEndpointGroup = neg.Name,
     ///         Instance = endpoint_instance.Name,
-    ///         Port = google_compute_network_endpoint_group.Neg.Default_port,
+    ///         Port = neg.DefaultPort,
     ///         IpAddress = endpoint_instance.NetworkInterfaces.Apply(networkInterfaces =&gt; networkInterfaces[0].NetworkIp),
     ///     });
     /// 
     ///     var @group = new Gcp.Compute.NetworkEndpointGroup("group", new()
     ///     {
-    ///         Network = defaultNetwork.Id,
+    ///         Name = "my-lb-neg",
+    ///         Network = @default.Id,
     ///         Subnetwork = defaultSubnetwork.Id,
     ///         DefaultPort = 90,
     ///         Zone = "us-central1-a",

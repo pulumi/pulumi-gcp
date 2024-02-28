@@ -143,8 +143,11 @@ def get_app_engine_service(module_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    bucket = gcp.storage.Bucket("bucket", location="US")
+    bucket = gcp.storage.Bucket("bucket",
+        name="appengine-static-content",
+        location="US")
     object = gcp.storage.BucketObject("object",
+        name="hello-world.zip",
         bucket=bucket.name,
         source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
     myapp = gcp.appengine.StandardAppVersion("myapp",
@@ -163,6 +166,7 @@ def get_app_engine_service(module_id: Optional[str] = None,
             "port": "8080",
         },
         delete_service_on_destroy=False)
+    # Monitors the default AppEngine service
     srv = gcp.monitoring.get_app_engine_service_output(module_id=myapp.service)
     ```
 
@@ -219,8 +223,11 @@ def get_app_engine_service_output(module_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    bucket = gcp.storage.Bucket("bucket", location="US")
+    bucket = gcp.storage.Bucket("bucket",
+        name="appengine-static-content",
+        location="US")
     object = gcp.storage.BucketObject("object",
+        name="hello-world.zip",
         bucket=bucket.name,
         source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
     myapp = gcp.appengine.StandardAppVersion("myapp",
@@ -239,6 +246,7 @@ def get_app_engine_service_output(module_id: Optional[pulumi.Input[str]] = None,
             "port": "8080",
         },
         delete_service_on_destroy=False)
+    # Monitors the default AppEngine service
     srv = gcp.monitoring.get_app_engine_service_output(module_id=myapp.service)
     ```
 

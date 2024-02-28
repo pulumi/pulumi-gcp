@@ -33,6 +33,10 @@ namespace Pulumi.Gcp.IntegrationConnectors
     /// 
     ///     var pubsubconnection = new Gcp.IntegrationConnectors.Connection("pubsubconnection", new()
     ///     {
+    ///         Name = "test-pubsub",
+    ///         Location = "us-central1",
+    ///         ConnectorVersion = $"projects/{testProject.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/locations/global/providers/gcp/connectors/pubsub/versions/1",
+    ///         Description = "tf created description",
     ///         ConfigVariables = new[]
     ///         {
     ///             new Gcp.IntegrationConnectors.Inputs.ConnectionConfigVariableArgs
@@ -46,9 +50,6 @@ namespace Pulumi.Gcp.IntegrationConnectors
     ///                 StringValue = "test",
     ///             },
     ///         },
-    ///         ConnectorVersion = $"projects/{testProject.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/locations/global/providers/gcp/connectors/pubsub/versions/1",
-    ///         Description = "tf created description",
-    ///         Location = "us-central1",
     ///     });
     /// 
     /// });
@@ -89,21 +90,16 @@ namespace Pulumi.Gcp.IntegrationConnectors
     ///         SecretData = "dummypassword",
     ///     });
     /// 
-    ///     var secretIam = new Gcp.SecretManager.SecretIamMember("secretIam", new()
+    ///     var secretIam = new Gcp.SecretManager.SecretIamMember("secret_iam", new()
     ///     {
     ///         SecretId = secret_basic.Id,
     ///         Role = "roles/secretmanager.admin",
     ///         Member = $"serviceAccount:{testProject.Apply(getProjectResult =&gt; getProjectResult.Number)}-compute@developer.gserviceaccount.com",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             secret_version_basic,
-    ///         },
     ///     });
     /// 
     ///     var zendeskconnection = new Gcp.IntegrationConnectors.Connection("zendeskconnection", new()
     ///     {
+    ///         Name = "test-zendesk",
     ///         Description = "tf updated description",
     ///         Location = "us-central1",
     ///         ServiceAccount = $"{testProject.Apply(getProjectResult =&gt; getProjectResult.Number)}-compute@developer.gserviceaccount.com",

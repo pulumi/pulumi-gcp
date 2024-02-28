@@ -18,34 +18,6 @@ namespace Pulumi.Gcp.Compute
         /// [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
         /// and
         /// [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates).
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var generic_regex = Gcp.Compute.GetInstanceTemplate.Invoke(new()
-        ///     {
-        ///         Filter = "name != generic-tpl-20200107",
-        ///         MostRecent = true,
-        ///     });
-        /// 
-        ///     var generic = Gcp.Compute.GetInstanceTemplate.Invoke(new()
-        ///     {
-        ///         SelfLinkUnique = "https://www.googleapis.com/compute/v1/projects/your-project-name/global/instanceTemplates/example-template-custom?uniqueId=1234",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceTemplateResult> InvokeAsync(GetInstanceTemplateArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTemplateResult>("gcp:compute/getInstanceTemplate:getInstanceTemplate", args ?? new GetInstanceTemplateArgs(), options.WithDefaults());
@@ -57,34 +29,6 @@ namespace Pulumi.Gcp.Compute
         /// [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
         /// and
         /// [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates).
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var generic_regex = Gcp.Compute.GetInstanceTemplate.Invoke(new()
-        ///     {
-        ///         Filter = "name != generic-tpl-20200107",
-        ///         MostRecent = true,
-        ///     });
-        /// 
-        ///     var generic = Gcp.Compute.GetInstanceTemplate.Invoke(new()
-        ///     {
-        ///         SelfLinkUnique = "https://www.googleapis.com/compute/v1/projects/your-project-name/global/instanceTemplates/example-template-custom?uniqueId=1234",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceTemplateResult> Invoke(GetInstanceTemplateInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceTemplateResult>("gcp:compute/getInstanceTemplate:getInstanceTemplate", args ?? new GetInstanceTemplateInvokeArgs(), options.WithDefaults());

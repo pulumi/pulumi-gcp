@@ -78,10 +78,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new WorkloadIdentityPool(&#34;example&#34;, WorkloadIdentityPoolArgs.builder()        
+ *             .workloadIdentityPoolId(&#34;example-pool&#34;)
+ *             .displayName(&#34;Name of pool&#34;)
  *             .description(&#34;Identity pool for automated test&#34;)
  *             .disabled(true)
- *             .displayName(&#34;Name of pool&#34;)
- *             .workloadIdentityPoolId(&#34;example-pool&#34;)
  *             .build());
  * 
  *     }

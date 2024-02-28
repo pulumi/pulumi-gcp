@@ -31,11 +31,12 @@ namespace Pulumi.Gcp.Beyondcorp
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var appGateway = new Gcp.Beyondcorp.AppGateway("appGateway", new()
+    ///     var appGateway = new Gcp.Beyondcorp.AppGateway("app_gateway", new()
     ///     {
-    ///         HostType = "GCP_REGIONAL_MIG",
-    ///         Region = "us-central1",
+    ///         Name = "my-app-gateway",
     ///         Type = "TCP_PROXY",
+    ///         Region = "us-central1",
+    ///         HostType = "GCP_REGIONAL_MIG",
     ///     });
     /// 
     /// });
@@ -50,17 +51,18 @@ namespace Pulumi.Gcp.Beyondcorp
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var appGateway = new Gcp.Beyondcorp.AppGateway("appGateway", new()
+    ///     var appGateway = new Gcp.Beyondcorp.AppGateway("app_gateway", new()
     ///     {
+    ///         Name = "my-app-gateway",
+    ///         Type = "TCP_PROXY",
+    ///         Region = "us-central1",
     ///         DisplayName = "some display name",
-    ///         HostType = "GCP_REGIONAL_MIG",
     ///         Labels = 
     ///         {
-    ///             { "bar", "baz" },
     ///             { "foo", "bar" },
+    ///             { "bar", "baz" },
     ///         },
-    ///         Region = "us-central1",
-    ///         Type = "TCP_PROXY",
+    ///         HostType = "GCP_REGIONAL_MIG",
     ///     });
     /// 
     /// });

@@ -525,14 +525,17 @@ class Asset(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic_bucket = gcp.storage.Bucket("basicBucket",
+        basic_bucket = gcp.storage.Bucket("basic_bucket",
+            name="bucket",
             location="us-west1",
             uniform_bucket_level_access=True,
             project="my-project-name")
-        basic_lake = gcp.dataplex.Lake("basicLake",
+        basic_lake = gcp.dataplex.Lake("basic_lake",
+            name="lake",
             location="us-west1",
             project="my-project-name")
-        basic_zone = gcp.dataplex.Zone("basicZone",
+        basic_zone = gcp.dataplex.Zone("basic_zone",
+            name="zone",
             location="us-west1",
             lake=basic_lake.name,
             type="RAW",
@@ -544,6 +547,7 @@ class Asset(pulumi.CustomResource):
             ),
             project="my-project-name")
         primary = gcp.dataplex.Asset("primary",
+            name="asset",
             location="us-west1",
             lake=basic_lake.name,
             dataplex_zone=basic_zone.name,
@@ -558,8 +562,7 @@ class Asset(pulumi.CustomResource):
                 "env": "foo",
                 "my-asset": "exists",
             },
-            project="my-project-name",
-            opts=pulumi.ResourceOptions(depends_on=[basic_bucket]))
+            project="my-project-name")
         ```
 
         ## Import
@@ -617,14 +620,17 @@ class Asset(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic_bucket = gcp.storage.Bucket("basicBucket",
+        basic_bucket = gcp.storage.Bucket("basic_bucket",
+            name="bucket",
             location="us-west1",
             uniform_bucket_level_access=True,
             project="my-project-name")
-        basic_lake = gcp.dataplex.Lake("basicLake",
+        basic_lake = gcp.dataplex.Lake("basic_lake",
+            name="lake",
             location="us-west1",
             project="my-project-name")
-        basic_zone = gcp.dataplex.Zone("basicZone",
+        basic_zone = gcp.dataplex.Zone("basic_zone",
+            name="zone",
             location="us-west1",
             lake=basic_lake.name,
             type="RAW",
@@ -636,6 +642,7 @@ class Asset(pulumi.CustomResource):
             ),
             project="my-project-name")
         primary = gcp.dataplex.Asset("primary",
+            name="asset",
             location="us-west1",
             lake=basic_lake.name,
             dataplex_zone=basic_zone.name,
@@ -650,8 +657,7 @@ class Asset(pulumi.CustomResource):
                 "env": "foo",
                 "my-asset": "exists",
             },
-            project="my-project-name",
-            opts=pulumi.ResourceOptions(depends_on=[basic_bucket]))
+            project="my-project-name")
         ```
 
         ## Import

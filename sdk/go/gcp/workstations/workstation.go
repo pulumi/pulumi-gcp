@@ -28,23 +28,25 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
+//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("workstation-cluster"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("workstation-cluster"),
 //				IpCidrRange: pulumi.String("10.0.0.0/24"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     defaultNetwork.Name,
-//			}, pulumi.Provider(google_beta))
+//				Network:     _default.Name,
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultWorkstationCluster, err := workstations.NewWorkstationCluster(ctx, "defaultWorkstationCluster", &workstations.WorkstationClusterArgs{
+//			defaultWorkstationCluster, err := workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
 //				WorkstationClusterId: pulumi.String("workstation-cluster"),
-//				Network:              defaultNetwork.ID(),
+//				Network:              _default.ID(),
 //				Subnetwork:           defaultSubnetwork.ID(),
 //				Location:             pulumi.String("us-central1"),
 //				Labels: pulumi.StringMap{
@@ -53,11 +55,11 @@ import (
 //				Annotations: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultWorkstationConfig, err := workstations.NewWorkstationConfig(ctx, "defaultWorkstationConfig", &workstations.WorkstationConfigArgs{
+//			defaultWorkstationConfig, err := workstations.NewWorkstationConfig(ctx, "default", &workstations.WorkstationConfigArgs{
 //				WorkstationConfigId:  pulumi.String("workstation-config"),
 //				WorkstationClusterId: defaultWorkstationCluster.WorkstationClusterId,
 //				Location:             pulumi.String("us-central1"),
@@ -68,11 +70,11 @@ import (
 //						DisablePublicIpAddresses: pulumi.Bool(true),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = workstations.NewWorkstation(ctx, "defaultWorkstation", &workstations.WorkstationArgs{
+//			_, err = workstations.NewWorkstation(ctx, "default", &workstations.WorkstationArgs{
 //				WorkstationId:        pulumi.String("work-station"),
 //				WorkstationConfigId:  defaultWorkstationConfig.WorkstationConfigId,
 //				WorkstationClusterId: defaultWorkstationCluster.WorkstationClusterId,
@@ -86,7 +88,7 @@ import (
 //				Annotations: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

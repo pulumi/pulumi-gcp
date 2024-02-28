@@ -52,6 +52,7 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var example = new LiteReservation(&#34;example&#34;, LiteReservationArgs.builder()        
+ *             .name(&#34;example-reservation&#34;)
  *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.number()))
  *             .throughputCapacity(2)
  *             .build());

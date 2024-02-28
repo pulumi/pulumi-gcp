@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.Compute
         /// {
         ///     var policy = Gcp.Compute.GetSubnetworkIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Project,
-        ///         Region = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Region,
-        ///         Subnetwork = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Name,
+        ///         Project = network_with_private_secondary_ip_ranges.Project,
+        ///         Region = network_with_private_secondary_ip_ranges.Region,
+        ///         Subnetwork = network_with_private_secondary_ip_ranges.Name,
         ///     });
         /// 
         /// });
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.Compute
         /// {
         ///     var policy = Gcp.Compute.GetSubnetworkIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Project,
-        ///         Region = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Region,
-        ///         Subnetwork = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Name,
+        ///         Project = network_with_private_secondary_ip_ranges.Project,
+        ///         Region = network_with_private_secondary_ip_ranges.Region,
+        ///         Subnetwork = network_with_private_secondary_ip_ranges.Name,
         ///     });
         /// 
         /// });

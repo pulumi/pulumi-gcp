@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var loggingLogViewProjectBucketConfig = new Gcp.Logging.ProjectBucketConfig("loggingLogViewProjectBucketConfig", new()
+    ///     var loggingLogView = new Gcp.Logging.ProjectBucketConfig("logging_log_view", new()
     ///     {
     ///         Project = "my-project-name",
     ///         Location = "global",
@@ -37,9 +37,10 @@ namespace Pulumi.Gcp.Logging
     ///         BucketId = "_Default",
     ///     });
     /// 
-    ///     var loggingLogViewLogView = new Gcp.Logging.LogView("loggingLogViewLogView", new()
+    ///     var loggingLogViewLogView = new Gcp.Logging.LogView("logging_log_view", new()
     ///     {
-    ///         Bucket = loggingLogViewProjectBucketConfig.Id,
+    ///         Name = "my-view",
+    ///         Bucket = loggingLogView.Id,
     ///         Description = "A logging view configured with Terraform",
     ///         Filter = "SOURCE(\"projects/myproject\") AND resource.type = \"gce_instance\" AND LOG_ID(\"stdout\")",
     ///     });

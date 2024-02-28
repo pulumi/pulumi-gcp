@@ -24,14 +24,12 @@ namespace Pulumi.Gcp.Compute
     ///     var @default = new Gcp.Compute.RegionSecurityPolicy("default", new()
     ///     {
     ///         Region = "us-west2",
+    ///         Name = "policyruletest",
     ///         Description = "basic region security policy",
     ///         Type = "CLOUD_ARMOR",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var policyRule = new Gcp.Compute.RegionSecurityPolicyRule("policyRule", new()
+    ///     var policyRule = new Gcp.Compute.RegionSecurityPolicyRule("policy_rule", new()
     ///     {
     ///         Region = "us-west2",
     ///         SecurityPolicy = @default.Name,
@@ -50,9 +48,6 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///         Action = "allow",
     ///         Preview = true,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -70,14 +65,12 @@ namespace Pulumi.Gcp.Compute
     ///     var @default = new Gcp.Compute.RegionSecurityPolicy("default", new()
     ///     {
     ///         Region = "us-west2",
+    ///         Name = "policywithmultiplerules",
     ///         Description = "basic region security policy",
     ///         Type = "CLOUD_ARMOR",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var policyRuleOne = new Gcp.Compute.RegionSecurityPolicyRule("policyRuleOne", new()
+    ///     var policyRuleOne = new Gcp.Compute.RegionSecurityPolicyRule("policy_rule_one", new()
     ///     {
     ///         Region = "us-west2",
     ///         SecurityPolicy = @default.Name,
@@ -96,12 +89,9 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///         Action = "allow",
     ///         Preview = true,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var policyRuleTwo = new Gcp.Compute.RegionSecurityPolicyRule("policyRuleTwo", new()
+    ///     var policyRuleTwo = new Gcp.Compute.RegionSecurityPolicyRule("policy_rule_two", new()
     ///     {
     ///         Region = "us-west2",
     ///         SecurityPolicy = @default.Name,
@@ -121,9 +111,6 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///         Action = "allow",
     ///         Preview = true,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -142,31 +129,28 @@ namespace Pulumi.Gcp.Compute
     ///     var policyddosprotection = new Gcp.Compute.RegionSecurityPolicy("policyddosprotection", new()
     ///     {
     ///         Region = "us-west2",
+    ///         Name = "policyddosprotection",
     ///         Description = "policy for activating network DDoS protection for the desired region",
     ///         Type = "CLOUD_ARMOR_NETWORK",
     ///         DdosProtectionConfig = new Gcp.Compute.Inputs.RegionSecurityPolicyDdosProtectionConfigArgs
     ///         {
     ///             DdosProtection = "ADVANCED_PREVIEW",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var edgeSecService = new Gcp.Compute.NetworkEdgeSecurityService("edgeSecService", new()
+    ///     var edgeSecService = new Gcp.Compute.NetworkEdgeSecurityService("edge_sec_service", new()
     ///     {
     ///         Region = "us-west2",
+    ///         Name = "edgesecservice",
     ///         Description = "linking policy to edge security service",
     ///         SecurityPolicy = policyddosprotection.SelfLink,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     // Add the desired policy and custom rule.
     ///     var policynetworkmatch = new Gcp.Compute.RegionSecurityPolicy("policynetworkmatch", new()
     ///     {
     ///         Region = "us-west2",
+    ///         Name = "policyfornetworkmatch",
     ///         Description = "region security policy for network match",
     ///         Type = "CLOUD_ARMOR_NETWORK",
     ///         UserDefinedFields = new[]
@@ -180,16 +164,9 @@ namespace Pulumi.Gcp.Compute
     ///                 Mask = "0x8F00",
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///         DependsOn = new[]
-    ///         {
-    ///             edgeSecService,
-    ///         },
     ///     });
     /// 
-    ///     var policyRuleNetworkMatch = new Gcp.Compute.RegionSecurityPolicyRule("policyRuleNetworkMatch", new()
+    ///     var policyRuleNetworkMatch = new Gcp.Compute.RegionSecurityPolicyRule("policy_rule_network_match", new()
     ///     {
     ///         Region = "us-west2",
     ///         SecurityPolicy = policynetworkmatch.Name,
@@ -215,9 +192,6 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///         Action = "allow",
     ///         Preview = true,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

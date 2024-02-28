@@ -43,6 +43,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;my-project&#34;)
+ *             .name(&#34;my-project&#34;)
  *             .orgId(&#34;123456789&#34;)
  *             .build());
  * 

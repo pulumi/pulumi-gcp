@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const ipAddress = new gcp.compute.Address("ipAddress", {});
+ * const ipAddress = new gcp.compute.Address("ip_address", {name: "my-address"});
  * ```
  * ### Address With Subnetwork
  *
@@ -41,13 +41,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
- * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ * const _default = new gcp.compute.Network("default", {name: "my-network"});
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "my-subnet",
  *     ipCidrRange: "10.0.0.0/16",
  *     region: "us-central1",
- *     network: defaultNetwork.id,
+ *     network: _default.id,
  * });
- * const internalWithSubnetAndAddress = new gcp.compute.Address("internalWithSubnetAndAddress", {
+ * const internalWithSubnetAndAddress = new gcp.compute.Address("internal_with_subnet_and_address", {
+ *     name: "my-internal-address",
  *     subnetwork: defaultSubnetwork.id,
  *     addressType: "INTERNAL",
  *     address: "10.0.42.42",
@@ -60,7 +62,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const internalWithGceEndpoint = new gcp.compute.Address("internalWithGceEndpoint", {
+ * const internalWithGceEndpoint = new gcp.compute.Address("internal_with_gce_endpoint", {
+ *     name: "my-internal-address-",
  *     addressType: "INTERNAL",
  *     purpose: "GCE_ENDPOINT",
  * });
@@ -71,12 +74,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const static = new gcp.compute.Address("static", {});
+ * const static = new gcp.compute.Address("static", {name: "ipv4-address"});
  * const debianImage = gcp.compute.getImage({
  *     family: "debian-11",
  *     project: "debian-cloud",
  * });
- * const instanceWithIp = new gcp.compute.Instance("instanceWithIp", {
+ * const instanceWithIp = new gcp.compute.Instance("instance_with_ip", {
+ *     name: "vm-instance",
  *     machineType: "f1-micro",
  *     zone: "us-central1-a",
  *     bootDisk: {
@@ -98,8 +102,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false});
+ * const network = new gcp.compute.Network("network", {
+ *     name: "test-network",
+ *     autoCreateSubnetworks: false,
+ * });
  * const ipsec_interconnect_address = new gcp.compute.Address("ipsec-interconnect-address", {
+ *     name: "test-address",
  *     addressType: "INTERNAL",
  *     purpose: "IPSEC_INTERCONNECT",
  *     address: "192.168.1.0",

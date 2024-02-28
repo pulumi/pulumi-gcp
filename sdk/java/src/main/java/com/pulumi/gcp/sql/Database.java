@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new DatabaseInstance(&#34;instance&#34;, DatabaseInstanceArgs.builder()        
+ *             .name(&#34;my-database-instance&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .databaseVersion(&#34;MYSQL_8_0&#34;)
  *             .settings(DatabaseInstanceSettingsArgs.builder()
@@ -54,6 +55,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
+ *             .name(&#34;my-database&#34;)
  *             .instance(instance.name())
  *             .build());
  * 
@@ -86,6 +88,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new DatabaseInstance(&#34;instance&#34;, DatabaseInstanceArgs.builder()        
+ *             .name(&#34;my-database-instance&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .databaseVersion(&#34;POSTGRES_14&#34;)
  *             .settings(DatabaseInstanceSettingsArgs.builder()
@@ -95,6 +98,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var databaseDeletionPolicy = new Database(&#34;databaseDeletionPolicy&#34;, DatabaseArgs.builder()        
+ *             .name(&#34;my-database&#34;)
  *             .instance(instance.name())
  *             .deletionPolicy(&#34;ABANDON&#34;)
  *             .build());

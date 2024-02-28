@@ -27,6 +27,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := logging.NewBillingAccountExclusion(ctx, "my-exclusion", &logging.BillingAccountExclusionArgs{
+//				Name:           pulumi.String("my-instance-debug-exclusion"),
 //				BillingAccount: pulumi.String("ABCDEF-012345-GHIJKL"),
 //				Description:    pulumi.String("Exclude GCE instance debug logs"),
 //				Filter:         pulumi.String("resource.type = gce_instance AND severity <= DEBUG"),

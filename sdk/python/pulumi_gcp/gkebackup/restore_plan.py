@@ -426,6 +426,7 @@ class RestorePlan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
+            name="restore-all-ns-cluster",
             location="us-central1",
             initial_node_count=1,
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
@@ -440,6 +441,7 @@ class RestorePlan(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
+            name="restore-all-ns",
             cluster=primary.id,
             location="us-central1",
             backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
@@ -447,7 +449,8 @@ class RestorePlan(pulumi.CustomResource):
                 include_secrets=True,
                 all_namespaces=True,
             ))
-        all_ns = gcp.gkebackup.RestorePlan("allNs",
+        all_ns = gcp.gkebackup.RestorePlan("all_ns",
+            name="restore-all-ns",
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
@@ -468,6 +471,7 @@ class RestorePlan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
+            name="rollback-ns-cluster",
             location="us-central1",
             initial_node_count=1,
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
@@ -482,6 +486,7 @@ class RestorePlan(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
+            name="rollback-ns",
             cluster=primary.id,
             location="us-central1",
             backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
@@ -489,7 +494,8 @@ class RestorePlan(pulumi.CustomResource):
                 include_secrets=True,
                 all_namespaces=True,
             ))
-        rollback_ns = gcp.gkebackup.RestorePlan("rollbackNs",
+        rollback_ns = gcp.gkebackup.RestorePlan("rollback_ns",
+            name="rollback-ns-rp",
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
@@ -521,6 +527,7 @@ class RestorePlan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
+            name="rollback-app-cluster",
             location="us-central1",
             initial_node_count=1,
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
@@ -535,6 +542,7 @@ class RestorePlan(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
+            name="rollback-app",
             cluster=primary.id,
             location="us-central1",
             backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
@@ -542,7 +550,8 @@ class RestorePlan(pulumi.CustomResource):
                 include_secrets=True,
                 all_namespaces=True,
             ))
-        rollback_app = gcp.gkebackup.RestorePlan("rollbackApp",
+        rollback_app = gcp.gkebackup.RestorePlan("rollback_app",
+            name="rollback-app-rp",
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
@@ -567,6 +576,7 @@ class RestorePlan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
+            name="all-groupkinds-cluster",
             location="us-central1",
             initial_node_count=1,
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
@@ -581,6 +591,7 @@ class RestorePlan(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
+            name="all-groupkinds",
             cluster=primary.id,
             location="us-central1",
             backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
@@ -588,7 +599,8 @@ class RestorePlan(pulumi.CustomResource):
                 include_secrets=True,
                 all_namespaces=True,
             ))
-        all_cluster_resources = gcp.gkebackup.RestorePlan("allClusterResources",
+        all_cluster_resources = gcp.gkebackup.RestorePlan("all_cluster_resources",
+            name="all-groupkinds-rp",
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
@@ -608,6 +620,7 @@ class RestorePlan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
+            name="rename-ns-cluster",
             location="us-central1",
             initial_node_count=1,
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
@@ -622,6 +635,7 @@ class RestorePlan(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
+            name="rename-ns",
             cluster=primary.id,
             location="us-central1",
             backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
@@ -629,7 +643,8 @@ class RestorePlan(pulumi.CustomResource):
                 include_secrets=True,
                 all_namespaces=True,
             ))
-        rename_ns = gcp.gkebackup.RestorePlan("renameNs",
+        rename_ns = gcp.gkebackup.RestorePlan("rename_ns",
+            name="rename-ns-rp",
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
@@ -678,6 +693,7 @@ class RestorePlan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
+            name="transform-rule-cluster",
             location="us-central1",
             initial_node_count=1,
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
@@ -692,6 +708,7 @@ class RestorePlan(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
+            name="transform-rule",
             cluster=primary.id,
             location="us-central1",
             backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
@@ -699,7 +716,8 @@ class RestorePlan(pulumi.CustomResource):
                 include_secrets=True,
                 all_namespaces=True,
             ))
-        transform_rule = gcp.gkebackup.RestorePlan("transformRule",
+        transform_rule = gcp.gkebackup.RestorePlan("transform_rule",
+            name="transform-rule-rp",
             description="copy nginx env variables",
             labels={
                 "app": "nginx",
@@ -804,6 +822,7 @@ class RestorePlan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
+            name="restore-all-ns-cluster",
             location="us-central1",
             initial_node_count=1,
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
@@ -818,6 +837,7 @@ class RestorePlan(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
+            name="restore-all-ns",
             cluster=primary.id,
             location="us-central1",
             backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
@@ -825,7 +845,8 @@ class RestorePlan(pulumi.CustomResource):
                 include_secrets=True,
                 all_namespaces=True,
             ))
-        all_ns = gcp.gkebackup.RestorePlan("allNs",
+        all_ns = gcp.gkebackup.RestorePlan("all_ns",
+            name="restore-all-ns",
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
@@ -846,6 +867,7 @@ class RestorePlan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
+            name="rollback-ns-cluster",
             location="us-central1",
             initial_node_count=1,
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
@@ -860,6 +882,7 @@ class RestorePlan(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
+            name="rollback-ns",
             cluster=primary.id,
             location="us-central1",
             backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
@@ -867,7 +890,8 @@ class RestorePlan(pulumi.CustomResource):
                 include_secrets=True,
                 all_namespaces=True,
             ))
-        rollback_ns = gcp.gkebackup.RestorePlan("rollbackNs",
+        rollback_ns = gcp.gkebackup.RestorePlan("rollback_ns",
+            name="rollback-ns-rp",
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
@@ -899,6 +923,7 @@ class RestorePlan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
+            name="rollback-app-cluster",
             location="us-central1",
             initial_node_count=1,
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
@@ -913,6 +938,7 @@ class RestorePlan(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
+            name="rollback-app",
             cluster=primary.id,
             location="us-central1",
             backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
@@ -920,7 +946,8 @@ class RestorePlan(pulumi.CustomResource):
                 include_secrets=True,
                 all_namespaces=True,
             ))
-        rollback_app = gcp.gkebackup.RestorePlan("rollbackApp",
+        rollback_app = gcp.gkebackup.RestorePlan("rollback_app",
+            name="rollback-app-rp",
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
@@ -945,6 +972,7 @@ class RestorePlan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
+            name="all-groupkinds-cluster",
             location="us-central1",
             initial_node_count=1,
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
@@ -959,6 +987,7 @@ class RestorePlan(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
+            name="all-groupkinds",
             cluster=primary.id,
             location="us-central1",
             backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
@@ -966,7 +995,8 @@ class RestorePlan(pulumi.CustomResource):
                 include_secrets=True,
                 all_namespaces=True,
             ))
-        all_cluster_resources = gcp.gkebackup.RestorePlan("allClusterResources",
+        all_cluster_resources = gcp.gkebackup.RestorePlan("all_cluster_resources",
+            name="all-groupkinds-rp",
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
@@ -986,6 +1016,7 @@ class RestorePlan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
+            name="rename-ns-cluster",
             location="us-central1",
             initial_node_count=1,
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
@@ -1000,6 +1031,7 @@ class RestorePlan(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
+            name="rename-ns",
             cluster=primary.id,
             location="us-central1",
             backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
@@ -1007,7 +1039,8 @@ class RestorePlan(pulumi.CustomResource):
                 include_secrets=True,
                 all_namespaces=True,
             ))
-        rename_ns = gcp.gkebackup.RestorePlan("renameNs",
+        rename_ns = gcp.gkebackup.RestorePlan("rename_ns",
+            name="rename-ns-rp",
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
@@ -1056,6 +1089,7 @@ class RestorePlan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
+            name="transform-rule-cluster",
             location="us-central1",
             initial_node_count=1,
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
@@ -1070,6 +1104,7 @@ class RestorePlan(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
+            name="transform-rule",
             cluster=primary.id,
             location="us-central1",
             backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
@@ -1077,7 +1112,8 @@ class RestorePlan(pulumi.CustomResource):
                 include_secrets=True,
                 all_namespaces=True,
             ))
-        transform_rule = gcp.gkebackup.RestorePlan("transformRule",
+        transform_rule = gcp.gkebackup.RestorePlan("transform_rule",
+            name="transform-rule-rp",
             description="copy nginx env variables",
             labels={
                 "app": "nginx",

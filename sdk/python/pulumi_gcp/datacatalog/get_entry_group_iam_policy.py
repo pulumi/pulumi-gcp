@@ -109,7 +109,7 @@ def get_entry_group_iam_policy(entry_group: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.datacatalog.get_entry_group_iam_policy(entry_group=google_data_catalog_entry_group["basic_entry_group"]["name"])
+    policy = gcp.datacatalog.get_entry_group_iam_policy(entry_group=basic_entry_group["name"])
     ```
 
 
@@ -147,7 +147,7 @@ def get_entry_group_iam_policy_output(entry_group: Optional[pulumi.Input[str]] =
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.datacatalog.get_entry_group_iam_policy(entry_group=google_data_catalog_entry_group["basic_entry_group"]["name"])
+    policy = gcp.datacatalog.get_entry_group_iam_policy(entry_group=basic_entry_group["name"])
     ```
 
 

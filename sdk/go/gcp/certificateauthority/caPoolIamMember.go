@@ -57,7 +57,7 @@ import (
 //				return err
 //			}
 //			_, err = certificateauthority.NewCaPoolIamPolicy(ctx, "policy", &certificateauthority.CaPoolIamPolicyArgs{
-//				CaPool:     pulumi.Any(google_privateca_ca_pool.Default.Id),
+//				CaPool:     pulumi.Any(_default.Id),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -103,7 +103,7 @@ import (
 //				return err
 //			}
 //			_, err = certificateauthority.NewCaPoolIamPolicy(ctx, "policy", &certificateauthority.CaPoolIamPolicyArgs{
-//				CaPool:     pulumi.Any(google_privateca_ca_pool.Default.Id),
+//				CaPool:     pulumi.Any(_default.Id),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -129,7 +129,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := certificateauthority.NewCaPoolIamBinding(ctx, "binding", &certificateauthority.CaPoolIamBindingArgs{
-//				CaPool: pulumi.Any(google_privateca_ca_pool.Default.Id),
+//				CaPool: pulumi.Any(_default.Id),
 //				Role:   pulumi.String("roles/privateca.certificateManager"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -159,7 +159,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := certificateauthority.NewCaPoolIamBinding(ctx, "binding", &certificateauthority.CaPoolIamBindingArgs{
-//				CaPool: pulumi.Any(google_privateca_ca_pool.Default.Id),
+//				CaPool: pulumi.Any(_default.Id),
 //				Role:   pulumi.String("roles/privateca.certificateManager"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -193,7 +193,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := certificateauthority.NewCaPoolIamMember(ctx, "member", &certificateauthority.CaPoolIamMemberArgs{
-//				CaPool: pulumi.Any(google_privateca_ca_pool.Default.Id),
+//				CaPool: pulumi.Any(_default.Id),
 //				Role:   pulumi.String("roles/privateca.certificateManager"),
 //				Member: pulumi.String("user:jane@example.com"),
 //			})
@@ -221,7 +221,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := certificateauthority.NewCaPoolIamMember(ctx, "member", &certificateauthority.CaPoolIamMemberArgs{
-//				CaPool: pulumi.Any(google_privateca_ca_pool.Default.Id),
+//				CaPool: pulumi.Any(_default.Id),
 //				Role:   pulumi.String("roles/privateca.certificateManager"),
 //				Member: pulumi.String("user:jane@example.com"),
 //				Condition: &certificateauthority.CaPoolIamMemberConditionArgs{

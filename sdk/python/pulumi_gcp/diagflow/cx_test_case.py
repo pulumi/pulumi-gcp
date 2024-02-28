@@ -379,7 +379,7 @@ class CxTestCase(pulumi.CustomResource):
                     )],
                 ),
             )])
-        basic_test_case = gcp.diagflow.CxTestCase("basicTestCase",
+        basic_test_case = gcp.diagflow.CxTestCase("basic_test_case",
             parent=agent.id,
             display_name="MyTestCase",
             tags=["#tag1"],
@@ -398,14 +398,14 @@ class CxTestCase(pulumi.CustomResource):
                             ),
                         ),
                         injected_parameters=json.dumps({
-                            "some_param": "1",
+                            "someParam": "1",
                         }),
                         is_webhook_enabled=True,
                         enable_sentiment_analysis=True,
                     ),
                     virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs(
                         session_parameters=json.dumps({
-                            "some_param": "1",
+                            "someParam": "1",
                         }),
                         triggered_intent=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs(
                             name=intent.id,
@@ -554,7 +554,7 @@ class CxTestCase(pulumi.CustomResource):
                     )],
                 ),
             )])
-        basic_test_case = gcp.diagflow.CxTestCase("basicTestCase",
+        basic_test_case = gcp.diagflow.CxTestCase("basic_test_case",
             parent=agent.id,
             display_name="MyTestCase",
             tags=["#tag1"],
@@ -573,14 +573,14 @@ class CxTestCase(pulumi.CustomResource):
                             ),
                         ),
                         injected_parameters=json.dumps({
-                            "some_param": "1",
+                            "someParam": "1",
                         }),
                         is_webhook_enabled=True,
                         enable_sentiment_analysis=True,
                     ),
                     virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs(
                         session_parameters=json.dumps({
-                            "some_param": "1",
+                            "someParam": "1",
                         }),
                         triggered_intent=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs(
                             name=intent.id,

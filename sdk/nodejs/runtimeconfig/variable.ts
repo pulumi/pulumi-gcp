@@ -13,9 +13,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my_runtime_config = new gcp.runtimeconfig.Config("my-runtime-config", {description: "Runtime configuration values for my service"});
+ * const my_runtime_config = new gcp.runtimeconfig.Config("my-runtime-config", {
+ *     name: "my-service-runtime-config",
+ *     description: "Runtime configuration values for my service",
+ * });
  * const environment = new gcp.runtimeconfig.Variable("environment", {
  *     parent: my_runtime_config.name,
+ *     name: "prod-variables/hostname",
  *     text: "example.com",
  * });
  * ```
@@ -27,13 +31,19 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
  *
- * const my_runtime_config = new gcp.runtimeconfig.Config("my-runtime-config", {description: "Runtime configuration values for my service"});
+ * const my_runtime_config = new gcp.runtimeconfig.Config("my-runtime-config", {
+ *     name: "my-service-runtime-config",
+ *     description: "Runtime configuration values for my service",
+ * });
  * const my_secret = new gcp.runtimeconfig.Variable("my-secret", {
  *     parent: my_runtime_config.name,
- *     value: fs.readFileSync("my-encrypted-secret.dat", { encoding: "base64" }),
+ *     name: "secret",
+ *     value: std.filebase64({
+ *         input: "my-encrypted-secret.dat",
+ *     }).then(invoke => invoke.result),
  * });
  * ```
  *

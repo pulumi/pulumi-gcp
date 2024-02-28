@@ -40,9 +40,9 @@ public final class Cloudbuildv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = Cloudbuildv2Functions.getConnectionIamPolicy(GetConnectionIamPolicyArgs.builder()
-     *             .project(google_cloudbuildv2_connection.my-connection().project())
-     *             .location(google_cloudbuildv2_connection.my-connection().location())
-     *             .name(google_cloudbuildv2_connection.my-connection().name())
+     *             .project(my_connection.project())
+     *             .location(my_connection.location())
+     *             .name(my_connection.name())
      *             .build());
      * 
      *     }
@@ -79,9 +79,9 @@ public final class Cloudbuildv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = Cloudbuildv2Functions.getConnectionIamPolicy(GetConnectionIamPolicyArgs.builder()
-     *             .project(google_cloudbuildv2_connection.my-connection().project())
-     *             .location(google_cloudbuildv2_connection.my-connection().location())
-     *             .name(google_cloudbuildv2_connection.my-connection().name())
+     *             .project(my_connection.project())
+     *             .location(my_connection.location())
+     *             .name(my_connection.name())
      *             .build());
      * 
      *     }
@@ -118,9 +118,9 @@ public final class Cloudbuildv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = Cloudbuildv2Functions.getConnectionIamPolicy(GetConnectionIamPolicyArgs.builder()
-     *             .project(google_cloudbuildv2_connection.my-connection().project())
-     *             .location(google_cloudbuildv2_connection.my-connection().location())
-     *             .name(google_cloudbuildv2_connection.my-connection().name())
+     *             .project(my_connection.project())
+     *             .location(my_connection.location())
+     *             .name(my_connection.name())
      *             .build());
      * 
      *     }
@@ -157,9 +157,9 @@ public final class Cloudbuildv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = Cloudbuildv2Functions.getConnectionIamPolicy(GetConnectionIamPolicyArgs.builder()
-     *             .project(google_cloudbuildv2_connection.my-connection().project())
-     *             .location(google_cloudbuildv2_connection.my-connection().location())
-     *             .name(google_cloudbuildv2_connection.my-connection().name())
+     *             .project(my_connection.project())
+     *             .location(my_connection.location())
+     *             .name(my_connection.name())
      *             .build());
      * 
      *     }

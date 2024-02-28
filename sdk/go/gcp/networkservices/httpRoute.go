@@ -28,6 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networkservices.NewHttpRoute(ctx, "default", &networkservices.HttpRouteArgs{
+//				Name: pulumi.String("my-http-route"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -50,7 +51,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -74,6 +75,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networkservices.NewHttpRoute(ctx, "default", &networkservices.HttpRouteArgs{
+//				Name: pulumi.String("my-http-route"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -185,7 +187,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -209,6 +211,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networkservices.NewHttpRoute(ctx, "default", &networkservices.HttpRouteArgs{
+//				Name: pulumi.String("my-http-route"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -293,7 +296,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -316,16 +319,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultMesh, err := networkservices.NewMesh(ctx, "defaultMesh", &networkservices.MeshArgs{
+//			_, err := networkservices.NewMesh(ctx, "default", &networkservices.MeshArgs{
+//				Name: pulumi.String("my-http-route"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
 //				Description: pulumi.String("my description"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networkservices.NewHttpRoute(ctx, "defaultHttpRoute", &networkservices.HttpRouteArgs{
+//			_, err = networkservices.NewHttpRoute(ctx, "default", &networkservices.HttpRouteArgs{
+//				Name: pulumi.String("my-http-route"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -334,7 +339,7 @@ import (
 //					pulumi.String("example"),
 //				},
 //				Meshes: pulumi.StringArray{
-//					defaultMesh.ID(),
+//					_default.ID(),
 //				},
 //				Rules: networkservices.HttpRouteRuleArray{
 //					&networkservices.HttpRouteRuleArgs{
@@ -351,7 +356,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

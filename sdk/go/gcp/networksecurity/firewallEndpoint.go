@@ -28,12 +28,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networksecurity.NewFirewallEndpoint(ctx, "default", &networksecurity.FirewallEndpointArgs{
+//				Name:     pulumi.String("my-firewall-endpoint"),
 //				Parent:   pulumi.String("organizations/123456789"),
 //				Location: pulumi.String("us-central1-a"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

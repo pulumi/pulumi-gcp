@@ -109,7 +109,7 @@ def get_certificate_template_iam_policy(certificate_template: Optional[str] = No
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.certificateauthority.get_certificate_template_iam_policy(certificate_template=google_privateca_certificate_template["default"]["id"])
+    policy = gcp.certificateauthority.get_certificate_template_iam_policy(certificate_template=default["id"])
     ```
 
 
@@ -147,7 +147,7 @@ def get_certificate_template_iam_policy_output(certificate_template: Optional[pu
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.certificateauthority.get_certificate_template_iam_policy(certificate_template=google_privateca_certificate_template["default"]["id"])
+    policy = gcp.certificateauthority.get_certificate_template_iam_policy(certificate_template=default["id"])
     ```
 
 

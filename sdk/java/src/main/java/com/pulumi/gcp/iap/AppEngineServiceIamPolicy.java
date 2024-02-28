@@ -62,9 +62,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AppEngineServiceIamPolicy(&#34;policy&#34;, AppEngineServiceIamPolicyArgs.builder()        
- *             .project(google_app_engine_standard_app_version.version().project())
- *             .appId(google_app_engine_standard_app_version.version().project())
- *             .service(google_app_engine_standard_app_version.version().service())
+ *             .project(version.project())
+ *             .appId(version.project())
+ *             .service(version.service())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -109,9 +109,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AppEngineServiceIamPolicy(&#34;policy&#34;, AppEngineServiceIamPolicyArgs.builder()        
- *             .project(google_app_engine_standard_app_version.version().project())
- *             .appId(google_app_engine_standard_app_version.version().project())
- *             .service(google_app_engine_standard_app_version.version().service())
+ *             .project(version.project())
+ *             .appId(version.project())
+ *             .service(version.service())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -141,11 +141,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new AppEngineServiceIamBinding(&#34;binding&#34;, AppEngineServiceIamBindingArgs.builder()        
- *             .appId(google_app_engine_standard_app_version.version().project())
- *             .members(&#34;user:jane@example.com&#34;)
- *             .project(google_app_engine_standard_app_version.version().project())
+ *             .project(version.project())
+ *             .appId(version.project())
+ *             .service(version.service())
  *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
- *             .service(google_app_engine_standard_app_version.version().service())
+ *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
  * 
  *     }
@@ -176,16 +176,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new AppEngineServiceIamBinding(&#34;binding&#34;, AppEngineServiceIamBindingArgs.builder()        
- *             .appId(google_app_engine_standard_app_version.version().project())
+ *             .project(version.project())
+ *             .appId(version.project())
+ *             .service(version.service())
+ *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
  *             .condition(AppEngineServiceIamBindingConditionArgs.builder()
+ *                 .title(&#34;expires_after_2019_12_31&#34;)
  *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
  *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
- *                 .title(&#34;expires_after_2019_12_31&#34;)
  *                 .build())
- *             .members(&#34;user:jane@example.com&#34;)
- *             .project(google_app_engine_standard_app_version.version().project())
- *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
- *             .service(google_app_engine_standard_app_version.version().service())
  *             .build());
  * 
  *     }
@@ -214,11 +214,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new AppEngineServiceIamMember(&#34;member&#34;, AppEngineServiceIamMemberArgs.builder()        
- *             .appId(google_app_engine_standard_app_version.version().project())
- *             .member(&#34;user:jane@example.com&#34;)
- *             .project(google_app_engine_standard_app_version.version().project())
+ *             .project(version.project())
+ *             .appId(version.project())
+ *             .service(version.service())
  *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
- *             .service(google_app_engine_standard_app_version.version().service())
+ *             .member(&#34;user:jane@example.com&#34;)
  *             .build());
  * 
  *     }
@@ -249,16 +249,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new AppEngineServiceIamMember(&#34;member&#34;, AppEngineServiceIamMemberArgs.builder()        
- *             .appId(google_app_engine_standard_app_version.version().project())
+ *             .project(version.project())
+ *             .appId(version.project())
+ *             .service(version.service())
+ *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
  *             .condition(AppEngineServiceIamMemberConditionArgs.builder()
+ *                 .title(&#34;expires_after_2019_12_31&#34;)
  *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
  *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
- *                 .title(&#34;expires_after_2019_12_31&#34;)
  *                 .build())
- *             .member(&#34;user:jane@example.com&#34;)
- *             .project(google_app_engine_standard_app_version.version().project())
- *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
- *             .service(google_app_engine_standard_app_version.version().service())
  *             .build());
  * 
  *     }

@@ -29,6 +29,7 @@ namespace Pulumi.Gcp.VMwareEngine
     /// {
     ///     var external_access_rule_nw = new Gcp.VMwareEngine.Network("external-access-rule-nw", new()
     ///     {
+    ///         Name = "sample-nw",
     ///         Location = "global",
     ///         Type = "STANDARD",
     ///         Description = "PC network description.",
@@ -37,12 +38,14 @@ namespace Pulumi.Gcp.VMwareEngine
     ///     var external_access_rule_np = new Gcp.VMwareEngine.NetworkPolicy("external-access-rule-np", new()
     ///     {
     ///         Location = "us-west1",
+    ///         Name = "sample-np",
     ///         EdgeServicesCidr = "192.168.30.0/26",
     ///         VmwareEngineNetwork = external_access_rule_nw.Id,
     ///     });
     /// 
     ///     var vmw_engine_external_access_rule = new Gcp.VMwareEngine.ExternalAccessRule("vmw-engine-external-access-rule", new()
     ///     {
+    ///         Name = "sample-external-access-rule",
     ///         Parent = external_access_rule_np.Id,
     ///         Priority = 101,
     ///         Action = "DENY",
@@ -85,6 +88,7 @@ namespace Pulumi.Gcp.VMwareEngine
     /// {
     ///     var external_access_rule_nw = new Gcp.VMwareEngine.Network("external-access-rule-nw", new()
     ///     {
+    ///         Name = "sample-nw",
     ///         Location = "global",
     ///         Type = "STANDARD",
     ///         Description = "PC network description.",
@@ -93,6 +97,7 @@ namespace Pulumi.Gcp.VMwareEngine
     ///     var external_access_rule_pc = new Gcp.VMwareEngine.PrivateCloud("external-access-rule-pc", new()
     ///     {
     ///         Location = "us-west1-a",
+    ///         Name = "sample-pc",
     ///         Description = "Sample test PC.",
     ///         NetworkConfig = new Gcp.VMwareEngine.Inputs.PrivateCloudNetworkConfigArgs
     ///         {
@@ -116,18 +121,21 @@ namespace Pulumi.Gcp.VMwareEngine
     ///     var external_access_rule_np = new Gcp.VMwareEngine.NetworkPolicy("external-access-rule-np", new()
     ///     {
     ///         Location = "us-west1",
+    ///         Name = "sample-np",
     ///         EdgeServicesCidr = "192.168.30.0/26",
     ///         VmwareEngineNetwork = external_access_rule_nw.Id,
     ///     });
     /// 
     ///     var external_access_rule_ea = new Gcp.VMwareEngine.ExternalAddress("external-access-rule-ea", new()
     ///     {
+    ///         Name = "sample-ea",
     ///         Parent = external_access_rule_pc.Id,
     ///         InternalIp = "192.168.0.65",
     ///     });
     /// 
     ///     var vmw_engine_external_access_rule = new Gcp.VMwareEngine.ExternalAccessRule("vmw-engine-external-access-rule", new()
     ///     {
+    ///         Name = "sample-external-access-rule",
     ///         Parent = external_access_rule_np.Id,
     ///         Description = "Sample Description",
     ///         Priority = 101,

@@ -347,12 +347,12 @@ class AiFeatureGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        sample_dataset = gcp.bigquery.Dataset("sampleDataset",
+        sample_dataset = gcp.bigquery.Dataset("sample_dataset",
             dataset_id="job_load_dataset",
             friendly_name="test",
             description="This is a test description",
             location="US")
-        sample_table = gcp.bigquery.Table("sampleTable",
+        sample_table = gcp.bigquery.Table("sample_table",
             deletion_protection=False,
             dataset_id=sample_dataset.dataset_id,
             table_id="job_load_table",
@@ -369,7 +369,8 @@ class AiFeatureGroup(pulumi.CustomResource):
             }
         ]
         \"\"\")
-        feature_group = gcp.vertex.AiFeatureGroup("featureGroup",
+        feature_group = gcp.vertex.AiFeatureGroup("feature_group",
+            name="example_feature_group",
             description="A sample feature group",
             region="us-central1",
             labels={
@@ -448,12 +449,12 @@ class AiFeatureGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        sample_dataset = gcp.bigquery.Dataset("sampleDataset",
+        sample_dataset = gcp.bigquery.Dataset("sample_dataset",
             dataset_id="job_load_dataset",
             friendly_name="test",
             description="This is a test description",
             location="US")
-        sample_table = gcp.bigquery.Table("sampleTable",
+        sample_table = gcp.bigquery.Table("sample_table",
             deletion_protection=False,
             dataset_id=sample_dataset.dataset_id,
             table_id="job_load_table",
@@ -470,7 +471,8 @@ class AiFeatureGroup(pulumi.CustomResource):
             }
         ]
         \"\"\")
-        feature_group = gcp.vertex.AiFeatureGroup("featureGroup",
+        feature_group = gcp.vertex.AiFeatureGroup("feature_group",
+            name="example_feature_group",
             description="A sample feature group",
             region="us-central1",
             labels={

@@ -595,15 +595,16 @@ class RegionCommitment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         foobar = gcp.compute.RegionCommitment("foobar",
+            name="my-region-commitment",
             plan="THIRTY_SIX_MONTH",
             resources=[
                 gcp.compute.RegionCommitmentResourceArgs(
-                    amount="4",
                     type="VCPU",
+                    amount="4",
                 ),
                 gcp.compute.RegionCommitmentResourceArgs(
-                    amount="9",
                     type="MEMORY",
+                    amount="9",
                 ),
             ])
         ```
@@ -614,21 +615,22 @@ class RegionCommitment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         foobar = gcp.compute.RegionCommitment("foobar",
-            auto_renew=True,
-            category="MACHINE",
+            name="my-full-commitment",
             description="some description",
             plan="THIRTY_SIX_MONTH",
+            type="MEMORY_OPTIMIZED",
+            category="MACHINE",
+            auto_renew=True,
             resources=[
                 gcp.compute.RegionCommitmentResourceArgs(
-                    amount="4",
                     type="VCPU",
+                    amount="4",
                 ),
                 gcp.compute.RegionCommitmentResourceArgs(
-                    amount="9",
                     type="MEMORY",
+                    amount="9",
                 ),
-            ],
-            type="MEMORY_OPTIMIZED")
+            ])
         ```
 
         ## Import
@@ -725,15 +727,16 @@ class RegionCommitment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         foobar = gcp.compute.RegionCommitment("foobar",
+            name="my-region-commitment",
             plan="THIRTY_SIX_MONTH",
             resources=[
                 gcp.compute.RegionCommitmentResourceArgs(
-                    amount="4",
                     type="VCPU",
+                    amount="4",
                 ),
                 gcp.compute.RegionCommitmentResourceArgs(
-                    amount="9",
                     type="MEMORY",
+                    amount="9",
                 ),
             ])
         ```
@@ -744,21 +747,22 @@ class RegionCommitment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         foobar = gcp.compute.RegionCommitment("foobar",
-            auto_renew=True,
-            category="MACHINE",
+            name="my-full-commitment",
             description="some description",
             plan="THIRTY_SIX_MONTH",
+            type="MEMORY_OPTIMIZED",
+            category="MACHINE",
+            auto_renew=True,
             resources=[
                 gcp.compute.RegionCommitmentResourceArgs(
-                    amount="4",
                     type="VCPU",
+                    amount="4",
                 ),
                 gcp.compute.RegionCommitmentResourceArgs(
-                    amount="9",
                     type="MEMORY",
+                    amount="9",
                 ),
-            ],
-            type="MEMORY_OPTIMIZED")
+            ])
         ```
 
         ## Import

@@ -25,7 +25,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.artifactregistry.VpcscConfig;
  * import com.pulumi.gcp.artifactregistry.VpcscConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -42,9 +41,7 @@ import javax.annotation.Nullable;
  *         var my_config = new VpcscConfig(&#34;my-config&#34;, VpcscConfigArgs.builder()        
  *             .location(&#34;us-central1&#34;)
  *             .vpcscPolicy(&#34;ALLOW&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

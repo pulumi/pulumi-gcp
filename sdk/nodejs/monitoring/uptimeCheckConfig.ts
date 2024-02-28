@@ -23,38 +23,38 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const http = new gcp.monitoring.UptimeCheckConfig("http", {
- *     checkerType: "STATIC_IP_CHECKERS",
- *     contentMatchers: [{
- *         content: "\"example\"",
- *         jsonPathMatcher: {
- *             jsonMatcher: "EXACT_MATCH",
- *             jsonPath: "$.path",
- *         },
- *         matcher: "MATCHES_JSON_PATH",
- *     }],
  *     displayName: "http-uptime-check",
- *     httpCheck: {
- *         body: "Zm9vJTI1M0RiYXI=",
- *         contentType: "USER_PROVIDED",
- *         customContentType: "application/json",
- *         path: "some-path",
- *         pingConfig: {
- *             pingsCount: 1,
- *         },
- *         port: 8010,
- *         requestMethod: "POST",
- *     },
- *     monitoredResource: {
- *         labels: {
- *             host: "192.168.1.1",
- *             projectId: "my-project-name",
- *         },
- *         type: "uptime_url",
- *     },
  *     timeout: "60s",
  *     userLabels: {
  *         "example-key": "example-value",
  *     },
+ *     httpCheck: {
+ *         path: "some-path",
+ *         port: 8010,
+ *         requestMethod: "POST",
+ *         contentType: "USER_PROVIDED",
+ *         customContentType: "application/json",
+ *         body: "Zm9vJTI1M0RiYXI=",
+ *         pingConfig: {
+ *             pingsCount: 1,
+ *         },
+ *     },
+ *     monitoredResource: {
+ *         type: "uptime_url",
+ *         labels: {
+ *             project_id: "my-project-name",
+ *             host: "192.168.1.1",
+ *         },
+ *     },
+ *     contentMatchers: [{
+ *         content: "\"example\"",
+ *         matcher: "MATCHES_JSON_PATH",
+ *         jsonPathMatcher: {
+ *             jsonPath: "$.path",
+ *             jsonMatcher: "EXACT_MATCH",
+ *         },
+ *     }],
+ *     checkerType: "STATIC_IP_CHECKERS",
  * });
  * ```
  * ### Uptime Check Config Status Code
@@ -63,18 +63,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const statusCode = new gcp.monitoring.UptimeCheckConfig("statusCode", {
- *     checkerType: "STATIC_IP_CHECKERS",
- *     contentMatchers: [{
- *         content: "\"example\"",
- *         jsonPathMatcher: {
- *             jsonMatcher: "EXACT_MATCH",
- *             jsonPath: "$.path",
- *         },
- *         matcher: "MATCHES_JSON_PATH",
- *     }],
+ * const statusCode = new gcp.monitoring.UptimeCheckConfig("status_code", {
  *     displayName: "http-uptime-check",
+ *     timeout: "60s",
  *     httpCheck: {
+ *         path: "some-path",
+ *         port: 8010,
+ *         requestMethod: "POST",
+ *         contentType: "URL_ENCODED",
+ *         body: "Zm9vJTI1M0RiYXI=",
  *         acceptedResponseStatusCodes: [
  *             {
  *                 statusClass: "STATUS_CLASS_2XX",
@@ -86,20 +83,23 @@ import * as utilities from "../utilities";
  *                 statusValue: 302,
  *             },
  *         ],
- *         body: "Zm9vJTI1M0RiYXI=",
- *         contentType: "URL_ENCODED",
- *         path: "some-path",
- *         port: 8010,
- *         requestMethod: "POST",
  *     },
  *     monitoredResource: {
- *         labels: {
- *             host: "192.168.1.1",
- *             projectId: "my-project-name",
- *         },
  *         type: "uptime_url",
+ *         labels: {
+ *             project_id: "my-project-name",
+ *             host: "192.168.1.1",
+ *         },
  *     },
- *     timeout: "60s",
+ *     contentMatchers: [{
+ *         content: "\"example\"",
+ *         matcher: "MATCHES_JSON_PATH",
+ *         jsonPathMatcher: {
+ *             jsonPath: "$.path",
+ *             jsonMatcher: "EXACT_MATCH",
+ *         },
+ *     }],
+ *     checkerType: "STATIC_IP_CHECKERS",
  * });
  * ```
  * ### Uptime Check Config Https
@@ -109,15 +109,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const https = new gcp.monitoring.UptimeCheckConfig("https", {
- *     contentMatchers: [{
- *         content: "example",
- *         jsonPathMatcher: {
- *             jsonMatcher: "REGEX_MATCH",
- *             jsonPath: "$.path",
- *         },
- *         matcher: "MATCHES_JSON_PATH",
- *     }],
  *     displayName: "https-uptime-check",
+ *     timeout: "60s",
  *     httpCheck: {
  *         path: "/some-path",
  *         port: 443,
@@ -125,13 +118,20 @@ import * as utilities from "../utilities";
  *         validateSsl: true,
  *     },
  *     monitoredResource: {
- *         labels: {
- *             host: "192.168.1.1",
- *             projectId: "my-project-name",
- *         },
  *         type: "uptime_url",
+ *         labels: {
+ *             project_id: "my-project-name",
+ *             host: "192.168.1.1",
+ *         },
  *     },
- *     timeout: "60s",
+ *     contentMatchers: [{
+ *         content: "example",
+ *         matcher: "MATCHES_JSON_PATH",
+ *         jsonPathMatcher: {
+ *             jsonPath: "$.path",
+ *             jsonMatcher: "REGEX_MATCH",
+ *         },
+ *     }],
  * });
  * ```
  * ### Uptime Check Tcp
@@ -144,7 +144,7 @@ import * as utilities from "../utilities";
  *     displayName: "uptime-check-group",
  *     filter: "resource.metadata.name=has_substring(\"foo\")",
  * });
- * const tcpGroup = new gcp.monitoring.UptimeCheckConfig("tcpGroup", {
+ * const tcpGroup = new gcp.monitoring.UptimeCheckConfig("tcp_group", {
  *     displayName: "tcp-uptime-check",
  *     timeout: "60s",
  *     tcpCheck: {
@@ -166,15 +166,17 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "my-project-name-gcf-source",
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  * });
  * const object = new gcp.storage.BucketObject("object", {
+ *     name: "function-source.zip",
  *     bucket: bucket.name,
  *     source: new pulumi.asset.FileAsset("synthetic-fn-source.zip"),
  * });
- * // Add path to the zipped function source code
  * const _function = new gcp.cloudfunctionsv2.Function("function", {
+ *     name: "synthetic_function",
  *     location: "us-central1",
  *     buildConfig: {
  *         runtime: "nodejs16",
@@ -192,7 +194,7 @@ import * as utilities from "../utilities";
  *         timeoutSeconds: 60,
  *     },
  * });
- * const syntheticMonitor = new gcp.monitoring.UptimeCheckConfig("syntheticMonitor", {
+ * const syntheticMonitor = new gcp.monitoring.UptimeCheckConfig("synthetic_monitor", {
  *     displayName: "synthetic_monitor",
  *     timeout: "60s",
  *     syntheticMonitor: {

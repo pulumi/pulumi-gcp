@@ -28,8 +28,6 @@ import * as utilities from "../utilities";
  * const _default = new gcp.firebase.AppCheckServiceConfig("default", {
  *     project: "my-project-name",
  *     serviceId: "firestore.googleapis.com",
- * }, {
- *     dependsOn: [appcheck],
  * });
  * ```
  * ### Firebase App Check Service Config Enforced
@@ -47,8 +45,6 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  *     serviceId: "firebasestorage.googleapis.com",
  *     enforcementMode: "ENFORCED",
- * }, {
- *     dependsOn: [appcheck],
  * });
  * ```
  * ### Firebase App Check Service Config Unenforced
@@ -66,8 +62,6 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  *     serviceId: "firebasedatabase.googleapis.com",
  *     enforcementMode: "UNENFORCED",
- * }, {
- *     dependsOn: [appcheck],
  * });
  * ```
  *

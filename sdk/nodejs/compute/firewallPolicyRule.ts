@@ -15,7 +15,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basicGlobalNetworksecurityAddressGroup = new gcp.networksecurity.AddressGroup("basicGlobalNetworksecurityAddressGroup", {
+ * const basicGlobalNetworksecurityAddressGroup = new gcp.networksecurity.AddressGroup("basic_global_networksecurity_address_group", {
+ *     name: "policy",
  *     parent: "organizations/123456789",
  *     description: "Sample global networksecurity_address_group",
  *     location: "global",

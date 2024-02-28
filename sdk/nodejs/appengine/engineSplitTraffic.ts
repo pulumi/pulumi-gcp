@@ -20,12 +20,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const bucket = new gcp.storage.Bucket("bucket", {location: "US"});
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "appengine-static-content",
+ *     location: "US",
+ * });
  * const object = new gcp.storage.BucketObject("object", {
+ *     name: "hello-world.zip",
  *     bucket: bucket.name,
  *     source: new pulumi.asset.FileAsset("./test-fixtures/hello-world.zip"),
  * });
- * const liveappV1 = new gcp.appengine.StandardAppVersion("liveappV1", {
+ * const liveappV1 = new gcp.appengine.StandardAppVersion("liveapp_v1", {
  *     versionId: "v1",
  *     service: "liveapp",
  *     deleteServiceOnDestroy: true,
@@ -42,7 +46,7 @@ import * as utilities from "../utilities";
  *         port: "8080",
  *     },
  * });
- * const liveappV2 = new gcp.appengine.StandardAppVersion("liveappV2", {
+ * const liveappV2 = new gcp.appengine.StandardAppVersion("liveapp_v2", {
  *     versionId: "v2",
  *     service: "liveapp",
  *     noopOnDestroy: true,

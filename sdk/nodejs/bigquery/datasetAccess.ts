@@ -29,10 +29,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _private = new gcp.bigquery.Dataset("private", {datasetId: "example_dataset"});
- * const publicDataset = new gcp.bigquery.Dataset("publicDataset", {datasetId: "example_dataset2"});
- * const publicTable = new gcp.bigquery.Table("publicTable", {
+ * const _public = new gcp.bigquery.Dataset("public", {datasetId: "example_dataset2"});
+ * const publicTable = new gcp.bigquery.Table("public", {
  *     deletionProtection: false,
- *     datasetId: publicDataset.datasetId,
+ *     datasetId: _public.datasetId,
  *     tableId: "example_table",
  *     view: {
  *         query: "SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  *     datasetId: _private.datasetId,
  *     view: {
  *         projectId: publicTable.project,
- *         datasetId: publicDataset.datasetId,
+ *         datasetId: _public.datasetId,
  *         tableId: publicTable.tableId,
  *     },
  * });
@@ -73,12 +73,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const publicDataset = new gcp.bigquery.Dataset("publicDataset", {
+ * const _public = new gcp.bigquery.Dataset("public", {
  *     datasetId: "public_dataset",
  *     description: "This dataset is public",
  * });
- * const publicRoutine = new gcp.bigquery.Routine("publicRoutine", {
- *     datasetId: publicDataset.datasetId,
+ * const publicRoutine = new gcp.bigquery.Routine("public", {
+ *     datasetId: _public.datasetId,
  *     routineId: "public_routine",
  *     routineType: "TABLE_VALUED_FUNCTION",
  *     language: "SQL",
@@ -103,7 +103,7 @@ import * as utilities from "../utilities";
  *     datasetId: "private_dataset",
  *     description: "This dataset is private",
  * });
- * const authorizedRoutine = new gcp.bigquery.DatasetAccess("authorizedRoutine", {
+ * const authorizedRoutine = new gcp.bigquery.DatasetAccess("authorized_routine", {
  *     datasetId: _private.datasetId,
  *     routine: {
  *         projectId: publicRoutine.project,

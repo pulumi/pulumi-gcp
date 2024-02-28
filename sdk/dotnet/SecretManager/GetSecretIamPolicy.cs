@@ -28,8 +28,8 @@ namespace Pulumi.Gcp.SecretManager
         /// {
         ///     var policy = Gcp.SecretManager.GetSecretIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_secret_manager_secret.Secret_basic.Project,
-        ///         SecretId = google_secret_manager_secret.Secret_basic.Secret_id,
+        ///         Project = secret_basic.Project,
+        ///         SecretId = secret_basic.SecretId,
         ///     });
         /// 
         /// });
@@ -55,8 +55,8 @@ namespace Pulumi.Gcp.SecretManager
         /// {
         ///     var policy = Gcp.SecretManager.GetSecretIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_secret_manager_secret.Secret_basic.Project,
-        ///         SecretId = google_secret_manager_secret.Secret_basic.Secret_id,
+        ///         Project = secret_basic.Project,
+        ///         SecretId = secret_basic.SecretId,
         ///     });
         /// 
         /// });

@@ -33,13 +33,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.SnapshotArgs;
  * import com.pulumi.gcp.compute.RegionDisk;
  * import com.pulumi.gcp.compute.RegionDiskArgs;
- * import com.pulumi.gcp.compute.RegionDiskResourcePolicyAttachment;
- * import com.pulumi.gcp.compute.RegionDiskResourcePolicyAttachmentArgs;
  * import com.pulumi.gcp.compute.ResourcePolicy;
  * import com.pulumi.gcp.compute.ResourcePolicyArgs;
  * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyArgs;
  * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs;
  * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs;
+ * import com.pulumi.gcp.compute.RegionDiskResourcePolicyAttachment;
+ * import com.pulumi.gcp.compute.RegionDiskResourcePolicyAttachmentArgs;
  * import com.pulumi.gcp.compute.ComputeFunctions;
  * import com.pulumi.gcp.compute.inputs.GetImageArgs;
  * import java.util.List;
@@ -56,6 +56,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var disk = new Disk(&#34;disk&#34;, DiskArgs.builder()        
+ *             .name(&#34;my-base-disk&#34;)
  *             .image(&#34;debian-cloud/debian-11&#34;)
  *             .size(50)
  *             .type(&#34;pd-ssd&#34;)
@@ -63,11 +64,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var snapdisk = new Snapshot(&#34;snapdisk&#34;, SnapshotArgs.builder()        
+ *             .name(&#34;my-snapshot&#34;)
  *             .sourceDisk(disk.name())
  *             .zone(&#34;us-central1-a&#34;)
  *             .build());
  * 
  *         var ssd = new RegionDisk(&#34;ssd&#34;, RegionDiskArgs.builder()        
+ *             .name(&#34;my-disk&#34;)
  *             .replicaZones(            
  *                 &#34;us-central1-a&#34;,
  *                 &#34;us-central1-f&#34;)
@@ -77,12 +80,8 @@ import javax.annotation.Nullable;
  *             .region(&#34;us-central1&#34;)
  *             .build());
  * 
- *         var attachment = new RegionDiskResourcePolicyAttachment(&#34;attachment&#34;, RegionDiskResourcePolicyAttachmentArgs.builder()        
- *             .disk(ssd.name())
- *             .region(&#34;us-central1&#34;)
- *             .build());
- * 
  *         var policy = new ResourcePolicy(&#34;policy&#34;, ResourcePolicyArgs.builder()        
+ *             .name(&#34;my-resource-policy&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .snapshotSchedulePolicy(ResourcePolicySnapshotSchedulePolicyArgs.builder()
  *                 .schedule(ResourcePolicySnapshotSchedulePolicyScheduleArgs.builder()
@@ -92,6 +91,12 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
+ *             .build());
+ * 
+ *         var attachment = new RegionDiskResourcePolicyAttachment(&#34;attachment&#34;, RegionDiskResourcePolicyAttachmentArgs.builder()        
+ *             .name(policy.name())
+ *             .disk(ssd.name())
+ *             .region(&#34;us-central1&#34;)
  *             .build());
  * 
  *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()

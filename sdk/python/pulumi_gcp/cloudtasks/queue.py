@@ -335,7 +335,9 @@ class Queue(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.cloudtasks.Queue("default", location="us-central1")
+        default = gcp.cloudtasks.Queue("default",
+            name="cloud-tasks-queue-test",
+            location="us-central1")
         ```
         ### Cloud Tasks Queue Advanced
 
@@ -343,23 +345,24 @@ class Queue(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        advanced_configuration = gcp.cloudtasks.Queue("advancedConfiguration",
+        advanced_configuration = gcp.cloudtasks.Queue("advanced_configuration",
+            name="instance-name",
+            location="us-central1",
             app_engine_routing_override=gcp.cloudtasks.QueueAppEngineRoutingOverrideArgs(
-                instance="test",
                 service="worker",
                 version="1.0",
+                instance="test",
             ),
-            location="us-central1",
             rate_limits=gcp.cloudtasks.QueueRateLimitsArgs(
                 max_concurrent_dispatches=3,
                 max_dispatches_per_second=2,
             ),
             retry_config=gcp.cloudtasks.QueueRetryConfigArgs(
                 max_attempts=5,
-                max_backoff="3s",
-                max_doublings=1,
                 max_retry_duration="4s",
+                max_backoff="3s",
                 min_backoff="2s",
+                max_doublings=1,
             ),
             stackdriver_logging_config=gcp.cloudtasks.QueueStackdriverLoggingConfigArgs(
                 sampling_ratio=0.9,
@@ -431,7 +434,9 @@ class Queue(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.cloudtasks.Queue("default", location="us-central1")
+        default = gcp.cloudtasks.Queue("default",
+            name="cloud-tasks-queue-test",
+            location="us-central1")
         ```
         ### Cloud Tasks Queue Advanced
 
@@ -439,23 +444,24 @@ class Queue(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        advanced_configuration = gcp.cloudtasks.Queue("advancedConfiguration",
+        advanced_configuration = gcp.cloudtasks.Queue("advanced_configuration",
+            name="instance-name",
+            location="us-central1",
             app_engine_routing_override=gcp.cloudtasks.QueueAppEngineRoutingOverrideArgs(
-                instance="test",
                 service="worker",
                 version="1.0",
+                instance="test",
             ),
-            location="us-central1",
             rate_limits=gcp.cloudtasks.QueueRateLimitsArgs(
                 max_concurrent_dispatches=3,
                 max_dispatches_per_second=2,
             ),
             retry_config=gcp.cloudtasks.QueueRetryConfigArgs(
                 max_attempts=5,
-                max_backoff="3s",
-                max_doublings=1,
                 max_retry_duration="4s",
+                max_backoff="3s",
                 min_backoff="2s",
+                max_doublings=1,
             ),
             stackdriver_logging_config=gcp.cloudtasks.QueueStackdriverLoggingConfigArgs(
                 sampling_ratio=0.9,

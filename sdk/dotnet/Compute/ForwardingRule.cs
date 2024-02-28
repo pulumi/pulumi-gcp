@@ -21,6 +21,595 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
     /// 
     /// ## Example Usage
+    /// ### Internal Http Lb With Mig Backend
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Internal HTTP load balancer with a managed instance group backend
+    ///     // VPC network
+    ///     var ilbNetwork = new Gcp.Compute.Network("ilb_network", new()
+    ///     {
+    ///         Name = "l7-ilb-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     // proxy-only subnet
+    ///     var proxySubnet = new Gcp.Compute.Subnetwork("proxy_subnet", new()
+    ///     {
+    ///         Name = "l7-ilb-proxy-subnet",
+    ///         IpCidrRange = "10.0.0.0/24",
+    ///         Region = "europe-west1",
+    ///         Purpose = "REGIONAL_MANAGED_PROXY",
+    ///         Role = "ACTIVE",
+    ///         Network = ilbNetwork.Id,
+    ///     });
+    /// 
+    ///     // backend subnet
+    ///     var ilbSubnet = new Gcp.Compute.Subnetwork("ilb_subnet", new()
+    ///     {
+    ///         Name = "l7-ilb-subnet",
+    ///         IpCidrRange = "10.0.1.0/24",
+    ///         Region = "europe-west1",
+    ///         Network = ilbNetwork.Id,
+    ///     });
+    /// 
+    ///     // health check
+    ///     var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("default", new()
+    ///     {
+    ///         Name = "l7-ilb-hc",
+    ///         Region = "europe-west1",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             PortSpecification = "USE_SERVING_PORT",
+    ///         },
+    ///     });
+    /// 
+    ///     // instance template
+    ///     var instanceTemplate = new Gcp.Compute.InstanceTemplate("instance_template", new()
+    ///     {
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///             {
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     null,
+    ///                 },
+    ///                 Network = ilbNetwork.Id,
+    ///                 Subnetwork = ilbSubnet.Id,
+    ///             },
+    ///         },
+    ///         Name = "l7-ilb-mig-template",
+    ///         MachineType = "e2-small",
+    ///         Tags = new[]
+    ///         {
+    ///             "http-server",
+    ///         },
+    ///         Disks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///             {
+    ///                 SourceImage = "debian-cloud/debian-10",
+    ///                 AutoDelete = true,
+    ///                 Boot = true,
+    ///             },
+    ///         },
+    ///         Metadata = 
+    ///         {
+    ///             { "startup-script", @"#! /bin/bash
+    /// set -euo pipefail
+    /// 
+    /// export DEBIAN_FRONTEND=noninteractive
+    /// apt-get update
+    /// apt-get install -y nginx-light jq
+    /// 
+    /// NAME=$(curl -H ""Metadata-Flavor: Google"" ""http://metadata.google.internal/computeMetadata/v1/instance/hostname"")
+    /// IP=$(curl -H ""Metadata-Flavor: Google"" ""http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip"")
+    /// METADATA=$(curl -f -H ""Metadata-Flavor: Google"" ""http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True"" | jq 'del(.[""startup-script""])')
+    /// 
+    /// cat &lt;&lt;EOF &gt; /var/www/html/index.html
+    /// &lt;pre&gt;
+    /// Name: $NAME
+    /// IP: $IP
+    /// Metadata: $METADATA
+    /// &lt;/pre&gt;
+    /// EOF
+    /// " },
+    ///         },
+    ///     });
+    /// 
+    ///     // MIG
+    ///     var mig = new Gcp.Compute.RegionInstanceGroupManager("mig", new()
+    ///     {
+    ///         Name = "l7-ilb-mig1",
+    ///         Region = "europe-west1",
+    ///         Versions = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
+    ///             {
+    ///                 InstanceTemplate = instanceTemplate.Id,
+    ///                 Name = "primary",
+    ///             },
+    ///         },
+    ///         BaseInstanceName = "vm",
+    ///         TargetSize = 2,
+    ///     });
+    /// 
+    ///     // backend service
+    ///     var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         Name = "l7-ilb-backend-subnet",
+    ///         Region = "europe-west1",
+    ///         Protocol = "HTTP",
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         TimeoutSec = 10,
+    ///         HealthChecks = defaultRegionHealthCheck.Id,
+    ///         Backends = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionBackendServiceBackendArgs
+    ///             {
+    ///                 Group = mig.InstanceGroup,
+    ///                 BalancingMode = "UTILIZATION",
+    ///                 CapacityScaler = 1,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // URL map
+    ///     var defaultRegionUrlMap = new Gcp.Compute.RegionUrlMap("default", new()
+    ///     {
+    ///         Name = "l7-ilb-regional-url-map",
+    ///         Region = "europe-west1",
+    ///         DefaultService = defaultRegionBackendService.Id,
+    ///     });
+    /// 
+    ///     // HTTP target proxy
+    ///     var @default = new Gcp.Compute.RegionTargetHttpProxy("default", new()
+    ///     {
+    ///         Name = "l7-ilb-target-http-proxy",
+    ///         Region = "europe-west1",
+    ///         UrlMap = defaultRegionUrlMap.Id,
+    ///     });
+    /// 
+    ///     // forwarding rule
+    ///     var googleComputeForwardingRule = new Gcp.Compute.ForwardingRule("google_compute_forwarding_rule", new()
+    ///     {
+    ///         Name = "l7-ilb-forwarding-rule",
+    ///         Region = "europe-west1",
+    ///         IpProtocol = "TCP",
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         PortRange = "80",
+    ///         Target = @default.Id,
+    ///         Network = ilbNetwork.Id,
+    ///         Subnetwork = ilbSubnet.Id,
+    ///         NetworkTier = "PREMIUM",
+    ///     });
+    /// 
+    ///     // allow all access from IAP and health check ranges
+    ///     var fw_iap = new Gcp.Compute.Firewall("fw-iap", new()
+    ///     {
+    ///         Name = "l7-ilb-fw-allow-iap-hc",
+    ///         Direction = "INGRESS",
+    ///         Network = ilbNetwork.Id,
+    ///         SourceRanges = new[]
+    ///         {
+    ///             "130.211.0.0/22",
+    ///             "35.191.0.0/16",
+    ///             "35.235.240.0/20",
+    ///         },
+    ///         Allows = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // allow http from proxy subnet to backends
+    ///     var fw_ilb_to_backends = new Gcp.Compute.Firewall("fw-ilb-to-backends", new()
+    ///     {
+    ///         Name = "l7-ilb-fw-allow-ilb-to-backends",
+    ///         Direction = "INGRESS",
+    ///         Network = ilbNetwork.Id,
+    ///         SourceRanges = new[]
+    ///         {
+    ///             "10.0.0.0/24",
+    ///         },
+    ///         TargetTags = new[]
+    ///         {
+    ///             "http-server",
+    ///         },
+    ///         Allows = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///                 Ports = new[]
+    ///                 {
+    ///                     "80",
+    ///                     "443",
+    ///                     "8080",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // test instance
+    ///     var vm_test = new Gcp.Compute.Instance("vm-test", new()
+    ///     {
+    ///         Name = "l7-ilb-test-vm",
+    ///         Zone = "europe-west1-b",
+    ///         MachineType = "e2-small",
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 Network = ilbNetwork.Id,
+    ///                 Subnetwork = ilbSubnet.Id,
+    ///             },
+    ///         },
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///         {
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///             {
+    ///                 Image = "debian-cloud/debian-10",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Internal Tcp Udp Lb With Mig Backend
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Internal TCP/UDP load balancer with a managed instance group backend
+    ///     // VPC
+    ///     var ilbNetwork = new Gcp.Compute.Network("ilb_network", new()
+    ///     {
+    ///         Name = "l4-ilb-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     // backed subnet
+    ///     var ilbSubnet = new Gcp.Compute.Subnetwork("ilb_subnet", new()
+    ///     {
+    ///         Name = "l4-ilb-subnet",
+    ///         IpCidrRange = "10.0.1.0/24",
+    ///         Region = "europe-west1",
+    ///         Network = ilbNetwork.Id,
+    ///     });
+    /// 
+    ///     // health check
+    ///     var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("default", new()
+    ///     {
+    ///         Name = "l4-ilb-hc",
+    ///         Region = "europe-west1",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     // instance template
+    ///     var instanceTemplate = new Gcp.Compute.InstanceTemplate("instance_template", new()
+    ///     {
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///             {
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     null,
+    ///                 },
+    ///                 Network = ilbNetwork.Id,
+    ///                 Subnetwork = ilbSubnet.Id,
+    ///             },
+    ///         },
+    ///         Name = "l4-ilb-mig-template",
+    ///         MachineType = "e2-small",
+    ///         Tags = new[]
+    ///         {
+    ///             "allow-ssh",
+    ///             "allow-health-check",
+    ///         },
+    ///         Disks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///             {
+    ///                 SourceImage = "debian-cloud/debian-10",
+    ///                 AutoDelete = true,
+    ///                 Boot = true,
+    ///             },
+    ///         },
+    ///         Metadata = 
+    ///         {
+    ///             { "startup-script", @"#! /bin/bash
+    /// set -euo pipefail
+    /// 
+    /// export DEBIAN_FRONTEND=noninteractive
+    /// apt-get update
+    /// apt-get install -y nginx-light jq
+    /// 
+    /// NAME=$(curl -H ""Metadata-Flavor: Google"" ""http://metadata.google.internal/computeMetadata/v1/instance/hostname"")
+    /// IP=$(curl -H ""Metadata-Flavor: Google"" ""http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip"")
+    /// METADATA=$(curl -f -H ""Metadata-Flavor: Google"" ""http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True"" | jq 'del(.[""startup-script""])')
+    /// 
+    /// cat &lt;&lt;EOF &gt; /var/www/html/index.html
+    /// &lt;pre&gt;
+    /// Name: $NAME
+    /// IP: $IP
+    /// Metadata: $METADATA
+    /// &lt;/pre&gt;
+    /// EOF
+    /// " },
+    ///         },
+    ///     });
+    /// 
+    ///     // MIG
+    ///     var mig = new Gcp.Compute.RegionInstanceGroupManager("mig", new()
+    ///     {
+    ///         Name = "l4-ilb-mig1",
+    ///         Region = "europe-west1",
+    ///         Versions = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
+    ///             {
+    ///                 InstanceTemplate = instanceTemplate.Id,
+    ///                 Name = "primary",
+    ///             },
+    ///         },
+    ///         BaseInstanceName = "vm",
+    ///         TargetSize = 2,
+    ///     });
+    /// 
+    ///     // backend service
+    ///     var @default = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         Name = "l4-ilb-backend-subnet",
+    ///         Region = "europe-west1",
+    ///         Protocol = "TCP",
+    ///         LoadBalancingScheme = "INTERNAL",
+    ///         HealthChecks = defaultRegionHealthCheck.Id,
+    ///         Backends = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionBackendServiceBackendArgs
+    ///             {
+    ///                 Group = mig.InstanceGroup,
+    ///                 BalancingMode = "CONNECTION",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // forwarding rule
+    ///     var googleComputeForwardingRule = new Gcp.Compute.ForwardingRule("google_compute_forwarding_rule", new()
+    ///     {
+    ///         Name = "l4-ilb-forwarding-rule",
+    ///         BackendService = @default.Id,
+    ///         Region = "europe-west1",
+    ///         IpProtocol = "TCP",
+    ///         LoadBalancingScheme = "INTERNAL",
+    ///         AllPorts = true,
+    ///         AllowGlobalAccess = true,
+    ///         Network = ilbNetwork.Id,
+    ///         Subnetwork = ilbSubnet.Id,
+    ///     });
+    /// 
+    ///     // allow all access from health check ranges
+    ///     var fwHc = new Gcp.Compute.Firewall("fw_hc", new()
+    ///     {
+    ///         Name = "l4-ilb-fw-allow-hc",
+    ///         Direction = "INGRESS",
+    ///         Network = ilbNetwork.Id,
+    ///         SourceRanges = new[]
+    ///         {
+    ///             "130.211.0.0/22",
+    ///             "35.191.0.0/16",
+    ///             "35.235.240.0/20",
+    ///         },
+    ///         Allows = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///             },
+    ///         },
+    ///         TargetTags = new[]
+    ///         {
+    ///             "allow-health-check",
+    ///         },
+    ///     });
+    /// 
+    ///     // allow communication within the subnet 
+    ///     var fwIlbToBackends = new Gcp.Compute.Firewall("fw_ilb_to_backends", new()
+    ///     {
+    ///         Name = "l4-ilb-fw-allow-ilb-to-backends",
+    ///         Direction = "INGRESS",
+    ///         Network = ilbNetwork.Id,
+    ///         SourceRanges = new[]
+    ///         {
+    ///             "10.0.1.0/24",
+    ///         },
+    ///         Allows = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///             },
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "udp",
+    ///             },
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "icmp",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // allow SSH
+    ///     var fwIlbSsh = new Gcp.Compute.Firewall("fw_ilb_ssh", new()
+    ///     {
+    ///         Name = "l4-ilb-fw-ssh",
+    ///         Direction = "INGRESS",
+    ///         Network = ilbNetwork.Id,
+    ///         Allows = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///                 Ports = new[]
+    ///                 {
+    ///                     "22",
+    ///                 },
+    ///             },
+    ///         },
+    ///         TargetTags = new[]
+    ///         {
+    ///             "allow-ssh",
+    ///         },
+    ///         SourceRanges = new[]
+    ///         {
+    ///             "0.0.0.0/0",
+    ///         },
+    ///     });
+    /// 
+    ///     // test instance
+    ///     var vmTest = new Gcp.Compute.Instance("vm_test", new()
+    ///     {
+    ///         Name = "l4-ilb-test-vm",
+    ///         Zone = "europe-west1-b",
+    ///         MachineType = "e2-small",
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 Network = ilbNetwork.Id,
+    ///                 Subnetwork = ilbSubnet.Id,
+    ///             },
+    ///         },
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///         {
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///             {
+    ///                 Image = "debian-cloud/debian-10",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Forwarding Rule Externallb
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var hc = new Gcp.Compute.RegionHealthCheck("hc", new()
+    ///     {
+    ///         Name = "check-website-backend",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///         Region = "us-central1",
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var backend = new Gcp.Compute.RegionBackendService("backend", new()
+    ///     {
+    ///         Name = "website-backend",
+    ///         Region = "us-central1",
+    ///         LoadBalancingScheme = "EXTERNAL",
+    ///         HealthChecks = hc.Id,
+    ///     });
+    /// 
+    ///     // Forwarding rule for External Network Load Balancing using Backend Services
+    ///     var @default = new Gcp.Compute.ForwardingRule("default", new()
+    ///     {
+    ///         Name = "website-forwarding-rule",
+    ///         Region = "us-central1",
+    ///         PortRange = "80",
+    ///         BackendService = backend.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Forwarding Rule Global Internallb
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var hc = new Gcp.Compute.HealthCheck("hc", new()
+    ///     {
+    ///         Name = "check-website-backend",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var backend = new Gcp.Compute.RegionBackendService("backend", new()
+    ///     {
+    ///         Name = "website-backend",
+    ///         Region = "us-central1",
+    ///         HealthChecks = hc.Id,
+    ///     });
+    /// 
+    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "website-net",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "website-net",
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///         Region = "us-central1",
+    ///         Network = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     // Forwarding rule for Internal Load Balancing
+    ///     var @default = new Gcp.Compute.ForwardingRule("default", new()
+    ///     {
+    ///         Name = "website-forwarding-rule",
+    ///         Region = "us-central1",
+    ///         LoadBalancingScheme = "INTERNAL",
+    ///         BackendService = backend.Id,
+    ///         AllPorts = true,
+    ///         AllowGlobalAccess = true,
+    ///         Network = defaultNetwork.Name,
+    ///         Subnetwork = defaultSubnetwork.Name,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Forwarding Rule Basic
     /// 
     /// ```csharp
@@ -31,12 +620,867 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultTargetPool = new Gcp.Compute.TargetPool("defaultTargetPool");
-    /// 
-    ///     var defaultForwardingRule = new Gcp.Compute.ForwardingRule("defaultForwardingRule", new()
+    ///     var defaultTargetPool = new Gcp.Compute.TargetPool("default", new()
     ///     {
+    ///         Name = "website-target-pool",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.ForwardingRule("default", new()
+    ///     {
+    ///         Name = "website-forwarding-rule",
     ///         Target = defaultTargetPool.Id,
     ///         PortRange = "80",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Forwarding Rule L3 Default
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var healthCheck = new Gcp.Compute.RegionHealthCheck("health_check", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         Region = "us-central1",
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var service = new Gcp.Compute.RegionBackendService("service", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "service",
+    ///         HealthChecks = healthCheck.Id,
+    ///         Protocol = "UNSPECIFIED",
+    ///         LoadBalancingScheme = "EXTERNAL",
+    ///     });
+    /// 
+    ///     var fwdRule = new Gcp.Compute.ForwardingRule("fwd_rule", new()
+    ///     {
+    ///         Name = "l3-forwarding-rule",
+    ///         BackendService = service.Id,
+    ///         IpProtocol = "L3_DEFAULT",
+    ///         AllPorts = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Forwarding Rule Internallb
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var hc = new Gcp.Compute.HealthCheck("hc", new()
+    ///     {
+    ///         Name = "check-website-backend",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var backend = new Gcp.Compute.RegionBackendService("backend", new()
+    ///     {
+    ///         Name = "website-backend",
+    ///         Region = "us-central1",
+    ///         HealthChecks = hc.Id,
+    ///     });
+    /// 
+    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "website-net",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "website-net",
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///         Region = "us-central1",
+    ///         Network = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     // Forwarding rule for Internal Load Balancing
+    ///     var @default = new Gcp.Compute.ForwardingRule("default", new()
+    ///     {
+    ///         Name = "website-forwarding-rule",
+    ///         Region = "us-central1",
+    ///         LoadBalancingScheme = "INTERNAL",
+    ///         BackendService = backend.Id,
+    ///         AllPorts = true,
+    ///         Network = defaultNetwork.Name,
+    ///         Subnetwork = defaultSubnetwork.Name,
+    ///         IpVersion = "IPV4",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Forwarding Rule Http Lb
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var debianImage = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "website-net",
+    ///         AutoCreateSubnetworks = false,
+    ///         RoutingMode = "REGIONAL",
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "website-net-default",
+    ///         IpCidrRange = "10.1.2.0/24",
+    ///         Region = "us-central1",
+    ///         Network = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var instanceTemplate = new Gcp.Compute.InstanceTemplate("instance_template", new()
+    ///     {
+    ///         Name = "template-website-backend",
+    ///         MachineType = "e2-medium",
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///             {
+    ///                 Network = defaultNetwork.Id,
+    ///                 Subnetwork = defaultSubnetwork.Id,
+    ///             },
+    ///         },
+    ///         Disks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///             {
+    ///                 SourceImage = debianImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///                 AutoDelete = true,
+    ///                 Boot = true,
+    ///             },
+    ///         },
+    ///         Tags = new[]
+    ///         {
+    ///             "allow-ssh",
+    ///             "load-balanced-backend",
+    ///         },
+    ///     });
+    /// 
+    ///     var rigm = new Gcp.Compute.RegionInstanceGroupManager("rigm", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "website-rigm",
+    ///         Versions = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
+    ///             {
+    ///                 InstanceTemplate = instanceTemplate.Id,
+    ///                 Name = "primary",
+    ///             },
+    ///         },
+    ///         BaseInstanceName = "internal-glb",
+    ///         TargetSize = 1,
+    ///     });
+    /// 
+    ///     var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "website-hc",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             PortSpecification = "USE_SERVING_PORT",
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         Backends = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionBackendServiceBackendArgs
+    ///             {
+    ///                 Group = rigm.InstanceGroup,
+    ///                 BalancingMode = "UTILIZATION",
+    ///                 CapacityScaler = 1,
+    ///             },
+    ///         },
+    ///         Region = "us-central1",
+    ///         Name = "website-backend",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         HealthChecks = defaultRegionHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var defaultRegionUrlMap = new Gcp.Compute.RegionUrlMap("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "website-map",
+    ///         DefaultService = defaultRegionBackendService.Id,
+    ///     });
+    /// 
+    ///     var defaultRegionTargetHttpProxy = new Gcp.Compute.RegionTargetHttpProxy("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "website-proxy",
+    ///         UrlMap = defaultRegionUrlMap.Id,
+    ///     });
+    /// 
+    ///     // Forwarding rule for Internal Load Balancing
+    ///     var @default = new Gcp.Compute.ForwardingRule("default", new()
+    ///     {
+    ///         Name = "website-forwarding-rule",
+    ///         Region = "us-central1",
+    ///         IpProtocol = "TCP",
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         PortRange = "80",
+    ///         Target = defaultRegionTargetHttpProxy.Id,
+    ///         Network = defaultNetwork.Id,
+    ///         Subnetwork = defaultSubnetwork.Id,
+    ///         NetworkTier = "PREMIUM",
+    ///     });
+    /// 
+    ///     var fw1 = new Gcp.Compute.Firewall("fw1", new()
+    ///     {
+    ///         Name = "website-fw-1",
+    ///         Network = defaultNetwork.Id,
+    ///         SourceRanges = new[]
+    ///         {
+    ///             "10.1.2.0/24",
+    ///         },
+    ///         Allows = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///             },
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "udp",
+    ///             },
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "icmp",
+    ///             },
+    ///         },
+    ///         Direction = "INGRESS",
+    ///     });
+    /// 
+    ///     var fw2 = new Gcp.Compute.Firewall("fw2", new()
+    ///     {
+    ///         Name = "website-fw-2",
+    ///         Network = defaultNetwork.Id,
+    ///         SourceRanges = new[]
+    ///         {
+    ///             "0.0.0.0/0",
+    ///         },
+    ///         Allows = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///                 Ports = new[]
+    ///                 {
+    ///                     "22",
+    ///                 },
+    ///             },
+    ///         },
+    ///         TargetTags = new[]
+    ///         {
+    ///             "allow-ssh",
+    ///         },
+    ///         Direction = "INGRESS",
+    ///     });
+    /// 
+    ///     var fw3 = new Gcp.Compute.Firewall("fw3", new()
+    ///     {
+    ///         Name = "website-fw-3",
+    ///         Network = defaultNetwork.Id,
+    ///         SourceRanges = new[]
+    ///         {
+    ///             "130.211.0.0/22",
+    ///             "35.191.0.0/16",
+    ///         },
+    ///         Allows = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///             },
+    ///         },
+    ///         TargetTags = new[]
+    ///         {
+    ///             "load-balanced-backend",
+    ///         },
+    ///         Direction = "INGRESS",
+    ///     });
+    /// 
+    ///     var fw4 = new Gcp.Compute.Firewall("fw4", new()
+    ///     {
+    ///         Name = "website-fw-4",
+    ///         Network = defaultNetwork.Id,
+    ///         SourceRanges = new[]
+    ///         {
+    ///             "10.129.0.0/26",
+    ///         },
+    ///         TargetTags = new[]
+    ///         {
+    ///             "load-balanced-backend",
+    ///         },
+    ///         Allows = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///                 Ports = new[]
+    ///                 {
+    ///                     "80",
+    ///                 },
+    ///             },
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///                 Ports = new[]
+    ///                 {
+    ///                     "443",
+    ///                 },
+    ///             },
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///                 Ports = new[]
+    ///                 {
+    ///                     "8000",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Direction = "INGRESS",
+    ///     });
+    /// 
+    ///     var proxy = new Gcp.Compute.Subnetwork("proxy", new()
+    ///     {
+    ///         Name = "website-net-proxy",
+    ///         IpCidrRange = "10.129.0.0/26",
+    ///         Region = "us-central1",
+    ///         Network = defaultNetwork.Id,
+    ///         Purpose = "REGIONAL_MANAGED_PROXY",
+    ///         Role = "ACTIVE",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Forwarding Rule Regional Http Xlb
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var debianImage = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "website-net",
+    ///         AutoCreateSubnetworks = false,
+    ///         RoutingMode = "REGIONAL",
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "website-net-default",
+    ///         IpCidrRange = "10.1.2.0/24",
+    ///         Region = "us-central1",
+    ///         Network = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var instanceTemplate = new Gcp.Compute.InstanceTemplate("instance_template", new()
+    ///     {
+    ///         Name = "template-website-backend",
+    ///         MachineType = "e2-medium",
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///             {
+    ///                 Network = defaultNetwork.Id,
+    ///                 Subnetwork = defaultSubnetwork.Id,
+    ///             },
+    ///         },
+    ///         Disks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///             {
+    ///                 SourceImage = debianImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///                 AutoDelete = true,
+    ///                 Boot = true,
+    ///             },
+    ///         },
+    ///         Tags = new[]
+    ///         {
+    ///             "allow-ssh",
+    ///             "load-balanced-backend",
+    ///         },
+    ///     });
+    /// 
+    ///     var rigm = new Gcp.Compute.RegionInstanceGroupManager("rigm", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "website-rigm",
+    ///         Versions = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
+    ///             {
+    ///                 InstanceTemplate = instanceTemplate.Id,
+    ///                 Name = "primary",
+    ///             },
+    ///         },
+    ///         BaseInstanceName = "internal-glb",
+    ///         TargetSize = 1,
+    ///     });
+    /// 
+    ///     var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "website-hc",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             PortSpecification = "USE_SERVING_PORT",
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         Backends = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionBackendServiceBackendArgs
+    ///             {
+    ///                 Group = rigm.InstanceGroup,
+    ///                 BalancingMode = "UTILIZATION",
+    ///                 CapacityScaler = 1,
+    ///             },
+    ///         },
+    ///         Region = "us-central1",
+    ///         Name = "website-backend",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         HealthChecks = defaultRegionHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var defaultRegionUrlMap = new Gcp.Compute.RegionUrlMap("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "website-map",
+    ///         DefaultService = defaultRegionBackendService.Id,
+    ///     });
+    /// 
+    ///     var defaultRegionTargetHttpProxy = new Gcp.Compute.RegionTargetHttpProxy("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "website-proxy",
+    ///         UrlMap = defaultRegionUrlMap.Id,
+    ///     });
+    /// 
+    ///     var defaultAddress = new Gcp.Compute.Address("default", new()
+    ///     {
+    ///         Name = "website-ip-1",
+    ///         Region = "us-central1",
+    ///         NetworkTier = "STANDARD",
+    ///     });
+    /// 
+    ///     // Forwarding rule for Regional External Load Balancing
+    ///     var @default = new Gcp.Compute.ForwardingRule("default", new()
+    ///     {
+    ///         Name = "website-forwarding-rule",
+    ///         Region = "us-central1",
+    ///         IpProtocol = "TCP",
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         PortRange = "80",
+    ///         Target = defaultRegionTargetHttpProxy.Id,
+    ///         Network = defaultNetwork.Id,
+    ///         IpAddress = defaultAddress.Id,
+    ///         NetworkTier = "STANDARD",
+    ///     });
+    /// 
+    ///     var fw1 = new Gcp.Compute.Firewall("fw1", new()
+    ///     {
+    ///         Name = "website-fw-1",
+    ///         Network = defaultNetwork.Id,
+    ///         SourceRanges = new[]
+    ///         {
+    ///             "10.1.2.0/24",
+    ///         },
+    ///         Allows = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///             },
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "udp",
+    ///             },
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "icmp",
+    ///             },
+    ///         },
+    ///         Direction = "INGRESS",
+    ///     });
+    /// 
+    ///     var fw2 = new Gcp.Compute.Firewall("fw2", new()
+    ///     {
+    ///         Name = "website-fw-2",
+    ///         Network = defaultNetwork.Id,
+    ///         SourceRanges = new[]
+    ///         {
+    ///             "0.0.0.0/0",
+    ///         },
+    ///         Allows = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///                 Ports = new[]
+    ///                 {
+    ///                     "22",
+    ///                 },
+    ///             },
+    ///         },
+    ///         TargetTags = new[]
+    ///         {
+    ///             "allow-ssh",
+    ///         },
+    ///         Direction = "INGRESS",
+    ///     });
+    /// 
+    ///     var fw3 = new Gcp.Compute.Firewall("fw3", new()
+    ///     {
+    ///         Name = "website-fw-3",
+    ///         Network = defaultNetwork.Id,
+    ///         SourceRanges = new[]
+    ///         {
+    ///             "130.211.0.0/22",
+    ///             "35.191.0.0/16",
+    ///         },
+    ///         Allows = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///             },
+    ///         },
+    ///         TargetTags = new[]
+    ///         {
+    ///             "load-balanced-backend",
+    ///         },
+    ///         Direction = "INGRESS",
+    ///     });
+    /// 
+    ///     var fw4 = new Gcp.Compute.Firewall("fw4", new()
+    ///     {
+    ///         Name = "website-fw-4",
+    ///         Network = defaultNetwork.Id,
+    ///         SourceRanges = new[]
+    ///         {
+    ///             "10.129.0.0/26",
+    ///         },
+    ///         TargetTags = new[]
+    ///         {
+    ///             "load-balanced-backend",
+    ///         },
+    ///         Allows = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///                 Ports = new[]
+    ///                 {
+    ///                     "80",
+    ///                 },
+    ///             },
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///                 Ports = new[]
+    ///                 {
+    ///                     "443",
+    ///                 },
+    ///             },
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///                 Ports = new[]
+    ///                 {
+    ///                     "8000",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Direction = "INGRESS",
+    ///     });
+    /// 
+    ///     var proxy = new Gcp.Compute.Subnetwork("proxy", new()
+    ///     {
+    ///         Name = "website-net-proxy",
+    ///         IpCidrRange = "10.129.0.0/26",
+    ///         Region = "us-central1",
+    ///         Network = defaultNetwork.Id,
+    ///         Purpose = "REGIONAL_MANAGED_PROXY",
+    ///         Role = "ACTIVE",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Forwarding Rule Vpc Psc
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Consumer service endpoint
+    ///     var consumerNet = new Gcp.Compute.Network("consumer_net", new()
+    ///     {
+    ///         Name = "consumer-net",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var consumerSubnet = new Gcp.Compute.Subnetwork("consumer_subnet", new()
+    ///     {
+    ///         Name = "consumer-net",
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///         Region = "us-central1",
+    ///         Network = consumerNet.Id,
+    ///     });
+    /// 
+    ///     var consumerAddress = new Gcp.Compute.Address("consumer_address", new()
+    ///     {
+    ///         Name = "website-ip-1",
+    ///         Region = "us-central1",
+    ///         Subnetwork = consumerSubnet.Id,
+    ///         AddressType = "INTERNAL",
+    ///     });
+    /// 
+    ///     // Producer service attachment
+    ///     var producerNet = new Gcp.Compute.Network("producer_net", new()
+    ///     {
+    ///         Name = "producer-net",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var pscProducerSubnet = new Gcp.Compute.Subnetwork("psc_producer_subnet", new()
+    ///     {
+    ///         Name = "producer-psc-net",
+    ///         IpCidrRange = "10.1.0.0/16",
+    ///         Region = "us-central1",
+    ///         Purpose = "PRIVATE_SERVICE_CONNECT",
+    ///         Network = producerNet.Id,
+    ///     });
+    /// 
+    ///     var producerSubnet = new Gcp.Compute.Subnetwork("producer_subnet", new()
+    ///     {
+    ///         Name = "producer-net",
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///         Region = "us-central1",
+    ///         Network = producerNet.Id,
+    ///     });
+    /// 
+    ///     var producerServiceHealthCheck = new Gcp.Compute.HealthCheck("producer_service_health_check", new()
+    ///     {
+    ///         Name = "producer-service-health-check",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var producerServiceBackend = new Gcp.Compute.RegionBackendService("producer_service_backend", new()
+    ///     {
+    ///         Name = "producer-service-backend",
+    ///         Region = "us-central1",
+    ///         HealthChecks = producerServiceHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var producerTargetService = new Gcp.Compute.ForwardingRule("producer_target_service", new()
+    ///     {
+    ///         Name = "producer-forwarding-rule",
+    ///         Region = "us-central1",
+    ///         LoadBalancingScheme = "INTERNAL",
+    ///         BackendService = producerServiceBackend.Id,
+    ///         AllPorts = true,
+    ///         Network = producerNet.Name,
+    ///         Subnetwork = producerSubnet.Name,
+    ///     });
+    /// 
+    ///     var producerServiceAttachment = new Gcp.Compute.ServiceAttachment("producer_service_attachment", new()
+    ///     {
+    ///         Name = "producer-service",
+    ///         Region = "us-central1",
+    ///         Description = "A service attachment configured with Terraform",
+    ///         EnableProxyProtocol = true,
+    ///         ConnectionPreference = "ACCEPT_AUTOMATIC",
+    ///         NatSubnets = new[]
+    ///         {
+    ///             pscProducerSubnet.Name,
+    ///         },
+    ///         TargetService = producerTargetService.Id,
+    ///     });
+    /// 
+    ///     // Forwarding rule for VPC private service connect
+    ///     var @default = new Gcp.Compute.ForwardingRule("default", new()
+    ///     {
+    ///         Name = "psc-endpoint",
+    ///         Region = "us-central1",
+    ///         LoadBalancingScheme = "",
+    ///         Target = producerServiceAttachment.Id,
+    ///         Network = consumerNet.Name,
+    ///         IpAddress = consumerAddress.Id,
+    ///         AllowPscGlobalAccess = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Forwarding Rule Vpc Psc No Automate Dns
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var consumerNet = new Gcp.Compute.Network("consumer_net", new()
+    ///     {
+    ///         Name = "consumer-net",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var consumerSubnet = new Gcp.Compute.Subnetwork("consumer_subnet", new()
+    ///     {
+    ///         Name = "consumer-net",
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///         Region = "us-central1",
+    ///         Network = consumerNet.Id,
+    ///     });
+    /// 
+    ///     var consumerAddress = new Gcp.Compute.Address("consumer_address", new()
+    ///     {
+    ///         Name = "website-ip-1",
+    ///         Region = "us-central1",
+    ///         Subnetwork = consumerSubnet.Id,
+    ///         AddressType = "INTERNAL",
+    ///     });
+    /// 
+    ///     var producerNet = new Gcp.Compute.Network("producer_net", new()
+    ///     {
+    ///         Name = "producer-net",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var pscProducerSubnet = new Gcp.Compute.Subnetwork("psc_producer_subnet", new()
+    ///     {
+    ///         Name = "producer-psc-net",
+    ///         IpCidrRange = "10.1.0.0/16",
+    ///         Region = "us-central1",
+    ///         Purpose = "PRIVATE_SERVICE_CONNECT",
+    ///         Network = producerNet.Id,
+    ///     });
+    /// 
+    ///     var producerSubnet = new Gcp.Compute.Subnetwork("producer_subnet", new()
+    ///     {
+    ///         Name = "producer-net",
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///         Region = "us-central1",
+    ///         Network = producerNet.Id,
+    ///     });
+    /// 
+    ///     var producerServiceHealthCheck = new Gcp.Compute.HealthCheck("producer_service_health_check", new()
+    ///     {
+    ///         Name = "producer-service-health-check",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var producerServiceBackend = new Gcp.Compute.RegionBackendService("producer_service_backend", new()
+    ///     {
+    ///         Name = "producer-service-backend",
+    ///         Region = "us-central1",
+    ///         HealthChecks = producerServiceHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var producerTargetService = new Gcp.Compute.ForwardingRule("producer_target_service", new()
+    ///     {
+    ///         Name = "producer-forwarding-rule",
+    ///         Region = "us-central1",
+    ///         LoadBalancingScheme = "INTERNAL",
+    ///         BackendService = producerServiceBackend.Id,
+    ///         AllPorts = true,
+    ///         Network = producerNet.Name,
+    ///         Subnetwork = producerSubnet.Name,
+    ///     });
+    /// 
+    ///     var producerServiceAttachment = new Gcp.Compute.ServiceAttachment("producer_service_attachment", new()
+    ///     {
+    ///         Name = "producer-service",
+    ///         Region = "us-central1",
+    ///         Description = "A service attachment configured with Terraform",
+    ///         EnableProxyProtocol = true,
+    ///         ConnectionPreference = "ACCEPT_AUTOMATIC",
+    ///         NatSubnets = new[]
+    ///         {
+    ///             pscProducerSubnet.Name,
+    ///         },
+    ///         TargetService = producerTargetService.Id,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.ForwardingRule("default", new()
+    ///     {
+    ///         Name = "psc-endpoint",
+    ///         Region = "us-central1",
+    ///         LoadBalancingScheme = "",
+    ///         Target = producerServiceAttachment.Id,
+    ///         Network = consumerNet.Name,
+    ///         IpAddress = consumerAddress.Id,
+    ///         AllowPscGlobalAccess = true,
+    ///         NoAutomateDnsZone = true,
     ///     });
     /// 
     /// });
@@ -53,40 +1497,98 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var basic = new Gcp.Compute.Address("basic", new()
     ///     {
+    ///         Name = "website-ip",
     ///         Region = "us-central1",
     ///     });
     /// 
-    ///     var externalRegionBackendService = new Gcp.Compute.RegionBackendService("externalRegionBackendService", new()
+    ///     var external = new Gcp.Compute.RegionBackendService("external", new()
     ///     {
+    ///         Name = "service-backend",
     ///         Region = "us-central1",
-    ///         LoadBalancingScheme = "EXTERNAL",
-    ///     });
-    /// 
-    ///     var externalForwardingRule = new Gcp.Compute.ForwardingRule("externalForwardingRule", new()
-    ///     {
-    ///         Region = "us-central1",
-    ///         IpAddress = basic.SelfLink,
-    ///         BackendService = externalRegionBackendService.SelfLink,
     ///         LoadBalancingScheme = "EXTERNAL",
     ///     });
     /// 
     ///     var steering = new Gcp.Compute.ForwardingRule("steering", new()
     ///     {
+    ///         Name = "steering-rule",
     ///         Region = "us-central1",
     ///         IpAddress = basic.SelfLink,
-    ///         BackendService = externalRegionBackendService.SelfLink,
+    ///         BackendService = external.SelfLink,
     ///         LoadBalancingScheme = "EXTERNAL",
     ///         SourceIpRanges = new[]
     ///         {
     ///             "34.121.88.0/24",
     ///             "35.187.239.137",
     ///         },
-    ///     }, new CustomResourceOptions
+    ///     });
+    /// 
+    ///     var externalForwardingRule = new Gcp.Compute.ForwardingRule("external", new()
     ///     {
-    ///         DependsOn = new[]
+    ///         Name = "external-forwarding-rule",
+    ///         Region = "us-central1",
+    ///         IpAddress = basic.SelfLink,
+    ///         BackendService = external.SelfLink,
+    ///         LoadBalancingScheme = "EXTERNAL",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Forwarding Rule Internallb Ipv6
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var hc = new Gcp.Compute.HealthCheck("hc", new()
+    ///     {
+    ///         Name = "check-ilb-ipv6-backend",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
     ///         {
-    ///             externalForwardingRule,
+    ///             Port = 80,
     ///         },
+    ///     });
+    /// 
+    ///     var backend = new Gcp.Compute.RegionBackendService("backend", new()
+    ///     {
+    ///         Name = "ilb-ipv6-backend",
+    ///         Region = "us-central1",
+    ///         HealthChecks = hc.Id,
+    ///     });
+    /// 
+    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "net-ipv6",
+    ///         AutoCreateSubnetworks = false,
+    ///         EnableUlaInternalIpv6 = true,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "subnet-internal-ipv6",
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///         Region = "us-central1",
+    ///         StackType = "IPV4_IPV6",
+    ///         Ipv6AccessType = "INTERNAL",
+    ///         Network = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     // Forwarding rule for Internal Load Balancing
+    ///     var @default = new Gcp.Compute.ForwardingRule("default", new()
+    ///     {
+    ///         Name = "ilb-ipv6-forwarding-rule",
+    ///         Region = "us-central1",
+    ///         LoadBalancingScheme = "INTERNAL",
+    ///         BackendService = backend.Id,
+    ///         AllPorts = true,
+    ///         Network = defaultNetwork.Name,
+    ///         Subnetwork = defaultSubnetwork.Name,
+    ///         IpVersion = "IPV6",
     ///     });
     /// 
     /// });

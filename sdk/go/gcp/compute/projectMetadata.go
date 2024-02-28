@@ -38,9 +38,9 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewProjectMetadata(ctx, "default", &compute.ProjectMetadataArgs{
 //				Metadata: pulumi.StringMap{
-//					"13":   pulumi.String("42"),
-//					"fizz": pulumi.String("buzz"),
 //					"foo":  pulumi.String("bar"),
+//					"fizz": pulumi.String("buzz"),
+//					"13":   pulumi.String("42"),
 //				},
 //			})
 //			if err != nil {
@@ -68,9 +68,9 @@ import (
 //			// A key set in project metadata is propagated to every instance in the project.
 //			// This resource configuration is prone to causing frequent diffs as Google adds SSH Keys when the SSH Button is pressed in the console.
 //			// It is better to use OS Login instead.
-//			_, err := compute.NewProjectMetadata(ctx, "mySshKey", &compute.ProjectMetadataArgs{
+//			_, err := compute.NewProjectMetadata(ctx, "my_ssh_key", &compute.ProjectMetadataArgs{
 //				Metadata: pulumi.StringMap{
-//					"ssh-keys": pulumi.String("      dev:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT dev\n      foo:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT bar\n    \n"),
+//					"ssh-keys": pulumi.String("      dev:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT dev\n      foo:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT bar\n"),
 //				},
 //			})
 //			if err != nil {

@@ -265,9 +265,9 @@ class DataExchangeIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.bigqueryanalyticshub.DataExchangeIamPolicy("policy",
-            project=google_bigquery_analytics_hub_data_exchange["data_exchange"]["project"],
-            location=google_bigquery_analytics_hub_data_exchange["data_exchange"]["location"],
-            data_exchange_id=google_bigquery_analytics_hub_data_exchange["data_exchange"]["data_exchange_id"],
+            project=data_exchange["project"],
+            location=data_exchange["location"],
+            data_exchange_id=data_exchange["dataExchangeId"],
             policy_data=admin.policy_data)
         ```
 
@@ -278,9 +278,9 @@ class DataExchangeIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.bigqueryanalyticshub.DataExchangeIamBinding("binding",
-            project=google_bigquery_analytics_hub_data_exchange["data_exchange"]["project"],
-            location=google_bigquery_analytics_hub_data_exchange["data_exchange"]["location"],
-            data_exchange_id=google_bigquery_analytics_hub_data_exchange["data_exchange"]["data_exchange_id"],
+            project=data_exchange["project"],
+            location=data_exchange["location"],
+            data_exchange_id=data_exchange["dataExchangeId"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -292,9 +292,9 @@ class DataExchangeIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.bigqueryanalyticshub.DataExchangeIamMember("member",
-            project=google_bigquery_analytics_hub_data_exchange["data_exchange"]["project"],
-            location=google_bigquery_analytics_hub_data_exchange["data_exchange"]["location"],
-            data_exchange_id=google_bigquery_analytics_hub_data_exchange["data_exchange"]["data_exchange_id"],
+            project=data_exchange["project"],
+            location=data_exchange["location"],
+            data_exchange_id=data_exchange["dataExchangeId"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -391,9 +391,9 @@ class DataExchangeIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.bigqueryanalyticshub.DataExchangeIamPolicy("policy",
-            project=google_bigquery_analytics_hub_data_exchange["data_exchange"]["project"],
-            location=google_bigquery_analytics_hub_data_exchange["data_exchange"]["location"],
-            data_exchange_id=google_bigquery_analytics_hub_data_exchange["data_exchange"]["data_exchange_id"],
+            project=data_exchange["project"],
+            location=data_exchange["location"],
+            data_exchange_id=data_exchange["dataExchangeId"],
             policy_data=admin.policy_data)
         ```
 
@@ -404,9 +404,9 @@ class DataExchangeIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.bigqueryanalyticshub.DataExchangeIamBinding("binding",
-            project=google_bigquery_analytics_hub_data_exchange["data_exchange"]["project"],
-            location=google_bigquery_analytics_hub_data_exchange["data_exchange"]["location"],
-            data_exchange_id=google_bigquery_analytics_hub_data_exchange["data_exchange"]["data_exchange_id"],
+            project=data_exchange["project"],
+            location=data_exchange["location"],
+            data_exchange_id=data_exchange["dataExchangeId"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -418,9 +418,9 @@ class DataExchangeIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.bigqueryanalyticshub.DataExchangeIamMember("member",
-            project=google_bigquery_analytics_hub_data_exchange["data_exchange"]["project"],
-            location=google_bigquery_analytics_hub_data_exchange["data_exchange"]["location"],
-            data_exchange_id=google_bigquery_analytics_hub_data_exchange["data_exchange"]["data_exchange_id"],
+            project=data_exchange["project"],
+            location=data_exchange["location"],
+            data_exchange_id=data_exchange["dataExchangeId"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

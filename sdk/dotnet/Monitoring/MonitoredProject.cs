@@ -29,14 +29,17 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var basic = new Gcp.Organizations.Project("basic", new()
+    ///     {
+    ///         ProjectId = "m-id",
+    ///         Name = "m-id-display",
+    ///         OrgId = "123456789",
+    ///     });
+    /// 
     ///     var primary = new Gcp.Monitoring.MonitoredProject("primary", new()
     ///     {
     ///         MetricsScope = "my-project-name",
-    ///     });
-    /// 
-    ///     var basic = new Gcp.Organizations.Project("basic", new()
-    ///     {
-    ///         OrgId = "123456789",
+    ///         Name = basic.ProjectId,
     ///     });
     /// 
     /// });

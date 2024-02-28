@@ -20,21 +20,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const exampleNamespace = new gcp.servicedirectory.Namespace("exampleNamespace", {
+ * const example = new gcp.servicedirectory.Namespace("example", {
  *     namespaceId: "example-namespace",
  *     location: "us-central1",
- * }, {
- *     provider: google_beta,
  * });
- * const exampleService = new gcp.servicedirectory.Service("exampleService", {
+ * const exampleService = new gcp.servicedirectory.Service("example", {
  *     serviceId: "example-service",
- *     namespace: exampleNamespace.id,
+ *     namespace: example.id,
  *     metadata: {
  *         stage: "prod",
  *         region: "us-central1",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

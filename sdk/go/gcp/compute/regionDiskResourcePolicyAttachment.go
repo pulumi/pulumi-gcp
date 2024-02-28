@@ -33,6 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			disk, err := compute.NewDisk(ctx, "disk", &compute.DiskArgs{
+//				Name:  pulumi.String("my-base-disk"),
 //				Image: pulumi.String("debian-cloud/debian-11"),
 //				Size:  pulumi.Int(50),
 //				Type:  pulumi.String("pd-ssd"),
@@ -42,6 +43,7 @@ import (
 //				return err
 //			}
 //			snapdisk, err := compute.NewSnapshot(ctx, "snapdisk", &compute.SnapshotArgs{
+//				Name:       pulumi.String("my-snapshot"),
 //				SourceDisk: disk.Name,
 //				Zone:       pulumi.String("us-central1-a"),
 //			})
@@ -49,6 +51,7 @@ import (
 //				return err
 //			}
 //			ssd, err := compute.NewRegionDisk(ctx, "ssd", &compute.RegionDiskArgs{
+//				Name: pulumi.String("my-disk"),
 //				ReplicaZones: pulumi.StringArray{
 //					pulumi.String("us-central1-a"),
 //					pulumi.String("us-central1-f"),
@@ -61,14 +64,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewRegionDiskResourcePolicyAttachment(ctx, "attachment", &compute.RegionDiskResourcePolicyAttachmentArgs{
-//				Disk:   ssd.Name,
-//				Region: pulumi.String("us-central1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewResourcePolicy(ctx, "policy", &compute.ResourcePolicyArgs{
+//			policy, err := compute.NewResourcePolicy(ctx, "policy", &compute.ResourcePolicyArgs{
+//				Name:   pulumi.String("my-resource-policy"),
 //				Region: pulumi.String("us-central1"),
 //				SnapshotSchedulePolicy: &compute.ResourcePolicySnapshotSchedulePolicyArgs{
 //					Schedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs{
@@ -78,6 +75,14 @@ import (
 //						},
 //					},
 //				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionDiskResourcePolicyAttachment(ctx, "attachment", &compute.RegionDiskResourcePolicyAttachmentArgs{
+//				Name:   policy.Name,
+//				Disk:   ssd.Name,
+//				Region: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err

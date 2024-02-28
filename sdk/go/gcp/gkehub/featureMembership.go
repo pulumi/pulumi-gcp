@@ -33,6 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cluster, err := container.NewCluster(ctx, "cluster", &container.ClusterArgs{
+//				Name:             pulumi.String("my-cluster"),
 //				Location:         pulumi.String("us-central1-a"),
 //				InitialNodeCount: pulumi.Int(1),
 //			})
@@ -53,6 +54,7 @@ import (
 //				return err
 //			}
 //			feature, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Name:     pulumi.String("configmanagement"),
 //				Location: pulumi.String("global"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
@@ -61,7 +63,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gkehub.NewFeatureMembership(ctx, "featureMember", &gkehub.FeatureMembershipArgs{
+//			_, err = gkehub.NewFeatureMembership(ctx, "feature_member", &gkehub.FeatureMembershipArgs{
 //				Location:   pulumi.String("global"),
 //				Feature:    feature.Name,
 //				Membership: membership.MembershipId,
@@ -100,6 +102,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cluster, err := container.NewCluster(ctx, "cluster", &container.ClusterArgs{
+//				Name:             pulumi.String("my-cluster"),
 //				Location:         pulumi.String("us-central1-a"),
 //				InitialNodeCount: pulumi.Int(1),
 //			})
@@ -120,6 +123,7 @@ import (
 //				return err
 //			}
 //			feature, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Name:     pulumi.String("configmanagement"),
 //				Location: pulumi.String("global"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
@@ -128,7 +132,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gkehub.NewFeatureMembership(ctx, "featureMember", &gkehub.FeatureMembershipArgs{
+//			_, err = gkehub.NewFeatureMembership(ctx, "feature_member", &gkehub.FeatureMembershipArgs{
 //				Location:   pulumi.String("global"),
 //				Feature:    feature.Name,
 //				Membership: membership.MembershipId,
@@ -168,10 +172,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Name:     pulumi.String("multiclusterservicediscovery"),
+//				Location: pulumi.String("global"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//				Location: pulumi.String("global"),
 //			})
 //			if err != nil {
 //				return err
@@ -199,6 +204,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cluster, err := container.NewCluster(ctx, "cluster", &container.ClusterArgs{
+//				Name:             pulumi.String("my-cluster"),
 //				Location:         pulumi.String("us-central1-a"),
 //				InitialNodeCount: pulumi.Int(1),
 //			})
@@ -219,12 +225,13 @@ import (
 //				return err
 //			}
 //			feature, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Name:     pulumi.String("servicemesh"),
 //				Location: pulumi.String("global"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gkehub.NewFeatureMembership(ctx, "featureMember", &gkehub.FeatureMembershipArgs{
+//			_, err = gkehub.NewFeatureMembership(ctx, "feature_member", &gkehub.FeatureMembershipArgs{
 //				Location:   pulumi.String("global"),
 //				Feature:    feature.Name,
 //				Membership: membership.MembershipId,
@@ -258,6 +265,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cluster, err := container.NewCluster(ctx, "cluster", &container.ClusterArgs{
+//				Name:             pulumi.String("my-cluster"),
 //				Location:         pulumi.String("us-central1-a"),
 //				InitialNodeCount: pulumi.Int(1),
 //			})
@@ -279,6 +287,7 @@ import (
 //				return err
 //			}
 //			feature, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Name:     pulumi.String("configmanagement"),
 //				Location: pulumi.String("global"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
@@ -287,7 +296,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gkehub.NewFeatureMembership(ctx, "featureMember", &gkehub.FeatureMembershipArgs{
+//			_, err = gkehub.NewFeatureMembership(ctx, "feature_member", &gkehub.FeatureMembershipArgs{
 //				Location:           pulumi.String("global"),
 //				Feature:            feature.Name,
 //				Membership:         membership.MembershipId,
@@ -327,6 +336,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cluster, err := container.NewCluster(ctx, "cluster", &container.ClusterArgs{
+//				Name:             pulumi.String("my-cluster"),
 //				Location:         pulumi.String("us-central1-a"),
 //				InitialNodeCount: pulumi.Int(1),
 //			})
@@ -347,12 +357,13 @@ import (
 //				return err
 //			}
 //			feature, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Name:     pulumi.String("policycontroller"),
 //				Location: pulumi.String("global"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gkehub.NewFeatureMembership(ctx, "featureMember", &gkehub.FeatureMembershipArgs{
+//			_, err = gkehub.NewFeatureMembership(ctx, "feature_member", &gkehub.FeatureMembershipArgs{
 //				Location:   pulumi.String("global"),
 //				Feature:    feature.Name,
 //				Membership: membership.MembershipId,
@@ -388,6 +399,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cluster, err := container.NewCluster(ctx, "cluster", &container.ClusterArgs{
+//				Name:             pulumi.String("my-cluster"),
 //				Location:         pulumi.String("us-central1-a"),
 //				InitialNodeCount: pulumi.Int(1),
 //			})
@@ -408,12 +420,13 @@ import (
 //				return err
 //			}
 //			feature, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Name:     pulumi.String("policycontroller"),
 //				Location: pulumi.String("global"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gkehub.NewFeatureMembership(ctx, "featureMember", &gkehub.FeatureMembershipArgs{
+//			_, err = gkehub.NewFeatureMembership(ctx, "feature_member", &gkehub.FeatureMembershipArgs{
 //				Location:   pulumi.String("global"),
 //				Feature:    feature.Name,
 //				Membership: membership.MembershipId,

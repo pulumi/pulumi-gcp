@@ -54,6 +54,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Topic(&#34;example&#34;, TopicArgs.builder()        
+ *             .name(&#34;example-topic&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .messageRetentionDuration(&#34;86600s&#34;)
  *             .build());
@@ -88,14 +89,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
+ *             .name(&#34;example-keyring&#34;)
  *             .location(&#34;global&#34;)
  *             .build());
  * 
  *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
+ *             .name(&#34;example-key&#34;)
  *             .keyRing(keyRing.id())
  *             .build());
  * 
  *         var example = new Topic(&#34;example&#34;, TopicArgs.builder()        
+ *             .name(&#34;example-topic&#34;)
  *             .kmsKeyName(cryptoKey.id())
  *             .build());
  * 
@@ -126,6 +130,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Topic(&#34;example&#34;, TopicArgs.builder()        
+ *             .name(&#34;example-topic&#34;)
  *             .messageStoragePolicy(TopicMessageStoragePolicyArgs.builder()
  *                 .allowedPersistenceRegions(&#34;europe-west3&#34;)
  *                 .build())
@@ -146,7 +151,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.pubsub.Topic;
  * import com.pulumi.gcp.pubsub.TopicArgs;
  * import com.pulumi.gcp.pubsub.inputs.TopicSchemaSettingsArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -160,7 +164,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleSchema = new Schema(&#34;exampleSchema&#34;, SchemaArgs.builder()        
+ *         var example = new Schema(&#34;example&#34;, SchemaArgs.builder()        
+ *             .name(&#34;example&#34;)
  *             .type(&#34;AVRO&#34;)
  *             .definition(&#34;&#34;&#34;
  * {
@@ -181,13 +186,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleTopic = new Topic(&#34;exampleTopic&#34;, TopicArgs.builder()        
+ *             .name(&#34;example-topic&#34;)
  *             .schemaSettings(TopicSchemaSettingsArgs.builder()
  *                 .schema(&#34;projects/my-project-name/schemas/example&#34;)
  *                 .encoding(&#34;JSON&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(exampleSchema)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

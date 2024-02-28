@@ -191,6 +191,56 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
         if they would like to test it.
 
         ## Example Usage
+        ### Iam Access Boundary Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        project = gcp.organizations.Project("project",
+            project_id="my-project",
+            name="my-project",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000")
+        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
+            parent=project.org_id.apply(lambda org_id: f"organizations/{org_id}"),
+            title="my policy")
+        test_access = gcp.accesscontextmanager.AccessLevel("test-access",
+            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
+            title="chromeos_no_lock",
+            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
+                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
+                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
+                        require_screen_lock=True,
+                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
+                            os_type="DESKTOP_CHROME_OS",
+                        )],
+                    ),
+                    regions=[
+                        "CH",
+                        "IT",
+                        "US",
+                    ],
+                )],
+            ))
+        example = gcp.iam.AccessBoundaryPolicy("example",
+            parent=std.urlencode_output(input=project.project_id.apply(lambda project_id: f"cloudresourcemanager.googleapis.com/projects/{project_id}")).apply(lambda invoke: invoke.result),
+            name="my-ab-policy",
+            display_name="My AB policy",
+            rules=[gcp.iam.AccessBoundaryPolicyRuleArgs(
+                description="AB rule",
+                access_boundary_rule=gcp.iam.AccessBoundaryPolicyRuleAccessBoundaryRuleArgs(
+                    available_resource="*",
+                    available_permissions=["*"],
+                    availability_condition=gcp.iam.AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs(
+                        title="Access level expr",
+                        expression=pulumi.Output.all(project.org_id, test_access.name).apply(lambda org_id, name: f"request.matchAccessLevels('{org_id}', ['{name}'])"),
+                    ),
+                ),
+            )])
+        ```
 
         ## Import
 
@@ -224,6 +274,56 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
         if they would like to test it.
 
         ## Example Usage
+        ### Iam Access Boundary Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        project = gcp.organizations.Project("project",
+            project_id="my-project",
+            name="my-project",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000")
+        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
+            parent=project.org_id.apply(lambda org_id: f"organizations/{org_id}"),
+            title="my policy")
+        test_access = gcp.accesscontextmanager.AccessLevel("test-access",
+            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
+            title="chromeos_no_lock",
+            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
+                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
+                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
+                        require_screen_lock=True,
+                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
+                            os_type="DESKTOP_CHROME_OS",
+                        )],
+                    ),
+                    regions=[
+                        "CH",
+                        "IT",
+                        "US",
+                    ],
+                )],
+            ))
+        example = gcp.iam.AccessBoundaryPolicy("example",
+            parent=std.urlencode_output(input=project.project_id.apply(lambda project_id: f"cloudresourcemanager.googleapis.com/projects/{project_id}")).apply(lambda invoke: invoke.result),
+            name="my-ab-policy",
+            display_name="My AB policy",
+            rules=[gcp.iam.AccessBoundaryPolicyRuleArgs(
+                description="AB rule",
+                access_boundary_rule=gcp.iam.AccessBoundaryPolicyRuleAccessBoundaryRuleArgs(
+                    available_resource="*",
+                    available_permissions=["*"],
+                    availability_condition=gcp.iam.AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs(
+                        title="Access level expr",
+                        expression=pulumi.Output.all(project.org_id, test_access.name).apply(lambda org_id, name: f"request.matchAccessLevels('{org_id}', ['{name}'])"),
+                    ),
+                ),
+            )])
+        ```
 
         ## Import
 

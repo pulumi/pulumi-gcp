@@ -27,17 +27,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultBucket, err := storage.NewBucket(ctx, "defaultBucket", &storage.BucketArgs{
+//			_, err := storage.NewBucket(ctx, "default", &storage.BucketArgs{
+//				Name:                     pulumi.String("test_bucket"),
 //				Location:                 pulumi.String("US"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = firebase.NewStorageBucket(ctx, "defaultStorageBucket", &firebase.StorageBucketArgs{
+//			_, err = firebase.NewStorageBucket(ctx, "default", &firebase.StorageBucketArgs{
 //				Project:  pulumi.String("my-project-name"),
-//				BucketId: defaultBucket.ID(),
-//			}, pulumi.Provider(google_beta))
+//				BucketId: _default.ID(),
+//			})
 //			if err != nil {
 //				return err
 //			}

@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  *         "cloudidentity.googleapis.com/groups.discussion_forum": "",
  *     },
  * });
- * const cloudIdentityGroupMembershipBasic = new gcp.cloudidentity.GroupMembership("cloudIdentityGroupMembershipBasic", {
+ * const cloudIdentityGroupMembershipBasic = new gcp.cloudidentity.GroupMembership("cloud_identity_group_membership_basic", {
  *     group: group.id,
  *     preferredMemberKey: {
  *         id: child_group.groupKey.apply(groupKey => groupKey.id),
@@ -74,7 +74,7 @@ import * as utilities from "../utilities";
  *         "cloudidentity.googleapis.com/groups.discussion_forum": "",
  *     },
  * });
- * const cloudIdentityGroupMembershipBasic = new gcp.cloudidentity.GroupMembership("cloudIdentityGroupMembershipBasic", {
+ * const cloudIdentityGroupMembershipBasic = new gcp.cloudidentity.GroupMembership("cloud_identity_group_membership_basic", {
  *     group: group.id,
  *     preferredMemberKey: {
  *         id: "cloud_identity_user@example.com",

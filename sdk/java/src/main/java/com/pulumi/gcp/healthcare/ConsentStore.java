@@ -53,10 +53,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
  *             .location(&#34;us-central1&#34;)
+ *             .name(&#34;my-dataset&#34;)
  *             .build());
  * 
  *         var my_consent = new ConsentStore(&#34;my-consent&#34;, ConsentStoreArgs.builder()        
  *             .dataset(dataset.id())
+ *             .name(&#34;my-consent-store&#34;)
  *             .build());
  * 
  *     }
@@ -88,10 +90,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
  *             .location(&#34;us-central1&#34;)
+ *             .name(&#34;my-dataset&#34;)
  *             .build());
  * 
  *         var my_consent = new ConsentStore(&#34;my-consent&#34;, ConsentStoreArgs.builder()        
  *             .dataset(dataset.id())
+ *             .name(&#34;my-consent-store&#34;)
  *             .enableConsentCreateOnUpdate(true)
  *             .defaultConsentTtl(&#34;90000s&#34;)
  *             .labels(Map.of(&#34;label1&#34;, &#34;labelvalue1&#34;))
@@ -130,10 +134,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
  *             .location(&#34;us-central1&#34;)
+ *             .name(&#34;my-dataset&#34;)
  *             .build());
  * 
  *         var my_consent = new ConsentStore(&#34;my-consent&#34;, ConsentStoreArgs.builder()        
  *             .dataset(dataset.id())
+ *             .name(&#34;my-consent-store&#34;)
  *             .build());
  * 
  *         var test_account = new Account(&#34;test-account&#34;, AccountArgs.builder()        

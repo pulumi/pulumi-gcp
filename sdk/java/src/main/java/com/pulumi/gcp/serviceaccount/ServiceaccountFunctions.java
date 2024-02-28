@@ -62,6 +62,51 @@ public final class ServiceaccountFunctions {
      *     }
      * }
      * ```
+     * ### Save Key In Kubernetes Secret
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetAccountArgs;
+     * import com.pulumi.gcp.serviceaccount.Key;
+     * import com.pulumi.gcp.serviceaccount.KeyArgs;
+     * import com.pulumi.kubernetes.core_v1.Secret;
+     * import com.pulumi.kubernetes.core_v1.SecretArgs;
+     * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myaccount = ServiceaccountFunctions.getAccount(GetAccountArgs.builder()
+     *             .accountId(&#34;myaccount-id&#34;)
+     *             .build());
+     * 
+     *         var mykey = new Key(&#34;mykey&#34;, KeyArgs.builder()        
+     *             .serviceAccountId(myaccount.applyValue(getAccountResult -&gt; getAccountResult.name()))
+     *             .build());
+     * 
+     *         var google_application_credentials = new Secret(&#34;google-application-credentials&#34;, SecretArgs.builder()        
+     *             .metadata(ObjectMetaArgs.builder()
+     *                 .name(&#34;google-application-credentials&#34;)
+     *                 .build())
+     *             .data(Map.of(&#34;json&#34;, StdFunctions.base64decode().applyValue(invoke -&gt; invoke.result())))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAccountResult> getAccount(GetAccountArgs args) {
@@ -95,6 +140,51 @@ public final class ServiceaccountFunctions {
      *     public static void stack(Context ctx) {
      *         final var objectViewer = ServiceaccountFunctions.getAccount(GetAccountArgs.builder()
      *             .accountId(&#34;object-viewer&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ### Save Key In Kubernetes Secret
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetAccountArgs;
+     * import com.pulumi.gcp.serviceaccount.Key;
+     * import com.pulumi.gcp.serviceaccount.KeyArgs;
+     * import com.pulumi.kubernetes.core_v1.Secret;
+     * import com.pulumi.kubernetes.core_v1.SecretArgs;
+     * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myaccount = ServiceaccountFunctions.getAccount(GetAccountArgs.builder()
+     *             .accountId(&#34;myaccount-id&#34;)
+     *             .build());
+     * 
+     *         var mykey = new Key(&#34;mykey&#34;, KeyArgs.builder()        
+     *             .serviceAccountId(myaccount.applyValue(getAccountResult -&gt; getAccountResult.name()))
+     *             .build());
+     * 
+     *         var google_application_credentials = new Secret(&#34;google-application-credentials&#34;, SecretArgs.builder()        
+     *             .metadata(ObjectMetaArgs.builder()
+     *                 .name(&#34;google-application-credentials&#34;)
+     *                 .build())
+     *             .data(Map.of(&#34;json&#34;, StdFunctions.base64decode().applyValue(invoke -&gt; invoke.result())))
      *             .build());
      * 
      *     }
@@ -138,6 +228,51 @@ public final class ServiceaccountFunctions {
      *     }
      * }
      * ```
+     * ### Save Key In Kubernetes Secret
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetAccountArgs;
+     * import com.pulumi.gcp.serviceaccount.Key;
+     * import com.pulumi.gcp.serviceaccount.KeyArgs;
+     * import com.pulumi.kubernetes.core_v1.Secret;
+     * import com.pulumi.kubernetes.core_v1.SecretArgs;
+     * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myaccount = ServiceaccountFunctions.getAccount(GetAccountArgs.builder()
+     *             .accountId(&#34;myaccount-id&#34;)
+     *             .build());
+     * 
+     *         var mykey = new Key(&#34;mykey&#34;, KeyArgs.builder()        
+     *             .serviceAccountId(myaccount.applyValue(getAccountResult -&gt; getAccountResult.name()))
+     *             .build());
+     * 
+     *         var google_application_credentials = new Secret(&#34;google-application-credentials&#34;, SecretArgs.builder()        
+     *             .metadata(ObjectMetaArgs.builder()
+     *                 .name(&#34;google-application-credentials&#34;)
+     *                 .build())
+     *             .data(Map.of(&#34;json&#34;, StdFunctions.base64decode().applyValue(invoke -&gt; invoke.result())))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAccountResult> getAccount(GetAccountArgs args, InvokeOptions options) {
@@ -171,6 +306,51 @@ public final class ServiceaccountFunctions {
      *     public static void stack(Context ctx) {
      *         final var objectViewer = ServiceaccountFunctions.getAccount(GetAccountArgs.builder()
      *             .accountId(&#34;object-viewer&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ### Save Key In Kubernetes Secret
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetAccountArgs;
+     * import com.pulumi.gcp.serviceaccount.Key;
+     * import com.pulumi.gcp.serviceaccount.KeyArgs;
+     * import com.pulumi.kubernetes.core_v1.Secret;
+     * import com.pulumi.kubernetes.core_v1.SecretArgs;
+     * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myaccount = ServiceaccountFunctions.getAccount(GetAccountArgs.builder()
+     *             .accountId(&#34;myaccount-id&#34;)
+     *             .build());
+     * 
+     *         var mykey = new Key(&#34;mykey&#34;, KeyArgs.builder()        
+     *             .serviceAccountId(myaccount.applyValue(getAccountResult -&gt; getAccountResult.name()))
+     *             .build());
+     * 
+     *         var google_application_credentials = new Secret(&#34;google-application-credentials&#34;, SecretArgs.builder()        
+     *             .metadata(ObjectMetaArgs.builder()
+     *                 .name(&#34;google-application-credentials&#34;)
+     *                 .build())
+     *             .data(Map.of(&#34;json&#34;, StdFunctions.base64decode().applyValue(invoke -&gt; invoke.result())))
      *             .build());
      * 
      *     }
@@ -214,9 +394,9 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var token_creator_iam = new IAMBinding(&#34;token-creator-iam&#34;, IAMBindingArgs.builder()        
-     *             .members(&#34;serviceAccount:service_A@projectA.iam.gserviceaccount.com&#34;)
-     *             .role(&#34;roles/iam.serviceAccountTokenCreator&#34;)
      *             .serviceAccountId(&#34;projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com&#34;)
+     *             .role(&#34;roles/iam.serviceAccountTokenCreator&#34;)
+     *             .members(&#34;serviceAccount:service_A@projectA.iam.gserviceaccount.com&#34;)
      *             .build());
      * 
      *     }
@@ -235,8 +415,6 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.organizations.OrganizationsFunctions;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountAccessTokenArgs;
-     * import com.pulumi.pulumi.providers.google;
-     * import com.pulumi.pulumi.providers.ProviderArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -250,18 +428,14 @@ public final class ServiceaccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultClientConfig = OrganizationsFunctions.getClientConfig();
+     *         final var default = OrganizationsFunctions.getClientConfig();
      * 
-     *         final var defaultAccountAccessToken = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
+     *         final var defaultGetAccountAccessToken = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
      *             .targetServiceAccount(&#34;service_B@projectB.iam.gserviceaccount.com&#34;)
      *             .scopes(            
      *                 &#34;userinfo-email&#34;,
      *                 &#34;cloud-platform&#34;)
      *             .lifetime(&#34;300s&#34;)
-     *             .build());
-     * 
-     *         var impersonated = new Provider(&#34;impersonated&#34;, ProviderArgs.builder()        
-     *             .accessToken(defaultAccountAccessToken.applyValue(getAccountAccessTokenResult -&gt; getAccountAccessTokenResult.accessToken()))
      *             .build());
      * 
      *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
@@ -310,9 +484,9 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var token_creator_iam = new IAMBinding(&#34;token-creator-iam&#34;, IAMBindingArgs.builder()        
-     *             .members(&#34;serviceAccount:service_A@projectA.iam.gserviceaccount.com&#34;)
-     *             .role(&#34;roles/iam.serviceAccountTokenCreator&#34;)
      *             .serviceAccountId(&#34;projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com&#34;)
+     *             .role(&#34;roles/iam.serviceAccountTokenCreator&#34;)
+     *             .members(&#34;serviceAccount:service_A@projectA.iam.gserviceaccount.com&#34;)
      *             .build());
      * 
      *     }
@@ -331,8 +505,6 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.organizations.OrganizationsFunctions;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountAccessTokenArgs;
-     * import com.pulumi.pulumi.providers.google;
-     * import com.pulumi.pulumi.providers.ProviderArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -346,18 +518,14 @@ public final class ServiceaccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultClientConfig = OrganizationsFunctions.getClientConfig();
+     *         final var default = OrganizationsFunctions.getClientConfig();
      * 
-     *         final var defaultAccountAccessToken = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
+     *         final var defaultGetAccountAccessToken = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
      *             .targetServiceAccount(&#34;service_B@projectB.iam.gserviceaccount.com&#34;)
      *             .scopes(            
      *                 &#34;userinfo-email&#34;,
      *                 &#34;cloud-platform&#34;)
      *             .lifetime(&#34;300s&#34;)
-     *             .build());
-     * 
-     *         var impersonated = new Provider(&#34;impersonated&#34;, ProviderArgs.builder()        
-     *             .accessToken(defaultAccountAccessToken.applyValue(getAccountAccessTokenResult -&gt; getAccountAccessTokenResult.accessToken()))
      *             .build());
      * 
      *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
@@ -406,9 +574,9 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var token_creator_iam = new IAMBinding(&#34;token-creator-iam&#34;, IAMBindingArgs.builder()        
-     *             .members(&#34;serviceAccount:service_A@projectA.iam.gserviceaccount.com&#34;)
-     *             .role(&#34;roles/iam.serviceAccountTokenCreator&#34;)
      *             .serviceAccountId(&#34;projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com&#34;)
+     *             .role(&#34;roles/iam.serviceAccountTokenCreator&#34;)
+     *             .members(&#34;serviceAccount:service_A@projectA.iam.gserviceaccount.com&#34;)
      *             .build());
      * 
      *     }
@@ -427,8 +595,6 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.organizations.OrganizationsFunctions;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountAccessTokenArgs;
-     * import com.pulumi.pulumi.providers.google;
-     * import com.pulumi.pulumi.providers.ProviderArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -442,18 +608,14 @@ public final class ServiceaccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultClientConfig = OrganizationsFunctions.getClientConfig();
+     *         final var default = OrganizationsFunctions.getClientConfig();
      * 
-     *         final var defaultAccountAccessToken = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
+     *         final var defaultGetAccountAccessToken = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
      *             .targetServiceAccount(&#34;service_B@projectB.iam.gserviceaccount.com&#34;)
      *             .scopes(            
      *                 &#34;userinfo-email&#34;,
      *                 &#34;cloud-platform&#34;)
      *             .lifetime(&#34;300s&#34;)
-     *             .build());
-     * 
-     *         var impersonated = new Provider(&#34;impersonated&#34;, ProviderArgs.builder()        
-     *             .accessToken(defaultAccountAccessToken.applyValue(getAccountAccessTokenResult -&gt; getAccountAccessTokenResult.accessToken()))
      *             .build());
      * 
      *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
@@ -502,9 +664,9 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var token_creator_iam = new IAMBinding(&#34;token-creator-iam&#34;, IAMBindingArgs.builder()        
-     *             .members(&#34;serviceAccount:service_A@projectA.iam.gserviceaccount.com&#34;)
-     *             .role(&#34;roles/iam.serviceAccountTokenCreator&#34;)
      *             .serviceAccountId(&#34;projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com&#34;)
+     *             .role(&#34;roles/iam.serviceAccountTokenCreator&#34;)
+     *             .members(&#34;serviceAccount:service_A@projectA.iam.gserviceaccount.com&#34;)
      *             .build());
      * 
      *     }
@@ -523,8 +685,6 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.organizations.OrganizationsFunctions;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountAccessTokenArgs;
-     * import com.pulumi.pulumi.providers.google;
-     * import com.pulumi.pulumi.providers.ProviderArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -538,18 +698,14 @@ public final class ServiceaccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultClientConfig = OrganizationsFunctions.getClientConfig();
+     *         final var default = OrganizationsFunctions.getClientConfig();
      * 
-     *         final var defaultAccountAccessToken = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
+     *         final var defaultGetAccountAccessToken = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
      *             .targetServiceAccount(&#34;service_B@projectB.iam.gserviceaccount.com&#34;)
      *             .scopes(            
      *                 &#34;userinfo-email&#34;,
      *                 &#34;cloud-platform&#34;)
      *             .lifetime(&#34;300s&#34;)
-     *             .build());
-     * 
-     *         var impersonated = new Provider(&#34;impersonated&#34;, ProviderArgs.builder()        
-     *             .accessToken(defaultAccountAccessToken.applyValue(getAccountAccessTokenResult -&gt; getAccountAccessTokenResult.accessToken()))
      *             .build());
      * 
      *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
@@ -1030,7 +1186,7 @@ public final class ServiceaccountFunctions {
      *             .serviceAccountId(myaccount.name())
      *             .build());
      * 
-     *         final var mykeyAccountKey = ServiceaccountFunctions.getAccountKey(GetAccountKeyArgs.builder()
+     *         final var mykey = ServiceaccountFunctions.getAccountKey(GetAccountKeyArgs.builder()
      *             .name(mykeyKey.name())
      *             .publicKeyType(&#34;TYPE_X509_PEM_FILE&#34;)
      *             .build());
@@ -1080,7 +1236,7 @@ public final class ServiceaccountFunctions {
      *             .serviceAccountId(myaccount.name())
      *             .build());
      * 
-     *         final var mykeyAccountKey = ServiceaccountFunctions.getAccountKey(GetAccountKeyArgs.builder()
+     *         final var mykey = ServiceaccountFunctions.getAccountKey(GetAccountKeyArgs.builder()
      *             .name(mykeyKey.name())
      *             .publicKeyType(&#34;TYPE_X509_PEM_FILE&#34;)
      *             .build());
@@ -1130,7 +1286,7 @@ public final class ServiceaccountFunctions {
      *             .serviceAccountId(myaccount.name())
      *             .build());
      * 
-     *         final var mykeyAccountKey = ServiceaccountFunctions.getAccountKey(GetAccountKeyArgs.builder()
+     *         final var mykey = ServiceaccountFunctions.getAccountKey(GetAccountKeyArgs.builder()
      *             .name(mykeyKey.name())
      *             .publicKeyType(&#34;TYPE_X509_PEM_FILE&#34;)
      *             .build());
@@ -1180,7 +1336,7 @@ public final class ServiceaccountFunctions {
      *             .serviceAccountId(myaccount.name())
      *             .build());
      * 
-     *         final var mykeyAccountKey = ServiceaccountFunctions.getAccountKey(GetAccountKeyArgs.builder()
+     *         final var mykey = ServiceaccountFunctions.getAccountKey(GetAccountKeyArgs.builder()
      *             .name(mykeyKey.name())
      *             .publicKeyType(&#34;TYPE_X509_PEM_FILE&#34;)
      *             .build());
@@ -1219,7 +1375,7 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = ServiceaccountFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .serviceAccountId(google_service_account.test_account().name())
+     *             .serviceAccountId(testAccount.name())
      *             .build());
      * 
      *     }
@@ -1256,7 +1412,7 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = ServiceaccountFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .serviceAccountId(google_service_account.test_account().name())
+     *             .serviceAccountId(testAccount.name())
      *             .build());
      * 
      *     }
@@ -1293,7 +1449,7 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = ServiceaccountFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .serviceAccountId(google_service_account.test_account().name())
+     *             .serviceAccountId(testAccount.name())
      *             .build());
      * 
      *     }
@@ -1330,7 +1486,7 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = ServiceaccountFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .serviceAccountId(google_service_account.test_account().name())
+     *             .serviceAccountId(testAccount.name())
      *             .build());
      * 
      *     }

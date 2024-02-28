@@ -466,26 +466,26 @@ class AiIndexEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        vertex_network = gcp.compute.Network("vertexNetwork")
-        vertex_range = gcp.compute.GlobalAddress("vertexRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=24,
-            network=vertex_network.id)
-        vertex_vpc_connection = gcp.servicenetworking.Connection("vertexVpcConnection",
-            network=vertex_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[vertex_range.name])
+        vertex_network = gcp.compute.Network("vertex_network", name="network-name")
         project = gcp.organizations.get_project()
-        index_endpoint = gcp.vertex.AiIndexEndpoint("indexEndpoint",
+        index_endpoint = gcp.vertex.AiIndexEndpoint("index_endpoint",
             display_name="sample-endpoint",
             description="A sample vertex endpoint",
             region="us-central1",
             labels={
                 "label-one": "value-one",
             },
-            network=vertex_network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"),
-            opts=pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
+            network=vertex_network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"))
+        vertex_range = gcp.compute.GlobalAddress("vertex_range",
+            name="address-name",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=24,
+            network=vertex_network.id)
+        vertex_vpc_connection = gcp.servicenetworking.Connection("vertex_vpc_connection",
+            network=vertex_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[vertex_range.name])
         ```
         ### Vertex Ai Index Endpoint With Psc
 
@@ -494,7 +494,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        index_endpoint = gcp.vertex.AiIndexEndpoint("indexEndpoint",
+        index_endpoint = gcp.vertex.AiIndexEndpoint("index_endpoint",
             display_name="sample-endpoint",
             description="A sample vertex endpoint",
             region="us-central1",
@@ -512,14 +512,14 @@ class AiIndexEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        index_endpoint = gcp.vertex.AiIndexEndpoint("indexEndpoint",
-            description="A sample vertex endpoint with an public endpoint",
+        index_endpoint = gcp.vertex.AiIndexEndpoint("index_endpoint",
             display_name="sample-endpoint",
+            description="A sample vertex endpoint with an public endpoint",
+            region="us-central1",
             labels={
                 "label-one": "value-one",
             },
-            public_endpoint_enabled=True,
-            region="us-central1")
+            public_endpoint_enabled=True)
         ```
 
         ## Import
@@ -593,26 +593,26 @@ class AiIndexEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        vertex_network = gcp.compute.Network("vertexNetwork")
-        vertex_range = gcp.compute.GlobalAddress("vertexRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=24,
-            network=vertex_network.id)
-        vertex_vpc_connection = gcp.servicenetworking.Connection("vertexVpcConnection",
-            network=vertex_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[vertex_range.name])
+        vertex_network = gcp.compute.Network("vertex_network", name="network-name")
         project = gcp.organizations.get_project()
-        index_endpoint = gcp.vertex.AiIndexEndpoint("indexEndpoint",
+        index_endpoint = gcp.vertex.AiIndexEndpoint("index_endpoint",
             display_name="sample-endpoint",
             description="A sample vertex endpoint",
             region="us-central1",
             labels={
                 "label-one": "value-one",
             },
-            network=vertex_network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"),
-            opts=pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
+            network=vertex_network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"))
+        vertex_range = gcp.compute.GlobalAddress("vertex_range",
+            name="address-name",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=24,
+            network=vertex_network.id)
+        vertex_vpc_connection = gcp.servicenetworking.Connection("vertex_vpc_connection",
+            network=vertex_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[vertex_range.name])
         ```
         ### Vertex Ai Index Endpoint With Psc
 
@@ -621,7 +621,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        index_endpoint = gcp.vertex.AiIndexEndpoint("indexEndpoint",
+        index_endpoint = gcp.vertex.AiIndexEndpoint("index_endpoint",
             display_name="sample-endpoint",
             description="A sample vertex endpoint",
             region="us-central1",
@@ -639,14 +639,14 @@ class AiIndexEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        index_endpoint = gcp.vertex.AiIndexEndpoint("indexEndpoint",
-            description="A sample vertex endpoint with an public endpoint",
+        index_endpoint = gcp.vertex.AiIndexEndpoint("index_endpoint",
             display_name="sample-endpoint",
+            description="A sample vertex endpoint with an public endpoint",
+            region="us-central1",
             labels={
                 "label-one": "value-one",
             },
-            public_endpoint_enabled=True,
-            region="us-central1")
+            public_endpoint_enabled=True)
         ```
 
         ## Import

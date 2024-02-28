@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const primary = new gcp.container.Cluster("primary", {
+ *     name: "restore-all-ns-cluster",
  *     location: "us-central1",
  *     initialNodeCount: 1,
  *     workloadIdentityConfig: {
@@ -38,6 +39,7 @@ import * as utilities from "../utilities";
  *     subnetwork: "default",
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
+ *     name: "restore-all-ns",
  *     cluster: primary.id,
  *     location: "us-central1",
  *     backupConfig: {
@@ -46,7 +48,8 @@ import * as utilities from "../utilities";
  *         allNamespaces: true,
  *     },
  * });
- * const allNs = new gcp.gkebackup.RestorePlan("allNs", {
+ * const allNs = new gcp.gkebackup.RestorePlan("all_ns", {
+ *     name: "restore-all-ns",
  *     location: "us-central1",
  *     backupPlan: basic.id,
  *     cluster: primary.id,
@@ -68,6 +71,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const primary = new gcp.container.Cluster("primary", {
+ *     name: "rollback-ns-cluster",
  *     location: "us-central1",
  *     initialNodeCount: 1,
  *     workloadIdentityConfig: {
@@ -83,6 +87,7 @@ import * as utilities from "../utilities";
  *     subnetwork: "default",
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
+ *     name: "rollback-ns",
  *     cluster: primary.id,
  *     location: "us-central1",
  *     backupConfig: {
@@ -91,7 +96,8 @@ import * as utilities from "../utilities";
  *         allNamespaces: true,
  *     },
  * });
- * const rollbackNs = new gcp.gkebackup.RestorePlan("rollbackNs", {
+ * const rollbackNs = new gcp.gkebackup.RestorePlan("rollback_ns", {
+ *     name: "rollback-ns-rp",
  *     location: "us-central1",
  *     backupPlan: basic.id,
  *     cluster: primary.id,
@@ -124,6 +130,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const primary = new gcp.container.Cluster("primary", {
+ *     name: "rollback-app-cluster",
  *     location: "us-central1",
  *     initialNodeCount: 1,
  *     workloadIdentityConfig: {
@@ -139,6 +146,7 @@ import * as utilities from "../utilities";
  *     subnetwork: "default",
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
+ *     name: "rollback-app",
  *     cluster: primary.id,
  *     location: "us-central1",
  *     backupConfig: {
@@ -147,7 +155,8 @@ import * as utilities from "../utilities";
  *         allNamespaces: true,
  *     },
  * });
- * const rollbackApp = new gcp.gkebackup.RestorePlan("rollbackApp", {
+ * const rollbackApp = new gcp.gkebackup.RestorePlan("rollback_app", {
+ *     name: "rollback-app-rp",
  *     location: "us-central1",
  *     backupPlan: basic.id,
  *     cluster: primary.id,
@@ -173,6 +182,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const primary = new gcp.container.Cluster("primary", {
+ *     name: "all-groupkinds-cluster",
  *     location: "us-central1",
  *     initialNodeCount: 1,
  *     workloadIdentityConfig: {
@@ -188,6 +198,7 @@ import * as utilities from "../utilities";
  *     subnetwork: "default",
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
+ *     name: "all-groupkinds",
  *     cluster: primary.id,
  *     location: "us-central1",
  *     backupConfig: {
@@ -196,7 +207,8 @@ import * as utilities from "../utilities";
  *         allNamespaces: true,
  *     },
  * });
- * const allClusterResources = new gcp.gkebackup.RestorePlan("allClusterResources", {
+ * const allClusterResources = new gcp.gkebackup.RestorePlan("all_cluster_resources", {
+ *     name: "all-groupkinds-rp",
  *     location: "us-central1",
  *     backupPlan: basic.id,
  *     cluster: primary.id,
@@ -217,6 +229,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const primary = new gcp.container.Cluster("primary", {
+ *     name: "rename-ns-cluster",
  *     location: "us-central1",
  *     initialNodeCount: 1,
  *     workloadIdentityConfig: {
@@ -232,6 +245,7 @@ import * as utilities from "../utilities";
  *     subnetwork: "default",
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
+ *     name: "rename-ns",
  *     cluster: primary.id,
  *     location: "us-central1",
  *     backupConfig: {
@@ -240,7 +254,8 @@ import * as utilities from "../utilities";
  *         allNamespaces: true,
  *     },
  * });
- * const renameNs = new gcp.gkebackup.RestorePlan("renameNs", {
+ * const renameNs = new gcp.gkebackup.RestorePlan("rename_ns", {
+ *     name: "rename-ns-rp",
  *     location: "us-central1",
  *     backupPlan: basic.id,
  *     cluster: primary.id,
@@ -290,6 +305,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const primary = new gcp.container.Cluster("primary", {
+ *     name: "transform-rule-cluster",
  *     location: "us-central1",
  *     initialNodeCount: 1,
  *     workloadIdentityConfig: {
@@ -305,6 +321,7 @@ import * as utilities from "../utilities";
  *     subnetwork: "default",
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
+ *     name: "transform-rule",
  *     cluster: primary.id,
  *     location: "us-central1",
  *     backupConfig: {
@@ -313,7 +330,8 @@ import * as utilities from "../utilities";
  *         allNamespaces: true,
  *     },
  * });
- * const transformRule = new gcp.gkebackup.RestorePlan("transformRule", {
+ * const transformRule = new gcp.gkebackup.RestorePlan("transform_rule", {
+ *     name: "transform-rule-rp",
  *     description: "copy nginx env variables",
  *     labels: {
  *         app: "nginx",

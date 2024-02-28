@@ -30,8 +30,8 @@ namespace Pulumi.Gcp.CloudRunV2
         /// {
         ///     var myJob = Gcp.CloudRunV2.GetJob.Invoke(new()
         ///     {
-        ///         Location = "us-central1",
         ///         Name = "my-job",
+        ///         Location = "us-central1",
         ///     });
         /// 
         /// });
@@ -61,8 +61,8 @@ namespace Pulumi.Gcp.CloudRunV2
         /// {
         ///     var myJob = Gcp.CloudRunV2.GetJob.Invoke(new()
         ///     {
-        ///         Location = "us-central1",
         ///         Name = "my-job",
+        ///         Location = "us-central1",
         ///     });
         /// 
         /// });

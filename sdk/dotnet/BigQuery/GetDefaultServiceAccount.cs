@@ -36,9 +36,9 @@ namespace Pulumi.Gcp.BigQuery
         /// {
         ///     var bqSa = Gcp.BigQuery.GetDefaultServiceAccount.Invoke();
         /// 
-        ///     var keySaUser = new Gcp.Kms.CryptoKeyIAMMember("keySaUser", new()
+        ///     var keySaUser = new Gcp.Kms.CryptoKeyIAMMember("key_sa_user", new()
         ///     {
-        ///         CryptoKeyId = google_kms_crypto_key.Key.Id,
+        ///         CryptoKeyId = key.Id,
         ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
         ///         Member = $"serviceAccount:{bqSa.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)}",
         ///     });
@@ -76,9 +76,9 @@ namespace Pulumi.Gcp.BigQuery
         /// {
         ///     var bqSa = Gcp.BigQuery.GetDefaultServiceAccount.Invoke();
         /// 
-        ///     var keySaUser = new Gcp.Kms.CryptoKeyIAMMember("keySaUser", new()
+        ///     var keySaUser = new Gcp.Kms.CryptoKeyIAMMember("key_sa_user", new()
         ///     {
-        ///         CryptoKeyId = google_kms_crypto_key.Key.Id,
+        ///         CryptoKeyId = key.Id,
         ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
         ///         Member = $"serviceAccount:{bqSa.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)}",
         ///     });

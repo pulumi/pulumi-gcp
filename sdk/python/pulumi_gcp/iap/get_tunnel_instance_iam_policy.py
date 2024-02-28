@@ -109,9 +109,9 @@ def get_tunnel_instance_iam_policy(instance: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.iap.get_tunnel_instance_iam_policy(project=google_compute_instance["tunnelvm"]["project"],
-        zone=google_compute_instance["tunnelvm"]["zone"],
-        instance=google_compute_instance["tunnelvm"]["name"])
+    policy = gcp.iap.get_tunnel_instance_iam_policy(project=tunnelvm["project"],
+        zone=tunnelvm["zone"],
+        instance=tunnelvm["name"])
     ```
 
 
@@ -149,9 +149,9 @@ def get_tunnel_instance_iam_policy_output(instance: Optional[pulumi.Input[str]] 
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.iap.get_tunnel_instance_iam_policy(project=google_compute_instance["tunnelvm"]["project"],
-        zone=google_compute_instance["tunnelvm"]["zone"],
-        instance=google_compute_instance["tunnelvm"]["name"])
+    policy = gcp.iap.get_tunnel_instance_iam_policy(project=tunnelvm["project"],
+        zone=tunnelvm["zone"],
+        instance=tunnelvm["name"])
     ```
 
 

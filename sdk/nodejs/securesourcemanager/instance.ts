@@ -23,11 +23,11 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.securesourcemanager.Instance("default", {
+ *     location: "us-central1",
  *     instanceId: "my-instance",
  *     labels: {
  *         foo: "bar",
  *     },
- *     location: "us-central1",
  * });
  * ```
  * ### Secure Source Manager Instance Cmek
@@ -36,10 +36,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "us-central1"});
- * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.id});
+ * const keyRing = new gcp.kms.KeyRing("key_ring", {
+ *     name: "my-keyring",
+ *     location: "us-central1",
+ * });
+ * const cryptoKey = new gcp.kms.CryptoKey("crypto_key", {
+ *     name: "my-key",
+ *     keyRing: keyRing.id,
+ * });
  * const project = gcp.organizations.getProject({});
- * const cryptoKeyBinding = new gcp.kms.CryptoKeyIAMMember("cryptoKeyBinding", {
+ * const cryptoKeyBinding = new gcp.kms.CryptoKeyIAMMember("crypto_key_binding", {
  *     cryptoKeyId: cryptoKey.id,
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com`),
@@ -48,9 +54,73 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     instanceId: "my-instance",
  *     kmsKey: cryptoKey.id,
- * }, {
- *     dependsOn: [cryptoKeyBinding],
  * });
+ * ```
+ * ### Secure Source Manager Instance Private
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumi/time";
+ *
+ * const caPool = new gcp.certificateauthority.CaPool("ca_pool", {
+ *     name: "ca-pool",
+ *     location: "us-central1",
+ *     tier: "ENTERPRISE",
+ *     publishingOptions: {
+ *         publishCaCert: true,
+ *         publishCrl: true,
+ *     },
+ * });
+ * const rootCa = new gcp.certificateauthority.Authority("root_ca", {
+ *     pool: caPool.name,
+ *     certificateAuthorityId: "root-ca",
+ *     location: "us-central1",
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 organization: "google",
+ *                 commonName: "my-certificate-authority",
+ *             },
+ *         },
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: true,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     certSign: true,
+ *                     crlSign: true,
+ *                 },
+ *                 extendedKeyUsage: {
+ *                     serverAuth: true,
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     keySpec: {
+ *         algorithm: "RSA_PKCS1_4096_SHA256",
+ *     },
+ *     deletionProtection: false,
+ *     ignoreActiveCertificatesOnDeletion: true,
+ *     skipGracePeriod: true,
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const caPoolBinding = new gcp.certificateauthority.CaPoolIamBinding("ca_pool_binding", {
+ *     caPool: caPool.id,
+ *     role: "roles/privateca.certificateRequester",
+ *     members: [project.then(project => `serviceAccount:service-${project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com`)],
+ * });
+ * const _default = new gcp.securesourcemanager.Instance("default", {
+ *     instanceId: "my-instance",
+ *     location: "us-central1",
+ *     privateConfig: {
+ *         isPrivate: true,
+ *         caPool: caPool.id,
+ *     },
+ * });
+ * // ca pool IAM permissions can take time to propagate
+ * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"});
  * ```
  *
  * ## Import

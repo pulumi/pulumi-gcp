@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.PubSub
     /// {
     ///     var example = new Gcp.PubSub.Topic("example", new()
     ///     {
+    ///         Name = "example-topic",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -53,18 +54,21 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var keyRing = new Gcp.Kms.KeyRing("keyRing", new()
+    ///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()
     ///     {
+    ///         Name = "example-keyring",
     ///         Location = "global",
     ///     });
     /// 
-    ///     var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("crypto_key", new()
     ///     {
+    ///         Name = "example-key",
     ///         KeyRing = keyRing.Id,
     ///     });
     /// 
     ///     var example = new Gcp.PubSub.Topic("example", new()
     ///     {
+    ///         Name = "example-topic",
     ///         KmsKeyName = cryptoKey.Id,
     ///     });
     /// 
@@ -82,6 +86,7 @@ namespace Pulumi.Gcp.PubSub
     /// {
     ///     var example = new Gcp.PubSub.Topic("example", new()
     ///     {
+    ///         Name = "example-topic",
     ///         MessageStoragePolicy = new Gcp.PubSub.Inputs.TopicMessageStoragePolicyArgs
     ///         {
     ///             AllowedPersistenceRegions = new[]
@@ -103,8 +108,9 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleSchema = new Gcp.PubSub.Schema("exampleSchema", new()
+    ///     var example = new Gcp.PubSub.Schema("example", new()
     ///     {
+    ///         Name = "example",
     ///         Type = "AVRO",
     ///         Definition = @"{
     ///   ""type"" : ""record"",
@@ -123,18 +129,13 @@ namespace Pulumi.Gcp.PubSub
     /// ",
     ///     });
     /// 
-    ///     var exampleTopic = new Gcp.PubSub.Topic("exampleTopic", new()
+    ///     var exampleTopic = new Gcp.PubSub.Topic("example", new()
     ///     {
+    ///         Name = "example-topic",
     ///         SchemaSettings = new Gcp.PubSub.Inputs.TopicSchemaSettingsArgs
     ///         {
     ///             Schema = "projects/my-project-name/schemas/example",
     ///             Encoding = "JSON",
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             exampleSchema,
     ///         },
     ///     });
     /// 

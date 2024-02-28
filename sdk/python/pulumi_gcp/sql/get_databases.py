@@ -83,7 +83,7 @@ def get_databases(instance: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    qa = gcp.sql.get_databases(instance=google_sql_database_instance["main"]["name"])
+    qa = gcp.sql.get_databases(instance=main["name"])
     ```
 
 
@@ -117,7 +117,7 @@ def get_databases_output(instance: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    qa = gcp.sql.get_databases(instance=google_sql_database_instance["main"]["name"])
+    qa = gcp.sql.get_databases(instance=main["name"])
     ```
 
 

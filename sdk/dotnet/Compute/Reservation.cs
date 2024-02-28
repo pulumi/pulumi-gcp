@@ -36,18 +36,19 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var gceReservation = new Gcp.Compute.Reservation("gceReservation", new()
+    ///     var gceReservation = new Gcp.Compute.Reservation("gce_reservation", new()
     ///     {
+    ///         Name = "gce-reservation",
+    ///         Zone = "us-central1-a",
     ///         SpecificReservation = new Gcp.Compute.Inputs.ReservationSpecificReservationArgs
     ///         {
     ///             Count = 1,
     ///             InstanceProperties = new Gcp.Compute.Inputs.ReservationSpecificReservationInstancePropertiesArgs
     ///             {
-    ///                 MachineType = "n2-standard-2",
     ///                 MinCpuPlatform = "Intel Cascade Lake",
+    ///                 MachineType = "n2-standard-2",
     ///             },
     ///         },
-    ///         Zone = "us-central1-a",
     ///     });
     /// 
     /// });

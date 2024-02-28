@@ -26,12 +26,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const bucket = new gcp.storage.Bucket("bucket", {location: "US"});
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "test-bucket",
+ *     location: "US",
+ * });
  * const archive = new gcp.storage.BucketObject("archive", {
+ *     name: "index.zip",
  *     bucket: bucket.name,
  *     source: new pulumi.asset.FileAsset("./path/to/zip/file/which/contains/code"),
  * });
  * const _function = new gcp.cloudfunctions.Function("function", {
+ *     name: "function-test",
  *     description: "My function",
  *     runtime: "nodejs16",
  *     availableMemoryMb: 128,
@@ -55,12 +60,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const bucket = new gcp.storage.Bucket("bucket", {location: "US"});
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "test-bucket",
+ *     location: "US",
+ * });
  * const archive = new gcp.storage.BucketObject("archive", {
+ *     name: "index.zip",
  *     bucket: bucket.name,
  *     source: new pulumi.asset.FileAsset("./path/to/zip/file/which/contains/code"),
  * });
  * const _function = new gcp.cloudfunctions.Function("function", {
+ *     name: "function-test",
  *     description: "My function",
  *     runtime: "nodejs16",
  *     availableMemoryMb: 128,

@@ -20,7 +20,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basicInstance = new gcp.datafusion.Instance("basicInstance", {
+ * const basicInstance = new gcp.datafusion.Instance("basic_instance", {
+ *     name: "my-instance",
  *     region: "us-central1",
  *     type: "BASIC",
  * });
@@ -32,14 +33,16 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const default = gcp.appengine.getDefaultServiceAccount({});
- * const network = new gcp.compute.Network("network", {});
- * const privateIpAlloc = new gcp.compute.GlobalAddress("privateIpAlloc", {
+ * const network = new gcp.compute.Network("network", {name: "datafusion-full-network"});
+ * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
+ *     name: "datafusion-ip-alloc",
  *     addressType: "INTERNAL",
  *     purpose: "VPC_PEERING",
  *     prefixLength: 22,
  *     network: network.id,
  * });
- * const extendedInstance = new gcp.datafusion.Instance("extendedInstance", {
+ * const extendedInstance = new gcp.datafusion.Instance("extended_instance", {
+ *     name: "my-instance",
  *     description: "My Data Fusion instance",
  *     displayName: "My Data Fusion instance",
  *     region: "us-central1",
@@ -67,22 +70,27 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "us-central1"});
- * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.id});
- * const project = gcp.organizations.getProject({});
- * const cryptoKeyMember = new gcp.kms.CryptoKeyIAMMember("cryptoKeyMember", {
- *     cryptoKeyId: cryptoKey.id,
- *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
- *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-datafusion.iam.gserviceaccount.com`),
+ * const keyRing = new gcp.kms.KeyRing("key_ring", {
+ *     name: "my-instance",
+ *     location: "us-central1",
+ * });
+ * const cryptoKey = new gcp.kms.CryptoKey("crypto_key", {
+ *     name: "my-instance",
+ *     keyRing: keyRing.id,
  * });
  * const cmek = new gcp.datafusion.Instance("cmek", {
+ *     name: "my-instance",
  *     region: "us-central1",
  *     type: "BASIC",
  *     cryptoKeyConfig: {
  *         keyReference: cryptoKey.id,
  *     },
- * }, {
- *     dependsOn: [cryptoKeyMember],
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const cryptoKeyMember = new gcp.kms.CryptoKeyIAMMember("crypto_key_member", {
+ *     cryptoKeyId: cryptoKey.id,
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-datafusion.iam.gserviceaccount.com`),
  * });
  * ```
  * ### Data Fusion Instance Enterprise
@@ -91,10 +99,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const enterpriseInstance = new gcp.datafusion.Instance("enterpriseInstance", {
- *     enableRbac: true,
+ * const enterpriseInstance = new gcp.datafusion.Instance("enterprise_instance", {
+ *     name: "my-instance",
  *     region: "us-central1",
  *     type: "ENTERPRISE",
+ *     enableRbac: true,
  * });
  * ```
  * ### Data Fusion Instance Event
@@ -103,8 +112,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const eventTopic = new gcp.pubsub.Topic("eventTopic", {});
- * const eventInstance = new gcp.datafusion.Instance("eventInstance", {
+ * const eventTopic = new gcp.pubsub.Topic("event", {name: "my-instance"});
+ * const event = new gcp.datafusion.Instance("event", {
+ *     name: "my-instance",
  *     region: "us-central1",
  *     type: "BASIC",
  *     eventPublishConfig: {
@@ -120,9 +130,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const zone = new gcp.datafusion.Instance("zone", {
+ *     name: "my-instance",
  *     region: "us-central1",
- *     type: "DEVELOPER",
  *     zone: "us-central1-a",
+ *     type: "DEVELOPER",
  * });
  * ```
  *

@@ -202,9 +202,9 @@ class Service(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.projects.Service("project",
-            disable_dependent_services=True,
             project="your-project-id",
-            service="iam.googleapis.com")
+            service="iam.googleapis.com",
+            disable_dependent_services=True)
         ```
 
         ## Import
@@ -268,9 +268,9 @@ class Service(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.projects.Service("project",
-            disable_dependent_services=True,
             project="your-project-id",
-            service="iam.googleapis.com")
+            service="iam.googleapis.com",
+            disable_dependent_services=True)
         ```
 
         ## Import

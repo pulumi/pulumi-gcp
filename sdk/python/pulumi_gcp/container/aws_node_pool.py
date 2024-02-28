@@ -564,7 +564,7 @@ class AwsNodePool(pulumi.CustomResource):
 
         versions = gcp.container.get_aws_versions(project="my-project-name",
             location="us-west1")
-        primary_aws_cluster = gcp.container.AwsCluster("primaryAwsCluster",
+        primary = gcp.container.AwsCluster("primary",
             authorization=gcp.container.AwsClusterAuthorizationArgs(
                 admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
                     username="my@service-account.com",
@@ -614,6 +614,7 @@ class AwsNodePool(pulumi.CustomResource):
                 project="my-project-number",
             ),
             location="us-west1",
+            name="name",
             networking=gcp.container.AwsClusterNetworkingArgs(
                 pod_address_cidr_blocks=["10.2.0.0/16"],
                 service_address_cidr_blocks=["10.1.0.0/16"],
@@ -624,12 +625,12 @@ class AwsNodePool(pulumi.CustomResource):
             },
             description="A sample aws cluster",
             project="my-project-name")
-        primary_aws_node_pool = gcp.container.AwsNodePool("primaryAwsNodePool",
+        primary_aws_node_pool = gcp.container.AwsNodePool("primary",
             autoscaling=gcp.container.AwsNodePoolAutoscalingArgs(
                 max_node_count=5,
                 min_node_count=1,
             ),
-            cluster=primary_aws_cluster.name,
+            cluster=primary.name,
             config=gcp.container.AwsNodePoolConfigArgs(
                 config_encryption=gcp.container.AwsNodePoolConfigConfigEncryptionArgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
@@ -666,6 +667,7 @@ class AwsNodePool(pulumi.CustomResource):
             max_pods_constraint=gcp.container.AwsNodePoolMaxPodsConstraintArgs(
                 max_pods_per_node=110,
             ),
+            name="node-pool-name",
             subnet_id="subnet-00000000000000000",
             version=versions.valid_versions[0],
             annotations={
@@ -684,7 +686,7 @@ class AwsNodePool(pulumi.CustomResource):
 
         versions = gcp.container.get_aws_versions(project="my-project-name",
             location="us-west1")
-        primary_aws_cluster = gcp.container.AwsCluster("primaryAwsCluster",
+        primary = gcp.container.AwsCluster("primary",
             authorization=gcp.container.AwsClusterAuthorizationArgs(
                 admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
                     username="my@service-account.com",
@@ -734,6 +736,7 @@ class AwsNodePool(pulumi.CustomResource):
                 project="my-project-number",
             ),
             location="us-west1",
+            name="name",
             networking=gcp.container.AwsClusterNetworkingArgs(
                 pod_address_cidr_blocks=["10.2.0.0/16"],
                 service_address_cidr_blocks=["10.1.0.0/16"],
@@ -744,12 +747,12 @@ class AwsNodePool(pulumi.CustomResource):
             },
             description="A sample aws cluster",
             project="my-project-name")
-        primary_aws_node_pool = gcp.container.AwsNodePool("primaryAwsNodePool",
+        primary_aws_node_pool = gcp.container.AwsNodePool("primary",
             autoscaling=gcp.container.AwsNodePoolAutoscalingArgs(
                 max_node_count=5,
                 min_node_count=1,
             ),
-            cluster=primary_aws_cluster.name,
+            cluster=primary.name,
             config=gcp.container.AwsNodePoolConfigArgs(
                 config_encryption=gcp.container.AwsNodePoolConfigConfigEncryptionArgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
@@ -786,6 +789,7 @@ class AwsNodePool(pulumi.CustomResource):
             max_pods_constraint=gcp.container.AwsNodePoolMaxPodsConstraintArgs(
                 max_pods_per_node=110,
             ),
+            name="node-pool-name",
             subnet_id="subnet-00000000000000000",
             version=versions.valid_versions[0],
             annotations={
@@ -801,7 +805,7 @@ class AwsNodePool(pulumi.CustomResource):
 
         versions = gcp.container.get_aws_versions(project="my-project-name",
             location="us-west1")
-        primary_aws_cluster = gcp.container.AwsCluster("primaryAwsCluster",
+        primary = gcp.container.AwsCluster("primary",
             authorization=gcp.container.AwsClusterAuthorizationArgs(
                 admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
                     username="my@service-account.com",
@@ -851,6 +855,7 @@ class AwsNodePool(pulumi.CustomResource):
                 project="my-project-number",
             ),
             location="us-west1",
+            name="name",
             networking=gcp.container.AwsClusterNetworkingArgs(
                 pod_address_cidr_blocks=["10.2.0.0/16"],
                 service_address_cidr_blocks=["10.1.0.0/16"],
@@ -860,14 +865,13 @@ class AwsNodePool(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             description="A sample aws cluster",
-            project="my-project-name",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        primary_aws_node_pool = gcp.container.AwsNodePool("primaryAwsNodePool",
+            project="my-project-name")
+        primary_aws_node_pool = gcp.container.AwsNodePool("primary",
             autoscaling=gcp.container.AwsNodePoolAutoscalingArgs(
                 max_node_count=5,
                 min_node_count=1,
             ),
-            cluster=primary_aws_cluster.name,
+            cluster=primary.name,
             config=gcp.container.AwsNodePoolConfigArgs(
                 config_encryption=gcp.container.AwsNodePoolConfigConfigEncryptionArgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
@@ -908,13 +912,13 @@ class AwsNodePool(pulumi.CustomResource):
             max_pods_constraint=gcp.container.AwsNodePoolMaxPodsConstraintArgs(
                 max_pods_per_node=110,
             ),
+            name="node-pool-name",
             subnet_id="subnet-00000000000000000",
             version=versions.valid_versions[0],
             annotations={
                 "label-one": "value-one",
             },
-            project="my-project-name",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            project="my-project-name")
         ```
 
         ## Import
@@ -979,7 +983,7 @@ class AwsNodePool(pulumi.CustomResource):
 
         versions = gcp.container.get_aws_versions(project="my-project-name",
             location="us-west1")
-        primary_aws_cluster = gcp.container.AwsCluster("primaryAwsCluster",
+        primary = gcp.container.AwsCluster("primary",
             authorization=gcp.container.AwsClusterAuthorizationArgs(
                 admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
                     username="my@service-account.com",
@@ -1029,6 +1033,7 @@ class AwsNodePool(pulumi.CustomResource):
                 project="my-project-number",
             ),
             location="us-west1",
+            name="name",
             networking=gcp.container.AwsClusterNetworkingArgs(
                 pod_address_cidr_blocks=["10.2.0.0/16"],
                 service_address_cidr_blocks=["10.1.0.0/16"],
@@ -1039,12 +1044,12 @@ class AwsNodePool(pulumi.CustomResource):
             },
             description="A sample aws cluster",
             project="my-project-name")
-        primary_aws_node_pool = gcp.container.AwsNodePool("primaryAwsNodePool",
+        primary_aws_node_pool = gcp.container.AwsNodePool("primary",
             autoscaling=gcp.container.AwsNodePoolAutoscalingArgs(
                 max_node_count=5,
                 min_node_count=1,
             ),
-            cluster=primary_aws_cluster.name,
+            cluster=primary.name,
             config=gcp.container.AwsNodePoolConfigArgs(
                 config_encryption=gcp.container.AwsNodePoolConfigConfigEncryptionArgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
@@ -1081,6 +1086,7 @@ class AwsNodePool(pulumi.CustomResource):
             max_pods_constraint=gcp.container.AwsNodePoolMaxPodsConstraintArgs(
                 max_pods_per_node=110,
             ),
+            name="node-pool-name",
             subnet_id="subnet-00000000000000000",
             version=versions.valid_versions[0],
             annotations={
@@ -1099,7 +1105,7 @@ class AwsNodePool(pulumi.CustomResource):
 
         versions = gcp.container.get_aws_versions(project="my-project-name",
             location="us-west1")
-        primary_aws_cluster = gcp.container.AwsCluster("primaryAwsCluster",
+        primary = gcp.container.AwsCluster("primary",
             authorization=gcp.container.AwsClusterAuthorizationArgs(
                 admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
                     username="my@service-account.com",
@@ -1149,6 +1155,7 @@ class AwsNodePool(pulumi.CustomResource):
                 project="my-project-number",
             ),
             location="us-west1",
+            name="name",
             networking=gcp.container.AwsClusterNetworkingArgs(
                 pod_address_cidr_blocks=["10.2.0.0/16"],
                 service_address_cidr_blocks=["10.1.0.0/16"],
@@ -1159,12 +1166,12 @@ class AwsNodePool(pulumi.CustomResource):
             },
             description="A sample aws cluster",
             project="my-project-name")
-        primary_aws_node_pool = gcp.container.AwsNodePool("primaryAwsNodePool",
+        primary_aws_node_pool = gcp.container.AwsNodePool("primary",
             autoscaling=gcp.container.AwsNodePoolAutoscalingArgs(
                 max_node_count=5,
                 min_node_count=1,
             ),
-            cluster=primary_aws_cluster.name,
+            cluster=primary.name,
             config=gcp.container.AwsNodePoolConfigArgs(
                 config_encryption=gcp.container.AwsNodePoolConfigConfigEncryptionArgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
@@ -1201,6 +1208,7 @@ class AwsNodePool(pulumi.CustomResource):
             max_pods_constraint=gcp.container.AwsNodePoolMaxPodsConstraintArgs(
                 max_pods_per_node=110,
             ),
+            name="node-pool-name",
             subnet_id="subnet-00000000000000000",
             version=versions.valid_versions[0],
             annotations={
@@ -1216,7 +1224,7 @@ class AwsNodePool(pulumi.CustomResource):
 
         versions = gcp.container.get_aws_versions(project="my-project-name",
             location="us-west1")
-        primary_aws_cluster = gcp.container.AwsCluster("primaryAwsCluster",
+        primary = gcp.container.AwsCluster("primary",
             authorization=gcp.container.AwsClusterAuthorizationArgs(
                 admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
                     username="my@service-account.com",
@@ -1266,6 +1274,7 @@ class AwsNodePool(pulumi.CustomResource):
                 project="my-project-number",
             ),
             location="us-west1",
+            name="name",
             networking=gcp.container.AwsClusterNetworkingArgs(
                 pod_address_cidr_blocks=["10.2.0.0/16"],
                 service_address_cidr_blocks=["10.1.0.0/16"],
@@ -1275,14 +1284,13 @@ class AwsNodePool(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             description="A sample aws cluster",
-            project="my-project-name",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        primary_aws_node_pool = gcp.container.AwsNodePool("primaryAwsNodePool",
+            project="my-project-name")
+        primary_aws_node_pool = gcp.container.AwsNodePool("primary",
             autoscaling=gcp.container.AwsNodePoolAutoscalingArgs(
                 max_node_count=5,
                 min_node_count=1,
             ),
-            cluster=primary_aws_cluster.name,
+            cluster=primary.name,
             config=gcp.container.AwsNodePoolConfigArgs(
                 config_encryption=gcp.container.AwsNodePoolConfigConfigEncryptionArgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
@@ -1323,13 +1331,13 @@ class AwsNodePool(pulumi.CustomResource):
             max_pods_constraint=gcp.container.AwsNodePoolMaxPodsConstraintArgs(
                 max_pods_per_node=110,
             ),
+            name="node-pool-name",
             subnet_id="subnet-00000000000000000",
             version=versions.valid_versions[0],
             annotations={
                 "label-one": "value-one",
             },
-            project="my-project-name",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            project="my-project-name")
         ```
 
         ## Import

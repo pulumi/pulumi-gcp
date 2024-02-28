@@ -261,9 +261,9 @@ class RuntimeIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.notebooks.RuntimeIamPolicy("policy",
-            project=google_notebooks_runtime["runtime"]["project"],
-            location=google_notebooks_runtime["runtime"]["location"],
-            runtime_name=google_notebooks_runtime["runtime"]["name"],
+            project=runtime["project"],
+            location=runtime["location"],
+            runtime_name=runtime["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -274,9 +274,9 @@ class RuntimeIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.notebooks.RuntimeIamBinding("binding",
-            project=google_notebooks_runtime["runtime"]["project"],
-            location=google_notebooks_runtime["runtime"]["location"],
-            runtime_name=google_notebooks_runtime["runtime"]["name"],
+            project=runtime["project"],
+            location=runtime["location"],
+            runtime_name=runtime["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -288,9 +288,9 @@ class RuntimeIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.notebooks.RuntimeIamMember("member",
-            project=google_notebooks_runtime["runtime"]["project"],
-            location=google_notebooks_runtime["runtime"]["location"],
-            runtime_name=google_notebooks_runtime["runtime"]["name"],
+            project=runtime["project"],
+            location=runtime["location"],
+            runtime_name=runtime["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -386,9 +386,9 @@ class RuntimeIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.notebooks.RuntimeIamPolicy("policy",
-            project=google_notebooks_runtime["runtime"]["project"],
-            location=google_notebooks_runtime["runtime"]["location"],
-            runtime_name=google_notebooks_runtime["runtime"]["name"],
+            project=runtime["project"],
+            location=runtime["location"],
+            runtime_name=runtime["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -399,9 +399,9 @@ class RuntimeIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.notebooks.RuntimeIamBinding("binding",
-            project=google_notebooks_runtime["runtime"]["project"],
-            location=google_notebooks_runtime["runtime"]["location"],
-            runtime_name=google_notebooks_runtime["runtime"]["name"],
+            project=runtime["project"],
+            location=runtime["location"],
+            runtime_name=runtime["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -413,9 +413,9 @@ class RuntimeIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.notebooks.RuntimeIamMember("member",
-            project=google_notebooks_runtime["runtime"]["project"],
-            location=google_notebooks_runtime["runtime"]["location"],
-            runtime_name=google_notebooks_runtime["runtime"]["name"],
+            project=runtime["project"],
+            location=runtime["location"],
+            runtime_name=runtime["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

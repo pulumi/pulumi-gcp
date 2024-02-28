@@ -164,10 +164,10 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -188,7 +188,10 @@ namespace Pulumi.Gcp.Iam
     ///         },
     ///         Saml = new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderSamlArgs
     ///         {
-    ///             IdpMetadataXml = File.ReadAllText("test-fixtures/metadata.xml"),
+    ///             IdpMetadataXml = Std.File.Invoke(new()
+    ///             {
+    ///                 Input = "test-fixtures/metadata.xml",
+    ///             }).Apply(invoke =&gt; invoke.Result),
     ///         },
     ///     });
     /// 
@@ -198,10 +201,10 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -225,7 +228,10 @@ namespace Pulumi.Gcp.Iam
     ///         },
     ///         Saml = new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderSamlArgs
     ///         {
-    ///             IdpMetadataXml = File.ReadAllText("test-fixtures/metadata.xml"),
+    ///             IdpMetadataXml = Std.File.Invoke(new()
+    ///             {
+    ///                 Input = "test-fixtures/metadata.xml",
+    ///             }).Apply(invoke =&gt; invoke.Result),
     ///         },
     ///     });
     /// 
@@ -348,30 +354,12 @@ namespace Pulumi.Gcp.Iam
         /// the total size of all mapped attributes must not exceed 8KB.
         /// For AWS providers, the following rules apply:
         /// - If no attribute mapping is defined, the following default mapping applies:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// - If any custom attribute mappings are defined, they must include a mapping to the
         /// `google.subject` attribute.
         /// For OIDC providers, the following rules apply:
         /// - Custom attribute mappings must be defined, and must include a mapping to the
         /// `google.subject` attribute. For example, the following maps the `sub` claim of the
         /// incoming credential to the `subject` attribute on a Google token.
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         [Output("attributeMapping")]
         public Output<ImmutableDictionary<string, string>?> AttributeMapping { get; private set; } = null!;
@@ -552,30 +540,12 @@ namespace Pulumi.Gcp.Iam
         /// the total size of all mapped attributes must not exceed 8KB.
         /// For AWS providers, the following rules apply:
         /// - If no attribute mapping is defined, the following default mapping applies:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// - If any custom attribute mappings are defined, they must include a mapping to the
         /// `google.subject` attribute.
         /// For OIDC providers, the following rules apply:
         /// - Custom attribute mappings must be defined, and must include a mapping to the
         /// `google.subject` attribute. For example, the following maps the `sub` claim of the
         /// incoming credential to the `subject` attribute on a Google token.
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         public InputMap<string> AttributeMapping
         {
@@ -702,30 +672,12 @@ namespace Pulumi.Gcp.Iam
         /// the total size of all mapped attributes must not exceed 8KB.
         /// For AWS providers, the following rules apply:
         /// - If no attribute mapping is defined, the following default mapping applies:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// - If any custom attribute mappings are defined, they must include a mapping to the
         /// `google.subject` attribute.
         /// For OIDC providers, the following rules apply:
         /// - Custom attribute mappings must be defined, and must include a mapping to the
         /// `google.subject` attribute. For example, the following maps the `sub` claim of the
         /// incoming credential to the `subject` attribute on a Google token.
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         public InputMap<string> AttributeMapping
         {

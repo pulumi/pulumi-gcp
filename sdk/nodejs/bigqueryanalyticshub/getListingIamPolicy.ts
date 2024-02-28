@@ -14,10 +14,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.bigqueryanalyticshub.getListingIamPolicy({
- *     project: google_bigquery_analytics_hub_listing.listing.project,
- *     location: google_bigquery_analytics_hub_listing.listing.location,
- *     dataExchangeId: google_bigquery_analytics_hub_listing.listing.data_exchange_id,
- *     listingId: google_bigquery_analytics_hub_listing.listing.listing_id,
+ *     project: listing.project,
+ *     location: listing.location,
+ *     dataExchangeId: listing.dataExchangeId,
+ *     listingId: listing.listingId,
  * });
  * ```
  */
@@ -88,10 +88,10 @@ export interface GetListingIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.bigqueryanalyticshub.getListingIamPolicy({
- *     project: google_bigquery_analytics_hub_listing.listing.project,
- *     location: google_bigquery_analytics_hub_listing.listing.location,
- *     dataExchangeId: google_bigquery_analytics_hub_listing.listing.data_exchange_id,
- *     listingId: google_bigquery_analytics_hub_listing.listing.listing_id,
+ *     project: listing.project,
+ *     location: listing.location,
+ *     dataExchangeId: listing.dataExchangeId,
+ *     listingId: listing.listingId,
  * });
  * ```
  */

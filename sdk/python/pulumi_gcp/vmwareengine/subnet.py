@@ -345,11 +345,13 @@ class Subnet(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         subnet_nw = gcp.vmwareengine.Network("subnet-nw",
+            name="pc-nw",
             location="global",
             type="STANDARD",
             description="PC network description.")
         subnet_pc = gcp.vmwareengine.PrivateCloud("subnet-pc",
             location="us-west1-a",
+            name="sample-pc",
             description="Sample test PC.",
             network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
                 management_cidr="192.168.50.0/24",
@@ -363,6 +365,7 @@ class Subnet(pulumi.CustomResource):
                 )],
             ))
         vmw_engine_subnet = gcp.vmwareengine.Subnet("vmw-engine-subnet",
+            name="service-1",
             parent=subnet_pc.id,
             ip_cidr_range="192.168.100.0/26")
         ```
@@ -414,11 +417,13 @@ class Subnet(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         subnet_nw = gcp.vmwareengine.Network("subnet-nw",
+            name="pc-nw",
             location="global",
             type="STANDARD",
             description="PC network description.")
         subnet_pc = gcp.vmwareengine.PrivateCloud("subnet-pc",
             location="us-west1-a",
+            name="sample-pc",
             description="Sample test PC.",
             network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
                 management_cidr="192.168.50.0/24",
@@ -432,6 +437,7 @@ class Subnet(pulumi.CustomResource):
                 )],
             ))
         vmw_engine_subnet = gcp.vmwareengine.Subnet("vmw-engine-subnet",
+            name="service-1",
             parent=subnet_pc.id,
             ip_cidr_range="192.168.100.0/26")
         ```

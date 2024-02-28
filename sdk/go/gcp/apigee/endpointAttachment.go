@@ -42,11 +42,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			apigeeNetwork, err := compute.NewNetwork(ctx, "apigeeNetwork", nil)
+//			apigeeNetwork, err := compute.NewNetwork(ctx, "apigee_network", &compute.NetworkArgs{
+//				Name: pulumi.String("apigee-network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			apigeeRange, err := compute.NewGlobalAddress(ctx, "apigeeRange", &compute.GlobalAddressArgs{
+//			apigeeRange, err := compute.NewGlobalAddress(ctx, "apigee_range", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("apigee-range"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
@@ -55,7 +58,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigeeVpcConnection", &servicenetworking.ConnectionArgs{
+//			_, err = servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
 //				Network: apigeeNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
@@ -65,17 +68,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			apigeeOrg, err := apigee.NewOrganization(ctx, "apigeeOrg", &apigee.OrganizationArgs{
+//			apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 //				AnalyticsRegion:   pulumi.String("us-central1"),
 //				ProjectId:         *pulumi.String(current.Project),
 //				AuthorizedNetwork: apigeeNetwork.ID(),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				apigeeVpcConnection,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = apigee.NewEndpointAttachment(ctx, "apigeeEndpointAttachment", &apigee.EndpointAttachmentArgs{
+//			_, err = apigee.NewEndpointAttachment(ctx, "apigee_endpoint_attachment", &apigee.EndpointAttachmentArgs{
 //				OrgId:                apigeeOrg.ID(),
 //				EndpointAttachmentId: pulumi.String("test1"),
 //				Location:             pulumi.String("{google_compute_service_attachment location}"),

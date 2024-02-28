@@ -409,11 +409,6 @@ class AiTensorboard(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.get_project()
-        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
-            crypto_key_id="kms-name",
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com")
         tensorboard = gcp.vertex.AiTensorboard("tensorboard",
             display_name="terraform",
             description="sample description",
@@ -424,8 +419,12 @@ class AiTensorboard(pulumi.CustomResource):
             region="us-central1",
             encryption_spec=gcp.vertex.AiTensorboardEncryptionSpecArgs(
                 kms_key_name="kms-name",
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[crypto_key]))
+            ))
+        project = gcp.organizations.get_project()
+        crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
+            crypto_key_id="kms-name",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com")
         ```
 
         ## Import
@@ -512,11 +511,6 @@ class AiTensorboard(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.get_project()
-        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
-            crypto_key_id="kms-name",
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com")
         tensorboard = gcp.vertex.AiTensorboard("tensorboard",
             display_name="terraform",
             description="sample description",
@@ -527,8 +521,12 @@ class AiTensorboard(pulumi.CustomResource):
             region="us-central1",
             encryption_spec=gcp.vertex.AiTensorboardEncryptionSpecArgs(
                 kms_key_name="kms-name",
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[crypto_key]))
+            ))
+        project = gcp.organizations.get_project()
+        crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
+            crypto_key_id="kms-name",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com")
         ```
 
         ## Import

@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := secretmanager.LookupSecretIamPolicy(ctx, &secretmanager.LookupSecretIamPolicyArgs{
-//				Project:  pulumi.StringRef(google_secret_manager_secret.SecretBasic.Project),
-//				SecretId: google_secret_manager_secret.SecretBasic.Secret_id,
+//				Project:  pulumi.StringRef(secret_basic.Project),
+//				SecretId: secret_basic.SecretId,
 //			}, nil)
 //			if err != nil {
 //				return err

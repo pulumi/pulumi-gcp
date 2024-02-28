@@ -40,6 +40,7 @@ namespace Pulumi.Gcp.Container
         /// 
         ///     var foo = new Gcp.Container.Cluster("foo", new()
         ///     {
+        ///         Name = "test-cluster",
         ///         Location = "us-central1-b",
         ///         NodeVersion = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.LatestNodeVersion),
         ///         InitialNodeCount = 1,
@@ -87,6 +88,7 @@ namespace Pulumi.Gcp.Container
         /// 
         ///     var foo = new Gcp.Container.Cluster("foo", new()
         ///     {
+        ///         Name = "test-cluster",
         ///         Location = "us-central1-b",
         ///         NodeVersion = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.LatestNodeVersion),
         ///         InitialNodeCount = 1,

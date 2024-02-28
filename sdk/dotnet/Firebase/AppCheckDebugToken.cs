@@ -22,6 +22,40 @@ namespace Pulumi.Gcp.Firebase
     ///     * [Official Documentation](https://firebase.google.com/docs/app-check)
     /// 
     /// ## Example Usage
+    /// ### Firebase App Check Debug Token Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumi.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Firebase.WebApp("default", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         DisplayName = "Web App for debug token",
+    ///     });
+    /// 
+    ///     // It takes a while for App Check to recognize the new app
+    ///     // If your app already exists, you don't have to wait 30 seconds.
+    ///     var wait30s = new Time.Index.Sleep("wait_30s", new()
+    ///     {
+    ///         CreateDuration = "30s",
+    ///     });
+    /// 
+    ///     var defaultAppCheckDebugToken = new Gcp.Firebase.AppCheckDebugToken("default", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         AppId = @default.AppId,
+    ///         DisplayName = "Debug Token",
+    ///         Token = "00000000-AAAA-BBBB-CCCC-000000000000",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

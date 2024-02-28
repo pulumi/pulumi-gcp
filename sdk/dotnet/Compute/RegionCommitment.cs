@@ -35,18 +35,19 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var foobar = new Gcp.Compute.RegionCommitment("foobar", new()
     ///     {
+    ///         Name = "my-region-commitment",
     ///         Plan = "THIRTY_SIX_MONTH",
     ///         Resources = new[]
     ///         {
     ///             new Gcp.Compute.Inputs.RegionCommitmentResourceArgs
     ///             {
-    ///                 Amount = "4",
     ///                 Type = "VCPU",
+    ///                 Amount = "4",
     ///             },
     ///             new Gcp.Compute.Inputs.RegionCommitmentResourceArgs
     ///             {
-    ///                 Amount = "9",
     ///                 Type = "MEMORY",
+    ///                 Amount = "9",
     ///             },
     ///         },
     ///     });
@@ -65,24 +66,25 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var foobar = new Gcp.Compute.RegionCommitment("foobar", new()
     ///     {
-    ///         AutoRenew = true,
-    ///         Category = "MACHINE",
+    ///         Name = "my-full-commitment",
     ///         Description = "some description",
     ///         Plan = "THIRTY_SIX_MONTH",
+    ///         Type = "MEMORY_OPTIMIZED",
+    ///         Category = "MACHINE",
+    ///         AutoRenew = true,
     ///         Resources = new[]
     ///         {
     ///             new Gcp.Compute.Inputs.RegionCommitmentResourceArgs
     ///             {
-    ///                 Amount = "4",
     ///                 Type = "VCPU",
+    ///                 Amount = "4",
     ///             },
     ///             new Gcp.Compute.Inputs.RegionCommitmentResourceArgs
     ///             {
-    ///                 Amount = "9",
     ///                 Type = "MEMORY",
+    ///                 Amount = "9",
     ///             },
     ///         },
-    ///         Type = "MEMORY_OPTIMIZED",
     ///     });
     /// 
     /// });

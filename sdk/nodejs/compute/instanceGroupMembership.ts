@@ -31,8 +31,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default_network = new gcp.compute.Network("default-network", {});
+ * const default_network = new gcp.compute.Network("default-network", {name: "network"});
  * const default_instance = new gcp.compute.Instance("default-instance", {
+ *     name: "instance",
  *     machineType: "e2-medium",
  *     bootDisk: {
  *         initializeParams: {
@@ -43,7 +44,7 @@ import * as utilities from "../utilities";
  *         network: default_network.name,
  *     }],
  * });
- * const default_instance_group = new gcp.compute.InstanceGroup("default-instance-group", {});
+ * const default_instance_group = new gcp.compute.InstanceGroup("default-instance-group", {name: "instance-group"});
  * const default_ig_membership = new gcp.compute.InstanceGroupMembership("default-ig-membership", {
  *     instance: default_instance.selfLink,
  *     instanceGroup: default_instance_group.name,

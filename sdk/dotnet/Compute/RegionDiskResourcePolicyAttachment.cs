@@ -28,6 +28,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var disk = new Gcp.Compute.Disk("disk", new()
     ///     {
+    ///         Name = "my-base-disk",
     ///         Image = "debian-cloud/debian-11",
     ///         Size = 50,
     ///         Type = "pd-ssd",
@@ -36,12 +37,14 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var snapdisk = new Gcp.Compute.Snapshot("snapdisk", new()
     ///     {
+    ///         Name = "my-snapshot",
     ///         SourceDisk = disk.Name,
     ///         Zone = "us-central1-a",
     ///     });
     /// 
     ///     var ssd = new Gcp.Compute.RegionDisk("ssd", new()
     ///     {
+    ///         Name = "my-disk",
     ///         ReplicaZones = new[]
     ///         {
     ///             "us-central1-a",
@@ -53,14 +56,9 @@ namespace Pulumi.Gcp.Compute
     ///         Region = "us-central1",
     ///     });
     /// 
-    ///     var attachment = new Gcp.Compute.RegionDiskResourcePolicyAttachment("attachment", new()
-    ///     {
-    ///         Disk = ssd.Name,
-    ///         Region = "us-central1",
-    ///     });
-    /// 
     ///     var policy = new Gcp.Compute.ResourcePolicy("policy", new()
     ///     {
+    ///         Name = "my-resource-policy",
     ///         Region = "us-central1",
     ///         SnapshotSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyArgs
     ///         {
@@ -73,6 +71,13 @@ namespace Pulumi.Gcp.Compute
     ///                 },
     ///             },
     ///         },
+    ///     });
+    /// 
+    ///     var attachment = new Gcp.Compute.RegionDiskResourcePolicyAttachment("attachment", new()
+    ///     {
+    ///         Name = policy.Name,
+    ///         Disk = ssd.Name,
+    ///         Region = "us-central1",
     ///     });
     /// 
     ///     var myImage = Gcp.Compute.GetImage.Invoke(new()

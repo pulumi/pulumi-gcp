@@ -19,6 +19,965 @@ import (
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/urlMaps)
 //
 // ## Example Usage
+// ### Url Map Bucket And Service
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+//				Name:             pulumi.String("health-check"),
+//				RequestPath:      pulumi.String("/"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			login, err := compute.NewBackendService(ctx, "login", &compute.BackendServiceArgs{
+//				Name:         pulumi.String("login"),
+//				PortName:     pulumi.String("http"),
+//				Protocol:     pulumi.String("HTTP"),
+//				TimeoutSec:   pulumi.Int(10),
+//				HealthChecks: _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			staticBucket, err := storage.NewBucket(ctx, "static", &storage.BucketArgs{
+//				Name:     pulumi.String("static-asset-bucket"),
+//				Location: pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			static, err := compute.NewBackendBucket(ctx, "static", &compute.BackendBucketArgs{
+//				Name:       pulumi.String("static-asset-backend-bucket"),
+//				BucketName: staticBucket.Name,
+//				EnableCdn:  pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewURLMap(ctx, "urlmap", &compute.URLMapArgs{
+//				Name:           pulumi.String("urlmap"),
+//				Description:    pulumi.String("a description"),
+//				DefaultService: static.ID(),
+//				HostRules: compute.URLMapHostRuleArray{
+//					&compute.URLMapHostRuleArgs{
+//						Hosts: pulumi.StringArray{
+//							pulumi.String("mysite.com"),
+//						},
+//						PathMatcher: pulumi.String("mysite"),
+//					},
+//					&compute.URLMapHostRuleArgs{
+//						Hosts: pulumi.StringArray{
+//							pulumi.String("myothersite.com"),
+//						},
+//						PathMatcher: pulumi.String("otherpaths"),
+//					},
+//				},
+//				PathMatchers: compute.URLMapPathMatcherArray{
+//					&compute.URLMapPathMatcherArgs{
+//						Name:           pulumi.String("mysite"),
+//						DefaultService: static.ID(),
+//						PathRules: compute.URLMapPathMatcherPathRuleArray{
+//							&compute.URLMapPathMatcherPathRuleArgs{
+//								Paths: pulumi.StringArray{
+//									pulumi.String("/home"),
+//								},
+//								Service: static.ID(),
+//							},
+//							&compute.URLMapPathMatcherPathRuleArgs{
+//								Paths: pulumi.StringArray{
+//									pulumi.String("/login"),
+//								},
+//								Service: login.ID(),
+//							},
+//							&compute.URLMapPathMatcherPathRuleArgs{
+//								Paths: pulumi.StringArray{
+//									pulumi.String("/static"),
+//								},
+//								Service: static.ID(),
+//							},
+//						},
+//					},
+//					&compute.URLMapPathMatcherArgs{
+//						Name:           pulumi.String("otherpaths"),
+//						DefaultService: static.ID(),
+//					},
+//				},
+//				Tests: compute.URLMapTestArray{
+//					&compute.URLMapTestArgs{
+//						Service: static.ID(),
+//						Host:    pulumi.String("example.com"),
+//						Path:    pulumi.String("/home"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Url Map Traffic Director Route
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//				Name: pulumi.String("health-check"),
+//				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			home, err := compute.NewBackendService(ctx, "home", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("home"),
+//				PortName:            pulumi.String("http"),
+//				Protocol:            pulumi.String("HTTP"),
+//				TimeoutSec:          pulumi.Int(10),
+//				HealthChecks:        _default.ID(),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewURLMap(ctx, "urlmap", &compute.URLMapArgs{
+//				Name:           pulumi.String("urlmap"),
+//				Description:    pulumi.String("a description"),
+//				DefaultService: home.ID(),
+//				HostRules: compute.URLMapHostRuleArray{
+//					&compute.URLMapHostRuleArgs{
+//						Hosts: pulumi.StringArray{
+//							pulumi.String("mysite.com"),
+//						},
+//						PathMatcher: pulumi.String("allpaths"),
+//					},
+//				},
+//				PathMatchers: compute.URLMapPathMatcherArray{
+//					&compute.URLMapPathMatcherArgs{
+//						Name:           pulumi.String("allpaths"),
+//						DefaultService: home.ID(),
+//						RouteRules: compute.URLMapPathMatcherRouteRuleArray{
+//							&compute.URLMapPathMatcherRouteRuleArgs{
+//								Priority: pulumi.Int(1),
+//								HeaderAction: &compute.URLMapPathMatcherRouteRuleHeaderActionArgs{
+//									RequestHeadersToRemoves: pulumi.StringArray{
+//										pulumi.String("RemoveMe2"),
+//									},
+//									RequestHeadersToAdds: compute.URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArray{
+//										&compute.URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs{
+//											HeaderName:  pulumi.String("AddSomethingElse"),
+//											HeaderValue: pulumi.String("MyOtherValue"),
+//											Replace:     pulumi.Bool(true),
+//										},
+//									},
+//									ResponseHeadersToRemoves: pulumi.StringArray{
+//										pulumi.String("RemoveMe3"),
+//									},
+//									ResponseHeadersToAdds: compute.URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArray{
+//										&compute.URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs{
+//											HeaderName:  pulumi.String("AddMe"),
+//											HeaderValue: pulumi.String("MyValue"),
+//											Replace:     pulumi.Bool(false),
+//										},
+//									},
+//								},
+//								MatchRules: compute.URLMapPathMatcherRouteRuleMatchRuleArray{
+//									&compute.URLMapPathMatcherRouteRuleMatchRuleArgs{
+//										FullPathMatch: pulumi.String("a full path"),
+//										HeaderMatches: compute.URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArray{
+//											&compute.URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs{
+//												HeaderName:  pulumi.String("someheader"),
+//												ExactMatch:  pulumi.String("match this exactly"),
+//												InvertMatch: pulumi.Bool(true),
+//											},
+//										},
+//										IgnoreCase: pulumi.Bool(true),
+//										MetadataFilters: compute.URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArray{
+//											&compute.URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs{
+//												FilterMatchCriteria: pulumi.String("MATCH_ANY"),
+//												FilterLabels: compute.URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArray{
+//													&compute.URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs{
+//														Name:  pulumi.String("PLANET"),
+//														Value: pulumi.String("MARS"),
+//													},
+//												},
+//											},
+//										},
+//										QueryParameterMatches: compute.URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArray{
+//											&compute.URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs{
+//												Name:         pulumi.String("a query parameter"),
+//												PresentMatch: pulumi.Bool(true),
+//											},
+//										},
+//									},
+//								},
+//								UrlRedirect: &compute.URLMapPathMatcherRouteRuleUrlRedirectArgs{
+//									HostRedirect:         pulumi.String("A host"),
+//									HttpsRedirect:        pulumi.Bool(false),
+//									PathRedirect:         pulumi.String("some/path"),
+//									RedirectResponseCode: pulumi.String("TEMPORARY_REDIRECT"),
+//									StripQuery:           pulumi.Bool(true),
+//								},
+//							},
+//						},
+//					},
+//				},
+//				Tests: compute.URLMapTestArray{
+//					&compute.URLMapTestArgs{
+//						Service: home.ID(),
+//						Host:    pulumi.String("hi.com"),
+//						Path:    pulumi.String("/home"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Url Map Traffic Director Route Partial
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//				Name: pulumi.String("health-check"),
+//				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			home, err := compute.NewBackendService(ctx, "home", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("home"),
+//				PortName:            pulumi.String("http"),
+//				Protocol:            pulumi.String("HTTP"),
+//				TimeoutSec:          pulumi.Int(10),
+//				HealthChecks:        _default.ID(),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewURLMap(ctx, "urlmap", &compute.URLMapArgs{
+//				Name:           pulumi.String("urlmap"),
+//				Description:    pulumi.String("a description"),
+//				DefaultService: home.ID(),
+//				HostRules: compute.URLMapHostRuleArray{
+//					&compute.URLMapHostRuleArgs{
+//						Hosts: pulumi.StringArray{
+//							pulumi.String("mysite.com"),
+//						},
+//						PathMatcher: pulumi.String("allpaths"),
+//					},
+//				},
+//				PathMatchers: compute.URLMapPathMatcherArray{
+//					&compute.URLMapPathMatcherArgs{
+//						Name:           pulumi.String("allpaths"),
+//						DefaultService: home.ID(),
+//						RouteRules: compute.URLMapPathMatcherRouteRuleArray{
+//							&compute.URLMapPathMatcherRouteRuleArgs{
+//								Priority: pulumi.Int(1),
+//								MatchRules: compute.URLMapPathMatcherRouteRuleMatchRuleArray{
+//									&compute.URLMapPathMatcherRouteRuleMatchRuleArgs{
+//										PrefixMatch: pulumi.String("/someprefix"),
+//										HeaderMatches: compute.URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArray{
+//											&compute.URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs{
+//												HeaderName:  pulumi.String("someheader"),
+//												ExactMatch:  pulumi.String("match this exactly"),
+//												InvertMatch: pulumi.Bool(true),
+//											},
+//										},
+//									},
+//								},
+//								UrlRedirect: &compute.URLMapPathMatcherRouteRuleUrlRedirectArgs{
+//									PathRedirect:         pulumi.String("some/path"),
+//									RedirectResponseCode: pulumi.String("TEMPORARY_REDIRECT"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//				Tests: compute.URLMapTestArray{
+//					&compute.URLMapTestArgs{
+//						Service: home.ID(),
+//						Host:    pulumi.String("hi.com"),
+//						Path:    pulumi.String("/home"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Url Map Traffic Director Path
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//				Name: pulumi.String("health-check"),
+//				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			home, err := compute.NewBackendService(ctx, "home", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("home"),
+//				PortName:            pulumi.String("http"),
+//				Protocol:            pulumi.String("HTTP"),
+//				TimeoutSec:          pulumi.Int(10),
+//				HealthChecks:        _default.ID(),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewURLMap(ctx, "urlmap", &compute.URLMapArgs{
+//				Name:           pulumi.String("urlmap"),
+//				Description:    pulumi.String("a description"),
+//				DefaultService: home.ID(),
+//				HostRules: compute.URLMapHostRuleArray{
+//					&compute.URLMapHostRuleArgs{
+//						Hosts: pulumi.StringArray{
+//							pulumi.String("mysite.com"),
+//						},
+//						PathMatcher: pulumi.String("allpaths"),
+//					},
+//				},
+//				PathMatchers: compute.URLMapPathMatcherArray{
+//					&compute.URLMapPathMatcherArgs{
+//						Name:           pulumi.String("allpaths"),
+//						DefaultService: home.ID(),
+//						PathRules: compute.URLMapPathMatcherPathRuleArray{
+//							&compute.URLMapPathMatcherPathRuleArgs{
+//								Paths: pulumi.StringArray{
+//									pulumi.String("/home"),
+//								},
+//								RouteAction: &compute.URLMapPathMatcherPathRuleRouteActionArgs{
+//									CorsPolicy: &compute.URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs{
+//										AllowCredentials: pulumi.Bool(true),
+//										AllowHeaders: pulumi.StringArray{
+//											pulumi.String("Allowed content"),
+//										},
+//										AllowMethods: pulumi.StringArray{
+//											pulumi.String("GET"),
+//										},
+//										AllowOriginRegexes: pulumi.StringArray{
+//											pulumi.String("abc.*"),
+//										},
+//										AllowOrigins: pulumi.StringArray{
+//											pulumi.String("Allowed origin"),
+//										},
+//										ExposeHeaders: pulumi.StringArray{
+//											pulumi.String("Exposed header"),
+//										},
+//										MaxAge:   pulumi.Int(30),
+//										Disabled: pulumi.Bool(false),
+//									},
+//									FaultInjectionPolicy: &compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs{
+//										Abort: &compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs{
+//											HttpStatus: pulumi.Int(234),
+//											Percentage: pulumi.Float64(5.6),
+//										},
+//										Delay: &compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs{
+//											FixedDelay: &compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs{
+//												Seconds: pulumi.String("0"),
+//												Nanos:   pulumi.Int(50000),
+//											},
+//											Percentage: pulumi.Float64(7.8),
+//										},
+//									},
+//									RequestMirrorPolicy: &compute.URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs{
+//										BackendService: home.ID(),
+//									},
+//									RetryPolicy: &compute.URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs{
+//										NumRetries: pulumi.Int(4),
+//										PerTryTimeout: &compute.URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs{
+//											Seconds: pulumi.String("30"),
+//										},
+//										RetryConditions: pulumi.StringArray{
+//											pulumi.String("5xx"),
+//											pulumi.String("deadline-exceeded"),
+//										},
+//									},
+//									Timeout: &compute.URLMapPathMatcherPathRuleRouteActionTimeoutArgs{
+//										Seconds: pulumi.String("20"),
+//										Nanos:   pulumi.Int(750000000),
+//									},
+//									UrlRewrite: &compute.URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs{
+//										HostRewrite:       pulumi.String("dev.example.com"),
+//										PathPrefixRewrite: pulumi.String("/v1/api/"),
+//									},
+//									WeightedBackendServices: compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArray{
+//										&compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs{
+//											BackendService: home.ID(),
+//											Weight:         pulumi.Int(400),
+//											HeaderAction: &compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs{
+//												RequestHeadersToRemoves: pulumi.StringArray{
+//													pulumi.String("RemoveMe"),
+//												},
+//												RequestHeadersToAdds: compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray{
+//													&compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs{
+//														HeaderName:  pulumi.String("AddMe"),
+//														HeaderValue: pulumi.String("MyValue"),
+//														Replace:     pulumi.Bool(true),
+//													},
+//												},
+//												ResponseHeadersToRemoves: pulumi.StringArray{
+//													pulumi.String("RemoveMe"),
+//												},
+//												ResponseHeadersToAdds: compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray{
+//													&compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs{
+//														HeaderName:  pulumi.String("AddMe"),
+//														HeaderValue: pulumi.String("MyValue"),
+//														Replace:     pulumi.Bool(false),
+//													},
+//												},
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//				Tests: compute.URLMapTestArray{
+//					&compute.URLMapTestArgs{
+//						Service: home.ID(),
+//						Host:    pulumi.String("hi.com"),
+//						Path:    pulumi.String("/home"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Url Map Traffic Director Path Partial
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//				Name: pulumi.String("health-check"),
+//				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			home, err := compute.NewBackendService(ctx, "home", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("home"),
+//				PortName:            pulumi.String("http"),
+//				Protocol:            pulumi.String("HTTP"),
+//				TimeoutSec:          pulumi.Int(10),
+//				HealthChecks:        _default.ID(),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewURLMap(ctx, "urlmap", &compute.URLMapArgs{
+//				Name:           pulumi.String("urlmap"),
+//				Description:    pulumi.String("a description"),
+//				DefaultService: home.ID(),
+//				HostRules: compute.URLMapHostRuleArray{
+//					&compute.URLMapHostRuleArgs{
+//						Hosts: pulumi.StringArray{
+//							pulumi.String("mysite.com"),
+//						},
+//						PathMatcher: pulumi.String("allpaths"),
+//					},
+//				},
+//				PathMatchers: compute.URLMapPathMatcherArray{
+//					&compute.URLMapPathMatcherArgs{
+//						Name:           pulumi.String("allpaths"),
+//						DefaultService: home.ID(),
+//						PathRules: compute.URLMapPathMatcherPathRuleArray{
+//							&compute.URLMapPathMatcherPathRuleArgs{
+//								Paths: pulumi.StringArray{
+//									pulumi.String("/home"),
+//								},
+//								RouteAction: &compute.URLMapPathMatcherPathRuleRouteActionArgs{
+//									CorsPolicy: &compute.URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs{
+//										AllowCredentials: pulumi.Bool(true),
+//										AllowHeaders: pulumi.StringArray{
+//											pulumi.String("Allowed content"),
+//										},
+//										AllowMethods: pulumi.StringArray{
+//											pulumi.String("GET"),
+//										},
+//										AllowOriginRegexes: pulumi.StringArray{
+//											pulumi.String("abc.*"),
+//										},
+//										AllowOrigins: pulumi.StringArray{
+//											pulumi.String("Allowed origin"),
+//										},
+//										ExposeHeaders: pulumi.StringArray{
+//											pulumi.String("Exposed header"),
+//										},
+//										MaxAge:   pulumi.Int(30),
+//										Disabled: pulumi.Bool(false),
+//									},
+//									WeightedBackendServices: compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArray{
+//										&compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs{
+//											BackendService: home.ID(),
+//											Weight:         pulumi.Int(400),
+//											HeaderAction: &compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs{
+//												RequestHeadersToRemoves: pulumi.StringArray{
+//													pulumi.String("RemoveMe"),
+//												},
+//												RequestHeadersToAdds: compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray{
+//													&compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs{
+//														HeaderName:  pulumi.String("AddMe"),
+//														HeaderValue: pulumi.String("MyValue"),
+//														Replace:     pulumi.Bool(true),
+//													},
+//												},
+//												ResponseHeadersToRemoves: pulumi.StringArray{
+//													pulumi.String("RemoveMe"),
+//												},
+//												ResponseHeadersToAdds: compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray{
+//													&compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs{
+//														HeaderName:  pulumi.String("AddMe"),
+//														HeaderValue: pulumi.String("MyValue"),
+//														Replace:     pulumi.Bool(false),
+//													},
+//												},
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//				Tests: compute.URLMapTestArray{
+//					&compute.URLMapTestArgs{
+//						Service: home.ID(),
+//						Host:    pulumi.String("hi.com"),
+//						Path:    pulumi.String("/home"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Url Map Header Based Routing
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+//				Name:             pulumi.String("health-check"),
+//				RequestPath:      pulumi.String("/"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:         pulumi.String("default"),
+//				PortName:     pulumi.String("http"),
+//				Protocol:     pulumi.String("HTTP"),
+//				TimeoutSec:   pulumi.Int(10),
+//				HealthChecks: defaultHttpHealthCheck.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendService(ctx, "service-a", &compute.BackendServiceArgs{
+//				Name:         pulumi.String("service-a"),
+//				PortName:     pulumi.String("http"),
+//				Protocol:     pulumi.String("HTTP"),
+//				TimeoutSec:   pulumi.Int(10),
+//				HealthChecks: defaultHttpHealthCheck.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendService(ctx, "service-b", &compute.BackendServiceArgs{
+//				Name:         pulumi.String("service-b"),
+//				PortName:     pulumi.String("http"),
+//				Protocol:     pulumi.String("HTTP"),
+//				TimeoutSec:   pulumi.Int(10),
+//				HealthChecks: defaultHttpHealthCheck.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewURLMap(ctx, "urlmap", &compute.URLMapArgs{
+//				Name:           pulumi.String("urlmap"),
+//				Description:    pulumi.String("header-based routing example"),
+//				DefaultService: _default.ID(),
+//				HostRules: compute.URLMapHostRuleArray{
+//					&compute.URLMapHostRuleArgs{
+//						Hosts: pulumi.StringArray{
+//							pulumi.String("*"),
+//						},
+//						PathMatcher: pulumi.String("allpaths"),
+//					},
+//				},
+//				PathMatchers: compute.URLMapPathMatcherArray{
+//					&compute.URLMapPathMatcherArgs{
+//						Name:           pulumi.String("allpaths"),
+//						DefaultService: _default.ID(),
+//						RouteRules: compute.URLMapPathMatcherRouteRuleArray{
+//							&compute.URLMapPathMatcherRouteRuleArgs{
+//								Priority: pulumi.Int(1),
+//								Service:  service_a.ID(),
+//								MatchRules: compute.URLMapPathMatcherRouteRuleMatchRuleArray{
+//									&compute.URLMapPathMatcherRouteRuleMatchRuleArgs{
+//										PrefixMatch: pulumi.String("/"),
+//										IgnoreCase:  pulumi.Bool(true),
+//										HeaderMatches: compute.URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArray{
+//											&compute.URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs{
+//												HeaderName: pulumi.String("abtest"),
+//												ExactMatch: pulumi.String("a"),
+//											},
+//										},
+//									},
+//								},
+//							},
+//							&compute.URLMapPathMatcherRouteRuleArgs{
+//								Priority: pulumi.Int(2),
+//								Service:  service_b.ID(),
+//								MatchRules: compute.URLMapPathMatcherRouteRuleMatchRuleArray{
+//									&compute.URLMapPathMatcherRouteRuleMatchRuleArgs{
+//										IgnoreCase:  pulumi.Bool(true),
+//										PrefixMatch: pulumi.String("/"),
+//										HeaderMatches: compute.URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArray{
+//											&compute.URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs{
+//												HeaderName: pulumi.String("abtest"),
+//												ExactMatch: pulumi.String("b"),
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Url Map Parameter Based Routing
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+//				Name:             pulumi.String("health-check"),
+//				RequestPath:      pulumi.String("/"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:         pulumi.String("default"),
+//				PortName:     pulumi.String("http"),
+//				Protocol:     pulumi.String("HTTP"),
+//				TimeoutSec:   pulumi.Int(10),
+//				HealthChecks: defaultHttpHealthCheck.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendService(ctx, "service-a", &compute.BackendServiceArgs{
+//				Name:         pulumi.String("service-a"),
+//				PortName:     pulumi.String("http"),
+//				Protocol:     pulumi.String("HTTP"),
+//				TimeoutSec:   pulumi.Int(10),
+//				HealthChecks: defaultHttpHealthCheck.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendService(ctx, "service-b", &compute.BackendServiceArgs{
+//				Name:         pulumi.String("service-b"),
+//				PortName:     pulumi.String("http"),
+//				Protocol:     pulumi.String("HTTP"),
+//				TimeoutSec:   pulumi.Int(10),
+//				HealthChecks: defaultHttpHealthCheck.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewURLMap(ctx, "urlmap", &compute.URLMapArgs{
+//				Name:           pulumi.String("urlmap"),
+//				Description:    pulumi.String("parameter-based routing example"),
+//				DefaultService: _default.ID(),
+//				HostRules: compute.URLMapHostRuleArray{
+//					&compute.URLMapHostRuleArgs{
+//						Hosts: pulumi.StringArray{
+//							pulumi.String("*"),
+//						},
+//						PathMatcher: pulumi.String("allpaths"),
+//					},
+//				},
+//				PathMatchers: compute.URLMapPathMatcherArray{
+//					&compute.URLMapPathMatcherArgs{
+//						Name:           pulumi.String("allpaths"),
+//						DefaultService: _default.ID(),
+//						RouteRules: compute.URLMapPathMatcherRouteRuleArray{
+//							&compute.URLMapPathMatcherRouteRuleArgs{
+//								Priority: pulumi.Int(1),
+//								Service:  service_a.ID(),
+//								MatchRules: compute.URLMapPathMatcherRouteRuleMatchRuleArray{
+//									&compute.URLMapPathMatcherRouteRuleMatchRuleArgs{
+//										PrefixMatch: pulumi.String("/"),
+//										IgnoreCase:  pulumi.Bool(true),
+//										QueryParameterMatches: compute.URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArray{
+//											&compute.URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs{
+//												Name:       pulumi.String("abtest"),
+//												ExactMatch: pulumi.String("a"),
+//											},
+//										},
+//									},
+//								},
+//							},
+//							&compute.URLMapPathMatcherRouteRuleArgs{
+//								Priority: pulumi.Int(2),
+//								Service:  service_b.ID(),
+//								MatchRules: compute.URLMapPathMatcherRouteRuleMatchRuleArray{
+//									&compute.URLMapPathMatcherRouteRuleMatchRuleArgs{
+//										IgnoreCase:  pulumi.Bool(true),
+//										PrefixMatch: pulumi.String("/"),
+//										QueryParameterMatches: compute.URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArray{
+//											&compute.URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs{
+//												Name:       pulumi.String("abtest"),
+//												ExactMatch: pulumi.String("b"),
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Url Map Path Template Match
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+//				Name:             pulumi.String("health-check"),
+//				RequestPath:      pulumi.String("/"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendService(ctx, "cart-backend", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("cart-service"),
+//				PortName:            pulumi.String("http"),
+//				Protocol:            pulumi.String("HTTP"),
+//				TimeoutSec:          pulumi.Int(10),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//				HealthChecks:        _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendService(ctx, "user-backend", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("user-service"),
+//				PortName:            pulumi.String("http"),
+//				Protocol:            pulumi.String("HTTP"),
+//				TimeoutSec:          pulumi.Int(10),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//				HealthChecks:        _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			staticBucket, err := storage.NewBucket(ctx, "static", &storage.BucketArgs{
+//				Name:     pulumi.String("static-asset-bucket"),
+//				Location: pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			static, err := compute.NewBackendBucket(ctx, "static", &compute.BackendBucketArgs{
+//				Name:       pulumi.String("static-asset-backend-bucket"),
+//				BucketName: staticBucket.Name,
+//				EnableCdn:  pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewURLMap(ctx, "urlmap", &compute.URLMapArgs{
+//				Name:           pulumi.String("urlmap"),
+//				Description:    pulumi.String("a description"),
+//				DefaultService: static.ID(),
+//				HostRules: compute.URLMapHostRuleArray{
+//					&compute.URLMapHostRuleArgs{
+//						Hosts: pulumi.StringArray{
+//							pulumi.String("mysite.com"),
+//						},
+//						PathMatcher: pulumi.String("mysite"),
+//					},
+//				},
+//				PathMatchers: compute.URLMapPathMatcherArray{
+//					&compute.URLMapPathMatcherArgs{
+//						Name:           pulumi.String("mysite"),
+//						DefaultService: static.ID(),
+//						RouteRules: compute.URLMapPathMatcherRouteRuleArray{
+//							&compute.URLMapPathMatcherRouteRuleArgs{
+//								MatchRules: compute.URLMapPathMatcherRouteRuleMatchRuleArray{
+//									&compute.URLMapPathMatcherRouteRuleMatchRuleArgs{
+//										PathTemplateMatch: pulumi.String("/xyzwebservices/v2/xyz/users/{username=*}/carts/{cartid=**}"),
+//									},
+//								},
+//								Service:  cart_backend.ID(),
+//								Priority: pulumi.Int(1),
+//								RouteAction: &compute.URLMapPathMatcherRouteRuleRouteActionArgs{
+//									UrlRewrite: &compute.URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs{
+//										PathTemplateRewrite: pulumi.String("/{username}-{cartid}/"),
+//									},
+//								},
+//							},
+//							&compute.URLMapPathMatcherRouteRuleArgs{
+//								MatchRules: compute.URLMapPathMatcherRouteRuleMatchRuleArray{
+//									&compute.URLMapPathMatcherRouteRuleMatchRuleArgs{
+//										PathTemplateMatch: pulumi.String("/xyzwebservices/v2/xyz/users/*/accountinfo/*"),
+//									},
+//								},
+//								Service:  user_backend.ID(),
+//								Priority: pulumi.Int(2),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -22,13 +22,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const constraint = new gcp.orgpolicy.CustomConstraint("constraint", {
+ *     name: "custom.disableGkeAutoUpgrade",
+ *     parent: "organizations/123456789",
  *     actionType: "ALLOW",
  *     condition: "resource.management.autoUpgrade == false",
  *     methodTypes: [
  *         "CREATE",
  *         "UPDATE",
  *     ],
- *     parent: "organizations/123456789",
  *     resourceTypes: ["container.googleapis.com/NodePool"],
  * });
  * ```
@@ -39,18 +40,20 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const constraint = new gcp.orgpolicy.CustomConstraint("constraint", {
+ *     name: "custom.disableGkeAutoUpgrade",
+ *     parent: "organizations/123456789",
+ *     displayName: "Disable GKE auto upgrade",
+ *     description: "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
  *     actionType: "ALLOW",
  *     condition: "resource.management.autoUpgrade == false",
- *     description: "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
- *     displayName: "Disable GKE auto upgrade",
  *     methodTypes: [
  *         "CREATE",
  *         "UPDATE",
  *     ],
- *     parent: "organizations/123456789",
  *     resourceTypes: ["container.googleapis.com/NodePool"],
  * });
  * const bool = new gcp.orgpolicy.Policy("bool", {
+ *     name: pulumi.interpolate`organizations/123456789/policies/${constraint.name}`,
  *     parent: "organizations/123456789",
  *     spec: {
  *         rules: [{

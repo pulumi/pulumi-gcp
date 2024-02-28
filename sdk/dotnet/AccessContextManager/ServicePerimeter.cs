@@ -52,6 +52,8 @@ namespace Pulumi.Gcp.AccessContextManager
     ///     var service_perimeter = new Gcp.AccessContextManager.ServicePerimeter("service-perimeter", new()
     ///     {
     ///         Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
+    ///         Name = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}/servicePerimeters/restrict_storage"),
+    ///         Title = "restrict_storage",
     ///         Status = new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusArgs
     ///         {
     ///             RestrictedServices = new[]
@@ -59,11 +61,13 @@ namespace Pulumi.Gcp.AccessContextManager
     ///                 "storage.googleapis.com",
     ///             },
     ///         },
-    ///         Title = "restrict_storage",
     ///     });
     /// 
     ///     var access_level = new Gcp.AccessContextManager.AccessLevel("access-level", new()
     ///     {
+    ///         Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
+    ///         Name = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
+    ///         Title = "chromeos_no_lock",
     ///         Basic = new Gcp.AccessContextManager.Inputs.AccessLevelBasicArgs
     ///         {
     ///             Conditions = new[]
@@ -72,6 +76,7 @@ namespace Pulumi.Gcp.AccessContextManager
     ///                 {
     ///                     DevicePolicy = new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionDevicePolicyArgs
     ///                     {
+    ///                         RequireScreenLock = false,
     ///                         OsConstraints = new[]
     ///                         {
     ///                             new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionDevicePolicyOsConstraintArgs
@@ -79,7 +84,6 @@ namespace Pulumi.Gcp.AccessContextManager
     ///                                 OsType = "DESKTOP_CHROME_OS",
     ///                             },
     ///                         },
-    ///                         RequireScreenLock = false,
     ///                     },
     ///                     Regions = new[]
     ///                     {
@@ -90,8 +94,6 @@ namespace Pulumi.Gcp.AccessContextManager
     ///                 },
     ///             },
     ///         },
-    ///         Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
-    ///         Title = "chromeos_no_lock",
     ///     });
     /// 
     /// });
@@ -155,6 +157,7 @@ namespace Pulumi.Gcp.AccessContextManager
     ///     var access_level = new Gcp.AccessContextManager.AccessLevel("access-level", new()
     ///     {
     ///         Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
+    ///         Name = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}/accessLevels/secure_data_exchange"),
     ///         Title = "secure_data_exchange",
     ///         Basic = new Gcp.AccessContextManager.Inputs.AccessLevelBasicArgs
     ///         {
@@ -186,7 +189,8 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     ///     var test_access = new Gcp.AccessContextManager.ServicePerimeter("test-access", new()
     ///     {
-    ///         Parent = $"accessPolicies/{google_access_context_manager_access_policy.Test_access.Name}",
+    ///         Parent = $"accessPolicies/{test_accessGoogleAccessContextManagerAccessPolicy.Name}",
+    ///         Name = $"accessPolicies/{test_accessGoogleAccessContextManagerAccessPolicy.Name}/servicePerimeters/%s",
     ///         Title = "%s",
     ///         PerimeterType = "PERIMETER_TYPE_REGULAR",
     ///         Status = new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusArgs
@@ -219,7 +223,7 @@ namespace Pulumi.Gcp.AccessContextManager
     ///                         {
     ///                             new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusIngressPolicyIngressFromSourceArgs
     ///                             {
-    ///                                 AccessLevel = google_access_context_manager_access_level.Test_access.Name,
+    ///                                 AccessLevel = test_accessGoogleAccessContextManagerAccessLevel.Name,
     ///                             },
     ///                         },
     ///                         IdentityType = "ANY_IDENTITY",
@@ -300,13 +304,8 @@ namespace Pulumi.Gcp.AccessContextManager
     ///     var service_perimeter = new Gcp.AccessContextManager.ServicePerimeter("service-perimeter", new()
     ///     {
     ///         Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
-    ///         Spec = new Gcp.AccessContextManager.Inputs.ServicePerimeterSpecArgs
-    ///         {
-    ///             RestrictedServices = new[]
-    ///             {
-    ///                 "storage.googleapis.com",
-    ///             },
-    ///         },
+    ///         Name = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}/servicePerimeters/restrict_bigquery_dryrun_storage"),
+    ///         Title = "restrict_bigquery_dryrun_storage",
     ///         Status = new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusArgs
     ///         {
     ///             RestrictedServices = new[]
@@ -314,7 +313,13 @@ namespace Pulumi.Gcp.AccessContextManager
     ///                 "bigquery.googleapis.com",
     ///             },
     ///         },
-    ///         Title = "restrict_bigquery_dryrun_storage",
+    ///         Spec = new Gcp.AccessContextManager.Inputs.ServicePerimeterSpecArgs
+    ///         {
+    ///             RestrictedServices = new[]
+    ///             {
+    ///                 "storage.googleapis.com",
+    ///             },
+    ///         },
     ///         UseExplicitDryRunSpec = true,
     ///     });
     /// 

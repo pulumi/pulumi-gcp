@@ -36,12 +36,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("keyring-example"),
 //				Location: pulumi.String("global"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			key, err := kms.NewCryptoKey(ctx, "key", &kms.CryptoKeyArgs{
+//				Name:           pulumi.String("crypto-key-example"),
 //				KeyRing:        keyring.ID(),
 //				RotationPeriod: pulumi.String("7776000s"),
 //			})
@@ -61,7 +63,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = kms.NewCryptoKeyIAMPolicy(ctx, "cryptoKey", &kms.CryptoKeyIAMPolicyArgs{
+//			_, err = kms.NewCryptoKeyIAMPolicy(ctx, "crypto_key", &kms.CryptoKeyIAMPolicyArgs{
 //				CryptoKeyId: key.ID(),
 //				PolicyData:  *pulumi.String(admin.PolicyData),
 //			})
@@ -91,15 +93,15 @@ import (
 //			_, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				Bindings: []organizations.GetIAMPolicyBinding{
 //					{
-//						Condition: {
-//							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
-//							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
-//							Title:       "expires_after_2019_12_31",
-//						},
+//						Role: "roles/cloudkms.cryptoKeyEncrypter",
 //						Members: []string{
 //							"user:jane@example.com",
 //						},
-//						Role: "roles/cloudkms.cryptoKeyEncrypter",
+//						Condition: {
+//							Title:       "expires_after_2019_12_31",
+//							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
+//							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+//						},
 //					},
 //				},
 //			}, nil)
@@ -124,8 +126,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kms.NewCryptoKeyIAMBinding(ctx, "cryptoKey", &kms.CryptoKeyIAMBindingArgs{
-//				CryptoKeyId: pulumi.Any(google_kms_crypto_key.Key.Id),
+//			_, err := kms.NewCryptoKeyIAMBinding(ctx, "crypto_key", &kms.CryptoKeyIAMBindingArgs{
+//				CryptoKeyId: pulumi.Any(key.Id),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypter"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -154,8 +156,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kms.NewCryptoKeyIAMBinding(ctx, "cryptoKey", &kms.CryptoKeyIAMBindingArgs{
-//				CryptoKeyId: pulumi.Any(google_kms_crypto_key.Key.Id),
+//			_, err := kms.NewCryptoKeyIAMBinding(ctx, "crypto_key", &kms.CryptoKeyIAMBindingArgs{
+//				CryptoKeyId: pulumi.Any(key.Id),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypter"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -187,8 +189,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kms.NewCryptoKeyIAMMember(ctx, "cryptoKey", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: pulumi.Any(google_kms_crypto_key.Key.Id),
+//			_, err := kms.NewCryptoKeyIAMMember(ctx, "crypto_key", &kms.CryptoKeyIAMMemberArgs{
+//				CryptoKeyId: pulumi.Any(key.Id),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypter"),
 //				Member:      pulumi.String("user:jane@example.com"),
 //			})
@@ -215,8 +217,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kms.NewCryptoKeyIAMMember(ctx, "cryptoKey", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: pulumi.Any(google_kms_crypto_key.Key.Id),
+//			_, err := kms.NewCryptoKeyIAMMember(ctx, "crypto_key", &kms.CryptoKeyIAMMemberArgs{
+//				CryptoKeyId: pulumi.Any(key.Id),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypter"),
 //				Member:      pulumi.String("user:jane@example.com"),
 //				Condition: &kms.CryptoKeyIAMMemberConditionArgs{

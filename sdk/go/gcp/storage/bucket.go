@@ -39,9 +39,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := storage.NewBucket(ctx, "static-site", &storage.BucketArgs{
+//				Name:                     pulumi.String("image-store.com"),
+//				Location:                 pulumi.String("EU"),
+//				ForceDestroy:             pulumi.Bool(true),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//				Website: &storage.BucketWebsiteArgs{
+//					MainPageSuffix: pulumi.String("index.html"),
+//					NotFoundPage:   pulumi.String("404.html"),
+//				},
 //				Cors: storage.BucketCorArray{
 //					&storage.BucketCorArgs{
-//						MaxAgeSeconds: pulumi.Int(3600),
+//						Origins: pulumi.StringArray{
+//							pulumi.String("http://image-store.com"),
+//						},
 //						Methods: pulumi.StringArray{
 //							pulumi.String("GET"),
 //							pulumi.String("HEAD"),
@@ -49,20 +59,11 @@ import (
 //							pulumi.String("POST"),
 //							pulumi.String("DELETE"),
 //						},
-//						Origins: pulumi.StringArray{
-//							pulumi.String("http://image-store.com"),
-//						},
 //						ResponseHeaders: pulumi.StringArray{
 //							pulumi.String("*"),
 //						},
+//						MaxAgeSeconds: pulumi.Int(3600),
 //					},
-//				},
-//				ForceDestroy:             pulumi.Bool(true),
-//				Location:                 pulumi.String("EU"),
-//				UniformBucketLevelAccess: pulumi.Bool(true),
-//				Website: &storage.BucketWebsiteArgs{
-//					MainPageSuffix: pulumi.String("index.html"),
-//					NotFoundPage:   pulumi.String("404.html"),
 //				},
 //			})
 //			if err != nil {
@@ -88,26 +89,27 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := storage.NewBucket(ctx, "auto-expire", &storage.BucketArgs{
+//				Name:         pulumi.String("auto-expiring-bucket"),
+//				Location:     pulumi.String("US"),
 //				ForceDestroy: pulumi.Bool(true),
 //				LifecycleRules: storage.BucketLifecycleRuleArray{
 //					&storage.BucketLifecycleRuleArgs{
-//						Action: &storage.BucketLifecycleRuleActionArgs{
-//							Type: pulumi.String("Delete"),
-//						},
 //						Condition: &storage.BucketLifecycleRuleConditionArgs{
 //							Age: pulumi.Int(3),
 //						},
+//						Action: &storage.BucketLifecycleRuleActionArgs{
+//							Type: pulumi.String("Delete"),
+//						},
 //					},
 //					&storage.BucketLifecycleRuleArgs{
-//						Action: &storage.BucketLifecycleRuleActionArgs{
-//							Type: pulumi.String("AbortIncompleteMultipartUpload"),
-//						},
 //						Condition: &storage.BucketLifecycleRuleConditionArgs{
 //							Age: pulumi.Int(1),
 //						},
+//						Action: &storage.BucketLifecycleRuleActionArgs{
+//							Type: pulumi.String("AbortIncompleteMultipartUpload"),
+//						},
 //					},
 //				},
-//				Location: pulumi.String("US"),
 //			})
 //			if err != nil {
 //				return err
@@ -132,8 +134,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := storage.NewBucket(ctx, "auto-expire", &storage.BucketArgs{
-//				ForceDestroy:           pulumi.Bool(true),
+//				Name:                   pulumi.String("no-public-access-bucket"),
 //				Location:               pulumi.String("US"),
+//				ForceDestroy:           pulumi.Bool(true),
 //				PublicAccessPrevention: pulumi.String("enforced"),
 //			})
 //			if err != nil {

@@ -47,15 +47,16 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     ///     var authorized_orgs_desc = new Gcp.AccessContextManager.AuthorizedOrgsDesc("authorized-orgs-desc", new()
     ///     {
+    ///         Parent = test_access.Name.Apply(name =&gt; $"accessPolicies/{name}"),
+    ///         Name = test_access.Name.Apply(name =&gt; $"accessPolicies/{name}/authorizedOrgsDescs/fakeDescName"),
+    ///         AuthorizationType = "AUTHORIZATION_TYPE_TRUST",
     ///         AssetType = "ASSET_TYPE_CREDENTIAL_STRENGTH",
     ///         AuthorizationDirection = "AUTHORIZATION_DIRECTION_TO",
-    ///         AuthorizationType = "AUTHORIZATION_TYPE_TRUST",
     ///         Orgs = new[]
     ///         {
     ///             "organizations/12345",
     ///             "organizations/98765",
     ///         },
-    ///         Parent = test_access.Name.Apply(name =&gt; $"accessPolicies/{name}"),
     ///     });
     /// 
     /// });

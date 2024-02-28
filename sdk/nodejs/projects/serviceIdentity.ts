@@ -26,13 +26,11 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
- * const hcSa = new gcp.projects.ServiceIdentity("hcSa", {
+ * const hcSa = new gcp.projects.ServiceIdentity("hc_sa", {
  *     project: project.then(project => project.projectId),
  *     service: "healthcare.googleapis.com",
- * }, {
- *     provider: google_beta,
  * });
- * const hcSaBqJobuser = new gcp.projects.IAMMember("hcSaBqJobuser", {
+ * const hcSaBqJobuser = new gcp.projects.IAMMember("hc_sa_bq_jobuser", {
  *     project: project.then(project => project.projectId),
  *     role: "roles/bigquery.jobUser",
  *     member: pulumi.interpolate`serviceAccount:${hcSa.email}`,

@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const example = new gcp.pubsub.LiteReservation("example", {
+ *     name: "example-reservation",
  *     project: project.then(project => project.number),
  *     throughputCapacity: 2,
  * });

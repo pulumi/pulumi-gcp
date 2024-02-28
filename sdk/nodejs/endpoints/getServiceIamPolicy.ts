@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.endpoints.getServiceIamPolicy({
- *     serviceName: google_endpoints_service.endpoints_service.service_name,
+ *     serviceName: endpointsService.serviceName,
  * });
  * ```
  */
@@ -62,7 +62,7 @@ export interface GetServiceIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.endpoints.getServiceIamPolicy({
- *     serviceName: google_endpoints_service.endpoints_service.service_name,
+ *     serviceName: endpointsService.serviceName,
  * });
  * ```
  */

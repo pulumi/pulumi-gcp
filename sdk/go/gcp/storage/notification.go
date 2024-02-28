@@ -48,26 +48,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			gcsAccount, err := storage.GetProjectServiceAccount(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			topic, err := pubsub.NewTopic(ctx, "topic", nil)
-//			if err != nil {
-//				return err
-//			}
-//			binding, err := pubsub.NewTopicIAMBinding(ctx, "binding", &pubsub.TopicIAMBindingArgs{
-//				Topic: topic.ID(),
-//				Role:  pulumi.String("roles/pubsub.publisher"),
-//				Members: pulumi.StringArray{
-//					pulumi.String(fmt.Sprintf("serviceAccount:%v", gcsAccount.EmailAddress)),
-//				},
+//			// End enabling notifications
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:     pulumi.String("default_bucket"),
+//				Location: pulumi.String("US"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-//				Location: pulumi.String("US"),
+//			topic, err := pubsub.NewTopic(ctx, "topic", &pubsub.TopicArgs{
+//				Name: pulumi.String("default_topic"),
 //			})
 //			if err != nil {
 //				return err
@@ -83,9 +73,22 @@ import (
 //				CustomAttributes: pulumi.StringMap{
 //					"new-attribute": pulumi.String("new-attribute-value"),
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				binding,
-//			}))
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Enable notifications by giving the correct IAM permission to the unique service account.
+//			gcsAccount, err := storage.GetProjectServiceAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewTopicIAMBinding(ctx, "binding", &pubsub.TopicIAMBindingArgs{
+//				Topic: topic.ID(),
+//				Role:  pulumi.String("roles/pubsub.publisher"),
+//				Members: pulumi.StringArray{
+//					pulumi.String(fmt.Sprintf("serviceAccount:%v", gcsAccount.EmailAddress)),
+//				},
+//			})
 //			if err != nil {
 //				return err
 //			}

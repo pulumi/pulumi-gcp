@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new CaPoolIamPolicy(&#34;policy&#34;, CaPoolIamPolicyArgs.builder()        
- *             .caPool(google_privateca_ca_pool.default().id())
+ *             .caPool(default_.id())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new CaPoolIamPolicy(&#34;policy&#34;, CaPoolIamPolicyArgs.builder()        
- *             .caPool(google_privateca_ca_pool.default().id())
+ *             .caPool(default_.id())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new CaPoolIamBinding(&#34;binding&#34;, CaPoolIamBindingArgs.builder()        
- *             .caPool(google_privateca_ca_pool.default().id())
+ *             .caPool(default_.id())
  *             .role(&#34;roles/privateca.certificateManager&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -172,7 +172,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new CaPoolIamBinding(&#34;binding&#34;, CaPoolIamBindingArgs.builder()        
- *             .caPool(google_privateca_ca_pool.default().id())
+ *             .caPool(default_.id())
  *             .role(&#34;roles/privateca.certificateManager&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .condition(CaPoolIamBindingConditionArgs.builder()
@@ -208,7 +208,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new CaPoolIamMember(&#34;member&#34;, CaPoolIamMemberArgs.builder()        
- *             .caPool(google_privateca_ca_pool.default().id())
+ *             .caPool(default_.id())
  *             .role(&#34;roles/privateca.certificateManager&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -241,7 +241,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new CaPoolIamMember(&#34;member&#34;, CaPoolIamMemberArgs.builder()        
- *             .caPool(google_privateca_ca_pool.default().id())
+ *             .caPool(default_.id())
  *             .role(&#34;roles/privateca.certificateManager&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .condition(CaPoolIamMemberConditionArgs.builder()

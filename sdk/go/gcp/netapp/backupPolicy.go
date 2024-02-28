@@ -37,16 +37,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := netapp.NewBackupPolicy(ctx, "testBackupPolicyFull", &netapp.BackupPolicyArgs{
-//				DailyBackupLimit: pulumi.Int(2),
-//				Description:      pulumi.String("TF test backup schedule"),
-//				Enabled:          pulumi.Bool(true),
+//			_, err := netapp.NewBackupPolicy(ctx, "test_backup_policy_full", &netapp.BackupPolicyArgs{
+//				Name:               pulumi.String("test-backup-policy-full"),
+//				Location:           pulumi.String("us-central1"),
+//				DailyBackupLimit:   pulumi.Int(2),
+//				WeeklyBackupLimit:  pulumi.Int(1),
+//				MonthlyBackupLimit: pulumi.Int(1),
+//				Description:        pulumi.String("TF test backup schedule"),
+//				Enabled:            pulumi.Bool(true),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//				Location:           pulumi.String("us-central1"),
-//				MonthlyBackupLimit: pulumi.Int(1),
-//				WeeklyBackupLimit:  pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err

@@ -31,11 +31,33 @@ namespace Pulumi.Gcp.CertificateManager
     /// {
     ///     var pool = new Gcp.CertificateAuthority.CaPool("pool", new()
     ///     {
+    ///         Name = "ca-pool",
     ///         Location = "us-central1",
     ///         Tier = "ENTERPRISE",
     ///     });
     /// 
-    ///     var caAuthority = new Gcp.CertificateAuthority.Authority("caAuthority", new()
+    ///     var @default = new Gcp.CertificateManager.CertificateIssuanceConfig("default", new()
+    ///     {
+    ///         Name = "issuance-config",
+    ///         Description = "sample description for the certificate issuanceConfigs",
+    ///         CertificateAuthorityConfig = new Gcp.CertificateManager.Inputs.CertificateIssuanceConfigCertificateAuthorityConfigArgs
+    ///         {
+    ///             CertificateAuthorityServiceConfig = new Gcp.CertificateManager.Inputs.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs
+    ///             {
+    ///                 CaPool = pool.Id,
+    ///             },
+    ///         },
+    ///         Lifetime = "1814400s",
+    ///         RotationWindowPercentage = 34,
+    ///         KeyAlgorithm = "ECDSA_P256",
+    ///         Labels = 
+    ///         {
+    ///             { "name", "wrench" },
+    ///             { "count", "3" },
+    ///         },
+    ///     });
+    /// 
+    ///     var caAuthority = new Gcp.CertificateAuthority.Authority("ca_authority", new()
     ///     {
     ///         Location = "us-central1",
     ///         Pool = pool.Name,
@@ -84,32 +106,6 @@ namespace Pulumi.Gcp.CertificateManager
     ///         DeletionProtection = false,
     ///         SkipGracePeriod = true,
     ///         IgnoreActiveCertificatesOnDeletion = true,
-    ///     });
-    /// 
-    ///     var @default = new Gcp.CertificateManager.CertificateIssuanceConfig("default", new()
-    ///     {
-    ///         Description = "sample description for the certificate issuanceConfigs",
-    ///         CertificateAuthorityConfig = new Gcp.CertificateManager.Inputs.CertificateIssuanceConfigCertificateAuthorityConfigArgs
-    ///         {
-    ///             CertificateAuthorityServiceConfig = new Gcp.CertificateManager.Inputs.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs
-    ///             {
-    ///                 CaPool = pool.Id,
-    ///             },
-    ///         },
-    ///         Lifetime = "1814400s",
-    ///         RotationWindowPercentage = 34,
-    ///         KeyAlgorithm = "ECDSA_P256",
-    ///         Labels = 
-    ///         {
-    ///             { "name", "wrench" },
-    ///             { "count", "3" },
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             caAuthority,
-    ///         },
     ///     });
     /// 
     /// });

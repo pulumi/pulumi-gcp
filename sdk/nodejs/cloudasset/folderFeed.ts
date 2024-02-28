@@ -16,6 +16,52 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/asset-inventory/docs)
  *
  * ## Example Usage
+ * ### Cloud Asset Folder Feed
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * // The topic where the resource change notifications will be sent.
+ * const feedOutput = new gcp.pubsub.Topic("feed_output", {
+ *     project: "my-project-name",
+ *     name: "network-updates",
+ * });
+ * // The folder that will be monitored for resource updates.
+ * const myFolder = new gcp.organizations.Folder("my_folder", {
+ *     displayName: "Networking",
+ *     parent: "organizations/123456789",
+ * });
+ * // Create a feed that sends notifications about network resource updates under a
+ * // particular folder.
+ * const folderFeed = new gcp.cloudasset.FolderFeed("folder_feed", {
+ *     billingProject: "my-project-name",
+ *     folder: myFolder.folderId,
+ *     feedId: "network-updates",
+ *     contentType: "RESOURCE",
+ *     assetTypes: [
+ *         "compute.googleapis.com/Subnetwork",
+ *         "compute.googleapis.com/Network",
+ *     ],
+ *     feedOutputConfig: {
+ *         pubsubDestination: {
+ *             topic: feedOutput.id,
+ *         },
+ *     },
+ *     condition: {
+ *         expression: `!temporal_asset.deleted &&
+ * temporal_asset.prior_asset_state == google.cloud.asset.v1.TemporalAsset.PriorAssetState.DOES_NOT_EXIST
+ * `,
+ *         title: "created",
+ *         description: "Send notifications on creation events",
+ *     },
+ * });
+ * // Find the project number of the project whose identity will be used for sending
+ * // the asset change notifications.
+ * const project = gcp.organizations.getProject({
+ *     projectId: "my-project-name",
+ * });
+ * ```
  *
  * ## Import
  *

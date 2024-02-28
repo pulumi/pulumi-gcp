@@ -16,6 +16,35 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/tcp/internal-proxy)
  *
  * ## Example Usage
+ * ### Region Target Tcp Proxy Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("default", {
+ *     name: "health-check",
+ *     region: "europe-west4",
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
+ *     tcpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const defaultRegionBackendService = new gcp.compute.RegionBackendService("default", {
+ *     name: "backend-service",
+ *     protocol: "TCP",
+ *     timeoutSec: 10,
+ *     region: "europe-west4",
+ *     healthChecks: defaultRegionHealthCheck.id,
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ * });
+ * const _default = new gcp.compute.RegionTargetTcpProxy("default", {
+ *     name: "test-proxy",
+ *     region: "europe-west4",
+ *     backendService: defaultRegionBackendService.id,
+ * });
+ * ```
  *
  * ## Import
  *

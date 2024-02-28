@@ -58,7 +58,7 @@ public final class AccessapprovalFunctions {
      *             .build());
      * 
      *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
-     *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
+     *             .cryptoKeyId(cryptoKey.id())
      *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
      *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getFolderServiceAccountResult -&gt; getFolderServiceAccountResult.accountEmail())))
      *             .build());
@@ -109,7 +109,7 @@ public final class AccessapprovalFunctions {
      *             .build());
      * 
      *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
-     *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
+     *             .cryptoKeyId(cryptoKey.id())
      *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
      *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getFolderServiceAccountResult -&gt; getFolderServiceAccountResult.accountEmail())))
      *             .build());
@@ -160,7 +160,7 @@ public final class AccessapprovalFunctions {
      *             .build());
      * 
      *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
-     *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
+     *             .cryptoKeyId(cryptoKey.id())
      *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
      *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getFolderServiceAccountResult -&gt; getFolderServiceAccountResult.accountEmail())))
      *             .build());
@@ -211,7 +211,7 @@ public final class AccessapprovalFunctions {
      *             .build());
      * 
      *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
-     *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
+     *             .cryptoKeyId(cryptoKey.id())
      *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
      *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getFolderServiceAccountResult -&gt; getFolderServiceAccountResult.accountEmail())))
      *             .build());
@@ -262,7 +262,7 @@ public final class AccessapprovalFunctions {
      *             .build());
      * 
      *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
-     *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
+     *             .cryptoKeyId(cryptoKey.id())
      *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
      *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getOrganizationServiceAccountResult -&gt; getOrganizationServiceAccountResult.accountEmail())))
      *             .build());
@@ -313,7 +313,7 @@ public final class AccessapprovalFunctions {
      *             .build());
      * 
      *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
-     *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
+     *             .cryptoKeyId(cryptoKey.id())
      *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
      *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getOrganizationServiceAccountResult -&gt; getOrganizationServiceAccountResult.accountEmail())))
      *             .build());
@@ -364,7 +364,7 @@ public final class AccessapprovalFunctions {
      *             .build());
      * 
      *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
-     *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
+     *             .cryptoKeyId(cryptoKey.id())
      *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
      *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getOrganizationServiceAccountResult -&gt; getOrganizationServiceAccountResult.accountEmail())))
      *             .build());
@@ -415,7 +415,7 @@ public final class AccessapprovalFunctions {
      *             .build());
      * 
      *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
-     *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
+     *             .cryptoKeyId(cryptoKey.id())
      *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
      *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getOrganizationServiceAccountResult -&gt; getOrganizationServiceAccountResult.accountEmail())))
      *             .build());
@@ -466,7 +466,7 @@ public final class AccessapprovalFunctions {
      *             .build());
      * 
      *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
-     *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
+     *             .cryptoKeyId(cryptoKey.id())
      *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
      *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.accountEmail())))
      *             .build());
@@ -517,7 +517,7 @@ public final class AccessapprovalFunctions {
      *             .build());
      * 
      *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
-     *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
+     *             .cryptoKeyId(cryptoKey.id())
      *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
      *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.accountEmail())))
      *             .build());
@@ -568,7 +568,7 @@ public final class AccessapprovalFunctions {
      *             .build());
      * 
      *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
-     *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
+     *             .cryptoKeyId(cryptoKey.id())
      *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
      *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.accountEmail())))
      *             .build());
@@ -619,7 +619,7 @@ public final class AccessapprovalFunctions {
      *             .build());
      * 
      *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
-     *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
+     *             .cryptoKeyId(cryptoKey.id())
      *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
      *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.accountEmail())))
      *             .build());

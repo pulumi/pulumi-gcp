@@ -23,9 +23,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const topic = new gcp.pubsub.Topic("topic", {});
- * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
+ * const topic = new gcp.pubsub.Topic("topic", {name: "hl7-v2-notifications"});
+ * const dataset = new gcp.healthcare.Dataset("dataset", {
+ *     name: "example-dataset",
+ *     location: "us-central1",
+ * });
  * const store = new gcp.healthcare.Hl7Store("store", {
+ *     name: "example-hl7-v2-store",
  *     dataset: dataset.id,
  *     rejectDuplicateMessage: true,
  *     notificationConfigs: [{
@@ -42,10 +46,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"}, {
- *     provider: google_beta,
+ * const dataset = new gcp.healthcare.Dataset("dataset", {
+ *     name: "example-dataset",
+ *     location: "us-central1",
  * });
  * const store = new gcp.healthcare.Hl7Store("store", {
+ *     name: "example-hl7-v2-store",
  *     dataset: dataset.id,
  *     parserConfig: {
  *         allowNullHeader: false,
@@ -130,8 +136,6 @@ import * as utilities from "../utilities";
  * }
  * `,
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Healthcare Hl7 V2 Store Unschematized
@@ -140,18 +144,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"}, {
- *     provider: google_beta,
+ * const dataset = new gcp.healthcare.Dataset("dataset", {
+ *     name: "example-dataset",
+ *     location: "us-central1",
  * });
  * const store = new gcp.healthcare.Hl7Store("store", {
+ *     name: "example-hl7-v2-store",
  *     dataset: dataset.id,
  *     parserConfig: {
  *         allowNullHeader: false,
  *         segmentTerminator: "Jw==",
  *         version: "V2",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

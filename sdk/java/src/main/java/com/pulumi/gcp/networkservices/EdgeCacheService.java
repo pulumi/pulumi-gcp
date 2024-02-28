@@ -54,11 +54,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var dest = new Bucket(&#34;dest&#34;, BucketArgs.builder()        
+ *             .name(&#34;my-bucket&#34;)
  *             .location(&#34;US&#34;)
  *             .forceDestroy(true)
  *             .build());
  * 
- *         var instanceEdgeCacheOrigin = new EdgeCacheOrigin(&#34;instanceEdgeCacheOrigin&#34;, EdgeCacheOriginArgs.builder()        
+ *         var instance = new EdgeCacheOrigin(&#34;instance&#34;, EdgeCacheOriginArgs.builder()        
+ *             .name(&#34;my-origin&#34;)
  *             .originAddress(dest.url())
  *             .description(&#34;The default bucket for media edge test&#34;)
  *             .maxAttempts(2)
@@ -68,6 +70,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var instanceEdgeCacheService = new EdgeCacheService(&#34;instanceEdgeCacheService&#34;, EdgeCacheServiceArgs.builder()        
+ *             .name(&#34;my-service&#34;)
  *             .description(&#34;some description&#34;)
  *             .routing(EdgeCacheServiceRoutingArgs.builder()
  *                 .hostRules(EdgeCacheServiceRoutingHostRuleArgs.builder()
@@ -83,7 +86,7 @@ import javax.annotation.Nullable;
  *                         .matchRules(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs.builder()
  *                             .prefixMatch(&#34;/&#34;)
  *                             .build())
- *                         .origin(instanceEdgeCacheOrigin.name())
+ *                         .origin(instance.name())
  *                         .routeAction(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs.builder()
  *                             .cdnPolicy(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs.builder()
  *                                 .cacheMode(&#34;CACHE_ALL_STATIC&#34;)
@@ -134,11 +137,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var dest = new Bucket(&#34;dest&#34;, BucketArgs.builder()        
+ *             .name(&#34;my-bucket&#34;)
  *             .location(&#34;US&#34;)
  *             .forceDestroy(true)
  *             .build());
  * 
  *         var google = new EdgeCacheOrigin(&#34;google&#34;, EdgeCacheOriginArgs.builder()        
+ *             .name(&#34;origin-google&#34;)
  *             .originAddress(&#34;google.com&#34;)
  *             .description(&#34;The default bucket for media edge test&#34;)
  *             .maxAttempts(2)
@@ -147,7 +152,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var instanceEdgeCacheOrigin = new EdgeCacheOrigin(&#34;instanceEdgeCacheOrigin&#34;, EdgeCacheOriginArgs.builder()        
+ *         var instance = new EdgeCacheOrigin(&#34;instance&#34;, EdgeCacheOriginArgs.builder()        
+ *             .name(&#34;my-origin&#34;)
  *             .originAddress(dest.url())
  *             .description(&#34;The default bucket for media edge test&#34;)
  *             .maxAttempts(2)
@@ -157,6 +163,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var instanceEdgeCacheService = new EdgeCacheService(&#34;instanceEdgeCacheService&#34;, EdgeCacheServiceArgs.builder()        
+ *             .name(&#34;my-service&#34;)
  *             .description(&#34;some description&#34;)
  *             .disableQuic(true)
  *             .disableHttp2(true)
@@ -187,7 +194,7 @@ import javax.annotation.Nullable;
  *                             .matchRules(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs.builder()
  *                                 .prefixMatch(&#34;/&#34;)
  *                                 .build())
- *                             .origin(instanceEdgeCacheOrigin.name())
+ *                             .origin(instance.name())
  *                             .routeAction(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs.builder()
  *                                 .cdnPolicy(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs.builder()
  *                                     .cacheMode(&#34;CACHE_ALL_STATIC&#34;)
@@ -248,7 +255,7 @@ import javax.annotation.Nullable;
  *                                         .headerName(&#34;prod&#34;)
  *                                         .build())
  *                                     .build())
- *                                 .origin(instanceEdgeCacheOrigin.name())
+ *                                 .origin(instance.name())
  *                                 .routeAction(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs.builder()
  *                                     .cdnPolicy(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs.builder()
  *                                         .cacheMode(&#34;CACHE_ALL_STATIC&#34;)
@@ -290,7 +297,7 @@ import javax.annotation.Nullable;
  *                                 .matchRules(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs.builder()
  *                                     .fullPathMatch(&#34;/yay&#34;)
  *                                     .build())
- *                                 .origin(instanceEdgeCacheOrigin.name())
+ *                                 .origin(instance.name())
  *                                 .routeAction(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs.builder()
  *                                     .cdnPolicy(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs.builder()
  *                                         .cacheMode(&#34;CACHE_ALL_STATIC&#34;)
@@ -318,7 +325,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Network Services Edge Cache Service Dual Token
- * 
  * ```java
  * package generated_program;
  * 
@@ -366,6 +372,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var keyset = new EdgeCacheKeyset(&#34;keyset&#34;, EdgeCacheKeysetArgs.builder()        
+ *             .name(&#34;keyset-name&#34;)
  *             .description(&#34;The default keyset&#34;)
  *             .publicKeys(EdgeCacheKeysetPublicKeyArgs.builder()
  *                 .id(&#34;my-public-key&#34;)
@@ -376,12 +383,14 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var instanceEdgeCacheOrigin = new EdgeCacheOrigin(&#34;instanceEdgeCacheOrigin&#34;, EdgeCacheOriginArgs.builder()        
+ *         var instance = new EdgeCacheOrigin(&#34;instance&#34;, EdgeCacheOriginArgs.builder()        
+ *             .name(&#34;my-origin&#34;)
  *             .originAddress(&#34;gs://media-edge-default&#34;)
  *             .description(&#34;The default bucket for media edge test&#34;)
  *             .build());
  * 
  *         var instanceEdgeCacheService = new EdgeCacheService(&#34;instanceEdgeCacheService&#34;, EdgeCacheServiceArgs.builder()        
+ *             .name(&#34;my-service&#34;)
  *             .description(&#34;some description&#34;)
  *             .routing(EdgeCacheServiceRoutingArgs.builder()
  *                 .hostRules(EdgeCacheServiceRoutingHostRuleArgs.builder()
@@ -398,7 +407,7 @@ import javax.annotation.Nullable;
  *                             .matchRules(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs.builder()
  *                                 .pathTemplateMatch(&#34;/master.m3u8&#34;)
  *                                 .build())
- *                             .origin(instanceEdgeCacheOrigin.name())
+ *                             .origin(instance.name())
  *                             .routeAction(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs.builder()
  *                                 .cdnPolicy(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs.builder()
  *                                     .signedRequestMode(&#34;REQUIRE_TOKENS&#34;)
@@ -423,7 +432,7 @@ import javax.annotation.Nullable;
  *                             .matchRules(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs.builder()
  *                                 .pathTemplateMatch(&#34;/*.m3u8&#34;)
  *                                 .build())
- *                             .origin(instanceEdgeCacheOrigin.name())
+ *                             .origin(instance.name())
  *                             .routeAction(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs.builder()
  *                                 .cdnPolicy(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs.builder()
  *                                     .signedRequestMode(&#34;REQUIRE_TOKENS&#34;)
@@ -451,7 +460,7 @@ import javax.annotation.Nullable;
  *                             .matchRules(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs.builder()
  *                                 .pathTemplateMatch(&#34;/**.m3u8&#34;)
  *                                 .build())
- *                             .origin(instanceEdgeCacheOrigin.name())
+ *                             .origin(instance.name())
  *                             .routeAction(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs.builder()
  *                                 .cdnPolicy(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs.builder()
  *                                     .signedRequestMode(&#34;REQUIRE_TOKENS&#34;)

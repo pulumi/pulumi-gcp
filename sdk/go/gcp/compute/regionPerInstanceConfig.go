@@ -45,6 +45,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewInstanceTemplate(ctx, "igm-basic", &compute.InstanceTemplateArgs{
+//				Name:         pulumi.String("my-template"),
 //				MachineType:  pulumi.String("e2-medium"),
 //				CanIpForward: pulumi.Bool(false),
 //				Tags: pulumi.StringArray{
@@ -76,6 +77,7 @@ import (
 //			}
 //			rigm, err := compute.NewRegionInstanceGroupManager(ctx, "rigm", &compute.RegionInstanceGroupManagerArgs{
 //				Description: pulumi.String("Demo test instance group manager"),
+//				Name:        pulumi.String("my-rigm"),
 //				Versions: compute.RegionInstanceGroupManagerVersionArray{
 //					&compute.RegionInstanceGroupManagerVersionArgs{
 //						Name:             pulumi.String("prod"),
@@ -95,6 +97,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewDisk(ctx, "default", &compute.DiskArgs{
+//				Name:                   pulumi.String("my-disk-name"),
 //				Type:                   pulumi.String("pd-ssd"),
 //				Zone:                   pulumi.String("us-central1-a"),
 //				Image:                  pulumi.String("debian-11-bullseye-v20220719"),
@@ -103,9 +106,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewRegionPerInstanceConfig(ctx, "withDisk", &compute.RegionPerInstanceConfigArgs{
-//				Region:                     pulumi.Any(google_compute_region_instance_group_manager.Igm.Region),
+//			_, err = compute.NewRegionPerInstanceConfig(ctx, "with_disk", &compute.RegionPerInstanceConfigArgs{
+//				Region:                     pulumi.Any(igm.Region),
 //				RegionInstanceGroupManager: rigm.Name,
+//				Name:                       pulumi.String("instance-1"),
 //				PreservedState: &compute.RegionPerInstanceConfigPreservedStateArgs{
 //					Metadata: pulumi.StringMap{
 //						"foo":               pulumi.String("bar"),

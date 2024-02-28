@@ -60,8 +60,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ScopeIamPolicy(&#34;policy&#34;, ScopeIamPolicyArgs.builder()        
- *             .project(google_gke_hub_scope.scope().project())
- *             .scopeId(google_gke_hub_scope.scope().scope_id())
+ *             .project(scope.project())
+ *             .scopeId(scope.scopeId())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -92,8 +92,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new ScopeIamBinding(&#34;binding&#34;, ScopeIamBindingArgs.builder()        
- *             .project(google_gke_hub_scope.scope().project())
- *             .scopeId(google_gke_hub_scope.scope().scope_id())
+ *             .project(scope.project())
+ *             .scopeId(scope.scopeId())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -125,8 +125,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new ScopeIamMember(&#34;member&#34;, ScopeIamMemberArgs.builder()        
- *             .project(google_gke_hub_scope.scope().project())
- *             .scopeId(google_gke_hub_scope.scope().scope_id())
+ *             .project(scope.project())
+ *             .scopeId(scope.scopeId())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

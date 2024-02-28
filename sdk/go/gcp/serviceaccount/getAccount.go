@@ -39,6 +39,54 @@ import (
 //	}
 //
 // ```
+// ### Save Key In Kubernetes Secret
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
+//	corev1 "github.com/pulumi/pulumi-kubernetes/sdk/v4/go/kubernetes/core/v1"
+//	metav1 "github.com/pulumi/pulumi-kubernetes/sdk/v4/go/kubernetes/meta/v1"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myaccount, err := serviceaccount.LookupAccount(ctx, &serviceaccount.LookupAccountArgs{
+//				AccountId: "myaccount-id",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			mykey, err := serviceaccount.NewKey(ctx, "mykey", &serviceaccount.KeyArgs{
+//				ServiceAccountId: *pulumi.String(myaccount.Name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = corev1.NewSecret(ctx, "google-application-credentials", &corev1.SecretArgs{
+//				Metadata: &metav1.ObjectMetaArgs{
+//					Name: pulumi.String("google-application-credentials"),
+//				},
+//				Data: pulumi.StringMap{
+//					"json": std.Base64decodeOutput(ctx, std.Base64decodeOutputArgs{
+//						Input: mykey.PrivateKey,
+//					}, nil).ApplyT(func(invoke std.Base64decodeResult) (*string, error) {
+//						return invoke.Result, nil
+//					}).(pulumi.StringPtrOutput),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountResult

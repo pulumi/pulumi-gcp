@@ -462,6 +462,7 @@ class EndpointPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.EndpointPolicy("default",
+            name="my-endpoint-policy",
             labels={
                 "foo": "bar",
             },
@@ -478,8 +479,7 @@ class EndpointPolicy(pulumi.CustomResource):
                         label_value="bar",
                     )],
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Network Services Endpoint Policy Empty Match
 
@@ -488,6 +488,7 @@ class EndpointPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.EndpointPolicy("default",
+            name="my-endpoint-policy",
             labels={
                 "foo": "bar",
             },
@@ -500,8 +501,7 @@ class EndpointPolicy(pulumi.CustomResource):
                 metadata_label_matcher=gcp.networkservices.EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs(
                     metadata_label_match_criteria="MATCH_ANY",
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import
@@ -562,6 +562,7 @@ class EndpointPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.EndpointPolicy("default",
+            name="my-endpoint-policy",
             labels={
                 "foo": "bar",
             },
@@ -578,8 +579,7 @@ class EndpointPolicy(pulumi.CustomResource):
                         label_value="bar",
                     )],
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Network Services Endpoint Policy Empty Match
 
@@ -588,6 +588,7 @@ class EndpointPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.EndpointPolicy("default",
+            name="my-endpoint-policy",
             labels={
                 "foo": "bar",
             },
@@ -600,8 +601,7 @@ class EndpointPolicy(pulumi.CustomResource):
                 metadata_label_matcher=gcp.networkservices.EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs(
                     metadata_label_match_criteria="MATCH_ANY",
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import

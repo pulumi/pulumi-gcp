@@ -32,11 +32,11 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.dataplex.AssetIamPolicy("policy", {
- *     project: google_dataplex_asset.example.project,
- *     location: google_dataplex_asset.example.location,
- *     lake: google_dataplex_asset.example.lake,
- *     dataplexZone: google_dataplex_asset.example.dataplex_zone,
- *     asset: google_dataplex_asset.example.name,
+ *     project: example.project,
+ *     location: example.location,
+ *     lake: example.lake,
+ *     dataplexZone: example.dataplexZone,
+ *     asset: example.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -48,11 +48,11 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.dataplex.AssetIamBinding("binding", {
- *     project: google_dataplex_asset.example.project,
- *     location: google_dataplex_asset.example.location,
- *     lake: google_dataplex_asset.example.lake,
- *     dataplexZone: google_dataplex_asset.example.dataplex_zone,
- *     asset: google_dataplex_asset.example.name,
+ *     project: example.project,
+ *     location: example.location,
+ *     lake: example.lake,
+ *     dataplexZone: example.dataplexZone,
+ *     asset: example.name,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
  * });
@@ -65,11 +65,11 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.dataplex.AssetIamMember("member", {
- *     project: google_dataplex_asset.example.project,
- *     location: google_dataplex_asset.example.location,
- *     lake: google_dataplex_asset.example.lake,
- *     dataplexZone: google_dataplex_asset.example.dataplex_zone,
- *     asset: google_dataplex_asset.example.name,
+ *     project: example.project,
+ *     location: example.location,
+ *     lake: example.lake,
+ *     dataplexZone: example.dataplexZone,
+ *     asset: example.name,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
  * });

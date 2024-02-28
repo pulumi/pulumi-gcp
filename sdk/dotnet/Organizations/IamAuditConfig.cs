@@ -24,19 +24,19 @@ namespace Pulumi.Gcp.Organizations
     /// {
     ///     var config = new Gcp.Organizations.IamAuditConfig("config", new()
     ///     {
+    ///         OrgId = "your-organization-id",
+    ///         Service = "allServices",
     ///         AuditLogConfigs = new[]
     ///         {
     ///             new Gcp.Organizations.Inputs.IamAuditConfigAuditLogConfigArgs
     ///             {
+    ///                 LogType = "DATA_READ",
     ///                 ExemptedMembers = new[]
     ///                 {
     ///                     "user:joebloggs@example.com",
     ///                 },
-    ///                 LogType = "DATA_READ",
     ///             },
     ///         },
-    ///         OrgId = "your-organization-id",
-    ///         Service = "allServices",
     ///     });
     /// 
     /// });

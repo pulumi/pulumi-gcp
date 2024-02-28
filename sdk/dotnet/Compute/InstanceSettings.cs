@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var gceInstanceSettings = new Gcp.Compute.InstanceSettings("gceInstanceSettings", new()
+    ///     var gceInstanceSettings = new Gcp.Compute.InstanceSettings("gce_instance_settings", new()
     ///     {
     ///         Zone = "us-east7-b",
     ///         Metadata = new Gcp.Compute.Inputs.InstanceSettingsMetadataArgs
@@ -31,9 +31,6 @@ namespace Pulumi.Gcp.Compute
     ///                 { "foo", "baz" },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

@@ -56,7 +56,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
+ *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
+ *             .name(&#34;cloudrun-srv&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .metadata(ServiceMetadataArgs.builder()
  *                 .namespace(&#34;my-project-name&#34;)
@@ -72,11 +73,12 @@ import javax.annotation.Nullable;
  * 
  *         var defaultDomainMapping = new DomainMapping(&#34;defaultDomainMapping&#34;, DomainMappingArgs.builder()        
  *             .location(&#34;us-central1&#34;)
+ *             .name(&#34;verified-domain.com&#34;)
  *             .metadata(DomainMappingMetadataArgs.builder()
  *                 .namespace(&#34;my-project-name&#34;)
  *                 .build())
  *             .spec(DomainMappingSpecArgs.builder()
- *                 .routeName(defaultService.name())
+ *                 .routeName(default_.name())
  *                 .build())
  *             .build());
  * 

@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.compute.getSnapshotIamPolicy({
- *     project: google_compute_snapshot.snapshot.project,
- *     name: google_compute_snapshot.snapshot.name,
+ *     project: snapshot.project,
+ *     name: snapshot.name,
  * });
  * ```
  */
@@ -73,8 +73,8 @@ export interface GetSnapshotIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.compute.getSnapshotIamPolicy({
- *     project: google_compute_snapshot.snapshot.project,
- *     name: google_compute_snapshot.snapshot.name,
+ *     project: snapshot.project,
+ *     name: snapshot.name,
  * });
  * ```
  */

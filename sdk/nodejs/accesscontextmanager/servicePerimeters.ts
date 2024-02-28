@@ -33,28 +33,31 @@ import * as utilities from "../utilities";
  *     servicePerimeters: [
  *         {
  *             name: pulumi.interpolate`accessPolicies/${access_policy.name}/servicePerimeters/`,
+ *             title: "",
  *             status: {
  *                 restrictedServices: ["storage.googleapis.com"],
  *             },
- *             title: "",
  *         },
  *         {
  *             name: pulumi.interpolate`accessPolicies/${access_policy.name}/servicePerimeters/`,
+ *             title: "",
  *             status: {
  *                 restrictedServices: ["bigtable.googleapis.com"],
  *             },
- *             title: "",
  *         },
  *     ],
  * });
  * const access_level = new gcp.accesscontextmanager.AccessLevel("access-level", {
+ *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
+ *     name: pulumi.interpolate`accessPolicies/${access_policy.name}/accessLevels/chromeos_no_lock`,
+ *     title: "chromeos_no_lock",
  *     basic: {
  *         conditions: [{
  *             devicePolicy: {
+ *                 requireScreenLock: false,
  *                 osConstraints: [{
  *                     osType: "DESKTOP_CHROME_OS",
  *                 }],
- *                 requireScreenLock: false,
  *             },
  *             regions: [
  *                 "CH",
@@ -63,8 +66,6 @@ import * as utilities from "../utilities";
  *             ],
  *         }],
  *     },
- *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
- *     title: "chromeos_no_lock",
  * });
  * ```
  *

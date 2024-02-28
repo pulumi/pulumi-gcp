@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.GetClusterIamPolicy(ctx, &dataproc.GetClusterIamPolicyArgs{
-//				Cluster: google_dataproc_cluster.Cluster.Name,
+//				Cluster: cluster.Name,
 //				Region:  pulumi.StringRef("us-central1"),
 //			}, nil)
 //			if err != nil {

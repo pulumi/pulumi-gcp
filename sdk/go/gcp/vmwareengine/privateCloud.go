@@ -34,6 +34,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vmwareengine.NewNetwork(ctx, "pc-nw", &vmwareengine.NetworkArgs{
+//				Name:        pulumi.String("pc-nw"),
 //				Location:    pulumi.String("global"),
 //				Type:        pulumi.String("STANDARD"),
 //				Description: pulumi.String("PC network description."),
@@ -43,6 +44,7 @@ import (
 //			}
 //			_, err = vmwareengine.NewPrivateCloud(ctx, "vmw-engine-pc", &vmwareengine.PrivateCloudArgs{
 //				Location:    pulumi.String("us-west1-a"),
+//				Name:        pulumi.String("sample-pc"),
 //				Description: pulumi.String("Sample test PC."),
 //				NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
 //					ManagementCidr:      pulumi.String("192.168.30.0/24"),
@@ -81,6 +83,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vmwareengine.NewNetwork(ctx, "pc-nw", &vmwareengine.NetworkArgs{
+//				Name:        pulumi.String("pc-nw"),
 //				Location:    pulumi.String("global"),
 //				Type:        pulumi.String("STANDARD"),
 //				Description: pulumi.String("PC network description."),
@@ -90,6 +93,7 @@ import (
 //			}
 //			_, err = vmwareengine.NewPrivateCloud(ctx, "vmw-engine-pc", &vmwareengine.PrivateCloudArgs{
 //				Location:    pulumi.String("us-west1-a"),
+//				Name:        pulumi.String("sample-pc"),
 //				Description: pulumi.String("Sample test PC."),
 //				Type:        pulumi.String("TIME_LIMITED"),
 //				NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{

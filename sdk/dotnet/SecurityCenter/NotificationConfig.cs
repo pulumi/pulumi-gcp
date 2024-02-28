@@ -35,9 +35,12 @@ namespace Pulumi.Gcp.SecurityCenter
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sccNotification = new Gcp.PubSub.Topic("sccNotification");
+    ///     var sccNotification = new Gcp.PubSub.Topic("scc_notification", new()
+    ///     {
+    ///         Name = "my-topic",
+    ///     });
     /// 
-    ///     var customNotificationConfig = new Gcp.SecurityCenter.NotificationConfig("customNotificationConfig", new()
+    ///     var customNotificationConfig = new Gcp.SecurityCenter.NotificationConfig("custom_notification_config", new()
     ///     {
     ///         ConfigId = "my-config",
     ///         Organization = "123456789",

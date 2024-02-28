@@ -52,6 +52,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.IAMBinding;
  * import com.pulumi.gcp.projects.IAMBindingArgs;
  * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
  * import com.pulumi.gcp.pubsub.Subscription;
  * import com.pulumi.gcp.pubsub.SubscriptionArgs;
  * import com.pulumi.gcp.pubsub.inputs.SubscriptionPushConfigArgs;
@@ -70,6 +71,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
+ *             .name(&#34;cloud_run_service_name&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .template(ServiceTemplateArgs.builder()
  *                 .spec(ServiceTemplateSpecArgs.builder()
@@ -101,9 +103,12 @@ import javax.annotation.Nullable;
  *             .members(sa.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
  *             .build());
  * 
- *         var topic = new Topic(&#34;topic&#34;);
+ *         var topic = new Topic(&#34;topic&#34;, TopicArgs.builder()        
+ *             .name(&#34;pubsub_topic&#34;)
+ *             .build());
  * 
  *         var subscription = new Subscription(&#34;subscription&#34;, SubscriptionArgs.builder()        
+ *             .name(&#34;pubsub_subscription&#34;)
  *             .topic(topic.name())
  *             .pushConfig(SubscriptionPushConfigArgs.builder()
  *                 .pushEndpoint(default_.statuses().applyValue(statuses -&gt; statuses[0].url()))
@@ -143,6 +148,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
+ *             .name(&#34;cloudrun-srv&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .template(ServiceTemplateArgs.builder()
  *                 .spec(ServiceTemplateSpecArgs.builder()
@@ -152,8 +158,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .traffics(ServiceTrafficArgs.builder()
- *                 .latestRevision(true)
  *                 .percent(100)
+ *                 .latestRevision(true)
  *                 .build())
  *             .build());
  * 
@@ -189,6 +195,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new DatabaseInstance(&#34;instance&#34;, DatabaseInstanceArgs.builder()        
+ *             .name(&#34;cloudrun-sql&#34;)
  *             .region(&#34;us-east1&#34;)
  *             .databaseVersion(&#34;MYSQL_5_7&#34;)
  *             .settings(DatabaseInstanceSettingsArgs.builder()
@@ -198,6 +205,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
+ *             .name(&#34;cloudrun-srv&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .template(ServiceTemplateArgs.builder()
  *                 .spec(ServiceTemplateSpecArgs.builder()
@@ -248,6 +256,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
+ *             .name(&#34;cloudrun-srv&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .template(ServiceTemplateArgs.builder()
  *                 .spec(ServiceTemplateSpecArgs.builder()
@@ -258,7 +267,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         final var noauthIAMPolicy = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *         final var noauth = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role(&#34;roles/run.invoker&#34;)
  *                 .members(&#34;allUsers&#34;)
@@ -269,7 +278,7 @@ import javax.annotation.Nullable;
  *             .location(default_.location())
  *             .project(default_.project())
  *             .service(default_.name())
- *             .policyData(noauthIAMPolicy.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(noauth.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
@@ -301,6 +310,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
+ *             .name(&#34;cloudrun-srv&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .template(ServiceTemplateArgs.builder()
  *                 .spec(ServiceTemplateSpecArgs.builder()
@@ -346,7 +356,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateMetadataArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -361,6 +370,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
+ *             .name(&#34;cloudrun-srv&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .metadata(ServiceMetadataArgs.builder()
  *                 .annotations(Map.of(&#34;run.googleapis.com/launch-stage&#34;, &#34;BETA&#34;))
@@ -411,9 +421,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

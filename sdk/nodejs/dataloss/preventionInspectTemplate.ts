@@ -16,6 +16,121 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dlp/docs/creating-templates-inspect)
  *
  * ## Example Usage
+ * ### Dlp Inspect Template Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = new gcp.dataloss.PreventionInspectTemplate("basic", {
+ *     parent: "projects/my-project-name",
+ *     description: "My description",
+ *     displayName: "display_name",
+ *     inspectConfig: {
+ *         infoTypes: [
+ *             {
+ *                 name: "EMAIL_ADDRESS",
+ *             },
+ *             {
+ *                 name: "PERSON_NAME",
+ *             },
+ *             {
+ *                 name: "LAST_NAME",
+ *             },
+ *             {
+ *                 name: "DOMAIN_NAME",
+ *             },
+ *             {
+ *                 name: "PHONE_NUMBER",
+ *             },
+ *             {
+ *                 name: "FIRST_NAME",
+ *             },
+ *         ],
+ *         minLikelihood: "UNLIKELY",
+ *         ruleSets: [
+ *             {
+ *                 infoTypes: [{
+ *                     name: "EMAIL_ADDRESS",
+ *                 }],
+ *                 rules: [{
+ *                     exclusionRule: {
+ *                         regex: {
+ *                             pattern: ".+@example.com",
+ *                         },
+ *                         matchingType: "MATCHING_TYPE_FULL_MATCH",
+ *                     },
+ *                 }],
+ *             },
+ *             {
+ *                 infoTypes: [
+ *                     {
+ *                         name: "EMAIL_ADDRESS",
+ *                     },
+ *                     {
+ *                         name: "DOMAIN_NAME",
+ *                     },
+ *                     {
+ *                         name: "PHONE_NUMBER",
+ *                     },
+ *                     {
+ *                         name: "PERSON_NAME",
+ *                     },
+ *                     {
+ *                         name: "FIRST_NAME",
+ *                     },
+ *                 ],
+ *                 rules: [{
+ *                     exclusionRule: {
+ *                         dictionary: {
+ *                             wordList: {
+ *                                 words: ["TEST"],
+ *                             },
+ *                         },
+ *                         matchingType: "MATCHING_TYPE_PARTIAL_MATCH",
+ *                     },
+ *                 }],
+ *             },
+ *             {
+ *                 infoTypes: [{
+ *                     name: "PERSON_NAME",
+ *                 }],
+ *                 rules: [{
+ *                     hotwordRule: {
+ *                         hotwordRegex: {
+ *                             pattern: "patient",
+ *                         },
+ *                         proximity: {
+ *                             windowBefore: 50,
+ *                         },
+ *                         likelihoodAdjustment: {
+ *                             fixedLikelihood: "VERY_LIKELY",
+ *                         },
+ *                     },
+ *                 }],
+ *             },
+ *         ],
+ *         limits: {
+ *             maxFindingsPerItem: 10,
+ *             maxFindingsPerRequest: 50,
+ *             maxFindingsPerInfoTypes: [
+ *                 {
+ *                     maxFindings: 75,
+ *                     infoType: {
+ *                         name: "PERSON_NAME",
+ *                     },
+ *                 },
+ *                 {
+ *                     maxFindings: 80,
+ *                     infoType: {
+ *                         name: "LAST_NAME",
+ *                     },
+ *                 },
+ *             ],
+ *         },
+ *     },
+ * });
+ * ```
  * ### Dlp Inspect Template Custom Type
  *
  * ```typescript
@@ -23,6 +138,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const custom = new gcp.dataloss.PreventionInspectTemplate("custom", {
+ *     parent: "projects/my-project-name",
  *     description: "My description",
  *     displayName: "display_name",
  *     inspectConfig: {
@@ -38,10 +154,6 @@ import * as utilities from "../utilities";
  *         infoTypes: [{
  *             name: "EMAIL_ADDRESS",
  *         }],
- *         limits: {
- *             maxFindingsPerItem: 10,
- *             maxFindingsPerRequest: 50,
- *         },
  *         minLikelihood: "UNLIKELY",
  *         ruleSets: [
  *             {
@@ -50,10 +162,10 @@ import * as utilities from "../utilities";
  *                 }],
  *                 rules: [{
  *                     exclusionRule: {
- *                         matchingType: "MATCHING_TYPE_FULL_MATCH",
  *                         regex: {
  *                             pattern: ".+@example.com",
  *                         },
+ *                         matchingType: "MATCHING_TYPE_FULL_MATCH",
  *                     },
  *                 }],
  *             },
@@ -66,18 +178,21 @@ import * as utilities from "../utilities";
  *                         hotwordRegex: {
  *                             pattern: "example*",
  *                         },
- *                         likelihoodAdjustment: {
- *                             fixedLikelihood: "VERY_LIKELY",
- *                         },
  *                         proximity: {
  *                             windowBefore: 50,
+ *                         },
+ *                         likelihoodAdjustment: {
+ *                             fixedLikelihood: "VERY_LIKELY",
  *                         },
  *                     },
  *                 }],
  *             },
  *         ],
+ *         limits: {
+ *             maxFindingsPerItem: 10,
+ *             maxFindingsPerRequest: 50,
+ *         },
  *     },
- *     parent: "projects/my-project-name",
  * });
  * ```
  * ### Dlp Inspect Template Custom Type Surrogate
@@ -86,7 +201,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const customTypeSurrogate = new gcp.dataloss.PreventionInspectTemplate("customTypeSurrogate", {
+ * const customTypeSurrogate = new gcp.dataloss.PreventionInspectTemplate("custom_type_surrogate", {
+ *     parent: "projects/my-project-name",
  *     description: "My description",
  *     displayName: "display_name",
  *     inspectConfig: {
@@ -100,10 +216,6 @@ import * as utilities from "../utilities";
  *         infoTypes: [{
  *             name: "EMAIL_ADDRESS",
  *         }],
- *         limits: {
- *             maxFindingsPerItem: 10,
- *             maxFindingsPerRequest: 50,
- *         },
  *         minLikelihood: "UNLIKELY",
  *         ruleSets: [
  *             {
@@ -112,10 +224,10 @@ import * as utilities from "../utilities";
  *                 }],
  *                 rules: [{
  *                     exclusionRule: {
- *                         matchingType: "MATCHING_TYPE_FULL_MATCH",
  *                         regex: {
  *                             pattern: ".+@example.com",
  *                         },
+ *                         matchingType: "MATCHING_TYPE_FULL_MATCH",
  *                     },
  *                 }],
  *             },
@@ -128,18 +240,21 @@ import * as utilities from "../utilities";
  *                         hotwordRegex: {
  *                             pattern: "example*",
  *                         },
- *                         likelihoodAdjustment: {
- *                             fixedLikelihood: "VERY_LIKELY",
- *                         },
  *                         proximity: {
  *                             windowBefore: 50,
+ *                         },
+ *                         likelihoodAdjustment: {
+ *                             fixedLikelihood: "VERY_LIKELY",
  *                         },
  *                     },
  *                 }],
  *             },
  *         ],
+ *         limits: {
+ *             maxFindingsPerItem: 10,
+ *             maxFindingsPerRequest: 50,
+ *         },
  *     },
- *     parent: "projects/my-project-name",
  * });
  * ```
  *

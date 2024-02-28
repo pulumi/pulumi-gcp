@@ -27,8 +27,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const database = new gcp.firestore.Database("database", {
- *     locationId: "nam5",
  *     project: "my-project-name",
+ *     name: "(default)",
+ *     locationId: "nam5",
  *     type: "FIRESTORE_NATIVE",
  * });
  * ```
@@ -39,14 +40,15 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const database = new gcp.firestore.Database("database", {
- *     appEngineIntegrationMode: "DISABLED",
+ *     project: "my-project-name",
+ *     name: "database-id",
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
  *     concurrencyMode: "OPTIMISTIC",
+ *     appEngineIntegrationMode: "DISABLED",
+ *     pointInTimeRecoveryEnablement: "POINT_IN_TIME_RECOVERY_ENABLED",
  *     deleteProtectionState: "DELETE_PROTECTION_ENABLED",
  *     deletionPolicy: "DELETE",
- *     locationId: "nam5",
- *     pointInTimeRecoveryEnablement: "POINT_IN_TIME_RECOVERY_ENABLED",
- *     project: "my-project-name",
- *     type: "FIRESTORE_NATIVE",
  * });
  * ```
  * ### Firestore Default Database In Datastore Mode
@@ -55,9 +57,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const datastoreModeDatabase = new gcp.firestore.Database("datastoreModeDatabase", {
- *     locationId: "nam5",
+ * const datastoreModeDatabase = new gcp.firestore.Database("datastore_mode_database", {
  *     project: "my-project-name",
+ *     name: "(default)",
+ *     locationId: "nam5",
  *     type: "DATASTORE_MODE",
  * });
  * ```
@@ -67,15 +70,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const datastoreModeDatabase = new gcp.firestore.Database("datastoreModeDatabase", {
- *     appEngineIntegrationMode: "DISABLED",
+ * const datastoreModeDatabase = new gcp.firestore.Database("datastore_mode_database", {
+ *     project: "my-project-name",
+ *     name: "database-id",
+ *     locationId: "nam5",
+ *     type: "DATASTORE_MODE",
  *     concurrencyMode: "OPTIMISTIC",
+ *     appEngineIntegrationMode: "DISABLED",
+ *     pointInTimeRecoveryEnablement: "POINT_IN_TIME_RECOVERY_ENABLED",
  *     deleteProtectionState: "DELETE_PROTECTION_ENABLED",
  *     deletionPolicy: "DELETE",
- *     locationId: "nam5",
- *     pointInTimeRecoveryEnablement: "POINT_IN_TIME_RECOVERY_ENABLED",
- *     project: "my-project-name",
- *     type: "DATASTORE_MODE",
  * });
  * ```
  *

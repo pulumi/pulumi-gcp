@@ -249,7 +249,9 @@ class Catalog(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.biglake.Catalog("default", location="US")
+        default = gcp.biglake.Catalog("default",
+            name="my_catalog",
+            location="US")
         ```
 
         ## Import
@@ -309,7 +311,9 @@ class Catalog(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.biglake.Catalog("default", location="US")
+        default = gcp.biglake.Catalog("default",
+            name="my_catalog",
+            location="US")
         ```
 
         ## Import

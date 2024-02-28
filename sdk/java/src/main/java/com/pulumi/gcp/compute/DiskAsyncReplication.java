@@ -46,12 +46,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var primary_disk = new Disk(&#34;primary-disk&#34;, DiskArgs.builder()        
+ *             .name(&#34;primary-disk&#34;)
  *             .type(&#34;pd-ssd&#34;)
  *             .zone(&#34;europe-west4-a&#34;)
  *             .physicalBlockSizeBytes(4096)
  *             .build());
  * 
  *         var secondary_disk = new Disk(&#34;secondary-disk&#34;, DiskArgs.builder()        
+ *             .name(&#34;secondary-disk&#34;)
  *             .type(&#34;pd-ssd&#34;)
  *             .zone(&#34;europe-west3-a&#34;)
  *             .asyncPrimaryDisk(DiskAsyncPrimaryDiskArgs.builder()

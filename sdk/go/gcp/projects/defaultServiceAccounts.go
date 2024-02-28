@@ -41,9 +41,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := projects.NewDefaultServiceAccounts(ctx, "myProject", &projects.DefaultServiceAccountsArgs{
-//				Action:  pulumi.String("DELETE"),
+//			_, err := projects.NewDefaultServiceAccounts(ctx, "my_project", &projects.DefaultServiceAccountsArgs{
 //				Project: pulumi.String("my-project-id"),
+//				Action:  pulumi.String("DELETE"),
 //			})
 //			if err != nil {
 //				return err
@@ -68,9 +68,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := projects.NewDefaultServiceAccounts(ctx, "myProject", &projects.DefaultServiceAccountsArgs{
-//				Action:        pulumi.String("DISABLE"),
+//			_, err := projects.NewDefaultServiceAccounts(ctx, "my_project", &projects.DefaultServiceAccountsArgs{
 //				Project:       pulumi.String("my-project-id"),
+//				Action:        pulumi.String("DISABLE"),
 //				RestorePolicy: pulumi.String("REVERT"),
 //			})
 //			if err != nil {

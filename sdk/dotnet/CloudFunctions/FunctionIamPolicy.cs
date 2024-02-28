@@ -51,9 +51,9 @@ namespace Pulumi.Gcp.CloudFunctions
     /// 
     ///     var policy = new Gcp.CloudFunctions.FunctionIamPolicy("policy", new()
     ///     {
-    ///         Project = google_cloudfunctions_function.Function.Project,
-    ///         Region = google_cloudfunctions_function.Function.Region,
-    ///         CloudFunction = google_cloudfunctions_function.Function.Name,
+    ///         Project = function.Project,
+    ///         Region = function.Region,
+    ///         CloudFunction = function.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -72,9 +72,9 @@ namespace Pulumi.Gcp.CloudFunctions
     /// {
     ///     var binding = new Gcp.CloudFunctions.FunctionIamBinding("binding", new()
     ///     {
-    ///         Project = google_cloudfunctions_function.Function.Project,
-    ///         Region = google_cloudfunctions_function.Function.Region,
-    ///         CloudFunction = google_cloudfunctions_function.Function.Name,
+    ///         Project = function.Project,
+    ///         Region = function.Region,
+    ///         CloudFunction = function.Name,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -97,9 +97,9 @@ namespace Pulumi.Gcp.CloudFunctions
     /// {
     ///     var member = new Gcp.CloudFunctions.FunctionIamMember("member", new()
     ///     {
-    ///         Project = google_cloudfunctions_function.Function.Project,
-    ///         Region = google_cloudfunctions_function.Function.Region,
-    ///         CloudFunction = google_cloudfunctions_function.Function.Name,
+    ///         Project = function.Project,
+    ///         Region = function.Region,
+    ///         CloudFunction = function.Name,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

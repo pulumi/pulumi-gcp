@@ -320,9 +320,9 @@ class RepositoryIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.artifactregistry.RepositoryIamPolicy("policy",
-            project=google_artifact_registry_repository["my-repo"]["project"],
-            location=google_artifact_registry_repository["my-repo"]["location"],
-            repository=google_artifact_registry_repository["my-repo"]["name"],
+            project=my_repo["project"],
+            location=my_repo["location"],
+            repository=my_repo["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -333,9 +333,9 @@ class RepositoryIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.artifactregistry.RepositoryIamBinding("binding",
-            project=google_artifact_registry_repository["my-repo"]["project"],
-            location=google_artifact_registry_repository["my-repo"]["location"],
-            repository=google_artifact_registry_repository["my-repo"]["name"],
+            project=my_repo["project"],
+            location=my_repo["location"],
+            repository=my_repo["name"],
             role="roles/artifactregistry.reader",
             members=["user:jane@example.com"])
         ```
@@ -347,9 +347,9 @@ class RepositoryIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.artifactregistry.RepositoryIamMember("member",
-            project=google_artifact_registry_repository["my-repo"]["project"],
-            location=google_artifact_registry_repository["my-repo"]["location"],
-            repository=google_artifact_registry_repository["my-repo"]["name"],
+            project=my_repo["project"],
+            location=my_repo["location"],
+            repository=my_repo["name"],
             role="roles/artifactregistry.reader",
             member="user:jane@example.com")
         ```
@@ -447,9 +447,9 @@ class RepositoryIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.artifactregistry.RepositoryIamPolicy("policy",
-            project=google_artifact_registry_repository["my-repo"]["project"],
-            location=google_artifact_registry_repository["my-repo"]["location"],
-            repository=google_artifact_registry_repository["my-repo"]["name"],
+            project=my_repo["project"],
+            location=my_repo["location"],
+            repository=my_repo["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -460,9 +460,9 @@ class RepositoryIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.artifactregistry.RepositoryIamBinding("binding",
-            project=google_artifact_registry_repository["my-repo"]["project"],
-            location=google_artifact_registry_repository["my-repo"]["location"],
-            repository=google_artifact_registry_repository["my-repo"]["name"],
+            project=my_repo["project"],
+            location=my_repo["location"],
+            repository=my_repo["name"],
             role="roles/artifactregistry.reader",
             members=["user:jane@example.com"])
         ```
@@ -474,9 +474,9 @@ class RepositoryIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.artifactregistry.RepositoryIamMember("member",
-            project=google_artifact_registry_repository["my-repo"]["project"],
-            location=google_artifact_registry_repository["my-repo"]["location"],
-            repository=google_artifact_registry_repository["my-repo"]["name"],
+            project=my_repo["project"],
+            location=my_repo["location"],
+            repository=my_repo["name"],
             role="roles/artifactregistry.reader",
             member="user:jane@example.com")
         ```

@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.DataCatalog
         /// {
         ///     var policy = Gcp.DataCatalog.GetEntryGroupIamPolicy.Invoke(new()
         ///     {
-        ///         EntryGroup = google_data_catalog_entry_group.Basic_entry_group.Name,
+        ///         EntryGroup = basicEntryGroup.Name,
         ///     });
         /// 
         /// });
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.DataCatalog
         /// {
         ///     var policy = Gcp.DataCatalog.GetEntryGroupIamPolicy.Invoke(new()
         ///     {
-        ///         EntryGroup = google_data_catalog_entry_group.Basic_entry_group.Name,
+        ///         EntryGroup = basicEntryGroup.Name,
         ///     });
         /// 
         /// });

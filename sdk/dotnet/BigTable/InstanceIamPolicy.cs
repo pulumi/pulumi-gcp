@@ -68,11 +68,11 @@ namespace Pulumi.Gcp.BigTable
     ///     var editor = new Gcp.BigTable.InstanceIamBinding("editor", new()
     ///     {
     ///         Instance = "your-bigtable-instance",
+    ///         Role = "roles/bigtable.user",
     ///         Members = new[]
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         Role = "roles/bigtable.user",
     ///     });
     /// 
     /// });
@@ -91,8 +91,8 @@ namespace Pulumi.Gcp.BigTable
     ///     var editor = new Gcp.BigTable.InstanceIamMember("editor", new()
     ///     {
     ///         Instance = "your-bigtable-instance",
-    ///         Member = "user:jane@example.com",
     ///         Role = "roles/bigtable.user",
+    ///         Member = "user:jane@example.com",
     ///     });
     /// 
     /// });

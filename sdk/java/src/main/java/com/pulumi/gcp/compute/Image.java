@@ -69,6 +69,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Image(&#34;example&#34;, ImageArgs.builder()        
+ *             .name(&#34;example-image&#34;)
  *             .rawDisk(ImageRawDiskArgs.builder()
  *                 .source(&#34;https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz&#34;)
  *                 .build())
@@ -86,8 +87,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Image;
  * import com.pulumi.gcp.compute.ImageArgs;
- * import com.pulumi.gcp.compute.inputs.ImageGuestOsFeatureArgs;
  * import com.pulumi.gcp.compute.inputs.ImageRawDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.ImageGuestOsFeatureArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -102,6 +103,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Image(&#34;example&#34;, ImageArgs.builder()        
+ *             .name(&#34;example-image&#34;)
+ *             .rawDisk(ImageRawDiskArgs.builder()
+ *                 .source(&#34;https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz&#34;)
+ *                 .build())
  *             .guestOsFeatures(            
  *                 ImageGuestOsFeatureArgs.builder()
  *                     .type(&#34;SECURE_BOOT&#34;)
@@ -109,9 +114,6 @@ import javax.annotation.Nullable;
  *                 ImageGuestOsFeatureArgs.builder()
  *                     .type(&#34;MULTI_IP_SUBNET&#34;)
  *                     .build())
- *             .rawDisk(ImageRawDiskArgs.builder()
- *                 .source(&#34;https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz&#34;)
- *                 .build())
  *             .build());
  * 
  *     }
@@ -141,6 +143,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Image(&#34;example&#34;, ImageArgs.builder()        
+ *             .name(&#34;example-sl-image&#34;)
  *             .rawDisk(ImageRawDiskArgs.builder()
  *                 .source(&#34;https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz&#34;)
  *                 .build())

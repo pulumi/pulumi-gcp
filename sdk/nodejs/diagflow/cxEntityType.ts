@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  *         enableSpeechAdaptation: true,
  *     },
  * });
- * const basicEntityType = new gcp.diagflow.CxEntityType("basicEntityType", {
+ * const basicEntityType = new gcp.diagflow.CxEntityType("basic_entity_type", {
  *     parent: agent.id,
  *     displayName: "MyEntity",
  *     kind: "KIND_MAP",

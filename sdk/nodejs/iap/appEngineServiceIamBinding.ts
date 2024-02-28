@@ -36,9 +36,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.iap.AppEngineServiceIamPolicy("policy", {
- *     project: google_app_engine_standard_app_version.version.project,
- *     appId: google_app_engine_standard_app_version.version.project,
- *     service: google_app_engine_standard_app_version.version.service,
+ *     project: version.project,
+ *     appId: version.project,
+ *     service: version.service,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -61,9 +61,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.iap.AppEngineServiceIamPolicy("policy", {
- *     project: google_app_engine_standard_app_version.version.project,
- *     appId: google_app_engine_standard_app_version.version.project,
- *     service: google_app_engine_standard_app_version.version.service,
+ *     project: version.project,
+ *     appId: version.project,
+ *     service: version.service,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -74,11 +74,11 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.iap.AppEngineServiceIamBinding("binding", {
- *     appId: google_app_engine_standard_app_version.version.project,
- *     members: ["user:jane@example.com"],
- *     project: google_app_engine_standard_app_version.version.project,
+ *     project: version.project,
+ *     appId: version.project,
+ *     service: version.service,
  *     role: "roles/iap.httpsResourceAccessor",
- *     service: google_app_engine_standard_app_version.version.service,
+ *     members: ["user:jane@example.com"],
  * });
  * ```
  *
@@ -89,16 +89,16 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.iap.AppEngineServiceIamBinding("binding", {
- *     appId: google_app_engine_standard_app_version.version.project,
+ *     project: version.project,
+ *     appId: version.project,
+ *     service: version.service,
+ *     role: "roles/iap.httpsResourceAccessor",
+ *     members: ["user:jane@example.com"],
  *     condition: {
+ *         title: "expires_after_2019_12_31",
  *         description: "Expiring at midnight of 2019-12-31",
  *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
- *         title: "expires_after_2019_12_31",
  *     },
- *     members: ["user:jane@example.com"],
- *     project: google_app_engine_standard_app_version.version.project,
- *     role: "roles/iap.httpsResourceAccessor",
- *     service: google_app_engine_standard_app_version.version.service,
  * });
  * ```
  * ## google\_iap\_app\_engine\_service\_iam\_member
@@ -108,11 +108,11 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.iap.AppEngineServiceIamMember("member", {
- *     appId: google_app_engine_standard_app_version.version.project,
- *     member: "user:jane@example.com",
- *     project: google_app_engine_standard_app_version.version.project,
+ *     project: version.project,
+ *     appId: version.project,
+ *     service: version.service,
  *     role: "roles/iap.httpsResourceAccessor",
- *     service: google_app_engine_standard_app_version.version.service,
+ *     member: "user:jane@example.com",
  * });
  * ```
  *
@@ -123,16 +123,16 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.iap.AppEngineServiceIamMember("member", {
- *     appId: google_app_engine_standard_app_version.version.project,
+ *     project: version.project,
+ *     appId: version.project,
+ *     service: version.service,
+ *     role: "roles/iap.httpsResourceAccessor",
+ *     member: "user:jane@example.com",
  *     condition: {
+ *         title: "expires_after_2019_12_31",
  *         description: "Expiring at midnight of 2019-12-31",
  *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
- *         title: "expires_after_2019_12_31",
  *     },
- *     member: "user:jane@example.com",
- *     project: google_app_engine_standard_app_version.version.project,
- *     role: "roles/iap.httpsResourceAccessor",
- *     service: google_app_engine_standard_app_version.version.service,
  * });
  * ```
  *

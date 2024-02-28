@@ -35,19 +35,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataplex.NewDatascan(ctx, "basicProfile", &dataplex.DatascanArgs{
+//			_, err := dataplex.NewDatascan(ctx, "basic_profile", &dataplex.DatascanArgs{
+//				Location:   pulumi.String("us-central1"),
+//				DataScanId: pulumi.String("dataprofile-basic"),
 //				Data: &dataplex.DatascanDataArgs{
 //					Resource: pulumi.String("//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare"),
 //				},
-//				DataProfileSpec: nil,
-//				DataScanId:      pulumi.String("dataprofile-basic"),
 //				ExecutionSpec: &dataplex.DatascanExecutionSpecArgs{
 //					Trigger: &dataplex.DatascanExecutionSpecTriggerArgs{
 //						OnDemand: nil,
 //					},
 //				},
-//				Location: pulumi.String("us-central1"),
-//				Project:  pulumi.String("my-project-name"),
+//				DataProfileSpec: nil,
+//				Project:         pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
 //				return err
@@ -72,17 +72,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			source, err := bigquery.NewDataset(ctx, "source", &bigquery.DatasetArgs{
-//				DatasetId:               pulumi.String("dataplex_dataset"),
-//				FriendlyName:            pulumi.String("test"),
-//				Description:             pulumi.String("This is a test description"),
-//				Location:                pulumi.String("US"),
-//				DeleteContentsOnDestroy: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = dataplex.NewDatascan(ctx, "fullProfile", &dataplex.DatascanArgs{
+//			_, err := dataplex.NewDatascan(ctx, "full_profile", &dataplex.DatascanArgs{
 //				Location:    pulumi.String("us-central1"),
 //				DisplayName: pulumi.String("Full Datascan Profile"),
 //				DataScanId:  pulumi.String("dataprofile-full"),
@@ -120,9 +110,17 @@ import (
 //					},
 //				},
 //				Project: pulumi.String("my-project-name"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				source,
-//			}))
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDataset(ctx, "source", &bigquery.DatasetArgs{
+//				DatasetId:               pulumi.String("dataplex_dataset"),
+//				FriendlyName:            pulumi.String("test"),
+//				Description:             pulumi.String("This is a test description"),
+//				Location:                pulumi.String("US"),
+//				DeleteContentsOnDestroy: pulumi.Bool(true),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -145,30 +143,30 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataplex.NewDatascan(ctx, "basicQuality", &dataplex.DatascanArgs{
+//			_, err := dataplex.NewDatascan(ctx, "basic_quality", &dataplex.DatascanArgs{
+//				Location:   pulumi.String("us-central1"),
+//				DataScanId: pulumi.String("dataquality-basic"),
 //				Data: &dataplex.DatascanDataArgs{
 //					Resource: pulumi.String("//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare"),
+//				},
+//				ExecutionSpec: &dataplex.DatascanExecutionSpecArgs{
+//					Trigger: &dataplex.DatascanExecutionSpecTriggerArgs{
+//						OnDemand: nil,
+//					},
 //				},
 //				DataQualitySpec: &dataplex.DatascanDataQualitySpecArgs{
 //					Rules: dataplex.DatascanDataQualitySpecRuleArray{
 //						&dataplex.DatascanDataQualitySpecRuleArgs{
-//							Description: pulumi.String("rule 1 for validity dimension"),
 //							Dimension:   pulumi.String("VALIDITY"),
 //							Name:        pulumi.String("rule1"),
+//							Description: pulumi.String("rule 1 for validity dimension"),
 //							TableConditionExpectation: &dataplex.DatascanDataQualitySpecRuleTableConditionExpectationArgs{
 //								SqlExpression: pulumi.String("COUNT(*) > 0"),
 //							},
 //						},
 //					},
 //				},
-//				DataScanId: pulumi.String("dataquality-basic"),
-//				ExecutionSpec: &dataplex.DatascanExecutionSpecArgs{
-//					Trigger: &dataplex.DatascanExecutionSpecTriggerArgs{
-//						OnDemand: nil,
-//					},
-//				},
-//				Location: pulumi.String("us-central1"),
-//				Project:  pulumi.String("my-project-name"),
+//				Project: pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
 //				return err
@@ -192,30 +190,46 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataplex.NewDatascan(ctx, "fullQuality", &dataplex.DatascanArgs{
+//			_, err := dataplex.NewDatascan(ctx, "full_quality", &dataplex.DatascanArgs{
+//				Location:    pulumi.String("us-central1"),
+//				DisplayName: pulumi.String("Full Datascan Quality"),
+//				DataScanId:  pulumi.String("dataquality-full"),
+//				Description: pulumi.String("Example resource - Full Datascan Quality"),
+//				Labels: pulumi.StringMap{
+//					"author": pulumi.String("billing"),
+//				},
 //				Data: &dataplex.DatascanDataArgs{
 //					Resource: pulumi.String("//bigquery.googleapis.com/projects/bigquery-public-data/datasets/austin_bikeshare/tables/bikeshare_stations"),
 //				},
+//				ExecutionSpec: &dataplex.DatascanExecutionSpecArgs{
+//					Trigger: &dataplex.DatascanExecutionSpecTriggerArgs{
+//						Schedule: &dataplex.DatascanExecutionSpecTriggerScheduleArgs{
+//							Cron: pulumi.String("TZ=America/New_York 1 1 * * *"),
+//						},
+//					},
+//					Field: pulumi.String("modified_date"),
+//				},
 //				DataQualitySpec: &dataplex.DatascanDataQualitySpecArgs{
-//					RowFilter: pulumi.String("station_id > 1000"),
+//					SamplingPercent: pulumi.Float64(5),
+//					RowFilter:       pulumi.String("station_id > 1000"),
 //					Rules: dataplex.DatascanDataQualitySpecRuleArray{
 //						&dataplex.DatascanDataQualitySpecRuleArgs{
 //							Column:             pulumi.String("address"),
 //							Dimension:          pulumi.String("VALIDITY"),
-//							NonNullExpectation: nil,
 //							Threshold:          pulumi.Float64(0.99),
+//							NonNullExpectation: nil,
 //						},
 //						&dataplex.DatascanDataQualitySpecRuleArgs{
 //							Column:     pulumi.String("council_district"),
 //							Dimension:  pulumi.String("VALIDITY"),
 //							IgnoreNull: pulumi.Bool(true),
+//							Threshold:  pulumi.Float64(0.9),
 //							RangeExpectation: &dataplex.DatascanDataQualitySpecRuleRangeExpectationArgs{
-//								MaxValue:         pulumi.String("10"),
 //								MinValue:         pulumi.String("1"),
-//								StrictMaxEnabled: pulumi.Bool(false),
+//								MaxValue:         pulumi.String("10"),
 //								StrictMinEnabled: pulumi.Bool(true),
+//								StrictMaxEnabled: pulumi.Bool(false),
 //							},
-//							Threshold: pulumi.Float64(0.9),
 //						},
 //						&dataplex.DatascanDataQualitySpecRuleArgs{
 //							Column:     pulumi.String("power_type"),
@@ -245,11 +259,11 @@ import (
 //							Column:    pulumi.String("number_of_docks"),
 //							Dimension: pulumi.String("VALIDITY"),
 //							StatisticRangeExpectation: &dataplex.DatascanDataQualitySpecRuleStatisticRangeExpectationArgs{
-//								MaxValue:         pulumi.String("15"),
-//								MinValue:         pulumi.String("5"),
 //								Statistic:        pulumi.String("MEAN"),
-//								StrictMaxEnabled: pulumi.Bool(true),
+//								MinValue:         pulumi.String("5"),
+//								MaxValue:         pulumi.String("15"),
 //								StrictMinEnabled: pulumi.Bool(true),
+//								StrictMaxEnabled: pulumi.Bool(true),
 //							},
 //						},
 //						&dataplex.DatascanDataQualitySpecRuleArgs{
@@ -266,24 +280,8 @@ import (
 //							},
 //						},
 //					},
-//					SamplingPercent: pulumi.Float64(5),
 //				},
-//				DataScanId:  pulumi.String("dataquality-full"),
-//				Description: pulumi.String("Example resource - Full Datascan Quality"),
-//				DisplayName: pulumi.String("Full Datascan Quality"),
-//				ExecutionSpec: &dataplex.DatascanExecutionSpecArgs{
-//					Field: pulumi.String("modified_date"),
-//					Trigger: &dataplex.DatascanExecutionSpecTriggerArgs{
-//						Schedule: &dataplex.DatascanExecutionSpecTriggerScheduleArgs{
-//							Cron: pulumi.String("TZ=America/New_York 1 1 * * *"),
-//						},
-//					},
-//				},
-//				Labels: pulumi.StringMap{
-//					"author": pulumi.String("billing"),
-//				},
-//				Location: pulumi.String("us-central1"),
-//				Project:  pulumi.String("my-project-name"),
+//				Project: pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
 //				return err

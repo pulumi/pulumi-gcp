@@ -417,9 +417,9 @@ class WorkforcePool(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.iam.WorkforcePool("example",
-            location="global",
+            workforce_pool_id="example-pool",
             parent="organizations/123456789",
-            workforce_pool_id="example-pool")
+            location="global")
         ```
         ### Iam Workforce Pool Full
 
@@ -428,19 +428,19 @@ class WorkforcePool(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.iam.WorkforcePool("example",
+            workforce_pool_id="example-pool",
+            parent="organizations/123456789",
+            location="global",
+            display_name="Display name",
+            description="A sample workforce pool.",
+            disabled=False,
+            session_duration="7200s",
             access_restrictions=gcp.iam.WorkforcePoolAccessRestrictionsArgs(
                 allowed_services=[gcp.iam.WorkforcePoolAccessRestrictionsAllowedServiceArgs(
                     domain="backstory.chronicle.security",
                 )],
                 disable_programmatic_signin=False,
-            ),
-            description="A sample workforce pool.",
-            disabled=False,
-            display_name="Display name",
-            location="global",
-            parent="organizations/123456789",
-            session_duration="7200s",
-            workforce_pool_id="example-pool")
+            ))
         ```
 
         ## Import
@@ -511,9 +511,9 @@ class WorkforcePool(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.iam.WorkforcePool("example",
-            location="global",
+            workforce_pool_id="example-pool",
             parent="organizations/123456789",
-            workforce_pool_id="example-pool")
+            location="global")
         ```
         ### Iam Workforce Pool Full
 
@@ -522,19 +522,19 @@ class WorkforcePool(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.iam.WorkforcePool("example",
+            workforce_pool_id="example-pool",
+            parent="organizations/123456789",
+            location="global",
+            display_name="Display name",
+            description="A sample workforce pool.",
+            disabled=False,
+            session_duration="7200s",
             access_restrictions=gcp.iam.WorkforcePoolAccessRestrictionsArgs(
                 allowed_services=[gcp.iam.WorkforcePoolAccessRestrictionsAllowedServiceArgs(
                     domain="backstory.chronicle.security",
                 )],
                 disable_programmatic_signin=False,
-            ),
-            description="A sample workforce pool.",
-            disabled=False,
-            display_name="Display name",
-            location="global",
-            parent="organizations/123456789",
-            session_duration="7200s",
-            workforce_pool_id="example-pool")
+            ))
         ```
 
         ## Import

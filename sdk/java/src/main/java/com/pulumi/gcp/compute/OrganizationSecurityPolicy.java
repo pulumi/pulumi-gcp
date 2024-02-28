@@ -33,7 +33,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.OrganizationSecurityPolicy;
  * import com.pulumi.gcp.compute.OrganizationSecurityPolicyArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -50,9 +49,7 @@ import javax.annotation.Nullable;
  *         var policy = new OrganizationSecurityPolicy(&#34;policy&#34;, OrganizationSecurityPolicyArgs.builder()        
  *             .displayName(&#34;tf-test&#34;)
  *             .parent(&#34;organizations/123456789&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

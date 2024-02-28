@@ -25,14 +25,14 @@ namespace Pulumi.Gcp.MigrationCenter
     /// {
     ///     var @default = new Gcp.MigrationCenter.Group("default", new()
     ///     {
+    ///         Location = "us-central1",
+    ///         GroupId = "group-test",
     ///         Description = "Terraform integration test description",
     ///         DisplayName = "Terraform integration test display",
-    ///         GroupId = "group-test",
     ///         Labels = 
     ///         {
     ///             { "key", "value" },
     ///         },
-    ///         Location = "us-central1",
     ///     });
     /// 
     /// });

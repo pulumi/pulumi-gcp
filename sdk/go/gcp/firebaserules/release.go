@@ -46,6 +46,7 @@ import (
 //				return err
 //			}
 //			_, err = firebaserules.NewRelease(ctx, "primary", &firebaserules.ReleaseArgs{
+//				Name: pulumi.String("cloud.firestore"),
 //				RulesetName: firestore.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("projects/my-project-name/rulesets/%v", name), nil
 //				}).(pulumi.StringOutput),
@@ -78,18 +79,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Provision a non-default Cloud Storage bucket.
-//			bucketBucket, err := storage.NewBucket(ctx, "bucketBucket", &storage.BucketArgs{
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
 //				Project:  pulumi.String("my-project-name"),
+//				Name:     pulumi.String("bucket"),
 //				Location: pulumi.String("us-west1"),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			// Make the Storage bucket accessible for Firebase SDKs, authentication, and Firebase Security Rules.
-//			bucketStorageBucket, err := firebase.NewStorageBucket(ctx, "bucketStorageBucket", &firebase.StorageBucketArgs{
-//				Project:  pulumi.String("my-project-name"),
-//				BucketId: bucketBucket.Name,
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -104,18 +98,27 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
-//				bucketStorageBucket,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = firebaserules.NewRelease(ctx, "primary", &firebaserules.ReleaseArgs{
+//				Name: bucket.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("firebase.storage/%v", name), nil
+//				}).(pulumi.StringOutput),
 //				RulesetName: storage.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("projects/my-project-name/rulesets/%v", name), nil
 //				}).(pulumi.StringOutput),
 //				Project: pulumi.String("my-project-name"),
-//			}, pulumi.Provider(google_beta))
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Make the Storage bucket accessible for Firebase SDKs, authentication, and Firebase Security Rules.
+//			_, err = firebase.NewStorageBucket(ctx, "bucket", &firebase.StorageBucketArgs{
+//				Project:  pulumi.String("my-project-name"),
+//				BucketId: bucket.Name,
+//			})
 //			if err != nil {
 //				return err
 //			}

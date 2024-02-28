@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.certificateauthority.CaPoolIamPolicy("policy", {
- *     caPool: google_privateca_ca_pool["default"].id,
+ *     caPool: _default.id,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.certificateauthority.CaPoolIamPolicy("policy", {
- *     caPool: google_privateca_ca_pool["default"].id,
+ *     caPool: _default.id,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -70,7 +70,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.certificateauthority.CaPoolIamBinding("binding", {
- *     caPool: google_privateca_ca_pool["default"].id,
+ *     caPool: _default.id,
  *     role: "roles/privateca.certificateManager",
  *     members: ["user:jane@example.com"],
  * });
@@ -83,7 +83,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.certificateauthority.CaPoolIamBinding("binding", {
- *     caPool: google_privateca_ca_pool["default"].id,
+ *     caPool: _default.id,
  *     role: "roles/privateca.certificateManager",
  *     members: ["user:jane@example.com"],
  *     condition: {
@@ -100,7 +100,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.certificateauthority.CaPoolIamMember("member", {
- *     caPool: google_privateca_ca_pool["default"].id,
+ *     caPool: _default.id,
  *     role: "roles/privateca.certificateManager",
  *     member: "user:jane@example.com",
  * });
@@ -113,7 +113,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.certificateauthority.CaPoolIamMember("member", {
- *     caPool: google_privateca_ca_pool["default"].id,
+ *     caPool: _default.id,
  *     role: "roles/privateca.certificateManager",
  *     member: "user:jane@example.com",
  *     condition: {

@@ -20,31 +20,33 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basicWebApp = new gcp.firebase.WebApp("basicWebApp", {
+ * function notImplemented(message: string) {
+ *     throw new Error(message);
+ * }
+ *
+ * const basicWebApp = new gcp.firebase.WebApp("basic", {
  *     project: "my-project-name",
  *     displayName: "Display Name Basic",
- * }, {
- *     provider: google_beta,
  * });
- * const basicWebAppConfig = gcp.firebase.getWebAppConfigOutput({
+ * const basic = gcp.firebase.getWebAppConfigOutput({
  *     webAppId: basicWebApp.appId,
  * });
- * const defaultBucket = new gcp.storage.Bucket("defaultBucket", {location: "US"}, {
- *     provider: google_beta,
+ * const _default = new gcp.storage.Bucket("default", {
+ *     name: "fb-webapp-",
+ *     location: "US",
  * });
- * const defaultBucketObject = new gcp.storage.BucketObject("defaultBucketObject", {
- *     bucket: defaultBucket.name,
+ * const defaultBucketObject = new gcp.storage.BucketObject("default", {
+ *     bucket: _default.name,
+ *     name: "firebase-config.json",
  *     content: pulumi.jsonStringify({
  *         appId: basicWebApp.appId,
- *         apiKey: basicWebAppConfig.apply(basicWebAppConfig => basicWebAppConfig.apiKey),
- *         authDomain: basicWebAppConfig.apply(basicWebAppConfig => basicWebAppConfig.authDomain),
- *         databaseURL: basicWebAppConfig["database_url"] || "",
- *         storageBucket: basicWebAppConfig["storage_bucket"] || "",
- *         messagingSenderId: basicWebAppConfig["messaging_sender_id"] || "",
- *         measurementId: basicWebAppConfig["measurement_id"] || "",
+ *         apiKey: basic.apply(basic => basic.apiKey),
+ *         authDomain: basic.apply(basic => basic.authDomain),
+ *         databaseURL: notImplemented("lookup(data.google_firebase_web_app_config.basic,\"database_url\",\"\")"),
+ *         storageBucket: notImplemented("lookup(data.google_firebase_web_app_config.basic,\"storage_bucket\",\"\")"),
+ *         messagingSenderId: notImplemented("lookup(data.google_firebase_web_app_config.basic,\"messaging_sender_id\",\"\")"),
+ *         measurementId: notImplemented("lookup(data.google_firebase_web_app_config.basic,\"measurement_id\",\"\")"),
  *     }),
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Firebase Web App Custom Api Key
@@ -55,22 +57,19 @@ import * as utilities from "../utilities";
  *
  * const web = new gcp.projects.ApiKey("web", {
  *     project: "my-project-name",
+ *     name: "api-key",
  *     displayName: "Display Name",
  *     restrictions: {
  *         browserKeyRestrictions: {
  *             allowedReferrers: ["*"],
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const _default = new gcp.firebase.WebApp("default", {
  *     project: "my-project-name",
  *     displayName: "Display Name",
  *     apiKeyId: web.uid,
  *     deletionPolicy: "DELETE",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

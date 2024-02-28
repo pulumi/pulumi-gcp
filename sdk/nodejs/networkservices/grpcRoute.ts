@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networkservices.GrpcRoute("default", {
+ *     name: "my-grpc-route",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -34,8 +35,6 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     }],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Network Services Grpc Route Matches And Actions
@@ -45,6 +44,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networkservices.GrpcRoute("default", {
+ *     name: "my-grpc-route",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -87,8 +87,6 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     }],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Network Services Grpc Route Actions
@@ -98,6 +96,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networkservices.GrpcRoute("default", {
+ *     name: "my-grpc-route",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -121,8 +120,6 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     }],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

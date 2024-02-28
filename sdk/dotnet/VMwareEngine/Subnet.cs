@@ -31,6 +31,7 @@ namespace Pulumi.Gcp.VMwareEngine
     /// {
     ///     var subnet_nw = new Gcp.VMwareEngine.Network("subnet-nw", new()
     ///     {
+    ///         Name = "pc-nw",
     ///         Location = "global",
     ///         Type = "STANDARD",
     ///         Description = "PC network description.",
@@ -39,6 +40,7 @@ namespace Pulumi.Gcp.VMwareEngine
     ///     var subnet_pc = new Gcp.VMwareEngine.PrivateCloud("subnet-pc", new()
     ///     {
     ///         Location = "us-west1-a",
+    ///         Name = "sample-pc",
     ///         Description = "Sample test PC.",
     ///         NetworkConfig = new Gcp.VMwareEngine.Inputs.PrivateCloudNetworkConfigArgs
     ///         {
@@ -61,6 +63,7 @@ namespace Pulumi.Gcp.VMwareEngine
     /// 
     ///     var vmw_engine_subnet = new Gcp.VMwareEngine.Subnet("vmw-engine-subnet", new()
     ///     {
+    ///         Name = "service-1",
     ///         Parent = subnet_pc.Id,
     ///         IpCidrRange = "192.168.100.0/26",
     ///     });

@@ -109,9 +109,9 @@ def get_connection_iam_policy(connection_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigquery.get_connection_iam_policy(project=google_bigquery_connection["connection"]["project"],
-        location=google_bigquery_connection["connection"]["location"],
-        connection_id=google_bigquery_connection["connection"]["connection_id"])
+    policy = gcp.bigquery.get_connection_iam_policy(project=connection["project"],
+        location=connection["location"],
+        connection_id=connection["connectionId"])
     ```
 
 
@@ -157,9 +157,9 @@ def get_connection_iam_policy_output(connection_id: Optional[pulumi.Input[str]] 
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigquery.get_connection_iam_policy(project=google_bigquery_connection["connection"]["project"],
-        location=google_bigquery_connection["connection"]["location"],
-        connection_id=google_bigquery_connection["connection"]["connection_id"])
+    policy = gcp.bigquery.get_connection_iam_policy(project=connection["project"],
+        location=connection["location"],
+        connection_id=connection["connectionId"])
     ```
 
 

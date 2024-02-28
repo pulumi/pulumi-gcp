@@ -480,6 +480,7 @@ class BareMetalNodePool(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default_basic = gcp.gkeonprem.BareMetalCluster("default-basic",
+            name="my-cluster",
             location="us-west1",
             admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
             bare_metal_version="1.12.3",
@@ -547,6 +548,7 @@ class BareMetalNodePool(pulumi.CustomResource):
                 ),
             ))
         nodepool_basic = gcp.gkeonprem.BareMetalNodePool("nodepool-basic",
+            name="my-nodepool",
             bare_metal_cluster=default_basic.name,
             location="us-west1",
             node_pool_config=gcp.gkeonprem.BareMetalNodePoolNodePoolConfigArgs(
@@ -563,6 +565,7 @@ class BareMetalNodePool(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default_full = gcp.gkeonprem.BareMetalCluster("default-full",
+            name="my-cluster",
             location="us-west1",
             admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
             bare_metal_version="1.12.3",
@@ -630,6 +633,7 @@ class BareMetalNodePool(pulumi.CustomResource):
                 ),
             ))
         nodepool_full = gcp.gkeonprem.BareMetalNodePool("nodepool-full",
+            name="my-nodepool",
             display_name="test-name",
             bare_metal_cluster=default_full.name,
             location="us-west1",
@@ -712,6 +716,7 @@ class BareMetalNodePool(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default_basic = gcp.gkeonprem.BareMetalCluster("default-basic",
+            name="my-cluster",
             location="us-west1",
             admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
             bare_metal_version="1.12.3",
@@ -779,6 +784,7 @@ class BareMetalNodePool(pulumi.CustomResource):
                 ),
             ))
         nodepool_basic = gcp.gkeonprem.BareMetalNodePool("nodepool-basic",
+            name="my-nodepool",
             bare_metal_cluster=default_basic.name,
             location="us-west1",
             node_pool_config=gcp.gkeonprem.BareMetalNodePoolNodePoolConfigArgs(
@@ -795,6 +801,7 @@ class BareMetalNodePool(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default_full = gcp.gkeonprem.BareMetalCluster("default-full",
+            name="my-cluster",
             location="us-west1",
             admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
             bare_metal_version="1.12.3",
@@ -862,6 +869,7 @@ class BareMetalNodePool(pulumi.CustomResource):
                 ),
             ))
         nodepool_full = gcp.gkeonprem.BareMetalNodePool("nodepool-full",
+            name="my-nodepool",
             display_name="test-name",
             bare_metal_cluster=default_full.name,
             location="us-west1",

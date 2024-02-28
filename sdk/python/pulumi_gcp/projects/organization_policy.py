@@ -310,12 +310,12 @@ class OrganizationPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        serial_port_policy = gcp.projects.OrganizationPolicy("serialPortPolicy",
+        serial_port_policy = gcp.projects.OrganizationPolicy("serial_port_policy",
+            project="your-project-id",
+            constraint="compute.disableSerialPortAccess",
             boolean_policy=gcp.projects.OrganizationPolicyBooleanPolicyArgs(
                 enforced=True,
-            ),
-            constraint="compute.disableSerialPortAccess",
-            project="your-project-id")
+            ))
         ```
 
         To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
@@ -324,14 +324,14 @@ class OrganizationPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        services_policy = gcp.projects.OrganizationPolicy("servicesPolicy",
+        services_policy = gcp.projects.OrganizationPolicy("services_policy",
+            project="your-project-id",
             constraint="serviceuser.services",
             list_policy=gcp.projects.OrganizationPolicyListPolicyArgs(
                 allow=gcp.projects.OrganizationPolicyListPolicyAllowArgs(
                     all=True,
                 ),
-            ),
-            project="your-project-id")
+            ))
         ```
 
         Or to deny some services, use the following instead:
@@ -340,15 +340,15 @@ class OrganizationPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        services_policy = gcp.projects.OrganizationPolicy("servicesPolicy",
+        services_policy = gcp.projects.OrganizationPolicy("services_policy",
+            project="your-project-id",
             constraint="serviceuser.services",
             list_policy=gcp.projects.OrganizationPolicyListPolicyArgs(
+                suggested_value="compute.googleapis.com",
                 deny=gcp.projects.OrganizationPolicyListPolicyDenyArgs(
                     values=["cloudresourcemanager.googleapis.com"],
                 ),
-                suggested_value="compute.googleapis.com",
-            ),
-            project="your-project-id")
+            ))
         ```
 
         To restore the default project organization policy, use the following instead:
@@ -357,9 +357,9 @@ class OrganizationPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        services_policy = gcp.projects.OrganizationPolicy("servicesPolicy",
-            constraint="serviceuser.services",
+        services_policy = gcp.projects.OrganizationPolicy("services_policy",
             project="your-project-id",
+            constraint="serviceuser.services",
             restore_policy=gcp.projects.OrganizationPolicyRestorePolicyArgs(
                 default=True,
             ))
@@ -430,12 +430,12 @@ class OrganizationPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        serial_port_policy = gcp.projects.OrganizationPolicy("serialPortPolicy",
+        serial_port_policy = gcp.projects.OrganizationPolicy("serial_port_policy",
+            project="your-project-id",
+            constraint="compute.disableSerialPortAccess",
             boolean_policy=gcp.projects.OrganizationPolicyBooleanPolicyArgs(
                 enforced=True,
-            ),
-            constraint="compute.disableSerialPortAccess",
-            project="your-project-id")
+            ))
         ```
 
         To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
@@ -444,14 +444,14 @@ class OrganizationPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        services_policy = gcp.projects.OrganizationPolicy("servicesPolicy",
+        services_policy = gcp.projects.OrganizationPolicy("services_policy",
+            project="your-project-id",
             constraint="serviceuser.services",
             list_policy=gcp.projects.OrganizationPolicyListPolicyArgs(
                 allow=gcp.projects.OrganizationPolicyListPolicyAllowArgs(
                     all=True,
                 ),
-            ),
-            project="your-project-id")
+            ))
         ```
 
         Or to deny some services, use the following instead:
@@ -460,15 +460,15 @@ class OrganizationPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        services_policy = gcp.projects.OrganizationPolicy("servicesPolicy",
+        services_policy = gcp.projects.OrganizationPolicy("services_policy",
+            project="your-project-id",
             constraint="serviceuser.services",
             list_policy=gcp.projects.OrganizationPolicyListPolicyArgs(
+                suggested_value="compute.googleapis.com",
                 deny=gcp.projects.OrganizationPolicyListPolicyDenyArgs(
                     values=["cloudresourcemanager.googleapis.com"],
                 ),
-                suggested_value="compute.googleapis.com",
-            ),
-            project="your-project-id")
+            ))
         ```
 
         To restore the default project organization policy, use the following instead:
@@ -477,9 +477,9 @@ class OrganizationPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        services_policy = gcp.projects.OrganizationPolicy("servicesPolicy",
-            constraint="serviceuser.services",
+        services_policy = gcp.projects.OrganizationPolicy("services_policy",
             project="your-project-id",
+            constraint="serviceuser.services",
             restore_policy=gcp.projects.OrganizationPolicyRestorePolicyArgs(
                 default=True,
             ))

@@ -21,28 +21,24 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
+    ///     var @default = new Gcp.Compute.Network("default", new()
     ///     {
+    ///         Name = "workstation-cluster",
     ///         AutoCreateSubnetworks = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new()
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
     ///     {
+    ///         Name = "workstation-cluster",
     ///         IpCidrRange = "10.0.0.0/24",
     ///         Region = "us-central1",
-    ///         Network = defaultNetwork.Name,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Network = @default.Name,
     ///     });
     /// 
-    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("defaultWorkstationCluster", new()
+    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("default", new()
     ///     {
     ///         WorkstationClusterId = "workstation-cluster",
-    ///         Network = defaultNetwork.Id,
+    ///         Network = @default.Id,
     ///         Subnetwork = defaultSubnetwork.Id,
     ///         Location = "us-central1",
     ///         Labels = 
@@ -53,12 +49,9 @@ namespace Pulumi.Gcp.Workstations
     ///         {
     ///             { "label-one", "value-one" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultWorkstationConfig = new Gcp.Workstations.WorkstationConfig("defaultWorkstationConfig", new()
+    ///     var defaultWorkstationConfig = new Gcp.Workstations.WorkstationConfig("default", new()
     ///     {
     ///         WorkstationConfigId = "workstation-config",
     ///         WorkstationClusterId = defaultWorkstationCluster.WorkstationClusterId,
@@ -88,9 +81,6 @@ namespace Pulumi.Gcp.Workstations
     ///                 DisableSsh = false,
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -105,28 +95,24 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
+    ///     var @default = new Gcp.Compute.Network("default", new()
     ///     {
+    ///         Name = "workstation-cluster",
     ///         AutoCreateSubnetworks = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new()
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
     ///     {
+    ///         Name = "workstation-cluster",
     ///         IpCidrRange = "10.0.0.0/24",
     ///         Region = "us-central1",
-    ///         Network = defaultNetwork.Name,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Network = @default.Name,
     ///     });
     /// 
-    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("defaultWorkstationCluster", new()
+    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("default", new()
     ///     {
     ///         WorkstationClusterId = "workstation-cluster",
-    ///         Network = defaultNetwork.Id,
+    ///         Network = @default.Id,
     ///         Subnetwork = defaultSubnetwork.Id,
     ///         Location = "us-central1",
     ///         Labels = 
@@ -137,12 +123,9 @@ namespace Pulumi.Gcp.Workstations
     ///         {
     ///             { "label-one", "value-one" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultWorkstationConfig = new Gcp.Workstations.WorkstationConfig("defaultWorkstationConfig", new()
+    ///     var defaultWorkstationConfig = new Gcp.Workstations.WorkstationConfig("default", new()
     ///     {
     ///         WorkstationConfigId = "workstation-config",
     ///         WorkstationClusterId = defaultWorkstationCluster.WorkstationClusterId,
@@ -166,9 +149,6 @@ namespace Pulumi.Gcp.Workstations
     ///                 { "BABE", "bar" },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -183,28 +163,24 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
+    ///     var @default = new Gcp.Compute.Network("default", new()
     ///     {
+    ///         Name = "workstation-cluster",
     ///         AutoCreateSubnetworks = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new()
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
     ///     {
+    ///         Name = "workstation-cluster",
     ///         IpCidrRange = "10.0.0.0/24",
     ///         Region = "us-central1",
-    ///         Network = defaultNetwork.Name,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Network = @default.Name,
     ///     });
     /// 
-    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("defaultWorkstationCluster", new()
+    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("default", new()
     ///     {
     ///         WorkstationClusterId = "workstation-cluster",
-    ///         Network = defaultNetwork.Id,
+    ///         Network = @default.Id,
     ///         Subnetwork = defaultSubnetwork.Id,
     ///         Location = "us-central1",
     ///         Labels = 
@@ -215,12 +191,9 @@ namespace Pulumi.Gcp.Workstations
     ///         {
     ///             { "label-one", "value-one" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultWorkstationConfig = new Gcp.Workstations.WorkstationConfig("defaultWorkstationConfig", new()
+    ///     var defaultWorkstationConfig = new Gcp.Workstations.WorkstationConfig("default", new()
     ///     {
     ///         WorkstationConfigId = "workstation-config",
     ///         WorkstationClusterId = defaultWorkstationCluster.WorkstationClusterId,
@@ -253,9 +226,6 @@ namespace Pulumi.Gcp.Workstations
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -270,55 +240,44 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
+    ///     var @default = new Gcp.Compute.Network("default", new()
     ///     {
+    ///         Name = "workstation-cluster",
     ///         AutoCreateSubnetworks = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new()
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
     ///     {
+    ///         Name = "workstation-cluster",
     ///         IpCidrRange = "10.0.0.0/24",
     ///         Region = "us-central1",
-    ///         Network = defaultNetwork.Name,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Network = @default.Name,
     ///     });
     /// 
-    ///     var mySourceDisk = new Gcp.Compute.Disk("mySourceDisk", new()
+    ///     var mySourceDisk = new Gcp.Compute.Disk("my_source_disk", new()
     ///     {
+    ///         Name = "workstation-config",
     ///         Size = 10,
     ///         Type = "pd-ssd",
     ///         Zone = "us-central1-a",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var mySourceSnapshot = new Gcp.Compute.Snapshot("mySourceSnapshot", new()
+    ///     var mySourceSnapshot = new Gcp.Compute.Snapshot("my_source_snapshot", new()
     ///     {
+    ///         Name = "workstation-config",
     ///         SourceDisk = mySourceDisk.Name,
     ///         Zone = "us-central1-a",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("defaultWorkstationCluster", new()
+    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("default", new()
     ///     {
     ///         WorkstationClusterId = "workstation-cluster",
-    ///         Network = defaultNetwork.Id,
+    ///         Network = @default.Id,
     ///         Subnetwork = defaultSubnetwork.Id,
     ///         Location = "us-central1",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultWorkstationConfig = new Gcp.Workstations.WorkstationConfig("defaultWorkstationConfig", new()
+    ///     var defaultWorkstationConfig = new Gcp.Workstations.WorkstationConfig("default", new()
     ///     {
     ///         WorkstationConfigId = "workstation-config",
     ///         WorkstationClusterId = defaultWorkstationCluster.WorkstationClusterId,
@@ -335,9 +294,6 @@ namespace Pulumi.Gcp.Workstations
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -352,28 +308,24 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
+    ///     var @default = new Gcp.Compute.Network("default", new()
     ///     {
+    ///         Name = "workstation-cluster",
     ///         AutoCreateSubnetworks = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new()
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
     ///     {
+    ///         Name = "workstation-cluster",
     ///         IpCidrRange = "10.0.0.0/24",
     ///         Region = "us-central1",
-    ///         Network = defaultNetwork.Name,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Network = @default.Name,
     ///     });
     /// 
-    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("defaultWorkstationCluster", new()
+    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("default", new()
     ///     {
     ///         WorkstationClusterId = "workstation-cluster",
-    ///         Network = defaultNetwork.Id,
+    ///         Network = @default.Id,
     ///         Subnetwork = defaultSubnetwork.Id,
     ///         Location = "us-central1",
     ///         Labels = 
@@ -384,12 +336,9 @@ namespace Pulumi.Gcp.Workstations
     ///         {
     ///             { "label-one", "value-one" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultWorkstationConfig = new Gcp.Workstations.WorkstationConfig("defaultWorkstationConfig", new()
+    ///     var defaultWorkstationConfig = new Gcp.Workstations.WorkstationConfig("default", new()
     ///     {
     ///         WorkstationConfigId = "workstation-config",
     ///         WorkstationClusterId = defaultWorkstationCluster.WorkstationClusterId,
@@ -408,9 +357,6 @@ namespace Pulumi.Gcp.Workstations
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -425,28 +371,24 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
+    ///     var @default = new Gcp.Compute.Network("default", new()
     ///     {
+    ///         Name = "workstation-cluster",
     ///         AutoCreateSubnetworks = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new()
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
     ///     {
+    ///         Name = "workstation-cluster",
     ///         IpCidrRange = "10.0.0.0/24",
     ///         Region = "us-central1",
-    ///         Network = defaultNetwork.Name,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Network = @default.Name,
     ///     });
     /// 
-    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("defaultWorkstationCluster", new()
+    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("default", new()
     ///     {
     ///         WorkstationClusterId = "workstation-cluster",
-    ///         Network = defaultNetwork.Id,
+    ///         Network = @default.Id,
     ///         Subnetwork = defaultSubnetwork.Id,
     ///         Location = "us-central1",
     ///         Labels = 
@@ -457,12 +399,9 @@ namespace Pulumi.Gcp.Workstations
     ///         {
     ///             { "label-one", "value-one" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultWorkstationConfig = new Gcp.Workstations.WorkstationConfig("defaultWorkstationConfig", new()
+    ///     var defaultWorkstationConfig = new Gcp.Workstations.WorkstationConfig("default", new()
     ///     {
     ///         WorkstationConfigId = "workstation-config",
     ///         WorkstationClusterId = defaultWorkstationCluster.WorkstationClusterId,
@@ -484,9 +423,6 @@ namespace Pulumi.Gcp.Workstations
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -501,28 +437,24 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
+    ///     var @default = new Gcp.Compute.Network("default", new()
     ///     {
+    ///         Name = "workstation-cluster",
     ///         AutoCreateSubnetworks = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new()
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
     ///     {
+    ///         Name = "workstation-cluster",
     ///         IpCidrRange = "10.0.0.0/24",
     ///         Region = "us-central1",
-    ///         Network = defaultNetwork.Name,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Network = @default.Name,
     ///     });
     /// 
-    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("defaultWorkstationCluster", new()
+    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("default", new()
     ///     {
     ///         WorkstationClusterId = "workstation-cluster",
-    ///         Network = defaultNetwork.Id,
+    ///         Network = @default.Id,
     ///         Subnetwork = defaultSubnetwork.Id,
     ///         Location = "us-central1",
     ///         Labels = 
@@ -533,37 +465,27 @@ namespace Pulumi.Gcp.Workstations
     ///         {
     ///             { "label-one", "value-one" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultKeyRing = new Gcp.Kms.KeyRing("defaultKeyRing", new()
+    ///     var defaultKeyRing = new Gcp.Kms.KeyRing("default", new()
     ///     {
+    ///         Name = "workstation-cluster",
     ///         Location = "us-central1",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultCryptoKey = new Gcp.Kms.CryptoKey("defaultCryptoKey", new()
+    ///     var defaultCryptoKey = new Gcp.Kms.CryptoKey("default", new()
     ///     {
+    ///         Name = "workstation-cluster",
     ///         KeyRing = defaultKeyRing.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultAccount = new Gcp.ServiceAccount.Account("defaultAccount", new()
+    ///     var defaultAccount = new Gcp.ServiceAccount.Account("default", new()
     ///     {
     ///         AccountId = "my-account",
     ///         DisplayName = "Service Account",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultWorkstationConfig = new Gcp.Workstations.WorkstationConfig("defaultWorkstationConfig", new()
+    ///     var defaultWorkstationConfig = new Gcp.Workstations.WorkstationConfig("default", new()
     ///     {
     ///         WorkstationConfigId = "workstation-config",
     ///         WorkstationClusterId = defaultWorkstationCluster.WorkstationClusterId,
@@ -587,9 +509,6 @@ namespace Pulumi.Gcp.Workstations
     ///             KmsKey = defaultCryptoKey.Id,
     ///             KmsKeyServiceAccount = defaultAccount.Email,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

@@ -455,6 +455,7 @@ class Database(pulumi.CustomResource):
             num_nodes=1)
         database = gcp.spanner.Database("database",
             instance=main.name,
+            name="my-database",
             version_retention_period="3d",
             ddls=[
                 "CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)",
@@ -559,6 +560,7 @@ class Database(pulumi.CustomResource):
             num_nodes=1)
         database = gcp.spanner.Database("database",
             instance=main.name,
+            name="my-database",
             version_retention_period="3d",
             ddls=[
                 "CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)",

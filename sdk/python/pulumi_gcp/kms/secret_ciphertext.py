@@ -191,14 +191,22 @@ class SecretCiphertext(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        keyring = gcp.kms.KeyRing("keyring", location="global")
+        keyring = gcp.kms.KeyRing("keyring",
+            name="keyring-example",
+            location="global")
         cryptokey = gcp.kms.CryptoKey("cryptokey",
+            name="crypto-key-example",
             key_ring=keyring.id,
             rotation_period="7776000s")
-        my_password = gcp.kms.SecretCiphertext("myPassword",
+        my_password = gcp.kms.SecretCiphertext("my_password",
             crypto_key=cryptokey.id,
             plaintext="my-secret-password")
         instance = gcp.compute.Instance("instance",
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                network="default",
+            )],
+            name="my-instance",
             machine_type="e2-medium",
             zone="us-central1-a",
             boot_disk=gcp.compute.InstanceBootDiskArgs(
@@ -206,10 +214,6 @@ class SecretCiphertext(pulumi.CustomResource):
                     image="debian-cloud/debian-11",
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-            )],
             metadata={
                 "password": my_password.ciphertext,
             })
@@ -258,14 +262,22 @@ class SecretCiphertext(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        keyring = gcp.kms.KeyRing("keyring", location="global")
+        keyring = gcp.kms.KeyRing("keyring",
+            name="keyring-example",
+            location="global")
         cryptokey = gcp.kms.CryptoKey("cryptokey",
+            name="crypto-key-example",
             key_ring=keyring.id,
             rotation_period="7776000s")
-        my_password = gcp.kms.SecretCiphertext("myPassword",
+        my_password = gcp.kms.SecretCiphertext("my_password",
             crypto_key=cryptokey.id,
             plaintext="my-secret-password")
         instance = gcp.compute.Instance("instance",
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                network="default",
+            )],
+            name="my-instance",
             machine_type="e2-medium",
             zone="us-central1-a",
             boot_disk=gcp.compute.InstanceBootDiskArgs(
@@ -273,10 +285,6 @@ class SecretCiphertext(pulumi.CustomResource):
                     image="debian-cloud/debian-11",
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-            )],
             metadata={
                 "password": my_password.ciphertext,
             })

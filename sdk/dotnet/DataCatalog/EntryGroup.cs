@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var basicEntryGroup = new Gcp.DataCatalog.EntryGroup("basicEntryGroup", new()
+    ///     var basicEntryGroup = new Gcp.DataCatalog.EntryGroup("basic_entry_group", new()
     ///     {
     ///         EntryGroupId = "my_group",
     ///     });
@@ -46,11 +46,11 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var basicEntryGroup = new Gcp.DataCatalog.EntryGroup("basicEntryGroup", new()
+    ///     var basicEntryGroup = new Gcp.DataCatalog.EntryGroup("basic_entry_group", new()
     ///     {
-    ///         Description = "example entry group",
-    ///         DisplayName = "entry group",
     ///         EntryGroupId = "my_group",
+    ///         DisplayName = "entry group",
+    ///         Description = "example entry group",
     ///     });
     /// 
     /// });

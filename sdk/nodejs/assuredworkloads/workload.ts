@@ -17,18 +17,15 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const primary = new gcp.assuredworkloads.Workload("primary", {
- *     billingAccount: "billingAccounts/000000-0000000-0000000-000000",
  *     complianceRegime: "FEDRAMP_MODERATE",
  *     displayName: "{{display}}",
+ *     location: "us-west1",
+ *     organization: "123456789",
+ *     billingAccount: "billingAccounts/000000-0000000-0000000-000000",
  *     kmsSettings: {
  *         nextRotationTime: "9999-10-02T15:01:23Z",
  *         rotationPeriod: "10368000s",
  *     },
- *     labels: {
- *         "label-one": "value-one",
- *     },
- *     location: "us-west1",
- *     organization: "123456789",
  *     provisionedResourcesParent: "folders/519620126891",
  *     resourceSettings: [
  *         {
@@ -44,6 +41,9 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  *     violationNotificationsEnabled: true,
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
  * });
  * ```
  * ### Sovereign_controls_workload
@@ -78,8 +78,6 @@ import * as utilities from "../utilities";
  *     labels: {
  *         "label-one": "value-one",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

@@ -83,17 +83,17 @@ namespace Pulumi.Gcp.Organizations
     ///         {
     ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
-    ///                 {
-    ///                     Description = "Expiring at midnight of 2019-12-31",
-    ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///                     Title = "expires_after_2019_12_31",
-    ///                 },
+    ///                 Role = "roles/editor",
     ///                 Members = new[]
     ///                 {
     ///                     "user:jane@example.com",
     ///                 },
-    ///                 Role = "roles/editor",
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 {
+    ///                     Title = "expires_after_2019_12_31",
+    ///                     Description = "Expiring at midnight of 2019-12-31",
+    ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///                 },
     ///             },
     ///         },
     ///     });
@@ -121,12 +121,12 @@ namespace Pulumi.Gcp.Organizations
     /// {
     ///     var organization = new Gcp.Organizations.IAMBinding("organization", new()
     ///     {
+    ///         OrgId = "1234567890",
+    ///         Role = "roles/editor",
     ///         Members = new[]
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         OrgId = "1234567890",
-    ///         Role = "roles/editor",
     ///     });
     /// 
     /// });
@@ -144,18 +144,18 @@ namespace Pulumi.Gcp.Organizations
     /// {
     ///     var organization = new Gcp.Organizations.IAMBinding("organization", new()
     ///     {
-    ///         Condition = new Gcp.Organizations.Inputs.IAMBindingConditionArgs
-    ///         {
-    ///             Description = "Expiring at midnight of 2019-12-31",
-    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///             Title = "expires_after_2019_12_31",
-    ///         },
+    ///         OrgId = "1234567890",
+    ///         Role = "roles/editor",
     ///         Members = new[]
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         OrgId = "1234567890",
-    ///         Role = "roles/editor",
+    ///         Condition = new Gcp.Organizations.Inputs.IAMBindingConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
     ///     });
     /// 
     /// });
@@ -173,9 +173,9 @@ namespace Pulumi.Gcp.Organizations
     /// {
     ///     var organization = new Gcp.Organizations.IAMMember("organization", new()
     ///     {
-    ///         Member = "user:jane@example.com",
     ///         OrgId = "1234567890",
     ///         Role = "roles/editor",
+    ///         Member = "user:jane@example.com",
     ///     });
     /// 
     /// });
@@ -193,15 +193,15 @@ namespace Pulumi.Gcp.Organizations
     /// {
     ///     var organization = new Gcp.Organizations.IAMMember("organization", new()
     ///     {
-    ///         Condition = new Gcp.Organizations.Inputs.IAMMemberConditionArgs
-    ///         {
-    ///             Description = "Expiring at midnight of 2019-12-31",
-    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///             Title = "expires_after_2019_12_31",
-    ///         },
-    ///         Member = "user:jane@example.com",
     ///         OrgId = "1234567890",
     ///         Role = "roles/editor",
+    ///         Member = "user:jane@example.com",
+    ///         Condition = new Gcp.Organizations.Inputs.IAMMemberConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
     ///     });
     /// 
     /// });
@@ -219,6 +219,8 @@ namespace Pulumi.Gcp.Organizations
     /// {
     ///     var organization = new Gcp.Organizations.IamAuditConfig("organization", new()
     ///     {
+    ///         OrgId = "1234567890",
+    ///         Service = "allServices",
     ///         AuditLogConfigs = new[]
     ///         {
     ///             new Gcp.Organizations.Inputs.IamAuditConfigAuditLogConfigArgs
@@ -227,15 +229,13 @@ namespace Pulumi.Gcp.Organizations
     ///             },
     ///             new Gcp.Organizations.Inputs.IamAuditConfigAuditLogConfigArgs
     ///             {
+    ///                 LogType = "DATA_READ",
     ///                 ExemptedMembers = new[]
     ///                 {
     ///                     "user:joebloggs@example.com",
     ///                 },
-    ///                 LogType = "DATA_READ",
     ///             },
     ///         },
-    ///         OrgId = "1234567890",
-    ///         Service = "allServices",
     ///     });
     /// 
     /// });

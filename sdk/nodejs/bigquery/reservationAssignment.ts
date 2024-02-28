@@ -14,6 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const basic = new gcp.bigquery.Reservation("basic", {
+ *     name: "tf-test-my-reservation",
  *     project: "my-project-name",
  *     location: "us-central1",
  *     slotCapacity: 0,

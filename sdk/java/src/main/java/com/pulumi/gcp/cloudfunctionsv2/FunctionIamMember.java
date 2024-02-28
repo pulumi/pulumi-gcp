@@ -62,9 +62,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new FunctionIamPolicy(&#34;policy&#34;, FunctionIamPolicyArgs.builder()        
- *             .project(google_cloudfunctions2_function.function().project())
- *             .location(google_cloudfunctions2_function.function().location())
- *             .cloudFunction(google_cloudfunctions2_function.function().name())
+ *             .project(function.project())
+ *             .location(function.location())
+ *             .cloudFunction(function.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -95,9 +95,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new FunctionIamBinding(&#34;binding&#34;, FunctionIamBindingArgs.builder()        
- *             .project(google_cloudfunctions2_function.function().project())
- *             .location(google_cloudfunctions2_function.function().location())
- *             .cloudFunction(google_cloudfunctions2_function.function().name())
+ *             .project(function.project())
+ *             .location(function.location())
+ *             .cloudFunction(function.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -129,9 +129,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new FunctionIamMember(&#34;member&#34;, FunctionIamMemberArgs.builder()        
- *             .project(google_cloudfunctions2_function.function().project())
- *             .location(google_cloudfunctions2_function.function().location())
- *             .cloudFunction(google_cloudfunctions2_function.function().name())
+ *             .project(function.project())
+ *             .location(function.location())
+ *             .cloudFunction(function.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

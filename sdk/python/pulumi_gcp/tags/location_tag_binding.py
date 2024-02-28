@@ -172,19 +172,22 @@ class LocationTagBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.Project("project", org_id="123456789")
+        project = gcp.organizations.Project("project",
+            project_id="project_id",
+            name="project_id",
+            org_id="123456789")
         key = gcp.tags.TagKey("key",
-            description="For keyname resources.",
             parent="organizations/123456789",
-            short_name="keyname")
+            short_name="keyname",
+            description="For keyname resources.")
         value = gcp.tags.TagValue("value",
-            description="For valuename resources.",
             parent=key.name.apply(lambda name: f"tagKeys/{name}"),
-            short_name="valuename")
+            short_name="valuename",
+            description="For valuename resources.")
         binding = gcp.tags.LocationTagBinding("binding",
-            location="us-central1",
-            parent=project.number.apply(lambda number: f"//run.googleapis.com/projects/{number}/locations/{google_cloud_run_service['default']['location']}/services/{google_cloud_run_service['default']['name']}"),
-            tag_value=value.name.apply(lambda name: f"tagValues/{name}"))
+            parent=f"//run.googleapis.com/projects/{project_google_project['number']}/locations/{default['location']}/services/{default['name']}",
+            tag_value=value.name.apply(lambda name: f"tagValues/{name}"),
+            location="us-central1")
         ```
         ### Compute Instance
 
@@ -192,19 +195,22 @@ class LocationTagBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.Project("project", org_id="123456789")
+        project = gcp.organizations.Project("project",
+            project_id="project_id",
+            name="project_id",
+            org_id="123456789")
         key = gcp.tags.TagKey("key",
-            description="For keyname resources.",
             parent="organizations/123456789",
-            short_name="keyname")
+            short_name="keyname",
+            description="For keyname resources.")
         value = gcp.tags.TagValue("value",
-            description="For valuename resources.",
             parent=key.name.apply(lambda name: f"tagKeys/{name}"),
-            short_name="valuename")
+            short_name="valuename",
+            description="For valuename resources.")
         binding = gcp.tags.LocationTagBinding("binding",
-            location="us-central1-a",
-            parent=project.number.apply(lambda number: f"//compute.googleapis.com/projects/{number}/zones/us-central1-a/instances/{google_compute_instance['instance']['instance_id']}"),
-            tag_value=value.name.apply(lambda name: f"tagValues/{name}"))
+            parent=project.number.apply(lambda number: f"//compute.googleapis.com/projects/{number}/zones/us-central1-a/instances/{instance['instanceId']}"),
+            tag_value=value.name.apply(lambda name: f"tagValues/{name}"),
+            location="us-central1-a")
         ```
 
         ## Import
@@ -251,19 +257,22 @@ class LocationTagBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.Project("project", org_id="123456789")
+        project = gcp.organizations.Project("project",
+            project_id="project_id",
+            name="project_id",
+            org_id="123456789")
         key = gcp.tags.TagKey("key",
-            description="For keyname resources.",
             parent="organizations/123456789",
-            short_name="keyname")
+            short_name="keyname",
+            description="For keyname resources.")
         value = gcp.tags.TagValue("value",
-            description="For valuename resources.",
             parent=key.name.apply(lambda name: f"tagKeys/{name}"),
-            short_name="valuename")
+            short_name="valuename",
+            description="For valuename resources.")
         binding = gcp.tags.LocationTagBinding("binding",
-            location="us-central1",
-            parent=project.number.apply(lambda number: f"//run.googleapis.com/projects/{number}/locations/{google_cloud_run_service['default']['location']}/services/{google_cloud_run_service['default']['name']}"),
-            tag_value=value.name.apply(lambda name: f"tagValues/{name}"))
+            parent=f"//run.googleapis.com/projects/{project_google_project['number']}/locations/{default['location']}/services/{default['name']}",
+            tag_value=value.name.apply(lambda name: f"tagValues/{name}"),
+            location="us-central1")
         ```
         ### Compute Instance
 
@@ -271,19 +280,22 @@ class LocationTagBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.Project("project", org_id="123456789")
+        project = gcp.organizations.Project("project",
+            project_id="project_id",
+            name="project_id",
+            org_id="123456789")
         key = gcp.tags.TagKey("key",
-            description="For keyname resources.",
             parent="organizations/123456789",
-            short_name="keyname")
+            short_name="keyname",
+            description="For keyname resources.")
         value = gcp.tags.TagValue("value",
-            description="For valuename resources.",
             parent=key.name.apply(lambda name: f"tagKeys/{name}"),
-            short_name="valuename")
+            short_name="valuename",
+            description="For valuename resources.")
         binding = gcp.tags.LocationTagBinding("binding",
-            location="us-central1-a",
-            parent=project.number.apply(lambda number: f"//compute.googleapis.com/projects/{number}/zones/us-central1-a/instances/{google_compute_instance['instance']['instance_id']}"),
-            tag_value=value.name.apply(lambda name: f"tagValues/{name}"))
+            parent=project.number.apply(lambda number: f"//compute.googleapis.com/projects/{number}/zones/us-central1-a/instances/{instance['instanceId']}"),
+            tag_value=value.name.apply(lambda name: f"tagValues/{name}"),
+            location="us-central1-a")
         ```
 
         ## Import

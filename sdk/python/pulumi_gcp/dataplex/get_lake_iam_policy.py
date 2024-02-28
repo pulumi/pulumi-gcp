@@ -109,9 +109,9 @@ def get_lake_iam_policy(lake: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataplex.get_lake_iam_policy(project=google_dataplex_lake["example"]["project"],
-        location=google_dataplex_lake["example"]["location"],
-        lake=google_dataplex_lake["example"]["name"])
+    policy = gcp.dataplex.get_lake_iam_policy(project=example["project"],
+        location=example["location"],
+        lake=example["name"])
     ```
 
 
@@ -149,9 +149,9 @@ def get_lake_iam_policy_output(lake: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataplex.get_lake_iam_policy(project=google_dataplex_lake["example"]["project"],
-        location=google_dataplex_lake["example"]["location"],
-        lake=google_dataplex_lake["example"]["name"])
+    policy = gcp.dataplex.get_lake_iam_policy(project=example["project"],
+        location=example["location"],
+        lake=example["name"])
     ```
 
 

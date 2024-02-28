@@ -56,6 +56,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var tenantSamlConfig = new TenantInboundSamlConfig(&#34;tenantSamlConfig&#34;, TenantInboundSamlConfigArgs.builder()        
+ *             .name(&#34;saml.tf-config&#34;)
  *             .displayName(&#34;Display Name&#34;)
  *             .tenant(tenant.name())
  *             .idpConfig(TenantInboundSamlConfigIdpConfigArgs.builder()
@@ -63,7 +64,9 @@ import javax.annotation.Nullable;
  *                 .signRequest(true)
  *                 .ssoUrl(&#34;https://example.com&#34;)
  *                 .idpCertificates(TenantInboundSamlConfigIdpConfigIdpCertificateArgs.builder()
- *                     .x509Certificate(Files.readString(Paths.get(&#34;test-fixtures/rsa_cert.pem&#34;)))
+ *                     .x509Certificate(StdFunctions.file(FileArgs.builder()
+ *                         .input(&#34;test-fixtures/rsa_cert.pem&#34;)
+ *                         .build()).result())
  *                     .build())
  *                 .build())
  *             .spConfig(TenantInboundSamlConfigSpConfigArgs.builder()

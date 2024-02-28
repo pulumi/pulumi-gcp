@@ -29,7 +29,10 @@ namespace Pulumi.Gcp.SourceRepo
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_repo = new Gcp.SourceRepo.Repository("my-repo");
+    ///     var my_repo = new Gcp.SourceRepo.Repository("my-repo", new()
+    ///     {
+    ///         Name = "my/repository",
+    ///     });
     /// 
     /// });
     /// ```
@@ -43,16 +46,20 @@ namespace Pulumi.Gcp.SourceRepo
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testAccount = new Gcp.ServiceAccount.Account("testAccount", new()
+    ///     var testAccount = new Gcp.ServiceAccount.Account("test_account", new()
     ///     {
     ///         AccountId = "my-account",
     ///         DisplayName = "Test Service Account",
     ///     });
     /// 
-    ///     var topic = new Gcp.PubSub.Topic("topic");
+    ///     var topic = new Gcp.PubSub.Topic("topic", new()
+    ///     {
+    ///         Name = "my-topic",
+    ///     });
     /// 
     ///     var my_repo = new Gcp.SourceRepo.Repository("my-repo", new()
     ///     {
+    ///         Name = "my-repository",
     ///         PubsubConfigs = new[]
     ///         {
     ///             new Gcp.SourceRepo.Inputs.RepositoryPubsubConfigArgs

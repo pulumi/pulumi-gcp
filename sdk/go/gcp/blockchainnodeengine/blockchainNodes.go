@@ -35,27 +35,27 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := blockchainnodeengine.NewBlockchainNodes(ctx, "defaultNode", &blockchainnodeengine.BlockchainNodesArgs{
-//				BlockchainNodeId: pulumi.String("blockchain_basic_node"),
+//			_, err := blockchainnodeengine.NewBlockchainNodes(ctx, "default_node", &blockchainnodeengine.BlockchainNodesArgs{
+//				Location:         pulumi.String("us-central1"),
 //				BlockchainType:   pulumi.String("ETHEREUM"),
+//				BlockchainNodeId: pulumi.String("blockchain_basic_node"),
 //				EthereumDetails: &blockchainnodeengine.BlockchainNodesEthereumDetailsArgs{
-//					ApiEnableAdmin:  pulumi.Bool(true),
-//					ApiEnableDebug:  pulumi.Bool(true),
-//					ConsensusClient: pulumi.String("LIGHTHOUSE"),
-//					ExecutionClient: pulumi.String("ERIGON"),
-//					Network:         pulumi.String("MAINNET"),
-//					NodeType:        pulumi.String("ARCHIVE"),
+//					ApiEnableAdmin: pulumi.Bool(true),
+//					ApiEnableDebug: pulumi.Bool(true),
 //					ValidatorConfig: &blockchainnodeengine.BlockchainNodesEthereumDetailsValidatorConfigArgs{
 //						MevRelayUrls: pulumi.StringArray{
 //							pulumi.String("https://mev1.example.org/"),
 //							pulumi.String("https://mev2.example.org/"),
 //						},
 //					},
+//					NodeType:        pulumi.String("ARCHIVE"),
+//					ConsensusClient: pulumi.String("LIGHTHOUSE"),
+//					ExecutionClient: pulumi.String("ERIGON"),
+//					Network:         pulumi.String("MAINNET"),
 //				},
 //				Labels: pulumi.StringMap{
 //					"environment": pulumi.String("dev"),
 //				},
-//				Location: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err
@@ -79,30 +79,30 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := blockchainnodeengine.NewBlockchainNodes(ctx, "defaultNodeGeth", &blockchainnodeengine.BlockchainNodesArgs{
-//				BlockchainNodeId: pulumi.String("blockchain_geth_node"),
+//			_, err := blockchainnodeengine.NewBlockchainNodes(ctx, "default_node_geth", &blockchainnodeengine.BlockchainNodesArgs{
+//				Location:         pulumi.String("us-central1"),
 //				BlockchainType:   pulumi.String("ETHEREUM"),
+//				BlockchainNodeId: pulumi.String("blockchain_geth_node"),
 //				EthereumDetails: &blockchainnodeengine.BlockchainNodesEthereumDetailsArgs{
-//					ApiEnableAdmin:  pulumi.Bool(true),
-//					ApiEnableDebug:  pulumi.Bool(true),
-//					ConsensusClient: pulumi.String("LIGHTHOUSE"),
-//					ExecutionClient: pulumi.String("GETH"),
-//					GethDetails: &blockchainnodeengine.BlockchainNodesEthereumDetailsGethDetailsArgs{
-//						GarbageCollectionMode: pulumi.String("FULL"),
-//					},
-//					Network:  pulumi.String("MAINNET"),
-//					NodeType: pulumi.String("FULL"),
+//					ApiEnableAdmin: pulumi.Bool(true),
+//					ApiEnableDebug: pulumi.Bool(true),
 //					ValidatorConfig: &blockchainnodeengine.BlockchainNodesEthereumDetailsValidatorConfigArgs{
 //						MevRelayUrls: pulumi.StringArray{
 //							pulumi.String("https://mev1.example.org/"),
 //							pulumi.String("https://mev2.example.org/"),
 //						},
 //					},
+//					NodeType:        pulumi.String("FULL"),
+//					ConsensusClient: pulumi.String("LIGHTHOUSE"),
+//					ExecutionClient: pulumi.String("GETH"),
+//					Network:         pulumi.String("MAINNET"),
+//					GethDetails: &blockchainnodeengine.BlockchainNodesEthereumDetailsGethDetailsArgs{
+//						GarbageCollectionMode: pulumi.String("FULL"),
+//					},
 //				},
 //				Labels: pulumi.StringMap{
 //					"environment": pulumi.String("dev"),
 //				},
-//				Location: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err

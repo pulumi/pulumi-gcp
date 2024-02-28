@@ -27,6 +27,7 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var mycluster = new Gcp.Dataproc.Cluster("mycluster", new()
     ///     {
+    ///         Name = "dproc-cluster-unique-name",
     ///         Region = "us-central1",
     ///     });
     /// 

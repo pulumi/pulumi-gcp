@@ -44,6 +44,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new DnsAuthorization(&#34;default&#34;, DnsAuthorizationArgs.builder()        
+ *             .name(&#34;dns-auth&#34;)
  *             .description(&#34;The default dnss&#34;)
  *             .domain(&#34;subdomain.hashicorptest.com&#34;)
  *             .build());

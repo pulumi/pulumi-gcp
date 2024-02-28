@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := iap.GetTunnelInstanceIamPolicy(ctx, &iap.GetTunnelInstanceIamPolicyArgs{
-//				Project:  pulumi.StringRef(google_compute_instance.Tunnelvm.Project),
-//				Zone:     pulumi.StringRef(google_compute_instance.Tunnelvm.Zone),
-//				Instance: google_compute_instance.Tunnelvm.Name,
+//				Project:  pulumi.StringRef(tunnelvm.Project),
+//				Zone:     pulumi.StringRef(tunnelvm.Zone),
+//				Instance: tunnelvm.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

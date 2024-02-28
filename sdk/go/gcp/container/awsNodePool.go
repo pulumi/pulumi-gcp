@@ -38,7 +38,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			primaryAwsCluster, err := container.NewAwsCluster(ctx, "primaryAwsCluster", &container.AwsClusterArgs{
+//			primary, err := container.NewAwsCluster(ctx, "primary", &container.AwsClusterArgs{
 //				Authorization: &container.AwsClusterAuthorizationArgs{
 //					AdminUsers: container.AwsClusterAuthorizationAdminUserArray{
 //						&container.AwsClusterAuthorizationAdminUserArgs{
@@ -94,6 +94,7 @@ import (
 //					Project: pulumi.String("my-project-number"),
 //				},
 //				Location: pulumi.String("us-west1"),
+//				Name:     pulumi.String("name"),
 //				Networking: &container.AwsClusterNetworkingArgs{
 //					PodAddressCidrBlocks: pulumi.StringArray{
 //						pulumi.String("10.2.0.0/16"),
@@ -112,12 +113,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = container.NewAwsNodePool(ctx, "primaryAwsNodePool", &container.AwsNodePoolArgs{
+//			_, err = container.NewAwsNodePool(ctx, "primary", &container.AwsNodePoolArgs{
 //				Autoscaling: &container.AwsNodePoolAutoscalingArgs{
 //					MaxNodeCount: pulumi.Int(5),
 //					MinNodeCount: pulumi.Int(1),
 //				},
-//				Cluster: primaryAwsCluster.Name,
+//				Cluster: primary.Name,
 //				Config: &container.AwsNodePoolConfigArgs{
 //					ConfigEncryption: &container.AwsNodePoolConfigConfigEncryptionArgs{
 //						KmsKeyArn: pulumi.String("arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"),
@@ -158,6 +159,7 @@ import (
 //				MaxPodsConstraint: &container.AwsNodePoolMaxPodsConstraintArgs{
 //					MaxPodsPerNode: pulumi.Int(110),
 //				},
+//				Name:     pulumi.String("node-pool-name"),
 //				SubnetId: pulumi.String("subnet-00000000000000000"),
 //				Version:  *pulumi.String(versions.ValidVersions[0]),
 //				Annotations: pulumi.StringMap{
@@ -197,7 +199,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			primaryAwsCluster, err := container.NewAwsCluster(ctx, "primaryAwsCluster", &container.AwsClusterArgs{
+//			primary, err := container.NewAwsCluster(ctx, "primary", &container.AwsClusterArgs{
 //				Authorization: &container.AwsClusterAuthorizationArgs{
 //					AdminUsers: container.AwsClusterAuthorizationAdminUserArray{
 //						&container.AwsClusterAuthorizationAdminUserArgs{
@@ -253,6 +255,7 @@ import (
 //					Project: pulumi.String("my-project-number"),
 //				},
 //				Location: pulumi.String("us-west1"),
+//				Name:     pulumi.String("name"),
 //				Networking: &container.AwsClusterNetworkingArgs{
 //					PodAddressCidrBlocks: pulumi.StringArray{
 //						pulumi.String("10.2.0.0/16"),
@@ -271,12 +274,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = container.NewAwsNodePool(ctx, "primaryAwsNodePool", &container.AwsNodePoolArgs{
+//			_, err = container.NewAwsNodePool(ctx, "primary", &container.AwsNodePoolArgs{
 //				Autoscaling: &container.AwsNodePoolAutoscalingArgs{
 //					MaxNodeCount: pulumi.Int(5),
 //					MinNodeCount: pulumi.Int(1),
 //				},
-//				Cluster: primaryAwsCluster.Name,
+//				Cluster: primary.Name,
 //				Config: &container.AwsNodePoolConfigArgs{
 //					ConfigEncryption: &container.AwsNodePoolConfigConfigEncryptionArgs{
 //						KmsKeyArn: pulumi.String("arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"),
@@ -317,6 +320,7 @@ import (
 //				MaxPodsConstraint: &container.AwsNodePoolMaxPodsConstraintArgs{
 //					MaxPodsPerNode: pulumi.Int(110),
 //				},
+//				Name:     pulumi.String("node-pool-name"),
 //				SubnetId: pulumi.String("subnet-00000000000000000"),
 //				Version:  *pulumi.String(versions.ValidVersions[0]),
 //				Annotations: pulumi.StringMap{
@@ -353,7 +357,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			primaryAwsCluster, err := container.NewAwsCluster(ctx, "primaryAwsCluster", &container.AwsClusterArgs{
+//			primary, err := container.NewAwsCluster(ctx, "primary", &container.AwsClusterArgs{
 //				Authorization: &container.AwsClusterAuthorizationArgs{
 //					AdminUsers: container.AwsClusterAuthorizationAdminUserArray{
 //						&container.AwsClusterAuthorizationAdminUserArgs{
@@ -409,6 +413,7 @@ import (
 //					Project: pulumi.String("my-project-number"),
 //				},
 //				Location: pulumi.String("us-west1"),
+//				Name:     pulumi.String("name"),
 //				Networking: &container.AwsClusterNetworkingArgs{
 //					PodAddressCidrBlocks: pulumi.StringArray{
 //						pulumi.String("10.2.0.0/16"),
@@ -423,16 +428,16 @@ import (
 //				},
 //				Description: pulumi.String("A sample aws cluster"),
 //				Project:     pulumi.String("my-project-name"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = container.NewAwsNodePool(ctx, "primaryAwsNodePool", &container.AwsNodePoolArgs{
+//			_, err = container.NewAwsNodePool(ctx, "primary", &container.AwsNodePoolArgs{
 //				Autoscaling: &container.AwsNodePoolAutoscalingArgs{
 //					MaxNodeCount: pulumi.Int(5),
 //					MinNodeCount: pulumi.Int(1),
 //				},
-//				Cluster: primaryAwsCluster.Name,
+//				Cluster: primary.Name,
 //				Config: &container.AwsNodePoolConfigArgs{
 //					ConfigEncryption: &container.AwsNodePoolConfigConfigEncryptionArgs{
 //						KmsKeyArn: pulumi.String("arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"),
@@ -477,13 +482,14 @@ import (
 //				MaxPodsConstraint: &container.AwsNodePoolMaxPodsConstraintArgs{
 //					MaxPodsPerNode: pulumi.Int(110),
 //				},
+//				Name:     pulumi.String("node-pool-name"),
 //				SubnetId: pulumi.String("subnet-00000000000000000"),
 //				Version:  *pulumi.String(versions.ValidVersions[0]),
 //				Annotations: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
 //				Project: pulumi.String("my-project-name"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

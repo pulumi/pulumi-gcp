@@ -29,9 +29,12 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork");
+    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "my-network",
+    ///     });
     /// 
-    ///     var defaultPrivateConnection = new Gcp.Datastream.PrivateConnection("defaultPrivateConnection", new()
+    ///     var @default = new Gcp.Datastream.PrivateConnection("default", new()
     ///     {
     ///         DisplayName = "Connection profile",
     ///         Location = "us-central1",

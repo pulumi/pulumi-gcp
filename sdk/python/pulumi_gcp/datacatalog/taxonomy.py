@@ -279,10 +279,10 @@ class Taxonomy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic_taxonomy = gcp.datacatalog.Taxonomy("basicTaxonomy",
-            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"],
+        basic_taxonomy = gcp.datacatalog.Taxonomy("basic_taxonomy",
+            display_name="my_taxonomy",
             description="A collection of policy tags",
-            display_name="my_taxonomy")
+            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
         ```
 
         ## Import
@@ -339,10 +339,10 @@ class Taxonomy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic_taxonomy = gcp.datacatalog.Taxonomy("basicTaxonomy",
-            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"],
+        basic_taxonomy = gcp.datacatalog.Taxonomy("basic_taxonomy",
+            display_name="my_taxonomy",
             description="A collection of policy tags",
-            display_name="my_taxonomy")
+            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
         ```
 
         ## Import

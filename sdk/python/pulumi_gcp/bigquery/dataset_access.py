@@ -537,10 +537,10 @@ class DatasetAccess(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         private = gcp.bigquery.Dataset("private", dataset_id="example_dataset")
-        public_dataset = gcp.bigquery.Dataset("publicDataset", dataset_id="example_dataset2")
-        public_table = gcp.bigquery.Table("publicTable",
+        public = gcp.bigquery.Dataset("public", dataset_id="example_dataset2")
+        public_table = gcp.bigquery.Table("public",
             deletion_protection=False,
-            dataset_id=public_dataset.dataset_id,
+            dataset_id=public.dataset_id,
             table_id="example_table",
             view=gcp.bigquery.TableViewArgs(
                 query="SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
@@ -550,7 +550,7 @@ class DatasetAccess(pulumi.CustomResource):
             dataset_id=private.dataset_id,
             view=gcp.bigquery.DatasetAccessViewArgs(
                 project_id=public_table.project,
-                dataset_id=public_dataset.dataset_id,
+                dataset_id=public.dataset_id,
                 table_id=public_table.table_id,
             ))
         ```
@@ -579,11 +579,11 @@ class DatasetAccess(pulumi.CustomResource):
         import json
         import pulumi_gcp as gcp
 
-        public_dataset = gcp.bigquery.Dataset("publicDataset",
+        public = gcp.bigquery.Dataset("public",
             dataset_id="public_dataset",
             description="This dataset is public")
-        public_routine = gcp.bigquery.Routine("publicRoutine",
-            dataset_id=public_dataset.dataset_id,
+        public_routine = gcp.bigquery.Routine("public",
+            dataset_id=public.dataset_id,
             routine_id="public_routine",
             routine_type="TABLE_VALUED_FUNCTION",
             language="SQL",
@@ -606,7 +606,7 @@ class DatasetAccess(pulumi.CustomResource):
         private = gcp.bigquery.Dataset("private",
             dataset_id="private_dataset",
             description="This dataset is private")
-        authorized_routine = gcp.bigquery.DatasetAccess("authorizedRoutine",
+        authorized_routine = gcp.bigquery.DatasetAccess("authorized_routine",
             dataset_id=private.dataset_id,
             routine=gcp.bigquery.DatasetAccessRoutineArgs(
                 project_id=public_routine.project,
@@ -686,10 +686,10 @@ class DatasetAccess(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         private = gcp.bigquery.Dataset("private", dataset_id="example_dataset")
-        public_dataset = gcp.bigquery.Dataset("publicDataset", dataset_id="example_dataset2")
-        public_table = gcp.bigquery.Table("publicTable",
+        public = gcp.bigquery.Dataset("public", dataset_id="example_dataset2")
+        public_table = gcp.bigquery.Table("public",
             deletion_protection=False,
-            dataset_id=public_dataset.dataset_id,
+            dataset_id=public.dataset_id,
             table_id="example_table",
             view=gcp.bigquery.TableViewArgs(
                 query="SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
@@ -699,7 +699,7 @@ class DatasetAccess(pulumi.CustomResource):
             dataset_id=private.dataset_id,
             view=gcp.bigquery.DatasetAccessViewArgs(
                 project_id=public_table.project,
-                dataset_id=public_dataset.dataset_id,
+                dataset_id=public.dataset_id,
                 table_id=public_table.table_id,
             ))
         ```
@@ -728,11 +728,11 @@ class DatasetAccess(pulumi.CustomResource):
         import json
         import pulumi_gcp as gcp
 
-        public_dataset = gcp.bigquery.Dataset("publicDataset",
+        public = gcp.bigquery.Dataset("public",
             dataset_id="public_dataset",
             description="This dataset is public")
-        public_routine = gcp.bigquery.Routine("publicRoutine",
-            dataset_id=public_dataset.dataset_id,
+        public_routine = gcp.bigquery.Routine("public",
+            dataset_id=public.dataset_id,
             routine_id="public_routine",
             routine_type="TABLE_VALUED_FUNCTION",
             language="SQL",
@@ -755,7 +755,7 @@ class DatasetAccess(pulumi.CustomResource):
         private = gcp.bigquery.Dataset("private",
             dataset_id="private_dataset",
             description="This dataset is private")
-        authorized_routine = gcp.bigquery.DatasetAccess("authorizedRoutine",
+        authorized_routine = gcp.bigquery.DatasetAccess("authorized_routine",
             dataset_id=private.dataset_id,
             routine=gcp.bigquery.DatasetAccessRoutineArgs(
                 project_id=public_routine.project,

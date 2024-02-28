@@ -58,12 +58,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
+//				Name:                  pulumi.String("test-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewSubnetwork(ctx, "network-with-private-secondary-ip-ranges", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("test-subnetwork"),
 //				IpCidrRange: pulumi.String("10.2.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     custom_test.ID(),
@@ -97,12 +99,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
+//				Name:                  pulumi.String("log-test-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewSubnetwork(ctx, "subnet-with-logging", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("log-test-subnetwork"),
 //				IpCidrRange: pulumi.String("10.2.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     custom_test.ID(),
@@ -135,18 +139,20 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
+//				Name:                  pulumi.String("l7lb-test-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewSubnetwork(ctx, "network-for-l7lb", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("l7lb-test-subnetwork"),
 //				IpCidrRange: pulumi.String("10.0.0.0/22"),
 //				Region:      pulumi.String("us-central1"),
 //				Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
 //				Role:        pulumi.String("ACTIVE"),
 //				Network:     custom_test.ID(),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -170,12 +176,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
+//				Name:                  pulumi.String("ipv6-test-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewSubnetwork(ctx, "subnetwork-ipv6", &compute.SubnetworkArgs{
+//				Name:           pulumi.String("ipv6-test-subnetwork"),
 //				IpCidrRange:    pulumi.String("10.0.0.0/22"),
 //				Region:         pulumi.String("us-west2"),
 //				StackType:      pulumi.String("IPV4_IPV6"),
@@ -205,6 +213,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
+//				Name:                  pulumi.String("internal-ipv6-test-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //				EnableUlaInternalIpv6: pulumi.Bool(true),
 //			})
@@ -212,6 +221,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewSubnetwork(ctx, "subnetwork-internal-ipv6", &compute.SubnetworkArgs{
+//				Name:           pulumi.String("internal-ipv6-test-subnetwork"),
 //				IpCidrRange:    pulumi.String("10.0.0.0/22"),
 //				Region:         pulumi.String("us-west2"),
 //				StackType:      pulumi.String("IPV4_IPV6"),
@@ -241,17 +251,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
+//				Name:                  pulumi.String("subnet-purpose-test-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewSubnetwork(ctx, "subnetwork-purpose-private-nat", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("subnet-purpose-test-subnetwork"),
 //				Region:      pulumi.String("us-west2"),
 //				IpCidrRange: pulumi.String("192.168.1.0/24"),
 //				Purpose:     pulumi.String("PRIVATE_NAT"),
 //				Network:     custom_test.ID(),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -275,17 +287,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewNetwork(ctx, "net-cidr-overlap", &compute.NetworkArgs{
+//				Name:                  pulumi.String("net-cidr-overlap"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewSubnetwork(ctx, "subnetwork-cidr-overlap", &compute.SubnetworkArgs{
+//				Name:                         pulumi.String("subnet-cidr-overlap"),
 //				Region:                       pulumi.String("us-west2"),
 //				IpCidrRange:                  pulumi.String("192.168.1.0/24"),
 //				AllowSubnetCidrRoutesOverlap: pulumi.Bool(true),
 //				Network:                      net_cidr_overlap.ID(),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

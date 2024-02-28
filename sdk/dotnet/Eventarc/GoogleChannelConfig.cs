@@ -39,9 +39,9 @@ namespace Pulumi.Gcp.Eventarc
     ///         KeyRing = testKeyRing.Apply(getKMSKeyRingResult =&gt; getKMSKeyRingResult.Id),
     ///     });
     /// 
-    ///     var key1Member = new Gcp.Kms.CryptoKeyIAMMember("key1Member", new()
+    ///     var key1Member = new Gcp.Kms.CryptoKeyIAMMember("key1_member", new()
     ///     {
-    ///         CryptoKeyId = data.Google_kms_crypto_key.Key1.Id,
+    ///         CryptoKeyId = key1.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
     ///         Member = $"serviceAccount:service-{testProject.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-eventarc.iam.gserviceaccount.com",
     ///     });
@@ -49,14 +49,9 @@ namespace Pulumi.Gcp.Eventarc
     ///     var primary = new Gcp.Eventarc.GoogleChannelConfig("primary", new()
     ///     {
     ///         Location = "us-west1",
+    ///         Name = "channel",
     ///         Project = testProject.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
-    ///         CryptoKeyName = data.Google_kms_crypto_key.Key1.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             key1Member,
-    ///         },
+    ///         CryptoKeyName = key1.Id,
     ///     });
     /// 
     /// });

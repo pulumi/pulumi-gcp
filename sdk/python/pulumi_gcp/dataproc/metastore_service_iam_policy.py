@@ -261,9 +261,9 @@ class MetastoreServiceIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.dataproc.MetastoreServiceIamPolicy("policy",
-            project=google_dataproc_metastore_service["default"]["project"],
-            location=google_dataproc_metastore_service["default"]["location"],
-            service_id=google_dataproc_metastore_service["default"]["service_id"],
+            project=default["project"],
+            location=default["location"],
+            service_id=default["serviceId"],
             policy_data=admin.policy_data)
         ```
 
@@ -274,9 +274,9 @@ class MetastoreServiceIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.dataproc.MetastoreServiceIamBinding("binding",
-            project=google_dataproc_metastore_service["default"]["project"],
-            location=google_dataproc_metastore_service["default"]["location"],
-            service_id=google_dataproc_metastore_service["default"]["service_id"],
+            project=default["project"],
+            location=default["location"],
+            service_id=default["serviceId"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -288,9 +288,9 @@ class MetastoreServiceIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.dataproc.MetastoreServiceIamMember("member",
-            project=google_dataproc_metastore_service["default"]["project"],
-            location=google_dataproc_metastore_service["default"]["location"],
-            service_id=google_dataproc_metastore_service["default"]["service_id"],
+            project=default["project"],
+            location=default["location"],
+            service_id=default["serviceId"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -387,9 +387,9 @@ class MetastoreServiceIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.dataproc.MetastoreServiceIamPolicy("policy",
-            project=google_dataproc_metastore_service["default"]["project"],
-            location=google_dataproc_metastore_service["default"]["location"],
-            service_id=google_dataproc_metastore_service["default"]["service_id"],
+            project=default["project"],
+            location=default["location"],
+            service_id=default["serviceId"],
             policy_data=admin.policy_data)
         ```
 
@@ -400,9 +400,9 @@ class MetastoreServiceIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.dataproc.MetastoreServiceIamBinding("binding",
-            project=google_dataproc_metastore_service["default"]["project"],
-            location=google_dataproc_metastore_service["default"]["location"],
-            service_id=google_dataproc_metastore_service["default"]["service_id"],
+            project=default["project"],
+            location=default["location"],
+            service_id=default["serviceId"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -414,9 +414,9 @@ class MetastoreServiceIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.dataproc.MetastoreServiceIamMember("member",
-            project=google_dataproc_metastore_service["default"]["project"],
-            location=google_dataproc_metastore_service["default"]["location"],
-            service_id=google_dataproc_metastore_service["default"]["service_id"],
+            project=default["project"],
+            location=default["location"],
+            service_id=default["serviceId"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

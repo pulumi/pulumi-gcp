@@ -51,8 +51,8 @@ namespace Pulumi.Gcp.Apigee
     /// 
     ///     var policy = new Gcp.Apigee.EnvironmentIamPolicy("policy", new()
     ///     {
-    ///         OrgId = google_apigee_environment.Apigee_environment.Org_id,
-    ///         EnvId = google_apigee_environment.Apigee_environment.Name,
+    ///         OrgId = apigeeEnvironment.OrgId,
+    ///         EnvId = apigeeEnvironment.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -71,8 +71,8 @@ namespace Pulumi.Gcp.Apigee
     /// {
     ///     var binding = new Gcp.Apigee.EnvironmentIamBinding("binding", new()
     ///     {
-    ///         OrgId = google_apigee_environment.Apigee_environment.Org_id,
-    ///         EnvId = google_apigee_environment.Apigee_environment.Name,
+    ///         OrgId = apigeeEnvironment.OrgId,
+    ///         EnvId = apigeeEnvironment.Name,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -95,8 +95,8 @@ namespace Pulumi.Gcp.Apigee
     /// {
     ///     var member = new Gcp.Apigee.EnvironmentIamMember("member", new()
     ///     {
-    ///         OrgId = google_apigee_environment.Apigee_environment.Org_id,
-    ///         EnvId = google_apigee_environment.Apigee_environment.Name,
+    ///         OrgId = apigeeEnvironment.OrgId,
+    ///         EnvId = apigeeEnvironment.Name,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

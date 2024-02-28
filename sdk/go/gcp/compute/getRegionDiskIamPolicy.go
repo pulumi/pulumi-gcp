@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.LookupRegionDiskIamPolicy(ctx, &compute.LookupRegionDiskIamPolicyArgs{
-//				Project: pulumi.StringRef(google_compute_region_disk.Regiondisk.Project),
-//				Region:  pulumi.StringRef(google_compute_region_disk.Regiondisk.Region),
-//				Name:    google_compute_region_disk.Regiondisk.Name,
+//				Project: pulumi.StringRef(regiondisk.Project),
+//				Region:  pulumi.StringRef(regiondisk.Region),
+//				Name:    regiondisk.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

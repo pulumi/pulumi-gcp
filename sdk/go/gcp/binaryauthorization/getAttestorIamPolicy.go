@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := binaryauthorization.LookupAttestorIamPolicy(ctx, &binaryauthorization.LookupAttestorIamPolicyArgs{
-//				Project:  pulumi.StringRef(google_binary_authorization_attestor.Attestor.Project),
-//				Attestor: google_binary_authorization_attestor.Attestor.Name,
+//				Project:  pulumi.StringRef(attestor.Project),
+//				Attestor: attestor.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

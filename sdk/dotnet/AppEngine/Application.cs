@@ -27,8 +27,10 @@ namespace Pulumi.Gcp.AppEngine
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myProject = new Gcp.Organizations.Project("myProject", new()
+    ///     var myProject = new Gcp.Organizations.Project("my_project", new()
     ///     {
+    ///         Name = "My Project",
+    ///         ProjectId = "your-project-id",
     ///         OrgId = "1234567",
     ///     });
     /// 

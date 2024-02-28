@@ -21,8 +21,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networkservices.EdgeCacheOrigin("default", {
- *     description: "The default bucket for media edge test",
+ *     name: "my-origin",
  *     originAddress: "gs://media-edge-default",
+ *     description: "The default bucket for media edge test",
  * });
  * ```
  * ### Network Services Edge Cache Origin Advanced
@@ -32,6 +33,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const fallback = new gcp.networkservices.EdgeCacheOrigin("fallback", {
+ *     name: "my-fallback",
  *     originAddress: "fallback.example.com",
  *     description: "The default bucket for media edge test",
  *     maxAttempts: 3,
@@ -72,6 +74,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const _default = new gcp.networkservices.EdgeCacheOrigin("default", {
+ *     name: "my-origin",
  *     originAddress: "gs://media-edge-default",
  *     failoverOrigin: fallback.id,
  *     description: "The default bucket for media edge test",
@@ -101,6 +104,7 @@ import * as utilities from "../utilities";
  *     secretData: "secret-data",
  * });
  * const _default = new gcp.networkservices.EdgeCacheOrigin("default", {
+ *     name: "my-origin",
  *     originAddress: "gs://media-edge-default",
  *     description: "The default bucket for V4 authentication",
  *     awsV4Authentication: {

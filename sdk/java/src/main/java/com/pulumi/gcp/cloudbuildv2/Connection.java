@@ -56,13 +56,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var my_connection = new Connection(&#34;my-connection&#34;, ConnectionArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .name(&#34;tf-test-connection&#34;)
  *             .githubConfig(ConnectionGithubConfigArgs.builder()
  *                 .appInstallationId(0)
  *                 .authorizerCredential(ConnectionGithubConfigAuthorizerCredentialArgs.builder()
  *                     .oauthTokenSecretVersion(&#34;projects/gcb-terraform-creds/secrets/github-pat/versions/1&#34;)
  *                     .build())
  *                 .build())
- *             .location(&#34;us-central1&#34;)
  *             .build());
  * 
  *     }
@@ -88,7 +89,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudbuildv2.Connection;
  * import com.pulumi.gcp.cloudbuildv2.ConnectionArgs;
  * import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGithubEnterpriseConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -111,7 +111,9 @@ import javax.annotation.Nullable;
  * 
  *         var private_key_secret_version = new SecretVersion(&#34;private-key-secret-version&#34;, SecretVersionArgs.builder()        
  *             .secret(private_key_secret.id())
- *             .secretData(Files.readString(Paths.get(&#34;private-key.pem&#34;)))
+ *             .secretData(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;private-key.pem&#34;)
+ *                 .build()).result())
  *             .build());
  * 
  *         var webhook_secret_secret = new Secret(&#34;webhook-secret-secret&#34;, SecretArgs.builder()        
@@ -145,6 +147,7 @@ import javax.annotation.Nullable;
  * 
  *         var my_connection = new Connection(&#34;my-connection&#34;, ConnectionArgs.builder()        
  *             .location(&#34;us-central1&#34;)
+ *             .name(&#34;my-terraform-ghe-connection&#34;)
  *             .githubEnterpriseConfig(ConnectionGithubEnterpriseConfigArgs.builder()
  *                 .hostUri(&#34;https://ghe.com&#34;)
  *                 .privateKeySecretVersion(private_key_secret_version.id())
@@ -153,11 +156,7 @@ import javax.annotation.Nullable;
  *                 .appSlug(&#34;gcb-app&#34;)
  *                 .appInstallationId(300)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
- *                     policy_pk,
- *                     policy_whs)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -205,7 +204,9 @@ import javax.annotation.Nullable;
  * 
  *         var github_token_secret_version = new SecretVersion(&#34;github-token-secret-version&#34;, SecretVersionArgs.builder()        
  *             .secret(github_token_secret.id())
- *             .secretData(Files.readString(Paths.get(&#34;my-github-token.txt&#34;)))
+ *             .secretData(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;my-github-token.txt&#34;)
+ *                 .build()).result())
  *             .build());
  * 
  *         final var p4sa-secretAccessor = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
@@ -222,6 +223,7 @@ import javax.annotation.Nullable;
  * 
  *         var my_connection = new Connection(&#34;my-connection&#34;, ConnectionArgs.builder()        
  *             .location(&#34;us-central1&#34;)
+ *             .name(&#34;my-connection&#34;)
  *             .githubConfig(ConnectionGithubConfigArgs.builder()
  *                 .appInstallationId(123123)
  *                 .authorizerCredential(ConnectionGithubConfigAuthorizerCredentialArgs.builder()

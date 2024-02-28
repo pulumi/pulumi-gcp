@@ -28,8 +28,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const sccNotification = new gcp.pubsub.Topic("sccNotification", {});
- * const customNotificationConfig = new gcp.securitycenter.NotificationConfig("customNotificationConfig", {
+ * const sccNotification = new gcp.pubsub.Topic("scc_notification", {name: "my-topic"});
+ * const customNotificationConfig = new gcp.securitycenter.NotificationConfig("custom_notification_config", {
  *     configId: "my-config",
  *     organization: "123456789",
  *     description: "My custom Cloud Security Command Center Finding Notification Configuration",

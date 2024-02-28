@@ -29,18 +29,15 @@ namespace Pulumi.Gcp.BlockchainNodeEngine
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNode = new Gcp.BlockchainNodeEngine.BlockchainNodes("defaultNode", new()
+    ///     var defaultNode = new Gcp.BlockchainNodeEngine.BlockchainNodes("default_node", new()
     ///     {
-    ///         BlockchainNodeId = "blockchain_basic_node",
+    ///         Location = "us-central1",
     ///         BlockchainType = "ETHEREUM",
+    ///         BlockchainNodeId = "blockchain_basic_node",
     ///         EthereumDetails = new Gcp.BlockchainNodeEngine.Inputs.BlockchainNodesEthereumDetailsArgs
     ///         {
     ///             ApiEnableAdmin = true,
     ///             ApiEnableDebug = true,
-    ///             ConsensusClient = "LIGHTHOUSE",
-    ///             ExecutionClient = "ERIGON",
-    ///             Network = "MAINNET",
-    ///             NodeType = "ARCHIVE",
     ///             ValidatorConfig = new Gcp.BlockchainNodeEngine.Inputs.BlockchainNodesEthereumDetailsValidatorConfigArgs
     ///             {
     ///                 MevRelayUrls = new[]
@@ -49,12 +46,15 @@ namespace Pulumi.Gcp.BlockchainNodeEngine
     ///                     "https://mev2.example.org/",
     ///                 },
     ///             },
+    ///             NodeType = "ARCHIVE",
+    ///             ConsensusClient = "LIGHTHOUSE",
+    ///             ExecutionClient = "ERIGON",
+    ///             Network = "MAINNET",
     ///         },
     ///         Labels = 
     ///         {
     ///             { "environment", "dev" },
     ///         },
-    ///         Location = "us-central1",
     ///     });
     /// 
     /// });
@@ -69,22 +69,15 @@ namespace Pulumi.Gcp.BlockchainNodeEngine
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNodeGeth = new Gcp.BlockchainNodeEngine.BlockchainNodes("defaultNodeGeth", new()
+    ///     var defaultNodeGeth = new Gcp.BlockchainNodeEngine.BlockchainNodes("default_node_geth", new()
     ///     {
-    ///         BlockchainNodeId = "blockchain_geth_node",
+    ///         Location = "us-central1",
     ///         BlockchainType = "ETHEREUM",
+    ///         BlockchainNodeId = "blockchain_geth_node",
     ///         EthereumDetails = new Gcp.BlockchainNodeEngine.Inputs.BlockchainNodesEthereumDetailsArgs
     ///         {
     ///             ApiEnableAdmin = true,
     ///             ApiEnableDebug = true,
-    ///             ConsensusClient = "LIGHTHOUSE",
-    ///             ExecutionClient = "GETH",
-    ///             GethDetails = new Gcp.BlockchainNodeEngine.Inputs.BlockchainNodesEthereumDetailsGethDetailsArgs
-    ///             {
-    ///                 GarbageCollectionMode = "FULL",
-    ///             },
-    ///             Network = "MAINNET",
-    ///             NodeType = "FULL",
     ///             ValidatorConfig = new Gcp.BlockchainNodeEngine.Inputs.BlockchainNodesEthereumDetailsValidatorConfigArgs
     ///             {
     ///                 MevRelayUrls = new[]
@@ -93,12 +86,19 @@ namespace Pulumi.Gcp.BlockchainNodeEngine
     ///                     "https://mev2.example.org/",
     ///                 },
     ///             },
+    ///             NodeType = "FULL",
+    ///             ConsensusClient = "LIGHTHOUSE",
+    ///             ExecutionClient = "GETH",
+    ///             Network = "MAINNET",
+    ///             GethDetails = new Gcp.BlockchainNodeEngine.Inputs.BlockchainNodesEthereumDetailsGethDetailsArgs
+    ///             {
+    ///                 GarbageCollectionMode = "FULL",
+    ///             },
     ///         },
     ///         Labels = 
     ///         {
     ///             { "environment", "dev" },
     ///         },
-    ///         Location = "us-central1",
     ///     });
     /// 
     /// });

@@ -55,7 +55,8 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewSnapshotIamPolicy(ctx, "policy", &compute.SnapshotIamPolicyArgs{
-//				Project:    pulumi.Any(google_compute_snapshot.Snapshot.Project),
+//				Project:    pulumi.Any(snapshot.Project),
+//				Name:       pulumi.Any(snapshot.Name),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -82,7 +83,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewSnapshotIamBinding(ctx, "binding", &compute.SnapshotIamBindingArgs{
-//				Project: pulumi.Any(google_compute_snapshot.Snapshot.Project),
+//				Project: pulumi.Any(snapshot.Project),
+//				Name:    pulumi.Any(snapshot.Name),
 //				Role:    pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -112,7 +114,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewSnapshotIamMember(ctx, "member", &compute.SnapshotIamMemberArgs{
-//				Project: pulumi.Any(google_compute_snapshot.Snapshot.Project),
+//				Project: pulumi.Any(snapshot.Project),
+//				Name:    pulumi.Any(snapshot.Name),
 //				Role:    pulumi.String("roles/viewer"),
 //				Member:  pulumi.String("user:jane@example.com"),
 //			})

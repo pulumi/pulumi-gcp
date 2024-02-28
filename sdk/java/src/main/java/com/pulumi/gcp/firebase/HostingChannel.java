@@ -30,49 +30,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.firebase.HostingSiteArgs;
  * import com.pulumi.gcp.firebase.HostingChannel;
  * import com.pulumi.gcp.firebase.HostingChannelArgs;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var defaultHostingSite = new HostingSite(&#34;defaultHostingSite&#34;, HostingSiteArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .siteId(&#34;site-with-channel&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var defaultHostingChannel = new HostingChannel(&#34;defaultHostingChannel&#34;, HostingChannelArgs.builder()        
- *             .siteId(defaultHostingSite.siteId())
- *             .channelId(&#34;channel-basic&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *     }
- * }
- * ```
- * ### Firebasehosting Channel Full
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.firebase.HostingSite;
- * import com.pulumi.gcp.firebase.HostingSiteArgs;
- * import com.pulumi.gcp.firebase.HostingChannel;
- * import com.pulumi.gcp.firebase.HostingChannelArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -89,9 +46,44 @@ import javax.annotation.Nullable;
  *         var default_ = new HostingSite(&#34;default&#34;, HostingSiteArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .siteId(&#34;site-with-channel&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
+ * 
+ *         var defaultHostingChannel = new HostingChannel(&#34;defaultHostingChannel&#34;, HostingChannelArgs.builder()        
+ *             .siteId(default_.siteId())
+ *             .channelId(&#34;channel-basic&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Firebasehosting Channel Full
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firebase.HostingSite;
+ * import com.pulumi.gcp.firebase.HostingSiteArgs;
+ * import com.pulumi.gcp.firebase.HostingChannel;
+ * import com.pulumi.gcp.firebase.HostingChannelArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new HostingSite(&#34;default&#34;, HostingSiteArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .siteId(&#34;site-with-channel&#34;)
+ *             .build());
  * 
  *         var full = new HostingChannel(&#34;full&#34;, HostingChannelArgs.builder()        
  *             .siteId(default_.siteId())
@@ -99,9 +91,7 @@ import javax.annotation.Nullable;
  *             .ttl(&#34;86400s&#34;)
  *             .retainedReleaseCount(20)
  *             .labels(Map.of(&#34;some-key&#34;, &#34;some-value&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

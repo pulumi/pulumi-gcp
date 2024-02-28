@@ -40,8 +40,8 @@ public final class BinaryauthorizationFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BinaryauthorizationFunctions.getAttestorIamPolicy(GetAttestorIamPolicyArgs.builder()
-     *             .project(google_binary_authorization_attestor.attestor().project())
-     *             .attestor(google_binary_authorization_attestor.attestor().name())
+     *             .project(attestor.project())
+     *             .attestor(attestor.name())
      *             .build());
      * 
      *     }
@@ -78,8 +78,8 @@ public final class BinaryauthorizationFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BinaryauthorizationFunctions.getAttestorIamPolicy(GetAttestorIamPolicyArgs.builder()
-     *             .project(google_binary_authorization_attestor.attestor().project())
-     *             .attestor(google_binary_authorization_attestor.attestor().name())
+     *             .project(attestor.project())
+     *             .attestor(attestor.name())
      *             .build());
      * 
      *     }
@@ -116,8 +116,8 @@ public final class BinaryauthorizationFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BinaryauthorizationFunctions.getAttestorIamPolicy(GetAttestorIamPolicyArgs.builder()
-     *             .project(google_binary_authorization_attestor.attestor().project())
-     *             .attestor(google_binary_authorization_attestor.attestor().name())
+     *             .project(attestor.project())
+     *             .attestor(attestor.name())
      *             .build());
      * 
      *     }
@@ -154,8 +154,8 @@ public final class BinaryauthorizationFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BinaryauthorizationFunctions.getAttestorIamPolicy(GetAttestorIamPolicyArgs.builder()
-     *             .project(google_binary_authorization_attestor.attestor().project())
-     *             .attestor(google_binary_authorization_attestor.attestor().name())
+     *             .project(attestor.project())
+     *             .attestor(attestor.name())
      *             .build());
      * 
      *     }

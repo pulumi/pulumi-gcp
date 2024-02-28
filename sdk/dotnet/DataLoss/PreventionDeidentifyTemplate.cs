@@ -19,6 +19,158 @@ namespace Pulumi.Gcp.DataLoss
     ///     * [Official Documentation](https://cloud.google.com/dlp/docs/concepts-templates)
     /// 
     /// ## Example Usage
+    /// ### Dlp Deidentify Template Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basic = new Gcp.DataLoss.PreventionDeidentifyTemplate("basic", new()
+    ///     {
+    ///         Parent = "projects/my-project-name",
+    ///         Description = "Description",
+    ///         DisplayName = "Displayname",
+    ///         DeidentifyConfig = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigArgs
+    ///         {
+    ///             InfoTypeTransformations = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs
+    ///             {
+    ///                 Transformations = new[]
+    ///                 {
+    ///                     new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs
+    ///                     {
+    ///                         InfoTypes = new[]
+    ///                         {
+    ///                             new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs
+    ///                             {
+    ///                                 Name = "FIRST_NAME",
+    ///                             },
+    ///                         },
+    ///                         PrimitiveTransformation = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs
+    ///                         {
+    ///                             ReplaceWithInfoTypeConfig = true,
+    ///                         },
+    ///                     },
+    ///                     new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs
+    ///                     {
+    ///                         InfoTypes = new[]
+    ///                         {
+    ///                             new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs
+    ///                             {
+    ///                                 Name = "PHONE_NUMBER",
+    ///                             },
+    ///                             new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs
+    ///                             {
+    ///                                 Name = "AGE",
+    ///                             },
+    ///                         },
+    ///                         PrimitiveTransformation = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs
+    ///                         {
+    ///                             ReplaceConfig = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs
+    ///                             {
+    ///                                 NewValue = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs
+    ///                                 {
+    ///                                     IntegerValue = 9,
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs
+    ///                     {
+    ///                         InfoTypes = new[]
+    ///                         {
+    ///                             new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs
+    ///                             {
+    ///                                 Name = "EMAIL_ADDRESS",
+    ///                             },
+    ///                             new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs
+    ///                             {
+    ///                                 Name = "LAST_NAME",
+    ///                             },
+    ///                         },
+    ///                         PrimitiveTransformation = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs
+    ///                         {
+    ///                             CharacterMaskConfig = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs
+    ///                             {
+    ///                                 MaskingCharacter = "X",
+    ///                                 NumberToMask = 4,
+    ///                                 ReverseOrder = true,
+    ///                                 CharactersToIgnores = new[]
+    ///                                 {
+    ///                                     new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs
+    ///                                     {
+    ///                                         CommonCharactersToIgnore = "PUNCTUATION",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs
+    ///                     {
+    ///                         InfoTypes = new[]
+    ///                         {
+    ///                             new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs
+    ///                             {
+    ///                                 Name = "DATE_OF_BIRTH",
+    ///                             },
+    ///                         },
+    ///                         PrimitiveTransformation = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs
+    ///                         {
+    ///                             ReplaceConfig = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs
+    ///                             {
+    ///                                 NewValue = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs
+    ///                                 {
+    ///                                     DateValue = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs
+    ///                                     {
+    ///                                         Year = 2020,
+    ///                                         Month = 1,
+    ///                                         Day = 1,
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs
+    ///                     {
+    ///                         InfoTypes = new[]
+    ///                         {
+    ///                             new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs
+    ///                             {
+    ///                                 Name = "CREDIT_CARD_NUMBER",
+    ///                             },
+    ///                         },
+    ///                         PrimitiveTransformation = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs
+    ///                         {
+    ///                             CryptoDeterministicConfig = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs
+    ///                             {
+    ///                                 Context = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs
+    ///                                 {
+    ///                                     Name = "sometweak",
+    ///                                 },
+    ///                                 CryptoKey = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs
+    ///                                 {
+    ///                                     Transient = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs
+    ///                                     {
+    ///                                         Name = "beep",
+    ///                                     },
+    ///                                 },
+    ///                                 SurrogateInfoType = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs
+    ///                                 {
+    ///                                     Name = "abc",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Dlp Deidentify Template Image Transformations
     /// 
     /// ```csharp
@@ -31,6 +183,9 @@ namespace Pulumi.Gcp.DataLoss
     /// {
     ///     var basic = new Gcp.DataLoss.PreventionDeidentifyTemplate("basic", new()
     ///     {
+    ///         Parent = "projects/my-project-name",
+    ///         Description = "Description",
+    ///         DisplayName = "Displayname",
     ///         DeidentifyConfig = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigArgs
     ///         {
     ///             ImageTransformations = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs
@@ -41,9 +196,9 @@ namespace Pulumi.Gcp.DataLoss
     ///                     {
     ///                         RedactionColor = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs
     ///                         {
+    ///                             Red = 0.5,
     ///                             Blue = 1,
     ///                             Green = 0.2,
-    ///                             Red = 0.5,
     ///                         },
     ///                         SelectedInfoTypes = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs
     ///                         {
@@ -68,9 +223,6 @@ namespace Pulumi.Gcp.DataLoss
     ///                 },
     ///             },
     ///         },
-    ///         Description = "Description",
-    ///         DisplayName = "Displayname",
-    ///         Parent = "projects/my-project-name",
     ///     });
     /// 
     /// });

@@ -33,24 +33,25 @@ namespace Pulumi.Gcp.Filestore
     /// {
     ///     var instance = new Gcp.Filestore.Instance("instance", new()
     ///     {
+    ///         Name = "test-instance",
+    ///         Location = "us-central1-b",
+    ///         Tier = "BASIC_HDD",
     ///         FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
     ///         {
     ///             CapacityGb = 1024,
     ///             Name = "share1",
     ///         },
-    ///         Location = "us-central1-b",
     ///         Networks = new[]
     ///         {
     ///             new Gcp.Filestore.Inputs.InstanceNetworkArgs
     ///             {
+    ///                 Network = "default",
     ///                 Modes = new[]
     ///                 {
     ///                     "MODE_IPV4",
     ///                 },
-    ///                 Network = "default",
     ///             },
     ///         },
-    ///         Tier = "BASIC_HDD",
     ///     });
     /// 
     /// });
@@ -67,6 +68,9 @@ namespace Pulumi.Gcp.Filestore
     /// {
     ///     var instance = new Gcp.Filestore.Instance("instance", new()
     ///     {
+    ///         Name = "test-instance",
+    ///         Location = "us-central1-b",
+    ///         Tier = "BASIC_SSD",
     ///         FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
     ///         {
     ///             CapacityGb = 2560,
@@ -75,40 +79,38 @@ namespace Pulumi.Gcp.Filestore
     ///             {
     ///                 new Gcp.Filestore.Inputs.InstanceFileSharesNfsExportOptionArgs
     ///                 {
-    ///                     AccessMode = "READ_WRITE",
     ///                     IpRanges = new[]
     ///                     {
     ///                         "10.0.0.0/24",
     ///                     },
+    ///                     AccessMode = "READ_WRITE",
     ///                     SquashMode = "NO_ROOT_SQUASH",
     ///                 },
     ///                 new Gcp.Filestore.Inputs.InstanceFileSharesNfsExportOptionArgs
     ///                 {
-    ///                     AccessMode = "READ_ONLY",
-    ///                     AnonGid = 456,
-    ///                     AnonUid = 123,
     ///                     IpRanges = new[]
     ///                     {
     ///                         "10.10.0.0/24",
     ///                     },
+    ///                     AccessMode = "READ_ONLY",
     ///                     SquashMode = "ROOT_SQUASH",
+    ///                     AnonUid = 123,
+    ///                     AnonGid = 456,
     ///                 },
     ///             },
     ///         },
-    ///         Location = "us-central1-b",
     ///         Networks = new[]
     ///         {
     ///             new Gcp.Filestore.Inputs.InstanceNetworkArgs
     ///             {
-    ///                 ConnectMode = "DIRECT_PEERING",
+    ///                 Network = "default",
     ///                 Modes = new[]
     ///                 {
     ///                     "MODE_IPV4",
     ///                 },
-    ///                 Network = "default",
+    ///                 ConnectMode = "DIRECT_PEERING",
     ///             },
     ///         },
-    ///         Tier = "BASIC_SSD",
     ///     });
     /// 
     /// });
@@ -123,18 +125,21 @@ namespace Pulumi.Gcp.Filestore
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var filestoreKeyring = new Gcp.Kms.KeyRing("filestoreKeyring", new()
+    ///     var filestoreKeyring = new Gcp.Kms.KeyRing("filestore_keyring", new()
     ///     {
+    ///         Name = "filestore-keyring",
     ///         Location = "us-central1",
     ///     });
     /// 
-    ///     var filestoreKey = new Gcp.Kms.CryptoKey("filestoreKey", new()
+    ///     var filestoreKey = new Gcp.Kms.CryptoKey("filestore_key", new()
     ///     {
+    ///         Name = "filestore-key",
     ///         KeyRing = filestoreKeyring.Id,
     ///     });
     /// 
     ///     var instance = new Gcp.Filestore.Instance("instance", new()
     ///     {
+    ///         Name = "test-instance",
     ///         Location = "us-central1",
     ///         Tier = "ENTERPRISE",
     ///         FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs

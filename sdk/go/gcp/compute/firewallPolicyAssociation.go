@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultFirewallPolicy, err := compute.NewFirewallPolicy(ctx, "defaultFirewallPolicy", &compute.FirewallPolicyArgs{
+//			_, err := compute.NewFirewallPolicy(ctx, "default", &compute.FirewallPolicyArgs{
 //				Parent:      pulumi.String("organizations/12345"),
 //				ShortName:   pulumi.String("my-policy"),
 //				Description: pulumi.String("Example Resource"),
@@ -38,9 +38,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewFirewallPolicyAssociation(ctx, "defaultFirewallPolicyAssociation", &compute.FirewallPolicyAssociationArgs{
-//				FirewallPolicy:   defaultFirewallPolicy.ID(),
-//				AttachmentTarget: pulumi.Any(google_folder.Folder.Name),
+//			_, err = compute.NewFirewallPolicyAssociation(ctx, "default", &compute.FirewallPolicyAssociationArgs{
+//				FirewallPolicy:   _default.ID(),
+//				AttachmentTarget: pulumi.Any(folder.Name),
+//				Name:             pulumi.String("my-association"),
 //			})
 //			if err != nil {
 //				return err

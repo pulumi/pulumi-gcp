@@ -21,9 +21,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const token_creator_iam = new gcp.serviceaccount.IAMBinding("token-creator-iam", {
- *     members: ["serviceAccount:service_A@projectA.iam.gserviceaccount.com"],
- *     role: "roles/iam.serviceAccountTokenCreator",
  *     serviceAccountId: "projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com",
+ *     role: "roles/iam.serviceAccountTokenCreator",
+ *     members: ["serviceAccount:service_A@projectA.iam.gserviceaccount.com"],
  * });
  * ```
  *
@@ -36,8 +36,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * export = async () => {
- *     const defaultClientConfig = await gcp.organizations.getClientConfig({});
- *     const defaultAccountAccessToken = await gcp.serviceaccount.getAccountAccessToken({
+ *     const default = await gcp.organizations.getClientConfig({});
+ *     const defaultGetAccountAccessToken = await gcp.serviceaccount.getAccountAccessToken({
  *         targetServiceAccount: "service_B@projectB.iam.gserviceaccount.com",
  *         scopes: [
  *             "userinfo-email",
@@ -45,7 +45,6 @@ import * as utilities from "../utilities";
  *         ],
  *         lifetime: "300s",
  *     });
- *     const impersonated = new pulumi.providers.Google("impersonated", {accessToken: defaultAccountAccessToken.accessToken});
  *     const me = await gcp.organizations.getClientOpenIdUserInfo({});
  *     return {
  *         "target-email": me.email,
@@ -122,9 +121,9 @@ export interface GetAccountAccessTokenResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const token_creator_iam = new gcp.serviceaccount.IAMBinding("token-creator-iam", {
- *     members: ["serviceAccount:service_A@projectA.iam.gserviceaccount.com"],
- *     role: "roles/iam.serviceAccountTokenCreator",
  *     serviceAccountId: "projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com",
+ *     role: "roles/iam.serviceAccountTokenCreator",
+ *     members: ["serviceAccount:service_A@projectA.iam.gserviceaccount.com"],
  * });
  * ```
  *
@@ -137,8 +136,8 @@ export interface GetAccountAccessTokenResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * export = async () => {
- *     const defaultClientConfig = await gcp.organizations.getClientConfig({});
- *     const defaultAccountAccessToken = await gcp.serviceaccount.getAccountAccessToken({
+ *     const default = await gcp.organizations.getClientConfig({});
+ *     const defaultGetAccountAccessToken = await gcp.serviceaccount.getAccountAccessToken({
  *         targetServiceAccount: "service_B@projectB.iam.gserviceaccount.com",
  *         scopes: [
  *             "userinfo-email",
@@ -146,7 +145,6 @@ export interface GetAccountAccessTokenResult {
  *         ],
  *         lifetime: "300s",
  *     });
- *     const impersonated = new pulumi.providers.Google("impersonated", {accessToken: defaultAccountAccessToken.accessToken});
  *     const me = await gcp.organizations.getClientOpenIdUserInfo({});
  *     return {
  *         "target-email": me.email,

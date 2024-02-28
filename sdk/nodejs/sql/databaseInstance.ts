@@ -27,6 +27,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const main = new gcp.sql.DatabaseInstance("main", {
+ *     name: "main-instance",
  *     databaseVersion: "POSTGRES_15",
  *     region: "us-central1",
  *     settings: {
@@ -42,26 +43,22 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * import * as random from "@pulumi/random";
  *
- * const privateNetwork = new gcp.compute.Network("privateNetwork", {}, {
- *     provider: google_beta,
- * });
- * const privateIpAddress = new gcp.compute.GlobalAddress("privateIpAddress", {
+ * const privateNetwork = new gcp.compute.Network("private_network", {name: "private-network"});
+ * const privateIpAddress = new gcp.compute.GlobalAddress("private_ip_address", {
+ *     name: "private-ip-address",
  *     purpose: "VPC_PEERING",
  *     addressType: "INTERNAL",
  *     prefixLength: 16,
  *     network: privateNetwork.id,
- * }, {
- *     provider: google_beta,
  * });
- * const privateVpcConnection = new gcp.servicenetworking.Connection("privateVpcConnection", {
+ * const privateVpcConnection = new gcp.servicenetworking.Connection("private_vpc_connection", {
  *     network: privateNetwork.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [privateIpAddress.name],
- * }, {
- *     provider: google_beta,
  * });
- * const dbNameSuffix = new random.RandomId("dbNameSuffix", {byteLength: 4});
+ * const dbNameSuffix = new random.RandomId("db_name_suffix", {byteLength: 4});
  * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     name: pulumi.interpolate`private-instance-${dbNameSuffix.hex}`,
  *     region: "us-central1",
  *     databaseVersion: "MYSQL_5_7",
  *     settings: {
@@ -72,9 +69,6 @@ import * as utilities from "../utilities";
  *             enablePrivatePathForGoogleCloudServices: true,
  *         },
  *     },
- * }, {
- *     provider: google_beta,
- *     dependsOn: [privateVpcConnection],
  * });
  * ```
  * ### ENTERPRISE_PLUS Instance with dataCacheConfig
@@ -84,13 +78,40 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const main = new gcp.sql.DatabaseInstance("main", {
+ *     name: "enterprise-plus-main-instance",
  *     databaseVersion: "MYSQL_8_0_31",
  *     settings: {
+ *         tier: "db-perf-optimized-N-2",
+ *         edition: "ENTERPRISE_PLUS",
  *         dataCacheConfig: {
  *             dataCacheEnabled: true,
  *         },
- *         edition: "ENTERPRISE_PLUS",
- *         tier: "db-perf-optimized-N-2",
+ *     },
+ * });
+ * ```
+ * ### Cloud SQL Instance with PSC connectivity
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const main = new gcp.sql.DatabaseInstance("main", {
+ *     name: "psc-enabled-main-instance",
+ *     databaseVersion: "MYSQL_8_0",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *         ipConfiguration: {
+ *             pscConfigs: [{
+ *                 pscEnabled: true,
+ *                 allowedConsumerProjects: ["allowed-consumer-project-name"],
+ *             }],
+ *             ipv4Enabled: false,
+ *         },
+ *         backupConfiguration: {
+ *             enabled: true,
+ *             binaryLogEnabled: true,
+ *         },
+ *         availabilityType: "REGIONAL",
  *     },
  * });
  * ```

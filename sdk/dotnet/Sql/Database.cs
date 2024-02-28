@@ -27,6 +27,7 @@ namespace Pulumi.Gcp.Sql
     ///     // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
     ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
     ///     {
+    ///         Name = "my-database-instance",
     ///         Region = "us-central1",
     ///         DatabaseVersion = "MYSQL_8_0",
     ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
@@ -38,6 +39,7 @@ namespace Pulumi.Gcp.Sql
     /// 
     ///     var database = new Gcp.Sql.Database("database", new()
     ///     {
+    ///         Name = "my-database",
     ///         Instance = instance.Name,
     ///     });
     /// 
@@ -56,6 +58,7 @@ namespace Pulumi.Gcp.Sql
     ///     // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
     ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
     ///     {
+    ///         Name = "my-database-instance",
     ///         Region = "us-central1",
     ///         DatabaseVersion = "POSTGRES_14",
     ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
@@ -65,8 +68,9 @@ namespace Pulumi.Gcp.Sql
     ///         DeletionProtection = true,
     ///     });
     /// 
-    ///     var databaseDeletionPolicy = new Gcp.Sql.Database("databaseDeletionPolicy", new()
+    ///     var databaseDeletionPolicy = new Gcp.Sql.Database("database_deletion_policy", new()
     ///     {
+    ///         Name = "my-database",
     ///         Instance = instance.Name,
     ///         DeletionPolicy = "ABANDON",
     ///     });

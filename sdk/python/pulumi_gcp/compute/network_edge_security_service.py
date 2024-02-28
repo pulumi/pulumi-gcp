@@ -305,9 +305,9 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.NetworkEdgeSecurityService("default",
+            name="my-edge-security-service",
             region="us-east1",
-            description="My basic resource",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            description="My basic resource")
         ```
 
         ## Import
@@ -367,9 +367,9 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.NetworkEdgeSecurityService("default",
+            name="my-edge-security-service",
             region="us-east1",
-            description="My basic resource",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            description="My basic resource")
         ```
 
         ## Import

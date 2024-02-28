@@ -13,13 +13,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networksecurity.FirewallEndpoint("default", {
+ *     name: "my-firewall-endpoint",
  *     parent: "organizations/123456789",
  *     location: "us-central1-a",
  *     labels: {
  *         foo: "bar",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

@@ -786,9 +786,11 @@ class Image(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        example = gcp.compute.Image("example", raw_disk=gcp.compute.ImageRawDiskArgs(
-            source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
-        ))
+        example = gcp.compute.Image("example",
+            name="example-image",
+            raw_disk=gcp.compute.ImageRawDiskArgs(
+                source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+            ))
         ```
         ### Image Guest Os
 
@@ -797,6 +799,10 @@ class Image(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.compute.Image("example",
+            name="example-image",
+            raw_disk=gcp.compute.ImageRawDiskArgs(
+                source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+            ),
             guest_os_features=[
                 gcp.compute.ImageGuestOsFeatureArgs(
                     type="SECURE_BOOT",
@@ -804,10 +810,7 @@ class Image(pulumi.CustomResource):
                 gcp.compute.ImageGuestOsFeatureArgs(
                     type="MULTI_IP_SUBNET",
                 ),
-            ],
-            raw_disk=gcp.compute.ImageRawDiskArgs(
-                source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
-            ))
+            ])
         ```
         ### Image Basic Storage Location
 
@@ -816,6 +819,7 @@ class Image(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.compute.Image("example",
+            name="example-sl-image",
             raw_disk=gcp.compute.ImageRawDiskArgs(
                 source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
             ),
@@ -939,9 +943,11 @@ class Image(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        example = gcp.compute.Image("example", raw_disk=gcp.compute.ImageRawDiskArgs(
-            source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
-        ))
+        example = gcp.compute.Image("example",
+            name="example-image",
+            raw_disk=gcp.compute.ImageRawDiskArgs(
+                source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+            ))
         ```
         ### Image Guest Os
 
@@ -950,6 +956,10 @@ class Image(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.compute.Image("example",
+            name="example-image",
+            raw_disk=gcp.compute.ImageRawDiskArgs(
+                source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+            ),
             guest_os_features=[
                 gcp.compute.ImageGuestOsFeatureArgs(
                     type="SECURE_BOOT",
@@ -957,10 +967,7 @@ class Image(pulumi.CustomResource):
                 gcp.compute.ImageGuestOsFeatureArgs(
                     type="MULTI_IP_SUBNET",
                 ),
-            ],
-            raw_disk=gcp.compute.ImageRawDiskArgs(
-                source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
-            ))
+            ])
         ```
         ### Image Basic Storage Location
 
@@ -969,6 +976,7 @@ class Image(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.compute.Image("example",
+            name="example-sl-image",
             raw_disk=gcp.compute.ImageRawDiskArgs(
                 source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
             ),

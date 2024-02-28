@@ -26,9 +26,10 @@ namespace Pulumi.Gcp.ServiceNetworking
     /// {
     ///     var name = new Gcp.ServiceNetworking.PeeredDnsDomain("name", new()
     ///     {
-    ///         DnsSuffix = "example.com.",
-    ///         Network = "default",
     ///         Project = "10000000",
+    ///         Name = "example-com",
+    ///         Network = "default",
+    ///         DnsSuffix = "example.com.",
     ///         Service = "peering-service",
     ///     });
     /// 

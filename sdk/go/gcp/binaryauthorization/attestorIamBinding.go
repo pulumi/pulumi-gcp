@@ -55,8 +55,8 @@ import (
 //				return err
 //			}
 //			_, err = binaryauthorization.NewAttestorIamPolicy(ctx, "policy", &binaryauthorization.AttestorIamPolicyArgs{
-//				Project:    pulumi.Any(google_binary_authorization_attestor.Attestor.Project),
-//				Attestor:   pulumi.Any(google_binary_authorization_attestor.Attestor.Name),
+//				Project:    pulumi.Any(attestor.Project),
+//				Attestor:   pulumi.Any(attestor.Name),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -83,8 +83,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := binaryauthorization.NewAttestorIamBinding(ctx, "binding", &binaryauthorization.AttestorIamBindingArgs{
-//				Project:  pulumi.Any(google_binary_authorization_attestor.Attestor.Project),
-//				Attestor: pulumi.Any(google_binary_authorization_attestor.Attestor.Name),
+//				Project:  pulumi.Any(attestor.Project),
+//				Attestor: pulumi.Any(attestor.Name),
 //				Role:     pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -114,8 +114,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := binaryauthorization.NewAttestorIamMember(ctx, "member", &binaryauthorization.AttestorIamMemberArgs{
-//				Project:  pulumi.Any(google_binary_authorization_attestor.Attestor.Project),
-//				Attestor: pulumi.Any(google_binary_authorization_attestor.Attestor.Name),
+//				Project:  pulumi.Any(attestor.Project),
+//				Attestor: pulumi.Any(attestor.Name),
 //				Role:     pulumi.String("roles/viewer"),
 //				Member:   pulumi.String("user:jane@example.com"),
 //			})

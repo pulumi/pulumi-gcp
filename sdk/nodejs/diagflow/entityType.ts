@@ -22,12 +22,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basicAgent = new gcp.diagflow.Agent("basicAgent", {
+ * const basicAgent = new gcp.diagflow.Agent("basic_agent", {
  *     displayName: "example_agent",
  *     defaultLanguageCode: "en",
  *     timeZone: "America/New_York",
  * });
- * const basicEntityType = new gcp.diagflow.EntityType("basicEntityType", {
+ * const basicEntityType = new gcp.diagflow.EntityType("basic_entity_type", {
  *     displayName: "",
  *     kind: "KIND_MAP",
  *     entities: [
@@ -46,8 +46,6 @@ import * as utilities from "../utilities";
  *             ],
  *         },
  *     ],
- * }, {
- *     dependsOn: [basicAgent],
  * });
  * ```
  *

@@ -371,6 +371,94 @@ class TargetGrpcProxy(pulumi.CustomResource):
             * [Using Target gRPC Proxies](https://cloud.google.com/traffic-director/docs/proxyless-overview)
 
         ## Example Usage
+        ### Target Grpc Proxy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="healthcheck",
+            timeout_sec=1,
+            check_interval_sec=1,
+            grpc_health_check=gcp.compute.HealthCheckGrpcHealthCheckArgs(
+                port_name="health-check-port",
+                port_specification="USE_NAMED_PORT",
+                grpc_service_name="testservice",
+            ))
+        home = gcp.compute.BackendService("home",
+            name="backend",
+            port_name="grpc",
+            protocol="GRPC",
+            timeout_sec=10,
+            health_checks=default_health_check.id,
+            load_balancing_scheme="INTERNAL_SELF_MANAGED")
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            description="a description",
+            default_service=home.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=home.id,
+                route_rules=[gcp.compute.URLMapPathMatcherRouteRuleArgs(
+                    priority=1,
+                    header_action=gcp.compute.URLMapPathMatcherRouteRuleHeaderActionArgs(
+                        request_headers_to_removes=["RemoveMe2"],
+                        request_headers_to_adds=[gcp.compute.URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs(
+                            header_name="AddSomethingElse",
+                            header_value="MyOtherValue",
+                            replace=True,
+                        )],
+                        response_headers_to_removes=["RemoveMe3"],
+                        response_headers_to_adds=[gcp.compute.URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs(
+                            header_name="AddMe",
+                            header_value="MyValue",
+                            replace=False,
+                        )],
+                    ),
+                    match_rules=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleArgs(
+                        full_path_match="a full path",
+                        header_matches=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs(
+                            header_name="someheader",
+                            exact_match="match this exactly",
+                            invert_match=True,
+                        )],
+                        ignore_case=True,
+                        metadata_filters=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs(
+                            filter_match_criteria="MATCH_ANY",
+                            filter_labels=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs(
+                                name="PLANET",
+                                value="MARS",
+                            )],
+                        )],
+                        query_parameter_matches=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs(
+                            name="a query parameter",
+                            present_match=True,
+                        )],
+                    )],
+                    url_redirect=gcp.compute.URLMapPathMatcherRouteRuleUrlRedirectArgs(
+                        host_redirect="A host",
+                        https_redirect=False,
+                        path_redirect="some/path",
+                        redirect_response_code="TEMPORARY_REDIRECT",
+                        strip_query=True,
+                    ),
+                )],
+            )],
+            tests=[gcp.compute.URLMapTestArgs(
+                service=home.id,
+                host="hi.com",
+                path="/home",
+            )])
+        default = gcp.compute.TargetGrpcProxy("default",
+            name="proxy",
+            url_map=urlmap.id,
+            validate_for_proxyless=True)
+        ```
 
         ## Import
 
@@ -444,6 +532,94 @@ class TargetGrpcProxy(pulumi.CustomResource):
             * [Using Target gRPC Proxies](https://cloud.google.com/traffic-director/docs/proxyless-overview)
 
         ## Example Usage
+        ### Target Grpc Proxy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="healthcheck",
+            timeout_sec=1,
+            check_interval_sec=1,
+            grpc_health_check=gcp.compute.HealthCheckGrpcHealthCheckArgs(
+                port_name="health-check-port",
+                port_specification="USE_NAMED_PORT",
+                grpc_service_name="testservice",
+            ))
+        home = gcp.compute.BackendService("home",
+            name="backend",
+            port_name="grpc",
+            protocol="GRPC",
+            timeout_sec=10,
+            health_checks=default_health_check.id,
+            load_balancing_scheme="INTERNAL_SELF_MANAGED")
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            description="a description",
+            default_service=home.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=home.id,
+                route_rules=[gcp.compute.URLMapPathMatcherRouteRuleArgs(
+                    priority=1,
+                    header_action=gcp.compute.URLMapPathMatcherRouteRuleHeaderActionArgs(
+                        request_headers_to_removes=["RemoveMe2"],
+                        request_headers_to_adds=[gcp.compute.URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs(
+                            header_name="AddSomethingElse",
+                            header_value="MyOtherValue",
+                            replace=True,
+                        )],
+                        response_headers_to_removes=["RemoveMe3"],
+                        response_headers_to_adds=[gcp.compute.URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs(
+                            header_name="AddMe",
+                            header_value="MyValue",
+                            replace=False,
+                        )],
+                    ),
+                    match_rules=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleArgs(
+                        full_path_match="a full path",
+                        header_matches=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs(
+                            header_name="someheader",
+                            exact_match="match this exactly",
+                            invert_match=True,
+                        )],
+                        ignore_case=True,
+                        metadata_filters=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs(
+                            filter_match_criteria="MATCH_ANY",
+                            filter_labels=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs(
+                                name="PLANET",
+                                value="MARS",
+                            )],
+                        )],
+                        query_parameter_matches=[gcp.compute.URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs(
+                            name="a query parameter",
+                            present_match=True,
+                        )],
+                    )],
+                    url_redirect=gcp.compute.URLMapPathMatcherRouteRuleUrlRedirectArgs(
+                        host_redirect="A host",
+                        https_redirect=False,
+                        path_redirect="some/path",
+                        redirect_response_code="TEMPORARY_REDIRECT",
+                        strip_query=True,
+                    ),
+                )],
+            )],
+            tests=[gcp.compute.URLMapTestArgs(
+                service=home.id,
+                host="hi.com",
+                path="/home",
+            )])
+        default = gcp.compute.TargetGrpcProxy("default",
+            name="proxy",
+            url_map=urlmap.id,
+            validate_for_proxyless=True)
+        ```
 
         ## Import
 

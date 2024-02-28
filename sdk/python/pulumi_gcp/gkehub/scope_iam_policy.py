@@ -220,8 +220,8 @@ class ScopeIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.gkehub.ScopeIamPolicy("policy",
-            project=google_gke_hub_scope["scope"]["project"],
-            scope_id=google_gke_hub_scope["scope"]["scope_id"],
+            project=scope["project"],
+            scope_id=scope["scopeId"],
             policy_data=admin.policy_data)
         ```
 
@@ -232,8 +232,8 @@ class ScopeIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.gkehub.ScopeIamBinding("binding",
-            project=google_gke_hub_scope["scope"]["project"],
-            scope_id=google_gke_hub_scope["scope"]["scope_id"],
+            project=scope["project"],
+            scope_id=scope["scopeId"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -245,8 +245,8 @@ class ScopeIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.gkehub.ScopeIamMember("member",
-            project=google_gke_hub_scope["scope"]["project"],
-            scope_id=google_gke_hub_scope["scope"]["scope_id"],
+            project=scope["project"],
+            scope_id=scope["scopeId"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -338,8 +338,8 @@ class ScopeIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.gkehub.ScopeIamPolicy("policy",
-            project=google_gke_hub_scope["scope"]["project"],
-            scope_id=google_gke_hub_scope["scope"]["scope_id"],
+            project=scope["project"],
+            scope_id=scope["scopeId"],
             policy_data=admin.policy_data)
         ```
 
@@ -350,8 +350,8 @@ class ScopeIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.gkehub.ScopeIamBinding("binding",
-            project=google_gke_hub_scope["scope"]["project"],
-            scope_id=google_gke_hub_scope["scope"]["scope_id"],
+            project=scope["project"],
+            scope_id=scope["scopeId"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -363,8 +363,8 @@ class ScopeIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.gkehub.ScopeIamMember("member",
-            project=google_gke_hub_scope["scope"]["project"],
-            scope_id=google_gke_hub_scope["scope"]["scope_id"],
+            project=scope["project"],
+            scope_id=scope["scopeId"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

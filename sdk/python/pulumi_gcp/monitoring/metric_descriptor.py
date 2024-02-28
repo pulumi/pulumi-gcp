@@ -511,20 +511,20 @@ class MetricDescriptor(pulumi.CustomResource):
         basic = gcp.monitoring.MetricDescriptor("basic",
             description="Daily sales records from all branch stores.",
             display_name="metric-descriptor",
+            type="custom.googleapis.com/stores/daily_sales",
+            metric_kind="GAUGE",
+            value_type="DOUBLE",
+            unit="{USD}",
             labels=[gcp.monitoring.MetricDescriptorLabelArgs(
-                description="The ID of the store.",
                 key="store_id",
                 value_type="STRING",
+                description="The ID of the store.",
             )],
             launch_stage="BETA",
             metadata=gcp.monitoring.MetricDescriptorMetadataArgs(
-                ingest_delay="30s",
                 sample_period="60s",
-            ),
-            metric_kind="GAUGE",
-            type="custom.googleapis.com/stores/daily_sales",
-            unit="{USD}",
-            value_type="DOUBLE")
+                ingest_delay="30s",
+            ))
         ```
         ### Monitoring Metric Descriptor Alert
 
@@ -532,24 +532,24 @@ class MetricDescriptor(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        with_alert = gcp.monitoring.MetricDescriptor("withAlert",
+        with_alert = gcp.monitoring.MetricDescriptor("with_alert",
             description="Daily sales records from all branch stores.",
             display_name="metric-descriptor",
-            metric_kind="GAUGE",
             type="custom.googleapis.com/stores/daily_sales",
-            unit="{USD}",
-            value_type="DOUBLE")
-        alert_policy = gcp.monitoring.AlertPolicy("alertPolicy",
+            metric_kind="GAUGE",
+            value_type="DOUBLE",
+            unit="{USD}")
+        alert_policy = gcp.monitoring.AlertPolicy("alert_policy",
+            display_name="metric-descriptor",
             combiner="OR",
             conditions=[gcp.monitoring.AlertPolicyConditionArgs(
-                condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
-                    comparison="COMPARISON_GT",
-                    duration="60s",
-                    filter=with_alert.type.apply(lambda type: f"metric.type=\\"{type}\\" AND resource.type=\\"gce_instance\\""),
-                ),
                 display_name="test condition",
-            )],
-            display_name="metric-descriptor")
+                condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
+                    filter=with_alert.type.apply(lambda type: f"metric.type=\\"{type}\\" AND resource.type=\\"gce_instance\\""),
+                    duration="60s",
+                    comparison="COMPARISON_GT",
+                ),
+            )])
         ```
 
         ## Import
@@ -627,20 +627,20 @@ class MetricDescriptor(pulumi.CustomResource):
         basic = gcp.monitoring.MetricDescriptor("basic",
             description="Daily sales records from all branch stores.",
             display_name="metric-descriptor",
+            type="custom.googleapis.com/stores/daily_sales",
+            metric_kind="GAUGE",
+            value_type="DOUBLE",
+            unit="{USD}",
             labels=[gcp.monitoring.MetricDescriptorLabelArgs(
-                description="The ID of the store.",
                 key="store_id",
                 value_type="STRING",
+                description="The ID of the store.",
             )],
             launch_stage="BETA",
             metadata=gcp.monitoring.MetricDescriptorMetadataArgs(
-                ingest_delay="30s",
                 sample_period="60s",
-            ),
-            metric_kind="GAUGE",
-            type="custom.googleapis.com/stores/daily_sales",
-            unit="{USD}",
-            value_type="DOUBLE")
+                ingest_delay="30s",
+            ))
         ```
         ### Monitoring Metric Descriptor Alert
 
@@ -648,24 +648,24 @@ class MetricDescriptor(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        with_alert = gcp.monitoring.MetricDescriptor("withAlert",
+        with_alert = gcp.monitoring.MetricDescriptor("with_alert",
             description="Daily sales records from all branch stores.",
             display_name="metric-descriptor",
-            metric_kind="GAUGE",
             type="custom.googleapis.com/stores/daily_sales",
-            unit="{USD}",
-            value_type="DOUBLE")
-        alert_policy = gcp.monitoring.AlertPolicy("alertPolicy",
+            metric_kind="GAUGE",
+            value_type="DOUBLE",
+            unit="{USD}")
+        alert_policy = gcp.monitoring.AlertPolicy("alert_policy",
+            display_name="metric-descriptor",
             combiner="OR",
             conditions=[gcp.monitoring.AlertPolicyConditionArgs(
-                condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
-                    comparison="COMPARISON_GT",
-                    duration="60s",
-                    filter=with_alert.type.apply(lambda type: f"metric.type=\\"{type}\\" AND resource.type=\\"gce_instance\\""),
-                ),
                 display_name="test condition",
-            )],
-            display_name="metric-descriptor")
+                condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
+                    filter=with_alert.type.apply(lambda type: f"metric.type=\\"{type}\\" AND resource.type=\\"gce_instance\\""),
+                    duration="60s",
+                    comparison="COMPARISON_GT",
+                ),
+            )])
         ```
 
         ## Import

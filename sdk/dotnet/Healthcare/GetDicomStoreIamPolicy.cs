@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Healthcare
         /// {
         ///     var foo = Gcp.Healthcare.GetDicomStoreIamPolicy.Invoke(new()
         ///     {
-        ///         DicomStoreId = google_healthcare_dicom_store.Dicom_store.Id,
+        ///         DicomStoreId = dicomStore.Id,
         ///     });
         /// 
         /// });
@@ -50,7 +50,7 @@ namespace Pulumi.Gcp.Healthcare
         /// {
         ///     var foo = Gcp.Healthcare.GetDicomStoreIamPolicy.Invoke(new()
         ///     {
-        ///         DicomStoreId = google_healthcare_dicom_store.Dicom_store.Id,
+        ///         DicomStoreId = dicomStore.Id,
         ///     });
         /// 
         /// });

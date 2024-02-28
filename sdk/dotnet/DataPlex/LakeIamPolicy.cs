@@ -51,9 +51,9 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     ///     var policy = new Gcp.DataPlex.LakeIamPolicy("policy", new()
     ///     {
-    ///         Project = google_dataplex_lake.Example.Project,
-    ///         Location = google_dataplex_lake.Example.Location,
-    ///         Lake = google_dataplex_lake.Example.Name,
+    ///         Project = example.Project,
+    ///         Location = example.Location,
+    ///         Lake = example.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -72,9 +72,9 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var binding = new Gcp.DataPlex.LakeIamBinding("binding", new()
     ///     {
-    ///         Project = google_dataplex_lake.Example.Project,
-    ///         Location = google_dataplex_lake.Example.Location,
-    ///         Lake = google_dataplex_lake.Example.Name,
+    ///         Project = example.Project,
+    ///         Location = example.Location,
+    ///         Lake = example.Name,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -97,9 +97,9 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var member = new Gcp.DataPlex.LakeIamMember("member", new()
     ///     {
-    ///         Project = google_dataplex_lake.Example.Project,
-    ///         Location = google_dataplex_lake.Example.Location,
-    ///         Lake = google_dataplex_lake.Example.Name,
+    ///         Project = example.Project,
+    ///         Location = example.Location,
+    ///         Lake = example.Name,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

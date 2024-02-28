@@ -19,13 +19,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.sql.SourceRepresentationInstance("instance", {
- *     databaseVersion: "MYSQL_8_0",
- *     dumpFilePath: "gs://replica-bucket/source-database.sql.gz",
- *     host: "10.20.30.40",
- *     password: "password-for-the-user",
- *     port: 3306,
+ *     name: "my-instance",
  *     region: "us-central1",
+ *     databaseVersion: "MYSQL_8_0",
+ *     host: "10.20.30.40",
+ *     port: 3306,
  *     username: "some-user",
+ *     password: "password-for-the-user",
+ *     dumpFilePath: "gs://replica-bucket/source-database.sql.gz",
  * });
  * ```
  * ### Sql Source Representation Instance Postgres
@@ -35,13 +36,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.sql.SourceRepresentationInstance("instance", {
- *     databaseVersion: "POSTGRES_9_6",
- *     dumpFilePath: "gs://replica-bucket/source-database.sql.gz",
- *     host: "10.20.30.40",
- *     password: "password-for-the-user",
- *     port: 3306,
+ *     name: "my-instance",
  *     region: "us-central1",
+ *     databaseVersion: "POSTGRES_9_6",
+ *     host: "10.20.30.40",
+ *     port: 3306,
  *     username: "some-user",
+ *     password: "password-for-the-user",
+ *     dumpFilePath: "gs://replica-bucket/source-database.sql.gz",
  * });
  * ```
  *

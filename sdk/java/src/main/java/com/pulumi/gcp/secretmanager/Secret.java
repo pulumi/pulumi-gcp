@@ -52,6 +52,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var secret_basic = new Secret(&#34;secret-basic&#34;, SecretArgs.builder()        
+ *             .secretId(&#34;secret&#34;)
  *             .labels(Map.of(&#34;label&#34;, &#34;my-label&#34;))
  *             .replication(SecretReplicationArgs.builder()
  *                 .userManaged(SecretReplicationUserManagedArgs.builder()
@@ -64,7 +65,6 @@ import javax.annotation.Nullable;
  *                             .build())
  *                     .build())
  *                 .build())
- *             .secretId(&#34;secret&#34;)
  *             .build());
  * 
  *     }
@@ -95,6 +95,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var secret_with_annotations = new Secret(&#34;secret-with-annotations&#34;, SecretArgs.builder()        
+ *             .secretId(&#34;secret&#34;)
+ *             .labels(Map.of(&#34;label&#34;, &#34;my-label&#34;))
  *             .annotations(Map.ofEntries(
  *                 Map.entry(&#34;key1&#34;, &#34;someval&#34;),
  *                 Map.entry(&#34;key2&#34;, &#34;someval2&#34;),
@@ -102,11 +104,9 @@ import javax.annotation.Nullable;
  *                 Map.entry(&#34;key4&#34;, &#34;someval4&#34;),
  *                 Map.entry(&#34;key5&#34;, &#34;someval5&#34;)
  *             ))
- *             .labels(Map.of(&#34;label&#34;, &#34;my-label&#34;))
  *             .replication(SecretReplicationArgs.builder()
  *                 .auto()
  *                 .build())
- *             .secretId(&#34;secret&#34;)
  *             .build());
  * 
  *     }
@@ -128,7 +128,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoCustomerManagedEncryptionArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -159,9 +158,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(kms_secret_binding)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

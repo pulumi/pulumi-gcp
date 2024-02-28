@@ -38,19 +38,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			key, err := tags.NewTagKey(ctx, "key", &tags.TagKeyArgs{
-//				Description: pulumi.String("For keyname resources."),
 //				Parent:      pulumi.String("organizations/123456789"),
 //				ShortName:   pulumi.String("keyname"),
+//				Description: pulumi.String("For keyname resources."),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = tags.NewTagValue(ctx, "value", &tags.TagValueArgs{
-//				Description: pulumi.String("For valuename resources."),
 //				Parent: key.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("tagKeys/%v", name), nil
 //				}).(pulumi.StringOutput),
-//				ShortName: pulumi.String("valuename"),
+//				ShortName:   pulumi.String("valuename"),
+//				Description: pulumi.String("For valuename resources."),
 //			})
 //			if err != nil {
 //				return err

@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.Notebooks
         /// {
         ///     var policy = Gcp.Notebooks.GetInstanceIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_notebooks_instance.Instance.Project,
-        ///         Location = google_notebooks_instance.Instance.Location,
-        ///         InstanceName = google_notebooks_instance.Instance.Name,
+        ///         Project = instance.Project,
+        ///         Location = instance.Location,
+        ///         InstanceName = instance.Name,
         ///     });
         /// 
         /// });
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.Notebooks
         /// {
         ///     var policy = Gcp.Notebooks.GetInstanceIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_notebooks_instance.Instance.Project,
-        ///         Location = google_notebooks_instance.Instance.Location,
-        ///         InstanceName = google_notebooks_instance.Instance.Name,
+        ///         Project = instance.Project,
+        ///         Location = instance.Location,
+        ///         InstanceName = instance.Name,
         ///     });
         /// 
         /// });

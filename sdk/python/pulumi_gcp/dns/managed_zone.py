@@ -693,8 +693,9 @@ class ManagedZone(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_zone = gcp.dns.ManagedZone("example-zone",
-            description="Example DNS zone",
+            name="example-zone",
             dns_name="my-domain.com.",
+            description="Example DNS zone",
             labels={
                 "foo": "bar",
             })
@@ -705,9 +706,14 @@ class ManagedZone(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
-        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False)
+        network_1 = gcp.compute.Network("network-1",
+            name="network-1",
+            auto_create_subnetworks=False)
+        network_2 = gcp.compute.Network("network-2",
+            name="network-2",
+            auto_create_subnetworks=False)
         private_zone = gcp.dns.ManagedZone("private-zone",
+            name="private-zone",
             dns_name="private.example.com.",
             description="Example private DNS zone",
             labels={
@@ -731,9 +737,14 @@ class ManagedZone(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
-        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False)
+        network_1 = gcp.compute.Network("network-1",
+            name="network-1",
+            auto_create_subnetworks=False)
+        network_2 = gcp.compute.Network("network-2",
+            name="network-2",
+            auto_create_subnetworks=False)
         private_zone = gcp.dns.ManagedZone("private-zone",
+            name="private-zone",
             dns_name="private.example.com.",
             description="Example private DNS zone",
             labels={
@@ -767,8 +778,11 @@ class ManagedZone(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
+        network_1 = gcp.compute.Network("network-1",
+            name="network-1",
+            auto_create_subnetworks=False)
         subnetwork_1 = gcp.compute.Subnetwork("subnetwork-1",
+            name=network_1.name,
             network=network_1.name,
             ip_cidr_range="10.0.36.0/24",
             region="us-central1",
@@ -784,6 +798,7 @@ class ManagedZone(pulumi.CustomResource):
                 ),
             ])
         cluster_1 = gcp.container.Cluster("cluster-1",
+            name="cluster-1",
             location="us-central1-c",
             initial_node_count=1,
             networking_mode="VPC_NATIVE",
@@ -807,6 +822,7 @@ class ManagedZone(pulumi.CustomResource):
             ),
             deletion_protection=True)
         private_zone_gke = gcp.dns.ManagedZone("private-zone-gke",
+            name="private-zone",
             dns_name="private.example.com.",
             description="Example private DNS zone",
             labels={
@@ -825,9 +841,14 @@ class ManagedZone(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network_source = gcp.compute.Network("network-source", auto_create_subnetworks=False)
-        network_target = gcp.compute.Network("network-target", auto_create_subnetworks=False)
+        network_source = gcp.compute.Network("network-source",
+            name="network-source",
+            auto_create_subnetworks=False)
+        network_target = gcp.compute.Network("network-target",
+            name="network-target",
+            auto_create_subnetworks=False)
         peering_zone = gcp.dns.ManagedZone("peering-zone",
+            name="peering-zone",
             dns_name="peering.example.com.",
             description="Example private DNS peering zone",
             visibility="private",
@@ -850,9 +871,9 @@ class ManagedZone(pulumi.CustomResource):
 
         example = gcp.servicedirectory.Namespace("example",
             namespace_id="example",
-            location="us-central1",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            location="us-central1")
         sd_zone = gcp.dns.ManagedZone("sd-zone",
+            name="peering-zone",
             dns_name="services.example.com.",
             description="Example private DNS Service Directory zone",
             visibility="private",
@@ -860,10 +881,10 @@ class ManagedZone(pulumi.CustomResource):
                 namespace=gcp.dns.ManagedZoneServiceDirectoryConfigNamespaceArgs(
                     namespace_url=example.id,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        network = gcp.compute.Network("network", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
+        network = gcp.compute.Network("network",
+            name="network",
+            auto_create_subnetworks=False)
         ```
         ### Dns Managed Zone Cloud Logging
 
@@ -872,14 +893,15 @@ class ManagedZone(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         cloud_logging_enabled_zone = gcp.dns.ManagedZone("cloud-logging-enabled-zone",
-            cloud_logging_config=gcp.dns.ManagedZoneCloudLoggingConfigArgs(
-                enable_logging=True,
-            ),
-            description="Example cloud logging enabled DNS zone",
+            name="cloud-logging-enabled-zone",
             dns_name="services.example.com.",
+            description="Example cloud logging enabled DNS zone",
             labels={
                 "foo": "bar",
-            })
+            },
+            cloud_logging_config=gcp.dns.ManagedZoneCloudLoggingConfigArgs(
+                enable_logging=True,
+            ))
         ```
 
         ## Import
@@ -970,8 +992,9 @@ class ManagedZone(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_zone = gcp.dns.ManagedZone("example-zone",
-            description="Example DNS zone",
+            name="example-zone",
             dns_name="my-domain.com.",
+            description="Example DNS zone",
             labels={
                 "foo": "bar",
             })
@@ -982,9 +1005,14 @@ class ManagedZone(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
-        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False)
+        network_1 = gcp.compute.Network("network-1",
+            name="network-1",
+            auto_create_subnetworks=False)
+        network_2 = gcp.compute.Network("network-2",
+            name="network-2",
+            auto_create_subnetworks=False)
         private_zone = gcp.dns.ManagedZone("private-zone",
+            name="private-zone",
             dns_name="private.example.com.",
             description="Example private DNS zone",
             labels={
@@ -1008,9 +1036,14 @@ class ManagedZone(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
-        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False)
+        network_1 = gcp.compute.Network("network-1",
+            name="network-1",
+            auto_create_subnetworks=False)
+        network_2 = gcp.compute.Network("network-2",
+            name="network-2",
+            auto_create_subnetworks=False)
         private_zone = gcp.dns.ManagedZone("private-zone",
+            name="private-zone",
             dns_name="private.example.com.",
             description="Example private DNS zone",
             labels={
@@ -1044,8 +1077,11 @@ class ManagedZone(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
+        network_1 = gcp.compute.Network("network-1",
+            name="network-1",
+            auto_create_subnetworks=False)
         subnetwork_1 = gcp.compute.Subnetwork("subnetwork-1",
+            name=network_1.name,
             network=network_1.name,
             ip_cidr_range="10.0.36.0/24",
             region="us-central1",
@@ -1061,6 +1097,7 @@ class ManagedZone(pulumi.CustomResource):
                 ),
             ])
         cluster_1 = gcp.container.Cluster("cluster-1",
+            name="cluster-1",
             location="us-central1-c",
             initial_node_count=1,
             networking_mode="VPC_NATIVE",
@@ -1084,6 +1121,7 @@ class ManagedZone(pulumi.CustomResource):
             ),
             deletion_protection=True)
         private_zone_gke = gcp.dns.ManagedZone("private-zone-gke",
+            name="private-zone",
             dns_name="private.example.com.",
             description="Example private DNS zone",
             labels={
@@ -1102,9 +1140,14 @@ class ManagedZone(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network_source = gcp.compute.Network("network-source", auto_create_subnetworks=False)
-        network_target = gcp.compute.Network("network-target", auto_create_subnetworks=False)
+        network_source = gcp.compute.Network("network-source",
+            name="network-source",
+            auto_create_subnetworks=False)
+        network_target = gcp.compute.Network("network-target",
+            name="network-target",
+            auto_create_subnetworks=False)
         peering_zone = gcp.dns.ManagedZone("peering-zone",
+            name="peering-zone",
             dns_name="peering.example.com.",
             description="Example private DNS peering zone",
             visibility="private",
@@ -1127,9 +1170,9 @@ class ManagedZone(pulumi.CustomResource):
 
         example = gcp.servicedirectory.Namespace("example",
             namespace_id="example",
-            location="us-central1",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            location="us-central1")
         sd_zone = gcp.dns.ManagedZone("sd-zone",
+            name="peering-zone",
             dns_name="services.example.com.",
             description="Example private DNS Service Directory zone",
             visibility="private",
@@ -1137,10 +1180,10 @@ class ManagedZone(pulumi.CustomResource):
                 namespace=gcp.dns.ManagedZoneServiceDirectoryConfigNamespaceArgs(
                     namespace_url=example.id,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        network = gcp.compute.Network("network", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
+        network = gcp.compute.Network("network",
+            name="network",
+            auto_create_subnetworks=False)
         ```
         ### Dns Managed Zone Cloud Logging
 
@@ -1149,14 +1192,15 @@ class ManagedZone(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         cloud_logging_enabled_zone = gcp.dns.ManagedZone("cloud-logging-enabled-zone",
-            cloud_logging_config=gcp.dns.ManagedZoneCloudLoggingConfigArgs(
-                enable_logging=True,
-            ),
-            description="Example cloud logging enabled DNS zone",
+            name="cloud-logging-enabled-zone",
             dns_name="services.example.com.",
+            description="Example cloud logging enabled DNS zone",
             labels={
                 "foo": "bar",
-            })
+            },
+            cloud_logging_config=gcp.dns.ManagedZoneCloudLoggingConfigArgs(
+                enable_logging=True,
+            ))
         ```
 
         ## Import

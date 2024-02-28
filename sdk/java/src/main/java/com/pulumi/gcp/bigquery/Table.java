@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultDataset = new Dataset(&#34;defaultDataset&#34;, DatasetArgs.builder()        
+ *         var default_ = new Dataset(&#34;default&#34;, DatasetArgs.builder()        
  *             .datasetId(&#34;foo&#34;)
  *             .friendlyName(&#34;test&#34;)
  *             .description(&#34;This is a test description&#34;)
@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultTable = new Table(&#34;defaultTable&#34;, TableArgs.builder()        
- *             .datasetId(defaultDataset.datasetId())
+ *             .datasetId(default_.datasetId())
  *             .tableId(&#34;bar&#34;)
  *             .timePartitioning(TableTimePartitioningArgs.builder()
  *                 .type(&#34;DAY&#34;)
@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var sheet = new Table(&#34;sheet&#34;, TableArgs.builder()        
- *             .datasetId(defaultDataset.datasetId())
+ *             .datasetId(default_.datasetId())
  *             .tableId(&#34;sheet&#34;)
  *             .externalDataConfiguration(TableExternalDataConfigurationArgs.builder()
  *                 .autodetect(true)

@@ -445,13 +445,17 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False)
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+        default = gcp.compute.Network("default",
+            name="neg-network",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="neg-subnetwork",
             ip_cidr_range="10.0.0.0/16",
             region="us-central1",
-            network=default_network.id)
+            network=default.id)
         neg = gcp.compute.NetworkEndpointGroup("neg",
-            network=default_network.id,
+            name="my-lb-neg",
+            network=default.id,
             subnetwork=default_subnetwork.id,
             default_port=90,
             zone="us-central1-a")
@@ -462,8 +466,9 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.Network("default")
+        default = gcp.compute.Network("default", name="neg-network")
         neg = gcp.compute.NetworkEndpointGroup("neg",
+            name="my-lb-neg",
             network=default.id,
             default_port=90,
             zone="us-central1-a",
@@ -572,13 +577,17 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False)
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+        default = gcp.compute.Network("default",
+            name="neg-network",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="neg-subnetwork",
             ip_cidr_range="10.0.0.0/16",
             region="us-central1",
-            network=default_network.id)
+            network=default.id)
         neg = gcp.compute.NetworkEndpointGroup("neg",
-            network=default_network.id,
+            name="my-lb-neg",
+            network=default.id,
             subnetwork=default_subnetwork.id,
             default_port=90,
             zone="us-central1-a")
@@ -589,8 +598,9 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.Network("default")
+        default = gcp.compute.Network("default", name="neg-network")
         neg = gcp.compute.NetworkEndpointGroup("neg",
+            name="my-lb-neg",
             network=default.id,
             default_port=90,
             zone="us-central1-a",

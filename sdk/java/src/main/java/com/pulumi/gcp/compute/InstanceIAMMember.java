@@ -64,9 +64,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new InstanceIAMPolicy(&#34;policy&#34;, InstanceIAMPolicyArgs.builder()        
- *             .project(google_compute_instance.default().project())
- *             .zone(google_compute_instance.default().zone())
- *             .instanceName(google_compute_instance.default().name())
+ *             .project(default_.project())
+ *             .zone(default_.zone())
+ *             .instanceName(default_.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -111,9 +111,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new InstanceIAMPolicy(&#34;policy&#34;, InstanceIAMPolicyArgs.builder()        
- *             .project(google_compute_instance.default().project())
- *             .zone(google_compute_instance.default().zone())
- *             .instanceName(google_compute_instance.default().name())
+ *             .project(default_.project())
+ *             .zone(default_.zone())
+ *             .instanceName(default_.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -143,9 +143,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new InstanceIAMBinding(&#34;binding&#34;, InstanceIAMBindingArgs.builder()        
- *             .project(google_compute_instance.default().project())
- *             .zone(google_compute_instance.default().zone())
- *             .instanceName(google_compute_instance.default().name())
+ *             .project(default_.project())
+ *             .zone(default_.zone())
+ *             .instanceName(default_.name())
  *             .role(&#34;roles/compute.osLogin&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -178,9 +178,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new InstanceIAMBinding(&#34;binding&#34;, InstanceIAMBindingArgs.builder()        
- *             .project(google_compute_instance.default().project())
- *             .zone(google_compute_instance.default().zone())
- *             .instanceName(google_compute_instance.default().name())
+ *             .project(default_.project())
+ *             .zone(default_.zone())
+ *             .instanceName(default_.name())
  *             .role(&#34;roles/compute.osLogin&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .condition(InstanceIAMBindingConditionArgs.builder()
@@ -216,9 +216,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new InstanceIAMMember(&#34;member&#34;, InstanceIAMMemberArgs.builder()        
- *             .project(google_compute_instance.default().project())
- *             .zone(google_compute_instance.default().zone())
- *             .instanceName(google_compute_instance.default().name())
+ *             .project(default_.project())
+ *             .zone(default_.zone())
+ *             .instanceName(default_.name())
  *             .role(&#34;roles/compute.osLogin&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -251,9 +251,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new InstanceIAMMember(&#34;member&#34;, InstanceIAMMemberArgs.builder()        
- *             .project(google_compute_instance.default().project())
- *             .zone(google_compute_instance.default().zone())
- *             .instanceName(google_compute_instance.default().name())
+ *             .project(default_.project())
+ *             .zone(default_.zone())
+ *             .instanceName(default_.name())
  *             .role(&#34;roles/compute.osLogin&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .condition(InstanceIAMMemberConditionArgs.builder()

@@ -30,7 +30,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			frontendInstance, err := compute.NewInstance(ctx, "frontendInstance", &compute.InstanceArgs{
+//			frontendInstance, err := compute.NewInstance(ctx, "frontend", &compute.InstanceArgs{
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+//							nil,
+//						},
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//				Name:        pulumi.String("frontend"),
 //				MachineType: pulumi.String("g1-small"),
 //				Zone:        pulumi.String("us-central1-b"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
@@ -38,25 +47,18 @@ import (
 //						Image: pulumi.String("debian-cloud/debian-11"),
 //					},
 //				},
-//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-//					&compute.InstanceNetworkInterfaceArgs{
-//						Network: pulumi.String("default"),
-//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
-//							nil,
-//						},
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
+//				Name:    pulumi.String("prod-zone"),
 //				DnsName: pulumi.String("prod.mydomain.com."),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dns.NewRecordSet(ctx, "frontendRecordSet", &dns.RecordSetArgs{
+//			_, err = dns.NewRecordSet(ctx, "frontend", &dns.RecordSetArgs{
 //				Name: prod.DnsName.ApplyT(func(dnsName string) (string, error) {
 //					return fmt.Sprintf("frontend.%v", dnsName), nil
 //				}).(pulumi.StringOutput),
@@ -94,12 +96,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
+//				Name:    pulumi.String("prod-zone"),
 //				DnsName: pulumi.String("prod.mydomain.com."),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dns.NewRecordSet(ctx, "recordSet", &dns.RecordSetArgs{
+//			_, err = dns.NewRecordSet(ctx, "a", &dns.RecordSetArgs{
 //				Name: prod.DnsName.ApplyT(func(dnsName string) (string, error) {
 //					return fmt.Sprintf("backend.%v", dnsName), nil
 //				}).(pulumi.StringOutput),
@@ -133,6 +136,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
+//				Name:    pulumi.String("prod-zone"),
 //				DnsName: pulumi.String("prod.mydomain.com."),
 //			})
 //			if err != nil {
@@ -178,6 +182,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
+//				Name:    pulumi.String("prod-zone"),
 //				DnsName: pulumi.String("prod.mydomain.com."),
 //			})
 //			if err != nil {
@@ -221,6 +226,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
+//				Name:    pulumi.String("prod-zone"),
 //				DnsName: pulumi.String("prod.mydomain.com."),
 //			})
 //			if err != nil {
@@ -263,8 +269,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dns.NewRecordSet(ctx, "geo", &dns.RecordSetArgs{
-//				Name:        pulumi.String(fmt.Sprintf("backend.%v", google_dns_managed_zone.Prod.Dns_name)),
-//				ManagedZone: pulumi.Any(google_dns_managed_zone.Prod.Name),
+//				Name:        pulumi.String(fmt.Sprintf("backend.%v", prod.DnsName)),
+//				ManagedZone: pulumi.Any(prod.Name),
 //				Type:        pulumi.String("A"),
 //				Ttl:         pulumi.Int(300),
 //				RoutingPolicy: &dns.RecordSetRoutingPolicyArgs{
@@ -309,23 +315,28 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			prodManagedZone, err := dns.NewManagedZone(ctx, "prodManagedZone", &dns.ManagedZoneArgs{
+//			prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
+//				Name:    pulumi.String("prod-zone"),
 //				DnsName: pulumi.String("prod.mydomain.com."),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			prodRegionBackendService, err := compute.NewRegionBackendService(ctx, "prodRegionBackendService", &compute.RegionBackendServiceArgs{
+//			prodRegionBackendService, err := compute.NewRegionBackendService(ctx, "prod", &compute.RegionBackendServiceArgs{
+//				Name:   pulumi.String("prod-backend"),
 //				Region: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			prodNetwork, err := compute.NewNetwork(ctx, "prodNetwork", nil)
+//			prodNetwork, err := compute.NewNetwork(ctx, "prod", &compute.NetworkArgs{
+//				Name: pulumi.String("prod-network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			prodForwardingRule, err := compute.NewForwardingRule(ctx, "prodForwardingRule", &compute.ForwardingRuleArgs{
+//			prodForwardingRule, err := compute.NewForwardingRule(ctx, "prod", &compute.ForwardingRuleArgs{
+//				Name:                pulumi.String("prod-ilb"),
 //				Region:              pulumi.String("us-central1"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL"),
 //				BackendService:      prodRegionBackendService.ID(),
@@ -336,11 +347,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dns.NewRecordSet(ctx, "recordSet", &dns.RecordSetArgs{
-//				Name: prodManagedZone.DnsName.ApplyT(func(dnsName string) (string, error) {
+//			_, err = dns.NewRecordSet(ctx, "a", &dns.RecordSetArgs{
+//				Name: prod.DnsName.ApplyT(func(dnsName string) (string, error) {
 //					return fmt.Sprintf("backend.%v", dnsName), nil
 //				}).(pulumi.StringOutput),
-//				ManagedZone: prodManagedZone.Name,
+//				ManagedZone: prod.Name,
 //				Type:        pulumi.String("A"),
 //				Ttl:         pulumi.Int(300),
 //				RoutingPolicy: &dns.RecordSetRoutingPolicyArgs{

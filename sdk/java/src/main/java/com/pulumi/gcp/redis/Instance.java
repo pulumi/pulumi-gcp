@@ -34,7 +34,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * ### Redis Instance Basic
- * 
  * ```java
  * package generated_program;
  * 
@@ -57,7 +56,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cache = new Instance(&#34;cache&#34;, InstanceArgs.builder()        
- *             .lifecycle(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .name(&#34;memory-cache&#34;)
  *             .memorySizeGb(1)
  *             .build());
  * 
@@ -94,6 +93,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var cache = new Instance(&#34;cache&#34;, InstanceArgs.builder()        
+ *             .name(&#34;ha-memory-cache&#34;)
  *             .tier(&#34;STANDARD_HA&#34;)
  *             .memorySizeGb(1)
  *             .locationId(&#34;us-central1-a&#34;)
@@ -123,7 +123,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Redis Instance Full With Persistence Config
- * 
  * ```java
  * package generated_program;
  * 
@@ -147,15 +146,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cache_persis = new Instance(&#34;cache-persis&#34;, InstanceArgs.builder()        
- *             .alternativeLocationId(&#34;us-central1-f&#34;)
- *             .lifecycle(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *             .locationId(&#34;us-central1-a&#34;)
+ *             .name(&#34;ha-memory-cache-persis&#34;)
+ *             .tier(&#34;STANDARD_HA&#34;)
  *             .memorySizeGb(1)
+ *             .locationId(&#34;us-central1-a&#34;)
+ *             .alternativeLocationId(&#34;us-central1-f&#34;)
  *             .persistenceConfig(InstancePersistenceConfigArgs.builder()
  *                 .persistenceMode(&#34;RDB&#34;)
  *                 .rdbSnapshotPeriod(&#34;TWELVE_HOURS&#34;)
  *                 .build())
- *             .tier(&#34;STANDARD_HA&#34;)
  *             .build());
  * 
  *     }
@@ -169,13 +168,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.GlobalAddress;
  * import com.pulumi.gcp.compute.GlobalAddressArgs;
  * import com.pulumi.gcp.servicenetworking.Connection;
  * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
  * import com.pulumi.gcp.redis.Instance;
  * import com.pulumi.gcp.redis.InstanceArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -189,9 +188,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var redis_network = new Network(&#34;redis-network&#34;);
+ *         var redis_network = new Network(&#34;redis-network&#34;, NetworkArgs.builder()        
+ *             .name(&#34;redis-test-network&#34;)
+ *             .build());
  * 
  *         var serviceRange = new GlobalAddress(&#34;serviceRange&#34;, GlobalAddressArgs.builder()        
+ *             .name(&#34;address&#34;)
  *             .purpose(&#34;VPC_PEERING&#34;)
  *             .addressType(&#34;INTERNAL&#34;)
  *             .prefixLength(16)
@@ -205,6 +207,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var cache = new Instance(&#34;cache&#34;, InstanceArgs.builder()        
+ *             .name(&#34;private-cache&#34;)
  *             .tier(&#34;STANDARD_HA&#34;)
  *             .memorySizeGb(1)
  *             .locationId(&#34;us-central1-a&#34;)
@@ -213,9 +216,7 @@ import javax.annotation.Nullable;
  *             .connectMode(&#34;PRIVATE_SERVICE_ACCESS&#34;)
  *             .redisVersion(&#34;REDIS_4_0&#34;)
  *             .displayName(&#34;Test Instance&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(privateServiceConnection)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -249,6 +250,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var cache = new Instance(&#34;cache&#34;, InstanceArgs.builder()        
+ *             .name(&#34;mrr-memory-cache&#34;)
  *             .tier(&#34;STANDARD_HA&#34;)
  *             .memorySizeGb(5)
  *             .locationId(&#34;us-central1-a&#34;)
@@ -297,10 +299,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var redisKeyring = new KeyRing(&#34;redisKeyring&#34;, KeyRingArgs.builder()        
+ *             .name(&#34;redis-keyring&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .build());
  * 
  *         var redisKey = new CryptoKey(&#34;redisKey&#34;, CryptoKeyArgs.builder()        
+ *             .name(&#34;redis-key&#34;)
  *             .keyRing(redisKeyring.id())
  *             .build());
  * 
@@ -309,6 +313,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var cache = new Instance(&#34;cache&#34;, InstanceArgs.builder()        
+ *             .name(&#34;cmek-memory-cache&#34;)
  *             .tier(&#34;STANDARD_HA&#34;)
  *             .memorySizeGb(1)
  *             .locationId(&#34;us-central1-a&#34;)

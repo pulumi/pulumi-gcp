@@ -44,6 +44,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     ///     var basic = new Gcp.Dataproc.Cluster("basic", new()
     ///     {
+    ///         Name = "dataproc-policy",
     ///         Region = "us-central1",
     ///         ClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigArgs
     ///         {

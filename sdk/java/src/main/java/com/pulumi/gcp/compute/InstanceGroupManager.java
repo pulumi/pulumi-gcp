@@ -66,6 +66,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var autohealing = new HealthCheck(&#34;autohealing&#34;, HealthCheckArgs.builder()        
+ *             .name(&#34;autohealing-health-check&#34;)
  *             .checkIntervalSec(5)
  *             .timeoutSec(5)
  *             .healthyThreshold(2)
@@ -77,16 +78,17 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var appserver = new InstanceGroupManager(&#34;appserver&#34;, InstanceGroupManagerArgs.builder()        
+ *             .name(&#34;appserver-igm&#34;)
  *             .baseInstanceName(&#34;app&#34;)
  *             .zone(&#34;us-central1-a&#34;)
  *             .versions(InstanceGroupManagerVersionArgs.builder()
- *                 .instanceTemplate(google_compute_instance_template.appserver().self_link_unique())
+ *                 .instanceTemplate(appserverGoogleComputeInstanceTemplate.selfLinkUnique())
  *                 .build())
  *             .allInstancesConfig(InstanceGroupManagerAllInstancesConfigArgs.builder()
  *                 .metadata(Map.of(&#34;metadata_key&#34;, &#34;metadata_value&#34;))
  *                 .labels(Map.of(&#34;label_key&#34;, &#34;label_value&#34;))
  *                 .build())
- *             .targetPools(google_compute_target_pool.appserver().id())
+ *             .targetPools(appserverGoogleComputeTargetPool.id())
  *             .targetSize(2)
  *             .namedPorts(InstanceGroupManagerNamedPortArgs.builder()
  *                 .name(&#34;customhttp&#34;)
@@ -112,7 +114,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceGroupManagerVersionArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceGroupManagerVersionTargetSizeArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -127,24 +128,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var appserver = new InstanceGroupManager(&#34;appserver&#34;, InstanceGroupManagerArgs.builder()        
+ *             .name(&#34;appserver-igm&#34;)
  *             .baseInstanceName(&#34;app&#34;)
  *             .zone(&#34;us-central1-a&#34;)
  *             .targetSize(5)
  *             .versions(            
  *                 InstanceGroupManagerVersionArgs.builder()
  *                     .name(&#34;appserver&#34;)
- *                     .instanceTemplate(google_compute_instance_template.appserver().self_link_unique())
+ *                     .instanceTemplate(appserverGoogleComputeInstanceTemplate.selfLinkUnique())
  *                     .build(),
  *                 InstanceGroupManagerVersionArgs.builder()
  *                     .name(&#34;appserver-canary&#34;)
- *                     .instanceTemplate(google_compute_instance_template.appserver-canary().self_link_unique())
+ *                     .instanceTemplate(appserver_canary.selfLinkUnique())
  *                     .targetSize(InstanceGroupManagerVersionTargetSizeArgs.builder()
  *                         .fixed(1)
  *                         .build())
  *                     .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

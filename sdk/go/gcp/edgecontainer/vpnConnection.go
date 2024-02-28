@@ -44,6 +44,7 @@ import (
 //				return err
 //			}
 //			cluster, err := edgecontainer.NewCluster(ctx, "cluster", &edgecontainer.ClusterArgs{
+//				Name:     pulumi.String("default"),
 //				Location: pulumi.String("us-central1"),
 //				Authorization: &edgecontainer.ClusterAuthorizationArgs{
 //					AdminUsers: &edgecontainer.ClusterAuthorizationAdminUsersArgs{
@@ -65,7 +66,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			nodePool, err := edgecontainer.NewNodePool(ctx, "nodePool", &edgecontainer.NodePoolArgs{
+//			_, err = edgecontainer.NewNodePool(ctx, "node_pool", &edgecontainer.NodePoolArgs{
+//				Name:         pulumi.String("nodepool-1"),
 //				Cluster:      cluster.Name,
 //				Location:     pulumi.String("us-central1"),
 //				NodeLocation: pulumi.String("us-central1-edge-example-edgesite"),
@@ -74,11 +76,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			vpc, err := compute.NewNetwork(ctx, "vpc", nil)
+//			vpc, err := compute.NewNetwork(ctx, "vpc", &compute.NetworkArgs{
+//				Name: pulumi.String("example-vpc"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = edgecontainer.NewVpnConnection(ctx, "default", &edgecontainer.VpnConnectionArgs{
+//				Name:     pulumi.String("vpn-connection-1"),
 //				Location: pulumi.String("us-central1"),
 //				Cluster: cluster.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("projects/%v/locations/us-east1/clusters/%v", project.Number, name), nil
@@ -89,9 +94,7 @@ import (
 //					"my_key":    pulumi.String("my_val"),
 //					"other_key": pulumi.String("other_val"),
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				nodePool,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

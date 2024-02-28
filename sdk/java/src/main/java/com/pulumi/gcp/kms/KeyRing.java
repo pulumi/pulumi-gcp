@@ -50,6 +50,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example_keyring = new KeyRing(&#34;example-keyring&#34;, KeyRingArgs.builder()        
+ *             .name(&#34;keyring-example&#34;)
  *             .location(&#34;global&#34;)
  *             .build());
  * 

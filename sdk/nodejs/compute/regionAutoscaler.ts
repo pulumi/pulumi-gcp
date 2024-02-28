@@ -26,7 +26,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const foobarInstanceTemplate = new gcp.compute.InstanceTemplate("foobarInstanceTemplate", {
+ * const foobarInstanceTemplate = new gcp.compute.InstanceTemplate("foobar", {
+ *     name: "my-instance-template",
  *     machineType: "e2-standard-4",
  *     disks: [{
  *         sourceImage: "debian-cloud/debian-11",
@@ -50,8 +51,9 @@ import * as utilities from "../utilities";
  *         ],
  *     },
  * });
- * const foobarTargetPool = new gcp.compute.TargetPool("foobarTargetPool", {});
- * const foobarRegionInstanceGroupManager = new gcp.compute.RegionInstanceGroupManager("foobarRegionInstanceGroupManager", {
+ * const foobarTargetPool = new gcp.compute.TargetPool("foobar", {name: "my-target-pool"});
+ * const foobarRegionInstanceGroupManager = new gcp.compute.RegionInstanceGroupManager("foobar", {
+ *     name: "my-region-igm",
  *     region: "us-central1",
  *     versions: [{
  *         instanceTemplate: foobarInstanceTemplate.id,
@@ -60,7 +62,8 @@ import * as utilities from "../utilities";
  *     targetPools: [foobarTargetPool.id],
  *     baseInstanceName: "foobar",
  * });
- * const foobarRegionAutoscaler = new gcp.compute.RegionAutoscaler("foobarRegionAutoscaler", {
+ * const foobar = new gcp.compute.RegionAutoscaler("foobar", {
+ *     name: "my-region-autoscaler",
  *     region: "us-central1",
  *     target: foobarRegionInstanceGroupManager.id,
  *     autoscalingPolicy: {

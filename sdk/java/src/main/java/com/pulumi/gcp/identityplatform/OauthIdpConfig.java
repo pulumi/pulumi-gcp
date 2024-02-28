@@ -46,11 +46,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var oauthIdpConfig = new OauthIdpConfig(&#34;oauthIdpConfig&#34;, OauthIdpConfigArgs.builder()        
- *             .clientId(&#34;client-id&#34;)
- *             .clientSecret(&#34;secret&#34;)
+ *             .name(&#34;oidc.oauth-idp-config&#34;)
  *             .displayName(&#34;Display Name&#34;)
- *             .enabled(true)
+ *             .clientId(&#34;client-id&#34;)
  *             .issuer(&#34;issuer&#34;)
+ *             .enabled(true)
+ *             .clientSecret(&#34;secret&#34;)
  *             .build());
  * 
  *     }

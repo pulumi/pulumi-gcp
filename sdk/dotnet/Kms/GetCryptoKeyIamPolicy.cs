@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Kms
         /// {
         ///     var foo = Gcp.Kms.GetCryptoKeyIamPolicy.Invoke(new()
         ///     {
-        ///         CryptoKeyId = google_kms_crypto_key.Crypto_key.Id,
+        ///         CryptoKeyId = cryptoKey.Id,
         ///     });
         /// 
         /// });
@@ -50,7 +50,7 @@ namespace Pulumi.Gcp.Kms
         /// {
         ///     var foo = Gcp.Kms.GetCryptoKeyIamPolicy.Invoke(new()
         ///     {
-        ///         CryptoKeyId = google_kms_crypto_key.Crypto_key.Id,
+        ///         CryptoKeyId = cryptoKey.Id,
         ///     });
         /// 
         /// });

@@ -24,6 +24,7 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// {
     ///     var my_runtime_config = new Gcp.RuntimeConfig.Config("my-runtime-config", new()
     ///     {
+    ///         Name = "my-service-runtime-config",
     ///         Description = "Runtime configuration values for my service",
     ///     });
     /// 

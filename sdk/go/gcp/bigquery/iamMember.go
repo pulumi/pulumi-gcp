@@ -57,9 +57,9 @@ import (
 //				return err
 //			}
 //			_, err = bigquery.NewIamPolicy(ctx, "policy", &bigquery.IamPolicyArgs{
-//				Project:    pulumi.Any(google_bigquery_table.Test.Project),
-//				DatasetId:  pulumi.Any(google_bigquery_table.Test.Dataset_id),
-//				TableId:    pulumi.Any(google_bigquery_table.Test.Table_id),
+//				Project:    pulumi.Any(test.Project),
+//				DatasetId:  pulumi.Any(test.DatasetId),
+//				TableId:    pulumi.Any(test.TableId),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -105,9 +105,9 @@ import (
 //				return err
 //			}
 //			_, err = bigquery.NewIamPolicy(ctx, "policy", &bigquery.IamPolicyArgs{
-//				Project:    pulumi.Any(google_bigquery_table.Test.Project),
-//				DatasetId:  pulumi.Any(google_bigquery_table.Test.Dataset_id),
-//				TableId:    pulumi.Any(google_bigquery_table.Test.Table_id),
+//				Project:    pulumi.Any(test.Project),
+//				DatasetId:  pulumi.Any(test.DatasetId),
+//				TableId:    pulumi.Any(test.TableId),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -133,9 +133,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigquery.NewIamBinding(ctx, "binding", &bigquery.IamBindingArgs{
-//				Project:   pulumi.Any(google_bigquery_table.Test.Project),
-//				DatasetId: pulumi.Any(google_bigquery_table.Test.Dataset_id),
-//				TableId:   pulumi.Any(google_bigquery_table.Test.Table_id),
+//				Project:   pulumi.Any(test.Project),
+//				DatasetId: pulumi.Any(test.DatasetId),
+//				TableId:   pulumi.Any(test.TableId),
 //				Role:      pulumi.String("roles/bigquery.dataOwner"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -165,9 +165,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigquery.NewIamBinding(ctx, "binding", &bigquery.IamBindingArgs{
-//				Project:   pulumi.Any(google_bigquery_table.Test.Project),
-//				DatasetId: pulumi.Any(google_bigquery_table.Test.Dataset_id),
-//				TableId:   pulumi.Any(google_bigquery_table.Test.Table_id),
+//				Project:   pulumi.Any(test.Project),
+//				DatasetId: pulumi.Any(test.DatasetId),
+//				TableId:   pulumi.Any(test.TableId),
 //				Role:      pulumi.String("roles/bigquery.dataOwner"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -201,9 +201,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigquery.NewIamMember(ctx, "member", &bigquery.IamMemberArgs{
-//				Project:   pulumi.Any(google_bigquery_table.Test.Project),
-//				DatasetId: pulumi.Any(google_bigquery_table.Test.Dataset_id),
-//				TableId:   pulumi.Any(google_bigquery_table.Test.Table_id),
+//				Project:   pulumi.Any(test.Project),
+//				DatasetId: pulumi.Any(test.DatasetId),
+//				TableId:   pulumi.Any(test.TableId),
 //				Role:      pulumi.String("roles/bigquery.dataOwner"),
 //				Member:    pulumi.String("user:jane@example.com"),
 //			})
@@ -231,9 +231,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigquery.NewIamMember(ctx, "member", &bigquery.IamMemberArgs{
-//				Project:   pulumi.Any(google_bigquery_table.Test.Project),
-//				DatasetId: pulumi.Any(google_bigquery_table.Test.Dataset_id),
-//				TableId:   pulumi.Any(google_bigquery_table.Test.Table_id),
+//				Project:   pulumi.Any(test.Project),
+//				DatasetId: pulumi.Any(test.DatasetId),
+//				TableId:   pulumi.Any(test.TableId),
 //				Role:      pulumi.String("roles/bigquery.dataOwner"),
 //				Member:    pulumi.String("user:jane@example.com"),
 //				Condition: &bigquery.IamMemberConditionArgs{

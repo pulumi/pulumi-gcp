@@ -32,11 +32,12 @@ namespace Pulumi.Gcp.Diagflow
     /// {
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
+    ///         Name = "dialogflowcx-bucket",
     ///         Location = "US",
     ///         UniformBucketLevelAccess = true,
     ///     });
     /// 
-    ///     var fullAgent = new Gcp.Diagflow.CxAgent("fullAgent", new()
+    ///     var fullAgent = new Gcp.Diagflow.CxAgent("full_agent", new()
     ///     {
     ///         DisplayName = "dialogflowcx-agent",
     ///         Location = "global",

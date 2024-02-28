@@ -64,13 +64,16 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var access_level = new AccessLevel(&#34;access-level&#34;, AccessLevelArgs.builder()        
+ *             .parent(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
+ *             .name(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s/accessLevels/chromeos_no_lock&#34;, name)))
+ *             .title(&#34;chromeos_no_lock&#34;)
  *             .basic(AccessLevelBasicArgs.builder()
  *                 .conditions(AccessLevelBasicConditionArgs.builder()
  *                     .devicePolicy(AccessLevelBasicConditionDevicePolicyArgs.builder()
+ *                         .requireScreenLock(true)
  *                         .osConstraints(AccessLevelBasicConditionDevicePolicyOsConstraintArgs.builder()
  *                             .osType(&#34;DESKTOP_CHROME_OS&#34;)
  *                             .build())
- *                         .requireScreenLock(true)
  *                         .build())
  *                     .regions(                    
  *                         &#34;CH&#34;,
@@ -78,8 +81,6 @@ import javax.annotation.Nullable;
  *                         &#34;US&#34;)
  *                     .build())
  *                 .build())
- *             .parent(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
- *             .title(&#34;chromeos_no_lock&#34;)
  *             .build());
  * 
  *     }

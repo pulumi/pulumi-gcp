@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigquery.LookupDatasetIamPolicy(ctx, &bigquery.LookupDatasetIamPolicyArgs{
-//				DatasetId: google_bigquery_dataset.Dataset.Dataset_id,
+//				DatasetId: dataset.DatasetId,
 //			}, nil)
 //			if err != nil {
 //				return err

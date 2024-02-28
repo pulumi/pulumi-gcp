@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.cloudfunctions.getFunctionIamPolicy({
- *     project: google_cloudfunctions_function["function"].project,
- *     region: google_cloudfunctions_function["function"].region,
- *     cloudFunction: google_cloudfunctions_function["function"].name,
+ *     project: _function.project,
+ *     region: _function.region,
+ *     cloudFunction: _function.name,
  * });
  * ```
  */
@@ -82,9 +82,9 @@ export interface GetFunctionIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.cloudfunctions.getFunctionIamPolicy({
- *     project: google_cloudfunctions_function["function"].project,
- *     region: google_cloudfunctions_function["function"].region,
- *     cloudFunction: google_cloudfunctions_function["function"].name,
+ *     project: _function.project,
+ *     region: _function.region,
+ *     cloudFunction: _function.name,
  * });
  * ```
  */

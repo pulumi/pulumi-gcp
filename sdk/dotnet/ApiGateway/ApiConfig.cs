@@ -22,32 +22,22 @@ namespace Pulumi.Gcp.ApiGateway
     /// ### Apigateway Api Config Basic
     /// 
     /// ```csharp
-    /// using System;
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// 	
-    /// string ReadFileBase64(string path) 
-    /// {
-    ///     return Convert.ToBase64String(Encoding.UTF8.GetBytes(File.ReadAllText(path)));
-    /// }
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var apiCfgApi = new Gcp.ApiGateway.Api("apiCfgApi", new()
+    ///     var apiCfg = new Gcp.ApiGateway.Api("api_cfg", new()
     ///     {
     ///         ApiId = "my-api",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var apiCfgApiConfig = new Gcp.ApiGateway.ApiConfig("apiCfgApiConfig", new()
+    ///     var apiCfgApiConfig = new Gcp.ApiGateway.ApiConfig("api_cfg", new()
     ///     {
-    ///         Api = apiCfgApi.ApiId,
+    ///         Api = apiCfg.ApiId,
     ///         ApiConfigId = "my-config",
     ///         OpenapiDocuments = new[]
     ///         {
@@ -56,13 +46,78 @@ namespace Pulumi.Gcp.ApiGateway
     ///                 Document = new Gcp.ApiGateway.Inputs.ApiConfigOpenapiDocumentDocumentArgs
     ///                 {
     ///                     Path = "spec.yaml",
-    ///                     Contents = ReadFileBase64("test-fixtures/openapi.yaml"),
+    ///                     Contents = Std.Filebase64.Invoke(new()
+    ///                     {
+    ///                         Input = "test-fixtures/openapi.yaml",
+    ///                     }).Apply(invoke =&gt; invoke.Result),
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Apigateway Api Config Grpc
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var apiCfg = new Gcp.ApiGateway.Api("api_cfg", new()
     ///     {
-    ///         Provider = google_beta,
+    ///         ApiId = "my-api",
+    ///     });
+    /// 
+    ///     var apiCfgApiConfig = new Gcp.ApiGateway.ApiConfig("api_cfg", new()
+    ///     {
+    ///         Api = apiCfg.ApiId,
+    ///         ApiConfigId = "my-config",
+    ///         GrpcServices = new[]
+    ///         {
+    ///             new Gcp.ApiGateway.Inputs.ApiConfigGrpcServiceArgs
+    ///             {
+    ///                 FileDescriptorSet = new Gcp.ApiGateway.Inputs.ApiConfigGrpcServiceFileDescriptorSetArgs
+    ///                 {
+    ///                     Path = "api_descriptor.pb",
+    ///                     Contents = Std.Filebase64.Invoke(new()
+    ///                     {
+    ///                         Input = "test-fixtures/api_descriptor.pb",
+    ///                     }).Apply(invoke =&gt; invoke.Result),
+    ///                 },
+    ///             },
+    ///         },
+    ///         ManagedServiceConfigs = new[]
+    ///         {
+    ///             new Gcp.ApiGateway.Inputs.ApiConfigManagedServiceConfigArgs
+    ///             {
+    ///                 Path = "api_config.yaml",
+    ///                 Contents = Std.Base64encode.Invoke(new()
+    ///                 {
+    ///                     Input = apiCfg.ManagedService.Apply(managedService =&gt; @$"type: google.api.Service
+    /// config_version: 3
+    /// name: {managedService}
+    /// title: gRPC API example
+    /// apis:
+    ///   - name: endpoints.examples.bookstore.Bookstore
+    /// usage:
+    ///   rules:
+    ///   - selector: endpoints.examples.bookstore.Bookstore.ListShelves
+    ///     allow_unregistered_calls: true
+    /// backend:
+    ///   rules:
+    ///     - selector: ""*""
+    ///       address: grpcs://example.com
+    ///       disable_auth: true
+    /// 
+    /// "),
+    ///                 }).Apply(invoke =&gt; invoke.Result),
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });

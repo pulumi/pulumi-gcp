@@ -22,28 +22,6 @@ public final class HostingVersionConfigRedirect {
      * @return The value to put in the HTTP location header of the response.
      * The location can contain capture group values from the pattern using a : prefix to identify
      * the segment and an optional * to capture the rest of the URL. For example:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
      * 
      */
     private String location;
@@ -70,28 +48,6 @@ public final class HostingVersionConfigRedirect {
      * @return The value to put in the HTTP location header of the response.
      * The location can contain capture group values from the pattern using a : prefix to identify
      * the segment and an optional * to capture the rest of the URL. For example:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
      * 
      */
     public String location() {

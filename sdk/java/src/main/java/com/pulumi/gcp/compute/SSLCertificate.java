@@ -53,8 +53,12 @@ import javax.annotation.Nullable;
  *         var default_ = new SSLCertificate(&#34;default&#34;, SSLCertificateArgs.builder()        
  *             .namePrefix(&#34;my-certificate-&#34;)
  *             .description(&#34;a description&#34;)
- *             .privateKey(Files.readString(Paths.get(&#34;path/to/private.key&#34;)))
- *             .certificate(Files.readString(Paths.get(&#34;path/to/certificate.crt&#34;)))
+ *             .privateKey(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;path/to/private.key&#34;)
+ *                 .build()).result())
+ *             .certificate(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;path/to/certificate.crt&#34;)
+ *                 .build()).result())
  *             .build());
  * 
  *     }
@@ -67,10 +71,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.SSLCertificate;
- * import com.pulumi.gcp.compute.SSLCertificateArgs;
  * import com.pulumi.random.RandomId;
  * import com.pulumi.random.RandomIdArgs;
+ * import com.pulumi.gcp.compute.SSLCertificate;
+ * import com.pulumi.gcp.compute.SSLCertificateArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -84,25 +88,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new SSLCertificate(&#34;default&#34;, SSLCertificateArgs.builder()        
- *             .privateKey(Files.readString(Paths.get(&#34;path/to/private.key&#34;)))
- *             .certificate(Files.readString(Paths.get(&#34;path/to/certificate.crt&#34;)))
- *             .build());
- * 
  *         var certificate = new RandomId(&#34;certificate&#34;, RandomIdArgs.builder()        
  *             .byteLength(4)
  *             .prefix(&#34;my-certificate-&#34;)
  *             .keepers(Map.ofEntries(
- *                 Map.entry(&#34;private_key&#34;, computeFileBase64Sha256(&#34;path/to/private.key&#34;)),
- *                 Map.entry(&#34;certificate&#34;, computeFileBase64Sha256(&#34;path/to/certificate.crt&#34;))
+ *                 Map.entry(&#34;private_key&#34;, StdFunctions.filebase64sha256(Filebase64sha256Args.builder()
+ *                     .input(&#34;path/to/private.key&#34;)
+ *                     .build()).result()),
+ *                 Map.entry(&#34;certificate&#34;, StdFunctions.filebase64sha256(Filebase64sha256Args.builder()
+ *                     .input(&#34;path/to/certificate.crt&#34;)
+ *                     .build()).result())
  *             ))
+ *             .build());
+ * 
+ *         var default_ = new SSLCertificate(&#34;default&#34;, SSLCertificateArgs.builder()        
+ *             .name(certificate.hex())
+ *             .privateKey(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;path/to/private.key&#34;)
+ *                 .build()).result())
+ *             .certificate(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;path/to/certificate.crt&#34;)
+ *                 .build()).result())
  *             .build());
  * 
  *     }
  * }
  * ```
  * ### Ssl Certificate Target Https Proxies
- * 
  * ```java
  * package generated_program;
  * 
@@ -134,19 +146,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultSSLCertificate = new SSLCertificate(&#34;defaultSSLCertificate&#34;, SSLCertificateArgs.builder()        
+ *         var default_ = new SSLCertificate(&#34;default&#34;, SSLCertificateArgs.builder()        
  *             .namePrefix(&#34;my-certificate-&#34;)
- *             .privateKey(Files.readString(Paths.get(&#34;path/to/private.key&#34;)))
- *             .certificate(Files.readString(Paths.get(&#34;path/to/certificate.crt&#34;)))
+ *             .privateKey(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;path/to/private.key&#34;)
+ *                 .build()).result())
+ *             .certificate(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;path/to/certificate.crt&#34;)
+ *                 .build()).result())
  *             .build());
  * 
  *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
+ *             .name(&#34;http-health-check&#34;)
  *             .requestPath(&#34;/&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
  *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;backend-service&#34;)
  *             .portName(&#34;http&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .timeoutSec(10)
@@ -154,6 +172,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultURLMap = new URLMap(&#34;defaultURLMap&#34;, URLMapArgs.builder()        
+ *             .name(&#34;url-map&#34;)
  *             .description(&#34;a description&#34;)
  *             .defaultService(defaultBackendService.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
@@ -171,8 +190,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultTargetHttpsProxy = new TargetHttpsProxy(&#34;defaultTargetHttpsProxy&#34;, TargetHttpsProxyArgs.builder()        
+ *             .name(&#34;test-proxy&#34;)
  *             .urlMap(defaultURLMap.id())
- *             .sslCertificates(defaultSSLCertificate.id())
+ *             .sslCertificates(default_.id())
  *             .build());
  * 
  *     }

@@ -25,15 +25,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const serviceAccount = new gcp.serviceaccount.Account("serviceAccount", {
+ * const serviceAccount = new gcp.serviceaccount.Account("service_account", {
  *     accountId: "my-account",
  *     displayName: "Test Service Account",
  * });
- * const appConnector = new gcp.beyondcorp.AppConnector("appConnector", {principalInfo: {
- *     serviceAccount: {
- *         email: serviceAccount.email,
+ * const appConnector = new gcp.beyondcorp.AppConnector("app_connector", {
+ *     name: "my-app-connector",
+ *     principalInfo: {
+ *         serviceAccount: {
+ *             email: serviceAccount.email,
+ *         },
  *     },
- * }});
+ * });
  * ```
  * ### Beyondcorp App Connector Full
  *
@@ -41,11 +44,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const serviceAccount = new gcp.serviceaccount.Account("serviceAccount", {
+ * const serviceAccount = new gcp.serviceaccount.Account("service_account", {
  *     accountId: "my-account",
  *     displayName: "Test Service Account",
  * });
- * const appConnector = new gcp.beyondcorp.AppConnector("appConnector", {
+ * const appConnector = new gcp.beyondcorp.AppConnector("app_connector", {
+ *     name: "my-app-connector",
  *     region: "us-central1",
  *     displayName: "some display name",
  *     principalInfo: {

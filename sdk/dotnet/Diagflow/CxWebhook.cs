@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.Diagflow
     ///         },
     ///     });
     /// 
-    ///     var basicWebhook = new Gcp.Diagflow.CxWebhook("basicWebhook", new()
+    ///     var basicWebhook = new Gcp.Diagflow.CxWebhook("basic_webhook", new()
     ///     {
     ///         Parent = agent.Id,
     ///         DisplayName = "MyFlow",

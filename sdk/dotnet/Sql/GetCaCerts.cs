@@ -16,6 +16,46 @@ namespace Pulumi.Gcp.Sql
         /// [official documentation](https://cloud.google.com/sql/)
         /// and
         /// [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
+        /// 
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// 	
+        /// object NotImplemented(string errorMessage) 
+        /// {
+        ///     throw new System.NotImplementedException(errorMessage);
+        /// }
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var caCerts = Gcp.Sql.GetCaCerts.Invoke(new()
+        ///     {
+        ///         Instance = "primary-database-server",
+        ///     });
+        /// 
+        ///     var furthestExpirationTime = NotImplemented("reverse(sort([fork,vindata.google_sql_ca_certs.ca_certs.certs:v.expiration_time]))")[0];
+        /// 
+        ///     var latestCaCert = .Where(v =&gt; v.ExpirationTime == furthestExpirationTime).Select(v =&gt; 
+        ///     {
+        ///         return v.Cert;
+        ///     }).ToList();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dbLatestCaCert"] = latestCaCert,
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCaCertsResult> InvokeAsync(GetCaCertsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCaCertsResult>("gcp:sql/getCaCerts:getCaCerts", args ?? new GetCaCertsArgs(), options.WithDefaults());
@@ -25,6 +65,46 @@ namespace Pulumi.Gcp.Sql
         /// [official documentation](https://cloud.google.com/sql/)
         /// and
         /// [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
+        /// 
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// 	
+        /// object NotImplemented(string errorMessage) 
+        /// {
+        ///     throw new System.NotImplementedException(errorMessage);
+        /// }
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var caCerts = Gcp.Sql.GetCaCerts.Invoke(new()
+        ///     {
+        ///         Instance = "primary-database-server",
+        ///     });
+        /// 
+        ///     var furthestExpirationTime = NotImplemented("reverse(sort([fork,vindata.google_sql_ca_certs.ca_certs.certs:v.expiration_time]))")[0];
+        /// 
+        ///     var latestCaCert = .Where(v =&gt; v.ExpirationTime == furthestExpirationTime).Select(v =&gt; 
+        ///     {
+        ///         return v.Cert;
+        ///     }).ToList();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dbLatestCaCert"] = latestCaCert,
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetCaCertsResult> Invoke(GetCaCertsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCaCertsResult>("gcp:sql/getCaCerts:getCaCerts", args ?? new GetCaCertsInvokeArgs(), options.WithDefaults());

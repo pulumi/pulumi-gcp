@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.certificatemanager.DnsAuthorization("default", {
+ *     name: "dns-auth",
  *     description: "The default dnss",
  *     domain: "subdomain.hashicorptest.com",
  * });

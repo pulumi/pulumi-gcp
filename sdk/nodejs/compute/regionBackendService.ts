@@ -17,6 +17,28 @@ import * as utilities from "../utilities";
  *     * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
  *
  * ## Example Usage
+ * ### Region Backend Service Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+ *     name: "rbs-health-check",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ *     tcpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const _default = new gcp.compute.RegionBackendService("default", {
+ *     name: "region-service",
+ *     region: "us-central1",
+ *     healthChecks: defaultHealthCheck.id,
+ *     connectionDrainingTimeoutSec: 10,
+ *     sessionAffinity: "CLIENT_IP",
+ * });
+ * ```
  * ### Region Backend Service External Iap
  *
  * ```typescript
@@ -24,13 +46,243 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.compute.RegionBackendService("default", {
+ *     name: "tf-test-region-service-external",
+ *     region: "us-central1",
+ *     protocol: "HTTP",
+ *     loadBalancingScheme: "EXTERNAL",
  *     iap: {
  *         oauth2ClientId: "abc",
  *         oauth2ClientSecret: "xyz",
  *     },
+ * });
+ * ```
+ * ### Region Backend Service Cache
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("default", {
+ *     name: "rbs-health-check",
+ *     region: "us-central1",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const _default = new gcp.compute.RegionBackendService("default", {
+ *     name: "region-service",
+ *     region: "us-central1",
+ *     healthChecks: defaultRegionHealthCheck.id,
+ *     enableCdn: true,
+ *     cdnPolicy: {
+ *         cacheMode: "CACHE_ALL_STATIC",
+ *         defaultTtl: 3600,
+ *         clientTtl: 7200,
+ *         maxTtl: 10800,
+ *         negativeCaching: true,
+ *         signedUrlCacheMaxAgeSec: 7200,
+ *     },
  *     loadBalancingScheme: "EXTERNAL",
  *     protocol: "HTTP",
+ * });
+ * ```
+ * ### Region Backend Service Ilb Round Robin
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const healthCheck = new gcp.compute.HealthCheck("health_check", {
+ *     name: "rbs-health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const _default = new gcp.compute.RegionBackendService("default", {
  *     region: "us-central1",
+ *     name: "region-service",
+ *     healthChecks: healthCheck.id,
+ *     protocol: "HTTP",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     localityLbPolicy: "ROUND_ROBIN",
+ * });
+ * ```
+ * ### Region Backend Service External
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const healthCheck = new gcp.compute.RegionHealthCheck("health_check", {
+ *     name: "rbs-health-check",
+ *     region: "us-central1",
+ *     tcpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const _default = new gcp.compute.RegionBackendService("default", {
+ *     region: "us-central1",
+ *     name: "region-service",
+ *     healthChecks: healthCheck.id,
+ *     protocol: "TCP",
+ *     loadBalancingScheme: "EXTERNAL",
+ * });
+ * ```
+ * ### Region Backend Service External Weighted
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const healthCheck = new gcp.compute.RegionHealthCheck("health_check", {
+ *     name: "rbs-health-check",
+ *     region: "us-central1",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const _default = new gcp.compute.RegionBackendService("default", {
+ *     region: "us-central1",
+ *     name: "region-service",
+ *     healthChecks: healthCheck.id,
+ *     protocol: "TCP",
+ *     loadBalancingScheme: "EXTERNAL",
+ *     localityLbPolicy: "WEIGHTED_MAGLEV",
+ * });
+ * ```
+ * ### Region Backend Service Ilb Ring Hash
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const healthCheck = new gcp.compute.HealthCheck("health_check", {
+ *     name: "rbs-health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const _default = new gcp.compute.RegionBackendService("default", {
+ *     region: "us-central1",
+ *     name: "region-service",
+ *     healthChecks: healthCheck.id,
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     localityLbPolicy: "RING_HASH",
+ *     sessionAffinity: "HTTP_COOKIE",
+ *     protocol: "HTTP",
+ *     circuitBreakers: {
+ *         maxConnections: 10,
+ *     },
+ *     consistentHash: {
+ *         httpCookie: {
+ *             ttl: {
+ *                 seconds: 11,
+ *                 nanos: 1111,
+ *             },
+ *             name: "mycookie",
+ *         },
+ *     },
+ *     outlierDetection: {
+ *         consecutiveErrors: 2,
+ *     },
+ * });
+ * ```
+ * ### Region Backend Service Balancing Mode
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const debianImage = gcp.compute.getImage({
+ *     family: "debian-11",
+ *     project: "debian-cloud",
+ * });
+ * const defaultNetwork = new gcp.compute.Network("default", {
+ *     name: "rbs-net",
+ *     autoCreateSubnetworks: false,
+ *     routingMode: "REGIONAL",
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "rbs-net-default",
+ *     ipCidrRange: "10.1.2.0/24",
+ *     region: "us-central1",
+ *     network: defaultNetwork.id,
+ * });
+ * const instanceTemplate = new gcp.compute.InstanceTemplate("instance_template", {
+ *     name: "template-region-service",
+ *     machineType: "e2-medium",
+ *     networkInterfaces: [{
+ *         network: defaultNetwork.id,
+ *         subnetwork: defaultSubnetwork.id,
+ *     }],
+ *     disks: [{
+ *         sourceImage: debianImage.then(debianImage => debianImage.selfLink),
+ *         autoDelete: true,
+ *         boot: true,
+ *     }],
+ *     tags: [
+ *         "allow-ssh",
+ *         "load-balanced-backend",
+ *     ],
+ * });
+ * const rigm = new gcp.compute.RegionInstanceGroupManager("rigm", {
+ *     region: "us-central1",
+ *     name: "rbs-rigm",
+ *     versions: [{
+ *         instanceTemplate: instanceTemplate.id,
+ *         name: "primary",
+ *     }],
+ *     baseInstanceName: "internal-glb",
+ *     targetSize: 1,
+ * });
+ * const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("default", {
+ *     region: "us-central1",
+ *     name: "rbs-health-check",
+ *     httpHealthCheck: {
+ *         portSpecification: "USE_SERVING_PORT",
+ *     },
+ * });
+ * const _default = new gcp.compute.RegionBackendService("default", {
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     backends: [{
+ *         group: rigm.instanceGroup,
+ *         balancingMode: "UTILIZATION",
+ *         capacityScaler: 1,
+ *     }],
+ *     region: "us-central1",
+ *     name: "region-service",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: defaultRegionHealthCheck.id,
+ * });
+ * ```
+ * ### Region Backend Service Connection Tracking
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const healthCheck = new gcp.compute.RegionHealthCheck("health_check", {
+ *     name: "rbs-health-check",
+ *     region: "us-central1",
+ *     tcpHealthCheck: {
+ *         port: 22,
+ *     },
+ * });
+ * const _default = new gcp.compute.RegionBackendService("default", {
+ *     name: "region-service",
+ *     region: "us-central1",
+ *     healthChecks: healthCheck.id,
+ *     connectionDrainingTimeoutSec: 10,
+ *     sessionAffinity: "CLIENT_IP",
+ *     protocol: "TCP",
+ *     loadBalancingScheme: "EXTERNAL",
+ *     connectionTrackingPolicy: {
+ *         trackingMode: "PER_SESSION",
+ *         connectionPersistenceOnUnhealthyBackends: "NEVER_PERSIST",
+ *         idleTimeoutSec: 60,
+ *         enableStrongAffinity: true,
+ *     },
  * });
  * ```
  *

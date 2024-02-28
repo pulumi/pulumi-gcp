@@ -15,14 +15,13 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networksecurity.SecurityProfile("default", {
+ *     name: "my-security-profile",
  *     parent: "organizations/123456789",
  *     description: "my description",
  *     type: "THREAT_PREVENTION",
  *     labels: {
  *         foo: "bar",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Network Security Security Profile Overrides
@@ -32,6 +31,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networksecurity.SecurityProfile("default", {
+ *     name: "my-security-profile",
  *     parent: "organizations/123456789",
  *     description: "my description",
  *     type: "THREAT_PREVENTION",
@@ -51,8 +51,6 @@ import * as utilities from "../utilities";
  *             threatId: "280647",
  *         }],
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

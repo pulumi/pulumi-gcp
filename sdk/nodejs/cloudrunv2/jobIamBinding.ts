@@ -34,8 +34,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.cloudrunv2.JobIamPolicy("policy", {
- *     project: google_cloud_run_v2_job["default"].project,
- *     location: google_cloud_run_v2_job["default"].location,
+ *     project: _default.project,
+ *     location: _default.location,
+ *     name: _default.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -47,8 +48,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.cloudrunv2.JobIamBinding("binding", {
- *     project: google_cloud_run_v2_job["default"].project,
- *     location: google_cloud_run_v2_job["default"].location,
+ *     project: _default.project,
+ *     location: _default.location,
+ *     name: _default.name,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
  * });
@@ -61,8 +63,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.cloudrunv2.JobIamMember("member", {
- *     project: google_cloud_run_v2_job["default"].project,
- *     location: google_cloud_run_v2_job["default"].location,
+ *     project: _default.project,
+ *     location: _default.location,
+ *     name: _default.name,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
  * });

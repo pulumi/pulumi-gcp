@@ -21,6 +21,47 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/tcp/internal-proxy)
     /// 
     /// ## Example Usage
+    /// ### Region Target Tcp Proxy Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("default", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         Region = "europe-west4",
+    ///         TimeoutSec = 1,
+    ///         CheckIntervalSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         Name = "backend-service",
+    ///         Protocol = "TCP",
+    ///         TimeoutSec = 10,
+    ///         Region = "europe-west4",
+    ///         HealthChecks = defaultRegionHealthCheck.Id,
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.RegionTargetTcpProxy("default", new()
+    ///     {
+    ///         Name = "test-proxy",
+    ///         Region = "europe-west4",
+    ///         BackendService = defaultRegionBackendService.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

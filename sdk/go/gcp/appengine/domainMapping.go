@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := appengine.NewDomainMapping(ctx, "domainMapping", &appengine.DomainMappingArgs{
+//			_, err := appengine.NewDomainMapping(ctx, "domain_mapping", &appengine.DomainMappingArgs{
 //				DomainName: pulumi.String("verified-domain.com"),
 //				SslSettings: &appengine.DomainMappingSslSettingsArgs{
 //					SslManagementType: pulumi.String("AUTOMATIC"),

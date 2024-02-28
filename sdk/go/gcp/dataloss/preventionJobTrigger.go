@@ -36,35 +36,35 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataloss.NewPreventionJobTrigger(ctx, "basic", &dataloss.PreventionJobTriggerArgs{
+//				Parent:      pulumi.String("projects/my-project-name"),
 //				Description: pulumi.String("Description"),
 //				DisplayName: pulumi.String("Displayname"),
+//				Triggers: dataloss.PreventionJobTriggerTriggerArray{
+//					&dataloss.PreventionJobTriggerTriggerArgs{
+//						Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
+//							RecurrencePeriodDuration: pulumi.String("86400s"),
+//						},
+//					},
+//				},
 //				InspectJob: &dataloss.PreventionJobTriggerInspectJobArgs{
+//					InspectTemplateName: pulumi.String("fake"),
 //					Actions: dataloss.PreventionJobTriggerInspectJobActionArray{
 //						&dataloss.PreventionJobTriggerInspectJobActionArgs{
 //							SaveFindings: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsArgs{
 //								OutputConfig: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs{
 //									Table: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs{
-//										DatasetId: pulumi.String("dataset"),
 //										ProjectId: pulumi.String("project"),
+//										DatasetId: pulumi.String("dataset"),
 //									},
 //								},
 //							},
 //						},
 //					},
-//					InspectTemplateName: pulumi.String("fake"),
 //					StorageConfig: &dataloss.PreventionJobTriggerInspectJobStorageConfigArgs{
 //						CloudStorageOptions: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs{
 //							FileSet: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs{
 //								Url: pulumi.String("gs://mybucket/directory/"),
 //							},
-//						},
-//					},
-//				},
-//				Parent: pulumi.String("projects/my-project-name"),
-//				Triggers: dataloss.PreventionJobTriggerTriggerArray{
-//					&dataloss.PreventionJobTriggerTriggerArgs{
-//						Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
-//							RecurrencePeriodDuration: pulumi.String("86400s"),
 //						},
 //					},
 //				},
@@ -91,40 +91,40 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataloss.NewPreventionJobTrigger(ctx, "bigqueryRowLimit", &dataloss.PreventionJobTriggerArgs{
+//			_, err := dataloss.NewPreventionJobTrigger(ctx, "bigquery_row_limit", &dataloss.PreventionJobTriggerArgs{
+//				Parent:      pulumi.String("projects/my-project-name"),
 //				Description: pulumi.String("Description"),
 //				DisplayName: pulumi.String("Displayname"),
+//				Triggers: dataloss.PreventionJobTriggerTriggerArray{
+//					&dataloss.PreventionJobTriggerTriggerArgs{
+//						Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
+//							RecurrencePeriodDuration: pulumi.String("86400s"),
+//						},
+//					},
+//				},
 //				InspectJob: &dataloss.PreventionJobTriggerInspectJobArgs{
+//					InspectTemplateName: pulumi.String("fake"),
 //					Actions: dataloss.PreventionJobTriggerInspectJobActionArray{
 //						&dataloss.PreventionJobTriggerInspectJobActionArgs{
 //							SaveFindings: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsArgs{
 //								OutputConfig: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs{
 //									Table: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs{
-//										DatasetId: pulumi.String("dataset"),
 //										ProjectId: pulumi.String("project"),
+//										DatasetId: pulumi.String("dataset"),
 //									},
 //								},
 //							},
 //						},
 //					},
-//					InspectTemplateName: pulumi.String("fake"),
 //					StorageConfig: &dataloss.PreventionJobTriggerInspectJobStorageConfigArgs{
 //						BigQueryOptions: &dataloss.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs{
-//							RowsLimit:    pulumi.Int(1000),
-//							SampleMethod: pulumi.String("RANDOM_START"),
 //							TableReference: &dataloss.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs{
-//								DatasetId: pulumi.String("dataset"),
 //								ProjectId: pulumi.String("project"),
+//								DatasetId: pulumi.String("dataset"),
 //								TableId:   pulumi.String("table_to_scan"),
 //							},
-//						},
-//					},
-//				},
-//				Parent: pulumi.String("projects/my-project-name"),
-//				Triggers: dataloss.PreventionJobTriggerTriggerArray{
-//					&dataloss.PreventionJobTriggerTriggerArgs{
-//						Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
-//							RecurrencePeriodDuration: pulumi.String("86400s"),
+//							RowsLimit:    pulumi.Int(1000),
+//							SampleMethod: pulumi.String("RANDOM_START"),
 //						},
 //					},
 //				},
@@ -151,40 +151,40 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataloss.NewPreventionJobTrigger(ctx, "bigqueryRowLimitPercentage", &dataloss.PreventionJobTriggerArgs{
+//			_, err := dataloss.NewPreventionJobTrigger(ctx, "bigquery_row_limit_percentage", &dataloss.PreventionJobTriggerArgs{
+//				Parent:      pulumi.String("projects/my-project-name"),
 //				Description: pulumi.String("Description"),
 //				DisplayName: pulumi.String("Displayname"),
+//				Triggers: dataloss.PreventionJobTriggerTriggerArray{
+//					&dataloss.PreventionJobTriggerTriggerArgs{
+//						Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
+//							RecurrencePeriodDuration: pulumi.String("86400s"),
+//						},
+//					},
+//				},
 //				InspectJob: &dataloss.PreventionJobTriggerInspectJobArgs{
+//					InspectTemplateName: pulumi.String("fake"),
 //					Actions: dataloss.PreventionJobTriggerInspectJobActionArray{
 //						&dataloss.PreventionJobTriggerInspectJobActionArgs{
 //							SaveFindings: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsArgs{
 //								OutputConfig: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs{
 //									Table: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs{
-//										DatasetId: pulumi.String("dataset"),
 //										ProjectId: pulumi.String("project"),
+//										DatasetId: pulumi.String("dataset"),
 //									},
 //								},
 //							},
 //						},
 //					},
-//					InspectTemplateName: pulumi.String("fake"),
 //					StorageConfig: &dataloss.PreventionJobTriggerInspectJobStorageConfigArgs{
 //						BigQueryOptions: &dataloss.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs{
-//							RowsLimitPercent: pulumi.Int(50),
-//							SampleMethod:     pulumi.String("RANDOM_START"),
 //							TableReference: &dataloss.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs{
-//								DatasetId: pulumi.String("dataset"),
 //								ProjectId: pulumi.String("project"),
+//								DatasetId: pulumi.String("dataset"),
 //								TableId:   pulumi.String("table_to_scan"),
 //							},
-//						},
-//					},
-//				},
-//				Parent: pulumi.String("projects/my-project-name"),
-//				Triggers: dataloss.PreventionJobTriggerTriggerArray{
-//					&dataloss.PreventionJobTriggerTriggerArgs{
-//						Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
-//							RecurrencePeriodDuration: pulumi.String("86400s"),
+//							RowsLimitPercent: pulumi.Int(50),
+//							SampleMethod:     pulumi.String("RANDOM_START"),
 //						},
 //					},
 //				},
@@ -211,29 +211,29 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataloss.NewPreventionJobTrigger(ctx, "jobNotificationEmails", &dataloss.PreventionJobTriggerArgs{
+//			_, err := dataloss.NewPreventionJobTrigger(ctx, "job_notification_emails", &dataloss.PreventionJobTriggerArgs{
+//				Parent:      pulumi.String("projects/my-project-name"),
 //				Description: pulumi.String("Description for the job_trigger created by terraform"),
 //				DisplayName: pulumi.String("TerraformDisplayName"),
+//				Triggers: dataloss.PreventionJobTriggerTriggerArray{
+//					&dataloss.PreventionJobTriggerTriggerArgs{
+//						Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
+//							RecurrencePeriodDuration: pulumi.String("86400s"),
+//						},
+//					},
+//				},
 //				InspectJob: &dataloss.PreventionJobTriggerInspectJobArgs{
+//					InspectTemplateName: pulumi.String("sample-inspect-template"),
 //					Actions: dataloss.PreventionJobTriggerInspectJobActionArray{
 //						&dataloss.PreventionJobTriggerInspectJobActionArgs{
 //							JobNotificationEmails: nil,
 //						},
 //					},
-//					InspectTemplateName: pulumi.String("sample-inspect-template"),
 //					StorageConfig: &dataloss.PreventionJobTriggerInspectJobStorageConfigArgs{
 //						CloudStorageOptions: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs{
 //							FileSet: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs{
 //								Url: pulumi.String("gs://mybucket/directory/"),
 //							},
-//						},
-//					},
-//				},
-//				Parent: pulumi.String("projects/my-project-name"),
-//				Triggers: dataloss.PreventionJobTriggerTriggerArray{
-//					&dataloss.PreventionJobTriggerTriggerArgs{
-//						Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
-//							RecurrencePeriodDuration: pulumi.String("86400s"),
 //						},
 //					},
 //				},
@@ -261,7 +261,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultDataset, err := bigquery.NewDataset(ctx, "defaultDataset", &bigquery.DatasetArgs{
+//			_, err := bigquery.NewDataset(ctx, "default", &bigquery.DatasetArgs{
 //				DatasetId:                pulumi.String("tf_test"),
 //				FriendlyName:             pulumi.String("terraform-test"),
 //				Description:              pulumi.String("Description for the dataset created by terraform"),
@@ -274,8 +274,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultTable, err := bigquery.NewTable(ctx, "defaultTable", &bigquery.TableArgs{
-//				DatasetId:          defaultDataset.DatasetId,
+//			defaultTable, err := bigquery.NewTable(ctx, "default", &bigquery.TableArgs{
+//				DatasetId:          _default.DatasetId,
 //				TableId:            pulumi.String("tf_test"),
 //				DeletionProtection: pulumi.Bool(false),
 //				TimePartitioning: &bigquery.TableTimePartitioningArgs{
@@ -329,7 +329,7 @@ import (
 //								TransformationDetailsStorageConfig: &dataloss.PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs{
 //									Table: &dataloss.PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs{
 //										ProjectId: pulumi.String("my-project-name"),
-//										DatasetId: defaultDataset.DatasetId,
+//										DatasetId: _default.DatasetId,
 //										TableId:   defaultTable.TableId,
 //									},
 //								},
@@ -372,29 +372,35 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataloss.NewPreventionJobTrigger(ctx, "hybridTrigger", &dataloss.PreventionJobTriggerArgs{
+//			_, err := dataloss.NewPreventionJobTrigger(ctx, "hybrid_trigger", &dataloss.PreventionJobTriggerArgs{
+//				Parent: pulumi.String("projects/my-project-name"),
+//				Triggers: dataloss.PreventionJobTriggerTriggerArray{
+//					&dataloss.PreventionJobTriggerTriggerArgs{
+//						Manual: nil,
+//					},
+//				},
 //				InspectJob: &dataloss.PreventionJobTriggerInspectJobArgs{
+//					InspectTemplateName: pulumi.String("fake"),
 //					Actions: dataloss.PreventionJobTriggerInspectJobActionArray{
 //						&dataloss.PreventionJobTriggerInspectJobActionArgs{
 //							SaveFindings: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsArgs{
 //								OutputConfig: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs{
 //									Table: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs{
-//										DatasetId: pulumi.String("dataset"),
 //										ProjectId: pulumi.String("project"),
+//										DatasetId: pulumi.String("dataset"),
 //									},
 //								},
 //							},
 //						},
 //					},
-//					InspectTemplateName: pulumi.String("fake"),
 //					StorageConfig: &dataloss.PreventionJobTriggerInspectJobStorageConfigArgs{
 //						HybridOptions: &dataloss.PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs{
 //							Description: pulumi.String("Hybrid job trigger for data from the comments field of a table that contains customer appointment bookings"),
-//							Labels: pulumi.StringMap{
-//								"env": pulumi.String("prod"),
-//							},
 //							RequiredFindingLabelKeys: pulumi.StringArray{
 //								pulumi.String("appointment-bookings-comments"),
+//							},
+//							Labels: pulumi.StringMap{
+//								"env": pulumi.String("prod"),
 //							},
 //							TableOptions: &dataloss.PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs{
 //								IdentifyingFields: dataloss.PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArray{
@@ -406,10 +412,124 @@ import (
 //						},
 //					},
 //				},
-//				Parent: pulumi.String("projects/my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Dlp Job Trigger Inspect
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataloss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataloss.NewPreventionJobTrigger(ctx, "inspect", &dataloss.PreventionJobTriggerArgs{
+//				Parent:      pulumi.String("projects/my-project-name"),
+//				Description: pulumi.String("Description"),
+//				DisplayName: pulumi.String("Displayname"),
 //				Triggers: dataloss.PreventionJobTriggerTriggerArray{
 //					&dataloss.PreventionJobTriggerTriggerArgs{
-//						Manual: nil,
+//						Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
+//							RecurrencePeriodDuration: pulumi.String("86400s"),
+//						},
+//					},
+//				},
+//				InspectJob: &dataloss.PreventionJobTriggerInspectJobArgs{
+//					InspectTemplateName: pulumi.String("fake"),
+//					Actions: dataloss.PreventionJobTriggerInspectJobActionArray{
+//						&dataloss.PreventionJobTriggerInspectJobActionArgs{
+//							SaveFindings: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsArgs{
+//								OutputConfig: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs{
+//									Table: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs{
+//										ProjectId: pulumi.String("project"),
+//										DatasetId: pulumi.String("dataset"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//					StorageConfig: &dataloss.PreventionJobTriggerInspectJobStorageConfigArgs{
+//						CloudStorageOptions: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs{
+//							FileSet: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs{
+//								Url: pulumi.String("gs://mybucket/directory/"),
+//							},
+//						},
+//					},
+//					InspectConfig: &dataloss.PreventionJobTriggerInspectJobInspectConfigArgs{
+//						CustomInfoTypes: dataloss.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArray{
+//							&dataloss.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgs{
+//								InfoType: &dataloss.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeArgs{
+//									Name: pulumi.String("MY_CUSTOM_TYPE"),
+//								},
+//								Likelihood: pulumi.String("UNLIKELY"),
+//								Regex: &dataloss.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegexArgs{
+//									Pattern: pulumi.String("test*"),
+//								},
+//							},
+//						},
+//						InfoTypes: dataloss.PreventionJobTriggerInspectJobInspectConfigInfoTypeArray{
+//							&dataloss.PreventionJobTriggerInspectJobInspectConfigInfoTypeArgs{
+//								Name: pulumi.String("EMAIL_ADDRESS"),
+//							},
+//						},
+//						MinLikelihood: pulumi.String("UNLIKELY"),
+//						RuleSets: dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetArray{
+//							&dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetArgs{
+//								InfoTypes: dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeArray{
+//									&dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeArgs{
+//										Name: pulumi.String("EMAIL_ADDRESS"),
+//									},
+//								},
+//								Rules: dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleArray{
+//									&dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleArgs{
+//										ExclusionRule: &dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleArgs{
+//											Regex: &dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegexArgs{
+//												Pattern: pulumi.String(".+@example.com"),
+//											},
+//											MatchingType: pulumi.String("MATCHING_TYPE_FULL_MATCH"),
+//										},
+//									},
+//								},
+//							},
+//							&dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetArgs{
+//								InfoTypes: dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeArray{
+//									&dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeArgs{
+//										Name: pulumi.String("MY_CUSTOM_TYPE"),
+//									},
+//								},
+//								Rules: dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleArray{
+//									&dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleArgs{
+//										HotwordRule: &dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleArgs{
+//											HotwordRegex: &dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs{
+//												Pattern: pulumi.String("example*"),
+//											},
+//											Proximity: &dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximityArgs{
+//												WindowBefore: pulumi.Int(50),
+//											},
+//											LikelihoodAdjustment: &dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs{
+//												FixedLikelihood: pulumi.String("VERY_LIKELY"),
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//						Limits: &dataloss.PreventionJobTriggerInspectJobInspectConfigLimitsArgs{
+//							MaxFindingsPerItem:    pulumi.Int(10),
+//							MaxFindingsPerRequest: pulumi.Int(50),
+//						},
 //					},
 //				},
 //			})
@@ -435,29 +555,29 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataloss.NewPreventionJobTrigger(ctx, "publishToStackdriver", &dataloss.PreventionJobTriggerArgs{
+//			_, err := dataloss.NewPreventionJobTrigger(ctx, "publish_to_stackdriver", &dataloss.PreventionJobTriggerArgs{
+//				Parent:      pulumi.String("projects/my-project-name"),
 //				Description: pulumi.String("Description for the job_trigger created by terraform"),
 //				DisplayName: pulumi.String("TerraformDisplayName"),
+//				Triggers: dataloss.PreventionJobTriggerTriggerArray{
+//					&dataloss.PreventionJobTriggerTriggerArgs{
+//						Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
+//							RecurrencePeriodDuration: pulumi.String("86400s"),
+//						},
+//					},
+//				},
 //				InspectJob: &dataloss.PreventionJobTriggerInspectJobArgs{
+//					InspectTemplateName: pulumi.String("sample-inspect-template"),
 //					Actions: dataloss.PreventionJobTriggerInspectJobActionArray{
 //						&dataloss.PreventionJobTriggerInspectJobActionArgs{
 //							PublishToStackdriver: nil,
 //						},
 //					},
-//					InspectTemplateName: pulumi.String("sample-inspect-template"),
 //					StorageConfig: &dataloss.PreventionJobTriggerInspectJobStorageConfigArgs{
 //						CloudStorageOptions: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs{
 //							FileSet: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs{
 //								Url: pulumi.String("gs://mybucket/directory/"),
 //							},
-//						},
-//					},
-//				},
-//				Parent: pulumi.String("projects/my-project-name"),
-//				Triggers: dataloss.PreventionJobTriggerTriggerArray{
-//					&dataloss.PreventionJobTriggerTriggerArgs{
-//						Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
-//							RecurrencePeriodDuration: pulumi.String("86400s"),
 //						},
 //					},
 //				},
@@ -484,37 +604,37 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataloss.NewPreventionJobTrigger(ctx, "withTriggerId", &dataloss.PreventionJobTriggerArgs{
+//			_, err := dataloss.NewPreventionJobTrigger(ctx, "with_trigger_id", &dataloss.PreventionJobTriggerArgs{
+//				Parent:      pulumi.String("projects/my-project-name"),
 //				Description: pulumi.String("Starting description"),
 //				DisplayName: pulumi.String("display"),
+//				TriggerId:   pulumi.String("id-"),
+//				Triggers: dataloss.PreventionJobTriggerTriggerArray{
+//					&dataloss.PreventionJobTriggerTriggerArgs{
+//						Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
+//							RecurrencePeriodDuration: pulumi.String("86400s"),
+//						},
+//					},
+//				},
 //				InspectJob: &dataloss.PreventionJobTriggerInspectJobArgs{
+//					InspectTemplateName: pulumi.String("fake"),
 //					Actions: dataloss.PreventionJobTriggerInspectJobActionArray{
 //						&dataloss.PreventionJobTriggerInspectJobActionArgs{
 //							SaveFindings: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsArgs{
 //								OutputConfig: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs{
 //									Table: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs{
-//										DatasetId: pulumi.String("dataset123"),
 //										ProjectId: pulumi.String("project"),
+//										DatasetId: pulumi.String("dataset123"),
 //									},
 //								},
 //							},
 //						},
 //					},
-//					InspectTemplateName: pulumi.String("fake"),
 //					StorageConfig: &dataloss.PreventionJobTriggerInspectJobStorageConfigArgs{
 //						CloudStorageOptions: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs{
 //							FileSet: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs{
 //								Url: pulumi.String("gs://mybucket/directory/"),
 //							},
-//						},
-//					},
-//				},
-//				Parent:    pulumi.String("projects/my-project-name"),
-//				TriggerId: pulumi.String("id-"),
-//				Triggers: dataloss.PreventionJobTriggerTriggerArray{
-//					&dataloss.PreventionJobTriggerTriggerArgs{
-//						Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
-//							RecurrencePeriodDuration: pulumi.String("86400s"),
 //						},
 //					},
 //				},
@@ -542,16 +662,25 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataloss.NewPreventionJobTrigger(ctx, "basic", &dataloss.PreventionJobTriggerArgs{
+//				Parent:      pulumi.String("projects/my-project-name"),
 //				Description: pulumi.String("Description"),
 //				DisplayName: pulumi.String("Displayname"),
+//				Triggers: dataloss.PreventionJobTriggerTriggerArray{
+//					&dataloss.PreventionJobTriggerTriggerArgs{
+//						Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
+//							RecurrencePeriodDuration: pulumi.String("86400s"),
+//						},
+//					},
+//				},
 //				InspectJob: &dataloss.PreventionJobTriggerInspectJobArgs{
+//					InspectTemplateName: pulumi.String("fake"),
 //					Actions: dataloss.PreventionJobTriggerInspectJobActionArray{
 //						&dataloss.PreventionJobTriggerInspectJobActionArgs{
 //							SaveFindings: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsArgs{
 //								OutputConfig: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs{
 //									Table: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs{
-//										DatasetId: pulumi.String("dataset"),
 //										ProjectId: pulumi.String("project"),
+//										DatasetId: pulumi.String("dataset"),
 //									},
 //								},
 //							},
@@ -562,20 +691,11 @@ import (
 //							},
 //						},
 //					},
-//					InspectTemplateName: pulumi.String("fake"),
 //					StorageConfig: &dataloss.PreventionJobTriggerInspectJobStorageConfigArgs{
 //						CloudStorageOptions: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs{
 //							FileSet: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs{
 //								Url: pulumi.String("gs://mybucket/directory/"),
 //							},
-//						},
-//					},
-//				},
-//				Parent: pulumi.String("projects/my-project-name"),
-//				Triggers: dataloss.PreventionJobTriggerTriggerArray{
-//					&dataloss.PreventionJobTriggerTriggerArgs{
-//						Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
-//							RecurrencePeriodDuration: pulumi.String("86400s"),
 //						},
 //					},
 //				},
@@ -603,38 +723,38 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataloss.NewPreventionJobTrigger(ctx, "basic", &dataloss.PreventionJobTriggerArgs{
+//				Parent:      pulumi.String("projects/my-project-name"),
 //				Description: pulumi.String("Description"),
 //				DisplayName: pulumi.String("Displayname"),
+//				Triggers: dataloss.PreventionJobTriggerTriggerArray{
+//					&dataloss.PreventionJobTriggerTriggerArgs{
+//						Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
+//							RecurrencePeriodDuration: pulumi.String("86400s"),
+//						},
+//					},
+//				},
 //				InspectJob: &dataloss.PreventionJobTriggerInspectJobArgs{
+//					InspectTemplateName: pulumi.String("fake"),
 //					Actions: dataloss.PreventionJobTriggerInspectJobActionArray{
 //						&dataloss.PreventionJobTriggerInspectJobActionArgs{
 //							SaveFindings: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsArgs{
 //								OutputConfig: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs{
 //									Table: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs{
-//										DatasetId: pulumi.String("dataset"),
 //										ProjectId: pulumi.String("project"),
+//										DatasetId: pulumi.String("dataset"),
 //									},
 //								},
 //							},
 //						},
 //					},
-//					InspectTemplateName: pulumi.String("fake"),
 //					StorageConfig: &dataloss.PreventionJobTriggerInspectJobStorageConfigArgs{
+//						TimespanConfig: &dataloss.PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs{
+//							EnableAutoPopulationOfTimespanConfig: pulumi.Bool(true),
+//						},
 //						CloudStorageOptions: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs{
 //							FileSet: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs{
 //								Url: pulumi.String("gs://mybucket/directory/"),
 //							},
-//						},
-//						TimespanConfig: &dataloss.PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs{
-//							EnableAutoPopulationOfTimespanConfig: pulumi.Bool(true),
-//						},
-//					},
-//				},
-//				Parent: pulumi.String("projects/my-project-name"),
-//				Triggers: dataloss.PreventionJobTriggerTriggerArray{
-//					&dataloss.PreventionJobTriggerTriggerArgs{
-//						Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
-//							RecurrencePeriodDuration: pulumi.String("86400s"),
 //						},
 //					},
 //				},

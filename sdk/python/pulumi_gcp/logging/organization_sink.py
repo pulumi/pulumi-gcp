@@ -404,8 +404,11 @@ class OrganizationSink(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        log_bucket = gcp.storage.Bucket("log-bucket", location="US")
+        log_bucket = gcp.storage.Bucket("log-bucket",
+            name="organization-logging-bucket",
+            location="US")
         my_sink = gcp.logging.OrganizationSink("my-sink",
+            name="my-sink",
             description="some explanation on what this is",
             org_id="123456789",
             destination=log_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"),
@@ -469,8 +472,11 @@ class OrganizationSink(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        log_bucket = gcp.storage.Bucket("log-bucket", location="US")
+        log_bucket = gcp.storage.Bucket("log-bucket",
+            name="organization-logging-bucket",
+            location="US")
         my_sink = gcp.logging.OrganizationSink("my-sink",
+            name="my-sink",
             description="some explanation on what this is",
             org_id="123456789",
             destination=log_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"),

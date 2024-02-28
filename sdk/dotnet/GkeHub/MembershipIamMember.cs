@@ -51,9 +51,9 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     ///     var policy = new Gcp.GkeHub.MembershipIamPolicy("policy", new()
     ///     {
-    ///         Project = google_gke_hub_membership.Membership.Project,
-    ///         Location = google_gke_hub_membership.Membership.Location,
-    ///         MembershipId = google_gke_hub_membership.Membership.Membership_id,
+    ///         Project = membership.Project,
+    ///         Location = membership.Location,
+    ///         MembershipId = membership.MembershipId,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -72,9 +72,9 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var binding = new Gcp.GkeHub.MembershipIamBinding("binding", new()
     ///     {
-    ///         Project = google_gke_hub_membership.Membership.Project,
-    ///         Location = google_gke_hub_membership.Membership.Location,
-    ///         MembershipId = google_gke_hub_membership.Membership.Membership_id,
+    ///         Project = membership.Project,
+    ///         Location = membership.Location,
+    ///         MembershipId = membership.MembershipId,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -97,9 +97,9 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var member = new Gcp.GkeHub.MembershipIamMember("member", new()
     ///     {
-    ///         Project = google_gke_hub_membership.Membership.Project,
-    ///         Location = google_gke_hub_membership.Membership.Location,
-    ///         MembershipId = google_gke_hub_membership.Membership.Membership_id,
+    ///         Project = membership.Project,
+    ///         Location = membership.Location,
+    ///         MembershipId = membership.MembershipId,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

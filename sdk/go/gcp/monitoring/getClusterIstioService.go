@@ -40,11 +40,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Monitors the default ClusterIstio service
 //			_, err := monitoring.GetClusterIstioService(ctx, &monitoring.GetClusterIstioServiceArgs{
-//				ClusterName:      "west",
 //				Location:         "us-west2-a",
-//				ServiceName:      "istio-policy",
+//				ClusterName:      "west",
 //				ServiceNamespace: "istio-system",
+//				ServiceName:      "istio-policy",
 //			}, nil)
 //			if err != nil {
 //				return err

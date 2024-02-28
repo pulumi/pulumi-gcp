@@ -63,23 +63,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var filename_trigger = new Trigger(&#34;filename-trigger&#34;, TriggerArgs.builder()        
- *             .filename(&#34;cloudbuild.yaml&#34;)
  *             .location(&#34;us-central1&#34;)
- *             .substitutions(Map.ofEntries(
- *                 Map.entry(&#34;_BAZ&#34;, &#34;qux&#34;),
- *                 Map.entry(&#34;_FOO&#34;, &#34;bar&#34;)
- *             ))
  *             .triggerTemplate(TriggerTriggerTemplateArgs.builder()
  *                 .branchName(&#34;main&#34;)
  *                 .repoName(&#34;my-repo&#34;)
  *                 .build())
+ *             .substitutions(Map.ofEntries(
+ *                 Map.entry(&#34;_FOO&#34;, &#34;bar&#34;),
+ *                 Map.entry(&#34;_BAZ&#34;, &#34;qux&#34;)
+ *             ))
+ *             .filename(&#34;cloudbuild.yaml&#34;)
  *             .build());
  * 
  *     }
  * }
  * ```
  * ### Cloudbuild Trigger Build
- * 
  * ```java
  * package generated_program;
  * 
@@ -88,14 +87,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.cloudbuild.Trigger;
  * import com.pulumi.gcp.cloudbuild.TriggerArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerTriggerTemplateArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArgs;
- * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsArgs;
- * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsObjectsArgs;
- * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildAvailableSecretsArgs;
- * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildOptionsArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildSourceArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildSourceStorageSourceArgs;
- * import com.pulumi.gcp.cloudbuild.inputs.TriggerTriggerTemplateArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildAvailableSecretsArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsObjectsArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildOptionsArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -110,87 +109,91 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var build_trigger = new Trigger(&#34;build-trigger&#34;, TriggerArgs.builder()        
+ *             .name(&#34;my-trigger&#34;)
+ *             .location(&#34;global&#34;)
+ *             .triggerTemplate(TriggerTriggerTemplateArgs.builder()
+ *                 .branchName(&#34;main&#34;)
+ *                 .repoName(&#34;my-repo&#34;)
+ *                 .build())
  *             .build(TriggerBuildArgs.builder()
- *                 .artifacts(TriggerBuildArtifactsArgs.builder()
- *                     .images(&#34;gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA&#34;)
- *                     .mavenArtifacts(TriggerBuildArtifactsMavenArtifactArgs.builder()
- *                         .artifactId(&#34;my-app&#34;)
- *                         .groupId(&#34;com.mycompany.app&#34;)
- *                         .path(&#34;/workspace/my-app/target/my-app-1.0.SNAPSHOT.jar&#34;)
- *                         .repository(&#34;https://us-west1-maven.pkg.dev/myProject/quickstart-java-repo&#34;)
- *                         .version(&#34;1.0&#34;)
+ *                 .steps(                
+ *                     TriggerBuildStepArgs.builder()
+ *                         .name(&#34;gcr.io/cloud-builders/gsutil&#34;)
+ *                         .args(                        
+ *                             &#34;cp&#34;,
+ *                             &#34;gs://mybucket/remotefile.zip&#34;,
+ *                             &#34;localfile.zip&#34;)
+ *                         .timeout(&#34;120s&#34;)
+ *                         .secretEnvs(&#34;MY_SECRET&#34;)
+ *                         .build(),
+ *                     TriggerBuildStepArgs.builder()
+ *                         .name(&#34;ubuntu&#34;)
+ *                         .script(&#34;echo hello&#34;)
  *                         .build())
- *                     .npmPackages(TriggerBuildArtifactsNpmPackageArgs.builder()
- *                         .packagePath(&#34;package.json&#34;)
- *                         .repository(&#34;https://us-west1-npm.pkg.dev/myProject/quickstart-nodejs-repo&#34;)
- *                         .build())
- *                     .objects(TriggerBuildArtifactsObjectsArgs.builder()
- *                         .location(&#34;gs://bucket/path/to/somewhere/&#34;)
- *                         .paths(&#34;path&#34;)
- *                         .build())
- *                     .pythonPackages(TriggerBuildArtifactsPythonPackageArgs.builder()
- *                         .paths(&#34;dist/*&#34;)
- *                         .repository(&#34;https://us-west1-python.pkg.dev/myProject/quickstart-python-repo&#34;)
- *                         .build())
- *                     .build())
- *                 .availableSecrets(TriggerBuildAvailableSecretsArgs.builder()
- *                     .secretManager(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .build())
- *                 .logsBucket(&#34;gs://mybucket/logs&#34;)
- *                 .options(TriggerBuildOptionsArgs.builder()
- *                     .diskSizeGb(100)
- *                     .dynamicSubstitutions(true)
- *                     .env(&#34;ekey = evalue&#34;)
- *                     .logStreamingOption(&#34;STREAM_OFF&#34;)
- *                     .logging(&#34;LEGACY&#34;)
- *                     .machineType(&#34;N1_HIGHCPU_8&#34;)
- *                     .requestedVerifyOption(&#34;VERIFIED&#34;)
- *                     .secretEnv(&#34;secretenv = svalue&#34;)
- *                     .sourceProvenanceHash(&#34;MD5&#34;)
- *                     .substitutionOption(&#34;ALLOW_LOOSE&#34;)
- *                     .volumes(TriggerBuildOptionsVolumeArgs.builder()
- *                         .name(&#34;v1&#34;)
- *                         .path(&#34;v1&#34;)
- *                         .build())
- *                     .workerPool(&#34;pool&#34;)
- *                     .build())
- *                 .queueTtl(&#34;20s&#34;)
- *                 .secrets(TriggerBuildSecretArgs.builder()
- *                     .kmsKeyName(&#34;projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name&#34;)
- *                     .secretEnv(Map.of(&#34;PASSWORD&#34;, &#34;ZW5jcnlwdGVkLXBhc3N3b3JkCg==&#34;))
- *                     .build())
  *                 .source(TriggerBuildSourceArgs.builder()
  *                     .storageSource(TriggerBuildSourceStorageSourceArgs.builder()
  *                         .bucket(&#34;mybucket&#34;)
  *                         .object(&#34;source_code.tar.gz&#34;)
  *                         .build())
  *                     .build())
- *                 .steps(                
- *                     TriggerBuildStepArgs.builder()
- *                         .args(                        
- *                             &#34;cp&#34;,
- *                             &#34;gs://mybucket/remotefile.zip&#34;,
- *                             &#34;localfile.zip&#34;)
- *                         .name(&#34;gcr.io/cloud-builders/gsutil&#34;)
- *                         .secretEnv(&#34;MY_SECRET&#34;)
- *                         .timeout(&#34;120s&#34;)
- *                         .build(),
- *                     TriggerBuildStepArgs.builder()
- *                         .name(&#34;ubuntu&#34;)
- *                         .script(&#34;echo hello&#34;)
- *                         .build())
- *                 .substitutions(Map.ofEntries(
- *                     Map.entry(&#34;_BAZ&#34;, &#34;qux&#34;),
- *                     Map.entry(&#34;_FOO&#34;, &#34;bar&#34;)
- *                 ))
  *                 .tags(                
  *                     &#34;build&#34;,
  *                     &#34;newFeature&#34;)
- *                 .build())
- *             .location(&#34;global&#34;)
- *             .triggerTemplate(TriggerTriggerTemplateArgs.builder()
- *                 .branchName(&#34;main&#34;)
- *                 .repoName(&#34;my-repo&#34;)
+ *                 .substitutions(Map.ofEntries(
+ *                     Map.entry(&#34;_FOO&#34;, &#34;bar&#34;),
+ *                     Map.entry(&#34;_BAZ&#34;, &#34;qux&#34;)
+ *                 ))
+ *                 .queueTtl(&#34;20s&#34;)
+ *                 .logsBucket(&#34;gs://mybucket/logs&#34;)
+ *                 .secrets(TriggerBuildSecretArgs.builder()
+ *                     .kmsKeyName(&#34;projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name&#34;)
+ *                     .secretEnv(Map.of(&#34;PASSWORD&#34;, &#34;ZW5jcnlwdGVkLXBhc3N3b3JkCg==&#34;))
+ *                     .build())
+ *                 .availableSecrets(TriggerBuildAvailableSecretsArgs.builder()
+ *                     .secretManagers(TriggerBuildAvailableSecretsSecretManagerArgs.builder()
+ *                         .env(&#34;MY_SECRET&#34;)
+ *                         .versionName(&#34;projects/myProject/secrets/mySecret/versions/latest&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .artifacts(TriggerBuildArtifactsArgs.builder()
+ *                     .images(&#34;gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA&#34;)
+ *                     .objects(TriggerBuildArtifactsObjectsArgs.builder()
+ *                         .location(&#34;gs://bucket/path/to/somewhere/&#34;)
+ *                         .paths(&#34;path&#34;)
+ *                         .build())
+ *                     .npmPackages(TriggerBuildArtifactsNpmPackageArgs.builder()
+ *                         .packagePath(&#34;package.json&#34;)
+ *                         .repository(&#34;https://us-west1-npm.pkg.dev/myProject/quickstart-nodejs-repo&#34;)
+ *                         .build())
+ *                     .pythonPackages(TriggerBuildArtifactsPythonPackageArgs.builder()
+ *                         .paths(&#34;dist/*&#34;)
+ *                         .repository(&#34;https://us-west1-python.pkg.dev/myProject/quickstart-python-repo&#34;)
+ *                         .build())
+ *                     .mavenArtifacts(TriggerBuildArtifactsMavenArtifactArgs.builder()
+ *                         .repository(&#34;https://us-west1-maven.pkg.dev/myProject/quickstart-java-repo&#34;)
+ *                         .path(&#34;/workspace/my-app/target/my-app-1.0.SNAPSHOT.jar&#34;)
+ *                         .artifactId(&#34;my-app&#34;)
+ *                         .groupId(&#34;com.mycompany.app&#34;)
+ *                         .version(&#34;1.0&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .options(TriggerBuildOptionsArgs.builder()
+ *                     .sourceProvenanceHashes(&#34;MD5&#34;)
+ *                     .requestedVerifyOption(&#34;VERIFIED&#34;)
+ *                     .machineType(&#34;N1_HIGHCPU_8&#34;)
+ *                     .diskSizeGb(100)
+ *                     .substitutionOption(&#34;ALLOW_LOOSE&#34;)
+ *                     .dynamicSubstitutions(true)
+ *                     .logStreamingOption(&#34;STREAM_OFF&#34;)
+ *                     .workerPool(&#34;pool&#34;)
+ *                     .logging(&#34;LEGACY&#34;)
+ *                     .envs(&#34;ekey = evalue&#34;)
+ *                     .secretEnvs(&#34;secretenv = svalue&#34;)
+ *                     .volumes(TriggerBuildOptionsVolumeArgs.builder()
+ *                         .name(&#34;v1&#34;)
+ *                         .path(&#34;v1&#34;)
+ *                         .build())
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -208,12 +211,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.serviceaccount.Account;
  * import com.pulumi.gcp.serviceaccount.AccountArgs;
- * import com.pulumi.gcp.projects.IAMMember;
- * import com.pulumi.gcp.projects.IAMMemberArgs;
  * import com.pulumi.gcp.cloudbuild.Trigger;
  * import com.pulumi.gcp.cloudbuild.TriggerArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerTriggerTemplateArgs;
- * import com.pulumi.resources.CustomResourceOptions;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -233,6 +235,15 @@ import javax.annotation.Nullable;
  *             .accountId(&#34;cloud-sa&#34;)
  *             .build());
  * 
+ *         var service_account_trigger = new Trigger(&#34;service-account-trigger&#34;, TriggerArgs.builder()        
+ *             .triggerTemplate(TriggerTriggerTemplateArgs.builder()
+ *                 .branchName(&#34;main&#34;)
+ *                 .repoName(&#34;my-repo&#34;)
+ *                 .build())
+ *             .serviceAccount(cloudbuildServiceAccount.id())
+ *             .filename(&#34;cloudbuild.yaml&#34;)
+ *             .build());
+ * 
  *         var actAs = new IAMMember(&#34;actAs&#34;, IAMMemberArgs.builder()        
  *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
  *             .role(&#34;roles/iam.serviceAccountUser&#34;)
@@ -244,19 +255,6 @@ import javax.annotation.Nullable;
  *             .role(&#34;roles/logging.logWriter&#34;)
  *             .member(cloudbuildServiceAccount.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
  *             .build());
- * 
- *         var service_account_trigger = new Trigger(&#34;service-account-trigger&#34;, TriggerArgs.builder()        
- *             .triggerTemplate(TriggerTriggerTemplateArgs.builder()
- *                 .branchName(&#34;main&#34;)
- *                 .repoName(&#34;my-repo&#34;)
- *                 .build())
- *             .serviceAccount(cloudbuildServiceAccount.id())
- *             .filename(&#34;cloudbuild.yaml&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
- *                     actAs,
- *                     logsWriter)
- *                 .build());
  * 
  *     }
  * }
@@ -286,16 +284,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var include_build_logs_trigger = new Trigger(&#34;include-build-logs-trigger&#34;, TriggerArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .name(&#34;include-build-logs-trigger&#34;)
  *             .filename(&#34;cloudbuild.yaml&#34;)
  *             .github(TriggerGithubArgs.builder()
- *                 .name(&#34;terraform-provider-google-beta&#34;)
  *                 .owner(&#34;hashicorp&#34;)
+ *                 .name(&#34;terraform-provider-google-beta&#34;)
  *                 .push(TriggerGithubPushArgs.builder()
  *                     .branch(&#34;^main$&#34;)
  *                     .build())
  *                 .build())
  *             .includeBuildLogs(&#34;INCLUDE_BUILD_LOGS_WITH_STATUS&#34;)
- *             .location(&#34;us-central1&#34;)
  *             .build());
  * 
  *     }
@@ -309,6 +308,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
  * import com.pulumi.gcp.cloudbuild.Trigger;
  * import com.pulumi.gcp.cloudbuild.TriggerArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerPubsubConfigArgs;
@@ -327,10 +327,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mytopic = new Topic(&#34;mytopic&#34;);
+ *         var mytopic = new Topic(&#34;mytopic&#34;, TopicArgs.builder()        
+ *             .name(&#34;my-topic&#34;)
+ *             .build());
  * 
  *         var pubsub_config_trigger = new Trigger(&#34;pubsub-config-trigger&#34;, TriggerArgs.builder()        
  *             .location(&#34;us-central1&#34;)
+ *             .name(&#34;pubsub-trigger&#34;)
  *             .description(&#34;acceptance test example pubsub build trigger&#34;)
  *             .pubsubConfig(TriggerPubsubConfigArgs.builder()
  *                 .topic(mytopic.id())
@@ -421,6 +424,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var webhook_config_trigger = new Trigger(&#34;webhook-config-trigger&#34;, TriggerArgs.builder()        
+ *             .name(&#34;webhook-trigger&#34;)
  *             .description(&#34;acceptance test example webhook build trigger&#34;)
  *             .webhookConfig(TriggerWebhookConfigArgs.builder()
  *                 .secret(webhookTriggerSecretKeyData.id())
@@ -450,9 +454,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.cloudbuild.Trigger;
  * import com.pulumi.gcp.cloudbuild.TriggerArgs;
- * import com.pulumi.gcp.cloudbuild.inputs.TriggerApprovalConfigArgs;
- * import com.pulumi.gcp.cloudbuild.inputs.TriggerGitFileSourceArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerSourceToBuildArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerGitFileSourceArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerApprovalConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -467,19 +471,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var manual_trigger = new Trigger(&#34;manual-trigger&#34;, TriggerArgs.builder()        
- *             .approvalConfig(TriggerApprovalConfigArgs.builder()
- *                 .approvalRequired(true)
+ *             .name(&#34;manual-trigger&#34;)
+ *             .sourceToBuild(TriggerSourceToBuildArgs.builder()
+ *                 .uri(&#34;https://hashicorp/terraform-provider-google-beta&#34;)
+ *                 .ref(&#34;refs/heads/main&#34;)
+ *                 .repoType(&#34;GITHUB&#34;)
  *                 .build())
  *             .gitFileSource(TriggerGitFileSourceArgs.builder()
  *                 .path(&#34;cloudbuild.yaml&#34;)
- *                 .repoType(&#34;GITHUB&#34;)
+ *                 .uri(&#34;https://hashicorp/terraform-provider-google-beta&#34;)
  *                 .revision(&#34;refs/heads/main&#34;)
- *                 .uri(&#34;https://hashicorp/terraform-provider-google-beta&#34;)
- *                 .build())
- *             .sourceToBuild(TriggerSourceToBuildArgs.builder()
- *                 .ref(&#34;refs/heads/main&#34;)
  *                 .repoType(&#34;GITHUB&#34;)
- *                 .uri(&#34;https://hashicorp/terraform-provider-google-beta&#34;)
+ *                 .build())
+ *             .approvalConfig(TriggerApprovalConfigArgs.builder()
+ *                 .approvalRequired(true)
  *                 .build())
  *             .build());
  * 
@@ -495,8 +500,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.cloudbuild.Trigger;
  * import com.pulumi.gcp.cloudbuild.TriggerArgs;
- * import com.pulumi.gcp.cloudbuild.inputs.TriggerGitFileSourceArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerSourceToBuildArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerGitFileSourceArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -511,18 +516,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var manual_ghe_trigger = new Trigger(&#34;manual-ghe-trigger&#34;, TriggerArgs.builder()        
- *             .gitFileSource(TriggerGitFileSourceArgs.builder()
- *                 .githubEnterpriseConfig(&#34;projects/myProject/locations/global/githubEnterpriseConfigs/configID&#34;)
- *                 .path(&#34;cloudbuild.yaml&#34;)
- *                 .repoType(&#34;GITHUB&#34;)
- *                 .revision(&#34;refs/heads/main&#34;)
- *                 .uri(&#34;https://hashicorp/terraform-provider-google-beta&#34;)
- *                 .build())
+ *             .name(&#34;&#34;)
  *             .sourceToBuild(TriggerSourceToBuildArgs.builder()
- *                 .githubEnterpriseConfig(&#34;projects/myProject/locations/global/githubEnterpriseConfigs/configID&#34;)
+ *                 .uri(&#34;https://hashicorp/terraform-provider-google-beta&#34;)
  *                 .ref(&#34;refs/heads/main&#34;)
  *                 .repoType(&#34;GITHUB&#34;)
+ *                 .githubEnterpriseConfig(&#34;projects/myProject/locations/global/githubEnterpriseConfigs/configID&#34;)
+ *                 .build())
+ *             .gitFileSource(TriggerGitFileSourceArgs.builder()
+ *                 .path(&#34;cloudbuild.yaml&#34;)
  *                 .uri(&#34;https://hashicorp/terraform-provider-google-beta&#34;)
+ *                 .revision(&#34;refs/heads/main&#34;)
+ *                 .repoType(&#34;GITHUB&#34;)
+ *                 .githubEnterpriseConfig(&#34;projects/myProject/locations/global/githubEnterpriseConfigs/configID&#34;)
  *                 .build())
  *             .build());
  * 
@@ -538,8 +544,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.cloudbuild.Trigger;
  * import com.pulumi.gcp.cloudbuild.TriggerArgs;
- * import com.pulumi.gcp.cloudbuild.inputs.TriggerGitFileSourceArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerSourceToBuildArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerGitFileSourceArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -554,18 +560,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var manual_bitbucket_trigger = new Trigger(&#34;manual-bitbucket-trigger&#34;, TriggerArgs.builder()        
- *             .gitFileSource(TriggerGitFileSourceArgs.builder()
- *                 .bitbucketServerConfig(&#34;projects/myProject/locations/global/bitbucketServerConfigs/configID&#34;)
- *                 .path(&#34;cloudbuild.yaml&#34;)
- *                 .repoType(&#34;BITBUCKET_SERVER&#34;)
- *                 .revision(&#34;refs/heads/main&#34;)
- *                 .uri(&#34;https://bbs.com/scm/stag/test-repo.git&#34;)
- *                 .build())
+ *             .name(&#34;terraform-manual-bbs-trigger&#34;)
  *             .sourceToBuild(TriggerSourceToBuildArgs.builder()
- *                 .bitbucketServerConfig(&#34;projects/myProject/locations/global/bitbucketServerConfigs/configID&#34;)
+ *                 .uri(&#34;https://bbs.com/scm/stag/test-repo.git&#34;)
  *                 .ref(&#34;refs/heads/main&#34;)
  *                 .repoType(&#34;BITBUCKET_SERVER&#34;)
+ *                 .bitbucketServerConfig(&#34;projects/myProject/locations/global/bitbucketServerConfigs/configID&#34;)
+ *                 .build())
+ *             .gitFileSource(TriggerGitFileSourceArgs.builder()
+ *                 .path(&#34;cloudbuild.yaml&#34;)
  *                 .uri(&#34;https://bbs.com/scm/stag/test-repo.git&#34;)
+ *                 .revision(&#34;refs/heads/main&#34;)
+ *                 .repoType(&#34;BITBUCKET_SERVER&#34;)
+ *                 .bitbucketServerConfig(&#34;projects/myProject/locations/global/bitbucketServerConfigs/configID&#34;)
  *                 .build())
  *             .build());
  * 
@@ -604,6 +611,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var my_connection = new Connection(&#34;my-connection&#34;, ConnectionArgs.builder()        
  *             .location(&#34;us-central1&#34;)
+ *             .name(&#34;my-connection&#34;)
  *             .githubConfig(ConnectionGithubConfigArgs.builder()
  *                 .appInstallationId(123123)
  *                 .authorizerCredential(ConnectionGithubConfigAuthorizerCredentialArgs.builder()
@@ -613,6 +621,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var my_repository = new Repository(&#34;my-repository&#34;, RepositoryArgs.builder()        
+ *             .name(&#34;my-repo&#34;)
  *             .parentConnection(my_connection.id())
  *             .remoteUri(&#34;https://github.com/myuser/my-repo.git&#34;)
  *             .build());
@@ -656,17 +665,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var bbs_push_trigger = new Trigger(&#34;bbs-push-trigger&#34;, TriggerArgs.builder()        
+ *             .name(&#34;bbs-push-trigger&#34;)
+ *             .location(&#34;us-central1&#34;)
  *             .bitbucketServerTriggerConfig(TriggerBitbucketServerTriggerConfigArgs.builder()
- *                 .bitbucketServerConfigResource(&#34;projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig&#34;)
- *                 .projectKey(&#34;STAG&#34;)
- *                 .push(TriggerBitbucketServerTriggerConfigPushArgs.builder()
- *                     .invertRegex(true)
- *                     .tag(&#34;^0.1.*&#34;)
- *                     .build())
  *                 .repoSlug(&#34;bbs-push-trigger&#34;)
+ *                 .projectKey(&#34;STAG&#34;)
+ *                 .bitbucketServerConfigResource(&#34;projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig&#34;)
+ *                 .push(TriggerBitbucketServerTriggerConfigPushArgs.builder()
+ *                     .tag(&#34;^0.1.*&#34;)
+ *                     .invertRegex(true)
+ *                     .build())
  *                 .build())
  *             .filename(&#34;cloudbuild.yaml&#34;)
- *             .location(&#34;us-central1&#34;)
  *             .build());
  * 
  *     }
@@ -697,18 +707,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var bbs_pull_request_trigger = new Trigger(&#34;bbs-pull-request-trigger&#34;, TriggerArgs.builder()        
+ *             .name(&#34;ghe-trigger&#34;)
+ *             .location(&#34;us-central1&#34;)
  *             .bitbucketServerTriggerConfig(TriggerBitbucketServerTriggerConfigArgs.builder()
- *                 .bitbucketServerConfigResource(&#34;projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig&#34;)
+ *                 .repoSlug(&#34;terraform-provider-google&#34;)
  *                 .projectKey(&#34;STAG&#34;)
+ *                 .bitbucketServerConfigResource(&#34;projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig&#34;)
  *                 .pullRequest(TriggerBitbucketServerTriggerConfigPullRequestArgs.builder()
  *                     .branch(&#34;^master$&#34;)
- *                     .commentControl(&#34;COMMENTS_ENABLED&#34;)
  *                     .invertRegex(false)
+ *                     .commentControl(&#34;COMMENTS_ENABLED&#34;)
  *                     .build())
- *                 .repoSlug(&#34;terraform-provider-google&#34;)
  *                 .build())
  *             .filename(&#34;cloudbuild.yaml&#34;)
- *             .location(&#34;us-central1&#34;)
  *             .build());
  * 
  *     }
@@ -739,23 +750,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var ghe_trigger = new Trigger(&#34;ghe-trigger&#34;, TriggerArgs.builder()        
- *             .filename(&#34;cloudbuild.yaml&#34;)
+ *             .name(&#34;ghe-trigger&#34;)
+ *             .location(&#34;us-central1&#34;)
  *             .github(TriggerGithubArgs.builder()
- *                 .enterpriseConfigResourceName(&#34;projects/123456789/locations/us-central1/githubEnterpriseConfigs/configID&#34;)
- *                 .name(&#34;terraform-provider-google&#34;)
  *                 .owner(&#34;hashicorp&#34;)
+ *                 .name(&#34;terraform-provider-google&#34;)
  *                 .push(TriggerGithubPushArgs.builder()
  *                     .branch(&#34;^main$&#34;)
  *                     .build())
+ *                 .enterpriseConfigResourceName(&#34;projects/123456789/locations/us-central1/githubEnterpriseConfigs/configID&#34;)
  *                 .build())
- *             .location(&#34;us-central1&#34;)
+ *             .filename(&#34;cloudbuild.yaml&#34;)
  *             .build());
  * 
  *     }
  * }
  * ```
  * ### Cloudbuild Trigger Allow Failure
- * 
  * ```java
  * package generated_program;
  * 
@@ -764,14 +775,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.cloudbuild.Trigger;
  * import com.pulumi.gcp.cloudbuild.TriggerArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerTriggerTemplateArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArgs;
- * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsArgs;
- * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsObjectsArgs;
- * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildAvailableSecretsArgs;
- * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildOptionsArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildSourceArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildSourceStorageSourceArgs;
- * import com.pulumi.gcp.cloudbuild.inputs.TriggerTriggerTemplateArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildAvailableSecretsArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsObjectsArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildOptionsArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -786,39 +797,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var allow_failure_trigger = new Trigger(&#34;allow-failure-trigger&#34;, TriggerArgs.builder()        
+ *             .name(&#34;my-trigger&#34;)
+ *             .location(&#34;global&#34;)
+ *             .triggerTemplate(TriggerTriggerTemplateArgs.builder()
+ *                 .branchName(&#34;main&#34;)
+ *                 .repoName(&#34;my-repo&#34;)
+ *                 .build())
  *             .build(TriggerBuildArgs.builder()
- *                 .artifacts(TriggerBuildArtifactsArgs.builder()
- *                     .images(&#34;gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA&#34;)
- *                     .objects(TriggerBuildArtifactsObjectsArgs.builder()
- *                         .location(&#34;gs://bucket/path/to/somewhere/&#34;)
- *                         .paths(&#34;path&#34;)
- *                         .build())
- *                     .build())
- *                 .availableSecrets(TriggerBuildAvailableSecretsArgs.builder()
- *                     .secretManager(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .build())
- *                 .logsBucket(&#34;gs://mybucket/logs&#34;)
- *                 .options(TriggerBuildOptionsArgs.builder()
- *                     .diskSizeGb(100)
- *                     .dynamicSubstitutions(true)
- *                     .env(&#34;ekey = evalue&#34;)
- *                     .logStreamingOption(&#34;STREAM_OFF&#34;)
- *                     .logging(&#34;LEGACY&#34;)
- *                     .machineType(&#34;N1_HIGHCPU_8&#34;)
- *                     .requestedVerifyOption(&#34;VERIFIED&#34;)
- *                     .secretEnv(&#34;secretenv = svalue&#34;)
- *                     .sourceProvenanceHash(&#34;MD5&#34;)
- *                     .substitutionOption(&#34;ALLOW_LOOSE&#34;)
- *                     .volumes(TriggerBuildOptionsVolumeArgs.builder()
- *                         .name(&#34;v1&#34;)
- *                         .path(&#34;v1&#34;)
- *                         .build())
- *                     .workerPool(&#34;pool&#34;)
- *                     .build())
- *                 .queueTtl(&#34;20s&#34;)
- *                 .secrets(TriggerBuildSecretArgs.builder()
- *                     .kmsKeyName(&#34;projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name&#34;)
- *                     .secretEnv(Map.of(&#34;PASSWORD&#34;, &#34;ZW5jcnlwdGVkLXBhc3N3b3JkCg==&#34;))
+ *                 .steps(TriggerBuildStepArgs.builder()
+ *                     .name(&#34;ubuntu&#34;)
+ *                     .args(                    
+ *                         &#34;-c&#34;,
+ *                         &#34;exit 1&#34;)
+ *                     .allowFailure(true)
  *                     .build())
  *                 .source(TriggerBuildSourceArgs.builder()
  *                     .storageSource(TriggerBuildSourceStorageSourceArgs.builder()
@@ -826,25 +817,49 @@ import javax.annotation.Nullable;
  *                         .object(&#34;source_code.tar.gz&#34;)
  *                         .build())
  *                     .build())
- *                 .steps(TriggerBuildStepArgs.builder()
- *                     .allowFailure(true)
- *                     .args(                    
- *                         &#34;-c&#34;,
- *                         &#34;exit 1&#34;)
- *                     .name(&#34;ubuntu&#34;)
- *                     .build())
- *                 .substitutions(Map.ofEntries(
- *                     Map.entry(&#34;_BAZ&#34;, &#34;qux&#34;),
- *                     Map.entry(&#34;_FOO&#34;, &#34;bar&#34;)
- *                 ))
  *                 .tags(                
  *                     &#34;build&#34;,
  *                     &#34;newFeature&#34;)
- *                 .build())
- *             .location(&#34;global&#34;)
- *             .triggerTemplate(TriggerTriggerTemplateArgs.builder()
- *                 .branchName(&#34;main&#34;)
- *                 .repoName(&#34;my-repo&#34;)
+ *                 .substitutions(Map.ofEntries(
+ *                     Map.entry(&#34;_FOO&#34;, &#34;bar&#34;),
+ *                     Map.entry(&#34;_BAZ&#34;, &#34;qux&#34;)
+ *                 ))
+ *                 .queueTtl(&#34;20s&#34;)
+ *                 .logsBucket(&#34;gs://mybucket/logs&#34;)
+ *                 .secrets(TriggerBuildSecretArgs.builder()
+ *                     .kmsKeyName(&#34;projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name&#34;)
+ *                     .secretEnv(Map.of(&#34;PASSWORD&#34;, &#34;ZW5jcnlwdGVkLXBhc3N3b3JkCg==&#34;))
+ *                     .build())
+ *                 .availableSecrets(TriggerBuildAvailableSecretsArgs.builder()
+ *                     .secretManagers(TriggerBuildAvailableSecretsSecretManagerArgs.builder()
+ *                         .env(&#34;MY_SECRET&#34;)
+ *                         .versionName(&#34;projects/myProject/secrets/mySecret/versions/latest&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .artifacts(TriggerBuildArtifactsArgs.builder()
+ *                     .images(&#34;gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA&#34;)
+ *                     .objects(TriggerBuildArtifactsObjectsArgs.builder()
+ *                         .location(&#34;gs://bucket/path/to/somewhere/&#34;)
+ *                         .paths(&#34;path&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .options(TriggerBuildOptionsArgs.builder()
+ *                     .sourceProvenanceHashes(&#34;MD5&#34;)
+ *                     .requestedVerifyOption(&#34;VERIFIED&#34;)
+ *                     .machineType(&#34;N1_HIGHCPU_8&#34;)
+ *                     .diskSizeGb(100)
+ *                     .substitutionOption(&#34;ALLOW_LOOSE&#34;)
+ *                     .dynamicSubstitutions(true)
+ *                     .logStreamingOption(&#34;STREAM_OFF&#34;)
+ *                     .workerPool(&#34;pool&#34;)
+ *                     .logging(&#34;LEGACY&#34;)
+ *                     .envs(&#34;ekey = evalue&#34;)
+ *                     .secretEnvs(&#34;secretenv = svalue&#34;)
+ *                     .volumes(TriggerBuildOptionsVolumeArgs.builder()
+ *                         .name(&#34;v1&#34;)
+ *                         .path(&#34;v1&#34;)
+ *                         .build())
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -852,7 +867,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Cloudbuild Trigger Allow Exit Codes
- * 
  * ```java
  * package generated_program;
  * 
@@ -861,14 +875,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.cloudbuild.Trigger;
  * import com.pulumi.gcp.cloudbuild.TriggerArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerTriggerTemplateArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArgs;
- * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsArgs;
- * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsObjectsArgs;
- * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildAvailableSecretsArgs;
- * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildOptionsArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildSourceArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildSourceStorageSourceArgs;
- * import com.pulumi.gcp.cloudbuild.inputs.TriggerTriggerTemplateArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildAvailableSecretsArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsObjectsArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildOptionsArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -883,39 +897,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var allow_exit_codes_trigger = new Trigger(&#34;allow-exit-codes-trigger&#34;, TriggerArgs.builder()        
+ *             .name(&#34;my-trigger&#34;)
+ *             .location(&#34;global&#34;)
+ *             .triggerTemplate(TriggerTriggerTemplateArgs.builder()
+ *                 .branchName(&#34;main&#34;)
+ *                 .repoName(&#34;my-repo&#34;)
+ *                 .build())
  *             .build(TriggerBuildArgs.builder()
- *                 .artifacts(TriggerBuildArtifactsArgs.builder()
- *                     .images(&#34;gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA&#34;)
- *                     .objects(TriggerBuildArtifactsObjectsArgs.builder()
- *                         .location(&#34;gs://bucket/path/to/somewhere/&#34;)
- *                         .paths(&#34;path&#34;)
- *                         .build())
- *                     .build())
- *                 .availableSecrets(TriggerBuildAvailableSecretsArgs.builder()
- *                     .secretManager(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .build())
- *                 .logsBucket(&#34;gs://mybucket/logs&#34;)
- *                 .options(TriggerBuildOptionsArgs.builder()
- *                     .diskSizeGb(100)
- *                     .dynamicSubstitutions(true)
- *                     .env(&#34;ekey = evalue&#34;)
- *                     .logStreamingOption(&#34;STREAM_OFF&#34;)
- *                     .logging(&#34;LEGACY&#34;)
- *                     .machineType(&#34;N1_HIGHCPU_8&#34;)
- *                     .requestedVerifyOption(&#34;VERIFIED&#34;)
- *                     .secretEnv(&#34;secretenv = svalue&#34;)
- *                     .sourceProvenanceHash(&#34;MD5&#34;)
- *                     .substitutionOption(&#34;ALLOW_LOOSE&#34;)
- *                     .volumes(TriggerBuildOptionsVolumeArgs.builder()
- *                         .name(&#34;v1&#34;)
- *                         .path(&#34;v1&#34;)
- *                         .build())
- *                     .workerPool(&#34;pool&#34;)
- *                     .build())
- *                 .queueTtl(&#34;20s&#34;)
- *                 .secrets(TriggerBuildSecretArgs.builder()
- *                     .kmsKeyName(&#34;projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name&#34;)
- *                     .secretEnv(Map.of(&#34;PASSWORD&#34;, &#34;ZW5jcnlwdGVkLXBhc3N3b3JkCg==&#34;))
+ *                 .steps(TriggerBuildStepArgs.builder()
+ *                     .name(&#34;ubuntu&#34;)
+ *                     .args(                    
+ *                         &#34;-c&#34;,
+ *                         &#34;exit 1&#34;)
+ *                     .allowExitCodes(                    
+ *                         1,
+ *                         3)
  *                     .build())
  *                 .source(TriggerBuildSourceArgs.builder()
  *                     .storageSource(TriggerBuildSourceStorageSourceArgs.builder()
@@ -923,27 +919,49 @@ import javax.annotation.Nullable;
  *                         .object(&#34;source_code.tar.gz&#34;)
  *                         .build())
  *                     .build())
- *                 .steps(TriggerBuildStepArgs.builder()
- *                     .allowExitCodes(                    
- *                         1,
- *                         3)
- *                     .args(                    
- *                         &#34;-c&#34;,
- *                         &#34;exit 1&#34;)
- *                     .name(&#34;ubuntu&#34;)
- *                     .build())
- *                 .substitutions(Map.ofEntries(
- *                     Map.entry(&#34;_BAZ&#34;, &#34;qux&#34;),
- *                     Map.entry(&#34;_FOO&#34;, &#34;bar&#34;)
- *                 ))
  *                 .tags(                
  *                     &#34;build&#34;,
  *                     &#34;newFeature&#34;)
- *                 .build())
- *             .location(&#34;global&#34;)
- *             .triggerTemplate(TriggerTriggerTemplateArgs.builder()
- *                 .branchName(&#34;main&#34;)
- *                 .repoName(&#34;my-repo&#34;)
+ *                 .substitutions(Map.ofEntries(
+ *                     Map.entry(&#34;_FOO&#34;, &#34;bar&#34;),
+ *                     Map.entry(&#34;_BAZ&#34;, &#34;qux&#34;)
+ *                 ))
+ *                 .queueTtl(&#34;20s&#34;)
+ *                 .logsBucket(&#34;gs://mybucket/logs&#34;)
+ *                 .secrets(TriggerBuildSecretArgs.builder()
+ *                     .kmsKeyName(&#34;projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name&#34;)
+ *                     .secretEnv(Map.of(&#34;PASSWORD&#34;, &#34;ZW5jcnlwdGVkLXBhc3N3b3JkCg==&#34;))
+ *                     .build())
+ *                 .availableSecrets(TriggerBuildAvailableSecretsArgs.builder()
+ *                     .secretManagers(TriggerBuildAvailableSecretsSecretManagerArgs.builder()
+ *                         .env(&#34;MY_SECRET&#34;)
+ *                         .versionName(&#34;projects/myProject/secrets/mySecret/versions/latest&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .artifacts(TriggerBuildArtifactsArgs.builder()
+ *                     .images(&#34;gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA&#34;)
+ *                     .objects(TriggerBuildArtifactsObjectsArgs.builder()
+ *                         .location(&#34;gs://bucket/path/to/somewhere/&#34;)
+ *                         .paths(&#34;path&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .options(TriggerBuildOptionsArgs.builder()
+ *                     .sourceProvenanceHashes(&#34;MD5&#34;)
+ *                     .requestedVerifyOption(&#34;VERIFIED&#34;)
+ *                     .machineType(&#34;N1_HIGHCPU_8&#34;)
+ *                     .diskSizeGb(100)
+ *                     .substitutionOption(&#34;ALLOW_LOOSE&#34;)
+ *                     .dynamicSubstitutions(true)
+ *                     .logStreamingOption(&#34;STREAM_OFF&#34;)
+ *                     .workerPool(&#34;pool&#34;)
+ *                     .logging(&#34;LEGACY&#34;)
+ *                     .envs(&#34;ekey = evalue&#34;)
+ *                     .secretEnvs(&#34;secretenv = svalue&#34;)
+ *                     .volumes(TriggerBuildOptionsVolumeArgs.builder()
+ *                         .name(&#34;v1&#34;)
+ *                         .path(&#34;v1&#34;)
+ *                         .build())
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -964,6 +982,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudbuildv2.Repository;
  * import com.pulumi.gcp.cloudbuildv2.RepositoryArgs;
  * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
  * import com.pulumi.gcp.cloudbuild.Trigger;
  * import com.pulumi.gcp.cloudbuild.TriggerArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerPubsubConfigArgs;
@@ -984,6 +1003,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var my_connection = new Connection(&#34;my-connection&#34;, ConnectionArgs.builder()        
  *             .location(&#34;us-central1&#34;)
+ *             .name(&#34;my-connection&#34;)
  *             .githubConfig(ConnectionGithubConfigArgs.builder()
  *                 .appInstallationId(123123)
  *                 .authorizerCredential(ConnectionGithubConfigAuthorizerCredentialArgs.builder()
@@ -993,13 +1013,17 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var my_repository = new Repository(&#34;my-repository&#34;, RepositoryArgs.builder()        
+ *             .name(&#34;my-repo&#34;)
  *             .parentConnection(my_connection.id())
  *             .remoteUri(&#34;https://github.com/myuser/my-repo.git&#34;)
  *             .build());
  * 
- *         var mytopic = new Topic(&#34;mytopic&#34;);
+ *         var mytopic = new Topic(&#34;mytopic&#34;, TopicArgs.builder()        
+ *             .name(&#34;my-topic&#34;)
+ *             .build());
  * 
  *         var pubsub_with_repo_trigger = new Trigger(&#34;pubsub-with-repo-trigger&#34;, TriggerArgs.builder()        
+ *             .name(&#34;pubsub-with-repo-trigger&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .pubsubConfig(TriggerPubsubConfigArgs.builder()
  *                 .topic(mytopic.id())

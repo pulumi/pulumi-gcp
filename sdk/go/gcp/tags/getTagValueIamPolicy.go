@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := tags.LookupTagValueIamPolicy(ctx, &tags.LookupTagValueIamPolicyArgs{
-//				TagValue: google_tags_tag_value.Value.Name,
+//				TagValue: value.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

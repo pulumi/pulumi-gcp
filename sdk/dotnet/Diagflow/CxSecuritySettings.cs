@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var basicSecuritySettings = new Gcp.Diagflow.CxSecuritySettings("basicSecuritySettings", new()
+    ///     var basicSecuritySettings = new Gcp.Diagflow.CxSecuritySettings("basic_security_settings", new()
     ///     {
     ///         DisplayName = "dialogflowcx-security-settings",
     ///         Location = "global",
@@ -96,11 +96,12 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
+    ///         Name = "dialogflowcx-bucket",
     ///         Location = "US",
     ///         UniformBucketLevelAccess = true,
     ///     });
     /// 
-    ///     var basicSecuritySettings = new Gcp.Diagflow.CxSecuritySettings("basicSecuritySettings", new()
+    ///     var basicSecuritySettings = new Gcp.Diagflow.CxSecuritySettings("basic_security_settings", new()
     ///     {
     ///         DisplayName = "dialogflowcx-security-settings",
     ///         Location = "global",

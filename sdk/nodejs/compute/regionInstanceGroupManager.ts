@@ -27,6 +27,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const autohealing = new gcp.compute.HealthCheck("autohealing", {
+ *     name: "autohealing-health-check",
  *     checkIntervalSec: 5,
  *     timeoutSec: 5,
  *     healthyThreshold: 2,
@@ -37,6 +38,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const appserver = new gcp.compute.RegionInstanceGroupManager("appserver", {
+ *     name: "appserver-igm",
  *     baseInstanceName: "app",
  *     region: "us-central1",
  *     distributionPolicyZones: [
@@ -44,7 +46,7 @@ import * as utilities from "../utilities";
  *         "us-central1-f",
  *     ],
  *     versions: [{
- *         instanceTemplate: google_compute_instance_template.appserver.self_link_unique,
+ *         instanceTemplate: appserverGoogleComputeInstanceTemplate.selfLinkUnique,
  *     }],
  *     allInstancesConfig: {
  *         metadata: {
@@ -54,7 +56,7 @@ import * as utilities from "../utilities";
  *             label_key: "label_value",
  *         },
  *     },
- *     targetPools: [google_compute_target_pool.appserver.id],
+ *     targetPools: [appserverGoogleComputeTargetPool.id],
  *     targetSize: 2,
  *     namedPorts: [{
  *         name: "custom",
@@ -72,15 +74,16 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const appserver = new gcp.compute.RegionInstanceGroupManager("appserver", {
+ *     name: "appserver-igm",
  *     baseInstanceName: "app",
  *     region: "us-central1",
  *     targetSize: 5,
  *     versions: [
  *         {
- *             instanceTemplate: google_compute_instance_template.appserver.self_link_unique,
+ *             instanceTemplate: appserverGoogleComputeInstanceTemplate.selfLinkUnique,
  *         },
  *         {
- *             instanceTemplate: google_compute_instance_template["appserver-canary"].self_link_unique,
+ *             instanceTemplate: appserver_canary.selfLinkUnique,
  *             targetSize: {
  *                 fixed: 1,
  *             },

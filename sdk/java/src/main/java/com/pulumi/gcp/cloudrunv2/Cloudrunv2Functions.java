@@ -51,8 +51,8 @@ public final class Cloudrunv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myJob = Cloudrunv2Functions.getJob(GetJobArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;my-job&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }
@@ -91,8 +91,8 @@ public final class Cloudrunv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myJob = Cloudrunv2Functions.getJob(GetJobArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;my-job&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }
@@ -131,8 +131,8 @@ public final class Cloudrunv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myJob = Cloudrunv2Functions.getJob(GetJobArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;my-job&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }
@@ -171,8 +171,8 @@ public final class Cloudrunv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myJob = Cloudrunv2Functions.getJob(GetJobArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;my-job&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }
@@ -209,9 +209,9 @@ public final class Cloudrunv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = Cloudrunv2Functions.getJobIamPolicy(GetJobIamPolicyArgs.builder()
-     *             .project(google_cloud_run_v2_job.default().project())
-     *             .location(google_cloud_run_v2_job.default().location())
-     *             .name(google_cloud_run_v2_job.default().name())
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .name(default_.name())
      *             .build());
      * 
      *     }
@@ -248,9 +248,9 @@ public final class Cloudrunv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = Cloudrunv2Functions.getJobIamPolicy(GetJobIamPolicyArgs.builder()
-     *             .project(google_cloud_run_v2_job.default().project())
-     *             .location(google_cloud_run_v2_job.default().location())
-     *             .name(google_cloud_run_v2_job.default().name())
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .name(default_.name())
      *             .build());
      * 
      *     }
@@ -287,9 +287,9 @@ public final class Cloudrunv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = Cloudrunv2Functions.getJobIamPolicy(GetJobIamPolicyArgs.builder()
-     *             .project(google_cloud_run_v2_job.default().project())
-     *             .location(google_cloud_run_v2_job.default().location())
-     *             .name(google_cloud_run_v2_job.default().name())
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .name(default_.name())
      *             .build());
      * 
      *     }
@@ -326,9 +326,9 @@ public final class Cloudrunv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = Cloudrunv2Functions.getJobIamPolicy(GetJobIamPolicyArgs.builder()
-     *             .project(google_cloud_run_v2_job.default().project())
-     *             .location(google_cloud_run_v2_job.default().location())
-     *             .name(google_cloud_run_v2_job.default().name())
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .name(default_.name())
      *             .build());
      * 
      *     }
@@ -367,8 +367,8 @@ public final class Cloudrunv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myService = Cloudrunv2Functions.getService(GetServiceArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;my-service&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }
@@ -407,8 +407,8 @@ public final class Cloudrunv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myService = Cloudrunv2Functions.getService(GetServiceArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;my-service&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }
@@ -447,8 +447,8 @@ public final class Cloudrunv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myService = Cloudrunv2Functions.getService(GetServiceArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;my-service&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }
@@ -487,8 +487,8 @@ public final class Cloudrunv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myService = Cloudrunv2Functions.getService(GetServiceArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;my-service&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }
@@ -525,9 +525,9 @@ public final class Cloudrunv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = Cloudrunv2Functions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-     *             .project(google_cloud_run_v2_service.default().project())
-     *             .location(google_cloud_run_v2_service.default().location())
-     *             .name(google_cloud_run_v2_service.default().name())
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .name(default_.name())
      *             .build());
      * 
      *     }
@@ -564,9 +564,9 @@ public final class Cloudrunv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = Cloudrunv2Functions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-     *             .project(google_cloud_run_v2_service.default().project())
-     *             .location(google_cloud_run_v2_service.default().location())
-     *             .name(google_cloud_run_v2_service.default().name())
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .name(default_.name())
      *             .build());
      * 
      *     }
@@ -603,9 +603,9 @@ public final class Cloudrunv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = Cloudrunv2Functions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-     *             .project(google_cloud_run_v2_service.default().project())
-     *             .location(google_cloud_run_v2_service.default().location())
-     *             .name(google_cloud_run_v2_service.default().name())
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .name(default_.name())
      *             .build());
      * 
      *     }
@@ -642,9 +642,9 @@ public final class Cloudrunv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = Cloudrunv2Functions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-     *             .project(google_cloud_run_v2_service.default().project())
-     *             .location(google_cloud_run_v2_service.default().location())
-     *             .name(google_cloud_run_v2_service.default().name())
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .name(default_.name())
      *             .build());
      * 
      *     }

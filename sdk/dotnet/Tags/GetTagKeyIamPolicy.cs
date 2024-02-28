@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Tags
         /// {
         ///     var policy = Gcp.Tags.GetTagKeyIamPolicy.Invoke(new()
         ///     {
-        ///         TagKey = google_tags_tag_key.Key.Name,
+        ///         TagKey = key.Name,
         ///     });
         /// 
         /// });
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.Tags
         /// {
         ///     var policy = Gcp.Tags.GetTagKeyIamPolicy.Invoke(new()
         ///     {
-        ///         TagKey = google_tags_tag_key.Key.Name,
+        ///         TagKey = key.Name,
         ///     });
         /// 
         /// });

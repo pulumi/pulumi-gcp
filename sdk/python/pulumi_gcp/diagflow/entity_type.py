@@ -272,11 +272,11 @@ class EntityType(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic_agent = gcp.diagflow.Agent("basicAgent",
+        basic_agent = gcp.diagflow.Agent("basic_agent",
             display_name="example_agent",
             default_language_code="en",
             time_zone="America/New_York")
-        basic_entity_type = gcp.diagflow.EntityType("basicEntityType",
+        basic_entity_type = gcp.diagflow.EntityType("basic_entity_type",
             display_name="",
             kind="KIND_MAP",
             entities=[
@@ -294,8 +294,7 @@ class EntityType(pulumi.CustomResource):
                         "synonym4",
                     ],
                 ),
-            ],
-            opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
+            ])
         ```
 
         ## Import
@@ -350,11 +349,11 @@ class EntityType(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic_agent = gcp.diagflow.Agent("basicAgent",
+        basic_agent = gcp.diagflow.Agent("basic_agent",
             display_name="example_agent",
             default_language_code="en",
             time_zone="America/New_York")
-        basic_entity_type = gcp.diagflow.EntityType("basicEntityType",
+        basic_entity_type = gcp.diagflow.EntityType("basic_entity_type",
             display_name="",
             kind="KIND_MAP",
             entities=[
@@ -372,8 +371,7 @@ class EntityType(pulumi.CustomResource):
                         "synonym4",
                     ],
                 ),
-            ],
-            opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
+            ])
         ```
 
         ## Import

@@ -43,15 +43,16 @@ namespace Pulumi.Gcp.Tpu
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var availableV2AcceleratorTypes = Gcp.Tpu.GetV2AcceleratorTypes.Invoke();
+        ///     var available = Gcp.Tpu.GetV2AcceleratorTypes.Invoke();
         /// 
-        ///     var availableV2RuntimeVersions = Gcp.Tpu.GetV2RuntimeVersions.Invoke();
+        ///     var availableGetV2RuntimeVersions = Gcp.Tpu.GetV2RuntimeVersions.Invoke();
         /// 
         ///     var tpu = new Gcp.Tpu.V2Vm("tpu", new()
         ///     {
+        ///         Name = "test-tpu",
         ///         Zone = "us-central1-b",
-        ///         RuntimeVersion = availableV2RuntimeVersions.Apply(getV2RuntimeVersionsResult =&gt; getV2RuntimeVersionsResult.Versions[0]),
-        ///         AcceleratorType = availableV2AcceleratorTypes.Apply(getV2AcceleratorTypesResult =&gt; getV2AcceleratorTypesResult.Types[0]),
+        ///         RuntimeVersion = availableGetV2RuntimeVersions.Apply(getV2RuntimeVersionsResult =&gt; getV2RuntimeVersionsResult.Versions[0]),
+        ///         AcceleratorType = available.Apply(getV2AcceleratorTypesResult =&gt; getV2AcceleratorTypesResult.Types[0]),
         ///     });
         /// 
         /// });
@@ -94,15 +95,16 @@ namespace Pulumi.Gcp.Tpu
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var availableV2AcceleratorTypes = Gcp.Tpu.GetV2AcceleratorTypes.Invoke();
+        ///     var available = Gcp.Tpu.GetV2AcceleratorTypes.Invoke();
         /// 
-        ///     var availableV2RuntimeVersions = Gcp.Tpu.GetV2RuntimeVersions.Invoke();
+        ///     var availableGetV2RuntimeVersions = Gcp.Tpu.GetV2RuntimeVersions.Invoke();
         /// 
         ///     var tpu = new Gcp.Tpu.V2Vm("tpu", new()
         ///     {
+        ///         Name = "test-tpu",
         ///         Zone = "us-central1-b",
-        ///         RuntimeVersion = availableV2RuntimeVersions.Apply(getV2RuntimeVersionsResult =&gt; getV2RuntimeVersionsResult.Versions[0]),
-        ///         AcceleratorType = availableV2AcceleratorTypes.Apply(getV2AcceleratorTypesResult =&gt; getV2AcceleratorTypesResult.Types[0]),
+        ///         RuntimeVersion = availableGetV2RuntimeVersions.Apply(getV2RuntimeVersionsResult =&gt; getV2RuntimeVersionsResult.Versions[0]),
+        ///         AcceleratorType = available.Apply(getV2AcceleratorTypesResult =&gt; getV2AcceleratorTypesResult.Types[0]),
         ///     });
         /// 
         /// });

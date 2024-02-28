@@ -82,25 +82,25 @@ namespace Pulumi.Gcp.Projects
     ///         {
     ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
-    ///                 {
-    ///                     Description = "Expiring at midnight of 2019-12-31",
-    ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///                     Title = "expires_after_2019_12_31",
-    ///                 },
+    ///                 Role = "roles/compute.admin",
     ///                 Members = new[]
     ///                 {
     ///                     "user:jane@example.com",
     ///                 },
-    ///                 Role = "roles/compute.admin",
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 {
+    ///                     Title = "expires_after_2019_12_31",
+    ///                     Description = "Expiring at midnight of 2019-12-31",
+    ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///                 },
     ///             },
     ///         },
     ///     });
     /// 
     ///     var project = new Gcp.Projects.IAMPolicy("project", new()
     ///     {
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///         Project = "your-project-id",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
@@ -118,12 +118,12 @@ namespace Pulumi.Gcp.Projects
     /// {
     ///     var project = new Gcp.Projects.IAMBinding("project", new()
     ///     {
+    ///         Project = "your-project-id",
+    ///         Role = "roles/editor",
     ///         Members = new[]
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         Project = "your-project-id",
-    ///         Role = "roles/editor",
     ///     });
     /// 
     /// });
@@ -141,18 +141,18 @@ namespace Pulumi.Gcp.Projects
     /// {
     ///     var project = new Gcp.Projects.IAMBinding("project", new()
     ///     {
-    ///         Condition = new Gcp.Projects.Inputs.IAMBindingConditionArgs
-    ///         {
-    ///             Description = "Expiring at midnight of 2019-12-31",
-    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///             Title = "expires_after_2019_12_31",
-    ///         },
+    ///         Project = "your-project-id",
+    ///         Role = "roles/container.admin",
     ///         Members = new[]
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         Project = "your-project-id",
-    ///         Role = "roles/container.admin",
+    ///         Condition = new Gcp.Projects.Inputs.IAMBindingConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
     ///     });
     /// 
     /// });
@@ -170,9 +170,9 @@ namespace Pulumi.Gcp.Projects
     /// {
     ///     var project = new Gcp.Projects.IAMMember("project", new()
     ///     {
-    ///         Member = "user:jane@example.com",
     ///         Project = "your-project-id",
     ///         Role = "roles/editor",
+    ///         Member = "user:jane@example.com",
     ///     });
     /// 
     /// });
@@ -190,15 +190,15 @@ namespace Pulumi.Gcp.Projects
     /// {
     ///     var project = new Gcp.Projects.IAMMember("project", new()
     ///     {
-    ///         Condition = new Gcp.Projects.Inputs.IAMMemberConditionArgs
-    ///         {
-    ///             Description = "Expiring at midnight of 2019-12-31",
-    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///             Title = "expires_after_2019_12_31",
-    ///         },
-    ///         Member = "user:jane@example.com",
     ///         Project = "your-project-id",
     ///         Role = "roles/firebase.admin",
+    ///         Member = "user:jane@example.com",
+    ///         Condition = new Gcp.Projects.Inputs.IAMMemberConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
     ///     });
     /// 
     /// });
@@ -216,6 +216,8 @@ namespace Pulumi.Gcp.Projects
     /// {
     ///     var project = new Gcp.Projects.IAMAuditConfig("project", new()
     ///     {
+    ///         Project = "your-project-id",
+    ///         Service = "allServices",
     ///         AuditLogConfigs = new[]
     ///         {
     ///             new Gcp.Projects.Inputs.IAMAuditConfigAuditLogConfigArgs
@@ -224,15 +226,13 @@ namespace Pulumi.Gcp.Projects
     ///             },
     ///             new Gcp.Projects.Inputs.IAMAuditConfigAuditLogConfigArgs
     ///             {
+    ///                 LogType = "DATA_READ",
     ///                 ExemptedMembers = new[]
     ///                 {
     ///                     "user:joebloggs@example.com",
     ///                 },
-    ///                 LogType = "DATA_READ",
     ///             },
     ///         },
-    ///         Project = "your-project-id",
-    ///         Service = "allServices",
     ///     });
     /// 
     /// });

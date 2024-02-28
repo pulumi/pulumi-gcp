@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.LookupFeatureIamPolicy(ctx, &gkehub.LookupFeatureIamPolicyArgs{
-//				Project:  pulumi.StringRef(google_gke_hub_feature.Feature.Project),
-//				Location: pulumi.StringRef(google_gke_hub_feature.Feature.Location),
-//				Name:     google_gke_hub_feature.Feature.Name,
+//				Project:  pulumi.StringRef(feature.Project),
+//				Location: pulumi.StringRef(feature.Location),
+//				Name:     feature.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

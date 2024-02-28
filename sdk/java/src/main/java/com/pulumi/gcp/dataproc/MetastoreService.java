@@ -43,8 +43,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.dataproc.MetastoreService;
  * import com.pulumi.gcp.dataproc.MetastoreServiceArgs;
- * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceMaintenanceWindowArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -59,18 +59,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new MetastoreService(&#34;default&#34;, MetastoreServiceArgs.builder()        
+ *             .serviceId(&#34;metastore-srv&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .port(9080)
+ *             .tier(&#34;DEVELOPER&#34;)
+ *             .maintenanceWindow(MetastoreServiceMaintenanceWindowArgs.builder()
+ *                 .hourOfDay(2)
+ *                 .dayOfWeek(&#34;SUNDAY&#34;)
+ *                 .build())
  *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
  *                 .version(&#34;2.3.6&#34;)
  *                 .build())
  *             .labels(Map.of(&#34;env&#34;, &#34;test&#34;))
- *             .location(&#34;us-central1&#34;)
- *             .maintenanceWindow(MetastoreServiceMaintenanceWindowArgs.builder()
- *                 .dayOfWeek(&#34;SUNDAY&#34;)
- *                 .hourOfDay(2)
- *                 .build())
- *             .port(9080)
- *             .serviceId(&#34;metastore-srv&#34;)
- *             .tier(&#34;DEVELOPER&#34;)
  *             .build());
  * 
  *     }
@@ -91,7 +91,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataproc.MetastoreServiceArgs;
  * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceEncryptionConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -106,17 +105,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
+ *             .name(&#34;example-keyring&#34;)
  *             .location(&#34;us-central1&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
+ *             .name(&#34;example-key&#34;)
  *             .keyRing(keyRing.id())
  *             .purpose(&#34;ENCRYPT_DECRYPT&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var default_ = new MetastoreService(&#34;default&#34;, MetastoreServiceArgs.builder()        
  *             .serviceId(&#34;example-service&#34;)
@@ -161,10 +158,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var net = new Network(&#34;net&#34;, NetworkArgs.builder()        
+ *             .name(&#34;my-network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var subnet = new Subnetwork(&#34;subnet&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;my-subnetwork&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(net.id())
  *             .ipCidrRange(&#34;10.0.0.0/22&#34;)
@@ -202,7 +201,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataproc.MetastoreServiceArgs;
  * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceNetworkConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -217,19 +215,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var net = new Network(&#34;net&#34;, NetworkArgs.builder()        
+ *             .name(&#34;my-network&#34;)
  *             .autoCreateSubnetworks(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var subnet = new Subnetwork(&#34;subnet&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;my-subnetwork&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(net.id())
  *             .ipCidrRange(&#34;10.0.0.0/22&#34;)
  *             .privateIpGoogleAccess(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var default_ = new MetastoreService(&#34;default&#34;, MetastoreServiceArgs.builder()        
  *             .serviceId(&#34;metastore-srv&#34;)
@@ -243,9 +239,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .customRoutesEnabled(true)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -275,15 +269,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var dpms2 = new MetastoreService(&#34;dpms2&#34;, MetastoreServiceArgs.builder()        
+ *             .serviceId(&#34;ms-dpms2&#34;)
+ *             .location(&#34;us-central1&#34;)
  *             .databaseType(&#34;SPANNER&#34;)
  *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
  *                 .version(&#34;3.1.2&#34;)
  *                 .build())
- *             .location(&#34;us-central1&#34;)
  *             .scalingConfig(MetastoreServiceScalingConfigArgs.builder()
  *                 .instanceSize(&#34;EXTRA_SMALL&#34;)
  *                 .build())
- *             .serviceId(&#34;ms-dpms2&#34;)
  *             .build());
  * 
  *     }
@@ -314,15 +308,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var dpms2ScalingFactor = new MetastoreService(&#34;dpms2ScalingFactor&#34;, MetastoreServiceArgs.builder()        
+ *             .serviceId(&#34;ms-dpms2sf&#34;)
+ *             .location(&#34;us-central1&#34;)
  *             .databaseType(&#34;SPANNER&#34;)
  *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
  *                 .version(&#34;3.1.2&#34;)
  *                 .build())
- *             .location(&#34;us-central1&#34;)
  *             .scalingConfig(MetastoreServiceScalingConfigArgs.builder()
  *                 .scalingFactor(&#34;2&#34;)
  *                 .build())
- *             .serviceId(&#34;ms-dpms2sf&#34;)
  *             .build());
  * 
  *     }

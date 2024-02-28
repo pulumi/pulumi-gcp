@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Storage
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new service account
-    ///     var serviceAccount = new Gcp.ServiceAccount.Account("serviceAccount", new()
+    ///     var serviceAccount = new Gcp.ServiceAccount.Account("service_account", new()
     ///     {
     ///         AccountId = "my-svc-acc",
     ///     });

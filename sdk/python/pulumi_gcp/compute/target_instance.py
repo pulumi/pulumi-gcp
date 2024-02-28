@@ -424,6 +424,7 @@ class TargetInstance(pulumi.CustomResource):
         vmimage = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         target_vm = gcp.compute.Instance("target-vm",
+            name="target-vm",
             machine_type="e2-medium",
             zone="us-central1-a",
             boot_disk=gcp.compute.InstanceBootDiskArgs(
@@ -434,7 +435,9 @@ class TargetInstance(pulumi.CustomResource):
             network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
                 network="default",
             )])
-        default = gcp.compute.TargetInstance("default", instance=target_vm.id)
+        default = gcp.compute.TargetInstance("default",
+            name="target",
+            instance=target_vm.id)
         ```
         ### Target Instance Custom Network
 
@@ -442,10 +445,11 @@ class TargetInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        target_vm_network = gcp.compute.get_network(name="default")
+        target_vm = gcp.compute.get_network(name="default")
         vmimage = gcp.compute.get_image(family="debian-10",
             project="debian-cloud")
-        target_vm_instance = gcp.compute.Instance("target-vmInstance",
+        target_vm_instance = gcp.compute.Instance("target-vm",
+            name="custom-network-target-vm",
             machine_type="e2-medium",
             zone="us-central1-a",
             boot_disk=gcp.compute.InstanceBootDiskArgs(
@@ -455,12 +459,11 @@ class TargetInstance(pulumi.CustomResource):
             ),
             network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
                 network="default",
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        custom_network = gcp.compute.TargetInstance("customNetwork",
+            )])
+        custom_network = gcp.compute.TargetInstance("custom_network",
+            name="custom-network",
             instance=target_vm_instance.id,
-            network=target_vm_network.self_link,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            network=target_vm.self_link)
         ```
 
         ## Import
@@ -552,6 +555,7 @@ class TargetInstance(pulumi.CustomResource):
         vmimage = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         target_vm = gcp.compute.Instance("target-vm",
+            name="target-vm",
             machine_type="e2-medium",
             zone="us-central1-a",
             boot_disk=gcp.compute.InstanceBootDiskArgs(
@@ -562,7 +566,9 @@ class TargetInstance(pulumi.CustomResource):
             network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
                 network="default",
             )])
-        default = gcp.compute.TargetInstance("default", instance=target_vm.id)
+        default = gcp.compute.TargetInstance("default",
+            name="target",
+            instance=target_vm.id)
         ```
         ### Target Instance Custom Network
 
@@ -570,10 +576,11 @@ class TargetInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        target_vm_network = gcp.compute.get_network(name="default")
+        target_vm = gcp.compute.get_network(name="default")
         vmimage = gcp.compute.get_image(family="debian-10",
             project="debian-cloud")
-        target_vm_instance = gcp.compute.Instance("target-vmInstance",
+        target_vm_instance = gcp.compute.Instance("target-vm",
+            name="custom-network-target-vm",
             machine_type="e2-medium",
             zone="us-central1-a",
             boot_disk=gcp.compute.InstanceBootDiskArgs(
@@ -583,12 +590,11 @@ class TargetInstance(pulumi.CustomResource):
             ),
             network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
                 network="default",
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        custom_network = gcp.compute.TargetInstance("customNetwork",
+            )])
+        custom_network = gcp.compute.TargetInstance("custom_network",
+            name="custom-network",
             instance=target_vm_instance.id,
-            network=target_vm_network.self_link,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            network=target_vm.self_link)
         ```
 
         ## Import

@@ -28,21 +28,12 @@ import (
 //
 // import (
 //
-//	"os"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/oslogin"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
@@ -50,9 +41,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "path/to/id_rsa.pub",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			_, err = oslogin.NewSshPublicKey(ctx, "cache", &oslogin.SshPublicKeyArgs{
 //				User: *pulumi.String(me.Email),
-//				Key:  readFileOrPanic("path/to/id_rsa.pub"),
+//				Key:  invokeFile.Result,
 //			})
 //			if err != nil {
 //				return err

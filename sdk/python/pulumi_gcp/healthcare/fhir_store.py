@@ -759,9 +759,12 @@ class FhirStore(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        topic = gcp.pubsub.Topic("topic")
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        topic = gcp.pubsub.Topic("topic", name="fhir-notifications")
+        dataset = gcp.healthcare.Dataset("dataset",
+            name="example-dataset",
+            location="us-central1")
         default = gcp.healthcare.FhirStore("default",
+            name="example-fhir-store",
             dataset=dataset.id,
             version="R4",
             complex_data_type_reference_parsing="DISABLED",
@@ -783,14 +786,17 @@ class FhirStore(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
-        bq_dataset = gcp.bigquery.Dataset("bqDataset",
+        dataset = gcp.healthcare.Dataset("dataset",
+            name="example-dataset",
+            location="us-central1")
+        bq_dataset = gcp.bigquery.Dataset("bq_dataset",
             dataset_id="bq_example_dataset",
             friendly_name="test",
             description="This is a test description",
             location="US",
             delete_contents_on_destroy=True)
         default = gcp.healthcare.FhirStore("default",
+            name="example-fhir-store",
             dataset=dataset.id,
             version="R4",
             enable_update_create=False,
@@ -813,7 +819,7 @@ class FhirStore(pulumi.CustomResource):
                     ),
                 ),
             )])
-        topic = gcp.pubsub.Topic("topic")
+        topic = gcp.pubsub.Topic("topic", name="fhir-notifications")
         ```
         ### Healthcare Fhir Store Notification Config
 
@@ -821,9 +827,12 @@ class FhirStore(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        topic = gcp.pubsub.Topic("topic")
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        topic = gcp.pubsub.Topic("topic", name="fhir-notifications")
+        dataset = gcp.healthcare.Dataset("dataset",
+            name="example-dataset",
+            location="us-central1")
         default = gcp.healthcare.FhirStore("default",
+            name="example-fhir-store",
             dataset=dataset.id,
             version="R4",
             enable_update_create=False,
@@ -843,10 +852,12 @@ class FhirStore(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        topic = gcp.pubsub.Topic("topic", opts=pulumi.ResourceOptions(provider=google_beta))
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        topic = gcp.pubsub.Topic("topic", name="fhir-notifications")
+        dataset = gcp.healthcare.Dataset("dataset",
+            name="example-dataset",
+            location="us-central1")
         default = gcp.healthcare.FhirStore("default",
+            name="example-fhir-store",
             dataset=dataset.id,
             version="R4",
             enable_update_create=False,
@@ -861,8 +872,7 @@ class FhirStore(pulumi.CustomResource):
                 pubsub_topic=topic.id,
                 send_full_resource=True,
                 send_previous_resource_on_delete=True,
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
 
         ## Import
@@ -972,9 +982,12 @@ class FhirStore(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        topic = gcp.pubsub.Topic("topic")
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        topic = gcp.pubsub.Topic("topic", name="fhir-notifications")
+        dataset = gcp.healthcare.Dataset("dataset",
+            name="example-dataset",
+            location="us-central1")
         default = gcp.healthcare.FhirStore("default",
+            name="example-fhir-store",
             dataset=dataset.id,
             version="R4",
             complex_data_type_reference_parsing="DISABLED",
@@ -996,14 +1009,17 @@ class FhirStore(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
-        bq_dataset = gcp.bigquery.Dataset("bqDataset",
+        dataset = gcp.healthcare.Dataset("dataset",
+            name="example-dataset",
+            location="us-central1")
+        bq_dataset = gcp.bigquery.Dataset("bq_dataset",
             dataset_id="bq_example_dataset",
             friendly_name="test",
             description="This is a test description",
             location="US",
             delete_contents_on_destroy=True)
         default = gcp.healthcare.FhirStore("default",
+            name="example-fhir-store",
             dataset=dataset.id,
             version="R4",
             enable_update_create=False,
@@ -1026,7 +1042,7 @@ class FhirStore(pulumi.CustomResource):
                     ),
                 ),
             )])
-        topic = gcp.pubsub.Topic("topic")
+        topic = gcp.pubsub.Topic("topic", name="fhir-notifications")
         ```
         ### Healthcare Fhir Store Notification Config
 
@@ -1034,9 +1050,12 @@ class FhirStore(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        topic = gcp.pubsub.Topic("topic")
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        topic = gcp.pubsub.Topic("topic", name="fhir-notifications")
+        dataset = gcp.healthcare.Dataset("dataset",
+            name="example-dataset",
+            location="us-central1")
         default = gcp.healthcare.FhirStore("default",
+            name="example-fhir-store",
             dataset=dataset.id,
             version="R4",
             enable_update_create=False,
@@ -1056,10 +1075,12 @@ class FhirStore(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        topic = gcp.pubsub.Topic("topic", opts=pulumi.ResourceOptions(provider=google_beta))
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        topic = gcp.pubsub.Topic("topic", name="fhir-notifications")
+        dataset = gcp.healthcare.Dataset("dataset",
+            name="example-dataset",
+            location="us-central1")
         default = gcp.healthcare.FhirStore("default",
+            name="example-fhir-store",
             dataset=dataset.id,
             version="R4",
             enable_update_create=False,
@@ -1074,8 +1095,7 @@ class FhirStore(pulumi.CustomResource):
                 pubsub_topic=topic.id,
                 send_full_resource=True,
                 send_previous_resource_on_delete=True,
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
 
         ## Import

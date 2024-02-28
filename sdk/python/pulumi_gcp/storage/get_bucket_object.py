@@ -299,8 +299,8 @@ def get_bucket_object(bucket: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    picture = gcp.storage.get_bucket_object(bucket="image-store",
-        name="folder/butterfly01.jpg")
+    picture = gcp.storage.get_bucket_object(name="folder/butterfly01.jpg",
+        bucket="image-store")
     ```
 
 
@@ -357,8 +357,8 @@ def get_bucket_object_output(bucket: Optional[pulumi.Input[Optional[str]]] = Non
     import pulumi
     import pulumi_gcp as gcp
 
-    picture = gcp.storage.get_bucket_object(bucket="image-store",
-        name="folder/butterfly01.jpg")
+    picture = gcp.storage.get_bucket_object(name="folder/butterfly01.jpg",
+        bucket="image-store")
     ```
 
 

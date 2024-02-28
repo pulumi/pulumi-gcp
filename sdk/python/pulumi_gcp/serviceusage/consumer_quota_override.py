@@ -316,6 +316,69 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
             * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
 
         ## Example Usage
+        ### Consumer Quota Override
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        my_project = gcp.organizations.Project("my_project",
+            name="tf-test-project",
+            project_id="quota",
+            org_id="123456789")
+        override = gcp.serviceusage.ConsumerQuotaOverride("override",
+            project=my_project.project_id,
+            service="servicemanagement.googleapis.com",
+            metric=std.urlencode(input="servicemanagement.googleapis.com/default_requests").result,
+            limit=std.urlencode(input="/min/project").result,
+            override_value="95",
+            force=True)
+        ```
+        ### Region Consumer Quota Override
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        my_project = gcp.organizations.Project("my_project",
+            name="tf-test-project",
+            project_id="quota",
+            org_id="123456789")
+        override = gcp.serviceusage.ConsumerQuotaOverride("override",
+            dimensions={
+                "region": "us-central1",
+            },
+            project=my_project.project_id,
+            service="compute.googleapis.com",
+            metric=std.urlencode(input="compute.googleapis.com/n2_cpus").result,
+            limit=std.urlencode(input="/project/region").result,
+            override_value="8",
+            force=True)
+        ```
+        ### Consumer Quota Override Custom Dimension
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        my_project = gcp.organizations.Project("my_project",
+            name="tf-test-project",
+            project_id="quota",
+            org_id="123456789")
+        override = gcp.serviceusage.ConsumerQuotaOverride("override",
+            project=my_project.project_id,
+            service="libraryagent.googleapis.com",
+            metric=std.urlencode(input="libraryagent.googleapis.com/borrows").result,
+            limit=std.urlencode(input="/author/project").result,
+            override_value="1",
+            force=True,
+            dimensions={
+                "author": "larry",
+            })
+        ```
 
         ## Import
 
@@ -376,6 +439,69 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
             * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
 
         ## Example Usage
+        ### Consumer Quota Override
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        my_project = gcp.organizations.Project("my_project",
+            name="tf-test-project",
+            project_id="quota",
+            org_id="123456789")
+        override = gcp.serviceusage.ConsumerQuotaOverride("override",
+            project=my_project.project_id,
+            service="servicemanagement.googleapis.com",
+            metric=std.urlencode(input="servicemanagement.googleapis.com/default_requests").result,
+            limit=std.urlencode(input="/min/project").result,
+            override_value="95",
+            force=True)
+        ```
+        ### Region Consumer Quota Override
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        my_project = gcp.organizations.Project("my_project",
+            name="tf-test-project",
+            project_id="quota",
+            org_id="123456789")
+        override = gcp.serviceusage.ConsumerQuotaOverride("override",
+            dimensions={
+                "region": "us-central1",
+            },
+            project=my_project.project_id,
+            service="compute.googleapis.com",
+            metric=std.urlencode(input="compute.googleapis.com/n2_cpus").result,
+            limit=std.urlencode(input="/project/region").result,
+            override_value="8",
+            force=True)
+        ```
+        ### Consumer Quota Override Custom Dimension
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        my_project = gcp.organizations.Project("my_project",
+            name="tf-test-project",
+            project_id="quota",
+            org_id="123456789")
+        override = gcp.serviceusage.ConsumerQuotaOverride("override",
+            project=my_project.project_id,
+            service="libraryagent.googleapis.com",
+            metric=std.urlencode(input="libraryagent.googleapis.com/borrows").result,
+            limit=std.urlencode(input="/author/project").result,
+            override_value="1",
+            force=True,
+            dimensions={
+                "author": "larry",
+            })
+        ```
 
         ## Import
 

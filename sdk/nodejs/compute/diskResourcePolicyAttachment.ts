@@ -22,16 +22,14 @@ import * as utilities from "../utilities";
  *     project: "debian-cloud",
  * });
  * const ssd = new gcp.compute.Disk("ssd", {
+ *     name: "my-disk",
  *     image: myImage.then(myImage => myImage.selfLink),
  *     size: 50,
  *     type: "pd-ssd",
  *     zone: "us-central1-a",
  * });
- * const attachment = new gcp.compute.DiskResourcePolicyAttachment("attachment", {
- *     disk: ssd.name,
- *     zone: "us-central1-a",
- * });
  * const policy = new gcp.compute.ResourcePolicy("policy", {
+ *     name: "my-resource-policy",
  *     region: "us-central1",
  *     snapshotSchedulePolicy: {
  *         schedule: {
@@ -41,6 +39,11 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
+ * });
+ * const attachment = new gcp.compute.DiskResourcePolicyAttachment("attachment", {
+ *     name: policy.name,
+ *     disk: ssd.name,
+ *     zone: "us-central1-a",
  * });
  * ```
  *

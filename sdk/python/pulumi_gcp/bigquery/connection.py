@@ -501,11 +501,11 @@ class Connection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         connection = gcp.bigquery.Connection("connection",
-            cloud_resource=gcp.bigquery.ConnectionCloudResourceArgs(),
             connection_id="my-connection",
-            description="a riveting description",
+            location="US",
             friendly_name="👋",
-            location="US")
+            description="a riveting description",
+            cloud_resource=gcp.bigquery.ConnectionCloudResourceArgs())
         ```
         ### Bigquery Connection Basic
 
@@ -515,17 +515,21 @@ class Connection(pulumi.CustomResource):
         import pulumi_random as random
 
         instance = gcp.sql.DatabaseInstance("instance",
+            name="my-database-instance",
             database_version="POSTGRES_11",
             region="us-central1",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
             ),
             deletion_protection=True)
-        db = gcp.sql.Database("db", instance=instance.name)
+        db = gcp.sql.Database("db",
+            instance=instance.name,
+            name="db")
         pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
+            name="user",
             instance=instance.name,
             password=pwd.result)
         connection = gcp.bigquery.Connection("connection",
@@ -550,17 +554,21 @@ class Connection(pulumi.CustomResource):
         import pulumi_random as random
 
         instance = gcp.sql.DatabaseInstance("instance",
+            name="my-database-instance",
             database_version="POSTGRES_11",
             region="us-central1",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
             ),
             deletion_protection=True)
-        db = gcp.sql.Database("db", instance=instance.name)
+        db = gcp.sql.Database("db",
+            instance=instance.name,
+            name="db")
         pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
+            name="user",
             instance=instance.name,
             password=pwd.result)
         connection = gcp.bigquery.Connection("connection",
@@ -585,15 +593,15 @@ class Connection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         connection = gcp.bigquery.Connection("connection",
+            connection_id="my-connection",
+            location="aws-us-east-1",
+            friendly_name="👋",
+            description="a riveting description",
             aws=gcp.bigquery.ConnectionAwsArgs(
                 access_role=gcp.bigquery.ConnectionAwsAccessRoleArgs(
                     iam_role_id="arn:aws:iam::999999999999:role/omnirole",
                 ),
-            ),
-            connection_id="my-connection",
-            description="a riveting description",
-            friendly_name="👋",
-            location="aws-us-east-1")
+            ))
         ```
         ### Bigquery Connection Azure
 
@@ -602,14 +610,14 @@ class Connection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         connection = gcp.bigquery.Connection("connection",
+            connection_id="my-connection",
+            location="azure-eastus2",
+            friendly_name="👋",
+            description="a riveting description",
             azure=gcp.bigquery.ConnectionAzureArgs(
                 customer_tenant_id="customer-tenant-id",
                 federated_application_client_id="b43eeeee-eeee-eeee-eeee-a480155501ce",
-            ),
-            connection_id="my-connection",
-            description="a riveting description",
-            friendly_name="👋",
-            location="azure-eastus2")
+            ))
         ```
         ### Bigquery Connection Cloudspanner
 
@@ -618,14 +626,14 @@ class Connection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         connection = gcp.bigquery.Connection("connection",
+            connection_id="my-connection",
+            location="US",
+            friendly_name="👋",
+            description="a riveting description",
             cloud_spanner=gcp.bigquery.ConnectionCloudSpannerArgs(
                 database="projects/project/instances/instance/databases/database",
                 database_role="database_role",
-            ),
-            connection_id="my-connection",
-            description="a riveting description",
-            friendly_name="👋",
-            location="US")
+            ))
         ```
         ### Bigquery Connection Cloudspanner Databoost
 
@@ -634,16 +642,16 @@ class Connection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         connection = gcp.bigquery.Connection("connection",
+            connection_id="my-connection",
+            location="US",
+            friendly_name="👋",
+            description="a riveting description",
             cloud_spanner=gcp.bigquery.ConnectionCloudSpannerArgs(
                 database="projects/project/instances/instance/databases/database",
-                max_parallelism=100,
-                use_data_boost=True,
                 use_parallelism=True,
-            ),
-            connection_id="my-connection",
-            description="a riveting description",
-            friendly_name="👋",
-            location="US")
+                use_data_boost=True,
+                max_parallelism=100,
+            ))
         ```
         ### Bigquery Connection Spark
 
@@ -652,6 +660,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         basic = gcp.dataproc.Cluster("basic",
+            name="my-connection",
             region="us-central1",
             cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
                 software_config=gcp.dataproc.ClusterClusterConfigSoftwareConfigArgs(
@@ -753,11 +762,11 @@ class Connection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         connection = gcp.bigquery.Connection("connection",
-            cloud_resource=gcp.bigquery.ConnectionCloudResourceArgs(),
             connection_id="my-connection",
-            description="a riveting description",
+            location="US",
             friendly_name="👋",
-            location="US")
+            description="a riveting description",
+            cloud_resource=gcp.bigquery.ConnectionCloudResourceArgs())
         ```
         ### Bigquery Connection Basic
 
@@ -767,17 +776,21 @@ class Connection(pulumi.CustomResource):
         import pulumi_random as random
 
         instance = gcp.sql.DatabaseInstance("instance",
+            name="my-database-instance",
             database_version="POSTGRES_11",
             region="us-central1",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
             ),
             deletion_protection=True)
-        db = gcp.sql.Database("db", instance=instance.name)
+        db = gcp.sql.Database("db",
+            instance=instance.name,
+            name="db")
         pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
+            name="user",
             instance=instance.name,
             password=pwd.result)
         connection = gcp.bigquery.Connection("connection",
@@ -802,17 +815,21 @@ class Connection(pulumi.CustomResource):
         import pulumi_random as random
 
         instance = gcp.sql.DatabaseInstance("instance",
+            name="my-database-instance",
             database_version="POSTGRES_11",
             region="us-central1",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
             ),
             deletion_protection=True)
-        db = gcp.sql.Database("db", instance=instance.name)
+        db = gcp.sql.Database("db",
+            instance=instance.name,
+            name="db")
         pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
+            name="user",
             instance=instance.name,
             password=pwd.result)
         connection = gcp.bigquery.Connection("connection",
@@ -837,15 +854,15 @@ class Connection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         connection = gcp.bigquery.Connection("connection",
+            connection_id="my-connection",
+            location="aws-us-east-1",
+            friendly_name="👋",
+            description="a riveting description",
             aws=gcp.bigquery.ConnectionAwsArgs(
                 access_role=gcp.bigquery.ConnectionAwsAccessRoleArgs(
                     iam_role_id="arn:aws:iam::999999999999:role/omnirole",
                 ),
-            ),
-            connection_id="my-connection",
-            description="a riveting description",
-            friendly_name="👋",
-            location="aws-us-east-1")
+            ))
         ```
         ### Bigquery Connection Azure
 
@@ -854,14 +871,14 @@ class Connection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         connection = gcp.bigquery.Connection("connection",
+            connection_id="my-connection",
+            location="azure-eastus2",
+            friendly_name="👋",
+            description="a riveting description",
             azure=gcp.bigquery.ConnectionAzureArgs(
                 customer_tenant_id="customer-tenant-id",
                 federated_application_client_id="b43eeeee-eeee-eeee-eeee-a480155501ce",
-            ),
-            connection_id="my-connection",
-            description="a riveting description",
-            friendly_name="👋",
-            location="azure-eastus2")
+            ))
         ```
         ### Bigquery Connection Cloudspanner
 
@@ -870,14 +887,14 @@ class Connection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         connection = gcp.bigquery.Connection("connection",
+            connection_id="my-connection",
+            location="US",
+            friendly_name="👋",
+            description="a riveting description",
             cloud_spanner=gcp.bigquery.ConnectionCloudSpannerArgs(
                 database="projects/project/instances/instance/databases/database",
                 database_role="database_role",
-            ),
-            connection_id="my-connection",
-            description="a riveting description",
-            friendly_name="👋",
-            location="US")
+            ))
         ```
         ### Bigquery Connection Cloudspanner Databoost
 
@@ -886,16 +903,16 @@ class Connection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         connection = gcp.bigquery.Connection("connection",
+            connection_id="my-connection",
+            location="US",
+            friendly_name="👋",
+            description="a riveting description",
             cloud_spanner=gcp.bigquery.ConnectionCloudSpannerArgs(
                 database="projects/project/instances/instance/databases/database",
-                max_parallelism=100,
-                use_data_boost=True,
                 use_parallelism=True,
-            ),
-            connection_id="my-connection",
-            description="a riveting description",
-            friendly_name="👋",
-            location="US")
+                use_data_boost=True,
+                max_parallelism=100,
+            ))
         ```
         ### Bigquery Connection Spark
 
@@ -904,6 +921,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         basic = gcp.dataproc.Cluster("basic",
+            name="my-connection",
             region="us-central1",
             cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
                 software_config=gcp.dataproc.ClusterClusterConfigSoftwareConfigArgs(

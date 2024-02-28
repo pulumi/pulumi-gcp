@@ -27,7 +27,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.InstanceSettings;
  * import com.pulumi.gcp.compute.InstanceSettingsArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceSettingsMetadataArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -46,9 +45,7 @@ import javax.annotation.Nullable;
  *             .metadata(InstanceSettingsMetadataArgs.builder()
  *                 .items(Map.of(&#34;foo&#34;, &#34;baz&#34;))
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

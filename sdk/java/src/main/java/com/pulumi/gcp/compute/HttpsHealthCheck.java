@@ -55,9 +55,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new HttpsHealthCheck(&#34;default&#34;, HttpsHealthCheckArgs.builder()        
- *             .checkIntervalSec(1)
+ *             .name(&#34;authentication-health-check&#34;)
  *             .requestPath(&#34;/health_check&#34;)
  *             .timeoutSec(1)
+ *             .checkIntervalSec(1)
  *             .build());
  * 
  *     }

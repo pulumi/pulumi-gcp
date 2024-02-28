@@ -109,7 +109,7 @@ def get_tag_template_iam_policy(project: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.datacatalog.get_tag_template_iam_policy(tag_template=google_data_catalog_tag_template["basic_tag_template"]["name"])
+    policy = gcp.datacatalog.get_tag_template_iam_policy(tag_template=basic_tag_template["name"])
     ```
 
 
@@ -147,7 +147,7 @@ def get_tag_template_iam_policy_output(project: Optional[pulumi.Input[Optional[s
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.datacatalog.get_tag_template_iam_policy(tag_template=google_data_catalog_tag_template["basic_tag_template"]["name"])
+    policy = gcp.datacatalog.get_tag_template_iam_policy(tag_template=basic_tag_template["name"])
     ```
 
 

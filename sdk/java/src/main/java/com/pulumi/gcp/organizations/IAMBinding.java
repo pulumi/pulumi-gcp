@@ -51,9 +51,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new IAMBinding(&#34;binding&#34;, IAMBindingArgs.builder()        
- *             .members(&#34;user:alice@gmail.com&#34;)
  *             .orgId(&#34;123456789&#34;)
  *             .role(&#34;roles/browser&#34;)
+ *             .members(&#34;user:alice@gmail.com&#34;)
  *             .build());
  * 
  *     }

@@ -8,6 +8,169 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Network Services Tcp Route Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ *     name: "backend-service-health-check",
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "my-backend-service",
+ *     healthChecks: defaultHttpHealthCheck.id,
+ * });
+ * const defaultTcpRoute = new gcp.networkservices.TcpRoute("default", {
+ *     name: "my-tcp-route",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     description: "my description",
+ *     rules: [{
+ *         matches: [{
+ *             address: "10.0.0.1/32",
+ *             port: "8081",
+ *         }],
+ *         action: {
+ *             destinations: [{
+ *                 serviceName: _default.id,
+ *                 weight: 1,
+ *             }],
+ *             originalDestination: false,
+ *         },
+ *     }],
+ * });
+ * ```
+ * ### Network Services Tcp Route Actions
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ *     name: "backend-service-health-check",
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "my-backend-service",
+ *     healthChecks: defaultHttpHealthCheck.id,
+ * });
+ * const defaultTcpRoute = new gcp.networkservices.TcpRoute("default", {
+ *     name: "my-tcp-route",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     description: "my description",
+ *     rules: [{
+ *         action: {
+ *             destinations: [{
+ *                 serviceName: _default.id,
+ *                 weight: 1,
+ *             }],
+ *             originalDestination: false,
+ *         },
+ *     }],
+ * });
+ * ```
+ * ### Network Services Tcp Route Mesh Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ *     name: "backend-service-health-check",
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "my-backend-service",
+ *     healthChecks: defaultHttpHealthCheck.id,
+ * });
+ * const defaultMesh = new gcp.networkservices.Mesh("default", {
+ *     name: "my-tcp-route",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     description: "my description",
+ * });
+ * const defaultTcpRoute = new gcp.networkservices.TcpRoute("default", {
+ *     name: "my-tcp-route",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     description: "my description",
+ *     meshes: [defaultMesh.id],
+ *     rules: [{
+ *         matches: [{
+ *             address: "10.0.0.1/32",
+ *             port: "8081",
+ *         }],
+ *         action: {
+ *             destinations: [{
+ *                 serviceName: _default.id,
+ *                 weight: 1,
+ *             }],
+ *             originalDestination: false,
+ *         },
+ *     }],
+ * });
+ * ```
+ * ### Network Services Tcp Route Gateway Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ *     name: "backend-service-health-check",
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "my-backend-service",
+ *     healthChecks: defaultHttpHealthCheck.id,
+ * });
+ * const defaultGateway = new gcp.networkservices.Gateway("default", {
+ *     name: "my-tcp-route",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     description: "my description",
+ *     scope: "my-scope",
+ *     type: "OPEN_MESH",
+ *     ports: [443],
+ * });
+ * const defaultTcpRoute = new gcp.networkservices.TcpRoute("default", {
+ *     name: "my-tcp-route",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     description: "my description",
+ *     gateways: [defaultGateway.id],
+ *     rules: [{
+ *         matches: [{
+ *             address: "10.0.0.1/32",
+ *             port: "8081",
+ *         }],
+ *         action: {
+ *             destinations: [{
+ *                 serviceName: _default.id,
+ *                 weight: 1,
+ *             }],
+ *             originalDestination: false,
+ *         },
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *

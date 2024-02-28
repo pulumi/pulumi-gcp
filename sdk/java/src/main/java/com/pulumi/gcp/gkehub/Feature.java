@@ -60,6 +60,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
+ *             .name(&#34;my-cluster&#34;)
  *             .location(&#34;us-central1-a&#34;)
  *             .initialNodeCount(1)
  *             .build());
@@ -75,6 +76,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
+ *             .name(&#34;multiclusteringress&#34;)
  *             .location(&#34;global&#34;)
  *             .spec(FeatureSpecArgs.builder()
  *                 .multiclusteringress(FeatureSpecMulticlusteringressArgs.builder()
@@ -109,8 +111,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .name(&#34;multiclusterservicediscovery&#34;)
  *             .location(&#34;global&#34;)
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .build());
  * 
  *     }
@@ -139,6 +142,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
+ *             .name(&#34;servicemesh&#34;)
  *             .location(&#34;global&#34;)
  *             .build());
  * 
@@ -172,6 +176,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
+ *             .name(&#34;fleetobservability&#34;)
  *             .location(&#34;global&#34;)
  *             .spec(FeatureSpecArgs.builder()
  *                 .fleetobservability(FeatureSpecFleetobservabilityArgs.builder()
@@ -214,6 +219,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
+ *             .name(&#34;fleetobservability&#34;)
  *             .location(&#34;global&#34;)
  *             .spec(FeatureSpecArgs.builder()
  *                 .fleetobservability(FeatureSpecFleetobservabilityArgs.builder()
@@ -257,6 +263,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
+ *             .name(&#34;fleetobservability&#34;)
  *             .location(&#34;global&#34;)
  *             .spec(FeatureSpecArgs.builder()
  *                 .fleetobservability(FeatureSpecFleetobservabilityArgs.builder()
@@ -300,12 +307,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
+ *             .name(&#34;servicemesh&#34;)
+ *             .location(&#34;global&#34;)
  *             .fleetDefaultMemberConfig(FeatureFleetDefaultMemberConfigArgs.builder()
  *                 .mesh(FeatureFleetDefaultMemberConfigMeshArgs.builder()
  *                     .management(&#34;MANAGEMENT_AUTOMATIC&#34;)
  *                     .build())
  *                 .build())
- *             .location(&#34;global&#34;)
  *             .build());
  * 
  *     }
@@ -338,6 +346,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
+ *             .name(&#34;configmanagement&#34;)
+ *             .location(&#34;global&#34;)
  *             .fleetDefaultMemberConfig(FeatureFleetDefaultMemberConfigArgs.builder()
  *                 .configmanagement(FeatureFleetDefaultMemberConfigConfigmanagementArgs.builder()
  *                     .configSync(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs.builder()
@@ -347,7 +357,6 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .location(&#34;global&#34;)
  *             .build());
  * 
  *     }
@@ -381,12 +390,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
+ *             .name(&#34;policycontroller&#34;)
+ *             .location(&#34;global&#34;)
  *             .fleetDefaultMemberConfig(FeatureFleetDefaultMemberConfigArgs.builder()
  *                 .policycontroller(FeatureFleetDefaultMemberConfigPolicycontrollerArgs.builder()
  *                     .policyControllerHubConfig(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs.builder()
- *                         .auditIntervalSeconds(30)
- *                         .exemptableNamespaces(&#34;foo&#34;)
  *                         .installSpec(&#34;INSTALL_SPEC_ENABLED&#34;)
+ *                         .exemptableNamespaces(&#34;foo&#34;)
  *                         .policyContent(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs.builder()
  *                             .bundles(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs.builder()
  *                                 .bundle(&#34;policy-essentials-v2022&#34;)
@@ -398,18 +408,17 @@ import javax.annotation.Nullable;
  *                                 .installation(&#34;ALL&#34;)
  *                                 .build())
  *                             .build())
+ *                         .auditIntervalSeconds(30)
  *                         .referentialRulesEnabled(true)
  *                         .build())
  *                     .build())
  *                 .build())
- *             .location(&#34;global&#34;)
  *             .build());
  * 
  *     }
  * }
  * ```
  * ### Enable Fleet Default Member Config Policycontroller Full
- * 
  * ```java
  * package generated_program;
  * 
@@ -421,9 +430,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigArgs;
  * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerArgs;
  * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs;
- * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs;
  * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs;
  * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -438,36 +447,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
+ *             .name(&#34;policycontroller&#34;)
+ *             .location(&#34;global&#34;)
  *             .fleetDefaultMemberConfig(FeatureFleetDefaultMemberConfigArgs.builder()
  *                 .policycontroller(FeatureFleetDefaultMemberConfigPolicycontrollerArgs.builder()
  *                     .policyControllerHubConfig(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs.builder()
- *                         .constraintViolationLimit(50)
- *                         .deploymentConfigs(                        
- *                             FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs.builder()
- *                                 .component(&#34;admission&#34;)
- *                                 .podAffinity(&#34;ANTI_AFFINITY&#34;)
- *                                 .replicaCount(2)
- *                                 .build(),
- *                             FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs.builder()
- *                                 .component(&#34;audit&#34;)
- *                                 .containerResources(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs.builder()
- *                                     .limits(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs.builder()
- *                                         .cpu(&#34;1.5&#34;)
- *                                         .memory(&#34;1Gi&#34;)
- *                                         .build())
- *                                     .requests(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs.builder()
- *                                         .cpu(&#34;150m&#34;)
- *                                         .memory(&#34;500Mi&#34;)
- *                                         .build())
- *                                     .build())
- *                                 .podToleration(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                                 .build())
  *                         .installSpec(&#34;INSTALL_SPEC_SUSPENDED&#34;)
- *                         .logDeniesEnabled(true)
- *                         .monitoring(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs.builder()
- *                             .backends(&#34;PROMETHEUS&#34;)
- *                             .build())
- *                         .mutationEnabled(true)
  *                         .policyContent(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs.builder()
  *                             .bundles(                            
  *                                 FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs.builder()
@@ -484,11 +469,41 @@ import javax.annotation.Nullable;
  *                                 .installation(&#34;ALL&#34;)
  *                                 .build())
  *                             .build())
+ *                         .constraintViolationLimit(50)
  *                         .referentialRulesEnabled(true)
+ *                         .logDeniesEnabled(true)
+ *                         .mutationEnabled(true)
+ *                         .deploymentConfigs(                        
+ *                             FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs.builder()
+ *                                 .component(&#34;admission&#34;)
+ *                                 .replicaCount(2)
+ *                                 .podAffinity(&#34;ANTI_AFFINITY&#34;)
+ *                                 .build(),
+ *                             FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs.builder()
+ *                                 .component(&#34;audit&#34;)
+ *                                 .containerResources(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs.builder()
+ *                                     .limits(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs.builder()
+ *                                         .memory(&#34;1Gi&#34;)
+ *                                         .cpu(&#34;1.5&#34;)
+ *                                         .build())
+ *                                     .requests(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs.builder()
+ *                                         .memory(&#34;500Mi&#34;)
+ *                                         .cpu(&#34;150m&#34;)
+ *                                         .build())
+ *                                     .build())
+ *                                 .podTolerations(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs.builder()
+ *                                     .key(&#34;key1&#34;)
+ *                                     .operator(&#34;Equal&#34;)
+ *                                     .value(&#34;value1&#34;)
+ *                                     .effect(&#34;NoSchedule&#34;)
+ *                                     .build())
+ *                                 .build())
+ *                         .monitoring(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs.builder()
+ *                             .backends(&#34;PROMETHEUS&#34;)
+ *                             .build())
  *                         .build())
  *                     .build())
  *                 .build())
- *             .location(&#34;global&#34;)
  *             .build());
  * 
  *     }
@@ -506,8 +521,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigArgs;
  * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerArgs;
  * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs;
- * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs;
  * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -522,23 +537,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
+ *             .name(&#34;policycontroller&#34;)
+ *             .location(&#34;global&#34;)
  *             .fleetDefaultMemberConfig(FeatureFleetDefaultMemberConfigArgs.builder()
  *                 .policycontroller(FeatureFleetDefaultMemberConfigPolicycontrollerArgs.builder()
  *                     .policyControllerHubConfig(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs.builder()
+ *                         .installSpec(&#34;INSTALL_SPEC_ENABLED&#34;)
+ *                         .policyContent()
  *                         .constraintViolationLimit(50)
+ *                         .referentialRulesEnabled(true)
+ *                         .logDeniesEnabled(true)
+ *                         .mutationEnabled(true)
  *                         .deploymentConfigs(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs.builder()
  *                             .component(&#34;admission&#34;)
  *                             .build())
- *                         .installSpec(&#34;INSTALL_SPEC_ENABLED&#34;)
- *                         .logDeniesEnabled(true)
  *                         .monitoring()
- *                         .mutationEnabled(true)
- *                         .policyContent()
- *                         .referentialRulesEnabled(true)
  *                         .build())
  *                     .build())
  *                 .build())
- *             .location(&#34;global&#34;)
  *             .build());
  * 
  *     }
@@ -570,13 +586,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
+ *             .name(&#34;clusterupgrade&#34;)
  *             .location(&#34;global&#34;)
  *             .spec(FeatureSpecArgs.builder()
  *                 .clusterupgrade(FeatureSpecClusterupgradeArgs.builder()
+ *                     .upstreamFleets()
  *                     .postConditions(FeatureSpecClusterupgradePostConditionsArgs.builder()
  *                         .soaking(&#34;60s&#34;)
  *                         .build())
- *                     .upstreamFleets()
  *                     .build())
  *                 .build())
  *             .build());

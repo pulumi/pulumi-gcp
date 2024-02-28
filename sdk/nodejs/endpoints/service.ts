@@ -13,19 +13,25 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
  *
- * const openapiService = new gcp.endpoints.Service("openapiService", {
+ * const openapiService = new gcp.endpoints.Service("openapi_service", {
  *     serviceName: "api-name.endpoints.project-id.cloud.goog",
  *     project: "project-id",
- *     openapiConfig: fs.readFileSync("openapi_spec.yml", "utf8"),
+ *     openapiConfig: std.file({
+ *         input: "openapi_spec.yml",
+ *     }).then(invoke => invoke.result),
  * });
- * const grpcService = new gcp.endpoints.Service("grpcService", {
+ * const grpcService = new gcp.endpoints.Service("grpc_service", {
  *     serviceName: "api-name.endpoints.project-id.cloud.goog",
  *     project: "project-id",
- *     grpcConfig: fs.readFileSync("service_spec.yml", "utf8"),
- *     protocOutputBase64: fs.readFileSync("compiled_descriptor_file.pb", { encoding: "base64" }),
+ *     grpcConfig: std.file({
+ *         input: "service_spec.yml",
+ *     }).then(invoke => invoke.result),
+ *     protocOutputBase64: std.filebase64({
+ *         input: "compiled_descriptor_file.pb",
+ *     }).then(invoke => invoke.result),
  * });
  * ```
  *

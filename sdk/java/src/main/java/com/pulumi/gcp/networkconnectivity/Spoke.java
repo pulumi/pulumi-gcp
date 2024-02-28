@@ -53,15 +53,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
+ *             .name(&#34;network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var basicHub = new Hub(&#34;basicHub&#34;, HubArgs.builder()        
+ *             .name(&#34;hub&#34;)
  *             .description(&#34;A sample hub&#34;)
  *             .labels(Map.of(&#34;label-two&#34;, &#34;value-one&#34;))
  *             .build());
  * 
  *         var primary = new Spoke(&#34;primary&#34;, SpokeArgs.builder()        
+ *             .name(&#34;name&#34;)
  *             .location(&#34;global&#34;)
  *             .description(&#34;A sample spoke with a linked routher appliance instance&#34;)
  *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
@@ -112,16 +115,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
+ *             .name(&#34;network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var subnetwork = new Subnetwork(&#34;subnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;subnet&#34;)
  *             .ipCidrRange(&#34;10.0.0.0/28&#34;)
  *             .region(&#34;us-west1&#34;)
  *             .network(network.selfLink())
  *             .build());
  * 
  *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *             .name(&#34;instance&#34;)
  *             .machineType(&#34;e2-medium&#34;)
  *             .canIpForward(true)
  *             .zone(&#34;us-west1-a&#34;)
@@ -140,11 +146,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var basicHub = new Hub(&#34;basicHub&#34;, HubArgs.builder()        
+ *             .name(&#34;hub&#34;)
  *             .description(&#34;A sample hub&#34;)
  *             .labels(Map.of(&#34;label-two&#34;, &#34;value-one&#34;))
  *             .build());
  * 
  *         var primary = new Spoke(&#34;primary&#34;, SpokeArgs.builder()        
+ *             .name(&#34;name&#34;)
  *             .location(&#34;us-west1&#34;)
  *             .description(&#34;A sample spoke with a linked routher appliance instance&#34;)
  *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))

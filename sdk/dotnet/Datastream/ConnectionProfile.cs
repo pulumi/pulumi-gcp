@@ -31,14 +31,14 @@ namespace Pulumi.Gcp.Datastream
     /// {
     ///     var @default = new Gcp.Datastream.ConnectionProfile("default", new()
     ///     {
-    ///         ConnectionProfileId = "my-profile",
     ///         DisplayName = "Connection profile",
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "my-profile",
     ///         GcsProfile = new Gcp.Datastream.Inputs.ConnectionProfileGcsProfileArgs
     ///         {
     ///             Bucket = "my-bucket",
     ///             RootPath = "/path",
     ///         },
-    ///         Location = "us-central1",
     ///     });
     /// 
     /// });
@@ -54,9 +54,12 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork");
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "my-network",
+    ///     });
     /// 
-    ///     var privateConnection = new Gcp.Datastream.PrivateConnection("privateConnection", new()
+    ///     var privateConnection = new Gcp.Datastream.PrivateConnection("private_connection", new()
     ///     {
     ///         DisplayName = "Connection profile",
     ///         Location = "us-central1",
@@ -67,13 +70,14 @@ namespace Pulumi.Gcp.Datastream
     ///         },
     ///         VpcPeeringConfig = new Gcp.Datastream.Inputs.PrivateConnectionVpcPeeringConfigArgs
     ///         {
-    ///             Vpc = defaultNetwork.Id,
+    ///             Vpc = @default.Id,
     ///             Subnet = "10.0.0.0/29",
     ///         },
     ///     });
     /// 
     ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
     ///     {
+    ///         Name = "my-instance",
     ///         DatabaseVersion = "POSTGRES_14",
     ///         Region = "us-central1",
     ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
@@ -112,6 +116,7 @@ namespace Pulumi.Gcp.Datastream
     ///     var db = new Gcp.Sql.Database("db", new()
     ///     {
     ///         Instance = instance.Name,
+    ///         Name = "db",
     ///     });
     /// 
     ///     var pwd = new Random.RandomPassword("pwd", new()
@@ -122,11 +127,12 @@ namespace Pulumi.Gcp.Datastream
     /// 
     ///     var user = new Gcp.Sql.User("user", new()
     ///     {
+    ///         Name = "user",
     ///         Instance = instance.Name,
     ///         Password = pwd.Result,
     ///     });
     /// 
-    ///     var defaultConnectionProfile = new Gcp.Datastream.ConnectionProfile("defaultConnectionProfile", new()
+    ///     var defaultConnectionProfile = new Gcp.Datastream.ConnectionProfile("default", new()
     ///     {
     ///         DisplayName = "Connection profile",
     ///         Location = "us-central1",
@@ -158,25 +164,25 @@ namespace Pulumi.Gcp.Datastream
     /// {
     ///     var @default = new Gcp.Datastream.ConnectionProfile("default", new()
     ///     {
-    ///         ConnectionProfileId = "my-profile",
     ///         DisplayName = "Connection profile",
-    ///         ForwardSshConnectivity = new Gcp.Datastream.Inputs.ConnectionProfileForwardSshConnectivityArgs
-    ///         {
-    ///             Hostname = "google.com",
-    ///             Password = "swordfish",
-    ///             Port = 8022,
-    ///             Username = "my-user",
-    ///         },
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "my-profile",
     ///         GcsProfile = new Gcp.Datastream.Inputs.ConnectionProfileGcsProfileArgs
     ///         {
     ///             Bucket = "my-bucket",
     ///             RootPath = "/path",
     ///         },
+    ///         ForwardSshConnectivity = new Gcp.Datastream.Inputs.ConnectionProfileForwardSshConnectivityArgs
+    ///         {
+    ///             Hostname = "google.com",
+    ///             Username = "my-user",
+    ///             Port = 8022,
+    ///             Password = "swordfish",
+    ///         },
     ///         Labels = 
     ///         {
     ///             { "key", "value" },
     ///         },
-    ///         Location = "us-central1",
     ///     });
     /// 
     /// });
@@ -194,6 +200,7 @@ namespace Pulumi.Gcp.Datastream
     /// {
     ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
     ///     {
+    ///         Name = "my-instance",
     ///         DatabaseVersion = "POSTGRES_14",
     ///         Region = "us-central1",
     ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
@@ -232,6 +239,7 @@ namespace Pulumi.Gcp.Datastream
     ///     var db = new Gcp.Sql.Database("db", new()
     ///     {
     ///         Instance = instance.Name,
+    ///         Name = "db",
     ///     });
     /// 
     ///     var pwd = new Random.RandomPassword("pwd", new()
@@ -242,6 +250,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     ///     var user = new Gcp.Sql.User("user", new()
     ///     {
+    ///         Name = "user",
     ///         Instance = instance.Name,
     ///         Password = pwd.Result,
     ///     });

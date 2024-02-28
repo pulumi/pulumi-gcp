@@ -559,7 +559,9 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        instance = gcp.workbench.Instance("instance", location="us-west1-a")
+        instance = gcp.workbench.Instance("instance",
+            name="workbench-instance",
+            location="us-west1-a")
         ```
         ### Workbench Instance Basic Gpu
 
@@ -568,18 +570,19 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.workbench.Instance("instance",
+            name="workbench-instance",
+            location="us-central1-a",
             gce_setup=gcp.workbench.InstanceGceSetupArgs(
-                accelerator_configs=[gcp.workbench.InstanceGceSetupAcceleratorConfigArgs(
-                    core_count="1",
-                    type="NVIDIA_TESLA_T4",
-                )],
                 machine_type="n1-standard-1",
+                accelerator_configs=[gcp.workbench.InstanceGceSetupAcceleratorConfigArgs(
+                    type="NVIDIA_TESLA_T4",
+                    core_count="1",
+                )],
                 vm_image=gcp.workbench.InstanceGceSetupVmImageArgs(
-                    family="tf-latest-gpu",
                     project="deeplearning-platform-release",
+                    family="tf-latest-gpu",
                 ),
-            ),
-            location="us-central1-a")
+            ))
         ```
         ### Workbench Instance Labels Stopped
 
@@ -588,21 +591,22 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.workbench.Instance("instance",
-            desired_state="STOPPED",
+            name="workbench-instance",
+            location="us-central1-a",
             gce_setup=gcp.workbench.InstanceGceSetupArgs(
                 machine_type="e2-standard-4",
-                metadata={
-                    "terraform": "true",
-                },
                 service_accounts=[gcp.workbench.InstanceGceSetupServiceAccountArgs(
                     email="my@service-account.com",
                 )],
+                metadata={
+                    "terraform": "true",
+                },
             ),
             instance_owners=["my@service-account.com"],
             labels={
                 "k": "val",
             },
-            location="us-central1-a")
+            desired_state="STOPPED")
         ```
         ### Workbench Instance Full
 
@@ -610,12 +614,16 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_network = gcp.compute.Network("myNetwork", auto_create_subnetworks=False)
-        my_subnetwork = gcp.compute.Subnetwork("mySubnetwork",
+        my_network = gcp.compute.Network("my_network",
+            name="wbi-test-default",
+            auto_create_subnetworks=False)
+        my_subnetwork = gcp.compute.Subnetwork("my_subnetwork",
+            name="wbi-test-default",
             network=my_network.id,
             region="us-central1",
             ip_cidr_range="10.0.1.0/24")
         instance = gcp.workbench.Instance("instance",
+            name="workbench-instance",
             location="us-central1-a",
             gce_setup=gcp.workbench.InstanceGceSetupArgs(
                 machine_type="n1-standard-4",
@@ -724,7 +732,9 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        instance = gcp.workbench.Instance("instance", location="us-west1-a")
+        instance = gcp.workbench.Instance("instance",
+            name="workbench-instance",
+            location="us-west1-a")
         ```
         ### Workbench Instance Basic Gpu
 
@@ -733,18 +743,19 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.workbench.Instance("instance",
+            name="workbench-instance",
+            location="us-central1-a",
             gce_setup=gcp.workbench.InstanceGceSetupArgs(
-                accelerator_configs=[gcp.workbench.InstanceGceSetupAcceleratorConfigArgs(
-                    core_count="1",
-                    type="NVIDIA_TESLA_T4",
-                )],
                 machine_type="n1-standard-1",
+                accelerator_configs=[gcp.workbench.InstanceGceSetupAcceleratorConfigArgs(
+                    type="NVIDIA_TESLA_T4",
+                    core_count="1",
+                )],
                 vm_image=gcp.workbench.InstanceGceSetupVmImageArgs(
-                    family="tf-latest-gpu",
                     project="deeplearning-platform-release",
+                    family="tf-latest-gpu",
                 ),
-            ),
-            location="us-central1-a")
+            ))
         ```
         ### Workbench Instance Labels Stopped
 
@@ -753,21 +764,22 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.workbench.Instance("instance",
-            desired_state="STOPPED",
+            name="workbench-instance",
+            location="us-central1-a",
             gce_setup=gcp.workbench.InstanceGceSetupArgs(
                 machine_type="e2-standard-4",
-                metadata={
-                    "terraform": "true",
-                },
                 service_accounts=[gcp.workbench.InstanceGceSetupServiceAccountArgs(
                     email="my@service-account.com",
                 )],
+                metadata={
+                    "terraform": "true",
+                },
             ),
             instance_owners=["my@service-account.com"],
             labels={
                 "k": "val",
             },
-            location="us-central1-a")
+            desired_state="STOPPED")
         ```
         ### Workbench Instance Full
 
@@ -775,12 +787,16 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_network = gcp.compute.Network("myNetwork", auto_create_subnetworks=False)
-        my_subnetwork = gcp.compute.Subnetwork("mySubnetwork",
+        my_network = gcp.compute.Network("my_network",
+            name="wbi-test-default",
+            auto_create_subnetworks=False)
+        my_subnetwork = gcp.compute.Subnetwork("my_subnetwork",
+            name="wbi-test-default",
             network=my_network.id,
             region="us-central1",
             ip_cidr_range="10.0.1.0/24")
         instance = gcp.workbench.Instance("instance",
+            name="workbench-instance",
             location="us-central1-a",
             gce_setup=gcp.workbench.InstanceGceSetupArgs(
                 machine_type="n1-standard-4",

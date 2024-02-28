@@ -98,6 +98,56 @@ def get_machine_types(filter: Optional[str] = None,
     * [Comparison Guide](https://cloud.google.com/compute/docs/machine-resource)
 
     ## Example Usage
+    ### Property-Based Availability
+
+    Create a VM instance template for each machine type with 16GB of memory and 8 CPUs available in the provided zone.
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+
+    def not_implemented(msg):
+        raise NotImplementedError(msg)
+
+    example = gcp.compute.get_machine_types(filter="memoryMb = 16384 AND guestCpus = 8",
+        zone=zone)
+    example_instance_template = []
+    for range in [{"value": i} for i in range(0, not_implemented(toset(data.google_compute_machine_types.example.machine_types[*].name)))]:
+        example_instance_template.append(gcp.compute.InstanceTemplate(f"example-{range['value']}",
+            machine_type=range["value"],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-11",
+                auto_delete=True,
+                boot=True,
+            )]))
+    ```
+    ### Machine Family Preference
+
+    Create an instance template, preferring `c3` machine family if available in the provided zone, otherwise falling back to `c2` and finally `n2`.
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+
+    def not_implemented(msg):
+        raise NotImplementedError(msg)
+
+    example = gcp.compute.get_machine_types(filter="memoryMb = 16384 AND guestCpus = 4",
+        zone=zone)
+    example_instance_template = gcp.compute.InstanceTemplate("example",
+        machine_type=not_implemented(\"\"\"coalescelist(
+    [formtindata.google_compute_machine_types.example.machine_types:mt.nameifstartswith(mt.name,"c3-")],
+    [formtindata.google_compute_machine_types.example.machine_types:mt.nameifstartswith(mt.name,"c2-")],
+    [formtindata.google_compute_machine_types.example.machine_types:mt.nameifstartswith(mt.name,"n2-")],
+    )\"\"\")[0],
+        disks=[gcp.compute.InstanceTemplateDiskArgs(
+            source_image="debian-cloud/debian-11",
+            auto_delete=True,
+            boot=True,
+        )])
+    ```
 
 
     :param str filter: A filter expression that filters machine types listed in the response.
@@ -134,6 +184,56 @@ def get_machine_types_output(filter: Optional[pulumi.Input[Optional[str]]] = Non
     * [Comparison Guide](https://cloud.google.com/compute/docs/machine-resource)
 
     ## Example Usage
+    ### Property-Based Availability
+
+    Create a VM instance template for each machine type with 16GB of memory and 8 CPUs available in the provided zone.
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+
+    def not_implemented(msg):
+        raise NotImplementedError(msg)
+
+    example = gcp.compute.get_machine_types(filter="memoryMb = 16384 AND guestCpus = 8",
+        zone=zone)
+    example_instance_template = []
+    for range in [{"value": i} for i in range(0, not_implemented(toset(data.google_compute_machine_types.example.machine_types[*].name)))]:
+        example_instance_template.append(gcp.compute.InstanceTemplate(f"example-{range['value']}",
+            machine_type=range["value"],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-11",
+                auto_delete=True,
+                boot=True,
+            )]))
+    ```
+    ### Machine Family Preference
+
+    Create an instance template, preferring `c3` machine family if available in the provided zone, otherwise falling back to `c2` and finally `n2`.
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+
+    def not_implemented(msg):
+        raise NotImplementedError(msg)
+
+    example = gcp.compute.get_machine_types(filter="memoryMb = 16384 AND guestCpus = 4",
+        zone=zone)
+    example_instance_template = gcp.compute.InstanceTemplate("example",
+        machine_type=not_implemented(\"\"\"coalescelist(
+    [formtindata.google_compute_machine_types.example.machine_types:mt.nameifstartswith(mt.name,"c3-")],
+    [formtindata.google_compute_machine_types.example.machine_types:mt.nameifstartswith(mt.name,"c2-")],
+    [formtindata.google_compute_machine_types.example.machine_types:mt.nameifstartswith(mt.name,"n2-")],
+    )\"\"\")[0],
+        disks=[gcp.compute.InstanceTemplateDiskArgs(
+            source_image="debian-cloud/debian-11",
+            auto_delete=True,
+            boot=True,
+        )])
+    ```
 
 
     :param str filter: A filter expression that filters machine types listed in the response.

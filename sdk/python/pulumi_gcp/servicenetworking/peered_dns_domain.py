@@ -224,9 +224,10 @@ class PeeredDnsDomain(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         name = gcp.servicenetworking.PeeredDnsDomain("name",
-            dns_suffix="example.com.",
-            network="default",
             project="10000000",
+            name="example-com",
+            network="default",
+            dns_suffix="example.com.",
             service="peering-service")
         ```
 
@@ -276,9 +277,10 @@ class PeeredDnsDomain(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         name = gcp.servicenetworking.PeeredDnsDomain("name",
-            dns_suffix="example.com.",
-            network="default",
             project="10000000",
+            name="example-com",
+            network="default",
+            dns_suffix="example.com.",
             service="peering-service")
         ```
 

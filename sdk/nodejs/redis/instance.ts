@@ -16,16 +16,36 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
  *
  * ## Example Usage
+ * ### Redis Instance Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cache = new gcp.redis.Instance("cache", {
+ *     name: "memory-cache",
+ *     memorySizeGb: 1,
+ * });
+ * ```
  * ### Redis Instance Full
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * // This example assumes this network already exists.
+ * // The API creates a tenant network per network authorized for a
+ * // Redis instance and that network is not deleted when the user-created
+ * // network (authorized_network) is deleted, so this prevents issues
+ * // with tenant network quota.
+ * // If this network hasn't been created and you are using this example in your
+ * // config, add an additional network resource or change
+ * // this from "data"to "resource"
  * const redis-network = gcp.compute.getNetwork({
  *     name: "redis-test-network",
  * });
  * const cache = new gcp.redis.Instance("cache", {
+ *     name: "ha-memory-cache",
  *     tier: "STANDARD_HA",
  *     memorySizeGb: 1,
  *     locationId: "us-central1-a",
@@ -51,6 +71,24 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Redis Instance Full With Persistence Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cache_persis = new gcp.redis.Instance("cache-persis", {
+ *     name: "ha-memory-cache-persis",
+ *     tier: "STANDARD_HA",
+ *     memorySizeGb: 1,
+ *     locationId: "us-central1-a",
+ *     alternativeLocationId: "us-central1-f",
+ *     persistenceConfig: {
+ *         persistenceMode: "RDB",
+ *         rdbSnapshotPeriod: "TWELVE_HOURS",
+ *     },
+ * });
+ * ```
  * ### Redis Instance Private Service
  *
  * ```typescript
@@ -65,19 +103,21 @@ import * as utilities from "../utilities";
  * // If this network hasn't been created and you are using this example in your
  * // config, add an additional network resource or change
  * // this from "data"to "resource"
- * const redis_network = new gcp.compute.Network("redis-network", {});
- * const serviceRange = new gcp.compute.GlobalAddress("serviceRange", {
+ * const redis_network = new gcp.compute.Network("redis-network", {name: "redis-test-network"});
+ * const serviceRange = new gcp.compute.GlobalAddress("service_range", {
+ *     name: "address",
  *     purpose: "VPC_PEERING",
  *     addressType: "INTERNAL",
  *     prefixLength: 16,
  *     network: redis_network.id,
  * });
- * const privateServiceConnection = new gcp.servicenetworking.Connection("privateServiceConnection", {
+ * const privateServiceConnection = new gcp.servicenetworking.Connection("private_service_connection", {
  *     network: redis_network.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [serviceRange.name],
  * });
  * const cache = new gcp.redis.Instance("cache", {
+ *     name: "private-cache",
  *     tier: "STANDARD_HA",
  *     memorySizeGb: 1,
  *     locationId: "us-central1-a",
@@ -86,8 +126,6 @@ import * as utilities from "../utilities";
  *     connectMode: "PRIVATE_SERVICE_ACCESS",
  *     redisVersion: "REDIS_4_0",
  *     displayName: "Test Instance",
- * }, {
- *     dependsOn: [privateServiceConnection],
  * });
  * ```
  * ### Redis Instance Mrr
@@ -96,10 +134,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * // This example assumes this network already exists.
+ * // The API creates a tenant network per network authorized for a
+ * // Redis instance and that network is not deleted when the user-created
+ * // network (authorized_network) is deleted, so this prevents issues
+ * // with tenant network quota.
+ * // If this network hasn't been created and you are using this example in your
+ * // config, add an additional network resource or change
+ * // this from "data"to "resource"
  * const redis-network = gcp.compute.getNetwork({
  *     name: "redis-test-network",
  * });
  * const cache = new gcp.redis.Instance("cache", {
+ *     name: "mrr-memory-cache",
  *     tier: "STANDARD_HA",
  *     memorySizeGb: 5,
  *     locationId: "us-central1-a",
@@ -122,12 +169,27 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const redisKeyring = new gcp.kms.KeyRing("redisKeyring", {location: "us-central1"});
- * const redisKey = new gcp.kms.CryptoKey("redisKey", {keyRing: redisKeyring.id});
+ * const redisKeyring = new gcp.kms.KeyRing("redis_keyring", {
+ *     name: "redis-keyring",
+ *     location: "us-central1",
+ * });
+ * const redisKey = new gcp.kms.CryptoKey("redis_key", {
+ *     name: "redis-key",
+ *     keyRing: redisKeyring.id,
+ * });
+ * // This example assumes this network already exists.
+ * // The API creates a tenant network per network authorized for a
+ * // Redis instance and that network is not deleted when the user-created
+ * // network (authorized_network) is deleted, so this prevents issues
+ * // with tenant network quota.
+ * // If this network hasn't been created and you are using this example in your
+ * // config, add an additional network resource or change
+ * // this from "data"to "resource"
  * const redis-network = gcp.compute.getNetwork({
  *     name: "redis-test-network",
  * });
  * const cache = new gcp.redis.Instance("cache", {
+ *     name: "cmek-memory-cache",
  *     tier: "STANDARD_HA",
  *     memorySizeGb: 1,
  *     locationId: "us-central1-a",

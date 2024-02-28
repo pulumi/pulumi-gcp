@@ -54,6 +54,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var featurestore = new AiFeatureStore(&#34;featurestore&#34;, AiFeatureStoreArgs.builder()        
+ *             .name(&#34;terraform&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .region(&#34;us-central1&#34;)
  *             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
@@ -62,11 +63,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var entity = new AiFeatureStoreEntityType(&#34;entity&#34;, AiFeatureStoreEntityTypeArgs.builder()        
+ *             .name(&#34;terraform&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .featurestore(featurestore.id())
  *             .build());
  * 
  *         var feature = new AiFeatureStoreEntityTypeFeature(&#34;feature&#34;, AiFeatureStoreEntityTypeFeatureArgs.builder()        
+ *             .name(&#34;terraform&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .entitytype(entity.id())
  *             .valueType(&#34;INT64_ARRAY&#34;)
@@ -93,7 +96,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs;
  * import com.pulumi.gcp.vertex.AiFeatureStoreEntityTypeFeature;
  * import com.pulumi.gcp.vertex.AiFeatureStoreEntityTypeFeatureArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -108,16 +110,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var featurestore = new AiFeatureStore(&#34;featurestore&#34;, AiFeatureStoreArgs.builder()        
+ *             .name(&#34;terraform2&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .region(&#34;us-central1&#34;)
  *             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
  *                 .fixedNodeCount(2)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var entity = new AiFeatureStoreEntityType(&#34;entity&#34;, AiFeatureStoreEntityTypeArgs.builder()        
+ *             .name(&#34;terraform2&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .featurestore(featurestore.id())
  *             .monitoringConfig(AiFeatureStoreEntityTypeMonitoringConfigArgs.builder()
@@ -132,17 +134,14 @@ import javax.annotation.Nullable;
  *                     .value(0.3)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var feature = new AiFeatureStoreEntityTypeFeature(&#34;feature&#34;, AiFeatureStoreEntityTypeFeatureArgs.builder()        
+ *             .name(&#34;terraform2&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .entitytype(entity.id())
  *             .valueType(&#34;INT64_ARRAY&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

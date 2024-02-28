@@ -22,8 +22,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var basicGlobalNetworksecurityAddressGroup = new Gcp.NetworkSecurity.AddressGroup("basicGlobalNetworksecurityAddressGroup", new()
+    ///     var basicGlobalNetworksecurityAddressGroup = new Gcp.NetworkSecurity.AddressGroup("basic_global_networksecurity_address_group", new()
     ///     {
+    ///         Name = "policy",
     ///         Parent = "projects/my-project-name",
     ///         Description = "Sample global networksecurity_address_group",
     ///         Location = "global",
@@ -35,15 +36,19 @@ namespace Pulumi.Gcp.Compute
     ///         Capacity = 100,
     ///     });
     /// 
-    ///     var basicNetworkFirewallPolicy = new Gcp.Compute.NetworkFirewallPolicy("basicNetworkFirewallPolicy", new()
+    ///     var basicNetworkFirewallPolicy = new Gcp.Compute.NetworkFirewallPolicy("basic_network_firewall_policy", new()
     ///     {
+    ///         Name = "policy",
     ///         Description = "Sample global network firewall policy",
     ///         Project = "my-project-name",
     ///     });
     /// 
-    ///     var basicNetwork = new Gcp.Compute.Network("basicNetwork");
+    ///     var basicNetwork = new Gcp.Compute.Network("basic_network", new()
+    ///     {
+    ///         Name = "network",
+    ///     });
     /// 
-    ///     var basicKey = new Gcp.Tags.TagKey("basicKey", new()
+    ///     var basicKey = new Gcp.Tags.TagKey("basic_key", new()
     ///     {
     ///         Description = "For keyname resources.",
     ///         Parent = "organizations/123456789",
@@ -55,7 +60,7 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///     });
     /// 
-    ///     var basicValue = new Gcp.Tags.TagValue("basicValue", new()
+    ///     var basicValue = new Gcp.Tags.TagValue("basic_value", new()
     ///     {
     ///         Description = "For valuename resources.",
     ///         Parent = basicKey.Name.Apply(name =&gt; $"tagKeys/{name}"),

@@ -29,7 +29,7 @@ import (
 //			_, err := artifactregistry.NewVpcscConfig(ctx, "my-config", &artifactregistry.VpcscConfigArgs{
 //				Location:    pulumi.String("us-central1"),
 //				VpcscPolicy: pulumi.String("ALLOW"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

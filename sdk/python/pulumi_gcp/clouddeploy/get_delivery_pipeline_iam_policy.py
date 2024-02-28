@@ -109,9 +109,9 @@ def get_delivery_pipeline_iam_policy(location: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.clouddeploy.get_delivery_pipeline_iam_policy(project=google_clouddeploy_delivery_pipeline["default"]["project"],
-        location=google_clouddeploy_delivery_pipeline["default"]["location"],
-        name=google_clouddeploy_delivery_pipeline["default"]["name"])
+    policy = gcp.clouddeploy.get_delivery_pipeline_iam_policy(project=default["project"],
+        location=default["location"],
+        name=default["name"])
     ```
 
 
@@ -149,9 +149,9 @@ def get_delivery_pipeline_iam_policy_output(location: Optional[pulumi.Input[Opti
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.clouddeploy.get_delivery_pipeline_iam_policy(project=google_clouddeploy_delivery_pipeline["default"]["project"],
-        location=google_clouddeploy_delivery_pipeline["default"]["location"],
-        name=google_clouddeploy_delivery_pipeline["default"]["name"])
+    policy = gcp.clouddeploy.get_delivery_pipeline_iam_policy(project=default["project"],
+        location=default["location"],
+        name=default["name"])
     ```
 
 

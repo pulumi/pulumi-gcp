@@ -26,9 +26,6 @@ namespace Pulumi.Gcp.Firebase
     ///         Project = "my-project-name",
     ///         SiteId = "site-id",
     ///         CustomDomain = "custom.domain.com",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -43,26 +40,20 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultHostingSite = new Gcp.Firebase.HostingSite("defaultHostingSite", new()
+    ///     var @default = new Gcp.Firebase.HostingSite("default", new()
     ///     {
     ///         Project = "my-project-name",
     ///         SiteId = "site-id-full",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultHostingCustomDomain = new Gcp.Firebase.HostingCustomDomain("defaultHostingCustomDomain", new()
+    ///     var defaultHostingCustomDomain = new Gcp.Firebase.HostingCustomDomain("default", new()
     ///     {
     ///         Project = "my-project-name",
-    ///         SiteId = defaultHostingSite.SiteId,
+    ///         SiteId = @default.SiteId,
     ///         CustomDomain = "source.domain.com",
     ///         CertPreference = "GROUPED",
     ///         RedirectTarget = "destination.domain.com",
     ///         WaitDnsVerification = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -77,18 +68,16 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultHostingSite = new Gcp.Firebase.HostingSite("defaultHostingSite", new()
+    ///     var @default = new Gcp.Firebase.HostingSite("default", new()
     ///     {
     ///         Project = "my-project-name",
     ///         SiteId = "site-id",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultService = new Gcp.CloudRunV2.Service("defaultService", new()
+    ///     var defaultService = new Gcp.CloudRunV2.Service("default", new()
     ///     {
     ///         Project = "my-project-name",
+    ///         Name = "cloud-run-service-via-hosting",
     ///         Location = "us-central1",
     ///         Ingress = "INGRESS_TRAFFIC_ALL",
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
@@ -101,14 +90,11 @@ namespace Pulumi.Gcp.Firebase
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultHostingVersion = new Gcp.Firebase.HostingVersion("defaultHostingVersion", new()
+    ///     var defaultHostingVersion = new Gcp.Firebase.HostingVersion("default", new()
     ///     {
-    ///         SiteId = defaultHostingSite.SiteId,
+    ///         SiteId = @default.SiteId,
     ///         Config = new Gcp.Firebase.Inputs.HostingVersionConfigArgs
     ///         {
     ///             Rewrites = new[]
@@ -124,30 +110,21 @@ namespace Pulumi.Gcp.Firebase
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultHostingRelease = new Gcp.Firebase.HostingRelease("defaultHostingRelease", new()
+    ///     var defaultHostingRelease = new Gcp.Firebase.HostingRelease("default", new()
     ///     {
-    ///         SiteId = defaultHostingSite.SiteId,
+    ///         SiteId = @default.SiteId,
     ///         VersionName = defaultHostingVersion.Name,
     ///         Message = "Cloud Run Integration",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultHostingCustomDomain = new Gcp.Firebase.HostingCustomDomain("defaultHostingCustomDomain", new()
+    ///     var defaultHostingCustomDomain = new Gcp.Firebase.HostingCustomDomain("default", new()
     ///     {
     ///         Project = "my-project-name",
-    ///         SiteId = defaultHostingSite.SiteId,
+    ///         SiteId = @default.SiteId,
     ///         CustomDomain = "run.custom.domain.com",
     ///         WaitDnsVerification = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

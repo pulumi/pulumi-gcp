@@ -23,12 +23,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const basic = new gcp.dataloss.PreventionStoredInfoType("basic", {
+ *     parent: "projects/my-project-name",
  *     description: "Description",
  *     displayName: "Displayname",
- *     parent: "projects/my-project-name",
  *     regex: {
- *         groupIndexes: [2],
  *         pattern: "patient",
+ *         groupIndexes: [2],
  *     },
  * });
  * ```
@@ -39,7 +39,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const dictionary = new gcp.dataloss.PreventionStoredInfoType("dictionary", {
+ *     parent: "projects/my-project-name",
  *     description: "Description",
+ *     displayName: "Displayname",
  *     dictionary: {
  *         wordList: {
  *             words: [
@@ -48,8 +50,6 @@ import * as utilities from "../utilities";
  *             ],
  *         },
  *     },
- *     displayName: "Displayname",
- *     parent: "projects/my-project-name",
  * });
  * ```
  * ### Dlp Stored Info Type Large Custom Dictionary
@@ -59,10 +59,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "tf-test-bucket",
  *     location: "US",
  *     forceDestroy: true,
  * });
  * const object = new gcp.storage.BucketObject("object", {
+ *     name: "tf-test-object",
  *     bucket: bucket.name,
  *     source: new pulumi.asset.FileAsset("./test-fixtures/words.txt"),
  * });
@@ -86,15 +88,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const withStoredInfoTypeId = new gcp.dataloss.PreventionStoredInfoType("withStoredInfoTypeId", {
+ * const withStoredInfoTypeId = new gcp.dataloss.PreventionStoredInfoType("with_stored_info_type_id", {
+ *     parent: "projects/my-project-name",
  *     description: "Description",
  *     displayName: "Displayname",
- *     parent: "projects/my-project-name",
- *     regex: {
- *         groupIndexes: [2],
- *         pattern: "patient",
- *     },
  *     storedInfoTypeId: "id-",
+ *     regex: {
+ *         pattern: "patient",
+ *         groupIndexes: [2],
+ *     },
  * });
  * ```
  *

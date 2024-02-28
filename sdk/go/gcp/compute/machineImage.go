@@ -38,6 +38,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			vm, err := compute.NewInstance(ctx, "vm", &compute.InstanceArgs{
+//				Name:        pulumi.String("my-vm"),
 //				MachineType: pulumi.String("e2-medium"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
@@ -49,13 +50,14 @@ import (
 //						Network: pulumi.String("default"),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewMachineImage(ctx, "image", &compute.MachineImageArgs{
+//				Name:           pulumi.String("my-image"),
 //				SourceInstance: vm.SelfLink,
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -80,6 +82,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			vm, err := compute.NewInstance(ctx, "vm", &compute.InstanceArgs{
+//				Name:        pulumi.String("my-vm"),
 //				MachineType: pulumi.String("e2-medium"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
@@ -91,28 +94,31 @@ import (
 //						Network: pulumi.String("default"),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
+//			keyRing, err := kms.NewKeyRing(ctx, "key_ring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("keyring"),
 //				Location: pulumi.String("us"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
+//			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
+//				Name:    pulumi.String("key"),
 //				KeyRing: keyRing.ID(),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewMachineImage(ctx, "image", &compute.MachineImageArgs{
+//				Name:           pulumi.String("my-image"),
 //				SourceInstance: vm.SelfLink,
 //				MachineImageEncryptionKey: &compute.MachineImageMachineImageEncryptionKeyArgs{
 //					KmsKeyName: cryptoKey.ID(),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

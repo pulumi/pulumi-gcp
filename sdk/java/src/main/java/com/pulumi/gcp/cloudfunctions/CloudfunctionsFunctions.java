@@ -199,9 +199,9 @@ public final class CloudfunctionsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CloudfunctionsFunctions.getFunctionIamPolicy(GetFunctionIamPolicyArgs.builder()
-     *             .project(google_cloudfunctions_function.function().project())
-     *             .region(google_cloudfunctions_function.function().region())
-     *             .cloudFunction(google_cloudfunctions_function.function().name())
+     *             .project(function.project())
+     *             .region(function.region())
+     *             .cloudFunction(function.name())
      *             .build());
      * 
      *     }
@@ -238,9 +238,9 @@ public final class CloudfunctionsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CloudfunctionsFunctions.getFunctionIamPolicy(GetFunctionIamPolicyArgs.builder()
-     *             .project(google_cloudfunctions_function.function().project())
-     *             .region(google_cloudfunctions_function.function().region())
-     *             .cloudFunction(google_cloudfunctions_function.function().name())
+     *             .project(function.project())
+     *             .region(function.region())
+     *             .cloudFunction(function.name())
      *             .build());
      * 
      *     }
@@ -277,9 +277,9 @@ public final class CloudfunctionsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CloudfunctionsFunctions.getFunctionIamPolicy(GetFunctionIamPolicyArgs.builder()
-     *             .project(google_cloudfunctions_function.function().project())
-     *             .region(google_cloudfunctions_function.function().region())
-     *             .cloudFunction(google_cloudfunctions_function.function().name())
+     *             .project(function.project())
+     *             .region(function.region())
+     *             .cloudFunction(function.name())
      *             .build());
      * 
      *     }
@@ -316,9 +316,9 @@ public final class CloudfunctionsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CloudfunctionsFunctions.getFunctionIamPolicy(GetFunctionIamPolicyArgs.builder()
-     *             .project(google_cloudfunctions_function.function().project())
-     *             .region(google_cloudfunctions_function.function().region())
-     *             .cloudFunction(google_cloudfunctions_function.function().name())
+     *             .project(function.project())
+     *             .region(function.region())
+     *             .cloudFunction(function.name())
      *             .build());
      * 
      *     }

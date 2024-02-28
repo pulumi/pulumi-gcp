@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Healthcare
         /// {
         ///     var foo = Gcp.Healthcare.GetDatasetIamPolicy.Invoke(new()
         ///     {
-        ///         DatasetId = google_healthcare_dataset.Dataset.Id,
+        ///         DatasetId = dataset.Id,
         ///     });
         /// 
         /// });
@@ -50,7 +50,7 @@ namespace Pulumi.Gcp.Healthcare
         /// {
         ///     var foo = Gcp.Healthcare.GetDatasetIamPolicy.Invoke(new()
         ///     {
-        ///         DatasetId = google_healthcare_dataset.Dataset.Id,
+        ///         DatasetId = dataset.Id,
         ///     });
         /// 
         /// });

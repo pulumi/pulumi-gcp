@@ -500,10 +500,10 @@ class Instance(pulumi.CustomResource):
         example = gcp.spanner.Instance("example",
             config="regional-us-central1",
             display_name="Test Spanner Instance",
+            num_nodes=2,
             labels={
                 "foo": "bar",
-            },
-            num_nodes=2)
+            })
         ```
         ### Spanner Instance Processing Units
 
@@ -514,10 +514,10 @@ class Instance(pulumi.CustomResource):
         example = gcp.spanner.Instance("example",
             config="regional-us-central1",
             display_name="Test Spanner Instance",
+            processing_units=200,
             labels={
                 "foo": "bar",
-            },
-            processing_units=200)
+            })
         ```
         ### Spanner Instance With Autoscaling
 
@@ -526,6 +526,8 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.spanner.Instance("example",
+            config="regional-us-central1",
+            display_name="Test Spanner Instance",
             autoscaling_config=gcp.spanner.InstanceAutoscalingConfigArgs(
                 autoscaling_limits=gcp.spanner.InstanceAutoscalingConfigAutoscalingLimitsArgs(
                     max_processing_units=3000,
@@ -536,8 +538,6 @@ class Instance(pulumi.CustomResource):
                     storage_utilization_percent=90,
                 ),
             ),
-            config="regional-us-central1",
-            display_name="Test Spanner Instance",
             labels={
                 "foo": "bar",
             })
@@ -551,10 +551,10 @@ class Instance(pulumi.CustomResource):
         example = gcp.spanner.Instance("example",
             config="nam-eur-asia1",
             display_name="Multi Regional Instance",
+            num_nodes=2,
             labels={
                 "foo": "bar",
-            },
-            num_nodes=2)
+            })
         ```
 
         ## Import
@@ -644,10 +644,10 @@ class Instance(pulumi.CustomResource):
         example = gcp.spanner.Instance("example",
             config="regional-us-central1",
             display_name="Test Spanner Instance",
+            num_nodes=2,
             labels={
                 "foo": "bar",
-            },
-            num_nodes=2)
+            })
         ```
         ### Spanner Instance Processing Units
 
@@ -658,10 +658,10 @@ class Instance(pulumi.CustomResource):
         example = gcp.spanner.Instance("example",
             config="regional-us-central1",
             display_name="Test Spanner Instance",
+            processing_units=200,
             labels={
                 "foo": "bar",
-            },
-            processing_units=200)
+            })
         ```
         ### Spanner Instance With Autoscaling
 
@@ -670,6 +670,8 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.spanner.Instance("example",
+            config="regional-us-central1",
+            display_name="Test Spanner Instance",
             autoscaling_config=gcp.spanner.InstanceAutoscalingConfigArgs(
                 autoscaling_limits=gcp.spanner.InstanceAutoscalingConfigAutoscalingLimitsArgs(
                     max_processing_units=3000,
@@ -680,8 +682,6 @@ class Instance(pulumi.CustomResource):
                     storage_utilization_percent=90,
                 ),
             ),
-            config="regional-us-central1",
-            display_name="Test Spanner Instance",
             labels={
                 "foo": "bar",
             })
@@ -695,10 +695,10 @@ class Instance(pulumi.CustomResource):
         example = gcp.spanner.Instance("example",
             config="nam-eur-asia1",
             display_name="Multi Regional Instance",
+            num_nodes=2,
             labels={
                 "foo": "bar",
-            },
-            num_nodes=2)
+            })
         ```
 
         ## Import

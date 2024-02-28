@@ -31,14 +31,15 @@ namespace Pulumi.Gcp.Beyondcorp
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var serviceAccount = new Gcp.ServiceAccount.Account("serviceAccount", new()
+    ///     var serviceAccount = new Gcp.ServiceAccount.Account("service_account", new()
     ///     {
     ///         AccountId = "my-account",
     ///         DisplayName = "Test Service Account",
     ///     });
     /// 
-    ///     var appConnector = new Gcp.Beyondcorp.AppConnector("appConnector", new()
+    ///     var appConnector = new Gcp.Beyondcorp.AppConnector("app_connector", new()
     ///     {
+    ///         Name = "my-app-connector",
     ///         PrincipalInfo = new Gcp.Beyondcorp.Inputs.AppConnectorPrincipalInfoArgs
     ///         {
     ///             ServiceAccount = new Gcp.Beyondcorp.Inputs.AppConnectorPrincipalInfoServiceAccountArgs
@@ -48,8 +49,9 @@ namespace Pulumi.Gcp.Beyondcorp
     ///         },
     ///     });
     /// 
-    ///     var appConnection = new Gcp.Beyondcorp.AppConnection("appConnection", new()
+    ///     var appConnection = new Gcp.Beyondcorp.AppConnection("app_connection", new()
     ///     {
+    ///         Name = "my-app-connection",
     ///         Type = "TCP_PROXY",
     ///         ApplicationEndpoint = new Gcp.Beyondcorp.Inputs.AppConnectionApplicationEndpointArgs
     ///         {
@@ -74,20 +76,22 @@ namespace Pulumi.Gcp.Beyondcorp
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var serviceAccount = new Gcp.ServiceAccount.Account("serviceAccount", new()
+    ///     var serviceAccount = new Gcp.ServiceAccount.Account("service_account", new()
     ///     {
     ///         AccountId = "my-account",
     ///         DisplayName = "Test Service Account",
     ///     });
     /// 
-    ///     var appGateway = new Gcp.Beyondcorp.AppGateway("appGateway", new()
+    ///     var appGateway = new Gcp.Beyondcorp.AppGateway("app_gateway", new()
     ///     {
+    ///         Name = "my-app-gateway",
     ///         Type = "TCP_PROXY",
     ///         HostType = "GCP_REGIONAL_MIG",
     ///     });
     /// 
-    ///     var appConnector = new Gcp.Beyondcorp.AppConnector("appConnector", new()
+    ///     var appConnector = new Gcp.Beyondcorp.AppConnector("app_connector", new()
     ///     {
+    ///         Name = "my-app-connector",
     ///         PrincipalInfo = new Gcp.Beyondcorp.Inputs.AppConnectorPrincipalInfoArgs
     ///         {
     ///             ServiceAccount = new Gcp.Beyondcorp.Inputs.AppConnectorPrincipalInfoServiceAccountArgs
@@ -97,8 +101,9 @@ namespace Pulumi.Gcp.Beyondcorp
     ///         },
     ///     });
     /// 
-    ///     var appConnection = new Gcp.Beyondcorp.AppConnection("appConnection", new()
+    ///     var appConnection = new Gcp.Beyondcorp.AppConnection("app_connection", new()
     ///     {
+    ///         Name = "my-app-connection",
     ///         Type = "TCP_PROXY",
     ///         DisplayName = "some display name",
     ///         ApplicationEndpoint = new Gcp.Beyondcorp.Inputs.AppConnectionApplicationEndpointArgs

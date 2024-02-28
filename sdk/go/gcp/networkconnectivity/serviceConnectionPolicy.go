@@ -36,13 +36,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			producerNet, err := compute.NewNetwork(ctx, "producerNet", &compute.NetworkArgs{
+//			producerNet, err := compute.NewNetwork(ctx, "producer_net", &compute.NetworkArgs{
+//				Name:                  pulumi.String("producer-net"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			producerSubnet, err := compute.NewSubnetwork(ctx, "producerSubnet", &compute.SubnetworkArgs{
+//			producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("producer-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     producerNet.ID(),
@@ -51,6 +53,7 @@ import (
 //				return err
 //			}
 //			_, err = networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
+//				Name:         pulumi.String("my-network-connectivity-policy"),
 //				Location:     pulumi.String("us-central1"),
 //				ServiceClass: pulumi.String("my-basic-service-class"),
 //				Description:  pulumi.String("my basic service connection policy"),

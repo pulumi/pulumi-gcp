@@ -62,6 +62,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var appConnector = new AppConnector(&#34;appConnector&#34;, AppConnectorArgs.builder()        
+ *             .name(&#34;my-app-connector&#34;)
  *             .principalInfo(AppConnectorPrincipalInfoArgs.builder()
  *                 .serviceAccount(AppConnectorPrincipalInfoServiceAccountArgs.builder()
  *                     .email(serviceAccount.email())
@@ -104,6 +105,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var appConnector = new AppConnector(&#34;appConnector&#34;, AppConnectorArgs.builder()        
+ *             .name(&#34;my-app-connector&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .displayName(&#34;some display name&#34;)
  *             .principalInfo(AppConnectorPrincipalInfoArgs.builder()

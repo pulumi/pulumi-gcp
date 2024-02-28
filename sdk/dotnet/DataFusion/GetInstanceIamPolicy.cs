@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.DataFusion
         /// {
         ///     var policy = Gcp.DataFusion.GetInstanceIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_data_fusion_instance.Basic_instance.Project,
-        ///         Region = google_data_fusion_instance.Basic_instance.Region,
-        ///         Name = google_data_fusion_instance.Basic_instance.Name,
+        ///         Project = basicInstance.Project,
+        ///         Region = basicInstance.Region,
+        ///         Name = basicInstance.Name,
         ///     });
         /// 
         /// });
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.DataFusion
         /// {
         ///     var policy = Gcp.DataFusion.GetInstanceIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_data_fusion_instance.Basic_instance.Project,
-        ///         Region = google_data_fusion_instance.Basic_instance.Region,
-        ///         Name = google_data_fusion_instance.Basic_instance.Name,
+        ///         Project = basicInstance.Project,
+        ///         Region = basicInstance.Region,
+        ///         Name = basicInstance.Name,
         ///     });
         /// 
         /// });

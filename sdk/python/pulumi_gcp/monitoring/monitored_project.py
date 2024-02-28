@@ -142,8 +142,13 @@ class MonitoredProject(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.monitoring.MonitoredProject("primary", metrics_scope="my-project-name")
-        basic = gcp.organizations.Project("basic", org_id="123456789")
+        basic = gcp.organizations.Project("basic",
+            project_id="m-id",
+            name="m-id-display",
+            org_id="123456789")
+        primary = gcp.monitoring.MonitoredProject("primary",
+            metrics_scope="my-project-name",
+            name=basic.project_id)
         ```
 
         ## Import
@@ -194,8 +199,13 @@ class MonitoredProject(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.monitoring.MonitoredProject("primary", metrics_scope="my-project-name")
-        basic = gcp.organizations.Project("basic", org_id="123456789")
+        basic = gcp.organizations.Project("basic",
+            project_id="m-id",
+            name="m-id-display",
+            org_id="123456789")
+        primary = gcp.monitoring.MonitoredProject("primary",
+            metrics_scope="my-project-name",
+            name=basic.project_id)
         ```
 
         ## Import

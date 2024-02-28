@@ -24,6 +24,7 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var basic = new Gcp.BigQuery.Reservation("basic", new()
     ///     {
+    ///         Name = "tf-test-my-reservation",
     ///         Project = "my-project-name",
     ///         Location = "us-central1",
     ///         SlotCapacity = 0,

@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigtable.LookupInstanceIamPolicy(ctx, &bigtable.LookupInstanceIamPolicyArgs{
-//				Instance: google_bigtable_instance.Instance.Name,
+//				Instance: instance.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

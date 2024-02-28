@@ -25,9 +25,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.organizations.IAMBinding("binding", {
- *     members: ["user:alice@gmail.com"],
  *     orgId: "123456789",
  *     role: "roles/browser",
+ *     members: ["user:alice@gmail.com"],
  * });
  * ```
  *

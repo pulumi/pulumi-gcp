@@ -129,7 +129,9 @@ class DefaultObjectACL(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        image_store = gcp.storage.Bucket("image-store", location="EU")
+        image_store = gcp.storage.Bucket("image-store",
+            name="image-store-bucket",
+            location="EU")
         image_store_default_acl = gcp.storage.DefaultObjectACL("image-store-default-acl",
             bucket=image_store.name,
             role_entities=[
@@ -178,7 +180,9 @@ class DefaultObjectACL(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        image_store = gcp.storage.Bucket("image-store", location="EU")
+        image_store = gcp.storage.Bucket("image-store",
+            name="image-store-bucket",
+            location="EU")
         image_store_default_acl = gcp.storage.DefaultObjectACL("image-store-default-acl",
             bucket=image_store.name,
             role_entities=[

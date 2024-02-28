@@ -221,7 +221,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			notificationChannel, err := monitoring.NewNotificationChannel(ctx, "notificationChannel", &monitoring.NotificationChannelArgs{
+//			notificationChannel, err := monitoring.NewNotificationChannel(ctx, "notification_channel", &monitoring.NotificationChannelArgs{
 //				DisplayName: pulumi.String("Example Notification Channel"),
 //				Type:        pulumi.String("email"),
 //				Labels: pulumi.StringMap{

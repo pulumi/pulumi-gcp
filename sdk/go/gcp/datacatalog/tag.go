@@ -37,7 +37,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			entryGroup, err := datacatalog.NewEntryGroup(ctx, "entryGroup", &datacatalog.EntryGroupArgs{
+//			entryGroup, err := datacatalog.NewEntryGroup(ctx, "entry_group", &datacatalog.EntryGroupArgs{
 //				EntryGroupId: pulumi.String("my_entry_group"),
 //			})
 //			if err != nil {
@@ -52,7 +52,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tagTemplate, err := datacatalog.NewTagTemplate(ctx, "tagTemplate", &datacatalog.TagTemplateArgs{
+//			tagTemplate, err := datacatalog.NewTagTemplate(ctx, "tag_template", &datacatalog.TagTemplateArgs{
 //				TagTemplateId: pulumi.String("my_template"),
 //				Region:        pulumi.String("us-central1"),
 //				DisplayName:   pulumi.String("Demo Tag Template"),
@@ -97,7 +97,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = datacatalog.NewTag(ctx, "basicTag", &datacatalog.TagArgs{
+//			_, err = datacatalog.NewTag(ctx, "basic_tag", &datacatalog.TagArgs{
 //				Parent:   entry.ID(),
 //				Template: tagTemplate.ID(),
 //				Fields: datacatalog.TagFieldArray{
@@ -129,13 +129,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			entryGroup, err := datacatalog.NewEntryGroup(ctx, "entryGroup", &datacatalog.EntryGroupArgs{
+//			entryGroup, err := datacatalog.NewEntryGroup(ctx, "entry_group", &datacatalog.EntryGroupArgs{
 //				EntryGroupId: pulumi.String("my_entry_group"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = datacatalog.NewEntry(ctx, "firstEntry", &datacatalog.EntryArgs{
+//			_, err = datacatalog.NewEntry(ctx, "first_entry", &datacatalog.EntryArgs{
 //				EntryGroup:          entryGroup.ID(),
 //				EntryId:             pulumi.String("first_entry"),
 //				UserSpecifiedType:   pulumi.String("my_custom_type"),
@@ -144,7 +144,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = datacatalog.NewEntry(ctx, "secondEntry", &datacatalog.EntryArgs{
+//			_, err = datacatalog.NewEntry(ctx, "second_entry", &datacatalog.EntryArgs{
 //				EntryGroup:          entryGroup.ID(),
 //				EntryId:             pulumi.String("second_entry"),
 //				UserSpecifiedType:   pulumi.String("another_custom_type"),
@@ -153,7 +153,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tagTemplate, err := datacatalog.NewTagTemplate(ctx, "tagTemplate", &datacatalog.TagTemplateArgs{
+//			tagTemplate, err := datacatalog.NewTagTemplate(ctx, "tag_template", &datacatalog.TagTemplateArgs{
 //				TagTemplateId: pulumi.String("my_template"),
 //				Region:        pulumi.String("us-central1"),
 //				DisplayName:   pulumi.String("Demo Tag Template"),
@@ -198,7 +198,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = datacatalog.NewTag(ctx, "entryGroupTag", &datacatalog.TagArgs{
+//			_, err = datacatalog.NewTag(ctx, "entry_group_tag", &datacatalog.TagArgs{
 //				Parent:   entryGroup.ID(),
 //				Template: tagTemplate.ID(),
 //				Fields: datacatalog.TagFieldArray{
@@ -230,7 +230,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			entryGroup, err := datacatalog.NewEntryGroup(ctx, "entryGroup", &datacatalog.EntryGroupArgs{
+//			entryGroup, err := datacatalog.NewEntryGroup(ctx, "entry_group", &datacatalog.EntryGroupArgs{
 //				EntryGroupId: pulumi.String("my_entry_group"),
 //			})
 //			if err != nil {
@@ -284,7 +284,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tagTemplate, err := datacatalog.NewTagTemplate(ctx, "tagTemplate", &datacatalog.TagTemplateArgs{
+//			tagTemplate, err := datacatalog.NewTagTemplate(ctx, "tag_template", &datacatalog.TagTemplateArgs{
 //				TagTemplateId: pulumi.String("my_template"),
 //				Region:        pulumi.String("us-central1"),
 //				DisplayName:   pulumi.String("Demo Tag Template"),
@@ -329,7 +329,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = datacatalog.NewTag(ctx, "basicTag", &datacatalog.TagArgs{
+//			_, err = datacatalog.NewTag(ctx, "basic_tag", &datacatalog.TagArgs{
 //				Parent:   entry.ID(),
 //				Template: tagTemplate.ID(),
 //				Fields: datacatalog.TagFieldArray{

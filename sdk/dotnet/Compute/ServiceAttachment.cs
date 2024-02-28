@@ -19,6 +19,315 @@ namespace Pulumi.Gcp.Compute
     ///     * [Configuring Private Service Connect to access services](https://cloud.google.com/vpc/docs/configure-private-service-connect-services)
     /// 
     /// ## Example Usage
+    /// ### Service Attachment Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var producerServiceHealthCheck = new Gcp.Compute.HealthCheck("producer_service_health_check", new()
+    ///     {
+    ///         Name = "producer-service-health-check",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var producerServiceBackend = new Gcp.Compute.RegionBackendService("producer_service_backend", new()
+    ///     {
+    ///         Name = "producer-service",
+    ///         Region = "us-west2",
+    ///         HealthChecks = producerServiceHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var pscIlbNetwork = new Gcp.Compute.Network("psc_ilb_network", new()
+    ///     {
+    ///         Name = "psc-ilb-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var pscIlbProducerSubnetwork = new Gcp.Compute.Subnetwork("psc_ilb_producer_subnetwork", new()
+    ///     {
+    ///         Name = "psc-ilb-producer-subnetwork",
+    ///         Region = "us-west2",
+    ///         Network = pscIlbNetwork.Id,
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///     });
+    /// 
+    ///     var pscIlbTargetService = new Gcp.Compute.ForwardingRule("psc_ilb_target_service", new()
+    ///     {
+    ///         Name = "producer-forwarding-rule",
+    ///         Region = "us-west2",
+    ///         LoadBalancingScheme = "INTERNAL",
+    ///         BackendService = producerServiceBackend.Id,
+    ///         AllPorts = true,
+    ///         Network = pscIlbNetwork.Name,
+    ///         Subnetwork = pscIlbProducerSubnetwork.Name,
+    ///     });
+    /// 
+    ///     var pscIlbNat = new Gcp.Compute.Subnetwork("psc_ilb_nat", new()
+    ///     {
+    ///         Name = "psc-ilb-nat",
+    ///         Region = "us-west2",
+    ///         Network = pscIlbNetwork.Id,
+    ///         Purpose = "PRIVATE_SERVICE_CONNECT",
+    ///         IpCidrRange = "10.1.0.0/16",
+    ///     });
+    /// 
+    ///     var pscIlbServiceAttachment = new Gcp.Compute.ServiceAttachment("psc_ilb_service_attachment", new()
+    ///     {
+    ///         Name = "my-psc-ilb",
+    ///         Region = "us-west2",
+    ///         Description = "A service attachment configured with Terraform",
+    ///         DomainNames = new[]
+    ///         {
+    ///             "gcp.tfacc.hashicorptest.com.",
+    ///         },
+    ///         EnableProxyProtocol = true,
+    ///         ConnectionPreference = "ACCEPT_AUTOMATIC",
+    ///         NatSubnets = new[]
+    ///         {
+    ///             pscIlbNat.Id,
+    ///         },
+    ///         TargetService = pscIlbTargetService.Id,
+    ///     });
+    /// 
+    ///     var pscIlbConsumerAddress = new Gcp.Compute.Address("psc_ilb_consumer_address", new()
+    ///     {
+    ///         Name = "psc-ilb-consumer-address",
+    ///         Region = "us-west2",
+    ///         Subnetwork = "default",
+    ///         AddressType = "INTERNAL",
+    ///     });
+    /// 
+    ///     var pscIlbConsumer = new Gcp.Compute.ForwardingRule("psc_ilb_consumer", new()
+    ///     {
+    ///         Name = "psc-ilb-consumer-forwarding-rule",
+    ///         Region = "us-west2",
+    ///         Target = pscIlbServiceAttachment.Id,
+    ///         LoadBalancingScheme = "",
+    ///         Network = "default",
+    ///         IpAddress = pscIlbConsumerAddress.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Service Attachment Explicit Projects
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var producerServiceHealthCheck = new Gcp.Compute.HealthCheck("producer_service_health_check", new()
+    ///     {
+    ///         Name = "producer-service-health-check",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var producerServiceBackend = new Gcp.Compute.RegionBackendService("producer_service_backend", new()
+    ///     {
+    ///         Name = "producer-service",
+    ///         Region = "us-west2",
+    ///         HealthChecks = producerServiceHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var pscIlbNetwork = new Gcp.Compute.Network("psc_ilb_network", new()
+    ///     {
+    ///         Name = "psc-ilb-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var pscIlbProducerSubnetwork = new Gcp.Compute.Subnetwork("psc_ilb_producer_subnetwork", new()
+    ///     {
+    ///         Name = "psc-ilb-producer-subnetwork",
+    ///         Region = "us-west2",
+    ///         Network = pscIlbNetwork.Id,
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///     });
+    /// 
+    ///     var pscIlbTargetService = new Gcp.Compute.ForwardingRule("psc_ilb_target_service", new()
+    ///     {
+    ///         Name = "producer-forwarding-rule",
+    ///         Region = "us-west2",
+    ///         LoadBalancingScheme = "INTERNAL",
+    ///         BackendService = producerServiceBackend.Id,
+    ///         AllPorts = true,
+    ///         Network = pscIlbNetwork.Name,
+    ///         Subnetwork = pscIlbProducerSubnetwork.Name,
+    ///     });
+    /// 
+    ///     var pscIlbNat = new Gcp.Compute.Subnetwork("psc_ilb_nat", new()
+    ///     {
+    ///         Name = "psc-ilb-nat",
+    ///         Region = "us-west2",
+    ///         Network = pscIlbNetwork.Id,
+    ///         Purpose = "PRIVATE_SERVICE_CONNECT",
+    ///         IpCidrRange = "10.1.0.0/16",
+    ///     });
+    /// 
+    ///     var pscIlbServiceAttachment = new Gcp.Compute.ServiceAttachment("psc_ilb_service_attachment", new()
+    ///     {
+    ///         Name = "my-psc-ilb",
+    ///         Region = "us-west2",
+    ///         Description = "A service attachment configured with Terraform",
+    ///         DomainNames = new[]
+    ///         {
+    ///             "gcp.tfacc.hashicorptest.com.",
+    ///         },
+    ///         EnableProxyProtocol = true,
+    ///         ConnectionPreference = "ACCEPT_MANUAL",
+    ///         NatSubnets = new[]
+    ///         {
+    ///             pscIlbNat.Id,
+    ///         },
+    ///         TargetService = pscIlbTargetService.Id,
+    ///         ConsumerRejectLists = new[]
+    ///         {
+    ///             "673497134629",
+    ///             "482878270665",
+    ///         },
+    ///         ConsumerAcceptLists = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.ServiceAttachmentConsumerAcceptListArgs
+    ///             {
+    ///                 ProjectIdOrNum = "658859330310",
+    ///                 ConnectionLimit = 4,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var pscIlbConsumerAddress = new Gcp.Compute.Address("psc_ilb_consumer_address", new()
+    ///     {
+    ///         Name = "psc-ilb-consumer-address",
+    ///         Region = "us-west2",
+    ///         Subnetwork = "default",
+    ///         AddressType = "INTERNAL",
+    ///     });
+    /// 
+    ///     var pscIlbConsumer = new Gcp.Compute.ForwardingRule("psc_ilb_consumer", new()
+    ///     {
+    ///         Name = "psc-ilb-consumer-forwarding-rule",
+    ///         Region = "us-west2",
+    ///         Target = pscIlbServiceAttachment.Id,
+    ///         LoadBalancingScheme = "",
+    ///         Network = "default",
+    ///         IpAddress = pscIlbConsumerAddress.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Service Attachment Reconcile Connections
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var producerServiceHealthCheck = new Gcp.Compute.HealthCheck("producer_service_health_check", new()
+    ///     {
+    ///         Name = "producer-service-health-check",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var producerServiceBackend = new Gcp.Compute.RegionBackendService("producer_service_backend", new()
+    ///     {
+    ///         Name = "producer-service",
+    ///         Region = "us-west2",
+    ///         HealthChecks = producerServiceHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var pscIlbNetwork = new Gcp.Compute.Network("psc_ilb_network", new()
+    ///     {
+    ///         Name = "psc-ilb-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var pscIlbProducerSubnetwork = new Gcp.Compute.Subnetwork("psc_ilb_producer_subnetwork", new()
+    ///     {
+    ///         Name = "psc-ilb-producer-subnetwork",
+    ///         Region = "us-west2",
+    ///         Network = pscIlbNetwork.Id,
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///     });
+    /// 
+    ///     var pscIlbTargetService = new Gcp.Compute.ForwardingRule("psc_ilb_target_service", new()
+    ///     {
+    ///         Name = "producer-forwarding-rule",
+    ///         Region = "us-west2",
+    ///         LoadBalancingScheme = "INTERNAL",
+    ///         BackendService = producerServiceBackend.Id,
+    ///         AllPorts = true,
+    ///         Network = pscIlbNetwork.Name,
+    ///         Subnetwork = pscIlbProducerSubnetwork.Name,
+    ///     });
+    /// 
+    ///     var pscIlbNat = new Gcp.Compute.Subnetwork("psc_ilb_nat", new()
+    ///     {
+    ///         Name = "psc-ilb-nat",
+    ///         Region = "us-west2",
+    ///         Network = pscIlbNetwork.Id,
+    ///         Purpose = "PRIVATE_SERVICE_CONNECT",
+    ///         IpCidrRange = "10.1.0.0/16",
+    ///     });
+    /// 
+    ///     var pscIlbServiceAttachment = new Gcp.Compute.ServiceAttachment("psc_ilb_service_attachment", new()
+    ///     {
+    ///         Name = "my-psc-ilb",
+    ///         Region = "us-west2",
+    ///         Description = "A service attachment configured with Terraform",
+    ///         DomainNames = new[]
+    ///         {
+    ///             "gcp.tfacc.hashicorptest.com.",
+    ///         },
+    ///         EnableProxyProtocol = true,
+    ///         ConnectionPreference = "ACCEPT_MANUAL",
+    ///         NatSubnets = new[]
+    ///         {
+    ///             pscIlbNat.Id,
+    ///         },
+    ///         TargetService = pscIlbTargetService.Id,
+    ///         ConsumerRejectLists = new[]
+    ///         {
+    ///             "673497134629",
+    ///             "482878270665",
+    ///         },
+    ///         ConsumerAcceptLists = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.ServiceAttachmentConsumerAcceptListArgs
+    ///             {
+    ///                 ProjectIdOrNum = "658859330310",
+    ///                 ConnectionLimit = 4,
+    ///             },
+    ///         },
+    ///         ReconcileConnections = false,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

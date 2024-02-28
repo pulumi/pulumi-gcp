@@ -149,12 +149,18 @@ def get_network_peering(name: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    default = gcp.compute.Network("default", auto_create_subnetworks=False)
-    other = gcp.compute.Network("other", auto_create_subnetworks=False)
+    default = gcp.compute.Network("default",
+        name="foobar",
+        auto_create_subnetworks=False)
+    other = gcp.compute.Network("other",
+        name="other",
+        auto_create_subnetworks=False)
     peering1 = gcp.compute.NetworkPeering("peering1",
+        name="peering1",
         network=default.self_link,
         peer_network=other.self_link)
     peering2 = gcp.compute.NetworkPeering("peering2",
+        name="peering2",
         network=other.self_link,
         peer_network=default.self_link)
     peering1_ds = gcp.compute.get_network_peering_output(name=peering1.name,
@@ -201,12 +207,18 @@ def get_network_peering_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    default = gcp.compute.Network("default", auto_create_subnetworks=False)
-    other = gcp.compute.Network("other", auto_create_subnetworks=False)
+    default = gcp.compute.Network("default",
+        name="foobar",
+        auto_create_subnetworks=False)
+    other = gcp.compute.Network("other",
+        name="other",
+        auto_create_subnetworks=False)
     peering1 = gcp.compute.NetworkPeering("peering1",
+        name="peering1",
         network=default.self_link,
         peer_network=other.self_link)
     peering2 = gcp.compute.NetworkPeering("peering2",
+        name="peering2",
         network=other.self_link,
         peer_network=default.self_link)
     peering1_ds = gcp.compute.get_network_peering_output(name=peering1.name,

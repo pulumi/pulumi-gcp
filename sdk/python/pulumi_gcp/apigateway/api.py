@@ -311,8 +311,7 @@ class Api(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        api = gcp.apigateway.Api("api", api_id="my-api",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        api = gcp.apigateway.Api("api", api_id="my-api")
         ```
 
         ## Import
@@ -377,8 +376,7 @@ class Api(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        api = gcp.apigateway.Api("api", api_id="my-api",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        api = gcp.apigateway.Api("api", api_id="my-api")
         ```
 
         ## Import

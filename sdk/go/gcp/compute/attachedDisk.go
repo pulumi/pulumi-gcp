@@ -40,7 +40,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultInstance, err := compute.NewInstance(ctx, "defaultInstance", &compute.InstanceArgs{
+//			defaultInstance, err := compute.NewInstance(ctx, "default", &compute.InstanceArgs{
+//				Name:        pulumi.String("attached-disk-instance"),
 //				MachineType: pulumi.String("e2-medium"),
 //				Zone:        pulumi.String("us-west1-a"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
@@ -57,8 +58,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewAttachedDisk(ctx, "defaultAttachedDisk", &compute.AttachedDiskArgs{
-//				Disk:     pulumi.Any(google_compute_disk.Default.Id),
+//			_, err = compute.NewAttachedDisk(ctx, "default", &compute.AttachedDiskArgs{
+//				Disk:     pulumi.Any(defaultGoogleComputeDisk.Id),
 //				Instance: defaultInstance.ID(),
 //			})
 //			if err != nil {

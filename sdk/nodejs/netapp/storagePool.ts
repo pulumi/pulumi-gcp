@@ -31,10 +31,11 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * // Create a network or use datasource to reference existing network
- * const peeringNetwork = new gcp.compute.Network("peeringNetwork", {});
+ * const peeringNetwork = new gcp.compute.Network("peering_network", {name: "test-network"});
  * // Reserve a CIDR for NetApp Volumes to use
  * // When using shared-VPCs, this resource needs to be created in host project
- * const privateIpAlloc = new gcp.compute.GlobalAddress("privateIpAlloc", {
+ * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
+ *     name: "test-address",
  *     purpose: "VPC_PEERING",
  *     addressType: "INTERNAL",
  *     prefixLength: 16,
@@ -49,7 +50,7 @@ import * as utilities from "../utilities";
  * });
  * // Modify the PSA Connection to allow import/export of custom routes
  * // When using shared-VPCs, this resource needs to be created in host project
- * const routeUpdates = new gcp.compute.NetworkPeeringRoutesConfig("routeUpdates", {
+ * const routeUpdates = new gcp.compute.NetworkPeeringRoutesConfig("route_updates", {
  *     peering: _default.peering,
  *     network: peeringNetwork.name,
  *     importCustomRoutes: true,
@@ -57,7 +58,8 @@ import * as utilities from "../utilities";
  * });
  * // Create a storage pool
  * // Create this resource in the project which is expected to own the volumes
- * const testPool = new gcp.netapp.StoragePool("testPool", {
+ * const testPool = new gcp.netapp.StoragePool("test_pool", {
+ *     name: "test-pool",
  *     location: "us-central1",
  *     serviceLevel: "PREMIUM",
  *     capacityGib: "2048",

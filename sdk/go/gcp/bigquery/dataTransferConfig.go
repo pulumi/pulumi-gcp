@@ -44,7 +44,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			permissions, err := projects.NewIAMMember(ctx, "permissions", &projects.IAMMemberArgs{
+//			_, err = projects.NewIAMMember(ctx, "permissions", &projects.IAMMemberArgs{
 //				Project: *pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/iam.serviceAccountTokenCreator"),
 //				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com", project.Number)),
@@ -52,18 +52,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			myDataset, err := bigquery.NewDataset(ctx, "myDataset", &bigquery.DatasetArgs{
+//			myDataset, err := bigquery.NewDataset(ctx, "my_dataset", &bigquery.DatasetArgs{
 //				DatasetId:    pulumi.String("my_dataset"),
 //				FriendlyName: pulumi.String("foo"),
 //				Description:  pulumi.String("bar"),
 //				Location:     pulumi.String("asia-northeast1"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				permissions,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bigquery.NewDataTransferConfig(ctx, "queryConfig", &bigquery.DataTransferConfigArgs{
+//			_, err = bigquery.NewDataTransferConfig(ctx, "query_config", &bigquery.DataTransferConfigArgs{
 //				DisplayName:          pulumi.String("my-query"),
 //				Location:             pulumi.String("asia-northeast1"),
 //				DataSourceId:         pulumi.String("scheduled_query"),
@@ -74,9 +72,7 @@ import (
 //					"write_disposition":               pulumi.String("WRITE_APPEND"),
 //					"query":                           pulumi.String("SELECT name FROM tabl WHERE x = 'y'"),
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				permissions,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

@@ -64,13 +64,15 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var keyRing = new Gcp.Kms.KeyRing("keyRing", new()
+    ///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()
     ///     {
+    ///         Name = "example-keyring",
     ///         Location = "us",
     ///     });
     /// 
-    ///     var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("crypto_key", new()
     ///     {
+    ///         Name = "example-key",
     ///         KeyRing = keyRing.Id,
     ///     });
     /// 
@@ -184,15 +186,15 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var publicDataset = new Gcp.BigQuery.Dataset("publicDataset", new()
+    ///     var @public = new Gcp.BigQuery.Dataset("public", new()
     ///     {
     ///         DatasetId = "public_dataset",
     ///         Description = "This dataset is public",
     ///     });
     /// 
-    ///     var publicRoutine = new Gcp.BigQuery.Routine("publicRoutine", new()
+    ///     var publicRoutine = new Gcp.BigQuery.Routine("public", new()
     ///     {
-    ///         DatasetId = publicDataset.DatasetId,
+    ///         DatasetId = @public.DatasetId,
     ///         RoutineId = "public_routine",
     ///         RoutineType = "TABLE_VALUED_FUNCTION",
     ///         Language = "SQL",
@@ -272,9 +274,6 @@ namespace Pulumi.Gcp.BigQuery
     ///             ExternalSource = "aws-glue://arn:aws:glue:us-east-1:999999999999:database/database",
     ///             Connection = "projects/project/locations/aws-us-east-1/connections/connection",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

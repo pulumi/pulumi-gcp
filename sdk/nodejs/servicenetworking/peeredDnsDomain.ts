@@ -16,9 +16,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const name = new gcp.servicenetworking.PeeredDnsDomain("name", {
- *     dnsSuffix: "example.com.",
- *     network: "default",
  *     project: "10000000",
+ *     name: "example-com",
+ *     network: "default",
+ *     dnsSuffix: "example.com.",
  *     service: "peering-service",
  * });
  * ```

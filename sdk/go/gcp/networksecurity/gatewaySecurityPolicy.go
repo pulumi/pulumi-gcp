@@ -33,8 +33,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networksecurity.NewGatewaySecurityPolicy(ctx, "default", &networksecurity.GatewaySecurityPolicyArgs{
-//				Description: pulumi.String("my description"),
+//				Name:        pulumi.String("my-gateway-security-policy"),
 //				Location:    pulumi.String("us-central1"),
+//				Description: pulumi.String("my description"),
 //			})
 //			if err != nil {
 //				return err
@@ -62,7 +63,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultCaPool, err := certificateauthority.NewCaPool(ctx, "defaultCaPool", &certificateauthority.CaPoolArgs{
+//			_, err := certificateauthority.NewCaPool(ctx, "default", &certificateauthority.CaPoolArgs{
+//				Name:     pulumi.String("my-basic-ca-pool"),
 //				Location: pulumi.String("us-central1"),
 //				Tier:     pulumi.String("DEVOPS"),
 //				PublishingOptions: &certificateauthority.CaPoolPublishingOptionsArgs{
@@ -83,12 +85,12 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultAuthority, err := certificateauthority.NewAuthority(ctx, "defaultAuthority", &certificateauthority.AuthorityArgs{
-//				Pool:                               defaultCaPool.Name,
+//			_, err = certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
+//				Pool:                               _default.Name,
 //				CertificateAuthorityId:             pulumi.String("my-basic-certificate-authority"),
 //				Location:                           pulumi.String("us-central1"),
 //				Lifetime:                           pulumi.String("86400s"),
@@ -121,44 +123,40 @@ import (
 //				KeySpec: &certificateauthority.AuthorityKeySpecArgs{
 //					Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			nsSa, err := projects.NewServiceIdentity(ctx, "nsSa", &projects.ServiceIdentityArgs{
+//			nsSa, err := projects.NewServiceIdentity(ctx, "ns_sa", &projects.ServiceIdentityArgs{
 //				Service: pulumi.String("networksecurity.googleapis.com"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			tlsInspectionPermission, err := certificateauthority.NewCaPoolIamMember(ctx, "tlsInspectionPermission", &certificateauthority.CaPoolIamMemberArgs{
-//				CaPool: defaultCaPool.ID(),
+//			_, err = certificateauthority.NewCaPoolIamMember(ctx, "tls_inspection_permission", &certificateauthority.CaPoolIamMemberArgs{
+//				CaPool: _default.ID(),
 //				Role:   pulumi.String("roles/privateca.certificateManager"),
 //				Member: nsSa.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
 //				}).(pulumi.StringOutput),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultTlsInspectionPolicy, err := networksecurity.NewTlsInspectionPolicy(ctx, "defaultTlsInspectionPolicy", &networksecurity.TlsInspectionPolicyArgs{
+//			defaultTlsInspectionPolicy, err := networksecurity.NewTlsInspectionPolicy(ctx, "default", &networksecurity.TlsInspectionPolicyArgs{
+//				Name:     pulumi.String("my-tls-inspection-policy"),
 //				Location: pulumi.String("us-central1"),
-//				CaPool:   defaultCaPool.ID(),
-//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
-//				defaultCaPool,
-//				defaultAuthority,
-//				tlsInspectionPermission,
-//			}))
+//				CaPool:   _default.ID(),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networksecurity.NewGatewaySecurityPolicy(ctx, "defaultGatewaySecurityPolicy", &networksecurity.GatewaySecurityPolicyArgs{
+//			_, err = networksecurity.NewGatewaySecurityPolicy(ctx, "default", &networksecurity.GatewaySecurityPolicyArgs{
+//				Name:                pulumi.String("my-gateway-security-policy"),
 //				Location:            pulumi.String("us-central1"),
 //				Description:         pulumi.String("my description"),
 //				TlsInspectionPolicy: defaultTlsInspectionPolicy.ID(),
-//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
-//				defaultTlsInspectionPolicy,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

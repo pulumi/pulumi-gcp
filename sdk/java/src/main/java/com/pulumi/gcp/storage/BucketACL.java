@@ -54,6 +54,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var image_store = new Bucket(&#34;image-store&#34;, BucketArgs.builder()        
+ *             .name(&#34;image-store-bucket&#34;)
  *             .location(&#34;EU&#34;)
  *             .build());
  * 

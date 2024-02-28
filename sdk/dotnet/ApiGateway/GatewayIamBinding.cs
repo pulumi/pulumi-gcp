@@ -51,13 +51,10 @@ namespace Pulumi.Gcp.ApiGateway
     /// 
     ///     var policy = new Gcp.ApiGateway.GatewayIamPolicy("policy", new()
     ///     {
-    ///         Project = google_api_gateway_gateway.Api_gw.Project,
-    ///         Region = google_api_gateway_gateway.Api_gw.Region,
-    ///         Gateway = google_api_gateway_gateway.Api_gw.Gateway_id,
+    ///         Project = apiGw.Project,
+    ///         Region = apiGw.Region,
+    ///         Gateway = apiGw.GatewayId,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -75,17 +72,14 @@ namespace Pulumi.Gcp.ApiGateway
     /// {
     ///     var binding = new Gcp.ApiGateway.GatewayIamBinding("binding", new()
     ///     {
-    ///         Project = google_api_gateway_gateway.Api_gw.Project,
-    ///         Region = google_api_gateway_gateway.Api_gw.Region,
-    ///         Gateway = google_api_gateway_gateway.Api_gw.Gateway_id,
+    ///         Project = apiGw.Project,
+    ///         Region = apiGw.Region,
+    ///         Gateway = apiGw.GatewayId,
     ///         Role = "roles/apigateway.viewer",
     ///         Members = new[]
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -103,14 +97,11 @@ namespace Pulumi.Gcp.ApiGateway
     /// {
     ///     var member = new Gcp.ApiGateway.GatewayIamMember("member", new()
     ///     {
-    ///         Project = google_api_gateway_gateway.Api_gw.Project,
-    ///         Region = google_api_gateway_gateway.Api_gw.Region,
-    ///         Gateway = google_api_gateway_gateway.Api_gw.Gateway_id,
+    ///         Project = apiGw.Project,
+    ///         Region = apiGw.Region,
+    ///         Gateway = apiGw.GatewayId,
     ///         Role = "roles/apigateway.viewer",
     ///         Member = "user:jane@example.com",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

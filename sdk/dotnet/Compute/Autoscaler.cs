@@ -39,8 +39,9 @@ namespace Pulumi.Gcp.Compute
     ///         Project = "debian-cloud",
     ///     });
     /// 
-    ///     var defaultInstanceTemplate = new Gcp.Compute.InstanceTemplate("defaultInstanceTemplate", new()
+    ///     var defaultInstanceTemplate = new Gcp.Compute.InstanceTemplate("default", new()
     ///     {
+    ///         Name = "my-instance-template",
     ///         MachineType = "e2-medium",
     ///         CanIpForward = false,
     ///         Tags = new[]
@@ -75,20 +76,16 @@ namespace Pulumi.Gcp.Compute
     ///                 "storage-ro",
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultTargetPool = new Gcp.Compute.TargetPool("defaultTargetPool", new()
+    ///     var defaultTargetPool = new Gcp.Compute.TargetPool("default", new()
     ///     {
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Name = "my-target-pool",
     ///     });
     /// 
-    ///     var defaultInstanceGroupManager = new Gcp.Compute.InstanceGroupManager("defaultInstanceGroupManager", new()
+    ///     var defaultInstanceGroupManager = new Gcp.Compute.InstanceGroupManager("default", new()
     ///     {
+    ///         Name = "my-igm",
     ///         Zone = "us-central1-f",
     ///         Versions = new[]
     ///         {
@@ -103,13 +100,11 @@ namespace Pulumi.Gcp.Compute
     ///             defaultTargetPool.Id,
     ///         },
     ///         BaseInstanceName = "autoscaler-sample",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultAutoscaler = new Gcp.Compute.Autoscaler("defaultAutoscaler", new()
+    ///     var @default = new Gcp.Compute.Autoscaler("default", new()
     ///     {
+    ///         Name = "my-autoscaler",
     ///         Zone = "us-central1-f",
     ///         Target = defaultInstanceGroupManager.Id,
     ///         AutoscalingPolicy = new Gcp.Compute.Inputs.AutoscalerAutoscalingPolicyArgs
@@ -127,9 +122,6 @@ namespace Pulumi.Gcp.Compute
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -150,8 +142,9 @@ namespace Pulumi.Gcp.Compute
     ///         Project = "debian-cloud",
     ///     });
     /// 
-    ///     var foobarInstanceTemplate = new Gcp.Compute.InstanceTemplate("foobarInstanceTemplate", new()
+    ///     var foobarInstanceTemplate = new Gcp.Compute.InstanceTemplate("foobar", new()
     ///     {
+    ///         Name = "my-instance-template",
     ///         MachineType = "e2-medium",
     ///         CanIpForward = false,
     ///         Tags = new[]
@@ -188,10 +181,14 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///     });
     /// 
-    ///     var foobarTargetPool = new Gcp.Compute.TargetPool("foobarTargetPool");
-    /// 
-    ///     var foobarInstanceGroupManager = new Gcp.Compute.InstanceGroupManager("foobarInstanceGroupManager", new()
+    ///     var foobarTargetPool = new Gcp.Compute.TargetPool("foobar", new()
     ///     {
+    ///         Name = "my-target-pool",
+    ///     });
+    /// 
+    ///     var foobarInstanceGroupManager = new Gcp.Compute.InstanceGroupManager("foobar", new()
+    ///     {
+    ///         Name = "my-igm",
     ///         Zone = "us-central1-f",
     ///         Versions = new[]
     ///         {
@@ -208,8 +205,9 @@ namespace Pulumi.Gcp.Compute
     ///         BaseInstanceName = "foobar",
     ///     });
     /// 
-    ///     var foobarAutoscaler = new Gcp.Compute.Autoscaler("foobarAutoscaler", new()
+    ///     var foobar = new Gcp.Compute.Autoscaler("foobar", new()
     ///     {
+    ///         Name = "my-autoscaler",
     ///         Zone = "us-central1-f",
     ///         Target = foobarInstanceGroupManager.Id,
     ///         AutoscalingPolicy = new Gcp.Compute.Inputs.AutoscalerAutoscalingPolicyArgs

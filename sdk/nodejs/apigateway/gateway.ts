@@ -18,29 +18,25 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
  *
- * const apiGwApi = new gcp.apigateway.Api("apiGwApi", {apiId: "my-api"}, {
- *     provider: google_beta,
- * });
- * const apiGwApiConfig = new gcp.apigateway.ApiConfig("apiGwApiConfig", {
- *     api: apiGwApi.apiId,
+ * const apiGw = new gcp.apigateway.Api("api_gw", {apiId: "my-api"});
+ * const apiGwApiConfig = new gcp.apigateway.ApiConfig("api_gw", {
+ *     api: apiGw.apiId,
  *     apiConfigId: "my-config",
  *     openapiDocuments: [{
  *         document: {
  *             path: "spec.yaml",
- *             contents: fs.readFileSync("test-fixtures/openapi.yaml", { encoding: "base64" }),
+ *             contents: std.filebase64({
+ *                 input: "test-fixtures/openapi.yaml",
+ *             }).then(invoke => invoke.result),
  *         },
  *     }],
- * }, {
- *     provider: google_beta,
  * });
- * const apiGwGateway = new gcp.apigateway.Gateway("apiGwGateway", {
+ * const apiGwGateway = new gcp.apigateway.Gateway("api_gw", {
  *     apiConfig: apiGwApiConfig.id,
  *     gatewayId: "my-gateway",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

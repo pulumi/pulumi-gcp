@@ -29,14 +29,14 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var basicAgent = new Gcp.Diagflow.Agent("basicAgent", new()
+    ///     var basicAgent = new Gcp.Diagflow.Agent("basic_agent", new()
     ///     {
     ///         DisplayName = "example_agent",
     ///         DefaultLanguageCode = "en",
     ///         TimeZone = "America/New_York",
     ///     });
     /// 
-    ///     var basicEntityType = new Gcp.Diagflow.EntityType("basicEntityType", new()
+    ///     var basicEntityType = new Gcp.Diagflow.EntityType("basic_entity_type", new()
     ///     {
     ///         DisplayName = "",
     ///         Kind = "KIND_MAP",
@@ -60,12 +60,6 @@ namespace Pulumi.Gcp.Diagflow
     ///                     "synonym4",
     ///                 },
     ///             },
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             basicAgent,
     ///         },
     ///     });
     /// 

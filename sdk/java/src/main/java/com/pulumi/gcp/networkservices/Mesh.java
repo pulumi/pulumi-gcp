@@ -28,7 +28,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.networkservices.Mesh;
  * import com.pulumi.gcp.networkservices.MeshArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -43,12 +42,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Mesh(&#34;default&#34;, MeshArgs.builder()        
+ *             .name(&#34;my-mesh&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .description(&#34;my description&#34;)
  *             .interceptionPort(443)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -62,7 +60,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.networkservices.Mesh;
  * import com.pulumi.gcp.networkservices.MeshArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -77,11 +74,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Mesh(&#34;default&#34;, MeshArgs.builder()        
+ *             .name(&#34;my-mesh-noport&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .description(&#34;my description&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

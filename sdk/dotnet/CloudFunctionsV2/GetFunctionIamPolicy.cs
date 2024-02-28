@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.CloudFunctionsV2
         /// {
         ///     var policy = Gcp.CloudFunctionsV2.GetFunctionIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_cloudfunctions2_function.Function.Project,
-        ///         Location = google_cloudfunctions2_function.Function.Location,
-        ///         CloudFunction = google_cloudfunctions2_function.Function.Name,
+        ///         Project = function.Project,
+        ///         Location = function.Location,
+        ///         CloudFunction = function.Name,
         ///     });
         /// 
         /// });
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.CloudFunctionsV2
         /// {
         ///     var policy = Gcp.CloudFunctionsV2.GetFunctionIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_cloudfunctions2_function.Function.Project,
-        ///         Location = google_cloudfunctions2_function.Function.Location,
-        ///         CloudFunction = google_cloudfunctions2_function.Function.Name,
+        ///         Project = function.Project,
+        ///         Location = function.Location,
+        ///         CloudFunction = function.Name,
         ///     });
         /// 
         /// });

@@ -17,6 +17,27 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://firebase.google.com/docs/app-check)
  *
  * ## Example Usage
+ * ### Firebase App Check Debug Token Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumi/time";
+ *
+ * const _default = new gcp.firebase.WebApp("default", {
+ *     project: "my-project-name",
+ *     displayName: "Web App for debug token",
+ * });
+ * // It takes a while for App Check to recognize the new app
+ * // If your app already exists, you don't have to wait 30 seconds.
+ * const wait30s = new time.index.Sleep("wait_30s", {createDuration: "30s"});
+ * const defaultAppCheckDebugToken = new gcp.firebase.AppCheckDebugToken("default", {
+ *     project: "my-project-name",
+ *     appId: _default.appId,
+ *     displayName: "Debug Token",
+ *     token: "00000000-AAAA-BBBB-CCCC-000000000000",
+ * });
+ * ```
  *
  * ## Import
  *

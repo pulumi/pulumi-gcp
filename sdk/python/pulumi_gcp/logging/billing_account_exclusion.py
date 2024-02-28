@@ -216,6 +216,7 @@ class BillingAccountExclusion(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_exclusion = gcp.logging.BillingAccountExclusion("my-exclusion",
+            name="my-instance-debug-exclusion",
             billing_account="ABCDEF-012345-GHIJKL",
             description="Exclude GCE instance debug logs",
             filter="resource.type = gce_instance AND severity <= DEBUG")
@@ -258,6 +259,7 @@ class BillingAccountExclusion(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_exclusion = gcp.logging.BillingAccountExclusion("my-exclusion",
+            name="my-instance-debug-exclusion",
             billing_account="ABCDEF-012345-GHIJKL",
             description="Exclude GCE instance debug logs",
             filter="resource.type = gce_instance AND severity <= DEBUG")

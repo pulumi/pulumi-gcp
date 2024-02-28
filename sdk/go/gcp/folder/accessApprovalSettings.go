@@ -34,14 +34,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myFolder, err := organizations.NewFolder(ctx, "myFolder", &organizations.FolderArgs{
+//			myFolder, err := organizations.NewFolder(ctx, "my_folder", &organizations.FolderArgs{
 //				DisplayName: pulumi.String("my-folder"),
 //				Parent:      pulumi.String("organizations/123456789"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = folder.NewAccessApprovalSettings(ctx, "folderAccessApproval", &folder.AccessApprovalSettingsArgs{
+//			_, err = folder.NewAccessApprovalSettings(ctx, "folder_access_approval", &folder.AccessApprovalSettingsArgs{
 //				FolderId: myFolder.FolderId,
 //				NotificationEmails: pulumi.StringArray{
 //					pulumi.String("testuser@example.com"),
@@ -80,27 +80,31 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myFolder, err := organizations.NewFolder(ctx, "myFolder", &organizations.FolderArgs{
+//			myFolder, err := organizations.NewFolder(ctx, "my_folder", &organizations.FolderArgs{
 //				DisplayName: pulumi.String("my-folder"),
 //				Parent:      pulumi.String("organizations/123456789"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			myProject, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
-//				FolderId: myFolder.Name,
+//			myProject, err := organizations.NewProject(ctx, "my_project", &organizations.ProjectArgs{
+//				Name:      pulumi.String("My Project"),
+//				ProjectId: pulumi.String("your-project-id"),
+//				FolderId:  myFolder.Name,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
+//			keyRing, err := kms.NewKeyRing(ctx, "key_ring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("key-ring"),
 //				Location: pulumi.String("global"),
 //				Project:  myProject.ProjectId,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
+//			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
+//				Name:    pulumi.String("crypto-key"),
 //				KeyRing: keyRing.ID(),
 //				Purpose: pulumi.String("ASYMMETRIC_SIGN"),
 //				VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
@@ -113,7 +117,7 @@ import (
 //			serviceAccount := accessapproval.GetFolderServiceAccountOutput(ctx, accessapproval.GetFolderServiceAccountOutputArgs{
 //				FolderId: myFolder.FolderId,
 //			}, nil)
-//			iam, err := kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
+//			_, err = kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: cryptoKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.signerVerifier"),
 //				Member: serviceAccount.ApplyT(func(serviceAccount accessapproval.GetFolderServiceAccountResult) (string, error) {
@@ -126,7 +130,7 @@ import (
 //			cryptoKeyVersion := kms.GetKMSCryptoKeyVersionOutput(ctx, kms.GetKMSCryptoKeyVersionOutputArgs{
 //				CryptoKey: cryptoKey.ID(),
 //			}, nil)
-//			_, err = folder.NewAccessApprovalSettings(ctx, "folderAccessApproval", &folder.AccessApprovalSettingsArgs{
+//			_, err = folder.NewAccessApprovalSettings(ctx, "folder_access_approval", &folder.AccessApprovalSettingsArgs{
 //				FolderId: myFolder.FolderId,
 //				ActiveKeyVersion: cryptoKeyVersion.ApplyT(func(cryptoKeyVersion kms.GetKMSCryptoKeyVersionResult) (*string, error) {
 //					return &cryptoKeyVersion.Name, nil
@@ -136,9 +140,7 @@ import (
 //						CloudProduct: pulumi.String("all"),
 //					},
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				iam,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

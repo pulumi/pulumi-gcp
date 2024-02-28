@@ -266,8 +266,8 @@ class NotificationConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        scc_notification = gcp.pubsub.Topic("sccNotification")
-        custom_notification_config = gcp.securitycenter.NotificationConfig("customNotificationConfig",
+        scc_notification = gcp.pubsub.Topic("scc_notification", name="my-topic")
+        custom_notification_config = gcp.securitycenter.NotificationConfig("custom_notification_config",
             config_id="my-config",
             organization="123456789",
             description="My custom Cloud Security Command Center Finding Notification Configuration",
@@ -334,8 +334,8 @@ class NotificationConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        scc_notification = gcp.pubsub.Topic("sccNotification")
-        custom_notification_config = gcp.securitycenter.NotificationConfig("customNotificationConfig",
+        scc_notification = gcp.pubsub.Topic("scc_notification", name="my-topic")
+        custom_notification_config = gcp.securitycenter.NotificationConfig("custom_notification_config",
             config_id="my-config",
             organization="123456789",
             description="My custom Cloud Security Command Center Finding Notification Configuration",

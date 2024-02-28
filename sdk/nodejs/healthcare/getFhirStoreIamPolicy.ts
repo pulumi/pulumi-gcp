@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const foo = gcp.healthcare.getFhirStoreIamPolicy({
- *     fhirStoreId: google_healthcare_fhir_store.fhir_store.id,
+ *     fhirStoreId: fhirStore.id,
  * });
  * ```
  */
@@ -67,7 +67,7 @@ export interface GetFhirStoreIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const foo = gcp.healthcare.getFhirStoreIamPolicy({
- *     fhirStoreId: google_healthcare_fhir_store.fhir_store.id,
+ *     fhirStoreId: fhirStore.id,
  * });
  * ```
  */

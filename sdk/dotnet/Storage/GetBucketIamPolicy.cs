@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Storage
         /// {
         ///     var policy = Gcp.Storage.GetBucketIamPolicy.Invoke(new()
         ///     {
-        ///         Bucket = google_storage_bucket.Default.Name,
+        ///         Bucket = @default.Name,
         ///     });
         /// 
         /// });
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.Storage
         /// {
         ///     var policy = Gcp.Storage.GetBucketIamPolicy.Invoke(new()
         ///     {
-        ///         Bucket = google_storage_bucket.Default.Name,
+        ///         Bucket = @default.Name,
         ///     });
         /// 
         /// });

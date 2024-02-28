@@ -32,6 +32,7 @@ namespace Pulumi.Gcp.Filestore
     /// {
     ///     var instance = new Gcp.Filestore.Instance("instance", new()
     ///     {
+    ///         Name = "test-instance-for-snapshot",
     ///         Location = "us-east1",
     ///         Tier = "ENTERPRISE",
     ///         FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
@@ -54,6 +55,7 @@ namespace Pulumi.Gcp.Filestore
     /// 
     ///     var snapshot = new Gcp.Filestore.Snapshot("snapshot", new()
     ///     {
+    ///         Name = "test-snapshot",
     ///         Instance = instance.Name,
     ///         Location = "us-east1",
     ///     });
@@ -72,6 +74,7 @@ namespace Pulumi.Gcp.Filestore
     /// {
     ///     var instance = new Gcp.Filestore.Instance("instance", new()
     ///     {
+    ///         Name = "test-instance-for-snapshot",
     ///         Location = "us-west1",
     ///         Tier = "ENTERPRISE",
     ///         FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
@@ -94,6 +97,7 @@ namespace Pulumi.Gcp.Filestore
     /// 
     ///     var snapshot = new Gcp.Filestore.Snapshot("snapshot", new()
     ///     {
+    ///         Name = "test-snapshot",
     ///         Instance = instance.Name,
     ///         Location = "us-west1",
     ///         Description = "Snapshot of test-instance-for-snapshot",

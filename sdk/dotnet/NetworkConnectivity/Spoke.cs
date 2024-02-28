@@ -24,11 +24,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// {
     ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
+    ///         Name = "network",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     var basicHub = new Gcp.NetworkConnectivity.Hub("basicHub", new()
+    ///     var basicHub = new Gcp.NetworkConnectivity.Hub("basic_hub", new()
     ///     {
+    ///         Name = "hub",
     ///         Description = "A sample hub",
     ///         Labels = 
     ///         {
@@ -38,6 +40,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var primary = new Gcp.NetworkConnectivity.Spoke("primary", new()
     ///     {
+    ///         Name = "name",
     ///         Location = "global",
     ///         Description = "A sample spoke with a linked routher appliance instance",
     ///         Labels = 
@@ -69,11 +72,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// {
     ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
+    ///         Name = "network",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
     ///     {
+    ///         Name = "subnet",
     ///         IpCidrRange = "10.0.0.0/28",
     ///         Region = "us-west1",
     ///         Network = network.SelfLink,
@@ -81,6 +86,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var instance = new Gcp.Compute.Instance("instance", new()
     ///     {
+    ///         Name = "instance",
     ///         MachineType = "e2-medium",
     ///         CanIpForward = true,
     ///         Zone = "us-west1-a",
@@ -108,8 +114,9 @@ namespace Pulumi.Gcp.NetworkConnectivity
     ///         },
     ///     });
     /// 
-    ///     var basicHub = new Gcp.NetworkConnectivity.Hub("basicHub", new()
+    ///     var basicHub = new Gcp.NetworkConnectivity.Hub("basic_hub", new()
     ///     {
+    ///         Name = "hub",
     ///         Description = "A sample hub",
     ///         Labels = 
     ///         {
@@ -119,6 +126,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var primary = new Gcp.NetworkConnectivity.Spoke("primary", new()
     ///     {
+    ///         Name = "name",
     ///         Location = "us-west1",
     ///         Description = "A sample spoke with a linked routher appliance instance",
     ///         Labels = 

@@ -1185,18 +1185,400 @@ class GlobalForwardingRule(pulumi.CustomResource):
         https://cloud.google.com/compute/docs/load-balancing/http/
 
         ## Example Usage
-        ### Global Forwarding Rule External Managed
+        ### External Ssl Proxy Lb Mig Backend
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_tls as tls
+
+        # External SSL proxy load balancer with managed instance group backend
+        # VPC
+        default = gcp.compute.Network("default",
+            name="ssl-proxy-xlb-network",
+            auto_create_subnetworks=False)
+        # backend subnet
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="ssl-proxy-xlb-subnet",
+            ip_cidr_range="10.0.1.0/24",
+            region="us-central1",
+            network=default.id)
+        # reserved IP address
+        default_global_address = gcp.compute.GlobalAddress("default", name="ssl-proxy-xlb-ip")
+        # Self-signed regional SSL certificate for testing
+        default_private_key = tls.PrivateKey("default",
+            algorithm="RSA",
+            rsa_bits=2048)
+        default_self_signed_cert = tls.SelfSignedCert("default",
+            key_algorithm=default_private_key.algorithm,
+            private_key_pem=default_private_key.private_key_pem,
+            validity_period_hours=12,
+            early_renewal_hours=3,
+            allowed_uses=[
+                "key_encipherment",
+                "digital_signature",
+                "server_auth",
+            ],
+            dns_names=["example.com"],
+            subject=tls.SelfSignedCertSubjectArgs(
+                common_name="example.com",
+                organization="ACME Examples, Inc",
+            ))
+        default_ssl_certificate = gcp.compute.SSLCertificate("default",
+            name="default-cert",
+            private_key=default_private_key.private_key_pem,
+            certificate=default_self_signed_cert.cert_pem)
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="ssl-proxy-health-check",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=443,
+            ))
+        # instance template
+        default_instance_template = gcp.compute.InstanceTemplate("default",
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs()],
+                network=default.id,
+                subnetwork=default_subnetwork.id,
+            )],
+            name="ssl-proxy-xlb-mig-template",
+            machine_type="e2-small",
+            tags=["allow-health-check"],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-10",
+                auto_delete=True,
+                boot=True,
+            )],
+            metadata={
+                "startup-script": \"\"\"#! /bin/bash
+        set -euo pipefail
+        export DEBIAN_FRONTEND=noninteractive
+        sudo apt-get update
+        sudo apt-get install  -y apache2 jq
+        sudo a2ensite default-ssl
+        sudo a2enmod ssl
+        sudo service apache2 restart
+        NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+        IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+        METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+        cat <<EOF > /var/www/html/index.html
+        <h1>SSL Load Balancer</h1>
+        <pre>
+        Name: $NAME
+        IP: $IP
+        Metadata: $METADATA
+        </pre>
+        EOF
+        \"\"\",
+            })
+        # MIG
+        default_instance_group_manager = gcp.compute.InstanceGroupManager("default",
+            name="ssl-proxy-xlb-mig1",
+            zone="us-central1-c",
+            named_ports=[gcp.compute.InstanceGroupManagerNamedPortArgs(
+                name="tcp",
+                port=443,
+            )],
+            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
+                instance_template=default_instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="vm",
+            target_size=2)
+        # backend service
+        default_backend_service = gcp.compute.BackendService("default",
+            name="ssl-proxy-xlb-backend-service",
+            protocol="SSL",
+            port_name="tcp",
+            load_balancing_scheme="EXTERNAL",
+            timeout_sec=10,
+            health_checks=default_health_check.id,
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=default_instance_group_manager.instance_group,
+                balancing_mode="UTILIZATION",
+                max_utilization=1,
+                capacity_scaler=1,
+            )])
+        default_target_ssl_proxy = gcp.compute.TargetSSLProxy("default",
+            name="test-proxy",
+            backend_service=default_backend_service.id,
+            ssl_certificates=[default_ssl_certificate.id])
+        # forwarding rule
+        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("default",
+            name="ssl-proxy-xlb-forwarding-rule",
+            ip_protocol="TCP",
+            load_balancing_scheme="EXTERNAL",
+            port_range="443",
+            target=default_target_ssl_proxy.id,
+            ip_address=default_global_address.id)
+        # allow access from health check ranges
+        default_firewall = gcp.compute.Firewall("default",
+            name="ssl-proxy-xlb-fw-allow-hc",
+            direction="INGRESS",
+            network=default.id,
+            source_ranges=[
+                "130.211.0.0/22",
+                "35.191.0.0/16",
+            ],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+            )],
+            target_tags=["allow-health-check"])
+        ```
+        ### External Tcp Proxy Lb Mig Backend
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        default_backend_service = gcp.compute.BackendService("defaultBackendService",
+        # External TCP proxy load balancer with managed instance group backend
+        # VPC
+        default = gcp.compute.Network("default",
+            name="tcp-proxy-xlb-network",
+            auto_create_subnetworks=False)
+        # backend subnet
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="tcp-proxy-xlb-subnet",
+            ip_cidr_range="10.0.1.0/24",
+            region="us-central1",
+            network=default.id)
+        # reserved IP address
+        default_global_address = gcp.compute.GlobalAddress("default", name="tcp-proxy-xlb-ip")
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="tcp-proxy-health-check",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        # instance template
+        default_instance_template = gcp.compute.InstanceTemplate("default",
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs()],
+                network=default.id,
+                subnetwork=default_subnetwork.id,
+            )],
+            name="tcp-proxy-xlb-mig-template",
+            machine_type="e2-small",
+            tags=["allow-health-check"],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-10",
+                auto_delete=True,
+                boot=True,
+            )],
+            metadata={
+                "startup-script": \"\"\"#! /bin/bash
+        set -euo pipefail
+        export DEBIAN_FRONTEND=noninteractive
+        apt-get update
+        apt-get install -y nginx-light jq
+        NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+        IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+        METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+        cat <<EOF > /var/www/html/index.html
+        <pre>
+        Name: $NAME
+        IP: $IP
+        Metadata: $METADATA
+        </pre>
+        EOF
+        \"\"\",
+            })
+        # MIG
+        default_instance_group_manager = gcp.compute.InstanceGroupManager("default",
+            name="tcp-proxy-xlb-mig1",
+            zone="us-central1-c",
+            named_ports=[gcp.compute.InstanceGroupManagerNamedPortArgs(
+                name="tcp",
+                port=80,
+            )],
+            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
+                instance_template=default_instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="vm",
+            target_size=2)
+        # backend service
+        default_backend_service = gcp.compute.BackendService("default",
+            name="tcp-proxy-xlb-backend-service",
+            protocol="TCP",
+            port_name="tcp",
+            load_balancing_scheme="EXTERNAL",
+            timeout_sec=10,
+            health_checks=default_health_check.id,
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=default_instance_group_manager.instance_group,
+                balancing_mode="UTILIZATION",
+                max_utilization=1,
+                capacity_scaler=1,
+            )])
+        default_target_tcp_proxy = gcp.compute.TargetTCPProxy("default",
+            name="test-proxy-health-check",
+            backend_service=default_backend_service.id)
+        # forwarding rule
+        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("default",
+            name="tcp-proxy-xlb-forwarding-rule",
+            ip_protocol="TCP",
+            load_balancing_scheme="EXTERNAL",
+            port_range="110",
+            target=default_target_tcp_proxy.id,
+            ip_address=default_global_address.id)
+        # allow access from health check ranges
+        default_firewall = gcp.compute.Firewall("default",
+            name="tcp-proxy-xlb-fw-allow-hc",
+            direction="INGRESS",
+            network=default.id,
+            source_ranges=[
+                "130.211.0.0/22",
+                "35.191.0.0/16",
+            ],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+            )],
+            target_tags=["allow-health-check"])
+        ```
+        ### External Http Lb Mig Backend Custom Header
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # External HTTP load balancer with a CDN-enabled managed instance group backend
+        # and custom request and response headers
+        # VPC
+        default = gcp.compute.Network("default",
+            name="l7-xlb-network",
+            auto_create_subnetworks=False)
+        # backend subnet
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="l7-xlb-subnet",
+            ip_cidr_range="10.0.1.0/24",
+            region="us-central1",
+            network=default.id)
+        # reserved IP address
+        default_global_address = gcp.compute.GlobalAddress("default", name="l7-xlb-static-ip")
+        # health check
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="l7-xlb-hc",
+            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+                port_specification="USE_SERVING_PORT",
+            ))
+        # instance template
+        default_instance_template = gcp.compute.InstanceTemplate("default",
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs()],
+                network=default.id,
+                subnetwork=default_subnetwork.id,
+            )],
+            name="l7-xlb-mig-template",
+            machine_type="e2-small",
+            tags=["allow-health-check"],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-10",
+                auto_delete=True,
+                boot=True,
+            )],
+            metadata={
+                "startup-script": \"\"\"#! /bin/bash
+        set -euo pipefail
+
+        export DEBIAN_FRONTEND=noninteractive
+        apt-get update
+        apt-get install -y nginx-light jq
+
+        NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+        IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+        METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+
+        cat <<EOF > /var/www/html/index.html
+        <pre>
+        Name: $NAME
+        IP: $IP
+        Metadata: $METADATA
+        </pre>
+        EOF
+        \"\"\",
+            })
+        # MIG
+        default_instance_group_manager = gcp.compute.InstanceGroupManager("default",
+            name="l7-xlb-mig1",
+            zone="us-central1-c",
+            named_ports=[gcp.compute.InstanceGroupManagerNamedPortArgs(
+                name="http",
+                port=8080,
+            )],
+            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
+                instance_template=default_instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="vm",
+            target_size=2)
+        # backend service with custom request and response headers
+        default_backend_service = gcp.compute.BackendService("default",
+            name="l7-xlb-backend-service",
+            protocol="HTTP",
+            port_name="my-port",
+            load_balancing_scheme="EXTERNAL",
+            timeout_sec=10,
+            enable_cdn=True,
+            custom_request_headers=["X-Client-Geo-Location: {client_region_subdivision}, {client_city}"],
+            custom_response_headers=["X-Cache-Hit: {cdn_cache_status}"],
+            health_checks=default_health_check.id,
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=default_instance_group_manager.instance_group,
+                balancing_mode="UTILIZATION",
+                capacity_scaler=1,
+            )])
+        # url map
+        default_url_map = gcp.compute.URLMap("default",
+            name="l7-xlb-url-map",
+            default_service=default_backend_service.id)
+        # http proxy
+        default_target_http_proxy = gcp.compute.TargetHttpProxy("default",
+            name="l7-xlb-target-http-proxy",
+            url_map=default_url_map.id)
+        # forwarding rule
+        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("default",
+            name="l7-xlb-forwarding-rule",
+            ip_protocol="TCP",
+            load_balancing_scheme="EXTERNAL",
+            port_range="80",
+            target=default_target_http_proxy.id,
+            ip_address=default_global_address.id)
+        # allow access from health check ranges
+        default_firewall = gcp.compute.Firewall("default",
+            name="l7-xlb-fw-allow-hc",
+            direction="INGRESS",
+            network=default.id,
+            source_ranges=[
+                "130.211.0.0/22",
+                "35.191.0.0/16",
+            ],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+            )],
+            target_tags=["allow-health-check"])
+        ```
+        ### Global Forwarding Rule Http
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="check-backend",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend",
             port_name="http",
             protocol="HTTP",
             timeout_sec=10,
-            load_balancing_scheme="EXTERNAL_MANAGED")
-        default_url_map = gcp.compute.URLMap("defaultURLMap",
+            health_checks=default_http_health_check.id)
+        default_url_map = gcp.compute.URLMap("default",
+            name="url-map-target-proxy",
             description="a description",
             default_service=default_backend_service.id,
             host_rules=[gcp.compute.URLMapHostRuleArgs(
@@ -1211,13 +1593,390 @@ class GlobalForwardingRule(pulumi.CustomResource):
                     service=default_backend_service.id,
                 )],
             )])
-        default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy",
+        default_target_http_proxy = gcp.compute.TargetHttpProxy("default",
+            name="target-proxy",
             description="a description",
             url_map=default_url_map.id)
-        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
+        default = gcp.compute.GlobalForwardingRule("default",
+            name="global-rule",
+            target=default_target_http_proxy.id,
+            port_range="80")
+        ```
+        ### Global Forwarding Rule Internal
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        instance_template = gcp.compute.InstanceTemplate("instance_template",
+            name="template-backend",
+            machine_type="e2-medium",
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network="default",
+            )],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image=debian_image.self_link,
+                auto_delete=True,
+                boot=True,
+            )])
+        igm = gcp.compute.InstanceGroupManager("igm",
+            name="igm-internal",
+            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
+                instance_template=instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="internal-glb",
+            zone="us-central1-f",
+            target_size=1)
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="check-backend",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=igm.instance_group,
+                balancing_mode="RATE",
+                capacity_scaler=0.4,
+                max_rate_per_instance=50,
+            )],
+            health_checks=default_health_check.id)
+        default_url_map = gcp.compute.URLMap("default",
+            name="url-map-target-proxy",
+            description="a description",
+            default_service=default_backend_service.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_backend_service.id,
+                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_backend_service.id,
+                )],
+            )])
+        default_target_http_proxy = gcp.compute.TargetHttpProxy("default",
+            name="target-proxy",
+            description="a description",
+            url_map=default_url_map.id)
+        default = gcp.compute.GlobalForwardingRule("default",
+            name="global-rule",
+            target=default_target_http_proxy.id,
+            port_range="80",
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            ip_address="0.0.0.0",
+            metadata_filters=[gcp.compute.GlobalForwardingRuleMetadataFilterArgs(
+                filter_match_criteria="MATCH_ANY",
+                filter_labels=[gcp.compute.GlobalForwardingRuleMetadataFilterFilterLabelArgs(
+                    name="PLANET",
+                    value="MARS",
+                )],
+            )])
+        ```
+        ### Global Forwarding Rule External Managed
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED")
+        default_url_map = gcp.compute.URLMap("default",
+            name="url-map-target-proxy",
+            description="a description",
+            default_service=default_backend_service.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_backend_service.id,
+                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_backend_service.id,
+                )],
+            )])
+        default_target_http_proxy = gcp.compute.TargetHttpProxy("default",
+            name="target-proxy",
+            description="a description",
+            url_map=default_url_map.id)
+        default = gcp.compute.GlobalForwardingRule("default",
+            name="global-rule",
             target=default_target_http_proxy.id,
             port_range="80",
             load_balancing_scheme="EXTERNAL_MANAGED")
+        ```
+        ### Global Forwarding Rule Hybrid
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        config = pulumi.Config()
+        subnetwork_cidr = config.get("subnetworkCidr")
+        if subnetwork_cidr is None:
+            subnetwork_cidr = "10.0.0.0/24"
+        default = gcp.compute.Network("default", name="my-network")
+        internal = gcp.compute.Network("internal",
+            name="my-internal-network",
+            auto_create_subnetworks=False)
+        internal_subnetwork = gcp.compute.Subnetwork("internal",
+            name="my-subnetwork",
+            network=internal.id,
+            ip_cidr_range=subnetwork_cidr,
+            region="us-central1",
+            private_ip_google_access=True)
+        # Zonal NEG with GCE_VM_IP_PORT
+        default_network_endpoint_group = gcp.compute.NetworkEndpointGroup("default",
+            name="default-neg",
+            network=default.id,
+            default_port=90,
+            zone="us-central1-a",
+            network_endpoint_type="GCE_VM_IP_PORT")
+        # Zonal NEG with GCE_VM_IP
+        internal_network_endpoint_group = gcp.compute.NetworkEndpointGroup("internal",
+            name="internal-neg",
+            network=internal.id,
+            subnetwork=internal_subnetwork.id,
+            zone="us-central1-a",
+            network_endpoint_type="GCE_VM_IP")
+        # Hybrid connectivity NEG
+        hybrid = gcp.compute.NetworkEndpointGroup("hybrid",
+            name="hybrid-neg",
+            network=default.id,
+            default_port=90,
+            zone="us-central1-a",
+            network_endpoint_type="NON_GCP_PRIVATE_IP_PORT")
+        hybrid_endpoint = gcp.compute.NetworkEndpoint("hybrid-endpoint",
+            network_endpoint_group=hybrid.name,
+            port=hybrid.default_port,
+            ip_address="127.0.0.1")
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="health-check",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        # Backend service for Zonal NEG
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend-default",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=default_network_endpoint_group.id,
+                balancing_mode="RATE",
+                max_rate_per_endpoint=10,
+            )],
+            health_checks=default_health_check.id)
+        # Backgend service for Hybrid NEG
+        hybrid_backend_service = gcp.compute.BackendService("hybrid",
+            name="backend-hybrid",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=hybrid.id,
+                balancing_mode="RATE",
+                max_rate_per_endpoint=10,
+            )],
+            health_checks=default_health_check.id)
+        default_url_map = gcp.compute.URLMap("default",
+            name="url-map-target-proxy",
+            description="a description",
+            default_service=default_backend_service.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_backend_service.id,
+                path_rules=[
+                    gcp.compute.URLMapPathMatcherPathRuleArgs(
+                        paths=["/*"],
+                        service=default_backend_service.id,
+                    ),
+                    gcp.compute.URLMapPathMatcherPathRuleArgs(
+                        paths=["/hybrid"],
+                        service=hybrid_backend_service.id,
+                    ),
+                ],
+            )])
+        default_target_http_proxy = gcp.compute.TargetHttpProxy("default",
+            name="target-proxy",
+            description="a description",
+            url_map=default_url_map.id)
+        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("default",
+            name="global-rule",
+            target=default_target_http_proxy.id,
+            port_range="80")
+        ```
+        ### Global Internal Http Lb With Mig Backend
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Global Internal HTTP load balancer with a managed instance group backend
+        # VPC network
+        gilb_network = gcp.compute.Network("gilb_network",
+            name="l7-gilb-network",
+            auto_create_subnetworks=False)
+        # proxy-only subnet
+        proxy_subnet = gcp.compute.Subnetwork("proxy_subnet",
+            name="l7-gilb-proxy-subnet",
+            ip_cidr_range="10.0.0.0/24",
+            region="europe-west1",
+            purpose="GLOBAL_MANAGED_PROXY",
+            role="ACTIVE",
+            network=gilb_network.id)
+        # backend subnet
+        gilb_subnet = gcp.compute.Subnetwork("gilb_subnet",
+            name="l7-gilb-subnet",
+            ip_cidr_range="10.0.1.0/24",
+            region="europe-west1",
+            network=gilb_network.id)
+        # health check
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="l7-gilb-hc",
+            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+                port_specification="USE_SERVING_PORT",
+            ))
+        # instance template
+        instance_template = gcp.compute.InstanceTemplate("instance_template",
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs()],
+                network=gilb_network.id,
+                subnetwork=gilb_subnet.id,
+            )],
+            name="l7-gilb-mig-template",
+            machine_type="e2-small",
+            tags=["http-server"],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-10",
+                auto_delete=True,
+                boot=True,
+            )],
+            metadata={
+                "startup-script": \"\"\"#! /bin/bash
+        set -euo pipefail
+
+        export DEBIAN_FRONTEND=noninteractive
+        apt-get update
+        apt-get install -y nginx-light jq
+
+        NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+        IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+        METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+
+        cat <<EOF > /var/www/html/index.html
+        <pre>
+        Name: $NAME
+        IP: $IP
+        Metadata: $METADATA
+        </pre>
+        EOF
+        \"\"\",
+            })
+        # MIG
+        mig = gcp.compute.InstanceGroupManager("mig",
+            name="l7-gilb-mig1",
+            zone="europe-west1-b",
+            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
+                instance_template=instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="vm",
+            target_size=2)
+        # backend service
+        default_backend_service = gcp.compute.BackendService("default",
+            name="l7-gilb-backend-subnet",
+            protocol="HTTP",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            timeout_sec=10,
+            health_checks=default_health_check.id,
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=mig.instance_group,
+                balancing_mode="UTILIZATION",
+                capacity_scaler=1,
+            )])
+        # URL map
+        default_url_map = gcp.compute.URLMap("default",
+            name="l7-gilb-url-map",
+            default_service=default_backend_service.id)
+        # HTTP target proxy
+        default = gcp.compute.TargetHttpProxy("default",
+            name="l7-gilb-target-http-proxy",
+            url_map=default_url_map.id)
+        # forwarding rule
+        google_compute_forwarding_rule = gcp.compute.GlobalForwardingRule("google_compute_forwarding_rule",
+            name="l7-gilb-forwarding-rule",
+            ip_protocol="TCP",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            port_range="80",
+            target=default.id,
+            network=gilb_network.id,
+            subnetwork=gilb_subnet.id)
+        # allow all access from IAP and health check ranges
+        fw_iap = gcp.compute.Firewall("fw-iap",
+            name="l7-gilb-fw-allow-iap-hc",
+            direction="INGRESS",
+            network=gilb_network.id,
+            source_ranges=[
+                "130.211.0.0/22",
+                "35.191.0.0/16",
+                "35.235.240.0/20",
+            ],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+            )])
+        # allow http from proxy subnet to backends
+        fw_gilb_to_backends = gcp.compute.Firewall("fw-gilb-to-backends",
+            name="l7-gilb-fw-allow-gilb-to-backends",
+            direction="INGRESS",
+            network=gilb_network.id,
+            source_ranges=["10.0.0.0/24"],
+            target_tags=["http-server"],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+                ports=[
+                    "80",
+                    "443",
+                    "8080",
+                ],
+            )])
+        # test instance
+        vm_test = gcp.compute.Instance("vm-test",
+            name="l7-gilb-test-vm",
+            zone="europe-west1-b",
+            machine_type="e2-small",
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network=gilb_network.id,
+                subnetwork=gilb_subnet.id,
+            )],
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-10",
+                ),
+            ))
         ```
         ### Private Service Connect Google Apis
 
@@ -1227,33 +1986,33 @@ class GlobalForwardingRule(pulumi.CustomResource):
 
         network = gcp.compute.Network("network",
             project="my-project-name",
-            auto_create_subnetworks=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        vpc_subnetwork = gcp.compute.Subnetwork("vpcSubnetwork",
+            name="my-network",
+            auto_create_subnetworks=False)
+        vpc_subnetwork = gcp.compute.Subnetwork("vpc_subnetwork",
             project=network.project,
+            name="my-subnetwork",
             ip_cidr_range="10.2.0.0/16",
             region="us-central1",
             network=network.id,
-            private_ip_google_access=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_global_address = gcp.compute.GlobalAddress("defaultGlobalAddress",
+            private_ip_google_access=True)
+        default = gcp.compute.GlobalAddress("default",
             project=network.project,
+            name="global-psconnect-ip",
             address_type="INTERNAL",
             purpose="PRIVATE_SERVICE_CONNECT",
             network=network.id,
-            address="100.100.100.106",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
+            address="100.100.100.106")
+        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("default",
             project=network.project,
+            name="globalrule",
             target="all-apis",
             network=network.id,
-            ip_address=default_global_address.id,
+            ip_address=default.id,
             load_balancing_scheme="",
             service_directory_registrations=gcp.compute.GlobalForwardingRuleServiceDirectoryRegistrationsArgs(
                 namespace="sd-namespace",
                 service_directory_region="europe-west3",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Private Service Connect Google Apis No Automate Dns
 
@@ -1263,30 +2022,30 @@ class GlobalForwardingRule(pulumi.CustomResource):
 
         network = gcp.compute.Network("network",
             project="my-project-name",
-            auto_create_subnetworks=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        vpc_subnetwork = gcp.compute.Subnetwork("vpcSubnetwork",
+            name="my-network",
+            auto_create_subnetworks=False)
+        vpc_subnetwork = gcp.compute.Subnetwork("vpc_subnetwork",
             project=network.project,
+            name="my-subnetwork",
             ip_cidr_range="10.2.0.0/16",
             region="us-central1",
             network=network.id,
-            private_ip_google_access=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_global_address = gcp.compute.GlobalAddress("defaultGlobalAddress",
+            private_ip_google_access=True)
+        default = gcp.compute.GlobalAddress("default",
             project=network.project,
+            name="global-psconnect-ip",
             address_type="INTERNAL",
             purpose="PRIVATE_SERVICE_CONNECT",
             network=network.id,
-            address="100.100.100.106",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
+            address="100.100.100.106")
+        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("default",
             project=network.project,
+            name="globalrule",
             target="all-apis",
             network=network.id,
-            ip_address=default_global_address.id,
+            ip_address=default.id,
             load_balancing_scheme="",
-            no_automate_dns_zone=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            no_automate_dns_zone=False)
         ```
 
         ## Import
@@ -1465,18 +2224,400 @@ class GlobalForwardingRule(pulumi.CustomResource):
         https://cloud.google.com/compute/docs/load-balancing/http/
 
         ## Example Usage
-        ### Global Forwarding Rule External Managed
+        ### External Ssl Proxy Lb Mig Backend
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_tls as tls
+
+        # External SSL proxy load balancer with managed instance group backend
+        # VPC
+        default = gcp.compute.Network("default",
+            name="ssl-proxy-xlb-network",
+            auto_create_subnetworks=False)
+        # backend subnet
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="ssl-proxy-xlb-subnet",
+            ip_cidr_range="10.0.1.0/24",
+            region="us-central1",
+            network=default.id)
+        # reserved IP address
+        default_global_address = gcp.compute.GlobalAddress("default", name="ssl-proxy-xlb-ip")
+        # Self-signed regional SSL certificate for testing
+        default_private_key = tls.PrivateKey("default",
+            algorithm="RSA",
+            rsa_bits=2048)
+        default_self_signed_cert = tls.SelfSignedCert("default",
+            key_algorithm=default_private_key.algorithm,
+            private_key_pem=default_private_key.private_key_pem,
+            validity_period_hours=12,
+            early_renewal_hours=3,
+            allowed_uses=[
+                "key_encipherment",
+                "digital_signature",
+                "server_auth",
+            ],
+            dns_names=["example.com"],
+            subject=tls.SelfSignedCertSubjectArgs(
+                common_name="example.com",
+                organization="ACME Examples, Inc",
+            ))
+        default_ssl_certificate = gcp.compute.SSLCertificate("default",
+            name="default-cert",
+            private_key=default_private_key.private_key_pem,
+            certificate=default_self_signed_cert.cert_pem)
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="ssl-proxy-health-check",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=443,
+            ))
+        # instance template
+        default_instance_template = gcp.compute.InstanceTemplate("default",
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs()],
+                network=default.id,
+                subnetwork=default_subnetwork.id,
+            )],
+            name="ssl-proxy-xlb-mig-template",
+            machine_type="e2-small",
+            tags=["allow-health-check"],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-10",
+                auto_delete=True,
+                boot=True,
+            )],
+            metadata={
+                "startup-script": \"\"\"#! /bin/bash
+        set -euo pipefail
+        export DEBIAN_FRONTEND=noninteractive
+        sudo apt-get update
+        sudo apt-get install  -y apache2 jq
+        sudo a2ensite default-ssl
+        sudo a2enmod ssl
+        sudo service apache2 restart
+        NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+        IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+        METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+        cat <<EOF > /var/www/html/index.html
+        <h1>SSL Load Balancer</h1>
+        <pre>
+        Name: $NAME
+        IP: $IP
+        Metadata: $METADATA
+        </pre>
+        EOF
+        \"\"\",
+            })
+        # MIG
+        default_instance_group_manager = gcp.compute.InstanceGroupManager("default",
+            name="ssl-proxy-xlb-mig1",
+            zone="us-central1-c",
+            named_ports=[gcp.compute.InstanceGroupManagerNamedPortArgs(
+                name="tcp",
+                port=443,
+            )],
+            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
+                instance_template=default_instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="vm",
+            target_size=2)
+        # backend service
+        default_backend_service = gcp.compute.BackendService("default",
+            name="ssl-proxy-xlb-backend-service",
+            protocol="SSL",
+            port_name="tcp",
+            load_balancing_scheme="EXTERNAL",
+            timeout_sec=10,
+            health_checks=default_health_check.id,
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=default_instance_group_manager.instance_group,
+                balancing_mode="UTILIZATION",
+                max_utilization=1,
+                capacity_scaler=1,
+            )])
+        default_target_ssl_proxy = gcp.compute.TargetSSLProxy("default",
+            name="test-proxy",
+            backend_service=default_backend_service.id,
+            ssl_certificates=[default_ssl_certificate.id])
+        # forwarding rule
+        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("default",
+            name="ssl-proxy-xlb-forwarding-rule",
+            ip_protocol="TCP",
+            load_balancing_scheme="EXTERNAL",
+            port_range="443",
+            target=default_target_ssl_proxy.id,
+            ip_address=default_global_address.id)
+        # allow access from health check ranges
+        default_firewall = gcp.compute.Firewall("default",
+            name="ssl-proxy-xlb-fw-allow-hc",
+            direction="INGRESS",
+            network=default.id,
+            source_ranges=[
+                "130.211.0.0/22",
+                "35.191.0.0/16",
+            ],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+            )],
+            target_tags=["allow-health-check"])
+        ```
+        ### External Tcp Proxy Lb Mig Backend
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        default_backend_service = gcp.compute.BackendService("defaultBackendService",
+        # External TCP proxy load balancer with managed instance group backend
+        # VPC
+        default = gcp.compute.Network("default",
+            name="tcp-proxy-xlb-network",
+            auto_create_subnetworks=False)
+        # backend subnet
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="tcp-proxy-xlb-subnet",
+            ip_cidr_range="10.0.1.0/24",
+            region="us-central1",
+            network=default.id)
+        # reserved IP address
+        default_global_address = gcp.compute.GlobalAddress("default", name="tcp-proxy-xlb-ip")
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="tcp-proxy-health-check",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        # instance template
+        default_instance_template = gcp.compute.InstanceTemplate("default",
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs()],
+                network=default.id,
+                subnetwork=default_subnetwork.id,
+            )],
+            name="tcp-proxy-xlb-mig-template",
+            machine_type="e2-small",
+            tags=["allow-health-check"],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-10",
+                auto_delete=True,
+                boot=True,
+            )],
+            metadata={
+                "startup-script": \"\"\"#! /bin/bash
+        set -euo pipefail
+        export DEBIAN_FRONTEND=noninteractive
+        apt-get update
+        apt-get install -y nginx-light jq
+        NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+        IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+        METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+        cat <<EOF > /var/www/html/index.html
+        <pre>
+        Name: $NAME
+        IP: $IP
+        Metadata: $METADATA
+        </pre>
+        EOF
+        \"\"\",
+            })
+        # MIG
+        default_instance_group_manager = gcp.compute.InstanceGroupManager("default",
+            name="tcp-proxy-xlb-mig1",
+            zone="us-central1-c",
+            named_ports=[gcp.compute.InstanceGroupManagerNamedPortArgs(
+                name="tcp",
+                port=80,
+            )],
+            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
+                instance_template=default_instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="vm",
+            target_size=2)
+        # backend service
+        default_backend_service = gcp.compute.BackendService("default",
+            name="tcp-proxy-xlb-backend-service",
+            protocol="TCP",
+            port_name="tcp",
+            load_balancing_scheme="EXTERNAL",
+            timeout_sec=10,
+            health_checks=default_health_check.id,
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=default_instance_group_manager.instance_group,
+                balancing_mode="UTILIZATION",
+                max_utilization=1,
+                capacity_scaler=1,
+            )])
+        default_target_tcp_proxy = gcp.compute.TargetTCPProxy("default",
+            name="test-proxy-health-check",
+            backend_service=default_backend_service.id)
+        # forwarding rule
+        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("default",
+            name="tcp-proxy-xlb-forwarding-rule",
+            ip_protocol="TCP",
+            load_balancing_scheme="EXTERNAL",
+            port_range="110",
+            target=default_target_tcp_proxy.id,
+            ip_address=default_global_address.id)
+        # allow access from health check ranges
+        default_firewall = gcp.compute.Firewall("default",
+            name="tcp-proxy-xlb-fw-allow-hc",
+            direction="INGRESS",
+            network=default.id,
+            source_ranges=[
+                "130.211.0.0/22",
+                "35.191.0.0/16",
+            ],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+            )],
+            target_tags=["allow-health-check"])
+        ```
+        ### External Http Lb Mig Backend Custom Header
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # External HTTP load balancer with a CDN-enabled managed instance group backend
+        # and custom request and response headers
+        # VPC
+        default = gcp.compute.Network("default",
+            name="l7-xlb-network",
+            auto_create_subnetworks=False)
+        # backend subnet
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="l7-xlb-subnet",
+            ip_cidr_range="10.0.1.0/24",
+            region="us-central1",
+            network=default.id)
+        # reserved IP address
+        default_global_address = gcp.compute.GlobalAddress("default", name="l7-xlb-static-ip")
+        # health check
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="l7-xlb-hc",
+            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+                port_specification="USE_SERVING_PORT",
+            ))
+        # instance template
+        default_instance_template = gcp.compute.InstanceTemplate("default",
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs()],
+                network=default.id,
+                subnetwork=default_subnetwork.id,
+            )],
+            name="l7-xlb-mig-template",
+            machine_type="e2-small",
+            tags=["allow-health-check"],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-10",
+                auto_delete=True,
+                boot=True,
+            )],
+            metadata={
+                "startup-script": \"\"\"#! /bin/bash
+        set -euo pipefail
+
+        export DEBIAN_FRONTEND=noninteractive
+        apt-get update
+        apt-get install -y nginx-light jq
+
+        NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+        IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+        METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+
+        cat <<EOF > /var/www/html/index.html
+        <pre>
+        Name: $NAME
+        IP: $IP
+        Metadata: $METADATA
+        </pre>
+        EOF
+        \"\"\",
+            })
+        # MIG
+        default_instance_group_manager = gcp.compute.InstanceGroupManager("default",
+            name="l7-xlb-mig1",
+            zone="us-central1-c",
+            named_ports=[gcp.compute.InstanceGroupManagerNamedPortArgs(
+                name="http",
+                port=8080,
+            )],
+            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
+                instance_template=default_instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="vm",
+            target_size=2)
+        # backend service with custom request and response headers
+        default_backend_service = gcp.compute.BackendService("default",
+            name="l7-xlb-backend-service",
+            protocol="HTTP",
+            port_name="my-port",
+            load_balancing_scheme="EXTERNAL",
+            timeout_sec=10,
+            enable_cdn=True,
+            custom_request_headers=["X-Client-Geo-Location: {client_region_subdivision}, {client_city}"],
+            custom_response_headers=["X-Cache-Hit: {cdn_cache_status}"],
+            health_checks=default_health_check.id,
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=default_instance_group_manager.instance_group,
+                balancing_mode="UTILIZATION",
+                capacity_scaler=1,
+            )])
+        # url map
+        default_url_map = gcp.compute.URLMap("default",
+            name="l7-xlb-url-map",
+            default_service=default_backend_service.id)
+        # http proxy
+        default_target_http_proxy = gcp.compute.TargetHttpProxy("default",
+            name="l7-xlb-target-http-proxy",
+            url_map=default_url_map.id)
+        # forwarding rule
+        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("default",
+            name="l7-xlb-forwarding-rule",
+            ip_protocol="TCP",
+            load_balancing_scheme="EXTERNAL",
+            port_range="80",
+            target=default_target_http_proxy.id,
+            ip_address=default_global_address.id)
+        # allow access from health check ranges
+        default_firewall = gcp.compute.Firewall("default",
+            name="l7-xlb-fw-allow-hc",
+            direction="INGRESS",
+            network=default.id,
+            source_ranges=[
+                "130.211.0.0/22",
+                "35.191.0.0/16",
+            ],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+            )],
+            target_tags=["allow-health-check"])
+        ```
+        ### Global Forwarding Rule Http
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="check-backend",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend",
             port_name="http",
             protocol="HTTP",
             timeout_sec=10,
-            load_balancing_scheme="EXTERNAL_MANAGED")
-        default_url_map = gcp.compute.URLMap("defaultURLMap",
+            health_checks=default_http_health_check.id)
+        default_url_map = gcp.compute.URLMap("default",
+            name="url-map-target-proxy",
             description="a description",
             default_service=default_backend_service.id,
             host_rules=[gcp.compute.URLMapHostRuleArgs(
@@ -1491,13 +2632,390 @@ class GlobalForwardingRule(pulumi.CustomResource):
                     service=default_backend_service.id,
                 )],
             )])
-        default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy",
+        default_target_http_proxy = gcp.compute.TargetHttpProxy("default",
+            name="target-proxy",
             description="a description",
             url_map=default_url_map.id)
-        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
+        default = gcp.compute.GlobalForwardingRule("default",
+            name="global-rule",
+            target=default_target_http_proxy.id,
+            port_range="80")
+        ```
+        ### Global Forwarding Rule Internal
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        instance_template = gcp.compute.InstanceTemplate("instance_template",
+            name="template-backend",
+            machine_type="e2-medium",
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network="default",
+            )],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image=debian_image.self_link,
+                auto_delete=True,
+                boot=True,
+            )])
+        igm = gcp.compute.InstanceGroupManager("igm",
+            name="igm-internal",
+            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
+                instance_template=instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="internal-glb",
+            zone="us-central1-f",
+            target_size=1)
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="check-backend",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=igm.instance_group,
+                balancing_mode="RATE",
+                capacity_scaler=0.4,
+                max_rate_per_instance=50,
+            )],
+            health_checks=default_health_check.id)
+        default_url_map = gcp.compute.URLMap("default",
+            name="url-map-target-proxy",
+            description="a description",
+            default_service=default_backend_service.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_backend_service.id,
+                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_backend_service.id,
+                )],
+            )])
+        default_target_http_proxy = gcp.compute.TargetHttpProxy("default",
+            name="target-proxy",
+            description="a description",
+            url_map=default_url_map.id)
+        default = gcp.compute.GlobalForwardingRule("default",
+            name="global-rule",
+            target=default_target_http_proxy.id,
+            port_range="80",
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            ip_address="0.0.0.0",
+            metadata_filters=[gcp.compute.GlobalForwardingRuleMetadataFilterArgs(
+                filter_match_criteria="MATCH_ANY",
+                filter_labels=[gcp.compute.GlobalForwardingRuleMetadataFilterFilterLabelArgs(
+                    name="PLANET",
+                    value="MARS",
+                )],
+            )])
+        ```
+        ### Global Forwarding Rule External Managed
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED")
+        default_url_map = gcp.compute.URLMap("default",
+            name="url-map-target-proxy",
+            description="a description",
+            default_service=default_backend_service.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_backend_service.id,
+                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_backend_service.id,
+                )],
+            )])
+        default_target_http_proxy = gcp.compute.TargetHttpProxy("default",
+            name="target-proxy",
+            description="a description",
+            url_map=default_url_map.id)
+        default = gcp.compute.GlobalForwardingRule("default",
+            name="global-rule",
             target=default_target_http_proxy.id,
             port_range="80",
             load_balancing_scheme="EXTERNAL_MANAGED")
+        ```
+        ### Global Forwarding Rule Hybrid
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        config = pulumi.Config()
+        subnetwork_cidr = config.get("subnetworkCidr")
+        if subnetwork_cidr is None:
+            subnetwork_cidr = "10.0.0.0/24"
+        default = gcp.compute.Network("default", name="my-network")
+        internal = gcp.compute.Network("internal",
+            name="my-internal-network",
+            auto_create_subnetworks=False)
+        internal_subnetwork = gcp.compute.Subnetwork("internal",
+            name="my-subnetwork",
+            network=internal.id,
+            ip_cidr_range=subnetwork_cidr,
+            region="us-central1",
+            private_ip_google_access=True)
+        # Zonal NEG with GCE_VM_IP_PORT
+        default_network_endpoint_group = gcp.compute.NetworkEndpointGroup("default",
+            name="default-neg",
+            network=default.id,
+            default_port=90,
+            zone="us-central1-a",
+            network_endpoint_type="GCE_VM_IP_PORT")
+        # Zonal NEG with GCE_VM_IP
+        internal_network_endpoint_group = gcp.compute.NetworkEndpointGroup("internal",
+            name="internal-neg",
+            network=internal.id,
+            subnetwork=internal_subnetwork.id,
+            zone="us-central1-a",
+            network_endpoint_type="GCE_VM_IP")
+        # Hybrid connectivity NEG
+        hybrid = gcp.compute.NetworkEndpointGroup("hybrid",
+            name="hybrid-neg",
+            network=default.id,
+            default_port=90,
+            zone="us-central1-a",
+            network_endpoint_type="NON_GCP_PRIVATE_IP_PORT")
+        hybrid_endpoint = gcp.compute.NetworkEndpoint("hybrid-endpoint",
+            network_endpoint_group=hybrid.name,
+            port=hybrid.default_port,
+            ip_address="127.0.0.1")
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="health-check",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        # Backend service for Zonal NEG
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend-default",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=default_network_endpoint_group.id,
+                balancing_mode="RATE",
+                max_rate_per_endpoint=10,
+            )],
+            health_checks=default_health_check.id)
+        # Backgend service for Hybrid NEG
+        hybrid_backend_service = gcp.compute.BackendService("hybrid",
+            name="backend-hybrid",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=hybrid.id,
+                balancing_mode="RATE",
+                max_rate_per_endpoint=10,
+            )],
+            health_checks=default_health_check.id)
+        default_url_map = gcp.compute.URLMap("default",
+            name="url-map-target-proxy",
+            description="a description",
+            default_service=default_backend_service.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_backend_service.id,
+                path_rules=[
+                    gcp.compute.URLMapPathMatcherPathRuleArgs(
+                        paths=["/*"],
+                        service=default_backend_service.id,
+                    ),
+                    gcp.compute.URLMapPathMatcherPathRuleArgs(
+                        paths=["/hybrid"],
+                        service=hybrid_backend_service.id,
+                    ),
+                ],
+            )])
+        default_target_http_proxy = gcp.compute.TargetHttpProxy("default",
+            name="target-proxy",
+            description="a description",
+            url_map=default_url_map.id)
+        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("default",
+            name="global-rule",
+            target=default_target_http_proxy.id,
+            port_range="80")
+        ```
+        ### Global Internal Http Lb With Mig Backend
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Global Internal HTTP load balancer with a managed instance group backend
+        # VPC network
+        gilb_network = gcp.compute.Network("gilb_network",
+            name="l7-gilb-network",
+            auto_create_subnetworks=False)
+        # proxy-only subnet
+        proxy_subnet = gcp.compute.Subnetwork("proxy_subnet",
+            name="l7-gilb-proxy-subnet",
+            ip_cidr_range="10.0.0.0/24",
+            region="europe-west1",
+            purpose="GLOBAL_MANAGED_PROXY",
+            role="ACTIVE",
+            network=gilb_network.id)
+        # backend subnet
+        gilb_subnet = gcp.compute.Subnetwork("gilb_subnet",
+            name="l7-gilb-subnet",
+            ip_cidr_range="10.0.1.0/24",
+            region="europe-west1",
+            network=gilb_network.id)
+        # health check
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="l7-gilb-hc",
+            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+                port_specification="USE_SERVING_PORT",
+            ))
+        # instance template
+        instance_template = gcp.compute.InstanceTemplate("instance_template",
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs()],
+                network=gilb_network.id,
+                subnetwork=gilb_subnet.id,
+            )],
+            name="l7-gilb-mig-template",
+            machine_type="e2-small",
+            tags=["http-server"],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-10",
+                auto_delete=True,
+                boot=True,
+            )],
+            metadata={
+                "startup-script": \"\"\"#! /bin/bash
+        set -euo pipefail
+
+        export DEBIAN_FRONTEND=noninteractive
+        apt-get update
+        apt-get install -y nginx-light jq
+
+        NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+        IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+        METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+
+        cat <<EOF > /var/www/html/index.html
+        <pre>
+        Name: $NAME
+        IP: $IP
+        Metadata: $METADATA
+        </pre>
+        EOF
+        \"\"\",
+            })
+        # MIG
+        mig = gcp.compute.InstanceGroupManager("mig",
+            name="l7-gilb-mig1",
+            zone="europe-west1-b",
+            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
+                instance_template=instance_template.id,
+                name="primary",
+            )],
+            base_instance_name="vm",
+            target_size=2)
+        # backend service
+        default_backend_service = gcp.compute.BackendService("default",
+            name="l7-gilb-backend-subnet",
+            protocol="HTTP",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            timeout_sec=10,
+            health_checks=default_health_check.id,
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=mig.instance_group,
+                balancing_mode="UTILIZATION",
+                capacity_scaler=1,
+            )])
+        # URL map
+        default_url_map = gcp.compute.URLMap("default",
+            name="l7-gilb-url-map",
+            default_service=default_backend_service.id)
+        # HTTP target proxy
+        default = gcp.compute.TargetHttpProxy("default",
+            name="l7-gilb-target-http-proxy",
+            url_map=default_url_map.id)
+        # forwarding rule
+        google_compute_forwarding_rule = gcp.compute.GlobalForwardingRule("google_compute_forwarding_rule",
+            name="l7-gilb-forwarding-rule",
+            ip_protocol="TCP",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            port_range="80",
+            target=default.id,
+            network=gilb_network.id,
+            subnetwork=gilb_subnet.id)
+        # allow all access from IAP and health check ranges
+        fw_iap = gcp.compute.Firewall("fw-iap",
+            name="l7-gilb-fw-allow-iap-hc",
+            direction="INGRESS",
+            network=gilb_network.id,
+            source_ranges=[
+                "130.211.0.0/22",
+                "35.191.0.0/16",
+                "35.235.240.0/20",
+            ],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+            )])
+        # allow http from proxy subnet to backends
+        fw_gilb_to_backends = gcp.compute.Firewall("fw-gilb-to-backends",
+            name="l7-gilb-fw-allow-gilb-to-backends",
+            direction="INGRESS",
+            network=gilb_network.id,
+            source_ranges=["10.0.0.0/24"],
+            target_tags=["http-server"],
+            allows=[gcp.compute.FirewallAllowArgs(
+                protocol="tcp",
+                ports=[
+                    "80",
+                    "443",
+                    "8080",
+                ],
+            )])
+        # test instance
+        vm_test = gcp.compute.Instance("vm-test",
+            name="l7-gilb-test-vm",
+            zone="europe-west1-b",
+            machine_type="e2-small",
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network=gilb_network.id,
+                subnetwork=gilb_subnet.id,
+            )],
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-10",
+                ),
+            ))
         ```
         ### Private Service Connect Google Apis
 
@@ -1507,33 +3025,33 @@ class GlobalForwardingRule(pulumi.CustomResource):
 
         network = gcp.compute.Network("network",
             project="my-project-name",
-            auto_create_subnetworks=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        vpc_subnetwork = gcp.compute.Subnetwork("vpcSubnetwork",
+            name="my-network",
+            auto_create_subnetworks=False)
+        vpc_subnetwork = gcp.compute.Subnetwork("vpc_subnetwork",
             project=network.project,
+            name="my-subnetwork",
             ip_cidr_range="10.2.0.0/16",
             region="us-central1",
             network=network.id,
-            private_ip_google_access=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_global_address = gcp.compute.GlobalAddress("defaultGlobalAddress",
+            private_ip_google_access=True)
+        default = gcp.compute.GlobalAddress("default",
             project=network.project,
+            name="global-psconnect-ip",
             address_type="INTERNAL",
             purpose="PRIVATE_SERVICE_CONNECT",
             network=network.id,
-            address="100.100.100.106",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
+            address="100.100.100.106")
+        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("default",
             project=network.project,
+            name="globalrule",
             target="all-apis",
             network=network.id,
-            ip_address=default_global_address.id,
+            ip_address=default.id,
             load_balancing_scheme="",
             service_directory_registrations=gcp.compute.GlobalForwardingRuleServiceDirectoryRegistrationsArgs(
                 namespace="sd-namespace",
                 service_directory_region="europe-west3",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Private Service Connect Google Apis No Automate Dns
 
@@ -1543,30 +3061,30 @@ class GlobalForwardingRule(pulumi.CustomResource):
 
         network = gcp.compute.Network("network",
             project="my-project-name",
-            auto_create_subnetworks=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        vpc_subnetwork = gcp.compute.Subnetwork("vpcSubnetwork",
+            name="my-network",
+            auto_create_subnetworks=False)
+        vpc_subnetwork = gcp.compute.Subnetwork("vpc_subnetwork",
             project=network.project,
+            name="my-subnetwork",
             ip_cidr_range="10.2.0.0/16",
             region="us-central1",
             network=network.id,
-            private_ip_google_access=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_global_address = gcp.compute.GlobalAddress("defaultGlobalAddress",
+            private_ip_google_access=True)
+        default = gcp.compute.GlobalAddress("default",
             project=network.project,
+            name="global-psconnect-ip",
             address_type="INTERNAL",
             purpose="PRIVATE_SERVICE_CONNECT",
             network=network.id,
-            address="100.100.100.106",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
+            address="100.100.100.106")
+        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("default",
             project=network.project,
+            name="globalrule",
             target="all-apis",
             network=network.id,
-            ip_address=default_global_address.id,
+            ip_address=default.id,
             load_balancing_scheme="",
-            no_automate_dns_zone=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            no_automate_dns_zone=False)
         ```
 
         ## Import

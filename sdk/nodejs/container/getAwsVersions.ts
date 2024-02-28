@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *     location: "us-west1",
  *     project: "my-project",
  * });
- * export const firstAvailableVersion = data.google_container_aws_versions.versions.valid_versions[0];
+ * export const firstAvailableVersion = versions.validVersions[0];
  * ```
  */
 export function getAwsVersions(args?: GetAwsVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsVersionsResult> {
@@ -77,7 +77,7 @@ export interface GetAwsVersionsResult {
  *     location: "us-west1",
  *     project: "my-project",
  * });
- * export const firstAvailableVersion = data.google_container_aws_versions.versions.valid_versions[0];
+ * export const firstAvailableVersion = versions.validVersions[0];
  * ```
  */
 export function getAwsVersionsOutput(args?: GetAwsVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsVersionsResult> {

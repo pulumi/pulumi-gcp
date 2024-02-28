@@ -36,13 +36,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networksecurity.NewAddressGroup(ctx, "default", &networksecurity.AddressGroupArgs{
+//				Name:     pulumi.String("my-address-groups"),
+//				Parent:   pulumi.String("projects/my-project-name"),
+//				Location: pulumi.String("us-central1"),
+//				Type:     pulumi.String("IPV4"),
 //				Capacity: pulumi.Int(100),
 //				Items: pulumi.StringArray{
 //					pulumi.String("208.80.154.224/32"),
 //				},
-//				Location: pulumi.String("us-central1"),
-//				Parent:   pulumi.String("projects/my-project-name"),
-//				Type:     pulumi.String("IPV4"),
 //			})
 //			if err != nil {
 //				return err
@@ -67,13 +68,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networksecurity.NewAddressGroup(ctx, "default", &networksecurity.AddressGroupArgs{
+//				Name:     pulumi.String("my-address-groups"),
+//				Parent:   pulumi.String("organizations/123456789"),
+//				Location: pulumi.String("us-central1"),
+//				Type:     pulumi.String("IPV4"),
 //				Capacity: pulumi.Int(100),
 //				Items: pulumi.StringArray{
 //					pulumi.String("208.80.154.224/32"),
 //				},
-//				Location: pulumi.String("us-central1"),
-//				Parent:   pulumi.String("organizations/123456789"),
-//				Type:     pulumi.String("IPV4"),
 //			})
 //			if err != nil {
 //				return err
@@ -98,14 +100,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networksecurity.NewAddressGroup(ctx, "default", &networksecurity.AddressGroupArgs{
-//				Capacity:    pulumi.Int(100),
+//				Name:        pulumi.String("my-address-groups"),
+//				Parent:      pulumi.String("projects/my-project-name"),
+//				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("my description"),
+//				Type:        pulumi.String("IPV4"),
+//				Capacity:    pulumi.Int(100),
 //				Items: pulumi.StringArray{
 //					pulumi.String("208.80.154.224/32"),
 //				},
-//				Location: pulumi.String("us-central1"),
-//				Parent:   pulumi.String("projects/my-project-name"),
-//				Type:     pulumi.String("IPV4"),
 //			})
 //			if err != nil {
 //				return err

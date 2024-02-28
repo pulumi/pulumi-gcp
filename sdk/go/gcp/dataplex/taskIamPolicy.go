@@ -55,10 +55,10 @@ import (
 //				return err
 //			}
 //			_, err = dataplex.NewTaskIamPolicy(ctx, "policy", &dataplex.TaskIamPolicyArgs{
-//				Project:    pulumi.Any(google_dataplex_task.Example.Project),
-//				Location:   pulumi.Any(google_dataplex_task.Example.Location),
-//				Lake:       pulumi.Any(google_dataplex_task.Example.Lake),
-//				TaskId:     pulumi.Any(google_dataplex_task.Example.Task_id),
+//				Project:    pulumi.Any(example.Project),
+//				Location:   pulumi.Any(example.Location),
+//				Lake:       pulumi.Any(example.Lake),
+//				TaskId:     pulumi.Any(example.TaskId),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -85,10 +85,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataplex.NewTaskIamBinding(ctx, "binding", &dataplex.TaskIamBindingArgs{
-//				Project:  pulumi.Any(google_dataplex_task.Example.Project),
-//				Location: pulumi.Any(google_dataplex_task.Example.Location),
-//				Lake:     pulumi.Any(google_dataplex_task.Example.Lake),
-//				TaskId:   pulumi.Any(google_dataplex_task.Example.Task_id),
+//				Project:  pulumi.Any(example.Project),
+//				Location: pulumi.Any(example.Location),
+//				Lake:     pulumi.Any(example.Lake),
+//				TaskId:   pulumi.Any(example.TaskId),
 //				Role:     pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -118,10 +118,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataplex.NewTaskIamMember(ctx, "member", &dataplex.TaskIamMemberArgs{
-//				Project:  pulumi.Any(google_dataplex_task.Example.Project),
-//				Location: pulumi.Any(google_dataplex_task.Example.Location),
-//				Lake:     pulumi.Any(google_dataplex_task.Example.Lake),
-//				TaskId:   pulumi.Any(google_dataplex_task.Example.Task_id),
+//				Project:  pulumi.Any(example.Project),
+//				Location: pulumi.Any(example.Location),
+//				Lake:     pulumi.Any(example.Lake),
+//				TaskId:   pulumi.Any(example.TaskId),
 //				Role:     pulumi.String("roles/viewer"),
 //				Member:   pulumi.String("user:jane@example.com"),
 //			})

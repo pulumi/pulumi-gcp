@@ -154,11 +154,14 @@ class ServiceNetworkSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket", location="US")
+        bucket = gcp.storage.Bucket("bucket",
+            name="appengine-static-content",
+            location="US")
         object = gcp.storage.BucketObject("object",
+            name="hello-world.zip",
             bucket=bucket.name,
             source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
-        internalapp_standard_app_version = gcp.appengine.StandardAppVersion("internalappStandardAppVersion",
+        internalapp = gcp.appengine.StandardAppVersion("internalapp",
             version_id="v1",
             service="internalapp",
             delete_service_on_destroy=True,
@@ -174,8 +177,8 @@ class ServiceNetworkSettings(pulumi.CustomResource):
             env_variables={
                 "port": "8080",
             })
-        internalapp_service_network_settings = gcp.appengine.ServiceNetworkSettings("internalappServiceNetworkSettings",
-            service=internalapp_standard_app_version.service,
+        internalapp_service_network_settings = gcp.appengine.ServiceNetworkSettings("internalapp",
+            service=internalapp.service,
             network_settings=gcp.appengine.ServiceNetworkSettingsNetworkSettingsArgs(
                 ingress_traffic_allowed="INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY",
             ))
@@ -233,11 +236,14 @@ class ServiceNetworkSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket", location="US")
+        bucket = gcp.storage.Bucket("bucket",
+            name="appengine-static-content",
+            location="US")
         object = gcp.storage.BucketObject("object",
+            name="hello-world.zip",
             bucket=bucket.name,
             source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
-        internalapp_standard_app_version = gcp.appengine.StandardAppVersion("internalappStandardAppVersion",
+        internalapp = gcp.appengine.StandardAppVersion("internalapp",
             version_id="v1",
             service="internalapp",
             delete_service_on_destroy=True,
@@ -253,8 +259,8 @@ class ServiceNetworkSettings(pulumi.CustomResource):
             env_variables={
                 "port": "8080",
             })
-        internalapp_service_network_settings = gcp.appengine.ServiceNetworkSettings("internalappServiceNetworkSettings",
-            service=internalapp_standard_app_version.service,
+        internalapp_service_network_settings = gcp.appengine.ServiceNetworkSettings("internalapp",
+            service=internalapp.service,
             network_settings=gcp.appengine.ServiceNetworkSettingsNetworkSettingsArgs(
                 ingress_traffic_allowed="INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY",
             ))

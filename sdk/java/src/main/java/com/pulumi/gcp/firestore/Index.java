@@ -36,6 +36,87 @@ import javax.annotation.Nullable;
  * will be the same as the App Engine location specified.
  * 
  * ## Example Usage
+ * ### Firestore Index Basic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.time.sleep;
+ * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
+ * import com.pulumi.gcp.firestore.Document;
+ * import com.pulumi.gcp.firestore.DocumentArgs;
+ * import com.pulumi.gcp.firestore.Index;
+ * import com.pulumi.gcp.firestore.IndexArgs;
+ * import com.pulumi.gcp.firestore.inputs.IndexFieldArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;project-id&#34;)
+ *             .name(&#34;project-id&#34;)
+ *             .orgId(&#34;123456789&#34;)
+ *             .build());
+ * 
+ *         var wait60Seconds = new Sleep(&#34;wait60Seconds&#34;, SleepArgs.builder()        
+ *             .createDuration(&#34;60s&#34;)
+ *             .build());
+ * 
+ *         var firestore = new Service(&#34;firestore&#34;, ServiceArgs.builder()        
+ *             .project(project.projectId())
+ *             .service(&#34;firestore.googleapis.com&#34;)
+ *             .build());
+ * 
+ *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
+ *             .project(project.projectId())
+ *             .name(&#34;(default)&#34;)
+ *             .locationId(&#34;nam5&#34;)
+ *             .type(&#34;FIRESTORE_NATIVE&#34;)
+ *             .build());
+ * 
+ *         var document = new Document(&#34;document&#34;, DocumentArgs.builder()        
+ *             .project(project.projectId())
+ *             .database(database.name())
+ *             .collection(&#34;somenewcollection&#34;)
+ *             .documentId(&#34;&#34;)
+ *             .fields(&#34;{\&#34;something\&#34;:{\&#34;mapValue\&#34;:{\&#34;fields\&#34;:{\&#34;akey\&#34;:{\&#34;stringValue\&#34;:\&#34;avalue\&#34;}}}}}&#34;)
+ *             .build());
+ * 
+ *         var my_index = new Index(&#34;my-index&#34;, IndexArgs.builder()        
+ *             .project(project.projectId())
+ *             .database(database.name())
+ *             .collection(document.collection())
+ *             .fields(            
+ *                 IndexFieldArgs.builder()
+ *                     .fieldPath(&#34;name&#34;)
+ *                     .order(&#34;ASCENDING&#34;)
+ *                     .build(),
+ *                 IndexFieldArgs.builder()
+ *                     .fieldPath(&#34;description&#34;)
+ *                     .order(&#34;DESCENDING&#34;)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Firestore Index Datastore Mode
  * ```java
  * package generated_program;
@@ -60,9 +141,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var my_index = new Index(&#34;my-index&#34;, IndexArgs.builder()        
- *             .apiScope(&#34;DATASTORE_MODE_API&#34;)
- *             .collection(&#34;chatrooms&#34;)
+ *             .project(&#34;my-project-name&#34;)
  *             .database(&#34;(default)&#34;)
+ *             .collection(&#34;chatrooms&#34;)
+ *             .queryScope(&#34;COLLECTION_RECURSIVE&#34;)
+ *             .apiScope(&#34;DATASTORE_MODE_API&#34;)
  *             .fields(            
  *                 IndexFieldArgs.builder()
  *                     .fieldPath(&#34;name&#34;)
@@ -72,8 +155,6 @@ import javax.annotation.Nullable;
  *                     .fieldPath(&#34;description&#34;)
  *                     .order(&#34;DESCENDING&#34;)
  *                     .build())
- *             .project(&#34;my-project-name&#34;)
- *             .queryScope(&#34;COLLECTION_RECURSIVE&#34;)
  *             .build());
  * 
  *     }

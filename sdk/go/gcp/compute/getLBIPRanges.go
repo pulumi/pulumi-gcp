@@ -34,7 +34,8 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewFirewall(ctx, "lb", &compute.FirewallArgs{
-//				Network: pulumi.Any(google_compute_network.Main.Name),
+//				Name:    pulumi.String("lb-firewall"),
+//				Network: pulumi.Any(main.Name),
 //				Allows: compute.FirewallAllowArray{
 //					&compute.FirewallAllowArgs{
 //						Protocol: pulumi.String("tcp"),

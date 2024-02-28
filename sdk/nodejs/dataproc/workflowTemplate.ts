@@ -16,40 +16,34 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const template = new gcp.dataproc.WorkflowTemplate("template", {
- *     jobs: [
- *         {
- *             sparkJob: {
- *                 mainClass: "SomeClass",
- *             },
- *             stepId: "someJob",
- *         },
- *         {
- *             prerequisiteStepIds: ["someJob"],
- *             prestoJob: {
- *                 queryFileUri: "someuri",
- *             },
- *             stepId: "otherJob",
- *         },
- *     ],
+ *     name: "template-example",
  *     location: "us-central1",
  *     placement: {
  *         managedCluster: {
  *             clusterName: "my-cluster",
  *             config: {
  *                 gceClusterConfig: {
+ *                     zone: "us-central1-a",
  *                     tags: [
  *                         "foo",
  *                         "bar",
  *                     ],
- *                     zone: "us-central1-a",
  *                 },
  *                 masterConfig: {
- *                     diskConfig: {
- *                         bootDiskSizeGb: 15,
- *                         bootDiskType: "pd-ssd",
- *                     },
- *                     machineType: "n1-standard-1",
  *                     numInstances: 1,
+ *                     machineType: "n1-standard-1",
+ *                     diskConfig: {
+ *                         bootDiskType: "pd-ssd",
+ *                         bootDiskSizeGb: 15,
+ *                     },
+ *                 },
+ *                 workerConfig: {
+ *                     numInstances: 3,
+ *                     machineType: "n1-standard-2",
+ *                     diskConfig: {
+ *                         bootDiskSizeGb: 10,
+ *                         numLocalSsds: 2,
+ *                     },
  *                 },
  *                 secondaryWorkerConfig: {
  *                     numInstances: 2,
@@ -57,17 +51,24 @@ import * as utilities from "../utilities";
  *                 softwareConfig: {
  *                     imageVersion: "2.0.35-debian10",
  *                 },
- *                 workerConfig: {
- *                     diskConfig: {
- *                         bootDiskSizeGb: 10,
- *                         numLocalSsds: 2,
- *                     },
- *                     machineType: "n1-standard-2",
- *                     numInstances: 3,
- *                 },
  *             },
  *         },
  *     },
+ *     jobs: [
+ *         {
+ *             stepId: "someJob",
+ *             sparkJob: {
+ *                 mainClass: "SomeClass",
+ *             },
+ *         },
+ *         {
+ *             stepId: "otherJob",
+ *             prerequisiteStepIds: ["someJob"],
+ *             prestoJob: {
+ *                 queryFileUri: "someuri",
+ *             },
+ *         },
+ *     ],
  * });
  * ```
  *

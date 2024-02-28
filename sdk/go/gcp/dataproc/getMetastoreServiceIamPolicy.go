@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.LookupMetastoreServiceIamPolicy(ctx, &dataproc.LookupMetastoreServiceIamPolicyArgs{
-//				Project:   pulumi.StringRef(google_dataproc_metastore_service.Default.Project),
-//				Location:  pulumi.StringRef(google_dataproc_metastore_service.Default.Location),
-//				ServiceId: google_dataproc_metastore_service.Default.Service_id,
+//				Project:   pulumi.StringRef(_default.Project),
+//				Location:  pulumi.StringRef(_default.Location),
+//				ServiceId: _default.ServiceId,
 //			}, nil)
 //			if err != nil {
 //				return err

@@ -23,15 +23,16 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var @default = new Gcp.CertificateManager.TrustConfig("default", new()
     ///     {
+    ///         Name = "trust-config",
     ///         Description = "sample description for the trust config",
     ///         Location = "us-central1",
     ///         TrustStores = new[]
@@ -42,14 +43,20 @@ namespace Pulumi.Gcp.CertificateManager
     ///                 {
     ///                     new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreTrustAnchorArgs
     ///                     {
-    ///                         PemCertificate = File.ReadAllText("test-fixtures/cert.pem"),
+    ///                         PemCertificate = Std.File.Invoke(new()
+    ///                         {
+    ///                             Input = "test-fixtures/cert.pem",
+    ///                         }).Apply(invoke =&gt; invoke.Result),
     ///                     },
     ///                 },
     ///                 IntermediateCas = new[]
     ///                 {
     ///                     new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreIntermediateCaArgs
     ///                     {
-    ///                         PemCertificate = File.ReadAllText("test-fixtures/cert.pem"),
+    ///                         PemCertificate = Std.File.Invoke(new()
+    ///                         {
+    ///                             Input = "test-fixtures/cert.pem",
+    ///                         }).Apply(invoke =&gt; invoke.Result),
     ///                     },
     ///                 },
     ///             },

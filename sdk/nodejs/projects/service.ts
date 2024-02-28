@@ -26,9 +26,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = new gcp.projects.Service("project", {
- *     disableDependentServices: true,
  *     project: "your-project-id",
  *     service: "iam.googleapis.com",
+ *     disableDependentServices: true,
  * });
  * ```
  *

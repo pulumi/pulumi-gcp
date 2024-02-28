@@ -820,9 +820,75 @@ class V2Vm(pulumi.CustomResource):
 
         available = gcp.tpu.get_v2_runtime_versions()
         tpu = gcp.tpu.V2Vm("tpu",
+            name="test-tpu",
             zone="us-central1-c",
+            runtime_version="tpu-vm-tf-2.13.0")
+        ```
+        ### Tpu V2 Vm Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        available = gcp.tpu.get_v2_runtime_versions()
+        available_get_v2_accelerator_types = gcp.tpu.get_v2_accelerator_types()
+        network = gcp.compute.Network("network",
+            name="tpu-net",
+            auto_create_subnetworks=False)
+        subnet = gcp.compute.Subnetwork("subnet",
+            name="tpu-subnet",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=network.id)
+        sa = gcp.serviceaccount.Account("sa",
+            account_id="tpu-sa",
+            display_name="Test TPU VM")
+        disk = gcp.compute.Disk("disk",
+            name="tpu-disk",
+            image="debian-cloud/debian-11",
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-c")
+        tpu = gcp.tpu.V2Vm("tpu",
+            name="test-tpu",
+            zone="us-central1-c",
+            description="Text description of the TPU.",
             runtime_version="tpu-vm-tf-2.13.0",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            accelerator_config=gcp.tpu.V2VmAcceleratorConfigArgs(
+                type="V2",
+                topology="2x2",
+            ),
+            cidr_block="10.0.0.0/29",
+            network_config=gcp.tpu.V2VmNetworkConfigArgs(
+                can_ip_forward=True,
+                enable_external_ips=True,
+                network=network.id,
+                subnetwork=subnet.id,
+            ),
+            scheduling_config=gcp.tpu.V2VmSchedulingConfigArgs(
+                preemptible=True,
+            ),
+            shielded_instance_config=gcp.tpu.V2VmShieldedInstanceConfigArgs(
+                enable_secure_boot=True,
+            ),
+            service_account=gcp.tpu.V2VmServiceAccountArgs(
+                email=sa.email,
+                scopes=["https://www.googleapis.com/auth/cloud-platform"],
+            ),
+            data_disks=[gcp.tpu.V2VmDataDiskArgs(
+                source_disk=disk.id,
+                mode="READ_ONLY",
+            )],
+            labels={
+                "foo": "bar",
+            },
+            metadata={
+                "foo": "bar",
+            },
+            tags=["foo"])
+        # Wait after service account creation to limit eventual consistency errors.
+        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s)
         ```
 
         ## Import
@@ -910,9 +976,75 @@ class V2Vm(pulumi.CustomResource):
 
         available = gcp.tpu.get_v2_runtime_versions()
         tpu = gcp.tpu.V2Vm("tpu",
+            name="test-tpu",
             zone="us-central1-c",
+            runtime_version="tpu-vm-tf-2.13.0")
+        ```
+        ### Tpu V2 Vm Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        available = gcp.tpu.get_v2_runtime_versions()
+        available_get_v2_accelerator_types = gcp.tpu.get_v2_accelerator_types()
+        network = gcp.compute.Network("network",
+            name="tpu-net",
+            auto_create_subnetworks=False)
+        subnet = gcp.compute.Subnetwork("subnet",
+            name="tpu-subnet",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=network.id)
+        sa = gcp.serviceaccount.Account("sa",
+            account_id="tpu-sa",
+            display_name="Test TPU VM")
+        disk = gcp.compute.Disk("disk",
+            name="tpu-disk",
+            image="debian-cloud/debian-11",
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-c")
+        tpu = gcp.tpu.V2Vm("tpu",
+            name="test-tpu",
+            zone="us-central1-c",
+            description="Text description of the TPU.",
             runtime_version="tpu-vm-tf-2.13.0",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            accelerator_config=gcp.tpu.V2VmAcceleratorConfigArgs(
+                type="V2",
+                topology="2x2",
+            ),
+            cidr_block="10.0.0.0/29",
+            network_config=gcp.tpu.V2VmNetworkConfigArgs(
+                can_ip_forward=True,
+                enable_external_ips=True,
+                network=network.id,
+                subnetwork=subnet.id,
+            ),
+            scheduling_config=gcp.tpu.V2VmSchedulingConfigArgs(
+                preemptible=True,
+            ),
+            shielded_instance_config=gcp.tpu.V2VmShieldedInstanceConfigArgs(
+                enable_secure_boot=True,
+            ),
+            service_account=gcp.tpu.V2VmServiceAccountArgs(
+                email=sa.email,
+                scopes=["https://www.googleapis.com/auth/cloud-platform"],
+            ),
+            data_disks=[gcp.tpu.V2VmDataDiskArgs(
+                source_disk=disk.id,
+                mode="READ_ONLY",
+            )],
+            labels={
+                "foo": "bar",
+            },
+            metadata={
+                "foo": "bar",
+            },
+            tags=["foo"])
+        # Wait after service account creation to limit eventual consistency errors.
+        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s)
         ```
 
         ## Import

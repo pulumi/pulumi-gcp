@@ -381,6 +381,155 @@ class TcpRoute(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Network Services Tcp Route Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="backend-service-health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default = gcp.compute.BackendService("default",
+            name="my-backend-service",
+            health_checks=default_http_health_check.id)
+        default_tcp_route = gcp.networkservices.TcpRoute("default",
+            name="my-tcp-route",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            rules=[gcp.networkservices.TcpRouteRuleArgs(
+                matches=[gcp.networkservices.TcpRouteRuleMatchArgs(
+                    address="10.0.0.1/32",
+                    port="8081",
+                )],
+                action=gcp.networkservices.TcpRouteRuleActionArgs(
+                    destinations=[gcp.networkservices.TcpRouteRuleActionDestinationArgs(
+                        service_name=default.id,
+                        weight=1,
+                    )],
+                    original_destination=False,
+                ),
+            )])
+        ```
+        ### Network Services Tcp Route Actions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="backend-service-health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default = gcp.compute.BackendService("default",
+            name="my-backend-service",
+            health_checks=default_http_health_check.id)
+        default_tcp_route = gcp.networkservices.TcpRoute("default",
+            name="my-tcp-route",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            rules=[gcp.networkservices.TcpRouteRuleArgs(
+                action=gcp.networkservices.TcpRouteRuleActionArgs(
+                    destinations=[gcp.networkservices.TcpRouteRuleActionDestinationArgs(
+                        service_name=default.id,
+                        weight=1,
+                    )],
+                    original_destination=False,
+                ),
+            )])
+        ```
+        ### Network Services Tcp Route Mesh Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="backend-service-health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default = gcp.compute.BackendService("default",
+            name="my-backend-service",
+            health_checks=default_http_health_check.id)
+        default_mesh = gcp.networkservices.Mesh("default",
+            name="my-tcp-route",
+            labels={
+                "foo": "bar",
+            },
+            description="my description")
+        default_tcp_route = gcp.networkservices.TcpRoute("default",
+            name="my-tcp-route",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            meshes=[default_mesh.id],
+            rules=[gcp.networkservices.TcpRouteRuleArgs(
+                matches=[gcp.networkservices.TcpRouteRuleMatchArgs(
+                    address="10.0.0.1/32",
+                    port="8081",
+                )],
+                action=gcp.networkservices.TcpRouteRuleActionArgs(
+                    destinations=[gcp.networkservices.TcpRouteRuleActionDestinationArgs(
+                        service_name=default.id,
+                        weight=1,
+                    )],
+                    original_destination=False,
+                ),
+            )])
+        ```
+        ### Network Services Tcp Route Gateway Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="backend-service-health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default = gcp.compute.BackendService("default",
+            name="my-backend-service",
+            health_checks=default_http_health_check.id)
+        default_gateway = gcp.networkservices.Gateway("default",
+            name="my-tcp-route",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            scope="my-scope",
+            type="OPEN_MESH",
+            ports=[443])
+        default_tcp_route = gcp.networkservices.TcpRoute("default",
+            name="my-tcp-route",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            gateways=[default_gateway.id],
+            rules=[gcp.networkservices.TcpRouteRuleArgs(
+                matches=[gcp.networkservices.TcpRouteRuleMatchArgs(
+                    address="10.0.0.1/32",
+                    port="8081",
+                )],
+                action=gcp.networkservices.TcpRouteRuleActionArgs(
+                    destinations=[gcp.networkservices.TcpRouteRuleActionDestinationArgs(
+                        service_name=default.id,
+                        weight=1,
+                    )],
+                    original_destination=False,
+                ),
+            )])
+        ```
 
         ## Import
 
@@ -432,6 +581,155 @@ class TcpRoute(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Network Services Tcp Route Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="backend-service-health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default = gcp.compute.BackendService("default",
+            name="my-backend-service",
+            health_checks=default_http_health_check.id)
+        default_tcp_route = gcp.networkservices.TcpRoute("default",
+            name="my-tcp-route",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            rules=[gcp.networkservices.TcpRouteRuleArgs(
+                matches=[gcp.networkservices.TcpRouteRuleMatchArgs(
+                    address="10.0.0.1/32",
+                    port="8081",
+                )],
+                action=gcp.networkservices.TcpRouteRuleActionArgs(
+                    destinations=[gcp.networkservices.TcpRouteRuleActionDestinationArgs(
+                        service_name=default.id,
+                        weight=1,
+                    )],
+                    original_destination=False,
+                ),
+            )])
+        ```
+        ### Network Services Tcp Route Actions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="backend-service-health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default = gcp.compute.BackendService("default",
+            name="my-backend-service",
+            health_checks=default_http_health_check.id)
+        default_tcp_route = gcp.networkservices.TcpRoute("default",
+            name="my-tcp-route",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            rules=[gcp.networkservices.TcpRouteRuleArgs(
+                action=gcp.networkservices.TcpRouteRuleActionArgs(
+                    destinations=[gcp.networkservices.TcpRouteRuleActionDestinationArgs(
+                        service_name=default.id,
+                        weight=1,
+                    )],
+                    original_destination=False,
+                ),
+            )])
+        ```
+        ### Network Services Tcp Route Mesh Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="backend-service-health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default = gcp.compute.BackendService("default",
+            name="my-backend-service",
+            health_checks=default_http_health_check.id)
+        default_mesh = gcp.networkservices.Mesh("default",
+            name="my-tcp-route",
+            labels={
+                "foo": "bar",
+            },
+            description="my description")
+        default_tcp_route = gcp.networkservices.TcpRoute("default",
+            name="my-tcp-route",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            meshes=[default_mesh.id],
+            rules=[gcp.networkservices.TcpRouteRuleArgs(
+                matches=[gcp.networkservices.TcpRouteRuleMatchArgs(
+                    address="10.0.0.1/32",
+                    port="8081",
+                )],
+                action=gcp.networkservices.TcpRouteRuleActionArgs(
+                    destinations=[gcp.networkservices.TcpRouteRuleActionDestinationArgs(
+                        service_name=default.id,
+                        weight=1,
+                    )],
+                    original_destination=False,
+                ),
+            )])
+        ```
+        ### Network Services Tcp Route Gateway Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+            name="backend-service-health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default = gcp.compute.BackendService("default",
+            name="my-backend-service",
+            health_checks=default_http_health_check.id)
+        default_gateway = gcp.networkservices.Gateway("default",
+            name="my-tcp-route",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            scope="my-scope",
+            type="OPEN_MESH",
+            ports=[443])
+        default_tcp_route = gcp.networkservices.TcpRoute("default",
+            name="my-tcp-route",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            gateways=[default_gateway.id],
+            rules=[gcp.networkservices.TcpRouteRuleArgs(
+                matches=[gcp.networkservices.TcpRouteRuleMatchArgs(
+                    address="10.0.0.1/32",
+                    port="8081",
+                )],
+                action=gcp.networkservices.TcpRouteRuleActionArgs(
+                    destinations=[gcp.networkservices.TcpRouteRuleActionDestinationArgs(
+                        service_name=default.id,
+                        weight=1,
+                    )],
+                    original_destination=False,
+                ),
+            )])
+        ```
 
         ## Import
 

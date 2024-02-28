@@ -40,18 +40,18 @@ import * as utilities from "../utilities";
  *         enableSpeechAdaptation: true,
  *     },
  * });
- * const myPage2 = new gcp.diagflow.CxPage("myPage2", {
+ * const myPage2 = new gcp.diagflow.CxPage("my_page2", {
  *     parent: agent.startFlow,
  *     displayName: "MyPage2",
  * });
- * const myWebhook = new gcp.diagflow.CxWebhook("myWebhook", {
+ * const myWebhook = new gcp.diagflow.CxWebhook("my_webhook", {
  *     parent: agent.id,
  *     displayName: "MyWebhook",
  *     genericWebService: {
  *         uri: "https://example.com",
  *     },
  * });
- * const basicPage = new gcp.diagflow.CxPage("basicPage", {
+ * const basicPage = new gcp.diagflow.CxPage("basic_page", {
  *     parent: agent.startFlow,
  *     displayName: "MyPage",
  *     entryFulfillment: {

@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  *     const cluster: gcp.compute.Subnetwork[] = [];
  *     for (const range = {value: 0}; range.value < available.names.length; range.value++) {
  *         cluster.push(new gcp.compute.Subnetwork(`cluster-${range.value}`, {
+ *             name: "my-network",
  *             ipCidrRange: `10.36.${range.value}.0/24`,
  *             network: "my-network",
  *             region: available.names[range.value],
@@ -78,6 +79,7 @@ export interface GetRegionsResult {
  *     const cluster: gcp.compute.Subnetwork[] = [];
  *     for (const range = {value: 0}; range.value < available.names.length; range.value++) {
  *         cluster.push(new gcp.compute.Subnetwork(`cluster-${range.value}`, {
+ *             name: "my-network",
  *             ipCidrRange: `10.36.${range.value}.0/24`,
  *             network: "my-network",
  *             region: available.names[range.value],

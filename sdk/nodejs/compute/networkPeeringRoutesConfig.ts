@@ -23,21 +23,29 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const networkPrimary = new gcp.compute.Network("networkPrimary", {autoCreateSubnetworks: false});
- * const networkSecondary = new gcp.compute.Network("networkSecondary", {autoCreateSubnetworks: false});
- * const peeringPrimary = new gcp.compute.NetworkPeering("peeringPrimary", {
+ * const networkPrimary = new gcp.compute.Network("network_primary", {
+ *     name: "primary-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const networkSecondary = new gcp.compute.Network("network_secondary", {
+ *     name: "secondary-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const peeringPrimary = new gcp.compute.NetworkPeering("peering_primary", {
+ *     name: "primary-peering",
  *     network: networkPrimary.id,
  *     peerNetwork: networkSecondary.id,
  *     importCustomRoutes: true,
  *     exportCustomRoutes: true,
  * });
- * const peeringPrimaryRoutes = new gcp.compute.NetworkPeeringRoutesConfig("peeringPrimaryRoutes", {
+ * const peeringPrimaryRoutes = new gcp.compute.NetworkPeeringRoutesConfig("peering_primary_routes", {
  *     peering: peeringPrimary.name,
  *     network: networkPrimary.name,
  *     importCustomRoutes: true,
  *     exportCustomRoutes: true,
  * });
- * const peeringSecondary = new gcp.compute.NetworkPeering("peeringSecondary", {
+ * const peeringSecondary = new gcp.compute.NetworkPeering("peering_secondary", {
+ *     name: "secondary-peering",
  *     network: networkSecondary.id,
  *     peerNetwork: networkPrimary.id,
  * });
@@ -48,8 +56,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const containerNetwork = new gcp.compute.Network("containerNetwork", {autoCreateSubnetworks: false});
- * const containerSubnetwork = new gcp.compute.Subnetwork("containerSubnetwork", {
+ * const containerNetwork = new gcp.compute.Network("container_network", {
+ *     name: "container-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const containerSubnetwork = new gcp.compute.Subnetwork("container_subnetwork", {
+ *     name: "container-subnetwork",
  *     region: "us-central1",
  *     network: containerNetwork.name,
  *     ipCidrRange: "10.0.36.0/24",
@@ -65,7 +77,8 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  * });
- * const privateCluster = new gcp.container.Cluster("privateCluster", {
+ * const privateCluster = new gcp.container.Cluster("private_cluster", {
+ *     name: "private-cluster",
  *     location: "us-central1-a",
  *     initialNodeCount: 1,
  *     network: containerNetwork.name,
@@ -82,7 +95,7 @@ import * as utilities from "../utilities";
  *     },
  *     deletionProtection: true,
  * });
- * const peeringGkeRoutes = new gcp.compute.NetworkPeeringRoutesConfig("peeringGkeRoutes", {
+ * const peeringGkeRoutes = new gcp.compute.NetworkPeeringRoutesConfig("peering_gke_routes", {
  *     peering: privateCluster.privateClusterConfig.apply(privateClusterConfig => privateClusterConfig.peeringName),
  *     network: containerNetwork.name,
  *     importCustomRoutes: true,

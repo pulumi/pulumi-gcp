@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networkservices.HttpRoute("default", {
+ *     name: "my-http-route",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -29,8 +30,6 @@ import * as utilities from "../utilities";
  *             fullPathMatch: "example",
  *         }],
  *     }],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Network Services Http Route Matches And Actions
@@ -40,6 +39,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networkservices.HttpRoute("default", {
+ *     name: "my-http-route",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -131,8 +131,6 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     }],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Network Services Http Route Actions
@@ -142,6 +140,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networkservices.HttpRoute("default", {
+ *     name: "my-http-route",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -214,8 +213,6 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     }],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Network Services Http Route Mesh Basic
@@ -224,21 +221,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultMesh = new gcp.networkservices.Mesh("defaultMesh", {
+ * const _default = new gcp.networkservices.Mesh("default", {
+ *     name: "my-http-route",
  *     labels: {
  *         foo: "bar",
  *     },
  *     description: "my description",
- * }, {
- *     provider: google_beta,
  * });
- * const defaultHttpRoute = new gcp.networkservices.HttpRoute("defaultHttpRoute", {
+ * const defaultHttpRoute = new gcp.networkservices.HttpRoute("default", {
+ *     name: "my-http-route",
  *     labels: {
  *         foo: "bar",
  *     },
  *     description: "my description",
  *     hostnames: ["example"],
- *     meshes: [defaultMesh.id],
+ *     meshes: [_default.id],
  *     rules: [{
  *         matches: [{
  *             queryParameters: [{
@@ -248,8 +245,6 @@ import * as utilities from "../utilities";
  *             fullPathMatch: "example",
  *         }],
  *     }],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

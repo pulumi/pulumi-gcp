@@ -27,15 +27,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultHostingSite, err := firebase.NewHostingSite(ctx, "defaultHostingSite", &firebase.HostingSiteArgs{
+//			_, err := firebase.NewHostingSite(ctx, "default", &firebase.HostingSiteArgs{
 //				Project: pulumi.String("my-project-name"),
 //				SiteId:  pulumi.String("site-id"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultHostingVersion, err := firebase.NewHostingVersion(ctx, "defaultHostingVersion", &firebase.HostingVersionArgs{
-//				SiteId: defaultHostingSite.SiteId,
+//			defaultHostingVersion, err := firebase.NewHostingVersion(ctx, "default", &firebase.HostingVersionArgs{
+//				SiteId: _default.SiteId,
 //				Config: &firebase.HostingVersionConfigArgs{
 //					Redirects: firebase.HostingVersionConfigRedirectArray{
 //						&firebase.HostingVersionConfigRedirectArgs{
@@ -45,15 +45,15 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = firebase.NewHostingRelease(ctx, "defaultHostingRelease", &firebase.HostingReleaseArgs{
-//				SiteId:      defaultHostingSite.SiteId,
+//			_, err = firebase.NewHostingRelease(ctx, "default", &firebase.HostingReleaseArgs{
+//				SiteId:      _default.SiteId,
 //				VersionName: defaultHostingVersion.Name,
 //				Message:     pulumi.String("Test release"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -76,15 +76,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultHostingSite, err := firebase.NewHostingSite(ctx, "defaultHostingSite", &firebase.HostingSiteArgs{
+//			_, err := firebase.NewHostingSite(ctx, "default", &firebase.HostingSiteArgs{
 //				Project: pulumi.String("my-project-name"),
 //				SiteId:  pulumi.String("site-with-channel"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultHostingVersion, err := firebase.NewHostingVersion(ctx, "defaultHostingVersion", &firebase.HostingVersionArgs{
-//				SiteId: defaultHostingSite.SiteId,
+//			defaultHostingVersion, err := firebase.NewHostingVersion(ctx, "default", &firebase.HostingVersionArgs{
+//				SiteId: _default.SiteId,
 //				Config: &firebase.HostingVersionConfigArgs{
 //					Redirects: firebase.HostingVersionConfigRedirectArray{
 //						&firebase.HostingVersionConfigRedirectArgs{
@@ -94,23 +94,23 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultHostingChannel, err := firebase.NewHostingChannel(ctx, "defaultHostingChannel", &firebase.HostingChannelArgs{
-//				SiteId:    defaultHostingSite.SiteId,
+//			defaultHostingChannel, err := firebase.NewHostingChannel(ctx, "default", &firebase.HostingChannelArgs{
+//				SiteId:    _default.SiteId,
 //				ChannelId: pulumi.String("channel-id"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = firebase.NewHostingRelease(ctx, "defaultHostingRelease", &firebase.HostingReleaseArgs{
-//				SiteId:      defaultHostingSite.SiteId,
+//			_, err = firebase.NewHostingRelease(ctx, "default", &firebase.HostingReleaseArgs{
+//				SiteId:      _default.SiteId,
 //				ChannelId:   defaultHostingChannel.ChannelId,
 //				VersionName: defaultHostingVersion.Name,
 //				Message:     pulumi.String("Test release in channel"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -133,18 +133,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultHostingSite, err := firebase.NewHostingSite(ctx, "defaultHostingSite", &firebase.HostingSiteArgs{
+//			_, err := firebase.NewHostingSite(ctx, "default", &firebase.HostingSiteArgs{
 //				Project: pulumi.String("my-project-name"),
 //				SiteId:  pulumi.String("site-id"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = firebase.NewHostingRelease(ctx, "defaultHostingRelease", &firebase.HostingReleaseArgs{
-//				SiteId:  defaultHostingSite.SiteId,
+//			_, err = firebase.NewHostingRelease(ctx, "default", &firebase.HostingReleaseArgs{
+//				SiteId:  _default.SiteId,
 //				Type:    pulumi.String("SITE_DISABLE"),
 //				Message: pulumi.String("Take down site"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

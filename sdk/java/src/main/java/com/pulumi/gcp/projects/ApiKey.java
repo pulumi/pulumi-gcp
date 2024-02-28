@@ -48,10 +48,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basic = new Project(&#34;basic&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;app&#34;)
+ *             .name(&#34;app&#34;)
  *             .orgId(&#34;123456789&#34;)
  *             .build());
  * 
  *         var primary = new ApiKey(&#34;primary&#34;, ApiKeyArgs.builder()        
+ *             .name(&#34;key&#34;)
  *             .displayName(&#34;sample-key&#34;)
  *             .project(basic.name())
  *             .restrictions(ApiKeyRestrictionsArgs.builder()
@@ -99,10 +102,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basic = new Project(&#34;basic&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;app&#34;)
+ *             .name(&#34;app&#34;)
  *             .orgId(&#34;123456789&#34;)
  *             .build());
  * 
  *         var primary = new ApiKey(&#34;primary&#34;, ApiKeyArgs.builder()        
+ *             .name(&#34;key&#34;)
  *             .displayName(&#34;sample-key&#34;)
  *             .project(basic.name())
  *             .restrictions(ApiKeyRestrictionsArgs.builder()
@@ -147,10 +153,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basic = new Project(&#34;basic&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;app&#34;)
+ *             .name(&#34;app&#34;)
  *             .orgId(&#34;123456789&#34;)
  *             .build());
  * 
  *         var primary = new ApiKey(&#34;primary&#34;, ApiKeyArgs.builder()        
+ *             .name(&#34;key&#34;)
  *             .displayName(&#34;sample-key&#34;)
  *             .project(basic.name())
  *             .restrictions(ApiKeyRestrictionsArgs.builder()
@@ -193,10 +202,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basic = new Project(&#34;basic&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;app&#34;)
+ *             .name(&#34;app&#34;)
  *             .orgId(&#34;123456789&#34;)
  *             .build());
  * 
  *         var primary = new ApiKey(&#34;primary&#34;, ApiKeyArgs.builder()        
+ *             .name(&#34;key&#34;)
  *             .displayName(&#34;sample-key&#34;)
  *             .project(basic.name())
  *             .build());
@@ -232,10 +244,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basic = new Project(&#34;basic&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;app&#34;)
+ *             .name(&#34;app&#34;)
  *             .orgId(&#34;123456789&#34;)
  *             .build());
  * 
  *         var primary = new ApiKey(&#34;primary&#34;, ApiKeyArgs.builder()        
+ *             .name(&#34;key&#34;)
  *             .displayName(&#34;sample-key&#34;)
  *             .project(basic.name())
  *             .restrictions(ApiKeyRestrictionsArgs.builder()

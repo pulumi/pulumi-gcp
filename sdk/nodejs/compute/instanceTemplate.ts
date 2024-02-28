@@ -15,6 +15,80 @@ import * as utilities from "../utilities";
  * [API](https://cloud.google.com/compute/docs/reference/latest/instanceTemplates).
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.serviceaccount.Account("default", {
+ *     accountId: "service-account-id",
+ *     displayName: "Service Account",
+ * });
+ * const myImage = gcp.compute.getImage({
+ *     family: "debian-11",
+ *     project: "debian-cloud",
+ * });
+ * const foobar = new gcp.compute.Disk("foobar", {
+ *     name: "existing-disk",
+ *     image: myImage.then(myImage => myImage.selfLink),
+ *     size: 10,
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ * });
+ * const dailyBackup = new gcp.compute.ResourcePolicy("daily_backup", {
+ *     name: "every-day-4am",
+ *     region: "us-central1",
+ *     snapshotSchedulePolicy: {
+ *         schedule: {
+ *             dailySchedule: {
+ *                 daysInCycle: 1,
+ *                 startTime: "04:00",
+ *             },
+ *         },
+ *     },
+ * });
+ * const defaultInstanceTemplate = new gcp.compute.InstanceTemplate("default", {
+ *     name: "appserver-template",
+ *     description: "This template is used to create app server instances.",
+ *     tags: [
+ *         "foo",
+ *         "bar",
+ *     ],
+ *     labels: {
+ *         environment: "dev",
+ *     },
+ *     instanceDescription: "description assigned to instances",
+ *     machineType: "e2-medium",
+ *     canIpForward: false,
+ *     scheduling: {
+ *         automaticRestart: true,
+ *         onHostMaintenance: "MIGRATE",
+ *     },
+ *     disks: [
+ *         {
+ *             sourceImage: "debian-cloud/debian-11",
+ *             autoDelete: true,
+ *             boot: true,
+ *             resourcePolicies: dailyBackup.id,
+ *         },
+ *         {
+ *             source: foobar.name,
+ *             autoDelete: false,
+ *             boot: false,
+ *         },
+ *     ],
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ *     metadata: {
+ *         foo: "bar",
+ *     },
+ *     serviceAccount: {
+ *         email: _default.email,
+ *         scopes: ["cloud-platform"],
+ *     },
+ * });
+ * ```
  * ### Automatic Envoy Deployment
  *
  * ```typescript
@@ -27,6 +101,7 @@ import * as utilities from "../utilities";
  *     project: "debian-cloud",
  * });
  * const foobar = new gcp.compute.InstanceTemplate("foobar", {
+ *     name: "appserver-template",
  *     machineType: "e2-medium",
  *     canIpForward: false,
  *     tags: [
@@ -112,7 +187,7 @@ import * as utilities from "../utilities";
  *     family: "debian-11",
  *     project: "debian-cloud",
  * });
- * const instanceTemplate = new gcp.compute.InstanceTemplate("instanceTemplate", {
+ * const instanceTemplate = new gcp.compute.InstanceTemplate("instance_template", {
  *     namePrefix: "instance-template-",
  *     machineType: "e2-medium",
  *     region: "us-central1",
@@ -130,13 +205,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const instanceTemplate = new gcp.compute.InstanceTemplate("instanceTemplate", {
+ * const instanceTemplate = new gcp.compute.InstanceTemplate("instance_template", {
+ *     namePrefix: "instance-template-",
+ *     machineType: "e2-medium",
+ *     region: "us-central1",
  *     disks: [{
  *         sourceImage: "debian-cloud/debian-11",
  *     }],
- *     machineType: "e2-medium",
- *     namePrefix: "instance-template-",
- *     region: "us-central1",
  * });
  * ```
  *

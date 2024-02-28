@@ -54,21 +54,25 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var catalog = new Catalog(&#34;catalog&#34;, CatalogArgs.builder()        
+ *             .name(&#34;my_catalog&#34;)
  *             .location(&#34;US&#34;)
  *             .build());
  * 
  *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+ *             .name(&#34;my_bucket&#34;)
  *             .location(&#34;US&#34;)
  *             .forceDestroy(true)
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
  *         var metadataFolder = new BucketObject(&#34;metadataFolder&#34;, BucketObjectArgs.builder()        
+ *             .name(&#34;metadata/&#34;)
  *             .content(&#34; &#34;)
  *             .bucket(bucket.name())
  *             .build());
  * 
  *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
+ *             .name(&#34;my_database&#34;)
  *             .catalog(catalog.id())
  *             .type(&#34;HIVE&#34;)
  *             .hiveOptions(DatabaseHiveOptionsArgs.builder()

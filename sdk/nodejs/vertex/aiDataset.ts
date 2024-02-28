@@ -24,11 +24,11 @@ import * as utilities from "../utilities";
  *
  * const dataset = new gcp.vertex.AiDataset("dataset", {
  *     displayName: "terraform",
+ *     metadataSchemaUri: "gs://google-cloud-aiplatform/schema/dataset/metadata/image_1.0.0.yaml",
+ *     region: "us-central1",
  *     labels: {
  *         env: "test",
  *     },
- *     metadataSchemaUri: "gs://google-cloud-aiplatform/schema/dataset/metadata/image_1.0.0.yaml",
- *     region: "us-central1",
  * });
  * ```
  *

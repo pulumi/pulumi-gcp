@@ -37,38 +37,39 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := logging.NewMetric(ctx, "loggingMetric", &logging.MetricArgs{
-//				BucketOptions: &logging.MetricBucketOptionsArgs{
-//					LinearBuckets: &logging.MetricBucketOptionsLinearBucketsArgs{
-//						NumFiniteBuckets: pulumi.Int(3),
-//						Offset:           pulumi.Float64(1),
-//						Width:            pulumi.Float64(1),
-//					},
-//				},
+//			_, err := logging.NewMetric(ctx, "logging_metric", &logging.MetricArgs{
+//				Name:   pulumi.String("my-(custom)/metric"),
 //				Filter: pulumi.String("resource.type=gae_app AND severity>=ERROR"),
+//				MetricDescriptor: &logging.MetricMetricDescriptorArgs{
+//					MetricKind: pulumi.String("DELTA"),
+//					ValueType:  pulumi.String("DISTRIBUTION"),
+//					Unit:       pulumi.String("1"),
+//					Labels: logging.MetricMetricDescriptorLabelArray{
+//						&logging.MetricMetricDescriptorLabelArgs{
+//							Key:         pulumi.String("mass"),
+//							ValueType:   pulumi.String("STRING"),
+//							Description: pulumi.String("amount of matter"),
+//						},
+//						&logging.MetricMetricDescriptorLabelArgs{
+//							Key:         pulumi.String("sku"),
+//							ValueType:   pulumi.String("INT64"),
+//							Description: pulumi.String("Identifying number for item"),
+//						},
+//					},
+//					DisplayName: pulumi.String("My metric"),
+//				},
+//				ValueExtractor: pulumi.String("EXTRACT(jsonPayload.request)"),
 //				LabelExtractors: pulumi.StringMap{
 //					"mass": pulumi.String("EXTRACT(jsonPayload.request)"),
 //					"sku":  pulumi.String("EXTRACT(jsonPayload.id)"),
 //				},
-//				MetricDescriptor: &logging.MetricMetricDescriptorArgs{
-//					DisplayName: pulumi.String("My metric"),
-//					Labels: logging.MetricMetricDescriptorLabelArray{
-//						&logging.MetricMetricDescriptorLabelArgs{
-//							Description: pulumi.String("amount of matter"),
-//							Key:         pulumi.String("mass"),
-//							ValueType:   pulumi.String("STRING"),
-//						},
-//						&logging.MetricMetricDescriptorLabelArgs{
-//							Description: pulumi.String("Identifying number for item"),
-//							Key:         pulumi.String("sku"),
-//							ValueType:   pulumi.String("INT64"),
-//						},
+//				BucketOptions: &logging.MetricBucketOptionsArgs{
+//					LinearBuckets: &logging.MetricBucketOptionsLinearBucketsArgs{
+//						NumFiniteBuckets: pulumi.Int(3),
+//						Width:            pulumi.Float64(1),
+//						Offset:           pulumi.Float64(1),
 //					},
-//					MetricKind: pulumi.String("DELTA"),
-//					Unit:       pulumi.String("1"),
-//					ValueType:  pulumi.String("DISTRIBUTION"),
 //				},
-//				ValueExtractor: pulumi.String("EXTRACT(jsonPayload.request)"),
 //			})
 //			if err != nil {
 //				return err
@@ -92,7 +93,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := logging.NewMetric(ctx, "loggingMetric", &logging.MetricArgs{
+//			_, err := logging.NewMetric(ctx, "logging_metric", &logging.MetricArgs{
+//				Name:   pulumi.String("my-(custom)/metric"),
 //				Filter: pulumi.String("resource.type=gae_app AND severity>=ERROR"),
 //				MetricDescriptor: &logging.MetricMetricDescriptorArgs{
 //					MetricKind: pulumi.String("DELTA"),
@@ -121,21 +123,22 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := logging.NewMetric(ctx, "loggingMetric", &logging.MetricArgs{
+//			_, err := logging.NewMetric(ctx, "logging_metric", &logging.MetricArgs{
+//				Name:   pulumi.String("my-(custom)/metric"),
 //				Filter: pulumi.String("resource.type=gae_app AND severity>=ERROR"),
-//				LabelExtractors: pulumi.StringMap{
-//					"mass": pulumi.String("EXTRACT(jsonPayload.request)"),
-//				},
 //				MetricDescriptor: &logging.MetricMetricDescriptorArgs{
-//					Labels: logging.MetricMetricDescriptorLabelArray{
-//						&logging.MetricMetricDescriptorLabelArgs{
-//							Description: pulumi.String("amount of matter"),
-//							Key:         pulumi.String("mass"),
-//							ValueType:   pulumi.String("STRING"),
-//						},
-//					},
 //					MetricKind: pulumi.String("DELTA"),
 //					ValueType:  pulumi.String("INT64"),
+//					Labels: logging.MetricMetricDescriptorLabelArray{
+//						&logging.MetricMetricDescriptorLabelArgs{
+//							Key:         pulumi.String("mass"),
+//							ValueType:   pulumi.String("STRING"),
+//							Description: pulumi.String("amount of matter"),
+//						},
+//					},
+//				},
+//				LabelExtractors: pulumi.StringMap{
+//					"mass": pulumi.String("EXTRACT(jsonPayload.request)"),
 //				},
 //			})
 //			if err != nil {
@@ -160,7 +163,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			loggingMetricProjectBucketConfig, err := logging.NewProjectBucketConfig(ctx, "loggingMetricProjectBucketConfig", &logging.ProjectBucketConfigArgs{
+//			loggingMetric, err := logging.NewProjectBucketConfig(ctx, "logging_metric", &logging.ProjectBucketConfigArgs{
 //				Location: pulumi.String("global"),
 //				Project:  pulumi.String("my-project-name"),
 //				BucketId: pulumi.String("_Default"),
@@ -168,9 +171,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = logging.NewMetric(ctx, "loggingMetricMetric", &logging.MetricArgs{
+//			_, err = logging.NewMetric(ctx, "logging_metric", &logging.MetricArgs{
+//				Name:       pulumi.String("my-(custom)/metric"),
 //				Filter:     pulumi.String("resource.type=gae_app AND severity>=ERROR"),
-//				BucketName: loggingMetricProjectBucketConfig.ID(),
+//				BucketName: loggingMetric.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -194,13 +198,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := logging.NewMetric(ctx, "loggingMetric", &logging.MetricArgs{
-//				Disabled: pulumi.Bool(true),
-//				Filter:   pulumi.String("resource.type=gae_app AND severity>=ERROR"),
+//			_, err := logging.NewMetric(ctx, "logging_metric", &logging.MetricArgs{
+//				Name:   pulumi.String("my-(custom)/metric"),
+//				Filter: pulumi.String("resource.type=gae_app AND severity>=ERROR"),
 //				MetricDescriptor: &logging.MetricMetricDescriptorArgs{
 //					MetricKind: pulumi.String("DELTA"),
 //					ValueType:  pulumi.String("INT64"),
 //				},
+//				Disabled: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

@@ -509,16 +509,17 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.filestore.Instance("instance",
+            name="test-instance",
+            location="us-central1-b",
+            tier="BASIC_HDD",
             file_shares=gcp.filestore.InstanceFileSharesArgs(
                 capacity_gb=1024,
                 name="share1",
             ),
-            location="us-central1-b",
             networks=[gcp.filestore.InstanceNetworkArgs(
-                modes=["MODE_IPV4"],
                 network="default",
-            )],
-            tier="BASIC_HDD")
+                modes=["MODE_IPV4"],
+            )])
         ```
         ### Filestore Instance Full
 
@@ -527,31 +528,32 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.filestore.Instance("instance",
+            name="test-instance",
+            location="us-central1-b",
+            tier="BASIC_SSD",
             file_shares=gcp.filestore.InstanceFileSharesArgs(
                 capacity_gb=2560,
                 name="share1",
                 nfs_export_options=[
                     gcp.filestore.InstanceFileSharesNfsExportOptionArgs(
-                        access_mode="READ_WRITE",
                         ip_ranges=["10.0.0.0/24"],
+                        access_mode="READ_WRITE",
                         squash_mode="NO_ROOT_SQUASH",
                     ),
                     gcp.filestore.InstanceFileSharesNfsExportOptionArgs(
-                        access_mode="READ_ONLY",
-                        anon_gid=456,
-                        anon_uid=123,
                         ip_ranges=["10.10.0.0/24"],
+                        access_mode="READ_ONLY",
                         squash_mode="ROOT_SQUASH",
+                        anon_uid=123,
+                        anon_gid=456,
                     ),
                 ],
             ),
-            location="us-central1-b",
             networks=[gcp.filestore.InstanceNetworkArgs(
-                connect_mode="DIRECT_PEERING",
-                modes=["MODE_IPV4"],
                 network="default",
-            )],
-            tier="BASIC_SSD")
+                modes=["MODE_IPV4"],
+                connect_mode="DIRECT_PEERING",
+            )])
         ```
         ### Filestore Instance Enterprise
 
@@ -559,9 +561,14 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        filestore_keyring = gcp.kms.KeyRing("filestoreKeyring", location="us-central1")
-        filestore_key = gcp.kms.CryptoKey("filestoreKey", key_ring=filestore_keyring.id)
+        filestore_keyring = gcp.kms.KeyRing("filestore_keyring",
+            name="filestore-keyring",
+            location="us-central1")
+        filestore_key = gcp.kms.CryptoKey("filestore_key",
+            name="filestore-key",
+            key_ring=filestore_keyring.id)
         instance = gcp.filestore.Instance("instance",
+            name="test-instance",
             location="us-central1",
             tier="ENTERPRISE",
             file_shares=gcp.filestore.InstanceFileSharesArgs(
@@ -649,16 +656,17 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.filestore.Instance("instance",
+            name="test-instance",
+            location="us-central1-b",
+            tier="BASIC_HDD",
             file_shares=gcp.filestore.InstanceFileSharesArgs(
                 capacity_gb=1024,
                 name="share1",
             ),
-            location="us-central1-b",
             networks=[gcp.filestore.InstanceNetworkArgs(
-                modes=["MODE_IPV4"],
                 network="default",
-            )],
-            tier="BASIC_HDD")
+                modes=["MODE_IPV4"],
+            )])
         ```
         ### Filestore Instance Full
 
@@ -667,31 +675,32 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.filestore.Instance("instance",
+            name="test-instance",
+            location="us-central1-b",
+            tier="BASIC_SSD",
             file_shares=gcp.filestore.InstanceFileSharesArgs(
                 capacity_gb=2560,
                 name="share1",
                 nfs_export_options=[
                     gcp.filestore.InstanceFileSharesNfsExportOptionArgs(
-                        access_mode="READ_WRITE",
                         ip_ranges=["10.0.0.0/24"],
+                        access_mode="READ_WRITE",
                         squash_mode="NO_ROOT_SQUASH",
                     ),
                     gcp.filestore.InstanceFileSharesNfsExportOptionArgs(
-                        access_mode="READ_ONLY",
-                        anon_gid=456,
-                        anon_uid=123,
                         ip_ranges=["10.10.0.0/24"],
+                        access_mode="READ_ONLY",
                         squash_mode="ROOT_SQUASH",
+                        anon_uid=123,
+                        anon_gid=456,
                     ),
                 ],
             ),
-            location="us-central1-b",
             networks=[gcp.filestore.InstanceNetworkArgs(
-                connect_mode="DIRECT_PEERING",
-                modes=["MODE_IPV4"],
                 network="default",
-            )],
-            tier="BASIC_SSD")
+                modes=["MODE_IPV4"],
+                connect_mode="DIRECT_PEERING",
+            )])
         ```
         ### Filestore Instance Enterprise
 
@@ -699,9 +708,14 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        filestore_keyring = gcp.kms.KeyRing("filestoreKeyring", location="us-central1")
-        filestore_key = gcp.kms.CryptoKey("filestoreKey", key_ring=filestore_keyring.id)
+        filestore_keyring = gcp.kms.KeyRing("filestore_keyring",
+            name="filestore-keyring",
+            location="us-central1")
+        filestore_key = gcp.kms.CryptoKey("filestore_key",
+            name="filestore-key",
+            key_ring=filestore_keyring.id)
         instance = gcp.filestore.Instance("instance",
+            name="test-instance",
             location="us-central1",
             tier="ENTERPRISE",
             file_shares=gcp.filestore.InstanceFileSharesArgs(

@@ -62,8 +62,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ConsentStoreIamPolicy(&#34;policy&#34;, ConsentStoreIamPolicyArgs.builder()        
- *             .dataset(google_healthcare_consent_store.my-consent().dataset())
- *             .consentStoreId(google_healthcare_consent_store.my-consent().name())
+ *             .dataset(my_consent.dataset())
+ *             .consentStoreId(my_consent.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -94,8 +94,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new ConsentStoreIamBinding(&#34;binding&#34;, ConsentStoreIamBindingArgs.builder()        
- *             .dataset(google_healthcare_consent_store.my-consent().dataset())
- *             .consentStoreId(google_healthcare_consent_store.my-consent().name())
+ *             .dataset(my_consent.dataset())
+ *             .consentStoreId(my_consent.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -127,8 +127,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new ConsentStoreIamMember(&#34;member&#34;, ConsentStoreIamMemberArgs.builder()        
- *             .dataset(google_healthcare_consent_store.my-consent().dataset())
- *             .consentStoreId(google_healthcare_consent_store.my-consent().name())
+ *             .dataset(my_consent.dataset())
+ *             .consentStoreId(my_consent.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

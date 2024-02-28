@@ -422,6 +422,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.ServerTlsPolicy("default",
+            name="my-server-tls-policy",
             labels={
                 "foo": "bar",
             },
@@ -450,8 +451,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
                         ),
                     ),
                 ],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Network Security Server Tls Policy Advanced
 
@@ -460,6 +460,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.ServerTlsPolicy("default",
+            name="my-server-tls-policy",
             labels={
                 "foo": "bar",
             },
@@ -468,8 +469,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
             allow_open=False,
             mtls_policy=gcp.networksecurity.ServerTlsPolicyMtlsPolicyArgs(
                 client_validation_mode="ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Network Security Server Tls Policy Server Cert
 
@@ -478,6 +478,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.ServerTlsPolicy("default",
+            name="my-server-tls-policy",
             labels={
                 "foo": "bar",
             },
@@ -488,32 +489,33 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 grpc_endpoint=gcp.networksecurity.ServerTlsPolicyServerCertificateGrpcEndpointArgs(
                     target_uri="unix:mypath",
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Network Security Server Tls Policy Mtls
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         project = gcp.organizations.get_project()
-        default_trust_config = gcp.certificatemanager.TrustConfig("defaultTrustConfig",
+        default_trust_config = gcp.certificatemanager.TrustConfig("default",
+            name="my-trust-config",
             description="sample trust config description",
             location="global",
             trust_stores=[gcp.certificatemanager.TrustConfigTrustStoreArgs(
                 trust_anchors=[gcp.certificatemanager.TrustConfigTrustStoreTrustAnchorArgs(
-                    pem_certificate=(lambda path: open(path).read())("test-fixtures/ca_cert.pem"),
+                    pem_certificate=std.file(input="test-fixtures/ca_cert.pem").result,
                 )],
                 intermediate_cas=[gcp.certificatemanager.TrustConfigTrustStoreIntermediateCaArgs(
-                    pem_certificate=(lambda path: open(path).read())("test-fixtures/ca_cert.pem"),
+                    pem_certificate=std.file(input="test-fixtures/ca_cert.pem").result,
                 )],
             )],
             labels={
                 "foo": "bar",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_server_tls_policy = gcp.networksecurity.ServerTlsPolicy("defaultServerTlsPolicy",
+            })
+        default = gcp.networksecurity.ServerTlsPolicy("default",
+            name="my-server-tls-policy",
             description="my description",
             location="global",
             allow_open=False,
@@ -523,8 +525,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
             ),
             labels={
                 "foo": "bar",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
 
         ## Import
@@ -589,6 +590,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.ServerTlsPolicy("default",
+            name="my-server-tls-policy",
             labels={
                 "foo": "bar",
             },
@@ -617,8 +619,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
                         ),
                     ),
                 ],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Network Security Server Tls Policy Advanced
 
@@ -627,6 +628,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.ServerTlsPolicy("default",
+            name="my-server-tls-policy",
             labels={
                 "foo": "bar",
             },
@@ -635,8 +637,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
             allow_open=False,
             mtls_policy=gcp.networksecurity.ServerTlsPolicyMtlsPolicyArgs(
                 client_validation_mode="ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Network Security Server Tls Policy Server Cert
 
@@ -645,6 +646,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.ServerTlsPolicy("default",
+            name="my-server-tls-policy",
             labels={
                 "foo": "bar",
             },
@@ -655,32 +657,33 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 grpc_endpoint=gcp.networksecurity.ServerTlsPolicyServerCertificateGrpcEndpointArgs(
                     target_uri="unix:mypath",
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Network Security Server Tls Policy Mtls
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         project = gcp.organizations.get_project()
-        default_trust_config = gcp.certificatemanager.TrustConfig("defaultTrustConfig",
+        default_trust_config = gcp.certificatemanager.TrustConfig("default",
+            name="my-trust-config",
             description="sample trust config description",
             location="global",
             trust_stores=[gcp.certificatemanager.TrustConfigTrustStoreArgs(
                 trust_anchors=[gcp.certificatemanager.TrustConfigTrustStoreTrustAnchorArgs(
-                    pem_certificate=(lambda path: open(path).read())("test-fixtures/ca_cert.pem"),
+                    pem_certificate=std.file(input="test-fixtures/ca_cert.pem").result,
                 )],
                 intermediate_cas=[gcp.certificatemanager.TrustConfigTrustStoreIntermediateCaArgs(
-                    pem_certificate=(lambda path: open(path).read())("test-fixtures/ca_cert.pem"),
+                    pem_certificate=std.file(input="test-fixtures/ca_cert.pem").result,
                 )],
             )],
             labels={
                 "foo": "bar",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_server_tls_policy = gcp.networksecurity.ServerTlsPolicy("defaultServerTlsPolicy",
+            })
+        default = gcp.networksecurity.ServerTlsPolicy("default",
+            name="my-server-tls-policy",
             description="my description",
             location="global",
             allow_open=False,
@@ -690,8 +693,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
             ),
             labels={
                 "foo": "bar",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
 
         ## Import

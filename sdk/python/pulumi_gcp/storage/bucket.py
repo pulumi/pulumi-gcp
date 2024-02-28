@@ -833,8 +833,16 @@ class Bucket(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         static_site = gcp.storage.Bucket("static-site",
+            name="image-store.com",
+            location="EU",
+            force_destroy=True,
+            uniform_bucket_level_access=True,
+            website=gcp.storage.BucketWebsiteArgs(
+                main_page_suffix="index.html",
+                not_found_page="404.html",
+            ),
             cors=[gcp.storage.BucketCorArgs(
-                max_age_seconds=3600,
+                origins=["http://image-store.com"],
                 methods=[
                     "GET",
                     "HEAD",
@@ -842,16 +850,9 @@ class Bucket(pulumi.CustomResource):
                     "POST",
                     "DELETE",
                 ],
-                origins=["http://image-store.com"],
                 response_headers=["*"],
-            )],
-            force_destroy=True,
-            location="EU",
-            uniform_bucket_level_access=True,
-            website=gcp.storage.BucketWebsiteArgs(
-                main_page_suffix="index.html",
-                not_found_page="404.html",
-            ))
+                max_age_seconds=3600,
+            )])
         ```
         ### Life Cycle Settings For Storage Bucket Objects
 
@@ -860,26 +861,27 @@ class Bucket(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         auto_expire = gcp.storage.Bucket("auto-expire",
+            name="auto-expiring-bucket",
+            location="US",
             force_destroy=True,
             lifecycle_rules=[
                 gcp.storage.BucketLifecycleRuleArgs(
-                    action=gcp.storage.BucketLifecycleRuleActionArgs(
-                        type="Delete",
-                    ),
                     condition=gcp.storage.BucketLifecycleRuleConditionArgs(
                         age=3,
                     ),
+                    action=gcp.storage.BucketLifecycleRuleActionArgs(
+                        type="Delete",
+                    ),
                 ),
                 gcp.storage.BucketLifecycleRuleArgs(
-                    action=gcp.storage.BucketLifecycleRuleActionArgs(
-                        type="AbortIncompleteMultipartUpload",
-                    ),
                     condition=gcp.storage.BucketLifecycleRuleConditionArgs(
                         age=1,
                     ),
+                    action=gcp.storage.BucketLifecycleRuleActionArgs(
+                        type="AbortIncompleteMultipartUpload",
+                    ),
                 ),
-            ],
-            location="US")
+            ])
         ```
         ### Enabling Public Access Prevention
 
@@ -888,8 +890,9 @@ class Bucket(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         auto_expire = gcp.storage.Bucket("auto-expire",
-            force_destroy=True,
+            name="no-public-access-bucket",
             location="US",
+            force_destroy=True,
             public_access_prevention="enforced")
         ```
 
@@ -980,8 +983,16 @@ class Bucket(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         static_site = gcp.storage.Bucket("static-site",
+            name="image-store.com",
+            location="EU",
+            force_destroy=True,
+            uniform_bucket_level_access=True,
+            website=gcp.storage.BucketWebsiteArgs(
+                main_page_suffix="index.html",
+                not_found_page="404.html",
+            ),
             cors=[gcp.storage.BucketCorArgs(
-                max_age_seconds=3600,
+                origins=["http://image-store.com"],
                 methods=[
                     "GET",
                     "HEAD",
@@ -989,16 +1000,9 @@ class Bucket(pulumi.CustomResource):
                     "POST",
                     "DELETE",
                 ],
-                origins=["http://image-store.com"],
                 response_headers=["*"],
-            )],
-            force_destroy=True,
-            location="EU",
-            uniform_bucket_level_access=True,
-            website=gcp.storage.BucketWebsiteArgs(
-                main_page_suffix="index.html",
-                not_found_page="404.html",
-            ))
+                max_age_seconds=3600,
+            )])
         ```
         ### Life Cycle Settings For Storage Bucket Objects
 
@@ -1007,26 +1011,27 @@ class Bucket(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         auto_expire = gcp.storage.Bucket("auto-expire",
+            name="auto-expiring-bucket",
+            location="US",
             force_destroy=True,
             lifecycle_rules=[
                 gcp.storage.BucketLifecycleRuleArgs(
-                    action=gcp.storage.BucketLifecycleRuleActionArgs(
-                        type="Delete",
-                    ),
                     condition=gcp.storage.BucketLifecycleRuleConditionArgs(
                         age=3,
                     ),
+                    action=gcp.storage.BucketLifecycleRuleActionArgs(
+                        type="Delete",
+                    ),
                 ),
                 gcp.storage.BucketLifecycleRuleArgs(
-                    action=gcp.storage.BucketLifecycleRuleActionArgs(
-                        type="AbortIncompleteMultipartUpload",
-                    ),
                     condition=gcp.storage.BucketLifecycleRuleConditionArgs(
                         age=1,
                     ),
+                    action=gcp.storage.BucketLifecycleRuleActionArgs(
+                        type="AbortIncompleteMultipartUpload",
+                    ),
                 ),
-            ],
-            location="US")
+            ])
         ```
         ### Enabling Public Access Prevention
 
@@ -1035,8 +1040,9 @@ class Bucket(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         auto_expire = gcp.storage.Bucket("auto-expire",
-            force_destroy=True,
+            name="no-public-access-bucket",
             location="US",
+            force_destroy=True,
             public_access_prevention="enforced")
         ```
 

@@ -567,11 +567,15 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket", location="US")
+        bucket = gcp.storage.Bucket("bucket",
+            name="cloudfunctions-function-example-bucket",
+            location="US")
         archive = gcp.storage.BucketObject("archive",
+            name="index.zip",
             bucket=bucket.name,
             source=pulumi.FileAsset("path/to/index.zip"))
-        function_neg_function = gcp.cloudfunctions.Function("functionNegFunction",
+        function_neg_function = gcp.cloudfunctions.Function("function_neg",
+            name="function-neg",
             description="My function",
             runtime="nodejs10",
             available_memory_mb=128,
@@ -581,7 +585,8 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             timeout=60,
             entry_point="helloGET")
         # Cloud Functions Example
-        function_neg_region_network_endpoint_group = gcp.compute.RegionNetworkEndpointGroup("functionNegRegionNetworkEndpointGroup",
+        function_neg = gcp.compute.RegionNetworkEndpointGroup("function_neg",
+            name="function-neg",
             network_endpoint_type="SERVERLESS",
             region="us-central1",
             cloud_function=gcp.compute.RegionNetworkEndpointGroupCloudFunctionArgs(
@@ -594,7 +599,8 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        cloudrun_neg_service = gcp.cloudrun.Service("cloudrunNegService",
+        cloudrun_neg_service = gcp.cloudrun.Service("cloudrun_neg",
+            name="cloudrun-neg",
             location="us-central1",
             template=gcp.cloudrun.ServiceTemplateArgs(
                 spec=gcp.cloudrun.ServiceTemplateSpecArgs(
@@ -608,7 +614,8 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                 latest_revision=True,
             )])
         # Cloud Run Example
-        cloudrun_neg_region_network_endpoint_group = gcp.compute.RegionNetworkEndpointGroup("cloudrunNegRegionNetworkEndpointGroup",
+        cloudrun_neg = gcp.compute.RegionNetworkEndpointGroup("cloudrun_neg",
+            name="cloudrun-neg",
             network_endpoint_type="SERVERLESS",
             region="us-central1",
             cloud_run=gcp.compute.RegionNetworkEndpointGroupCloudRunArgs(
@@ -621,11 +628,14 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        appengine_neg_bucket = gcp.storage.Bucket("appengineNegBucket", location="US")
-        appengine_neg_bucket_object = gcp.storage.BucketObject("appengineNegBucketObject",
+        appengine_neg_bucket = gcp.storage.Bucket("appengine_neg",
+            name="appengine-neg",
+            location="US")
+        appengine_neg_bucket_object = gcp.storage.BucketObject("appengine_neg",
+            name="hello-world.zip",
             bucket=appengine_neg_bucket.name,
             source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
-        appengine_neg_flexible_app_version = gcp.appengine.FlexibleAppVersion("appengineNegFlexibleAppVersion",
+        appengine_neg_flexible_app_version = gcp.appengine.FlexibleAppVersion("appengine_neg",
             version_id="v1",
             service="appengine-network-endpoint-group",
             runtime="nodejs",
@@ -664,7 +674,8 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             ),
             delete_service_on_destroy=True)
         # App Engine Example
-        appengine_neg_region_network_endpoint_group = gcp.compute.RegionNetworkEndpointGroup("appengineNegRegionNetworkEndpointGroup",
+        appengine_neg = gcp.compute.RegionNetworkEndpointGroup("appengine_neg",
+            name="appengine-neg",
             network_endpoint_type="SERVERLESS",
             region="us-central1",
             app_engine=gcp.compute.RegionNetworkEndpointGroupAppEngineArgs(
@@ -678,10 +689,64 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        psc_neg = gcp.compute.RegionNetworkEndpointGroup("pscNeg",
+        psc_neg = gcp.compute.RegionNetworkEndpointGroup("psc_neg",
+            name="psc-neg",
+            region="asia-northeast3",
             network_endpoint_type="PRIVATE_SERVICE_CONNECT",
-            psc_target_service="asia-northeast3-cloudkms.googleapis.com",
-            region="asia-northeast3")
+            psc_target_service="asia-northeast3-cloudkms.googleapis.com")
+        ```
+        ### Region Network Endpoint Group Psc Service Attachment
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default", name="psc-network")
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="psc-subnetwork",
+            ip_cidr_range="10.0.0.0/16",
+            region="europe-west4",
+            network=default.id)
+        psc_subnetwork = gcp.compute.Subnetwork("psc_subnetwork",
+            name="psc-subnetwork-nat",
+            ip_cidr_range="10.1.0.0/16",
+            region="europe-west4",
+            purpose="PRIVATE_SERVICE_CONNECT",
+            network=default.id)
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="psc-healthcheck",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            name="psc-backend",
+            region="europe-west4",
+            health_checks=default_health_check.id)
+        default_forwarding_rule = gcp.compute.ForwardingRule("default",
+            name="psc-forwarding-rule",
+            region="europe-west4",
+            load_balancing_scheme="INTERNAL",
+            backend_service=default_region_backend_service.id,
+            all_ports=True,
+            network=default.name,
+            subnetwork=default_subnetwork.name)
+        default_service_attachment = gcp.compute.ServiceAttachment("default",
+            name="psc-service-attachment",
+            region="europe-west4",
+            description="A service attachment configured with Terraform",
+            enable_proxy_protocol=False,
+            connection_preference="ACCEPT_AUTOMATIC",
+            nat_subnets=[psc_subnetwork.self_link],
+            target_service=default_forwarding_rule.self_link)
+        psc_neg_service_attachment = gcp.compute.RegionNetworkEndpointGroup("psc_neg_service_attachment",
+            name="psc-neg",
+            region="europe-west4",
+            network_endpoint_type="PRIVATE_SERVICE_CONNECT",
+            psc_target_service=default_service_attachment.self_link,
+            network=default.self_link,
+            subnetwork=default_subnetwork.self_link)
         ```
         ### Region Network Endpoint Group Internet Ip Port
 
@@ -689,8 +754,9 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.Network("default")
-        region_network_endpoint_group_internet_ip_port = gcp.compute.RegionNetworkEndpointGroup("regionNetworkEndpointGroupInternetIpPort",
+        default = gcp.compute.Network("default", name="network")
+        region_network_endpoint_group_internet_ip_port = gcp.compute.RegionNetworkEndpointGroup("region_network_endpoint_group_internet_ip_port",
+            name="ip-port-neg",
             region="us-central1",
             network=default.id,
             network_endpoint_type="INTERNET_IP_PORT")
@@ -701,8 +767,9 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.Network("default")
-        region_network_endpoint_group_internet_fqdn_port = gcp.compute.RegionNetworkEndpointGroup("regionNetworkEndpointGroupInternetFqdnPort",
+        default = gcp.compute.Network("default", name="network")
+        region_network_endpoint_group_internet_fqdn_port = gcp.compute.RegionNetworkEndpointGroup("region_network_endpoint_group_internet_fqdn_port",
+            name="ip-port-neg",
             region="us-central1",
             network=default.id,
             network_endpoint_type="INTERNET_FQDN_PORT")
@@ -802,11 +869,15 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket", location="US")
+        bucket = gcp.storage.Bucket("bucket",
+            name="cloudfunctions-function-example-bucket",
+            location="US")
         archive = gcp.storage.BucketObject("archive",
+            name="index.zip",
             bucket=bucket.name,
             source=pulumi.FileAsset("path/to/index.zip"))
-        function_neg_function = gcp.cloudfunctions.Function("functionNegFunction",
+        function_neg_function = gcp.cloudfunctions.Function("function_neg",
+            name="function-neg",
             description="My function",
             runtime="nodejs10",
             available_memory_mb=128,
@@ -816,7 +887,8 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             timeout=60,
             entry_point="helloGET")
         # Cloud Functions Example
-        function_neg_region_network_endpoint_group = gcp.compute.RegionNetworkEndpointGroup("functionNegRegionNetworkEndpointGroup",
+        function_neg = gcp.compute.RegionNetworkEndpointGroup("function_neg",
+            name="function-neg",
             network_endpoint_type="SERVERLESS",
             region="us-central1",
             cloud_function=gcp.compute.RegionNetworkEndpointGroupCloudFunctionArgs(
@@ -829,7 +901,8 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        cloudrun_neg_service = gcp.cloudrun.Service("cloudrunNegService",
+        cloudrun_neg_service = gcp.cloudrun.Service("cloudrun_neg",
+            name="cloudrun-neg",
             location="us-central1",
             template=gcp.cloudrun.ServiceTemplateArgs(
                 spec=gcp.cloudrun.ServiceTemplateSpecArgs(
@@ -843,7 +916,8 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                 latest_revision=True,
             )])
         # Cloud Run Example
-        cloudrun_neg_region_network_endpoint_group = gcp.compute.RegionNetworkEndpointGroup("cloudrunNegRegionNetworkEndpointGroup",
+        cloudrun_neg = gcp.compute.RegionNetworkEndpointGroup("cloudrun_neg",
+            name="cloudrun-neg",
             network_endpoint_type="SERVERLESS",
             region="us-central1",
             cloud_run=gcp.compute.RegionNetworkEndpointGroupCloudRunArgs(
@@ -856,11 +930,14 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        appengine_neg_bucket = gcp.storage.Bucket("appengineNegBucket", location="US")
-        appengine_neg_bucket_object = gcp.storage.BucketObject("appengineNegBucketObject",
+        appengine_neg_bucket = gcp.storage.Bucket("appengine_neg",
+            name="appengine-neg",
+            location="US")
+        appengine_neg_bucket_object = gcp.storage.BucketObject("appengine_neg",
+            name="hello-world.zip",
             bucket=appengine_neg_bucket.name,
             source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
-        appengine_neg_flexible_app_version = gcp.appengine.FlexibleAppVersion("appengineNegFlexibleAppVersion",
+        appengine_neg_flexible_app_version = gcp.appengine.FlexibleAppVersion("appengine_neg",
             version_id="v1",
             service="appengine-network-endpoint-group",
             runtime="nodejs",
@@ -899,7 +976,8 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             ),
             delete_service_on_destroy=True)
         # App Engine Example
-        appengine_neg_region_network_endpoint_group = gcp.compute.RegionNetworkEndpointGroup("appengineNegRegionNetworkEndpointGroup",
+        appengine_neg = gcp.compute.RegionNetworkEndpointGroup("appengine_neg",
+            name="appengine-neg",
             network_endpoint_type="SERVERLESS",
             region="us-central1",
             app_engine=gcp.compute.RegionNetworkEndpointGroupAppEngineArgs(
@@ -913,10 +991,64 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        psc_neg = gcp.compute.RegionNetworkEndpointGroup("pscNeg",
+        psc_neg = gcp.compute.RegionNetworkEndpointGroup("psc_neg",
+            name="psc-neg",
+            region="asia-northeast3",
             network_endpoint_type="PRIVATE_SERVICE_CONNECT",
-            psc_target_service="asia-northeast3-cloudkms.googleapis.com",
-            region="asia-northeast3")
+            psc_target_service="asia-northeast3-cloudkms.googleapis.com")
+        ```
+        ### Region Network Endpoint Group Psc Service Attachment
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default", name="psc-network")
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="psc-subnetwork",
+            ip_cidr_range="10.0.0.0/16",
+            region="europe-west4",
+            network=default.id)
+        psc_subnetwork = gcp.compute.Subnetwork("psc_subnetwork",
+            name="psc-subnetwork-nat",
+            ip_cidr_range="10.1.0.0/16",
+            region="europe-west4",
+            purpose="PRIVATE_SERVICE_CONNECT",
+            network=default.id)
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="psc-healthcheck",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            name="psc-backend",
+            region="europe-west4",
+            health_checks=default_health_check.id)
+        default_forwarding_rule = gcp.compute.ForwardingRule("default",
+            name="psc-forwarding-rule",
+            region="europe-west4",
+            load_balancing_scheme="INTERNAL",
+            backend_service=default_region_backend_service.id,
+            all_ports=True,
+            network=default.name,
+            subnetwork=default_subnetwork.name)
+        default_service_attachment = gcp.compute.ServiceAttachment("default",
+            name="psc-service-attachment",
+            region="europe-west4",
+            description="A service attachment configured with Terraform",
+            enable_proxy_protocol=False,
+            connection_preference="ACCEPT_AUTOMATIC",
+            nat_subnets=[psc_subnetwork.self_link],
+            target_service=default_forwarding_rule.self_link)
+        psc_neg_service_attachment = gcp.compute.RegionNetworkEndpointGroup("psc_neg_service_attachment",
+            name="psc-neg",
+            region="europe-west4",
+            network_endpoint_type="PRIVATE_SERVICE_CONNECT",
+            psc_target_service=default_service_attachment.self_link,
+            network=default.self_link,
+            subnetwork=default_subnetwork.self_link)
         ```
         ### Region Network Endpoint Group Internet Ip Port
 
@@ -924,8 +1056,9 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.Network("default")
-        region_network_endpoint_group_internet_ip_port = gcp.compute.RegionNetworkEndpointGroup("regionNetworkEndpointGroupInternetIpPort",
+        default = gcp.compute.Network("default", name="network")
+        region_network_endpoint_group_internet_ip_port = gcp.compute.RegionNetworkEndpointGroup("region_network_endpoint_group_internet_ip_port",
+            name="ip-port-neg",
             region="us-central1",
             network=default.id,
             network_endpoint_type="INTERNET_IP_PORT")
@@ -936,8 +1069,9 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.Network("default")
-        region_network_endpoint_group_internet_fqdn_port = gcp.compute.RegionNetworkEndpointGroup("regionNetworkEndpointGroupInternetFqdnPort",
+        default = gcp.compute.Network("default", name="network")
+        region_network_endpoint_group_internet_fqdn_port = gcp.compute.RegionNetworkEndpointGroup("region_network_endpoint_group_internet_fqdn_port",
+            name="ip-port-neg",
             region="us-central1",
             network=default.id,
             network_endpoint_type="INTERNET_FQDN_PORT")

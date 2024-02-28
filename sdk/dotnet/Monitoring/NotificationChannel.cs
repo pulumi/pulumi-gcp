@@ -48,12 +48,12 @@ namespace Pulumi.Gcp.Monitoring
     ///     var basic = new Gcp.Monitoring.NotificationChannel("basic", new()
     ///     {
     ///         DisplayName = "Test Notification Channel",
-    ///         ForceDelete = false,
+    ///         Type = "email",
     ///         Labels = 
     ///         {
     ///             { "email_address", "fake_email@blahblah.com" },
     ///         },
-    ///         Type = "email",
+    ///         ForceDelete = false,
     ///     });
     /// 
     /// });
@@ -71,6 +71,7 @@ namespace Pulumi.Gcp.Monitoring
     ///     var @default = new Gcp.Monitoring.NotificationChannel("default", new()
     ///     {
     ///         DisplayName = "Test Slack Channel",
+    ///         Type = "slack",
     ///         Labels = 
     ///         {
     ///             { "channel_name", "#foobar" },
@@ -79,7 +80,6 @@ namespace Pulumi.Gcp.Monitoring
     ///         {
     ///             AuthToken = "one",
     ///         },
-    ///         Type = "slack",
     ///     });
     /// 
     /// });

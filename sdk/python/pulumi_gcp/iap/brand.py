@@ -208,11 +208,14 @@ class Brand(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.Project("project", org_id="123456789")
-        project_service = gcp.projects.Service("projectService",
+        project = gcp.organizations.Project("project",
+            project_id="my-project",
+            name="my-project",
+            org_id="123456789")
+        project_service = gcp.projects.Service("project_service",
             project=project.project_id,
             service="iap.googleapis.com")
-        project_brand = gcp.iap.Brand("projectBrand",
+        project_brand = gcp.iap.Brand("project_brand",
             support_email="support@example.com",
             application_title="Cloud IAP protected Application",
             project=project_service.project)
@@ -270,11 +273,14 @@ class Brand(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.Project("project", org_id="123456789")
-        project_service = gcp.projects.Service("projectService",
+        project = gcp.organizations.Project("project",
+            project_id="my-project",
+            name="my-project",
+            org_id="123456789")
+        project_service = gcp.projects.Service("project_service",
             project=project.project_id,
             service="iap.googleapis.com")
-        project_brand = gcp.iap.Brand("projectBrand",
+        project_brand = gcp.iap.Brand("project_brand",
             support_email="support@example.com",
             application_title="Cloud IAP protected Application",
             project=project_service.project)

@@ -752,6 +752,7 @@ class Job(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrunv2.Job("default",
+            name="cloudrun-job",
             location="us-central1",
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
@@ -768,6 +769,7 @@ class Job(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrunv2.Job("default",
+            name="cloudrun-job",
             location="us-central1",
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
@@ -795,6 +797,7 @@ class Job(pulumi.CustomResource):
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
         instance = gcp.sql.DatabaseInstance("instance",
+            name="cloudrun-sql",
             region="us-central1",
             database_version="MYSQL_5_7",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
@@ -802,6 +805,7 @@ class Job(pulumi.CustomResource):
             ),
             deletion_protection=True)
         default = gcp.cloudrunv2.Job("default",
+            name="cloudrun-job",
             location="us-central1",
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
@@ -842,8 +846,7 @@ class Job(pulumi.CustomResource):
         secret_access = gcp.secretmanager.SecretIamMember("secret-access",
             secret_id=secret.id,
             role="roles/secretmanager.secretAccessor",
-            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(depends_on=[secret]))
+            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com")
         ```
         ### Cloudrunv2 Job Vpcaccess
 
@@ -851,20 +854,25 @@ class Job(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        custom_test_network = gcp.compute.Network("customTestNetwork", auto_create_subnetworks=False)
-        custom_test_subnetwork = gcp.compute.Subnetwork("customTestSubnetwork",
+        custom_test_network = gcp.compute.Network("custom_test",
+            name="run-network",
+            auto_create_subnetworks=False)
+        custom_test = gcp.compute.Subnetwork("custom_test",
+            name="run-subnetwork",
             ip_cidr_range="10.2.0.0/28",
             region="us-central1",
             network=custom_test_network.id)
         connector = gcp.vpcaccess.Connector("connector",
+            name="run-vpc",
             subnet=gcp.vpcaccess.ConnectorSubnetArgs(
-                name=custom_test_subnetwork.name,
+                name=custom_test.name,
             ),
             machine_type="e2-standard-4",
             min_instances=2,
             max_instances=3,
             region="us-central1")
         default = gcp.cloudrunv2.Job("default",
+            name="cloudrun-job",
             location="us-central1",
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
@@ -885,15 +893,15 @@ class Job(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrunv2.Job("default",
-            launch_stage="BETA",
+            name="cloudrun-job",
             location="us-central1",
+            launch_stage="BETA",
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
                     containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
                         image="us-docker.pkg.dev/cloudrun/container/job",
                     )],
                     vpc_access=gcp.cloudrunv2.JobTemplateTemplateVpcAccessArgs(
-                        egress="ALL_TRAFFIC",
                         network_interfaces=[gcp.cloudrunv2.JobTemplateTemplateVpcAccessNetworkInterfaceArgs(
                             network="default",
                             subnetwork="default",
@@ -903,6 +911,7 @@ class Job(pulumi.CustomResource):
                                 "tag3",
                             ],
                         )],
+                        egress="ALL_TRAFFIC",
                     ),
                 ),
             ))
@@ -918,16 +927,8 @@ class Job(pulumi.CustomResource):
             replication=gcp.secretmanager.SecretReplicationArgs(
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
-        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
-            secret=secret.name,
-            secret_data="secret-data")
-        project = gcp.organizations.get_project()
-        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
-            secret_id=secret.id,
-            role="roles/secretmanager.secretAccessor",
-            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(depends_on=[secret]))
         default = gcp.cloudrunv2.Job("default",
+            name="cloudrun-job",
             location="us-central1",
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
@@ -951,11 +952,15 @@ class Job(pulumi.CustomResource):
                         )],
                     )],
                 ),
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[
-                    secret_version_data,
-                    secret_access,
-                ]))
+            ))
+        project = gcp.organizations.get_project()
+        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
+            secret=secret.name,
+            secret_data="secret-data")
+        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
+            secret_id=secret.id,
+            role="roles/secretmanager.secretAccessor",
+            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com")
         ```
         ### Cloudrunv2 Job Emptydir
 
@@ -964,6 +969,7 @@ class Job(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrunv2.Job("default",
+            name="cloudrun-job",
             location="us-central1",
             launch_stage="BETA",
             template=gcp.cloudrunv2.JobTemplateArgs(
@@ -983,8 +989,7 @@ class Job(pulumi.CustomResource):
                         ),
                     )],
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import
@@ -1063,6 +1068,7 @@ class Job(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrunv2.Job("default",
+            name="cloudrun-job",
             location="us-central1",
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
@@ -1079,6 +1085,7 @@ class Job(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrunv2.Job("default",
+            name="cloudrun-job",
             location="us-central1",
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
@@ -1106,6 +1113,7 @@ class Job(pulumi.CustomResource):
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
         instance = gcp.sql.DatabaseInstance("instance",
+            name="cloudrun-sql",
             region="us-central1",
             database_version="MYSQL_5_7",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
@@ -1113,6 +1121,7 @@ class Job(pulumi.CustomResource):
             ),
             deletion_protection=True)
         default = gcp.cloudrunv2.Job("default",
+            name="cloudrun-job",
             location="us-central1",
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
@@ -1153,8 +1162,7 @@ class Job(pulumi.CustomResource):
         secret_access = gcp.secretmanager.SecretIamMember("secret-access",
             secret_id=secret.id,
             role="roles/secretmanager.secretAccessor",
-            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(depends_on=[secret]))
+            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com")
         ```
         ### Cloudrunv2 Job Vpcaccess
 
@@ -1162,20 +1170,25 @@ class Job(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        custom_test_network = gcp.compute.Network("customTestNetwork", auto_create_subnetworks=False)
-        custom_test_subnetwork = gcp.compute.Subnetwork("customTestSubnetwork",
+        custom_test_network = gcp.compute.Network("custom_test",
+            name="run-network",
+            auto_create_subnetworks=False)
+        custom_test = gcp.compute.Subnetwork("custom_test",
+            name="run-subnetwork",
             ip_cidr_range="10.2.0.0/28",
             region="us-central1",
             network=custom_test_network.id)
         connector = gcp.vpcaccess.Connector("connector",
+            name="run-vpc",
             subnet=gcp.vpcaccess.ConnectorSubnetArgs(
-                name=custom_test_subnetwork.name,
+                name=custom_test.name,
             ),
             machine_type="e2-standard-4",
             min_instances=2,
             max_instances=3,
             region="us-central1")
         default = gcp.cloudrunv2.Job("default",
+            name="cloudrun-job",
             location="us-central1",
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
@@ -1196,15 +1209,15 @@ class Job(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrunv2.Job("default",
-            launch_stage="BETA",
+            name="cloudrun-job",
             location="us-central1",
+            launch_stage="BETA",
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
                     containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
                         image="us-docker.pkg.dev/cloudrun/container/job",
                     )],
                     vpc_access=gcp.cloudrunv2.JobTemplateTemplateVpcAccessArgs(
-                        egress="ALL_TRAFFIC",
                         network_interfaces=[gcp.cloudrunv2.JobTemplateTemplateVpcAccessNetworkInterfaceArgs(
                             network="default",
                             subnetwork="default",
@@ -1214,6 +1227,7 @@ class Job(pulumi.CustomResource):
                                 "tag3",
                             ],
                         )],
+                        egress="ALL_TRAFFIC",
                     ),
                 ),
             ))
@@ -1229,16 +1243,8 @@ class Job(pulumi.CustomResource):
             replication=gcp.secretmanager.SecretReplicationArgs(
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
-        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
-            secret=secret.name,
-            secret_data="secret-data")
-        project = gcp.organizations.get_project()
-        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
-            secret_id=secret.id,
-            role="roles/secretmanager.secretAccessor",
-            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(depends_on=[secret]))
         default = gcp.cloudrunv2.Job("default",
+            name="cloudrun-job",
             location="us-central1",
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
@@ -1262,11 +1268,15 @@ class Job(pulumi.CustomResource):
                         )],
                     )],
                 ),
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[
-                    secret_version_data,
-                    secret_access,
-                ]))
+            ))
+        project = gcp.organizations.get_project()
+        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
+            secret=secret.name,
+            secret_data="secret-data")
+        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
+            secret_id=secret.id,
+            role="roles/secretmanager.secretAccessor",
+            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com")
         ```
         ### Cloudrunv2 Job Emptydir
 
@@ -1275,6 +1285,7 @@ class Job(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrunv2.Job("default",
+            name="cloudrun-job",
             location="us-central1",
             launch_stage="BETA",
             template=gcp.cloudrunv2.JobTemplateArgs(
@@ -1294,8 +1305,7 @@ class Job(pulumi.CustomResource):
                         ),
                     )],
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import

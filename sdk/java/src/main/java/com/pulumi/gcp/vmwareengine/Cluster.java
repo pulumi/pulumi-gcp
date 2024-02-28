@@ -55,6 +55,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cluster_nw = new Network(&#34;cluster-nw&#34;, NetworkArgs.builder()        
+ *             .name(&#34;pc-nw&#34;)
  *             .type(&#34;STANDARD&#34;)
  *             .location(&#34;global&#34;)
  *             .description(&#34;PC network description.&#34;)
@@ -62,6 +63,7 @@ import javax.annotation.Nullable;
  * 
  *         var cluster_pc = new PrivateCloud(&#34;cluster-pc&#34;, PrivateCloudArgs.builder()        
  *             .location(&#34;us-west1-a&#34;)
+ *             .name(&#34;sample-pc&#34;)
  *             .description(&#34;Sample test PC.&#34;)
  *             .networkConfig(PrivateCloudNetworkConfigArgs.builder()
  *                 .managementCidr(&#34;192.168.30.0/24&#34;)
@@ -77,6 +79,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var vmw_engine_ext_cluster = new Cluster(&#34;vmw-engine-ext-cluster&#34;, ClusterArgs.builder()        
+ *             .name(&#34;ext-cluster&#34;)
  *             .parent(cluster_pc.id())
  *             .nodeTypeConfigs(ClusterNodeTypeConfigArgs.builder()
  *                 .nodeTypeId(&#34;standard-72&#34;)
@@ -117,6 +120,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cluster_nw = new Network(&#34;cluster-nw&#34;, NetworkArgs.builder()        
+ *             .name(&#34;pc-nw&#34;)
  *             .type(&#34;STANDARD&#34;)
  *             .location(&#34;global&#34;)
  *             .description(&#34;PC network description.&#34;)
@@ -124,6 +128,7 @@ import javax.annotation.Nullable;
  * 
  *         var cluster_pc = new PrivateCloud(&#34;cluster-pc&#34;, PrivateCloudArgs.builder()        
  *             .location(&#34;us-west1-a&#34;)
+ *             .name(&#34;sample-pc&#34;)
  *             .description(&#34;Sample test PC.&#34;)
  *             .networkConfig(PrivateCloudNetworkConfigArgs.builder()
  *                 .managementCidr(&#34;192.168.30.0/24&#34;)
@@ -140,6 +145,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var vmw_ext_cluster = new Cluster(&#34;vmw-ext-cluster&#34;, ClusterArgs.builder()        
+ *             .name(&#34;ext-cluster&#34;)
  *             .parent(cluster_pc.id())
  *             .nodeTypeConfigs(ClusterNodeTypeConfigArgs.builder()
  *                 .nodeTypeId(&#34;standard-72&#34;)

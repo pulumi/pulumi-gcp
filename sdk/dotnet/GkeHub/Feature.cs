@@ -31,6 +31,7 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var cluster = new Gcp.Container.Cluster("cluster", new()
     ///     {
+    ///         Name = "my-cluster",
     ///         Location = "us-central1-a",
     ///         InitialNodeCount = 1,
     ///     });
@@ -50,6 +51,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     ///     var feature = new Gcp.GkeHub.Feature("feature", new()
     ///     {
+    ///         Name = "multiclusteringress",
     ///         Location = "global",
     ///         Spec = new Gcp.GkeHub.Inputs.FeatureSpecArgs
     ///         {
@@ -74,11 +76,12 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var feature = new Gcp.GkeHub.Feature("feature", new()
     ///     {
+    ///         Name = "multiclusterservicediscovery",
+    ///         Location = "global",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
     ///         },
-    ///         Location = "global",
     ///     });
     /// 
     /// });
@@ -95,6 +98,7 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var feature = new Gcp.GkeHub.Feature("feature", new()
     ///     {
+    ///         Name = "servicemesh",
     ///         Location = "global",
     ///     });
     /// 
@@ -112,6 +116,7 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var feature = new Gcp.GkeHub.Feature("feature", new()
     ///     {
+    ///         Name = "fleetobservability",
     ///         Location = "global",
     ///         Spec = new Gcp.GkeHub.Inputs.FeatureSpecArgs
     ///         {
@@ -142,6 +147,7 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var feature = new Gcp.GkeHub.Feature("feature", new()
     ///     {
+    ///         Name = "fleetobservability",
     ///         Location = "global",
     ///         Spec = new Gcp.GkeHub.Inputs.FeatureSpecArgs
     ///         {
@@ -172,6 +178,7 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var feature = new Gcp.GkeHub.Feature("feature", new()
     ///     {
+    ///         Name = "fleetobservability",
     ///         Location = "global",
     ///         Spec = new Gcp.GkeHub.Inputs.FeatureSpecArgs
     ///         {
@@ -206,6 +213,8 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var feature = new Gcp.GkeHub.Feature("feature", new()
     ///     {
+    ///         Name = "servicemesh",
+    ///         Location = "global",
     ///         FleetDefaultMemberConfig = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigArgs
     ///         {
     ///             Mesh = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigMeshArgs
@@ -213,7 +222,6 @@ namespace Pulumi.Gcp.GkeHub
     ///                 Management = "MANAGEMENT_AUTOMATIC",
     ///             },
     ///         },
-    ///         Location = "global",
     ///     });
     /// 
     /// });
@@ -230,6 +238,8 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var feature = new Gcp.GkeHub.Feature("feature", new()
     ///     {
+    ///         Name = "configmanagement",
+    ///         Location = "global",
     ///         FleetDefaultMemberConfig = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigArgs
     ///         {
     ///             Configmanagement = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigConfigmanagementArgs
@@ -243,7 +253,6 @@ namespace Pulumi.Gcp.GkeHub
     ///                 },
     ///             },
     ///         },
-    ///         Location = "global",
     ///     });
     /// 
     /// });
@@ -260,18 +269,19 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var feature = new Gcp.GkeHub.Feature("feature", new()
     ///     {
+    ///         Name = "policycontroller",
+    ///         Location = "global",
     ///         FleetDefaultMemberConfig = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigArgs
     ///         {
     ///             Policycontroller = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerArgs
     ///             {
     ///                 PolicyControllerHubConfig = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs
     ///                 {
-    ///                     AuditIntervalSeconds = 30,
+    ///                     InstallSpec = "INSTALL_SPEC_ENABLED",
     ///                     ExemptableNamespaces = new[]
     ///                     {
     ///                         "foo",
     ///                     },
-    ///                     InstallSpec = "INSTALL_SPEC_ENABLED",
     ///                     PolicyContent = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs
     ///                     {
     ///                         Bundles = new[]
@@ -291,11 +301,110 @@ namespace Pulumi.Gcp.GkeHub
     ///                             Installation = "ALL",
     ///                         },
     ///                     },
+    ///                     AuditIntervalSeconds = 30,
     ///                     ReferentialRulesEnabled = true,
     ///                 },
     ///             },
     ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Enable Fleet Default Member Config Policycontroller Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var feature = new Gcp.GkeHub.Feature("feature", new()
+    ///     {
+    ///         Name = "policycontroller",
     ///         Location = "global",
+    ///         FleetDefaultMemberConfig = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigArgs
+    ///         {
+    ///             Policycontroller = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerArgs
+    ///             {
+    ///                 PolicyControllerHubConfig = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs
+    ///                 {
+    ///                     InstallSpec = "INSTALL_SPEC_SUSPENDED",
+    ///                     PolicyContent = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs
+    ///                     {
+    ///                         Bundles = new[]
+    ///                         {
+    ///                             new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs
+    ///                             {
+    ///                                 Bundle = "pci-dss-v3.2.1",
+    ///                                 ExemptedNamespaces = new[]
+    ///                                 {
+    ///                                     "baz",
+    ///                                     "bar",
+    ///                                 },
+    ///                             },
+    ///                             new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs
+    ///                             {
+    ///                                 Bundle = "nist-sp-800-190",
+    ///                                 ExemptedNamespaces = new() { },
+    ///                             },
+    ///                         },
+    ///                         TemplateLibrary = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs
+    ///                         {
+    ///                             Installation = "ALL",
+    ///                         },
+    ///                     },
+    ///                     ConstraintViolationLimit = 50,
+    ///                     ReferentialRulesEnabled = true,
+    ///                     LogDeniesEnabled = true,
+    ///                     MutationEnabled = true,
+    ///                     DeploymentConfigs = new[]
+    ///                     {
+    ///                         new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs
+    ///                         {
+    ///                             Component = "admission",
+    ///                             ReplicaCount = 2,
+    ///                             PodAffinity = "ANTI_AFFINITY",
+    ///                         },
+    ///                         new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs
+    ///                         {
+    ///                             Component = "audit",
+    ///                             ContainerResources = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs
+    ///                             {
+    ///                                 Limits = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs
+    ///                                 {
+    ///                                     Memory = "1Gi",
+    ///                                     Cpu = "1.5",
+    ///                                 },
+    ///                                 Requests = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs
+    ///                                 {
+    ///                                     Memory = "500Mi",
+    ///                                     Cpu = "150m",
+    ///                                 },
+    ///                             },
+    ///                             PodTolerations = new[]
+    ///                             {
+    ///                                 new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs
+    ///                                 {
+    ///                                     Key = "key1",
+    ///                                     Operator = "Equal",
+    ///                                     Value = "value1",
+    ///                                     Effect = "NoSchedule",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     Monitoring = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs
+    ///                     {
+    ///                         Backends = new[]
+    ///                         {
+    ///                             "PROMETHEUS",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -312,13 +421,20 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var feature = new Gcp.GkeHub.Feature("feature", new()
     ///     {
+    ///         Name = "policycontroller",
+    ///         Location = "global",
     ///         FleetDefaultMemberConfig = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigArgs
     ///         {
     ///             Policycontroller = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerArgs
     ///             {
     ///                 PolicyControllerHubConfig = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs
     ///                 {
+    ///                     InstallSpec = "INSTALL_SPEC_ENABLED",
+    ///                     PolicyContent = null,
     ///                     ConstraintViolationLimit = 50,
+    ///                     ReferentialRulesEnabled = true,
+    ///                     LogDeniesEnabled = true,
+    ///                     MutationEnabled = true,
     ///                     DeploymentConfigs = new[]
     ///                     {
     ///                         new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs
@@ -326,16 +442,10 @@ namespace Pulumi.Gcp.GkeHub
     ///                             Component = "admission",
     ///                         },
     ///                     },
-    ///                     InstallSpec = "INSTALL_SPEC_ENABLED",
-    ///                     LogDeniesEnabled = true,
     ///                     Monitoring = null,
-    ///                     MutationEnabled = true,
-    ///                     PolicyContent = null,
-    ///                     ReferentialRulesEnabled = true,
     ///                 },
     ///             },
     ///         },
-    ///         Location = "global",
     ///     });
     /// 
     /// });
@@ -352,16 +462,17 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var feature = new Gcp.GkeHub.Feature("feature", new()
     ///     {
+    ///         Name = "clusterupgrade",
     ///         Location = "global",
     ///         Spec = new Gcp.GkeHub.Inputs.FeatureSpecArgs
     ///         {
     ///             Clusterupgrade = new Gcp.GkeHub.Inputs.FeatureSpecClusterupgradeArgs
     ///             {
+    ///                 UpstreamFleets = new() { },
     ///                 PostConditions = new Gcp.GkeHub.Inputs.FeatureSpecClusterupgradePostConditionsArgs
     ///                 {
     ///                     Soaking = "60s",
     ///                 },
-    ///                 UpstreamFleets = new() { },
     ///             },
     ///         },
     ///     });

@@ -63,8 +63,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new SecretIamPolicy(&#34;policy&#34;, SecretIamPolicyArgs.builder()        
- *             .project(google_secret_manager_secret.secret-basic().project())
- *             .secretId(google_secret_manager_secret.secret-basic().secret_id())
+ *             .project(secret_basic.project())
+ *             .secretId(secret_basic.secretId())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -95,8 +95,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new SecretIamBinding(&#34;binding&#34;, SecretIamBindingArgs.builder()        
- *             .project(google_secret_manager_secret.secret-basic().project())
- *             .secretId(google_secret_manager_secret.secret-basic().secret_id())
+ *             .project(secret_basic.project())
+ *             .secretId(secret_basic.secretId())
  *             .role(&#34;roles/secretmanager.secretAccessor&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -128,8 +128,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new SecretIamMember(&#34;member&#34;, SecretIamMemberArgs.builder()        
- *             .project(google_secret_manager_secret.secret-basic().project())
- *             .secretId(google_secret_manager_secret.secret-basic().secret_id())
+ *             .project(secret_basic.project())
+ *             .secretId(secret_basic.secretId())
  *             .role(&#34;roles/secretmanager.secretAccessor&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

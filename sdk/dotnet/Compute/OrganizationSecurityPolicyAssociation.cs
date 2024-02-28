@@ -29,27 +29,21 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var securityPolicyTarget = new Gcp.Organizations.Folder("securityPolicyTarget", new()
+    ///     var securityPolicyTarget = new Gcp.Organizations.Folder("security_policy_target", new()
     ///     {
     ///         DisplayName = "tf-test-secpol",
     ///         Parent = "organizations/123456789",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var policyOrganizationSecurityPolicy = new Gcp.Compute.OrganizationSecurityPolicy("policyOrganizationSecurityPolicy", new()
+    ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
     ///     {
     ///         DisplayName = "tf-test",
     ///         Parent = securityPolicyTarget.Name,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var policyOrganizationSecurityPolicyRule = new Gcp.Compute.OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule", new()
+    ///     var policyOrganizationSecurityPolicyRule = new Gcp.Compute.OrganizationSecurityPolicyRule("policy", new()
     ///     {
-    ///         PolicyId = policyOrganizationSecurityPolicy.Id,
+    ///         PolicyId = policy.Id,
     ///         Action = "allow",
     ///         Direction = "INGRESS",
     ///         EnableLogging = true,
@@ -80,18 +74,13 @@ namespace Pulumi.Gcp.Compute
     ///             },
     ///         },
     ///         Priority = 100,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var policyOrganizationSecurityPolicyAssociation = new Gcp.Compute.OrganizationSecurityPolicyAssociation("policyOrganizationSecurityPolicyAssociation", new()
+    ///     var policyOrganizationSecurityPolicyAssociation = new Gcp.Compute.OrganizationSecurityPolicyAssociation("policy", new()
     ///     {
-    ///         AttachmentId = policyOrganizationSecurityPolicy.Parent,
-    ///         PolicyId = policyOrganizationSecurityPolicy.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Name = "tf-test",
+    ///         AttachmentId = policy.Parent,
+    ///         PolicyId = policy.Id,
     ///     });
     /// 
     /// });

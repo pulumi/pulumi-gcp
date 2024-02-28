@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networkservices.EndpointPolicy("default", {
+ *     name: "my-endpoint-policy",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -32,8 +33,6 @@ import * as utilities from "../utilities";
  *             }],
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Network Services Endpoint Policy Empty Match
@@ -43,6 +42,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networkservices.EndpointPolicy("default", {
+ *     name: "my-endpoint-policy",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -56,8 +56,6 @@ import * as utilities from "../utilities";
  *             metadataLabelMatchCriteria: "MATCH_ANY",
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

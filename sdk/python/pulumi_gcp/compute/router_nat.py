@@ -898,18 +898,21 @@ class RouterNat(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        net = gcp.compute.Network("net")
+        net = gcp.compute.Network("net", name="my-network")
         subnet = gcp.compute.Subnetwork("subnet",
+            name="my-subnetwork",
             network=net.id,
             ip_cidr_range="10.0.0.0/16",
             region="us-central1")
         router = gcp.compute.Router("router",
+            name="my-router",
             region=subnet.region,
             network=net.id,
             bgp=gcp.compute.RouterBgpArgs(
                 asn=64514,
             ))
         nat = gcp.compute.RouterNat("nat",
+            name="my-router-nat",
             router=router.name,
             region=router.region,
             nat_ip_allocate_option="AUTO_ONLY",
@@ -925,18 +928,23 @@ class RouterNat(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        net = gcp.compute.Network("net")
+        net = gcp.compute.Network("net", name="my-network")
         subnet = gcp.compute.Subnetwork("subnet",
+            name="my-subnetwork",
             network=net.id,
             ip_cidr_range="10.0.0.0/16",
             region="us-central1")
         router = gcp.compute.Router("router",
+            name="my-router",
             region=subnet.region,
             network=net.id)
         address = []
         for range in [{"value": i} for i in range(0, 2)]:
-            address.append(gcp.compute.Address(f"address-{range['value']}", region=subnet.region))
-        nat_manual = gcp.compute.RouterNat("natManual",
+            address.append(gcp.compute.Address(f"address-{range['value']}",
+                name=f"nat-manual-ip-{range['value']}",
+                region=subnet.region))
+        nat_manual = gcp.compute.RouterNat("nat_manual",
+            name="my-router-nat",
             router=router.name,
             region=router.region,
             nat_ip_allocate_option="MANUAL_ONLY",
@@ -953,18 +961,29 @@ class RouterNat(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        net = gcp.compute.Network("net", auto_create_subnetworks=False)
+        net = gcp.compute.Network("net",
+            name="my-network",
+            auto_create_subnetworks=False)
         subnet = gcp.compute.Subnetwork("subnet",
+            name="my-subnetwork",
             network=net.id,
             ip_cidr_range="10.0.0.0/16",
             region="us-central1")
         router = gcp.compute.Router("router",
+            name="my-router",
             region=subnet.region,
             network=net.id)
-        addr1 = gcp.compute.Address("addr1", region=subnet.region)
-        addr2 = gcp.compute.Address("addr2", region=subnet.region)
-        addr3 = gcp.compute.Address("addr3", region=subnet.region)
-        nat_rules = gcp.compute.RouterNat("natRules",
+        addr1 = gcp.compute.Address("addr1",
+            name="nat-address1",
+            region=subnet.region)
+        addr2 = gcp.compute.Address("addr2",
+            name="nat-address2",
+            region=subnet.region)
+        addr3 = gcp.compute.Address("addr3",
+            name="nat-address3",
+            region=subnet.region)
+        nat_rules = gcp.compute.RouterNat("nat_rules",
+            name="my-router-nat",
             router=router.name,
             region=router.region,
             nat_ip_allocate_option="MANUAL_ONLY",
@@ -993,20 +1012,22 @@ class RouterNat(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        net = gcp.compute.Network("net", opts=pulumi.ResourceOptions(provider=google_beta))
+        net = gcp.compute.Network("net", name="my-network")
         subnet = gcp.compute.Subnetwork("subnet",
+            name="my-subnetwork",
             network=net.id,
             ip_cidr_range="10.0.0.0/16",
             region="us-central1",
-            purpose="PRIVATE_NAT",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            purpose="PRIVATE_NAT")
         router = gcp.compute.Router("router",
+            name="my-router",
             region=subnet.region,
-            network=net.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        hub = gcp.networkconnectivity.Hub("hub", description="vpc hub for inter vpc nat",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+            network=net.id)
+        hub = gcp.networkconnectivity.Hub("hub",
+            name="my-hub",
+            description="vpc hub for inter vpc nat")
         spoke = gcp.networkconnectivity.Spoke("spoke",
+            name="my-spoke",
             location="global",
             description="vpc spoke for inter vpc nat",
             hub=hub.id,
@@ -1016,9 +1037,9 @@ class RouterNat(pulumi.CustomResource):
                     "10.10.0.0/16",
                 ],
                 uri=net.self_link,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        nat_type = gcp.compute.RouterNat("natType",
+            ))
+        nat_type = gcp.compute.RouterNat("nat_type",
+            name="my-router-nat",
             router=router.name,
             region=router.region,
             source_subnetwork_ip_ranges_to_nat="LIST_OF_SUBNETWORKS",
@@ -1037,8 +1058,7 @@ class RouterNat(pulumi.CustomResource):
                 action=gcp.compute.RouterNatRuleActionArgs(
                     source_nat_active_ranges=[subnet.self_link],
                 ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
 
         ## Import
@@ -1156,18 +1176,21 @@ class RouterNat(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        net = gcp.compute.Network("net")
+        net = gcp.compute.Network("net", name="my-network")
         subnet = gcp.compute.Subnetwork("subnet",
+            name="my-subnetwork",
             network=net.id,
             ip_cidr_range="10.0.0.0/16",
             region="us-central1")
         router = gcp.compute.Router("router",
+            name="my-router",
             region=subnet.region,
             network=net.id,
             bgp=gcp.compute.RouterBgpArgs(
                 asn=64514,
             ))
         nat = gcp.compute.RouterNat("nat",
+            name="my-router-nat",
             router=router.name,
             region=router.region,
             nat_ip_allocate_option="AUTO_ONLY",
@@ -1183,18 +1206,23 @@ class RouterNat(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        net = gcp.compute.Network("net")
+        net = gcp.compute.Network("net", name="my-network")
         subnet = gcp.compute.Subnetwork("subnet",
+            name="my-subnetwork",
             network=net.id,
             ip_cidr_range="10.0.0.0/16",
             region="us-central1")
         router = gcp.compute.Router("router",
+            name="my-router",
             region=subnet.region,
             network=net.id)
         address = []
         for range in [{"value": i} for i in range(0, 2)]:
-            address.append(gcp.compute.Address(f"address-{range['value']}", region=subnet.region))
-        nat_manual = gcp.compute.RouterNat("natManual",
+            address.append(gcp.compute.Address(f"address-{range['value']}",
+                name=f"nat-manual-ip-{range['value']}",
+                region=subnet.region))
+        nat_manual = gcp.compute.RouterNat("nat_manual",
+            name="my-router-nat",
             router=router.name,
             region=router.region,
             nat_ip_allocate_option="MANUAL_ONLY",
@@ -1211,18 +1239,29 @@ class RouterNat(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        net = gcp.compute.Network("net", auto_create_subnetworks=False)
+        net = gcp.compute.Network("net",
+            name="my-network",
+            auto_create_subnetworks=False)
         subnet = gcp.compute.Subnetwork("subnet",
+            name="my-subnetwork",
             network=net.id,
             ip_cidr_range="10.0.0.0/16",
             region="us-central1")
         router = gcp.compute.Router("router",
+            name="my-router",
             region=subnet.region,
             network=net.id)
-        addr1 = gcp.compute.Address("addr1", region=subnet.region)
-        addr2 = gcp.compute.Address("addr2", region=subnet.region)
-        addr3 = gcp.compute.Address("addr3", region=subnet.region)
-        nat_rules = gcp.compute.RouterNat("natRules",
+        addr1 = gcp.compute.Address("addr1",
+            name="nat-address1",
+            region=subnet.region)
+        addr2 = gcp.compute.Address("addr2",
+            name="nat-address2",
+            region=subnet.region)
+        addr3 = gcp.compute.Address("addr3",
+            name="nat-address3",
+            region=subnet.region)
+        nat_rules = gcp.compute.RouterNat("nat_rules",
+            name="my-router-nat",
             router=router.name,
             region=router.region,
             nat_ip_allocate_option="MANUAL_ONLY",
@@ -1251,20 +1290,22 @@ class RouterNat(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        net = gcp.compute.Network("net", opts=pulumi.ResourceOptions(provider=google_beta))
+        net = gcp.compute.Network("net", name="my-network")
         subnet = gcp.compute.Subnetwork("subnet",
+            name="my-subnetwork",
             network=net.id,
             ip_cidr_range="10.0.0.0/16",
             region="us-central1",
-            purpose="PRIVATE_NAT",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            purpose="PRIVATE_NAT")
         router = gcp.compute.Router("router",
+            name="my-router",
             region=subnet.region,
-            network=net.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        hub = gcp.networkconnectivity.Hub("hub", description="vpc hub for inter vpc nat",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+            network=net.id)
+        hub = gcp.networkconnectivity.Hub("hub",
+            name="my-hub",
+            description="vpc hub for inter vpc nat")
         spoke = gcp.networkconnectivity.Spoke("spoke",
+            name="my-spoke",
             location="global",
             description="vpc spoke for inter vpc nat",
             hub=hub.id,
@@ -1274,9 +1315,9 @@ class RouterNat(pulumi.CustomResource):
                     "10.10.0.0/16",
                 ],
                 uri=net.self_link,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        nat_type = gcp.compute.RouterNat("natType",
+            ))
+        nat_type = gcp.compute.RouterNat("nat_type",
+            name="my-router-nat",
             router=router.name,
             region=router.region,
             source_subnetwork_ip_ranges_to_nat="LIST_OF_SUBNETWORKS",
@@ -1295,8 +1336,7 @@ class RouterNat(pulumi.CustomResource):
                 action=gcp.compute.RouterNatRuleActionArgs(
                     source_nat_active_ranges=[subnet.self_link],
                 ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
 
         ## Import

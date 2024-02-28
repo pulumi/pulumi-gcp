@@ -26,20 +26,11 @@ import (
 //
 // import (
 //
-//	"os"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/identityplatform"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
@@ -49,7 +40,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = identityplatform.NewTenantInboundSamlConfig(ctx, "tenantSamlConfig", &identityplatform.TenantInboundSamlConfigArgs{
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/rsa_cert.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = identityplatform.NewTenantInboundSamlConfig(ctx, "tenant_saml_config", &identityplatform.TenantInboundSamlConfigArgs{
+//				Name:        pulumi.String("saml.tf-config"),
 //				DisplayName: pulumi.String("Display Name"),
 //				Tenant:      tenant.Name,
 //				IdpConfig: &identityplatform.TenantInboundSamlConfigIdpConfigArgs{
@@ -58,7 +56,7 @@ import (
 //					SsoUrl:      pulumi.String("https://example.com"),
 //					IdpCertificates: identityplatform.TenantInboundSamlConfigIdpConfigIdpCertificateArray{
 //						&identityplatform.TenantInboundSamlConfigIdpConfigIdpCertificateArgs{
-//							X509Certificate: readFileOrPanic("test-fixtures/rsa_cert.pem"),
+//							X509Certificate: invokeFile.Result,
 //						},
 //					},
 //				},

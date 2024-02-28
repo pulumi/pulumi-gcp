@@ -119,10 +119,10 @@ def get_zone_iam_policy(dataplex_zone: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataplex.get_zone_iam_policy(project=google_dataplex_zone["example"]["project"],
-        location=google_dataplex_zone["example"]["location"],
-        lake=google_dataplex_zone["example"]["lake"],
-        dataplex_zone=google_dataplex_zone["example"]["name"])
+    policy = gcp.dataplex.get_zone_iam_policy(project=example["project"],
+        location=example["location"],
+        lake=example["lake"],
+        dataplex_zone=example["name"])
     ```
 
 
@@ -163,10 +163,10 @@ def get_zone_iam_policy_output(dataplex_zone: Optional[pulumi.Input[str]] = None
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataplex.get_zone_iam_policy(project=google_dataplex_zone["example"]["project"],
-        location=google_dataplex_zone["example"]["location"],
-        lake=google_dataplex_zone["example"]["lake"],
-        dataplex_zone=google_dataplex_zone["example"]["name"])
+    policy = gcp.dataplex.get_zone_iam_policy(project=example["project"],
+        location=example["location"],
+        lake=example["lake"],
+        dataplex_zone=example["name"])
     ```
 
 

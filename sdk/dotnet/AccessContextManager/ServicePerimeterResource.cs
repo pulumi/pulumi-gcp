@@ -48,9 +48,10 @@ namespace Pulumi.Gcp.AccessContextManager
     ///         Title = "my policy",
     ///     });
     /// 
-    ///     var service_perimeter_resourceServicePerimeter = new Gcp.AccessContextManager.ServicePerimeter("service-perimeter-resourceServicePerimeter", new()
+    ///     var service_perimeter_resourceServicePerimeter = new Gcp.AccessContextManager.ServicePerimeter("service-perimeter-resource", new()
     ///     {
     ///         Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
+    ///         Name = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}/servicePerimeters/restrict_all"),
     ///         Title = "restrict_all",
     ///         Status = new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusArgs
     ///         {
@@ -61,7 +62,7 @@ namespace Pulumi.Gcp.AccessContextManager
     ///         },
     ///     });
     /// 
-    ///     var service_perimeter_resourceServicePerimeterResource = new Gcp.AccessContextManager.ServicePerimeterResource("service-perimeter-resourceServicePerimeterResource", new()
+    ///     var service_perimeter_resource = new Gcp.AccessContextManager.ServicePerimeterResource("service-perimeter-resource", new()
     ///     {
     ///         PerimeterName = service_perimeter_resourceServicePerimeter.Name,
     ///         Resource = "projects/987654321",

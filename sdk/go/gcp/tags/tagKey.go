@@ -36,9 +36,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := tags.NewTagKey(ctx, "key", &tags.TagKeyArgs{
-//				Description: pulumi.String("For keyname resources."),
 //				Parent:      pulumi.String("organizations/123456789"),
 //				ShortName:   pulumi.String("keyname"),
+//				Description: pulumi.String("For keyname resources."),
 //			})
 //			if err != nil {
 //				return err

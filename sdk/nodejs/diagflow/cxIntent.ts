@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  *         enableSpeechAdaptation: true,
  *     },
  * });
- * const basicIntent = new gcp.diagflow.CxIntent("basicIntent", {
+ * const basicIntent = new gcp.diagflow.CxIntent("basic_intent", {
  *     parent: agent.id,
  *     displayName: "Example",
  *     priority: 1,

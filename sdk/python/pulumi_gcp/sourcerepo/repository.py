@@ -210,7 +210,7 @@ class Repository(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_repo = gcp.sourcerepo.Repository("my-repo")
+        my_repo = gcp.sourcerepo.Repository("my-repo", name="my/repository")
         ```
         ### Sourcerepo Repository Full
 
@@ -218,15 +218,17 @@ class Repository(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        test_account = gcp.serviceaccount.Account("testAccount",
+        test_account = gcp.serviceaccount.Account("test_account",
             account_id="my-account",
             display_name="Test Service Account")
-        topic = gcp.pubsub.Topic("topic")
-        my_repo = gcp.sourcerepo.Repository("my-repo", pubsub_configs=[gcp.sourcerepo.RepositoryPubsubConfigArgs(
-            topic=topic.id,
-            message_format="JSON",
-            service_account_email=test_account.email,
-        )])
+        topic = gcp.pubsub.Topic("topic", name="my-topic")
+        my_repo = gcp.sourcerepo.Repository("my-repo",
+            name="my-repository",
+            pubsub_configs=[gcp.sourcerepo.RepositoryPubsubConfigArgs(
+                topic=topic.id,
+                message_format="JSON",
+                service_account_email=test_account.email,
+            )])
         ```
 
         ## Import
@@ -282,7 +284,7 @@ class Repository(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_repo = gcp.sourcerepo.Repository("my-repo")
+        my_repo = gcp.sourcerepo.Repository("my-repo", name="my/repository")
         ```
         ### Sourcerepo Repository Full
 
@@ -290,15 +292,17 @@ class Repository(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        test_account = gcp.serviceaccount.Account("testAccount",
+        test_account = gcp.serviceaccount.Account("test_account",
             account_id="my-account",
             display_name="Test Service Account")
-        topic = gcp.pubsub.Topic("topic")
-        my_repo = gcp.sourcerepo.Repository("my-repo", pubsub_configs=[gcp.sourcerepo.RepositoryPubsubConfigArgs(
-            topic=topic.id,
-            message_format="JSON",
-            service_account_email=test_account.email,
-        )])
+        topic = gcp.pubsub.Topic("topic", name="my-topic")
+        my_repo = gcp.sourcerepo.Repository("my-repo",
+            name="my-repository",
+            pubsub_configs=[gcp.sourcerepo.RepositoryPubsubConfigArgs(
+                topic=topic.id,
+                message_format="JSON",
+                service_account_email=test_account.email,
+            )])
         ```
 
         ## Import

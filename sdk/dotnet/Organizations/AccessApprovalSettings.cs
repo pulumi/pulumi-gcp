@@ -27,8 +27,14 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var organizationAccessApproval = new Gcp.Organizations.AccessApprovalSettings("organizationAccessApproval", new()
+    ///     var organizationAccessApproval = new Gcp.Organizations.AccessApprovalSettings("organization_access_approval", new()
     ///     {
+    ///         OrganizationId = "123456789",
+    ///         NotificationEmails = new[]
+    ///         {
+    ///             "testuser@example.com",
+    ///             "example.user@example.com",
+    ///         },
     ///         EnrolledServices = new[]
     ///         {
     ///             new Gcp.Organizations.Inputs.AccessApprovalSettingsEnrolledServiceArgs
@@ -41,12 +47,6 @@ namespace Pulumi.Gcp.Organizations
     ///                 EnrollmentLevel = "BLOCK_ALL",
     ///             },
     ///         },
-    ///         NotificationEmails = new[]
-    ///         {
-    ///             "testuser@example.com",
-    ///             "example.user@example.com",
-    ///         },
-    ///         OrganizationId = "123456789",
     ///     });
     /// 
     /// });
@@ -61,19 +61,23 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myProject = new Gcp.Organizations.Project("myProject", new()
+    ///     var myProject = new Gcp.Organizations.Project("my_project", new()
     ///     {
+    ///         Name = "My Project",
+    ///         ProjectId = "your-project-id",
     ///         OrgId = "123456789",
     ///     });
     /// 
-    ///     var keyRing = new Gcp.Kms.KeyRing("keyRing", new()
+    ///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()
     ///     {
+    ///         Name = "key-ring",
     ///         Location = "global",
     ///         Project = myProject.ProjectId,
     ///     });
     /// 
-    ///     var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("crypto_key", new()
     ///     {
+    ///         Name = "crypto-key",
     ///         KeyRing = keyRing.Id,
     ///         Purpose = "ASYMMETRIC_SIGN",
     ///         VersionTemplate = new Gcp.Kms.Inputs.CryptoKeyVersionTemplateArgs
@@ -99,7 +103,7 @@ namespace Pulumi.Gcp.Organizations
     ///         CryptoKey = cryptoKey.Id,
     ///     });
     /// 
-    ///     var organizationAccessApproval = new Gcp.Organizations.AccessApprovalSettings("organizationAccessApproval", new()
+    ///     var organizationAccessApproval = new Gcp.Organizations.AccessApprovalSettings("organization_access_approval", new()
     ///     {
     ///         OrganizationId = "123456789",
     ///         ActiveKeyVersion = cryptoKeyVersion.Apply(getKMSCryptoKeyVersionResult =&gt; getKMSCryptoKeyVersionResult.Name),
@@ -109,12 +113,6 @@ namespace Pulumi.Gcp.Organizations
     ///             {
     ///                 CloudProduct = "all",
     ///             },
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             iam,
     ///         },
     ///     });
     /// 

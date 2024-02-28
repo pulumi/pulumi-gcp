@@ -70,6 +70,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var igm_basic = new InstanceTemplate(&#34;igm-basic&#34;, InstanceTemplateArgs.builder()        
+ *             .name(&#34;my-template&#34;)
  *             .machineType(&#34;e2-medium&#34;)
  *             .canIpForward(false)
  *             .tags(            
@@ -93,6 +94,7 @@ import javax.annotation.Nullable;
  * 
  *         var rigm = new RegionInstanceGroupManager(&#34;rigm&#34;, RegionInstanceGroupManagerArgs.builder()        
  *             .description(&#34;Demo test instance group manager&#34;)
+ *             .name(&#34;my-rigm&#34;)
  *             .versions(RegionInstanceGroupManagerVersionArgs.builder()
  *                 .name(&#34;prod&#34;)
  *                 .instanceTemplate(igm_basic.selfLink())
@@ -108,6 +110,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var default_ = new Disk(&#34;default&#34;, DiskArgs.builder()        
+ *             .name(&#34;my-disk-name&#34;)
  *             .type(&#34;pd-ssd&#34;)
  *             .zone(&#34;us-central1-a&#34;)
  *             .image(&#34;debian-11-bullseye-v20220719&#34;)
@@ -115,8 +118,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var withDisk = new RegionPerInstanceConfig(&#34;withDisk&#34;, RegionPerInstanceConfigArgs.builder()        
- *             .region(google_compute_region_instance_group_manager.igm().region())
+ *             .region(igm.region())
  *             .regionInstanceGroupManager(rigm.name())
+ *             .name(&#34;instance-1&#34;)
  *             .preservedState(RegionPerInstanceConfigPreservedStateArgs.builder()
  *                 .metadata(Map.ofEntries(
  *                     Map.entry(&#34;foo&#34;, &#34;bar&#34;),

@@ -393,6 +393,70 @@ class PacketMirroring(pulumi.CustomResource):
             * [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
 
         ## Example Usage
+        ### Compute Packet Mirroring Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default", name="my-network")
+        mirror = gcp.compute.Instance("mirror",
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                network=default.id,
+            )],
+            name="my-instance",
+            machine_type="e2-medium",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-11",
+                ),
+            ))
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="my-subnetwork",
+            network=default.id,
+            ip_cidr_range="10.2.0.0/16")
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="my-healthcheck",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            name="my-service",
+            health_checks=default_health_check.id)
+        default_forwarding_rule = gcp.compute.ForwardingRule("default",
+            name="my-ilb",
+            is_mirroring_collector=True,
+            ip_protocol="TCP",
+            load_balancing_scheme="INTERNAL",
+            backend_service=default_region_backend_service.id,
+            all_ports=True,
+            network=default.id,
+            subnetwork=default_subnetwork.id,
+            network_tier="PREMIUM")
+        foobar = gcp.compute.PacketMirroring("foobar",
+            name="my-mirroring",
+            description="bar",
+            network=gcp.compute.PacketMirroringNetworkArgs(
+                url=default.id,
+            ),
+            collector_ilb=gcp.compute.PacketMirroringCollectorIlbArgs(
+                url=default_forwarding_rule.id,
+            ),
+            mirrored_resources=gcp.compute.PacketMirroringMirroredResourcesArgs(
+                tags=["foo"],
+                instances=[gcp.compute.PacketMirroringMirroredResourcesInstanceArgs(
+                    url=mirror.id,
+                )],
+            ),
+            filter=gcp.compute.PacketMirroringFilterArgs(
+                ip_protocols=["tcp"],
+                cidr_ranges=["0.0.0.0/0"],
+                direction="BOTH",
+            ))
+        ```
 
         ## Import
 
@@ -467,6 +531,70 @@ class PacketMirroring(pulumi.CustomResource):
             * [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
 
         ## Example Usage
+        ### Compute Packet Mirroring Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default", name="my-network")
+        mirror = gcp.compute.Instance("mirror",
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                network=default.id,
+            )],
+            name="my-instance",
+            machine_type="e2-medium",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-11",
+                ),
+            ))
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="my-subnetwork",
+            network=default.id,
+            ip_cidr_range="10.2.0.0/16")
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="my-healthcheck",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            name="my-service",
+            health_checks=default_health_check.id)
+        default_forwarding_rule = gcp.compute.ForwardingRule("default",
+            name="my-ilb",
+            is_mirroring_collector=True,
+            ip_protocol="TCP",
+            load_balancing_scheme="INTERNAL",
+            backend_service=default_region_backend_service.id,
+            all_ports=True,
+            network=default.id,
+            subnetwork=default_subnetwork.id,
+            network_tier="PREMIUM")
+        foobar = gcp.compute.PacketMirroring("foobar",
+            name="my-mirroring",
+            description="bar",
+            network=gcp.compute.PacketMirroringNetworkArgs(
+                url=default.id,
+            ),
+            collector_ilb=gcp.compute.PacketMirroringCollectorIlbArgs(
+                url=default_forwarding_rule.id,
+            ),
+            mirrored_resources=gcp.compute.PacketMirroringMirroredResourcesArgs(
+                tags=["foo"],
+                instances=[gcp.compute.PacketMirroringMirroredResourcesInstanceArgs(
+                    url=mirror.id,
+                )],
+            ),
+            filter=gcp.compute.PacketMirroringFilterArgs(
+                ip_protocols=["tcp"],
+                cidr_ranges=["0.0.0.0/0"],
+                direction="BOTH",
+            ))
+        ```
 
         ## Import
 

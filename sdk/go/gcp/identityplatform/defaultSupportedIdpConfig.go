@@ -33,11 +33,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := identityplatform.NewDefaultSupportedIdpConfig(ctx, "idpConfig", &identityplatform.DefaultSupportedIdpConfigArgs{
-//				ClientId:     pulumi.String("client-id"),
-//				ClientSecret: pulumi.String("secret"),
+//			_, err := identityplatform.NewDefaultSupportedIdpConfig(ctx, "idp_config", &identityplatform.DefaultSupportedIdpConfigArgs{
 //				Enabled:      pulumi.Bool(true),
 //				IdpId:        pulumi.String("playgames.google.com"),
+//				ClientId:     pulumi.String("client-id"),
+//				ClientSecret: pulumi.String("secret"),
 //			})
 //			if err != nil {
 //				return err

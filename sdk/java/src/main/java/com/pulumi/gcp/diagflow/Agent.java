@@ -53,20 +53,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var fullAgent = new Agent(&#34;fullAgent&#34;, AgentArgs.builder()        
- *             .apiVersion(&#34;API_VERSION_V2_BETA_1&#34;)
- *             .avatarUri(&#34;https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png&#34;)
- *             .classificationThreshold(0.3)
- *             .defaultLanguageCode(&#34;en&#34;)
- *             .description(&#34;Example description.&#34;)
  *             .displayName(&#34;dialogflow-agent&#34;)
- *             .enableLogging(true)
- *             .matchMode(&#34;MATCH_MODE_ML_ONLY&#34;)
+ *             .defaultLanguageCode(&#34;en&#34;)
  *             .supportedLanguageCodes(            
  *                 &#34;fr&#34;,
  *                 &#34;de&#34;,
  *                 &#34;es&#34;)
- *             .tier(&#34;TIER_STANDARD&#34;)
  *             .timeZone(&#34;America/New_York&#34;)
+ *             .description(&#34;Example description.&#34;)
+ *             .avatarUri(&#34;https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png&#34;)
+ *             .enableLogging(true)
+ *             .matchMode(&#34;MATCH_MODE_ML_ONLY&#34;)
+ *             .classificationThreshold(0.3)
+ *             .apiVersion(&#34;API_VERSION_V2_BETA_1&#34;)
+ *             .tier(&#34;TIER_STANDARD&#34;)
  *             .build());
  * 
  *     }

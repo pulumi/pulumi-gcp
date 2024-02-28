@@ -669,13 +669,13 @@ class Routine(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        test_dataset = gcp.bigquery.Dataset("testDataset", dataset_id="dataset_id")
-        test_connection = gcp.bigquery.Connection("testConnection",
+        test = gcp.bigquery.Dataset("test", dataset_id="dataset_id")
+        test_connection = gcp.bigquery.Connection("test",
             connection_id="connection_id",
             location="US",
             spark=gcp.bigquery.ConnectionSparkArgs())
         pyspark = gcp.bigquery.Routine("pyspark",
-            dataset_id=test_dataset.dataset_id,
+            dataset_id=test.dataset_id,
             routine_id="routine_id",
             routine_type="PROCEDURE",
             language="PYTHON",
@@ -710,13 +710,13 @@ class Routine(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        test_dataset = gcp.bigquery.Dataset("testDataset", dataset_id="dataset_id")
-        test_connection = gcp.bigquery.Connection("testConnection",
+        test = gcp.bigquery.Dataset("test", dataset_id="dataset_id")
+        test_connection = gcp.bigquery.Connection("test",
             connection_id="connection_id",
             location="US",
             spark=gcp.bigquery.ConnectionSparkArgs())
-        pyspark_mainfile = gcp.bigquery.Routine("pysparkMainfile",
-            dataset_id=test_dataset.dataset_id,
+        pyspark_mainfile = gcp.bigquery.Routine("pyspark_mainfile",
+            dataset_id=test.dataset_id,
             routine_id="routine_id",
             routine_type="PROCEDURE",
             language="PYTHON",
@@ -736,13 +736,13 @@ class Routine(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        test_dataset = gcp.bigquery.Dataset("testDataset", dataset_id="dataset_id")
-        test_connection = gcp.bigquery.Connection("testConnection",
+        test = gcp.bigquery.Dataset("test", dataset_id="dataset_id")
+        test_connection = gcp.bigquery.Connection("test",
             connection_id="connection_id",
             location="US",
             spark=gcp.bigquery.ConnectionSparkArgs())
-        spark_jar = gcp.bigquery.Routine("sparkJar",
-            dataset_id=test_dataset.dataset_id,
+        spark_jar = gcp.bigquery.Routine("spark_jar",
+            dataset_id=test.dataset_id,
             routine_id="routine_id",
             routine_type="PROCEDURE",
             language="SCALA",
@@ -913,13 +913,13 @@ class Routine(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        test_dataset = gcp.bigquery.Dataset("testDataset", dataset_id="dataset_id")
-        test_connection = gcp.bigquery.Connection("testConnection",
+        test = gcp.bigquery.Dataset("test", dataset_id="dataset_id")
+        test_connection = gcp.bigquery.Connection("test",
             connection_id="connection_id",
             location="US",
             spark=gcp.bigquery.ConnectionSparkArgs())
         pyspark = gcp.bigquery.Routine("pyspark",
-            dataset_id=test_dataset.dataset_id,
+            dataset_id=test.dataset_id,
             routine_id="routine_id",
             routine_type="PROCEDURE",
             language="PYTHON",
@@ -954,13 +954,13 @@ class Routine(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        test_dataset = gcp.bigquery.Dataset("testDataset", dataset_id="dataset_id")
-        test_connection = gcp.bigquery.Connection("testConnection",
+        test = gcp.bigquery.Dataset("test", dataset_id="dataset_id")
+        test_connection = gcp.bigquery.Connection("test",
             connection_id="connection_id",
             location="US",
             spark=gcp.bigquery.ConnectionSparkArgs())
-        pyspark_mainfile = gcp.bigquery.Routine("pysparkMainfile",
-            dataset_id=test_dataset.dataset_id,
+        pyspark_mainfile = gcp.bigquery.Routine("pyspark_mainfile",
+            dataset_id=test.dataset_id,
             routine_id="routine_id",
             routine_type="PROCEDURE",
             language="PYTHON",
@@ -980,13 +980,13 @@ class Routine(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        test_dataset = gcp.bigquery.Dataset("testDataset", dataset_id="dataset_id")
-        test_connection = gcp.bigquery.Connection("testConnection",
+        test = gcp.bigquery.Dataset("test", dataset_id="dataset_id")
+        test_connection = gcp.bigquery.Connection("test",
             connection_id="connection_id",
             location="US",
             spark=gcp.bigquery.ConnectionSparkArgs())
-        spark_jar = gcp.bigquery.Routine("sparkJar",
-            dataset_id=test_dataset.dataset_id,
+        spark_jar = gcp.bigquery.Routine("spark_jar",
+            dataset_id=test.dataset_id,
             routine_id="routine_id",
             routine_type="PROCEDURE",
             language="SCALA",

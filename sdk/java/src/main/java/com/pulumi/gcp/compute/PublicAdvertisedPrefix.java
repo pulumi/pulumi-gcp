@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var prefixes = new PublicAdvertisedPrefix(&#34;prefixes&#34;, PublicAdvertisedPrefixArgs.builder()        
+ *             .name(&#34;my-prefix&#34;)
  *             .description(&#34;description&#34;)
  *             .dnsVerificationIp(&#34;127.127.0.0&#34;)
  *             .ipCidrRange(&#34;127.127.0.0/16&#34;)

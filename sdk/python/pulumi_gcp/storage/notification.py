@@ -304,14 +304,11 @@ class Notification(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        gcs_account = gcp.storage.get_project_service_account()
-        topic = gcp.pubsub.Topic("topic")
-        binding = gcp.pubsub.TopicIAMBinding("binding",
-            topic=topic.id,
-            role="roles/pubsub.publisher",
-            members=[f"serviceAccount:{gcs_account.email_address}"])
         # End enabling notifications
-        bucket = gcp.storage.Bucket("bucket", location="US")
+        bucket = gcp.storage.Bucket("bucket",
+            name="default_bucket",
+            location="US")
+        topic = gcp.pubsub.Topic("topic", name="default_topic")
         notification = gcp.storage.Notification("notification",
             bucket=bucket.name,
             payload_format="JSON_API_V1",
@@ -322,9 +319,13 @@ class Notification(pulumi.CustomResource):
             ],
             custom_attributes={
                 "new-attribute": "new-attribute-value",
-            },
-            opts=pulumi.ResourceOptions(depends_on=[binding]))
+            })
         # Enable notifications by giving the correct IAM permission to the unique service account.
+        gcs_account = gcp.storage.get_project_service_account()
+        binding = gcp.pubsub.TopicIAMBinding("binding",
+            topic=topic.id,
+            role="roles/pubsub.publisher",
+            members=[f"serviceAccount:{gcs_account.email_address}"])
         ```
 
         ## Import
@@ -383,14 +384,11 @@ class Notification(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        gcs_account = gcp.storage.get_project_service_account()
-        topic = gcp.pubsub.Topic("topic")
-        binding = gcp.pubsub.TopicIAMBinding("binding",
-            topic=topic.id,
-            role="roles/pubsub.publisher",
-            members=[f"serviceAccount:{gcs_account.email_address}"])
         # End enabling notifications
-        bucket = gcp.storage.Bucket("bucket", location="US")
+        bucket = gcp.storage.Bucket("bucket",
+            name="default_bucket",
+            location="US")
+        topic = gcp.pubsub.Topic("topic", name="default_topic")
         notification = gcp.storage.Notification("notification",
             bucket=bucket.name,
             payload_format="JSON_API_V1",
@@ -401,9 +399,13 @@ class Notification(pulumi.CustomResource):
             ],
             custom_attributes={
                 "new-attribute": "new-attribute-value",
-            },
-            opts=pulumi.ResourceOptions(depends_on=[binding]))
+            })
         # Enable notifications by giving the correct IAM permission to the unique service account.
+        gcs_account = gcp.storage.get_project_service_account()
+        binding = gcp.pubsub.TopicIAMBinding("binding",
+            topic=topic.id,
+            role="roles/pubsub.publisher",
+            members=[f"serviceAccount:{gcs_account.email_address}"])
         ```
 
         ## Import

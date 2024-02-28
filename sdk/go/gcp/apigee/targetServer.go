@@ -40,46 +40,44 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+//				ProjectId:      pulumi.String("my-project"),
+//				Name:           pulumi.String("my-project"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			apigee, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
+//			_, err = projects.NewService(ctx, "apigee", &projects.ServiceArgs{
 //				Project: project.ProjectId,
 //				Service: pulumi.String("apigee.googleapis.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			servicenetworking, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
+//			_, err = projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
 //				Project: project.ProjectId,
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				apigee,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			compute, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
+//			_, err = projects.NewService(ctx, "compute", &projects.ServiceArgs{
 //				Project: project.ProjectId,
 //				Service: pulumi.String("compute.googleapis.com"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				servicenetworking,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			apigeeNetwork, err := compute.NewNetwork(ctx, "apigeeNetwork", &compute.NetworkArgs{
+//			apigeeNetwork, err := compute.NewNetwork(ctx, "apigee_network", &compute.NetworkArgs{
+//				Name:    pulumi.String("apigee-network"),
 //				Project: project.ProjectId,
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				compute,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			apigeeRange, err := compute.NewGlobalAddress(ctx, "apigeeRange", &compute.GlobalAddressArgs{
+//			apigeeRange, err := compute.NewGlobalAddress(ctx, "apigee_range", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("apigee-range"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
@@ -89,38 +87,35 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigeeVpcConnection", &servicenetworking.ConnectionArgs{
+//			_, err = servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
 //				Network: apigeeNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					apigeeRange.Name,
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				servicenetworking,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			apigeeOrg, err := apigee.NewOrganization(ctx, "apigeeOrg", &apigee.OrganizationArgs{
+//			apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 //				AnalyticsRegion:   pulumi.String("us-central1"),
 //				ProjectId:         project.ProjectId,
 //				AuthorizedNetwork: apigeeNetwork.ID(),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				apigeeVpcConnection,
-//				apigee,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			apigeeEnvironment, err := apigee.NewEnvironment(ctx, "apigeeEnvironment", &apigee.EnvironmentArgs{
+//			apigeeEnvironment, err := apigee.NewEnvironment(ctx, "apigee_environment", &apigee.EnvironmentArgs{
 //				OrgId:       apigeeOrg.ID(),
+//				Name:        pulumi.String("my-environment-name"),
 //				Description: pulumi.String("Apigee Environment"),
 //				DisplayName: pulumi.String("environment-1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = apigee.NewTargetServer(ctx, "apigeeTargetServer", &apigee.TargetServerArgs{
+//			_, err = apigee.NewTargetServer(ctx, "apigee_target_server", &apigee.TargetServerArgs{
+//				Name:        pulumi.String("my-target-server"),
 //				Description: pulumi.String("Apigee Target Server"),
 //				Protocol:    pulumi.String("HTTP"),
 //				Host:        pulumi.String("abc.foo.com"),

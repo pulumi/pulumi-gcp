@@ -28,31 +28,32 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNamespace, err := servicedirectory.NewNamespace(ctx, "defaultNamespace", &servicedirectory.NamespaceArgs{
+//			_, err := servicedirectory.NewNamespace(ctx, "default", &servicedirectory.NamespaceArgs{
 //				NamespaceId: pulumi.String("my-namespace"),
 //				Location:    pulumi.String("us-central1"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultService, err := servicedirectory.NewService(ctx, "defaultService", &servicedirectory.ServiceArgs{
+//			defaultService, err := servicedirectory.NewService(ctx, "default", &servicedirectory.ServiceArgs{
 //				ServiceId: pulumi.String("my-service"),
-//				Namespace: defaultNamespace.ID(),
+//				Namespace: _default.ID(),
 //				Metadata: pulumi.StringMap{
 //					"stage":  pulumi.String("prod"),
 //					"region": pulumi.String("us-central1"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networkservices.NewServiceBinding(ctx, "defaultServiceBinding", &networkservices.ServiceBindingArgs{
+//			_, err = networkservices.NewServiceBinding(ctx, "default", &networkservices.ServiceBindingArgs{
+//				Name: pulumi.String("my-service-binding"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
 //				Description: pulumi.String("my description"),
 //				Service:     defaultService.ID(),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

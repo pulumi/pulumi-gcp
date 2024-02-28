@@ -36,12 +36,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := storage.NewBucket(ctx, "log-bucket", &storage.BucketArgs{
+//				Name:     pulumi.String("organization-logging-bucket"),
 //				Location: pulumi.String("US"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = logging.NewOrganizationSink(ctx, "my-sink", &logging.OrganizationSinkArgs{
+//				Name:        pulumi.String("my-sink"),
 //				Description: pulumi.String("some explanation on what this is"),
 //				OrgId:       pulumi.String("123456789"),
 //				Destination: log_bucket.Name.ApplyT(func(name string) (string, error) {

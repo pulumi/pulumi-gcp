@@ -16,6 +16,41 @@ import * as utilities from "../utilities";
  *     * [Setting Up SSL proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/)
  *
  * ## Example Usage
+ * ### Target Ssl Proxy Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const defaultSSLCertificate = new gcp.compute.SSLCertificate("default", {
+ *     name: "default-cert",
+ *     privateKey: std.file({
+ *         input: "path/to/private.key",
+ *     }).then(invoke => invoke.result),
+ *     certificate: std.file({
+ *         input: "path/to/certificate.crt",
+ *     }).then(invoke => invoke.result),
+ * });
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+ *     name: "health-check",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ *     tcpHealthCheck: {
+ *         port: 443,
+ *     },
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     protocol: "SSL",
+ *     healthChecks: defaultHealthCheck.id,
+ * });
+ * const _default = new gcp.compute.TargetSSLProxy("default", {
+ *     name: "test-proxy",
+ *     backendService: defaultBackendService.id,
+ *     sslCertificates: [defaultSSLCertificate.id],
+ * });
+ * ```
  *
  * ## Import
  *

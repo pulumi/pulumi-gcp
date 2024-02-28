@@ -32,9 +32,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.notebooks.InstanceIamPolicy("policy", {
- *     project: google_notebooks_instance.instance.project,
- *     location: google_notebooks_instance.instance.location,
- *     instanceName: google_notebooks_instance.instance.name,
+ *     project: instance.project,
+ *     location: instance.location,
+ *     instanceName: instance.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -46,9 +46,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.notebooks.InstanceIamBinding("binding", {
- *     project: google_notebooks_instance.instance.project,
- *     location: google_notebooks_instance.instance.location,
- *     instanceName: google_notebooks_instance.instance.name,
+ *     project: instance.project,
+ *     location: instance.location,
+ *     instanceName: instance.name,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
  * });
@@ -61,9 +61,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.notebooks.InstanceIamMember("member", {
- *     project: google_notebooks_instance.instance.project,
- *     location: google_notebooks_instance.instance.location,
- *     instanceName: google_notebooks_instance.instance.name,
+ *     project: instance.project,
+ *     location: instance.location,
+ *     instanceName: instance.name,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
  * });

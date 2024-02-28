@@ -51,8 +51,8 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     ///     var policy = new Gcp.Healthcare.ConsentStoreIamPolicy("policy", new()
     ///     {
-    ///         Dataset = google_healthcare_consent_store.My_consent.Dataset,
-    ///         ConsentStoreId = google_healthcare_consent_store.My_consent.Name,
+    ///         Dataset = my_consent.Dataset,
+    ///         ConsentStoreId = my_consent.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -71,8 +71,8 @@ namespace Pulumi.Gcp.Healthcare
     /// {
     ///     var binding = new Gcp.Healthcare.ConsentStoreIamBinding("binding", new()
     ///     {
-    ///         Dataset = google_healthcare_consent_store.My_consent.Dataset,
-    ///         ConsentStoreId = google_healthcare_consent_store.My_consent.Name,
+    ///         Dataset = my_consent.Dataset,
+    ///         ConsentStoreId = my_consent.Name,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -95,8 +95,8 @@ namespace Pulumi.Gcp.Healthcare
     /// {
     ///     var member = new Gcp.Healthcare.ConsentStoreIamMember("member", new()
     ///     {
-    ///         Dataset = google_healthcare_consent_store.My_consent.Dataset,
-    ///         ConsentStoreId = google_healthcare_consent_store.My_consent.Name,
+    ///         Dataset = my_consent.Dataset,
+    ///         ConsentStoreId = my_consent.Name,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

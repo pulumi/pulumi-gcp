@@ -30,18 +30,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := assuredworkloads.NewWorkload(ctx, "primary", &assuredworkloads.WorkloadArgs{
-//				BillingAccount:   pulumi.String("billingAccounts/000000-0000000-0000000-000000"),
 //				ComplianceRegime: pulumi.String("FEDRAMP_MODERATE"),
 //				DisplayName:      pulumi.String("{{display}}"),
+//				Location:         pulumi.String("us-west1"),
+//				Organization:     pulumi.String("123456789"),
+//				BillingAccount:   pulumi.String("billingAccounts/000000-0000000-0000000-000000"),
 //				KmsSettings: &assuredworkloads.WorkloadKmsSettingsArgs{
 //					NextRotationTime: pulumi.String("9999-10-02T15:01:23Z"),
 //					RotationPeriod:   pulumi.String("10368000s"),
 //				},
-//				Labels: pulumi.StringMap{
-//					"label-one": pulumi.String("value-one"),
-//				},
-//				Location:                   pulumi.String("us-west1"),
-//				Organization:               pulumi.String("123456789"),
 //				ProvisionedResourcesParent: pulumi.String("folders/519620126891"),
 //				ResourceSettings: assuredworkloads.WorkloadResourceSettingArray{
 //					&assuredworkloads.WorkloadResourceSettingArgs{
@@ -57,6 +54,9 @@ import (
 //					},
 //				},
 //				ViolationNotificationsEnabled: pulumi.Bool(true),
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -106,7 +106,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

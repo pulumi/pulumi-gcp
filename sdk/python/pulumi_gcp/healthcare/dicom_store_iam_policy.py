@@ -186,7 +186,7 @@ class DicomStoreIamPolicy(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
-        dicom_store = gcp.healthcare.DicomStoreIamPolicy("dicomStore",
+        dicom_store = gcp.healthcare.DicomStoreIamPolicy("dicom_store",
             dicom_store_id="your-dicom-store-id",
             policy_data=admin.policy_data)
         ```
@@ -197,10 +197,10 @@ class DicomStoreIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        dicom_store = gcp.healthcare.DicomStoreIamBinding("dicomStore",
+        dicom_store = gcp.healthcare.DicomStoreIamBinding("dicom_store",
             dicom_store_id="your-dicom-store-id",
-            members=["user:jane@example.com"],
-            role="roles/editor")
+            role="roles/editor",
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_healthcare\\_dicom\\_store\\_iam\\_member
@@ -209,10 +209,10 @@ class DicomStoreIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        dicom_store = gcp.healthcare.DicomStoreIamMember("dicomStore",
+        dicom_store = gcp.healthcare.DicomStoreIamMember("dicom_store",
             dicom_store_id="your-dicom-store-id",
-            member="user:jane@example.com",
-            role="roles/editor")
+            role="roles/editor",
+            member="user:jane@example.com")
         ```
 
         ## Import
@@ -286,7 +286,7 @@ class DicomStoreIamPolicy(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
-        dicom_store = gcp.healthcare.DicomStoreIamPolicy("dicomStore",
+        dicom_store = gcp.healthcare.DicomStoreIamPolicy("dicom_store",
             dicom_store_id="your-dicom-store-id",
             policy_data=admin.policy_data)
         ```
@@ -297,10 +297,10 @@ class DicomStoreIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        dicom_store = gcp.healthcare.DicomStoreIamBinding("dicomStore",
+        dicom_store = gcp.healthcare.DicomStoreIamBinding("dicom_store",
             dicom_store_id="your-dicom-store-id",
-            members=["user:jane@example.com"],
-            role="roles/editor")
+            role="roles/editor",
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_healthcare\\_dicom\\_store\\_iam\\_member
@@ -309,10 +309,10 @@ class DicomStoreIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        dicom_store = gcp.healthcare.DicomStoreIamMember("dicomStore",
+        dicom_store = gcp.healthcare.DicomStoreIamMember("dicom_store",
             dicom_store_id="your-dicom-store-id",
-            member="user:jane@example.com",
-            role="roles/editor")
+            role="roles/editor",
+            member="user:jane@example.com")
         ```
 
         ## Import

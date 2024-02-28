@@ -31,16 +31,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.clouddomains.Registration;
  * import com.pulumi.gcp.clouddomains.RegistrationArgs;
- * import com.pulumi.gcp.clouddomains.inputs.RegistrationContactSettingsArgs;
- * import com.pulumi.gcp.clouddomains.inputs.RegistrationContactSettingsAdminContactArgs;
- * import com.pulumi.gcp.clouddomains.inputs.RegistrationContactSettingsAdminContactPostalAddressArgs;
- * import com.pulumi.gcp.clouddomains.inputs.RegistrationContactSettingsRegistrantContactArgs;
- * import com.pulumi.gcp.clouddomains.inputs.RegistrationContactSettingsRegistrantContactPostalAddressArgs;
- * import com.pulumi.gcp.clouddomains.inputs.RegistrationContactSettingsTechnicalContactArgs;
- * import com.pulumi.gcp.clouddomains.inputs.RegistrationContactSettingsTechnicalContactPostalAddressArgs;
+ * import com.pulumi.gcp.clouddomains.inputs.RegistrationYearlyPriceArgs;
  * import com.pulumi.gcp.clouddomains.inputs.RegistrationDnsSettingsArgs;
  * import com.pulumi.gcp.clouddomains.inputs.RegistrationDnsSettingsCustomDnsArgs;
- * import com.pulumi.gcp.clouddomains.inputs.RegistrationYearlyPriceArgs;
+ * import com.pulumi.gcp.clouddomains.inputs.RegistrationContactSettingsArgs;
+ * import com.pulumi.gcp.clouddomains.inputs.RegistrationContactSettingsRegistrantContactArgs;
+ * import com.pulumi.gcp.clouddomains.inputs.RegistrationContactSettingsRegistrantContactPostalAddressArgs;
+ * import com.pulumi.gcp.clouddomains.inputs.RegistrationContactSettingsAdminContactArgs;
+ * import com.pulumi.gcp.clouddomains.inputs.RegistrationContactSettingsAdminContactPostalAddressArgs;
+ * import com.pulumi.gcp.clouddomains.inputs.RegistrationContactSettingsTechnicalContactArgs;
+ * import com.pulumi.gcp.clouddomains.inputs.RegistrationContactSettingsTechnicalContactPostalAddressArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -55,44 +55,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myRegistration = new Registration(&#34;myRegistration&#34;, RegistrationArgs.builder()        
- *             .contactSettings(RegistrationContactSettingsArgs.builder()
- *                 .adminContact(RegistrationContactSettingsAdminContactArgs.builder()
- *                     .email(&#34;user@example.com&#34;)
- *                     .phoneNumber(&#34;+12345000000&#34;)
- *                     .postalAddress(RegistrationContactSettingsAdminContactPostalAddressArgs.builder()
- *                         .addressLines(&#34;1234 Example street&#34;)
- *                         .administrativeArea(&#34;CA&#34;)
- *                         .locality(&#34;Example City&#34;)
- *                         .postalCode(&#34;95050&#34;)
- *                         .recipients(&#34;example recipient&#34;)
- *                         .regionCode(&#34;US&#34;)
- *                         .build())
- *                     .build())
- *                 .privacy(&#34;REDACTED_CONTACT_DATA&#34;)
- *                 .registrantContact(RegistrationContactSettingsRegistrantContactArgs.builder()
- *                     .email(&#34;user@example.com&#34;)
- *                     .phoneNumber(&#34;+12345000000&#34;)
- *                     .postalAddress(RegistrationContactSettingsRegistrantContactPostalAddressArgs.builder()
- *                         .addressLines(&#34;1234 Example street&#34;)
- *                         .administrativeArea(&#34;CA&#34;)
- *                         .locality(&#34;Example City&#34;)
- *                         .postalCode(&#34;95050&#34;)
- *                         .recipients(&#34;example recipient&#34;)
- *                         .regionCode(&#34;US&#34;)
- *                         .build())
- *                     .build())
- *                 .technicalContact(RegistrationContactSettingsTechnicalContactArgs.builder()
- *                     .email(&#34;user@example.com&#34;)
- *                     .phoneNumber(&#34;+12345000000&#34;)
- *                     .postalAddress(RegistrationContactSettingsTechnicalContactPostalAddressArgs.builder()
- *                         .addressLines(&#34;1234 Example street&#34;)
- *                         .administrativeArea(&#34;CA&#34;)
- *                         .locality(&#34;Example City&#34;)
- *                         .postalCode(&#34;95050&#34;)
- *                         .recipients(&#34;example recipient&#34;)
- *                         .regionCode(&#34;US&#34;)
- *                         .build())
- *                     .build())
+ *             .domainName(&#34;example-domain.com&#34;)
+ *             .location(&#34;global&#34;)
+ *             .labels(Map.of(&#34;labelkey&#34;, &#34;labelvalue&#34;))
+ *             .yearlyPrice(RegistrationYearlyPriceArgs.builder()
+ *                 .currencyCode(&#34;USD&#34;)
+ *                 .units(12)
  *                 .build())
  *             .dnsSettings(RegistrationDnsSettingsArgs.builder()
  *                 .customDns(RegistrationDnsSettingsCustomDnsArgs.builder()
@@ -103,12 +71,44 @@ import javax.annotation.Nullable;
  *                         &#34;ns-cloud-a4.googledomains.com.&#34;)
  *                     .build())
  *                 .build())
- *             .domainName(&#34;example-domain.com&#34;)
- *             .labels(Map.of(&#34;labelkey&#34;, &#34;labelvalue&#34;))
- *             .location(&#34;global&#34;)
- *             .yearlyPrice(RegistrationYearlyPriceArgs.builder()
- *                 .currencyCode(&#34;USD&#34;)
- *                 .units(12)
+ *             .contactSettings(RegistrationContactSettingsArgs.builder()
+ *                 .privacy(&#34;REDACTED_CONTACT_DATA&#34;)
+ *                 .registrantContact(RegistrationContactSettingsRegistrantContactArgs.builder()
+ *                     .phoneNumber(&#34;+12345000000&#34;)
+ *                     .email(&#34;user@example.com&#34;)
+ *                     .postalAddress(RegistrationContactSettingsRegistrantContactPostalAddressArgs.builder()
+ *                         .regionCode(&#34;US&#34;)
+ *                         .postalCode(&#34;95050&#34;)
+ *                         .administrativeArea(&#34;CA&#34;)
+ *                         .locality(&#34;Example City&#34;)
+ *                         .addressLines(&#34;1234 Example street&#34;)
+ *                         .recipients(&#34;example recipient&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .adminContact(RegistrationContactSettingsAdminContactArgs.builder()
+ *                     .phoneNumber(&#34;+12345000000&#34;)
+ *                     .email(&#34;user@example.com&#34;)
+ *                     .postalAddress(RegistrationContactSettingsAdminContactPostalAddressArgs.builder()
+ *                         .regionCode(&#34;US&#34;)
+ *                         .postalCode(&#34;95050&#34;)
+ *                         .administrativeArea(&#34;CA&#34;)
+ *                         .locality(&#34;Example City&#34;)
+ *                         .addressLines(&#34;1234 Example street&#34;)
+ *                         .recipients(&#34;example recipient&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .technicalContact(RegistrationContactSettingsTechnicalContactArgs.builder()
+ *                     .phoneNumber(&#34;+12345000000&#34;)
+ *                     .email(&#34;user@example.com&#34;)
+ *                     .postalAddress(RegistrationContactSettingsTechnicalContactPostalAddressArgs.builder()
+ *                         .regionCode(&#34;US&#34;)
+ *                         .postalCode(&#34;95050&#34;)
+ *                         .administrativeArea(&#34;CA&#34;)
+ *                         .locality(&#34;Example City&#34;)
+ *                         .addressLines(&#34;1234 Example street&#34;)
+ *                         .recipients(&#34;example recipient&#34;)
+ *                         .build())
+ *                     .build())
  *                 .build())
  *             .build());
  * 

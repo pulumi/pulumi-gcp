@@ -40,11 +40,13 @@ namespace Pulumi.Gcp.Kms
     /// {
     ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
     ///     {
+    ///         Name = "keyring-example",
     ///         Location = "global",
     ///     });
     /// 
     ///     var example_key = new Gcp.Kms.CryptoKey("example-key", new()
     ///     {
+    ///         Name = "crypto-key-example",
     ///         KeyRing = keyring.Id,
     ///         RotationPeriod = "7776000s",
     ///     });
@@ -63,11 +65,13 @@ namespace Pulumi.Gcp.Kms
     /// {
     ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
     ///     {
+    ///         Name = "keyring-example",
     ///         Location = "global",
     ///     });
     /// 
     ///     var example_asymmetric_sign_key = new Gcp.Kms.CryptoKey("example-asymmetric-sign-key", new()
     ///     {
+    ///         Name = "crypto-key-example",
     ///         KeyRing = keyring.Id,
     ///         Purpose = "ASYMMETRIC_SIGN",
     ///         VersionTemplate = new Gcp.Kms.Inputs.CryptoKeyVersionTemplateArgs

@@ -14,11 +14,11 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.dataplex.getAssetIamPolicy({
- *     project: google_dataplex_asset.example.project,
- *     location: google_dataplex_asset.example.location,
- *     lake: google_dataplex_asset.example.lake,
- *     dataplexZone: google_dataplex_asset.example.dataplex_zone,
- *     asset: google_dataplex_asset.example.name,
+ *     project: example.project,
+ *     location: example.location,
+ *     lake: example.lake,
+ *     dataplexZone: example.dataplexZone,
+ *     asset: example.name,
  * });
  * ```
  */
@@ -85,11 +85,11 @@ export interface GetAssetIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.dataplex.getAssetIamPolicy({
- *     project: google_dataplex_asset.example.project,
- *     location: google_dataplex_asset.example.location,
- *     lake: google_dataplex_asset.example.lake,
- *     dataplexZone: google_dataplex_asset.example.dataplex_zone,
- *     asset: google_dataplex_asset.example.name,
+ *     project: example.project,
+ *     location: example.location,
+ *     lake: example.lake,
+ *     dataplexZone: example.dataplexZone,
+ *     asset: example.name,
  * });
  * ```
  */

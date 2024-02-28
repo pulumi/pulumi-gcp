@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const featurestore = new gcp.vertex.AiFeatureStore("featurestore", {
+ *     name: "terraform",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -35,6 +36,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const entity = new gcp.vertex.AiFeatureStoreEntityType("entity", {
+ *     name: "terraform",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -66,6 +68,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const featurestore = new gcp.vertex.AiFeatureStore("featurestore", {
+ *     name: "terraform2",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -76,10 +79,9 @@ import * as utilities from "../utilities";
  *     encryptionSpec: {
  *         kmsKeyName: "kms-name",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const entity = new gcp.vertex.AiFeatureStoreEntityType("entity", {
+ *     name: "terraform2",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -97,8 +99,6 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     offlineStorageTtlDays: 30,
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

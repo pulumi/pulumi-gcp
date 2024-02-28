@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebIamPolicy(&#34;policy&#34;, WebIamPolicyArgs.builder()        
- *             .project(google_project_service.project_service().project())
+ *             .project(projectService.project())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebIamPolicy(&#34;policy&#34;, WebIamPolicyArgs.builder()        
- *             .project(google_project_service.project_service().project())
+ *             .project(projectService.project())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -140,7 +140,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new WebIamBinding(&#34;binding&#34;, WebIamBindingArgs.builder()        
- *             .project(google_project_service.project_service().project())
+ *             .project(projectService.project())
  *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -173,7 +173,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new WebIamBinding(&#34;binding&#34;, WebIamBindingArgs.builder()        
- *             .project(google_project_service.project_service().project())
+ *             .project(projectService.project())
  *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .condition(WebIamBindingConditionArgs.builder()
@@ -209,7 +209,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new WebIamMember(&#34;member&#34;, WebIamMemberArgs.builder()        
- *             .project(google_project_service.project_service().project())
+ *             .project(projectService.project())
  *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -242,7 +242,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new WebIamMember(&#34;member&#34;, WebIamMemberArgs.builder()        
- *             .project(google_project_service.project_service().project())
+ *             .project(projectService.project())
  *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .condition(WebIamMemberConditionArgs.builder()

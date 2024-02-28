@@ -430,17 +430,21 @@ class SSLPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        prod_ssl_policy = gcp.compute.SSLPolicy("prod-ssl-policy", profile="MODERN")
-        nonprod_ssl_policy = gcp.compute.SSLPolicy("nonprod-ssl-policy",
-            min_tls_version="TLS_1_2",
+        prod_ssl_policy = gcp.compute.SSLPolicy("prod-ssl-policy",
+            name="production-ssl-policy",
             profile="MODERN")
+        nonprod_ssl_policy = gcp.compute.SSLPolicy("nonprod-ssl-policy",
+            name="nonprod-ssl-policy",
+            profile="MODERN",
+            min_tls_version="TLS_1_2")
         custom_ssl_policy = gcp.compute.SSLPolicy("custom-ssl-policy",
+            name="custom-ssl-policy",
+            min_tls_version="TLS_1_2",
+            profile="CUSTOM",
             custom_features=[
                 "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
                 "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
-            ],
-            min_tls_version="TLS_1_2",
-            profile="CUSTOM")
+            ])
         ```
 
         ## Import
@@ -528,17 +532,21 @@ class SSLPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        prod_ssl_policy = gcp.compute.SSLPolicy("prod-ssl-policy", profile="MODERN")
-        nonprod_ssl_policy = gcp.compute.SSLPolicy("nonprod-ssl-policy",
-            min_tls_version="TLS_1_2",
+        prod_ssl_policy = gcp.compute.SSLPolicy("prod-ssl-policy",
+            name="production-ssl-policy",
             profile="MODERN")
+        nonprod_ssl_policy = gcp.compute.SSLPolicy("nonprod-ssl-policy",
+            name="nonprod-ssl-policy",
+            profile="MODERN",
+            min_tls_version="TLS_1_2")
         custom_ssl_policy = gcp.compute.SSLPolicy("custom-ssl-policy",
+            name="custom-ssl-policy",
+            min_tls_version="TLS_1_2",
+            profile="CUSTOM",
             custom_features=[
                 "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
                 "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
-            ],
-            min_tls_version="TLS_1_2",
-            profile="CUSTOM")
+            ])
         ```
 
         ## Import

@@ -157,25 +157,27 @@ class SyncAuthorization(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.Project("project",
+            project_id="my-project",
+            name="my-project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000")
         apigee = gcp.projects.Service("apigee",
             project=project.project_id,
             service="apigee.googleapis.com")
-        apigee_org = gcp.apigee.Organization("apigeeOrg",
+        apigee_org = gcp.apigee.Organization("apigee_org",
             analytics_region="us-central1",
             project_id=project.project_id,
-            runtime_type="HYBRID",
-            opts=pulumi.ResourceOptions(depends_on=[apigee]))
-        service_account = gcp.serviceaccount.Account("serviceAccount",
+            runtime_type="HYBRID")
+        service_account = gcp.serviceaccount.Account("service_account",
             account_id="my-account",
             display_name="Service Account")
         synchronizer_iam = gcp.projects.IAMBinding("synchronizer-iam",
             project=project.project_id,
             role="roles/apigee.synchronizerManager",
             members=[service_account.email.apply(lambda email: f"serviceAccount:{email}")])
-        apigee_sync_authorization = gcp.apigee.SyncAuthorization("apigeeSyncAuthorization", identities=[service_account.email.apply(lambda email: f"serviceAccount:{email}")],
-        opts=pulumi.ResourceOptions(depends_on=[synchronizer_iam]))
+        apigee_sync_authorization = gcp.apigee.SyncAuthorization("apigee_sync_authorization",
+            name=apigee_org.name,
+            identities=[service_account.email.apply(lambda email: f"serviceAccount:{email}")])
         ```
 
         ## Import
@@ -230,25 +232,27 @@ class SyncAuthorization(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.Project("project",
+            project_id="my-project",
+            name="my-project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000")
         apigee = gcp.projects.Service("apigee",
             project=project.project_id,
             service="apigee.googleapis.com")
-        apigee_org = gcp.apigee.Organization("apigeeOrg",
+        apigee_org = gcp.apigee.Organization("apigee_org",
             analytics_region="us-central1",
             project_id=project.project_id,
-            runtime_type="HYBRID",
-            opts=pulumi.ResourceOptions(depends_on=[apigee]))
-        service_account = gcp.serviceaccount.Account("serviceAccount",
+            runtime_type="HYBRID")
+        service_account = gcp.serviceaccount.Account("service_account",
             account_id="my-account",
             display_name="Service Account")
         synchronizer_iam = gcp.projects.IAMBinding("synchronizer-iam",
             project=project.project_id,
             role="roles/apigee.synchronizerManager",
             members=[service_account.email.apply(lambda email: f"serviceAccount:{email}")])
-        apigee_sync_authorization = gcp.apigee.SyncAuthorization("apigeeSyncAuthorization", identities=[service_account.email.apply(lambda email: f"serviceAccount:{email}")],
-        opts=pulumi.ResourceOptions(depends_on=[synchronizer_iam]))
+        apigee_sync_authorization = gcp.apigee.SyncAuthorization("apigee_sync_authorization",
+            name=apigee_org.name,
+            identities=[service_account.email.apply(lambda email: f"serviceAccount:{email}")])
         ```
 
         ## Import

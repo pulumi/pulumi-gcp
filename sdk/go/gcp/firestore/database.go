@@ -42,8 +42,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
-//				LocationId: pulumi.String("nam5"),
 //				Project:    pulumi.String("my-project-name"),
+//				Name:       pulumi.String("(default)"),
+//				LocationId: pulumi.String("nam5"),
 //				Type:       pulumi.String("FIRESTORE_NATIVE"),
 //			})
 //			if err != nil {
@@ -69,14 +70,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
-//				AppEngineIntegrationMode:      pulumi.String("DISABLED"),
+//				Project:                       pulumi.String("my-project-name"),
+//				Name:                          pulumi.String("database-id"),
+//				LocationId:                    pulumi.String("nam5"),
+//				Type:                          pulumi.String("FIRESTORE_NATIVE"),
 //				ConcurrencyMode:               pulumi.String("OPTIMISTIC"),
+//				AppEngineIntegrationMode:      pulumi.String("DISABLED"),
+//				PointInTimeRecoveryEnablement: pulumi.String("POINT_IN_TIME_RECOVERY_ENABLED"),
 //				DeleteProtectionState:         pulumi.String("DELETE_PROTECTION_ENABLED"),
 //				DeletionPolicy:                pulumi.String("DELETE"),
-//				LocationId:                    pulumi.String("nam5"),
-//				PointInTimeRecoveryEnablement: pulumi.String("POINT_IN_TIME_RECOVERY_ENABLED"),
-//				Project:                       pulumi.String("my-project-name"),
-//				Type:                          pulumi.String("FIRESTORE_NATIVE"),
 //			})
 //			if err != nil {
 //				return err
@@ -100,9 +102,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := firestore.NewDatabase(ctx, "datastoreModeDatabase", &firestore.DatabaseArgs{
-//				LocationId: pulumi.String("nam5"),
+//			_, err := firestore.NewDatabase(ctx, "datastore_mode_database", &firestore.DatabaseArgs{
 //				Project:    pulumi.String("my-project-name"),
+//				Name:       pulumi.String("(default)"),
+//				LocationId: pulumi.String("nam5"),
 //				Type:       pulumi.String("DATASTORE_MODE"),
 //			})
 //			if err != nil {
@@ -127,15 +130,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := firestore.NewDatabase(ctx, "datastoreModeDatabase", &firestore.DatabaseArgs{
-//				AppEngineIntegrationMode:      pulumi.String("DISABLED"),
+//			_, err := firestore.NewDatabase(ctx, "datastore_mode_database", &firestore.DatabaseArgs{
+//				Project:                       pulumi.String("my-project-name"),
+//				Name:                          pulumi.String("database-id"),
+//				LocationId:                    pulumi.String("nam5"),
+//				Type:                          pulumi.String("DATASTORE_MODE"),
 //				ConcurrencyMode:               pulumi.String("OPTIMISTIC"),
+//				AppEngineIntegrationMode:      pulumi.String("DISABLED"),
+//				PointInTimeRecoveryEnablement: pulumi.String("POINT_IN_TIME_RECOVERY_ENABLED"),
 //				DeleteProtectionState:         pulumi.String("DELETE_PROTECTION_ENABLED"),
 //				DeletionPolicy:                pulumi.String("DELETE"),
-//				LocationId:                    pulumi.String("nam5"),
-//				PointInTimeRecoveryEnablement: pulumi.String("POINT_IN_TIME_RECOVERY_ENABLED"),
-//				Project:                       pulumi.String("my-project-name"),
-//				Type:                          pulumi.String("DATASTORE_MODE"),
 //			})
 //			if err != nil {
 //				return err

@@ -47,7 +47,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			policyTag, err := datacatalog.NewPolicyTag(ctx, "policyTag", &datacatalog.PolicyTagArgs{
+//			policyTag, err := datacatalog.NewPolicyTag(ctx, "policy_tag", &datacatalog.PolicyTagArgs{
 //				Taxonomy:    taxonomy.ID(),
 //				DisplayName: pulumi.String("Low security"),
 //				Description: pulumi.String("A policy tag normally associated with low security items"),
@@ -55,7 +55,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bigquerydatapolicy.NewDataPolicy(ctx, "dataPolicy", &bigquerydatapolicy.DataPolicyArgs{
+//			_, err = bigquerydatapolicy.NewDataPolicy(ctx, "data_policy", &bigquerydatapolicy.DataPolicyArgs{
 //				Location:       pulumi.String("us-central1"),
 //				DataPolicyId:   pulumi.String("data_policy"),
 //				PolicyTag:      policyTag.Name,

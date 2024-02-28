@@ -52,10 +52,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobarNetwork = new Network(&#34;foobarNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;my-network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var foobarRouter = new Router(&#34;foobarRouter&#34;, RouterArgs.builder()        
+ *         var foobar = new Router(&#34;foobar&#34;, RouterArgs.builder()        
+ *             .name(&#34;my-router&#34;)
  *             .network(foobarNetwork.name())
  *             .bgp(RouterBgpArgs.builder()
  *                 .asn(64514)
@@ -100,10 +102,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
+ *             .name(&#34;test-network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var encrypted_interconnect_router = new Router(&#34;encrypted-interconnect-router&#34;, RouterArgs.builder()        
+ *             .name(&#34;test-router&#34;)
  *             .network(network.name())
  *             .encryptedInterconnectRouter(true)
  *             .bgp(RouterBgpArgs.builder()

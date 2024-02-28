@@ -76,9 +76,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basicEntryGroup = new EntryGroup(&#34;basicEntryGroup&#34;, EntryGroupArgs.builder()        
- *             .description(&#34;example entry group&#34;)
- *             .displayName(&#34;entry group&#34;)
  *             .entryGroupId(&#34;my_group&#34;)
+ *             .displayName(&#34;entry group&#34;)
+ *             .description(&#34;example entry group&#34;)
  *             .build());
  * 
  *     }

@@ -464,12 +464,16 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        producer_net = gcp.compute.Network("producerNet", auto_create_subnetworks=False)
-        producer_subnet = gcp.compute.Subnetwork("producerSubnet",
+        producer_net = gcp.compute.Network("producer_net",
+            name="producer-net",
+            auto_create_subnetworks=False)
+        producer_subnet = gcp.compute.Subnetwork("producer_subnet",
+            name="producer-subnet",
             ip_cidr_range="10.0.0.0/16",
             region="us-central1",
             network=producer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
+            name="my-network-connectivity-policy",
             location="us-central1",
             service_class="my-basic-service-class",
             description="my basic service connection policy",
@@ -546,12 +550,16 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        producer_net = gcp.compute.Network("producerNet", auto_create_subnetworks=False)
-        producer_subnet = gcp.compute.Subnetwork("producerSubnet",
+        producer_net = gcp.compute.Network("producer_net",
+            name="producer-net",
+            auto_create_subnetworks=False)
+        producer_subnet = gcp.compute.Subnetwork("producer_subnet",
+            name="producer-subnet",
             ip_cidr_range="10.0.0.0/16",
             region="us-central1",
             network=producer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
+            name="my-network-connectivity-policy",
             location="us-central1",
             service_class="my-basic-service-class",
             description="my basic service connection policy",

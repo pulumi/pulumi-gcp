@@ -25,8 +25,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const template = new gcp.compute.NodeTemplate("template", {
- *     nodeType: "n1-node-96-624",
+ *     name: "soletenant-tmpl",
  *     region: "us-central1",
+ *     nodeType: "n1-node-96-624",
  * });
  * ```
  * ### Node Template Server Binding
@@ -39,11 +40,12 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  * });
  * const template = new gcp.compute.NodeTemplate("template", {
+ *     name: "soletenant-with-licenses",
+ *     region: "us-central1",
+ *     nodeType: "n1-node-96-624",
  *     nodeAffinityLabels: {
  *         foo: "baz",
  *     },
- *     nodeType: "n1-node-96-624",
- *     region: "us-central1",
  *     serverBinding: {
  *         type: "RESTART_NODE_ON_MINIMAL_SERVERS",
  *     },

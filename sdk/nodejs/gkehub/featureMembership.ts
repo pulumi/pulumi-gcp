@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const cluster = new gcp.container.Cluster("cluster", {
+ *     name: "my-cluster",
  *     location: "us-central1-a",
  *     initialNodeCount: 1,
  * });
@@ -29,12 +30,13 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const feature = new gcp.gkehub.Feature("feature", {
+ *     name: "configmanagement",
  *     location: "global",
  *     labels: {
  *         foo: "bar",
  *     },
  * });
- * const featureMember = new gcp.gkehub.FeatureMembership("featureMember", {
+ * const featureMember = new gcp.gkehub.FeatureMembership("feature_member", {
  *     location: "global",
  *     feature: feature.name,
  *     membership: membership.membershipId,
@@ -55,6 +57,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const cluster = new gcp.container.Cluster("cluster", {
+ *     name: "my-cluster",
  *     location: "us-central1-a",
  *     initialNodeCount: 1,
  * });
@@ -67,12 +70,13 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const feature = new gcp.gkehub.Feature("feature", {
+ *     name: "configmanagement",
  *     location: "global",
  *     labels: {
  *         foo: "bar",
  *     },
  * });
- * const featureMember = new gcp.gkehub.FeatureMembership("featureMember", {
+ * const featureMember = new gcp.gkehub.FeatureMembership("feature_member", {
  *     location: "global",
  *     feature: feature.name,
  *     membership: membership.membershipId,
@@ -97,10 +101,11 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const feature = new gcp.gkehub.Feature("feature", {
+ *     name: "multiclusterservicediscovery",
+ *     location: "global",
  *     labels: {
  *         foo: "bar",
  *     },
- *     location: "global",
  * });
  * ```
  * ### Service Mesh
@@ -110,6 +115,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const cluster = new gcp.container.Cluster("cluster", {
+ *     name: "my-cluster",
  *     location: "us-central1-a",
  *     initialNodeCount: 1,
  * });
@@ -121,8 +127,11 @@ import * as utilities from "../utilities";
  *         },
  *     },
  * });
- * const feature = new gcp.gkehub.Feature("feature", {location: "global"});
- * const featureMember = new gcp.gkehub.FeatureMembership("featureMember", {
+ * const feature = new gcp.gkehub.Feature("feature", {
+ *     name: "servicemesh",
+ *     location: "global",
+ * });
+ * const featureMember = new gcp.gkehub.FeatureMembership("feature_member", {
  *     location: "global",
  *     feature: feature.name,
  *     membership: membership.membershipId,
@@ -138,6 +147,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const cluster = new gcp.container.Cluster("cluster", {
+ *     name: "my-cluster",
  *     location: "us-central1-a",
  *     initialNodeCount: 1,
  * });
@@ -151,12 +161,13 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const feature = new gcp.gkehub.Feature("feature", {
+ *     name: "configmanagement",
  *     location: "global",
  *     labels: {
  *         foo: "bar",
  *     },
  * });
- * const featureMember = new gcp.gkehub.FeatureMembership("featureMember", {
+ * const featureMember = new gcp.gkehub.FeatureMembership("feature_member", {
  *     location: "global",
  *     feature: feature.name,
  *     membership: membership.membershipId,
@@ -178,6 +189,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const cluster = new gcp.container.Cluster("cluster", {
+ *     name: "my-cluster",
  *     location: "us-central1-a",
  *     initialNodeCount: 1,
  * });
@@ -189,8 +201,11 @@ import * as utilities from "../utilities";
  *         },
  *     },
  * });
- * const feature = new gcp.gkehub.Feature("feature", {location: "global"});
- * const featureMember = new gcp.gkehub.FeatureMembership("featureMember", {
+ * const feature = new gcp.gkehub.Feature("feature", {
+ *     name: "policycontroller",
+ *     location: "global",
+ * });
+ * const featureMember = new gcp.gkehub.FeatureMembership("feature_member", {
  *     location: "global",
  *     feature: feature.name,
  *     membership: membership.membershipId,
@@ -208,6 +223,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const cluster = new gcp.container.Cluster("cluster", {
+ *     name: "my-cluster",
  *     location: "us-central1-a",
  *     initialNodeCount: 1,
  * });
@@ -219,8 +235,11 @@ import * as utilities from "../utilities";
  *         },
  *     },
  * });
- * const feature = new gcp.gkehub.Feature("feature", {location: "global"});
- * const featureMember = new gcp.gkehub.FeatureMembership("featureMember", {
+ * const feature = new gcp.gkehub.Feature("feature", {
+ *     name: "policycontroller",
+ *     location: "global",
+ * });
+ * const featureMember = new gcp.gkehub.FeatureMembership("feature_member", {
  *     location: "global",
  *     feature: feature.name,
  *     membership: membership.membershipId,

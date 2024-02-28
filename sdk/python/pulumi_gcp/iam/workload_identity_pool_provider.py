@@ -74,18 +74,12 @@ class WorkloadIdentityPoolProviderArgs:
                the total size of all mapped attributes must not exceed 8KB.
                For AWS providers, the following rules apply:
                - If no attribute mapping is defined, the following default mapping applies:
-               ```python
-               import pulumi
-               ```
                - If any custom attribute mappings are defined, they must include a mapping to the
                `google.subject` attribute.
                For OIDC providers, the following rules apply:
                - Custom attribute mappings must be defined, and must include a mapping to the
                `google.subject` attribute. For example, the following maps the `sub` claim of the
                incoming credential to the `subject` attribute on a Google token.
-               ```python
-               import pulumi
-               ```
         :param pulumi.Input['WorkloadIdentityPoolProviderAwsArgs'] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
                Structure is documented below.
         :param pulumi.Input[str] description: A description for the provider. Cannot exceed 256 characters.
@@ -202,18 +196,12 @@ class WorkloadIdentityPoolProviderArgs:
         the total size of all mapped attributes must not exceed 8KB.
         For AWS providers, the following rules apply:
         - If no attribute mapping is defined, the following default mapping applies:
-        ```python
-        import pulumi
-        ```
         - If any custom attribute mappings are defined, they must include a mapping to the
         `google.subject` attribute.
         For OIDC providers, the following rules apply:
         - Custom attribute mappings must be defined, and must include a mapping to the
         `google.subject` attribute. For example, the following maps the `sub` claim of the
         incoming credential to the `subject` attribute on a Google token.
-        ```python
-        import pulumi
-        ```
         """
         return pulumi.get(self, "attribute_mapping")
 
@@ -365,18 +353,12 @@ class _WorkloadIdentityPoolProviderState:
                the total size of all mapped attributes must not exceed 8KB.
                For AWS providers, the following rules apply:
                - If no attribute mapping is defined, the following default mapping applies:
-               ```python
-               import pulumi
-               ```
                - If any custom attribute mappings are defined, they must include a mapping to the
                `google.subject` attribute.
                For OIDC providers, the following rules apply:
                - Custom attribute mappings must be defined, and must include a mapping to the
                `google.subject` attribute. For example, the following maps the `sub` claim of the
                incoming credential to the `subject` attribute on a Google token.
-               ```python
-               import pulumi
-               ```
         :param pulumi.Input['WorkloadIdentityPoolProviderAwsArgs'] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
                Structure is documented below.
         :param pulumi.Input[str] description: A description for the provider. Cannot exceed 256 characters.
@@ -486,18 +468,12 @@ class _WorkloadIdentityPoolProviderState:
         the total size of all mapped attributes must not exceed 8KB.
         For AWS providers, the following rules apply:
         - If no attribute mapping is defined, the following default mapping applies:
-        ```python
-        import pulumi
-        ```
         - If any custom attribute mappings are defined, they must include a mapping to the
         `google.subject` attribute.
         For OIDC providers, the following rules apply:
         - Custom attribute mappings must be defined, and must include a mapping to the
         `google.subject` attribute. For example, the following maps the `sub` claim of the
         incoming credential to the `subject` attribute on a Google token.
-        ```python
-        import pulumi
-        ```
         """
         return pulumi.get(self, "attribute_mapping")
 
@@ -774,6 +750,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
         example = gcp.iam.WorkloadIdentityPoolProvider("example",
@@ -785,7 +762,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "attribute.environment": "assertion.arn.contains(\\":instance-profile/Production\\") ? \\"prod\\" : \\"test\\"",
             },
             saml=gcp.iam.WorkloadIdentityPoolProviderSamlArgs(
-                idp_metadata_xml=(lambda path: open(path).read())("test-fixtures/metadata.xml"),
+                idp_metadata_xml=std.file(input="test-fixtures/metadata.xml").result,
             ))
         ```
         ### Iam Workload Identity Pool Provider Saml Full
@@ -793,6 +770,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
         example = gcp.iam.WorkloadIdentityPoolProvider("example",
@@ -807,7 +785,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "attribute.environment": "assertion.arn.contains(\\":instance-profile/Production\\") ? \\"prod\\" : \\"test\\"",
             },
             saml=gcp.iam.WorkloadIdentityPoolProviderSamlArgs(
-                idp_metadata_xml=(lambda path: open(path).read())("test-fixtures/metadata.xml"),
+                idp_metadata_xml=std.file(input="test-fixtures/metadata.xml").result,
             ))
         ```
         ### Iam Workload Identity Pool Provider Oidc Upload Key
@@ -905,18 +883,12 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                the total size of all mapped attributes must not exceed 8KB.
                For AWS providers, the following rules apply:
                - If no attribute mapping is defined, the following default mapping applies:
-               ```python
-               import pulumi
-               ```
                - If any custom attribute mappings are defined, they must include a mapping to the
                `google.subject` attribute.
                For OIDC providers, the following rules apply:
                - Custom attribute mappings must be defined, and must include a mapping to the
                `google.subject` attribute. For example, the following maps the `sub` claim of the
                incoming credential to the `subject` attribute on a Google token.
-               ```python
-               import pulumi
-               ```
         :param pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderAwsArgs']] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
                Structure is documented below.
         :param pulumi.Input[str] description: A description for the provider. Cannot exceed 256 characters.
@@ -1045,6 +1017,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
         example = gcp.iam.WorkloadIdentityPoolProvider("example",
@@ -1056,7 +1029,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "attribute.environment": "assertion.arn.contains(\\":instance-profile/Production\\") ? \\"prod\\" : \\"test\\"",
             },
             saml=gcp.iam.WorkloadIdentityPoolProviderSamlArgs(
-                idp_metadata_xml=(lambda path: open(path).read())("test-fixtures/metadata.xml"),
+                idp_metadata_xml=std.file(input="test-fixtures/metadata.xml").result,
             ))
         ```
         ### Iam Workload Identity Pool Provider Saml Full
@@ -1064,6 +1037,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
         example = gcp.iam.WorkloadIdentityPoolProvider("example",
@@ -1078,7 +1052,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "attribute.environment": "assertion.arn.contains(\\":instance-profile/Production\\") ? \\"prod\\" : \\"test\\"",
             },
             saml=gcp.iam.WorkloadIdentityPoolProviderSamlArgs(
-                idp_metadata_xml=(lambda path: open(path).read())("test-fixtures/metadata.xml"),
+                idp_metadata_xml=std.file(input="test-fixtures/metadata.xml").result,
             ))
         ```
         ### Iam Workload Identity Pool Provider Oidc Upload Key
@@ -1256,18 +1230,12 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                the total size of all mapped attributes must not exceed 8KB.
                For AWS providers, the following rules apply:
                - If no attribute mapping is defined, the following default mapping applies:
-               ```python
-               import pulumi
-               ```
                - If any custom attribute mappings are defined, they must include a mapping to the
                `google.subject` attribute.
                For OIDC providers, the following rules apply:
                - Custom attribute mappings must be defined, and must include a mapping to the
                `google.subject` attribute. For example, the following maps the `sub` claim of the
                incoming credential to the `subject` attribute on a Google token.
-               ```python
-               import pulumi
-               ```
         :param pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderAwsArgs']] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
                Structure is documented below.
         :param pulumi.Input[str] description: A description for the provider. Cannot exceed 256 characters.
@@ -1365,18 +1333,12 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         the total size of all mapped attributes must not exceed 8KB.
         For AWS providers, the following rules apply:
         - If no attribute mapping is defined, the following default mapping applies:
-        ```python
-        import pulumi
-        ```
         - If any custom attribute mappings are defined, they must include a mapping to the
         `google.subject` attribute.
         For OIDC providers, the following rules apply:
         - Custom attribute mappings must be defined, and must include a mapping to the
         `google.subject` attribute. For example, the following maps the `sub` claim of the
         incoming credential to the `subject` attribute on a Google token.
-        ```python
-        import pulumi
-        ```
         """
         return pulumi.get(self, "attribute_mapping")
 

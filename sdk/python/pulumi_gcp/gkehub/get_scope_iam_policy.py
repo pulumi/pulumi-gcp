@@ -99,8 +99,8 @@ def get_scope_iam_policy(project: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.gkehub.get_scope_iam_policy(project=google_gke_hub_scope["scope"]["project"],
-        scope_id=google_gke_hub_scope["scope"]["scope_id"])
+    policy = gcp.gkehub.get_scope_iam_policy(project=scope["project"],
+        scope_id=scope["scopeId"])
     ```
 
 
@@ -134,8 +134,8 @@ def get_scope_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] =
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.gkehub.get_scope_iam_policy(project=google_gke_hub_scope["scope"]["project"],
-        scope_id=google_gke_hub_scope["scope"]["scope_id"])
+    policy = gcp.gkehub.get_scope_iam_policy(project=scope["project"],
+        scope_id=scope["scopeId"])
     ```
 
 

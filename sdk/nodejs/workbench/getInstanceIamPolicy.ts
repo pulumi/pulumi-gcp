@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.workbench.getInstanceIamPolicy({
- *     project: google_workbench_instance.instance.project,
- *     location: google_workbench_instance.instance.location,
- *     name: google_workbench_instance.instance.name,
+ *     project: instance.project,
+ *     location: instance.location,
+ *     name: instance.name,
  * });
  * ```
  */
@@ -80,9 +80,9 @@ export interface GetInstanceIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.workbench.getInstanceIamPolicy({
- *     project: google_workbench_instance.instance.project,
- *     location: google_workbench_instance.instance.location,
- *     name: google_workbench_instance.instance.name,
+ *     project: instance.project,
+ *     location: instance.location,
+ *     name: instance.name,
  * });
  * ```
  */

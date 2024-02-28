@@ -40,12 +40,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := storage.NewBucket(ctx, "log-bucket", &storage.BucketArgs{
+//				Name:     pulumi.String("billing-logging-bucket"),
 //				Location: pulumi.String("US"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = logging.NewBillingAccountSink(ctx, "my-sink", &logging.BillingAccountSinkArgs{
+//				Name:           pulumi.String("my-sink"),
 //				Description:    pulumi.String("some explanation on what this is"),
 //				BillingAccount: pulumi.String("ABCDEF-012345-GHIJKL"),
 //				Destination: log_bucket.Name.ApplyT(func(name string) (string, error) {

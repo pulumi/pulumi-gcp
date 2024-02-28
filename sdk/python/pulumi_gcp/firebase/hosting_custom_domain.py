@@ -614,8 +614,7 @@ class HostingCustomDomain(pulumi.CustomResource):
         default = gcp.firebase.HostingCustomDomain("default",
             project="my-project-name",
             site_id="site-id",
-            custom_domain="custom.domain.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            custom_domain="custom.domain.com")
         ```
         ### Firebasehosting Customdomain Full
 
@@ -623,18 +622,16 @@ class HostingCustomDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_hosting_site = gcp.firebase.HostingSite("defaultHostingSite",
+        default = gcp.firebase.HostingSite("default",
             project="my-project-name",
-            site_id="site-id-full",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_custom_domain = gcp.firebase.HostingCustomDomain("defaultHostingCustomDomain",
+            site_id="site-id-full")
+        default_hosting_custom_domain = gcp.firebase.HostingCustomDomain("default",
             project="my-project-name",
-            site_id=default_hosting_site.site_id,
+            site_id=default.site_id,
             custom_domain="source.domain.com",
             cert_preference="GROUPED",
             redirect_target="destination.domain.com",
-            wait_dns_verification=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            wait_dns_verification=False)
         ```
         ### Firebasehosting Customdomain Cloud Run
 
@@ -642,22 +639,21 @@ class HostingCustomDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_hosting_site = gcp.firebase.HostingSite("defaultHostingSite",
+        default = gcp.firebase.HostingSite("default",
             project="my-project-name",
-            site_id="site-id",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_service = gcp.cloudrunv2.Service("defaultService",
+            site_id="site-id")
+        default_service = gcp.cloudrunv2.Service("default",
             project="my-project-name",
+            name="cloud-run-service-via-hosting",
             location="us-central1",
             ingress="INGRESS_TRAFFIC_ALL",
             template=gcp.cloudrunv2.ServiceTemplateArgs(
                 containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_version = gcp.firebase.HostingVersion("defaultHostingVersion",
-            site_id=default_hosting_site.site_id,
+            ))
+        default_hosting_version = gcp.firebase.HostingVersion("default",
+            site_id=default.site_id,
             config=gcp.firebase.HostingVersionConfigArgs(
                 rewrites=[gcp.firebase.HostingVersionConfigRewriteArgs(
                     glob="/hello/**",
@@ -666,19 +662,16 @@ class HostingCustomDomain(pulumi.CustomResource):
                         region=default_service.location,
                     ),
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_release = gcp.firebase.HostingRelease("defaultHostingRelease",
-            site_id=default_hosting_site.site_id,
+            ))
+        default_hosting_release = gcp.firebase.HostingRelease("default",
+            site_id=default.site_id,
             version_name=default_hosting_version.name,
-            message="Cloud Run Integration",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_custom_domain = gcp.firebase.HostingCustomDomain("defaultHostingCustomDomain",
+            message="Cloud Run Integration")
+        default_hosting_custom_domain = gcp.firebase.HostingCustomDomain("default",
             project="my-project-name",
-            site_id=default_hosting_site.site_id,
+            site_id=default.site_id,
             custom_domain="run.custom.domain.com",
-            wait_dns_verification=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            wait_dns_verification=False)
         ```
 
         ## Import
@@ -749,8 +742,7 @@ class HostingCustomDomain(pulumi.CustomResource):
         default = gcp.firebase.HostingCustomDomain("default",
             project="my-project-name",
             site_id="site-id",
-            custom_domain="custom.domain.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            custom_domain="custom.domain.com")
         ```
         ### Firebasehosting Customdomain Full
 
@@ -758,18 +750,16 @@ class HostingCustomDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_hosting_site = gcp.firebase.HostingSite("defaultHostingSite",
+        default = gcp.firebase.HostingSite("default",
             project="my-project-name",
-            site_id="site-id-full",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_custom_domain = gcp.firebase.HostingCustomDomain("defaultHostingCustomDomain",
+            site_id="site-id-full")
+        default_hosting_custom_domain = gcp.firebase.HostingCustomDomain("default",
             project="my-project-name",
-            site_id=default_hosting_site.site_id,
+            site_id=default.site_id,
             custom_domain="source.domain.com",
             cert_preference="GROUPED",
             redirect_target="destination.domain.com",
-            wait_dns_verification=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            wait_dns_verification=False)
         ```
         ### Firebasehosting Customdomain Cloud Run
 
@@ -777,22 +767,21 @@ class HostingCustomDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_hosting_site = gcp.firebase.HostingSite("defaultHostingSite",
+        default = gcp.firebase.HostingSite("default",
             project="my-project-name",
-            site_id="site-id",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_service = gcp.cloudrunv2.Service("defaultService",
+            site_id="site-id")
+        default_service = gcp.cloudrunv2.Service("default",
             project="my-project-name",
+            name="cloud-run-service-via-hosting",
             location="us-central1",
             ingress="INGRESS_TRAFFIC_ALL",
             template=gcp.cloudrunv2.ServiceTemplateArgs(
                 containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_version = gcp.firebase.HostingVersion("defaultHostingVersion",
-            site_id=default_hosting_site.site_id,
+            ))
+        default_hosting_version = gcp.firebase.HostingVersion("default",
+            site_id=default.site_id,
             config=gcp.firebase.HostingVersionConfigArgs(
                 rewrites=[gcp.firebase.HostingVersionConfigRewriteArgs(
                     glob="/hello/**",
@@ -801,19 +790,16 @@ class HostingCustomDomain(pulumi.CustomResource):
                         region=default_service.location,
                     ),
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_release = gcp.firebase.HostingRelease("defaultHostingRelease",
-            site_id=default_hosting_site.site_id,
+            ))
+        default_hosting_release = gcp.firebase.HostingRelease("default",
+            site_id=default.site_id,
             version_name=default_hosting_version.name,
-            message="Cloud Run Integration",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_custom_domain = gcp.firebase.HostingCustomDomain("defaultHostingCustomDomain",
+            message="Cloud Run Integration")
+        default_hosting_custom_domain = gcp.firebase.HostingCustomDomain("default",
             project="my-project-name",
-            site_id=default_hosting_site.site_id,
+            site_id=default.site_id,
             custom_domain="run.custom.domain.com",
-            wait_dns_verification=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            wait_dns_verification=False)
         ```
 
         ## Import

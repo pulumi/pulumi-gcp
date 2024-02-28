@@ -23,22 +23,22 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const fullAgent = new gcp.diagflow.Agent("fullAgent", {
- *     apiVersion: "API_VERSION_V2_BETA_1",
- *     avatarUri: "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
- *     classificationThreshold: 0.3,
- *     defaultLanguageCode: "en",
- *     description: "Example description.",
+ * const fullAgent = new gcp.diagflow.Agent("full_agent", {
  *     displayName: "dialogflow-agent",
- *     enableLogging: true,
- *     matchMode: "MATCH_MODE_ML_ONLY",
+ *     defaultLanguageCode: "en",
  *     supportedLanguageCodes: [
  *         "fr",
  *         "de",
  *         "es",
  *     ],
- *     tier: "TIER_STANDARD",
  *     timeZone: "America/New_York",
+ *     description: "Example description.",
+ *     avatarUri: "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+ *     enableLogging: true,
+ *     matchMode: "MATCH_MODE_ML_ONLY",
+ *     classificationThreshold: 0.3,
+ *     apiVersion: "API_VERSION_V2_BETA_1",
+ *     tier: "TIER_STANDARD",
  * });
  * ```
  *

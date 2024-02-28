@@ -34,11 +34,12 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var peer = new Gcp.Compute.RouterPeer("peer", new()
     ///     {
+    ///         Name = "my-router-peer",
+    ///         Router = "my-router",
+    ///         Region = "us-central1",
+    ///         PeerAsn = 65513,
     ///         AdvertisedRoutePriority = 100,
     ///         Interface = "interface-1",
-    ///         PeerAsn = 65513,
-    ///         Region = "us-central1",
-    ///         Router = "my-router",
     ///     });
     /// 
     /// });
@@ -55,13 +56,14 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var peer = new Gcp.Compute.RouterPeer("peer", new()
     ///     {
-    ///         AdvertisedRoutePriority = 100,
-    ///         Enable = false,
-    ///         Interface = "interface-1",
-    ///         PeerAsn = 65513,
-    ///         PeerIpAddress = "169.254.1.2",
-    ///         Region = "us-central1",
+    ///         Name = "my-router-peer",
     ///         Router = "my-router",
+    ///         Region = "us-central1",
+    ///         PeerIpAddress = "169.254.1.2",
+    ///         PeerAsn = 65513,
+    ///         AdvertisedRoutePriority = 100,
+    ///         Interface = "interface-1",
+    ///         Enable = false,
     ///     });
     /// 
     /// });
@@ -78,7 +80,13 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var peer = new Gcp.Compute.RouterPeer("peer", new()
     ///     {
+    ///         Name = "my-router-peer",
+    ///         Router = "my-router",
+    ///         Region = "us-central1",
+    ///         PeerIpAddress = "169.254.1.2",
+    ///         PeerAsn = 65513,
     ///         AdvertisedRoutePriority = 100,
+    ///         Interface = "interface-1",
     ///         Bfd = new Gcp.Compute.Inputs.RouterPeerBfdArgs
     ///         {
     ///             MinReceiveInterval = 1000,
@@ -86,11 +94,6 @@ namespace Pulumi.Gcp.Compute
     ///             Multiplier = 5,
     ///             SessionInitializationMode = "ACTIVE",
     ///         },
-    ///         Interface = "interface-1",
-    ///         PeerAsn = 65513,
-    ///         PeerIpAddress = "169.254.1.2",
-    ///         Region = "us-central1",
-    ///         Router = "my-router",
     ///     });
     /// 
     /// });
@@ -107,32 +110,37 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
+    ///         Name = "my-router-net",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
     ///     {
+    ///         Name = "my-router-sub",
     ///         Network = network.SelfLink,
     ///         IpCidrRange = "10.0.0.0/16",
     ///         Region = "us-central1",
     ///     });
     /// 
-    ///     var addrIntf = new Gcp.Compute.Address("addrIntf", new()
+    ///     var addrIntf = new Gcp.Compute.Address("addr_intf", new()
     ///     {
+    ///         Name = "my-router-addr-intf",
     ///         Region = subnetwork.Region,
     ///         Subnetwork = subnetwork.Id,
     ///         AddressType = "INTERNAL",
     ///     });
     /// 
-    ///     var addrIntfRedundant = new Gcp.Compute.Address("addrIntfRedundant", new()
+    ///     var addrIntfRedundant = new Gcp.Compute.Address("addr_intf_redundant", new()
     ///     {
+    ///         Name = "my-router-addr-intf-red",
     ///         Region = subnetwork.Region,
     ///         Subnetwork = subnetwork.Id,
     ///         AddressType = "INTERNAL",
     ///     });
     /// 
-    ///     var addrPeer = new Gcp.Compute.Address("addrPeer", new()
+    ///     var addrPeer = new Gcp.Compute.Address("addr_peer", new()
     ///     {
+    ///         Name = "my-router-addr-peer",
     ///         Region = subnetwork.Region,
     ///         Subnetwork = subnetwork.Id,
     ///         AddressType = "INTERNAL",
@@ -140,6 +148,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var instance = new Gcp.Compute.Instance("instance", new()
     ///     {
+    ///         Name = "router-appliance",
     ///         Zone = "us-central1-a",
     ///         MachineType = "e2-medium",
     ///         CanIpForward = true,
@@ -160,10 +169,14 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///     });
     /// 
-    ///     var hub = new Gcp.NetworkConnectivity.Hub("hub");
+    ///     var hub = new Gcp.NetworkConnectivity.Hub("hub", new()
+    ///     {
+    ///         Name = "my-router-hub",
+    ///     });
     /// 
     ///     var spoke = new Gcp.NetworkConnectivity.Spoke("spoke", new()
     ///     {
+    ///         Name = "my-router-spoke",
     ///         Location = subnetwork.Region,
     ///         Hub = hub.Id,
     ///         LinkedRouterApplianceInstances = new Gcp.NetworkConnectivity.Inputs.SpokeLinkedRouterApplianceInstancesArgs
@@ -182,6 +195,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var router = new Gcp.Compute.Router("router", new()
     ///     {
+    ///         Name = "my-router-router",
     ///         Region = subnetwork.Region,
     ///         Network = network.SelfLink,
     ///         Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
@@ -190,8 +204,9 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///     });
     /// 
-    ///     var interfaceRedundant = new Gcp.Compute.RouterInterface("interfaceRedundant", new()
+    ///     var interfaceRedundant = new Gcp.Compute.RouterInterface("interface_redundant", new()
     ///     {
+    ///         Name = "my-router-intf-red",
     ///         Region = router.Region,
     ///         Router = router.Name,
     ///         Subnetwork = subnetwork.SelfLink,
@@ -200,6 +215,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var @interface = new Gcp.Compute.RouterInterface("interface", new()
     ///     {
+    ///         Name = "my-router-intf",
     ///         Region = router.Region,
     ///         Router = router.Name,
     ///         Subnetwork = subnetwork.SelfLink,
@@ -209,6 +225,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var peer = new Gcp.Compute.RouterPeer("peer", new()
     ///     {
+    ///         Name = "my-router-peer",
     ///         Router = router.Name,
     ///         Region = router.Region,
     ///         Interface = @interface.Name,

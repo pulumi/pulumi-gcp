@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var loggingLogViewProjectBucketConfig = new ProjectBucketConfig(&#34;loggingLogViewProjectBucketConfig&#34;, ProjectBucketConfigArgs.builder()        
+ *         var loggingLogView = new ProjectBucketConfig(&#34;loggingLogView&#34;, ProjectBucketConfigArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .location(&#34;global&#34;)
  *             .retentionDays(30)
@@ -56,7 +56,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var loggingLogViewLogView = new LogView(&#34;loggingLogViewLogView&#34;, LogViewArgs.builder()        
- *             .bucket(loggingLogViewProjectBucketConfig.id())
+ *             .name(&#34;my-view&#34;)
+ *             .bucket(loggingLogView.id())
  *             .description(&#34;A logging view configured with Terraform&#34;)
  *             .filter(&#34;SOURCE(\&#34;projects/myproject\&#34;) AND resource.type = \&#34;gce_instance\&#34; AND LOG_ID(\&#34;stdout\&#34;)&#34;)
  *             .build());

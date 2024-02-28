@@ -99,8 +99,8 @@ def get_secret_iam_policy(project: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.secretmanager.get_secret_iam_policy(project=google_secret_manager_secret["secret-basic"]["project"],
-        secret_id=google_secret_manager_secret["secret-basic"]["secret_id"])
+    policy = gcp.secretmanager.get_secret_iam_policy(project=secret_basic["project"],
+        secret_id=secret_basic["secretId"])
     ```
 
 
@@ -134,8 +134,8 @@ def get_secret_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] 
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.secretmanager.get_secret_iam_policy(project=google_secret_manager_secret["secret-basic"]["project"],
-        secret_id=google_secret_manager_secret["secret-basic"]["secret_id"])
+    policy = gcp.secretmanager.get_secret_iam_policy(project=secret_basic["project"],
+        secret_id=secret_basic["secretId"])
     ```
 
 

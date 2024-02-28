@@ -36,6 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := healthcare.NewDataset(ctx, "default", &healthcare.DatasetArgs{
+//				Name:     pulumi.String("example-dataset"),
 //				Location: pulumi.String("us-central1"),
 //				TimeZone: pulumi.String("UTC"),
 //			})

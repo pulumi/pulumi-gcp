@@ -34,11 +34,11 @@ namespace Pulumi.Gcp.Spanner
     ///     {
     ///         Config = "regional-us-central1",
     ///         DisplayName = "Test Spanner Instance",
+    ///         NumNodes = 2,
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
     ///         },
-    ///         NumNodes = 2,
     ///     });
     /// 
     /// });
@@ -57,11 +57,11 @@ namespace Pulumi.Gcp.Spanner
     ///     {
     ///         Config = "regional-us-central1",
     ///         DisplayName = "Test Spanner Instance",
+    ///         ProcessingUnits = 200,
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
     ///         },
-    ///         ProcessingUnits = 200,
     ///     });
     /// 
     /// });
@@ -78,6 +78,8 @@ namespace Pulumi.Gcp.Spanner
     /// {
     ///     var example = new Gcp.Spanner.Instance("example", new()
     ///     {
+    ///         Config = "regional-us-central1",
+    ///         DisplayName = "Test Spanner Instance",
     ///         AutoscalingConfig = new Gcp.Spanner.Inputs.InstanceAutoscalingConfigArgs
     ///         {
     ///             AutoscalingLimits = new Gcp.Spanner.Inputs.InstanceAutoscalingConfigAutoscalingLimitsArgs
@@ -91,8 +93,6 @@ namespace Pulumi.Gcp.Spanner
     ///                 StorageUtilizationPercent = 90,
     ///             },
     ///         },
-    ///         Config = "regional-us-central1",
-    ///         DisplayName = "Test Spanner Instance",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -115,11 +115,11 @@ namespace Pulumi.Gcp.Spanner
     ///     {
     ///         Config = "nam-eur-asia1",
     ///         DisplayName = "Multi Regional Instance",
+    ///         NumNodes = 2,
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
     ///         },
-    ///         NumNodes = 2,
     ///     });
     /// 
     /// });

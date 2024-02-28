@@ -33,18 +33,80 @@ namespace Pulumi.Gcp.Container
     /// 
     ///     var primary = new Gcp.Container.Cluster("primary", new()
     ///     {
+    ///         Name = "my-gke-cluster",
     ///         Location = "us-central1",
     ///         RemoveDefaultNodePool = true,
     ///         InitialNodeCount = 1,
     ///     });
     /// 
-    ///     var primaryPreemptibleNodes = new Gcp.Container.NodePool("primaryPreemptibleNodes", new()
+    ///     var primaryPreemptibleNodes = new Gcp.Container.NodePool("primary_preemptible_nodes", new()
     ///     {
+    ///         Name = "my-node-pool",
     ///         Cluster = primary.Id,
     ///         NodeCount = 1,
     ///         NodeConfig = new Gcp.Container.Inputs.NodePoolNodeConfigArgs
     ///         {
     ///             Preemptible = true,
+    ///             MachineType = "e2-medium",
+    ///             ServiceAccount = @default.Email,
+    ///             OauthScopes = new[]
+    ///             {
+    ///                 "https://www.googleapis.com/auth/cloud-platform",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### 2 Node Pools, 1 Separately Managed + The Default Node Pool
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.ServiceAccount.Account("default", new()
+    ///     {
+    ///         AccountId = "service-account-id",
+    ///         DisplayName = "Service Account",
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Container.Cluster("primary", new()
+    ///     {
+    ///         Name = "marcellus-wallace",
+    ///         Location = "us-central1-a",
+    ///         InitialNodeCount = 3,
+    ///         NodeLocations = new[]
+    ///         {
+    ///             "us-central1-c",
+    ///         },
+    ///         NodeConfig = new Gcp.Container.Inputs.ClusterNodeConfigArgs
+    ///         {
+    ///             ServiceAccount = @default.Email,
+    ///             OauthScopes = new[]
+    ///             {
+    ///                 "https://www.googleapis.com/auth/cloud-platform",
+    ///             },
+    ///             GuestAccelerators = new[]
+    ///             {
+    ///                 new Gcp.Container.Inputs.ClusterNodeConfigGuestAcceleratorArgs
+    ///                 {
+    ///                     Type = "nvidia-tesla-k80",
+    ///                     Count = 1,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var np = new Gcp.Container.NodePool("np", new()
+    ///     {
+    ///         Name = "my-node-pool",
+    ///         Cluster = primary.Id,
+    ///         NodeConfig = new Gcp.Container.Inputs.NodePoolNodeConfigArgs
+    ///         {
     ///             MachineType = "e2-medium",
     ///             ServiceAccount = @default.Email,
     ///             OauthScopes = new[]

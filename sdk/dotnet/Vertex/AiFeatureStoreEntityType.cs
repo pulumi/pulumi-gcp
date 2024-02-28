@@ -31,6 +31,7 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new()
     ///     {
+    ///         Name = "terraform",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -48,6 +49,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     ///     var entity = new Gcp.Vertex.AiFeatureStoreEntityType("entity", new()
     ///     {
+    ///         Name = "terraform",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -92,6 +94,7 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new()
     ///     {
+    ///         Name = "terraform2",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -105,13 +108,11 @@ namespace Pulumi.Gcp.Vertex
     ///         {
     ///             KmsKeyName = "kms-name",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var entity = new Gcp.Vertex.AiFeatureStoreEntityType("entity", new()
     ///     {
+    ///         Name = "terraform2",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -134,9 +135,6 @@ namespace Pulumi.Gcp.Vertex
     ///             },
     ///         },
     ///         OfflineStorageTtlDays = 30,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

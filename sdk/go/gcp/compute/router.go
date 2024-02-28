@@ -35,13 +35,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foobarNetwork, err := compute.NewNetwork(ctx, "foobarNetwork", &compute.NetworkArgs{
+//			foobarNetwork, err := compute.NewNetwork(ctx, "foobar", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewRouter(ctx, "foobarRouter", &compute.RouterArgs{
+//			_, err = compute.NewRouter(ctx, "foobar", &compute.RouterArgs{
+//				Name:    pulumi.String("my-router"),
 //				Network: foobarNetwork.Name,
 //				Bgp: &compute.RouterBgpArgs{
 //					Asn:           pulumi.Int(64514),
@@ -82,12 +84,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("test-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewRouter(ctx, "encrypted-interconnect-router", &compute.RouterArgs{
+//				Name:                        pulumi.String("test-router"),
 //				Network:                     network.Name,
 //				EncryptedInterconnectRouter: pulumi.Bool(true),
 //				Bgp: &compute.RouterBgpArgs{

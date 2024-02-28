@@ -20,12 +20,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myTaxonomy = new gcp.datacatalog.Taxonomy("myTaxonomy", {
+ * const myTaxonomy = new gcp.datacatalog.Taxonomy("my_taxonomy", {
  *     displayName: "taxonomy_display_name",
  *     description: "A collection of policy tags",
  *     activatedPolicyTypes: ["FINE_GRAINED_ACCESS_CONTROL"],
  * });
- * const basicPolicyTag = new gcp.datacatalog.PolicyTag("basicPolicyTag", {
+ * const basicPolicyTag = new gcp.datacatalog.PolicyTag("basic_policy_tag", {
  *     taxonomy: myTaxonomy.id,
  *     displayName: "Low security",
  *     description: "A policy tag normally associated with low security items",
@@ -37,29 +37,27 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myTaxonomy = new gcp.datacatalog.Taxonomy("myTaxonomy", {
+ * const myTaxonomy = new gcp.datacatalog.Taxonomy("my_taxonomy", {
  *     displayName: "taxonomy_display_name",
  *     description: "A collection of policy tags",
  *     activatedPolicyTypes: ["FINE_GRAINED_ACCESS_CONTROL"],
  * });
- * const parentPolicy = new gcp.datacatalog.PolicyTag("parentPolicy", {
+ * const parentPolicy = new gcp.datacatalog.PolicyTag("parent_policy", {
  *     taxonomy: myTaxonomy.id,
  *     displayName: "High",
  *     description: "A policy tag category used for high security access",
  * });
- * const childPolicy = new gcp.datacatalog.PolicyTag("childPolicy", {
+ * const childPolicy = new gcp.datacatalog.PolicyTag("child_policy", {
  *     taxonomy: myTaxonomy.id,
  *     displayName: "ssn",
  *     description: "A hash of the users ssn",
  *     parentPolicyTag: parentPolicy.id,
  * });
- * const childPolicy2 = new gcp.datacatalog.PolicyTag("childPolicy2", {
+ * const childPolicy2 = new gcp.datacatalog.PolicyTag("child_policy2", {
  *     taxonomy: myTaxonomy.id,
  *     displayName: "dob",
  *     description: "The users date of birth",
  *     parentPolicyTag: parentPolicy.id,
- * }, {
- *     dependsOn: [childPolicy],
  * });
  * ```
  *

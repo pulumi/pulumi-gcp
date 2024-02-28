@@ -16,6 +16,31 @@ import * as utilities from "../utilities";
  *     * [Setting Up TCP proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/tcp-proxy)
  *
  * ## Example Usage
+ * ### Target Tcp Proxy Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+ *     name: "health-check",
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
+ *     tcpHealthCheck: {
+ *         port: 443,
+ *     },
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     protocol: "TCP",
+ *     timeoutSec: 10,
+ *     healthChecks: defaultHealthCheck.id,
+ * });
+ * const _default = new gcp.compute.TargetTCPProxy("default", {
+ *     name: "test-proxy",
+ *     backendService: defaultBackendService.id,
+ * });
+ * ```
  *
  * ## Import
  *

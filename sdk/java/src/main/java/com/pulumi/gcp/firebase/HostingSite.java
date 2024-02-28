@@ -25,7 +25,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.firebase.HostingSite;
  * import com.pulumi.gcp.firebase.HostingSiteArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -42,9 +41,7 @@ import javax.annotation.Nullable;
  *         var default_ = new HostingSite(&#34;default&#34;, HostingSiteArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .siteId(&#34;site-no-app&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -60,7 +57,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.firebase.WebAppArgs;
  * import com.pulumi.gcp.firebase.HostingSite;
  * import com.pulumi.gcp.firebase.HostingSiteArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -77,17 +73,13 @@ import javax.annotation.Nullable;
  *         var default_ = new WebApp(&#34;default&#34;, WebAppArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .displayName(&#34;Test web app for Firebase Hosting&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var full = new HostingSite(&#34;full&#34;, HostingSiteArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .siteId(&#34;site-with-app&#34;)
  *             .appId(default_.appId())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

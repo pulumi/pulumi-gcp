@@ -206,6 +206,7 @@ class LiteReservation(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         example = gcp.pubsub.LiteReservation("example",
+            name="example-reservation",
             project=project.number,
             throughput_capacity=2)
         ```
@@ -277,6 +278,7 @@ class LiteReservation(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         example = gcp.pubsub.LiteReservation("example",
+            name="example-reservation",
             project=project.number,
             throughput_capacity=2)
         ```

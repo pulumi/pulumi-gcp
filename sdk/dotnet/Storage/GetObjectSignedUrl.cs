@@ -34,7 +34,10 @@ namespace Pulumi.Gcp.Storage
         ///         Path = "path/to/install_file.bin",
         ///     });
         /// 
-        ///     var vm = new Gcp.Compute.Instance("vm");
+        ///     var vm = new Gcp.Compute.Instance("vm", new()
+        ///     {
+        ///         Name = "vm",
+        ///     });
         /// 
         /// });
         /// ```
@@ -44,10 +47,10 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
-        /// using System.IO;
         /// using System.Linq;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
+        /// using Std = Pulumi.Std;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -58,7 +61,10 @@ namespace Pulumi.Gcp.Storage
         ///         ContentMd5 = "pRviqwS4c4OTJRTe03FD1w==",
         ///         ContentType = "text/plain",
         ///         Duration = "2d",
-        ///         Credentials = File.ReadAllText("path/to/credentials.json"),
+        ///         Credentials = Std.File.Invoke(new()
+        ///         {
+        ///             Input = "path/to/credentials.json",
+        ///         }).Result,
         ///         ExtensionHeaders = 
         ///         {
         ///             { "x-goog-if-generation-match", "1" },
@@ -94,7 +100,10 @@ namespace Pulumi.Gcp.Storage
         ///         Path = "path/to/install_file.bin",
         ///     });
         /// 
-        ///     var vm = new Gcp.Compute.Instance("vm");
+        ///     var vm = new Gcp.Compute.Instance("vm", new()
+        ///     {
+        ///         Name = "vm",
+        ///     });
         /// 
         /// });
         /// ```
@@ -104,10 +113,10 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
-        /// using System.IO;
         /// using System.Linq;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
+        /// using Std = Pulumi.Std;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -118,7 +127,10 @@ namespace Pulumi.Gcp.Storage
         ///         ContentMd5 = "pRviqwS4c4OTJRTe03FD1w==",
         ///         ContentType = "text/plain",
         ///         Duration = "2d",
-        ///         Credentials = File.ReadAllText("path/to/credentials.json"),
+        ///         Credentials = Std.File.Invoke(new()
+        ///         {
+        ///             Input = "path/to/credentials.json",
+        ///         }).Result,
         ///         ExtensionHeaders = 
         ///         {
         ///             { "x-goog-if-generation-match", "1" },

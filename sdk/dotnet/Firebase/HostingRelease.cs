@@ -21,18 +21,15 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultHostingSite = new Gcp.Firebase.HostingSite("defaultHostingSite", new()
+    ///     var @default = new Gcp.Firebase.HostingSite("default", new()
     ///     {
     ///         Project = "my-project-name",
     ///         SiteId = "site-id",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultHostingVersion = new Gcp.Firebase.HostingVersion("defaultHostingVersion", new()
+    ///     var defaultHostingVersion = new Gcp.Firebase.HostingVersion("default", new()
     ///     {
-    ///         SiteId = defaultHostingSite.SiteId,
+    ///         SiteId = @default.SiteId,
     ///         Config = new Gcp.Firebase.Inputs.HostingVersionConfigArgs
     ///         {
     ///             Redirects = new[]
@@ -45,19 +42,13 @@ namespace Pulumi.Gcp.Firebase
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultHostingRelease = new Gcp.Firebase.HostingRelease("defaultHostingRelease", new()
+    ///     var defaultHostingRelease = new Gcp.Firebase.HostingRelease("default", new()
     ///     {
-    ///         SiteId = defaultHostingSite.SiteId,
+    ///         SiteId = @default.SiteId,
     ///         VersionName = defaultHostingVersion.Name,
     ///         Message = "Test release",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -72,18 +63,15 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultHostingSite = new Gcp.Firebase.HostingSite("defaultHostingSite", new()
+    ///     var @default = new Gcp.Firebase.HostingSite("default", new()
     ///     {
     ///         Project = "my-project-name",
     ///         SiteId = "site-with-channel",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultHostingVersion = new Gcp.Firebase.HostingVersion("defaultHostingVersion", new()
+    ///     var defaultHostingVersion = new Gcp.Firebase.HostingVersion("default", new()
     ///     {
-    ///         SiteId = defaultHostingSite.SiteId,
+    ///         SiteId = @default.SiteId,
     ///         Config = new Gcp.Firebase.Inputs.HostingVersionConfigArgs
     ///         {
     ///             Redirects = new[]
@@ -96,29 +84,20 @@ namespace Pulumi.Gcp.Firebase
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultHostingChannel = new Gcp.Firebase.HostingChannel("defaultHostingChannel", new()
+    ///     var defaultHostingChannel = new Gcp.Firebase.HostingChannel("default", new()
     ///     {
-    ///         SiteId = defaultHostingSite.SiteId,
+    ///         SiteId = @default.SiteId,
     ///         ChannelId = "channel-id",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultHostingRelease = new Gcp.Firebase.HostingRelease("defaultHostingRelease", new()
+    ///     var defaultHostingRelease = new Gcp.Firebase.HostingRelease("default", new()
     ///     {
-    ///         SiteId = defaultHostingSite.SiteId,
+    ///         SiteId = @default.SiteId,
     ///         ChannelId = defaultHostingChannel.ChannelId,
     ///         VersionName = defaultHostingVersion.Name,
     ///         Message = "Test release in channel",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -133,23 +112,17 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultHostingSite = new Gcp.Firebase.HostingSite("defaultHostingSite", new()
+    ///     var @default = new Gcp.Firebase.HostingSite("default", new()
     ///     {
     ///         Project = "my-project-name",
     ///         SiteId = "site-id",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultHostingRelease = new Gcp.Firebase.HostingRelease("defaultHostingRelease", new()
+    ///     var defaultHostingRelease = new Gcp.Firebase.HostingRelease("default", new()
     ///     {
-    ///         SiteId = defaultHostingSite.SiteId,
+    ///         SiteId = @default.SiteId,
     ///         Type = "SITE_DISABLE",
     ///         Message = "Take down site",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

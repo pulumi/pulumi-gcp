@@ -840,12 +840,15 @@ class Authority(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.certificateauthority.Authority("default",
+            pool="ca-pool",
             certificate_authority_id="my-certificate-authority",
+            location="us-central1",
+            deletion_protection=True,
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        common_name="my-certificate-authority",
                         organization="HashiCorp",
+                        common_name="my-certificate-authority",
                     ),
                     subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
                         dns_names=["hashicorp.com"],
@@ -858,32 +861,29 @@ class Authority(pulumi.CustomResource):
                     ),
                     key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
                         base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            cert_sign=True,
-                            content_commitment=True,
-                            crl_sign=True,
-                            data_encipherment=True,
-                            decipher_only=True,
                             digital_signature=True,
-                            key_agreement=True,
+                            content_commitment=True,
                             key_encipherment=False,
+                            data_encipherment=True,
+                            key_agreement=True,
+                            cert_sign=True,
+                            crl_sign=True,
+                            decipher_only=True,
                         ),
                         extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            client_auth=False,
-                            code_signing=True,
-                            email_protection=True,
                             server_auth=True,
+                            client_auth=False,
+                            email_protection=True,
+                            code_signing=True,
                             time_stamping=True,
                         ),
                     ),
                 ),
             ),
-            deletion_protection=True,
+            lifetime="86400s",
             key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
-            ),
-            lifetime="86400s",
-            location="us-central1",
-            pool="ca-pool")
+            ))
         ```
         ### Privateca Certificate Authority Subordinate
 
@@ -982,12 +982,12 @@ class Authority(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        privateca_sa = gcp.projects.ServiceIdentity("privatecaSa", service="privateca.googleapis.com")
-        privateca_sa_keyuser_signerverifier = gcp.kms.CryptoKeyIAMMember("privatecaSaKeyuserSignerverifier",
+        privateca_sa = gcp.projects.ServiceIdentity("privateca_sa", service="privateca.googleapis.com")
+        privateca_sa_keyuser_signerverifier = gcp.kms.CryptoKeyIAMMember("privateca_sa_keyuser_signerverifier",
             crypto_key_id="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
             role="roles/cloudkms.signerVerifier",
             member=privateca_sa.email.apply(lambda email: f"serviceAccount:{email}"))
-        privateca_sa_keyuser_viewer = gcp.kms.CryptoKeyIAMMember("privatecaSaKeyuserViewer",
+        privateca_sa_keyuser_viewer = gcp.kms.CryptoKeyIAMMember("privateca_sa_keyuser_viewer",
             crypto_key_id="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
             role="roles/viewer",
             member=privateca_sa.email.apply(lambda email: f"serviceAccount:{email}"))
@@ -1032,11 +1032,7 @@ class Authority(pulumi.CustomResource):
                         excluded_uris=[".deny.example.com"],
                     ),
                 ),
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[
-                    privateca_sa_keyuser_signerverifier,
-                    privateca_sa_keyuser_viewer,
-                ]))
+            ))
         ```
 
         ## Import
@@ -1138,12 +1134,15 @@ class Authority(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.certificateauthority.Authority("default",
+            pool="ca-pool",
             certificate_authority_id="my-certificate-authority",
+            location="us-central1",
+            deletion_protection=True,
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        common_name="my-certificate-authority",
                         organization="HashiCorp",
+                        common_name="my-certificate-authority",
                     ),
                     subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
                         dns_names=["hashicorp.com"],
@@ -1156,32 +1155,29 @@ class Authority(pulumi.CustomResource):
                     ),
                     key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
                         base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            cert_sign=True,
-                            content_commitment=True,
-                            crl_sign=True,
-                            data_encipherment=True,
-                            decipher_only=True,
                             digital_signature=True,
-                            key_agreement=True,
+                            content_commitment=True,
                             key_encipherment=False,
+                            data_encipherment=True,
+                            key_agreement=True,
+                            cert_sign=True,
+                            crl_sign=True,
+                            decipher_only=True,
                         ),
                         extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            client_auth=False,
-                            code_signing=True,
-                            email_protection=True,
                             server_auth=True,
+                            client_auth=False,
+                            email_protection=True,
+                            code_signing=True,
                             time_stamping=True,
                         ),
                     ),
                 ),
             ),
-            deletion_protection=True,
+            lifetime="86400s",
             key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
-            ),
-            lifetime="86400s",
-            location="us-central1",
-            pool="ca-pool")
+            ))
         ```
         ### Privateca Certificate Authority Subordinate
 
@@ -1280,12 +1276,12 @@ class Authority(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        privateca_sa = gcp.projects.ServiceIdentity("privatecaSa", service="privateca.googleapis.com")
-        privateca_sa_keyuser_signerverifier = gcp.kms.CryptoKeyIAMMember("privatecaSaKeyuserSignerverifier",
+        privateca_sa = gcp.projects.ServiceIdentity("privateca_sa", service="privateca.googleapis.com")
+        privateca_sa_keyuser_signerverifier = gcp.kms.CryptoKeyIAMMember("privateca_sa_keyuser_signerverifier",
             crypto_key_id="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
             role="roles/cloudkms.signerVerifier",
             member=privateca_sa.email.apply(lambda email: f"serviceAccount:{email}"))
-        privateca_sa_keyuser_viewer = gcp.kms.CryptoKeyIAMMember("privatecaSaKeyuserViewer",
+        privateca_sa_keyuser_viewer = gcp.kms.CryptoKeyIAMMember("privateca_sa_keyuser_viewer",
             crypto_key_id="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
             role="roles/viewer",
             member=privateca_sa.email.apply(lambda email: f"serviceAccount:{email}"))
@@ -1330,11 +1326,7 @@ class Authority(pulumi.CustomResource):
                         excluded_uris=[".deny.example.com"],
                     ),
                 ),
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[
-                    privateca_sa_keyuser_signerverifier,
-                    privateca_sa_keyuser_viewer,
-                ]))
+            ))
         ```
 
         ## Import

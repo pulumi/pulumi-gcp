@@ -30,19 +30,21 @@ import * as utilities from "../utilities";
  * // If this network hasn't been created and you are using this example in your
  * // config, add an additional network resource or change
  * // this from "data"to "resource"
- * const memcacheNetwork = new gcp.compute.Network("memcacheNetwork", {});
- * const serviceRange = new gcp.compute.GlobalAddress("serviceRange", {
+ * const memcacheNetwork = new gcp.compute.Network("memcache_network", {name: "test-network"});
+ * const serviceRange = new gcp.compute.GlobalAddress("service_range", {
+ *     name: "address",
  *     purpose: "VPC_PEERING",
  *     addressType: "INTERNAL",
  *     prefixLength: 16,
  *     network: memcacheNetwork.id,
  * });
- * const privateServiceConnection = new gcp.servicenetworking.Connection("privateServiceConnection", {
+ * const privateServiceConnection = new gcp.servicenetworking.Connection("private_service_connection", {
  *     network: memcacheNetwork.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [serviceRange.name],
  * });
  * const instance = new gcp.memcache.Instance("instance", {
+ *     name: "test-instance",
  *     authorizedNetwork: privateServiceConnection.network,
  *     labels: {
  *         env: "test",

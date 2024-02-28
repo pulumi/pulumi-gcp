@@ -595,18 +595,15 @@ class AwsCluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        versions = gcp.container.get_aws_versions(location="us-west1",
-            project="my-project-name")
+        versions = gcp.container.get_aws_versions(project="my-project-name",
+            location="us-west1")
         primary = gcp.container.AwsCluster("primary",
-            annotations={
-                "label-one": "value-one",
-            },
             authorization=gcp.container.AwsClusterAuthorizationArgs(
-                admin_groups=[gcp.container.AwsClusterAuthorizationAdminGroupArgs(
-                    group="group@domain.com",
-                )],
                 admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
                     username="my@service-account.com",
+                )],
+                admin_groups=[gcp.container.AwsClusterAuthorizationAdminGroupArgs(
+                    group="group@domain.com",
                 )],
             ),
             aws_region="my-aws-region",
@@ -622,6 +619,8 @@ class AwsCluster(pulumi.CustomResource):
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
                 iam_instance_profile="my--1p-dev-controlplane",
+                subnet_ids=["subnet-00000000000000000"],
+                version=versions.valid_versions[0],
                 instance_type="t3.medium",
                 main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
                     iops=3000,
@@ -643,22 +642,24 @@ class AwsCluster(pulumi.CustomResource):
                 ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
                     ec2_key_pair="my--1p-dev-ssh",
                 ),
-                subnet_ids=["subnet-00000000000000000"],
                 tags={
                     "owner": "my@service-account.com",
                 },
-                version=versions.valid_versions[0],
             ),
-            description="A sample aws cluster",
             fleet=gcp.container.AwsClusterFleetArgs(
                 project="my-project-number",
             ),
             location="us-west1",
+            name="name",
             networking=gcp.container.AwsClusterNetworkingArgs(
                 pod_address_cidr_blocks=["10.2.0.0/16"],
                 service_address_cidr_blocks=["10.1.0.0/16"],
                 vpc_id="vpc-00000000000000000",
             ),
+            annotations={
+                "label-one": "value-one",
+            },
+            description="A sample aws cluster",
             project="my-project-name")
         ```
         ### Basic_enum_aws_cluster
@@ -667,12 +668,9 @@ class AwsCluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        versions = gcp.container.get_aws_versions(location="us-west1",
-            project="my-project-name")
+        versions = gcp.container.get_aws_versions(project="my-project-name",
+            location="us-west1")
         primary = gcp.container.AwsCluster("primary",
-            annotations={
-                "label-one": "value-one",
-            },
             authorization=gcp.container.AwsClusterAuthorizationArgs(
                 admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
                     username="my@service-account.com",
@@ -691,6 +689,8 @@ class AwsCluster(pulumi.CustomResource):
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
                 iam_instance_profile="my--1p-dev-controlplane",
+                subnet_ids=["subnet-00000000000000000"],
+                version=versions.valid_versions[0],
                 instance_type="t3.medium",
                 main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
                     iops=3000,
@@ -712,22 +712,24 @@ class AwsCluster(pulumi.CustomResource):
                 ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
                     ec2_key_pair="my--1p-dev-ssh",
                 ),
-                subnet_ids=["subnet-00000000000000000"],
                 tags={
                     "owner": "my@service-account.com",
                 },
-                version=versions.valid_versions[0],
             ),
-            description="A sample aws cluster",
             fleet=gcp.container.AwsClusterFleetArgs(
                 project="my-project-number",
             ),
             location="us-west1",
+            name="name",
             networking=gcp.container.AwsClusterNetworkingArgs(
                 pod_address_cidr_blocks=["10.2.0.0/16"],
                 service_address_cidr_blocks=["10.1.0.0/16"],
                 vpc_id="vpc-00000000000000000",
             ),
+            annotations={
+                "label-one": "value-one",
+            },
+            description="A sample aws cluster",
             project="my-project-name")
         ```
         ### Beta_basic_enum_aws_cluster
@@ -791,6 +793,7 @@ class AwsCluster(pulumi.CustomResource):
                 project="my-project-number",
             ),
             location="us-west1",
+            name="name",
             networking=gcp.container.AwsClusterNetworkingArgs(
                 pod_address_cidr_blocks=["10.2.0.0/16"],
                 service_address_cidr_blocks=["10.1.0.0/16"],
@@ -808,8 +811,7 @@ class AwsCluster(pulumi.CustomResource):
                         "workloads",
                     ],
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import
@@ -872,18 +874,15 @@ class AwsCluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        versions = gcp.container.get_aws_versions(location="us-west1",
-            project="my-project-name")
+        versions = gcp.container.get_aws_versions(project="my-project-name",
+            location="us-west1")
         primary = gcp.container.AwsCluster("primary",
-            annotations={
-                "label-one": "value-one",
-            },
             authorization=gcp.container.AwsClusterAuthorizationArgs(
-                admin_groups=[gcp.container.AwsClusterAuthorizationAdminGroupArgs(
-                    group="group@domain.com",
-                )],
                 admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
                     username="my@service-account.com",
+                )],
+                admin_groups=[gcp.container.AwsClusterAuthorizationAdminGroupArgs(
+                    group="group@domain.com",
                 )],
             ),
             aws_region="my-aws-region",
@@ -899,6 +898,8 @@ class AwsCluster(pulumi.CustomResource):
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
                 iam_instance_profile="my--1p-dev-controlplane",
+                subnet_ids=["subnet-00000000000000000"],
+                version=versions.valid_versions[0],
                 instance_type="t3.medium",
                 main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
                     iops=3000,
@@ -920,22 +921,24 @@ class AwsCluster(pulumi.CustomResource):
                 ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
                     ec2_key_pair="my--1p-dev-ssh",
                 ),
-                subnet_ids=["subnet-00000000000000000"],
                 tags={
                     "owner": "my@service-account.com",
                 },
-                version=versions.valid_versions[0],
             ),
-            description="A sample aws cluster",
             fleet=gcp.container.AwsClusterFleetArgs(
                 project="my-project-number",
             ),
             location="us-west1",
+            name="name",
             networking=gcp.container.AwsClusterNetworkingArgs(
                 pod_address_cidr_blocks=["10.2.0.0/16"],
                 service_address_cidr_blocks=["10.1.0.0/16"],
                 vpc_id="vpc-00000000000000000",
             ),
+            annotations={
+                "label-one": "value-one",
+            },
+            description="A sample aws cluster",
             project="my-project-name")
         ```
         ### Basic_enum_aws_cluster
@@ -944,12 +947,9 @@ class AwsCluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        versions = gcp.container.get_aws_versions(location="us-west1",
-            project="my-project-name")
+        versions = gcp.container.get_aws_versions(project="my-project-name",
+            location="us-west1")
         primary = gcp.container.AwsCluster("primary",
-            annotations={
-                "label-one": "value-one",
-            },
             authorization=gcp.container.AwsClusterAuthorizationArgs(
                 admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
                     username="my@service-account.com",
@@ -968,6 +968,8 @@ class AwsCluster(pulumi.CustomResource):
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
                 iam_instance_profile="my--1p-dev-controlplane",
+                subnet_ids=["subnet-00000000000000000"],
+                version=versions.valid_versions[0],
                 instance_type="t3.medium",
                 main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
                     iops=3000,
@@ -989,22 +991,24 @@ class AwsCluster(pulumi.CustomResource):
                 ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
                     ec2_key_pair="my--1p-dev-ssh",
                 ),
-                subnet_ids=["subnet-00000000000000000"],
                 tags={
                     "owner": "my@service-account.com",
                 },
-                version=versions.valid_versions[0],
             ),
-            description="A sample aws cluster",
             fleet=gcp.container.AwsClusterFleetArgs(
                 project="my-project-number",
             ),
             location="us-west1",
+            name="name",
             networking=gcp.container.AwsClusterNetworkingArgs(
                 pod_address_cidr_blocks=["10.2.0.0/16"],
                 service_address_cidr_blocks=["10.1.0.0/16"],
                 vpc_id="vpc-00000000000000000",
             ),
+            annotations={
+                "label-one": "value-one",
+            },
+            description="A sample aws cluster",
             project="my-project-name")
         ```
         ### Beta_basic_enum_aws_cluster
@@ -1068,6 +1072,7 @@ class AwsCluster(pulumi.CustomResource):
                 project="my-project-number",
             ),
             location="us-west1",
+            name="name",
             networking=gcp.container.AwsClusterNetworkingArgs(
                 pod_address_cidr_blocks=["10.2.0.0/16"],
                 service_address_cidr_blocks=["10.1.0.0/16"],
@@ -1085,8 +1090,7 @@ class AwsCluster(pulumi.CustomResource):
                         "workloads",
                     ],
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import

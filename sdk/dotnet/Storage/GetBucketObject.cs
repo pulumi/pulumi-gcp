@@ -34,8 +34,8 @@ namespace Pulumi.Gcp.Storage
         /// {
         ///     var picture = Gcp.Storage.GetBucketObject.Invoke(new()
         ///     {
-        ///         Bucket = "image-store",
         ///         Name = "folder/butterfly01.jpg",
+        ///         Bucket = "image-store",
         ///     });
         /// 
         /// });
@@ -69,8 +69,8 @@ namespace Pulumi.Gcp.Storage
         /// {
         ///     var picture = Gcp.Storage.GetBucketObject.Invoke(new()
         ///     {
-        ///         Bucket = "image-store",
         ///         Name = "folder/butterfly01.jpg",
+        ///         Bucket = "image-store",
         ///     });
         /// 
         /// });

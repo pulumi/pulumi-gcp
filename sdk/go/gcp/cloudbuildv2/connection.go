@@ -36,13 +36,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudbuildv2.NewConnection(ctx, "my-connection", &cloudbuildv2.ConnectionArgs{
+//				Location: pulumi.String("us-central1"),
+//				Name:     pulumi.String("tf-test-connection"),
 //				GithubConfig: &cloudbuildv2.ConnectionGithubConfigArgs{
 //					AppInstallationId: pulumi.Int(0),
 //					AuthorizerCredential: &cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs{
 //						OauthTokenSecretVersion: pulumi.String("projects/gcb-terraform-creds/secrets/github-pat/versions/1"),
 //					},
 //				},
-//				Location: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err
@@ -59,22 +60,13 @@ import (
 //
 // import (
 //
-//	"os"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudbuildv2"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
@@ -87,9 +79,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "private-key.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			_, err = secretmanager.NewSecretVersion(ctx, "private-key-secret-version", &secretmanager.SecretVersionArgs{
 //				Secret:     private_key_secret.ID(),
-//				SecretData: readFileOrPanic("private-key.pem"),
+//				SecretData: invokeFile.Result,
 //			})
 //			if err != nil {
 //				return err
@@ -139,6 +137,7 @@ import (
 //			}
 //			_, err = cloudbuildv2.NewConnection(ctx, "my-connection", &cloudbuildv2.ConnectionArgs{
 //				Location: pulumi.String("us-central1"),
+//				Name:     pulumi.String("my-terraform-ghe-connection"),
 //				GithubEnterpriseConfig: &cloudbuildv2.ConnectionGithubEnterpriseConfigArgs{
 //					HostUri:                    pulumi.String("https://ghe.com"),
 //					PrivateKeySecretVersion:    private_key_secret_version.ID(),
@@ -147,10 +146,7 @@ import (
 //					AppSlug:                    pulumi.String("gcb-app"),
 //					AppInstallationId:          pulumi.Int(300),
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				policy_pk,
-//				policy_whs,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -166,22 +162,13 @@ import (
 //
 // import (
 //
-//	"os"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudbuildv2"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
@@ -194,9 +181,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "my-github-token.txt",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			_, err = secretmanager.NewSecretVersion(ctx, "github-token-secret-version", &secretmanager.SecretVersionArgs{
 //				Secret:     github_token_secret.ID(),
-//				SecretData: readFileOrPanic("my-github-token.txt"),
+//				SecretData: invokeFile.Result,
 //			})
 //			if err != nil {
 //				return err
@@ -223,6 +216,7 @@ import (
 //			}
 //			_, err = cloudbuildv2.NewConnection(ctx, "my-connection", &cloudbuildv2.ConnectionArgs{
 //				Location: pulumi.String("us-central1"),
+//				Name:     pulumi.String("my-connection"),
 //				GithubConfig: &cloudbuildv2.ConnectionGithubConfigArgs{
 //					AppInstallationId: pulumi.Int(123123),
 //					AuthorizerCredential: &cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs{

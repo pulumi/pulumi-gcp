@@ -422,17 +422,18 @@ class AiFeatureStore(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featurestore = gcp.vertex.AiFeatureStore("featurestore",
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ),
-            force_destroy=True,
+            name="terraform",
             labels={
                 "foo": "bar",
             },
+            region="us-central1",
             online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
                 fixed_node_count=2,
             ),
-            region="us-central1")
+            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
+                kms_key_name="kms-name",
+            ),
+            force_destroy=True)
         ```
         ### Vertex Ai Featurestore With Beta Fields
 
@@ -441,6 +442,7 @@ class AiFeatureStore(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            name="terraform2",
             labels={
                 "foo": "bar",
             },
@@ -452,8 +454,7 @@ class AiFeatureStore(pulumi.CustomResource):
                 kms_key_name="kms-name",
             ),
             online_storage_ttl_days=30,
-            force_destroy=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            force_destroy=True)
         ```
         ### Vertex Ai Featurestore Scaling
 
@@ -462,20 +463,21 @@ class AiFeatureStore(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featurestore = gcp.vertex.AiFeatureStore("featurestore",
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ),
-            force_destroy=True,
+            name="terraform3",
             labels={
                 "foo": "bar",
             },
+            region="us-central1",
             online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
                 scaling=gcp.vertex.AiFeatureStoreOnlineServingConfigScalingArgs(
-                    max_node_count=10,
                     min_node_count=2,
+                    max_node_count=10,
                 ),
             ),
-            region="us-central1")
+            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
+                kms_key_name="kms-name",
+            ),
+            force_destroy=True)
         ```
 
         ## Import
@@ -548,17 +550,18 @@ class AiFeatureStore(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featurestore = gcp.vertex.AiFeatureStore("featurestore",
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ),
-            force_destroy=True,
+            name="terraform",
             labels={
                 "foo": "bar",
             },
+            region="us-central1",
             online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
                 fixed_node_count=2,
             ),
-            region="us-central1")
+            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
+                kms_key_name="kms-name",
+            ),
+            force_destroy=True)
         ```
         ### Vertex Ai Featurestore With Beta Fields
 
@@ -567,6 +570,7 @@ class AiFeatureStore(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            name="terraform2",
             labels={
                 "foo": "bar",
             },
@@ -578,8 +582,7 @@ class AiFeatureStore(pulumi.CustomResource):
                 kms_key_name="kms-name",
             ),
             online_storage_ttl_days=30,
-            force_destroy=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            force_destroy=True)
         ```
         ### Vertex Ai Featurestore Scaling
 
@@ -588,20 +591,21 @@ class AiFeatureStore(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featurestore = gcp.vertex.AiFeatureStore("featurestore",
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ),
-            force_destroy=True,
+            name="terraform3",
             labels={
                 "foo": "bar",
             },
+            region="us-central1",
             online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
                 scaling=gcp.vertex.AiFeatureStoreOnlineServingConfigScalingArgs(
-                    max_node_count=10,
                     min_node_count=2,
+                    max_node_count=10,
                 ),
             ),
-            region="us-central1")
+            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
+                kms_key_name="kms-name",
+            ),
+            force_destroy=True)
         ```
 
         ## Import

@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const testDataStore = new gcp.discoveryengine.DataStore("testDataStore", {
+ * const testDataStore = new gcp.discoveryengine.DataStore("test_data_store", {
  *     location: "global",
  *     dataStoreId: "data-store",
  *     displayName: "Structured datastore",
@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *     contentConfig: "NO_CONTENT",
  *     solutionTypes: ["SOLUTION_TYPE_CHAT"],
  * });
- * const testDataStore2 = new gcp.discoveryengine.DataStore("testDataStore2", {
+ * const testDataStore2 = new gcp.discoveryengine.DataStore("test_data_store_2", {
  *     location: testDataStore.location,
  *     dataStoreId: "data-store-2",
  *     displayName: "Structured datastore 2",

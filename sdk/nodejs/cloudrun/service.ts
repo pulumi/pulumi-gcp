@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.cloudrun.Service("default", {
+ *     name: "cloud_run_service_name",
  *     location: "us-central1",
  *     template: {
  *         spec: {
@@ -53,8 +54,9 @@ import * as utilities from "../utilities";
  *     role: "roles/iam.serviceAccountTokenCreator",
  *     members: [pulumi.interpolate`serviceAccount:${sa.email}`],
  * });
- * const topic = new gcp.pubsub.Topic("topic", {});
+ * const topic = new gcp.pubsub.Topic("topic", {name: "pubsub_topic"});
  * const subscription = new gcp.pubsub.Subscription("subscription", {
+ *     name: "pubsub_subscription",
  *     topic: topic.name,
  *     pushConfig: {
  *         pushEndpoint: _default.statuses.apply(statuses => statuses[0].url),
@@ -74,6 +76,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.cloudrun.Service("default", {
+ *     name: "cloudrun-srv",
  *     location: "us-central1",
  *     template: {
  *         spec: {
@@ -83,8 +86,8 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     traffics: [{
- *         latestRevision: true,
  *         percent: 100,
+ *         latestRevision: true,
  *     }],
  * });
  * ```
@@ -95,6 +98,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     name: "cloudrun-sql",
  *     region: "us-east1",
  *     databaseVersion: "MYSQL_5_7",
  *     settings: {
@@ -103,6 +107,7 @@ import * as utilities from "../utilities";
  *     deletionProtection: true,
  * });
  * const _default = new gcp.cloudrun.Service("default", {
+ *     name: "cloudrun-srv",
  *     location: "us-central1",
  *     template: {
  *         spec: {
@@ -128,6 +133,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.cloudrun.Service("default", {
+ *     name: "cloudrun-srv",
  *     location: "us-central1",
  *     template: {
  *         spec: {
@@ -137,17 +143,17 @@ import * as utilities from "../utilities";
  *         },
  *     },
  * });
- * const noauthIAMPolicy = gcp.organizations.getIAMPolicy({
+ * const noauth = gcp.organizations.getIAMPolicy({
  *     bindings: [{
  *         role: "roles/run.invoker",
  *         members: ["allUsers"],
  *     }],
  * });
- * const noauthIamPolicy = new gcp.cloudrun.IamPolicy("noauthIamPolicy", {
+ * const noauthIamPolicy = new gcp.cloudrun.IamPolicy("noauth", {
  *     location: _default.location,
  *     project: _default.project,
  *     service: _default.name,
- *     policyData: noauthIAMPolicy.then(noauthIAMPolicy => noauthIAMPolicy.policyData),
+ *     policyData: noauth.then(noauth => noauth.policyData),
  * });
  * ```
  * ### Cloud Run Service Probes
@@ -157,6 +163,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.cloudrun.Service("default", {
+ *     name: "cloudrun-srv",
  *     location: "us-central1",
  *     template: {
  *         spec: {
@@ -192,6 +199,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.cloudrun.Service("default", {
+ *     name: "cloudrun-srv",
  *     location: "us-central1",
  *     metadata: {
  *         annotations: {
@@ -246,8 +254,6 @@ import * as utilities from "../utilities";
  *             }],
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

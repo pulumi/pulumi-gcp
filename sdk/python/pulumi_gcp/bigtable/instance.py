@@ -390,6 +390,7 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         production_instance = gcp.bigtable.Instance("production-instance",
+            name="tf-instance",
             clusters=[gcp.bigtable.InstanceClusterArgs(
                 cluster_id="tf-instance-cluster",
                 num_nodes=1,
@@ -406,6 +407,7 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         production_instance = gcp.bigtable.Instance("production-instance",
+            name="tf-instance",
             clusters=[
                 gcp.bigtable.InstanceClusterArgs(
                     cluster_id="tf-instance-cluster1",
@@ -414,14 +416,14 @@ class Instance(pulumi.CustomResource):
                     zone="us-central1-c",
                 ),
                 gcp.bigtable.InstanceClusterArgs(
-                    autoscaling_config=gcp.bigtable.InstanceClusterAutoscalingConfigArgs(
-                        cpu_target=50,
-                        max_nodes=3,
-                        min_nodes=1,
-                    ),
                     cluster_id="tf-instance-cluster2",
                     storage_type="HDD",
                     zone="us-central1-b",
+                    autoscaling_config=gcp.bigtable.InstanceClusterAutoscalingConfigArgs(
+                        min_nodes=1,
+                        max_nodes=3,
+                        cpu_target=50,
+                    ),
                 ),
             ],
             labels={
@@ -506,6 +508,7 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         production_instance = gcp.bigtable.Instance("production-instance",
+            name="tf-instance",
             clusters=[gcp.bigtable.InstanceClusterArgs(
                 cluster_id="tf-instance-cluster",
                 num_nodes=1,
@@ -522,6 +525,7 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         production_instance = gcp.bigtable.Instance("production-instance",
+            name="tf-instance",
             clusters=[
                 gcp.bigtable.InstanceClusterArgs(
                     cluster_id="tf-instance-cluster1",
@@ -530,14 +534,14 @@ class Instance(pulumi.CustomResource):
                     zone="us-central1-c",
                 ),
                 gcp.bigtable.InstanceClusterArgs(
-                    autoscaling_config=gcp.bigtable.InstanceClusterAutoscalingConfigArgs(
-                        cpu_target=50,
-                        max_nodes=3,
-                        min_nodes=1,
-                    ),
                     cluster_id="tf-instance-cluster2",
                     storage_type="HDD",
                     zone="us-central1-b",
+                    autoscaling_config=gcp.bigtable.InstanceClusterAutoscalingConfigArgs(
+                        min_nodes=1,
+                        max_nodes=3,
+                        cpu_target=50,
+                    ),
                 ),
             ],
             labels={

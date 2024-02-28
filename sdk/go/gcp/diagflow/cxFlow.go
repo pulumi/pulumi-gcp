@@ -56,7 +56,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = diagflow.NewCxFlow(ctx, "basicFlow", &diagflow.CxFlowArgs{
+//			_, err = diagflow.NewCxFlow(ctx, "basic_flow", &diagflow.CxFlowArgs{
 //				Parent:      agent.ID(),
 //				DisplayName: pulumi.String("MyFlow"),
 //				Description: pulumi.String("Test Flow"),
@@ -160,6 +160,7 @@ import (
 //				return err
 //			}
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:                     pulumi.String("dialogflowcx-bucket"),
 //				Location:                 pulumi.String("US"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
@@ -296,7 +297,7 @@ import (
 //				return err
 //			}
 //			json5 := string(tmpJSON5)
-//			_, err = diagflow.NewCxFlow(ctx, "basicFlow", &diagflow.CxFlowArgs{
+//			_, err = diagflow.NewCxFlow(ctx, "basic_flow", &diagflow.CxFlowArgs{
 //				Parent:      agent.ID(),
 //				DisplayName: pulumi.String("MyFlow"),
 //				Description: pulumi.String("Test Flow"),

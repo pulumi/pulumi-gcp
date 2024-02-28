@@ -48,9 +48,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.SubnetworkArgs;
  * import com.pulumi.gcp.compute.Instance;
  * import com.pulumi.gcp.compute.InstanceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
- * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
  * import com.pulumi.gcp.compute.NetworkEndpointList;
  * import com.pulumi.gcp.compute.NetworkEndpointListArgs;
  * import com.pulumi.gcp.compute.inputs.NetworkEndpointListNetworkEndpointArgs;
@@ -74,59 +74,64 @@ import javax.annotation.Nullable;
  *             .project(&#34;debian-cloud&#34;)
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+ *             .name(&#34;neg-network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;neg-subnetwork&#34;)
  *             .ipCidrRange(&#34;10.0.0.1/16&#34;)
  *             .region(&#34;us-central1&#34;)
- *             .network(defaultNetwork.id())
+ *             .network(default_.id())
  *             .build());
  * 
  *         var endpoint_instance1 = new Instance(&#34;endpoint-instance1&#34;, InstanceArgs.builder()        
+ *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+ *                 .accessConfigs()
+ *                 .subnetwork(defaultSubnetwork.id())
+ *                 .build())
+ *             .name(&#34;endpoint-instance1&#34;)
  *             .machineType(&#34;e2-medium&#34;)
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
  *                     .image(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
  *                     .build())
- *                 .build())
- *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
- *                 .subnetwork(defaultSubnetwork.id())
- *                 .accessConfigs()
  *                 .build())
  *             .build());
  * 
  *         var endpoint_instance2 = new Instance(&#34;endpoint-instance2&#34;, InstanceArgs.builder()        
+ *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+ *                 .accessConfigs()
+ *                 .subnetwork(defaultSubnetwork.id())
+ *                 .build())
+ *             .name(&#34;endpoint-instance2&#34;)
  *             .machineType(&#34;e2-medium&#34;)
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
  *                     .image(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
  *                     .build())
  *                 .build())
- *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
- *                 .subnetwork(defaultSubnetwork.id())
- *                 .accessConfigs()
- *                 .build())
  *             .build());
  * 
  *         var default_endpoints = new NetworkEndpointList(&#34;default-endpoints&#34;, NetworkEndpointListArgs.builder()        
- *             .networkEndpointGroup(google_compute_network_endpoint_group.neg().name())
+ *             .networkEndpointGroup(neg.name())
  *             .networkEndpoints(            
  *                 NetworkEndpointListNetworkEndpointArgs.builder()
  *                     .instance(endpoint_instance1.name())
- *                     .port(google_compute_network_endpoint_group.neg().default_port())
+ *                     .port(neg.defaultPort())
  *                     .ipAddress(endpoint_instance1.networkInterfaces().applyValue(networkInterfaces -&gt; networkInterfaces[0].networkIp()))
  *                     .build(),
  *                 NetworkEndpointListNetworkEndpointArgs.builder()
  *                     .instance(endpoint_instance2.name())
- *                     .port(google_compute_network_endpoint_group.neg().default_port())
+ *                     .port(neg.defaultPort())
  *                     .ipAddress(endpoint_instance2.networkInterfaces().applyValue(networkInterfaces -&gt; networkInterfaces[0].networkIp()))
  *                     .build())
  *             .build());
  * 
  *         var group = new NetworkEndpointGroup(&#34;group&#34;, NetworkEndpointGroupArgs.builder()        
- *             .network(defaultNetwork.id())
+ *             .name(&#34;my-lb-neg&#34;)
+ *             .network(default_.id())
  *             .subnetwork(defaultSubnetwork.id())
  *             .defaultPort(&#34;90&#34;)
  *             .zone(&#34;us-central1-a&#34;)

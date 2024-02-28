@@ -37,17 +37,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			topic, err := pubsub.NewTopic(ctx, "topic", nil)
+//			topic, err := pubsub.NewTopic(ctx, "topic", &pubsub.TopicArgs{
+//				Name: pulumi.String("hl7-v2-notifications"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+//				Name:     pulumi.String("example-dataset"),
 //				Location: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = healthcare.NewHl7Store(ctx, "store", &healthcare.Hl7StoreArgs{
+//				Name:                   pulumi.String("example-hl7-v2-store"),
 //				Dataset:                dataset.ID(),
 //				RejectDuplicateMessage: pulumi.Bool(true),
 //				NotificationConfigs: healthcare.Hl7StoreNotificationConfigsArray{
@@ -82,12 +86,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+//				Name:     pulumi.String("example-dataset"),
 //				Location: pulumi.String("us-central1"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = healthcare.NewHl7Store(ctx, "store", &healthcare.Hl7StoreArgs{
+//				Name:    pulumi.String("example-hl7-v2-store"),
 //				Dataset: dataset.ID(),
 //				ParserConfig: &healthcare.Hl7StoreParserConfigArgs{
 //					AllowNullHeader:   pulumi.Bool(false),
@@ -174,7 +180,7 @@ import (
 // `),
 //
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -198,19 +204,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+//				Name:     pulumi.String("example-dataset"),
 //				Location: pulumi.String("us-central1"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = healthcare.NewHl7Store(ctx, "store", &healthcare.Hl7StoreArgs{
+//				Name:    pulumi.String("example-hl7-v2-store"),
 //				Dataset: dataset.ID(),
 //				ParserConfig: &healthcare.Hl7StoreParserConfigArgs{
 //					AllowNullHeader:   pulumi.Bool(false),
 //					SegmentTerminator: pulumi.String("Jw=="),
 //					Version:           pulumi.String("V2"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := spanner.GetInstanceIamPolicy(ctx, &spanner.GetInstanceIamPolicyArgs{
-//				Project:  pulumi.StringRef(google_spanner_instance.Instance.Project),
-//				Instance: google_spanner_instance.Instance.Name,
+//				Project:  pulumi.StringRef(instance.Project),
+//				Instance: instance.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

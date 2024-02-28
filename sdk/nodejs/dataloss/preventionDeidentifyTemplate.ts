@@ -16,6 +16,105 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dlp/docs/concepts-templates)
  *
  * ## Example Usage
+ * ### Dlp Deidentify Template Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = new gcp.dataloss.PreventionDeidentifyTemplate("basic", {
+ *     parent: "projects/my-project-name",
+ *     description: "Description",
+ *     displayName: "Displayname",
+ *     deidentifyConfig: {
+ *         infoTypeTransformations: {
+ *             transformations: [
+ *                 {
+ *                     infoTypes: [{
+ *                         name: "FIRST_NAME",
+ *                     }],
+ *                     primitiveTransformation: {
+ *                         replaceWithInfoTypeConfig: true,
+ *                     },
+ *                 },
+ *                 {
+ *                     infoTypes: [
+ *                         {
+ *                             name: "PHONE_NUMBER",
+ *                         },
+ *                         {
+ *                             name: "AGE",
+ *                         },
+ *                     ],
+ *                     primitiveTransformation: {
+ *                         replaceConfig: {
+ *                             newValue: {
+ *                                 integerValue: 9,
+ *                             },
+ *                         },
+ *                     },
+ *                 },
+ *                 {
+ *                     infoTypes: [
+ *                         {
+ *                             name: "EMAIL_ADDRESS",
+ *                         },
+ *                         {
+ *                             name: "LAST_NAME",
+ *                         },
+ *                     ],
+ *                     primitiveTransformation: {
+ *                         characterMaskConfig: {
+ *                             maskingCharacter: "X",
+ *                             numberToMask: 4,
+ *                             reverseOrder: true,
+ *                             charactersToIgnores: [{
+ *                                 commonCharactersToIgnore: "PUNCTUATION",
+ *                             }],
+ *                         },
+ *                     },
+ *                 },
+ *                 {
+ *                     infoTypes: [{
+ *                         name: "DATE_OF_BIRTH",
+ *                     }],
+ *                     primitiveTransformation: {
+ *                         replaceConfig: {
+ *                             newValue: {
+ *                                 dateValue: {
+ *                                     year: 2020,
+ *                                     month: 1,
+ *                                     day: 1,
+ *                                 },
+ *                             },
+ *                         },
+ *                     },
+ *                 },
+ *                 {
+ *                     infoTypes: [{
+ *                         name: "CREDIT_CARD_NUMBER",
+ *                     }],
+ *                     primitiveTransformation: {
+ *                         cryptoDeterministicConfig: {
+ *                             context: {
+ *                                 name: "sometweak",
+ *                             },
+ *                             cryptoKey: {
+ *                                 transient: {
+ *                                     name: "beep",
+ *                                 },
+ *                             },
+ *                             surrogateInfoType: {
+ *                                 name: "abc",
+ *                             },
+ *                         },
+ *                     },
+ *                 },
+ *             ],
+ *         },
+ *     },
+ * });
+ * ```
  * ### Dlp Deidentify Template Image Transformations
  *
  * ```typescript
@@ -23,14 +122,17 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const basic = new gcp.dataloss.PreventionDeidentifyTemplate("basic", {
+ *     parent: "projects/my-project-name",
+ *     description: "Description",
+ *     displayName: "Displayname",
  *     deidentifyConfig: {
  *         imageTransformations: {
  *             transforms: [
  *                 {
  *                     redactionColor: {
+ *                         red: 0.5,
  *                         blue: 1,
  *                         green: 0.2,
- *                         red: 0.5,
  *                     },
  *                     selectedInfoTypes: {
  *                         infoTypes: [{
@@ -48,9 +150,6 @@ import * as utilities from "../utilities";
  *             ],
  *         },
  *     },
- *     description: "Description",
- *     displayName: "Displayname",
- *     parent: "projects/my-project-name",
  * });
  * ```
  *

@@ -21,22 +21,16 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultHostingSite = new Gcp.Firebase.HostingSite("defaultHostingSite", new()
+    ///     var @default = new Gcp.Firebase.HostingSite("default", new()
     ///     {
     ///         Project = "my-project-name",
     ///         SiteId = "site-with-channel",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultHostingChannel = new Gcp.Firebase.HostingChannel("defaultHostingChannel", new()
+    ///     var defaultHostingChannel = new Gcp.Firebase.HostingChannel("default", new()
     ///     {
-    ///         SiteId = defaultHostingSite.SiteId,
+    ///         SiteId = @default.SiteId,
     ///         ChannelId = "channel-basic",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -55,9 +49,6 @@ namespace Pulumi.Gcp.Firebase
     ///     {
     ///         Project = "my-project-name",
     ///         SiteId = "site-with-channel",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var full = new Gcp.Firebase.HostingChannel("full", new()
@@ -70,9 +61,6 @@ namespace Pulumi.Gcp.Firebase
     ///         {
     ///             { "some-key", "some-value" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

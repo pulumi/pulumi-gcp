@@ -309,9 +309,9 @@ class TagKey(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         key = gcp.tags.TagKey("key",
-            description="For keyname resources.",
             parent="organizations/123456789",
-            short_name="keyname")
+            short_name="keyname",
+            description="For keyname resources.")
         ```
 
         ## Import
@@ -370,9 +370,9 @@ class TagKey(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         key = gcp.tags.TagKey("key",
-            description="For keyname resources.",
             parent="organizations/123456789",
-            short_name="keyname")
+            short_name="keyname",
+            description="For keyname resources.")
         ```
 
         ## Import

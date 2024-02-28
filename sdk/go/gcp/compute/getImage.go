@@ -35,7 +35,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// ...
 //			_, err = compute.NewInstance(ctx, "default", &compute.InstanceArgs{
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{

@@ -17,45 +17,46 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const cluster_basic = new gcp.gkeonprem.VMwareCluster("cluster-basic", {
+ *     name: "cluster-basic",
+ *     location: "us-west1",
  *     adminClusterMembership: "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
+ *     description: "test cluster",
+ *     onPremVersion: "1.13.1-gke.35",
  *     annotations: {},
+ *     networkConfig: {
+ *         serviceAddressCidrBlocks: ["10.96.0.0/12"],
+ *         podAddressCidrBlocks: ["192.168.0.0/16"],
+ *         dhcpIpConfig: {
+ *             enabled: true,
+ *         },
+ *     },
  *     controlPlaneNode: {
  *         cpus: 4,
  *         memory: 8192,
  *         replicas: 1,
  *     },
- *     description: "test cluster",
  *     loadBalancer: {
- *         metalLbConfig: {
- *             addressPools: [
- *                 {
- *                     addresses: ["10.251.135.19"],
- *                     avoidBuggyIps: true,
- *                     manualAssign: true,
- *                     pool: "ingress-ip",
- *                 },
- *                 {
- *                     addresses: ["10.251.135.19"],
- *                     avoidBuggyIps: true,
- *                     manualAssign: true,
- *                     pool: "lb-test-ip",
- *                 },
- *             ],
- *         },
  *         vipConfig: {
  *             controlPlaneVip: "10.251.133.5",
  *             ingressVip: "10.251.135.19",
  *         },
- *     },
- *     location: "us-west1",
- *     networkConfig: {
- *         dhcpIpConfig: {
- *             enabled: true,
+ *         metalLbConfig: {
+ *             addressPools: [
+ *                 {
+ *                     pool: "ingress-ip",
+ *                     manualAssign: true,
+ *                     addresses: ["10.251.135.19"],
+ *                     avoidBuggyIps: true,
+ *                 },
+ *                 {
+ *                     pool: "lb-test-ip",
+ *                     manualAssign: true,
+ *                     addresses: ["10.251.135.19"],
+ *                     avoidBuggyIps: true,
+ *                 },
+ *             ],
  *         },
- *         podAddressCidrBlocks: ["192.168.0.0/16"],
- *         serviceAddressCidrBlocks: ["10.96.0.0/12"],
  *     },
- *     onPremVersion: "1.13.1-gke.35",
  * });
  * ```
  * ### Gkeonprem Vmware Cluster F5lb
@@ -65,68 +66,69 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const cluster_f5lb = new gcp.gkeonprem.VMwareCluster("cluster-f5lb", {
+ *     name: "cluster-f5lb",
+ *     location: "us-west1",
  *     adminClusterMembership: "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
+ *     description: "test cluster",
+ *     onPremVersion: "1.13.1-gke.35",
  *     annotations: {},
- *     antiAffinityGroups: {
- *         aagConfigDisabled: true,
- *     },
- *     authorization: {
- *         adminUsers: [{
- *             username: "testuser@gmail.com",
- *         }],
- *     },
- *     autoRepairConfig: {
- *         enabled: true,
- *     },
- *     controlPlaneNode: {
- *         autoResizeConfig: {
+ *     networkConfig: {
+ *         serviceAddressCidrBlocks: ["10.96.0.0/12"],
+ *         podAddressCidrBlocks: ["192.168.0.0/16"],
+ *         dhcpIpConfig: {
  *             enabled: true,
  *         },
- *         cpus: 4,
- *         memory: 8192,
- *         replicas: 1,
- *     },
- *     dataplaneV2: {
- *         advancedNetworking: true,
- *         dataplaneV2Enabled: true,
- *         windowsDataplaneV2Enabled: true,
- *     },
- *     description: "test cluster",
- *     enableControlPlaneV2: true,
- *     loadBalancer: {
- *         f5Config: {
- *             address: "10.0.0.1",
- *             partition: "test-partition",
- *             snatPool: "test-snap-pool",
- *         },
- *         vipConfig: {
- *             controlPlaneVip: "10.251.133.5",
- *             ingressVip: "10.251.135.19",
- *         },
- *     },
- *     location: "us-west1",
- *     networkConfig: {
  *         controlPlaneV2Config: {
  *             controlPlaneIpBlock: {
- *                 gateway: "test-gateway",
  *                 ips: [{
  *                     hostname: "test-hostname",
  *                     ip: "10.0.0.1",
  *                 }],
  *                 netmask: "10.0.0.1/32",
+ *                 gateway: "test-gateway",
  *             },
  *         },
- *         dhcpIpConfig: {
+ *     },
+ *     controlPlaneNode: {
+ *         cpus: 4,
+ *         memory: 8192,
+ *         replicas: 1,
+ *         autoResizeConfig: {
  *             enabled: true,
  *         },
- *         podAddressCidrBlocks: ["192.168.0.0/16"],
- *         serviceAddressCidrBlocks: ["10.96.0.0/12"],
  *     },
- *     onPremVersion: "1.13.1-gke.35",
+ *     loadBalancer: {
+ *         vipConfig: {
+ *             controlPlaneVip: "10.251.133.5",
+ *             ingressVip: "10.251.135.19",
+ *         },
+ *         f5Config: {
+ *             address: "10.0.0.1",
+ *             partition: "test-partition",
+ *             snatPool: "test-snap-pool",
+ *         },
+ *     },
+ *     dataplaneV2: {
+ *         dataplaneV2Enabled: true,
+ *         windowsDataplaneV2Enabled: true,
+ *         advancedNetworking: true,
+ *     },
+ *     vmTrackingEnabled: true,
+ *     enableControlPlaneV2: true,
+ *     authorization: {
+ *         adminUsers: [{
+ *             username: "testuser@gmail.com",
+ *         }],
+ *     },
+ *     antiAffinityGroups: {
+ *         aagConfigDisabled: true,
+ *     },
+ *     autoRepairConfig: {
+ *         enabled: true,
+ *     },
  *     storage: {
  *         vsphereCsiDisabled: true,
  *     },
- *     vmTrackingEnabled: true,
  * });
  * ```
  * ### Gkeonprem Vmware Cluster Manuallb
@@ -136,94 +138,95 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const cluster_manuallb = new gcp.gkeonprem.VMwareCluster("cluster-manuallb", {
+ *     name: "cluster-manuallb",
+ *     location: "us-west1",
  *     adminClusterMembership: "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
+ *     description: "test cluster",
+ *     onPremVersion: "1.13.1-gke.35",
  *     annotations: {},
- *     antiAffinityGroups: {
- *         aagConfigDisabled: true,
+ *     networkConfig: {
+ *         serviceAddressCidrBlocks: ["10.96.0.0/12"],
+ *         podAddressCidrBlocks: ["192.168.0.0/16"],
+ *         hostConfig: {
+ *             dnsServers: ["10.254.41.1"],
+ *             ntpServers: ["216.239.35.8"],
+ *             dnsSearchDomains: ["test-domain"],
+ *         },
+ *         staticIpConfig: {
+ *             ipBlocks: [{
+ *                 netmask: "255.255.252.0",
+ *                 gateway: "10.251.31.254",
+ *                 ips: [
+ *                     {
+ *                         ip: "10.251.30.153",
+ *                         hostname: "test-hostname1",
+ *                     },
+ *                     {
+ *                         ip: "10.251.31.206",
+ *                         hostname: "test-hostname2",
+ *                     },
+ *                     {
+ *                         ip: "10.251.31.193",
+ *                         hostname: "test-hostname3",
+ *                     },
+ *                     {
+ *                         ip: "10.251.30.230",
+ *                         hostname: "test-hostname4",
+ *                     },
+ *                 ],
+ *             }],
+ *         },
+ *     },
+ *     controlPlaneNode: {
+ *         cpus: 4,
+ *         memory: 8192,
+ *         replicas: 1,
+ *         autoResizeConfig: {
+ *             enabled: true,
+ *         },
+ *     },
+ *     loadBalancer: {
+ *         vipConfig: {
+ *             controlPlaneVip: "10.251.133.5",
+ *             ingressVip: "10.251.135.19",
+ *         },
+ *         manualLbConfig: {
+ *             ingressHttpNodePort: 30005,
+ *             ingressHttpsNodePort: 30006,
+ *             controlPlaneNodePort: 30007,
+ *             konnectivityServerNodePort: 30008,
+ *         },
+ *     },
+ *     vcenters: [{
+ *         resourcePool: "test-resource-pool",
+ *         datastore: "test-datastore",
+ *         datacenter: "test-datacenter",
+ *         cluster: "test-cluster",
+ *         folder: "test-folder",
+ *         caCertData: "test-ca-cert-data",
+ *         storagePolicyName: "test-storage-policy-name",
+ *     }],
+ *     dataplaneV2: {
+ *         dataplaneV2Enabled: true,
+ *         windowsDataplaneV2Enabled: true,
+ *         advancedNetworking: true,
+ *     },
+ *     vmTrackingEnabled: true,
+ *     enableControlPlaneV2: true,
+ *     upgradePolicy: {
+ *         controlPlaneOnly: true,
  *     },
  *     authorization: {
  *         adminUsers: [{
  *             username: "testuser@gmail.com",
  *         }],
  *     },
+ *     antiAffinityGroups: {
+ *         aagConfigDisabled: true,
+ *     },
  *     autoRepairConfig: {
  *         enabled: true,
  *     },
- *     controlPlaneNode: {
- *         autoResizeConfig: {
- *             enabled: true,
- *         },
- *         cpus: 4,
- *         memory: 8192,
- *         replicas: 1,
- *     },
- *     dataplaneV2: {
- *         advancedNetworking: true,
- *         dataplaneV2Enabled: true,
- *         windowsDataplaneV2Enabled: true,
- *     },
- *     description: "test cluster",
- *     enableControlPlaneV2: true,
- *     loadBalancer: {
- *         manualLbConfig: {
- *             controlPlaneNodePort: 30007,
- *             ingressHttpNodePort: 30005,
- *             ingressHttpsNodePort: 30006,
- *             konnectivityServerNodePort: 30008,
- *         },
- *         vipConfig: {
- *             controlPlaneVip: "10.251.133.5",
- *             ingressVip: "10.251.135.19",
- *         },
- *     },
- *     location: "us-west1",
- *     networkConfig: {
- *         hostConfig: {
- *             dnsSearchDomains: ["test-domain"],
- *             dnsServers: ["10.254.41.1"],
- *             ntpServers: ["216.239.35.8"],
- *         },
- *         podAddressCidrBlocks: ["192.168.0.0/16"],
- *         serviceAddressCidrBlocks: ["10.96.0.0/12"],
- *         staticIpConfig: {
- *             ipBlocks: [{
- *                 gateway: "10.251.31.254",
- *                 ips: [
- *                     {
- *                         hostname: "test-hostname1",
- *                         ip: "10.251.30.153",
- *                     },
- *                     {
- *                         hostname: "test-hostname2",
- *                         ip: "10.251.31.206",
- *                     },
- *                     {
- *                         hostname: "test-hostname3",
- *                         ip: "10.251.31.193",
- *                     },
- *                     {
- *                         hostname: "test-hostname4",
- *                         ip: "10.251.30.230",
- *                     },
- *                 ],
- *                 netmask: "255.255.252.0",
- *             }],
- *         },
- *     },
- *     onPremVersion: "1.13.1-gke.35",
- *     upgradePolicy: {
- *         controlPlaneOnly: true,
- *     },
- *     vcenters: [{
- *         caCertData: "test-ca-cert-data",
- *         cluster: "test-cluster",
- *         datacenter: "test-datacenter",
- *         datastore: "test-datastore",
- *         folder: "test-folder",
- *         resourcePool: "test-resource-pool",
- *         storagePolicyName: "test-storage-policy-name",
- *     }],
- *     vmTrackingEnabled: true,
  * });
  * ```
  *

@@ -10442,19 +10442,6 @@ type ClusterAddonsConfig struct {
 	//
 	// This example `addonsConfig` disables two addons:
 	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	// <a name="nestedBinaryAuthorization"></a>The `binaryAuthorization` block supports:
 	ConfigConnectorConfig *ClusterAddonsConfigConfigConnectorConfig `pulumi:"configConnectorConfig"`
 	// .
@@ -10526,19 +10513,6 @@ type ClusterAddonsConfigArgs struct {
 	//
 	// This example `addonsConfig` disables two addons:
 	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	// <a name="nestedBinaryAuthorization"></a>The `binaryAuthorization` block supports:
 	ConfigConnectorConfig ClusterAddonsConfigConfigConnectorConfigPtrInput `pulumi:"configConnectorConfig"`
 	// .
@@ -10678,22 +10652,6 @@ func (o ClusterAddonsConfigOutput) CloudrunConfig() ClusterAddonsConfigCloudrunC
 //
 // This example `addonsConfig` disables two addons:
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 // <a name="nestedBinaryAuthorization"></a>The `binaryAuthorization` block supports:
 func (o ClusterAddonsConfigOutput) ConfigConnectorConfig() ClusterAddonsConfigConfigConnectorConfigPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigConfigConnectorConfig { return v.ConfigConnectorConfig }).(ClusterAddonsConfigConfigConnectorConfigPtrOutput)
@@ -10824,22 +10782,6 @@ func (o ClusterAddonsConfigPtrOutput) CloudrunConfig() ClusterAddonsConfigCloudr
 //
 // This example `addonsConfig` disables two addons:
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 // <a name="nestedBinaryAuthorization"></a>The `binaryAuthorization` block supports:
 func (o ClusterAddonsConfigPtrOutput) ConfigConnectorConfig() ClusterAddonsConfigConfigConnectorConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigConfigConnectorConfig {
@@ -16929,19 +16871,6 @@ type ClusterMaintenancePolicy struct {
 	// where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
 	//
 	// Examples:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	DailyMaintenanceWindow *ClusterMaintenancePolicyDailyMaintenanceWindow `pulumi:"dailyMaintenanceWindow"`
 	// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
 	MaintenanceExclusions []ClusterMaintenancePolicyMaintenanceExclusion `pulumi:"maintenanceExclusions"`
@@ -16953,33 +16882,6 @@ type ClusterMaintenancePolicy struct {
 	// Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
 	//
 	// Examples:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	RecurringWindow *ClusterMaintenancePolicyRecurringWindow `pulumi:"recurringWindow"`
 }
 
@@ -17000,19 +16902,6 @@ type ClusterMaintenancePolicyArgs struct {
 	// where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
 	//
 	// Examples:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	DailyMaintenanceWindow ClusterMaintenancePolicyDailyMaintenanceWindowPtrInput `pulumi:"dailyMaintenanceWindow"`
 	// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
 	MaintenanceExclusions ClusterMaintenancePolicyMaintenanceExclusionArrayInput `pulumi:"maintenanceExclusions"`
@@ -17024,33 +16913,6 @@ type ClusterMaintenancePolicyArgs struct {
 	// Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
 	//
 	// Examples:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	RecurringWindow ClusterMaintenancePolicyRecurringWindowPtrInput `pulumi:"recurringWindow"`
 }
 
@@ -17136,22 +16998,6 @@ func (o ClusterMaintenancePolicyOutput) ToClusterMaintenancePolicyPtrOutputWithC
 // where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
 //
 // Examples:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterMaintenancePolicyOutput) DailyMaintenanceWindow() ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput {
 	return o.ApplyT(func(v ClusterMaintenancePolicy) *ClusterMaintenancePolicyDailyMaintenanceWindow {
 		return v.DailyMaintenanceWindow
@@ -17173,39 +17019,6 @@ func (o ClusterMaintenancePolicyOutput) MaintenanceExclusions() ClusterMaintenan
 // Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
 //
 // Examples:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterMaintenancePolicyOutput) RecurringWindow() ClusterMaintenancePolicyRecurringWindowPtrOutput {
 	return o.ApplyT(func(v ClusterMaintenancePolicy) *ClusterMaintenancePolicyRecurringWindow { return v.RecurringWindow }).(ClusterMaintenancePolicyRecurringWindowPtrOutput)
 }
@@ -17239,22 +17052,6 @@ func (o ClusterMaintenancePolicyPtrOutput) Elem() ClusterMaintenancePolicyOutput
 // where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
 //
 // Examples:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterMaintenancePolicyPtrOutput) DailyMaintenanceWindow() ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput {
 	return o.ApplyT(func(v *ClusterMaintenancePolicy) *ClusterMaintenancePolicyDailyMaintenanceWindow {
 		if v == nil {
@@ -17282,39 +17079,6 @@ func (o ClusterMaintenancePolicyPtrOutput) MaintenanceExclusions() ClusterMainte
 // Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
 //
 // Examples:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterMaintenancePolicyPtrOutput) RecurringWindow() ClusterMaintenancePolicyRecurringWindowPtrOutput {
 	return o.ApplyT(func(v *ClusterMaintenancePolicy) *ClusterMaintenancePolicyRecurringWindow {
 		if v == nil {
@@ -17598,20 +17362,6 @@ type ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions struct {
 	// Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
 	//
 	// Examples:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Scope string `pulumi:"scope"`
 }
 
@@ -17635,20 +17385,6 @@ type ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs struct {
 	// Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
 	//
 	// Examples:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
@@ -17737,23 +17473,6 @@ func (o ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutput) ToCl
 // Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
 //
 // Examples:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions) string { return v.Scope }).(pulumi.StringOutput)
 }
@@ -17790,23 +17509,6 @@ func (o ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput) E
 // Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
 //
 // Examples:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions) *string {
 		if v == nil {
@@ -17984,20 +17686,6 @@ type ClusterMasterAuth struct {
 	ClientCertificate *string `pulumi:"clientCertificate"`
 	// Whether client certificate authorization is enabled for this cluster.  For example:
 	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	//
 	// This block also contains several computed attributes, documented below.
 	ClientCertificateConfig ClusterMasterAuthClientCertificateConfig `pulumi:"clientCertificateConfig"`
 	// Base64 encoded private key used by clients to authenticate to the cluster endpoint.
@@ -18021,20 +17709,6 @@ type ClusterMasterAuthArgs struct {
 	// Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
 	ClientCertificate pulumi.StringPtrInput `pulumi:"clientCertificate"`
 	// Whether client certificate authorization is enabled for this cluster.  For example:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	//
 	// This block also contains several computed attributes, documented below.
 	ClientCertificateConfig ClusterMasterAuthClientCertificateConfigInput `pulumi:"clientCertificateConfig"`
@@ -18128,23 +17802,6 @@ func (o ClusterMasterAuthOutput) ClientCertificate() pulumi.StringPtrOutput {
 
 // Whether client certificate authorization is enabled for this cluster.  For example:
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // This block also contains several computed attributes, documented below.
 func (o ClusterMasterAuthOutput) ClientCertificateConfig() ClusterMasterAuthClientCertificateConfigOutput {
 	return o.ApplyT(func(v ClusterMasterAuth) ClusterMasterAuthClientCertificateConfig { return v.ClientCertificateConfig }).(ClusterMasterAuthClientCertificateConfigOutput)
@@ -18195,23 +17852,6 @@ func (o ClusterMasterAuthPtrOutput) ClientCertificate() pulumi.StringPtrOutput {
 }
 
 // Whether client certificate authorization is enabled for this cluster.  For example:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // This block also contains several computed attributes, documented below.
 func (o ClusterMasterAuthPtrOutput) ClientCertificateConfig() ClusterMasterAuthClientCertificateConfigPtrOutput {
@@ -19402,36 +19042,8 @@ type ClusterNodeConfig struct {
 	// Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
 	EnableConfidentialStorage *bool `pulumi:"enableConfidentialStorage"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	EphemeralStorageConfig *ClusterNodeConfigEphemeralStorageConfig `pulumi:"ephemeralStorageConfig"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	EphemeralStorageLocalSsdConfig *ClusterNodeConfigEphemeralStorageLocalSsdConfig `pulumi:"ephemeralStorageLocalSsdConfig"`
 	// Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
 	// Node Pool must enable gvnic.
@@ -19444,20 +19056,6 @@ type ClusterNodeConfig struct {
 	// A `machineType` that has more than 16 GiB of memory is also recommended.
 	// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
 	// Structure is documented below.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	GcfsConfig *ClusterNodeConfigGcfsConfig `pulumi:"gcfsConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
@@ -19467,20 +19065,6 @@ type ClusterNodeConfig struct {
 	// gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
 	// GKE node version 1.15.11-gke.15 or later
 	// Structure is documented below.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Gvnic *ClusterNodeConfigGvnic `pulumi:"gvnic"`
 	// The maintenance policy for the hosts on which the GKE VMs run on.
 	HostMaintenancePolicy *ClusterNodeConfigHostMaintenancePolicy `pulumi:"hostMaintenancePolicy"`
@@ -19489,20 +19073,6 @@ type ClusterNodeConfig struct {
 	ImageType *string `pulumi:"imageType"`
 	// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Structure is documented below.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	KubeletConfig *ClusterNodeConfigKubeletConfig `pulumi:"kubeletConfig"`
 	// The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
 	// reserved by Kubernetes Core components and cannot be specified.
@@ -19557,20 +19127,6 @@ type ClusterNodeConfig struct {
 	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig *ClusterNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	SoleTenantConfig *ClusterNodeConfigSoleTenantConfig `pulumi:"soleTenantConfig"`
 	// A boolean that represents whether the underlying node VMs are spot.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
@@ -19623,36 +19179,8 @@ type ClusterNodeConfigArgs struct {
 	// Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
 	EnableConfidentialStorage pulumi.BoolPtrInput `pulumi:"enableConfidentialStorage"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	EphemeralStorageConfig ClusterNodeConfigEphemeralStorageConfigPtrInput `pulumi:"ephemeralStorageConfig"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	EphemeralStorageLocalSsdConfig ClusterNodeConfigEphemeralStorageLocalSsdConfigPtrInput `pulumi:"ephemeralStorageLocalSsdConfig"`
 	// Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
 	// Node Pool must enable gvnic.
@@ -19665,20 +19193,6 @@ type ClusterNodeConfigArgs struct {
 	// A `machineType` that has more than 16 GiB of memory is also recommended.
 	// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
 	// Structure is documented below.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	GcfsConfig ClusterNodeConfigGcfsConfigPtrInput `pulumi:"gcfsConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
@@ -19688,20 +19202,6 @@ type ClusterNodeConfigArgs struct {
 	// gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
 	// GKE node version 1.15.11-gke.15 or later
 	// Structure is documented below.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Gvnic ClusterNodeConfigGvnicPtrInput `pulumi:"gvnic"`
 	// The maintenance policy for the hosts on which the GKE VMs run on.
 	HostMaintenancePolicy ClusterNodeConfigHostMaintenancePolicyPtrInput `pulumi:"hostMaintenancePolicy"`
@@ -19710,20 +19210,6 @@ type ClusterNodeConfigArgs struct {
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
 	// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Structure is documented below.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	KubeletConfig ClusterNodeConfigKubeletConfigPtrInput `pulumi:"kubeletConfig"`
 	// The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
 	// reserved by Kubernetes Core components and cannot be specified.
@@ -19778,20 +19264,6 @@ type ClusterNodeConfigArgs struct {
 	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig ClusterNodeConfigShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
 	// Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	SoleTenantConfig ClusterNodeConfigSoleTenantConfigPtrInput `pulumi:"soleTenantConfig"`
 	// A boolean that represents whether the underlying node VMs are spot.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
@@ -19930,45 +19402,11 @@ func (o ClusterNodeConfigOutput) EnableConfidentialStorage() pulumi.BoolPtrOutpu
 }
 
 // Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodeConfigOutput) EphemeralStorageConfig() ClusterNodeConfigEphemeralStorageConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigEphemeralStorageConfig { return v.EphemeralStorageConfig }).(ClusterNodeConfigEphemeralStorageConfigPtrOutput)
 }
 
 // Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodeConfigOutput) EphemeralStorageLocalSsdConfig() ClusterNodeConfigEphemeralStorageLocalSsdConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigEphemeralStorageLocalSsdConfig {
 		return v.EphemeralStorageLocalSsdConfig
@@ -19989,23 +19427,6 @@ func (o ClusterNodeConfigOutput) FastSocket() ClusterNodeConfigFastSocketPtrOutp
 // A `machineType` that has more than 16 GiB of memory is also recommended.
 // GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
 // Structure is documented below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodeConfigOutput) GcfsConfig() ClusterNodeConfigGcfsConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigGcfsConfig { return v.GcfsConfig }).(ClusterNodeConfigGcfsConfigPtrOutput)
 }
@@ -20021,23 +19442,6 @@ func (o ClusterNodeConfigOutput) GuestAccelerators() ClusterNodeConfigGuestAccel
 // gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
 // GKE node version 1.15.11-gke.15 or later
 // Structure is documented below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodeConfigOutput) Gvnic() ClusterNodeConfigGvnicPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigGvnic { return v.Gvnic }).(ClusterNodeConfigGvnicPtrOutput)
 }
@@ -20055,23 +19459,6 @@ func (o ClusterNodeConfigOutput) ImageType() pulumi.StringPtrOutput {
 
 // Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 // Structure is documented below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodeConfigOutput) KubeletConfig() ClusterNodeConfigKubeletConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigKubeletConfig { return v.KubeletConfig }).(ClusterNodeConfigKubeletConfigPtrOutput)
 }
@@ -20177,23 +19564,6 @@ func (o ClusterNodeConfigOutput) ShieldedInstanceConfig() ClusterNodeConfigShiel
 }
 
 // Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodeConfigOutput) SoleTenantConfig() ClusterNodeConfigSoleTenantConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigSoleTenantConfig { return v.SoleTenantConfig }).(ClusterNodeConfigSoleTenantConfigPtrOutput)
 }
@@ -20327,23 +19697,6 @@ func (o ClusterNodeConfigPtrOutput) EnableConfidentialStorage() pulumi.BoolPtrOu
 }
 
 // Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodeConfigPtrOutput) EphemeralStorageConfig() ClusterNodeConfigEphemeralStorageConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigEphemeralStorageConfig {
 		if v == nil {
@@ -20354,23 +19707,6 @@ func (o ClusterNodeConfigPtrOutput) EphemeralStorageConfig() ClusterNodeConfigEp
 }
 
 // Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodeConfigPtrOutput) EphemeralStorageLocalSsdConfig() ClusterNodeConfigEphemeralStorageLocalSsdConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigEphemeralStorageLocalSsdConfig {
 		if v == nil {
@@ -20399,23 +19735,6 @@ func (o ClusterNodeConfigPtrOutput) FastSocket() ClusterNodeConfigFastSocketPtrO
 // A `machineType` that has more than 16 GiB of memory is also recommended.
 // GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
 // Structure is documented below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodeConfigPtrOutput) GcfsConfig() ClusterNodeConfigGcfsConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigGcfsConfig {
 		if v == nil {
@@ -20441,23 +19760,6 @@ func (o ClusterNodeConfigPtrOutput) GuestAccelerators() ClusterNodeConfigGuestAc
 // gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
 // GKE node version 1.15.11-gke.15 or later
 // Structure is documented below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodeConfigPtrOutput) Gvnic() ClusterNodeConfigGvnicPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigGvnic {
 		if v == nil {
@@ -20490,23 +19792,6 @@ func (o ClusterNodeConfigPtrOutput) ImageType() pulumi.StringPtrOutput {
 
 // Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 // Structure is documented below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodeConfigPtrOutput) KubeletConfig() ClusterNodeConfigKubeletConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigKubeletConfig {
 		if v == nil {
@@ -20697,23 +19982,6 @@ func (o ClusterNodeConfigPtrOutput) ShieldedInstanceConfig() ClusterNodeConfigSh
 }
 
 // Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodeConfigPtrOutput) SoleTenantConfig() ClusterNodeConfigSoleTenantConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigSoleTenantConfig {
 		if v == nil {
@@ -22693,20 +21961,6 @@ type ClusterNodeConfigLinuxNodeConfig struct {
 	// and all pods running on the nodes. Specified as a map from the key, such as
 	// `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Note that validations happen all server side. All attributes are optional.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Sysctls map[string]string `pulumi:"sysctls"`
 }
 
@@ -22729,20 +21983,6 @@ type ClusterNodeConfigLinuxNodeConfigArgs struct {
 	// and all pods running on the nodes. Specified as a map from the key, such as
 	// `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Note that validations happen all server side. All attributes are optional.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Sysctls pulumi.StringMapInput `pulumi:"sysctls"`
 }
 
@@ -22833,23 +22073,6 @@ func (o ClusterNodeConfigLinuxNodeConfigOutput) CgroupMode() pulumi.StringPtrOut
 // and all pods running on the nodes. Specified as a map from the key, such as
 // `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 // Note that validations happen all server side. All attributes are optional.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodeConfigLinuxNodeConfigOutput) Sysctls() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClusterNodeConfigLinuxNodeConfig) map[string]string { return v.Sysctls }).(pulumi.StringMapOutput)
 }
@@ -22893,23 +22116,6 @@ func (o ClusterNodeConfigLinuxNodeConfigPtrOutput) CgroupMode() pulumi.StringPtr
 // and all pods running on the nodes. Specified as a map from the key, such as
 // `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 // Note that validations happen all server side. All attributes are optional.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodeConfigLinuxNodeConfigPtrOutput) Sysctls() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ClusterNodeConfigLinuxNodeConfig) map[string]string {
 		if v == nil {
@@ -24539,20 +23745,6 @@ func (o ClusterNodePoolAutoConfigPtrOutput) NetworkTags() ClusterNodePoolAutoCon
 
 type ClusterNodePoolAutoConfigNetworkTags struct {
 	// List of network tags applied to auto-provisioned node pools.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Tags []string `pulumi:"tags"`
 }
 
@@ -24569,20 +23761,6 @@ type ClusterNodePoolAutoConfigNetworkTagsInput interface {
 
 type ClusterNodePoolAutoConfigNetworkTagsArgs struct {
 	// List of network tags applied to auto-provisioned node pools.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
 
@@ -24664,23 +23842,6 @@ func (o ClusterNodePoolAutoConfigNetworkTagsOutput) ToClusterNodePoolAutoConfigN
 }
 
 // List of network tags applied to auto-provisioned node pools.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodePoolAutoConfigNetworkTagsOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolAutoConfigNetworkTags) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -24710,23 +23871,6 @@ func (o ClusterNodePoolAutoConfigNetworkTagsPtrOutput) Elem() ClusterNodePoolAut
 }
 
 // List of network tags applied to auto-provisioned node pools.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodePoolAutoConfigNetworkTagsPtrOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterNodePoolAutoConfigNetworkTags) []string {
 		if v == nil {
@@ -26371,36 +25515,8 @@ type ClusterNodePoolNodeConfig struct {
 	// Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
 	EnableConfidentialStorage *bool `pulumi:"enableConfidentialStorage"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	EphemeralStorageConfig *ClusterNodePoolNodeConfigEphemeralStorageConfig `pulumi:"ephemeralStorageConfig"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	EphemeralStorageLocalSsdConfig *ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig `pulumi:"ephemeralStorageLocalSsdConfig"`
 	// Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
 	// Node Pool must enable gvnic.
@@ -26413,20 +25529,6 @@ type ClusterNodePoolNodeConfig struct {
 	// A `machineType` that has more than 16 GiB of memory is also recommended.
 	// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
 	// Structure is documented below.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	GcfsConfig *ClusterNodePoolNodeConfigGcfsConfig `pulumi:"gcfsConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
@@ -26436,20 +25538,6 @@ type ClusterNodePoolNodeConfig struct {
 	// gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
 	// GKE node version 1.15.11-gke.15 or later
 	// Structure is documented below.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Gvnic *ClusterNodePoolNodeConfigGvnic `pulumi:"gvnic"`
 	// The maintenance policy for the hosts on which the GKE VMs run on.
 	HostMaintenancePolicy *ClusterNodePoolNodeConfigHostMaintenancePolicy `pulumi:"hostMaintenancePolicy"`
@@ -26458,20 +25546,6 @@ type ClusterNodePoolNodeConfig struct {
 	ImageType *string `pulumi:"imageType"`
 	// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Structure is documented below.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	KubeletConfig *ClusterNodePoolNodeConfigKubeletConfig `pulumi:"kubeletConfig"`
 	// The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
 	// reserved by Kubernetes Core components and cannot be specified.
@@ -26526,20 +25600,6 @@ type ClusterNodePoolNodeConfig struct {
 	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig *ClusterNodePoolNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	SoleTenantConfig *ClusterNodePoolNodeConfigSoleTenantConfig `pulumi:"soleTenantConfig"`
 	// A boolean that represents whether the underlying node VMs are spot.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
@@ -26592,36 +25652,8 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
 	EnableConfidentialStorage pulumi.BoolPtrInput `pulumi:"enableConfidentialStorage"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	EphemeralStorageConfig ClusterNodePoolNodeConfigEphemeralStorageConfigPtrInput `pulumi:"ephemeralStorageConfig"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	EphemeralStorageLocalSsdConfig ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrInput `pulumi:"ephemeralStorageLocalSsdConfig"`
 	// Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
 	// Node Pool must enable gvnic.
@@ -26634,20 +25666,6 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// A `machineType` that has more than 16 GiB of memory is also recommended.
 	// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
 	// Structure is documented below.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	GcfsConfig ClusterNodePoolNodeConfigGcfsConfigPtrInput `pulumi:"gcfsConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
@@ -26657,20 +25675,6 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
 	// GKE node version 1.15.11-gke.15 or later
 	// Structure is documented below.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Gvnic ClusterNodePoolNodeConfigGvnicPtrInput `pulumi:"gvnic"`
 	// The maintenance policy for the hosts on which the GKE VMs run on.
 	HostMaintenancePolicy ClusterNodePoolNodeConfigHostMaintenancePolicyPtrInput `pulumi:"hostMaintenancePolicy"`
@@ -26679,20 +25683,6 @@ type ClusterNodePoolNodeConfigArgs struct {
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
 	// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Structure is documented below.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	KubeletConfig ClusterNodePoolNodeConfigKubeletConfigPtrInput `pulumi:"kubeletConfig"`
 	// The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
 	// reserved by Kubernetes Core components and cannot be specified.
@@ -26747,20 +25737,6 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig ClusterNodePoolNodeConfigShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
 	// Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	SoleTenantConfig ClusterNodePoolNodeConfigSoleTenantConfigPtrInput `pulumi:"soleTenantConfig"`
 	// A boolean that represents whether the underlying node VMs are spot.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
@@ -26903,23 +25879,6 @@ func (o ClusterNodePoolNodeConfigOutput) EnableConfidentialStorage() pulumi.Bool
 }
 
 // Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodePoolNodeConfigOutput) EphemeralStorageConfig() ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigEphemeralStorageConfig {
 		return v.EphemeralStorageConfig
@@ -26927,23 +25886,6 @@ func (o ClusterNodePoolNodeConfigOutput) EphemeralStorageConfig() ClusterNodePoo
 }
 
 // Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodePoolNodeConfigOutput) EphemeralStorageLocalSsdConfig() ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig {
 		return v.EphemeralStorageLocalSsdConfig
@@ -26964,23 +25906,6 @@ func (o ClusterNodePoolNodeConfigOutput) FastSocket() ClusterNodePoolNodeConfigF
 // A `machineType` that has more than 16 GiB of memory is also recommended.
 // GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
 // Structure is documented below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodePoolNodeConfigOutput) GcfsConfig() ClusterNodePoolNodeConfigGcfsConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigGcfsConfig { return v.GcfsConfig }).(ClusterNodePoolNodeConfigGcfsConfigPtrOutput)
 }
@@ -26998,23 +25923,6 @@ func (o ClusterNodePoolNodeConfigOutput) GuestAccelerators() ClusterNodePoolNode
 // gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
 // GKE node version 1.15.11-gke.15 or later
 // Structure is documented below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodePoolNodeConfigOutput) Gvnic() ClusterNodePoolNodeConfigGvnicPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigGvnic { return v.Gvnic }).(ClusterNodePoolNodeConfigGvnicPtrOutput)
 }
@@ -27034,23 +25942,6 @@ func (o ClusterNodePoolNodeConfigOutput) ImageType() pulumi.StringPtrOutput {
 
 // Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 // Structure is documented below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodePoolNodeConfigOutput) KubeletConfig() ClusterNodePoolNodeConfigKubeletConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigKubeletConfig { return v.KubeletConfig }).(ClusterNodePoolNodeConfigKubeletConfigPtrOutput)
 }
@@ -27162,23 +26053,6 @@ func (o ClusterNodePoolNodeConfigOutput) ShieldedInstanceConfig() ClusterNodePoo
 }
 
 // Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodePoolNodeConfigOutput) SoleTenantConfig() ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigSoleTenantConfig {
 		return v.SoleTenantConfig
@@ -27316,23 +26190,6 @@ func (o ClusterNodePoolNodeConfigPtrOutput) EnableConfidentialStorage() pulumi.B
 }
 
 // Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodePoolNodeConfigPtrOutput) EphemeralStorageConfig() ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigEphemeralStorageConfig {
 		if v == nil {
@@ -27343,23 +26200,6 @@ func (o ClusterNodePoolNodeConfigPtrOutput) EphemeralStorageConfig() ClusterNode
 }
 
 // Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodePoolNodeConfigPtrOutput) EphemeralStorageLocalSsdConfig() ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig {
 		if v == nil {
@@ -27388,23 +26228,6 @@ func (o ClusterNodePoolNodeConfigPtrOutput) FastSocket() ClusterNodePoolNodeConf
 // A `machineType` that has more than 16 GiB of memory is also recommended.
 // GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
 // Structure is documented below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodePoolNodeConfigPtrOutput) GcfsConfig() ClusterNodePoolNodeConfigGcfsConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigGcfsConfig {
 		if v == nil {
@@ -27430,23 +26253,6 @@ func (o ClusterNodePoolNodeConfigPtrOutput) GuestAccelerators() ClusterNodePoolN
 // gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
 // GKE node version 1.15.11-gke.15 or later
 // Structure is documented below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodePoolNodeConfigPtrOutput) Gvnic() ClusterNodePoolNodeConfigGvnicPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigGvnic {
 		if v == nil {
@@ -27479,23 +26285,6 @@ func (o ClusterNodePoolNodeConfigPtrOutput) ImageType() pulumi.StringPtrOutput {
 
 // Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 // Structure is documented below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodePoolNodeConfigPtrOutput) KubeletConfig() ClusterNodePoolNodeConfigKubeletConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigKubeletConfig {
 		if v == nil {
@@ -27686,23 +26475,6 @@ func (o ClusterNodePoolNodeConfigPtrOutput) ShieldedInstanceConfig() ClusterNode
 }
 
 // Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodePoolNodeConfigPtrOutput) SoleTenantConfig() ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigSoleTenantConfig {
 		if v == nil {
@@ -29684,20 +28456,6 @@ type ClusterNodePoolNodeConfigLinuxNodeConfig struct {
 	// and all pods running on the nodes. Specified as a map from the key, such as
 	// `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Note that validations happen all server side. All attributes are optional.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Sysctls map[string]string `pulumi:"sysctls"`
 }
 
@@ -29720,20 +28478,6 @@ type ClusterNodePoolNodeConfigLinuxNodeConfigArgs struct {
 	// and all pods running on the nodes. Specified as a map from the key, such as
 	// `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Note that validations happen all server side. All attributes are optional.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Sysctls pulumi.StringMapInput `pulumi:"sysctls"`
 }
 
@@ -29824,23 +28568,6 @@ func (o ClusterNodePoolNodeConfigLinuxNodeConfigOutput) CgroupMode() pulumi.Stri
 // and all pods running on the nodes. Specified as a map from the key, such as
 // `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 // Note that validations happen all server side. All attributes are optional.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodePoolNodeConfigLinuxNodeConfigOutput) Sysctls() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigLinuxNodeConfig) map[string]string { return v.Sysctls }).(pulumi.StringMapOutput)
 }
@@ -29884,23 +28611,6 @@ func (o ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput) CgroupMode() pulumi.S
 // and all pods running on the nodes. Specified as a map from the key, such as
 // `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 // Note that validations happen all server side. All attributes are optional.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput) Sysctls() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfigLinuxNodeConfig) map[string]string {
 		if v == nil {
@@ -32085,20 +30795,6 @@ type ClusterNotificationConfigPubsub struct {
 	// Whether or not the notification config is enabled
 	Enabled bool `pulumi:"enabled"`
 	// Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Filter *ClusterNotificationConfigPubsubFilter `pulumi:"filter"`
 	// The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
 	Topic *string `pulumi:"topic"`
@@ -32119,20 +30815,6 @@ type ClusterNotificationConfigPubsubArgs struct {
 	// Whether or not the notification config is enabled
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Filter ClusterNotificationConfigPubsubFilterPtrInput `pulumi:"filter"`
 	// The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
 	Topic pulumi.StringPtrInput `pulumi:"topic"`
@@ -32221,23 +30903,6 @@ func (o ClusterNotificationConfigPubsubOutput) Enabled() pulumi.BoolOutput {
 }
 
 // Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNotificationConfigPubsubOutput) Filter() ClusterNotificationConfigPubsubFilterPtrOutput {
 	return o.ApplyT(func(v ClusterNotificationConfigPubsub) *ClusterNotificationConfigPubsubFilter { return v.Filter }).(ClusterNotificationConfigPubsubFilterPtrOutput)
 }
@@ -32282,23 +30947,6 @@ func (o ClusterNotificationConfigPubsubPtrOutput) Enabled() pulumi.BoolPtrOutput
 }
 
 // Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterNotificationConfigPubsubPtrOutput) Filter() ClusterNotificationConfigPubsubFilterPtrOutput {
 	return o.ApplyT(func(v *ClusterNotificationConfigPubsub) *ClusterNotificationConfigPubsubFilter {
 		if v == nil {
@@ -33535,20 +32183,6 @@ type ClusterResourceUsageExportConfig struct {
 	// Parameters for using BigQuery as the destination of resource usage export.
 	//
 	// * `bigquery_destination.dataset_id` (Required) - The ID of a BigQuery Dataset. For Example:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	BigqueryDestination ClusterResourceUsageExportConfigBigqueryDestination `pulumi:"bigqueryDestination"`
 	// Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created
 	// in the cluster to meter network egress traffic.
@@ -33576,20 +32210,6 @@ type ClusterResourceUsageExportConfigArgs struct {
 	// Parameters for using BigQuery as the destination of resource usage export.
 	//
 	// * `bigquery_destination.dataset_id` (Required) - The ID of a BigQuery Dataset. For Example:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	BigqueryDestination ClusterResourceUsageExportConfigBigqueryDestinationInput `pulumi:"bigqueryDestination"`
 	// Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created
 	// in the cluster to meter network egress traffic.
@@ -33682,23 +32302,6 @@ func (o ClusterResourceUsageExportConfigOutput) ToClusterResourceUsageExportConf
 // Parameters for using BigQuery as the destination of resource usage export.
 //
 // * `bigquery_destination.dataset_id` (Required) - The ID of a BigQuery Dataset. For Example:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterResourceUsageExportConfigOutput) BigqueryDestination() ClusterResourceUsageExportConfigBigqueryDestinationOutput {
 	return o.ApplyT(func(v ClusterResourceUsageExportConfig) ClusterResourceUsageExportConfigBigqueryDestination {
 		return v.BigqueryDestination
@@ -33747,23 +32350,6 @@ func (o ClusterResourceUsageExportConfigPtrOutput) Elem() ClusterResourceUsageEx
 // Parameters for using BigQuery as the destination of resource usage export.
 //
 // * `bigquery_destination.dataset_id` (Required) - The ID of a BigQuery Dataset. For Example:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterResourceUsageExportConfigPtrOutput) BigqueryDestination() ClusterResourceUsageExportConfigBigqueryDestinationPtrOutput {
 	return o.ApplyT(func(v *ClusterResourceUsageExportConfig) *ClusterResourceUsageExportConfigBigqueryDestination {
 		if v == nil {
@@ -34679,20 +33265,6 @@ func (o ClusterWorkloadAltsConfigPtrOutput) EnableAlts() pulumi.BoolPtrOutput {
 
 type ClusterWorkloadIdentityConfig struct {
 	// The workload pool to attach all Kubernetes service accounts to.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	WorkloadPool *string `pulumi:"workloadPool"`
 }
 
@@ -34709,20 +33281,6 @@ type ClusterWorkloadIdentityConfigInput interface {
 
 type ClusterWorkloadIdentityConfigArgs struct {
 	// The workload pool to attach all Kubernetes service accounts to.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	WorkloadPool pulumi.StringPtrInput `pulumi:"workloadPool"`
 }
 
@@ -34804,23 +33362,6 @@ func (o ClusterWorkloadIdentityConfigOutput) ToClusterWorkloadIdentityConfigPtrO
 }
 
 // The workload pool to attach all Kubernetes service accounts to.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterWorkloadIdentityConfigOutput) WorkloadPool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterWorkloadIdentityConfig) *string { return v.WorkloadPool }).(pulumi.StringPtrOutput)
 }
@@ -34850,23 +33391,6 @@ func (o ClusterWorkloadIdentityConfigPtrOutput) Elem() ClusterWorkloadIdentityCo
 }
 
 // The workload pool to attach all Kubernetes service accounts to.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterWorkloadIdentityConfigPtrOutput) WorkloadPool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterWorkloadIdentityConfig) *string {
 		if v == nil {

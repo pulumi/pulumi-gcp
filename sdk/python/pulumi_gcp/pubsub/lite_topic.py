@@ -311,10 +311,12 @@ class LiteTopic(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        example_lite_reservation = gcp.pubsub.LiteReservation("exampleLiteReservation",
+        example = gcp.pubsub.LiteReservation("example",
+            name="example-reservation",
             project=project.number,
             throughput_capacity=2)
-        example_lite_topic = gcp.pubsub.LiteTopic("exampleLiteTopic",
+        example_lite_topic = gcp.pubsub.LiteTopic("example",
+            name="example-topic",
             project=project.number,
             partition_config=gcp.pubsub.LiteTopicPartitionConfigArgs(
                 count=1,
@@ -327,7 +329,7 @@ class LiteTopic(pulumi.CustomResource):
                 per_partition_bytes="32212254720",
             ),
             reservation_config=gcp.pubsub.LiteTopicReservationConfigArgs(
-                throughput_reservation=example_lite_reservation.name,
+                throughput_reservation=example.name,
             ))
         ```
 
@@ -401,10 +403,12 @@ class LiteTopic(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        example_lite_reservation = gcp.pubsub.LiteReservation("exampleLiteReservation",
+        example = gcp.pubsub.LiteReservation("example",
+            name="example-reservation",
             project=project.number,
             throughput_capacity=2)
-        example_lite_topic = gcp.pubsub.LiteTopic("exampleLiteTopic",
+        example_lite_topic = gcp.pubsub.LiteTopic("example",
+            name="example-topic",
             project=project.number,
             partition_config=gcp.pubsub.LiteTopicPartitionConfigArgs(
                 count=1,
@@ -417,7 +421,7 @@ class LiteTopic(pulumi.CustomResource):
                 per_partition_bytes="32212254720",
             ),
             reservation_config=gcp.pubsub.LiteTopicReservationConfigArgs(
-                throughput_reservation=example_lite_reservation.name,
+                throughput_reservation=example.name,
             ))
         ```
 

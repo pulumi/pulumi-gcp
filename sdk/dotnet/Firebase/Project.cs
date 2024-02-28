@@ -32,24 +32,20 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultProject = new Gcp.Organizations.Project("defaultProject", new()
+    ///     var @default = new Gcp.Organizations.Project("default", new()
     ///     {
+    ///         ProjectId = "my-project",
+    ///         Name = "my-project",
     ///         OrgId = "123456789",
     ///         Labels = 
     ///         {
     ///             { "firebase", "enabled" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultFirebase_projectProject = new Gcp.Firebase.Project("defaultFirebase/projectProject", new()
+    ///     var defaultProject = new Gcp.Firebase.Project("default", new()
     ///     {
-    ///         ProjectID = defaultProject.ProjectId,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         ProjectID = @default.ProjectId,
     ///     });
     /// 
     /// });

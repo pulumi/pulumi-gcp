@@ -41,13 +41,15 @@ namespace Pulumi.Gcp.Container
     /// 
     ///     var primary = new Gcp.Container.Cluster("primary", new()
     ///     {
+    ///         Name = "my-gke-cluster",
     ///         Location = "us-central1",
     ///         RemoveDefaultNodePool = true,
     ///         InitialNodeCount = 1,
     ///     });
     /// 
-    ///     var primaryPreemptibleNodes = new Gcp.Container.NodePool("primaryPreemptibleNodes", new()
+    ///     var primaryPreemptibleNodes = new Gcp.Container.NodePool("primary_preemptible_nodes", new()
     ///     {
+    ///         Name = "my-node-pool",
     ///         Location = "us-central1",
     ///         Cluster = primary.Name,
     ///         NodeCount = 1,
@@ -69,6 +71,48 @@ namespace Pulumi.Gcp.Container
     /// &gt; **Note:** It is recommended that node pools be created and managed as separate resources as in the example above.
     /// This allows node pools to be added and removed without recreating the cluster.  Node pools defined directly in the
     /// `gcp.container.Cluster` resource cannot be removed without re-creating the cluster.
+    /// ### With The Default Node Pool
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.ServiceAccount.Account("default", new()
+    ///     {
+    ///         AccountId = "service-account-id",
+    ///         DisplayName = "Service Account",
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Container.Cluster("primary", new()
+    ///     {
+    ///         Name = "marcellus-wallace",
+    ///         Location = "us-central1-a",
+    ///         InitialNodeCount = 3,
+    ///         NodeConfig = new Gcp.Container.Inputs.ClusterNodeConfigArgs
+    ///         {
+    ///             ServiceAccount = @default.Email,
+    ///             OauthScopes = new[]
+    ///             {
+    ///                 "https://www.googleapis.com/auth/cloud-platform",
+    ///             },
+    ///             Labels = 
+    ///             {
+    ///                 { "foo", "bar" },
+    ///             },
+    ///             Tags = new[]
+    ///             {
+    ///                 "foo",
+    ///                 "bar",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Autopilot
     /// 
     /// ```csharp
@@ -87,8 +131,9 @@ namespace Pulumi.Gcp.Container
     /// 
     ///     var primary = new Gcp.Container.Cluster("primary", new()
     ///     {
-    ///         EnableAutopilot = true,
+    ///         Name = "marcellus-wallace",
     ///         Location = "us-central1-a",
+    ///         EnableAutopilot = true,
     ///     });
     /// 
     /// });

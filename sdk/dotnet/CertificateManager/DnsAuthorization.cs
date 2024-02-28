@@ -25,6 +25,7 @@ namespace Pulumi.Gcp.CertificateManager
     /// {
     ///     var @default = new Gcp.CertificateManager.DnsAuthorization("default", new()
     ///     {
+    ///         Name = "dns-auth",
     ///         Description = "The default dnss",
     ///         Domain = "subdomain.hashicorptest.com",
     ///     });

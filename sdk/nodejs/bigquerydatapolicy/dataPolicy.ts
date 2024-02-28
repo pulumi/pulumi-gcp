@@ -28,12 +28,12 @@ import * as utilities from "../utilities";
  *     description: "A collection of policy tags",
  *     activatedPolicyTypes: ["FINE_GRAINED_ACCESS_CONTROL"],
  * });
- * const policyTag = new gcp.datacatalog.PolicyTag("policyTag", {
+ * const policyTag = new gcp.datacatalog.PolicyTag("policy_tag", {
  *     taxonomy: taxonomy.id,
  *     displayName: "Low security",
  *     description: "A policy tag normally associated with low security items",
  * });
- * const dataPolicy = new gcp.bigquerydatapolicy.DataPolicy("dataPolicy", {
+ * const dataPolicy = new gcp.bigquerydatapolicy.DataPolicy("data_policy", {
  *     location: "us-central1",
  *     dataPolicyId: "data_policy",
  *     policyTag: policyTag.name,

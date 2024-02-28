@@ -24,6 +24,7 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const cluster = new gcp.edgecontainer.Cluster("cluster", {
+ *     name: "default",
  *     location: "us-central1",
  *     authorization: {
  *         adminUsers: {
@@ -38,14 +39,16 @@ import * as utilities from "../utilities";
  *         project: project.then(project => `projects/${project.number}`),
  *     },
  * });
- * const nodePool = new gcp.edgecontainer.NodePool("nodePool", {
+ * const nodePool = new gcp.edgecontainer.NodePool("node_pool", {
+ *     name: "nodepool-1",
  *     cluster: cluster.name,
  *     location: "us-central1",
  *     nodeLocation: "us-central1-edge-example-edgesite",
  *     nodeCount: 3,
  * });
- * const vpc = new gcp.compute.Network("vpc", {});
+ * const vpc = new gcp.compute.Network("vpc", {name: "example-vpc"});
  * const _default = new gcp.edgecontainer.VpnConnection("default", {
+ *     name: "vpn-connection-1",
  *     location: "us-central1",
  *     cluster: pulumi.all([project, cluster.name]).apply(([project, name]) => `projects/${project.number}/locations/us-east1/clusters/${name}`),
  *     vpc: vpc.name,
@@ -54,8 +57,6 @@ import * as utilities from "../utilities";
  *         my_key: "my_val",
  *         other_key: "other_val",
  *     },
- * }, {
- *     dependsOn: [nodePool],
  * });
  * ```
  *

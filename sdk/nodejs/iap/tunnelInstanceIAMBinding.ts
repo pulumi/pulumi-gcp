@@ -36,9 +36,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.iap.TunnelInstanceIAMPolicy("policy", {
- *     project: google_compute_instance.tunnelvm.project,
- *     zone: google_compute_instance.tunnelvm.zone,
- *     instance: google_compute_instance.tunnelvm.name,
+ *     project: tunnelvm.project,
+ *     zone: tunnelvm.zone,
+ *     instance: tunnelvm.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -61,9 +61,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.iap.TunnelInstanceIAMPolicy("policy", {
- *     project: google_compute_instance.tunnelvm.project,
- *     zone: google_compute_instance.tunnelvm.zone,
- *     instance: google_compute_instance.tunnelvm.name,
+ *     project: tunnelvm.project,
+ *     zone: tunnelvm.zone,
+ *     instance: tunnelvm.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -74,9 +74,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.iap.TunnelInstanceIAMBinding("binding", {
- *     project: google_compute_instance.tunnelvm.project,
- *     zone: google_compute_instance.tunnelvm.zone,
- *     instance: google_compute_instance.tunnelvm.name,
+ *     project: tunnelvm.project,
+ *     zone: tunnelvm.zone,
+ *     instance: tunnelvm.name,
  *     role: "roles/iap.tunnelResourceAccessor",
  *     members: ["user:jane@example.com"],
  * });
@@ -89,9 +89,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.iap.TunnelInstanceIAMBinding("binding", {
- *     project: google_compute_instance.tunnelvm.project,
- *     zone: google_compute_instance.tunnelvm.zone,
- *     instance: google_compute_instance.tunnelvm.name,
+ *     project: tunnelvm.project,
+ *     zone: tunnelvm.zone,
+ *     instance: tunnelvm.name,
  *     role: "roles/iap.tunnelResourceAccessor",
  *     members: ["user:jane@example.com"],
  *     condition: {
@@ -108,9 +108,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.iap.TunnelInstanceIAMMember("member", {
- *     project: google_compute_instance.tunnelvm.project,
- *     zone: google_compute_instance.tunnelvm.zone,
- *     instance: google_compute_instance.tunnelvm.name,
+ *     project: tunnelvm.project,
+ *     zone: tunnelvm.zone,
+ *     instance: tunnelvm.name,
  *     role: "roles/iap.tunnelResourceAccessor",
  *     member: "user:jane@example.com",
  * });
@@ -123,9 +123,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.iap.TunnelInstanceIAMMember("member", {
- *     project: google_compute_instance.tunnelvm.project,
- *     zone: google_compute_instance.tunnelvm.zone,
- *     instance: google_compute_instance.tunnelvm.name,
+ *     project: tunnelvm.project,
+ *     zone: tunnelvm.zone,
+ *     instance: tunnelvm.name,
  *     role: "roles/iap.tunnelResourceAccessor",
  *     member: "user:jane@example.com",
  *     condition: {

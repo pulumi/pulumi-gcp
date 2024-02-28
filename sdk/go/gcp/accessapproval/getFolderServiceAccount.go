@@ -43,7 +43,7 @@ import (
 //				return err
 //			}
 //			_, err = kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: pulumi.Any(google_kms_crypto_key.Crypto_key.Id),
+//				CryptoKeyId: pulumi.Any(cryptoKey.Id),
 //				Role:        pulumi.String("roles/cloudkms.signerVerifier"),
 //				Member:      pulumi.String(fmt.Sprintf("serviceAccount:%v", serviceAccount.AccountEmail)),
 //			})

@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sourcerepo.LookupRepositoryIamPolicy(ctx, &sourcerepo.LookupRepositoryIamPolicyArgs{
-//				Project:    pulumi.StringRef(google_sourcerepo_repository.MyRepo.Project),
-//				Repository: google_sourcerepo_repository.MyRepo.Name,
+//				Project:    pulumi.StringRef(my_repo.Project),
+//				Repository: my_repo.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

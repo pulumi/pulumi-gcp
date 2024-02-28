@@ -398,6 +398,7 @@ class AppProfile(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.bigtable.Instance("instance",
+            name="bt-instance",
             clusters=[
                 gcp.bigtable.InstanceClusterArgs(
                     cluster_id="cluster-1",
@@ -432,6 +433,7 @@ class AppProfile(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.bigtable.Instance("instance",
+            name="bt-instance",
             clusters=[gcp.bigtable.InstanceClusterArgs(
                 cluster_id="cluster-1",
                 zone="us-central1-b",
@@ -455,6 +457,7 @@ class AppProfile(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.bigtable.Instance("instance",
+            name="bt-instance",
             clusters=[
                 gcp.bigtable.InstanceClusterArgs(
                     cluster_id="cluster-1",
@@ -493,6 +496,7 @@ class AppProfile(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.bigtable.Instance("instance",
+            name="bt-instance",
             clusters=[gcp.bigtable.InstanceClusterArgs(
                 cluster_id="cluster-1",
                 zone="us-central1-b",
@@ -579,6 +583,7 @@ class AppProfile(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.bigtable.Instance("instance",
+            name="bt-instance",
             clusters=[
                 gcp.bigtable.InstanceClusterArgs(
                     cluster_id="cluster-1",
@@ -613,6 +618,7 @@ class AppProfile(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.bigtable.Instance("instance",
+            name="bt-instance",
             clusters=[gcp.bigtable.InstanceClusterArgs(
                 cluster_id="cluster-1",
                 zone="us-central1-b",
@@ -636,6 +642,7 @@ class AppProfile(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.bigtable.Instance("instance",
+            name="bt-instance",
             clusters=[
                 gcp.bigtable.InstanceClusterArgs(
                     cluster_id="cluster-1",
@@ -674,6 +681,7 @@ class AppProfile(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.bigtable.Instance("instance",
+            name="bt-instance",
             clusters=[gcp.bigtable.InstanceClusterArgs(
                 cluster_id="cluster-1",
                 zone="us-central1-b",

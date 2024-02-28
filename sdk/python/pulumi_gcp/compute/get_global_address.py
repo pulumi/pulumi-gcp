@@ -175,7 +175,9 @@ def get_global_address(name: Optional[str] = None,
     import pulumi_gcp as gcp
 
     my_address = gcp.compute.get_global_address(name="foobar")
-    prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+    prod = gcp.dns.ManagedZone("prod",
+        name="prod-zone",
+        dns_name="prod.mydomain.com.")
     frontend = gcp.dns.RecordSet("frontend",
         name=prod.dns_name.apply(lambda dns_name: f"lb.{dns_name}"),
         type="A",
@@ -228,7 +230,9 @@ def get_global_address_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi_gcp as gcp
 
     my_address = gcp.compute.get_global_address(name="foobar")
-    prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+    prod = gcp.dns.ManagedZone("prod",
+        name="prod-zone",
+        dns_name="prod.mydomain.com.")
     frontend = gcp.dns.RecordSet("frontend",
         name=prod.dns_name.apply(lambda dns_name: f"lb.{dns_name}"),
         type="A",

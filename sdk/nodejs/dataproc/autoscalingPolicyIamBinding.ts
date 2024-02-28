@@ -34,9 +34,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.dataproc.AutoscalingPolicyIamPolicy("policy", {
- *     project: google_dataproc_autoscaling_policy.basic.project,
- *     location: google_dataproc_autoscaling_policy.basic.location,
- *     policyId: google_dataproc_autoscaling_policy.basic.policy_id,
+ *     project: basic.project,
+ *     location: basic.location,
+ *     policyId: basic.policyId,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -48,9 +48,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.dataproc.AutoscalingPolicyIamBinding("binding", {
- *     project: google_dataproc_autoscaling_policy.basic.project,
- *     location: google_dataproc_autoscaling_policy.basic.location,
- *     policyId: google_dataproc_autoscaling_policy.basic.policy_id,
+ *     project: basic.project,
+ *     location: basic.location,
+ *     policyId: basic.policyId,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
  * });
@@ -63,9 +63,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.dataproc.AutoscalingPolicyIamMember("member", {
- *     project: google_dataproc_autoscaling_policy.basic.project,
- *     location: google_dataproc_autoscaling_policy.basic.location,
- *     policyId: google_dataproc_autoscaling_policy.basic.policy_id,
+ *     project: basic.project,
+ *     location: basic.location,
+ *     policyId: basic.policyId,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
  * });

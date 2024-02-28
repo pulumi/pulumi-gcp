@@ -344,18 +344,17 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
+        git_repository = gcp.sourcerepo.Repository("git_repository", name="my/repository")
         secret = gcp.secretmanager.Secret("secret",
             secret_id="my_secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        secret_version = gcp.secretmanager.SecretVersion("secretVersion",
+            ))
+        secret_version = gcp.secretmanager.SecretVersion("secret_version",
             secret=secret.id,
-            secret_data="secret-data",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            secret_data="secret-data")
         repository = gcp.dataform.Repository("repository",
+            name="dataform_repository",
             region="us-central1",
             git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
                 url=git_repository.url,
@@ -366,12 +365,12 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                 default_database="database",
                 schema_suffix="_suffix",
                 table_prefix="prefix_",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        release_config = gcp.dataform.RepositoryReleaseConfig("releaseConfig",
+            ))
+        release_config = gcp.dataform.RepositoryReleaseConfig("release_config",
             project=repository.project,
             region=repository.region,
             repository=repository.name,
+            name="my_release",
             git_commitish="main",
             cron_schedule="0 7 * * *",
             time_zone="America/New_York",
@@ -386,16 +385,15 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                 vars={
                     "var1": "value",
                 },
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        dataform_sa = gcp.serviceaccount.Account("dataformSa",
+            ))
+        dataform_sa = gcp.serviceaccount.Account("dataform_sa",
             account_id="dataform-sa",
-            display_name="Dataform Service Account",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            display_name="Dataform Service Account")
         workflow = gcp.dataform.RepositoryWorkflowConfig("workflow",
             project=repository.project,
             region=repository.region,
             repository=repository.name,
+            name="my_workflow",
             release_config=release_config.id,
             invocation_config=gcp.dataform.RepositoryWorkflowConfigInvocationConfigArgs(
                 included_targets=[
@@ -417,8 +415,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                 service_account=dataform_sa.email,
             ),
             cron_schedule="0 7 * * *",
-            time_zone="America/New_York",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            time_zone="America/New_York")
         ```
 
         ## Import
@@ -481,18 +478,17 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
+        git_repository = gcp.sourcerepo.Repository("git_repository", name="my/repository")
         secret = gcp.secretmanager.Secret("secret",
             secret_id="my_secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        secret_version = gcp.secretmanager.SecretVersion("secretVersion",
+            ))
+        secret_version = gcp.secretmanager.SecretVersion("secret_version",
             secret=secret.id,
-            secret_data="secret-data",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            secret_data="secret-data")
         repository = gcp.dataform.Repository("repository",
+            name="dataform_repository",
             region="us-central1",
             git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
                 url=git_repository.url,
@@ -503,12 +499,12 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                 default_database="database",
                 schema_suffix="_suffix",
                 table_prefix="prefix_",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        release_config = gcp.dataform.RepositoryReleaseConfig("releaseConfig",
+            ))
+        release_config = gcp.dataform.RepositoryReleaseConfig("release_config",
             project=repository.project,
             region=repository.region,
             repository=repository.name,
+            name="my_release",
             git_commitish="main",
             cron_schedule="0 7 * * *",
             time_zone="America/New_York",
@@ -523,16 +519,15 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                 vars={
                     "var1": "value",
                 },
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        dataform_sa = gcp.serviceaccount.Account("dataformSa",
+            ))
+        dataform_sa = gcp.serviceaccount.Account("dataform_sa",
             account_id="dataform-sa",
-            display_name="Dataform Service Account",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            display_name="Dataform Service Account")
         workflow = gcp.dataform.RepositoryWorkflowConfig("workflow",
             project=repository.project,
             region=repository.region,
             repository=repository.name,
+            name="my_workflow",
             release_config=release_config.id,
             invocation_config=gcp.dataform.RepositoryWorkflowConfigInvocationConfigArgs(
                 included_targets=[
@@ -554,8 +549,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                 service_account=dataform_sa.email,
             ),
             cron_schedule="0 7 * * *",
-            time_zone="America/New_York",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            time_zone="America/New_York")
         ```
 
         ## Import

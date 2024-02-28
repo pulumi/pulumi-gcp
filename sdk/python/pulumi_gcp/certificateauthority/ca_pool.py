@@ -363,15 +363,149 @@ class CaPool(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.certificateauthority.CaPool("default",
-            labels={
-                "foo": "bar",
-            },
+            name="my-pool",
             location="us-central1",
+            tier="ENTERPRISE",
             publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArgs(
                 publish_ca_cert=True,
                 publish_crl=True,
             ),
-            tier="ENTERPRISE")
+            labels={
+                "foo": "bar",
+            })
+        ```
+        ### Privateca Capool All Fields
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificateauthority.CaPool("default",
+            name="my-pool",
+            location="us-central1",
+            tier="ENTERPRISE",
+            publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArgs(
+                publish_ca_cert=False,
+                publish_crl=True,
+                encoding_format="PEM",
+            ),
+            labels={
+                "foo": "bar",
+            },
+            issuance_policy=gcp.certificateauthority.CaPoolIssuancePolicyArgs(
+                allowed_key_types=[
+                    gcp.certificateauthority.CaPoolIssuancePolicyAllowedKeyTypeArgs(
+                        elliptic_curve=gcp.certificateauthority.CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs(
+                            signature_algorithm="ECDSA_P256",
+                        ),
+                    ),
+                    gcp.certificateauthority.CaPoolIssuancePolicyAllowedKeyTypeArgs(
+                        rsa=gcp.certificateauthority.CaPoolIssuancePolicyAllowedKeyTypeRsaArgs(
+                            min_modulus_size="5",
+                            max_modulus_size="10",
+                        ),
+                    ),
+                ],
+                maximum_lifetime="50000s",
+                allowed_issuance_modes=gcp.certificateauthority.CaPoolIssuancePolicyAllowedIssuanceModesArgs(
+                    allow_csr_based_issuance=True,
+                    allow_config_based_issuance=True,
+                ),
+                identity_constraints=gcp.certificateauthority.CaPoolIssuancePolicyIdentityConstraintsArgs(
+                    allow_subject_passthrough=True,
+                    allow_subject_alt_names_passthrough=True,
+                    cel_expression=gcp.certificateauthority.CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs(
+                        expression="subject_alt_names.all(san, san.type == DNS || san.type == EMAIL )",
+                        title="My title",
+                    ),
+                ),
+                baseline_values=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesArgs(
+                    aia_ocsp_servers=["example.com"],
+                    additional_extensions=[gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs(
+                        critical=True,
+                        value="asdf",
+                        object_id=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgs(
+                            object_id_paths=[
+                                1,
+                                7,
+                            ],
+                        ),
+                    )],
+                    policy_ids=[
+                        gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesPolicyIdArgs(
+                            object_id_paths=[
+                                1,
+                                5,
+                            ],
+                        ),
+                        gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesPolicyIdArgs(
+                            object_id_paths=[
+                                1,
+                                5,
+                                7,
+                            ],
+                        ),
+                    ],
+                    ca_options=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesCaOptionsArgs(
+                        is_ca=True,
+                        max_issuer_path_length=10,
+                    ),
+                    key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs(
+                            digital_signature=True,
+                            content_commitment=True,
+                            key_encipherment=False,
+                            data_encipherment=True,
+                            key_agreement=True,
+                            cert_sign=False,
+                            crl_sign=True,
+                            decipher_only=True,
+                        ),
+                        extended_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs(
+                            server_auth=True,
+                            client_auth=False,
+                            email_protection=True,
+                            code_signing=True,
+                            time_stamping=True,
+                        ),
+                    ),
+                    name_constraints=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs(
+                        critical=True,
+                        permitted_dns_names=[
+                            "*.example1.com",
+                            "*.example2.com",
+                        ],
+                        excluded_dns_names=[
+                            "*.deny.example1.com",
+                            "*.deny.example2.com",
+                        ],
+                        permitted_ip_ranges=[
+                            "10.0.0.0/8",
+                            "11.0.0.0/8",
+                        ],
+                        excluded_ip_ranges=[
+                            "10.1.1.0/24",
+                            "11.1.1.0/24",
+                        ],
+                        permitted_email_addresses=[
+                            ".example1.com",
+                            ".example2.com",
+                        ],
+                        excluded_email_addresses=[
+                            ".deny.example1.com",
+                            ".deny.example2.com",
+                        ],
+                        permitted_uris=[
+                            ".example1.com",
+                            ".example2.com",
+                        ],
+                        excluded_uris=[
+                            ".deny.example1.com",
+                            ".deny.example2.com",
+                        ],
+                    ),
+                ),
+            ))
         ```
 
         ## Import
@@ -440,15 +574,149 @@ class CaPool(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.certificateauthority.CaPool("default",
-            labels={
-                "foo": "bar",
-            },
+            name="my-pool",
             location="us-central1",
+            tier="ENTERPRISE",
             publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArgs(
                 publish_ca_cert=True,
                 publish_crl=True,
             ),
-            tier="ENTERPRISE")
+            labels={
+                "foo": "bar",
+            })
+        ```
+        ### Privateca Capool All Fields
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificateauthority.CaPool("default",
+            name="my-pool",
+            location="us-central1",
+            tier="ENTERPRISE",
+            publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArgs(
+                publish_ca_cert=False,
+                publish_crl=True,
+                encoding_format="PEM",
+            ),
+            labels={
+                "foo": "bar",
+            },
+            issuance_policy=gcp.certificateauthority.CaPoolIssuancePolicyArgs(
+                allowed_key_types=[
+                    gcp.certificateauthority.CaPoolIssuancePolicyAllowedKeyTypeArgs(
+                        elliptic_curve=gcp.certificateauthority.CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs(
+                            signature_algorithm="ECDSA_P256",
+                        ),
+                    ),
+                    gcp.certificateauthority.CaPoolIssuancePolicyAllowedKeyTypeArgs(
+                        rsa=gcp.certificateauthority.CaPoolIssuancePolicyAllowedKeyTypeRsaArgs(
+                            min_modulus_size="5",
+                            max_modulus_size="10",
+                        ),
+                    ),
+                ],
+                maximum_lifetime="50000s",
+                allowed_issuance_modes=gcp.certificateauthority.CaPoolIssuancePolicyAllowedIssuanceModesArgs(
+                    allow_csr_based_issuance=True,
+                    allow_config_based_issuance=True,
+                ),
+                identity_constraints=gcp.certificateauthority.CaPoolIssuancePolicyIdentityConstraintsArgs(
+                    allow_subject_passthrough=True,
+                    allow_subject_alt_names_passthrough=True,
+                    cel_expression=gcp.certificateauthority.CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs(
+                        expression="subject_alt_names.all(san, san.type == DNS || san.type == EMAIL )",
+                        title="My title",
+                    ),
+                ),
+                baseline_values=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesArgs(
+                    aia_ocsp_servers=["example.com"],
+                    additional_extensions=[gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs(
+                        critical=True,
+                        value="asdf",
+                        object_id=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgs(
+                            object_id_paths=[
+                                1,
+                                7,
+                            ],
+                        ),
+                    )],
+                    policy_ids=[
+                        gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesPolicyIdArgs(
+                            object_id_paths=[
+                                1,
+                                5,
+                            ],
+                        ),
+                        gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesPolicyIdArgs(
+                            object_id_paths=[
+                                1,
+                                5,
+                                7,
+                            ],
+                        ),
+                    ],
+                    ca_options=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesCaOptionsArgs(
+                        is_ca=True,
+                        max_issuer_path_length=10,
+                    ),
+                    key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs(
+                            digital_signature=True,
+                            content_commitment=True,
+                            key_encipherment=False,
+                            data_encipherment=True,
+                            key_agreement=True,
+                            cert_sign=False,
+                            crl_sign=True,
+                            decipher_only=True,
+                        ),
+                        extended_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs(
+                            server_auth=True,
+                            client_auth=False,
+                            email_protection=True,
+                            code_signing=True,
+                            time_stamping=True,
+                        ),
+                    ),
+                    name_constraints=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs(
+                        critical=True,
+                        permitted_dns_names=[
+                            "*.example1.com",
+                            "*.example2.com",
+                        ],
+                        excluded_dns_names=[
+                            "*.deny.example1.com",
+                            "*.deny.example2.com",
+                        ],
+                        permitted_ip_ranges=[
+                            "10.0.0.0/8",
+                            "11.0.0.0/8",
+                        ],
+                        excluded_ip_ranges=[
+                            "10.1.1.0/24",
+                            "11.1.1.0/24",
+                        ],
+                        permitted_email_addresses=[
+                            ".example1.com",
+                            ".example2.com",
+                        ],
+                        excluded_email_addresses=[
+                            ".deny.example1.com",
+                            ".deny.example2.com",
+                        ],
+                        permitted_uris=[
+                            ".example1.com",
+                            ".example2.com",
+                        ],
+                        excluded_uris=[
+                            ".deny.example1.com",
+                            ".deny.example2.com",
+                        ],
+                    ),
+                ),
+            ))
         ```
 
         ## Import

@@ -27,11 +27,13 @@ namespace Pulumi.Gcp.Logging
     /// {
     ///     var log_bucket = new Gcp.Storage.Bucket("log-bucket", new()
     ///     {
+    ///         Name = "organization-logging-bucket",
     ///         Location = "US",
     ///     });
     /// 
     ///     var my_sink = new Gcp.Logging.OrganizationSink("my-sink", new()
     ///     {
+    ///         Name = "my-sink",
     ///         Description = "some explanation on what this is",
     ///         OrgId = "123456789",
     ///         Destination = log_bucket.Name.Apply(name =&gt; $"storage.googleapis.com/{name}"),

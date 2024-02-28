@@ -53,11 +53,11 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := monitoring.NewNotificationChannel(ctx, "basic", &monitoring.NotificationChannelArgs{
 //				DisplayName: pulumi.String("Test Notification Channel"),
-//				ForceDelete: pulumi.Bool(false),
+//				Type:        pulumi.String("email"),
 //				Labels: pulumi.StringMap{
 //					"email_address": pulumi.String("fake_email@blahblah.com"),
 //				},
-//				Type: pulumi.String("email"),
+//				ForceDelete: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -83,13 +83,13 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := monitoring.NewNotificationChannel(ctx, "default", &monitoring.NotificationChannelArgs{
 //				DisplayName: pulumi.String("Test Slack Channel"),
+//				Type:        pulumi.String("slack"),
 //				Labels: pulumi.StringMap{
 //					"channel_name": pulumi.String("#foobar"),
 //				},
 //				SensitiveLabels: &monitoring.NotificationChannelSensitiveLabelsArgs{
 //					AuthToken: pulumi.String("one"),
 //				},
-//				Type: pulumi.String("slack"),
 //			})
 //			if err != nil {
 //				return err

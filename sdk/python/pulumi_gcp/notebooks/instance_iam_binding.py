@@ -316,9 +316,9 @@ class InstanceIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.notebooks.InstanceIamPolicy("policy",
-            project=google_notebooks_instance["instance"]["project"],
-            location=google_notebooks_instance["instance"]["location"],
-            instance_name=google_notebooks_instance["instance"]["name"],
+            project=instance["project"],
+            location=instance["location"],
+            instance_name=instance["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -329,9 +329,9 @@ class InstanceIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.notebooks.InstanceIamBinding("binding",
-            project=google_notebooks_instance["instance"]["project"],
-            location=google_notebooks_instance["instance"]["location"],
-            instance_name=google_notebooks_instance["instance"]["name"],
+            project=instance["project"],
+            location=instance["location"],
+            instance_name=instance["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -343,9 +343,9 @@ class InstanceIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.notebooks.InstanceIamMember("member",
-            project=google_notebooks_instance["instance"]["project"],
-            location=google_notebooks_instance["instance"]["location"],
-            instance_name=google_notebooks_instance["instance"]["name"],
+            project=instance["project"],
+            location=instance["location"],
+            instance_name=instance["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -442,9 +442,9 @@ class InstanceIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.notebooks.InstanceIamPolicy("policy",
-            project=google_notebooks_instance["instance"]["project"],
-            location=google_notebooks_instance["instance"]["location"],
-            instance_name=google_notebooks_instance["instance"]["name"],
+            project=instance["project"],
+            location=instance["location"],
+            instance_name=instance["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -455,9 +455,9 @@ class InstanceIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.notebooks.InstanceIamBinding("binding",
-            project=google_notebooks_instance["instance"]["project"],
-            location=google_notebooks_instance["instance"]["location"],
-            instance_name=google_notebooks_instance["instance"]["name"],
+            project=instance["project"],
+            location=instance["location"],
+            instance_name=instance["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -469,9 +469,9 @@ class InstanceIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.notebooks.InstanceIamMember("member",
-            project=google_notebooks_instance["instance"]["project"],
-            location=google_notebooks_instance["instance"]["location"],
-            instance_name=google_notebooks_instance["instance"]["name"],
+            project=instance["project"],
+            location=instance["location"],
+            instance_name=instance["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

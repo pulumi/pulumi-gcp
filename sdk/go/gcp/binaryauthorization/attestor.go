@@ -37,6 +37,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			note, err := containeranalysis.NewNote(ctx, "note", &containeranalysis.NoteArgs{
+//				Name: pulumi.String("test-attestor-note"),
 //				AttestationAuthority: &containeranalysis.NoteAttestationAuthorityArgs{
 //					Hint: &containeranalysis.NoteAttestationAuthorityHintArgs{
 //						HumanReadableName: pulumi.String("Attestor Note"),
@@ -47,6 +48,7 @@ import (
 //				return err
 //			}
 //			_, err = binaryauthorization.NewAttestor(ctx, "attestor", &binaryauthorization.AttestorArgs{
+//				Name: pulumi.String("test-attestor"),
 //				AttestationAuthorityNote: &binaryauthorization.AttestorAttestationAuthorityNoteArgs{
 //					NoteReference: note.Name,
 //					PublicKeys: binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArray{
@@ -98,12 +100,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("test-attestor-key-ring"),
 //				Location: pulumi.String("global"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = kms.NewCryptoKey(ctx, "crypto-key", &kms.CryptoKeyArgs{
+//				Name:    pulumi.String("test-attestor-key"),
 //				KeyRing: keyring.ID(),
 //				Purpose: pulumi.String("ASYMMETRIC_SIGN"),
 //				VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
@@ -117,6 +121,7 @@ import (
 //				CryptoKey: crypto_key.ID(),
 //			}, nil)
 //			note, err := containeranalysis.NewNote(ctx, "note", &containeranalysis.NoteArgs{
+//				Name: pulumi.String("test-attestor-note"),
 //				AttestationAuthority: &containeranalysis.NoteAttestationAuthorityArgs{
 //					Hint: &containeranalysis.NoteAttestationAuthorityHintArgs{
 //						HumanReadableName: pulumi.String("Attestor Note"),
@@ -127,6 +132,7 @@ import (
 //				return err
 //			}
 //			_, err = binaryauthorization.NewAttestor(ctx, "attestor", &binaryauthorization.AttestorArgs{
+//				Name: pulumi.String("test-attestor"),
 //				AttestationAuthorityNote: &binaryauthorization.AttestorAttestationAuthorityNoteArgs{
 //					NoteReference: note.Name,
 //					PublicKeys: binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArray{

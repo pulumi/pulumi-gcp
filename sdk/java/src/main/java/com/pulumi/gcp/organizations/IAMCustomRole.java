@@ -54,14 +54,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var my_custom_role = new IAMCustomRole(&#34;my-custom-role&#34;, IAMCustomRoleArgs.builder()        
- *             .description(&#34;A description&#34;)
+ *             .roleId(&#34;myCustomRole&#34;)
  *             .orgId(&#34;123456789&#34;)
+ *             .title(&#34;My Custom Role&#34;)
+ *             .description(&#34;A description&#34;)
  *             .permissions(            
  *                 &#34;iam.roles.list&#34;,
  *                 &#34;iam.roles.create&#34;,
  *                 &#34;iam.roles.delete&#34;)
- *             .roleId(&#34;myCustomRole&#34;)
- *             .title(&#34;My Custom Role&#34;)
  *             .build());
  * 
  *     }

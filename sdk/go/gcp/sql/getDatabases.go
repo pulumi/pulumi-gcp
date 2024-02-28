@@ -27,7 +27,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sql.GetDatabases(ctx, &sql.GetDatabasesArgs{
-//				Instance: google_sql_database_instance.Main.Name,
+//				Instance: main.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

@@ -230,8 +230,8 @@ class WebTypeAppEngingIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.iap.WebTypeAppEngingIamPolicy("policy",
-            project=google_app_engine_application["app"]["project"],
-            app_id=google_app_engine_application["app"]["app_id"],
+            project=app["project"],
+            app_id=app["appId"],
             policy_data=admin.policy_data)
         ```
 
@@ -251,8 +251,8 @@ class WebTypeAppEngingIamPolicy(pulumi.CustomResource):
             ),
         )])
         policy = gcp.iap.WebTypeAppEngingIamPolicy("policy",
-            project=google_app_engine_application["app"]["project"],
-            app_id=google_app_engine_application["app"]["app_id"],
+            project=app["project"],
+            app_id=app["appId"],
             policy_data=admin.policy_data)
         ```
         ## google\\_iap\\_web\\_type\\_app\\_engine\\_iam\\_binding
@@ -262,8 +262,8 @@ class WebTypeAppEngingIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.iap.WebTypeAppEngingIamBinding("binding",
-            project=google_app_engine_application["app"]["project"],
-            app_id=google_app_engine_application["app"]["app_id"],
+            project=app["project"],
+            app_id=app["appId"],
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"])
         ```
@@ -275,8 +275,8 @@ class WebTypeAppEngingIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.iap.WebTypeAppEngingIamBinding("binding",
-            project=google_app_engine_application["app"]["project"],
-            app_id=google_app_engine_application["app"]["app_id"],
+            project=app["project"],
+            app_id=app["appId"],
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
             condition=gcp.iap.WebTypeAppEngingIamBindingConditionArgs(
@@ -292,8 +292,8 @@ class WebTypeAppEngingIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.iap.WebTypeAppEngingIamMember("member",
-            project=google_app_engine_application["app"]["project"],
-            app_id=google_app_engine_application["app"]["app_id"],
+            project=app["project"],
+            app_id=app["appId"],
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com")
         ```
@@ -305,8 +305,8 @@ class WebTypeAppEngingIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.iap.WebTypeAppEngingIamMember("member",
-            project=google_app_engine_application["app"]["project"],
-            app_id=google_app_engine_application["app"]["app_id"],
+            project=app["project"],
+            app_id=app["appId"],
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com",
             condition=gcp.iap.WebTypeAppEngingIamMemberConditionArgs(
@@ -406,8 +406,8 @@ class WebTypeAppEngingIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.iap.WebTypeAppEngingIamPolicy("policy",
-            project=google_app_engine_application["app"]["project"],
-            app_id=google_app_engine_application["app"]["app_id"],
+            project=app["project"],
+            app_id=app["appId"],
             policy_data=admin.policy_data)
         ```
 
@@ -427,8 +427,8 @@ class WebTypeAppEngingIamPolicy(pulumi.CustomResource):
             ),
         )])
         policy = gcp.iap.WebTypeAppEngingIamPolicy("policy",
-            project=google_app_engine_application["app"]["project"],
-            app_id=google_app_engine_application["app"]["app_id"],
+            project=app["project"],
+            app_id=app["appId"],
             policy_data=admin.policy_data)
         ```
         ## google\\_iap\\_web\\_type\\_app\\_engine\\_iam\\_binding
@@ -438,8 +438,8 @@ class WebTypeAppEngingIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.iap.WebTypeAppEngingIamBinding("binding",
-            project=google_app_engine_application["app"]["project"],
-            app_id=google_app_engine_application["app"]["app_id"],
+            project=app["project"],
+            app_id=app["appId"],
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"])
         ```
@@ -451,8 +451,8 @@ class WebTypeAppEngingIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.iap.WebTypeAppEngingIamBinding("binding",
-            project=google_app_engine_application["app"]["project"],
-            app_id=google_app_engine_application["app"]["app_id"],
+            project=app["project"],
+            app_id=app["appId"],
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
             condition=gcp.iap.WebTypeAppEngingIamBindingConditionArgs(
@@ -468,8 +468,8 @@ class WebTypeAppEngingIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.iap.WebTypeAppEngingIamMember("member",
-            project=google_app_engine_application["app"]["project"],
-            app_id=google_app_engine_application["app"]["app_id"],
+            project=app["project"],
+            app_id=app["appId"],
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com")
         ```
@@ -481,8 +481,8 @@ class WebTypeAppEngingIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.iap.WebTypeAppEngingIamMember("member",
-            project=google_app_engine_application["app"]["project"],
-            app_id=google_app_engine_application["app"]["app_id"],
+            project=app["project"],
+            app_id=app["appId"],
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com",
             condition=gcp.iap.WebTypeAppEngingIamMemberConditionArgs(

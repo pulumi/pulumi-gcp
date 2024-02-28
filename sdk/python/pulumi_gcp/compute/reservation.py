@@ -397,15 +397,16 @@ class Reservation(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        gce_reservation = gcp.compute.Reservation("gceReservation",
+        gce_reservation = gcp.compute.Reservation("gce_reservation",
+            name="gce-reservation",
+            zone="us-central1-a",
             specific_reservation=gcp.compute.ReservationSpecificReservationArgs(
                 count=1,
                 instance_properties=gcp.compute.ReservationSpecificReservationInstancePropertiesArgs(
-                    machine_type="n2-standard-2",
                     min_cpu_platform="Intel Cascade Lake",
+                    machine_type="n2-standard-2",
                 ),
-            ),
-            zone="us-central1-a")
+            ))
         ```
 
         ## Import
@@ -488,15 +489,16 @@ class Reservation(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        gce_reservation = gcp.compute.Reservation("gceReservation",
+        gce_reservation = gcp.compute.Reservation("gce_reservation",
+            name="gce-reservation",
+            zone="us-central1-a",
             specific_reservation=gcp.compute.ReservationSpecificReservationArgs(
                 count=1,
                 instance_properties=gcp.compute.ReservationSpecificReservationInstancePropertiesArgs(
-                    machine_type="n2-standard-2",
                     min_cpu_platform="Intel Cascade Lake",
+                    machine_type="n2-standard-2",
                 ),
-            ),
-            zone="us-central1-a")
+            ))
         ```
 
         ## Import

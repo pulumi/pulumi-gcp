@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const _default = new gcp.compute.GlobalAddress("default", {});
+ * const _default = new gcp.compute.GlobalAddress("default", {name: "global-appserver-ip"});
  * ```
  * ### Global Address Private Services Connect
  *
@@ -29,16 +29,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false}, {
- *     provider: google_beta,
+ * const network = new gcp.compute.Network("network", {
+ *     name: "my-network-name",
+ *     autoCreateSubnetworks: false,
  * });
  * const _default = new gcp.compute.GlobalAddress("default", {
+ *     name: "global-psconnect-ip",
  *     addressType: "INTERNAL",
  *     purpose: "PRIVATE_SERVICE_CONNECT",
  *     network: network.id,
  *     address: "100.100.100.105",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

@@ -34,8 +34,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.healthcare.ConsentStoreIamPolicy("policy", {
- *     dataset: google_healthcare_consent_store["my-consent"].dataset,
- *     consentStoreId: google_healthcare_consent_store["my-consent"].name,
+ *     dataset: my_consent.dataset,
+ *     consentStoreId: my_consent.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -47,8 +47,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.healthcare.ConsentStoreIamBinding("binding", {
- *     dataset: google_healthcare_consent_store["my-consent"].dataset,
- *     consentStoreId: google_healthcare_consent_store["my-consent"].name,
+ *     dataset: my_consent.dataset,
+ *     consentStoreId: my_consent.name,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
  * });
@@ -61,8 +61,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.healthcare.ConsentStoreIamMember("member", {
- *     dataset: google_healthcare_consent_store["my-consent"].dataset,
- *     consentStoreId: google_healthcare_consent_store["my-consent"].name,
+ *     dataset: my_consent.dataset,
+ *     consentStoreId: my_consent.name,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
  * });

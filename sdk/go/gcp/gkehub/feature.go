@@ -39,6 +39,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cluster, err := container.NewCluster(ctx, "cluster", &container.ClusterArgs{
+//				Name:             pulumi.String("my-cluster"),
 //				Location:         pulumi.String("us-central1-a"),
 //				InitialNodeCount: pulumi.Int(1),
 //			})
@@ -60,6 +61,7 @@ import (
 //				return err
 //			}
 //			_, err = gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Name:     pulumi.String("multiclusteringress"),
 //				Location: pulumi.String("global"),
 //				Spec: &gkehub.FeatureSpecArgs{
 //					Multiclusteringress: &gkehub.FeatureSpecMulticlusteringressArgs{
@@ -90,10 +92,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Name:     pulumi.String("multiclusterservicediscovery"),
+//				Location: pulumi.String("global"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//				Location: pulumi.String("global"),
 //			})
 //			if err != nil {
 //				return err
@@ -118,6 +121,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Name:     pulumi.String("servicemesh"),
 //				Location: pulumi.String("global"),
 //			})
 //			if err != nil {
@@ -143,6 +147,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Name:     pulumi.String("fleetobservability"),
 //				Location: pulumi.String("global"),
 //				Spec: &gkehub.FeatureSpecArgs{
 //					Fleetobservability: &gkehub.FeatureSpecFleetobservabilityArgs{
@@ -177,6 +182,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Name:     pulumi.String("fleetobservability"),
 //				Location: pulumi.String("global"),
 //				Spec: &gkehub.FeatureSpecArgs{
 //					Fleetobservability: &gkehub.FeatureSpecFleetobservabilityArgs{
@@ -211,6 +217,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Name:     pulumi.String("fleetobservability"),
 //				Location: pulumi.String("global"),
 //				Spec: &gkehub.FeatureSpecArgs{
 //					Fleetobservability: &gkehub.FeatureSpecFleetobservabilityArgs{
@@ -248,12 +255,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Name:     pulumi.String("servicemesh"),
+//				Location: pulumi.String("global"),
 //				FleetDefaultMemberConfig: &gkehub.FeatureFleetDefaultMemberConfigArgs{
 //					Mesh: &gkehub.FeatureFleetDefaultMemberConfigMeshArgs{
 //						Management: pulumi.String("MANAGEMENT_AUTOMATIC"),
 //					},
 //				},
-//				Location: pulumi.String("global"),
 //			})
 //			if err != nil {
 //				return err
@@ -278,6 +286,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Name:     pulumi.String("configmanagement"),
+//				Location: pulumi.String("global"),
 //				FleetDefaultMemberConfig: &gkehub.FeatureFleetDefaultMemberConfigArgs{
 //					Configmanagement: &gkehub.FeatureFleetDefaultMemberConfigConfigmanagementArgs{
 //						ConfigSync: &gkehub.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs{
@@ -287,7 +297,6 @@ import (
 //						},
 //					},
 //				},
-//				Location: pulumi.String("global"),
 //			})
 //			if err != nil {
 //				return err
@@ -312,14 +321,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Name:     pulumi.String("policycontroller"),
+//				Location: pulumi.String("global"),
 //				FleetDefaultMemberConfig: &gkehub.FeatureFleetDefaultMemberConfigArgs{
 //					Policycontroller: &gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerArgs{
 //						PolicyControllerHubConfig: &gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs{
-//							AuditIntervalSeconds: pulumi.Int(30),
+//							InstallSpec: pulumi.String("INSTALL_SPEC_ENABLED"),
 //							ExemptableNamespaces: pulumi.StringArray{
 //								pulumi.String("foo"),
 //							},
-//							InstallSpec: pulumi.String("INSTALL_SPEC_ENABLED"),
 //							PolicyContent: &gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs{
 //								Bundles: gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArray{
 //									&gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs{
@@ -334,11 +344,99 @@ import (
 //									Installation: pulumi.String("ALL"),
 //								},
 //							},
+//							AuditIntervalSeconds:    pulumi.Int(30),
 //							ReferentialRulesEnabled: pulumi.Bool(true),
 //						},
 //					},
 //				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Enable Fleet Default Member Config Policycontroller Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Name:     pulumi.String("policycontroller"),
 //				Location: pulumi.String("global"),
+//				FleetDefaultMemberConfig: &gkehub.FeatureFleetDefaultMemberConfigArgs{
+//					Policycontroller: &gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerArgs{
+//						PolicyControllerHubConfig: &gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs{
+//							InstallSpec: pulumi.String("INSTALL_SPEC_SUSPENDED"),
+//							PolicyContent: &gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs{
+//								Bundles: gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArray{
+//									&gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs{
+//										Bundle: pulumi.String("pci-dss-v3.2.1"),
+//										ExemptedNamespaces: pulumi.StringArray{
+//											pulumi.String("baz"),
+//											pulumi.String("bar"),
+//										},
+//									},
+//									&gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs{
+//										Bundle:             pulumi.String("nist-sp-800-190"),
+//										ExemptedNamespaces: pulumi.StringArray{},
+//									},
+//								},
+//								TemplateLibrary: &gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs{
+//									Installation: pulumi.String("ALL"),
+//								},
+//							},
+//							ConstraintViolationLimit: pulumi.Int(50),
+//							ReferentialRulesEnabled:  pulumi.Bool(true),
+//							LogDeniesEnabled:         pulumi.Bool(true),
+//							MutationEnabled:          pulumi.Bool(true),
+//							DeploymentConfigs: gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArray{
+//								&gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs{
+//									Component:    pulumi.String("admission"),
+//									ReplicaCount: pulumi.Int(2),
+//									PodAffinity:  pulumi.String("ANTI_AFFINITY"),
+//								},
+//								&gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs{
+//									Component: pulumi.String("audit"),
+//									ContainerResources: &gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs{
+//										Limits: &gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs{
+//											Memory: pulumi.String("1Gi"),
+//											Cpu:    pulumi.String("1.5"),
+//										},
+//										Requests: &gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs{
+//											Memory: pulumi.String("500Mi"),
+//											Cpu:    pulumi.String("150m"),
+//										},
+//									},
+//									PodTolerations: gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArray{
+//										&gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs{
+//											Key:      pulumi.String("key1"),
+//											Operator: pulumi.String("Equal"),
+//											Value:    pulumi.String("value1"),
+//											Effect:   pulumi.String("NoSchedule"),
+//										},
+//									},
+//								},
+//							},
+//							Monitoring: &gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs{
+//								Backends: pulumi.StringArray{
+//									pulumi.String("PROMETHEUS"),
+//								},
+//							},
+//						},
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -363,25 +461,26 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Name:     pulumi.String("policycontroller"),
+//				Location: pulumi.String("global"),
 //				FleetDefaultMemberConfig: &gkehub.FeatureFleetDefaultMemberConfigArgs{
 //					Policycontroller: &gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerArgs{
 //						PolicyControllerHubConfig: &gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs{
+//							InstallSpec:              pulumi.String("INSTALL_SPEC_ENABLED"),
+//							PolicyContent:            nil,
 //							ConstraintViolationLimit: pulumi.Int(50),
+//							ReferentialRulesEnabled:  pulumi.Bool(true),
+//							LogDeniesEnabled:         pulumi.Bool(true),
+//							MutationEnabled:          pulumi.Bool(true),
 //							DeploymentConfigs: gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArray{
 //								&gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs{
 //									Component: pulumi.String("admission"),
 //								},
 //							},
-//							InstallSpec:             pulumi.String("INSTALL_SPEC_ENABLED"),
-//							LogDeniesEnabled:        pulumi.Bool(true),
-//							Monitoring:              nil,
-//							MutationEnabled:         pulumi.Bool(true),
-//							PolicyContent:           nil,
-//							ReferentialRulesEnabled: pulumi.Bool(true),
+//							Monitoring: nil,
 //						},
 //					},
 //				},
-//				Location: pulumi.String("global"),
 //			})
 //			if err != nil {
 //				return err
@@ -406,13 +505,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Name:     pulumi.String("clusterupgrade"),
 //				Location: pulumi.String("global"),
 //				Spec: &gkehub.FeatureSpecArgs{
 //					Clusterupgrade: &gkehub.FeatureSpecClusterupgradeArgs{
+//						UpstreamFleets: pulumi.StringArray{},
 //						PostConditions: &gkehub.FeatureSpecClusterupgradePostConditionsArgs{
 //							Soaking: pulumi.String("60s"),
 //						},
-//						UpstreamFleets: pulumi.StringArray{},
 //					},
 //				},
 //			})

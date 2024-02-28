@@ -198,7 +198,7 @@ class WebTypeComputeIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.iap.WebTypeComputeIamPolicy("policy",
-            project=google_project_service["project_service"]["project"],
+            project=project_service["project"],
             policy_data=admin.policy_data)
         ```
 
@@ -218,7 +218,7 @@ class WebTypeComputeIamPolicy(pulumi.CustomResource):
             ),
         )])
         policy = gcp.iap.WebTypeComputeIamPolicy("policy",
-            project=google_project_service["project_service"]["project"],
+            project=project_service["project"],
             policy_data=admin.policy_data)
         ```
         ## google\\_iap\\_web\\_type\\_compute\\_iam\\_binding
@@ -228,7 +228,7 @@ class WebTypeComputeIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.iap.WebTypeComputeIamBinding("binding",
-            project=google_project_service["project_service"]["project"],
+            project=project_service["project"],
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"])
         ```
@@ -240,7 +240,7 @@ class WebTypeComputeIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.iap.WebTypeComputeIamBinding("binding",
-            project=google_project_service["project_service"]["project"],
+            project=project_service["project"],
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
             condition=gcp.iap.WebTypeComputeIamBindingConditionArgs(
@@ -256,7 +256,7 @@ class WebTypeComputeIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.iap.WebTypeComputeIamMember("member",
-            project=google_project_service["project_service"]["project"],
+            project=project_service["project"],
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com")
         ```
@@ -268,7 +268,7 @@ class WebTypeComputeIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.iap.WebTypeComputeIamMember("member",
-            project=google_project_service["project_service"]["project"],
+            project=project_service["project"],
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com",
             condition=gcp.iap.WebTypeComputeIamMemberConditionArgs(
@@ -365,7 +365,7 @@ class WebTypeComputeIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.iap.WebTypeComputeIamPolicy("policy",
-            project=google_project_service["project_service"]["project"],
+            project=project_service["project"],
             policy_data=admin.policy_data)
         ```
 
@@ -385,7 +385,7 @@ class WebTypeComputeIamPolicy(pulumi.CustomResource):
             ),
         )])
         policy = gcp.iap.WebTypeComputeIamPolicy("policy",
-            project=google_project_service["project_service"]["project"],
+            project=project_service["project"],
             policy_data=admin.policy_data)
         ```
         ## google\\_iap\\_web\\_type\\_compute\\_iam\\_binding
@@ -395,7 +395,7 @@ class WebTypeComputeIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.iap.WebTypeComputeIamBinding("binding",
-            project=google_project_service["project_service"]["project"],
+            project=project_service["project"],
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"])
         ```
@@ -407,7 +407,7 @@ class WebTypeComputeIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.iap.WebTypeComputeIamBinding("binding",
-            project=google_project_service["project_service"]["project"],
+            project=project_service["project"],
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
             condition=gcp.iap.WebTypeComputeIamBindingConditionArgs(
@@ -423,7 +423,7 @@ class WebTypeComputeIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.iap.WebTypeComputeIamMember("member",
-            project=google_project_service["project_service"]["project"],
+            project=project_service["project"],
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com")
         ```
@@ -435,7 +435,7 @@ class WebTypeComputeIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.iap.WebTypeComputeIamMember("member",
-            project=google_project_service["project_service"]["project"],
+            project=project_service["project"],
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com",
             condition=gcp.iap.WebTypeComputeIamMemberConditionArgs(

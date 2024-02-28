@@ -27,30 +27,26 @@ namespace Pulumi.Gcp.Container
     /// {
     ///     var versions = Gcp.Container.GetAwsVersions.Invoke(new()
     ///     {
-    ///         Location = "us-west1",
     ///         Project = "my-project-name",
+    ///         Location = "us-west1",
     ///     });
     /// 
     ///     var primary = new Gcp.Container.AwsCluster("primary", new()
     ///     {
-    ///         Annotations = 
-    ///         {
-    ///             { "label-one", "value-one" },
-    ///         },
     ///         Authorization = new Gcp.Container.Inputs.AwsClusterAuthorizationArgs
     ///         {
-    ///             AdminGroups = new[]
-    ///             {
-    ///                 new Gcp.Container.Inputs.AwsClusterAuthorizationAdminGroupArgs
-    ///                 {
-    ///                     Group = "group@domain.com",
-    ///                 },
-    ///             },
     ///             AdminUsers = new[]
     ///             {
     ///                 new Gcp.Container.Inputs.AwsClusterAuthorizationAdminUserArgs
     ///                 {
     ///                     Username = "my@service-account.com",
+    ///                 },
+    ///             },
+    ///             AdminGroups = new[]
+    ///             {
+    ///                 new Gcp.Container.Inputs.AwsClusterAuthorizationAdminGroupArgs
+    ///                 {
+    ///                     Group = "group@domain.com",
     ///                 },
     ///             },
     ///         },
@@ -71,6 +67,11 @@ namespace Pulumi.Gcp.Container
     ///                 KmsKeyArn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
     ///             },
     ///             IamInstanceProfile = "my--1p-dev-controlplane",
+    ///             SubnetIds = new[]
+    ///             {
+    ///                 "subnet-00000000000000000",
+    ///             },
+    ///             Version = versions.Apply(getAwsVersionsResult =&gt; getAwsVersionsResult.ValidVersions[0]),
     ///             InstanceType = "t3.medium",
     ///             MainVolume = new Gcp.Container.Inputs.AwsClusterControlPlaneMainVolumeArgs
     ///             {
@@ -99,22 +100,17 @@ namespace Pulumi.Gcp.Container
     ///             {
     ///                 Ec2KeyPair = "my--1p-dev-ssh",
     ///             },
-    ///             SubnetIds = new[]
-    ///             {
-    ///                 "subnet-00000000000000000",
-    ///             },
     ///             Tags = 
     ///             {
     ///                 { "owner", "my@service-account.com" },
     ///             },
-    ///             Version = versions.Apply(getAwsVersionsResult =&gt; getAwsVersionsResult.ValidVersions[0]),
     ///         },
-    ///         Description = "A sample aws cluster",
     ///         Fleet = new Gcp.Container.Inputs.AwsClusterFleetArgs
     ///         {
     ///             Project = "my-project-number",
     ///         },
     ///         Location = "us-west1",
+    ///         Name = "name",
     ///         Networking = new Gcp.Container.Inputs.AwsClusterNetworkingArgs
     ///         {
     ///             PodAddressCidrBlocks = new[]
@@ -127,6 +123,11 @@ namespace Pulumi.Gcp.Container
     ///             },
     ///             VpcId = "vpc-00000000000000000",
     ///         },
+    ///         Annotations = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Description = "A sample aws cluster",
     ///         Project = "my-project-name",
     ///     });
     /// 
@@ -144,16 +145,12 @@ namespace Pulumi.Gcp.Container
     /// {
     ///     var versions = Gcp.Container.GetAwsVersions.Invoke(new()
     ///     {
-    ///         Location = "us-west1",
     ///         Project = "my-project-name",
+    ///         Location = "us-west1",
     ///     });
     /// 
     ///     var primary = new Gcp.Container.AwsCluster("primary", new()
     ///     {
-    ///         Annotations = 
-    ///         {
-    ///             { "label-one", "value-one" },
-    ///         },
     ///         Authorization = new Gcp.Container.Inputs.AwsClusterAuthorizationArgs
     ///         {
     ///             AdminUsers = new[]
@@ -181,6 +178,11 @@ namespace Pulumi.Gcp.Container
     ///                 KmsKeyArn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
     ///             },
     ///             IamInstanceProfile = "my--1p-dev-controlplane",
+    ///             SubnetIds = new[]
+    ///             {
+    ///                 "subnet-00000000000000000",
+    ///             },
+    ///             Version = versions.Apply(getAwsVersionsResult =&gt; getAwsVersionsResult.ValidVersions[0]),
     ///             InstanceType = "t3.medium",
     ///             MainVolume = new Gcp.Container.Inputs.AwsClusterControlPlaneMainVolumeArgs
     ///             {
@@ -209,22 +211,17 @@ namespace Pulumi.Gcp.Container
     ///             {
     ///                 Ec2KeyPair = "my--1p-dev-ssh",
     ///             },
-    ///             SubnetIds = new[]
-    ///             {
-    ///                 "subnet-00000000000000000",
-    ///             },
     ///             Tags = 
     ///             {
     ///                 { "owner", "my@service-account.com" },
     ///             },
-    ///             Version = versions.Apply(getAwsVersionsResult =&gt; getAwsVersionsResult.ValidVersions[0]),
     ///         },
-    ///         Description = "A sample aws cluster",
     ///         Fleet = new Gcp.Container.Inputs.AwsClusterFleetArgs
     ///         {
     ///             Project = "my-project-number",
     ///         },
     ///         Location = "us-west1",
+    ///         Name = "name",
     ///         Networking = new Gcp.Container.Inputs.AwsClusterNetworkingArgs
     ///         {
     ///             PodAddressCidrBlocks = new[]
@@ -237,6 +234,11 @@ namespace Pulumi.Gcp.Container
     ///             },
     ///             VpcId = "vpc-00000000000000000",
     ///         },
+    ///         Annotations = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Description = "A sample aws cluster",
     ///         Project = "my-project-name",
     ///     });
     /// 
@@ -334,6 +336,7 @@ namespace Pulumi.Gcp.Container
     ///             Project = "my-project-number",
     ///         },
     ///         Location = "us-west1",
+    ///         Name = "name",
     ///         Networking = new Gcp.Container.Inputs.AwsClusterNetworkingArgs
     ///         {
     ///             PodAddressCidrBlocks = new[]
@@ -363,9 +366,6 @@ namespace Pulumi.Gcp.Container
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

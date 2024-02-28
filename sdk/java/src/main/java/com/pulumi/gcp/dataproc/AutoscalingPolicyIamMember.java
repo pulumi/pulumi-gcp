@@ -62,9 +62,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AutoscalingPolicyIamPolicy(&#34;policy&#34;, AutoscalingPolicyIamPolicyArgs.builder()        
- *             .project(google_dataproc_autoscaling_policy.basic().project())
- *             .location(google_dataproc_autoscaling_policy.basic().location())
- *             .policyId(google_dataproc_autoscaling_policy.basic().policy_id())
+ *             .project(basic.project())
+ *             .location(basic.location())
+ *             .policyId(basic.policyId())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -95,9 +95,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new AutoscalingPolicyIamBinding(&#34;binding&#34;, AutoscalingPolicyIamBindingArgs.builder()        
- *             .project(google_dataproc_autoscaling_policy.basic().project())
- *             .location(google_dataproc_autoscaling_policy.basic().location())
- *             .policyId(google_dataproc_autoscaling_policy.basic().policy_id())
+ *             .project(basic.project())
+ *             .location(basic.location())
+ *             .policyId(basic.policyId())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -129,9 +129,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new AutoscalingPolicyIamMember(&#34;member&#34;, AutoscalingPolicyIamMemberArgs.builder()        
- *             .project(google_dataproc_autoscaling_policy.basic().project())
- *             .location(google_dataproc_autoscaling_policy.basic().location())
- *             .policyId(google_dataproc_autoscaling_policy.basic().policy_id())
+ *             .project(basic.project())
+ *             .location(basic.location())
+ *             .policyId(basic.policyId())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

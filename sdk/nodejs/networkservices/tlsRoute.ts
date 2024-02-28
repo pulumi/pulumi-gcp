@@ -8,6 +8,124 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Network Services Tls Route Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ *     name: "backend-service-health-check",
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "my-backend-service",
+ *     healthChecks: defaultHttpHealthCheck.id,
+ * });
+ * const defaultTlsRoute = new gcp.networkservices.TlsRoute("default", {
+ *     name: "my-tls-route",
+ *     description: "my description",
+ *     rules: [{
+ *         matches: [{
+ *             sniHosts: ["example.com"],
+ *             alpns: ["http/1.1"],
+ *         }],
+ *         action: {
+ *             destinations: [{
+ *                 serviceName: _default.id,
+ *                 weight: 1,
+ *             }],
+ *         },
+ *     }],
+ * });
+ * ```
+ * ### Network Services Tls Route Mesh Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ *     name: "backend-service-health-check",
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "my-backend-service",
+ *     healthChecks: defaultHttpHealthCheck.id,
+ * });
+ * const defaultMesh = new gcp.networkservices.Mesh("default", {
+ *     name: "my-tls-route",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     description: "my description",
+ * });
+ * const defaultTlsRoute = new gcp.networkservices.TlsRoute("default", {
+ *     name: "my-tls-route",
+ *     description: "my description",
+ *     meshes: [defaultMesh.id],
+ *     rules: [{
+ *         matches: [{
+ *             sniHosts: ["example.com"],
+ *             alpns: ["http/1.1"],
+ *         }],
+ *         action: {
+ *             destinations: [{
+ *                 serviceName: _default.id,
+ *                 weight: 1,
+ *             }],
+ *         },
+ *     }],
+ * });
+ * ```
+ * ### Network Services Tls Route Gateway Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ *     name: "backend-service-health-check",
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "my-backend-service",
+ *     healthChecks: defaultHttpHealthCheck.id,
+ * });
+ * const defaultGateway = new gcp.networkservices.Gateway("default", {
+ *     name: "my-tls-route",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     description: "my description",
+ *     scope: "my-scope",
+ *     type: "OPEN_MESH",
+ *     ports: [443],
+ * });
+ * const defaultTlsRoute = new gcp.networkservices.TlsRoute("default", {
+ *     name: "my-tls-route",
+ *     description: "my description",
+ *     gateways: [defaultGateway.id],
+ *     rules: [{
+ *         matches: [{
+ *             sniHosts: ["example.com"],
+ *             alpns: ["http/1.1"],
+ *         }],
+ *         action: {
+ *             destinations: [{
+ *                 serviceName: _default.id,
+ *                 weight: 1,
+ *             }],
+ *         },
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *

@@ -24,10 +24,10 @@ import * as utilities from "../utilities";
  *
  * const example = new gcp.bigquery.CapacityCommitment("example", {
  *     capacityCommitmentId: "example-commitment",
- *     edition: "ENTERPRISE",
  *     location: "us-west2",
- *     plan: "FLEX_FLAT_RATE",
  *     slotCount: 100,
+ *     plan: "FLEX_FLAT_RATE",
+ *     edition: "ENTERPRISE",
  * });
  * ```
  *

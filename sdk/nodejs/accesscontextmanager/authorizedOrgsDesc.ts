@@ -35,14 +35,15 @@ import * as utilities from "../utilities";
  *     title: "my policy",
  * });
  * const authorized_orgs_desc = new gcp.accesscontextmanager.AuthorizedOrgsDesc("authorized-orgs-desc", {
+ *     parent: pulumi.interpolate`accessPolicies/${test_access.name}`,
+ *     name: pulumi.interpolate`accessPolicies/${test_access.name}/authorizedOrgsDescs/fakeDescName`,
+ *     authorizationType: "AUTHORIZATION_TYPE_TRUST",
  *     assetType: "ASSET_TYPE_CREDENTIAL_STRENGTH",
  *     authorizationDirection: "AUTHORIZATION_DIRECTION_TO",
- *     authorizationType: "AUTHORIZATION_TYPE_TRUST",
  *     orgs: [
  *         "organizations/12345",
  *         "organizations/98765",
  *     ],
- *     parent: pulumi.interpolate`accessPolicies/${test_access.name}`,
  * });
  * ```
  *

@@ -55,11 +55,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var serialPortPolicy = new Policy(&#34;serialPortPolicy&#34;, PolicyArgs.builder()        
+ *             .orgId(&#34;123456789&#34;)
+ *             .constraint(&#34;compute.disableSerialPortAccess&#34;)
  *             .booleanPolicy(PolicyBooleanPolicyArgs.builder()
  *                 .enforced(true)
  *                 .build())
- *             .constraint(&#34;compute.disableSerialPortAccess&#34;)
- *             .orgId(&#34;123456789&#34;)
  *             .build());
  * 
  *     }
@@ -91,13 +91,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var servicesPolicy = new Policy(&#34;servicesPolicy&#34;, PolicyArgs.builder()        
+ *             .orgId(&#34;123456789&#34;)
  *             .constraint(&#34;serviceuser.services&#34;)
  *             .listPolicy(PolicyListPolicyArgs.builder()
  *                 .allow(PolicyListPolicyAllowArgs.builder()
  *                     .all(true)
  *                     .build())
  *                 .build())
- *             .orgId(&#34;123456789&#34;)
  *             .build());
  * 
  *     }
@@ -129,14 +129,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var servicesPolicy = new Policy(&#34;servicesPolicy&#34;, PolicyArgs.builder()        
+ *             .orgId(&#34;123456789&#34;)
  *             .constraint(&#34;serviceuser.services&#34;)
  *             .listPolicy(PolicyListPolicyArgs.builder()
+ *                 .suggestedValue(&#34;compute.googleapis.com&#34;)
  *                 .deny(PolicyListPolicyDenyArgs.builder()
  *                     .values(&#34;cloudresourcemanager.googleapis.com&#34;)
  *                     .build())
- *                 .suggestedValue(&#34;compute.googleapis.com&#34;)
  *                 .build())
- *             .orgId(&#34;123456789&#34;)
  *             .build());
  * 
  *     }
@@ -167,8 +167,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var servicesPolicy = new Policy(&#34;servicesPolicy&#34;, PolicyArgs.builder()        
- *             .constraint(&#34;serviceuser.services&#34;)
  *             .orgId(&#34;123456789&#34;)
+ *             .constraint(&#34;serviceuser.services&#34;)
  *             .restorePolicy(PolicyRestorePolicyArgs.builder()
  *                 .default_(true)
  *                 .build())

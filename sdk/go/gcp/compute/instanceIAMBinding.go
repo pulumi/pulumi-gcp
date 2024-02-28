@@ -57,9 +57,9 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewInstanceIAMPolicy(ctx, "policy", &compute.InstanceIAMPolicyArgs{
-//				Project:      pulumi.Any(google_compute_instance.Default.Project),
-//				Zone:         pulumi.Any(google_compute_instance.Default.Zone),
-//				InstanceName: pulumi.Any(google_compute_instance.Default.Name),
+//				Project:      pulumi.Any(_default.Project),
+//				Zone:         pulumi.Any(_default.Zone),
+//				InstanceName: pulumi.Any(_default.Name),
 //				PolicyData:   *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -105,9 +105,9 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewInstanceIAMPolicy(ctx, "policy", &compute.InstanceIAMPolicyArgs{
-//				Project:      pulumi.Any(google_compute_instance.Default.Project),
-//				Zone:         pulumi.Any(google_compute_instance.Default.Zone),
-//				InstanceName: pulumi.Any(google_compute_instance.Default.Name),
+//				Project:      pulumi.Any(_default.Project),
+//				Zone:         pulumi.Any(_default.Zone),
+//				InstanceName: pulumi.Any(_default.Name),
 //				PolicyData:   *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -133,9 +133,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewInstanceIAMBinding(ctx, "binding", &compute.InstanceIAMBindingArgs{
-//				Project:      pulumi.Any(google_compute_instance.Default.Project),
-//				Zone:         pulumi.Any(google_compute_instance.Default.Zone),
-//				InstanceName: pulumi.Any(google_compute_instance.Default.Name),
+//				Project:      pulumi.Any(_default.Project),
+//				Zone:         pulumi.Any(_default.Zone),
+//				InstanceName: pulumi.Any(_default.Name),
 //				Role:         pulumi.String("roles/compute.osLogin"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -165,9 +165,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewInstanceIAMBinding(ctx, "binding", &compute.InstanceIAMBindingArgs{
-//				Project:      pulumi.Any(google_compute_instance.Default.Project),
-//				Zone:         pulumi.Any(google_compute_instance.Default.Zone),
-//				InstanceName: pulumi.Any(google_compute_instance.Default.Name),
+//				Project:      pulumi.Any(_default.Project),
+//				Zone:         pulumi.Any(_default.Zone),
+//				InstanceName: pulumi.Any(_default.Name),
 //				Role:         pulumi.String("roles/compute.osLogin"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -201,9 +201,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewInstanceIAMMember(ctx, "member", &compute.InstanceIAMMemberArgs{
-//				Project:      pulumi.Any(google_compute_instance.Default.Project),
-//				Zone:         pulumi.Any(google_compute_instance.Default.Zone),
-//				InstanceName: pulumi.Any(google_compute_instance.Default.Name),
+//				Project:      pulumi.Any(_default.Project),
+//				Zone:         pulumi.Any(_default.Zone),
+//				InstanceName: pulumi.Any(_default.Name),
 //				Role:         pulumi.String("roles/compute.osLogin"),
 //				Member:       pulumi.String("user:jane@example.com"),
 //			})
@@ -231,9 +231,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewInstanceIAMMember(ctx, "member", &compute.InstanceIAMMemberArgs{
-//				Project:      pulumi.Any(google_compute_instance.Default.Project),
-//				Zone:         pulumi.Any(google_compute_instance.Default.Zone),
-//				InstanceName: pulumi.Any(google_compute_instance.Default.Name),
+//				Project:      pulumi.Any(_default.Project),
+//				Zone:         pulumi.Any(_default.Zone),
+//				InstanceName: pulumi.Any(_default.Name),
 //				Role:         pulumi.String("roles/compute.osLogin"),
 //				Member:       pulumi.String("user:jane@example.com"),
 //				Condition: &compute.InstanceIAMMemberConditionArgs{

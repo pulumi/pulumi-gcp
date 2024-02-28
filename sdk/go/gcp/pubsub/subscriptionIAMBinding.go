@@ -78,11 +78,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := pubsub.NewSubscriptionIAMBinding(ctx, "editor", &pubsub.SubscriptionIAMBindingArgs{
+//				Subscription: pulumi.String("your-subscription-name"),
+//				Role:         pulumi.String("roles/editor"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				Role:         pulumi.String("roles/editor"),
-//				Subscription: pulumi.String("your-subscription-name"),
 //			})
 //			if err != nil {
 //				return err
@@ -108,9 +108,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := pubsub.NewSubscriptionIAMMember(ctx, "editor", &pubsub.SubscriptionIAMMemberArgs{
-//				Member:       pulumi.String("user:jane@example.com"),
-//				Role:         pulumi.String("roles/editor"),
 //				Subscription: pulumi.String("your-subscription-name"),
+//				Role:         pulumi.String("roles/editor"),
+//				Member:       pulumi.String("user:jane@example.com"),
 //			})
 //			if err != nil {
 //				return err

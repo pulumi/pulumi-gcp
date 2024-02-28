@@ -23,13 +23,13 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const basic = new gcp.discoveryengine.DataStore("basic", {
- *     contentConfig: "NO_CONTENT",
- *     createAdvancedSiteSearch: false,
+ *     location: "global",
  *     dataStoreId: "data-store-id",
  *     displayName: "tf-test-structured-datastore",
  *     industryVertical: "GENERIC",
- *     location: "global",
+ *     contentConfig: "NO_CONTENT",
  *     solutionTypes: ["SOLUTION_TYPE_SEARCH"],
+ *     createAdvancedSiteSearch: false,
  * });
  * ```
  *

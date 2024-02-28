@@ -60,9 +60,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new DataExchangeIamPolicy(&#34;policy&#34;, DataExchangeIamPolicyArgs.builder()        
- *             .project(google_bigquery_analytics_hub_data_exchange.data_exchange().project())
- *             .location(google_bigquery_analytics_hub_data_exchange.data_exchange().location())
- *             .dataExchangeId(google_bigquery_analytics_hub_data_exchange.data_exchange().data_exchange_id())
+ *             .project(dataExchange.project())
+ *             .location(dataExchange.location())
+ *             .dataExchangeId(dataExchange.dataExchangeId())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -93,9 +93,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new DataExchangeIamBinding(&#34;binding&#34;, DataExchangeIamBindingArgs.builder()        
- *             .project(google_bigquery_analytics_hub_data_exchange.data_exchange().project())
- *             .location(google_bigquery_analytics_hub_data_exchange.data_exchange().location())
- *             .dataExchangeId(google_bigquery_analytics_hub_data_exchange.data_exchange().data_exchange_id())
+ *             .project(dataExchange.project())
+ *             .location(dataExchange.location())
+ *             .dataExchangeId(dataExchange.dataExchangeId())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -127,9 +127,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new DataExchangeIamMember(&#34;member&#34;, DataExchangeIamMemberArgs.builder()        
- *             .project(google_bigquery_analytics_hub_data_exchange.data_exchange().project())
- *             .location(google_bigquery_analytics_hub_data_exchange.data_exchange().location())
- *             .dataExchangeId(google_bigquery_analytics_hub_data_exchange.data_exchange().data_exchange_id())
+ *             .project(dataExchange.project())
+ *             .location(dataExchange.location())
+ *             .dataExchangeId(dataExchange.dataExchangeId())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

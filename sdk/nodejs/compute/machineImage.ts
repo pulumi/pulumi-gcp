@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const vm = new gcp.compute.Instance("vm", {
+ *     name: "my-vm",
  *     machineType: "e2-medium",
  *     bootDisk: {
  *         initializeParams: {
@@ -34,11 +35,10 @@ import * as utilities from "../utilities";
  *     networkInterfaces: [{
  *         network: "default",
  *     }],
- * }, {
- *     provider: google_beta,
  * });
- * const image = new gcp.compute.MachineImage("image", {sourceInstance: vm.selfLink}, {
- *     provider: google_beta,
+ * const image = new gcp.compute.MachineImage("image", {
+ *     name: "my-image",
+ *     sourceInstance: vm.selfLink,
  * });
  * ```
  * ### Compute Machine Image Kms
@@ -48,6 +48,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const vm = new gcp.compute.Instance("vm", {
+ *     name: "my-vm",
  *     machineType: "e2-medium",
  *     bootDisk: {
  *         initializeParams: {
@@ -57,22 +58,21 @@ import * as utilities from "../utilities";
  *     networkInterfaces: [{
  *         network: "default",
  *     }],
- * }, {
- *     provider: google_beta,
  * });
- * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "us"}, {
- *     provider: google_beta,
+ * const keyRing = new gcp.kms.KeyRing("key_ring", {
+ *     name: "keyring",
+ *     location: "us",
  * });
- * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.id}, {
- *     provider: google_beta,
+ * const cryptoKey = new gcp.kms.CryptoKey("crypto_key", {
+ *     name: "key",
+ *     keyRing: keyRing.id,
  * });
  * const image = new gcp.compute.MachineImage("image", {
+ *     name: "my-image",
  *     sourceInstance: vm.selfLink,
  *     machineImageEncryptionKey: {
  *         kmsKeyName: cryptoKey.id,
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

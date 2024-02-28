@@ -275,8 +275,8 @@ class ClusterIAMPolicy(pulumi.CustomResource):
 
         editor = gcp.dataproc.ClusterIAMBinding("editor",
             cluster="your-dataproc-cluster",
-            members=["user:jane@example.com"],
-            role="roles/editor")
+            role="roles/editor",
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_dataproc\\_cluster\\_iam\\_member
@@ -287,8 +287,8 @@ class ClusterIAMPolicy(pulumi.CustomResource):
 
         editor = gcp.dataproc.ClusterIAMMember("editor",
             cluster="your-dataproc-cluster",
-            member="user:jane@example.com",
-            role="roles/editor")
+            role="roles/editor",
+            member="user:jane@example.com")
         ```
 
         ## Import
@@ -381,8 +381,8 @@ class ClusterIAMPolicy(pulumi.CustomResource):
 
         editor = gcp.dataproc.ClusterIAMBinding("editor",
             cluster="your-dataproc-cluster",
-            members=["user:jane@example.com"],
-            role="roles/editor")
+            role="roles/editor",
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_dataproc\\_cluster\\_iam\\_member
@@ -393,8 +393,8 @@ class ClusterIAMPolicy(pulumi.CustomResource):
 
         editor = gcp.dataproc.ClusterIAMMember("editor",
             cluster="your-dataproc-cluster",
-            member="user:jane@example.com",
-            role="roles/editor")
+            role="roles/editor",
+            member="user:jane@example.com")
         ```
 
         ## Import

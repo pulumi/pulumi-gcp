@@ -23,15 +23,11 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
- * const reportBucket = new gcp.storage.Bucket("reportBucket", {
+ * const reportBucket = new gcp.storage.Bucket("report_bucket", {
+ *     name: "my-bucket",
  *     location: "us-central1",
  *     forceDestroy: true,
  *     uniformBucketLevelAccess: true,
- * });
- * const admin = new gcp.storage.BucketIAMMember("admin", {
- *     bucket: reportBucket.name,
- *     role: "roles/storage.admin",
- *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-storageinsights.iam.gserviceaccount.com`),
  * });
  * const config = new gcp.storage.InsightsReportConfig("config", {
  *     displayName: "Test Report Config",
@@ -68,8 +64,11 @@ import * as utilities from "../utilities";
  *             destinationPath: "test-insights-reports",
  *         },
  *     },
- * }, {
- *     dependsOn: [admin],
+ * });
+ * const admin = new gcp.storage.BucketIAMMember("admin", {
+ *     bucket: reportBucket.name,
+ *     role: "roles/storage.admin",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-storageinsights.iam.gserviceaccount.com`),
  * });
  * ```
  *

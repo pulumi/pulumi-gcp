@@ -231,6 +231,7 @@ class FolderExclusion(pulumi.CustomResource):
             display_name="My folder",
             parent="organizations/123456")
         my_exclusion = gcp.logging.FolderExclusion("my-exclusion",
+            name="my-instance-debug-exclusion",
             folder=my_folder.name,
             description="Exclude GCE instance debug logs",
             filter="resource.type = gce_instance AND severity <= DEBUG")
@@ -285,6 +286,7 @@ class FolderExclusion(pulumi.CustomResource):
             display_name="My folder",
             parent="organizations/123456")
         my_exclusion = gcp.logging.FolderExclusion("my-exclusion",
+            name="my-instance-debug-exclusion",
             folder=my_folder.name,
             description="Exclude GCE instance debug logs",
             filter="resource.type = gce_instance AND severity <= DEBUG")

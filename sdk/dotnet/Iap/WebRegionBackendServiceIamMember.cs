@@ -53,9 +53,9 @@ namespace Pulumi.Gcp.Iap
     /// 
     ///     var policy = new Gcp.Iap.WebRegionBackendServiceIamPolicy("policy", new()
     ///     {
-    ///         Project = google_compute_region_backend_service.Default.Project,
-    ///         Region = google_compute_region_backend_service.Default.Region,
-    ///         WebRegionBackendService = google_compute_region_backend_service.Default.Name,
+    ///         Project = @default.Project,
+    ///         Region = @default.Region,
+    ///         WebRegionBackendService = @default.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -95,9 +95,9 @@ namespace Pulumi.Gcp.Iap
     /// 
     ///     var policy = new Gcp.Iap.WebRegionBackendServiceIamPolicy("policy", new()
     ///     {
-    ///         Project = google_compute_region_backend_service.Default.Project,
-    ///         Region = google_compute_region_backend_service.Default.Region,
-    ///         WebRegionBackendService = google_compute_region_backend_service.Default.Name,
+    ///         Project = @default.Project,
+    ///         Region = @default.Region,
+    ///         WebRegionBackendService = @default.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -115,9 +115,9 @@ namespace Pulumi.Gcp.Iap
     /// {
     ///     var binding = new Gcp.Iap.WebRegionBackendServiceIamBinding("binding", new()
     ///     {
-    ///         Project = google_compute_region_backend_service.Default.Project,
-    ///         Region = google_compute_region_backend_service.Default.Region,
-    ///         WebRegionBackendService = google_compute_region_backend_service.Default.Name,
+    ///         Project = @default.Project,
+    ///         Region = @default.Region,
+    ///         WebRegionBackendService = @default.Name,
     ///         Role = "roles/iap.httpsResourceAccessor",
     ///         Members = new[]
     ///         {
@@ -140,9 +140,9 @@ namespace Pulumi.Gcp.Iap
     /// {
     ///     var binding = new Gcp.Iap.WebRegionBackendServiceIamBinding("binding", new()
     ///     {
-    ///         Project = google_compute_region_backend_service.Default.Project,
-    ///         Region = google_compute_region_backend_service.Default.Region,
-    ///         WebRegionBackendService = google_compute_region_backend_service.Default.Name,
+    ///         Project = @default.Project,
+    ///         Region = @default.Region,
+    ///         WebRegionBackendService = @default.Name,
     ///         Role = "roles/iap.httpsResourceAccessor",
     ///         Members = new[]
     ///         {
@@ -170,9 +170,9 @@ namespace Pulumi.Gcp.Iap
     /// {
     ///     var member = new Gcp.Iap.WebRegionBackendServiceIamMember("member", new()
     ///     {
-    ///         Project = google_compute_region_backend_service.Default.Project,
-    ///         Region = google_compute_region_backend_service.Default.Region,
-    ///         WebRegionBackendService = google_compute_region_backend_service.Default.Name,
+    ///         Project = @default.Project,
+    ///         Region = @default.Region,
+    ///         WebRegionBackendService = @default.Name,
     ///         Role = "roles/iap.httpsResourceAccessor",
     ///         Member = "user:jane@example.com",
     ///     });
@@ -192,9 +192,9 @@ namespace Pulumi.Gcp.Iap
     /// {
     ///     var member = new Gcp.Iap.WebRegionBackendServiceIamMember("member", new()
     ///     {
-    ///         Project = google_compute_region_backend_service.Default.Project,
-    ///         Region = google_compute_region_backend_service.Default.Region,
-    ///         WebRegionBackendService = google_compute_region_backend_service.Default.Name,
+    ///         Project = @default.Project,
+    ///         Region = @default.Region,
+    ///         WebRegionBackendService = @default.Name,
     ///         Role = "roles/iap.httpsResourceAccessor",
     ///         Member = "user:jane@example.com",
     ///         Condition = new Gcp.Iap.Inputs.WebRegionBackendServiceIamMemberConditionArgs

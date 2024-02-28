@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := edgenetwork.NewNetwork(ctx, "exampleNetwork", &edgenetwork.NetworkArgs{
+//			_, err := edgenetwork.NewNetwork(ctx, "example_network", &edgenetwork.NetworkArgs{
 //				NetworkId:   pulumi.String("example-network"),
 //				Location:    pulumi.String("us-west1"),
 //				Zone:        pulumi.String(""),

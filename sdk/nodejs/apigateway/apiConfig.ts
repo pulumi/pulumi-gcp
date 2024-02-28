@@ -20,23 +20,64 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
  *
- * const apiCfgApi = new gcp.apigateway.Api("apiCfgApi", {apiId: "my-api"}, {
- *     provider: google_beta,
- * });
- * const apiCfgApiConfig = new gcp.apigateway.ApiConfig("apiCfgApiConfig", {
- *     api: apiCfgApi.apiId,
+ * const apiCfg = new gcp.apigateway.Api("api_cfg", {apiId: "my-api"});
+ * const apiCfgApiConfig = new gcp.apigateway.ApiConfig("api_cfg", {
+ *     api: apiCfg.apiId,
  *     apiConfigId: "my-config",
  *     openapiDocuments: [{
  *         document: {
  *             path: "spec.yaml",
- *             contents: fs.readFileSync("test-fixtures/openapi.yaml", { encoding: "base64" }),
+ *             contents: std.filebase64({
+ *                 input: "test-fixtures/openapi.yaml",
+ *             }).then(invoke => invoke.result),
  *         },
  *     }],
- * }, {
- *     provider: google_beta,
+ * });
+ * ```
+ * ### Apigateway Api Config Grpc
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const apiCfg = new gcp.apigateway.Api("api_cfg", {apiId: "my-api"});
+ * const apiCfgApiConfig = new gcp.apigateway.ApiConfig("api_cfg", {
+ *     api: apiCfg.apiId,
+ *     apiConfigId: "my-config",
+ *     grpcServices: [{
+ *         fileDescriptorSet: {
+ *             path: "api_descriptor.pb",
+ *             contents: std.filebase64({
+ *                 input: "test-fixtures/api_descriptor.pb",
+ *             }).then(invoke => invoke.result),
+ *         },
+ *     }],
+ *     managedServiceConfigs: [{
+ *         path: "api_config.yaml",
+ *         contents: std.base64encodeOutput({
+ *             input: pulumi.interpolate`type: google.api.Service
+ * config_version: 3
+ * name: ${apiCfg.managedService}
+ * title: gRPC API example
+ * apis:
+ *   - name: endpoints.examples.bookstore.Bookstore
+ * usage:
+ *   rules:
+ *   - selector: endpoints.examples.bookstore.Bookstore.ListShelves
+ *     allow_unregistered_calls: true
+ * backend:
+ *   rules:
+ *     - selector: "*"
+ *       address: grpcs://example.com
+ *       disable_auth: true
+ *
+ * `,
+ *         }).apply(invoke => invoke.result),
+ *     }],
  * });
  * ```
  *

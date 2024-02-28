@@ -50,7 +50,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = healthcare.NewDicomStoreIamPolicy(ctx, "dicomStore", &healthcare.DicomStoreIamPolicyArgs{
+//			_, err = healthcare.NewDicomStoreIamPolicy(ctx, "dicom_store", &healthcare.DicomStoreIamPolicyArgs{
 //				DicomStoreId: pulumi.String("your-dicom-store-id"),
 //				PolicyData:   *pulumi.String(admin.PolicyData),
 //			})
@@ -77,12 +77,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := healthcare.NewDicomStoreIamBinding(ctx, "dicomStore", &healthcare.DicomStoreIamBindingArgs{
+//			_, err := healthcare.NewDicomStoreIamBinding(ctx, "dicom_store", &healthcare.DicomStoreIamBindingArgs{
 //				DicomStoreId: pulumi.String("your-dicom-store-id"),
+//				Role:         pulumi.String("roles/editor"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				Role: pulumi.String("roles/editor"),
 //			})
 //			if err != nil {
 //				return err
@@ -107,10 +107,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := healthcare.NewDicomStoreIamMember(ctx, "dicomStore", &healthcare.DicomStoreIamMemberArgs{
+//			_, err := healthcare.NewDicomStoreIamMember(ctx, "dicom_store", &healthcare.DicomStoreIamMemberArgs{
 //				DicomStoreId: pulumi.String("your-dicom-store-id"),
-//				Member:       pulumi.String("user:jane@example.com"),
 //				Role:         pulumi.String("roles/editor"),
+//				Member:       pulumi.String("user:jane@example.com"),
 //			})
 //			if err != nil {
 //				return err

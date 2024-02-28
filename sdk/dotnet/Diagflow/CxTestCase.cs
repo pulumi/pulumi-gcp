@@ -125,7 +125,7 @@ namespace Pulumi.Gcp.Diagflow
     ///         },
     ///     });
     /// 
-    ///     var basicTestCase = new Gcp.Diagflow.CxTestCase("basicTestCase", new()
+    ///     var basicTestCase = new Gcp.Diagflow.CxTestCase("basic_test_case", new()
     ///     {
     ///         Parent = agent.Id,
     ///         DisplayName = "MyTestCase",
@@ -158,7 +158,7 @@ namespace Pulumi.Gcp.Diagflow
     ///                     },
     ///                     InjectedParameters = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///                     {
-    ///                         ["some_param"] = "1",
+    ///                         ["someParam"] = "1",
     ///                     }),
     ///                     IsWebhookEnabled = true,
     ///                     EnableSentimentAnalysis = true,
@@ -167,7 +167,7 @@ namespace Pulumi.Gcp.Diagflow
     ///                 {
     ///                     SessionParameters = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///                     {
-    ///                         ["some_param"] = "1",
+    ///                         ["someParam"] = "1",
     ///                     }),
     ///                     TriggeredIntent = new Gcp.Diagflow.Inputs.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs
     ///                     {

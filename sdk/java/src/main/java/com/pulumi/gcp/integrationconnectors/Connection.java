@@ -66,6 +66,10 @@ import javax.annotation.Nullable;
  *         final var testProject = OrganizationsFunctions.getProject();
  * 
  *         var pubsubconnection = new Connection(&#34;pubsubconnection&#34;, ConnectionArgs.builder()        
+ *             .name(&#34;test-pubsub&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .connectorVersion(String.format(&#34;projects/%s/locations/global/providers/gcp/connectors/pubsub/versions/1&#34;, testProject.applyValue(getProjectResult -&gt; getProjectResult.projectId())))
+ *             .description(&#34;tf created description&#34;)
  *             .configVariables(            
  *                 ConnectionConfigVariableArgs.builder()
  *                     .key(&#34;project_id&#34;)
@@ -75,9 +79,6 @@ import javax.annotation.Nullable;
  *                     .key(&#34;topic_id&#34;)
  *                     .stringValue(&#34;test&#34;)
  *                     .build())
- *             .connectorVersion(String.format(&#34;projects/%s/locations/global/providers/gcp/connectors/pubsub/versions/1&#34;, testProject.applyValue(getProjectResult -&gt; getProjectResult.projectId())))
- *             .description(&#34;tf created description&#34;)
- *             .location(&#34;us-central1&#34;)
  *             .build());
  * 
  *     }
@@ -122,7 +123,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAuthConfigArgs;
  * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAuthConfigUserPasswordArgs;
  * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAuthConfigUserPasswordPasswordArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -158,11 +158,10 @@ import javax.annotation.Nullable;
  *             .secretId(secret_basic.id())
  *             .role(&#34;roles/secretmanager.admin&#34;)
  *             .member(String.format(&#34;serviceAccount:%s-compute@developer.gserviceaccount.com&#34;, testProject.applyValue(getProjectResult -&gt; getProjectResult.number())))
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(secret_version_basic)
- *                 .build());
+ *             .build());
  * 
  *         var zendeskconnection = new Connection(&#34;zendeskconnection&#34;, ConnectionArgs.builder()        
+ *             .name(&#34;test-zendesk&#34;)
  *             .description(&#34;tf updated description&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .serviceAccount(String.format(&#34;%s-compute@developer.gserviceaccount.com&#34;, testProject.applyValue(getProjectResult -&gt; getProjectResult.number())))

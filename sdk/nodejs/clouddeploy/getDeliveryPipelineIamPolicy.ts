@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.clouddeploy.getDeliveryPipelineIamPolicy({
- *     project: google_clouddeploy_delivery_pipeline["default"].project,
- *     location: google_clouddeploy_delivery_pipeline["default"].location,
- *     name: google_clouddeploy_delivery_pipeline["default"].name,
+ *     project: _default.project,
+ *     location: _default.location,
+ *     name: _default.name,
  * });
  * ```
  */
@@ -77,9 +77,9 @@ export interface GetDeliveryPipelineIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.clouddeploy.getDeliveryPipelineIamPolicy({
- *     project: google_clouddeploy_delivery_pipeline["default"].project,
- *     location: google_clouddeploy_delivery_pipeline["default"].location,
- *     name: google_clouddeploy_delivery_pipeline["default"].name,
+ *     project: _default.project,
+ *     location: _default.location,
+ *     name: _default.name,
  * });
  * ```
  */

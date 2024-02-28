@@ -50,6 +50,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var testActiveDirectoryFull = new ActiveDirectory(&#34;testActiveDirectoryFull&#34;, ActiveDirectoryArgs.builder()        
+ *             .name(&#34;test-active-directory-full&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .domain(&#34;ad.internal&#34;)
  *             .dns(&#34;172.30.64.3&#34;)

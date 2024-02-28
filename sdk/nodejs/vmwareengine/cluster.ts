@@ -21,12 +21,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const cluster_nw = new gcp.vmwareengine.Network("cluster-nw", {
+ *     name: "pc-nw",
  *     type: "STANDARD",
  *     location: "global",
  *     description: "PC network description.",
  * });
  * const cluster_pc = new gcp.vmwareengine.PrivateCloud("cluster-pc", {
  *     location: "us-west1-a",
+ *     name: "sample-pc",
  *     description: "Sample test PC.",
  *     networkConfig: {
  *         managementCidr: "192.168.30.0/24",
@@ -41,6 +43,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const vmw_engine_ext_cluster = new gcp.vmwareengine.Cluster("vmw-engine-ext-cluster", {
+ *     name: "ext-cluster",
  *     parent: cluster_pc.id,
  *     nodeTypeConfigs: [{
  *         nodeTypeId: "standard-72",
@@ -55,12 +58,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const cluster_nw = new gcp.vmwareengine.Network("cluster-nw", {
+ *     name: "pc-nw",
  *     type: "STANDARD",
  *     location: "global",
  *     description: "PC network description.",
  * });
  * const cluster_pc = new gcp.vmwareengine.PrivateCloud("cluster-pc", {
  *     location: "us-west1-a",
+ *     name: "sample-pc",
  *     description: "Sample test PC.",
  *     networkConfig: {
  *         managementCidr: "192.168.30.0/24",
@@ -76,6 +81,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const vmw_ext_cluster = new gcp.vmwareengine.Cluster("vmw-ext-cluster", {
+ *     name: "ext-cluster",
  *     parent: cluster_pc.id,
  *     nodeTypeConfigs: [{
  *         nodeTypeId: "standard-72",

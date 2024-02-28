@@ -35,6 +35,7 @@ import * as utilities from "../utilities";
  * });
  * const database = new gcp.spanner.Database("database", {
  *     instance: main.name,
+ *     name: "my-database",
  *     versionRetentionPeriod: "3d",
  *     ddls: [
  *         "CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)",

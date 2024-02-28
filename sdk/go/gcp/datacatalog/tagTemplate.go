@@ -36,27 +36,29 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := datacatalog.NewTagTemplate(ctx, "basicTagTemplate", &datacatalog.TagTemplateArgs{
-//				DisplayName: pulumi.String("Demo Tag Template"),
+//			_, err := datacatalog.NewTagTemplate(ctx, "basic_tag_template", &datacatalog.TagTemplateArgs{
+//				TagTemplateId: pulumi.String("my_template"),
+//				Region:        pulumi.String("us-central1"),
+//				DisplayName:   pulumi.String("Demo Tag Template"),
 //				Fields: datacatalog.TagTemplateFieldArray{
 //					&datacatalog.TagTemplateFieldArgs{
-//						DisplayName: pulumi.String("Source of data asset"),
 //						FieldId:     pulumi.String("source"),
-//						IsRequired:  pulumi.Bool(true),
+//						DisplayName: pulumi.String("Source of data asset"),
 //						Type: &datacatalog.TagTemplateFieldTypeArgs{
 //							PrimitiveType: pulumi.String("STRING"),
 //						},
+//						IsRequired: pulumi.Bool(true),
 //					},
 //					&datacatalog.TagTemplateFieldArgs{
-//						DisplayName: pulumi.String("Number of rows in the data asset"),
 //						FieldId:     pulumi.String("num_rows"),
+//						DisplayName: pulumi.String("Number of rows in the data asset"),
 //						Type: &datacatalog.TagTemplateFieldTypeArgs{
 //							PrimitiveType: pulumi.String("DOUBLE"),
 //						},
 //					},
 //					&datacatalog.TagTemplateFieldArgs{
-//						DisplayName: pulumi.String("PII type"),
 //						FieldId:     pulumi.String("pii_type"),
+//						DisplayName: pulumi.String("PII type"),
 //						Type: &datacatalog.TagTemplateFieldTypeArgs{
 //							EnumType: &datacatalog.TagTemplateFieldTypeEnumTypeArgs{
 //								AllowedValues: datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArray{
@@ -74,9 +76,7 @@ import (
 //						},
 //					},
 //				},
-//				ForceDelete:   pulumi.Bool(false),
-//				Region:        pulumi.String("us-central1"),
-//				TagTemplateId: pulumi.String("my_template"),
+//				ForceDelete: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err

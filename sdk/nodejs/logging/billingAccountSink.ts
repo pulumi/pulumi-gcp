@@ -22,8 +22,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const log_bucket = new gcp.storage.Bucket("log-bucket", {location: "US"});
+ * const log_bucket = new gcp.storage.Bucket("log-bucket", {
+ *     name: "billing-logging-bucket",
+ *     location: "US",
+ * });
  * const my_sink = new gcp.logging.BillingAccountSink("my-sink", {
+ *     name: "my-sink",
  *     description: "some explanation on what this is",
  *     billingAccount: "ABCDEF-012345-GHIJKL",
  *     destination: pulumi.interpolate`storage.googleapis.com/${log_bucket.name}`,

@@ -27,14 +27,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewInstanceSettings(ctx, "gceInstanceSettings", &compute.InstanceSettingsArgs{
+//			_, err := compute.NewInstanceSettings(ctx, "gce_instance_settings", &compute.InstanceSettingsArgs{
 //				Zone: pulumi.String("us-east7-b"),
 //				Metadata: &compute.InstanceSettingsMetadataArgs{
 //					Items: pulumi.StringMap{
 //						"foo": pulumi.String("baz"),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

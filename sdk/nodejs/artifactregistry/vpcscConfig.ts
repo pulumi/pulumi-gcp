@@ -15,8 +15,6 @@ import * as utilities from "../utilities";
  * const my_config = new gcp.artifactregistry.VpcscConfig("my-config", {
  *     location: "us-central1",
  *     vpcscPolicy: "ALLOW",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

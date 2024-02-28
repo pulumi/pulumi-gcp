@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
  * import com.pulumi.gcp.pubsub.Subscription;
  * import com.pulumi.gcp.pubsub.SubscriptionArgs;
  * import com.pulumi.gcp.pubsub.inputs.SubscriptionPushConfigArgs;
@@ -62,10 +63,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleTopic = new Topic(&#34;exampleTopic&#34;);
+ *         var example = new Topic(&#34;example&#34;, TopicArgs.builder()        
+ *             .name(&#34;example-topic&#34;)
+ *             .build());
  * 
  *         var exampleSubscription = new Subscription(&#34;exampleSubscription&#34;, SubscriptionArgs.builder()        
- *             .topic(exampleTopic.id())
+ *             .name(&#34;example-subscription&#34;)
+ *             .topic(example.id())
  *             .ackDeadlineSeconds(20)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .pushConfig(SubscriptionPushConfigArgs.builder()
@@ -85,6 +89,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
  * import com.pulumi.gcp.pubsub.Subscription;
  * import com.pulumi.gcp.pubsub.SubscriptionArgs;
  * import com.pulumi.gcp.pubsub.inputs.SubscriptionExpirationPolicyArgs;
@@ -102,10 +107,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleTopic = new Topic(&#34;exampleTopic&#34;);
+ *         var example = new Topic(&#34;example&#34;, TopicArgs.builder()        
+ *             .name(&#34;example-topic&#34;)
+ *             .build());
  * 
  *         var exampleSubscription = new Subscription(&#34;exampleSubscription&#34;, SubscriptionArgs.builder()        
- *             .topic(exampleTopic.id())
+ *             .name(&#34;example-subscription&#34;)
+ *             .topic(example.id())
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .messageRetentionDuration(&#34;1200s&#34;)
  *             .retainAckedMessages(true)
@@ -130,6 +138,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
  * import com.pulumi.gcp.pubsub.Subscription;
  * import com.pulumi.gcp.pubsub.SubscriptionArgs;
  * import com.pulumi.gcp.pubsub.inputs.SubscriptionDeadLetterPolicyArgs;
@@ -146,12 +155,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleTopic = new Topic(&#34;exampleTopic&#34;);
+ *         var example = new Topic(&#34;example&#34;, TopicArgs.builder()        
+ *             .name(&#34;example-topic&#34;)
+ *             .build());
  * 
- *         var exampleDeadLetter = new Topic(&#34;exampleDeadLetter&#34;);
+ *         var exampleDeadLetter = new Topic(&#34;exampleDeadLetter&#34;, TopicArgs.builder()        
+ *             .name(&#34;example-topic-dead-letter&#34;)
+ *             .build());
  * 
  *         var exampleSubscription = new Subscription(&#34;exampleSubscription&#34;, SubscriptionArgs.builder()        
- *             .topic(exampleTopic.id())
+ *             .name(&#34;example-subscription&#34;)
+ *             .topic(example.id())
  *             .deadLetterPolicy(SubscriptionDeadLetterPolicyArgs.builder()
  *                 .deadLetterTopic(exampleDeadLetter.id())
  *                 .maxDeliveryAttempts(10)
@@ -169,10 +183,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.pubsub.Topic;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.projects.IAMMember;
- * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
  * import com.pulumi.gcp.bigquery.Dataset;
  * import com.pulumi.gcp.bigquery.DatasetArgs;
  * import com.pulumi.gcp.bigquery.Table;
@@ -180,7 +191,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.pubsub.Subscription;
  * import com.pulumi.gcp.pubsub.SubscriptionArgs;
  * import com.pulumi.gcp.pubsub.inputs.SubscriptionBigqueryConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -194,7 +208,42 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleTopic = new Topic(&#34;exampleTopic&#34;);
+ *         var example = new Topic(&#34;example&#34;, TopicArgs.builder()        
+ *             .name(&#34;example-topic&#34;)
+ *             .build());
+ * 
+ *         var test = new Dataset(&#34;test&#34;, DatasetArgs.builder()        
+ *             .datasetId(&#34;example_dataset&#34;)
+ *             .build());
+ * 
+ *         var testTable = new Table(&#34;testTable&#34;, TableArgs.builder()        
+ *             .deletionProtection(false)
+ *             .tableId(&#34;example_table&#34;)
+ *             .datasetId(test.datasetId())
+ *             .schema(&#34;&#34;&#34;
+ * [
+ *   {
+ *     &#34;name&#34;: &#34;data&#34;,
+ *     &#34;type&#34;: &#34;STRING&#34;,
+ *     &#34;mode&#34;: &#34;NULLABLE&#34;,
+ *     &#34;description&#34;: &#34;The data&#34;
+ *   }
+ * ]
+ *             &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *         var exampleSubscription = new Subscription(&#34;exampleSubscription&#34;, SubscriptionArgs.builder()        
+ *             .name(&#34;example-subscription&#34;)
+ *             .topic(example.id())
+ *             .bigqueryConfig(SubscriptionBigqueryConfigArgs.builder()
+ *                 .table(Output.tuple(testTable.project(), testTable.datasetId(), testTable.tableId()).applyValue(values -&gt; {
+ *                     var project = values.t1;
+ *                     var datasetId = values.t2;
+ *                     var tableId = values.t3;
+ *                     return String.format(&#34;%s.%s.%s&#34;, project,datasetId,tableId);
+ *                 }))
+ *                 .build())
+ *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
@@ -209,42 +258,6 @@ import javax.annotation.Nullable;
  *             .role(&#34;roles/bigquery.dataEditor&#34;)
  *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-pubsub.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
  *             .build());
- * 
- *         var testDataset = new Dataset(&#34;testDataset&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;example_dataset&#34;)
- *             .build());
- * 
- *         var testTable = new Table(&#34;testTable&#34;, TableArgs.builder()        
- *             .deletionProtection(false)
- *             .tableId(&#34;example_table&#34;)
- *             .datasetId(testDataset.datasetId())
- *             .schema(&#34;&#34;&#34;
- * [
- *   {
- *     &#34;name&#34;: &#34;data&#34;,
- *     &#34;type&#34;: &#34;STRING&#34;,
- *     &#34;mode&#34;: &#34;NULLABLE&#34;,
- *     &#34;description&#34;: &#34;The data&#34;
- *   }
- * ]
- *             &#34;&#34;&#34;)
- *             .build());
- * 
- *         var exampleSubscription = new Subscription(&#34;exampleSubscription&#34;, SubscriptionArgs.builder()        
- *             .topic(exampleTopic.id())
- *             .bigqueryConfig(SubscriptionBigqueryConfigArgs.builder()
- *                 .table(Output.tuple(testTable.project(), testTable.datasetId(), testTable.tableId()).applyValue(values -&gt; {
- *                     var project = values.t1;
- *                     var datasetId = values.t2;
- *                     var tableId = values.t3;
- *                     return String.format(&#34;%s.%s.%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult),datasetId,tableId);
- *                 }))
- *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
- *                     viewer,
- *                     editor)
- *                 .build());
  * 
  *     }
  * }
@@ -257,10 +270,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.pubsub.Topic;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.projects.IAMMember;
- * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
  * import com.pulumi.gcp.bigquery.Dataset;
  * import com.pulumi.gcp.bigquery.DatasetArgs;
  * import com.pulumi.gcp.bigquery.Table;
@@ -268,7 +278,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.pubsub.Subscription;
  * import com.pulumi.gcp.pubsub.SubscriptionArgs;
  * import com.pulumi.gcp.pubsub.inputs.SubscriptionBigqueryConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -282,7 +295,43 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleTopic = new Topic(&#34;exampleTopic&#34;);
+ *         var example = new Topic(&#34;example&#34;, TopicArgs.builder()        
+ *             .name(&#34;example-topic&#34;)
+ *             .build());
+ * 
+ *         var test = new Dataset(&#34;test&#34;, DatasetArgs.builder()        
+ *             .datasetId(&#34;example_dataset&#34;)
+ *             .build());
+ * 
+ *         var testTable = new Table(&#34;testTable&#34;, TableArgs.builder()        
+ *             .deletionProtection(false)
+ *             .tableId(&#34;example_table&#34;)
+ *             .datasetId(test.datasetId())
+ *             .schema(&#34;&#34;&#34;
+ * [
+ *   {
+ *     &#34;name&#34;: &#34;data&#34;,
+ *     &#34;type&#34;: &#34;STRING&#34;,
+ *     &#34;mode&#34;: &#34;NULLABLE&#34;,
+ *     &#34;description&#34;: &#34;The data&#34;
+ *   }
+ * ]
+ *             &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *         var exampleSubscription = new Subscription(&#34;exampleSubscription&#34;, SubscriptionArgs.builder()        
+ *             .name(&#34;example-subscription&#34;)
+ *             .topic(example.id())
+ *             .bigqueryConfig(SubscriptionBigqueryConfigArgs.builder()
+ *                 .table(Output.tuple(testTable.project(), testTable.datasetId(), testTable.tableId()).applyValue(values -&gt; {
+ *                     var project = values.t1;
+ *                     var datasetId = values.t2;
+ *                     var tableId = values.t3;
+ *                     return String.format(&#34;%s.%s.%s&#34;, project,datasetId,tableId);
+ *                 }))
+ *                 .useTableSchema(true)
+ *                 .build())
+ *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
@@ -297,43 +346,6 @@ import javax.annotation.Nullable;
  *             .role(&#34;roles/bigquery.dataEditor&#34;)
  *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-pubsub.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
  *             .build());
- * 
- *         var testDataset = new Dataset(&#34;testDataset&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;example_dataset&#34;)
- *             .build());
- * 
- *         var testTable = new Table(&#34;testTable&#34;, TableArgs.builder()        
- *             .deletionProtection(false)
- *             .tableId(&#34;example_table&#34;)
- *             .datasetId(testDataset.datasetId())
- *             .schema(&#34;&#34;&#34;
- * [
- *   {
- *     &#34;name&#34;: &#34;data&#34;,
- *     &#34;type&#34;: &#34;STRING&#34;,
- *     &#34;mode&#34;: &#34;NULLABLE&#34;,
- *     &#34;description&#34;: &#34;The data&#34;
- *   }
- * ]
- *             &#34;&#34;&#34;)
- *             .build());
- * 
- *         var exampleSubscription = new Subscription(&#34;exampleSubscription&#34;, SubscriptionArgs.builder()        
- *             .topic(exampleTopic.id())
- *             .bigqueryConfig(SubscriptionBigqueryConfigArgs.builder()
- *                 .table(Output.tuple(testTable.project(), testTable.datasetId(), testTable.tableId()).applyValue(values -&gt; {
- *                     var project = values.t1;
- *                     var datasetId = values.t2;
- *                     var tableId = values.t3;
- *                     return String.format(&#34;%s.%s.%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult),datasetId,tableId);
- *                 }))
- *                 .useTableSchema(true)
- *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
- *                     viewer,
- *                     editor)
- *                 .build());
  * 
  *     }
  * }

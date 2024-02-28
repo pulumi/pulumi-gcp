@@ -26,7 +26,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * ### Dlp Inspect Template Basic
- * 
  * ```java
  * package generated_program;
  * 
@@ -51,6 +50,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basic = new PreventionInspectTemplate(&#34;basic&#34;, PreventionInspectTemplateArgs.builder()        
+ *             .parent(&#34;projects/my-project-name&#34;)
  *             .description(&#34;My description&#34;)
  *             .displayName(&#34;display_name&#34;)
  *             .inspectConfig(PreventionInspectTemplateInspectConfigArgs.builder()
@@ -73,13 +73,6 @@ import javax.annotation.Nullable;
  *                     PreventionInspectTemplateInspectConfigInfoTypeArgs.builder()
  *                         .name(&#34;FIRST_NAME&#34;)
  *                         .build())
- *                 .limits(PreventionInspectTemplateInspectConfigLimitsArgs.builder()
- *                     .maxFindingsPerInfoType(                    
- *                         %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
- *                         %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .maxFindingsPerItem(10)
- *                     .maxFindingsPerRequest(50)
- *                     .build())
  *                 .minLikelihood(&#34;UNLIKELY&#34;)
  *                 .ruleSets(                
  *                     PreventionInspectTemplateInspectConfigRuleSetArgs.builder()
@@ -88,10 +81,10 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .rules(PreventionInspectTemplateInspectConfigRuleSetRuleArgs.builder()
  *                             .exclusionRule(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs.builder()
- *                                 .matchingType(&#34;MATCHING_TYPE_FULL_MATCH&#34;)
  *                                 .regex(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs.builder()
  *                                     .pattern(&#34;.+@example.com&#34;)
  *                                     .build())
+ *                                 .matchingType(&#34;MATCHING_TYPE_FULL_MATCH&#34;)
  *                                 .build())
  *                             .build())
  *                         .build(),
@@ -132,17 +125,33 @@ import javax.annotation.Nullable;
  *                                 .hotwordRegex(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs.builder()
  *                                     .pattern(&#34;patient&#34;)
  *                                     .build())
- *                                 .likelihoodAdjustment(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs.builder()
- *                                     .fixedLikelihood(&#34;VERY_LIKELY&#34;)
- *                                     .build())
  *                                 .proximity(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs.builder()
  *                                     .windowBefore(50)
+ *                                     .build())
+ *                                 .likelihoodAdjustment(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs.builder()
+ *                                     .fixedLikelihood(&#34;VERY_LIKELY&#34;)
  *                                     .build())
  *                                 .build())
  *                             .build())
  *                         .build())
+ *                 .limits(PreventionInspectTemplateInspectConfigLimitsArgs.builder()
+ *                     .maxFindingsPerItem(10)
+ *                     .maxFindingsPerRequest(50)
+ *                     .maxFindingsPerInfoTypes(                    
+ *                         PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs.builder()
+ *                             .maxFindings(&#34;75&#34;)
+ *                             .infoType(PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs.builder()
+ *                                 .name(&#34;PERSON_NAME&#34;)
+ *                                 .build())
+ *                             .build(),
+ *                         PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs.builder()
+ *                             .maxFindings(&#34;80&#34;)
+ *                             .infoType(PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs.builder()
+ *                                 .name(&#34;LAST_NAME&#34;)
+ *                                 .build())
+ *                             .build())
+ *                     .build())
  *                 .build())
- *             .parent(&#34;projects/my-project-name&#34;)
  *             .build());
  * 
  *     }
@@ -173,6 +182,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var custom = new PreventionInspectTemplate(&#34;custom&#34;, PreventionInspectTemplateArgs.builder()        
+ *             .parent(&#34;projects/my-project-name&#34;)
  *             .description(&#34;My description&#34;)
  *             .displayName(&#34;display_name&#34;)
  *             .inspectConfig(PreventionInspectTemplateInspectConfigArgs.builder()
@@ -188,10 +198,6 @@ import javax.annotation.Nullable;
  *                 .infoTypes(PreventionInspectTemplateInspectConfigInfoTypeArgs.builder()
  *                     .name(&#34;EMAIL_ADDRESS&#34;)
  *                     .build())
- *                 .limits(PreventionInspectTemplateInspectConfigLimitsArgs.builder()
- *                     .maxFindingsPerItem(10)
- *                     .maxFindingsPerRequest(50)
- *                     .build())
  *                 .minLikelihood(&#34;UNLIKELY&#34;)
  *                 .ruleSets(                
  *                     PreventionInspectTemplateInspectConfigRuleSetArgs.builder()
@@ -200,10 +206,10 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .rules(PreventionInspectTemplateInspectConfigRuleSetRuleArgs.builder()
  *                             .exclusionRule(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs.builder()
- *                                 .matchingType(&#34;MATCHING_TYPE_FULL_MATCH&#34;)
  *                                 .regex(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs.builder()
  *                                     .pattern(&#34;.+@example.com&#34;)
  *                                     .build())
+ *                                 .matchingType(&#34;MATCHING_TYPE_FULL_MATCH&#34;)
  *                                 .build())
  *                             .build())
  *                         .build(),
@@ -216,17 +222,20 @@ import javax.annotation.Nullable;
  *                                 .hotwordRegex(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs.builder()
  *                                     .pattern(&#34;example*&#34;)
  *                                     .build())
- *                                 .likelihoodAdjustment(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs.builder()
- *                                     .fixedLikelihood(&#34;VERY_LIKELY&#34;)
- *                                     .build())
  *                                 .proximity(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs.builder()
  *                                     .windowBefore(50)
+ *                                     .build())
+ *                                 .likelihoodAdjustment(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs.builder()
+ *                                     .fixedLikelihood(&#34;VERY_LIKELY&#34;)
  *                                     .build())
  *                                 .build())
  *                             .build())
  *                         .build())
+ *                 .limits(PreventionInspectTemplateInspectConfigLimitsArgs.builder()
+ *                     .maxFindingsPerItem(10)
+ *                     .maxFindingsPerRequest(50)
+ *                     .build())
  *                 .build())
- *             .parent(&#34;projects/my-project-name&#34;)
  *             .build());
  * 
  *     }
@@ -257,6 +266,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var customTypeSurrogate = new PreventionInspectTemplate(&#34;customTypeSurrogate&#34;, PreventionInspectTemplateArgs.builder()        
+ *             .parent(&#34;projects/my-project-name&#34;)
  *             .description(&#34;My description&#34;)
  *             .displayName(&#34;display_name&#34;)
  *             .inspectConfig(PreventionInspectTemplateInspectConfigArgs.builder()
@@ -270,10 +280,6 @@ import javax.annotation.Nullable;
  *                 .infoTypes(PreventionInspectTemplateInspectConfigInfoTypeArgs.builder()
  *                     .name(&#34;EMAIL_ADDRESS&#34;)
  *                     .build())
- *                 .limits(PreventionInspectTemplateInspectConfigLimitsArgs.builder()
- *                     .maxFindingsPerItem(10)
- *                     .maxFindingsPerRequest(50)
- *                     .build())
  *                 .minLikelihood(&#34;UNLIKELY&#34;)
  *                 .ruleSets(                
  *                     PreventionInspectTemplateInspectConfigRuleSetArgs.builder()
@@ -282,10 +288,10 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .rules(PreventionInspectTemplateInspectConfigRuleSetRuleArgs.builder()
  *                             .exclusionRule(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs.builder()
- *                                 .matchingType(&#34;MATCHING_TYPE_FULL_MATCH&#34;)
  *                                 .regex(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs.builder()
  *                                     .pattern(&#34;.+@example.com&#34;)
  *                                     .build())
+ *                                 .matchingType(&#34;MATCHING_TYPE_FULL_MATCH&#34;)
  *                                 .build())
  *                             .build())
  *                         .build(),
@@ -298,17 +304,20 @@ import javax.annotation.Nullable;
  *                                 .hotwordRegex(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs.builder()
  *                                     .pattern(&#34;example*&#34;)
  *                                     .build())
- *                                 .likelihoodAdjustment(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs.builder()
- *                                     .fixedLikelihood(&#34;VERY_LIKELY&#34;)
- *                                     .build())
  *                                 .proximity(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs.builder()
  *                                     .windowBefore(50)
+ *                                     .build())
+ *                                 .likelihoodAdjustment(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs.builder()
+ *                                     .fixedLikelihood(&#34;VERY_LIKELY&#34;)
  *                                     .build())
  *                                 .build())
  *                             .build())
  *                         .build())
+ *                 .limits(PreventionInspectTemplateInspectConfigLimitsArgs.builder()
+ *                     .maxFindingsPerItem(10)
+ *                     .maxFindingsPerRequest(50)
+ *                     .build())
  *                 .build())
- *             .parent(&#34;projects/my-project-name&#34;)
  *             .build());
  * 
  *     }

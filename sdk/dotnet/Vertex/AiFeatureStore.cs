@@ -31,20 +31,21 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new()
     ///     {
+    ///         Name = "terraform",
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Region = "us-central1",
+    ///         OnlineServingConfig = new Gcp.Vertex.Inputs.AiFeatureStoreOnlineServingConfigArgs
+    ///         {
+    ///             FixedNodeCount = 2,
+    ///         },
     ///         EncryptionSpec = new Gcp.Vertex.Inputs.AiFeatureStoreEncryptionSpecArgs
     ///         {
     ///             KmsKeyName = "kms-name",
     ///         },
     ///         ForceDestroy = true,
-    ///         Labels = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
-    ///         OnlineServingConfig = new Gcp.Vertex.Inputs.AiFeatureStoreOnlineServingConfigArgs
-    ///         {
-    ///             FixedNodeCount = 2,
-    ///         },
-    ///         Region = "us-central1",
     ///     });
     /// 
     /// });
@@ -61,6 +62,7 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new()
     ///     {
+    ///         Name = "terraform2",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -76,9 +78,6 @@ namespace Pulumi.Gcp.Vertex
     ///         },
     ///         OnlineStorageTtlDays = 30,
     ///         ForceDestroy = true,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -95,24 +94,25 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new()
     ///     {
+    ///         Name = "terraform3",
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Region = "us-central1",
+    ///         OnlineServingConfig = new Gcp.Vertex.Inputs.AiFeatureStoreOnlineServingConfigArgs
+    ///         {
+    ///             Scaling = new Gcp.Vertex.Inputs.AiFeatureStoreOnlineServingConfigScalingArgs
+    ///             {
+    ///                 MinNodeCount = 2,
+    ///                 MaxNodeCount = 10,
+    ///             },
+    ///         },
     ///         EncryptionSpec = new Gcp.Vertex.Inputs.AiFeatureStoreEncryptionSpecArgs
     ///         {
     ///             KmsKeyName = "kms-name",
     ///         },
     ///         ForceDestroy = true,
-    ///         Labels = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
-    ///         OnlineServingConfig = new Gcp.Vertex.Inputs.AiFeatureStoreOnlineServingConfigArgs
-    ///         {
-    ///             Scaling = new Gcp.Vertex.Inputs.AiFeatureStoreOnlineServingConfigScalingArgs
-    ///             {
-    ///                 MaxNodeCount = 10,
-    ///                 MinNodeCount = 2,
-    ///             },
-    ///         },
-    ///         Region = "us-central1",
     ///     });
     /// 
     /// });

@@ -9,6 +9,92 @@ import * as utilities from "../utilities";
 /**
  * Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
  *
+ * ## Example Usage
+ *
+ * Example creating a SQL User.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
+ *
+ * const dbNameSuffix = new random.RandomId("db_name_suffix", {byteLength: 4});
+ * const main = new gcp.sql.DatabaseInstance("main", {
+ *     name: pulumi.interpolate`main-instance-${dbNameSuffix.hex}`,
+ *     databaseVersion: "MYSQL_5_7",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *     },
+ * });
+ * const users = new gcp.sql.User("users", {
+ *     name: "me",
+ *     instance: main.name,
+ *     host: "me.com",
+ *     password: "changeme",
+ * });
+ * ```
+ *
+ * Example using [Cloud SQL IAM database authentication](https://cloud.google.com/sql/docs/mysql/authentication).
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
+ *
+ * const dbNameSuffix = new random.RandomId("db_name_suffix", {byteLength: 4});
+ * const main = new gcp.sql.DatabaseInstance("main", {
+ *     name: pulumi.interpolate`main-instance-${dbNameSuffix.hex}`,
+ *     databaseVersion: "POSTGRES_15",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *         databaseFlags: [{
+ *             name: "cloudsql.iam_authentication",
+ *             value: "on",
+ *         }],
+ *     },
+ * });
+ * const iamUser = new gcp.sql.User("iam_user", {
+ *     name: "me@example.com",
+ *     instance: main.name,
+ *     type: "CLOUD_IAM_USER",
+ * });
+ * const iamServiceAccountUser = new gcp.sql.User("iam_service_account_user", {
+ *     name: std.trimsuffix({
+ *         input: serviceAccount.email,
+ *         suffix: ".gserviceaccount.com",
+ *     }).then(invoke => invoke.result),
+ *     instance: main.name,
+ *     type: "CLOUD_IAM_SERVICE_ACCOUNT",
+ * });
+ * ```
+ *
+ * Example using [Cloud SQL IAM Group authentication](https://cloud.google.com/sql/docs/mysql/iam-authentication#iam-group-auth).
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
+ *
+ * const dbNameSuffix = new random.RandomId("db_name_suffix", {byteLength: 4});
+ * const main = new gcp.sql.DatabaseInstance("main", {
+ *     name: pulumi.interpolate`main-instance-${dbNameSuffix.hex}`,
+ *     databaseVersion: "MYSQL_8_0",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *         databaseFlags: [{
+ *             name: "cloudsql.iam_authentication",
+ *             value: "on",
+ *         }],
+ *     },
+ * });
+ * const iamGroupUser = new gcp.sql.User("iam_group_user", {
+ *     name: "iam_group@example.com",
+ *     instance: main.name,
+ *     type: "CLOUD_IAM_GROUP",
+ * });
+ * ```
+ *
  * ## Import
  *
  * SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.

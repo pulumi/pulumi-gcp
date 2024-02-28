@@ -40,11 +40,11 @@ import * as utilities from "../utilities";
  *
  * const basic = new gcp.monitoring.NotificationChannel("basic", {
  *     displayName: "Test Notification Channel",
- *     forceDelete: false,
+ *     type: "email",
  *     labels: {
  *         email_address: "fake_email@blahblah.com",
  *     },
- *     type: "email",
+ *     forceDelete: false,
  * });
  * ```
  * ### Notification Channel Sensitive
@@ -55,13 +55,13 @@ import * as utilities from "../utilities";
  *
  * const _default = new gcp.monitoring.NotificationChannel("default", {
  *     displayName: "Test Slack Channel",
+ *     type: "slack",
  *     labels: {
  *         channel_name: "#foobar",
  *     },
  *     sensitiveLabels: {
  *         authToken: "one",
  *     },
- *     type: "slack",
  * });
  * ```
  *

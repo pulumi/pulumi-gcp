@@ -105,13 +105,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role(&#34;roles/editor&#34;)
+ *                 .members(&#34;user:jane@example.com&#34;)
  *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+ *                     .title(&#34;expires_after_2019_12_31&#34;)
  *                     .description(&#34;Expiring at midnight of 2019-12-31&#34;)
  *                     .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
- *                     .title(&#34;expires_after_2019_12_31&#34;)
  *                     .build())
- *                 .members(&#34;user:jane@example.com&#34;)
- *                 .role(&#34;roles/editor&#34;)
  *                 .build())
  *             .build());
  * 
@@ -149,9 +149,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var organization = new IAMBinding(&#34;organization&#34;, IAMBindingArgs.builder()        
- *             .members(&#34;user:jane@example.com&#34;)
  *             .orgId(&#34;1234567890&#34;)
  *             .role(&#34;roles/editor&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
  * 
  *     }
@@ -182,14 +182,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var organization = new IAMBinding(&#34;organization&#34;, IAMBindingArgs.builder()        
- *             .condition(IAMBindingConditionArgs.builder()
- *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
- *                 .title(&#34;expires_after_2019_12_31&#34;)
- *                 .build())
- *             .members(&#34;user:jane@example.com&#34;)
  *             .orgId(&#34;1234567890&#34;)
  *             .role(&#34;roles/editor&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
+ *             .condition(IAMBindingConditionArgs.builder()
+ *                 .title(&#34;expires_after_2019_12_31&#34;)
+ *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
+ *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -219,9 +219,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var organization = new IAMMember(&#34;organization&#34;, IAMMemberArgs.builder()        
- *             .member(&#34;user:jane@example.com&#34;)
  *             .orgId(&#34;1234567890&#34;)
  *             .role(&#34;roles/editor&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
  *             .build());
  * 
  *     }
@@ -252,14 +252,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var organization = new IAMMember(&#34;organization&#34;, IAMMemberArgs.builder()        
- *             .condition(IAMMemberConditionArgs.builder()
- *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
- *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
- *                 .title(&#34;expires_after_2019_12_31&#34;)
- *                 .build())
- *             .member(&#34;user:jane@example.com&#34;)
  *             .orgId(&#34;1234567890&#34;)
  *             .role(&#34;roles/editor&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
+ *             .condition(IAMMemberConditionArgs.builder()
+ *                 .title(&#34;expires_after_2019_12_31&#34;)
+ *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
+ *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -290,16 +290,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var organization = new IamAuditConfig(&#34;organization&#34;, IamAuditConfigArgs.builder()        
+ *             .orgId(&#34;1234567890&#34;)
+ *             .service(&#34;allServices&#34;)
  *             .auditLogConfigs(            
  *                 IamAuditConfigAuditLogConfigArgs.builder()
  *                     .logType(&#34;ADMIN_READ&#34;)
  *                     .build(),
  *                 IamAuditConfigAuditLogConfigArgs.builder()
- *                     .exemptedMembers(&#34;user:joebloggs@example.com&#34;)
  *                     .logType(&#34;DATA_READ&#34;)
+ *                     .exemptedMembers(&#34;user:joebloggs@example.com&#34;)
  *                     .build())
- *             .orgId(&#34;1234567890&#34;)
- *             .service(&#34;allServices&#34;)
  *             .build());
  * 
  *     }

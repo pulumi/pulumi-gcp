@@ -35,8 +35,8 @@ namespace Pulumi.Gcp.Monitoring
     /// {
     ///     var custom = new Gcp.Monitoring.CustomService("custom", new()
     ///     {
-    ///         DisplayName = "My Custom Service custom-srv",
     ///         ServiceId = "custom-srv",
+    ///         DisplayName = "My Custom Service custom-srv",
     ///         Telemetry = new Gcp.Monitoring.Inputs.CustomServiceTelemetryArgs
     ///         {
     ///             ResourceName = "//product.googleapis.com/foo/foo/services/test",

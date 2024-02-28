@@ -89,7 +89,7 @@ def get_tag_value_iam_policy(tag_value: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.tags.get_tag_value_iam_policy(tag_value=google_tags_tag_value["value"]["name"])
+    policy = gcp.tags.get_tag_value_iam_policy(tag_value=value["name"])
     ```
 
 
@@ -119,7 +119,7 @@ def get_tag_value_iam_policy_output(tag_value: Optional[pulumi.Input[str]] = Non
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.tags.get_tag_value_iam_policy(tag_value=google_tags_tag_value["value"]["name"])
+    policy = gcp.tags.get_tag_value_iam_policy(tag_value=value["name"])
     ```
 
 

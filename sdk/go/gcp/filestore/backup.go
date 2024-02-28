@@ -37,6 +37,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance, err := filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
+//				Name:     pulumi.String("tf-fs-inst"),
 //				Location: pulumi.String("us-central1-b"),
 //				Tier:     pulumi.String("BASIC_HDD"),
 //				FileShares: &filestore.InstanceFileSharesArgs{
@@ -57,6 +58,7 @@ import (
 //				return err
 //			}
 //			_, err = filestore.NewBackup(ctx, "backup", &filestore.BackupArgs{
+//				Name:            pulumi.String("tf-fs-bkup"),
 //				Location:        pulumi.String("us-central1"),
 //				Description:     pulumi.String("This is a filestore backup for the test instance"),
 //				SourceInstance:  instance.ID(),

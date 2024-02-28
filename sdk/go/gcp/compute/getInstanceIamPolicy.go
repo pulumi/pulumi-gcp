@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.GetInstanceIamPolicy(ctx, &compute.GetInstanceIamPolicyArgs{
-//				Project:      pulumi.StringRef(google_compute_instance.Default.Project),
-//				Zone:         pulumi.StringRef(google_compute_instance.Default.Zone),
-//				InstanceName: google_compute_instance.Default.Name,
+//				Project:      pulumi.StringRef(_default.Project),
+//				Zone:         pulumi.StringRef(_default.Zone),
+//				InstanceName: _default.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

@@ -33,11 +33,15 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleTopic = new Gcp.PubSub.Topic("exampleTopic");
-    /// 
-    ///     var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new()
+    ///     var example = new Gcp.PubSub.Topic("example", new()
     ///     {
-    ///         Topic = exampleTopic.Id,
+    ///         Name = "example-topic",
+    ///     });
+    /// 
+    ///     var exampleSubscription = new Gcp.PubSub.Subscription("example", new()
+    ///     {
+    ///         Name = "example-subscription",
+    ///         Topic = example.Id,
     ///         AckDeadlineSeconds = 20,
     ///         Labels = 
     ///         {
@@ -65,11 +69,15 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleTopic = new Gcp.PubSub.Topic("exampleTopic");
-    /// 
-    ///     var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new()
+    ///     var example = new Gcp.PubSub.Topic("example", new()
     ///     {
-    ///         Topic = exampleTopic.Id,
+    ///         Name = "example-topic",
+    ///     });
+    /// 
+    ///     var exampleSubscription = new Gcp.PubSub.Subscription("example", new()
+    ///     {
+    ///         Name = "example-subscription",
+    ///         Topic = example.Id,
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -100,13 +108,20 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleTopic = new Gcp.PubSub.Topic("exampleTopic");
-    /// 
-    ///     var exampleDeadLetter = new Gcp.PubSub.Topic("exampleDeadLetter");
-    /// 
-    ///     var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new()
+    ///     var example = new Gcp.PubSub.Topic("example", new()
     ///     {
-    ///         Topic = exampleTopic.Id,
+    ///         Name = "example-topic",
+    ///     });
+    /// 
+    ///     var exampleDeadLetter = new Gcp.PubSub.Topic("example_dead_letter", new()
+    ///     {
+    ///         Name = "example-topic-dead-letter",
+    ///     });
+    /// 
+    ///     var exampleSubscription = new Gcp.PubSub.Subscription("example", new()
+    ///     {
+    ///         Name = "example-subscription",
+    ///         Topic = example.Id,
     ///         DeadLetterPolicy = new Gcp.PubSub.Inputs.SubscriptionDeadLetterPolicyArgs
     ///         {
     ///             DeadLetterTopic = exampleDeadLetter.Id,
@@ -126,7 +141,47 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleTopic = new Gcp.PubSub.Topic("exampleTopic");
+    ///     var example = new Gcp.PubSub.Topic("example", new()
+    ///     {
+    ///         Name = "example-topic",
+    ///     });
+    /// 
+    ///     var test = new Gcp.BigQuery.Dataset("test", new()
+    ///     {
+    ///         DatasetId = "example_dataset",
+    ///     });
+    /// 
+    ///     var testTable = new Gcp.BigQuery.Table("test", new()
+    ///     {
+    ///         DeletionProtection = false,
+    ///         TableId = "example_table",
+    ///         DatasetId = test.DatasetId,
+    ///         Schema = @"[
+    ///   {
+    ///     ""name"": ""data"",
+    ///     ""type"": ""STRING"",
+    ///     ""mode"": ""NULLABLE"",
+    ///     ""description"": ""The data""
+    ///   }
+    /// ]
+    /// ",
+    ///     });
+    /// 
+    ///     var exampleSubscription = new Gcp.PubSub.Subscription("example", new()
+    ///     {
+    ///         Name = "example-subscription",
+    ///         Topic = example.Id,
+    ///         BigqueryConfig = new Gcp.PubSub.Inputs.SubscriptionBigqueryConfigArgs
+    ///         {
+    ///             Table = Output.Tuple(testTable.Project, testTable.DatasetId, testTable.TableId).Apply(values =&gt;
+    ///             {
+    ///                 var project = values.Item1;
+    ///                 var datasetId = values.Item2;
+    ///                 var tableId = values.Item3;
+    ///                 return $"{project}.{datasetId}.{tableId}";
+    ///             }),
+    ///         },
+    ///     });
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
@@ -142,49 +197,6 @@ namespace Pulumi.Gcp.PubSub
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///         Role = "roles/bigquery.dataEditor",
     ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-pubsub.iam.gserviceaccount.com",
-    ///     });
-    /// 
-    ///     var testDataset = new Gcp.BigQuery.Dataset("testDataset", new()
-    ///     {
-    ///         DatasetId = "example_dataset",
-    ///     });
-    /// 
-    ///     var testTable = new Gcp.BigQuery.Table("testTable", new()
-    ///     {
-    ///         DeletionProtection = false,
-    ///         TableId = "example_table",
-    ///         DatasetId = testDataset.DatasetId,
-    ///         Schema = @"[
-    ///   {
-    ///     ""name"": ""data"",
-    ///     ""type"": ""STRING"",
-    ///     ""mode"": ""NULLABLE"",
-    ///     ""description"": ""The data""
-    ///   }
-    /// ]
-    /// ",
-    ///     });
-    /// 
-    ///     var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new()
-    ///     {
-    ///         Topic = exampleTopic.Id,
-    ///         BigqueryConfig = new Gcp.PubSub.Inputs.SubscriptionBigqueryConfigArgs
-    ///         {
-    ///             Table = Output.Tuple(testTable.Project, testTable.DatasetId, testTable.TableId).Apply(values =&gt;
-    ///             {
-    ///                 var project = values.Item1;
-    ///                 var datasetId = values.Item2;
-    ///                 var tableId = values.Item3;
-    ///                 return $"{project}.{datasetId}.{tableId}";
-    ///             }),
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             viewer,
-    ///             editor,
-    ///         },
     ///     });
     /// 
     /// });
@@ -199,7 +211,48 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleTopic = new Gcp.PubSub.Topic("exampleTopic");
+    ///     var example = new Gcp.PubSub.Topic("example", new()
+    ///     {
+    ///         Name = "example-topic",
+    ///     });
+    /// 
+    ///     var test = new Gcp.BigQuery.Dataset("test", new()
+    ///     {
+    ///         DatasetId = "example_dataset",
+    ///     });
+    /// 
+    ///     var testTable = new Gcp.BigQuery.Table("test", new()
+    ///     {
+    ///         DeletionProtection = false,
+    ///         TableId = "example_table",
+    ///         DatasetId = test.DatasetId,
+    ///         Schema = @"[
+    ///   {
+    ///     ""name"": ""data"",
+    ///     ""type"": ""STRING"",
+    ///     ""mode"": ""NULLABLE"",
+    ///     ""description"": ""The data""
+    ///   }
+    /// ]
+    /// ",
+    ///     });
+    /// 
+    ///     var exampleSubscription = new Gcp.PubSub.Subscription("example", new()
+    ///     {
+    ///         Name = "example-subscription",
+    ///         Topic = example.Id,
+    ///         BigqueryConfig = new Gcp.PubSub.Inputs.SubscriptionBigqueryConfigArgs
+    ///         {
+    ///             Table = Output.Tuple(testTable.Project, testTable.DatasetId, testTable.TableId).Apply(values =&gt;
+    ///             {
+    ///                 var project = values.Item1;
+    ///                 var datasetId = values.Item2;
+    ///                 var tableId = values.Item3;
+    ///                 return $"{project}.{datasetId}.{tableId}";
+    ///             }),
+    ///             UseTableSchema = true,
+    ///         },
+    ///     });
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
@@ -215,50 +268,6 @@ namespace Pulumi.Gcp.PubSub
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///         Role = "roles/bigquery.dataEditor",
     ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-pubsub.iam.gserviceaccount.com",
-    ///     });
-    /// 
-    ///     var testDataset = new Gcp.BigQuery.Dataset("testDataset", new()
-    ///     {
-    ///         DatasetId = "example_dataset",
-    ///     });
-    /// 
-    ///     var testTable = new Gcp.BigQuery.Table("testTable", new()
-    ///     {
-    ///         DeletionProtection = false,
-    ///         TableId = "example_table",
-    ///         DatasetId = testDataset.DatasetId,
-    ///         Schema = @"[
-    ///   {
-    ///     ""name"": ""data"",
-    ///     ""type"": ""STRING"",
-    ///     ""mode"": ""NULLABLE"",
-    ///     ""description"": ""The data""
-    ///   }
-    /// ]
-    /// ",
-    ///     });
-    /// 
-    ///     var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new()
-    ///     {
-    ///         Topic = exampleTopic.Id,
-    ///         BigqueryConfig = new Gcp.PubSub.Inputs.SubscriptionBigqueryConfigArgs
-    ///         {
-    ///             Table = Output.Tuple(testTable.Project, testTable.DatasetId, testTable.TableId).Apply(values =&gt;
-    ///             {
-    ///                 var project = values.Item1;
-    ///                 var datasetId = values.Item2;
-    ///                 var tableId = values.Item3;
-    ///                 return $"{project}.{datasetId}.{tableId}";
-    ///             }),
-    ///             UseTableSchema = true,
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             viewer,
-    ///             editor,
-    ///         },
     ///     });
     /// 
     /// });

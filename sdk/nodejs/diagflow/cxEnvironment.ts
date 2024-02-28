@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  *         enableSpeechAdaptation: true,
  *     },
  * });
- * const version1 = new gcp.diagflow.CxVersion("version1", {
+ * const version1 = new gcp.diagflow.CxVersion("version_1", {
  *     parent: agent.startFlow,
  *     displayName: "1.0.0",
  *     description: "version 1.0.0",

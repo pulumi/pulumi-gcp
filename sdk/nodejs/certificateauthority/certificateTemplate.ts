@@ -13,6 +13,91 @@ import * as utilities from "../utilities";
  * * [Understanding Certificate Templates](https://cloud.google.com/certificate-authority-service/docs/certificate-template)
  * * [Common configurations and Certificate Profiles](https://cloud.google.com/certificate-authority-service/docs/certificate-profile)
  * ## Example Usage
+ * ### Basic_certificate_template
+ * An example of a basic privateca certificate template
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.certificateauthority.CertificateTemplate("primary", {
+ *     location: "us-west1",
+ *     name: "template",
+ *     description: "An updated sample certificate template",
+ *     identityConstraints: {
+ *         allowSubjectAltNamesPassthrough: true,
+ *         allowSubjectPassthrough: true,
+ *         celExpression: {
+ *             description: "Always true",
+ *             expression: "true",
+ *             location: "any.file.anywhere",
+ *             title: "Sample expression",
+ *         },
+ *     },
+ *     passthroughExtensions: {
+ *         additionalExtensions: [{
+ *             objectIdPaths: [
+ *                 1,
+ *                 6,
+ *             ],
+ *         }],
+ *         knownExtensions: ["EXTENDED_KEY_USAGE"],
+ *     },
+ *     predefinedValues: {
+ *         additionalExtensions: [{
+ *             objectId: {
+ *                 objectIdPaths: [
+ *                     1,
+ *                     6,
+ *                 ],
+ *             },
+ *             value: "c3RyaW5nCg==",
+ *             critical: true,
+ *         }],
+ *         aiaOcspServers: ["string"],
+ *         caOptions: {
+ *             isCa: false,
+ *             maxIssuerPathLength: 6,
+ *         },
+ *         keyUsage: {
+ *             baseKeyUsage: {
+ *                 certSign: false,
+ *                 contentCommitment: true,
+ *                 crlSign: false,
+ *                 dataEncipherment: true,
+ *                 decipherOnly: true,
+ *                 digitalSignature: true,
+ *                 encipherOnly: true,
+ *                 keyAgreement: true,
+ *                 keyEncipherment: true,
+ *             },
+ *             extendedKeyUsage: {
+ *                 clientAuth: true,
+ *                 codeSigning: true,
+ *                 emailProtection: true,
+ *                 ocspSigning: true,
+ *                 serverAuth: true,
+ *                 timeStamping: true,
+ *             },
+ *             unknownExtendedKeyUsages: [{
+ *                 objectIdPaths: [
+ *                     1,
+ *                     6,
+ *                 ],
+ *             }],
+ *         },
+ *         policyIds: [{
+ *             objectIdPaths: [
+ *                 1,
+ *                 6,
+ *             ],
+ *         }],
+ *     },
+ *     project: "my-project-name",
+ *     labels: {
+ *         "label-two": "value-two",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

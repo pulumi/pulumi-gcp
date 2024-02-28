@@ -53,9 +53,9 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     ///     var policy = new Gcp.BigQuery.IamPolicy("policy", new()
     ///     {
-    ///         Project = google_bigquery_table.Test.Project,
-    ///         DatasetId = google_bigquery_table.Test.Dataset_id,
-    ///         TableId = google_bigquery_table.Test.Table_id,
+    ///         Project = test.Project,
+    ///         DatasetId = test.DatasetId,
+    ///         TableId = test.TableId,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -95,9 +95,9 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     ///     var policy = new Gcp.BigQuery.IamPolicy("policy", new()
     ///     {
-    ///         Project = google_bigquery_table.Test.Project,
-    ///         DatasetId = google_bigquery_table.Test.Dataset_id,
-    ///         TableId = google_bigquery_table.Test.Table_id,
+    ///         Project = test.Project,
+    ///         DatasetId = test.DatasetId,
+    ///         TableId = test.TableId,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -115,9 +115,9 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var binding = new Gcp.BigQuery.IamBinding("binding", new()
     ///     {
-    ///         Project = google_bigquery_table.Test.Project,
-    ///         DatasetId = google_bigquery_table.Test.Dataset_id,
-    ///         TableId = google_bigquery_table.Test.Table_id,
+    ///         Project = test.Project,
+    ///         DatasetId = test.DatasetId,
+    ///         TableId = test.TableId,
     ///         Role = "roles/bigquery.dataOwner",
     ///         Members = new[]
     ///         {
@@ -140,9 +140,9 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var binding = new Gcp.BigQuery.IamBinding("binding", new()
     ///     {
-    ///         Project = google_bigquery_table.Test.Project,
-    ///         DatasetId = google_bigquery_table.Test.Dataset_id,
-    ///         TableId = google_bigquery_table.Test.Table_id,
+    ///         Project = test.Project,
+    ///         DatasetId = test.DatasetId,
+    ///         TableId = test.TableId,
     ///         Role = "roles/bigquery.dataOwner",
     ///         Members = new[]
     ///         {
@@ -170,9 +170,9 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var member = new Gcp.BigQuery.IamMember("member", new()
     ///     {
-    ///         Project = google_bigquery_table.Test.Project,
-    ///         DatasetId = google_bigquery_table.Test.Dataset_id,
-    ///         TableId = google_bigquery_table.Test.Table_id,
+    ///         Project = test.Project,
+    ///         DatasetId = test.DatasetId,
+    ///         TableId = test.TableId,
     ///         Role = "roles/bigquery.dataOwner",
     ///         Member = "user:jane@example.com",
     ///     });
@@ -192,9 +192,9 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var member = new Gcp.BigQuery.IamMember("member", new()
     ///     {
-    ///         Project = google_bigquery_table.Test.Project,
-    ///         DatasetId = google_bigquery_table.Test.Dataset_id,
-    ///         TableId = google_bigquery_table.Test.Table_id,
+    ///         Project = test.Project,
+    ///         DatasetId = test.DatasetId,
+    ///         TableId = test.TableId,
     ///         Role = "roles/bigquery.dataOwner",
     ///         Member = "user:jane@example.com",
     ///         Condition = new Gcp.BigQuery.Inputs.IamMemberConditionArgs

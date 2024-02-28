@@ -632,9 +632,10 @@ class CxAgent(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         bucket = gcp.storage.Bucket("bucket",
+            name="dialogflowcx-bucket",
             location="US",
             uniform_bucket_level_access=True)
-        full_agent = gcp.diagflow.CxAgent("fullAgent",
+        full_agent = gcp.diagflow.CxAgent("full_agent",
             display_name="dialogflowcx-agent",
             location="global",
             default_language_code="en",
@@ -766,9 +767,10 @@ class CxAgent(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         bucket = gcp.storage.Bucket("bucket",
+            name="dialogflowcx-bucket",
             location="US",
             uniform_bucket_level_access=True)
-        full_agent = gcp.diagflow.CxAgent("fullAgent",
+        full_agent = gcp.diagflow.CxAgent("full_agent",
             display_name="dialogflowcx-agent",
             location="global",
             default_language_code="en",

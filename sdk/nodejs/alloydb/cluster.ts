@@ -26,8 +26,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
- * const defaultCluster = new gcp.alloydb.Cluster("defaultCluster", {
+ * const defaultNetwork = new gcp.compute.Network("default", {name: "alloydb-cluster"});
+ * const _default = new gcp.alloydb.Cluster("default", {
  *     clusterId: "alloydb-cluster",
  *     location: "us-central1",
  *     network: defaultNetwork.id,
@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const _default = new gcp.compute.Network("default", {});
+ * const _default = new gcp.compute.Network("default", {name: "alloydb-cluster-full"});
  * const full = new gcp.alloydb.Cluster("full", {
  *     clusterId: "alloydb-cluster-full",
  *     location: "us-central1",
@@ -89,7 +89,7 @@ import * as utilities from "../utilities";
  * const default = gcp.compute.getNetwork({
  *     name: "alloydb-network",
  * });
- * const sourceCluster = new gcp.alloydb.Cluster("sourceCluster", {
+ * const source = new gcp.alloydb.Cluster("source", {
  *     clusterId: "alloydb-source-cluster",
  *     location: "us-central1",
  *     network: _default.then(_default => _default.id),
@@ -97,35 +97,20 @@ import * as utilities from "../utilities";
  *         password: "alloydb-source-cluster",
  *     },
  * });
- * const privateIpAlloc = new gcp.compute.GlobalAddress("privateIpAlloc", {
- *     addressType: "INTERNAL",
- *     purpose: "VPC_PEERING",
- *     prefixLength: 16,
- *     network: _default.then(_default => _default.id),
- * });
- * const vpcConnection = new gcp.servicenetworking.Connection("vpcConnection", {
- *     network: _default.then(_default => _default.id),
- *     service: "servicenetworking.googleapis.com",
- *     reservedPeeringRanges: [privateIpAlloc.name],
- * });
- * const sourceInstance = new gcp.alloydb.Instance("sourceInstance", {
- *     cluster: sourceCluster.name,
+ * const sourceInstance = new gcp.alloydb.Instance("source", {
+ *     cluster: source.name,
  *     instanceId: "alloydb-instance",
  *     instanceType: "PRIMARY",
  *     machineConfig: {
  *         cpuCount: 2,
  *     },
- * }, {
- *     dependsOn: [vpcConnection],
  * });
- * const sourceBackup = new gcp.alloydb.Backup("sourceBackup", {
+ * const sourceBackup = new gcp.alloydb.Backup("source", {
  *     backupId: "alloydb-backup",
  *     location: "us-central1",
- *     clusterName: sourceCluster.name,
- * }, {
- *     dependsOn: [sourceInstance],
+ *     clusterName: source.name,
  * });
- * const restoredFromBackup = new gcp.alloydb.Cluster("restoredFromBackup", {
+ * const restoredFromBackup = new gcp.alloydb.Cluster("restored_from_backup", {
  *     clusterId: "alloydb-backup-restored",
  *     location: "us-central1",
  *     network: _default.then(_default => _default.id),
@@ -133,16 +118,28 @@ import * as utilities from "../utilities";
  *         backupName: sourceBackup.name,
  *     },
  * });
- * const restoredViaPitr = new gcp.alloydb.Cluster("restoredViaPitr", {
+ * const restoredViaPitr = new gcp.alloydb.Cluster("restored_via_pitr", {
  *     clusterId: "alloydb-pitr-restored",
  *     location: "us-central1",
  *     network: _default.then(_default => _default.id),
  *     restoreContinuousBackupSource: {
- *         cluster: sourceCluster.name,
+ *         cluster: source.name,
  *         pointInTime: "2023-08-03T19:19:00.094Z",
  *     },
  * });
  * const project = gcp.organizations.getProject({});
+ * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
+ *     name: "alloydb-source-cluster",
+ *     addressType: "INTERNAL",
+ *     purpose: "VPC_PEERING",
+ *     prefixLength: 16,
+ *     network: _default.then(_default => _default.id),
+ * });
+ * const vpcConnection = new gcp.servicenetworking.Connection("vpc_connection", {
+ *     network: _default.then(_default => _default.id),
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [privateIpAlloc.name],
+ * });
  * ```
  * ### Alloydb Secondary Cluster Basic
  *
@@ -150,32 +147,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const _default = new gcp.compute.Network("default", {});
- * const primaryCluster = new gcp.alloydb.Cluster("primaryCluster", {
+ * const _default = new gcp.compute.Network("default", {name: "alloydb-secondary-cluster"});
+ * const primary = new gcp.alloydb.Cluster("primary", {
  *     clusterId: "alloydb-primary-cluster",
  *     location: "us-central1",
  *     network: _default.id,
  * });
- * const privateIpAlloc = new gcp.compute.GlobalAddress("privateIpAlloc", {
- *     addressType: "INTERNAL",
- *     purpose: "VPC_PEERING",
- *     prefixLength: 16,
- *     network: _default.id,
- * });
- * const vpcConnection = new gcp.servicenetworking.Connection("vpcConnection", {
- *     network: _default.id,
- *     service: "servicenetworking.googleapis.com",
- *     reservedPeeringRanges: [privateIpAlloc.name],
- * });
- * const primaryInstance = new gcp.alloydb.Instance("primaryInstance", {
- *     cluster: primaryCluster.name,
+ * const primaryInstance = new gcp.alloydb.Instance("primary", {
+ *     cluster: primary.name,
  *     instanceId: "alloydb-primary-instance",
  *     instanceType: "PRIMARY",
  *     machineConfig: {
  *         cpuCount: 2,
  *     },
- * }, {
- *     dependsOn: [vpcConnection],
  * });
  * const secondary = new gcp.alloydb.Cluster("secondary", {
  *     clusterId: "alloydb-secondary-cluster",
@@ -186,12 +170,22 @@ import * as utilities from "../utilities";
  *         enabled: false,
  *     },
  *     secondaryConfig: {
- *         primaryClusterName: primaryCluster.name,
+ *         primaryClusterName: primary.name,
  *     },
- * }, {
- *     dependsOn: [primaryInstance],
  * });
  * const project = gcp.organizations.getProject({});
+ * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
+ *     name: "alloydb-secondary-cluster",
+ *     addressType: "INTERNAL",
+ *     purpose: "VPC_PEERING",
+ *     prefixLength: 16,
+ *     network: _default.id,
+ * });
+ * const vpcConnection = new gcp.servicenetworking.Connection("vpc_connection", {
+ *     network: _default.id,
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [privateIpAlloc.name],
+ * });
  * ```
  *
  * ## Import

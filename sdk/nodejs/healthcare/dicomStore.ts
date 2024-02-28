@@ -23,9 +23,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const topic = new gcp.pubsub.Topic("topic", {});
- * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
+ * const topic = new gcp.pubsub.Topic("topic", {name: "dicom-notifications"});
+ * const dataset = new gcp.healthcare.Dataset("dataset", {
+ *     name: "example-dataset",
+ *     location: "us-central1",
+ * });
  * const _default = new gcp.healthcare.DicomStore("default", {
+ *     name: "example-dicom-store",
  *     dataset: dataset.id,
  *     notificationConfig: {
  *         pubsubTopic: topic.id,
@@ -41,29 +45,25 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const topic = new gcp.pubsub.Topic("topic", {}, {
- *     provider: google_beta,
+ * const topic = new gcp.pubsub.Topic("topic", {name: "dicom-notifications"});
+ * const dataset = new gcp.healthcare.Dataset("dataset", {
+ *     name: "example-dataset",
+ *     location: "us-central1",
  * });
- * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"}, {
- *     provider: google_beta,
- * });
- * const bqDataset = new gcp.bigquery.Dataset("bqDataset", {
+ * const bqDataset = new gcp.bigquery.Dataset("bq_dataset", {
  *     datasetId: "dicom_bq_ds",
  *     friendlyName: "test",
  *     description: "This is a test description",
  *     location: "US",
  *     deleteContentsOnDestroy: true,
- * }, {
- *     provider: google_beta,
  * });
- * const bqTable = new gcp.bigquery.Table("bqTable", {
+ * const bqTable = new gcp.bigquery.Table("bq_table", {
  *     deletionProtection: false,
  *     datasetId: bqDataset.datasetId,
  *     tableId: "dicom_bq_tb",
- * }, {
- *     provider: google_beta,
  * });
  * const _default = new gcp.healthcare.DicomStore("default", {
+ *     name: "example-dicom-store",
  *     dataset: dataset.id,
  *     notificationConfig: {
  *         pubsubTopic: topic.id,
@@ -76,8 +76,6 @@ import * as utilities from "../utilities";
  *             tableUri: pulumi.interpolate`bq://${bqDataset.project}.${bqDataset.datasetId}.${bqTable.tableId}`,
  *         },
  *     }],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

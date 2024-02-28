@@ -62,6 +62,9 @@ import (
 //				Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("accessPolicies/%v", name), nil
 //				}).(pulumi.StringOutput),
+//				Name: access_policy.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("accessPolicies/%v/accessLevels/chromeos_no_lock", name), nil
+//				}).(pulumi.StringOutput),
 //				Title: pulumi.String("chromeos_no_lock"),
 //				Basic: &accesscontextmanager.AccessLevelBasicArgs{
 //					Conditions: accesscontextmanager.AccessLevelBasicConditionArray{

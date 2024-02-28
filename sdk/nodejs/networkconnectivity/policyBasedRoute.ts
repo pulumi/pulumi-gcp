@@ -22,8 +22,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myNetwork = new gcp.compute.Network("myNetwork", {autoCreateSubnetworks: false});
+ * const myNetwork = new gcp.compute.Network("my_network", {
+ *     name: "my-network",
+ *     autoCreateSubnetworks: false,
+ * });
  * const _default = new gcp.networkconnectivity.PolicyBasedRoute("default", {
+ *     name: "my-pbr",
  *     network: myNetwork.id,
  *     filter: {
  *         protocolVersion: "IPV4",
@@ -37,12 +41,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myNetwork = new gcp.compute.Network("myNetwork", {autoCreateSubnetworks: false});
+ * const myNetwork = new gcp.compute.Network("my_network", {
+ *     name: "my-network",
+ *     autoCreateSubnetworks: false,
+ * });
  * // This example substitutes an arbitrary internal IP for an internal network
  * // load balancer for brevity. Consult https://cloud.google.com/load-balancing/docs/internal
  * // to set one up.
- * const ilb = new gcp.compute.GlobalAddress("ilb", {});
+ * const ilb = new gcp.compute.GlobalAddress("ilb", {name: "my-ilb"});
  * const _default = new gcp.networkconnectivity.PolicyBasedRoute("default", {
+ *     name: "my-pbr",
  *     description: "My routing policy",
  *     network: myNetwork.id,
  *     priority: 2302,

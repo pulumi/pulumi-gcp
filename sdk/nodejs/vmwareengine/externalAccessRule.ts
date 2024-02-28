@@ -21,16 +21,19 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const external_access_rule_nw = new gcp.vmwareengine.Network("external-access-rule-nw", {
+ *     name: "sample-nw",
  *     location: "global",
  *     type: "STANDARD",
  *     description: "PC network description.",
  * });
  * const external_access_rule_np = new gcp.vmwareengine.NetworkPolicy("external-access-rule-np", {
  *     location: "us-west1",
+ *     name: "sample-np",
  *     edgeServicesCidr: "192.168.30.0/26",
  *     vmwareEngineNetwork: external_access_rule_nw.id,
  * });
  * const vmw_engine_external_access_rule = new gcp.vmwareengine.ExternalAccessRule("vmw-engine-external-access-rule", {
+ *     name: "sample-external-access-rule",
  *     parent: external_access_rule_np.id,
  *     priority: 101,
  *     action: "DENY",
@@ -52,12 +55,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const external_access_rule_nw = new gcp.vmwareengine.Network("external-access-rule-nw", {
+ *     name: "sample-nw",
  *     location: "global",
  *     type: "STANDARD",
  *     description: "PC network description.",
  * });
  * const external_access_rule_pc = new gcp.vmwareengine.PrivateCloud("external-access-rule-pc", {
  *     location: "us-west1-a",
+ *     name: "sample-pc",
  *     description: "Sample test PC.",
  *     networkConfig: {
  *         managementCidr: "192.168.50.0/24",
@@ -73,14 +78,17 @@ import * as utilities from "../utilities";
  * });
  * const external_access_rule_np = new gcp.vmwareengine.NetworkPolicy("external-access-rule-np", {
  *     location: "us-west1",
+ *     name: "sample-np",
  *     edgeServicesCidr: "192.168.30.0/26",
  *     vmwareEngineNetwork: external_access_rule_nw.id,
  * });
  * const external_access_rule_ea = new gcp.vmwareengine.ExternalAddress("external-access-rule-ea", {
+ *     name: "sample-ea",
  *     parent: external_access_rule_pc.id,
  *     internalIp: "192.168.0.65",
  * });
  * const vmw_engine_external_access_rule = new gcp.vmwareengine.ExternalAccessRule("vmw-engine-external-access-rule", {
+ *     name: "sample-external-access-rule",
  *     parent: external_access_rule_np.id,
  *     description: "Sample Description",
  *     priority: 101,

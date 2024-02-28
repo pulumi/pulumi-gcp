@@ -35,6 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networkservices.NewEdgeCacheKeyset(ctx, "default", &networkservices.EdgeCacheKeysetArgs{
+//				Name:        pulumi.String("my-keyset"),
 //				Description: pulumi.String("The default keyset"),
 //				PublicKeys: networkservices.EdgeCacheKeysetPublicKeyArray{
 //					&networkservices.EdgeCacheKeysetPublicKeyArgs{
@@ -87,6 +88,7 @@ import (
 //				return err
 //			}
 //			_, err = networkservices.NewEdgeCacheKeyset(ctx, "default", &networkservices.EdgeCacheKeysetArgs{
+//				Name:        pulumi.String("my-keyset"),
 //				Description: pulumi.String("The default keyset"),
 //				PublicKeys: networkservices.EdgeCacheKeysetPublicKeyArray{
 //					&networkservices.EdgeCacheKeysetPublicKeyArgs{

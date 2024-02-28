@@ -297,8 +297,8 @@ class WebBackendServiceIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.iap.WebBackendServiceIamPolicy("policy",
-            project=google_compute_backend_service["default"]["project"],
-            web_backend_service=google_compute_backend_service["default"]["name"],
+            project=default["project"],
+            web_backend_service=default["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -318,8 +318,8 @@ class WebBackendServiceIamMember(pulumi.CustomResource):
             ),
         )])
         policy = gcp.iap.WebBackendServiceIamPolicy("policy",
-            project=google_compute_backend_service["default"]["project"],
-            web_backend_service=google_compute_backend_service["default"]["name"],
+            project=default["project"],
+            web_backend_service=default["name"],
             policy_data=admin.policy_data)
         ```
         ## google\\_iap\\_web\\_backend\\_service\\_iam\\_binding
@@ -329,8 +329,8 @@ class WebBackendServiceIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.iap.WebBackendServiceIamBinding("binding",
-            project=google_compute_backend_service["default"]["project"],
-            web_backend_service=google_compute_backend_service["default"]["name"],
+            project=default["project"],
+            web_backend_service=default["name"],
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"])
         ```
@@ -342,8 +342,8 @@ class WebBackendServiceIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.iap.WebBackendServiceIamBinding("binding",
-            project=google_compute_backend_service["default"]["project"],
-            web_backend_service=google_compute_backend_service["default"]["name"],
+            project=default["project"],
+            web_backend_service=default["name"],
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
             condition=gcp.iap.WebBackendServiceIamBindingConditionArgs(
@@ -359,8 +359,8 @@ class WebBackendServiceIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.iap.WebBackendServiceIamMember("member",
-            project=google_compute_backend_service["default"]["project"],
-            web_backend_service=google_compute_backend_service["default"]["name"],
+            project=default["project"],
+            web_backend_service=default["name"],
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com")
         ```
@@ -372,8 +372,8 @@ class WebBackendServiceIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.iap.WebBackendServiceIamMember("member",
-            project=google_compute_backend_service["default"]["project"],
-            web_backend_service=google_compute_backend_service["default"]["name"],
+            project=default["project"],
+            web_backend_service=default["name"],
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com",
             condition=gcp.iap.WebBackendServiceIamMemberConditionArgs(
@@ -476,8 +476,8 @@ class WebBackendServiceIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.iap.WebBackendServiceIamPolicy("policy",
-            project=google_compute_backend_service["default"]["project"],
-            web_backend_service=google_compute_backend_service["default"]["name"],
+            project=default["project"],
+            web_backend_service=default["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -497,8 +497,8 @@ class WebBackendServiceIamMember(pulumi.CustomResource):
             ),
         )])
         policy = gcp.iap.WebBackendServiceIamPolicy("policy",
-            project=google_compute_backend_service["default"]["project"],
-            web_backend_service=google_compute_backend_service["default"]["name"],
+            project=default["project"],
+            web_backend_service=default["name"],
             policy_data=admin.policy_data)
         ```
         ## google\\_iap\\_web\\_backend\\_service\\_iam\\_binding
@@ -508,8 +508,8 @@ class WebBackendServiceIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.iap.WebBackendServiceIamBinding("binding",
-            project=google_compute_backend_service["default"]["project"],
-            web_backend_service=google_compute_backend_service["default"]["name"],
+            project=default["project"],
+            web_backend_service=default["name"],
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"])
         ```
@@ -521,8 +521,8 @@ class WebBackendServiceIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.iap.WebBackendServiceIamBinding("binding",
-            project=google_compute_backend_service["default"]["project"],
-            web_backend_service=google_compute_backend_service["default"]["name"],
+            project=default["project"],
+            web_backend_service=default["name"],
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
             condition=gcp.iap.WebBackendServiceIamBindingConditionArgs(
@@ -538,8 +538,8 @@ class WebBackendServiceIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.iap.WebBackendServiceIamMember("member",
-            project=google_compute_backend_service["default"]["project"],
-            web_backend_service=google_compute_backend_service["default"]["name"],
+            project=default["project"],
+            web_backend_service=default["name"],
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com")
         ```
@@ -551,8 +551,8 @@ class WebBackendServiceIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.iap.WebBackendServiceIamMember("member",
-            project=google_compute_backend_service["default"]["project"],
-            web_backend_service=google_compute_backend_service["default"]["name"],
+            project=default["project"],
+            web_backend_service=default["name"],
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com",
             condition=gcp.iap.WebBackendServiceIamMemberConditionArgs(

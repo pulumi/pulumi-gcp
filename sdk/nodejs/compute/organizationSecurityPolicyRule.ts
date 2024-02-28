@@ -22,14 +22,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const policyOrganizationSecurityPolicy = new gcp.compute.OrganizationSecurityPolicy("policyOrganizationSecurityPolicy", {
+ * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
  *     displayName: "tf-test",
  *     parent: "organizations/123456789",
- * }, {
- *     provider: google_beta,
  * });
- * const policyOrganizationSecurityPolicyRule = new gcp.compute.OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule", {
- *     policyId: policyOrganizationSecurityPolicy.id,
+ * const policyOrganizationSecurityPolicyRule = new gcp.compute.OrganizationSecurityPolicyRule("policy", {
+ *     policyId: policy.id,
  *     action: "allow",
  *     direction: "INGRESS",
  *     enableLogging: true,
@@ -51,8 +49,6 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     priority: 100,
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

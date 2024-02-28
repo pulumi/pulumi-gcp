@@ -54,8 +54,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var picture = new BucketObject(&#34;picture&#34;, BucketObjectArgs.builder()        
- *             .bucket(&#34;image-store&#34;)
+ *             .name(&#34;butterfly01&#34;)
  *             .source(new FileAsset(&#34;/images/nature/garden-tiger-moth.jpg&#34;))
+ *             .bucket(&#34;image-store&#34;)
  *             .build());
  * 
  *     }
@@ -85,8 +86,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var emptyFolder = new BucketObject(&#34;emptyFolder&#34;, BucketObjectArgs.builder()        
- *             .bucket(&#34;image-store&#34;)
+ *             .name(&#34;empty_folder/&#34;)
  *             .content(&#34; &#34;)
+ *             .bucket(&#34;image-store&#34;)
  *             .build());
  * 
  *     }

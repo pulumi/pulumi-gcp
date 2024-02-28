@@ -36,12 +36,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vertex.NewAiDataset(ctx, "dataset", &vertex.AiDatasetArgs{
-//				DisplayName: pulumi.String("terraform"),
+//				DisplayName:       pulumi.String("terraform"),
+//				MetadataSchemaUri: pulumi.String("gs://google-cloud-aiplatform/schema/dataset/metadata/image_1.0.0.yaml"),
+//				Region:            pulumi.String("us-central1"),
 //				Labels: pulumi.StringMap{
 //					"env": pulumi.String("test"),
 //				},
-//				MetadataSchemaUri: pulumi.String("gs://google-cloud-aiplatform/schema/dataset/metadata/image_1.0.0.yaml"),
-//				Region:            pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err

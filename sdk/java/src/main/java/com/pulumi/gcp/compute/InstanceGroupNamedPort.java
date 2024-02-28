@@ -57,16 +57,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var containerNetwork = new Network(&#34;containerNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;container-network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var containerSubnetwork = new Subnetwork(&#34;containerSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;container-subnetwork&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(containerNetwork.name())
  *             .ipCidrRange(&#34;10.0.36.0/24&#34;)
  *             .build());
  * 
  *         var myCluster = new Cluster(&#34;myCluster&#34;, ClusterArgs.builder()        
+ *             .name(&#34;my-cluster&#34;)
  *             .location(&#34;us-central1-a&#34;)
  *             .initialNodeCount(1)
  *             .network(containerNetwork.name())
@@ -81,12 +84,14 @@ import javax.annotation.Nullable;
  *         var myPort = new InstanceGroupNamedPort(&#34;myPort&#34;, InstanceGroupNamedPortArgs.builder()        
  *             .group(myCluster.nodePools().applyValue(nodePools -&gt; nodePools[0].instanceGroupUrls()[0]))
  *             .zone(&#34;us-central1-a&#34;)
+ *             .name(&#34;http&#34;)
  *             .port(8080)
  *             .build());
  * 
  *         var myPorts = new InstanceGroupNamedPort(&#34;myPorts&#34;, InstanceGroupNamedPortArgs.builder()        
  *             .group(myCluster.nodePools().applyValue(nodePools -&gt; nodePools[0].instanceGroupUrls()[0]))
  *             .zone(&#34;us-central1-a&#34;)
+ *             .name(&#34;https&#34;)
  *             .port(4443)
  *             .build());
  * 

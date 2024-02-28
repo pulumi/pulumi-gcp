@@ -48,20 +48,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new CaPool(&#34;default&#34;, CaPoolArgs.builder()        
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .name(&#34;my-pool&#34;)
  *             .location(&#34;us-central1&#34;)
+ *             .tier(&#34;ENTERPRISE&#34;)
  *             .publishingOptions(CaPoolPublishingOptionsArgs.builder()
  *                 .publishCaCert(true)
  *                 .publishCrl(true)
  *                 .build())
- *             .tier(&#34;ENTERPRISE&#34;)
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .build());
  * 
  *     }
  * }
  * ```
  * ### Privateca Capool All Fields
- * 
  * ```java
  * package generated_program;
  * 
@@ -70,17 +70,17 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.certificateauthority.CaPool;
  * import com.pulumi.gcp.certificateauthority.CaPoolArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CaPoolPublishingOptionsArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyAllowedIssuanceModesArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyIdentityConstraintsArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesCaOptionsArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs;
- * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyIdentityConstraintsArgs;
- * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs;
- * import com.pulumi.gcp.certificateauthority.inputs.CaPoolPublishingOptionsArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -95,11 +95,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new CaPool(&#34;default&#34;, CaPoolArgs.builder()        
+ *             .name(&#34;my-pool&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .tier(&#34;ENTERPRISE&#34;)
+ *             .publishingOptions(CaPoolPublishingOptionsArgs.builder()
+ *                 .publishCaCert(false)
+ *                 .publishCrl(true)
+ *                 .encodingFormat(&#34;PEM&#34;)
+ *                 .build())
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .issuancePolicy(CaPoolIssuancePolicyArgs.builder()
- *                 .allowedIssuanceModes(CaPoolIssuancePolicyAllowedIssuanceModesArgs.builder()
- *                     .allowConfigBasedIssuance(true)
- *                     .allowCsrBasedIssuance(true)
- *                     .build())
  *                 .allowedKeyTypes(                
  *                     CaPoolIssuancePolicyAllowedKeyTypeArgs.builder()
  *                         .ellipticCurve(CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs.builder()
@@ -108,102 +113,98 @@ import javax.annotation.Nullable;
  *                         .build(),
  *                     CaPoolIssuancePolicyAllowedKeyTypeArgs.builder()
  *                         .rsa(CaPoolIssuancePolicyAllowedKeyTypeRsaArgs.builder()
- *                             .maxModulusSize(10)
  *                             .minModulusSize(5)
+ *                             .maxModulusSize(10)
  *                             .build())
  *                         .build())
+ *                 .maximumLifetime(&#34;50000s&#34;)
+ *                 .allowedIssuanceModes(CaPoolIssuancePolicyAllowedIssuanceModesArgs.builder()
+ *                     .allowCsrBasedIssuance(true)
+ *                     .allowConfigBasedIssuance(true)
+ *                     .build())
+ *                 .identityConstraints(CaPoolIssuancePolicyIdentityConstraintsArgs.builder()
+ *                     .allowSubjectPassthrough(true)
+ *                     .allowSubjectAltNamesPassthrough(true)
+ *                     .celExpression(CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs.builder()
+ *                         .expression(&#34;subject_alt_names.all(san, san.type == DNS || san.type == EMAIL )&#34;)
+ *                         .title(&#34;My title&#34;)
+ *                         .build())
+ *                     .build())
  *                 .baselineValues(CaPoolIssuancePolicyBaselineValuesArgs.builder()
+ *                     .aiaOcspServers(&#34;example.com&#34;)
  *                     .additionalExtensions(CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs.builder()
  *                         .critical(true)
+ *                         .value(&#34;asdf&#34;)
  *                         .objectId(CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgs.builder()
- *                             .objectIdPath(                            
+ *                             .objectIdPaths(                            
  *                                 1,
  *                                 7)
  *                             .build())
- *                         .value(&#34;asdf&#34;)
  *                         .build())
- *                     .aiaOcspServers(&#34;example.com&#34;)
+ *                     .policyIds(                    
+ *                         CaPoolIssuancePolicyBaselineValuesPolicyIdArgs.builder()
+ *                             .objectIdPaths(                            
+ *                                 1,
+ *                                 5)
+ *                             .build(),
+ *                         CaPoolIssuancePolicyBaselineValuesPolicyIdArgs.builder()
+ *                             .objectIdPaths(                            
+ *                                 1,
+ *                                 5,
+ *                                 7)
+ *                             .build())
  *                     .caOptions(CaPoolIssuancePolicyBaselineValuesCaOptionsArgs.builder()
  *                         .isCa(true)
  *                         .maxIssuerPathLength(10)
  *                         .build())
  *                     .keyUsage(CaPoolIssuancePolicyBaselineValuesKeyUsageArgs.builder()
  *                         .baseKeyUsage(CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs.builder()
- *                             .certSign(false)
- *                             .contentCommitment(true)
- *                             .crlSign(true)
- *                             .dataEncipherment(true)
- *                             .decipherOnly(true)
  *                             .digitalSignature(true)
- *                             .keyAgreement(true)
+ *                             .contentCommitment(true)
  *                             .keyEncipherment(false)
+ *                             .dataEncipherment(true)
+ *                             .keyAgreement(true)
+ *                             .certSign(false)
+ *                             .crlSign(true)
+ *                             .decipherOnly(true)
  *                             .build())
  *                         .extendedKeyUsage(CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs.builder()
- *                             .clientAuth(false)
- *                             .codeSigning(true)
- *                             .emailProtection(true)
  *                             .serverAuth(true)
+ *                             .clientAuth(false)
+ *                             .emailProtection(true)
+ *                             .codeSigning(true)
  *                             .timeStamping(true)
  *                             .build())
  *                         .build())
  *                     .nameConstraints(CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs.builder()
  *                         .critical(true)
- *                         .excludedDnsNames(                        
- *                             &#34;*.deny.example1.com&#34;,
- *                             &#34;*.deny.example2.com&#34;)
- *                         .excludedEmailAddresses(                        
- *                             &#34;.deny.example1.com&#34;,
- *                             &#34;.deny.example2.com&#34;)
- *                         .excludedIpRanges(                        
- *                             &#34;10.1.1.0/24&#34;,
- *                             &#34;11.1.1.0/24&#34;)
- *                         .excludedUris(                        
- *                             &#34;.deny.example1.com&#34;,
- *                             &#34;.deny.example2.com&#34;)
  *                         .permittedDnsNames(                        
  *                             &#34;*.example1.com&#34;,
  *                             &#34;*.example2.com&#34;)
- *                         .permittedEmailAddresses(                        
- *                             &#34;.example1.com&#34;,
- *                             &#34;.example2.com&#34;)
+ *                         .excludedDnsNames(                        
+ *                             &#34;*.deny.example1.com&#34;,
+ *                             &#34;*.deny.example2.com&#34;)
  *                         .permittedIpRanges(                        
  *                             &#34;10.0.0.0/8&#34;,
  *                             &#34;11.0.0.0/8&#34;)
+ *                         .excludedIpRanges(                        
+ *                             &#34;10.1.1.0/24&#34;,
+ *                             &#34;11.1.1.0/24&#34;)
+ *                         .permittedEmailAddresses(                        
+ *                             &#34;.example1.com&#34;,
+ *                             &#34;.example2.com&#34;)
+ *                         .excludedEmailAddresses(                        
+ *                             &#34;.deny.example1.com&#34;,
+ *                             &#34;.deny.example2.com&#34;)
  *                         .permittedUris(                        
  *                             &#34;.example1.com&#34;,
  *                             &#34;.example2.com&#34;)
- *                         .build())
- *                     .policyIds(                    
- *                         CaPoolIssuancePolicyBaselineValuesPolicyIdArgs.builder()
- *                             .objectIdPath(                            
- *                                 1,
- *                                 5)
- *                             .build(),
- *                         CaPoolIssuancePolicyBaselineValuesPolicyIdArgs.builder()
- *                             .objectIdPath(                            
- *                                 1,
- *                                 5,
- *                                 7)
- *                             .build())
- *                     .build())
- *                 .identityConstraints(CaPoolIssuancePolicyIdentityConstraintsArgs.builder()
- *                     .allowSubjectAltNamesPassthrough(true)
- *                     .allowSubjectPassthrough(true)
- *                     .celExpression(CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs.builder()
- *                         .expression(&#34;subject_alt_names.all(san, san.type == DNS || san.type == EMAIL )&#34;)
- *                         .title(&#34;My title&#34;)
+ *                         .excludedUris(                        
+ *                             &#34;.deny.example1.com&#34;,
+ *                             &#34;.deny.example2.com&#34;)
  *                         .build())
  *                     .build())
- *                 .maximumLifetime(&#34;50000s&#34;)
  *                 .build())
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .location(&#34;us-central1&#34;)
- *             .publishingOptions(CaPoolPublishingOptionsArgs.builder()
- *                 .encodingFormat(&#34;PEM&#34;)
- *                 .publishCaCert(false)
- *                 .publishCrl(true)
- *                 .build())
- *             .tier(&#34;ENTERPRISE&#34;)
  *             .build());
  * 
  *     }

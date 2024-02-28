@@ -31,8 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vmwareengine.LookupNetwork(ctx, &vmwareengine.LookupNetworkArgs{
-//				Location: "us-central1",
 //				Name:     "us-central1-default",
+//				Location: "us-central1",
 //			}, nil)
 //			if err != nil {
 //				return err

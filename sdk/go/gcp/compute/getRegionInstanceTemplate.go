@@ -30,12 +30,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// by name
 //			_, err := compute.LookupRegionInstanceTemplate(ctx, &compute.LookupRegionInstanceTemplateArgs{
 //				Name: pulumi.StringRef("generic-tpl-20200107"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			// using a filter
 //			_, err = compute.LookupRegionInstanceTemplate(ctx, &compute.LookupRegionInstanceTemplateArgs{
 //				Filter:     pulumi.StringRef("name != generic-tpl-20200107"),
 //				MostRecent: pulumi.BoolRef(true),

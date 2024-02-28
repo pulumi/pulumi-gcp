@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.pubsub.getSchemaIamPolicy({
- *     project: google_pubsub_schema.example.project,
- *     schema: google_pubsub_schema.example.name,
+ *     project: example.project,
+ *     schema: example.name,
  * });
  * ```
  */
@@ -73,8 +73,8 @@ export interface GetSchemaIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.pubsub.getSchemaIamPolicy({
- *     project: google_pubsub_schema.example.project,
- *     schema: google_pubsub_schema.example.name,
+ *     project: example.project,
+ *     schema: example.name,
  * });
  * ```
  */

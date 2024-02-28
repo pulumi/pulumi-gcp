@@ -363,10 +363,11 @@ class Environment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         environment = gcp.notebooks.Environment("environment",
+            name="notebooks-environment",
+            location="us-west1-a",
             container_image=gcp.notebooks.EnvironmentContainerImageArgs(
                 repository="gcr.io/deeplearning-platform-release/base-cpu",
-            ),
-            location="us-west1-a")
+            ))
         ```
 
         ## Import
@@ -435,10 +436,11 @@ class Environment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         environment = gcp.notebooks.Environment("environment",
+            name="notebooks-environment",
+            location="us-west1-a",
             container_image=gcp.notebooks.EnvironmentContainerImageArgs(
                 repository="gcr.io/deeplearning-platform-release/base-cpu",
-            ),
-            location="us-west1-a")
+            ))
         ```
 
         ## Import

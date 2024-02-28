@@ -66,12 +66,12 @@ namespace Pulumi.Gcp.PubSub
     /// {
     ///     var editor = new Gcp.PubSub.SubscriptionIAMBinding("editor", new()
     ///     {
+    ///         Subscription = "your-subscription-name",
+    ///         Role = "roles/editor",
     ///         Members = new[]
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         Role = "roles/editor",
-    ///         Subscription = "your-subscription-name",
     ///     });
     /// 
     /// });
@@ -89,9 +89,9 @@ namespace Pulumi.Gcp.PubSub
     /// {
     ///     var editor = new Gcp.PubSub.SubscriptionIAMMember("editor", new()
     ///     {
-    ///         Member = "user:jane@example.com",
-    ///         Role = "roles/editor",
     ///         Subscription = "your-subscription-name",
+    ///         Role = "roles/editor",
+    ///         Member = "user:jane@example.com",
     ///     });
     /// 
     /// });

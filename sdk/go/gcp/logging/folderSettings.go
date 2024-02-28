@@ -39,22 +39,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myFolder, err := organizations.NewFolder(ctx, "myFolder", &organizations.FolderArgs{
+//			myFolder, err := organizations.NewFolder(ctx, "my_folder", &organizations.FolderArgs{
 //				DisplayName: pulumi.String("folder-name"),
 //				Parent:      pulumi.String("organizations/123456789"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			settings := logging.LookupFolderSettingsOutput(ctx, logging.GetFolderSettingsOutputArgs{
-//				Folder: myFolder.FolderId,
-//			}, nil)
-//			iam, err := kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: pulumi.String("kms-key"),
-//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Member: settings.ApplyT(func(settings logging.GetFolderSettingsResult) (string, error) {
-//					return fmt.Sprintf("serviceAccount:%v", settings.KmsServiceAccountId), nil
-//				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -64,9 +51,20 @@ import (
 //				Folder:             myFolder.FolderId,
 //				KmsKeyName:         pulumi.String("kms-key"),
 //				StorageLocation:    pulumi.String("us-central1"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				iam,
-//			}))
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			settings := logging.LookupFolderSettingsOutput(ctx, logging.GetFolderSettingsOutputArgs{
+//				Folder: myFolder.FolderId,
+//			}, nil)
+//			_, err = kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
+//				CryptoKeyId: pulumi.String("kms-key"),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Member: settings.ApplyT(func(settings logging.GetFolderSettingsResult) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", settings.KmsServiceAccountId), nil
+//				}).(pulumi.StringOutput),
+//			})
 //			if err != nil {
 //				return err
 //			}

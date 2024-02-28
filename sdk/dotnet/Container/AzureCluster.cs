@@ -27,34 +27,35 @@ namespace Pulumi.Gcp.Container
     /// {
     ///     var versions = Gcp.Container.GetAzureVersions.Invoke(new()
     ///     {
-    ///         Location = "us-west1",
     ///         Project = "my-project-name",
+    ///         Location = "us-west1",
     ///     });
     /// 
     ///     var basic = new Gcp.Container.AzureClient("basic", new()
     ///     {
     ///         ApplicationId = "12345678-1234-1234-1234-123456789111",
     ///         Location = "us-west1",
-    ///         Project = "my-project-name",
+    ///         Name = "client-name",
     ///         TenantId = "12345678-1234-1234-1234-123456789111",
+    ///         Project = "my-project-name",
     ///     });
     /// 
     ///     var primary = new Gcp.Container.AzureCluster("primary", new()
     ///     {
     ///         Authorization = new Gcp.Container.Inputs.AzureClusterAuthorizationArgs
     ///         {
-    ///             AdminGroups = new[]
-    ///             {
-    ///                 new Gcp.Container.Inputs.AzureClusterAuthorizationAdminGroupArgs
-    ///                 {
-    ///                     Group = "group@domain.com",
-    ///                 },
-    ///             },
     ///             AdminUsers = new[]
     ///             {
     ///                 new Gcp.Container.Inputs.AzureClusterAuthorizationAdminUserArgs
     ///                 {
     ///                     Username = "mmv2@google.com",
+    ///                 },
+    ///             },
+    ///             AdminGroups = new[]
+    ///             {
+    ///                 new Gcp.Container.Inputs.AzureClusterAuthorizationAdminGroupArgs
+    ///                 {
+    ///                     Group = "group@domain.com",
     ///                 },
     ///             },
     ///         },
@@ -74,6 +75,7 @@ namespace Pulumi.Gcp.Container
     ///             Project = "my-project-number",
     ///         },
     ///         Location = "us-west1",
+    ///         Name = "name",
     ///         Networking = new Gcp.Container.Inputs.AzureClusterNetworkingArgs
     ///         {
     ///             PodAddressCidrBlocks = new[]
@@ -86,8 +88,8 @@ namespace Pulumi.Gcp.Container
     ///             },
     ///             VirtualNetworkId = "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
     ///         },
-    ///         Project = "my-project-name",
     ///         ResourceGroupId = "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
+    ///         Project = "my-project-name",
     ///     });
     /// 
     /// });
@@ -112,11 +114,9 @@ namespace Pulumi.Gcp.Container
     ///     {
     ///         ApplicationId = "12345678-1234-1234-1234-123456789111",
     ///         Location = "us-west1",
+    ///         Name = "client-name",
     ///         TenantId = "12345678-1234-1234-1234-123456789111",
     ///         Project = "my-project-name",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var primary = new Gcp.Container.AzureCluster("primary", new()
@@ -147,6 +147,7 @@ namespace Pulumi.Gcp.Container
     ///             Project = "my-project-number",
     ///         },
     ///         Location = "us-west1",
+    ///         Name = "name",
     ///         Networking = new Gcp.Container.Inputs.AzureClusterNetworkingArgs
     ///         {
     ///             PodAddressCidrBlocks = new[]
@@ -172,9 +173,6 @@ namespace Pulumi.Gcp.Container
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

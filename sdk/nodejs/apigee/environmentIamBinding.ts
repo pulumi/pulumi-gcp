@@ -34,8 +34,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.apigee.EnvironmentIamPolicy("policy", {
- *     orgId: google_apigee_environment.apigee_environment.org_id,
- *     envId: google_apigee_environment.apigee_environment.name,
+ *     orgId: apigeeEnvironment.orgId,
+ *     envId: apigeeEnvironment.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -47,8 +47,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.apigee.EnvironmentIamBinding("binding", {
- *     orgId: google_apigee_environment.apigee_environment.org_id,
- *     envId: google_apigee_environment.apigee_environment.name,
+ *     orgId: apigeeEnvironment.orgId,
+ *     envId: apigeeEnvironment.name,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
  * });
@@ -61,8 +61,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.apigee.EnvironmentIamMember("member", {
- *     orgId: google_apigee_environment.apigee_environment.org_id,
- *     envId: google_apigee_environment.apigee_environment.name,
+ *     orgId: apigeeEnvironment.orgId,
+ *     envId: apigeeEnvironment.name,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
  * });

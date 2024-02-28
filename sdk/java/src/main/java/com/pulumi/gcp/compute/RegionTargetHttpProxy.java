@@ -27,7 +27,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * ### Region Target Http Proxy Basic
- * 
  * ```java
  * package generated_program;
  * 
@@ -60,6 +59,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var defaultRegionHealthCheck = new RegionHealthCheck(&#34;defaultRegionHealthCheck&#34;, RegionHealthCheckArgs.builder()        
  *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;http-health-check&#34;)
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
@@ -67,6 +67,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultRegionBackendService = new RegionBackendService(&#34;defaultRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
  *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;backend-service&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .timeoutSec(10)
  *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
@@ -75,6 +76,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultRegionUrlMap = new RegionUrlMap(&#34;defaultRegionUrlMap&#34;, RegionUrlMapArgs.builder()        
  *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;url-map&#34;)
  *             .defaultService(defaultRegionBackendService.id())
  *             .hostRules(RegionUrlMapHostRuleArgs.builder()
  *                 .hosts(&#34;mysite.com&#34;)
@@ -90,8 +92,9 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultRegionTargetHttpProxy = new RegionTargetHttpProxy(&#34;defaultRegionTargetHttpProxy&#34;, RegionTargetHttpProxyArgs.builder()        
+ *         var default_ = new RegionTargetHttpProxy(&#34;default&#34;, RegionTargetHttpProxyArgs.builder()        
  *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;test-proxy&#34;)
  *             .urlMap(defaultRegionUrlMap.id())
  *             .build());
  * 
@@ -125,14 +128,16 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var defaultRegionUrlMap = new RegionUrlMap(&#34;defaultRegionUrlMap&#34;, RegionUrlMapArgs.builder()        
  *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;url-map&#34;)
  *             .defaultUrlRedirect(RegionUrlMapDefaultUrlRedirectArgs.builder()
  *                 .httpsRedirect(true)
  *                 .stripQuery(false)
  *                 .build())
  *             .build());
  * 
- *         var defaultRegionTargetHttpProxy = new RegionTargetHttpProxy(&#34;defaultRegionTargetHttpProxy&#34;, RegionTargetHttpProxyArgs.builder()        
+ *         var default_ = new RegionTargetHttpProxy(&#34;default&#34;, RegionTargetHttpProxyArgs.builder()        
  *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;test-https-redirect-proxy&#34;)
  *             .urlMap(defaultRegionUrlMap.id())
  *             .build());
  * 

@@ -439,9 +439,10 @@ class RouterInterface(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         foobar = gcp.compute.RouterInterface("foobar",
-            ip_range="169.254.1.1/30",
-            region="us-central1",
+            name="interface-1",
             router="router-1",
+            region="us-central1",
+            ip_range="169.254.1.1/30",
             vpn_tunnel="tunnel-1")
         ```
 
@@ -511,9 +512,10 @@ class RouterInterface(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         foobar = gcp.compute.RouterInterface("foobar",
-            ip_range="169.254.1.1/30",
-            region="us-central1",
+            name="interface-1",
             router="router-1",
+            region="us-central1",
+            ip_range="169.254.1.1/30",
             vpn_tunnel="tunnel-1")
         ```
 

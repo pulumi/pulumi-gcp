@@ -32,8 +32,9 @@ namespace Pulumi.Gcp.PubSub
     /// {
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var exampleLiteTopic = new Gcp.PubSub.LiteTopic("exampleLiteTopic", new()
+    ///     var example = new Gcp.PubSub.LiteTopic("example", new()
     ///     {
+    ///         Name = "example-topic",
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.Number),
     ///         PartitionConfig = new Gcp.PubSub.Inputs.LiteTopicPartitionConfigArgs
     ///         {
@@ -50,9 +51,10 @@ namespace Pulumi.Gcp.PubSub
     ///         },
     ///     });
     /// 
-    ///     var exampleLiteSubscription = new Gcp.PubSub.LiteSubscription("exampleLiteSubscription", new()
+    ///     var exampleLiteSubscription = new Gcp.PubSub.LiteSubscription("example", new()
     ///     {
-    ///         Topic = exampleLiteTopic.Name,
+    ///         Name = "example-subscription",
+    ///         Topic = example.Name,
     ///         DeliveryConfig = new Gcp.PubSub.Inputs.LiteSubscriptionDeliveryConfigArgs
     ///         {
     ///             DeliveryRequirement = "DELIVER_AFTER_STORED",

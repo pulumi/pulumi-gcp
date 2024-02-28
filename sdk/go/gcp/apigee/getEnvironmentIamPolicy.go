@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := apigee.LookupEnvironmentIamPolicy(ctx, &apigee.LookupEnvironmentIamPolicyArgs{
-//				OrgId: google_apigee_environment.Apigee_environment.Org_id,
-//				EnvId: google_apigee_environment.Apigee_environment.Name,
+//				OrgId: apigeeEnvironment.OrgId,
+//				EnvId: apigeeEnvironment.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

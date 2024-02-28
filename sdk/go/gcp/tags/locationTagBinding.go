@@ -40,38 +40,38 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				OrgId: pulumi.String("123456789"),
+//			_, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("project_id"),
+//				Name:      pulumi.String("project_id"),
+//				OrgId:     pulumi.String("123456789"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			key, err := tags.NewTagKey(ctx, "key", &tags.TagKeyArgs{
-//				Description: pulumi.String("For keyname resources."),
 //				Parent:      pulumi.String("organizations/123456789"),
 //				ShortName:   pulumi.String("keyname"),
+//				Description: pulumi.String("For keyname resources."),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			value, err := tags.NewTagValue(ctx, "value", &tags.TagValueArgs{
-//				Description: pulumi.String("For valuename resources."),
 //				Parent: key.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("tagKeys/%v", name), nil
 //				}).(pulumi.StringOutput),
-//				ShortName: pulumi.String("valuename"),
+//				ShortName:   pulumi.String("valuename"),
+//				Description: pulumi.String("For valuename resources."),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = tags.NewLocationTagBinding(ctx, "binding", &tags.LocationTagBindingArgs{
-//				Location: pulumi.String("us-central1"),
-//				Parent: project.Number.ApplyT(func(number string) (string, error) {
-//					return fmt.Sprintf("//run.googleapis.com/projects/%v/locations/%v/services/%v", number, google_cloud_run_service.Default.Location, google_cloud_run_service.Default.Name), nil
-//				}).(pulumi.StringOutput),
+//				Parent: pulumi.String(fmt.Sprintf("//run.googleapis.com/projects/%v/locations/%v/services/%v", projectGoogleProject.Number, _default.Location, _default.Name)),
 //				TagValue: value.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("tagValues/%v", name), nil
 //				}).(pulumi.StringOutput),
+//				Location: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err
@@ -99,37 +99,39 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				OrgId: pulumi.String("123456789"),
+//				ProjectId: pulumi.String("project_id"),
+//				Name:      pulumi.String("project_id"),
+//				OrgId:     pulumi.String("123456789"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			key, err := tags.NewTagKey(ctx, "key", &tags.TagKeyArgs{
-//				Description: pulumi.String("For keyname resources."),
 //				Parent:      pulumi.String("organizations/123456789"),
 //				ShortName:   pulumi.String("keyname"),
+//				Description: pulumi.String("For keyname resources."),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			value, err := tags.NewTagValue(ctx, "value", &tags.TagValueArgs{
-//				Description: pulumi.String("For valuename resources."),
 //				Parent: key.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("tagKeys/%v", name), nil
 //				}).(pulumi.StringOutput),
-//				ShortName: pulumi.String("valuename"),
+//				ShortName:   pulumi.String("valuename"),
+//				Description: pulumi.String("For valuename resources."),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = tags.NewLocationTagBinding(ctx, "binding", &tags.LocationTagBindingArgs{
-//				Location: pulumi.String("us-central1-a"),
 //				Parent: project.Number.ApplyT(func(number string) (string, error) {
-//					return fmt.Sprintf("//compute.googleapis.com/projects/%v/zones/us-central1-a/instances/%v", number, google_compute_instance.Instance.Instance_id), nil
+//					return fmt.Sprintf("//compute.googleapis.com/projects/%v/zones/us-central1-a/instances/%v", number, instance.InstanceId), nil
 //				}).(pulumi.StringOutput),
 //				TagValue: value.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("tagValues/%v", name), nil
 //				}).(pulumi.StringOutput),
+//				Location: pulumi.String("us-central1-a"),
 //			})
 //			if err != nil {
 //				return err

@@ -28,8 +28,8 @@ namespace Pulumi.Gcp.Compute
         /// {
         ///     var policy = Gcp.Compute.GetSnapshotIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_compute_snapshot.Snapshot.Project,
-        ///         Name = google_compute_snapshot.Snapshot.Name,
+        ///         Project = snapshot.Project,
+        ///         Name = snapshot.Name,
         ///     });
         /// 
         /// });
@@ -55,8 +55,8 @@ namespace Pulumi.Gcp.Compute
         /// {
         ///     var policy = Gcp.Compute.GetSnapshotIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_compute_snapshot.Snapshot.Project,
-        ///         Name = google_compute_snapshot.Snapshot.Name,
+        ///         Project = snapshot.Project,
+        ///         Name = snapshot.Name,
         ///     });
         /// 
         /// });

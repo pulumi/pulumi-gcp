@@ -989,12 +989,12 @@ class FlexTemplateJob(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        big_data_job = gcp.dataflow.FlexTemplateJob("bigDataJob",
+        big_data_job = gcp.dataflow.FlexTemplateJob("big_data_job",
+            name="dataflow-flextemplates-job",
             container_spec_gcs_path="gs://my-bucket/templates/template.json",
             parameters={
                 "inputSubscription": "messages",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
         ## Note on "destroy" / "apply"
 
@@ -1034,20 +1034,20 @@ class FlexTemplateJob(pulumi.CustomResource):
         big_data_job_subscription_id = config.get("bigDataJobSubscriptionId")
         if big_data_job_subscription_id is None:
             big_data_job_subscription_id = "projects/myproject/subscriptions/messages"
-        big_data_job_name_suffix = random.RandomId("bigDataJobNameSuffix",
+        big_data_job_name_suffix = random.RandomId("big_data_job_name_suffix",
             byte_length=4,
             keepers={
-                "region": var["region"],
+                "region": region,
                 "subscription_id": big_data_job_subscription_id,
             })
-        big_data_job = gcp.dataflow.FlexTemplateJob("bigDataJob",
-            region=var["region"],
+        big_data_job = gcp.dataflow.FlexTemplateJob("big_data_job",
+            name=big_data_job_name_suffix.dec.apply(lambda dec: f"dataflow-flextemplates-job-{dec}"),
+            region=region,
             container_spec_gcs_path="gs://my-bucket/templates/template.json",
             skip_wait_on_job_termination=True,
             parameters={
                 "inputSubscription": big_data_job_subscription_id,
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
 
         ## Import
@@ -1113,12 +1113,12 @@ class FlexTemplateJob(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        big_data_job = gcp.dataflow.FlexTemplateJob("bigDataJob",
+        big_data_job = gcp.dataflow.FlexTemplateJob("big_data_job",
+            name="dataflow-flextemplates-job",
             container_spec_gcs_path="gs://my-bucket/templates/template.json",
             parameters={
                 "inputSubscription": "messages",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
         ## Note on "destroy" / "apply"
 
@@ -1158,20 +1158,20 @@ class FlexTemplateJob(pulumi.CustomResource):
         big_data_job_subscription_id = config.get("bigDataJobSubscriptionId")
         if big_data_job_subscription_id is None:
             big_data_job_subscription_id = "projects/myproject/subscriptions/messages"
-        big_data_job_name_suffix = random.RandomId("bigDataJobNameSuffix",
+        big_data_job_name_suffix = random.RandomId("big_data_job_name_suffix",
             byte_length=4,
             keepers={
-                "region": var["region"],
+                "region": region,
                 "subscription_id": big_data_job_subscription_id,
             })
-        big_data_job = gcp.dataflow.FlexTemplateJob("bigDataJob",
-            region=var["region"],
+        big_data_job = gcp.dataflow.FlexTemplateJob("big_data_job",
+            name=big_data_job_name_suffix.dec.apply(lambda dec: f"dataflow-flextemplates-job-{dec}"),
+            region=region,
             container_spec_gcs_path="gs://my-bucket/templates/template.json",
             skip_wait_on_job_termination=True,
             parameters={
                 "inputSubscription": big_data_job_subscription_id,
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
 
         ## Import

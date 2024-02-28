@@ -31,6 +31,7 @@ namespace Pulumi.Gcp.BigLake
     /// {
     ///     var @default = new Gcp.BigLake.Catalog("default", new()
     ///     {
+    ///         Name = "my_catalog",
     ///         Location = "US",
     ///     });
     /// 

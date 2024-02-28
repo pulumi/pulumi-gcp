@@ -285,19 +285,19 @@ class ProjectCustomModule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.securitycenter.ProjectCustomModule("example",
+            display_name="basic_custom_module",
+            enablement_state="ENABLED",
             custom_config=gcp.securitycenter.ProjectCustomModuleCustomConfigArgs(
-                description="The rotation period of the identified cryptokey resource exceeds 30 days.",
                 predicate=gcp.securitycenter.ProjectCustomModuleCustomConfigPredicateArgs(
                     expression="resource.rotationPeriod > duration(\\"2592000s\\")",
                 ),
-                recommendation="Set the rotation period to at most 30 days.",
                 resource_selector=gcp.securitycenter.ProjectCustomModuleCustomConfigResourceSelectorArgs(
                     resource_types=["cloudkms.googleapis.com/CryptoKey"],
                 ),
+                description="The rotation period of the identified cryptokey resource exceeds 30 days.",
+                recommendation="Set the rotation period to at most 30 days.",
                 severity="MEDIUM",
-            ),
-            display_name="basic_custom_module",
-            enablement_state="ENABLED")
+            ))
         ```
         ### Scc Project Custom Module Full
 
@@ -306,33 +306,33 @@ class ProjectCustomModule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.securitycenter.ProjectCustomModule("example",
+            display_name="full_custom_module",
+            enablement_state="ENABLED",
             custom_config=gcp.securitycenter.ProjectCustomModuleCustomConfigArgs(
+                predicate=gcp.securitycenter.ProjectCustomModuleCustomConfigPredicateArgs(
+                    expression="resource.rotationPeriod > duration(\\"2592000s\\")",
+                    title="Purpose of the expression",
+                    description="description of the expression",
+                    location="location of the expression",
+                ),
                 custom_output=gcp.securitycenter.ProjectCustomModuleCustomConfigCustomOutputArgs(
                     properties=[gcp.securitycenter.ProjectCustomModuleCustomConfigCustomOutputPropertyArgs(
                         name="duration",
                         value_expression=gcp.securitycenter.ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs(
-                            description="description of the expression",
                             expression="resource.rotationPeriod",
-                            location="location of the expression",
                             title="Purpose of the expression",
+                            description="description of the expression",
+                            location="location of the expression",
                         ),
                     )],
                 ),
-                description="Description of the custom module",
-                predicate=gcp.securitycenter.ProjectCustomModuleCustomConfigPredicateArgs(
-                    description="description of the expression",
-                    expression="resource.rotationPeriod > duration(\\"2592000s\\")",
-                    location="location of the expression",
-                    title="Purpose of the expression",
-                ),
-                recommendation="Steps to resolve violation",
                 resource_selector=gcp.securitycenter.ProjectCustomModuleCustomConfigResourceSelectorArgs(
                     resource_types=["cloudkms.googleapis.com/CryptoKey"],
                 ),
                 severity="LOW",
-            ),
-            display_name="full_custom_module",
-            enablement_state="ENABLED")
+                description="Description of the custom module",
+                recommendation="Steps to resolve violation",
+            ))
         ```
 
         ## Import
@@ -400,19 +400,19 @@ class ProjectCustomModule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.securitycenter.ProjectCustomModule("example",
+            display_name="basic_custom_module",
+            enablement_state="ENABLED",
             custom_config=gcp.securitycenter.ProjectCustomModuleCustomConfigArgs(
-                description="The rotation period of the identified cryptokey resource exceeds 30 days.",
                 predicate=gcp.securitycenter.ProjectCustomModuleCustomConfigPredicateArgs(
                     expression="resource.rotationPeriod > duration(\\"2592000s\\")",
                 ),
-                recommendation="Set the rotation period to at most 30 days.",
                 resource_selector=gcp.securitycenter.ProjectCustomModuleCustomConfigResourceSelectorArgs(
                     resource_types=["cloudkms.googleapis.com/CryptoKey"],
                 ),
+                description="The rotation period of the identified cryptokey resource exceeds 30 days.",
+                recommendation="Set the rotation period to at most 30 days.",
                 severity="MEDIUM",
-            ),
-            display_name="basic_custom_module",
-            enablement_state="ENABLED")
+            ))
         ```
         ### Scc Project Custom Module Full
 
@@ -421,33 +421,33 @@ class ProjectCustomModule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.securitycenter.ProjectCustomModule("example",
+            display_name="full_custom_module",
+            enablement_state="ENABLED",
             custom_config=gcp.securitycenter.ProjectCustomModuleCustomConfigArgs(
+                predicate=gcp.securitycenter.ProjectCustomModuleCustomConfigPredicateArgs(
+                    expression="resource.rotationPeriod > duration(\\"2592000s\\")",
+                    title="Purpose of the expression",
+                    description="description of the expression",
+                    location="location of the expression",
+                ),
                 custom_output=gcp.securitycenter.ProjectCustomModuleCustomConfigCustomOutputArgs(
                     properties=[gcp.securitycenter.ProjectCustomModuleCustomConfigCustomOutputPropertyArgs(
                         name="duration",
                         value_expression=gcp.securitycenter.ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs(
-                            description="description of the expression",
                             expression="resource.rotationPeriod",
-                            location="location of the expression",
                             title="Purpose of the expression",
+                            description="description of the expression",
+                            location="location of the expression",
                         ),
                     )],
                 ),
-                description="Description of the custom module",
-                predicate=gcp.securitycenter.ProjectCustomModuleCustomConfigPredicateArgs(
-                    description="description of the expression",
-                    expression="resource.rotationPeriod > duration(\\"2592000s\\")",
-                    location="location of the expression",
-                    title="Purpose of the expression",
-                ),
-                recommendation="Steps to resolve violation",
                 resource_selector=gcp.securitycenter.ProjectCustomModuleCustomConfigResourceSelectorArgs(
                     resource_types=["cloudkms.googleapis.com/CryptoKey"],
                 ),
                 severity="LOW",
-            ),
-            display_name="full_custom_module",
-            enablement_state="ENABLED")
+                description="Description of the custom module",
+                recommendation="Steps to resolve violation",
+            ))
         ```
 
         ## Import

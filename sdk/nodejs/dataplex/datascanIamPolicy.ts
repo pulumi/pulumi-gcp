@@ -32,9 +32,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.dataplex.DatascanIamPolicy("policy", {
- *     project: google_dataplex_datascan.basic_profile.project,
- *     location: google_dataplex_datascan.basic_profile.location,
- *     dataScanId: google_dataplex_datascan.basic_profile.data_scan_id,
+ *     project: basicProfile.project,
+ *     location: basicProfile.location,
+ *     dataScanId: basicProfile.dataScanId,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -46,9 +46,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.dataplex.DatascanIamBinding("binding", {
- *     project: google_dataplex_datascan.basic_profile.project,
- *     location: google_dataplex_datascan.basic_profile.location,
- *     dataScanId: google_dataplex_datascan.basic_profile.data_scan_id,
+ *     project: basicProfile.project,
+ *     location: basicProfile.location,
+ *     dataScanId: basicProfile.dataScanId,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
  * });
@@ -61,9 +61,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.dataplex.DatascanIamMember("member", {
- *     project: google_dataplex_datascan.basic_profile.project,
- *     location: google_dataplex_datascan.basic_profile.location,
- *     dataScanId: google_dataplex_datascan.basic_profile.data_scan_id,
+ *     project: basicProfile.project,
+ *     location: basicProfile.location,
+ *     dataScanId: basicProfile.dataScanId,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
  * });

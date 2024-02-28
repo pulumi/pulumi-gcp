@@ -371,8 +371,11 @@ class BillingAccountSink(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        log_bucket = gcp.storage.Bucket("log-bucket", location="US")
+        log_bucket = gcp.storage.Bucket("log-bucket",
+            name="billing-logging-bucket",
+            location="US")
         my_sink = gcp.logging.BillingAccountSink("my-sink",
+            name="my-sink",
             description="some explanation on what this is",
             billing_account="ABCDEF-012345-GHIJKL",
             destination=log_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"))
@@ -437,8 +440,11 @@ class BillingAccountSink(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        log_bucket = gcp.storage.Bucket("log-bucket", location="US")
+        log_bucket = gcp.storage.Bucket("log-bucket",
+            name="billing-logging-bucket",
+            location="US")
         my_sink = gcp.logging.BillingAccountSink("my-sink",
+            name="my-sink",
             description="some explanation on what this is",
             billing_account="ABCDEF-012345-GHIJKL",
             destination=log_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"))

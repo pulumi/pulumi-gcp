@@ -187,11 +187,14 @@ class EngineSplitTraffic(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket", location="US")
+        bucket = gcp.storage.Bucket("bucket",
+            name="appengine-static-content",
+            location="US")
         object = gcp.storage.BucketObject("object",
+            name="hello-world.zip",
             bucket=bucket.name,
             source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
-        liveapp_v1 = gcp.appengine.StandardAppVersion("liveappV1",
+        liveapp_v1 = gcp.appengine.StandardAppVersion("liveapp_v1",
             version_id="v1",
             service="liveapp",
             delete_service_on_destroy=True,
@@ -207,7 +210,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
             env_variables={
                 "port": "8080",
             })
-        liveapp_v2 = gcp.appengine.StandardAppVersion("liveappV2",
+        liveapp_v2 = gcp.appengine.StandardAppVersion("liveapp_v2",
             version_id="v2",
             service="liveapp",
             noop_on_destroy=True,
@@ -288,11 +291,14 @@ class EngineSplitTraffic(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket", location="US")
+        bucket = gcp.storage.Bucket("bucket",
+            name="appengine-static-content",
+            location="US")
         object = gcp.storage.BucketObject("object",
+            name="hello-world.zip",
             bucket=bucket.name,
             source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
-        liveapp_v1 = gcp.appengine.StandardAppVersion("liveappV1",
+        liveapp_v1 = gcp.appengine.StandardAppVersion("liveapp_v1",
             version_id="v1",
             service="liveapp",
             delete_service_on_destroy=True,
@@ -308,7 +314,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
             env_variables={
                 "port": "8080",
             })
-        liveapp_v2 = gcp.appengine.StandardAppVersion("liveappV2",
+        liveapp_v2 = gcp.appengine.StandardAppVersion("liveapp_v2",
             version_id="v2",
             service="liveapp",
             noop_on_destroy=True,

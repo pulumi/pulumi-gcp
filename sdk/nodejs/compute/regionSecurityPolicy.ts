@@ -15,10 +15,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const region_sec_policy_basic = new gcp.compute.RegionSecurityPolicy("region-sec-policy-basic", {
+ *     name: "my-sec-policy-basic",
  *     description: "basic region security policy",
  *     type: "CLOUD_ARMOR",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Region Security Policy With Ddos Protection Config
@@ -28,13 +27,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const region_sec_policy_ddos_protection = new gcp.compute.RegionSecurityPolicy("region-sec-policy-ddos-protection", {
+ *     name: "my-sec-policy-ddos-protection",
  *     description: "with ddos protection config",
  *     type: "CLOUD_ARMOR_NETWORK",
  *     ddosProtectionConfig: {
  *         ddosProtection: "ADVANCED_PREVIEW",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Region Security Policy With User Defined Fields
@@ -44,6 +42,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const region_sec_policy_user_defined_fields = new gcp.compute.RegionSecurityPolicy("region-sec-policy-user-defined-fields", {
+ *     name: "my-sec-policy-user-defined-fields",
  *     description: "with user defined fields",
  *     type: "CLOUD_ARMOR_NETWORK",
  *     userDefinedFields: [
@@ -62,8 +61,6 @@ import * as utilities from "../utilities";
  *             mask: "0xFFFFFFFF",
  *         },
  *     ],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

@@ -23,17 +23,18 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const featurestore = new gcp.vertex.AiFeatureStore("featurestore", {
+ *     name: "terraform",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     region: "us-central1",
+ *     onlineServingConfig: {
+ *         fixedNodeCount: 2,
+ *     },
  *     encryptionSpec: {
  *         kmsKeyName: "kms-name",
  *     },
  *     forceDestroy: true,
- *     labels: {
- *         foo: "bar",
- *     },
- *     onlineServingConfig: {
- *         fixedNodeCount: 2,
- *     },
- *     region: "us-central1",
  * });
  * ```
  * ### Vertex Ai Featurestore With Beta Fields
@@ -43,6 +44,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const featurestore = new gcp.vertex.AiFeatureStore("featurestore", {
+ *     name: "terraform2",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -55,8 +57,6 @@ import * as utilities from "../utilities";
  *     },
  *     onlineStorageTtlDays: 30,
  *     forceDestroy: true,
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Vertex Ai Featurestore Scaling
@@ -66,20 +66,21 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const featurestore = new gcp.vertex.AiFeatureStore("featurestore", {
+ *     name: "terraform3",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     region: "us-central1",
+ *     onlineServingConfig: {
+ *         scaling: {
+ *             minNodeCount: 2,
+ *             maxNodeCount: 10,
+ *         },
+ *     },
  *     encryptionSpec: {
  *         kmsKeyName: "kms-name",
  *     },
  *     forceDestroy: true,
- *     labels: {
- *         foo: "bar",
- *     },
- *     onlineServingConfig: {
- *         scaling: {
- *             maxNodeCount: 10,
- *             minNodeCount: 2,
- *         },
- *     },
- *     region: "us-central1",
  * });
  * ```
  *

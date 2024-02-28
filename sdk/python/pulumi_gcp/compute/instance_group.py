@@ -359,9 +359,10 @@ class InstanceGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         test = gcp.compute.InstanceGroup("test",
+            name="test",
             description="Test instance group",
             zone="us-central1-a",
-            network=google_compute_network["default"]["id"])
+            network=default["id"])
         ```
         ### Example Usage - With instances and named ports
 
@@ -370,10 +371,11 @@ class InstanceGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         webservers = gcp.compute.InstanceGroup("webservers",
+            name="webservers",
             description="Test instance group",
             instances=[
-                google_compute_instance["test"]["id"],
-                google_compute_instance["test2"]["id"],
+                test["id"],
+                test2["id"],
             ],
             named_ports=[
                 gcp.compute.InstanceGroupNamedPortArgs(
@@ -386,6 +388,55 @@ class InstanceGroup(pulumi.CustomResource):
                 ),
             ],
             zone="us-central1-a")
+        ```
+        ### Example Usage - Recreating an instance group in use
+        Recreating an instance group that's in use by another resource will give a
+        `resourceInUseByAnotherResource` error. Use `lifecycle.create_before_destroy`
+        as shown in this example to avoid this type of error.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        staging_vm = gcp.compute.Instance("staging_vm",
+            name="staging-vm",
+            machine_type="e2-medium",
+            zone="us-central1-c",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image=debian_image.self_link,
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network="default",
+            )])
+        staging_group = gcp.compute.InstanceGroup("staging_group",
+            name="staging-instance-group",
+            zone="us-central1-c",
+            instances=[staging_vm.id],
+            named_ports=[
+                gcp.compute.InstanceGroupNamedPortArgs(
+                    name="http",
+                    port=8080,
+                ),
+                gcp.compute.InstanceGroupNamedPortArgs(
+                    name="https",
+                    port=8443,
+                ),
+            ])
+        staging_health = gcp.compute.HttpsHealthCheck("staging_health",
+            name="staging-health",
+            request_path="/health_check")
+        staging_service = gcp.compute.BackendService("staging_service",
+            name="staging-service",
+            port_name="https",
+            protocol="HTTPS",
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=staging_group.id,
+            )],
+            health_checks=staging_health.id)
         ```
 
         ## Import
@@ -453,9 +504,10 @@ class InstanceGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         test = gcp.compute.InstanceGroup("test",
+            name="test",
             description="Test instance group",
             zone="us-central1-a",
-            network=google_compute_network["default"]["id"])
+            network=default["id"])
         ```
         ### Example Usage - With instances and named ports
 
@@ -464,10 +516,11 @@ class InstanceGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         webservers = gcp.compute.InstanceGroup("webservers",
+            name="webservers",
             description="Test instance group",
             instances=[
-                google_compute_instance["test"]["id"],
-                google_compute_instance["test2"]["id"],
+                test["id"],
+                test2["id"],
             ],
             named_ports=[
                 gcp.compute.InstanceGroupNamedPortArgs(
@@ -480,6 +533,55 @@ class InstanceGroup(pulumi.CustomResource):
                 ),
             ],
             zone="us-central1-a")
+        ```
+        ### Example Usage - Recreating an instance group in use
+        Recreating an instance group that's in use by another resource will give a
+        `resourceInUseByAnotherResource` error. Use `lifecycle.create_before_destroy`
+        as shown in this example to avoid this type of error.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        staging_vm = gcp.compute.Instance("staging_vm",
+            name="staging-vm",
+            machine_type="e2-medium",
+            zone="us-central1-c",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image=debian_image.self_link,
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network="default",
+            )])
+        staging_group = gcp.compute.InstanceGroup("staging_group",
+            name="staging-instance-group",
+            zone="us-central1-c",
+            instances=[staging_vm.id],
+            named_ports=[
+                gcp.compute.InstanceGroupNamedPortArgs(
+                    name="http",
+                    port=8080,
+                ),
+                gcp.compute.InstanceGroupNamedPortArgs(
+                    name="https",
+                    port=8443,
+                ),
+            ])
+        staging_health = gcp.compute.HttpsHealthCheck("staging_health",
+            name="staging-health",
+            request_path="/health_check")
+        staging_service = gcp.compute.BackendService("staging_service",
+            name="staging-service",
+            port_name="https",
+            protocol="HTTPS",
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=staging_group.id,
+            )],
+            health_checks=staging_health.id)
         ```
 
         ## Import

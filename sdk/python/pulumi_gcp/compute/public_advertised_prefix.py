@@ -265,6 +265,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         prefixes = gcp.compute.PublicAdvertisedPrefix("prefixes",
+            name="my-prefix",
             description="description",
             dns_verification_ip="127.127.0.0",
             ip_cidr_range="127.127.0.0/16")
@@ -334,6 +335,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         prefixes = gcp.compute.PublicAdvertisedPrefix("prefixes",
+            name="my-prefix",
             description="description",
             dns_verification_ip="127.127.0.0",
             ip_cidr_range="127.127.0.0/16")

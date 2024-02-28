@@ -24,14 +24,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const entryGroup = new gcp.datacatalog.EntryGroup("entryGroup", {entryGroupId: "my_entry_group"});
+ * const entryGroup = new gcp.datacatalog.EntryGroup("entry_group", {entryGroupId: "my_entry_group"});
  * const entry = new gcp.datacatalog.Entry("entry", {
  *     entryGroup: entryGroup.id,
  *     entryId: "my_entry",
  *     userSpecifiedType: "my_custom_type",
  *     userSpecifiedSystem: "SomethingExternal",
  * });
- * const tagTemplate = new gcp.datacatalog.TagTemplate("tagTemplate", {
+ * const tagTemplate = new gcp.datacatalog.TagTemplate("tag_template", {
  *     tagTemplateId: "my_template",
  *     region: "us-central1",
  *     displayName: "Demo Tag Template",
@@ -73,7 +73,7 @@ import * as utilities from "../utilities";
  *     ],
  *     forceDelete: false,
  * });
- * const basicTag = new gcp.datacatalog.Tag("basicTag", {
+ * const basicTag = new gcp.datacatalog.Tag("basic_tag", {
  *     parent: entry.id,
  *     template: tagTemplate.id,
  *     fields: [{
@@ -88,20 +88,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const entryGroup = new gcp.datacatalog.EntryGroup("entryGroup", {entryGroupId: "my_entry_group"});
- * const firstEntry = new gcp.datacatalog.Entry("firstEntry", {
+ * const entryGroup = new gcp.datacatalog.EntryGroup("entry_group", {entryGroupId: "my_entry_group"});
+ * const firstEntry = new gcp.datacatalog.Entry("first_entry", {
  *     entryGroup: entryGroup.id,
  *     entryId: "first_entry",
  *     userSpecifiedType: "my_custom_type",
  *     userSpecifiedSystem: "SomethingExternal",
  * });
- * const secondEntry = new gcp.datacatalog.Entry("secondEntry", {
+ * const secondEntry = new gcp.datacatalog.Entry("second_entry", {
  *     entryGroup: entryGroup.id,
  *     entryId: "second_entry",
  *     userSpecifiedType: "another_custom_type",
  *     userSpecifiedSystem: "SomethingElseExternal",
  * });
- * const tagTemplate = new gcp.datacatalog.TagTemplate("tagTemplate", {
+ * const tagTemplate = new gcp.datacatalog.TagTemplate("tag_template", {
  *     tagTemplateId: "my_template",
  *     region: "us-central1",
  *     displayName: "Demo Tag Template",
@@ -143,7 +143,7 @@ import * as utilities from "../utilities";
  *     ],
  *     forceDelete: false,
  * });
- * const entryGroupTag = new gcp.datacatalog.Tag("entryGroupTag", {
+ * const entryGroupTag = new gcp.datacatalog.Tag("entry_group_tag", {
  *     parent: entryGroup.id,
  *     template: tagTemplate.id,
  *     fields: [{
@@ -158,7 +158,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const entryGroup = new gcp.datacatalog.EntryGroup("entryGroup", {entryGroupId: "my_entry_group"});
+ * const entryGroup = new gcp.datacatalog.EntryGroup("entry_group", {entryGroupId: "my_entry_group"});
  * const entry = new gcp.datacatalog.Entry("entry", {
  *     entryGroup: entryGroup.id,
  *     entryId: "my_entry",
@@ -202,7 +202,7 @@ import * as utilities from "../utilities";
  * }
  * `,
  * });
- * const tagTemplate = new gcp.datacatalog.TagTemplate("tagTemplate", {
+ * const tagTemplate = new gcp.datacatalog.TagTemplate("tag_template", {
  *     tagTemplateId: "my_template",
  *     region: "us-central1",
  *     displayName: "Demo Tag Template",
@@ -244,7 +244,7 @@ import * as utilities from "../utilities";
  *     ],
  *     forceDelete: false,
  * });
- * const basicTag = new gcp.datacatalog.Tag("basicTag", {
+ * const basicTag = new gcp.datacatalog.Tag("basic_tag", {
  *     parent: entry.id,
  *     template: tagTemplate.id,
  *     fields: [

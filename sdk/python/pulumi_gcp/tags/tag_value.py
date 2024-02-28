@@ -231,13 +231,13 @@ class TagValue(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         key = gcp.tags.TagKey("key",
-            description="For keyname resources.",
             parent="organizations/123456789",
-            short_name="keyname")
+            short_name="keyname",
+            description="For keyname resources.")
         value = gcp.tags.TagValue("value",
-            description="For valuename resources.",
             parent=key.name.apply(lambda name: f"tagKeys/{name}"),
-            short_name="valuename")
+            short_name="valuename",
+            description="For valuename resources.")
         ```
 
         ## Import
@@ -291,13 +291,13 @@ class TagValue(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         key = gcp.tags.TagKey("key",
-            description="For keyname resources.",
             parent="organizations/123456789",
-            short_name="keyname")
+            short_name="keyname",
+            description="For keyname resources.")
         value = gcp.tags.TagValue("value",
-            description="For valuename resources.",
             parent=key.name.apply(lambda name: f"tagKeys/{name}"),
-            short_name="valuename")
+            short_name="valuename",
+            description="For valuename resources.")
         ```
 
         ## Import

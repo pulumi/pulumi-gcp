@@ -133,7 +133,7 @@ def get_project_service_account(project: Optional[str] = None,
 
     gcs_account = gcp.storage.get_project_service_account()
     binding = gcp.pubsub.TopicIAMBinding("binding",
-        topic=google_pubsub_topic["topic"]["name"],
+        topic=topic["name"],
         role="roles/pubsub.publisher",
         members=[f"serviceAccount:{gcs_account.email_address}"])
     ```
@@ -149,11 +149,11 @@ def get_project_service_account(project: Optional[str] = None,
         role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
         members=[f"serviceAccount:{gcs_account.email_address}"])
     bucket = gcp.storage.Bucket("bucket",
+        name="kms-protected-bucket",
         location="US",
         encryption=gcp.storage.BucketEncryptionArgs(
             default_kms_key_name="your-crypto-key-id",
-        ),
-        opts=pulumi.ResourceOptions(depends_on=[binding]))
+        ))
     ```
 
 
@@ -222,7 +222,7 @@ def get_project_service_account_output(project: Optional[pulumi.Input[Optional[s
 
     gcs_account = gcp.storage.get_project_service_account()
     binding = gcp.pubsub.TopicIAMBinding("binding",
-        topic=google_pubsub_topic["topic"]["name"],
+        topic=topic["name"],
         role="roles/pubsub.publisher",
         members=[f"serviceAccount:{gcs_account.email_address}"])
     ```
@@ -238,11 +238,11 @@ def get_project_service_account_output(project: Optional[pulumi.Input[Optional[s
         role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
         members=[f"serviceAccount:{gcs_account.email_address}"])
     bucket = gcp.storage.Bucket("bucket",
+        name="kms-protected-bucket",
         location="US",
         encryption=gcp.storage.BucketEncryptionArgs(
             default_kms_key_name="your-crypto-key-id",
-        ),
-        opts=pulumi.ResourceOptions(depends_on=[binding]))
+        ))
     ```
 
 

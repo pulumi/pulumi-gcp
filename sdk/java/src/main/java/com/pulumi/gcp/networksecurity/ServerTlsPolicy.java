@@ -33,7 +33,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networksecurity.inputs.ServerTlsPolicyServerCertificateArgs;
  * import com.pulumi.gcp.networksecurity.inputs.ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs;
  * import com.pulumi.gcp.networksecurity.inputs.ServerTlsPolicyMtlsPolicyArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -48,6 +47,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new ServerTlsPolicy(&#34;default&#34;, ServerTlsPolicyArgs.builder()        
+ *             .name(&#34;my-server-tls-policy&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .description(&#34;my description&#34;)
  *             .allowOpen(&#34;false&#34;)
@@ -74,9 +74,7 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -91,7 +89,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networksecurity.ServerTlsPolicy;
  * import com.pulumi.gcp.networksecurity.ServerTlsPolicyArgs;
  * import com.pulumi.gcp.networksecurity.inputs.ServerTlsPolicyMtlsPolicyArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -106,6 +103,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new ServerTlsPolicy(&#34;default&#34;, ServerTlsPolicyArgs.builder()        
+ *             .name(&#34;my-server-tls-policy&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .description(&#34;my description&#34;)
  *             .location(&#34;global&#34;)
@@ -113,9 +111,7 @@ import javax.annotation.Nullable;
  *             .mtlsPolicy(ServerTlsPolicyMtlsPolicyArgs.builder()
  *                 .clientValidationMode(&#34;ALLOW_INVALID_OR_MISSING_CLIENT_CERT&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -131,7 +127,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networksecurity.ServerTlsPolicyArgs;
  * import com.pulumi.gcp.networksecurity.inputs.ServerTlsPolicyServerCertificateArgs;
  * import com.pulumi.gcp.networksecurity.inputs.ServerTlsPolicyServerCertificateGrpcEndpointArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -146,6 +141,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new ServerTlsPolicy(&#34;default&#34;, ServerTlsPolicyArgs.builder()        
+ *             .name(&#34;my-server-tls-policy&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .description(&#34;my description&#34;)
  *             .location(&#34;global&#34;)
@@ -155,9 +151,7 @@ import javax.annotation.Nullable;
  *                     .targetUri(&#34;unix:mypath&#34;)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -177,7 +171,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networksecurity.ServerTlsPolicy;
  * import com.pulumi.gcp.networksecurity.ServerTlsPolicyArgs;
  * import com.pulumi.gcp.networksecurity.inputs.ServerTlsPolicyMtlsPolicyArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -194,22 +187,26 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var defaultTrustConfig = new TrustConfig(&#34;defaultTrustConfig&#34;, TrustConfigArgs.builder()        
+ *             .name(&#34;my-trust-config&#34;)
  *             .description(&#34;sample trust config description&#34;)
  *             .location(&#34;global&#34;)
  *             .trustStores(TrustConfigTrustStoreArgs.builder()
  *                 .trustAnchors(TrustConfigTrustStoreTrustAnchorArgs.builder()
- *                     .pemCertificate(Files.readString(Paths.get(&#34;test-fixtures/ca_cert.pem&#34;)))
+ *                     .pemCertificate(StdFunctions.file(FileArgs.builder()
+ *                         .input(&#34;test-fixtures/ca_cert.pem&#34;)
+ *                         .build()).result())
  *                     .build())
  *                 .intermediateCas(TrustConfigTrustStoreIntermediateCaArgs.builder()
- *                     .pemCertificate(Files.readString(Paths.get(&#34;test-fixtures/ca_cert.pem&#34;)))
+ *                     .pemCertificate(StdFunctions.file(FileArgs.builder()
+ *                         .input(&#34;test-fixtures/ca_cert.pem&#34;)
+ *                         .build()).result())
  *                     .build())
  *                 .build())
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
- *         var defaultServerTlsPolicy = new ServerTlsPolicy(&#34;defaultServerTlsPolicy&#34;, ServerTlsPolicyArgs.builder()        
+ *         var default_ = new ServerTlsPolicy(&#34;default&#34;, ServerTlsPolicyArgs.builder()        
+ *             .name(&#34;my-server-tls-policy&#34;)
  *             .description(&#34;my description&#34;)
  *             .location(&#34;global&#34;)
  *             .allowOpen(&#34;false&#34;)
@@ -218,9 +215,7 @@ import javax.annotation.Nullable;
  *                 .clientValidationTrustConfig(defaultTrustConfig.name().applyValue(name -&gt; String.format(&#34;projects/%s/locations/global/trustConfigs/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()),name)))
  *                 .build())
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

@@ -275,8 +275,8 @@ class SecretIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.secretmanager.SecretIamPolicy("policy",
-            project=google_secret_manager_secret["secret-basic"]["project"],
-            secret_id=google_secret_manager_secret["secret-basic"]["secret_id"],
+            project=secret_basic["project"],
+            secret_id=secret_basic["secretId"],
             policy_data=admin.policy_data)
         ```
 
@@ -287,8 +287,8 @@ class SecretIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.secretmanager.SecretIamBinding("binding",
-            project=google_secret_manager_secret["secret-basic"]["project"],
-            secret_id=google_secret_manager_secret["secret-basic"]["secret_id"],
+            project=secret_basic["project"],
+            secret_id=secret_basic["secretId"],
             role="roles/secretmanager.secretAccessor",
             members=["user:jane@example.com"])
         ```
@@ -300,8 +300,8 @@ class SecretIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.secretmanager.SecretIamMember("member",
-            project=google_secret_manager_secret["secret-basic"]["project"],
-            secret_id=google_secret_manager_secret["secret-basic"]["secret_id"],
+            project=secret_basic["project"],
+            secret_id=secret_basic["secretId"],
             role="roles/secretmanager.secretAccessor",
             member="user:jane@example.com")
         ```
@@ -394,8 +394,8 @@ class SecretIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.secretmanager.SecretIamPolicy("policy",
-            project=google_secret_manager_secret["secret-basic"]["project"],
-            secret_id=google_secret_manager_secret["secret-basic"]["secret_id"],
+            project=secret_basic["project"],
+            secret_id=secret_basic["secretId"],
             policy_data=admin.policy_data)
         ```
 
@@ -406,8 +406,8 @@ class SecretIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.secretmanager.SecretIamBinding("binding",
-            project=google_secret_manager_secret["secret-basic"]["project"],
-            secret_id=google_secret_manager_secret["secret-basic"]["secret_id"],
+            project=secret_basic["project"],
+            secret_id=secret_basic["secretId"],
             role="roles/secretmanager.secretAccessor",
             members=["user:jane@example.com"])
         ```
@@ -419,8 +419,8 @@ class SecretIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.secretmanager.SecretIamMember("member",
-            project=google_secret_manager_secret["secret-basic"]["project"],
-            secret_id=google_secret_manager_secret["secret-basic"]["secret_id"],
+            project=secret_basic["project"],
+            secret_id=secret_basic["secretId"],
             role="roles/secretmanager.secretAccessor",
             member="user:jane@example.com")
         ```

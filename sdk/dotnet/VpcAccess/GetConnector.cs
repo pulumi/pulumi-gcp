@@ -39,6 +39,7 @@ namespace Pulumi.Gcp.VpcAccess
         /// 
         ///     var connector = new Gcp.VpcAccess.Connector("connector", new()
         ///     {
+        ///         Name = "vpc-con",
         ///         IpCidrRange = "10.8.0.0/28",
         ///         Network = "default",
         ///         Region = "us-central1",
@@ -80,6 +81,7 @@ namespace Pulumi.Gcp.VpcAccess
         /// 
         ///     var connector = new Gcp.VpcAccess.Connector("connector", new()
         ///     {
+        ///         Name = "vpc-con",
         ///         IpCidrRange = "10.8.0.0/28",
         ///         Network = "default",
         ///         Region = "us-central1",

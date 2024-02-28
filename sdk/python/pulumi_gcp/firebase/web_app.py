@@ -261,25 +261,29 @@ class WebApp(pulumi.CustomResource):
         import json
         import pulumi_gcp as gcp
 
-        basic_web_app = gcp.firebase.WebApp("basicWebApp",
+
+        def not_implemented(msg):
+            raise NotImplementedError(msg)
+
+        basic_web_app = gcp.firebase.WebApp("basic",
             project="my-project-name",
-            display_name="Display Name Basic",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        basic_web_app_config = gcp.firebase.get_web_app_config_output(web_app_id=basic_web_app.app_id)
-        default_bucket = gcp.storage.Bucket("defaultBucket", location="US",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_bucket_object = gcp.storage.BucketObject("defaultBucketObject",
-            bucket=default_bucket.name,
+            display_name="Display Name Basic")
+        basic = gcp.firebase.get_web_app_config_output(web_app_id=basic_web_app.app_id)
+        default = gcp.storage.Bucket("default",
+            name="fb-webapp-",
+            location="US")
+        default_bucket_object = gcp.storage.BucketObject("default",
+            bucket=default.name,
+            name="firebase-config.json",
             content=pulumi.Output.json_dumps({
                 "appId": basic_web_app.app_id,
-                "apiKey": basic_web_app_config.api_key,
-                "authDomain": basic_web_app_config.auth_domain,
-                "databaseURL": (lambda v, def: v if v is not None else def)(basic_web_app_config["database_url"], ""),
-                "storageBucket": (lambda v, def: v if v is not None else def)(basic_web_app_config["storage_bucket"], ""),
-                "messagingSenderId": (lambda v, def: v if v is not None else def)(basic_web_app_config["messaging_sender_id"], ""),
-                "measurementId": (lambda v, def: v if v is not None else def)(basic_web_app_config["measurement_id"], ""),
-            }),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+                "apiKey": basic.api_key,
+                "authDomain": basic.auth_domain,
+                "databaseURL": not_implemented("lookup(data.google_firebase_web_app_config.basic,\\"database_url\\",\\"\\")"),
+                "storageBucket": not_implemented("lookup(data.google_firebase_web_app_config.basic,\\"storage_bucket\\",\\"\\")"),
+                "messagingSenderId": not_implemented("lookup(data.google_firebase_web_app_config.basic,\\"messaging_sender_id\\",\\"\\")"),
+                "measurementId": not_implemented("lookup(data.google_firebase_web_app_config.basic,\\"measurement_id\\",\\"\\")"),
+            }))
         ```
         ### Firebase Web App Custom Api Key
 
@@ -289,19 +293,18 @@ class WebApp(pulumi.CustomResource):
 
         web = gcp.projects.ApiKey("web",
             project="my-project-name",
+            name="api-key",
             display_name="Display Name",
             restrictions=gcp.projects.ApiKeyRestrictionsArgs(
                 browser_key_restrictions=gcp.projects.ApiKeyRestrictionsBrowserKeyRestrictionsArgs(
                     allowed_referrers=["*"],
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         default = gcp.firebase.WebApp("default",
             project="my-project-name",
             display_name="Display Name",
             api_key_id=web.uid,
-            deletion_policy="DELETE",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            deletion_policy="DELETE")
         ```
 
         ## Import
@@ -377,25 +380,29 @@ class WebApp(pulumi.CustomResource):
         import json
         import pulumi_gcp as gcp
 
-        basic_web_app = gcp.firebase.WebApp("basicWebApp",
+
+        def not_implemented(msg):
+            raise NotImplementedError(msg)
+
+        basic_web_app = gcp.firebase.WebApp("basic",
             project="my-project-name",
-            display_name="Display Name Basic",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        basic_web_app_config = gcp.firebase.get_web_app_config_output(web_app_id=basic_web_app.app_id)
-        default_bucket = gcp.storage.Bucket("defaultBucket", location="US",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_bucket_object = gcp.storage.BucketObject("defaultBucketObject",
-            bucket=default_bucket.name,
+            display_name="Display Name Basic")
+        basic = gcp.firebase.get_web_app_config_output(web_app_id=basic_web_app.app_id)
+        default = gcp.storage.Bucket("default",
+            name="fb-webapp-",
+            location="US")
+        default_bucket_object = gcp.storage.BucketObject("default",
+            bucket=default.name,
+            name="firebase-config.json",
             content=pulumi.Output.json_dumps({
                 "appId": basic_web_app.app_id,
-                "apiKey": basic_web_app_config.api_key,
-                "authDomain": basic_web_app_config.auth_domain,
-                "databaseURL": (lambda v, def: v if v is not None else def)(basic_web_app_config["database_url"], ""),
-                "storageBucket": (lambda v, def: v if v is not None else def)(basic_web_app_config["storage_bucket"], ""),
-                "messagingSenderId": (lambda v, def: v if v is not None else def)(basic_web_app_config["messaging_sender_id"], ""),
-                "measurementId": (lambda v, def: v if v is not None else def)(basic_web_app_config["measurement_id"], ""),
-            }),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+                "apiKey": basic.api_key,
+                "authDomain": basic.auth_domain,
+                "databaseURL": not_implemented("lookup(data.google_firebase_web_app_config.basic,\\"database_url\\",\\"\\")"),
+                "storageBucket": not_implemented("lookup(data.google_firebase_web_app_config.basic,\\"storage_bucket\\",\\"\\")"),
+                "messagingSenderId": not_implemented("lookup(data.google_firebase_web_app_config.basic,\\"messaging_sender_id\\",\\"\\")"),
+                "measurementId": not_implemented("lookup(data.google_firebase_web_app_config.basic,\\"measurement_id\\",\\"\\")"),
+            }))
         ```
         ### Firebase Web App Custom Api Key
 
@@ -405,19 +412,18 @@ class WebApp(pulumi.CustomResource):
 
         web = gcp.projects.ApiKey("web",
             project="my-project-name",
+            name="api-key",
             display_name="Display Name",
             restrictions=gcp.projects.ApiKeyRestrictionsArgs(
                 browser_key_restrictions=gcp.projects.ApiKeyRestrictionsBrowserKeyRestrictionsArgs(
                     allowed_referrers=["*"],
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         default = gcp.firebase.WebApp("default",
             project="my-project-name",
             display_name="Display Name",
             api_key_id=web.uid,
-            deletion_policy="DELETE",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            deletion_policy="DELETE")
         ```
 
         ## Import

@@ -36,6 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -49,7 +50,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new GlobalAddress(&#34;default&#34;);
+ *         var default_ = new GlobalAddress(&#34;default&#34;, GlobalAddressArgs.builder()        
+ *             .name(&#34;global-appserver-ip&#34;)
+ *             .build());
  * 
  *     }
  * }
@@ -65,7 +68,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.GlobalAddress;
  * import com.pulumi.gcp.compute.GlobalAddressArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -80,19 +82,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
+ *             .name(&#34;my-network-name&#34;)
  *             .autoCreateSubnetworks(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var default_ = new GlobalAddress(&#34;default&#34;, GlobalAddressArgs.builder()        
+ *             .name(&#34;global-psconnect-ip&#34;)
  *             .addressType(&#34;INTERNAL&#34;)
  *             .purpose(&#34;PRIVATE_SERVICE_CONNECT&#34;)
  *             .network(network.id())
  *             .address(&#34;100.100.100.105&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

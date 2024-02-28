@@ -15,13 +15,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networksecurity.ClientTlsPolicy("default", {
+ *     name: "my-client-tls-policy",
  *     labels: {
  *         foo: "bar",
  *     },
  *     description: "my description",
  *     sni: "secure.example.com",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Network Security Client Tls Policy Advanced
@@ -31,6 +30,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networksecurity.ClientTlsPolicy("default", {
+ *     name: "my-client-tls-policy",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -52,8 +52,6 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     ],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

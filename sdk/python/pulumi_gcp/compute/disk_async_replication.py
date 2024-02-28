@@ -119,10 +119,12 @@ class DiskAsyncReplication(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary_disk = gcp.compute.Disk("primary-disk",
+            name="primary-disk",
             type="pd-ssd",
             zone="europe-west4-a",
             physical_block_size_bytes=4096)
         secondary_disk = gcp.compute.Disk("secondary-disk",
+            name="secondary-disk",
             type="pd-ssd",
             zone="europe-west3-a",
             async_primary_disk=gcp.compute.DiskAsyncPrimaryDiskArgs(
@@ -161,10 +163,12 @@ class DiskAsyncReplication(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary_disk = gcp.compute.Disk("primary-disk",
+            name="primary-disk",
             type="pd-ssd",
             zone="europe-west4-a",
             physical_block_size_bytes=4096)
         secondary_disk = gcp.compute.Disk("secondary-disk",
+            name="secondary-disk",
             type="pd-ssd",
             zone="europe-west3-a",
             async_primary_disk=gcp.compute.DiskAsyncPrimaryDiskArgs(

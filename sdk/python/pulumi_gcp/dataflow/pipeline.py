@@ -495,10 +495,11 @@ class Pipeline(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        service_account = gcp.serviceaccount.Account("serviceAccount",
+        service_account = gcp.serviceaccount.Account("service_account",
             account_id="my-account",
             display_name="Service Account")
         primary = gcp.dataflow.Pipeline("primary",
+            name="my-pipeline",
             display_name="my-pipeline",
             type="PIPELINE_TYPE_BATCH",
             state="STATE_ACTIVE",
@@ -622,10 +623,11 @@ class Pipeline(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        service_account = gcp.serviceaccount.Account("serviceAccount",
+        service_account = gcp.serviceaccount.Account("service_account",
             account_id="my-account",
             display_name="Service Account")
         primary = gcp.dataflow.Pipeline("primary",
+            name="my-pipeline",
             display_name="my-pipeline",
             type="PIPELINE_TYPE_BATCH",
             state="STATE_ACTIVE",

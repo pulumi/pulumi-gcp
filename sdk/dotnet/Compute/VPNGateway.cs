@@ -31,32 +31,42 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var network1 = new Gcp.Compute.Network("network1");
-    /// 
-    ///     var targetGateway = new Gcp.Compute.VPNGateway("targetGateway", new()
+    ///     var network1 = new Gcp.Compute.Network("network1", new()
     ///     {
+    ///         Name = "network-1",
+    ///     });
+    /// 
+    ///     var targetGateway = new Gcp.Compute.VPNGateway("target_gateway", new()
+    ///     {
+    ///         Name = "vpn-1",
     ///         Network = network1.Id,
     ///     });
     /// 
-    ///     var vpnStaticIp = new Gcp.Compute.Address("vpnStaticIp");
-    /// 
-    ///     var frEsp = new Gcp.Compute.ForwardingRule("frEsp", new()
+    ///     var vpnStaticIp = new Gcp.Compute.Address("vpn_static_ip", new()
     ///     {
+    ///         Name = "vpn-static-ip",
+    ///     });
+    /// 
+    ///     var frEsp = new Gcp.Compute.ForwardingRule("fr_esp", new()
+    ///     {
+    ///         Name = "fr-esp",
     ///         IpProtocol = "ESP",
     ///         IpAddress = vpnStaticIp.IPAddress,
     ///         Target = targetGateway.Id,
     ///     });
     /// 
-    ///     var frUdp500 = new Gcp.Compute.ForwardingRule("frUdp500", new()
+    ///     var frUdp500 = new Gcp.Compute.ForwardingRule("fr_udp500", new()
     ///     {
+    ///         Name = "fr-udp500",
     ///         IpProtocol = "UDP",
     ///         PortRange = "500",
     ///         IpAddress = vpnStaticIp.IPAddress,
     ///         Target = targetGateway.Id,
     ///     });
     /// 
-    ///     var frUdp4500 = new Gcp.Compute.ForwardingRule("frUdp4500", new()
+    ///     var frUdp4500 = new Gcp.Compute.ForwardingRule("fr_udp4500", new()
     ///     {
+    ///         Name = "fr-udp4500",
     ///         IpProtocol = "UDP",
     ///         PortRange = "4500",
     ///         IpAddress = vpnStaticIp.IPAddress,
@@ -65,21 +75,15 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var tunnel1 = new Gcp.Compute.VPNTunnel("tunnel1", new()
     ///     {
+    ///         Name = "tunnel1",
     ///         PeerIp = "15.0.0.120",
     ///         SharedSecret = "a secret message",
     ///         TargetVpnGateway = targetGateway.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             frEsp,
-    ///             frUdp500,
-    ///             frUdp4500,
-    ///         },
     ///     });
     /// 
     ///     var route1 = new Gcp.Compute.Route("route1", new()
     ///     {
+    ///         Name = "route1",
     ///         Network = network1.Name,
     ///         DestRange = "15.0.0.0/24",
     ///         Priority = 1000,

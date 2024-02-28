@@ -29,7 +29,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networksecurity.SecurityProfileArgs;
  * import com.pulumi.gcp.networksecurity.SecurityProfileGroup;
  * import com.pulumi.gcp.networksecurity.SecurityProfileGroupArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -44,21 +43,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var securityProfile = new SecurityProfile(&#34;securityProfile&#34;, SecurityProfileArgs.builder()        
+ *             .name(&#34;sec-profile&#34;)
  *             .type(&#34;THREAT_PREVENTION&#34;)
  *             .parent(&#34;organizations/123456789&#34;)
  *             .location(&#34;global&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var default_ = new SecurityProfileGroup(&#34;default&#34;, SecurityProfileGroupArgs.builder()        
+ *             .name(&#34;sec-profile-group&#34;)
  *             .parent(&#34;organizations/123456789&#34;)
  *             .description(&#34;my description&#34;)
  *             .threatPreventionProfile(securityProfile.id())
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

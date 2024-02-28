@@ -62,6 +62,7 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
+ *             .name(&#34;default&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .authorization(ClusterAuthorizationArgs.builder()
  *                 .adminUsers(ClusterAuthorizationAdminUsersArgs.builder()
@@ -78,6 +79,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var default_ = new NodePool(&#34;default&#34;, NodePoolArgs.builder()        
+ *             .name(&#34;nodepool-1&#34;)
  *             .cluster(cluster.name())
  *             .location(&#34;us-central1&#34;)
  *             .nodeLocation(&#34;us-central1-edge-example-edgesite&#34;)
@@ -115,7 +117,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.edgecontainer.NodePool;
  * import com.pulumi.gcp.edgecontainer.NodePoolArgs;
  * import com.pulumi.gcp.edgecontainer.inputs.NodePoolLocalDiskEncryptionArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -132,6 +133,7 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
+ *             .name(&#34;default&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .authorization(ClusterAuthorizationArgs.builder()
  *                 .adminUsers(ClusterAuthorizationAdminUsersArgs.builder()
@@ -148,20 +150,23 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
+ *             .name(&#34;keyring&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .build());
  * 
  *         var cryptoKeyCryptoKey = new CryptoKey(&#34;cryptoKeyCryptoKey&#34;, CryptoKeyArgs.builder()        
+ *             .name(&#34;key&#34;)
  *             .keyRing(keyRing.id())
  *             .build());
  * 
- *         var cryptoKeyCryptoKeyIAMMember = new CryptoKeyIAMMember(&#34;cryptoKeyCryptoKeyIAMMember&#34;, CryptoKeyIAMMemberArgs.builder()        
+ *         var cryptoKey = new CryptoKeyIAMMember(&#34;cryptoKey&#34;, CryptoKeyIAMMemberArgs.builder()        
  *             .cryptoKeyId(cryptoKeyCryptoKey.id())
  *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
  *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-edgecontainer.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
  *             .build());
  * 
  *         var default_ = new NodePool(&#34;default&#34;, NodePoolArgs.builder()        
+ *             .name(&#34;nodepool-1&#34;)
  *             .cluster(cluster.name())
  *             .location(&#34;us-central1&#34;)
  *             .nodeLocation(&#34;us-central1-edge-example-edgesite&#34;)
@@ -169,9 +174,7 @@ import javax.annotation.Nullable;
  *             .localDiskEncryption(NodePoolLocalDiskEncryptionArgs.builder()
  *                 .kmsKey(cryptoKeyCryptoKey.id())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(cryptoKeyCryptoKeyIAMMember)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -210,7 +213,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
+ *         var default_ = new Cluster(&#34;default&#34;, ClusterArgs.builder()        
+ *             .name(&#34;&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .authorization(ClusterAuthorizationArgs.builder()
  *                 .adminUsers(ClusterAuthorizationAdminUsersArgs.builder()
@@ -236,7 +240,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultNodePool = new NodePool(&#34;defaultNodePool&#34;, NodePoolArgs.builder()        
- *             .cluster(google_edgecontainer_cluster.cluster().name())
+ *             .name(&#34;nodepool-1&#34;)
+ *             .cluster(cluster.name())
  *             .location(&#34;us-central1&#34;)
  *             .nodeLocation(&#34;us-central1-edge-example-edgesite&#34;)
  *             .nodeCount(3)

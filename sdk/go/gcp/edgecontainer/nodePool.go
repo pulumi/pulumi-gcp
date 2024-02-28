@@ -43,6 +43,7 @@ import (
 //				return err
 //			}
 //			cluster, err := edgecontainer.NewCluster(ctx, "cluster", &edgecontainer.ClusterArgs{
+//				Name:     pulumi.String("default"),
 //				Location: pulumi.String("us-central1"),
 //				Authorization: &edgecontainer.ClusterAuthorizationArgs{
 //					AdminUsers: &edgecontainer.ClusterAuthorizationAdminUsersArgs{
@@ -65,6 +66,7 @@ import (
 //				return err
 //			}
 //			_, err = edgecontainer.NewNodePool(ctx, "default", &edgecontainer.NodePoolArgs{
+//				Name:         pulumi.String("nodepool-1"),
 //				Cluster:      cluster.Name,
 //				Location:     pulumi.String("us-central1"),
 //				NodeLocation: pulumi.String("us-central1-edge-example-edgesite"),
@@ -105,6 +107,7 @@ import (
 //				return err
 //			}
 //			cluster, err := edgecontainer.NewCluster(ctx, "cluster", &edgecontainer.ClusterArgs{
+//				Name:     pulumi.String("default"),
 //				Location: pulumi.String("us-central1"),
 //				Authorization: &edgecontainer.ClusterAuthorizationArgs{
 //					AdminUsers: &edgecontainer.ClusterAuthorizationAdminUsersArgs{
@@ -126,19 +129,21 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
+//			keyRing, err := kms.NewKeyRing(ctx, "key_ring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("keyring"),
 //				Location: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			cryptoKeyCryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKeyCryptoKey", &kms.CryptoKeyArgs{
+//			cryptoKeyCryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
+//				Name:    pulumi.String("key"),
 //				KeyRing: keyRing.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			cryptoKeyCryptoKeyIAMMember, err := kms.NewCryptoKeyIAMMember(ctx, "cryptoKeyCryptoKeyIAMMember", &kms.CryptoKeyIAMMemberArgs{
+//			_, err = kms.NewCryptoKeyIAMMember(ctx, "crypto_key", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: cryptoKeyCryptoKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-edgecontainer.iam.gserviceaccount.com", project.Number)),
@@ -147,6 +152,7 @@ import (
 //				return err
 //			}
 //			_, err = edgecontainer.NewNodePool(ctx, "default", &edgecontainer.NodePoolArgs{
+//				Name:         pulumi.String("nodepool-1"),
 //				Cluster:      cluster.Name,
 //				Location:     pulumi.String("us-central1"),
 //				NodeLocation: pulumi.String("us-central1-edge-example-edgesite"),
@@ -154,9 +160,7 @@ import (
 //				LocalDiskEncryption: &edgecontainer.NodePoolLocalDiskEncryptionArgs{
 //					KmsKey: cryptoKeyCryptoKey.ID(),
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				cryptoKeyCryptoKeyIAMMember,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -186,7 +190,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = edgecontainer.NewCluster(ctx, "defaultCluster", &edgecontainer.ClusterArgs{
+//			_, err = edgecontainer.NewCluster(ctx, "default", &edgecontainer.ClusterArgs{
+//				Name:     pulumi.String(""),
 //				Location: pulumi.String("us-central1"),
 //				Authorization: &edgecontainer.ClusterAuthorizationArgs{
 //					AdminUsers: &edgecontainer.ClusterAuthorizationAdminUsersArgs{
@@ -219,8 +224,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = edgecontainer.NewNodePool(ctx, "defaultNodePool", &edgecontainer.NodePoolArgs{
-//				Cluster:      pulumi.Any(google_edgecontainer_cluster.Cluster.Name),
+//			_, err = edgecontainer.NewNodePool(ctx, "default", &edgecontainer.NodePoolArgs{
+//				Name:         pulumi.String("nodepool-1"),
+//				Cluster:      pulumi.Any(cluster.Name),
 //				Location:     pulumi.String("us-central1"),
 //				NodeLocation: pulumi.String("us-central1-edge-example-edgesite"),
 //				NodeCount:    pulumi.Int(3),

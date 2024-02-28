@@ -22,12 +22,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basicAgent = new gcp.diagflow.Agent("basicAgent", {
+ * const basicAgent = new gcp.diagflow.Agent("basic_agent", {
  *     displayName: "example_agent",
  *     defaultLanguageCode: "en",
  *     timeZone: "America/New_York",
  * });
- * const basicFulfillment = new gcp.diagflow.Fulfillment("basicFulfillment", {
+ * const basicFulfillment = new gcp.diagflow.Fulfillment("basic_fulfillment", {
  *     displayName: "basic-fulfillment",
  *     enabled: true,
  *     genericWebService: {
@@ -38,8 +38,6 @@ import * as utilities from "../utilities";
  *             name: "wrench",
  *         },
  *     },
- * }, {
- *     dependsOn: [basicAgent],
  * });
  * ```
  *

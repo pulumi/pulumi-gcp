@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.AccessContextManager
         /// {
         ///     var policy = Gcp.AccessContextManager.GetAccessPolicyIamPolicy.Invoke(new()
         ///     {
-        ///         Name = google_access_context_manager_access_policy.Access_policy.Name,
+        ///         Name = access_policy.Name,
         ///     });
         /// 
         /// });
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.AccessContextManager
         /// {
         ///     var policy = Gcp.AccessContextManager.GetAccessPolicyIamPolicy.Invoke(new()
         ///     {
-        ///         Name = google_access_context_manager_access_policy.Access_policy.Name,
+        ///         Name = access_policy.Name,
         ///     });
         /// 
         /// });

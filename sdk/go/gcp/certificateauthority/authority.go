@@ -41,12 +41,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
+//				Pool:                   pulumi.String("ca-pool"),
 //				CertificateAuthorityId: pulumi.String("my-certificate-authority"),
+//				Location:               pulumi.String("us-central1"),
+//				DeletionProtection:     pulumi.Bool(true),
 //				Config: &certificateauthority.AuthorityConfigArgs{
 //					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
 //						Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
-//							CommonName:   pulumi.String("my-certificate-authority"),
 //							Organization: pulumi.String("HashiCorp"),
+//							CommonName:   pulumi.String("my-certificate-authority"),
 //						},
 //						SubjectAltName: &certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs{
 //							DnsNames: pulumi.StringArray{
@@ -61,32 +64,29 @@ import (
 //						},
 //						KeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs{
 //							BaseKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{
-//								CertSign:          pulumi.Bool(true),
-//								ContentCommitment: pulumi.Bool(true),
-//								CrlSign:           pulumi.Bool(true),
-//								DataEncipherment:  pulumi.Bool(true),
-//								DecipherOnly:      pulumi.Bool(true),
 //								DigitalSignature:  pulumi.Bool(true),
-//								KeyAgreement:      pulumi.Bool(true),
+//								ContentCommitment: pulumi.Bool(true),
 //								KeyEncipherment:   pulumi.Bool(false),
+//								DataEncipherment:  pulumi.Bool(true),
+//								KeyAgreement:      pulumi.Bool(true),
+//								CertSign:          pulumi.Bool(true),
+//								CrlSign:           pulumi.Bool(true),
+//								DecipherOnly:      pulumi.Bool(true),
 //							},
 //							ExtendedKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{
-//								ClientAuth:      pulumi.Bool(false),
-//								CodeSigning:     pulumi.Bool(true),
-//								EmailProtection: pulumi.Bool(true),
 //								ServerAuth:      pulumi.Bool(true),
+//								ClientAuth:      pulumi.Bool(false),
+//								EmailProtection: pulumi.Bool(true),
+//								CodeSigning:     pulumi.Bool(true),
 //								TimeStamping:    pulumi.Bool(true),
 //							},
 //						},
 //					},
 //				},
-//				DeletionProtection: pulumi.Bool(true),
+//				Lifetime: pulumi.String("86400s"),
 //				KeySpec: &certificateauthority.AuthorityKeySpecArgs{
 //					Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
 //				},
-//				Lifetime: pulumi.String("86400s"),
-//				Location: pulumi.String("us-central1"),
-//				Pool:     pulumi.String("ca-pool"),
 //			})
 //			if err != nil {
 //				return err
@@ -229,13 +229,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			privatecaSa, err := projects.NewServiceIdentity(ctx, "privatecaSa", &projects.ServiceIdentityArgs{
+//			privatecaSa, err := projects.NewServiceIdentity(ctx, "privateca_sa", &projects.ServiceIdentityArgs{
 //				Service: pulumi.String("privateca.googleapis.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			privatecaSaKeyuserSignerverifier, err := kms.NewCryptoKeyIAMMember(ctx, "privatecaSaKeyuserSignerverifier", &kms.CryptoKeyIAMMemberArgs{
+//			_, err = kms.NewCryptoKeyIAMMember(ctx, "privateca_sa_keyuser_signerverifier", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: pulumi.String("projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key"),
 //				Role:        pulumi.String("roles/cloudkms.signerVerifier"),
 //				Member: privatecaSa.Email.ApplyT(func(email string) (string, error) {
@@ -245,7 +245,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			privatecaSaKeyuserViewer, err := kms.NewCryptoKeyIAMMember(ctx, "privatecaSaKeyuserViewer", &kms.CryptoKeyIAMMemberArgs{
+//			_, err = kms.NewCryptoKeyIAMMember(ctx, "privateca_sa_keyuser_viewer", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: pulumi.String("projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key"),
 //				Role:        pulumi.String("roles/viewer"),
 //				Member: privatecaSa.Email.ApplyT(func(email string) (string, error) {
@@ -313,10 +313,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				privatecaSaKeyuserSignerverifier,
-//				privatecaSaKeyuserViewer,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

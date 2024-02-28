@@ -28,8 +28,8 @@ namespace Pulumi.Gcp.Apigee
         /// {
         ///     var policy = Gcp.Apigee.GetEnvironmentIamPolicy.Invoke(new()
         ///     {
-        ///         OrgId = google_apigee_environment.Apigee_environment.Org_id,
-        ///         EnvId = google_apigee_environment.Apigee_environment.Name,
+        ///         OrgId = apigeeEnvironment.OrgId,
+        ///         EnvId = apigeeEnvironment.Name,
         ///     });
         /// 
         /// });
@@ -55,8 +55,8 @@ namespace Pulumi.Gcp.Apigee
         /// {
         ///     var policy = Gcp.Apigee.GetEnvironmentIamPolicy.Invoke(new()
         ///     {
-        ///         OrgId = google_apigee_environment.Apigee_environment.Org_id,
-        ///         EnvId = google_apigee_environment.Apigee_environment.Name,
+        ///         OrgId = apigeeEnvironment.OrgId,
+        ///         EnvId = apigeeEnvironment.Name,
         ///     });
         /// 
         /// });

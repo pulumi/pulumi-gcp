@@ -36,10 +36,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
-//				Description:  pulumi.String("example docker repository"),
-//				Format:       pulumi.String("DOCKER"),
 //				Location:     pulumi.String("us-central1"),
 //				RepositoryId: pulumi.String("my-repository"),
+//				Description:  pulumi.String("example docker repository"),
+//				Format:       pulumi.String("DOCKER"),
 //			})
 //			if err != nil {
 //				return err
@@ -64,13 +64,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
-//				Description: pulumi.String("example docker repository"),
+//				Location:     pulumi.String("us-central1"),
+//				RepositoryId: pulumi.String("my-repository"),
+//				Description:  pulumi.String("example docker repository"),
+//				Format:       pulumi.String("DOCKER"),
 //				DockerConfig: &artifactregistry.RepositoryDockerConfigArgs{
 //					ImmutableTags: pulumi.Bool(true),
 //				},
-//				Format:       pulumi.String("DOCKER"),
-//				Location:     pulumi.String("us-central1"),
-//				RepositoryId: pulumi.String("my-repository"),
 //			})
 //			if err != nil {
 //				return err
@@ -98,27 +98,25 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			cryptoKey, err := kms.NewCryptoKeyIAMMember(ctx, "cryptoKey", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: pulumi.String("kms-key"),
-//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number)),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
+//			_, err := artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
 //				Location:     pulumi.String("us-central1"),
 //				RepositoryId: pulumi.String("my-repository"),
 //				Description:  pulumi.String("example docker repository with cmek"),
 //				Format:       pulumi.String("DOCKER"),
 //				KmsKeyName:   pulumi.String("kms-key"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				cryptoKey,
-//			}))
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kms.NewCryptoKeyIAMMember(ctx, "crypto_key", &kms.CryptoKeyIAMMemberArgs{
+//				CryptoKeyId: pulumi.String("kms-key"),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number)),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -179,7 +177,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.DependsOn([]interface{}{}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -203,17 +201,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
-//				Description: pulumi.String("example remote docker repository"),
-//				Format:      pulumi.String("DOCKER"),
-//				Location:    pulumi.String("us-central1"),
-//				Mode:        pulumi.String("REMOTE_REPOSITORY"),
+//				Location:     pulumi.String("us-central1"),
+//				RepositoryId: pulumi.String("my-repository"),
+//				Description:  pulumi.String("example remote docker repository"),
+//				Format:       pulumi.String("DOCKER"),
+//				Mode:         pulumi.String("REMOTE_REPOSITORY"),
 //				RemoteRepositoryConfig: &artifactregistry.RepositoryRemoteRepositoryConfigArgs{
 //					Description: pulumi.String("docker hub"),
 //					DockerRepository: &artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryArgs{
 //						PublicRepository: pulumi.String("DOCKER_HUB"),
 //					},
 //				},
-//				RepositoryId: pulumi.String("my-repository"),
 //			})
 //			if err != nil {
 //				return err
@@ -238,20 +236,20 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
-//				Description: pulumi.String("example remote apt repository"),
-//				Format:      pulumi.String("APT"),
-//				Location:    pulumi.String("us-central1"),
-//				Mode:        pulumi.String("REMOTE_REPOSITORY"),
+//				Location:     pulumi.String("us-central1"),
+//				RepositoryId: pulumi.String("debian-buster"),
+//				Description:  pulumi.String("example remote apt repository"),
+//				Format:       pulumi.String("APT"),
+//				Mode:         pulumi.String("REMOTE_REPOSITORY"),
 //				RemoteRepositoryConfig: &artifactregistry.RepositoryRemoteRepositoryConfigArgs{
+//					Description: pulumi.String("Debian buster remote repository"),
 //					AptRepository: &artifactregistry.RepositoryRemoteRepositoryConfigAptRepositoryArgs{
 //						PublicRepository: &artifactregistry.RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs{
 //							RepositoryBase: pulumi.String("DEBIAN"),
 //							RepositoryPath: pulumi.String("debian/dists/buster"),
 //						},
 //					},
-//					Description: pulumi.String("Debian buster remote repository"),
 //				},
-//				RepositoryId: pulumi.String("debian-buster"),
 //			})
 //			if err != nil {
 //				return err
@@ -276,10 +274,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
-//				Description: pulumi.String("example remote yum repository"),
-//				Format:      pulumi.String("YUM"),
-//				Location:    pulumi.String("us-central1"),
-//				Mode:        pulumi.String("REMOTE_REPOSITORY"),
+//				Location:     pulumi.String("us-central1"),
+//				RepositoryId: pulumi.String("centos-8"),
+//				Description:  pulumi.String("example remote yum repository"),
+//				Format:       pulumi.String("YUM"),
+//				Mode:         pulumi.String("REMOTE_REPOSITORY"),
 //				RemoteRepositoryConfig: &artifactregistry.RepositoryRemoteRepositoryConfigArgs{
 //					Description: pulumi.String("Centos 8 remote repository"),
 //					YumRepository: &artifactregistry.RepositoryRemoteRepositoryConfigYumRepositoryArgs{
@@ -289,7 +288,6 @@ import (
 //						},
 //					},
 //				},
-//				RepositoryId: pulumi.String("centos-8"),
 //			})
 //			if err != nil {
 //				return err
@@ -314,51 +312,51 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
+//				Location:            pulumi.String("us-central1"),
+//				RepositoryId:        pulumi.String("my-repository"),
+//				Description:         pulumi.String("example docker repository with cleanup policies"),
+//				Format:              pulumi.String("DOCKER"),
+//				CleanupPolicyDryRun: pulumi.Bool(false),
 //				CleanupPolicies: artifactregistry.RepositoryCleanupPolicyArray{
 //					&artifactregistry.RepositoryCleanupPolicyArgs{
+//						Id:     pulumi.String("delete-prerelease"),
 //						Action: pulumi.String("DELETE"),
 //						Condition: &artifactregistry.RepositoryCleanupPolicyConditionArgs{
-//							OlderThan: pulumi.String("2592000s"),
+//							TagState: pulumi.String("TAGGED"),
 //							TagPrefixes: pulumi.StringArray{
 //								pulumi.String("alpha"),
 //								pulumi.String("v0"),
 //							},
-//							TagState: pulumi.String("TAGGED"),
+//							OlderThan: pulumi.String("2592000s"),
 //						},
-//						Id: pulumi.String("delete-prerelease"),
 //					},
 //					&artifactregistry.RepositoryCleanupPolicyArgs{
+//						Id:     pulumi.String("keep-tagged-release"),
 //						Action: pulumi.String("KEEP"),
 //						Condition: &artifactregistry.RepositoryCleanupPolicyConditionArgs{
+//							TagState: pulumi.String("TAGGED"),
+//							TagPrefixes: pulumi.StringArray{
+//								pulumi.String("release"),
+//							},
 //							PackageNamePrefixes: pulumi.StringArray{
 //								pulumi.String("webapp"),
 //								pulumi.String("mobile"),
 //							},
-//							TagPrefixes: pulumi.StringArray{
-//								pulumi.String("release"),
-//							},
-//							TagState: pulumi.String("TAGGED"),
 //						},
-//						Id: pulumi.String("keep-tagged-release"),
 //					},
 //					&artifactregistry.RepositoryCleanupPolicyArgs{
-//						Action: pulumi.String("KEEP"),
 //						Id:     pulumi.String("keep-minimum-versions"),
+//						Action: pulumi.String("KEEP"),
 //						MostRecentVersions: &artifactregistry.RepositoryCleanupPolicyMostRecentVersionsArgs{
-//							KeepCount: pulumi.Int(5),
 //							PackageNamePrefixes: pulumi.StringArray{
 //								pulumi.String("webapp"),
 //								pulumi.String("mobile"),
 //								pulumi.String("sandbox"),
 //							},
+//							KeepCount: pulumi.Int(5),
 //						},
 //					},
 //				},
-//				CleanupPolicyDryRun: pulumi.Bool(false),
-//				Description:         pulumi.String("example docker repository with cleanup policies"),
-//				Format:              pulumi.String("DOCKER"),
-//				Location:            pulumi.String("us-central1"),
-//				RepositoryId:        pulumi.String("my-repository"),
 //			})
 //			if err != nil {
 //				return err
@@ -399,7 +397,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretVersion(ctx, "example-custom-remote-secretVersion", &secretmanager.SecretVersionArgs{
+//			_, err = secretmanager.NewSecretVersion(ctx, "example-custom-remote-secret_version", &secretmanager.SecretVersionArgs{
 //				Secret:     example_custom_remote_secret.ID(),
 //				SecretData: pulumi.String("remote-password"),
 //			})

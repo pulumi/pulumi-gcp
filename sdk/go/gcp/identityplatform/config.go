@@ -42,7 +42,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultProject, err := organizations.NewProject(ctx, "defaultProject", &organizations.ProjectArgs{
+//			_, err := organizations.NewProject(ctx, "default", &organizations.ProjectArgs{
+//				ProjectId:      pulumi.String("my-project"),
+//				Name:           pulumi.String("my-project"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 //				Labels: pulumi.StringMap{
@@ -53,14 +55,14 @@ import (
 //				return err
 //			}
 //			_, err = projects.NewService(ctx, "identitytoolkit", &projects.ServiceArgs{
-//				Project: defaultProject.ProjectId,
+//				Project: _default.ProjectId,
 //				Service: pulumi.String("identitytoolkit.googleapis.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = identityplatform.NewConfig(ctx, "defaultConfig", &identityplatform.ConfigArgs{
-//				Project:                  defaultProject.ProjectId,
+//			_, err = identityplatform.NewConfig(ctx, "default", &identityplatform.ConfigArgs{
+//				Project:                  _default.ProjectId,
 //				AutodeleteAnonymousUsers: pulumi.Bool(true),
 //				SignIn: &identityplatform.ConfigSignInArgs{
 //					AllowDuplicateEmails: pulumi.Bool(true),

@@ -20,18 +20,23 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
  *
  * const _default = new gcp.certificatemanager.TrustConfig("default", {
+ *     name: "trust-config",
  *     description: "sample description for the trust config",
  *     location: "us-central1",
  *     trustStores: [{
  *         trustAnchors: [{
- *             pemCertificate: fs.readFileSync("test-fixtures/cert.pem", "utf8"),
+ *             pemCertificate: std.file({
+ *                 input: "test-fixtures/cert.pem",
+ *             }).then(invoke => invoke.result),
  *         }],
  *         intermediateCas: [{
- *             pemCertificate: fs.readFileSync("test-fixtures/cert.pem", "utf8"),
+ *             pemCertificate: std.file({
+ *                 input: "test-fixtures/cert.pem",
+ *             }).then(invoke => invoke.result),
  *         }],
  *     }],
  *     labels: {

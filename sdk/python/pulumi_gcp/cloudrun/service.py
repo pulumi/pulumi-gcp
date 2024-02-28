@@ -387,6 +387,7 @@ class Service(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrun.Service("default",
+            name="cloud_run_service_name",
             location="us-central1",
             template=gcp.cloudrun.ServiceTemplateArgs(
                 spec=gcp.cloudrun.ServiceTemplateSpecArgs(
@@ -410,8 +411,9 @@ class Service(pulumi.CustomResource):
         project = gcp.projects.IAMBinding("project",
             role="roles/iam.serviceAccountTokenCreator",
             members=[sa.email.apply(lambda email: f"serviceAccount:{email}")])
-        topic = gcp.pubsub.Topic("topic")
+        topic = gcp.pubsub.Topic("topic", name="pubsub_topic")
         subscription = gcp.pubsub.Subscription("subscription",
+            name="pubsub_subscription",
             topic=topic.name,
             push_config=gcp.pubsub.SubscriptionPushConfigArgs(
                 push_endpoint=default.statuses[0].url,
@@ -430,6 +432,7 @@ class Service(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrun.Service("default",
+            name="cloudrun-srv",
             location="us-central1",
             template=gcp.cloudrun.ServiceTemplateArgs(
                 spec=gcp.cloudrun.ServiceTemplateSpecArgs(
@@ -439,8 +442,8 @@ class Service(pulumi.CustomResource):
                 ),
             ),
             traffics=[gcp.cloudrun.ServiceTrafficArgs(
-                latest_revision=True,
                 percent=100,
+                latest_revision=True,
             )])
         ```
         ### Cloud Run Service Sql
@@ -450,6 +453,7 @@ class Service(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.sql.DatabaseInstance("instance",
+            name="cloudrun-sql",
             region="us-east1",
             database_version="MYSQL_5_7",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
@@ -457,6 +461,7 @@ class Service(pulumi.CustomResource):
             ),
             deletion_protection=True)
         default = gcp.cloudrun.Service("default",
+            name="cloudrun-srv",
             location="us-central1",
             template=gcp.cloudrun.ServiceTemplateArgs(
                 spec=gcp.cloudrun.ServiceTemplateSpecArgs(
@@ -481,6 +486,7 @@ class Service(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrun.Service("default",
+            name="cloudrun-srv",
             location="us-central1",
             template=gcp.cloudrun.ServiceTemplateArgs(
                 spec=gcp.cloudrun.ServiceTemplateSpecArgs(
@@ -489,15 +495,15 @@ class Service(pulumi.CustomResource):
                     )],
                 ),
             ))
-        noauth_iam_policy = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        noauth = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
             role="roles/run.invoker",
             members=["allUsers"],
         )])
-        noauth_iam_policy = gcp.cloudrun.IamPolicy("noauthIamPolicy",
+        noauth_iam_policy = gcp.cloudrun.IamPolicy("noauth",
             location=default.location,
             project=default.project,
             service=default.name,
-            policy_data=noauth_iam_policy.policy_data)
+            policy_data=noauth.policy_data)
         ```
         ### Cloud Run Service Probes
 
@@ -506,6 +512,7 @@ class Service(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrun.Service("default",
+            name="cloudrun-srv",
             location="us-central1",
             template=gcp.cloudrun.ServiceTemplateArgs(
                 spec=gcp.cloudrun.ServiceTemplateSpecArgs(
@@ -541,6 +548,7 @@ class Service(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrun.Service("default",
+            name="cloudrun-srv",
             location="us-central1",
             metadata=gcp.cloudrun.ServiceMetadataArgs(
                 annotations={
@@ -594,8 +602,7 @@ class Service(pulumi.CustomResource):
                         ),
                     )],
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import
@@ -679,6 +686,7 @@ class Service(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrun.Service("default",
+            name="cloud_run_service_name",
             location="us-central1",
             template=gcp.cloudrun.ServiceTemplateArgs(
                 spec=gcp.cloudrun.ServiceTemplateSpecArgs(
@@ -702,8 +710,9 @@ class Service(pulumi.CustomResource):
         project = gcp.projects.IAMBinding("project",
             role="roles/iam.serviceAccountTokenCreator",
             members=[sa.email.apply(lambda email: f"serviceAccount:{email}")])
-        topic = gcp.pubsub.Topic("topic")
+        topic = gcp.pubsub.Topic("topic", name="pubsub_topic")
         subscription = gcp.pubsub.Subscription("subscription",
+            name="pubsub_subscription",
             topic=topic.name,
             push_config=gcp.pubsub.SubscriptionPushConfigArgs(
                 push_endpoint=default.statuses[0].url,
@@ -722,6 +731,7 @@ class Service(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrun.Service("default",
+            name="cloudrun-srv",
             location="us-central1",
             template=gcp.cloudrun.ServiceTemplateArgs(
                 spec=gcp.cloudrun.ServiceTemplateSpecArgs(
@@ -731,8 +741,8 @@ class Service(pulumi.CustomResource):
                 ),
             ),
             traffics=[gcp.cloudrun.ServiceTrafficArgs(
-                latest_revision=True,
                 percent=100,
+                latest_revision=True,
             )])
         ```
         ### Cloud Run Service Sql
@@ -742,6 +752,7 @@ class Service(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.sql.DatabaseInstance("instance",
+            name="cloudrun-sql",
             region="us-east1",
             database_version="MYSQL_5_7",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
@@ -749,6 +760,7 @@ class Service(pulumi.CustomResource):
             ),
             deletion_protection=True)
         default = gcp.cloudrun.Service("default",
+            name="cloudrun-srv",
             location="us-central1",
             template=gcp.cloudrun.ServiceTemplateArgs(
                 spec=gcp.cloudrun.ServiceTemplateSpecArgs(
@@ -773,6 +785,7 @@ class Service(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrun.Service("default",
+            name="cloudrun-srv",
             location="us-central1",
             template=gcp.cloudrun.ServiceTemplateArgs(
                 spec=gcp.cloudrun.ServiceTemplateSpecArgs(
@@ -781,15 +794,15 @@ class Service(pulumi.CustomResource):
                     )],
                 ),
             ))
-        noauth_iam_policy = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        noauth = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
             role="roles/run.invoker",
             members=["allUsers"],
         )])
-        noauth_iam_policy = gcp.cloudrun.IamPolicy("noauthIamPolicy",
+        noauth_iam_policy = gcp.cloudrun.IamPolicy("noauth",
             location=default.location,
             project=default.project,
             service=default.name,
-            policy_data=noauth_iam_policy.policy_data)
+            policy_data=noauth.policy_data)
         ```
         ### Cloud Run Service Probes
 
@@ -798,6 +811,7 @@ class Service(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrun.Service("default",
+            name="cloudrun-srv",
             location="us-central1",
             template=gcp.cloudrun.ServiceTemplateArgs(
                 spec=gcp.cloudrun.ServiceTemplateSpecArgs(
@@ -833,6 +847,7 @@ class Service(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrun.Service("default",
+            name="cloudrun-srv",
             location="us-central1",
             metadata=gcp.cloudrun.ServiceMetadataArgs(
                 annotations={
@@ -886,8 +901,7 @@ class Service(pulumi.CustomResource):
                         ),
                     )],
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import

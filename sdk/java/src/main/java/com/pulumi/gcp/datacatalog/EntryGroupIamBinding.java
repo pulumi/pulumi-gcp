@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new EntryGroupIamPolicy(&#34;policy&#34;, EntryGroupIamPolicyArgs.builder()        
- *             .entryGroup(google_data_catalog_entry_group.basic_entry_group().name())
+ *             .entryGroup(basicEntryGroup.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new EntryGroupIamBinding(&#34;binding&#34;, EntryGroupIamBindingArgs.builder()        
- *             .entryGroup(google_data_catalog_entry_group.basic_entry_group().name())
+ *             .entryGroup(basicEntryGroup.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -126,7 +126,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new EntryGroupIamMember(&#34;member&#34;, EntryGroupIamMemberArgs.builder()        
- *             .entryGroup(google_data_catalog_entry_group.basic_entry_group().name())
+ *             .entryGroup(basicEntryGroup.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

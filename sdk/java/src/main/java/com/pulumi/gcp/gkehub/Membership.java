@@ -55,21 +55,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
- *             .deletionProtection(false)
- *             .initialNodeCount(1)
+ *             .name(&#34;basic-cluster&#34;)
  *             .location(&#34;us-central1-a&#34;)
+ *             .initialNodeCount(1)
+ *             .deletionProtection(false)
  *             .network(&#34;default&#34;)
  *             .subnetwork(&#34;default&#34;)
  *             .build());
  * 
  *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
+ *             .membershipId(&#34;basic&#34;)
+ *             .location(&#34;us-west1&#34;)
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
  *                     .resourceLink(primary.id().applyValue(id -&gt; String.format(&#34;//container.googleapis.com/%s&#34;, id)))
  *                     .build())
  *                 .build())
- *             .location(&#34;us-west1&#34;)
- *             .membershipId(&#34;basic&#34;)
  *             .build());
  * 
  *     }
@@ -102,21 +103,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
- *             .deletionProtection(&#34;true&#34;)
- *             .initialNodeCount(1)
+ *             .name(&#34;basic-cluster&#34;)
  *             .location(&#34;us-central1-a&#34;)
+ *             .initialNodeCount(1)
+ *             .deletionProtection(&#34;true&#34;)
  *             .network(&#34;default&#34;)
  *             .subnetwork(&#34;default&#34;)
  *             .build());
  * 
  *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
+ *             .membershipId(&#34;basic&#34;)
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
  *                     .resourceLink(primary.id().applyValue(id -&gt; String.format(&#34;//container.googleapis.com/%s&#34;, id)))
  *                     .build())
  *                 .build())
  *             .labels(Map.of(&#34;env&#34;, &#34;test&#34;))
- *             .membershipId(&#34;basic&#34;)
  *             .build());
  * 
  *     }
@@ -151,6 +153,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
+ *             .name(&#34;basic-cluster&#34;)
  *             .location(&#34;us-central1-a&#34;)
  *             .initialNodeCount(1)
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()

@@ -421,12 +421,11 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        policy_organization_security_policy = gcp.compute.OrganizationSecurityPolicy("policyOrganizationSecurityPolicy",
+        policy = gcp.compute.OrganizationSecurityPolicy("policy",
             display_name="tf-test",
-            parent="organizations/123456789",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule",
-            policy_id=policy_organization_security_policy.id,
+            parent="organizations/123456789")
+        policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
+            policy_id=policy.id,
             action="allow",
             direction="INGRESS",
             enable_logging=True,
@@ -447,8 +446,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                     ],
                 ),
             ),
-            priority=100,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            priority=100)
         ```
 
         ## Import
@@ -509,12 +507,11 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        policy_organization_security_policy = gcp.compute.OrganizationSecurityPolicy("policyOrganizationSecurityPolicy",
+        policy = gcp.compute.OrganizationSecurityPolicy("policy",
             display_name="tf-test",
-            parent="organizations/123456789",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule",
-            policy_id=policy_organization_security_policy.id,
+            parent="organizations/123456789")
+        policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
+            policy_id=policy.id,
             action="allow",
             direction="INGRESS",
             enable_logging=True,
@@ -535,8 +532,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                     ],
                 ),
             ),
-            priority=100,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            priority=100)
         ```
 
         ## Import

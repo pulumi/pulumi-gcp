@@ -28,12 +28,15 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.certificateauthority.Authority("default", {
+ *     pool: "ca-pool",
  *     certificateAuthorityId: "my-certificate-authority",
+ *     location: "us-central1",
+ *     deletionProtection: true,
  *     config: {
  *         subjectConfig: {
  *             subject: {
- *                 commonName: "my-certificate-authority",
  *                 organization: "HashiCorp",
+ *                 commonName: "my-certificate-authority",
  *             },
  *             subjectAltName: {
  *                 dnsNames: ["hashicorp.com"],
@@ -46,32 +49,29 @@ import * as utilities from "../utilities";
  *             },
  *             keyUsage: {
  *                 baseKeyUsage: {
- *                     certSign: true,
- *                     contentCommitment: true,
- *                     crlSign: true,
- *                     dataEncipherment: true,
- *                     decipherOnly: true,
  *                     digitalSignature: true,
- *                     keyAgreement: true,
+ *                     contentCommitment: true,
  *                     keyEncipherment: false,
+ *                     dataEncipherment: true,
+ *                     keyAgreement: true,
+ *                     certSign: true,
+ *                     crlSign: true,
+ *                     decipherOnly: true,
  *                 },
  *                 extendedKeyUsage: {
- *                     clientAuth: false,
- *                     codeSigning: true,
- *                     emailProtection: true,
  *                     serverAuth: true,
+ *                     clientAuth: false,
+ *                     emailProtection: true,
+ *                     codeSigning: true,
  *                     timeStamping: true,
  *                 },
  *             },
  *         },
  *     },
- *     deletionProtection: true,
+ *     lifetime: "86400s",
  *     keySpec: {
  *         algorithm: "RSA_PKCS1_4096_SHA256",
  *     },
- *     lifetime: "86400s",
- *     location: "us-central1",
- *     pool: "ca-pool",
  * });
  * ```
  * ### Privateca Certificate Authority Subordinate
@@ -173,13 +173,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const privatecaSa = new gcp.projects.ServiceIdentity("privatecaSa", {service: "privateca.googleapis.com"});
- * const privatecaSaKeyuserSignerverifier = new gcp.kms.CryptoKeyIAMMember("privatecaSaKeyuserSignerverifier", {
+ * const privatecaSa = new gcp.projects.ServiceIdentity("privateca_sa", {service: "privateca.googleapis.com"});
+ * const privatecaSaKeyuserSignerverifier = new gcp.kms.CryptoKeyIAMMember("privateca_sa_keyuser_signerverifier", {
  *     cryptoKeyId: "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
  *     role: "roles/cloudkms.signerVerifier",
  *     member: pulumi.interpolate`serviceAccount:${privatecaSa.email}`,
  * });
- * const privatecaSaKeyuserViewer = new gcp.kms.CryptoKeyIAMMember("privatecaSaKeyuserViewer", {
+ * const privatecaSaKeyuserViewer = new gcp.kms.CryptoKeyIAMMember("privateca_sa_keyuser_viewer", {
  *     cryptoKeyId: "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
  *     role: "roles/viewer",
  *     member: pulumi.interpolate`serviceAccount:${privatecaSa.email}`,
@@ -226,11 +226,6 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
- * }, {
- *     dependsOn: [
- *         privatecaSaKeyuserSignerverifier,
- *         privatecaSaKeyuserViewer,
- *     ],
  * });
  * ```
  *

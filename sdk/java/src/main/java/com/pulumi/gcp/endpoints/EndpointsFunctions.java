@@ -71,7 +71,7 @@ public final class EndpointsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = EndpointsFunctions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-     *             .serviceName(google_endpoints_service.endpoints_service().service_name())
+     *             .serviceName(endpointsService.serviceName())
      *             .build());
      * 
      *     }
@@ -108,7 +108,7 @@ public final class EndpointsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = EndpointsFunctions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-     *             .serviceName(google_endpoints_service.endpoints_service().service_name())
+     *             .serviceName(endpointsService.serviceName())
      *             .build());
      * 
      *     }
@@ -145,7 +145,7 @@ public final class EndpointsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = EndpointsFunctions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-     *             .serviceName(google_endpoints_service.endpoints_service().service_name())
+     *             .serviceName(endpointsService.serviceName())
      *             .build());
      * 
      *     }
@@ -182,7 +182,7 @@ public final class EndpointsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = EndpointsFunctions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-     *             .serviceName(google_endpoints_service.endpoints_service().service_name())
+     *             .serviceName(endpointsService.serviceName())
      *             .build());
      * 
      *     }

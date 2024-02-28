@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := certificateauthority.LookupCertificateTemplateIamPolicy(ctx, &certificateauthority.LookupCertificateTemplateIamPolicyArgs{
-//				CertificateTemplate: google_privateca_certificate_template.Default.Id,
+//				CertificateTemplate: _default.Id,
 //			}, nil)
 //			if err != nil {
 //				return err

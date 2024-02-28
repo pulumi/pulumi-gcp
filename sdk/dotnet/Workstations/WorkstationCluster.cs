@@ -21,25 +21,21 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
     ///     {
+    ///         Name = "workstation-cluster",
     ///         AutoCreateSubnetworks = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new()
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
     ///     {
+    ///         Name = "workstation-cluster",
     ///         IpCidrRange = "10.0.0.0/24",
     ///         Region = "us-central1",
     ///         Network = defaultNetwork.Name,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("defaultWorkstationCluster", new()
+    ///     var @default = new Gcp.Workstations.WorkstationCluster("default", new()
     ///     {
     ///         WorkstationClusterId = "workstation-cluster",
     ///         Network = defaultNetwork.Id,
@@ -53,9 +49,6 @@ namespace Pulumi.Gcp.Workstations
     ///         {
     ///             { "label-one", "value-one" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
@@ -72,25 +65,21 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
     ///     {
+    ///         Name = "workstation-cluster-private",
     ///         AutoCreateSubnetworks = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new()
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
     ///     {
+    ///         Name = "workstation-cluster-private",
     ///         IpCidrRange = "10.0.0.0/24",
     ///         Region = "us-central1",
     ///         Network = defaultNetwork.Name,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("defaultWorkstationCluster", new()
+    ///     var @default = new Gcp.Workstations.WorkstationCluster("default", new()
     ///     {
     ///         WorkstationClusterId = "workstation-cluster-private",
     ///         Network = defaultNetwork.Id,
@@ -108,9 +97,6 @@ namespace Pulumi.Gcp.Workstations
     ///         {
     ///             { "label-one", "value-one" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
@@ -127,25 +113,21 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
     ///     {
+    ///         Name = "workstation-cluster-custom-domain",
     ///         AutoCreateSubnetworks = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new()
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
     ///     {
+    ///         Name = "workstation-cluster-custom-domain",
     ///         IpCidrRange = "10.0.0.0/24",
     ///         Region = "us-central1",
     ///         Network = defaultNetwork.Name,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("defaultWorkstationCluster", new()
+    ///     var @default = new Gcp.Workstations.WorkstationCluster("default", new()
     ///     {
     ///         WorkstationClusterId = "workstation-cluster-custom-domain",
     ///         Network = defaultNetwork.Id,
@@ -167,9 +149,6 @@ namespace Pulumi.Gcp.Workstations
     ///         {
     ///             { "label-one", "value-one" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();

@@ -48,6 +48,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var persistent = new Gcp.Compute.Disk("persistent", new()
     ///     {
+    ///         Name = "debian-disk",
     ///         Image = debian.Apply(getImageResult =&gt; getImageResult.SelfLink),
     ///         Size = 10,
     ///         Type = "pd-ssd",
@@ -56,6 +57,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var snapshot = new Gcp.Compute.Snapshot("snapshot", new()
     ///     {
+    ///         Name = "my-snapshot",
     ///         SourceDisk = persistent.Id,
     ///         Zone = "us-central1-a",
     ///         Labels = 
@@ -88,6 +90,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var persistent = new Gcp.Compute.Disk("persistent", new()
     ///     {
+    ///         Name = "debian-disk",
     ///         Image = debian.Apply(getImageResult =&gt; getImageResult.SelfLink),
     ///         Size = 10,
     ///         Type = "pd-ssd",
@@ -96,6 +99,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var snapshot = new Gcp.Compute.Snapshot("snapshot", new()
     ///     {
+    ///         Name = "my-snapshot",
     ///         SourceDisk = persistent.Id,
     ///         Zone = "us-central1-a",
     ///         ChainName = "snapshot-chain",

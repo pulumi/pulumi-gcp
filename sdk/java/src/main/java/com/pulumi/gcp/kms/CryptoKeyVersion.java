@@ -54,10 +54,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var keyring = new KeyRing(&#34;keyring&#34;, KeyRingArgs.builder()        
+ *             .name(&#34;keyring-example&#34;)
  *             .location(&#34;global&#34;)
  *             .build());
  * 
  *         var cryptokey = new CryptoKey(&#34;cryptokey&#34;, CryptoKeyArgs.builder()        
+ *             .name(&#34;crypto-key-example&#34;)
  *             .keyRing(keyring.id())
  *             .rotationPeriod(&#34;7776000s&#34;)
  *             .build());

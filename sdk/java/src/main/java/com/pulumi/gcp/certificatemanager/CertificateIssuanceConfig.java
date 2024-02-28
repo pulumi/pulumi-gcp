@@ -37,6 +37,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.certificateauthority.CaPool;
  * import com.pulumi.gcp.certificateauthority.CaPoolArgs;
+ * import com.pulumi.gcp.certificatemanager.CertificateIssuanceConfig;
+ * import com.pulumi.gcp.certificatemanager.CertificateIssuanceConfigArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.CertificateIssuanceConfigCertificateAuthorityConfigArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs;
  * import com.pulumi.gcp.certificateauthority.Authority;
  * import com.pulumi.gcp.certificateauthority.AuthorityArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
@@ -49,11 +53,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
- * import com.pulumi.gcp.certificatemanager.CertificateIssuanceConfig;
- * import com.pulumi.gcp.certificatemanager.CertificateIssuanceConfigArgs;
- * import com.pulumi.gcp.certificatemanager.inputs.CertificateIssuanceConfigCertificateAuthorityConfigArgs;
- * import com.pulumi.gcp.certificatemanager.inputs.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -68,8 +67,26 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var pool = new CaPool(&#34;pool&#34;, CaPoolArgs.builder()        
+ *             .name(&#34;ca-pool&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .tier(&#34;ENTERPRISE&#34;)
+ *             .build());
+ * 
+ *         var default_ = new CertificateIssuanceConfig(&#34;default&#34;, CertificateIssuanceConfigArgs.builder()        
+ *             .name(&#34;issuance-config&#34;)
+ *             .description(&#34;sample description for the certificate issuanceConfigs&#34;)
+ *             .certificateAuthorityConfig(CertificateIssuanceConfigCertificateAuthorityConfigArgs.builder()
+ *                 .certificateAuthorityServiceConfig(CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs.builder()
+ *                     .caPool(pool.id())
+ *                     .build())
+ *                 .build())
+ *             .lifetime(&#34;1814400s&#34;)
+ *             .rotationWindowPercentage(34)
+ *             .keyAlgorithm(&#34;ECDSA_P256&#34;)
+ *             .labels(Map.ofEntries(
+ *                 Map.entry(&#34;name&#34;, &#34;wrench&#34;),
+ *                 Map.entry(&#34;count&#34;, &#34;3&#34;)
+ *             ))
  *             .build());
  * 
  *         var caAuthority = new Authority(&#34;caAuthority&#34;, AuthorityArgs.builder()        
@@ -108,24 +125,6 @@ import javax.annotation.Nullable;
  *             .skipGracePeriod(true)
  *             .ignoreActiveCertificatesOnDeletion(true)
  *             .build());
- * 
- *         var default_ = new CertificateIssuanceConfig(&#34;default&#34;, CertificateIssuanceConfigArgs.builder()        
- *             .description(&#34;sample description for the certificate issuanceConfigs&#34;)
- *             .certificateAuthorityConfig(CertificateIssuanceConfigCertificateAuthorityConfigArgs.builder()
- *                 .certificateAuthorityServiceConfig(CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs.builder()
- *                     .caPool(pool.id())
- *                     .build())
- *                 .build())
- *             .lifetime(&#34;1814400s&#34;)
- *             .rotationWindowPercentage(34)
- *             .keyAlgorithm(&#34;ECDSA_P256&#34;)
- *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;name&#34;, &#34;wrench&#34;),
- *                 Map.entry(&#34;count&#34;, &#34;3&#34;)
- *             ))
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(caAuthority)
- *                 .build());
  * 
  *     }
  * }

@@ -34,8 +34,9 @@ namespace Pulumi.Gcp.Compute
         /// 
         ///     var tmpl = new Gcp.Compute.NodeTemplate("tmpl", new()
         ///     {
+        ///         Name = "test-tmpl",
         ///         Region = "us-central1",
-        ///         NodeType = data.Google_compute_node_types.Types.Names[0],
+        ///         NodeType = types.Names[0],
         ///     });
         /// 
         /// });
@@ -69,8 +70,9 @@ namespace Pulumi.Gcp.Compute
         /// 
         ///     var tmpl = new Gcp.Compute.NodeTemplate("tmpl", new()
         ///     {
+        ///         Name = "test-tmpl",
         ///         Region = "us-central1",
-        ///         NodeType = data.Google_compute_node_types.Types.Names[0],
+        ///         NodeType = types.Names[0],
         ///     });
         /// 
         /// });

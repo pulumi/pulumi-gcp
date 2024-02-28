@@ -28,35 +28,42 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
+//			defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("basic-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("basic-subnetwork"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     defaultNetwork.ID(),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			rejectedProducerProject, err := organizations.NewProject(ctx, "rejectedProducerProject", &organizations.ProjectArgs{
+//			rejectedProducerProject, err := organizations.NewProject(ctx, "rejected_producer_project", &organizations.ProjectArgs{
+//				ProjectId:      pulumi.String("prj-rejected"),
+//				Name:           pulumi.String("prj-rejected"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			acceptedProducerProject, err := organizations.NewProject(ctx, "acceptedProducerProject", &organizations.ProjectArgs{
+//			acceptedProducerProject, err := organizations.NewProject(ctx, "accepted_producer_project", &organizations.ProjectArgs{
+//				ProjectId:      pulumi.String("prj-accepted"),
+//				Name:           pulumi.String("prj-accepted"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewNetworkAttachment(ctx, "defaultNetworkAttachment", &compute.NetworkAttachmentArgs{
+//			_, err = compute.NewNetworkAttachment(ctx, "default", &compute.NetworkAttachmentArgs{
+//				Name:                 pulumi.String("basic-network-attachment"),
 //				Region:               pulumi.String("us-central1"),
 //				Description:          pulumi.String("basic network attachment description"),
 //				ConnectionPreference: pulumi.String("ACCEPT_MANUAL"),
@@ -69,7 +76,7 @@ import (
 //				ProducerRejectLists: pulumi.StringArray{
 //					rejectedProducerProject.ProjectId,
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -92,32 +99,36 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
+//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("basic-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("basic-subnetwork"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     defaultNetwork.ID(),
+//				Network:     _default.ID(),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworkAttachment, err := compute.NewNetworkAttachment(ctx, "defaultNetworkAttachment", &compute.NetworkAttachmentArgs{
+//			defaultNetworkAttachment, err := compute.NewNetworkAttachment(ctx, "default", &compute.NetworkAttachmentArgs{
+//				Name:        pulumi.String("basic-network-attachment"),
 //				Region:      pulumi.String("us-central1"),
 //				Description: pulumi.String("my basic network attachment"),
 //				Subnetworks: pulumi.StringArray{
 //					defaultSubnetwork.ID(),
 //				},
 //				ConnectionPreference: pulumi.String("ACCEPT_AUTOMATIC"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewInstance(ctx, "defaultInstance", &compute.InstanceArgs{
+//			_, err = compute.NewInstance(ctx, "default", &compute.InstanceArgs{
+//				Name:        pulumi.String("basic-instance"),
 //				Zone:        pulumi.String("us-central1-a"),
 //				MachineType: pulumi.String("e2-micro"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
@@ -133,7 +144,7 @@ import (
 //						NetworkAttachment: defaultNetworkAttachment.SelfLink,
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

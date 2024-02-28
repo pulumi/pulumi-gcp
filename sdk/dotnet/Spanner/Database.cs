@@ -45,6 +45,7 @@ namespace Pulumi.Gcp.Spanner
     ///     var database = new Gcp.Spanner.Database("database", new()
     ///     {
     ///         Instance = main.Name,
+    ///         Name = "my-database",
     ///         VersionRetentionPeriod = "3d",
     ///         Ddls = new[]
     ///         {

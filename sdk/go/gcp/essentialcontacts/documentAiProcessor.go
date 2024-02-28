@@ -36,8 +36,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := essentialcontacts.NewDocumentAiProcessor(ctx, "processor", &essentialcontacts.DocumentAiProcessorArgs{
-//				DisplayName: pulumi.String("test-processor"),
 //				Location:    pulumi.String("us"),
+//				DisplayName: pulumi.String("test-processor"),
 //				Type:        pulumi.String("OCR_PROCESSOR"),
 //			})
 //			if err != nil {

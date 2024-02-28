@@ -18,16 +18,19 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const disk = new gcp.compute.Disk("disk", {
+ *     name: "my-base-disk",
  *     image: "debian-cloud/debian-11",
  *     size: 50,
  *     type: "pd-ssd",
  *     zone: "us-central1-a",
  * });
  * const snapdisk = new gcp.compute.Snapshot("snapdisk", {
+ *     name: "my-snapshot",
  *     sourceDisk: disk.name,
  *     zone: "us-central1-a",
  * });
  * const ssd = new gcp.compute.RegionDisk("ssd", {
+ *     name: "my-disk",
  *     replicaZones: [
  *         "us-central1-a",
  *         "us-central1-f",
@@ -37,11 +40,8 @@ import * as utilities from "../utilities";
  *     type: "pd-ssd",
  *     region: "us-central1",
  * });
- * const attachment = new gcp.compute.RegionDiskResourcePolicyAttachment("attachment", {
- *     disk: ssd.name,
- *     region: "us-central1",
- * });
  * const policy = new gcp.compute.ResourcePolicy("policy", {
+ *     name: "my-resource-policy",
  *     region: "us-central1",
  *     snapshotSchedulePolicy: {
  *         schedule: {
@@ -51,6 +51,11 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
+ * });
+ * const attachment = new gcp.compute.RegionDiskResourcePolicyAttachment("attachment", {
+ *     name: policy.name,
+ *     disk: ssd.name,
+ *     region: "us-central1",
  * });
  * const myImage = gcp.compute.getImage({
  *     family: "debian-11",

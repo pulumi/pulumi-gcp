@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudfunctionsv2.LookupFunctionIamPolicy(ctx, &cloudfunctionsv2.LookupFunctionIamPolicyArgs{
-//				Project:       pulumi.StringRef(google_cloudfunctions2_function.Function.Project),
-//				Location:      pulumi.StringRef(google_cloudfunctions2_function.Function.Location),
-//				CloudFunction: google_cloudfunctions2_function.Function.Name,
+//				Project:       pulumi.StringRef(function.Project),
+//				Location:      pulumi.StringRef(function.Location),
+//				CloudFunction: function.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

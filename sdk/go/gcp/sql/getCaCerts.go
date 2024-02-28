@@ -15,6 +15,39 @@ import (
 // [official documentation](https://cloud.google.com/sql/)
 // and
 // [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func notImplemented(message string) pulumi.AnyOutput {
+//		panic(message)
+//	}
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			caCerts, err := sql.GetCaCerts(ctx, &sql.GetCaCertsArgs{
+//				Instance: "primary-database-server",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			furthestExpirationTime := notImplemented("reverse(sort([fork,vindata.google_sql_ca_certs.ca_certs.certs:v.expiration_time]))")[0]
+//			latestCaCert := "TODO: For expression"
+//			ctx.Export("dbLatestCaCert", latestCaCert)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetCaCerts(ctx *pulumi.Context, args *GetCaCertsArgs, opts ...pulumi.InvokeOption) (*GetCaCertsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCaCertsResult

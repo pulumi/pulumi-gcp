@@ -48,8 +48,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.storage.Bucket;
  * import com.pulumi.gcp.storage.BucketArgs;
- * import com.pulumi.gcp.storage.inputs.BucketCorArgs;
  * import com.pulumi.gcp.storage.inputs.BucketWebsiteArgs;
+ * import com.pulumi.gcp.storage.inputs.BucketCorArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -64,23 +64,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var static_site = new Bucket(&#34;static-site&#34;, BucketArgs.builder()        
+ *             .name(&#34;image-store.com&#34;)
+ *             .location(&#34;EU&#34;)
+ *             .forceDestroy(true)
+ *             .uniformBucketLevelAccess(true)
+ *             .website(BucketWebsiteArgs.builder()
+ *                 .mainPageSuffix(&#34;index.html&#34;)
+ *                 .notFoundPage(&#34;404.html&#34;)
+ *                 .build())
  *             .cors(BucketCorArgs.builder()
- *                 .maxAgeSeconds(3600)
+ *                 .origins(&#34;http://image-store.com&#34;)
  *                 .methods(                
  *                     &#34;GET&#34;,
  *                     &#34;HEAD&#34;,
  *                     &#34;PUT&#34;,
  *                     &#34;POST&#34;,
  *                     &#34;DELETE&#34;)
- *                 .origins(&#34;http://image-store.com&#34;)
  *                 .responseHeaders(&#34;*&#34;)
- *                 .build())
- *             .forceDestroy(true)
- *             .location(&#34;EU&#34;)
- *             .uniformBucketLevelAccess(true)
- *             .website(BucketWebsiteArgs.builder()
- *                 .mainPageSuffix(&#34;index.html&#34;)
- *                 .notFoundPage(&#34;404.html&#34;)
+ *                 .maxAgeSeconds(3600)
  *                 .build())
  *             .build());
  * 
@@ -97,8 +98,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.Bucket;
  * import com.pulumi.gcp.storage.BucketArgs;
  * import com.pulumi.gcp.storage.inputs.BucketLifecycleRuleArgs;
- * import com.pulumi.gcp.storage.inputs.BucketLifecycleRuleActionArgs;
  * import com.pulumi.gcp.storage.inputs.BucketLifecycleRuleConditionArgs;
+ * import com.pulumi.gcp.storage.inputs.BucketLifecycleRuleActionArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -113,25 +114,26 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var auto_expire = new Bucket(&#34;auto-expire&#34;, BucketArgs.builder()        
+ *             .name(&#34;auto-expiring-bucket&#34;)
+ *             .location(&#34;US&#34;)
  *             .forceDestroy(true)
  *             .lifecycleRules(            
  *                 BucketLifecycleRuleArgs.builder()
- *                     .action(BucketLifecycleRuleActionArgs.builder()
- *                         .type(&#34;Delete&#34;)
- *                         .build())
  *                     .condition(BucketLifecycleRuleConditionArgs.builder()
  *                         .age(3)
  *                         .build())
+ *                     .action(BucketLifecycleRuleActionArgs.builder()
+ *                         .type(&#34;Delete&#34;)
+ *                         .build())
  *                     .build(),
  *                 BucketLifecycleRuleArgs.builder()
- *                     .action(BucketLifecycleRuleActionArgs.builder()
- *                         .type(&#34;AbortIncompleteMultipartUpload&#34;)
- *                         .build())
  *                     .condition(BucketLifecycleRuleConditionArgs.builder()
  *                         .age(1)
  *                         .build())
+ *                     .action(BucketLifecycleRuleActionArgs.builder()
+ *                         .type(&#34;AbortIncompleteMultipartUpload&#34;)
+ *                         .build())
  *                     .build())
- *             .location(&#34;US&#34;)
  *             .build());
  * 
  *     }
@@ -160,8 +162,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var auto_expire = new Bucket(&#34;auto-expire&#34;, BucketArgs.builder()        
- *             .forceDestroy(true)
+ *             .name(&#34;no-public-access-bucket&#34;)
  *             .location(&#34;US&#34;)
+ *             .forceDestroy(true)
  *             .publicAccessPrevention(&#34;enforced&#34;)
  *             .build());
  * 

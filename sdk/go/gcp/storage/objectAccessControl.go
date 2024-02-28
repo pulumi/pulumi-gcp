@@ -47,19 +47,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:     pulumi.String("static-content-bucket"),
 //				Location: pulumi.String("US"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+//				Name:   pulumi.String("public-object"),
 //				Bucket: bucket.Name,
 //				Source: pulumi.NewFileAsset("../static/img/header-logo.png"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = storage.NewObjectAccessControl(ctx, "publicRule", &storage.ObjectAccessControlArgs{
+//			_, err = storage.NewObjectAccessControl(ctx, "public_rule", &storage.ObjectAccessControlArgs{
 //				Object: object.OutputName,
 //				Bucket: bucket.Name,
 //				Role:   pulumi.String("READER"),

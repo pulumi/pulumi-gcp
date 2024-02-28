@@ -20,7 +20,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const _default = new gcp.biglake.Catalog("default", {location: "US"});
+ * const _default = new gcp.biglake.Catalog("default", {
+ *     name: "my_catalog",
+ *     location: "US",
+ * });
  * ```
  *
  * ## Import

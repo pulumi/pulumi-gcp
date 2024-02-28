@@ -121,18 +121,11 @@ namespace Pulumi.Gcp.SecretManager
     /// ### Secret Version With Base64 String Secret Data
     /// 
     /// ```csharp
-    /// using System;
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// 	
-    /// string ReadFileBase64(string path) 
-    /// {
-    ///     return Convert.ToBase64String(Encoding.UTF8.GetBytes(File.ReadAllText(path)));
-    /// }
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -158,7 +151,10 @@ namespace Pulumi.Gcp.SecretManager
     ///     {
     ///         Secret = secret_basic.Id,
     ///         IsSecretDataBase64 = true,
-    ///         SecretData = ReadFileBase64("secret-data.pfx"),
+    ///         SecretData = Std.Filebase64.Invoke(new()
+    ///         {
+    ///             Input = "secret-data.pfx",
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
     /// });

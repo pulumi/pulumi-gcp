@@ -34,6 +34,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
+//				SecretId: pulumi.String("secret"),
 //				Labels: pulumi.StringMap{
 //					"label": pulumi.String("my-label"),
 //				},
@@ -49,7 +50,6 @@ import (
 //						},
 //					},
 //				},
-//				SecretId: pulumi.String("secret"),
 //			})
 //			if err != nil {
 //				return err
@@ -74,6 +74,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := secretmanager.NewSecret(ctx, "secret-with-annotations", &secretmanager.SecretArgs{
+//				SecretId: pulumi.String("secret"),
+//				Labels: pulumi.StringMap{
+//					"label": pulumi.String("my-label"),
+//				},
 //				Annotations: pulumi.StringMap{
 //					"key1": pulumi.String("someval"),
 //					"key2": pulumi.String("someval2"),
@@ -81,13 +85,9 @@ import (
 //					"key4": pulumi.String("someval4"),
 //					"key5": pulumi.String("someval5"),
 //				},
-//				Labels: pulumi.StringMap{
-//					"label": pulumi.String("my-label"),
-//				},
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Auto: nil,
 //				},
-//				SecretId: pulumi.String("secret"),
 //			})
 //			if err != nil {
 //				return err
@@ -136,9 +136,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				kms_secret_binding,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

@@ -39,6 +39,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
  * import com.pulumi.gcp.securitycenter.NotificationConfig;
  * import com.pulumi.gcp.securitycenter.NotificationConfigArgs;
  * import com.pulumi.gcp.securitycenter.inputs.NotificationConfigStreamingConfigArgs;
@@ -55,7 +56,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sccNotification = new Topic(&#34;sccNotification&#34;);
+ *         var sccNotification = new Topic(&#34;sccNotification&#34;, TopicArgs.builder()        
+ *             .name(&#34;my-topic&#34;)
+ *             .build());
  * 
  *         var customNotificationConfig = new NotificationConfig(&#34;customNotificationConfig&#34;, NotificationConfigArgs.builder()        
  *             .configId(&#34;my-config&#34;)

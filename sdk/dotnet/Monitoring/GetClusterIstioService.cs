@@ -41,12 +41,13 @@ namespace Pulumi.Gcp.Monitoring
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Monitors the default ClusterIstio service
         ///     var @default = Gcp.Monitoring.GetClusterIstioService.Invoke(new()
         ///     {
-        ///         ClusterName = "west",
         ///         Location = "us-west2-a",
-        ///         ServiceName = "istio-policy",
+        ///         ClusterName = "west",
         ///         ServiceNamespace = "istio-system",
+        ///         ServiceName = "istio-policy",
         ///     });
         /// 
         /// });
@@ -87,12 +88,13 @@ namespace Pulumi.Gcp.Monitoring
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Monitors the default ClusterIstio service
         ///     var @default = Gcp.Monitoring.GetClusterIstioService.Invoke(new()
         ///     {
-        ///         ClusterName = "west",
         ///         Location = "us-west2-a",
-        ///         ServiceName = "istio-policy",
+        ///         ClusterName = "west",
         ///         ServiceNamespace = "istio-system",
+        ///         ServiceName = "istio-policy",
         ///     });
         /// 
         /// });

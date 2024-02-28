@@ -42,13 +42,13 @@ namespace Pulumi.Gcp.Datastore
     ///         {
     ///             new Gcp.Datastore.Inputs.DataStoreIndexPropertyArgs
     ///             {
-    ///                 Direction = "ASCENDING",
     ///                 Name = "property_a",
+    ///                 Direction = "ASCENDING",
     ///             },
     ///             new Gcp.Datastore.Inputs.DataStoreIndexPropertyArgs
     ///             {
-    ///                 Direction = "ASCENDING",
     ///                 Name = "property_b",
+    ///                 Direction = "ASCENDING",
     ///             },
     ///         },
     ///     });

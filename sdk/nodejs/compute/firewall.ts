@@ -33,8 +33,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
- * const defaultFirewall = new gcp.compute.Firewall("defaultFirewall", {
+ * const defaultNetwork = new gcp.compute.Network("default", {name: "test-network"});
+ * const _default = new gcp.compute.Firewall("default", {
+ *     name: "test-firewall",
  *     network: defaultNetwork.name,
  *     allows: [
  *         {
@@ -59,17 +60,18 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const rules = new gcp.compute.Firewall("rules", {
+ *     project: "my-project-name",
+ *     name: "my-firewall-rule",
+ *     network: "default",
+ *     description: "Creates firewall rule targeting tagged instances",
  *     allows: [{
+ *         protocol: "tcp",
  *         ports: [
  *             "80",
  *             "8080",
  *             "1000-2000",
  *         ],
- *         protocol: "tcp",
  *     }],
- *     description: "Creates firewall rule targeting tagged instances",
- *     network: "default",
- *     project: "my-project-name",
  *     sourceTags: ["foo"],
  *     targetTags: ["web"],
  * });

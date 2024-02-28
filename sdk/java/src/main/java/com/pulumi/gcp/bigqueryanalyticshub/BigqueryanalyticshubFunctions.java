@@ -43,9 +43,9 @@ public final class BigqueryanalyticshubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryanalyticshubFunctions.getDataExchangeIamPolicy(GetDataExchangeIamPolicyArgs.builder()
-     *             .project(google_bigquery_analytics_hub_data_exchange.data_exchange().project())
-     *             .location(google_bigquery_analytics_hub_data_exchange.data_exchange().location())
-     *             .dataExchangeId(google_bigquery_analytics_hub_data_exchange.data_exchange().data_exchange_id())
+     *             .project(dataExchange.project())
+     *             .location(dataExchange.location())
+     *             .dataExchangeId(dataExchange.dataExchangeId())
      *             .build());
      * 
      *     }
@@ -82,9 +82,9 @@ public final class BigqueryanalyticshubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryanalyticshubFunctions.getDataExchangeIamPolicy(GetDataExchangeIamPolicyArgs.builder()
-     *             .project(google_bigquery_analytics_hub_data_exchange.data_exchange().project())
-     *             .location(google_bigquery_analytics_hub_data_exchange.data_exchange().location())
-     *             .dataExchangeId(google_bigquery_analytics_hub_data_exchange.data_exchange().data_exchange_id())
+     *             .project(dataExchange.project())
+     *             .location(dataExchange.location())
+     *             .dataExchangeId(dataExchange.dataExchangeId())
      *             .build());
      * 
      *     }
@@ -121,9 +121,9 @@ public final class BigqueryanalyticshubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryanalyticshubFunctions.getDataExchangeIamPolicy(GetDataExchangeIamPolicyArgs.builder()
-     *             .project(google_bigquery_analytics_hub_data_exchange.data_exchange().project())
-     *             .location(google_bigquery_analytics_hub_data_exchange.data_exchange().location())
-     *             .dataExchangeId(google_bigquery_analytics_hub_data_exchange.data_exchange().data_exchange_id())
+     *             .project(dataExchange.project())
+     *             .location(dataExchange.location())
+     *             .dataExchangeId(dataExchange.dataExchangeId())
      *             .build());
      * 
      *     }
@@ -160,9 +160,9 @@ public final class BigqueryanalyticshubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryanalyticshubFunctions.getDataExchangeIamPolicy(GetDataExchangeIamPolicyArgs.builder()
-     *             .project(google_bigquery_analytics_hub_data_exchange.data_exchange().project())
-     *             .location(google_bigquery_analytics_hub_data_exchange.data_exchange().location())
-     *             .dataExchangeId(google_bigquery_analytics_hub_data_exchange.data_exchange().data_exchange_id())
+     *             .project(dataExchange.project())
+     *             .location(dataExchange.location())
+     *             .dataExchangeId(dataExchange.dataExchangeId())
      *             .build());
      * 
      *     }
@@ -199,10 +199,10 @@ public final class BigqueryanalyticshubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryanalyticshubFunctions.getListingIamPolicy(GetListingIamPolicyArgs.builder()
-     *             .project(google_bigquery_analytics_hub_listing.listing().project())
-     *             .location(google_bigquery_analytics_hub_listing.listing().location())
-     *             .dataExchangeId(google_bigquery_analytics_hub_listing.listing().data_exchange_id())
-     *             .listingId(google_bigquery_analytics_hub_listing.listing().listing_id())
+     *             .project(listing.project())
+     *             .location(listing.location())
+     *             .dataExchangeId(listing.dataExchangeId())
+     *             .listingId(listing.listingId())
      *             .build());
      * 
      *     }
@@ -239,10 +239,10 @@ public final class BigqueryanalyticshubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryanalyticshubFunctions.getListingIamPolicy(GetListingIamPolicyArgs.builder()
-     *             .project(google_bigquery_analytics_hub_listing.listing().project())
-     *             .location(google_bigquery_analytics_hub_listing.listing().location())
-     *             .dataExchangeId(google_bigquery_analytics_hub_listing.listing().data_exchange_id())
-     *             .listingId(google_bigquery_analytics_hub_listing.listing().listing_id())
+     *             .project(listing.project())
+     *             .location(listing.location())
+     *             .dataExchangeId(listing.dataExchangeId())
+     *             .listingId(listing.listingId())
      *             .build());
      * 
      *     }
@@ -279,10 +279,10 @@ public final class BigqueryanalyticshubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryanalyticshubFunctions.getListingIamPolicy(GetListingIamPolicyArgs.builder()
-     *             .project(google_bigquery_analytics_hub_listing.listing().project())
-     *             .location(google_bigquery_analytics_hub_listing.listing().location())
-     *             .dataExchangeId(google_bigquery_analytics_hub_listing.listing().data_exchange_id())
-     *             .listingId(google_bigquery_analytics_hub_listing.listing().listing_id())
+     *             .project(listing.project())
+     *             .location(listing.location())
+     *             .dataExchangeId(listing.dataExchangeId())
+     *             .listingId(listing.listingId())
      *             .build());
      * 
      *     }
@@ -319,10 +319,10 @@ public final class BigqueryanalyticshubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryanalyticshubFunctions.getListingIamPolicy(GetListingIamPolicyArgs.builder()
-     *             .project(google_bigquery_analytics_hub_listing.listing().project())
-     *             .location(google_bigquery_analytics_hub_listing.listing().location())
-     *             .dataExchangeId(google_bigquery_analytics_hub_listing.listing().data_exchange_id())
-     *             .listingId(google_bigquery_analytics_hub_listing.listing().listing_id())
+     *             .project(listing.project())
+     *             .location(listing.location())
+     *             .dataExchangeId(listing.dataExchangeId())
+     *             .listingId(listing.listingId())
      *             .build());
      * 
      *     }

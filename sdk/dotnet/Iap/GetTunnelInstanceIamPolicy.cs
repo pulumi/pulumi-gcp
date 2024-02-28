@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.Iap
         /// {
         ///     var policy = Gcp.Iap.GetTunnelInstanceIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_compute_instance.Tunnelvm.Project,
-        ///         Zone = google_compute_instance.Tunnelvm.Zone,
-        ///         Instance = google_compute_instance.Tunnelvm.Name,
+        ///         Project = tunnelvm.Project,
+        ///         Zone = tunnelvm.Zone,
+        ///         Instance = tunnelvm.Name,
         ///     });
         /// 
         /// });
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.Iap
         /// {
         ///     var policy = Gcp.Iap.GetTunnelInstanceIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_compute_instance.Tunnelvm.Project,
-        ///         Zone = google_compute_instance.Tunnelvm.Zone,
-        ///         Instance = google_compute_instance.Tunnelvm.Name,
+        ///         Project = tunnelvm.Project,
+        ///         Zone = tunnelvm.Zone,
+        ///         Instance = tunnelvm.Name,
         ///     });
         /// 
         /// });

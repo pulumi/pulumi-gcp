@@ -32,6 +32,8 @@ namespace Pulumi.Gcp.OrgPolicy
     /// {
     ///     var constraint = new Gcp.OrgPolicy.CustomConstraint("constraint", new()
     ///     {
+    ///         Name = "custom.disableGkeAutoUpgrade",
+    ///         Parent = "organizations/123456789",
     ///         ActionType = "ALLOW",
     ///         Condition = "resource.management.autoUpgrade == false",
     ///         MethodTypes = new[]
@@ -39,7 +41,6 @@ namespace Pulumi.Gcp.OrgPolicy
     ///             "CREATE",
     ///             "UPDATE",
     ///         },
-    ///         Parent = "organizations/123456789",
     ///         ResourceTypes = new[]
     ///         {
     ///             "container.googleapis.com/NodePool",
@@ -60,16 +61,17 @@ namespace Pulumi.Gcp.OrgPolicy
     /// {
     ///     var constraint = new Gcp.OrgPolicy.CustomConstraint("constraint", new()
     ///     {
+    ///         Name = "custom.disableGkeAutoUpgrade",
+    ///         Parent = "organizations/123456789",
+    ///         DisplayName = "Disable GKE auto upgrade",
+    ///         Description = "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
     ///         ActionType = "ALLOW",
     ///         Condition = "resource.management.autoUpgrade == false",
-    ///         Description = "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
-    ///         DisplayName = "Disable GKE auto upgrade",
     ///         MethodTypes = new[]
     ///         {
     ///             "CREATE",
     ///             "UPDATE",
     ///         },
-    ///         Parent = "organizations/123456789",
     ///         ResourceTypes = new[]
     ///         {
     ///             "container.googleapis.com/NodePool",
@@ -78,6 +80,7 @@ namespace Pulumi.Gcp.OrgPolicy
     /// 
     ///     var @bool = new Gcp.OrgPolicy.Policy("bool", new()
     ///     {
+    ///         Name = constraint.Name.Apply(name =&gt; $"organizations/123456789/policies/{name}"),
     ///         Parent = "organizations/123456789",
     ///         Spec = new Gcp.OrgPolicy.Inputs.PolicySpecArgs
     ///         {

@@ -331,31 +331,30 @@ class Peering(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        source_network = gcp.compute.Network("source-network", opts=pulumi.ResourceOptions(provider=google_beta))
+        source_network = gcp.compute.Network("source-network", name="ad-network")
         ad_domain = gcp.activedirectory.Domain("ad-domain",
             domain_name="ad.test.hashicorptest.com",
             locations=["us-central1"],
             reserved_ip_range="192.168.255.0/24",
-            authorized_networks=[source_network.id],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            authorized_networks=[source_network.id])
         peered_project = gcp.organizations.Project("peered-project",
+            name="my-peered-project",
+            project_id="my-peered-project",
             org_id="123456789",
-            billing_account="000000-0000000-0000000-000000",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            billing_account="000000-0000000-0000000-000000")
         compute = gcp.projects.Service("compute",
             project=peered_project.project_id,
-            service="compute.googleapis.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        peered_network = gcp.compute.Network("peered-network", project=compute.project,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+            service="compute.googleapis.com")
+        peered_network = gcp.compute.Network("peered-network",
+            project=compute.project,
+            name="ad-peered-network")
         ad_domain_peering = gcp.activedirectory.Peering("ad-domain-peering",
             domain_resource=ad_domain.name,
             peering_id="ad-domain-peering",
             authorized_network=peered_network.id,
             labels={
                 "foo": "bar",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
 
         ## Import
@@ -389,31 +388,30 @@ class Peering(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        source_network = gcp.compute.Network("source-network", opts=pulumi.ResourceOptions(provider=google_beta))
+        source_network = gcp.compute.Network("source-network", name="ad-network")
         ad_domain = gcp.activedirectory.Domain("ad-domain",
             domain_name="ad.test.hashicorptest.com",
             locations=["us-central1"],
             reserved_ip_range="192.168.255.0/24",
-            authorized_networks=[source_network.id],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            authorized_networks=[source_network.id])
         peered_project = gcp.organizations.Project("peered-project",
+            name="my-peered-project",
+            project_id="my-peered-project",
             org_id="123456789",
-            billing_account="000000-0000000-0000000-000000",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            billing_account="000000-0000000-0000000-000000")
         compute = gcp.projects.Service("compute",
             project=peered_project.project_id,
-            service="compute.googleapis.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        peered_network = gcp.compute.Network("peered-network", project=compute.project,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+            service="compute.googleapis.com")
+        peered_network = gcp.compute.Network("peered-network",
+            project=compute.project,
+            name="ad-peered-network")
         ad_domain_peering = gcp.activedirectory.Peering("ad-domain-peering",
             domain_resource=ad_domain.name,
             peering_id="ad-domain-peering",
             authorized_network=peered_network.id,
             labels={
                 "foo": "bar",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
 
         ## Import

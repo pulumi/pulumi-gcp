@@ -65,6 +65,7 @@ import javax.annotation.Nullable;
  * 
  *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
  *             .instance(main.name())
+ *             .name(&#34;my-database&#34;)
  *             .versionRetentionPeriod(&#34;3d&#34;)
  *             .ddls(            
  *                 &#34;CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)&#34;,

@@ -234,9 +234,14 @@ class ResponsePolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
-        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False)
+        network_1 = gcp.compute.Network("network-1",
+            name="network-1",
+            auto_create_subnetworks=False)
+        network_2 = gcp.compute.Network("network-2",
+            name="network-2",
+            auto_create_subnetworks=False)
         subnetwork_1 = gcp.compute.Subnetwork("subnetwork-1",
+            name=network_1.name,
             network=network_1.name,
             ip_cidr_range="10.0.36.0/24",
             region="us-central1",
@@ -252,6 +257,7 @@ class ResponsePolicy(pulumi.CustomResource):
                 ),
             ])
         cluster_1 = gcp.container.Cluster("cluster-1",
+            name="cluster-1",
             location="us-central1-c",
             initial_node_count=1,
             networking_mode="VPC_NATIVE",
@@ -344,9 +350,14 @@ class ResponsePolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
-        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False)
+        network_1 = gcp.compute.Network("network-1",
+            name="network-1",
+            auto_create_subnetworks=False)
+        network_2 = gcp.compute.Network("network-2",
+            name="network-2",
+            auto_create_subnetworks=False)
         subnetwork_1 = gcp.compute.Subnetwork("subnetwork-1",
+            name=network_1.name,
             network=network_1.name,
             ip_cidr_range="10.0.36.0/24",
             region="us-central1",
@@ -362,6 +373,7 @@ class ResponsePolicy(pulumi.CustomResource):
                 ),
             ])
         cluster_1 = gcp.container.Cluster("cluster-1",
+            name="cluster-1",
             location="us-central1-c",
             initial_node_count=1,
             networking_mode="VPC_NATIVE",

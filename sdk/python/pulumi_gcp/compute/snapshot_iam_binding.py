@@ -284,7 +284,8 @@ class SnapshotIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.compute.SnapshotIamPolicy("policy",
-            project=google_compute_snapshot["snapshot"]["project"],
+            project=snapshot["project"],
+            name=snapshot["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -295,7 +296,8 @@ class SnapshotIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.compute.SnapshotIamBinding("binding",
-            project=google_compute_snapshot["snapshot"]["project"],
+            project=snapshot["project"],
+            name=snapshot["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -307,7 +309,8 @@ class SnapshotIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.compute.SnapshotIamMember("member",
-            project=google_compute_snapshot["snapshot"]["project"],
+            project=snapshot["project"],
+            name=snapshot["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -401,7 +404,8 @@ class SnapshotIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.compute.SnapshotIamPolicy("policy",
-            project=google_compute_snapshot["snapshot"]["project"],
+            project=snapshot["project"],
+            name=snapshot["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -412,7 +416,8 @@ class SnapshotIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.compute.SnapshotIamBinding("binding",
-            project=google_compute_snapshot["snapshot"]["project"],
+            project=snapshot["project"],
+            name=snapshot["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -424,7 +429,8 @@ class SnapshotIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.compute.SnapshotIamMember("member",
-            project=google_compute_snapshot["snapshot"]["project"],
+            project=snapshot["project"],
+            name=snapshot["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

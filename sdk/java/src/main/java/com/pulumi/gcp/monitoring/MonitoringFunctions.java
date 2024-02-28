@@ -80,10 +80,12 @@ public final class MonitoringFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+     *             .name(&#34;appengine-static-content&#34;)
      *             .location(&#34;US&#34;)
      *             .build());
      * 
      *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
+     *             .name(&#34;hello-world.zip&#34;)
      *             .bucket(bucket.name())
      *             .source(new FileAsset(&#34;./test-fixtures/hello-world.zip&#34;))
      *             .build());
@@ -169,10 +171,12 @@ public final class MonitoringFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+     *             .name(&#34;appengine-static-content&#34;)
      *             .location(&#34;US&#34;)
      *             .build());
      * 
      *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
+     *             .name(&#34;hello-world.zip&#34;)
      *             .bucket(bucket.name())
      *             .source(new FileAsset(&#34;./test-fixtures/hello-world.zip&#34;))
      *             .build());
@@ -258,10 +262,12 @@ public final class MonitoringFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+     *             .name(&#34;appengine-static-content&#34;)
      *             .location(&#34;US&#34;)
      *             .build());
      * 
      *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
+     *             .name(&#34;hello-world.zip&#34;)
      *             .bucket(bucket.name())
      *             .source(new FileAsset(&#34;./test-fixtures/hello-world.zip&#34;))
      *             .build());
@@ -347,10 +353,12 @@ public final class MonitoringFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+     *             .name(&#34;appengine-static-content&#34;)
      *             .location(&#34;US&#34;)
      *             .build());
      * 
      *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
+     *             .name(&#34;hello-world.zip&#34;)
      *             .bucket(bucket.name())
      *             .source(new FileAsset(&#34;./test-fixtures/hello-world.zip&#34;))
      *             .build());
@@ -426,10 +434,10 @@ public final class MonitoringFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = MonitoringFunctions.getClusterIstioService(GetClusterIstioServiceArgs.builder()
-     *             .clusterName(&#34;west&#34;)
      *             .location(&#34;us-west2-a&#34;)
-     *             .serviceName(&#34;istio-policy&#34;)
+     *             .clusterName(&#34;west&#34;)
      *             .serviceNamespace(&#34;istio-system&#34;)
+     *             .serviceName(&#34;istio-policy&#34;)
      *             .build());
      * 
      *     }
@@ -479,10 +487,10 @@ public final class MonitoringFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = MonitoringFunctions.getClusterIstioService(GetClusterIstioServiceArgs.builder()
-     *             .clusterName(&#34;west&#34;)
      *             .location(&#34;us-west2-a&#34;)
-     *             .serviceName(&#34;istio-policy&#34;)
+     *             .clusterName(&#34;west&#34;)
      *             .serviceNamespace(&#34;istio-system&#34;)
+     *             .serviceName(&#34;istio-policy&#34;)
      *             .build());
      * 
      *     }
@@ -532,10 +540,10 @@ public final class MonitoringFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = MonitoringFunctions.getClusterIstioService(GetClusterIstioServiceArgs.builder()
-     *             .clusterName(&#34;west&#34;)
      *             .location(&#34;us-west2-a&#34;)
-     *             .serviceName(&#34;istio-policy&#34;)
+     *             .clusterName(&#34;west&#34;)
      *             .serviceNamespace(&#34;istio-system&#34;)
+     *             .serviceName(&#34;istio-policy&#34;)
      *             .build());
      * 
      *     }
@@ -585,10 +593,10 @@ public final class MonitoringFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = MonitoringFunctions.getClusterIstioService(GetClusterIstioServiceArgs.builder()
-     *             .clusterName(&#34;west&#34;)
      *             .location(&#34;us-west2-a&#34;)
-     *             .serviceName(&#34;istio-policy&#34;)
+     *             .clusterName(&#34;west&#34;)
      *             .serviceNamespace(&#34;istio-system&#34;)
+     *             .serviceName(&#34;istio-policy&#34;)
      *             .build());
      * 
      *     }
@@ -638,9 +646,9 @@ public final class MonitoringFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = MonitoringFunctions.getIstioCanonicalService(GetIstioCanonicalServiceArgs.builder()
-     *             .canonicalService(&#34;prometheus&#34;)
-     *             .canonicalServiceNamespace(&#34;istio-system&#34;)
      *             .meshUid(&#34;proj-573164786102&#34;)
+     *             .canonicalServiceNamespace(&#34;istio-system&#34;)
+     *             .canonicalService(&#34;prometheus&#34;)
      *             .build());
      * 
      *     }
@@ -690,9 +698,9 @@ public final class MonitoringFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = MonitoringFunctions.getIstioCanonicalService(GetIstioCanonicalServiceArgs.builder()
-     *             .canonicalService(&#34;prometheus&#34;)
-     *             .canonicalServiceNamespace(&#34;istio-system&#34;)
      *             .meshUid(&#34;proj-573164786102&#34;)
+     *             .canonicalServiceNamespace(&#34;istio-system&#34;)
+     *             .canonicalService(&#34;prometheus&#34;)
      *             .build());
      * 
      *     }
@@ -742,9 +750,9 @@ public final class MonitoringFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = MonitoringFunctions.getIstioCanonicalService(GetIstioCanonicalServiceArgs.builder()
-     *             .canonicalService(&#34;prometheus&#34;)
-     *             .canonicalServiceNamespace(&#34;istio-system&#34;)
      *             .meshUid(&#34;proj-573164786102&#34;)
+     *             .canonicalServiceNamespace(&#34;istio-system&#34;)
+     *             .canonicalService(&#34;prometheus&#34;)
      *             .build());
      * 
      *     }
@@ -794,9 +802,9 @@ public final class MonitoringFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = MonitoringFunctions.getIstioCanonicalService(GetIstioCanonicalServiceArgs.builder()
-     *             .canonicalService(&#34;prometheus&#34;)
-     *             .canonicalServiceNamespace(&#34;istio-system&#34;)
      *             .meshUid(&#34;proj-573164786102&#34;)
+     *             .canonicalServiceNamespace(&#34;istio-system&#34;)
+     *             .canonicalService(&#34;prometheus&#34;)
      *             .build());
      * 
      *     }
@@ -847,8 +855,8 @@ public final class MonitoringFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = MonitoringFunctions.getMeshIstioService(GetMeshIstioServiceArgs.builder()
      *             .meshUid(&#34;proj-573164786102&#34;)
-     *             .serviceName(&#34;prometheus&#34;)
      *             .serviceNamespace(&#34;istio-system&#34;)
+     *             .serviceName(&#34;prometheus&#34;)
      *             .build());
      * 
      *     }
@@ -899,8 +907,8 @@ public final class MonitoringFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = MonitoringFunctions.getMeshIstioService(GetMeshIstioServiceArgs.builder()
      *             .meshUid(&#34;proj-573164786102&#34;)
-     *             .serviceName(&#34;prometheus&#34;)
      *             .serviceNamespace(&#34;istio-system&#34;)
+     *             .serviceName(&#34;prometheus&#34;)
      *             .build());
      * 
      *     }
@@ -951,8 +959,8 @@ public final class MonitoringFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = MonitoringFunctions.getMeshIstioService(GetMeshIstioServiceArgs.builder()
      *             .meshUid(&#34;proj-573164786102&#34;)
-     *             .serviceName(&#34;prometheus&#34;)
      *             .serviceNamespace(&#34;istio-system&#34;)
+     *             .serviceName(&#34;prometheus&#34;)
      *             .build());
      * 
      *     }
@@ -1003,8 +1011,8 @@ public final class MonitoringFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = MonitoringFunctions.getMeshIstioService(GetMeshIstioServiceArgs.builder()
      *             .meshUid(&#34;proj-573164786102&#34;)
-     *             .serviceName(&#34;prometheus&#34;)
      *             .serviceNamespace(&#34;istio-system&#34;)
+     *             .serviceName(&#34;prometheus&#34;)
      *             .build());
      * 
      *     }

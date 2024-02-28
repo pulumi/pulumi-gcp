@@ -817,6 +817,7 @@ class DatabaseInstance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         main = gcp.sql.DatabaseInstance("main",
+            name="main-instance",
             database_version="POSTGRES_15",
             region="us-central1",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
@@ -831,20 +832,20 @@ class DatabaseInstance(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        private_network = gcp.compute.Network("privateNetwork", opts=pulumi.ResourceOptions(provider=google_beta))
-        private_ip_address = gcp.compute.GlobalAddress("privateIpAddress",
+        private_network = gcp.compute.Network("private_network", name="private-network")
+        private_ip_address = gcp.compute.GlobalAddress("private_ip_address",
+            name="private-ip-address",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=16,
-            network=private_network.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        private_vpc_connection = gcp.servicenetworking.Connection("privateVpcConnection",
+            network=private_network.id)
+        private_vpc_connection = gcp.servicenetworking.Connection("private_vpc_connection",
             network=private_network.id,
             service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_address.name],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
+            reserved_peering_ranges=[private_ip_address.name])
+        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
         instance = gcp.sql.DatabaseInstance("instance",
+            name=db_name_suffix.hex.apply(lambda hex: f"private-instance-{hex}"),
             region="us-central1",
             database_version="MYSQL_5_7",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
@@ -854,9 +855,7 @@ class DatabaseInstance(pulumi.CustomResource):
                     private_network=private_network.id,
                     enable_private_path_for_google_cloud_services=True,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[private_vpc_connection]))
+            ))
         ```
         ### ENTERPRISE_PLUS Instance with data_cache_config
 
@@ -865,13 +864,39 @@ class DatabaseInstance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         main = gcp.sql.DatabaseInstance("main",
+            name="enterprise-plus-main-instance",
             database_version="MYSQL_8_0_31",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-perf-optimized-N-2",
+                edition="ENTERPRISE_PLUS",
                 data_cache_config=gcp.sql.DatabaseInstanceSettingsDataCacheConfigArgs(
                     data_cache_enabled=True,
                 ),
-                edition="ENTERPRISE_PLUS",
-                tier="db-perf-optimized-N-2",
+            ))
+        ```
+        ### Cloud SQL Instance with PSC connectivity
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        main = gcp.sql.DatabaseInstance("main",
+            name="psc-enabled-main-instance",
+            database_version="MYSQL_8_0",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
+                    psc_configs=[gcp.sql.DatabaseInstanceSettingsIpConfigurationPscConfigArgs(
+                        psc_enabled=True,
+                        allowed_consumer_projects=["allowed-consumer-project-name"],
+                    )],
+                    ipv4_enabled=False,
+                ),
+                backup_configuration=gcp.sql.DatabaseInstanceSettingsBackupConfigurationArgs(
+                    enabled=True,
+                    binary_log_enabled=True,
+                ),
+                availability_type="REGIONAL",
             ))
         ```
 
@@ -981,6 +1006,7 @@ class DatabaseInstance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         main = gcp.sql.DatabaseInstance("main",
+            name="main-instance",
             database_version="POSTGRES_15",
             region="us-central1",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
@@ -995,20 +1021,20 @@ class DatabaseInstance(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        private_network = gcp.compute.Network("privateNetwork", opts=pulumi.ResourceOptions(provider=google_beta))
-        private_ip_address = gcp.compute.GlobalAddress("privateIpAddress",
+        private_network = gcp.compute.Network("private_network", name="private-network")
+        private_ip_address = gcp.compute.GlobalAddress("private_ip_address",
+            name="private-ip-address",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=16,
-            network=private_network.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        private_vpc_connection = gcp.servicenetworking.Connection("privateVpcConnection",
+            network=private_network.id)
+        private_vpc_connection = gcp.servicenetworking.Connection("private_vpc_connection",
             network=private_network.id,
             service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_address.name],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
+            reserved_peering_ranges=[private_ip_address.name])
+        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
         instance = gcp.sql.DatabaseInstance("instance",
+            name=db_name_suffix.hex.apply(lambda hex: f"private-instance-{hex}"),
             region="us-central1",
             database_version="MYSQL_5_7",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
@@ -1018,9 +1044,7 @@ class DatabaseInstance(pulumi.CustomResource):
                     private_network=private_network.id,
                     enable_private_path_for_google_cloud_services=True,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[private_vpc_connection]))
+            ))
         ```
         ### ENTERPRISE_PLUS Instance with data_cache_config
 
@@ -1029,13 +1053,39 @@ class DatabaseInstance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         main = gcp.sql.DatabaseInstance("main",
+            name="enterprise-plus-main-instance",
             database_version="MYSQL_8_0_31",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-perf-optimized-N-2",
+                edition="ENTERPRISE_PLUS",
                 data_cache_config=gcp.sql.DatabaseInstanceSettingsDataCacheConfigArgs(
                     data_cache_enabled=True,
                 ),
-                edition="ENTERPRISE_PLUS",
-                tier="db-perf-optimized-N-2",
+            ))
+        ```
+        ### Cloud SQL Instance with PSC connectivity
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        main = gcp.sql.DatabaseInstance("main",
+            name="psc-enabled-main-instance",
+            database_version="MYSQL_8_0",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
+                    psc_configs=[gcp.sql.DatabaseInstanceSettingsIpConfigurationPscConfigArgs(
+                        psc_enabled=True,
+                        allowed_consumer_projects=["allowed-consumer-project-name"],
+                    )],
+                    ipv4_enabled=False,
+                ),
+                backup_configuration=gcp.sql.DatabaseInstanceSettingsBackupConfigurationArgs(
+                    enabled=True,
+                    binary_log_enabled=True,
+                ),
+                availability_type="REGIONAL",
             ))
         ```
 

@@ -29,6 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance, err := certificatemanager.NewDnsAuthorization(ctx, "instance", &certificatemanager.DnsAuthorizationArgs{
+//				Name:        pulumi.String("dns-auth"),
 //				Description: pulumi.String("The default dnss"),
 //				Domain:      pulumi.String("subdomain.hashicorptest.com"),
 //			})
@@ -36,6 +37,7 @@ import (
 //				return err
 //			}
 //			instance2, err := certificatemanager.NewDnsAuthorization(ctx, "instance2", &certificatemanager.DnsAuthorizationArgs{
+//				Name:        pulumi.String("dns-auth2"),
 //				Description: pulumi.String("The default dnss"),
 //				Domain:      pulumi.String("subdomain2.hashicorptest.com"),
 //			})
@@ -43,6 +45,7 @@ import (
 //				return err
 //			}
 //			_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
+//				Name:        pulumi.String("dns-cert"),
 //				Description: pulumi.String("The default cert"),
 //				Scope:       pulumi.String("EDGE_CACHE"),
 //				Labels: pulumi.StringMap{
@@ -83,13 +86,44 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			pool, err := certificateauthority.NewCaPool(ctx, "pool", &certificateauthority.CaPoolArgs{
+//				Name:     pulumi.String("ca-pool"),
 //				Location: pulumi.String("us-central1"),
 //				Tier:     pulumi.String("ENTERPRISE"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			caAuthority, err := certificateauthority.NewAuthority(ctx, "caAuthority", &certificateauthority.AuthorityArgs{
+//			// creating certificate_issuance_config to use it in the managed certificate
+//			issuanceconfig, err := certificatemanager.NewCertificateIssuanceConfig(ctx, "issuanceconfig", &certificatemanager.CertificateIssuanceConfigArgs{
+//				Name:        pulumi.String("issuance-config"),
+//				Description: pulumi.String("sample description for the certificate issuanceConfigs"),
+//				CertificateAuthorityConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs{
+//					CertificateAuthorityServiceConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs{
+//						CaPool: pool.ID(),
+//					},
+//				},
+//				Lifetime:                 pulumi.String("1814400s"),
+//				RotationWindowPercentage: pulumi.Int(34),
+//				KeyAlgorithm:             pulumi.String("ECDSA_P256"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
+//				Name:        pulumi.String("issuance-config-cert"),
+//				Description: pulumi.String("The default cert"),
+//				Scope:       pulumi.String("EDGE_CACHE"),
+//				Managed: &certificatemanager.CertificateManagedArgs{
+//					Domains: pulumi.StringArray{
+//						pulumi.String("terraform.subdomain1.com"),
+//					},
+//					IssuanceConfig: issuanceconfig.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = certificateauthority.NewAuthority(ctx, "ca_authority", &certificateauthority.AuthorityArgs{
 //				Location:               pulumi.String("us-central1"),
 //				Pool:                   pool.Name,
 //				CertificateAuthorityId: pulumi.String("ca-authority"),
@@ -130,36 +164,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// creating certificate_issuance_config to use it in the managed certificate
-//			issuanceconfig, err := certificatemanager.NewCertificateIssuanceConfig(ctx, "issuanceconfig", &certificatemanager.CertificateIssuanceConfigArgs{
-//				Description: pulumi.String("sample description for the certificate issuanceConfigs"),
-//				CertificateAuthorityConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs{
-//					CertificateAuthorityServiceConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs{
-//						CaPool: pool.ID(),
-//					},
-//				},
-//				Lifetime:                 pulumi.String("1814400s"),
-//				RotationWindowPercentage: pulumi.Int(34),
-//				KeyAlgorithm:             pulumi.String("ECDSA_P256"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				caAuthority,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
-//				Description: pulumi.String("The default cert"),
-//				Scope:       pulumi.String("EDGE_CACHE"),
-//				Managed: &certificatemanager.CertificateManagedArgs{
-//					Domains: pulumi.StringArray{
-//						pulumi.String("terraform.subdomain1.com"),
-//					},
-//					IssuanceConfig: issuanceconfig.ID(),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			return nil
 //		})
 //	}
@@ -180,6 +184,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance, err := certificatemanager.NewDnsAuthorization(ctx, "instance", &certificatemanager.DnsAuthorizationArgs{
+//				Name:        pulumi.String("dns-auth"),
 //				Description: pulumi.String("The default dnss"),
 //				Domain:      pulumi.String("subdomain.hashicorptest.com"),
 //			})
@@ -187,6 +192,7 @@ import (
 //				return err
 //			}
 //			instance2, err := certificatemanager.NewDnsAuthorization(ctx, "instance2", &certificatemanager.DnsAuthorizationArgs{
+//				Name:        pulumi.String("dns-auth2"),
 //				Description: pulumi.String("The default dnss"),
 //				Domain:      pulumi.String("subdomain2.hashicorptest.com"),
 //			})
@@ -194,6 +200,7 @@ import (
 //				return err
 //			}
 //			_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
+//				Name:        pulumi.String("self-managed-cert"),
 //				Description: pulumi.String("Global cert"),
 //				Scope:       pulumi.String("EDGE_CACHE"),
 //				Managed: &certificatemanager.CertificateManagedArgs{
@@ -222,29 +229,33 @@ import (
 //
 // import (
 //
-//	"os"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
-//
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/cert.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile1, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/private-key.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
+//				Name:        pulumi.String("self-managed-cert"),
 //				Description: pulumi.String("Regional cert"),
 //				Location:    pulumi.String("us-central1"),
 //				SelfManaged: &certificatemanager.CertificateSelfManagedArgs{
-//					PemCertificate: readFileOrPanic("test-fixtures/cert.pem"),
-//					PemPrivateKey:  readFileOrPanic("test-fixtures/private-key.pem"),
+//					PemCertificate: invokeFile.Result,
+//					PemPrivateKey:  invokeFile1.Result,
 //				},
 //			})
 //			if err != nil {
@@ -271,13 +282,44 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			pool, err := certificateauthority.NewCaPool(ctx, "pool", &certificateauthority.CaPoolArgs{
+//				Name:     pulumi.String("ca-pool"),
 //				Location: pulumi.String("us-central1"),
 //				Tier:     pulumi.String("ENTERPRISE"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			caAuthority, err := certificateauthority.NewAuthority(ctx, "caAuthority", &certificateauthority.AuthorityArgs{
+//			// creating certificate_issuance_config to use it in the managed certificate
+//			issuanceconfig, err := certificatemanager.NewCertificateIssuanceConfig(ctx, "issuanceconfig", &certificatemanager.CertificateIssuanceConfigArgs{
+//				Name:        pulumi.String("issuance-config"),
+//				Description: pulumi.String("sample description for the certificate issuanceConfigs"),
+//				CertificateAuthorityConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs{
+//					CertificateAuthorityServiceConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs{
+//						CaPool: pool.ID(),
+//					},
+//				},
+//				Lifetime:                 pulumi.String("1814400s"),
+//				RotationWindowPercentage: pulumi.Int(34),
+//				KeyAlgorithm:             pulumi.String("ECDSA_P256"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
+//				Name:        pulumi.String("issuance-config-cert"),
+//				Description: pulumi.String("sample google managed all_regions certificate with issuance config for terraform"),
+//				Scope:       pulumi.String("ALL_REGIONS"),
+//				Managed: &certificatemanager.CertificateManagedArgs{
+//					Domains: pulumi.StringArray{
+//						pulumi.String("terraform.subdomain1.com"),
+//					},
+//					IssuanceConfig: issuanceconfig.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = certificateauthority.NewAuthority(ctx, "ca_authority", &certificateauthority.AuthorityArgs{
 //				Location:               pulumi.String("us-central1"),
 //				Pool:                   pool.Name,
 //				CertificateAuthorityId: pulumi.String("ca-authority"),
@@ -318,36 +360,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// creating certificate_issuance_config to use it in the managed certificate
-//			issuanceconfig, err := certificatemanager.NewCertificateIssuanceConfig(ctx, "issuanceconfig", &certificatemanager.CertificateIssuanceConfigArgs{
-//				Description: pulumi.String("sample description for the certificate issuanceConfigs"),
-//				CertificateAuthorityConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs{
-//					CertificateAuthorityServiceConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs{
-//						CaPool: pool.ID(),
-//					},
-//				},
-//				Lifetime:                 pulumi.String("1814400s"),
-//				RotationWindowPercentage: pulumi.Int(34),
-//				KeyAlgorithm:             pulumi.String("ECDSA_P256"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				caAuthority,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
-//				Description: pulumi.String("sample google managed all_regions certificate with issuance config for terraform"),
-//				Scope:       pulumi.String("ALL_REGIONS"),
-//				Managed: &certificatemanager.CertificateManagedArgs{
-//					Domains: pulumi.StringArray{
-//						pulumi.String("terraform.subdomain1.com"),
-//					},
-//					IssuanceConfig: issuanceconfig.ID(),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			return nil
 //		})
 //	}
@@ -368,6 +380,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance, err := certificatemanager.NewDnsAuthorization(ctx, "instance", &certificatemanager.DnsAuthorizationArgs{
+//				Name:        pulumi.String("dns-auth"),
 //				Description: pulumi.String("The default dnss"),
 //				Domain:      pulumi.String("subdomain.hashicorptest.com"),
 //			})
@@ -375,6 +388,7 @@ import (
 //				return err
 //			}
 //			instance2, err := certificatemanager.NewDnsAuthorization(ctx, "instance2", &certificatemanager.DnsAuthorizationArgs{
+//				Name:        pulumi.String("dns-auth2"),
 //				Description: pulumi.String("The default dnss"),
 //				Domain:      pulumi.String("subdomain2.hashicorptest.com"),
 //			})
@@ -382,6 +396,7 @@ import (
 //				return err
 //			}
 //			_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
+//				Name:        pulumi.String("dns-cert"),
 //				Description: pulumi.String("The default cert"),
 //				Scope:       pulumi.String("ALL_REGIONS"),
 //				Managed: &certificatemanager.CertificateManagedArgs{

@@ -52,20 +52,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var custom_target_type = new CustomTargetType(&#34;custom-target-type&#34;, CustomTargetTypeArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .name(&#34;my-custom-target-type&#34;)
+ *             .description(&#34;My custom target type&#34;)
  *             .annotations(Map.ofEntries(
  *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
  *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
  *             ))
- *             .customActions(CustomTargetTypeCustomActionsArgs.builder()
- *                 .deployAction(&#34;deployAction&#34;)
- *                 .renderAction(&#34;renderAction&#34;)
- *                 .build())
- *             .description(&#34;My custom target type&#34;)
  *             .labels(Map.ofEntries(
  *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
  *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
  *             ))
- *             .location(&#34;us-central1&#34;)
+ *             .customActions(CustomTargetTypeCustomActionsArgs.builder()
+ *                 .renderAction(&#34;renderAction&#34;)
+ *                 .deployAction(&#34;deployAction&#34;)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -95,20 +96,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var custom_target_type = new CustomTargetType(&#34;custom-target-type&#34;, CustomTargetTypeArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .name(&#34;my-custom-target-type&#34;)
+ *             .description(&#34;My custom target type&#34;)
  *             .customActions(CustomTargetTypeCustomActionsArgs.builder()
+ *                 .renderAction(&#34;renderAction&#34;)
  *                 .deployAction(&#34;deployAction&#34;)
  *                 .includeSkaffoldModules(CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs.builder()
  *                     .configs(&#34;my-config&#34;)
  *                     .git(CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs.builder()
+ *                         .repo(&#34;http://github.com/example/example-repo.git&#34;)
  *                         .path(&#34;configs/skaffold.yaml&#34;)
  *                         .ref(&#34;main&#34;)
- *                         .repo(&#34;http://github.com/example/example-repo.git&#34;)
  *                         .build())
  *                     .build())
- *                 .renderAction(&#34;renderAction&#34;)
  *                 .build())
- *             .description(&#34;My custom target type&#34;)
- *             .location(&#34;us-central1&#34;)
  *             .build());
  * 
  *     }
@@ -138,19 +140,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var custom_target_type = new CustomTargetType(&#34;custom-target-type&#34;, CustomTargetTypeArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .name(&#34;my-custom-target-type&#34;)
+ *             .description(&#34;My custom target type&#34;)
  *             .customActions(CustomTargetTypeCustomActionsArgs.builder()
+ *                 .renderAction(&#34;renderAction&#34;)
  *                 .deployAction(&#34;deployAction&#34;)
  *                 .includeSkaffoldModules(CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs.builder()
  *                     .configs(&#34;my-config&#34;)
  *                     .googleCloudStorage(CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs.builder()
- *                         .path(&#34;skaffold.yaml&#34;)
  *                         .source(&#34;gs://example-bucket/dir/configs/*&#34;)
+ *                         .path(&#34;skaffold.yaml&#34;)
  *                         .build())
  *                     .build())
- *                 .renderAction(&#34;renderAction&#34;)
  *                 .build())
- *             .description(&#34;My custom target type&#34;)
- *             .location(&#34;us-central1&#34;)
  *             .build());
  * 
  *     }

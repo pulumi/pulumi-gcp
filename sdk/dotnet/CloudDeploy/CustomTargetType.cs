@@ -32,23 +32,24 @@ namespace Pulumi.Gcp.CloudDeploy
     /// {
     ///     var custom_target_type = new Gcp.CloudDeploy.CustomTargetType("custom-target-type", new()
     ///     {
+    ///         Location = "us-central1",
+    ///         Name = "my-custom-target-type",
+    ///         Description = "My custom target type",
     ///         Annotations = 
     ///         {
     ///             { "my_first_annotation", "example-annotation-1" },
     ///             { "my_second_annotation", "example-annotation-2" },
     ///         },
-    ///         CustomActions = new Gcp.CloudDeploy.Inputs.CustomTargetTypeCustomActionsArgs
-    ///         {
-    ///             DeployAction = "deployAction",
-    ///             RenderAction = "renderAction",
-    ///         },
-    ///         Description = "My custom target type",
     ///         Labels = 
     ///         {
     ///             { "my_first_label", "example-label-1" },
     ///             { "my_second_label", "example-label-2" },
     ///         },
-    ///         Location = "us-central1",
+    ///         CustomActions = new Gcp.CloudDeploy.Inputs.CustomTargetTypeCustomActionsArgs
+    ///         {
+    ///             RenderAction = "renderAction",
+    ///             DeployAction = "deployAction",
+    ///         },
     ///     });
     /// 
     /// });
@@ -65,8 +66,12 @@ namespace Pulumi.Gcp.CloudDeploy
     /// {
     ///     var custom_target_type = new Gcp.CloudDeploy.CustomTargetType("custom-target-type", new()
     ///     {
+    ///         Location = "us-central1",
+    ///         Name = "my-custom-target-type",
+    ///         Description = "My custom target type",
     ///         CustomActions = new Gcp.CloudDeploy.Inputs.CustomTargetTypeCustomActionsArgs
     ///         {
+    ///             RenderAction = "renderAction",
     ///             DeployAction = "deployAction",
     ///             IncludeSkaffoldModules = new[]
     ///             {
@@ -78,16 +83,13 @@ namespace Pulumi.Gcp.CloudDeploy
     ///                     },
     ///                     Git = new Gcp.CloudDeploy.Inputs.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs
     ///                     {
+    ///                         Repo = "http://github.com/example/example-repo.git",
     ///                         Path = "configs/skaffold.yaml",
     ///                         Ref = "main",
-    ///                         Repo = "http://github.com/example/example-repo.git",
     ///                     },
     ///                 },
     ///             },
-    ///             RenderAction = "renderAction",
     ///         },
-    ///         Description = "My custom target type",
-    ///         Location = "us-central1",
     ///     });
     /// 
     /// });
@@ -104,8 +106,12 @@ namespace Pulumi.Gcp.CloudDeploy
     /// {
     ///     var custom_target_type = new Gcp.CloudDeploy.CustomTargetType("custom-target-type", new()
     ///     {
+    ///         Location = "us-central1",
+    ///         Name = "my-custom-target-type",
+    ///         Description = "My custom target type",
     ///         CustomActions = new Gcp.CloudDeploy.Inputs.CustomTargetTypeCustomActionsArgs
     ///         {
+    ///             RenderAction = "renderAction",
     ///             DeployAction = "deployAction",
     ///             IncludeSkaffoldModules = new[]
     ///             {
@@ -117,15 +123,12 @@ namespace Pulumi.Gcp.CloudDeploy
     ///                     },
     ///                     GoogleCloudStorage = new Gcp.CloudDeploy.Inputs.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs
     ///                     {
-    ///                         Path = "skaffold.yaml",
     ///                         Source = "gs://example-bucket/dir/configs/*",
+    ///                         Path = "skaffold.yaml",
     ///                     },
     ///                 },
     ///             },
-    ///             RenderAction = "renderAction",
     ///         },
-    ///         Description = "My custom target type",
-    ///         Location = "us-central1",
     ///     });
     /// 
     /// });

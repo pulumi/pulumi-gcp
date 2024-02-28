@@ -67,15 +67,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+ *             .name(&#34;test-bucket&#34;)
  *             .location(&#34;US&#34;)
  *             .build());
  * 
  *         var archive = new BucketObject(&#34;archive&#34;, BucketObjectArgs.builder()        
+ *             .name(&#34;index.zip&#34;)
  *             .bucket(bucket.name())
  *             .source(new FileAsset(&#34;./path/to/zip/file/which/contains/code&#34;))
  *             .build());
  * 
  *         var function = new Function(&#34;function&#34;, FunctionArgs.builder()        
+ *             .name(&#34;function-test&#34;)
  *             .description(&#34;My function&#34;)
  *             .runtime(&#34;nodejs16&#34;)
  *             .availableMemoryMb(128)
@@ -126,15 +129,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+ *             .name(&#34;test-bucket&#34;)
  *             .location(&#34;US&#34;)
  *             .build());
  * 
  *         var archive = new BucketObject(&#34;archive&#34;, BucketObjectArgs.builder()        
+ *             .name(&#34;index.zip&#34;)
  *             .bucket(bucket.name())
  *             .source(new FileAsset(&#34;./path/to/zip/file/which/contains/code&#34;))
  *             .build());
  * 
  *         var function = new Function(&#34;function&#34;, FunctionArgs.builder()        
+ *             .name(&#34;function-test&#34;)
  *             .description(&#34;My function&#34;)
  *             .runtime(&#34;nodejs16&#34;)
  *             .availableMemoryMb(128)

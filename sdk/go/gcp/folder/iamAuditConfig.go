@@ -95,15 +95,15 @@ import (
 //			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				Bindings: []organizations.GetIAMPolicyBinding{
 //					{
-//						Condition: {
-//							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
-//							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
-//							Title:       "expires_after_2019_12_31",
-//						},
+//						Role: "roles/compute.admin",
 //						Members: []string{
 //							"user:jane@example.com",
 //						},
-//						Role: "roles/compute.admin",
+//						Condition: {
+//							Title:       "expires_after_2019_12_31",
+//							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
+//							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+//						},
 //					},
 //				},
 //			}, nil)
@@ -139,10 +139,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := folder.NewIAMBinding(ctx, "folder", &folder.IAMBindingArgs{
 //				Folder: pulumi.String("folders/1234567"),
+//				Role:   pulumi.String("roles/editor"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				Role: pulumi.String("roles/editor"),
 //			})
 //			if err != nil {
 //				return err
@@ -168,16 +168,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := folder.NewIAMBinding(ctx, "folder", &folder.IAMBindingArgs{
-//				Condition: &folder.IAMBindingConditionArgs{
-//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
-//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
-//					Title:       pulumi.String("expires_after_2019_12_31"),
-//				},
 //				Folder: pulumi.String("folders/1234567"),
+//				Role:   pulumi.String("roles/container.admin"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				Role: pulumi.String("roles/container.admin"),
+//				Condition: &folder.IAMBindingConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -204,8 +204,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := folder.NewIAMMember(ctx, "folder", &folder.IAMMemberArgs{
 //				Folder: pulumi.String("folders/1234567"),
-//				Member: pulumi.String("user:jane@example.com"),
 //				Role:   pulumi.String("roles/editor"),
+//				Member: pulumi.String("user:jane@example.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -231,14 +231,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := folder.NewIAMMember(ctx, "folder", &folder.IAMMemberArgs{
+//				Folder: pulumi.String("folders/1234567"),
+//				Role:   pulumi.String("roles/firebase.admin"),
+//				Member: pulumi.String("user:jane@example.com"),
 //				Condition: &folder.IAMMemberConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
-//					Title:       pulumi.String("expires_after_2019_12_31"),
 //				},
-//				Folder: pulumi.String("folders/1234567"),
-//				Member: pulumi.String("user:jane@example.com"),
-//				Role:   pulumi.String("roles/firebase.admin"),
 //			})
 //			if err != nil {
 //				return err
@@ -264,19 +264,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := folder.NewIamAuditConfig(ctx, "folder", &folder.IamAuditConfigArgs{
+//				Folder:  pulumi.String("folders/1234567"),
+//				Service: pulumi.String("allServices"),
 //				AuditLogConfigs: folder.IamAuditConfigAuditLogConfigArray{
 //					&folder.IamAuditConfigAuditLogConfigArgs{
 //						LogType: pulumi.String("ADMIN_READ"),
 //					},
 //					&folder.IamAuditConfigAuditLogConfigArgs{
+//						LogType: pulumi.String("DATA_READ"),
 //						ExemptedMembers: pulumi.StringArray{
 //							pulumi.String("user:joebloggs@example.com"),
 //						},
-//						LogType: pulumi.String("DATA_READ"),
 //					},
 //				},
-//				Folder:  pulumi.String("folders/1234567"),
-//				Service: pulumi.String("allServices"),
 //			})
 //			if err != nil {
 //				return err

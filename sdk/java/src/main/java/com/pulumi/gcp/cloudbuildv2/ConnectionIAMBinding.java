@@ -63,8 +63,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ConnectionIAMPolicy(&#34;policy&#34;, ConnectionIAMPolicyArgs.builder()        
- *             .project(google_cloudbuildv2_connection.my-connection().project())
- *             .location(google_cloudbuildv2_connection.my-connection().location())
+ *             .project(my_connection.project())
+ *             .location(my_connection.location())
+ *             .name(my_connection.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -95,8 +96,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new ConnectionIAMBinding(&#34;binding&#34;, ConnectionIAMBindingArgs.builder()        
- *             .project(google_cloudbuildv2_connection.my-connection().project())
- *             .location(google_cloudbuildv2_connection.my-connection().location())
+ *             .project(my_connection.project())
+ *             .location(my_connection.location())
+ *             .name(my_connection.name())
  *             .role(&#34;roles/cloudbuild.connectionViewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -128,8 +130,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new ConnectionIAMMember(&#34;member&#34;, ConnectionIAMMemberArgs.builder()        
- *             .project(google_cloudbuildv2_connection.my-connection().project())
- *             .location(google_cloudbuildv2_connection.my-connection().location())
+ *             .project(my_connection.project())
+ *             .location(my_connection.location())
+ *             .name(my_connection.name())
  *             .role(&#34;roles/cloudbuild.connectionViewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

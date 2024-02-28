@@ -32,14 +32,15 @@ namespace Pulumi.Gcp.Beyondcorp
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var serviceAccount = new Gcp.ServiceAccount.Account("serviceAccount", new()
+    ///     var serviceAccount = new Gcp.ServiceAccount.Account("service_account", new()
     ///     {
     ///         AccountId = "my-account",
     ///         DisplayName = "Test Service Account",
     ///     });
     /// 
-    ///     var appConnector = new Gcp.Beyondcorp.AppConnector("appConnector", new()
+    ///     var appConnector = new Gcp.Beyondcorp.AppConnector("app_connector", new()
     ///     {
+    ///         Name = "my-app-connector",
     ///         PrincipalInfo = new Gcp.Beyondcorp.Inputs.AppConnectorPrincipalInfoArgs
     ///         {
     ///             ServiceAccount = new Gcp.Beyondcorp.Inputs.AppConnectorPrincipalInfoServiceAccountArgs
@@ -61,14 +62,15 @@ namespace Pulumi.Gcp.Beyondcorp
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var serviceAccount = new Gcp.ServiceAccount.Account("serviceAccount", new()
+    ///     var serviceAccount = new Gcp.ServiceAccount.Account("service_account", new()
     ///     {
     ///         AccountId = "my-account",
     ///         DisplayName = "Test Service Account",
     ///     });
     /// 
-    ///     var appConnector = new Gcp.Beyondcorp.AppConnector("appConnector", new()
+    ///     var appConnector = new Gcp.Beyondcorp.AppConnector("app_connector", new()
     ///     {
+    ///         Name = "my-app-connector",
     ///         Region = "us-central1",
     ///         DisplayName = "some display name",
     ///         PrincipalInfo = new Gcp.Beyondcorp.Inputs.AppConnectorPrincipalInfoArgs

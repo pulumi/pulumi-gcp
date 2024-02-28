@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.GetJobIamPolicy(ctx, &dataproc.GetJobIamPolicyArgs{
-//				JobId:  google_dataproc_job.Pyspark.Reference[0].Job_id,
+//				JobId:  pyspark.Reference[0].JobId,
 //				Region: pulumi.StringRef("us-central1"),
 //			}, nil)
 //			if err != nil {

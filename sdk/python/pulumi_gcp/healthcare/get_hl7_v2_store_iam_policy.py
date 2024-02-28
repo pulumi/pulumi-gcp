@@ -88,7 +88,7 @@ def get_hl7_v2_store_iam_policy(hl7_v2_store_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.healthcare.get_hl7_v2_store_iam_policy(hl7_v2_store_id=google_healthcare_hl7_v2_store["hl7_v2_store"]["id"])
+    foo = gcp.healthcare.get_hl7_v2_store_iam_policy(hl7_v2_store_id=hl7_v2_store["id"])
     ```
 
 
@@ -121,7 +121,7 @@ def get_hl7_v2_store_iam_policy_output(hl7_v2_store_id: Optional[pulumi.Input[st
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.healthcare.get_hl7_v2_store_iam_policy(hl7_v2_store_id=google_healthcare_hl7_v2_store["hl7_v2_store"]["id"])
+    foo = gcp.healthcare.get_hl7_v2_store_iam_policy(hl7_v2_store_id=hl7_v2_store["id"])
     ```
 
 

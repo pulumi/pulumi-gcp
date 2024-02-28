@@ -160,10 +160,10 @@ class SourceIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        custom_source = gcp.securitycenter.Source("customSource",
-            description="My custom Cloud Security Command Center Finding Source",
+        custom_source = gcp.securitycenter.Source("custom_source",
             display_name="My Source",
-            organization="123456789")
+            organization="123456789",
+            description="My custom Cloud Security Command Center Finding Source")
         ```
 
         ## Import
@@ -217,10 +217,10 @@ class SourceIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        custom_source = gcp.securitycenter.Source("customSource",
-            description="My custom Cloud Security Command Center Finding Source",
+        custom_source = gcp.securitycenter.Source("custom_source",
             display_name="My Source",
-            organization="123456789")
+            organization="123456789",
+            description="My custom Cloud Security Command Center Finding Source")
         ```
 
         ## Import

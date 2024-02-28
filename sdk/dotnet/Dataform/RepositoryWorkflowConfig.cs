@@ -21,11 +21,9 @@ namespace Pulumi.Gcp.Dataform
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var gitRepository = new Gcp.SourceRepo.Repository("gitRepository", new()
+    ///     var gitRepository = new Gcp.SourceRepo.Repository("git_repository", new()
     ///     {
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Name = "my/repository",
     ///     });
     /// 
     ///     var secret = new Gcp.SecretManager.Secret("secret", new()
@@ -35,22 +33,17 @@ namespace Pulumi.Gcp.Dataform
     ///         {
     ///             Auto = null,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var secretVersion = new Gcp.SecretManager.SecretVersion("secretVersion", new()
+    ///     var secretVersion = new Gcp.SecretManager.SecretVersion("secret_version", new()
     ///     {
     ///         Secret = secret.Id,
     ///         SecretData = "secret-data",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var repository = new Gcp.Dataform.Repository("repository", new()
     ///     {
+    ///         Name = "dataform_repository",
     ///         Region = "us-central1",
     ///         GitRemoteSettings = new Gcp.Dataform.Inputs.RepositoryGitRemoteSettingsArgs
     ///         {
@@ -64,16 +57,14 @@ namespace Pulumi.Gcp.Dataform
     ///             SchemaSuffix = "_suffix",
     ///             TablePrefix = "prefix_",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var releaseConfig = new Gcp.Dataform.RepositoryReleaseConfig("releaseConfig", new()
+    ///     var releaseConfig = new Gcp.Dataform.RepositoryReleaseConfig("release_config", new()
     ///     {
     ///         Project = repository.Project,
     ///         Region = repository.Region,
     ///         Repository = repository.Name,
+    ///         Name = "my_release",
     ///         GitCommitish = "main",
     ///         CronSchedule = "0 7 * * *",
     ///         TimeZone = "America/New_York",
@@ -91,18 +82,12 @@ namespace Pulumi.Gcp.Dataform
     ///                 { "var1", "value" },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var dataformSa = new Gcp.ServiceAccount.Account("dataformSa", new()
+    ///     var dataformSa = new Gcp.ServiceAccount.Account("dataform_sa", new()
     ///     {
     ///         AccountId = "dataform-sa",
     ///         DisplayName = "Dataform Service Account",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var workflow = new Gcp.Dataform.RepositoryWorkflowConfig("workflow", new()
@@ -110,6 +95,7 @@ namespace Pulumi.Gcp.Dataform
     ///         Project = repository.Project,
     ///         Region = repository.Region,
     ///         Repository = repository.Name,
+    ///         Name = "my_workflow",
     ///         ReleaseConfig = releaseConfig.Id,
     ///         InvocationConfig = new Gcp.Dataform.Inputs.RepositoryWorkflowConfigInvocationConfigArgs
     ///         {
@@ -139,9 +125,6 @@ namespace Pulumi.Gcp.Dataform
     ///         },
     ///         CronSchedule = "0 7 * * *",
     ///         TimeZone = "America/New_York",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

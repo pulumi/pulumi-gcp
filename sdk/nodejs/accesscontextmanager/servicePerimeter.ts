@@ -42,19 +42,23 @@ import * as utilities from "../utilities";
  * });
  * const service_perimeter = new gcp.accesscontextmanager.ServicePerimeter("service-perimeter", {
  *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
+ *     name: pulumi.interpolate`accessPolicies/${access_policy.name}/servicePerimeters/restrict_storage`,
+ *     title: "restrict_storage",
  *     status: {
  *         restrictedServices: ["storage.googleapis.com"],
  *     },
- *     title: "restrict_storage",
  * });
  * const access_level = new gcp.accesscontextmanager.AccessLevel("access-level", {
+ *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
+ *     name: pulumi.interpolate`accessPolicies/${access_policy.name}/accessLevels/chromeos_no_lock`,
+ *     title: "chromeos_no_lock",
  *     basic: {
  *         conditions: [{
  *             devicePolicy: {
+ *                 requireScreenLock: false,
  *                 osConstraints: [{
  *                     osType: "DESKTOP_CHROME_OS",
  *                 }],
- *                 requireScreenLock: false,
  *             },
  *             regions: [
  *                 "CH",
@@ -63,8 +67,6 @@ import * as utilities from "../utilities";
  *             ],
  *         }],
  *     },
- *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
- *     title: "chromeos_no_lock",
  * });
  * ```
  * ### Access Context Manager Service Perimeter Secure Data Exchange
@@ -102,6 +104,7 @@ import * as utilities from "../utilities";
  * });
  * const access_level = new gcp.accesscontextmanager.AccessLevel("access-level", {
  *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
+ *     name: pulumi.interpolate`accessPolicies/${access_policy.name}/accessLevels/secure_data_exchange`,
  *     title: "secure_data_exchange",
  *     basic: {
  *         conditions: [{
@@ -120,7 +123,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const test_access = new gcp.accesscontextmanager.ServicePerimeter("test-access", {
- *     parent: `accessPolicies/${google_access_context_manager_access_policy["test-access"].name}`,
+ *     parent: `accessPolicies/${test_accessGoogleAccessContextManagerAccessPolicy.name}`,
+ *     name: `accessPolicies/${test_accessGoogleAccessContextManagerAccessPolicy.name}/servicePerimeters/%s`,
  *     title: "%s",
  *     perimeterType: "PERIMETER_TYPE_REGULAR",
  *     status: {
@@ -139,7 +143,7 @@ import * as utilities from "../utilities";
  *         ingressPolicies: [{
  *             ingressFrom: {
  *                 sources: [{
- *                     accessLevel: google_access_context_manager_access_level["test-access"].name,
+ *                     accessLevel: test_accessGoogleAccessContextManagerAccessLevel.name,
  *                 }],
  *                 identityType: "ANY_IDENTITY",
  *             },
@@ -189,13 +193,14 @@ import * as utilities from "../utilities";
  * });
  * const service_perimeter = new gcp.accesscontextmanager.ServicePerimeter("service-perimeter", {
  *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
- *     spec: {
- *         restrictedServices: ["storage.googleapis.com"],
- *     },
+ *     name: pulumi.interpolate`accessPolicies/${access_policy.name}/servicePerimeters/restrict_bigquery_dryrun_storage`,
+ *     title: "restrict_bigquery_dryrun_storage",
  *     status: {
  *         restrictedServices: ["bigquery.googleapis.com"],
  *     },
- *     title: "restrict_bigquery_dryrun_storage",
+ *     spec: {
+ *         restrictedServices: ["storage.googleapis.com"],
+ *     },
  *     useExplicitDryRunSpec: true,
  * });
  * ```

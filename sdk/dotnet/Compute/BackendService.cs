@@ -24,6 +24,32 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
     /// 
     /// ## Example Usage
+    /// ### Backend Service Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         RequestPath = "/",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "backend-service",
+    ///         HealthChecks = defaultHttpHealthCheck.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Backend Service External Iap
     /// 
     /// ```csharp
@@ -36,13 +62,45 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var @default = new Gcp.Compute.BackendService("default", new()
     ///     {
+    ///         Name = "tf-test-backend-service-external",
+    ///         Protocol = "HTTP",
+    ///         LoadBalancingScheme = "EXTERNAL",
     ///         Iap = new Gcp.Compute.Inputs.BackendServiceIapArgs
     ///         {
     ///             Oauth2ClientId = "abc",
     ///             Oauth2ClientSecret = "xyz",
     ///         },
-    ///         LoadBalancingScheme = "EXTERNAL",
-    ///         Protocol = "HTTP",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Backend Service Cache Simple
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         RequestPath = "/",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "backend-service",
+    ///         HealthChecks = defaultHttpHealthCheck.Id,
+    ///         EnableCdn = true,
+    ///         CdnPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyArgs
+    ///         {
+    ///             SignedUrlCacheMaxAgeSec = 7200,
+    ///         },
     ///     });
     /// 
     /// });
@@ -59,21 +117,22 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var @default = new Gcp.Compute.BackendService("default", new()
     ///     {
+    ///         Name = "backend-service",
+    ///         EnableCdn = true,
     ///         CdnPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyArgs
     ///         {
+    ///             CacheMode = "USE_ORIGIN_HEADERS",
     ///             CacheKeyPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyCacheKeyPolicyArgs
     ///             {
     ///                 IncludeHost = true,
+    ///                 IncludeProtocol = true,
+    ///                 IncludeQueryString = true,
     ///                 IncludeHttpHeaders = new[]
     ///                 {
     ///                     "X-My-Header-Field",
     ///                 },
-    ///                 IncludeProtocol = true,
-    ///                 IncludeQueryString = true,
     ///             },
-    ///             CacheMode = "USE_ORIGIN_HEADERS",
     ///         },
-    ///         EnableCdn = true,
     ///     });
     /// 
     /// });
@@ -90,25 +149,188 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var @default = new Gcp.Compute.BackendService("default", new()
     ///     {
+    ///         Name = "backend-service",
+    ///         EnableCdn = true,
     ///         CdnPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyArgs
     ///         {
+    ///             CacheMode = "CACHE_ALL_STATIC",
+    ///             DefaultTtl = 3600,
+    ///             ClientTtl = 7200,
+    ///             MaxTtl = 10800,
     ///             CacheKeyPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyCacheKeyPolicyArgs
     ///             {
     ///                 IncludeHost = true,
+    ///                 IncludeProtocol = true,
+    ///                 IncludeQueryString = true,
     ///                 IncludeNamedCookies = new[]
     ///                 {
     ///                     "__next_preview_data",
     ///                     "__prerender_bypass",
     ///                 },
-    ///                 IncludeProtocol = true,
-    ///                 IncludeQueryString = true,
     ///             },
-    ///             CacheMode = "CACHE_ALL_STATIC",
-    ///             ClientTtl = 7200,
-    ///             DefaultTtl = 3600,
-    ///             MaxTtl = 10800,
     ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Backend Service Cache
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         RequestPath = "/",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "backend-service",
+    ///         HealthChecks = defaultHttpHealthCheck.Id,
     ///         EnableCdn = true,
+    ///         CdnPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyArgs
+    ///         {
+    ///             CacheMode = "CACHE_ALL_STATIC",
+    ///             DefaultTtl = 3600,
+    ///             ClientTtl = 7200,
+    ///             MaxTtl = 10800,
+    ///             NegativeCaching = true,
+    ///             SignedUrlCacheMaxAgeSec = 7200,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Backend Service Cache Bypass Cache On Request Headers
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         RequestPath = "/",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "backend-service",
+    ///         HealthChecks = defaultHttpHealthCheck.Id,
+    ///         EnableCdn = true,
+    ///         CdnPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyArgs
+    ///         {
+    ///             CacheMode = "CACHE_ALL_STATIC",
+    ///             DefaultTtl = 3600,
+    ///             ClientTtl = 7200,
+    ///             MaxTtl = 10800,
+    ///             NegativeCaching = true,
+    ///             SignedUrlCacheMaxAgeSec = 7200,
+    ///             BypassCacheOnRequestHeaders = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs
+    ///                 {
+    ///                     HeaderName = "Authorization",
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs
+    ///                 {
+    ///                     HeaderName = "Proxy-Authorization",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Backend Service Traffic Director Round Robin
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var healthCheck = new Gcp.Compute.HealthCheck("health_check", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "backend-service",
+    ///         HealthChecks = healthCheck.Id,
+    ///         LoadBalancingScheme = "INTERNAL_SELF_MANAGED",
+    ///         LocalityLbPolicy = "ROUND_ROBIN",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Backend Service Traffic Director Ring Hash
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var healthCheck = new Gcp.Compute.HealthCheck("health_check", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "backend-service",
+    ///         HealthChecks = healthCheck.Id,
+    ///         LoadBalancingScheme = "INTERNAL_SELF_MANAGED",
+    ///         LocalityLbPolicy = "RING_HASH",
+    ///         SessionAffinity = "HTTP_COOKIE",
+    ///         CircuitBreakers = new Gcp.Compute.Inputs.BackendServiceCircuitBreakersArgs
+    ///         {
+    ///             MaxConnections = 10,
+    ///         },
+    ///         ConsistentHash = new Gcp.Compute.Inputs.BackendServiceConsistentHashArgs
+    ///         {
+    ///             HttpCookie = new Gcp.Compute.Inputs.BackendServiceConsistentHashHttpCookieArgs
+    ///             {
+    ///                 Ttl = new Gcp.Compute.Inputs.BackendServiceConsistentHashHttpCookieTtlArgs
+    ///                 {
+    ///                     Seconds = 11,
+    ///                     Nanos = 1111,
+    ///                 },
+    ///                 Name = "mycookie",
+    ///             },
+    ///         },
+    ///         OutlierDetection = new Gcp.Compute.Inputs.BackendServiceOutlierDetectionArgs
+    ///         {
+    ///             ConsecutiveErrors = 2,
+    ///         },
     ///     });
     /// 
     /// });
@@ -123,13 +345,11 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var externalProxy = new Gcp.Compute.GlobalNetworkEndpointGroup("externalProxy", new()
+    ///     var externalProxy = new Gcp.Compute.GlobalNetworkEndpointGroup("external_proxy", new()
     ///     {
+    ///         Name = "network-endpoint",
     ///         NetworkEndpointType = "INTERNET_FQDN_PORT",
     ///         DefaultPort = 443,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var proxy = new Gcp.Compute.GlobalNetworkEndpoint("proxy", new()
@@ -137,13 +357,11 @@ namespace Pulumi.Gcp.Compute
     ///         GlobalNetworkEndpointGroup = externalProxy.Id,
     ///         Fqdn = "test.example.com",
     ///         Port = externalProxy.DefaultPort,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var @default = new Gcp.Compute.BackendService("default", new()
     ///     {
+    ///         Name = "backend-service",
     ///         EnableCdn = true,
     ///         TimeoutSec = 10,
     ///         ConnectionDrainingTimeoutSec = 10,
@@ -162,9 +380,34 @@ namespace Pulumi.Gcp.Compute
     ///                 Group = externalProxy.Id,
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Backend Service External Managed
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
     ///     {
-    ///         Provider = google_beta,
+    ///         Name = "health-check",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "backend-service",
+    ///         HealthChecks = defaultHealthCheck.Id,
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
     ///     });
     /// 
     /// });

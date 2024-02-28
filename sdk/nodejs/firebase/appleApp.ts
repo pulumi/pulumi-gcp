@@ -16,8 +16,6 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  *     displayName: "Display Name Basic",
  *     bundleId: "apple.app.12345",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Firebase Apple App Full
@@ -27,6 +25,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const apple = new gcp.projects.ApiKey("apple", {
+ *     name: "api-key",
  *     displayName: "Display Name Full",
  *     project: "my-project-name",
  *     restrictions: {
@@ -34,8 +33,6 @@ import * as utilities from "../utilities";
  *             allowedBundleIds: ["apple.app.12345"],
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const full = new gcp.firebase.AppleApp("full", {
  *     project: "my-project-name",
@@ -44,8 +41,6 @@ import * as utilities from "../utilities";
  *     appStoreId: "12345",
  *     teamId: "9987654321",
  *     apiKeyId: apple.uid,
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

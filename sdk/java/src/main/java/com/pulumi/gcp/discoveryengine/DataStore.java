@@ -51,13 +51,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basic = new DataStore(&#34;basic&#34;, DataStoreArgs.builder()        
- *             .contentConfig(&#34;NO_CONTENT&#34;)
- *             .createAdvancedSiteSearch(false)
+ *             .location(&#34;global&#34;)
  *             .dataStoreId(&#34;data-store-id&#34;)
  *             .displayName(&#34;tf-test-structured-datastore&#34;)
  *             .industryVertical(&#34;GENERIC&#34;)
- *             .location(&#34;global&#34;)
+ *             .contentConfig(&#34;NO_CONTENT&#34;)
  *             .solutionTypes(&#34;SOLUTION_TYPE_SEARCH&#34;)
+ *             .createAdvancedSiteSearch(false)
  *             .build());
  * 
  *     }

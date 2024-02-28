@@ -29,13 +29,14 @@ namespace Pulumi.Gcp.Sql
     /// {
     ///     var instance = new Gcp.Sql.SourceRepresentationInstance("instance", new()
     ///     {
-    ///         DatabaseVersion = "MYSQL_8_0",
-    ///         DumpFilePath = "gs://replica-bucket/source-database.sql.gz",
-    ///         Host = "10.20.30.40",
-    ///         Password = "password-for-the-user",
-    ///         Port = 3306,
+    ///         Name = "my-instance",
     ///         Region = "us-central1",
+    ///         DatabaseVersion = "MYSQL_8_0",
+    ///         Host = "10.20.30.40",
+    ///         Port = 3306,
     ///         Username = "some-user",
+    ///         Password = "password-for-the-user",
+    ///         DumpFilePath = "gs://replica-bucket/source-database.sql.gz",
     ///     });
     /// 
     /// });
@@ -52,13 +53,14 @@ namespace Pulumi.Gcp.Sql
     /// {
     ///     var instance = new Gcp.Sql.SourceRepresentationInstance("instance", new()
     ///     {
-    ///         DatabaseVersion = "POSTGRES_9_6",
-    ///         DumpFilePath = "gs://replica-bucket/source-database.sql.gz",
-    ///         Host = "10.20.30.40",
-    ///         Password = "password-for-the-user",
-    ///         Port = 3306,
+    ///         Name = "my-instance",
     ///         Region = "us-central1",
+    ///         DatabaseVersion = "POSTGRES_9_6",
+    ///         Host = "10.20.30.40",
+    ///         Port = 3306,
     ///         Username = "some-user",
+    ///         Password = "password-for-the-user",
+    ///         DumpFilePath = "gs://replica-bucket/source-database.sql.gz",
     ///     });
     /// 
     /// });

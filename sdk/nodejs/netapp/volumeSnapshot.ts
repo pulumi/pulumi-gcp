@@ -25,27 +25,28 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNetwork = gcp.compute.getNetwork({
+ * const default = gcp.compute.getNetwork({
  *     name: "test-network",
  * });
- * const defaultStoragePool = new gcp.netapp.StoragePool("defaultStoragePool", {
+ * const defaultStoragePool = new gcp.netapp.StoragePool("default", {
+ *     name: "test-pool",
  *     location: "us-west2",
  *     serviceLevel: "PREMIUM",
  *     capacityGib: "2048",
- *     network: defaultNetwork.then(defaultNetwork => defaultNetwork.id),
+ *     network: _default.then(_default => _default.id),
  * });
- * const defaultVolume = new gcp.netapp.Volume("defaultVolume", {
+ * const defaultVolume = new gcp.netapp.Volume("default", {
  *     location: defaultStoragePool.location,
+ *     name: "test-volume",
  *     capacityGib: "100",
  *     shareName: "test-volume",
  *     storagePool: defaultStoragePool.name,
  *     protocols: ["NFSV3"],
  * });
- * const testSnapshot = new gcp.netapp.VolumeSnapshot("testSnapshot", {
+ * const testSnapshot = new gcp.netapp.VolumeSnapshot("test_snapshot", {
  *     location: defaultVolume.location,
  *     volumeName: defaultVolume.name,
- * }, {
- *     dependsOn: [defaultVolume],
+ *     name: "testvolumesnap",
  * });
  * ```
  *

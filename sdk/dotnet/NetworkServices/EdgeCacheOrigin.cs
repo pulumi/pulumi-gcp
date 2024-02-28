@@ -29,8 +29,9 @@ namespace Pulumi.Gcp.NetworkServices
     /// {
     ///     var @default = new Gcp.NetworkServices.EdgeCacheOrigin("default", new()
     ///     {
-    ///         Description = "The default bucket for media edge test",
+    ///         Name = "my-origin",
     ///         OriginAddress = "gs://media-edge-default",
+    ///         Description = "The default bucket for media edge test",
     ///     });
     /// 
     /// });
@@ -47,6 +48,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// {
     ///     var fallback = new Gcp.NetworkServices.EdgeCacheOrigin("fallback", new()
     ///     {
+    ///         Name = "my-fallback",
     ///         OriginAddress = "fallback.example.com",
     ///         Description = "The default bucket for media edge test",
     ///         MaxAttempts = 3,
@@ -100,6 +102,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     ///     var @default = new Gcp.NetworkServices.EdgeCacheOrigin("default", new()
     ///     {
+    ///         Name = "my-origin",
     ///         OriginAddress = "gs://media-edge-default",
     ///         FailoverOrigin = fallback.Id,
     ///         Description = "The default bucket for media edge test",
@@ -143,6 +146,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     ///     var @default = new Gcp.NetworkServices.EdgeCacheOrigin("default", new()
     ///     {
+    ///         Name = "my-origin",
     ///         OriginAddress = "gs://media-edge-default",
     ///         Description = "The default bucket for V4 authentication",
     ///         AwsV4Authentication = new Gcp.NetworkServices.Inputs.EdgeCacheOriginAwsV4AuthenticationArgs

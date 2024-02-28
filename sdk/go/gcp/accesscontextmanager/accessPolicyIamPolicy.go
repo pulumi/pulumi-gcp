@@ -55,6 +55,7 @@ import (
 //				return err
 //			}
 //			_, err = accesscontextmanager.NewAccessPolicyIamPolicy(ctx, "policy", &accesscontextmanager.AccessPolicyIamPolicyArgs{
+//				Name:       pulumi.Any(access_policy.Name),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -81,6 +82,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := accesscontextmanager.NewAccessPolicyIamBinding(ctx, "binding", &accesscontextmanager.AccessPolicyIamBindingArgs{
+//				Name: pulumi.Any(access_policy.Name),
 //				Role: pulumi.String("roles/accesscontextmanager.policyAdmin"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -110,6 +112,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := accesscontextmanager.NewAccessPolicyIamMember(ctx, "member", &accesscontextmanager.AccessPolicyIamMemberArgs{
+//				Name:   pulumi.Any(access_policy.Name),
 //				Role:   pulumi.String("roles/accesscontextmanager.policyAdmin"),
 //				Member: pulumi.String("user:jane@example.com"),
 //			})

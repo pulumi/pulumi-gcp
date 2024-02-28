@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.datacatalog.getEntryGroupIamPolicy({
- *     entryGroup: google_data_catalog_entry_group.basic_entry_group.name,
+ *     entryGroup: basicEntryGroup.name,
  * });
  * ```
  */
@@ -75,7 +75,7 @@ export interface GetEntryGroupIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.datacatalog.getEntryGroupIamPolicy({
- *     entryGroup: google_data_catalog_entry_group.basic_entry_group.name,
+ *     entryGroup: basicEntryGroup.name,
  * });
  * ```
  */

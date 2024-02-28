@@ -32,11 +32,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.apigateway.ApiIamPolicy("policy", {
- *     project: google_api_gateway_api.api.project,
- *     api: google_api_gateway_api.api.api_id,
+ *     project: api.project,
+ *     api: api.apiId,
  *     policyData: admin.then(admin => admin.policyData),
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *
@@ -47,12 +45,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.apigateway.ApiIamBinding("binding", {
- *     project: google_api_gateway_api.api.project,
- *     api: google_api_gateway_api.api.api_id,
+ *     project: api.project,
+ *     api: api.apiId,
  *     role: "roles/apigateway.viewer",
  *     members: ["user:jane@example.com"],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *
@@ -63,12 +59,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.apigateway.ApiIamMember("member", {
- *     project: google_api_gateway_api.api.project,
- *     api: google_api_gateway_api.api.api_id,
+ *     project: api.project,
+ *     api: api.apiId,
  *     role: "roles/apigateway.viewer",
  *     member: "user:jane@example.com",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

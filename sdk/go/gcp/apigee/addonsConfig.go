@@ -35,7 +35,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := apigee.NewAddonsConfig(ctx, "testOrganization", &apigee.AddonsConfigArgs{
+//			_, err := apigee.NewAddonsConfig(ctx, "test_organization", &apigee.AddonsConfigArgs{
+//				Org: pulumi.String("test_organization"),
 //				AddonsConfig: &apigee.AddonsConfigAddonsConfigArgs{
 //					ApiSecurityConfig: &apigee.AddonsConfigAddonsConfigApiSecurityConfigArgs{
 //						Enabled: pulumi.Bool(true),
@@ -44,7 +45,6 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
-//				Org: pulumi.String("test_organization"),
 //			})
 //			if err != nil {
 //				return err
@@ -76,14 +76,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			apigee, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
+//			_, err = projects.NewService(ctx, "apigee", &projects.ServiceArgs{
 //				Project: *pulumi.String(current.Project),
 //				Service: pulumi.String("apigee.googleapis.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			compute, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
+//			_, err = projects.NewService(ctx, "compute", &projects.ServiceArgs{
 //				Project: *pulumi.String(current.Project),
 //				Service: pulumi.String("compute.googleapis.com"),
 //			})
@@ -97,15 +97,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			apigeeNetwork, err := compute.NewNetwork(ctx, "apigeeNetwork", &compute.NetworkArgs{
+//			apigeeNetwork, err := compute.NewNetwork(ctx, "apigee_network", &compute.NetworkArgs{
+//				Name:    pulumi.String("apigee-network"),
 //				Project: *pulumi.String(current.Project),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				compute,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			apigeeRange, err := compute.NewGlobalAddress(ctx, "apigeeRange", &compute.GlobalAddressArgs{
+//			apigeeRange, err := compute.NewGlobalAddress(ctx, "apigee_range", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("apigee-range"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
@@ -115,7 +115,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigeeVpcConnection", &servicenetworking.ConnectionArgs{
+//			_, err = servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
 //				Network: apigeeNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
@@ -130,14 +130,11 @@ import (
 //				ProjectId:         *pulumi.String(current.Project),
 //				AuthorizedNetwork: apigeeNetwork.ID(),
 //				BillingType:       pulumi.String("EVALUATION"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				apigeeVpcConnection,
-//				apigee,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = apigee.NewAddonsConfig(ctx, "testOrganization", &apigee.AddonsConfigArgs{
+//			_, err = apigee.NewAddonsConfig(ctx, "test_organization", &apigee.AddonsConfigArgs{
 //				Org: org.Name,
 //				AddonsConfig: &apigee.AddonsConfigAddonsConfigArgs{
 //					IntegrationConfig: &apigee.AddonsConfigAddonsConfigIntegrationConfigArgs{

@@ -27,17 +27,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNetwork = gcp.compute.getNetwork({
+ * const default = gcp.compute.getNetwork({
  *     name: "test-network",
  * });
- * const defaultStoragePool = new gcp.netapp.StoragePool("defaultStoragePool", {
+ * const defaultStoragePool = new gcp.netapp.StoragePool("default", {
+ *     name: "test-pool",
  *     location: "us-west2",
  *     serviceLevel: "PREMIUM",
  *     capacityGib: "2048",
- *     network: defaultNetwork.then(defaultNetwork => defaultNetwork.id),
+ *     network: _default.then(_default => _default.id),
  * });
- * const testVolume = new gcp.netapp.Volume("testVolume", {
+ * const testVolume = new gcp.netapp.Volume("test_volume", {
  *     location: "us-west2",
+ *     name: "test-volume",
  *     capacityGib: "100",
  *     shareName: "test-volume",
  *     storagePool: defaultStoragePool.name,

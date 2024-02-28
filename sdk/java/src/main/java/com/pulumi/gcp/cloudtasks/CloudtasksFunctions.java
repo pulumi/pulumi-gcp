@@ -40,9 +40,9 @@ public final class CloudtasksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CloudtasksFunctions.getQueueIamPolicy(GetQueueIamPolicyArgs.builder()
-     *             .project(google_cloud_tasks_queue.default().project())
-     *             .location(google_cloud_tasks_queue.default().location())
-     *             .name(google_cloud_tasks_queue.default().name())
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .name(default_.name())
      *             .build());
      * 
      *     }
@@ -79,9 +79,9 @@ public final class CloudtasksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CloudtasksFunctions.getQueueIamPolicy(GetQueueIamPolicyArgs.builder()
-     *             .project(google_cloud_tasks_queue.default().project())
-     *             .location(google_cloud_tasks_queue.default().location())
-     *             .name(google_cloud_tasks_queue.default().name())
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .name(default_.name())
      *             .build());
      * 
      *     }
@@ -118,9 +118,9 @@ public final class CloudtasksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CloudtasksFunctions.getQueueIamPolicy(GetQueueIamPolicyArgs.builder()
-     *             .project(google_cloud_tasks_queue.default().project())
-     *             .location(google_cloud_tasks_queue.default().location())
-     *             .name(google_cloud_tasks_queue.default().name())
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .name(default_.name())
      *             .build());
      * 
      *     }
@@ -157,9 +157,9 @@ public final class CloudtasksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CloudtasksFunctions.getQueueIamPolicy(GetQueueIamPolicyArgs.builder()
-     *             .project(google_cloud_tasks_queue.default().project())
-     *             .location(google_cloud_tasks_queue.default().location())
-     *             .name(google_cloud_tasks_queue.default().name())
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .name(default_.name())
      *             .build());
      * 
      *     }

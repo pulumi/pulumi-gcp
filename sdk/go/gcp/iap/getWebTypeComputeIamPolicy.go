@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := iap.LookupWebTypeComputeIamPolicy(ctx, &iap.LookupWebTypeComputeIamPolicyArgs{
-//				Project: pulumi.StringRef(google_project_service.Project_service.Project),
+//				Project: pulumi.StringRef(projectService.Project),
 //			}, nil)
 //			if err != nil {
 //				return err

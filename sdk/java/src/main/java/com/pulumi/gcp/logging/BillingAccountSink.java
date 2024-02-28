@@ -55,10 +55,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var log_bucket = new Bucket(&#34;log-bucket&#34;, BucketArgs.builder()        
+ *             .name(&#34;billing-logging-bucket&#34;)
  *             .location(&#34;US&#34;)
  *             .build());
  * 
  *         var my_sink = new BillingAccountSink(&#34;my-sink&#34;, BillingAccountSinkArgs.builder()        
+ *             .name(&#34;my-sink&#34;)
  *             .description(&#34;some explanation on what this is&#34;)
  *             .billingAccount(&#34;ABCDEF-012345-GHIJKL&#34;)
  *             .destination(log_bucket.name().applyValue(name -&gt; String.format(&#34;storage.googleapis.com/%s&#34;, name)))

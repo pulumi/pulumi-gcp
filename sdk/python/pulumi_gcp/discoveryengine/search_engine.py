@@ -416,7 +416,7 @@ class SearchEngine(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic_data_store = gcp.discoveryengine.DataStore("basicDataStore",
+        basic = gcp.discoveryengine.DataStore("basic",
             location="global",
             data_store_id="example-datastore-id",
             display_name="tf-test-structured-datastore",
@@ -424,12 +424,12 @@ class SearchEngine(pulumi.CustomResource):
             content_config="NO_CONTENT",
             solution_types=["SOLUTION_TYPE_SEARCH"],
             create_advanced_site_search=False)
-        basic_search_engine = gcp.discoveryengine.SearchEngine("basicSearchEngine",
+        basic_search_engine = gcp.discoveryengine.SearchEngine("basic",
             engine_id="example-engine-id",
             collection_id="default_collection",
-            location=basic_data_store.location,
+            location=basic.location,
             display_name="Example Display Name",
-            data_store_ids=[basic_data_store.data_store_id],
+            data_store_ids=[basic.data_store_id],
             search_engine_config=gcp.discoveryengine.SearchEngineSearchEngineConfigArgs())
         ```
 
@@ -496,7 +496,7 @@ class SearchEngine(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic_data_store = gcp.discoveryengine.DataStore("basicDataStore",
+        basic = gcp.discoveryengine.DataStore("basic",
             location="global",
             data_store_id="example-datastore-id",
             display_name="tf-test-structured-datastore",
@@ -504,12 +504,12 @@ class SearchEngine(pulumi.CustomResource):
             content_config="NO_CONTENT",
             solution_types=["SOLUTION_TYPE_SEARCH"],
             create_advanced_site_search=False)
-        basic_search_engine = gcp.discoveryengine.SearchEngine("basicSearchEngine",
+        basic_search_engine = gcp.discoveryengine.SearchEngine("basic",
             engine_id="example-engine-id",
             collection_id="default_collection",
-            location=basic_data_store.location,
+            location=basic.location,
             display_name="Example Display Name",
-            data_store_ids=[basic_data_store.data_store_id],
+            data_store_ids=[basic.data_store_id],
             search_engine_config=gcp.discoveryengine.SearchEngineSearchEngineConfigArgs())
         ```
 

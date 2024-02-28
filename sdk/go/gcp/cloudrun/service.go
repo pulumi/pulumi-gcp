@@ -44,6 +44,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrun.NewService(ctx, "default", &cloudrun.ServiceArgs{
+//				Name:     pulumi.String("cloud_run_service_name"),
 //				Location: pulumi.String("us-central1"),
 //				Template: &cloudrun.ServiceTemplateArgs{
 //					Spec: &cloudrun.ServiceTemplateSpecArgs{
@@ -95,11 +96,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			topic, err := pubsub.NewTopic(ctx, "topic", nil)
+//			topic, err := pubsub.NewTopic(ctx, "topic", &pubsub.TopicArgs{
+//				Name: pulumi.String("pubsub_topic"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = pubsub.NewSubscription(ctx, "subscription", &pubsub.SubscriptionArgs{
+//				Name:  pulumi.String("pubsub_subscription"),
 //				Topic: topic.Name,
 //				PushConfig: &pubsub.SubscriptionPushConfigArgs{
 //					PushEndpoint: _default.Statuses.ApplyT(func(statuses []cloudrun.ServiceStatus) (*string, error) {
@@ -136,6 +140,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrun.NewService(ctx, "default", &cloudrun.ServiceArgs{
+//				Name:     pulumi.String("cloudrun-srv"),
 //				Location: pulumi.String("us-central1"),
 //				Template: &cloudrun.ServiceTemplateArgs{
 //					Spec: &cloudrun.ServiceTemplateSpecArgs{
@@ -148,8 +153,8 @@ import (
 //				},
 //				Traffics: cloudrun.ServiceTrafficArray{
 //					&cloudrun.ServiceTrafficArgs{
-//						LatestRevision: pulumi.Bool(true),
 //						Percent:        pulumi.Int(100),
+//						LatestRevision: pulumi.Bool(true),
 //					},
 //				},
 //			})
@@ -177,6 +182,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("cloudrun-sql"),
 //				Region:          pulumi.String("us-east1"),
 //				DatabaseVersion: pulumi.String("MYSQL_5_7"),
 //				Settings: &sql.DatabaseInstanceSettingsArgs{
@@ -188,6 +194,7 @@ import (
 //				return err
 //			}
 //			_, err = cloudrun.NewService(ctx, "default", &cloudrun.ServiceArgs{
+//				Name:     pulumi.String("cloudrun-srv"),
 //				Location: pulumi.String("us-central1"),
 //				Template: &cloudrun.ServiceTemplateArgs{
 //					Spec: &cloudrun.ServiceTemplateSpecArgs{
@@ -231,6 +238,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrun.NewService(ctx, "default", &cloudrun.ServiceArgs{
+//				Name:     pulumi.String("cloudrun-srv"),
 //				Location: pulumi.String("us-central1"),
 //				Template: &cloudrun.ServiceTemplateArgs{
 //					Spec: &cloudrun.ServiceTemplateSpecArgs{
@@ -245,7 +253,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			noauthIAMPolicy, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//			noauth, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				Bindings: []organizations.GetIAMPolicyBinding{
 //					{
 //						Role: "roles/run.invoker",
@@ -258,11 +266,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudrun.NewIamPolicy(ctx, "noauthIamPolicy", &cloudrun.IamPolicyArgs{
+//			_, err = cloudrun.NewIamPolicy(ctx, "noauth", &cloudrun.IamPolicyArgs{
 //				Location:   _default.Location,
 //				Project:    _default.Project,
 //				Service:    _default.Name,
-//				PolicyData: *pulumi.String(noauthIAMPolicy.PolicyData),
+//				PolicyData: *pulumi.String(noauth.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -287,6 +295,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrun.NewService(ctx, "default", &cloudrun.ServiceArgs{
+//				Name:     pulumi.String("cloudrun-srv"),
 //				Location: pulumi.String("us-central1"),
 //				Template: &cloudrun.ServiceTemplateArgs{
 //					Spec: &cloudrun.ServiceTemplateSpecArgs{
@@ -352,6 +361,7 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = cloudrun.NewService(ctx, "default", &cloudrun.ServiceArgs{
+//				Name:     pulumi.String("cloudrun-srv"),
 //				Location: pulumi.String("us-central1"),
 //				Metadata: &cloudrun.ServiceMetadataArgs{
 //					Annotations: pulumi.StringMap{
@@ -414,7 +424,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

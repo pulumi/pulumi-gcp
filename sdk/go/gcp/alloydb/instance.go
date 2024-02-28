@@ -30,11 +30,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil)
+//			defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name: pulumi.String("alloydb-network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultCluster, err := alloydb.NewCluster(ctx, "defaultCluster", &alloydb.ClusterArgs{
+//			defaultCluster, err := alloydb.NewCluster(ctx, "default", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-cluster"),
 //				Location:  pulumi.String("us-central1"),
 //				Network:   defaultNetwork.ID(),
@@ -45,7 +47,23 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "privateIpAlloc", &compute.GlobalAddressArgs{
+//			_, err = alloydb.NewInstance(ctx, "default", &alloydb.InstanceArgs{
+//				Cluster:      defaultCluster.Name,
+//				InstanceId:   pulumi.String("alloydb-instance"),
+//				InstanceType: pulumi.String("PRIMARY"),
+//				MachineConfig: &alloydb.InstanceMachineConfigArgs{
+//					CpuCount: pulumi.Int(2),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "private_ip_alloc", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("alloydb-cluster"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				PrefixLength: pulumi.Int(16),
@@ -54,30 +72,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			vpcConnection, err := servicenetworking.NewConnection(ctx, "vpcConnection", &servicenetworking.ConnectionArgs{
+//			_, err = servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
 //				Network: defaultNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					privateIpAlloc.Name,
 //				},
 //			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = alloydb.NewInstance(ctx, "defaultInstance", &alloydb.InstanceArgs{
-//				Cluster:      defaultCluster.Name,
-//				InstanceId:   pulumi.String("alloydb-instance"),
-//				InstanceType: pulumi.String("PRIMARY"),
-//				MachineConfig: &alloydb.InstanceMachineConfigArgs{
-//					CpuCount: pulumi.Int(2),
-//				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				vpcConnection,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = organizations.LookupProject(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -103,11 +104,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "default", nil)
+//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name: pulumi.String("alloydb-secondary-network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			primaryCluster, err := alloydb.NewCluster(ctx, "primaryCluster", &alloydb.ClusterArgs{
+//			primary, err := alloydb.NewCluster(ctx, "primary", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-primary-cluster"),
 //				Location:  pulumi.String("us-central1"),
 //				Network:   _default.ID(),
@@ -115,39 +118,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "privateIpAlloc", &compute.GlobalAddressArgs{
-//				AddressType:  pulumi.String("INTERNAL"),
-//				Purpose:      pulumi.String("VPC_PEERING"),
-//				PrefixLength: pulumi.Int(16),
-//				Network:      _default.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			vpcConnection, err := servicenetworking.NewConnection(ctx, "vpcConnection", &servicenetworking.ConnectionArgs{
-//				Network: _default.ID(),
-//				Service: pulumi.String("servicenetworking.googleapis.com"),
-//				ReservedPeeringRanges: pulumi.StringArray{
-//					privateIpAlloc.Name,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			primaryInstance, err := alloydb.NewInstance(ctx, "primaryInstance", &alloydb.InstanceArgs{
-//				Cluster:      primaryCluster.Name,
+//			_, err = alloydb.NewInstance(ctx, "primary", &alloydb.InstanceArgs{
+//				Cluster:      primary.Name,
 //				InstanceId:   pulumi.String("alloydb-primary-instance"),
 //				InstanceType: pulumi.String("PRIMARY"),
 //				MachineConfig: &alloydb.InstanceMachineConfigArgs{
 //					CpuCount: pulumi.Int(2),
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				vpcConnection,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			secondaryCluster, err := alloydb.NewCluster(ctx, "secondaryCluster", &alloydb.ClusterArgs{
+//			secondary, err := alloydb.NewCluster(ctx, "secondary", &alloydb.ClusterArgs{
 //				ClusterId:   pulumi.String("alloydb-secondary-cluster"),
 //				Location:    pulumi.String("us-east1"),
 //				Network:     _default.ID(),
@@ -156,29 +138,45 @@ import (
 //					Enabled: pulumi.Bool(false),
 //				},
 //				SecondaryConfig: &alloydb.ClusterSecondaryConfigArgs{
-//					PrimaryClusterName: primaryCluster.Name,
+//					PrimaryClusterName: primary.Name,
 //				},
 //				DeletionPolicy: pulumi.String("FORCE"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				primaryInstance,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = alloydb.NewInstance(ctx, "secondaryInstance", &alloydb.InstanceArgs{
-//				Cluster:      secondaryCluster.Name,
+//			_, err = alloydb.NewInstance(ctx, "secondary", &alloydb.InstanceArgs{
+//				Cluster:      secondary.Name,
 //				InstanceId:   pulumi.String("alloydb-secondary-instance"),
-//				InstanceType: secondaryCluster.ClusterType,
+//				InstanceType: secondary.ClusterType,
 //				MachineConfig: &alloydb.InstanceMachineConfigArgs{
 //					CpuCount: pulumi.Int(2),
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				vpcConnection,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "private_ip_alloc", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("alloydb-secondary-instance"),
+//				AddressType:  pulumi.String("INTERNAL"),
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				PrefixLength: pulumi.Int(16),
+//				Network:      _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
+//				Network: _default.ID(),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					privateIpAlloc.Name,
+//				},
+//			})
 //			if err != nil {
 //				return err
 //			}

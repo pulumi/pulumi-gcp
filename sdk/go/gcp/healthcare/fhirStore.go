@@ -37,17 +37,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			topic, err := pubsub.NewTopic(ctx, "topic", nil)
+//			topic, err := pubsub.NewTopic(ctx, "topic", &pubsub.TopicArgs{
+//				Name: pulumi.String("fhir-notifications"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+//				Name:     pulumi.String("example-dataset"),
 //				Location: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = healthcare.NewFhirStore(ctx, "default", &healthcare.FhirStoreArgs{
+//				Name:                            pulumi.String("example-fhir-store"),
 //				Dataset:                         dataset.ID(),
 //				Version:                         pulumi.String("R4"),
 //				ComplexDataTypeReferenceParsing: pulumi.String("DISABLED"),
@@ -90,12 +94,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+//				Name:     pulumi.String("example-dataset"),
 //				Location: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			bqDataset, err := bigquery.NewDataset(ctx, "bqDataset", &bigquery.DatasetArgs{
+//			bqDataset, err := bigquery.NewDataset(ctx, "bq_dataset", &bigquery.DatasetArgs{
 //				DatasetId:               pulumi.String("bq_example_dataset"),
 //				FriendlyName:            pulumi.String("test"),
 //				Description:             pulumi.String("This is a test description"),
@@ -106,6 +111,7 @@ import (
 //				return err
 //			}
 //			_, err = healthcare.NewFhirStore(ctx, "default", &healthcare.FhirStoreArgs{
+//				Name:                        pulumi.String("example-fhir-store"),
 //				Dataset:                     dataset.ID(),
 //				Version:                     pulumi.String("R4"),
 //				EnableUpdateCreate:          pulumi.Bool(false),
@@ -140,7 +146,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = pubsub.NewTopic(ctx, "topic", nil)
+//			_, err = pubsub.NewTopic(ctx, "topic", &pubsub.TopicArgs{
+//				Name: pulumi.String("fhir-notifications"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -164,17 +172,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			topic, err := pubsub.NewTopic(ctx, "topic", nil)
+//			topic, err := pubsub.NewTopic(ctx, "topic", &pubsub.TopicArgs{
+//				Name: pulumi.String("fhir-notifications"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+//				Name:     pulumi.String("example-dataset"),
 //				Location: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = healthcare.NewFhirStore(ctx, "default", &healthcare.FhirStoreArgs{
+//				Name:                        pulumi.String("example-fhir-store"),
 //				Dataset:                     dataset.ID(),
 //				Version:                     pulumi.String("R4"),
 //				EnableUpdateCreate:          pulumi.Bool(false),
@@ -211,17 +223,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			topic, err := pubsub.NewTopic(ctx, "topic", nil, pulumi.Provider(google_beta))
+//			topic, err := pubsub.NewTopic(ctx, "topic", &pubsub.TopicArgs{
+//				Name: pulumi.String("fhir-notifications"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+//				Name:     pulumi.String("example-dataset"),
 //				Location: pulumi.String("us-central1"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = healthcare.NewFhirStore(ctx, "default", &healthcare.FhirStoreArgs{
+//				Name:                        pulumi.String("example-fhir-store"),
 //				Dataset:                     dataset.ID(),
 //				Version:                     pulumi.String("R4"),
 //				EnableUpdateCreate:          pulumi.Bool(false),
@@ -239,7 +255,7 @@ import (
 //						SendPreviousResourceOnDelete: pulumi.Bool(true),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

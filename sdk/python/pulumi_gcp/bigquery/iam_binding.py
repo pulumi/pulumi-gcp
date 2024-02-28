@@ -313,9 +313,9 @@ class IamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.bigquery.IamPolicy("policy",
-            project=google_bigquery_table["test"]["project"],
-            dataset_id=google_bigquery_table["test"]["dataset_id"],
-            table_id=google_bigquery_table["test"]["table_id"],
+            project=test["project"],
+            dataset_id=test["datasetId"],
+            table_id=test["tableId"],
             policy_data=admin.policy_data)
         ```
 
@@ -335,9 +335,9 @@ class IamBinding(pulumi.CustomResource):
             ),
         )])
         policy = gcp.bigquery.IamPolicy("policy",
-            project=google_bigquery_table["test"]["project"],
-            dataset_id=google_bigquery_table["test"]["dataset_id"],
-            table_id=google_bigquery_table["test"]["table_id"],
+            project=test["project"],
+            dataset_id=test["datasetId"],
+            table_id=test["tableId"],
             policy_data=admin.policy_data)
         ```
         ## google\\_bigquery\\_table\\_iam\\_binding
@@ -347,9 +347,9 @@ class IamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.bigquery.IamBinding("binding",
-            project=google_bigquery_table["test"]["project"],
-            dataset_id=google_bigquery_table["test"]["dataset_id"],
-            table_id=google_bigquery_table["test"]["table_id"],
+            project=test["project"],
+            dataset_id=test["datasetId"],
+            table_id=test["tableId"],
             role="roles/bigquery.dataOwner",
             members=["user:jane@example.com"])
         ```
@@ -361,9 +361,9 @@ class IamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.bigquery.IamBinding("binding",
-            project=google_bigquery_table["test"]["project"],
-            dataset_id=google_bigquery_table["test"]["dataset_id"],
-            table_id=google_bigquery_table["test"]["table_id"],
+            project=test["project"],
+            dataset_id=test["datasetId"],
+            table_id=test["tableId"],
             role="roles/bigquery.dataOwner",
             members=["user:jane@example.com"],
             condition=gcp.bigquery.IamBindingConditionArgs(
@@ -379,9 +379,9 @@ class IamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.bigquery.IamMember("member",
-            project=google_bigquery_table["test"]["project"],
-            dataset_id=google_bigquery_table["test"]["dataset_id"],
-            table_id=google_bigquery_table["test"]["table_id"],
+            project=test["project"],
+            dataset_id=test["datasetId"],
+            table_id=test["tableId"],
             role="roles/bigquery.dataOwner",
             member="user:jane@example.com")
         ```
@@ -393,9 +393,9 @@ class IamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.bigquery.IamMember("member",
-            project=google_bigquery_table["test"]["project"],
-            dataset_id=google_bigquery_table["test"]["dataset_id"],
-            table_id=google_bigquery_table["test"]["table_id"],
+            project=test["project"],
+            dataset_id=test["datasetId"],
+            table_id=test["tableId"],
             role="roles/bigquery.dataOwner",
             member="user:jane@example.com",
             condition=gcp.bigquery.IamMemberConditionArgs(
@@ -499,9 +499,9 @@ class IamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.bigquery.IamPolicy("policy",
-            project=google_bigquery_table["test"]["project"],
-            dataset_id=google_bigquery_table["test"]["dataset_id"],
-            table_id=google_bigquery_table["test"]["table_id"],
+            project=test["project"],
+            dataset_id=test["datasetId"],
+            table_id=test["tableId"],
             policy_data=admin.policy_data)
         ```
 
@@ -521,9 +521,9 @@ class IamBinding(pulumi.CustomResource):
             ),
         )])
         policy = gcp.bigquery.IamPolicy("policy",
-            project=google_bigquery_table["test"]["project"],
-            dataset_id=google_bigquery_table["test"]["dataset_id"],
-            table_id=google_bigquery_table["test"]["table_id"],
+            project=test["project"],
+            dataset_id=test["datasetId"],
+            table_id=test["tableId"],
             policy_data=admin.policy_data)
         ```
         ## google\\_bigquery\\_table\\_iam\\_binding
@@ -533,9 +533,9 @@ class IamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.bigquery.IamBinding("binding",
-            project=google_bigquery_table["test"]["project"],
-            dataset_id=google_bigquery_table["test"]["dataset_id"],
-            table_id=google_bigquery_table["test"]["table_id"],
+            project=test["project"],
+            dataset_id=test["datasetId"],
+            table_id=test["tableId"],
             role="roles/bigquery.dataOwner",
             members=["user:jane@example.com"])
         ```
@@ -547,9 +547,9 @@ class IamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.bigquery.IamBinding("binding",
-            project=google_bigquery_table["test"]["project"],
-            dataset_id=google_bigquery_table["test"]["dataset_id"],
-            table_id=google_bigquery_table["test"]["table_id"],
+            project=test["project"],
+            dataset_id=test["datasetId"],
+            table_id=test["tableId"],
             role="roles/bigquery.dataOwner",
             members=["user:jane@example.com"],
             condition=gcp.bigquery.IamBindingConditionArgs(
@@ -565,9 +565,9 @@ class IamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.bigquery.IamMember("member",
-            project=google_bigquery_table["test"]["project"],
-            dataset_id=google_bigquery_table["test"]["dataset_id"],
-            table_id=google_bigquery_table["test"]["table_id"],
+            project=test["project"],
+            dataset_id=test["datasetId"],
+            table_id=test["tableId"],
             role="roles/bigquery.dataOwner",
             member="user:jane@example.com")
         ```
@@ -579,9 +579,9 @@ class IamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.bigquery.IamMember("member",
-            project=google_bigquery_table["test"]["project"],
-            dataset_id=google_bigquery_table["test"]["dataset_id"],
-            table_id=google_bigquery_table["test"]["table_id"],
+            project=test["project"],
+            dataset_id=test["datasetId"],
+            table_id=test["tableId"],
             role="roles/bigquery.dataOwner",
             member="user:jane@example.com",
             condition=gcp.bigquery.IamMemberConditionArgs(

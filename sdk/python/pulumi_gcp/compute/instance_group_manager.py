@@ -904,6 +904,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         autohealing = gcp.compute.HealthCheck("autohealing",
+            name="autohealing-health-check",
             check_interval_sec=5,
             timeout_sec=5,
             healthy_threshold=2,
@@ -913,10 +914,11 @@ class InstanceGroupManager(pulumi.CustomResource):
                 port=8080,
             ))
         appserver = gcp.compute.InstanceGroupManager("appserver",
+            name="appserver-igm",
             base_instance_name="app",
             zone="us-central1-a",
             versions=[gcp.compute.InstanceGroupManagerVersionArgs(
-                instance_template=google_compute_instance_template["appserver"]["self_link_unique"],
+                instance_template=appserver_google_compute_instance_template["selfLinkUnique"],
             )],
             all_instances_config=gcp.compute.InstanceGroupManagerAllInstancesConfigArgs(
                 metadata={
@@ -926,7 +928,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                     "label_key": "label_value",
                 },
             ),
-            target_pools=[google_compute_target_pool["appserver"]["id"]],
+            target_pools=[appserver_google_compute_target_pool["id"]],
             target_size=2,
             named_ports=[gcp.compute.InstanceGroupManagerNamedPortArgs(
                 name="customhttp",
@@ -943,23 +945,23 @@ class InstanceGroupManager(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         appserver = gcp.compute.InstanceGroupManager("appserver",
+            name="appserver-igm",
             base_instance_name="app",
             zone="us-central1-a",
             target_size=5,
             versions=[
                 gcp.compute.InstanceGroupManagerVersionArgs(
                     name="appserver",
-                    instance_template=google_compute_instance_template["appserver"]["self_link_unique"],
+                    instance_template=appserver_google_compute_instance_template["selfLinkUnique"],
                 ),
                 gcp.compute.InstanceGroupManagerVersionArgs(
                     name="appserver-canary",
-                    instance_template=google_compute_instance_template["appserver-canary"]["self_link_unique"],
+                    instance_template=appserver_canary["selfLinkUnique"],
                     target_size=gcp.compute.InstanceGroupManagerVersionTargetSizeArgs(
                         fixed=1,
                     ),
                 ),
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ])
         ```
 
         ## Import
@@ -1070,6 +1072,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         autohealing = gcp.compute.HealthCheck("autohealing",
+            name="autohealing-health-check",
             check_interval_sec=5,
             timeout_sec=5,
             healthy_threshold=2,
@@ -1079,10 +1082,11 @@ class InstanceGroupManager(pulumi.CustomResource):
                 port=8080,
             ))
         appserver = gcp.compute.InstanceGroupManager("appserver",
+            name="appserver-igm",
             base_instance_name="app",
             zone="us-central1-a",
             versions=[gcp.compute.InstanceGroupManagerVersionArgs(
-                instance_template=google_compute_instance_template["appserver"]["self_link_unique"],
+                instance_template=appserver_google_compute_instance_template["selfLinkUnique"],
             )],
             all_instances_config=gcp.compute.InstanceGroupManagerAllInstancesConfigArgs(
                 metadata={
@@ -1092,7 +1096,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                     "label_key": "label_value",
                 },
             ),
-            target_pools=[google_compute_target_pool["appserver"]["id"]],
+            target_pools=[appserver_google_compute_target_pool["id"]],
             target_size=2,
             named_ports=[gcp.compute.InstanceGroupManagerNamedPortArgs(
                 name="customhttp",
@@ -1109,23 +1113,23 @@ class InstanceGroupManager(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         appserver = gcp.compute.InstanceGroupManager("appserver",
+            name="appserver-igm",
             base_instance_name="app",
             zone="us-central1-a",
             target_size=5,
             versions=[
                 gcp.compute.InstanceGroupManagerVersionArgs(
                     name="appserver",
-                    instance_template=google_compute_instance_template["appserver"]["self_link_unique"],
+                    instance_template=appserver_google_compute_instance_template["selfLinkUnique"],
                 ),
                 gcp.compute.InstanceGroupManagerVersionArgs(
                     name="appserver-canary",
-                    instance_template=google_compute_instance_template["appserver-canary"]["self_link_unique"],
+                    instance_template=appserver_canary["selfLinkUnique"],
                     target_size=gcp.compute.InstanceGroupManagerVersionTargetSizeArgs(
                         fixed=1,
                     ),
                 ),
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ])
         ```
 
         ## Import

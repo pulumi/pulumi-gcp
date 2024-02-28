@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.Iap
         /// {
         ///     var policy = Gcp.Iap.GetWebRegionBackendServiceIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_compute_region_backend_service.Default.Project,
-        ///         Region = google_compute_region_backend_service.Default.Region,
-        ///         WebRegionBackendService = google_compute_region_backend_service.Default.Name,
+        ///         Project = @default.Project,
+        ///         Region = @default.Region,
+        ///         WebRegionBackendService = @default.Name,
         ///     });
         /// 
         /// });
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.Iap
         /// {
         ///     var policy = Gcp.Iap.GetWebRegionBackendServiceIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_compute_region_backend_service.Default.Project,
-        ///         Region = google_compute_region_backend_service.Default.Region,
-        ///         WebRegionBackendService = google_compute_region_backend_service.Default.Name,
+        ///         Project = @default.Project,
+        ///         Region = @default.Region,
+        ///         WebRegionBackendService = @default.Name,
         ///     });
         /// 
         /// });

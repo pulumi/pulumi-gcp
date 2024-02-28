@@ -37,6 +37,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			note, err := containeranalysis.NewNote(ctx, "note", &containeranalysis.NoteArgs{
+//				Name: pulumi.String("test-attestor-note"),
 //				AttestationAuthority: &containeranalysis.NoteAttestationAuthorityArgs{
 //					Hint: &containeranalysis.NoteAttestationAuthorityHintArgs{
 //						HumanReadableName: pulumi.String("My attestor"),
@@ -47,6 +48,7 @@ import (
 //				return err
 //			}
 //			attestor, err := binaryauthorization.NewAttestor(ctx, "attestor", &binaryauthorization.AttestorArgs{
+//				Name: pulumi.String("test-attestor"),
 //				AttestationAuthorityNote: &binaryauthorization.AttestorAttestationAuthorityNoteArgs{
 //					NoteReference: note.Name,
 //				},
@@ -99,6 +101,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			note, err := containeranalysis.NewNote(ctx, "note", &containeranalysis.NoteArgs{
+//				Name: pulumi.String("test-attestor-note"),
 //				AttestationAuthority: &containeranalysis.NoteAttestationAuthorityArgs{
 //					Hint: &containeranalysis.NoteAttestationAuthorityHintArgs{
 //						HumanReadableName: pulumi.String("My attestor"),
@@ -109,6 +112,7 @@ import (
 //				return err
 //			}
 //			attestor, err := binaryauthorization.NewAttestor(ctx, "attestor", &binaryauthorization.AttestorArgs{
+//				Name: pulumi.String("test-attestor"),
 //				AttestationAuthorityNote: &binaryauthorization.AttestorAttestationAuthorityNoteArgs{
 //					NoteReference: note.Name,
 //				},

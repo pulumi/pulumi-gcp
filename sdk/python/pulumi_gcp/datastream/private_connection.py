@@ -349,8 +349,8 @@ class PrivateConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork")
-        default_private_connection = gcp.datastream.PrivateConnection("defaultPrivateConnection",
+        default_network = gcp.compute.Network("default", name="my-network")
+        default = gcp.datastream.PrivateConnection("default",
             display_name="Connection profile",
             location="us-central1",
             private_connection_id="my-connection",
@@ -423,8 +423,8 @@ class PrivateConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork")
-        default_private_connection = gcp.datastream.PrivateConnection("defaultPrivateConnection",
+        default_network = gcp.compute.Network("default", name="my-network")
+        default = gcp.datastream.PrivateConnection("default",
             display_name="Connection profile",
             location="us-central1",
             private_connection_id="my-connection",

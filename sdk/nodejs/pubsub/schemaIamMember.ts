@@ -34,8 +34,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.pubsub.SchemaIamPolicy("policy", {
- *     project: google_pubsub_schema.example.project,
- *     schema: google_pubsub_schema.example.name,
+ *     project: example.project,
+ *     schema: example.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -47,8 +47,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.pubsub.SchemaIamBinding("binding", {
- *     project: google_pubsub_schema.example.project,
- *     schema: google_pubsub_schema.example.name,
+ *     project: example.project,
+ *     schema: example.name,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
  * });
@@ -61,8 +61,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.pubsub.SchemaIamMember("member", {
- *     project: google_pubsub_schema.example.project,
- *     schema: google_pubsub_schema.example.name,
+ *     project: example.project,
+ *     schema: example.name,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
  * });

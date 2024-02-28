@@ -40,9 +40,9 @@ public final class ClouddeployFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ClouddeployFunctions.getDeliveryPipelineIamPolicy(GetDeliveryPipelineIamPolicyArgs.builder()
-     *             .project(google_clouddeploy_delivery_pipeline.default().project())
-     *             .location(google_clouddeploy_delivery_pipeline.default().location())
-     *             .name(google_clouddeploy_delivery_pipeline.default().name())
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .name(default_.name())
      *             .build());
      * 
      *     }
@@ -79,9 +79,9 @@ public final class ClouddeployFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ClouddeployFunctions.getDeliveryPipelineIamPolicy(GetDeliveryPipelineIamPolicyArgs.builder()
-     *             .project(google_clouddeploy_delivery_pipeline.default().project())
-     *             .location(google_clouddeploy_delivery_pipeline.default().location())
-     *             .name(google_clouddeploy_delivery_pipeline.default().name())
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .name(default_.name())
      *             .build());
      * 
      *     }
@@ -118,9 +118,9 @@ public final class ClouddeployFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ClouddeployFunctions.getDeliveryPipelineIamPolicy(GetDeliveryPipelineIamPolicyArgs.builder()
-     *             .project(google_clouddeploy_delivery_pipeline.default().project())
-     *             .location(google_clouddeploy_delivery_pipeline.default().location())
-     *             .name(google_clouddeploy_delivery_pipeline.default().name())
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .name(default_.name())
      *             .build());
      * 
      *     }
@@ -157,9 +157,9 @@ public final class ClouddeployFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ClouddeployFunctions.getDeliveryPipelineIamPolicy(GetDeliveryPipelineIamPolicyArgs.builder()
-     *             .project(google_clouddeploy_delivery_pipeline.default().project())
-     *             .location(google_clouddeploy_delivery_pipeline.default().location())
-     *             .name(google_clouddeploy_delivery_pipeline.default().name())
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .name(default_.name())
      *             .build());
      * 
      *     }

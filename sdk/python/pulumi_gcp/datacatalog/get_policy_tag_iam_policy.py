@@ -89,7 +89,7 @@ def get_policy_tag_iam_policy(policy_tag: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.datacatalog.get_policy_tag_iam_policy(policy_tag=google_data_catalog_policy_tag["basic_policy_tag"]["name"])
+    policy = gcp.datacatalog.get_policy_tag_iam_policy(policy_tag=basic_policy_tag["name"])
     ```
 
 
@@ -119,7 +119,7 @@ def get_policy_tag_iam_policy_output(policy_tag: Optional[pulumi.Input[str]] = N
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.datacatalog.get_policy_tag_iam_policy(policy_tag=google_data_catalog_policy_tag["basic_policy_tag"]["name"])
+    policy = gcp.datacatalog.get_policy_tag_iam_policy(policy_tag=basic_policy_tag["name"])
     ```
 
 

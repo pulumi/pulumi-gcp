@@ -55,13 +55,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var patch = new PatchDeployment(&#34;patch&#34;, PatchDeploymentArgs.builder()        
+ *             .patchDeploymentId(&#34;patch-deploy&#34;)
  *             .instanceFilter(PatchDeploymentInstanceFilterArgs.builder()
  *                 .all(true)
  *                 .build())
  *             .oneTimeSchedule(PatchDeploymentOneTimeScheduleArgs.builder()
  *                 .executeTime(&#34;2999-10-10T10:10:10.045123456Z&#34;)
  *                 .build())
- *             .patchDeploymentId(&#34;patch-deploy&#34;)
  *             .build());
  * 
  *     }
@@ -78,8 +78,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.osconfig.PatchDeploymentArgs;
  * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentInstanceFilterArgs;
  * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleArgs;
- * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleTimeOfDayArgs;
  * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleTimeZoneArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleTimeOfDayArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -94,19 +94,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var patch = new PatchDeployment(&#34;patch&#34;, PatchDeploymentArgs.builder()        
+ *             .patchDeploymentId(&#34;patch-deploy&#34;)
  *             .instanceFilter(PatchDeploymentInstanceFilterArgs.builder()
  *                 .all(true)
  *                 .build())
- *             .patchDeploymentId(&#34;patch-deploy&#34;)
  *             .recurringSchedule(PatchDeploymentRecurringScheduleArgs.builder()
+ *                 .timeZone(PatchDeploymentRecurringScheduleTimeZoneArgs.builder()
+ *                     .id(&#34;America/New_York&#34;)
+ *                     .build())
  *                 .timeOfDay(PatchDeploymentRecurringScheduleTimeOfDayArgs.builder()
  *                     .hours(0)
  *                     .minutes(30)
- *                     .nanos(20)
  *                     .seconds(30)
- *                     .build())
- *                 .timeZone(PatchDeploymentRecurringScheduleTimeZoneArgs.builder()
- *                     .id(&#34;America/New_York&#34;)
+ *                     .nanos(20)
  *                     .build())
  *                 .build())
  *             .build());
@@ -125,8 +125,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.osconfig.PatchDeploymentArgs;
  * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentInstanceFilterArgs;
  * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleArgs;
- * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleTimeOfDayArgs;
  * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleTimeZoneArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleTimeOfDayArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -141,19 +141,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var patch = new PatchDeployment(&#34;patch&#34;, PatchDeploymentArgs.builder()        
+ *             .patchDeploymentId(&#34;patch-deploy&#34;)
  *             .instanceFilter(PatchDeploymentInstanceFilterArgs.builder()
  *                 .all(true)
  *                 .build())
- *             .patchDeploymentId(&#34;patch-deploy&#34;)
  *             .recurringSchedule(PatchDeploymentRecurringScheduleArgs.builder()
+ *                 .timeZone(PatchDeploymentRecurringScheduleTimeZoneArgs.builder()
+ *                     .id(&#34;America/New_York&#34;)
+ *                     .build())
  *                 .timeOfDay(PatchDeploymentRecurringScheduleTimeOfDayArgs.builder()
  *                     .hours(0)
  *                     .minutes(0)
- *                     .nanos(0)
  *                     .seconds(0)
- *                     .build())
- *                 .timeZone(PatchDeploymentRecurringScheduleTimeZoneArgs.builder()
- *                     .id(&#34;America/New_York&#34;)
+ *                     .nanos(0)
  *                     .build())
  *                 .build())
  *             .build());
@@ -203,6 +203,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var foobar = new Instance(&#34;foobar&#34;, InstanceArgs.builder()        
+ *             .name(&#34;patch-deploy-inst&#34;)
  *             .machineType(&#34;e2-medium&#34;)
  *             .zone(&#34;us-central1-a&#34;)
  *             .canIpForward(false)

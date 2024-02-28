@@ -30,8 +30,8 @@ namespace Pulumi.Gcp.CloudRun
         /// {
         ///     var run_service = Gcp.CloudRun.GetService.Invoke(new()
         ///     {
-        ///         Location = "us-central1",
         ///         Name = "my-service",
+        ///         Location = "us-central1",
         ///     });
         /// 
         /// });
@@ -61,8 +61,8 @@ namespace Pulumi.Gcp.CloudRun
         /// {
         ///     var run_service = Gcp.CloudRun.GetService.Invoke(new()
         ///     {
-        ///         Location = "us-central1",
         ///         Name = "my-service",
+        ///         Location = "us-central1",
         ///     });
         /// 
         /// });

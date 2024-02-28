@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const pipeline = new gcp.clouddeploy.DeliveryPipeline("pipeline", {
+ *     name: "cd-pipeline",
  *     location: "us-central1",
  *     serialPipeline: {
  *         stages: [{
@@ -22,10 +23,9 @@ import * as utilities from "../utilities";
  *             profiles: [],
  *         }],
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const b_automation = new gcp.clouddeploy.Automation("b-automation", {
+ *     name: "cd-automation",
  *     project: pipeline.project,
  *     location: pipeline.location,
  *     deliveryPipeline: pipeline.name,
@@ -41,8 +41,6 @@ import * as utilities from "../utilities";
  *             id: "promote-release",
  *         },
  *     }],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Clouddeploy Automation Full
@@ -52,6 +50,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const pipeline = new gcp.clouddeploy.DeliveryPipeline("pipeline", {
+ *     name: "cd-pipeline",
  *     location: "us-central1",
  *     serialPipeline: {
  *         stages: [{
@@ -59,10 +58,9 @@ import * as utilities from "../utilities";
  *             profiles: ["test-profile"],
  *         }],
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const f_automation = new gcp.clouddeploy.Automation("f-automation", {
+ *     name: "cd-automation",
  *     location: "us-central1",
  *     deliveryPipeline: pipeline.name,
  *     serviceAccount: "my@service-account.com",
@@ -101,8 +99,6 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     ],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

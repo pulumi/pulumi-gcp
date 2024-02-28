@@ -34,6 +34,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vmwareengine.NewNetwork(ctx, "network-peering-nw", &vmwareengine.NetworkArgs{
+//				Name:     pulumi.String("default-np-nw"),
 //				Location: pulumi.String("global"),
 //				Type:     pulumi.String("STANDARD"),
 //			})
@@ -41,6 +42,7 @@ import (
 //				return err
 //			}
 //			_, err = vmwareengine.NewNetwork(ctx, "network-peering-peer-nw", &vmwareengine.NetworkArgs{
+//				Name:     pulumi.String("peer-np-nw"),
 //				Location: pulumi.String("global"),
 //				Type:     pulumi.String("STANDARD"),
 //			})
@@ -48,6 +50,7 @@ import (
 //				return err
 //			}
 //			_, err = vmwareengine.NewNetworkPeering(ctx, "vmw-engine-network-peering", &vmwareengine.NetworkPeeringArgs{
+//				Name:                           pulumi.String("sample-network-peering"),
 //				Description:                    pulumi.String("Sample description"),
 //				VmwareEngineNetwork:            network_peering_nw.ID(),
 //				PeerNetwork:                    network_peering_peer_nw.ID(),
@@ -80,11 +83,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "network-peering-vpc", nil)
+//			_, err := compute.NewNetwork(ctx, "network-peering-vpc", &compute.NetworkArgs{
+//				Name: pulumi.String("default-vpc"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vmwareengine.NewNetwork(ctx, "network-peering-standard-nw", &vmwareengine.NetworkArgs{
+//				Name:     pulumi.String("default-standard-nw-np"),
 //				Location: pulumi.String("global"),
 //				Type:     pulumi.String("STANDARD"),
 //			})
@@ -92,6 +98,7 @@ import (
 //				return err
 //			}
 //			_, err = vmwareengine.NewNetworkPeering(ctx, "vmw-engine-network-peering", &vmwareengine.NetworkPeeringArgs{
+//				Name:                pulumi.String("sample-network-peering"),
 //				Description:         pulumi.String("Sample description"),
 //				PeerNetwork:         network_peering_vpc.ID(),
 //				PeerNetworkType:     pulumi.String("STANDARD"),

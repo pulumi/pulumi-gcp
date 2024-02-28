@@ -36,20 +36,20 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.NewMetastoreService(ctx, "default", &dataproc.MetastoreServiceArgs{
+//				ServiceId: pulumi.String("metastore-srv"),
+//				Location:  pulumi.String("us-central1"),
+//				Port:      pulumi.Int(9080),
+//				Tier:      pulumi.String("DEVELOPER"),
+//				MaintenanceWindow: &dataproc.MetastoreServiceMaintenanceWindowArgs{
+//					HourOfDay: pulumi.Int(2),
+//					DayOfWeek: pulumi.String("SUNDAY"),
+//				},
 //				HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
 //					Version: pulumi.String("2.3.6"),
 //				},
 //				Labels: pulumi.StringMap{
 //					"env": pulumi.String("test"),
 //				},
-//				Location: pulumi.String("us-central1"),
-//				MaintenanceWindow: &dataproc.MetastoreServiceMaintenanceWindowArgs{
-//					DayOfWeek: pulumi.String("SUNDAY"),
-//					HourOfDay: pulumi.Int(2),
-//				},
-//				Port:      pulumi.Int(9080),
-//				ServiceId: pulumi.String("metastore-srv"),
-//				Tier:      pulumi.String("DEVELOPER"),
 //			})
 //			if err != nil {
 //				return err
@@ -74,16 +74,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
+//			keyRing, err := kms.NewKeyRing(ctx, "key_ring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("example-keyring"),
 //				Location: pulumi.String("us-central1"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
+//			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
+//				Name:    pulumi.String("example-key"),
 //				KeyRing: keyRing.ID(),
 //				Purpose: pulumi.String("ENCRYPT_DECRYPT"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -121,12 +123,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			net, err := compute.NewNetwork(ctx, "net", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
+//				Name:                  pulumi.String("my-subnetwork"),
 //				Region:                pulumi.String("us-central1"),
 //				Network:               net.ID(),
 //				IpCidrRange:           pulumi.String("10.0.0.0/22"),
@@ -173,17 +177,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			net, err := compute.NewNetwork(ctx, "net", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
+//				Name:                  pulumi.String("my-subnetwork"),
 //				Region:                pulumi.String("us-central1"),
 //				Network:               net.ID(),
 //				IpCidrRange:           pulumi.String("10.0.0.0/22"),
 //				PrivateIpGoogleAccess: pulumi.Bool(true),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -201,7 +207,7 @@ import (
 //					},
 //					CustomRoutesEnabled: pulumi.Bool(true),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -225,15 +231,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.NewMetastoreService(ctx, "dpms2", &dataproc.MetastoreServiceArgs{
+//				ServiceId:    pulumi.String("ms-dpms2"),
+//				Location:     pulumi.String("us-central1"),
 //				DatabaseType: pulumi.String("SPANNER"),
 //				HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
 //					Version: pulumi.String("3.1.2"),
 //				},
-//				Location: pulumi.String("us-central1"),
 //				ScalingConfig: &dataproc.MetastoreServiceScalingConfigArgs{
 //					InstanceSize: pulumi.String("EXTRA_SMALL"),
 //				},
-//				ServiceId: pulumi.String("ms-dpms2"),
 //			})
 //			if err != nil {
 //				return err
@@ -257,16 +263,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataproc.NewMetastoreService(ctx, "dpms2ScalingFactor", &dataproc.MetastoreServiceArgs{
+//			_, err := dataproc.NewMetastoreService(ctx, "dpms2_scaling_factor", &dataproc.MetastoreServiceArgs{
+//				ServiceId:    pulumi.String("ms-dpms2sf"),
+//				Location:     pulumi.String("us-central1"),
 //				DatabaseType: pulumi.String("SPANNER"),
 //				HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
 //					Version: pulumi.String("3.1.2"),
 //				},
-//				Location: pulumi.String("us-central1"),
 //				ScalingConfig: &dataproc.MetastoreServiceScalingConfigArgs{
 //					ScalingFactor: pulumi.Float64(2),
 //				},
-//				ServiceId: pulumi.String("ms-dpms2sf"),
 //			})
 //			if err != nil {
 //				return err

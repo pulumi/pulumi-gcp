@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := datacatalog.LookupPolicyTagIamPolicy(ctx, &datacatalog.LookupPolicyTagIamPolicyArgs{
-//				PolicyTag: google_data_catalog_policy_tag.Basic_policy_tag.Name,
+//				PolicyTag: basicPolicyTag.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

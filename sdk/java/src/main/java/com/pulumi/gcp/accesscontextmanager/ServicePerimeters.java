@@ -67,28 +67,31 @@ import javax.annotation.Nullable;
  *             .servicePerimeters(            
  *                 ServicePerimetersServicePerimeterArgs.builder()
  *                     .name(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s/servicePerimeters/&#34;, name)))
+ *                     .title(&#34;&#34;)
  *                     .status(ServicePerimetersServicePerimeterStatusArgs.builder()
  *                         .restrictedServices(&#34;storage.googleapis.com&#34;)
  *                         .build())
- *                     .title(&#34;&#34;)
  *                     .build(),
  *                 ServicePerimetersServicePerimeterArgs.builder()
  *                     .name(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s/servicePerimeters/&#34;, name)))
+ *                     .title(&#34;&#34;)
  *                     .status(ServicePerimetersServicePerimeterStatusArgs.builder()
  *                         .restrictedServices(&#34;bigtable.googleapis.com&#34;)
  *                         .build())
- *                     .title(&#34;&#34;)
  *                     .build())
  *             .build());
  * 
  *         var access_level = new AccessLevel(&#34;access-level&#34;, AccessLevelArgs.builder()        
+ *             .parent(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
+ *             .name(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s/accessLevels/chromeos_no_lock&#34;, name)))
+ *             .title(&#34;chromeos_no_lock&#34;)
  *             .basic(AccessLevelBasicArgs.builder()
  *                 .conditions(AccessLevelBasicConditionArgs.builder()
  *                     .devicePolicy(AccessLevelBasicConditionDevicePolicyArgs.builder()
+ *                         .requireScreenLock(false)
  *                         .osConstraints(AccessLevelBasicConditionDevicePolicyOsConstraintArgs.builder()
  *                             .osType(&#34;DESKTOP_CHROME_OS&#34;)
  *                             .build())
- *                         .requireScreenLock(false)
  *                         .build())
  *                     .regions(                    
  *                         &#34;CH&#34;,
@@ -96,8 +99,6 @@ import javax.annotation.Nullable;
  *                         &#34;US&#34;)
  *                     .build())
  *                 .build())
- *             .parent(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
- *             .title(&#34;chromeos_no_lock&#34;)
  *             .build());
  * 
  *     }

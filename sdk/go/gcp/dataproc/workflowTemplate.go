@@ -29,42 +29,34 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.NewWorkflowTemplate(ctx, "template", &dataproc.WorkflowTemplateArgs{
-//				Jobs: dataproc.WorkflowTemplateJobArray{
-//					&dataproc.WorkflowTemplateJobArgs{
-//						SparkJob: &dataproc.WorkflowTemplateJobSparkJobArgs{
-//							MainClass: pulumi.String("SomeClass"),
-//						},
-//						StepId: pulumi.String("someJob"),
-//					},
-//					&dataproc.WorkflowTemplateJobArgs{
-//						PrerequisiteStepIds: pulumi.StringArray{
-//							pulumi.String("someJob"),
-//						},
-//						PrestoJob: &dataproc.WorkflowTemplateJobPrestoJobArgs{
-//							QueryFileUri: pulumi.String("someuri"),
-//						},
-//						StepId: pulumi.String("otherJob"),
-//					},
-//				},
+//				Name:     pulumi.String("template-example"),
 //				Location: pulumi.String("us-central1"),
 //				Placement: &dataproc.WorkflowTemplatePlacementArgs{
 //					ManagedCluster: &dataproc.WorkflowTemplatePlacementManagedClusterArgs{
 //						ClusterName: pulumi.String("my-cluster"),
 //						Config: &dataproc.WorkflowTemplatePlacementManagedClusterConfigArgs{
 //							GceClusterConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs{
+//								Zone: pulumi.String("us-central1-a"),
 //								Tags: pulumi.StringArray{
 //									pulumi.String("foo"),
 //									pulumi.String("bar"),
 //								},
-//								Zone: pulumi.String("us-central1-a"),
 //							},
 //							MasterConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs{
-//								DiskConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs{
-//									BootDiskSizeGb: pulumi.Int(15),
-//									BootDiskType:   pulumi.String("pd-ssd"),
-//								},
-//								MachineType:  pulumi.String("n1-standard-1"),
 //								NumInstances: pulumi.Int(1),
+//								MachineType:  pulumi.String("n1-standard-1"),
+//								DiskConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs{
+//									BootDiskType:   pulumi.String("pd-ssd"),
+//									BootDiskSizeGb: pulumi.Int(15),
+//								},
+//							},
+//							WorkerConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs{
+//								NumInstances: pulumi.Int(3),
+//								MachineType:  pulumi.String("n1-standard-2"),
+//								DiskConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs{
+//									BootDiskSizeGb: pulumi.Int(10),
+//									NumLocalSsds:   pulumi.Int(2),
+//								},
 //							},
 //							SecondaryWorkerConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs{
 //								NumInstances: pulumi.Int(2),
@@ -72,14 +64,23 @@ import (
 //							SoftwareConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs{
 //								ImageVersion: pulumi.String("2.0.35-debian10"),
 //							},
-//							WorkerConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs{
-//								DiskConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs{
-//									BootDiskSizeGb: pulumi.Int(10),
-//									NumLocalSsds:   pulumi.Int(2),
-//								},
-//								MachineType:  pulumi.String("n1-standard-2"),
-//								NumInstances: pulumi.Int(3),
-//							},
+//						},
+//					},
+//				},
+//				Jobs: dataproc.WorkflowTemplateJobArray{
+//					&dataproc.WorkflowTemplateJobArgs{
+//						StepId: pulumi.String("someJob"),
+//						SparkJob: &dataproc.WorkflowTemplateJobSparkJobArgs{
+//							MainClass: pulumi.String("SomeClass"),
+//						},
+//					},
+//					&dataproc.WorkflowTemplateJobArgs{
+//						StepId: pulumi.String("otherJob"),
+//						PrerequisiteStepIds: pulumi.StringArray{
+//							pulumi.String("someJob"),
+//						},
+//						PrestoJob: &dataproc.WorkflowTemplateJobPrestoJobArgs{
+//							QueryFileUri: pulumi.String("someuri"),
 //						},
 //					},
 //				},

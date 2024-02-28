@@ -30,7 +30,51 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/scheduler/)
  * 
  * ## Example Usage
- * ### Scheduler Job App Engine
+ * ### Scheduler Job Pubsub
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.cloudscheduler.Job;
+ * import com.pulumi.gcp.cloudscheduler.JobArgs;
+ * import com.pulumi.gcp.cloudscheduler.inputs.JobPubsubTargetArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var topic = new Topic(&#34;topic&#34;, TopicArgs.builder()        
+ *             .name(&#34;job-topic&#34;)
+ *             .build());
+ * 
+ *         var job = new Job(&#34;job&#34;, JobArgs.builder()        
+ *             .name(&#34;test-job&#34;)
+ *             .description(&#34;test job&#34;)
+ *             .schedule(&#34;*{@literal /}2 * * * *&#34;)
+ *             .pubsubTarget(JobPubsubTargetArgs.builder()
+ *                 .topicName(topic.id())
+ *                 .data(StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input(&#34;test&#34;)
+ *                     .build()).result())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Scheduler Job Http
  * ```java
  * package generated_program;
  * 
@@ -39,9 +83,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.cloudscheduler.Job;
  * import com.pulumi.gcp.cloudscheduler.JobArgs;
- * import com.pulumi.gcp.cloudscheduler.inputs.JobAppEngineHttpTargetArgs;
- * import com.pulumi.gcp.cloudscheduler.inputs.JobAppEngineHttpTargetAppEngineRoutingArgs;
  * import com.pulumi.gcp.cloudscheduler.inputs.JobRetryConfigArgs;
+ * import com.pulumi.gcp.cloudscheduler.inputs.JobHttpTargetArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -56,25 +99,120 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var job = new Job(&#34;job&#34;, JobArgs.builder()        
- *             .appEngineHttpTarget(JobAppEngineHttpTargetArgs.builder()
- *                 .appEngineRouting(JobAppEngineHttpTargetAppEngineRoutingArgs.builder()
- *                     .instance(&#34;my-instance-001&#34;)
- *                     .service(&#34;web&#34;)
- *                     .version(&#34;prod&#34;)
- *                     .build())
- *                 .httpMethod(&#34;POST&#34;)
- *                 .relativeUri(&#34;/ping&#34;)
- *                 .build())
+ *             .name(&#34;test-job&#34;)
+ *             .description(&#34;test http job&#34;)
+ *             .schedule(&#34;*{@literal /}8 * * * *&#34;)
+ *             .timeZone(&#34;America/New_York&#34;)
  *             .attemptDeadline(&#34;320s&#34;)
- *             .description(&#34;test app engine job&#34;)
  *             .retryConfig(JobRetryConfigArgs.builder()
- *                 .maxDoublings(2)
- *                 .maxRetryDuration(&#34;10s&#34;)
+ *                 .retryCount(1)
+ *                 .build())
+ *             .httpTarget(JobHttpTargetArgs.builder()
+ *                 .httpMethod(&#34;POST&#34;)
+ *                 .uri(&#34;https://example.com/&#34;)
+ *                 .body(StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input(&#34;{\&#34;foo\&#34;:\&#34;bar\&#34;}&#34;)
+ *                     .build()).result())
+ *                 .headers(Map.of(&#34;Content-Type&#34;, &#34;application/json&#34;))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Scheduler Job Paused
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudscheduler.Job;
+ * import com.pulumi.gcp.cloudscheduler.JobArgs;
+ * import com.pulumi.gcp.cloudscheduler.inputs.JobRetryConfigArgs;
+ * import com.pulumi.gcp.cloudscheduler.inputs.JobHttpTargetArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var job = new Job(&#34;job&#34;, JobArgs.builder()        
+ *             .paused(true)
+ *             .name(&#34;test-job&#34;)
+ *             .description(&#34;test http job with updated fields&#34;)
+ *             .schedule(&#34;*{@literal /}8 * * * *&#34;)
+ *             .timeZone(&#34;America/New_York&#34;)
+ *             .attemptDeadline(&#34;320s&#34;)
+ *             .retryConfig(JobRetryConfigArgs.builder()
+ *                 .retryCount(1)
+ *                 .build())
+ *             .httpTarget(JobHttpTargetArgs.builder()
+ *                 .httpMethod(&#34;POST&#34;)
+ *                 .uri(&#34;https://example.com/ping&#34;)
+ *                 .body(StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input(&#34;{\&#34;foo\&#34;:\&#34;bar\&#34;}&#34;)
+ *                     .build()).result())
+ *                 .headers(Map.of(&#34;Content-Type&#34;, &#34;application/json&#34;))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Scheduler Job App Engine
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudscheduler.Job;
+ * import com.pulumi.gcp.cloudscheduler.JobArgs;
+ * import com.pulumi.gcp.cloudscheduler.inputs.JobRetryConfigArgs;
+ * import com.pulumi.gcp.cloudscheduler.inputs.JobAppEngineHttpTargetArgs;
+ * import com.pulumi.gcp.cloudscheduler.inputs.JobAppEngineHttpTargetAppEngineRoutingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var job = new Job(&#34;job&#34;, JobArgs.builder()        
+ *             .name(&#34;test-job&#34;)
+ *             .schedule(&#34;*{@literal /}4 * * * *&#34;)
+ *             .description(&#34;test app engine job&#34;)
+ *             .timeZone(&#34;Europe/London&#34;)
+ *             .attemptDeadline(&#34;320s&#34;)
+ *             .retryConfig(JobRetryConfigArgs.builder()
  *                 .minBackoffDuration(&#34;1s&#34;)
+ *                 .maxRetryDuration(&#34;10s&#34;)
+ *                 .maxDoublings(2)
  *                 .retryCount(3)
  *                 .build())
- *             .schedule(&#34;*{@literal /}4 * * * *&#34;)
- *             .timeZone(&#34;Europe/London&#34;)
+ *             .appEngineHttpTarget(JobAppEngineHttpTargetArgs.builder()
+ *                 .httpMethod(&#34;POST&#34;)
+ *                 .appEngineRouting(JobAppEngineHttpTargetAppEngineRoutingArgs.builder()
+ *                     .service(&#34;web&#34;)
+ *                     .version(&#34;prod&#34;)
+ *                     .instance(&#34;my-instance-001&#34;)
+ *                     .build())
+ *                 .relativeUri(&#34;/ping&#34;)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -109,6 +247,7 @@ import javax.annotation.Nullable;
  *         final var default = ComputeFunctions.getDefaultServiceAccount();
  * 
  *         var job = new Job(&#34;job&#34;, JobArgs.builder()        
+ *             .name(&#34;test-job&#34;)
  *             .description(&#34;test http job&#34;)
  *             .schedule(&#34;*{@literal /}8 * * * *&#34;)
  *             .timeZone(&#34;America/New_York&#34;)
@@ -154,6 +293,7 @@ import javax.annotation.Nullable;
  *         final var default = ComputeFunctions.getDefaultServiceAccount();
  * 
  *         var job = new Job(&#34;job&#34;, JobArgs.builder()        
+ *             .name(&#34;test-job&#34;)
  *             .description(&#34;test http job&#34;)
  *             .schedule(&#34;*{@literal /}8 * * * *&#34;)
  *             .timeZone(&#34;America/New_York&#34;)

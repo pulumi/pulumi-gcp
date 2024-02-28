@@ -30,6 +30,7 @@ namespace Pulumi.Gcp.Composer
         /// 
         ///     var test = new Gcp.Composer.Environment("test", new()
         ///     {
+        ///         Name = "test-env",
         ///         Region = "us-central1",
         ///         Config = new Gcp.Composer.Inputs.EnvironmentConfigArgs
         ///         {
@@ -67,6 +68,7 @@ namespace Pulumi.Gcp.Composer
         /// 
         ///     var test = new Gcp.Composer.Environment("test", new()
         ///     {
+        ///         Name = "test-env",
         ///         Region = "us-central1",
         ///         Config = new Gcp.Composer.Inputs.EnvironmentConfigArgs
         ///         {

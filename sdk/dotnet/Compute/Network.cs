@@ -29,7 +29,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vpcNetwork = new Gcp.Compute.Network("vpcNetwork");
+    ///     var vpcNetwork = new Gcp.Compute.Network("vpc_network", new()
+    ///     {
+    ///         Name = "vpc-network",
+    ///     });
     /// 
     /// });
     /// ```
@@ -43,11 +46,12 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vpcNetwork = new Gcp.Compute.Network("vpcNetwork", new()
+    ///     var vpcNetwork = new Gcp.Compute.Network("vpc_network", new()
     ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "vpc-network",
     ///         AutoCreateSubnetworks = true,
     ///         Mtu = 1460,
-    ///         Project = "my-project-name",
     ///     });
     /// 
     /// });
@@ -62,11 +66,12 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vpcNetwork = new Gcp.Compute.Network("vpcNetwork", new()
+    ///     var vpcNetwork = new Gcp.Compute.Network("vpc_network", new()
     ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "vpc-network",
     ///         AutoCreateSubnetworks = true,
     ///         NetworkFirewallPolicyEnforcementOrder = "BEFORE_CLASSIC_FIREWALL",
-    ///         Project = "my-project-name",
     ///     });
     /// 
     /// });

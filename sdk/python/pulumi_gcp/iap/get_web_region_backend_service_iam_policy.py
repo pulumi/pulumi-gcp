@@ -109,9 +109,9 @@ def get_web_region_backend_service_iam_policy(project: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.iap.get_web_region_backend_service_iam_policy(project=google_compute_region_backend_service["default"]["project"],
-        region=google_compute_region_backend_service["default"]["region"],
-        web_region_backend_service=google_compute_region_backend_service["default"]["name"])
+    policy = gcp.iap.get_web_region_backend_service_iam_policy(project=default["project"],
+        region=default["region"],
+        web_region_backend_service=default["name"])
     ```
 
 
@@ -149,9 +149,9 @@ def get_web_region_backend_service_iam_policy_output(project: Optional[pulumi.In
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.iap.get_web_region_backend_service_iam_policy(project=google_compute_region_backend_service["default"]["project"],
-        region=google_compute_region_backend_service["default"]["region"],
-        web_region_backend_service=google_compute_region_backend_service["default"]["name"])
+    policy = gcp.iap.get_web_region_backend_service_iam_policy(project=default["project"],
+        region=default["region"],
+        web_region_backend_service=default["name"])
     ```
 
 

@@ -55,9 +55,9 @@ import (
 //				return err
 //			}
 //			_, err = dataplex.NewLakeIamPolicy(ctx, "policy", &dataplex.LakeIamPolicyArgs{
-//				Project:    pulumi.Any(google_dataplex_lake.Example.Project),
-//				Location:   pulumi.Any(google_dataplex_lake.Example.Location),
-//				Lake:       pulumi.Any(google_dataplex_lake.Example.Name),
+//				Project:    pulumi.Any(example.Project),
+//				Location:   pulumi.Any(example.Location),
+//				Lake:       pulumi.Any(example.Name),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -84,9 +84,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataplex.NewLakeIamBinding(ctx, "binding", &dataplex.LakeIamBindingArgs{
-//				Project:  pulumi.Any(google_dataplex_lake.Example.Project),
-//				Location: pulumi.Any(google_dataplex_lake.Example.Location),
-//				Lake:     pulumi.Any(google_dataplex_lake.Example.Name),
+//				Project:  pulumi.Any(example.Project),
+//				Location: pulumi.Any(example.Location),
+//				Lake:     pulumi.Any(example.Name),
 //				Role:     pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -116,9 +116,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataplex.NewLakeIamMember(ctx, "member", &dataplex.LakeIamMemberArgs{
-//				Project:  pulumi.Any(google_dataplex_lake.Example.Project),
-//				Location: pulumi.Any(google_dataplex_lake.Example.Location),
-//				Lake:     pulumi.Any(google_dataplex_lake.Example.Name),
+//				Project:  pulumi.Any(example.Project),
+//				Location: pulumi.Any(example.Location),
+//				Lake:     pulumi.Any(example.Name),
 //				Role:     pulumi.String("roles/viewer"),
 //				Member:   pulumi.String("user:jane@example.com"),
 //			})

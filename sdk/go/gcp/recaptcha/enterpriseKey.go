@@ -30,17 +30,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := recaptcha.NewEnterpriseKey(ctx, "primary", &recaptcha.EnterpriseKeyArgs{
+//				DisplayName: pulumi.String("display-name-one"),
 //				AndroidSettings: &recaptcha.EnterpriseKeyAndroidSettingsArgs{
 //					AllowAllPackageNames: pulumi.Bool(true),
 //					AllowedPackageNames:  pulumi.StringArray{},
 //				},
-//				DisplayName: pulumi.String("display-name-one"),
-//				Labels: pulumi.StringMap{
-//					"label-one": pulumi.String("value-one"),
-//				},
 //				Project: pulumi.String("my-project-name"),
 //				TestingOptions: &recaptcha.EnterpriseKeyTestingOptionsArgs{
 //					TestingScore: pulumi.Float64(0.8),
+//				},
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
 //				},
 //			})
 //			if err != nil {
@@ -71,12 +71,12 @@ import (
 //					AllowAllBundleIds: pulumi.Bool(true),
 //					AllowedBundleIds:  pulumi.StringArray{},
 //				},
-//				Labels: pulumi.StringMap{
-//					"label-one": pulumi.String("value-one"),
-//				},
 //				Project: pulumi.String("my-project-name"),
 //				TestingOptions: &recaptcha.EnterpriseKeyTestingOptionsArgs{
 //					TestingScore: pulumi.Float64(1),
+//				},
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
 //				},
 //			})
 //			if err != nil {
@@ -103,12 +103,12 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := recaptcha.NewEnterpriseKey(ctx, "primary", &recaptcha.EnterpriseKeyArgs{
 //				DisplayName: pulumi.String("display-name-one"),
-//				Labels:      nil,
 //				Project:     pulumi.String("my-project-name"),
 //				WebSettings: &recaptcha.EnterpriseKeyWebSettingsArgs{
-//					AllowAllDomains: pulumi.Bool(true),
 //					IntegrationType: pulumi.String("SCORE"),
+//					AllowAllDomains: pulumi.Bool(true),
 //				},
+//				Labels: nil,
 //			})
 //			if err != nil {
 //				return err
@@ -134,10 +134,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := recaptcha.NewEnterpriseKey(ctx, "primary", &recaptcha.EnterpriseKeyArgs{
 //				DisplayName: pulumi.String("display-name-one"),
-//				Labels: pulumi.StringMap{
-//					"label-one": pulumi.String("value-one"),
-//				},
-//				Project: pulumi.String("my-project-name"),
+//				Project:     pulumi.String("my-project-name"),
 //				TestingOptions: &recaptcha.EnterpriseKeyTestingOptionsArgs{
 //					TestingChallenge: pulumi.String("NOCAPTCHA"),
 //					TestingScore:     pulumi.Float64(0.5),
@@ -147,10 +144,13 @@ import (
 //					WafService: pulumi.String("CA"),
 //				},
 //				WebSettings: &recaptcha.EnterpriseKeyWebSettingsArgs{
+//					IntegrationType:             pulumi.String("INVISIBLE"),
 //					AllowAllDomains:             pulumi.Bool(true),
 //					AllowedDomains:              pulumi.StringArray{},
 //					ChallengeSecurityPreference: pulumi.String("USABILITY"),
-//					IntegrationType:             pulumi.String("INVISIBLE"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
 //				},
 //			})
 //			if err != nil {
@@ -177,19 +177,19 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := recaptcha.NewEnterpriseKey(ctx, "primary", &recaptcha.EnterpriseKeyArgs{
 //				DisplayName: pulumi.String("display-name-one"),
-//				Labels: pulumi.StringMap{
-//					"label-one": pulumi.String("value-one"),
-//				},
-//				Project: pulumi.String("my-project-name"),
+//				Project:     pulumi.String("my-project-name"),
 //				TestingOptions: &recaptcha.EnterpriseKeyTestingOptionsArgs{
 //					TestingChallenge: pulumi.String("NOCAPTCHA"),
 //					TestingScore:     pulumi.Float64(0.5),
 //				},
 //				WebSettings: &recaptcha.EnterpriseKeyWebSettingsArgs{
+//					IntegrationType:             pulumi.String("CHECKBOX"),
 //					AllowAllDomains:             pulumi.Bool(true),
 //					AllowedDomains:              pulumi.StringArray{},
 //					ChallengeSecurityPreference: pulumi.String("USABILITY"),
-//					IntegrationType:             pulumi.String("CHECKBOX"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
 //				},
 //			})
 //			if err != nil {
@@ -216,18 +216,18 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := recaptcha.NewEnterpriseKey(ctx, "primary", &recaptcha.EnterpriseKeyArgs{
 //				DisplayName: pulumi.String("display-name-one"),
-//				Labels: pulumi.StringMap{
-//					"label-one": pulumi.String("value-one"),
-//				},
-//				Project: pulumi.String("my-project-name"),
+//				Project:     pulumi.String("my-project-name"),
 //				TestingOptions: &recaptcha.EnterpriseKeyTestingOptionsArgs{
 //					TestingScore: pulumi.Float64(0.5),
 //				},
 //				WebSettings: &recaptcha.EnterpriseKeyWebSettingsArgs{
+//					IntegrationType: pulumi.String("SCORE"),
 //					AllowAllDomains: pulumi.Bool(true),
 //					AllowAmpTraffic: pulumi.Bool(false),
 //					AllowedDomains:  pulumi.StringArray{},
-//					IntegrationType: pulumi.String("SCORE"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
 //				},
 //			})
 //			if err != nil {

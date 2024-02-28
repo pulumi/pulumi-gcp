@@ -314,12 +314,12 @@ class OrganizationPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        serial_port_policy = gcp.folder.OrganizationPolicy("serialPortPolicy",
+        serial_port_policy = gcp.folder.OrganizationPolicy("serial_port_policy",
+            folder="folders/123456789",
+            constraint="compute.disableSerialPortAccess",
             boolean_policy=gcp.folder.OrganizationPolicyBooleanPolicyArgs(
                 enforced=True,
-            ),
-            constraint="compute.disableSerialPortAccess",
-            folder="folders/123456789")
+            ))
         ```
 
         To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
@@ -328,9 +328,9 @@ class OrganizationPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        services_policy = gcp.folder.OrganizationPolicy("servicesPolicy",
-            constraint="serviceuser.services",
+        services_policy = gcp.folder.OrganizationPolicy("services_policy",
             folder="folders/123456789",
+            constraint="serviceuser.services",
             list_policy=gcp.folder.OrganizationPolicyListPolicyArgs(
                 allow=gcp.folder.OrganizationPolicyListPolicyAllowArgs(
                     all=True,
@@ -344,14 +344,14 @@ class OrganizationPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        services_policy = gcp.folder.OrganizationPolicy("servicesPolicy",
-            constraint="serviceuser.services",
+        services_policy = gcp.folder.OrganizationPolicy("services_policy",
             folder="folders/123456789",
+            constraint="serviceuser.services",
             list_policy=gcp.folder.OrganizationPolicyListPolicyArgs(
+                suggested_value="compute.googleapis.com",
                 deny=gcp.folder.OrganizationPolicyListPolicyDenyArgs(
                     values=["cloudresourcemanager.googleapis.com"],
                 ),
-                suggested_value="compute.googleapis.com",
             ))
         ```
 
@@ -361,9 +361,9 @@ class OrganizationPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        services_policy = gcp.folder.OrganizationPolicy("servicesPolicy",
-            constraint="serviceuser.services",
+        services_policy = gcp.folder.OrganizationPolicy("services_policy",
             folder="folders/123456789",
+            constraint="serviceuser.services",
             restore_policy=gcp.folder.OrganizationPolicyRestorePolicyArgs(
                 default=True,
             ))
@@ -429,12 +429,12 @@ class OrganizationPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        serial_port_policy = gcp.folder.OrganizationPolicy("serialPortPolicy",
+        serial_port_policy = gcp.folder.OrganizationPolicy("serial_port_policy",
+            folder="folders/123456789",
+            constraint="compute.disableSerialPortAccess",
             boolean_policy=gcp.folder.OrganizationPolicyBooleanPolicyArgs(
                 enforced=True,
-            ),
-            constraint="compute.disableSerialPortAccess",
-            folder="folders/123456789")
+            ))
         ```
 
         To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
@@ -443,9 +443,9 @@ class OrganizationPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        services_policy = gcp.folder.OrganizationPolicy("servicesPolicy",
-            constraint="serviceuser.services",
+        services_policy = gcp.folder.OrganizationPolicy("services_policy",
             folder="folders/123456789",
+            constraint="serviceuser.services",
             list_policy=gcp.folder.OrganizationPolicyListPolicyArgs(
                 allow=gcp.folder.OrganizationPolicyListPolicyAllowArgs(
                     all=True,
@@ -459,14 +459,14 @@ class OrganizationPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        services_policy = gcp.folder.OrganizationPolicy("servicesPolicy",
-            constraint="serviceuser.services",
+        services_policy = gcp.folder.OrganizationPolicy("services_policy",
             folder="folders/123456789",
+            constraint="serviceuser.services",
             list_policy=gcp.folder.OrganizationPolicyListPolicyArgs(
+                suggested_value="compute.googleapis.com",
                 deny=gcp.folder.OrganizationPolicyListPolicyDenyArgs(
                     values=["cloudresourcemanager.googleapis.com"],
                 ),
-                suggested_value="compute.googleapis.com",
             ))
         ```
 
@@ -476,9 +476,9 @@ class OrganizationPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        services_policy = gcp.folder.OrganizationPolicy("servicesPolicy",
-            constraint="serviceuser.services",
+        services_policy = gcp.folder.OrganizationPolicy("services_policy",
             folder="folders/123456789",
+            constraint="serviceuser.services",
             restore_policy=gcp.folder.OrganizationPolicyRestorePolicyArgs(
                 default=True,
             ))

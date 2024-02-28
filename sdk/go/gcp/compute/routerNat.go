@@ -35,11 +35,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			net, err := compute.NewNetwork(ctx, "net", nil)
+//			net, err := compute.NewNetwork(ctx, "net", &compute.NetworkArgs{
+//				Name: pulumi.String("my-network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("my-subnetwork"),
 //				Network:     net.ID(),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
@@ -48,6 +51,7 @@ import (
 //				return err
 //			}
 //			router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
+//				Name:    pulumi.String("my-router"),
 //				Region:  subnet.Region,
 //				Network: net.ID(),
 //				Bgp: &compute.RouterBgpArgs{
@@ -58,6 +62,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewRouterNat(ctx, "nat", &compute.RouterNatArgs{
+//				Name:                          pulumi.String("my-router-nat"),
 //				Router:                        router.Name,
 //				Region:                        router.Region,
 //				NatIpAllocateOption:           pulumi.String("AUTO_ONLY"),
@@ -82,6 +87,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -89,11 +96,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			net, err := compute.NewNetwork(ctx, "net", nil)
+//			net, err := compute.NewNetwork(ctx, "net", &compute.NetworkArgs{
+//				Name: pulumi.String("my-network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("my-subnetwork"),
 //				Network:     net.ID(),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
@@ -102,6 +112,7 @@ import (
 //				return err
 //			}
 //			router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
+//				Name:    pulumi.String("my-router"),
 //				Region:  subnet.Region,
 //				Network: net.ID(),
 //			})
@@ -111,8 +122,9 @@ import (
 //			var address []*compute.Address
 //			for index := 0; index < 2; index++ {
 //				key0 := index
-//				_ := index
+//				val0 := index
 //				__res, err := compute.NewAddress(ctx, fmt.Sprintf("address-%v", key0), &compute.AddressArgs{
+//					Name:   pulumi.String(fmt.Sprintf("nat-manual-ip-%v", val0)),
 //					Region: subnet.Region,
 //				})
 //				if err != nil {
@@ -124,7 +136,8 @@ import (
 //			for _, val0 := range address {
 //				splat0 = append(splat0, val0.SelfLink)
 //			}
-//			_, err = compute.NewRouterNat(ctx, "natManual", &compute.RouterNatArgs{
+//			_, err = compute.NewRouterNat(ctx, "nat_manual", &compute.RouterNatArgs{
+//				Name:                          pulumi.String("my-router-nat"),
 //				Router:                        router.Name,
 //				Region:                        router.Region,
 //				NatIpAllocateOption:           pulumi.String("MANUAL_ONLY"),
@@ -162,12 +175,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			net, err := compute.NewNetwork(ctx, "net", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("my-subnetwork"),
 //				Network:     net.ID(),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
@@ -176,6 +191,7 @@ import (
 //				return err
 //			}
 //			router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
+//				Name:    pulumi.String("my-router"),
 //				Region:  subnet.Region,
 //				Network: net.ID(),
 //			})
@@ -183,24 +199,28 @@ import (
 //				return err
 //			}
 //			addr1, err := compute.NewAddress(ctx, "addr1", &compute.AddressArgs{
+//				Name:   pulumi.String("nat-address1"),
 //				Region: subnet.Region,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			addr2, err := compute.NewAddress(ctx, "addr2", &compute.AddressArgs{
+//				Name:   pulumi.String("nat-address2"),
 //				Region: subnet.Region,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			addr3, err := compute.NewAddress(ctx, "addr3", &compute.AddressArgs{
+//				Name:   pulumi.String("nat-address3"),
 //				Region: subnet.Region,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewRouterNat(ctx, "natRules", &compute.RouterNatArgs{
+//			_, err = compute.NewRouterNat(ctx, "nat_rules", &compute.RouterNatArgs{
+//				Name:                pulumi.String("my-router-nat"),
 //				Router:              router.Name,
 //				Region:              router.Region,
 //				NatIpAllocateOption: pulumi.String("MANUAL_ONLY"),
@@ -254,33 +274,39 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			net, err := compute.NewNetwork(ctx, "net", nil, pulumi.Provider(google_beta))
+//			net, err := compute.NewNetwork(ctx, "net", &compute.NetworkArgs{
+//				Name: pulumi.String("my-network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("my-subnetwork"),
 //				Network:     net.ID(),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
 //				Purpose:     pulumi.String("PRIVATE_NAT"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
+//				Name:    pulumi.String("my-router"),
 //				Region:  subnet.Region,
 //				Network: net.ID(),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			hub, err := networkconnectivity.NewHub(ctx, "hub", &networkconnectivity.HubArgs{
+//				Name:        pulumi.String("my-hub"),
 //				Description: pulumi.String("vpc hub for inter vpc nat"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = networkconnectivity.NewSpoke(ctx, "spoke", &networkconnectivity.SpokeArgs{
+//				Name:        pulumi.String("my-spoke"),
 //				Location:    pulumi.String("global"),
 //				Description: pulumi.String("vpc spoke for inter vpc nat"),
 //				Hub:         hub.ID(),
@@ -291,11 +317,12 @@ import (
 //					},
 //					Uri: net.SelfLink,
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewRouterNat(ctx, "natType", &compute.RouterNatArgs{
+//			_, err = compute.NewRouterNat(ctx, "nat_type", &compute.RouterNatArgs{
+//				Name:                             pulumi.String("my-router-nat"),
 //				Router:                           router.Name,
 //				Region:                           router.Region,
 //				SourceSubnetworkIpRangesToNat:    pulumi.String("LIST_OF_SUBNETWORKS"),
@@ -323,7 +350,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

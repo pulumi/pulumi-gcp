@@ -18,11 +18,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const idpConfig = new gcp.identityplatform.DefaultSupportedIdpConfig("idpConfig", {
- *     clientId: "client-id",
- *     clientSecret: "secret",
+ * const idpConfig = new gcp.identityplatform.DefaultSupportedIdpConfig("idp_config", {
  *     enabled: true,
  *     idpId: "playgames.google.com",
+ *     clientId: "client-id",
+ *     clientSecret: "secret",
  * });
  * ```
  *

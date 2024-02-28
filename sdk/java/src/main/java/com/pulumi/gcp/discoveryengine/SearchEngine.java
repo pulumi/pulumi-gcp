@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicDataStore = new DataStore(&#34;basicDataStore&#34;, DataStoreArgs.builder()        
+ *         var basic = new DataStore(&#34;basic&#34;, DataStoreArgs.builder()        
  *             .location(&#34;global&#34;)
  *             .dataStoreId(&#34;example-datastore-id&#34;)
  *             .displayName(&#34;tf-test-structured-datastore&#34;)
@@ -65,9 +65,9 @@ import javax.annotation.Nullable;
  *         var basicSearchEngine = new SearchEngine(&#34;basicSearchEngine&#34;, SearchEngineArgs.builder()        
  *             .engineId(&#34;example-engine-id&#34;)
  *             .collectionId(&#34;default_collection&#34;)
- *             .location(basicDataStore.location())
+ *             .location(basic.location())
  *             .displayName(&#34;Example Display Name&#34;)
- *             .dataStoreIds(basicDataStore.dataStoreId())
+ *             .dataStoreIds(basic.dataStoreId())
  *             .searchEngineConfig()
  *             .build());
  * 

@@ -32,13 +32,14 @@ namespace Pulumi.Gcp.Looker
     /// {
     ///     var looker_instance = new Gcp.Looker.Instance("looker-instance", new()
     ///     {
+    ///         Name = "my-instance",
+    ///         PlatformEdition = "LOOKER_CORE_STANDARD",
+    ///         Region = "us-central1",
     ///         OauthConfig = new Gcp.Looker.Inputs.InstanceOauthConfigArgs
     ///         {
     ///             ClientId = "my-client-id",
     ///             ClientSecret = "my-client-secret",
     ///         },
-    ///         PlatformEdition = "LOOKER_CORE_STANDARD",
-    ///         Region = "us-central1",
     ///     });
     /// 
     /// });
@@ -55,6 +56,10 @@ namespace Pulumi.Gcp.Looker
     /// {
     ///     var looker_instance = new Gcp.Looker.Instance("looker-instance", new()
     ///     {
+    ///         Name = "my-instance",
+    ///         PlatformEdition = "LOOKER_CORE_STANDARD",
+    ///         Region = "us-central1",
+    ///         PublicIpEnabled = true,
     ///         AdminSettings = new Gcp.Looker.Inputs.InstanceAdminSettingsArgs
     ///         {
     ///             AllowedEmailDomains = new[]
@@ -62,27 +67,11 @@ namespace Pulumi.Gcp.Looker
     ///                 "google.com",
     ///             },
     ///         },
-    ///         DenyMaintenancePeriod = new Gcp.Looker.Inputs.InstanceDenyMaintenancePeriodArgs
+    ///         UserMetadata = new Gcp.Looker.Inputs.InstanceUserMetadataArgs
     ///         {
-    ///             EndDate = new Gcp.Looker.Inputs.InstanceDenyMaintenancePeriodEndDateArgs
-    ///             {
-    ///                 Day = 1,
-    ///                 Month = 2,
-    ///                 Year = 2050,
-    ///             },
-    ///             StartDate = new Gcp.Looker.Inputs.InstanceDenyMaintenancePeriodStartDateArgs
-    ///             {
-    ///                 Day = 1,
-    ///                 Month = 1,
-    ///                 Year = 2050,
-    ///             },
-    ///             Time = new Gcp.Looker.Inputs.InstanceDenyMaintenancePeriodTimeArgs
-    ///             {
-    ///                 Hours = 10,
-    ///                 Minutes = 0,
-    ///                 Nanos = 0,
-    ///                 Seconds = 0,
-    ///             },
+    ///             AdditionalDeveloperUserCount = 10,
+    ///             AdditionalStandardUserCount = 10,
+    ///             AdditionalViewerUserCount = 10,
     ///         },
     ///         MaintenanceWindow = new Gcp.Looker.Inputs.InstanceMaintenanceWindowArgs
     ///         {
@@ -91,23 +80,36 @@ namespace Pulumi.Gcp.Looker
     ///             {
     ///                 Hours = 22,
     ///                 Minutes = 0,
-    ///                 Nanos = 0,
     ///                 Seconds = 0,
+    ///                 Nanos = 0,
+    ///             },
+    ///         },
+    ///         DenyMaintenancePeriod = new Gcp.Looker.Inputs.InstanceDenyMaintenancePeriodArgs
+    ///         {
+    ///             StartDate = new Gcp.Looker.Inputs.InstanceDenyMaintenancePeriodStartDateArgs
+    ///             {
+    ///                 Year = 2050,
+    ///                 Month = 1,
+    ///                 Day = 1,
+    ///             },
+    ///             EndDate = new Gcp.Looker.Inputs.InstanceDenyMaintenancePeriodEndDateArgs
+    ///             {
+    ///                 Year = 2050,
+    ///                 Month = 2,
+    ///                 Day = 1,
+    ///             },
+    ///             Time = new Gcp.Looker.Inputs.InstanceDenyMaintenancePeriodTimeArgs
+    ///             {
+    ///                 Hours = 10,
+    ///                 Minutes = 0,
+    ///                 Seconds = 0,
+    ///                 Nanos = 0,
     ///             },
     ///         },
     ///         OauthConfig = new Gcp.Looker.Inputs.InstanceOauthConfigArgs
     ///         {
     ///             ClientId = "my-client-id",
     ///             ClientSecret = "my-client-secret",
-    ///         },
-    ///         PlatformEdition = "LOOKER_CORE_STANDARD",
-    ///         PublicIpEnabled = true,
-    ///         Region = "us-central1",
-    ///         UserMetadata = new Gcp.Looker.Inputs.InstanceUserMetadataArgs
-    ///         {
-    ///             AdditionalDeveloperUserCount = 10,
-    ///             AdditionalStandardUserCount = 10,
-    ///             AdditionalViewerUserCount = 10,
     ///         },
     ///     });
     /// 
@@ -123,28 +125,23 @@ namespace Pulumi.Gcp.Looker
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var lookerNetwork = new Gcp.Compute.Network("lookerNetwork");
-    /// 
-    ///     var lookerRange = new Gcp.Compute.GlobalAddress("lookerRange", new()
+    ///     var lookerNetwork = new Gcp.Compute.Network("looker_network", new()
     ///     {
+    ///         Name = "looker-network",
+    ///     });
+    /// 
+    ///     var lookerRange = new Gcp.Compute.GlobalAddress("looker_range", new()
+    ///     {
+    ///         Name = "looker-range",
     ///         Purpose = "VPC_PEERING",
     ///         AddressType = "INTERNAL",
     ///         PrefixLength = 20,
     ///         Network = lookerNetwork.Id,
     ///     });
     /// 
-    ///     var lookerVpcConnection = new Gcp.ServiceNetworking.Connection("lookerVpcConnection", new()
-    ///     {
-    ///         Network = lookerNetwork.Id,
-    ///         Service = "servicenetworking.googleapis.com",
-    ///         ReservedPeeringRanges = new[]
-    ///         {
-    ///             lookerRange.Name,
-    ///         },
-    ///     });
-    /// 
     ///     var looker_instance = new Gcp.Looker.Instance("looker-instance", new()
     ///     {
+    ///         Name = "my-instance",
     ///         PlatformEdition = "LOOKER_CORE_ENTERPRISE_ANNUAL",
     ///         Region = "us-central1",
     ///         PrivateIpEnabled = true,
@@ -200,17 +197,21 @@ namespace Pulumi.Gcp.Looker
     ///             ClientId = "my-client-id",
     ///             ClientSecret = "my-client-secret",
     ///         },
-    ///     }, new CustomResourceOptions
+    ///     });
+    /// 
+    ///     var lookerVpcConnection = new Gcp.ServiceNetworking.Connection("looker_vpc_connection", new()
     ///     {
-    ///         DependsOn = new[]
+    ///         Network = lookerNetwork.Id,
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
     ///         {
-    ///             lookerVpcConnection,
+    ///             lookerRange.Name,
     ///         },
     ///     });
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMMember("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMMember("crypto_key", new()
     ///     {
     ///         CryptoKeyId = "looker-kms-key",
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",

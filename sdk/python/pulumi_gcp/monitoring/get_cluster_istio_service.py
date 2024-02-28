@@ -173,10 +173,11 @@ def get_cluster_istio_service(cluster_name: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    default = gcp.monitoring.get_cluster_istio_service(cluster_name="west",
-        location="us-west2-a",
-        service_name="istio-policy",
-        service_namespace="istio-system")
+    # Monitors the default ClusterIstio service
+    default = gcp.monitoring.get_cluster_istio_service(location="us-west2-a",
+        cluster_name="west",
+        service_namespace="istio-system",
+        service_name="istio-policy")
     ```
 
 
@@ -247,10 +248,11 @@ def get_cluster_istio_service_output(cluster_name: Optional[pulumi.Input[str]] =
     import pulumi
     import pulumi_gcp as gcp
 
-    default = gcp.monitoring.get_cluster_istio_service(cluster_name="west",
-        location="us-west2-a",
-        service_name="istio-policy",
-        service_namespace="istio-system")
+    # Monitors the default ClusterIstio service
+    default = gcp.monitoring.get_cluster_istio_service(location="us-west2-a",
+        cluster_name="west",
+        service_namespace="istio-system",
+        service_name="istio-policy")
     ```
 
 

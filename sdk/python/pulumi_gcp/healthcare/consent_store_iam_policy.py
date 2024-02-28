@@ -231,8 +231,8 @@ class ConsentStoreIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.healthcare.ConsentStoreIamPolicy("policy",
-            dataset=google_healthcare_consent_store["my-consent"]["dataset"],
-            consent_store_id=google_healthcare_consent_store["my-consent"]["name"],
+            dataset=my_consent["dataset"],
+            consent_store_id=my_consent["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -243,8 +243,8 @@ class ConsentStoreIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.healthcare.ConsentStoreIamBinding("binding",
-            dataset=google_healthcare_consent_store["my-consent"]["dataset"],
-            consent_store_id=google_healthcare_consent_store["my-consent"]["name"],
+            dataset=my_consent["dataset"],
+            consent_store_id=my_consent["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -256,8 +256,8 @@ class ConsentStoreIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.healthcare.ConsentStoreIamMember("member",
-            dataset=google_healthcare_consent_store["my-consent"]["dataset"],
-            consent_store_id=google_healthcare_consent_store["my-consent"]["name"],
+            dataset=my_consent["dataset"],
+            consent_store_id=my_consent["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -349,8 +349,8 @@ class ConsentStoreIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.healthcare.ConsentStoreIamPolicy("policy",
-            dataset=google_healthcare_consent_store["my-consent"]["dataset"],
-            consent_store_id=google_healthcare_consent_store["my-consent"]["name"],
+            dataset=my_consent["dataset"],
+            consent_store_id=my_consent["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -361,8 +361,8 @@ class ConsentStoreIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.healthcare.ConsentStoreIamBinding("binding",
-            dataset=google_healthcare_consent_store["my-consent"]["dataset"],
-            consent_store_id=google_healthcare_consent_store["my-consent"]["name"],
+            dataset=my_consent["dataset"],
+            consent_store_id=my_consent["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -374,8 +374,8 @@ class ConsentStoreIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.healthcare.ConsentStoreIamMember("member",
-            dataset=google_healthcare_consent_store["my-consent"]["dataset"],
-            consent_store_id=google_healthcare_consent_store["my-consent"]["name"],
+            dataset=my_consent["dataset"],
+            consent_store_id=my_consent["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

@@ -48,12 +48,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:     pulumi.String("static-content-bucket"),
 //				Location: pulumi.String("US"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = storage.NewDefaultObjectAccessControl(ctx, "publicRule", &storage.DefaultObjectAccessControlArgs{
+//			_, err = storage.NewDefaultObjectAccessControl(ctx, "public_rule", &storage.DefaultObjectAccessControlArgs{
 //				Bucket: bucket.Name,
 //				Role:   pulumi.String("READER"),
 //				Entity: pulumi.String("allUsers"),

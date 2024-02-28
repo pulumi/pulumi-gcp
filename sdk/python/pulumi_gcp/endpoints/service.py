@@ -286,18 +286,18 @@ class Service(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import base64
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
-        openapi_service = gcp.endpoints.Service("openapiService",
+        openapi_service = gcp.endpoints.Service("openapi_service",
             service_name="api-name.endpoints.project-id.cloud.goog",
             project="project-id",
-            openapi_config=(lambda path: open(path).read())("openapi_spec.yml"))
-        grpc_service = gcp.endpoints.Service("grpcService",
+            openapi_config=std.file(input="openapi_spec.yml").result)
+        grpc_service = gcp.endpoints.Service("grpc_service",
             service_name="api-name.endpoints.project-id.cloud.goog",
             project="project-id",
-            grpc_config=(lambda path: open(path).read())("service_spec.yml"),
-            protoc_output_base64=(lambda path: base64.b64encode(open(path).read().encode()).decode())("compiled_descriptor_file.pb"))
+            grpc_config=std.file(input="service_spec.yml").result,
+            protoc_output_base64=std.filebase64(input="compiled_descriptor_file.pb").result)
         ```
 
         The example in `examples/endpoints_on_compute_engine` shows the API from the quickstart running on a Compute Engine VM and reachable through Cloud Endpoints, which may also be useful.
@@ -331,18 +331,18 @@ class Service(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import base64
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
-        openapi_service = gcp.endpoints.Service("openapiService",
+        openapi_service = gcp.endpoints.Service("openapi_service",
             service_name="api-name.endpoints.project-id.cloud.goog",
             project="project-id",
-            openapi_config=(lambda path: open(path).read())("openapi_spec.yml"))
-        grpc_service = gcp.endpoints.Service("grpcService",
+            openapi_config=std.file(input="openapi_spec.yml").result)
+        grpc_service = gcp.endpoints.Service("grpc_service",
             service_name="api-name.endpoints.project-id.cloud.goog",
             project="project-id",
-            grpc_config=(lambda path: open(path).read())("service_spec.yml"),
-            protoc_output_base64=(lambda path: base64.b64encode(open(path).read().encode()).decode())("compiled_descriptor_file.pb"))
+            grpc_config=std.file(input="service_spec.yml").result,
+            protoc_output_base64=std.filebase64(input="compiled_descriptor_file.pb").result)
         ```
 
         The example in `examples/endpoints_on_compute_engine` shows the API from the quickstart running on a Compute Engine VM and reachable through Cloud Endpoints, which may also be useful.

@@ -255,9 +255,9 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.iap.TunnelInstanceIAMPolicy("policy",
-            project=google_compute_instance["tunnelvm"]["project"],
-            zone=google_compute_instance["tunnelvm"]["zone"],
-            instance=google_compute_instance["tunnelvm"]["name"],
+            project=tunnelvm["project"],
+            zone=tunnelvm["zone"],
+            instance=tunnelvm["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -277,9 +277,9 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
             ),
         )])
         policy = gcp.iap.TunnelInstanceIAMPolicy("policy",
-            project=google_compute_instance["tunnelvm"]["project"],
-            zone=google_compute_instance["tunnelvm"]["zone"],
-            instance=google_compute_instance["tunnelvm"]["name"],
+            project=tunnelvm["project"],
+            zone=tunnelvm["zone"],
+            instance=tunnelvm["name"],
             policy_data=admin.policy_data)
         ```
         ## google\\_iap\\_tunnel\\_instance\\_iam\\_binding
@@ -289,9 +289,9 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.iap.TunnelInstanceIAMBinding("binding",
-            project=google_compute_instance["tunnelvm"]["project"],
-            zone=google_compute_instance["tunnelvm"]["zone"],
-            instance=google_compute_instance["tunnelvm"]["name"],
+            project=tunnelvm["project"],
+            zone=tunnelvm["zone"],
+            instance=tunnelvm["name"],
             role="roles/iap.tunnelResourceAccessor",
             members=["user:jane@example.com"])
         ```
@@ -303,9 +303,9 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.iap.TunnelInstanceIAMBinding("binding",
-            project=google_compute_instance["tunnelvm"]["project"],
-            zone=google_compute_instance["tunnelvm"]["zone"],
-            instance=google_compute_instance["tunnelvm"]["name"],
+            project=tunnelvm["project"],
+            zone=tunnelvm["zone"],
+            instance=tunnelvm["name"],
             role="roles/iap.tunnelResourceAccessor",
             members=["user:jane@example.com"],
             condition=gcp.iap.TunnelInstanceIAMBindingConditionArgs(
@@ -321,9 +321,9 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.iap.TunnelInstanceIAMMember("member",
-            project=google_compute_instance["tunnelvm"]["project"],
-            zone=google_compute_instance["tunnelvm"]["zone"],
-            instance=google_compute_instance["tunnelvm"]["name"],
+            project=tunnelvm["project"],
+            zone=tunnelvm["zone"],
+            instance=tunnelvm["name"],
             role="roles/iap.tunnelResourceAccessor",
             member="user:jane@example.com")
         ```
@@ -335,9 +335,9 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.iap.TunnelInstanceIAMMember("member",
-            project=google_compute_instance["tunnelvm"]["project"],
-            zone=google_compute_instance["tunnelvm"]["zone"],
-            instance=google_compute_instance["tunnelvm"]["name"],
+            project=tunnelvm["project"],
+            zone=tunnelvm["zone"],
+            instance=tunnelvm["name"],
             role="roles/iap.tunnelResourceAccessor",
             member="user:jane@example.com",
             condition=gcp.iap.TunnelInstanceIAMMemberConditionArgs(
@@ -441,9 +441,9 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.iap.TunnelInstanceIAMPolicy("policy",
-            project=google_compute_instance["tunnelvm"]["project"],
-            zone=google_compute_instance["tunnelvm"]["zone"],
-            instance=google_compute_instance["tunnelvm"]["name"],
+            project=tunnelvm["project"],
+            zone=tunnelvm["zone"],
+            instance=tunnelvm["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -463,9 +463,9 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
             ),
         )])
         policy = gcp.iap.TunnelInstanceIAMPolicy("policy",
-            project=google_compute_instance["tunnelvm"]["project"],
-            zone=google_compute_instance["tunnelvm"]["zone"],
-            instance=google_compute_instance["tunnelvm"]["name"],
+            project=tunnelvm["project"],
+            zone=tunnelvm["zone"],
+            instance=tunnelvm["name"],
             policy_data=admin.policy_data)
         ```
         ## google\\_iap\\_tunnel\\_instance\\_iam\\_binding
@@ -475,9 +475,9 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.iap.TunnelInstanceIAMBinding("binding",
-            project=google_compute_instance["tunnelvm"]["project"],
-            zone=google_compute_instance["tunnelvm"]["zone"],
-            instance=google_compute_instance["tunnelvm"]["name"],
+            project=tunnelvm["project"],
+            zone=tunnelvm["zone"],
+            instance=tunnelvm["name"],
             role="roles/iap.tunnelResourceAccessor",
             members=["user:jane@example.com"])
         ```
@@ -489,9 +489,9 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.iap.TunnelInstanceIAMBinding("binding",
-            project=google_compute_instance["tunnelvm"]["project"],
-            zone=google_compute_instance["tunnelvm"]["zone"],
-            instance=google_compute_instance["tunnelvm"]["name"],
+            project=tunnelvm["project"],
+            zone=tunnelvm["zone"],
+            instance=tunnelvm["name"],
             role="roles/iap.tunnelResourceAccessor",
             members=["user:jane@example.com"],
             condition=gcp.iap.TunnelInstanceIAMBindingConditionArgs(
@@ -507,9 +507,9 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.iap.TunnelInstanceIAMMember("member",
-            project=google_compute_instance["tunnelvm"]["project"],
-            zone=google_compute_instance["tunnelvm"]["zone"],
-            instance=google_compute_instance["tunnelvm"]["name"],
+            project=tunnelvm["project"],
+            zone=tunnelvm["zone"],
+            instance=tunnelvm["name"],
             role="roles/iap.tunnelResourceAccessor",
             member="user:jane@example.com")
         ```
@@ -521,9 +521,9 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.iap.TunnelInstanceIAMMember("member",
-            project=google_compute_instance["tunnelvm"]["project"],
-            zone=google_compute_instance["tunnelvm"]["zone"],
-            instance=google_compute_instance["tunnelvm"]["name"],
+            project=tunnelvm["project"],
+            zone=tunnelvm["zone"],
+            instance=tunnelvm["name"],
             role="roles/iap.tunnelResourceAccessor",
             member="user:jane@example.com",
             condition=gcp.iap.TunnelInstanceIAMMemberConditionArgs(

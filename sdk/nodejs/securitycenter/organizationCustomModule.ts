@@ -27,20 +27,20 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const example = new gcp.securitycenter.OrganizationCustomModule("example", {
+ *     organization: "123456789",
+ *     displayName: "basic_custom_module",
+ *     enablementState: "ENABLED",
  *     customConfig: {
- *         description: "The rotation period of the identified cryptokey resource exceeds 30 days.",
  *         predicate: {
  *             expression: "resource.rotationPeriod > duration(\"2592000s\")",
  *         },
- *         recommendation: "Set the rotation period to at most 30 days.",
  *         resourceSelector: {
  *             resourceTypes: ["cloudkms.googleapis.com/CryptoKey"],
  *         },
+ *         description: "The rotation period of the identified cryptokey resource exceeds 30 days.",
+ *         recommendation: "Set the rotation period to at most 30 days.",
  *         severity: "MEDIUM",
  *     },
- *     displayName: "basic_custom_module",
- *     enablementState: "ENABLED",
- *     organization: "123456789",
  * });
  * ```
  * ### Scc Organization Custom Module Full
@@ -50,34 +50,34 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const example = new gcp.securitycenter.OrganizationCustomModule("example", {
+ *     organization: "123456789",
+ *     displayName: "full_custom_module",
+ *     enablementState: "ENABLED",
  *     customConfig: {
+ *         predicate: {
+ *             expression: "resource.rotationPeriod > duration(\"2592000s\")",
+ *             title: "Purpose of the expression",
+ *             description: "description of the expression",
+ *             location: "location of the expression",
+ *         },
  *         customOutput: {
  *             properties: [{
  *                 name: "duration",
  *                 valueExpression: {
- *                     description: "description of the expression",
  *                     expression: "resource.rotationPeriod",
- *                     location: "location of the expression",
  *                     title: "Purpose of the expression",
+ *                     description: "description of the expression",
+ *                     location: "location of the expression",
  *                 },
  *             }],
  *         },
- *         description: "Description of the custom module",
- *         predicate: {
- *             description: "description of the expression",
- *             expression: "resource.rotationPeriod > duration(\"2592000s\")",
- *             location: "location of the expression",
- *             title: "Purpose of the expression",
- *         },
- *         recommendation: "Steps to resolve violation",
  *         resourceSelector: {
  *             resourceTypes: ["cloudkms.googleapis.com/CryptoKey"],
  *         },
  *         severity: "LOW",
+ *         description: "Description of the custom module",
+ *         recommendation: "Steps to resolve violation",
  *     },
- *     displayName: "full_custom_module",
- *     enablementState: "ENABLED",
- *     organization: "123456789",
  * });
  * ```
  *

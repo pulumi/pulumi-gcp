@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const test = gcp.folder.getIamPolicy({
- *     folder: google_folder.permissiontest.name,
+ *     folder: permissiontest.name,
  * });
  * ```
  */
@@ -64,7 +64,7 @@ export interface GetIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const test = gcp.folder.getIamPolicy({
- *     folder: google_folder.permissiontest.name,
+ *     folder: permissiontest.name,
  * });
  * ```
  */

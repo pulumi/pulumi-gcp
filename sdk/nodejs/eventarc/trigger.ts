@@ -16,6 +16,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.cloudrun.Service("default", {
+ *     name: "eventarc-service",
  *     location: "europe-west1",
  *     metadata: {
  *         namespace: "my-project-name",
@@ -38,6 +39,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const primary = new gcp.eventarc.Trigger("primary", {
+ *     name: "name",
  *     location: "europe-west1",
  *     matchingCriterias: [{
  *         attribute: "type",
@@ -53,7 +55,7 @@ import * as utilities from "../utilities";
  *         foo: "bar",
  *     },
  * });
- * const foo = new gcp.pubsub.Topic("foo", {});
+ * const foo = new gcp.pubsub.Topic("foo", {name: "topic"});
  * ```
  *
  * ## Import

@@ -22,14 +22,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const note = new gcp.containeranalysis.Note("note", {attestationAuthority: {
- *     hint: {
- *         humanReadableName: "My attestor",
+ * const note = new gcp.containeranalysis.Note("note", {
+ *     name: "test-attestor-note",
+ *     attestationAuthority: {
+ *         hint: {
+ *             humanReadableName: "My attestor",
+ *         },
  *     },
- * }});
- * const attestor = new gcp.binaryauthorization.Attestor("attestor", {attestationAuthorityNote: {
- *     noteReference: note.name,
- * }});
+ * });
+ * const attestor = new gcp.binaryauthorization.Attestor("attestor", {
+ *     name: "test-attestor",
+ *     attestationAuthorityNote: {
+ *         noteReference: note.name,
+ *     },
+ * });
  * const policy = new gcp.binaryauthorization.Policy("policy", {
  *     admissionWhitelistPatterns: [{
  *         namePattern: "gcr.io/google_containers/*",
@@ -52,14 +58,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const note = new gcp.containeranalysis.Note("note", {attestationAuthority: {
- *     hint: {
- *         humanReadableName: "My attestor",
+ * const note = new gcp.containeranalysis.Note("note", {
+ *     name: "test-attestor-note",
+ *     attestationAuthority: {
+ *         hint: {
+ *             humanReadableName: "My attestor",
+ *         },
  *     },
- * }});
- * const attestor = new gcp.binaryauthorization.Attestor("attestor", {attestationAuthorityNote: {
- *     noteReference: note.name,
- * }});
+ * });
+ * const attestor = new gcp.binaryauthorization.Attestor("attestor", {
+ *     name: "test-attestor",
+ *     attestationAuthorityNote: {
+ *         noteReference: note.name,
+ *     },
+ * });
  * const policy = new gcp.binaryauthorization.Policy("policy", {
  *     defaultAdmissionRule: {
  *         evaluationMode: "REQUIRE_ATTESTATION",

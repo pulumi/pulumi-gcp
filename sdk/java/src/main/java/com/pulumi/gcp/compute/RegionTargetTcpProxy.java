@@ -29,7 +29,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * ### Region Target Tcp Proxy Basic
- * 
  * ```java
  * package generated_program;
  * 
@@ -57,6 +56,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultRegionHealthCheck = new RegionHealthCheck(&#34;defaultRegionHealthCheck&#34;, RegionHealthCheckArgs.builder()        
+ *             .name(&#34;health-check&#34;)
  *             .region(&#34;europe-west4&#34;)
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
@@ -66,6 +66,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultRegionBackendService = new RegionBackendService(&#34;defaultRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
+ *             .name(&#34;backend-service&#34;)
  *             .protocol(&#34;TCP&#34;)
  *             .timeoutSec(10)
  *             .region(&#34;europe-west4&#34;)
@@ -73,7 +74,8 @@ import javax.annotation.Nullable;
  *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
  *             .build());
  * 
- *         var defaultRegionTargetTcpProxy = new RegionTargetTcpProxy(&#34;defaultRegionTargetTcpProxy&#34;, RegionTargetTcpProxyArgs.builder()        
+ *         var default_ = new RegionTargetTcpProxy(&#34;default&#34;, RegionTargetTcpProxyArgs.builder()        
+ *             .name(&#34;test-proxy&#34;)
  *             .region(&#34;europe-west4&#34;)
  *             .backendService(defaultRegionBackendService.id())
  *             .build());

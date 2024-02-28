@@ -30,12 +30,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
-//				OrgId: pulumi.String("123456789"),
+//				ProjectId: pulumi.String("app"),
+//				Name:      pulumi.String("app"),
+//				OrgId:     pulumi.String("123456789"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = projects.NewApiKey(ctx, "primary", &projects.ApiKeyArgs{
+//				Name:        pulumi.String("key"),
 //				DisplayName: pulumi.String("sample-key"),
 //				Project:     basic.Name,
 //				Restrictions: &projects.ApiKeyRestrictionsArgs{
@@ -81,12 +84,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
-//				OrgId: pulumi.String("123456789"),
+//				ProjectId: pulumi.String("app"),
+//				Name:      pulumi.String("app"),
+//				OrgId:     pulumi.String("123456789"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = projects.NewApiKey(ctx, "primary", &projects.ApiKeyArgs{
+//				Name:        pulumi.String("key"),
 //				DisplayName: pulumi.String("sample-key"),
 //				Project:     basic.Name,
 //				Restrictions: &projects.ApiKeyRestrictionsArgs{
@@ -129,12 +135,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
-//				OrgId: pulumi.String("123456789"),
+//				ProjectId: pulumi.String("app"),
+//				Name:      pulumi.String("app"),
+//				OrgId:     pulumi.String("123456789"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = projects.NewApiKey(ctx, "primary", &projects.ApiKeyArgs{
+//				Name:        pulumi.String("key"),
 //				DisplayName: pulumi.String("sample-key"),
 //				Project:     basic.Name,
 //				Restrictions: &projects.ApiKeyRestrictionsArgs{
@@ -177,12 +186,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
-//				OrgId: pulumi.String("123456789"),
+//				ProjectId: pulumi.String("app"),
+//				Name:      pulumi.String("app"),
+//				OrgId:     pulumi.String("123456789"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = projects.NewApiKey(ctx, "primary", &projects.ApiKeyArgs{
+//				Name:        pulumi.String("key"),
 //				DisplayName: pulumi.String("sample-key"),
 //				Project:     basic.Name,
 //			})
@@ -210,12 +222,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
-//				OrgId: pulumi.String("123456789"),
+//				ProjectId: pulumi.String("app"),
+//				Name:      pulumi.String("app"),
+//				OrgId:     pulumi.String("123456789"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = projects.NewApiKey(ctx, "primary", &projects.ApiKeyArgs{
+//				Name:        pulumi.String("key"),
 //				DisplayName: pulumi.String("sample-key"),
 //				Project:     basic.Name,
 //				Restrictions: &projects.ApiKeyRestrictionsArgs{

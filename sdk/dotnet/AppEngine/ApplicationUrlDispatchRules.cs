@@ -29,16 +29,18 @@ namespace Pulumi.Gcp.AppEngine
     /// {
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
+    ///         Name = "appengine-test-bucket",
     ///         Location = "US",
     ///     });
     /// 
     ///     var @object = new Gcp.Storage.BucketObject("object", new()
     ///     {
+    ///         Name = "hello-world.zip",
     ///         Bucket = bucket.Name,
     ///         Source = new FileAsset("./test-fixtures/hello-world.zip"),
     ///     });
     /// 
-    ///     var adminV3 = new Gcp.AppEngine.StandardAppVersion("adminV3", new()
+    ///     var adminV3 = new Gcp.AppEngine.StandardAppVersion("admin_v3", new()
     ///     {
     ///         VersionId = "v3",
     ///         Service = "admin",
@@ -66,7 +68,7 @@ namespace Pulumi.Gcp.AppEngine
     ///         DeleteServiceOnDestroy = true,
     ///     });
     /// 
-    ///     var webService = new Gcp.AppEngine.ApplicationUrlDispatchRules("webService", new()
+    ///     var webService = new Gcp.AppEngine.ApplicationUrlDispatchRules("web_service", new()
     ///     {
     ///         DispatchRules = new[]
     ///         {

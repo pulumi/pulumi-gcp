@@ -35,11 +35,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := bigqueryanalyticshub.NewDataExchange(ctx, "dataExchange", &bigqueryanalyticshub.DataExchangeArgs{
-//				DataExchangeId: pulumi.String("my_data_exchange"),
-//				Description:    pulumi.String("example data exchange"),
-//				DisplayName:    pulumi.String("my_data_exchange"),
+//			_, err := bigqueryanalyticshub.NewDataExchange(ctx, "data_exchange", &bigqueryanalyticshub.DataExchangeArgs{
 //				Location:       pulumi.String("US"),
+//				DataExchangeId: pulumi.String("my_data_exchange"),
+//				DisplayName:    pulumi.String("my_data_exchange"),
+//				Description:    pulumi.String("example data exchange"),
 //			})
 //			if err != nil {
 //				return err

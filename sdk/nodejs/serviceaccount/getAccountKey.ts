@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const myaccount = new gcp.serviceaccount.Account("myaccount", {accountId: "dev-foo-account"});
- * const mykeyKey = new gcp.serviceaccount.Key("mykeyKey", {serviceAccountId: myaccount.name});
- * const mykeyAccountKey = gcp.serviceaccount.getAccountKeyOutput({
+ * const mykeyKey = new gcp.serviceaccount.Key("mykey", {serviceAccountId: myaccount.name});
+ * const mykey = gcp.serviceaccount.getAccountKeyOutput({
  *     name: mykeyKey.name,
  *     publicKeyType: "TYPE_X509_PEM_FILE",
  * });
@@ -79,8 +79,8 @@ export interface GetAccountKeyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const myaccount = new gcp.serviceaccount.Account("myaccount", {accountId: "dev-foo-account"});
- * const mykeyKey = new gcp.serviceaccount.Key("mykeyKey", {serviceAccountId: myaccount.name});
- * const mykeyAccountKey = gcp.serviceaccount.getAccountKeyOutput({
+ * const mykeyKey = new gcp.serviceaccount.Key("mykey", {serviceAccountId: myaccount.name});
+ * const mykey = gcp.serviceaccount.getAccountKeyOutput({
  *     name: mykeyKey.name,
  *     publicKeyType: "TYPE_X509_PEM_FILE",
  * });

@@ -46,9 +46,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new InstanceGroup(&#34;test&#34;, InstanceGroupArgs.builder()        
+ *             .name(&#34;test&#34;)
  *             .description(&#34;Test instance group&#34;)
  *             .zone(&#34;us-central1-a&#34;)
- *             .network(google_compute_network.default().id())
+ *             .network(default_.id())
  *             .build());
  * 
  *     }
@@ -78,10 +79,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var webservers = new InstanceGroup(&#34;webservers&#34;, InstanceGroupArgs.builder()        
+ *             .name(&#34;webservers&#34;)
  *             .description(&#34;Test instance group&#34;)
  *             .instances(            
- *                 google_compute_instance.test().id(),
- *                 google_compute_instance.test2().id())
+ *                 test.id(),
+ *                 test2.id())
  *             .namedPorts(            
  *                 InstanceGroupNamedPortArgs.builder()
  *                     .name(&#34;http&#34;)
@@ -101,7 +103,6 @@ import javax.annotation.Nullable;
  * Recreating an instance group that&#39;s in use by another resource will give a
  * `resourceInUseByAnotherResource` error. Use `lifecycle.create_before_destroy`
  * as shown in this example to avoid this type of error.
- * 
  * ```java
  * package generated_program;
  * 
@@ -142,6 +143,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var stagingVm = new Instance(&#34;stagingVm&#34;, InstanceArgs.builder()        
+ *             .name(&#34;staging-vm&#34;)
  *             .machineType(&#34;e2-medium&#34;)
  *             .zone(&#34;us-central1-c&#34;)
  *             .bootDisk(InstanceBootDiskArgs.builder()
@@ -155,6 +157,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var stagingGroup = new InstanceGroup(&#34;stagingGroup&#34;, InstanceGroupArgs.builder()        
+ *             .name(&#34;staging-instance-group&#34;)
  *             .zone(&#34;us-central1-c&#34;)
  *             .instances(stagingVm.id())
  *             .namedPorts(            
@@ -169,10 +172,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var stagingHealth = new HttpsHealthCheck(&#34;stagingHealth&#34;, HttpsHealthCheckArgs.builder()        
+ *             .name(&#34;staging-health&#34;)
  *             .requestPath(&#34;/health_check&#34;)
  *             .build());
  * 
  *         var stagingService = new BackendService(&#34;stagingService&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;staging-service&#34;)
  *             .portName(&#34;https&#34;)
  *             .protocol(&#34;HTTPS&#34;)
  *             .backends(BackendServiceBackendArgs.builder()

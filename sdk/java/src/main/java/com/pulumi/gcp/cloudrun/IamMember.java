@@ -62,9 +62,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new IamPolicy(&#34;policy&#34;, IamPolicyArgs.builder()        
- *             .location(google_cloud_run_service.default().location())
- *             .project(google_cloud_run_service.default().project())
- *             .service(google_cloud_run_service.default().name())
+ *             .location(default_.location())
+ *             .project(default_.project())
+ *             .service(default_.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -95,9 +95,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new IamBinding(&#34;binding&#34;, IamBindingArgs.builder()        
- *             .location(google_cloud_run_service.default().location())
- *             .project(google_cloud_run_service.default().project())
- *             .service(google_cloud_run_service.default().name())
+ *             .location(default_.location())
+ *             .project(default_.project())
+ *             .service(default_.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -129,9 +129,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new IamMember(&#34;member&#34;, IamMemberArgs.builder()        
- *             .location(google_cloud_run_service.default().location())
- *             .project(google_cloud_run_service.default().project())
- *             .service(google_cloud_run_service.default().name())
+ *             .location(default_.location())
+ *             .project(default_.project())
+ *             .service(default_.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

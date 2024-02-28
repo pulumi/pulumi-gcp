@@ -31,48 +31,48 @@ namespace Pulumi.Gcp.Monitoring
     /// {
     ///     var http = new Gcp.Monitoring.UptimeCheckConfig("http", new()
     ///     {
-    ///         CheckerType = "STATIC_IP_CHECKERS",
-    ///         ContentMatchers = new[]
-    ///         {
-    ///             new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherArgs
-    ///             {
-    ///                 Content = "\"example\"",
-    ///                 JsonPathMatcher = new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs
-    ///                 {
-    ///                     JsonMatcher = "EXACT_MATCH",
-    ///                     JsonPath = "$.path",
-    ///                 },
-    ///                 Matcher = "MATCHES_JSON_PATH",
-    ///             },
-    ///         },
     ///         DisplayName = "http-uptime-check",
-    ///         HttpCheck = new Gcp.Monitoring.Inputs.UptimeCheckConfigHttpCheckArgs
-    ///         {
-    ///             Body = "Zm9vJTI1M0RiYXI=",
-    ///             ContentType = "USER_PROVIDED",
-    ///             CustomContentType = "application/json",
-    ///             Path = "some-path",
-    ///             PingConfig = new Gcp.Monitoring.Inputs.UptimeCheckConfigHttpCheckPingConfigArgs
-    ///             {
-    ///                 PingsCount = 1,
-    ///             },
-    ///             Port = 8010,
-    ///             RequestMethod = "POST",
-    ///         },
-    ///         MonitoredResource = new Gcp.Monitoring.Inputs.UptimeCheckConfigMonitoredResourceArgs
-    ///         {
-    ///             Labels = 
-    ///             {
-    ///                 { "host", "192.168.1.1" },
-    ///                 { "projectId", "my-project-name" },
-    ///             },
-    ///             Type = "uptime_url",
-    ///         },
     ///         Timeout = "60s",
     ///         UserLabels = 
     ///         {
     ///             { "example-key", "example-value" },
     ///         },
+    ///         HttpCheck = new Gcp.Monitoring.Inputs.UptimeCheckConfigHttpCheckArgs
+    ///         {
+    ///             Path = "some-path",
+    ///             Port = 8010,
+    ///             RequestMethod = "POST",
+    ///             ContentType = "USER_PROVIDED",
+    ///             CustomContentType = "application/json",
+    ///             Body = "Zm9vJTI1M0RiYXI=",
+    ///             PingConfig = new Gcp.Monitoring.Inputs.UptimeCheckConfigHttpCheckPingConfigArgs
+    ///             {
+    ///                 PingsCount = 1,
+    ///             },
+    ///         },
+    ///         MonitoredResource = new Gcp.Monitoring.Inputs.UptimeCheckConfigMonitoredResourceArgs
+    ///         {
+    ///             Type = "uptime_url",
+    ///             Labels = 
+    ///             {
+    ///                 { "project_id", "my-project-name" },
+    ///                 { "host", "192.168.1.1" },
+    ///             },
+    ///         },
+    ///         ContentMatchers = new[]
+    ///         {
+    ///             new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherArgs
+    ///             {
+    ///                 Content = "\"example\"",
+    ///                 Matcher = "MATCHES_JSON_PATH",
+    ///                 JsonPathMatcher = new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs
+    ///                 {
+    ///                     JsonPath = "$.path",
+    ///                     JsonMatcher = "EXACT_MATCH",
+    ///                 },
+    ///             },
+    ///         },
+    ///         CheckerType = "STATIC_IP_CHECKERS",
     ///     });
     /// 
     /// });
@@ -87,25 +87,17 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var statusCode = new Gcp.Monitoring.UptimeCheckConfig("statusCode", new()
+    ///     var statusCode = new Gcp.Monitoring.UptimeCheckConfig("status_code", new()
     ///     {
-    ///         CheckerType = "STATIC_IP_CHECKERS",
-    ///         ContentMatchers = new[]
-    ///         {
-    ///             new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherArgs
-    ///             {
-    ///                 Content = "\"example\"",
-    ///                 JsonPathMatcher = new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs
-    ///                 {
-    ///                     JsonMatcher = "EXACT_MATCH",
-    ///                     JsonPath = "$.path",
-    ///                 },
-    ///                 Matcher = "MATCHES_JSON_PATH",
-    ///             },
-    ///         },
     ///         DisplayName = "http-uptime-check",
+    ///         Timeout = "60s",
     ///         HttpCheck = new Gcp.Monitoring.Inputs.UptimeCheckConfigHttpCheckArgs
     ///         {
+    ///             Path = "some-path",
+    ///             Port = 8010,
+    ///             RequestMethod = "POST",
+    ///             ContentType = "URL_ENCODED",
+    ///             Body = "Zm9vJTI1M0RiYXI=",
     ///             AcceptedResponseStatusCodes = new[]
     ///             {
     ///                 new Gcp.Monitoring.Inputs.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs
@@ -121,22 +113,30 @@ namespace Pulumi.Gcp.Monitoring
     ///                     StatusValue = 302,
     ///                 },
     ///             },
-    ///             Body = "Zm9vJTI1M0RiYXI=",
-    ///             ContentType = "URL_ENCODED",
-    ///             Path = "some-path",
-    ///             Port = 8010,
-    ///             RequestMethod = "POST",
     ///         },
     ///         MonitoredResource = new Gcp.Monitoring.Inputs.UptimeCheckConfigMonitoredResourceArgs
     ///         {
+    ///             Type = "uptime_url",
     ///             Labels = 
     ///             {
+    ///                 { "project_id", "my-project-name" },
     ///                 { "host", "192.168.1.1" },
-    ///                 { "projectId", "my-project-name" },
     ///             },
-    ///             Type = "uptime_url",
     ///         },
-    ///         Timeout = "60s",
+    ///         ContentMatchers = new[]
+    ///         {
+    ///             new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherArgs
+    ///             {
+    ///                 Content = "\"example\"",
+    ///                 Matcher = "MATCHES_JSON_PATH",
+    ///                 JsonPathMatcher = new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs
+    ///                 {
+    ///                     JsonPath = "$.path",
+    ///                     JsonMatcher = "EXACT_MATCH",
+    ///                 },
+    ///             },
+    ///         },
+    ///         CheckerType = "STATIC_IP_CHECKERS",
     ///     });
     /// 
     /// });
@@ -153,20 +153,8 @@ namespace Pulumi.Gcp.Monitoring
     /// {
     ///     var https = new Gcp.Monitoring.UptimeCheckConfig("https", new()
     ///     {
-    ///         ContentMatchers = new[]
-    ///         {
-    ///             new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherArgs
-    ///             {
-    ///                 Content = "example",
-    ///                 JsonPathMatcher = new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs
-    ///                 {
-    ///                     JsonMatcher = "REGEX_MATCH",
-    ///                     JsonPath = "$.path",
-    ///                 },
-    ///                 Matcher = "MATCHES_JSON_PATH",
-    ///             },
-    ///         },
     ///         DisplayName = "https-uptime-check",
+    ///         Timeout = "60s",
     ///         HttpCheck = new Gcp.Monitoring.Inputs.UptimeCheckConfigHttpCheckArgs
     ///         {
     ///             Path = "/some-path",
@@ -176,14 +164,26 @@ namespace Pulumi.Gcp.Monitoring
     ///         },
     ///         MonitoredResource = new Gcp.Monitoring.Inputs.UptimeCheckConfigMonitoredResourceArgs
     ///         {
+    ///             Type = "uptime_url",
     ///             Labels = 
     ///             {
+    ///                 { "project_id", "my-project-name" },
     ///                 { "host", "192.168.1.1" },
-    ///                 { "projectId", "my-project-name" },
     ///             },
-    ///             Type = "uptime_url",
     ///         },
-    ///         Timeout = "60s",
+    ///         ContentMatchers = new[]
+    ///         {
+    ///             new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherArgs
+    ///             {
+    ///                 Content = "example",
+    ///                 Matcher = "MATCHES_JSON_PATH",
+    ///                 JsonPathMatcher = new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs
+    ///                 {
+    ///                     JsonPath = "$.path",
+    ///                     JsonMatcher = "REGEX_MATCH",
+    ///                 },
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -204,7 +204,7 @@ namespace Pulumi.Gcp.Monitoring
     ///         Filter = "resource.metadata.name=has_substring(\"foo\")",
     ///     });
     /// 
-    ///     var tcpGroup = new Gcp.Monitoring.UptimeCheckConfig("tcpGroup", new()
+    ///     var tcpGroup = new Gcp.Monitoring.UptimeCheckConfig("tcp_group", new()
     ///     {
     ///         DisplayName = "tcp-uptime-check",
     ///         Timeout = "60s",
@@ -237,19 +237,21 @@ namespace Pulumi.Gcp.Monitoring
     /// {
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
+    ///         Name = "my-project-name-gcf-source",
     ///         Location = "US",
     ///         UniformBucketLevelAccess = true,
     ///     });
     /// 
     ///     var @object = new Gcp.Storage.BucketObject("object", new()
     ///     {
+    ///         Name = "function-source.zip",
     ///         Bucket = bucket.Name,
     ///         Source = new FileAsset("synthetic-fn-source.zip"),
     ///     });
     /// 
-    ///     // Add path to the zipped function source code
     ///     var function = new Gcp.CloudFunctionsV2.Function("function", new()
     ///     {
+    ///         Name = "synthetic_function",
     ///         Location = "us-central1",
     ///         BuildConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigArgs
     ///         {
@@ -272,7 +274,7 @@ namespace Pulumi.Gcp.Monitoring
     ///         },
     ///     });
     /// 
-    ///     var syntheticMonitor = new Gcp.Monitoring.UptimeCheckConfig("syntheticMonitor", new()
+    ///     var syntheticMonitor = new Gcp.Monitoring.UptimeCheckConfig("synthetic_monitor", new()
     ///     {
     ///         DisplayName = "synthetic_monitor",
     ///         Timeout = "60s",

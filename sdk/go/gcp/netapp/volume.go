@@ -41,23 +41,25 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+//			_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
 //				Name: "test-network",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultStoragePool, err := netapp.NewStoragePool(ctx, "defaultStoragePool", &netapp.StoragePoolArgs{
+//			defaultStoragePool, err := netapp.NewStoragePool(ctx, "default", &netapp.StoragePoolArgs{
+//				Name:         pulumi.String("test-pool"),
 //				Location:     pulumi.String("us-west2"),
 //				ServiceLevel: pulumi.String("PREMIUM"),
 //				CapacityGib:  pulumi.String("2048"),
-//				Network:      *pulumi.String(defaultNetwork.Id),
+//				Network:      *pulumi.String(_default.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = netapp.NewVolume(ctx, "testVolume", &netapp.VolumeArgs{
+//			_, err = netapp.NewVolume(ctx, "test_volume", &netapp.VolumeArgs{
 //				Location:    pulumi.String("us-west2"),
+//				Name:        pulumi.String("test-volume"),
 //				CapacityGib: pulumi.String("100"),
 //				ShareName:   pulumi.String("test-volume"),
 //				StoragePool: defaultStoragePool.Name,

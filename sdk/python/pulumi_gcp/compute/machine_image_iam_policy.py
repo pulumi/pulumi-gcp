@@ -229,10 +229,9 @@ class MachineImageIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.compute.MachineImageIamPolicy("policy",
-            project=google_compute_machine_image["image"]["project"],
-            machine_image=google_compute_machine_image["image"]["name"],
-            policy_data=admin.policy_data,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            project=image["project"],
+            machine_image=image["name"],
+            policy_data=admin.policy_data)
         ```
 
         With IAM Conditions:
@@ -251,10 +250,9 @@ class MachineImageIamPolicy(pulumi.CustomResource):
             ),
         )])
         policy = gcp.compute.MachineImageIamPolicy("policy",
-            project=google_compute_machine_image["image"]["project"],
-            machine_image=google_compute_machine_image["image"]["name"],
-            policy_data=admin.policy_data,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            project=image["project"],
+            machine_image=image["name"],
+            policy_data=admin.policy_data)
         ```
         ## google\\_compute\\_machine\\_image\\_iam\\_binding
 
@@ -263,11 +261,10 @@ class MachineImageIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.compute.MachineImageIamBinding("binding",
-            project=google_compute_machine_image["image"]["project"],
-            machine_image=google_compute_machine_image["image"]["name"],
+            project=image["project"],
+            machine_image=image["name"],
             role="roles/compute.admin",
-            members=["user:jane@example.com"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            members=["user:jane@example.com"])
         ```
 
         With IAM Conditions:
@@ -277,16 +274,15 @@ class MachineImageIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.compute.MachineImageIamBinding("binding",
-            project=google_compute_machine_image["image"]["project"],
-            machine_image=google_compute_machine_image["image"]["name"],
+            project=image["project"],
+            machine_image=image["name"],
             role="roles/compute.admin",
             members=["user:jane@example.com"],
             condition=gcp.compute.MachineImageIamBindingConditionArgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ## google\\_compute\\_machine\\_image\\_iam\\_member
 
@@ -295,11 +291,10 @@ class MachineImageIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.compute.MachineImageIamMember("member",
-            project=google_compute_machine_image["image"]["project"],
-            machine_image=google_compute_machine_image["image"]["name"],
+            project=image["project"],
+            machine_image=image["name"],
             role="roles/compute.admin",
-            member="user:jane@example.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            member="user:jane@example.com")
         ```
 
         With IAM Conditions:
@@ -309,16 +304,15 @@ class MachineImageIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.compute.MachineImageIamMember("member",
-            project=google_compute_machine_image["image"]["project"],
-            machine_image=google_compute_machine_image["image"]["name"],
+            project=image["project"],
+            machine_image=image["name"],
             role="roles/compute.admin",
             member="user:jane@example.com",
             condition=gcp.compute.MachineImageIamMemberConditionArgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import
@@ -410,10 +404,9 @@ class MachineImageIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.compute.MachineImageIamPolicy("policy",
-            project=google_compute_machine_image["image"]["project"],
-            machine_image=google_compute_machine_image["image"]["name"],
-            policy_data=admin.policy_data,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            project=image["project"],
+            machine_image=image["name"],
+            policy_data=admin.policy_data)
         ```
 
         With IAM Conditions:
@@ -432,10 +425,9 @@ class MachineImageIamPolicy(pulumi.CustomResource):
             ),
         )])
         policy = gcp.compute.MachineImageIamPolicy("policy",
-            project=google_compute_machine_image["image"]["project"],
-            machine_image=google_compute_machine_image["image"]["name"],
-            policy_data=admin.policy_data,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            project=image["project"],
+            machine_image=image["name"],
+            policy_data=admin.policy_data)
         ```
         ## google\\_compute\\_machine\\_image\\_iam\\_binding
 
@@ -444,11 +436,10 @@ class MachineImageIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.compute.MachineImageIamBinding("binding",
-            project=google_compute_machine_image["image"]["project"],
-            machine_image=google_compute_machine_image["image"]["name"],
+            project=image["project"],
+            machine_image=image["name"],
             role="roles/compute.admin",
-            members=["user:jane@example.com"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            members=["user:jane@example.com"])
         ```
 
         With IAM Conditions:
@@ -458,16 +449,15 @@ class MachineImageIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.compute.MachineImageIamBinding("binding",
-            project=google_compute_machine_image["image"]["project"],
-            machine_image=google_compute_machine_image["image"]["name"],
+            project=image["project"],
+            machine_image=image["name"],
             role="roles/compute.admin",
             members=["user:jane@example.com"],
             condition=gcp.compute.MachineImageIamBindingConditionArgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ## google\\_compute\\_machine\\_image\\_iam\\_member
 
@@ -476,11 +466,10 @@ class MachineImageIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.compute.MachineImageIamMember("member",
-            project=google_compute_machine_image["image"]["project"],
-            machine_image=google_compute_machine_image["image"]["name"],
+            project=image["project"],
+            machine_image=image["name"],
             role="roles/compute.admin",
-            member="user:jane@example.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            member="user:jane@example.com")
         ```
 
         With IAM Conditions:
@@ -490,16 +479,15 @@ class MachineImageIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.compute.MachineImageIamMember("member",
-            project=google_compute_machine_image["image"]["project"],
-            machine_image=google_compute_machine_image["image"]["name"],
+            project=image["project"],
+            machine_image=image["name"],
             role="roles/compute.admin",
             member="user:jane@example.com",
             condition=gcp.compute.MachineImageIamMemberConditionArgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import

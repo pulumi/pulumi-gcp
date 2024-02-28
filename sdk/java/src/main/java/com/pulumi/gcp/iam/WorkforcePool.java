@@ -53,9 +53,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new WorkforcePool(&#34;example&#34;, WorkforcePoolArgs.builder()        
- *             .location(&#34;global&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
  *             .workforcePoolId(&#34;example-pool&#34;)
+ *             .parent(&#34;organizations/123456789&#34;)
+ *             .location(&#34;global&#34;)
  *             .build());
  * 
  *     }
@@ -85,19 +85,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new WorkforcePool(&#34;example&#34;, WorkforcePoolArgs.builder()        
+ *             .workforcePoolId(&#34;example-pool&#34;)
+ *             .parent(&#34;organizations/123456789&#34;)
+ *             .location(&#34;global&#34;)
+ *             .displayName(&#34;Display name&#34;)
+ *             .description(&#34;A sample workforce pool.&#34;)
+ *             .disabled(false)
+ *             .sessionDuration(&#34;7200s&#34;)
  *             .accessRestrictions(WorkforcePoolAccessRestrictionsArgs.builder()
  *                 .allowedServices(WorkforcePoolAccessRestrictionsAllowedServiceArgs.builder()
  *                     .domain(&#34;backstory.chronicle.security&#34;)
  *                     .build())
  *                 .disableProgrammaticSignin(false)
  *                 .build())
- *             .description(&#34;A sample workforce pool.&#34;)
- *             .disabled(false)
- *             .displayName(&#34;Display name&#34;)
- *             .location(&#34;global&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
- *             .sessionDuration(&#34;7200s&#34;)
- *             .workforcePoolId(&#34;example-pool&#34;)
  *             .build());
  * 
  *     }

@@ -29,13 +29,15 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var producerNet = new Gcp.Compute.Network("producerNet", new()
+    ///     var producerNet = new Gcp.Compute.Network("producer_net", new()
     ///     {
+    ///         Name = "producer-net",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     var producerSubnet = new Gcp.Compute.Subnetwork("producerSubnet", new()
+    ///     var producerSubnet = new Gcp.Compute.Subnetwork("producer_subnet", new()
     ///     {
+    ///         Name = "producer-subnet",
     ///         IpCidrRange = "10.0.0.0/16",
     ///         Region = "us-central1",
     ///         Network = producerNet.Id,
@@ -43,6 +45,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
     ///     {
+    ///         Name = "my-network-connectivity-policy",
     ///         Location = "us-central1",
     ///         ServiceClass = "my-basic-service-class",
     ///         Description = "my basic service connection policy",

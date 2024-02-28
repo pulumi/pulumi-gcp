@@ -25,14 +25,26 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultAccount = new Gcp.ServiceAccount.Account("defaultAccount", new()
+    ///     var @default = new Gcp.ServiceAccount.Account("default", new()
     ///     {
     ///         AccountId = "my-custom-sa",
     ///         DisplayName = "Custom SA for VM Instance",
     ///     });
     /// 
-    ///     var defaultInstance = new Gcp.Compute.Instance("defaultInstance", new()
+    ///     var defaultInstance = new Gcp.Compute.Instance("default", new()
     ///     {
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     null,
+    ///                 },
+    ///                 Network = "default",
+    ///             },
+    ///         },
+    ///         Name = "my-instance",
     ///         MachineType = "n2-standard-2",
     ///         Zone = "us-central1-a",
     ///         Tags = new[]
@@ -58,17 +70,6 @@ namespace Pulumi.Gcp.Compute
     ///                 Interface = "NVME",
     ///             },
     ///         },
-    ///         NetworkInterfaces = new[]
-    ///         {
-    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
-    ///             {
-    ///                 Network = "default",
-    ///                 AccessConfigs = new[]
-    ///                 {
-    ///                     null,
-    ///                 },
-    ///             },
-    ///         },
     ///         Metadata = 
     ///         {
     ///             { "foo", "bar" },
@@ -76,7 +77,7 @@ namespace Pulumi.Gcp.Compute
     ///         MetadataStartupScript = "echo hi &gt; /test.txt",
     ///         ServiceAccount = new Gcp.Compute.Inputs.InstanceServiceAccountArgs
     ///         {
-    ///             Email = defaultAccount.Email,
+    ///             Email = @default.Email,
     ///             Scopes = new[]
     ///             {
     ///                 "cloud-platform",

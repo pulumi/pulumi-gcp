@@ -32,7 +32,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.compute.SnapshotIamPolicy("policy", {
- *     project: google_compute_snapshot.snapshot.project,
+ *     project: snapshot.project,
+ *     name: snapshot.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -44,7 +45,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.compute.SnapshotIamBinding("binding", {
- *     project: google_compute_snapshot.snapshot.project,
+ *     project: snapshot.project,
+ *     name: snapshot.name,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
  * });
@@ -57,7 +59,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.compute.SnapshotIamMember("member", {
- *     project: google_compute_snapshot.snapshot.project,
+ *     project: snapshot.project,
+ *     name: snapshot.name,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
  * });

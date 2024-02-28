@@ -20,6 +20,112 @@ import (
 // [API](https://cloud.google.com/compute/docs/reference/latest/instanceTemplates).
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := serviceaccount.NewAccount(ctx, "default", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("service-account-id"),
+//				DisplayName: pulumi.String("Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+//				Family:  pulumi.StringRef("debian-11"),
+//				Project: pulumi.StringRef("debian-cloud"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			foobar, err := compute.NewDisk(ctx, "foobar", &compute.DiskArgs{
+//				Name:  pulumi.String("existing-disk"),
+//				Image: *pulumi.String(myImage.SelfLink),
+//				Size:  pulumi.Int(10),
+//				Type:  pulumi.String("pd-ssd"),
+//				Zone:  pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			dailyBackup, err := compute.NewResourcePolicy(ctx, "daily_backup", &compute.ResourcePolicyArgs{
+//				Name:   pulumi.String("every-day-4am"),
+//				Region: pulumi.String("us-central1"),
+//				SnapshotSchedulePolicy: &compute.ResourcePolicySnapshotSchedulePolicyArgs{
+//					Schedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs{
+//						DailySchedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs{
+//							DaysInCycle: pulumi.Int(1),
+//							StartTime:   pulumi.String("04:00"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstanceTemplate(ctx, "default", &compute.InstanceTemplateArgs{
+//				Name:        pulumi.String("appserver-template"),
+//				Description: pulumi.String("This template is used to create app server instances."),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo"),
+//					pulumi.String("bar"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"environment": pulumi.String("dev"),
+//				},
+//				InstanceDescription: pulumi.String("description assigned to instances"),
+//				MachineType:         pulumi.String("e2-medium"),
+//				CanIpForward:        pulumi.Bool(false),
+//				Scheduling: &compute.InstanceTemplateSchedulingArgs{
+//					AutomaticRestart:  pulumi.Bool(true),
+//					OnHostMaintenance: pulumi.String("MIGRATE"),
+//				},
+//				Disks: compute.InstanceTemplateDiskArray{
+//					&compute.InstanceTemplateDiskArgs{
+//						SourceImage:      pulumi.String("debian-cloud/debian-11"),
+//						AutoDelete:       pulumi.Bool(true),
+//						Boot:             pulumi.Bool(true),
+//						ResourcePolicies: dailyBackup.ID(),
+//					},
+//					&compute.InstanceTemplateDiskArgs{
+//						Source:     foobar.Name,
+//						AutoDelete: pulumi.Bool(false),
+//						Boot:       pulumi.Bool(false),
+//					},
+//				},
+//				NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
+//					&compute.InstanceTemplateNetworkInterfaceArgs{
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//				Metadata: pulumi.Map{
+//					"foo": pulumi.Any("bar"),
+//				},
+//				ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{
+//					Email: _default.Email,
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("cloud-platform"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Automatic Envoy Deployment
 //
 // ```go
@@ -46,6 +152,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewInstanceTemplate(ctx, "foobar", &compute.InstanceTemplateArgs{
+//				Name:         pulumi.String("appserver-template"),
 //				MachineType:  pulumi.String("e2-medium"),
 //				CanIpForward: pulumi.Bool(false),
 //				Tags: pulumi.StringArray{
@@ -159,7 +266,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewInstanceTemplate(ctx, "instanceTemplate", &compute.InstanceTemplateArgs{
+//			_, err = compute.NewInstanceTemplate(ctx, "instance_template", &compute.InstanceTemplateArgs{
 //				NamePrefix:  pulumi.String("instance-template-"),
 //				MachineType: pulumi.String("e2-medium"),
 //				Region:      pulumi.String("us-central1"),
@@ -194,15 +301,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewInstanceTemplate(ctx, "instanceTemplate", &compute.InstanceTemplateArgs{
+//			_, err := compute.NewInstanceTemplate(ctx, "instance_template", &compute.InstanceTemplateArgs{
+//				NamePrefix:  pulumi.String("instance-template-"),
+//				MachineType: pulumi.String("e2-medium"),
+//				Region:      pulumi.String("us-central1"),
 //				Disks: compute.InstanceTemplateDiskArray{
 //					&compute.InstanceTemplateDiskArgs{
 //						SourceImage: pulumi.String("debian-cloud/debian-11"),
 //					},
 //				},
-//				MachineType: pulumi.String("e2-medium"),
-//				NamePrefix:  pulumi.String("instance-template-"),
-//				Region:      pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err

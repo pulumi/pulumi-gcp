@@ -55,7 +55,7 @@ import (
 //				return err
 //			}
 //			_, err = datacatalog.NewEntryGroupIamPolicy(ctx, "policy", &datacatalog.EntryGroupIamPolicyArgs{
-//				EntryGroup: pulumi.Any(google_data_catalog_entry_group.Basic_entry_group.Name),
+//				EntryGroup: pulumi.Any(basicEntryGroup.Name),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -82,7 +82,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := datacatalog.NewEntryGroupIamBinding(ctx, "binding", &datacatalog.EntryGroupIamBindingArgs{
-//				EntryGroup: pulumi.Any(google_data_catalog_entry_group.Basic_entry_group.Name),
+//				EntryGroup: pulumi.Any(basicEntryGroup.Name),
 //				Role:       pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -112,7 +112,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := datacatalog.NewEntryGroupIamMember(ctx, "member", &datacatalog.EntryGroupIamMemberArgs{
-//				EntryGroup: pulumi.Any(google_data_catalog_entry_group.Basic_entry_group.Name),
+//				EntryGroup: pulumi.Any(basicEntryGroup.Name),
 //				Role:       pulumi.String("roles/viewer"),
 //				Member:     pulumi.String("user:jane@example.com"),
 //			})

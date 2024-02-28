@@ -29,6 +29,7 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
+    ///         Name = "vertex-ai-index-test",
     ///         Location = "us-central1",
     ///         UniformBucketLevelAccess = true,
     ///     });
@@ -37,6 +38,7 @@ namespace Pulumi.Gcp.Vertex
     ///     // https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
     ///     var data = new Gcp.Storage.BucketObject("data", new()
     ///     {
+    ///         Name = "contents/data.json",
     ///         Bucket = bucket.Name,
     ///         Content = @"{""id"": ""42"", ""embedding"": [0.5, 1.0], ""restricts"": [{""namespace"": ""class"", ""allow"": [""cat"", ""pet""]},{""namespace"": ""category"", ""allow"": [""feline""]}]}
     /// {""id"": ""43"", ""embedding"": [0.6, 1.0], ""restricts"": [{""namespace"": ""class"", ""allow"": [""dog"", ""pet""]},{""namespace"": ""category"", ""allow"": [""canine""]}]}
@@ -88,6 +90,7 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
+    ///         Name = "vertex-ai-index-test",
     ///         Location = "us-central1",
     ///         UniformBucketLevelAccess = true,
     ///     });
@@ -96,6 +99,7 @@ namespace Pulumi.Gcp.Vertex
     ///     // https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
     ///     var data = new Gcp.Storage.BucketObject("data", new()
     ///     {
+    ///         Name = "contents/data.json",
     ///         Bucket = bucket.Name,
     ///         Content = @"{""id"": ""42"", ""embedding"": [0.5, 1.0], ""restricts"": [{""namespace"": ""class"", ""allow"": [""cat"", ""pet""]},{""namespace"": ""category"", ""allow"": [""feline""]}]}
     /// {""id"": ""43"", ""embedding"": [0.6, 1.0], ""restricts"": [{""namespace"": ""class"", ""allow"": [""dog"", ""pet""]},{""namespace"": ""category"", ""allow"": [""canine""]}]}

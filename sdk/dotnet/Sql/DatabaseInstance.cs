@@ -35,6 +35,7 @@ namespace Pulumi.Gcp.Sql
     /// {
     ///     var main = new Gcp.Sql.DatabaseInstance("main", new()
     ///     {
+    ///         Name = "main-instance",
     ///         DatabaseVersion = "POSTGRES_15",
     ///         Region = "us-central1",
     ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
@@ -57,25 +58,21 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var privateNetwork = new Gcp.Compute.Network("privateNetwork", new()
+    ///     var privateNetwork = new Gcp.Compute.Network("private_network", new()
     ///     {
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Name = "private-network",
     ///     });
     /// 
-    ///     var privateIpAddress = new Gcp.Compute.GlobalAddress("privateIpAddress", new()
+    ///     var privateIpAddress = new Gcp.Compute.GlobalAddress("private_ip_address", new()
     ///     {
+    ///         Name = "private-ip-address",
     ///         Purpose = "VPC_PEERING",
     ///         AddressType = "INTERNAL",
     ///         PrefixLength = 16,
     ///         Network = privateNetwork.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var privateVpcConnection = new Gcp.ServiceNetworking.Connection("privateVpcConnection", new()
+    ///     var privateVpcConnection = new Gcp.ServiceNetworking.Connection("private_vpc_connection", new()
     ///     {
     ///         Network = privateNetwork.Id,
     ///         Service = "servicenetworking.googleapis.com",
@@ -83,18 +80,16 @@ namespace Pulumi.Gcp.Sql
     ///         {
     ///             privateIpAddress.Name,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var dbNameSuffix = new Random.RandomId("dbNameSuffix", new()
+    ///     var dbNameSuffix = new Random.RandomId("db_name_suffix", new()
     ///     {
     ///         ByteLength = 4,
     ///     });
     /// 
     ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
     ///     {
+    ///         Name = dbNameSuffix.Hex.Apply(hex =&gt; $"private-instance-{hex}"),
     ///         Region = "us-central1",
     ///         DatabaseVersion = "MYSQL_5_7",
     ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
@@ -106,13 +101,6 @@ namespace Pulumi.Gcp.Sql
     ///                 PrivateNetwork = privateNetwork.Id,
     ///                 EnablePrivatePathForGoogleCloudServices = true,
     ///             },
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///         DependsOn = new[]
-    ///         {
-    ///             privateVpcConnection,
     ///         },
     ///     });
     /// 
@@ -130,15 +118,59 @@ namespace Pulumi.Gcp.Sql
     /// {
     ///     var main = new Gcp.Sql.DatabaseInstance("main", new()
     ///     {
+    ///         Name = "enterprise-plus-main-instance",
     ///         DatabaseVersion = "MYSQL_8_0_31",
     ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
     ///         {
+    ///             Tier = "db-perf-optimized-N-2",
+    ///             Edition = "ENTERPRISE_PLUS",
     ///             DataCacheConfig = new Gcp.Sql.Inputs.DatabaseInstanceSettingsDataCacheConfigArgs
     ///             {
     ///                 DataCacheEnabled = true,
     ///             },
-    ///             Edition = "ENTERPRISE_PLUS",
-    ///             Tier = "db-perf-optimized-N-2",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloud SQL Instance with PSC connectivity
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var main = new Gcp.Sql.DatabaseInstance("main", new()
+    ///     {
+    ///         Name = "psc-enabled-main-instance",
+    ///         DatabaseVersion = "MYSQL_8_0",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-f1-micro",
+    ///             IpConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationArgs
+    ///             {
+    ///                 PscConfigs = new[]
+    ///                 {
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationPscConfigArgs
+    ///                     {
+    ///                         PscEnabled = true,
+    ///                         AllowedConsumerProjects = new[]
+    ///                         {
+    ///                             "allowed-consumer-project-name",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Ipv4Enabled = false,
+    ///             },
+    ///             BackupConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsBackupConfigurationArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 BinaryLogEnabled = true,
+    ///             },
+    ///             AvailabilityType = "REGIONAL",
     ///         },
     ///     });
     /// 

@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := pubsub.GetSubscriptionIamPolicy(ctx, &pubsub.GetSubscriptionIamPolicyArgs{
-//				Subscription: google_pubsub_subscription.Subscription.Id,
+//				Subscription: subscription.Id,
 //			}, nil)
 //			if err != nil {
 //				return err

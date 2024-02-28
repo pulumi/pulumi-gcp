@@ -38,6 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.Subnetwork;
  * import com.pulumi.gcp.compute.SubnetworkArgs;
  * import com.pulumi.gcp.compute.Router;
@@ -59,15 +60,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var net = new Network(&#34;net&#34;);
+ *         var net = new Network(&#34;net&#34;, NetworkArgs.builder()        
+ *             .name(&#34;my-network&#34;)
+ *             .build());
  * 
  *         var subnet = new Subnetwork(&#34;subnet&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;my-subnetwork&#34;)
  *             .network(net.id())
  *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .build());
  * 
  *         var router = new Router(&#34;router&#34;, RouterArgs.builder()        
+ *             .name(&#34;my-router&#34;)
  *             .region(subnet.region())
  *             .network(net.id())
  *             .bgp(RouterBgpArgs.builder()
@@ -76,6 +81,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var nat = new RouterNat(&#34;nat&#34;, RouterNatArgs.builder()        
+ *             .name(&#34;my-router-nat&#34;)
  *             .router(router.name())
  *             .region(router.region())
  *             .natIpAllocateOption(&#34;AUTO_ONLY&#34;)
@@ -97,6 +103,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.Subnetwork;
  * import com.pulumi.gcp.compute.SubnetworkArgs;
  * import com.pulumi.gcp.compute.Router;
@@ -120,27 +127,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var net = new Network(&#34;net&#34;);
+ *         var net = new Network(&#34;net&#34;, NetworkArgs.builder()        
+ *             .name(&#34;my-network&#34;)
+ *             .build());
  * 
  *         var subnet = new Subnetwork(&#34;subnet&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;my-subnetwork&#34;)
  *             .network(net.id())
  *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .build());
  * 
  *         var router = new Router(&#34;router&#34;, RouterArgs.builder()        
+ *             .name(&#34;my-router&#34;)
  *             .region(subnet.region())
  *             .network(net.id())
  *             .build());
  * 
  *         for (var i = 0; i &lt; 2; i++) {
  *             new Address(&#34;address-&#34; + i, AddressArgs.builder()            
+ *                 .name(String.format(&#34;nat-manual-ip-%s&#34;, range.value()))
  *                 .region(subnet.region())
  *                 .build());
  * 
  *         
  * }
  *         var natManual = new RouterNat(&#34;natManual&#34;, RouterNatArgs.builder()        
+ *             .name(&#34;my-router-nat&#34;)
  *             .router(router.name())
  *             .region(router.region())
  *             .natIpAllocateOption(&#34;MANUAL_ONLY&#34;)
@@ -189,33 +202,40 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var net = new Network(&#34;net&#34;, NetworkArgs.builder()        
+ *             .name(&#34;my-network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var subnet = new Subnetwork(&#34;subnet&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;my-subnetwork&#34;)
  *             .network(net.id())
  *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .build());
  * 
  *         var router = new Router(&#34;router&#34;, RouterArgs.builder()        
+ *             .name(&#34;my-router&#34;)
  *             .region(subnet.region())
  *             .network(net.id())
  *             .build());
  * 
  *         var addr1 = new Address(&#34;addr1&#34;, AddressArgs.builder()        
+ *             .name(&#34;nat-address1&#34;)
  *             .region(subnet.region())
  *             .build());
  * 
  *         var addr2 = new Address(&#34;addr2&#34;, AddressArgs.builder()        
+ *             .name(&#34;nat-address2&#34;)
  *             .region(subnet.region())
  *             .build());
  * 
  *         var addr3 = new Address(&#34;addr3&#34;, AddressArgs.builder()        
+ *             .name(&#34;nat-address3&#34;)
  *             .region(subnet.region())
  *             .build());
  * 
  *         var natRules = new RouterNat(&#34;natRules&#34;, RouterNatArgs.builder()        
+ *             .name(&#34;my-router-nat&#34;)
  *             .router(router.name())
  *             .region(router.region())
  *             .natIpAllocateOption(&#34;MANUAL_ONLY&#34;)
@@ -264,7 +284,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.inputs.RouterNatSubnetworkArgs;
  * import com.pulumi.gcp.compute.inputs.RouterNatRuleArgs;
  * import com.pulumi.gcp.compute.inputs.RouterNatRuleActionArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -278,33 +297,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var net = new Network(&#34;net&#34;, NetworkArgs.Empty, CustomResourceOptions.builder()
- *             .provider(google_beta)
+ *         var net = new Network(&#34;net&#34;, NetworkArgs.builder()        
+ *             .name(&#34;my-network&#34;)
  *             .build());
  * 
  *         var subnet = new Subnetwork(&#34;subnet&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;my-subnetwork&#34;)
  *             .network(net.id())
  *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .purpose(&#34;PRIVATE_NAT&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var router = new Router(&#34;router&#34;, RouterArgs.builder()        
+ *             .name(&#34;my-router&#34;)
  *             .region(subnet.region())
  *             .network(net.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var hub = new Hub(&#34;hub&#34;, HubArgs.builder()        
+ *             .name(&#34;my-hub&#34;)
  *             .description(&#34;vpc hub for inter vpc nat&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var spoke = new Spoke(&#34;spoke&#34;, SpokeArgs.builder()        
+ *             .name(&#34;my-spoke&#34;)
  *             .location(&#34;global&#34;)
  *             .description(&#34;vpc spoke for inter vpc nat&#34;)
  *             .hub(hub.id())
@@ -314,11 +331,10 @@ import javax.annotation.Nullable;
  *                     &#34;10.10.0.0/16&#34;)
  *                 .uri(net.selfLink())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var natType = new RouterNat(&#34;natType&#34;, RouterNatArgs.builder()        
+ *             .name(&#34;my-router-nat&#34;)
  *             .router(router.name())
  *             .region(router.region())
  *             .sourceSubnetworkIpRangesToNat(&#34;LIST_OF_SUBNETWORKS&#34;)
@@ -338,9 +354,7 @@ import javax.annotation.Nullable;
  *                     .sourceNatActiveRanges(subnet.selfLink())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

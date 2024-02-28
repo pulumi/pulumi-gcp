@@ -23,17 +23,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultProject = new gcp.organizations.Project("defaultProject", {
+ * const _default = new gcp.organizations.Project("default", {
+ *     projectId: "my-project",
+ *     name: "my-project",
  *     orgId: "123456789",
  *     labels: {
  *         firebase: "enabled",
  *     },
- * }, {
- *     provider: google_beta,
  * });
- * const defaultFirebase_projectProject = new gcp.firebase.Project("defaultFirebase/projectProject", {project: defaultProject.projectId}, {
- *     provider: google_beta,
- * });
+ * const defaultProject = new gcp.firebase.Project("default", {project: _default.projectId});
  * ```
  *
  * ## Import

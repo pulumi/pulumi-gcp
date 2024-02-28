@@ -35,20 +35,23 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("network-1"),
 //				RoutingMode:           pulumi.String("GLOBAL"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			haGateway, err := compute.NewHaVpnGateway(ctx, "haGateway", &compute.HaVpnGatewayArgs{
+//			haGateway, err := compute.NewHaVpnGateway(ctx, "ha_gateway", &compute.HaVpnGatewayArgs{
 //				Region:  pulumi.String("us-central1"),
+//				Name:    pulumi.String("ha-vpn"),
 //				Network: network.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			externalGateway, err := compute.NewExternalVpnGateway(ctx, "externalGateway", &compute.ExternalVpnGatewayArgs{
+//			externalGateway, err := compute.NewExternalVpnGateway(ctx, "external_gateway", &compute.ExternalVpnGatewayArgs{
+//				Name:           pulumi.String("external-gateway"),
 //				RedundancyType: pulumi.String("SINGLE_IP_INTERNALLY_REDUNDANT"),
 //				Description:    pulumi.String("An externally managed VPN gateway"),
 //				Interfaces: compute.ExternalVpnGatewayInterfaceArray{
@@ -61,7 +64,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewSubnetwork(ctx, "networkSubnet1", &compute.SubnetworkArgs{
+//			_, err = compute.NewSubnetwork(ctx, "network_subnet1", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("ha-vpn-subnet-1"),
 //				IpCidrRange: pulumi.String("10.0.1.0/24"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     network.ID(),
@@ -69,7 +73,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewSubnetwork(ctx, "networkSubnet2", &compute.SubnetworkArgs{
+//			_, err = compute.NewSubnetwork(ctx, "network_subnet2", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("ha-vpn-subnet-2"),
 //				IpCidrRange: pulumi.String("10.0.2.0/24"),
 //				Region:      pulumi.String("us-west1"),
 //				Network:     network.ID(),
@@ -78,6 +83,7 @@ import (
 //				return err
 //			}
 //			router1, err := compute.NewRouter(ctx, "router1", &compute.RouterArgs{
+//				Name:    pulumi.String("ha-vpn-router1"),
 //				Network: network.Name,
 //				Bgp: &compute.RouterBgpArgs{
 //					Asn: pulumi.Int(64514),
@@ -87,6 +93,7 @@ import (
 //				return err
 //			}
 //			tunnel1, err := compute.NewVPNTunnel(ctx, "tunnel1", &compute.VPNTunnelArgs{
+//				Name:                         pulumi.String("ha-vpn-tunnel1"),
 //				Region:                       pulumi.String("us-central1"),
 //				VpnGateway:                   haGateway.ID(),
 //				PeerExternalGateway:          externalGateway.ID(),
@@ -99,6 +106,7 @@ import (
 //				return err
 //			}
 //			tunnel2, err := compute.NewVPNTunnel(ctx, "tunnel2", &compute.VPNTunnelArgs{
+//				Name:                         pulumi.String("ha-vpn-tunnel2"),
 //				Region:                       pulumi.String("us-central1"),
 //				VpnGateway:                   haGateway.ID(),
 //				PeerExternalGateway:          externalGateway.ID(),
@@ -112,7 +120,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			router1Interface1, err := compute.NewRouterInterface(ctx, "router1Interface1", &compute.RouterInterfaceArgs{
+//			router1Interface1, err := compute.NewRouterInterface(ctx, "router1_interface1", &compute.RouterInterfaceArgs{
+//				Name:      pulumi.String("router1-interface1"),
 //				Router:    router1.Name,
 //				Region:    pulumi.String("us-central1"),
 //				IpRange:   pulumi.String("169.254.0.1/30"),
@@ -121,7 +130,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewRouterPeer(ctx, "router1Peer1", &compute.RouterPeerArgs{
+//			_, err = compute.NewRouterPeer(ctx, "router1_peer1", &compute.RouterPeerArgs{
+//				Name:                    pulumi.String("router1-peer1"),
 //				Router:                  router1.Name,
 //				Region:                  pulumi.String("us-central1"),
 //				PeerIpAddress:           pulumi.String("169.254.0.2"),
@@ -132,7 +142,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			router1Interface2, err := compute.NewRouterInterface(ctx, "router1Interface2", &compute.RouterInterfaceArgs{
+//			router1Interface2, err := compute.NewRouterInterface(ctx, "router1_interface2", &compute.RouterInterfaceArgs{
+//				Name:      pulumi.String("router1-interface2"),
 //				Router:    router1.Name,
 //				Region:    pulumi.String("us-central1"),
 //				IpRange:   pulumi.String("169.254.1.1/30"),
@@ -141,7 +152,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewRouterPeer(ctx, "router1Peer2", &compute.RouterPeerArgs{
+//			_, err = compute.NewRouterPeer(ctx, "router1_peer2", &compute.RouterPeerArgs{
+//				Name:                    pulumi.String("router1-peer2"),
 //				Router:                  router1.Name,
 //				Region:                  pulumi.String("us-central1"),
 //				PeerIpAddress:           pulumi.String("169.254.1.2"),

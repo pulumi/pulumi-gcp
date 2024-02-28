@@ -282,8 +282,8 @@ class JobIAMBinding(pulumi.CustomResource):
 
         editor = gcp.dataproc.JobIAMBinding("editor",
             job_id="your-dataproc-job",
-            members=["user:jane@example.com"],
-            role="roles/editor")
+            role="roles/editor",
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_dataproc\\_job\\_iam\\_member
@@ -294,8 +294,8 @@ class JobIAMBinding(pulumi.CustomResource):
 
         editor = gcp.dataproc.JobIAMMember("editor",
             job_id="your-dataproc-job",
-            member="user:jane@example.com",
-            role="roles/editor")
+            role="roles/editor",
+            member="user:jane@example.com")
         ```
 
         ## Import
@@ -378,8 +378,8 @@ class JobIAMBinding(pulumi.CustomResource):
 
         editor = gcp.dataproc.JobIAMBinding("editor",
             job_id="your-dataproc-job",
-            members=["user:jane@example.com"],
-            role="roles/editor")
+            role="roles/editor",
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_dataproc\\_job\\_iam\\_member
@@ -390,8 +390,8 @@ class JobIAMBinding(pulumi.CustomResource):
 
         editor = gcp.dataproc.JobIAMMember("editor",
             job_id="your-dataproc-job",
-            member="user:jane@example.com",
-            role="roles/editor")
+            role="roles/editor",
+            member="user:jane@example.com")
         ```
 
         ## Import

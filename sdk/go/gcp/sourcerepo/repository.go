@@ -34,7 +34,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sourcerepo.NewRepository(ctx, "my-repo", nil)
+//			_, err := sourcerepo.NewRepository(ctx, "my-repo", &sourcerepo.RepositoryArgs{
+//				Name: pulumi.String("my/repository"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -59,18 +61,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			testAccount, err := serviceaccount.NewAccount(ctx, "testAccount", &serviceaccount.AccountArgs{
+//			testAccount, err := serviceaccount.NewAccount(ctx, "test_account", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("my-account"),
 //				DisplayName: pulumi.String("Test Service Account"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			topic, err := pubsub.NewTopic(ctx, "topic", nil)
+//			topic, err := pubsub.NewTopic(ctx, "topic", &pubsub.TopicArgs{
+//				Name: pulumi.String("my-topic"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = sourcerepo.NewRepository(ctx, "my-repo", &sourcerepo.RepositoryArgs{
+//				Name: pulumi.String("my-repository"),
 //				PubsubConfigs: sourcerepo.RepositoryPubsubConfigArray{
 //					&sourcerepo.RepositoryPubsubConfigArgs{
 //						Topic:               topic.ID(),

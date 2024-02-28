@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.GlobalAddress;
  * import com.pulumi.gcp.compute.GlobalAddressArgs;
  * import com.pulumi.gcp.servicenetworking.Connection;
@@ -67,9 +68,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var peeringNetwork = new Network(&#34;peeringNetwork&#34;);
+ *         var peeringNetwork = new Network(&#34;peeringNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;test-network&#34;)
+ *             .build());
  * 
  *         var privateIpAlloc = new GlobalAddress(&#34;privateIpAlloc&#34;, GlobalAddressArgs.builder()        
+ *             .name(&#34;test-address&#34;)
  *             .purpose(&#34;VPC_PEERING&#34;)
  *             .addressType(&#34;INTERNAL&#34;)
  *             .prefixLength(16)
@@ -90,6 +94,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var testPool = new StoragePool(&#34;testPool&#34;, StoragePoolArgs.builder()        
+ *             .name(&#34;test-pool&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .serviceLevel(&#34;PREMIUM&#34;)
  *             .capacityGib(&#34;2048&#34;)

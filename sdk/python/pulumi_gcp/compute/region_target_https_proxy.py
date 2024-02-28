@@ -385,6 +385,54 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
         ## Example Usage
+        ### Region Target Https Proxy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        default_region_ssl_certificate = gcp.compute.RegionSslCertificate("default",
+            region="us-central1",
+            name="my-certificate",
+            private_key=std.file(input="path/to/private.key").result,
+            certificate=std.file(input="path/to/certificate.crt").result)
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            region="us-central1",
+            name="http-health-check",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port=80,
+            ))
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            region="us-central1",
+            name="backend-service",
+            protocol="HTTP",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            timeout_sec=10,
+            health_checks=default_region_health_check.id)
+        default_region_url_map = gcp.compute.RegionUrlMap("default",
+            region="us-central1",
+            name="url-map",
+            description="a description",
+            default_service=default_region_backend_service.id,
+            host_rules=[gcp.compute.RegionUrlMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.RegionUrlMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_region_backend_service.id,
+                path_rules=[gcp.compute.RegionUrlMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_region_backend_service.id,
+                )],
+            )])
+        default = gcp.compute.RegionTargetHttpsProxy("default",
+            region="us-central1",
+            name="test-proxy",
+            url_map=default_region_url_map.id,
+            ssl_certificates=[default_region_ssl_certificate.id])
+        ```
 
         ## Import
 
@@ -459,6 +507,54 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
         ## Example Usage
+        ### Region Target Https Proxy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        default_region_ssl_certificate = gcp.compute.RegionSslCertificate("default",
+            region="us-central1",
+            name="my-certificate",
+            private_key=std.file(input="path/to/private.key").result,
+            certificate=std.file(input="path/to/certificate.crt").result)
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            region="us-central1",
+            name="http-health-check",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port=80,
+            ))
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            region="us-central1",
+            name="backend-service",
+            protocol="HTTP",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            timeout_sec=10,
+            health_checks=default_region_health_check.id)
+        default_region_url_map = gcp.compute.RegionUrlMap("default",
+            region="us-central1",
+            name="url-map",
+            description="a description",
+            default_service=default_region_backend_service.id,
+            host_rules=[gcp.compute.RegionUrlMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.RegionUrlMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_region_backend_service.id,
+                path_rules=[gcp.compute.RegionUrlMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_region_backend_service.id,
+                )],
+            )])
+        default = gcp.compute.RegionTargetHttpsProxy("default",
+            region="us-central1",
+            name="test-proxy",
+            url_map=default_region_url_map.id,
+            ssl_certificates=[default_region_ssl_certificate.id])
+        ```
 
         ## Import
 

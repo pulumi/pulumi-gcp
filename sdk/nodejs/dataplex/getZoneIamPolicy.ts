@@ -14,10 +14,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.dataplex.getZoneIamPolicy({
- *     project: google_dataplex_zone.example.project,
- *     location: google_dataplex_zone.example.location,
- *     lake: google_dataplex_zone.example.lake,
- *     dataplexZone: google_dataplex_zone.example.name,
+ *     project: example.project,
+ *     location: example.location,
+ *     lake: example.lake,
+ *     dataplexZone: example.name,
  * });
  * ```
  */
@@ -81,10 +81,10 @@ export interface GetZoneIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.dataplex.getZoneIamPolicy({
- *     project: google_dataplex_zone.example.project,
- *     location: google_dataplex_zone.example.location,
- *     lake: google_dataplex_zone.example.lake,
- *     dataplexZone: google_dataplex_zone.example.name,
+ *     project: example.project,
+ *     location: example.location,
+ *     lake: example.lake,
+ *     dataplexZone: example.name,
  * });
  * ```
  */

@@ -26,12 +26,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataflow.NewFlexTemplateJob(ctx, "bigDataJob", &dataflow.FlexTemplateJobArgs{
+//			_, err := dataflow.NewFlexTemplateJob(ctx, "big_data_job", &dataflow.FlexTemplateJobArgs{
+//				Name:                 pulumi.String("dataflow-flextemplates-job"),
 //				ContainerSpecGcsPath: pulumi.String("gs://my-bucket/templates/template.json"),
 //				Parameters: pulumi.Map{
 //					"inputSubscription": pulumi.Any("messages"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -74,6 +75,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataflow"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -88,24 +91,27 @@ import (
 //			if param := cfg.Get("bigDataJobSubscriptionId"); param != "" {
 //				bigDataJobSubscriptionId = param
 //			}
-//			_, err := random.NewRandomId(ctx, "bigDataJobNameSuffix", &random.RandomIdArgs{
+//			bigDataJobNameSuffix, err := random.NewRandomId(ctx, "big_data_job_name_suffix", &random.RandomIdArgs{
 //				ByteLength: pulumi.Int(4),
 //				Keepers: pulumi.StringMap{
-//					"region":          pulumi.Any(_var.Region),
+//					"region":          pulumi.Any(region),
 //					"subscription_id": pulumi.String(bigDataJobSubscriptionId),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dataflow.NewFlexTemplateJob(ctx, "bigDataJob", &dataflow.FlexTemplateJobArgs{
-//				Region:                   pulumi.Any(_var.Region),
+//			_, err = dataflow.NewFlexTemplateJob(ctx, "big_data_job", &dataflow.FlexTemplateJobArgs{
+//				Name: bigDataJobNameSuffix.Dec.ApplyT(func(dec string) (string, error) {
+//					return fmt.Sprintf("dataflow-flextemplates-job-%v", dec), nil
+//				}).(pulumi.StringOutput),
+//				Region:                   pulumi.Any(region),
 //				ContainerSpecGcsPath:     pulumi.String("gs://my-bucket/templates/template.json"),
 //				SkipWaitOnJobTermination: pulumi.Bool(true),
 //				Parameters: pulumi.Map{
 //					"inputSubscription": pulumi.String(bigDataJobSubscriptionId),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

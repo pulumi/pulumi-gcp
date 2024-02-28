@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := folder.GetIamPolicy(ctx, &folder.GetIamPolicyArgs{
-//				Folder: google_folder.Permissiontest.Name,
+//				Folder: permissiontest.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

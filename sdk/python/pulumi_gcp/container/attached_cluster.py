@@ -824,6 +824,7 @@ class AttachedCluster(pulumi.CustomResource):
         versions = gcp.container.get_attached_versions(location="us-west1",
             project=project.project_id)
         primary = gcp.container.AttachedCluster("primary",
+            name="basic",
             location="us-west1",
             project=project.project_id,
             description="Test cluster",
@@ -836,6 +837,66 @@ class AttachedCluster(pulumi.CustomResource):
                 project=f"projects/{project.number}",
             ))
         ```
+        ### Container Attached Cluster Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        project = gcp.organizations.get_project()
+        versions = gcp.container.get_attached_versions(location="us-west1",
+            project=project.project_id)
+        primary = gcp.container.AttachedCluster("primary",
+            name="basic",
+            project=project.project_id,
+            location="us-west1",
+            description="Test cluster",
+            distribution="aks",
+            annotations={
+                "label-one": "value-one",
+            },
+            authorization=gcp.container.AttachedClusterAuthorizationArgs(
+                admin_users=[
+                    "user1@example.com",
+                    "user2@example.com",
+                ],
+                admin_groups=[
+                    "group1@example.com",
+                    "group2@example.com",
+                ],
+            ),
+            oidc_config=gcp.container.AttachedClusterOidcConfigArgs(
+                issuer_url="https://oidc.issuer.url",
+                jwks=std.base64encode(input="{\\"keys\\":[{\\"use\\":\\"sig\\",\\"kty\\":\\"RSA\\",\\"kid\\":\\"testid\\",\\"alg\\":\\"RS256\\",\\"n\\":\\"somedata\\",\\"e\\":\\"AQAB\\"}]}").result,
+            ),
+            platform_version=versions.valid_versions[0],
+            fleet=gcp.container.AttachedClusterFleetArgs(
+                project=f"projects/{project.number}",
+            ),
+            logging_config=gcp.container.AttachedClusterLoggingConfigArgs(
+                component_config=gcp.container.AttachedClusterLoggingConfigComponentConfigArgs(
+                    enable_components=[
+                        "SYSTEM_COMPONENTS",
+                        "WORKLOADS",
+                    ],
+                ),
+            ),
+            monitoring_config=gcp.container.AttachedClusterMonitoringConfigArgs(
+                managed_prometheus_config=gcp.container.AttachedClusterMonitoringConfigManagedPrometheusConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            binary_authorization=gcp.container.AttachedClusterBinaryAuthorizationArgs(
+                evaluation_mode="PROJECT_SINGLETON_POLICY_ENFORCE",
+            ),
+            proxy_config=gcp.container.AttachedClusterProxyConfigArgs(
+                kubernetes_secret=gcp.container.AttachedClusterProxyConfigKubernetesSecretArgs(
+                    name="proxy-config",
+                    namespace="default",
+                ),
+            ))
+        ```
         ### Container Attached Cluster Ignore Errors
 
         ```python
@@ -846,6 +907,7 @@ class AttachedCluster(pulumi.CustomResource):
         versions = gcp.container.get_attached_versions(location="us-west1",
             project=project.project_id)
         primary = gcp.container.AttachedCluster("primary",
+            name="basic",
             location="us-west1",
             project=project.project_id,
             description="Test cluster",
@@ -955,6 +1017,7 @@ class AttachedCluster(pulumi.CustomResource):
         versions = gcp.container.get_attached_versions(location="us-west1",
             project=project.project_id)
         primary = gcp.container.AttachedCluster("primary",
+            name="basic",
             location="us-west1",
             project=project.project_id,
             description="Test cluster",
@@ -967,6 +1030,66 @@ class AttachedCluster(pulumi.CustomResource):
                 project=f"projects/{project.number}",
             ))
         ```
+        ### Container Attached Cluster Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        project = gcp.organizations.get_project()
+        versions = gcp.container.get_attached_versions(location="us-west1",
+            project=project.project_id)
+        primary = gcp.container.AttachedCluster("primary",
+            name="basic",
+            project=project.project_id,
+            location="us-west1",
+            description="Test cluster",
+            distribution="aks",
+            annotations={
+                "label-one": "value-one",
+            },
+            authorization=gcp.container.AttachedClusterAuthorizationArgs(
+                admin_users=[
+                    "user1@example.com",
+                    "user2@example.com",
+                ],
+                admin_groups=[
+                    "group1@example.com",
+                    "group2@example.com",
+                ],
+            ),
+            oidc_config=gcp.container.AttachedClusterOidcConfigArgs(
+                issuer_url="https://oidc.issuer.url",
+                jwks=std.base64encode(input="{\\"keys\\":[{\\"use\\":\\"sig\\",\\"kty\\":\\"RSA\\",\\"kid\\":\\"testid\\",\\"alg\\":\\"RS256\\",\\"n\\":\\"somedata\\",\\"e\\":\\"AQAB\\"}]}").result,
+            ),
+            platform_version=versions.valid_versions[0],
+            fleet=gcp.container.AttachedClusterFleetArgs(
+                project=f"projects/{project.number}",
+            ),
+            logging_config=gcp.container.AttachedClusterLoggingConfigArgs(
+                component_config=gcp.container.AttachedClusterLoggingConfigComponentConfigArgs(
+                    enable_components=[
+                        "SYSTEM_COMPONENTS",
+                        "WORKLOADS",
+                    ],
+                ),
+            ),
+            monitoring_config=gcp.container.AttachedClusterMonitoringConfigArgs(
+                managed_prometheus_config=gcp.container.AttachedClusterMonitoringConfigManagedPrometheusConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            binary_authorization=gcp.container.AttachedClusterBinaryAuthorizationArgs(
+                evaluation_mode="PROJECT_SINGLETON_POLICY_ENFORCE",
+            ),
+            proxy_config=gcp.container.AttachedClusterProxyConfigArgs(
+                kubernetes_secret=gcp.container.AttachedClusterProxyConfigKubernetesSecretArgs(
+                    name="proxy-config",
+                    namespace="default",
+                ),
+            ))
+        ```
         ### Container Attached Cluster Ignore Errors
 
         ```python
@@ -977,6 +1100,7 @@ class AttachedCluster(pulumi.CustomResource):
         versions = gcp.container.get_attached_versions(location="us-west1",
             project=project.project_id)
         primary = gcp.container.AttachedCluster("primary",
+            name="basic",
             location="us-west1",
             project=project.project_id,
             description="Test cluster",

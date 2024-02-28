@@ -53,11 +53,13 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var custom_test = new Gcp.Compute.Network("custom-test", new()
     ///     {
+    ///         Name = "test-network",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var network_with_private_secondary_ip_ranges = new Gcp.Compute.Subnetwork("network-with-private-secondary-ip-ranges", new()
     ///     {
+    ///         Name = "test-subnetwork",
     ///         IpCidrRange = "10.2.0.0/16",
     ///         Region = "us-central1",
     ///         Network = custom_test.Id,
@@ -85,11 +87,13 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var custom_test = new Gcp.Compute.Network("custom-test", new()
     ///     {
+    ///         Name = "log-test-network",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var subnet_with_logging = new Gcp.Compute.Subnetwork("subnet-with-logging", new()
     ///     {
+    ///         Name = "log-test-subnetwork",
     ///         IpCidrRange = "10.2.0.0/16",
     ///         Region = "us-central1",
     ///         Network = custom_test.Id,
@@ -115,22 +119,18 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var custom_test = new Gcp.Compute.Network("custom-test", new()
     ///     {
+    ///         Name = "l7lb-test-network",
     ///         AutoCreateSubnetworks = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var network_for_l7lb = new Gcp.Compute.Subnetwork("network-for-l7lb", new()
     ///     {
+    ///         Name = "l7lb-test-subnetwork",
     ///         IpCidrRange = "10.0.0.0/22",
     ///         Region = "us-central1",
     ///         Purpose = "REGIONAL_MANAGED_PROXY",
     ///         Role = "ACTIVE",
     ///         Network = custom_test.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -147,11 +147,13 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var custom_test = new Gcp.Compute.Network("custom-test", new()
     ///     {
+    ///         Name = "ipv6-test-network",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var subnetwork_ipv6 = new Gcp.Compute.Subnetwork("subnetwork-ipv6", new()
     ///     {
+    ///         Name = "ipv6-test-subnetwork",
     ///         IpCidrRange = "10.0.0.0/22",
     ///         Region = "us-west2",
     ///         StackType = "IPV4_IPV6",
@@ -173,12 +175,14 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var custom_test = new Gcp.Compute.Network("custom-test", new()
     ///     {
+    ///         Name = "internal-ipv6-test-network",
     ///         AutoCreateSubnetworks = false,
     ///         EnableUlaInternalIpv6 = true,
     ///     });
     /// 
     ///     var subnetwork_internal_ipv6 = new Gcp.Compute.Subnetwork("subnetwork-internal-ipv6", new()
     ///     {
+    ///         Name = "internal-ipv6-test-subnetwork",
     ///         IpCidrRange = "10.0.0.0/22",
     ///         Region = "us-west2",
     ///         StackType = "IPV4_IPV6",
@@ -200,21 +204,17 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var custom_test = new Gcp.Compute.Network("custom-test", new()
     ///     {
+    ///         Name = "subnet-purpose-test-network",
     ///         AutoCreateSubnetworks = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var subnetwork_purpose_private_nat = new Gcp.Compute.Subnetwork("subnetwork-purpose-private-nat", new()
     ///     {
+    ///         Name = "subnet-purpose-test-subnetwork",
     ///         Region = "us-west2",
     ///         IpCidrRange = "192.168.1.0/24",
     ///         Purpose = "PRIVATE_NAT",
     ///         Network = custom_test.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -231,21 +231,17 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var net_cidr_overlap = new Gcp.Compute.Network("net-cidr-overlap", new()
     ///     {
+    ///         Name = "net-cidr-overlap",
     ///         AutoCreateSubnetworks = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var subnetwork_cidr_overlap = new Gcp.Compute.Subnetwork("subnetwork-cidr-overlap", new()
     ///     {
+    ///         Name = "subnet-cidr-overlap",
     ///         Region = "us-west2",
     ///         IpCidrRange = "192.168.1.0/24",
     ///         AllowSubnetCidrRoutesOverlap = true,
     ///         Network = net_cidr_overlap.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

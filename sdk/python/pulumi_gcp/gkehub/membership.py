@@ -400,19 +400,20 @@ class Membership(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
-            deletion_protection=False,
-            initial_node_count=1,
+            name="basic-cluster",
             location="us-central1-a",
+            initial_node_count=1,
+            deletion_protection=False,
             network="default",
             subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
+            membership_id="basic",
+            location="us-west1",
             endpoint=gcp.gkehub.MembershipEndpointArgs(
                 gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
                     resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 ),
-            ),
-            location="us-west1",
-            membership_id="basic")
+            ))
         ```
         ### Gkehub Membership Basic
 
@@ -421,12 +422,14 @@ class Membership(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
-            deletion_protection=True,
-            initial_node_count=1,
+            name="basic-cluster",
             location="us-central1-a",
+            initial_node_count=1,
+            deletion_protection=True,
             network="default",
             subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
+            membership_id="basic",
             endpoint=gcp.gkehub.MembershipEndpointArgs(
                 gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
                     resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
@@ -434,8 +437,7 @@ class Membership(pulumi.CustomResource):
             ),
             labels={
                 "env": "test",
-            },
-            membership_id="basic")
+            })
         ```
         ### Gkehub Membership Issuer
 
@@ -444,6 +446,7 @@ class Membership(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
+            name="basic-cluster",
             location="us-central1-a",
             initial_node_count=1,
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
@@ -535,19 +538,20 @@ class Membership(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
-            deletion_protection=False,
-            initial_node_count=1,
+            name="basic-cluster",
             location="us-central1-a",
+            initial_node_count=1,
+            deletion_protection=False,
             network="default",
             subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
+            membership_id="basic",
+            location="us-west1",
             endpoint=gcp.gkehub.MembershipEndpointArgs(
                 gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
                     resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 ),
-            ),
-            location="us-west1",
-            membership_id="basic")
+            ))
         ```
         ### Gkehub Membership Basic
 
@@ -556,12 +560,14 @@ class Membership(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
-            deletion_protection=True,
-            initial_node_count=1,
+            name="basic-cluster",
             location="us-central1-a",
+            initial_node_count=1,
+            deletion_protection=True,
             network="default",
             subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
+            membership_id="basic",
             endpoint=gcp.gkehub.MembershipEndpointArgs(
                 gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
                     resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
@@ -569,8 +575,7 @@ class Membership(pulumi.CustomResource):
             ),
             labels={
                 "env": "test",
-            },
-            membership_id="basic")
+            })
         ```
         ### Gkehub Membership Issuer
 
@@ -579,6 +584,7 @@ class Membership(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
+            name="basic-cluster",
             location="us-central1-a",
             initial_node_count=1,
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(

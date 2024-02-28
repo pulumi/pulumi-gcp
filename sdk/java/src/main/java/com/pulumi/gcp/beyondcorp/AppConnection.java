@@ -65,6 +65,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var appConnector = new AppConnector(&#34;appConnector&#34;, AppConnectorArgs.builder()        
+ *             .name(&#34;my-app-connector&#34;)
  *             .principalInfo(AppConnectorPrincipalInfoArgs.builder()
  *                 .serviceAccount(AppConnectorPrincipalInfoServiceAccountArgs.builder()
  *                     .email(serviceAccount.email())
@@ -73,6 +74,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var appConnection = new AppConnection(&#34;appConnection&#34;, AppConnectionArgs.builder()        
+ *             .name(&#34;my-app-connection&#34;)
  *             .type(&#34;TCP_PROXY&#34;)
  *             .applicationEndpoint(AppConnectionApplicationEndpointArgs.builder()
  *                 .host(&#34;foo-host&#34;)
@@ -122,11 +124,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var appGateway = new AppGateway(&#34;appGateway&#34;, AppGatewayArgs.builder()        
+ *             .name(&#34;my-app-gateway&#34;)
  *             .type(&#34;TCP_PROXY&#34;)
  *             .hostType(&#34;GCP_REGIONAL_MIG&#34;)
  *             .build());
  * 
  *         var appConnector = new AppConnector(&#34;appConnector&#34;, AppConnectorArgs.builder()        
+ *             .name(&#34;my-app-connector&#34;)
  *             .principalInfo(AppConnectorPrincipalInfoArgs.builder()
  *                 .serviceAccount(AppConnectorPrincipalInfoServiceAccountArgs.builder()
  *                     .email(serviceAccount.email())
@@ -135,6 +139,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var appConnection = new AppConnection(&#34;appConnection&#34;, AppConnectionArgs.builder()        
+ *             .name(&#34;my-app-connection&#34;)
  *             .type(&#34;TCP_PROXY&#34;)
  *             .displayName(&#34;some display name&#34;)
  *             .applicationEndpoint(AppConnectionApplicationEndpointArgs.builder()

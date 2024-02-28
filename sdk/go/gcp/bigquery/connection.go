@@ -35,11 +35,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigquery.NewConnection(ctx, "connection", &bigquery.ConnectionArgs{
-//				CloudResource: nil,
 //				ConnectionId:  pulumi.String("my-connection"),
-//				Description:   pulumi.String("a riveting description"),
-//				FriendlyName:  pulumi.String("👋"),
 //				Location:      pulumi.String("US"),
+//				FriendlyName:  pulumi.String("👋"),
+//				Description:   pulumi.String("a riveting description"),
+//				CloudResource: nil,
 //			})
 //			if err != nil {
 //				return err
@@ -66,6 +66,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("my-database-instance"),
 //				DatabaseVersion: pulumi.String("POSTGRES_11"),
 //				Region:          pulumi.String("us-central1"),
 //				Settings: &sql.DatabaseInstanceSettingsArgs{
@@ -78,6 +79,7 @@ import (
 //			}
 //			db, err := sql.NewDatabase(ctx, "db", &sql.DatabaseArgs{
 //				Instance: instance.Name,
+//				Name:     pulumi.String("db"),
 //			})
 //			if err != nil {
 //				return err
@@ -90,6 +92,7 @@ import (
 //				return err
 //			}
 //			user, err := sql.NewUser(ctx, "user", &sql.UserArgs{
+//				Name:     pulumi.String("user"),
 //				Instance: instance.Name,
 //				Password: pwd.Result,
 //			})
@@ -135,6 +138,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("my-database-instance"),
 //				DatabaseVersion: pulumi.String("POSTGRES_11"),
 //				Region:          pulumi.String("us-central1"),
 //				Settings: &sql.DatabaseInstanceSettingsArgs{
@@ -147,6 +151,7 @@ import (
 //			}
 //			db, err := sql.NewDatabase(ctx, "db", &sql.DatabaseArgs{
 //				Instance: instance.Name,
+//				Name:     pulumi.String("db"),
 //			})
 //			if err != nil {
 //				return err
@@ -159,6 +164,7 @@ import (
 //				return err
 //			}
 //			user, err := sql.NewUser(ctx, "user", &sql.UserArgs{
+//				Name:     pulumi.String("user"),
 //				Instance: instance.Name,
 //				Password: pwd.Result,
 //			})
@@ -203,15 +209,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigquery.NewConnection(ctx, "connection", &bigquery.ConnectionArgs{
+//				ConnectionId: pulumi.String("my-connection"),
+//				Location:     pulumi.String("aws-us-east-1"),
+//				FriendlyName: pulumi.String("👋"),
+//				Description:  pulumi.String("a riveting description"),
 //				Aws: &bigquery.ConnectionAwsArgs{
 //					AccessRole: &bigquery.ConnectionAwsAccessRoleArgs{
 //						IamRoleId: pulumi.String("arn:aws:iam::999999999999:role/omnirole"),
 //					},
 //				},
-//				ConnectionId: pulumi.String("my-connection"),
-//				Description:  pulumi.String("a riveting description"),
-//				FriendlyName: pulumi.String("👋"),
-//				Location:     pulumi.String("aws-us-east-1"),
 //			})
 //			if err != nil {
 //				return err
@@ -236,14 +242,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigquery.NewConnection(ctx, "connection", &bigquery.ConnectionArgs{
+//				ConnectionId: pulumi.String("my-connection"),
+//				Location:     pulumi.String("azure-eastus2"),
+//				FriendlyName: pulumi.String("👋"),
+//				Description:  pulumi.String("a riveting description"),
 //				Azure: &bigquery.ConnectionAzureArgs{
 //					CustomerTenantId:             pulumi.String("customer-tenant-id"),
 //					FederatedApplicationClientId: pulumi.String("b43eeeee-eeee-eeee-eeee-a480155501ce"),
 //				},
-//				ConnectionId: pulumi.String("my-connection"),
-//				Description:  pulumi.String("a riveting description"),
-//				FriendlyName: pulumi.String("👋"),
-//				Location:     pulumi.String("azure-eastus2"),
 //			})
 //			if err != nil {
 //				return err
@@ -268,14 +274,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigquery.NewConnection(ctx, "connection", &bigquery.ConnectionArgs{
+//				ConnectionId: pulumi.String("my-connection"),
+//				Location:     pulumi.String("US"),
+//				FriendlyName: pulumi.String("👋"),
+//				Description:  pulumi.String("a riveting description"),
 //				CloudSpanner: &bigquery.ConnectionCloudSpannerArgs{
 //					Database:     pulumi.String("projects/project/instances/instance/databases/database"),
 //					DatabaseRole: pulumi.String("database_role"),
 //				},
-//				ConnectionId: pulumi.String("my-connection"),
-//				Description:  pulumi.String("a riveting description"),
-//				FriendlyName: pulumi.String("👋"),
-//				Location:     pulumi.String("US"),
 //			})
 //			if err != nil {
 //				return err
@@ -300,16 +306,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigquery.NewConnection(ctx, "connection", &bigquery.ConnectionArgs{
+//				ConnectionId: pulumi.String("my-connection"),
+//				Location:     pulumi.String("US"),
+//				FriendlyName: pulumi.String("👋"),
+//				Description:  pulumi.String("a riveting description"),
 //				CloudSpanner: &bigquery.ConnectionCloudSpannerArgs{
 //					Database:       pulumi.String("projects/project/instances/instance/databases/database"),
-//					MaxParallelism: pulumi.Int(100),
-//					UseDataBoost:   pulumi.Bool(true),
 //					UseParallelism: pulumi.Bool(true),
+//					UseDataBoost:   pulumi.Bool(true),
+//					MaxParallelism: pulumi.Int(100),
 //				},
-//				ConnectionId: pulumi.String("my-connection"),
-//				Description:  pulumi.String("a riveting description"),
-//				FriendlyName: pulumi.String("👋"),
-//				Location:     pulumi.String("US"),
 //			})
 //			if err != nil {
 //				return err
@@ -335,6 +341,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			basic, err := dataproc.NewCluster(ctx, "basic", &dataproc.ClusterArgs{
+//				Name:   pulumi.String("my-connection"),
 //				Region: pulumi.String("us-central1"),
 //				ClusterConfig: &dataproc.ClusterClusterConfigArgs{
 //					SoftwareConfig: &dataproc.ClusterClusterConfigSoftwareConfigArgs{

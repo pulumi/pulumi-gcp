@@ -1142,11 +1142,15 @@ class Function(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket", location="US")
+        bucket = gcp.storage.Bucket("bucket",
+            name="test-bucket",
+            location="US")
         archive = gcp.storage.BucketObject("archive",
+            name="index.zip",
             bucket=bucket.name,
             source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))
         function = gcp.cloudfunctions.Function("function",
+            name="function-test",
             description="My function",
             runtime="nodejs16",
             available_memory_mb=128,
@@ -1168,11 +1172,15 @@ class Function(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket", location="US")
+        bucket = gcp.storage.Bucket("bucket",
+            name="test-bucket",
+            location="US")
         archive = gcp.storage.BucketObject("archive",
+            name="index.zip",
             bucket=bucket.name,
             source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))
         function = gcp.cloudfunctions.Function("function",
+            name="function-test",
             description="My function",
             runtime="nodejs16",
             available_memory_mb=128,
@@ -1282,11 +1290,15 @@ class Function(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket", location="US")
+        bucket = gcp.storage.Bucket("bucket",
+            name="test-bucket",
+            location="US")
         archive = gcp.storage.BucketObject("archive",
+            name="index.zip",
             bucket=bucket.name,
             source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))
         function = gcp.cloudfunctions.Function("function",
+            name="function-test",
             description="My function",
             runtime="nodejs16",
             available_memory_mb=128,
@@ -1308,11 +1320,15 @@ class Function(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket", location="US")
+        bucket = gcp.storage.Bucket("bucket",
+            name="test-bucket",
+            location="US")
         archive = gcp.storage.BucketObject("archive",
+            name="index.zip",
             bucket=bucket.name,
             source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))
         function = gcp.cloudfunctions.Function("function",
+            name="function-test",
             description="My function",
             runtime="nodejs16",
             available_memory_mb=128,

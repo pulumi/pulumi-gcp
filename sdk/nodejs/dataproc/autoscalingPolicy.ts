@@ -31,6 +31,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const basic = new gcp.dataproc.Cluster("basic", {
+ *     name: "dataproc-policy",
  *     region: "us-central1",
  *     clusterConfig: {
  *         autoscalingConfig: {

@@ -51,10 +51,10 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     ///     var policy = new Gcp.DataPlex.TaskIamPolicy("policy", new()
     ///     {
-    ///         Project = google_dataplex_task.Example.Project,
-    ///         Location = google_dataplex_task.Example.Location,
-    ///         Lake = google_dataplex_task.Example.Lake,
-    ///         TaskId = google_dataplex_task.Example.Task_id,
+    ///         Project = example.Project,
+    ///         Location = example.Location,
+    ///         Lake = example.Lake,
+    ///         TaskId = example.TaskId,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -73,10 +73,10 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var binding = new Gcp.DataPlex.TaskIamBinding("binding", new()
     ///     {
-    ///         Project = google_dataplex_task.Example.Project,
-    ///         Location = google_dataplex_task.Example.Location,
-    ///         Lake = google_dataplex_task.Example.Lake,
-    ///         TaskId = google_dataplex_task.Example.Task_id,
+    ///         Project = example.Project,
+    ///         Location = example.Location,
+    ///         Lake = example.Lake,
+    ///         TaskId = example.TaskId,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -99,10 +99,10 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var member = new Gcp.DataPlex.TaskIamMember("member", new()
     ///     {
-    ///         Project = google_dataplex_task.Example.Project,
-    ///         Location = google_dataplex_task.Example.Location,
-    ///         Lake = google_dataplex_task.Example.Lake,
-    ///         TaskId = google_dataplex_task.Example.Task_id,
+    ///         Project = example.Project,
+    ///         Location = example.Location,
+    ///         Lake = example.Lake,
+    ///         TaskId = example.TaskId,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

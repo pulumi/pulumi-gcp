@@ -23,11 +23,9 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var @default = new Gcp.Compute.NetworkEdgeSecurityService("default", new()
     ///     {
+    ///         Name = "my-edge-security-service",
     ///         Region = "us-east1",
     ///         Description = "My basic resource",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

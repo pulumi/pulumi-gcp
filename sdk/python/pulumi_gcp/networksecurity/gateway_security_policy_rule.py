@@ -489,12 +489,14 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy",
+        default = gcp.networksecurity.GatewaySecurityPolicy("default",
+            name="my-gateway-security-policy",
             location="us-central1",
             description="gateway security policy created to be used as reference by the rule.")
-        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
+        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("default",
+            name="my-gateway-security-policy-rule",
             location="us-central1",
-            gateway_security_policy=default_gateway_security_policy.name,
+            gateway_security_policy=default.name,
             enabled=True,
             description="my description",
             priority=0,
@@ -507,12 +509,14 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy",
+        default = gcp.networksecurity.GatewaySecurityPolicy("default",
+            name="my-gateway-security-policy",
             location="us-central1",
             description="gateway security policy created to be used as reference by the rule.")
-        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
+        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("default",
+            name="my-gateway-security-policy-rule",
             location="us-central1",
-            gateway_security_policy=default_gateway_security_policy.name,
+            gateway_security_policy=default.name,
             enabled=True,
             description="my description",
             priority=0,
@@ -588,12 +592,14 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy",
+        default = gcp.networksecurity.GatewaySecurityPolicy("default",
+            name="my-gateway-security-policy",
             location="us-central1",
             description="gateway security policy created to be used as reference by the rule.")
-        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
+        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("default",
+            name="my-gateway-security-policy-rule",
             location="us-central1",
-            gateway_security_policy=default_gateway_security_policy.name,
+            gateway_security_policy=default.name,
             enabled=True,
             description="my description",
             priority=0,
@@ -606,12 +612,14 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy",
+        default = gcp.networksecurity.GatewaySecurityPolicy("default",
+            name="my-gateway-security-policy",
             location="us-central1",
             description="gateway security policy created to be used as reference by the rule.")
-        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
+        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("default",
+            name="my-gateway-security-policy-rule",
             location="us-central1",
-            gateway_security_policy=default_gateway_security_policy.name,
+            gateway_security_policy=default.name,
             enabled=True,
             description="my description",
             priority=0,

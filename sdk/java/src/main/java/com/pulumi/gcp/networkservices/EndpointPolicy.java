@@ -32,7 +32,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networkservices.inputs.EndpointPolicyTrafficPortSelectorArgs;
  * import com.pulumi.gcp.networkservices.inputs.EndpointPolicyEndpointMatcherArgs;
  * import com.pulumi.gcp.networkservices.inputs.EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -47,6 +46,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new EndpointPolicy(&#34;default&#34;, EndpointPolicyArgs.builder()        
+ *             .name(&#34;my-endpoint-policy&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .description(&#34;my description&#34;)
  *             .type(&#34;SIDECAR_PROXY&#34;)
@@ -62,9 +62,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -81,7 +79,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networkservices.inputs.EndpointPolicyTrafficPortSelectorArgs;
  * import com.pulumi.gcp.networkservices.inputs.EndpointPolicyEndpointMatcherArgs;
  * import com.pulumi.gcp.networkservices.inputs.EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -96,6 +93,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new EndpointPolicy(&#34;default&#34;, EndpointPolicyArgs.builder()        
+ *             .name(&#34;my-endpoint-policy&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .description(&#34;my description&#34;)
  *             .type(&#34;SIDECAR_PROXY&#34;)
@@ -107,9 +105,7 @@ import javax.annotation.Nullable;
  *                     .metadataLabelMatchCriteria(&#34;MATCH_ANY&#34;)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

@@ -507,16 +507,16 @@ class CxPage(pulumi.CustomResource):
             speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
                 enable_speech_adaptation=True,
             ))
-        my_page2 = gcp.diagflow.CxPage("myPage2",
+        my_page2 = gcp.diagflow.CxPage("my_page2",
             parent=agent.start_flow,
             display_name="MyPage2")
-        my_webhook = gcp.diagflow.CxWebhook("myWebhook",
+        my_webhook = gcp.diagflow.CxWebhook("my_webhook",
             parent=agent.id,
             display_name="MyWebhook",
             generic_web_service=gcp.diagflow.CxWebhookGenericWebServiceArgs(
                 uri="https://example.com",
             ))
-        basic_page = gcp.diagflow.CxPage("basicPage",
+        basic_page = gcp.diagflow.CxPage("basic_page",
             parent=agent.start_flow,
             display_name="MyPage",
             entry_fulfillment=gcp.diagflow.CxPageEntryFulfillmentArgs(
@@ -1151,16 +1151,16 @@ class CxPage(pulumi.CustomResource):
             speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
                 enable_speech_adaptation=True,
             ))
-        my_page2 = gcp.diagflow.CxPage("myPage2",
+        my_page2 = gcp.diagflow.CxPage("my_page2",
             parent=agent.start_flow,
             display_name="MyPage2")
-        my_webhook = gcp.diagflow.CxWebhook("myWebhook",
+        my_webhook = gcp.diagflow.CxWebhook("my_webhook",
             parent=agent.id,
             display_name="MyWebhook",
             generic_web_service=gcp.diagflow.CxWebhookGenericWebServiceArgs(
                 uri="https://example.com",
             ))
-        basic_page = gcp.diagflow.CxPage("basicPage",
+        basic_page = gcp.diagflow.CxPage("basic_page",
             parent=agent.start_flow,
             display_name="MyPage",
             entry_fulfillment=gcp.diagflow.CxPageEntryFulfillmentArgs(

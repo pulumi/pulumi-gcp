@@ -41,16 +41,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.storage.StorageFunctions;
- * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
- * import com.pulumi.gcp.pubsub.Topic;
- * import com.pulumi.gcp.pubsub.TopicIAMBinding;
- * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
  * import com.pulumi.gcp.storage.Bucket;
  * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
  * import com.pulumi.gcp.storage.Notification;
  * import com.pulumi.gcp.storage.NotificationArgs;
- * import com.pulumi.resources.CustomResourceOptions;
+ * import com.pulumi.gcp.storage.StorageFunctions;
+ * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
+ * import com.pulumi.gcp.pubsub.TopicIAMBinding;
+ * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -64,18 +64,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
- * 
- *         var topic = new Topic(&#34;topic&#34;);
- * 
- *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
- *             .topic(topic.id())
- *             .role(&#34;roles/pubsub.publisher&#34;)
- *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+ *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+ *             .name(&#34;default_bucket&#34;)
+ *             .location(&#34;US&#34;)
  *             .build());
  * 
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
- *             .location(&#34;US&#34;)
+ *         var topic = new Topic(&#34;topic&#34;, TopicArgs.builder()        
+ *             .name(&#34;default_topic&#34;)
  *             .build());
  * 
  *         var notification = new Notification(&#34;notification&#34;, NotificationArgs.builder()        
@@ -86,9 +81,15 @@ import javax.annotation.Nullable;
  *                 &#34;OBJECT_FINALIZE&#34;,
  *                 &#34;OBJECT_METADATA_UPDATE&#34;)
  *             .customAttributes(Map.of(&#34;new-attribute&#34;, &#34;new-attribute-value&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(binding)
- *                 .build());
+ *             .build());
+ * 
+ *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
+ * 
+ *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
+ *             .topic(topic.id())
+ *             .role(&#34;roles/pubsub.publisher&#34;)
+ *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+ *             .build());
  * 
  *     }
  * }

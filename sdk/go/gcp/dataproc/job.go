@@ -32,6 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			mycluster, err := dataproc.NewCluster(ctx, "mycluster", &dataproc.ClusterArgs{
+//				Name:   pulumi.String("dproc-cluster-unique-name"),
 //				Region: pulumi.String("us-central1"),
 //			})
 //			if err != nil {

@@ -79,10 +79,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := billing.NewAccountIamBinding(ctx, "editor", &billing.AccountIamBindingArgs{
 //				BillingAccountId: pulumi.String("00AA00-000AAA-00AA0A"),
+//				Role:             pulumi.String("roles/billing.viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				Role: pulumi.String("roles/billing.viewer"),
 //			})
 //			if err != nil {
 //				return err
@@ -109,8 +109,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := billing.NewAccountIamMember(ctx, "editor", &billing.AccountIamMemberArgs{
 //				BillingAccountId: pulumi.String("00AA00-000AAA-00AA0A"),
-//				Member:           pulumi.String("user:jane@example.com"),
 //				Role:             pulumi.String("roles/billing.viewer"),
+//				Member:           pulumi.String("user:jane@example.com"),
 //			})
 //			if err != nil {
 //				return err

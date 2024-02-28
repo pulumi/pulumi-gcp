@@ -570,7 +570,7 @@ class Slo(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.monitoring.get_app_engine_service(module_id="default")
-        appeng_slo = gcp.monitoring.Slo("appengSlo",
+        appeng_slo = gcp.monitoring.Slo("appeng_slo",
             service=default.service_id,
             slo_id="ae-slo",
             display_name="Test SLO for App Engine",
@@ -595,7 +595,7 @@ class Slo(pulumi.CustomResource):
         customsrv = gcp.monitoring.CustomService("customsrv",
             service_id="custom-srv-request-slos",
             display_name="My Custom Service")
-        request_based_slo = gcp.monitoring.Slo("requestBasedSlo",
+        request_based_slo = gcp.monitoring.Slo("request_based_slo",
             service=customsrv.service_id,
             slo_id="consumed-api-slo",
             display_name="Test SLO with request based SLI (good total ratio)",
@@ -606,6 +606,123 @@ class Slo(pulumi.CustomResource):
                     distribution_filter="metric.type=\\"serviceruntime.googleapis.com/api/request_latencies\\" resource.type=\\"api\\"  ",
                     range=gcp.monitoring.SloRequestBasedSliDistributionCutRangeArgs(
                         max=0.5,
+                    ),
+                ),
+            ))
+        ```
+        ### Monitoring Slo Windows Based Good Bad Metric Filter
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        customsrv = gcp.monitoring.CustomService("customsrv",
+            service_id="custom-srv-windows-slos",
+            display_name="My Custom Service")
+        windows_based = gcp.monitoring.Slo("windows_based",
+            service=customsrv.service_id,
+            display_name="Test SLO with window based SLI",
+            goal=0.95,
+            calendar_period="FORTNIGHT",
+            windows_based_sli=gcp.monitoring.SloWindowsBasedSliArgs(
+                window_period="400s",
+                good_bad_metric_filter=std.join(separator=" AND ",
+                    input=[
+                        "metric.type=\\"monitoring.googleapis.com/uptime_check/check_passed\\"",
+                        "resource.type=\\"uptime_url\\"",
+                    ]).result,
+            ))
+        ```
+        ### Monitoring Slo Windows Based Metric Mean
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        customsrv = gcp.monitoring.CustomService("customsrv",
+            service_id="custom-srv-windows-slos",
+            display_name="My Custom Service")
+        windows_based = gcp.monitoring.Slo("windows_based",
+            service=customsrv.service_id,
+            display_name="Test SLO with window based SLI",
+            goal=0.9,
+            rolling_period_days=20,
+            windows_based_sli=gcp.monitoring.SloWindowsBasedSliArgs(
+                window_period="600s",
+                metric_mean_in_range=gcp.monitoring.SloWindowsBasedSliMetricMeanInRangeArgs(
+                    time_series=std.join(separator=" AND ",
+                        input=[
+                            "metric.type=\\"agent.googleapis.com/cassandra/client_request/latency/95p\\"",
+                            "resource.type=\\"gce_instance\\"",
+                        ]).result,
+                    range=gcp.monitoring.SloWindowsBasedSliMetricMeanInRangeRangeArgs(
+                        max=5,
+                    ),
+                ),
+            ))
+        ```
+        ### Monitoring Slo Windows Based Metric Sum
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        customsrv = gcp.monitoring.CustomService("customsrv",
+            service_id="custom-srv-windows-slos",
+            display_name="My Custom Service")
+        windows_based = gcp.monitoring.Slo("windows_based",
+            service=customsrv.service_id,
+            display_name="Test SLO with window based SLI",
+            goal=0.9,
+            rolling_period_days=20,
+            windows_based_sli=gcp.monitoring.SloWindowsBasedSliArgs(
+                window_period="400s",
+                metric_sum_in_range=gcp.monitoring.SloWindowsBasedSliMetricSumInRangeArgs(
+                    time_series=std.join(separator=" AND ",
+                        input=[
+                            "metric.type=\\"monitoring.googleapis.com/uptime_check/request_latency\\"",
+                            "resource.type=\\"uptime_url\\"",
+                        ]).result,
+                    range=gcp.monitoring.SloWindowsBasedSliMetricSumInRangeRangeArgs(
+                        max=5000,
+                    ),
+                ),
+            ))
+        ```
+        ### Monitoring Slo Windows Based Ratio Threshold
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        customsrv = gcp.monitoring.CustomService("customsrv",
+            service_id="custom-srv-windows-slos",
+            display_name="My Custom Service")
+        windows_based = gcp.monitoring.Slo("windows_based",
+            service=customsrv.service_id,
+            display_name="Test SLO with window based SLI",
+            goal=0.9,
+            rolling_period_days=20,
+            windows_based_sli=gcp.monitoring.SloWindowsBasedSliArgs(
+                window_period="100s",
+                good_total_ratio_threshold=gcp.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdArgs(
+                    threshold=0.1,
+                    performance=gcp.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs(
+                        distribution_cut=gcp.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs(
+                            distribution_filter=std.join(separator=" AND ",
+                                input=[
+                                    "metric.type=\\"serviceruntime.googleapis.com/api/request_latencies\\"",
+                                    "resource.type=\\"consumed_api\\"",
+                                ]).result,
+                            range=gcp.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs(
+                                min=1,
+                                max=9,
+                            ),
+                        ),
                     ),
                 ),
             ))
@@ -700,7 +817,7 @@ class Slo(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.monitoring.get_app_engine_service(module_id="default")
-        appeng_slo = gcp.monitoring.Slo("appengSlo",
+        appeng_slo = gcp.monitoring.Slo("appeng_slo",
             service=default.service_id,
             slo_id="ae-slo",
             display_name="Test SLO for App Engine",
@@ -725,7 +842,7 @@ class Slo(pulumi.CustomResource):
         customsrv = gcp.monitoring.CustomService("customsrv",
             service_id="custom-srv-request-slos",
             display_name="My Custom Service")
-        request_based_slo = gcp.monitoring.Slo("requestBasedSlo",
+        request_based_slo = gcp.monitoring.Slo("request_based_slo",
             service=customsrv.service_id,
             slo_id="consumed-api-slo",
             display_name="Test SLO with request based SLI (good total ratio)",
@@ -736,6 +853,123 @@ class Slo(pulumi.CustomResource):
                     distribution_filter="metric.type=\\"serviceruntime.googleapis.com/api/request_latencies\\" resource.type=\\"api\\"  ",
                     range=gcp.monitoring.SloRequestBasedSliDistributionCutRangeArgs(
                         max=0.5,
+                    ),
+                ),
+            ))
+        ```
+        ### Monitoring Slo Windows Based Good Bad Metric Filter
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        customsrv = gcp.monitoring.CustomService("customsrv",
+            service_id="custom-srv-windows-slos",
+            display_name="My Custom Service")
+        windows_based = gcp.monitoring.Slo("windows_based",
+            service=customsrv.service_id,
+            display_name="Test SLO with window based SLI",
+            goal=0.95,
+            calendar_period="FORTNIGHT",
+            windows_based_sli=gcp.monitoring.SloWindowsBasedSliArgs(
+                window_period="400s",
+                good_bad_metric_filter=std.join(separator=" AND ",
+                    input=[
+                        "metric.type=\\"monitoring.googleapis.com/uptime_check/check_passed\\"",
+                        "resource.type=\\"uptime_url\\"",
+                    ]).result,
+            ))
+        ```
+        ### Monitoring Slo Windows Based Metric Mean
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        customsrv = gcp.monitoring.CustomService("customsrv",
+            service_id="custom-srv-windows-slos",
+            display_name="My Custom Service")
+        windows_based = gcp.monitoring.Slo("windows_based",
+            service=customsrv.service_id,
+            display_name="Test SLO with window based SLI",
+            goal=0.9,
+            rolling_period_days=20,
+            windows_based_sli=gcp.monitoring.SloWindowsBasedSliArgs(
+                window_period="600s",
+                metric_mean_in_range=gcp.monitoring.SloWindowsBasedSliMetricMeanInRangeArgs(
+                    time_series=std.join(separator=" AND ",
+                        input=[
+                            "metric.type=\\"agent.googleapis.com/cassandra/client_request/latency/95p\\"",
+                            "resource.type=\\"gce_instance\\"",
+                        ]).result,
+                    range=gcp.monitoring.SloWindowsBasedSliMetricMeanInRangeRangeArgs(
+                        max=5,
+                    ),
+                ),
+            ))
+        ```
+        ### Monitoring Slo Windows Based Metric Sum
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        customsrv = gcp.monitoring.CustomService("customsrv",
+            service_id="custom-srv-windows-slos",
+            display_name="My Custom Service")
+        windows_based = gcp.monitoring.Slo("windows_based",
+            service=customsrv.service_id,
+            display_name="Test SLO with window based SLI",
+            goal=0.9,
+            rolling_period_days=20,
+            windows_based_sli=gcp.monitoring.SloWindowsBasedSliArgs(
+                window_period="400s",
+                metric_sum_in_range=gcp.monitoring.SloWindowsBasedSliMetricSumInRangeArgs(
+                    time_series=std.join(separator=" AND ",
+                        input=[
+                            "metric.type=\\"monitoring.googleapis.com/uptime_check/request_latency\\"",
+                            "resource.type=\\"uptime_url\\"",
+                        ]).result,
+                    range=gcp.monitoring.SloWindowsBasedSliMetricSumInRangeRangeArgs(
+                        max=5000,
+                    ),
+                ),
+            ))
+        ```
+        ### Monitoring Slo Windows Based Ratio Threshold
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        customsrv = gcp.monitoring.CustomService("customsrv",
+            service_id="custom-srv-windows-slos",
+            display_name="My Custom Service")
+        windows_based = gcp.monitoring.Slo("windows_based",
+            service=customsrv.service_id,
+            display_name="Test SLO with window based SLI",
+            goal=0.9,
+            rolling_period_days=20,
+            windows_based_sli=gcp.monitoring.SloWindowsBasedSliArgs(
+                window_period="100s",
+                good_total_ratio_threshold=gcp.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdArgs(
+                    threshold=0.1,
+                    performance=gcp.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs(
+                        distribution_cut=gcp.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs(
+                            distribution_filter=std.join(separator=" AND ",
+                                input=[
+                                    "metric.type=\\"serviceruntime.googleapis.com/api/request_latencies\\"",
+                                    "resource.type=\\"consumed_api\\"",
+                                ]).result,
+                            range=gcp.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs(
+                                min=1,
+                                max=9,
+                            ),
+                        ),
                     ),
                 ),
             ))

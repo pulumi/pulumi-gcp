@@ -341,11 +341,11 @@ class DomainTrust(pulumi.CustomResource):
 
         ad_domain_trust = gcp.activedirectory.DomainTrust("ad-domain-trust",
             domain="test-managed-ad.com",
-            target_dns_ip_addresses=["10.1.0.100"],
             target_domain_name="example-gcp.com",
+            target_dns_ip_addresses=["10.1.0.100"],
             trust_direction="OUTBOUND",
-            trust_handshake_secret="Testing1!",
-            trust_type="FOREST")
+            trust_type="FOREST",
+            trust_handshake_secret="Testing1!")
         ```
 
         ## Import
@@ -415,11 +415,11 @@ class DomainTrust(pulumi.CustomResource):
 
         ad_domain_trust = gcp.activedirectory.DomainTrust("ad-domain-trust",
             domain="test-managed-ad.com",
-            target_dns_ip_addresses=["10.1.0.100"],
             target_domain_name="example-gcp.com",
+            target_dns_ip_addresses=["10.1.0.100"],
             trust_direction="OUTBOUND",
-            trust_handshake_secret="Testing1!",
-            trust_type="FOREST")
+            trust_type="FOREST",
+            trust_handshake_secret="Testing1!")
         ```
 
         ## Import

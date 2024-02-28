@@ -17,14 +17,17 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.certificatemanager.DnsAuthorization("instance", {
+ *     name: "dns-auth",
  *     description: "The default dnss",
  *     domain: "subdomain.hashicorptest.com",
  * });
  * const instance2 = new gcp.certificatemanager.DnsAuthorization("instance2", {
+ *     name: "dns-auth2",
  *     description: "The default dnss",
  *     domain: "subdomain2.hashicorptest.com",
  * });
  * const _default = new gcp.certificatemanager.Certificate("default", {
+ *     name: "dns-cert",
  *     description: "The default cert",
  *     scope: "EDGE_CACHE",
  *     labels: {
@@ -49,10 +52,33 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const pool = new gcp.certificateauthority.CaPool("pool", {
+ *     name: "ca-pool",
  *     location: "us-central1",
  *     tier: "ENTERPRISE",
  * });
- * const caAuthority = new gcp.certificateauthority.Authority("caAuthority", {
+ * // creating certificate_issuance_config to use it in the managed certificate
+ * const issuanceconfig = new gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig", {
+ *     name: "issuance-config",
+ *     description: "sample description for the certificate issuanceConfigs",
+ *     certificateAuthorityConfig: {
+ *         certificateAuthorityServiceConfig: {
+ *             caPool: pool.id,
+ *         },
+ *     },
+ *     lifetime: "1814400s",
+ *     rotationWindowPercentage: 34,
+ *     keyAlgorithm: "ECDSA_P256",
+ * });
+ * const _default = new gcp.certificatemanager.Certificate("default", {
+ *     name: "issuance-config-cert",
+ *     description: "The default cert",
+ *     scope: "EDGE_CACHE",
+ *     managed: {
+ *         domains: ["terraform.subdomain1.com"],
+ *         issuanceConfig: issuanceconfig.id,
+ *     },
+ * });
+ * const caAuthority = new gcp.certificateauthority.Authority("ca_authority", {
  *     location: "us-central1",
  *     pool: pool.name,
  *     certificateAuthorityId: "ca-authority",
@@ -88,28 +114,6 @@ import * as utilities from "../utilities";
  *     skipGracePeriod: true,
  *     ignoreActiveCertificatesOnDeletion: true,
  * });
- * // creating certificate_issuance_config to use it in the managed certificate
- * const issuanceconfig = new gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig", {
- *     description: "sample description for the certificate issuanceConfigs",
- *     certificateAuthorityConfig: {
- *         certificateAuthorityServiceConfig: {
- *             caPool: pool.id,
- *         },
- *     },
- *     lifetime: "1814400s",
- *     rotationWindowPercentage: 34,
- *     keyAlgorithm: "ECDSA_P256",
- * }, {
- *     dependsOn: [caAuthority],
- * });
- * const _default = new gcp.certificatemanager.Certificate("default", {
- *     description: "The default cert",
- *     scope: "EDGE_CACHE",
- *     managed: {
- *         domains: ["terraform.subdomain1.com"],
- *         issuanceConfig: issuanceconfig.id,
- *     },
- * });
  * ```
  * ### Certificate Manager Certificate Basic
  *
@@ -118,14 +122,17 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.certificatemanager.DnsAuthorization("instance", {
+ *     name: "dns-auth",
  *     description: "The default dnss",
  *     domain: "subdomain.hashicorptest.com",
  * });
  * const instance2 = new gcp.certificatemanager.DnsAuthorization("instance2", {
+ *     name: "dns-auth2",
  *     description: "The default dnss",
  *     domain: "subdomain2.hashicorptest.com",
  * });
  * const _default = new gcp.certificatemanager.Certificate("default", {
+ *     name: "self-managed-cert",
  *     description: "Global cert",
  *     scope: "EDGE_CACHE",
  *     managed: {
@@ -144,15 +151,20 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
  *
  * const _default = new gcp.certificatemanager.Certificate("default", {
+ *     name: "self-managed-cert",
  *     description: "Regional cert",
  *     location: "us-central1",
  *     selfManaged: {
- *         pemCertificate: fs.readFileSync("test-fixtures/cert.pem", "utf8"),
- *         pemPrivateKey: fs.readFileSync("test-fixtures/private-key.pem", "utf8"),
+ *         pemCertificate: std.file({
+ *             input: "test-fixtures/cert.pem",
+ *         }).then(invoke => invoke.result),
+ *         pemPrivateKey: std.file({
+ *             input: "test-fixtures/private-key.pem",
+ *         }).then(invoke => invoke.result),
  *     },
  * });
  * ```
@@ -163,10 +175,33 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const pool = new gcp.certificateauthority.CaPool("pool", {
+ *     name: "ca-pool",
  *     location: "us-central1",
  *     tier: "ENTERPRISE",
  * });
- * const caAuthority = new gcp.certificateauthority.Authority("caAuthority", {
+ * // creating certificate_issuance_config to use it in the managed certificate
+ * const issuanceconfig = new gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig", {
+ *     name: "issuance-config",
+ *     description: "sample description for the certificate issuanceConfigs",
+ *     certificateAuthorityConfig: {
+ *         certificateAuthorityServiceConfig: {
+ *             caPool: pool.id,
+ *         },
+ *     },
+ *     lifetime: "1814400s",
+ *     rotationWindowPercentage: 34,
+ *     keyAlgorithm: "ECDSA_P256",
+ * });
+ * const _default = new gcp.certificatemanager.Certificate("default", {
+ *     name: "issuance-config-cert",
+ *     description: "sample google managed all_regions certificate with issuance config for terraform",
+ *     scope: "ALL_REGIONS",
+ *     managed: {
+ *         domains: ["terraform.subdomain1.com"],
+ *         issuanceConfig: issuanceconfig.id,
+ *     },
+ * });
+ * const caAuthority = new gcp.certificateauthority.Authority("ca_authority", {
  *     location: "us-central1",
  *     pool: pool.name,
  *     certificateAuthorityId: "ca-authority",
@@ -202,28 +237,6 @@ import * as utilities from "../utilities";
  *     skipGracePeriod: true,
  *     ignoreActiveCertificatesOnDeletion: true,
  * });
- * // creating certificate_issuance_config to use it in the managed certificate
- * const issuanceconfig = new gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig", {
- *     description: "sample description for the certificate issuanceConfigs",
- *     certificateAuthorityConfig: {
- *         certificateAuthorityServiceConfig: {
- *             caPool: pool.id,
- *         },
- *     },
- *     lifetime: "1814400s",
- *     rotationWindowPercentage: 34,
- *     keyAlgorithm: "ECDSA_P256",
- * }, {
- *     dependsOn: [caAuthority],
- * });
- * const _default = new gcp.certificatemanager.Certificate("default", {
- *     description: "sample google managed all_regions certificate with issuance config for terraform",
- *     scope: "ALL_REGIONS",
- *     managed: {
- *         domains: ["terraform.subdomain1.com"],
- *         issuanceConfig: issuanceconfig.id,
- *     },
- * });
  * ```
  * ### Certificate Manager Google Managed Certificate Dns All Regions
  *
@@ -232,14 +245,17 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.certificatemanager.DnsAuthorization("instance", {
+ *     name: "dns-auth",
  *     description: "The default dnss",
  *     domain: "subdomain.hashicorptest.com",
  * });
  * const instance2 = new gcp.certificatemanager.DnsAuthorization("instance2", {
+ *     name: "dns-auth2",
  *     description: "The default dnss",
  *     domain: "subdomain2.hashicorptest.com",
  * });
  * const _default = new gcp.certificatemanager.Certificate("default", {
+ *     name: "dns-cert",
  *     description: "The default cert",
  *     scope: "ALL_REGIONS",
  *     managed: {

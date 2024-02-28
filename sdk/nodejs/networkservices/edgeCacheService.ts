@@ -19,10 +19,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const dest = new gcp.storage.Bucket("dest", {
+ *     name: "my-bucket",
  *     location: "US",
  *     forceDestroy: true,
  * });
- * const instanceEdgeCacheOrigin = new gcp.networkservices.EdgeCacheOrigin("instanceEdgeCacheOrigin", {
+ * const instance = new gcp.networkservices.EdgeCacheOrigin("instance", {
+ *     name: "my-origin",
  *     originAddress: dest.url,
  *     description: "The default bucket for media edge test",
  *     maxAttempts: 2,
@@ -30,7 +32,8 @@ import * as utilities from "../utilities";
  *         connectTimeout: "10s",
  *     },
  * });
- * const instanceEdgeCacheService = new gcp.networkservices.EdgeCacheService("instanceEdgeCacheService", {
+ * const instanceEdgeCacheService = new gcp.networkservices.EdgeCacheService("instance", {
+ *     name: "my-service",
  *     description: "some description",
  *     routing: {
  *         hostRules: [{
@@ -46,7 +49,7 @@ import * as utilities from "../utilities";
  *                 matchRules: [{
  *                     prefixMatch: "/",
  *                 }],
- *                 origin: instanceEdgeCacheOrigin.name,
+ *                 origin: instance.name,
  *                 routeAction: {
  *                     cdnPolicy: {
  *                         cacheMode: "CACHE_ALL_STATIC",
@@ -71,10 +74,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const dest = new gcp.storage.Bucket("dest", {
+ *     name: "my-bucket",
  *     location: "US",
  *     forceDestroy: true,
  * });
  * const google = new gcp.networkservices.EdgeCacheOrigin("google", {
+ *     name: "origin-google",
  *     originAddress: "google.com",
  *     description: "The default bucket for media edge test",
  *     maxAttempts: 2,
@@ -82,7 +87,8 @@ import * as utilities from "../utilities";
  *         connectTimeout: "10s",
  *     },
  * });
- * const instanceEdgeCacheOrigin = new gcp.networkservices.EdgeCacheOrigin("instanceEdgeCacheOrigin", {
+ * const instance = new gcp.networkservices.EdgeCacheOrigin("instance", {
+ *     name: "my-origin",
  *     originAddress: dest.url,
  *     description: "The default bucket for media edge test",
  *     maxAttempts: 2,
@@ -90,7 +96,8 @@ import * as utilities from "../utilities";
  *         connectTimeout: "10s",
  *     },
  * });
- * const instanceEdgeCacheService = new gcp.networkservices.EdgeCacheService("instanceEdgeCacheService", {
+ * const instanceEdgeCacheService = new gcp.networkservices.EdgeCacheService("instance", {
+ *     name: "my-service",
  *     description: "some description",
  *     disableQuic: true,
  *     disableHttp2: true,
@@ -124,7 +131,7 @@ import * as utilities from "../utilities";
  *                     matchRules: [{
  *                         prefixMatch: "/",
  *                     }],
- *                     origin: instanceEdgeCacheOrigin.name,
+ *                     origin: instance.name,
  *                     routeAction: {
  *                         cdnPolicy: {
  *                             cacheMode: "CACHE_ALL_STATIC",
@@ -188,7 +195,7 @@ import * as utilities from "../utilities";
  *                                 headerName: "prod",
  *                             }],
  *                         },
- *                         origin: instanceEdgeCacheOrigin.name,
+ *                         origin: instance.name,
  *                         routeAction: {
  *                             cdnPolicy: {
  *                                 cacheMode: "CACHE_ALL_STATIC",
@@ -233,7 +240,7 @@ import * as utilities from "../utilities";
  *                         matchRules: [{
  *                             fullPathMatch: "/yay",
  *                         }],
- *                         origin: instanceEdgeCacheOrigin.name,
+ *                         origin: instance.name,
  *                         routeAction: {
  *                             cdnPolicy: {
  *                                 cacheMode: "CACHE_ALL_STATIC",
@@ -256,6 +263,131 @@ import * as utilities from "../utilities";
  *     logConfig: {
  *         enable: true,
  *         sampleRate: 0.01,
+ *     },
+ * });
+ * ```
+ * ### Network Services Edge Cache Service Dual Token
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const secret_basic = new gcp.secretmanager.Secret("secret-basic", {
+ *     secretId: "secret-name",
+ *     replication: {
+ *         auto: {},
+ *     },
+ * });
+ * const secret_version_basic = new gcp.secretmanager.SecretVersion("secret-version-basic", {
+ *     secret: secret_basic.id,
+ *     secretData: "secret-data",
+ * });
+ * const keyset = new gcp.networkservices.EdgeCacheKeyset("keyset", {
+ *     name: "keyset-name",
+ *     description: "The default keyset",
+ *     publicKeys: [{
+ *         id: "my-public-key",
+ *         managed: true,
+ *     }],
+ *     validationSharedKeys: [{
+ *         secretVersion: secret_version_basic.id,
+ *     }],
+ * });
+ * const instance = new gcp.networkservices.EdgeCacheOrigin("instance", {
+ *     name: "my-origin",
+ *     originAddress: "gs://media-edge-default",
+ *     description: "The default bucket for media edge test",
+ * });
+ * const instanceEdgeCacheService = new gcp.networkservices.EdgeCacheService("instance", {
+ *     name: "my-service",
+ *     description: "some description",
+ *     routing: {
+ *         hostRules: [{
+ *             description: "host rule description",
+ *             hosts: ["sslcert.tf-test.club"],
+ *             pathMatcher: "routes",
+ *         }],
+ *         pathMatchers: [{
+ *             name: "routes",
+ *             routeRules: [
+ *                 {
+ *                     description: "a route rule to match against master playlist",
+ *                     priority: "1",
+ *                     matchRules: [{
+ *                         pathTemplateMatch: "/master.m3u8",
+ *                     }],
+ *                     origin: instance.name,
+ *                     routeAction: {
+ *                         cdnPolicy: {
+ *                             signedRequestMode: "REQUIRE_TOKENS",
+ *                             signedRequestKeyset: keyset.id,
+ *                             signedTokenOptions: {
+ *                                 tokenQueryParameter: "edge-cache-token",
+ *                             },
+ *                             signedRequestMaximumExpirationTtl: "600s",
+ *                             addSignatures: {
+ *                                 actions: "GENERATE_COOKIE",
+ *                                 keyset: keyset.id,
+ *                                 copiedParameters: [
+ *                                     "PathGlobs",
+ *                                     "SessionID",
+ *                                 ],
+ *                             },
+ *                         },
+ *                     },
+ *                 },
+ *                 {
+ *                     description: "a route rule to match against all playlists",
+ *                     priority: "2",
+ *                     matchRules: [{
+ *                         pathTemplateMatch: "/*.m3u8",
+ *                     }],
+ *                     origin: instance.name,
+ *                     routeAction: {
+ *                         cdnPolicy: {
+ *                             signedRequestMode: "REQUIRE_TOKENS",
+ *                             signedRequestKeyset: keyset.id,
+ *                             signedTokenOptions: {
+ *                                 tokenQueryParameter: "hdnts",
+ *                                 allowedSignatureAlgorithms: [
+ *                                     "ED25519",
+ *                                     "HMAC_SHA_256",
+ *                                     "HMAC_SHA1",
+ *                                 ],
+ *                             },
+ *                             addSignatures: {
+ *                                 actions: "GENERATE_TOKEN_HLS_COOKIELESS",
+ *                                 keyset: keyset.id,
+ *                                 tokenTtl: "1200s",
+ *                                 tokenQueryParameter: "hdntl",
+ *                                 copiedParameters: ["URLPrefix"],
+ *                             },
+ *                         },
+ *                     },
+ *                 },
+ *                 {
+ *                     description: "a route rule to match against",
+ *                     priority: "3",
+ *                     matchRules: [{
+ *                         pathTemplateMatch: "/**.m3u8",
+ *                     }],
+ *                     origin: instance.name,
+ *                     routeAction: {
+ *                         cdnPolicy: {
+ *                             signedRequestMode: "REQUIRE_TOKENS",
+ *                             signedRequestKeyset: keyset.id,
+ *                             signedTokenOptions: {
+ *                                 tokenQueryParameter: "hdntl",
+ *                             },
+ *                             addSignatures: {
+ *                                 actions: "PROPAGATE_TOKEN_HLS_COOKIELESS",
+ *                                 tokenQueryParameter: "hdntl",
+ *                             },
+ *                         },
+ *                     },
+ *                 },
+ *             ],
+ *         }],
  *     },
  * });
  * ```

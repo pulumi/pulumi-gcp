@@ -24,8 +24,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const _default = new gcp.compute.Network("default", {autoCreateSubnetworks: false});
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "network",
+ *     autoCreateSubnetworks: false,
+ * });
  * const group = new gcp.compute.RegionNetworkEndpointGroup("group", {
+ *     name: "ip-port-neg",
  *     network: _default.id,
  *     region: "us-central1",
  *     networkEndpointType: "INTERNET_IP_PORT",
@@ -43,8 +47,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const _default = new gcp.compute.Network("default", {autoCreateSubnetworks: false});
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "network",
+ *     autoCreateSubnetworks: false,
+ * });
  * const group = new gcp.compute.RegionNetworkEndpointGroup("group", {
+ *     name: "fqdn-port-neg",
  *     network: _default.id,
  *     region: "us-central1",
  *     networkEndpointType: "INTERNET_FQDN_PORT",

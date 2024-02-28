@@ -40,11 +40,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := organizations.NewIAMBinding(ctx, "binding", &organizations.IAMBindingArgs{
+//				OrgId: pulumi.String("123456789"),
+//				Role:  pulumi.String("roles/browser"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:alice@gmail.com"),
 //				},
-//				OrgId: pulumi.String("123456789"),
-//				Role:  pulumi.String("roles/browser"),
 //			})
 //			if err != nil {
 //				return err

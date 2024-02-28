@@ -27,9 +27,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const example = new gcp.iam.WorkforcePool("example", {
- *     location: "global",
- *     parent: "organizations/123456789",
  *     workforcePoolId: "example-pool",
+ *     parent: "organizations/123456789",
+ *     location: "global",
  * });
  * ```
  * ### Iam Workforce Pool Full
@@ -39,19 +39,19 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const example = new gcp.iam.WorkforcePool("example", {
+ *     workforcePoolId: "example-pool",
+ *     parent: "organizations/123456789",
+ *     location: "global",
+ *     displayName: "Display name",
+ *     description: "A sample workforce pool.",
+ *     disabled: false,
+ *     sessionDuration: "7200s",
  *     accessRestrictions: {
  *         allowedServices: [{
  *             domain: "backstory.chronicle.security",
  *         }],
  *         disableProgrammaticSignin: false,
  *     },
- *     description: "A sample workforce pool.",
- *     disabled: false,
- *     displayName: "Display name",
- *     location: "global",
- *     parent: "organizations/123456789",
- *     sessionDuration: "7200s",
- *     workforcePoolId: "example-pool",
  * });
  * ```
  *

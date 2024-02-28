@@ -28,8 +28,8 @@ namespace Pulumi.Gcp.Compute
         /// {
         ///     var policy = Gcp.Compute.GetImageIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_compute_image.Example.Project,
-        ///         Image = google_compute_image.Example.Name,
+        ///         Project = example.Project,
+        ///         Image = example.Name,
         ///     });
         /// 
         /// });
@@ -55,8 +55,8 @@ namespace Pulumi.Gcp.Compute
         /// {
         ///     var policy = Gcp.Compute.GetImageIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_compute_image.Example.Project,
-        ///         Image = google_compute_image.Example.Name,
+        ///         Project = example.Project,
+        ///         Image = example.Name,
         ///     });
         /// 
         /// });

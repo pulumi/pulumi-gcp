@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Storage
     ///         Project = "my-project-name",
     ///     });
     /// 
-    ///     var pubsubEditorRole = new Gcp.Projects.IAMMember("pubsubEditorRole", new()
+    ///     var pubsubEditorRole = new Gcp.Projects.IAMMember("pubsub_editor_role", new()
     ///     {
     ///         Project = "my-project-name",
     ///         Role = "roles/pubsub.editor",
@@ -43,16 +43,11 @@ namespace Pulumi.Gcp.Storage
     /// 
     ///     var example = new Gcp.Storage.TransferAgentPool("example", new()
     ///     {
+    ///         Name = "agent-pool-example",
     ///         DisplayName = "Source A to destination Z",
     ///         BandwidthLimit = new Gcp.Storage.Inputs.TransferAgentPoolBandwidthLimitArgs
     ///         {
     ///             LimitMbps = "120",
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             pubsubEditorRole,
     ///         },
     ///     });
     /// 

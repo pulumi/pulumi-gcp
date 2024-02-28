@@ -34,8 +34,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			versions, err := container.GetAzureVersions(ctx, &container.GetAzureVersionsArgs{
-//				Location: pulumi.StringRef("us-west1"),
 //				Project:  pulumi.StringRef("my-project-name"),
+//				Location: pulumi.StringRef("us-west1"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -43,22 +43,23 @@ import (
 //			basic, err := container.NewAzureClient(ctx, "basic", &container.AzureClientArgs{
 //				ApplicationId: pulumi.String("12345678-1234-1234-1234-123456789111"),
 //				Location:      pulumi.String("us-west1"),
-//				Project:       pulumi.String("my-project-name"),
+//				Name:          pulumi.String("client-name"),
 //				TenantId:      pulumi.String("12345678-1234-1234-1234-123456789111"),
+//				Project:       pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = container.NewAzureCluster(ctx, "primary", &container.AzureClusterArgs{
 //				Authorization: &container.AzureClusterAuthorizationArgs{
-//					AdminGroups: container.AzureClusterAuthorizationAdminGroupArray{
-//						&container.AzureClusterAuthorizationAdminGroupArgs{
-//							Group: pulumi.String("group@domain.com"),
-//						},
-//					},
 //					AdminUsers: container.AzureClusterAuthorizationAdminUserArray{
 //						&container.AzureClusterAuthorizationAdminUserArgs{
 //							Username: pulumi.String("mmv2@google.com"),
+//						},
+//					},
+//					AdminGroups: container.AzureClusterAuthorizationAdminGroupArray{
+//						&container.AzureClusterAuthorizationAdminGroupArgs{
+//							Group: pulumi.String("group@domain.com"),
 //						},
 //					},
 //				},
@@ -77,6 +78,7 @@ import (
 //					Project: pulumi.String("my-project-number"),
 //				},
 //				Location: pulumi.String("us-west1"),
+//				Name:     pulumi.String("name"),
 //				Networking: &container.AzureClusterNetworkingArgs{
 //					PodAddressCidrBlocks: pulumi.StringArray{
 //						pulumi.String("10.200.0.0/16"),
@@ -86,8 +88,8 @@ import (
 //					},
 //					VirtualNetworkId: pulumi.String("/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet"),
 //				},
-//				Project:         pulumi.String("my-project-name"),
 //				ResourceGroupId: pulumi.String("/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster"),
+//				Project:         pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
 //				return err
@@ -123,9 +125,10 @@ import (
 //			basic, err := container.NewAzureClient(ctx, "basic", &container.AzureClientArgs{
 //				ApplicationId: pulumi.String("12345678-1234-1234-1234-123456789111"),
 //				Location:      pulumi.String("us-west1"),
+//				Name:          pulumi.String("client-name"),
 //				TenantId:      pulumi.String("12345678-1234-1234-1234-123456789111"),
 //				Project:       pulumi.String("my-project-name"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -152,6 +155,7 @@ import (
 //					Project: pulumi.String("my-project-number"),
 //				},
 //				Location: pulumi.String("us-west1"),
+//				Name:     pulumi.String("name"),
 //				Networking: &container.AzureClusterNetworkingArgs{
 //					PodAddressCidrBlocks: pulumi.StringArray{
 //						pulumi.String("10.200.0.0/16"),
@@ -171,7 +175,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

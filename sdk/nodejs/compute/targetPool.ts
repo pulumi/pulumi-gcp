@@ -11,6 +11,28 @@ import * as utilities from "../utilities";
  * documentation](https://cloud.google.com/compute/docs/load-balancing/network/target-pools)
  * and [API](https://cloud.google.com/compute/docs/reference/latest/targetPools).
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ *     name: "default",
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const _default = new gcp.compute.TargetPool("default", {
+ *     name: "instance-pool",
+ *     instances: [
+ *         "us-central1-a/myinstance1",
+ *         "us-central1-b/myinstance2",
+ *     ],
+ *     healthChecks: defaultHttpHealthCheck.name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Target pools can be imported using any of the following formats:

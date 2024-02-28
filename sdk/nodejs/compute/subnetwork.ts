@@ -44,8 +44,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const custom_test = new gcp.compute.Network("custom-test", {autoCreateSubnetworks: false});
+ * const custom_test = new gcp.compute.Network("custom-test", {
+ *     name: "test-network",
+ *     autoCreateSubnetworks: false,
+ * });
  * const network_with_private_secondary_ip_ranges = new gcp.compute.Subnetwork("network-with-private-secondary-ip-ranges", {
+ *     name: "test-subnetwork",
  *     ipCidrRange: "10.2.0.0/16",
  *     region: "us-central1",
  *     network: custom_test.id,
@@ -61,8 +65,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const custom_test = new gcp.compute.Network("custom-test", {autoCreateSubnetworks: false});
+ * const custom_test = new gcp.compute.Network("custom-test", {
+ *     name: "log-test-network",
+ *     autoCreateSubnetworks: false,
+ * });
  * const subnet_with_logging = new gcp.compute.Subnetwork("subnet-with-logging", {
+ *     name: "log-test-subnetwork",
  *     ipCidrRange: "10.2.0.0/16",
  *     region: "us-central1",
  *     network: custom_test.id,
@@ -79,17 +87,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const custom_test = new gcp.compute.Network("custom-test", {autoCreateSubnetworks: false}, {
- *     provider: google_beta,
+ * const custom_test = new gcp.compute.Network("custom-test", {
+ *     name: "l7lb-test-network",
+ *     autoCreateSubnetworks: false,
  * });
  * const network_for_l7lb = new gcp.compute.Subnetwork("network-for-l7lb", {
+ *     name: "l7lb-test-subnetwork",
  *     ipCidrRange: "10.0.0.0/22",
  *     region: "us-central1",
  *     purpose: "REGIONAL_MANAGED_PROXY",
  *     role: "ACTIVE",
  *     network: custom_test.id,
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Subnetwork Ipv6
@@ -98,8 +106,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const custom_test = new gcp.compute.Network("custom-test", {autoCreateSubnetworks: false});
+ * const custom_test = new gcp.compute.Network("custom-test", {
+ *     name: "ipv6-test-network",
+ *     autoCreateSubnetworks: false,
+ * });
  * const subnetwork_ipv6 = new gcp.compute.Subnetwork("subnetwork-ipv6", {
+ *     name: "ipv6-test-subnetwork",
  *     ipCidrRange: "10.0.0.0/22",
  *     region: "us-west2",
  *     stackType: "IPV4_IPV6",
@@ -114,10 +126,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const custom_test = new gcp.compute.Network("custom-test", {
+ *     name: "internal-ipv6-test-network",
  *     autoCreateSubnetworks: false,
  *     enableUlaInternalIpv6: true,
  * });
  * const subnetwork_internal_ipv6 = new gcp.compute.Subnetwork("subnetwork-internal-ipv6", {
+ *     name: "internal-ipv6-test-subnetwork",
  *     ipCidrRange: "10.0.0.0/22",
  *     region: "us-west2",
  *     stackType: "IPV4_IPV6",
@@ -131,16 +145,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const custom_test = new gcp.compute.Network("custom-test", {autoCreateSubnetworks: false}, {
- *     provider: google_beta,
+ * const custom_test = new gcp.compute.Network("custom-test", {
+ *     name: "subnet-purpose-test-network",
+ *     autoCreateSubnetworks: false,
  * });
  * const subnetwork_purpose_private_nat = new gcp.compute.Subnetwork("subnetwork-purpose-private-nat", {
+ *     name: "subnet-purpose-test-subnetwork",
  *     region: "us-west2",
  *     ipCidrRange: "192.168.1.0/24",
  *     purpose: "PRIVATE_NAT",
  *     network: custom_test.id,
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Subnetwork Cidr Overlap
@@ -149,16 +163,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const net_cidr_overlap = new gcp.compute.Network("net-cidr-overlap", {autoCreateSubnetworks: false}, {
- *     provider: google_beta,
+ * const net_cidr_overlap = new gcp.compute.Network("net-cidr-overlap", {
+ *     name: "net-cidr-overlap",
+ *     autoCreateSubnetworks: false,
  * });
  * const subnetwork_cidr_overlap = new gcp.compute.Subnetwork("subnetwork-cidr-overlap", {
+ *     name: "subnet-cidr-overlap",
  *     region: "us-west2",
  *     ipCidrRange: "192.168.1.0/24",
  *     allowSubnetCidrRoutesOverlap: true,
  *     network: net_cidr_overlap.id,
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

@@ -53,7 +53,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.Autoscaler;
  * import com.pulumi.gcp.compute.AutoscalerArgs;
  * import com.pulumi.gcp.compute.inputs.AutoscalerAutoscalingPolicyArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -73,6 +72,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultInstanceTemplate = new InstanceTemplate(&#34;defaultInstanceTemplate&#34;, InstanceTemplateArgs.builder()        
+ *             .name(&#34;my-instance-template&#34;)
  *             .machineType(&#34;e2-medium&#34;)
  *             .canIpForward(false)
  *             .tags(            
@@ -91,15 +91,14 @@ import javax.annotation.Nullable;
  *                     &#34;compute-ro&#34;,
  *                     &#34;storage-ro&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
- *         var defaultTargetPool = new TargetPool(&#34;defaultTargetPool&#34;, TargetPoolArgs.Empty, CustomResourceOptions.builder()
- *             .provider(google_beta)
+ *         var defaultTargetPool = new TargetPool(&#34;defaultTargetPool&#34;, TargetPoolArgs.builder()        
+ *             .name(&#34;my-target-pool&#34;)
  *             .build());
  * 
  *         var defaultInstanceGroupManager = new InstanceGroupManager(&#34;defaultInstanceGroupManager&#34;, InstanceGroupManagerArgs.builder()        
+ *             .name(&#34;my-igm&#34;)
  *             .zone(&#34;us-central1-f&#34;)
  *             .versions(InstanceGroupManagerVersionArgs.builder()
  *                 .instanceTemplate(defaultInstanceTemplate.id())
@@ -107,11 +106,10 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .targetPools(defaultTargetPool.id())
  *             .baseInstanceName(&#34;autoscaler-sample&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
- *         var defaultAutoscaler = new Autoscaler(&#34;defaultAutoscaler&#34;, AutoscalerArgs.builder()        
+ *         var default_ = new Autoscaler(&#34;default&#34;, AutoscalerArgs.builder()        
+ *             .name(&#34;my-autoscaler&#34;)
  *             .zone(&#34;us-central1-f&#34;)
  *             .target(defaultInstanceGroupManager.id())
  *             .autoscalingPolicy(AutoscalerAutoscalingPolicyArgs.builder()
@@ -124,9 +122,7 @@ import javax.annotation.Nullable;
  *                     .singleInstanceAssignment(65535)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -146,6 +142,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceTemplateServiceAccountArgs;
  * import com.pulumi.gcp.compute.TargetPool;
+ * import com.pulumi.gcp.compute.TargetPoolArgs;
  * import com.pulumi.gcp.compute.InstanceGroupManager;
  * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceGroupManagerVersionArgs;
@@ -172,6 +169,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var foobarInstanceTemplate = new InstanceTemplate(&#34;foobarInstanceTemplate&#34;, InstanceTemplateArgs.builder()        
+ *             .name(&#34;my-instance-template&#34;)
  *             .machineType(&#34;e2-medium&#34;)
  *             .canIpForward(false)
  *             .tags(            
@@ -192,9 +190,12 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var foobarTargetPool = new TargetPool(&#34;foobarTargetPool&#34;);
+ *         var foobarTargetPool = new TargetPool(&#34;foobarTargetPool&#34;, TargetPoolArgs.builder()        
+ *             .name(&#34;my-target-pool&#34;)
+ *             .build());
  * 
  *         var foobarInstanceGroupManager = new InstanceGroupManager(&#34;foobarInstanceGroupManager&#34;, InstanceGroupManagerArgs.builder()        
+ *             .name(&#34;my-igm&#34;)
  *             .zone(&#34;us-central1-f&#34;)
  *             .versions(InstanceGroupManagerVersionArgs.builder()
  *                 .instanceTemplate(foobarInstanceTemplate.id())
@@ -204,7 +205,8 @@ import javax.annotation.Nullable;
  *             .baseInstanceName(&#34;foobar&#34;)
  *             .build());
  * 
- *         var foobarAutoscaler = new Autoscaler(&#34;foobarAutoscaler&#34;, AutoscalerArgs.builder()        
+ *         var foobar = new Autoscaler(&#34;foobar&#34;, AutoscalerArgs.builder()        
+ *             .name(&#34;my-autoscaler&#34;)
  *             .zone(&#34;us-central1-f&#34;)
  *             .target(foobarInstanceGroupManager.id())
  *             .autoscalingPolicy(AutoscalerAutoscalingPolicyArgs.builder()

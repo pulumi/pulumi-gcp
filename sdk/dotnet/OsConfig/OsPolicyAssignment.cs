@@ -37,7 +37,6 @@ namespace Pulumi.Gcp.OsConfig
     /// {
     ///     var primary = new Gcp.OsConfig.OsPolicyAssignment("primary", new()
     ///     {
-    ///         Description = "A test os policy assignment",
     ///         InstanceFilter = new Gcp.OsConfig.Inputs.OsPolicyAssignmentInstanceFilterArgs
     ///         {
     ///             All = false,
@@ -71,26 +70,17 @@ namespace Pulumi.Gcp.OsConfig
     ///             },
     ///         },
     ///         Location = "us-central1-a",
+    ///         Name = "policy-assignment",
     ///         OsPolicies = new[]
     ///         {
     ///             new Gcp.OsConfig.Inputs.OsPolicyAssignmentOsPolicyArgs
     ///             {
-    ///                 AllowNoResourceGroupMatch = false,
-    ///                 Description = "A test os policy",
     ///                 Id = "policy",
     ///                 Mode = "VALIDATION",
     ///                 ResourceGroups = new[]
     ///                 {
     ///                     new Gcp.OsConfig.Inputs.OsPolicyAssignmentOsPolicyResourceGroupArgs
     ///                     {
-    ///                         InventoryFilters = new[]
-    ///                         {
-    ///                             new Gcp.OsConfig.Inputs.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs
-    ///                             {
-    ///                                 OsShortName = "centos",
-    ///                                 OsVersion = "8.*",
-    ///                             },
-    ///                         },
     ///                         Resources = new[]
     ///                         {
     ///                             new Gcp.OsConfig.Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs
@@ -106,17 +96,32 @@ namespace Pulumi.Gcp.OsConfig
     ///                                             "doc",
     ///                                         },
     ///                                         Distribution = "debian",
-    ///                                         GpgKey = ".gnupg/pubring.kbx",
     ///                                         Uri = "https://atl.mirrors.clouvider.net/debian",
+    ///                                         GpgKey = ".gnupg/pubring.kbx",
     ///                                     },
     ///                                 },
     ///                             },
     ///                             new Gcp.OsConfig.Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs
     ///                             {
+    ///                                 Id = "exec1",
     ///                                 Exec = new Gcp.OsConfig.Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs
     ///                                 {
+    ///                                     Validate = new Gcp.OsConfig.Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs
+    ///                                     {
+    ///                                         Interpreter = "SHELL",
+    ///                                         Args = new[]
+    ///                                         {
+    ///                                             "arg1",
+    ///                                         },
+    ///                                         File = new Gcp.OsConfig.Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs
+    ///                                         {
+    ///                                             LocalPath = "$HOME/script.sh",
+    ///                                         },
+    ///                                         OutputFilePath = "$HOME/out",
+    ///                                     },
     ///                                     Enforce = new Gcp.OsConfig.Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs
     ///                                     {
+    ///                                         Interpreter = "SHELL",
     ///                                         Args = new[]
     ///                                         {
     ///                                             "arg1",
@@ -126,32 +131,27 @@ namespace Pulumi.Gcp.OsConfig
     ///                                             AllowInsecure = true,
     ///                                             Remote = new Gcp.OsConfig.Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs
     ///                                             {
-    ///                                                 Sha256Checksum = "c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
     ///                                                 Uri = "https://www.example.com/script.sh",
+    ///                                                 Sha256Checksum = "c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
     ///                                             },
     ///                                         },
-    ///                                         Interpreter = "SHELL",
-    ///                                         OutputFilePath = "$HOME/out",
-    ///                                     },
-    ///                                     Validate = new Gcp.OsConfig.Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs
-    ///                                     {
-    ///                                         Args = new[]
-    ///                                         {
-    ///                                             "arg1",
-    ///                                         },
-    ///                                         File = new Gcp.OsConfig.Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs
-    ///                                         {
-    ///                                             LocalPath = "$HOME/script.sh",
-    ///                                         },
-    ///                                         Interpreter = "SHELL",
     ///                                         OutputFilePath = "$HOME/out",
     ///                                     },
     ///                                 },
-    ///                                 Id = "exec1",
+    ///                             },
+    ///                         },
+    ///                         InventoryFilters = new[]
+    ///                         {
+    ///                             new Gcp.OsConfig.Inputs.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs
+    ///                             {
+    ///                                 OsShortName = "centos",
+    ///                                 OsVersion = "8.*",
     ///                             },
     ///                         },
     ///                     },
     ///                 },
+    ///                 AllowNoResourceGroupMatch = false,
+    ///                 Description = "A test os policy",
     ///             },
     ///         },
     ///         Rollout = new Gcp.OsConfig.Inputs.OsPolicyAssignmentRolloutArgs
@@ -162,6 +162,7 @@ namespace Pulumi.Gcp.OsConfig
     ///             },
     ///             MinWaitDuration = "3s",
     ///         },
+    ///         Description = "A test os policy assignment",
     ///     });
     /// 
     /// });

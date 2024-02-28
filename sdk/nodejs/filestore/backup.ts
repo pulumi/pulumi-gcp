@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.filestore.Instance("instance", {
+ *     name: "tf-fs-inst",
  *     location: "us-central1-b",
  *     tier: "BASIC_HDD",
  *     fileShares: {
@@ -35,6 +36,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const backup = new gcp.filestore.Backup("backup", {
+ *     name: "tf-fs-bkup",
  *     location: "us-central1",
  *     description: "This is a filestore backup for the test instance",
  *     sourceInstance: instance.id,

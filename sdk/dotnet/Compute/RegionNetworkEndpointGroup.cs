@@ -32,17 +32,20 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
+    ///         Name = "cloudfunctions-function-example-bucket",
     ///         Location = "US",
     ///     });
     /// 
     ///     var archive = new Gcp.Storage.BucketObject("archive", new()
     ///     {
+    ///         Name = "index.zip",
     ///         Bucket = bucket.Name,
     ///         Source = new FileAsset("path/to/index.zip"),
     ///     });
     /// 
-    ///     var functionNegFunction = new Gcp.CloudFunctions.Function("functionNegFunction", new()
+    ///     var functionNegFunction = new Gcp.CloudFunctions.Function("function_neg", new()
     ///     {
+    ///         Name = "function-neg",
     ///         Description = "My function",
     ///         Runtime = "nodejs10",
     ///         AvailableMemoryMb = 128,
@@ -54,8 +57,9 @@ namespace Pulumi.Gcp.Compute
     ///     });
     /// 
     ///     // Cloud Functions Example
-    ///     var functionNegRegionNetworkEndpointGroup = new Gcp.Compute.RegionNetworkEndpointGroup("functionNegRegionNetworkEndpointGroup", new()
+    ///     var functionNeg = new Gcp.Compute.RegionNetworkEndpointGroup("function_neg", new()
     ///     {
+    ///         Name = "function-neg",
     ///         NetworkEndpointType = "SERVERLESS",
     ///         Region = "us-central1",
     ///         CloudFunction = new Gcp.Compute.Inputs.RegionNetworkEndpointGroupCloudFunctionArgs
@@ -76,8 +80,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var cloudrunNegService = new Gcp.CloudRun.Service("cloudrunNegService", new()
+    ///     var cloudrunNegService = new Gcp.CloudRun.Service("cloudrun_neg", new()
     ///     {
+    ///         Name = "cloudrun-neg",
     ///         Location = "us-central1",
     ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
     ///         {
@@ -103,8 +108,9 @@ namespace Pulumi.Gcp.Compute
     ///     });
     /// 
     ///     // Cloud Run Example
-    ///     var cloudrunNegRegionNetworkEndpointGroup = new Gcp.Compute.RegionNetworkEndpointGroup("cloudrunNegRegionNetworkEndpointGroup", new()
+    ///     var cloudrunNeg = new Gcp.Compute.RegionNetworkEndpointGroup("cloudrun_neg", new()
     ///     {
+    ///         Name = "cloudrun-neg",
     ///         NetworkEndpointType = "SERVERLESS",
     ///         Region = "us-central1",
     ///         CloudRun = new Gcp.Compute.Inputs.RegionNetworkEndpointGroupCloudRunArgs
@@ -125,18 +131,20 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var appengineNegBucket = new Gcp.Storage.Bucket("appengineNegBucket", new()
+    ///     var appengineNegBucket = new Gcp.Storage.Bucket("appengine_neg", new()
     ///     {
+    ///         Name = "appengine-neg",
     ///         Location = "US",
     ///     });
     /// 
-    ///     var appengineNegBucketObject = new Gcp.Storage.BucketObject("appengineNegBucketObject", new()
+    ///     var appengineNegBucketObject = new Gcp.Storage.BucketObject("appengine_neg", new()
     ///     {
+    ///         Name = "hello-world.zip",
     ///         Bucket = appengineNegBucket.Name,
     ///         Source = new FileAsset("./test-fixtures/hello-world.zip"),
     ///     });
     /// 
-    ///     var appengineNegFlexibleAppVersion = new Gcp.AppEngine.FlexibleAppVersion("appengineNegFlexibleAppVersion", new()
+    ///     var appengineNegFlexibleAppVersion = new Gcp.AppEngine.FlexibleAppVersion("appengine_neg", new()
     ///     {
     ///         VersionId = "v1",
     ///         Service = "appengine-network-endpoint-group",
@@ -196,8 +204,9 @@ namespace Pulumi.Gcp.Compute
     ///     });
     /// 
     ///     // App Engine Example
-    ///     var appengineNegRegionNetworkEndpointGroup = new Gcp.Compute.RegionNetworkEndpointGroup("appengineNegRegionNetworkEndpointGroup", new()
+    ///     var appengineNeg = new Gcp.Compute.RegionNetworkEndpointGroup("appengine_neg", new()
     ///     {
+    ///         Name = "appengine-neg",
     ///         NetworkEndpointType = "SERVERLESS",
     ///         Region = "us-central1",
     ///         AppEngine = new Gcp.Compute.Inputs.RegionNetworkEndpointGroupAppEngineArgs
@@ -219,11 +228,99 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var pscNeg = new Gcp.Compute.RegionNetworkEndpointGroup("pscNeg", new()
+    ///     var pscNeg = new Gcp.Compute.RegionNetworkEndpointGroup("psc_neg", new()
     ///     {
+    ///         Name = "psc-neg",
+    ///         Region = "asia-northeast3",
     ///         NetworkEndpointType = "PRIVATE_SERVICE_CONNECT",
     ///         PscTargetService = "asia-northeast3-cloudkms.googleapis.com",
-    ///         Region = "asia-northeast3",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Region Network Endpoint Group Psc Service Attachment
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "psc-network",
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "psc-subnetwork",
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///         Region = "europe-west4",
+    ///         Network = @default.Id,
+    ///     });
+    /// 
+    ///     var pscSubnetwork = new Gcp.Compute.Subnetwork("psc_subnetwork", new()
+    ///     {
+    ///         Name = "psc-subnetwork-nat",
+    ///         IpCidrRange = "10.1.0.0/16",
+    ///         Region = "europe-west4",
+    ///         Purpose = "PRIVATE_SERVICE_CONNECT",
+    ///         Network = @default.Id,
+    ///     });
+    /// 
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
+    ///     {
+    ///         Name = "psc-healthcheck",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         Name = "psc-backend",
+    ///         Region = "europe-west4",
+    ///         HealthChecks = defaultHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var defaultForwardingRule = new Gcp.Compute.ForwardingRule("default", new()
+    ///     {
+    ///         Name = "psc-forwarding-rule",
+    ///         Region = "europe-west4",
+    ///         LoadBalancingScheme = "INTERNAL",
+    ///         BackendService = defaultRegionBackendService.Id,
+    ///         AllPorts = true,
+    ///         Network = @default.Name,
+    ///         Subnetwork = defaultSubnetwork.Name,
+    ///     });
+    /// 
+    ///     var defaultServiceAttachment = new Gcp.Compute.ServiceAttachment("default", new()
+    ///     {
+    ///         Name = "psc-service-attachment",
+    ///         Region = "europe-west4",
+    ///         Description = "A service attachment configured with Terraform",
+    ///         EnableProxyProtocol = false,
+    ///         ConnectionPreference = "ACCEPT_AUTOMATIC",
+    ///         NatSubnets = new[]
+    ///         {
+    ///             pscSubnetwork.SelfLink,
+    ///         },
+    ///         TargetService = defaultForwardingRule.SelfLink,
+    ///     });
+    /// 
+    ///     var pscNegServiceAttachment = new Gcp.Compute.RegionNetworkEndpointGroup("psc_neg_service_attachment", new()
+    ///     {
+    ///         Name = "psc-neg",
+    ///         Region = "europe-west4",
+    ///         NetworkEndpointType = "PRIVATE_SERVICE_CONNECT",
+    ///         PscTargetService = defaultServiceAttachment.SelfLink,
+    ///         Network = @default.SelfLink,
+    ///         Subnetwork = defaultSubnetwork.SelfLink,
     ///     });
     /// 
     /// });
@@ -238,10 +335,14 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Gcp.Compute.Network("default");
-    /// 
-    ///     var regionNetworkEndpointGroupInternetIpPort = new Gcp.Compute.RegionNetworkEndpointGroup("regionNetworkEndpointGroupInternetIpPort", new()
+    ///     var @default = new Gcp.Compute.Network("default", new()
     ///     {
+    ///         Name = "network",
+    ///     });
+    /// 
+    ///     var regionNetworkEndpointGroupInternetIpPort = new Gcp.Compute.RegionNetworkEndpointGroup("region_network_endpoint_group_internet_ip_port", new()
+    ///     {
+    ///         Name = "ip-port-neg",
     ///         Region = "us-central1",
     ///         Network = @default.Id,
     ///         NetworkEndpointType = "INTERNET_IP_PORT",
@@ -259,10 +360,14 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Gcp.Compute.Network("default");
-    /// 
-    ///     var regionNetworkEndpointGroupInternetFqdnPort = new Gcp.Compute.RegionNetworkEndpointGroup("regionNetworkEndpointGroupInternetFqdnPort", new()
+    ///     var @default = new Gcp.Compute.Network("default", new()
     ///     {
+    ///         Name = "network",
+    ///     });
+    /// 
+    ///     var regionNetworkEndpointGroupInternetFqdnPort = new Gcp.Compute.RegionNetworkEndpointGroup("region_network_endpoint_group_internet_fqdn_port", new()
+    ///     {
+    ///         Name = "ip-port-neg",
     ///         Region = "us-central1",
     ///         Network = @default.Id,
     ///         NetworkEndpointType = "INTERNET_FQDN_PORT",

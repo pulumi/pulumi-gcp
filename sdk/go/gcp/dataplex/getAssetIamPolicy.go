@@ -28,11 +28,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataplex.LookupAssetIamPolicy(ctx, &dataplex.LookupAssetIamPolicyArgs{
-//				Project:      pulumi.StringRef(google_dataplex_asset.Example.Project),
-//				Location:     pulumi.StringRef(google_dataplex_asset.Example.Location),
-//				Lake:         google_dataplex_asset.Example.Lake,
-//				DataplexZone: google_dataplex_asset.Example.Dataplex_zone,
-//				Asset:        google_dataplex_asset.Example.Name,
+//				Project:      pulumi.StringRef(example.Project),
+//				Location:     pulumi.StringRef(example.Location),
+//				Lake:         example.Lake,
+//				DataplexZone: example.DataplexZone,
+//				Asset:        example.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

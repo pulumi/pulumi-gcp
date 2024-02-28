@@ -283,8 +283,8 @@ class SchemaIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.pubsub.SchemaIamPolicy("policy",
-            project=google_pubsub_schema["example"]["project"],
-            schema=google_pubsub_schema["example"]["name"],
+            project=example["project"],
+            schema=example["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -295,8 +295,8 @@ class SchemaIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.pubsub.SchemaIamBinding("binding",
-            project=google_pubsub_schema["example"]["project"],
-            schema=google_pubsub_schema["example"]["name"],
+            project=example["project"],
+            schema=example["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -308,8 +308,8 @@ class SchemaIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.pubsub.SchemaIamMember("member",
-            project=google_pubsub_schema["example"]["project"],
-            schema=google_pubsub_schema["example"]["name"],
+            project=example["project"],
+            schema=example["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -403,8 +403,8 @@ class SchemaIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.pubsub.SchemaIamPolicy("policy",
-            project=google_pubsub_schema["example"]["project"],
-            schema=google_pubsub_schema["example"]["name"],
+            project=example["project"],
+            schema=example["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -415,8 +415,8 @@ class SchemaIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.pubsub.SchemaIamBinding("binding",
-            project=google_pubsub_schema["example"]["project"],
-            schema=google_pubsub_schema["example"]["name"],
+            project=example["project"],
+            schema=example["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -428,8 +428,8 @@ class SchemaIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.pubsub.SchemaIamMember("member",
-            project=google_pubsub_schema["example"]["project"],
-            schema=google_pubsub_schema["example"]["name"],
+            project=example["project"],
+            schema=example["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

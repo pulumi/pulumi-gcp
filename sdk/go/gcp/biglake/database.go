@@ -39,12 +39,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			catalog, err := biglake.NewCatalog(ctx, "catalog", &biglake.CatalogArgs{
+//				Name:     pulumi.String("my_catalog"),
 //				Location: pulumi.String("US"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:                     pulumi.String("my_bucket"),
 //				Location:                 pulumi.String("US"),
 //				ForceDestroy:             pulumi.Bool(true),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
@@ -52,7 +54,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			metadataFolder, err := storage.NewBucketObject(ctx, "metadataFolder", &storage.BucketObjectArgs{
+//			metadataFolder, err := storage.NewBucketObject(ctx, "metadata_folder", &storage.BucketObjectArgs{
+//				Name:    pulumi.String("metadata/"),
 //				Content: pulumi.String(" "),
 //				Bucket:  bucket.Name,
 //			})
@@ -60,6 +63,7 @@ import (
 //				return err
 //			}
 //			_, err = biglake.NewDatabase(ctx, "database", &biglake.DatabaseArgs{
+//				Name:    pulumi.String("my_database"),
 //				Catalog: catalog.ID(),
 //				Type:    pulumi.String("HIVE"),
 //				HiveOptions: &biglake.DatabaseHiveOptionsArgs{

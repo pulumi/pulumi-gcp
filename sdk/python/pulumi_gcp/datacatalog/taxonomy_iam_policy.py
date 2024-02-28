@@ -253,7 +253,7 @@ class TaxonomyIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.datacatalog.TaxonomyIamPolicy("policy",
-            taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"],
+            taxonomy=basic_taxonomy["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -264,7 +264,7 @@ class TaxonomyIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.datacatalog.TaxonomyIamBinding("binding",
-            taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"],
+            taxonomy=basic_taxonomy["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -276,7 +276,7 @@ class TaxonomyIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.datacatalog.TaxonomyIamMember("member",
-            taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"],
+            taxonomy=basic_taxonomy["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -371,7 +371,7 @@ class TaxonomyIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.datacatalog.TaxonomyIamPolicy("policy",
-            taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"],
+            taxonomy=basic_taxonomy["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -382,7 +382,7 @@ class TaxonomyIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.datacatalog.TaxonomyIamBinding("binding",
-            taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"],
+            taxonomy=basic_taxonomy["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -394,7 +394,7 @@ class TaxonomyIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.datacatalog.TaxonomyIamMember("member",
-            taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"],
+            taxonomy=basic_taxonomy["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

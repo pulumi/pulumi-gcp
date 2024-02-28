@@ -40,15 +40,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewRegionCommitment(ctx, "foobar", &compute.RegionCommitmentArgs{
+//				Name: pulumi.String("my-region-commitment"),
 //				Plan: pulumi.String("THIRTY_SIX_MONTH"),
 //				Resources: compute.RegionCommitmentResourceArray{
 //					&compute.RegionCommitmentResourceArgs{
-//						Amount: pulumi.String("4"),
 //						Type:   pulumi.String("VCPU"),
+//						Amount: pulumi.String("4"),
 //					},
 //					&compute.RegionCommitmentResourceArgs{
-//						Amount: pulumi.String("9"),
 //						Type:   pulumi.String("MEMORY"),
+//						Amount: pulumi.String("9"),
 //					},
 //				},
 //			})
@@ -75,21 +76,22 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewRegionCommitment(ctx, "foobar", &compute.RegionCommitmentArgs{
-//				AutoRenew:   pulumi.Bool(true),
-//				Category:    pulumi.String("MACHINE"),
+//				Name:        pulumi.String("my-full-commitment"),
 //				Description: pulumi.String("some description"),
 //				Plan:        pulumi.String("THIRTY_SIX_MONTH"),
+//				Type:        pulumi.String("MEMORY_OPTIMIZED"),
+//				Category:    pulumi.String("MACHINE"),
+//				AutoRenew:   pulumi.Bool(true),
 //				Resources: compute.RegionCommitmentResourceArray{
 //					&compute.RegionCommitmentResourceArgs{
-//						Amount: pulumi.String("4"),
 //						Type:   pulumi.String("VCPU"),
+//						Amount: pulumi.String("4"),
 //					},
 //					&compute.RegionCommitmentResourceArgs{
-//						Amount: pulumi.String("9"),
 //						Type:   pulumi.String("MEMORY"),
+//						Amount: pulumi.String("9"),
 //					},
 //				},
-//				Type: pulumi.String("MEMORY_OPTIMIZED"),
 //			})
 //			if err != nil {
 //				return err

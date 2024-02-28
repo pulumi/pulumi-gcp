@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.LookupScopeIamPolicy(ctx, &gkehub.LookupScopeIamPolicyArgs{
-//				Project: pulumi.StringRef(google_gke_hub_scope.Scope.Project),
-//				ScopeId: google_gke_hub_scope.Scope.Scope_id,
+//				Project: pulumi.StringRef(scope.Project),
+//				ScopeId: scope.ScopeId,
 //			}, nil)
 //			if err != nil {
 //				return err

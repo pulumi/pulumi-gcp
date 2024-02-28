@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Healthcare
         /// {
         ///     var foo = Gcp.Healthcare.GetFhirStoreIamPolicy.Invoke(new()
         ///     {
-        ///         FhirStoreId = google_healthcare_fhir_store.Fhir_store.Id,
+        ///         FhirStoreId = fhirStore.Id,
         ///     });
         /// 
         /// });
@@ -50,7 +50,7 @@ namespace Pulumi.Gcp.Healthcare
         /// {
         ///     var foo = Gcp.Healthcare.GetFhirStoreIamPolicy.Invoke(new()
         ///     {
-        ///         FhirStoreId = google_healthcare_fhir_store.Fhir_store.Id,
+        ///         FhirStoreId = fhirStore.Id,
         ///     });
         /// 
         /// });

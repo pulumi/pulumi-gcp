@@ -56,6 +56,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var subnet_nw = new Network(&#34;subnet-nw&#34;, NetworkArgs.builder()        
+ *             .name(&#34;pc-nw&#34;)
  *             .location(&#34;global&#34;)
  *             .type(&#34;STANDARD&#34;)
  *             .description(&#34;PC network description.&#34;)
@@ -63,6 +64,7 @@ import javax.annotation.Nullable;
  * 
  *         var subnet_pc = new PrivateCloud(&#34;subnet-pc&#34;, PrivateCloudArgs.builder()        
  *             .location(&#34;us-west1-a&#34;)
+ *             .name(&#34;sample-pc&#34;)
  *             .description(&#34;Sample test PC.&#34;)
  *             .networkConfig(PrivateCloudNetworkConfigArgs.builder()
  *                 .managementCidr(&#34;192.168.50.0/24&#34;)
@@ -78,6 +80,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var vmw_engine_subnet = new Subnet(&#34;vmw-engine-subnet&#34;, SubnetArgs.builder()        
+ *             .name(&#34;service-1&#34;)
  *             .parent(subnet_pc.id())
  *             .ipCidrRange(&#34;192.168.100.0/26&#34;)
  *             .build());

@@ -80,7 +80,7 @@ def get_folders(parent_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    my_org_folders = gcp.organizations.get_folders(parent_id=f"organizations/{var['organization_id']}")
+    my_org_folders = gcp.organizations.get_folders(parent_id=f"organizations/{organization_id}")
     first_folder = gcp.organizations.get_folder(folder=my_org_folders.folders[0].name)
     ```
 
@@ -113,7 +113,7 @@ def get_folders_output(parent_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    my_org_folders = gcp.organizations.get_folders(parent_id=f"organizations/{var['organization_id']}")
+    my_org_folders = gcp.organizations.get_folders(parent_id=f"organizations/{organization_id}")
     first_folder = gcp.organizations.get_folder(folder=my_org_folders.folders[0].name)
     ```
 

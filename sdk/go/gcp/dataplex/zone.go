@@ -31,6 +31,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			basic, err := dataplex.NewLake(ctx, "basic", &dataplex.LakeArgs{
 //				Location:    pulumi.String("us-west1"),
+//				Name:        pulumi.String("lake"),
 //				Description: pulumi.String("Lake for DCL"),
 //				DisplayName: pulumi.String("Lake for DCL"),
 //				Project:     pulumi.String("my-project-name"),
@@ -47,6 +48,7 @@ import (
 //				},
 //				Lake:     basic.Name,
 //				Location: pulumi.String("us-west1"),
+//				Name:     pulumi.String("zone"),
 //				ResourceSpec: &dataplex.ZoneResourceSpecArgs{
 //					LocationType: pulumi.String("MULTI_REGION"),
 //				},

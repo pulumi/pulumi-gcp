@@ -15,6 +15,101 @@ namespace Pulumi.Gcp.Iam
     /// if they would like to test it.
     /// 
     /// ## Example Usage
+    /// ### Iam Access Boundary Policy Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = new Gcp.Organizations.Project("project", new()
+    ///     {
+    ///         ProjectId = "my-project",
+    ///         Name = "my-project",
+    ///         OrgId = "123456789",
+    ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///     });
+    /// 
+    ///     var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new()
+    ///     {
+    ///         Parent = project.OrgId.Apply(orgId =&gt; $"organizations/{orgId}"),
+    ///         Title = "my policy",
+    ///     });
+    /// 
+    ///     var test_access = new Gcp.AccessContextManager.AccessLevel("test-access", new()
+    ///     {
+    ///         Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
+    ///         Name = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
+    ///         Title = "chromeos_no_lock",
+    ///         Basic = new Gcp.AccessContextManager.Inputs.AccessLevelBasicArgs
+    ///         {
+    ///             Conditions = new[]
+    ///             {
+    ///                 new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionArgs
+    ///                 {
+    ///                     DevicePolicy = new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionDevicePolicyArgs
+    ///                     {
+    ///                         RequireScreenLock = true,
+    ///                         OsConstraints = new[]
+    ///                         {
+    ///                             new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionDevicePolicyOsConstraintArgs
+    ///                             {
+    ///                                 OsType = "DESKTOP_CHROME_OS",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     Regions = new[]
+    ///                     {
+    ///                         "CH",
+    ///                         "IT",
+    ///                         "US",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var example = new Gcp.Iam.AccessBoundaryPolicy("example", new()
+    ///     {
+    ///         Parent = Std.Urlencode.Invoke(new()
+    ///         {
+    ///             Input = project.ProjectId.Apply(projectId =&gt; $"cloudresourcemanager.googleapis.com/projects/{projectId}"),
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Name = "my-ab-policy",
+    ///         DisplayName = "My AB policy",
+    ///         Rules = new[]
+    ///         {
+    ///             new Gcp.Iam.Inputs.AccessBoundaryPolicyRuleArgs
+    ///             {
+    ///                 Description = "AB rule",
+    ///                 AccessBoundaryRule = new Gcp.Iam.Inputs.AccessBoundaryPolicyRuleAccessBoundaryRuleArgs
+    ///                 {
+    ///                     AvailableResource = "*",
+    ///                     AvailablePermissions = new[]
+    ///                     {
+    ///                         "*",
+    ///                     },
+    ///                     AvailabilityCondition = new Gcp.Iam.Inputs.AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs
+    ///                     {
+    ///                         Title = "Access level expr",
+    ///                         Expression = Output.Tuple(project.OrgId, test_access.Name).Apply(values =&gt;
+    ///                         {
+    ///                             var orgId = values.Item1;
+    ///                             var name = values.Item2;
+    ///                             return $"request.matchAccessLevels('{orgId}', ['{name}'])";
+    ///                         }),
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

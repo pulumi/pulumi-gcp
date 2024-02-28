@@ -25,20 +25,20 @@ import * as utilities from "../utilities";
  * const basic = new gcp.monitoring.MetricDescriptor("basic", {
  *     description: "Daily sales records from all branch stores.",
  *     displayName: "metric-descriptor",
+ *     type: "custom.googleapis.com/stores/daily_sales",
+ *     metricKind: "GAUGE",
+ *     valueType: "DOUBLE",
+ *     unit: "{USD}",
  *     labels: [{
- *         description: "The ID of the store.",
  *         key: "store_id",
  *         valueType: "STRING",
+ *         description: "The ID of the store.",
  *     }],
  *     launchStage: "BETA",
  *     metadata: {
- *         ingestDelay: "30s",
  *         samplePeriod: "60s",
+ *         ingestDelay: "30s",
  *     },
- *     metricKind: "GAUGE",
- *     type: "custom.googleapis.com/stores/daily_sales",
- *     unit: "{USD}",
- *     valueType: "DOUBLE",
  * });
  * ```
  * ### Monitoring Metric Descriptor Alert
@@ -47,25 +47,25 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const withAlert = new gcp.monitoring.MetricDescriptor("withAlert", {
+ * const withAlert = new gcp.monitoring.MetricDescriptor("with_alert", {
  *     description: "Daily sales records from all branch stores.",
  *     displayName: "metric-descriptor",
- *     metricKind: "GAUGE",
  *     type: "custom.googleapis.com/stores/daily_sales",
- *     unit: "{USD}",
+ *     metricKind: "GAUGE",
  *     valueType: "DOUBLE",
+ *     unit: "{USD}",
  * });
- * const alertPolicy = new gcp.monitoring.AlertPolicy("alertPolicy", {
+ * const alertPolicy = new gcp.monitoring.AlertPolicy("alert_policy", {
+ *     displayName: "metric-descriptor",
  *     combiner: "OR",
  *     conditions: [{
- *         conditionThreshold: {
- *             comparison: "COMPARISON_GT",
- *             duration: "60s",
- *             filter: pulumi.interpolate`metric.type="${withAlert.type}" AND resource.type="gce_instance"`,
- *         },
  *         displayName: "test condition",
+ *         conditionThreshold: {
+ *             filter: pulumi.interpolate`metric.type="${withAlert.type}" AND resource.type="gce_instance"`,
+ *             duration: "60s",
+ *             comparison: "COMPARISON_GT",
+ *         },
  *     }],
- *     displayName: "metric-descriptor",
  * });
  * ```
  *

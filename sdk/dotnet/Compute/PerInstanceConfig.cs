@@ -38,6 +38,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var igm_basic = new Gcp.Compute.InstanceTemplate("igm-basic", new()
     ///     {
+    ///         Name = "my-template",
     ///         MachineType = "e2-medium",
     ///         CanIpForward = false,
     ///         Tags = new[]
@@ -75,6 +76,7 @@ namespace Pulumi.Gcp.Compute
     ///     var igm_no_tp = new Gcp.Compute.InstanceGroupManager("igm-no-tp", new()
     ///     {
     ///         Description = "Test instance group manager",
+    ///         Name = "my-igm",
     ///         Versions = new[]
     ///         {
     ///             new Gcp.Compute.Inputs.InstanceGroupManagerVersionArgs
@@ -90,16 +92,18 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var @default = new Gcp.Compute.Disk("default", new()
     ///     {
+    ///         Name = "my-disk-name",
     ///         Type = "pd-ssd",
-    ///         Zone = google_compute_instance_group_manager.Igm.Zone,
+    ///         Zone = igm.Zone,
     ///         Image = "debian-11-bullseye-v20220719",
     ///         PhysicalBlockSizeBytes = 4096,
     ///     });
     /// 
-    ///     var withDisk = new Gcp.Compute.PerInstanceConfig("withDisk", new()
+    ///     var withDisk = new Gcp.Compute.PerInstanceConfig("with_disk", new()
     ///     {
-    ///         Zone = google_compute_instance_group_manager.Igm.Zone,
-    ///         InstanceGroupManager = google_compute_instance_group_manager.Igm.Name,
+    ///         Zone = igm.Zone,
+    ///         InstanceGroupManager = igm.Name,
+    ///         Name = "instance-1",
     ///         PreservedState = new Gcp.Compute.Inputs.PerInstanceConfigPreservedStateArgs
     ///         {
     ///             Metadata = 

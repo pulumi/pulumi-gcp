@@ -220,10 +220,9 @@ class ApiIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.apigateway.ApiIamPolicy("policy",
-            project=google_api_gateway_api["api"]["project"],
-            api=google_api_gateway_api["api"]["api_id"],
-            policy_data=admin.policy_data,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            project=api["project"],
+            api=api["apiId"],
+            policy_data=admin.policy_data)
         ```
 
         ## google\\_api\\_gateway\\_api\\_iam\\_binding
@@ -233,11 +232,10 @@ class ApiIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.apigateway.ApiIamBinding("binding",
-            project=google_api_gateway_api["api"]["project"],
-            api=google_api_gateway_api["api"]["api_id"],
+            project=api["project"],
+            api=api["apiId"],
             role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_api\\_gateway\\_api\\_iam\\_member
@@ -247,11 +245,10 @@ class ApiIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.apigateway.ApiIamMember("member",
-            project=google_api_gateway_api["api"]["project"],
-            api=google_api_gateway_api["api"]["api_id"],
+            project=api["project"],
+            api=api["apiId"],
             role="roles/apigateway.viewer",
-            member="user:jane@example.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            member="user:jane@example.com")
         ```
 
         ## Import
@@ -341,10 +338,9 @@ class ApiIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.apigateway.ApiIamPolicy("policy",
-            project=google_api_gateway_api["api"]["project"],
-            api=google_api_gateway_api["api"]["api_id"],
-            policy_data=admin.policy_data,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            project=api["project"],
+            api=api["apiId"],
+            policy_data=admin.policy_data)
         ```
 
         ## google\\_api\\_gateway\\_api\\_iam\\_binding
@@ -354,11 +350,10 @@ class ApiIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.apigateway.ApiIamBinding("binding",
-            project=google_api_gateway_api["api"]["project"],
-            api=google_api_gateway_api["api"]["api_id"],
+            project=api["project"],
+            api=api["apiId"],
             role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_api\\_gateway\\_api\\_iam\\_member
@@ -368,11 +363,10 @@ class ApiIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.apigateway.ApiIamMember("member",
-            project=google_api_gateway_api["api"]["project"],
-            api=google_api_gateway_api["api"]["api_id"],
+            project=api["project"],
+            api=api["apiId"],
             role="roles/apigateway.viewer",
-            member="user:jane@example.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            member="user:jane@example.com")
         ```
 
         ## Import

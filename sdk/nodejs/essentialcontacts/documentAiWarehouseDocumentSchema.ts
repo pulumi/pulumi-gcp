@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
- * const exampleText = new gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("exampleText", {
+ * const exampleText = new gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("example_text", {
  *     projectNumber: project.then(project => project.number),
  *     displayName: "test-property-text",
  *     location: "us",
@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
- * const exampleInteger = new gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("exampleInteger", {
+ * const exampleInteger = new gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("example_integer", {
  *     projectNumber: project.then(project => project.number),
  *     displayName: "test-property-integer",
  *     location: "us",
@@ -80,7 +80,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
- * const exampleFloat = new gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("exampleFloat", {
+ * const exampleFloat = new gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("example_float", {
  *     projectNumber: project.then(project => project.number),
  *     displayName: "test-property-float",
  *     location: "us",
@@ -108,7 +108,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
- * const exampleProperty = new gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("exampleProperty", {
+ * const exampleProperty = new gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("example_property", {
  *     projectNumber: project.then(project => project.number),
  *     displayName: "test-property-property",
  *     location: "us",
@@ -153,7 +153,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
- * const examplePropertyEnum = new gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("examplePropertyEnum", {
+ * const examplePropertyEnum = new gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("example_property_enum", {
  *     projectNumber: project.then(project => project.number),
  *     displayName: "test-property-property",
  *     location: "us",
@@ -205,7 +205,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
- * const exampleEnum = new gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("exampleEnum", {
+ * const exampleEnum = new gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("example_enum", {
  *     projectNumber: project.then(project => project.number),
  *     displayName: "test-property-enum",
  *     location: "us",
@@ -240,7 +240,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
- * const exampleMap = new gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("exampleMap", {
+ * const exampleMap = new gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("example_map", {
  *     projectNumber: project.then(project => project.number),
  *     displayName: "test-property-map",
  *     location: "us",
@@ -268,7 +268,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
- * const exampleDatetime = new gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("exampleDatetime", {
+ * const exampleDatetime = new gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("example_datetime", {
  *     projectNumber: project.then(project => project.number),
  *     displayName: "test-property-date_time",
  *     location: "us",
@@ -296,7 +296,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
- * const exampleTimestamp = new gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("exampleTimestamp", {
+ * const exampleTimestamp = new gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema("example_timestamp", {
  *     projectNumber: project.then(project => project.number),
  *     displayName: "test-property-timestamp",
  *     location: "us",

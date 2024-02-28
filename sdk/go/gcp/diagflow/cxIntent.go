@@ -56,7 +56,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = diagflow.NewCxIntent(ctx, "basicIntent", &diagflow.CxIntentArgs{
+//			_, err = diagflow.NewCxIntent(ctx, "basic_intent", &diagflow.CxIntentArgs{
 //				Parent:      agent.ID(),
 //				DisplayName: pulumi.String("Example"),
 //				Priority:    pulumi.Int(1),

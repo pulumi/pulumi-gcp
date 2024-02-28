@@ -30,8 +30,10 @@ namespace Pulumi.Gcp.AppEngine
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myProject = new Gcp.Organizations.Project("myProject", new()
+    ///     var myProject = new Gcp.Organizations.Project("my_project", new()
     ///     {
+    ///         Name = "tf-test-project",
+    ///         ProjectId = "ae-project",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
     ///     });

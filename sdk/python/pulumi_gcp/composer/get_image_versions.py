@@ -89,6 +89,7 @@ def get_image_versions(project: Optional[str] = None,
 
     all = gcp.composer.get_image_versions()
     test = gcp.composer.Environment("test",
+        name="test-env",
         region="us-central1",
         config=gcp.composer.EnvironmentConfigArgs(
             software_config=gcp.composer.EnvironmentConfigSoftwareConfigArgs(
@@ -131,6 +132,7 @@ def get_image_versions_output(project: Optional[pulumi.Input[Optional[str]]] = N
 
     all = gcp.composer.get_image_versions()
     test = gcp.composer.Environment("test",
+        name="test-env",
         region="us-central1",
         config=gcp.composer.EnvironmentConfigArgs(
             software_config=gcp.composer.EnvironmentConfigSoftwareConfigArgs(

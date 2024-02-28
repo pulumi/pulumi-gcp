@@ -56,7 +56,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = diagflow.NewCxWebhook(ctx, "basicWebhook", &diagflow.CxWebhookArgs{
+//			_, err = diagflow.NewCxWebhook(ctx, "basic_webhook", &diagflow.CxWebhookArgs{
 //				Parent:      agent.ID(),
 //				DisplayName: pulumi.String("MyFlow"),
 //				GenericWebService: &diagflow.CxWebhookGenericWebServiceArgs{

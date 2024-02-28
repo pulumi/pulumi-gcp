@@ -34,22 +34,24 @@ namespace Pulumi.Gcp.Netapp
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = Gcp.Compute.GetNetwork.Invoke(new()
+    ///     var @default = Gcp.Compute.GetNetwork.Invoke(new()
     ///     {
     ///         Name = "test-network",
     ///     });
     /// 
-    ///     var defaultStoragePool = new Gcp.Netapp.StoragePool("defaultStoragePool", new()
+    ///     var defaultStoragePool = new Gcp.Netapp.StoragePool("default", new()
     ///     {
+    ///         Name = "test-pool",
     ///         Location = "us-west2",
     ///         ServiceLevel = "PREMIUM",
     ///         CapacityGib = "2048",
-    ///         Network = defaultNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///         Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
     ///     });
     /// 
-    ///     var testVolume = new Gcp.Netapp.Volume("testVolume", new()
+    ///     var testVolume = new Gcp.Netapp.Volume("test_volume", new()
     ///     {
     ///         Location = "us-west2",
+    ///         Name = "test-volume",
     ///         CapacityGib = "100",
     ///         ShareName = "test-volume",
     ///         StoragePool = defaultStoragePool.Name,

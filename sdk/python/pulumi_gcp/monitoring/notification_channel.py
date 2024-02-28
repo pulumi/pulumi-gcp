@@ -477,11 +477,11 @@ class NotificationChannel(pulumi.CustomResource):
 
         basic = gcp.monitoring.NotificationChannel("basic",
             display_name="Test Notification Channel",
-            force_delete=False,
+            type="email",
             labels={
                 "email_address": "fake_email@blahblah.com",
             },
-            type="email")
+            force_delete=False)
         ```
         ### Notification Channel Sensitive
 
@@ -491,13 +491,13 @@ class NotificationChannel(pulumi.CustomResource):
 
         default = gcp.monitoring.NotificationChannel("default",
             display_name="Test Slack Channel",
+            type="slack",
             labels={
                 "channel_name": "#foobar",
             },
             sensitive_labels=gcp.monitoring.NotificationChannelSensitiveLabelsArgs(
                 auth_token="one",
-            ),
-            type="slack")
+            ))
         ```
 
         ## Import
@@ -583,11 +583,11 @@ class NotificationChannel(pulumi.CustomResource):
 
         basic = gcp.monitoring.NotificationChannel("basic",
             display_name="Test Notification Channel",
-            force_delete=False,
+            type="email",
             labels={
                 "email_address": "fake_email@blahblah.com",
             },
-            type="email")
+            force_delete=False)
         ```
         ### Notification Channel Sensitive
 
@@ -597,13 +597,13 @@ class NotificationChannel(pulumi.CustomResource):
 
         default = gcp.monitoring.NotificationChannel("default",
             display_name="Test Slack Channel",
+            type="slack",
             labels={
                 "channel_name": "#foobar",
             },
             sensitive_labels=gcp.monitoring.NotificationChannelSensitiveLabelsArgs(
                 auth_token="one",
-            ),
-            type="slack")
+            ))
         ```
 
         ## Import

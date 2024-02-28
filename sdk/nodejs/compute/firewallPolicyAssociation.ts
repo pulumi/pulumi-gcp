@@ -15,14 +15,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultFirewallPolicy = new gcp.compute.FirewallPolicy("defaultFirewallPolicy", {
+ * const _default = new gcp.compute.FirewallPolicy("default", {
  *     parent: "organizations/12345",
  *     shortName: "my-policy",
  *     description: "Example Resource",
  * });
- * const defaultFirewallPolicyAssociation = new gcp.compute.FirewallPolicyAssociation("defaultFirewallPolicyAssociation", {
- *     firewallPolicy: defaultFirewallPolicy.id,
- *     attachmentTarget: google_folder.folder.name,
+ * const defaultFirewallPolicyAssociation = new gcp.compute.FirewallPolicyAssociation("default", {
+ *     firewallPolicy: _default.id,
+ *     attachmentTarget: folder.name,
+ *     name: "my-association",
  * });
  * ```
  *

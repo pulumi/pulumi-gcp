@@ -28,8 +28,9 @@ import * as utilities from "../utilities";
  * const legacy-hcs = gcp.compute.getNetblockIPRanges({
  *     rangeType: "legacy-health-checkers",
  * });
- * const _default = new gcp.compute.Network("default", {});
+ * const _default = new gcp.compute.Network("default", {name: "test-network"});
  * const allow_hcs = new gcp.compute.Firewall("allow-hcs", {
+ *     name: "allow-hcs",
  *     network: _default.name,
  *     allows: [{
  *         protocol: "tcp",
@@ -122,8 +123,9 @@ export interface GetNetblockIPRangesResult {
  * const legacy-hcs = gcp.compute.getNetblockIPRanges({
  *     rangeType: "legacy-health-checkers",
  * });
- * const _default = new gcp.compute.Network("default", {});
+ * const _default = new gcp.compute.Network("default", {name: "test-network"});
  * const allow_hcs = new gcp.compute.Firewall("allow-hcs", {
+ *     name: "allow-hcs",
  *     network: _default.name,
  *     allows: [{
  *         protocol: "tcp",

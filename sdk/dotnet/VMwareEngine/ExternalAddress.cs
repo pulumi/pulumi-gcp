@@ -29,6 +29,7 @@ namespace Pulumi.Gcp.VMwareEngine
     /// {
     ///     var external_address_nw = new Gcp.VMwareEngine.Network("external-address-nw", new()
     ///     {
+    ///         Name = "pc-nw",
     ///         Location = "global",
     ///         Type = "STANDARD",
     ///         Description = "PC network description.",
@@ -37,6 +38,7 @@ namespace Pulumi.Gcp.VMwareEngine
     ///     var external_address_pc = new Gcp.VMwareEngine.PrivateCloud("external-address-pc", new()
     ///     {
     ///         Location = "-a",
+    ///         Name = "sample-pc",
     ///         Description = "Sample test PC.",
     ///         NetworkConfig = new Gcp.VMwareEngine.Inputs.PrivateCloudNetworkConfigArgs
     ///         {
@@ -60,21 +62,17 @@ namespace Pulumi.Gcp.VMwareEngine
     ///     var external_address_np = new Gcp.VMwareEngine.NetworkPolicy("external-address-np", new()
     ///     {
     ///         Location = "",
+    ///         Name = "sample-np",
     ///         EdgeServicesCidr = "192.168.30.0/26",
     ///         VmwareEngineNetwork = external_address_nw.Id,
     ///     });
     /// 
     ///     var vmw_engine_external_address = new Gcp.VMwareEngine.ExternalAddress("vmw-engine-external-address", new()
     ///     {
+    ///         Name = "sample-external-address",
     ///         Parent = external_address_pc.Id,
     ///         InternalIp = "192.168.0.66",
     ///         Description = "Sample description.",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             external_address_np,
-    ///         },
     ///     });
     /// 
     /// });

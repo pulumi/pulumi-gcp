@@ -558,6 +558,74 @@ class Job(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/scheduler/)
 
         ## Example Usage
+        ### Scheduler Job Pubsub
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        topic = gcp.pubsub.Topic("topic", name="job-topic")
+        job = gcp.cloudscheduler.Job("job",
+            name="test-job",
+            description="test job",
+            schedule="*/2 * * * *",
+            pubsub_target=gcp.cloudscheduler.JobPubsubTargetArgs(
+                topic_name=topic.id,
+                data=std.base64encode(input="test").result,
+            ))
+        ```
+        ### Scheduler Job Http
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        job = gcp.cloudscheduler.Job("job",
+            name="test-job",
+            description="test http job",
+            schedule="*/8 * * * *",
+            time_zone="America/New_York",
+            attempt_deadline="320s",
+            retry_config=gcp.cloudscheduler.JobRetryConfigArgs(
+                retry_count=1,
+            ),
+            http_target=gcp.cloudscheduler.JobHttpTargetArgs(
+                http_method="POST",
+                uri="https://example.com/",
+                body=std.base64encode(input="{\\"foo\\":\\"bar\\"}").result,
+                headers={
+                    "Content-Type": "application/json",
+                },
+            ))
+        ```
+        ### Scheduler Job Paused
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        job = gcp.cloudscheduler.Job("job",
+            paused=True,
+            name="test-job",
+            description="test http job with updated fields",
+            schedule="*/8 * * * *",
+            time_zone="America/New_York",
+            attempt_deadline="320s",
+            retry_config=gcp.cloudscheduler.JobRetryConfigArgs(
+                retry_count=1,
+            ),
+            http_target=gcp.cloudscheduler.JobHttpTargetArgs(
+                http_method="POST",
+                uri="https://example.com/ping",
+                body=std.base64encode(input="{\\"foo\\":\\"bar\\"}").result,
+                headers={
+                    "Content-Type": "application/json",
+                },
+            ))
+        ```
         ### Scheduler Job App Engine
 
         ```python
@@ -565,25 +633,26 @@ class Job(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         job = gcp.cloudscheduler.Job("job",
-            app_engine_http_target=gcp.cloudscheduler.JobAppEngineHttpTargetArgs(
-                app_engine_routing=gcp.cloudscheduler.JobAppEngineHttpTargetAppEngineRoutingArgs(
-                    instance="my-instance-001",
-                    service="web",
-                    version="prod",
-                ),
-                http_method="POST",
-                relative_uri="/ping",
-            ),
-            attempt_deadline="320s",
+            name="test-job",
+            schedule="*/4 * * * *",
             description="test app engine job",
+            time_zone="Europe/London",
+            attempt_deadline="320s",
             retry_config=gcp.cloudscheduler.JobRetryConfigArgs(
-                max_doublings=2,
-                max_retry_duration="10s",
                 min_backoff_duration="1s",
+                max_retry_duration="10s",
+                max_doublings=2,
                 retry_count=3,
             ),
-            schedule="*/4 * * * *",
-            time_zone="Europe/London")
+            app_engine_http_target=gcp.cloudscheduler.JobAppEngineHttpTargetArgs(
+                http_method="POST",
+                app_engine_routing=gcp.cloudscheduler.JobAppEngineHttpTargetAppEngineRoutingArgs(
+                    service="web",
+                    version="prod",
+                    instance="my-instance-001",
+                ),
+                relative_uri="/ping",
+            ))
         ```
         ### Scheduler Job Oauth
 
@@ -593,6 +662,7 @@ class Job(pulumi.CustomResource):
 
         default = gcp.compute.get_default_service_account()
         job = gcp.cloudscheduler.Job("job",
+            name="test-job",
             description="test http job",
             schedule="*/8 * * * *",
             time_zone="America/New_York",
@@ -613,6 +683,7 @@ class Job(pulumi.CustomResource):
 
         default = gcp.compute.get_default_service_account()
         job = gcp.cloudscheduler.Job("job",
+            name="test-job",
             description="test http job",
             schedule="*/8 * * * *",
             time_zone="America/New_York",
@@ -713,6 +784,74 @@ class Job(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/scheduler/)
 
         ## Example Usage
+        ### Scheduler Job Pubsub
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        topic = gcp.pubsub.Topic("topic", name="job-topic")
+        job = gcp.cloudscheduler.Job("job",
+            name="test-job",
+            description="test job",
+            schedule="*/2 * * * *",
+            pubsub_target=gcp.cloudscheduler.JobPubsubTargetArgs(
+                topic_name=topic.id,
+                data=std.base64encode(input="test").result,
+            ))
+        ```
+        ### Scheduler Job Http
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        job = gcp.cloudscheduler.Job("job",
+            name="test-job",
+            description="test http job",
+            schedule="*/8 * * * *",
+            time_zone="America/New_York",
+            attempt_deadline="320s",
+            retry_config=gcp.cloudscheduler.JobRetryConfigArgs(
+                retry_count=1,
+            ),
+            http_target=gcp.cloudscheduler.JobHttpTargetArgs(
+                http_method="POST",
+                uri="https://example.com/",
+                body=std.base64encode(input="{\\"foo\\":\\"bar\\"}").result,
+                headers={
+                    "Content-Type": "application/json",
+                },
+            ))
+        ```
+        ### Scheduler Job Paused
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        job = gcp.cloudscheduler.Job("job",
+            paused=True,
+            name="test-job",
+            description="test http job with updated fields",
+            schedule="*/8 * * * *",
+            time_zone="America/New_York",
+            attempt_deadline="320s",
+            retry_config=gcp.cloudscheduler.JobRetryConfigArgs(
+                retry_count=1,
+            ),
+            http_target=gcp.cloudscheduler.JobHttpTargetArgs(
+                http_method="POST",
+                uri="https://example.com/ping",
+                body=std.base64encode(input="{\\"foo\\":\\"bar\\"}").result,
+                headers={
+                    "Content-Type": "application/json",
+                },
+            ))
+        ```
         ### Scheduler Job App Engine
 
         ```python
@@ -720,25 +859,26 @@ class Job(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         job = gcp.cloudscheduler.Job("job",
-            app_engine_http_target=gcp.cloudscheduler.JobAppEngineHttpTargetArgs(
-                app_engine_routing=gcp.cloudscheduler.JobAppEngineHttpTargetAppEngineRoutingArgs(
-                    instance="my-instance-001",
-                    service="web",
-                    version="prod",
-                ),
-                http_method="POST",
-                relative_uri="/ping",
-            ),
-            attempt_deadline="320s",
+            name="test-job",
+            schedule="*/4 * * * *",
             description="test app engine job",
+            time_zone="Europe/London",
+            attempt_deadline="320s",
             retry_config=gcp.cloudscheduler.JobRetryConfigArgs(
-                max_doublings=2,
-                max_retry_duration="10s",
                 min_backoff_duration="1s",
+                max_retry_duration="10s",
+                max_doublings=2,
                 retry_count=3,
             ),
-            schedule="*/4 * * * *",
-            time_zone="Europe/London")
+            app_engine_http_target=gcp.cloudscheduler.JobAppEngineHttpTargetArgs(
+                http_method="POST",
+                app_engine_routing=gcp.cloudscheduler.JobAppEngineHttpTargetAppEngineRoutingArgs(
+                    service="web",
+                    version="prod",
+                    instance="my-instance-001",
+                ),
+                relative_uri="/ping",
+            ))
         ```
         ### Scheduler Job Oauth
 
@@ -748,6 +888,7 @@ class Job(pulumi.CustomResource):
 
         default = gcp.compute.get_default_service_account()
         job = gcp.cloudscheduler.Job("job",
+            name="test-job",
             description="test http job",
             schedule="*/8 * * * *",
             time_zone="America/New_York",
@@ -768,6 +909,7 @@ class Job(pulumi.CustomResource):
 
         default = gcp.compute.get_default_service_account()
         job = gcp.cloudscheduler.Job("job",
+            name="test-job",
             description="test http job",
             schedule="*/8 * * * *",
             time_zone="America/New_York",

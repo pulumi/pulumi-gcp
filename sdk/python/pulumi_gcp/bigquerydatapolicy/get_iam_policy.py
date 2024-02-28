@@ -109,9 +109,9 @@ def get_iam_policy(data_policy_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigquerydatapolicy.get_iam_policy(project=google_bigquery_datapolicy_data_policy["data_policy"]["project"],
-        location=google_bigquery_datapolicy_data_policy["data_policy"]["location"],
-        data_policy_id=google_bigquery_datapolicy_data_policy["data_policy"]["data_policy_id"])
+    policy = gcp.bigquerydatapolicy.get_iam_policy(project=data_policy["project"],
+        location=data_policy["location"],
+        data_policy_id=data_policy["dataPolicyId"])
     ```
 
 
@@ -150,9 +150,9 @@ def get_iam_policy_output(data_policy_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigquerydatapolicy.get_iam_policy(project=google_bigquery_datapolicy_data_policy["data_policy"]["project"],
-        location=google_bigquery_datapolicy_data_policy["data_policy"]["location"],
-        data_policy_id=google_bigquery_datapolicy_data_policy["data_policy"]["data_policy_id"])
+    policy = gcp.bigquerydatapolicy.get_iam_policy(project=data_policy["project"],
+        location=data_policy["location"],
+        data_policy_id=data_policy["dataPolicyId"])
     ```
 
 

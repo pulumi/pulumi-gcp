@@ -30,8 +30,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudfunctionsv2.LookupFunction(ctx, &cloudfunctionsv2.LookupFunctionArgs{
-//				Location: "us-central1",
 //				Name:     "function",
+//				Location: "us-central1",
 //			}, nil)
 //			if err != nil {
 //				return err

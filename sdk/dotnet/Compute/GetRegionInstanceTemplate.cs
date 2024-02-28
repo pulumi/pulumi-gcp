@@ -29,11 +29,13 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // by name
         ///     var generic = Gcp.Compute.GetRegionInstanceTemplate.Invoke(new()
         ///     {
         ///         Name = "generic-tpl-20200107",
         ///     });
         /// 
+        ///     // using a filter
         ///     var generic_regex = Gcp.Compute.GetRegionInstanceTemplate.Invoke(new()
         ///     {
         ///         Filter = "name != generic-tpl-20200107",
@@ -66,11 +68,13 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // by name
         ///     var generic = Gcp.Compute.GetRegionInstanceTemplate.Invoke(new()
         ///     {
         ///         Name = "generic-tpl-20200107",
         ///     });
         /// 
+        ///     // using a filter
         ///     var generic_regex = Gcp.Compute.GetRegionInstanceTemplate.Invoke(new()
         ///     {
         ///         Filter = "name != generic-tpl-20200107",

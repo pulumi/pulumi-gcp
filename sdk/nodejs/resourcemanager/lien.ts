@@ -14,12 +14,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const project = new gcp.organizations.Project("project", {});
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "staging-project",
+ *     name: "A very important project!",
+ * });
  * const lien = new gcp.resourcemanager.Lien("lien", {
- *     origin: "machine-readable-explanation",
  *     parent: pulumi.interpolate`projects/${project.number}`,
- *     reason: "This project is an important environment",
  *     restrictions: ["resourcemanager.projects.delete"],
+ *     origin: "machine-readable-explanation",
+ *     reason: "This project is an important environment",
  * });
  * ```
  *

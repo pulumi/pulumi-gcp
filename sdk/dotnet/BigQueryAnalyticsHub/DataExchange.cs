@@ -29,12 +29,12 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dataExchange = new Gcp.BigQueryAnalyticsHub.DataExchange("dataExchange", new()
+    ///     var dataExchange = new Gcp.BigQueryAnalyticsHub.DataExchange("data_exchange", new()
     ///     {
-    ///         DataExchangeId = "my_data_exchange",
-    ///         Description = "example data exchange",
-    ///         DisplayName = "my_data_exchange",
     ///         Location = "US",
+    ///         DataExchangeId = "my_data_exchange",
+    ///         DisplayName = "my_data_exchange",
+    ///         Description = "example data exchange",
     ///     });
     /// 
     /// });

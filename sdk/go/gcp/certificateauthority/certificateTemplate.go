@@ -18,6 +18,118 @@ import (
 // * [Understanding Certificate Templates](https://cloud.google.com/certificate-authority-service/docs/certificate-template)
 // * [Common configurations and Certificate Profiles](https://cloud.google.com/certificate-authority-service/docs/certificate-profile)
 // ## Example Usage
+// ### Basic_certificate_template
+// An example of a basic privateca certificate template
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := certificateauthority.NewCertificateTemplate(ctx, "primary", &certificateauthority.CertificateTemplateArgs{
+//				Location:    pulumi.String("us-west1"),
+//				Name:        pulumi.String("template"),
+//				Description: pulumi.String("An updated sample certificate template"),
+//				IdentityConstraints: &certificateauthority.CertificateTemplateIdentityConstraintsArgs{
+//					AllowSubjectAltNamesPassthrough: pulumi.Bool(true),
+//					AllowSubjectPassthrough:         pulumi.Bool(true),
+//					CelExpression: &certificateauthority.CertificateTemplateIdentityConstraintsCelExpressionArgs{
+//						Description: pulumi.String("Always true"),
+//						Expression:  pulumi.String("true"),
+//						Location:    pulumi.String("any.file.anywhere"),
+//						Title:       pulumi.String("Sample expression"),
+//					},
+//				},
+//				PassthroughExtensions: &certificateauthority.CertificateTemplatePassthroughExtensionsArgs{
+//					AdditionalExtensions: certificateauthority.CertificateTemplatePassthroughExtensionsAdditionalExtensionArray{
+//						&certificateauthority.CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs{
+//							ObjectIdPaths: pulumi.IntArray{
+//								pulumi.Int(1),
+//								pulumi.Int(6),
+//							},
+//						},
+//					},
+//					KnownExtensions: pulumi.StringArray{
+//						pulumi.String("EXTENDED_KEY_USAGE"),
+//					},
+//				},
+//				PredefinedValues: &certificateauthority.CertificateTemplatePredefinedValuesArgs{
+//					AdditionalExtensions: certificateauthority.CertificateTemplatePredefinedValuesAdditionalExtensionArray{
+//						&certificateauthority.CertificateTemplatePredefinedValuesAdditionalExtensionArgs{
+//							ObjectId: &certificateauthority.CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs{
+//								ObjectIdPaths: pulumi.IntArray{
+//									pulumi.Int(1),
+//									pulumi.Int(6),
+//								},
+//							},
+//							Value:    pulumi.String("c3RyaW5nCg=="),
+//							Critical: pulumi.Bool(true),
+//						},
+//					},
+//					AiaOcspServers: pulumi.StringArray{
+//						pulumi.String("string"),
+//					},
+//					CaOptions: &certificateauthority.CertificateTemplatePredefinedValuesCaOptionsArgs{
+//						IsCa:                pulumi.Bool(false),
+//						MaxIssuerPathLength: pulumi.Int(6),
+//					},
+//					KeyUsage: &certificateauthority.CertificateTemplatePredefinedValuesKeyUsageArgs{
+//						BaseKeyUsage: &certificateauthority.CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs{
+//							CertSign:          pulumi.Bool(false),
+//							ContentCommitment: pulumi.Bool(true),
+//							CrlSign:           pulumi.Bool(false),
+//							DataEncipherment:  pulumi.Bool(true),
+//							DecipherOnly:      pulumi.Bool(true),
+//							DigitalSignature:  pulumi.Bool(true),
+//							EncipherOnly:      pulumi.Bool(true),
+//							KeyAgreement:      pulumi.Bool(true),
+//							KeyEncipherment:   pulumi.Bool(true),
+//						},
+//						ExtendedKeyUsage: &certificateauthority.CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs{
+//							ClientAuth:      pulumi.Bool(true),
+//							CodeSigning:     pulumi.Bool(true),
+//							EmailProtection: pulumi.Bool(true),
+//							OcspSigning:     pulumi.Bool(true),
+//							ServerAuth:      pulumi.Bool(true),
+//							TimeStamping:    pulumi.Bool(true),
+//						},
+//						UnknownExtendedKeyUsages: certificateauthority.CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArray{
+//							&certificateauthority.CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs{
+//								ObjectIdPaths: pulumi.IntArray{
+//									pulumi.Int(1),
+//									pulumi.Int(6),
+//								},
+//							},
+//						},
+//					},
+//					PolicyIds: certificateauthority.CertificateTemplatePredefinedValuesPolicyIdArray{
+//						&certificateauthority.CertificateTemplatePredefinedValuesPolicyIdArgs{
+//							ObjectIdPaths: pulumi.IntArray{
+//								pulumi.Int(1),
+//								pulumi.Int(6),
+//							},
+//						},
+//					},
+//				},
+//				Project: pulumi.String("my-project-name"),
+//				Labels: pulumi.StringMap{
+//					"label-two": pulumi.String("value-two"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

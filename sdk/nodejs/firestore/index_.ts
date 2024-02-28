@@ -26,16 +26,41 @@ import * as utilities from "../utilities";
  * will be the same as the App Engine location specified.
  *
  * ## Example Usage
- * ### Firestore Index Datastore Mode
+ * ### Firestore Index Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumi/time";
  *
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "project-id",
+ *     name: "project-id",
+ *     orgId: "123456789",
+ * });
+ * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"});
+ * const firestore = new gcp.projects.Service("firestore", {
+ *     project: project.projectId,
+ *     service: "firestore.googleapis.com",
+ * });
+ * const database = new gcp.firestore.Database("database", {
+ *     project: project.projectId,
+ *     name: "(default)",
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ * });
+ * // Creating a document also creates its collection
+ * const document = new gcp.firestore.Document("document", {
+ *     project: project.projectId,
+ *     database: database.name,
+ *     collection: "somenewcollection",
+ *     documentId: "",
+ *     fields: "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
+ * });
  * const my_index = new gcp.firestore.Index("my-index", {
- *     apiScope: "DATASTORE_MODE_API",
- *     collection: "chatrooms",
- *     database: "(default)",
+ *     project: project.projectId,
+ *     database: database.name,
+ *     collection: document.collection,
  *     fields: [
  *         {
  *             fieldPath: "name",
@@ -46,8 +71,30 @@ import * as utilities from "../utilities";
  *             order: "DESCENDING",
  *         },
  *     ],
+ * });
+ * ```
+ * ### Firestore Index Datastore Mode
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_index = new gcp.firestore.Index("my-index", {
  *     project: "my-project-name",
+ *     database: "(default)",
+ *     collection: "chatrooms",
  *     queryScope: "COLLECTION_RECURSIVE",
+ *     apiScope: "DATASTORE_MODE_API",
+ *     fields: [
+ *         {
+ *             fieldPath: "name",
+ *             order: "ASCENDING",
+ *         },
+ *         {
+ *             fieldPath: "description",
+ *             order: "DESCENDING",
+ *         },
+ *     ],
  * });
  * ```
  *

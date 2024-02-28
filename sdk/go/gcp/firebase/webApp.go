@@ -36,43 +36,45 @@ import (
 //
 // )
 //
+//	func notImplemented(message string) pulumi.AnyOutput {
+//		panic(message)
+//	}
+//
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			basicWebApp, err := firebase.NewWebApp(ctx, "basicWebApp", &firebase.WebAppArgs{
+//			basicWebApp, err := firebase.NewWebApp(ctx, "basic", &firebase.WebAppArgs{
 //				Project:     pulumi.String("my-project-name"),
 //				DisplayName: pulumi.String("Display Name Basic"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			basicWebAppConfig := firebase.GetWebAppConfigOutput(ctx, firebase.GetWebAppConfigOutputArgs{
+//			basic := firebase.GetWebAppConfigOutput(ctx, firebase.GetWebAppConfigOutputArgs{
 //				WebAppId: basicWebApp.AppId,
 //			}, nil)
-//			defaultBucket, err := storage.NewBucket(ctx, "defaultBucket", &storage.BucketArgs{
+//			_, err = storage.NewBucket(ctx, "default", &storage.BucketArgs{
+//				Name:     pulumi.String("fb-webapp-"),
 //				Location: pulumi.String("US"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = storage.NewBucketObject(ctx, "defaultBucketObject", &storage.BucketObjectArgs{
-//				Bucket: defaultBucket.Name,
-//				Content: pulumi.All(basicWebApp.AppId, basicWebAppConfig, basicWebAppConfig, "TODO: call lookup", "TODO: call lookup", "TODO: call lookup", "TODO: call lookup").ApplyT(func(_args []interface{}) (string, error) {
+//			_, err = storage.NewBucketObject(ctx, "default", &storage.BucketObjectArgs{
+//				Bucket: _default.Name,
+//				Name:   pulumi.String("firebase-config.json"),
+//				Content: pulumi.All(basicWebApp.AppId, basic, basic).ApplyT(func(_args []interface{}) (string, error) {
 //					appId := _args[0].(string)
-//					basicWebAppConfig := _args[1].(firebase.GetWebAppConfigResult)
-//					basicWebAppConfig1 := _args[2].(firebase.GetWebAppConfigResult)
-//					s := _args[3].(*string)
-//					s1 := _args[4].(*string)
-//					s2 := _args[5].(*string)
-//					s3 := _args[6].(*string)
+//					basic := _args[1].(firebase.GetWebAppConfigResult)
+//					basic1 := _args[2].(firebase.GetWebAppConfigResult)
 //					var _zero string
 //					tmpJSON0, err := json.Marshal(map[string]interface{}{
 //						"appId":             appId,
-//						"apiKey":            basicWebAppConfig.ApiKey,
-//						"authDomain":        basicWebAppConfig1.AuthDomain,
-//						"databaseURL":       s,
-//						"storageBucket":     s1,
-//						"messagingSenderId": s2,
-//						"measurementId":     s3,
+//						"apiKey":            basic.ApiKey,
+//						"authDomain":        basic1.AuthDomain,
+//						"databaseURL":       notImplemented("lookup(data.google_firebase_web_app_config.basic,\"database_url\",\"\")"),
+//						"storageBucket":     notImplemented("lookup(data.google_firebase_web_app_config.basic,\"storage_bucket\",\"\")"),
+//						"messagingSenderId": notImplemented("lookup(data.google_firebase_web_app_config.basic,\"messaging_sender_id\",\"\")"),
+//						"measurementId":     notImplemented("lookup(data.google_firebase_web_app_config.basic,\"measurement_id\",\"\")"),
 //					})
 //					if err != nil {
 //						return _zero, err
@@ -80,7 +82,7 @@ import (
 //					json0 := string(tmpJSON0)
 //					return json0, nil
 //				}).(pulumi.StringOutput),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -106,6 +108,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			web, err := projects.NewApiKey(ctx, "web", &projects.ApiKeyArgs{
 //				Project:     pulumi.String("my-project-name"),
+//				Name:        pulumi.String("api-key"),
 //				DisplayName: pulumi.String("Display Name"),
 //				Restrictions: &projects.ApiKeyRestrictionsArgs{
 //					BrowserKeyRestrictions: &projects.ApiKeyRestrictionsBrowserKeyRestrictionsArgs{
@@ -114,7 +117,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -123,7 +126,7 @@ import (
 //				DisplayName:    pulumi.String("Display Name"),
 //				ApiKeyId:       web.Uid,
 //				DeletionPolicy: pulumi.String("DELETE"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

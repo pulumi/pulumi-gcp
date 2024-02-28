@@ -353,16 +353,18 @@ class TrustConfig(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         default = gcp.certificatemanager.TrustConfig("default",
+            name="trust-config",
             description="sample description for the trust config",
             location="us-central1",
             trust_stores=[gcp.certificatemanager.TrustConfigTrustStoreArgs(
                 trust_anchors=[gcp.certificatemanager.TrustConfigTrustStoreTrustAnchorArgs(
-                    pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
+                    pem_certificate=std.file(input="test-fixtures/cert.pem").result,
                 )],
                 intermediate_cas=[gcp.certificatemanager.TrustConfigTrustStoreIntermediateCaArgs(
-                    pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
+                    pem_certificate=std.file(input="test-fixtures/cert.pem").result,
                 )],
             )],
             labels={
@@ -432,16 +434,18 @@ class TrustConfig(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         default = gcp.certificatemanager.TrustConfig("default",
+            name="trust-config",
             description="sample description for the trust config",
             location="us-central1",
             trust_stores=[gcp.certificatemanager.TrustConfigTrustStoreArgs(
                 trust_anchors=[gcp.certificatemanager.TrustConfigTrustStoreTrustAnchorArgs(
-                    pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
+                    pem_certificate=std.file(input="test-fixtures/cert.pem").result,
                 )],
                 intermediate_cas=[gcp.certificatemanager.TrustConfigTrustStoreIntermediateCaArgs(
-                    pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
+                    pem_certificate=std.file(input="test-fixtures/cert.pem").result,
                 )],
             )],
             labels={

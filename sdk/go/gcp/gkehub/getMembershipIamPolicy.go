@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.LookupMembershipIamPolicy(ctx, &gkehub.LookupMembershipIamPolicyArgs{
-//				Project:      pulumi.StringRef(google_gke_hub_membership.Membership.Project),
-//				Location:     pulumi.StringRef(google_gke_hub_membership.Membership.Location),
-//				MembershipId: google_gke_hub_membership.Membership.Membership_id,
+//				Project:      pulumi.StringRef(membership.Project),
+//				Location:     pulumi.StringRef(membership.Location),
+//				MembershipId: membership.MembershipId,
 //			}, nil)
 //			if err != nil {
 //				return err

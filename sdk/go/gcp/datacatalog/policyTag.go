@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myTaxonomy, err := datacatalog.NewTaxonomy(ctx, "myTaxonomy", &datacatalog.TaxonomyArgs{
+//			myTaxonomy, err := datacatalog.NewTaxonomy(ctx, "my_taxonomy", &datacatalog.TaxonomyArgs{
 //				DisplayName: pulumi.String("taxonomy_display_name"),
 //				Description: pulumi.String("A collection of policy tags"),
 //				ActivatedPolicyTypes: pulumi.StringArray{
@@ -45,7 +45,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = datacatalog.NewPolicyTag(ctx, "basicPolicyTag", &datacatalog.PolicyTagArgs{
+//			_, err = datacatalog.NewPolicyTag(ctx, "basic_policy_tag", &datacatalog.PolicyTagArgs{
 //				Taxonomy:    myTaxonomy.ID(),
 //				DisplayName: pulumi.String("Low security"),
 //				Description: pulumi.String("A policy tag normally associated with low security items"),
@@ -72,7 +72,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myTaxonomy, err := datacatalog.NewTaxonomy(ctx, "myTaxonomy", &datacatalog.TaxonomyArgs{
+//			myTaxonomy, err := datacatalog.NewTaxonomy(ctx, "my_taxonomy", &datacatalog.TaxonomyArgs{
 //				DisplayName: pulumi.String("taxonomy_display_name"),
 //				Description: pulumi.String("A collection of policy tags"),
 //				ActivatedPolicyTypes: pulumi.StringArray{
@@ -82,7 +82,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			parentPolicy, err := datacatalog.NewPolicyTag(ctx, "parentPolicy", &datacatalog.PolicyTagArgs{
+//			parentPolicy, err := datacatalog.NewPolicyTag(ctx, "parent_policy", &datacatalog.PolicyTagArgs{
 //				Taxonomy:    myTaxonomy.ID(),
 //				DisplayName: pulumi.String("High"),
 //				Description: pulumi.String("A policy tag category used for high security access"),
@@ -90,7 +90,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			childPolicy, err := datacatalog.NewPolicyTag(ctx, "childPolicy", &datacatalog.PolicyTagArgs{
+//			_, err = datacatalog.NewPolicyTag(ctx, "child_policy", &datacatalog.PolicyTagArgs{
 //				Taxonomy:        myTaxonomy.ID(),
 //				DisplayName:     pulumi.String("ssn"),
 //				Description:     pulumi.String("A hash of the users ssn"),
@@ -99,14 +99,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = datacatalog.NewPolicyTag(ctx, "childPolicy2", &datacatalog.PolicyTagArgs{
+//			_, err = datacatalog.NewPolicyTag(ctx, "child_policy2", &datacatalog.PolicyTagArgs{
 //				Taxonomy:        myTaxonomy.ID(),
 //				DisplayName:     pulumi.String("dob"),
 //				Description:     pulumi.String("The users date of birth"),
 //				ParentPolicyTag: parentPolicy.ID(),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				childPolicy,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

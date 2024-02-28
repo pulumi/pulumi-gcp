@@ -52,9 +52,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getConnectionIamPolicy(GetConnectionIamPolicyArgs.builder()
-     *             .project(google_bigquery_connection.connection().project())
-     *             .location(google_bigquery_connection.connection().location())
-     *             .connectionId(google_bigquery_connection.connection().connection_id())
+     *             .project(connection.project())
+     *             .location(connection.location())
+     *             .connectionId(connection.connectionId())
      *             .build());
      * 
      *     }
@@ -91,9 +91,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getConnectionIamPolicy(GetConnectionIamPolicyArgs.builder()
-     *             .project(google_bigquery_connection.connection().project())
-     *             .location(google_bigquery_connection.connection().location())
-     *             .connectionId(google_bigquery_connection.connection().connection_id())
+     *             .project(connection.project())
+     *             .location(connection.location())
+     *             .connectionId(connection.connectionId())
      *             .build());
      * 
      *     }
@@ -130,9 +130,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getConnectionIamPolicy(GetConnectionIamPolicyArgs.builder()
-     *             .project(google_bigquery_connection.connection().project())
-     *             .location(google_bigquery_connection.connection().location())
-     *             .connectionId(google_bigquery_connection.connection().connection_id())
+     *             .project(connection.project())
+     *             .location(connection.location())
+     *             .connectionId(connection.connectionId())
      *             .build());
      * 
      *     }
@@ -169,9 +169,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getConnectionIamPolicy(GetConnectionIamPolicyArgs.builder()
-     *             .project(google_bigquery_connection.connection().project())
-     *             .location(google_bigquery_connection.connection().location())
-     *             .connectionId(google_bigquery_connection.connection().connection_id())
+     *             .project(connection.project())
+     *             .location(connection.location())
+     *             .connectionId(connection.connectionId())
      *             .build());
      * 
      *     }
@@ -368,7 +368,7 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getDatasetIamPolicy(GetDatasetIamPolicyArgs.builder()
-     *             .datasetId(google_bigquery_dataset.dataset().dataset_id())
+     *             .datasetId(dataset.datasetId())
      *             .build());
      * 
      *     }
@@ -405,7 +405,7 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getDatasetIamPolicy(GetDatasetIamPolicyArgs.builder()
-     *             .datasetId(google_bigquery_dataset.dataset().dataset_id())
+     *             .datasetId(dataset.datasetId())
      *             .build());
      * 
      *     }
@@ -442,7 +442,7 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getDatasetIamPolicy(GetDatasetIamPolicyArgs.builder()
-     *             .datasetId(google_bigquery_dataset.dataset().dataset_id())
+     *             .datasetId(dataset.datasetId())
      *             .build());
      * 
      *     }
@@ -479,7 +479,7 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getDatasetIamPolicy(GetDatasetIamPolicyArgs.builder()
-     *             .datasetId(google_bigquery_dataset.dataset().dataset_id())
+     *             .datasetId(dataset.datasetId())
      *             .build());
      * 
      *     }
@@ -528,7 +528,7 @@ public final class BigqueryFunctions {
      *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
      * 
      *         var keySaUser = new CryptoKeyIAMMember(&#34;keySaUser&#34;, CryptoKeyIAMMemberArgs.builder()        
-     *             .cryptoKeyId(google_kms_crypto_key.key().id())
+     *             .cryptoKeyId(key.id())
      *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
      *             .member(String.format(&#34;serviceAccount:%s&#34;, bqSa.applyValue(getDefaultServiceAccountResult -&gt; getDefaultServiceAccountResult.email())))
      *             .build());
@@ -579,7 +579,7 @@ public final class BigqueryFunctions {
      *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
      * 
      *         var keySaUser = new CryptoKeyIAMMember(&#34;keySaUser&#34;, CryptoKeyIAMMemberArgs.builder()        
-     *             .cryptoKeyId(google_kms_crypto_key.key().id())
+     *             .cryptoKeyId(key.id())
      *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
      *             .member(String.format(&#34;serviceAccount:%s&#34;, bqSa.applyValue(getDefaultServiceAccountResult -&gt; getDefaultServiceAccountResult.email())))
      *             .build());
@@ -630,7 +630,7 @@ public final class BigqueryFunctions {
      *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
      * 
      *         var keySaUser = new CryptoKeyIAMMember(&#34;keySaUser&#34;, CryptoKeyIAMMemberArgs.builder()        
-     *             .cryptoKeyId(google_kms_crypto_key.key().id())
+     *             .cryptoKeyId(key.id())
      *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
      *             .member(String.format(&#34;serviceAccount:%s&#34;, bqSa.applyValue(getDefaultServiceAccountResult -&gt; getDefaultServiceAccountResult.email())))
      *             .build());
@@ -681,7 +681,7 @@ public final class BigqueryFunctions {
      *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
      * 
      *         var keySaUser = new CryptoKeyIAMMember(&#34;keySaUser&#34;, CryptoKeyIAMMemberArgs.builder()        
-     *             .cryptoKeyId(google_kms_crypto_key.key().id())
+     *             .cryptoKeyId(key.id())
      *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
      *             .member(String.format(&#34;serviceAccount:%s&#34;, bqSa.applyValue(getDefaultServiceAccountResult -&gt; getDefaultServiceAccountResult.email())))
      *             .build());
@@ -732,7 +732,7 @@ public final class BigqueryFunctions {
      *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
      * 
      *         var keySaUser = new CryptoKeyIAMMember(&#34;keySaUser&#34;, CryptoKeyIAMMemberArgs.builder()        
-     *             .cryptoKeyId(google_kms_crypto_key.key().id())
+     *             .cryptoKeyId(key.id())
      *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
      *             .member(String.format(&#34;serviceAccount:%s&#34;, bqSa.applyValue(getDefaultServiceAccountResult -&gt; getDefaultServiceAccountResult.email())))
      *             .build());
@@ -783,7 +783,7 @@ public final class BigqueryFunctions {
      *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
      * 
      *         var keySaUser = new CryptoKeyIAMMember(&#34;keySaUser&#34;, CryptoKeyIAMMemberArgs.builder()        
-     *             .cryptoKeyId(google_kms_crypto_key.key().id())
+     *             .cryptoKeyId(key.id())
      *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
      *             .member(String.format(&#34;serviceAccount:%s&#34;, bqSa.applyValue(getDefaultServiceAccountResult -&gt; getDefaultServiceAccountResult.email())))
      *             .build());
@@ -822,9 +822,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getTableIamPolicy(GetTableIamPolicyArgs.builder()
-     *             .project(google_bigquery_table.test().project())
-     *             .datasetId(google_bigquery_table.test().dataset_id())
-     *             .tableId(google_bigquery_table.test().table_id())
+     *             .project(test.project())
+     *             .datasetId(test.datasetId())
+     *             .tableId(test.tableId())
      *             .build());
      * 
      *     }
@@ -861,9 +861,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getTableIamPolicy(GetTableIamPolicyArgs.builder()
-     *             .project(google_bigquery_table.test().project())
-     *             .datasetId(google_bigquery_table.test().dataset_id())
-     *             .tableId(google_bigquery_table.test().table_id())
+     *             .project(test.project())
+     *             .datasetId(test.datasetId())
+     *             .tableId(test.tableId())
      *             .build());
      * 
      *     }
@@ -900,9 +900,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getTableIamPolicy(GetTableIamPolicyArgs.builder()
-     *             .project(google_bigquery_table.test().project())
-     *             .datasetId(google_bigquery_table.test().dataset_id())
-     *             .tableId(google_bigquery_table.test().table_id())
+     *             .project(test.project())
+     *             .datasetId(test.datasetId())
+     *             .tableId(test.tableId())
      *             .build());
      * 
      *     }
@@ -939,9 +939,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getTableIamPolicy(GetTableIamPolicyArgs.builder()
-     *             .project(google_bigquery_table.test().project())
-     *             .datasetId(google_bigquery_table.test().dataset_id())
-     *             .tableId(google_bigquery_table.test().table_id())
+     *             .project(test.project())
+     *             .datasetId(test.datasetId())
+     *             .tableId(test.tableId())
      *             .build());
      * 
      *     }

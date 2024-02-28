@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.Monitoring
     ///         ModuleId = "default",
     ///     });
     /// 
-    ///     var appengSlo = new Gcp.Monitoring.Slo("appengSlo", new()
+    ///     var appengSlo = new Gcp.Monitoring.Slo("appeng_slo", new()
     ///     {
     ///         Service = @default.Apply(@default =&gt; @default.Apply(getAppEngineServiceResult =&gt; getAppEngineServiceResult.ServiceId)),
     ///         SloId = "ae-slo",
@@ -80,7 +80,7 @@ namespace Pulumi.Gcp.Monitoring
     ///         DisplayName = "My Custom Service",
     ///     });
     /// 
-    ///     var requestBasedSlo = new Gcp.Monitoring.Slo("requestBasedSlo", new()
+    ///     var requestBasedSlo = new Gcp.Monitoring.Slo("request_based_slo", new()
     ///     {
     ///         Service = customsrv.ServiceId,
     ///         SloId = "consumed-api-slo",
@@ -95,6 +95,195 @@ namespace Pulumi.Gcp.Monitoring
     ///                 Range = new Gcp.Monitoring.Inputs.SloRequestBasedSliDistributionCutRangeArgs
     ///                 {
     ///                     Max = 0.5,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Monitoring Slo Windows Based Good Bad Metric Filter
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var customsrv = new Gcp.Monitoring.CustomService("customsrv", new()
+    ///     {
+    ///         ServiceId = "custom-srv-windows-slos",
+    ///         DisplayName = "My Custom Service",
+    ///     });
+    /// 
+    ///     var windowsBased = new Gcp.Monitoring.Slo("windows_based", new()
+    ///     {
+    ///         Service = customsrv.ServiceId,
+    ///         DisplayName = "Test SLO with window based SLI",
+    ///         Goal = 0.95,
+    ///         CalendarPeriod = "FORTNIGHT",
+    ///         WindowsBasedSli = new Gcp.Monitoring.Inputs.SloWindowsBasedSliArgs
+    ///         {
+    ///             WindowPeriod = "400s",
+    ///             GoodBadMetricFilter = Std.Join.Invoke(new()
+    ///             {
+    ///                 Separator = " AND ",
+    ///                 Input = new[]
+    ///                 {
+    ///                     "metric.type=\"monitoring.googleapis.com/uptime_check/check_passed\"",
+    ///                     "resource.type=\"uptime_url\"",
+    ///                 },
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Monitoring Slo Windows Based Metric Mean
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var customsrv = new Gcp.Monitoring.CustomService("customsrv", new()
+    ///     {
+    ///         ServiceId = "custom-srv-windows-slos",
+    ///         DisplayName = "My Custom Service",
+    ///     });
+    /// 
+    ///     var windowsBased = new Gcp.Monitoring.Slo("windows_based", new()
+    ///     {
+    ///         Service = customsrv.ServiceId,
+    ///         DisplayName = "Test SLO with window based SLI",
+    ///         Goal = 0.9,
+    ///         RollingPeriodDays = 20,
+    ///         WindowsBasedSli = new Gcp.Monitoring.Inputs.SloWindowsBasedSliArgs
+    ///         {
+    ///             WindowPeriod = "600s",
+    ///             MetricMeanInRange = new Gcp.Monitoring.Inputs.SloWindowsBasedSliMetricMeanInRangeArgs
+    ///             {
+    ///                 TimeSeries = Std.Join.Invoke(new()
+    ///                 {
+    ///                     Separator = " AND ",
+    ///                     Input = new[]
+    ///                     {
+    ///                         "metric.type=\"agent.googleapis.com/cassandra/client_request/latency/95p\"",
+    ///                         "resource.type=\"gce_instance\"",
+    ///                     },
+    ///                 }).Apply(invoke =&gt; invoke.Result),
+    ///                 Range = new Gcp.Monitoring.Inputs.SloWindowsBasedSliMetricMeanInRangeRangeArgs
+    ///                 {
+    ///                     Max = 5,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Monitoring Slo Windows Based Metric Sum
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var customsrv = new Gcp.Monitoring.CustomService("customsrv", new()
+    ///     {
+    ///         ServiceId = "custom-srv-windows-slos",
+    ///         DisplayName = "My Custom Service",
+    ///     });
+    /// 
+    ///     var windowsBased = new Gcp.Monitoring.Slo("windows_based", new()
+    ///     {
+    ///         Service = customsrv.ServiceId,
+    ///         DisplayName = "Test SLO with window based SLI",
+    ///         Goal = 0.9,
+    ///         RollingPeriodDays = 20,
+    ///         WindowsBasedSli = new Gcp.Monitoring.Inputs.SloWindowsBasedSliArgs
+    ///         {
+    ///             WindowPeriod = "400s",
+    ///             MetricSumInRange = new Gcp.Monitoring.Inputs.SloWindowsBasedSliMetricSumInRangeArgs
+    ///             {
+    ///                 TimeSeries = Std.Join.Invoke(new()
+    ///                 {
+    ///                     Separator = " AND ",
+    ///                     Input = new[]
+    ///                     {
+    ///                         "metric.type=\"monitoring.googleapis.com/uptime_check/request_latency\"",
+    ///                         "resource.type=\"uptime_url\"",
+    ///                     },
+    ///                 }).Apply(invoke =&gt; invoke.Result),
+    ///                 Range = new Gcp.Monitoring.Inputs.SloWindowsBasedSliMetricSumInRangeRangeArgs
+    ///                 {
+    ///                     Max = 5000,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Monitoring Slo Windows Based Ratio Threshold
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var customsrv = new Gcp.Monitoring.CustomService("customsrv", new()
+    ///     {
+    ///         ServiceId = "custom-srv-windows-slos",
+    ///         DisplayName = "My Custom Service",
+    ///     });
+    /// 
+    ///     var windowsBased = new Gcp.Monitoring.Slo("windows_based", new()
+    ///     {
+    ///         Service = customsrv.ServiceId,
+    ///         DisplayName = "Test SLO with window based SLI",
+    ///         Goal = 0.9,
+    ///         RollingPeriodDays = 20,
+    ///         WindowsBasedSli = new Gcp.Monitoring.Inputs.SloWindowsBasedSliArgs
+    ///         {
+    ///             WindowPeriod = "100s",
+    ///             GoodTotalRatioThreshold = new Gcp.Monitoring.Inputs.SloWindowsBasedSliGoodTotalRatioThresholdArgs
+    ///             {
+    ///                 Threshold = 0.1,
+    ///                 Performance = new Gcp.Monitoring.Inputs.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs
+    ///                 {
+    ///                     DistributionCut = new Gcp.Monitoring.Inputs.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs
+    ///                     {
+    ///                         DistributionFilter = Std.Join.Invoke(new()
+    ///                         {
+    ///                             Separator = " AND ",
+    ///                             Input = new[]
+    ///                             {
+    ///                                 "metric.type=\"serviceruntime.googleapis.com/api/request_latencies\"",
+    ///                                 "resource.type=\"consumed_api\"",
+    ///                             },
+    ///                         }).Apply(invoke =&gt; invoke.Result),
+    ///                         Range = new Gcp.Monitoring.Inputs.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs
+    ///                         {
+    ///                             Min = 1,
+    ///                             Max = 9,
+    ///                         },
+    ///                     },
     ///                 },
     ///             },
     ///         },

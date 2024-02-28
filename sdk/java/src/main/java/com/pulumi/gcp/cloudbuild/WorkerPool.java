@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var pool = new WorkerPool(&#34;pool&#34;, WorkerPoolArgs.builder()        
+ *             .name(&#34;my-pool&#34;)
  *             .location(&#34;europe-west1&#34;)
  *             .workerConfig(WorkerPoolWorkerConfigArgs.builder()
  *                 .diskSizeGb(100)
@@ -75,7 +76,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudbuild.WorkerPoolArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.WorkerPoolWorkerConfigArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.WorkerPoolNetworkConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -95,12 +95,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
+ *             .name(&#34;my-network&#34;)
  *             .autoCreateSubnetworks(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(servicenetworking)
- *                 .build());
+ *             .build());
  * 
  *         var workerRange = new GlobalAddress(&#34;workerRange&#34;, GlobalAddressArgs.builder()        
+ *             .name(&#34;worker-pool-range&#34;)
  *             .purpose(&#34;VPC_PEERING&#34;)
  *             .addressType(&#34;INTERNAL&#34;)
  *             .prefixLength(16)
@@ -111,11 +111,10 @@ import javax.annotation.Nullable;
  *             .network(network.id())
  *             .service(&#34;servicenetworking.googleapis.com&#34;)
  *             .reservedPeeringRanges(workerRange.name())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(servicenetworking)
- *                 .build());
+ *             .build());
  * 
  *         var pool = new WorkerPool(&#34;pool&#34;, WorkerPoolArgs.builder()        
+ *             .name(&#34;my-pool&#34;)
  *             .location(&#34;europe-west1&#34;)
  *             .workerConfig(WorkerPoolWorkerConfigArgs.builder()
  *                 .diskSizeGb(100)
@@ -126,9 +125,7 @@ import javax.annotation.Nullable;
  *                 .peeredNetwork(network.id())
  *                 .peeredNetworkIpRange(&#34;/29&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(workerPoolConn)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

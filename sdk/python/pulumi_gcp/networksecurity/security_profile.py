@@ -416,13 +416,13 @@ class SecurityProfile(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.SecurityProfile("default",
+            name="my-security-profile",
             parent="organizations/123456789",
             description="my description",
             type="THREAT_PREVENTION",
             labels={
                 "foo": "bar",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
         ### Network Security Security Profile Overrides
 
@@ -431,6 +431,7 @@ class SecurityProfile(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.SecurityProfile("default",
+            name="my-security-profile",
             parent="organizations/123456789",
             description="my description",
             type="THREAT_PREVENTION",
@@ -449,8 +450,7 @@ class SecurityProfile(pulumi.CustomResource):
                     action="ALLOW",
                     threat_id="280647",
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import
@@ -500,13 +500,13 @@ class SecurityProfile(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.SecurityProfile("default",
+            name="my-security-profile",
             parent="organizations/123456789",
             description="my description",
             type="THREAT_PREVENTION",
             labels={
                 "foo": "bar",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
         ### Network Security Security Profile Overrides
 
@@ -515,6 +515,7 @@ class SecurityProfile(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.SecurityProfile("default",
+            name="my-security-profile",
             parent="organizations/123456789",
             description="my description",
             type="THREAT_PREVENTION",
@@ -533,8 +534,7 @@ class SecurityProfile(pulumi.CustomResource):
                     action="ALLOW",
                     threat_id="280647",
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import

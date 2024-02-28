@@ -21,14 +21,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const keyring = new gcp.kms.KeyRing("keyring", {location: "global"});
+ * const keyring = new gcp.kms.KeyRing("keyring", {
+ *     name: "keyring-example",
+ *     location: "global",
+ * });
  * const admin = gcp.organizations.getIAMPolicy({
  *     bindings: [{
  *         role: "roles/editor",
  *         members: ["user:jane@example.com"],
  *     }],
  * });
- * const keyRing = new gcp.kms.KeyRingIAMPolicy("keyRing", {
+ * const keyRing = new gcp.kms.KeyRingIAMPolicy("key_ring", {
  *     keyRingId: keyring.id,
  *     policyData: admin.then(admin => admin.policyData),
  * });
@@ -40,7 +43,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const keyring = new gcp.kms.KeyRing("keyring", {location: "global"});
+ * const keyring = new gcp.kms.KeyRing("keyring", {
+ *     name: "keyring-example",
+ *     location: "global",
+ * });
  * const admin = gcp.organizations.getIAMPolicy({
  *     bindings: [{
  *         role: "roles/editor",
@@ -52,7 +58,7 @@ import * as utilities from "../utilities";
  *         },
  *     }],
  * });
- * const keyRing = new gcp.kms.KeyRingIAMPolicy("keyRing", {
+ * const keyRing = new gcp.kms.KeyRingIAMPolicy("key_ring", {
  *     keyRingId: keyring.id,
  *     policyData: admin.then(admin => admin.policyData),
  * });
@@ -64,10 +70,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const keyRing = new gcp.kms.KeyRingIAMBinding("keyRing", {
+ * const keyRing = new gcp.kms.KeyRingIAMBinding("key_ring", {
  *     keyRingId: "your-key-ring-id",
- *     members: ["user:jane@example.com"],
  *     role: "roles/cloudkms.admin",
+ *     members: ["user:jane@example.com"],
  * });
  * ```
  *
@@ -77,15 +83,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const keyRing = new gcp.kms.KeyRingIAMBinding("keyRing", {
+ * const keyRing = new gcp.kms.KeyRingIAMBinding("key_ring", {
+ *     keyRingId: "your-key-ring-id",
+ *     role: "roles/cloudkms.admin",
+ *     members: ["user:jane@example.com"],
  *     condition: {
+ *         title: "expires_after_2019_12_31",
  *         description: "Expiring at midnight of 2019-12-31",
  *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
- *         title: "expires_after_2019_12_31",
  *     },
- *     keyRingId: "your-key-ring-id",
- *     members: ["user:jane@example.com"],
- *     role: "roles/cloudkms.admin",
  * });
  * ```
  *
@@ -95,10 +101,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const keyRing = new gcp.kms.KeyRingIAMMember("keyRing", {
+ * const keyRing = new gcp.kms.KeyRingIAMMember("key_ring", {
  *     keyRingId: "your-key-ring-id",
- *     member: "user:jane@example.com",
  *     role: "roles/cloudkms.admin",
+ *     member: "user:jane@example.com",
  * });
  * ```
  *
@@ -108,15 +114,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const keyRing = new gcp.kms.KeyRingIAMMember("keyRing", {
+ * const keyRing = new gcp.kms.KeyRingIAMMember("key_ring", {
+ *     keyRingId: "your-key-ring-id",
+ *     role: "roles/cloudkms.admin",
+ *     member: "user:jane@example.com",
  *     condition: {
+ *         title: "expires_after_2019_12_31",
  *         description: "Expiring at midnight of 2019-12-31",
  *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
- *         title: "expires_after_2019_12_31",
  *     },
- *     keyRingId: "your-key-ring-id",
- *     member: "user:jane@example.com",
- *     role: "roles/cloudkms.admin",
  * });
  * ```
  *

@@ -47,18 +47,25 @@ import (
 //				return err
 //			}
 //			_, err = accesscontextmanager.NewAccessLevels(ctx, "access-levels", &accesscontextmanager.AccessLevelsArgs{
+//				Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("accessPolicies/%v", name), nil
+//				}).(pulumi.StringOutput),
 //				AccessLevels: accesscontextmanager.AccessLevelsAccessLevelArray{
 //					&accesscontextmanager.AccessLevelsAccessLevelArgs{
+//						Name: access_policy.Name.ApplyT(func(name string) (string, error) {
+//							return fmt.Sprintf("accessPolicies/%v/accessLevels/chromeos_no_lock", name), nil
+//						}).(pulumi.StringOutput),
+//						Title: pulumi.String("chromeos_no_lock"),
 //						Basic: &accesscontextmanager.AccessLevelsAccessLevelBasicArgs{
 //							Conditions: accesscontextmanager.AccessLevelsAccessLevelBasicConditionArray{
 //								&accesscontextmanager.AccessLevelsAccessLevelBasicConditionArgs{
 //									DevicePolicy: &accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs{
+//										RequireScreenLock: pulumi.Bool(true),
 //										OsConstraints: accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArray{
 //											&accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs{
 //												OsType: pulumi.String("DESKTOP_CHROME_OS"),
 //											},
 //										},
-//										RequireScreenLock: pulumi.Bool(true),
 //									},
 //									Regions: pulumi.StringArray{
 //										pulumi.String("CH"),
@@ -68,22 +75,22 @@ import (
 //								},
 //							},
 //						},
-//						Name: access_policy.Name.ApplyT(func(name string) (string, error) {
-//							return fmt.Sprintf("accessPolicies/%v/accessLevels/chromeos_no_lock", name), nil
-//						}).(pulumi.StringOutput),
-//						Title: pulumi.String("chromeos_no_lock"),
 //					},
 //					&accesscontextmanager.AccessLevelsAccessLevelArgs{
+//						Name: access_policy.Name.ApplyT(func(name string) (string, error) {
+//							return fmt.Sprintf("accessPolicies/%v/accessLevels/mac_no_lock", name), nil
+//						}).(pulumi.StringOutput),
+//						Title: pulumi.String("mac_no_lock"),
 //						Basic: &accesscontextmanager.AccessLevelsAccessLevelBasicArgs{
 //							Conditions: accesscontextmanager.AccessLevelsAccessLevelBasicConditionArray{
 //								&accesscontextmanager.AccessLevelsAccessLevelBasicConditionArgs{
 //									DevicePolicy: &accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs{
+//										RequireScreenLock: pulumi.Bool(true),
 //										OsConstraints: accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArray{
 //											&accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs{
 //												OsType: pulumi.String("DESKTOP_MAC"),
 //											},
 //										},
-//										RequireScreenLock: pulumi.Bool(true),
 //									},
 //									Regions: pulumi.StringArray{
 //										pulumi.String("CH"),
@@ -93,15 +100,8 @@ import (
 //								},
 //							},
 //						},
-//						Name: access_policy.Name.ApplyT(func(name string) (string, error) {
-//							return fmt.Sprintf("accessPolicies/%v/accessLevels/mac_no_lock", name), nil
-//						}).(pulumi.StringOutput),
-//						Title: pulumi.String("mac_no_lock"),
 //					},
 //				},
-//				Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("accessPolicies/%v", name), nil
-//				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {
 //				return err

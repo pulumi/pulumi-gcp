@@ -474,13 +474,14 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.sql.SourceRepresentationInstance("instance",
-            database_version="MYSQL_8_0",
-            dump_file_path="gs://replica-bucket/source-database.sql.gz",
-            host="10.20.30.40",
-            password="password-for-the-user",
-            port=3306,
+            name="my-instance",
             region="us-central1",
-            username="some-user")
+            database_version="MYSQL_8_0",
+            host="10.20.30.40",
+            port=3306,
+            username="some-user",
+            password="password-for-the-user",
+            dump_file_path="gs://replica-bucket/source-database.sql.gz")
         ```
         ### Sql Source Representation Instance Postgres
 
@@ -489,13 +490,14 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.sql.SourceRepresentationInstance("instance",
-            database_version="POSTGRES_9_6",
-            dump_file_path="gs://replica-bucket/source-database.sql.gz",
-            host="10.20.30.40",
-            password="password-for-the-user",
-            port=3306,
+            name="my-instance",
             region="us-central1",
-            username="some-user")
+            database_version="POSTGRES_9_6",
+            host="10.20.30.40",
+            port=3306,
+            username="some-user",
+            password="password-for-the-user",
+            dump_file_path="gs://replica-bucket/source-database.sql.gz")
         ```
 
         ## Import
@@ -566,13 +568,14 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.sql.SourceRepresentationInstance("instance",
-            database_version="MYSQL_8_0",
-            dump_file_path="gs://replica-bucket/source-database.sql.gz",
-            host="10.20.30.40",
-            password="password-for-the-user",
-            port=3306,
+            name="my-instance",
             region="us-central1",
-            username="some-user")
+            database_version="MYSQL_8_0",
+            host="10.20.30.40",
+            port=3306,
+            username="some-user",
+            password="password-for-the-user",
+            dump_file_path="gs://replica-bucket/source-database.sql.gz")
         ```
         ### Sql Source Representation Instance Postgres
 
@@ -581,13 +584,14 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.sql.SourceRepresentationInstance("instance",
-            database_version="POSTGRES_9_6",
-            dump_file_path="gs://replica-bucket/source-database.sql.gz",
-            host="10.20.30.40",
-            password="password-for-the-user",
-            port=3306,
+            name="my-instance",
             region="us-central1",
-            username="some-user")
+            database_version="POSTGRES_9_6",
+            host="10.20.30.40",
+            port=3306,
+            username="some-user",
+            password="password-for-the-user",
+            dump_file_path="gs://replica-bucket/source-database.sql.gz")
         ```
 
         ## Import

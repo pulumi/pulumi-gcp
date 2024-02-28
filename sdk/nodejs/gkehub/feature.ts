@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const cluster = new gcp.container.Cluster("cluster", {
+ *     name: "my-cluster",
  *     location: "us-central1-a",
  *     initialNodeCount: 1,
  * });
@@ -36,6 +37,7 @@ import * as utilities from "../utilities";
  *     description: "Membership",
  * });
  * const feature = new gcp.gkehub.Feature("feature", {
+ *     name: "multiclusteringress",
  *     location: "global",
  *     spec: {
  *         multiclusteringress: {
@@ -51,10 +53,11 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const feature = new gcp.gkehub.Feature("feature", {
+ *     name: "multiclusterservicediscovery",
+ *     location: "global",
  *     labels: {
  *         foo: "bar",
  *     },
- *     location: "global",
  * });
  * ```
  * ### Gkehub Feature Anthos Service Mesh
@@ -63,7 +66,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const feature = new gcp.gkehub.Feature("feature", {location: "global"});
+ * const feature = new gcp.gkehub.Feature("feature", {
+ *     name: "servicemesh",
+ *     location: "global",
+ * });
  * ```
  * ### Enable Fleet Observability For Default Logs With Copy
  *
@@ -72,6 +78,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const feature = new gcp.gkehub.Feature("feature", {
+ *     name: "fleetobservability",
  *     location: "global",
  *     spec: {
  *         fleetobservability: {
@@ -91,6 +98,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const feature = new gcp.gkehub.Feature("feature", {
+ *     name: "fleetobservability",
  *     location: "global",
  *     spec: {
  *         fleetobservability: {
@@ -110,6 +118,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const feature = new gcp.gkehub.Feature("feature", {
+ *     name: "fleetobservability",
  *     location: "global",
  *     spec: {
  *         fleetobservability: {
@@ -132,12 +141,13 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const feature = new gcp.gkehub.Feature("feature", {
+ *     name: "servicemesh",
+ *     location: "global",
  *     fleetDefaultMemberConfig: {
  *         mesh: {
  *             management: "MANAGEMENT_AUTOMATIC",
  *         },
  *     },
- *     location: "global",
  * });
  * ```
  * ### Enable Fleet Default Member Config Configmanagement
@@ -147,6 +157,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const feature = new gcp.gkehub.Feature("feature", {
+ *     name: "configmanagement",
+ *     location: "global",
  *     fleetDefaultMemberConfig: {
  *         configmanagement: {
  *             configSync: {
@@ -156,7 +168,6 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
- *     location: "global",
  * });
  * ```
  * ### Enable Fleet Default Member Config Policycontroller
@@ -166,12 +177,13 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const feature = new gcp.gkehub.Feature("feature", {
+ *     name: "policycontroller",
+ *     location: "global",
  *     fleetDefaultMemberConfig: {
  *         policycontroller: {
  *             policyControllerHubConfig: {
- *                 auditIntervalSeconds: 30,
- *                 exemptableNamespaces: ["foo"],
  *                 installSpec: "INSTALL_SPEC_ENABLED",
+ *                 exemptableNamespaces: ["foo"],
  *                 policyContent: {
  *                     bundles: [{
  *                         bundle: "policy-essentials-v2022",
@@ -184,11 +196,80 @@ import * as utilities from "../utilities";
  *                         installation: "ALL",
  *                     },
  *                 },
+ *                 auditIntervalSeconds: 30,
  *                 referentialRulesEnabled: true,
  *             },
  *         },
  *     },
+ * });
+ * ```
+ * ### Enable Fleet Default Member Config Policycontroller Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const feature = new gcp.gkehub.Feature("feature", {
+ *     name: "policycontroller",
  *     location: "global",
+ *     fleetDefaultMemberConfig: {
+ *         policycontroller: {
+ *             policyControllerHubConfig: {
+ *                 installSpec: "INSTALL_SPEC_SUSPENDED",
+ *                 policyContent: {
+ *                     bundles: [
+ *                         {
+ *                             bundle: "pci-dss-v3.2.1",
+ *                             exemptedNamespaces: [
+ *                                 "baz",
+ *                                 "bar",
+ *                             ],
+ *                         },
+ *                         {
+ *                             bundle: "nist-sp-800-190",
+ *                             exemptedNamespaces: [],
+ *                         },
+ *                     ],
+ *                     templateLibrary: {
+ *                         installation: "ALL",
+ *                     },
+ *                 },
+ *                 constraintViolationLimit: 50,
+ *                 referentialRulesEnabled: true,
+ *                 logDeniesEnabled: true,
+ *                 mutationEnabled: true,
+ *                 deploymentConfigs: [
+ *                     {
+ *                         component: "admission",
+ *                         replicaCount: 2,
+ *                         podAffinity: "ANTI_AFFINITY",
+ *                     },
+ *                     {
+ *                         component: "audit",
+ *                         containerResources: {
+ *                             limits: {
+ *                                 memory: "1Gi",
+ *                                 cpu: "1.5",
+ *                             },
+ *                             requests: {
+ *                                 memory: "500Mi",
+ *                                 cpu: "150m",
+ *                             },
+ *                         },
+ *                         podTolerations: [{
+ *                             key: "key1",
+ *                             operator: "Equal",
+ *                             value: "value1",
+ *                             effect: "NoSchedule",
+ *                         }],
+ *                     },
+ *                 ],
+ *                 monitoring: {
+ *                     backends: ["PROMETHEUS"],
+ *                 },
+ *             },
+ *         },
+ *     },
  * });
  * ```
  * ### Enable Fleet Default Member Config Policycontroller Minimal
@@ -198,23 +279,24 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const feature = new gcp.gkehub.Feature("feature", {
+ *     name: "policycontroller",
+ *     location: "global",
  *     fleetDefaultMemberConfig: {
  *         policycontroller: {
  *             policyControllerHubConfig: {
+ *                 installSpec: "INSTALL_SPEC_ENABLED",
+ *                 policyContent: {},
  *                 constraintViolationLimit: 50,
+ *                 referentialRulesEnabled: true,
+ *                 logDeniesEnabled: true,
+ *                 mutationEnabled: true,
  *                 deploymentConfigs: [{
  *                     component: "admission",
  *                 }],
- *                 installSpec: "INSTALL_SPEC_ENABLED",
- *                 logDeniesEnabled: true,
  *                 monitoring: {},
- *                 mutationEnabled: true,
- *                 policyContent: {},
- *                 referentialRulesEnabled: true,
  *             },
  *         },
  *     },
- *     location: "global",
  * });
  * ```
  * ### Gkehub Feature Clusterupgrade
@@ -224,13 +306,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const feature = new gcp.gkehub.Feature("feature", {
+ *     name: "clusterupgrade",
  *     location: "global",
  *     spec: {
  *         clusterupgrade: {
+ *             upstreamFleets: [],
  *             postConditions: {
  *                 soaking: "60s",
  *             },
- *             upstreamFleets: [],
  *         },
  *     },
  * });

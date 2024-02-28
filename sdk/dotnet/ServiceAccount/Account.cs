@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var serviceAccount = new Gcp.ServiceAccount.Account("serviceAccount", new()
+    ///     var serviceAccount = new Gcp.ServiceAccount.Account("service_account", new()
     ///     {
     ///         AccountId = "service-account-id",
     ///         DisplayName = "Service Account",

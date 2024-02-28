@@ -72,6 +72,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var persistent = new Disk(&#34;persistent&#34;, DiskArgs.builder()        
+ *             .name(&#34;debian-disk&#34;)
  *             .image(debian.applyValue(getImageResult -&gt; getImageResult.selfLink()))
  *             .size(10)
  *             .type(&#34;pd-ssd&#34;)
@@ -79,6 +80,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var snapshot = new Snapshot(&#34;snapshot&#34;, SnapshotArgs.builder()        
+ *             .name(&#34;my-snapshot&#34;)
  *             .sourceDisk(persistent.id())
  *             .zone(&#34;us-central1-a&#34;)
  *             .labels(Map.of(&#34;my_label&#34;, &#34;value&#34;))
@@ -120,6 +122,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var persistent = new Disk(&#34;persistent&#34;, DiskArgs.builder()        
+ *             .name(&#34;debian-disk&#34;)
  *             .image(debian.applyValue(getImageResult -&gt; getImageResult.selfLink()))
  *             .size(10)
  *             .type(&#34;pd-ssd&#34;)
@@ -127,6 +130,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var snapshot = new Snapshot(&#34;snapshot&#34;, SnapshotArgs.builder()        
+ *             .name(&#34;my-snapshot&#34;)
  *             .sourceDisk(persistent.id())
  *             .zone(&#34;us-central1-a&#34;)
  *             .chainName(&#34;snapshot-chain&#34;)

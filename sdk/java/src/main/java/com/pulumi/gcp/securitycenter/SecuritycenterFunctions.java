@@ -40,7 +40,7 @@ public final class SecuritycenterFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecuritycenterFunctions.getSourceIamPolicy(GetSourceIamPolicyArgs.builder()
-     *             .source(google_scc_source.custom_source().name())
+     *             .source(customSource.name())
      *             .build());
      * 
      *     }
@@ -77,7 +77,7 @@ public final class SecuritycenterFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecuritycenterFunctions.getSourceIamPolicy(GetSourceIamPolicyArgs.builder()
-     *             .source(google_scc_source.custom_source().name())
+     *             .source(customSource.name())
      *             .build());
      * 
      *     }
@@ -114,7 +114,7 @@ public final class SecuritycenterFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecuritycenterFunctions.getSourceIamPolicy(GetSourceIamPolicyArgs.builder()
-     *             .source(google_scc_source.custom_source().name())
+     *             .source(customSource.name())
      *             .build());
      * 
      *     }
@@ -151,7 +151,7 @@ public final class SecuritycenterFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecuritycenterFunctions.getSourceIamPolicy(GetSourceIamPolicyArgs.builder()
-     *             .source(google_scc_source.custom_source().name())
+     *             .source(customSource.name())
      *             .build());
      * 
      *     }

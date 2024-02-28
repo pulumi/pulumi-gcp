@@ -31,8 +31,8 @@ namespace Pulumi.Gcp.VMwareEngine
         /// {
         ///     var myNetworkPolicy = Gcp.VMwareEngine.GetNetworkPolicy.Invoke(new()
         ///     {
-        ///         Location = "us-central1",
         ///         Name = "my-network-policy",
+        ///         Location = "us-central1",
         ///     });
         /// 
         /// });
@@ -63,8 +63,8 @@ namespace Pulumi.Gcp.VMwareEngine
         /// {
         ///     var myNetworkPolicy = Gcp.VMwareEngine.GetNetworkPolicy.Invoke(new()
         ///     {
-        ///         Location = "us-central1",
         ///         Name = "my-network-policy",
+        ///         Location = "us-central1",
         ///     });
         /// 
         /// });

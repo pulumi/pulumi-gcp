@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.Diagflow
     ///         },
     ///     });
     /// 
-    ///     var basicIntent = new Gcp.Diagflow.CxIntent("basicIntent", new()
+    ///     var basicIntent = new Gcp.Diagflow.CxIntent("basic_intent", new()
     ///     {
     ///         Parent = agent.Id,
     ///         DisplayName = "Example",

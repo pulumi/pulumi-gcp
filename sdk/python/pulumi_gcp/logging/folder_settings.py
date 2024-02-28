@@ -240,20 +240,19 @@ class FolderSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_folder = gcp.organizations.Folder("myFolder",
+        my_folder = gcp.organizations.Folder("my_folder",
             display_name="folder-name",
             parent="organizations/123456789")
+        example = gcp.logging.FolderSettings("example",
+            disable_default_sink=True,
+            folder=my_folder.folder_id,
+            kms_key_name="kms-key",
+            storage_location="us-central1")
         settings = gcp.logging.get_folder_settings_output(folder=my_folder.folder_id)
         iam = gcp.kms.CryptoKeyIAMMember("iam",
             crypto_key_id="kms-key",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=settings.apply(lambda settings: f"serviceAccount:{settings.kms_service_account_id}"))
-        example = gcp.logging.FolderSettings("example",
-            disable_default_sink=True,
-            folder=my_folder.folder_id,
-            kms_key_name="kms-key",
-            storage_location="us-central1",
-            opts=pulumi.ResourceOptions(depends_on=[iam]))
         ```
 
         ## Import
@@ -306,20 +305,19 @@ class FolderSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_folder = gcp.organizations.Folder("myFolder",
+        my_folder = gcp.organizations.Folder("my_folder",
             display_name="folder-name",
             parent="organizations/123456789")
+        example = gcp.logging.FolderSettings("example",
+            disable_default_sink=True,
+            folder=my_folder.folder_id,
+            kms_key_name="kms-key",
+            storage_location="us-central1")
         settings = gcp.logging.get_folder_settings_output(folder=my_folder.folder_id)
         iam = gcp.kms.CryptoKeyIAMMember("iam",
             crypto_key_id="kms-key",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=settings.apply(lambda settings: f"serviceAccount:{settings.kms_service_account_id}"))
-        example = gcp.logging.FolderSettings("example",
-            disable_default_sink=True,
-            folder=my_folder.folder_id,
-            kms_key_name="kms-key",
-            storage_location="us-central1",
-            opts=pulumi.ResourceOptions(depends_on=[iam]))
         ```
 
         ## Import

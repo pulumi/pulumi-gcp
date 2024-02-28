@@ -57,16 +57,19 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+ *             .name(&#34;test-storage-bucket&#34;)
  *             .location(&#34;EU&#34;)
  *             .build());
  * 
  *         var testBackend = new BackendBucket(&#34;testBackend&#34;, BackendBucketArgs.builder()        
+ *             .name(&#34;test-signed-backend-bucket&#34;)
  *             .description(&#34;Contains beautiful images&#34;)
  *             .bucketName(bucket.name())
  *             .enableCdn(true)
  *             .build());
  * 
  *         var backendKey = new BackendBucketSignedUrlKey(&#34;backendKey&#34;, BackendBucketSignedUrlKeyArgs.builder()        
+ *             .name(&#34;test-key&#34;)
  *             .keyValue(urlSignature.b64Url())
  *             .backendBucket(testBackend.name())
  *             .build());

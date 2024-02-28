@@ -18,8 +18,8 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
  *
  * const private_key_secret = new gcp.secretmanager.Secret("private-key-secret", {
  *     secretId: "ghe-pk-secret",
@@ -29,7 +29,9 @@ import * as utilities from "../utilities";
  * });
  * const private_key_secret_version = new gcp.secretmanager.SecretVersion("private-key-secret-version", {
  *     secret: private_key_secret.id,
- *     secretData: fs.readFileSync("private-key.pem", "utf8"),
+ *     secretData: std.file({
+ *         input: "private-key.pem",
+ *     }).then(invoke => invoke.result),
  * });
  * const webhook_secret_secret = new gcp.secretmanager.Secret("webhook-secret-secret", {
  *     secretId: "github-token-secret",
@@ -57,6 +59,7 @@ import * as utilities from "../utilities";
  * });
  * const my_connection = new gcp.cloudbuildv2.Connection("my-connection", {
  *     location: "us-central1",
+ *     name: "my-terraform-ghe-connection",
  *     githubEnterpriseConfig: {
  *         hostUri: "https://ghe.com",
  *         privateKeySecretVersion: private_key_secret_version.id,
@@ -65,13 +68,9 @@ import * as utilities from "../utilities";
  *         appSlug: "gcb-app",
  *         appInstallationId: 300,
  *     },
- * }, {
- *     dependsOn: [
- *         policy_pk,
- *         policy_whs,
- *     ],
  * });
  * const my_repository = new gcp.cloudbuildv2.Repository("my-repository", {
+ *     name: "my-terraform-ghe-repo",
  *     location: "us-central1",
  *     parentConnection: my_connection.id,
  *     remoteUri: "https://ghe.com/hashicorp/terraform-provider-google.git",
@@ -81,8 +80,8 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
  *
  * const github_token_secret = new gcp.secretmanager.Secret("github-token-secret", {
  *     secretId: "github-token-secret",
@@ -92,7 +91,9 @@ import * as utilities from "../utilities";
  * });
  * const github_token_secret_version = new gcp.secretmanager.SecretVersion("github-token-secret-version", {
  *     secret: github_token_secret.id,
- *     secretData: fs.readFileSync("my-github-token.txt", "utf8"),
+ *     secretData: std.file({
+ *         input: "my-github-token.txt",
+ *     }).then(invoke => invoke.result),
  * });
  * const p4sa-secretAccessor = gcp.organizations.getIAMPolicy({
  *     bindings: [{
@@ -106,6 +107,7 @@ import * as utilities from "../utilities";
  * });
  * const my_connection = new gcp.cloudbuildv2.Connection("my-connection", {
  *     location: "us-central1",
+ *     name: "my-connection",
  *     githubConfig: {
  *         appInstallationId: 123123,
  *         authorizerCredential: {
@@ -115,6 +117,7 @@ import * as utilities from "../utilities";
  * });
  * const my_repository = new gcp.cloudbuildv2.Repository("my-repository", {
  *     location: "us-central1",
+ *     name: "my-repo",
  *     parentConnection: my_connection.name,
  *     remoteUri: "https://github.com/myuser/myrepo.git",
  * });

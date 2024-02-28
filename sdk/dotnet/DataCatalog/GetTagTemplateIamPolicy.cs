@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.DataCatalog
         /// {
         ///     var policy = Gcp.DataCatalog.GetTagTemplateIamPolicy.Invoke(new()
         ///     {
-        ///         TagTemplate = google_data_catalog_tag_template.Basic_tag_template.Name,
+        ///         TagTemplate = basicTagTemplate.Name,
         ///     });
         /// 
         /// });
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.DataCatalog
         /// {
         ///     var policy = Gcp.DataCatalog.GetTagTemplateIamPolicy.Invoke(new()
         ///     {
-        ///         TagTemplate = google_data_catalog_tag_template.Basic_tag_template.Name,
+        ///         TagTemplate = basicTagTemplate.Name,
         ///     });
         /// 
         /// });

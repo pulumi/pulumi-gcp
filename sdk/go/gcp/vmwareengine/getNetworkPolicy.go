@@ -31,8 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vmwareengine.LookupNetworkPolicy(ctx, &vmwareengine.LookupNetworkPolicyArgs{
-//				Location: "us-central1",
 //				Name:     "my-network-policy",
+//				Location: "us-central1",
 //			}, nil)
 //			if err != nil {
 //				return err

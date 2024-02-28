@@ -294,8 +294,8 @@ public final class CloudrunFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var run-service = CloudrunFunctions.getService(GetServiceArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;my-service&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }
@@ -334,8 +334,8 @@ public final class CloudrunFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var run-service = CloudrunFunctions.getService(GetServiceArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;my-service&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }
@@ -374,8 +374,8 @@ public final class CloudrunFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var run-service = CloudrunFunctions.getService(GetServiceArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;my-service&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }
@@ -414,8 +414,8 @@ public final class CloudrunFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var run-service = CloudrunFunctions.getService(GetServiceArgs.builder()
-     *             .location(&#34;us-central1&#34;)
      *             .name(&#34;my-service&#34;)
+     *             .location(&#34;us-central1&#34;)
      *             .build());
      * 
      *     }
@@ -452,9 +452,9 @@ public final class CloudrunFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CloudrunFunctions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-     *             .location(google_cloud_run_service.default().location())
-     *             .project(google_cloud_run_service.default().project())
-     *             .service(google_cloud_run_service.default().name())
+     *             .location(default_.location())
+     *             .project(default_.project())
+     *             .service(default_.name())
      *             .build());
      * 
      *     }
@@ -491,9 +491,9 @@ public final class CloudrunFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CloudrunFunctions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-     *             .location(google_cloud_run_service.default().location())
-     *             .project(google_cloud_run_service.default().project())
-     *             .service(google_cloud_run_service.default().name())
+     *             .location(default_.location())
+     *             .project(default_.project())
+     *             .service(default_.name())
      *             .build());
      * 
      *     }
@@ -530,9 +530,9 @@ public final class CloudrunFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CloudrunFunctions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-     *             .location(google_cloud_run_service.default().location())
-     *             .project(google_cloud_run_service.default().project())
-     *             .service(google_cloud_run_service.default().name())
+     *             .location(default_.location())
+     *             .project(default_.project())
+     *             .service(default_.name())
      *             .build());
      * 
      *     }
@@ -569,9 +569,9 @@ public final class CloudrunFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CloudrunFunctions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-     *             .location(google_cloud_run_service.default().location())
-     *             .project(google_cloud_run_service.default().project())
-     *             .service(google_cloud_run_service.default().name())
+     *             .location(default_.location())
+     *             .project(default_.project())
+     *             .service(default_.name())
      *             .build());
      * 
      *     }

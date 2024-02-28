@@ -56,12 +56,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var looker_instance = new Instance(&#34;looker-instance&#34;, InstanceArgs.builder()        
+ *             .name(&#34;my-instance&#34;)
+ *             .platformEdition(&#34;LOOKER_CORE_STANDARD&#34;)
+ *             .region(&#34;us-central1&#34;)
  *             .oauthConfig(InstanceOauthConfigArgs.builder()
  *                 .clientId(&#34;my-client-id&#34;)
  *                 .clientSecret(&#34;my-client-secret&#34;)
  *                 .build())
- *             .platformEdition(&#34;LOOKER_CORE_STANDARD&#34;)
- *             .region(&#34;us-central1&#34;)
  *             .build());
  * 
  *     }
@@ -77,14 +78,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.looker.Instance;
  * import com.pulumi.gcp.looker.InstanceArgs;
  * import com.pulumi.gcp.looker.inputs.InstanceAdminSettingsArgs;
- * import com.pulumi.gcp.looker.inputs.InstanceDenyMaintenancePeriodArgs;
- * import com.pulumi.gcp.looker.inputs.InstanceDenyMaintenancePeriodEndDateArgs;
- * import com.pulumi.gcp.looker.inputs.InstanceDenyMaintenancePeriodStartDateArgs;
- * import com.pulumi.gcp.looker.inputs.InstanceDenyMaintenancePeriodTimeArgs;
+ * import com.pulumi.gcp.looker.inputs.InstanceUserMetadataArgs;
  * import com.pulumi.gcp.looker.inputs.InstanceMaintenanceWindowArgs;
  * import com.pulumi.gcp.looker.inputs.InstanceMaintenanceWindowStartTimeArgs;
+ * import com.pulumi.gcp.looker.inputs.InstanceDenyMaintenancePeriodArgs;
+ * import com.pulumi.gcp.looker.inputs.InstanceDenyMaintenancePeriodStartDateArgs;
+ * import com.pulumi.gcp.looker.inputs.InstanceDenyMaintenancePeriodEndDateArgs;
+ * import com.pulumi.gcp.looker.inputs.InstanceDenyMaintenancePeriodTimeArgs;
  * import com.pulumi.gcp.looker.inputs.InstanceOauthConfigArgs;
- * import com.pulumi.gcp.looker.inputs.InstanceUserMetadataArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -99,47 +100,48 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var looker_instance = new Instance(&#34;looker-instance&#34;, InstanceArgs.builder()        
+ *             .name(&#34;my-instance&#34;)
+ *             .platformEdition(&#34;LOOKER_CORE_STANDARD&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .publicIpEnabled(true)
  *             .adminSettings(InstanceAdminSettingsArgs.builder()
  *                 .allowedEmailDomains(&#34;google.com&#34;)
  *                 .build())
- *             .denyMaintenancePeriod(InstanceDenyMaintenancePeriodArgs.builder()
- *                 .endDate(InstanceDenyMaintenancePeriodEndDateArgs.builder()
- *                     .day(1)
- *                     .month(2)
- *                     .year(2050)
- *                     .build())
- *                 .startDate(InstanceDenyMaintenancePeriodStartDateArgs.builder()
- *                     .day(1)
- *                     .month(1)
- *                     .year(2050)
- *                     .build())
- *                 .time(InstanceDenyMaintenancePeriodTimeArgs.builder()
- *                     .hours(10)
- *                     .minutes(0)
- *                     .nanos(0)
- *                     .seconds(0)
- *                     .build())
+ *             .userMetadata(InstanceUserMetadataArgs.builder()
+ *                 .additionalDeveloperUserCount(10)
+ *                 .additionalStandardUserCount(10)
+ *                 .additionalViewerUserCount(10)
  *                 .build())
  *             .maintenanceWindow(InstanceMaintenanceWindowArgs.builder()
  *                 .dayOfWeek(&#34;THURSDAY&#34;)
  *                 .startTime(InstanceMaintenanceWindowStartTimeArgs.builder()
  *                     .hours(22)
  *                     .minutes(0)
- *                     .nanos(0)
  *                     .seconds(0)
+ *                     .nanos(0)
+ *                     .build())
+ *                 .build())
+ *             .denyMaintenancePeriod(InstanceDenyMaintenancePeriodArgs.builder()
+ *                 .startDate(InstanceDenyMaintenancePeriodStartDateArgs.builder()
+ *                     .year(2050)
+ *                     .month(1)
+ *                     .day(1)
+ *                     .build())
+ *                 .endDate(InstanceDenyMaintenancePeriodEndDateArgs.builder()
+ *                     .year(2050)
+ *                     .month(2)
+ *                     .day(1)
+ *                     .build())
+ *                 .time(InstanceDenyMaintenancePeriodTimeArgs.builder()
+ *                     .hours(10)
+ *                     .minutes(0)
+ *                     .seconds(0)
+ *                     .nanos(0)
  *                     .build())
  *                 .build())
  *             .oauthConfig(InstanceOauthConfigArgs.builder()
  *                 .clientId(&#34;my-client-id&#34;)
  *                 .clientSecret(&#34;my-client-secret&#34;)
- *                 .build())
- *             .platformEdition(&#34;LOOKER_CORE_STANDARD&#34;)
- *             .publicIpEnabled(true)
- *             .region(&#34;us-central1&#34;)
- *             .userMetadata(InstanceUserMetadataArgs.builder()
- *                 .additionalDeveloperUserCount(10)
- *                 .additionalStandardUserCount(10)
- *                 .additionalViewerUserCount(10)
  *                 .build())
  *             .build());
  * 
@@ -154,10 +156,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.GlobalAddress;
  * import com.pulumi.gcp.compute.GlobalAddressArgs;
- * import com.pulumi.gcp.servicenetworking.Connection;
- * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
  * import com.pulumi.gcp.looker.Instance;
  * import com.pulumi.gcp.looker.InstanceArgs;
  * import com.pulumi.gcp.looker.inputs.InstanceAdminSettingsArgs;
@@ -169,11 +170,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.looker.inputs.InstanceDenyMaintenancePeriodEndDateArgs;
  * import com.pulumi.gcp.looker.inputs.InstanceDenyMaintenancePeriodTimeArgs;
  * import com.pulumi.gcp.looker.inputs.InstanceOauthConfigArgs;
+ * import com.pulumi.gcp.servicenetworking.Connection;
+ * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -187,22 +189,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var lookerNetwork = new Network(&#34;lookerNetwork&#34;);
+ *         var lookerNetwork = new Network(&#34;lookerNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;looker-network&#34;)
+ *             .build());
  * 
  *         var lookerRange = new GlobalAddress(&#34;lookerRange&#34;, GlobalAddressArgs.builder()        
+ *             .name(&#34;looker-range&#34;)
  *             .purpose(&#34;VPC_PEERING&#34;)
  *             .addressType(&#34;INTERNAL&#34;)
  *             .prefixLength(20)
  *             .network(lookerNetwork.id())
  *             .build());
  * 
- *         var lookerVpcConnection = new Connection(&#34;lookerVpcConnection&#34;, ConnectionArgs.builder()        
- *             .network(lookerNetwork.id())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
- *             .reservedPeeringRanges(lookerRange.name())
- *             .build());
- * 
  *         var looker_instance = new Instance(&#34;looker-instance&#34;, InstanceArgs.builder()        
+ *             .name(&#34;my-instance&#34;)
  *             .platformEdition(&#34;LOOKER_CORE_ENTERPRISE_ANNUAL&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .privateIpEnabled(true)
@@ -246,9 +246,13 @@ import javax.annotation.Nullable;
  *                 .clientId(&#34;my-client-id&#34;)
  *                 .clientSecret(&#34;my-client-secret&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(lookerVpcConnection)
- *                 .build());
+ *             .build());
+ * 
+ *         var lookerVpcConnection = new Connection(&#34;lookerVpcConnection&#34;, ConnectionArgs.builder()        
+ *             .network(lookerNetwork.id())
+ *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .reservedPeeringRanges(lookerRange.name())
+ *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 

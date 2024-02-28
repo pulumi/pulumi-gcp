@@ -41,23 +41,25 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+//			_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
 //				Name: "test-network",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultStoragePool, err := netapp.NewStoragePool(ctx, "defaultStoragePool", &netapp.StoragePoolArgs{
+//			defaultStoragePool, err := netapp.NewStoragePool(ctx, "default", &netapp.StoragePoolArgs{
+//				Name:         pulumi.String("test-pool"),
 //				Location:     pulumi.String("us-west2"),
 //				ServiceLevel: pulumi.String("PREMIUM"),
 //				CapacityGib:  pulumi.String("2048"),
-//				Network:      *pulumi.String(defaultNetwork.Id),
+//				Network:      *pulumi.String(_default.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultVolume, err := netapp.NewVolume(ctx, "defaultVolume", &netapp.VolumeArgs{
+//			defaultVolume, err := netapp.NewVolume(ctx, "default", &netapp.VolumeArgs{
 //				Location:    defaultStoragePool.Location,
+//				Name:        pulumi.String("test-volume"),
 //				CapacityGib: pulumi.String("100"),
 //				ShareName:   pulumi.String("test-volume"),
 //				StoragePool: defaultStoragePool.Name,
@@ -68,12 +70,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = netapp.NewVolumeSnapshot(ctx, "testSnapshot", &netapp.VolumeSnapshotArgs{
+//			_, err = netapp.NewVolumeSnapshot(ctx, "test_snapshot", &netapp.VolumeSnapshotArgs{
 //				Location:   defaultVolume.Location,
 //				VolumeName: defaultVolume.Name,
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				defaultVolume,
-//			}))
+//				Name:       pulumi.String("testvolumesnap"),
+//			})
 //			if err != nil {
 //				return err
 //			}

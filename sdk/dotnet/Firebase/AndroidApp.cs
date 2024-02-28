@@ -34,9 +34,6 @@ namespace Pulumi.Gcp.Firebase
     ///         {
     ///             "2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -53,6 +50,7 @@ namespace Pulumi.Gcp.Firebase
     /// {
     ///     var android = new Gcp.Projects.ApiKey("android", new()
     ///     {
+    ///         Name = "api-key",
     ///         DisplayName = "Display Name",
     ///         Project = "my-project-name",
     ///         Restrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsArgs
@@ -69,9 +67,6 @@ namespace Pulumi.Gcp.Firebase
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var @default = new Gcp.Firebase.AndroidApp("default", new()
@@ -88,9 +83,6 @@ namespace Pulumi.Gcp.Firebase
     ///             "2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc",
     ///         },
     ///         ApiKeyId = android.Uid,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

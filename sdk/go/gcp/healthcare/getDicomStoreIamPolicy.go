@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := healthcare.LookupDicomStoreIamPolicy(ctx, &healthcare.LookupDicomStoreIamPolicyArgs{
-//				DicomStoreId: google_healthcare_dicom_store.Dicom_store.Id,
+//				DicomStoreId: dicomStore.Id,
 //			}, nil)
 //			if err != nil {
 //				return err

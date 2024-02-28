@@ -440,16 +440,16 @@ class BitbucketServerConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         bbs_config = gcp.cloudbuild.BitbucketServerConfig("bbs-config",
-            api_key="<api-key>",
             config_id="bbs-config",
-            host_uri="https://bbs.com",
             location="us-central1",
+            host_uri="https://bbs.com",
             secrets=gcp.cloudbuild.BitbucketServerConfigSecretsArgs(
                 admin_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
                 read_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
                 webhook_secret_version_name="projects/myProject/secrets/mybbspat/versions/1",
             ),
-            username="test")
+            username="test",
+            api_key="<api-key>")
         ```
         ### Cloudbuild Bitbucket Server Config Repositories
 
@@ -458,8 +458,16 @@ class BitbucketServerConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         bbs_config_with_repos = gcp.cloudbuild.BitbucketServerConfig("bbs-config-with-repos",
-            api_key="<api-key>",
             config_id="bbs-config",
+            location="us-central1",
+            host_uri="https://bbs.com",
+            secrets=gcp.cloudbuild.BitbucketServerConfigSecretsArgs(
+                admin_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
+                read_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
+                webhook_secret_version_name="projects/myProject/secrets/mybbspat/versions/1",
+            ),
+            username="test",
+            api_key="<api-key>",
             connected_repositories=[
                 gcp.cloudbuild.BitbucketServerConfigConnectedRepositoryArgs(
                     project_key="DEV",
@@ -469,15 +477,49 @@ class BitbucketServerConfig(pulumi.CustomResource):
                     project_key="PROD",
                     repo_slug="repo1",
                 ),
-            ],
-            host_uri="https://bbs.com",
+            ])
+        ```
+        ### Cloudbuild Bitbucket Server Config Peered Network
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        project = gcp.organizations.get_project()
+        servicenetworking = gcp.projects.Service("servicenetworking",
+            service="servicenetworking.googleapis.com",
+            disable_on_destroy=False)
+        vpc_network = gcp.compute.Network("vpc_network", name="vpc-network")
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name="private-ip-alloc",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=vpc_network.id)
+        default = gcp.servicenetworking.Connection("default",
+            network=vpc_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_alloc.name])
+        bbs_config_with_peered_network = gcp.cloudbuild.BitbucketServerConfig("bbs-config-with-peered-network",
+            config_id="bbs-config",
             location="us-central1",
+            host_uri="https://bbs.com",
             secrets=gcp.cloudbuild.BitbucketServerConfigSecretsArgs(
                 admin_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
                 read_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
                 webhook_secret_version_name="projects/myProject/secrets/mybbspat/versions/1",
             ),
-            username="test")
+            username="test",
+            api_key="<api-key>",
+            peered_network=vpc_network.id.apply(lambda id: std.replace_output(text=id,
+                search=project.name,
+                replace=project.number)).apply(lambda invoke: invoke.result),
+            ssl_ca=\"\"\"-----BEGIN CERTIFICATE-----
+        -----END CERTIFICATE-----
+        -----BEGIN CERTIFICATE-----
+        -----END CERTIFICATE-----
+        \"\"\")
         ```
 
         ## Import
@@ -548,16 +590,16 @@ class BitbucketServerConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         bbs_config = gcp.cloudbuild.BitbucketServerConfig("bbs-config",
-            api_key="<api-key>",
             config_id="bbs-config",
-            host_uri="https://bbs.com",
             location="us-central1",
+            host_uri="https://bbs.com",
             secrets=gcp.cloudbuild.BitbucketServerConfigSecretsArgs(
                 admin_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
                 read_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
                 webhook_secret_version_name="projects/myProject/secrets/mybbspat/versions/1",
             ),
-            username="test")
+            username="test",
+            api_key="<api-key>")
         ```
         ### Cloudbuild Bitbucket Server Config Repositories
 
@@ -566,8 +608,16 @@ class BitbucketServerConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         bbs_config_with_repos = gcp.cloudbuild.BitbucketServerConfig("bbs-config-with-repos",
-            api_key="<api-key>",
             config_id="bbs-config",
+            location="us-central1",
+            host_uri="https://bbs.com",
+            secrets=gcp.cloudbuild.BitbucketServerConfigSecretsArgs(
+                admin_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
+                read_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
+                webhook_secret_version_name="projects/myProject/secrets/mybbspat/versions/1",
+            ),
+            username="test",
+            api_key="<api-key>",
             connected_repositories=[
                 gcp.cloudbuild.BitbucketServerConfigConnectedRepositoryArgs(
                     project_key="DEV",
@@ -577,15 +627,49 @@ class BitbucketServerConfig(pulumi.CustomResource):
                     project_key="PROD",
                     repo_slug="repo1",
                 ),
-            ],
-            host_uri="https://bbs.com",
+            ])
+        ```
+        ### Cloudbuild Bitbucket Server Config Peered Network
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        project = gcp.organizations.get_project()
+        servicenetworking = gcp.projects.Service("servicenetworking",
+            service="servicenetworking.googleapis.com",
+            disable_on_destroy=False)
+        vpc_network = gcp.compute.Network("vpc_network", name="vpc-network")
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name="private-ip-alloc",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=vpc_network.id)
+        default = gcp.servicenetworking.Connection("default",
+            network=vpc_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_alloc.name])
+        bbs_config_with_peered_network = gcp.cloudbuild.BitbucketServerConfig("bbs-config-with-peered-network",
+            config_id="bbs-config",
             location="us-central1",
+            host_uri="https://bbs.com",
             secrets=gcp.cloudbuild.BitbucketServerConfigSecretsArgs(
                 admin_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
                 read_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
                 webhook_secret_version_name="projects/myProject/secrets/mybbspat/versions/1",
             ),
-            username="test")
+            username="test",
+            api_key="<api-key>",
+            peered_network=vpc_network.id.apply(lambda id: std.replace_output(text=id,
+                search=project.name,
+                replace=project.number)).apply(lambda invoke: invoke.result),
+            ssl_ca=\"\"\"-----BEGIN CERTIFICATE-----
+        -----END CERTIFICATE-----
+        -----BEGIN CERTIFICATE-----
+        -----END CERTIFICATE-----
+        \"\"\")
         ```
 
         ## Import

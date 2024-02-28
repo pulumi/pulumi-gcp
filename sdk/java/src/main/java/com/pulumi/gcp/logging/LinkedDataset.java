@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var loggingLinkedDatasetProjectBucketConfig = new ProjectBucketConfig(&#34;loggingLinkedDatasetProjectBucketConfig&#34;, ProjectBucketConfigArgs.builder()        
+ *         var loggingLinkedDataset = new ProjectBucketConfig(&#34;loggingLinkedDataset&#34;, ProjectBucketConfigArgs.builder()        
  *             .location(&#34;global&#34;)
  *             .project(&#34;my-project-name&#34;)
  *             .enableAnalytics(true)
@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  * 
  *         var loggingLinkedDatasetLinkedDataset = new LinkedDataset(&#34;loggingLinkedDatasetLinkedDataset&#34;, LinkedDatasetArgs.builder()        
  *             .linkId(&#34;mylink&#34;)
- *             .bucket(loggingLinkedDatasetProjectBucketConfig.id())
+ *             .bucket(loggingLinkedDataset.id())
  *             .description(&#34;Linked dataset test&#34;)
  *             .build());
  * 
@@ -77,7 +77,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.logging.ProjectBucketConfigArgs;
  * import com.pulumi.gcp.logging.LinkedDataset;
  * import com.pulumi.gcp.logging.LinkedDatasetArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -91,22 +90,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var loggingLinkedDatasetProjectBucketConfig = new ProjectBucketConfig(&#34;loggingLinkedDatasetProjectBucketConfig&#34;, ProjectBucketConfigArgs.builder()        
- *             .bucketId(&#34;my-bucket&#34;)
- *             .enableAnalytics(true)
+ *         var loggingLinkedDataset = new ProjectBucketConfig(&#34;loggingLinkedDataset&#34;, ProjectBucketConfigArgs.builder()        
  *             .location(&#34;global&#34;)
  *             .project(&#34;my-project-name&#34;)
+ *             .enableAnalytics(true)
+ *             .bucketId(&#34;my-bucket&#34;)
  *             .build());
  * 
  *         var loggingLinkedDatasetLinkedDataset = new LinkedDataset(&#34;loggingLinkedDatasetLinkedDataset&#34;, LinkedDatasetArgs.builder()        
- *             .bucket(&#34;my-bucket&#34;)
- *             .description(&#34;Linked dataset test&#34;)
  *             .linkId(&#34;mylink&#34;)
- *             .location(&#34;global&#34;)
+ *             .bucket(&#34;my-bucket&#34;)
  *             .parent(&#34;projects/my-project-name&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(&#34;google_logging_project_bucket_config.logging_linked_dataset&#34;)
- *                 .build());
+ *             .location(&#34;global&#34;)
+ *             .description(&#34;Linked dataset test&#34;)
+ *             .build());
  * 
  *     }
  * }

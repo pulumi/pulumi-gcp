@@ -28,6 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			pipeline, err := clouddeploy.NewDeliveryPipeline(ctx, "pipeline", &clouddeploy.DeliveryPipelineArgs{
+//				Name:     pulumi.String("cd-pipeline"),
 //				Location: pulumi.String("us-central1"),
 //				SerialPipeline: &clouddeploy.DeliveryPipelineSerialPipelineArgs{
 //					Stages: clouddeploy.DeliveryPipelineSerialPipelineStageArray{
@@ -37,11 +38,12 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = clouddeploy.NewAutomation(ctx, "b-automation", &clouddeploy.AutomationArgs{
+//				Name:             pulumi.String("cd-automation"),
 //				Project:          pipeline.Project,
 //				Location:         pipeline.Location,
 //				DeliveryPipeline: pipeline.Name,
@@ -61,7 +63,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -85,6 +87,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			pipeline, err := clouddeploy.NewDeliveryPipeline(ctx, "pipeline", &clouddeploy.DeliveryPipelineArgs{
+//				Name:     pulumi.String("cd-pipeline"),
 //				Location: pulumi.String("us-central1"),
 //				SerialPipeline: &clouddeploy.DeliveryPipelineSerialPipelineArgs{
 //					Stages: clouddeploy.DeliveryPipelineSerialPipelineStageArray{
@@ -96,11 +99,12 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = clouddeploy.NewAutomation(ctx, "f-automation", &clouddeploy.AutomationArgs{
+//				Name:             pulumi.String("cd-automation"),
 //				Location:         pulumi.String("us-central1"),
 //				DeliveryPipeline: pipeline.Name,
 //				ServiceAccount:   pulumi.String("my@service-account.com"),
@@ -143,7 +147,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

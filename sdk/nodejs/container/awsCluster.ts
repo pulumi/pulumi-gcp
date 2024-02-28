@@ -19,19 +19,16 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const versions = gcp.container.getAwsVersions({
- *     location: "us-west1",
  *     project: "my-project-name",
+ *     location: "us-west1",
  * });
  * const primary = new gcp.container.AwsCluster("primary", {
- *     annotations: {
- *         "label-one": "value-one",
- *     },
  *     authorization: {
- *         adminGroups: [{
- *             group: "group@domain.com",
- *         }],
  *         adminUsers: [{
  *             username: "my@service-account.com",
+ *         }],
+ *         adminGroups: [{
+ *             group: "group@domain.com",
  *         }],
  *     },
  *     awsRegion: "my-aws-region",
@@ -47,6 +44,8 @@ import * as utilities from "../utilities";
  *             kmsKeyArn: "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
  *         },
  *         iamInstanceProfile: "my--1p-dev-controlplane",
+ *         subnetIds: ["subnet-00000000000000000"],
+ *         version: versions.then(versions => versions.validVersions?.[0]),
  *         instanceType: "t3.medium",
  *         mainVolume: {
  *             iops: 3000,
@@ -68,22 +67,24 @@ import * as utilities from "../utilities";
  *         sshConfig: {
  *             ec2KeyPair: "my--1p-dev-ssh",
  *         },
- *         subnetIds: ["subnet-00000000000000000"],
  *         tags: {
  *             owner: "my@service-account.com",
  *         },
- *         version: versions.then(versions => versions.validVersions?.[0]),
  *     },
- *     description: "A sample aws cluster",
  *     fleet: {
  *         project: "my-project-number",
  *     },
  *     location: "us-west1",
+ *     name: "name",
  *     networking: {
  *         podAddressCidrBlocks: ["10.2.0.0/16"],
  *         serviceAddressCidrBlocks: ["10.1.0.0/16"],
  *         vpcId: "vpc-00000000000000000",
  *     },
+ *     annotations: {
+ *         "label-one": "value-one",
+ *     },
+ *     description: "A sample aws cluster",
  *     project: "my-project-name",
  * });
  * ```
@@ -94,13 +95,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const versions = gcp.container.getAwsVersions({
- *     location: "us-west1",
  *     project: "my-project-name",
+ *     location: "us-west1",
  * });
  * const primary = new gcp.container.AwsCluster("primary", {
- *     annotations: {
- *         "label-one": "value-one",
- *     },
  *     authorization: {
  *         adminUsers: [{
  *             username: "my@service-account.com",
@@ -119,6 +117,8 @@ import * as utilities from "../utilities";
  *             kmsKeyArn: "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
  *         },
  *         iamInstanceProfile: "my--1p-dev-controlplane",
+ *         subnetIds: ["subnet-00000000000000000"],
+ *         version: versions.then(versions => versions.validVersions?.[0]),
  *         instanceType: "t3.medium",
  *         mainVolume: {
  *             iops: 3000,
@@ -140,22 +140,24 @@ import * as utilities from "../utilities";
  *         sshConfig: {
  *             ec2KeyPair: "my--1p-dev-ssh",
  *         },
- *         subnetIds: ["subnet-00000000000000000"],
  *         tags: {
  *             owner: "my@service-account.com",
  *         },
- *         version: versions.then(versions => versions.validVersions?.[0]),
  *     },
- *     description: "A sample aws cluster",
  *     fleet: {
  *         project: "my-project-number",
  *     },
  *     location: "us-west1",
+ *     name: "name",
  *     networking: {
  *         podAddressCidrBlocks: ["10.2.0.0/16"],
  *         serviceAddressCidrBlocks: ["10.1.0.0/16"],
  *         vpcId: "vpc-00000000000000000",
  *     },
+ *     annotations: {
+ *         "label-one": "value-one",
+ *     },
+ *     description: "A sample aws cluster",
  *     project: "my-project-name",
  * });
  * ```
@@ -222,6 +224,7 @@ import * as utilities from "../utilities";
  *         project: "my-project-number",
  *     },
  *     location: "us-west1",
+ *     name: "name",
  *     networking: {
  *         podAddressCidrBlocks: ["10.2.0.0/16"],
  *         serviceAddressCidrBlocks: ["10.1.0.0/16"],
@@ -240,8 +243,6 @@ import * as utilities from "../utilities";
  *             ],
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

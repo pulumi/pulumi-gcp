@@ -20,12 +20,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const bucket = new gcp.storage.Bucket("bucket", {location: "US"});
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "appengine-static-content",
+ *     location: "US",
+ * });
  * const object = new gcp.storage.BucketObject("object", {
+ *     name: "hello-world.zip",
  *     bucket: bucket.name,
  *     source: new pulumi.asset.FileAsset("./test-fixtures/hello-world.zip"),
  * });
- * const internalappStandardAppVersion = new gcp.appengine.StandardAppVersion("internalappStandardAppVersion", {
+ * const internalapp = new gcp.appengine.StandardAppVersion("internalapp", {
  *     versionId: "v1",
  *     service: "internalapp",
  *     deleteServiceOnDestroy: true,
@@ -42,8 +46,8 @@ import * as utilities from "../utilities";
  *         port: "8080",
  *     },
  * });
- * const internalappServiceNetworkSettings = new gcp.appengine.ServiceNetworkSettings("internalappServiceNetworkSettings", {
- *     service: internalappStandardAppVersion.service,
+ * const internalappServiceNetworkSettings = new gcp.appengine.ServiceNetworkSettings("internalapp", {
+ *     service: internalapp.service,
  *     networkSettings: {
  *         ingressTrafficAllowed: "INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY",
  *     },

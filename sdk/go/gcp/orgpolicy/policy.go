@@ -37,12 +37,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
-//				OrgId: pulumi.String("123456789"),
+//				ProjectId: pulumi.String("id"),
+//				Name:      pulumi.String("id"),
+//				OrgId:     pulumi.String("123456789"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = orgpolicy.NewPolicy(ctx, "primary", &orgpolicy.PolicyArgs{
+//				Name: basic.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("projects/%v/policies/iam.disableServiceAccountKeyUpload", name), nil
+//				}).(pulumi.StringOutput),
 //				Parent: basic.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("projects/%v", name), nil
 //				}).(pulumi.StringOutput),
@@ -69,6 +74,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/orgpolicy"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -85,6 +92,9 @@ import (
 //				return err
 //			}
 //			_, err = orgpolicy.NewPolicy(ctx, "primary", &orgpolicy.PolicyArgs{
+//				Name: basic.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("%v/policies/gcp.resourceLocations", name), nil
+//				}).(pulumi.StringOutput),
 //				Parent: basic.Name,
 //				Spec: &orgpolicy.PolicySpecArgs{
 //					InheritFromParent: pulumi.Bool(true),
@@ -118,6 +128,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := orgpolicy.NewPolicy(ctx, "primary", &orgpolicy.PolicyArgs{
+//				Name:   pulumi.String("organizations/123456789/policies/gcp.detailedAuditLoggingMode"),
 //				Parent: pulumi.String("organizations/123456789"),
 //				Spec: &orgpolicy.PolicySpecArgs{
 //					Reset: pulumi.Bool(true),
@@ -149,12 +160,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
-//				OrgId: pulumi.String("123456789"),
+//				ProjectId: pulumi.String("id"),
+//				Name:      pulumi.String("id"),
+//				OrgId:     pulumi.String("123456789"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = orgpolicy.NewPolicy(ctx, "primary", &orgpolicy.PolicyArgs{
+//				Name: basic.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("projects/%v/policies/gcp.resourceLocations", name), nil
+//				}).(pulumi.StringOutput),
 //				Parent: basic.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("projects/%v", name), nil
 //				}).(pulumi.StringOutput),
@@ -178,62 +194,6 @@ import (
 //						},
 //						&orgpolicy.PolicySpecRuleArgs{
 //							AllowAll: pulumi.String("TRUE"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Dry_run_spec
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/orgpolicy"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := orgpolicy.NewCustomConstraint(ctx, "constraint", &orgpolicy.CustomConstraintArgs{
-//				ActionType:  pulumi.String("ALLOW"),
-//				Condition:   pulumi.String("resource.management.autoUpgrade == false"),
-//				Description: pulumi.String("Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced."),
-//				DisplayName: pulumi.String("Disable GKE auto upgrade"),
-//				MethodTypes: pulumi.StringArray{
-//					pulumi.String("CREATE"),
-//				},
-//				Parent: pulumi.String("organizations/123456789"),
-//				ResourceTypes: pulumi.StringArray{
-//					pulumi.String("container.googleapis.com/NodePool"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = orgpolicy.NewPolicy(ctx, "primary", &orgpolicy.PolicyArgs{
-//				DryRunSpec: &orgpolicy.PolicyDryRunSpecArgs{
-//					InheritFromParent: pulumi.Bool(false),
-//					Reset:             pulumi.Bool(false),
-//					Rules: orgpolicy.PolicyDryRunSpecRuleArray{
-//						&orgpolicy.PolicyDryRunSpecRuleArgs{
-//							Enforce: pulumi.String("FALSE"),
-//						},
-//					},
-//				},
-//				Parent: pulumi.String("organizations/123456789"),
-//				Spec: &orgpolicy.PolicySpecArgs{
-//					Rules: orgpolicy.PolicySpecRuleArray{
-//						&orgpolicy.PolicySpecRuleArgs{
-//							Enforce: pulumi.String("FALSE"),
 //						},
 //					},
 //				},

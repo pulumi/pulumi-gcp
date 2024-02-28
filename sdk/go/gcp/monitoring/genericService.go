@@ -39,18 +39,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := monitoring.NewGenericService(ctx, "myService", &monitoring.GenericServiceArgs{
-//				BasicService: &monitoring.GenericServiceBasicServiceArgs{
-//					ServiceLabels: pulumi.StringMap{
-//						"moduleId": pulumi.String("another-module-id"),
-//					},
-//					ServiceType: pulumi.String("APP_ENGINE"),
-//				},
-//				DisplayName: pulumi.String("My Service my-service"),
+//			_, err := monitoring.NewGenericService(ctx, "my_service", &monitoring.GenericServiceArgs{
 //				ServiceId:   pulumi.String("my-service"),
+//				DisplayName: pulumi.String("My Service my-service"),
 //				UserLabels: pulumi.StringMap{
 //					"my_key":       pulumi.String("my_value"),
 //					"my_other_key": pulumi.String("my_other_value"),
+//				},
+//				BasicService: &monitoring.GenericServiceBasicServiceArgs{
+//					ServiceType: pulumi.String("APP_ENGINE"),
+//					ServiceLabels: pulumi.StringMap{
+//						"module_id": pulumi.String("another-module-id"),
+//					},
 //				},
 //			})
 //			if err != nil {

@@ -62,6 +62,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var note = new Note(&#34;note&#34;, NoteArgs.builder()        
+ *             .name(&#34;attestation-note&#34;)
  *             .attestationAuthority(NoteAttestationAuthorityArgs.builder()
  *                 .hint(NoteAttestationAuthorityHintArgs.builder()
  *                     .humanReadableName(&#34;Attestor Note&#34;)
@@ -84,6 +85,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var attestor = new Attestor(&#34;attestor&#34;, AttestorArgs.builder()        
+ *             .name(&#34;attestor&#34;)
  *             .attestationAuthorityNote(AttestorAttestationAuthorityNoteArgs.builder()
  *                 .noteReference(note.name())
  *                 .publicKeys(AttestorAttestationAuthorityNotePublicKeyArgs.builder()
@@ -100,10 +102,14 @@ import javax.annotation.Nullable;
  *             .resourceUri(&#34;gcr.io/my-project/my-image&#34;)
  *             .noteName(note.id())
  *             .attestation(OccurenceAttestationArgs.builder()
- *                 .serializedPayload(Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get(&#34;path/to/my/payload.json&#34;))))
+ *                 .serializedPayload(StdFunctions.filebase64(Filebase64Args.builder()
+ *                     .input(&#34;path/to/my/payload.json&#34;)
+ *                     .build()).result())
  *                 .signatures(OccurenceAttestationSignatureArgs.builder()
  *                     .publicKeyId(version.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult.id()))
- *                     .serializedPayload(Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get(&#34;path/to/my/payload.json.sig&#34;))))
+ *                     .serializedPayload(StdFunctions.filebase64(Filebase64Args.builder()
+ *                         .input(&#34;path/to/my/payload.json.sig&#34;)
+ *                         .build()).result())
  *                     .build())
  *                 .build())
  *             .build());

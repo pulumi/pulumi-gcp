@@ -1142,6 +1142,74 @@ class InstanceTemplate(pulumi.CustomResource):
         [API](https://cloud.google.com/compute/docs/reference/latest/instanceTemplates).
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.serviceaccount.Account("default",
+            account_id="service-account-id",
+            display_name="Service Account")
+        my_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        foobar = gcp.compute.Disk("foobar",
+            name="existing-disk",
+            image=my_image.self_link,
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-a")
+        daily_backup = gcp.compute.ResourcePolicy("daily_backup",
+            name="every-day-4am",
+            region="us-central1",
+            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
+                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
+                    daily_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs(
+                        days_in_cycle=1,
+                        start_time="04:00",
+                    ),
+                ),
+            ))
+        default_instance_template = gcp.compute.InstanceTemplate("default",
+            name="appserver-template",
+            description="This template is used to create app server instances.",
+            tags=[
+                "foo",
+                "bar",
+            ],
+            labels={
+                "environment": "dev",
+            },
+            instance_description="description assigned to instances",
+            machine_type="e2-medium",
+            can_ip_forward=False,
+            scheduling=gcp.compute.InstanceTemplateSchedulingArgs(
+                automatic_restart=True,
+                on_host_maintenance="MIGRATE",
+            ),
+            disks=[
+                gcp.compute.InstanceTemplateDiskArgs(
+                    source_image="debian-cloud/debian-11",
+                    auto_delete=True,
+                    boot=True,
+                    resource_policies=daily_backup.id,
+                ),
+                gcp.compute.InstanceTemplateDiskArgs(
+                    source=foobar.name,
+                    auto_delete=False,
+                    boot=False,
+                ),
+            ],
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network="default",
+            )],
+            metadata={
+                "foo": "bar",
+            },
+            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
+                email=default.email,
+                scopes=["cloud-platform"],
+            ))
+        ```
         ### Automatic Envoy Deployment
 
         ```python
@@ -1152,6 +1220,7 @@ class InstanceTemplate(pulumi.CustomResource):
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         foobar = gcp.compute.InstanceTemplate("foobar",
+            name="appserver-template",
             machine_type="e2-medium",
             can_ip_forward=False,
             tags=[
@@ -1234,7 +1303,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
-        instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
+        instance_template = gcp.compute.InstanceTemplate("instance_template",
             name_prefix="instance-template-",
             machine_type="e2-medium",
             region="us-central1",
@@ -1251,13 +1320,13 @@ class InstanceTemplate(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
+        instance_template = gcp.compute.InstanceTemplate("instance_template",
+            name_prefix="instance-template-",
+            machine_type="e2-medium",
+            region="us-central1",
             disks=[gcp.compute.InstanceTemplateDiskArgs(
                 source_image="debian-cloud/debian-11",
-            )],
-            machine_type="e2-medium",
-            name_prefix="instance-template-",
-            region="us-central1")
+            )])
         ```
 
         ## Import
@@ -1364,6 +1433,74 @@ class InstanceTemplate(pulumi.CustomResource):
         [API](https://cloud.google.com/compute/docs/reference/latest/instanceTemplates).
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.serviceaccount.Account("default",
+            account_id="service-account-id",
+            display_name="Service Account")
+        my_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        foobar = gcp.compute.Disk("foobar",
+            name="existing-disk",
+            image=my_image.self_link,
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-a")
+        daily_backup = gcp.compute.ResourcePolicy("daily_backup",
+            name="every-day-4am",
+            region="us-central1",
+            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
+                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
+                    daily_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs(
+                        days_in_cycle=1,
+                        start_time="04:00",
+                    ),
+                ),
+            ))
+        default_instance_template = gcp.compute.InstanceTemplate("default",
+            name="appserver-template",
+            description="This template is used to create app server instances.",
+            tags=[
+                "foo",
+                "bar",
+            ],
+            labels={
+                "environment": "dev",
+            },
+            instance_description="description assigned to instances",
+            machine_type="e2-medium",
+            can_ip_forward=False,
+            scheduling=gcp.compute.InstanceTemplateSchedulingArgs(
+                automatic_restart=True,
+                on_host_maintenance="MIGRATE",
+            ),
+            disks=[
+                gcp.compute.InstanceTemplateDiskArgs(
+                    source_image="debian-cloud/debian-11",
+                    auto_delete=True,
+                    boot=True,
+                    resource_policies=daily_backup.id,
+                ),
+                gcp.compute.InstanceTemplateDiskArgs(
+                    source=foobar.name,
+                    auto_delete=False,
+                    boot=False,
+                ),
+            ],
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network="default",
+            )],
+            metadata={
+                "foo": "bar",
+            },
+            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
+                email=default.email,
+                scopes=["cloud-platform"],
+            ))
+        ```
         ### Automatic Envoy Deployment
 
         ```python
@@ -1374,6 +1511,7 @@ class InstanceTemplate(pulumi.CustomResource):
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         foobar = gcp.compute.InstanceTemplate("foobar",
+            name="appserver-template",
             machine_type="e2-medium",
             can_ip_forward=False,
             tags=[
@@ -1456,7 +1594,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
-        instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
+        instance_template = gcp.compute.InstanceTemplate("instance_template",
             name_prefix="instance-template-",
             machine_type="e2-medium",
             region="us-central1",
@@ -1473,13 +1611,13 @@ class InstanceTemplate(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
+        instance_template = gcp.compute.InstanceTemplate("instance_template",
+            name_prefix="instance-template-",
+            machine_type="e2-medium",
+            region="us-central1",
             disks=[gcp.compute.InstanceTemplateDiskArgs(
                 source_image="debian-cloud/debian-11",
-            )],
-            machine_type="e2-medium",
-            name_prefix="instance-template-",
-            region="us-central1")
+            )])
         ```
 
         ## Import

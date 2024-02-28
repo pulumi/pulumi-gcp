@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := spanner.GetDatabaseIamPolicy(ctx, &spanner.GetDatabaseIamPolicyArgs{
-//				Project:  pulumi.StringRef(google_spanner_database.Database.Project),
-//				Database: google_spanner_database.Database.Name,
-//				Instance: google_spanner_database.Database.Instance,
+//				Project:  pulumi.StringRef(database.Project),
+//				Database: database.Name,
+//				Instance: database.Instance,
 //			}, nil)
 //			if err != nil {
 //				return err

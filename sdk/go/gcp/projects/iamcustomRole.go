@@ -42,14 +42,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := projects.NewIAMCustomRole(ctx, "my-custom-role", &projects.IAMCustomRoleArgs{
+//				RoleId:      pulumi.String("myCustomRole"),
+//				Title:       pulumi.String("My Custom Role"),
 //				Description: pulumi.String("A description"),
 //				Permissions: pulumi.StringArray{
 //					pulumi.String("iam.roles.list"),
 //					pulumi.String("iam.roles.create"),
 //					pulumi.String("iam.roles.delete"),
 //				},
-//				RoleId: pulumi.String("myCustomRole"),
-//				Title:  pulumi.String("My Custom Role"),
 //			})
 //			if err != nil {
 //				return err

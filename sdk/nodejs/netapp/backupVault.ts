@@ -21,7 +21,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const testBackupVault = new gcp.netapp.BackupVault("testBackupVault", {
+ * const testBackupVault = new gcp.netapp.BackupVault("test_backup_vault", {
+ *     name: "test-backup-vault",
  *     location: "us-central1",
  *     description: "Terraform created vault",
  *     labels: {

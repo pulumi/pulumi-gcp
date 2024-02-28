@@ -22,11 +22,11 @@ import * as utilities from "../utilities";
  *
  * const ad_domain_trust = new gcp.activedirectory.DomainTrust("ad-domain-trust", {
  *     domain: "test-managed-ad.com",
- *     targetDnsIpAddresses: ["10.1.0.100"],
  *     targetDomainName: "example-gcp.com",
+ *     targetDnsIpAddresses: ["10.1.0.100"],
  *     trustDirection: "OUTBOUND",
- *     trustHandshakeSecret: "Testing1!",
  *     trustType: "FOREST",
+ *     trustHandshakeSecret: "Testing1!",
  * });
  * ```
  *

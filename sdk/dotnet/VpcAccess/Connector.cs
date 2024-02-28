@@ -31,6 +31,7 @@ namespace Pulumi.Gcp.VpcAccess
     /// {
     ///     var connector = new Gcp.VpcAccess.Connector("connector", new()
     ///     {
+    ///         Name = "vpc-con",
     ///         IpCidrRange = "10.8.0.0/28",
     ///         Network = "default",
     ///     });
@@ -47,13 +48,15 @@ namespace Pulumi.Gcp.VpcAccess
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var customTestNetwork = new Gcp.Compute.Network("customTestNetwork", new()
+    ///     var customTestNetwork = new Gcp.Compute.Network("custom_test", new()
     ///     {
+    ///         Name = "vpc-con",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     var customTestSubnetwork = new Gcp.Compute.Subnetwork("customTestSubnetwork", new()
+    ///     var customTest = new Gcp.Compute.Subnetwork("custom_test", new()
     ///     {
+    ///         Name = "vpc-con",
     ///         IpCidrRange = "10.2.0.0/28",
     ///         Region = "us-central1",
     ///         Network = customTestNetwork.Id,
@@ -61,9 +64,10 @@ namespace Pulumi.Gcp.VpcAccess
     /// 
     ///     var connector = new Gcp.VpcAccess.Connector("connector", new()
     ///     {
+    ///         Name = "vpc-con",
     ///         Subnet = new Gcp.VpcAccess.Inputs.ConnectorSubnetArgs
     ///         {
-    ///             Name = customTestSubnetwork.Name,
+    ///             Name = customTest.Name,
     ///         },
     ///         MachineType = "e2-standard-4",
     ///     });

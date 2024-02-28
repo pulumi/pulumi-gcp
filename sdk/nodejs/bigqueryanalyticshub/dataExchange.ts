@@ -20,11 +20,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const dataExchange = new gcp.bigqueryanalyticshub.DataExchange("dataExchange", {
- *     dataExchangeId: "my_data_exchange",
- *     description: "example data exchange",
- *     displayName: "my_data_exchange",
+ * const dataExchange = new gcp.bigqueryanalyticshub.DataExchange("data_exchange", {
  *     location: "US",
+ *     dataExchangeId: "my_data_exchange",
+ *     displayName: "my_data_exchange",
+ *     description: "example data exchange",
  * });
  * ```
  *

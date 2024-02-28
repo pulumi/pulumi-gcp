@@ -45,8 +45,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new GatewaySecurityPolicy(&#34;default&#34;, GatewaySecurityPolicyArgs.builder()        
- *             .description(&#34;my description&#34;)
+ *             .name(&#34;my-gateway-security-policy&#34;)
  *             .location(&#34;us-central1&#34;)
+ *             .description(&#34;my description&#34;)
  *             .build());
  * 
  *     }
@@ -87,7 +88,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networksecurity.TlsInspectionPolicyArgs;
  * import com.pulumi.gcp.networksecurity.GatewaySecurityPolicy;
  * import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -101,7 +101,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultCaPool = new CaPool(&#34;defaultCaPool&#34;, CaPoolArgs.builder()        
+ *         var default_ = new CaPool(&#34;default&#34;, CaPoolArgs.builder()        
+ *             .name(&#34;my-basic-ca-pool&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .tier(&#34;DEVOPS&#34;)
  *             .publishingOptions(CaPoolPublishingOptionsArgs.builder()
@@ -122,12 +123,10 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultAuthority = new Authority(&#34;defaultAuthority&#34;, AuthorityArgs.builder()        
- *             .pool(defaultCaPool.name())
+ *             .pool(default_.name())
  *             .certificateAuthorityId(&#34;my-basic-certificate-authority&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .lifetime(&#34;86400s&#34;)
@@ -160,43 +159,30 @@ import javax.annotation.Nullable;
  *             .keySpec(AuthorityKeySpecArgs.builder()
  *                 .algorithm(&#34;RSA_PKCS1_4096_SHA256&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var nsSa = new ServiceIdentity(&#34;nsSa&#34;, ServiceIdentityArgs.builder()        
  *             .service(&#34;networksecurity.googleapis.com&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var tlsInspectionPermission = new CaPoolIamMember(&#34;tlsInspectionPermission&#34;, CaPoolIamMemberArgs.builder()        
- *             .caPool(defaultCaPool.id())
+ *             .caPool(default_.id())
  *             .role(&#34;roles/privateca.certificateManager&#34;)
  *             .member(nsSa.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultTlsInspectionPolicy = new TlsInspectionPolicy(&#34;defaultTlsInspectionPolicy&#34;, TlsInspectionPolicyArgs.builder()        
+ *             .name(&#34;my-tls-inspection-policy&#34;)
  *             .location(&#34;us-central1&#34;)
- *             .caPool(defaultCaPool.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .dependsOn(                
- *                     defaultCaPool,
- *                     defaultAuthority,
- *                     tlsInspectionPermission)
- *                 .build());
+ *             .caPool(default_.id())
+ *             .build());
  * 
  *         var defaultGatewaySecurityPolicy = new GatewaySecurityPolicy(&#34;defaultGatewaySecurityPolicy&#34;, GatewaySecurityPolicyArgs.builder()        
+ *             .name(&#34;my-gateway-security-policy&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .description(&#34;my description&#34;)
  *             .tlsInspectionPolicy(defaultTlsInspectionPolicy.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .dependsOn(defaultTlsInspectionPolicy)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

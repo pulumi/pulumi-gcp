@@ -52,7 +52,7 @@ namespace Pulumi.Gcp.Diagflow
     ///         },
     ///     });
     /// 
-    ///     var version1 = new Gcp.Diagflow.CxVersion("version1", new()
+    ///     var version1 = new Gcp.Diagflow.CxVersion("version_1", new()
     ///     {
     ///         Parent = agent.StartFlow,
     ///         DisplayName = "1.0.0",

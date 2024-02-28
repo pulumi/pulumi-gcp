@@ -36,6 +36,148 @@ import javax.annotation.Nullable;
  * is allowed for the database parameter.
  * 
  * ## Example Usage
+ * ### Firestore Document Basic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.time.sleep;
+ * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
+ * import com.pulumi.gcp.firestore.Document;
+ * import com.pulumi.gcp.firestore.DocumentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;project-id&#34;)
+ *             .name(&#34;project-id&#34;)
+ *             .orgId(&#34;123456789&#34;)
+ *             .build());
+ * 
+ *         var wait60Seconds = new Sleep(&#34;wait60Seconds&#34;, SleepArgs.builder()        
+ *             .createDuration(&#34;60s&#34;)
+ *             .build());
+ * 
+ *         var firestore = new Service(&#34;firestore&#34;, ServiceArgs.builder()        
+ *             .project(project.projectId())
+ *             .service(&#34;firestore.googleapis.com&#34;)
+ *             .build());
+ * 
+ *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
+ *             .project(project.projectId())
+ *             .name(&#34;(default)&#34;)
+ *             .locationId(&#34;nam5&#34;)
+ *             .type(&#34;FIRESTORE_NATIVE&#34;)
+ *             .build());
+ * 
+ *         var mydoc = new Document(&#34;mydoc&#34;, DocumentArgs.builder()        
+ *             .project(project.projectId())
+ *             .database(database.name())
+ *             .collection(&#34;somenewcollection&#34;)
+ *             .documentId(&#34;my-doc-id&#34;)
+ *             .fields(&#34;{\&#34;something\&#34;:{\&#34;mapValue\&#34;:{\&#34;fields\&#34;:{\&#34;akey\&#34;:{\&#34;stringValue\&#34;:\&#34;avalue\&#34;}}}}}&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Firestore Document Nested Document
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.time.sleep;
+ * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
+ * import com.pulumi.gcp.firestore.Document;
+ * import com.pulumi.gcp.firestore.DocumentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;project-id&#34;)
+ *             .name(&#34;project-id&#34;)
+ *             .orgId(&#34;123456789&#34;)
+ *             .build());
+ * 
+ *         var wait60Seconds = new Sleep(&#34;wait60Seconds&#34;, SleepArgs.builder()        
+ *             .createDuration(&#34;60s&#34;)
+ *             .build());
+ * 
+ *         var firestore = new Service(&#34;firestore&#34;, ServiceArgs.builder()        
+ *             .project(project.projectId())
+ *             .service(&#34;firestore.googleapis.com&#34;)
+ *             .build());
+ * 
+ *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
+ *             .project(project.projectId())
+ *             .name(&#34;(default)&#34;)
+ *             .locationId(&#34;nam5&#34;)
+ *             .type(&#34;FIRESTORE_NATIVE&#34;)
+ *             .build());
+ * 
+ *         var mydoc = new Document(&#34;mydoc&#34;, DocumentArgs.builder()        
+ *             .project(project.projectId())
+ *             .database(database.name())
+ *             .collection(&#34;somenewcollection&#34;)
+ *             .documentId(&#34;my-doc-id&#34;)
+ *             .fields(&#34;{\&#34;something\&#34;:{\&#34;mapValue\&#34;:{\&#34;fields\&#34;:{\&#34;akey\&#34;:{\&#34;stringValue\&#34;:\&#34;avalue\&#34;}}}}}&#34;)
+ *             .build());
+ * 
+ *         var subDocument = new Document(&#34;subDocument&#34;, DocumentArgs.builder()        
+ *             .project(project.projectId())
+ *             .database(database.name())
+ *             .collection(mydoc.path().applyValue(path -&gt; String.format(&#34;%s/subdocs&#34;, path)))
+ *             .documentId(&#34;bitcoinkey&#34;)
+ *             .fields(&#34;{\&#34;something\&#34;:{\&#34;mapValue\&#34;:{\&#34;fields\&#34;:{\&#34;ayo\&#34;:{\&#34;stringValue\&#34;:\&#34;val2\&#34;}}}}}&#34;)
+ *             .build());
+ * 
+ *         var subSubDocument = new Document(&#34;subSubDocument&#34;, DocumentArgs.builder()        
+ *             .project(project.projectId())
+ *             .database(database.name())
+ *             .collection(subDocument.path().applyValue(path -&gt; String.format(&#34;%s/subsubdocs&#34;, path)))
+ *             .documentId(&#34;asecret&#34;)
+ *             .fields(&#34;{\&#34;something\&#34;:{\&#34;mapValue\&#34;:{\&#34;fields\&#34;:{\&#34;secret\&#34;:{\&#34;stringValue\&#34;:\&#34;hithere\&#34;}}}}}&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

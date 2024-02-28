@@ -545,10 +545,11 @@ class StoragePool(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         # Create a network or use datasource to reference existing network
-        peering_network = gcp.compute.Network("peeringNetwork")
+        peering_network = gcp.compute.Network("peering_network", name="test-network")
         # Reserve a CIDR for NetApp Volumes to use
         # When using shared-VPCs, this resource needs to be created in host project
-        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name="test-address",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=16,
@@ -561,14 +562,15 @@ class StoragePool(pulumi.CustomResource):
             reserved_peering_ranges=[private_ip_alloc.name])
         # Modify the PSA Connection to allow import/export of custom routes
         # When using shared-VPCs, this resource needs to be created in host project
-        route_updates = gcp.compute.NetworkPeeringRoutesConfig("routeUpdates",
+        route_updates = gcp.compute.NetworkPeeringRoutesConfig("route_updates",
             peering=default.peering,
             network=peering_network.name,
             import_custom_routes=True,
             export_custom_routes=True)
         # Create a storage pool
         # Create this resource in the project which is expected to own the volumes
-        test_pool = gcp.netapp.StoragePool("testPool",
+        test_pool = gcp.netapp.StoragePool("test_pool",
+            name="test-pool",
             location="us-central1",
             service_level="PREMIUM",
             capacity_gib="2048",
@@ -657,10 +659,11 @@ class StoragePool(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         # Create a network or use datasource to reference existing network
-        peering_network = gcp.compute.Network("peeringNetwork")
+        peering_network = gcp.compute.Network("peering_network", name="test-network")
         # Reserve a CIDR for NetApp Volumes to use
         # When using shared-VPCs, this resource needs to be created in host project
-        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name="test-address",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=16,
@@ -673,14 +676,15 @@ class StoragePool(pulumi.CustomResource):
             reserved_peering_ranges=[private_ip_alloc.name])
         # Modify the PSA Connection to allow import/export of custom routes
         # When using shared-VPCs, this resource needs to be created in host project
-        route_updates = gcp.compute.NetworkPeeringRoutesConfig("routeUpdates",
+        route_updates = gcp.compute.NetworkPeeringRoutesConfig("route_updates",
             peering=default.peering,
             network=peering_network.name,
             import_custom_routes=True,
             export_custom_routes=True)
         # Create a storage pool
         # Create this resource in the project which is expected to own the volumes
-        test_pool = gcp.netapp.StoragePool("testPool",
+        test_pool = gcp.netapp.StoragePool("test_pool",
+            name="test-pool",
             location="us-central1",
             service_level="PREMIUM",
             capacity_gib="2048",

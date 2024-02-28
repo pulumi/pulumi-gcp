@@ -346,12 +346,12 @@ class PreventionStoredInfoType(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         basic = gcp.dataloss.PreventionStoredInfoType("basic",
+            parent="projects/my-project-name",
             description="Description",
             display_name="Displayname",
-            parent="projects/my-project-name",
             regex=gcp.dataloss.PreventionStoredInfoTypeRegexArgs(
-                group_indexes=[2],
                 pattern="patient",
+                group_indexes=[2],
             ))
         ```
         ### Dlp Stored Info Type Dictionary
@@ -361,7 +361,9 @@ class PreventionStoredInfoType(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         dictionary = gcp.dataloss.PreventionStoredInfoType("dictionary",
+            parent="projects/my-project-name",
             description="Description",
+            display_name="Displayname",
             dictionary=gcp.dataloss.PreventionStoredInfoTypeDictionaryArgs(
                 word_list=gcp.dataloss.PreventionStoredInfoTypeDictionaryWordListArgs(
                     words=[
@@ -369,9 +371,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                         "word2",
                     ],
                 ),
-            ),
-            display_name="Displayname",
-            parent="projects/my-project-name")
+            ))
         ```
         ### Dlp Stored Info Type Large Custom Dictionary
 
@@ -380,9 +380,11 @@ class PreventionStoredInfoType(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         bucket = gcp.storage.Bucket("bucket",
+            name="tf-test-bucket",
             location="US",
             force_destroy=True)
         object = gcp.storage.BucketObject("object",
+            name="tf-test-object",
             bucket=bucket.name,
             source=pulumi.FileAsset("./test-fixtures/words.txt"))
         large = gcp.dataloss.PreventionStoredInfoType("large",
@@ -404,15 +406,15 @@ class PreventionStoredInfoType(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        with_stored_info_type_id = gcp.dataloss.PreventionStoredInfoType("withStoredInfoTypeId",
+        with_stored_info_type_id = gcp.dataloss.PreventionStoredInfoType("with_stored_info_type_id",
+            parent="projects/my-project-name",
             description="Description",
             display_name="Displayname",
-            parent="projects/my-project-name",
+            stored_info_type_id="id-",
             regex=gcp.dataloss.PreventionStoredInfoTypeRegexArgs(
-                group_indexes=[2],
                 pattern="patient",
-            ),
-            stored_info_type_id="id-")
+                group_indexes=[2],
+            ))
         ```
 
         ## Import
@@ -478,12 +480,12 @@ class PreventionStoredInfoType(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         basic = gcp.dataloss.PreventionStoredInfoType("basic",
+            parent="projects/my-project-name",
             description="Description",
             display_name="Displayname",
-            parent="projects/my-project-name",
             regex=gcp.dataloss.PreventionStoredInfoTypeRegexArgs(
-                group_indexes=[2],
                 pattern="patient",
+                group_indexes=[2],
             ))
         ```
         ### Dlp Stored Info Type Dictionary
@@ -493,7 +495,9 @@ class PreventionStoredInfoType(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         dictionary = gcp.dataloss.PreventionStoredInfoType("dictionary",
+            parent="projects/my-project-name",
             description="Description",
+            display_name="Displayname",
             dictionary=gcp.dataloss.PreventionStoredInfoTypeDictionaryArgs(
                 word_list=gcp.dataloss.PreventionStoredInfoTypeDictionaryWordListArgs(
                     words=[
@@ -501,9 +505,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                         "word2",
                     ],
                 ),
-            ),
-            display_name="Displayname",
-            parent="projects/my-project-name")
+            ))
         ```
         ### Dlp Stored Info Type Large Custom Dictionary
 
@@ -512,9 +514,11 @@ class PreventionStoredInfoType(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         bucket = gcp.storage.Bucket("bucket",
+            name="tf-test-bucket",
             location="US",
             force_destroy=True)
         object = gcp.storage.BucketObject("object",
+            name="tf-test-object",
             bucket=bucket.name,
             source=pulumi.FileAsset("./test-fixtures/words.txt"))
         large = gcp.dataloss.PreventionStoredInfoType("large",
@@ -536,15 +540,15 @@ class PreventionStoredInfoType(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        with_stored_info_type_id = gcp.dataloss.PreventionStoredInfoType("withStoredInfoTypeId",
+        with_stored_info_type_id = gcp.dataloss.PreventionStoredInfoType("with_stored_info_type_id",
+            parent="projects/my-project-name",
             description="Description",
             display_name="Displayname",
-            parent="projects/my-project-name",
+            stored_info_type_id="id-",
             regex=gcp.dataloss.PreventionStoredInfoTypeRegexArgs(
-                group_indexes=[2],
                 pattern="patient",
-            ),
-            stored_info_type_id="id-")
+                group_indexes=[2],
+            ))
         ```
 
         ## Import

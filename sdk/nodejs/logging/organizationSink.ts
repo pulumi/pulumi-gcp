@@ -18,8 +18,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const log_bucket = new gcp.storage.Bucket("log-bucket", {location: "US"});
+ * const log_bucket = new gcp.storage.Bucket("log-bucket", {
+ *     name: "organization-logging-bucket",
+ *     location: "US",
+ * });
  * const my_sink = new gcp.logging.OrganizationSink("my-sink", {
+ *     name: "my-sink",
  *     description: "some explanation on what this is",
  *     orgId: "123456789",
  *     destination: pulumi.interpolate`storage.googleapis.com/${log_bucket.name}`,

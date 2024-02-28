@@ -37,13 +37,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := orgpolicy.NewCustomConstraint(ctx, "constraint", &orgpolicy.CustomConstraintArgs{
+//				Name:       pulumi.String("custom.disableGkeAutoUpgrade"),
+//				Parent:     pulumi.String("organizations/123456789"),
 //				ActionType: pulumi.String("ALLOW"),
 //				Condition:  pulumi.String("resource.management.autoUpgrade == false"),
 //				MethodTypes: pulumi.StringArray{
 //					pulumi.String("CREATE"),
 //					pulumi.String("UPDATE"),
 //				},
-//				Parent: pulumi.String("organizations/123456789"),
 //				ResourceTypes: pulumi.StringArray{
 //					pulumi.String("container.googleapis.com/NodePool"),
 //				},
@@ -63,6 +64,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/orgpolicy"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -70,16 +73,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := orgpolicy.NewCustomConstraint(ctx, "constraint", &orgpolicy.CustomConstraintArgs{
+//			constraint, err := orgpolicy.NewCustomConstraint(ctx, "constraint", &orgpolicy.CustomConstraintArgs{
+//				Name:        pulumi.String("custom.disableGkeAutoUpgrade"),
+//				Parent:      pulumi.String("organizations/123456789"),
+//				DisplayName: pulumi.String("Disable GKE auto upgrade"),
+//				Description: pulumi.String("Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced."),
 //				ActionType:  pulumi.String("ALLOW"),
 //				Condition:   pulumi.String("resource.management.autoUpgrade == false"),
-//				Description: pulumi.String("Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced."),
-//				DisplayName: pulumi.String("Disable GKE auto upgrade"),
 //				MethodTypes: pulumi.StringArray{
 //					pulumi.String("CREATE"),
 //					pulumi.String("UPDATE"),
 //				},
-//				Parent: pulumi.String("organizations/123456789"),
 //				ResourceTypes: pulumi.StringArray{
 //					pulumi.String("container.googleapis.com/NodePool"),
 //				},
@@ -88,6 +92,9 @@ import (
 //				return err
 //			}
 //			_, err = orgpolicy.NewPolicy(ctx, "bool", &orgpolicy.PolicyArgs{
+//				Name: constraint.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("organizations/123456789/policies/%v", name), nil
+//				}).(pulumi.StringOutput),
 //				Parent: pulumi.String("organizations/123456789"),
 //				Spec: &orgpolicy.PolicySpecArgs{
 //					Rules: orgpolicy.PolicySpecRuleArray{

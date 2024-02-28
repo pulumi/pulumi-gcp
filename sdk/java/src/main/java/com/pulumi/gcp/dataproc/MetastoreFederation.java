@@ -32,7 +32,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataproc.MetastoreFederation;
  * import com.pulumi.gcp.dataproc.MetastoreFederationArgs;
  * import com.pulumi.gcp.dataproc.inputs.MetastoreFederationBackendMetastoreArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -54,11 +53,9 @@ import javax.annotation.Nullable;
  *                 .version(&#34;3.1.2&#34;)
  *                 .endpointProtocol(&#34;GRPC&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
- *         var defaultMetastoreFederation = new MetastoreFederation(&#34;defaultMetastoreFederation&#34;, MetastoreFederationArgs.builder()        
+ *         var default_ = new MetastoreFederation(&#34;default&#34;, MetastoreFederationArgs.builder()        
  *             .location(&#34;us-central1&#34;)
  *             .federationId(&#34;&#34;)
  *             .version(&#34;3.1.2&#34;)
@@ -67,9 +64,7 @@ import javax.annotation.Nullable;
  *                 .name(defaultMetastoreService.id())
  *                 .metastoreType(&#34;DATAPROC_METASTORE&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -89,7 +84,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataproc.MetastoreFederation;
  * import com.pulumi.gcp.dataproc.MetastoreFederationArgs;
  * import com.pulumi.gcp.dataproc.inputs.MetastoreFederationBackendMetastoreArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -111,13 +105,11 @@ import javax.annotation.Nullable;
  *                 .version(&#34;3.1.2&#34;)
  *                 .endpointProtocol(&#34;GRPC&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var defaultMetastoreFederation = new MetastoreFederation(&#34;defaultMetastoreFederation&#34;, MetastoreFederationArgs.builder()        
+ *         var default_ = new MetastoreFederation(&#34;default&#34;, MetastoreFederationArgs.builder()        
  *             .location(&#34;us-central1&#34;)
  *             .federationId(&#34;&#34;)
  *             .version(&#34;3.1.2&#34;)
@@ -132,9 +124,7 @@ import javax.annotation.Nullable;
  *                     .name(defaultMetastoreService.id())
  *                     .metastoreType(&#34;DATAPROC_METASTORE&#34;)
  *                     .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

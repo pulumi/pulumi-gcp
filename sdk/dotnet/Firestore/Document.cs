@@ -31,6 +31,120 @@ namespace Pulumi.Gcp.Firestore
     /// is allowed for the database parameter.
     /// 
     /// ## Example Usage
+    /// ### Firestore Document Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumi.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = new Gcp.Organizations.Project("project", new()
+    ///     {
+    ///         ProjectId = "project-id",
+    ///         Name = "project-id",
+    ///         OrgId = "123456789",
+    ///     });
+    /// 
+    ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
+    ///     {
+    ///         CreateDuration = "60s",
+    ///     });
+    /// 
+    ///     var firestore = new Gcp.Projects.Service("firestore", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "firestore.googleapis.com",
+    ///     });
+    /// 
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         Name = "(default)",
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///     });
+    /// 
+    ///     var mydoc = new Gcp.Firestore.Document("mydoc", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         Database = database.Name,
+    ///         Collection = "somenewcollection",
+    ///         DocumentId = "my-doc-id",
+    ///         Fields = "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Firestore Document Nested Document
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumi.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = new Gcp.Organizations.Project("project", new()
+    ///     {
+    ///         ProjectId = "project-id",
+    ///         Name = "project-id",
+    ///         OrgId = "123456789",
+    ///     });
+    /// 
+    ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
+    ///     {
+    ///         CreateDuration = "60s",
+    ///     });
+    /// 
+    ///     var firestore = new Gcp.Projects.Service("firestore", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "firestore.googleapis.com",
+    ///     });
+    /// 
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         Name = "(default)",
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///     });
+    /// 
+    ///     var mydoc = new Gcp.Firestore.Document("mydoc", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         Database = database.Name,
+    ///         Collection = "somenewcollection",
+    ///         DocumentId = "my-doc-id",
+    ///         Fields = "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
+    ///     });
+    /// 
+    ///     var subDocument = new Gcp.Firestore.Document("sub_document", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         Database = database.Name,
+    ///         Collection = mydoc.Path.Apply(path =&gt; $"{path}/subdocs"),
+    ///         DocumentId = "bitcoinkey",
+    ///         Fields = "{\"something\":{\"mapValue\":{\"fields\":{\"ayo\":{\"stringValue\":\"val2\"}}}}}",
+    ///     });
+    /// 
+    ///     var subSubDocument = new Gcp.Firestore.Document("sub_sub_document", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         Database = database.Name,
+    ///         Collection = subDocument.Path.Apply(path =&gt; $"{path}/subsubdocs"),
+    ///         DocumentId = "asecret",
+    ///         Fields = "{\"something\":{\"mapValue\":{\"fields\":{\"secret\":{\"stringValue\":\"hithere\"}}}}}",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

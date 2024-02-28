@@ -408,6 +408,7 @@ class Topic(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.pubsub.Topic("example",
+            name="example-topic",
             labels={
                 "foo": "bar",
             },
@@ -419,9 +420,15 @@ class Topic(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        key_ring = gcp.kms.KeyRing("keyRing", location="global")
-        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
-        example = gcp.pubsub.Topic("example", kms_key_name=crypto_key.id)
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="example-keyring",
+            location="global")
+        crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="example-key",
+            key_ring=key_ring.id)
+        example = gcp.pubsub.Topic("example",
+            name="example-topic",
+            kms_key_name=crypto_key.id)
         ```
         ### Pubsub Topic Geo Restricted
 
@@ -429,9 +436,11 @@ class Topic(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        example = gcp.pubsub.Topic("example", message_storage_policy=gcp.pubsub.TopicMessageStoragePolicyArgs(
-            allowed_persistence_regions=["europe-west3"],
-        ))
+        example = gcp.pubsub.Topic("example",
+            name="example-topic",
+            message_storage_policy=gcp.pubsub.TopicMessageStoragePolicyArgs(
+                allowed_persistence_regions=["europe-west3"],
+            ))
         ```
         ### Pubsub Topic Schema Settings
 
@@ -439,7 +448,8 @@ class Topic(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        example_schema = gcp.pubsub.Schema("exampleSchema",
+        example = gcp.pubsub.Schema("example",
+            name="example",
             type="AVRO",
             definition=\"\"\"{
           "type" : "record",
@@ -456,11 +466,12 @@ class Topic(pulumi.CustomResource):
           ]
         }
         \"\"\")
-        example_topic = gcp.pubsub.Topic("exampleTopic", schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
-            schema="projects/my-project-name/schemas/example",
-            encoding="JSON",
-        ),
-        opts=pulumi.ResourceOptions(depends_on=[example_schema]))
+        example_topic = gcp.pubsub.Topic("example",
+            name="example-topic",
+            schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
+                schema="projects/my-project-name/schemas/example",
+                encoding="JSON",
+            ))
         ```
 
         ## Import
@@ -545,6 +556,7 @@ class Topic(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.pubsub.Topic("example",
+            name="example-topic",
             labels={
                 "foo": "bar",
             },
@@ -556,9 +568,15 @@ class Topic(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        key_ring = gcp.kms.KeyRing("keyRing", location="global")
-        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
-        example = gcp.pubsub.Topic("example", kms_key_name=crypto_key.id)
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="example-keyring",
+            location="global")
+        crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="example-key",
+            key_ring=key_ring.id)
+        example = gcp.pubsub.Topic("example",
+            name="example-topic",
+            kms_key_name=crypto_key.id)
         ```
         ### Pubsub Topic Geo Restricted
 
@@ -566,9 +584,11 @@ class Topic(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        example = gcp.pubsub.Topic("example", message_storage_policy=gcp.pubsub.TopicMessageStoragePolicyArgs(
-            allowed_persistence_regions=["europe-west3"],
-        ))
+        example = gcp.pubsub.Topic("example",
+            name="example-topic",
+            message_storage_policy=gcp.pubsub.TopicMessageStoragePolicyArgs(
+                allowed_persistence_regions=["europe-west3"],
+            ))
         ```
         ### Pubsub Topic Schema Settings
 
@@ -576,7 +596,8 @@ class Topic(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        example_schema = gcp.pubsub.Schema("exampleSchema",
+        example = gcp.pubsub.Schema("example",
+            name="example",
             type="AVRO",
             definition=\"\"\"{
           "type" : "record",
@@ -593,11 +614,12 @@ class Topic(pulumi.CustomResource):
           ]
         }
         \"\"\")
-        example_topic = gcp.pubsub.Topic("exampleTopic", schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
-            schema="projects/my-project-name/schemas/example",
-            encoding="JSON",
-        ),
-        opts=pulumi.ResourceOptions(depends_on=[example_schema]))
+        example_topic = gcp.pubsub.Topic("example",
+            name="example-topic",
+            schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
+                schema="projects/my-project-name/schemas/example",
+                encoding="JSON",
+            ))
         ```
 
         ## Import

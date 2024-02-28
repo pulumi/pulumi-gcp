@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			loggingLogViewProjectBucketConfig, err := logging.NewProjectBucketConfig(ctx, "loggingLogViewProjectBucketConfig", &logging.ProjectBucketConfigArgs{
+//			loggingLogView, err := logging.NewProjectBucketConfig(ctx, "logging_log_view", &logging.ProjectBucketConfigArgs{
 //				Project:       pulumi.String("my-project-name"),
 //				Location:      pulumi.String("global"),
 //				RetentionDays: pulumi.Int(30),
@@ -44,8 +44,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = logging.NewLogView(ctx, "loggingLogViewLogView", &logging.LogViewArgs{
-//				Bucket:      loggingLogViewProjectBucketConfig.ID(),
+//			_, err = logging.NewLogView(ctx, "logging_log_view", &logging.LogViewArgs{
+//				Name:        pulumi.String("my-view"),
+//				Bucket:      loggingLogView.ID(),
 //				Description: pulumi.String("A logging view configured with Terraform"),
 //				Filter:      pulumi.String("SOURCE(\"projects/myproject\") AND resource.type = \"gce_instance\" AND LOG_ID(\"stdout\")"),
 //			})

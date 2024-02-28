@@ -37,19 +37,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:     pulumi.String("appengine-static-content"),
 //				Location: pulumi.String("US"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+//				Name:   pulumi.String("hello-world.zip"),
 //				Bucket: bucket.Name,
 //				Source: pulumi.NewFileAsset("./test-fixtures/hello-world.zip"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			internalappStandardAppVersion, err := appengine.NewStandardAppVersion(ctx, "internalappStandardAppVersion", &appengine.StandardAppVersionArgs{
+//			internalapp, err := appengine.NewStandardAppVersion(ctx, "internalapp", &appengine.StandardAppVersionArgs{
 //				VersionId:              pulumi.String("v1"),
 //				Service:                pulumi.String("internalapp"),
 //				DeleteServiceOnDestroy: pulumi.Bool(true),
@@ -73,8 +75,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = appengine.NewServiceNetworkSettings(ctx, "internalappServiceNetworkSettings", &appengine.ServiceNetworkSettingsArgs{
-//				Service: internalappStandardAppVersion.Service,
+//			_, err = appengine.NewServiceNetworkSettings(ctx, "internalapp", &appengine.ServiceNetworkSettingsArgs{
+//				Service: internalapp.Service,
 //				NetworkSettings: &appengine.ServiceNetworkSettingsNetworkSettingsArgs{
 //					IngressTrafficAllowed: pulumi.String("INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY"),
 //				},

@@ -33,8 +33,9 @@ namespace Pulumi.Gcp.Dns
     /// {
     ///     var example_zone = new Gcp.Dns.ManagedZone("example-zone", new()
     ///     {
-    ///         Description = "Example DNS zone",
+    ///         Name = "example-zone",
     ///         DnsName = "my-domain.com.",
+    ///         Description = "Example DNS zone",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -55,16 +56,19 @@ namespace Pulumi.Gcp.Dns
     /// {
     ///     var network_1 = new Gcp.Compute.Network("network-1", new()
     ///     {
+    ///         Name = "network-1",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var network_2 = new Gcp.Compute.Network("network-2", new()
     ///     {
+    ///         Name = "network-2",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var private_zone = new Gcp.Dns.ManagedZone("private-zone", new()
     ///     {
+    ///         Name = "private-zone",
     ///         DnsName = "private.example.com.",
     ///         Description = "Example private DNS zone",
     ///         Labels = 
@@ -102,16 +106,19 @@ namespace Pulumi.Gcp.Dns
     /// {
     ///     var network_1 = new Gcp.Compute.Network("network-1", new()
     ///     {
+    ///         Name = "network-1",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var network_2 = new Gcp.Compute.Network("network-2", new()
     ///     {
+    ///         Name = "network-2",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var private_zone = new Gcp.Dns.ManagedZone("private-zone", new()
     ///     {
+    ///         Name = "private-zone",
     ///         DnsName = "private.example.com.",
     ///         Description = "Example private DNS zone",
     ///         Labels = 
@@ -163,11 +170,13 @@ namespace Pulumi.Gcp.Dns
     /// {
     ///     var network_1 = new Gcp.Compute.Network("network-1", new()
     ///     {
+    ///         Name = "network-1",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var subnetwork_1 = new Gcp.Compute.Subnetwork("subnetwork-1", new()
     ///     {
+    ///         Name = network_1.Name,
     ///         Network = network_1.Name,
     ///         IpCidrRange = "10.0.36.0/24",
     ///         Region = "us-central1",
@@ -189,6 +198,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     ///     var cluster_1 = new Gcp.Container.Cluster("cluster-1", new()
     ///     {
+    ///         Name = "cluster-1",
     ///         Location = "us-central1-c",
     ///         InitialNodeCount = 1,
     ///         NetworkingMode = "VPC_NATIVE",
@@ -219,6 +229,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     ///     var private_zone_gke = new Gcp.Dns.ManagedZone("private-zone-gke", new()
     ///     {
+    ///         Name = "private-zone",
     ///         DnsName = "private.example.com.",
     ///         Description = "Example private DNS zone",
     ///         Labels = 
@@ -252,16 +263,19 @@ namespace Pulumi.Gcp.Dns
     /// {
     ///     var network_source = new Gcp.Compute.Network("network-source", new()
     ///     {
+    ///         Name = "network-source",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var network_target = new Gcp.Compute.Network("network-target", new()
     ///     {
+    ///         Name = "network-target",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var peering_zone = new Gcp.Dns.ManagedZone("peering-zone", new()
     ///     {
+    ///         Name = "peering-zone",
     ///         DnsName = "peering.example.com.",
     ///         Description = "Example private DNS peering zone",
     ///         Visibility = "private",
@@ -300,13 +314,11 @@ namespace Pulumi.Gcp.Dns
     ///     {
     ///         NamespaceId = "example",
     ///         Location = "us-central1",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var sd_zone = new Gcp.Dns.ManagedZone("sd-zone", new()
     ///     {
+    ///         Name = "peering-zone",
     ///         DnsName = "services.example.com.",
     ///         Description = "Example private DNS Service Directory zone",
     ///         Visibility = "private",
@@ -317,17 +329,12 @@ namespace Pulumi.Gcp.Dns
     ///                 NamespaceUrl = example.Id,
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
+    ///         Name = "network",
     ///         AutoCreateSubnetworks = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -344,15 +351,16 @@ namespace Pulumi.Gcp.Dns
     /// {
     ///     var cloud_logging_enabled_zone = new Gcp.Dns.ManagedZone("cloud-logging-enabled-zone", new()
     ///     {
-    ///         CloudLoggingConfig = new Gcp.Dns.Inputs.ManagedZoneCloudLoggingConfigArgs
-    ///         {
-    ///             EnableLogging = true,
-    ///         },
-    ///         Description = "Example cloud logging enabled DNS zone",
+    ///         Name = "cloud-logging-enabled-zone",
     ///         DnsName = "services.example.com.",
+    ///         Description = "Example cloud logging enabled DNS zone",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
+    ///         },
+    ///         CloudLoggingConfig = new Gcp.Dns.Inputs.ManagedZoneCloudLoggingConfigArgs
+    ///         {
+    ///             EnableLogging = true,
     ///         },
     ///     });
     /// 

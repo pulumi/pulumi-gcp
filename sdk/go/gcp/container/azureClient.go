@@ -34,8 +34,9 @@ import (
 //			_, err := container.NewAzureClient(ctx, "primary", &container.AzureClientArgs{
 //				ApplicationId: pulumi.String("12345678-1234-1234-1234-123456789111"),
 //				Location:      pulumi.String("us-west1"),
-//				Project:       pulumi.String("my-project-name"),
+//				Name:          pulumi.String("client-name"),
 //				TenantId:      pulumi.String("12345678-1234-1234-1234-123456789111"),
+//				Project:       pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
 //				return err

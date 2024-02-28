@@ -42,15 +42,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewReservation(ctx, "gceReservation", &compute.ReservationArgs{
+//			_, err := compute.NewReservation(ctx, "gce_reservation", &compute.ReservationArgs{
+//				Name: pulumi.String("gce-reservation"),
+//				Zone: pulumi.String("us-central1-a"),
 //				SpecificReservation: &compute.ReservationSpecificReservationArgs{
 //					Count: pulumi.Int(1),
 //					InstanceProperties: &compute.ReservationSpecificReservationInstancePropertiesArgs{
-//						MachineType:    pulumi.String("n2-standard-2"),
 //						MinCpuPlatform: pulumi.String("Intel Cascade Lake"),
+//						MachineType:    pulumi.String("n2-standard-2"),
 //					},
 //				},
-//				Zone: pulumi.String("us-central1-a"),
 //			})
 //			if err != nil {
 //				return err

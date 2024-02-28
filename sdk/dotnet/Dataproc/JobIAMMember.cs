@@ -69,11 +69,11 @@ namespace Pulumi.Gcp.Dataproc
     ///     var editor = new Gcp.Dataproc.JobIAMBinding("editor", new()
     ///     {
     ///         JobId = "your-dataproc-job",
+    ///         Role = "roles/editor",
     ///         Members = new[]
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         Role = "roles/editor",
     ///     });
     /// 
     /// });
@@ -92,8 +92,8 @@ namespace Pulumi.Gcp.Dataproc
     ///     var editor = new Gcp.Dataproc.JobIAMMember("editor", new()
     ///     {
     ///         JobId = "your-dataproc-job",
-    ///         Member = "user:jane@example.com",
     ///         Role = "roles/editor",
+    ///         Member = "user:jane@example.com",
     ///     });
     /// 
     /// });

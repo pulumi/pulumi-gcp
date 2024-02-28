@@ -201,6 +201,89 @@ import (
 //	}
 //
 // ```
+// ### Bigquery Job Load Geojson
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project := "my-project-name"
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:                     pulumi.String(fmt.Sprintf("%v-bq-geojson", project)),
+//				Location:                 pulumi.String("US"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+//				Name:    pulumi.String("geojson-data.jsonl"),
+//				Bucket:  bucket.Name,
+//				Content: pulumi.String("{\"type\":\"Feature\",\"properties\":{\"continent\":\"Europe\",\"region\":\"Scandinavia\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[-30.94,53.33],[33.05,53.33],[33.05,71.86],[-30.94,71.86],[-30.94,53.33]]]}}\n{\"type\":\"Feature\",\"properties\":{\"continent\":\"Africa\",\"region\":\"West Africa\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[-23.91,0],[11.95,0],[11.95,18.98],[-23.91,18.98],[-23.91,0]]]}}\n"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bar, err := bigquery.NewDataset(ctx, "bar", &bigquery.DatasetArgs{
+//				DatasetId:    pulumi.String("job_load_dataset"),
+//				FriendlyName: pulumi.String("test"),
+//				Description:  pulumi.String("This is a test description"),
+//				Location:     pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			foo, err := bigquery.NewTable(ctx, "foo", &bigquery.TableArgs{
+//				DeletionProtection: pulumi.Bool(false),
+//				DatasetId:          bar.DatasetId,
+//				TableId:            pulumi.String("job_load_table"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewJob(ctx, "job", &bigquery.JobArgs{
+//				JobId: pulumi.String("job_load"),
+//				Labels: pulumi.StringMap{
+//					"my_job": pulumi.String("load"),
+//				},
+//				Load: &bigquery.JobLoadArgs{
+//					SourceUris: pulumi.StringArray{
+//						pulumi.All(object.Bucket, object.Name).ApplyT(func(_args []interface{}) (string, error) {
+//							bucket := _args[0].(string)
+//							name := _args[1].(string)
+//							return fmt.Sprintf("gs://%v/%v", bucket, name), nil
+//						}).(pulumi.StringOutput),
+//					},
+//					DestinationTable: &bigquery.JobLoadDestinationTableArgs{
+//						ProjectId: foo.Project,
+//						DatasetId: foo.DatasetId,
+//						TableId:   foo.TableId,
+//					},
+//					WriteDisposition: pulumi.String("WRITE_TRUNCATE"),
+//					Autodetect:       pulumi.Bool(true),
+//					SourceFormat:     pulumi.String("NEWLINE_DELIMITED_JSON"),
+//					JsonExtension:    pulumi.String("GEOJSON"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Bigquery Job Load Parquet
 //
 // ```go
@@ -218,21 +301,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			testBucket, err := storage.NewBucket(ctx, "testBucket", &storage.BucketArgs{
+//			test, err := storage.NewBucket(ctx, "test", &storage.BucketArgs{
+//				Name:                     pulumi.String("job_load_bucket"),
 //				Location:                 pulumi.String("US"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			testBucketObject, err := storage.NewBucketObject(ctx, "testBucketObject", &storage.BucketObjectArgs{
+//			testBucketObject, err := storage.NewBucketObject(ctx, "test", &storage.BucketObjectArgs{
+//				Name:   pulumi.String("job_load_bucket_object"),
 //				Source: pulumi.NewFileAsset("./test-fixtures/test.parquet.gzip"),
-//				Bucket: testBucket.Name,
+//				Bucket: test.Name,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			testDataset, err := bigquery.NewDataset(ctx, "testDataset", &bigquery.DatasetArgs{
+//			testDataset, err := bigquery.NewDataset(ctx, "test", &bigquery.DatasetArgs{
 //				DatasetId:    pulumi.String("job_load_dataset"),
 //				FriendlyName: pulumi.String("test"),
 //				Description:  pulumi.String("This is a test description"),
@@ -241,7 +326,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			testTable, err := bigquery.NewTable(ctx, "testTable", &bigquery.TableArgs{
+//			testTable, err := bigquery.NewTable(ctx, "test", &bigquery.TableArgs{
 //				DeletionProtection: pulumi.Bool(false),
 //				TableId:            pulumi.String("job_load_table"),
 //				DatasetId:          testDataset.DatasetId,
@@ -288,6 +373,175 @@ import (
 //	}
 //
 // ```
+// ### Bigquery Job Copy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			var sourceDataset []*bigquery.Dataset
+//			for index := 0; index < 2; index++ {
+//				key0 := index
+//				val0 := index
+//				__res, err := bigquery.NewDataset(ctx, fmt.Sprintf("source-%v", key0), &bigquery.DatasetArgs{
+//					DatasetId:    pulumi.String(fmt.Sprintf("job_copy_%v_dataset", val0)),
+//					FriendlyName: pulumi.String("test"),
+//					Description:  pulumi.String("This is a test description"),
+//					Location:     pulumi.String("US"),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				sourceDataset = append(sourceDataset, __res)
+//			}
+//			var source []*bigquery.Table
+//			for index := 0; index < len(sourceDataset); index++ {
+//				key0 := index
+//				val0 := index
+//				__res, err := bigquery.NewTable(ctx, fmt.Sprintf("source-%v", key0), &bigquery.TableArgs{
+//					DeletionProtection: pulumi.Bool(false),
+//					DatasetId:          sourceDataset[val0].DatasetId,
+//					TableId:            pulumi.String(fmt.Sprintf("job_copy_%v_table", val0)),
+//					Schema: pulumi.String(`[
+//	  {
+//	    "name": "name",
+//	    "type": "STRING",
+//	    "mode": "NULLABLE"
+//	  },
+//	  {
+//	    "name": "post_abbr",
+//	    "type": "STRING",
+//	    "mode": "NULLABLE"
+//	  },
+//	  {
+//	    "name": "date",
+//	    "type": "DATE",
+//	    "mode": "NULLABLE"
+//	  }
+//
+// ]
+// `),
+//
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				source = append(source, __res)
+//			}
+//			destDataset, err := bigquery.NewDataset(ctx, "dest", &bigquery.DatasetArgs{
+//				DatasetId:    pulumi.String("job_copy_dest_dataset"),
+//				FriendlyName: pulumi.String("test"),
+//				Description:  pulumi.String("This is a test description"),
+//				Location:     pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			keyRing, err := kms.NewKeyRing(ctx, "key_ring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("example-keyring"),
+//				Location: pulumi.String("global"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
+//				Name:    pulumi.String("example-key"),
+//				KeyRing: keyRing.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			dest, err := bigquery.NewTable(ctx, "dest", &bigquery.TableArgs{
+//				DeletionProtection: pulumi.Bool(false),
+//				DatasetId:          destDataset.DatasetId,
+//				TableId:            pulumi.String("job_copy_dest_table"),
+//				Schema: pulumi.String(`[
+//	  {
+//	    "name": "name",
+//	    "type": "STRING",
+//	    "mode": "NULLABLE"
+//	  },
+//	  {
+//	    "name": "post_abbr",
+//	    "type": "STRING",
+//	    "mode": "NULLABLE"
+//	  },
+//	  {
+//	    "name": "date",
+//	    "type": "DATE",
+//	    "mode": "NULLABLE"
+//	  }
+//
+// ]
+// `),
+//
+//				EncryptionConfiguration: &bigquery.TableEncryptionConfigurationArgs{
+//					KmsKeyName: cryptoKey.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
+//				ProjectId: pulumi.StringRef("my-project-name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewIAMMember(ctx, "encrypt_role", &projects.IAMMemberArgs{
+//				Project: *pulumi.String(project.ProjectId),
+//				Role:    pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:bq-%v@bigquery-encryption.iam.gserviceaccount.com", project.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewJob(ctx, "job", &bigquery.JobArgs{
+//				JobId: pulumi.String("job_copy"),
+//				Copy: &bigquery.JobCopyArgs{
+//					SourceTables: bigquery.JobCopySourceTableArray{
+//						&bigquery.JobCopySourceTableArgs{
+//							ProjectId: source[0].Project,
+//							DatasetId: source[0].DatasetId,
+//							TableId:   source[0].TableId,
+//						},
+//						&bigquery.JobCopySourceTableArgs{
+//							ProjectId: source[1].Project,
+//							DatasetId: source[1].DatasetId,
+//							TableId:   source[1].TableId,
+//						},
+//					},
+//					DestinationTable: &bigquery.JobCopyDestinationTableArgs{
+//						ProjectId: dest.Project,
+//						DatasetId: dest.DatasetId,
+//						TableId:   dest.TableId,
+//					},
+//					DestinationEncryptionConfiguration: &bigquery.JobCopyDestinationEncryptionConfigurationArgs{
+//						KmsKeyName: cryptoKey.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Bigquery Job Extract
 //
 // ```go
@@ -305,7 +559,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := bigquery.NewDataset(ctx, "source-oneDataset", &bigquery.DatasetArgs{
+//			_, err := bigquery.NewDataset(ctx, "source-one", &bigquery.DatasetArgs{
 //				DatasetId:    pulumi.String("job_extract_dataset"),
 //				FriendlyName: pulumi.String("test"),
 //				Description:  pulumi.String("This is a test description"),
@@ -314,7 +568,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bigquery.NewTable(ctx, "source-oneTable", &bigquery.TableArgs{
+//			_, err = bigquery.NewTable(ctx, "source-one", &bigquery.TableArgs{
 //				DeletionProtection: pulumi.Bool(false),
 //				DatasetId:          source_oneDataset.DatasetId,
 //				TableId:            pulumi.String("job_extract_table"),
@@ -343,6 +597,7 @@ import (
 //				return err
 //			}
 //			dest, err := storage.NewBucket(ctx, "dest", &storage.BucketArgs{
+//				Name:         pulumi.String("job_extract_bucket"),
 //				Location:     pulumi.String("US"),
 //				ForceDestroy: pulumi.Bool(true),
 //			})
@@ -358,9 +613,9 @@ import (
 //						}).(pulumi.StringOutput),
 //					},
 //					SourceTable: &bigquery.JobExtractSourceTableArgs{
-//						ProjectId: source_oneTable.Project,
-//						DatasetId: source_oneTable.DatasetId,
-//						TableId:   source_oneTable.TableId,
+//						ProjectId: source_one.Project,
+//						DatasetId: source_one.DatasetId,
+//						TableId:   source_one.TableId,
 //					},
 //					DestinationFormat: pulumi.String("NEWLINE_DELIMITED_JSON"),
 //					Compression:       pulumi.String("GZIP"),

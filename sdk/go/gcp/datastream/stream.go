@@ -47,6 +47,7 @@ import (
 //				return err
 //			}
 //			instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("my-instance"),
 //				DatabaseVersion: pulumi.String("MYSQL_8_0"),
 //				Region:          pulumi.String("us-central1"),
 //				Settings: &sql.DatabaseInstanceSettingsArgs{
@@ -82,6 +83,7 @@ import (
 //			}
 //			_, err = sql.NewDatabase(ctx, "db", &sql.DatabaseArgs{
 //				Instance: instance.Name,
+//				Name:     pulumi.String("db"),
 //			})
 //			if err != nil {
 //				return err
@@ -94,6 +96,7 @@ import (
 //				return err
 //			}
 //			user, err := sql.NewUser(ctx, "user", &sql.UserArgs{
+//				Name:     pulumi.String("user"),
 //				Instance: instance.Name,
 //				Host:     pulumi.String("%"),
 //				Password: pwd.Result,
@@ -101,7 +104,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			sourceConnectionProfile, err := datastream.NewConnectionProfile(ctx, "sourceConnectionProfile", &datastream.ConnectionProfileArgs{
+//			sourceConnectionProfile, err := datastream.NewConnectionProfile(ctx, "source_connection_profile", &datastream.ConnectionProfileArgs{
 //				DisplayName:         pulumi.String("Source connection profile"),
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("source-profile"),
@@ -115,6 +118,7 @@ import (
 //				return err
 //			}
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:                     pulumi.String("my-bucket"),
 //				Location:                 pulumi.String("US"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
@@ -145,7 +149,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			keyUser, err := kms.NewCryptoKeyIAMMember(ctx, "keyUser", &kms.CryptoKeyIAMMemberArgs{
+//			_, err = kms.NewCryptoKeyIAMMember(ctx, "key_user", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: pulumi.String("kms-name"),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-datastream.iam.gserviceaccount.com", project.Number)),
@@ -153,7 +157,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			destinationConnectionProfile, err := datastream.NewConnectionProfile(ctx, "destinationConnectionProfile", &datastream.ConnectionProfileArgs{
+//			destinationConnectionProfile, err := datastream.NewConnectionProfile(ctx, "destination_connection_profile", &datastream.ConnectionProfileArgs{
 //				DisplayName:         pulumi.String("Connection profile"),
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("destination-profile"),
@@ -263,9 +267,7 @@ import (
 //					},
 //				},
 //				CustomerManagedEncryptionKey: pulumi.String("kms-name"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				keyUser,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -548,7 +550,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			destinationConnectionProfile2, err := datastream.NewConnectionProfile(ctx, "destinationConnectionProfile2", &datastream.ConnectionProfileArgs{
+//			destinationConnectionProfile2, err := datastream.NewConnectionProfile(ctx, "destination_connection_profile2", &datastream.ConnectionProfileArgs{
 //				DisplayName:         pulumi.String("Connection profile"),
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("dest-profile"),
@@ -558,6 +560,7 @@ import (
 //				return err
 //			}
 //			instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("instance-name"),
 //				DatabaseVersion: pulumi.String("MYSQL_8_0"),
 //				Region:          pulumi.String("us-central1"),
 //				Settings: &sql.DatabaseInstanceSettingsArgs{
@@ -599,6 +602,7 @@ import (
 //				return err
 //			}
 //			user, err := sql.NewUser(ctx, "user", &sql.UserArgs{
+//				Name:     pulumi.String("my-user"),
 //				Instance: instance.Name,
 //				Host:     pulumi.String("%"),
 //				Password: pwd.Result,
@@ -606,7 +610,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			sourceConnectionProfile, err := datastream.NewConnectionProfile(ctx, "sourceConnectionProfile", &datastream.ConnectionProfileArgs{
+//			sourceConnectionProfile, err := datastream.NewConnectionProfile(ctx, "source_connection_profile", &datastream.ConnectionProfileArgs{
 //				DisplayName:         pulumi.String("Source connection profile"),
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("source-profile"),
@@ -643,6 +647,7 @@ import (
 //			}
 //			_, err = sql.NewDatabase(ctx, "db", &sql.DatabaseArgs{
 //				Instance: instance.Name,
+//				Name:     pulumi.String("db"),
 //			})
 //			if err != nil {
 //				return err
@@ -678,6 +683,7 @@ import (
 //				return err
 //			}
 //			instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("my-instance"),
 //				DatabaseVersion: pulumi.String("MYSQL_8_0"),
 //				Region:          pulumi.String("us-central1"),
 //				Settings: &sql.DatabaseInstanceSettingsArgs{
@@ -713,6 +719,7 @@ import (
 //			}
 //			_, err = sql.NewDatabase(ctx, "db", &sql.DatabaseArgs{
 //				Instance: instance.Name,
+//				Name:     pulumi.String("db"),
 //			})
 //			if err != nil {
 //				return err
@@ -725,6 +732,7 @@ import (
 //				return err
 //			}
 //			user, err := sql.NewUser(ctx, "user", &sql.UserArgs{
+//				Name:     pulumi.String("user"),
 //				Instance: instance.Name,
 //				Host:     pulumi.String("%"),
 //				Password: pwd.Result,
@@ -732,7 +740,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			sourceConnectionProfile, err := datastream.NewConnectionProfile(ctx, "sourceConnectionProfile", &datastream.ConnectionProfileArgs{
+//			sourceConnectionProfile, err := datastream.NewConnectionProfile(ctx, "source_connection_profile", &datastream.ConnectionProfileArgs{
 //				DisplayName:         pulumi.String("Source connection profile"),
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("source-profile"),
@@ -749,7 +757,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			bigqueryKeyUser, err := kms.NewCryptoKeyIAMMember(ctx, "bigqueryKeyUser", &kms.CryptoKeyIAMMemberArgs{
+//			_, err = kms.NewCryptoKeyIAMMember(ctx, "bigquery_key_user", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: pulumi.String("bigquery-kms-name"),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      pulumi.String(fmt.Sprintf("serviceAccount:%v", bqSa.Email)),
@@ -757,7 +765,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			destinationConnectionProfile, err := datastream.NewConnectionProfile(ctx, "destinationConnectionProfile", &datastream.ConnectionProfileArgs{
+//			destinationConnectionProfile, err := datastream.NewConnectionProfile(ctx, "destination_connection_profile", &datastream.ConnectionProfileArgs{
 //				DisplayName:         pulumi.String("Connection profile"),
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("destination-profile"),
@@ -786,9 +794,7 @@ import (
 //					},
 //				},
 //				BackfillNone: nil,
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				bigqueryKeyUser,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

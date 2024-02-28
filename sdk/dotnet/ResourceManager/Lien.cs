@@ -23,17 +23,21 @@ namespace Pulumi.Gcp.ResourceManager
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var project = new Gcp.Organizations.Project("project");
+    ///     var project = new Gcp.Organizations.Project("project", new()
+    ///     {
+    ///         ProjectId = "staging-project",
+    ///         Name = "A very important project!",
+    ///     });
     /// 
     ///     var lien = new Gcp.ResourceManager.Lien("lien", new()
     ///     {
-    ///         Origin = "machine-readable-explanation",
     ///         Parent = project.Number.Apply(number =&gt; $"projects/{number}"),
-    ///         Reason = "This project is an important environment",
     ///         Restrictions = new[]
     ///         {
     ///             "resourcemanager.projects.delete",
     ///         },
+    ///         Origin = "machine-readable-explanation",
+    ///         Reason = "This project is an important environment",
     ///     });
     /// 
     /// });

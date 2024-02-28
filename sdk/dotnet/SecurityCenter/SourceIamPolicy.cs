@@ -32,11 +32,11 @@ namespace Pulumi.Gcp.SecurityCenter
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var customSource = new Gcp.SecurityCenter.Source("customSource", new()
+    ///     var customSource = new Gcp.SecurityCenter.Source("custom_source", new()
     ///     {
-    ///         Description = "My custom Cloud Security Command Center Finding Source",
     ///         DisplayName = "My Source",
     ///         Organization = "123456789",
+    ///         Description = "My custom Cloud Security Command Center Finding Source",
     ///     });
     /// 
     /// });

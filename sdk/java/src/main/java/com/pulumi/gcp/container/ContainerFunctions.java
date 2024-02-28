@@ -229,7 +229,7 @@ public final class ContainerFunctions {
      *             .project(&#34;my-project&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_attached_versions().versions().valid_versions()[0]);
+     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
      *     }
      * }
      * ```
@@ -268,7 +268,7 @@ public final class ContainerFunctions {
      *             .project(&#34;my-project&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_attached_versions().versions().valid_versions()[0]);
+     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
      *     }
      * }
      * ```
@@ -307,7 +307,7 @@ public final class ContainerFunctions {
      *             .project(&#34;my-project&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_attached_versions().versions().valid_versions()[0]);
+     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
      *     }
      * }
      * ```
@@ -346,7 +346,7 @@ public final class ContainerFunctions {
      *             .project(&#34;my-project&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_attached_versions().versions().valid_versions()[0]);
+     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
      *     }
      * }
      * ```
@@ -385,7 +385,7 @@ public final class ContainerFunctions {
      *             .project(&#34;my-project&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_aws_versions().versions().valid_versions()[0]);
+     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
      *     }
      * }
      * ```
@@ -424,7 +424,7 @@ public final class ContainerFunctions {
      *             .project(&#34;my-project&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_aws_versions().versions().valid_versions()[0]);
+     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
      *     }
      * }
      * ```
@@ -463,7 +463,7 @@ public final class ContainerFunctions {
      *             .project(&#34;my-project&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_aws_versions().versions().valid_versions()[0]);
+     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
      *     }
      * }
      * ```
@@ -502,7 +502,7 @@ public final class ContainerFunctions {
      *             .project(&#34;my-project&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_aws_versions().versions().valid_versions()[0]);
+     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
      *     }
      * }
      * ```
@@ -541,7 +541,7 @@ public final class ContainerFunctions {
      *             .project(&#34;my-project&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_aws_versions().versions().valid_versions()[0]);
+     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
      *     }
      * }
      * ```
@@ -580,7 +580,7 @@ public final class ContainerFunctions {
      *             .project(&#34;my-project&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_aws_versions().versions().valid_versions()[0]);
+     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
      *     }
      * }
      * ```
@@ -619,7 +619,7 @@ public final class ContainerFunctions {
      *             .project(&#34;my-project&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_azure_versions().versions().valid_versions()[0]);
+     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
      *     }
      * }
      * ```
@@ -658,7 +658,7 @@ public final class ContainerFunctions {
      *             .project(&#34;my-project&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_azure_versions().versions().valid_versions()[0]);
+     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
      *     }
      * }
      * ```
@@ -697,7 +697,7 @@ public final class ContainerFunctions {
      *             .project(&#34;my-project&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_azure_versions().versions().valid_versions()[0]);
+     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
      *     }
      * }
      * ```
@@ -736,7 +736,7 @@ public final class ContainerFunctions {
      *             .project(&#34;my-project&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_azure_versions().versions().valid_versions()[0]);
+     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
      *     }
      * }
      * ```
@@ -775,7 +775,7 @@ public final class ContainerFunctions {
      *             .project(&#34;my-project&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_azure_versions().versions().valid_versions()[0]);
+     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
      *     }
      * }
      * ```
@@ -814,7 +814,7 @@ public final class ContainerFunctions {
      *             .project(&#34;my-project&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_azure_versions().versions().valid_versions()[0]);
+     *         ctx.export(&#34;firstAvailableVersion&#34;, versions.validVersions()[0]);
      *     }
      * }
      * ```
@@ -1030,6 +1030,7 @@ public final class ContainerFunctions {
      *             .build());
      * 
      *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
+     *             .name(&#34;test-cluster&#34;)
      *             .location(&#34;us-central1-b&#34;)
      *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.latestNodeVersion()))
      *             .initialNodeCount(1)
@@ -1084,6 +1085,7 @@ public final class ContainerFunctions {
      *             .build());
      * 
      *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
+     *             .name(&#34;test-cluster&#34;)
      *             .location(&#34;us-central1-b&#34;)
      *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.latestNodeVersion()))
      *             .initialNodeCount(1)
@@ -1138,6 +1140,7 @@ public final class ContainerFunctions {
      *             .build());
      * 
      *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
+     *             .name(&#34;test-cluster&#34;)
      *             .location(&#34;us-central1-b&#34;)
      *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.latestNodeVersion()))
      *             .initialNodeCount(1)
@@ -1192,6 +1195,7 @@ public final class ContainerFunctions {
      *             .build());
      * 
      *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
+     *             .name(&#34;test-cluster&#34;)
      *             .location(&#34;us-central1-b&#34;)
      *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.latestNodeVersion()))
      *             .initialNodeCount(1)
@@ -1246,6 +1250,7 @@ public final class ContainerFunctions {
      *             .build());
      * 
      *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
+     *             .name(&#34;test-cluster&#34;)
      *             .location(&#34;us-central1-b&#34;)
      *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.latestNodeVersion()))
      *             .initialNodeCount(1)
@@ -1300,6 +1305,7 @@ public final class ContainerFunctions {
      *             .build());
      * 
      *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
+     *             .name(&#34;test-cluster&#34;)
      *             .location(&#34;us-central1-b&#34;)
      *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.latestNodeVersion()))
      *             .initialNodeCount(1)

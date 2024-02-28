@@ -25,15 +25,115 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const filename_trigger = new gcp.cloudbuild.Trigger("filename-trigger", {
- *     filename: "cloudbuild.yaml",
  *     location: "us-central1",
- *     substitutions: {
- *         _BAZ: "qux",
- *         _FOO: "bar",
- *     },
  *     triggerTemplate: {
  *         branchName: "main",
  *         repoName: "my-repo",
+ *     },
+ *     substitutions: {
+ *         _FOO: "bar",
+ *         _BAZ: "qux",
+ *     },
+ *     filename: "cloudbuild.yaml",
+ * });
+ * ```
+ * ### Cloudbuild Trigger Build
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const build_trigger = new gcp.cloudbuild.Trigger("build-trigger", {
+ *     name: "my-trigger",
+ *     location: "global",
+ *     triggerTemplate: {
+ *         branchName: "main",
+ *         repoName: "my-repo",
+ *     },
+ *     build: {
+ *         steps: [
+ *             {
+ *                 name: "gcr.io/cloud-builders/gsutil",
+ *                 args: [
+ *                     "cp",
+ *                     "gs://mybucket/remotefile.zip",
+ *                     "localfile.zip",
+ *                 ],
+ *                 timeout: "120s",
+ *                 secretEnvs: ["MY_SECRET"],
+ *             },
+ *             {
+ *                 name: "ubuntu",
+ *                 script: "echo hello",
+ *             },
+ *         ],
+ *         source: {
+ *             storageSource: {
+ *                 bucket: "mybucket",
+ *                 object: "source_code.tar.gz",
+ *             },
+ *         },
+ *         tags: [
+ *             "build",
+ *             "newFeature",
+ *         ],
+ *         substitutions: {
+ *             _FOO: "bar",
+ *             _BAZ: "qux",
+ *         },
+ *         queueTtl: "20s",
+ *         logsBucket: "gs://mybucket/logs",
+ *         secrets: [{
+ *             kmsKeyName: "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
+ *             secretEnv: {
+ *                 PASSWORD: "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
+ *             },
+ *         }],
+ *         availableSecrets: {
+ *             secretManagers: [{
+ *                 env: "MY_SECRET",
+ *                 versionName: "projects/myProject/secrets/mySecret/versions/latest",
+ *             }],
+ *         },
+ *         artifacts: {
+ *             images: ["gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"],
+ *             objects: {
+ *                 location: "gs://bucket/path/to/somewhere/",
+ *                 paths: ["path"],
+ *             },
+ *             npmPackages: [{
+ *                 packagePath: "package.json",
+ *                 repository: "https://us-west1-npm.pkg.dev/myProject/quickstart-nodejs-repo",
+ *             }],
+ *             pythonPackages: [{
+ *                 paths: ["dist/*"],
+ *                 repository: "https://us-west1-python.pkg.dev/myProject/quickstart-python-repo",
+ *             }],
+ *             mavenArtifacts: [{
+ *                 repository: "https://us-west1-maven.pkg.dev/myProject/quickstart-java-repo",
+ *                 path: "/workspace/my-app/target/my-app-1.0.SNAPSHOT.jar",
+ *                 artifactId: "my-app",
+ *                 groupId: "com.mycompany.app",
+ *                 version: "1.0",
+ *             }],
+ *         },
+ *         options: {
+ *             sourceProvenanceHashes: ["MD5"],
+ *             requestedVerifyOption: "VERIFIED",
+ *             machineType: "N1_HIGHCPU_8",
+ *             diskSizeGb: 100,
+ *             substitutionOption: "ALLOW_LOOSE",
+ *             dynamicSubstitutions: true,
+ *             logStreamingOption: "STREAM_OFF",
+ *             workerPool: "pool",
+ *             logging: "LEGACY",
+ *             envs: ["ekey = evalue"],
+ *             secretEnvs: ["secretenv = svalue"],
+ *             volumes: [{
+ *                 name: "v1",
+ *                 path: "v1",
+ *             }],
+ *         },
  *     },
  * });
  * ```
@@ -44,17 +144,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
- * const cloudbuildServiceAccount = new gcp.serviceaccount.Account("cloudbuildServiceAccount", {accountId: "cloud-sa"});
- * const actAs = new gcp.projects.IAMMember("actAs", {
- *     project: project.then(project => project.projectId),
- *     role: "roles/iam.serviceAccountUser",
- *     member: pulumi.interpolate`serviceAccount:${cloudbuildServiceAccount.email}`,
- * });
- * const logsWriter = new gcp.projects.IAMMember("logsWriter", {
- *     project: project.then(project => project.projectId),
- *     role: "roles/logging.logWriter",
- *     member: pulumi.interpolate`serviceAccount:${cloudbuildServiceAccount.email}`,
- * });
+ * const cloudbuildServiceAccount = new gcp.serviceaccount.Account("cloudbuild_service_account", {accountId: "cloud-sa"});
  * const service_account_trigger = new gcp.cloudbuild.Trigger("service-account-trigger", {
  *     triggerTemplate: {
  *         branchName: "main",
@@ -62,11 +152,16 @@ import * as utilities from "../utilities";
  *     },
  *     serviceAccount: cloudbuildServiceAccount.id,
  *     filename: "cloudbuild.yaml",
- * }, {
- *     dependsOn: [
- *         actAs,
- *         logsWriter,
- *     ],
+ * });
+ * const actAs = new gcp.projects.IAMMember("act_as", {
+ *     project: project.then(project => project.projectId),
+ *     role: "roles/iam.serviceAccountUser",
+ *     member: pulumi.interpolate`serviceAccount:${cloudbuildServiceAccount.email}`,
+ * });
+ * const logsWriter = new gcp.projects.IAMMember("logs_writer", {
+ *     project: project.then(project => project.projectId),
+ *     role: "roles/logging.logWriter",
+ *     member: pulumi.interpolate`serviceAccount:${cloudbuildServiceAccount.email}`,
  * });
  * ```
  * ### Cloudbuild Trigger Include Build Logs
@@ -76,16 +171,17 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const include_build_logs_trigger = new gcp.cloudbuild.Trigger("include-build-logs-trigger", {
+ *     location: "us-central1",
+ *     name: "include-build-logs-trigger",
  *     filename: "cloudbuild.yaml",
  *     github: {
- *         name: "terraform-provider-google-beta",
  *         owner: "hashicorp",
+ *         name: "terraform-provider-google-beta",
  *         push: {
  *             branch: "^main$",
  *         },
  *     },
  *     includeBuildLogs: "INCLUDE_BUILD_LOGS_WITH_STATUS",
- *     location: "us-central1",
  * });
  * ```
  * ### Cloudbuild Trigger Pubsub Config
@@ -94,9 +190,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const mytopic = new gcp.pubsub.Topic("mytopic", {});
+ * const mytopic = new gcp.pubsub.Topic("mytopic", {name: "my-topic"});
  * const pubsub_config_trigger = new gcp.cloudbuild.Trigger("pubsub-config-trigger", {
  *     location: "us-central1",
+ *     name: "pubsub-trigger",
  *     description: "acceptance test example pubsub build trigger",
  *     pubsubConfig: {
  *         topic: mytopic.id,
@@ -124,7 +221,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const webhookTriggerSecretKey = new gcp.secretmanager.Secret("webhookTriggerSecretKey", {
+ * const webhookTriggerSecretKey = new gcp.secretmanager.Secret("webhook_trigger_secret_key", {
  *     secretId: "webhook-trigger-secret-key",
  *     replication: {
  *         userManaged: {
@@ -134,7 +231,7 @@ import * as utilities from "../utilities";
  *         },
  *     },
  * });
- * const webhookTriggerSecretKeyData = new gcp.secretmanager.SecretVersion("webhookTriggerSecretKeyData", {
+ * const webhookTriggerSecretKeyData = new gcp.secretmanager.SecretVersion("webhook_trigger_secret_key_data", {
  *     secret: webhookTriggerSecretKey.id,
  *     secretData: "secretkeygoeshere",
  * });
@@ -151,6 +248,7 @@ import * as utilities from "../utilities";
  *     policyData: secretAccessor.then(secretAccessor => secretAccessor.policyData),
  * });
  * const webhook_config_trigger = new gcp.cloudbuild.Trigger("webhook-config-trigger", {
+ *     name: "webhook-trigger",
  *     description: "acceptance test example webhook build trigger",
  *     webhookConfig: {
  *         secret: webhookTriggerSecretKeyData.id,
@@ -175,19 +273,20 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const manual_trigger = new gcp.cloudbuild.Trigger("manual-trigger", {
- *     approvalConfig: {
- *         approvalRequired: true,
+ *     name: "manual-trigger",
+ *     sourceToBuild: {
+ *         uri: "https://hashicorp/terraform-provider-google-beta",
+ *         ref: "refs/heads/main",
+ *         repoType: "GITHUB",
  *     },
  *     gitFileSource: {
  *         path: "cloudbuild.yaml",
- *         repoType: "GITHUB",
+ *         uri: "https://hashicorp/terraform-provider-google-beta",
  *         revision: "refs/heads/main",
- *         uri: "https://hashicorp/terraform-provider-google-beta",
- *     },
- *     sourceToBuild: {
- *         ref: "refs/heads/main",
  *         repoType: "GITHUB",
- *         uri: "https://hashicorp/terraform-provider-google-beta",
+ *     },
+ *     approvalConfig: {
+ *         approvalRequired: true,
  *     },
  * });
  * ```
@@ -198,18 +297,19 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const manual_ghe_trigger = new gcp.cloudbuild.Trigger("manual-ghe-trigger", {
- *     gitFileSource: {
- *         githubEnterpriseConfig: "projects/myProject/locations/global/githubEnterpriseConfigs/configID",
- *         path: "cloudbuild.yaml",
- *         repoType: "GITHUB",
- *         revision: "refs/heads/main",
- *         uri: "https://hashicorp/terraform-provider-google-beta",
- *     },
+ *     name: "",
  *     sourceToBuild: {
- *         githubEnterpriseConfig: "projects/myProject/locations/global/githubEnterpriseConfigs/configID",
+ *         uri: "https://hashicorp/terraform-provider-google-beta",
  *         ref: "refs/heads/main",
  *         repoType: "GITHUB",
+ *         githubEnterpriseConfig: "projects/myProject/locations/global/githubEnterpriseConfigs/configID",
+ *     },
+ *     gitFileSource: {
+ *         path: "cloudbuild.yaml",
  *         uri: "https://hashicorp/terraform-provider-google-beta",
+ *         revision: "refs/heads/main",
+ *         repoType: "GITHUB",
+ *         githubEnterpriseConfig: "projects/myProject/locations/global/githubEnterpriseConfigs/configID",
  *     },
  * });
  * ```
@@ -220,18 +320,19 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const manual_bitbucket_trigger = new gcp.cloudbuild.Trigger("manual-bitbucket-trigger", {
- *     gitFileSource: {
- *         bitbucketServerConfig: "projects/myProject/locations/global/bitbucketServerConfigs/configID",
- *         path: "cloudbuild.yaml",
- *         repoType: "BITBUCKET_SERVER",
- *         revision: "refs/heads/main",
- *         uri: "https://bbs.com/scm/stag/test-repo.git",
- *     },
+ *     name: "terraform-manual-bbs-trigger",
  *     sourceToBuild: {
- *         bitbucketServerConfig: "projects/myProject/locations/global/bitbucketServerConfigs/configID",
+ *         uri: "https://bbs.com/scm/stag/test-repo.git",
  *         ref: "refs/heads/main",
  *         repoType: "BITBUCKET_SERVER",
+ *         bitbucketServerConfig: "projects/myProject/locations/global/bitbucketServerConfigs/configID",
+ *     },
+ *     gitFileSource: {
+ *         path: "cloudbuild.yaml",
  *         uri: "https://bbs.com/scm/stag/test-repo.git",
+ *         revision: "refs/heads/main",
+ *         repoType: "BITBUCKET_SERVER",
+ *         bitbucketServerConfig: "projects/myProject/locations/global/bitbucketServerConfigs/configID",
  *     },
  * });
  * ```
@@ -243,6 +344,7 @@ import * as utilities from "../utilities";
  *
  * const my_connection = new gcp.cloudbuildv2.Connection("my-connection", {
  *     location: "us-central1",
+ *     name: "my-connection",
  *     githubConfig: {
  *         appInstallationId: 123123,
  *         authorizerCredential: {
@@ -251,6 +353,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const my_repository = new gcp.cloudbuildv2.Repository("my-repository", {
+ *     name: "my-repo",
  *     parentConnection: my_connection.id,
  *     remoteUri: "https://github.com/myuser/my-repo.git",
  * });
@@ -272,17 +375,18 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const bbs_push_trigger = new gcp.cloudbuild.Trigger("bbs-push-trigger", {
+ *     name: "bbs-push-trigger",
+ *     location: "us-central1",
  *     bitbucketServerTriggerConfig: {
- *         bitbucketServerConfigResource: "projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
- *         projectKey: "STAG",
- *         push: {
- *             invertRegex: true,
- *             tag: "^0.1.*",
- *         },
  *         repoSlug: "bbs-push-trigger",
+ *         projectKey: "STAG",
+ *         bitbucketServerConfigResource: "projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
+ *         push: {
+ *             tag: "^0.1.*",
+ *             invertRegex: true,
+ *         },
  *     },
  *     filename: "cloudbuild.yaml",
- *     location: "us-central1",
  * });
  * ```
  * ### Cloudbuild Trigger Bitbucket Server Pull Request
@@ -292,18 +396,19 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const bbs_pull_request_trigger = new gcp.cloudbuild.Trigger("bbs-pull-request-trigger", {
+ *     name: "ghe-trigger",
+ *     location: "us-central1",
  *     bitbucketServerTriggerConfig: {
- *         bitbucketServerConfigResource: "projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
+ *         repoSlug: "terraform-provider-google",
  *         projectKey: "STAG",
+ *         bitbucketServerConfigResource: "projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
  *         pullRequest: {
  *             branch: "^master$",
- *             commentControl: "COMMENTS_ENABLED",
  *             invertRegex: false,
+ *             commentControl: "COMMENTS_ENABLED",
  *         },
- *         repoSlug: "terraform-provider-google",
  *     },
  *     filename: "cloudbuild.yaml",
- *     location: "us-central1",
  * });
  * ```
  * ### Cloudbuild Trigger Github Enterprise
@@ -313,16 +418,174 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const ghe_trigger = new gcp.cloudbuild.Trigger("ghe-trigger", {
- *     filename: "cloudbuild.yaml",
+ *     name: "ghe-trigger",
+ *     location: "us-central1",
  *     github: {
- *         enterpriseConfigResourceName: "projects/123456789/locations/us-central1/githubEnterpriseConfigs/configID",
- *         name: "terraform-provider-google",
  *         owner: "hashicorp",
+ *         name: "terraform-provider-google",
  *         push: {
  *             branch: "^main$",
  *         },
+ *         enterpriseConfigResourceName: "projects/123456789/locations/us-central1/githubEnterpriseConfigs/configID",
  *     },
- *     location: "us-central1",
+ *     filename: "cloudbuild.yaml",
+ * });
+ * ```
+ * ### Cloudbuild Trigger Allow Failure
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const allow_failure_trigger = new gcp.cloudbuild.Trigger("allow-failure-trigger", {
+ *     name: "my-trigger",
+ *     location: "global",
+ *     triggerTemplate: {
+ *         branchName: "main",
+ *         repoName: "my-repo",
+ *     },
+ *     build: {
+ *         steps: [{
+ *             name: "ubuntu",
+ *             args: [
+ *                 "-c",
+ *                 "exit 1",
+ *             ],
+ *             allowFailure: true,
+ *         }],
+ *         source: {
+ *             storageSource: {
+ *                 bucket: "mybucket",
+ *                 object: "source_code.tar.gz",
+ *             },
+ *         },
+ *         tags: [
+ *             "build",
+ *             "newFeature",
+ *         ],
+ *         substitutions: {
+ *             _FOO: "bar",
+ *             _BAZ: "qux",
+ *         },
+ *         queueTtl: "20s",
+ *         logsBucket: "gs://mybucket/logs",
+ *         secrets: [{
+ *             kmsKeyName: "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
+ *             secretEnv: {
+ *                 PASSWORD: "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
+ *             },
+ *         }],
+ *         availableSecrets: {
+ *             secretManagers: [{
+ *                 env: "MY_SECRET",
+ *                 versionName: "projects/myProject/secrets/mySecret/versions/latest",
+ *             }],
+ *         },
+ *         artifacts: {
+ *             images: ["gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"],
+ *             objects: {
+ *                 location: "gs://bucket/path/to/somewhere/",
+ *                 paths: ["path"],
+ *             },
+ *         },
+ *         options: {
+ *             sourceProvenanceHashes: ["MD5"],
+ *             requestedVerifyOption: "VERIFIED",
+ *             machineType: "N1_HIGHCPU_8",
+ *             diskSizeGb: 100,
+ *             substitutionOption: "ALLOW_LOOSE",
+ *             dynamicSubstitutions: true,
+ *             logStreamingOption: "STREAM_OFF",
+ *             workerPool: "pool",
+ *             logging: "LEGACY",
+ *             envs: ["ekey = evalue"],
+ *             secretEnvs: ["secretenv = svalue"],
+ *             volumes: [{
+ *                 name: "v1",
+ *                 path: "v1",
+ *             }],
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Cloudbuild Trigger Allow Exit Codes
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const allow_exit_codes_trigger = new gcp.cloudbuild.Trigger("allow-exit-codes-trigger", {
+ *     name: "my-trigger",
+ *     location: "global",
+ *     triggerTemplate: {
+ *         branchName: "main",
+ *         repoName: "my-repo",
+ *     },
+ *     build: {
+ *         steps: [{
+ *             name: "ubuntu",
+ *             args: [
+ *                 "-c",
+ *                 "exit 1",
+ *             ],
+ *             allowExitCodes: [
+ *                 1,
+ *                 3,
+ *             ],
+ *         }],
+ *         source: {
+ *             storageSource: {
+ *                 bucket: "mybucket",
+ *                 object: "source_code.tar.gz",
+ *             },
+ *         },
+ *         tags: [
+ *             "build",
+ *             "newFeature",
+ *         ],
+ *         substitutions: {
+ *             _FOO: "bar",
+ *             _BAZ: "qux",
+ *         },
+ *         queueTtl: "20s",
+ *         logsBucket: "gs://mybucket/logs",
+ *         secrets: [{
+ *             kmsKeyName: "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
+ *             secretEnv: {
+ *                 PASSWORD: "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
+ *             },
+ *         }],
+ *         availableSecrets: {
+ *             secretManagers: [{
+ *                 env: "MY_SECRET",
+ *                 versionName: "projects/myProject/secrets/mySecret/versions/latest",
+ *             }],
+ *         },
+ *         artifacts: {
+ *             images: ["gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"],
+ *             objects: {
+ *                 location: "gs://bucket/path/to/somewhere/",
+ *                 paths: ["path"],
+ *             },
+ *         },
+ *         options: {
+ *             sourceProvenanceHashes: ["MD5"],
+ *             requestedVerifyOption: "VERIFIED",
+ *             machineType: "N1_HIGHCPU_8",
+ *             diskSizeGb: 100,
+ *             substitutionOption: "ALLOW_LOOSE",
+ *             dynamicSubstitutions: true,
+ *             logStreamingOption: "STREAM_OFF",
+ *             workerPool: "pool",
+ *             logging: "LEGACY",
+ *             envs: ["ekey = evalue"],
+ *             secretEnvs: ["secretenv = svalue"],
+ *             volumes: [{
+ *                 name: "v1",
+ *                 path: "v1",
+ *             }],
+ *         },
+ *     },
  * });
  * ```
  * ### Cloudbuild Trigger Pubsub With Repo
@@ -333,6 +596,7 @@ import * as utilities from "../utilities";
  *
  * const my_connection = new gcp.cloudbuildv2.Connection("my-connection", {
  *     location: "us-central1",
+ *     name: "my-connection",
  *     githubConfig: {
  *         appInstallationId: 123123,
  *         authorizerCredential: {
@@ -341,11 +605,13 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const my_repository = new gcp.cloudbuildv2.Repository("my-repository", {
+ *     name: "my-repo",
  *     parentConnection: my_connection.id,
  *     remoteUri: "https://github.com/myuser/my-repo.git",
  * });
- * const mytopic = new gcp.pubsub.Topic("mytopic", {});
+ * const mytopic = new gcp.pubsub.Topic("mytopic", {name: "my-topic"});
  * const pubsub_with_repo_trigger = new gcp.cloudbuild.Trigger("pubsub-with-repo-trigger", {
+ *     name: "pubsub-with-repo-trigger",
  *     location: "us-central1",
  *     pubsubConfig: {
  *         topic: mytopic.id,

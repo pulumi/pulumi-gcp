@@ -15,34 +15,36 @@ namespace Pulumi.Gcp.Endpoints
     /// ## Example Usage
     /// 
     /// ```csharp
-    /// using System;
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// 	
-    /// string ReadFileBase64(string path) 
-    /// {
-    ///     return Convert.ToBase64String(Encoding.UTF8.GetBytes(File.ReadAllText(path)));
-    /// }
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var openapiService = new Gcp.Endpoints.Service("openapiService", new()
+    ///     var openapiService = new Gcp.Endpoints.Service("openapi_service", new()
     ///     {
     ///         ServiceName = "api-name.endpoints.project-id.cloud.goog",
     ///         Project = "project-id",
-    ///         OpenapiConfig = File.ReadAllText("openapi_spec.yml"),
+    ///         OpenapiConfig = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "openapi_spec.yml",
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
-    ///     var grpcService = new Gcp.Endpoints.Service("grpcService", new()
+    ///     var grpcService = new Gcp.Endpoints.Service("grpc_service", new()
     ///     {
     ///         ServiceName = "api-name.endpoints.project-id.cloud.goog",
     ///         Project = "project-id",
-    ///         GrpcConfig = File.ReadAllText("service_spec.yml"),
-    ///         ProtocOutputBase64 = ReadFileBase64("compiled_descriptor_file.pb"),
+    ///         GrpcConfig = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "service_spec.yml",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         ProtocOutputBase64 = Std.Filebase64.Invoke(new()
+    ///         {
+    ///             Input = "compiled_descriptor_file.pb",
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
     /// });

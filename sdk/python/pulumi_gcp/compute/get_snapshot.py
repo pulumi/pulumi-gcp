@@ -252,7 +252,9 @@ def get_snapshot(filter: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
+    #by name 
     snapshot = gcp.compute.get_snapshot(name="my-snapshot")
+    # using a filter
     latest_snapshot = gcp.compute.get_snapshot(filter="name != my-snapshot",
         most_recent=True)
     ```
@@ -320,7 +322,9 @@ def get_snapshot_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
+    #by name 
     snapshot = gcp.compute.get_snapshot(name="my-snapshot")
+    # using a filter
     latest_snapshot = gcp.compute.get_snapshot(filter="name != my-snapshot",
         most_recent=True)
     ```

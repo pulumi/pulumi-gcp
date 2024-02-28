@@ -91,8 +91,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var editor = new AccountIamBinding(&#34;editor&#34;, AccountIamBindingArgs.builder()        
  *             .billingAccountId(&#34;00AA00-000AAA-00AA0A&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
  *             .role(&#34;roles/billing.viewer&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
  * 
  *     }
@@ -123,8 +123,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var editor = new AccountIamMember(&#34;editor&#34;, AccountIamMemberArgs.builder()        
  *             .billingAccountId(&#34;00AA00-000AAA-00AA0A&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
  *             .role(&#34;roles/billing.viewer&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
  *             .build());
  * 
  *     }

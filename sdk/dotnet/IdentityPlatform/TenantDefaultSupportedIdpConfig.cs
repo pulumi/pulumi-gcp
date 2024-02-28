@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.IdentityPlatform
     ///         DisplayName = "tenant",
     ///     });
     /// 
-    ///     var idpConfig = new Gcp.IdentityPlatform.TenantDefaultSupportedIdpConfig("idpConfig", new()
+    ///     var idpConfig = new Gcp.IdentityPlatform.TenantDefaultSupportedIdpConfig("idp_config", new()
     ///     {
     ///         Enabled = true,
     ///         Tenant = tenant.Name,

@@ -401,7 +401,8 @@ class FirewallPolicyRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic_global_networksecurity_address_group = gcp.networksecurity.AddressGroup("basicGlobalNetworksecurityAddressGroup",
+        basic_global_networksecurity_address_group = gcp.networksecurity.AddressGroup("basic_global_networksecurity_address_group",
+            name="policy",
             parent="organizations/123456789",
             description="Sample global networksecurity_address_group",
             location="global",
@@ -490,7 +491,8 @@ class FirewallPolicyRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic_global_networksecurity_address_group = gcp.networksecurity.AddressGroup("basicGlobalNetworksecurityAddressGroup",
+        basic_global_networksecurity_address_group = gcp.networksecurity.AddressGroup("basic_global_networksecurity_address_group",
+            name="policy",
             parent="organizations/123456789",
             description="Sample global networksecurity_address_group",
             location="global",

@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Healthcare
         /// {
         ///     var foo = Gcp.Healthcare.GetHl7V2StoreIamPolicy.Invoke(new()
         ///     {
-        ///         Hl7V2StoreId = google_healthcare_hl7_v2_store.Hl7_v2_store.Id,
+        ///         Hl7V2StoreId = hl7V2Store.Id,
         ///     });
         /// 
         /// });
@@ -50,7 +50,7 @@ namespace Pulumi.Gcp.Healthcare
         /// {
         ///     var foo = Gcp.Healthcare.GetHl7V2StoreIamPolicy.Invoke(new()
         ///     {
-        ///         Hl7V2StoreId = google_healthcare_hl7_v2_store.Hl7_v2_store.Id,
+        ///         Hl7V2StoreId = hl7V2Store.Id,
         ///     });
         /// 
         /// });

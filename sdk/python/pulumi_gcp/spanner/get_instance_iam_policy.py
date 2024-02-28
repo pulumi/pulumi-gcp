@@ -98,8 +98,8 @@ def get_instance_iam_policy(instance: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.spanner.get_instance_iam_policy(project=google_spanner_instance["instance"]["project"],
-        instance=google_spanner_instance["instance"]["name"])
+    foo = gcp.spanner.get_instance_iam_policy(project=instance["project"],
+        instance=instance["name"])
     ```
 
 
@@ -134,8 +134,8 @@ def get_instance_iam_policy_output(instance: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.spanner.get_instance_iam_policy(project=google_spanner_instance["instance"]["project"],
-        instance=google_spanner_instance["instance"]["name"])
+    foo = gcp.spanner.get_instance_iam_policy(project=instance["project"],
+        instance=instance["name"])
     ```
 
 

@@ -55,8 +55,8 @@ import (
 //				return err
 //			}
 //			_, err = dns.NewDnsManagedZoneIamPolicy(ctx, "policy", &dns.DnsManagedZoneIamPolicyArgs{
-//				Project:     pulumi.Any(google_dns_managed_zone.Default.Project),
-//				ManagedZone: pulumi.Any(google_dns_managed_zone.Default.Name),
+//				Project:     pulumi.Any(_default.Project),
+//				ManagedZone: pulumi.Any(_default.Name),
 //				PolicyData:  *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -83,8 +83,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dns.NewDnsManagedZoneIamBinding(ctx, "binding", &dns.DnsManagedZoneIamBindingArgs{
-//				Project:     pulumi.Any(google_dns_managed_zone.Default.Project),
-//				ManagedZone: pulumi.Any(google_dns_managed_zone.Default.Name),
+//				Project:     pulumi.Any(_default.Project),
+//				ManagedZone: pulumi.Any(_default.Name),
 //				Role:        pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -114,8 +114,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dns.NewDnsManagedZoneIamMember(ctx, "member", &dns.DnsManagedZoneIamMemberArgs{
-//				Project:     pulumi.Any(google_dns_managed_zone.Default.Project),
-//				ManagedZone: pulumi.Any(google_dns_managed_zone.Default.Name),
+//				Project:     pulumi.Any(_default.Project),
+//				ManagedZone: pulumi.Any(_default.Name),
 //				Role:        pulumi.String("roles/viewer"),
 //				Member:      pulumi.String("user:jane@example.com"),
 //			})

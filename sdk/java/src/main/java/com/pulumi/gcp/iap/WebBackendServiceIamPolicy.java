@@ -62,8 +62,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebBackendServiceIamPolicy(&#34;policy&#34;, WebBackendServiceIamPolicyArgs.builder()        
- *             .project(google_compute_backend_service.default().project())
- *             .webBackendService(google_compute_backend_service.default().name())
+ *             .project(default_.project())
+ *             .webBackendService(default_.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -108,8 +108,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebBackendServiceIamPolicy(&#34;policy&#34;, WebBackendServiceIamPolicyArgs.builder()        
- *             .project(google_compute_backend_service.default().project())
- *             .webBackendService(google_compute_backend_service.default().name())
+ *             .project(default_.project())
+ *             .webBackendService(default_.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -139,8 +139,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new WebBackendServiceIamBinding(&#34;binding&#34;, WebBackendServiceIamBindingArgs.builder()        
- *             .project(google_compute_backend_service.default().project())
- *             .webBackendService(google_compute_backend_service.default().name())
+ *             .project(default_.project())
+ *             .webBackendService(default_.name())
  *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -173,8 +173,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new WebBackendServiceIamBinding(&#34;binding&#34;, WebBackendServiceIamBindingArgs.builder()        
- *             .project(google_compute_backend_service.default().project())
- *             .webBackendService(google_compute_backend_service.default().name())
+ *             .project(default_.project())
+ *             .webBackendService(default_.name())
  *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .condition(WebBackendServiceIamBindingConditionArgs.builder()
@@ -210,8 +210,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new WebBackendServiceIamMember(&#34;member&#34;, WebBackendServiceIamMemberArgs.builder()        
- *             .project(google_compute_backend_service.default().project())
- *             .webBackendService(google_compute_backend_service.default().name())
+ *             .project(default_.project())
+ *             .webBackendService(default_.name())
  *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -244,8 +244,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new WebBackendServiceIamMember(&#34;member&#34;, WebBackendServiceIamMemberArgs.builder()        
- *             .project(google_compute_backend_service.default().project())
- *             .webBackendService(google_compute_backend_service.default().name())
+ *             .project(default_.project())
+ *             .webBackendService(default_.name())
  *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .condition(WebBackendServiceIamMemberConditionArgs.builder()

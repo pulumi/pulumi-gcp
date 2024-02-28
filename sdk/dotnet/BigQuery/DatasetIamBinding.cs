@@ -53,12 +53,12 @@ namespace Pulumi.Gcp.BigQuery
     ///         },
     ///     });
     /// 
-    ///     var datasetDataset = new Gcp.BigQuery.Dataset("datasetDataset", new()
+    ///     var datasetDataset = new Gcp.BigQuery.Dataset("dataset", new()
     ///     {
     ///         DatasetId = "example_dataset",
     ///     });
     /// 
-    ///     var datasetDatasetIamPolicy = new Gcp.BigQuery.DatasetIamPolicy("datasetDatasetIamPolicy", new()
+    ///     var dataset = new Gcp.BigQuery.DatasetIamPolicy("dataset", new()
     ///     {
     ///         DatasetId = datasetDataset.DatasetId,
     ///         PolicyData = owner.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),

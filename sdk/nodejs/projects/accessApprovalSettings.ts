@@ -20,16 +20,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const projectAccessApproval = new gcp.projects.AccessApprovalSettings("projectAccessApproval", {
- *     enrolledServices: [{
- *         cloudProduct: "all",
- *         enrollmentLevel: "BLOCK_ALL",
- *     }],
+ * const projectAccessApproval = new gcp.projects.AccessApprovalSettings("project_access_approval", {
+ *     projectId: "my-project-name",
  *     notificationEmails: [
  *         "testuser@example.com",
  *         "example.user@example.com",
  *     ],
- *     projectId: "my-project-name",
+ *     enrolledServices: [{
+ *         cloudProduct: "all",
+ *         enrollmentLevel: "BLOCK_ALL",
+ *     }],
  * });
  * ```
  * ### Project Access Approval Active Key Version
@@ -38,11 +38,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const keyRing = new gcp.kms.KeyRing("keyRing", {
+ * const keyRing = new gcp.kms.KeyRing("key_ring", {
+ *     name: "key-ring",
  *     location: "global",
  *     project: "my-project-name",
  * });
- * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {
+ * const cryptoKey = new gcp.kms.CryptoKey("crypto_key", {
+ *     name: "crypto-key",
  *     keyRing: keyRing.id,
  *     purpose: "ASYMMETRIC_SIGN",
  *     versionTemplate: {
@@ -60,14 +62,12 @@ import * as utilities from "../utilities";
  * const cryptoKeyVersion = gcp.kms.getKMSCryptoKeyVersionOutput({
  *     cryptoKey: cryptoKey.id,
  * });
- * const projectAccessApproval = new gcp.projects.AccessApprovalSettings("projectAccessApproval", {
+ * const projectAccessApproval = new gcp.projects.AccessApprovalSettings("project_access_approval", {
  *     projectId: "my-project-name",
  *     activeKeyVersion: cryptoKeyVersion.apply(cryptoKeyVersion => cryptoKeyVersion.name),
  *     enrolledServices: [{
  *         cloudProduct: "all",
  *     }],
- * }, {
- *     dependsOn: [iam],
  * });
  * ```
  *

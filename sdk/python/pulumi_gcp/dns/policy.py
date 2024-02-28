@@ -331,9 +331,14 @@ class Policy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
-        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False)
+        network_1 = gcp.compute.Network("network-1",
+            name="network-1",
+            auto_create_subnetworks=False)
+        network_2 = gcp.compute.Network("network-2",
+            name="network-2",
+            auto_create_subnetworks=False)
         example_policy = gcp.dns.Policy("example-policy",
+            name="example-policy",
             enable_inbound_forwarding=True,
             enable_logging=True,
             alternative_name_server_config=gcp.dns.PolicyAlternativeNameServerConfigArgs(
@@ -426,9 +431,14 @@ class Policy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
-        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False)
+        network_1 = gcp.compute.Network("network-1",
+            name="network-1",
+            auto_create_subnetworks=False)
+        network_2 = gcp.compute.Network("network-2",
+            name="network-2",
+            auto_create_subnetworks=False)
         example_policy = gcp.dns.Policy("example-policy",
+            name="example-policy",
             enable_inbound_forwarding=True,
             enable_logging=True,
             alternative_name_server_config=gcp.dns.PolicyAlternativeNameServerConfigArgs(

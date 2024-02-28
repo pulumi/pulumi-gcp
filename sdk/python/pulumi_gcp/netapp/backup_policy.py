@@ -458,16 +458,17 @@ class BackupPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        test_backup_policy_full = gcp.netapp.BackupPolicy("testBackupPolicyFull",
+        test_backup_policy_full = gcp.netapp.BackupPolicy("test_backup_policy_full",
+            name="test-backup-policy-full",
+            location="us-central1",
             daily_backup_limit=2,
+            weekly_backup_limit=1,
+            monthly_backup_limit=1,
             description="TF test backup schedule",
             enabled=True,
             labels={
                 "foo": "bar",
-            },
-            location="us-central1",
-            monthly_backup_limit=1,
-            weekly_backup_limit=1)
+            })
         ```
 
         ## Import
@@ -538,16 +539,17 @@ class BackupPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        test_backup_policy_full = gcp.netapp.BackupPolicy("testBackupPolicyFull",
+        test_backup_policy_full = gcp.netapp.BackupPolicy("test_backup_policy_full",
+            name="test-backup-policy-full",
+            location="us-central1",
             daily_backup_limit=2,
+            weekly_backup_limit=1,
+            monthly_backup_limit=1,
             description="TF test backup schedule",
             enabled=True,
             labels={
                 "foo": "bar",
-            },
-            location="us-central1",
-            monthly_backup_limit=1,
-            weekly_backup_limit=1)
+            })
         ```
 
         ## Import

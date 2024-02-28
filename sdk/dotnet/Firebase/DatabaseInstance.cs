@@ -26,9 +26,6 @@ namespace Pulumi.Gcp.Firebase
     ///         Project = "my-project-name",
     ///         Region = "us-central1",
     ///         InstanceId = "active-db",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -50,9 +47,6 @@ namespace Pulumi.Gcp.Firebase
     ///         InstanceId = "disabled-db",
     ///         Type = "USER_DATABASE",
     ///         DesiredState = "DISABLED",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -67,48 +61,34 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultProject = new Gcp.Organizations.Project("defaultProject", new()
+    ///     var @default = new Gcp.Organizations.Project("default", new()
     ///     {
+    ///         ProjectId = "rtdb-project",
+    ///         Name = "rtdb-project",
     ///         OrgId = "123456789",
     ///         Labels = 
     ///         {
     ///             { "firebase", "enabled" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultFirebase_projectProject = new Gcp.Firebase.Project("defaultFirebase/projectProject", new()
+    ///     var defaultProject = new Gcp.Firebase.Project("default", new()
     ///     {
-    ///         ProjectID = defaultProject.ProjectId,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         ProjectID = @default.ProjectId,
     ///     });
     /// 
-    ///     var firebaseDatabase = new Gcp.Projects.Service("firebaseDatabase", new()
+    ///     var firebaseDatabase = new Gcp.Projects.Service("firebase_database", new()
     ///     {
-    ///         Project = defaultFirebase / projectProject.Project,
+    ///         Project = defaultProject.ProjectID,
     ///         ServiceName = "firebasedatabase.googleapis.com",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultDatabaseInstance = new Gcp.Firebase.DatabaseInstance("defaultDatabaseInstance", new()
+    ///     var defaultDatabaseInstance = new Gcp.Firebase.DatabaseInstance("default", new()
     ///     {
-    ///         Project = defaultFirebase / projectProject.Project,
+    ///         Project = defaultProject.ProjectID,
     ///         Region = "us-central1",
     ///         InstanceId = "rtdb-project-default-rtdb",
     ///         Type = "DEFAULT_DATABASE",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///         DependsOn = new[]
-    ///         {
-    ///             firebaseDatabase,
-    ///         },
     ///     });
     /// 
     /// });

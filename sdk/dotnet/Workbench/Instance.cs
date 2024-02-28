@@ -25,6 +25,7 @@ namespace Pulumi.Gcp.Workbench
     /// {
     ///     var instance = new Gcp.Workbench.Instance("instance", new()
     ///     {
+    ///         Name = "workbench-instance",
     ///         Location = "us-west1-a",
     ///     });
     /// 
@@ -42,24 +43,25 @@ namespace Pulumi.Gcp.Workbench
     /// {
     ///     var instance = new Gcp.Workbench.Instance("instance", new()
     ///     {
+    ///         Name = "workbench-instance",
+    ///         Location = "us-central1-a",
     ///         GceSetup = new Gcp.Workbench.Inputs.InstanceGceSetupArgs
     ///         {
+    ///             MachineType = "n1-standard-1",
     ///             AcceleratorConfigs = new[]
     ///             {
     ///                 new Gcp.Workbench.Inputs.InstanceGceSetupAcceleratorConfigArgs
     ///                 {
-    ///                     CoreCount = "1",
     ///                     Type = "NVIDIA_TESLA_T4",
+    ///                     CoreCount = "1",
     ///                 },
     ///             },
-    ///             MachineType = "n1-standard-1",
     ///             VmImage = new Gcp.Workbench.Inputs.InstanceGceSetupVmImageArgs
     ///             {
-    ///                 Family = "tf-latest-gpu",
     ///                 Project = "deeplearning-platform-release",
+    ///                 Family = "tf-latest-gpu",
     ///             },
     ///         },
-    ///         Location = "us-central1-a",
     ///     });
     /// 
     /// });
@@ -76,20 +78,21 @@ namespace Pulumi.Gcp.Workbench
     /// {
     ///     var instance = new Gcp.Workbench.Instance("instance", new()
     ///     {
-    ///         DesiredState = "STOPPED",
+    ///         Name = "workbench-instance",
+    ///         Location = "us-central1-a",
     ///         GceSetup = new Gcp.Workbench.Inputs.InstanceGceSetupArgs
     ///         {
     ///             MachineType = "e2-standard-4",
-    ///             Metadata = 
-    ///             {
-    ///                 { "terraform", "true" },
-    ///             },
     ///             ServiceAccounts = new[]
     ///             {
     ///                 new Gcp.Workbench.Inputs.InstanceGceSetupServiceAccountArgs
     ///                 {
     ///                     Email = "my@service-account.com",
     ///                 },
+    ///             },
+    ///             Metadata = 
+    ///             {
+    ///                 { "terraform", "true" },
     ///             },
     ///         },
     ///         InstanceOwners = new[]
@@ -100,7 +103,7 @@ namespace Pulumi.Gcp.Workbench
     ///         {
     ///             { "k", "val" },
     ///         },
-    ///         Location = "us-central1-a",
+    ///         DesiredState = "STOPPED",
     ///     });
     /// 
     /// });
@@ -115,13 +118,15 @@ namespace Pulumi.Gcp.Workbench
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myNetwork = new Gcp.Compute.Network("myNetwork", new()
+    ///     var myNetwork = new Gcp.Compute.Network("my_network", new()
     ///     {
+    ///         Name = "wbi-test-default",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     var mySubnetwork = new Gcp.Compute.Subnetwork("mySubnetwork", new()
+    ///     var mySubnetwork = new Gcp.Compute.Subnetwork("my_subnetwork", new()
     ///     {
+    ///         Name = "wbi-test-default",
     ///         Network = myNetwork.Id,
     ///         Region = "us-central1",
     ///         IpCidrRange = "10.0.1.0/24",
@@ -129,6 +134,7 @@ namespace Pulumi.Gcp.Workbench
     /// 
     ///     var instance = new Gcp.Workbench.Instance("instance", new()
     ///     {
+    ///         Name = "workbench-instance",
     ///         Location = "us-central1-a",
     ///         GceSetup = new Gcp.Workbench.Inputs.InstanceGceSetupArgs
     ///         {

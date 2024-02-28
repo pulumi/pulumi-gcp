@@ -109,9 +109,9 @@ def get_datascan_iam_policy(data_scan_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataplex.get_datascan_iam_policy(project=google_dataplex_datascan["basic_profile"]["project"],
-        location=google_dataplex_datascan["basic_profile"]["location"],
-        data_scan_id=google_dataplex_datascan["basic_profile"]["data_scan_id"])
+    policy = gcp.dataplex.get_datascan_iam_policy(project=basic_profile["project"],
+        location=basic_profile["location"],
+        data_scan_id=basic_profile["dataScanId"])
     ```
 
 
@@ -150,9 +150,9 @@ def get_datascan_iam_policy_output(data_scan_id: Optional[pulumi.Input[str]] = N
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataplex.get_datascan_iam_policy(project=google_dataplex_datascan["basic_profile"]["project"],
-        location=google_dataplex_datascan["basic_profile"]["location"],
-        data_scan_id=google_dataplex_datascan["basic_profile"]["data_scan_id"])
+    policy = gcp.dataplex.get_datascan_iam_policy(project=basic_profile["project"],
+        location=basic_profile["location"],
+        data_scan_id=basic_profile["dataScanId"])
     ```
 
 

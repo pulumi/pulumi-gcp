@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example_billing_account_bucket_index_configs = new BillingAccountBucketConfig(&#34;example-billing-account-bucket-index-configs&#34;, BillingAccountBucketConfigArgs.builder()        
- *             .folder(data.google_billing_account().default().billing_account())
+ *             .folder(default_.billingAccount())
  *             .location(&#34;global&#34;)
  *             .retentionDays(30)
  *             .bucketId(&#34;_Default&#34;)

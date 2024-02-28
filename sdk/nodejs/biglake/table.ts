@@ -22,21 +22,28 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const catalog = new gcp.biglake.Catalog("catalog", {location: "US"});
+ * const catalog = new gcp.biglake.Catalog("catalog", {
+ *     name: "my_catalog",
+ *     location: "US",
+ * });
  * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "my_bucket",
  *     location: "US",
  *     forceDestroy: true,
  *     uniformBucketLevelAccess: true,
  * });
- * const metadataFolder = new gcp.storage.BucketObject("metadataFolder", {
+ * const metadataFolder = new gcp.storage.BucketObject("metadata_folder", {
+ *     name: "metadata/",
  *     content: " ",
  *     bucket: bucket.name,
  * });
- * const dataFolder = new gcp.storage.BucketObject("dataFolder", {
+ * const dataFolder = new gcp.storage.BucketObject("data_folder", {
+ *     name: "data/",
  *     content: " ",
  *     bucket: bucket.name,
  * });
  * const database = new gcp.biglake.Database("database", {
+ *     name: "my_database",
  *     catalog: catalog.id,
  *     type: "HIVE",
  *     hiveOptions: {
@@ -47,6 +54,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const table = new gcp.biglake.Table("table", {
+ *     name: "my_table",
  *     database: database.id,
  *     type: "HIVE",
  *     hiveOptions: {

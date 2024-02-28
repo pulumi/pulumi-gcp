@@ -29,6 +29,7 @@ namespace Pulumi.Gcp.SecretManager
     /// {
     ///     var secret_basic = new Gcp.SecretManager.Secret("secret-basic", new()
     ///     {
+    ///         SecretId = "secret",
     ///         Labels = 
     ///         {
     ///             { "label", "my-label" },
@@ -50,7 +51,6 @@ namespace Pulumi.Gcp.SecretManager
     ///                 },
     ///             },
     ///         },
-    ///         SecretId = "secret",
     ///     });
     /// 
     /// });
@@ -67,6 +67,11 @@ namespace Pulumi.Gcp.SecretManager
     /// {
     ///     var secret_with_annotations = new Gcp.SecretManager.Secret("secret-with-annotations", new()
     ///     {
+    ///         SecretId = "secret",
+    ///         Labels = 
+    ///         {
+    ///             { "label", "my-label" },
+    ///         },
     ///         Annotations = 
     ///         {
     ///             { "key1", "someval" },
@@ -75,15 +80,10 @@ namespace Pulumi.Gcp.SecretManager
     ///             { "key4", "someval4" },
     ///             { "key5", "someval5" },
     ///         },
-    ///         Labels = 
-    ///         {
-    ///             { "label", "my-label" },
-    ///         },
     ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
     ///         {
     ///             Auto = null,
     ///         },
-    ///         SecretId = "secret",
     ///     });
     /// 
     /// });
@@ -119,12 +119,6 @@ namespace Pulumi.Gcp.SecretManager
     ///                     KmsKeyName = "kms-key",
     ///                 },
     ///             },
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             kms_secret_binding,
     ///         },
     ///     });
     /// 

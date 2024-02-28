@@ -23,6 +23,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// {
     ///     var @default = new Gcp.NetworkSecurity.SecurityProfile("default", new()
     ///     {
+    ///         Name = "my-security-profile",
     ///         Parent = "organizations/123456789",
     ///         Description = "my description",
     ///         Type = "THREAT_PREVENTION",
@@ -30,9 +31,6 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///         {
     ///             { "foo", "bar" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -49,6 +47,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// {
     ///     var @default = new Gcp.NetworkSecurity.SecurityProfile("default", new()
     ///     {
+    ///         Name = "my-security-profile",
     ///         Parent = "organizations/123456789",
     ///         Description = "my description",
     ///         Type = "THREAT_PREVENTION",
@@ -76,9 +75,6 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

@@ -28,8 +28,10 @@ namespace Pulumi.Gcp.Organizations
         ///         Open = true,
         ///     });
         /// 
-        ///     var myProject = new Gcp.Organizations.Project("myProject", new()
+        ///     var myProject = new Gcp.Organizations.Project("my_project", new()
         ///     {
+        ///         Name = "My Project",
+        ///         ProjectId = "your-project-id",
         ///         OrgId = "1234567",
         ///         BillingAccount = acct.Apply(getBillingAccountResult =&gt; getBillingAccountResult.Id),
         ///     });
@@ -57,8 +59,10 @@ namespace Pulumi.Gcp.Organizations
         ///         Open = true,
         ///     });
         /// 
-        ///     var myProject = new Gcp.Organizations.Project("myProject", new()
+        ///     var myProject = new Gcp.Organizations.Project("my_project", new()
         ///     {
+        ///         Name = "My Project",
+        ///         ProjectId = "your-project-id",
         ///         OrgId = "1234567",
         ///         BillingAccount = acct.Apply(getBillingAccountResult =&gt; getBillingAccountResult.Id),
         ///     });

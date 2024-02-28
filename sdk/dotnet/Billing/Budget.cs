@@ -189,7 +189,7 @@ namespace Pulumi.Gcp.Billing
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var notificationChannel = new Gcp.Monitoring.NotificationChannel("notificationChannel", new()
+    ///     var notificationChannel = new Gcp.Monitoring.NotificationChannel("notification_channel", new()
     ///     {
     ///         DisplayName = "Example Notification Channel",
     ///         Type = "email",

@@ -17,7 +17,10 @@ import * as utilities from "../utilities";
  * const myAddress = gcp.compute.getGlobalAddress({
  *     name: "foobar",
  * });
- * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
+ * const prod = new gcp.dns.ManagedZone("prod", {
+ *     name: "prod-zone",
+ *     dnsName: "prod.mydomain.com.",
+ * });
  * const frontend = new gcp.dns.RecordSet("frontend", {
  *     name: pulumi.interpolate`lb.${prod.dnsName}`,
  *     type: "A",
@@ -96,7 +99,10 @@ export interface GetGlobalAddressResult {
  * const myAddress = gcp.compute.getGlobalAddress({
  *     name: "foobar",
  * });
- * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
+ * const prod = new gcp.dns.ManagedZone("prod", {
+ *     name: "prod-zone",
+ *     dnsName: "prod.mydomain.com.",
+ * });
  * const frontend = new gcp.dns.RecordSet("frontend", {
  *     name: pulumi.interpolate`lb.${prod.dnsName}`,
  *     type: "A",

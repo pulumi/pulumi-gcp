@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const foo = gcp.healthcare.getDatasetIamPolicy({
- *     datasetId: google_healthcare_dataset.dataset.id,
+ *     datasetId: dataset.id,
  * });
  * ```
  */
@@ -67,7 +67,7 @@ export interface GetDatasetIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const foo = gcp.healthcare.getDatasetIamPolicy({
- *     datasetId: google_healthcare_dataset.dataset.id,
+ *     datasetId: dataset.id,
  * });
  * ```
  */

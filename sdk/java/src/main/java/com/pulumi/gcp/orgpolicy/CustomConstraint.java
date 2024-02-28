@@ -49,12 +49,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var constraint = new CustomConstraint(&#34;constraint&#34;, CustomConstraintArgs.builder()        
+ *             .name(&#34;custom.disableGkeAutoUpgrade&#34;)
+ *             .parent(&#34;organizations/123456789&#34;)
  *             .actionType(&#34;ALLOW&#34;)
  *             .condition(&#34;resource.management.autoUpgrade == false&#34;)
  *             .methodTypes(            
  *                 &#34;CREATE&#34;,
  *                 &#34;UPDATE&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
  *             .resourceTypes(&#34;container.googleapis.com/NodePool&#34;)
  *             .build());
  * 
@@ -87,18 +88,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var constraint = new CustomConstraint(&#34;constraint&#34;, CustomConstraintArgs.builder()        
+ *             .name(&#34;custom.disableGkeAutoUpgrade&#34;)
+ *             .parent(&#34;organizations/123456789&#34;)
+ *             .displayName(&#34;Disable GKE auto upgrade&#34;)
+ *             .description(&#34;Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.&#34;)
  *             .actionType(&#34;ALLOW&#34;)
  *             .condition(&#34;resource.management.autoUpgrade == false&#34;)
- *             .description(&#34;Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.&#34;)
- *             .displayName(&#34;Disable GKE auto upgrade&#34;)
  *             .methodTypes(            
  *                 &#34;CREATE&#34;,
  *                 &#34;UPDATE&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
  *             .resourceTypes(&#34;container.googleapis.com/NodePool&#34;)
  *             .build());
  * 
  *         var bool = new Policy(&#34;bool&#34;, PolicyArgs.builder()        
+ *             .name(constraint.name().applyValue(name -&gt; String.format(&#34;organizations/123456789/policies/%s&#34;, name)))
  *             .parent(&#34;organizations/123456789&#34;)
  *             .spec(PolicySpecArgs.builder()
  *                 .rules(PolicySpecRuleArgs.builder()

@@ -121,6 +121,11 @@ def get_instance_serial_port(instance: Optional[str] = None,
     import pulumi_gcp as gcp
 
     windows = gcp.compute.Instance("windows",
+        network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+            network="default",
+        )],
+        name="windows-instance",
         machine_type="e2-medium",
         zone="us-central1-a",
         boot_disk=gcp.compute.InstanceBootDiskArgs(
@@ -128,10 +133,6 @@ def get_instance_serial_port(instance: Optional[str] = None,
                 image="windows-cloud/windows-2019",
             ),
         ),
-        network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-            network="default",
-            access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-        )],
         metadata={
             "serial-port-logging-enable": "TRUE",
             "windows-keys": json.dumps({
@@ -212,6 +213,11 @@ def get_instance_serial_port_output(instance: Optional[pulumi.Input[str]] = None
     import pulumi_gcp as gcp
 
     windows = gcp.compute.Instance("windows",
+        network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+            network="default",
+        )],
+        name="windows-instance",
         machine_type="e2-medium",
         zone="us-central1-a",
         boot_disk=gcp.compute.InstanceBootDiskArgs(
@@ -219,10 +225,6 @@ def get_instance_serial_port_output(instance: Optional[pulumi.Input[str]] = None
                 image="windows-cloud/windows-2019",
             ),
         ),
-        network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-            network="default",
-            access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-        )],
         metadata={
             "serial-port-logging-enable": "TRUE",
             "windows-keys": json.dumps({

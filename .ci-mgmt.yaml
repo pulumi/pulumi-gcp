@@ -20,12 +20,17 @@ plugins:
     version: "4.14.0"
   - name: kubernetes
     version: "4.5.4"
+  - name: std
+    version: "1.6.2"
   - name: tls
     version: "4.11.1"
   - name: http
     version: "0.0.1"
   - name: time
     version: "0.0.15"
+  - name: terraform
+    version: "1.0.15"
+    kind: converter
 goBuildParallelism: 2
 skipGoReleaserHooks: true
 actions:
@@ -36,3 +41,5 @@ actions:
     - name: Run provider tests
       run: |
         cd provider && go test -v -json -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -parallel 4 . 2>&1 | tee /tmp/gotest.log | gotestfmt
+# Use `pulumi convert` for translating examples from TF to Pulumi.
+pulumiConvert: 1

@@ -33,12 +33,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := identityplatform.NewOauthIdpConfig(ctx, "oauthIdpConfig", &identityplatform.OauthIdpConfigArgs{
-//				ClientId:     pulumi.String("client-id"),
-//				ClientSecret: pulumi.String("secret"),
+//			_, err := identityplatform.NewOauthIdpConfig(ctx, "oauth_idp_config", &identityplatform.OauthIdpConfigArgs{
+//				Name:         pulumi.String("oidc.oauth-idp-config"),
 //				DisplayName:  pulumi.String("Display Name"),
-//				Enabled:      pulumi.Bool(true),
+//				ClientId:     pulumi.String("client-id"),
 //				Issuer:       pulumi.String("issuer"),
+//				Enabled:      pulumi.Bool(true),
+//				ClientSecret: pulumi.String("secret"),
 //			})
 //			if err != nil {
 //				return err

@@ -256,27 +256,25 @@ class ManagementServer(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork", opts=pulumi.ResourceOptions(provider=google_beta))
-        private_ip_address = gcp.compute.GlobalAddress("privateIpAddress",
+        default = gcp.compute.Network("default", name="vpc-network")
+        private_ip_address = gcp.compute.GlobalAddress("private_ip_address",
+            name="vpc-network",
             address_type="INTERNAL",
             purpose="VPC_PEERING",
             prefix_length=20,
-            network=default_network.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_connection = gcp.servicenetworking.Connection("defaultConnection",
-            network=default_network.id,
+            network=default.id)
+        default_connection = gcp.servicenetworking.Connection("default",
+            network=default.id,
             service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_address.name],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            reserved_peering_ranges=[private_ip_address.name])
         ms_console = gcp.backupdisasterrecovery.ManagementServer("ms-console",
             location="us-central1",
+            name="ms-console",
             type="BACKUP_RESTORE",
             networks=[gcp.backupdisasterrecovery.ManagementServerNetworkArgs(
-                network=default_network.id,
+                network=default.id,
                 peering_mode="PRIVATE_SERVICE_ACCESS",
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[default_connection]))
+            )])
         ```
 
         ## Import
@@ -329,27 +327,25 @@ class ManagementServer(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork", opts=pulumi.ResourceOptions(provider=google_beta))
-        private_ip_address = gcp.compute.GlobalAddress("privateIpAddress",
+        default = gcp.compute.Network("default", name="vpc-network")
+        private_ip_address = gcp.compute.GlobalAddress("private_ip_address",
+            name="vpc-network",
             address_type="INTERNAL",
             purpose="VPC_PEERING",
             prefix_length=20,
-            network=default_network.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_connection = gcp.servicenetworking.Connection("defaultConnection",
-            network=default_network.id,
+            network=default.id)
+        default_connection = gcp.servicenetworking.Connection("default",
+            network=default.id,
             service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_address.name],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            reserved_peering_ranges=[private_ip_address.name])
         ms_console = gcp.backupdisasterrecovery.ManagementServer("ms-console",
             location="us-central1",
+            name="ms-console",
             type="BACKUP_RESTORE",
             networks=[gcp.backupdisasterrecovery.ManagementServerNetworkArgs(
-                network=default_network.id,
+                network=default.id,
                 peering_mode="PRIVATE_SERVICE_ACCESS",
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[default_connection]))
+            )])
         ```
 
         ## Import

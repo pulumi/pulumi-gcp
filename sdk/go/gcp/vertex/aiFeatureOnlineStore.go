@@ -34,18 +34,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vertex.NewAiFeatureOnlineStore(ctx, "featureOnlineStore", &vertex.AiFeatureOnlineStoreArgs{
-//				Bigtable: &vertex.AiFeatureOnlineStoreBigtableArgs{
-//					AutoScaling: &vertex.AiFeatureOnlineStoreBigtableAutoScalingArgs{
-//						CpuUtilizationTarget: pulumi.Int(50),
-//						MaxNodeCount:         pulumi.Int(3),
-//						MinNodeCount:         pulumi.Int(1),
-//					},
-//				},
+//			_, err := vertex.NewAiFeatureOnlineStore(ctx, "feature_online_store", &vertex.AiFeatureOnlineStoreArgs{
+//				Name: pulumi.String("example_feature_online_store"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
 //				Region: pulumi.String("us-central1"),
+//				Bigtable: &vertex.AiFeatureOnlineStoreBigtableArgs{
+//					AutoScaling: &vertex.AiFeatureOnlineStoreBigtableAutoScalingArgs{
+//						MinNodeCount:         pulumi.Int(1),
+//						MaxNodeCount:         pulumi.Int(3),
+//						CpuUtilizationTarget: pulumi.Int(50),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -75,6 +76,7 @@ import (
 //				return err
 //			}
 //			_, err = vertex.NewAiFeatureOnlineStore(ctx, "featureonlinestore", &vertex.AiFeatureOnlineStoreArgs{
+//				Name: pulumi.String("example_feature_online_store_optimized"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -88,7 +90,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -113,6 +115,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vertex.NewAiFeatureOnlineStore(ctx, "featureonlinestore", &vertex.AiFeatureOnlineStoreArgs{
+//				Name: pulumi.String("example_feature_online_store_beta_bigtable"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -128,7 +131,7 @@ import (
 //					Enabled: pulumi.Bool(true),
 //				},
 //				ForceDestroy: pulumi.Bool(true),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

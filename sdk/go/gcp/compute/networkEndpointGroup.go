@@ -48,22 +48,25 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
+//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("neg-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("neg-subnetwork"),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     defaultNetwork.ID(),
+//				Network:     _default.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewNetworkEndpointGroup(ctx, "neg", &compute.NetworkEndpointGroupArgs{
-//				Network:     defaultNetwork.ID(),
+//				Name:        pulumi.String("my-lb-neg"),
+//				Network:     _default.ID(),
 //				Subnetwork:  defaultSubnetwork.ID(),
 //				DefaultPort: pulumi.Int(90),
 //				Zone:        pulumi.String("us-central1-a"),
@@ -90,11 +93,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "default", nil)
+//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name: pulumi.String("neg-network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			neg, err := compute.NewNetworkEndpointGroup(ctx, "neg", &compute.NetworkEndpointGroupArgs{
+//				Name:                pulumi.String("my-lb-neg"),
 //				Network:             _default.ID(),
 //				DefaultPort:         pulumi.Int(90),
 //				Zone:                pulumi.String("us-central1-a"),

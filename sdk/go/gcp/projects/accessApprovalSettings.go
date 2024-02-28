@@ -33,18 +33,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := projects.NewAccessApprovalSettings(ctx, "projectAccessApproval", &projects.AccessApprovalSettingsArgs{
+//			_, err := projects.NewAccessApprovalSettings(ctx, "project_access_approval", &projects.AccessApprovalSettingsArgs{
+//				ProjectId: pulumi.String("my-project-name"),
+//				NotificationEmails: pulumi.StringArray{
+//					pulumi.String("testuser@example.com"),
+//					pulumi.String("example.user@example.com"),
+//				},
 //				EnrolledServices: projects.AccessApprovalSettingsEnrolledServiceArray{
 //					&projects.AccessApprovalSettingsEnrolledServiceArgs{
 //						CloudProduct:    pulumi.String("all"),
 //						EnrollmentLevel: pulumi.String("BLOCK_ALL"),
 //					},
 //				},
-//				NotificationEmails: pulumi.StringArray{
-//					pulumi.String("testuser@example.com"),
-//					pulumi.String("example.user@example.com"),
-//				},
-//				ProjectId: pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
 //				return err
@@ -72,14 +72,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
+//			keyRing, err := kms.NewKeyRing(ctx, "key_ring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("key-ring"),
 //				Location: pulumi.String("global"),
 //				Project:  pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
+//			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
+//				Name:    pulumi.String("crypto-key"),
 //				KeyRing: keyRing.ID(),
 //				Purpose: pulumi.String("ASYMMETRIC_SIGN"),
 //				VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
@@ -95,7 +97,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			iam, err := kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
+//			_, err = kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: cryptoKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.signerVerifier"),
 //				Member:      pulumi.String(fmt.Sprintf("serviceAccount:%v", serviceAccount.AccountEmail)),
@@ -106,7 +108,7 @@ import (
 //			cryptoKeyVersion := kms.GetKMSCryptoKeyVersionOutput(ctx, kms.GetKMSCryptoKeyVersionOutputArgs{
 //				CryptoKey: cryptoKey.ID(),
 //			}, nil)
-//			_, err = projects.NewAccessApprovalSettings(ctx, "projectAccessApproval", &projects.AccessApprovalSettingsArgs{
+//			_, err = projects.NewAccessApprovalSettings(ctx, "project_access_approval", &projects.AccessApprovalSettingsArgs{
 //				ProjectId: pulumi.String("my-project-name"),
 //				ActiveKeyVersion: cryptoKeyVersion.ApplyT(func(cryptoKeyVersion kms.GetKMSCryptoKeyVersionResult) (*string, error) {
 //					return &cryptoKeyVersion.Name, nil
@@ -116,9 +118,7 @@ import (
 //						CloudProduct: pulumi.String("all"),
 //					},
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				iam,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

@@ -53,8 +53,8 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var policy = new Gcp.Compute.ImageIamPolicy("policy", new()
     ///     {
-    ///         Project = google_compute_image.Example.Project,
-    ///         Image = google_compute_image.Example.Name,
+    ///         Project = example.Project,
+    ///         Image = example.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -94,8 +94,8 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var policy = new Gcp.Compute.ImageIamPolicy("policy", new()
     ///     {
-    ///         Project = google_compute_image.Example.Project,
-    ///         Image = google_compute_image.Example.Name,
+    ///         Project = example.Project,
+    ///         Image = example.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -113,8 +113,8 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var binding = new Gcp.Compute.ImageIamBinding("binding", new()
     ///     {
-    ///         Project = google_compute_image.Example.Project,
-    ///         Image = google_compute_image.Example.Name,
+    ///         Project = example.Project,
+    ///         Image = example.Name,
     ///         Role = "roles/compute.imageUser",
     ///         Members = new[]
     ///         {
@@ -137,8 +137,8 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var binding = new Gcp.Compute.ImageIamBinding("binding", new()
     ///     {
-    ///         Project = google_compute_image.Example.Project,
-    ///         Image = google_compute_image.Example.Name,
+    ///         Project = example.Project,
+    ///         Image = example.Name,
     ///         Role = "roles/compute.imageUser",
     ///         Members = new[]
     ///         {
@@ -166,8 +166,8 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var member = new Gcp.Compute.ImageIamMember("member", new()
     ///     {
-    ///         Project = google_compute_image.Example.Project,
-    ///         Image = google_compute_image.Example.Name,
+    ///         Project = example.Project,
+    ///         Image = example.Name,
     ///         Role = "roles/compute.imageUser",
     ///         Member = "user:jane@example.com",
     ///     });
@@ -187,8 +187,8 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var member = new Gcp.Compute.ImageIamMember("member", new()
     ///     {
-    ///         Project = google_compute_image.Example.Project,
-    ///         Image = google_compute_image.Example.Name,
+    ///         Project = example.Project,
+    ///         Image = example.Name,
     ///         Role = "roles/compute.imageUser",
     ///         Member = "user:jane@example.com",
     ///         Condition = new Gcp.Compute.Inputs.ImageIamMemberConditionArgs

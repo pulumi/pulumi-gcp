@@ -24,10 +24,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const appGateway = new gcp.beyondcorp.AppGateway("appGateway", {
- *     hostType: "GCP_REGIONAL_MIG",
- *     region: "us-central1",
+ * const appGateway = new gcp.beyondcorp.AppGateway("app_gateway", {
+ *     name: "my-app-gateway",
  *     type: "TCP_PROXY",
+ *     region: "us-central1",
+ *     hostType: "GCP_REGIONAL_MIG",
  * });
  * ```
  * ### Beyondcorp App Gateway Full
@@ -36,15 +37,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const appGateway = new gcp.beyondcorp.AppGateway("appGateway", {
- *     displayName: "some display name",
- *     hostType: "GCP_REGIONAL_MIG",
- *     labels: {
- *         bar: "baz",
- *         foo: "bar",
- *     },
- *     region: "us-central1",
+ * const appGateway = new gcp.beyondcorp.AppGateway("app_gateway", {
+ *     name: "my-app-gateway",
  *     type: "TCP_PROXY",
+ *     region: "us-central1",
+ *     displayName: "some display name",
+ *     labels: {
+ *         foo: "bar",
+ *         bar: "baz",
+ *     },
+ *     hostType: "GCP_REGIONAL_MIG",
  * });
  * ```
  *

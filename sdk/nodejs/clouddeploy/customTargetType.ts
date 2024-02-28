@@ -24,20 +24,21 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const custom_target_type = new gcp.clouddeploy.CustomTargetType("custom-target-type", {
+ *     location: "us-central1",
+ *     name: "my-custom-target-type",
+ *     description: "My custom target type",
  *     annotations: {
  *         my_first_annotation: "example-annotation-1",
  *         my_second_annotation: "example-annotation-2",
  *     },
- *     customActions: {
- *         deployAction: "deployAction",
- *         renderAction: "renderAction",
- *     },
- *     description: "My custom target type",
  *     labels: {
  *         my_first_label: "example-label-1",
  *         my_second_label: "example-label-2",
  *     },
- *     location: "us-central1",
+ *     customActions: {
+ *         renderAction: "renderAction",
+ *         deployAction: "deployAction",
+ *     },
  * });
  * ```
  * ### Clouddeploy Custom Target Type Git Skaffold Modules
@@ -47,20 +48,21 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const custom_target_type = new gcp.clouddeploy.CustomTargetType("custom-target-type", {
+ *     location: "us-central1",
+ *     name: "my-custom-target-type",
+ *     description: "My custom target type",
  *     customActions: {
+ *         renderAction: "renderAction",
  *         deployAction: "deployAction",
  *         includeSkaffoldModules: [{
  *             configs: ["my-config"],
  *             git: {
+ *                 repo: "http://github.com/example/example-repo.git",
  *                 path: "configs/skaffold.yaml",
  *                 ref: "main",
- *                 repo: "http://github.com/example/example-repo.git",
  *             },
  *         }],
- *         renderAction: "renderAction",
  *     },
- *     description: "My custom target type",
- *     location: "us-central1",
  * });
  * ```
  * ### Clouddeploy Custom Target Type Gcs Skaffold Modules
@@ -70,19 +72,20 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const custom_target_type = new gcp.clouddeploy.CustomTargetType("custom-target-type", {
+ *     location: "us-central1",
+ *     name: "my-custom-target-type",
+ *     description: "My custom target type",
  *     customActions: {
+ *         renderAction: "renderAction",
  *         deployAction: "deployAction",
  *         includeSkaffoldModules: [{
  *             configs: ["my-config"],
  *             googleCloudStorage: {
- *                 path: "skaffold.yaml",
  *                 source: "gs://example-bucket/dir/configs/*",
+ *                 path: "skaffold.yaml",
  *             },
  *         }],
- *         renderAction: "renderAction",
  *     },
- *     description: "My custom target type",
- *     location: "us-central1",
  * });
  * ```
  *

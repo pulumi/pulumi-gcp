@@ -62,11 +62,11 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AssetIamPolicy(&#34;policy&#34;, AssetIamPolicyArgs.builder()        
- *             .project(google_dataplex_asset.example().project())
- *             .location(google_dataplex_asset.example().location())
- *             .lake(google_dataplex_asset.example().lake())
- *             .dataplexZone(google_dataplex_asset.example().dataplex_zone())
- *             .asset(google_dataplex_asset.example().name())
+ *             .project(example.project())
+ *             .location(example.location())
+ *             .lake(example.lake())
+ *             .dataplexZone(example.dataplexZone())
+ *             .asset(example.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -97,11 +97,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new AssetIamBinding(&#34;binding&#34;, AssetIamBindingArgs.builder()        
- *             .project(google_dataplex_asset.example().project())
- *             .location(google_dataplex_asset.example().location())
- *             .lake(google_dataplex_asset.example().lake())
- *             .dataplexZone(google_dataplex_asset.example().dataplex_zone())
- *             .asset(google_dataplex_asset.example().name())
+ *             .project(example.project())
+ *             .location(example.location())
+ *             .lake(example.lake())
+ *             .dataplexZone(example.dataplexZone())
+ *             .asset(example.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -133,11 +133,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new AssetIamMember(&#34;member&#34;, AssetIamMemberArgs.builder()        
- *             .project(google_dataplex_asset.example().project())
- *             .location(google_dataplex_asset.example().location())
- *             .lake(google_dataplex_asset.example().lake())
- *             .dataplexZone(google_dataplex_asset.example().dataplex_zone())
- *             .asset(google_dataplex_asset.example().name())
+ *             .project(example.project())
+ *             .location(example.location())
+ *             .lake(example.lake())
+ *             .dataplexZone(example.dataplexZone())
+ *             .asset(example.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

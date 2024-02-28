@@ -21,8 +21,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const picture = gcp.storage.getBucketObject({
- *     bucket: "image-store",
  *     name: "folder/butterfly01.jpg",
+ *     bucket: "image-store",
  * });
  * ```
  */
@@ -135,8 +135,8 @@ export interface GetBucketObjectResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const picture = gcp.storage.getBucketObject({
- *     bucket: "image-store",
  *     name: "folder/butterfly01.jpg",
+ *     bucket: "image-store",
  * });
  * ```
  */

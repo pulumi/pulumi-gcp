@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networksecurity.ServerTlsPolicy("default", {
+ *     name: "my-server-tls-policy",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -44,8 +45,6 @@ import * as utilities from "../utilities";
  *             },
  *         ],
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Network Security Server Tls Policy Advanced
@@ -55,6 +54,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networksecurity.ServerTlsPolicy("default", {
+ *     name: "my-server-tls-policy",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -64,8 +64,6 @@ import * as utilities from "../utilities";
  *     mtlsPolicy: {
  *         clientValidationMode: "ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Network Security Server Tls Policy Server Cert
@@ -75,6 +73,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networksecurity.ServerTlsPolicy("default", {
+ *     name: "my-server-tls-policy",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -86,36 +85,38 @@ import * as utilities from "../utilities";
  *             targetUri: "unix:mypath",
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Network Security Server Tls Policy Mtls
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
  *
  * const project = gcp.organizations.getProject({});
- * const defaultTrustConfig = new gcp.certificatemanager.TrustConfig("defaultTrustConfig", {
+ * const defaultTrustConfig = new gcp.certificatemanager.TrustConfig("default", {
+ *     name: "my-trust-config",
  *     description: "sample trust config description",
  *     location: "global",
  *     trustStores: [{
  *         trustAnchors: [{
- *             pemCertificate: fs.readFileSync("test-fixtures/ca_cert.pem", "utf8"),
+ *             pemCertificate: std.file({
+ *                 input: "test-fixtures/ca_cert.pem",
+ *             }).then(invoke => invoke.result),
  *         }],
  *         intermediateCas: [{
- *             pemCertificate: fs.readFileSync("test-fixtures/ca_cert.pem", "utf8"),
+ *             pemCertificate: std.file({
+ *                 input: "test-fixtures/ca_cert.pem",
+ *             }).then(invoke => invoke.result),
  *         }],
  *     }],
  *     labels: {
  *         foo: "bar",
  *     },
- * }, {
- *     provider: google_beta,
  * });
- * const defaultServerTlsPolicy = new gcp.networksecurity.ServerTlsPolicy("defaultServerTlsPolicy", {
+ * const _default = new gcp.networksecurity.ServerTlsPolicy("default", {
+ *     name: "my-server-tls-policy",
  *     description: "my description",
  *     location: "global",
  *     allowOpen: false,
@@ -126,8 +127,6 @@ import * as utilities from "../utilities";
  *     labels: {
  *         foo: "bar",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

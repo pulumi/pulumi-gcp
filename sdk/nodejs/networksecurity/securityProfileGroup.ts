@@ -12,22 +12,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const securityProfile = new gcp.networksecurity.SecurityProfile("securityProfile", {
+ * const securityProfile = new gcp.networksecurity.SecurityProfile("security_profile", {
+ *     name: "sec-profile",
  *     type: "THREAT_PREVENTION",
  *     parent: "organizations/123456789",
  *     location: "global",
- * }, {
- *     provider: google_beta,
  * });
  * const _default = new gcp.networksecurity.SecurityProfileGroup("default", {
+ *     name: "sec-profile-group",
  *     parent: "organizations/123456789",
  *     description: "my description",
  *     threatPreventionProfile: securityProfile.id,
  *     labels: {
  *         foo: "bar",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

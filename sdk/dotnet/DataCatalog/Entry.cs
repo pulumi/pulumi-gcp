@@ -34,12 +34,12 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var entryGroup = new Gcp.DataCatalog.EntryGroup("entryGroup", new()
+    ///     var entryGroup = new Gcp.DataCatalog.EntryGroup("entry_group", new()
     ///     {
     ///         EntryGroupId = "my_group",
     ///     });
     /// 
-    ///     var basicEntry = new Gcp.DataCatalog.Entry("basicEntry", new()
+    ///     var basicEntry = new Gcp.DataCatalog.Entry("basic_entry", new()
     ///     {
     ///         EntryGroup = entryGroup.Id,
     ///         EntryId = "my_entry",
@@ -59,12 +59,12 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var entryGroup = new Gcp.DataCatalog.EntryGroup("entryGroup", new()
+    ///     var entryGroup = new Gcp.DataCatalog.EntryGroup("entry_group", new()
     ///     {
     ///         EntryGroupId = "my_group",
     ///     });
     /// 
-    ///     var basicEntry = new Gcp.DataCatalog.Entry("basicEntry", new()
+    ///     var basicEntry = new Gcp.DataCatalog.Entry("basic_entry", new()
     ///     {
     ///         EntryGroup = entryGroup.Id,
     ///         EntryId = "my_entry",
@@ -90,12 +90,12 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var entryGroup = new Gcp.DataCatalog.EntryGroup("entryGroup", new()
+    ///     var entryGroup = new Gcp.DataCatalog.EntryGroup("entry_group", new()
     ///     {
     ///         EntryGroupId = "my_group",
     ///     });
     /// 
-    ///     var basicEntry = new Gcp.DataCatalog.Entry("basicEntry", new()
+    ///     var basicEntry = new Gcp.DataCatalog.Entry("basic_entry", new()
     ///     {
     ///         EntryGroup = entryGroup.Id,
     ///         EntryId = "my_entry",

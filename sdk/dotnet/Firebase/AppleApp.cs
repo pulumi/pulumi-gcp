@@ -26,9 +26,6 @@ namespace Pulumi.Gcp.Firebase
     ///         Project = "my-project-name",
     ///         DisplayName = "Display Name Basic",
     ///         BundleId = "apple.app.12345",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -45,6 +42,7 @@ namespace Pulumi.Gcp.Firebase
     /// {
     ///     var apple = new Gcp.Projects.ApiKey("apple", new()
     ///     {
+    ///         Name = "api-key",
     ///         DisplayName = "Display Name Full",
     ///         Project = "my-project-name",
     ///         Restrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsArgs
@@ -57,9 +55,6 @@ namespace Pulumi.Gcp.Firebase
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var full = new Gcp.Firebase.AppleApp("full", new()
@@ -70,9 +65,6 @@ namespace Pulumi.Gcp.Firebase
     ///         AppStoreId = "12345",
     ///         TeamId = "9987654321",
     ///         ApiKeyId = apple.Uid,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

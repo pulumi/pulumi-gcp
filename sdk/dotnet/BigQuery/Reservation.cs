@@ -31,15 +31,16 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var reservation = new Gcp.BigQuery.Reservation("reservation", new()
     ///     {
+    ///         Name = "my-reservation",
+    ///         Location = "us-west2",
+    ///         SlotCapacity = 0,
+    ///         Edition = "STANDARD",
+    ///         IgnoreIdleSlots = true,
+    ///         Concurrency = 0,
     ///         Autoscale = new Gcp.BigQuery.Inputs.ReservationAutoscaleArgs
     ///         {
     ///             MaxSlots = 100,
     ///         },
-    ///         Concurrency = 0,
-    ///         Edition = "STANDARD",
-    ///         IgnoreIdleSlots = true,
-    ///         Location = "us-west2",
-    ///         SlotCapacity = 0,
     ///     });
     /// 
     /// });

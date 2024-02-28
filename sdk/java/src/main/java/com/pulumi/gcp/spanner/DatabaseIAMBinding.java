@@ -94,10 +94,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var database = new DatabaseIAMBinding(&#34;database&#34;, DatabaseIAMBindingArgs.builder()        
- *             .database(&#34;your-database-name&#34;)
  *             .instance(&#34;your-instance-name&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
+ *             .database(&#34;your-database-name&#34;)
  *             .role(&#34;roles/compute.networkUser&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
  * 
  *     }
@@ -127,10 +127,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var database = new DatabaseIAMMember(&#34;database&#34;, DatabaseIAMMemberArgs.builder()        
- *             .database(&#34;your-database-name&#34;)
  *             .instance(&#34;your-instance-name&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
+ *             .database(&#34;your-database-name&#34;)
  *             .role(&#34;roles/compute.networkUser&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
  *             .build());
  * 
  *     }

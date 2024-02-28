@@ -22,8 +22,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var basicGlobalNetworksecurityAddressGroup = new Gcp.NetworkSecurity.AddressGroup("basicGlobalNetworksecurityAddressGroup", new()
+    ///     var basicGlobalNetworksecurityAddressGroup = new Gcp.NetworkSecurity.AddressGroup("basic_global_networksecurity_address_group", new()
     ///     {
+    ///         Name = "policy",
     ///         Parent = "organizations/123456789",
     ///         Description = "Sample global networksecurity_address_group",
     ///         Location = "global",

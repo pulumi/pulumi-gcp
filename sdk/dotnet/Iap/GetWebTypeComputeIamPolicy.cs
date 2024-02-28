@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Iap
         /// {
         ///     var policy = Gcp.Iap.GetWebTypeComputeIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_project_service.Project_service.Project,
+        ///         Project = projectService.Project,
         ///     });
         /// 
         /// });
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.Iap
         /// {
         ///     var policy = Gcp.Iap.GetWebTypeComputeIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_project_service.Project_service.Project,
+        ///         Project = projectService.Project,
         ///     });
         /// 
         /// });

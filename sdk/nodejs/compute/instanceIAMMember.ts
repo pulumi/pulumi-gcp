@@ -36,9 +36,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.compute.InstanceIAMPolicy("policy", {
- *     project: google_compute_instance["default"].project,
- *     zone: google_compute_instance["default"].zone,
- *     instanceName: google_compute_instance["default"].name,
+ *     project: _default.project,
+ *     zone: _default.zone,
+ *     instanceName: _default.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -61,9 +61,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.compute.InstanceIAMPolicy("policy", {
- *     project: google_compute_instance["default"].project,
- *     zone: google_compute_instance["default"].zone,
- *     instanceName: google_compute_instance["default"].name,
+ *     project: _default.project,
+ *     zone: _default.zone,
+ *     instanceName: _default.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -74,9 +74,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.compute.InstanceIAMBinding("binding", {
- *     project: google_compute_instance["default"].project,
- *     zone: google_compute_instance["default"].zone,
- *     instanceName: google_compute_instance["default"].name,
+ *     project: _default.project,
+ *     zone: _default.zone,
+ *     instanceName: _default.name,
  *     role: "roles/compute.osLogin",
  *     members: ["user:jane@example.com"],
  * });
@@ -89,9 +89,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.compute.InstanceIAMBinding("binding", {
- *     project: google_compute_instance["default"].project,
- *     zone: google_compute_instance["default"].zone,
- *     instanceName: google_compute_instance["default"].name,
+ *     project: _default.project,
+ *     zone: _default.zone,
+ *     instanceName: _default.name,
  *     role: "roles/compute.osLogin",
  *     members: ["user:jane@example.com"],
  *     condition: {
@@ -108,9 +108,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.compute.InstanceIAMMember("member", {
- *     project: google_compute_instance["default"].project,
- *     zone: google_compute_instance["default"].zone,
- *     instanceName: google_compute_instance["default"].name,
+ *     project: _default.project,
+ *     zone: _default.zone,
+ *     instanceName: _default.name,
  *     role: "roles/compute.osLogin",
  *     member: "user:jane@example.com",
  * });
@@ -123,9 +123,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.compute.InstanceIAMMember("member", {
- *     project: google_compute_instance["default"].project,
- *     zone: google_compute_instance["default"].zone,
- *     instanceName: google_compute_instance["default"].name,
+ *     project: _default.project,
+ *     zone: _default.zone,
+ *     instanceName: _default.name,
  *     role: "roles/compute.osLogin",
  *     member: "user:jane@example.com",
  *     condition: {

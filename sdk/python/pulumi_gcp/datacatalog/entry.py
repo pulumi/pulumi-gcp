@@ -542,8 +542,8 @@ class Entry(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        entry_group = gcp.datacatalog.EntryGroup("entryGroup", entry_group_id="my_group")
-        basic_entry = gcp.datacatalog.Entry("basicEntry",
+        entry_group = gcp.datacatalog.EntryGroup("entry_group", entry_group_id="my_group")
+        basic_entry = gcp.datacatalog.Entry("basic_entry",
             entry_group=entry_group.id,
             entry_id="my_entry",
             user_specified_type="my_custom_type",
@@ -555,8 +555,8 @@ class Entry(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        entry_group = gcp.datacatalog.EntryGroup("entryGroup", entry_group_id="my_group")
-        basic_entry = gcp.datacatalog.Entry("basicEntry",
+        entry_group = gcp.datacatalog.EntryGroup("entry_group", entry_group_id="my_group")
+        basic_entry = gcp.datacatalog.Entry("basic_entry",
             entry_group=entry_group.id,
             entry_id="my_entry",
             type="FILESET",
@@ -570,8 +570,8 @@ class Entry(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        entry_group = gcp.datacatalog.EntryGroup("entryGroup", entry_group_id="my_group")
-        basic_entry = gcp.datacatalog.Entry("basicEntry",
+        entry_group = gcp.datacatalog.EntryGroup("entry_group", entry_group_id="my_group")
+        basic_entry = gcp.datacatalog.Entry("basic_entry",
             entry_group=entry_group.id,
             entry_id="my_entry",
             user_specified_type="my_user_specified_type",
@@ -691,8 +691,8 @@ class Entry(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        entry_group = gcp.datacatalog.EntryGroup("entryGroup", entry_group_id="my_group")
-        basic_entry = gcp.datacatalog.Entry("basicEntry",
+        entry_group = gcp.datacatalog.EntryGroup("entry_group", entry_group_id="my_group")
+        basic_entry = gcp.datacatalog.Entry("basic_entry",
             entry_group=entry_group.id,
             entry_id="my_entry",
             user_specified_type="my_custom_type",
@@ -704,8 +704,8 @@ class Entry(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        entry_group = gcp.datacatalog.EntryGroup("entryGroup", entry_group_id="my_group")
-        basic_entry = gcp.datacatalog.Entry("basicEntry",
+        entry_group = gcp.datacatalog.EntryGroup("entry_group", entry_group_id="my_group")
+        basic_entry = gcp.datacatalog.Entry("basic_entry",
             entry_group=entry_group.id,
             entry_id="my_entry",
             type="FILESET",
@@ -719,8 +719,8 @@ class Entry(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        entry_group = gcp.datacatalog.EntryGroup("entryGroup", entry_group_id="my_group")
-        basic_entry = gcp.datacatalog.Entry("basicEntry",
+        entry_group = gcp.datacatalog.EntryGroup("entry_group", entry_group_id="my_group")
+        basic_entry = gcp.datacatalog.Entry("basic_entry",
             entry_group=entry_group.id,
             entry_id="my_entry",
             user_specified_type="my_user_specified_type",

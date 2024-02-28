@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.dataplex.getDatascanIamPolicy({
- *     project: google_dataplex_datascan.basic_profile.project,
- *     location: google_dataplex_datascan.basic_profile.location,
- *     dataScanId: google_dataplex_datascan.basic_profile.data_scan_id,
+ *     project: basicProfile.project,
+ *     location: basicProfile.location,
+ *     dataScanId: basicProfile.dataScanId,
  * });
  * ```
  */
@@ -78,9 +78,9 @@ export interface GetDatascanIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.dataplex.getDatascanIamPolicy({
- *     project: google_dataplex_datascan.basic_profile.project,
- *     location: google_dataplex_datascan.basic_profile.location,
- *     dataScanId: google_dataplex_datascan.basic_profile.data_scan_id,
+ *     project: basicProfile.project,
+ *     location: basicProfile.location,
+ *     dataScanId: basicProfile.dataScanId,
  * });
  * ```
  */

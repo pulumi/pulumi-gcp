@@ -50,6 +50,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			disk, err := compute.NewDisk(ctx, "disk", &compute.DiskArgs{
+//				Name:  pulumi.String("my-disk"),
 //				Image: pulumi.String("debian-cloud/debian-11"),
 //				Size:  pulumi.Int(50),
 //				Type:  pulumi.String("pd-ssd"),
@@ -59,6 +60,7 @@ import (
 //				return err
 //			}
 //			snapdisk, err := compute.NewSnapshot(ctx, "snapdisk", &compute.SnapshotArgs{
+//				Name:       pulumi.String("my-snapshot"),
 //				SourceDisk: disk.Name,
 //				Zone:       pulumi.String("us-central1-a"),
 //			})
@@ -66,6 +68,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewRegionDisk(ctx, "regiondisk", &compute.RegionDiskArgs{
+//				Name:                   pulumi.String("my-region-disk"),
 //				Snapshot:               snapdisk.ID(),
 //				Type:                   pulumi.String("pd-ssd"),
 //				Region:                 pulumi.String("us-central1"),
@@ -98,6 +101,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			primary, err := compute.NewRegionDisk(ctx, "primary", &compute.RegionDiskArgs{
+//				Name:                   pulumi.String("primary-region-disk"),
 //				Type:                   pulumi.String("pd-ssd"),
 //				Region:                 pulumi.String("us-central1"),
 //				PhysicalBlockSizeBytes: pulumi.Int(4096),
@@ -110,6 +114,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewRegionDisk(ctx, "secondary", &compute.RegionDiskArgs{
+//				Name:                   pulumi.String("secondary-region-disk"),
 //				Type:                   pulumi.String("pd-ssd"),
 //				Region:                 pulumi.String("us-east1"),
 //				PhysicalBlockSizeBytes: pulumi.Int(4096),
@@ -144,6 +149,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewRegionDisk(ctx, "regiondisk", &compute.RegionDiskArgs{
+//				Name:                   pulumi.String("my-region-features-disk"),
+//				Type:                   pulumi.String("pd-ssd"),
+//				Region:                 pulumi.String("us-central1"),
+//				PhysicalBlockSizeBytes: pulumi.Int(4096),
 //				GuestOsFeatures: compute.RegionDiskGuestOsFeatureArray{
 //					&compute.RegionDiskGuestOsFeatureArgs{
 //						Type: pulumi.String("SECURE_BOOT"),
@@ -158,13 +167,10 @@ import (
 //				Licenses: pulumi.StringArray{
 //					pulumi.String("https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"),
 //				},
-//				PhysicalBlockSizeBytes: pulumi.Int(4096),
-//				Region:                 pulumi.String("us-central1"),
 //				ReplicaZones: pulumi.StringArray{
 //					pulumi.String("us-central1-a"),
 //					pulumi.String("us-central1-f"),
 //				},
-//				Type: pulumi.String("pd-ssd"),
 //			})
 //			if err != nil {
 //				return err

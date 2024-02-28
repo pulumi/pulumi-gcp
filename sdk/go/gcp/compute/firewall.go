@@ -46,11 +46,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil)
+//			defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name: pulumi.String("test-network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewFirewall(ctx, "defaultFirewall", &compute.FirewallArgs{
+//			_, err = compute.NewFirewall(ctx, "default", &compute.FirewallArgs{
+//				Name:    pulumi.String("test-firewall"),
 //				Network: defaultNetwork.Name,
 //				Allows: compute.FirewallAllowArray{
 //					&compute.FirewallAllowArgs{
@@ -92,19 +95,20 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewFirewall(ctx, "rules", &compute.FirewallArgs{
+//				Project:     pulumi.String("my-project-name"),
+//				Name:        pulumi.String("my-firewall-rule"),
+//				Network:     pulumi.String("default"),
+//				Description: pulumi.String("Creates firewall rule targeting tagged instances"),
 //				Allows: compute.FirewallAllowArray{
 //					&compute.FirewallAllowArgs{
+//						Protocol: pulumi.String("tcp"),
 //						Ports: pulumi.StringArray{
 //							pulumi.String("80"),
 //							pulumi.String("8080"),
 //							pulumi.String("1000-2000"),
 //						},
-//						Protocol: pulumi.String("tcp"),
 //					},
 //				},
-//				Description: pulumi.String("Creates firewall rule targeting tagged instances"),
-//				Network:     pulumi.String("default"),
-//				Project:     pulumi.String("my-project-name"),
 //				SourceTags: pulumi.StringArray{
 //					pulumi.String("foo"),
 //				},

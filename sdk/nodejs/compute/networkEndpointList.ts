@@ -33,53 +33,60 @@ import * as utilities from "../utilities";
  *     family: "debian-11",
  *     project: "debian-cloud",
  * });
- * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false});
- * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "neg-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "neg-subnetwork",
  *     ipCidrRange: "10.0.0.1/16",
  *     region: "us-central1",
- *     network: defaultNetwork.id,
+ *     network: _default.id,
  * });
  * const endpoint_instance1 = new gcp.compute.Instance("endpoint-instance1", {
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         subnetwork: defaultSubnetwork.id,
+ *     }],
+ *     name: "endpoint-instance1",
  *     machineType: "e2-medium",
  *     bootDisk: {
  *         initializeParams: {
  *             image: myImage.then(myImage => myImage.selfLink),
  *         },
  *     },
- *     networkInterfaces: [{
- *         subnetwork: defaultSubnetwork.id,
- *         accessConfigs: [{}],
- *     }],
  * });
  * const endpoint_instance2 = new gcp.compute.Instance("endpoint-instance2", {
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         subnetwork: defaultSubnetwork.id,
+ *     }],
+ *     name: "endpoint-instance2",
  *     machineType: "e2-medium",
  *     bootDisk: {
  *         initializeParams: {
  *             image: myImage.then(myImage => myImage.selfLink),
  *         },
  *     },
- *     networkInterfaces: [{
- *         subnetwork: defaultSubnetwork.id,
- *         accessConfigs: [{}],
- *     }],
  * });
  * const default_endpoints = new gcp.compute.NetworkEndpointList("default-endpoints", {
- *     networkEndpointGroup: google_compute_network_endpoint_group.neg.name,
+ *     networkEndpointGroup: neg.name,
  *     networkEndpoints: [
  *         {
  *             instance: endpoint_instance1.name,
- *             port: google_compute_network_endpoint_group.neg.default_port,
+ *             port: neg.defaultPort,
  *             ipAddress: endpoint_instance1.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].networkIp),
  *         },
  *         {
  *             instance: endpoint_instance2.name,
- *             port: google_compute_network_endpoint_group.neg.default_port,
+ *             port: neg.defaultPort,
  *             ipAddress: endpoint_instance2.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].networkIp),
  *         },
  *     ],
  * });
  * const group = new gcp.compute.NetworkEndpointGroup("group", {
- *     network: defaultNetwork.id,
+ *     name: "my-lb-neg",
+ *     network: _default.id,
  *     subnetwork: defaultSubnetwork.id,
  *     defaultPort: 90,
  *     zone: "us-central1-a",

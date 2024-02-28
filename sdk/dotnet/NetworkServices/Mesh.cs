@@ -23,15 +23,13 @@ namespace Pulumi.Gcp.NetworkServices
     /// {
     ///     var @default = new Gcp.NetworkServices.Mesh("default", new()
     ///     {
+    ///         Name = "my-mesh",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
     ///         },
     ///         Description = "my description",
     ///         InterceptionPort = 443,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -48,14 +46,12 @@ namespace Pulumi.Gcp.NetworkServices
     /// {
     ///     var @default = new Gcp.NetworkServices.Mesh("default", new()
     ///     {
+    ///         Name = "my-mesh-noport",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
     ///         },
     ///         Description = "my description",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

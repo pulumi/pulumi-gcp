@@ -574,7 +574,7 @@ class CxIntent(pulumi.CustomResource):
             speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
                 enable_speech_adaptation=True,
             ))
-        basic_intent = gcp.diagflow.CxIntent("basicIntent",
+        basic_intent = gcp.diagflow.CxIntent("basic_intent",
             parent=agent.id,
             display_name="Example",
             priority=1,
@@ -697,7 +697,7 @@ class CxIntent(pulumi.CustomResource):
             speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
                 enable_speech_adaptation=True,
             ))
-        basic_intent = gcp.diagflow.CxIntent("basicIntent",
+        basic_intent = gcp.diagflow.CxIntent("basic_intent",
             parent=agent.id,
             display_name="Example",
             priority=1,

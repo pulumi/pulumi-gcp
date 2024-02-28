@@ -20,19 +20,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const exampleNamespace = new gcp.servicedirectory.Namespace("exampleNamespace", {
+ * const example = new gcp.servicedirectory.Namespace("example", {
  *     namespaceId: "example-namespace",
  *     location: "us-central1",
- * }, {
- *     provider: google_beta,
  * });
- * const exampleService = new gcp.servicedirectory.Service("exampleService", {
+ * const exampleService = new gcp.servicedirectory.Service("example", {
  *     serviceId: "example-service",
- *     namespace: exampleNamespace.id,
- * }, {
- *     provider: google_beta,
+ *     namespace: example.id,
  * });
- * const exampleEndpoint = new gcp.servicedirectory.Endpoint("exampleEndpoint", {
+ * const exampleEndpoint = new gcp.servicedirectory.Endpoint("example", {
  *     endpointId: "example-endpoint",
  *     service: exampleService.id,
  *     metadata: {
@@ -41,8 +37,6 @@ import * as utilities from "../utilities";
  *     },
  *     address: "1.2.3.4",
  *     port: 5353,
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Service Directory Endpoint With Network
@@ -52,33 +46,25 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
- * const exampleNetwork = new gcp.compute.Network("exampleNetwork", {}, {
- *     provider: google_beta,
- * });
- * const exampleNamespace = new gcp.servicedirectory.Namespace("exampleNamespace", {
+ * const example = new gcp.compute.Network("example", {name: "example-network"});
+ * const exampleNamespace = new gcp.servicedirectory.Namespace("example", {
  *     namespaceId: "example-namespace",
  *     location: "us-central1",
- * }, {
- *     provider: google_beta,
  * });
- * const exampleService = new gcp.servicedirectory.Service("exampleService", {
+ * const exampleService = new gcp.servicedirectory.Service("example", {
  *     serviceId: "example-service",
  *     namespace: exampleNamespace.id,
- * }, {
- *     provider: google_beta,
  * });
- * const exampleEndpoint = new gcp.servicedirectory.Endpoint("exampleEndpoint", {
+ * const exampleEndpoint = new gcp.servicedirectory.Endpoint("example", {
  *     endpointId: "example-endpoint",
  *     service: exampleService.id,
  *     metadata: {
  *         stage: "prod",
  *         region: "us-central1",
  *     },
- *     network: pulumi.all([project, exampleNetwork.name]).apply(([project, name]) => `projects/${project.number}/locations/global/networks/${name}`),
+ *     network: pulumi.all([project, example.name]).apply(([project, name]) => `projects/${project.number}/locations/global/networks/${name}`),
  *     address: "1.2.3.4",
  *     port: 5353,
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

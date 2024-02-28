@@ -53,9 +53,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var policy = new Gcp.Compute.SubnetworkIAMPolicy("policy", new()
     ///     {
-    ///         Project = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Project,
-    ///         Region = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Region,
-    ///         Subnetwork = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Name,
+    ///         Project = network_with_private_secondary_ip_ranges.Project,
+    ///         Region = network_with_private_secondary_ip_ranges.Region,
+    ///         Subnetwork = network_with_private_secondary_ip_ranges.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -95,9 +95,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var policy = new Gcp.Compute.SubnetworkIAMPolicy("policy", new()
     ///     {
-    ///         Project = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Project,
-    ///         Region = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Region,
-    ///         Subnetwork = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Name,
+    ///         Project = network_with_private_secondary_ip_ranges.Project,
+    ///         Region = network_with_private_secondary_ip_ranges.Region,
+    ///         Subnetwork = network_with_private_secondary_ip_ranges.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -115,9 +115,9 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var binding = new Gcp.Compute.SubnetworkIAMBinding("binding", new()
     ///     {
-    ///         Project = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Project,
-    ///         Region = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Region,
-    ///         Subnetwork = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Name,
+    ///         Project = network_with_private_secondary_ip_ranges.Project,
+    ///         Region = network_with_private_secondary_ip_ranges.Region,
+    ///         Subnetwork = network_with_private_secondary_ip_ranges.Name,
     ///         Role = "roles/compute.networkUser",
     ///         Members = new[]
     ///         {
@@ -140,9 +140,9 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var binding = new Gcp.Compute.SubnetworkIAMBinding("binding", new()
     ///     {
-    ///         Project = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Project,
-    ///         Region = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Region,
-    ///         Subnetwork = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Name,
+    ///         Project = network_with_private_secondary_ip_ranges.Project,
+    ///         Region = network_with_private_secondary_ip_ranges.Region,
+    ///         Subnetwork = network_with_private_secondary_ip_ranges.Name,
     ///         Role = "roles/compute.networkUser",
     ///         Members = new[]
     ///         {
@@ -170,9 +170,9 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var member = new Gcp.Compute.SubnetworkIAMMember("member", new()
     ///     {
-    ///         Project = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Project,
-    ///         Region = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Region,
-    ///         Subnetwork = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Name,
+    ///         Project = network_with_private_secondary_ip_ranges.Project,
+    ///         Region = network_with_private_secondary_ip_ranges.Region,
+    ///         Subnetwork = network_with_private_secondary_ip_ranges.Name,
     ///         Role = "roles/compute.networkUser",
     ///         Member = "user:jane@example.com",
     ///     });
@@ -192,9 +192,9 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var member = new Gcp.Compute.SubnetworkIAMMember("member", new()
     ///     {
-    ///         Project = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Project,
-    ///         Region = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Region,
-    ///         Subnetwork = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Name,
+    ///         Project = network_with_private_secondary_ip_ranges.Project,
+    ///         Region = network_with_private_secondary_ip_ranges.Region,
+    ///         Subnetwork = network_with_private_secondary_ip_ranges.Name,
     ///         Role = "roles/compute.networkUser",
     ///         Member = "user:jane@example.com",
     ///         Condition = new Gcp.Compute.Inputs.SubnetworkIAMMemberConditionArgs

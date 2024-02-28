@@ -15,14 +15,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false});
- * const basicHub = new gcp.networkconnectivity.Hub("basicHub", {
+ * const network = new gcp.compute.Network("network", {
+ *     name: "network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const basicHub = new gcp.networkconnectivity.Hub("basic_hub", {
+ *     name: "hub",
  *     description: "A sample hub",
  *     labels: {
  *         "label-two": "value-one",
  *     },
  * });
  * const primary = new gcp.networkconnectivity.Spoke("primary", {
+ *     name: "name",
  *     location: "global",
  *     description: "A sample spoke with a linked routher appliance instance",
  *     labels: {
@@ -43,13 +48,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false});
+ * const network = new gcp.compute.Network("network", {
+ *     name: "network",
+ *     autoCreateSubnetworks: false,
+ * });
  * const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
+ *     name: "subnet",
  *     ipCidrRange: "10.0.0.0/28",
  *     region: "us-west1",
  *     network: network.selfLink,
  * });
  * const instance = new gcp.compute.Instance("instance", {
+ *     name: "instance",
  *     machineType: "e2-medium",
  *     canIpForward: true,
  *     zone: "us-west1-a",
@@ -66,13 +76,15 @@ import * as utilities from "../utilities";
  *         }],
  *     }],
  * });
- * const basicHub = new gcp.networkconnectivity.Hub("basicHub", {
+ * const basicHub = new gcp.networkconnectivity.Hub("basic_hub", {
+ *     name: "hub",
  *     description: "A sample hub",
  *     labels: {
  *         "label-two": "value-one",
  *     },
  * });
  * const primary = new gcp.networkconnectivity.Spoke("primary", {
+ *     name: "name",
  *     location: "us-west1",
  *     description: "A sample spoke with a linked routher appliance instance",
  *     labels: {

@@ -241,7 +241,7 @@ class Hl7StoreIamBinding(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
-        hl7_v2_store = gcp.healthcare.Hl7StoreIamPolicy("hl7V2Store",
+        hl7_v2_store = gcp.healthcare.Hl7StoreIamPolicy("hl7_v2_store",
             hl7_v2_store_id="your-hl7-v2-store-id",
             policy_data=admin.policy_data)
         ```
@@ -252,10 +252,10 @@ class Hl7StoreIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        hl7_v2_store = gcp.healthcare.Hl7StoreIamBinding("hl7V2Store",
+        hl7_v2_store = gcp.healthcare.Hl7StoreIamBinding("hl7_v2_store",
             hl7_v2_store_id="your-hl7-v2-store-id",
-            members=["user:jane@example.com"],
-            role="roles/editor")
+            role="roles/editor",
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_healthcare\\_hl7\\_v2\\_store\\_iam\\_member
@@ -264,10 +264,10 @@ class Hl7StoreIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        hl7_v2_store = gcp.healthcare.Hl7StoreIamMember("hl7V2Store",
+        hl7_v2_store = gcp.healthcare.Hl7StoreIamMember("hl7_v2_store",
             hl7_v2_store_id="your-hl7-v2-store-id",
-            member="user:jane@example.com",
-            role="roles/editor")
+            role="roles/editor",
+            member="user:jane@example.com")
         ```
 
         ## Import
@@ -342,7 +342,7 @@ class Hl7StoreIamBinding(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
-        hl7_v2_store = gcp.healthcare.Hl7StoreIamPolicy("hl7V2Store",
+        hl7_v2_store = gcp.healthcare.Hl7StoreIamPolicy("hl7_v2_store",
             hl7_v2_store_id="your-hl7-v2-store-id",
             policy_data=admin.policy_data)
         ```
@@ -353,10 +353,10 @@ class Hl7StoreIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        hl7_v2_store = gcp.healthcare.Hl7StoreIamBinding("hl7V2Store",
+        hl7_v2_store = gcp.healthcare.Hl7StoreIamBinding("hl7_v2_store",
             hl7_v2_store_id="your-hl7-v2-store-id",
-            members=["user:jane@example.com"],
-            role="roles/editor")
+            role="roles/editor",
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_healthcare\\_hl7\\_v2\\_store\\_iam\\_member
@@ -365,10 +365,10 @@ class Hl7StoreIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        hl7_v2_store = gcp.healthcare.Hl7StoreIamMember("hl7V2Store",
+        hl7_v2_store = gcp.healthcare.Hl7StoreIamMember("hl7_v2_store",
             hl7_v2_store_id="your-hl7-v2-store-id",
-            member="user:jane@example.com",
-            role="roles/editor")
+            role="roles/editor",
+            member="user:jane@example.com")
         ```
 
         ## Import

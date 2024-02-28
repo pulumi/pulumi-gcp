@@ -47,7 +47,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewAddress(ctx, "ipAddress", nil)
+//			_, err := compute.NewAddress(ctx, "ip_address", &compute.AddressArgs{
+//				Name: pulumi.String("my-address"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -70,19 +72,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
-//				IpCidrRange: pulumi.String("10.0.0.0/16"),
-//				Region:      pulumi.String("us-central1"),
-//				Network:     defaultNetwork.ID(),
+//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name: pulumi.String("my-network"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewAddress(ctx, "internalWithSubnetAndAddress", &compute.AddressArgs{
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("my-subnet"),
+//				IpCidrRange: pulumi.String("10.0.0.0/16"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewAddress(ctx, "internal_with_subnet_and_address", &compute.AddressArgs{
+//				Name:        pulumi.String("my-internal-address"),
 //				Subnetwork:  defaultSubnetwork.ID(),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Address:     pulumi.String("10.0.42.42"),
@@ -110,7 +116,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewAddress(ctx, "internalWithGceEndpoint", &compute.AddressArgs{
+//			_, err := compute.NewAddress(ctx, "internal_with_gce_endpoint", &compute.AddressArgs{
+//				Name:        pulumi.String("my-internal-address-"),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Purpose:     pulumi.String("GCE_ENDPOINT"),
 //			})
@@ -136,7 +143,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			static, err := compute.NewAddress(ctx, "static", nil)
+//			static, err := compute.NewAddress(ctx, "static", &compute.AddressArgs{
+//				Name: pulumi.String("ipv4-address"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -147,7 +156,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewInstance(ctx, "instanceWithIp", &compute.InstanceArgs{
+//			_, err = compute.NewInstance(ctx, "instance_with_ip", &compute.InstanceArgs{
+//				Name:        pulumi.String("vm-instance"),
 //				MachineType: pulumi.String("f1-micro"),
 //				Zone:        pulumi.String("us-central1-a"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
@@ -189,12 +199,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("test-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewAddress(ctx, "ipsec-interconnect-address", &compute.AddressArgs{
+//				Name:         pulumi.String("test-address"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				Purpose:      pulumi.String("IPSEC_INTERCONNECT"),
 //				Address:      pulumi.String("192.168.1.0"),

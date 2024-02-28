@@ -50,11 +50,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new AddressGroup(&#34;default&#34;, AddressGroupArgs.builder()        
+ *             .name(&#34;my-address-groups&#34;)
+ *             .parent(&#34;projects/my-project-name&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .type(&#34;IPV4&#34;)
  *             .capacity(&#34;100&#34;)
  *             .items(&#34;208.80.154.224/32&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .parent(&#34;projects/my-project-name&#34;)
- *             .type(&#34;IPV4&#34;)
  *             .build());
  * 
  *     }
@@ -83,11 +84,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new AddressGroup(&#34;default&#34;, AddressGroupArgs.builder()        
+ *             .name(&#34;my-address-groups&#34;)
+ *             .parent(&#34;organizations/123456789&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .type(&#34;IPV4&#34;)
  *             .capacity(&#34;100&#34;)
  *             .items(&#34;208.80.154.224/32&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
- *             .type(&#34;IPV4&#34;)
  *             .build());
  * 
  *     }
@@ -116,12 +118,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new AddressGroup(&#34;default&#34;, AddressGroupArgs.builder()        
- *             .capacity(&#34;100&#34;)
- *             .description(&#34;my description&#34;)
- *             .items(&#34;208.80.154.224/32&#34;)
- *             .location(&#34;us-central1&#34;)
+ *             .name(&#34;my-address-groups&#34;)
  *             .parent(&#34;projects/my-project-name&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .description(&#34;my description&#34;)
  *             .type(&#34;IPV4&#34;)
+ *             .capacity(&#34;100&#34;)
+ *             .items(&#34;208.80.154.224/32&#34;)
  *             .build());
  * 
  *     }

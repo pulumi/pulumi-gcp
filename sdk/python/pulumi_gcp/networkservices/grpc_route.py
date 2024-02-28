@@ -404,6 +404,7 @@ class GrpcRoute(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.GrpcRoute("default",
+            name="my-grpc-route",
             labels={
                 "foo": "bar",
             },
@@ -422,8 +423,7 @@ class GrpcRoute(pulumi.CustomResource):
                         num_retries=1,
                     ),
                 ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
         ### Network Services Grpc Route Matches And Actions
 
@@ -432,6 +432,7 @@ class GrpcRoute(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.GrpcRoute("default",
+            name="my-grpc-route",
             labels={
                 "foo": "bar",
             },
@@ -473,8 +474,7 @@ class GrpcRoute(pulumi.CustomResource):
                         num_retries=1,
                     ),
                 ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
         ### Network Services Grpc Route Actions
 
@@ -483,6 +483,7 @@ class GrpcRoute(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.GrpcRoute("default",
+            name="my-grpc-route",
             labels={
                 "foo": "bar",
             },
@@ -505,8 +506,7 @@ class GrpcRoute(pulumi.CustomResource):
                         num_retries=1,
                     ),
                 ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
 
         ## Import
@@ -563,6 +563,7 @@ class GrpcRoute(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.GrpcRoute("default",
+            name="my-grpc-route",
             labels={
                 "foo": "bar",
             },
@@ -581,8 +582,7 @@ class GrpcRoute(pulumi.CustomResource):
                         num_retries=1,
                     ),
                 ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
         ### Network Services Grpc Route Matches And Actions
 
@@ -591,6 +591,7 @@ class GrpcRoute(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.GrpcRoute("default",
+            name="my-grpc-route",
             labels={
                 "foo": "bar",
             },
@@ -632,8 +633,7 @@ class GrpcRoute(pulumi.CustomResource):
                         num_retries=1,
                     ),
                 ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
         ### Network Services Grpc Route Actions
 
@@ -642,6 +642,7 @@ class GrpcRoute(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.GrpcRoute("default",
+            name="my-grpc-route",
             labels={
                 "foo": "bar",
             },
@@ -664,8 +665,7 @@ class GrpcRoute(pulumi.CustomResource):
                         num_retries=1,
                     ),
                 ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
 
         ## Import

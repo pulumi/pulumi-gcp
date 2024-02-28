@@ -98,7 +98,7 @@ def get_dataset_iam_policy(dataset_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigquery.get_dataset_iam_policy(dataset_id=google_bigquery_dataset["dataset"]["dataset_id"])
+    policy = gcp.bigquery.get_dataset_iam_policy(dataset_id=dataset["datasetId"])
     ```
 
 
@@ -133,7 +133,7 @@ def get_dataset_iam_policy_output(dataset_id: Optional[pulumi.Input[str]] = None
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigquery.get_dataset_iam_policy(dataset_id=google_bigquery_dataset["dataset"]["dataset_id"])
+    policy = gcp.bigquery.get_dataset_iam_policy(dataset_id=dataset["datasetId"])
     ```
 
 

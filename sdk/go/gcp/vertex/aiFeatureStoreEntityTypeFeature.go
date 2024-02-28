@@ -36,6 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			featurestore, err := vertex.NewAiFeatureStore(ctx, "featurestore", &vertex.AiFeatureStoreArgs{
+//				Name: pulumi.String("terraform"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -48,6 +49,7 @@ import (
 //				return err
 //			}
 //			entity, err := vertex.NewAiFeatureStoreEntityType(ctx, "entity", &vertex.AiFeatureStoreEntityTypeArgs{
+//				Name: pulumi.String("terraform"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -57,6 +59,7 @@ import (
 //				return err
 //			}
 //			_, err = vertex.NewAiFeatureStoreEntityTypeFeature(ctx, "feature", &vertex.AiFeatureStoreEntityTypeFeatureArgs{
+//				Name: pulumi.String("terraform"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -86,6 +89,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			featurestore, err := vertex.NewAiFeatureStore(ctx, "featurestore", &vertex.AiFeatureStoreArgs{
+//				Name: pulumi.String("terraform2"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -93,11 +97,12 @@ import (
 //				OnlineServingConfig: &vertex.AiFeatureStoreOnlineServingConfigArgs{
 //					FixedNodeCount: pulumi.Int(2),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			entity, err := vertex.NewAiFeatureStoreEntityType(ctx, "entity", &vertex.AiFeatureStoreEntityTypeArgs{
+//				Name: pulumi.String("terraform2"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -114,17 +119,18 @@ import (
 //						Value: pulumi.Float64(0.3),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vertex.NewAiFeatureStoreEntityTypeFeature(ctx, "feature", &vertex.AiFeatureStoreEntityTypeFeatureArgs{
+//				Name: pulumi.String("terraform2"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
 //				Entitytype: entity.ID(),
 //				ValueType:  pulumi.String("INT64_ARRAY"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

@@ -37,7 +37,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sampleDataset, err := bigquery.NewDataset(ctx, "sampleDataset", &bigquery.DatasetArgs{
+//			sampleDataset, err := bigquery.NewDataset(ctx, "sample_dataset", &bigquery.DatasetArgs{
 //				DatasetId:    pulumi.String("job_load_dataset"),
 //				FriendlyName: pulumi.String("test"),
 //				Description:  pulumi.String("This is a test description"),
@@ -46,7 +46,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			sampleTable, err := bigquery.NewTable(ctx, "sampleTable", &bigquery.TableArgs{
+//			sampleTable, err := bigquery.NewTable(ctx, "sample_table", &bigquery.TableArgs{
 //				DeletionProtection: pulumi.Bool(false),
 //				DatasetId:          sampleDataset.DatasetId,
 //				TableId:            pulumi.String("job_load_table"),
@@ -69,7 +69,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vertex.NewAiFeatureGroup(ctx, "featureGroup", &vertex.AiFeatureGroupArgs{
+//			_, err = vertex.NewAiFeatureGroup(ctx, "feature_group", &vertex.AiFeatureGroupArgs{
+//				Name:        pulumi.String("example_feature_group"),
 //				Description: pulumi.String("A sample feature group"),
 //				Region:      pulumi.String("us-central1"),
 //				Labels: pulumi.StringMap{

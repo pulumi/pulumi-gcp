@@ -65,13 +65,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var authorized_orgs_desc = new AuthorizedOrgsDesc(&#34;authorized-orgs-desc&#34;, AuthorizedOrgsDescArgs.builder()        
+ *             .parent(test_access.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
+ *             .name(test_access.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s/authorizedOrgsDescs/fakeDescName&#34;, name)))
+ *             .authorizationType(&#34;AUTHORIZATION_TYPE_TRUST&#34;)
  *             .assetType(&#34;ASSET_TYPE_CREDENTIAL_STRENGTH&#34;)
  *             .authorizationDirection(&#34;AUTHORIZATION_DIRECTION_TO&#34;)
- *             .authorizationType(&#34;AUTHORIZATION_TYPE_TRUST&#34;)
  *             .orgs(            
  *                 &#34;organizations/12345&#34;,
  *                 &#34;organizations/98765&#34;)
- *             .parent(test_access.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
  *             .build());
  * 
  *     }

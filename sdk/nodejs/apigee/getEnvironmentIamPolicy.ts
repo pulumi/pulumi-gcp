@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.apigee.getEnvironmentIamPolicy({
- *     orgId: google_apigee_environment.apigee_environment.org_id,
- *     envId: google_apigee_environment.apigee_environment.name,
+ *     orgId: apigeeEnvironment.orgId,
+ *     envId: apigeeEnvironment.name,
  * });
  * ```
  */
@@ -69,8 +69,8 @@ export interface GetEnvironmentIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.apigee.getEnvironmentIamPolicy({
- *     orgId: google_apigee_environment.apigee_environment.org_id,
- *     envId: google_apigee_environment.apigee_environment.name,
+ *     orgId: apigeeEnvironment.orgId,
+ *     envId: apigeeEnvironment.name,
  * });
  * ```
  */

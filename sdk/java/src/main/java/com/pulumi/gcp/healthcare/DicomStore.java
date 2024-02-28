@@ -37,6 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
  * import com.pulumi.gcp.healthcare.Dataset;
  * import com.pulumi.gcp.healthcare.DatasetArgs;
  * import com.pulumi.gcp.healthcare.DicomStore;
@@ -55,13 +56,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var topic = new Topic(&#34;topic&#34;);
+ *         var topic = new Topic(&#34;topic&#34;, TopicArgs.builder()        
+ *             .name(&#34;dicom-notifications&#34;)
+ *             .build());
  * 
  *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
+ *             .name(&#34;example-dataset&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .build());
  * 
  *         var default_ = new DicomStore(&#34;default&#34;, DicomStoreArgs.builder()        
+ *             .name(&#34;example-dicom-store&#34;)
  *             .dataset(dataset.id())
  *             .notificationConfig(DicomStoreNotificationConfigArgs.builder()
  *                 .pubsubTopic(topic.id())
@@ -92,7 +97,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.healthcare.inputs.DicomStoreNotificationConfigArgs;
  * import com.pulumi.gcp.healthcare.inputs.DicomStoreStreamConfigArgs;
  * import com.pulumi.gcp.healthcare.inputs.DicomStoreStreamConfigBigqueryDestinationArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -106,15 +110,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var topic = new Topic(&#34;topic&#34;, TopicArgs.Empty, CustomResourceOptions.builder()
- *             .provider(google_beta)
+ *         var topic = new Topic(&#34;topic&#34;, TopicArgs.builder()        
+ *             .name(&#34;dicom-notifications&#34;)
  *             .build());
  * 
  *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
+ *             .name(&#34;example-dataset&#34;)
  *             .location(&#34;us-central1&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var bqDataset = new Dataset(&#34;bqDataset&#34;, DatasetArgs.builder()        
  *             .datasetId(&#34;dicom_bq_ds&#34;)
@@ -122,19 +125,16 @@ import javax.annotation.Nullable;
  *             .description(&#34;This is a test description&#34;)
  *             .location(&#34;US&#34;)
  *             .deleteContentsOnDestroy(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var bqTable = new Table(&#34;bqTable&#34;, TableArgs.builder()        
  *             .deletionProtection(false)
  *             .datasetId(bqDataset.datasetId())
  *             .tableId(&#34;dicom_bq_tb&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var default_ = new DicomStore(&#34;default&#34;, DicomStoreArgs.builder()        
+ *             .name(&#34;example-dicom-store&#34;)
  *             .dataset(dataset.id())
  *             .notificationConfig(DicomStoreNotificationConfigArgs.builder()
  *                 .pubsubTopic(topic.id())
@@ -150,9 +150,7 @@ import javax.annotation.Nullable;
  *                     }))
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

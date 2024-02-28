@@ -42,19 +42,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				OrgId: pulumi.String("123456789"),
+//				ProjectId: pulumi.String("my-project"),
+//				Name:      pulumi.String("my-project"),
+//				OrgId:     pulumi.String("123456789"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			projectService, err := projects.NewService(ctx, "projectService", &projects.ServiceArgs{
+//			projectService, err := projects.NewService(ctx, "project_service", &projects.ServiceArgs{
 //				Project: project.ProjectId,
 //				Service: pulumi.String("iap.googleapis.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			projectBrand, err := iap.NewBrand(ctx, "projectBrand", &iap.BrandArgs{
+//			projectBrand, err := iap.NewBrand(ctx, "project_brand", &iap.BrandArgs{
 //				SupportEmail:     pulumi.String("support@example.com"),
 //				ApplicationTitle: pulumi.String("Cloud IAP protected Application"),
 //				Project:          projectService.Project,
@@ -62,7 +64,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = iap.NewClient(ctx, "projectClient", &iap.ClientArgs{
+//			_, err = iap.NewClient(ctx, "project_client", &iap.ClientArgs{
 //				DisplayName: pulumi.String("Test Client"),
 //				Brand:       projectBrand.Name,
 //			})

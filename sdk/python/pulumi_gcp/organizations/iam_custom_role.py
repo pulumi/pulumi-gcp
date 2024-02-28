@@ -289,15 +289,15 @@ class IAMCustomRole(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_custom_role = gcp.organizations.IAMCustomRole("my-custom-role",
-            description="A description",
+            role_id="myCustomRole",
             org_id="123456789",
+            title="My Custom Role",
+            description="A description",
             permissions=[
                 "iam.roles.list",
                 "iam.roles.create",
                 "iam.roles.delete",
-            ],
-            role_id="myCustomRole",
-            title="My Custom Role")
+            ])
         ```
 
         ## Import
@@ -347,15 +347,15 @@ class IAMCustomRole(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_custom_role = gcp.organizations.IAMCustomRole("my-custom-role",
-            description="A description",
+            role_id="myCustomRole",
             org_id="123456789",
+            title="My Custom Role",
+            description="A description",
             permissions=[
                 "iam.roles.list",
                 "iam.roles.create",
                 "iam.roles.delete",
-            ],
-            role_id="myCustomRole",
-            title="My Custom Role")
+            ])
         ```
 
         ## Import

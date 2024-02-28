@@ -56,10 +56,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+ *             .name(&#34;network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var group = new RegionNetworkEndpointGroup(&#34;group&#34;, RegionNetworkEndpointGroupArgs.builder()        
+ *             .name(&#34;ip-port-neg&#34;)
  *             .network(default_.id())
  *             .region(&#34;us-central1&#34;)
  *             .networkEndpointType(&#34;INTERNET_IP_PORT&#34;)
@@ -102,10 +104,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+ *             .name(&#34;network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var group = new RegionNetworkEndpointGroup(&#34;group&#34;, RegionNetworkEndpointGroupArgs.builder()        
+ *             .name(&#34;fqdn-port-neg&#34;)
  *             .network(default_.id())
  *             .region(&#34;us-central1&#34;)
  *             .networkEndpointType(&#34;INTERNET_FQDN_PORT&#34;)

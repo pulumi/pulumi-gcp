@@ -21,6 +21,76 @@ import javax.annotation.Nullable;
  * * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/organizations.gcpUserAccessBindings)
  * 
  * ## Example Usage
+ * ### Access Context Manager Gcp User Access Binding Basic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudidentity.Group;
+ * import com.pulumi.gcp.cloudidentity.GroupArgs;
+ * import com.pulumi.gcp.cloudidentity.inputs.GroupGroupKeyArgs;
+ * import com.pulumi.gcp.accesscontextmanager.AccessPolicy;
+ * import com.pulumi.gcp.accesscontextmanager.AccessPolicyArgs;
+ * import com.pulumi.gcp.accesscontextmanager.AccessLevel;
+ * import com.pulumi.gcp.accesscontextmanager.AccessLevelArgs;
+ * import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicArgs;
+ * import com.pulumi.gcp.accesscontextmanager.GcpUserAccessBinding;
+ * import com.pulumi.gcp.accesscontextmanager.GcpUserAccessBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var group = new Group(&#34;group&#34;, GroupArgs.builder()        
+ *             .displayName(&#34;my-identity-group&#34;)
+ *             .parent(&#34;customers/A01b123xz&#34;)
+ *             .groupKey(GroupGroupKeyArgs.builder()
+ *                 .id(&#34;my-identity-group@example.com&#34;)
+ *                 .build())
+ *             .labels(Map.of(&#34;cloudidentity.googleapis.com/groups.discussion_forum&#34;, &#34;&#34;))
+ *             .build());
+ * 
+ *         var access_policy = new AccessPolicy(&#34;access-policy&#34;, AccessPolicyArgs.builder()        
+ *             .parent(&#34;organizations/123456789&#34;)
+ *             .title(&#34;my policy&#34;)
+ *             .build());
+ * 
+ *         var accessLevelIdForUserAccessBinding = new AccessLevel(&#34;accessLevelIdForUserAccessBinding&#34;, AccessLevelArgs.builder()        
+ *             .parent(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
+ *             .name(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s/accessLevels/chromeos_no_lock&#34;, name)))
+ *             .title(&#34;chromeos_no_lock&#34;)
+ *             .basic(AccessLevelBasicArgs.builder()
+ *                 .conditions(AccessLevelBasicConditionArgs.builder()
+ *                     .devicePolicy(AccessLevelBasicConditionDevicePolicyArgs.builder()
+ *                         .requireScreenLock(true)
+ *                         .osConstraints(AccessLevelBasicConditionDevicePolicyOsConstraintArgs.builder()
+ *                             .osType(&#34;DESKTOP_CHROME_OS&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .regions(&#34;US&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var gcpUserAccessBinding = new GcpUserAccessBinding(&#34;gcpUserAccessBinding&#34;, GcpUserAccessBindingArgs.builder()        
+ *             .organizationId(&#34;123456789&#34;)
+ *             .groupKey(StdFunctions.trimprefix().applyValue(invoke -&gt; invoke.result()))
+ *             .accessLevels(accessLevelIdForUserAccessBinding.name())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

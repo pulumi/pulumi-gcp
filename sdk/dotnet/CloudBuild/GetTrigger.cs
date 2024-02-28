@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.CloudBuild
         ///     var name = Gcp.CloudBuild.GetTrigger.Invoke(new()
         ///     {
         ///         Project = "your-project-id",
-        ///         TriggerId = google_cloudbuild_trigger.Filename_trigger.Trigger_id,
+        ///         TriggerId = filename_trigger.TriggerId,
         ///         Location = "location of trigger build",
         ///     });
         /// 
@@ -67,7 +67,7 @@ namespace Pulumi.Gcp.CloudBuild
         ///     var name = Gcp.CloudBuild.GetTrigger.Invoke(new()
         ///     {
         ///         Project = "your-project-id",
-        ///         TriggerId = google_cloudbuild_trigger.Filename_trigger.Trigger_id,
+        ///         TriggerId = filename_trigger.TriggerId,
         ///         Location = "location of trigger build",
         ///     });
         /// 

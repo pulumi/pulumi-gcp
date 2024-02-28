@@ -55,16 +55,19 @@ import (
 //				return err
 //			}
 //			_, err = accesscontextmanager.NewAuthorizedOrgsDesc(ctx, "authorized-orgs-desc", &accesscontextmanager.AuthorizedOrgsDescArgs{
+//				Parent: test_access.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("accessPolicies/%v", name), nil
+//				}).(pulumi.StringOutput),
+//				Name: test_access.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("accessPolicies/%v/authorizedOrgsDescs/fakeDescName", name), nil
+//				}).(pulumi.StringOutput),
+//				AuthorizationType:      pulumi.String("AUTHORIZATION_TYPE_TRUST"),
 //				AssetType:              pulumi.String("ASSET_TYPE_CREDENTIAL_STRENGTH"),
 //				AuthorizationDirection: pulumi.String("AUTHORIZATION_DIRECTION_TO"),
-//				AuthorizationType:      pulumi.String("AUTHORIZATION_TYPE_TRUST"),
 //				Orgs: pulumi.StringArray{
 //					pulumi.String("organizations/12345"),
 //					pulumi.String("organizations/98765"),
 //				},
-//				Parent: test_access.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("accessPolicies/%v", name), nil
-//				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {
 //				return err

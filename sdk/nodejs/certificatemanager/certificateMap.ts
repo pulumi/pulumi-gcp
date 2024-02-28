@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.certificatemanager.CertificateMap("default", {
+ *     name: "cert-map",
  *     description: "My acceptance test certificate map",
  *     labels: {
  *         terraform: "true",

@@ -173,13 +173,14 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_firewall_policy = gcp.compute.FirewallPolicy("defaultFirewallPolicy",
+        default = gcp.compute.FirewallPolicy("default",
             parent="organizations/12345",
             short_name="my-policy",
             description="Example Resource")
-        default_firewall_policy_association = gcp.compute.FirewallPolicyAssociation("defaultFirewallPolicyAssociation",
-            firewall_policy=default_firewall_policy.id,
-            attachment_target=google_folder["folder"]["name"])
+        default_firewall_policy_association = gcp.compute.FirewallPolicyAssociation("default",
+            firewall_policy=default.id,
+            attachment_target=folder["name"],
+            name="my-association")
         ```
 
         ## Import
@@ -227,13 +228,14 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_firewall_policy = gcp.compute.FirewallPolicy("defaultFirewallPolicy",
+        default = gcp.compute.FirewallPolicy("default",
             parent="organizations/12345",
             short_name="my-policy",
             description="Example Resource")
-        default_firewall_policy_association = gcp.compute.FirewallPolicyAssociation("defaultFirewallPolicyAssociation",
-            firewall_policy=default_firewall_policy.id,
-            attachment_target=google_folder["folder"]["name"])
+        default_firewall_policy_association = gcp.compute.FirewallPolicyAssociation("default",
+            firewall_policy=default.id,
+            attachment_target=folder["name"],
+            name="my-association")
         ```
 
         ## Import

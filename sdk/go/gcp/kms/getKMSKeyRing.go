@@ -34,8 +34,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := kms.GetKMSKeyRing(ctx, &kms.GetKMSKeyRingArgs{
-//				Location: "us-central1",
 //				Name:     "my-key-ring",
+//				Location: "us-central1",
 //			}, nil)
 //			if err != nil {
 //				return err

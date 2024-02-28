@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.tags.getTagValueIamPolicy({
- *     tagValue: google_tags_tag_value.value.name,
+ *     tagValue: value.name,
  * });
  * ```
  */
@@ -65,7 +65,7 @@ export interface GetTagValueIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.tags.getTagValueIamPolicy({
- *     tagValue: google_tags_tag_value.value.name,
+ *     tagValue: value.name,
  * });
  * ```
  */

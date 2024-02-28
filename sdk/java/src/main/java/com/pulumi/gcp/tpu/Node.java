@@ -56,6 +56,7 @@ import javax.annotation.Nullable;
  *         final var available = TpuFunctions.getTensorflowVersions();
  * 
  *         var tpu = new Node(&#34;tpu&#34;, NodeArgs.builder()        
+ *             .name(&#34;test-tpu&#34;)
  *             .zone(&#34;us-central1-b&#34;)
  *             .acceleratorType(&#34;v3-8&#34;)
  *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
@@ -75,6 +76,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.tpu.TpuFunctions;
  * import com.pulumi.gcp.tpu.inputs.GetTensorflowVersionsArgs;
  * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.GlobalAddress;
  * import com.pulumi.gcp.compute.GlobalAddressArgs;
  * import com.pulumi.gcp.servicenetworking.Connection;
@@ -97,9 +99,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var available = TpuFunctions.getTensorflowVersions();
  * 
- *         var network = new Network(&#34;network&#34;);
+ *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
+ *             .name(&#34;tpu-node-network&#34;)
+ *             .build());
  * 
  *         var serviceRange = new GlobalAddress(&#34;serviceRange&#34;, GlobalAddressArgs.builder()        
+ *             .name(&#34;my-global-address&#34;)
  *             .purpose(&#34;VPC_PEERING&#34;)
  *             .addressType(&#34;INTERNAL&#34;)
  *             .prefixLength(16)
@@ -113,6 +118,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var tpu = new Node(&#34;tpu&#34;, NodeArgs.builder()        
+ *             .name(&#34;test-tpu&#34;)
  *             .zone(&#34;us-central1-b&#34;)
  *             .acceleratorType(&#34;v3-8&#34;)
  *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))

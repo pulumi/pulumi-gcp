@@ -122,11 +122,14 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket", location="US")
+        bucket = gcp.storage.Bucket("bucket",
+            name="appengine-test-bucket",
+            location="US")
         object = gcp.storage.BucketObject("object",
+            name="hello-world.zip",
             bucket=bucket.name,
             source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
-        admin_v3 = gcp.appengine.StandardAppVersion("adminV3",
+        admin_v3 = gcp.appengine.StandardAppVersion("admin_v3",
             version_id="v3",
             service="admin",
             runtime="nodejs10",
@@ -142,7 +145,7 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
                 "port": "8080",
             },
             delete_service_on_destroy=True)
-        web_service = gcp.appengine.ApplicationUrlDispatchRules("webService", dispatch_rules=[
+        web_service = gcp.appengine.ApplicationUrlDispatchRules("web_service", dispatch_rules=[
             gcp.appengine.ApplicationUrlDispatchRulesDispatchRuleArgs(
                 domain="*",
                 path="/*",
@@ -195,11 +198,14 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket", location="US")
+        bucket = gcp.storage.Bucket("bucket",
+            name="appengine-test-bucket",
+            location="US")
         object = gcp.storage.BucketObject("object",
+            name="hello-world.zip",
             bucket=bucket.name,
             source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
-        admin_v3 = gcp.appengine.StandardAppVersion("adminV3",
+        admin_v3 = gcp.appengine.StandardAppVersion("admin_v3",
             version_id="v3",
             service="admin",
             runtime="nodejs10",
@@ -215,7 +221,7 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
                 "port": "8080",
             },
             delete_service_on_destroy=True)
-        web_service = gcp.appengine.ApplicationUrlDispatchRules("webService", dispatch_rules=[
+        web_service = gcp.appengine.ApplicationUrlDispatchRules("web_service", dispatch_rules=[
             gcp.appengine.ApplicationUrlDispatchRulesDispatchRuleArgs(
                 domain="*",
                 path="/*",

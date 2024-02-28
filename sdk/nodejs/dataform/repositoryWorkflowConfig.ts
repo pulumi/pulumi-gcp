@@ -14,24 +14,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const gitRepository = new gcp.sourcerepo.Repository("gitRepository", {}, {
- *     provider: google_beta,
- * });
+ * const gitRepository = new gcp.sourcerepo.Repository("git_repository", {name: "my/repository"});
  * const secret = new gcp.secretmanager.Secret("secret", {
  *     secretId: "my_secret",
  *     replication: {
  *         auto: {},
  *     },
- * }, {
- *     provider: google_beta,
  * });
- * const secretVersion = new gcp.secretmanager.SecretVersion("secretVersion", {
+ * const secretVersion = new gcp.secretmanager.SecretVersion("secret_version", {
  *     secret: secret.id,
  *     secretData: "secret-data",
- * }, {
- *     provider: google_beta,
  * });
  * const repository = new gcp.dataform.Repository("repository", {
+ *     name: "dataform_repository",
  *     region: "us-central1",
  *     gitRemoteSettings: {
  *         url: gitRepository.url,
@@ -43,13 +38,12 @@ import * as utilities from "../utilities";
  *         schemaSuffix: "_suffix",
  *         tablePrefix: "prefix_",
  *     },
- * }, {
- *     provider: google_beta,
  * });
- * const releaseConfig = new gcp.dataform.RepositoryReleaseConfig("releaseConfig", {
+ * const releaseConfig = new gcp.dataform.RepositoryReleaseConfig("release_config", {
  *     project: repository.project,
  *     region: repository.region,
  *     repository: repository.name,
+ *     name: "my_release",
  *     gitCommitish: "main",
  *     cronSchedule: "0 7 * * *",
  *     timeZone: "America/New_York",
@@ -65,19 +59,16 @@ import * as utilities from "../utilities";
  *             var1: "value",
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
- * const dataformSa = new gcp.serviceaccount.Account("dataformSa", {
+ * const dataformSa = new gcp.serviceaccount.Account("dataform_sa", {
  *     accountId: "dataform-sa",
  *     displayName: "Dataform Service Account",
- * }, {
- *     provider: google_beta,
  * });
  * const workflow = new gcp.dataform.RepositoryWorkflowConfig("workflow", {
  *     project: repository.project,
  *     region: repository.region,
  *     repository: repository.name,
+ *     name: "my_workflow",
  *     releaseConfig: releaseConfig.id,
  *     invocationConfig: {
  *         includedTargets: [
@@ -100,8 +91,6 @@ import * as utilities from "../utilities";
  *     },
  *     cronSchedule: "0 7 * * *",
  *     timeZone: "America/New_York",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

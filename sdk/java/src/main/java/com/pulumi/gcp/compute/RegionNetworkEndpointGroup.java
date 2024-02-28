@@ -60,15 +60,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+ *             .name(&#34;cloudfunctions-function-example-bucket&#34;)
  *             .location(&#34;US&#34;)
  *             .build());
  * 
  *         var archive = new BucketObject(&#34;archive&#34;, BucketObjectArgs.builder()        
+ *             .name(&#34;index.zip&#34;)
  *             .bucket(bucket.name())
  *             .source(new FileAsset(&#34;path/to/index.zip&#34;))
  *             .build());
  * 
  *         var functionNegFunction = new Function(&#34;functionNegFunction&#34;, FunctionArgs.builder()        
+ *             .name(&#34;function-neg&#34;)
  *             .description(&#34;My function&#34;)
  *             .runtime(&#34;nodejs10&#34;)
  *             .availableMemoryMb(128)
@@ -79,7 +82,8 @@ import javax.annotation.Nullable;
  *             .entryPoint(&#34;helloGET&#34;)
  *             .build());
  * 
- *         var functionNegRegionNetworkEndpointGroup = new RegionNetworkEndpointGroup(&#34;functionNegRegionNetworkEndpointGroup&#34;, RegionNetworkEndpointGroupArgs.builder()        
+ *         var functionNeg = new RegionNetworkEndpointGroup(&#34;functionNeg&#34;, RegionNetworkEndpointGroupArgs.builder()        
+ *             .name(&#34;function-neg&#34;)
  *             .networkEndpointType(&#34;SERVERLESS&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .cloudFunction(RegionNetworkEndpointGroupCloudFunctionArgs.builder()
@@ -119,6 +123,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cloudrunNegService = new Service(&#34;cloudrunNegService&#34;, ServiceArgs.builder()        
+ *             .name(&#34;cloudrun-neg&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .template(ServiceTemplateArgs.builder()
  *                 .spec(ServiceTemplateSpecArgs.builder()
@@ -133,7 +138,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var cloudrunNegRegionNetworkEndpointGroup = new RegionNetworkEndpointGroup(&#34;cloudrunNegRegionNetworkEndpointGroup&#34;, RegionNetworkEndpointGroupArgs.builder()        
+ *         var cloudrunNeg = new RegionNetworkEndpointGroup(&#34;cloudrunNeg&#34;, RegionNetworkEndpointGroupArgs.builder()        
+ *             .name(&#34;cloudrun-neg&#34;)
  *             .networkEndpointType(&#34;SERVERLESS&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .cloudRun(RegionNetworkEndpointGroupCloudRunArgs.builder()
@@ -184,10 +190,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var appengineNegBucket = new Bucket(&#34;appengineNegBucket&#34;, BucketArgs.builder()        
+ *             .name(&#34;appengine-neg&#34;)
  *             .location(&#34;US&#34;)
  *             .build());
  * 
  *         var appengineNegBucketObject = new BucketObject(&#34;appengineNegBucketObject&#34;, BucketObjectArgs.builder()        
+ *             .name(&#34;hello-world.zip&#34;)
  *             .bucket(appengineNegBucket.name())
  *             .source(new FileAsset(&#34;./test-fixtures/hello-world.zip&#34;))
  *             .build());
@@ -234,7 +242,8 @@ import javax.annotation.Nullable;
  *             .deleteServiceOnDestroy(true)
  *             .build());
  * 
- *         var appengineNegRegionNetworkEndpointGroup = new RegionNetworkEndpointGroup(&#34;appengineNegRegionNetworkEndpointGroup&#34;, RegionNetworkEndpointGroupArgs.builder()        
+ *         var appengineNeg = new RegionNetworkEndpointGroup(&#34;appengineNeg&#34;, RegionNetworkEndpointGroupArgs.builder()        
+ *             .name(&#34;appengine-neg&#34;)
  *             .networkEndpointType(&#34;SERVERLESS&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .appEngine(RegionNetworkEndpointGroupAppEngineArgs.builder()
@@ -269,16 +278,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var pscNeg = new RegionNetworkEndpointGroup(&#34;pscNeg&#34;, RegionNetworkEndpointGroupArgs.builder()        
+ *             .name(&#34;psc-neg&#34;)
+ *             .region(&#34;asia-northeast3&#34;)
  *             .networkEndpointType(&#34;PRIVATE_SERVICE_CONNECT&#34;)
  *             .pscTargetService(&#34;asia-northeast3-cloudkms.googleapis.com&#34;)
- *             .region(&#34;asia-northeast3&#34;)
  *             .build());
  * 
  *     }
  * }
  * ```
  * ### Region Network Endpoint Group Psc Service Attachment
- * 
  * ```java
  * package generated_program;
  * 
@@ -286,6 +295,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.Subnetwork;
  * import com.pulumi.gcp.compute.SubnetworkArgs;
  * import com.pulumi.gcp.compute.HealthCheck;
@@ -312,22 +322,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;);
+ *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+ *             .name(&#34;psc-network&#34;)
+ *             .build());
  * 
  *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;psc-subnetwork&#34;)
  *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
  *             .region(&#34;europe-west4&#34;)
- *             .network(defaultNetwork.id())
+ *             .network(default_.id())
  *             .build());
  * 
  *         var pscSubnetwork = new Subnetwork(&#34;pscSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;psc-subnetwork-nat&#34;)
  *             .ipCidrRange(&#34;10.1.0.0/16&#34;)
  *             .region(&#34;europe-west4&#34;)
  *             .purpose(&#34;PRIVATE_SERVICE_CONNECT&#34;)
- *             .network(defaultNetwork.id())
+ *             .network(default_.id())
  *             .build());
  * 
  *         var defaultHealthCheck = new HealthCheck(&#34;defaultHealthCheck&#34;, HealthCheckArgs.builder()        
+ *             .name(&#34;psc-healthcheck&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
@@ -336,20 +351,23 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultRegionBackendService = new RegionBackendService(&#34;defaultRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
+ *             .name(&#34;psc-backend&#34;)
  *             .region(&#34;europe-west4&#34;)
  *             .healthChecks(defaultHealthCheck.id())
  *             .build());
  * 
  *         var defaultForwardingRule = new ForwardingRule(&#34;defaultForwardingRule&#34;, ForwardingRuleArgs.builder()        
+ *             .name(&#34;psc-forwarding-rule&#34;)
  *             .region(&#34;europe-west4&#34;)
  *             .loadBalancingScheme(&#34;INTERNAL&#34;)
  *             .backendService(defaultRegionBackendService.id())
  *             .allPorts(true)
- *             .network(defaultNetwork.name())
+ *             .network(default_.name())
  *             .subnetwork(defaultSubnetwork.name())
  *             .build());
  * 
  *         var defaultServiceAttachment = new ServiceAttachment(&#34;defaultServiceAttachment&#34;, ServiceAttachmentArgs.builder()        
+ *             .name(&#34;psc-service-attachment&#34;)
  *             .region(&#34;europe-west4&#34;)
  *             .description(&#34;A service attachment configured with Terraform&#34;)
  *             .enableProxyProtocol(false)
@@ -359,10 +377,11 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var pscNegServiceAttachment = new RegionNetworkEndpointGroup(&#34;pscNegServiceAttachment&#34;, RegionNetworkEndpointGroupArgs.builder()        
+ *             .name(&#34;psc-neg&#34;)
  *             .region(&#34;europe-west4&#34;)
  *             .networkEndpointType(&#34;PRIVATE_SERVICE_CONNECT&#34;)
  *             .pscTargetService(defaultServiceAttachment.selfLink())
- *             .network(defaultNetwork.selfLink())
+ *             .network(default_.selfLink())
  *             .subnetwork(defaultSubnetwork.selfLink())
  *             .build());
  * 
@@ -377,6 +396,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.RegionNetworkEndpointGroup;
  * import com.pulumi.gcp.compute.RegionNetworkEndpointGroupArgs;
  * import java.util.List;
@@ -392,9 +412,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network(&#34;default&#34;);
+ *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+ *             .name(&#34;network&#34;)
+ *             .build());
  * 
  *         var regionNetworkEndpointGroupInternetIpPort = new RegionNetworkEndpointGroup(&#34;regionNetworkEndpointGroupInternetIpPort&#34;, RegionNetworkEndpointGroupArgs.builder()        
+ *             .name(&#34;ip-port-neg&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(default_.id())
  *             .networkEndpointType(&#34;INTERNET_IP_PORT&#34;)
@@ -411,6 +434,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.RegionNetworkEndpointGroup;
  * import com.pulumi.gcp.compute.RegionNetworkEndpointGroupArgs;
  * import java.util.List;
@@ -426,9 +450,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network(&#34;default&#34;);
+ *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+ *             .name(&#34;network&#34;)
+ *             .build());
  * 
  *         var regionNetworkEndpointGroupInternetFqdnPort = new RegionNetworkEndpointGroup(&#34;regionNetworkEndpointGroupInternetFqdnPort&#34;, RegionNetworkEndpointGroupArgs.builder()        
+ *             .name(&#34;ip-port-neg&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(default_.id())
  *             .networkEndpointType(&#34;INTERNET_FQDN_PORT&#34;)

@@ -318,11 +318,12 @@ class Hub(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.networkconnectivity.Hub("primary",
+            name="hub",
             description="A sample hub",
+            project="my-project-name",
             labels={
                 "label-one": "value-one",
-            },
-            project="my-project-name")
+            })
         ```
 
         ## Import
@@ -380,11 +381,12 @@ class Hub(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.networkconnectivity.Hub("primary",
+            name="hub",
             description="A sample hub",
+            project="my-project-name",
             labels={
                 "label-one": "value-one",
-            },
-            project="my-project-name")
+            })
         ```
 
         ## Import

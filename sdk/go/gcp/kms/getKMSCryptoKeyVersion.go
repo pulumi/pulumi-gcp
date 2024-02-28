@@ -47,7 +47,7 @@ import (
 //				return err
 //			}
 //			_, err = kms.GetKMSCryptoKeyVersion(ctx, &kms.GetKMSCryptoKeyVersionArgs{
-//				CryptoKey: data.Google_kms_crypto_key.My_key.Id,
+//				CryptoKey: myKey.Id,
 //			}, nil)
 //			if err != nil {
 //				return err

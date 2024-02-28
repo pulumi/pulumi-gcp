@@ -20,7 +20,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const organizationAccessApproval = new gcp.organizations.AccessApprovalSettings("organizationAccessApproval", {
+ * const organizationAccessApproval = new gcp.organizations.AccessApprovalSettings("organization_access_approval", {
+ *     organizationId: "123456789",
+ *     notificationEmails: [
+ *         "testuser@example.com",
+ *         "example.user@example.com",
+ *     ],
  *     enrolledServices: [
  *         {
  *             cloudProduct: "appengine.googleapis.com",
@@ -30,11 +35,6 @@ import * as utilities from "../utilities";
  *             enrollmentLevel: "BLOCK_ALL",
  *         },
  *     ],
- *     notificationEmails: [
- *         "testuser@example.com",
- *         "example.user@example.com",
- *     ],
- *     organizationId: "123456789",
  * });
  * ```
  * ### Organization Access Approval Active Key Version
@@ -43,12 +43,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myProject = new gcp.organizations.Project("myProject", {orgId: "123456789"});
- * const keyRing = new gcp.kms.KeyRing("keyRing", {
+ * const myProject = new gcp.organizations.Project("my_project", {
+ *     name: "My Project",
+ *     projectId: "your-project-id",
+ *     orgId: "123456789",
+ * });
+ * const keyRing = new gcp.kms.KeyRing("key_ring", {
+ *     name: "key-ring",
  *     location: "global",
  *     project: myProject.projectId,
  * });
- * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {
+ * const cryptoKey = new gcp.kms.CryptoKey("crypto_key", {
+ *     name: "crypto-key",
  *     keyRing: keyRing.id,
  *     purpose: "ASYMMETRIC_SIGN",
  *     versionTemplate: {
@@ -66,14 +72,12 @@ import * as utilities from "../utilities";
  * const cryptoKeyVersion = gcp.kms.getKMSCryptoKeyVersionOutput({
  *     cryptoKey: cryptoKey.id,
  * });
- * const organizationAccessApproval = new gcp.organizations.AccessApprovalSettings("organizationAccessApproval", {
+ * const organizationAccessApproval = new gcp.organizations.AccessApprovalSettings("organization_access_approval", {
  *     organizationId: "123456789",
  *     activeKeyVersion: cryptoKeyVersion.apply(cryptoKeyVersion => cryptoKeyVersion.name),
  *     enrolledServices: [{
  *         cloudProduct: "all",
  *     }],
- * }, {
- *     dependsOn: [iam],
  * });
  * ```
  *

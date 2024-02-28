@@ -36,7 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			listingDataExchange, err := bigqueryanalyticshub.NewDataExchange(ctx, "listingDataExchange", &bigqueryanalyticshub.DataExchangeArgs{
+//			listing, err := bigqueryanalyticshub.NewDataExchange(ctx, "listing", &bigqueryanalyticshub.DataExchangeArgs{
 //				Location:       pulumi.String("US"),
 //				DataExchangeId: pulumi.String("my_data_exchange"),
 //				DisplayName:    pulumi.String("my_data_exchange"),
@@ -45,7 +45,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			listingDataset, err := bigquery.NewDataset(ctx, "listingDataset", &bigquery.DatasetArgs{
+//			listingDataset, err := bigquery.NewDataset(ctx, "listing", &bigquery.DatasetArgs{
 //				DatasetId:    pulumi.String("my_listing"),
 //				FriendlyName: pulumi.String("my_listing"),
 //				Description:  pulumi.String("example data exchange"),
@@ -54,9 +54,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bigqueryanalyticshub.NewListing(ctx, "listingListing", &bigqueryanalyticshub.ListingArgs{
+//			_, err = bigqueryanalyticshub.NewListing(ctx, "listing", &bigqueryanalyticshub.ListingArgs{
 //				Location:       pulumi.String("US"),
-//				DataExchangeId: listingDataExchange.DataExchangeId,
+//				DataExchangeId: listing.DataExchangeId,
 //				ListingId:      pulumi.String("my_listing"),
 //				DisplayName:    pulumi.String("my_listing"),
 //				Description:    pulumi.String("example data exchange"),
@@ -87,7 +87,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			listingDataExchange, err := bigqueryanalyticshub.NewDataExchange(ctx, "listingDataExchange", &bigqueryanalyticshub.DataExchangeArgs{
+//			listing, err := bigqueryanalyticshub.NewDataExchange(ctx, "listing", &bigqueryanalyticshub.DataExchangeArgs{
 //				Location:       pulumi.String("US"),
 //				DataExchangeId: pulumi.String("my_data_exchange"),
 //				DisplayName:    pulumi.String("my_data_exchange"),
@@ -96,7 +96,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			listingDataset, err := bigquery.NewDataset(ctx, "listingDataset", &bigquery.DatasetArgs{
+//			listingDataset, err := bigquery.NewDataset(ctx, "listing", &bigquery.DatasetArgs{
 //				DatasetId:    pulumi.String("my_listing"),
 //				FriendlyName: pulumi.String("my_listing"),
 //				Description:  pulumi.String("example data exchange"),
@@ -105,9 +105,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bigqueryanalyticshub.NewListing(ctx, "listingListing", &bigqueryanalyticshub.ListingArgs{
+//			_, err = bigqueryanalyticshub.NewListing(ctx, "listing", &bigqueryanalyticshub.ListingArgs{
 //				Location:       pulumi.String("US"),
-//				DataExchangeId: listingDataExchange.DataExchangeId,
+//				DataExchangeId: listing.DataExchangeId,
 //				ListingId:      pulumi.String("my_listing"),
 //				DisplayName:    pulumi.String("my_listing"),
 //				Description:    pulumi.String("example data exchange"),

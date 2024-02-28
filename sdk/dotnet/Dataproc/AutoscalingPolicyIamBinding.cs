@@ -51,9 +51,9 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     ///     var policy = new Gcp.Dataproc.AutoscalingPolicyIamPolicy("policy", new()
     ///     {
-    ///         Project = google_dataproc_autoscaling_policy.Basic.Project,
-    ///         Location = google_dataproc_autoscaling_policy.Basic.Location,
-    ///         PolicyId = google_dataproc_autoscaling_policy.Basic.Policy_id,
+    ///         Project = basic.Project,
+    ///         Location = basic.Location,
+    ///         PolicyId = basic.PolicyId,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -72,9 +72,9 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var binding = new Gcp.Dataproc.AutoscalingPolicyIamBinding("binding", new()
     ///     {
-    ///         Project = google_dataproc_autoscaling_policy.Basic.Project,
-    ///         Location = google_dataproc_autoscaling_policy.Basic.Location,
-    ///         PolicyId = google_dataproc_autoscaling_policy.Basic.Policy_id,
+    ///         Project = basic.Project,
+    ///         Location = basic.Location,
+    ///         PolicyId = basic.PolicyId,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -97,9 +97,9 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var member = new Gcp.Dataproc.AutoscalingPolicyIamMember("member", new()
     ///     {
-    ///         Project = google_dataproc_autoscaling_policy.Basic.Project,
-    ///         Location = google_dataproc_autoscaling_policy.Basic.Location,
-    ///         PolicyId = google_dataproc_autoscaling_policy.Basic.Policy_id,
+    ///         Project = basic.Project,
+    ///         Location = basic.Location,
+    ///         PolicyId = basic.PolicyId,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

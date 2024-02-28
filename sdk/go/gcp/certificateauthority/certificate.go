@@ -18,6 +18,165 @@ import (
 // `tier = "ENTERPRISE"`
 //
 // ## Example Usage
+// ### Privateca Certificate Generated Key
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi-tls/sdk/v4/go/tls"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := certificateauthority.NewCaPool(ctx, "default", &certificateauthority.CaPoolArgs{
+//				Location: pulumi.String("us-central1"),
+//				Name:     pulumi.String("default"),
+//				Tier:     pulumi.String("ENTERPRISE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultAuthority, err := certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
+//				Location:               pulumi.String("us-central1"),
+//				Pool:                   _default.Name,
+//				CertificateAuthorityId: pulumi.String("my-authority"),
+//				Config: &certificateauthority.AuthorityConfigArgs{
+//					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
+//						Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
+//							Organization: pulumi.String("HashiCorp"),
+//							CommonName:   pulumi.String("my-certificate-authority"),
+//						},
+//						SubjectAltName: &certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs{
+//							DnsNames: pulumi.StringArray{
+//								pulumi.String("hashicorp.com"),
+//							},
+//						},
+//					},
+//					X509Config: &certificateauthority.AuthorityConfigX509ConfigArgs{
+//						CaOptions: &certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs{
+//							IsCa: pulumi.Bool(true),
+//						},
+//						KeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs{
+//							BaseKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{
+//								CertSign: pulumi.Bool(true),
+//								CrlSign:  pulumi.Bool(true),
+//							},
+//							ExtendedKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{
+//								ServerAuth: pulumi.Bool(true),
+//							},
+//						},
+//					},
+//				},
+//				KeySpec: &certificateauthority.AuthorityKeySpecArgs{
+//					Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
+//				},
+//				DeletionProtection:                 pulumi.Bool(false),
+//				SkipGracePeriod:                    pulumi.Bool(true),
+//				IgnoreActiveCertificatesOnDeletion: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			certKey, err := tls.NewPrivateKey(ctx, "cert_key", &tls.PrivateKeyArgs{
+//				Algorithm: pulumi.String("RSA"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = certificateauthority.NewCertificate(ctx, "default", &certificateauthority.CertificateArgs{
+//				Location:             pulumi.String("us-central1"),
+//				Pool:                 _default.Name,
+//				CertificateAuthority: defaultAuthority.CertificateAuthorityId,
+//				Lifetime:             pulumi.String("86000s"),
+//				Name:                 pulumi.String("cert-1"),
+//				Config: &certificateauthority.CertificateConfigArgs{
+//					SubjectConfig: &certificateauthority.CertificateConfigSubjectConfigArgs{
+//						Subject: &certificateauthority.CertificateConfigSubjectConfigSubjectArgs{
+//							CommonName:         pulumi.String("san1.example.com"),
+//							CountryCode:        pulumi.String("us"),
+//							Organization:       pulumi.String("google"),
+//							OrganizationalUnit: pulumi.String("enterprise"),
+//							Locality:           pulumi.String("mountain view"),
+//							Province:           pulumi.String("california"),
+//							StreetAddress:      pulumi.String("1600 amphitheatre parkway"),
+//						},
+//						SubjectAltName: &certificateauthority.CertificateConfigSubjectConfigSubjectAltNameArgs{
+//							EmailAddresses: pulumi.StringArray{
+//								pulumi.String("email@example.com"),
+//							},
+//							IpAddresses: pulumi.StringArray{
+//								pulumi.String("127.0.0.1"),
+//							},
+//							Uris: pulumi.StringArray{
+//								pulumi.String("http://www.ietf.org/rfc/rfc3986.txt"),
+//							},
+//						},
+//					},
+//					X509Config: &certificateauthority.CertificateConfigX509ConfigArgs{
+//						CaOptions: &certificateauthority.CertificateConfigX509ConfigCaOptionsArgs{
+//							IsCa: pulumi.Bool(true),
+//						},
+//						KeyUsage: &certificateauthority.CertificateConfigX509ConfigKeyUsageArgs{
+//							BaseKeyUsage: &certificateauthority.CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs{
+//								CertSign: pulumi.Bool(true),
+//								CrlSign:  pulumi.Bool(true),
+//							},
+//							ExtendedKeyUsage: &certificateauthority.CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs{
+//								ServerAuth: pulumi.Bool(false),
+//							},
+//						},
+//						NameConstraints: &certificateauthority.CertificateConfigX509ConfigNameConstraintsArgs{
+//							Critical: pulumi.Bool(true),
+//							PermittedDnsNames: pulumi.StringArray{
+//								pulumi.String("*.example.com"),
+//							},
+//							ExcludedDnsNames: pulumi.StringArray{
+//								pulumi.String("*.deny.example.com"),
+//							},
+//							PermittedIpRanges: pulumi.StringArray{
+//								pulumi.String("10.0.0.0/8"),
+//							},
+//							ExcludedIpRanges: pulumi.StringArray{
+//								pulumi.String("10.1.1.0/24"),
+//							},
+//							PermittedEmailAddresses: pulumi.StringArray{
+//								pulumi.String(".example.com"),
+//							},
+//							ExcludedEmailAddresses: pulumi.StringArray{
+//								pulumi.String(".deny.example.com"),
+//							},
+//							PermittedUris: pulumi.StringArray{
+//								pulumi.String(".example.com"),
+//							},
+//							ExcludedUris: pulumi.StringArray{
+//								pulumi.String(".deny.example.com"),
+//							},
+//						},
+//					},
+//					PublicKey: &certificateauthority.CertificateConfigPublicKeyArgs{
+//						Format: pulumi.String("PEM"),
+//						Key: std.Base64encodeOutput(ctx, std.Base64encodeOutputArgs{
+//							Input: certKey.PublicKeyPem,
+//						}, nil).ApplyT(func(invoke std.Base64encodeResult) (*string, error) {
+//							return invoke.Result, nil
+//						}).(pulumi.StringPtrOutput),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Privateca Certificate With Template
 //
 // ```go
@@ -25,32 +184,25 @@ import (
 //
 // import (
 //
-//	"os"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
-//
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultCaPool, err := certificateauthority.NewCaPool(ctx, "defaultCaPool", &certificateauthority.CaPoolArgs{
+//			_, err := certificateauthority.NewCaPool(ctx, "default", &certificateauthority.CaPoolArgs{
 //				Location: pulumi.String("us-central1"),
+//				Name:     pulumi.String("my-pool"),
 //				Tier:     pulumi.String("ENTERPRISE"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultCertificateTemplate, err := certificateauthority.NewCertificateTemplate(ctx, "defaultCertificateTemplate", &certificateauthority.CertificateTemplateArgs{
+//			defaultCertificateTemplate, err := certificateauthority.NewCertificateTemplate(ctx, "default", &certificateauthority.CertificateTemplateArgs{
 //				Location:    pulumi.String("us-central1"),
+//				Name:        pulumi.String("my-certificate-template"),
 //				Description: pulumi.String("An updated sample certificate template"),
 //				IdentityConstraints: &certificateauthority.CertificateTemplateIdentityConstraintsArgs{
 //					AllowSubjectAltNamesPassthrough: pulumi.Bool(true),
@@ -137,9 +289,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultAuthority, err := certificateauthority.NewAuthority(ctx, "defaultAuthority", &certificateauthority.AuthorityArgs{
+//			defaultAuthority, err := certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
 //				Location:               pulumi.String("us-central1"),
-//				Pool:                   defaultCaPool.Name,
+//				Pool:                   _default.Name,
 //				CertificateAuthorityId: pulumi.String("my-authority"),
 //				Config: &certificateauthority.AuthorityConfigArgs{
 //					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
@@ -178,12 +330,19 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = certificateauthority.NewCertificate(ctx, "defaultCertificate", &certificateauthority.CertificateArgs{
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/rsa_csr.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = certificateauthority.NewCertificate(ctx, "default", &certificateauthority.CertificateArgs{
 //				Location:             pulumi.String("us-central1"),
-//				Pool:                 defaultCaPool.Name,
+//				Pool:                 _default.Name,
 //				CertificateAuthority: defaultAuthority.CertificateAuthorityId,
+//				Name:                 pulumi.String("my-certificate"),
 //				Lifetime:             pulumi.String("860s"),
-//				PemCsr:               readFileOrPanic("test-fixtures/rsa_csr.pem"),
+//				PemCsr:               invokeFile.Result,
 //				CertificateTemplate:  defaultCertificateTemplate.ID(),
 //			})
 //			if err != nil {
@@ -201,33 +360,25 @@ import (
 //
 // import (
 //
-//	"os"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
-//
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultCaPool, err := certificateauthority.NewCaPool(ctx, "defaultCaPool", &certificateauthority.CaPoolArgs{
+//			_, err := certificateauthority.NewCaPool(ctx, "default", &certificateauthority.CaPoolArgs{
 //				Location: pulumi.String("us-central1"),
+//				Name:     pulumi.String("my-pool"),
 //				Tier:     pulumi.String("ENTERPRISE"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultAuthority, err := certificateauthority.NewAuthority(ctx, "defaultAuthority", &certificateauthority.AuthorityArgs{
+//			defaultAuthority, err := certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
 //				Location:               pulumi.String("us-central1"),
-//				Pool:                   defaultCaPool.Name,
+//				Pool:                   _default.Name,
 //				CertificateAuthorityId: pulumi.String("my-authority"),
 //				Config: &certificateauthority.AuthorityConfigArgs{
 //					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
@@ -266,12 +417,19 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = certificateauthority.NewCertificate(ctx, "defaultCertificate", &certificateauthority.CertificateArgs{
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/rsa_csr.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = certificateauthority.NewCertificate(ctx, "default", &certificateauthority.CertificateArgs{
 //				Location:             pulumi.String("us-central1"),
-//				Pool:                 defaultCaPool.Name,
+//				Pool:                 _default.Name,
 //				CertificateAuthority: defaultAuthority.CertificateAuthorityId,
+//				Name:                 pulumi.String("my-certificate"),
 //				Lifetime:             pulumi.String("860s"),
-//				PemCsr:               readFileOrPanic("test-fixtures/rsa_csr.pem"),
+//				PemCsr:               invokeFile.Result,
 //			})
 //			if err != nil {
 //				return err
@@ -288,34 +446,25 @@ import (
 //
 // import (
 //
-//	"encoding/base64"
-//	"os"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
-//	func filebase64OrPanic(path string) string {
-//		if fileData, err := os.ReadFile(path); err == nil {
-//			return base64.StdEncoding.EncodeToString(fileData[:])
-//		} else {
-//			panic(err.Error())
-//		}
-//	}
-//
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultCaPool, err := certificateauthority.NewCaPool(ctx, "defaultCaPool", &certificateauthority.CaPoolArgs{
+//			_, err := certificateauthority.NewCaPool(ctx, "default", &certificateauthority.CaPoolArgs{
 //				Location: pulumi.String("us-central1"),
+//				Name:     pulumi.String("my-pool"),
 //				Tier:     pulumi.String("ENTERPRISE"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultAuthority, err := certificateauthority.NewAuthority(ctx, "defaultAuthority", &certificateauthority.AuthorityArgs{
+//			_, err = certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
 //				Location:               pulumi.String("us-central1"),
-//				Pool:                   defaultCaPool.Name,
+//				Pool:                   _default.Name,
 //				CertificateAuthorityId: pulumi.String("my-authority"),
 //				Config: &certificateauthority.AuthorityConfigArgs{
 //					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
@@ -356,9 +505,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = certificateauthority.NewCertificate(ctx, "defaultCertificate", &certificateauthority.CertificateArgs{
+//			invokeFilebase64, err := std.Filebase64(ctx, &std.Filebase64Args{
+//				Input: "test-fixtures/rsa_public.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = certificateauthority.NewCertificate(ctx, "default", &certificateauthority.CertificateArgs{
 //				Location: pulumi.String("us-central1"),
-//				Pool:     defaultCaPool.Name,
+//				Pool:     _default.Name,
+//				Name:     pulumi.String("my-certificate"),
 //				Lifetime: pulumi.String("860s"),
 //				Config: &certificateauthority.CertificateConfigArgs{
 //					SubjectConfig: &certificateauthority.CertificateConfigSubjectConfigArgs{
@@ -388,12 +544,10 @@ import (
 //					},
 //					PublicKey: &certificateauthority.CertificateConfigPublicKeyArgs{
 //						Format: pulumi.String("PEM"),
-//						Key:    filebase64OrPanic("test-fixtures/rsa_public.pem"),
+//						Key:    invokeFilebase64.Result,
 //					},
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				defaultAuthority,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

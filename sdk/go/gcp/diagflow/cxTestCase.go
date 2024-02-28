@@ -116,20 +116,20 @@ import (
 //				return err
 //			}
 //			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"some_param": "1",
+//				"someParam": "1",
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
 //			tmpJSON1, err := json.Marshal(map[string]interface{}{
-//				"some_param": "1",
+//				"someParam": "1",
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			json1 := string(tmpJSON1)
-//			_, err = diagflow.NewCxTestCase(ctx, "basicTestCase", &diagflow.CxTestCaseArgs{
+//			_, err = diagflow.NewCxTestCase(ctx, "basic_test_case", &diagflow.CxTestCaseArgs{
 //				Parent:      agent.ID(),
 //				DisplayName: pulumi.String("MyTestCase"),
 //				Tags: pulumi.StringArray{

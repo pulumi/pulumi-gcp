@@ -195,8 +195,8 @@ def get_function(location: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    my_function = gcp.cloudfunctionsv2.get_function(location="us-central1",
-        name="function")
+    my_function = gcp.cloudfunctionsv2.get_function(name="function",
+        location="us-central1")
     ```
 
 
@@ -249,8 +249,8 @@ def get_function_output(location: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    my_function = gcp.cloudfunctionsv2.get_function(location="us-central1",
-        name="function")
+    my_function = gcp.cloudfunctionsv2.get_function(name="function",
+        location="us-central1")
     ```
 
 

@@ -41,12 +41,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := storage.NewBucket(ctx, "image-store", &storage.BucketArgs{
+//				Name:     pulumi.String("image-store-bucket"),
 //				Location: pulumi.String("EU"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			image, err := storage.NewBucketObject(ctx, "image", &storage.BucketObjectArgs{
+//				Name:   pulumi.String("image1"),
 //				Bucket: image_store.Name,
 //				Source: pulumi.NewFileAsset("image1.jpg"),
 //			})

@@ -38,6 +38,7 @@ namespace Pulumi.Gcp.BigTable
     /// {
     ///     var production_instance = new Gcp.BigTable.Instance("production-instance", new()
     ///     {
+    ///         Name = "tf-instance",
     ///         Clusters = new[]
     ///         {
     ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
@@ -67,6 +68,7 @@ namespace Pulumi.Gcp.BigTable
     /// {
     ///     var production_instance = new Gcp.BigTable.Instance("production-instance", new()
     ///     {
+    ///         Name = "tf-instance",
     ///         Clusters = new[]
     ///         {
     ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
@@ -78,15 +80,15 @@ namespace Pulumi.Gcp.BigTable
     ///             },
     ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
     ///             {
-    ///                 AutoscalingConfig = new Gcp.BigTable.Inputs.InstanceClusterAutoscalingConfigArgs
-    ///                 {
-    ///                     CpuTarget = 50,
-    ///                     MaxNodes = 3,
-    ///                     MinNodes = 1,
-    ///                 },
     ///                 ClusterId = "tf-instance-cluster2",
     ///                 StorageType = "HDD",
     ///                 Zone = "us-central1-b",
+    ///                 AutoscalingConfig = new Gcp.BigTable.Inputs.InstanceClusterAutoscalingConfigArgs
+    ///                 {
+    ///                     MinNodes = 1,
+    ///                     MaxNodes = 3,
+    ///                     CpuTarget = 50,
+    ///                 },
     ///             },
     ///         },
     ///         Labels = 

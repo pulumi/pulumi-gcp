@@ -13,6 +13,106 @@ import * as utilities from "../utilities";
  *
  * > **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.organizations.Project("default", {
+ *     projectId: "your-project-id",
+ *     name: "your-project-id",
+ *     orgId: "123456789",
+ * });
+ * const basic = new gcp.logging.ProjectBucketConfig("basic", {
+ *     project: _default.projectId,
+ *     location: "global",
+ *     retentionDays: 30,
+ *     bucketId: "_Default",
+ * });
+ * ```
+ *
+ * Create logging bucket with customId
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = new gcp.logging.ProjectBucketConfig("basic", {
+ *     project: "project_id",
+ *     location: "global",
+ *     retentionDays: 30,
+ *     bucketId: "custom-bucket",
+ * });
+ * ```
+ *
+ * Create logging bucket with Log Analytics enabled
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const analytics_enabled_bucket = new gcp.logging.ProjectBucketConfig("analytics-enabled-bucket", {
+ *     project: "project_id",
+ *     location: "global",
+ *     retentionDays: 30,
+ *     enableAnalytics: true,
+ *     bucketId: "custom-bucket",
+ * });
+ * ```
+ *
+ * Create logging bucket with customId and cmekSettings
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cmekSettings = gcp.logging.getProjectCmekSettings({
+ *     project: "project_id",
+ * });
+ * const keyring = new gcp.kms.KeyRing("keyring", {
+ *     name: "keyring-example",
+ *     location: "us-central1",
+ * });
+ * const key = new gcp.kms.CryptoKey("key", {
+ *     name: "crypto-key-example",
+ *     keyRing: keyring.id,
+ *     rotationPeriod: "7776000s",
+ * });
+ * const cryptoKeyBinding = new gcp.kms.CryptoKeyIAMBinding("crypto_key_binding", {
+ *     cryptoKeyId: key.id,
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     members: [cmekSettings.then(cmekSettings => `serviceAccount:${cmekSettings.serviceAccountId}`)],
+ * });
+ * const example_project_bucket_cmek_settings = new gcp.logging.ProjectBucketConfig("example-project-bucket-cmek-settings", {
+ *     project: "project_id",
+ *     location: "us-central1",
+ *     retentionDays: 30,
+ *     bucketId: "custom-bucket",
+ *     cmekSettings: {
+ *         kmsKeyName: key.id,
+ *     },
+ * });
+ * ```
+ *
+ * Create logging bucket with index configs
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example_project_bucket_index_configs = new gcp.logging.ProjectBucketConfig("example-project-bucket-index-configs", {
+ *     project: "project_id",
+ *     location: "global",
+ *     retentionDays: 30,
+ *     bucketId: "custom-bucket",
+ *     indexConfigs: {
+ *         filePath: "jsonPayload.request.status",
+ *         type: "INDEX_TYPE_STRING",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * This resource can be imported using the following format:

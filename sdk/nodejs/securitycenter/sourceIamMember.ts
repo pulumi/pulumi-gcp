@@ -25,10 +25,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const customSource = new gcp.securitycenter.Source("customSource", {
- *     description: "My custom Cloud Security Command Center Finding Source",
+ * const customSource = new gcp.securitycenter.Source("custom_source", {
  *     displayName: "My Source",
  *     organization: "123456789",
+ *     description: "My custom Cloud Security Command Center Finding Source",
  * });
  * ```
  *

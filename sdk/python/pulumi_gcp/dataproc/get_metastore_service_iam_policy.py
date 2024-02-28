@@ -109,9 +109,9 @@ def get_metastore_service_iam_policy(location: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataproc.get_metastore_service_iam_policy(project=google_dataproc_metastore_service["default"]["project"],
-        location=google_dataproc_metastore_service["default"]["location"],
-        service_id=google_dataproc_metastore_service["default"]["service_id"])
+    policy = gcp.dataproc.get_metastore_service_iam_policy(project=default["project"],
+        location=default["location"],
+        service_id=default["serviceId"])
     ```
 
 
@@ -151,9 +151,9 @@ def get_metastore_service_iam_policy_output(location: Optional[pulumi.Input[Opti
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataproc.get_metastore_service_iam_policy(project=google_dataproc_metastore_service["default"]["project"],
-        location=google_dataproc_metastore_service["default"]["location"],
-        service_id=google_dataproc_metastore_service["default"]["service_id"])
+    policy = gcp.dataproc.get_metastore_service_iam_policy(project=default["project"],
+        location=default["location"],
+        service_id=default["serviceId"])
     ```
 
 

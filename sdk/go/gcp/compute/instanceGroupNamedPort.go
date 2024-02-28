@@ -39,13 +39,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			containerNetwork, err := compute.NewNetwork(ctx, "containerNetwork", &compute.NetworkArgs{
+//			containerNetwork, err := compute.NewNetwork(ctx, "container_network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("container-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			containerSubnetwork, err := compute.NewSubnetwork(ctx, "containerSubnetwork", &compute.SubnetworkArgs{
+//			containerSubnetwork, err := compute.NewSubnetwork(ctx, "container_subnetwork", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("container-subnetwork"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     containerNetwork.Name,
 //				IpCidrRange: pulumi.String("10.0.36.0/24"),
@@ -53,7 +55,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			myCluster, err := container.NewCluster(ctx, "myCluster", &container.ClusterArgs{
+//			myCluster, err := container.NewCluster(ctx, "my_cluster", &container.ClusterArgs{
+//				Name:             pulumi.String("my-cluster"),
 //				Location:         pulumi.String("us-central1-a"),
 //				InitialNodeCount: pulumi.Int(1),
 //				Network:          containerNetwork.Name,
@@ -67,21 +70,23 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewInstanceGroupNamedPort(ctx, "myPort", &compute.InstanceGroupNamedPortArgs{
+//			_, err = compute.NewInstanceGroupNamedPort(ctx, "my_port", &compute.InstanceGroupNamedPortArgs{
 //				Group: myCluster.NodePools.ApplyT(func(nodePools []container.ClusterNodePool) (*string, error) {
 //					return &nodePools[0].InstanceGroupUrls[0], nil
 //				}).(pulumi.StringPtrOutput),
 //				Zone: pulumi.String("us-central1-a"),
+//				Name: pulumi.String("http"),
 //				Port: pulumi.Int(8080),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewInstanceGroupNamedPort(ctx, "myPorts", &compute.InstanceGroupNamedPortArgs{
+//			_, err = compute.NewInstanceGroupNamedPort(ctx, "my_ports", &compute.InstanceGroupNamedPortArgs{
 //				Group: myCluster.NodePools.ApplyT(func(nodePools []container.ClusterNodePool) (*string, error) {
 //					return &nodePools[0].InstanceGroupUrls[0], nil
 //				}).(pulumi.StringPtrOutput),
 //				Zone: pulumi.String("us-central1-a"),
+//				Name: pulumi.String("https"),
 //				Port: pulumi.Int(4443),
 //			})
 //			if err != nil {

@@ -35,11 +35,12 @@ namespace Pulumi.Gcp.Container
     ///     {
     ///         ApplicationId = "12345678-1234-1234-1234-123456789111",
     ///         Location = "us-west1",
+    ///         Name = "client-name",
     ///         TenantId = "12345678-1234-1234-1234-123456789111",
     ///         Project = "my-project-name",
     ///     });
     /// 
-    ///     var primaryAzureCluster = new Gcp.Container.AzureCluster("primaryAzureCluster", new()
+    ///     var primary = new Gcp.Container.AzureCluster("primary", new()
     ///     {
     ///         Authorization = new Gcp.Container.Inputs.AzureClusterAuthorizationArgs
     ///         {
@@ -67,6 +68,7 @@ namespace Pulumi.Gcp.Container
     ///             Project = "my-project-number",
     ///         },
     ///         Location = "us-west1",
+    ///         Name = "name",
     ///         Networking = new Gcp.Container.Inputs.AzureClusterNetworkingArgs
     ///         {
     ///             PodAddressCidrBlocks = new[]
@@ -83,14 +85,14 @@ namespace Pulumi.Gcp.Container
     ///         Project = "my-project-name",
     ///     });
     /// 
-    ///     var primaryAzureNodePool = new Gcp.Container.AzureNodePool("primaryAzureNodePool", new()
+    ///     var primaryAzureNodePool = new Gcp.Container.AzureNodePool("primary", new()
     ///     {
     ///         Autoscaling = new Gcp.Container.Inputs.AzureNodePoolAutoscalingArgs
     ///         {
     ///             MaxNodeCount = 3,
     ///             MinNodeCount = 2,
     ///         },
-    ///         Cluster = primaryAzureCluster.Name,
+    ///         Cluster = primary.Name,
     ///         Config = new Gcp.Container.Inputs.AzureNodePoolConfigArgs
     ///         {
     ///             SshConfig = new Gcp.Container.Inputs.AzureNodePoolConfigSshConfigArgs
@@ -121,6 +123,7 @@ namespace Pulumi.Gcp.Container
     ///         {
     ///             MaxPodsPerNode = 110,
     ///         },
+    ///         Name = "node-pool-name",
     ///         SubnetId = "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
     ///         Version = versions.Apply(getAzureVersionsResult =&gt; getAzureVersionsResult.ValidVersions[0]),
     ///         Annotations = 

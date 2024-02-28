@@ -31,11 +31,13 @@ import * as utilities from "../utilities";
  *     displayName: "Service Account",
  * });
  * const primary = new gcp.container.Cluster("primary", {
+ *     name: "my-gke-cluster",
  *     location: "us-central1",
  *     removeDefaultNodePool: true,
  *     initialNodeCount: 1,
  * });
- * const primaryPreemptibleNodes = new gcp.container.NodePool("primaryPreemptibleNodes", {
+ * const primaryPreemptibleNodes = new gcp.container.NodePool("primary_preemptible_nodes", {
+ *     name: "my-node-pool",
  *     location: "us-central1",
  *     cluster: primary.name,
  *     nodeCount: 1,
@@ -51,6 +53,33 @@ import * as utilities from "../utilities";
  * > **Note:** It is recommended that node pools be created and managed as separate resources as in the example above.
  * This allows node pools to be added and removed without recreating the cluster.  Node pools defined directly in the
  * `gcp.container.Cluster` resource cannot be removed without re-creating the cluster.
+ * ### With The Default Node Pool
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.serviceaccount.Account("default", {
+ *     accountId: "service-account-id",
+ *     displayName: "Service Account",
+ * });
+ * const primary = new gcp.container.Cluster("primary", {
+ *     name: "marcellus-wallace",
+ *     location: "us-central1-a",
+ *     initialNodeCount: 3,
+ *     nodeConfig: {
+ *         serviceAccount: _default.email,
+ *         oauthScopes: ["https://www.googleapis.com/auth/cloud-platform"],
+ *         labels: {
+ *             foo: "bar",
+ *         },
+ *         tags: [
+ *             "foo",
+ *             "bar",
+ *         ],
+ *     },
+ * });
+ * ```
  * ### Autopilot
  *
  * ```typescript
@@ -62,8 +91,9 @@ import * as utilities from "../utilities";
  *     displayName: "Service Account",
  * });
  * const primary = new gcp.container.Cluster("primary", {
- *     enableAutopilot: true,
+ *     name: "marcellus-wallace",
  *     location: "us-central1-a",
+ *     enableAutopilot: true,
  * });
  * ```
  *

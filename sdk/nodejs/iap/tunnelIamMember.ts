@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.iap.TunnelIamPolicy("policy", {
- *     project: google_project_service.project_service.project,
+ *     project: projectService.project,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.iap.TunnelIamPolicy("policy", {
- *     project: google_project_service.project_service.project,
+ *     project: projectService.project,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -70,7 +70,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.iap.TunnelIamBinding("binding", {
- *     project: google_project_service.project_service.project,
+ *     project: projectService.project,
  *     role: "roles/iap.tunnelResourceAccessor",
  *     members: ["user:jane@example.com"],
  * });
@@ -83,7 +83,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.iap.TunnelIamBinding("binding", {
- *     project: google_project_service.project_service.project,
+ *     project: projectService.project,
  *     role: "roles/iap.tunnelResourceAccessor",
  *     members: ["user:jane@example.com"],
  *     condition: {
@@ -100,7 +100,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.iap.TunnelIamMember("member", {
- *     project: google_project_service.project_service.project,
+ *     project: projectService.project,
  *     role: "roles/iap.tunnelResourceAccessor",
  *     member: "user:jane@example.com",
  * });
@@ -113,7 +113,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.iap.TunnelIamMember("member", {
- *     project: google_project_service.project_service.project,
+ *     project: projectService.project,
  *     role: "roles/iap.tunnelResourceAccessor",
  *     member: "user:jane@example.com",
  *     condition: {

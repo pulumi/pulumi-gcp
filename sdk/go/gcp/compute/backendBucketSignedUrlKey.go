@@ -37,19 +37,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			urlSignature, err := random.NewRandomId(ctx, "urlSignature", &random.RandomIdArgs{
+//			urlSignature, err := random.NewRandomId(ctx, "url_signature", &random.RandomIdArgs{
 //				ByteLength: pulumi.Int(16),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:     pulumi.String("test-storage-bucket"),
 //				Location: pulumi.String("EU"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			testBackend, err := compute.NewBackendBucket(ctx, "testBackend", &compute.BackendBucketArgs{
+//			testBackend, err := compute.NewBackendBucket(ctx, "test_backend", &compute.BackendBucketArgs{
+//				Name:        pulumi.String("test-signed-backend-bucket"),
 //				Description: pulumi.String("Contains beautiful images"),
 //				BucketName:  bucket.Name,
 //				EnableCdn:   pulumi.Bool(true),
@@ -57,7 +59,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewBackendBucketSignedUrlKey(ctx, "backendKey", &compute.BackendBucketSignedUrlKeyArgs{
+//			_, err = compute.NewBackendBucketSignedUrlKey(ctx, "backend_key", &compute.BackendBucketSignedUrlKeyArgs{
+//				Name:          pulumi.String("test-key"),
 //				KeyValue:      urlSignature.B64Url,
 //				BackendBucket: testBackend.Name,
 //			})

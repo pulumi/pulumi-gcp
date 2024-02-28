@@ -93,14 +93,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const testDataset = new gcp.bigquery.Dataset("testDataset", {datasetId: "dataset_id"});
- * const testConnection = new gcp.bigquery.Connection("testConnection", {
+ * const test = new gcp.bigquery.Dataset("test", {datasetId: "dataset_id"});
+ * const testConnection = new gcp.bigquery.Connection("test", {
  *     connectionId: "connection_id",
  *     location: "US",
  *     spark: {},
  * });
  * const pyspark = new gcp.bigquery.Routine("pyspark", {
- *     datasetId: testDataset.datasetId,
+ *     datasetId: test.datasetId,
  *     routineId: "routine_id",
  *     routineType: "PROCEDURE",
  *     language: "PYTHON",
@@ -136,14 +136,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const testDataset = new gcp.bigquery.Dataset("testDataset", {datasetId: "dataset_id"});
- * const testConnection = new gcp.bigquery.Connection("testConnection", {
+ * const test = new gcp.bigquery.Dataset("test", {datasetId: "dataset_id"});
+ * const testConnection = new gcp.bigquery.Connection("test", {
  *     connectionId: "connection_id",
  *     location: "US",
  *     spark: {},
  * });
- * const pysparkMainfile = new gcp.bigquery.Routine("pysparkMainfile", {
- *     datasetId: testDataset.datasetId,
+ * const pysparkMainfile = new gcp.bigquery.Routine("pyspark_mainfile", {
+ *     datasetId: test.datasetId,
  *     routineId: "routine_id",
  *     routineType: "PROCEDURE",
  *     language: "PYTHON",
@@ -164,14 +164,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const testDataset = new gcp.bigquery.Dataset("testDataset", {datasetId: "dataset_id"});
- * const testConnection = new gcp.bigquery.Connection("testConnection", {
+ * const test = new gcp.bigquery.Dataset("test", {datasetId: "dataset_id"});
+ * const testConnection = new gcp.bigquery.Connection("test", {
  *     connectionId: "connection_id",
  *     location: "US",
  *     spark: {},
  * });
- * const sparkJar = new gcp.bigquery.Routine("sparkJar", {
- *     datasetId: testDataset.datasetId,
+ * const sparkJar = new gcp.bigquery.Routine("spark_jar", {
+ *     datasetId: test.datasetId,
  *     routineId: "routine_id",
  *     routineType: "PROCEDURE",
  *     language: "SCALA",

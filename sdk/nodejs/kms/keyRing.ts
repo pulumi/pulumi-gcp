@@ -24,7 +24,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const example_keyring = new gcp.kms.KeyRing("example-keyring", {location: "global"});
+ * const example_keyring = new gcp.kms.KeyRing("example-keyring", {
+ *     name: "keyring-example",
+ *     location: "global",
+ * });
  * ```
  *
  * ## Import

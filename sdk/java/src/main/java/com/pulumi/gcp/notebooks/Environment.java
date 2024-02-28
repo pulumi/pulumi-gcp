@@ -50,10 +50,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var environment = new Environment(&#34;environment&#34;, EnvironmentArgs.builder()        
+ *             .name(&#34;notebooks-environment&#34;)
+ *             .location(&#34;us-west1-a&#34;)
  *             .containerImage(EnvironmentContainerImageArgs.builder()
  *                 .repository(&#34;gcr.io/deeplearning-platform-release/base-cpu&#34;)
  *                 .build())
- *             .location(&#34;us-west1-a&#34;)
  *             .build());
  * 
  *     }

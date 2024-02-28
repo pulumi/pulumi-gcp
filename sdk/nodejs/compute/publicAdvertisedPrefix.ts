@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const prefixes = new gcp.compute.PublicAdvertisedPrefix("prefixes", {
+ *     name: "my-prefix",
  *     description: "description",
  *     dnsVerificationIp: "127.127.0.0",
  *     ipCidrRange: "127.127.0.0/16",

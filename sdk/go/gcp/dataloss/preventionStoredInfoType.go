@@ -36,14 +36,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataloss.NewPreventionStoredInfoType(ctx, "basic", &dataloss.PreventionStoredInfoTypeArgs{
+//				Parent:      pulumi.String("projects/my-project-name"),
 //				Description: pulumi.String("Description"),
 //				DisplayName: pulumi.String("Displayname"),
-//				Parent:      pulumi.String("projects/my-project-name"),
 //				Regex: &dataloss.PreventionStoredInfoTypeRegexArgs{
+//					Pattern: pulumi.String("patient"),
 //					GroupIndexes: pulumi.IntArray{
 //						pulumi.Int(2),
 //					},
-//					Pattern: pulumi.String("patient"),
 //				},
 //			})
 //			if err != nil {
@@ -69,7 +69,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataloss.NewPreventionStoredInfoType(ctx, "dictionary", &dataloss.PreventionStoredInfoTypeArgs{
+//				Parent:      pulumi.String("projects/my-project-name"),
 //				Description: pulumi.String("Description"),
+//				DisplayName: pulumi.String("Displayname"),
 //				Dictionary: &dataloss.PreventionStoredInfoTypeDictionaryArgs{
 //					WordList: &dataloss.PreventionStoredInfoTypeDictionaryWordListArgs{
 //						Words: pulumi.StringArray{
@@ -78,8 +80,6 @@ import (
 //						},
 //					},
 //				},
-//				DisplayName: pulumi.String("Displayname"),
-//				Parent:      pulumi.String("projects/my-project-name"),
 //			})
 //			if err != nil {
 //				return err
@@ -107,6 +107,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:         pulumi.String("tf-test-bucket"),
 //				Location:     pulumi.String("US"),
 //				ForceDestroy: pulumi.Bool(true),
 //			})
@@ -114,6 +115,7 @@ import (
 //				return err
 //			}
 //			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+//				Name:   pulumi.String("tf-test-object"),
 //				Bucket: bucket.Name,
 //				Source: pulumi.NewFileAsset("./test-fixtures/words.txt"),
 //			})
@@ -161,17 +163,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataloss.NewPreventionStoredInfoType(ctx, "withStoredInfoTypeId", &dataloss.PreventionStoredInfoTypeArgs{
-//				Description: pulumi.String("Description"),
-//				DisplayName: pulumi.String("Displayname"),
-//				Parent:      pulumi.String("projects/my-project-name"),
+//			_, err := dataloss.NewPreventionStoredInfoType(ctx, "with_stored_info_type_id", &dataloss.PreventionStoredInfoTypeArgs{
+//				Parent:           pulumi.String("projects/my-project-name"),
+//				Description:      pulumi.String("Description"),
+//				DisplayName:      pulumi.String("Displayname"),
+//				StoredInfoTypeId: pulumi.String("id-"),
 //				Regex: &dataloss.PreventionStoredInfoTypeRegexArgs{
+//					Pattern: pulumi.String("patient"),
 //					GroupIndexes: pulumi.IntArray{
 //						pulumi.Int(2),
 //					},
-//					Pattern: pulumi.String("patient"),
 //				},
-//				StoredInfoTypeId: pulumi.String("id-"),
 //			})
 //			if err != nil {
 //				return err

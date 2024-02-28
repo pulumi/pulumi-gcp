@@ -341,8 +341,7 @@ class AppleApp(pulumi.CustomResource):
         default = gcp.firebase.AppleApp("default",
             project="my-project-name",
             display_name="Display Name Basic",
-            bundle_id="apple.app.12345",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            bundle_id="apple.app.12345")
         ```
         ### Firebase Apple App Full
 
@@ -351,22 +350,21 @@ class AppleApp(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         apple = gcp.projects.ApiKey("apple",
+            name="api-key",
             display_name="Display Name Full",
             project="my-project-name",
             restrictions=gcp.projects.ApiKeyRestrictionsArgs(
                 ios_key_restrictions=gcp.projects.ApiKeyRestrictionsIosKeyRestrictionsArgs(
                     allowed_bundle_ids=["apple.app.12345"],
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         full = gcp.firebase.AppleApp("full",
             project="my-project-name",
             display_name="Display Name Full",
             bundle_id="apple.app.12345",
             app_store_id="12345",
             team_id="9987654321",
-            api_key_id=apple.uid,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            api_key_id=apple.uid)
         ```
 
         ## Import
@@ -440,8 +438,7 @@ class AppleApp(pulumi.CustomResource):
         default = gcp.firebase.AppleApp("default",
             project="my-project-name",
             display_name="Display Name Basic",
-            bundle_id="apple.app.12345",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            bundle_id="apple.app.12345")
         ```
         ### Firebase Apple App Full
 
@@ -450,22 +447,21 @@ class AppleApp(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         apple = gcp.projects.ApiKey("apple",
+            name="api-key",
             display_name="Display Name Full",
             project="my-project-name",
             restrictions=gcp.projects.ApiKeyRestrictionsArgs(
                 ios_key_restrictions=gcp.projects.ApiKeyRestrictionsIosKeyRestrictionsArgs(
                     allowed_bundle_ids=["apple.app.12345"],
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         full = gcp.firebase.AppleApp("full",
             project="my-project-name",
             display_name="Display Name Full",
             bundle_id="apple.app.12345",
             app_store_id="12345",
             team_id="9987654321",
-            api_key_id=apple.uid,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            api_key_id=apple.uid)
         ```
 
         ## Import

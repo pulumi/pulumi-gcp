@@ -26,11 +26,15 @@ namespace Pulumi.Gcp.ServiceNetworking
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a VPC network
-    ///     var peeringNetwork = new Gcp.Compute.Network("peeringNetwork");
+    ///     var peeringNetwork = new Gcp.Compute.Network("peering_network", new()
+    ///     {
+    ///         Name = "peering-network",
+    ///     });
     /// 
     ///     // Create an IP address
-    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("privateIpAlloc", new()
+    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
     ///     {
+    ///         Name = "private-ip-alloc",
     ///         Purpose = "VPC_PEERING",
     ///         AddressType = "INTERNAL",
     ///         PrefixLength = 16,
@@ -49,7 +53,7 @@ namespace Pulumi.Gcp.ServiceNetworking
     ///     });
     /// 
     ///     // (Optional) Import or export custom routes
-    ///     var peeringRoutes = new Gcp.Compute.NetworkPeeringRoutesConfig("peeringRoutes", new()
+    ///     var peeringRoutes = new Gcp.Compute.NetworkPeeringRoutesConfig("peering_routes", new()
     ///     {
     ///         Peering = @default.Peering,
     ///         Network = peeringNetwork.Name,

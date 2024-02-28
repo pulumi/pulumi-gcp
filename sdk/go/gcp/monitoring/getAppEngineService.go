@@ -45,12 +45,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:     pulumi.String("appengine-static-content"),
 //				Location: pulumi.String("US"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+//				Name:   pulumi.String("hello-world.zip"),
 //				Bucket: bucket.Name,
 //				Source: pulumi.NewFileAsset("./test-fixtures/hello-world.zip"),
 //			})
@@ -81,6 +83,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Monitors the default AppEngine service
 //			_ = monitoring.GetAppEngineServiceOutput(ctx, monitoring.GetAppEngineServiceOutputArgs{
 //				ModuleId: myapp.Service,
 //			}, nil)

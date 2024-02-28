@@ -41,7 +41,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.OrganizationSecurityPolicyRuleArgs;
  * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchArgs;
  * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -55,15 +54,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var policyOrganizationSecurityPolicy = new OrganizationSecurityPolicy(&#34;policyOrganizationSecurityPolicy&#34;, OrganizationSecurityPolicyArgs.builder()        
+ *         var policy = new OrganizationSecurityPolicy(&#34;policy&#34;, OrganizationSecurityPolicyArgs.builder()        
  *             .displayName(&#34;tf-test&#34;)
  *             .parent(&#34;organizations/123456789&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var policyOrganizationSecurityPolicyRule = new OrganizationSecurityPolicyRule(&#34;policyOrganizationSecurityPolicyRule&#34;, OrganizationSecurityPolicyRuleArgs.builder()        
- *             .policyId(policyOrganizationSecurityPolicy.id())
+ *             .policyId(policy.id())
  *             .action(&#34;allow&#34;)
  *             .direction(&#34;INGRESS&#34;)
  *             .enableLogging(true)
@@ -83,9 +80,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .priority(100)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

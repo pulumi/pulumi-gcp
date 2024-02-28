@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.bigquerydatapolicy.getIamPolicy({
- *     project: google_bigquery_datapolicy_data_policy.data_policy.project,
- *     location: google_bigquery_datapolicy_data_policy.data_policy.location,
- *     dataPolicyId: google_bigquery_datapolicy_data_policy.data_policy.data_policy_id,
+ *     project: dataPolicy.project,
+ *     location: dataPolicy.location,
+ *     dataPolicyId: dataPolicy.dataPolicyId,
  * });
  * ```
  */
@@ -78,9 +78,9 @@ export interface GetIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.bigquerydatapolicy.getIamPolicy({
- *     project: google_bigquery_datapolicy_data_policy.data_policy.project,
- *     location: google_bigquery_datapolicy_data_policy.data_policy.location,
- *     dataPolicyId: google_bigquery_datapolicy_data_policy.data_policy.data_policy_id,
+ *     project: dataPolicy.project,
+ *     location: dataPolicy.location,
+ *     dataPolicyId: dataPolicy.dataPolicyId,
  * });
  * ```
  */

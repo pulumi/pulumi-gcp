@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.PubSub
         /// {
         ///     var policy = Gcp.PubSub.GetSubscriptionIamPolicy.Invoke(new()
         ///     {
-        ///         Subscription = google_pubsub_subscription.Subscription.Id,
+        ///         Subscription = subscription.Id,
         ///     });
         /// 
         /// });
@@ -50,7 +50,7 @@ namespace Pulumi.Gcp.PubSub
         /// {
         ///     var policy = Gcp.PubSub.GetSubscriptionIamPolicy.Invoke(new()
         ///     {
-        ///         Subscription = google_pubsub_subscription.Subscription.Id,
+        ///         Subscription = subscription.Id,
         ///     });
         /// 
         /// });

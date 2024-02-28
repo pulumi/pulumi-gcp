@@ -24,13 +24,15 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobarNetwork = new Gcp.Compute.Network("foobarNetwork", new()
+    ///     var foobarNetwork = new Gcp.Compute.Network("foobar", new()
     ///     {
+    ///         Name = "network-1",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     var foobarRouter = new Gcp.Compute.Router("foobarRouter", new()
+    ///     var foobar = new Gcp.Compute.Router("foobar", new()
     ///     {
+    ///         Name = "router-1",
     ///         Network = foobarNetwork.Name,
     ///         Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
     ///         {
@@ -38,11 +40,12 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///     });
     /// 
-    ///     var onPrem = new Gcp.Compute.InterconnectAttachment("onPrem", new()
+    ///     var onPrem = new Gcp.Compute.InterconnectAttachment("on_prem", new()
     ///     {
+    ///         Name = "on-prem-attachment",
     ///         EdgeAvailabilityDomain = "AVAILABILITY_DOMAIN_1",
     ///         Type = "PARTNER",
-    ///         Router = foobarRouter.Id,
+    ///         Router = foobar.Id,
     ///         Mtu = "1500",
     ///     });
     /// 
@@ -60,11 +63,13 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
+    ///         Name = "test-network",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var address = new Gcp.Compute.Address("address", new()
     ///     {
+    ///         Name = "test-address",
     ///         AddressType = "INTERNAL",
     ///         Purpose = "IPSEC_INTERCONNECT",
     ///         IPAddress = "192.168.1.0",
@@ -74,6 +79,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var router = new Gcp.Compute.Router("router", new()
     ///     {
+    ///         Name = "test-router",
     ///         Network = network.Name,
     ///         EncryptedInterconnectRouter = true,
     ///         Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
@@ -84,6 +90,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var ipsec_encrypted_interconnect_attachment = new Gcp.Compute.InterconnectAttachment("ipsec-encrypted-interconnect-attachment", new()
     ///     {
+    ///         Name = "test-interconnect-attachment",
     ///         EdgeAvailabilityDomain = "AVAILABILITY_DOMAIN_1",
     ///         Type = "PARTNER",
     ///         Router = router.Id,

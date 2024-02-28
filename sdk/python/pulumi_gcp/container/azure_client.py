@@ -274,8 +274,9 @@ class AzureClient(pulumi.CustomResource):
         primary = gcp.container.AzureClient("primary",
             application_id="12345678-1234-1234-1234-123456789111",
             location="us-west1",
-            project="my-project-name",
-            tenant_id="12345678-1234-1234-1234-123456789111")
+            name="client-name",
+            tenant_id="12345678-1234-1234-1234-123456789111",
+            project="my-project-name")
         ```
 
         ## Import
@@ -335,8 +336,9 @@ class AzureClient(pulumi.CustomResource):
         primary = gcp.container.AzureClient("primary",
             application_id="12345678-1234-1234-1234-123456789111",
             location="us-west1",
-            project="my-project-name",
-            tenant_id="12345678-1234-1234-1234-123456789111")
+            name="client-name",
+            tenant_id="12345678-1234-1234-1234-123456789111",
+            project="my-project-name")
         ```
 
         ## Import

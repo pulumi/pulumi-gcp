@@ -53,13 +53,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var testBackupPolicyFull = new BackupPolicy(&#34;testBackupPolicyFull&#34;, BackupPolicyArgs.builder()        
+ *             .name(&#34;test-backup-policy-full&#34;)
+ *             .location(&#34;us-central1&#34;)
  *             .dailyBackupLimit(2)
+ *             .weeklyBackupLimit(1)
+ *             .monthlyBackupLimit(1)
  *             .description(&#34;TF test backup schedule&#34;)
  *             .enabled(true)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .location(&#34;us-central1&#34;)
- *             .monthlyBackupLimit(1)
- *             .weeklyBackupLimit(1)
  *             .build());
  * 
  *     }

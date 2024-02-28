@@ -30,6 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudtasks.NewQueue(ctx, "default", &cloudtasks.QueueArgs{
+//				Name:     pulumi.String("cloud-tasks-queue-test"),
 //				Location: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
@@ -54,23 +55,24 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudtasks.NewQueue(ctx, "advancedConfiguration", &cloudtasks.QueueArgs{
+//			_, err := cloudtasks.NewQueue(ctx, "advanced_configuration", &cloudtasks.QueueArgs{
+//				Name:     pulumi.String("instance-name"),
+//				Location: pulumi.String("us-central1"),
 //				AppEngineRoutingOverride: &cloudtasks.QueueAppEngineRoutingOverrideArgs{
-//					Instance: pulumi.String("test"),
 //					Service:  pulumi.String("worker"),
 //					Version:  pulumi.String("1.0"),
+//					Instance: pulumi.String("test"),
 //				},
-//				Location: pulumi.String("us-central1"),
 //				RateLimits: &cloudtasks.QueueRateLimitsArgs{
 //					MaxConcurrentDispatches: pulumi.Int(3),
 //					MaxDispatchesPerSecond:  pulumi.Float64(2),
 //				},
 //				RetryConfig: &cloudtasks.QueueRetryConfigArgs{
 //					MaxAttempts:      pulumi.Int(5),
-//					MaxBackoff:       pulumi.String("3s"),
-//					MaxDoublings:     pulumi.Int(1),
 //					MaxRetryDuration: pulumi.String("4s"),
+//					MaxBackoff:       pulumi.String("3s"),
 //					MinBackoff:       pulumi.String("2s"),
+//					MaxDoublings:     pulumi.Int(1),
 //				},
 //				StackdriverLoggingConfig: &cloudtasks.QueueStackdriverLoggingConfigArgs{
 //					SamplingRatio: pulumi.Float64(0.9),

@@ -31,6 +31,7 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var featureonlinestore = new Gcp.Vertex.AiFeatureOnlineStore("featureonlinestore", new()
     ///     {
+    ///         Name = "example_feature_view",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -85,6 +86,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     ///     var featureview = new Gcp.Vertex.AiFeatureOnlineStoreFeatureview("featureview", new()
     ///     {
+    ///         Name = "example_feature_view",
     ///         Region = "us-central1",
     ///         FeatureOnlineStore = featureonlinestore.Name,
     ///         SyncConfig = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreFeatureviewSyncConfigArgs
@@ -123,6 +125,7 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var featureonlinestore = new Gcp.Vertex.AiFeatureOnlineStore("featureonlinestore", new()
     ///     {
+    ///         Name = "example_feature_view_feature_registry",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -139,7 +142,7 @@ namespace Pulumi.Gcp.Vertex
     ///         },
     ///     });
     /// 
-    ///     var sampleDataset = new Gcp.BigQuery.Dataset("sampleDataset", new()
+    ///     var sampleDataset = new Gcp.BigQuery.Dataset("sample_dataset", new()
     ///     {
     ///         DatasetId = "example_feature_view_feature_registry",
     ///         FriendlyName = "test",
@@ -147,7 +150,7 @@ namespace Pulumi.Gcp.Vertex
     ///         Location = "US",
     ///     });
     /// 
-    ///     var sampleTable = new Gcp.BigQuery.Table("sampleTable", new()
+    ///     var sampleTable = new Gcp.BigQuery.Table("sample_table", new()
     ///     {
     ///         DeletionProtection = false,
     ///         DatasetId = sampleDataset.DatasetId,
@@ -172,8 +175,9 @@ namespace Pulumi.Gcp.Vertex
     /// ",
     ///     });
     /// 
-    ///     var sampleFeatureGroup = new Gcp.Vertex.AiFeatureGroup("sampleFeatureGroup", new()
+    ///     var sampleFeatureGroup = new Gcp.Vertex.AiFeatureGroup("sample_feature_group", new()
     ///     {
+    ///         Name = "example_feature_view_feature_registry",
     ///         Description = "A sample feature group",
     ///         Region = "us-central1",
     ///         Labels = 
@@ -199,8 +203,9 @@ namespace Pulumi.Gcp.Vertex
     ///         },
     ///     });
     /// 
-    ///     var sampleFeature = new Gcp.Vertex.AiFeatureGroupFeature("sampleFeature", new()
+    ///     var sampleFeature = new Gcp.Vertex.AiFeatureGroupFeature("sample_feature", new()
     ///     {
+    ///         Name = "example_feature_view_feature_registry",
     ///         Region = "us-central1",
     ///         FeatureGroup = sampleFeatureGroup.Name,
     ///         Description = "A sample feature",
@@ -210,8 +215,9 @@ namespace Pulumi.Gcp.Vertex
     ///         },
     ///     });
     /// 
-    ///     var featureviewFeatureregistry = new Gcp.Vertex.AiFeatureOnlineStoreFeatureview("featureviewFeatureregistry", new()
+    ///     var featureviewFeatureregistry = new Gcp.Vertex.AiFeatureOnlineStoreFeatureview("featureview_featureregistry", new()
     ///     {
+    ///         Name = "example_feature_view_feature_registry",
     ///         Region = "us-central1",
     ///         FeatureOnlineStore = featureonlinestore.Name,
     ///         SyncConfig = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreFeatureviewSyncConfigArgs
@@ -248,6 +254,7 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var featureonlinestore = new Gcp.Vertex.AiFeatureOnlineStore("featureonlinestore", new()
     ///     {
+    ///         Name = "example_feature_view_vector_search",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -266,9 +273,6 @@ namespace Pulumi.Gcp.Vertex
     ///         {
     ///             Enabled = true,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var tf_test_dataset = new Gcp.BigQuery.Dataset("tf-test-dataset", new()
@@ -277,9 +281,6 @@ namespace Pulumi.Gcp.Vertex
     ///         FriendlyName = "test",
     ///         Description = "This is a test description",
     ///         Location = "US",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var tf_test_table = new Gcp.BigQuery.Table("tf-test-table", new()
@@ -332,13 +333,11 @@ namespace Pulumi.Gcp.Vertex
     /// }
     /// ]
     /// ",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var featureviewVectorSearch = new Gcp.Vertex.AiFeatureOnlineStoreFeatureview("featureviewVectorSearch", new()
+    ///     var featureviewVectorSearch = new Gcp.Vertex.AiFeatureOnlineStoreFeatureview("featureview_vector_search", new()
     ///     {
+    ///         Name = "example_feature_view_vector_search",
     ///         Region = "us-central1",
     ///         FeatureOnlineStore = featureonlinestore.Name,
     ///         SyncConfig = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreFeatureviewSyncConfigArgs
@@ -374,9 +373,6 @@ namespace Pulumi.Gcp.Vertex
     ///             },
     ///             EmbeddingDimension = 2,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();

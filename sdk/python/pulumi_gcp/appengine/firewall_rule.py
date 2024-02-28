@@ -249,7 +249,9 @@ class FirewallRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_project = gcp.organizations.Project("myProject",
+        my_project = gcp.organizations.Project("my_project",
+            name="tf-test-project",
+            project_id="ae-project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000")
         app = gcp.appengine.Application("app",
@@ -326,7 +328,9 @@ class FirewallRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_project = gcp.organizations.Project("myProject",
+        my_project = gcp.organizations.Project("my_project",
+            name="tf-test-project",
+            project_id="ae-project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000")
         app = gcp.appengine.Application("app",

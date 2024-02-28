@@ -41,11 +41,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.monitoring.UptimeCheckConfig;
  * import com.pulumi.gcp.monitoring.UptimeCheckConfigArgs;
- * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherArgs;
- * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs;
  * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckArgs;
  * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckPingConfigArgs;
  * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigMonitoredResourceArgs;
+ * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherArgs;
+ * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -60,36 +60,36 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var http = new UptimeCheckConfig(&#34;http&#34;, UptimeCheckConfigArgs.builder()        
- *             .checkerType(&#34;STATIC_IP_CHECKERS&#34;)
- *             .contentMatchers(UptimeCheckConfigContentMatcherArgs.builder()
- *                 .content(&#34;\&#34;example\&#34;&#34;)
- *                 .jsonPathMatcher(UptimeCheckConfigContentMatcherJsonPathMatcherArgs.builder()
- *                     .jsonMatcher(&#34;EXACT_MATCH&#34;)
- *                     .jsonPath(&#34;$.path&#34;)
- *                     .build())
- *                 .matcher(&#34;MATCHES_JSON_PATH&#34;)
- *                 .build())
  *             .displayName(&#34;http-uptime-check&#34;)
+ *             .timeout(&#34;60s&#34;)
+ *             .userLabels(Map.of(&#34;example-key&#34;, &#34;example-value&#34;))
  *             .httpCheck(UptimeCheckConfigHttpCheckArgs.builder()
- *                 .body(&#34;Zm9vJTI1M0RiYXI=&#34;)
+ *                 .path(&#34;some-path&#34;)
+ *                 .port(&#34;8010&#34;)
+ *                 .requestMethod(&#34;POST&#34;)
  *                 .contentType(&#34;USER_PROVIDED&#34;)
  *                 .customContentType(&#34;application/json&#34;)
- *                 .path(&#34;some-path&#34;)
+ *                 .body(&#34;Zm9vJTI1M0RiYXI=&#34;)
  *                 .pingConfig(UptimeCheckConfigHttpCheckPingConfigArgs.builder()
  *                     .pingsCount(1)
  *                     .build())
- *                 .port(&#34;8010&#34;)
- *                 .requestMethod(&#34;POST&#34;)
  *                 .build())
  *             .monitoredResource(UptimeCheckConfigMonitoredResourceArgs.builder()
- *                 .labels(Map.ofEntries(
- *                     Map.entry(&#34;host&#34;, &#34;192.168.1.1&#34;),
- *                     Map.entry(&#34;projectId&#34;, &#34;my-project-name&#34;)
- *                 ))
  *                 .type(&#34;uptime_url&#34;)
+ *                 .labels(Map.ofEntries(
+ *                     Map.entry(&#34;project_id&#34;, &#34;my-project-name&#34;),
+ *                     Map.entry(&#34;host&#34;, &#34;192.168.1.1&#34;)
+ *                 ))
  *                 .build())
- *             .timeout(&#34;60s&#34;)
- *             .userLabels(Map.of(&#34;example-key&#34;, &#34;example-value&#34;))
+ *             .contentMatchers(UptimeCheckConfigContentMatcherArgs.builder()
+ *                 .content(&#34;\&#34;example\&#34;&#34;)
+ *                 .matcher(&#34;MATCHES_JSON_PATH&#34;)
+ *                 .jsonPathMatcher(UptimeCheckConfigContentMatcherJsonPathMatcherArgs.builder()
+ *                     .jsonPath(&#34;$.path&#34;)
+ *                     .jsonMatcher(&#34;EXACT_MATCH&#34;)
+ *                     .build())
+ *                 .build())
+ *             .checkerType(&#34;STATIC_IP_CHECKERS&#34;)
  *             .build());
  * 
  *     }
@@ -104,10 +104,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.monitoring.UptimeCheckConfig;
  * import com.pulumi.gcp.monitoring.UptimeCheckConfigArgs;
- * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherArgs;
- * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs;
  * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckArgs;
  * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigMonitoredResourceArgs;
+ * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherArgs;
+ * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -122,17 +122,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var statusCode = new UptimeCheckConfig(&#34;statusCode&#34;, UptimeCheckConfigArgs.builder()        
- *             .checkerType(&#34;STATIC_IP_CHECKERS&#34;)
- *             .contentMatchers(UptimeCheckConfigContentMatcherArgs.builder()
- *                 .content(&#34;\&#34;example\&#34;&#34;)
- *                 .jsonPathMatcher(UptimeCheckConfigContentMatcherJsonPathMatcherArgs.builder()
- *                     .jsonMatcher(&#34;EXACT_MATCH&#34;)
- *                     .jsonPath(&#34;$.path&#34;)
- *                     .build())
- *                 .matcher(&#34;MATCHES_JSON_PATH&#34;)
- *                 .build())
  *             .displayName(&#34;http-uptime-check&#34;)
+ *             .timeout(&#34;60s&#34;)
  *             .httpCheck(UptimeCheckConfigHttpCheckArgs.builder()
+ *                 .path(&#34;some-path&#34;)
+ *                 .port(&#34;8010&#34;)
+ *                 .requestMethod(&#34;POST&#34;)
+ *                 .contentType(&#34;URL_ENCODED&#34;)
+ *                 .body(&#34;Zm9vJTI1M0RiYXI=&#34;)
  *                 .acceptedResponseStatusCodes(                
  *                     UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs.builder()
  *                         .statusClass(&#34;STATUS_CLASS_2XX&#34;)
@@ -143,20 +140,23 @@ import javax.annotation.Nullable;
  *                     UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs.builder()
  *                         .statusValue(302)
  *                         .build())
- *                 .body(&#34;Zm9vJTI1M0RiYXI=&#34;)
- *                 .contentType(&#34;URL_ENCODED&#34;)
- *                 .path(&#34;some-path&#34;)
- *                 .port(&#34;8010&#34;)
- *                 .requestMethod(&#34;POST&#34;)
  *                 .build())
  *             .monitoredResource(UptimeCheckConfigMonitoredResourceArgs.builder()
- *                 .labels(Map.ofEntries(
- *                     Map.entry(&#34;host&#34;, &#34;192.168.1.1&#34;),
- *                     Map.entry(&#34;projectId&#34;, &#34;my-project-name&#34;)
- *                 ))
  *                 .type(&#34;uptime_url&#34;)
+ *                 .labels(Map.ofEntries(
+ *                     Map.entry(&#34;project_id&#34;, &#34;my-project-name&#34;),
+ *                     Map.entry(&#34;host&#34;, &#34;192.168.1.1&#34;)
+ *                 ))
  *                 .build())
- *             .timeout(&#34;60s&#34;)
+ *             .contentMatchers(UptimeCheckConfigContentMatcherArgs.builder()
+ *                 .content(&#34;\&#34;example\&#34;&#34;)
+ *                 .matcher(&#34;MATCHES_JSON_PATH&#34;)
+ *                 .jsonPathMatcher(UptimeCheckConfigContentMatcherJsonPathMatcherArgs.builder()
+ *                     .jsonPath(&#34;$.path&#34;)
+ *                     .jsonMatcher(&#34;EXACT_MATCH&#34;)
+ *                     .build())
+ *                 .build())
+ *             .checkerType(&#34;STATIC_IP_CHECKERS&#34;)
  *             .build());
  * 
  *     }
@@ -171,10 +171,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.monitoring.UptimeCheckConfig;
  * import com.pulumi.gcp.monitoring.UptimeCheckConfigArgs;
- * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherArgs;
- * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs;
  * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckArgs;
  * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigMonitoredResourceArgs;
+ * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherArgs;
+ * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -189,15 +189,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var https = new UptimeCheckConfig(&#34;https&#34;, UptimeCheckConfigArgs.builder()        
- *             .contentMatchers(UptimeCheckConfigContentMatcherArgs.builder()
- *                 .content(&#34;example&#34;)
- *                 .jsonPathMatcher(UptimeCheckConfigContentMatcherJsonPathMatcherArgs.builder()
- *                     .jsonMatcher(&#34;REGEX_MATCH&#34;)
- *                     .jsonPath(&#34;$.path&#34;)
- *                     .build())
- *                 .matcher(&#34;MATCHES_JSON_PATH&#34;)
- *                 .build())
  *             .displayName(&#34;https-uptime-check&#34;)
+ *             .timeout(&#34;60s&#34;)
  *             .httpCheck(UptimeCheckConfigHttpCheckArgs.builder()
  *                 .path(&#34;/some-path&#34;)
  *                 .port(&#34;443&#34;)
@@ -205,13 +198,20 @@ import javax.annotation.Nullable;
  *                 .validateSsl(true)
  *                 .build())
  *             .monitoredResource(UptimeCheckConfigMonitoredResourceArgs.builder()
- *                 .labels(Map.ofEntries(
- *                     Map.entry(&#34;host&#34;, &#34;192.168.1.1&#34;),
- *                     Map.entry(&#34;projectId&#34;, &#34;my-project-name&#34;)
- *                 ))
  *                 .type(&#34;uptime_url&#34;)
+ *                 .labels(Map.ofEntries(
+ *                     Map.entry(&#34;project_id&#34;, &#34;my-project-name&#34;),
+ *                     Map.entry(&#34;host&#34;, &#34;192.168.1.1&#34;)
+ *                 ))
  *                 .build())
- *             .timeout(&#34;60s&#34;)
+ *             .contentMatchers(UptimeCheckConfigContentMatcherArgs.builder()
+ *                 .content(&#34;example&#34;)
+ *                 .matcher(&#34;MATCHES_JSON_PATH&#34;)
+ *                 .jsonPathMatcher(UptimeCheckConfigContentMatcherJsonPathMatcherArgs.builder()
+ *                     .jsonPath(&#34;$.path&#34;)
+ *                     .jsonMatcher(&#34;REGEX_MATCH&#34;)
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -303,16 +303,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+ *             .name(&#34;my-project-name-gcf-source&#34;)
  *             .location(&#34;US&#34;)
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
  *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
+ *             .name(&#34;function-source.zip&#34;)
  *             .bucket(bucket.name())
  *             .source(new FileAsset(&#34;synthetic-fn-source.zip&#34;))
  *             .build());
  * 
  *         var function = new Function(&#34;function&#34;, FunctionArgs.builder()        
+ *             .name(&#34;synthetic_function&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .buildConfig(FunctionBuildConfigArgs.builder()
  *                 .runtime(&#34;nodejs16&#34;)

@@ -128,9 +128,9 @@ class ProjectMetadata(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.ProjectMetadata("default", metadata={
-            "13": "42",
-            "fizz": "buzz",
             "foo": "bar",
+            "fizz": "buzz",
+            "13": "42",
         })
         ```
         ### Adding An SSH Key
@@ -142,10 +142,9 @@ class ProjectMetadata(pulumi.CustomResource):
         #A key set in project metadata is propagated to every instance in the project.
         #This resource configuration is prone to causing frequent diffs as Google adds SSH Keys when the SSH Button is pressed in the console.
         #It is better to use OS Login instead.
-        my_ssh_key = gcp.compute.ProjectMetadata("mySshKey", metadata={
+        my_ssh_key = gcp.compute.ProjectMetadata("my_ssh_key", metadata={
             "ssh-keys": \"\"\"      dev:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT dev
               foo:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT bar
-            
         \"\"\",
         })
         ```
@@ -194,9 +193,9 @@ class ProjectMetadata(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.ProjectMetadata("default", metadata={
-            "13": "42",
-            "fizz": "buzz",
             "foo": "bar",
+            "fizz": "buzz",
+            "13": "42",
         })
         ```
         ### Adding An SSH Key
@@ -208,10 +207,9 @@ class ProjectMetadata(pulumi.CustomResource):
         #A key set in project metadata is propagated to every instance in the project.
         #This resource configuration is prone to causing frequent diffs as Google adds SSH Keys when the SSH Button is pressed in the console.
         #It is better to use OS Login instead.
-        my_ssh_key = gcp.compute.ProjectMetadata("mySshKey", metadata={
+        my_ssh_key = gcp.compute.ProjectMetadata("my_ssh_key", metadata={
             "ssh-keys": \"\"\"      dev:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT dev
               foo:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT bar
-            
         \"\"\",
         })
         ```

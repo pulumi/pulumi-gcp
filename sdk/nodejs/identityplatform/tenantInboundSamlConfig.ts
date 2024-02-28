@@ -18,11 +18,12 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
  *
  * const tenant = new gcp.identityplatform.Tenant("tenant", {displayName: "tenant"});
- * const tenantSamlConfig = new gcp.identityplatform.TenantInboundSamlConfig("tenantSamlConfig", {
+ * const tenantSamlConfig = new gcp.identityplatform.TenantInboundSamlConfig("tenant_saml_config", {
+ *     name: "saml.tf-config",
  *     displayName: "Display Name",
  *     tenant: tenant.name,
  *     idpConfig: {
@@ -30,7 +31,9 @@ import * as utilities from "../utilities";
  *         signRequest: true,
  *         ssoUrl: "https://example.com",
  *         idpCertificates: [{
- *             x509Certificate: fs.readFileSync("test-fixtures/rsa_cert.pem", "utf8"),
+ *             x509Certificate: std.file({
+ *                 input: "test-fixtures/rsa_cert.pem",
+ *             }).then(invoke => invoke.result),
  *         }],
  *     },
  *     spConfig: {

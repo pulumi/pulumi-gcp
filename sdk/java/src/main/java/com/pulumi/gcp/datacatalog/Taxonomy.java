@@ -48,9 +48,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basicTaxonomy = new Taxonomy(&#34;basicTaxonomy&#34;, TaxonomyArgs.builder()        
- *             .activatedPolicyTypes(&#34;FINE_GRAINED_ACCESS_CONTROL&#34;)
- *             .description(&#34;A collection of policy tags&#34;)
  *             .displayName(&#34;my_taxonomy&#34;)
+ *             .description(&#34;A collection of policy tags&#34;)
+ *             .activatedPolicyTypes(&#34;FINE_GRAINED_ACCESS_CONTROL&#34;)
  *             .build());
  * 
  *     }

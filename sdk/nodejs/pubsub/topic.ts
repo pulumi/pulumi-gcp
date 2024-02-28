@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const example = new gcp.pubsub.Topic("example", {
+ *     name: "example-topic",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -38,9 +39,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "global"});
- * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.id});
- * const example = new gcp.pubsub.Topic("example", {kmsKeyName: cryptoKey.id});
+ * const keyRing = new gcp.kms.KeyRing("key_ring", {
+ *     name: "example-keyring",
+ *     location: "global",
+ * });
+ * const cryptoKey = new gcp.kms.CryptoKey("crypto_key", {
+ *     name: "example-key",
+ *     keyRing: keyRing.id,
+ * });
+ * const example = new gcp.pubsub.Topic("example", {
+ *     name: "example-topic",
+ *     kmsKeyName: cryptoKey.id,
+ * });
  * ```
  * ### Pubsub Topic Geo Restricted
  *
@@ -48,9 +58,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const example = new gcp.pubsub.Topic("example", {messageStoragePolicy: {
- *     allowedPersistenceRegions: ["europe-west3"],
- * }});
+ * const example = new gcp.pubsub.Topic("example", {
+ *     name: "example-topic",
+ *     messageStoragePolicy: {
+ *         allowedPersistenceRegions: ["europe-west3"],
+ *     },
+ * });
  * ```
  * ### Pubsub Topic Schema Settings
  *
@@ -58,7 +71,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const exampleSchema = new gcp.pubsub.Schema("exampleSchema", {
+ * const example = new gcp.pubsub.Schema("example", {
+ *     name: "example",
  *     type: "AVRO",
  *     definition: `{
  *   "type" : "record",
@@ -76,11 +90,12 @@ import * as utilities from "../utilities";
  * }
  * `,
  * });
- * const exampleTopic = new gcp.pubsub.Topic("exampleTopic", {schemaSettings: {
- *     schema: "projects/my-project-name/schemas/example",
- *     encoding: "JSON",
- * }}, {
- *     dependsOn: [exampleSchema],
+ * const exampleTopic = new gcp.pubsub.Topic("example", {
+ *     name: "example-topic",
+ *     schemaSettings: {
+ *         schema: "projects/my-project-name/schemas/example",
+ *         encoding: "JSON",
+ *     },
  * });
  * ```
  *

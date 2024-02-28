@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.tags.getTagKeyIamPolicy({
- *     tagKey: google_tags_tag_key.key.name,
+ *     tagKey: key.name,
  * });
  * ```
  */
@@ -65,7 +65,7 @@ export interface GetTagKeyIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.tags.getTagKeyIamPolicy({
- *     tagKey: google_tags_tag_key.key.name,
+ *     tagKey: key.name,
  * });
  * ```
  */

@@ -48,6 +48,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Address;
+ * import com.pulumi.gcp.compute.AddressArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -61,7 +62,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ipAddress = new Address(&#34;ipAddress&#34;);
+ *         var ipAddress = new Address(&#34;ipAddress&#34;, AddressArgs.builder()        
+ *             .name(&#34;my-address&#34;)
+ *             .build());
  * 
  *     }
  * }
@@ -74,6 +77,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.Subnetwork;
  * import com.pulumi.gcp.compute.SubnetworkArgs;
  * import com.pulumi.gcp.compute.Address;
@@ -91,15 +95,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;);
+ *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+ *             .name(&#34;my-network&#34;)
+ *             .build());
  * 
  *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;my-subnet&#34;)
  *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
  *             .region(&#34;us-central1&#34;)
- *             .network(defaultNetwork.id())
+ *             .network(default_.id())
  *             .build());
  * 
  *         var internalWithSubnetAndAddress = new Address(&#34;internalWithSubnetAndAddress&#34;, AddressArgs.builder()        
+ *             .name(&#34;my-internal-address&#34;)
  *             .subnetwork(defaultSubnetwork.id())
  *             .addressType(&#34;INTERNAL&#34;)
  *             .address(&#34;10.0.42.42&#34;)
@@ -132,6 +140,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var internalWithGceEndpoint = new Address(&#34;internalWithGceEndpoint&#34;, AddressArgs.builder()        
+ *             .name(&#34;my-internal-address-&#34;)
  *             .addressType(&#34;INTERNAL&#34;)
  *             .purpose(&#34;GCE_ENDPOINT&#34;)
  *             .build());
@@ -147,6 +156,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Address;
+ * import com.pulumi.gcp.compute.AddressArgs;
  * import com.pulumi.gcp.compute.ComputeFunctions;
  * import com.pulumi.gcp.compute.inputs.GetImageArgs;
  * import com.pulumi.gcp.compute.Instance;
@@ -167,7 +177,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var static_ = new Address(&#34;static&#34;);
+ *         var static_ = new Address(&#34;static&#34;, AddressArgs.builder()        
+ *             .name(&#34;ipv4-address&#34;)
+ *             .build());
  * 
  *         final var debianImage = ComputeFunctions.getImage(GetImageArgs.builder()
  *             .family(&#34;debian-11&#34;)
@@ -175,6 +187,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var instanceWithIp = new Instance(&#34;instanceWithIp&#34;, InstanceArgs.builder()        
+ *             .name(&#34;vm-instance&#34;)
  *             .machineType(&#34;f1-micro&#34;)
  *             .zone(&#34;us-central1-a&#34;)
  *             .bootDisk(InstanceBootDiskArgs.builder()
@@ -218,10 +231,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
+ *             .name(&#34;test-network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var ipsec_interconnect_address = new Address(&#34;ipsec-interconnect-address&#34;, AddressArgs.builder()        
+ *             .name(&#34;test-address&#34;)
  *             .addressType(&#34;INTERNAL&#34;)
  *             .purpose(&#34;IPSEC_INTERCONNECT&#34;)
  *             .address(&#34;192.168.1.0&#34;)

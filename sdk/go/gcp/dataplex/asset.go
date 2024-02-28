@@ -29,7 +29,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			basicBucket, err := storage.NewBucket(ctx, "basicBucket", &storage.BucketArgs{
+//			_, err := storage.NewBucket(ctx, "basic_bucket", &storage.BucketArgs{
+//				Name:                     pulumi.String("bucket"),
 //				Location:                 pulumi.String("us-west1"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //				Project:                  pulumi.String("my-project-name"),
@@ -37,14 +38,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			basicLake, err := dataplex.NewLake(ctx, "basicLake", &dataplex.LakeArgs{
+//			basicLake, err := dataplex.NewLake(ctx, "basic_lake", &dataplex.LakeArgs{
+//				Name:     pulumi.String("lake"),
 //				Location: pulumi.String("us-west1"),
 //				Project:  pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			basicZone, err := dataplex.NewZone(ctx, "basicZone", &dataplex.ZoneArgs{
+//			basicZone, err := dataplex.NewZone(ctx, "basic_zone", &dataplex.ZoneArgs{
+//				Name:     pulumi.String("zone"),
 //				Location: pulumi.String("us-west1"),
 //				Lake:     basicLake.Name,
 //				Type:     pulumi.String("RAW"),
@@ -60,6 +63,7 @@ import (
 //				return err
 //			}
 //			_, err = dataplex.NewAsset(ctx, "primary", &dataplex.AssetArgs{
+//				Name:         pulumi.String("asset"),
 //				Location:     pulumi.String("us-west1"),
 //				Lake:         basicLake.Name,
 //				DataplexZone: basicZone.Name,
@@ -75,9 +79,7 @@ import (
 //					"my-asset": pulumi.String("exists"),
 //				},
 //				Project: pulumi.String("my-project-name"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				basicBucket,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

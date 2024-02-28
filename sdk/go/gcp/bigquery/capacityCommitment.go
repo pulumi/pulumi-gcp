@@ -39,10 +39,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigquery.NewCapacityCommitment(ctx, "example", &bigquery.CapacityCommitmentArgs{
 //				CapacityCommitmentId: pulumi.String("example-commitment"),
-//				Edition:              pulumi.String("ENTERPRISE"),
 //				Location:             pulumi.String("us-west2"),
-//				Plan:                 pulumi.String("FLEX_FLAT_RATE"),
 //				SlotCount:            pulumi.Int(100),
+//				Plan:                 pulumi.String("FLEX_FLAT_RATE"),
+//				Edition:              pulumi.String("ENTERPRISE"),
 //			})
 //			if err != nil {
 //				return err

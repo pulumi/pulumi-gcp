@@ -1249,13 +1249,13 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tpl = gcp.compute.InstanceFromMachineImage("tpl",
+            name="instance-from-machine-image",
             zone="us-central1-a",
             source_machine_image="projects/PROJECT-ID/global/machineImages/NAME",
             can_ip_forward=False,
             labels={
                 "my_key": "my_value",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -1331,13 +1331,13 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tpl = gcp.compute.InstanceFromMachineImage("tpl",
+            name="instance-from-machine-image",
             zone="us-central1-a",
             source_machine_image="projects/PROJECT-ID/global/machineImages/NAME",
             can_ip_forward=False,
             labels={
                 "my_key": "my_value",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
 
         :param str resource_name: The name of the resource.

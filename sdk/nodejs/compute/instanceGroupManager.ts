@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const autohealing = new gcp.compute.HealthCheck("autohealing", {
+ *     name: "autohealing-health-check",
  *     checkIntervalSec: 5,
  *     timeoutSec: 5,
  *     healthyThreshold: 2,
@@ -32,10 +33,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const appserver = new gcp.compute.InstanceGroupManager("appserver", {
+ *     name: "appserver-igm",
  *     baseInstanceName: "app",
  *     zone: "us-central1-a",
  *     versions: [{
- *         instanceTemplate: google_compute_instance_template.appserver.self_link_unique,
+ *         instanceTemplate: appserverGoogleComputeInstanceTemplate.selfLinkUnique,
  *     }],
  *     allInstancesConfig: {
  *         metadata: {
@@ -45,7 +47,7 @@ import * as utilities from "../utilities";
  *             label_key: "label_value",
  *         },
  *     },
- *     targetPools: [google_compute_target_pool.appserver.id],
+ *     targetPools: [appserverGoogleComputeTargetPool.id],
  *     targetSize: 2,
  *     namedPorts: [{
  *         name: "customhttp",
@@ -63,24 +65,23 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const appserver = new gcp.compute.InstanceGroupManager("appserver", {
+ *     name: "appserver-igm",
  *     baseInstanceName: "app",
  *     zone: "us-central1-a",
  *     targetSize: 5,
  *     versions: [
  *         {
  *             name: "appserver",
- *             instanceTemplate: google_compute_instance_template.appserver.self_link_unique,
+ *             instanceTemplate: appserverGoogleComputeInstanceTemplate.selfLinkUnique,
  *         },
  *         {
  *             name: "appserver-canary",
- *             instanceTemplate: google_compute_instance_template["appserver-canary"].self_link_unique,
+ *             instanceTemplate: appserver_canary.selfLinkUnique,
  *             targetSize: {
  *                 fixed: 1,
  *             },
  *         },
  *     ],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

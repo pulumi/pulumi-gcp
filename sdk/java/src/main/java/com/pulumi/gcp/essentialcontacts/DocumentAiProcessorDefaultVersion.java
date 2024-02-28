@@ -41,15 +41,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var processorDocumentAiProcessor = new DocumentAiProcessor(&#34;processorDocumentAiProcessor&#34;, DocumentAiProcessorArgs.builder()        
+ *         var processor = new DocumentAiProcessor(&#34;processor&#34;, DocumentAiProcessorArgs.builder()        
  *             .location(&#34;us&#34;)
  *             .displayName(&#34;test-processor&#34;)
  *             .type(&#34;OCR_PROCESSOR&#34;)
  *             .build());
  * 
  *         var processorDocumentAiProcessorDefaultVersion = new DocumentAiProcessorDefaultVersion(&#34;processorDocumentAiProcessorDefaultVersion&#34;, DocumentAiProcessorDefaultVersionArgs.builder()        
- *             .processor(processorDocumentAiProcessor.id())
- *             .version(processorDocumentAiProcessor.id().applyValue(id -&gt; String.format(&#34;%s/processorVersions/stable&#34;, id)))
+ *             .processor(processor.id())
+ *             .version(processor.id().applyValue(id -&gt; String.format(&#34;%s/processorVersions/stable&#34;, id)))
  *             .build());
  * 
  *     }

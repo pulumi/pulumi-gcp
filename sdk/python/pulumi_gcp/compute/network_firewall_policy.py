@@ -254,7 +254,9 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        policy = gcp.compute.NetworkFirewallPolicy("policy", description="Terraform test")
+        policy = gcp.compute.NetworkFirewallPolicy("policy",
+            name="tf-test-policy",
+            description="Terraform test")
         ```
 
         ## Import
@@ -307,7 +309,9 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        policy = gcp.compute.NetworkFirewallPolicy("policy", description="Terraform test")
+        policy = gcp.compute.NetworkFirewallPolicy("policy",
+            name="tf-test-policy",
+            description="Terraform test")
         ```
 
         ## Import

@@ -56,14 +56,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network_1 = new Network(&#34;network-1&#34;, NetworkArgs.builder()        
+ *             .name(&#34;network-1&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var network_2 = new Network(&#34;network-2&#34;, NetworkArgs.builder()        
+ *             .name(&#34;network-2&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var example_policy = new Policy(&#34;example-policy&#34;, PolicyArgs.builder()        
+ *             .name(&#34;example-policy&#34;)
  *             .enableInboundForwarding(true)
  *             .enableLogging(true)
  *             .alternativeNameServerConfig(PolicyAlternativeNameServerConfigArgs.builder()

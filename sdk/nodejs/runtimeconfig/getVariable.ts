@@ -12,8 +12,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const run-service = gcp.runtimeconfig.getVariable({
- *     name: "prod-variables/hostname",
  *     parent: "my-service",
+ *     name: "prod-variables/hostname",
  * });
  * ```
  */
@@ -71,8 +71,8 @@ export interface GetVariableResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const run-service = gcp.runtimeconfig.getVariable({
- *     name: "prod-variables/hostname",
  *     parent: "my-service",
+ *     name: "prod-variables/hostname",
  * });
  * ```
  */

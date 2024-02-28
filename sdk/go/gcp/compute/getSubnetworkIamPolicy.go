@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.GetSubnetworkIamPolicy(ctx, &compute.GetSubnetworkIamPolicyArgs{
-//				Project:    pulumi.StringRef(google_compute_subnetwork.NetworkWithPrivateSecondaryIpRanges.Project),
-//				Region:     pulumi.StringRef(google_compute_subnetwork.NetworkWithPrivateSecondaryIpRanges.Region),
-//				Subnetwork: google_compute_subnetwork.NetworkWithPrivateSecondaryIpRanges.Name,
+//				Project:    pulumi.StringRef(network_with_private_secondary_ip_ranges.Project),
+//				Region:     pulumi.StringRef(network_with_private_secondary_ip_ranges.Region),
+//				Subnetwork: network_with_private_secondary_ip_ranges.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

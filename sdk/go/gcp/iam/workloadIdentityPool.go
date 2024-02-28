@@ -62,10 +62,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := iam.NewWorkloadIdentityPool(ctx, "example", &iam.WorkloadIdentityPoolArgs{
+//				WorkloadIdentityPoolId: pulumi.String("example-pool"),
+//				DisplayName:            pulumi.String("Name of pool"),
 //				Description:            pulumi.String("Identity pool for automated test"),
 //				Disabled:               pulumi.Bool(true),
-//				DisplayName:            pulumi.String("Name of pool"),
-//				WorkloadIdentityPoolId: pulumi.String("example-pool"),
 //			})
 //			if err != nil {
 //				return err

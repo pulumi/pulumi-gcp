@@ -47,6 +47,7 @@ import (
 //				return err
 //			}
 //			_, err = dataproc.NewCluster(ctx, "basic", &dataproc.ClusterArgs{
+//				Name:   pulumi.String("dataproc-policy"),
 //				Region: pulumi.String("us-central1"),
 //				ClusterConfig: &dataproc.ClusterClusterConfigArgs{
 //					AutoscalingConfig: &dataproc.ClusterClusterConfigAutoscalingConfigArgs{

@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networksecurity.UrlList("default", {
+ *     name: "my-url-lists",
  *     location: "us-central1",
  *     values: ["www.example.com"],
  * });
@@ -32,8 +33,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networksecurity.UrlList("default", {
- *     description: "my description",
+ *     name: "my-url-lists",
  *     location: "us-central1",
+ *     description: "my description",
  *     values: [
  *         "www.example.com",
  *         "about.example.com",

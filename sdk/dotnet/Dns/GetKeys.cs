@@ -37,6 +37,7 @@ namespace Pulumi.Gcp.Dns
         /// {
         ///     var foo = new Gcp.Dns.ManagedZone("foo", new()
         ///     {
+        ///         Name = "foobar",
         ///         DnsName = "foo.bar.",
         ///         DnssecConfig = new Gcp.Dns.Inputs.ManagedZoneDnssecConfigArgs
         ///         {
@@ -88,6 +89,7 @@ namespace Pulumi.Gcp.Dns
         /// {
         ///     var foo = new Gcp.Dns.ManagedZone("foo", new()
         ///     {
+        ///         Name = "foobar",
         ///         DnsName = "foo.bar.",
         ///         DnssecConfig = new Gcp.Dns.Inputs.ManagedZoneDnssecConfigArgs
         ///         {

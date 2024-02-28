@@ -39,14 +39,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			serviceAccount, err := serviceaccount.NewAccount(ctx, "serviceAccount", &serviceaccount.AccountArgs{
+//			serviceAccount, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("my-account"),
 //				DisplayName: pulumi.String("Test Service Account"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = beyondcorp.NewAppConnector(ctx, "appConnector", &beyondcorp.AppConnectorArgs{
+//			_, err = beyondcorp.NewAppConnector(ctx, "app_connector", &beyondcorp.AppConnectorArgs{
+//				Name: pulumi.String("my-app-connector"),
 //				PrincipalInfo: &beyondcorp.AppConnectorPrincipalInfoArgs{
 //					ServiceAccount: &beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs{
 //						Email: serviceAccount.Email,
@@ -76,14 +77,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			serviceAccount, err := serviceaccount.NewAccount(ctx, "serviceAccount", &serviceaccount.AccountArgs{
+//			serviceAccount, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("my-account"),
 //				DisplayName: pulumi.String("Test Service Account"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = beyondcorp.NewAppConnector(ctx, "appConnector", &beyondcorp.AppConnectorArgs{
+//			_, err = beyondcorp.NewAppConnector(ctx, "app_connector", &beyondcorp.AppConnectorArgs{
+//				Name:        pulumi.String("my-app-connector"),
 //				Region:      pulumi.String("us-central1"),
 //				DisplayName: pulumi.String("some display name"),
 //				PrincipalInfo: &beyondcorp.AppConnectorPrincipalInfoArgs{

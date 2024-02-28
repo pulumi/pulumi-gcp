@@ -395,6 +395,41 @@ class ProjectFeed(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/asset-inventory/docs)
 
         ## Example Usage
+        ### Cloud Asset Project Feed
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # The topic where the resource change notifications will be sent.
+        feed_output = gcp.pubsub.Topic("feed_output",
+            project="my-project-name",
+            name="network-updates")
+        # Create a feed that sends notifications about network resource updates.
+        project_feed = gcp.cloudasset.ProjectFeed("project_feed",
+            project="my-project-name",
+            feed_id="network-updates",
+            content_type="RESOURCE",
+            asset_types=[
+                "compute.googleapis.com/Subnetwork",
+                "compute.googleapis.com/Network",
+            ],
+            feed_output_config=gcp.cloudasset.ProjectFeedFeedOutputConfigArgs(
+                pubsub_destination=gcp.cloudasset.ProjectFeedFeedOutputConfigPubsubDestinationArgs(
+                    topic=feed_output.id,
+                ),
+            ),
+            condition=gcp.cloudasset.ProjectFeedConditionArgs(
+                expression=\"\"\"!temporal_asset.deleted &&
+        temporal_asset.prior_asset_state == google.cloud.asset.v1.TemporalAsset.PriorAssetState.DOES_NOT_EXIST
+        \"\"\",
+                title="created",
+                description="Send notifications on creation events",
+            ))
+        # Find the project number of the project whose identity will be used for sending
+        # the asset change notifications.
+        project = gcp.organizations.get_project(project_id="my-project-name")
+        ```
 
         ## Import
 
@@ -465,6 +500,41 @@ class ProjectFeed(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/asset-inventory/docs)
 
         ## Example Usage
+        ### Cloud Asset Project Feed
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # The topic where the resource change notifications will be sent.
+        feed_output = gcp.pubsub.Topic("feed_output",
+            project="my-project-name",
+            name="network-updates")
+        # Create a feed that sends notifications about network resource updates.
+        project_feed = gcp.cloudasset.ProjectFeed("project_feed",
+            project="my-project-name",
+            feed_id="network-updates",
+            content_type="RESOURCE",
+            asset_types=[
+                "compute.googleapis.com/Subnetwork",
+                "compute.googleapis.com/Network",
+            ],
+            feed_output_config=gcp.cloudasset.ProjectFeedFeedOutputConfigArgs(
+                pubsub_destination=gcp.cloudasset.ProjectFeedFeedOutputConfigPubsubDestinationArgs(
+                    topic=feed_output.id,
+                ),
+            ),
+            condition=gcp.cloudasset.ProjectFeedConditionArgs(
+                expression=\"\"\"!temporal_asset.deleted &&
+        temporal_asset.prior_asset_state == google.cloud.asset.v1.TemporalAsset.PriorAssetState.DOES_NOT_EXIST
+        \"\"\",
+                title="created",
+                description="Send notifications on creation events",
+            ))
+        # Find the project number of the project whose identity will be used for sending
+        # the asset change notifications.
+        project = gcp.organizations.get_project(project_id="my-project-name")
+        ```
 
         ## Import
 

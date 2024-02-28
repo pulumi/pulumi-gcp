@@ -23,8 +23,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.cloudrunv2.Service("default", {
- *     ingress: "INGRESS_TRAFFIC_ALL",
+ *     name: "cloudrun-service",
  *     location: "us-central1",
+ *     ingress: "INGRESS_TRAFFIC_ALL",
  *     template: {
  *         containers: [{
  *             image: "us-docker.pkg.dev/cloudrun/container/hello",
@@ -39,8 +40,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.cloudrunv2.Service("default", {
- *     ingress: "INGRESS_TRAFFIC_ALL",
+ *     name: "cloudrun-service",
  *     location: "us-central1",
+ *     ingress: "INGRESS_TRAFFIC_ALL",
  *     template: {
  *         containers: [{
  *             image: "us-docker.pkg.dev/cloudrun/container/hello",
@@ -66,11 +68,8 @@ import * as utilities from "../utilities";
  *         auto: {},
  *     },
  * });
- * const secret_version_data = new gcp.secretmanager.SecretVersion("secret-version-data", {
- *     secret: secret.name,
- *     secretData: "secret-data",
- * });
  * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     name: "cloudrun-sql",
  *     region: "us-central1",
  *     databaseVersion: "MYSQL_5_7",
  *     settings: {
@@ -79,6 +78,7 @@ import * as utilities from "../utilities";
  *     deletionProtection: true,
  * });
  * const _default = new gcp.cloudrunv2.Service("default", {
+ *     name: "cloudrun-service",
  *     location: "us-central1",
  *     ingress: "INGRESS_TRAFFIC_ALL",
  *     template: {
@@ -118,16 +118,16 @@ import * as utilities from "../utilities";
  *         type: "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST",
  *         percent: 100,
  *     }],
- * }, {
- *     dependsOn: [secret_version_data],
  * });
  * const project = gcp.organizations.getProject({});
+ * const secret_version_data = new gcp.secretmanager.SecretVersion("secret-version-data", {
+ *     secret: secret.name,
+ *     secretData: "secret-data",
+ * });
  * const secret_access = new gcp.secretmanager.SecretIamMember("secret-access", {
  *     secretId: secret.id,
  *     role: "roles/secretmanager.secretAccessor",
  *     member: project.then(project => `serviceAccount:${project.number}-compute@developer.gserviceaccount.com`),
- * }, {
- *     dependsOn: [secret],
  * });
  * ```
  * ### Cloudrunv2 Service Vpcaccess
@@ -136,15 +136,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const customTestNetwork = new gcp.compute.Network("customTestNetwork", {autoCreateSubnetworks: false});
- * const customTestSubnetwork = new gcp.compute.Subnetwork("customTestSubnetwork", {
+ * const customTestNetwork = new gcp.compute.Network("custom_test", {
+ *     name: "run-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const customTest = new gcp.compute.Subnetwork("custom_test", {
+ *     name: "run-subnetwork",
  *     ipCidrRange: "10.2.0.0/28",
  *     region: "us-central1",
  *     network: customTestNetwork.id,
  * });
  * const connector = new gcp.vpcaccess.Connector("connector", {
+ *     name: "run-vpc",
  *     subnet: {
- *         name: customTestSubnetwork.name,
+ *         name: customTest.name,
  *     },
  *     machineType: "e2-standard-4",
  *     minInstances: 2,
@@ -152,6 +157,7 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * const _default = new gcp.cloudrunv2.Service("default", {
+ *     name: "cloudrun-service",
  *     location: "us-central1",
  *     template: {
  *         containers: [{
@@ -171,14 +177,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.cloudrunv2.Service("default", {
- *     launchStage: "BETA",
+ *     name: "cloudrun-service",
  *     location: "us-central1",
+ *     launchStage: "BETA",
  *     template: {
  *         containers: [{
  *             image: "us-docker.pkg.dev/cloudrun/container/hello",
  *         }],
  *         vpcAccess: {
- *             egress: "ALL_TRAFFIC",
  *             networkInterfaces: [{
  *                 network: "default",
  *                 subnetwork: "default",
@@ -188,6 +194,7 @@ import * as utilities from "../utilities";
  *                     "tag3",
  *                 ],
  *             }],
+ *             egress: "ALL_TRAFFIC",
  *         },
  *     },
  * });
@@ -199,23 +206,24 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.cloudrunv2.Service("default", {
+ *     name: "cloudrun-service",
  *     location: "us-central1",
  *     template: {
  *         containers: [{
  *             image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *             startupProbe: {
+ *                 initialDelaySeconds: 0,
+ *                 timeoutSeconds: 1,
+ *                 periodSeconds: 3,
+ *                 failureThreshold: 1,
+ *                 tcpSocket: {
+ *                     port: 8080,
+ *                 },
+ *             },
  *             livenessProbe: {
  *                 httpGet: {
  *                     path: "/",
  *                 },
- *             },
- *             startupProbe: {
- *                 failureThreshold: 1,
- *                 initialDelaySeconds: 0,
- *                 periodSeconds: 3,
- *                 tcpSocket: {
- *                     port: 8080,
- *                 },
- *                 timeoutSeconds: 1,
  *             },
  *         }],
  *     },
@@ -233,11 +241,8 @@ import * as utilities from "../utilities";
  *         auto: {},
  *     },
  * });
- * const secret_version_data = new gcp.secretmanager.SecretVersion("secret-version-data", {
- *     secret: secret.name,
- *     secretData: "secret-data",
- * });
  * const _default = new gcp.cloudrunv2.Service("default", {
+ *     name: "cloudrun-service",
  *     location: "us-central1",
  *     ingress: "INGRESS_TRAFFIC_ALL",
  *     template: {
@@ -260,16 +265,16 @@ import * as utilities from "../utilities";
  *             }],
  *         }],
  *     },
- * }, {
- *     dependsOn: [secret_version_data],
  * });
  * const project = gcp.organizations.getProject({});
+ * const secret_version_data = new gcp.secretmanager.SecretVersion("secret-version-data", {
+ *     secret: secret.name,
+ *     secretData: "secret-data",
+ * });
  * const secret_access = new gcp.secretmanager.SecretIamMember("secret-access", {
  *     secretId: secret.id,
  *     role: "roles/secretmanager.secretAccessor",
  *     member: project.then(project => `serviceAccount:${project.number}-compute@developer.gserviceaccount.com`),
- * }, {
- *     dependsOn: [secret],
  * });
  * ```
  * ### Cloudrunv2 Service Multicontainer
@@ -279,6 +284,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.cloudrunv2.Service("default", {
+ *     name: "cloudrun-service",
  *     location: "us-central1",
  *     launchStage: "BETA",
  *     ingress: "INGRESS_TRAFFIC_ALL",
@@ -318,8 +324,6 @@ import * as utilities from "../utilities";
  *             },
  *         }],
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Cloudrunv2 Service Mount Gcs
@@ -328,8 +332,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultBucket = new gcp.storage.Bucket("defaultBucket", {location: "US"});
- * const defaultService = new gcp.cloudrunv2.Service("defaultService", {
+ * const defaultBucket = new gcp.storage.Bucket("default", {
+ *     name: "cloudrun-service",
+ *     location: "US",
+ * });
+ * const _default = new gcp.cloudrunv2.Service("default", {
+ *     name: "cloudrun-service",
  *     location: "us-central1",
  *     launchStage: "BETA",
  *     template: {
@@ -357,7 +365,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultInstance = new gcp.filestore.Instance("defaultInstance", {
+ * const defaultInstance = new gcp.filestore.Instance("default", {
+ *     name: "cloudrun-service",
  *     location: "us-central1-b",
  *     tier: "BASIC_HDD",
  *     fileShares: {
@@ -369,7 +378,8 @@ import * as utilities from "../utilities";
  *         modes: ["MODE_IPV4"],
  *     }],
  * });
- * const defaultService = new gcp.cloudrunv2.Service("defaultService", {
+ * const _default = new gcp.cloudrunv2.Service("default", {
+ *     name: "cloudrun-service",
  *     location: "us-central1",
  *     ingress: "INGRESS_TRAFFIC_ALL",
  *     launchStage: "BETA",

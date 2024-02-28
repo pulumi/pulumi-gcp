@@ -37,7 +37,6 @@ import javax.annotation.Nullable;
  * [API](https://cloud.google.com/compute/docs/reference/latest/instanceTemplates).
  * 
  * ## Example Usage
- * 
  * ```java
  * package generated_program;
  * 
@@ -74,7 +73,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultAccount = new Account(&#34;defaultAccount&#34;, AccountArgs.builder()        
+ *         var default_ = new Account(&#34;default&#34;, AccountArgs.builder()        
  *             .accountId(&#34;service-account-id&#34;)
  *             .displayName(&#34;Service Account&#34;)
  *             .build());
@@ -85,6 +84,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var foobar = new Disk(&#34;foobar&#34;, DiskArgs.builder()        
+ *             .name(&#34;existing-disk&#34;)
  *             .image(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
  *             .size(10)
  *             .type(&#34;pd-ssd&#34;)
@@ -92,6 +92,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var dailyBackup = new ResourcePolicy(&#34;dailyBackup&#34;, ResourcePolicyArgs.builder()        
+ *             .name(&#34;every-day-4am&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .snapshotSchedulePolicy(ResourcePolicySnapshotSchedulePolicyArgs.builder()
  *                 .schedule(ResourcePolicySnapshotSchedulePolicyScheduleArgs.builder()
@@ -104,6 +105,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultInstanceTemplate = new InstanceTemplate(&#34;defaultInstanceTemplate&#34;, InstanceTemplateArgs.builder()        
+ *             .name(&#34;appserver-template&#34;)
  *             .description(&#34;This template is used to create app server instances.&#34;)
  *             .tags(            
  *                 &#34;foo&#34;,
@@ -133,7 +135,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .metadata(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .serviceAccount(InstanceTemplateServiceAccountArgs.builder()
- *                 .email(defaultAccount.email())
+ *                 .email(default_.email())
  *                 .scopes(&#34;cloud-platform&#34;)
  *                 .build())
  *             .build());
@@ -178,6 +180,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var foobar = new InstanceTemplate(&#34;foobar&#34;, InstanceTemplateArgs.builder()        
+ *             .name(&#34;appserver-template&#34;)
  *             .machineType(&#34;e2-medium&#34;)
  *             .canIpForward(false)
  *             .tags(            
@@ -275,14 +278,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instanceTemplate = new InstanceTemplate(&#34;instanceTemplate&#34;, InstanceTemplateArgs.builder()        
+ *             .disks()
+ *             .networkInterfaces()
  *             .namePrefix(&#34;instance-template-&#34;)
  *             .machineType(&#34;e2-medium&#34;)
  *             .region(&#34;us-central1&#34;)
- *             .disks()
- *             .networkInterfaces()
  *             .build());
  * 
  *         var instanceGroupManager = new InstanceGroupManager(&#34;instanceGroupManager&#34;, InstanceGroupManagerArgs.builder()        
+ *             .name(&#34;instance-group-manager&#34;)
  *             .instanceTemplate(instanceTemplate.id())
  *             .baseInstanceName(&#34;instance-group-manager&#34;)
  *             .zone(&#34;us-central1-f&#34;)
@@ -381,12 +385,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instanceTemplate = new InstanceTemplate(&#34;instanceTemplate&#34;, InstanceTemplateArgs.builder()        
+ *             .namePrefix(&#34;instance-template-&#34;)
+ *             .machineType(&#34;e2-medium&#34;)
+ *             .region(&#34;us-central1&#34;)
  *             .disks(InstanceTemplateDiskArgs.builder()
  *                 .sourceImage(&#34;debian-cloud/debian-11&#34;)
  *                 .build())
- *             .machineType(&#34;e2-medium&#34;)
- *             .namePrefix(&#34;instance-template-&#34;)
- *             .region(&#34;us-central1&#34;)
  *             .build());
  * 
  *     }

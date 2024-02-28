@@ -25,16 +25,17 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.filestore.Instance("instance", {
+ *     name: "test-instance",
+ *     location: "us-central1-b",
+ *     tier: "BASIC_HDD",
  *     fileShares: {
  *         capacityGb: 1024,
  *         name: "share1",
  *     },
- *     location: "us-central1-b",
  *     networks: [{
- *         modes: ["MODE_IPV4"],
  *         network: "default",
+ *         modes: ["MODE_IPV4"],
  *     }],
- *     tier: "BASIC_HDD",
  * });
  * ```
  * ### Filestore Instance Full
@@ -44,31 +45,32 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.filestore.Instance("instance", {
+ *     name: "test-instance",
+ *     location: "us-central1-b",
+ *     tier: "BASIC_SSD",
  *     fileShares: {
  *         capacityGb: 2560,
  *         name: "share1",
  *         nfsExportOptions: [
  *             {
- *                 accessMode: "READ_WRITE",
  *                 ipRanges: ["10.0.0.0/24"],
+ *                 accessMode: "READ_WRITE",
  *                 squashMode: "NO_ROOT_SQUASH",
  *             },
  *             {
- *                 accessMode: "READ_ONLY",
- *                 anonGid: 456,
- *                 anonUid: 123,
  *                 ipRanges: ["10.10.0.0/24"],
+ *                 accessMode: "READ_ONLY",
  *                 squashMode: "ROOT_SQUASH",
+ *                 anonUid: 123,
+ *                 anonGid: 456,
  *             },
  *         ],
  *     },
- *     location: "us-central1-b",
  *     networks: [{
- *         connectMode: "DIRECT_PEERING",
- *         modes: ["MODE_IPV4"],
  *         network: "default",
+ *         modes: ["MODE_IPV4"],
+ *         connectMode: "DIRECT_PEERING",
  *     }],
- *     tier: "BASIC_SSD",
  * });
  * ```
  * ### Filestore Instance Enterprise
@@ -77,9 +79,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const filestoreKeyring = new gcp.kms.KeyRing("filestoreKeyring", {location: "us-central1"});
- * const filestoreKey = new gcp.kms.CryptoKey("filestoreKey", {keyRing: filestoreKeyring.id});
+ * const filestoreKeyring = new gcp.kms.KeyRing("filestore_keyring", {
+ *     name: "filestore-keyring",
+ *     location: "us-central1",
+ * });
+ * const filestoreKey = new gcp.kms.CryptoKey("filestore_key", {
+ *     name: "filestore-key",
+ *     keyRing: filestoreKeyring.id,
+ * });
  * const instance = new gcp.filestore.Instance("instance", {
+ *     name: "test-instance",
  *     location: "us-central1",
  *     tier: "ENTERPRISE",
  *     fileShares: {

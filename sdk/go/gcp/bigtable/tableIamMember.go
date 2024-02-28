@@ -80,12 +80,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigtable.NewTableIamBinding(ctx, "editor", &bigtable.TableIamBindingArgs{
+//				Table:    pulumi.String("your-bigtable-table"),
 //				Instance: pulumi.String("your-bigtable-instance"),
+//				Role:     pulumi.String("roles/bigtable.user"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				Role:  pulumi.String("roles/bigtable.user"),
-//				Table: pulumi.String("your-bigtable-table"),
 //			})
 //			if err != nil {
 //				return err
@@ -111,10 +111,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigtable.NewTableIamMember(ctx, "editor", &bigtable.TableIamMemberArgs{
-//				Instance: pulumi.String("your-bigtable-instance"),
-//				Member:   pulumi.String("user:jane@example.com"),
-//				Role:     pulumi.String("roles/bigtable.user"),
 //				Table:    pulumi.String("your-bigtable-table"),
+//				Instance: pulumi.String("your-bigtable-instance"),
+//				Role:     pulumi.String("roles/bigtable.user"),
+//				Member:   pulumi.String("user:jane@example.com"),
 //			})
 //			if err != nil {
 //				return err

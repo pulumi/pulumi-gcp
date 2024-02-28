@@ -23,6 +23,56 @@ import (
 //   - [Official Documentation](https://cloud.google.com/load-balancing/docs/tcp/internal-proxy)
 //
 // ## Example Usage
+// ### Region Target Tcp Proxy Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
+//				Name:             pulumi.String("health-check"),
+//				Region:           pulumi.String("europe-west4"),
+//				TimeoutSec:       pulumi.Int(1),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TcpHealthCheck: &compute.RegionHealthCheckTcpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegionBackendService, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+//				Name:                pulumi.String("backend-service"),
+//				Protocol:            pulumi.String("TCP"),
+//				TimeoutSec:          pulumi.Int(10),
+//				Region:              pulumi.String("europe-west4"),
+//				HealthChecks:        defaultRegionHealthCheck.ID(),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionTargetTcpProxy(ctx, "default", &compute.RegionTargetTcpProxyArgs{
+//				Name:           pulumi.String("test-proxy"),
+//				Region:         pulumi.String("europe-west4"),
+//				BackendService: defaultRegionBackendService.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

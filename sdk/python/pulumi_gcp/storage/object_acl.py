@@ -196,8 +196,11 @@ class ObjectACL(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        image_store = gcp.storage.Bucket("image-store", location="EU")
+        image_store = gcp.storage.Bucket("image-store",
+            name="image-store-bucket",
+            location="EU")
         image = gcp.storage.BucketObject("image",
+            name="image1",
             bucket=image_store.name,
             source=pulumi.FileAsset("image1.jpg"))
         image_store_acl = gcp.storage.ObjectACL("image-store-acl",
@@ -250,8 +253,11 @@ class ObjectACL(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        image_store = gcp.storage.Bucket("image-store", location="EU")
+        image_store = gcp.storage.Bucket("image-store",
+            name="image-store-bucket",
+            location="EU")
         image = gcp.storage.BucketObject("image",
+            name="image1",
             bucket=image_store.name,
             source=pulumi.FileAsset("image1.jpg"))
         image_store_acl = gcp.storage.ObjectACL("image-store-acl",

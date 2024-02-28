@@ -16,14 +16,15 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * import * as random from "@pulumi/random";
  *
- * const dbNameSuffix = new random.RandomId("dbNameSuffix", {byteLength: 4});
+ * const dbNameSuffix = new random.RandomId("db_name_suffix", {byteLength: 4});
  * const main = new gcp.sql.DatabaseInstance("main", {
+ *     name: pulumi.interpolate`main-instance-${dbNameSuffix.hex}`,
  *     databaseVersion: "MYSQL_5_7",
  *     settings: {
  *         tier: "db-f1-micro",
  *     },
  * });
- * const clientCert = new gcp.sql.SslCert("clientCert", {
+ * const clientCert = new gcp.sql.SslCert("client_cert", {
  *     commonName: "client-name",
  *     instance: main.name,
  * });

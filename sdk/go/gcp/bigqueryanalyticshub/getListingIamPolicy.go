@@ -28,10 +28,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigqueryanalyticshub.LookupListingIamPolicy(ctx, &bigqueryanalyticshub.LookupListingIamPolicyArgs{
-//				Project:        pulumi.StringRef(google_bigquery_analytics_hub_listing.Listing.Project),
-//				Location:       pulumi.StringRef(google_bigquery_analytics_hub_listing.Listing.Location),
-//				DataExchangeId: google_bigquery_analytics_hub_listing.Listing.Data_exchange_id,
-//				ListingId:      google_bigquery_analytics_hub_listing.Listing.Listing_id,
+//				Project:        pulumi.StringRef(listing.Project),
+//				Location:       pulumi.StringRef(listing.Location),
+//				DataExchangeId: listing.DataExchangeId,
+//				ListingId:      listing.ListingId,
 //			}, nil)
 //			if err != nil {
 //				return err

@@ -109,9 +109,9 @@ def get_disk_iam_policy(name: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.compute.get_disk_iam_policy(project=google_compute_disk["default"]["project"],
-        zone=google_compute_disk["default"]["zone"],
-        name=google_compute_disk["default"]["name"])
+    policy = gcp.compute.get_disk_iam_policy(project=default["project"],
+        zone=default["zone"],
+        name=default["name"])
     ```
 
 
@@ -152,9 +152,9 @@ def get_disk_iam_policy_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.compute.get_disk_iam_policy(project=google_compute_disk["default"]["project"],
-        zone=google_compute_disk["default"]["zone"],
-        name=google_compute_disk["default"]["name"])
+    policy = gcp.compute.get_disk_iam_policy(project=default["project"],
+        zone=default["zone"],
+        name=default["name"])
     ```
 
 

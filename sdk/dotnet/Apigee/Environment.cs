@@ -31,17 +31,21 @@ namespace Pulumi.Gcp.Apigee
     /// {
     ///     var current = Gcp.Organizations.GetClientConfig.Invoke();
     /// 
-    ///     var apigeeNetwork = new Gcp.Compute.Network("apigeeNetwork");
-    /// 
-    ///     var apigeeRange = new Gcp.Compute.GlobalAddress("apigeeRange", new()
+    ///     var apigeeNetwork = new Gcp.Compute.Network("apigee_network", new()
     ///     {
+    ///         Name = "apigee-network",
+    ///     });
+    /// 
+    ///     var apigeeRange = new Gcp.Compute.GlobalAddress("apigee_range", new()
+    ///     {
+    ///         Name = "apigee-range",
     ///         Purpose = "VPC_PEERING",
     ///         AddressType = "INTERNAL",
     ///         PrefixLength = 16,
     ///         Network = apigeeNetwork.Id,
     ///     });
     /// 
-    ///     var apigeeVpcConnection = new Gcp.ServiceNetworking.Connection("apigeeVpcConnection", new()
+    ///     var apigeeVpcConnection = new Gcp.ServiceNetworking.Connection("apigee_vpc_connection", new()
     ///     {
     ///         Network = apigeeNetwork.Id,
     ///         Service = "servicenetworking.googleapis.com",
@@ -51,21 +55,16 @@ namespace Pulumi.Gcp.Apigee
     ///         },
     ///     });
     /// 
-    ///     var apigeeOrg = new Gcp.Apigee.Organization("apigeeOrg", new()
+    ///     var apigeeOrg = new Gcp.Apigee.Organization("apigee_org", new()
     ///     {
     ///         AnalyticsRegion = "us-central1",
     ///         ProjectId = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
     ///         AuthorizedNetwork = apigeeNetwork.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             apigeeVpcConnection,
-    ///         },
     ///     });
     /// 
     ///     var env = new Gcp.Apigee.Environment("env", new()
     ///     {
+    ///         Name = "my-environment",
     ///         Description = "Apigee Environment",
     ///         DisplayName = "environment-1",
     ///         OrgId = apigeeOrg.Id,

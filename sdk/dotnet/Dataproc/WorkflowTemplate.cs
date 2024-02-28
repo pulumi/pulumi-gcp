@@ -24,29 +24,7 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var template = new Gcp.Dataproc.WorkflowTemplate("template", new()
     ///     {
-    ///         Jobs = new[]
-    ///         {
-    ///             new Gcp.Dataproc.Inputs.WorkflowTemplateJobArgs
-    ///             {
-    ///                 SparkJob = new Gcp.Dataproc.Inputs.WorkflowTemplateJobSparkJobArgs
-    ///                 {
-    ///                     MainClass = "SomeClass",
-    ///                 },
-    ///                 StepId = "someJob",
-    ///             },
-    ///             new Gcp.Dataproc.Inputs.WorkflowTemplateJobArgs
-    ///             {
-    ///                 PrerequisiteStepIds = new[]
-    ///                 {
-    ///                     "someJob",
-    ///                 },
-    ///                 PrestoJob = new Gcp.Dataproc.Inputs.WorkflowTemplateJobPrestoJobArgs
-    ///                 {
-    ///                     QueryFileUri = "someuri",
-    ///                 },
-    ///                 StepId = "otherJob",
-    ///             },
-    ///         },
+    ///         Name = "template-example",
     ///         Location = "us-central1",
     ///         Placement = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementArgs
     ///         {
@@ -57,22 +35,32 @@ namespace Pulumi.Gcp.Dataproc
     ///                 {
     ///                     GceClusterConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs
     ///                     {
+    ///                         Zone = "us-central1-a",
     ///                         Tags = new[]
     ///                         {
     ///                             "foo",
     ///                             "bar",
     ///                         },
-    ///                         Zone = "us-central1-a",
     ///                     },
     ///                     MasterConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs
     ///                     {
+    ///                         NumInstances = 1,
+    ///                         MachineType = "n1-standard-1",
     ///                         DiskConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs
     ///                         {
-    ///                             BootDiskSizeGb = 15,
     ///                             BootDiskType = "pd-ssd",
+    ///                             BootDiskSizeGb = 15,
     ///                         },
-    ///                         MachineType = "n1-standard-1",
-    ///                         NumInstances = 1,
+    ///                     },
+    ///                     WorkerConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs
+    ///                     {
+    ///                         NumInstances = 3,
+    ///                         MachineType = "n1-standard-2",
+    ///                         DiskConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs
+    ///                         {
+    ///                             BootDiskSizeGb = 10,
+    ///                             NumLocalSsds = 2,
+    ///                         },
     ///                     },
     ///                     SecondaryWorkerConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs
     ///                     {
@@ -82,16 +70,29 @@ namespace Pulumi.Gcp.Dataproc
     ///                     {
     ///                         ImageVersion = "2.0.35-debian10",
     ///                     },
-    ///                     WorkerConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs
-    ///                     {
-    ///                         DiskConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs
-    ///                         {
-    ///                             BootDiskSizeGb = 10,
-    ///                             NumLocalSsds = 2,
-    ///                         },
-    ///                         MachineType = "n1-standard-2",
-    ///                         NumInstances = 3,
-    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Jobs = new[]
+    ///         {
+    ///             new Gcp.Dataproc.Inputs.WorkflowTemplateJobArgs
+    ///             {
+    ///                 StepId = "someJob",
+    ///                 SparkJob = new Gcp.Dataproc.Inputs.WorkflowTemplateJobSparkJobArgs
+    ///                 {
+    ///                     MainClass = "SomeClass",
+    ///                 },
+    ///             },
+    ///             new Gcp.Dataproc.Inputs.WorkflowTemplateJobArgs
+    ///             {
+    ///                 StepId = "otherJob",
+    ///                 PrerequisiteStepIds = new[]
+    ///                 {
+    ///                     "someJob",
+    ///                 },
+    ///                 PrestoJob = new Gcp.Dataproc.Inputs.WorkflowTemplateJobPrestoJobArgs
+    ///                 {
+    ///                     QueryFileUri = "someuri",
     ///                 },
     ///             },
     ///         },

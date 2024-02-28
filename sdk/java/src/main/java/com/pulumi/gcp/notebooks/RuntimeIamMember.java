@@ -62,9 +62,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RuntimeIamPolicy(&#34;policy&#34;, RuntimeIamPolicyArgs.builder()        
- *             .project(google_notebooks_runtime.runtime().project())
- *             .location(google_notebooks_runtime.runtime().location())
- *             .runtimeName(google_notebooks_runtime.runtime().name())
+ *             .project(runtime.project())
+ *             .location(runtime.location())
+ *             .runtimeName(runtime.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -95,9 +95,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new RuntimeIamBinding(&#34;binding&#34;, RuntimeIamBindingArgs.builder()        
- *             .project(google_notebooks_runtime.runtime().project())
- *             .location(google_notebooks_runtime.runtime().location())
- *             .runtimeName(google_notebooks_runtime.runtime().name())
+ *             .project(runtime.project())
+ *             .location(runtime.location())
+ *             .runtimeName(runtime.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -129,9 +129,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new RuntimeIamMember(&#34;member&#34;, RuntimeIamMemberArgs.builder()        
- *             .project(google_notebooks_runtime.runtime().project())
- *             .location(google_notebooks_runtime.runtime().location())
- *             .runtimeName(google_notebooks_runtime.runtime().name())
+ *             .project(runtime.project())
+ *             .location(runtime.location())
+ *             .runtimeName(runtime.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

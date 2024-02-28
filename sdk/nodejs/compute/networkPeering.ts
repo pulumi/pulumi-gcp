@@ -21,13 +21,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const _default = new gcp.compute.Network("default", {autoCreateSubnetworks: false});
- * const other = new gcp.compute.Network("other", {autoCreateSubnetworks: false});
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "foobar",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const other = new gcp.compute.Network("other", {
+ *     name: "other",
+ *     autoCreateSubnetworks: false,
+ * });
  * const peering1 = new gcp.compute.NetworkPeering("peering1", {
+ *     name: "peering1",
  *     network: _default.selfLink,
  *     peerNetwork: other.selfLink,
  * });
  * const peering2 = new gcp.compute.NetworkPeering("peering2", {
+ *     name: "peering2",
  *     network: other.selfLink,
  *     peerNetwork: _default.selfLink,
  * });

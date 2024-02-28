@@ -368,6 +368,22 @@ def get_backend_service(name: Optional[str] = None,
     see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
     and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+
+    def not_implemented(msg):
+        raise NotImplementedError(msg)
+
+    baz = gcp.compute.get_backend_service(name="foobar")
+    default = gcp.compute.BackendService("default",
+        name="backend-service",
+        health_checks=not_implemented("tolist(data.google_compute_backend_service.baz.health_checks)")[0])
+    ```
+
 
     :param str name: The name of the Backend Service.
            
@@ -423,6 +439,22 @@ def get_backend_service_output(name: Optional[pulumi.Input[str]] = None,
     Provide access to a Backend Service's attribute. For more information
     see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
     and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+
+    def not_implemented(msg):
+        raise NotImplementedError(msg)
+
+    baz = gcp.compute.get_backend_service(name="foobar")
+    default = gcp.compute.BackendService("default",
+        name="backend-service",
+        health_checks=not_implemented("tolist(data.google_compute_backend_service.baz.health_checks)")[0])
+    ```
 
 
     :param str name: The name of the Backend Service.

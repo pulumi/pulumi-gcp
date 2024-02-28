@@ -63,9 +63,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RepositoryIamPolicy(&#34;policy&#34;, RepositoryIamPolicyArgs.builder()        
- *             .project(google_artifact_registry_repository.my-repo().project())
- *             .location(google_artifact_registry_repository.my-repo().location())
- *             .repository(google_artifact_registry_repository.my-repo().name())
+ *             .project(my_repo.project())
+ *             .location(my_repo.location())
+ *             .repository(my_repo.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -96,9 +96,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new RepositoryIamBinding(&#34;binding&#34;, RepositoryIamBindingArgs.builder()        
- *             .project(google_artifact_registry_repository.my-repo().project())
- *             .location(google_artifact_registry_repository.my-repo().location())
- *             .repository(google_artifact_registry_repository.my-repo().name())
+ *             .project(my_repo.project())
+ *             .location(my_repo.location())
+ *             .repository(my_repo.name())
  *             .role(&#34;roles/artifactregistry.reader&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -130,9 +130,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new RepositoryIamMember(&#34;member&#34;, RepositoryIamMemberArgs.builder()        
- *             .project(google_artifact_registry_repository.my-repo().project())
- *             .location(google_artifact_registry_repository.my-repo().location())
- *             .repository(google_artifact_registry_repository.my-repo().name())
+ *             .project(my_repo.project())
+ *             .location(my_repo.location())
+ *             .repository(my_repo.name())
  *             .role(&#34;roles/artifactregistry.reader&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

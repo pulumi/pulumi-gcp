@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.accesscontextmanager.getAccessPolicyIamPolicy({
- *     name: google_access_context_manager_access_policy["access-policy"].name,
+ *     name: access_policy.name,
  * });
  * ```
  */
@@ -65,7 +65,7 @@ export interface GetAccessPolicyIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.accesscontextmanager.getAccessPolicyIamPolicy({
- *     name: google_access_context_manager_access_policy["access-policy"].name,
+ *     name: access_policy.name,
  * });
  * ```
  */

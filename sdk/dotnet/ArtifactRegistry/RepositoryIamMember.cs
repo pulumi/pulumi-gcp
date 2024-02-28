@@ -51,9 +51,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     ///     var policy = new Gcp.ArtifactRegistry.RepositoryIamPolicy("policy", new()
     ///     {
-    ///         Project = google_artifact_registry_repository.My_repo.Project,
-    ///         Location = google_artifact_registry_repository.My_repo.Location,
-    ///         Repository = google_artifact_registry_repository.My_repo.Name,
+    ///         Project = my_repo.Project,
+    ///         Location = my_repo.Location,
+    ///         Repository = my_repo.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -72,9 +72,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// {
     ///     var binding = new Gcp.ArtifactRegistry.RepositoryIamBinding("binding", new()
     ///     {
-    ///         Project = google_artifact_registry_repository.My_repo.Project,
-    ///         Location = google_artifact_registry_repository.My_repo.Location,
-    ///         Repository = google_artifact_registry_repository.My_repo.Name,
+    ///         Project = my_repo.Project,
+    ///         Location = my_repo.Location,
+    ///         Repository = my_repo.Name,
     ///         Role = "roles/artifactregistry.reader",
     ///         Members = new[]
     ///         {
@@ -97,9 +97,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// {
     ///     var member = new Gcp.ArtifactRegistry.RepositoryIamMember("member", new()
     ///     {
-    ///         Project = google_artifact_registry_repository.My_repo.Project,
-    ///         Location = google_artifact_registry_repository.My_repo.Location,
-    ///         Repository = google_artifact_registry_repository.My_repo.Name,
+    ///         Project = my_repo.Project,
+    ///         Location = my_repo.Location,
+    ///         Repository = my_repo.Name,
     ///         Role = "roles/artifactregistry.reader",
     ///         Member = "user:jane@example.com",
     ///     });

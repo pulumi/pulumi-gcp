@@ -46,7 +46,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * ### Managed Ssl Certificate Basic
- * 
  * ```java
  * package generated_program;
  * 
@@ -81,19 +80,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultManagedSslCertificate = new ManagedSslCertificate(&#34;defaultManagedSslCertificate&#34;, ManagedSslCertificateArgs.builder()        
+ *         var default_ = new ManagedSslCertificate(&#34;default&#34;, ManagedSslCertificateArgs.builder()        
+ *             .name(&#34;test-cert&#34;)
  *             .managed(ManagedSslCertificateManagedArgs.builder()
  *                 .domains(&#34;sslcert.tf-test.club.&#34;)
  *                 .build())
  *             .build());
  * 
  *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
+ *             .name(&#34;http-health-check&#34;)
  *             .requestPath(&#34;/&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
  *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;backend-service&#34;)
  *             .portName(&#34;http&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .timeoutSec(10)
@@ -101,6 +103,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultURLMap = new URLMap(&#34;defaultURLMap&#34;, URLMapArgs.builder()        
+ *             .name(&#34;url-map&#34;)
  *             .description(&#34;a description&#34;)
  *             .defaultService(defaultBackendService.id())
  *             .hostRules(URLMapHostRuleArgs.builder()
@@ -118,11 +121,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultTargetHttpsProxy = new TargetHttpsProxy(&#34;defaultTargetHttpsProxy&#34;, TargetHttpsProxyArgs.builder()        
+ *             .name(&#34;test-proxy&#34;)
  *             .urlMap(defaultURLMap.id())
- *             .sslCertificates(defaultManagedSslCertificate.id())
+ *             .sslCertificates(default_.id())
  *             .build());
  * 
  *         var defaultGlobalForwardingRule = new GlobalForwardingRule(&#34;defaultGlobalForwardingRule&#34;, GlobalForwardingRuleArgs.builder()        
+ *             .name(&#34;forwarding-rule&#34;)
  *             .target(defaultTargetHttpsProxy.id())
  *             .portRange(443)
  *             .build());

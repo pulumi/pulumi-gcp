@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.healthcare.Dataset("default", {
+ *     name: "example-dataset",
  *     location: "us-central1",
  *     timeZone: "UTC",
  * });

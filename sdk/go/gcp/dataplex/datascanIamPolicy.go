@@ -55,9 +55,9 @@ import (
 //				return err
 //			}
 //			_, err = dataplex.NewDatascanIamPolicy(ctx, "policy", &dataplex.DatascanIamPolicyArgs{
-//				Project:    pulumi.Any(google_dataplex_datascan.Basic_profile.Project),
-//				Location:   pulumi.Any(google_dataplex_datascan.Basic_profile.Location),
-//				DataScanId: pulumi.Any(google_dataplex_datascan.Basic_profile.Data_scan_id),
+//				Project:    pulumi.Any(basicProfile.Project),
+//				Location:   pulumi.Any(basicProfile.Location),
+//				DataScanId: pulumi.Any(basicProfile.DataScanId),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -84,9 +84,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataplex.NewDatascanIamBinding(ctx, "binding", &dataplex.DatascanIamBindingArgs{
-//				Project:    pulumi.Any(google_dataplex_datascan.Basic_profile.Project),
-//				Location:   pulumi.Any(google_dataplex_datascan.Basic_profile.Location),
-//				DataScanId: pulumi.Any(google_dataplex_datascan.Basic_profile.Data_scan_id),
+//				Project:    pulumi.Any(basicProfile.Project),
+//				Location:   pulumi.Any(basicProfile.Location),
+//				DataScanId: pulumi.Any(basicProfile.DataScanId),
 //				Role:       pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -116,9 +116,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataplex.NewDatascanIamMember(ctx, "member", &dataplex.DatascanIamMemberArgs{
-//				Project:    pulumi.Any(google_dataplex_datascan.Basic_profile.Project),
-//				Location:   pulumi.Any(google_dataplex_datascan.Basic_profile.Location),
-//				DataScanId: pulumi.Any(google_dataplex_datascan.Basic_profile.Data_scan_id),
+//				Project:    pulumi.Any(basicProfile.Project),
+//				Location:   pulumi.Any(basicProfile.Location),
+//				DataScanId: pulumi.Any(basicProfile.DataScanId),
 //				Role:       pulumi.String("roles/viewer"),
 //				Member:     pulumi.String("user:jane@example.com"),
 //			})

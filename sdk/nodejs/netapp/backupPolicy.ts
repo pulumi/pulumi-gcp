@@ -22,16 +22,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const testBackupPolicyFull = new gcp.netapp.BackupPolicy("testBackupPolicyFull", {
+ * const testBackupPolicyFull = new gcp.netapp.BackupPolicy("test_backup_policy_full", {
+ *     name: "test-backup-policy-full",
+ *     location: "us-central1",
  *     dailyBackupLimit: 2,
+ *     weeklyBackupLimit: 1,
+ *     monthlyBackupLimit: 1,
  *     description: "TF test backup schedule",
  *     enabled: true,
  *     labels: {
  *         foo: "bar",
  *     },
- *     location: "us-central1",
- *     monthlyBackupLimit: 1,
- *     weeklyBackupLimit: 1,
  * });
  * ```
  *

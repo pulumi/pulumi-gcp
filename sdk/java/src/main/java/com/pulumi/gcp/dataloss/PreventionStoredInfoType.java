@@ -51,12 +51,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basic = new PreventionStoredInfoType(&#34;basic&#34;, PreventionStoredInfoTypeArgs.builder()        
+ *             .parent(&#34;projects/my-project-name&#34;)
  *             .description(&#34;Description&#34;)
  *             .displayName(&#34;Displayname&#34;)
- *             .parent(&#34;projects/my-project-name&#34;)
  *             .regex(PreventionStoredInfoTypeRegexArgs.builder()
- *                 .groupIndexes(2)
  *                 .pattern(&#34;patient&#34;)
+ *                 .groupIndexes(2)
  *                 .build())
  *             .build());
  * 
@@ -88,7 +88,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var dictionary = new PreventionStoredInfoType(&#34;dictionary&#34;, PreventionStoredInfoTypeArgs.builder()        
+ *             .parent(&#34;projects/my-project-name&#34;)
  *             .description(&#34;Description&#34;)
+ *             .displayName(&#34;Displayname&#34;)
  *             .dictionary(PreventionStoredInfoTypeDictionaryArgs.builder()
  *                 .wordList(PreventionStoredInfoTypeDictionaryWordListArgs.builder()
  *                     .words(                    
@@ -96,8 +98,6 @@ import javax.annotation.Nullable;
  *                         &#34;word2&#34;)
  *                     .build())
  *                 .build())
- *             .displayName(&#34;Displayname&#34;)
- *             .parent(&#34;projects/my-project-name&#34;)
  *             .build());
  * 
  *     }
@@ -134,11 +134,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+ *             .name(&#34;tf-test-bucket&#34;)
  *             .location(&#34;US&#34;)
  *             .forceDestroy(true)
  *             .build());
  * 
  *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
+ *             .name(&#34;tf-test-object&#34;)
  *             .bucket(bucket.name())
  *             .source(new FileAsset(&#34;./test-fixtures/words.txt&#34;))
  *             .build());
@@ -188,14 +190,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var withStoredInfoTypeId = new PreventionStoredInfoType(&#34;withStoredInfoTypeId&#34;, PreventionStoredInfoTypeArgs.builder()        
+ *             .parent(&#34;projects/my-project-name&#34;)
  *             .description(&#34;Description&#34;)
  *             .displayName(&#34;Displayname&#34;)
- *             .parent(&#34;projects/my-project-name&#34;)
- *             .regex(PreventionStoredInfoTypeRegexArgs.builder()
- *                 .groupIndexes(2)
- *                 .pattern(&#34;patient&#34;)
- *                 .build())
  *             .storedInfoTypeId(&#34;id-&#34;)
+ *             .regex(PreventionStoredInfoTypeRegexArgs.builder()
+ *                 .pattern(&#34;patient&#34;)
+ *                 .groupIndexes(2)
+ *                 .build())
  *             .build());
  * 
  *     }

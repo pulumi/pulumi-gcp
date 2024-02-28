@@ -37,8 +37,8 @@ import * as utilities from "../utilities";
  *         members: ["user:jane@example.com"],
  *     }],
  * });
- * const datasetDataset = new gcp.bigquery.Dataset("datasetDataset", {datasetId: "example_dataset"});
- * const datasetDatasetIamPolicy = new gcp.bigquery.DatasetIamPolicy("datasetDatasetIamPolicy", {
+ * const datasetDataset = new gcp.bigquery.Dataset("dataset", {datasetId: "example_dataset"});
+ * const dataset = new gcp.bigquery.DatasetIamPolicy("dataset", {
  *     datasetId: datasetDataset.datasetId,
  *     policyData: owner.then(owner => owner.policyData),
  * });

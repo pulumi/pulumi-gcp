@@ -56,10 +56,10 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewMachineImageIamPolicy(ctx, "policy", &compute.MachineImageIamPolicyArgs{
-//				Project:      pulumi.Any(google_compute_machine_image.Image.Project),
-//				MachineImage: pulumi.Any(google_compute_machine_image.Image.Name),
+//				Project:      pulumi.Any(image.Project),
+//				MachineImage: pulumi.Any(image.Name),
 //				PolicyData:   *pulumi.String(admin.PolicyData),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -103,10 +103,10 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewMachineImageIamPolicy(ctx, "policy", &compute.MachineImageIamPolicyArgs{
-//				Project:      pulumi.Any(google_compute_machine_image.Image.Project),
-//				MachineImage: pulumi.Any(google_compute_machine_image.Image.Name),
+//				Project:      pulumi.Any(image.Project),
+//				MachineImage: pulumi.Any(image.Name),
 //				PolicyData:   *pulumi.String(admin.PolicyData),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -130,13 +130,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewMachineImageIamBinding(ctx, "binding", &compute.MachineImageIamBindingArgs{
-//				Project:      pulumi.Any(google_compute_machine_image.Image.Project),
-//				MachineImage: pulumi.Any(google_compute_machine_image.Image.Name),
+//				Project:      pulumi.Any(image.Project),
+//				MachineImage: pulumi.Any(image.Name),
 //				Role:         pulumi.String("roles/compute.admin"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -161,8 +161,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewMachineImageIamBinding(ctx, "binding", &compute.MachineImageIamBindingArgs{
-//				Project:      pulumi.Any(google_compute_machine_image.Image.Project),
-//				MachineImage: pulumi.Any(google_compute_machine_image.Image.Name),
+//				Project:      pulumi.Any(image.Project),
+//				MachineImage: pulumi.Any(image.Name),
 //				Role:         pulumi.String("roles/compute.admin"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -172,7 +172,7 @@ import (
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -196,11 +196,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewMachineImageIamMember(ctx, "member", &compute.MachineImageIamMemberArgs{
-//				Project:      pulumi.Any(google_compute_machine_image.Image.Project),
-//				MachineImage: pulumi.Any(google_compute_machine_image.Image.Name),
+//				Project:      pulumi.Any(image.Project),
+//				MachineImage: pulumi.Any(image.Name),
 //				Role:         pulumi.String("roles/compute.admin"),
 //				Member:       pulumi.String("user:jane@example.com"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -225,8 +225,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewMachineImageIamMember(ctx, "member", &compute.MachineImageIamMemberArgs{
-//				Project:      pulumi.Any(google_compute_machine_image.Image.Project),
-//				MachineImage: pulumi.Any(google_compute_machine_image.Image.Name),
+//				Project:      pulumi.Any(image.Project),
+//				MachineImage: pulumi.Any(image.Name),
 //				Role:         pulumi.String("roles/compute.admin"),
 //				Member:       pulumi.String("user:jane@example.com"),
 //				Condition: &compute.MachineImageIamMemberConditionArgs{
@@ -234,7 +234,7 @@ import (
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

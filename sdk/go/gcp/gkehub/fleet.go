@@ -35,13 +35,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.NewFleet(ctx, "default", &gkehub.FleetArgs{
+//				DisplayName: pulumi.String("my production fleet"),
 //				DefaultClusterConfig: &gkehub.FleetDefaultClusterConfigArgs{
 //					SecurityPostureConfig: &gkehub.FleetDefaultClusterConfigSecurityPostureConfigArgs{
 //						Mode:              pulumi.String("DISABLED"),
 //						VulnerabilityMode: pulumi.String("VULNERABILITY_DISABLED"),
 //					},
 //				},
-//				DisplayName: pulumi.String("my production fleet"),
 //			})
 //			if err != nil {
 //				return err

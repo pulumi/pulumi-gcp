@@ -41,7 +41,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleLiteTopic, err := pubsub.NewLiteTopic(ctx, "exampleLiteTopic", &pubsub.LiteTopicArgs{
+//			example, err := pubsub.NewLiteTopic(ctx, "example", &pubsub.LiteTopicArgs{
+//				Name:    pulumi.String("example-topic"),
 //				Project: *pulumi.String(project.Number),
 //				PartitionConfig: &pubsub.LiteTopicPartitionConfigArgs{
 //					Count: pulumi.Int(1),
@@ -57,8 +58,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = pubsub.NewLiteSubscription(ctx, "exampleLiteSubscription", &pubsub.LiteSubscriptionArgs{
-//				Topic: exampleLiteTopic.Name,
+//			_, err = pubsub.NewLiteSubscription(ctx, "example", &pubsub.LiteSubscriptionArgs{
+//				Name:  pulumi.String("example-subscription"),
+//				Topic: example.Name,
 //				DeliveryConfig: &pubsub.LiteSubscriptionDeliveryConfigArgs{
 //					DeliveryRequirement: pulumi.String("DELIVER_AFTER_STORED"),
 //				},

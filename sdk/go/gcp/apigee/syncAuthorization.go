@@ -41,30 +41,30 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+//				ProjectId:      pulumi.String("my-project"),
+//				Name:           pulumi.String("my-project"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			apigee, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
+//			_, err = projects.NewService(ctx, "apigee", &projects.ServiceArgs{
 //				Project: project.ProjectId,
 //				Service: pulumi.String("apigee.googleapis.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = apigee.NewOrganization(ctx, "apigeeOrg", &apigee.OrganizationArgs{
+//			apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 //				AnalyticsRegion: pulumi.String("us-central1"),
 //				ProjectId:       project.ProjectId,
 //				RuntimeType:     pulumi.String("HYBRID"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				apigee,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			serviceAccount, err := serviceaccount.NewAccount(ctx, "serviceAccount", &serviceaccount.AccountArgs{
+//			serviceAccount, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
 //				AccountId:   pulumi.String("my-account"),
 //				DisplayName: pulumi.String("Service Account"),
 //			})
@@ -83,15 +83,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = apigee.NewSyncAuthorization(ctx, "apigeeSyncAuthorization", &apigee.SyncAuthorizationArgs{
+//			_, err = apigee.NewSyncAuthorization(ctx, "apigee_sync_authorization", &apigee.SyncAuthorizationArgs{
+//				Name: apigeeOrg.Name,
 //				Identities: pulumi.StringArray{
 //					serviceAccount.Email.ApplyT(func(email string) (string, error) {
 //						return fmt.Sprintf("serviceAccount:%v", email), nil
 //					}).(pulumi.StringOutput),
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				synchronizer_iam,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

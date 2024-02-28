@@ -294,13 +294,16 @@ class AccessLevel(pulumi.CustomResource):
             parent="organizations/123456789",
             title="my policy")
         access_level = gcp.accesscontextmanager.AccessLevel("access-level",
+            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
+            title="chromeos_no_lock",
             basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
                 conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
                     device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
+                        require_screen_lock=True,
                         os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
                             os_type="DESKTOP_CHROME_OS",
                         )],
-                        require_screen_lock=True,
                     ),
                     regions=[
                         "CH",
@@ -308,9 +311,7 @@ class AccessLevel(pulumi.CustomResource):
                         "US",
                     ],
                 )],
-            ),
-            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
-            title="chromeos_no_lock")
+            ))
         ```
 
         ## Import
@@ -376,13 +377,16 @@ class AccessLevel(pulumi.CustomResource):
             parent="organizations/123456789",
             title="my policy")
         access_level = gcp.accesscontextmanager.AccessLevel("access-level",
+            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
+            title="chromeos_no_lock",
             basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
                 conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
                     device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
+                        require_screen_lock=True,
                         os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
                             os_type="DESKTOP_CHROME_OS",
                         )],
-                        require_screen_lock=True,
                     ),
                     regions=[
                         "CH",
@@ -390,9 +394,7 @@ class AccessLevel(pulumi.CustomResource):
                         "US",
                     ],
                 )],
-            ),
-            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
-            title="chromeos_no_lock")
+            ))
         ```
 
         ## Import

@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := securitycenter.LookupSourceIamPolicy(ctx, &securitycenter.LookupSourceIamPolicyArgs{
-//				Source: google_scc_source.Custom_source.Name,
+//				Source: customSource.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

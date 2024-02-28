@@ -22,8 +22,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var basicRegionalNetworksecurityAddressGroup = new Gcp.NetworkSecurity.AddressGroup("basicRegionalNetworksecurityAddressGroup", new()
+    ///     var basicRegionalNetworksecurityAddressGroup = new Gcp.NetworkSecurity.AddressGroup("basic_regional_networksecurity_address_group", new()
     ///     {
+    ///         Name = "policy",
     ///         Parent = "projects/my-project-name",
     ///         Description = "Sample regional networksecurity_address_group",
     ///         Location = "us-west1",
@@ -35,16 +36,20 @@ namespace Pulumi.Gcp.Compute
     ///         Capacity = 100,
     ///     });
     /// 
-    ///     var basicRegionalNetworkFirewallPolicy = new Gcp.Compute.RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy", new()
+    ///     var basicRegionalNetworkFirewallPolicy = new Gcp.Compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy", new()
     ///     {
+    ///         Name = "policy",
     ///         Description = "Sample regional network firewall policy",
     ///         Project = "my-project-name",
     ///         Region = "us-west1",
     ///     });
     /// 
-    ///     var basicNetwork = new Gcp.Compute.Network("basicNetwork");
+    ///     var basicNetwork = new Gcp.Compute.Network("basic_network", new()
+    ///     {
+    ///         Name = "network",
+    ///     });
     /// 
-    ///     var basicKey = new Gcp.Tags.TagKey("basicKey", new()
+    ///     var basicKey = new Gcp.Tags.TagKey("basic_key", new()
     ///     {
     ///         Description = "For keyname resources.",
     ///         Parent = "organizations/123456789",
@@ -56,7 +61,7 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///     });
     /// 
-    ///     var basicValue = new Gcp.Tags.TagValue("basicValue", new()
+    ///     var basicValue = new Gcp.Tags.TagValue("basic_value", new()
     ///     {
     ///         Description = "For valuename resources.",
     ///         Parent = basicKey.Name.Apply(name =&gt; $"tagKeys/{name}"),

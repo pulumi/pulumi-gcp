@@ -296,8 +296,8 @@ class InstanceIamMember(pulumi.CustomResource):
 
         editor = gcp.bigtable.InstanceIamBinding("editor",
             instance="your-bigtable-instance",
-            members=["user:jane@example.com"],
-            role="roles/bigtable.user")
+            role="roles/bigtable.user",
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_bigtable\\_instance\\_iam\\_member
@@ -308,8 +308,8 @@ class InstanceIamMember(pulumi.CustomResource):
 
         editor = gcp.bigtable.InstanceIamMember("editor",
             instance="your-bigtable-instance",
-            member="user:jane@example.com",
-            role="roles/bigtable.user")
+            role="roles/bigtable.user",
+            member="user:jane@example.com")
         ```
 
         ## Import
@@ -401,8 +401,8 @@ class InstanceIamMember(pulumi.CustomResource):
 
         editor = gcp.bigtable.InstanceIamBinding("editor",
             instance="your-bigtable-instance",
-            members=["user:jane@example.com"],
-            role="roles/bigtable.user")
+            role="roles/bigtable.user",
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_bigtable\\_instance\\_iam\\_member
@@ -413,8 +413,8 @@ class InstanceIamMember(pulumi.CustomResource):
 
         editor = gcp.bigtable.InstanceIamMember("editor",
             instance="your-bigtable-instance",
-            member="user:jane@example.com",
-            role="roles/bigtable.user")
+            role="roles/bigtable.user",
+            member="user:jane@example.com")
         ```
 
         ## Import

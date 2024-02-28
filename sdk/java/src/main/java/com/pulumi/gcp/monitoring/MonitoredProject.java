@@ -30,10 +30,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.monitoring.MonitoredProject;
- * import com.pulumi.gcp.monitoring.MonitoredProjectArgs;
  * import com.pulumi.gcp.organizations.Project;
  * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.monitoring.MonitoredProject;
+ * import com.pulumi.gcp.monitoring.MonitoredProjectArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -47,12 +47,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new MonitoredProject(&#34;primary&#34;, MonitoredProjectArgs.builder()        
- *             .metricsScope(&#34;my-project-name&#34;)
+ *         var basic = new Project(&#34;basic&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;m-id&#34;)
+ *             .name(&#34;m-id-display&#34;)
+ *             .orgId(&#34;123456789&#34;)
  *             .build());
  * 
- *         var basic = new Project(&#34;basic&#34;, ProjectArgs.builder()        
- *             .orgId(&#34;123456789&#34;)
+ *         var primary = new MonitoredProject(&#34;primary&#34;, MonitoredProjectArgs.builder()        
+ *             .metricsScope(&#34;my-project-name&#34;)
+ *             .name(basic.projectId())
  *             .build());
  * 
  *     }

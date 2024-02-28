@@ -50,7 +50,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = healthcare.NewHl7StoreIamPolicy(ctx, "hl7V2Store", &healthcare.Hl7StoreIamPolicyArgs{
+//			_, err = healthcare.NewHl7StoreIamPolicy(ctx, "hl7_v2_store", &healthcare.Hl7StoreIamPolicyArgs{
 //				Hl7V2StoreId: pulumi.String("your-hl7-v2-store-id"),
 //				PolicyData:   *pulumi.String(admin.PolicyData),
 //			})
@@ -77,12 +77,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := healthcare.NewHl7StoreIamBinding(ctx, "hl7V2Store", &healthcare.Hl7StoreIamBindingArgs{
+//			_, err := healthcare.NewHl7StoreIamBinding(ctx, "hl7_v2_store", &healthcare.Hl7StoreIamBindingArgs{
 //				Hl7V2StoreId: pulumi.String("your-hl7-v2-store-id"),
+//				Role:         pulumi.String("roles/editor"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				Role: pulumi.String("roles/editor"),
 //			})
 //			if err != nil {
 //				return err
@@ -107,10 +107,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := healthcare.NewHl7StoreIamMember(ctx, "hl7V2Store", &healthcare.Hl7StoreIamMemberArgs{
+//			_, err := healthcare.NewHl7StoreIamMember(ctx, "hl7_v2_store", &healthcare.Hl7StoreIamMemberArgs{
 //				Hl7V2StoreId: pulumi.String("your-hl7-v2-store-id"),
-//				Member:       pulumi.String("user:jane@example.com"),
 //				Role:         pulumi.String("roles/editor"),
+//				Member:       pulumi.String("user:jane@example.com"),
 //			})
 //			if err != nil {
 //				return err

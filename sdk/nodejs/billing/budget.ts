@@ -119,7 +119,7 @@ import * as utilities from "../utilities";
  *     billingAccount: "000000-0000000-0000000-000000",
  * });
  * const project = gcp.organizations.getProject({});
- * const notificationChannel = new gcp.monitoring.NotificationChannel("notificationChannel", {
+ * const notificationChannel = new gcp.monitoring.NotificationChannel("notification_channel", {
  *     displayName: "Example Notification Channel",
  *     type: "email",
  *     labels: {

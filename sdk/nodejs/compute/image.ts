@@ -37,9 +37,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const example = new gcp.compute.Image("example", {rawDisk: {
- *     source: "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
- * }});
+ * const example = new gcp.compute.Image("example", {
+ *     name: "example-image",
+ *     rawDisk: {
+ *         source: "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+ *     },
+ * });
  * ```
  * ### Image Guest Os
  *
@@ -48,6 +51,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const example = new gcp.compute.Image("example", {
+ *     name: "example-image",
+ *     rawDisk: {
+ *         source: "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+ *     },
  *     guestOsFeatures: [
  *         {
  *             type: "SECURE_BOOT",
@@ -56,9 +63,6 @@ import * as utilities from "../utilities";
  *             type: "MULTI_IP_SUBNET",
  *         },
  *     ],
- *     rawDisk: {
- *         source: "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
- *     },
  * });
  * ```
  * ### Image Basic Storage Location
@@ -68,6 +72,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const example = new gcp.compute.Image("example", {
+ *     name: "example-sl-image",
  *     rawDisk: {
  *         source: "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
  *     },

@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.DataCatalog
         /// {
         ///     var policy = Gcp.DataCatalog.GetTaxonomyIamPolicy.Invoke(new()
         ///     {
-        ///         Taxonomy = google_data_catalog_taxonomy.Basic_taxonomy.Name,
+        ///         Taxonomy = basicTaxonomy.Name,
         ///     });
         /// 
         /// });
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.DataCatalog
         /// {
         ///     var policy = Gcp.DataCatalog.GetTaxonomyIamPolicy.Invoke(new()
         ///     {
-        ///         Taxonomy = google_data_catalog_taxonomy.Basic_taxonomy.Name,
+        ///         Taxonomy = basicTaxonomy.Name,
         ///     });
         /// 
         /// });

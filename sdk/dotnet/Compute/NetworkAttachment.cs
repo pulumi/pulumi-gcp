@@ -21,44 +21,39 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
     ///     {
+    ///         Name = "basic-network",
     ///         AutoCreateSubnetworks = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new()
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
     ///     {
+    ///         Name = "basic-subnetwork",
     ///         Region = "us-central1",
     ///         Network = defaultNetwork.Id,
     ///         IpCidrRange = "10.0.0.0/16",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var rejectedProducerProject = new Gcp.Organizations.Project("rejectedProducerProject", new()
+    ///     var rejectedProducerProject = new Gcp.Organizations.Project("rejected_producer_project", new()
     ///     {
+    ///         ProjectId = "prj-rejected",
+    ///         Name = "prj-rejected",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var acceptedProducerProject = new Gcp.Organizations.Project("acceptedProducerProject", new()
+    ///     var acceptedProducerProject = new Gcp.Organizations.Project("accepted_producer_project", new()
     ///     {
+    ///         ProjectId = "prj-accepted",
+    ///         Name = "prj-accepted",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultNetworkAttachment = new Gcp.Compute.NetworkAttachment("defaultNetworkAttachment", new()
+    ///     var @default = new Gcp.Compute.NetworkAttachment("default", new()
     ///     {
+    ///         Name = "basic-network-attachment",
     ///         Region = "us-central1",
     ///         Description = "basic network attachment description",
     ///         ConnectionPreference = "ACCEPT_MANUAL",
@@ -74,9 +69,6 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             rejectedProducerProject.ProjectId,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -91,26 +83,23 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
+    ///     var @default = new Gcp.Compute.Network("default", new()
     ///     {
+    ///         Name = "basic-network",
     ///         AutoCreateSubnetworks = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new()
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
     ///     {
+    ///         Name = "basic-subnetwork",
     ///         Region = "us-central1",
-    ///         Network = defaultNetwork.Id,
+    ///         Network = @default.Id,
     ///         IpCidrRange = "10.0.0.0/16",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultNetworkAttachment = new Gcp.Compute.NetworkAttachment("defaultNetworkAttachment", new()
+    ///     var defaultNetworkAttachment = new Gcp.Compute.NetworkAttachment("default", new()
     ///     {
+    ///         Name = "basic-network-attachment",
     ///         Region = "us-central1",
     ///         Description = "my basic network attachment",
     ///         Subnetworks = new[]
@@ -118,13 +107,11 @@ namespace Pulumi.Gcp.Compute
     ///             defaultSubnetwork.Id,
     ///         },
     ///         ConnectionPreference = "ACCEPT_AUTOMATIC",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultInstance = new Gcp.Compute.Instance("defaultInstance", new()
+    ///     var defaultInstance = new Gcp.Compute.Instance("default", new()
     ///     {
+    ///         Name = "basic-instance",
     ///         Zone = "us-central1-a",
     ///         MachineType = "e2-micro",
     ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
@@ -145,9 +132,6 @@ namespace Pulumi.Gcp.Compute
     ///                 NetworkAttachment = defaultNetworkAttachment.SelfLink,
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

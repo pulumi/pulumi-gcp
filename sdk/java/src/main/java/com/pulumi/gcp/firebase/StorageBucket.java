@@ -27,7 +27,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.BucketArgs;
  * import com.pulumi.gcp.firebase.StorageBucket;
  * import com.pulumi.gcp.firebase.StorageBucketArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -41,19 +40,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
+ *         var default_ = new Bucket(&#34;default&#34;, BucketArgs.builder()        
+ *             .name(&#34;test_bucket&#34;)
  *             .location(&#34;US&#34;)
  *             .uniformBucketLevelAccess(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultStorageBucket = new StorageBucket(&#34;defaultStorageBucket&#34;, StorageBucketArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
- *             .bucketId(defaultBucket.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .bucketId(default_.id())
+ *             .build());
  * 
  *     }
  * }

@@ -39,7 +39,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.TransferAgentPool;
  * import com.pulumi.gcp.storage.TransferAgentPoolArgs;
  * import com.pulumi.gcp.storage.inputs.TransferAgentPoolBandwidthLimitArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -64,13 +63,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new TransferAgentPool(&#34;example&#34;, TransferAgentPoolArgs.builder()        
+ *             .name(&#34;agent-pool-example&#34;)
  *             .displayName(&#34;Source A to destination Z&#34;)
  *             .bandwidthLimit(TransferAgentPoolBandwidthLimitArgs.builder()
  *                 .limitMbps(&#34;120&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(pubsubEditorRole)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

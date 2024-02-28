@@ -36,12 +36,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := looker.NewInstance(ctx, "looker-instance", &looker.InstanceArgs{
+//				Name:            pulumi.String("my-instance"),
+//				PlatformEdition: pulumi.String("LOOKER_CORE_STANDARD"),
+//				Region:          pulumi.String("us-central1"),
 //				OauthConfig: &looker.InstanceOauthConfigArgs{
 //					ClientId:     pulumi.String("my-client-id"),
 //					ClientSecret: pulumi.String("my-client-secret"),
 //				},
-//				PlatformEdition: pulumi.String("LOOKER_CORE_STANDARD"),
-//				Region:          pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err
@@ -66,49 +67,50 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := looker.NewInstance(ctx, "looker-instance", &looker.InstanceArgs{
+//				Name:            pulumi.String("my-instance"),
+//				PlatformEdition: pulumi.String("LOOKER_CORE_STANDARD"),
+//				Region:          pulumi.String("us-central1"),
+//				PublicIpEnabled: pulumi.Bool(true),
 //				AdminSettings: &looker.InstanceAdminSettingsArgs{
 //					AllowedEmailDomains: pulumi.StringArray{
 //						pulumi.String("google.com"),
 //					},
 //				},
-//				DenyMaintenancePeriod: &looker.InstanceDenyMaintenancePeriodArgs{
-//					EndDate: &looker.InstanceDenyMaintenancePeriodEndDateArgs{
-//						Day:   pulumi.Int(1),
-//						Month: pulumi.Int(2),
-//						Year:  pulumi.Int(2050),
-//					},
-//					StartDate: &looker.InstanceDenyMaintenancePeriodStartDateArgs{
-//						Day:   pulumi.Int(1),
-//						Month: pulumi.Int(1),
-//						Year:  pulumi.Int(2050),
-//					},
-//					Time: &looker.InstanceDenyMaintenancePeriodTimeArgs{
-//						Hours:   pulumi.Int(10),
-//						Minutes: pulumi.Int(0),
-//						Nanos:   pulumi.Int(0),
-//						Seconds: pulumi.Int(0),
-//					},
+//				UserMetadata: &looker.InstanceUserMetadataArgs{
+//					AdditionalDeveloperUserCount: pulumi.Int(10),
+//					AdditionalStandardUserCount:  pulumi.Int(10),
+//					AdditionalViewerUserCount:    pulumi.Int(10),
 //				},
 //				MaintenanceWindow: &looker.InstanceMaintenanceWindowArgs{
 //					DayOfWeek: pulumi.String("THURSDAY"),
 //					StartTime: &looker.InstanceMaintenanceWindowStartTimeArgs{
 //						Hours:   pulumi.Int(22),
 //						Minutes: pulumi.Int(0),
-//						Nanos:   pulumi.Int(0),
 //						Seconds: pulumi.Int(0),
+//						Nanos:   pulumi.Int(0),
+//					},
+//				},
+//				DenyMaintenancePeriod: &looker.InstanceDenyMaintenancePeriodArgs{
+//					StartDate: &looker.InstanceDenyMaintenancePeriodStartDateArgs{
+//						Year:  pulumi.Int(2050),
+//						Month: pulumi.Int(1),
+//						Day:   pulumi.Int(1),
+//					},
+//					EndDate: &looker.InstanceDenyMaintenancePeriodEndDateArgs{
+//						Year:  pulumi.Int(2050),
+//						Month: pulumi.Int(2),
+//						Day:   pulumi.Int(1),
+//					},
+//					Time: &looker.InstanceDenyMaintenancePeriodTimeArgs{
+//						Hours:   pulumi.Int(10),
+//						Minutes: pulumi.Int(0),
+//						Seconds: pulumi.Int(0),
+//						Nanos:   pulumi.Int(0),
 //					},
 //				},
 //				OauthConfig: &looker.InstanceOauthConfigArgs{
 //					ClientId:     pulumi.String("my-client-id"),
 //					ClientSecret: pulumi.String("my-client-secret"),
-//				},
-//				PlatformEdition: pulumi.String("LOOKER_CORE_STANDARD"),
-//				PublicIpEnabled: pulumi.Bool(true),
-//				Region:          pulumi.String("us-central1"),
-//				UserMetadata: &looker.InstanceUserMetadataArgs{
-//					AdditionalDeveloperUserCount: pulumi.Int(10),
-//					AdditionalStandardUserCount:  pulumi.Int(10),
-//					AdditionalViewerUserCount:    pulumi.Int(10),
 //				},
 //			})
 //			if err != nil {
@@ -139,11 +141,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			lookerNetwork, err := compute.NewNetwork(ctx, "lookerNetwork", nil)
+//			lookerNetwork, err := compute.NewNetwork(ctx, "looker_network", &compute.NetworkArgs{
+//				Name: pulumi.String("looker-network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			lookerRange, err := compute.NewGlobalAddress(ctx, "lookerRange", &compute.GlobalAddressArgs{
+//			lookerRange, err := compute.NewGlobalAddress(ctx, "looker_range", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("looker-range"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(20),
@@ -152,17 +157,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			lookerVpcConnection, err := servicenetworking.NewConnection(ctx, "lookerVpcConnection", &servicenetworking.ConnectionArgs{
-//				Network: lookerNetwork.ID(),
-//				Service: pulumi.String("servicenetworking.googleapis.com"),
-//				ReservedPeeringRanges: pulumi.StringArray{
-//					lookerRange.Name,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			_, err = looker.NewInstance(ctx, "looker-instance", &looker.InstanceArgs{
+//				Name:             pulumi.String("my-instance"),
 //				PlatformEdition:  pulumi.String("LOOKER_CORE_ENTERPRISE_ANNUAL"),
 //				Region:           pulumi.String("us-central1"),
 //				PrivateIpEnabled: pulumi.Bool(true),
@@ -208,9 +204,17 @@ import (
 //					ClientId:     pulumi.String("my-client-id"),
 //					ClientSecret: pulumi.String("my-client-secret"),
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				lookerVpcConnection,
-//			}))
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = servicenetworking.NewConnection(ctx, "looker_vpc_connection", &servicenetworking.ConnectionArgs{
+//				Network: lookerNetwork.ID(),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					lookerRange.Name,
+//				},
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -218,7 +222,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = kms.NewCryptoKeyIAMMember(ctx, "cryptoKey", &kms.CryptoKeyIAMMemberArgs{
+//			_, err = kms.NewCryptoKeyIAMMember(ctx, "crypto_key", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: pulumi.String("looker-kms-key"),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-looker.iam.gserviceaccount.com", project.Number)),

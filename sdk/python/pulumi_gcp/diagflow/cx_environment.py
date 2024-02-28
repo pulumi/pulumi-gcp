@@ -240,7 +240,7 @@ class CxEnvironment(pulumi.CustomResource):
             speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
                 enable_speech_adaptation=True,
             ))
-        version1 = gcp.diagflow.CxVersion("version1",
+        version1 = gcp.diagflow.CxVersion("version_1",
             parent=agent.start_flow,
             display_name="1.0.0",
             description="version 1.0.0")
@@ -321,7 +321,7 @@ class CxEnvironment(pulumi.CustomResource):
             speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
                 enable_speech_adaptation=True,
             ))
-        version1 = gcp.diagflow.CxVersion("version1",
+        version1 = gcp.diagflow.CxVersion("version_1",
             parent=agent.start_flow,
             display_name="1.0.0",
             description="version 1.0.0")

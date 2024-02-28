@@ -16,13 +16,12 @@ import * as utilities from "../utilities";
  *
  * const images = new gcp.storage.Bucket("images", {
  *     project: "my-project-name",
+ *     name: "bucket-id",
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  *     forceDestroy: true,
- * }, {
- *     provider: google_beta,
  * });
- * const resizeImage = new gcp.firebase.ExtensionsInstance("resizeImage", {
+ * const resizeImage = new gcp.firebase.ExtensionsInstance("resize_image", {
  *     project: "my-project-name",
  *     instanceId: "storage-resize-images",
  *     config: {
@@ -47,8 +46,6 @@ import * as utilities from "../utilities";
  *         allowedEventTypes: ["firebase.extensions.storage-resize-images.v1.onCompletion"],
  *         eventarcChannel: "projects/my-project-name/locations//channels/firebase",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

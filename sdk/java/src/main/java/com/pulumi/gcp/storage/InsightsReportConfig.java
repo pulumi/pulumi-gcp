@@ -38,8 +38,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.storage.Bucket;
  * import com.pulumi.gcp.storage.BucketArgs;
- * import com.pulumi.gcp.storage.BucketIAMMember;
- * import com.pulumi.gcp.storage.BucketIAMMemberArgs;
  * import com.pulumi.gcp.storage.InsightsReportConfig;
  * import com.pulumi.gcp.storage.InsightsReportConfigArgs;
  * import com.pulumi.gcp.storage.inputs.InsightsReportConfigFrequencyOptionsArgs;
@@ -49,7 +47,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.inputs.InsightsReportConfigObjectMetadataReportOptionsArgs;
  * import com.pulumi.gcp.storage.inputs.InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs;
  * import com.pulumi.gcp.storage.inputs.InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs;
- * import com.pulumi.resources.CustomResourceOptions;
+ * import com.pulumi.gcp.storage.BucketIAMMember;
+ * import com.pulumi.gcp.storage.BucketIAMMemberArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -66,15 +65,10 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var reportBucket = new Bucket(&#34;reportBucket&#34;, BucketArgs.builder()        
+ *             .name(&#34;my-bucket&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .forceDestroy(true)
  *             .uniformBucketLevelAccess(true)
- *             .build());
- * 
- *         var admin = new BucketIAMMember(&#34;admin&#34;, BucketIAMMemberArgs.builder()        
- *             .bucket(reportBucket.name())
- *             .role(&#34;roles/storage.admin&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-storageinsights.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
  *             .build());
  * 
  *         var config = new InsightsReportConfig(&#34;config&#34;, InsightsReportConfigArgs.builder()        
@@ -113,9 +107,13 @@ import javax.annotation.Nullable;
  *                     .destinationPath(&#34;test-insights-reports&#34;)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(admin)
- *                 .build());
+ *             .build());
+ * 
+ *         var admin = new BucketIAMMember(&#34;admin&#34;, BucketIAMMemberArgs.builder()        
+ *             .bucket(reportBucket.name())
+ *             .role(&#34;roles/storage.admin&#34;)
+ *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-storageinsights.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .build());
  * 
  *     }
  * }

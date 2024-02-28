@@ -37,6 +37,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance, err := filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
+//				Name:     pulumi.String("test-instance-for-snapshot"),
 //				Location: pulumi.String("us-east1"),
 //				Tier:     pulumi.String("ENTERPRISE"),
 //				FileShares: &filestore.InstanceFileSharesArgs{
@@ -56,6 +57,7 @@ import (
 //				return err
 //			}
 //			_, err = filestore.NewSnapshot(ctx, "snapshot", &filestore.SnapshotArgs{
+//				Name:     pulumi.String("test-snapshot"),
 //				Instance: instance.Name,
 //				Location: pulumi.String("us-east1"),
 //			})
@@ -82,6 +84,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance, err := filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
+//				Name:     pulumi.String("test-instance-for-snapshot"),
 //				Location: pulumi.String("us-west1"),
 //				Tier:     pulumi.String("ENTERPRISE"),
 //				FileShares: &filestore.InstanceFileSharesArgs{
@@ -101,6 +104,7 @@ import (
 //				return err
 //			}
 //			_, err = filestore.NewSnapshot(ctx, "snapshot", &filestore.SnapshotArgs{
+//				Name:        pulumi.String("test-snapshot"),
 //				Instance:    instance.Name,
 //				Location:    pulumi.String("us-west1"),
 //				Description: pulumi.String("Snapshot of test-instance-for-snapshot"),

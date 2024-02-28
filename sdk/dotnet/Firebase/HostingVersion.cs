@@ -21,18 +21,15 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultHostingSite = new Gcp.Firebase.HostingSite("defaultHostingSite", new()
+    ///     var @default = new Gcp.Firebase.HostingSite("default", new()
     ///     {
     ///         Project = "my-project-name",
     ///         SiteId = "site-id",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultHostingVersion = new Gcp.Firebase.HostingVersion("defaultHostingVersion", new()
+    ///     var defaultHostingVersion = new Gcp.Firebase.HostingVersion("default", new()
     ///     {
-    ///         SiteId = defaultHostingSite.SiteId,
+    ///         SiteId = @default.SiteId,
     ///         Config = new Gcp.Firebase.Inputs.HostingVersionConfigArgs
     ///         {
     ///             Redirects = new[]
@@ -45,19 +42,13 @@ namespace Pulumi.Gcp.Firebase
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultHostingRelease = new Gcp.Firebase.HostingRelease("defaultHostingRelease", new()
+    ///     var defaultHostingRelease = new Gcp.Firebase.HostingRelease("default", new()
     ///     {
-    ///         SiteId = defaultHostingSite.SiteId,
+    ///         SiteId = @default.SiteId,
     ///         VersionName = defaultHostingVersion.Name,
     ///         Message = "Redirect to Google",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -72,18 +63,16 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultHostingSite = new Gcp.Firebase.HostingSite("defaultHostingSite", new()
+    ///     var @default = new Gcp.Firebase.HostingSite("default", new()
     ///     {
     ///         Project = "my-project-name",
     ///         SiteId = "site-id",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultService = new Gcp.CloudRunV2.Service("defaultService", new()
+    ///     var defaultService = new Gcp.CloudRunV2.Service("default", new()
     ///     {
     ///         Project = "my-project-name",
+    ///         Name = "cloud-run-service-via-hosting",
     ///         Location = "us-central1",
     ///         Ingress = "INGRESS_TRAFFIC_ALL",
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
@@ -96,14 +85,11 @@ namespace Pulumi.Gcp.Firebase
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultHostingVersion = new Gcp.Firebase.HostingVersion("defaultHostingVersion", new()
+    ///     var defaultHostingVersion = new Gcp.Firebase.HostingVersion("default", new()
     ///     {
-    ///         SiteId = defaultHostingSite.SiteId,
+    ///         SiteId = @default.SiteId,
     ///         Config = new Gcp.Firebase.Inputs.HostingVersionConfigArgs
     ///         {
     ///             Rewrites = new[]
@@ -119,19 +105,13 @@ namespace Pulumi.Gcp.Firebase
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultHostingRelease = new Gcp.Firebase.HostingRelease("defaultHostingRelease", new()
+    ///     var defaultHostingRelease = new Gcp.Firebase.HostingRelease("default", new()
     ///     {
-    ///         SiteId = defaultHostingSite.SiteId,
+    ///         SiteId = @default.SiteId,
     ///         VersionName = defaultHostingVersion.Name,
     ///         Message = "Cloud Run Integration",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -146,38 +126,31 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultHostingSite = new Gcp.Firebase.HostingSite("defaultHostingSite", new()
+    ///     var @default = new Gcp.Firebase.HostingSite("default", new()
     ///     {
     ///         Project = "my-project-name",
     ///         SiteId = "site-id",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
     ///         Project = "my-project-name",
+    ///         Name = "site-id-function-source",
     ///         Location = "US",
     ///         UniformBucketLevelAccess = true,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var @object = new Gcp.Storage.BucketObject("object", new()
     ///     {
+    ///         Name = "function-source.zip",
     ///         Bucket = bucket.Name,
     ///         Source = new FileAsset("function-source.zip"),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     // Add path to the zipped function source code
     ///     var function = new Gcp.CloudFunctions.Function("function", new()
     ///     {
     ///         Project = "my-project-name",
+    ///         Name = "cloud-function-via-hosting",
     ///         Description = "A Cloud Function connected to Firebase Hosing",
     ///         Runtime = "nodejs16",
     ///         AvailableMemoryMb = 128,
@@ -185,14 +158,11 @@ namespace Pulumi.Gcp.Firebase
     ///         SourceArchiveObject = @object.Name,
     ///         TriggerHttp = true,
     ///         EntryPoint = "helloHttp",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultHostingVersion = new Gcp.Firebase.HostingVersion("defaultHostingVersion", new()
+    ///     var defaultHostingVersion = new Gcp.Firebase.HostingVersion("default", new()
     ///     {
-    ///         SiteId = defaultHostingSite.SiteId,
+    ///         SiteId = @default.SiteId,
     ///         Config = new Gcp.Firebase.Inputs.HostingVersionConfigArgs
     ///         {
     ///             Rewrites = new[]
@@ -204,19 +174,13 @@ namespace Pulumi.Gcp.Firebase
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultHostingRelease = new Gcp.Firebase.HostingRelease("defaultHostingRelease", new()
+    ///     var defaultHostingRelease = new Gcp.Firebase.HostingRelease("default", new()
     ///     {
-    ///         SiteId = defaultHostingSite.SiteId,
+    ///         SiteId = @default.SiteId,
     ///         VersionName = defaultHostingVersion.Name,
     ///         Message = "Cloud Functions Integration",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

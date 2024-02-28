@@ -317,8 +317,9 @@ class FeatureIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.gkehub.FeatureIamPolicy("policy",
-            project=google_gke_hub_feature["feature"]["project"],
-            location=google_gke_hub_feature["feature"]["location"],
+            project=feature["project"],
+            location=feature["location"],
+            name=feature["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -329,8 +330,9 @@ class FeatureIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.gkehub.FeatureIamBinding("binding",
-            project=google_gke_hub_feature["feature"]["project"],
-            location=google_gke_hub_feature["feature"]["location"],
+            project=feature["project"],
+            location=feature["location"],
+            name=feature["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -342,8 +344,9 @@ class FeatureIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.gkehub.FeatureIamMember("member",
-            project=google_gke_hub_feature["feature"]["project"],
-            location=google_gke_hub_feature["feature"]["location"],
+            project=feature["project"],
+            location=feature["location"],
+            name=feature["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -440,8 +443,9 @@ class FeatureIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.gkehub.FeatureIamPolicy("policy",
-            project=google_gke_hub_feature["feature"]["project"],
-            location=google_gke_hub_feature["feature"]["location"],
+            project=feature["project"],
+            location=feature["location"],
+            name=feature["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -452,8 +456,9 @@ class FeatureIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.gkehub.FeatureIamBinding("binding",
-            project=google_gke_hub_feature["feature"]["project"],
-            location=google_gke_hub_feature["feature"]["location"],
+            project=feature["project"],
+            location=feature["location"],
+            name=feature["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -465,8 +470,9 @@ class FeatureIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.gkehub.FeatureIamMember("member",
-            project=google_gke_hub_feature["feature"]["project"],
-            location=google_gke_hub_feature["feature"]["location"],
+            project=feature["project"],
+            location=feature["location"],
+            name=feature["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

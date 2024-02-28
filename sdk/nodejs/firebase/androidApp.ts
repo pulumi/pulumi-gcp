@@ -18,8 +18,6 @@ import * as utilities from "../utilities";
  *     packageName: "android.package.app",
  *     sha1Hashes: ["2145bdf698b8715039bd0e83f2069bed435ac21c"],
  *     sha256Hashes: ["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Firebase Android App Custom Api Key
@@ -29,6 +27,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const android = new gcp.projects.ApiKey("android", {
+ *     name: "api-key",
  *     displayName: "Display Name",
  *     project: "my-project-name",
  *     restrictions: {
@@ -39,8 +38,6 @@ import * as utilities from "../utilities";
  *             }],
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const _default = new gcp.firebase.AndroidApp("default", {
  *     project: "my-project-name",
@@ -49,8 +46,6 @@ import * as utilities from "../utilities";
  *     sha1Hashes: ["2145bdf698b8715039bd0e83f2069bed435ac21c"],
  *     sha256Hashes: ["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"],
  *     apiKeyId: android.uid,
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

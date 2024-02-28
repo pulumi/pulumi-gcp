@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			processorDocumentAiProcessor, err := essentialcontacts.NewDocumentAiProcessor(ctx, "processorDocumentAiProcessor", &essentialcontacts.DocumentAiProcessorArgs{
+//			processor, err := essentialcontacts.NewDocumentAiProcessor(ctx, "processor", &essentialcontacts.DocumentAiProcessorArgs{
 //				Location:    pulumi.String("us"),
 //				DisplayName: pulumi.String("test-processor"),
 //				Type:        pulumi.String("OCR_PROCESSOR"),
@@ -39,9 +39,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = essentialcontacts.NewDocumentAiProcessorDefaultVersion(ctx, "processorDocumentAiProcessorDefaultVersion", &essentialcontacts.DocumentAiProcessorDefaultVersionArgs{
-//				Processor: processorDocumentAiProcessor.ID(),
-//				Version: processorDocumentAiProcessor.ID().ApplyT(func(id string) (string, error) {
+//			_, err = essentialcontacts.NewDocumentAiProcessorDefaultVersion(ctx, "processor", &essentialcontacts.DocumentAiProcessorDefaultVersionArgs{
+//				Processor: processor.ID(),
+//				Version: processor.ID().ApplyT(func(id string) (string, error) {
 //					return fmt.Sprintf("%v/processorVersions/stable", id), nil
 //				}).(pulumi.StringOutput),
 //			})

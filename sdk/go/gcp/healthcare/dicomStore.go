@@ -37,17 +37,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			topic, err := pubsub.NewTopic(ctx, "topic", nil)
+//			topic, err := pubsub.NewTopic(ctx, "topic", &pubsub.TopicArgs{
+//				Name: pulumi.String("dicom-notifications"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+//				Name:     pulumi.String("example-dataset"),
 //				Location: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = healthcare.NewDicomStore(ctx, "default", &healthcare.DicomStoreArgs{
+//				Name:    pulumi.String("example-dicom-store"),
 //				Dataset: dataset.ID(),
 //				NotificationConfig: &healthcare.DicomStoreNotificationConfigArgs{
 //					PubsubTopic: topic.ID(),
@@ -82,35 +86,39 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			topic, err := pubsub.NewTopic(ctx, "topic", nil, pulumi.Provider(google_beta))
+//			topic, err := pubsub.NewTopic(ctx, "topic", &pubsub.TopicArgs{
+//				Name: pulumi.String("dicom-notifications"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+//				Name:     pulumi.String("example-dataset"),
 //				Location: pulumi.String("us-central1"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			bqDataset, err := bigquery.NewDataset(ctx, "bqDataset", &bigquery.DatasetArgs{
+//			bqDataset, err := bigquery.NewDataset(ctx, "bq_dataset", &bigquery.DatasetArgs{
 //				DatasetId:               pulumi.String("dicom_bq_ds"),
 //				FriendlyName:            pulumi.String("test"),
 //				Description:             pulumi.String("This is a test description"),
 //				Location:                pulumi.String("US"),
 //				DeleteContentsOnDestroy: pulumi.Bool(true),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			bqTable, err := bigquery.NewTable(ctx, "bqTable", &bigquery.TableArgs{
+//			bqTable, err := bigquery.NewTable(ctx, "bq_table", &bigquery.TableArgs{
 //				DeletionProtection: pulumi.Bool(false),
 //				DatasetId:          bqDataset.DatasetId,
 //				TableId:            pulumi.String("dicom_bq_tb"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = healthcare.NewDicomStore(ctx, "default", &healthcare.DicomStoreArgs{
+//				Name:    pulumi.String("example-dicom-store"),
 //				Dataset: dataset.ID(),
 //				NotificationConfig: &healthcare.DicomStoreNotificationConfigArgs{
 //					PubsubTopic: topic.ID(),
@@ -130,7 +138,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

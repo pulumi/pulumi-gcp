@@ -1128,7 +1128,9 @@ class FlexibleAppVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_project = gcp.organizations.Project("myProject",
+        my_project = gcp.organizations.Project("my_project",
+            name="appeng-flex",
+            project_id="appeng-flex",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000")
         app = gcp.appengine.Application("app",
@@ -1138,29 +1140,31 @@ class FlexibleAppVersion(pulumi.CustomResource):
             project=my_project.project_id,
             service="appengineflex.googleapis.com",
             disable_dependent_services=False)
-        custom_service_account = gcp.serviceaccount.Account("customServiceAccount",
+        custom_service_account = gcp.serviceaccount.Account("custom_service_account",
             project=service.project,
             account_id="my-account",
             display_name="Custom Service Account")
-        gae_api = gcp.projects.IAMMember("gaeApi",
+        gae_api = gcp.projects.IAMMember("gae_api",
             project=service.project,
             role="roles/compute.networkUser",
             member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        logs_writer = gcp.projects.IAMMember("logsWriter",
+        logs_writer = gcp.projects.IAMMember("logs_writer",
             project=service.project,
             role="roles/logging.logWriter",
             member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        storage_viewer = gcp.projects.IAMMember("storageViewer",
+        storage_viewer = gcp.projects.IAMMember("storage_viewer",
             project=service.project,
             role="roles/storage.objectViewer",
             member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
         bucket = gcp.storage.Bucket("bucket",
             project=my_project.project_id,
+            name="appengine-static-content",
             location="US")
         object = gcp.storage.BucketObject("object",
+            name="hello-world.zip",
             bucket=bucket.name,
             source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
-        myapp_v1 = gcp.appengine.FlexibleAppVersion("myappV1",
+        myapp_v1 = gcp.appengine.FlexibleAppVersion("myapp_v1",
             version_id="v1",
             project=gae_api.project,
             service="default",
@@ -1311,7 +1315,9 @@ class FlexibleAppVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_project = gcp.organizations.Project("myProject",
+        my_project = gcp.organizations.Project("my_project",
+            name="appeng-flex",
+            project_id="appeng-flex",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000")
         app = gcp.appengine.Application("app",
@@ -1321,29 +1327,31 @@ class FlexibleAppVersion(pulumi.CustomResource):
             project=my_project.project_id,
             service="appengineflex.googleapis.com",
             disable_dependent_services=False)
-        custom_service_account = gcp.serviceaccount.Account("customServiceAccount",
+        custom_service_account = gcp.serviceaccount.Account("custom_service_account",
             project=service.project,
             account_id="my-account",
             display_name="Custom Service Account")
-        gae_api = gcp.projects.IAMMember("gaeApi",
+        gae_api = gcp.projects.IAMMember("gae_api",
             project=service.project,
             role="roles/compute.networkUser",
             member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        logs_writer = gcp.projects.IAMMember("logsWriter",
+        logs_writer = gcp.projects.IAMMember("logs_writer",
             project=service.project,
             role="roles/logging.logWriter",
             member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        storage_viewer = gcp.projects.IAMMember("storageViewer",
+        storage_viewer = gcp.projects.IAMMember("storage_viewer",
             project=service.project,
             role="roles/storage.objectViewer",
             member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
         bucket = gcp.storage.Bucket("bucket",
             project=my_project.project_id,
+            name="appengine-static-content",
             location="US")
         object = gcp.storage.BucketObject("object",
+            name="hello-world.zip",
             bucket=bucket.name,
             source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
-        myapp_v1 = gcp.appengine.FlexibleAppVersion("myappV1",
+        myapp_v1 = gcp.appengine.FlexibleAppVersion("myapp_v1",
             version_id="v1",
             project=gae_api.project,
             service="default",

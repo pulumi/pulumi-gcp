@@ -42,13 +42,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			imageBucket, err := storage.NewBucket(ctx, "imageBucket", &storage.BucketArgs{
+//			imageBucket, err := storage.NewBucket(ctx, "image_bucket", &storage.BucketArgs{
+//				Name:     pulumi.String("image-store-bucket"),
 //				Location: pulumi.String("EU"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewBackendBucket(ctx, "imageBackend", &compute.BackendBucketArgs{
+//			_, err = compute.NewBackendBucket(ctx, "image_backend", &compute.BackendBucketArgs{
+//				Name:        pulumi.String("image-backend-bucket"),
 //				Description: pulumi.String("Contains beautiful images"),
 //				BucketName:  imageBucket.Name,
 //				EnableCdn:   pulumi.Bool(true),
@@ -76,20 +78,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			imageBackendBucket, err := storage.NewBucket(ctx, "imageBackendBucket", &storage.BucketArgs{
+//			imageBackendBucket, err := storage.NewBucket(ctx, "image_backend", &storage.BucketArgs{
+//				Name:     pulumi.String("image-store-bucket"),
 //				Location: pulumi.String("EU"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			policy, err := compute.NewSecurityPolicy(ctx, "policy", &compute.SecurityPolicyArgs{
+//				Name:        pulumi.String("image-store-bucket"),
 //				Description: pulumi.String("basic security policy"),
 //				Type:        pulumi.String("CLOUD_ARMOR_EDGE"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewBackendBucket(ctx, "imageBackendBackendBucket", &compute.BackendBucketArgs{
+//			_, err = compute.NewBackendBucket(ctx, "image_backend", &compute.BackendBucketArgs{
+//				Name:               pulumi.String("image-backend-bucket"),
 //				Description:        pulumi.String("Contains beautiful images"),
 //				BucketName:         imageBackendBucket.Name,
 //				EnableCdn:          pulumi.Bool(true),
@@ -118,13 +123,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			imageBucket, err := storage.NewBucket(ctx, "imageBucket", &storage.BucketArgs{
+//			imageBucket, err := storage.NewBucket(ctx, "image_bucket", &storage.BucketArgs{
+//				Name:     pulumi.String("image-backend-bucket"),
 //				Location: pulumi.String("EU"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewBackendBucket(ctx, "imageBackend", &compute.BackendBucketArgs{
+//			_, err = compute.NewBackendBucket(ctx, "image_backend", &compute.BackendBucketArgs{
+//				Name:        pulumi.String("image-backend-bucket"),
 //				Description: pulumi.String("Contains beautiful images"),
 //				BucketName:  imageBucket.Name,
 //				EnableCdn:   pulumi.Bool(true),
@@ -159,13 +166,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			imageBucket, err := storage.NewBucket(ctx, "imageBucket", &storage.BucketArgs{
+//			imageBucket, err := storage.NewBucket(ctx, "image_bucket", &storage.BucketArgs{
+//				Name:     pulumi.String("image-backend-bucket"),
 //				Location: pulumi.String("EU"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewBackendBucket(ctx, "imageBackend", &compute.BackendBucketArgs{
+//			_, err = compute.NewBackendBucket(ctx, "image_backend", &compute.BackendBucketArgs{
+//				Name:        pulumi.String("image-backend-bucket"),
 //				Description: pulumi.String("Contains beautiful images"),
 //				BucketName:  imageBucket.Name,
 //				EnableCdn:   pulumi.Bool(true),

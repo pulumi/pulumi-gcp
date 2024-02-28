@@ -55,10 +55,10 @@ import (
 //				return err
 //			}
 //			_, err = bigqueryanalyticshub.NewListingIamPolicy(ctx, "policy", &bigqueryanalyticshub.ListingIamPolicyArgs{
-//				Project:        pulumi.Any(google_bigquery_analytics_hub_listing.Listing.Project),
-//				Location:       pulumi.Any(google_bigquery_analytics_hub_listing.Listing.Location),
-//				DataExchangeId: pulumi.Any(google_bigquery_analytics_hub_listing.Listing.Data_exchange_id),
-//				ListingId:      pulumi.Any(google_bigquery_analytics_hub_listing.Listing.Listing_id),
+//				Project:        pulumi.Any(listing.Project),
+//				Location:       pulumi.Any(listing.Location),
+//				DataExchangeId: pulumi.Any(listing.DataExchangeId),
+//				ListingId:      pulumi.Any(listing.ListingId),
 //				PolicyData:     *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -85,10 +85,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigqueryanalyticshub.NewListingIamBinding(ctx, "binding", &bigqueryanalyticshub.ListingIamBindingArgs{
-//				Project:        pulumi.Any(google_bigquery_analytics_hub_listing.Listing.Project),
-//				Location:       pulumi.Any(google_bigquery_analytics_hub_listing.Listing.Location),
-//				DataExchangeId: pulumi.Any(google_bigquery_analytics_hub_listing.Listing.Data_exchange_id),
-//				ListingId:      pulumi.Any(google_bigquery_analytics_hub_listing.Listing.Listing_id),
+//				Project:        pulumi.Any(listing.Project),
+//				Location:       pulumi.Any(listing.Location),
+//				DataExchangeId: pulumi.Any(listing.DataExchangeId),
+//				ListingId:      pulumi.Any(listing.ListingId),
 //				Role:           pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -118,10 +118,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigqueryanalyticshub.NewListingIamMember(ctx, "member", &bigqueryanalyticshub.ListingIamMemberArgs{
-//				Project:        pulumi.Any(google_bigquery_analytics_hub_listing.Listing.Project),
-//				Location:       pulumi.Any(google_bigquery_analytics_hub_listing.Listing.Location),
-//				DataExchangeId: pulumi.Any(google_bigquery_analytics_hub_listing.Listing.Data_exchange_id),
-//				ListingId:      pulumi.Any(google_bigquery_analytics_hub_listing.Listing.Listing_id),
+//				Project:        pulumi.Any(listing.Project),
+//				Location:       pulumi.Any(listing.Location),
+//				DataExchangeId: pulumi.Any(listing.DataExchangeId),
+//				ListingId:      pulumi.Any(listing.ListingId),
 //				Role:           pulumi.String("roles/viewer"),
 //				Member:         pulumi.String("user:jane@example.com"),
 //			})

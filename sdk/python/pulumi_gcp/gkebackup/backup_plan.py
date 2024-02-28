@@ -564,6 +564,7 @@ class BackupPlan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
+            name="basic-cluster",
             location="us-central1",
             initial_node_count=1,
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
@@ -578,6 +579,7 @@ class BackupPlan(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
+            name="basic-plan",
             cluster=primary.id,
             location="us-central1",
             backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
@@ -593,6 +595,7 @@ class BackupPlan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
+            name="autopilot-cluster",
             location="us-central1",
             enable_autopilot=True,
             ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(),
@@ -608,6 +611,7 @@ class BackupPlan(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         autopilot = gcp.gkebackup.BackupPlan("autopilot",
+            name="autopilot-plan",
             cluster=primary.id,
             location="us-central1",
             backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
@@ -623,6 +627,7 @@ class BackupPlan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
+            name="cmek-cluster",
             location="us-central1",
             initial_node_count=1,
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
@@ -636,9 +641,14 @@ class BackupPlan(pulumi.CustomResource):
             deletion_protection=True,
             network="default",
             subnetwork="default")
-        key_ring = gcp.kms.KeyRing("keyRing", location="us-central1")
-        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="backup-key",
+            location="us-central1")
+        crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="backup-key",
+            key_ring=key_ring.id)
         cmek = gcp.gkebackup.BackupPlan("cmek",
+            name="cmek-plan",
             cluster=primary.id,
             location="us-central1",
             backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
@@ -662,6 +672,7 @@ class BackupPlan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
+            name="full-cluster",
             location="us-central1",
             initial_node_count=1,
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
@@ -676,6 +687,7 @@ class BackupPlan(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         full = gcp.gkebackup.BackupPlan("full",
+            name="full-plan",
             cluster=primary.id,
             location="us-central1",
             retention_policy=gcp.gkebackup.BackupPlanRetentionPolicyArgs(
@@ -778,6 +790,7 @@ class BackupPlan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
+            name="basic-cluster",
             location="us-central1",
             initial_node_count=1,
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
@@ -792,6 +805,7 @@ class BackupPlan(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
+            name="basic-plan",
             cluster=primary.id,
             location="us-central1",
             backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
@@ -807,6 +821,7 @@ class BackupPlan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
+            name="autopilot-cluster",
             location="us-central1",
             enable_autopilot=True,
             ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(),
@@ -822,6 +837,7 @@ class BackupPlan(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         autopilot = gcp.gkebackup.BackupPlan("autopilot",
+            name="autopilot-plan",
             cluster=primary.id,
             location="us-central1",
             backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
@@ -837,6 +853,7 @@ class BackupPlan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
+            name="cmek-cluster",
             location="us-central1",
             initial_node_count=1,
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
@@ -850,9 +867,14 @@ class BackupPlan(pulumi.CustomResource):
             deletion_protection=True,
             network="default",
             subnetwork="default")
-        key_ring = gcp.kms.KeyRing("keyRing", location="us-central1")
-        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="backup-key",
+            location="us-central1")
+        crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="backup-key",
+            key_ring=key_ring.id)
         cmek = gcp.gkebackup.BackupPlan("cmek",
+            name="cmek-plan",
             cluster=primary.id,
             location="us-central1",
             backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
@@ -876,6 +898,7 @@ class BackupPlan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
+            name="full-cluster",
             location="us-central1",
             initial_node_count=1,
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
@@ -890,6 +913,7 @@ class BackupPlan(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         full = gcp.gkebackup.BackupPlan("full",
+            name="full-plan",
             cluster=primary.id,
             location="us-central1",
             retention_policy=gcp.gkebackup.BackupPlanRetentionPolicyArgs(

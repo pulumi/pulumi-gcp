@@ -109,8 +109,8 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
  *
  * const pool = new gcp.iam.WorkloadIdentityPool("pool", {workloadIdentityPoolId: "example-pool"});
  * const example = new gcp.iam.WorkloadIdentityPoolProvider("example", {
@@ -122,7 +122,9 @@ import * as utilities from "../utilities";
  *         "attribute.environment": "assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\"",
  *     },
  *     saml: {
- *         idpMetadataXml: fs.readFileSync("test-fixtures/metadata.xml", "utf8"),
+ *         idpMetadataXml: std.file({
+ *             input: "test-fixtures/metadata.xml",
+ *         }).then(invoke => invoke.result),
  *     },
  * });
  * ```
@@ -130,8 +132,8 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
  *
  * const pool = new gcp.iam.WorkloadIdentityPool("pool", {workloadIdentityPoolId: "example-pool"});
  * const example = new gcp.iam.WorkloadIdentityPoolProvider("example", {
@@ -146,7 +148,9 @@ import * as utilities from "../utilities";
  *         "attribute.environment": "assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\"",
  *     },
  *     saml: {
- *         idpMetadataXml: fs.readFileSync("test-fixtures/metadata.xml", "utf8"),
+ *         idpMetadataXml: std.file({
+ *             input: "test-fixtures/metadata.xml",
+ *         }).then(invoke => invoke.result),
  *     },
  * });
  * ```
@@ -276,18 +280,12 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
      * the total size of all mapped attributes must not exceed 8KB.
      * For AWS providers, the following rules apply:
      * - If no attribute mapping is defined, the following default mapping applies:
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
      * - If any custom attribute mappings are defined, they must include a mapping to the
      * `google.subject` attribute.
      * For OIDC providers, the following rules apply:
      * - Custom attribute mappings must be defined, and must include a mapping to the
      * `google.subject` attribute. For example, the following maps the `sub` claim of the
      * incoming credential to the `subject` attribute on a Google token.
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
      */
     public readonly attributeMapping!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -451,18 +449,12 @@ export interface WorkloadIdentityPoolProviderState {
      * the total size of all mapped attributes must not exceed 8KB.
      * For AWS providers, the following rules apply:
      * - If no attribute mapping is defined, the following default mapping applies:
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
      * - If any custom attribute mappings are defined, they must include a mapping to the
      * `google.subject` attribute.
      * For OIDC providers, the following rules apply:
      * - Custom attribute mappings must be defined, and must include a mapping to the
      * `google.subject` attribute. For example, the following maps the `sub` claim of the
      * incoming credential to the `subject` attribute on a Google token.
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
      */
     attributeMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -574,18 +566,12 @@ export interface WorkloadIdentityPoolProviderArgs {
      * the total size of all mapped attributes must not exceed 8KB.
      * For AWS providers, the following rules apply:
      * - If no attribute mapping is defined, the following default mapping applies:
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
      * - If any custom attribute mappings are defined, they must include a mapping to the
      * `google.subject` attribute.
      * For OIDC providers, the following rules apply:
      * - Custom attribute mappings must be defined, and must include a mapping to the
      * `google.subject` attribute. For example, the following maps the `sub` claim of the
      * incoming credential to the `subject` attribute on a Google token.
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
      */
     attributeMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

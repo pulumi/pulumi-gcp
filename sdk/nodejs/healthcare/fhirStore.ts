@@ -23,9 +23,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const topic = new gcp.pubsub.Topic("topic", {});
- * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
+ * const topic = new gcp.pubsub.Topic("topic", {name: "fhir-notifications"});
+ * const dataset = new gcp.healthcare.Dataset("dataset", {
+ *     name: "example-dataset",
+ *     location: "us-central1",
+ * });
  * const _default = new gcp.healthcare.FhirStore("default", {
+ *     name: "example-fhir-store",
  *     dataset: dataset.id,
  *     version: "R4",
  *     complexDataTypeReferenceParsing: "DISABLED",
@@ -48,8 +52,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
- * const bqDataset = new gcp.bigquery.Dataset("bqDataset", {
+ * const dataset = new gcp.healthcare.Dataset("dataset", {
+ *     name: "example-dataset",
+ *     location: "us-central1",
+ * });
+ * const bqDataset = new gcp.bigquery.Dataset("bq_dataset", {
  *     datasetId: "bq_example_dataset",
  *     friendlyName: "test",
  *     description: "This is a test description",
@@ -57,6 +64,7 @@ import * as utilities from "../utilities";
  *     deleteContentsOnDestroy: true,
  * });
  * const _default = new gcp.healthcare.FhirStore("default", {
+ *     name: "example-fhir-store",
  *     dataset: dataset.id,
  *     version: "R4",
  *     enableUpdateCreate: false,
@@ -80,7 +88,7 @@ import * as utilities from "../utilities";
  *         },
  *     }],
  * });
- * const topic = new gcp.pubsub.Topic("topic", {});
+ * const topic = new gcp.pubsub.Topic("topic", {name: "fhir-notifications"});
  * ```
  * ### Healthcare Fhir Store Notification Config
  *
@@ -88,9 +96,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const topic = new gcp.pubsub.Topic("topic", {});
- * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
+ * const topic = new gcp.pubsub.Topic("topic", {name: "fhir-notifications"});
+ * const dataset = new gcp.healthcare.Dataset("dataset", {
+ *     name: "example-dataset",
+ *     location: "us-central1",
+ * });
  * const _default = new gcp.healthcare.FhirStore("default", {
+ *     name: "example-fhir-store",
  *     dataset: dataset.id,
  *     version: "R4",
  *     enableUpdateCreate: false,
@@ -111,13 +123,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const topic = new gcp.pubsub.Topic("topic", {}, {
- *     provider: google_beta,
- * });
- * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"}, {
- *     provider: google_beta,
+ * const topic = new gcp.pubsub.Topic("topic", {name: "fhir-notifications"});
+ * const dataset = new gcp.healthcare.Dataset("dataset", {
+ *     name: "example-dataset",
+ *     location: "us-central1",
  * });
  * const _default = new gcp.healthcare.FhirStore("default", {
+ *     name: "example-fhir-store",
  *     dataset: dataset.id,
  *     version: "R4",
  *     enableUpdateCreate: false,
@@ -133,8 +145,6 @@ import * as utilities from "../utilities";
  *         sendFullResource: true,
  *         sendPreviousResourceOnDelete: true,
  *     }],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

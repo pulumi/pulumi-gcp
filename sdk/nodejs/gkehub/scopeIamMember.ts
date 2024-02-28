@@ -34,8 +34,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.gkehub.ScopeIamPolicy("policy", {
- *     project: google_gke_hub_scope.scope.project,
- *     scopeId: google_gke_hub_scope.scope.scope_id,
+ *     project: scope.project,
+ *     scopeId: scope.scopeId,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -47,8 +47,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.gkehub.ScopeIamBinding("binding", {
- *     project: google_gke_hub_scope.scope.project,
- *     scopeId: google_gke_hub_scope.scope.scope_id,
+ *     project: scope.project,
+ *     scopeId: scope.scopeId,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
  * });
@@ -61,8 +61,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.gkehub.ScopeIamMember("member", {
- *     project: google_gke_hub_scope.scope.project,
- *     scopeId: google_gke_hub_scope.scope.scope_id,
+ *     project: scope.project,
+ *     scopeId: scope.scopeId,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
  * });

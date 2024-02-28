@@ -33,25 +33,25 @@ namespace Pulumi.Gcp.Monitoring
     ///     {
     ///         Description = "Daily sales records from all branch stores.",
     ///         DisplayName = "metric-descriptor",
+    ///         Type = "custom.googleapis.com/stores/daily_sales",
+    ///         MetricKind = "GAUGE",
+    ///         ValueType = "DOUBLE",
+    ///         Unit = "{USD}",
     ///         Labels = new[]
     ///         {
     ///             new Gcp.Monitoring.Inputs.MetricDescriptorLabelArgs
     ///             {
-    ///                 Description = "The ID of the store.",
     ///                 Key = "store_id",
     ///                 ValueType = "STRING",
+    ///                 Description = "The ID of the store.",
     ///             },
     ///         },
     ///         LaunchStage = "BETA",
     ///         Metadata = new Gcp.Monitoring.Inputs.MetricDescriptorMetadataArgs
     ///         {
-    ///             IngestDelay = "30s",
     ///             SamplePeriod = "60s",
+    ///             IngestDelay = "30s",
     ///         },
-    ///         MetricKind = "GAUGE",
-    ///         Type = "custom.googleapis.com/stores/daily_sales",
-    ///         Unit = "{USD}",
-    ///         ValueType = "DOUBLE",
     ///     });
     /// 
     /// });
@@ -66,33 +66,33 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var withAlert = new Gcp.Monitoring.MetricDescriptor("withAlert", new()
+    ///     var withAlert = new Gcp.Monitoring.MetricDescriptor("with_alert", new()
     ///     {
     ///         Description = "Daily sales records from all branch stores.",
     ///         DisplayName = "metric-descriptor",
-    ///         MetricKind = "GAUGE",
     ///         Type = "custom.googleapis.com/stores/daily_sales",
-    ///         Unit = "{USD}",
+    ///         MetricKind = "GAUGE",
     ///         ValueType = "DOUBLE",
+    ///         Unit = "{USD}",
     ///     });
     /// 
-    ///     var alertPolicy = new Gcp.Monitoring.AlertPolicy("alertPolicy", new()
+    ///     var alertPolicy = new Gcp.Monitoring.AlertPolicy("alert_policy", new()
     ///     {
+    ///         DisplayName = "metric-descriptor",
     ///         Combiner = "OR",
     ///         Conditions = new[]
     ///         {
     ///             new Gcp.Monitoring.Inputs.AlertPolicyConditionArgs
     ///             {
+    ///                 DisplayName = "test condition",
     ///                 ConditionThreshold = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdArgs
     ///                 {
-    ///                     Comparison = "COMPARISON_GT",
-    ///                     Duration = "60s",
     ///                     Filter = withAlert.Type.Apply(type =&gt; $"metric.type=\"{type}\" AND resource.type=\"gce_instance\""),
+    ///                     Duration = "60s",
+    ///                     Comparison = "COMPARISON_GT",
     ///                 },
-    ///                 DisplayName = "test condition",
     ///             },
     ///         },
-    ///         DisplayName = "metric-descriptor",
     ///     });
     /// 
     /// });

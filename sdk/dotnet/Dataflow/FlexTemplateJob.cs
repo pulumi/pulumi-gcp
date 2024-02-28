@@ -20,16 +20,14 @@ namespace Pulumi.Gcp.Dataflow
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var bigDataJob = new Gcp.Dataflow.FlexTemplateJob("bigDataJob", new()
+    ///     var bigDataJob = new Gcp.Dataflow.FlexTemplateJob("big_data_job", new()
     ///     {
+    ///         Name = "dataflow-flextemplates-job",
     ///         ContainerSpecGcsPath = "gs://my-bucket/templates/template.json",
     ///         Parameters = 
     ///         {
     ///             { "inputSubscription", "messages" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -74,28 +72,26 @@ namespace Pulumi.Gcp.Dataflow
     /// {
     ///     var config = new Config();
     ///     var bigDataJobSubscriptionId = config.Get("bigDataJobSubscriptionId") ?? "projects/myproject/subscriptions/messages";
-    ///     var bigDataJobNameSuffix = new Random.RandomId("bigDataJobNameSuffix", new()
+    ///     var bigDataJobNameSuffix = new Random.RandomId("big_data_job_name_suffix", new()
     ///     {
     ///         ByteLength = 4,
     ///         Keepers = 
     ///         {
-    ///             { "region", @var.Region },
+    ///             { "region", region },
     ///             { "subscription_id", bigDataJobSubscriptionId },
     ///         },
     ///     });
     /// 
-    ///     var bigDataJob = new Gcp.Dataflow.FlexTemplateJob("bigDataJob", new()
+    ///     var bigDataJob = new Gcp.Dataflow.FlexTemplateJob("big_data_job", new()
     ///     {
-    ///         Region = @var.Region,
+    ///         Name = bigDataJobNameSuffix.Dec.Apply(dec =&gt; $"dataflow-flextemplates-job-{dec}"),
+    ///         Region = region,
     ///         ContainerSpecGcsPath = "gs://my-bucket/templates/template.json",
     ///         SkipWaitOnJobTermination = true,
     ///         Parameters = 
     ///         {
     ///             { "inputSubscription", bigDataJobSubscriptionId },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

@@ -16,6 +16,156 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// &gt; **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Organizations.Project("default", new()
+    ///     {
+    ///         ProjectId = "your-project-id",
+    ///         Name = "your-project-id",
+    ///         OrgId = "123456789",
+    ///     });
+    /// 
+    ///     var basic = new Gcp.Logging.ProjectBucketConfig("basic", new()
+    ///     {
+    ///         Project = @default.ProjectId,
+    ///         Location = "global",
+    ///         RetentionDays = 30,
+    ///         BucketId = "_Default",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Create logging bucket with customId
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basic = new Gcp.Logging.ProjectBucketConfig("basic", new()
+    ///     {
+    ///         Project = "project_id",
+    ///         Location = "global",
+    ///         RetentionDays = 30,
+    ///         BucketId = "custom-bucket",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Create logging bucket with Log Analytics enabled
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var analytics_enabled_bucket = new Gcp.Logging.ProjectBucketConfig("analytics-enabled-bucket", new()
+    ///     {
+    ///         Project = "project_id",
+    ///         Location = "global",
+    ///         RetentionDays = 30,
+    ///         EnableAnalytics = true,
+    ///         BucketId = "custom-bucket",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Create logging bucket with customId and cmekSettings
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cmekSettings = Gcp.Logging.GetProjectCmekSettings.Invoke(new()
+    ///     {
+    ///         Project = "project_id",
+    ///     });
+    /// 
+    ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
+    ///     {
+    ///         Name = "keyring-example",
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var key = new Gcp.Kms.CryptoKey("key", new()
+    ///     {
+    ///         Name = "crypto-key-example",
+    ///         KeyRing = keyring.Id,
+    ///         RotationPeriod = "7776000s",
+    ///     });
+    /// 
+    ///     var cryptoKeyBinding = new Gcp.Kms.CryptoKeyIAMBinding("crypto_key_binding", new()
+    ///     {
+    ///         CryptoKeyId = key.Id,
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Members = new[]
+    ///         {
+    ///             $"serviceAccount:{cmekSettings.Apply(getProjectCmekSettingsResult =&gt; getProjectCmekSettingsResult.ServiceAccountId)}",
+    ///         },
+    ///     });
+    /// 
+    ///     var example_project_bucket_cmek_settings = new Gcp.Logging.ProjectBucketConfig("example-project-bucket-cmek-settings", new()
+    ///     {
+    ///         Project = "project_id",
+    ///         Location = "us-central1",
+    ///         RetentionDays = 30,
+    ///         BucketId = "custom-bucket",
+    ///         CmekSettings = new Gcp.Logging.Inputs.ProjectBucketConfigCmekSettingsArgs
+    ///         {
+    ///             KmsKeyName = key.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Create logging bucket with index configs
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example_project_bucket_index_configs = new Gcp.Logging.ProjectBucketConfig("example-project-bucket-index-configs", new()
+    ///     {
+    ///         Project = "project_id",
+    ///         Location = "global",
+    ///         RetentionDays = 30,
+    ///         BucketId = "custom-bucket",
+    ///         IndexConfigs = 
+    ///         {
+    ///             { "filePath", "jsonPayload.request.status" },
+    ///             { "type", "INDEX_TYPE_STRING" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported using the following format:

@@ -299,25 +299,23 @@ class ServiceBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_namespace = gcp.servicedirectory.Namespace("defaultNamespace",
+        default = gcp.servicedirectory.Namespace("default",
             namespace_id="my-namespace",
-            location="us-central1",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_service = gcp.servicedirectory.Service("defaultService",
+            location="us-central1")
+        default_service = gcp.servicedirectory.Service("default",
             service_id="my-service",
-            namespace=default_namespace.id,
+            namespace=default.id,
             metadata={
                 "stage": "prod",
                 "region": "us-central1",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_service_binding = gcp.networkservices.ServiceBinding("defaultServiceBinding",
+            })
+        default_service_binding = gcp.networkservices.ServiceBinding("default",
+            name="my-service-binding",
             labels={
                 "foo": "bar",
             },
             description="my description",
-            service=default_service.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            service=default_service.id)
         ```
 
         ## Import
@@ -373,25 +371,23 @@ class ServiceBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_namespace = gcp.servicedirectory.Namespace("defaultNamespace",
+        default = gcp.servicedirectory.Namespace("default",
             namespace_id="my-namespace",
-            location="us-central1",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_service = gcp.servicedirectory.Service("defaultService",
+            location="us-central1")
+        default_service = gcp.servicedirectory.Service("default",
             service_id="my-service",
-            namespace=default_namespace.id,
+            namespace=default.id,
             metadata={
                 "stage": "prod",
                 "region": "us-central1",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_service_binding = gcp.networkservices.ServiceBinding("defaultServiceBinding",
+            })
+        default_service_binding = gcp.networkservices.ServiceBinding("default",
+            name="my-service-binding",
             labels={
                 "foo": "bar",
             },
             description="my description",
-            service=default_service.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            service=default_service.id)
         ```
 
         ## Import

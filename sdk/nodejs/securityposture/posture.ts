@@ -25,76 +25,84 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const posture1 = new gcp.securityposture.Posture("posture1", {
- *     description: "a new posture",
- *     location: "global",
+ *     postureId: "posture_1",
  *     parent: "organizations/123456789",
+ *     location: "global",
+ *     state: "ACTIVE",
+ *     description: "a new posture",
  *     policySets: [
  *         {
+ *             policySetId: "org_policy_set",
  *             description: "set of org policies",
  *             policies: [
  *                 {
+ *                     policyId: "canned_org_policy",
  *                     constraint: {
  *                         orgPolicyConstraint: {
  *                             cannedConstraintId: "storage.uniformBucketLevelAccess",
  *                             policyRules: [{
+ *                                 enforce: true,
  *                                 condition: {
  *                                     description: "condition description",
  *                                     expression: "resource.matchTag('org_id/tag_key_short_name,'tag_value_short_name')",
  *                                     title: "a CEL condition",
  *                                 },
- *                                 enforce: true,
  *                             }],
  *                         },
  *                     },
- *                     policyId: "canned_org_policy",
  *                 },
  *                 {
+ *                     policyId: "custom_org_policy",
  *                     constraint: {
  *                         orgPolicyConstraintCustom: {
  *                             customConstraint: {
+ *                                 name: "organizations/123456789/customConstraints/custom.disableGkeAutoUpgrade",
+ *                                 displayName: "Disable GKE auto upgrade",
+ *                                 description: "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
  *                                 actionType: "ALLOW",
  *                                 condition: "resource.management.autoUpgrade == false",
- *                                 description: "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
- *                                 displayName: "Disable GKE auto upgrade",
  *                                 methodTypes: [
  *                                     "CREATE",
  *                                     "UPDATE",
  *                                 ],
- *                                 name: "organizations/123456789/customConstraints/custom.disableGkeAutoUpgrade",
  *                                 resourceTypes: ["container.googleapis.com/NodePool"],
  *                             },
  *                             policyRules: [{
+ *                                 enforce: true,
  *                                 condition: {
  *                                     description: "condition description",
  *                                     expression: "resource.matchTagId('tagKeys/key_id','tagValues/value_id')",
  *                                     title: "a CEL condition",
  *                                 },
- *                                 enforce: true,
  *                             }],
  *                         },
  *                     },
- *                     policyId: "custom_org_policy",
  *                 },
  *             ],
- *             policySetId: "org_policy_set",
  *         },
  *         {
+ *             policySetId: "sha_policy_set",
  *             description: "set of sha policies",
  *             policies: [
  *                 {
+ *                     policyId: "sha_builtin_module",
  *                     constraint: {
  *                         securityHealthAnalyticsModule: {
- *                             moduleEnablementState: "ENABLED",
  *                             moduleName: "BIGQUERY_TABLE_CMEK_DISABLED",
+ *                             moduleEnablementState: "ENABLED",
  *                         },
  *                     },
  *                     description: "enable BIGQUERY_TABLE_CMEK_DISABLED",
- *                     policyId: "sha_builtin_module",
  *                 },
  *                 {
+ *                     policyId: "sha_custom_module",
  *                     constraint: {
  *                         securityHealthAnalyticsCustomModule: {
+ *                             displayName: "custom_SHA_policy",
  *                             config: {
+ *                                 predicate: {
+ *                                     expression: "resource.rotationPeriod > duration('2592000s')",
+ *                                 },
  *                                 customOutput: {
  *                                     properties: [{
  *                                         name: "duration",
@@ -103,28 +111,20 @@ import * as utilities from "../utilities";
  *                                         },
  *                                     }],
  *                                 },
- *                                 description: "Custom Module",
- *                                 predicate: {
- *                                     expression: "resource.rotationPeriod > duration('2592000s')",
- *                                 },
- *                                 recommendation: "Testing custom modules",
  *                                 resourceSelector: {
  *                                     resourceTypes: ["cloudkms.googleapis.com/CryptoKey"],
  *                                 },
  *                                 severity: "LOW",
+ *                                 description: "Custom Module",
+ *                                 recommendation: "Testing custom modules",
  *                             },
- *                             displayName: "custom_SHA_policy",
  *                             moduleEnablementState: "ENABLED",
  *                         },
  *                     },
- *                     policyId: "sha_custom_module",
  *                 },
  *             ],
- *             policySetId: "sha_policy_set",
  *         },
  *     ],
- *     postureId: "posture_1",
- *     state: "ACTIVE",
  * });
  * ```
  *

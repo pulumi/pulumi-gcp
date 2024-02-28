@@ -33,6 +33,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     ///     var example = new Gcp.PubSub.LiteReservation("example", new()
     ///     {
+    ///         Name = "example-reservation",
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.Number),
     ///         ThroughputCapacity = 2,
     ///     });

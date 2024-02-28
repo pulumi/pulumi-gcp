@@ -21,6 +21,32 @@ import (
 //   - [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
 //
 // ## Example Usage
+// ### Redis Instance Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/redis"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := redis.NewInstance(ctx, "cache", &redis.InstanceArgs{
+//				Name:         pulumi.String("memory-cache"),
+//				MemorySizeGb: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Redis Instance Full
 //
 // ```go
@@ -36,6 +62,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// This example assumes this network already exists.
+//			// The API creates a tenant network per network authorized for a
+//			// Redis instance and that network is not deleted when the user-created
+//			// network (authorized_network) is deleted, so this prevents issues
+//			// with tenant network quota.
+//			// If this network hasn't been created and you are using this example in your
+//			// config, add an additional network resource or change
+//			// this from "data"to "resource"
 //			redis_network, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
 //				Name: "redis-test-network",
 //			}, nil)
@@ -43,6 +77,7 @@ import (
 //				return err
 //			}
 //			_, err = redis.NewInstance(ctx, "cache", &redis.InstanceArgs{
+//				Name:                  pulumi.String("ha-memory-cache"),
 //				Tier:                  pulumi.String("STANDARD_HA"),
 //				MemorySizeGb:          pulumi.Int(1),
 //				LocationId:            pulumi.String("us-central1-a"),
@@ -77,6 +112,39 @@ import (
 //	}
 //
 // ```
+// ### Redis Instance Full With Persistence Config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/redis"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := redis.NewInstance(ctx, "cache-persis", &redis.InstanceArgs{
+//				Name:                  pulumi.String("ha-memory-cache-persis"),
+//				Tier:                  pulumi.String("STANDARD_HA"),
+//				MemorySizeGb:          pulumi.Int(1),
+//				LocationId:            pulumi.String("us-central1-a"),
+//				AlternativeLocationId: pulumi.String("us-central1-f"),
+//				PersistenceConfig: &redis.InstancePersistenceConfigArgs{
+//					PersistenceMode:   pulumi.String("RDB"),
+//					RdbSnapshotPeriod: pulumi.String("TWELVE_HOURS"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Redis Instance Private Service
 //
 // ```go
@@ -101,11 +169,14 @@ import (
 //			// If this network hasn't been created and you are using this example in your
 //			// config, add an additional network resource or change
 //			// this from "data"to "resource"
-//			_, err := compute.NewNetwork(ctx, "redis-network", nil)
+//			_, err := compute.NewNetwork(ctx, "redis-network", &compute.NetworkArgs{
+//				Name: pulumi.String("redis-test-network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			serviceRange, err := compute.NewGlobalAddress(ctx, "serviceRange", &compute.GlobalAddressArgs{
+//			serviceRange, err := compute.NewGlobalAddress(ctx, "service_range", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("address"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
@@ -114,7 +185,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			privateServiceConnection, err := servicenetworking.NewConnection(ctx, "privateServiceConnection", &servicenetworking.ConnectionArgs{
+//			_, err = servicenetworking.NewConnection(ctx, "private_service_connection", &servicenetworking.ConnectionArgs{
 //				Network: redis_network.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
@@ -125,6 +196,7 @@ import (
 //				return err
 //			}
 //			_, err = redis.NewInstance(ctx, "cache", &redis.InstanceArgs{
+//				Name:                  pulumi.String("private-cache"),
 //				Tier:                  pulumi.String("STANDARD_HA"),
 //				MemorySizeGb:          pulumi.Int(1),
 //				LocationId:            pulumi.String("us-central1-a"),
@@ -133,9 +205,7 @@ import (
 //				ConnectMode:           pulumi.String("PRIVATE_SERVICE_ACCESS"),
 //				RedisVersion:          pulumi.String("REDIS_4_0"),
 //				DisplayName:           pulumi.String("Test Instance"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				privateServiceConnection,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -159,6 +229,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// This example assumes this network already exists.
+//			// The API creates a tenant network per network authorized for a
+//			// Redis instance and that network is not deleted when the user-created
+//			// network (authorized_network) is deleted, so this prevents issues
+//			// with tenant network quota.
+//			// If this network hasn't been created and you are using this example in your
+//			// config, add an additional network resource or change
+//			// this from "data"to "resource"
 //			redis_network, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
 //				Name: "redis-test-network",
 //			}, nil)
@@ -166,6 +244,7 @@ import (
 //				return err
 //			}
 //			_, err = redis.NewInstance(ctx, "cache", &redis.InstanceArgs{
+//				Name:                  pulumi.String("mrr-memory-cache"),
 //				Tier:                  pulumi.String("STANDARD_HA"),
 //				MemorySizeGb:          pulumi.Int(5),
 //				LocationId:            pulumi.String("us-central1-a"),
@@ -205,18 +284,28 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			redisKeyring, err := kms.NewKeyRing(ctx, "redisKeyring", &kms.KeyRingArgs{
+//			redisKeyring, err := kms.NewKeyRing(ctx, "redis_keyring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("redis-keyring"),
 //				Location: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			redisKey, err := kms.NewCryptoKey(ctx, "redisKey", &kms.CryptoKeyArgs{
+//			redisKey, err := kms.NewCryptoKey(ctx, "redis_key", &kms.CryptoKeyArgs{
+//				Name:    pulumi.String("redis-key"),
 //				KeyRing: redisKeyring.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			// This example assumes this network already exists.
+//			// The API creates a tenant network per network authorized for a
+//			// Redis instance and that network is not deleted when the user-created
+//			// network (authorized_network) is deleted, so this prevents issues
+//			// with tenant network quota.
+//			// If this network hasn't been created and you are using this example in your
+//			// config, add an additional network resource or change
+//			// this from "data"to "resource"
 //			redis_network, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
 //				Name: "redis-test-network",
 //			}, nil)
@@ -224,6 +313,7 @@ import (
 //				return err
 //			}
 //			_, err = redis.NewInstance(ctx, "cache", &redis.InstanceArgs{
+//				Name:                  pulumi.String("cmek-memory-cache"),
 //				Tier:                  pulumi.String("STANDARD_HA"),
 //				MemorySizeGb:          pulumi.Int(1),
 //				LocationId:            pulumi.String("us-central1-a"),

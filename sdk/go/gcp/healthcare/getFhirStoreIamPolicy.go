@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := healthcare.LookupFhirStoreIamPolicy(ctx, &healthcare.LookupFhirStoreIamPolicyArgs{
-//				FhirStoreId: google_healthcare_fhir_store.Fhir_store.Id,
+//				FhirStoreId: fhirStore.Id,
 //			}, nil)
 //			if err != nil {
 //				return err

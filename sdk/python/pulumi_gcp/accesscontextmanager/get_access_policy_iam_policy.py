@@ -89,7 +89,7 @@ def get_access_policy_iam_policy(name: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.accesscontextmanager.get_access_policy_iam_policy(name=google_access_context_manager_access_policy["access-policy"]["name"])
+    policy = gcp.accesscontextmanager.get_access_policy_iam_policy(name=access_policy["name"])
     ```
 
 
@@ -119,7 +119,7 @@ def get_access_policy_iam_policy_output(name: Optional[pulumi.Input[str]] = None
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.accesscontextmanager.get_access_policy_iam_policy(name=google_access_context_manager_access_policy["access-policy"]["name"])
+    policy = gcp.accesscontextmanager.get_access_policy_iam_policy(name=access_policy["name"])
     ```
 
 

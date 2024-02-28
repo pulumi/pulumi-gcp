@@ -52,13 +52,13 @@ namespace Pulumi.Gcp.Diagflow
     ///         },
     ///     });
     /// 
-    ///     var myPage2 = new Gcp.Diagflow.CxPage("myPage2", new()
+    ///     var myPage2 = new Gcp.Diagflow.CxPage("my_page2", new()
     ///     {
     ///         Parent = agent.StartFlow,
     ///         DisplayName = "MyPage2",
     ///     });
     /// 
-    ///     var myWebhook = new Gcp.Diagflow.CxWebhook("myWebhook", new()
+    ///     var myWebhook = new Gcp.Diagflow.CxWebhook("my_webhook", new()
     ///     {
     ///         Parent = agent.Id,
     ///         DisplayName = "MyWebhook",
@@ -68,7 +68,7 @@ namespace Pulumi.Gcp.Diagflow
     ///         },
     ///     });
     /// 
-    ///     var basicPage = new Gcp.Diagflow.CxPage("basicPage", new()
+    ///     var basicPage = new Gcp.Diagflow.CxPage("basic_page", new()
     ///     {
     ///         Parent = agent.StartFlow,
     ///         DisplayName = "MyPage",

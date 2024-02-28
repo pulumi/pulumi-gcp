@@ -45,14 +45,15 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var @default = new Gcp.Compute.Disk("default", new()
     ///     {
+    ///         Name = "test-disk",
+    ///         Type = "pd-ssd",
+    ///         Zone = "us-central1-a",
     ///         Image = "debian-11-bullseye-v20220719",
     ///         Labels = 
     ///         {
     ///             { "environment", "dev" },
     ///         },
     ///         PhysicalBlockSizeBytes = 4096,
-    ///         Type = "pd-ssd",
-    ///         Zone = "us-central1-a",
     ///     });
     /// 
     /// });
@@ -69,6 +70,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var primary = new Gcp.Compute.Disk("primary", new()
     ///     {
+    ///         Name = "async-test-disk",
     ///         Type = "pd-ssd",
     ///         Zone = "us-central1-a",
     ///         PhysicalBlockSizeBytes = 4096,
@@ -76,6 +78,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var secondary = new Gcp.Compute.Disk("secondary", new()
     ///     {
+    ///         Name = "async-secondary-test-disk",
     ///         Type = "pd-ssd",
     ///         Zone = "us-east1-c",
     ///         AsyncPrimaryDisk = new Gcp.Compute.Inputs.DiskAsyncPrimaryDiskArgs
@@ -99,6 +102,13 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var @default = new Gcp.Compute.Disk("default", new()
     ///     {
+    ///         Name = "test-disk-features",
+    ///         Type = "pd-ssd",
+    ///         Zone = "us-central1-a",
+    ///         Labels = 
+    ///         {
+    ///             { "environment", "dev" },
+    ///         },
     ///         GuestOsFeatures = new[]
     ///         {
     ///             new Gcp.Compute.Inputs.DiskGuestOsFeatureArgs
@@ -114,17 +124,11 @@ namespace Pulumi.Gcp.Compute
     ///                 Type = "WINDOWS",
     ///             },
     ///         },
-    ///         Labels = 
-    ///         {
-    ///             { "environment", "dev" },
-    ///         },
     ///         Licenses = new[]
     ///         {
     ///             "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core",
     ///         },
     ///         PhysicalBlockSizeBytes = 4096,
-    ///         Type = "pd-ssd",
-    ///         Zone = "us-central1-a",
     ///     });
     /// 
     /// });

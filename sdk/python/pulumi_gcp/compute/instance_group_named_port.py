@@ -235,12 +235,16 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        container_network = gcp.compute.Network("containerNetwork", auto_create_subnetworks=False)
-        container_subnetwork = gcp.compute.Subnetwork("containerSubnetwork",
+        container_network = gcp.compute.Network("container_network",
+            name="container-network",
+            auto_create_subnetworks=False)
+        container_subnetwork = gcp.compute.Subnetwork("container_subnetwork",
+            name="container-subnetwork",
             region="us-central1",
             network=container_network.name,
             ip_cidr_range="10.0.36.0/24")
-        my_cluster = gcp.container.Cluster("myCluster",
+        my_cluster = gcp.container.Cluster("my_cluster",
+            name="my-cluster",
             location="us-central1-a",
             initial_node_count=1,
             network=container_network.name,
@@ -250,13 +254,15 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
                 services_ipv4_cidr_block="/22",
             ),
             deletion_protection=True)
-        my_port = gcp.compute.InstanceGroupNamedPort("myPort",
+        my_port = gcp.compute.InstanceGroupNamedPort("my_port",
             group=my_cluster.node_pools[0].instance_group_urls[0],
             zone="us-central1-a",
+            name="http",
             port=8080)
-        my_ports = gcp.compute.InstanceGroupNamedPort("myPorts",
+        my_ports = gcp.compute.InstanceGroupNamedPort("my_ports",
             group=my_cluster.node_pools[0].instance_group_urls[0],
             zone="us-central1-a",
+            name="https",
             port=4443)
         ```
 
@@ -328,12 +334,16 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        container_network = gcp.compute.Network("containerNetwork", auto_create_subnetworks=False)
-        container_subnetwork = gcp.compute.Subnetwork("containerSubnetwork",
+        container_network = gcp.compute.Network("container_network",
+            name="container-network",
+            auto_create_subnetworks=False)
+        container_subnetwork = gcp.compute.Subnetwork("container_subnetwork",
+            name="container-subnetwork",
             region="us-central1",
             network=container_network.name,
             ip_cidr_range="10.0.36.0/24")
-        my_cluster = gcp.container.Cluster("myCluster",
+        my_cluster = gcp.container.Cluster("my_cluster",
+            name="my-cluster",
             location="us-central1-a",
             initial_node_count=1,
             network=container_network.name,
@@ -343,13 +353,15 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
                 services_ipv4_cidr_block="/22",
             ),
             deletion_protection=True)
-        my_port = gcp.compute.InstanceGroupNamedPort("myPort",
+        my_port = gcp.compute.InstanceGroupNamedPort("my_port",
             group=my_cluster.node_pools[0].instance_group_urls[0],
             zone="us-central1-a",
+            name="http",
             port=8080)
-        my_ports = gcp.compute.InstanceGroupNamedPort("myPorts",
+        my_ports = gcp.compute.InstanceGroupNamedPort("my_ports",
             group=my_cluster.node_pools[0].instance_group_urls[0],
             zone="us-central1-a",
+            name="https",
             port=4443)
         ```
 

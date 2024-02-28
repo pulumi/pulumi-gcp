@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Sql
         /// {
         ///     var qa = Gcp.Sql.GetDatabases.Invoke(new()
         ///     {
-        ///         Instance = google_sql_database_instance.Main.Name,
+        ///         Instance = main.Name,
         ///     });
         /// 
         /// });
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.Sql
         /// {
         ///     var qa = Gcp.Sql.GetDatabases.Invoke(new()
         ///     {
-        ///         Instance = google_sql_database_instance.Main.Name,
+        ///         Instance = main.Name,
         ///     });
         /// 
         /// });

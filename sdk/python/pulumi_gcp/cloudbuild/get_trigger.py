@@ -288,7 +288,7 @@ def get_trigger(location: Optional[str] = None,
     import pulumi_gcp as gcp
 
     name = gcp.cloudbuild.get_trigger(project="your-project-id",
-        trigger_id=google_cloudbuild_trigger["filename-trigger"]["trigger_id"],
+        trigger_id=filename_trigger["triggerId"],
         location="location of trigger build")
     ```
 
@@ -354,7 +354,7 @@ def get_trigger_output(location: Optional[pulumi.Input[str]] = None,
     import pulumi_gcp as gcp
 
     name = gcp.cloudbuild.get_trigger(project="your-project-id",
-        trigger_id=google_cloudbuild_trigger["filename-trigger"]["trigger_id"],
+        trigger_id=filename_trigger["triggerId"],
         location="location of trigger build")
     ```
 

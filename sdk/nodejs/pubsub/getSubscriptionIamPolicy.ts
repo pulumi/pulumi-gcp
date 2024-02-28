@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.pubsub.getSubscriptionIamPolicy({
- *     subscription: google_pubsub_subscription.subscription.id,
+ *     subscription: subscription.id,
  * });
  * ```
  */
@@ -71,7 +71,7 @@ export interface GetSubscriptionIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.pubsub.getSubscriptionIamPolicy({
- *     subscription: google_pubsub_subscription.subscription.id,
+ *     subscription: subscription.id,
  * });
  * ```
  */

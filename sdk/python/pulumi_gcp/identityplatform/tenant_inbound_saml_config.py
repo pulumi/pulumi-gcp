@@ -299,9 +299,11 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         tenant = gcp.identityplatform.Tenant("tenant", display_name="tenant")
-        tenant_saml_config = gcp.identityplatform.TenantInboundSamlConfig("tenantSamlConfig",
+        tenant_saml_config = gcp.identityplatform.TenantInboundSamlConfig("tenant_saml_config",
+            name="saml.tf-config",
             display_name="Display Name",
             tenant=tenant.name,
             idp_config=gcp.identityplatform.TenantInboundSamlConfigIdpConfigArgs(
@@ -309,7 +311,7 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
                 sign_request=True,
                 sso_url="https://example.com",
                 idp_certificates=[gcp.identityplatform.TenantInboundSamlConfigIdpConfigIdpCertificateArgs(
-                    x509_certificate=(lambda path: open(path).read())("test-fixtures/rsa_cert.pem"),
+                    x509_certificate=std.file(input="test-fixtures/rsa_cert.pem").result,
                 )],
             ),
             sp_config=gcp.identityplatform.TenantInboundSamlConfigSpConfigArgs(
@@ -377,9 +379,11 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         tenant = gcp.identityplatform.Tenant("tenant", display_name="tenant")
-        tenant_saml_config = gcp.identityplatform.TenantInboundSamlConfig("tenantSamlConfig",
+        tenant_saml_config = gcp.identityplatform.TenantInboundSamlConfig("tenant_saml_config",
+            name="saml.tf-config",
             display_name="Display Name",
             tenant=tenant.name,
             idp_config=gcp.identityplatform.TenantInboundSamlConfigIdpConfigArgs(
@@ -387,7 +391,7 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
                 sign_request=True,
                 sso_url="https://example.com",
                 idp_certificates=[gcp.identityplatform.TenantInboundSamlConfigIdpConfigIdpCertificateArgs(
-                    x509_certificate=(lambda path: open(path).read())("test-fixtures/rsa_cert.pem"),
+                    x509_certificate=std.file(input="test-fixtures/rsa_cert.pem").result,
                 )],
             ),
             sp_config=gcp.identityplatform.TenantInboundSamlConfigSpConfigArgs(

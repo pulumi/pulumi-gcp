@@ -291,29 +291,34 @@ class NetworkEndpoint(pulumi.CustomResource):
 
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False)
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+        default = gcp.compute.Network("default",
+            name="neg-network",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="neg-subnetwork",
             ip_cidr_range="10.0.0.1/16",
             region="us-central1",
-            network=default_network.id)
+            network=default.id)
         endpoint_instance = gcp.compute.Instance("endpoint-instance",
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                subnetwork=default_subnetwork.id,
+            )],
+            name="endpoint-instance",
             machine_type="e2-medium",
             boot_disk=gcp.compute.InstanceBootDiskArgs(
                 initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
                     image=my_image.self_link,
                 ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                subnetwork=default_subnetwork.id,
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-            )])
+            ))
         default_endpoint = gcp.compute.NetworkEndpoint("default-endpoint",
-            network_endpoint_group=google_compute_network_endpoint_group["neg"]["name"],
+            network_endpoint_group=neg["name"],
             instance=endpoint_instance.name,
-            port=google_compute_network_endpoint_group["neg"]["default_port"],
+            port=neg["defaultPort"],
             ip_address=endpoint_instance.network_interfaces[0].network_ip)
         group = gcp.compute.NetworkEndpointGroup("group",
-            network=default_network.id,
+            name="my-lb-neg",
+            network=default.id,
             subnetwork=default_subnetwork.id,
             default_port=90,
             zone="us-central1-a")
@@ -396,29 +401,34 @@ class NetworkEndpoint(pulumi.CustomResource):
 
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False)
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+        default = gcp.compute.Network("default",
+            name="neg-network",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="neg-subnetwork",
             ip_cidr_range="10.0.0.1/16",
             region="us-central1",
-            network=default_network.id)
+            network=default.id)
         endpoint_instance = gcp.compute.Instance("endpoint-instance",
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                subnetwork=default_subnetwork.id,
+            )],
+            name="endpoint-instance",
             machine_type="e2-medium",
             boot_disk=gcp.compute.InstanceBootDiskArgs(
                 initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
                     image=my_image.self_link,
                 ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                subnetwork=default_subnetwork.id,
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-            )])
+            ))
         default_endpoint = gcp.compute.NetworkEndpoint("default-endpoint",
-            network_endpoint_group=google_compute_network_endpoint_group["neg"]["name"],
+            network_endpoint_group=neg["name"],
             instance=endpoint_instance.name,
-            port=google_compute_network_endpoint_group["neg"]["default_port"],
+            port=neg["defaultPort"],
             ip_address=endpoint_instance.network_interfaces[0].network_ip)
         group = gcp.compute.NetworkEndpointGroup("group",
-            network=default_network.id,
+            name="my-lb-neg",
+            network=default.id,
             subnetwork=default_subnetwork.id,
             default_port=90,
             zone="us-central1-a")

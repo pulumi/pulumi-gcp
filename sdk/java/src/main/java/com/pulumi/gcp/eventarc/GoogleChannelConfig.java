@@ -34,7 +34,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
  * import com.pulumi.gcp.eventarc.GoogleChannelConfig;
  * import com.pulumi.gcp.eventarc.GoogleChannelConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -63,18 +62,17 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var key1Member = new CryptoKeyIAMMember(&#34;key1Member&#34;, CryptoKeyIAMMemberArgs.builder()        
- *             .cryptoKeyId(data.google_kms_crypto_key().key1().id())
+ *             .cryptoKeyId(key1.id())
  *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
  *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-eventarc.iam.gserviceaccount.com&#34;, testProject.applyValue(getProjectResult -&gt; getProjectResult.number())))
  *             .build());
  * 
  *         var primary = new GoogleChannelConfig(&#34;primary&#34;, GoogleChannelConfigArgs.builder()        
  *             .location(&#34;us-west1&#34;)
+ *             .name(&#34;channel&#34;)
  *             .project(testProject.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
- *             .cryptoKeyName(data.google_kms_crypto_key().key1().id())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(key1Member)
- *                 .build());
+ *             .cryptoKeyName(key1.id())
+ *             .build());
  * 
  *     }
  * }

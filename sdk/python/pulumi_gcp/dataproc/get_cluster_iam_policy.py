@@ -108,7 +108,7 @@ def get_cluster_iam_policy(cluster: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataproc.get_cluster_iam_policy(cluster=google_dataproc_cluster["cluster"]["name"],
+    policy = gcp.dataproc.get_cluster_iam_policy(cluster=cluster["name"],
         region="us-central1")
     ```
 
@@ -145,7 +145,7 @@ def get_cluster_iam_policy_output(cluster: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataproc.get_cluster_iam_policy(cluster=google_dataproc_cluster["cluster"]["name"],
+    policy = gcp.dataproc.get_cluster_iam_policy(cluster=cluster["name"],
         region="us-central1")
     ```
 

@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  *
  * const all = gcp.composer.getImageVersions({});
  * const test = new gcp.composer.Environment("test", {
+ *     name: "test-env",
  *     region: "us-central1",
  *     config: {
  *         softwareConfig: {
@@ -78,6 +79,7 @@ export interface GetImageVersionsResult {
  *
  * const all = gcp.composer.getImageVersions({});
  * const test = new gcp.composer.Environment("test", {
+ *     name: "test-env",
  *     region: "us-central1",
  *     config: {
  *         softwareConfig: {

@@ -254,8 +254,9 @@ class RegionDiskIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.compute.DiskIamPolicy("policy",
-            project=google_compute_disk["default"]["project"],
-            zone=google_compute_disk["default"]["zone"],
+            project=default["project"],
+            zone=default["zone"],
+            name=default["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -266,8 +267,9 @@ class RegionDiskIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.compute.DiskIamBinding("binding",
-            project=google_compute_disk["default"]["project"],
-            zone=google_compute_disk["default"]["zone"],
+            project=default["project"],
+            zone=default["zone"],
+            name=default["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -279,8 +281,9 @@ class RegionDiskIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.compute.DiskIamMember("member",
-            project=google_compute_disk["default"]["project"],
-            zone=google_compute_disk["default"]["zone"],
+            project=default["project"],
+            zone=default["zone"],
+            name=default["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -375,8 +378,9 @@ class RegionDiskIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.compute.DiskIamPolicy("policy",
-            project=google_compute_disk["default"]["project"],
-            zone=google_compute_disk["default"]["zone"],
+            project=default["project"],
+            zone=default["zone"],
+            name=default["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -387,8 +391,9 @@ class RegionDiskIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.compute.DiskIamBinding("binding",
-            project=google_compute_disk["default"]["project"],
-            zone=google_compute_disk["default"]["zone"],
+            project=default["project"],
+            zone=default["zone"],
+            name=default["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -400,8 +405,9 @@ class RegionDiskIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.compute.DiskIamMember("member",
-            project=google_compute_disk["default"]["project"],
-            zone=google_compute_disk["default"]["zone"],
+            project=default["project"],
+            zone=default["zone"],
+            name=default["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

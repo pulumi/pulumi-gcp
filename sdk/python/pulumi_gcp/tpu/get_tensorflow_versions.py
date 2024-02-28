@@ -96,6 +96,7 @@ def get_tensorflow_versions(project: Optional[str] = None,
 
     available = gcp.tpu.get_tensorflow_versions()
     tpu = gcp.tpu.Node("tpu",
+        name="test-tpu",
         zone="us-central1-b",
         accelerator_type="v3-8",
         tensorflow_version=available.versions[0],
@@ -144,6 +145,7 @@ def get_tensorflow_versions_output(project: Optional[pulumi.Input[Optional[str]]
 
     available = gcp.tpu.get_tensorflow_versions()
     tpu = gcp.tpu.Node("tpu",
+        name="test-tpu",
         zone="us-central1-b",
         accelerator_type="v3-8",
         tensorflow_version=available.versions[0],

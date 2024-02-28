@@ -22,21 +22,24 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var basicBucket = new Gcp.Storage.Bucket("basicBucket", new()
+    ///     var basicBucket = new Gcp.Storage.Bucket("basic_bucket", new()
     ///     {
+    ///         Name = "bucket",
     ///         Location = "us-west1",
     ///         UniformBucketLevelAccess = true,
     ///         Project = "my-project-name",
     ///     });
     /// 
-    ///     var basicLake = new Gcp.DataPlex.Lake("basicLake", new()
+    ///     var basicLake = new Gcp.DataPlex.Lake("basic_lake", new()
     ///     {
+    ///         Name = "lake",
     ///         Location = "us-west1",
     ///         Project = "my-project-name",
     ///     });
     /// 
-    ///     var basicZone = new Gcp.DataPlex.Zone("basicZone", new()
+    ///     var basicZone = new Gcp.DataPlex.Zone("basic_zone", new()
     ///     {
+    ///         Name = "zone",
     ///         Location = "us-west1",
     ///         Lake = basicLake.Name,
     ///         Type = "RAW",
@@ -53,6 +56,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     ///     var primary = new Gcp.DataPlex.Asset("primary", new()
     ///     {
+    ///         Name = "asset",
     ///         Location = "us-west1",
     ///         Lake = basicLake.Name,
     ///         DataplexZone = basicZone.Name,
@@ -71,12 +75,6 @@ namespace Pulumi.Gcp.DataPlex
     ///             { "my-asset", "exists" },
     ///         },
     ///         Project = "my-project-name",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             basicBucket,
-    ///         },
     ///     });
     /// 
     /// });

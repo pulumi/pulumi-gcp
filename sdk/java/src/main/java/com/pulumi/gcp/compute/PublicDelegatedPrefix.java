@@ -50,12 +50,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var advertised = new PublicAdvertisedPrefix(&#34;advertised&#34;, PublicAdvertisedPrefixArgs.builder()        
+ *             .name(&#34;my-prefix&#34;)
  *             .description(&#34;description&#34;)
  *             .dnsVerificationIp(&#34;127.127.0.0&#34;)
  *             .ipCidrRange(&#34;127.127.0.0/16&#34;)
  *             .build());
  * 
  *         var prefixes = new PublicDelegatedPrefix(&#34;prefixes&#34;, PublicDelegatedPrefixArgs.builder()        
+ *             .name(&#34;my-prefix&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .description(&#34;my description&#34;)
  *             .ipCidrRange(&#34;127.127.0.0/24&#34;)

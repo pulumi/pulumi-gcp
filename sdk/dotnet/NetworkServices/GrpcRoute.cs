@@ -23,6 +23,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// {
     ///     var @default = new Gcp.NetworkServices.GrpcRoute("default", new()
     ///     {
+    ///         Name = "my-grpc-route",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -63,9 +64,6 @@ namespace Pulumi.Gcp.NetworkServices
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -82,6 +80,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// {
     ///     var @default = new Gcp.NetworkServices.GrpcRoute("default", new()
     ///     {
+    ///         Name = "my-grpc-route",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -152,9 +151,6 @@ namespace Pulumi.Gcp.NetworkServices
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -171,6 +167,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// {
     ///     var @default = new Gcp.NetworkServices.GrpcRoute("default", new()
     ///     {
+    ///         Name = "my-grpc-route",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -210,9 +207,6 @@ namespace Pulumi.Gcp.NetworkServices
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

@@ -31,22 +31,26 @@ namespace Pulumi.Gcp.Compute
         /// {
         ///     var @default = new Gcp.Compute.Network("default", new()
         ///     {
+        ///         Name = "foobar",
         ///         AutoCreateSubnetworks = false,
         ///     });
         /// 
         ///     var other = new Gcp.Compute.Network("other", new()
         ///     {
+        ///         Name = "other",
         ///         AutoCreateSubnetworks = false,
         ///     });
         /// 
         ///     var peering1 = new Gcp.Compute.NetworkPeering("peering1", new()
         ///     {
+        ///         Name = "peering1",
         ///         Network = @default.SelfLink,
         ///         PeerNetwork = other.SelfLink,
         ///     });
         /// 
         ///     var peering2 = new Gcp.Compute.NetworkPeering("peering2", new()
         ///     {
+        ///         Name = "peering2",
         ///         Network = other.SelfLink,
         ///         PeerNetwork = @default.SelfLink,
         ///     });
@@ -85,22 +89,26 @@ namespace Pulumi.Gcp.Compute
         /// {
         ///     var @default = new Gcp.Compute.Network("default", new()
         ///     {
+        ///         Name = "foobar",
         ///         AutoCreateSubnetworks = false,
         ///     });
         /// 
         ///     var other = new Gcp.Compute.Network("other", new()
         ///     {
+        ///         Name = "other",
         ///         AutoCreateSubnetworks = false,
         ///     });
         /// 
         ///     var peering1 = new Gcp.Compute.NetworkPeering("peering1", new()
         ///     {
+        ///         Name = "peering1",
         ///         Network = @default.SelfLink,
         ///         PeerNetwork = other.SelfLink,
         ///     });
         /// 
         ///     var peering2 = new Gcp.Compute.NetworkPeering("peering2", new()
         ///     {
+        ///         Name = "peering2",
         ///         Network = other.SelfLink,
         ///         PeerNetwork = @default.SelfLink,
         ///     });

@@ -36,7 +36,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// ...
 //			_, err = compute.NewInstance(ctx, "default", &compute.InstanceArgs{
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					Source:     *pulumi.String(persistent_boot_disk.SelfLink),

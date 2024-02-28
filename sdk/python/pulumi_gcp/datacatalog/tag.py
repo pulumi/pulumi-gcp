@@ -253,13 +253,13 @@ class Tag(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        entry_group = gcp.datacatalog.EntryGroup("entryGroup", entry_group_id="my_entry_group")
+        entry_group = gcp.datacatalog.EntryGroup("entry_group", entry_group_id="my_entry_group")
         entry = gcp.datacatalog.Entry("entry",
             entry_group=entry_group.id,
             entry_id="my_entry",
             user_specified_type="my_custom_type",
             user_specified_system="SomethingExternal")
-        tag_template = gcp.datacatalog.TagTemplate("tagTemplate",
+        tag_template = gcp.datacatalog.TagTemplate("tag_template",
             tag_template_id="my_template",
             region="us-central1",
             display_name="Demo Tag Template",
@@ -300,7 +300,7 @@ class Tag(pulumi.CustomResource):
                 ),
             ],
             force_delete=False)
-        basic_tag = gcp.datacatalog.Tag("basicTag",
+        basic_tag = gcp.datacatalog.Tag("basic_tag",
             parent=entry.id,
             template=tag_template.id,
             fields=[gcp.datacatalog.TagFieldArgs(
@@ -314,18 +314,18 @@ class Tag(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        entry_group = gcp.datacatalog.EntryGroup("entryGroup", entry_group_id="my_entry_group")
-        first_entry = gcp.datacatalog.Entry("firstEntry",
+        entry_group = gcp.datacatalog.EntryGroup("entry_group", entry_group_id="my_entry_group")
+        first_entry = gcp.datacatalog.Entry("first_entry",
             entry_group=entry_group.id,
             entry_id="first_entry",
             user_specified_type="my_custom_type",
             user_specified_system="SomethingExternal")
-        second_entry = gcp.datacatalog.Entry("secondEntry",
+        second_entry = gcp.datacatalog.Entry("second_entry",
             entry_group=entry_group.id,
             entry_id="second_entry",
             user_specified_type="another_custom_type",
             user_specified_system="SomethingElseExternal")
-        tag_template = gcp.datacatalog.TagTemplate("tagTemplate",
+        tag_template = gcp.datacatalog.TagTemplate("tag_template",
             tag_template_id="my_template",
             region="us-central1",
             display_name="Demo Tag Template",
@@ -366,7 +366,7 @@ class Tag(pulumi.CustomResource):
                 ),
             ],
             force_delete=False)
-        entry_group_tag = gcp.datacatalog.Tag("entryGroupTag",
+        entry_group_tag = gcp.datacatalog.Tag("entry_group_tag",
             parent=entry_group.id,
             template=tag_template.id,
             fields=[gcp.datacatalog.TagFieldArgs(
@@ -380,7 +380,7 @@ class Tag(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        entry_group = gcp.datacatalog.EntryGroup("entryGroup", entry_group_id="my_entry_group")
+        entry_group = gcp.datacatalog.EntryGroup("entry_group", entry_group_id="my_entry_group")
         entry = gcp.datacatalog.Entry("entry",
             entry_group=entry_group.id,
             entry_id="my_entry",
@@ -423,7 +423,7 @@ class Tag(pulumi.CustomResource):
           ]
         }
         \"\"\")
-        tag_template = gcp.datacatalog.TagTemplate("tagTemplate",
+        tag_template = gcp.datacatalog.TagTemplate("tag_template",
             tag_template_id="my_template",
             region="us-central1",
             display_name="Demo Tag Template",
@@ -464,7 +464,7 @@ class Tag(pulumi.CustomResource):
                 ),
             ],
             force_delete=False)
-        basic_tag = gcp.datacatalog.Tag("basicTag",
+        basic_tag = gcp.datacatalog.Tag("basic_tag",
             parent=entry.id,
             template=tag_template.id,
             fields=[
@@ -549,13 +549,13 @@ class Tag(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        entry_group = gcp.datacatalog.EntryGroup("entryGroup", entry_group_id="my_entry_group")
+        entry_group = gcp.datacatalog.EntryGroup("entry_group", entry_group_id="my_entry_group")
         entry = gcp.datacatalog.Entry("entry",
             entry_group=entry_group.id,
             entry_id="my_entry",
             user_specified_type="my_custom_type",
             user_specified_system="SomethingExternal")
-        tag_template = gcp.datacatalog.TagTemplate("tagTemplate",
+        tag_template = gcp.datacatalog.TagTemplate("tag_template",
             tag_template_id="my_template",
             region="us-central1",
             display_name="Demo Tag Template",
@@ -596,7 +596,7 @@ class Tag(pulumi.CustomResource):
                 ),
             ],
             force_delete=False)
-        basic_tag = gcp.datacatalog.Tag("basicTag",
+        basic_tag = gcp.datacatalog.Tag("basic_tag",
             parent=entry.id,
             template=tag_template.id,
             fields=[gcp.datacatalog.TagFieldArgs(
@@ -610,18 +610,18 @@ class Tag(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        entry_group = gcp.datacatalog.EntryGroup("entryGroup", entry_group_id="my_entry_group")
-        first_entry = gcp.datacatalog.Entry("firstEntry",
+        entry_group = gcp.datacatalog.EntryGroup("entry_group", entry_group_id="my_entry_group")
+        first_entry = gcp.datacatalog.Entry("first_entry",
             entry_group=entry_group.id,
             entry_id="first_entry",
             user_specified_type="my_custom_type",
             user_specified_system="SomethingExternal")
-        second_entry = gcp.datacatalog.Entry("secondEntry",
+        second_entry = gcp.datacatalog.Entry("second_entry",
             entry_group=entry_group.id,
             entry_id="second_entry",
             user_specified_type="another_custom_type",
             user_specified_system="SomethingElseExternal")
-        tag_template = gcp.datacatalog.TagTemplate("tagTemplate",
+        tag_template = gcp.datacatalog.TagTemplate("tag_template",
             tag_template_id="my_template",
             region="us-central1",
             display_name="Demo Tag Template",
@@ -662,7 +662,7 @@ class Tag(pulumi.CustomResource):
                 ),
             ],
             force_delete=False)
-        entry_group_tag = gcp.datacatalog.Tag("entryGroupTag",
+        entry_group_tag = gcp.datacatalog.Tag("entry_group_tag",
             parent=entry_group.id,
             template=tag_template.id,
             fields=[gcp.datacatalog.TagFieldArgs(
@@ -676,7 +676,7 @@ class Tag(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        entry_group = gcp.datacatalog.EntryGroup("entryGroup", entry_group_id="my_entry_group")
+        entry_group = gcp.datacatalog.EntryGroup("entry_group", entry_group_id="my_entry_group")
         entry = gcp.datacatalog.Entry("entry",
             entry_group=entry_group.id,
             entry_id="my_entry",
@@ -719,7 +719,7 @@ class Tag(pulumi.CustomResource):
           ]
         }
         \"\"\")
-        tag_template = gcp.datacatalog.TagTemplate("tagTemplate",
+        tag_template = gcp.datacatalog.TagTemplate("tag_template",
             tag_template_id="my_template",
             region="us-central1",
             display_name="Demo Tag Template",
@@ -760,7 +760,7 @@ class Tag(pulumi.CustomResource):
                 ),
             ],
             force_delete=False)
-        basic_tag = gcp.datacatalog.Tag("basicTag",
+        basic_tag = gcp.datacatalog.Tag("basic_tag",
             parent=entry.id,
             template=tag_template.id,
             fields=[

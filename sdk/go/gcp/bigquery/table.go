@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultDataset, err := bigquery.NewDataset(ctx, "defaultDataset", &bigquery.DatasetArgs{
+//			_, err := bigquery.NewDataset(ctx, "default", &bigquery.DatasetArgs{
 //				DatasetId:                pulumi.String("foo"),
 //				FriendlyName:             pulumi.String("test"),
 //				Description:              pulumi.String("This is a test description"),
@@ -47,8 +47,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bigquery.NewTable(ctx, "defaultTable", &bigquery.TableArgs{
-//				DatasetId: defaultDataset.DatasetId,
+//			_, err = bigquery.NewTable(ctx, "default", &bigquery.TableArgs{
+//				DatasetId: _default.DatasetId,
 //				TableId:   pulumi.String("bar"),
 //				TimePartitioning: &bigquery.TableTimePartitioningArgs{
 //					Type: pulumi.String("DAY"),
@@ -78,7 +78,7 @@ import (
 //				return err
 //			}
 //			_, err = bigquery.NewTable(ctx, "sheet", &bigquery.TableArgs{
-//				DatasetId: defaultDataset.DatasetId,
+//				DatasetId: _default.DatasetId,
 //				TableId:   pulumi.String("sheet"),
 //				ExternalDataConfiguration: &bigquery.TableExternalDataConfigurationArgs{
 //					Autodetect:   pulumi.Bool(true),

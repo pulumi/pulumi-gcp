@@ -28,32 +28,38 @@ import * as utilities from "../utilities";
  *     family: "debian-11",
  *     project: "debian-cloud",
  * });
- * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false});
- * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "neg-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "neg-subnetwork",
  *     ipCidrRange: "10.0.0.1/16",
  *     region: "us-central1",
- *     network: defaultNetwork.id,
+ *     network: _default.id,
  * });
  * const endpoint_instance = new gcp.compute.Instance("endpoint-instance", {
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         subnetwork: defaultSubnetwork.id,
+ *     }],
+ *     name: "endpoint-instance",
  *     machineType: "e2-medium",
  *     bootDisk: {
  *         initializeParams: {
  *             image: myImage.then(myImage => myImage.selfLink),
  *         },
  *     },
- *     networkInterfaces: [{
- *         subnetwork: defaultSubnetwork.id,
- *         accessConfigs: [{}],
- *     }],
  * });
  * const default_endpoint = new gcp.compute.NetworkEndpoint("default-endpoint", {
- *     networkEndpointGroup: google_compute_network_endpoint_group.neg.name,
+ *     networkEndpointGroup: neg.name,
  *     instance: endpoint_instance.name,
- *     port: google_compute_network_endpoint_group.neg.default_port,
+ *     port: neg.defaultPort,
  *     ipAddress: endpoint_instance.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].networkIp),
  * });
  * const group = new gcp.compute.NetworkEndpointGroup("group", {
- *     network: defaultNetwork.id,
+ *     name: "my-lb-neg",
+ *     network: _default.id,
  *     subnetwork: defaultSubnetwork.id,
  *     defaultPort: 90,
  *     zone: "us-central1-a",

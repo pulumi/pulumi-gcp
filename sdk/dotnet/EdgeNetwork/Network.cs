@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.EdgeNetwork
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleNetwork = new Gcp.EdgeNetwork.Network("exampleNetwork", new()
+    ///     var exampleNetwork = new Gcp.EdgeNetwork.Network("example_network", new()
     ///     {
     ///         NetworkId = "example-network",
     ///         Location = "us-west1",

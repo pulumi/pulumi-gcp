@@ -37,13 +37,33 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			pool, err := certificateauthority.NewCaPool(ctx, "pool", &certificateauthority.CaPoolArgs{
+//				Name:     pulumi.String("ca-pool"),
 //				Location: pulumi.String("us-central1"),
 //				Tier:     pulumi.String("ENTERPRISE"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			caAuthority, err := certificateauthority.NewAuthority(ctx, "caAuthority", &certificateauthority.AuthorityArgs{
+//			_, err = certificatemanager.NewCertificateIssuanceConfig(ctx, "default", &certificatemanager.CertificateIssuanceConfigArgs{
+//				Name:        pulumi.String("issuance-config"),
+//				Description: pulumi.String("sample description for the certificate issuanceConfigs"),
+//				CertificateAuthorityConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs{
+//					CertificateAuthorityServiceConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs{
+//						CaPool: pool.ID(),
+//					},
+//				},
+//				Lifetime:                 pulumi.String("1814400s"),
+//				RotationWindowPercentage: pulumi.Int(34),
+//				KeyAlgorithm:             pulumi.String("ECDSA_P256"),
+//				Labels: pulumi.StringMap{
+//					"name":  pulumi.String("wrench"),
+//					"count": pulumi.String("3"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = certificateauthority.NewAuthority(ctx, "ca_authority", &certificateauthority.AuthorityArgs{
 //				Location:               pulumi.String("us-central1"),
 //				Pool:                   pool.Name,
 //				CertificateAuthorityId: pulumi.String("ca-authority"),
@@ -81,26 +101,6 @@ import (
 //				SkipGracePeriod:                    pulumi.Bool(true),
 //				IgnoreActiveCertificatesOnDeletion: pulumi.Bool(true),
 //			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = certificatemanager.NewCertificateIssuanceConfig(ctx, "default", &certificatemanager.CertificateIssuanceConfigArgs{
-//				Description: pulumi.String("sample description for the certificate issuanceConfigs"),
-//				CertificateAuthorityConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs{
-//					CertificateAuthorityServiceConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs{
-//						CaPool: pool.ID(),
-//					},
-//				},
-//				Lifetime:                 pulumi.String("1814400s"),
-//				RotationWindowPercentage: pulumi.Int(34),
-//				KeyAlgorithm:             pulumi.String("ECDSA_P256"),
-//				Labels: pulumi.StringMap{
-//					"name":  pulumi.String("wrench"),
-//					"count": pulumi.String("3"),
-//				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				caAuthority,
-//			}))
 //			if err != nil {
 //				return err
 //			}

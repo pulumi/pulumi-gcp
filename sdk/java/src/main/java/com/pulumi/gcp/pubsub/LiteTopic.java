@@ -59,12 +59,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var exampleLiteReservation = new LiteReservation(&#34;exampleLiteReservation&#34;, LiteReservationArgs.builder()        
+ *         var example = new LiteReservation(&#34;example&#34;, LiteReservationArgs.builder()        
+ *             .name(&#34;example-reservation&#34;)
  *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.number()))
  *             .throughputCapacity(2)
  *             .build());
  * 
  *         var exampleLiteTopic = new LiteTopic(&#34;exampleLiteTopic&#34;, LiteTopicArgs.builder()        
+ *             .name(&#34;example-topic&#34;)
  *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.number()))
  *             .partitionConfig(LiteTopicPartitionConfigArgs.builder()
  *                 .count(1)
@@ -77,7 +79,7 @@ import javax.annotation.Nullable;
  *                 .perPartitionBytes(32212254720)
  *                 .build())
  *             .reservationConfig(LiteTopicReservationConfigArgs.builder()
- *                 .throughputReservation(exampleLiteReservation.name())
+ *                 .throughputReservation(example.name())
  *                 .build())
  *             .build());
  * 

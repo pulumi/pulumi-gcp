@@ -29,9 +29,53 @@ namespace Pulumi.Gcp.VMwareEngine
     /// {
     ///     var vmw_engine_network = new Gcp.VMwareEngine.Network("vmw-engine-network", new()
     ///     {
-    ///         Description = "VMwareEngine standard network sample",
+    ///         Name = "standard-nw",
     ///         Location = "global",
     ///         Type = "STANDARD",
+    ///         Description = "VMwareEngine standard network sample",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Vmware Engine Network Legacy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumi.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // there can be only 1 Legacy network per region for a given project,
+    ///     // so creating new project for isolation in CI.
+    ///     var acceptanceProject = new Gcp.Organizations.Project("acceptance", new()
+    ///     {
+    ///         Name = "vmw-proj",
+    ///         ProjectId = "vmw-proj",
+    ///         OrgId = "123456789",
+    ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///     });
+    /// 
+    ///     var acceptance = new Gcp.Projects.Service("acceptance", new()
+    ///     {
+    ///         Project = acceptanceProject.ProjectId,
+    ///         ServiceName = "vmwareengine.googleapis.com",
+    ///     });
+    /// 
+    ///     var vmw_engine_network = new Gcp.VMwareEngine.Network("vmw-engine-network", new()
+    ///     {
+    ///         Project = acceptance.Project,
+    ///         Name = "us-west1-default",
+    ///         Location = "us-west1",
+    ///         Type = "LEGACY",
+    ///         Description = "VMwareEngine legacy network sample",
+    ///     });
+    /// 
+    ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
+    ///     {
+    ///         CreateDuration = "60s",
     ///     });
     /// 
     /// });

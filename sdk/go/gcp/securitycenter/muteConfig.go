@@ -37,10 +37,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := securitycenter.NewMuteConfig(ctx, "default", &securitycenter.MuteConfigArgs{
-//				Description:  pulumi.String("My Mute Config"),
-//				Filter:       pulumi.String("category: \"OS_VULNERABILITY\""),
 //				MuteConfigId: pulumi.String("my-config"),
 //				Parent:       pulumi.String("organizations/123456789"),
+//				Filter:       pulumi.String("category: \"OS_VULNERABILITY\""),
+//				Description:  pulumi.String("My Mute Config"),
 //			})
 //			if err != nil {
 //				return err

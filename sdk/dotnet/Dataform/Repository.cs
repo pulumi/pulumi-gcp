@@ -21,11 +21,9 @@ namespace Pulumi.Gcp.Dataform
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var gitRepository = new Gcp.SourceRepo.Repository("gitRepository", new()
+    ///     var gitRepository = new Gcp.SourceRepo.Repository("git_repository", new()
     ///     {
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Name = "my/repository",
     ///     });
     /// 
     ///     var secret = new Gcp.SecretManager.Secret("secret", new()
@@ -35,22 +33,17 @@ namespace Pulumi.Gcp.Dataform
     ///         {
     ///             Auto = null,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var secretVersion = new Gcp.SecretManager.SecretVersion("secretVersion", new()
+    ///     var secretVersion = new Gcp.SecretManager.SecretVersion("secret_version", new()
     ///     {
     ///         Secret = secret.Id,
     ///         SecretData = "secret-data",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var dataformRespository = new Gcp.Dataform.Repository("dataformRespository", new()
+    ///     var dataformRespository = new Gcp.Dataform.Repository("dataform_respository", new()
     ///     {
+    ///         Name = "dataform_repository",
     ///         DisplayName = "dataform_repository",
     ///         NpmrcEnvironmentVariablesSecretVersion = secretVersion.Id,
     ///         Labels = 
@@ -69,9 +62,6 @@ namespace Pulumi.Gcp.Dataform
     ///             SchemaSuffix = "_suffix",
     ///             TablePrefix = "prefix_",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -86,11 +76,9 @@ namespace Pulumi.Gcp.Dataform
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var gitRepository = new Gcp.SourceRepo.Repository("gitRepository", new()
+    ///     var gitRepository = new Gcp.SourceRepo.Repository("git_repository", new()
     ///     {
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Name = "my/repository",
     ///     });
     /// 
     ///     var secret = new Gcp.SecretManager.Secret("secret", new()
@@ -100,22 +88,17 @@ namespace Pulumi.Gcp.Dataform
     ///         {
     ///             Auto = null,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var secretVersion = new Gcp.SecretManager.SecretVersion("secretVersion", new()
+    ///     var secretVersion = new Gcp.SecretManager.SecretVersion("secret_version", new()
     ///     {
     ///         Secret = secret.Id,
     ///         SecretData = "secret-data",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var dataformRespository = new Gcp.Dataform.Repository("dataformRespository", new()
+    ///     var dataformRespository = new Gcp.Dataform.Repository("dataform_respository", new()
     ///     {
+    ///         Name = "dataform_repository",
     ///         GitRemoteSettings = new Gcp.Dataform.Inputs.RepositoryGitRemoteSettingsArgs
     ///         {
     ///             Url = gitRepository.Url,
@@ -133,9 +116,6 @@ namespace Pulumi.Gcp.Dataform
     ///             TablePrefix = "prefix_",
     ///         },
     ///         ServiceAccount = "1234567890-compute@developer.gserviceaccount.com",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

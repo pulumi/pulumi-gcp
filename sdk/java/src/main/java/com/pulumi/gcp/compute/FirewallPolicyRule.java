@@ -52,6 +52,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basicGlobalNetworksecurityAddressGroup = new AddressGroup(&#34;basicGlobalNetworksecurityAddressGroup&#34;, AddressGroupArgs.builder()        
+ *             .name(&#34;policy&#34;)
  *             .parent(&#34;organizations/123456789&#34;)
  *             .description(&#34;Sample global networksecurity_address_group&#34;)
  *             .location(&#34;global&#34;)

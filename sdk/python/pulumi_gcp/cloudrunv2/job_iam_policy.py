@@ -262,8 +262,9 @@ class JobIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.cloudrunv2.JobIamPolicy("policy",
-            project=google_cloud_run_v2_job["default"]["project"],
-            location=google_cloud_run_v2_job["default"]["location"],
+            project=default["project"],
+            location=default["location"],
+            name=default["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -274,8 +275,9 @@ class JobIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.cloudrunv2.JobIamBinding("binding",
-            project=google_cloud_run_v2_job["default"]["project"],
-            location=google_cloud_run_v2_job["default"]["location"],
+            project=default["project"],
+            location=default["location"],
+            name=default["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -287,8 +289,9 @@ class JobIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.cloudrunv2.JobIamMember("member",
-            project=google_cloud_run_v2_job["default"]["project"],
-            location=google_cloud_run_v2_job["default"]["location"],
+            project=default["project"],
+            location=default["location"],
+            name=default["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -384,8 +387,9 @@ class JobIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.cloudrunv2.JobIamPolicy("policy",
-            project=google_cloud_run_v2_job["default"]["project"],
-            location=google_cloud_run_v2_job["default"]["location"],
+            project=default["project"],
+            location=default["location"],
+            name=default["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -396,8 +400,9 @@ class JobIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.cloudrunv2.JobIamBinding("binding",
-            project=google_cloud_run_v2_job["default"]["project"],
-            location=google_cloud_run_v2_job["default"]["location"],
+            project=default["project"],
+            location=default["location"],
+            name=default["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -409,8 +414,9 @@ class JobIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.cloudrunv2.JobIamMember("member",
-            project=google_cloud_run_v2_job["default"]["project"],
-            location=google_cloud_run_v2_job["default"]["location"],
+            project=default["project"],
+            location=default["location"],
+            name=default["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

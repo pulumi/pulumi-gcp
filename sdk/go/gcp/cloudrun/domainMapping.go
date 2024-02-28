@@ -35,7 +35,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultService, err := cloudrun.NewService(ctx, "defaultService", &cloudrun.ServiceArgs{
+//			_, err := cloudrun.NewService(ctx, "default", &cloudrun.ServiceArgs{
+//				Name:     pulumi.String("cloudrun-srv"),
 //				Location: pulumi.String("us-central1"),
 //				Metadata: &cloudrun.ServiceMetadataArgs{
 //					Namespace: pulumi.String("my-project-name"),
@@ -53,13 +54,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudrun.NewDomainMapping(ctx, "defaultDomainMapping", &cloudrun.DomainMappingArgs{
+//			_, err = cloudrun.NewDomainMapping(ctx, "default", &cloudrun.DomainMappingArgs{
 //				Location: pulumi.String("us-central1"),
+//				Name:     pulumi.String("verified-domain.com"),
 //				Metadata: &cloudrun.DomainMappingMetadataArgs{
 //					Namespace: pulumi.String("my-project-name"),
 //				},
 //				Spec: &cloudrun.DomainMappingSpecArgs{
-//					RouteName: defaultService.Name,
+//					RouteName: _default.Name,
 //				},
 //			})
 //			if err != nil {

@@ -36,6 +36,8 @@ namespace Pulumi.Gcp.Projects
     /// {
     ///     var my_custom_role = new Gcp.Projects.IAMCustomRole("my-custom-role", new()
     ///     {
+    ///         RoleId = "myCustomRole",
+    ///         Title = "My Custom Role",
     ///         Description = "A description",
     ///         Permissions = new[]
     ///         {
@@ -43,8 +45,6 @@ namespace Pulumi.Gcp.Projects
     ///             "iam.roles.create",
     ///             "iam.roles.delete",
     ///         },
-    ///         RoleId = "myCustomRole",
-    ///         Title = "My Custom Role",
     ///     });
     /// 
     /// });

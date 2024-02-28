@@ -22,18 +22,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basicProfile = new gcp.dataplex.Datascan("basicProfile", {
+ * const basicProfile = new gcp.dataplex.Datascan("basic_profile", {
+ *     location: "us-central1",
+ *     dataScanId: "dataprofile-basic",
  *     data: {
  *         resource: "//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
  *     },
- *     dataProfileSpec: {},
- *     dataScanId: "dataprofile-basic",
  *     executionSpec: {
  *         trigger: {
  *             onDemand: {},
  *         },
  *     },
- *     location: "us-central1",
+ *     dataProfileSpec: {},
  *     project: "my-project-name",
  * });
  * ```
@@ -43,14 +43,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const source = new gcp.bigquery.Dataset("source", {
- *     datasetId: "dataplex_dataset",
- *     friendlyName: "test",
- *     description: "This is a test description",
- *     location: "US",
- *     deleteContentsOnDestroy: true,
- * });
- * const fullProfile = new gcp.dataplex.Datascan("fullProfile", {
+ * const fullProfile = new gcp.dataplex.Datascan("full_profile", {
  *     location: "us-central1",
  *     displayName: "Full Datascan Profile",
  *     dataScanId: "dataprofile-full",
@@ -84,8 +77,13 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     project: "my-project-name",
- * }, {
- *     dependsOn: [source],
+ * });
+ * const source = new gcp.bigquery.Dataset("source", {
+ *     datasetId: "dataplex_dataset",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "US",
+ *     deleteContentsOnDestroy: true,
  * });
  * ```
  * ### Dataplex Datascan Basic Quality
@@ -94,27 +92,27 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basicQuality = new gcp.dataplex.Datascan("basicQuality", {
+ * const basicQuality = new gcp.dataplex.Datascan("basic_quality", {
+ *     location: "us-central1",
+ *     dataScanId: "dataquality-basic",
  *     data: {
  *         resource: "//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
  *     },
- *     dataQualitySpec: {
- *         rules: [{
- *             description: "rule 1 for validity dimension",
- *             dimension: "VALIDITY",
- *             name: "rule1",
- *             tableConditionExpectation: {
- *                 sqlExpression: "COUNT(*) > 0",
- *             },
- *         }],
- *     },
- *     dataScanId: "dataquality-basic",
  *     executionSpec: {
  *         trigger: {
  *             onDemand: {},
  *         },
  *     },
- *     location: "us-central1",
+ *     dataQualitySpec: {
+ *         rules: [{
+ *             dimension: "VALIDITY",
+ *             name: "rule1",
+ *             description: "rule 1 for validity dimension",
+ *             tableConditionExpectation: {
+ *                 sqlExpression: "COUNT(*) > 0",
+ *             },
+ *         }],
+ *     },
  *     project: "my-project-name",
  * });
  * ```
@@ -124,30 +122,46 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const fullQuality = new gcp.dataplex.Datascan("fullQuality", {
+ * const fullQuality = new gcp.dataplex.Datascan("full_quality", {
+ *     location: "us-central1",
+ *     displayName: "Full Datascan Quality",
+ *     dataScanId: "dataquality-full",
+ *     description: "Example resource - Full Datascan Quality",
+ *     labels: {
+ *         author: "billing",
+ *     },
  *     data: {
  *         resource: "//bigquery.googleapis.com/projects/bigquery-public-data/datasets/austin_bikeshare/tables/bikeshare_stations",
  *     },
+ *     executionSpec: {
+ *         trigger: {
+ *             schedule: {
+ *                 cron: "TZ=America/New_York 1 1 * * *",
+ *             },
+ *         },
+ *         field: "modified_date",
+ *     },
  *     dataQualitySpec: {
+ *         samplingPercent: 5,
  *         rowFilter: "station_id > 1000",
  *         rules: [
  *             {
  *                 column: "address",
  *                 dimension: "VALIDITY",
- *                 nonNullExpectation: {},
  *                 threshold: 0.99,
+ *                 nonNullExpectation: {},
  *             },
  *             {
  *                 column: "council_district",
  *                 dimension: "VALIDITY",
  *                 ignoreNull: true,
- *                 rangeExpectation: {
- *                     maxValue: "10",
- *                     minValue: "1",
- *                     strictMaxEnabled: false,
- *                     strictMinEnabled: true,
- *                 },
  *                 threshold: 0.9,
+ *                 rangeExpectation: {
+ *                     minValue: "1",
+ *                     maxValue: "10",
+ *                     strictMinEnabled: true,
+ *                     strictMaxEnabled: false,
+ *                 },
  *             },
  *             {
  *                 column: "power_type",
@@ -177,11 +191,11 @@ import * as utilities from "../utilities";
  *                 column: "number_of_docks",
  *                 dimension: "VALIDITY",
  *                 statisticRangeExpectation: {
- *                     maxValue: "15",
- *                     minValue: "5",
  *                     statistic: "MEAN",
- *                     strictMaxEnabled: true,
+ *                     minValue: "5",
+ *                     maxValue: "15",
  *                     strictMinEnabled: true,
+ *                     strictMaxEnabled: true,
  *                 },
  *             },
  *             {
@@ -198,23 +212,7 @@ import * as utilities from "../utilities";
  *                 },
  *             },
  *         ],
- *         samplingPercent: 5,
  *     },
- *     dataScanId: "dataquality-full",
- *     description: "Example resource - Full Datascan Quality",
- *     displayName: "Full Datascan Quality",
- *     executionSpec: {
- *         field: "modified_date",
- *         trigger: {
- *             schedule: {
- *                 cron: "TZ=America/New_York 1 1 * * *",
- *             },
- *         },
- *     },
- *     labels: {
- *         author: "billing",
- *     },
- *     location: "us-central1",
  *     project: "my-project-name",
  * });
  * ```

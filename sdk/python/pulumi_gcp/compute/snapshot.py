@@ -672,11 +672,13 @@ class Snapshot(pulumi.CustomResource):
         debian = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         persistent = gcp.compute.Disk("persistent",
+            name="debian-disk",
             image=debian.self_link,
             size=10,
             type="pd-ssd",
             zone="us-central1-a")
         snapshot = gcp.compute.Snapshot("snapshot",
+            name="my-snapshot",
             source_disk=persistent.id,
             zone="us-central1-a",
             labels={
@@ -693,11 +695,13 @@ class Snapshot(pulumi.CustomResource):
         debian = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         persistent = gcp.compute.Disk("persistent",
+            name="debian-disk",
             image=debian.self_link,
             size=10,
             type="pd-ssd",
             zone="us-central1-a")
         snapshot = gcp.compute.Snapshot("snapshot",
+            name="my-snapshot",
             source_disk=persistent.id,
             zone="us-central1-a",
             chain_name="snapshot-chain",
@@ -810,11 +814,13 @@ class Snapshot(pulumi.CustomResource):
         debian = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         persistent = gcp.compute.Disk("persistent",
+            name="debian-disk",
             image=debian.self_link,
             size=10,
             type="pd-ssd",
             zone="us-central1-a")
         snapshot = gcp.compute.Snapshot("snapshot",
+            name="my-snapshot",
             source_disk=persistent.id,
             zone="us-central1-a",
             labels={
@@ -831,11 +837,13 @@ class Snapshot(pulumi.CustomResource):
         debian = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         persistent = gcp.compute.Disk("persistent",
+            name="debian-disk",
             image=debian.self_link,
             size=10,
             type="pd-ssd",
             zone="us-central1-a")
         snapshot = gcp.compute.Snapshot("snapshot",
+            name="my-snapshot",
             source_disk=persistent.id,
             zone="us-central1-a",
             chain_name="snapshot-chain",

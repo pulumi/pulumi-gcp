@@ -127,8 +127,8 @@ class Registry(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         registry = gcp.container.Registry("registry",
-            location="EU",
-            project="my-project")
+            project="my-project",
+            location="EU")
         ```
 
         The `id` field of the `container.Registry` is the identifier of the storage bucket that backs GCR and can be used to assign permissions to the bucket.
@@ -173,8 +173,8 @@ class Registry(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         registry = gcp.container.Registry("registry",
-            location="EU",
-            project="my-project")
+            project="my-project",
+            location="EU")
         ```
 
         The `id` field of the `container.Registry` is the identifier of the storage bucket that backs GCR and can be used to assign permissions to the bucket.

@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.Monitoring
         ///         DisplayName = "Test Notification Channel",
         ///     });
         /// 
-        ///     var alertPolicy = new Gcp.Monitoring.AlertPolicy("alertPolicy", new()
+        ///     var alertPolicy = new Gcp.Monitoring.AlertPolicy("alert_policy", new()
         ///     {
         ///         DisplayName = "My Alert Policy",
         ///         NotificationChannels = new[]
@@ -118,7 +118,7 @@ namespace Pulumi.Gcp.Monitoring
         ///         DisplayName = "Test Notification Channel",
         ///     });
         /// 
-        ///     var alertPolicy = new Gcp.Monitoring.AlertPolicy("alertPolicy", new()
+        ///     var alertPolicy = new Gcp.Monitoring.AlertPolicy("alert_policy", new()
         ///     {
         ///         DisplayName = "My Alert Policy",
         ///         NotificationChannels = new[]

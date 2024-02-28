@@ -14,17 +14,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false}, {
- *     provider: google_beta,
+ * const defaultNetwork = new gcp.compute.Network("default", {
+ *     name: "workstation-cluster",
+ *     autoCreateSubnetworks: false,
  * });
- * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "workstation-cluster",
  *     ipCidrRange: "10.0.0.0/24",
  *     region: "us-central1",
  *     network: defaultNetwork.name,
- * }, {
- *     provider: google_beta,
  * });
- * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("defaultWorkstationCluster", {
+ * const _default = new gcp.workstations.WorkstationCluster("default", {
  *     workstationClusterId: "workstation-cluster",
  *     network: defaultNetwork.id,
  *     subnetwork: defaultSubnetwork.id,
@@ -35,8 +35,6 @@ import * as utilities from "../utilities";
  *     annotations: {
  *         "label-one": "value-one",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const project = gcp.organizations.getProject({});
  * ```
@@ -46,17 +44,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false}, {
- *     provider: google_beta,
+ * const defaultNetwork = new gcp.compute.Network("default", {
+ *     name: "workstation-cluster-private",
+ *     autoCreateSubnetworks: false,
  * });
- * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "workstation-cluster-private",
  *     ipCidrRange: "10.0.0.0/24",
  *     region: "us-central1",
  *     network: defaultNetwork.name,
- * }, {
- *     provider: google_beta,
  * });
- * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("defaultWorkstationCluster", {
+ * const _default = new gcp.workstations.WorkstationCluster("default", {
  *     workstationClusterId: "workstation-cluster-private",
  *     network: defaultNetwork.id,
  *     subnetwork: defaultSubnetwork.id,
@@ -70,8 +68,6 @@ import * as utilities from "../utilities";
  *     annotations: {
  *         "label-one": "value-one",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const project = gcp.organizations.getProject({});
  * ```
@@ -81,17 +77,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false}, {
- *     provider: google_beta,
+ * const defaultNetwork = new gcp.compute.Network("default", {
+ *     name: "workstation-cluster-custom-domain",
+ *     autoCreateSubnetworks: false,
  * });
- * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "workstation-cluster-custom-domain",
  *     ipCidrRange: "10.0.0.0/24",
  *     region: "us-central1",
  *     network: defaultNetwork.name,
- * }, {
- *     provider: google_beta,
  * });
- * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("defaultWorkstationCluster", {
+ * const _default = new gcp.workstations.WorkstationCluster("default", {
  *     workstationClusterId: "workstation-cluster-custom-domain",
  *     network: defaultNetwork.id,
  *     subnetwork: defaultSubnetwork.id,
@@ -108,8 +104,6 @@ import * as utilities from "../utilities";
  *     annotations: {
  *         "label-one": "value-one",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const project = gcp.organizations.getProject({});
  * ```

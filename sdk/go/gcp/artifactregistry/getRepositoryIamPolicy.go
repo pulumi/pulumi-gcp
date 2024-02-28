@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := artifactregistry.LookupRepositoryIamPolicy(ctx, &artifactregistry.LookupRepositoryIamPolicyArgs{
-//				Project:    pulumi.StringRef(google_artifact_registry_repository.MyRepo.Project),
-//				Location:   pulumi.StringRef(google_artifact_registry_repository.MyRepo.Location),
-//				Repository: google_artifact_registry_repository.MyRepo.Name,
+//				Project:    pulumi.StringRef(my_repo.Project),
+//				Location:   pulumi.StringRef(my_repo.Location),
+//				Repository: my_repo.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

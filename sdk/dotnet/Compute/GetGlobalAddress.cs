@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         ///     var prod = new Gcp.Dns.ManagedZone("prod", new()
         ///     {
+        ///         Name = "prod-zone",
         ///         DnsName = "prod.mydomain.com.",
         ///     });
         /// 
@@ -80,6 +81,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         ///     var prod = new Gcp.Dns.ManagedZone("prod", new()
         ///     {
+        ///         Name = "prod-zone",
         ///         DnsName = "prod.mydomain.com.",
         ///     });
         /// 

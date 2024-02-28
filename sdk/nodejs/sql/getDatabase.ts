@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const qa = gcp.sql.getDatabase({
  *     name: "test-sql-database",
- *     instance: google_sql_database_instance.main.name,
+ *     instance: main.name,
  * });
  * ```
  */
@@ -74,7 +74,7 @@ export interface GetDatabaseResult {
  *
  * const qa = gcp.sql.getDatabase({
  *     name: "test-sql-database",
- *     instance: google_sql_database_instance.main.name,
+ *     instance: main.name,
  * });
  * ```
  */

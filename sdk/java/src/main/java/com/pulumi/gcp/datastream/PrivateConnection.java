@@ -36,6 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.datastream.PrivateConnection;
  * import com.pulumi.gcp.datastream.PrivateConnectionArgs;
  * import com.pulumi.gcp.datastream.inputs.PrivateConnectionVpcPeeringConfigArgs;
@@ -52,9 +53,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;);
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;my-network&#34;)
+ *             .build());
  * 
- *         var defaultPrivateConnection = new PrivateConnection(&#34;defaultPrivateConnection&#34;, PrivateConnectionArgs.builder()        
+ *         var default_ = new PrivateConnection(&#34;default&#34;, PrivateConnectionArgs.builder()        
  *             .displayName(&#34;Connection profile&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .privateConnectionId(&#34;my-connection&#34;)

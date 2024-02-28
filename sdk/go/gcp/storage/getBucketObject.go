@@ -33,8 +33,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := storage.LookupBucketObject(ctx, &storage.LookupBucketObjectArgs{
-//				Bucket: pulumi.StringRef("image-store"),
 //				Name:   pulumi.StringRef("folder/butterfly01.jpg"),
+//				Bucket: pulumi.StringRef("image-store"),
 //			}, nil)
 //			if err != nil {
 //				return err

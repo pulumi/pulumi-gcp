@@ -32,9 +32,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.bigqueryanalyticshub.DataExchangeIamPolicy("policy", {
- *     project: google_bigquery_analytics_hub_data_exchange.data_exchange.project,
- *     location: google_bigquery_analytics_hub_data_exchange.data_exchange.location,
- *     dataExchangeId: google_bigquery_analytics_hub_data_exchange.data_exchange.data_exchange_id,
+ *     project: dataExchange.project,
+ *     location: dataExchange.location,
+ *     dataExchangeId: dataExchange.dataExchangeId,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -46,9 +46,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.bigqueryanalyticshub.DataExchangeIamBinding("binding", {
- *     project: google_bigquery_analytics_hub_data_exchange.data_exchange.project,
- *     location: google_bigquery_analytics_hub_data_exchange.data_exchange.location,
- *     dataExchangeId: google_bigquery_analytics_hub_data_exchange.data_exchange.data_exchange_id,
+ *     project: dataExchange.project,
+ *     location: dataExchange.location,
+ *     dataExchangeId: dataExchange.dataExchangeId,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
  * });
@@ -61,9 +61,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.bigqueryanalyticshub.DataExchangeIamMember("member", {
- *     project: google_bigquery_analytics_hub_data_exchange.data_exchange.project,
- *     location: google_bigquery_analytics_hub_data_exchange.data_exchange.location,
- *     dataExchangeId: google_bigquery_analytics_hub_data_exchange.data_exchange.data_exchange_id,
+ *     project: dataExchange.project,
+ *     location: dataExchange.location,
+ *     dataExchangeId: dataExchange.dataExchangeId,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
  * });

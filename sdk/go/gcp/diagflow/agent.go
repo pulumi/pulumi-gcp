@@ -38,22 +38,22 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := diagflow.NewAgent(ctx, "fullAgent", &diagflow.AgentArgs{
-//				ApiVersion:              pulumi.String("API_VERSION_V2_BETA_1"),
-//				AvatarUri:               pulumi.String("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"),
-//				ClassificationThreshold: pulumi.Float64(0.3),
-//				DefaultLanguageCode:     pulumi.String("en"),
-//				Description:             pulumi.String("Example description."),
-//				DisplayName:             pulumi.String("dialogflow-agent"),
-//				EnableLogging:           pulumi.Bool(true),
-//				MatchMode:               pulumi.String("MATCH_MODE_ML_ONLY"),
+//			_, err := diagflow.NewAgent(ctx, "full_agent", &diagflow.AgentArgs{
+//				DisplayName:         pulumi.String("dialogflow-agent"),
+//				DefaultLanguageCode: pulumi.String("en"),
 //				SupportedLanguageCodes: pulumi.StringArray{
 //					pulumi.String("fr"),
 //					pulumi.String("de"),
 //					pulumi.String("es"),
 //				},
-//				Tier:     pulumi.String("TIER_STANDARD"),
-//				TimeZone: pulumi.String("America/New_York"),
+//				TimeZone:                pulumi.String("America/New_York"),
+//				Description:             pulumi.String("Example description."),
+//				AvatarUri:               pulumi.String("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"),
+//				EnableLogging:           pulumi.Bool(true),
+//				MatchMode:               pulumi.String("MATCH_MODE_ML_ONLY"),
+//				ClassificationThreshold: pulumi.Float64(0.3),
+//				ApiVersion:              pulumi.String("API_VERSION_V2_BETA_1"),
+//				Tier:                    pulumi.String("TIER_STANDARD"),
 //			})
 //			if err != nil {
 //				return err

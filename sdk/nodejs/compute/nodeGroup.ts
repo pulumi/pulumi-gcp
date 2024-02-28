@@ -28,10 +28,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const soletenant_tmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
+ *     name: "soletenant-tmpl",
  *     region: "us-central1",
  *     nodeType: "n1-node-96-624",
  * });
  * const nodes = new gcp.compute.NodeGroup("nodes", {
+ *     name: "soletenant-group",
  *     zone: "us-central1-a",
  *     description: "example google_compute_node_group for the Google Provider",
  *     initialSize: 1,
@@ -45,19 +47,17 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const soletenant_tmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
+ *     name: "soletenant-tmpl",
  *     region: "us-central1",
  *     nodeType: "c2-node-60-240",
- * }, {
- *     provider: google_beta,
  * });
  * const nodes = new gcp.compute.NodeGroup("nodes", {
+ *     name: "soletenant-group",
  *     zone: "us-central1-a",
  *     description: "example google_compute_node_group for Terraform Google Provider",
  *     initialSize: 1,
  *     nodeTemplate: soletenant_tmpl.id,
  *     maintenanceInterval: "RECURRENT",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Node Group Autoscaling Policy
@@ -67,10 +67,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const soletenant_tmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
+ *     name: "soletenant-tmpl",
  *     region: "us-central1",
  *     nodeType: "n1-node-96-624",
  * });
  * const nodes = new gcp.compute.NodeGroup("nodes", {
+ *     name: "soletenant-group",
  *     zone: "us-central1-a",
  *     description: "example google_compute_node_group for Google Provider",
  *     maintenancePolicy: "RESTART_IN_PLACE",
@@ -92,12 +94,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const guestProject = new gcp.organizations.Project("guestProject", {orgId: "123456789"});
+ * const guestProject = new gcp.organizations.Project("guest_project", {
+ *     projectId: "project-id",
+ *     name: "project-name",
+ *     orgId: "123456789",
+ * });
  * const soletenant_tmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
+ *     name: "soletenant-tmpl",
  *     region: "us-central1",
  *     nodeType: "n1-node-96-624",
  * });
  * const nodes = new gcp.compute.NodeGroup("nodes", {
+ *     name: "soletenant-group",
  *     zone: "us-central1-f",
  *     description: "example google_compute_node_group for Terraform Google Provider",
  *     initialSize: 1,

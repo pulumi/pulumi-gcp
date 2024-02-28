@@ -22,21 +22,25 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const project = new gcp.organizations.Project("project", {orgId: "123456789"});
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "project_id",
+ *     name: "project_id",
+ *     orgId: "123456789",
+ * });
  * const key = new gcp.tags.TagKey("key", {
- *     description: "For keyname resources.",
  *     parent: "organizations/123456789",
  *     shortName: "keyname",
+ *     description: "For keyname resources.",
  * });
  * const value = new gcp.tags.TagValue("value", {
- *     description: "For valuename resources.",
  *     parent: pulumi.interpolate`tagKeys/${key.name}`,
  *     shortName: "valuename",
+ *     description: "For valuename resources.",
  * });
  * const binding = new gcp.tags.LocationTagBinding("binding", {
- *     location: "us-central1",
- *     parent: pulumi.interpolate`//run.googleapis.com/projects/${project.number}/locations/${google_cloud_run_service["default"].location}/services/${google_cloud_run_service["default"].name}`,
+ *     parent: `//run.googleapis.com/projects/${projectGoogleProject.number}/locations/${_default.location}/services/${_default.name}`,
  *     tagValue: pulumi.interpolate`tagValues/${value.name}`,
+ *     location: "us-central1",
  * });
  * ```
  * ### Compute Instance
@@ -45,21 +49,25 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const project = new gcp.organizations.Project("project", {orgId: "123456789"});
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "project_id",
+ *     name: "project_id",
+ *     orgId: "123456789",
+ * });
  * const key = new gcp.tags.TagKey("key", {
- *     description: "For keyname resources.",
  *     parent: "organizations/123456789",
  *     shortName: "keyname",
+ *     description: "For keyname resources.",
  * });
  * const value = new gcp.tags.TagValue("value", {
- *     description: "For valuename resources.",
  *     parent: pulumi.interpolate`tagKeys/${key.name}`,
  *     shortName: "valuename",
+ *     description: "For valuename resources.",
  * });
  * const binding = new gcp.tags.LocationTagBinding("binding", {
- *     location: "us-central1-a",
- *     parent: pulumi.interpolate`//compute.googleapis.com/projects/${project.number}/zones/us-central1-a/instances/${google_compute_instance.instance.instance_id}`,
+ *     parent: pulumi.interpolate`//compute.googleapis.com/projects/${project.number}/zones/us-central1-a/instances/${instance.instanceId}`,
  *     tagValue: pulumi.interpolate`tagValues/${value.name}`,
+ *     location: "us-central1-a",
  * });
  * ```
  *

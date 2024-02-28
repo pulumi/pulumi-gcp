@@ -265,8 +265,10 @@ class BucketAccessControl(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket", location="US")
-        public_rule = gcp.storage.BucketAccessControl("publicRule",
+        bucket = gcp.storage.Bucket("bucket",
+            name="static-content-bucket",
+            location="US")
+        public_rule = gcp.storage.BucketAccessControl("public_rule",
             bucket=bucket.name,
             role="READER",
             entity="allUsers")
@@ -345,8 +347,10 @@ class BucketAccessControl(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bucket = gcp.storage.Bucket("bucket", location="US")
-        public_rule = gcp.storage.BucketAccessControl("publicRule",
+        bucket = gcp.storage.Bucket("bucket",
+            name="static-content-bucket",
+            location="US")
+        public_rule = gcp.storage.BucketAccessControl("public_rule",
             bucket=bucket.name,
             role="READER",
             entity="allUsers")

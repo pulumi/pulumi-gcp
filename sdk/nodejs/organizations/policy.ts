@@ -25,12 +25,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const serialPortPolicy = new gcp.organizations.Policy("serialPortPolicy", {
+ * const serialPortPolicy = new gcp.organizations.Policy("serial_port_policy", {
+ *     orgId: "123456789",
+ *     constraint: "compute.disableSerialPortAccess",
  *     booleanPolicy: {
  *         enforced: true,
  *     },
- *     constraint: "compute.disableSerialPortAccess",
- *     orgId: "123456789",
  * });
  * ```
  *
@@ -40,14 +40,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const servicesPolicy = new gcp.organizations.Policy("servicesPolicy", {
+ * const servicesPolicy = new gcp.organizations.Policy("services_policy", {
+ *     orgId: "123456789",
  *     constraint: "serviceuser.services",
  *     listPolicy: {
  *         allow: {
  *             all: true,
  *         },
  *     },
- *     orgId: "123456789",
  * });
  * ```
  *
@@ -57,15 +57,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const servicesPolicy = new gcp.organizations.Policy("servicesPolicy", {
+ * const servicesPolicy = new gcp.organizations.Policy("services_policy", {
+ *     orgId: "123456789",
  *     constraint: "serviceuser.services",
  *     listPolicy: {
+ *         suggestedValue: "compute.googleapis.com",
  *         deny: {
  *             values: ["cloudresourcemanager.googleapis.com"],
  *         },
- *         suggestedValue: "compute.googleapis.com",
  *     },
- *     orgId: "123456789",
  * });
  * ```
  *
@@ -75,9 +75,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const servicesPolicy = new gcp.organizations.Policy("servicesPolicy", {
- *     constraint: "serviceuser.services",
+ * const servicesPolicy = new gcp.organizations.Policy("services_policy", {
  *     orgId: "123456789",
+ *     constraint: "serviceuser.services",
  *     restorePolicy: {
  *         "default": true,
  *     },

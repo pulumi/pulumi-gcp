@@ -415,40 +415,93 @@ class RegionSslCertificate(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         default = gcp.compute.RegionSslCertificate("default",
             region="us-central1",
             name_prefix="my-certificate-",
             description="a description",
-            private_key=(lambda path: open(path).read())("path/to/private.key"),
-            certificate=(lambda path: open(path).read())("path/to/certificate.crt"))
+            private_key=std.file(input="path/to/private.key").result,
+            certificate=std.file(input="path/to/certificate.crt").result)
         ```
         ### Region Ssl Certificate Random Provider
 
         ```python
         import pulumi
-        import base64
-        import hashlib
         import pulumi_gcp as gcp
         import pulumi_random as random
+        import pulumi_std as std
 
-        def computeFilebase64sha256(path):
-        	fileData = open(path).read().encode()
-        	hashedData = hashlib.sha256(fileData.encode()).digest()
-        	return base64.b64encode(hashedData).decode()
-
-        # You may also want to control name generation explicitly:
-        default = gcp.compute.RegionSslCertificate("default",
-            region="us-central1",
-            private_key=(lambda path: open(path).read())("path/to/private.key"),
-            certificate=(lambda path: open(path).read())("path/to/certificate.crt"))
         certificate = random.RandomId("certificate",
             byte_length=4,
             prefix="my-certificate-",
             keepers={
-                "private_key": computeFilebase64sha256("path/to/private.key"),
-                "certificate": computeFilebase64sha256("path/to/certificate.crt"),
+                "private_key": std.filebase64sha256(input="path/to/private.key").result,
+                "certificate": std.filebase64sha256(input="path/to/certificate.crt").result,
             })
+        # You may also want to control name generation explicitly:
+        default = gcp.compute.RegionSslCertificate("default",
+            region="us-central1",
+            name=certificate.hex,
+            private_key=std.file(input="path/to/private.key").result,
+            certificate=std.file(input="path/to/certificate.crt").result)
+        ```
+        ### Region Ssl Certificate Target Https Proxies
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        # Using with Region Target HTTPS Proxies
+        #
+        # SSL certificates cannot be updated after creation. In order to apply
+        # the specified configuration, the provider will destroy the existing
+        # resource and create a replacement. To effectively use an SSL
+        # certificate resource with a Target HTTPS Proxy resource, it's
+        # recommended to specify create_before_destroy in a lifecycle block.
+        # Either omit the Instance Template name attribute, specify a partial
+        # name with name_prefix, or use random_id resource. Example:
+        default = gcp.compute.RegionSslCertificate("default",
+            region="us-central1",
+            name_prefix="my-certificate-",
+            private_key=std.file(input="path/to/private.key").result,
+            certificate=std.file(input="path/to/certificate.crt").result)
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            region="us-central1",
+            name="http-health-check",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port=80,
+            ))
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            region="us-central1",
+            name="backend-service",
+            protocol="HTTP",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            timeout_sec=10,
+            health_checks=default_region_health_check.id)
+        default_region_url_map = gcp.compute.RegionUrlMap("default",
+            region="us-central1",
+            name="url-map",
+            description="a description",
+            default_service=default_region_backend_service.id,
+            host_rules=[gcp.compute.RegionUrlMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.RegionUrlMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_region_backend_service.id,
+                path_rules=[gcp.compute.RegionUrlMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_region_backend_service.id,
+                )],
+            )])
+        default_region_target_https_proxy = gcp.compute.RegionTargetHttpsProxy("default",
+            region="us-central1",
+            name="test-proxy",
+            url_map=default_region_url_map.id,
+            ssl_certificates=[default.id])
         ```
 
         ## Import
@@ -532,40 +585,93 @@ class RegionSslCertificate(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         default = gcp.compute.RegionSslCertificate("default",
             region="us-central1",
             name_prefix="my-certificate-",
             description="a description",
-            private_key=(lambda path: open(path).read())("path/to/private.key"),
-            certificate=(lambda path: open(path).read())("path/to/certificate.crt"))
+            private_key=std.file(input="path/to/private.key").result,
+            certificate=std.file(input="path/to/certificate.crt").result)
         ```
         ### Region Ssl Certificate Random Provider
 
         ```python
         import pulumi
-        import base64
-        import hashlib
         import pulumi_gcp as gcp
         import pulumi_random as random
+        import pulumi_std as std
 
-        def computeFilebase64sha256(path):
-        	fileData = open(path).read().encode()
-        	hashedData = hashlib.sha256(fileData.encode()).digest()
-        	return base64.b64encode(hashedData).decode()
-
-        # You may also want to control name generation explicitly:
-        default = gcp.compute.RegionSslCertificate("default",
-            region="us-central1",
-            private_key=(lambda path: open(path).read())("path/to/private.key"),
-            certificate=(lambda path: open(path).read())("path/to/certificate.crt"))
         certificate = random.RandomId("certificate",
             byte_length=4,
             prefix="my-certificate-",
             keepers={
-                "private_key": computeFilebase64sha256("path/to/private.key"),
-                "certificate": computeFilebase64sha256("path/to/certificate.crt"),
+                "private_key": std.filebase64sha256(input="path/to/private.key").result,
+                "certificate": std.filebase64sha256(input="path/to/certificate.crt").result,
             })
+        # You may also want to control name generation explicitly:
+        default = gcp.compute.RegionSslCertificate("default",
+            region="us-central1",
+            name=certificate.hex,
+            private_key=std.file(input="path/to/private.key").result,
+            certificate=std.file(input="path/to/certificate.crt").result)
+        ```
+        ### Region Ssl Certificate Target Https Proxies
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        # Using with Region Target HTTPS Proxies
+        #
+        # SSL certificates cannot be updated after creation. In order to apply
+        # the specified configuration, the provider will destroy the existing
+        # resource and create a replacement. To effectively use an SSL
+        # certificate resource with a Target HTTPS Proxy resource, it's
+        # recommended to specify create_before_destroy in a lifecycle block.
+        # Either omit the Instance Template name attribute, specify a partial
+        # name with name_prefix, or use random_id resource. Example:
+        default = gcp.compute.RegionSslCertificate("default",
+            region="us-central1",
+            name_prefix="my-certificate-",
+            private_key=std.file(input="path/to/private.key").result,
+            certificate=std.file(input="path/to/certificate.crt").result)
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            region="us-central1",
+            name="http-health-check",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port=80,
+            ))
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            region="us-central1",
+            name="backend-service",
+            protocol="HTTP",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            timeout_sec=10,
+            health_checks=default_region_health_check.id)
+        default_region_url_map = gcp.compute.RegionUrlMap("default",
+            region="us-central1",
+            name="url-map",
+            description="a description",
+            default_service=default_region_backend_service.id,
+            host_rules=[gcp.compute.RegionUrlMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.RegionUrlMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_region_backend_service.id,
+                path_rules=[gcp.compute.RegionUrlMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_region_backend_service.id,
+                )],
+            )])
+        default_region_target_https_proxy = gcp.compute.RegionTargetHttpsProxy("default",
+            region="us-central1",
+            name="test-proxy",
+            url_map=default_region_url_map.id,
+            ssl_certificates=[default.id])
         ```
 
         ## Import

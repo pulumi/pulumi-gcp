@@ -51,8 +51,9 @@ namespace Pulumi.Gcp.CloudTasks
     /// 
     ///     var policy = new Gcp.CloudTasks.QueueIamPolicy("policy", new()
     ///     {
-    ///         Project = google_cloud_tasks_queue.Default.Project,
-    ///         Location = google_cloud_tasks_queue.Default.Location,
+    ///         Project = @default.Project,
+    ///         Location = @default.Location,
+    ///         Name = @default.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -71,8 +72,9 @@ namespace Pulumi.Gcp.CloudTasks
     /// {
     ///     var binding = new Gcp.CloudTasks.QueueIamBinding("binding", new()
     ///     {
-    ///         Project = google_cloud_tasks_queue.Default.Project,
-    ///         Location = google_cloud_tasks_queue.Default.Location,
+    ///         Project = @default.Project,
+    ///         Location = @default.Location,
+    ///         Name = @default.Name,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -95,8 +97,9 @@ namespace Pulumi.Gcp.CloudTasks
     /// {
     ///     var member = new Gcp.CloudTasks.QueueIamMember("member", new()
     ///     {
-    ///         Project = google_cloud_tasks_queue.Default.Project,
-    ///         Location = google_cloud_tasks_queue.Default.Location,
+    ///         Project = @default.Project,
+    ///         Location = @default.Location,
+    ///         Name = @default.Name,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

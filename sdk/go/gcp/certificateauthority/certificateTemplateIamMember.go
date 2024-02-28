@@ -57,7 +57,7 @@ import (
 //				return err
 //			}
 //			_, err = certificateauthority.NewCertificateTemplateIamPolicy(ctx, "policy", &certificateauthority.CertificateTemplateIamPolicyArgs{
-//				CertificateTemplate: pulumi.Any(google_privateca_certificate_template.Default.Id),
+//				CertificateTemplate: pulumi.Any(_default.Id),
 //				PolicyData:          *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -103,7 +103,7 @@ import (
 //				return err
 //			}
 //			_, err = certificateauthority.NewCertificateTemplateIamPolicy(ctx, "policy", &certificateauthority.CertificateTemplateIamPolicyArgs{
-//				CertificateTemplate: pulumi.Any(google_privateca_certificate_template.Default.Id),
+//				CertificateTemplate: pulumi.Any(_default.Id),
 //				PolicyData:          *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -129,7 +129,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := certificateauthority.NewCertificateTemplateIamBinding(ctx, "binding", &certificateauthority.CertificateTemplateIamBindingArgs{
-//				CertificateTemplate: pulumi.Any(google_privateca_certificate_template.Default.Id),
+//				CertificateTemplate: pulumi.Any(_default.Id),
 //				Role:                pulumi.String("roles/privateca.templateUser"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -159,7 +159,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := certificateauthority.NewCertificateTemplateIamBinding(ctx, "binding", &certificateauthority.CertificateTemplateIamBindingArgs{
-//				CertificateTemplate: pulumi.Any(google_privateca_certificate_template.Default.Id),
+//				CertificateTemplate: pulumi.Any(_default.Id),
 //				Role:                pulumi.String("roles/privateca.templateUser"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -193,7 +193,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := certificateauthority.NewCertificateTemplateIamMember(ctx, "member", &certificateauthority.CertificateTemplateIamMemberArgs{
-//				CertificateTemplate: pulumi.Any(google_privateca_certificate_template.Default.Id),
+//				CertificateTemplate: pulumi.Any(_default.Id),
 //				Role:                pulumi.String("roles/privateca.templateUser"),
 //				Member:              pulumi.String("user:jane@example.com"),
 //			})
@@ -221,7 +221,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := certificateauthority.NewCertificateTemplateIamMember(ctx, "member", &certificateauthority.CertificateTemplateIamMemberArgs{
-//				CertificateTemplate: pulumi.Any(google_privateca_certificate_template.Default.Id),
+//				CertificateTemplate: pulumi.Any(_default.Id),
 //				Role:                pulumi.String("roles/privateca.templateUser"),
 //				Member:              pulumi.String("user:jane@example.com"),
 //				Condition: &certificateauthority.CertificateTemplateIamMemberConditionArgs{

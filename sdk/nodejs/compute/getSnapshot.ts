@@ -19,9 +19,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * //by name 
  * const snapshot = gcp.compute.getSnapshot({
  *     name: "my-snapshot",
  * });
+ * // using a filter
  * const latest-snapshot = gcp.compute.getSnapshot({
  *     filter: "name != my-snapshot",
  *     mostRecent: true,
@@ -110,9 +112,11 @@ export interface GetSnapshotResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * //by name 
  * const snapshot = gcp.compute.getSnapshot({
  *     name: "my-snapshot",
  * });
+ * // using a filter
  * const latest-snapshot = gcp.compute.getSnapshot({
  *     filter: "name != my-snapshot",
  *     mostRecent: true,

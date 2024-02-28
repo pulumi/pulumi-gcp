@@ -31,10 +31,10 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// {
     ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
     ///     {
-    ///         Description = "example docker repository",
-    ///         Format = "DOCKER",
     ///         Location = "us-central1",
     ///         RepositoryId = "my-repository",
+    ///         Description = "example docker repository",
+    ///         Format = "DOCKER",
     ///     });
     /// 
     /// });
@@ -51,14 +51,14 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// {
     ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
     ///     {
+    ///         Location = "us-central1",
+    ///         RepositoryId = "my-repository",
     ///         Description = "example docker repository",
+    ///         Format = "DOCKER",
     ///         DockerConfig = new Gcp.ArtifactRegistry.Inputs.RepositoryDockerConfigArgs
     ///         {
     ///             ImmutableTags = true,
     ///         },
-    ///         Format = "DOCKER",
-    ///         Location = "us-central1",
-    ///         RepositoryId = "my-repository",
     ///     });
     /// 
     /// });
@@ -73,15 +73,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMMember("cryptoKey", new()
-    ///     {
-    ///         CryptoKeyId = "kms-key",
-    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
-    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-artifactregistry.iam.gserviceaccount.com",
-    ///     });
-    /// 
     ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
     ///     {
     ///         Location = "us-central1",
@@ -89,12 +80,15 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///         Description = "example docker repository with cmek",
     ///         Format = "DOCKER",
     ///         KmsKeyName = "kms-key",
-    ///     }, new CustomResourceOptions
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMMember("crypto_key", new()
     ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             cryptoKey,
-    ///         },
+    ///         CryptoKeyId = "kms-key",
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-artifactregistry.iam.gserviceaccount.com",
     ///     });
     /// 
     /// });
@@ -150,9 +144,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[] {},
     ///     });
     /// 
     /// });
@@ -169,9 +160,10 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// {
     ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
     ///     {
+    ///         Location = "us-central1",
+    ///         RepositoryId = "my-repository",
     ///         Description = "example remote docker repository",
     ///         Format = "DOCKER",
-    ///         Location = "us-central1",
     ///         Mode = "REMOTE_REPOSITORY",
     ///         RemoteRepositoryConfig = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigArgs
     ///         {
@@ -181,7 +173,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///                 PublicRepository = "DOCKER_HUB",
     ///             },
     ///         },
-    ///         RepositoryId = "my-repository",
     ///     });
     /// 
     /// });
@@ -198,12 +189,14 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// {
     ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
     ///     {
+    ///         Location = "us-central1",
+    ///         RepositoryId = "debian-buster",
     ///         Description = "example remote apt repository",
     ///         Format = "APT",
-    ///         Location = "us-central1",
     ///         Mode = "REMOTE_REPOSITORY",
     ///         RemoteRepositoryConfig = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigArgs
     ///         {
+    ///             Description = "Debian buster remote repository",
     ///             AptRepository = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigAptRepositoryArgs
     ///             {
     ///                 PublicRepository = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs
@@ -212,9 +205,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///                     RepositoryPath = "debian/dists/buster",
     ///                 },
     ///             },
-    ///             Description = "Debian buster remote repository",
     ///         },
-    ///         RepositoryId = "debian-buster",
     ///     });
     /// 
     /// });
@@ -231,9 +222,10 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// {
     ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
     ///     {
+    ///         Location = "us-central1",
+    ///         RepositoryId = "centos-8",
     ///         Description = "example remote yum repository",
     ///         Format = "YUM",
-    ///         Location = "us-central1",
     ///         Mode = "REMOTE_REPOSITORY",
     ///         RemoteRepositoryConfig = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigArgs
     ///         {
@@ -247,7 +239,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///                 },
     ///             },
     ///         },
-    ///         RepositoryId = "centos-8",
     ///     });
     /// 
     /// });
@@ -264,62 +255,62 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// {
     ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
     ///     {
+    ///         Location = "us-central1",
+    ///         RepositoryId = "my-repository",
+    ///         Description = "example docker repository with cleanup policies",
+    ///         Format = "DOCKER",
+    ///         CleanupPolicyDryRun = false,
     ///         CleanupPolicies = new[]
     ///         {
     ///             new Gcp.ArtifactRegistry.Inputs.RepositoryCleanupPolicyArgs
     ///             {
+    ///                 Id = "delete-prerelease",
     ///                 Action = "DELETE",
     ///                 Condition = new Gcp.ArtifactRegistry.Inputs.RepositoryCleanupPolicyConditionArgs
     ///                 {
-    ///                     OlderThan = "2592000s",
+    ///                     TagState = "TAGGED",
     ///                     TagPrefixes = new[]
     ///                     {
     ///                         "alpha",
     ///                         "v0",
     ///                     },
-    ///                     TagState = "TAGGED",
+    ///                     OlderThan = "2592000s",
     ///                 },
-    ///                 Id = "delete-prerelease",
     ///             },
     ///             new Gcp.ArtifactRegistry.Inputs.RepositoryCleanupPolicyArgs
     ///             {
+    ///                 Id = "keep-tagged-release",
     ///                 Action = "KEEP",
     ///                 Condition = new Gcp.ArtifactRegistry.Inputs.RepositoryCleanupPolicyConditionArgs
     ///                 {
+    ///                     TagState = "TAGGED",
+    ///                     TagPrefixes = new[]
+    ///                     {
+    ///                         "release",
+    ///                     },
     ///                     PackageNamePrefixes = new[]
     ///                     {
     ///                         "webapp",
     ///                         "mobile",
     ///                     },
-    ///                     TagPrefixes = new[]
-    ///                     {
-    ///                         "release",
-    ///                     },
-    ///                     TagState = "TAGGED",
     ///                 },
-    ///                 Id = "keep-tagged-release",
     ///             },
     ///             new Gcp.ArtifactRegistry.Inputs.RepositoryCleanupPolicyArgs
     ///             {
-    ///                 Action = "KEEP",
     ///                 Id = "keep-minimum-versions",
+    ///                 Action = "KEEP",
     ///                 MostRecentVersions = new Gcp.ArtifactRegistry.Inputs.RepositoryCleanupPolicyMostRecentVersionsArgs
     ///                 {
-    ///                     KeepCount = 5,
     ///                     PackageNamePrefixes = new[]
     ///                     {
     ///                         "webapp",
     ///                         "mobile",
     ///                         "sandbox",
     ///                     },
+    ///                     KeepCount = 5,
     ///                 },
     ///             },
     ///         },
-    ///         CleanupPolicyDryRun = false,
-    ///         Description = "example docker repository with cleanup policies",
-    ///         Format = "DOCKER",
-    ///         Location = "us-central1",
-    ///         RepositoryId = "my-repository",
     ///     });
     /// 
     /// });
@@ -345,7 +336,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///         },
     ///     });
     /// 
-    ///     var example_custom_remote_secretVersion = new Gcp.SecretManager.SecretVersion("example-custom-remote-secretVersion", new()
+    ///     var example_custom_remote_secretVersion = new Gcp.SecretManager.SecretVersion("example-custom-remote-secret_version", new()
     ///     {
     ///         Secret = example_custom_remote_secret.Id,
     ///         SecretData = "remote-password",

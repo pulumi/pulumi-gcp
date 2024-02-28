@@ -43,6 +43,7 @@ import (
 //				return err
 //			}
 //			_, err = logging.NewFolderExclusion(ctx, "my-exclusion", &logging.FolderExclusionArgs{
+//				Name:        pulumi.String("my-instance-debug-exclusion"),
 //				Folder:      my_folder.Name,
 //				Description: pulumi.String("Exclude GCE instance debug logs"),
 //				Filter:      pulumi.String("resource.type = gce_instance AND severity <= DEBUG"),

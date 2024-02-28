@@ -38,25 +38,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			vertexNetwork, err := compute.NewNetwork(ctx, "vertexNetwork", nil)
-//			if err != nil {
-//				return err
-//			}
-//			vertexRange, err := compute.NewGlobalAddress(ctx, "vertexRange", &compute.GlobalAddressArgs{
-//				Purpose:      pulumi.String("VPC_PEERING"),
-//				AddressType:  pulumi.String("INTERNAL"),
-//				PrefixLength: pulumi.Int(24),
-//				Network:      vertexNetwork.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			vertexVpcConnection, err := servicenetworking.NewConnection(ctx, "vertexVpcConnection", &servicenetworking.ConnectionArgs{
-//				Network: vertexNetwork.ID(),
-//				Service: pulumi.String("servicenetworking.googleapis.com"),
-//				ReservedPeeringRanges: pulumi.StringArray{
-//					vertexRange.Name,
-//				},
+//			vertexNetwork, err := compute.NewNetwork(ctx, "vertex_network", &compute.NetworkArgs{
+//				Name: pulumi.String("network-name"),
 //			})
 //			if err != nil {
 //				return err
@@ -65,7 +48,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vertex.NewAiIndexEndpoint(ctx, "indexEndpoint", &vertex.AiIndexEndpointArgs{
+//			_, err = vertex.NewAiIndexEndpoint(ctx, "index_endpoint", &vertex.AiIndexEndpointArgs{
 //				DisplayName: pulumi.String("sample-endpoint"),
 //				Description: pulumi.String("A sample vertex endpoint"),
 //				Region:      pulumi.String("us-central1"),
@@ -75,9 +58,27 @@ import (
 //				Network: vertexNetwork.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("projects/%v/global/networks/%v", project.Number, name), nil
 //				}).(pulumi.StringOutput),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				vertexVpcConnection,
-//			}))
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vertexRange, err := compute.NewGlobalAddress(ctx, "vertex_range", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("address-name"),
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				AddressType:  pulumi.String("INTERNAL"),
+//				PrefixLength: pulumi.Int(24),
+//				Network:      vertexNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = servicenetworking.NewConnection(ctx, "vertex_vpc_connection", &servicenetworking.ConnectionArgs{
+//				Network: vertexNetwork.ID(),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					vertexRange.Name,
+//				},
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -105,7 +106,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vertex.NewAiIndexEndpoint(ctx, "indexEndpoint", &vertex.AiIndexEndpointArgs{
+//			_, err = vertex.NewAiIndexEndpoint(ctx, "index_endpoint", &vertex.AiIndexEndpointArgs{
 //				DisplayName: pulumi.String("sample-endpoint"),
 //				Description: pulumi.String("A sample vertex endpoint"),
 //				Region:      pulumi.String("us-central1"),
@@ -141,14 +142,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vertex.NewAiIndexEndpoint(ctx, "indexEndpoint", &vertex.AiIndexEndpointArgs{
-//				Description: pulumi.String("A sample vertex endpoint with an public endpoint"),
+//			_, err := vertex.NewAiIndexEndpoint(ctx, "index_endpoint", &vertex.AiIndexEndpointArgs{
 //				DisplayName: pulumi.String("sample-endpoint"),
+//				Description: pulumi.String("A sample vertex endpoint with an public endpoint"),
+//				Region:      pulumi.String("us-central1"),
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
 //				PublicEndpointEnabled: pulumi.Bool(true),
-//				Region:                pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err

@@ -879,8 +879,11 @@ class Subnetwork(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        custom_test = gcp.compute.Network("custom-test", auto_create_subnetworks=False)
+        custom_test = gcp.compute.Network("custom-test",
+            name="test-network",
+            auto_create_subnetworks=False)
         network_with_private_secondary_ip_ranges = gcp.compute.Subnetwork("network-with-private-secondary-ip-ranges",
+            name="test-subnetwork",
             ip_cidr_range="10.2.0.0/16",
             region="us-central1",
             network=custom_test.id,
@@ -895,8 +898,11 @@ class Subnetwork(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        custom_test = gcp.compute.Network("custom-test", auto_create_subnetworks=False)
+        custom_test = gcp.compute.Network("custom-test",
+            name="log-test-network",
+            auto_create_subnetworks=False)
         subnet_with_logging = gcp.compute.Subnetwork("subnet-with-logging",
+            name="log-test-subnetwork",
             ip_cidr_range="10.2.0.0/16",
             region="us-central1",
             network=custom_test.id,
@@ -912,15 +918,16 @@ class Subnetwork(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        custom_test = gcp.compute.Network("custom-test", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        custom_test = gcp.compute.Network("custom-test",
+            name="l7lb-test-network",
+            auto_create_subnetworks=False)
         network_for_l7lb = gcp.compute.Subnetwork("network-for-l7lb",
+            name="l7lb-test-subnetwork",
             ip_cidr_range="10.0.0.0/22",
             region="us-central1",
             purpose="REGIONAL_MANAGED_PROXY",
             role="ACTIVE",
-            network=custom_test.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            network=custom_test.id)
         ```
         ### Subnetwork Ipv6
 
@@ -928,8 +935,11 @@ class Subnetwork(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        custom_test = gcp.compute.Network("custom-test", auto_create_subnetworks=False)
+        custom_test = gcp.compute.Network("custom-test",
+            name="ipv6-test-network",
+            auto_create_subnetworks=False)
         subnetwork_ipv6 = gcp.compute.Subnetwork("subnetwork-ipv6",
+            name="ipv6-test-subnetwork",
             ip_cidr_range="10.0.0.0/22",
             region="us-west2",
             stack_type="IPV4_IPV6",
@@ -943,9 +953,11 @@ class Subnetwork(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         custom_test = gcp.compute.Network("custom-test",
+            name="internal-ipv6-test-network",
             auto_create_subnetworks=False,
             enable_ula_internal_ipv6=True)
         subnetwork_internal_ipv6 = gcp.compute.Subnetwork("subnetwork-internal-ipv6",
+            name="internal-ipv6-test-subnetwork",
             ip_cidr_range="10.0.0.0/22",
             region="us-west2",
             stack_type="IPV4_IPV6",
@@ -958,14 +970,15 @@ class Subnetwork(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        custom_test = gcp.compute.Network("custom-test", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        custom_test = gcp.compute.Network("custom-test",
+            name="subnet-purpose-test-network",
+            auto_create_subnetworks=False)
         subnetwork_purpose_private_nat = gcp.compute.Subnetwork("subnetwork-purpose-private-nat",
+            name="subnet-purpose-test-subnetwork",
             region="us-west2",
             ip_cidr_range="192.168.1.0/24",
             purpose="PRIVATE_NAT",
-            network=custom_test.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            network=custom_test.id)
         ```
         ### Subnetwork Cidr Overlap
 
@@ -973,14 +986,15 @@ class Subnetwork(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        net_cidr_overlap = gcp.compute.Network("net-cidr-overlap", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        net_cidr_overlap = gcp.compute.Network("net-cidr-overlap",
+            name="net-cidr-overlap",
+            auto_create_subnetworks=False)
         subnetwork_cidr_overlap = gcp.compute.Subnetwork("subnetwork-cidr-overlap",
+            name="subnet-cidr-overlap",
             region="us-west2",
             ip_cidr_range="192.168.1.0/24",
             allow_subnet_cidr_routes_overlap=True,
-            network=net_cidr_overlap.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            network=net_cidr_overlap.id)
         ```
 
         ## Import
@@ -1120,8 +1134,11 @@ class Subnetwork(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        custom_test = gcp.compute.Network("custom-test", auto_create_subnetworks=False)
+        custom_test = gcp.compute.Network("custom-test",
+            name="test-network",
+            auto_create_subnetworks=False)
         network_with_private_secondary_ip_ranges = gcp.compute.Subnetwork("network-with-private-secondary-ip-ranges",
+            name="test-subnetwork",
             ip_cidr_range="10.2.0.0/16",
             region="us-central1",
             network=custom_test.id,
@@ -1136,8 +1153,11 @@ class Subnetwork(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        custom_test = gcp.compute.Network("custom-test", auto_create_subnetworks=False)
+        custom_test = gcp.compute.Network("custom-test",
+            name="log-test-network",
+            auto_create_subnetworks=False)
         subnet_with_logging = gcp.compute.Subnetwork("subnet-with-logging",
+            name="log-test-subnetwork",
             ip_cidr_range="10.2.0.0/16",
             region="us-central1",
             network=custom_test.id,
@@ -1153,15 +1173,16 @@ class Subnetwork(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        custom_test = gcp.compute.Network("custom-test", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        custom_test = gcp.compute.Network("custom-test",
+            name="l7lb-test-network",
+            auto_create_subnetworks=False)
         network_for_l7lb = gcp.compute.Subnetwork("network-for-l7lb",
+            name="l7lb-test-subnetwork",
             ip_cidr_range="10.0.0.0/22",
             region="us-central1",
             purpose="REGIONAL_MANAGED_PROXY",
             role="ACTIVE",
-            network=custom_test.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            network=custom_test.id)
         ```
         ### Subnetwork Ipv6
 
@@ -1169,8 +1190,11 @@ class Subnetwork(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        custom_test = gcp.compute.Network("custom-test", auto_create_subnetworks=False)
+        custom_test = gcp.compute.Network("custom-test",
+            name="ipv6-test-network",
+            auto_create_subnetworks=False)
         subnetwork_ipv6 = gcp.compute.Subnetwork("subnetwork-ipv6",
+            name="ipv6-test-subnetwork",
             ip_cidr_range="10.0.0.0/22",
             region="us-west2",
             stack_type="IPV4_IPV6",
@@ -1184,9 +1208,11 @@ class Subnetwork(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         custom_test = gcp.compute.Network("custom-test",
+            name="internal-ipv6-test-network",
             auto_create_subnetworks=False,
             enable_ula_internal_ipv6=True)
         subnetwork_internal_ipv6 = gcp.compute.Subnetwork("subnetwork-internal-ipv6",
+            name="internal-ipv6-test-subnetwork",
             ip_cidr_range="10.0.0.0/22",
             region="us-west2",
             stack_type="IPV4_IPV6",
@@ -1199,14 +1225,15 @@ class Subnetwork(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        custom_test = gcp.compute.Network("custom-test", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        custom_test = gcp.compute.Network("custom-test",
+            name="subnet-purpose-test-network",
+            auto_create_subnetworks=False)
         subnetwork_purpose_private_nat = gcp.compute.Subnetwork("subnetwork-purpose-private-nat",
+            name="subnet-purpose-test-subnetwork",
             region="us-west2",
             ip_cidr_range="192.168.1.0/24",
             purpose="PRIVATE_NAT",
-            network=custom_test.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            network=custom_test.id)
         ```
         ### Subnetwork Cidr Overlap
 
@@ -1214,14 +1241,15 @@ class Subnetwork(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        net_cidr_overlap = gcp.compute.Network("net-cidr-overlap", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        net_cidr_overlap = gcp.compute.Network("net-cidr-overlap",
+            name="net-cidr-overlap",
+            auto_create_subnetworks=False)
         subnetwork_cidr_overlap = gcp.compute.Subnetwork("subnetwork-cidr-overlap",
+            name="subnet-cidr-overlap",
             region="us-west2",
             ip_cidr_range="192.168.1.0/24",
             allow_subnet_cidr_routes_overlap=True,
-            network=net_cidr_overlap.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            network=net_cidr_overlap.id)
         ```
 
         ## Import

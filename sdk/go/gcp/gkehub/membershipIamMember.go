@@ -55,9 +55,9 @@ import (
 //				return err
 //			}
 //			_, err = gkehub.NewMembershipIamPolicy(ctx, "policy", &gkehub.MembershipIamPolicyArgs{
-//				Project:      pulumi.Any(google_gke_hub_membership.Membership.Project),
-//				Location:     pulumi.Any(google_gke_hub_membership.Membership.Location),
-//				MembershipId: pulumi.Any(google_gke_hub_membership.Membership.Membership_id),
+//				Project:      pulumi.Any(membership.Project),
+//				Location:     pulumi.Any(membership.Location),
+//				MembershipId: pulumi.Any(membership.MembershipId),
 //				PolicyData:   *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -84,9 +84,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.NewMembershipIamBinding(ctx, "binding", &gkehub.MembershipIamBindingArgs{
-//				Project:      pulumi.Any(google_gke_hub_membership.Membership.Project),
-//				Location:     pulumi.Any(google_gke_hub_membership.Membership.Location),
-//				MembershipId: pulumi.Any(google_gke_hub_membership.Membership.Membership_id),
+//				Project:      pulumi.Any(membership.Project),
+//				Location:     pulumi.Any(membership.Location),
+//				MembershipId: pulumi.Any(membership.MembershipId),
 //				Role:         pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -116,9 +116,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.NewMembershipIamMember(ctx, "member", &gkehub.MembershipIamMemberArgs{
-//				Project:      pulumi.Any(google_gke_hub_membership.Membership.Project),
-//				Location:     pulumi.Any(google_gke_hub_membership.Membership.Location),
-//				MembershipId: pulumi.Any(google_gke_hub_membership.Membership.Membership_id),
+//				Project:      pulumi.Any(membership.Project),
+//				Location:     pulumi.Any(membership.Location),
+//				MembershipId: pulumi.Any(membership.MembershipId),
 //				Role:         pulumi.String("roles/viewer"),
 //				Member:       pulumi.String("user:jane@example.com"),
 //			})

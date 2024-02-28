@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := containeranalysis.LookupNoteIamPolicy(ctx, &containeranalysis.LookupNoteIamPolicyArgs{
-//				Project: pulumi.StringRef(google_container_analysis_note.Note.Project),
-//				Note:    google_container_analysis_note.Note.Name,
+//				Project: pulumi.StringRef(note.Project),
+//				Note:    note.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

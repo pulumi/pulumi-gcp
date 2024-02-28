@@ -20,44 +20,117 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
  *
  * const _default = new gcp.compute.RegionSslCertificate("default", {
  *     region: "us-central1",
  *     namePrefix: "my-certificate-",
  *     description: "a description",
- *     privateKey: fs.readFileSync("path/to/private.key", "utf8"),
- *     certificate: fs.readFileSync("path/to/certificate.crt", "utf8"),
+ *     privateKey: std.file({
+ *         input: "path/to/private.key",
+ *     }).then(invoke => invoke.result),
+ *     certificate: std.file({
+ *         input: "path/to/certificate.crt",
+ *     }).then(invoke => invoke.result),
  * });
  * ```
  * ### Region Ssl Certificate Random Provider
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as crypto from "crypto";
- * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
  * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
  *
- * function computeFilebase64sha256(path: string): string {
- * 	const fileData = Buffer.from(fs.readFileSync(path, 'binary'))
- * 	return crypto.createHash('sha256').update(fileData).digest('hex')
- * }
- *
- * // You may also want to control name generation explicitly:
- * const _default = new gcp.compute.RegionSslCertificate("default", {
- *     region: "us-central1",
- *     privateKey: fs.readFileSync("path/to/private.key", "utf8"),
- *     certificate: fs.readFileSync("path/to/certificate.crt", "utf8"),
- * });
  * const certificate = new random.RandomId("certificate", {
  *     byteLength: 4,
  *     prefix: "my-certificate-",
  *     keepers: {
- *         private_key: computeFilebase64sha256("path/to/private.key"),
- *         certificate: computeFilebase64sha256("path/to/certificate.crt"),
+ *         private_key: std.filebase64sha256({
+ *             input: "path/to/private.key",
+ *         }).then(invoke => invoke.result),
+ *         certificate: std.filebase64sha256({
+ *             input: "path/to/certificate.crt",
+ *         }).then(invoke => invoke.result),
  *     },
+ * });
+ * // You may also want to control name generation explicitly:
+ * const _default = new gcp.compute.RegionSslCertificate("default", {
+ *     region: "us-central1",
+ *     name: certificate.hex,
+ *     privateKey: std.file({
+ *         input: "path/to/private.key",
+ *     }).then(invoke => invoke.result),
+ *     certificate: std.file({
+ *         input: "path/to/certificate.crt",
+ *     }).then(invoke => invoke.result),
+ * });
+ * ```
+ * ### Region Ssl Certificate Target Https Proxies
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * // Using with Region Target HTTPS Proxies
+ * //
+ * // SSL certificates cannot be updated after creation. In order to apply
+ * // the specified configuration, the provider will destroy the existing
+ * // resource and create a replacement. To effectively use an SSL
+ * // certificate resource with a Target HTTPS Proxy resource, it's
+ * // recommended to specify create_before_destroy in a lifecycle block.
+ * // Either omit the Instance Template name attribute, specify a partial
+ * // name with name_prefix, or use random_id resource. Example:
+ * const _default = new gcp.compute.RegionSslCertificate("default", {
+ *     region: "us-central1",
+ *     namePrefix: "my-certificate-",
+ *     privateKey: std.file({
+ *         input: "path/to/private.key",
+ *     }).then(invoke => invoke.result),
+ *     certificate: std.file({
+ *         input: "path/to/certificate.crt",
+ *     }).then(invoke => invoke.result),
+ * });
+ * const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("default", {
+ *     region: "us-central1",
+ *     name: "http-health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const defaultRegionBackendService = new gcp.compute.RegionBackendService("default", {
+ *     region: "us-central1",
+ *     name: "backend-service",
+ *     protocol: "HTTP",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     timeoutSec: 10,
+ *     healthChecks: defaultRegionHealthCheck.id,
+ * });
+ * const defaultRegionUrlMap = new gcp.compute.RegionUrlMap("default", {
+ *     region: "us-central1",
+ *     name: "url-map",
+ *     description: "a description",
+ *     defaultService: defaultRegionBackendService.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: defaultRegionBackendService.id,
+ *         pathRules: [{
+ *             paths: ["/*"],
+ *             service: defaultRegionBackendService.id,
+ *         }],
+ *     }],
+ * });
+ * const defaultRegionTargetHttpsProxy = new gcp.compute.RegionTargetHttpsProxy("default", {
+ *     region: "us-central1",
+ *     name: "test-proxy",
+ *     urlMap: defaultRegionUrlMap.id,
+ *     sslCertificates: [_default.id],
  * });
  * ```
  *

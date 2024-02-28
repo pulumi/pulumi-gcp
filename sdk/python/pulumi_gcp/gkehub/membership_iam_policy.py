@@ -261,9 +261,9 @@ class MembershipIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.gkehub.MembershipIamPolicy("policy",
-            project=google_gke_hub_membership["membership"]["project"],
-            location=google_gke_hub_membership["membership"]["location"],
-            membership_id=google_gke_hub_membership["membership"]["membership_id"],
+            project=membership["project"],
+            location=membership["location"],
+            membership_id=membership["membershipId"],
             policy_data=admin.policy_data)
         ```
 
@@ -274,9 +274,9 @@ class MembershipIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.gkehub.MembershipIamBinding("binding",
-            project=google_gke_hub_membership["membership"]["project"],
-            location=google_gke_hub_membership["membership"]["location"],
-            membership_id=google_gke_hub_membership["membership"]["membership_id"],
+            project=membership["project"],
+            location=membership["location"],
+            membership_id=membership["membershipId"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -288,9 +288,9 @@ class MembershipIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.gkehub.MembershipIamMember("member",
-            project=google_gke_hub_membership["membership"]["project"],
-            location=google_gke_hub_membership["membership"]["location"],
-            membership_id=google_gke_hub_membership["membership"]["membership_id"],
+            project=membership["project"],
+            location=membership["location"],
+            membership_id=membership["membershipId"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -387,9 +387,9 @@ class MembershipIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.gkehub.MembershipIamPolicy("policy",
-            project=google_gke_hub_membership["membership"]["project"],
-            location=google_gke_hub_membership["membership"]["location"],
-            membership_id=google_gke_hub_membership["membership"]["membership_id"],
+            project=membership["project"],
+            location=membership["location"],
+            membership_id=membership["membershipId"],
             policy_data=admin.policy_data)
         ```
 
@@ -400,9 +400,9 @@ class MembershipIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.gkehub.MembershipIamBinding("binding",
-            project=google_gke_hub_membership["membership"]["project"],
-            location=google_gke_hub_membership["membership"]["location"],
-            membership_id=google_gke_hub_membership["membership"]["membership_id"],
+            project=membership["project"],
+            location=membership["location"],
+            membership_id=membership["membershipId"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -414,9 +414,9 @@ class MembershipIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.gkehub.MembershipIamMember("member",
-            project=google_gke_hub_membership["membership"]["project"],
-            location=google_gke_hub_membership["membership"]["location"],
-            membership_id=google_gke_hub_membership["membership"]["membership_id"],
+            project=membership["project"],
+            location=membership["location"],
+            membership_id=membership["membershipId"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

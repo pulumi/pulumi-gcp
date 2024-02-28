@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Iap
         ///     var projectClient = Gcp.Iap.GetClient.Invoke(new()
         ///     {
         ///         Brand = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/brands/[BRAND_NUMBER]",
-        ///         ClientId = FOO.Apps.Googleusercontent.Com,
+        ///         ClientId = apps.Googleusercontent.Com,
         ///     });
         /// 
         /// });
@@ -68,7 +68,7 @@ namespace Pulumi.Gcp.Iap
         ///     var projectClient = Gcp.Iap.GetClient.Invoke(new()
         ///     {
         ///         Brand = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/brands/[BRAND_NUMBER]",
-        ///         ClientId = FOO.Apps.Googleusercontent.Com,
+        ///         ClientId = apps.Googleusercontent.Com,
         ///     });
         /// 
         /// });

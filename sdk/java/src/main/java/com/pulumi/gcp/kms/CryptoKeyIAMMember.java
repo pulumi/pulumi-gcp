@@ -53,10 +53,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var keyring = new KeyRing(&#34;keyring&#34;, KeyRingArgs.builder()        
+ *             .name(&#34;keyring-example&#34;)
  *             .location(&#34;global&#34;)
  *             .build());
  * 
  *         var key = new CryptoKey(&#34;key&#34;, CryptoKeyArgs.builder()        
+ *             .name(&#34;crypto-key-example&#34;)
  *             .keyRing(keyring.id())
  *             .rotationPeriod(&#34;7776000s&#34;)
  *             .build());
@@ -101,13 +103,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role(&#34;roles/cloudkms.cryptoKeyEncrypter&#34;)
+ *                 .members(&#34;user:jane@example.com&#34;)
  *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+ *                     .title(&#34;expires_after_2019_12_31&#34;)
  *                     .description(&#34;Expiring at midnight of 2019-12-31&#34;)
  *                     .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
- *                     .title(&#34;expires_after_2019_12_31&#34;)
  *                     .build())
- *                 .members(&#34;user:jane@example.com&#34;)
- *                 .role(&#34;roles/cloudkms.cryptoKeyEncrypter&#34;)
  *                 .build())
  *             .build());
  * 
@@ -136,7 +138,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cryptoKey = new CryptoKeyIAMBinding(&#34;cryptoKey&#34;, CryptoKeyIAMBindingArgs.builder()        
- *             .cryptoKeyId(google_kms_crypto_key.key().id())
+ *             .cryptoKeyId(key.id())
  *             .role(&#34;roles/cloudkms.cryptoKeyEncrypter&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -169,7 +171,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cryptoKey = new CryptoKeyIAMBinding(&#34;cryptoKey&#34;, CryptoKeyIAMBindingArgs.builder()        
- *             .cryptoKeyId(google_kms_crypto_key.key().id())
+ *             .cryptoKeyId(key.id())
  *             .role(&#34;roles/cloudkms.cryptoKeyEncrypter&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .condition(CryptoKeyIAMBindingConditionArgs.builder()
@@ -204,7 +206,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cryptoKey = new CryptoKeyIAMMember(&#34;cryptoKey&#34;, CryptoKeyIAMMemberArgs.builder()        
- *             .cryptoKeyId(google_kms_crypto_key.key().id())
+ *             .cryptoKeyId(key.id())
  *             .role(&#34;roles/cloudkms.cryptoKeyEncrypter&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -237,7 +239,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cryptoKey = new CryptoKeyIAMMember(&#34;cryptoKey&#34;, CryptoKeyIAMMemberArgs.builder()        
- *             .cryptoKeyId(google_kms_crypto_key.key().id())
+ *             .cryptoKeyId(key.id())
  *             .role(&#34;roles/cloudkms.cryptoKeyEncrypter&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .condition(CryptoKeyIAMMemberConditionArgs.builder()

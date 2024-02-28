@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  *     project: "debian-cloud",
  * });
  * const igm_basic = new gcp.compute.InstanceTemplate("igm-basic", {
+ *     name: "my-template",
  *     machineType: "e2-medium",
  *     canIpForward: false,
  *     tags: [
@@ -53,6 +54,7 @@ import * as utilities from "../utilities";
  * });
  * const rigm = new gcp.compute.RegionInstanceGroupManager("rigm", {
  *     description: "Demo test instance group manager",
+ *     name: "my-rigm",
  *     versions: [{
  *         name: "prod",
  *         instanceTemplate: igm_basic.selfLink,
@@ -67,14 +69,16 @@ import * as utilities from "../utilities";
  *     targetSize: 2,
  * });
  * const _default = new gcp.compute.Disk("default", {
+ *     name: "my-disk-name",
  *     type: "pd-ssd",
  *     zone: "us-central1-a",
  *     image: "debian-11-bullseye-v20220719",
  *     physicalBlockSizeBytes: 4096,
  * });
- * const withDisk = new gcp.compute.RegionPerInstanceConfig("withDisk", {
- *     region: google_compute_region_instance_group_manager.igm.region,
+ * const withDisk = new gcp.compute.RegionPerInstanceConfig("with_disk", {
+ *     region: igm.region,
  *     regionInstanceGroupManager: rigm.name,
+ *     name: "instance-1",
  *     preservedState: {
  *         metadata: {
  *             foo: "bar",

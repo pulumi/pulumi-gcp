@@ -70,11 +70,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Disk(&#34;default&#34;, DiskArgs.builder()        
+ *             .name(&#34;test-disk&#34;)
+ *             .type(&#34;pd-ssd&#34;)
+ *             .zone(&#34;us-central1-a&#34;)
  *             .image(&#34;debian-11-bullseye-v20220719&#34;)
  *             .labels(Map.of(&#34;environment&#34;, &#34;dev&#34;))
  *             .physicalBlockSizeBytes(4096)
- *             .type(&#34;pd-ssd&#34;)
- *             .zone(&#34;us-central1-a&#34;)
  *             .build());
  * 
  *     }
@@ -104,12 +105,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var primary = new Disk(&#34;primary&#34;, DiskArgs.builder()        
+ *             .name(&#34;async-test-disk&#34;)
  *             .type(&#34;pd-ssd&#34;)
  *             .zone(&#34;us-central1-a&#34;)
  *             .physicalBlockSizeBytes(4096)
  *             .build());
  * 
  *         var secondary = new Disk(&#34;secondary&#34;, DiskArgs.builder()        
+ *             .name(&#34;async-secondary-test-disk&#34;)
  *             .type(&#34;pd-ssd&#34;)
  *             .zone(&#34;us-east1-c&#34;)
  *             .asyncPrimaryDisk(DiskAsyncPrimaryDiskArgs.builder()
@@ -145,6 +148,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Disk(&#34;default&#34;, DiskArgs.builder()        
+ *             .name(&#34;test-disk-features&#34;)
+ *             .type(&#34;pd-ssd&#34;)
+ *             .zone(&#34;us-central1-a&#34;)
+ *             .labels(Map.of(&#34;environment&#34;, &#34;dev&#34;))
  *             .guestOsFeatures(            
  *                 DiskGuestOsFeatureArgs.builder()
  *                     .type(&#34;SECURE_BOOT&#34;)
@@ -155,11 +162,8 @@ import javax.annotation.Nullable;
  *                 DiskGuestOsFeatureArgs.builder()
  *                     .type(&#34;WINDOWS&#34;)
  *                     .build())
- *             .labels(Map.of(&#34;environment&#34;, &#34;dev&#34;))
  *             .licenses(&#34;https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core&#34;)
  *             .physicalBlockSizeBytes(4096)
- *             .type(&#34;pd-ssd&#34;)
- *             .zone(&#34;us-central1-a&#34;)
  *             .build());
  * 
  *     }

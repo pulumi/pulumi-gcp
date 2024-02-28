@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			testDataStore, err := discoveryengine.NewDataStore(ctx, "testDataStore", &discoveryengine.DataStoreArgs{
+//			testDataStore, err := discoveryengine.NewDataStore(ctx, "test_data_store", &discoveryengine.DataStoreArgs{
 //				Location:         pulumi.String("global"),
 //				DataStoreId:      pulumi.String("data-store"),
 //				DisplayName:      pulumi.String("Structured datastore"),
@@ -48,7 +48,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			testDataStore2, err := discoveryengine.NewDataStore(ctx, "testDataStore2", &discoveryengine.DataStoreArgs{
+//			testDataStore2, err := discoveryengine.NewDataStore(ctx, "test_data_store_2", &discoveryengine.DataStoreArgs{
 //				Location:         testDataStore.Location,
 //				DataStoreId:      pulumi.String("data-store-2"),
 //				DisplayName:      pulumi.String("Structured datastore 2"),

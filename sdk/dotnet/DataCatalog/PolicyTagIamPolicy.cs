@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     ///     var policy = new Gcp.DataCatalog.PolicyTagIamPolicy("policy", new()
     ///     {
-    ///         PolicyTag = google_data_catalog_policy_tag.Basic_policy_tag.Name,
+    ///         PolicyTag = basicPolicyTag.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -70,7 +70,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// {
     ///     var binding = new Gcp.DataCatalog.PolicyTagIamBinding("binding", new()
     ///     {
-    ///         PolicyTag = google_data_catalog_policy_tag.Basic_policy_tag.Name,
+    ///         PolicyTag = basicPolicyTag.Name,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -93,7 +93,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// {
     ///     var member = new Gcp.DataCatalog.PolicyTagIamMember("member", new()
     ///     {
-    ///         PolicyTag = google_data_catalog_policy_tag.Basic_policy_tag.Name,
+    ///         PolicyTag = basicPolicyTag.Name,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

@@ -20,10 +20,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basicTaxonomy = new gcp.datacatalog.Taxonomy("basicTaxonomy", {
- *     activatedPolicyTypes: ["FINE_GRAINED_ACCESS_CONTROL"],
- *     description: "A collection of policy tags",
+ * const basicTaxonomy = new gcp.datacatalog.Taxonomy("basic_taxonomy", {
  *     displayName: "my_taxonomy",
+ *     description: "A collection of policy tags",
+ *     activatedPolicyTypes: ["FINE_GRAINED_ACCESS_CONTROL"],
  * });
  * ```
  *

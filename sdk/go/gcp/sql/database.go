@@ -32,6 +32,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
 //			instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("my-database-instance"),
 //				Region:          pulumi.String("us-central1"),
 //				DatabaseVersion: pulumi.String("MYSQL_8_0"),
 //				Settings: &sql.DatabaseInstanceSettingsArgs{
@@ -43,6 +44,7 @@ import (
 //				return err
 //			}
 //			_, err = sql.NewDatabase(ctx, "database", &sql.DatabaseArgs{
+//				Name:     pulumi.String("my-database"),
 //				Instance: instance.Name,
 //			})
 //			if err != nil {
@@ -69,6 +71,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
 //			instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("my-database-instance"),
 //				Region:          pulumi.String("us-central1"),
 //				DatabaseVersion: pulumi.String("POSTGRES_14"),
 //				Settings: &sql.DatabaseInstanceSettingsArgs{
@@ -79,7 +82,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sql.NewDatabase(ctx, "databaseDeletionPolicy", &sql.DatabaseArgs{
+//			_, err = sql.NewDatabase(ctx, "database_deletion_policy", &sql.DatabaseArgs{
+//				Name:           pulumi.String("my-database"),
 //				Instance:       instance.Name,
 //				DeletionPolicy: pulumi.String("ABANDON"),
 //			})

@@ -44,6 +44,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigtable.NewInstance(ctx, "production-instance", &bigtable.InstanceArgs{
+//				Name: pulumi.String("tf-instance"),
 //				Clusters: bigtable.InstanceClusterArray{
 //					&bigtable.InstanceClusterArgs{
 //						ClusterId:   pulumi.String("tf-instance-cluster"),
@@ -78,6 +79,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigtable.NewInstance(ctx, "production-instance", &bigtable.InstanceArgs{
+//				Name: pulumi.String("tf-instance"),
 //				Clusters: bigtable.InstanceClusterArray{
 //					&bigtable.InstanceClusterArgs{
 //						ClusterId:   pulumi.String("tf-instance-cluster1"),
@@ -86,14 +88,14 @@ import (
 //						Zone:        pulumi.String("us-central1-c"),
 //					},
 //					&bigtable.InstanceClusterArgs{
-//						AutoscalingConfig: &bigtable.InstanceClusterAutoscalingConfigArgs{
-//							CpuTarget: pulumi.Int(50),
-//							MaxNodes:  pulumi.Int(3),
-//							MinNodes:  pulumi.Int(1),
-//						},
 //						ClusterId:   pulumi.String("tf-instance-cluster2"),
 //						StorageType: pulumi.String("HDD"),
 //						Zone:        pulumi.String("us-central1-b"),
+//						AutoscalingConfig: &bigtable.InstanceClusterAutoscalingConfigArgs{
+//							MinNodes:  pulumi.Int(1),
+//							MaxNodes:  pulumi.Int(3),
+//							CpuTarget: pulumi.Int(50),
+//						},
 //					},
 //				},
 //				Labels: pulumi.StringMap{

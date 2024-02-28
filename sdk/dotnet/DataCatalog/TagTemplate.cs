@@ -30,25 +30,27 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var basicTagTemplate = new Gcp.DataCatalog.TagTemplate("basicTagTemplate", new()
+    ///     var basicTagTemplate = new Gcp.DataCatalog.TagTemplate("basic_tag_template", new()
     ///     {
+    ///         TagTemplateId = "my_template",
+    ///         Region = "us-central1",
     ///         DisplayName = "Demo Tag Template",
     ///         Fields = new[]
     ///         {
     ///             new Gcp.DataCatalog.Inputs.TagTemplateFieldArgs
     ///             {
-    ///                 DisplayName = "Source of data asset",
     ///                 FieldId = "source",
-    ///                 IsRequired = true,
+    ///                 DisplayName = "Source of data asset",
     ///                 Type = new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeArgs
     ///                 {
     ///                     PrimitiveType = "STRING",
     ///                 },
+    ///                 IsRequired = true,
     ///             },
     ///             new Gcp.DataCatalog.Inputs.TagTemplateFieldArgs
     ///             {
-    ///                 DisplayName = "Number of rows in the data asset",
     ///                 FieldId = "num_rows",
+    ///                 DisplayName = "Number of rows in the data asset",
     ///                 Type = new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeArgs
     ///                 {
     ///                     PrimitiveType = "DOUBLE",
@@ -56,8 +58,8 @@ namespace Pulumi.Gcp.DataCatalog
     ///             },
     ///             new Gcp.DataCatalog.Inputs.TagTemplateFieldArgs
     ///             {
-    ///                 DisplayName = "PII type",
     ///                 FieldId = "pii_type",
+    ///                 DisplayName = "PII type",
     ///                 Type = new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeArgs
     ///                 {
     ///                     EnumType = new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeEnumTypeArgs
@@ -82,8 +84,6 @@ namespace Pulumi.Gcp.DataCatalog
     ///             },
     ///         },
     ///         ForceDelete = false,
-    ///         Region = "us-central1",
-    ///         TagTemplateId = "my_template",
     ///     });
     /// 
     /// });

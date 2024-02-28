@@ -108,7 +108,7 @@ def get_job_iam_policy(job_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataproc.get_job_iam_policy(job_id=google_dataproc_job["pyspark"]["reference"][0]["job_id"],
+    policy = gcp.dataproc.get_job_iam_policy(job_id=pyspark["reference"][0]["jobId"],
         region="us-central1")
     ```
 
@@ -145,7 +145,7 @@ def get_job_iam_policy_output(job_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataproc.get_job_iam_policy(job_id=google_dataproc_job["pyspark"]["reference"][0]["job_id"],
+    policy = gcp.dataproc.get_job_iam_policy(job_id=pyspark["reference"][0]["jobId"],
         region="us-central1")
     ```
 

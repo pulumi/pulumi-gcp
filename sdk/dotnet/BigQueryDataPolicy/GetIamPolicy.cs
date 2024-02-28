@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
         /// {
         ///     var policy = Gcp.BigQueryDataPolicy.GetIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_bigquery_datapolicy_data_policy.Data_policy.Project,
-        ///         Location = google_bigquery_datapolicy_data_policy.Data_policy.Location,
-        ///         DataPolicyId = google_bigquery_datapolicy_data_policy.Data_policy.Data_policy_id,
+        ///         Project = dataPolicy.Project,
+        ///         Location = dataPolicy.Location,
+        ///         DataPolicyId = dataPolicy.DataPolicyId,
         ///     });
         /// 
         /// });
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
         /// {
         ///     var policy = Gcp.BigQueryDataPolicy.GetIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_bigquery_datapolicy_data_policy.Data_policy.Project,
-        ///         Location = google_bigquery_datapolicy_data_policy.Data_policy.Location,
-        ///         DataPolicyId = google_bigquery_datapolicy_data_policy.Data_policy.Data_policy_id,
+        ///         Project = dataPolicy.Project,
+        ///         Location = dataPolicy.Location,
+        ///         DataPolicyId = dataPolicy.DataPolicyId,
         ///     });
         /// 
         /// });

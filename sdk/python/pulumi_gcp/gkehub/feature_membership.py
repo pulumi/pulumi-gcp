@@ -307,6 +307,7 @@ class FeatureMembership(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         cluster = gcp.container.Cluster("cluster",
+            name="my-cluster",
             location="us-central1-a",
             initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
@@ -317,11 +318,12 @@ class FeatureMembership(pulumi.CustomResource):
                 ),
             ))
         feature = gcp.gkehub.Feature("feature",
+            name="configmanagement",
             location="global",
             labels={
                 "foo": "bar",
             })
-        feature_member = gcp.gkehub.FeatureMembership("featureMember",
+        feature_member = gcp.gkehub.FeatureMembership("feature_member",
             location="global",
             feature=feature.name,
             membership=membership.membership_id,
@@ -341,6 +343,7 @@ class FeatureMembership(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         cluster = gcp.container.Cluster("cluster",
+            name="my-cluster",
             location="us-central1-a",
             initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
@@ -351,11 +354,12 @@ class FeatureMembership(pulumi.CustomResource):
                 ),
             ))
         feature = gcp.gkehub.Feature("feature",
+            name="configmanagement",
             location="global",
             labels={
                 "foo": "bar",
             })
-        feature_member = gcp.gkehub.FeatureMembership("featureMember",
+        feature_member = gcp.gkehub.FeatureMembership("feature_member",
             location="global",
             feature=feature.name,
             membership=membership.membership_id,
@@ -379,10 +383,11 @@ class FeatureMembership(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         feature = gcp.gkehub.Feature("feature",
+            name="multiclusterservicediscovery",
+            location="global",
             labels={
                 "foo": "bar",
-            },
-            location="global")
+            })
         ```
         ### Service Mesh
 
@@ -391,6 +396,7 @@ class FeatureMembership(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         cluster = gcp.container.Cluster("cluster",
+            name="my-cluster",
             location="us-central1-a",
             initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
@@ -400,8 +406,10 @@ class FeatureMembership(pulumi.CustomResource):
                     resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 ),
             ))
-        feature = gcp.gkehub.Feature("feature", location="global")
-        feature_member = gcp.gkehub.FeatureMembership("featureMember",
+        feature = gcp.gkehub.Feature("feature",
+            name="servicemesh",
+            location="global")
+        feature_member = gcp.gkehub.FeatureMembership("feature_member",
             location="global",
             feature=feature.name,
             membership=membership.membership_id,
@@ -416,6 +424,7 @@ class FeatureMembership(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         cluster = gcp.container.Cluster("cluster",
+            name="my-cluster",
             location="us-central1-a",
             initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
@@ -427,11 +436,12 @@ class FeatureMembership(pulumi.CustomResource):
                 ),
             ))
         feature = gcp.gkehub.Feature("feature",
+            name="configmanagement",
             location="global",
             labels={
                 "foo": "bar",
             })
-        feature_member = gcp.gkehub.FeatureMembership("featureMember",
+        feature_member = gcp.gkehub.FeatureMembership("feature_member",
             location="global",
             feature=feature.name,
             membership=membership.membership_id,
@@ -452,6 +462,7 @@ class FeatureMembership(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         cluster = gcp.container.Cluster("cluster",
+            name="my-cluster",
             location="us-central1-a",
             initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
@@ -461,8 +472,10 @@ class FeatureMembership(pulumi.CustomResource):
                     resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 ),
             ))
-        feature = gcp.gkehub.Feature("feature", location="global")
-        feature_member = gcp.gkehub.FeatureMembership("featureMember",
+        feature = gcp.gkehub.Feature("feature",
+            name="policycontroller",
+            location="global")
+        feature_member = gcp.gkehub.FeatureMembership("feature_member",
             location="global",
             feature=feature.name,
             membership=membership.membership_id,
@@ -479,6 +492,7 @@ class FeatureMembership(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         cluster = gcp.container.Cluster("cluster",
+            name="my-cluster",
             location="us-central1-a",
             initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
@@ -488,8 +502,10 @@ class FeatureMembership(pulumi.CustomResource):
                     resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 ),
             ))
-        feature = gcp.gkehub.Feature("feature", location="global")
-        feature_member = gcp.gkehub.FeatureMembership("featureMember",
+        feature = gcp.gkehub.Feature("feature",
+            name="policycontroller",
+            location="global")
+        feature_member = gcp.gkehub.FeatureMembership("feature_member",
             location="global",
             feature=feature.name,
             membership=membership.membership_id,
@@ -563,6 +579,7 @@ class FeatureMembership(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         cluster = gcp.container.Cluster("cluster",
+            name="my-cluster",
             location="us-central1-a",
             initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
@@ -573,11 +590,12 @@ class FeatureMembership(pulumi.CustomResource):
                 ),
             ))
         feature = gcp.gkehub.Feature("feature",
+            name="configmanagement",
             location="global",
             labels={
                 "foo": "bar",
             })
-        feature_member = gcp.gkehub.FeatureMembership("featureMember",
+        feature_member = gcp.gkehub.FeatureMembership("feature_member",
             location="global",
             feature=feature.name,
             membership=membership.membership_id,
@@ -597,6 +615,7 @@ class FeatureMembership(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         cluster = gcp.container.Cluster("cluster",
+            name="my-cluster",
             location="us-central1-a",
             initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
@@ -607,11 +626,12 @@ class FeatureMembership(pulumi.CustomResource):
                 ),
             ))
         feature = gcp.gkehub.Feature("feature",
+            name="configmanagement",
             location="global",
             labels={
                 "foo": "bar",
             })
-        feature_member = gcp.gkehub.FeatureMembership("featureMember",
+        feature_member = gcp.gkehub.FeatureMembership("feature_member",
             location="global",
             feature=feature.name,
             membership=membership.membership_id,
@@ -635,10 +655,11 @@ class FeatureMembership(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         feature = gcp.gkehub.Feature("feature",
+            name="multiclusterservicediscovery",
+            location="global",
             labels={
                 "foo": "bar",
-            },
-            location="global")
+            })
         ```
         ### Service Mesh
 
@@ -647,6 +668,7 @@ class FeatureMembership(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         cluster = gcp.container.Cluster("cluster",
+            name="my-cluster",
             location="us-central1-a",
             initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
@@ -656,8 +678,10 @@ class FeatureMembership(pulumi.CustomResource):
                     resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 ),
             ))
-        feature = gcp.gkehub.Feature("feature", location="global")
-        feature_member = gcp.gkehub.FeatureMembership("featureMember",
+        feature = gcp.gkehub.Feature("feature",
+            name="servicemesh",
+            location="global")
+        feature_member = gcp.gkehub.FeatureMembership("feature_member",
             location="global",
             feature=feature.name,
             membership=membership.membership_id,
@@ -672,6 +696,7 @@ class FeatureMembership(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         cluster = gcp.container.Cluster("cluster",
+            name="my-cluster",
             location="us-central1-a",
             initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
@@ -683,11 +708,12 @@ class FeatureMembership(pulumi.CustomResource):
                 ),
             ))
         feature = gcp.gkehub.Feature("feature",
+            name="configmanagement",
             location="global",
             labels={
                 "foo": "bar",
             })
-        feature_member = gcp.gkehub.FeatureMembership("featureMember",
+        feature_member = gcp.gkehub.FeatureMembership("feature_member",
             location="global",
             feature=feature.name,
             membership=membership.membership_id,
@@ -708,6 +734,7 @@ class FeatureMembership(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         cluster = gcp.container.Cluster("cluster",
+            name="my-cluster",
             location="us-central1-a",
             initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
@@ -717,8 +744,10 @@ class FeatureMembership(pulumi.CustomResource):
                     resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 ),
             ))
-        feature = gcp.gkehub.Feature("feature", location="global")
-        feature_member = gcp.gkehub.FeatureMembership("featureMember",
+        feature = gcp.gkehub.Feature("feature",
+            name="policycontroller",
+            location="global")
+        feature_member = gcp.gkehub.FeatureMembership("feature_member",
             location="global",
             feature=feature.name,
             membership=membership.membership_id,
@@ -735,6 +764,7 @@ class FeatureMembership(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         cluster = gcp.container.Cluster("cluster",
+            name="my-cluster",
             location="us-central1-a",
             initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
@@ -744,8 +774,10 @@ class FeatureMembership(pulumi.CustomResource):
                     resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 ),
             ))
-        feature = gcp.gkehub.Feature("feature", location="global")
-        feature_member = gcp.gkehub.FeatureMembership("featureMember",
+        feature = gcp.gkehub.Feature("feature",
+            name="policycontroller",
+            location="global")
+        feature_member = gcp.gkehub.FeatureMembership("feature_member",
             location="global",
             feature=feature.name,
             membership=membership.membership_id,

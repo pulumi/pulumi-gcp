@@ -45,8 +45,9 @@ import javax.annotation.Nullable;
  *         var primary = new AzureClient(&#34;primary&#34;, AzureClientArgs.builder()        
  *             .applicationId(&#34;12345678-1234-1234-1234-123456789111&#34;)
  *             .location(&#34;us-west1&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *             .name(&#34;client-name&#34;)
  *             .tenantId(&#34;12345678-1234-1234-1234-123456789111&#34;)
+ *             .project(&#34;my-project-name&#34;)
  *             .build());
  * 
  *     }

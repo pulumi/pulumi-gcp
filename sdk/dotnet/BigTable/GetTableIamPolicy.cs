@@ -26,8 +26,8 @@ namespace Pulumi.Gcp.BigTable
         /// {
         ///     var policy = Gcp.BigTable.GetTableIamPolicy.Invoke(new()
         ///     {
-        ///         Instance = google_bigtable_instance.Instance.Name,
-        ///         Table = google_bigtable_table.Table.Name,
+        ///         Instance = instance.Name,
+        ///         Table = table.Name,
         ///     });
         /// 
         /// });
@@ -51,8 +51,8 @@ namespace Pulumi.Gcp.BigTable
         /// {
         ///     var policy = Gcp.BigTable.GetTableIamPolicy.Invoke(new()
         ///     {
-        ///         Instance = google_bigtable_instance.Instance.Name,
-        ///         Table = google_bigtable_table.Table.Name,
+        ///         Instance = instance.Name,
+        ///         Table = table.Name,
         ///     });
         /// 
         /// });

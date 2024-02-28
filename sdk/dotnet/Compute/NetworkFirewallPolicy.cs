@@ -25,6 +25,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var policy = new Gcp.Compute.NetworkFirewallPolicy("policy", new()
     ///     {
+    ///         Name = "tf-test-policy",
     ///         Description = "Terraform test",
     ///     });
     /// 

@@ -28,8 +28,8 @@ namespace Pulumi.Gcp.SourceRepo
         /// {
         ///     var policy = Gcp.SourceRepo.GetRepositoryIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_sourcerepo_repository.My_repo.Project,
-        ///         Repository = google_sourcerepo_repository.My_repo.Name,
+        ///         Project = my_repo.Project,
+        ///         Repository = my_repo.Name,
         ///     });
         /// 
         /// });
@@ -55,8 +55,8 @@ namespace Pulumi.Gcp.SourceRepo
         /// {
         ///     var policy = Gcp.SourceRepo.GetRepositoryIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_sourcerepo_repository.My_repo.Project,
-        ///         Repository = google_sourcerepo_repository.My_repo.Name,
+        ///         Project = my_repo.Project,
+        ///         Repository = my_repo.Name,
         ///     });
         /// 
         /// });

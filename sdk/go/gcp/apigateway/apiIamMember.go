@@ -55,10 +55,10 @@ import (
 //				return err
 //			}
 //			_, err = apigateway.NewApiIamPolicy(ctx, "policy", &apigateway.ApiIamPolicyArgs{
-//				Project:    pulumi.Any(google_api_gateway_api.Api.Project),
-//				Api:        pulumi.Any(google_api_gateway_api.Api.Api_id),
+//				Project:    pulumi.Any(api.Project),
+//				Api:        pulumi.Any(api.ApiId),
 //				PolicyData: *pulumi.String(admin.PolicyData),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -83,13 +83,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := apigateway.NewApiIamBinding(ctx, "binding", &apigateway.ApiIamBindingArgs{
-//				Project: pulumi.Any(google_api_gateway_api.Api.Project),
-//				Api:     pulumi.Any(google_api_gateway_api.Api.Api_id),
+//				Project: pulumi.Any(api.Project),
+//				Api:     pulumi.Any(api.ApiId),
 //				Role:    pulumi.String("roles/apigateway.viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -114,11 +114,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := apigateway.NewApiIamMember(ctx, "member", &apigateway.ApiIamMemberArgs{
-//				Project: pulumi.Any(google_api_gateway_api.Api.Project),
-//				Api:     pulumi.Any(google_api_gateway_api.Api.Api_id),
+//				Project: pulumi.Any(api.Project),
+//				Api:     pulumi.Any(api.ApiId),
 //				Role:    pulumi.String("roles/apigateway.viewer"),
 //				Member:  pulumi.String("user:jane@example.com"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

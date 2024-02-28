@@ -23,20 +23,26 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const basic = new gcp.dataloss.PreventionJobTrigger("basic", {
+ *     parent: "projects/my-project-name",
  *     description: "Description",
  *     displayName: "Displayname",
+ *     triggers: [{
+ *         schedule: {
+ *             recurrencePeriodDuration: "86400s",
+ *         },
+ *     }],
  *     inspectJob: {
+ *         inspectTemplateName: "fake",
  *         actions: [{
  *             saveFindings: {
  *                 outputConfig: {
  *                     table: {
- *                         datasetId: "dataset",
  *                         projectId: "project",
+ *                         datasetId: "dataset",
  *                     },
  *                 },
  *             },
  *         }],
- *         inspectTemplateName: "fake",
  *         storageConfig: {
  *             cloudStorageOptions: {
  *                 fileSet: {
@@ -45,12 +51,6 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
- *     parent: "projects/my-project-name",
- *     triggers: [{
- *         schedule: {
- *             recurrencePeriodDuration: "86400s",
- *         },
- *     }],
  * });
  * ```
  * ### Dlp Job Trigger Bigquery Row Limit
@@ -59,39 +59,39 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const bigqueryRowLimit = new gcp.dataloss.PreventionJobTrigger("bigqueryRowLimit", {
+ * const bigqueryRowLimit = new gcp.dataloss.PreventionJobTrigger("bigquery_row_limit", {
+ *     parent: "projects/my-project-name",
  *     description: "Description",
  *     displayName: "Displayname",
- *     inspectJob: {
- *         actions: [{
- *             saveFindings: {
- *                 outputConfig: {
- *                     table: {
- *                         datasetId: "dataset",
- *                         projectId: "project",
- *                     },
- *                 },
- *             },
- *         }],
- *         inspectTemplateName: "fake",
- *         storageConfig: {
- *             bigQueryOptions: {
- *                 rowsLimit: 1000,
- *                 sampleMethod: "RANDOM_START",
- *                 tableReference: {
- *                     datasetId: "dataset",
- *                     projectId: "project",
- *                     tableId: "table_to_scan",
- *                 },
- *             },
- *         },
- *     },
- *     parent: "projects/my-project-name",
  *     triggers: [{
  *         schedule: {
  *             recurrencePeriodDuration: "86400s",
  *         },
  *     }],
+ *     inspectJob: {
+ *         inspectTemplateName: "fake",
+ *         actions: [{
+ *             saveFindings: {
+ *                 outputConfig: {
+ *                     table: {
+ *                         projectId: "project",
+ *                         datasetId: "dataset",
+ *                     },
+ *                 },
+ *             },
+ *         }],
+ *         storageConfig: {
+ *             bigQueryOptions: {
+ *                 tableReference: {
+ *                     projectId: "project",
+ *                     datasetId: "dataset",
+ *                     tableId: "table_to_scan",
+ *                 },
+ *                 rowsLimit: 1000,
+ *                 sampleMethod: "RANDOM_START",
+ *             },
+ *         },
+ *     },
  * });
  * ```
  * ### Dlp Job Trigger Bigquery Row Limit Percentage
@@ -100,39 +100,39 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const bigqueryRowLimitPercentage = new gcp.dataloss.PreventionJobTrigger("bigqueryRowLimitPercentage", {
+ * const bigqueryRowLimitPercentage = new gcp.dataloss.PreventionJobTrigger("bigquery_row_limit_percentage", {
+ *     parent: "projects/my-project-name",
  *     description: "Description",
  *     displayName: "Displayname",
- *     inspectJob: {
- *         actions: [{
- *             saveFindings: {
- *                 outputConfig: {
- *                     table: {
- *                         datasetId: "dataset",
- *                         projectId: "project",
- *                     },
- *                 },
- *             },
- *         }],
- *         inspectTemplateName: "fake",
- *         storageConfig: {
- *             bigQueryOptions: {
- *                 rowsLimitPercent: 50,
- *                 sampleMethod: "RANDOM_START",
- *                 tableReference: {
- *                     datasetId: "dataset",
- *                     projectId: "project",
- *                     tableId: "table_to_scan",
- *                 },
- *             },
- *         },
- *     },
- *     parent: "projects/my-project-name",
  *     triggers: [{
  *         schedule: {
  *             recurrencePeriodDuration: "86400s",
  *         },
  *     }],
+ *     inspectJob: {
+ *         inspectTemplateName: "fake",
+ *         actions: [{
+ *             saveFindings: {
+ *                 outputConfig: {
+ *                     table: {
+ *                         projectId: "project",
+ *                         datasetId: "dataset",
+ *                     },
+ *                 },
+ *             },
+ *         }],
+ *         storageConfig: {
+ *             bigQueryOptions: {
+ *                 tableReference: {
+ *                     projectId: "project",
+ *                     datasetId: "dataset",
+ *                     tableId: "table_to_scan",
+ *                 },
+ *                 rowsLimitPercent: 50,
+ *                 sampleMethod: "RANDOM_START",
+ *             },
+ *         },
+ *     },
  * });
  * ```
  * ### Dlp Job Trigger Job Notification Emails
@@ -141,14 +141,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const jobNotificationEmails = new gcp.dataloss.PreventionJobTrigger("jobNotificationEmails", {
+ * const jobNotificationEmails = new gcp.dataloss.PreventionJobTrigger("job_notification_emails", {
+ *     parent: "projects/my-project-name",
  *     description: "Description for the job_trigger created by terraform",
  *     displayName: "TerraformDisplayName",
+ *     triggers: [{
+ *         schedule: {
+ *             recurrencePeriodDuration: "86400s",
+ *         },
+ *     }],
  *     inspectJob: {
+ *         inspectTemplateName: "sample-inspect-template",
  *         actions: [{
  *             jobNotificationEmails: {},
  *         }],
- *         inspectTemplateName: "sample-inspect-template",
  *         storageConfig: {
  *             cloudStorageOptions: {
  *                 fileSet: {
@@ -157,12 +163,6 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
- *     parent: "projects/my-project-name",
- *     triggers: [{
- *         schedule: {
- *             recurrencePeriodDuration: "86400s",
- *         },
- *     }],
  * });
  * ```
  * ### Dlp Job Trigger Deidentify
@@ -171,7 +171,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultDataset = new gcp.bigquery.Dataset("defaultDataset", {
+ * const _default = new gcp.bigquery.Dataset("default", {
  *     datasetId: "tf_test",
  *     friendlyName: "terraform-test",
  *     description: "Description for the dataset created by terraform",
@@ -181,8 +181,8 @@ import * as utilities from "../utilities";
  *         env: "default",
  *     },
  * });
- * const defaultTable = new gcp.bigquery.Table("defaultTable", {
- *     datasetId: defaultDataset.datasetId,
+ * const defaultTable = new gcp.bigquery.Table("default", {
+ *     datasetId: _default.datasetId,
  *     tableId: "tf_test",
  *     deletionProtection: false,
  *     timePartitioning: {
@@ -228,7 +228,7 @@ import * as utilities from "../utilities";
  *                 transformationDetailsStorageConfig: {
  *                     table: {
  *                         projectId: "my-project-name",
- *                         datasetId: defaultDataset.datasetId,
+ *                         datasetId: _default.datasetId,
  *                         tableId: defaultTable.tableId,
  *                     },
  *                 },
@@ -255,26 +255,30 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const hybridTrigger = new gcp.dataloss.PreventionJobTrigger("hybridTrigger", {
+ * const hybridTrigger = new gcp.dataloss.PreventionJobTrigger("hybrid_trigger", {
+ *     parent: "projects/my-project-name",
+ *     triggers: [{
+ *         manual: {},
+ *     }],
  *     inspectJob: {
+ *         inspectTemplateName: "fake",
  *         actions: [{
  *             saveFindings: {
  *                 outputConfig: {
  *                     table: {
- *                         datasetId: "dataset",
  *                         projectId: "project",
+ *                         datasetId: "dataset",
  *                     },
  *                 },
  *             },
  *         }],
- *         inspectTemplateName: "fake",
  *         storageConfig: {
  *             hybridOptions: {
  *                 description: "Hybrid job trigger for data from the comments field of a table that contains customer appointment bookings",
+ *                 requiredFindingLabelKeys: ["appointment-bookings-comments"],
  *                 labels: {
  *                     env: "prod",
  *                 },
- *                 requiredFindingLabelKeys: ["appointment-bookings-comments"],
  *                 tableOptions: {
  *                     identifyingFields: [{
  *                         name: "booking_id",
@@ -283,10 +287,95 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
+ * });
+ * ```
+ * ### Dlp Job Trigger Inspect
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const inspect = new gcp.dataloss.PreventionJobTrigger("inspect", {
  *     parent: "projects/my-project-name",
+ *     description: "Description",
+ *     displayName: "Displayname",
  *     triggers: [{
- *         manual: {},
+ *         schedule: {
+ *             recurrencePeriodDuration: "86400s",
+ *         },
  *     }],
+ *     inspectJob: {
+ *         inspectTemplateName: "fake",
+ *         actions: [{
+ *             saveFindings: {
+ *                 outputConfig: {
+ *                     table: {
+ *                         projectId: "project",
+ *                         datasetId: "dataset",
+ *                     },
+ *                 },
+ *             },
+ *         }],
+ *         storageConfig: {
+ *             cloudStorageOptions: {
+ *                 fileSet: {
+ *                     url: "gs://mybucket/directory/",
+ *                 },
+ *             },
+ *         },
+ *         inspectConfig: {
+ *             customInfoTypes: [{
+ *                 infoType: {
+ *                     name: "MY_CUSTOM_TYPE",
+ *                 },
+ *                 likelihood: "UNLIKELY",
+ *                 regex: {
+ *                     pattern: "test*",
+ *                 },
+ *             }],
+ *             infoTypes: [{
+ *                 name: "EMAIL_ADDRESS",
+ *             }],
+ *             minLikelihood: "UNLIKELY",
+ *             ruleSets: [
+ *                 {
+ *                     infoTypes: [{
+ *                         name: "EMAIL_ADDRESS",
+ *                     }],
+ *                     rules: [{
+ *                         exclusionRule: {
+ *                             regex: {
+ *                                 pattern: ".+@example.com",
+ *                             },
+ *                             matchingType: "MATCHING_TYPE_FULL_MATCH",
+ *                         },
+ *                     }],
+ *                 },
+ *                 {
+ *                     infoTypes: [{
+ *                         name: "MY_CUSTOM_TYPE",
+ *                     }],
+ *                     rules: [{
+ *                         hotwordRule: {
+ *                             hotwordRegex: {
+ *                                 pattern: "example*",
+ *                             },
+ *                             proximity: {
+ *                                 windowBefore: 50,
+ *                             },
+ *                             likelihoodAdjustment: {
+ *                                 fixedLikelihood: "VERY_LIKELY",
+ *                             },
+ *                         },
+ *                     }],
+ *                 },
+ *             ],
+ *             limits: {
+ *                 maxFindingsPerItem: 10,
+ *                 maxFindingsPerRequest: 50,
+ *             },
+ *         },
+ *     },
  * });
  * ```
  * ### Dlp Job Trigger Publish To Stackdriver
@@ -295,14 +384,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const publishToStackdriver = new gcp.dataloss.PreventionJobTrigger("publishToStackdriver", {
+ * const publishToStackdriver = new gcp.dataloss.PreventionJobTrigger("publish_to_stackdriver", {
+ *     parent: "projects/my-project-name",
  *     description: "Description for the job_trigger created by terraform",
  *     displayName: "TerraformDisplayName",
+ *     triggers: [{
+ *         schedule: {
+ *             recurrencePeriodDuration: "86400s",
+ *         },
+ *     }],
  *     inspectJob: {
+ *         inspectTemplateName: "sample-inspect-template",
  *         actions: [{
  *             publishToStackdriver: {},
  *         }],
- *         inspectTemplateName: "sample-inspect-template",
  *         storageConfig: {
  *             cloudStorageOptions: {
  *                 fileSet: {
@@ -311,12 +406,6 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
- *     parent: "projects/my-project-name",
- *     triggers: [{
- *         schedule: {
- *             recurrencePeriodDuration: "86400s",
- *         },
- *     }],
  * });
  * ```
  * ### Dlp Job Trigger With Id
@@ -325,21 +414,28 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const withTriggerId = new gcp.dataloss.PreventionJobTrigger("withTriggerId", {
+ * const withTriggerId = new gcp.dataloss.PreventionJobTrigger("with_trigger_id", {
+ *     parent: "projects/my-project-name",
  *     description: "Starting description",
  *     displayName: "display",
+ *     triggerId: "id-",
+ *     triggers: [{
+ *         schedule: {
+ *             recurrencePeriodDuration: "86400s",
+ *         },
+ *     }],
  *     inspectJob: {
+ *         inspectTemplateName: "fake",
  *         actions: [{
  *             saveFindings: {
  *                 outputConfig: {
  *                     table: {
- *                         datasetId: "dataset123",
  *                         projectId: "project",
+ *                         datasetId: "dataset123",
  *                     },
  *                 },
  *             },
  *         }],
- *         inspectTemplateName: "fake",
  *         storageConfig: {
  *             cloudStorageOptions: {
  *                 fileSet: {
@@ -348,13 +444,6 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
- *     parent: "projects/my-project-name",
- *     triggerId: "id-",
- *     triggers: [{
- *         schedule: {
- *             recurrencePeriodDuration: "86400s",
- *         },
- *     }],
  * });
  * ```
  * ### Dlp Job Trigger Multiple Actions
@@ -364,16 +453,23 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const basic = new gcp.dataloss.PreventionJobTrigger("basic", {
+ *     parent: "projects/my-project-name",
  *     description: "Description",
  *     displayName: "Displayname",
+ *     triggers: [{
+ *         schedule: {
+ *             recurrencePeriodDuration: "86400s",
+ *         },
+ *     }],
  *     inspectJob: {
+ *         inspectTemplateName: "fake",
  *         actions: [
  *             {
  *                 saveFindings: {
  *                     outputConfig: {
  *                         table: {
- *                             datasetId: "dataset",
  *                             projectId: "project",
+ *                             datasetId: "dataset",
  *                         },
  *                     },
  *                 },
@@ -384,7 +480,6 @@ import * as utilities from "../utilities";
  *                 },
  *             },
  *         ],
- *         inspectTemplateName: "fake",
  *         storageConfig: {
  *             cloudStorageOptions: {
  *                 fileSet: {
@@ -393,12 +488,6 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
- *     parent: "projects/my-project-name",
- *     triggers: [{
- *         schedule: {
- *             recurrencePeriodDuration: "86400s",
- *         },
- *     }],
  * });
  * ```
  * ### Dlp Job Trigger Cloud Storage Optional Timespan Autopopulation
@@ -408,37 +497,37 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const basic = new gcp.dataloss.PreventionJobTrigger("basic", {
+ *     parent: "projects/my-project-name",
  *     description: "Description",
  *     displayName: "Displayname",
- *     inspectJob: {
- *         actions: [{
- *             saveFindings: {
- *                 outputConfig: {
- *                     table: {
- *                         datasetId: "dataset",
- *                         projectId: "project",
- *                     },
- *                 },
- *             },
- *         }],
- *         inspectTemplateName: "fake",
- *         storageConfig: {
- *             cloudStorageOptions: {
- *                 fileSet: {
- *                     url: "gs://mybucket/directory/",
- *                 },
- *             },
- *             timespanConfig: {
- *                 enableAutoPopulationOfTimespanConfig: true,
- *             },
- *         },
- *     },
- *     parent: "projects/my-project-name",
  *     triggers: [{
  *         schedule: {
  *             recurrencePeriodDuration: "86400s",
  *         },
  *     }],
+ *     inspectJob: {
+ *         inspectTemplateName: "fake",
+ *         actions: [{
+ *             saveFindings: {
+ *                 outputConfig: {
+ *                     table: {
+ *                         projectId: "project",
+ *                         datasetId: "dataset",
+ *                     },
+ *                 },
+ *             },
+ *         }],
+ *         storageConfig: {
+ *             timespanConfig: {
+ *                 enableAutoPopulationOfTimespanConfig: true,
+ *             },
+ *             cloudStorageOptions: {
+ *                 fileSet: {
+ *                     url: "gs://mybucket/directory/",
+ *                 },
+ *             },
+ *         },
+ *     },
  * });
  * ```
  *

@@ -56,16 +56,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myService = new GenericService(&#34;myService&#34;, GenericServiceArgs.builder()        
- *             .basicService(GenericServiceBasicServiceArgs.builder()
- *                 .serviceLabels(Map.of(&#34;moduleId&#34;, &#34;another-module-id&#34;))
- *                 .serviceType(&#34;APP_ENGINE&#34;)
- *                 .build())
- *             .displayName(&#34;My Service my-service&#34;)
  *             .serviceId(&#34;my-service&#34;)
+ *             .displayName(&#34;My Service my-service&#34;)
  *             .userLabels(Map.ofEntries(
  *                 Map.entry(&#34;my_key&#34;, &#34;my_value&#34;),
  *                 Map.entry(&#34;my_other_key&#34;, &#34;my_other_value&#34;)
  *             ))
+ *             .basicService(GenericServiceBasicServiceArgs.builder()
+ *                 .serviceType(&#34;APP_ENGINE&#34;)
+ *                 .serviceLabels(Map.of(&#34;module_id&#34;, &#34;another-module-id&#34;))
+ *                 .build())
  *             .build());
  * 
  *     }

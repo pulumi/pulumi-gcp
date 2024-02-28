@@ -15,7 +15,9 @@ import * as utilities from "../utilities";
  *     displayName: "My Billing Account",
  *     open: true,
  * });
- * const myProject = new gcp.organizations.Project("myProject", {
+ * const myProject = new gcp.organizations.Project("my_project", {
+ *     name: "My Project",
+ *     projectId: "your-project-id",
  *     orgId: "1234567",
  *     billingAccount: acct.then(acct => acct.id),
  * });
@@ -91,7 +93,9 @@ export interface GetBillingAccountResult {
  *     displayName: "My Billing Account",
  *     open: true,
  * });
- * const myProject = new gcp.organizations.Project("myProject", {
+ * const myProject = new gcp.organizations.Project("my_project", {
+ *     name: "My Project",
+ *     projectId: "your-project-id",
  *     orgId: "1234567",
  *     billingAccount: acct.then(acct => acct.id),
  * });

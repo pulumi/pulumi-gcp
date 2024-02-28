@@ -34,13 +34,16 @@ import * as utilities from "../utilities";
  *     title: "my policy",
  * });
  * const access_level = new gcp.accesscontextmanager.AccessLevel("access-level", {
+ *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
+ *     name: pulumi.interpolate`accessPolicies/${access_policy.name}/accessLevels/chromeos_no_lock`,
+ *     title: "chromeos_no_lock",
  *     basic: {
  *         conditions: [{
  *             devicePolicy: {
+ *                 requireScreenLock: true,
  *                 osConstraints: [{
  *                     osType: "DESKTOP_CHROME_OS",
  *                 }],
- *                 requireScreenLock: true,
  *             },
  *             regions: [
  *                 "CH",
@@ -49,8 +52,6 @@ import * as utilities from "../utilities";
  *             ],
  *         }],
  *     },
- *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
- *     title: "chromeos_no_lock",
  * });
  * ```
  *

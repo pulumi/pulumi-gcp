@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.CloudDeploy
         /// {
         ///     var policy = Gcp.CloudDeploy.GetDeliveryPipelineIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_clouddeploy_delivery_pipeline.Default.Project,
-        ///         Location = google_clouddeploy_delivery_pipeline.Default.Location,
-        ///         Name = google_clouddeploy_delivery_pipeline.Default.Name,
+        ///         Project = @default.Project,
+        ///         Location = @default.Location,
+        ///         Name = @default.Name,
         ///     });
         /// 
         /// });
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.CloudDeploy
         /// {
         ///     var policy = Gcp.CloudDeploy.GetDeliveryPipelineIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_clouddeploy_delivery_pipeline.Default.Project,
-        ///         Location = google_clouddeploy_delivery_pipeline.Default.Location,
-        ///         Name = google_clouddeploy_delivery_pipeline.Default.Name,
+        ///         Project = @default.Project,
+        ///         Location = @default.Location,
+        ///         Name = @default.Name,
         ///     });
         /// 
         /// });

@@ -23,14 +23,15 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const reservation = new gcp.bigquery.Reservation("reservation", {
+ *     name: "my-reservation",
+ *     location: "us-west2",
+ *     slotCapacity: 0,
+ *     edition: "STANDARD",
+ *     ignoreIdleSlots: true,
+ *     concurrency: 0,
  *     autoscale: {
  *         maxSlots: 100,
  *     },
- *     concurrency: 0,
- *     edition: "STANDARD",
- *     ignoreIdleSlots: true,
- *     location: "us-west2",
- *     slotCapacity: 0,
  * });
  * ```
  *

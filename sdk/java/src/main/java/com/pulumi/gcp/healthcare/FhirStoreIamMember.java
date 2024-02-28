@@ -90,8 +90,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var fhirStore = new FhirStoreIamBinding(&#34;fhirStore&#34;, FhirStoreIamBindingArgs.builder()        
  *             .fhirStoreId(&#34;your-fhir-store-id&#34;)
- *             .members(&#34;user:jane@example.com&#34;)
  *             .role(&#34;roles/editor&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
  * 
  *     }
@@ -122,8 +122,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var fhirStore = new FhirStoreIamMember(&#34;fhirStore&#34;, FhirStoreIamMemberArgs.builder()        
  *             .fhirStoreId(&#34;your-fhir-store-id&#34;)
- *             .member(&#34;user:jane@example.com&#34;)
  *             .role(&#34;roles/editor&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
  *             .build());
  * 
  *     }

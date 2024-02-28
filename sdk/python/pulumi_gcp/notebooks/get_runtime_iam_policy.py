@@ -109,9 +109,9 @@ def get_runtime_iam_policy(location: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.notebooks.get_runtime_iam_policy(project=google_notebooks_runtime["runtime"]["project"],
-        location=google_notebooks_runtime["runtime"]["location"],
-        runtime_name=google_notebooks_runtime["runtime"]["name"])
+    policy = gcp.notebooks.get_runtime_iam_policy(project=runtime["project"],
+        location=runtime["location"],
+        runtime_name=runtime["name"])
     ```
 
 
@@ -150,9 +150,9 @@ def get_runtime_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.notebooks.get_runtime_iam_policy(project=google_notebooks_runtime["runtime"]["project"],
-        location=google_notebooks_runtime["runtime"]["location"],
-        runtime_name=google_notebooks_runtime["runtime"]["name"])
+    policy = gcp.notebooks.get_runtime_iam_policy(project=runtime["project"],
+        location=runtime["location"],
+        runtime_name=runtime["name"])
     ```
 
 

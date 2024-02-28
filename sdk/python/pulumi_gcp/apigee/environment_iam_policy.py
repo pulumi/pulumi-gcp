@@ -215,8 +215,8 @@ class EnvironmentIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.apigee.EnvironmentIamPolicy("policy",
-            org_id=google_apigee_environment["apigee_environment"]["org_id"],
-            env_id=google_apigee_environment["apigee_environment"]["name"],
+            org_id=apigee_environment["orgId"],
+            env_id=apigee_environment["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -227,8 +227,8 @@ class EnvironmentIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.apigee.EnvironmentIamBinding("binding",
-            org_id=google_apigee_environment["apigee_environment"]["org_id"],
-            env_id=google_apigee_environment["apigee_environment"]["name"],
+            org_id=apigee_environment["orgId"],
+            env_id=apigee_environment["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -240,8 +240,8 @@ class EnvironmentIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.apigee.EnvironmentIamMember("member",
-            org_id=google_apigee_environment["apigee_environment"]["org_id"],
-            env_id=google_apigee_environment["apigee_environment"]["name"],
+            org_id=apigee_environment["orgId"],
+            env_id=apigee_environment["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -330,8 +330,8 @@ class EnvironmentIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.apigee.EnvironmentIamPolicy("policy",
-            org_id=google_apigee_environment["apigee_environment"]["org_id"],
-            env_id=google_apigee_environment["apigee_environment"]["name"],
+            org_id=apigee_environment["orgId"],
+            env_id=apigee_environment["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -342,8 +342,8 @@ class EnvironmentIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.apigee.EnvironmentIamBinding("binding",
-            org_id=google_apigee_environment["apigee_environment"]["org_id"],
-            env_id=google_apigee_environment["apigee_environment"]["name"],
+            org_id=apigee_environment["orgId"],
+            env_id=apigee_environment["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -355,8 +355,8 @@ class EnvironmentIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.apigee.EnvironmentIamMember("member",
-            org_id=google_apigee_environment["apigee_environment"]["org_id"],
-            env_id=google_apigee_environment["apigee_environment"]["name"],
+            org_id=apigee_environment["orgId"],
+            env_id=apigee_environment["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

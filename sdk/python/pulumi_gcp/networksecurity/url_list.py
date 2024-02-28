@@ -273,6 +273,7 @@ class UrlList(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.UrlList("default",
+            name="my-url-lists",
             location="us-central1",
             values=["www.example.com"])
         ```
@@ -283,8 +284,9 @@ class UrlList(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.UrlList("default",
-            description="my description",
+            name="my-url-lists",
             location="us-central1",
+            description="my description",
             values=[
                 "www.example.com",
                 "about.example.com",
@@ -352,6 +354,7 @@ class UrlList(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.UrlList("default",
+            name="my-url-lists",
             location="us-central1",
             values=["www.example.com"])
         ```
@@ -362,8 +365,9 @@ class UrlList(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.UrlList("default",
-            description="my description",
+            name="my-url-lists",
             location="us-central1",
+            description="my description",
             values=[
                 "www.example.com",
                 "about.example.com",

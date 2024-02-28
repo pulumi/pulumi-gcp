@@ -51,9 +51,9 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     ///     var policy = new Gcp.BigQueryAnalyticsHub.DataExchangeIamPolicy("policy", new()
     ///     {
-    ///         Project = google_bigquery_analytics_hub_data_exchange.Data_exchange.Project,
-    ///         Location = google_bigquery_analytics_hub_data_exchange.Data_exchange.Location,
-    ///         DataExchangeId = google_bigquery_analytics_hub_data_exchange.Data_exchange.Data_exchange_id,
+    ///         Project = dataExchange.Project,
+    ///         Location = dataExchange.Location,
+    ///         DataExchangeId = dataExchange.DataExchangeId,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -72,9 +72,9 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// {
     ///     var binding = new Gcp.BigQueryAnalyticsHub.DataExchangeIamBinding("binding", new()
     ///     {
-    ///         Project = google_bigquery_analytics_hub_data_exchange.Data_exchange.Project,
-    ///         Location = google_bigquery_analytics_hub_data_exchange.Data_exchange.Location,
-    ///         DataExchangeId = google_bigquery_analytics_hub_data_exchange.Data_exchange.Data_exchange_id,
+    ///         Project = dataExchange.Project,
+    ///         Location = dataExchange.Location,
+    ///         DataExchangeId = dataExchange.DataExchangeId,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -97,9 +97,9 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// {
     ///     var member = new Gcp.BigQueryAnalyticsHub.DataExchangeIamMember("member", new()
     ///     {
-    ///         Project = google_bigquery_analytics_hub_data_exchange.Data_exchange.Project,
-    ///         Location = google_bigquery_analytics_hub_data_exchange.Data_exchange.Location,
-    ///         DataExchangeId = google_bigquery_analytics_hub_data_exchange.Data_exchange.Data_exchange_id,
+    ///         Project = dataExchange.Project,
+    ///         Location = dataExchange.Location,
+    ///         DataExchangeId = dataExchange.DataExchangeId,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

@@ -33,9 +33,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewFirewallPolicy(ctx, "default", &compute.FirewallPolicyArgs{
-//				Description: pulumi.String("Example Resource"),
 //				Parent:      pulumi.String("organizations/12345"),
 //				ShortName:   pulumi.String("my-policy"),
+//				Description: pulumi.String("Example Resource"),
 //			})
 //			if err != nil {
 //				return err

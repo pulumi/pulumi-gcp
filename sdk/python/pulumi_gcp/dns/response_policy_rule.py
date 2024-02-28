@@ -267,8 +267,12 @@ class ResponsePolicyRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
-        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False)
+        network_1 = gcp.compute.Network("network-1",
+            name="network-1",
+            auto_create_subnetworks=False)
+        network_2 = gcp.compute.Network("network-2",
+            name="network-2",
+            auto_create_subnetworks=False)
         response_policy = gcp.dns.ResponsePolicy("response-policy",
             response_policy_name="example-response-policy",
             networks=[
@@ -351,8 +355,12 @@ class ResponsePolicyRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
-        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False)
+        network_1 = gcp.compute.Network("network-1",
+            name="network-1",
+            auto_create_subnetworks=False)
+        network_2 = gcp.compute.Network("network-2",
+            name="network-2",
+            auto_create_subnetworks=False)
         response_policy = gcp.dns.ResponsePolicy("response-policy",
             response_policy_name="example-response-policy",
             networks=[

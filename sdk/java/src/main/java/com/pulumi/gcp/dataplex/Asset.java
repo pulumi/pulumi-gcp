@@ -45,7 +45,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataplex.AssetArgs;
  * import com.pulumi.gcp.dataplex.inputs.AssetDiscoverySpecArgs;
  * import com.pulumi.gcp.dataplex.inputs.AssetResourceSpecArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -60,17 +59,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basicBucket = new Bucket(&#34;basicBucket&#34;, BucketArgs.builder()        
+ *             .name(&#34;bucket&#34;)
  *             .location(&#34;us-west1&#34;)
  *             .uniformBucketLevelAccess(true)
  *             .project(&#34;my-project-name&#34;)
  *             .build());
  * 
  *         var basicLake = new Lake(&#34;basicLake&#34;, LakeArgs.builder()        
+ *             .name(&#34;lake&#34;)
  *             .location(&#34;us-west1&#34;)
  *             .project(&#34;my-project-name&#34;)
  *             .build());
  * 
  *         var basicZone = new Zone(&#34;basicZone&#34;, ZoneArgs.builder()        
+ *             .name(&#34;zone&#34;)
  *             .location(&#34;us-west1&#34;)
  *             .lake(basicLake.name())
  *             .type(&#34;RAW&#34;)
@@ -84,6 +86,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary = new Asset(&#34;primary&#34;, AssetArgs.builder()        
+ *             .name(&#34;asset&#34;)
  *             .location(&#34;us-west1&#34;)
  *             .lake(basicLake.name())
  *             .dataplexZone(basicZone.name())
@@ -99,9 +102,7 @@ import javax.annotation.Nullable;
  *                 Map.entry(&#34;my-asset&#34;, &#34;exists&#34;)
  *             ))
  *             .project(&#34;my-project-name&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(basicBucket)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

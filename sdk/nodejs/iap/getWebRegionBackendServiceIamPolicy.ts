@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.iap.getWebRegionBackendServiceIamPolicy({
- *     project: google_compute_region_backend_service["default"].project,
- *     region: google_compute_region_backend_service["default"].region,
- *     webRegionBackendService: google_compute_region_backend_service["default"].name,
+ *     project: _default.project,
+ *     region: _default.region,
+ *     webRegionBackendService: _default.name,
  * });
  * ```
  */
@@ -77,9 +77,9 @@ export interface GetWebRegionBackendServiceIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.iap.getWebRegionBackendServiceIamPolicy({
- *     project: google_compute_region_backend_service["default"].project,
- *     region: google_compute_region_backend_service["default"].region,
- *     webRegionBackendService: google_compute_region_backend_service["default"].name,
+ *     project: _default.project,
+ *     region: _default.region,
+ *     webRegionBackendService: _default.name,
  * });
  * ```
  */

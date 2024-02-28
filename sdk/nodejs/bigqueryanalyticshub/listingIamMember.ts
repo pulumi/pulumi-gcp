@@ -34,10 +34,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.bigqueryanalyticshub.ListingIamPolicy("policy", {
- *     project: google_bigquery_analytics_hub_listing.listing.project,
- *     location: google_bigquery_analytics_hub_listing.listing.location,
- *     dataExchangeId: google_bigquery_analytics_hub_listing.listing.data_exchange_id,
- *     listingId: google_bigquery_analytics_hub_listing.listing.listing_id,
+ *     project: listing.project,
+ *     location: listing.location,
+ *     dataExchangeId: listing.dataExchangeId,
+ *     listingId: listing.listingId,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -49,10 +49,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.bigqueryanalyticshub.ListingIamBinding("binding", {
- *     project: google_bigquery_analytics_hub_listing.listing.project,
- *     location: google_bigquery_analytics_hub_listing.listing.location,
- *     dataExchangeId: google_bigquery_analytics_hub_listing.listing.data_exchange_id,
- *     listingId: google_bigquery_analytics_hub_listing.listing.listing_id,
+ *     project: listing.project,
+ *     location: listing.location,
+ *     dataExchangeId: listing.dataExchangeId,
+ *     listingId: listing.listingId,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
  * });
@@ -65,10 +65,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.bigqueryanalyticshub.ListingIamMember("member", {
- *     project: google_bigquery_analytics_hub_listing.listing.project,
- *     location: google_bigquery_analytics_hub_listing.listing.location,
- *     dataExchangeId: google_bigquery_analytics_hub_listing.listing.data_exchange_id,
- *     listingId: google_bigquery_analytics_hub_listing.listing.listing_id,
+ *     project: listing.project,
+ *     location: listing.location,
+ *     dataExchangeId: listing.dataExchangeId,
+ *     listingId: listing.listingId,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
  * });

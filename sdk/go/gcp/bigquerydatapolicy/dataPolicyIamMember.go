@@ -55,9 +55,9 @@ import (
 //				return err
 //			}
 //			_, err = bigquerydatapolicy.NewDataPolicyIamPolicy(ctx, "policy", &bigquerydatapolicy.DataPolicyIamPolicyArgs{
-//				Project:      pulumi.Any(google_bigquery_datapolicy_data_policy.Data_policy.Project),
-//				Location:     pulumi.Any(google_bigquery_datapolicy_data_policy.Data_policy.Location),
-//				DataPolicyId: pulumi.Any(google_bigquery_datapolicy_data_policy.Data_policy.Data_policy_id),
+//				Project:      pulumi.Any(dataPolicy.Project),
+//				Location:     pulumi.Any(dataPolicy.Location),
+//				DataPolicyId: pulumi.Any(dataPolicy.DataPolicyId),
 //				PolicyData:   *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -84,9 +84,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigquerydatapolicy.NewDataPolicyIamBinding(ctx, "binding", &bigquerydatapolicy.DataPolicyIamBindingArgs{
-//				Project:      pulumi.Any(google_bigquery_datapolicy_data_policy.Data_policy.Project),
-//				Location:     pulumi.Any(google_bigquery_datapolicy_data_policy.Data_policy.Location),
-//				DataPolicyId: pulumi.Any(google_bigquery_datapolicy_data_policy.Data_policy.Data_policy_id),
+//				Project:      pulumi.Any(dataPolicy.Project),
+//				Location:     pulumi.Any(dataPolicy.Location),
+//				DataPolicyId: pulumi.Any(dataPolicy.DataPolicyId),
 //				Role:         pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -116,9 +116,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigquerydatapolicy.NewDataPolicyIamMember(ctx, "member", &bigquerydatapolicy.DataPolicyIamMemberArgs{
-//				Project:      pulumi.Any(google_bigquery_datapolicy_data_policy.Data_policy.Project),
-//				Location:     pulumi.Any(google_bigquery_datapolicy_data_policy.Data_policy.Location),
-//				DataPolicyId: pulumi.Any(google_bigquery_datapolicy_data_policy.Data_policy.Data_policy_id),
+//				Project:      pulumi.Any(dataPolicy.Project),
+//				Location:     pulumi.Any(dataPolicy.Location),
+//				DataPolicyId: pulumi.Any(dataPolicy.DataPolicyId),
 //				Role:         pulumi.String("roles/viewer"),
 //				Member:       pulumi.String("user:jane@example.com"),
 //			})

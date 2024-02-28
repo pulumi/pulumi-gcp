@@ -19,14 +19,17 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const network_peering_nw = new gcp.vmwareengine.Network("network-peering-nw", {
+ *     name: "default-np-nw",
  *     location: "global",
  *     type: "STANDARD",
  * });
  * const network_peering_peer_nw = new gcp.vmwareengine.Network("network-peering-peer-nw", {
+ *     name: "peer-np-nw",
  *     location: "global",
  *     type: "STANDARD",
  * });
  * const vmw_engine_network_peering = new gcp.vmwareengine.NetworkPeering("vmw-engine-network-peering", {
+ *     name: "sample-network-peering",
  *     description: "Sample description",
  *     vmwareEngineNetwork: network_peering_nw.id,
  *     peerNetwork: network_peering_peer_nw.id,
@@ -43,12 +46,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const network_peering_vpc = new gcp.compute.Network("network-peering-vpc", {});
+ * const network_peering_vpc = new gcp.compute.Network("network-peering-vpc", {name: "default-vpc"});
  * const network_peering_standard_nw = new gcp.vmwareengine.Network("network-peering-standard-nw", {
+ *     name: "default-standard-nw-np",
  *     location: "global",
  *     type: "STANDARD",
  * });
  * const vmw_engine_network_peering = new gcp.vmwareengine.NetworkPeering("vmw-engine-network-peering", {
+ *     name: "sample-network-peering",
  *     description: "Sample description",
  *     peerNetwork: network_peering_vpc.id,
  *     peerNetworkType: "STANDARD",

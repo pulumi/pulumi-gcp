@@ -30,13 +30,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataplex.NewLake(ctx, "primary", &dataplex.LakeArgs{
+//				Location:    pulumi.String("us-west1"),
+//				Name:        pulumi.String("lake"),
 //				Description: pulumi.String("Lake for DCL"),
 //				DisplayName: pulumi.String("Lake for DCL"),
+//				Project:     pulumi.String("my-project-name"),
 //				Labels: pulumi.StringMap{
 //					"my-lake": pulumi.String("exists"),
 //				},
-//				Location: pulumi.String("us-west1"),
-//				Project:  pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
 //				return err

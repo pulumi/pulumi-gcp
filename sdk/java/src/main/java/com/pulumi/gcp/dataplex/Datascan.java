@@ -41,10 +41,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataplex.Datascan;
  * import com.pulumi.gcp.dataplex.DatascanArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanDataArgs;
- * import com.pulumi.gcp.dataplex.inputs.DatascanDataProfileSpecArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerOnDemandArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataProfileSpecArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -59,17 +59,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basicProfile = new Datascan(&#34;basicProfile&#34;, DatascanArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .dataScanId(&#34;dataprofile-basic&#34;)
  *             .data(DatascanDataArgs.builder()
  *                 .resource(&#34;//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare&#34;)
  *                 .build())
- *             .dataProfileSpec()
- *             .dataScanId(&#34;dataprofile-basic&#34;)
  *             .executionSpec(DatascanExecutionSpecArgs.builder()
  *                 .trigger(DatascanExecutionSpecTriggerArgs.builder()
  *                     .onDemand()
  *                     .build())
  *                 .build())
- *             .location(&#34;us-central1&#34;)
+ *             .dataProfileSpec()
  *             .project(&#34;my-project-name&#34;)
  *             .build());
  * 
@@ -83,8 +83,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.bigquery.Dataset;
- * import com.pulumi.gcp.bigquery.DatasetArgs;
  * import com.pulumi.gcp.dataplex.Datascan;
  * import com.pulumi.gcp.dataplex.DatascanArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanDataArgs;
@@ -96,7 +94,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataplex.inputs.DatascanDataProfileSpecExcludeFieldsArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanDataProfileSpecPostScanActionsArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanDataProfileSpecPostScanActionsBigqueryExportArgs;
- * import com.pulumi.resources.CustomResourceOptions;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -110,14 +109,6 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var source = new Dataset(&#34;source&#34;, DatasetArgs.builder()        
- *             .datasetId(&#34;dataplex_dataset&#34;)
- *             .friendlyName(&#34;test&#34;)
- *             .description(&#34;This is a test description&#34;)
- *             .location(&#34;US&#34;)
- *             .deleteContentsOnDestroy(true)
- *             .build());
- * 
  *         var fullProfile = new Datascan(&#34;fullProfile&#34;, DatascanArgs.builder()        
  *             .location(&#34;us-central1&#34;)
  *             .displayName(&#34;Full Datascan Profile&#34;)
@@ -150,9 +141,15 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .project(&#34;my-project-name&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(source)
- *                 .build());
+ *             .build());
+ * 
+ *         var source = new Dataset(&#34;source&#34;, DatasetArgs.builder()        
+ *             .datasetId(&#34;dataplex_dataset&#34;)
+ *             .friendlyName(&#34;test&#34;)
+ *             .description(&#34;This is a test description&#34;)
+ *             .location(&#34;US&#34;)
+ *             .deleteContentsOnDestroy(true)
+ *             .build());
  * 
  *     }
  * }
@@ -167,10 +164,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataplex.Datascan;
  * import com.pulumi.gcp.dataplex.DatascanArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanDataArgs;
- * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerOnDemandArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -185,26 +182,26 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basicQuality = new Datascan(&#34;basicQuality&#34;, DatascanArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .dataScanId(&#34;dataquality-basic&#34;)
  *             .data(DatascanDataArgs.builder()
  *                 .resource(&#34;//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare&#34;)
  *                 .build())
- *             .dataQualitySpec(DatascanDataQualitySpecArgs.builder()
- *                 .rules(DatascanDataQualitySpecRuleArgs.builder()
- *                     .description(&#34;rule 1 for validity dimension&#34;)
- *                     .dimension(&#34;VALIDITY&#34;)
- *                     .name(&#34;rule1&#34;)
- *                     .tableConditionExpectation(DatascanDataQualitySpecRuleTableConditionExpectationArgs.builder()
- *                         .sqlExpression(&#34;COUNT(*) &gt; 0&#34;)
- *                         .build())
- *                     .build())
- *                 .build())
- *             .dataScanId(&#34;dataquality-basic&#34;)
  *             .executionSpec(DatascanExecutionSpecArgs.builder()
  *                 .trigger(DatascanExecutionSpecTriggerArgs.builder()
  *                     .onDemand()
  *                     .build())
  *                 .build())
- *             .location(&#34;us-central1&#34;)
+ *             .dataQualitySpec(DatascanDataQualitySpecArgs.builder()
+ *                 .rules(DatascanDataQualitySpecRuleArgs.builder()
+ *                     .dimension(&#34;VALIDITY&#34;)
+ *                     .name(&#34;rule1&#34;)
+ *                     .description(&#34;rule 1 for validity dimension&#34;)
+ *                     .tableConditionExpectation(DatascanDataQualitySpecRuleTableConditionExpectationArgs.builder()
+ *                         .sqlExpression(&#34;COUNT(*) &gt; 0&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
  *             .project(&#34;my-project-name&#34;)
  *             .build());
  * 
@@ -221,10 +218,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataplex.Datascan;
  * import com.pulumi.gcp.dataplex.DatascanArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanDataArgs;
- * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerScheduleArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -239,29 +236,43 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var fullQuality = new Datascan(&#34;fullQuality&#34;, DatascanArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .displayName(&#34;Full Datascan Quality&#34;)
+ *             .dataScanId(&#34;dataquality-full&#34;)
+ *             .description(&#34;Example resource - Full Datascan Quality&#34;)
+ *             .labels(Map.of(&#34;author&#34;, &#34;billing&#34;))
  *             .data(DatascanDataArgs.builder()
  *                 .resource(&#34;//bigquery.googleapis.com/projects/bigquery-public-data/datasets/austin_bikeshare/tables/bikeshare_stations&#34;)
  *                 .build())
+ *             .executionSpec(DatascanExecutionSpecArgs.builder()
+ *                 .trigger(DatascanExecutionSpecTriggerArgs.builder()
+ *                     .schedule(DatascanExecutionSpecTriggerScheduleArgs.builder()
+ *                         .cron(&#34;TZ=America/New_York 1 1 * * *&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .field(&#34;modified_date&#34;)
+ *                 .build())
  *             .dataQualitySpec(DatascanDataQualitySpecArgs.builder()
+ *                 .samplingPercent(5)
  *                 .rowFilter(&#34;station_id &gt; 1000&#34;)
  *                 .rules(                
  *                     DatascanDataQualitySpecRuleArgs.builder()
  *                         .column(&#34;address&#34;)
  *                         .dimension(&#34;VALIDITY&#34;)
- *                         .nonNullExpectation()
  *                         .threshold(0.99)
+ *                         .nonNullExpectation()
  *                         .build(),
  *                     DatascanDataQualitySpecRuleArgs.builder()
  *                         .column(&#34;council_district&#34;)
  *                         .dimension(&#34;VALIDITY&#34;)
  *                         .ignoreNull(true)
- *                         .rangeExpectation(DatascanDataQualitySpecRuleRangeExpectationArgs.builder()
- *                             .maxValue(10)
- *                             .minValue(1)
- *                             .strictMaxEnabled(false)
- *                             .strictMinEnabled(true)
- *                             .build())
  *                         .threshold(0.9)
+ *                         .rangeExpectation(DatascanDataQualitySpecRuleRangeExpectationArgs.builder()
+ *                             .minValue(1)
+ *                             .maxValue(10)
+ *                             .strictMinEnabled(true)
+ *                             .strictMaxEnabled(false)
+ *                             .build())
  *                         .build(),
  *                     DatascanDataQualitySpecRuleArgs.builder()
  *                         .column(&#34;power_type&#34;)
@@ -290,11 +301,11 @@ import javax.annotation.Nullable;
  *                         .column(&#34;number_of_docks&#34;)
  *                         .dimension(&#34;VALIDITY&#34;)
  *                         .statisticRangeExpectation(DatascanDataQualitySpecRuleStatisticRangeExpectationArgs.builder()
- *                             .maxValue(15)
- *                             .minValue(5)
  *                             .statistic(&#34;MEAN&#34;)
- *                             .strictMaxEnabled(true)
+ *                             .minValue(5)
+ *                             .maxValue(15)
  *                             .strictMinEnabled(true)
+ *                             .strictMaxEnabled(true)
  *                             .build())
  *                         .build(),
  *                     DatascanDataQualitySpecRuleArgs.builder()
@@ -310,21 +321,7 @@ import javax.annotation.Nullable;
  *                             .sqlExpression(&#34;COUNT(*) &gt; 0&#34;)
  *                             .build())
  *                         .build())
- *                 .samplingPercent(5)
  *                 .build())
- *             .dataScanId(&#34;dataquality-full&#34;)
- *             .description(&#34;Example resource - Full Datascan Quality&#34;)
- *             .displayName(&#34;Full Datascan Quality&#34;)
- *             .executionSpec(DatascanExecutionSpecArgs.builder()
- *                 .field(&#34;modified_date&#34;)
- *                 .trigger(DatascanExecutionSpecTriggerArgs.builder()
- *                     .schedule(DatascanExecutionSpecTriggerScheduleArgs.builder()
- *                         .cron(&#34;TZ=America/New_York 1 1 * * *&#34;)
- *                         .build())
- *                     .build())
- *                 .build())
- *             .labels(Map.of(&#34;author&#34;, &#34;billing&#34;))
- *             .location(&#34;us-central1&#34;)
  *             .project(&#34;my-project-name&#34;)
  *             .build());
  * 

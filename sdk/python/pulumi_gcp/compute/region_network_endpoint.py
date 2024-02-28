@@ -273,8 +273,11 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.Network("default", auto_create_subnetworks=False)
+        default = gcp.compute.Network("default",
+            name="network",
+            auto_create_subnetworks=False)
         group = gcp.compute.RegionNetworkEndpointGroup("group",
+            name="ip-port-neg",
             network=default.id,
             region="us-central1",
             network_endpoint_type="INTERNET_IP_PORT")
@@ -290,8 +293,11 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.Network("default", auto_create_subnetworks=False)
+        default = gcp.compute.Network("default",
+            name="network",
+            auto_create_subnetworks=False)
         group = gcp.compute.RegionNetworkEndpointGroup("group",
+            name="fqdn-port-neg",
             network=default.id,
             region="us-central1",
             network_endpoint_type="INTERNET_FQDN_PORT")
@@ -373,8 +379,11 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.Network("default", auto_create_subnetworks=False)
+        default = gcp.compute.Network("default",
+            name="network",
+            auto_create_subnetworks=False)
         group = gcp.compute.RegionNetworkEndpointGroup("group",
+            name="ip-port-neg",
             network=default.id,
             region="us-central1",
             network_endpoint_type="INTERNET_IP_PORT")
@@ -390,8 +399,11 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.Network("default", auto_create_subnetworks=False)
+        default = gcp.compute.Network("default",
+            name="network",
+            auto_create_subnetworks=False)
         group = gcp.compute.RegionNetworkEndpointGroup("group",
+            name="fqdn-port-neg",
             network=default.id,
             region="us-central1",
             network_endpoint_type="INTERNET_FQDN_PORT")

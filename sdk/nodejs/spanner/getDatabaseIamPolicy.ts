@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const foo = gcp.spanner.getDatabaseIamPolicy({
- *     project: google_spanner_database.database.project,
- *     database: google_spanner_database.database.name,
- *     instance: google_spanner_database.database.instance,
+ *     project: database.project,
+ *     database: database.name,
+ *     instance: database.instance,
  * });
  * ```
  */
@@ -79,9 +79,9 @@ export interface GetDatabaseIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const foo = gcp.spanner.getDatabaseIamPolicy({
- *     project: google_spanner_database.database.project,
- *     database: google_spanner_database.database.name,
- *     instance: google_spanner_database.database.instance,
+ *     project: database.project,
+ *     database: database.name,
+ *     instance: database.instance,
  * });
  * ```
  */

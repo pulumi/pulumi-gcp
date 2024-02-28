@@ -21,14 +21,19 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * import * as random from "@pulumi/random";
  *
- * const urlSignature = new random.RandomId("urlSignature", {byteLength: 16});
- * const bucket = new gcp.storage.Bucket("bucket", {location: "EU"});
- * const testBackend = new gcp.compute.BackendBucket("testBackend", {
+ * const urlSignature = new random.RandomId("url_signature", {byteLength: 16});
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "test-storage-bucket",
+ *     location: "EU",
+ * });
+ * const testBackend = new gcp.compute.BackendBucket("test_backend", {
+ *     name: "test-signed-backend-bucket",
  *     description: "Contains beautiful images",
  *     bucketName: bucket.name,
  *     enableCdn: true,
  * });
- * const backendKey = new gcp.compute.BackendBucketSignedUrlKey("backendKey", {
+ * const backendKey = new gcp.compute.BackendBucketSignedUrlKey("backend_key", {
+ *     name: "test-key",
  *     keyValue: urlSignature.b64Url,
  *     backendBucket: testBackend.name,
  * });

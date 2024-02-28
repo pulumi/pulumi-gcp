@@ -320,11 +320,10 @@ class GatewayIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.apigateway.GatewayIamPolicy("policy",
-            project=google_api_gateway_gateway["api_gw"]["project"],
-            region=google_api_gateway_gateway["api_gw"]["region"],
-            gateway=google_api_gateway_gateway["api_gw"]["gateway_id"],
-            policy_data=admin.policy_data,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            project=api_gw["project"],
+            region=api_gw["region"],
+            gateway=api_gw["gatewayId"],
+            policy_data=admin.policy_data)
         ```
 
         ## google\\_api\\_gateway\\_gateway\\_iam\\_binding
@@ -334,12 +333,11 @@ class GatewayIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.apigateway.GatewayIamBinding("binding",
-            project=google_api_gateway_gateway["api_gw"]["project"],
-            region=google_api_gateway_gateway["api_gw"]["region"],
-            gateway=google_api_gateway_gateway["api_gw"]["gateway_id"],
+            project=api_gw["project"],
+            region=api_gw["region"],
+            gateway=api_gw["gatewayId"],
             role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_api\\_gateway\\_gateway\\_iam\\_member
@@ -349,12 +347,11 @@ class GatewayIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.apigateway.GatewayIamMember("member",
-            project=google_api_gateway_gateway["api_gw"]["project"],
-            region=google_api_gateway_gateway["api_gw"]["region"],
-            gateway=google_api_gateway_gateway["api_gw"]["gateway_id"],
+            project=api_gw["project"],
+            region=api_gw["region"],
+            gateway=api_gw["gatewayId"],
             role="roles/apigateway.viewer",
-            member="user:jane@example.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            member="user:jane@example.com")
         ```
 
         ## Import
@@ -451,11 +448,10 @@ class GatewayIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.apigateway.GatewayIamPolicy("policy",
-            project=google_api_gateway_gateway["api_gw"]["project"],
-            region=google_api_gateway_gateway["api_gw"]["region"],
-            gateway=google_api_gateway_gateway["api_gw"]["gateway_id"],
-            policy_data=admin.policy_data,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            project=api_gw["project"],
+            region=api_gw["region"],
+            gateway=api_gw["gatewayId"],
+            policy_data=admin.policy_data)
         ```
 
         ## google\\_api\\_gateway\\_gateway\\_iam\\_binding
@@ -465,12 +461,11 @@ class GatewayIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.apigateway.GatewayIamBinding("binding",
-            project=google_api_gateway_gateway["api_gw"]["project"],
-            region=google_api_gateway_gateway["api_gw"]["region"],
-            gateway=google_api_gateway_gateway["api_gw"]["gateway_id"],
+            project=api_gw["project"],
+            region=api_gw["region"],
+            gateway=api_gw["gatewayId"],
             role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_api\\_gateway\\_gateway\\_iam\\_member
@@ -480,12 +475,11 @@ class GatewayIamBinding(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.apigateway.GatewayIamMember("member",
-            project=google_api_gateway_gateway["api_gw"]["project"],
-            region=google_api_gateway_gateway["api_gw"]["region"],
-            gateway=google_api_gateway_gateway["api_gw"]["gateway_id"],
+            project=api_gw["project"],
+            region=api_gw["region"],
+            gateway=api_gw["gatewayId"],
             role="roles/apigateway.viewer",
-            member="user:jane@example.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            member="user:jane@example.com")
         ```
 
         ## Import

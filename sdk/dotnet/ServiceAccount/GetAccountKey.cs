@@ -31,12 +31,12 @@ namespace Pulumi.Gcp.ServiceAccount
         ///         AccountId = "dev-foo-account",
         ///     });
         /// 
-        ///     var mykeyKey = new Gcp.ServiceAccount.Key("mykeyKey", new()
+        ///     var mykeyKey = new Gcp.ServiceAccount.Key("mykey", new()
         ///     {
         ///         ServiceAccountId = myaccount.Name,
         ///     });
         /// 
-        ///     var mykeyAccountKey = Gcp.ServiceAccount.GetAccountKey.Invoke(new()
+        ///     var mykey = Gcp.ServiceAccount.GetAccountKey.Invoke(new()
         ///     {
         ///         Name = mykeyKey.Name,
         ///         PublicKeyType = "TYPE_X509_PEM_FILE",
@@ -70,12 +70,12 @@ namespace Pulumi.Gcp.ServiceAccount
         ///         AccountId = "dev-foo-account",
         ///     });
         /// 
-        ///     var mykeyKey = new Gcp.ServiceAccount.Key("mykeyKey", new()
+        ///     var mykeyKey = new Gcp.ServiceAccount.Key("mykey", new()
         ///     {
         ///         ServiceAccountId = myaccount.Name,
         ///     });
         /// 
-        ///     var mykeyAccountKey = Gcp.ServiceAccount.GetAccountKey.Invoke(new()
+        ///     var mykey = Gcp.ServiceAccount.GetAccountKey.Invoke(new()
         ///     {
         ///         Name = mykeyKey.Name,
         ///         PublicKeyType = "TYPE_X509_PEM_FILE",

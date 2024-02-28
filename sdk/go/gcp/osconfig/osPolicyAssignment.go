@@ -42,7 +42,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := osconfig.NewOsPolicyAssignment(ctx, "primary", &osconfig.OsPolicyAssignmentArgs{
-//				Description: pulumi.String("A test os policy assignment"),
 //				InstanceFilter: &osconfig.OsPolicyAssignmentInstanceFilterArgs{
 //					All: pulumi.Bool(false),
 //					ExclusionLabels: osconfig.OsPolicyAssignmentInstanceFilterExclusionLabelArray{
@@ -67,20 +66,13 @@ import (
 //					},
 //				},
 //				Location: pulumi.String("us-central1-a"),
+//				Name:     pulumi.String("policy-assignment"),
 //				OsPolicies: osconfig.OsPolicyAssignmentOsPolicyArray{
 //					&osconfig.OsPolicyAssignmentOsPolicyArgs{
-//						AllowNoResourceGroupMatch: pulumi.Bool(false),
-//						Description:               pulumi.String("A test os policy"),
-//						Id:                        pulumi.String("policy"),
-//						Mode:                      pulumi.String("VALIDATION"),
+//						Id:   pulumi.String("policy"),
+//						Mode: pulumi.String("VALIDATION"),
 //						ResourceGroups: osconfig.OsPolicyAssignmentOsPolicyResourceGroupArray{
 //							&osconfig.OsPolicyAssignmentOsPolicyResourceGroupArgs{
-//								InventoryFilters: osconfig.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArray{
-//									&osconfig.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs{
-//										OsShortName: pulumi.String("centos"),
-//										OsVersion:   pulumi.String("8.*"),
-//									},
-//								},
 //								Resources: osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArray{
 //									&osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs{
 //										Id: pulumi.String("apt-to-yum"),
@@ -91,43 +83,51 @@ import (
 //													pulumi.String("doc"),
 //												},
 //												Distribution: pulumi.String("debian"),
-//												GpgKey:       pulumi.String(".gnupg/pubring.kbx"),
 //												Uri:          pulumi.String("https://atl.mirrors.clouvider.net/debian"),
+//												GpgKey:       pulumi.String(".gnupg/pubring.kbx"),
 //											},
 //										},
 //									},
 //									&osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs{
+//										Id: pulumi.String("exec1"),
 //										Exec: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs{
-//											Enforce: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs{
-//												Args: pulumi.StringArray{
-//													pulumi.String("arg1"),
-//												},
-//												File: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs{
-//													AllowInsecure: pulumi.Bool(true),
-//													Remote: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs{
-//														Sha256Checksum: pulumi.String("c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063"),
-//														Uri:            pulumi.String("https://www.example.com/script.sh"),
-//													},
-//												},
-//												Interpreter:    pulumi.String("SHELL"),
-//												OutputFilePath: pulumi.String("$HOME/out"),
-//											},
 //											Validate: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs{
+//												Interpreter: pulumi.String("SHELL"),
 //												Args: pulumi.StringArray{
 //													pulumi.String("arg1"),
 //												},
 //												File: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs{
 //													LocalPath: pulumi.String("$HOME/script.sh"),
 //												},
-//												Interpreter:    pulumi.String("SHELL"),
+//												OutputFilePath: pulumi.String("$HOME/out"),
+//											},
+//											Enforce: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs{
+//												Interpreter: pulumi.String("SHELL"),
+//												Args: pulumi.StringArray{
+//													pulumi.String("arg1"),
+//												},
+//												File: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs{
+//													AllowInsecure: pulumi.Bool(true),
+//													Remote: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs{
+//														Uri:            pulumi.String("https://www.example.com/script.sh"),
+//														Sha256Checksum: pulumi.String("c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063"),
+//													},
+//												},
 //												OutputFilePath: pulumi.String("$HOME/out"),
 //											},
 //										},
-//										Id: pulumi.String("exec1"),
+//									},
+//								},
+//								InventoryFilters: osconfig.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArray{
+//									&osconfig.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs{
+//										OsShortName: pulumi.String("centos"),
+//										OsVersion:   pulumi.String("8.*"),
 //									},
 //								},
 //							},
 //						},
+//						AllowNoResourceGroupMatch: pulumi.Bool(false),
+//						Description:               pulumi.String("A test os policy"),
 //					},
 //				},
 //				Rollout: &osconfig.OsPolicyAssignmentRolloutArgs{
@@ -136,6 +136,7 @@ import (
 //					},
 //					MinWaitDuration: pulumi.String("3s"),
 //				},
+//				Description: pulumi.String("A test os policy assignment"),
 //			})
 //			if err != nil {
 //				return err

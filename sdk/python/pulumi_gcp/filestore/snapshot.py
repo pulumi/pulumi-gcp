@@ -381,6 +381,7 @@ class Snapshot(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.filestore.Instance("instance",
+            name="test-instance-for-snapshot",
             location="us-east1",
             tier="ENTERPRISE",
             file_shares=gcp.filestore.InstanceFileSharesArgs(
@@ -392,6 +393,7 @@ class Snapshot(pulumi.CustomResource):
                 modes=["MODE_IPV4"],
             )])
         snapshot = gcp.filestore.Snapshot("snapshot",
+            name="test-snapshot",
             instance=instance.name,
             location="us-east1")
         ```
@@ -402,6 +404,7 @@ class Snapshot(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.filestore.Instance("instance",
+            name="test-instance-for-snapshot",
             location="us-west1",
             tier="ENTERPRISE",
             file_shares=gcp.filestore.InstanceFileSharesArgs(
@@ -413,6 +416,7 @@ class Snapshot(pulumi.CustomResource):
                 modes=["MODE_IPV4"],
             )])
         snapshot = gcp.filestore.Snapshot("snapshot",
+            name="test-snapshot",
             instance=instance.name,
             location="us-west1",
             description="Snapshot of test-instance-for-snapshot",
@@ -491,6 +495,7 @@ class Snapshot(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.filestore.Instance("instance",
+            name="test-instance-for-snapshot",
             location="us-east1",
             tier="ENTERPRISE",
             file_shares=gcp.filestore.InstanceFileSharesArgs(
@@ -502,6 +507,7 @@ class Snapshot(pulumi.CustomResource):
                 modes=["MODE_IPV4"],
             )])
         snapshot = gcp.filestore.Snapshot("snapshot",
+            name="test-snapshot",
             instance=instance.name,
             location="us-east1")
         ```
@@ -512,6 +518,7 @@ class Snapshot(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.filestore.Instance("instance",
+            name="test-instance-for-snapshot",
             location="us-west1",
             tier="ENTERPRISE",
             file_shares=gcp.filestore.InstanceFileSharesArgs(
@@ -523,6 +530,7 @@ class Snapshot(pulumi.CustomResource):
                 modes=["MODE_IPV4"],
             )])
         snapshot = gcp.filestore.Snapshot("snapshot",
+            name="test-snapshot",
             instance=instance.name,
             location="us-west1",
             description="Snapshot of test-instance-for-snapshot",

@@ -24,6 +24,7 @@ import * as utilities from "../utilities";
  *     versionPrefix: "1.12.",
  * });
  * const foo = new gcp.container.Cluster("foo", {
+ *     name: "test-cluster",
  *     location: "us-central1-b",
  *     nodeVersion: central1b.then(central1b => central1b.latestNodeVersion),
  *     initialNodeCount: 1,
@@ -130,6 +131,7 @@ export interface GetEngineVersionsResult {
  *     versionPrefix: "1.12.",
  * });
  * const foo = new gcp.container.Cluster("foo", {
+ *     name: "test-cluster",
  *     location: "us-central1-b",
  *     nodeVersion: central1b.then(central1b => central1b.latestNodeVersion),
  *     initialNodeCount: 1,

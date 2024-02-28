@@ -42,6 +42,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var target_vm = new Gcp.Compute.Instance("target-vm", new()
     ///     {
+    ///         Name = "target-vm",
     ///         MachineType = "e2-medium",
     ///         Zone = "us-central1-a",
     ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
@@ -62,6 +63,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var @default = new Gcp.Compute.TargetInstance("default", new()
     ///     {
+    ///         Name = "target",
     ///         Instance = target_vm.Id,
     ///     });
     /// 
@@ -77,7 +79,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var target_vmNetwork = Gcp.Compute.GetNetwork.Invoke(new()
+    ///     var target_vm = Gcp.Compute.GetNetwork.Invoke(new()
     ///     {
     ///         Name = "default",
     ///     });
@@ -88,8 +90,9 @@ namespace Pulumi.Gcp.Compute
     ///         Project = "debian-cloud",
     ///     });
     /// 
-    ///     var target_vmInstance = new Gcp.Compute.Instance("target-vmInstance", new()
+    ///     var target_vmInstance = new Gcp.Compute.Instance("target-vm", new()
     ///     {
+    ///         Name = "custom-network-target-vm",
     ///         MachineType = "e2-medium",
     ///         Zone = "us-central1-a",
     ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
@@ -106,18 +109,13 @@ namespace Pulumi.Gcp.Compute
     ///                 Network = "default",
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var customNetwork = new Gcp.Compute.TargetInstance("customNetwork", new()
+    ///     var customNetwork = new Gcp.Compute.TargetInstance("custom_network", new()
     ///     {
+    ///         Name = "custom-network",
     ///         Instance = target_vmInstance.Id,
-    ///         Network = target_vmNetwork.Apply(target_vmNetwork =&gt; target_vmNetwork.Apply(getNetworkResult =&gt; getNetworkResult.SelfLink)),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Network = target_vm.Apply(target_vm =&gt; target_vm.Apply(getNetworkResult =&gt; getNetworkResult.SelfLink)),
     ///     });
     /// 
     /// });

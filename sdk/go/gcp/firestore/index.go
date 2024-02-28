@@ -33,6 +33,87 @@ import (
 // will be the same as the App Engine location specified.
 //
 // ## Example Usage
+// ### Firestore Index Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/firestore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("project-id"),
+//				Name:      pulumi.String("project-id"),
+//				OrgId:     pulumi.String("123456789"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
+//				CreateDuration: "60s",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewService(ctx, "firestore", &projects.ServiceArgs{
+//				Project: project.ProjectId,
+//				Service: pulumi.String("firestore.googleapis.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			database, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
+//				Project:    project.ProjectId,
+//				Name:       pulumi.String("(default)"),
+//				LocationId: pulumi.String("nam5"),
+//				Type:       pulumi.String("FIRESTORE_NATIVE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Creating a document also creates its collection
+//			document, err := firestore.NewDocument(ctx, "document", &firestore.DocumentArgs{
+//				Project:    project.ProjectId,
+//				Database:   database.Name,
+//				Collection: pulumi.String("somenewcollection"),
+//				DocumentId: pulumi.String(""),
+//				Fields:     pulumi.String("{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firestore.NewIndex(ctx, "my-index", &firestore.IndexArgs{
+//				Project:    project.ProjectId,
+//				Database:   database.Name,
+//				Collection: document.Collection,
+//				Fields: firestore.IndexFieldArray{
+//					&firestore.IndexFieldArgs{
+//						FieldPath: pulumi.String("name"),
+//						Order:     pulumi.String("ASCENDING"),
+//					},
+//					&firestore.IndexFieldArgs{
+//						FieldPath: pulumi.String("description"),
+//						Order:     pulumi.String("DESCENDING"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Firestore Index Datastore Mode
 //
 // ```go
@@ -48,9 +129,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := firestore.NewIndex(ctx, "my-index", &firestore.IndexArgs{
-//				ApiScope:   pulumi.String("DATASTORE_MODE_API"),
-//				Collection: pulumi.String("chatrooms"),
+//				Project:    pulumi.String("my-project-name"),
 //				Database:   pulumi.String("(default)"),
+//				Collection: pulumi.String("chatrooms"),
+//				QueryScope: pulumi.String("COLLECTION_RECURSIVE"),
+//				ApiScope:   pulumi.String("DATASTORE_MODE_API"),
 //				Fields: firestore.IndexFieldArray{
 //					&firestore.IndexFieldArgs{
 //						FieldPath: pulumi.String("name"),
@@ -61,8 +144,6 @@ import (
 //						Order:     pulumi.String("DESCENDING"),
 //					},
 //				},
-//				Project:    pulumi.String("my-project-name"),
-//				QueryScope: pulumi.String("COLLECTION_RECURSIVE"),
 //			})
 //			if err != nil {
 //				return err

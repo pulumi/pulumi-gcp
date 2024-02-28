@@ -31,6 +31,7 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var @default = new Gcp.GkeHub.Fleet("default", new()
     ///     {
+    ///         DisplayName = "my production fleet",
     ///         DefaultClusterConfig = new Gcp.GkeHub.Inputs.FleetDefaultClusterConfigArgs
     ///         {
     ///             SecurityPostureConfig = new Gcp.GkeHub.Inputs.FleetDefaultClusterConfigSecurityPostureConfigArgs
@@ -39,7 +40,6 @@ namespace Pulumi.Gcp.GkeHub
     ///                 VulnerabilityMode = "VULNERABILITY_DISABLED",
     ///             },
     ///         },
-    ///         DisplayName = "my production fleet",
     ///     });
     /// 
     /// });

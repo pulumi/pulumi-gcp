@@ -40,7 +40,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
  * import com.pulumi.gcp.compute.MachineImageIamPolicy;
  * import com.pulumi.gcp.compute.MachineImageIamPolicyArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -62,12 +61,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new MachineImageIamPolicy(&#34;policy&#34;, MachineImageIamPolicyArgs.builder()        
- *             .project(google_compute_machine_image.image().project())
- *             .machineImage(google_compute_machine_image.image().name())
+ *             .project(image.project())
+ *             .machineImage(image.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -84,7 +81,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
  * import com.pulumi.gcp.compute.MachineImageIamPolicy;
  * import com.pulumi.gcp.compute.MachineImageIamPolicyArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -111,12 +107,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new MachineImageIamPolicy(&#34;policy&#34;, MachineImageIamPolicyArgs.builder()        
- *             .project(google_compute_machine_image.image().project())
- *             .machineImage(google_compute_machine_image.image().name())
+ *             .project(image.project())
+ *             .machineImage(image.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -130,7 +124,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.MachineImageIamBinding;
  * import com.pulumi.gcp.compute.MachineImageIamBindingArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -145,13 +138,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new MachineImageIamBinding(&#34;binding&#34;, MachineImageIamBindingArgs.builder()        
- *             .project(google_compute_machine_image.image().project())
- *             .machineImage(google_compute_machine_image.image().name())
+ *             .project(image.project())
+ *             .machineImage(image.name())
  *             .role(&#34;roles/compute.admin&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -167,7 +158,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.MachineImageIamBinding;
  * import com.pulumi.gcp.compute.MachineImageIamBindingArgs;
  * import com.pulumi.gcp.compute.inputs.MachineImageIamBindingConditionArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -182,8 +172,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new MachineImageIamBinding(&#34;binding&#34;, MachineImageIamBindingArgs.builder()        
- *             .project(google_compute_machine_image.image().project())
- *             .machineImage(google_compute_machine_image.image().name())
+ *             .project(image.project())
+ *             .machineImage(image.name())
  *             .role(&#34;roles/compute.admin&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .condition(MachineImageIamBindingConditionArgs.builder()
@@ -191,9 +181,7 @@ import javax.annotation.Nullable;
  *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
  *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -207,7 +195,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.MachineImageIamMember;
  * import com.pulumi.gcp.compute.MachineImageIamMemberArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -222,13 +209,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new MachineImageIamMember(&#34;member&#34;, MachineImageIamMemberArgs.builder()        
- *             .project(google_compute_machine_image.image().project())
- *             .machineImage(google_compute_machine_image.image().name())
+ *             .project(image.project())
+ *             .machineImage(image.name())
  *             .role(&#34;roles/compute.admin&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -244,7 +229,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.MachineImageIamMember;
  * import com.pulumi.gcp.compute.MachineImageIamMemberArgs;
  * import com.pulumi.gcp.compute.inputs.MachineImageIamMemberConditionArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -259,8 +243,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new MachineImageIamMember(&#34;member&#34;, MachineImageIamMemberArgs.builder()        
- *             .project(google_compute_machine_image.image().project())
- *             .machineImage(google_compute_machine_image.image().name())
+ *             .project(image.project())
+ *             .machineImage(image.name())
  *             .role(&#34;roles/compute.admin&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .condition(MachineImageIamMemberConditionArgs.builder()
@@ -268,9 +252,7 @@ import javax.annotation.Nullable;
  *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
  *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

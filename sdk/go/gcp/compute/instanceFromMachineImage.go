@@ -36,13 +36,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewInstanceFromMachineImage(ctx, "tpl", &compute.InstanceFromMachineImageArgs{
+//				Name:               pulumi.String("instance-from-machine-image"),
 //				Zone:               pulumi.String("us-central1-a"),
 //				SourceMachineImage: pulumi.String("projects/PROJECT-ID/global/machineImages/NAME"),
 //				CanIpForward:       pulumi.Bool(false),
 //				Labels: pulumi.StringMap{
 //					"my_key": pulumi.String("my_value"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

@@ -222,8 +222,11 @@ class CryptoKeyVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        keyring = gcp.kms.KeyRing("keyring", location="global")
+        keyring = gcp.kms.KeyRing("keyring",
+            name="keyring-example",
+            location="global")
         cryptokey = gcp.kms.CryptoKey("cryptokey",
+            name="crypto-key-example",
             key_ring=keyring.id,
             rotation_period="7776000s")
         example_key = gcp.kms.CryptoKeyVersion("example-key", crypto_key=cryptokey.id)
@@ -275,8 +278,11 @@ class CryptoKeyVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        keyring = gcp.kms.KeyRing("keyring", location="global")
+        keyring = gcp.kms.KeyRing("keyring",
+            name="keyring-example",
+            location="global")
         cryptokey = gcp.kms.CryptoKey("cryptokey",
+            name="crypto-key-example",
             key_ring=keyring.id,
             rotation_period="7776000s")
         example_key = gcp.kms.CryptoKeyVersion("example-key", crypto_key=cryptokey.id)

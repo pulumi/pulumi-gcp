@@ -41,6 +41,7 @@ namespace Pulumi.Gcp.Firebaserules
     /// 
     ///     var primary = new Gcp.Firebaserules.Release("primary", new()
     ///     {
+    ///         Name = "cloud.firestore",
     ///         RulesetName = firestore.Name.Apply(name =&gt; $"projects/my-project-name/rulesets/{name}"),
     ///         Project = "my-project-name",
     ///     });
@@ -58,23 +59,11 @@ namespace Pulumi.Gcp.Firebaserules
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Provision a non-default Cloud Storage bucket.
-    ///     var bucketBucket = new Gcp.Storage.Bucket("bucketBucket", new()
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
     ///         Project = "my-project-name",
+    ///         Name = "bucket",
     ///         Location = "us-west1",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
-    /// 
-    ///     // Make the Storage bucket accessible for Firebase SDKs, authentication, and Firebase Security Rules.
-    ///     var bucketStorageBucket = new Gcp.Firebase.StorageBucket("bucketStorageBucket", new()
-    ///     {
-    ///         Project = "my-project-name",
-    ///         BucketId = bucketBucket.Name,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     // Create a ruleset of Firebase Security Rules from a local file.
@@ -92,22 +81,20 @@ namespace Pulumi.Gcp.Firebaserules
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///         DependsOn = new[]
-    ///         {
-    ///             bucketStorageBucket,
-    ///         },
     ///     });
     /// 
     ///     var primary = new Gcp.Firebaserules.Release("primary", new()
     ///     {
+    ///         Name = bucket.Name.Apply(name =&gt; $"firebase.storage/{name}"),
     ///         RulesetName = storage.Name.Apply(name =&gt; $"projects/my-project-name/rulesets/{name}"),
     ///         Project = "my-project-name",
-    ///     }, new CustomResourceOptions
+    ///     });
+    /// 
+    ///     // Make the Storage bucket accessible for Firebase SDKs, authentication, and Firebase Security Rules.
+    ///     var bucketStorageBucket = new Gcp.Firebase.StorageBucket("bucket", new()
     ///     {
-    ///         Provider = google_beta,
+    ///         Project = "my-project-name",
+    ///         BucketId = bucket.Name,
     ///     });
     /// 
     /// });

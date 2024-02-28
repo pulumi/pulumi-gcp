@@ -15,13 +15,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const bigDataJob = new gcp.dataflow.Job("bigDataJob", {
- *     parameters: {
- *         baz: "qux",
- *         foo: "bar",
- *     },
- *     tempGcsLocation: "gs://my-bucket/tmp_dir",
+ * const bigDataJob = new gcp.dataflow.Job("big_data_job", {
+ *     name: "dataflow-job",
  *     templateGcsPath: "gs://my-bucket/templates/template_file",
+ *     tempGcsLocation: "gs://my-bucket/tmp_dir",
+ *     parameters: {
+ *         foo: "bar",
+ *         baz: "qux",
+ *     },
  * });
  * ```
  * ### Streaming Job
@@ -30,16 +31,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const topic = new gcp.pubsub.Topic("topic", {});
+ * const topic = new gcp.pubsub.Topic("topic", {name: "dataflow-job1"});
  * const bucket1 = new gcp.storage.Bucket("bucket1", {
+ *     name: "tf-test-bucket1",
  *     location: "US",
  *     forceDestroy: true,
  * });
  * const bucket2 = new gcp.storage.Bucket("bucket2", {
+ *     name: "tf-test-bucket2",
  *     location: "US",
  *     forceDestroy: true,
  * });
- * const pubsubStream = new gcp.dataflow.Job("pubsubStream", {
+ * const pubsubStream = new gcp.dataflow.Job("pubsub_stream", {
+ *     name: "tf-test-dataflow-job1",
  *     templateGcsPath: "gs://my-bucket/templates/template_file",
  *     tempGcsLocation: "gs://my-bucket/tmp_dir",
  *     enableStreamingEngine: true,
@@ -71,22 +75,21 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const bigDataJobSubscriptionId = config.get("bigDataJobSubscriptionId") || "projects/myproject/subscriptions/messages";
- * const bigDataJobNameSuffix = new random.RandomId("bigDataJobNameSuffix", {
+ * const bigDataJobNameSuffix = new random.RandomId("big_data_job_name_suffix", {
  *     byteLength: 4,
  *     keepers: {
- *         region: _var.region,
+ *         region: region,
  *         subscription_id: bigDataJobSubscriptionId,
  *     },
  * });
- * const bigDataJob = new gcp.dataflow.FlexTemplateJob("bigDataJob", {
- *     region: _var.region,
+ * const bigDataJob = new gcp.dataflow.FlexTemplateJob("big_data_job", {
+ *     name: pulumi.interpolate`dataflow-flextemplates-job-${bigDataJobNameSuffix.dec}`,
+ *     region: region,
  *     containerSpecGcsPath: "gs://my-bucket/templates/template.json",
  *     skipWaitOnJobTermination: true,
  *     parameters: {
  *         inputSubscription: bigDataJobSubscriptionId,
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

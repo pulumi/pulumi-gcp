@@ -99,8 +99,8 @@ def get_consent_store_iam_policy(consent_store_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.healthcare.get_consent_store_iam_policy(dataset=google_healthcare_consent_store["my-consent"]["dataset"],
-        consent_store_id=google_healthcare_consent_store["my-consent"]["name"])
+    policy = gcp.healthcare.get_consent_store_iam_policy(dataset=my_consent["dataset"],
+        consent_store_id=my_consent["name"])
     ```
 
 
@@ -136,8 +136,8 @@ def get_consent_store_iam_policy_output(consent_store_id: Optional[pulumi.Input[
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.healthcare.get_consent_store_iam_policy(dataset=google_healthcare_consent_store["my-consent"]["dataset"],
-        consent_store_id=google_healthcare_consent_store["my-consent"]["name"])
+    policy = gcp.healthcare.get_consent_store_iam_policy(dataset=my_consent["dataset"],
+        consent_store_id=my_consent["name"])
     ```
 
 

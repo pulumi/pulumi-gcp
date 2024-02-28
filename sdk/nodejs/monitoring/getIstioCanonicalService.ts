@@ -28,10 +28,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * // Monitors the default MeshIstio service
  * const default = gcp.monitoring.getIstioCanonicalService({
- *     canonicalService: "prometheus",
- *     canonicalServiceNamespace: "istio-system",
  *     meshUid: "proj-573164786102",
+ *     canonicalServiceNamespace: "istio-system",
+ *     canonicalService: "prometheus",
  * });
  * ```
  */
@@ -126,10 +127,11 @@ export interface GetIstioCanonicalServiceResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * // Monitors the default MeshIstio service
  * const default = gcp.monitoring.getIstioCanonicalService({
- *     canonicalService: "prometheus",
- *     canonicalServiceNamespace: "istio-system",
  *     meshUid: "proj-573164786102",
+ *     canonicalServiceNamespace: "istio-system",
+ *     canonicalService: "prometheus",
  * });
  * ```
  */

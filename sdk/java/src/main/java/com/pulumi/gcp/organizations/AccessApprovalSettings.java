@@ -49,6 +49,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var organizationAccessApproval = new AccessApprovalSettings(&#34;organizationAccessApproval&#34;, AccessApprovalSettingsArgs.builder()        
+ *             .organizationId(&#34;123456789&#34;)
+ *             .notificationEmails(            
+ *                 &#34;testuser@example.com&#34;,
+ *                 &#34;example.user@example.com&#34;)
  *             .enrolledServices(            
  *                 AccessApprovalSettingsEnrolledServiceArgs.builder()
  *                     .cloudProduct(&#34;appengine.googleapis.com&#34;)
@@ -57,10 +61,6 @@ import javax.annotation.Nullable;
  *                     .cloudProduct(&#34;dataflow.googleapis.com&#34;)
  *                     .enrollmentLevel(&#34;BLOCK_ALL&#34;)
  *                     .build())
- *             .notificationEmails(            
- *                 &#34;testuser@example.com&#34;,
- *                 &#34;example.user@example.com&#34;)
- *             .organizationId(&#34;123456789&#34;)
  *             .build());
  * 
  *     }
@@ -89,7 +89,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.AccessApprovalSettings;
  * import com.pulumi.gcp.organizations.AccessApprovalSettingsArgs;
  * import com.pulumi.gcp.organizations.inputs.AccessApprovalSettingsEnrolledServiceArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -104,15 +103,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
+ *             .name(&#34;My Project&#34;)
+ *             .projectId(&#34;your-project-id&#34;)
  *             .orgId(&#34;123456789&#34;)
  *             .build());
  * 
  *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
+ *             .name(&#34;key-ring&#34;)
  *             .location(&#34;global&#34;)
  *             .project(myProject.projectId())
  *             .build());
  * 
  *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
+ *             .name(&#34;crypto-key&#34;)
  *             .keyRing(keyRing.id())
  *             .purpose(&#34;ASYMMETRIC_SIGN&#34;)
  *             .versionTemplate(CryptoKeyVersionTemplateArgs.builder()
@@ -140,9 +143,7 @@ import javax.annotation.Nullable;
  *             .enrolledServices(AccessApprovalSettingsEnrolledServiceArgs.builder()
  *                 .cloudProduct(&#34;all&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(iam)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

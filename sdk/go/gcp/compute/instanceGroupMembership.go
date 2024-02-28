@@ -46,11 +46,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "default-network", nil)
+//			_, err := compute.NewNetwork(ctx, "default-network", &compute.NetworkArgs{
+//				Name: pulumi.String("network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewInstance(ctx, "default-instance", &compute.InstanceArgs{
+//				Name:        pulumi.String("instance"),
 //				MachineType: pulumi.String("e2-medium"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
@@ -66,7 +69,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewInstanceGroup(ctx, "default-instance-group", nil)
+//			_, err = compute.NewInstanceGroup(ctx, "default-instance-group", &compute.InstanceGroupArgs{
+//				Name: pulumi.String("instance-group"),
+//			})
 //			if err != nil {
 //				return err
 //			}

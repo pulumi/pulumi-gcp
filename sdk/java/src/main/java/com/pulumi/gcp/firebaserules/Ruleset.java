@@ -45,15 +45,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var primary = new Ruleset(&#34;primary&#34;, RulesetArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
  *             .source(RulesetSourceArgs.builder()
  *                 .files(RulesetSourceFileArgs.builder()
  *                     .content(&#34;service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }&#34;)
- *                     .fingerprint(&#34;&#34;)
  *                     .name(&#34;firestore.rules&#34;)
+ *                     .fingerprint(&#34;&#34;)
  *                     .build())
  *                 .language(&#34;&#34;)
  *                 .build())
+ *             .project(&#34;my-project-name&#34;)
  *             .build());
  * 
  *     }
@@ -84,13 +84,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var primary = new Ruleset(&#34;primary&#34;, RulesetArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
  *             .source(RulesetSourceArgs.builder()
  *                 .files(RulesetSourceFileArgs.builder()
  *                     .content(&#34;service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }&#34;)
  *                     .name(&#34;firestore.rules&#34;)
  *                     .build())
  *                 .build())
+ *             .project(&#34;my-project-name&#34;)
  *             .build());
  * 
  *     }

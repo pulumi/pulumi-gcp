@@ -434,14 +434,14 @@ class ChatEngine(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        test_data_store = gcp.discoveryengine.DataStore("testDataStore",
+        test_data_store = gcp.discoveryengine.DataStore("test_data_store",
             location="global",
             data_store_id="data-store",
             display_name="Structured datastore",
             industry_vertical="GENERIC",
             content_config="NO_CONTENT",
             solution_types=["SOLUTION_TYPE_CHAT"])
-        test_data_store2 = gcp.discoveryengine.DataStore("testDataStore2",
+        test_data_store2 = gcp.discoveryengine.DataStore("test_data_store_2",
             location=test_data_store.location,
             data_store_id="data-store-2",
             display_name="Structured datastore 2",
@@ -533,14 +533,14 @@ class ChatEngine(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        test_data_store = gcp.discoveryengine.DataStore("testDataStore",
+        test_data_store = gcp.discoveryengine.DataStore("test_data_store",
             location="global",
             data_store_id="data-store",
             display_name="Structured datastore",
             industry_vertical="GENERIC",
             content_config="NO_CONTENT",
             solution_types=["SOLUTION_TYPE_CHAT"])
-        test_data_store2 = gcp.discoveryengine.DataStore("testDataStore2",
+        test_data_store2 = gcp.discoveryengine.DataStore("test_data_store_2",
             location=test_data_store.location,
             data_store_id="data-store-2",
             display_name="Structured datastore 2",

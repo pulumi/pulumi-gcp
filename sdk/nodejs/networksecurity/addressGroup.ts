@@ -21,11 +21,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networksecurity.AddressGroup("default", {
+ *     name: "my-address-groups",
+ *     parent: "projects/my-project-name",
+ *     location: "us-central1",
+ *     type: "IPV4",
  *     capacity: 100,
  *     items: ["208.80.154.224/32"],
- *     location: "us-central1",
- *     parent: "projects/my-project-name",
- *     type: "IPV4",
  * });
  * ```
  * ### Network Security Address Groups Organization Basic
@@ -35,11 +36,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networksecurity.AddressGroup("default", {
+ *     name: "my-address-groups",
+ *     parent: "organizations/123456789",
+ *     location: "us-central1",
+ *     type: "IPV4",
  *     capacity: 100,
  *     items: ["208.80.154.224/32"],
- *     location: "us-central1",
- *     parent: "organizations/123456789",
- *     type: "IPV4",
  * });
  * ```
  * ### Network Security Address Groups Advanced
@@ -49,12 +51,13 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networksecurity.AddressGroup("default", {
- *     capacity: 100,
- *     description: "my description",
- *     items: ["208.80.154.224/32"],
- *     location: "us-central1",
+ *     name: "my-address-groups",
  *     parent: "projects/my-project-name",
+ *     location: "us-central1",
+ *     description: "my description",
  *     type: "IPV4",
+ *     capacity: 100,
+ *     items: ["208.80.154.224/32"],
  * });
  * ```
  *

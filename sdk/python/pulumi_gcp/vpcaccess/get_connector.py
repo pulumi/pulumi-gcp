@@ -192,6 +192,7 @@ def get_connector(name: Optional[str] = None,
 
     sample = gcp.vpcaccess.get_connector(name="vpc-con")
     connector = gcp.vpcaccess.Connector("connector",
+        name="vpc-con",
         ip_cidr_range="10.8.0.0/28",
         network="default",
         region="us-central1")
@@ -253,6 +254,7 @@ def get_connector_output(name: Optional[pulumi.Input[str]] = None,
 
     sample = gcp.vpcaccess.get_connector(name="vpc-con")
     connector = gcp.vpcaccess.Connector("connector",
+        name="vpc-con",
         ip_cidr_range="10.8.0.0/28",
         network="default",
         region="us-central1")

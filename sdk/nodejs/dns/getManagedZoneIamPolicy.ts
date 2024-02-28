@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.dns.getManagedZoneIamPolicy({
- *     project: google_dns_managed_zone["default"].project,
- *     managedZone: google_dns_managed_zone["default"].name,
+ *     project: _default.project,
+ *     managedZone: _default.name,
  * });
  * ```
  */
@@ -73,8 +73,8 @@ export interface GetManagedZoneIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.dns.getManagedZoneIamPolicy({
- *     project: google_dns_managed_zone["default"].project,
- *     managedZone: google_dns_managed_zone["default"].name,
+ *     project: _default.project,
+ *     managedZone: _default.name,
  * });
  * ```
  */

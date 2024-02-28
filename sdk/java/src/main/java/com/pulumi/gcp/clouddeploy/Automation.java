@@ -36,7 +36,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.clouddeploy.inputs.AutomationSelectorArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.AutomationRulePromoteReleaseRuleArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -51,6 +50,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var pipeline = new DeliveryPipeline(&#34;pipeline&#34;, DeliveryPipelineArgs.builder()        
+ *             .name(&#34;cd-pipeline&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .serialPipeline(DeliveryPipelineSerialPipelineArgs.builder()
  *                 .stages(DeliveryPipelineSerialPipelineStageArgs.builder()
@@ -58,11 +58,10 @@ import javax.annotation.Nullable;
  *                     .profiles()
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var b_automation = new Automation(&#34;b-automation&#34;, AutomationArgs.builder()        
+ *             .name(&#34;cd-automation&#34;)
  *             .project(pipeline.project())
  *             .location(pipeline.location())
  *             .deliveryPipeline(pipeline.name())
@@ -78,9 +77,7 @@ import javax.annotation.Nullable;
  *                     .id(&#34;promote-release&#34;)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -101,7 +98,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.AutomationRulePromoteReleaseRuleArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleAdvanceRolloutRuleArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -116,6 +112,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var pipeline = new DeliveryPipeline(&#34;pipeline&#34;, DeliveryPipelineArgs.builder()        
+ *             .name(&#34;cd-pipeline&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .serialPipeline(DeliveryPipelineSerialPipelineArgs.builder()
  *                 .stages(DeliveryPipelineSerialPipelineStageArgs.builder()
@@ -123,11 +120,10 @@ import javax.annotation.Nullable;
  *                     .profiles(&#34;test-profile&#34;)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var f_automation = new Automation(&#34;f-automation&#34;, AutomationArgs.builder()        
+ *             .name(&#34;cd-automation&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .deliveryPipeline(pipeline.name())
  *             .serviceAccount(&#34;my@service-account.com&#34;)
@@ -163,9 +159,7 @@ import javax.annotation.Nullable;
  *                         .wait(&#34;200s&#34;)
  *                         .build())
  *                     .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

@@ -17,13 +17,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const primary = new gcp.dataplex.Lake("primary", {
+ *     location: "us-west1",
+ *     name: "lake",
  *     description: "Lake for DCL",
  *     displayName: "Lake for DCL",
+ *     project: "my-project-name",
  *     labels: {
  *         "my-lake": "exists",
  *     },
- *     location: "us-west1",
- *     project: "my-project-name",
  * });
  * ```
  *

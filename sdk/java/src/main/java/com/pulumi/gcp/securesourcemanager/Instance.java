@@ -51,9 +51,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
  *             .instanceId(&#34;my-instance&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .location(&#34;us-central1&#34;)
  *             .build());
  * 
  *     }
@@ -76,7 +76,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
  * import com.pulumi.gcp.securesourcemanager.Instance;
  * import com.pulumi.gcp.securesourcemanager.InstanceArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -91,10 +90,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
+ *             .name(&#34;my-keyring&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .build());
  * 
  *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
+ *             .name(&#34;my-key&#34;)
  *             .keyRing(keyRing.id())
  *             .build());
  * 
@@ -110,9 +111,118 @@ import javax.annotation.Nullable;
  *             .location(&#34;us-central1&#34;)
  *             .instanceId(&#34;my-instance&#34;)
  *             .kmsKey(cryptoKey.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(cryptoKeyBinding)
- *                 .build());
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Secure Source Manager Instance Private
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificateauthority.CaPool;
+ * import com.pulumi.gcp.certificateauthority.CaPoolArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CaPoolPublishingOptionsArgs;
+ * import com.pulumi.gcp.certificateauthority.Authority;
+ * import com.pulumi.gcp.certificateauthority.AuthorityArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigSubjectArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigCaOptionsArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.certificateauthority.CaPoolIamBinding;
+ * import com.pulumi.gcp.certificateauthority.CaPoolIamBindingArgs;
+ * import com.pulumi.gcp.securesourcemanager.Instance;
+ * import com.pulumi.gcp.securesourcemanager.InstanceArgs;
+ * import com.pulumi.gcp.securesourcemanager.inputs.InstancePrivateConfigArgs;
+ * import com.pulumi.time.sleep;
+ * import com.pulumi.time.SleepArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var caPool = new CaPool(&#34;caPool&#34;, CaPoolArgs.builder()        
+ *             .name(&#34;ca-pool&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .tier(&#34;ENTERPRISE&#34;)
+ *             .publishingOptions(CaPoolPublishingOptionsArgs.builder()
+ *                 .publishCaCert(true)
+ *                 .publishCrl(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var rootCa = new Authority(&#34;rootCa&#34;, AuthorityArgs.builder()        
+ *             .pool(caPool.name())
+ *             .certificateAuthorityId(&#34;root-ca&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .config(AuthorityConfigArgs.builder()
+ *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
+ *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
+ *                         .organization(&#34;google&#34;)
+ *                         .commonName(&#34;my-certificate-authority&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
+ *                     .caOptions(AuthorityConfigX509ConfigCaOptionsArgs.builder()
+ *                         .isCa(true)
+ *                         .build())
+ *                     .keyUsage(AuthorityConfigX509ConfigKeyUsageArgs.builder()
+ *                         .baseKeyUsage(AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs.builder()
+ *                             .certSign(true)
+ *                             .crlSign(true)
+ *                             .build())
+ *                         .extendedKeyUsage(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs.builder()
+ *                             .serverAuth(true)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .keySpec(AuthorityKeySpecArgs.builder()
+ *                 .algorithm(&#34;RSA_PKCS1_4096_SHA256&#34;)
+ *                 .build())
+ *             .deletionProtection(false)
+ *             .ignoreActiveCertificatesOnDeletion(true)
+ *             .skipGracePeriod(true)
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var caPoolBinding = new CaPoolIamBinding(&#34;caPoolBinding&#34;, CaPoolIamBindingArgs.builder()        
+ *             .caPool(caPool.id())
+ *             .role(&#34;roles/privateca.certificateRequester&#34;)
+ *             .members(String.format(&#34;serviceAccount:service-%s@gcp-sa-sourcemanager.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .build());
+ * 
+ *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+ *             .instanceId(&#34;my-instance&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .privateConfig(InstancePrivateConfigArgs.builder()
+ *                 .isPrivate(true)
+ *                 .caPool(caPool.id())
+ *                 .build())
+ *             .build());
+ * 
+ *         var wait60Seconds = new Sleep(&#34;wait60Seconds&#34;, SleepArgs.builder()        
+ *             .createDuration(&#34;60s&#34;)
+ *             .build());
  * 
  *     }
  * }

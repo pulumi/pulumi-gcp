@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const primary = new gcp.container.Cluster("primary", {
+ *     name: "basic-cluster",
  *     location: "us-central1",
  *     initialNodeCount: 1,
  *     workloadIdentityConfig: {
@@ -38,6 +39,7 @@ import * as utilities from "../utilities";
  *     subnetwork: "default",
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
+ *     name: "basic-plan",
  *     cluster: primary.id,
  *     location: "us-central1",
  *     backupConfig: {
@@ -54,6 +56,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const primary = new gcp.container.Cluster("primary", {
+ *     name: "autopilot-cluster",
  *     location: "us-central1",
  *     enableAutopilot: true,
  *     ipAllocationPolicy: {},
@@ -70,6 +73,7 @@ import * as utilities from "../utilities";
  *     subnetwork: "default",
  * });
  * const autopilot = new gcp.gkebackup.BackupPlan("autopilot", {
+ *     name: "autopilot-plan",
  *     cluster: primary.id,
  *     location: "us-central1",
  *     backupConfig: {
@@ -86,6 +90,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const primary = new gcp.container.Cluster("primary", {
+ *     name: "cmek-cluster",
  *     location: "us-central1",
  *     initialNodeCount: 1,
  *     workloadIdentityConfig: {
@@ -100,9 +105,16 @@ import * as utilities from "../utilities";
  *     network: "default",
  *     subnetwork: "default",
  * });
- * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "us-central1"});
- * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.id});
+ * const keyRing = new gcp.kms.KeyRing("key_ring", {
+ *     name: "backup-key",
+ *     location: "us-central1",
+ * });
+ * const cryptoKey = new gcp.kms.CryptoKey("crypto_key", {
+ *     name: "backup-key",
+ *     keyRing: keyRing.id,
+ * });
  * const cmek = new gcp.gkebackup.BackupPlan("cmek", {
+ *     name: "cmek-plan",
  *     cluster: primary.id,
  *     location: "us-central1",
  *     backupConfig: {
@@ -127,6 +139,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const primary = new gcp.container.Cluster("primary", {
+ *     name: "full-cluster",
  *     location: "us-central1",
  *     initialNodeCount: 1,
  *     workloadIdentityConfig: {
@@ -142,6 +155,7 @@ import * as utilities from "../utilities";
  *     subnetwork: "default",
  * });
  * const full = new gcp.gkebackup.BackupPlan("full", {
+ *     name: "full-plan",
  *     cluster: primary.id,
  *     location: "us-central1",
  *     retentionPolicy: {

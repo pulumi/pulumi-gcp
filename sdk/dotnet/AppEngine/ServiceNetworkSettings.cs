@@ -29,16 +29,18 @@ namespace Pulumi.Gcp.AppEngine
     /// {
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
+    ///         Name = "appengine-static-content",
     ///         Location = "US",
     ///     });
     /// 
     ///     var @object = new Gcp.Storage.BucketObject("object", new()
     ///     {
+    ///         Name = "hello-world.zip",
     ///         Bucket = bucket.Name,
     ///         Source = new FileAsset("./test-fixtures/hello-world.zip"),
     ///     });
     /// 
-    ///     var internalappStandardAppVersion = new Gcp.AppEngine.StandardAppVersion("internalappStandardAppVersion", new()
+    ///     var internalapp = new Gcp.AppEngine.StandardAppVersion("internalapp", new()
     ///     {
     ///         VersionId = "v1",
     ///         Service = "internalapp",
@@ -66,9 +68,9 @@ namespace Pulumi.Gcp.AppEngine
     ///         },
     ///     });
     /// 
-    ///     var internalappServiceNetworkSettings = new Gcp.AppEngine.ServiceNetworkSettings("internalappServiceNetworkSettings", new()
+    ///     var internalappServiceNetworkSettings = new Gcp.AppEngine.ServiceNetworkSettings("internalapp", new()
     ///     {
-    ///         Service = internalappStandardAppVersion.Service,
+    ///         Service = internalapp.Service,
     ///         NetworkSettings = new Gcp.AppEngine.Inputs.ServiceNetworkSettingsNetworkSettingsArgs
     ///         {
     ///             IngressTrafficAllowed = "INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY",

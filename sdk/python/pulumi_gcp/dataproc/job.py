@@ -620,7 +620,9 @@ class Job(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        mycluster = gcp.dataproc.Cluster("mycluster", region="us-central1")
+        mycluster = gcp.dataproc.Cluster("mycluster",
+            name="dproc-cluster-unique-name",
+            region="us-central1")
         # Submit an example spark job to a dataproc cluster
         spark = gcp.dataproc.Job("spark",
             region=mycluster.region,
@@ -703,7 +705,9 @@ class Job(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        mycluster = gcp.dataproc.Cluster("mycluster", region="us-central1")
+        mycluster = gcp.dataproc.Cluster("mycluster",
+            name="dproc-cluster-unique-name",
+            region="us-central1")
         # Submit an example spark job to a dataproc cluster
         spark = gcp.dataproc.Job("spark",
             region=mycluster.region,

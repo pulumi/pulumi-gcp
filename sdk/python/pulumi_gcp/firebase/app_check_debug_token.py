@@ -243,6 +243,25 @@ class AppCheckDebugToken(pulumi.CustomResource):
             * [Official Documentation](https://firebase.google.com/docs/app-check)
 
         ## Example Usage
+        ### Firebase App Check Debug Token Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        default = gcp.firebase.WebApp("default",
+            project="my-project-name",
+            display_name="Web App for debug token")
+        # It takes a while for App Check to recognize the new app
+        # If your app already exists, you don't have to wait 30 seconds.
+        wait30s = time.index.Sleep("wait_30s", create_duration=30s)
+        default_app_check_debug_token = gcp.firebase.AppCheckDebugToken("default",
+            project="my-project-name",
+            app_id=default.app_id,
+            display_name="Debug Token",
+            token="00000000-AAAA-BBBB-CCCC-000000000000")
+        ```
 
         ## Import
 
@@ -307,6 +326,25 @@ class AppCheckDebugToken(pulumi.CustomResource):
             * [Official Documentation](https://firebase.google.com/docs/app-check)
 
         ## Example Usage
+        ### Firebase App Check Debug Token Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        default = gcp.firebase.WebApp("default",
+            project="my-project-name",
+            display_name="Web App for debug token")
+        # It takes a while for App Check to recognize the new app
+        # If your app already exists, you don't have to wait 30 seconds.
+        wait30s = time.index.Sleep("wait_30s", create_duration=30s)
+        default_app_check_debug_token = gcp.firebase.AppCheckDebugToken("default",
+            project="my-project-name",
+            app_id=default.app_id,
+            display_name="Debug Token",
+            token="00000000-AAAA-BBBB-CCCC-000000000000")
+        ```
 
         ## Import
 

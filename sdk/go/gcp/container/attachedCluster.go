@@ -51,6 +51,7 @@ import (
 //				return err
 //			}
 //			_, err = container.NewAttachedCluster(ctx, "primary", &container.AttachedClusterArgs{
+//				Name:         pulumi.String("basic"),
 //				Location:     pulumi.String("us-west1"),
 //				Project:      *pulumi.String(project.ProjectId),
 //				Description:  pulumi.String("Test cluster"),
@@ -61,6 +62,99 @@ import (
 //				PlatformVersion: *pulumi.String(versions.ValidVersions[0]),
 //				Fleet: &container.AttachedClusterFleetArgs{
 //					Project: pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Container Attached Cluster Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			versions, err := container.GetAttachedVersions(ctx, &container.GetAttachedVersionsArgs{
+//				Location: "us-west1",
+//				Project:  project.ProjectId,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
+//				Input: "{\"keys\":[{\"use\":\"sig\",\"kty\":\"RSA\",\"kid\":\"testid\",\"alg\":\"RS256\",\"n\":\"somedata\",\"e\":\"AQAB\"}]}",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = container.NewAttachedCluster(ctx, "primary", &container.AttachedClusterArgs{
+//				Name:         pulumi.String("basic"),
+//				Project:      *pulumi.String(project.ProjectId),
+//				Location:     pulumi.String("us-west1"),
+//				Description:  pulumi.String("Test cluster"),
+//				Distribution: pulumi.String("aks"),
+//				Annotations: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//				Authorization: &container.AttachedClusterAuthorizationArgs{
+//					AdminUsers: pulumi.StringArray{
+//						pulumi.String("user1@example.com"),
+//						pulumi.String("user2@example.com"),
+//					},
+//					AdminGroups: pulumi.StringArray{
+//						pulumi.String("group1@example.com"),
+//						pulumi.String("group2@example.com"),
+//					},
+//				},
+//				OidcConfig: &container.AttachedClusterOidcConfigArgs{
+//					IssuerUrl: pulumi.String("https://oidc.issuer.url"),
+//					Jwks:      invokeBase64encode.Result,
+//				},
+//				PlatformVersion: *pulumi.String(versions.ValidVersions[0]),
+//				Fleet: &container.AttachedClusterFleetArgs{
+//					Project: pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
+//				},
+//				LoggingConfig: &container.AttachedClusterLoggingConfigArgs{
+//					ComponentConfig: &container.AttachedClusterLoggingConfigComponentConfigArgs{
+//						EnableComponents: pulumi.StringArray{
+//							pulumi.String("SYSTEM_COMPONENTS"),
+//							pulumi.String("WORKLOADS"),
+//						},
+//					},
+//				},
+//				MonitoringConfig: &container.AttachedClusterMonitoringConfigArgs{
+//					ManagedPrometheusConfig: &container.AttachedClusterMonitoringConfigManagedPrometheusConfigArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//				},
+//				BinaryAuthorization: &container.AttachedClusterBinaryAuthorizationArgs{
+//					EvaluationMode: pulumi.String("PROJECT_SINGLETON_POLICY_ENFORCE"),
+//				},
+//				ProxyConfig: &container.AttachedClusterProxyConfigArgs{
+//					KubernetesSecret: &container.AttachedClusterProxyConfigKubernetesSecretArgs{
+//						Name:      pulumi.String("proxy-config"),
+//						Namespace: pulumi.String("default"),
+//					},
 //				},
 //			})
 //			if err != nil {
@@ -100,6 +194,7 @@ import (
 //				return err
 //			}
 //			_, err = container.NewAttachedCluster(ctx, "primary", &container.AttachedClusterArgs{
+//				Name:         pulumi.String("basic"),
 //				Location:     pulumi.String("us-west1"),
 //				Project:      *pulumi.String(project.ProjectId),
 //				Description:  pulumi.String("Test cluster"),

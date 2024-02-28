@@ -99,8 +99,8 @@ def get_snapshot_iam_policy(name: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.compute.get_snapshot_iam_policy(project=google_compute_snapshot["snapshot"]["project"],
-        name=google_compute_snapshot["snapshot"]["name"])
+    policy = gcp.compute.get_snapshot_iam_policy(project=snapshot["project"],
+        name=snapshot["name"])
     ```
 
 
@@ -135,8 +135,8 @@ def get_snapshot_iam_policy_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.compute.get_snapshot_iam_policy(project=google_compute_snapshot["snapshot"]["project"],
-        name=google_compute_snapshot["snapshot"]["name"])
+    policy = gcp.compute.get_snapshot_iam_policy(project=snapshot["project"],
+        name=snapshot["name"])
     ```
 
 

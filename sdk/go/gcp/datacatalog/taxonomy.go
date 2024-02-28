@@ -35,12 +35,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := datacatalog.NewTaxonomy(ctx, "basicTaxonomy", &datacatalog.TaxonomyArgs{
+//			_, err := datacatalog.NewTaxonomy(ctx, "basic_taxonomy", &datacatalog.TaxonomyArgs{
+//				DisplayName: pulumi.String("my_taxonomy"),
+//				Description: pulumi.String("A collection of policy tags"),
 //				ActivatedPolicyTypes: pulumi.StringArray{
 //					pulumi.String("FINE_GRAINED_ACCESS_CONTROL"),
 //				},
-//				Description: pulumi.String("A collection of policy tags"),
-//				DisplayName: pulumi.String("my_taxonomy"),
 //			})
 //			if err != nil {
 //				return err

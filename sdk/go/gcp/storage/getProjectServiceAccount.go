@@ -68,7 +68,7 @@ import (
 //				return err
 //			}
 //			_, err = pubsub.NewTopicIAMBinding(ctx, "binding", &pubsub.TopicIAMBindingArgs{
-//				Topic: pulumi.Any(google_pubsub_topic.Topic.Name),
+//				Topic: pulumi.Any(topic.Name),
 //				Role:  pulumi.String("roles/pubsub.publisher"),
 //				Members: pulumi.StringArray{
 //					pulumi.String(fmt.Sprintf("serviceAccount:%v", gcsAccount.EmailAddress)),
@@ -103,7 +103,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			binding, err := kms.NewCryptoKeyIAMBinding(ctx, "binding", &kms.CryptoKeyIAMBindingArgs{
+//			_, err = kms.NewCryptoKeyIAMBinding(ctx, "binding", &kms.CryptoKeyIAMBindingArgs{
 //				CryptoKeyId: pulumi.String("your-crypto-key-id"),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Members: pulumi.StringArray{
@@ -114,13 +114,12 @@ import (
 //				return err
 //			}
 //			_, err = storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:     pulumi.String("kms-protected-bucket"),
 //				Location: pulumi.String("US"),
 //				Encryption: &storage.BucketEncryptionArgs{
 //					DefaultKmsKeyName: pulumi.String("your-crypto-key-id"),
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				binding,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

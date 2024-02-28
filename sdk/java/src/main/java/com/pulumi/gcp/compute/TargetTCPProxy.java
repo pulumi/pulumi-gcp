@@ -29,7 +29,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * ### Target Tcp Proxy Basic
- * 
  * ```java
  * package generated_program;
  * 
@@ -57,6 +56,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultHealthCheck = new HealthCheck(&#34;defaultHealthCheck&#34;, HealthCheckArgs.builder()        
+ *             .name(&#34;health-check&#34;)
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
@@ -65,12 +65,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;backend-service&#34;)
  *             .protocol(&#34;TCP&#34;)
  *             .timeoutSec(10)
  *             .healthChecks(defaultHealthCheck.id())
  *             .build());
  * 
- *         var defaultTargetTCPProxy = new TargetTCPProxy(&#34;defaultTargetTCPProxy&#34;, TargetTCPProxyArgs.builder()        
+ *         var default_ = new TargetTCPProxy(&#34;default&#34;, TargetTCPProxyArgs.builder()        
+ *             .name(&#34;test-proxy&#34;)
  *             .backendService(defaultBackendService.id())
  *             .build());
  * 

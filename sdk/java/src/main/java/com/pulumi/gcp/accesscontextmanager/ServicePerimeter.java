@@ -76,20 +76,24 @@ import javax.annotation.Nullable;
  * 
  *         var service_perimeter = new ServicePerimeter(&#34;service-perimeter&#34;, ServicePerimeterArgs.builder()        
  *             .parent(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
+ *             .name(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s/servicePerimeters/restrict_storage&#34;, name)))
+ *             .title(&#34;restrict_storage&#34;)
  *             .status(ServicePerimeterStatusArgs.builder()
  *                 .restrictedServices(&#34;storage.googleapis.com&#34;)
  *                 .build())
- *             .title(&#34;restrict_storage&#34;)
  *             .build());
  * 
  *         var access_level = new AccessLevel(&#34;access-level&#34;, AccessLevelArgs.builder()        
+ *             .parent(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
+ *             .name(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s/accessLevels/chromeos_no_lock&#34;, name)))
+ *             .title(&#34;chromeos_no_lock&#34;)
  *             .basic(AccessLevelBasicArgs.builder()
  *                 .conditions(AccessLevelBasicConditionArgs.builder()
  *                     .devicePolicy(AccessLevelBasicConditionDevicePolicyArgs.builder()
+ *                         .requireScreenLock(false)
  *                         .osConstraints(AccessLevelBasicConditionDevicePolicyOsConstraintArgs.builder()
  *                             .osType(&#34;DESKTOP_CHROME_OS&#34;)
  *                             .build())
- *                         .requireScreenLock(false)
  *                         .build())
  *                     .regions(                    
  *                         &#34;CH&#34;,
@@ -97,8 +101,6 @@ import javax.annotation.Nullable;
  *                         &#34;US&#34;)
  *                     .build())
  *                 .build())
- *             .parent(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
- *             .title(&#34;chromeos_no_lock&#34;)
  *             .build());
  * 
  *     }
@@ -168,6 +170,7 @@ import javax.annotation.Nullable;
  * 
  *         var access_level = new AccessLevel(&#34;access-level&#34;, AccessLevelArgs.builder()        
  *             .parent(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
+ *             .name(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s/accessLevels/secure_data_exchange&#34;, name)))
  *             .title(&#34;secure_data_exchange&#34;)
  *             .basic(AccessLevelBasicArgs.builder()
  *                 .conditions(AccessLevelBasicConditionArgs.builder()
@@ -186,7 +189,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var test_access = new ServicePerimeter(&#34;test-access&#34;, ServicePerimeterArgs.builder()        
- *             .parent(String.format(&#34;accessPolicies/%s&#34;, google_access_context_manager_access_policy.test-access().name()))
+ *             .parent(String.format(&#34;accessPolicies/%s&#34;, test_accessGoogleAccessContextManagerAccessPolicy.name()))
+ *             .name(String.format(&#34;accessPolicies/%s/servicePerimeters/%s&#34;, test_accessGoogleAccessContextManagerAccessPolicy.name()))
  *             .title(&#34;%s&#34;)
  *             .perimeterType(&#34;PERIMETER_TYPE_REGULAR&#34;)
  *             .status(ServicePerimeterStatusArgs.builder()
@@ -203,7 +207,7 @@ import javax.annotation.Nullable;
  *                 .ingressPolicies(ServicePerimeterStatusIngressPolicyArgs.builder()
  *                     .ingressFrom(ServicePerimeterStatusIngressPolicyIngressFromArgs.builder()
  *                         .sources(ServicePerimeterStatusIngressPolicyIngressFromSourceArgs.builder()
- *                             .accessLevel(google_access_context_manager_access_level.test-access().name())
+ *                             .accessLevel(test_accessGoogleAccessContextManagerAccessLevel.name())
  *                             .build())
  *                         .identityType(&#34;ANY_IDENTITY&#34;)
  *                         .build())
@@ -253,8 +257,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.accesscontextmanager.AccessPolicyArgs;
  * import com.pulumi.gcp.accesscontextmanager.ServicePerimeter;
  * import com.pulumi.gcp.accesscontextmanager.ServicePerimeterArgs;
- * import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterSpecArgs;
  * import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterStatusArgs;
+ * import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterSpecArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -275,13 +279,14 @@ import javax.annotation.Nullable;
  * 
  *         var service_perimeter = new ServicePerimeter(&#34;service-perimeter&#34;, ServicePerimeterArgs.builder()        
  *             .parent(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
- *             .spec(ServicePerimeterSpecArgs.builder()
- *                 .restrictedServices(&#34;storage.googleapis.com&#34;)
- *                 .build())
+ *             .name(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s/servicePerimeters/restrict_bigquery_dryrun_storage&#34;, name)))
+ *             .title(&#34;restrict_bigquery_dryrun_storage&#34;)
  *             .status(ServicePerimeterStatusArgs.builder()
  *                 .restrictedServices(&#34;bigquery.googleapis.com&#34;)
  *                 .build())
- *             .title(&#34;restrict_bigquery_dryrun_storage&#34;)
+ *             .spec(ServicePerimeterSpecArgs.builder()
+ *                 .restrictedServices(&#34;storage.googleapis.com&#34;)
+ *                 .build())
  *             .useExplicitDryRunSpec(true)
  *             .build());
  * 

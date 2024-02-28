@@ -24,6 +24,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// {
     ///     var pool = new Gcp.CloudBuild.WorkerPool("pool", new()
     ///     {
+    ///         Name = "my-pool",
     ///         Location = "europe-west1",
     ///         WorkerConfig = new Gcp.CloudBuild.Inputs.WorkerPoolWorkerConfigArgs
     ///         {
@@ -53,24 +54,20 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
+    ///         Name = "my-network",
     ///         AutoCreateSubnetworks = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             servicenetworking,
-    ///         },
     ///     });
     /// 
-    ///     var workerRange = new Gcp.Compute.GlobalAddress("workerRange", new()
+    ///     var workerRange = new Gcp.Compute.GlobalAddress("worker_range", new()
     ///     {
+    ///         Name = "worker-pool-range",
     ///         Purpose = "VPC_PEERING",
     ///         AddressType = "INTERNAL",
     ///         PrefixLength = 16,
     ///         Network = network.Id,
     ///     });
     /// 
-    ///     var workerPoolConn = new Gcp.ServiceNetworking.Connection("workerPoolConn", new()
+    ///     var workerPoolConn = new Gcp.ServiceNetworking.Connection("worker_pool_conn", new()
     ///     {
     ///         Network = network.Id,
     ///         Service = "servicenetworking.googleapis.com",
@@ -78,16 +75,11 @@ namespace Pulumi.Gcp.CloudBuild
     ///         {
     ///             workerRange.Name,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             servicenetworking,
-    ///         },
     ///     });
     /// 
     ///     var pool = new Gcp.CloudBuild.WorkerPool("pool", new()
     ///     {
+    ///         Name = "my-pool",
     ///         Location = "europe-west1",
     ///         WorkerConfig = new Gcp.CloudBuild.Inputs.WorkerPoolWorkerConfigArgs
     ///         {
@@ -99,12 +91,6 @@ namespace Pulumi.Gcp.CloudBuild
     ///         {
     ///             PeeredNetwork = network.Id,
     ///             PeeredNetworkIpRange = "/29",
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             workerPoolConn,
     ///         },
     ///     });
     /// 

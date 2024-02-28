@@ -29,6 +29,7 @@ namespace Pulumi.Gcp.VMwareEngine
     /// {
     ///     var pc_nw = new Gcp.VMwareEngine.Network("pc-nw", new()
     ///     {
+    ///         Name = "pc-nw",
     ///         Location = "global",
     ///         Type = "STANDARD",
     ///         Description = "PC network description.",
@@ -37,6 +38,7 @@ namespace Pulumi.Gcp.VMwareEngine
     ///     var vmw_engine_pc = new Gcp.VMwareEngine.PrivateCloud("vmw-engine-pc", new()
     ///     {
     ///         Location = "us-west1-a",
+    ///         Name = "sample-pc",
     ///         Description = "Sample test PC.",
     ///         NetworkConfig = new Gcp.VMwareEngine.Inputs.PrivateCloudNetworkConfigArgs
     ///         {
@@ -71,6 +73,7 @@ namespace Pulumi.Gcp.VMwareEngine
     /// {
     ///     var pc_nw = new Gcp.VMwareEngine.Network("pc-nw", new()
     ///     {
+    ///         Name = "pc-nw",
     ///         Location = "global",
     ///         Type = "STANDARD",
     ///         Description = "PC network description.",
@@ -79,6 +82,7 @@ namespace Pulumi.Gcp.VMwareEngine
     ///     var vmw_engine_pc = new Gcp.VMwareEngine.PrivateCloud("vmw-engine-pc", new()
     ///     {
     ///         Location = "us-west1-a",
+    ///         Name = "sample-pc",
     ///         Description = "Sample test PC.",
     ///         Type = "TIME_LIMITED",
     ///         NetworkConfig = new Gcp.VMwareEngine.Inputs.PrivateCloudNetworkConfigArgs

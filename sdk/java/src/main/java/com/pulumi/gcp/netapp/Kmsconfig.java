@@ -55,14 +55,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var keyring = new KeyRing(&#34;keyring&#34;, KeyRingArgs.builder()        
+ *             .name(&#34;key-ring&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .build());
  * 
  *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
+ *             .name(&#34;crypto-name&#34;)
  *             .keyRing(keyring.id())
  *             .build());
  * 
  *         var kmsConfig = new Kmsconfig(&#34;kmsConfig&#34;, KmsconfigArgs.builder()        
+ *             .name(&#34;kms-test&#34;)
  *             .description(&#34;this is a test description&#34;)
  *             .cryptoKeyName(cryptoKey.id())
  *             .location(&#34;us-central1&#34;)

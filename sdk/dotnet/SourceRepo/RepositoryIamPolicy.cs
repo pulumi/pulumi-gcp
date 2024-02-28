@@ -51,8 +51,8 @@ namespace Pulumi.Gcp.SourceRepo
     /// 
     ///     var policy = new Gcp.PubSub.TopicIAMPolicy("policy", new()
     ///     {
-    ///         Project = google_pubsub_topic.Example.Project,
-    ///         Topic = google_pubsub_topic.Example.Name,
+    ///         Project = example.Project,
+    ///         Topic = example.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -71,8 +71,8 @@ namespace Pulumi.Gcp.SourceRepo
     /// {
     ///     var binding = new Gcp.PubSub.TopicIAMBinding("binding", new()
     ///     {
-    ///         Project = google_pubsub_topic.Example.Project,
-    ///         Topic = google_pubsub_topic.Example.Name,
+    ///         Project = example.Project,
+    ///         Topic = example.Name,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -95,8 +95,8 @@ namespace Pulumi.Gcp.SourceRepo
     /// {
     ///     var member = new Gcp.PubSub.TopicIAMMember("member", new()
     ///     {
-    ///         Project = google_pubsub_topic.Example.Project,
-    ///         Topic = google_pubsub_topic.Example.Name,
+    ///         Project = example.Project,
+    ///         Topic = example.Name,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

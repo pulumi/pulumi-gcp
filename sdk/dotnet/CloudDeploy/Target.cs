@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.CloudDeploy
     ///     var primary = new Gcp.CloudDeploy.Target("primary", new()
     ///     {
     ///         Location = "us-west1",
+    ///         Name = "target",
     ///         DeployParameters = null,
     ///         Description = "multi-target description",
     ///         ExecutionConfigs = new[]
@@ -60,9 +61,6 @@ namespace Pulumi.Gcp.CloudDeploy
     ///             { "my_first_label", "example-label-1" },
     ///             { "my_second_label", "example-label-2" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -80,6 +78,7 @@ namespace Pulumi.Gcp.CloudDeploy
     ///     var primary = new Gcp.CloudDeploy.Target("primary", new()
     ///     {
     ///         Location = "us-west1",
+    ///         Name = "target",
     ///         DeployParameters = null,
     ///         Description = "basic description",
     ///         ExecutionConfigs = new[]
@@ -110,9 +109,6 @@ namespace Pulumi.Gcp.CloudDeploy
     ///             { "my_first_label", "example-label-1" },
     ///             { "my_second_label", "example-label-2" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -129,11 +125,8 @@ namespace Pulumi.Gcp.CloudDeploy
     /// {
     ///     var primary = new Gcp.CloudDeploy.Target("primary", new()
     ///     {
-    ///         Annotations = 
-    ///         {
-    ///             { "my_first_annotation", "example-annotation-1" },
-    ///             { "my_second_annotation", "example-annotation-2" },
-    ///         },
+    ///         Location = "us-west1",
+    ///         Name = "target",
     ///         DeployParameters = 
     ///         {
     ///             { "deployParameterKey", "deployParameterValue" },
@@ -143,14 +136,18 @@ namespace Pulumi.Gcp.CloudDeploy
     ///         {
     ///             Cluster = "projects/my-project-name/locations/us-west1/clusters/example-cluster-name",
     ///         },
+    ///         Project = "my-project-name",
+    ///         RequireApproval = false,
+    ///         Annotations = 
+    ///         {
+    ///             { "my_first_annotation", "example-annotation-1" },
+    ///             { "my_second_annotation", "example-annotation-2" },
+    ///         },
     ///         Labels = 
     ///         {
     ///             { "my_first_label", "example-label-1" },
     ///             { "my_second_label", "example-label-2" },
     ///         },
-    ///         Location = "us-west1",
-    ///         Project = "my-project-name",
-    ///         RequireApproval = false,
     ///     });
     /// 
     /// });

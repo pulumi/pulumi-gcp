@@ -17,15 +17,15 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const primary = new gcp.firebaserules.Ruleset("primary", {
- *     project: "my-project-name",
  *     source: {
  *         files: [{
  *             content: "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
- *             fingerprint: "",
  *             name: "firestore.rules",
+ *             fingerprint: "",
  *         }],
  *         language: "",
  *     },
+ *     project: "my-project-name",
  * });
  * ```
  * ### Minimal_ruleset
@@ -35,13 +35,13 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const primary = new gcp.firebaserules.Ruleset("primary", {
- *     project: "my-project-name",
  *     source: {
  *         files: [{
  *             content: "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
  *             name: "firestore.rules",
  *         }],
  *     },
+ *     project: "my-project-name",
  * });
  * ```
  *

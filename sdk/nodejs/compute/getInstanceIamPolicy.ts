@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.compute.getInstanceIamPolicy({
- *     project: google_compute_instance["default"].project,
- *     zone: google_compute_instance["default"].zone,
- *     instanceName: google_compute_instance["default"].name,
+ *     project: _default.project,
+ *     zone: _default.zone,
+ *     instanceName: _default.name,
  * });
  * ```
  */
@@ -82,9 +82,9 @@ export interface GetInstanceIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.compute.getInstanceIamPolicy({
- *     project: google_compute_instance["default"].project,
- *     zone: google_compute_instance["default"].zone,
- *     instanceName: google_compute_instance["default"].name,
+ *     project: _default.project,
+ *     zone: _default.zone,
+ *     instanceName: _default.name,
  * });
  * ```
  */

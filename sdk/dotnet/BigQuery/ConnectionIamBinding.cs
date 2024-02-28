@@ -51,9 +51,9 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     ///     var policy = new Gcp.BigQuery.ConnectionIamPolicy("policy", new()
     ///     {
-    ///         Project = google_bigquery_connection.Connection.Project,
-    ///         Location = google_bigquery_connection.Connection.Location,
-    ///         ConnectionId = google_bigquery_connection.Connection.Connection_id,
+    ///         Project = connection.Project,
+    ///         Location = connection.Location,
+    ///         ConnectionId = connection.ConnectionId,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -72,9 +72,9 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var binding = new Gcp.BigQuery.ConnectionIamBinding("binding", new()
     ///     {
-    ///         Project = google_bigquery_connection.Connection.Project,
-    ///         Location = google_bigquery_connection.Connection.Location,
-    ///         ConnectionId = google_bigquery_connection.Connection.Connection_id,
+    ///         Project = connection.Project,
+    ///         Location = connection.Location,
+    ///         ConnectionId = connection.ConnectionId,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -97,9 +97,9 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var member = new Gcp.BigQuery.ConnectionIamMember("member", new()
     ///     {
-    ///         Project = google_bigquery_connection.Connection.Project,
-    ///         Location = google_bigquery_connection.Connection.Location,
-    ///         ConnectionId = google_bigquery_connection.Connection.Connection_id,
+    ///         Project = connection.Project,
+    ///         Location = connection.Location,
+    ///         ConnectionId = connection.ConnectionId,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

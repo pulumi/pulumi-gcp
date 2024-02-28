@@ -43,8 +43,8 @@ import * as utilities from "../utilities";
  *
  * const editor = new gcp.dataproc.ClusterIAMBinding("editor", {
  *     cluster: "your-dataproc-cluster",
- *     members: ["user:jane@example.com"],
  *     role: "roles/editor",
+ *     members: ["user:jane@example.com"],
  * });
  * ```
  *
@@ -56,8 +56,8 @@ import * as utilities from "../utilities";
  *
  * const editor = new gcp.dataproc.ClusterIAMMember("editor", {
  *     cluster: "your-dataproc-cluster",
- *     member: "user:jane@example.com",
  *     role: "roles/editor",
+ *     member: "user:jane@example.com",
  * });
  * ```
  *

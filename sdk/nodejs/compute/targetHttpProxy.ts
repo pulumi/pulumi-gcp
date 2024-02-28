@@ -15,17 +15,105 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
  *
  * ## Example Usage
+ * ### Target Http Proxy Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ *     name: "http-health-check",
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: defaultHttpHealthCheck.id,
+ * });
+ * const defaultURLMap = new gcp.compute.URLMap("default", {
+ *     name: "url-map",
+ *     defaultService: defaultBackendService.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: defaultBackendService.id,
+ *         pathRules: [{
+ *             paths: ["/*"],
+ *             service: defaultBackendService.id,
+ *         }],
+ *     }],
+ * });
+ * const _default = new gcp.compute.TargetHttpProxy("default", {
+ *     name: "test-proxy",
+ *     urlMap: defaultURLMap.id,
+ * });
+ * ```
+ * ### Target Http Proxy Http Keep Alive Timeout
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ *     name: "http-health-check",
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     healthChecks: defaultHttpHealthCheck.id,
+ * });
+ * const defaultURLMap = new gcp.compute.URLMap("default", {
+ *     name: "url-map",
+ *     defaultService: defaultBackendService.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: defaultBackendService.id,
+ *         pathRules: [{
+ *             paths: ["/*"],
+ *             service: defaultBackendService.id,
+ *         }],
+ *     }],
+ * });
+ * const _default = new gcp.compute.TargetHttpProxy("default", {
+ *     name: "test-http-keep-alive-timeout-proxy",
+ *     httpKeepAliveTimeoutSec: 610,
+ *     urlMap: defaultURLMap.id,
+ * });
+ * ```
  * ### Target Http Proxy Https Redirect
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultURLMap = new gcp.compute.URLMap("defaultURLMap", {defaultUrlRedirect: {
- *     httpsRedirect: true,
- *     stripQuery: false,
- * }});
- * const defaultTargetHttpProxy = new gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", {urlMap: defaultURLMap.id});
+ * const defaultURLMap = new gcp.compute.URLMap("default", {
+ *     name: "url-map",
+ *     defaultUrlRedirect: {
+ *         httpsRedirect: true,
+ *         stripQuery: false,
+ *     },
+ * });
+ * const _default = new gcp.compute.TargetHttpProxy("default", {
+ *     name: "test-https-redirect-proxy",
+ *     urlMap: defaultURLMap.id,
+ * });
  * ```
  *
  * ## Import

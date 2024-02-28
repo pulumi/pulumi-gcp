@@ -34,8 +34,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.cloudbuildv2.ConnectionIAMPolicy("policy", {
- *     project: google_cloudbuildv2_connection["my-connection"].project,
- *     location: google_cloudbuildv2_connection["my-connection"].location,
+ *     project: my_connection.project,
+ *     location: my_connection.location,
+ *     name: my_connection.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -47,8 +48,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.cloudbuildv2.ConnectionIAMBinding("binding", {
- *     project: google_cloudbuildv2_connection["my-connection"].project,
- *     location: google_cloudbuildv2_connection["my-connection"].location,
+ *     project: my_connection.project,
+ *     location: my_connection.location,
+ *     name: my_connection.name,
  *     role: "roles/cloudbuild.connectionViewer",
  *     members: ["user:jane@example.com"],
  * });
@@ -61,8 +63,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.cloudbuildv2.ConnectionIAMMember("member", {
- *     project: google_cloudbuildv2_connection["my-connection"].project,
- *     location: google_cloudbuildv2_connection["my-connection"].location,
+ *     project: my_connection.project,
+ *     location: my_connection.location,
+ *     name: my_connection.name,
  *     role: "roles/cloudbuild.connectionViewer",
  *     member: "user:jane@example.com",
  * });

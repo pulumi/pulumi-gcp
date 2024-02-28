@@ -37,18 +37,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("foobar"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			other, err := compute.NewNetwork(ctx, "other", &compute.NetworkArgs{
+//				Name:                  pulumi.String("other"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewNetworkPeering(ctx, "peering1", &compute.NetworkPeeringArgs{
+//				Name:        pulumi.String("peering1"),
 //				Network:     _default.SelfLink,
 //				PeerNetwork: other.SelfLink,
 //			})
@@ -56,6 +59,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewNetworkPeering(ctx, "peering2", &compute.NetworkPeeringArgs{
+//				Name:        pulumi.String("peering2"),
 //				Network:     other.SelfLink,
 //				PeerNetwork: _default.SelfLink,
 //			})

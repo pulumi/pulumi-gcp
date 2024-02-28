@@ -88,7 +88,7 @@ def get_dataset_iam_policy(dataset_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.healthcare.get_dataset_iam_policy(dataset_id=google_healthcare_dataset["dataset"]["id"])
+    foo = gcp.healthcare.get_dataset_iam_policy(dataset_id=dataset["id"])
     ```
 
 
@@ -121,7 +121,7 @@ def get_dataset_iam_policy_output(dataset_id: Optional[pulumi.Input[str]] = None
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.healthcare.get_dataset_iam_policy(dataset_id=google_healthcare_dataset["dataset"]["id"])
+    foo = gcp.healthcare.get_dataset_iam_policy(dataset_id=dataset["id"])
     ```
 
 

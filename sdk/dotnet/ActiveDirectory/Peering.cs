@@ -23,9 +23,7 @@ namespace Pulumi.Gcp.ActiveDirectory
     /// {
     ///     var source_network = new Gcp.Compute.Network("source-network", new()
     ///     {
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Name = "ad-network",
     ///     });
     /// 
     ///     var ad_domain = new Gcp.ActiveDirectory.Domain("ad-domain", new()
@@ -40,35 +38,26 @@ namespace Pulumi.Gcp.ActiveDirectory
     ///         {
     ///             source_network.Id,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var peered_project = new Gcp.Organizations.Project("peered-project", new()
     ///     {
+    ///         Name = "my-peered-project",
+    ///         ProjectId = "my-peered-project",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var compute = new Gcp.Projects.Service("compute", new()
     ///     {
     ///         Project = peered_project.ProjectId,
     ///         ServiceName = "compute.googleapis.com",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var peered_network = new Gcp.Compute.Network("peered-network", new()
     ///     {
     ///         Project = compute.Project,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Name = "ad-peered-network",
     ///     });
     /// 
     ///     var ad_domain_peering = new Gcp.ActiveDirectory.Peering("ad-domain-peering", new()
@@ -80,9 +69,6 @@ namespace Pulumi.Gcp.ActiveDirectory
     ///         {
     ///             { "foo", "bar" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

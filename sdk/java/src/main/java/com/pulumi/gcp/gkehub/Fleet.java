@@ -51,13 +51,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Fleet(&#34;default&#34;, FleetArgs.builder()        
+ *             .displayName(&#34;my production fleet&#34;)
  *             .defaultClusterConfig(FleetDefaultClusterConfigArgs.builder()
  *                 .securityPostureConfig(FleetDefaultClusterConfigSecurityPostureConfigArgs.builder()
  *                     .mode(&#34;DISABLED&#34;)
  *                     .vulnerabilityMode(&#34;VULNERABILITY_DISABLED&#34;)
  *                     .build())
  *                 .build())
- *             .displayName(&#34;my production fleet&#34;)
  *             .build());
  * 
  *     }

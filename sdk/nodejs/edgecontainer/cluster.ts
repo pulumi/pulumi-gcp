@@ -24,10 +24,16 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const _default = new gcp.edgecontainer.Cluster("default", {
+ *     name: "basic-cluster",
+ *     location: "us-central1",
  *     authorization: {
  *         adminUsers: {
  *             username: "admin@hashicorptest.com",
  *         },
+ *     },
+ *     networking: {
+ *         clusterIpv4CidrBlocks: ["10.0.0.0/16"],
+ *         servicesIpv4CidrBlocks: ["10.1.0.0/16"],
  *     },
  *     fleet: {
  *         project: project.then(project => `projects/${project.number}`),
@@ -35,11 +41,6 @@ import * as utilities from "../utilities";
  *     labels: {
  *         my_key: "my_val",
  *         other_key: "other_val",
- *     },
- *     location: "us-central1",
- *     networking: {
- *         clusterIpv4CidrBlocks: ["10.0.0.0/16"],
- *         servicesIpv4CidrBlocks: ["10.1.0.0/16"],
  *     },
  * });
  * ```
@@ -51,29 +52,30 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const _default = new gcp.edgecontainer.Cluster("default", {
+ *     name: "cluster-with-maintenance",
+ *     location: "us-central1",
  *     authorization: {
  *         adminUsers: {
  *             username: "admin@hashicorptest.com",
  *         },
  *     },
- *     fleet: {
- *         project: project.then(project => `projects/${project.number}`),
- *     },
- *     location: "us-central1",
- *     maintenancePolicy: {
- *         window: {
- *             recurringWindow: {
- *                 recurrence: "FREQ=WEEKLY;BYDAY=SA",
- *                 window: {
- *                     endTime: "2023-01-01T17:00:00Z",
- *                     startTime: "2023-01-01T08:00:00Z",
- *                 },
- *             },
- *         },
- *     },
  *     networking: {
  *         clusterIpv4CidrBlocks: ["10.0.0.0/16"],
  *         servicesIpv4CidrBlocks: ["10.1.0.0/16"],
+ *     },
+ *     fleet: {
+ *         project: project.then(project => `projects/${project.number}`),
+ *     },
+ *     maintenancePolicy: {
+ *         window: {
+ *             recurringWindow: {
+ *                 window: {
+ *                     startTime: "2023-01-01T08:00:00Z",
+ *                     endTime: "2023-01-01T17:00:00Z",
+ *                 },
+ *                 recurrence: "FREQ=WEEKLY;BYDAY=SA",
+ *             },
+ *         },
  *     },
  * });
  * ```
@@ -85,27 +87,28 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const _default = new gcp.edgecontainer.Cluster("default", {
+ *     name: "local-control-plane-cluster",
+ *     location: "us-central1",
  *     authorization: {
  *         adminUsers: {
  *             username: "admin@hashicorptest.com",
  *         },
  *     },
- *     controlPlane: {
- *         local: {
- *             machineFilter: "machine-name",
- *             nodeCount: 1,
- *             nodeLocation: "us-central1-edge-example-edgesite",
- *             sharedDeploymentPolicy: "ALLOWED",
- *         },
- *     },
- *     externalLoadBalancerIpv4AddressPools: ["10.100.0.0-10.100.0.10"],
- *     fleet: {
- *         project: project.then(project => `projects/${project.number}`),
- *     },
- *     location: "us-central1",
  *     networking: {
  *         clusterIpv4CidrBlocks: ["10.0.0.0/16"],
  *         servicesIpv4CidrBlocks: ["10.1.0.0/16"],
+ *     },
+ *     fleet: {
+ *         project: project.then(project => `projects/${project.number}`),
+ *     },
+ *     externalLoadBalancerIpv4AddressPools: ["10.100.0.0-10.100.0.10"],
+ *     controlPlane: {
+ *         local: {
+ *             nodeLocation: "us-central1-edge-example-edgesite",
+ *             nodeCount: 1,
+ *             machineFilter: "machine-name",
+ *             sharedDeploymentPolicy: "ALLOWED",
+ *         },
  *     },
  * });
  * ```

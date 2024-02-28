@@ -62,8 +62,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new NoteIamPolicy(&#34;policy&#34;, NoteIamPolicyArgs.builder()        
- *             .project(google_container_analysis_note.note().project())
- *             .note(google_container_analysis_note.note().name())
+ *             .project(note.project())
+ *             .note(note.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -94,8 +94,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new NoteIamBinding(&#34;binding&#34;, NoteIamBindingArgs.builder()        
- *             .project(google_container_analysis_note.note().project())
- *             .note(google_container_analysis_note.note().name())
+ *             .project(note.project())
+ *             .note(note.name())
  *             .role(&#34;roles/containeranalysis.notes.occurrences.viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -127,8 +127,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new NoteIamMember(&#34;member&#34;, NoteIamMemberArgs.builder()        
- *             .project(google_container_analysis_note.note().project())
- *             .note(google_container_analysis_note.note().name())
+ *             .project(note.project())
+ *             .note(note.name())
  *             .role(&#34;roles/containeranalysis.notes.occurrences.viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

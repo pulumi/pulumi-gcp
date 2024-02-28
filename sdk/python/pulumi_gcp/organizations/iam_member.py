@@ -230,13 +230,13 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
             condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
             ),
-            members=["user:jane@example.com"],
-            role="roles/editor",
         )])
         organization = gcp.organizations.IAMPolicy("organization",
             org_id="1234567890",
@@ -252,9 +252,9 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         organization = gcp.organizations.IAMBinding("organization",
-            members=["user:jane@example.com"],
             org_id="1234567890",
-            role="roles/editor")
+            role="roles/editor",
+            members=["user:jane@example.com"])
         ```
 
         With IAM Conditions:
@@ -264,14 +264,14 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         organization = gcp.organizations.IAMBinding("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            members=["user:jane@example.com"],
             condition=gcp.organizations.IAMBindingConditionArgs(
+                title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
-            ),
-            members=["user:jane@example.com"],
-            org_id="1234567890",
-            role="roles/editor")
+            ))
         ```
 
         ## google\\_organization\\_iam\\_member
@@ -281,9 +281,9 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         organization = gcp.organizations.IAMMember("organization",
-            member="user:jane@example.com",
             org_id="1234567890",
-            role="roles/editor")
+            role="roles/editor",
+            member="user:jane@example.com")
         ```
 
         With IAM Conditions:
@@ -293,14 +293,14 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         organization = gcp.organizations.IAMMember("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            member="user:jane@example.com",
             condition=gcp.organizations.IAMMemberConditionArgs(
+                title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
-            ),
-            member="user:jane@example.com",
-            org_id="1234567890",
-            role="roles/editor")
+            ))
         ```
 
         ## google\\_organization\\_iam\\_audit\\_config
@@ -310,17 +310,17 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         organization = gcp.organizations.IamAuditConfig("organization",
+            org_id="1234567890",
+            service="allServices",
             audit_log_configs=[
                 gcp.organizations.IamAuditConfigAuditLogConfigArgs(
                     log_type="ADMIN_READ",
                 ),
                 gcp.organizations.IamAuditConfigAuditLogConfigArgs(
-                    exempted_members=["user:joebloggs@example.com"],
                     log_type="DATA_READ",
+                    exempted_members=["user:joebloggs@example.com"],
                 ),
-            ],
-            org_id="1234567890",
-            service="allServices")
+            ])
         ```
 
         ## Import
@@ -410,13 +410,13 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
             condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
             ),
-            members=["user:jane@example.com"],
-            role="roles/editor",
         )])
         organization = gcp.organizations.IAMPolicy("organization",
             org_id="1234567890",
@@ -432,9 +432,9 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         organization = gcp.organizations.IAMBinding("organization",
-            members=["user:jane@example.com"],
             org_id="1234567890",
-            role="roles/editor")
+            role="roles/editor",
+            members=["user:jane@example.com"])
         ```
 
         With IAM Conditions:
@@ -444,14 +444,14 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         organization = gcp.organizations.IAMBinding("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            members=["user:jane@example.com"],
             condition=gcp.organizations.IAMBindingConditionArgs(
+                title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
-            ),
-            members=["user:jane@example.com"],
-            org_id="1234567890",
-            role="roles/editor")
+            ))
         ```
 
         ## google\\_organization\\_iam\\_member
@@ -461,9 +461,9 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         organization = gcp.organizations.IAMMember("organization",
-            member="user:jane@example.com",
             org_id="1234567890",
-            role="roles/editor")
+            role="roles/editor",
+            member="user:jane@example.com")
         ```
 
         With IAM Conditions:
@@ -473,14 +473,14 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         organization = gcp.organizations.IAMMember("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            member="user:jane@example.com",
             condition=gcp.organizations.IAMMemberConditionArgs(
+                title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
-            ),
-            member="user:jane@example.com",
-            org_id="1234567890",
-            role="roles/editor")
+            ))
         ```
 
         ## google\\_organization\\_iam\\_audit\\_config
@@ -490,17 +490,17 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         organization = gcp.organizations.IamAuditConfig("organization",
+            org_id="1234567890",
+            service="allServices",
             audit_log_configs=[
                 gcp.organizations.IamAuditConfigAuditLogConfigArgs(
                     log_type="ADMIN_READ",
                 ),
                 gcp.organizations.IamAuditConfigAuditLogConfigArgs(
-                    exempted_members=["user:joebloggs@example.com"],
                     log_type="DATA_READ",
+                    exempted_members=["user:joebloggs@example.com"],
                 ),
-            ],
-            org_id="1234567890",
-            service="allServices")
+            ])
         ```
 
         ## Import

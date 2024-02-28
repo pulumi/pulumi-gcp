@@ -228,8 +228,8 @@ class NoteIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.containeranalysis.NoteIamPolicy("policy",
-            project=google_container_analysis_note["note"]["project"],
-            note=google_container_analysis_note["note"]["name"],
+            project=note["project"],
+            note=note["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -240,8 +240,8 @@ class NoteIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.containeranalysis.NoteIamBinding("binding",
-            project=google_container_analysis_note["note"]["project"],
-            note=google_container_analysis_note["note"]["name"],
+            project=note["project"],
+            note=note["name"],
             role="roles/containeranalysis.notes.occurrences.viewer",
             members=["user:jane@example.com"])
         ```
@@ -253,8 +253,8 @@ class NoteIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.containeranalysis.NoteIamMember("member",
-            project=google_container_analysis_note["note"]["project"],
-            note=google_container_analysis_note["note"]["name"],
+            project=note["project"],
+            note=note["name"],
             role="roles/containeranalysis.notes.occurrences.viewer",
             member="user:jane@example.com")
         ```
@@ -347,8 +347,8 @@ class NoteIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.containeranalysis.NoteIamPolicy("policy",
-            project=google_container_analysis_note["note"]["project"],
-            note=google_container_analysis_note["note"]["name"],
+            project=note["project"],
+            note=note["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -359,8 +359,8 @@ class NoteIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.containeranalysis.NoteIamBinding("binding",
-            project=google_container_analysis_note["note"]["project"],
-            note=google_container_analysis_note["note"]["name"],
+            project=note["project"],
+            note=note["name"],
             role="roles/containeranalysis.notes.occurrences.viewer",
             members=["user:jane@example.com"])
         ```
@@ -372,8 +372,8 @@ class NoteIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.containeranalysis.NoteIamMember("member",
-            project=google_container_analysis_note["note"]["project"],
-            note=google_container_analysis_note["note"]["name"],
+            project=note["project"],
+            note=note["name"],
             role="roles/containeranalysis.notes.occurrences.viewer",
             member="user:jane@example.com")
         ```

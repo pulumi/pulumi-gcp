@@ -57,9 +57,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = accesscontextmanager.NewServicePerimeter(ctx, "service-perimeter-resourceServicePerimeter", &accesscontextmanager.ServicePerimeterArgs{
+//			_, err = accesscontextmanager.NewServicePerimeter(ctx, "service-perimeter-resource", &accesscontextmanager.ServicePerimeterArgs{
 //				Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("accessPolicies/%v", name), nil
+//				}).(pulumi.StringOutput),
+//				Name: access_policy.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("accessPolicies/%v/servicePerimeters/restrict_all", name), nil
 //				}).(pulumi.StringOutput),
 //				Title: pulumi.String("restrict_all"),
 //				Status: &accesscontextmanager.ServicePerimeterStatusArgs{
@@ -71,7 +74,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = accesscontextmanager.NewServicePerimeterResource(ctx, "service-perimeter-resourceServicePerimeterResource", &accesscontextmanager.ServicePerimeterResourceArgs{
+//			_, err = accesscontextmanager.NewServicePerimeterResource(ctx, "service-perimeter-resource", &accesscontextmanager.ServicePerimeterResourceArgs{
 //				PerimeterName: service_perimeter_resourceServicePerimeter.Name,
 //				Resource:      pulumi.String("projects/987654321"),
 //			})

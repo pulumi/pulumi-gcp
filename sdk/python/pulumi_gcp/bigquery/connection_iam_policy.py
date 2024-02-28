@@ -289,9 +289,9 @@ class ConnectionIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.bigquery.ConnectionIamPolicy("policy",
-            project=google_bigquery_connection["connection"]["project"],
-            location=google_bigquery_connection["connection"]["location"],
-            connection_id=google_bigquery_connection["connection"]["connection_id"],
+            project=connection["project"],
+            location=connection["location"],
+            connection_id=connection["connectionId"],
             policy_data=admin.policy_data)
         ```
 
@@ -302,9 +302,9 @@ class ConnectionIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.bigquery.ConnectionIamBinding("binding",
-            project=google_bigquery_connection["connection"]["project"],
-            location=google_bigquery_connection["connection"]["location"],
-            connection_id=google_bigquery_connection["connection"]["connection_id"],
+            project=connection["project"],
+            location=connection["location"],
+            connection_id=connection["connectionId"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -316,9 +316,9 @@ class ConnectionIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.bigquery.ConnectionIamMember("member",
-            project=google_bigquery_connection["connection"]["project"],
-            location=google_bigquery_connection["connection"]["location"],
-            connection_id=google_bigquery_connection["connection"]["connection_id"],
+            project=connection["project"],
+            location=connection["location"],
+            connection_id=connection["connectionId"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -421,9 +421,9 @@ class ConnectionIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.bigquery.ConnectionIamPolicy("policy",
-            project=google_bigquery_connection["connection"]["project"],
-            location=google_bigquery_connection["connection"]["location"],
-            connection_id=google_bigquery_connection["connection"]["connection_id"],
+            project=connection["project"],
+            location=connection["location"],
+            connection_id=connection["connectionId"],
             policy_data=admin.policy_data)
         ```
 
@@ -434,9 +434,9 @@ class ConnectionIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.bigquery.ConnectionIamBinding("binding",
-            project=google_bigquery_connection["connection"]["project"],
-            location=google_bigquery_connection["connection"]["location"],
-            connection_id=google_bigquery_connection["connection"]["connection_id"],
+            project=connection["project"],
+            location=connection["location"],
+            connection_id=connection["connectionId"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -448,9 +448,9 @@ class ConnectionIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.bigquery.ConnectionIamMember("member",
-            project=google_bigquery_connection["connection"]["project"],
-            location=google_bigquery_connection["connection"]["location"],
-            connection_id=google_bigquery_connection["connection"]["connection_id"],
+            project=connection["project"],
+            location=connection["location"],
+            connection_id=connection["connectionId"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

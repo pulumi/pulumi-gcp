@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := notebooks.LookupInstanceIamPolicy(ctx, &notebooks.LookupInstanceIamPolicyArgs{
-//				Project:      pulumi.StringRef(google_notebooks_instance.Instance.Project),
-//				Location:     pulumi.StringRef(google_notebooks_instance.Instance.Location),
-//				InstanceName: google_notebooks_instance.Instance.Name,
+//				Project:      pulumi.StringRef(instance.Project),
+//				Location:     pulumi.StringRef(instance.Location),
+//				InstanceName: instance.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

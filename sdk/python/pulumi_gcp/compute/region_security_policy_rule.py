@@ -422,10 +422,10 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
 
         default = gcp.compute.RegionSecurityPolicy("default",
             region="us-west2",
+            name="policyruletest",
             description="basic region security policy",
-            type="CLOUD_ARMOR",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_rule = gcp.compute.RegionSecurityPolicyRule("policyRule",
+            type="CLOUD_ARMOR")
+        policy_rule = gcp.compute.RegionSecurityPolicyRule("policy_rule",
             region="us-west2",
             security_policy=default.name,
             description="new rule",
@@ -437,8 +437,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                 ),
             ),
             action="allow",
-            preview=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            preview=True)
         ```
         ### Region Security Policy Rule Multiple Rules
 
@@ -448,10 +447,10 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
 
         default = gcp.compute.RegionSecurityPolicy("default",
             region="us-west2",
+            name="policywithmultiplerules",
             description="basic region security policy",
-            type="CLOUD_ARMOR",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_rule_one = gcp.compute.RegionSecurityPolicyRule("policyRuleOne",
+            type="CLOUD_ARMOR")
+        policy_rule_one = gcp.compute.RegionSecurityPolicyRule("policy_rule_one",
             region="us-west2",
             security_policy=default.name,
             description="new rule one",
@@ -463,9 +462,8 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                 ),
             ),
             action="allow",
-            preview=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_rule_two = gcp.compute.RegionSecurityPolicyRule("policyRuleTwo",
+            preview=True)
+        policy_rule_two = gcp.compute.RegionSecurityPolicyRule("policy_rule_two",
             region="us-west2",
             security_policy=default.name,
             description="new rule two",
@@ -480,8 +478,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                 ),
             ),
             action="allow",
-            preview=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            preview=True)
         ```
         ### Region Security Policy Rule With Network Match
 
@@ -492,20 +489,21 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
         # First activate advanced network DDoS protection for the desired region
         policyddosprotection = gcp.compute.RegionSecurityPolicy("policyddosprotection",
             region="us-west2",
+            name="policyddosprotection",
             description="policy for activating network DDoS protection for the desired region",
             type="CLOUD_ARMOR_NETWORK",
             ddos_protection_config=gcp.compute.RegionSecurityPolicyDdosProtectionConfigArgs(
                 ddos_protection="ADVANCED_PREVIEW",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        edge_sec_service = gcp.compute.NetworkEdgeSecurityService("edgeSecService",
+            ))
+        edge_sec_service = gcp.compute.NetworkEdgeSecurityService("edge_sec_service",
             region="us-west2",
+            name="edgesecservice",
             description="linking policy to edge security service",
-            security_policy=policyddosprotection.self_link,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            security_policy=policyddosprotection.self_link)
         # Add the desired policy and custom rule.
         policynetworkmatch = gcp.compute.RegionSecurityPolicy("policynetworkmatch",
             region="us-west2",
+            name="policyfornetworkmatch",
             description="region security policy for network match",
             type="CLOUD_ARMOR_NETWORK",
             user_defined_fields=[gcp.compute.RegionSecurityPolicyUserDefinedFieldArgs(
@@ -514,10 +512,8 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                 offset=8,
                 size=2,
                 mask="0x8F00",
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[edge_sec_service]))
-        policy_rule_network_match = gcp.compute.RegionSecurityPolicyRule("policyRuleNetworkMatch",
+            )])
+        policy_rule_network_match = gcp.compute.RegionSecurityPolicyRule("policy_rule_network_match",
             region="us-west2",
             security_policy=policynetworkmatch.name,
             description="custom rule for network match",
@@ -530,8 +526,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                 )],
             ),
             action="allow",
-            preview=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            preview=True)
         ```
 
         ## Import
@@ -613,10 +608,10 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
 
         default = gcp.compute.RegionSecurityPolicy("default",
             region="us-west2",
+            name="policyruletest",
             description="basic region security policy",
-            type="CLOUD_ARMOR",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_rule = gcp.compute.RegionSecurityPolicyRule("policyRule",
+            type="CLOUD_ARMOR")
+        policy_rule = gcp.compute.RegionSecurityPolicyRule("policy_rule",
             region="us-west2",
             security_policy=default.name,
             description="new rule",
@@ -628,8 +623,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                 ),
             ),
             action="allow",
-            preview=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            preview=True)
         ```
         ### Region Security Policy Rule Multiple Rules
 
@@ -639,10 +633,10 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
 
         default = gcp.compute.RegionSecurityPolicy("default",
             region="us-west2",
+            name="policywithmultiplerules",
             description="basic region security policy",
-            type="CLOUD_ARMOR",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_rule_one = gcp.compute.RegionSecurityPolicyRule("policyRuleOne",
+            type="CLOUD_ARMOR")
+        policy_rule_one = gcp.compute.RegionSecurityPolicyRule("policy_rule_one",
             region="us-west2",
             security_policy=default.name,
             description="new rule one",
@@ -654,9 +648,8 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                 ),
             ),
             action="allow",
-            preview=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_rule_two = gcp.compute.RegionSecurityPolicyRule("policyRuleTwo",
+            preview=True)
+        policy_rule_two = gcp.compute.RegionSecurityPolicyRule("policy_rule_two",
             region="us-west2",
             security_policy=default.name,
             description="new rule two",
@@ -671,8 +664,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                 ),
             ),
             action="allow",
-            preview=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            preview=True)
         ```
         ### Region Security Policy Rule With Network Match
 
@@ -683,20 +675,21 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
         # First activate advanced network DDoS protection for the desired region
         policyddosprotection = gcp.compute.RegionSecurityPolicy("policyddosprotection",
             region="us-west2",
+            name="policyddosprotection",
             description="policy for activating network DDoS protection for the desired region",
             type="CLOUD_ARMOR_NETWORK",
             ddos_protection_config=gcp.compute.RegionSecurityPolicyDdosProtectionConfigArgs(
                 ddos_protection="ADVANCED_PREVIEW",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        edge_sec_service = gcp.compute.NetworkEdgeSecurityService("edgeSecService",
+            ))
+        edge_sec_service = gcp.compute.NetworkEdgeSecurityService("edge_sec_service",
             region="us-west2",
+            name="edgesecservice",
             description="linking policy to edge security service",
-            security_policy=policyddosprotection.self_link,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            security_policy=policyddosprotection.self_link)
         # Add the desired policy and custom rule.
         policynetworkmatch = gcp.compute.RegionSecurityPolicy("policynetworkmatch",
             region="us-west2",
+            name="policyfornetworkmatch",
             description="region security policy for network match",
             type="CLOUD_ARMOR_NETWORK",
             user_defined_fields=[gcp.compute.RegionSecurityPolicyUserDefinedFieldArgs(
@@ -705,10 +698,8 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                 offset=8,
                 size=2,
                 mask="0x8F00",
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[edge_sec_service]))
-        policy_rule_network_match = gcp.compute.RegionSecurityPolicyRule("policyRuleNetworkMatch",
+            )])
+        policy_rule_network_match = gcp.compute.RegionSecurityPolicyRule("policy_rule_network_match",
             region="us-west2",
             security_policy=policynetworkmatch.name,
             description="custom rule for network match",
@@ -721,8 +712,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                 )],
             ),
             action="allow",
-            preview=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            preview=True)
         ```
 
         ## Import

@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.datafusion.getInstanceIamPolicy({
- *     project: google_data_fusion_instance.basic_instance.project,
- *     region: google_data_fusion_instance.basic_instance.region,
- *     name: google_data_fusion_instance.basic_instance.name,
+ *     project: basicInstance.project,
+ *     region: basicInstance.region,
+ *     name: basicInstance.name,
  * });
  * ```
  */
@@ -83,9 +83,9 @@ export interface GetInstanceIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.datafusion.getInstanceIamPolicy({
- *     project: google_data_fusion_instance.basic_instance.project,
- *     region: google_data_fusion_instance.basic_instance.region,
- *     name: google_data_fusion_instance.basic_instance.name,
+ *     project: basicInstance.project,
+ *     region: basicInstance.region,
+ *     name: basicInstance.name,
  * });
  * ```
  */

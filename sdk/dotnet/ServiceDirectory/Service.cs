@@ -29,27 +29,21 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleNamespace = new Gcp.ServiceDirectory.Namespace("exampleNamespace", new()
+    ///     var example = new Gcp.ServiceDirectory.Namespace("example", new()
     ///     {
     ///         NamespaceId = "example-namespace",
     ///         Location = "us-central1",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var exampleService = new Gcp.ServiceDirectory.Service("exampleService", new()
+    ///     var exampleService = new Gcp.ServiceDirectory.Service("example", new()
     ///     {
     ///         ServiceId = "example-service",
-    ///         Namespace = exampleNamespace.Id,
+    ///         Namespace = example.Id,
     ///         Metadata = 
     ///         {
     ///             { "stage", "prod" },
     ///             { "region", "us-central1" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

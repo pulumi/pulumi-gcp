@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigtable.LookupTableIamPolicy(ctx, &bigtable.LookupTableIamPolicyArgs{
-//				Instance: google_bigtable_instance.Instance.Name,
-//				Table:    google_bigtable_table.Table.Name,
+//				Instance: instance.Name,
+//				Table:    table.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

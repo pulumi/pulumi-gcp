@@ -58,10 +58,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var imageBucket = new Bucket(&#34;imageBucket&#34;, BucketArgs.builder()        
+ *             .name(&#34;image-store-bucket&#34;)
  *             .location(&#34;EU&#34;)
  *             .build());
  * 
  *         var imageBackend = new BackendBucket(&#34;imageBackend&#34;, BackendBucketArgs.builder()        
+ *             .name(&#34;image-backend-bucket&#34;)
  *             .description(&#34;Contains beautiful images&#34;)
  *             .bucketName(imageBucket.name())
  *             .enableCdn(true)
@@ -97,15 +99,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var imageBackendBucket = new Bucket(&#34;imageBackendBucket&#34;, BucketArgs.builder()        
+ *             .name(&#34;image-store-bucket&#34;)
  *             .location(&#34;EU&#34;)
  *             .build());
  * 
  *         var policy = new SecurityPolicy(&#34;policy&#34;, SecurityPolicyArgs.builder()        
+ *             .name(&#34;image-store-bucket&#34;)
  *             .description(&#34;basic security policy&#34;)
  *             .type(&#34;CLOUD_ARMOR_EDGE&#34;)
  *             .build());
  * 
- *         var imageBackendBackendBucket = new BackendBucket(&#34;imageBackendBackendBucket&#34;, BackendBucketArgs.builder()        
+ *         var imageBackend = new BackendBucket(&#34;imageBackend&#34;, BackendBucketArgs.builder()        
+ *             .name(&#34;image-backend-bucket&#34;)
  *             .description(&#34;Contains beautiful images&#34;)
  *             .bucketName(imageBackendBucket.name())
  *             .enableCdn(true)
@@ -142,10 +147,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var imageBucket = new Bucket(&#34;imageBucket&#34;, BucketArgs.builder()        
+ *             .name(&#34;image-backend-bucket&#34;)
  *             .location(&#34;EU&#34;)
  *             .build());
  * 
  *         var imageBackend = new BackendBucket(&#34;imageBackend&#34;, BackendBucketArgs.builder()        
+ *             .name(&#34;image-backend-bucket&#34;)
  *             .description(&#34;Contains beautiful images&#34;)
  *             .bucketName(imageBucket.name())
  *             .enableCdn(true)
@@ -186,10 +193,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var imageBucket = new Bucket(&#34;imageBucket&#34;, BucketArgs.builder()        
+ *             .name(&#34;image-backend-bucket&#34;)
  *             .location(&#34;EU&#34;)
  *             .build());
  * 
  *         var imageBackend = new BackendBucket(&#34;imageBackend&#34;, BackendBucketArgs.builder()        
+ *             .name(&#34;image-backend-bucket&#34;)
  *             .description(&#34;Contains beautiful images&#34;)
  *             .bucketName(imageBucket.name())
  *             .enableCdn(true)

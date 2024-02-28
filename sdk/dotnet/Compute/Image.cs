@@ -46,6 +46,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var example = new Gcp.Compute.Image("example", new()
     ///     {
+    ///         Name = "example-image",
     ///         RawDisk = new Gcp.Compute.Inputs.ImageRawDiskArgs
     ///         {
     ///             Source = "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
@@ -66,6 +67,11 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var example = new Gcp.Compute.Image("example", new()
     ///     {
+    ///         Name = "example-image",
+    ///         RawDisk = new Gcp.Compute.Inputs.ImageRawDiskArgs
+    ///         {
+    ///             Source = "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+    ///         },
     ///         GuestOsFeatures = new[]
     ///         {
     ///             new Gcp.Compute.Inputs.ImageGuestOsFeatureArgs
@@ -76,10 +82,6 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 Type = "MULTI_IP_SUBNET",
     ///             },
-    ///         },
-    ///         RawDisk = new Gcp.Compute.Inputs.ImageRawDiskArgs
-    ///         {
-    ///             Source = "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
     ///         },
     ///     });
     /// 
@@ -97,6 +99,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var example = new Gcp.Compute.Image("example", new()
     ///     {
+    ///         Name = "example-sl-image",
     ///         RawDisk = new Gcp.Compute.Inputs.ImageRawDiskArgs
     ///         {
     ///             Source = "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",

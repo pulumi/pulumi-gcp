@@ -35,6 +35,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var autohealing = new Gcp.Compute.HealthCheck("autohealing", new()
     ///     {
+    ///         Name = "autohealing-health-check",
     ///         CheckIntervalSec = 5,
     ///         TimeoutSec = 5,
     ///         HealthyThreshold = 2,
@@ -48,6 +49,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var appserver = new Gcp.Compute.RegionInstanceGroupManager("appserver", new()
     ///     {
+    ///         Name = "appserver-igm",
     ///         BaseInstanceName = "app",
     ///         Region = "us-central1",
     ///         DistributionPolicyZones = new[]
@@ -59,7 +61,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
     ///             {
-    ///                 InstanceTemplate = google_compute_instance_template.Appserver.Self_link_unique,
+    ///                 InstanceTemplate = appserverGoogleComputeInstanceTemplate.SelfLinkUnique,
     ///             },
     ///         },
     ///         AllInstancesConfig = new Gcp.Compute.Inputs.RegionInstanceGroupManagerAllInstancesConfigArgs
@@ -75,7 +77,7 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///         TargetPools = new[]
     ///         {
-    ///             google_compute_target_pool.Appserver.Id,
+    ///             appserverGoogleComputeTargetPool.Id,
     ///         },
     ///         TargetSize = 2,
     ///         NamedPorts = new[]
@@ -106,6 +108,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var appserver = new Gcp.Compute.RegionInstanceGroupManager("appserver", new()
     ///     {
+    ///         Name = "appserver-igm",
     ///         BaseInstanceName = "app",
     ///         Region = "us-central1",
     ///         TargetSize = 5,
@@ -113,11 +116,11 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
     ///             {
-    ///                 InstanceTemplate = google_compute_instance_template.Appserver.Self_link_unique,
+    ///                 InstanceTemplate = appserverGoogleComputeInstanceTemplate.SelfLinkUnique,
     ///             },
     ///             new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
     ///             {
-    ///                 InstanceTemplate = google_compute_instance_template.Appserver_canary.Self_link_unique,
+    ///                 InstanceTemplate = appserver_canary.SelfLinkUnique,
     ///                 TargetSize = new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionTargetSizeArgs
     ///                 {
     ///                     Fixed = 1,

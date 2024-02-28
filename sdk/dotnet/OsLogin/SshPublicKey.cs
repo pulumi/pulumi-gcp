@@ -23,10 +23,10 @@ namespace Pulumi.Gcp.OsLogin
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -35,7 +35,10 @@ namespace Pulumi.Gcp.OsLogin
     ///     var cache = new Gcp.OsLogin.SshPublicKey("cache", new()
     ///     {
     ///         User = me.Apply(getClientOpenIdUserInfoResult =&gt; getClientOpenIdUserInfoResult.Email),
-    ///         Key = File.ReadAllText("path/to/id_rsa.pub"),
+    ///         Key = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "path/to/id_rsa.pub",
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
     /// });

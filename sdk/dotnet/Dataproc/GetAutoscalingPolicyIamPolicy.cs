@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.Dataproc
         /// {
         ///     var policy = Gcp.Dataproc.GetAutoscalingPolicyIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_dataproc_autoscaling_policy.Basic.Project,
-        ///         Location = google_dataproc_autoscaling_policy.Basic.Location,
-        ///         PolicyId = google_dataproc_autoscaling_policy.Basic.Policy_id,
+        ///         Project = basic.Project,
+        ///         Location = basic.Location,
+        ///         PolicyId = basic.PolicyId,
         ///     });
         /// 
         /// });
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.Dataproc
         /// {
         ///     var policy = Gcp.Dataproc.GetAutoscalingPolicyIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_dataproc_autoscaling_policy.Basic.Project,
-        ///         Location = google_dataproc_autoscaling_policy.Basic.Location,
-        ///         PolicyId = google_dataproc_autoscaling_policy.Basic.Policy_id,
+        ///         Project = basic.Project,
+        ///         Location = basic.Location,
+        ///         PolicyId = basic.PolicyId,
         ///     });
         /// 
         /// });

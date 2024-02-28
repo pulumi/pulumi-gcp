@@ -493,6 +493,164 @@ class Function(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/functions/docs/reference/rest/v2beta/projects.locations.functions)
 
         ## Example Usage
+        ### Cloudfunctions2 Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = "my-project-name"
+        bucket = gcp.storage.Bucket("bucket",
+            name=f"{project}-gcf-source",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("function-source.zip"))
+        function = gcp.cloudfunctionsv2.Function("function",
+            name="function-v2",
+            location="us-central1",
+            description="a new function",
+            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
+                runtime="nodejs16",
+                entry_point="helloHttp",
+                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
+                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
+                        bucket=bucket.name,
+                        object=object.name,
+                    ),
+                ),
+            ),
+            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
+                max_instance_count=1,
+                available_memory="256M",
+                timeout_seconds=60,
+            ))
+        pulumi.export("functionUri", function.service_config.uri)
+        ```
+        ### Cloudfunctions2 Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = "my-project-name"
+        account = gcp.serviceaccount.Account("account",
+            account_id="gcf-sa",
+            display_name="Test Service Account")
+        topic = gcp.pubsub.Topic("topic", name="functions2-topic")
+        bucket = gcp.storage.Bucket("bucket",
+            name=f"{project}-gcf-source",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("function-source.zip"))
+        function = gcp.cloudfunctionsv2.Function("function",
+            name="gcf-function",
+            location="us-central1",
+            description="a new function",
+            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
+                runtime="nodejs16",
+                entry_point="helloPubSub",
+                environment_variables={
+                    "BUILD_CONFIG_TEST": "build_test",
+                },
+                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
+                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
+                        bucket=bucket.name,
+                        object=object.name,
+                    ),
+                ),
+            ),
+            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
+                max_instance_count=3,
+                min_instance_count=1,
+                available_memory="4Gi",
+                timeout_seconds=60,
+                max_instance_request_concurrency=80,
+                available_cpu="4",
+                environment_variables={
+                    "SERVICE_CONFIG_TEST": "config_test",
+                },
+                ingress_settings="ALLOW_INTERNAL_ONLY",
+                all_traffic_on_latest_revision=True,
+                service_account_email=account.email,
+            ),
+            event_trigger=gcp.cloudfunctionsv2.FunctionEventTriggerArgs(
+                trigger_region="us-central1",
+                event_type="google.cloud.pubsub.topic.v1.messagePublished",
+                pubsub_topic=topic.id,
+                retry_policy="RETRY_POLICY_RETRY",
+            ))
+        ```
+        ### Cloudfunctions2 Scheduler Auth
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = "my-project-name"
+        account = gcp.serviceaccount.Account("account",
+            account_id="gcf-sa",
+            display_name="Test Service Account")
+        bucket = gcp.storage.Bucket("bucket",
+            name=f"{project}-gcf-source",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("function-source.zip"))
+        function = gcp.cloudfunctionsv2.Function("function",
+            name="gcf-function",
+            location="us-central1",
+            description="a new function",
+            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
+                runtime="nodejs16",
+                entry_point="helloHttp",
+                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
+                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
+                        bucket=bucket.name,
+                        object=object.name,
+                    ),
+                ),
+            ),
+            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
+                min_instance_count=1,
+                available_memory="256M",
+                timeout_seconds=60,
+                service_account_email=account.email,
+            ))
+        invoker = gcp.cloudfunctionsv2.FunctionIamMember("invoker",
+            project=function.project,
+            location=function.location,
+            cloud_function=function.name,
+            role="roles/cloudfunctions.invoker",
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
+        cloud_run_invoker = gcp.cloudrun.IamMember("cloud_run_invoker",
+            project=function.project,
+            location=function.location,
+            service=function.name,
+            role="roles/run.invoker",
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
+        invoke_cloud_function = gcp.cloudscheduler.Job("invoke_cloud_function",
+            name="invoke-gcf-function",
+            description="Schedule the HTTPS trigger for cloud function",
+            schedule="0 0 * * *",
+            project=function.project,
+            region=function.location,
+            http_target=gcp.cloudscheduler.JobHttpTargetArgs(
+                uri=function.service_config.uri,
+                http_method="POST",
+                oidc_token=gcp.cloudscheduler.JobHttpTargetOidcTokenArgs(
+                    audience=function.service_config.apply(lambda service_config: f"{service_config.uri}/"),
+                    service_account_email=account.email,
+                ),
+            ))
+        ```
         ### Cloudfunctions2 Basic Gcs
 
         ```python
@@ -500,13 +658,15 @@ class Function(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         source_bucket = gcp.storage.Bucket("source-bucket",
+            name="gcf-source-bucket",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
             bucket=source_bucket.name,
             source=pulumi.FileAsset("function-source.zip"))
-        # Add path to the zipped function source code
         trigger_bucket = gcp.storage.Bucket("trigger-bucket",
+            name="gcf-trigger-bucket",
             location="us-central1",
             uniform_bucket_level_access=True)
         gcs_account = gcp.storage.get_project_service_account()
@@ -523,19 +683,17 @@ class Function(pulumi.CustomResource):
         invoking = gcp.projects.IAMMember("invoking",
             project="my-project-name",
             role="roles/run.invoker",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(depends_on=[gcs_pubsub_publishing]))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
         event_receiving = gcp.projects.IAMMember("event-receiving",
             project="my-project-name",
             role="roles/eventarc.eventReceiver",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(depends_on=[invoking]))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
         artifactregistry_reader = gcp.projects.IAMMember("artifactregistry-reader",
             project="my-project-name",
             role="roles/artifactregistry.reader",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(depends_on=[event_receiving]))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
         function = gcp.cloudfunctionsv2.Function("function",
+            name="gcf-function",
             location="us-central1",
             description="a new function",
             build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
@@ -572,11 +730,7 @@ class Function(pulumi.CustomResource):
                     attribute="bucket",
                     value=trigger_bucket.name,
                 )],
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[
-                    event_receiving,
-                    artifactregistry_reader,
-                ]))
+            ))
         ```
         ### Cloudfunctions2 Basic Auditlogs
 
@@ -589,12 +743,13 @@ class Function(pulumi.CustomResource):
         # and the docs:
         # https://cloud.google.com/eventarc/docs/path-patterns
         source_bucket = gcp.storage.Bucket("source-bucket",
+            name="gcf-source-bucket",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
             bucket=source_bucket.name,
             source=pulumi.FileAsset("function-source.zip"))
-        # Add path to the zipped function source code
         account = gcp.serviceaccount.Account("account",
             account_id="gcf-sa",
             display_name="Test Service Account - used for both the cloud function and eventarc trigger in the test")
@@ -602,6 +757,7 @@ class Function(pulumi.CustomResource):
         # Here we use Audit Logs to monitor the bucket so path patterns can be used in the example of
         # google_cloudfunctions2_function below (Audit Log events have path pattern support)
         audit_log_bucket = gcp.storage.Bucket("audit-log-bucket",
+            name="gcf-auditlog-bucket",
             location="us-central1",
             uniform_bucket_level_access=True)
         # Permissions on the service account used by the function and Eventarc trigger
@@ -612,14 +768,13 @@ class Function(pulumi.CustomResource):
         event_receiving = gcp.projects.IAMMember("event-receiving",
             project="my-project-name",
             role="roles/eventarc.eventReceiver",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(depends_on=[invoking]))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
         artifactregistry_reader = gcp.projects.IAMMember("artifactregistry-reader",
             project="my-project-name",
             role="roles/artifactregistry.reader",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(depends_on=[event_receiving]))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
         function = gcp.cloudfunctionsv2.Function("function",
+            name="gcf-function",
             location="us-central1",
             description="a new function",
             build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
@@ -667,11 +822,223 @@ class Function(pulumi.CustomResource):
                         operator="match-path-pattern",
                     ),
                 ],
+            ))
+        ```
+        ### Cloudfunctions2 Secret Env
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = "my-project-name"
+        bucket = gcp.storage.Bucket("bucket",
+            name=f"{project}-gcf-source",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("function-source.zip"))
+        secret = gcp.secretmanager.Secret("secret",
+            secret_id="secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
+                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+                        location="us-central1",
+                    )],
+                ),
+            ))
+        function = gcp.cloudfunctionsv2.Function("function",
+            name="function-secret",
+            location="us-central1",
+            description="a new function",
+            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
+                runtime="nodejs16",
+                entry_point="helloHttp",
+                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
+                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
+                        bucket=bucket.name,
+                        object=object.name,
+                    ),
+                ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[
-                    event_receiving,
-                    artifactregistry_reader,
-                ]))
+            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
+                max_instance_count=1,
+                available_memory="256M",
+                timeout_seconds=60,
+                secret_environment_variables=[gcp.cloudfunctionsv2.FunctionServiceConfigSecretEnvironmentVariableArgs(
+                    key="TEST",
+                    project_id=project,
+                    secret=secret.secret_id,
+                    version="latest",
+                )],
+            ))
+        secret_secret_version = gcp.secretmanager.SecretVersion("secret",
+            secret=secret.name,
+            secret_data="secret",
+            enabled=True)
+        ```
+        ### Cloudfunctions2 Secret Volume
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = "my-project-name"
+        bucket = gcp.storage.Bucket("bucket",
+            name=f"{project}-gcf-source",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("function-source.zip"))
+        secret = gcp.secretmanager.Secret("secret",
+            secret_id="secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
+                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+                        location="us-central1",
+                    )],
+                ),
+            ))
+        function = gcp.cloudfunctionsv2.Function("function",
+            name="function-secret",
+            location="us-central1",
+            description="a new function",
+            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
+                runtime="nodejs16",
+                entry_point="helloHttp",
+                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
+                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
+                        bucket=bucket.name,
+                        object=object.name,
+                    ),
+                ),
+            ),
+            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
+                max_instance_count=1,
+                available_memory="256M",
+                timeout_seconds=60,
+                secret_volumes=[gcp.cloudfunctionsv2.FunctionServiceConfigSecretVolumeArgs(
+                    mount_path="/etc/secrets",
+                    project_id=project,
+                    secret=secret.secret_id,
+                )],
+            ))
+        secret_secret_version = gcp.secretmanager.SecretVersion("secret",
+            secret=secret.name,
+            secret_data="secret",
+            enabled=True)
+        ```
+        ### Cloudfunctions2 Private Workerpool
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = "my-project-name"
+        bucket = gcp.storage.Bucket("bucket",
+            name=f"{project}-gcf-source",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("function-source.zip"))
+        pool = gcp.cloudbuild.WorkerPool("pool",
+            name="workerpool",
+            location="us-central1",
+            worker_config=gcp.cloudbuild.WorkerPoolWorkerConfigArgs(
+                disk_size_gb=100,
+                machine_type="e2-standard-8",
+                no_external_ip=False,
+            ))
+        function = gcp.cloudfunctionsv2.Function("function",
+            name="function-workerpool",
+            location="us-central1",
+            description="a new function",
+            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
+                runtime="nodejs16",
+                entry_point="helloHttp",
+                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
+                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
+                        bucket=bucket.name,
+                        object=object.name,
+                    ),
+                ),
+                worker_pool=pool.id,
+            ),
+            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
+                max_instance_count=1,
+                available_memory="256M",
+                timeout_seconds=60,
+            ))
+        ```
+        ### Cloudfunctions2 Cmek Docs
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = "my-project-name"
+        project_get_project = gcp.organizations.get_project()
+        bucket = gcp.storage.Bucket("bucket",
+            name=f"{project}-gcf-source",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("function-source.zip"))
+        ea_sa = gcp.projects.ServiceIdentity("ea_sa",
+            project=project_get_project.project_id,
+            service="eventarc.googleapis.com")
+        unencoded_ar_repo = gcp.artifactregistry.Repository("unencoded-ar-repo",
+            repository_id="ar-repo",
+            location="us-central1",
+            format="DOCKER")
+        encoded_ar_repo = gcp.artifactregistry.Repository("encoded-ar-repo",
+            location="us-central1",
+            repository_id="cmek-repo",
+            format="DOCKER",
+            kms_key_name="cmek-key")
+        binding = gcp.artifactregistry.RepositoryIamBinding("binding",
+            location=encoded_ar_repo.location,
+            repository=encoded_ar_repo.name,
+            role="roles/artifactregistry.admin",
+            members=[f"serviceAccount:service-{project_get_project.number}@gcf-admin-robot.iam.gserviceaccount.com"])
+        gcf_cmek_keyuser = gcp.kms.CryptoKeyIAMBinding("gcf_cmek_keyuser",
+            crypto_key_id="cmek-key",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            members=[
+                f"serviceAccount:service-{project_get_project.number}@gcf-admin-robot.iam.gserviceaccount.com",
+                f"serviceAccount:service-{project_get_project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com",
+                f"serviceAccount:service-{project_get_project.number}@gs-project-accounts.iam.gserviceaccount.com",
+                f"serviceAccount:service-{project_get_project.number}@serverless-robot-prod.iam.gserviceaccount.com",
+                ea_sa.email.apply(lambda email: f"serviceAccount:{email}"),
+            ])
+        function = gcp.cloudfunctionsv2.Function("function",
+            name="function-cmek",
+            location="us-central1",
+            description="CMEK function",
+            kms_key_name="cmek-key",
+            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
+                runtime="nodejs16",
+                entry_point="helloHttp",
+                docker_repository=encoded_ar_repo.id,
+                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
+                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
+                        bucket=bucket.name,
+                        object=object.name,
+                    ),
+                ),
+            ),
+            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
+                max_instance_count=1,
+                available_memory="256M",
+                timeout_seconds=60,
+            ))
         ```
 
         ## Import
@@ -738,6 +1105,164 @@ class Function(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/functions/docs/reference/rest/v2beta/projects.locations.functions)
 
         ## Example Usage
+        ### Cloudfunctions2 Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = "my-project-name"
+        bucket = gcp.storage.Bucket("bucket",
+            name=f"{project}-gcf-source",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("function-source.zip"))
+        function = gcp.cloudfunctionsv2.Function("function",
+            name="function-v2",
+            location="us-central1",
+            description="a new function",
+            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
+                runtime="nodejs16",
+                entry_point="helloHttp",
+                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
+                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
+                        bucket=bucket.name,
+                        object=object.name,
+                    ),
+                ),
+            ),
+            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
+                max_instance_count=1,
+                available_memory="256M",
+                timeout_seconds=60,
+            ))
+        pulumi.export("functionUri", function.service_config.uri)
+        ```
+        ### Cloudfunctions2 Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = "my-project-name"
+        account = gcp.serviceaccount.Account("account",
+            account_id="gcf-sa",
+            display_name="Test Service Account")
+        topic = gcp.pubsub.Topic("topic", name="functions2-topic")
+        bucket = gcp.storage.Bucket("bucket",
+            name=f"{project}-gcf-source",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("function-source.zip"))
+        function = gcp.cloudfunctionsv2.Function("function",
+            name="gcf-function",
+            location="us-central1",
+            description="a new function",
+            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
+                runtime="nodejs16",
+                entry_point="helloPubSub",
+                environment_variables={
+                    "BUILD_CONFIG_TEST": "build_test",
+                },
+                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
+                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
+                        bucket=bucket.name,
+                        object=object.name,
+                    ),
+                ),
+            ),
+            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
+                max_instance_count=3,
+                min_instance_count=1,
+                available_memory="4Gi",
+                timeout_seconds=60,
+                max_instance_request_concurrency=80,
+                available_cpu="4",
+                environment_variables={
+                    "SERVICE_CONFIG_TEST": "config_test",
+                },
+                ingress_settings="ALLOW_INTERNAL_ONLY",
+                all_traffic_on_latest_revision=True,
+                service_account_email=account.email,
+            ),
+            event_trigger=gcp.cloudfunctionsv2.FunctionEventTriggerArgs(
+                trigger_region="us-central1",
+                event_type="google.cloud.pubsub.topic.v1.messagePublished",
+                pubsub_topic=topic.id,
+                retry_policy="RETRY_POLICY_RETRY",
+            ))
+        ```
+        ### Cloudfunctions2 Scheduler Auth
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = "my-project-name"
+        account = gcp.serviceaccount.Account("account",
+            account_id="gcf-sa",
+            display_name="Test Service Account")
+        bucket = gcp.storage.Bucket("bucket",
+            name=f"{project}-gcf-source",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("function-source.zip"))
+        function = gcp.cloudfunctionsv2.Function("function",
+            name="gcf-function",
+            location="us-central1",
+            description="a new function",
+            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
+                runtime="nodejs16",
+                entry_point="helloHttp",
+                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
+                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
+                        bucket=bucket.name,
+                        object=object.name,
+                    ),
+                ),
+            ),
+            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
+                min_instance_count=1,
+                available_memory="256M",
+                timeout_seconds=60,
+                service_account_email=account.email,
+            ))
+        invoker = gcp.cloudfunctionsv2.FunctionIamMember("invoker",
+            project=function.project,
+            location=function.location,
+            cloud_function=function.name,
+            role="roles/cloudfunctions.invoker",
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
+        cloud_run_invoker = gcp.cloudrun.IamMember("cloud_run_invoker",
+            project=function.project,
+            location=function.location,
+            service=function.name,
+            role="roles/run.invoker",
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
+        invoke_cloud_function = gcp.cloudscheduler.Job("invoke_cloud_function",
+            name="invoke-gcf-function",
+            description="Schedule the HTTPS trigger for cloud function",
+            schedule="0 0 * * *",
+            project=function.project,
+            region=function.location,
+            http_target=gcp.cloudscheduler.JobHttpTargetArgs(
+                uri=function.service_config.uri,
+                http_method="POST",
+                oidc_token=gcp.cloudscheduler.JobHttpTargetOidcTokenArgs(
+                    audience=function.service_config.apply(lambda service_config: f"{service_config.uri}/"),
+                    service_account_email=account.email,
+                ),
+            ))
+        ```
         ### Cloudfunctions2 Basic Gcs
 
         ```python
@@ -745,13 +1270,15 @@ class Function(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         source_bucket = gcp.storage.Bucket("source-bucket",
+            name="gcf-source-bucket",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
             bucket=source_bucket.name,
             source=pulumi.FileAsset("function-source.zip"))
-        # Add path to the zipped function source code
         trigger_bucket = gcp.storage.Bucket("trigger-bucket",
+            name="gcf-trigger-bucket",
             location="us-central1",
             uniform_bucket_level_access=True)
         gcs_account = gcp.storage.get_project_service_account()
@@ -768,19 +1295,17 @@ class Function(pulumi.CustomResource):
         invoking = gcp.projects.IAMMember("invoking",
             project="my-project-name",
             role="roles/run.invoker",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(depends_on=[gcs_pubsub_publishing]))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
         event_receiving = gcp.projects.IAMMember("event-receiving",
             project="my-project-name",
             role="roles/eventarc.eventReceiver",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(depends_on=[invoking]))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
         artifactregistry_reader = gcp.projects.IAMMember("artifactregistry-reader",
             project="my-project-name",
             role="roles/artifactregistry.reader",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(depends_on=[event_receiving]))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
         function = gcp.cloudfunctionsv2.Function("function",
+            name="gcf-function",
             location="us-central1",
             description="a new function",
             build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
@@ -817,11 +1342,7 @@ class Function(pulumi.CustomResource):
                     attribute="bucket",
                     value=trigger_bucket.name,
                 )],
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[
-                    event_receiving,
-                    artifactregistry_reader,
-                ]))
+            ))
         ```
         ### Cloudfunctions2 Basic Auditlogs
 
@@ -834,12 +1355,13 @@ class Function(pulumi.CustomResource):
         # and the docs:
         # https://cloud.google.com/eventarc/docs/path-patterns
         source_bucket = gcp.storage.Bucket("source-bucket",
+            name="gcf-source-bucket",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
             bucket=source_bucket.name,
             source=pulumi.FileAsset("function-source.zip"))
-        # Add path to the zipped function source code
         account = gcp.serviceaccount.Account("account",
             account_id="gcf-sa",
             display_name="Test Service Account - used for both the cloud function and eventarc trigger in the test")
@@ -847,6 +1369,7 @@ class Function(pulumi.CustomResource):
         # Here we use Audit Logs to monitor the bucket so path patterns can be used in the example of
         # google_cloudfunctions2_function below (Audit Log events have path pattern support)
         audit_log_bucket = gcp.storage.Bucket("audit-log-bucket",
+            name="gcf-auditlog-bucket",
             location="us-central1",
             uniform_bucket_level_access=True)
         # Permissions on the service account used by the function and Eventarc trigger
@@ -857,14 +1380,13 @@ class Function(pulumi.CustomResource):
         event_receiving = gcp.projects.IAMMember("event-receiving",
             project="my-project-name",
             role="roles/eventarc.eventReceiver",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(depends_on=[invoking]))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
         artifactregistry_reader = gcp.projects.IAMMember("artifactregistry-reader",
             project="my-project-name",
             role="roles/artifactregistry.reader",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(depends_on=[event_receiving]))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
         function = gcp.cloudfunctionsv2.Function("function",
+            name="gcf-function",
             location="us-central1",
             description="a new function",
             build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
@@ -912,11 +1434,223 @@ class Function(pulumi.CustomResource):
                         operator="match-path-pattern",
                     ),
                 ],
+            ))
+        ```
+        ### Cloudfunctions2 Secret Env
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = "my-project-name"
+        bucket = gcp.storage.Bucket("bucket",
+            name=f"{project}-gcf-source",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("function-source.zip"))
+        secret = gcp.secretmanager.Secret("secret",
+            secret_id="secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
+                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+                        location="us-central1",
+                    )],
+                ),
+            ))
+        function = gcp.cloudfunctionsv2.Function("function",
+            name="function-secret",
+            location="us-central1",
+            description="a new function",
+            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
+                runtime="nodejs16",
+                entry_point="helloHttp",
+                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
+                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
+                        bucket=bucket.name,
+                        object=object.name,
+                    ),
+                ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[
-                    event_receiving,
-                    artifactregistry_reader,
-                ]))
+            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
+                max_instance_count=1,
+                available_memory="256M",
+                timeout_seconds=60,
+                secret_environment_variables=[gcp.cloudfunctionsv2.FunctionServiceConfigSecretEnvironmentVariableArgs(
+                    key="TEST",
+                    project_id=project,
+                    secret=secret.secret_id,
+                    version="latest",
+                )],
+            ))
+        secret_secret_version = gcp.secretmanager.SecretVersion("secret",
+            secret=secret.name,
+            secret_data="secret",
+            enabled=True)
+        ```
+        ### Cloudfunctions2 Secret Volume
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = "my-project-name"
+        bucket = gcp.storage.Bucket("bucket",
+            name=f"{project}-gcf-source",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("function-source.zip"))
+        secret = gcp.secretmanager.Secret("secret",
+            secret_id="secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
+                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+                        location="us-central1",
+                    )],
+                ),
+            ))
+        function = gcp.cloudfunctionsv2.Function("function",
+            name="function-secret",
+            location="us-central1",
+            description="a new function",
+            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
+                runtime="nodejs16",
+                entry_point="helloHttp",
+                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
+                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
+                        bucket=bucket.name,
+                        object=object.name,
+                    ),
+                ),
+            ),
+            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
+                max_instance_count=1,
+                available_memory="256M",
+                timeout_seconds=60,
+                secret_volumes=[gcp.cloudfunctionsv2.FunctionServiceConfigSecretVolumeArgs(
+                    mount_path="/etc/secrets",
+                    project_id=project,
+                    secret=secret.secret_id,
+                )],
+            ))
+        secret_secret_version = gcp.secretmanager.SecretVersion("secret",
+            secret=secret.name,
+            secret_data="secret",
+            enabled=True)
+        ```
+        ### Cloudfunctions2 Private Workerpool
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = "my-project-name"
+        bucket = gcp.storage.Bucket("bucket",
+            name=f"{project}-gcf-source",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("function-source.zip"))
+        pool = gcp.cloudbuild.WorkerPool("pool",
+            name="workerpool",
+            location="us-central1",
+            worker_config=gcp.cloudbuild.WorkerPoolWorkerConfigArgs(
+                disk_size_gb=100,
+                machine_type="e2-standard-8",
+                no_external_ip=False,
+            ))
+        function = gcp.cloudfunctionsv2.Function("function",
+            name="function-workerpool",
+            location="us-central1",
+            description="a new function",
+            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
+                runtime="nodejs16",
+                entry_point="helloHttp",
+                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
+                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
+                        bucket=bucket.name,
+                        object=object.name,
+                    ),
+                ),
+                worker_pool=pool.id,
+            ),
+            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
+                max_instance_count=1,
+                available_memory="256M",
+                timeout_seconds=60,
+            ))
+        ```
+        ### Cloudfunctions2 Cmek Docs
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = "my-project-name"
+        project_get_project = gcp.organizations.get_project()
+        bucket = gcp.storage.Bucket("bucket",
+            name=f"{project}-gcf-source",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("function-source.zip"))
+        ea_sa = gcp.projects.ServiceIdentity("ea_sa",
+            project=project_get_project.project_id,
+            service="eventarc.googleapis.com")
+        unencoded_ar_repo = gcp.artifactregistry.Repository("unencoded-ar-repo",
+            repository_id="ar-repo",
+            location="us-central1",
+            format="DOCKER")
+        encoded_ar_repo = gcp.artifactregistry.Repository("encoded-ar-repo",
+            location="us-central1",
+            repository_id="cmek-repo",
+            format="DOCKER",
+            kms_key_name="cmek-key")
+        binding = gcp.artifactregistry.RepositoryIamBinding("binding",
+            location=encoded_ar_repo.location,
+            repository=encoded_ar_repo.name,
+            role="roles/artifactregistry.admin",
+            members=[f"serviceAccount:service-{project_get_project.number}@gcf-admin-robot.iam.gserviceaccount.com"])
+        gcf_cmek_keyuser = gcp.kms.CryptoKeyIAMBinding("gcf_cmek_keyuser",
+            crypto_key_id="cmek-key",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            members=[
+                f"serviceAccount:service-{project_get_project.number}@gcf-admin-robot.iam.gserviceaccount.com",
+                f"serviceAccount:service-{project_get_project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com",
+                f"serviceAccount:service-{project_get_project.number}@gs-project-accounts.iam.gserviceaccount.com",
+                f"serviceAccount:service-{project_get_project.number}@serverless-robot-prod.iam.gserviceaccount.com",
+                ea_sa.email.apply(lambda email: f"serviceAccount:{email}"),
+            ])
+        function = gcp.cloudfunctionsv2.Function("function",
+            name="function-cmek",
+            location="us-central1",
+            description="CMEK function",
+            kms_key_name="cmek-key",
+            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
+                runtime="nodejs16",
+                entry_point="helloHttp",
+                docker_repository=encoded_ar_repo.id,
+                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
+                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
+                        bucket=bucket.name,
+                        object=object.name,
+                    ),
+                ),
+            ),
+            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
+                max_instance_count=1,
+                available_memory="256M",
+                timeout_seconds=60,
+            ))
         ```
 
         ## Import

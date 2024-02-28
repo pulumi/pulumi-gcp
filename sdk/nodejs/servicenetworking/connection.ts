@@ -17,9 +17,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * // Create a VPC network
- * const peeringNetwork = new gcp.compute.Network("peeringNetwork", {});
+ * const peeringNetwork = new gcp.compute.Network("peering_network", {name: "peering-network"});
  * // Create an IP address
- * const privateIpAlloc = new gcp.compute.GlobalAddress("privateIpAlloc", {
+ * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
+ *     name: "private-ip-alloc",
  *     purpose: "VPC_PEERING",
  *     addressType: "INTERNAL",
  *     prefixLength: 16,
@@ -32,7 +33,7 @@ import * as utilities from "../utilities";
  *     reservedPeeringRanges: [privateIpAlloc.name],
  * });
  * // (Optional) Import or export custom routes
- * const peeringRoutes = new gcp.compute.NetworkPeeringRoutesConfig("peeringRoutes", {
+ * const peeringRoutes = new gcp.compute.NetworkPeeringRoutesConfig("peering_routes", {
  *     peering: _default.peering,
  *     network: peeringNetwork.name,
  *     importCustomRoutes: true,

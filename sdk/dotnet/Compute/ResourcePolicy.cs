@@ -29,6 +29,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var foo = new Gcp.Compute.ResourcePolicy("foo", new()
     ///     {
+    ///         Name = "gce-policy",
     ///         Region = "us-central1",
     ///         SnapshotSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyArgs
     ///         {
@@ -57,14 +58,10 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var bar = new Gcp.Compute.ResourcePolicy("bar", new()
     ///     {
+    ///         Name = "gce-policy",
     ///         Region = "us-central1",
     ///         SnapshotSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyArgs
     ///         {
-    ///             RetentionPolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs
-    ///             {
-    ///                 MaxRetentionDays = 10,
-    ///                 OnSourceDiskDelete = "KEEP_AUTO_SNAPSHOTS",
-    ///             },
     ///             Schedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs
     ///             {
     ///                 HourlySchedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs
@@ -73,14 +70,19 @@ namespace Pulumi.Gcp.Compute
     ///                     StartTime = "23:00",
     ///                 },
     ///             },
+    ///             RetentionPolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs
+    ///             {
+    ///                 MaxRetentionDays = 10,
+    ///                 OnSourceDiskDelete = "KEEP_AUTO_SNAPSHOTS",
+    ///             },
     ///             SnapshotProperties = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs
     ///             {
-    ///                 GuestFlush = true,
     ///                 Labels = 
     ///                 {
-    ///                     { "myLabel", "value" },
+    ///                     { "my_label", "value" },
     ///                 },
     ///                 StorageLocations = "us",
+    ///                 GuestFlush = true,
     ///             },
     ///         },
     ///     });
@@ -99,12 +101,13 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var baz = new Gcp.Compute.ResourcePolicy("baz", new()
     ///     {
+    ///         Name = "gce-policy",
+    ///         Region = "us-central1",
     ///         GroupPlacementPolicy = new Gcp.Compute.Inputs.ResourcePolicyGroupPlacementPolicyArgs
     ///         {
-    ///             Collocation = "COLLOCATED",
     ///             VmCount = 2,
+    ///             Collocation = "COLLOCATED",
     ///         },
-    ///         Region = "us-central1",
     ///     });
     /// 
     /// });
@@ -121,6 +124,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var baz = new Gcp.Compute.ResourcePolicy("baz", new()
     ///     {
+    ///         Name = "gce-policy",
     ///         Region = "us-central1",
     ///         GroupPlacementPolicy = new Gcp.Compute.Inputs.ResourcePolicyGroupPlacementPolicyArgs
     ///         {
@@ -128,9 +132,6 @@ namespace Pulumi.Gcp.Compute
     ///             Collocation = "COLLOCATED",
     ///             MaxDistance = 2,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -147,10 +148,11 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var hourly = new Gcp.Compute.ResourcePolicy("hourly", new()
     ///     {
+    ///         Name = "gce-policy",
+    ///         Region = "us-central1",
     ///         Description = "Start and stop instances",
     ///         InstanceSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicyInstanceSchedulePolicyArgs
     ///         {
-    ///             TimeZone = "US/Central",
     ///             VmStartSchedule = new Gcp.Compute.Inputs.ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs
     ///             {
     ///                 Schedule = "0 * * * *",
@@ -159,8 +161,8 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 Schedule = "15 * * * *",
     ///             },
+    ///             TimeZone = "US/Central",
     ///         },
-    ///         Region = "us-central1",
     ///     });
     /// 
     /// });
@@ -177,15 +179,11 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var hourly = new Gcp.Compute.ResourcePolicy("hourly", new()
     ///     {
-    ///         Description = "chain name snapshot",
+    ///         Name = "gce-policy",
     ///         Region = "us-central1",
+    ///         Description = "chain name snapshot",
     ///         SnapshotSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyArgs
     ///         {
-    ///             RetentionPolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs
-    ///             {
-    ///                 MaxRetentionDays = 14,
-    ///                 OnSourceDiskDelete = "KEEP_AUTO_SNAPSHOTS",
-    ///             },
     ///             Schedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs
     ///             {
     ///                 HourlySchedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs
@@ -194,15 +192,20 @@ namespace Pulumi.Gcp.Compute
     ///                     StartTime = "23:00",
     ///                 },
     ///             },
+    ///             RetentionPolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs
+    ///             {
+    ///                 MaxRetentionDays = 14,
+    ///                 OnSourceDiskDelete = "KEEP_AUTO_SNAPSHOTS",
+    ///             },
     ///             SnapshotProperties = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs
     ///             {
-    ///                 ChainName = "test-schedule-chain-name",
-    ///                 GuestFlush = true,
     ///                 Labels = 
     ///                 {
-    ///                     { "myLabel", "value" },
+    ///                     { "my_label", "value" },
     ///                 },
     ///                 StorageLocations = "us",
+    ///                 GuestFlush = true,
+    ///                 ChainName = "test-schedule-chain-name",
     ///             },
     ///         },
     ///     });
@@ -221,11 +224,12 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var cgroup = new Gcp.Compute.ResourcePolicy("cgroup", new()
     ///     {
+    ///         Name = "gce-policy",
+    ///         Region = "europe-west1",
     ///         DiskConsistencyGroupPolicy = new Gcp.Compute.Inputs.ResourcePolicyDiskConsistencyGroupPolicyArgs
     ///         {
     ///             Enabled = true,
     ///         },
-    ///         Region = "europe-west1",
     ///     });
     /// 
     /// });

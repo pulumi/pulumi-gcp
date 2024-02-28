@@ -24,15 +24,16 @@ namespace Pulumi.Gcp.Dataflow
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var bigDataJob = new Gcp.Dataflow.Job("bigDataJob", new()
+    ///     var bigDataJob = new Gcp.Dataflow.Job("big_data_job", new()
     ///     {
+    ///         Name = "dataflow-job",
+    ///         TemplateGcsPath = "gs://my-bucket/templates/template_file",
+    ///         TempGcsLocation = "gs://my-bucket/tmp_dir",
     ///         Parameters = 
     ///         {
-    ///             { "baz", "qux" },
     ///             { "foo", "bar" },
+    ///             { "baz", "qux" },
     ///         },
-    ///         TempGcsLocation = "gs://my-bucket/tmp_dir",
-    ///         TemplateGcsPath = "gs://my-bucket/templates/template_file",
     ///     });
     /// 
     /// });
@@ -47,22 +48,28 @@ namespace Pulumi.Gcp.Dataflow
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var topic = new Gcp.PubSub.Topic("topic");
+    ///     var topic = new Gcp.PubSub.Topic("topic", new()
+    ///     {
+    ///         Name = "dataflow-job1",
+    ///     });
     /// 
     ///     var bucket1 = new Gcp.Storage.Bucket("bucket1", new()
     ///     {
+    ///         Name = "tf-test-bucket1",
     ///         Location = "US",
     ///         ForceDestroy = true,
     ///     });
     /// 
     ///     var bucket2 = new Gcp.Storage.Bucket("bucket2", new()
     ///     {
+    ///         Name = "tf-test-bucket2",
     ///         Location = "US",
     ///         ForceDestroy = true,
     ///     });
     /// 
-    ///     var pubsubStream = new Gcp.Dataflow.Job("pubsubStream", new()
+    ///     var pubsubStream = new Gcp.Dataflow.Job("pubsub_stream", new()
     ///     {
+    ///         Name = "tf-test-dataflow-job1",
     ///         TemplateGcsPath = "gs://my-bucket/templates/template_file",
     ///         TempGcsLocation = "gs://my-bucket/tmp_dir",
     ///         EnableStreamingEngine = true,
@@ -102,28 +109,26 @@ namespace Pulumi.Gcp.Dataflow
     /// {
     ///     var config = new Config();
     ///     var bigDataJobSubscriptionId = config.Get("bigDataJobSubscriptionId") ?? "projects/myproject/subscriptions/messages";
-    ///     var bigDataJobNameSuffix = new Random.RandomId("bigDataJobNameSuffix", new()
+    ///     var bigDataJobNameSuffix = new Random.RandomId("big_data_job_name_suffix", new()
     ///     {
     ///         ByteLength = 4,
     ///         Keepers = 
     ///         {
-    ///             { "region", @var.Region },
+    ///             { "region", region },
     ///             { "subscription_id", bigDataJobSubscriptionId },
     ///         },
     ///     });
     /// 
-    ///     var bigDataJob = new Gcp.Dataflow.FlexTemplateJob("bigDataJob", new()
+    ///     var bigDataJob = new Gcp.Dataflow.FlexTemplateJob("big_data_job", new()
     ///     {
-    ///         Region = @var.Region,
+    ///         Name = bigDataJobNameSuffix.Dec.Apply(dec =&gt; $"dataflow-flextemplates-job-{dec}"),
+    ///         Region = region,
     ///         ContainerSpecGcsPath = "gs://my-bucket/templates/template.json",
     ///         SkipWaitOnJobTermination = true,
     ///         Parameters = 
     ///         {
     ///             { "inputSubscription", bigDataJobSubscriptionId },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

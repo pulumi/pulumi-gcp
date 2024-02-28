@@ -278,9 +278,9 @@ class SubscriptionIAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         editor = gcp.pubsub.SubscriptionIAMBinding("editor",
-            members=["user:jane@example.com"],
+            subscription="your-subscription-name",
             role="roles/editor",
-            subscription="your-subscription-name")
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_pubsub\\_subscription\\_iam\\_member
@@ -290,9 +290,9 @@ class SubscriptionIAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         editor = gcp.pubsub.SubscriptionIAMMember("editor",
-            member="user:jane@example.com",
+            subscription="your-subscription-name",
             role="roles/editor",
-            subscription="your-subscription-name")
+            member="user:jane@example.com")
         ```
 
         ## Import
@@ -378,9 +378,9 @@ class SubscriptionIAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         editor = gcp.pubsub.SubscriptionIAMBinding("editor",
-            members=["user:jane@example.com"],
+            subscription="your-subscription-name",
             role="roles/editor",
-            subscription="your-subscription-name")
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_pubsub\\_subscription\\_iam\\_member
@@ -390,9 +390,9 @@ class SubscriptionIAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         editor = gcp.pubsub.SubscriptionIAMMember("editor",
-            member="user:jane@example.com",
+            subscription="your-subscription-name",
             role="roles/editor",
-            subscription="your-subscription-name")
+            member="user:jane@example.com")
         ```
 
         ## Import

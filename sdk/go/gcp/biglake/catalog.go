@@ -36,6 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := biglake.NewCatalog(ctx, "default", &biglake.CatalogArgs{
+//				Name:     pulumi.String("my_catalog"),
 //				Location: pulumi.String("US"),
 //			})
 //			if err != nil {

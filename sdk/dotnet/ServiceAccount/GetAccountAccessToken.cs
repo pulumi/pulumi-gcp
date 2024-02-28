@@ -35,12 +35,12 @@ namespace Pulumi.Gcp.ServiceAccount
         /// {
         ///     var token_creator_iam = new Gcp.ServiceAccount.IAMBinding("token-creator-iam", new()
         ///     {
+        ///         ServiceAccountId = "projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com",
+        ///         Role = "roles/iam.serviceAccountTokenCreator",
         ///         Members = new[]
         ///         {
         ///             "serviceAccount:service_A@projectA.iam.gserviceaccount.com",
         ///         },
-        ///         Role = "roles/iam.serviceAccountTokenCreator",
-        ///         ServiceAccountId = "projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com",
         ///     });
         /// 
         /// });
@@ -58,9 +58,9 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultClientConfig = Gcp.Organizations.GetClientConfig.Invoke();
+        ///     var @default = Gcp.Organizations.GetClientConfig.Invoke();
         /// 
-        ///     var defaultAccountAccessToken = Gcp.ServiceAccount.GetAccountAccessToken.Invoke(new()
+        ///     var defaultGetAccountAccessToken = Gcp.ServiceAccount.GetAccountAccessToken.Invoke(new()
         ///     {
         ///         TargetServiceAccount = "service_B@projectB.iam.gserviceaccount.com",
         ///         Scopes = new[]
@@ -69,11 +69,6 @@ namespace Pulumi.Gcp.ServiceAccount
         ///             "cloud-platform",
         ///         },
         ///         Lifetime = "300s",
-        ///     });
-        /// 
-        ///     var impersonated = new Pulumi.Providers.Google("impersonated", new()
-        ///     {
-        ///         AccessToken = defaultAccountAccessToken.Apply(getAccountAccessTokenResult =&gt; getAccountAccessTokenResult.AccessToken),
         ///     });
         /// 
         ///     var me = Gcp.Organizations.GetClientOpenIdUserInfo.Invoke();
@@ -116,12 +111,12 @@ namespace Pulumi.Gcp.ServiceAccount
         /// {
         ///     var token_creator_iam = new Gcp.ServiceAccount.IAMBinding("token-creator-iam", new()
         ///     {
+        ///         ServiceAccountId = "projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com",
+        ///         Role = "roles/iam.serviceAccountTokenCreator",
         ///         Members = new[]
         ///         {
         ///             "serviceAccount:service_A@projectA.iam.gserviceaccount.com",
         ///         },
-        ///         Role = "roles/iam.serviceAccountTokenCreator",
-        ///         ServiceAccountId = "projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com",
         ///     });
         /// 
         /// });
@@ -139,9 +134,9 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultClientConfig = Gcp.Organizations.GetClientConfig.Invoke();
+        ///     var @default = Gcp.Organizations.GetClientConfig.Invoke();
         /// 
-        ///     var defaultAccountAccessToken = Gcp.ServiceAccount.GetAccountAccessToken.Invoke(new()
+        ///     var defaultGetAccountAccessToken = Gcp.ServiceAccount.GetAccountAccessToken.Invoke(new()
         ///     {
         ///         TargetServiceAccount = "service_B@projectB.iam.gserviceaccount.com",
         ///         Scopes = new[]
@@ -150,11 +145,6 @@ namespace Pulumi.Gcp.ServiceAccount
         ///             "cloud-platform",
         ///         },
         ///         Lifetime = "300s",
-        ///     });
-        /// 
-        ///     var impersonated = new Pulumi.Providers.Google("impersonated", new()
-        ///     {
-        ///         AccessToken = defaultAccountAccessToken.Apply(getAccountAccessTokenResult =&gt; getAccountAccessTokenResult.AccessToken),
         ///     });
         /// 
         ///     var me = Gcp.Organizations.GetClientOpenIdUserInfo.Invoke();

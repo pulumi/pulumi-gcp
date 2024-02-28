@@ -51,6 +51,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var testOrganization = new AddonsConfig(&#34;testOrganization&#34;, AddonsConfigArgs.builder()        
+ *             .org(&#34;test_organization&#34;)
  *             .addonsConfig(AddonsConfigAddonsConfigArgs.builder()
  *                 .apiSecurityConfig(AddonsConfigAddonsConfigApiSecurityConfigArgs.builder()
  *                     .enabled(true)
@@ -59,7 +60,6 @@ import javax.annotation.Nullable;
  *                     .enabled(true)
  *                     .build())
  *                 .build())
- *             .org(&#34;test_organization&#34;)
  *             .build());
  * 
  *     }
@@ -91,7 +91,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.apigee.inputs.AddonsConfigAddonsConfigConnectorsPlatformConfigArgs;
  * import com.pulumi.gcp.apigee.inputs.AddonsConfigAddonsConfigMonetizationConfigArgs;
  * import com.pulumi.gcp.apigee.inputs.AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -123,12 +122,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var apigeeNetwork = new Network(&#34;apigeeNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;apigee-network&#34;)
  *             .project(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()))
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(compute)
- *                 .build());
+ *             .build());
  * 
  *         var apigeeRange = new GlobalAddress(&#34;apigeeRange&#34;, GlobalAddressArgs.builder()        
+ *             .name(&#34;apigee-range&#34;)
  *             .purpose(&#34;VPC_PEERING&#34;)
  *             .addressType(&#34;INTERNAL&#34;)
  *             .prefixLength(16)
@@ -147,11 +146,7 @@ import javax.annotation.Nullable;
  *             .projectId(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()))
  *             .authorizedNetwork(apigeeNetwork.id())
  *             .billingType(&#34;EVALUATION&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
- *                     apigeeVpcConnection,
- *                     apigee)
- *                 .build());
+ *             .build());
  * 
  *         var testOrganization = new AddonsConfig(&#34;testOrganization&#34;, AddonsConfigArgs.builder()        
  *             .org(org.name())

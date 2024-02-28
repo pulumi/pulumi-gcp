@@ -40,10 +40,14 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var default_network = new Gcp.Compute.Network("default-network");
+    ///     var default_network = new Gcp.Compute.Network("default-network", new()
+    ///     {
+    ///         Name = "network",
+    ///     });
     /// 
     ///     var default_instance = new Gcp.Compute.Instance("default-instance", new()
     ///     {
+    ///         Name = "instance",
     ///         MachineType = "e2-medium",
     ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
     ///         {
@@ -61,7 +65,10 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///     });
     /// 
-    ///     var default_instance_group = new Gcp.Compute.InstanceGroup("default-instance-group");
+    ///     var default_instance_group = new Gcp.Compute.InstanceGroup("default-instance-group", new()
+    ///     {
+    ///         Name = "instance-group",
+    ///     });
     /// 
     ///     var default_ig_membership = new Gcp.Compute.InstanceGroupMembership("default-ig-membership", new()
     ///     {

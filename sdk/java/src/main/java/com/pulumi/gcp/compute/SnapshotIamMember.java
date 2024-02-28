@@ -62,7 +62,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new SnapshotIamPolicy(&#34;policy&#34;, SnapshotIamPolicyArgs.builder()        
- *             .project(google_compute_snapshot.snapshot().project())
+ *             .project(snapshot.project())
+ *             .name(snapshot.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -93,7 +94,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new SnapshotIamBinding(&#34;binding&#34;, SnapshotIamBindingArgs.builder()        
- *             .project(google_compute_snapshot.snapshot().project())
+ *             .project(snapshot.project())
+ *             .name(snapshot.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -125,7 +127,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new SnapshotIamMember(&#34;member&#34;, SnapshotIamMemberArgs.builder()        
- *             .project(google_compute_snapshot.snapshot().project())
+ *             .project(snapshot.project())
+ *             .name(snapshot.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

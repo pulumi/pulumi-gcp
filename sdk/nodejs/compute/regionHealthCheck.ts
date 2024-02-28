@@ -33,11 +33,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const tcp_region_health_check = new gcp.compute.RegionHealthCheck("tcp-region-health-check", {
+ *     name: "tcp-region-health-check",
+ *     timeoutSec: 1,
  *     checkIntervalSec: 1,
  *     tcpHealthCheck: {
  *         port: 80,
  *     },
- *     timeoutSec: 1,
  * });
  * ```
  * ### Region Health Check Tcp Full
@@ -47,18 +48,19 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const tcp_region_health_check = new gcp.compute.RegionHealthCheck("tcp-region-health-check", {
- *     checkIntervalSec: 1,
+ *     name: "tcp-region-health-check",
  *     description: "Health check via tcp",
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
  *     healthyThreshold: 4,
+ *     unhealthyThreshold: 5,
  *     tcpHealthCheck: {
  *         portName: "health-check-port",
  *         portSpecification: "USE_NAMED_PORT",
- *         proxyHeader: "NONE",
  *         request: "ARE YOU HEALTHY?",
+ *         proxyHeader: "NONE",
  *         response: "I AM HEALTHY",
  *     },
- *     timeoutSec: 1,
- *     unhealthyThreshold: 5,
  * });
  * ```
  * ### Region Health Check Ssl
@@ -68,11 +70,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const ssl_region_health_check = new gcp.compute.RegionHealthCheck("ssl-region-health-check", {
+ *     name: "ssl-region-health-check",
+ *     timeoutSec: 1,
  *     checkIntervalSec: 1,
  *     sslHealthCheck: {
  *         port: 443,
  *     },
- *     timeoutSec: 1,
  * });
  * ```
  * ### Region Health Check Ssl Full
@@ -82,18 +85,19 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const ssl_region_health_check = new gcp.compute.RegionHealthCheck("ssl-region-health-check", {
- *     checkIntervalSec: 1,
+ *     name: "ssl-region-health-check",
  *     description: "Health check via ssl",
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
  *     healthyThreshold: 4,
+ *     unhealthyThreshold: 5,
  *     sslHealthCheck: {
  *         portName: "health-check-port",
  *         portSpecification: "USE_NAMED_PORT",
- *         proxyHeader: "NONE",
  *         request: "ARE YOU HEALTHY?",
+ *         proxyHeader: "NONE",
  *         response: "I AM HEALTHY",
  *     },
- *     timeoutSec: 1,
- *     unhealthyThreshold: 5,
  * });
  * ```
  * ### Region Health Check Http
@@ -103,11 +107,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const http_region_health_check = new gcp.compute.RegionHealthCheck("http-region-health-check", {
+ *     name: "http-region-health-check",
+ *     timeoutSec: 1,
  *     checkIntervalSec: 1,
  *     httpHealthCheck: {
  *         port: 80,
  *     },
- *     timeoutSec: 1,
  * });
  * ```
  * ### Region Health Check Http Logs
@@ -117,6 +122,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const http_region_health_check = new gcp.compute.RegionHealthCheck("http-region-health-check", {
+ *     name: "http-region-health-check",
  *     timeoutSec: 1,
  *     checkIntervalSec: 1,
  *     httpHealthCheck: {
@@ -125,8 +131,6 @@ import * as utilities from "../utilities";
  *     logConfig: {
  *         enable: true,
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Region Health Check Http Full
@@ -136,19 +140,20 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const http_region_health_check = new gcp.compute.RegionHealthCheck("http-region-health-check", {
- *     checkIntervalSec: 1,
+ *     name: "http-region-health-check",
  *     description: "Health check via http",
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
  *     healthyThreshold: 4,
+ *     unhealthyThreshold: 5,
  *     httpHealthCheck: {
- *         host: "1.2.3.4",
  *         portName: "health-check-port",
  *         portSpecification: "USE_NAMED_PORT",
- *         proxyHeader: "NONE",
+ *         host: "1.2.3.4",
  *         requestPath: "/mypath",
+ *         proxyHeader: "NONE",
  *         response: "I AM HEALTHY",
  *     },
- *     timeoutSec: 1,
- *     unhealthyThreshold: 5,
  * });
  * ```
  * ### Region Health Check Https
@@ -158,11 +163,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const https_region_health_check = new gcp.compute.RegionHealthCheck("https-region-health-check", {
+ *     name: "https-region-health-check",
+ *     timeoutSec: 1,
  *     checkIntervalSec: 1,
  *     httpsHealthCheck: {
  *         port: 443,
  *     },
- *     timeoutSec: 1,
  * });
  * ```
  * ### Region Health Check Https Full
@@ -172,19 +178,20 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const https_region_health_check = new gcp.compute.RegionHealthCheck("https-region-health-check", {
- *     checkIntervalSec: 1,
+ *     name: "https-region-health-check",
  *     description: "Health check via https",
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
  *     healthyThreshold: 4,
+ *     unhealthyThreshold: 5,
  *     httpsHealthCheck: {
- *         host: "1.2.3.4",
  *         portName: "health-check-port",
  *         portSpecification: "USE_NAMED_PORT",
- *         proxyHeader: "NONE",
+ *         host: "1.2.3.4",
  *         requestPath: "/mypath",
+ *         proxyHeader: "NONE",
  *         response: "I AM HEALTHY",
  *     },
- *     timeoutSec: 1,
- *     unhealthyThreshold: 5,
  * });
  * ```
  * ### Region Health Check Http2
@@ -194,11 +201,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const http2_region_health_check = new gcp.compute.RegionHealthCheck("http2-region-health-check", {
+ *     name: "http2-region-health-check",
+ *     timeoutSec: 1,
  *     checkIntervalSec: 1,
  *     http2HealthCheck: {
  *         port: 443,
  *     },
- *     timeoutSec: 1,
  * });
  * ```
  * ### Region Health Check Http2 Full
@@ -208,19 +216,20 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const http2_region_health_check = new gcp.compute.RegionHealthCheck("http2-region-health-check", {
- *     checkIntervalSec: 1,
+ *     name: "http2-region-health-check",
  *     description: "Health check via http2",
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
  *     healthyThreshold: 4,
+ *     unhealthyThreshold: 5,
  *     http2HealthCheck: {
- *         host: "1.2.3.4",
  *         portName: "health-check-port",
  *         portSpecification: "USE_NAMED_PORT",
- *         proxyHeader: "NONE",
+ *         host: "1.2.3.4",
  *         requestPath: "/mypath",
+ *         proxyHeader: "NONE",
  *         response: "I AM HEALTHY",
  *     },
- *     timeoutSec: 1,
- *     unhealthyThreshold: 5,
  * });
  * ```
  * ### Region Health Check Grpc
@@ -230,11 +239,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const grpc_region_health_check = new gcp.compute.RegionHealthCheck("grpc-region-health-check", {
+ *     name: "grpc-region-health-check",
+ *     timeoutSec: 1,
  *     checkIntervalSec: 1,
  *     grpcHealthCheck: {
  *         port: 443,
  *     },
- *     timeoutSec: 1,
  * });
  * ```
  * ### Region Health Check Grpc Full
@@ -244,13 +254,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const grpc_region_health_check = new gcp.compute.RegionHealthCheck("grpc-region-health-check", {
+ *     name: "grpc-region-health-check",
+ *     timeoutSec: 1,
  *     checkIntervalSec: 1,
  *     grpcHealthCheck: {
- *         grpcServiceName: "testservice",
  *         portName: "health-check-port",
  *         portSpecification: "USE_NAMED_PORT",
+ *         grpcServiceName: "testservice",
  *     },
- *     timeoutSec: 1,
  * });
  * ```
  *

@@ -37,17 +37,21 @@ namespace Pulumi.Gcp.Memcache
     ///     // If this network hasn't been created and you are using this example in your
     ///     // config, add an additional network resource or change
     ///     // this from "data"to "resource"
-    ///     var memcacheNetwork = new Gcp.Compute.Network("memcacheNetwork");
-    /// 
-    ///     var serviceRange = new Gcp.Compute.GlobalAddress("serviceRange", new()
+    ///     var memcacheNetwork = new Gcp.Compute.Network("memcache_network", new()
     ///     {
+    ///         Name = "test-network",
+    ///     });
+    /// 
+    ///     var serviceRange = new Gcp.Compute.GlobalAddress("service_range", new()
+    ///     {
+    ///         Name = "address",
     ///         Purpose = "VPC_PEERING",
     ///         AddressType = "INTERNAL",
     ///         PrefixLength = 16,
     ///         Network = memcacheNetwork.Id,
     ///     });
     /// 
-    ///     var privateServiceConnection = new Gcp.ServiceNetworking.Connection("privateServiceConnection", new()
+    ///     var privateServiceConnection = new Gcp.ServiceNetworking.Connection("private_service_connection", new()
     ///     {
     ///         Network = memcacheNetwork.Id,
     ///         Service = "servicenetworking.googleapis.com",
@@ -59,6 +63,7 @@ namespace Pulumi.Gcp.Memcache
     /// 
     ///     var instance = new Gcp.Memcache.Instance("instance", new()
     ///     {
+    ///         Name = "test-instance",
     ///         AuthorizedNetwork = privateServiceConnection.Network,
     ///         Labels = 
     ///         {

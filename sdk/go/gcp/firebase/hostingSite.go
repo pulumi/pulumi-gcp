@@ -29,7 +29,7 @@ import (
 //			_, err := firebase.NewHostingSite(ctx, "default", &firebase.HostingSiteArgs{
 //				Project: pulumi.String("my-project-name"),
 //				SiteId:  pulumi.String("site-no-app"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -55,7 +55,7 @@ import (
 //			_, err := firebase.NewWebApp(ctx, "default", &firebase.WebAppArgs{
 //				Project:     pulumi.String("my-project-name"),
 //				DisplayName: pulumi.String("Test web app for Firebase Hosting"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -63,7 +63,7 @@ import (
 //				Project: pulumi.String("my-project-name"),
 //				SiteId:  pulumi.String("site-with-app"),
 //				AppId:   _default.AppId,
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

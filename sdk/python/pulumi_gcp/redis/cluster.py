@@ -479,20 +479,11 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        producer_net = gcp.compute.Network("producerNet", auto_create_subnetworks=False)
-        producer_subnet = gcp.compute.Subnetwork("producerSubnet",
-            ip_cidr_range="10.0.0.248/29",
-            region="us-central1",
-            network=producer_net.id)
-        default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
-            location="us-central1",
-            service_class="gcp-memorystore-redis",
-            description="my basic service connection policy",
-            network=producer_net.id,
-            psc_config=gcp.networkconnectivity.ServiceConnectionPolicyPscConfigArgs(
-                subnetworks=[producer_subnet.id],
-            ))
+        producer_net = gcp.compute.Network("producer_net",
+            name="mynetwork",
+            auto_create_subnetworks=False)
         cluster_ha = gcp.redis.Cluster("cluster-ha",
+            name="ha-cluster",
             shard_count=3,
             psc_configs=[gcp.redis.ClusterPscConfigArgs(
                 network=producer_net.id,
@@ -500,8 +491,21 @@ class Cluster(pulumi.CustomResource):
             region="us-central1",
             replica_count=1,
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
-            authorization_mode="AUTH_MODE_DISABLED",
-            opts=pulumi.ResourceOptions(depends_on=[default]))
+            authorization_mode="AUTH_MODE_DISABLED")
+        producer_subnet = gcp.compute.Subnetwork("producer_subnet",
+            name="mysubnet",
+            ip_cidr_range="10.0.0.248/29",
+            region="us-central1",
+            network=producer_net.id)
+        default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
+            name="mypolicy",
+            location="us-central1",
+            service_class="gcp-memorystore-redis",
+            description="my basic service connection policy",
+            network=producer_net.id,
+            psc_config=gcp.networkconnectivity.ServiceConnectionPolicyPscConfigArgs(
+                subnetworks=[producer_subnet.id],
+            ))
         ```
 
         ## Import
@@ -577,20 +581,11 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        producer_net = gcp.compute.Network("producerNet", auto_create_subnetworks=False)
-        producer_subnet = gcp.compute.Subnetwork("producerSubnet",
-            ip_cidr_range="10.0.0.248/29",
-            region="us-central1",
-            network=producer_net.id)
-        default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
-            location="us-central1",
-            service_class="gcp-memorystore-redis",
-            description="my basic service connection policy",
-            network=producer_net.id,
-            psc_config=gcp.networkconnectivity.ServiceConnectionPolicyPscConfigArgs(
-                subnetworks=[producer_subnet.id],
-            ))
+        producer_net = gcp.compute.Network("producer_net",
+            name="mynetwork",
+            auto_create_subnetworks=False)
         cluster_ha = gcp.redis.Cluster("cluster-ha",
+            name="ha-cluster",
             shard_count=3,
             psc_configs=[gcp.redis.ClusterPscConfigArgs(
                 network=producer_net.id,
@@ -598,8 +593,21 @@ class Cluster(pulumi.CustomResource):
             region="us-central1",
             replica_count=1,
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
-            authorization_mode="AUTH_MODE_DISABLED",
-            opts=pulumi.ResourceOptions(depends_on=[default]))
+            authorization_mode="AUTH_MODE_DISABLED")
+        producer_subnet = gcp.compute.Subnetwork("producer_subnet",
+            name="mysubnet",
+            ip_cidr_range="10.0.0.248/29",
+            region="us-central1",
+            network=producer_net.id)
+        default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
+            name="mypolicy",
+            location="us-central1",
+            service_class="gcp-memorystore-redis",
+            description="my basic service connection policy",
+            network=producer_net.id,
+            psc_config=gcp.networkconnectivity.ServiceConnectionPolicyPscConfigArgs(
+                subnetworks=[producer_subnet.id],
+            ))
         ```
 
         ## Import

@@ -23,6 +23,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = new gcp.organizations.Project("project", {
+ *     projectId: "my-project",
+ *     name: "my-project",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
  * });
@@ -33,48 +35,41 @@ import * as utilities from "../utilities";
  * const servicenetworking = new gcp.projects.Service("servicenetworking", {
  *     project: project.projectId,
  *     service: "servicenetworking.googleapis.com",
- * }, {
- *     dependsOn: [apigee],
  * });
  * const compute = new gcp.projects.Service("compute", {
  *     project: project.projectId,
  *     service: "compute.googleapis.com",
- * }, {
- *     dependsOn: [servicenetworking],
  * });
- * const apigeeNetwork = new gcp.compute.Network("apigeeNetwork", {project: project.projectId}, {
- *     dependsOn: [compute],
+ * const apigeeNetwork = new gcp.compute.Network("apigee_network", {
+ *     name: "apigee-network",
+ *     project: project.projectId,
  * });
- * const apigeeRange = new gcp.compute.GlobalAddress("apigeeRange", {
+ * const apigeeRange = new gcp.compute.GlobalAddress("apigee_range", {
+ *     name: "apigee-range",
  *     purpose: "VPC_PEERING",
  *     addressType: "INTERNAL",
  *     prefixLength: 16,
  *     network: apigeeNetwork.id,
  *     project: project.projectId,
  * });
- * const apigeeVpcConnection = new gcp.servicenetworking.Connection("apigeeVpcConnection", {
+ * const apigeeVpcConnection = new gcp.servicenetworking.Connection("apigee_vpc_connection", {
  *     network: apigeeNetwork.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [apigeeRange.name],
- * }, {
- *     dependsOn: [servicenetworking],
  * });
- * const apigeeOrg = new gcp.apigee.Organization("apigeeOrg", {
+ * const apigeeOrg = new gcp.apigee.Organization("apigee_org", {
  *     analyticsRegion: "us-central1",
  *     projectId: project.projectId,
  *     authorizedNetwork: apigeeNetwork.id,
- * }, {
- *     dependsOn: [
- *         apigeeVpcConnection,
- *         apigee,
- *     ],
  * });
- * const apigeeEnvironment = new gcp.apigee.Environment("apigeeEnvironment", {
+ * const apigeeEnvironment = new gcp.apigee.Environment("apigee_environment", {
  *     orgId: apigeeOrg.id,
+ *     name: "my-environment-name",
  *     description: "Apigee Environment",
  *     displayName: "environment-1",
  * });
- * const apigeeTargetServer = new gcp.apigee.TargetServer("apigeeTargetServer", {
+ * const apigeeTargetServer = new gcp.apigee.TargetServer("apigee_target_server", {
+ *     name: "my-target-server",
  *     description: "Apigee Target Server",
  *     protocol: "HTTP",
  *     host: "abc.foo.com",

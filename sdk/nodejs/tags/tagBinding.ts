@@ -20,16 +20,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const project = new gcp.organizations.Project("project", {orgId: "123456789"});
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "project_id",
+ *     name: "project_id",
+ *     orgId: "123456789",
+ * });
  * const key = new gcp.tags.TagKey("key", {
- *     description: "For keyname resources.",
  *     parent: "organizations/123456789",
  *     shortName: "keyname",
+ *     description: "For keyname resources.",
  * });
  * const value = new gcp.tags.TagValue("value", {
- *     description: "For valuename resources.",
  *     parent: pulumi.interpolate`tagKeys/${key.name}`,
  *     shortName: "valuename",
+ *     description: "For valuename resources.",
  * });
  * const binding = new gcp.tags.TagBinding("binding", {
  *     parent: pulumi.interpolate`//cloudresourcemanager.googleapis.com/projects/${project.number}`,

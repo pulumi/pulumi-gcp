@@ -706,30 +706,29 @@ class Backup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork")
-        default_cluster = gcp.alloydb.Cluster("defaultCluster",
+        default_network = gcp.compute.Network("default", name="alloydb-network")
+        default_cluster = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
             location="us-central1",
             network=default_network.id)
-        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
+        default = gcp.alloydb.Backup("default",
+            location="us-central1",
+            backup_id="alloydb-backup",
+            cluster_name=default_cluster.name)
+        default_instance = gcp.alloydb.Instance("default",
+            cluster=default_cluster.name,
+            instance_id="alloydb-instance",
+            instance_type="PRIMARY")
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name="alloydb-cluster",
             address_type="INTERNAL",
             purpose="VPC_PEERING",
             prefix_length=16,
             network=default_network.id)
-        vpc_connection = gcp.servicenetworking.Connection("vpcConnection",
+        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
             network=default_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
-        default_instance = gcp.alloydb.Instance("defaultInstance",
-            cluster=default_cluster.name,
-            instance_id="alloydb-instance",
-            instance_type="PRIMARY",
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
-        default_backup = gcp.alloydb.Backup("defaultBackup",
-            location="us-central1",
-            backup_id="alloydb-backup",
-            cluster_name=default_cluster.name,
-            opts=pulumi.ResourceOptions(depends_on=[default_instance]))
         ```
         ### Alloydb Backup Full
 
@@ -737,26 +736,12 @@ class Backup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork")
-        default_cluster = gcp.alloydb.Cluster("defaultCluster",
+        default_network = gcp.compute.Network("default", name="alloydb-network")
+        default_cluster = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
             location="us-central1",
             network=default_network.id)
-        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
-            address_type="INTERNAL",
-            purpose="VPC_PEERING",
-            prefix_length=16,
-            network=default_network.id)
-        vpc_connection = gcp.servicenetworking.Connection("vpcConnection",
-            network=default_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_alloc.name])
-        default_instance = gcp.alloydb.Instance("defaultInstance",
-            cluster=default_cluster.name,
-            instance_id="alloydb-instance",
-            instance_type="PRIMARY",
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
-        default_backup = gcp.alloydb.Backup("defaultBackup",
+        default = gcp.alloydb.Backup("default",
             location="us-central1",
             backup_id="alloydb-backup",
             cluster_name=default_cluster.name,
@@ -764,8 +749,21 @@ class Backup(pulumi.CustomResource):
             type="ON_DEMAND",
             labels={
                 "label": "key",
-            },
-            opts=pulumi.ResourceOptions(depends_on=[default_instance]))
+            })
+        default_instance = gcp.alloydb.Instance("default",
+            cluster=default_cluster.name,
+            instance_id="alloydb-instance",
+            instance_type="PRIMARY")
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name="alloydb-cluster",
+            address_type="INTERNAL",
+            purpose="VPC_PEERING",
+            prefix_length=16,
+            network=default_network.id)
+        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
+            network=default_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_alloc.name])
         ```
 
         ## Import
@@ -840,30 +838,29 @@ class Backup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork")
-        default_cluster = gcp.alloydb.Cluster("defaultCluster",
+        default_network = gcp.compute.Network("default", name="alloydb-network")
+        default_cluster = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
             location="us-central1",
             network=default_network.id)
-        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
+        default = gcp.alloydb.Backup("default",
+            location="us-central1",
+            backup_id="alloydb-backup",
+            cluster_name=default_cluster.name)
+        default_instance = gcp.alloydb.Instance("default",
+            cluster=default_cluster.name,
+            instance_id="alloydb-instance",
+            instance_type="PRIMARY")
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name="alloydb-cluster",
             address_type="INTERNAL",
             purpose="VPC_PEERING",
             prefix_length=16,
             network=default_network.id)
-        vpc_connection = gcp.servicenetworking.Connection("vpcConnection",
+        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
             network=default_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
-        default_instance = gcp.alloydb.Instance("defaultInstance",
-            cluster=default_cluster.name,
-            instance_id="alloydb-instance",
-            instance_type="PRIMARY",
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
-        default_backup = gcp.alloydb.Backup("defaultBackup",
-            location="us-central1",
-            backup_id="alloydb-backup",
-            cluster_name=default_cluster.name,
-            opts=pulumi.ResourceOptions(depends_on=[default_instance]))
         ```
         ### Alloydb Backup Full
 
@@ -871,26 +868,12 @@ class Backup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork")
-        default_cluster = gcp.alloydb.Cluster("defaultCluster",
+        default_network = gcp.compute.Network("default", name="alloydb-network")
+        default_cluster = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
             location="us-central1",
             network=default_network.id)
-        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
-            address_type="INTERNAL",
-            purpose="VPC_PEERING",
-            prefix_length=16,
-            network=default_network.id)
-        vpc_connection = gcp.servicenetworking.Connection("vpcConnection",
-            network=default_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_alloc.name])
-        default_instance = gcp.alloydb.Instance("defaultInstance",
-            cluster=default_cluster.name,
-            instance_id="alloydb-instance",
-            instance_type="PRIMARY",
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
-        default_backup = gcp.alloydb.Backup("defaultBackup",
+        default = gcp.alloydb.Backup("default",
             location="us-central1",
             backup_id="alloydb-backup",
             cluster_name=default_cluster.name,
@@ -898,8 +881,21 @@ class Backup(pulumi.CustomResource):
             type="ON_DEMAND",
             labels={
                 "label": "key",
-            },
-            opts=pulumi.ResourceOptions(depends_on=[default_instance]))
+            })
+        default_instance = gcp.alloydb.Instance("default",
+            cluster=default_cluster.name,
+            instance_id="alloydb-instance",
+            instance_type="PRIMARY")
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name="alloydb-cluster",
+            address_type="INTERNAL",
+            purpose="VPC_PEERING",
+            prefix_length=16,
+            network=default_network.id)
+        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
+            network=default_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_alloc.name])
         ```
 
         ## Import

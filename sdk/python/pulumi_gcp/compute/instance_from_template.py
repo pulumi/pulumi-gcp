@@ -1295,7 +1295,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        tpl_instance_template = gcp.compute.InstanceTemplate("tplInstanceTemplate",
+        tpl = gcp.compute.InstanceTemplate("tpl",
+            name="template",
             machine_type="e2-medium",
             disks=[gcp.compute.InstanceTemplateDiskArgs(
                 source_image="debian-cloud/debian-11",
@@ -1310,9 +1311,10 @@ class InstanceFromTemplate(pulumi.CustomResource):
                 "foo": "bar",
             },
             can_ip_forward=True)
-        tpl_instance_from_template = gcp.compute.InstanceFromTemplate("tplInstanceFromTemplate",
+        tpl_instance_from_template = gcp.compute.InstanceFromTemplate("tpl",
+            name="instance-from-template",
             zone="us-central1-a",
-            source_instance_template=tpl_instance_template.self_link_unique,
+            source_instance_template=tpl.self_link_unique,
             can_ip_forward=False,
             labels={
                 "my_key": "my_value",
@@ -1397,7 +1399,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        tpl_instance_template = gcp.compute.InstanceTemplate("tplInstanceTemplate",
+        tpl = gcp.compute.InstanceTemplate("tpl",
+            name="template",
             machine_type="e2-medium",
             disks=[gcp.compute.InstanceTemplateDiskArgs(
                 source_image="debian-cloud/debian-11",
@@ -1412,9 +1415,10 @@ class InstanceFromTemplate(pulumi.CustomResource):
                 "foo": "bar",
             },
             can_ip_forward=True)
-        tpl_instance_from_template = gcp.compute.InstanceFromTemplate("tplInstanceFromTemplate",
+        tpl_instance_from_template = gcp.compute.InstanceFromTemplate("tpl",
+            name="instance-from-template",
             zone="us-central1-a",
-            source_instance_template=tpl_instance_template.self_link_unique,
+            source_instance_template=tpl.self_link_unique,
             can_ip_forward=False,
             labels={
                 "my_key": "my_value",

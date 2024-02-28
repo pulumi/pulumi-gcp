@@ -63,8 +63,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new SchemaIamPolicy(&#34;policy&#34;, SchemaIamPolicyArgs.builder()        
- *             .project(google_pubsub_schema.example().project())
- *             .schema(google_pubsub_schema.example().name())
+ *             .project(example.project())
+ *             .schema(example.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -95,8 +95,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new SchemaIamBinding(&#34;binding&#34;, SchemaIamBindingArgs.builder()        
- *             .project(google_pubsub_schema.example().project())
- *             .schema(google_pubsub_schema.example().name())
+ *             .project(example.project())
+ *             .schema(example.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -128,8 +128,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new SchemaIamMember(&#34;member&#34;, SchemaIamMemberArgs.builder()        
- *             .project(google_pubsub_schema.example().project())
- *             .schema(google_pubsub_schema.example().name())
+ *             .project(example.project())
+ *             .schema(example.name())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());

@@ -369,6 +369,83 @@ class User(pulumi.CustomResource):
         """
         Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
 
+        ## Example Usage
+
+        Example creating a SQL User.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
+        main = gcp.sql.DatabaseInstance("main",
+            name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
+            database_version="MYSQL_5_7",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+            ))
+        users = gcp.sql.User("users",
+            name="me",
+            instance=main.name,
+            host="me.com",
+            password="changeme")
+        ```
+
+        Example using [Cloud SQL IAM database authentication](https://cloud.google.com/sql/docs/mysql/authentication).
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+        import pulumi_std as std
+
+        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
+        main = gcp.sql.DatabaseInstance("main",
+            name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
+            database_version="POSTGRES_15",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+                database_flags=[gcp.sql.DatabaseInstanceSettingsDatabaseFlagArgs(
+                    name="cloudsql.iam_authentication",
+                    value="on",
+                )],
+            ))
+        iam_user = gcp.sql.User("iam_user",
+            name="me@example.com",
+            instance=main.name,
+            type="CLOUD_IAM_USER")
+        iam_service_account_user = gcp.sql.User("iam_service_account_user",
+            name=std.trimsuffix(input=service_account["email"],
+                suffix=".gserviceaccount.com").result,
+            instance=main.name,
+            type="CLOUD_IAM_SERVICE_ACCOUNT")
+        ```
+
+        Example using [Cloud SQL IAM Group authentication](https://cloud.google.com/sql/docs/mysql/iam-authentication#iam-group-auth).
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
+        main = gcp.sql.DatabaseInstance("main",
+            name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
+            database_version="MYSQL_8_0",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+                database_flags=[gcp.sql.DatabaseInstanceSettingsDatabaseFlagArgs(
+                    name="cloudsql.iam_authentication",
+                    value="on",
+                )],
+            ))
+        iam_group_user = gcp.sql.User("iam_group_user",
+            name="iam_group@example.com",
+            instance=main.name,
+            type="CLOUD_IAM_GROUP")
+        ```
+
         ## Import
 
         SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.
@@ -427,6 +504,83 @@ class User(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
+
+        ## Example Usage
+
+        Example creating a SQL User.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
+        main = gcp.sql.DatabaseInstance("main",
+            name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
+            database_version="MYSQL_5_7",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+            ))
+        users = gcp.sql.User("users",
+            name="me",
+            instance=main.name,
+            host="me.com",
+            password="changeme")
+        ```
+
+        Example using [Cloud SQL IAM database authentication](https://cloud.google.com/sql/docs/mysql/authentication).
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+        import pulumi_std as std
+
+        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
+        main = gcp.sql.DatabaseInstance("main",
+            name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
+            database_version="POSTGRES_15",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+                database_flags=[gcp.sql.DatabaseInstanceSettingsDatabaseFlagArgs(
+                    name="cloudsql.iam_authentication",
+                    value="on",
+                )],
+            ))
+        iam_user = gcp.sql.User("iam_user",
+            name="me@example.com",
+            instance=main.name,
+            type="CLOUD_IAM_USER")
+        iam_service_account_user = gcp.sql.User("iam_service_account_user",
+            name=std.trimsuffix(input=service_account["email"],
+                suffix=".gserviceaccount.com").result,
+            instance=main.name,
+            type="CLOUD_IAM_SERVICE_ACCOUNT")
+        ```
+
+        Example using [Cloud SQL IAM Group authentication](https://cloud.google.com/sql/docs/mysql/iam-authentication#iam-group-auth).
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
+        main = gcp.sql.DatabaseInstance("main",
+            name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
+            database_version="MYSQL_8_0",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+                database_flags=[gcp.sql.DatabaseInstanceSettingsDatabaseFlagArgs(
+                    name="cloudsql.iam_authentication",
+                    value="on",
+                )],
+            ))
+        iam_group_user = gcp.sql.User("iam_group_user",
+            name="iam_group@example.com",
+            instance=main.name,
+            type="CLOUD_IAM_GROUP")
+        ```
 
         ## Import
 

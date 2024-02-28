@@ -42,7 +42,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * ### Backend Service Basic
- * 
  * ```java
  * package generated_program;
  * 
@@ -67,12 +66,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
+ *             .name(&#34;health-check&#34;)
  *             .requestPath(&#34;/&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
+ *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;backend-service&#34;)
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
@@ -103,19 +104,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;tf-test-backend-service-external&#34;)
+ *             .protocol(&#34;HTTP&#34;)
+ *             .loadBalancingScheme(&#34;EXTERNAL&#34;)
  *             .iap(BackendServiceIapArgs.builder()
  *                 .oauth2ClientId(&#34;abc&#34;)
  *                 .oauth2ClientSecret(&#34;xyz&#34;)
  *                 .build())
- *             .loadBalancingScheme(&#34;EXTERNAL&#34;)
- *             .protocol(&#34;HTTP&#34;)
  *             .build());
  * 
  *     }
  * }
  * ```
  * ### Backend Service Cache Simple
- * 
  * ```java
  * package generated_program;
  * 
@@ -141,12 +142,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
+ *             .name(&#34;health-check&#34;)
  *             .requestPath(&#34;/&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
+ *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;backend-service&#34;)
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .enableCdn(true)
  *             .cdnPolicy(BackendServiceCdnPolicyArgs.builder()
@@ -182,16 +185,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;backend-service&#34;)
+ *             .enableCdn(true)
  *             .cdnPolicy(BackendServiceCdnPolicyArgs.builder()
+ *                 .cacheMode(&#34;USE_ORIGIN_HEADERS&#34;)
  *                 .cacheKeyPolicy(BackendServiceCdnPolicyCacheKeyPolicyArgs.builder()
  *                     .includeHost(true)
- *                     .includeHttpHeaders(&#34;X-My-Header-Field&#34;)
  *                     .includeProtocol(true)
  *                     .includeQueryString(true)
+ *                     .includeHttpHeaders(&#34;X-My-Header-Field&#34;)
  *                     .build())
- *                 .cacheMode(&#34;USE_ORIGIN_HEADERS&#34;)
  *                 .build())
- *             .enableCdn(true)
  *             .build());
  * 
  *     }
@@ -222,28 +226,28 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;backend-service&#34;)
+ *             .enableCdn(true)
  *             .cdnPolicy(BackendServiceCdnPolicyArgs.builder()
+ *                 .cacheMode(&#34;CACHE_ALL_STATIC&#34;)
+ *                 .defaultTtl(3600)
+ *                 .clientTtl(7200)
+ *                 .maxTtl(10800)
  *                 .cacheKeyPolicy(BackendServiceCdnPolicyCacheKeyPolicyArgs.builder()
  *                     .includeHost(true)
+ *                     .includeProtocol(true)
+ *                     .includeQueryString(true)
  *                     .includeNamedCookies(                    
  *                         &#34;__next_preview_data&#34;,
  *                         &#34;__prerender_bypass&#34;)
- *                     .includeProtocol(true)
- *                     .includeQueryString(true)
  *                     .build())
- *                 .cacheMode(&#34;CACHE_ALL_STATIC&#34;)
- *                 .clientTtl(7200)
- *                 .defaultTtl(3600)
- *                 .maxTtl(10800)
  *                 .build())
- *             .enableCdn(true)
  *             .build());
  * 
  *     }
  * }
  * ```
  * ### Backend Service Cache
- * 
  * ```java
  * package generated_program;
  * 
@@ -269,12 +273,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
+ *             .name(&#34;health-check&#34;)
  *             .requestPath(&#34;/&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
+ *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;backend-service&#34;)
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .enableCdn(true)
  *             .cdnPolicy(BackendServiceCdnPolicyArgs.builder()
@@ -291,7 +297,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Backend Service Cache Bypass Cache On Request Headers
- * 
  * ```java
  * package generated_program;
  * 
@@ -317,12 +322,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
+ *             .name(&#34;health-check&#34;)
  *             .requestPath(&#34;/&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
- *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
+ *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;backend-service&#34;)
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .enableCdn(true)
  *             .cdnPolicy(BackendServiceCdnPolicyArgs.builder()
@@ -346,7 +353,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Backend Service Traffic Director Round Robin
- * 
  * ```java
  * package generated_program;
  * 
@@ -358,7 +364,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
  * import com.pulumi.gcp.compute.BackendService;
  * import com.pulumi.gcp.compute.BackendServiceArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -373,26 +378,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var healthCheck = new HealthCheck(&#34;healthCheck&#34;, HealthCheckArgs.builder()        
+ *             .name(&#34;health-check&#34;)
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;backend-service&#34;)
  *             .healthChecks(healthCheck.id())
  *             .loadBalancingScheme(&#34;INTERNAL_SELF_MANAGED&#34;)
  *             .localityLbPolicy(&#34;ROUND_ROBIN&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
  * ```
  * ### Backend Service Traffic Director Ring Hash
- * 
  * ```java
  * package generated_program;
  * 
@@ -409,7 +411,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.inputs.BackendServiceConsistentHashHttpCookieArgs;
  * import com.pulumi.gcp.compute.inputs.BackendServiceConsistentHashHttpCookieTtlArgs;
  * import com.pulumi.gcp.compute.inputs.BackendServiceOutlierDetectionArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -424,14 +425,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var healthCheck = new HealthCheck(&#34;healthCheck&#34;, HealthCheckArgs.builder()        
+ *             .name(&#34;health-check&#34;)
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;backend-service&#34;)
  *             .healthChecks(healthCheck.id())
  *             .loadBalancingScheme(&#34;INTERNAL_SELF_MANAGED&#34;)
  *             .localityLbPolicy(&#34;RING_HASH&#34;)
@@ -451,9 +452,7 @@ import javax.annotation.Nullable;
  *             .outlierDetection(BackendServiceOutlierDetectionArgs.builder()
  *                 .consecutiveErrors(2)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -472,7 +471,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.BackendService;
  * import com.pulumi.gcp.compute.BackendServiceArgs;
  * import com.pulumi.gcp.compute.inputs.BackendServiceBackendArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -487,21 +485,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var externalProxy = new GlobalNetworkEndpointGroup(&#34;externalProxy&#34;, GlobalNetworkEndpointGroupArgs.builder()        
+ *             .name(&#34;network-endpoint&#34;)
  *             .networkEndpointType(&#34;INTERNET_FQDN_PORT&#34;)
  *             .defaultPort(&#34;443&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var proxy = new GlobalNetworkEndpoint(&#34;proxy&#34;, GlobalNetworkEndpointArgs.builder()        
  *             .globalNetworkEndpointGroup(externalProxy.id())
  *             .fqdn(&#34;test.example.com&#34;)
  *             .port(externalProxy.defaultPort())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;backend-service&#34;)
  *             .enableCdn(true)
  *             .timeoutSec(10)
  *             .connectionDrainingTimeoutSec(10)
@@ -510,15 +506,12 @@ import javax.annotation.Nullable;
  *             .backends(BackendServiceBackendArgs.builder()
  *                 .group(externalProxy.id())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
  * ```
  * ### Backend Service External Managed
- * 
  * ```java
  * package generated_program;
  * 
@@ -544,12 +537,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultHealthCheck = new HealthCheck(&#34;defaultHealthCheck&#34;, HealthCheckArgs.builder()        
+ *             .name(&#34;health-check&#34;)
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
+ *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;backend-service&#34;)
  *             .healthChecks(defaultHealthCheck.id())
  *             .loadBalancingScheme(&#34;EXTERNAL_MANAGED&#34;)
  *             .build());

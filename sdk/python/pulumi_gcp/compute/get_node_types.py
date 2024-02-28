@@ -89,8 +89,9 @@ def get_node_types(project: Optional[str] = None,
 
     central1b = gcp.compute.get_node_types(zone="us-central1-b")
     tmpl = gcp.compute.NodeTemplate("tmpl",
+        name="test-tmpl",
         region="us-central1",
-        node_type=data["google_compute_node_types"]["types"]["names"])
+        node_type=types["names"])
     ```
 
 
@@ -129,8 +130,9 @@ def get_node_types_output(project: Optional[pulumi.Input[Optional[str]]] = None,
 
     central1b = gcp.compute.get_node_types(zone="us-central1-b")
     tmpl = gcp.compute.NodeTemplate("tmpl",
+        name="test-tmpl",
         region="us-central1",
-        node_type=data["google_compute_node_types"]["types"]["names"])
+        node_type=types["names"])
     ```
 
 

@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dns.GetManagedZoneIamPolicy(ctx, &dns.GetManagedZoneIamPolicyArgs{
-//				Project:     pulumi.StringRef(google_dns_managed_zone.Default.Project),
-//				ManagedZone: google_dns_managed_zone.Default.Name,
+//				Project:     pulumi.StringRef(_default.Project),
+//				ManagedZone: _default.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

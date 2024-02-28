@@ -70,13 +70,13 @@ namespace Pulumi.Gcp.Spanner
     /// {
     ///     var database = new Gcp.Spanner.DatabaseIAMBinding("database", new()
     ///     {
-    ///         Database = "your-database-name",
     ///         Instance = "your-instance-name",
+    ///         Database = "your-database-name",
+    ///         Role = "roles/compute.networkUser",
     ///         Members = new[]
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         Role = "roles/compute.networkUser",
     ///     });
     /// 
     /// });
@@ -94,10 +94,10 @@ namespace Pulumi.Gcp.Spanner
     /// {
     ///     var database = new Gcp.Spanner.DatabaseIAMMember("database", new()
     ///     {
-    ///         Database = "your-database-name",
     ///         Instance = "your-instance-name",
-    ///         Member = "user:jane@example.com",
+    ///         Database = "your-database-name",
     ///         Role = "roles/compute.networkUser",
+    ///         Member = "user:jane@example.com",
     ///     });
     /// 
     /// });

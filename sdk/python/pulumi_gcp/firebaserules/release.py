@@ -214,6 +214,7 @@ class Release(pulumi.CustomResource):
             ),
             project="my-project-name")
         primary = gcp.firebaserules.Release("primary",
+            name="cloud.firestore",
             ruleset_name=firestore.name.apply(lambda name: f"projects/my-project-name/rulesets/{name}"),
             project="my-project-name")
         ```
@@ -224,15 +225,10 @@ class Release(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         # Provision a non-default Cloud Storage bucket.
-        bucket_bucket = gcp.storage.Bucket("bucketBucket",
+        bucket = gcp.storage.Bucket("bucket",
             project="my-project-name",
-            location="us-west1",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        # Make the Storage bucket accessible for Firebase SDKs, authentication, and Firebase Security Rules.
-        bucket_storage_bucket = gcp.firebase.StorageBucket("bucketStorageBucket",
-            project="my-project-name",
-            bucket_id=bucket_bucket.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            name="bucket",
+            location="us-west1")
         # Create a ruleset of Firebase Security Rules from a local file.
         storage = gcp.firebaserules.Ruleset("storage",
             project="my-project-name",
@@ -241,13 +237,15 @@ class Release(pulumi.CustomResource):
                     name="storage.rules",
                     content="service firebase.storage {match /b/{bucket}/o {match /{allPaths=**} {allow read, write: if request.auth != null;}}}",
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[bucket_storage_bucket]))
+            ))
         primary = gcp.firebaserules.Release("primary",
+            name=bucket.name.apply(lambda name: f"firebase.storage/{name}"),
             ruleset_name=storage.name.apply(lambda name: f"projects/my-project-name/rulesets/{name}"),
+            project="my-project-name")
+        # Make the Storage bucket accessible for Firebase SDKs, authentication, and Firebase Security Rules.
+        bucket_storage_bucket = gcp.firebase.StorageBucket("bucket",
             project="my-project-name",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            bucket_id=bucket.name)
         ```
 
         ## Import
@@ -295,6 +293,7 @@ class Release(pulumi.CustomResource):
             ),
             project="my-project-name")
         primary = gcp.firebaserules.Release("primary",
+            name="cloud.firestore",
             ruleset_name=firestore.name.apply(lambda name: f"projects/my-project-name/rulesets/{name}"),
             project="my-project-name")
         ```
@@ -305,15 +304,10 @@ class Release(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         # Provision a non-default Cloud Storage bucket.
-        bucket_bucket = gcp.storage.Bucket("bucketBucket",
+        bucket = gcp.storage.Bucket("bucket",
             project="my-project-name",
-            location="us-west1",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        # Make the Storage bucket accessible for Firebase SDKs, authentication, and Firebase Security Rules.
-        bucket_storage_bucket = gcp.firebase.StorageBucket("bucketStorageBucket",
-            project="my-project-name",
-            bucket_id=bucket_bucket.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            name="bucket",
+            location="us-west1")
         # Create a ruleset of Firebase Security Rules from a local file.
         storage = gcp.firebaserules.Ruleset("storage",
             project="my-project-name",
@@ -322,13 +316,15 @@ class Release(pulumi.CustomResource):
                     name="storage.rules",
                     content="service firebase.storage {match /b/{bucket}/o {match /{allPaths=**} {allow read, write: if request.auth != null;}}}",
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[bucket_storage_bucket]))
+            ))
         primary = gcp.firebaserules.Release("primary",
+            name=bucket.name.apply(lambda name: f"firebase.storage/{name}"),
             ruleset_name=storage.name.apply(lambda name: f"projects/my-project-name/rulesets/{name}"),
+            project="my-project-name")
+        # Make the Storage bucket accessible for Firebase SDKs, authentication, and Firebase Security Rules.
+        bucket_storage_bucket = gcp.firebase.StorageBucket("bucket",
             project="my-project-name",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            bucket_id=bucket.name)
         ```
 
         ## Import

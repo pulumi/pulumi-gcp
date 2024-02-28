@@ -53,23 +53,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultNode = new BlockchainNodes(&#34;defaultNode&#34;, BlockchainNodesArgs.builder()        
- *             .blockchainNodeId(&#34;blockchain_basic_node&#34;)
+ *             .location(&#34;us-central1&#34;)
  *             .blockchainType(&#34;ETHEREUM&#34;)
+ *             .blockchainNodeId(&#34;blockchain_basic_node&#34;)
  *             .ethereumDetails(BlockchainNodesEthereumDetailsArgs.builder()
  *                 .apiEnableAdmin(true)
  *                 .apiEnableDebug(true)
- *                 .consensusClient(&#34;LIGHTHOUSE&#34;)
- *                 .executionClient(&#34;ERIGON&#34;)
- *                 .network(&#34;MAINNET&#34;)
- *                 .nodeType(&#34;ARCHIVE&#34;)
  *                 .validatorConfig(BlockchainNodesEthereumDetailsValidatorConfigArgs.builder()
  *                     .mevRelayUrls(                    
  *                         &#34;https://mev1.example.org/&#34;,
  *                         &#34;https://mev2.example.org/&#34;)
  *                     .build())
+ *                 .nodeType(&#34;ARCHIVE&#34;)
+ *                 .consensusClient(&#34;LIGHTHOUSE&#34;)
+ *                 .executionClient(&#34;ERIGON&#34;)
+ *                 .network(&#34;MAINNET&#34;)
  *                 .build())
  *             .labels(Map.of(&#34;environment&#34;, &#34;dev&#34;))
- *             .location(&#34;us-central1&#34;)
  *             .build());
  * 
  *     }
@@ -85,8 +85,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.blockchainnodeengine.BlockchainNodes;
  * import com.pulumi.gcp.blockchainnodeengine.BlockchainNodesArgs;
  * import com.pulumi.gcp.blockchainnodeengine.inputs.BlockchainNodesEthereumDetailsArgs;
- * import com.pulumi.gcp.blockchainnodeengine.inputs.BlockchainNodesEthereumDetailsGethDetailsArgs;
  * import com.pulumi.gcp.blockchainnodeengine.inputs.BlockchainNodesEthereumDetailsValidatorConfigArgs;
+ * import com.pulumi.gcp.blockchainnodeengine.inputs.BlockchainNodesEthereumDetailsGethDetailsArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -101,26 +101,26 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultNodeGeth = new BlockchainNodes(&#34;defaultNodeGeth&#34;, BlockchainNodesArgs.builder()        
- *             .blockchainNodeId(&#34;blockchain_geth_node&#34;)
+ *             .location(&#34;us-central1&#34;)
  *             .blockchainType(&#34;ETHEREUM&#34;)
+ *             .blockchainNodeId(&#34;blockchain_geth_node&#34;)
  *             .ethereumDetails(BlockchainNodesEthereumDetailsArgs.builder()
  *                 .apiEnableAdmin(true)
  *                 .apiEnableDebug(true)
- *                 .consensusClient(&#34;LIGHTHOUSE&#34;)
- *                 .executionClient(&#34;GETH&#34;)
- *                 .gethDetails(BlockchainNodesEthereumDetailsGethDetailsArgs.builder()
- *                     .garbageCollectionMode(&#34;FULL&#34;)
- *                     .build())
- *                 .network(&#34;MAINNET&#34;)
- *                 .nodeType(&#34;FULL&#34;)
  *                 .validatorConfig(BlockchainNodesEthereumDetailsValidatorConfigArgs.builder()
  *                     .mevRelayUrls(                    
  *                         &#34;https://mev1.example.org/&#34;,
  *                         &#34;https://mev2.example.org/&#34;)
  *                     .build())
+ *                 .nodeType(&#34;FULL&#34;)
+ *                 .consensusClient(&#34;LIGHTHOUSE&#34;)
+ *                 .executionClient(&#34;GETH&#34;)
+ *                 .network(&#34;MAINNET&#34;)
+ *                 .gethDetails(BlockchainNodesEthereumDetailsGethDetailsArgs.builder()
+ *                     .garbageCollectionMode(&#34;FULL&#34;)
+ *                     .build())
  *                 .build())
  *             .labels(Map.of(&#34;environment&#34;, &#34;dev&#34;))
- *             .location(&#34;us-central1&#34;)
  *             .build());
  * 
  *     }

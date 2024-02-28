@@ -43,9 +43,19 @@ import (
 //				return err
 //			}
 //			_, err = edgecontainer.NewCluster(ctx, "default", &edgecontainer.ClusterArgs{
+//				Name:     pulumi.String("basic-cluster"),
+//				Location: pulumi.String("us-central1"),
 //				Authorization: &edgecontainer.ClusterAuthorizationArgs{
 //					AdminUsers: &edgecontainer.ClusterAuthorizationAdminUsersArgs{
 //						Username: pulumi.String("admin@hashicorptest.com"),
+//					},
+//				},
+//				Networking: &edgecontainer.ClusterNetworkingArgs{
+//					ClusterIpv4CidrBlocks: pulumi.StringArray{
+//						pulumi.String("10.0.0.0/16"),
+//					},
+//					ServicesIpv4CidrBlocks: pulumi.StringArray{
+//						pulumi.String("10.1.0.0/16"),
 //					},
 //				},
 //				Fleet: &edgecontainer.ClusterFleetArgs{
@@ -54,15 +64,6 @@ import (
 //				Labels: pulumi.StringMap{
 //					"my_key":    pulumi.String("my_val"),
 //					"other_key": pulumi.String("other_val"),
-//				},
-//				Location: pulumi.String("us-central1"),
-//				Networking: &edgecontainer.ClusterNetworkingArgs{
-//					ClusterIpv4CidrBlocks: pulumi.StringArray{
-//						pulumi.String("10.0.0.0/16"),
-//					},
-//					ServicesIpv4CidrBlocks: pulumi.StringArray{
-//						pulumi.String("10.1.0.0/16"),
-//					},
 //				},
 //			})
 //			if err != nil {
@@ -95,24 +96,11 @@ import (
 //				return err
 //			}
 //			_, err = edgecontainer.NewCluster(ctx, "default", &edgecontainer.ClusterArgs{
+//				Name:     pulumi.String("cluster-with-maintenance"),
+//				Location: pulumi.String("us-central1"),
 //				Authorization: &edgecontainer.ClusterAuthorizationArgs{
 //					AdminUsers: &edgecontainer.ClusterAuthorizationAdminUsersArgs{
 //						Username: pulumi.String("admin@hashicorptest.com"),
-//					},
-//				},
-//				Fleet: &edgecontainer.ClusterFleetArgs{
-//					Project: pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
-//				},
-//				Location: pulumi.String("us-central1"),
-//				MaintenancePolicy: &edgecontainer.ClusterMaintenancePolicyArgs{
-//					Window: &edgecontainer.ClusterMaintenancePolicyWindowArgs{
-//						RecurringWindow: &edgecontainer.ClusterMaintenancePolicyWindowRecurringWindowArgs{
-//							Recurrence: pulumi.String("FREQ=WEEKLY;BYDAY=SA"),
-//							Window: &edgecontainer.ClusterMaintenancePolicyWindowRecurringWindowWindowArgs{
-//								EndTime:   pulumi.String("2023-01-01T17:00:00Z"),
-//								StartTime: pulumi.String("2023-01-01T08:00:00Z"),
-//							},
-//						},
 //					},
 //				},
 //				Networking: &edgecontainer.ClusterNetworkingArgs{
@@ -121,6 +109,20 @@ import (
 //					},
 //					ServicesIpv4CidrBlocks: pulumi.StringArray{
 //						pulumi.String("10.1.0.0/16"),
+//					},
+//				},
+//				Fleet: &edgecontainer.ClusterFleetArgs{
+//					Project: pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
+//				},
+//				MaintenancePolicy: &edgecontainer.ClusterMaintenancePolicyArgs{
+//					Window: &edgecontainer.ClusterMaintenancePolicyWindowArgs{
+//						RecurringWindow: &edgecontainer.ClusterMaintenancePolicyWindowRecurringWindowArgs{
+//							Window: &edgecontainer.ClusterMaintenancePolicyWindowRecurringWindowWindowArgs{
+//								StartTime: pulumi.String("2023-01-01T08:00:00Z"),
+//								EndTime:   pulumi.String("2023-01-01T17:00:00Z"),
+//							},
+//							Recurrence: pulumi.String("FREQ=WEEKLY;BYDAY=SA"),
+//						},
 //					},
 //				},
 //			})
@@ -154,32 +156,33 @@ import (
 //				return err
 //			}
 //			_, err = edgecontainer.NewCluster(ctx, "default", &edgecontainer.ClusterArgs{
+//				Name:     pulumi.String("local-control-plane-cluster"),
+//				Location: pulumi.String("us-central1"),
 //				Authorization: &edgecontainer.ClusterAuthorizationArgs{
 //					AdminUsers: &edgecontainer.ClusterAuthorizationAdminUsersArgs{
 //						Username: pulumi.String("admin@hashicorptest.com"),
 //					},
 //				},
-//				ControlPlane: &edgecontainer.ClusterControlPlaneArgs{
-//					Local: &edgecontainer.ClusterControlPlaneLocalArgs{
-//						MachineFilter:          pulumi.String("machine-name"),
-//						NodeCount:              pulumi.Int(1),
-//						NodeLocation:           pulumi.String("us-central1-edge-example-edgesite"),
-//						SharedDeploymentPolicy: pulumi.String("ALLOWED"),
-//					},
-//				},
-//				ExternalLoadBalancerIpv4AddressPools: pulumi.StringArray{
-//					pulumi.String("10.100.0.0-10.100.0.10"),
-//				},
-//				Fleet: &edgecontainer.ClusterFleetArgs{
-//					Project: pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
-//				},
-//				Location: pulumi.String("us-central1"),
 //				Networking: &edgecontainer.ClusterNetworkingArgs{
 //					ClusterIpv4CidrBlocks: pulumi.StringArray{
 //						pulumi.String("10.0.0.0/16"),
 //					},
 //					ServicesIpv4CidrBlocks: pulumi.StringArray{
 //						pulumi.String("10.1.0.0/16"),
+//					},
+//				},
+//				Fleet: &edgecontainer.ClusterFleetArgs{
+//					Project: pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
+//				},
+//				ExternalLoadBalancerIpv4AddressPools: pulumi.StringArray{
+//					pulumi.String("10.100.0.0-10.100.0.10"),
+//				},
+//				ControlPlane: &edgecontainer.ClusterControlPlaneArgs{
+//					Local: &edgecontainer.ClusterControlPlaneLocalArgs{
+//						NodeLocation:           pulumi.String("us-central1-edge-example-edgesite"),
+//						NodeCount:              pulumi.Int(1),
+//						MachineFilter:          pulumi.String("machine-name"),
+//						SharedDeploymentPolicy: pulumi.String("ALLOWED"),
 //					},
 //				},
 //			})

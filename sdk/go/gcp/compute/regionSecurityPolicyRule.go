@@ -29,13 +29,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewRegionSecurityPolicy(ctx, "default", &compute.RegionSecurityPolicyArgs{
 //				Region:      pulumi.String("us-west2"),
+//				Name:        pulumi.String("policyruletest"),
 //				Description: pulumi.String("basic region security policy"),
 //				Type:        pulumi.String("CLOUD_ARMOR"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewRegionSecurityPolicyRule(ctx, "policyRule", &compute.RegionSecurityPolicyRuleArgs{
+//			_, err = compute.NewRegionSecurityPolicyRule(ctx, "policy_rule", &compute.RegionSecurityPolicyRuleArgs{
 //				Region:         pulumi.String("us-west2"),
 //				SecurityPolicy: _default.Name,
 //				Description:    pulumi.String("new rule"),
@@ -50,7 +51,7 @@ import (
 //				},
 //				Action:  pulumi.String("allow"),
 //				Preview: pulumi.Bool(true),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -75,13 +76,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewRegionSecurityPolicy(ctx, "default", &compute.RegionSecurityPolicyArgs{
 //				Region:      pulumi.String("us-west2"),
+//				Name:        pulumi.String("policywithmultiplerules"),
 //				Description: pulumi.String("basic region security policy"),
 //				Type:        pulumi.String("CLOUD_ARMOR"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewRegionSecurityPolicyRule(ctx, "policyRuleOne", &compute.RegionSecurityPolicyRuleArgs{
+//			_, err = compute.NewRegionSecurityPolicyRule(ctx, "policy_rule_one", &compute.RegionSecurityPolicyRuleArgs{
 //				Region:         pulumi.String("us-west2"),
 //				SecurityPolicy: _default.Name,
 //				Description:    pulumi.String("new rule one"),
@@ -96,11 +98,11 @@ import (
 //				},
 //				Action:  pulumi.String("allow"),
 //				Preview: pulumi.Bool(true),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewRegionSecurityPolicyRule(ctx, "policyRuleTwo", &compute.RegionSecurityPolicyRuleArgs{
+//			_, err = compute.NewRegionSecurityPolicyRule(ctx, "policy_rule_two", &compute.RegionSecurityPolicyRuleArgs{
 //				Region:         pulumi.String("us-west2"),
 //				SecurityPolicy: _default.Name,
 //				Description:    pulumi.String("new rule two"),
@@ -116,7 +118,7 @@ import (
 //				},
 //				Action:  pulumi.String("allow"),
 //				Preview: pulumi.Bool(true),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -142,26 +144,29 @@ import (
 //			// First activate advanced network DDoS protection for the desired region
 //			policyddosprotection, err := compute.NewRegionSecurityPolicy(ctx, "policyddosprotection", &compute.RegionSecurityPolicyArgs{
 //				Region:      pulumi.String("us-west2"),
+//				Name:        pulumi.String("policyddosprotection"),
 //				Description: pulumi.String("policy for activating network DDoS protection for the desired region"),
 //				Type:        pulumi.String("CLOUD_ARMOR_NETWORK"),
 //				DdosProtectionConfig: &compute.RegionSecurityPolicyDdosProtectionConfigArgs{
 //					DdosProtection: pulumi.String("ADVANCED_PREVIEW"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			edgeSecService, err := compute.NewNetworkEdgeSecurityService(ctx, "edgeSecService", &compute.NetworkEdgeSecurityServiceArgs{
+//			_, err = compute.NewNetworkEdgeSecurityService(ctx, "edge_sec_service", &compute.NetworkEdgeSecurityServiceArgs{
 //				Region:         pulumi.String("us-west2"),
+//				Name:           pulumi.String("edgesecservice"),
 //				Description:    pulumi.String("linking policy to edge security service"),
 //				SecurityPolicy: policyddosprotection.SelfLink,
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			// Add the desired policy and custom rule.
 //			policynetworkmatch, err := compute.NewRegionSecurityPolicy(ctx, "policynetworkmatch", &compute.RegionSecurityPolicyArgs{
 //				Region:      pulumi.String("us-west2"),
+//				Name:        pulumi.String("policyfornetworkmatch"),
 //				Description: pulumi.String("region security policy for network match"),
 //				Type:        pulumi.String("CLOUD_ARMOR_NETWORK"),
 //				UserDefinedFields: compute.RegionSecurityPolicyUserDefinedFieldArray{
@@ -173,13 +178,11 @@ import (
 //						Mask:   pulumi.String("0x8F00"),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
-//				edgeSecService,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewRegionSecurityPolicyRule(ctx, "policyRuleNetworkMatch", &compute.RegionSecurityPolicyRuleArgs{
+//			_, err = compute.NewRegionSecurityPolicyRule(ctx, "policy_rule_network_match", &compute.RegionSecurityPolicyRuleArgs{
 //				Region:         pulumi.String("us-west2"),
 //				SecurityPolicy: policynetworkmatch.Name,
 //				Description:    pulumi.String("custom rule for network match"),
@@ -199,7 +202,7 @@ import (
 //				},
 //				Action:  pulumi.String("allow"),
 //				Preview: pulumi.Bool(true),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

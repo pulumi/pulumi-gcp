@@ -28,9 +28,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.compute.HttpHealthCheck("default", {
- *     checkIntervalSec: 1,
+ *     name: "authentication-health-check",
  *     requestPath: "/health_check",
  *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
  * });
  * ```
  *

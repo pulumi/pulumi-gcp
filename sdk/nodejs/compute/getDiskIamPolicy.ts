@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.compute.getDiskIamPolicy({
- *     project: google_compute_disk["default"].project,
- *     zone: google_compute_disk["default"].zone,
- *     name: google_compute_disk["default"].name,
+ *     project: _default.project,
+ *     zone: _default.zone,
+ *     name: _default.name,
  * });
  * ```
  */
@@ -82,9 +82,9 @@ export interface GetDiskIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.compute.getDiskIamPolicy({
- *     project: google_compute_disk["default"].project,
- *     zone: google_compute_disk["default"].zone,
- *     name: google_compute_disk["default"].name,
+ *     project: _default.project,
+ *     zone: _default.zone,
+ *     name: _default.name,
  * });
  * ```
  */

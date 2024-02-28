@@ -29,13 +29,15 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myNetwork = new Gcp.Compute.Network("myNetwork", new()
+    ///     var myNetwork = new Gcp.Compute.Network("my_network", new()
     ///     {
+    ///         Name = "my-network",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var @default = new Gcp.NetworkConnectivity.PolicyBasedRoute("default", new()
     ///     {
+    ///         Name = "my-pbr",
     ///         Network = myNetwork.Id,
     ///         Filter = new Gcp.NetworkConnectivity.Inputs.PolicyBasedRouteFilterArgs
     ///         {
@@ -56,18 +58,23 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myNetwork = new Gcp.Compute.Network("myNetwork", new()
+    ///     var myNetwork = new Gcp.Compute.Network("my_network", new()
     ///     {
+    ///         Name = "my-network",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     // This example substitutes an arbitrary internal IP for an internal network
     ///     // load balancer for brevity. Consult https://cloud.google.com/load-balancing/docs/internal
     ///     // to set one up.
-    ///     var ilb = new Gcp.Compute.GlobalAddress("ilb");
+    ///     var ilb = new Gcp.Compute.GlobalAddress("ilb", new()
+    ///     {
+    ///         Name = "my-ilb",
+    ///     });
     /// 
     ///     var @default = new Gcp.NetworkConnectivity.PolicyBasedRoute("default", new()
     ///     {
+    ///         Name = "my-pbr",
     ///         Description = "My routing policy",
     ///         Network = myNetwork.Id,
     ///         Priority = 2302,

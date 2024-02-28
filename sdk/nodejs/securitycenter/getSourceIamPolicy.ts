@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.securitycenter.getSourceIamPolicy({
- *     source: google_scc_source.custom_source.name,
+ *     source: customSource.name,
  * });
  * ```
  */
@@ -68,7 +68,7 @@ export interface GetSourceIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.securitycenter.getSourceIamPolicy({
- *     source: google_scc_source.custom_source.name,
+ *     source: customSource.name,
  * });
  * ```
  */

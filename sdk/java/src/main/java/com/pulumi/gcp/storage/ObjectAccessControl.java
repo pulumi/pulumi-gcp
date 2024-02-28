@@ -65,10 +65,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+ *             .name(&#34;static-content-bucket&#34;)
  *             .location(&#34;US&#34;)
  *             .build());
  * 
  *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
+ *             .name(&#34;public-object&#34;)
  *             .bucket(bucket.name())
  *             .source(new FileAsset(&#34;../static/img/header-logo.png&#34;))
  *             .build());

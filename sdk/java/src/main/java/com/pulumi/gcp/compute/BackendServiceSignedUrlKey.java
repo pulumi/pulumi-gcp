@@ -25,7 +25,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * ### Backend Service Signed Url Key
- * 
  * ```java
  * package generated_program;
  * 
@@ -66,6 +65,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var webserver = new InstanceTemplate(&#34;webserver&#34;, InstanceTemplateArgs.builder()        
+ *             .name(&#34;standard-webserver&#34;)
  *             .machineType(&#34;e2-medium&#34;)
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
  *                 .network(&#34;default&#34;)
@@ -78,6 +78,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var webservers = new InstanceGroupManager(&#34;webservers&#34;, InstanceGroupManagerArgs.builder()        
+ *             .name(&#34;my-webservers&#34;)
  *             .versions(InstanceGroupManagerVersionArgs.builder()
  *                 .instanceTemplate(webserver.id())
  *                 .name(&#34;primary&#34;)
@@ -88,12 +89,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var default_ = new HttpHealthCheck(&#34;default&#34;, HttpHealthCheckArgs.builder()        
+ *             .name(&#34;test&#34;)
  *             .requestPath(&#34;/&#34;)
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .build());
  * 
  *         var exampleBackend = new BackendService(&#34;exampleBackend&#34;, BackendServiceArgs.builder()        
+ *             .name(&#34;my-backend-service&#34;)
  *             .description(&#34;Our company website&#34;)
  *             .portName(&#34;http&#34;)
  *             .protocol(&#34;HTTP&#34;)
@@ -106,6 +109,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var backendKey = new BackendServiceSignedUrlKey(&#34;backendKey&#34;, BackendServiceSignedUrlKeyArgs.builder()        
+ *             .name(&#34;test-key&#34;)
  *             .keyValue(urlSignature.b64Url())
  *             .backendService(exampleBackend.name())
  *             .build());

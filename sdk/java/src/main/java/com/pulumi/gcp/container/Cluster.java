@@ -103,12 +103,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
+ *             .name(&#34;my-gke-cluster&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .removeDefaultNodePool(true)
  *             .initialNodeCount(1)
  *             .build());
  * 
  *         var primaryPreemptibleNodes = new NodePool(&#34;primaryPreemptibleNodes&#34;, NodePoolArgs.builder()        
+ *             .name(&#34;my-node-pool&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .cluster(primary.name())
  *             .nodeCount(1)
@@ -128,7 +130,6 @@ import javax.annotation.Nullable;
  * This allows node pools to be added and removed without recreating the cluster.  Node pools defined directly in the
  * `gcp.container.Cluster` resource cannot be removed without re-creating the cluster.
  * ### With The Default Node Pool
- * 
  * ```java
  * package generated_program;
  * 
@@ -159,6 +160,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
+ *             .name(&#34;marcellus-wallace&#34;)
  *             .location(&#34;us-central1-a&#34;)
  *             .initialNodeCount(3)
  *             .nodeConfig(ClusterNodeConfigArgs.builder()
@@ -169,7 +171,6 @@ import javax.annotation.Nullable;
  *                     &#34;foo&#34;,
  *                     &#34;bar&#34;)
  *                 .build())
- *             .timeouts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .build());
  * 
  *     }
@@ -205,8 +206,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
- *             .enableAutopilot(true)
+ *             .name(&#34;marcellus-wallace&#34;)
  *             .location(&#34;us-central1-a&#34;)
+ *             .enableAutopilot(true)
  *             .build());
  * 
  *     }

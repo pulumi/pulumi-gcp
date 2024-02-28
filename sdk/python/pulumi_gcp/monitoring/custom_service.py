@@ -271,8 +271,8 @@ class CustomService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         custom = gcp.monitoring.CustomService("custom",
-            display_name="My Custom Service custom-srv",
             service_id="custom-srv",
+            display_name="My Custom Service custom-srv",
             telemetry=gcp.monitoring.CustomServiceTelemetryArgs(
                 resource_name="//product.googleapis.com/foo/foo/services/test",
             ),
@@ -337,8 +337,8 @@ class CustomService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         custom = gcp.monitoring.CustomService("custom",
-            display_name="My Custom Service custom-srv",
             service_id="custom-srv",
+            display_name="My Custom Service custom-srv",
             telemetry=gcp.monitoring.CustomServiceTelemetryArgs(
                 resource_name="//product.googleapis.com/foo/foo/services/test",
             ),

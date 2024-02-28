@@ -448,13 +448,14 @@ class Lake(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.dataplex.Lake("primary",
+            location="us-west1",
+            name="lake",
             description="Lake for DCL",
             display_name="Lake for DCL",
+            project="my-project-name",
             labels={
                 "my-lake": "exists",
-            },
-            location="us-west1",
-            project="my-project-name")
+            })
         ```
 
         ## Import
@@ -515,13 +516,14 @@ class Lake(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.dataplex.Lake("primary",
+            location="us-west1",
+            name="lake",
             description="Lake for DCL",
             display_name="Lake for DCL",
+            project="my-project-name",
             labels={
                 "my-lake": "exists",
-            },
-            location="us-west1",
-            project="my-project-name")
+            })
         ```
 
         ## Import

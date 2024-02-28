@@ -32,20 +32,20 @@ namespace Pulumi.Gcp.AppEngine
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var customServiceAccount = new Gcp.ServiceAccount.Account("customServiceAccount", new()
+    ///     var customServiceAccount = new Gcp.ServiceAccount.Account("custom_service_account", new()
     ///     {
     ///         AccountId = "my-account",
     ///         DisplayName = "Custom Service Account",
     ///     });
     /// 
-    ///     var gaeApi = new Gcp.Projects.IAMMember("gaeApi", new()
+    ///     var gaeApi = new Gcp.Projects.IAMMember("gae_api", new()
     ///     {
     ///         Project = customServiceAccount.Project,
     ///         Role = "roles/compute.networkUser",
     ///         Member = customServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
     ///     });
     /// 
-    ///     var storageViewer = new Gcp.Projects.IAMMember("storageViewer", new()
+    ///     var storageViewer = new Gcp.Projects.IAMMember("storage_viewer", new()
     ///     {
     ///         Project = customServiceAccount.Project,
     ///         Role = "roles/storage.objectViewer",
@@ -54,16 +54,18 @@ namespace Pulumi.Gcp.AppEngine
     /// 
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
+    ///         Name = "appengine-static-content",
     ///         Location = "US",
     ///     });
     /// 
     ///     var @object = new Gcp.Storage.BucketObject("object", new()
     ///     {
+    ///         Name = "hello-world.zip",
     ///         Bucket = bucket.Name,
     ///         Source = new FileAsset("./test-fixtures/hello-world.zip"),
     ///     });
     /// 
-    ///     var myappV1 = new Gcp.AppEngine.StandardAppVersion("myappV1", new()
+    ///     var myappV1 = new Gcp.AppEngine.StandardAppVersion("myapp_v1", new()
     ///     {
     ///         VersionId = "v1",
     ///         Service = "myapp",
@@ -107,7 +109,7 @@ namespace Pulumi.Gcp.AppEngine
     ///         ServiceAccount = customServiceAccount.Email,
     ///     });
     /// 
-    ///     var myappV2 = new Gcp.AppEngine.StandardAppVersion("myappV2", new()
+    ///     var myappV2 = new Gcp.AppEngine.StandardAppVersion("myapp_v2", new()
     ///     {
     ///         VersionId = "v2",
     ///         Service = "myapp",

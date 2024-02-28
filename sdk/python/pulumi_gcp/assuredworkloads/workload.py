@@ -659,18 +659,15 @@ class Workload(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.assuredworkloads.Workload("primary",
-            billing_account="billingAccounts/000000-0000000-0000000-000000",
             compliance_regime="FEDRAMP_MODERATE",
             display_name="{{display}}",
+            location="us-west1",
+            organization="123456789",
+            billing_account="billingAccounts/000000-0000000-0000000-000000",
             kms_settings=gcp.assuredworkloads.WorkloadKmsSettingsArgs(
                 next_rotation_time="9999-10-02T15:01:23Z",
                 rotation_period="10368000s",
             ),
-            labels={
-                "label-one": "value-one",
-            },
-            location="us-west1",
-            organization="123456789",
             provisioned_resources_parent="folders/519620126891",
             resource_settings=[
                 gcp.assuredworkloads.WorkloadResourceSettingArgs(
@@ -685,7 +682,10 @@ class Workload(pulumi.CustomResource):
                     resource_type="KEYRING",
                 ),
             ],
-            violation_notifications_enabled=True)
+            violation_notifications_enabled=True,
+            labels={
+                "label-one": "value-one",
+            })
         ```
         ### Sovereign_controls_workload
         A Sovereign Controls test of the assuredworkloads api
@@ -718,8 +718,7 @@ class Workload(pulumi.CustomResource):
             ],
             labels={
                 "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
 
         ## Import
@@ -780,18 +779,15 @@ class Workload(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.assuredworkloads.Workload("primary",
-            billing_account="billingAccounts/000000-0000000-0000000-000000",
             compliance_regime="FEDRAMP_MODERATE",
             display_name="{{display}}",
+            location="us-west1",
+            organization="123456789",
+            billing_account="billingAccounts/000000-0000000-0000000-000000",
             kms_settings=gcp.assuredworkloads.WorkloadKmsSettingsArgs(
                 next_rotation_time="9999-10-02T15:01:23Z",
                 rotation_period="10368000s",
             ),
-            labels={
-                "label-one": "value-one",
-            },
-            location="us-west1",
-            organization="123456789",
             provisioned_resources_parent="folders/519620126891",
             resource_settings=[
                 gcp.assuredworkloads.WorkloadResourceSettingArgs(
@@ -806,7 +802,10 @@ class Workload(pulumi.CustomResource):
                     resource_type="KEYRING",
                 ),
             ],
-            violation_notifications_enabled=True)
+            violation_notifications_enabled=True,
+            labels={
+                "label-one": "value-one",
+            })
         ```
         ### Sovereign_controls_workload
         A Sovereign Controls test of the assuredworkloads api
@@ -839,8 +838,7 @@ class Workload(pulumi.CustomResource):
             ],
             labels={
                 "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
 
         ## Import

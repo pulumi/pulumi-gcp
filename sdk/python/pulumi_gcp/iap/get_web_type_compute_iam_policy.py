@@ -89,7 +89,7 @@ def get_web_type_compute_iam_policy(project: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.iap.get_web_type_compute_iam_policy(project=google_project_service["project_service"]["project"])
+    policy = gcp.iap.get_web_type_compute_iam_policy(project=project_service["project"])
     ```
 
 
@@ -120,7 +120,7 @@ def get_web_type_compute_iam_policy_output(project: Optional[pulumi.Input[Option
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.iap.get_web_type_compute_iam_policy(project=google_project_service["project_service"]["project"])
+    policy = gcp.iap.get_web_type_compute_iam_policy(project=project_service["project"])
     ```
 
 

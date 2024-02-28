@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  *
  * const basic = new gcp.dataplex.Lake("basic", {
  *     location: "us-west1",
+ *     name: "lake",
  *     description: "Lake for DCL",
  *     displayName: "Lake for DCL",
  *     project: "my-project-name",
@@ -31,6 +32,7 @@ import * as utilities from "../utilities";
  *     },
  *     lake: basic.name,
  *     location: "us-west1",
+ *     name: "zone",
  *     resourceSpec: {
  *         locationType: "MULTI_REGION",
  *     },

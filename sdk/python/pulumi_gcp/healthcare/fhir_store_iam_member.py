@@ -241,7 +241,7 @@ class FhirStoreIamMember(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
-        fhir_store = gcp.healthcare.FhirStoreIamPolicy("fhirStore",
+        fhir_store = gcp.healthcare.FhirStoreIamPolicy("fhir_store",
             fhir_store_id="your-fhir-store-id",
             policy_data=admin.policy_data)
         ```
@@ -252,10 +252,10 @@ class FhirStoreIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        fhir_store = gcp.healthcare.FhirStoreIamBinding("fhirStore",
+        fhir_store = gcp.healthcare.FhirStoreIamBinding("fhir_store",
             fhir_store_id="your-fhir-store-id",
-            members=["user:jane@example.com"],
-            role="roles/editor")
+            role="roles/editor",
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_healthcare\\_fhir\\_store\\_iam\\_member
@@ -264,10 +264,10 @@ class FhirStoreIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        fhir_store = gcp.healthcare.FhirStoreIamMember("fhirStore",
+        fhir_store = gcp.healthcare.FhirStoreIamMember("fhir_store",
             fhir_store_id="your-fhir-store-id",
-            member="user:jane@example.com",
-            role="roles/editor")
+            role="roles/editor",
+            member="user:jane@example.com")
         ```
 
         ## Import
@@ -342,7 +342,7 @@ class FhirStoreIamMember(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
-        fhir_store = gcp.healthcare.FhirStoreIamPolicy("fhirStore",
+        fhir_store = gcp.healthcare.FhirStoreIamPolicy("fhir_store",
             fhir_store_id="your-fhir-store-id",
             policy_data=admin.policy_data)
         ```
@@ -353,10 +353,10 @@ class FhirStoreIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        fhir_store = gcp.healthcare.FhirStoreIamBinding("fhirStore",
+        fhir_store = gcp.healthcare.FhirStoreIamBinding("fhir_store",
             fhir_store_id="your-fhir-store-id",
-            members=["user:jane@example.com"],
-            role="roles/editor")
+            role="roles/editor",
+            members=["user:jane@example.com"])
         ```
 
         ## google\\_healthcare\\_fhir\\_store\\_iam\\_member
@@ -365,10 +365,10 @@ class FhirStoreIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        fhir_store = gcp.healthcare.FhirStoreIamMember("fhirStore",
+        fhir_store = gcp.healthcare.FhirStoreIamMember("fhir_store",
             fhir_store_id="your-fhir-store-id",
-            member="user:jane@example.com",
-            role="roles/editor")
+            role="roles/editor",
+            member="user:jane@example.com")
         ```
 
         ## Import

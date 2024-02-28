@@ -56,15 +56,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+ *             .name(&#34;appengine-static-content&#34;)
  *             .location(&#34;US&#34;)
  *             .build());
  * 
  *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
+ *             .name(&#34;hello-world.zip&#34;)
  *             .bucket(bucket.name())
  *             .source(new FileAsset(&#34;./test-fixtures/hello-world.zip&#34;))
  *             .build());
  * 
- *         var internalappStandardAppVersion = new StandardAppVersion(&#34;internalappStandardAppVersion&#34;, StandardAppVersionArgs.builder()        
+ *         var internalapp = new StandardAppVersion(&#34;internalapp&#34;, StandardAppVersionArgs.builder()        
  *             .versionId(&#34;v1&#34;)
  *             .service(&#34;internalapp&#34;)
  *             .deleteServiceOnDestroy(true)
@@ -85,7 +87,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var internalappServiceNetworkSettings = new ServiceNetworkSettings(&#34;internalappServiceNetworkSettings&#34;, ServiceNetworkSettingsArgs.builder()        
- *             .service(internalappStandardAppVersion.service())
+ *             .service(internalapp.service())
  *             .networkSettings(ServiceNetworkSettingsNetworkSettingsArgs.builder()
  *                 .ingressTrafficAllowed(&#34;INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY&#34;)
  *                 .build())

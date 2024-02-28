@@ -14,7 +14,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const policy = new gcp.compute.NetworkFirewallPolicy("policy", {description: "Terraform test"});
+ * const policy = new gcp.compute.NetworkFirewallPolicy("policy", {
+ *     name: "tf-test-policy",
+ *     description: "Terraform test",
+ * });
  * ```
  *
  * ## Import

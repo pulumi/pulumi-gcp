@@ -713,8 +713,9 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.EdgeCacheOrigin("default",
-            description="The default bucket for media edge test",
-            origin_address="gs://media-edge-default")
+            name="my-origin",
+            origin_address="gs://media-edge-default",
+            description="The default bucket for media edge test")
         ```
         ### Network Services Edge Cache Origin Advanced
 
@@ -723,6 +724,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         fallback = gcp.networkservices.EdgeCacheOrigin("fallback",
+            name="my-fallback",
             origin_address="fallback.example.com",
             description="The default bucket for media edge test",
             max_attempts=3,
@@ -762,6 +764,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                 ],
             ))
         default = gcp.networkservices.EdgeCacheOrigin("default",
+            name="my-origin",
             origin_address="gs://media-edge-default",
             failover_origin=fallback.id,
             description="The default bucket for media edge test",
@@ -788,6 +791,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
             secret=secret_basic.id,
             secret_data="secret-data")
         default = gcp.networkservices.EdgeCacheOrigin("default",
+            name="my-origin",
             origin_address="gs://media-edge-default",
             description="The default bucket for V4 authentication",
             aws_v4_authentication=gcp.networkservices.EdgeCacheOriginAwsV4AuthenticationArgs(
@@ -901,8 +905,9 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.EdgeCacheOrigin("default",
-            description="The default bucket for media edge test",
-            origin_address="gs://media-edge-default")
+            name="my-origin",
+            origin_address="gs://media-edge-default",
+            description="The default bucket for media edge test")
         ```
         ### Network Services Edge Cache Origin Advanced
 
@@ -911,6 +916,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         fallback = gcp.networkservices.EdgeCacheOrigin("fallback",
+            name="my-fallback",
             origin_address="fallback.example.com",
             description="The default bucket for media edge test",
             max_attempts=3,
@@ -950,6 +956,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                 ],
             ))
         default = gcp.networkservices.EdgeCacheOrigin("default",
+            name="my-origin",
             origin_address="gs://media-edge-default",
             failover_origin=fallback.id,
             description="The default bucket for media edge test",
@@ -976,6 +983,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
             secret=secret_basic.id,
             secret_data="secret-data")
         default = gcp.networkservices.EdgeCacheOrigin("default",
+            name="my-origin",
             origin_address="gs://media-edge-default",
             description="The default bucket for V4 authentication",
             aws_v4_authentication=gcp.networkservices.EdgeCacheOriginAwsV4AuthenticationArgs(

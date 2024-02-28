@@ -49,10 +49,10 @@ namespace Pulumi.Gcp.Iam
     /// {
     ///     var example = new Gcp.Iam.WorkloadIdentityPool("example", new()
     ///     {
+    ///         WorkloadIdentityPoolId = "example-pool",
+    ///         DisplayName = "Name of pool",
     ///         Description = "Identity pool for automated test",
     ///         Disabled = true,
-    ///         DisplayName = "Name of pool",
-    ///         WorkloadIdentityPoolId = "example-pool",
     ///     });
     /// 
     /// });

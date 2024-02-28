@@ -21,8 +21,20 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var frontendInstance = new Gcp.Compute.Instance("frontendInstance", new()
+    ///     var frontendInstance = new Gcp.Compute.Instance("frontend", new()
     ///     {
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     null,
+    ///                 },
+    ///                 Network = "default",
+    ///             },
+    ///         },
+    ///         Name = "frontend",
     ///         MachineType = "g1-small",
     ///         Zone = "us-central1-b",
     ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
@@ -32,25 +44,15 @@ namespace Pulumi.Gcp.Dns
     ///                 Image = "debian-cloud/debian-11",
     ///             },
     ///         },
-    ///         NetworkInterfaces = new[]
-    ///         {
-    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
-    ///             {
-    ///                 Network = "default",
-    ///                 AccessConfigs = new[]
-    ///                 {
-    ///                     null,
-    ///                 },
-    ///             },
-    ///         },
     ///     });
     /// 
     ///     var prod = new Gcp.Dns.ManagedZone("prod", new()
     ///     {
+    ///         Name = "prod-zone",
     ///         DnsName = "prod.mydomain.com.",
     ///     });
     /// 
-    ///     var frontendRecordSet = new Gcp.Dns.RecordSet("frontendRecordSet", new()
+    ///     var frontend = new Gcp.Dns.RecordSet("frontend", new()
     ///     {
     ///         Name = prod.DnsName.Apply(dnsName =&gt; $"frontend.{dnsName}"),
     ///         Type = "A",
@@ -76,10 +78,11 @@ namespace Pulumi.Gcp.Dns
     /// {
     ///     var prod = new Gcp.Dns.ManagedZone("prod", new()
     ///     {
+    ///         Name = "prod-zone",
     ///         DnsName = "prod.mydomain.com.",
     ///     });
     /// 
-    ///     var recordSet = new Gcp.Dns.RecordSet("recordSet", new()
+    ///     var a = new Gcp.Dns.RecordSet("a", new()
     ///     {
     ///         Name = prod.DnsName.Apply(dnsName =&gt; $"backend.{dnsName}"),
     ///         ManagedZone = prod.Name,
@@ -105,6 +108,7 @@ namespace Pulumi.Gcp.Dns
     /// {
     ///     var prod = new Gcp.Dns.ManagedZone("prod", new()
     ///     {
+    ///         Name = "prod-zone",
     ///         DnsName = "prod.mydomain.com.",
     ///     });
     /// 
@@ -140,6 +144,7 @@ namespace Pulumi.Gcp.Dns
     /// {
     ///     var prod = new Gcp.Dns.ManagedZone("prod", new()
     ///     {
+    ///         Name = "prod-zone",
     ///         DnsName = "prod.mydomain.com.",
     ///     });
     /// 
@@ -171,6 +176,7 @@ namespace Pulumi.Gcp.Dns
     /// {
     ///     var prod = new Gcp.Dns.ManagedZone("prod", new()
     ///     {
+    ///         Name = "prod-zone",
     ///         DnsName = "prod.mydomain.com.",
     ///     });
     /// 
@@ -201,8 +207,8 @@ namespace Pulumi.Gcp.Dns
     /// {
     ///     var geo = new Gcp.Dns.RecordSet("geo", new()
     ///     {
-    ///         Name = $"backend.{google_dns_managed_zone.Prod.Dns_name}",
-    ///         ManagedZone = google_dns_managed_zone.Prod.Name,
+    ///         Name = $"backend.{prod.DnsName}",
+    ///         ManagedZone = prod.Name,
     ///         Type = "A",
     ///         Ttl = 300,
     ///         RoutingPolicy = new Gcp.Dns.Inputs.RecordSetRoutingPolicyArgs
@@ -241,20 +247,26 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var prodManagedZone = new Gcp.Dns.ManagedZone("prodManagedZone", new()
+    ///     var prod = new Gcp.Dns.ManagedZone("prod", new()
     ///     {
+    ///         Name = "prod-zone",
     ///         DnsName = "prod.mydomain.com.",
     ///     });
     /// 
-    ///     var prodRegionBackendService = new Gcp.Compute.RegionBackendService("prodRegionBackendService", new()
+    ///     var prodRegionBackendService = new Gcp.Compute.RegionBackendService("prod", new()
     ///     {
+    ///         Name = "prod-backend",
     ///         Region = "us-central1",
     ///     });
     /// 
-    ///     var prodNetwork = new Gcp.Compute.Network("prodNetwork");
-    /// 
-    ///     var prodForwardingRule = new Gcp.Compute.ForwardingRule("prodForwardingRule", new()
+    ///     var prodNetwork = new Gcp.Compute.Network("prod", new()
     ///     {
+    ///         Name = "prod-network",
+    ///     });
+    /// 
+    ///     var prodForwardingRule = new Gcp.Compute.ForwardingRule("prod", new()
+    ///     {
+    ///         Name = "prod-ilb",
     ///         Region = "us-central1",
     ///         LoadBalancingScheme = "INTERNAL",
     ///         BackendService = prodRegionBackendService.Id,
@@ -263,10 +275,10 @@ namespace Pulumi.Gcp.Dns
     ///         AllowGlobalAccess = true,
     ///     });
     /// 
-    ///     var recordSet = new Gcp.Dns.RecordSet("recordSet", new()
+    ///     var a = new Gcp.Dns.RecordSet("a", new()
     ///     {
-    ///         Name = prodManagedZone.DnsName.Apply(dnsName =&gt; $"backend.{dnsName}"),
-    ///         ManagedZone = prodManagedZone.Name,
+    ///         Name = prod.DnsName.Apply(dnsName =&gt; $"backend.{dnsName}"),
+    ///         ManagedZone = prod.Name,
     ///         Type = "A",
     ///         Ttl = 300,
     ///         RoutingPolicy = new Gcp.Dns.Inputs.RecordSetRoutingPolicyArgs

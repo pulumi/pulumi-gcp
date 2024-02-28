@@ -32,32 +32,33 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewSecurityPolicy(ctx, "policy", &compute.SecurityPolicyArgs{
+//				Name: pulumi.String("my-policy"),
 //				Rules: compute.SecurityPolicyRuleArray{
 //					&compute.SecurityPolicyRuleArgs{
-//						Action:      pulumi.String("deny(403)"),
-//						Description: pulumi.String("Deny access to IPs in 9.9.9.0/24"),
+//						Action:   pulumi.String("deny(403)"),
+//						Priority: pulumi.Int(1000),
 //						Match: &compute.SecurityPolicyRuleMatchArgs{
+//							VersionedExpr: pulumi.String("SRC_IPS_V1"),
 //							Config: &compute.SecurityPolicyRuleMatchConfigArgs{
 //								SrcIpRanges: pulumi.StringArray{
 //									pulumi.String("9.9.9.0/24"),
 //								},
 //							},
-//							VersionedExpr: pulumi.String("SRC_IPS_V1"),
 //						},
-//						Priority: pulumi.Int(1000),
+//						Description: pulumi.String("Deny access to IPs in 9.9.9.0/24"),
 //					},
 //					&compute.SecurityPolicyRuleArgs{
-//						Action:      pulumi.String("allow"),
-//						Description: pulumi.String("default rule"),
+//						Action:   pulumi.String("allow"),
+//						Priority: pulumi.Int(2147483647),
 //						Match: &compute.SecurityPolicyRuleMatchArgs{
+//							VersionedExpr: pulumi.String("SRC_IPS_V1"),
 //							Config: &compute.SecurityPolicyRuleMatchConfigArgs{
 //								SrcIpRanges: pulumi.StringArray{
 //									pulumi.String("*"),
 //								},
 //							},
-//							VersionedExpr: pulumi.String("SRC_IPS_V1"),
 //						},
-//						Priority: pulumi.Int(2147483647),
+//						Description: pulumi.String("default rule"),
 //					},
 //				},
 //			})
@@ -102,6 +103,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewSecurityPolicy(ctx, "policy", &compute.SecurityPolicyArgs{
+//				Name:        pulumi.String("my-policy"),
 //				Description: pulumi.String("basic security policy"),
 //				Type:        pulumi.String("CLOUD_ARMOR"),
 //				RecaptchaOptionsConfig: &compute.SecurityPolicyRecaptchaOptionsConfigArgs{
@@ -131,22 +133,29 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewSecurityPolicy(ctx, "policy", &compute.SecurityPolicyArgs{
+//				Name: pulumi.String("my-policy"),
 //				Rules: compute.SecurityPolicyRuleArray{
 //					&compute.SecurityPolicyRuleArgs{
-//						Action:      pulumi.String("allow"),
-//						Description: pulumi.String("default rule"),
+//						Action:   pulumi.String("allow"),
+//						Priority: pulumi.Int(2147483647),
 //						Match: &compute.SecurityPolicyRuleMatchArgs{
+//							VersionedExpr: pulumi.String("SRC_IPS_V1"),
 //							Config: &compute.SecurityPolicyRuleMatchConfigArgs{
 //								SrcIpRanges: pulumi.StringArray{
 //									pulumi.String("*"),
 //								},
 //							},
-//							VersionedExpr: pulumi.String("SRC_IPS_V1"),
 //						},
-//						Priority: pulumi.Int(2147483647),
+//						Description: pulumi.String("default rule"),
 //					},
 //					&compute.SecurityPolicyRuleArgs{
-//						Action: pulumi.String("allow"),
+//						Action:   pulumi.String("allow"),
+//						Priority: pulumi.Int(1000),
+//						Match: &compute.SecurityPolicyRuleMatchArgs{
+//							Expr: &compute.SecurityPolicyRuleMatchExprArgs{
+//								Expression: pulumi.String("request.path.matches(\"/login.html\") && token.recaptcha_session.score < 0.2"),
+//							},
+//						},
 //						HeaderAction: &compute.SecurityPolicyRuleHeaderActionArgs{
 //							RequestHeadersToAdds: compute.SecurityPolicyRuleHeaderActionRequestHeadersToAddArray{
 //								&compute.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs{
@@ -159,12 +168,6 @@ import (
 //								},
 //							},
 //						},
-//						Match: &compute.SecurityPolicyRuleMatchArgs{
-//							Expr: &compute.SecurityPolicyRuleMatchExprArgs{
-//								Expression: pulumi.String("request.path.matches(\"/login.html\") && token.recaptcha_session.score < 0.2"),
-//							},
-//						},
-//						Priority: pulumi.Int(1000),
 //					},
 //				},
 //			})
@@ -192,32 +195,33 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewSecurityPolicy(ctx, "policy", &compute.SecurityPolicyArgs{
+//				Name:        pulumi.String("%s"),
 //				Description: pulumi.String("throttle rule with enforce_on_key_configs"),
 //				Rules: compute.SecurityPolicyRuleArray{
 //					&compute.SecurityPolicyRuleArgs{
-//						Action:      pulumi.String("throttle"),
-//						Description: pulumi.String("default rule"),
+//						Action:   pulumi.String("throttle"),
+//						Priority: pulumi.Int(2147483647),
 //						Match: &compute.SecurityPolicyRuleMatchArgs{
+//							VersionedExpr: pulumi.String("SRC_IPS_V1"),
 //							Config: &compute.SecurityPolicyRuleMatchConfigArgs{
 //								SrcIpRanges: pulumi.StringArray{
 //									pulumi.String("*"),
 //								},
 //							},
-//							VersionedExpr: pulumi.String("SRC_IPS_V1"),
 //						},
-//						Priority: pulumi.Int(2147483647),
+//						Description: pulumi.String("default rule"),
 //						RateLimitOptions: &compute.SecurityPolicyRuleRateLimitOptionsArgs{
 //							ConformAction: pulumi.String("allow"),
+//							ExceedAction:  pulumi.String("redirect"),
 //							EnforceOnKey:  pulumi.String(""),
 //							EnforceOnKeyConfigs: compute.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArray{
 //								&compute.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs{
 //									EnforceOnKeyType: pulumi.String("IP"),
 //								},
 //							},
-//							ExceedAction: pulumi.String("redirect"),
 //							ExceedRedirectOptions: &compute.SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs{
-//								Target: pulumi.String("<https://www.example.com>"),
 //								Type:   pulumi.String("EXTERNAL_302"),
+//								Target: pulumi.String("<https://www.example.com>"),
 //							},
 //							RateLimitThreshold: &compute.SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs{
 //								Count:       pulumi.Int(10),

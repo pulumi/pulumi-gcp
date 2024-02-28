@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.CloudIdentity
     ///         },
     ///     });
     /// 
-    ///     var cloudIdentityGroupMembershipBasic = new Gcp.CloudIdentity.GroupMembership("cloudIdentityGroupMembershipBasic", new()
+    ///     var cloudIdentityGroupMembershipBasic = new Gcp.CloudIdentity.GroupMembership("cloud_identity_group_membership_basic", new()
     ///     {
     ///         Group = @group.Id,
     ///         PreferredMemberKey = new Gcp.CloudIdentity.Inputs.GroupMembershipPreferredMemberKeyArgs
@@ -105,7 +105,7 @@ namespace Pulumi.Gcp.CloudIdentity
     ///         },
     ///     });
     /// 
-    ///     var cloudIdentityGroupMembershipBasic = new Gcp.CloudIdentity.GroupMembership("cloudIdentityGroupMembershipBasic", new()
+    ///     var cloudIdentityGroupMembershipBasic = new Gcp.CloudIdentity.GroupMembership("cloud_identity_group_membership_basic", new()
     ///     {
     ///         Group = @group.Id,
     ///         PreferredMemberKey = new Gcp.CloudIdentity.Inputs.GroupMembershipPreferredMemberKeyArgs

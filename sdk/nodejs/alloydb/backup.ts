@@ -22,36 +22,33 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
- * const defaultCluster = new gcp.alloydb.Cluster("defaultCluster", {
+ * const defaultNetwork = new gcp.compute.Network("default", {name: "alloydb-network"});
+ * const defaultCluster = new gcp.alloydb.Cluster("default", {
  *     clusterId: "alloydb-cluster",
  *     location: "us-central1",
  *     network: defaultNetwork.id,
  * });
- * const privateIpAlloc = new gcp.compute.GlobalAddress("privateIpAlloc", {
+ * const _default = new gcp.alloydb.Backup("default", {
+ *     location: "us-central1",
+ *     backupId: "alloydb-backup",
+ *     clusterName: defaultCluster.name,
+ * });
+ * const defaultInstance = new gcp.alloydb.Instance("default", {
+ *     cluster: defaultCluster.name,
+ *     instanceId: "alloydb-instance",
+ *     instanceType: "PRIMARY",
+ * });
+ * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
+ *     name: "alloydb-cluster",
  *     addressType: "INTERNAL",
  *     purpose: "VPC_PEERING",
  *     prefixLength: 16,
  *     network: defaultNetwork.id,
  * });
- * const vpcConnection = new gcp.servicenetworking.Connection("vpcConnection", {
+ * const vpcConnection = new gcp.servicenetworking.Connection("vpc_connection", {
  *     network: defaultNetwork.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [privateIpAlloc.name],
- * });
- * const defaultInstance = new gcp.alloydb.Instance("defaultInstance", {
- *     cluster: defaultCluster.name,
- *     instanceId: "alloydb-instance",
- *     instanceType: "PRIMARY",
- * }, {
- *     dependsOn: [vpcConnection],
- * });
- * const defaultBackup = new gcp.alloydb.Backup("defaultBackup", {
- *     location: "us-central1",
- *     backupId: "alloydb-backup",
- *     clusterName: defaultCluster.name,
- * }, {
- *     dependsOn: [defaultInstance],
  * });
  * ```
  * ### Alloydb Backup Full
@@ -60,31 +57,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
- * const defaultCluster = new gcp.alloydb.Cluster("defaultCluster", {
+ * const defaultNetwork = new gcp.compute.Network("default", {name: "alloydb-network"});
+ * const defaultCluster = new gcp.alloydb.Cluster("default", {
  *     clusterId: "alloydb-cluster",
  *     location: "us-central1",
  *     network: defaultNetwork.id,
  * });
- * const privateIpAlloc = new gcp.compute.GlobalAddress("privateIpAlloc", {
- *     addressType: "INTERNAL",
- *     purpose: "VPC_PEERING",
- *     prefixLength: 16,
- *     network: defaultNetwork.id,
- * });
- * const vpcConnection = new gcp.servicenetworking.Connection("vpcConnection", {
- *     network: defaultNetwork.id,
- *     service: "servicenetworking.googleapis.com",
- *     reservedPeeringRanges: [privateIpAlloc.name],
- * });
- * const defaultInstance = new gcp.alloydb.Instance("defaultInstance", {
- *     cluster: defaultCluster.name,
- *     instanceId: "alloydb-instance",
- *     instanceType: "PRIMARY",
- * }, {
- *     dependsOn: [vpcConnection],
- * });
- * const defaultBackup = new gcp.alloydb.Backup("defaultBackup", {
+ * const _default = new gcp.alloydb.Backup("default", {
  *     location: "us-central1",
  *     backupId: "alloydb-backup",
  *     clusterName: defaultCluster.name,
@@ -93,8 +72,23 @@ import * as utilities from "../utilities";
  *     labels: {
  *         label: "key",
  *     },
- * }, {
- *     dependsOn: [defaultInstance],
+ * });
+ * const defaultInstance = new gcp.alloydb.Instance("default", {
+ *     cluster: defaultCluster.name,
+ *     instanceId: "alloydb-instance",
+ *     instanceType: "PRIMARY",
+ * });
+ * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
+ *     name: "alloydb-cluster",
+ *     addressType: "INTERNAL",
+ *     purpose: "VPC_PEERING",
+ *     prefixLength: 16,
+ *     network: defaultNetwork.id,
+ * });
+ * const vpcConnection = new gcp.servicenetworking.Connection("vpc_connection", {
+ *     network: defaultNetwork.id,
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [privateIpAlloc.name],
  * });
  * ```
  *

@@ -52,9 +52,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var appGateway = new AppGateway(&#34;appGateway&#34;, AppGatewayArgs.builder()        
- *             .hostType(&#34;GCP_REGIONAL_MIG&#34;)
- *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;my-app-gateway&#34;)
  *             .type(&#34;TCP_PROXY&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .hostType(&#34;GCP_REGIONAL_MIG&#34;)
  *             .build());
  * 
  *     }
@@ -83,14 +84,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var appGateway = new AppGateway(&#34;appGateway&#34;, AppGatewayArgs.builder()        
- *             .displayName(&#34;some display name&#34;)
- *             .hostType(&#34;GCP_REGIONAL_MIG&#34;)
- *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;bar&#34;, &#34;baz&#34;),
- *                 Map.entry(&#34;foo&#34;, &#34;bar&#34;)
- *             ))
- *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;my-app-gateway&#34;)
  *             .type(&#34;TCP_PROXY&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .displayName(&#34;some display name&#34;)
+ *             .labels(Map.ofEntries(
+ *                 Map.entry(&#34;foo&#34;, &#34;bar&#34;),
+ *                 Map.entry(&#34;bar&#34;, &#34;baz&#34;)
+ *             ))
+ *             .hostType(&#34;GCP_REGIONAL_MIG&#34;)
  *             .build());
  * 
  *     }

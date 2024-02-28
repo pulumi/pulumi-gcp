@@ -34,22 +34,24 @@ namespace Pulumi.Gcp.Netapp
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = Gcp.Compute.GetNetwork.Invoke(new()
+    ///     var @default = Gcp.Compute.GetNetwork.Invoke(new()
     ///     {
     ///         Name = "test-network",
     ///     });
     /// 
-    ///     var defaultStoragePool = new Gcp.Netapp.StoragePool("defaultStoragePool", new()
+    ///     var defaultStoragePool = new Gcp.Netapp.StoragePool("default", new()
     ///     {
+    ///         Name = "test-pool",
     ///         Location = "us-west2",
     ///         ServiceLevel = "PREMIUM",
     ///         CapacityGib = "2048",
-    ///         Network = defaultNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///         Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
     ///     });
     /// 
-    ///     var defaultVolume = new Gcp.Netapp.Volume("defaultVolume", new()
+    ///     var defaultVolume = new Gcp.Netapp.Volume("default", new()
     ///     {
     ///         Location = defaultStoragePool.Location,
+    ///         Name = "test-volume",
     ///         CapacityGib = "100",
     ///         ShareName = "test-volume",
     ///         StoragePool = defaultStoragePool.Name,
@@ -59,16 +61,11 @@ namespace Pulumi.Gcp.Netapp
     ///         },
     ///     });
     /// 
-    ///     var testSnapshot = new Gcp.Netapp.VolumeSnapshot("testSnapshot", new()
+    ///     var testSnapshot = new Gcp.Netapp.VolumeSnapshot("test_snapshot", new()
     ///     {
     ///         Location = defaultVolume.Location,
     ///         VolumeName = defaultVolume.Name,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             defaultVolume,
-    ///         },
+    ///         Name = "testvolumesnap",
     ///     });
     /// 
     /// });

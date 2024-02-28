@@ -40,6 +40,7 @@ namespace Pulumi.Gcp.Container
     /// 
     ///     var primary = new Gcp.Container.AttachedCluster("primary", new()
     ///     {
+    ///         Name = "basic",
     ///         Location = "us-west1",
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///         Description = "Test cluster",
@@ -52,6 +53,96 @@ namespace Pulumi.Gcp.Container
     ///         Fleet = new Gcp.Container.Inputs.AttachedClusterFleetArgs
     ///         {
     ///             Project = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Container Attached Cluster Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var versions = Gcp.Container.GetAttachedVersions.Invoke(new()
+    ///     {
+    ///         Location = "us-west1",
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Container.AttachedCluster("primary", new()
+    ///     {
+    ///         Name = "basic",
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Location = "us-west1",
+    ///         Description = "Test cluster",
+    ///         Distribution = "aks",
+    ///         Annotations = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Authorization = new Gcp.Container.Inputs.AttachedClusterAuthorizationArgs
+    ///         {
+    ///             AdminUsers = new[]
+    ///             {
+    ///                 "user1@example.com",
+    ///                 "user2@example.com",
+    ///             },
+    ///             AdminGroups = new[]
+    ///             {
+    ///                 "group1@example.com",
+    ///                 "group2@example.com",
+    ///             },
+    ///         },
+    ///         OidcConfig = new Gcp.Container.Inputs.AttachedClusterOidcConfigArgs
+    ///         {
+    ///             IssuerUrl = "https://oidc.issuer.url",
+    ///             Jwks = Std.Base64encode.Invoke(new()
+    ///             {
+    ///                 Input = "{\"keys\":[{\"use\":\"sig\",\"kty\":\"RSA\",\"kid\":\"testid\",\"alg\":\"RS256\",\"n\":\"somedata\",\"e\":\"AQAB\"}]}",
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         },
+    ///         PlatformVersion = versions.Apply(getAttachedVersionsResult =&gt; getAttachedVersionsResult.ValidVersions[0]),
+    ///         Fleet = new Gcp.Container.Inputs.AttachedClusterFleetArgs
+    ///         {
+    ///             Project = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}",
+    ///         },
+    ///         LoggingConfig = new Gcp.Container.Inputs.AttachedClusterLoggingConfigArgs
+    ///         {
+    ///             ComponentConfig = new Gcp.Container.Inputs.AttachedClusterLoggingConfigComponentConfigArgs
+    ///             {
+    ///                 EnableComponents = new[]
+    ///                 {
+    ///                     "SYSTEM_COMPONENTS",
+    ///                     "WORKLOADS",
+    ///                 },
+    ///             },
+    ///         },
+    ///         MonitoringConfig = new Gcp.Container.Inputs.AttachedClusterMonitoringConfigArgs
+    ///         {
+    ///             ManagedPrometheusConfig = new Gcp.Container.Inputs.AttachedClusterMonitoringConfigManagedPrometheusConfigArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///         },
+    ///         BinaryAuthorization = new Gcp.Container.Inputs.AttachedClusterBinaryAuthorizationArgs
+    ///         {
+    ///             EvaluationMode = "PROJECT_SINGLETON_POLICY_ENFORCE",
+    ///         },
+    ///         ProxyConfig = new Gcp.Container.Inputs.AttachedClusterProxyConfigArgs
+    ///         {
+    ///             KubernetesSecret = new Gcp.Container.Inputs.AttachedClusterProxyConfigKubernetesSecretArgs
+    ///             {
+    ///                 Name = "proxy-config",
+    ///                 Namespace = "default",
+    ///             },
     ///         },
     ///     });
     /// 
@@ -77,6 +168,7 @@ namespace Pulumi.Gcp.Container
     /// 
     ///     var primary = new Gcp.Container.AttachedCluster("primary", new()
     ///     {
+    ///         Name = "basic",
     ///         Location = "us-west1",
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///         Description = "Test cluster",

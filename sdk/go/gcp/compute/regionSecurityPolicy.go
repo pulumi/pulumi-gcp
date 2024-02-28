@@ -27,9 +27,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewRegionSecurityPolicy(ctx, "region-sec-policy-basic", &compute.RegionSecurityPolicyArgs{
+//				Name:        pulumi.String("my-sec-policy-basic"),
 //				Description: pulumi.String("basic region security policy"),
 //				Type:        pulumi.String("CLOUD_ARMOR"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -53,12 +54,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewRegionSecurityPolicy(ctx, "region-sec-policy-ddos-protection", &compute.RegionSecurityPolicyArgs{
+//				Name:        pulumi.String("my-sec-policy-ddos-protection"),
 //				Description: pulumi.String("with ddos protection config"),
 //				Type:        pulumi.String("CLOUD_ARMOR_NETWORK"),
 //				DdosProtectionConfig: &compute.RegionSecurityPolicyDdosProtectionConfigArgs{
 //					DdosProtection: pulumi.String("ADVANCED_PREVIEW"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -82,6 +84,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewRegionSecurityPolicy(ctx, "region-sec-policy-user-defined-fields", &compute.RegionSecurityPolicyArgs{
+//				Name:        pulumi.String("my-sec-policy-user-defined-fields"),
 //				Description: pulumi.String("with user defined fields"),
 //				Type:        pulumi.String("CLOUD_ARMOR_NETWORK"),
 //				UserDefinedFields: compute.RegionSecurityPolicyUserDefinedFieldArray{
@@ -100,7 +103,7 @@ import (
 //						Mask:   pulumi.String("0xFFFFFFFF"),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

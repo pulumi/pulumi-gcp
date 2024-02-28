@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.storage.getBucketIamPolicy({
- *     bucket: google_storage_bucket["default"].name,
+ *     bucket: _default.name,
  * });
  * ```
  */
@@ -65,7 +65,7 @@ export interface GetBucketIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.storage.getBucketIamPolicy({
- *     bucket: google_storage_bucket["default"].name,
+ *     bucket: _default.name,
  * });
  * ```
  */

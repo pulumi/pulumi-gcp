@@ -23,14 +23,13 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const tpl = new gcp.compute.InstanceFromMachineImage("tpl", {
+ *     name: "instance-from-machine-image",
  *     zone: "us-central1-a",
  *     sourceMachineImage: "projects/PROJECT-ID/global/machineImages/NAME",
  *     canIpForward: false,
  *     labels: {
  *         my_key: "my_value",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  */

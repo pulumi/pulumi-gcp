@@ -31,6 +31,15 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var @default = new Gcp.Dataproc.MetastoreService("default", new()
     ///     {
+    ///         ServiceId = "metastore-srv",
+    ///         Location = "us-central1",
+    ///         Port = 9080,
+    ///         Tier = "DEVELOPER",
+    ///         MaintenanceWindow = new Gcp.Dataproc.Inputs.MetastoreServiceMaintenanceWindowArgs
+    ///         {
+    ///             HourOfDay = 2,
+    ///             DayOfWeek = "SUNDAY",
+    ///         },
     ///         HiveMetastoreConfig = new Gcp.Dataproc.Inputs.MetastoreServiceHiveMetastoreConfigArgs
     ///         {
     ///             Version = "2.3.6",
@@ -39,15 +48,6 @@ namespace Pulumi.Gcp.Dataproc
     ///         {
     ///             { "env", "test" },
     ///         },
-    ///         Location = "us-central1",
-    ///         MaintenanceWindow = new Gcp.Dataproc.Inputs.MetastoreServiceMaintenanceWindowArgs
-    ///         {
-    ///             DayOfWeek = "SUNDAY",
-    ///             HourOfDay = 2,
-    ///         },
-    ///         Port = 9080,
-    ///         ServiceId = "metastore-srv",
-    ///         Tier = "DEVELOPER",
     ///     });
     /// 
     /// });
@@ -62,21 +62,17 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var keyRing = new Gcp.Kms.KeyRing("keyRing", new()
+    ///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()
     ///     {
+    ///         Name = "example-keyring",
     ///         Location = "us-central1",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("crypto_key", new()
     ///     {
+    ///         Name = "example-key",
     ///         KeyRing = keyRing.Id,
     ///         Purpose = "ENCRYPT_DECRYPT",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var @default = new Gcp.Dataproc.MetastoreService("default", new()
@@ -107,11 +103,13 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var net = new Gcp.Compute.Network("net", new()
     ///     {
+    ///         Name = "my-network",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var subnet = new Gcp.Compute.Subnetwork("subnet", new()
     ///     {
+    ///         Name = "my-subnetwork",
     ///         Region = "us-central1",
     ///         Network = net.Id,
     ///         IpCidrRange = "10.0.0.0/22",
@@ -152,21 +150,17 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var net = new Gcp.Compute.Network("net", new()
     ///     {
+    ///         Name = "my-network",
     ///         AutoCreateSubnetworks = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var subnet = new Gcp.Compute.Subnetwork("subnet", new()
     ///     {
+    ///         Name = "my-subnetwork",
     ///         Region = "us-central1",
     ///         Network = net.Id,
     ///         IpCidrRange = "10.0.0.0/22",
     ///         PrivateIpGoogleAccess = true,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var @default = new Gcp.Dataproc.MetastoreService("default", new()
@@ -188,9 +182,6 @@ namespace Pulumi.Gcp.Dataproc
     ///             },
     ///             CustomRoutesEnabled = true,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -207,17 +198,17 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var dpms2 = new Gcp.Dataproc.MetastoreService("dpms2", new()
     ///     {
+    ///         ServiceId = "ms-dpms2",
+    ///         Location = "us-central1",
     ///         DatabaseType = "SPANNER",
     ///         HiveMetastoreConfig = new Gcp.Dataproc.Inputs.MetastoreServiceHiveMetastoreConfigArgs
     ///         {
     ///             Version = "3.1.2",
     ///         },
-    ///         Location = "us-central1",
     ///         ScalingConfig = new Gcp.Dataproc.Inputs.MetastoreServiceScalingConfigArgs
     ///         {
     ///             InstanceSize = "EXTRA_SMALL",
     ///         },
-    ///         ServiceId = "ms-dpms2",
     ///     });
     /// 
     /// });
@@ -232,19 +223,19 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dpms2ScalingFactor = new Gcp.Dataproc.MetastoreService("dpms2ScalingFactor", new()
+    ///     var dpms2ScalingFactor = new Gcp.Dataproc.MetastoreService("dpms2_scaling_factor", new()
     ///     {
+    ///         ServiceId = "ms-dpms2sf",
+    ///         Location = "us-central1",
     ///         DatabaseType = "SPANNER",
     ///         HiveMetastoreConfig = new Gcp.Dataproc.Inputs.MetastoreServiceHiveMetastoreConfigArgs
     ///         {
     ///             Version = "3.1.2",
     ///         },
-    ///         Location = "us-central1",
     ///         ScalingConfig = new Gcp.Dataproc.Inputs.MetastoreServiceScalingConfigArgs
     ///         {
     ///             ScalingFactor = 2,
     ///         },
-    ///         ServiceId = "ms-dpms2sf",
     ///     });
     /// 
     /// });

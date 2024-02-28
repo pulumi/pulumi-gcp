@@ -43,9 +43,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new RouterInterface(&#34;foobar&#34;, RouterInterfaceArgs.builder()        
- *             .ipRange(&#34;169.254.1.1/30&#34;)
- *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;interface-1&#34;)
  *             .router(&#34;router-1&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .ipRange(&#34;169.254.1.1/30&#34;)
  *             .vpnTunnel(&#34;tunnel-1&#34;)
  *             .build());
  * 

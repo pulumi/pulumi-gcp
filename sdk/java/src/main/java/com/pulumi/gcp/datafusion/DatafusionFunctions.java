@@ -40,9 +40,9 @@ public final class DatafusionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatafusionFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(google_data_fusion_instance.basic_instance().project())
-     *             .region(google_data_fusion_instance.basic_instance().region())
-     *             .name(google_data_fusion_instance.basic_instance().name())
+     *             .project(basicInstance.project())
+     *             .region(basicInstance.region())
+     *             .name(basicInstance.name())
      *             .build());
      * 
      *     }
@@ -79,9 +79,9 @@ public final class DatafusionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatafusionFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(google_data_fusion_instance.basic_instance().project())
-     *             .region(google_data_fusion_instance.basic_instance().region())
-     *             .name(google_data_fusion_instance.basic_instance().name())
+     *             .project(basicInstance.project())
+     *             .region(basicInstance.region())
+     *             .name(basicInstance.name())
      *             .build());
      * 
      *     }
@@ -118,9 +118,9 @@ public final class DatafusionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatafusionFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(google_data_fusion_instance.basic_instance().project())
-     *             .region(google_data_fusion_instance.basic_instance().region())
-     *             .name(google_data_fusion_instance.basic_instance().name())
+     *             .project(basicInstance.project())
+     *             .region(basicInstance.region())
+     *             .name(basicInstance.name())
      *             .build());
      * 
      *     }
@@ -157,9 +157,9 @@ public final class DatafusionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatafusionFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(google_data_fusion_instance.basic_instance().project())
-     *             .region(google_data_fusion_instance.basic_instance().region())
-     *             .name(google_data_fusion_instance.basic_instance().name())
+     *             .project(basicInstance.project())
+     *             .region(basicInstance.region())
+     *             .name(basicInstance.name())
      *             .build());
      * 
      *     }

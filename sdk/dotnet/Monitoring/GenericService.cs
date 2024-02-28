@@ -33,22 +33,22 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myService = new Gcp.Monitoring.GenericService("myService", new()
+    ///     var myService = new Gcp.Monitoring.GenericService("my_service", new()
     ///     {
-    ///         BasicService = new Gcp.Monitoring.Inputs.GenericServiceBasicServiceArgs
-    ///         {
-    ///             ServiceLabels = 
-    ///             {
-    ///                 { "moduleId", "another-module-id" },
-    ///             },
-    ///             ServiceType = "APP_ENGINE",
-    ///         },
-    ///         DisplayName = "My Service my-service",
     ///         ServiceId = "my-service",
+    ///         DisplayName = "My Service my-service",
     ///         UserLabels = 
     ///         {
     ///             { "my_key", "my_value" },
     ///             { "my_other_key", "my_other_value" },
+    ///         },
+    ///         BasicService = new Gcp.Monitoring.Inputs.GenericServiceBasicServiceArgs
+    ///         {
+    ///             ServiceType = "APP_ENGINE",
+    ///             ServiceLabels = 
+    ///             {
+    ///                 { "module_id", "another-module-id" },
+    ///             },
     ///         },
     ///     });
     /// 

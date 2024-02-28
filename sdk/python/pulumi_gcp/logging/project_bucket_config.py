@@ -368,6 +368,95 @@ class ProjectBucketConfig(pulumi.CustomResource):
 
         > **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.organizations.Project("default",
+            project_id="your-project-id",
+            name="your-project-id",
+            org_id="123456789")
+        basic = gcp.logging.ProjectBucketConfig("basic",
+            project=default.project_id,
+            location="global",
+            retention_days=30,
+            bucket_id="_Default")
+        ```
+
+        Create logging bucket with customId
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.logging.ProjectBucketConfig("basic",
+            project="project_id",
+            location="global",
+            retention_days=30,
+            bucket_id="custom-bucket")
+        ```
+
+        Create logging bucket with Log Analytics enabled
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        analytics_enabled_bucket = gcp.logging.ProjectBucketConfig("analytics-enabled-bucket",
+            project="project_id",
+            location="global",
+            retention_days=30,
+            enable_analytics=True,
+            bucket_id="custom-bucket")
+        ```
+
+        Create logging bucket with customId and cmekSettings
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cmek_settings = gcp.logging.get_project_cmek_settings(project="project_id")
+        keyring = gcp.kms.KeyRing("keyring",
+            name="keyring-example",
+            location="us-central1")
+        key = gcp.kms.CryptoKey("key",
+            name="crypto-key-example",
+            key_ring=keyring.id,
+            rotation_period="7776000s")
+        crypto_key_binding = gcp.kms.CryptoKeyIAMBinding("crypto_key_binding",
+            crypto_key_id=key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            members=[f"serviceAccount:{cmek_settings.service_account_id}"])
+        example_project_bucket_cmek_settings = gcp.logging.ProjectBucketConfig("example-project-bucket-cmek-settings",
+            project="project_id",
+            location="us-central1",
+            retention_days=30,
+            bucket_id="custom-bucket",
+            cmek_settings=gcp.logging.ProjectBucketConfigCmekSettingsArgs(
+                kms_key_name=key.id,
+            ))
+        ```
+
+        Create logging bucket with index configs
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_project_bucket_index_configs = gcp.logging.ProjectBucketConfig("example-project-bucket-index-configs",
+            project="project_id",
+            location="global",
+            retention_days=30,
+            bucket_id="custom-bucket",
+            index_configs={
+                "filePath": "jsonPayload.request.status",
+                "type": "INDEX_TYPE_STRING",
+            })
+        ```
+
         ## Import
 
         This resource can be imported using the following format:
@@ -404,6 +493,95 @@ class ProjectBucketConfig(pulumi.CustomResource):
         [Storing Logs](https://cloud.google.com/logging/docs/storage).
 
         > **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.organizations.Project("default",
+            project_id="your-project-id",
+            name="your-project-id",
+            org_id="123456789")
+        basic = gcp.logging.ProjectBucketConfig("basic",
+            project=default.project_id,
+            location="global",
+            retention_days=30,
+            bucket_id="_Default")
+        ```
+
+        Create logging bucket with customId
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.logging.ProjectBucketConfig("basic",
+            project="project_id",
+            location="global",
+            retention_days=30,
+            bucket_id="custom-bucket")
+        ```
+
+        Create logging bucket with Log Analytics enabled
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        analytics_enabled_bucket = gcp.logging.ProjectBucketConfig("analytics-enabled-bucket",
+            project="project_id",
+            location="global",
+            retention_days=30,
+            enable_analytics=True,
+            bucket_id="custom-bucket")
+        ```
+
+        Create logging bucket with customId and cmekSettings
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cmek_settings = gcp.logging.get_project_cmek_settings(project="project_id")
+        keyring = gcp.kms.KeyRing("keyring",
+            name="keyring-example",
+            location="us-central1")
+        key = gcp.kms.CryptoKey("key",
+            name="crypto-key-example",
+            key_ring=keyring.id,
+            rotation_period="7776000s")
+        crypto_key_binding = gcp.kms.CryptoKeyIAMBinding("crypto_key_binding",
+            crypto_key_id=key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            members=[f"serviceAccount:{cmek_settings.service_account_id}"])
+        example_project_bucket_cmek_settings = gcp.logging.ProjectBucketConfig("example-project-bucket-cmek-settings",
+            project="project_id",
+            location="us-central1",
+            retention_days=30,
+            bucket_id="custom-bucket",
+            cmek_settings=gcp.logging.ProjectBucketConfigCmekSettingsArgs(
+                kms_key_name=key.id,
+            ))
+        ```
+
+        Create logging bucket with index configs
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_project_bucket_index_configs = gcp.logging.ProjectBucketConfig("example-project-bucket-index-configs",
+            project="project_id",
+            location="global",
+            retention_days=30,
+            bucket_id="custom-bucket",
+            index_configs={
+                "filePath": "jsonPayload.request.status",
+                "type": "INDEX_TYPE_STRING",
+            })
+        ```
 
         ## Import
 

@@ -261,9 +261,9 @@ class FunctionIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.cloudfunctionsv2.FunctionIamPolicy("policy",
-            project=google_cloudfunctions2_function["function"]["project"],
-            location=google_cloudfunctions2_function["function"]["location"],
-            cloud_function=google_cloudfunctions2_function["function"]["name"],
+            project=function["project"],
+            location=function["location"],
+            cloud_function=function["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -274,9 +274,9 @@ class FunctionIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.cloudfunctionsv2.FunctionIamBinding("binding",
-            project=google_cloudfunctions2_function["function"]["project"],
-            location=google_cloudfunctions2_function["function"]["location"],
-            cloud_function=google_cloudfunctions2_function["function"]["name"],
+            project=function["project"],
+            location=function["location"],
+            cloud_function=function["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -288,9 +288,9 @@ class FunctionIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.cloudfunctionsv2.FunctionIamMember("member",
-            project=google_cloudfunctions2_function["function"]["project"],
-            location=google_cloudfunctions2_function["function"]["location"],
-            cloud_function=google_cloudfunctions2_function["function"]["name"],
+            project=function["project"],
+            location=function["location"],
+            cloud_function=function["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -386,9 +386,9 @@ class FunctionIamPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.cloudfunctionsv2.FunctionIamPolicy("policy",
-            project=google_cloudfunctions2_function["function"]["project"],
-            location=google_cloudfunctions2_function["function"]["location"],
-            cloud_function=google_cloudfunctions2_function["function"]["name"],
+            project=function["project"],
+            location=function["location"],
+            cloud_function=function["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -399,9 +399,9 @@ class FunctionIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.cloudfunctionsv2.FunctionIamBinding("binding",
-            project=google_cloudfunctions2_function["function"]["project"],
-            location=google_cloudfunctions2_function["function"]["location"],
-            cloud_function=google_cloudfunctions2_function["function"]["name"],
+            project=function["project"],
+            location=function["location"],
+            cloud_function=function["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -413,9 +413,9 @@ class FunctionIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.cloudfunctionsv2.FunctionIamMember("member",
-            project=google_cloudfunctions2_function["function"]["project"],
-            location=google_cloudfunctions2_function["function"]["location"],
-            cloud_function=google_cloudfunctions2_function["function"]["name"],
+            project=function["project"],
+            location=function["location"],
+            cloud_function=function["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

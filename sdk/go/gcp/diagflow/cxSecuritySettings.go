@@ -36,7 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := diagflow.NewCxSecuritySettings(ctx, "basicSecuritySettings", &diagflow.CxSecuritySettingsArgs{
+//			_, err := diagflow.NewCxSecuritySettings(ctx, "basic_security_settings", &diagflow.CxSecuritySettingsArgs{
 //				DisplayName:         pulumi.String("dialogflowcx-security-settings"),
 //				Location:            pulumi.String("global"),
 //				PurgeDataTypes:      pulumi.StringArray{},
@@ -103,13 +103,14 @@ import (
 //				return err
 //			}
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:                     pulumi.String("dialogflowcx-bucket"),
 //				Location:                 pulumi.String("US"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = diagflow.NewCxSecuritySettings(ctx, "basicSecuritySettings", &diagflow.CxSecuritySettingsArgs{
+//			_, err = diagflow.NewCxSecuritySettings(ctx, "basic_security_settings", &diagflow.CxSecuritySettingsArgs{
 //				DisplayName:        pulumi.String("dialogflowcx-security-settings"),
 //				Location:           pulumi.String("global"),
 //				RedactionStrategy:  pulumi.String("REDACT_WITH_SERVICE"),

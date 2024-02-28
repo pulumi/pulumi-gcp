@@ -25,12 +25,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const serialPortPolicy = new gcp.folder.OrganizationPolicy("serialPortPolicy", {
+ * const serialPortPolicy = new gcp.folder.OrganizationPolicy("serial_port_policy", {
+ *     folder: "folders/123456789",
+ *     constraint: "compute.disableSerialPortAccess",
  *     booleanPolicy: {
  *         enforced: true,
  *     },
- *     constraint: "compute.disableSerialPortAccess",
- *     folder: "folders/123456789",
  * });
  * ```
  *
@@ -40,9 +40,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const servicesPolicy = new gcp.folder.OrganizationPolicy("servicesPolicy", {
- *     constraint: "serviceuser.services",
+ * const servicesPolicy = new gcp.folder.OrganizationPolicy("services_policy", {
  *     folder: "folders/123456789",
+ *     constraint: "serviceuser.services",
  *     listPolicy: {
  *         allow: {
  *             all: true,
@@ -57,14 +57,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const servicesPolicy = new gcp.folder.OrganizationPolicy("servicesPolicy", {
- *     constraint: "serviceuser.services",
+ * const servicesPolicy = new gcp.folder.OrganizationPolicy("services_policy", {
  *     folder: "folders/123456789",
+ *     constraint: "serviceuser.services",
  *     listPolicy: {
+ *         suggestedValue: "compute.googleapis.com",
  *         deny: {
  *             values: ["cloudresourcemanager.googleapis.com"],
  *         },
- *         suggestedValue: "compute.googleapis.com",
  *     },
  * });
  * ```
@@ -75,9 +75,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const servicesPolicy = new gcp.folder.OrganizationPolicy("servicesPolicy", {
- *     constraint: "serviceuser.services",
+ * const servicesPolicy = new gcp.folder.OrganizationPolicy("services_policy", {
  *     folder: "folders/123456789",
+ *     constraint: "serviceuser.services",
  *     restorePolicy: {
  *         "default": true,
  *     },

@@ -670,17 +670,19 @@ class Instance(pulumi.CustomResource):
         # If this network hasn't been created and you are using this example in your
         # config, add an additional network resource or change
         # this from "data"to "resource"
-        memcache_network = gcp.compute.Network("memcacheNetwork")
-        service_range = gcp.compute.GlobalAddress("serviceRange",
+        memcache_network = gcp.compute.Network("memcache_network", name="test-network")
+        service_range = gcp.compute.GlobalAddress("service_range",
+            name="address",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=16,
             network=memcache_network.id)
-        private_service_connection = gcp.servicenetworking.Connection("privateServiceConnection",
+        private_service_connection = gcp.servicenetworking.Connection("private_service_connection",
             network=memcache_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[service_range.name])
         instance = gcp.memcache.Instance("instance",
+            name="test-instance",
             authorized_network=private_service_connection.network,
             labels={
                 "env": "test",
@@ -796,17 +798,19 @@ class Instance(pulumi.CustomResource):
         # If this network hasn't been created and you are using this example in your
         # config, add an additional network resource or change
         # this from "data"to "resource"
-        memcache_network = gcp.compute.Network("memcacheNetwork")
-        service_range = gcp.compute.GlobalAddress("serviceRange",
+        memcache_network = gcp.compute.Network("memcache_network", name="test-network")
+        service_range = gcp.compute.GlobalAddress("service_range",
+            name="address",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=16,
             network=memcache_network.id)
-        private_service_connection = gcp.servicenetworking.Connection("privateServiceConnection",
+        private_service_connection = gcp.servicenetworking.Connection("private_service_connection",
             network=memcache_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[service_range.name])
         instance = gcp.memcache.Instance("instance",
+            name="test-instance",
             authorized_network=private_service_connection.network,
             labels={
                 "env": "test",

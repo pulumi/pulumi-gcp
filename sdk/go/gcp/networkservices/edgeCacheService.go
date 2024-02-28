@@ -33,13 +33,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			dest, err := storage.NewBucket(ctx, "dest", &storage.BucketArgs{
+//				Name:         pulumi.String("my-bucket"),
 //				Location:     pulumi.String("US"),
 //				ForceDestroy: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			instanceEdgeCacheOrigin, err := networkservices.NewEdgeCacheOrigin(ctx, "instanceEdgeCacheOrigin", &networkservices.EdgeCacheOriginArgs{
+//			instance, err := networkservices.NewEdgeCacheOrigin(ctx, "instance", &networkservices.EdgeCacheOriginArgs{
+//				Name:          pulumi.String("my-origin"),
 //				OriginAddress: dest.Url,
 //				Description:   pulumi.String("The default bucket for media edge test"),
 //				MaxAttempts:   pulumi.Int(2),
@@ -50,7 +52,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networkservices.NewEdgeCacheService(ctx, "instanceEdgeCacheService", &networkservices.EdgeCacheServiceArgs{
+//			_, err = networkservices.NewEdgeCacheService(ctx, "instance", &networkservices.EdgeCacheServiceArgs{
+//				Name:        pulumi.String("my-service"),
 //				Description: pulumi.String("some description"),
 //				Routing: &networkservices.EdgeCacheServiceRoutingArgs{
 //					HostRules: networkservices.EdgeCacheServiceRoutingHostRuleArray{
@@ -74,7 +77,7 @@ import (
 //											PrefixMatch: pulumi.String("/"),
 //										},
 //									},
-//									Origin: instanceEdgeCacheOrigin.Name,
+//									Origin: instance.Name,
 //									RouteAction: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs{
 //										CdnPolicy: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs{
 //											CacheMode:  pulumi.String("CACHE_ALL_STATIC"),
@@ -119,6 +122,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			dest, err := storage.NewBucket(ctx, "dest", &storage.BucketArgs{
+//				Name:         pulumi.String("my-bucket"),
 //				Location:     pulumi.String("US"),
 //				ForceDestroy: pulumi.Bool(true),
 //			})
@@ -126,6 +130,7 @@ import (
 //				return err
 //			}
 //			_, err = networkservices.NewEdgeCacheOrigin(ctx, "google", &networkservices.EdgeCacheOriginArgs{
+//				Name:          pulumi.String("origin-google"),
 //				OriginAddress: pulumi.String("google.com"),
 //				Description:   pulumi.String("The default bucket for media edge test"),
 //				MaxAttempts:   pulumi.Int(2),
@@ -136,7 +141,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			instanceEdgeCacheOrigin, err := networkservices.NewEdgeCacheOrigin(ctx, "instanceEdgeCacheOrigin", &networkservices.EdgeCacheOriginArgs{
+//			instance, err := networkservices.NewEdgeCacheOrigin(ctx, "instance", &networkservices.EdgeCacheOriginArgs{
+//				Name:          pulumi.String("my-origin"),
 //				OriginAddress: dest.Url,
 //				Description:   pulumi.String("The default bucket for media edge test"),
 //				MaxAttempts:   pulumi.Int(2),
@@ -147,7 +153,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networkservices.NewEdgeCacheService(ctx, "instanceEdgeCacheService", &networkservices.EdgeCacheServiceArgs{
+//			_, err = networkservices.NewEdgeCacheService(ctx, "instance", &networkservices.EdgeCacheServiceArgs{
+//				Name:         pulumi.String("my-service"),
 //				Description:  pulumi.String("some description"),
 //				DisableQuic:  pulumi.Bool(true),
 //				DisableHttp2: pulumi.Bool(true),
@@ -190,7 +197,7 @@ import (
 //											PrefixMatch: pulumi.String("/"),
 //										},
 //									},
-//									Origin: instanceEdgeCacheOrigin.Name,
+//									Origin: instance.Name,
 //									RouteAction: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs{
 //										CdnPolicy: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs{
 //											CacheMode:  pulumi.String("CACHE_ALL_STATIC"),
@@ -263,7 +270,7 @@ import (
 //											},
 //										},
 //									},
-//									Origin: instanceEdgeCacheOrigin.Name,
+//									Origin: instance.Name,
 //									RouteAction: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs{
 //										CdnPolicy: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs{
 //											CacheMode:  pulumi.String("CACHE_ALL_STATIC"),
@@ -322,7 +329,7 @@ import (
 //											FullPathMatch: pulumi.String("/yay"),
 //										},
 //									},
-//									Origin: instanceEdgeCacheOrigin.Name,
+//									Origin: instance.Name,
 //									RouteAction: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs{
 //										CdnPolicy: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs{
 //											CacheMode:  pulumi.String("CACHE_ALL_STATIC"),
@@ -349,6 +356,177 @@ import (
 //				LogConfig: &networkservices.EdgeCacheServiceLogConfigArgs{
 //					Enable:     pulumi.Bool(true),
 //					SampleRate: pulumi.Float64(0.01),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Network Services Edge Cache Service Dual Token
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
+//				SecretId: pulumi.String("secret-name"),
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					Auto: nil,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-basic", &secretmanager.SecretVersionArgs{
+//				Secret:     secret_basic.ID(),
+//				SecretData: pulumi.String("secret-data"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			keyset, err := networkservices.NewEdgeCacheKeyset(ctx, "keyset", &networkservices.EdgeCacheKeysetArgs{
+//				Name:        pulumi.String("keyset-name"),
+//				Description: pulumi.String("The default keyset"),
+//				PublicKeys: networkservices.EdgeCacheKeysetPublicKeyArray{
+//					&networkservices.EdgeCacheKeysetPublicKeyArgs{
+//						Id:      pulumi.String("my-public-key"),
+//						Managed: pulumi.Bool(true),
+//					},
+//				},
+//				ValidationSharedKeys: networkservices.EdgeCacheKeysetValidationSharedKeyArray{
+//					&networkservices.EdgeCacheKeysetValidationSharedKeyArgs{
+//						SecretVersion: secret_version_basic.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			instance, err := networkservices.NewEdgeCacheOrigin(ctx, "instance", &networkservices.EdgeCacheOriginArgs{
+//				Name:          pulumi.String("my-origin"),
+//				OriginAddress: pulumi.String("gs://media-edge-default"),
+//				Description:   pulumi.String("The default bucket for media edge test"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkservices.NewEdgeCacheService(ctx, "instance", &networkservices.EdgeCacheServiceArgs{
+//				Name:        pulumi.String("my-service"),
+//				Description: pulumi.String("some description"),
+//				Routing: &networkservices.EdgeCacheServiceRoutingArgs{
+//					HostRules: networkservices.EdgeCacheServiceRoutingHostRuleArray{
+//						&networkservices.EdgeCacheServiceRoutingHostRuleArgs{
+//							Description: pulumi.String("host rule description"),
+//							Hosts: pulumi.StringArray{
+//								pulumi.String("sslcert.tf-test.club"),
+//							},
+//							PathMatcher: pulumi.String("routes"),
+//						},
+//					},
+//					PathMatchers: networkservices.EdgeCacheServiceRoutingPathMatcherArray{
+//						&networkservices.EdgeCacheServiceRoutingPathMatcherArgs{
+//							Name: pulumi.String("routes"),
+//							RouteRules: networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleArray{
+//								&networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleArgs{
+//									Description: pulumi.String("a route rule to match against master playlist"),
+//									Priority:    pulumi.String("1"),
+//									MatchRules: networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArray{
+//										&networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs{
+//											PathTemplateMatch: pulumi.String("/master.m3u8"),
+//										},
+//									},
+//									Origin: instance.Name,
+//									RouteAction: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs{
+//										CdnPolicy: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs{
+//											SignedRequestMode:   pulumi.String("REQUIRE_TOKENS"),
+//											SignedRequestKeyset: keyset.ID(),
+//											SignedTokenOptions: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs{
+//												TokenQueryParameter: pulumi.String("edge-cache-token"),
+//											},
+//											SignedRequestMaximumExpirationTtl: pulumi.String("600s"),
+//											AddSignatures: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs{
+//												Actions: pulumi.String("GENERATE_COOKIE"),
+//												Keyset:  keyset.ID(),
+//												CopiedParameters: pulumi.StringArray{
+//													pulumi.String("PathGlobs"),
+//													pulumi.String("SessionID"),
+//												},
+//											},
+//										},
+//									},
+//								},
+//								&networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleArgs{
+//									Description: pulumi.String("a route rule to match against all playlists"),
+//									Priority:    pulumi.String("2"),
+//									MatchRules: networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArray{
+//										&networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs{
+//											PathTemplateMatch: pulumi.String("/*.m3u8"),
+//										},
+//									},
+//									Origin: instance.Name,
+//									RouteAction: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs{
+//										CdnPolicy: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs{
+//											SignedRequestMode:   pulumi.String("REQUIRE_TOKENS"),
+//											SignedRequestKeyset: keyset.ID(),
+//											SignedTokenOptions: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs{
+//												TokenQueryParameter: pulumi.String("hdnts"),
+//												AllowedSignatureAlgorithms: pulumi.StringArray{
+//													pulumi.String("ED25519"),
+//													pulumi.String("HMAC_SHA_256"),
+//													pulumi.String("HMAC_SHA1"),
+//												},
+//											},
+//											AddSignatures: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs{
+//												Actions:             pulumi.String("GENERATE_TOKEN_HLS_COOKIELESS"),
+//												Keyset:              keyset.ID(),
+//												TokenTtl:            pulumi.String("1200s"),
+//												TokenQueryParameter: pulumi.String("hdntl"),
+//												CopiedParameters: pulumi.StringArray{
+//													pulumi.String("URLPrefix"),
+//												},
+//											},
+//										},
+//									},
+//								},
+//								&networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleArgs{
+//									Description: pulumi.String("a route rule to match against"),
+//									Priority:    pulumi.String("3"),
+//									MatchRules: networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArray{
+//										&networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs{
+//											PathTemplateMatch: pulumi.String("/**.m3u8"),
+//										},
+//									},
+//									Origin: instance.Name,
+//									RouteAction: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs{
+//										CdnPolicy: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs{
+//											SignedRequestMode:   pulumi.String("REQUIRE_TOKENS"),
+//											SignedRequestKeyset: keyset.ID(),
+//											SignedTokenOptions: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs{
+//												TokenQueryParameter: pulumi.String("hdntl"),
+//											},
+//											AddSignatures: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs{
+//												Actions:             pulumi.String("PROPAGATE_TOKEN_HLS_COOKIELESS"),
+//												TokenQueryParameter: pulumi.String("hdntl"),
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
 //				},
 //			})
 //			if err != nil {

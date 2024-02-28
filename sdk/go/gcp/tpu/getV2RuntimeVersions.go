@@ -55,6 +55,7 @@ import (
 //				return err
 //			}
 //			_, err = tpu.NewV2Vm(ctx, "tpu", &tpu.V2VmArgs{
+//				Name:           pulumi.String("test-tpu"),
 //				Zone:           pulumi.String("us-central1-b"),
 //				RuntimeVersion: *pulumi.String(available.Versions[0]),
 //			})

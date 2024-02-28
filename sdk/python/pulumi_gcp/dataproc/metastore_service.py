@@ -811,20 +811,20 @@ class MetastoreService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.dataproc.MetastoreService("default",
+            service_id="metastore-srv",
+            location="us-central1",
+            port=9080,
+            tier="DEVELOPER",
+            maintenance_window=gcp.dataproc.MetastoreServiceMaintenanceWindowArgs(
+                hour_of_day=2,
+                day_of_week="SUNDAY",
+            ),
             hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
                 version="2.3.6",
             ),
             labels={
                 "env": "test",
-            },
-            location="us-central1",
-            maintenance_window=gcp.dataproc.MetastoreServiceMaintenanceWindowArgs(
-                day_of_week="SUNDAY",
-                hour_of_day=2,
-            ),
-            port=9080,
-            service_id="metastore-srv",
-            tier="DEVELOPER")
+            })
         ```
         ### Dataproc Metastore Service Cmek Example
 
@@ -832,12 +832,13 @@ class MetastoreService(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        key_ring = gcp.kms.KeyRing("keyRing", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        crypto_key = gcp.kms.CryptoKey("cryptoKey",
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="example-keyring",
+            location="us-central1")
+        crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="example-key",
             key_ring=key_ring.id,
-            purpose="ENCRYPT_DECRYPT",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            purpose="ENCRYPT_DECRYPT")
         default = gcp.dataproc.MetastoreService("default",
             service_id="example-service",
             location="us-central1",
@@ -854,8 +855,11 @@ class MetastoreService(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        net = gcp.compute.Network("net", auto_create_subnetworks=False)
+        net = gcp.compute.Network("net",
+            name="my-network",
+            auto_create_subnetworks=False)
         subnet = gcp.compute.Subnetwork("subnet",
+            name="my-subnetwork",
             region="us-central1",
             network=net.id,
             ip_cidr_range="10.0.0.0/22",
@@ -878,14 +882,15 @@ class MetastoreService(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        net = gcp.compute.Network("net", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        net = gcp.compute.Network("net",
+            name="my-network",
+            auto_create_subnetworks=False)
         subnet = gcp.compute.Subnetwork("subnet",
+            name="my-subnetwork",
             region="us-central1",
             network=net.id,
             ip_cidr_range="10.0.0.0/22",
-            private_ip_google_access=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            private_ip_google_access=True)
         default = gcp.dataproc.MetastoreService("default",
             service_id="metastore-srv",
             location="us-central1",
@@ -897,8 +902,7 @@ class MetastoreService(pulumi.CustomResource):
                     subnetwork=subnet.id,
                 )],
                 custom_routes_enabled=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Dataproc Metastore Service Dpms2
 
@@ -907,15 +911,15 @@ class MetastoreService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         dpms2 = gcp.dataproc.MetastoreService("dpms2",
+            service_id="ms-dpms2",
+            location="us-central1",
             database_type="SPANNER",
             hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
                 version="3.1.2",
             ),
-            location="us-central1",
             scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
                 instance_size="EXTRA_SMALL",
-            ),
-            service_id="ms-dpms2")
+            ))
         ```
         ### Dataproc Metastore Service Dpms2 Scaling Factor
 
@@ -923,16 +927,16 @@ class MetastoreService(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        dpms2_scaling_factor = gcp.dataproc.MetastoreService("dpms2ScalingFactor",
+        dpms2_scaling_factor = gcp.dataproc.MetastoreService("dpms2_scaling_factor",
+            service_id="ms-dpms2sf",
+            location="us-central1",
             database_type="SPANNER",
             hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
                 version="3.1.2",
             ),
-            location="us-central1",
             scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
                 scaling_factor=2,
-            ),
-            service_id="ms-dpms2sf")
+            ))
         ```
 
         ## Import
@@ -1026,20 +1030,20 @@ class MetastoreService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.dataproc.MetastoreService("default",
+            service_id="metastore-srv",
+            location="us-central1",
+            port=9080,
+            tier="DEVELOPER",
+            maintenance_window=gcp.dataproc.MetastoreServiceMaintenanceWindowArgs(
+                hour_of_day=2,
+                day_of_week="SUNDAY",
+            ),
             hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
                 version="2.3.6",
             ),
             labels={
                 "env": "test",
-            },
-            location="us-central1",
-            maintenance_window=gcp.dataproc.MetastoreServiceMaintenanceWindowArgs(
-                day_of_week="SUNDAY",
-                hour_of_day=2,
-            ),
-            port=9080,
-            service_id="metastore-srv",
-            tier="DEVELOPER")
+            })
         ```
         ### Dataproc Metastore Service Cmek Example
 
@@ -1047,12 +1051,13 @@ class MetastoreService(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        key_ring = gcp.kms.KeyRing("keyRing", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        crypto_key = gcp.kms.CryptoKey("cryptoKey",
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="example-keyring",
+            location="us-central1")
+        crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="example-key",
             key_ring=key_ring.id,
-            purpose="ENCRYPT_DECRYPT",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            purpose="ENCRYPT_DECRYPT")
         default = gcp.dataproc.MetastoreService("default",
             service_id="example-service",
             location="us-central1",
@@ -1069,8 +1074,11 @@ class MetastoreService(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        net = gcp.compute.Network("net", auto_create_subnetworks=False)
+        net = gcp.compute.Network("net",
+            name="my-network",
+            auto_create_subnetworks=False)
         subnet = gcp.compute.Subnetwork("subnet",
+            name="my-subnetwork",
             region="us-central1",
             network=net.id,
             ip_cidr_range="10.0.0.0/22",
@@ -1093,14 +1101,15 @@ class MetastoreService(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        net = gcp.compute.Network("net", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        net = gcp.compute.Network("net",
+            name="my-network",
+            auto_create_subnetworks=False)
         subnet = gcp.compute.Subnetwork("subnet",
+            name="my-subnetwork",
             region="us-central1",
             network=net.id,
             ip_cidr_range="10.0.0.0/22",
-            private_ip_google_access=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            private_ip_google_access=True)
         default = gcp.dataproc.MetastoreService("default",
             service_id="metastore-srv",
             location="us-central1",
@@ -1112,8 +1121,7 @@ class MetastoreService(pulumi.CustomResource):
                     subnetwork=subnet.id,
                 )],
                 custom_routes_enabled=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Dataproc Metastore Service Dpms2
 
@@ -1122,15 +1130,15 @@ class MetastoreService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         dpms2 = gcp.dataproc.MetastoreService("dpms2",
+            service_id="ms-dpms2",
+            location="us-central1",
             database_type="SPANNER",
             hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
                 version="3.1.2",
             ),
-            location="us-central1",
             scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
                 instance_size="EXTRA_SMALL",
-            ),
-            service_id="ms-dpms2")
+            ))
         ```
         ### Dataproc Metastore Service Dpms2 Scaling Factor
 
@@ -1138,16 +1146,16 @@ class MetastoreService(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        dpms2_scaling_factor = gcp.dataproc.MetastoreService("dpms2ScalingFactor",
+        dpms2_scaling_factor = gcp.dataproc.MetastoreService("dpms2_scaling_factor",
+            service_id="ms-dpms2sf",
+            location="us-central1",
             database_type="SPANNER",
             hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
                 version="3.1.2",
             ),
-            location="us-central1",
             scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
                 scaling_factor=2,
-            ),
-            service_id="ms-dpms2sf")
+            ))
         ```
 
         ## Import

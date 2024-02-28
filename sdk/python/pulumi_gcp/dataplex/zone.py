@@ -496,6 +496,7 @@ class Zone(pulumi.CustomResource):
 
         basic = gcp.dataplex.Lake("basic",
             location="us-west1",
+            name="lake",
             description="Lake for DCL",
             display_name="Lake for DCL",
             project="my-project-name",
@@ -508,6 +509,7 @@ class Zone(pulumi.CustomResource):
             ),
             lake=basic.name,
             location="us-west1",
+            name="zone",
             resource_spec=gcp.dataplex.ZoneResourceSpecArgs(
                 location_type="MULTI_REGION",
             ),
@@ -576,6 +578,7 @@ class Zone(pulumi.CustomResource):
 
         basic = gcp.dataplex.Lake("basic",
             location="us-west1",
+            name="lake",
             description="Lake for DCL",
             display_name="Lake for DCL",
             project="my-project-name",
@@ -588,6 +591,7 @@ class Zone(pulumi.CustomResource):
             ),
             lake=basic.name,
             location="us-west1",
+            name="zone",
             resource_spec=gcp.dataplex.ZoneResourceSpecArgs(
                 location_type="MULTI_REGION",
             ),

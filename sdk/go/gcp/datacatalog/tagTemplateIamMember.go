@@ -55,7 +55,7 @@ import (
 //				return err
 //			}
 //			_, err = datacatalog.NewTagTemplateIamPolicy(ctx, "policy", &datacatalog.TagTemplateIamPolicyArgs{
-//				TagTemplate: pulumi.Any(google_data_catalog_tag_template.Basic_tag_template.Name),
+//				TagTemplate: pulumi.Any(basicTagTemplate.Name),
 //				PolicyData:  *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -82,7 +82,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := datacatalog.NewTagTemplateIamBinding(ctx, "binding", &datacatalog.TagTemplateIamBindingArgs{
-//				TagTemplate: pulumi.Any(google_data_catalog_tag_template.Basic_tag_template.Name),
+//				TagTemplate: pulumi.Any(basicTagTemplate.Name),
 //				Role:        pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -112,7 +112,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := datacatalog.NewTagTemplateIamMember(ctx, "member", &datacatalog.TagTemplateIamMemberArgs{
-//				TagTemplate: pulumi.Any(google_data_catalog_tag_template.Basic_tag_template.Name),
+//				TagTemplate: pulumi.Any(basicTagTemplate.Name),
 //				Role:        pulumi.String("roles/viewer"),
 //				Member:      pulumi.String("user:jane@example.com"),
 //			})

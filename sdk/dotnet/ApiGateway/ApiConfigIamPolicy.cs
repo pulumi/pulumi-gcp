@@ -51,12 +51,9 @@ namespace Pulumi.Gcp.ApiGateway
     /// 
     ///     var policy = new Gcp.ApiGateway.ApiConfigIamPolicy("policy", new()
     ///     {
-    ///         Api = google_api_gateway_api_config.Api_cfg.Api,
-    ///         ApiConfig = google_api_gateway_api_config.Api_cfg.Api_config_id,
+    ///         Api = apiCfg.Api,
+    ///         ApiConfig = apiCfg.ApiConfigId,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -74,16 +71,13 @@ namespace Pulumi.Gcp.ApiGateway
     /// {
     ///     var binding = new Gcp.ApiGateway.ApiConfigIamBinding("binding", new()
     ///     {
-    ///         Api = google_api_gateway_api_config.Api_cfg.Api,
-    ///         ApiConfig = google_api_gateway_api_config.Api_cfg.Api_config_id,
+    ///         Api = apiCfg.Api,
+    ///         ApiConfig = apiCfg.ApiConfigId,
     ///         Role = "roles/apigateway.viewer",
     ///         Members = new[]
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -101,13 +95,10 @@ namespace Pulumi.Gcp.ApiGateway
     /// {
     ///     var member = new Gcp.ApiGateway.ApiConfigIamMember("member", new()
     ///     {
-    ///         Api = google_api_gateway_api_config.Api_cfg.Api,
-    ///         ApiConfig = google_api_gateway_api_config.Api_cfg.Api_config_id,
+    ///         Api = apiCfg.Api,
+    ///         ApiConfig = apiCfg.ApiConfigId,
     ///         Role = "roles/apigateway.viewer",
     ///         Member = "user:jane@example.com",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

@@ -93,7 +93,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.folder.AccessApprovalSettings;
  * import com.pulumi.gcp.folder.AccessApprovalSettingsArgs;
  * import com.pulumi.gcp.folder.inputs.AccessApprovalSettingsEnrolledServiceArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -113,15 +112,19 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
+ *             .name(&#34;My Project&#34;)
+ *             .projectId(&#34;your-project-id&#34;)
  *             .folderId(myFolder.name())
  *             .build());
  * 
  *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
+ *             .name(&#34;key-ring&#34;)
  *             .location(&#34;global&#34;)
  *             .project(myProject.projectId())
  *             .build());
  * 
  *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
+ *             .name(&#34;crypto-key&#34;)
  *             .keyRing(keyRing.id())
  *             .purpose(&#34;ASYMMETRIC_SIGN&#34;)
  *             .versionTemplate(CryptoKeyVersionTemplateArgs.builder()
@@ -149,9 +152,7 @@ import javax.annotation.Nullable;
  *             .enrolledServices(AccessApprovalSettingsEnrolledServiceArgs.builder()
  *                 .cloudProduct(&#34;all&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(iam)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

@@ -50,14 +50,179 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork");
-    /// 
-    ///     var defaultRoute = new Gcp.Compute.Route("defaultRoute", new()
+    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
     ///     {
+    ///         Name = "compute-network",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.Route("default", new()
+    ///     {
+    ///         Name = "network-route",
     ///         DestRange = "15.0.0.0/24",
     ///         Network = defaultNetwork.Name,
     ///         NextHopIp = "10.132.1.5",
     ///         Priority = 100,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Route Ilb
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "compute-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "compute-subnet",
+    ///         IpCidrRange = "10.0.1.0/24",
+    ///         Region = "us-central1",
+    ///         Network = @default.Id,
+    ///     });
+    /// 
+    ///     var hc = new Gcp.Compute.HealthCheck("hc", new()
+    ///     {
+    ///         Name = "proxy-health-check",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var backend = new Gcp.Compute.RegionBackendService("backend", new()
+    ///     {
+    ///         Name = "compute-backend",
+    ///         Region = "us-central1",
+    ///         HealthChecks = hc.Id,
+    ///     });
+    /// 
+    ///     var defaultForwardingRule = new Gcp.Compute.ForwardingRule("default", new()
+    ///     {
+    ///         Name = "compute-forwarding-rule",
+    ///         Region = "us-central1",
+    ///         LoadBalancingScheme = "INTERNAL",
+    ///         BackendService = backend.Id,
+    ///         AllPorts = true,
+    ///         Network = @default.Name,
+    ///         Subnetwork = defaultSubnetwork.Name,
+    ///     });
+    /// 
+    ///     var route_ilb = new Gcp.Compute.Route("route-ilb", new()
+    ///     {
+    ///         Name = "route-ilb",
+    ///         DestRange = "0.0.0.0/0",
+    ///         Network = @default.Name,
+    ///         NextHopIlb = defaultForwardingRule.Id,
+    ///         Priority = 2000,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Route Ilb Vip
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var producer = new Gcp.Compute.Network("producer", new()
+    ///     {
+    ///         Name = "producer-vpc",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var producerSubnetwork = new Gcp.Compute.Subnetwork("producer", new()
+    ///     {
+    ///         Name = "producer-subnet",
+    ///         IpCidrRange = "10.0.1.0/24",
+    ///         Region = "us-central1",
+    ///         Network = producer.Id,
+    ///     });
+    /// 
+    ///     var consumer = new Gcp.Compute.Network("consumer", new()
+    ///     {
+    ///         Name = "consumer-vpc",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var consumerSubnetwork = new Gcp.Compute.Subnetwork("consumer", new()
+    ///     {
+    ///         Name = "consumer-subnet",
+    ///         IpCidrRange = "10.0.2.0/24",
+    ///         Region = "us-central1",
+    ///         Network = consumer.Id,
+    ///     });
+    /// 
+    ///     var peering1 = new Gcp.Compute.NetworkPeering("peering1", new()
+    ///     {
+    ///         Name = "peering-producer-to-consumer",
+    ///         Network = consumer.Id,
+    ///         PeerNetwork = producer.Id,
+    ///     });
+    /// 
+    ///     var peering2 = new Gcp.Compute.NetworkPeering("peering2", new()
+    ///     {
+    ///         Name = "peering-consumer-to-producer",
+    ///         Network = producer.Id,
+    ///         PeerNetwork = consumer.Id,
+    ///     });
+    /// 
+    ///     var hc = new Gcp.Compute.HealthCheck("hc", new()
+    ///     {
+    ///         Name = "proxy-health-check",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var backend = new Gcp.Compute.RegionBackendService("backend", new()
+    ///     {
+    ///         Name = "compute-backend",
+    ///         Region = "us-central1",
+    ///         HealthChecks = hc.Id,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.ForwardingRule("default", new()
+    ///     {
+    ///         Name = "compute-forwarding-rule",
+    ///         Region = "us-central1",
+    ///         LoadBalancingScheme = "INTERNAL",
+    ///         BackendService = backend.Id,
+    ///         AllPorts = true,
+    ///         Network = producer.Name,
+    ///         Subnetwork = producerSubnetwork.Name,
+    ///     });
+    /// 
+    ///     var route_ilb = new Gcp.Compute.Route("route-ilb", new()
+    ///     {
+    ///         Name = "route-ilb",
+    ///         DestRange = "0.0.0.0/0",
+    ///         Network = consumer.Name,
+    ///         NextHopIlb = @default.IpAddress,
+    ///         Priority = 2000,
+    ///         Tags = new[]
+    ///         {
+    ///             "tag1",
+    ///             "tag2",
+    ///         },
     ///     });
     /// 
     /// });

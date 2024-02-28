@@ -28,7 +28,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.RegionSecurityPolicy;
  * import com.pulumi.gcp.compute.RegionSecurityPolicyArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -43,11 +42,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var region_sec_policy_basic = new RegionSecurityPolicy(&#34;region-sec-policy-basic&#34;, RegionSecurityPolicyArgs.builder()        
+ *             .name(&#34;my-sec-policy-basic&#34;)
  *             .description(&#34;basic region security policy&#34;)
  *             .type(&#34;CLOUD_ARMOR&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -62,7 +60,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionSecurityPolicy;
  * import com.pulumi.gcp.compute.RegionSecurityPolicyArgs;
  * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyDdosProtectionConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -77,14 +74,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var region_sec_policy_ddos_protection = new RegionSecurityPolicy(&#34;region-sec-policy-ddos-protection&#34;, RegionSecurityPolicyArgs.builder()        
+ *             .name(&#34;my-sec-policy-ddos-protection&#34;)
  *             .description(&#34;with ddos protection config&#34;)
  *             .type(&#34;CLOUD_ARMOR_NETWORK&#34;)
  *             .ddosProtectionConfig(RegionSecurityPolicyDdosProtectionConfigArgs.builder()
  *                 .ddosProtection(&#34;ADVANCED_PREVIEW&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -99,7 +95,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionSecurityPolicy;
  * import com.pulumi.gcp.compute.RegionSecurityPolicyArgs;
  * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyUserDefinedFieldArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -114,6 +109,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var region_sec_policy_user_defined_fields = new RegionSecurityPolicy(&#34;region-sec-policy-user-defined-fields&#34;, RegionSecurityPolicyArgs.builder()        
+ *             .name(&#34;my-sec-policy-user-defined-fields&#34;)
  *             .description(&#34;with user defined fields&#34;)
  *             .type(&#34;CLOUD_ARMOR_NETWORK&#34;)
  *             .userDefinedFields(            
@@ -131,9 +127,7 @@ import javax.annotation.Nullable;
  *                     .size(4)
  *                     .mask(&#34;0xFFFFFFFF&#34;)
  *                     .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

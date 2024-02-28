@@ -69,12 +69,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Authority(&#34;default&#34;, AuthorityArgs.builder()        
+ *             .pool(&#34;ca-pool&#34;)
  *             .certificateAuthorityId(&#34;my-certificate-authority&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .deletionProtection(&#34;true&#34;)
  *             .config(AuthorityConfigArgs.builder()
  *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
  *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
- *                         .commonName(&#34;my-certificate-authority&#34;)
  *                         .organization(&#34;HashiCorp&#34;)
+ *                         .commonName(&#34;my-certificate-authority&#34;)
  *                         .build())
  *                     .subjectAltName(AuthorityConfigSubjectConfigSubjectAltNameArgs.builder()
  *                         .dnsNames(&#34;hashicorp.com&#34;)
@@ -87,32 +90,29 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .keyUsage(AuthorityConfigX509ConfigKeyUsageArgs.builder()
  *                         .baseKeyUsage(AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs.builder()
- *                             .certSign(true)
- *                             .contentCommitment(true)
- *                             .crlSign(true)
- *                             .dataEncipherment(true)
- *                             .decipherOnly(true)
  *                             .digitalSignature(true)
- *                             .keyAgreement(true)
+ *                             .contentCommitment(true)
  *                             .keyEncipherment(false)
+ *                             .dataEncipherment(true)
+ *                             .keyAgreement(true)
+ *                             .certSign(true)
+ *                             .crlSign(true)
+ *                             .decipherOnly(true)
  *                             .build())
  *                         .extendedKeyUsage(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs.builder()
- *                             .clientAuth(false)
- *                             .codeSigning(true)
- *                             .emailProtection(true)
  *                             .serverAuth(true)
+ *                             .clientAuth(false)
+ *                             .emailProtection(true)
+ *                             .codeSigning(true)
  *                             .timeStamping(true)
  *                             .build())
  *                         .build())
  *                     .build())
  *                 .build())
- *             .deletionProtection(&#34;true&#34;)
+ *             .lifetime(&#34;86400s&#34;)
  *             .keySpec(AuthorityKeySpecArgs.builder()
  *                 .algorithm(&#34;RSA_PKCS1_4096_SHA256&#34;)
  *                 .build())
- *             .lifetime(&#34;86400s&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .pool(&#34;ca-pool&#34;)
  *             .build());
  * 
  *     }
@@ -265,7 +265,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigNameConstraintsArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -337,11 +336,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
- *                     privatecaSaKeyuserSignerverifier,
- *                     privatecaSaKeyuserViewer)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

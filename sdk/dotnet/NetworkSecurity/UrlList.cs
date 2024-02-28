@@ -31,6 +31,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// {
     ///     var @default = new Gcp.NetworkSecurity.UrlList("default", new()
     ///     {
+    ///         Name = "my-url-lists",
     ///         Location = "us-central1",
     ///         Values = new[]
     ///         {
@@ -52,8 +53,9 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// {
     ///     var @default = new Gcp.NetworkSecurity.UrlList("default", new()
     ///     {
-    ///         Description = "my description",
+    ///         Name = "my-url-lists",
     ///         Location = "us-central1",
+    ///         Description = "my description",
     ///         Values = new[]
     ///         {
     ///             "www.example.com",

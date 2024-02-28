@@ -51,8 +51,8 @@ namespace Pulumi.Gcp.Dns
     /// 
     ///     var policy = new Gcp.Dns.DnsManagedZoneIamPolicy("policy", new()
     ///     {
-    ///         Project = google_dns_managed_zone.Default.Project,
-    ///         ManagedZone = google_dns_managed_zone.Default.Name,
+    ///         Project = @default.Project,
+    ///         ManagedZone = @default.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -71,8 +71,8 @@ namespace Pulumi.Gcp.Dns
     /// {
     ///     var binding = new Gcp.Dns.DnsManagedZoneIamBinding("binding", new()
     ///     {
-    ///         Project = google_dns_managed_zone.Default.Project,
-    ///         ManagedZone = google_dns_managed_zone.Default.Name,
+    ///         Project = @default.Project,
+    ///         ManagedZone = @default.Name,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -95,8 +95,8 @@ namespace Pulumi.Gcp.Dns
     /// {
     ///     var member = new Gcp.Dns.DnsManagedZoneIamMember("member", new()
     ///     {
-    ///         Project = google_dns_managed_zone.Default.Project,
-    ///         ManagedZone = google_dns_managed_zone.Default.Name,
+    ///         Project = @default.Project,
+    ///         ManagedZone = @default.Name,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

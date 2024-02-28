@@ -287,6 +287,7 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         neg = gcp.compute.GlobalNetworkEndpointGroup("neg",
+            name="my-lb-neg",
             default_port=90,
             network_endpoint_type="INTERNET_FQDN_PORT")
         ```
@@ -297,8 +298,9 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         neg = gcp.compute.GlobalNetworkEndpointGroup("neg",
-            default_port=90,
-            network_endpoint_type="INTERNET_IP_PORT")
+            name="my-lb-neg",
+            network_endpoint_type="INTERNET_IP_PORT",
+            default_port=90)
         ```
 
         ## Import
@@ -374,6 +376,7 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         neg = gcp.compute.GlobalNetworkEndpointGroup("neg",
+            name="my-lb-neg",
             default_port=90,
             network_endpoint_type="INTERNET_FQDN_PORT")
         ```
@@ -384,8 +387,9 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         neg = gcp.compute.GlobalNetworkEndpointGroup("neg",
-            default_port=90,
-            network_endpoint_type="INTERNET_IP_PORT")
+            name="my-lb-neg",
+            network_endpoint_type="INTERNET_IP_PORT",
+            default_port=90)
         ```
 
         ## Import

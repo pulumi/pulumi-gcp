@@ -23,10 +23,11 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "dialogflowcx-bucket",
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  * });
- * const fullAgent = new gcp.diagflow.CxAgent("fullAgent", {
+ * const fullAgent = new gcp.diagflow.CxAgent("full_agent", {
  *     displayName: "dialogflowcx-agent",
  *     location: "global",
  *     defaultLanguageCode: "en",

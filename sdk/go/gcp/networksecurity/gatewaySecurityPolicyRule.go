@@ -34,16 +34,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultGatewaySecurityPolicy, err := networksecurity.NewGatewaySecurityPolicy(ctx, "defaultGatewaySecurityPolicy", &networksecurity.GatewaySecurityPolicyArgs{
+//			_, err := networksecurity.NewGatewaySecurityPolicy(ctx, "default", &networksecurity.GatewaySecurityPolicyArgs{
+//				Name:        pulumi.String("my-gateway-security-policy"),
 //				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("gateway security policy created to be used as reference by the rule."),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networksecurity.NewGatewaySecurityPolicyRule(ctx, "defaultGatewaySecurityPolicyRule", &networksecurity.GatewaySecurityPolicyRuleArgs{
+//			_, err = networksecurity.NewGatewaySecurityPolicyRule(ctx, "default", &networksecurity.GatewaySecurityPolicyRuleArgs{
+//				Name:                  pulumi.String("my-gateway-security-policy-rule"),
 //				Location:              pulumi.String("us-central1"),
-//				GatewaySecurityPolicy: defaultGatewaySecurityPolicy.Name,
+//				GatewaySecurityPolicy: _default.Name,
 //				Enabled:               pulumi.Bool(true),
 //				Description:           pulumi.String("my description"),
 //				Priority:              pulumi.Int(0),
@@ -72,16 +74,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultGatewaySecurityPolicy, err := networksecurity.NewGatewaySecurityPolicy(ctx, "defaultGatewaySecurityPolicy", &networksecurity.GatewaySecurityPolicyArgs{
+//			_, err := networksecurity.NewGatewaySecurityPolicy(ctx, "default", &networksecurity.GatewaySecurityPolicyArgs{
+//				Name:        pulumi.String("my-gateway-security-policy"),
 //				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("gateway security policy created to be used as reference by the rule."),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networksecurity.NewGatewaySecurityPolicyRule(ctx, "defaultGatewaySecurityPolicyRule", &networksecurity.GatewaySecurityPolicyRuleArgs{
+//			_, err = networksecurity.NewGatewaySecurityPolicyRule(ctx, "default", &networksecurity.GatewaySecurityPolicyRuleArgs{
+//				Name:                  pulumi.String("my-gateway-security-policy-rule"),
 //				Location:              pulumi.String("us-central1"),
-//				GatewaySecurityPolicy: defaultGatewaySecurityPolicy.Name,
+//				GatewaySecurityPolicy: _default.Name,
 //				Enabled:               pulumi.Bool(true),
 //				Description:           pulumi.String("my description"),
 //				Priority:              pulumi.Int(0),

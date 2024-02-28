@@ -30,15 +30,20 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var topic = new Gcp.PubSub.Topic("topic");
+    ///     var topic = new Gcp.PubSub.Topic("topic", new()
+    ///     {
+    ///         Name = "fhir-notifications",
+    ///     });
     /// 
     ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
     ///     {
+    ///         Name = "example-dataset",
     ///         Location = "us-central1",
     ///     });
     /// 
     ///     var @default = new Gcp.Healthcare.FhirStore("default", new()
     ///     {
+    ///         Name = "example-fhir-store",
     ///         Dataset = dataset.Id,
     ///         Version = "R4",
     ///         ComplexDataTypeReferenceParsing = "DISABLED",
@@ -71,10 +76,11 @@ namespace Pulumi.Gcp.Healthcare
     /// {
     ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
     ///     {
+    ///         Name = "example-dataset",
     ///         Location = "us-central1",
     ///     });
     /// 
-    ///     var bqDataset = new Gcp.BigQuery.Dataset("bqDataset", new()
+    ///     var bqDataset = new Gcp.BigQuery.Dataset("bq_dataset", new()
     ///     {
     ///         DatasetId = "bq_example_dataset",
     ///         FriendlyName = "test",
@@ -85,6 +91,7 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     ///     var @default = new Gcp.Healthcare.FhirStore("default", new()
     ///     {
+    ///         Name = "example-fhir-store",
     ///         Dataset = dataset.Id,
     ///         Version = "R4",
     ///         EnableUpdateCreate = false,
@@ -125,7 +132,10 @@ namespace Pulumi.Gcp.Healthcare
     ///         },
     ///     });
     /// 
-    ///     var topic = new Gcp.PubSub.Topic("topic");
+    ///     var topic = new Gcp.PubSub.Topic("topic", new()
+    ///     {
+    ///         Name = "fhir-notifications",
+    ///     });
     /// 
     /// });
     /// ```
@@ -139,15 +149,20 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var topic = new Gcp.PubSub.Topic("topic");
+    ///     var topic = new Gcp.PubSub.Topic("topic", new()
+    ///     {
+    ///         Name = "fhir-notifications",
+    ///     });
     /// 
     ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
     ///     {
+    ///         Name = "example-dataset",
     ///         Location = "us-central1",
     ///     });
     /// 
     ///     var @default = new Gcp.Healthcare.FhirStore("default", new()
     ///     {
+    ///         Name = "example-fhir-store",
     ///         Dataset = dataset.Id,
     ///         Version = "R4",
     ///         EnableUpdateCreate = false,
@@ -178,21 +193,18 @@ namespace Pulumi.Gcp.Healthcare
     /// {
     ///     var topic = new Gcp.PubSub.Topic("topic", new()
     ///     {
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Name = "fhir-notifications",
     ///     });
     /// 
     ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
     ///     {
+    ///         Name = "example-dataset",
     ///         Location = "us-central1",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var @default = new Gcp.Healthcare.FhirStore("default", new()
     ///     {
+    ///         Name = "example-fhir-store",
     ///         Dataset = dataset.Id,
     ///         Version = "R4",
     ///         EnableUpdateCreate = false,
@@ -213,9 +225,6 @@ namespace Pulumi.Gcp.Healthcare
     ///                 SendPreviousResourceOnDelete = true,
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

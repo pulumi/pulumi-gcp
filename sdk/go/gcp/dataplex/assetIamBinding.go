@@ -55,11 +55,11 @@ import (
 //				return err
 //			}
 //			_, err = dataplex.NewAssetIamPolicy(ctx, "policy", &dataplex.AssetIamPolicyArgs{
-//				Project:      pulumi.Any(google_dataplex_asset.Example.Project),
-//				Location:     pulumi.Any(google_dataplex_asset.Example.Location),
-//				Lake:         pulumi.Any(google_dataplex_asset.Example.Lake),
-//				DataplexZone: pulumi.Any(google_dataplex_asset.Example.Dataplex_zone),
-//				Asset:        pulumi.Any(google_dataplex_asset.Example.Name),
+//				Project:      pulumi.Any(example.Project),
+//				Location:     pulumi.Any(example.Location),
+//				Lake:         pulumi.Any(example.Lake),
+//				DataplexZone: pulumi.Any(example.DataplexZone),
+//				Asset:        pulumi.Any(example.Name),
 //				PolicyData:   *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -86,11 +86,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataplex.NewAssetIamBinding(ctx, "binding", &dataplex.AssetIamBindingArgs{
-//				Project:      pulumi.Any(google_dataplex_asset.Example.Project),
-//				Location:     pulumi.Any(google_dataplex_asset.Example.Location),
-//				Lake:         pulumi.Any(google_dataplex_asset.Example.Lake),
-//				DataplexZone: pulumi.Any(google_dataplex_asset.Example.Dataplex_zone),
-//				Asset:        pulumi.Any(google_dataplex_asset.Example.Name),
+//				Project:      pulumi.Any(example.Project),
+//				Location:     pulumi.Any(example.Location),
+//				Lake:         pulumi.Any(example.Lake),
+//				DataplexZone: pulumi.Any(example.DataplexZone),
+//				Asset:        pulumi.Any(example.Name),
 //				Role:         pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -120,11 +120,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataplex.NewAssetIamMember(ctx, "member", &dataplex.AssetIamMemberArgs{
-//				Project:      pulumi.Any(google_dataplex_asset.Example.Project),
-//				Location:     pulumi.Any(google_dataplex_asset.Example.Location),
-//				Lake:         pulumi.Any(google_dataplex_asset.Example.Lake),
-//				DataplexZone: pulumi.Any(google_dataplex_asset.Example.Dataplex_zone),
-//				Asset:        pulumi.Any(google_dataplex_asset.Example.Name),
+//				Project:      pulumi.Any(example.Project),
+//				Location:     pulumi.Any(example.Location),
+//				Lake:         pulumi.Any(example.Lake),
+//				DataplexZone: pulumi.Any(example.DataplexZone),
+//				Asset:        pulumi.Any(example.Name),
 //				Role:         pulumi.String("roles/viewer"),
 //				Member:       pulumi.String("user:jane@example.com"),
 //			})

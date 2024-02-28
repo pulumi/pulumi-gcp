@@ -23,16 +23,16 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const bbs_config = new gcp.cloudbuild.BitbucketServerConfig("bbs-config", {
- *     apiKey: "<api-key>",
  *     configId: "bbs-config",
- *     hostUri: "https://bbs.com",
  *     location: "us-central1",
+ *     hostUri: "https://bbs.com",
  *     secrets: {
  *         adminAccessTokenVersionName: "projects/myProject/secrets/mybbspat/versions/1",
  *         readAccessTokenVersionName: "projects/myProject/secrets/mybbspat/versions/1",
  *         webhookSecretVersionName: "projects/myProject/secrets/mybbspat/versions/1",
  *     },
  *     username: "test",
+ *     apiKey: "<api-key>",
  * });
  * ```
  * ### Cloudbuild Bitbucket Server Config Repositories
@@ -42,8 +42,16 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const bbs_config_with_repos = new gcp.cloudbuild.BitbucketServerConfig("bbs-config-with-repos", {
- *     apiKey: "<api-key>",
  *     configId: "bbs-config",
+ *     location: "us-central1",
+ *     hostUri: "https://bbs.com",
+ *     secrets: {
+ *         adminAccessTokenVersionName: "projects/myProject/secrets/mybbspat/versions/1",
+ *         readAccessTokenVersionName: "projects/myProject/secrets/mybbspat/versions/1",
+ *         webhookSecretVersionName: "projects/myProject/secrets/mybbspat/versions/1",
+ *     },
+ *     username: "test",
+ *     apiKey: "<api-key>",
  *     connectedRepositories: [
  *         {
  *             projectKey: "DEV",
@@ -54,14 +62,54 @@ import * as utilities from "../utilities";
  *             repoSlug: "repo1",
  *         },
  *     ],
- *     hostUri: "https://bbs.com",
+ * });
+ * ```
+ * ### Cloudbuild Bitbucket Server Config Peered Network
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const servicenetworking = new gcp.projects.Service("servicenetworking", {
+ *     service: "servicenetworking.googleapis.com",
+ *     disableOnDestroy: false,
+ * });
+ * const vpcNetwork = new gcp.compute.Network("vpc_network", {name: "vpc-network"});
+ * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
+ *     name: "private-ip-alloc",
+ *     purpose: "VPC_PEERING",
+ *     addressType: "INTERNAL",
+ *     prefixLength: 16,
+ *     network: vpcNetwork.id,
+ * });
+ * const _default = new gcp.servicenetworking.Connection("default", {
+ *     network: vpcNetwork.id,
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [privateIpAlloc.name],
+ * });
+ * const bbs_config_with_peered_network = new gcp.cloudbuild.BitbucketServerConfig("bbs-config-with-peered-network", {
+ *     configId: "bbs-config",
  *     location: "us-central1",
+ *     hostUri: "https://bbs.com",
  *     secrets: {
  *         adminAccessTokenVersionName: "projects/myProject/secrets/mybbspat/versions/1",
  *         readAccessTokenVersionName: "projects/myProject/secrets/mybbspat/versions/1",
  *         webhookSecretVersionName: "projects/myProject/secrets/mybbspat/versions/1",
  *     },
  *     username: "test",
+ *     apiKey: "<api-key>",
+ *     peeredNetwork: pulumi.all([vpcNetwork.id, project, project]).apply(([id, project, project1]) => std.replaceOutput({
+ *         text: id,
+ *         search: project.name,
+ *         replace: project1.number,
+ *     })).apply(invoke => invoke.result),
+ *     sslCa: `-----BEGIN CERTIFICATE-----
+ * -----END CERTIFICATE-----
+ * -----BEGIN CERTIFICATE-----
+ * -----END CERTIFICATE-----
+ * `,
  * });
  * ```
  *

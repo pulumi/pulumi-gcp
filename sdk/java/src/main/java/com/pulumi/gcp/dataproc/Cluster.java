@@ -53,6 +53,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var simplecluster = new Cluster(&#34;simplecluster&#34;, ClusterArgs.builder()        
+ *             .name(&#34;simplecluster&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .build());
  * 
@@ -97,6 +98,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var mycluster = new Cluster(&#34;mycluster&#34;, ClusterArgs.builder()        
+ *             .name(&#34;mycluster&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .gracefulDecommissionTimeout(&#34;120s&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
@@ -169,18 +171,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var acceleratedCluster = new Cluster(&#34;acceleratedCluster&#34;, ClusterArgs.builder()        
+ *             .name(&#34;my-cluster-with-gpu&#34;)
+ *             .region(&#34;us-central1&#34;)
  *             .clusterConfig(ClusterClusterConfigArgs.builder()
  *                 .gceClusterConfig(ClusterClusterConfigGceClusterConfigArgs.builder()
  *                     .zone(&#34;us-central1-a&#34;)
  *                     .build())
  *                 .masterConfig(ClusterClusterConfigMasterConfigArgs.builder()
  *                     .accelerators(ClusterClusterConfigMasterConfigAcceleratorArgs.builder()
- *                         .acceleratorCount(&#34;1&#34;)
  *                         .acceleratorType(&#34;nvidia-tesla-k80&#34;)
+ *                         .acceleratorCount(&#34;1&#34;)
  *                         .build())
  *                     .build())
  *                 .build())
- *             .region(&#34;us-central1&#34;)
  *             .build());
  * 
  *     }

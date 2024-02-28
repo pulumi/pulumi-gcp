@@ -299,6 +299,72 @@ class Document(pulumi.CustomResource):
         is allowed for the database parameter.
 
         ## Example Usage
+        ### Firestore Document Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        project = gcp.organizations.Project("project",
+            project_id="project-id",
+            name="project-id",
+            org_id="123456789")
+        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s)
+        firestore = gcp.projects.Service("firestore",
+            project=project.project_id,
+            service="firestore.googleapis.com")
+        database = gcp.firestore.Database("database",
+            project=project.project_id,
+            name="(default)",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE")
+        mydoc = gcp.firestore.Document("mydoc",
+            project=project.project_id,
+            database=database.name,
+            collection="somenewcollection",
+            document_id="my-doc-id",
+            fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"akey\\":{\\"stringValue\\":\\"avalue\\"}}}}}")
+        ```
+        ### Firestore Document Nested Document
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        project = gcp.organizations.Project("project",
+            project_id="project-id",
+            name="project-id",
+            org_id="123456789")
+        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s)
+        firestore = gcp.projects.Service("firestore",
+            project=project.project_id,
+            service="firestore.googleapis.com")
+        database = gcp.firestore.Database("database",
+            project=project.project_id,
+            name="(default)",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE")
+        mydoc = gcp.firestore.Document("mydoc",
+            project=project.project_id,
+            database=database.name,
+            collection="somenewcollection",
+            document_id="my-doc-id",
+            fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"akey\\":{\\"stringValue\\":\\"avalue\\"}}}}}")
+        sub_document = gcp.firestore.Document("sub_document",
+            project=project.project_id,
+            database=database.name,
+            collection=mydoc.path.apply(lambda path: f"{path}/subdocs"),
+            document_id="bitcoinkey",
+            fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"ayo\\":{\\"stringValue\\":\\"val2\\"}}}}}")
+        sub_sub_document = gcp.firestore.Document("sub_sub_document",
+            project=project.project_id,
+            database=database.name,
+            collection=sub_document.path.apply(lambda path: f"{path}/subsubdocs"),
+            document_id="asecret",
+            fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"secret\\":{\\"stringValue\\":\\"hithere\\"}}}}}")
+        ```
 
         ## Import
 
@@ -352,6 +418,72 @@ class Document(pulumi.CustomResource):
         is allowed for the database parameter.
 
         ## Example Usage
+        ### Firestore Document Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        project = gcp.organizations.Project("project",
+            project_id="project-id",
+            name="project-id",
+            org_id="123456789")
+        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s)
+        firestore = gcp.projects.Service("firestore",
+            project=project.project_id,
+            service="firestore.googleapis.com")
+        database = gcp.firestore.Database("database",
+            project=project.project_id,
+            name="(default)",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE")
+        mydoc = gcp.firestore.Document("mydoc",
+            project=project.project_id,
+            database=database.name,
+            collection="somenewcollection",
+            document_id="my-doc-id",
+            fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"akey\\":{\\"stringValue\\":\\"avalue\\"}}}}}")
+        ```
+        ### Firestore Document Nested Document
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        project = gcp.organizations.Project("project",
+            project_id="project-id",
+            name="project-id",
+            org_id="123456789")
+        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s)
+        firestore = gcp.projects.Service("firestore",
+            project=project.project_id,
+            service="firestore.googleapis.com")
+        database = gcp.firestore.Database("database",
+            project=project.project_id,
+            name="(default)",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE")
+        mydoc = gcp.firestore.Document("mydoc",
+            project=project.project_id,
+            database=database.name,
+            collection="somenewcollection",
+            document_id="my-doc-id",
+            fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"akey\\":{\\"stringValue\\":\\"avalue\\"}}}}}")
+        sub_document = gcp.firestore.Document("sub_document",
+            project=project.project_id,
+            database=database.name,
+            collection=mydoc.path.apply(lambda path: f"{path}/subdocs"),
+            document_id="bitcoinkey",
+            fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"ayo\\":{\\"stringValue\\":\\"val2\\"}}}}}")
+        sub_sub_document = gcp.firestore.Document("sub_sub_document",
+            project=project.project_id,
+            database=database.name,
+            collection=sub_document.path.apply(lambda path: f"{path}/subsubdocs"),
+            document_id="asecret",
+            fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"secret\\":{\\"stringValue\\":\\"hithere\\"}}}}}")
+        ```
 
         ## Import
 

@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.BigQuery
         /// {
         ///     var policy = Gcp.BigQuery.GetConnectionIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_bigquery_connection.Connection.Project,
-        ///         Location = google_bigquery_connection.Connection.Location,
-        ///         ConnectionId = google_bigquery_connection.Connection.Connection_id,
+        ///         Project = connection.Project,
+        ///         Location = connection.Location,
+        ///         ConnectionId = connection.ConnectionId,
         ///     });
         /// 
         /// });
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.BigQuery
         /// {
         ///     var policy = Gcp.BigQuery.GetConnectionIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_bigquery_connection.Connection.Project,
-        ///         Location = google_bigquery_connection.Connection.Location,
-        ///         ConnectionId = google_bigquery_connection.Connection.Connection_id,
+        ///         Project = connection.Project,
+        ///         Location = connection.Location,
+        ///         ConnectionId = connection.ConnectionId,
         ///     });
         /// 
         /// });

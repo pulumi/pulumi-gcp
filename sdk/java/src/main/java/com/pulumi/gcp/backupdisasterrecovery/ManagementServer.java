@@ -35,7 +35,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.backupdisasterrecovery.ManagementServer;
  * import com.pulumi.gcp.backupdisasterrecovery.ManagementServerArgs;
  * import com.pulumi.gcp.backupdisasterrecovery.inputs.ManagementServerNetworkArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -49,38 +48,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.Empty, CustomResourceOptions.builder()
- *             .provider(google_beta)
+ *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+ *             .name(&#34;vpc-network&#34;)
  *             .build());
  * 
  *         var privateIpAddress = new GlobalAddress(&#34;privateIpAddress&#34;, GlobalAddressArgs.builder()        
+ *             .name(&#34;vpc-network&#34;)
  *             .addressType(&#34;INTERNAL&#34;)
  *             .purpose(&#34;VPC_PEERING&#34;)
  *             .prefixLength(20)
- *             .network(defaultNetwork.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .network(default_.id())
+ *             .build());
  * 
  *         var defaultConnection = new Connection(&#34;defaultConnection&#34;, ConnectionArgs.builder()        
- *             .network(defaultNetwork.id())
+ *             .network(default_.id())
  *             .service(&#34;servicenetworking.googleapis.com&#34;)
  *             .reservedPeeringRanges(privateIpAddress.name())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var ms_console = new ManagementServer(&#34;ms-console&#34;, ManagementServerArgs.builder()        
  *             .location(&#34;us-central1&#34;)
+ *             .name(&#34;ms-console&#34;)
  *             .type(&#34;BACKUP_RESTORE&#34;)
  *             .networks(ManagementServerNetworkArgs.builder()
- *                 .network(defaultNetwork.id())
+ *                 .network(default_.id())
  *                 .peeringMode(&#34;PRIVATE_SERVICE_ACCESS&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .dependsOn(defaultConnection)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

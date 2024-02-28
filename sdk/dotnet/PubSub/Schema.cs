@@ -32,6 +32,8 @@ namespace Pulumi.Gcp.PubSub
     /// {
     ///     var example = new Gcp.PubSub.Schema("example", new()
     ///     {
+    ///         Name = "example-schema",
+    ///         Type = "AVRO",
     ///         Definition = @"{
     ///   ""type"" : ""record"",
     ///   ""name"" : ""Avro"",
@@ -46,9 +48,7 @@ namespace Pulumi.Gcp.PubSub
     ///     }
     ///   ]
     /// }
-    /// 
     /// ",
-    ///         Type = "AVRO",
     ///     });
     /// 
     /// });
@@ -63,8 +63,9 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleSchema = new Gcp.PubSub.Schema("exampleSchema", new()
+    ///     var example = new Gcp.PubSub.Schema("example", new()
     ///     {
+    ///         Name = "example",
     ///         Type = "PROTOCOL_BUFFER",
     ///         Definition = @"syntax = ""proto3"";
     /// message Results {
@@ -75,18 +76,13 @@ namespace Pulumi.Gcp.PubSub
     /// }",
     ///     });
     /// 
-    ///     var exampleTopic = new Gcp.PubSub.Topic("exampleTopic", new()
+    ///     var exampleTopic = new Gcp.PubSub.Topic("example", new()
     ///     {
+    ///         Name = "example-topic",
     ///         SchemaSettings = new Gcp.PubSub.Inputs.TopicSchemaSettingsArgs
     ///         {
     ///             Schema = "projects/my-project-name/schemas/example",
     ///             Encoding = "JSON",
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             exampleSchema,
     ///         },
     ///     });
     /// 

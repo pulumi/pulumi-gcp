@@ -133,8 +133,8 @@ def get_network(location: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    my_nw = gcp.vmwareengine.get_network(location="us-central1",
-        name="us-central1-default")
+    my_nw = gcp.vmwareengine.get_network(name="us-central1-default",
+        location="us-central1")
     ```
 
 
@@ -180,8 +180,8 @@ def get_network_output(location: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    my_nw = gcp.vmwareengine.get_network(location="us-central1",
-        name="us-central1-default")
+    my_nw = gcp.vmwareengine.get_network(name="us-central1-default",
+        location="us-central1")
     ```
 
 

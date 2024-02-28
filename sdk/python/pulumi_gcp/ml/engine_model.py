@@ -389,6 +389,7 @@ class EngineModel(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.ml.EngineModel("default",
+            name="default",
             description="My model",
             regions="us-central1")
         ```
@@ -399,13 +400,14 @@ class EngineModel(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.ml.EngineModel("default",
+            name="default",
             description="My model",
+            regions="us-central1",
             labels={
                 "my_model": "foo",
             },
-            online_prediction_console_logging=True,
             online_prediction_logging=True,
-            regions="us-central1")
+            online_prediction_console_logging=True)
         ```
 
         ## Import
@@ -478,6 +480,7 @@ class EngineModel(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.ml.EngineModel("default",
+            name="default",
             description="My model",
             regions="us-central1")
         ```
@@ -488,13 +491,14 @@ class EngineModel(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.ml.EngineModel("default",
+            name="default",
             description="My model",
+            regions="us-central1",
             labels={
                 "my_model": "foo",
             },
-            online_prediction_console_logging=True,
             online_prediction_logging=True,
-            regions="us-central1")
+            online_prediction_console_logging=True)
         ```
 
         ## Import

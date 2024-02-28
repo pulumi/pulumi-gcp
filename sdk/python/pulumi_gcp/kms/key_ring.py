@@ -171,7 +171,9 @@ class KeyRing(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        example_keyring = gcp.kms.KeyRing("example-keyring", location="global")
+        example_keyring = gcp.kms.KeyRing("example-keyring",
+            name="keyring-example",
+            location="global")
         ```
 
         ## Import
@@ -235,7 +237,9 @@ class KeyRing(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        example_keyring = gcp.kms.KeyRing("example-keyring", location="global")
+        example_keyring = gcp.kms.KeyRing("example-keyring",
+            name="keyring-example",
+            location="global")
         ```
 
         ## Import

@@ -39,10 +39,10 @@ import (
 //			_, err := spanner.NewInstance(ctx, "example", &spanner.InstanceArgs{
 //				Config:      pulumi.String("regional-us-central1"),
 //				DisplayName: pulumi.String("Test Spanner Instance"),
+//				NumNodes:    pulumi.Int(2),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//				NumNodes: pulumi.Int(2),
 //			})
 //			if err != nil {
 //				return err
@@ -67,12 +67,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := spanner.NewInstance(ctx, "example", &spanner.InstanceArgs{
-//				Config:      pulumi.String("regional-us-central1"),
-//				DisplayName: pulumi.String("Test Spanner Instance"),
+//				Config:          pulumi.String("regional-us-central1"),
+//				DisplayName:     pulumi.String("Test Spanner Instance"),
+//				ProcessingUnits: pulumi.Int(200),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//				ProcessingUnits: pulumi.Int(200),
 //			})
 //			if err != nil {
 //				return err
@@ -97,6 +97,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := spanner.NewInstance(ctx, "example", &spanner.InstanceArgs{
+//				Config:      pulumi.String("regional-us-central1"),
+//				DisplayName: pulumi.String("Test Spanner Instance"),
 //				AutoscalingConfig: &spanner.InstanceAutoscalingConfigArgs{
 //					AutoscalingLimits: &spanner.InstanceAutoscalingConfigAutoscalingLimitsArgs{
 //						MaxProcessingUnits: pulumi.Int(3000),
@@ -107,8 +109,6 @@ import (
 //						StorageUtilizationPercent:         pulumi.Int(90),
 //					},
 //				},
-//				Config:      pulumi.String("regional-us-central1"),
-//				DisplayName: pulumi.String("Test Spanner Instance"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -138,10 +138,10 @@ import (
 //			_, err := spanner.NewInstance(ctx, "example", &spanner.InstanceArgs{
 //				Config:      pulumi.String("nam-eur-asia1"),
 //				DisplayName: pulumi.String("Multi Regional Instance"),
+//				NumNodes:    pulumi.Int(2),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//				NumNodes: pulumi.Int(2),
 //			})
 //			if err != nil {
 //				return err

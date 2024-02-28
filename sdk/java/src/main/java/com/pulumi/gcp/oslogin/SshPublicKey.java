@@ -51,7 +51,9 @@ import javax.annotation.Nullable;
  * 
  *         var cache = new SshPublicKey(&#34;cache&#34;, SshPublicKeyArgs.builder()        
  *             .user(me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()))
- *             .key(Files.readString(Paths.get(&#34;path/to/id_rsa.pub&#34;)))
+ *             .key(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;path/to/id_rsa.pub&#34;)
+ *                 .build()).result())
  *             .build());
  * 
  *     }

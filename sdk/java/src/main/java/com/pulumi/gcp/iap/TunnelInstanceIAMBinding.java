@@ -65,9 +65,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new TunnelInstanceIAMPolicy(&#34;policy&#34;, TunnelInstanceIAMPolicyArgs.builder()        
- *             .project(google_compute_instance.tunnelvm().project())
- *             .zone(google_compute_instance.tunnelvm().zone())
- *             .instance(google_compute_instance.tunnelvm().name())
+ *             .project(tunnelvm.project())
+ *             .zone(tunnelvm.zone())
+ *             .instance(tunnelvm.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -112,9 +112,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new TunnelInstanceIAMPolicy(&#34;policy&#34;, TunnelInstanceIAMPolicyArgs.builder()        
- *             .project(google_compute_instance.tunnelvm().project())
- *             .zone(google_compute_instance.tunnelvm().zone())
- *             .instance(google_compute_instance.tunnelvm().name())
+ *             .project(tunnelvm.project())
+ *             .zone(tunnelvm.zone())
+ *             .instance(tunnelvm.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -144,9 +144,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new TunnelInstanceIAMBinding(&#34;binding&#34;, TunnelInstanceIAMBindingArgs.builder()        
- *             .project(google_compute_instance.tunnelvm().project())
- *             .zone(google_compute_instance.tunnelvm().zone())
- *             .instance(google_compute_instance.tunnelvm().name())
+ *             .project(tunnelvm.project())
+ *             .zone(tunnelvm.zone())
+ *             .instance(tunnelvm.name())
  *             .role(&#34;roles/iap.tunnelResourceAccessor&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -179,9 +179,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var binding = new TunnelInstanceIAMBinding(&#34;binding&#34;, TunnelInstanceIAMBindingArgs.builder()        
- *             .project(google_compute_instance.tunnelvm().project())
- *             .zone(google_compute_instance.tunnelvm().zone())
- *             .instance(google_compute_instance.tunnelvm().name())
+ *             .project(tunnelvm.project())
+ *             .zone(tunnelvm.zone())
+ *             .instance(tunnelvm.name())
  *             .role(&#34;roles/iap.tunnelResourceAccessor&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .condition(TunnelInstanceIAMBindingConditionArgs.builder()
@@ -217,9 +217,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new TunnelInstanceIAMMember(&#34;member&#34;, TunnelInstanceIAMMemberArgs.builder()        
- *             .project(google_compute_instance.tunnelvm().project())
- *             .zone(google_compute_instance.tunnelvm().zone())
- *             .instance(google_compute_instance.tunnelvm().name())
+ *             .project(tunnelvm.project())
+ *             .zone(tunnelvm.zone())
+ *             .instance(tunnelvm.name())
  *             .role(&#34;roles/iap.tunnelResourceAccessor&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());
@@ -252,9 +252,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var member = new TunnelInstanceIAMMember(&#34;member&#34;, TunnelInstanceIAMMemberArgs.builder()        
- *             .project(google_compute_instance.tunnelvm().project())
- *             .zone(google_compute_instance.tunnelvm().zone())
- *             .instance(google_compute_instance.tunnelvm().name())
+ *             .project(tunnelvm.project())
+ *             .zone(tunnelvm.zone())
+ *             .instance(tunnelvm.name())
  *             .role(&#34;roles/iap.tunnelResourceAccessor&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .condition(TunnelInstanceIAMMemberConditionArgs.builder()

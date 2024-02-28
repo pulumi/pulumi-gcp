@@ -31,6 +31,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var advertised = new Gcp.Compute.PublicAdvertisedPrefix("advertised", new()
     ///     {
+    ///         Name = "my-prefix",
     ///         Description = "description",
     ///         DnsVerificationIp = "127.127.0.0",
     ///         IpCidrRange = "127.127.0.0/16",
@@ -38,6 +39,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var prefixes = new Gcp.Compute.PublicDelegatedPrefix("prefixes", new()
     ///     {
+    ///         Name = "my-prefix",
     ///         Region = "us-central1",
     ///         Description = "my description",
     ///         IpCidrRange = "127.127.0.0/24",

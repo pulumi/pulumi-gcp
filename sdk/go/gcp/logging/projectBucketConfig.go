@@ -18,6 +18,202 @@ import (
 //
 // > **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/logging"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewProject(ctx, "default", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("your-project-id"),
+//				Name:      pulumi.String("your-project-id"),
+//				OrgId:     pulumi.String("123456789"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = logging.NewProjectBucketConfig(ctx, "basic", &logging.ProjectBucketConfigArgs{
+//				Project:       _default.ProjectId,
+//				Location:      pulumi.String("global"),
+//				RetentionDays: pulumi.Int(30),
+//				BucketId:      pulumi.String("_Default"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # Create logging bucket with customId
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/logging"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := logging.NewProjectBucketConfig(ctx, "basic", &logging.ProjectBucketConfigArgs{
+//				Project:       pulumi.String("project_id"),
+//				Location:      pulumi.String("global"),
+//				RetentionDays: pulumi.Int(30),
+//				BucketId:      pulumi.String("custom-bucket"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # Create logging bucket with Log Analytics enabled
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/logging"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := logging.NewProjectBucketConfig(ctx, "analytics-enabled-bucket", &logging.ProjectBucketConfigArgs{
+//				Project:         pulumi.String("project_id"),
+//				Location:        pulumi.String("global"),
+//				RetentionDays:   pulumi.Int(30),
+//				EnableAnalytics: pulumi.Bool(true),
+//				BucketId:        pulumi.String("custom-bucket"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # Create logging bucket with customId and cmekSettings
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/logging"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cmekSettings, err := logging.GetProjectCmekSettings(ctx, &logging.GetProjectCmekSettingsArgs{
+//				Project: "project_id",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("keyring-example"),
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			key, err := kms.NewCryptoKey(ctx, "key", &kms.CryptoKeyArgs{
+//				Name:           pulumi.String("crypto-key-example"),
+//				KeyRing:        keyring.ID(),
+//				RotationPeriod: pulumi.String("7776000s"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kms.NewCryptoKeyIAMBinding(ctx, "crypto_key_binding", &kms.CryptoKeyIAMBindingArgs{
+//				CryptoKeyId: key.ID(),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Members: pulumi.StringArray{
+//					pulumi.String(fmt.Sprintf("serviceAccount:%v", cmekSettings.ServiceAccountId)),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = logging.NewProjectBucketConfig(ctx, "example-project-bucket-cmek-settings", &logging.ProjectBucketConfigArgs{
+//				Project:       pulumi.String("project_id"),
+//				Location:      pulumi.String("us-central1"),
+//				RetentionDays: pulumi.Int(30),
+//				BucketId:      pulumi.String("custom-bucket"),
+//				CmekSettings: &logging.ProjectBucketConfigCmekSettingsArgs{
+//					KmsKeyName: key.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # Create logging bucket with index configs
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/logging"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := logging.NewProjectBucketConfig(ctx, "example-project-bucket-index-configs", &logging.ProjectBucketConfigArgs{
+//				Project:       pulumi.String("project_id"),
+//				Location:      pulumi.String("global"),
+//				RetentionDays: pulumi.Int(30),
+//				BucketId:      pulumi.String("custom-bucket"),
+//				IndexConfigs: logging.ProjectBucketConfigIndexConfigArray{
+//					FilePath: "jsonPayload.request.status",
+//					Type:     "INDEX_TYPE_STRING",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // This resource can be imported using the following format:

@@ -30,13 +30,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foobarNetwork, err := compute.NewNetwork(ctx, "foobarNetwork", &compute.NetworkArgs{
+//			foobarNetwork, err := compute.NewNetwork(ctx, "foobar", &compute.NetworkArgs{
+//				Name:                  pulumi.String("network-1"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			foobarRouter, err := compute.NewRouter(ctx, "foobarRouter", &compute.RouterArgs{
+//			foobar, err := compute.NewRouter(ctx, "foobar", &compute.RouterArgs{
+//				Name:    pulumi.String("router-1"),
 //				Network: foobarNetwork.Name,
 //				Bgp: &compute.RouterBgpArgs{
 //					Asn: pulumi.Int(16550),
@@ -45,10 +47,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewInterconnectAttachment(ctx, "onPrem", &compute.InterconnectAttachmentArgs{
+//			_, err = compute.NewInterconnectAttachment(ctx, "on_prem", &compute.InterconnectAttachmentArgs{
+//				Name:                   pulumi.String("on-prem-attachment"),
 //				EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
 //				Type:                   pulumi.String("PARTNER"),
-//				Router:                 foobarRouter.ID(),
+//				Router:                 foobar.ID(),
 //				Mtu:                    pulumi.String("1500"),
 //			})
 //			if err != nil {
@@ -74,12 +77,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("test-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			address, err := compute.NewAddress(ctx, "address", &compute.AddressArgs{
+//				Name:         pulumi.String("test-address"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				Purpose:      pulumi.String("IPSEC_INTERCONNECT"),
 //				Address:      pulumi.String("192.168.1.0"),
@@ -90,6 +95,7 @@ import (
 //				return err
 //			}
 //			router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
+//				Name:                        pulumi.String("test-router"),
 //				Network:                     network.Name,
 //				EncryptedInterconnectRouter: pulumi.Bool(true),
 //				Bgp: &compute.RouterBgpArgs{
@@ -100,6 +106,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewInterconnectAttachment(ctx, "ipsec-encrypted-interconnect-attachment", &compute.InterconnectAttachmentArgs{
+//				Name:                   pulumi.String("test-interconnect-attachment"),
 //				EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
 //				Type:                   pulumi.String("PARTNER"),
 //				Router:                 router.ID(),

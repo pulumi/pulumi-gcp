@@ -574,7 +574,7 @@ class GlobalAddress(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.GlobalAddress("default")
+        default = gcp.compute.GlobalAddress("default", name="global-appserver-ip")
         ```
         ### Global Address Private Services Connect
 
@@ -582,14 +582,15 @@ class GlobalAddress(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network = gcp.compute.Network("network", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        network = gcp.compute.Network("network",
+            name="my-network-name",
+            auto_create_subnetworks=False)
         default = gcp.compute.GlobalAddress("default",
+            name="global-psconnect-ip",
             address_type="INTERNAL",
             purpose="PRIVATE_SERVICE_CONNECT",
             network=network.id,
-            address="100.100.100.105",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            address="100.100.100.105")
         ```
 
         ## Import
@@ -680,7 +681,7 @@ class GlobalAddress(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.GlobalAddress("default")
+        default = gcp.compute.GlobalAddress("default", name="global-appserver-ip")
         ```
         ### Global Address Private Services Connect
 
@@ -688,14 +689,15 @@ class GlobalAddress(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network = gcp.compute.Network("network", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        network = gcp.compute.Network("network",
+            name="my-network-name",
+            auto_create_subnetworks=False)
         default = gcp.compute.GlobalAddress("default",
+            name="global-psconnect-ip",
             address_type="INTERNAL",
             purpose="PRIVATE_SERVICE_CONNECT",
             network=network.id,
-            address="100.100.100.105",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            address="100.100.100.105")
         ```
 
         ## Import

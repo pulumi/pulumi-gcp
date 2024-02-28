@@ -16,7 +16,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const instance = new gcp.workbench.Instance("instance", {location: "us-west1-a"});
+ * const instance = new gcp.workbench.Instance("instance", {
+ *     name: "workbench-instance",
+ *     location: "us-west1-a",
+ * });
  * ```
  * ### Workbench Instance Basic Gpu
  *
@@ -25,18 +28,19 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.workbench.Instance("instance", {
+ *     name: "workbench-instance",
+ *     location: "us-central1-a",
  *     gceSetup: {
- *         acceleratorConfigs: [{
- *             coreCount: "1",
- *             type: "NVIDIA_TESLA_T4",
- *         }],
  *         machineType: "n1-standard-1",
+ *         acceleratorConfigs: [{
+ *             type: "NVIDIA_TESLA_T4",
+ *             coreCount: "1",
+ *         }],
  *         vmImage: {
- *             family: "tf-latest-gpu",
  *             project: "deeplearning-platform-release",
+ *             family: "tf-latest-gpu",
  *         },
  *     },
- *     location: "us-central1-a",
  * });
  * ```
  * ### Workbench Instance Labels Stopped
@@ -46,21 +50,22 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.workbench.Instance("instance", {
- *     desiredState: "STOPPED",
+ *     name: "workbench-instance",
+ *     location: "us-central1-a",
  *     gceSetup: {
  *         machineType: "e2-standard-4",
- *         metadata: {
- *             terraform: "true",
- *         },
  *         serviceAccounts: [{
  *             email: "my@service-account.com",
  *         }],
+ *         metadata: {
+ *             terraform: "true",
+ *         },
  *     },
  *     instanceOwners: ["my@service-account.com"],
  *     labels: {
  *         k: "val",
  *     },
- *     location: "us-central1-a",
+ *     desiredState: "STOPPED",
  * });
  * ```
  * ### Workbench Instance Full
@@ -69,13 +74,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myNetwork = new gcp.compute.Network("myNetwork", {autoCreateSubnetworks: false});
- * const mySubnetwork = new gcp.compute.Subnetwork("mySubnetwork", {
+ * const myNetwork = new gcp.compute.Network("my_network", {
+ *     name: "wbi-test-default",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const mySubnetwork = new gcp.compute.Subnetwork("my_subnetwork", {
+ *     name: "wbi-test-default",
  *     network: myNetwork.id,
  *     region: "us-central1",
  *     ipCidrRange: "10.0.1.0/24",
  * });
  * const instance = new gcp.workbench.Instance("instance", {
+ *     name: "workbench-instance",
  *     location: "us-central1-a",
  *     gceSetup: {
  *         machineType: "n1-standard-4",

@@ -35,6 +35,7 @@ namespace Pulumi.Gcp.Kms
     /// {
     ///     var example_keyring = new Gcp.Kms.KeyRing("example-keyring", new()
     ///     {
+    ///         Name = "keyring-example",
     ///         Location = "global",
     ///     });
     /// 

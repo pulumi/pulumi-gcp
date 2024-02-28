@@ -469,13 +469,13 @@ class Subnet(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        example_network = gcp.edgenetwork.Network("exampleNetwork",
+        example_network = gcp.edgenetwork.Network("example_network",
             network_id="example-network",
             location="us-west1",
             zone="",
             description="Example network.",
             mtu=9000)
-        example_subnet = gcp.edgenetwork.Subnet("exampleSubnet",
+        example_subnet = gcp.edgenetwork.Subnet("example_subnet",
             subnet_id="example-subnet",
             location="us-west1",
             zone="",
@@ -492,13 +492,13 @@ class Subnet(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        example_network = gcp.edgenetwork.Network("exampleNetwork",
+        example_network = gcp.edgenetwork.Network("example_network",
             network_id="example-network",
             location="us-west1",
             zone="",
             description="Example network.",
             mtu=9000)
-        example_subnet_with_vlan_id = gcp.edgenetwork.Subnet("exampleSubnetWithVlanId",
+        example_subnet_with_vlan_id = gcp.edgenetwork.Subnet("example_subnet_with_vlan_id",
             subnet_id="example-subnet-with-vlan-id",
             location="us-west1",
             zone="",
@@ -587,13 +587,13 @@ class Subnet(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        example_network = gcp.edgenetwork.Network("exampleNetwork",
+        example_network = gcp.edgenetwork.Network("example_network",
             network_id="example-network",
             location="us-west1",
             zone="",
             description="Example network.",
             mtu=9000)
-        example_subnet = gcp.edgenetwork.Subnet("exampleSubnet",
+        example_subnet = gcp.edgenetwork.Subnet("example_subnet",
             subnet_id="example-subnet",
             location="us-west1",
             zone="",
@@ -610,13 +610,13 @@ class Subnet(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        example_network = gcp.edgenetwork.Network("exampleNetwork",
+        example_network = gcp.edgenetwork.Network("example_network",
             network_id="example-network",
             location="us-west1",
             zone="",
             description="Example network.",
             mtu=9000)
-        example_subnet_with_vlan_id = gcp.edgenetwork.Subnet("exampleSubnetWithVlanId",
+        example_subnet_with_vlan_id = gcp.edgenetwork.Subnet("example_subnet_with_vlan_id",
             subnet_id="example-subnet-with-vlan-id",
             location="us-west1",
             zone="",

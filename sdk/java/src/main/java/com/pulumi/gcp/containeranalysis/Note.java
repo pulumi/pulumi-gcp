@@ -54,6 +54,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var note = new Note(&#34;note&#34;, NoteArgs.builder()        
+ *             .name(&#34;attestor-note&#34;)
  *             .attestationAuthority(NoteAttestationAuthorityArgs.builder()
  *                 .hint(NoteAttestationAuthorityHintArgs.builder()
  *                     .humanReadableName(&#34;Attestor Note&#34;)
@@ -73,9 +74,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.containeranalysis.Note;
  * import com.pulumi.gcp.containeranalysis.NoteArgs;
+ * import com.pulumi.gcp.containeranalysis.inputs.NoteRelatedUrlArgs;
  * import com.pulumi.gcp.containeranalysis.inputs.NoteAttestationAuthorityArgs;
  * import com.pulumi.gcp.containeranalysis.inputs.NoteAttestationAuthorityHintArgs;
- * import com.pulumi.gcp.containeranalysis.inputs.NoteRelatedUrlArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -90,22 +91,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var note = new Note(&#34;note&#34;, NoteArgs.builder()        
+ *             .name(&#34;attestor-note&#34;)
+ *             .shortDescription(&#34;test note&#34;)
+ *             .longDescription(&#34;a longer description of test note&#34;)
+ *             .expirationTime(&#34;2120-10-02T15:01:23.045123456Z&#34;)
+ *             .relatedUrls(            
+ *                 NoteRelatedUrlArgs.builder()
+ *                     .url(&#34;some.url&#34;)
+ *                     .label(&#34;foo&#34;)
+ *                     .build(),
+ *                 NoteRelatedUrlArgs.builder()
+ *                     .url(&#34;google.com&#34;)
+ *                     .build())
  *             .attestationAuthority(NoteAttestationAuthorityArgs.builder()
  *                 .hint(NoteAttestationAuthorityHintArgs.builder()
  *                     .humanReadableName(&#34;Attestor Note&#34;)
  *                     .build())
  *                 .build())
- *             .expirationTime(&#34;2120-10-02T15:01:23.045123456Z&#34;)
- *             .longDescription(&#34;a longer description of test note&#34;)
- *             .relatedUrls(            
- *                 NoteRelatedUrlArgs.builder()
- *                     .label(&#34;foo&#34;)
- *                     .url(&#34;some.url&#34;)
- *                     .build(),
- *                 NoteRelatedUrlArgs.builder()
- *                     .url(&#34;google.com&#34;)
- *                     .build())
- *             .shortDescription(&#34;test note&#34;)
  *             .build());
  * 
  *     }

@@ -926,8 +926,9 @@ class Service(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrunv2.Service("default",
-            ingress="INGRESS_TRAFFIC_ALL",
+            name="cloudrun-service",
             location="us-central1",
+            ingress="INGRESS_TRAFFIC_ALL",
             template=gcp.cloudrunv2.ServiceTemplateArgs(
                 containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
@@ -941,8 +942,9 @@ class Service(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrunv2.Service("default",
-            ingress="INGRESS_TRAFFIC_ALL",
+            name="cloudrun-service",
             location="us-central1",
+            ingress="INGRESS_TRAFFIC_ALL",
             template=gcp.cloudrunv2.ServiceTemplateArgs(
                 containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
@@ -966,10 +968,8 @@ class Service(pulumi.CustomResource):
             replication=gcp.secretmanager.SecretReplicationArgs(
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
-        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
-            secret=secret.name,
-            secret_data="secret-data")
         instance = gcp.sql.DatabaseInstance("instance",
+            name="cloudrun-sql",
             region="us-central1",
             database_version="MYSQL_5_7",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
@@ -977,6 +977,7 @@ class Service(pulumi.CustomResource):
             ),
             deletion_protection=True)
         default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
             location="us-central1",
             ingress="INGRESS_TRAFFIC_ALL",
             template=gcp.cloudrunv2.ServiceTemplateArgs(
@@ -1015,14 +1016,15 @@ class Service(pulumi.CustomResource):
             traffics=[gcp.cloudrunv2.ServiceTrafficArgs(
                 type="TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST",
                 percent=100,
-            )],
-            opts=pulumi.ResourceOptions(depends_on=[secret_version_data]))
+            )])
         project = gcp.organizations.get_project()
+        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
+            secret=secret.name,
+            secret_data="secret-data")
         secret_access = gcp.secretmanager.SecretIamMember("secret-access",
             secret_id=secret.id,
             role="roles/secretmanager.secretAccessor",
-            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(depends_on=[secret]))
+            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com")
         ```
         ### Cloudrunv2 Service Vpcaccess
 
@@ -1030,20 +1032,25 @@ class Service(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        custom_test_network = gcp.compute.Network("customTestNetwork", auto_create_subnetworks=False)
-        custom_test_subnetwork = gcp.compute.Subnetwork("customTestSubnetwork",
+        custom_test_network = gcp.compute.Network("custom_test",
+            name="run-network",
+            auto_create_subnetworks=False)
+        custom_test = gcp.compute.Subnetwork("custom_test",
+            name="run-subnetwork",
             ip_cidr_range="10.2.0.0/28",
             region="us-central1",
             network=custom_test_network.id)
         connector = gcp.vpcaccess.Connector("connector",
+            name="run-vpc",
             subnet=gcp.vpcaccess.ConnectorSubnetArgs(
-                name=custom_test_subnetwork.name,
+                name=custom_test.name,
             ),
             machine_type="e2-standard-4",
             min_instances=2,
             max_instances=3,
             region="us-central1")
         default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
             location="us-central1",
             template=gcp.cloudrunv2.ServiceTemplateArgs(
                 containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
@@ -1062,14 +1069,14 @@ class Service(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrunv2.Service("default",
-            launch_stage="BETA",
+            name="cloudrun-service",
             location="us-central1",
+            launch_stage="BETA",
             template=gcp.cloudrunv2.ServiceTemplateArgs(
                 containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
                 )],
                 vpc_access=gcp.cloudrunv2.ServiceTemplateVpcAccessArgs(
-                    egress="ALL_TRAFFIC",
                     network_interfaces=[gcp.cloudrunv2.ServiceTemplateVpcAccessNetworkInterfaceArgs(
                         network="default",
                         subnetwork="default",
@@ -1079,6 +1086,7 @@ class Service(pulumi.CustomResource):
                             "tag3",
                         ],
                     )],
+                    egress="ALL_TRAFFIC",
                 ),
             ))
         ```
@@ -1089,23 +1097,24 @@ class Service(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
             location="us-central1",
             template=gcp.cloudrunv2.ServiceTemplateArgs(
                 containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
+                    startup_probe=gcp.cloudrunv2.ServiceTemplateContainerStartupProbeArgs(
+                        initial_delay_seconds=0,
+                        timeout_seconds=1,
+                        period_seconds=3,
+                        failure_threshold=1,
+                        tcp_socket=gcp.cloudrunv2.ServiceTemplateContainerStartupProbeTcpSocketArgs(
+                            port=8080,
+                        ),
+                    ),
                     liveness_probe=gcp.cloudrunv2.ServiceTemplateContainerLivenessProbeArgs(
                         http_get=gcp.cloudrunv2.ServiceTemplateContainerLivenessProbeHttpGetArgs(
                             path="/",
                         ),
-                    ),
-                    startup_probe=gcp.cloudrunv2.ServiceTemplateContainerStartupProbeArgs(
-                        failure_threshold=1,
-                        initial_delay_seconds=0,
-                        period_seconds=3,
-                        tcp_socket=gcp.cloudrunv2.ServiceTemplateContainerStartupProbeTcpSocketArgs(
-                            port=8080,
-                        ),
-                        timeout_seconds=1,
                     ),
                 )],
             ))
@@ -1121,10 +1130,8 @@ class Service(pulumi.CustomResource):
             replication=gcp.secretmanager.SecretReplicationArgs(
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
-        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
-            secret=secret.name,
-            secret_data="secret-data")
         default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
             location="us-central1",
             ingress="INGRESS_TRAFFIC_ALL",
             template=gcp.cloudrunv2.ServiceTemplateArgs(
@@ -1146,14 +1153,15 @@ class Service(pulumi.CustomResource):
                         mount_path="/secrets",
                     )],
                 )],
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[secret_version_data]))
+            ))
         project = gcp.organizations.get_project()
+        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
+            secret=secret.name,
+            secret_data="secret-data")
         secret_access = gcp.secretmanager.SecretIamMember("secret-access",
             secret_id=secret.id,
             role="roles/secretmanager.secretAccessor",
-            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(depends_on=[secret]))
+            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com")
         ```
         ### Cloudrunv2 Service Multicontainer
 
@@ -1162,6 +1170,7 @@ class Service(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
             location="us-central1",
             launch_stage="BETA",
             ingress="INGRESS_TRAFFIC_ALL",
@@ -1200,8 +1209,7 @@ class Service(pulumi.CustomResource):
                         size_limit="256Mi",
                     ),
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Cloudrunv2 Service Mount Gcs
 
@@ -1209,8 +1217,11 @@ class Service(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_bucket = gcp.storage.Bucket("defaultBucket", location="US")
-        default_service = gcp.cloudrunv2.Service("defaultService",
+        default_bucket = gcp.storage.Bucket("default",
+            name="cloudrun-service",
+            location="US")
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
             location="us-central1",
             launch_stage="BETA",
             template=gcp.cloudrunv2.ServiceTemplateArgs(
@@ -1237,7 +1248,8 @@ class Service(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_instance = gcp.filestore.Instance("defaultInstance",
+        default_instance = gcp.filestore.Instance("default",
+            name="cloudrun-service",
             location="us-central1-b",
             tier="BASIC_HDD",
             file_shares=gcp.filestore.InstanceFileSharesArgs(
@@ -1248,7 +1260,8 @@ class Service(pulumi.CustomResource):
                 network="default",
                 modes=["MODE_IPV4"],
             )])
-        default_service = gcp.cloudrunv2.Service("defaultService",
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
             location="us-central1",
             ingress="INGRESS_TRAFFIC_ALL",
             launch_stage="BETA",
@@ -1361,8 +1374,9 @@ class Service(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrunv2.Service("default",
-            ingress="INGRESS_TRAFFIC_ALL",
+            name="cloudrun-service",
             location="us-central1",
+            ingress="INGRESS_TRAFFIC_ALL",
             template=gcp.cloudrunv2.ServiceTemplateArgs(
                 containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
@@ -1376,8 +1390,9 @@ class Service(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrunv2.Service("default",
-            ingress="INGRESS_TRAFFIC_ALL",
+            name="cloudrun-service",
             location="us-central1",
+            ingress="INGRESS_TRAFFIC_ALL",
             template=gcp.cloudrunv2.ServiceTemplateArgs(
                 containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
@@ -1401,10 +1416,8 @@ class Service(pulumi.CustomResource):
             replication=gcp.secretmanager.SecretReplicationArgs(
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
-        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
-            secret=secret.name,
-            secret_data="secret-data")
         instance = gcp.sql.DatabaseInstance("instance",
+            name="cloudrun-sql",
             region="us-central1",
             database_version="MYSQL_5_7",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
@@ -1412,6 +1425,7 @@ class Service(pulumi.CustomResource):
             ),
             deletion_protection=True)
         default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
             location="us-central1",
             ingress="INGRESS_TRAFFIC_ALL",
             template=gcp.cloudrunv2.ServiceTemplateArgs(
@@ -1450,14 +1464,15 @@ class Service(pulumi.CustomResource):
             traffics=[gcp.cloudrunv2.ServiceTrafficArgs(
                 type="TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST",
                 percent=100,
-            )],
-            opts=pulumi.ResourceOptions(depends_on=[secret_version_data]))
+            )])
         project = gcp.organizations.get_project()
+        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
+            secret=secret.name,
+            secret_data="secret-data")
         secret_access = gcp.secretmanager.SecretIamMember("secret-access",
             secret_id=secret.id,
             role="roles/secretmanager.secretAccessor",
-            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(depends_on=[secret]))
+            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com")
         ```
         ### Cloudrunv2 Service Vpcaccess
 
@@ -1465,20 +1480,25 @@ class Service(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        custom_test_network = gcp.compute.Network("customTestNetwork", auto_create_subnetworks=False)
-        custom_test_subnetwork = gcp.compute.Subnetwork("customTestSubnetwork",
+        custom_test_network = gcp.compute.Network("custom_test",
+            name="run-network",
+            auto_create_subnetworks=False)
+        custom_test = gcp.compute.Subnetwork("custom_test",
+            name="run-subnetwork",
             ip_cidr_range="10.2.0.0/28",
             region="us-central1",
             network=custom_test_network.id)
         connector = gcp.vpcaccess.Connector("connector",
+            name="run-vpc",
             subnet=gcp.vpcaccess.ConnectorSubnetArgs(
-                name=custom_test_subnetwork.name,
+                name=custom_test.name,
             ),
             machine_type="e2-standard-4",
             min_instances=2,
             max_instances=3,
             region="us-central1")
         default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
             location="us-central1",
             template=gcp.cloudrunv2.ServiceTemplateArgs(
                 containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
@@ -1497,14 +1517,14 @@ class Service(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrunv2.Service("default",
-            launch_stage="BETA",
+            name="cloudrun-service",
             location="us-central1",
+            launch_stage="BETA",
             template=gcp.cloudrunv2.ServiceTemplateArgs(
                 containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
                 )],
                 vpc_access=gcp.cloudrunv2.ServiceTemplateVpcAccessArgs(
-                    egress="ALL_TRAFFIC",
                     network_interfaces=[gcp.cloudrunv2.ServiceTemplateVpcAccessNetworkInterfaceArgs(
                         network="default",
                         subnetwork="default",
@@ -1514,6 +1534,7 @@ class Service(pulumi.CustomResource):
                             "tag3",
                         ],
                     )],
+                    egress="ALL_TRAFFIC",
                 ),
             ))
         ```
@@ -1524,23 +1545,24 @@ class Service(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
             location="us-central1",
             template=gcp.cloudrunv2.ServiceTemplateArgs(
                 containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
+                    startup_probe=gcp.cloudrunv2.ServiceTemplateContainerStartupProbeArgs(
+                        initial_delay_seconds=0,
+                        timeout_seconds=1,
+                        period_seconds=3,
+                        failure_threshold=1,
+                        tcp_socket=gcp.cloudrunv2.ServiceTemplateContainerStartupProbeTcpSocketArgs(
+                            port=8080,
+                        ),
+                    ),
                     liveness_probe=gcp.cloudrunv2.ServiceTemplateContainerLivenessProbeArgs(
                         http_get=gcp.cloudrunv2.ServiceTemplateContainerLivenessProbeHttpGetArgs(
                             path="/",
                         ),
-                    ),
-                    startup_probe=gcp.cloudrunv2.ServiceTemplateContainerStartupProbeArgs(
-                        failure_threshold=1,
-                        initial_delay_seconds=0,
-                        period_seconds=3,
-                        tcp_socket=gcp.cloudrunv2.ServiceTemplateContainerStartupProbeTcpSocketArgs(
-                            port=8080,
-                        ),
-                        timeout_seconds=1,
                     ),
                 )],
             ))
@@ -1556,10 +1578,8 @@ class Service(pulumi.CustomResource):
             replication=gcp.secretmanager.SecretReplicationArgs(
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
-        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
-            secret=secret.name,
-            secret_data="secret-data")
         default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
             location="us-central1",
             ingress="INGRESS_TRAFFIC_ALL",
             template=gcp.cloudrunv2.ServiceTemplateArgs(
@@ -1581,14 +1601,15 @@ class Service(pulumi.CustomResource):
                         mount_path="/secrets",
                     )],
                 )],
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[secret_version_data]))
+            ))
         project = gcp.organizations.get_project()
+        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
+            secret=secret.name,
+            secret_data="secret-data")
         secret_access = gcp.secretmanager.SecretIamMember("secret-access",
             secret_id=secret.id,
             role="roles/secretmanager.secretAccessor",
-            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(depends_on=[secret]))
+            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com")
         ```
         ### Cloudrunv2 Service Multicontainer
 
@@ -1597,6 +1618,7 @@ class Service(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
             location="us-central1",
             launch_stage="BETA",
             ingress="INGRESS_TRAFFIC_ALL",
@@ -1635,8 +1657,7 @@ class Service(pulumi.CustomResource):
                         size_limit="256Mi",
                     ),
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Cloudrunv2 Service Mount Gcs
 
@@ -1644,8 +1665,11 @@ class Service(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_bucket = gcp.storage.Bucket("defaultBucket", location="US")
-        default_service = gcp.cloudrunv2.Service("defaultService",
+        default_bucket = gcp.storage.Bucket("default",
+            name="cloudrun-service",
+            location="US")
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
             location="us-central1",
             launch_stage="BETA",
             template=gcp.cloudrunv2.ServiceTemplateArgs(
@@ -1672,7 +1696,8 @@ class Service(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_instance = gcp.filestore.Instance("defaultInstance",
+        default_instance = gcp.filestore.Instance("default",
+            name="cloudrun-service",
             location="us-central1-b",
             tier="BASIC_HDD",
             file_shares=gcp.filestore.InstanceFileSharesArgs(
@@ -1683,7 +1708,8 @@ class Service(pulumi.CustomResource):
                 network="default",
                 modes=["MODE_IPV4"],
             )])
-        default_service = gcp.cloudrunv2.Service("defaultService",
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
             location="us-central1",
             ingress="INGRESS_TRAFFIC_ALL",
             launch_stage="BETA",

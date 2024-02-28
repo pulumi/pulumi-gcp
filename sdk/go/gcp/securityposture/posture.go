@@ -38,82 +38,90 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := securityposture.NewPosture(ctx, "posture1", &securityposture.PostureArgs{
-//				Description: pulumi.String("a new posture"),
-//				Location:    pulumi.String("global"),
+//				PostureId:   pulumi.String("posture_1"),
 //				Parent:      pulumi.String("organizations/123456789"),
+//				Location:    pulumi.String("global"),
+//				State:       pulumi.String("ACTIVE"),
+//				Description: pulumi.String("a new posture"),
 //				PolicySets: securityposture.PosturePolicySetArray{
 //					&securityposture.PosturePolicySetArgs{
+//						PolicySetId: pulumi.String("org_policy_set"),
 //						Description: pulumi.String("set of org policies"),
 //						Policies: securityposture.PosturePolicySetPolicyArray{
 //							&securityposture.PosturePolicySetPolicyArgs{
+//								PolicyId: pulumi.String("canned_org_policy"),
 //								Constraint: &securityposture.PosturePolicySetPolicyConstraintArgs{
 //									OrgPolicyConstraint: &securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs{
 //										CannedConstraintId: pulumi.String("storage.uniformBucketLevelAccess"),
 //										PolicyRules: securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArray{
 //											&securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs{
+//												Enforce: pulumi.Bool(true),
 //												Condition: &securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs{
 //													Description: pulumi.String("condition description"),
 //													Expression:  pulumi.String("resource.matchTag('org_id/tag_key_short_name,'tag_value_short_name')"),
 //													Title:       pulumi.String("a CEL condition"),
 //												},
-//												Enforce: pulumi.Bool(true),
 //											},
 //										},
 //									},
 //								},
-//								PolicyId: pulumi.String("canned_org_policy"),
 //							},
 //							&securityposture.PosturePolicySetPolicyArgs{
+//								PolicyId: pulumi.String("custom_org_policy"),
 //								Constraint: &securityposture.PosturePolicySetPolicyConstraintArgs{
 //									OrgPolicyConstraintCustom: &securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgs{
 //										CustomConstraint: &securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintArgs{
+//											Name:        pulumi.String("organizations/123456789/customConstraints/custom.disableGkeAutoUpgrade"),
+//											DisplayName: pulumi.String("Disable GKE auto upgrade"),
+//											Description: pulumi.String("Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced."),
 //											ActionType:  pulumi.String("ALLOW"),
 //											Condition:   pulumi.String("resource.management.autoUpgrade == false"),
-//											Description: pulumi.String("Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced."),
-//											DisplayName: pulumi.String("Disable GKE auto upgrade"),
 //											MethodTypes: pulumi.StringArray{
 //												pulumi.String("CREATE"),
 //												pulumi.String("UPDATE"),
 //											},
-//											Name: pulumi.String("organizations/123456789/customConstraints/custom.disableGkeAutoUpgrade"),
 //											ResourceTypes: pulumi.StringArray{
 //												pulumi.String("container.googleapis.com/NodePool"),
 //											},
 //										},
 //										PolicyRules: securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArray{
 //											&securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs{
+//												Enforce: pulumi.Bool(true),
 //												Condition: &securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs{
 //													Description: pulumi.String("condition description"),
 //													Expression:  pulumi.String("resource.matchTagId('tagKeys/key_id','tagValues/value_id')"),
 //													Title:       pulumi.String("a CEL condition"),
 //												},
-//												Enforce: pulumi.Bool(true),
 //											},
 //										},
 //									},
 //								},
-//								PolicyId: pulumi.String("custom_org_policy"),
 //							},
 //						},
-//						PolicySetId: pulumi.String("org_policy_set"),
 //					},
 //					&securityposture.PosturePolicySetArgs{
+//						PolicySetId: pulumi.String("sha_policy_set"),
 //						Description: pulumi.String("set of sha policies"),
 //						Policies: securityposture.PosturePolicySetPolicyArray{
 //							&securityposture.PosturePolicySetPolicyArgs{
+//								PolicyId: pulumi.String("sha_builtin_module"),
 //								Constraint: &securityposture.PosturePolicySetPolicyConstraintArgs{
 //									SecurityHealthAnalyticsModule: &securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgs{
-//										ModuleEnablementState: pulumi.String("ENABLED"),
 //										ModuleName:            pulumi.String("BIGQUERY_TABLE_CMEK_DISABLED"),
+//										ModuleEnablementState: pulumi.String("ENABLED"),
 //									},
 //								},
 //								Description: pulumi.String("enable BIGQUERY_TABLE_CMEK_DISABLED"),
-//								PolicyId:    pulumi.String("sha_builtin_module"),
 //							},
 //							&securityposture.PosturePolicySetPolicyArgs{
+//								PolicyId: pulumi.String("sha_custom_module"),
 //								Constraint: &securityposture.PosturePolicySetPolicyConstraintArgs{
 //									SecurityHealthAnalyticsCustomModule: &securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgs{
+//										DisplayName: pulumi.String("custom_SHA_policy"),
 //										Config: &securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigArgs{
+//											Predicate: &securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigPredicateArgs{
+//												Expression: pulumi.String("resource.rotationPeriod > duration('2592000s')"),
+//											},
 //											CustomOutput: securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputArgs{
 //												Properties: securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyArray{
 //													&securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyArgs{
@@ -124,30 +132,22 @@ import (
 //													},
 //												},
 //											},
-//											Description: pulumi.String("Custom Module"),
-//											Predicate: &securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigPredicateArgs{
-//												Expression: pulumi.String("resource.rotationPeriod > duration('2592000s')"),
-//											},
-//											Recommendation: pulumi.String("Testing custom modules"),
 //											ResourceSelector: &securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelectorArgs{
 //												ResourceTypes: pulumi.StringArray{
 //													pulumi.String("cloudkms.googleapis.com/CryptoKey"),
 //												},
 //											},
-//											Severity: pulumi.String("LOW"),
+//											Severity:       pulumi.String("LOW"),
+//											Description:    pulumi.String("Custom Module"),
+//											Recommendation: pulumi.String("Testing custom modules"),
 //										},
-//										DisplayName:           pulumi.String("custom_SHA_policy"),
 //										ModuleEnablementState: pulumi.String("ENABLED"),
 //									},
 //								},
-//								PolicyId: pulumi.String("sha_custom_module"),
 //							},
 //						},
-//						PolicySetId: pulumi.String("sha_policy_set"),
 //					},
 //				},
-//				PostureId: pulumi.String("posture_1"),
-//				State:     pulumi.String("ACTIVE"),
 //			})
 //			if err != nil {
 //				return err

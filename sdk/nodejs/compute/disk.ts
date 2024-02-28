@@ -37,13 +37,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.compute.Disk("default", {
+ *     name: "test-disk",
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
  *     image: "debian-11-bullseye-v20220719",
  *     labels: {
  *         environment: "dev",
  *     },
  *     physicalBlockSizeBytes: 4096,
- *     type: "pd-ssd",
- *     zone: "us-central1-a",
  * });
  * ```
  * ### Disk Async
@@ -53,11 +54,13 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const primary = new gcp.compute.Disk("primary", {
+ *     name: "async-test-disk",
  *     type: "pd-ssd",
  *     zone: "us-central1-a",
  *     physicalBlockSizeBytes: 4096,
  * });
  * const secondary = new gcp.compute.Disk("secondary", {
+ *     name: "async-secondary-test-disk",
  *     type: "pd-ssd",
  *     zone: "us-east1-c",
  *     asyncPrimaryDisk: {
@@ -73,6 +76,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.compute.Disk("default", {
+ *     name: "test-disk-features",
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ *     labels: {
+ *         environment: "dev",
+ *     },
  *     guestOsFeatures: [
  *         {
  *             type: "SECURE_BOOT",
@@ -84,13 +93,8 @@ import * as utilities from "../utilities";
  *             type: "WINDOWS",
  *         },
  *     ],
- *     labels: {
- *         environment: "dev",
- *     },
  *     licenses: ["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
  *     physicalBlockSizeBytes: 4096,
- *     type: "pd-ssd",
- *     zone: "us-central1-a",
  * });
  * ```
  *

@@ -31,12 +31,12 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// {
     ///     var @default = new Gcp.SecureSourceManager.Instance("default", new()
     ///     {
+    ///         Location = "us-central1",
     ///         InstanceId = "my-instance",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
     ///         },
-    ///         Location = "us-central1",
     ///     });
     /// 
     /// });
@@ -51,19 +51,21 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var keyRing = new Gcp.Kms.KeyRing("keyRing", new()
+    ///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()
     ///     {
+    ///         Name = "my-keyring",
     ///         Location = "us-central1",
     ///     });
     /// 
-    ///     var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("crypto_key", new()
     ///     {
+    ///         Name = "my-key",
     ///         KeyRing = keyRing.Id,
     ///     });
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var cryptoKeyBinding = new Gcp.Kms.CryptoKeyIAMMember("cryptoKeyBinding", new()
+    ///     var cryptoKeyBinding = new Gcp.Kms.CryptoKeyIAMMember("crypto_key_binding", new()
     ///     {
     ///         CryptoKeyId = cryptoKey.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
@@ -75,12 +77,104 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///         Location = "us-central1",
     ///         InstanceId = "my-instance",
     ///         KmsKey = cryptoKey.Id,
-    ///     }, new CustomResourceOptions
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Secure Source Manager Instance Private
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumi.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var caPool = new Gcp.CertificateAuthority.CaPool("ca_pool", new()
     ///     {
-    ///         DependsOn = new[]
+    ///         Name = "ca-pool",
+    ///         Location = "us-central1",
+    ///         Tier = "ENTERPRISE",
+    ///         PublishingOptions = new Gcp.CertificateAuthority.Inputs.CaPoolPublishingOptionsArgs
     ///         {
-    ///             cryptoKeyBinding,
+    ///             PublishCaCert = true,
+    ///             PublishCrl = true,
     ///         },
+    ///     });
+    /// 
+    ///     var rootCa = new Gcp.CertificateAuthority.Authority("root_ca", new()
+    ///     {
+    ///         Pool = caPool.Name,
+    ///         CertificateAuthorityId = "root-ca",
+    ///         Location = "us-central1",
+    ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
+    ///         {
+    ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
+    ///             {
+    ///                 Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
+    ///                 {
+    ///                     Organization = "google",
+    ///                     CommonName = "my-certificate-authority",
+    ///                 },
+    ///             },
+    ///             X509Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigArgs
+    ///             {
+    ///                 CaOptions = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigCaOptionsArgs
+    ///                 {
+    ///                     IsCa = true,
+    ///                 },
+    ///                 KeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageArgs
+    ///                 {
+    ///                     BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
+    ///                     {
+    ///                         CertSign = true,
+    ///                         CrlSign = true,
+    ///                     },
+    ///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
+    ///                     {
+    ///                         ServerAuth = true,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
+    ///         {
+    ///             Algorithm = "RSA_PKCS1_4096_SHA256",
+    ///         },
+    ///         DeletionProtection = false,
+    ///         IgnoreActiveCertificatesOnDeletion = true,
+    ///         SkipGracePeriod = true,
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var caPoolBinding = new Gcp.CertificateAuthority.CaPoolIamBinding("ca_pool_binding", new()
+    ///     {
+    ///         CaPool = caPool.Id,
+    ///         Role = "roles/privateca.certificateRequester",
+    ///         Members = new[]
+    ///         {
+    ///             $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-sourcemanager.iam.gserviceaccount.com",
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.SecureSourceManager.Instance("default", new()
+    ///     {
+    ///         InstanceId = "my-instance",
+    ///         Location = "us-central1",
+    ///         PrivateConfig = new Gcp.SecureSourceManager.Inputs.InstancePrivateConfigArgs
+    ///         {
+    ///             IsPrivate = true,
+    ///             CaPool = caPool.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     // ca pool IAM permissions can take time to propagate
+    ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
+    ///     {
+    ///         CreateDuration = "60s",
     ///     });
     /// 
     /// });

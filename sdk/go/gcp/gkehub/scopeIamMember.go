@@ -55,8 +55,8 @@ import (
 //				return err
 //			}
 //			_, err = gkehub.NewScopeIamPolicy(ctx, "policy", &gkehub.ScopeIamPolicyArgs{
-//				Project:    pulumi.Any(google_gke_hub_scope.Scope.Project),
-//				ScopeId:    pulumi.Any(google_gke_hub_scope.Scope.Scope_id),
+//				Project:    pulumi.Any(scope.Project),
+//				ScopeId:    pulumi.Any(scope.ScopeId),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -83,8 +83,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.NewScopeIamBinding(ctx, "binding", &gkehub.ScopeIamBindingArgs{
-//				Project: pulumi.Any(google_gke_hub_scope.Scope.Project),
-//				ScopeId: pulumi.Any(google_gke_hub_scope.Scope.Scope_id),
+//				Project: pulumi.Any(scope.Project),
+//				ScopeId: pulumi.Any(scope.ScopeId),
 //				Role:    pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -114,8 +114,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.NewScopeIamMember(ctx, "member", &gkehub.ScopeIamMemberArgs{
-//				Project: pulumi.Any(google_gke_hub_scope.Scope.Project),
-//				ScopeId: pulumi.Any(google_gke_hub_scope.Scope.Scope_id),
+//				Project: pulumi.Any(scope.Project),
+//				ScopeId: pulumi.Any(scope.ScopeId),
 //				Role:    pulumi.String("roles/viewer"),
 //				Member:  pulumi.String("user:jane@example.com"),
 //			})

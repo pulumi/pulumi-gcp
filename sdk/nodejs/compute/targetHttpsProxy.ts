@@ -15,27 +15,37 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
  *
  * ## Example Usage
- * ### Target Https Proxy Certificate Manager Certificate
+ * ### Target Https Proxy Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
  *
- * const defaultCertificate = new gcp.certificatemanager.Certificate("defaultCertificate", {
- *     scope: "ALL_REGIONS",
- *     selfManaged: {
- *         pemCertificate: fs.readFileSync("test-fixtures/cert.pem", "utf8"),
- *         pemPrivateKey: fs.readFileSync("test-fixtures/private-key.pem", "utf8"),
- *     },
+ * const defaultSSLCertificate = new gcp.compute.SSLCertificate("default", {
+ *     name: "my-certificate",
+ *     privateKey: std.file({
+ *         input: "path/to/private.key",
+ *     }).then(invoke => invoke.result),
+ *     certificate: std.file({
+ *         input: "path/to/certificate.crt",
+ *     }).then(invoke => invoke.result),
  * });
- * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ *     name: "http-health-check",
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
- *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     healthChecks: defaultHttpHealthCheck.id,
  * });
- * const defaultURLMap = new gcp.compute.URLMap("defaultURLMap", {
+ * const defaultURLMap = new gcp.compute.URLMap("default", {
+ *     name: "url-map",
  *     description: "a description",
  *     defaultService: defaultBackendService.id,
  *     hostRules: [{
@@ -51,11 +61,198 @@ import * as utilities from "../utilities";
  *         }],
  *     }],
  * });
- * const defaultTargetHttpsProxy = new gcp.compute.TargetHttpsProxy("defaultTargetHttpsProxy", {
+ * const _default = new gcp.compute.TargetHttpsProxy("default", {
+ *     name: "test-proxy",
+ *     urlMap: defaultURLMap.id,
+ *     sslCertificates: [defaultSSLCertificate.id],
+ * });
+ * ```
+ * ### Target Https Proxy Http Keep Alive Timeout
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const defaultSSLCertificate = new gcp.compute.SSLCertificate("default", {
+ *     name: "my-certificate",
+ *     privateKey: std.file({
+ *         input: "path/to/private.key",
+ *     }).then(invoke => invoke.result),
+ *     certificate: std.file({
+ *         input: "path/to/certificate.crt",
+ *     }).then(invoke => invoke.result),
+ * });
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ *     name: "http-health-check",
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     healthChecks: defaultHttpHealthCheck.id,
+ * });
+ * const defaultURLMap = new gcp.compute.URLMap("default", {
+ *     name: "url-map",
+ *     description: "a description",
+ *     defaultService: defaultBackendService.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: defaultBackendService.id,
+ *         pathRules: [{
+ *             paths: ["/*"],
+ *             service: defaultBackendService.id,
+ *         }],
+ *     }],
+ * });
+ * const _default = new gcp.compute.TargetHttpsProxy("default", {
+ *     name: "test-http-keep-alive-timeout-proxy",
+ *     httpKeepAliveTimeoutSec: 610,
+ *     urlMap: defaultURLMap.id,
+ *     sslCertificates: [defaultSSLCertificate.id],
+ * });
+ * ```
+ * ### Target Https Proxy Mtls
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const defaultTrustConfig = new gcp.certificatemanager.TrustConfig("default", {
+ *     name: "my-trust-config",
+ *     description: "sample description for the trust config",
+ *     location: "global",
+ *     trustStores: [{
+ *         trustAnchors: [{
+ *             pemCertificate: std.file({
+ *                 input: "test-fixtures/ca_cert.pem",
+ *             }).then(invoke => invoke.result),
+ *         }],
+ *         intermediateCas: [{
+ *             pemCertificate: std.file({
+ *                 input: "test-fixtures/ca_cert.pem",
+ *             }).then(invoke => invoke.result),
+ *         }],
+ *     }],
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * });
+ * const defaultServerTlsPolicy = new gcp.networksecurity.ServerTlsPolicy("default", {
+ *     name: "my-tls-policy",
+ *     description: "my description",
+ *     location: "global",
+ *     allowOpen: false,
+ *     mtlsPolicy: {
+ *         clientValidationMode: "ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
+ *         clientValidationTrustConfig: pulumi.all([project, defaultTrustConfig.name]).apply(([project, name]) => `projects/${project.number}/locations/global/trustConfigs/${name}`),
+ *     },
+ * });
+ * const defaultSSLCertificate = new gcp.compute.SSLCertificate("default", {
+ *     name: "my-certificate",
+ *     privateKey: std.file({
+ *         input: "path/to/private.key",
+ *     }).then(invoke => invoke.result),
+ *     certificate: std.file({
+ *         input: "path/to/certificate.crt",
+ *     }).then(invoke => invoke.result),
+ * });
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ *     name: "http-health-check",
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: defaultHttpHealthCheck.id,
+ * });
+ * const defaultURLMap = new gcp.compute.URLMap("default", {
+ *     name: "url-map",
+ *     description: "a description",
+ *     defaultService: defaultBackendService.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: defaultBackendService.id,
+ *         pathRules: [{
+ *             paths: ["/*"],
+ *             service: defaultBackendService.id,
+ *         }],
+ *     }],
+ * });
+ * const _default = new gcp.compute.TargetHttpsProxy("default", {
+ *     name: "test-mtls-proxy",
+ *     urlMap: defaultURLMap.id,
+ *     sslCertificates: [defaultSSLCertificate.id],
+ *     serverTlsPolicy: defaultServerTlsPolicy.id,
+ * });
+ * ```
+ * ### Target Https Proxy Certificate Manager Certificate
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const defaultCertificate = new gcp.certificatemanager.Certificate("default", {
+ *     name: "my-certificate",
+ *     scope: "ALL_REGIONS",
+ *     selfManaged: {
+ *         pemCertificate: std.file({
+ *             input: "test-fixtures/cert.pem",
+ *         }).then(invoke => invoke.result),
+ *         pemPrivateKey: std.file({
+ *             input: "test-fixtures/private-key.pem",
+ *         }).then(invoke => invoke.result),
+ *     },
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ * });
+ * const defaultURLMap = new gcp.compute.URLMap("default", {
+ *     name: "url-map",
+ *     description: "a description",
+ *     defaultService: defaultBackendService.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: defaultBackendService.id,
+ *         pathRules: [{
+ *             paths: ["/*"],
+ *             service: defaultBackendService.id,
+ *         }],
+ *     }],
+ * });
+ * const _default = new gcp.compute.TargetHttpsProxy("default", {
+ *     name: "target-http-proxy",
  *     urlMap: defaultURLMap.id,
  *     certificateManagerCertificates: [pulumi.interpolate`//certificatemanager.googleapis.com/${defaultCertificate.id}`],
  * });
- * // [google_certificate_manager_certificate.default.id] is also acceptable
  * ```
  *
  * ## Import

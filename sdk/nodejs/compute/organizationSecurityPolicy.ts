@@ -23,8 +23,6 @@ import * as utilities from "../utilities";
  * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
  *     displayName: "tf-test",
  *     parent: "organizations/123456789",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

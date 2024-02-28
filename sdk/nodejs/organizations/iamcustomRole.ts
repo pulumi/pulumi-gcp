@@ -26,15 +26,15 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const my_custom_role = new gcp.organizations.IAMCustomRole("my-custom-role", {
- *     description: "A description",
+ *     roleId: "myCustomRole",
  *     orgId: "123456789",
+ *     title: "My Custom Role",
+ *     description: "A description",
  *     permissions: [
  *         "iam.roles.list",
  *         "iam.roles.create",
  *         "iam.roles.delete",
  *     ],
- *     roleId: "myCustomRole",
- *     title: "My Custom Role",
  * });
  * ```
  *

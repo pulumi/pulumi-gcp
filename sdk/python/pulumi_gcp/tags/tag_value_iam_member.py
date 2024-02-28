@@ -246,7 +246,7 @@ class TagValueIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.tags.TagValueIamPolicy("policy",
-            tag_value=google_tags_tag_value["value"]["name"],
+            tag_value=value["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -257,7 +257,7 @@ class TagValueIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.tags.TagValueIamBinding("binding",
-            tag_value=google_tags_tag_value["value"]["name"],
+            tag_value=value["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -269,7 +269,7 @@ class TagValueIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.tags.TagValueIamMember("member",
-            tag_value=google_tags_tag_value["value"]["name"],
+            tag_value=value["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```
@@ -359,7 +359,7 @@ class TagValueIamMember(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         policy = gcp.tags.TagValueIamPolicy("policy",
-            tag_value=google_tags_tag_value["value"]["name"],
+            tag_value=value["name"],
             policy_data=admin.policy_data)
         ```
 
@@ -370,7 +370,7 @@ class TagValueIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         binding = gcp.tags.TagValueIamBinding("binding",
-            tag_value=google_tags_tag_value["value"]["name"],
+            tag_value=value["name"],
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
@@ -382,7 +382,7 @@ class TagValueIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         member = gcp.tags.TagValueIamMember("member",
-            tag_value=google_tags_tag_value["value"]["name"],
+            tag_value=value["name"],
             role="roles/viewer",
             member="user:jane@example.com")
         ```

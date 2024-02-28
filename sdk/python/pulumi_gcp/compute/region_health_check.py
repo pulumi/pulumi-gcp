@@ -701,11 +701,12 @@ class RegionHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tcp_region_health_check = gcp.compute.RegionHealthCheck("tcp-region-health-check",
+            name="tcp-region-health-check",
+            timeout_sec=1,
             check_interval_sec=1,
             tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
                 port=80,
-            ),
-            timeout_sec=1)
+            ))
         ```
         ### Region Health Check Tcp Full
 
@@ -714,18 +715,19 @@ class RegionHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tcp_region_health_check = gcp.compute.RegionHealthCheck("tcp-region-health-check",
-            check_interval_sec=1,
+            name="tcp-region-health-check",
             description="Health check via tcp",
+            timeout_sec=1,
+            check_interval_sec=1,
             healthy_threshold=4,
+            unhealthy_threshold=5,
             tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
                 port_name="health-check-port",
                 port_specification="USE_NAMED_PORT",
-                proxy_header="NONE",
                 request="ARE YOU HEALTHY?",
+                proxy_header="NONE",
                 response="I AM HEALTHY",
-            ),
-            timeout_sec=1,
-            unhealthy_threshold=5)
+            ))
         ```
         ### Region Health Check Ssl
 
@@ -734,11 +736,12 @@ class RegionHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         ssl_region_health_check = gcp.compute.RegionHealthCheck("ssl-region-health-check",
+            name="ssl-region-health-check",
+            timeout_sec=1,
             check_interval_sec=1,
             ssl_health_check=gcp.compute.RegionHealthCheckSslHealthCheckArgs(
                 port=443,
-            ),
-            timeout_sec=1)
+            ))
         ```
         ### Region Health Check Ssl Full
 
@@ -747,18 +750,19 @@ class RegionHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         ssl_region_health_check = gcp.compute.RegionHealthCheck("ssl-region-health-check",
-            check_interval_sec=1,
+            name="ssl-region-health-check",
             description="Health check via ssl",
+            timeout_sec=1,
+            check_interval_sec=1,
             healthy_threshold=4,
+            unhealthy_threshold=5,
             ssl_health_check=gcp.compute.RegionHealthCheckSslHealthCheckArgs(
                 port_name="health-check-port",
                 port_specification="USE_NAMED_PORT",
-                proxy_header="NONE",
                 request="ARE YOU HEALTHY?",
+                proxy_header="NONE",
                 response="I AM HEALTHY",
-            ),
-            timeout_sec=1,
-            unhealthy_threshold=5)
+            ))
         ```
         ### Region Health Check Http
 
@@ -767,11 +771,12 @@ class RegionHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         http_region_health_check = gcp.compute.RegionHealthCheck("http-region-health-check",
+            name="http-region-health-check",
+            timeout_sec=1,
             check_interval_sec=1,
             http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
                 port=80,
-            ),
-            timeout_sec=1)
+            ))
         ```
         ### Region Health Check Http Logs
 
@@ -780,6 +785,7 @@ class RegionHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         http_region_health_check = gcp.compute.RegionHealthCheck("http-region-health-check",
+            name="http-region-health-check",
             timeout_sec=1,
             check_interval_sec=1,
             http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
@@ -787,8 +793,7 @@ class RegionHealthCheck(pulumi.CustomResource):
             ),
             log_config=gcp.compute.RegionHealthCheckLogConfigArgs(
                 enable=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Region Health Check Http Full
 
@@ -797,19 +802,20 @@ class RegionHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         http_region_health_check = gcp.compute.RegionHealthCheck("http-region-health-check",
-            check_interval_sec=1,
+            name="http-region-health-check",
             description="Health check via http",
+            timeout_sec=1,
+            check_interval_sec=1,
             healthy_threshold=4,
+            unhealthy_threshold=5,
             http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
-                host="1.2.3.4",
                 port_name="health-check-port",
                 port_specification="USE_NAMED_PORT",
-                proxy_header="NONE",
+                host="1.2.3.4",
                 request_path="/mypath",
+                proxy_header="NONE",
                 response="I AM HEALTHY",
-            ),
-            timeout_sec=1,
-            unhealthy_threshold=5)
+            ))
         ```
         ### Region Health Check Https
 
@@ -818,11 +824,12 @@ class RegionHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         https_region_health_check = gcp.compute.RegionHealthCheck("https-region-health-check",
+            name="https-region-health-check",
+            timeout_sec=1,
             check_interval_sec=1,
             https_health_check=gcp.compute.RegionHealthCheckHttpsHealthCheckArgs(
                 port=443,
-            ),
-            timeout_sec=1)
+            ))
         ```
         ### Region Health Check Https Full
 
@@ -831,19 +838,20 @@ class RegionHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         https_region_health_check = gcp.compute.RegionHealthCheck("https-region-health-check",
-            check_interval_sec=1,
+            name="https-region-health-check",
             description="Health check via https",
+            timeout_sec=1,
+            check_interval_sec=1,
             healthy_threshold=4,
+            unhealthy_threshold=5,
             https_health_check=gcp.compute.RegionHealthCheckHttpsHealthCheckArgs(
-                host="1.2.3.4",
                 port_name="health-check-port",
                 port_specification="USE_NAMED_PORT",
-                proxy_header="NONE",
+                host="1.2.3.4",
                 request_path="/mypath",
+                proxy_header="NONE",
                 response="I AM HEALTHY",
-            ),
-            timeout_sec=1,
-            unhealthy_threshold=5)
+            ))
         ```
         ### Region Health Check Http2
 
@@ -852,11 +860,12 @@ class RegionHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         http2_region_health_check = gcp.compute.RegionHealthCheck("http2-region-health-check",
+            name="http2-region-health-check",
+            timeout_sec=1,
             check_interval_sec=1,
             http2_health_check=gcp.compute.RegionHealthCheckHttp2HealthCheckArgs(
                 port=443,
-            ),
-            timeout_sec=1)
+            ))
         ```
         ### Region Health Check Http2 Full
 
@@ -865,19 +874,20 @@ class RegionHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         http2_region_health_check = gcp.compute.RegionHealthCheck("http2-region-health-check",
-            check_interval_sec=1,
+            name="http2-region-health-check",
             description="Health check via http2",
+            timeout_sec=1,
+            check_interval_sec=1,
             healthy_threshold=4,
+            unhealthy_threshold=5,
             http2_health_check=gcp.compute.RegionHealthCheckHttp2HealthCheckArgs(
-                host="1.2.3.4",
                 port_name="health-check-port",
                 port_specification="USE_NAMED_PORT",
-                proxy_header="NONE",
+                host="1.2.3.4",
                 request_path="/mypath",
+                proxy_header="NONE",
                 response="I AM HEALTHY",
-            ),
-            timeout_sec=1,
-            unhealthy_threshold=5)
+            ))
         ```
         ### Region Health Check Grpc
 
@@ -886,11 +896,12 @@ class RegionHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         grpc_region_health_check = gcp.compute.RegionHealthCheck("grpc-region-health-check",
+            name="grpc-region-health-check",
+            timeout_sec=1,
             check_interval_sec=1,
             grpc_health_check=gcp.compute.RegionHealthCheckGrpcHealthCheckArgs(
                 port=443,
-            ),
-            timeout_sec=1)
+            ))
         ```
         ### Region Health Check Grpc Full
 
@@ -899,13 +910,14 @@ class RegionHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         grpc_region_health_check = gcp.compute.RegionHealthCheck("grpc-region-health-check",
+            name="grpc-region-health-check",
+            timeout_sec=1,
             check_interval_sec=1,
             grpc_health_check=gcp.compute.RegionHealthCheckGrpcHealthCheckArgs(
-                grpc_service_name="testservice",
                 port_name="health-check-port",
                 port_specification="USE_NAMED_PORT",
-            ),
-            timeout_sec=1)
+                grpc_service_name="testservice",
+            ))
         ```
 
         ## Import
@@ -1013,11 +1025,12 @@ class RegionHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tcp_region_health_check = gcp.compute.RegionHealthCheck("tcp-region-health-check",
+            name="tcp-region-health-check",
+            timeout_sec=1,
             check_interval_sec=1,
             tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
                 port=80,
-            ),
-            timeout_sec=1)
+            ))
         ```
         ### Region Health Check Tcp Full
 
@@ -1026,18 +1039,19 @@ class RegionHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tcp_region_health_check = gcp.compute.RegionHealthCheck("tcp-region-health-check",
-            check_interval_sec=1,
+            name="tcp-region-health-check",
             description="Health check via tcp",
+            timeout_sec=1,
+            check_interval_sec=1,
             healthy_threshold=4,
+            unhealthy_threshold=5,
             tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
                 port_name="health-check-port",
                 port_specification="USE_NAMED_PORT",
-                proxy_header="NONE",
                 request="ARE YOU HEALTHY?",
+                proxy_header="NONE",
                 response="I AM HEALTHY",
-            ),
-            timeout_sec=1,
-            unhealthy_threshold=5)
+            ))
         ```
         ### Region Health Check Ssl
 
@@ -1046,11 +1060,12 @@ class RegionHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         ssl_region_health_check = gcp.compute.RegionHealthCheck("ssl-region-health-check",
+            name="ssl-region-health-check",
+            timeout_sec=1,
             check_interval_sec=1,
             ssl_health_check=gcp.compute.RegionHealthCheckSslHealthCheckArgs(
                 port=443,
-            ),
-            timeout_sec=1)
+            ))
         ```
         ### Region Health Check Ssl Full
 
@@ -1059,18 +1074,19 @@ class RegionHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         ssl_region_health_check = gcp.compute.RegionHealthCheck("ssl-region-health-check",
-            check_interval_sec=1,
+            name="ssl-region-health-check",
             description="Health check via ssl",
+            timeout_sec=1,
+            check_interval_sec=1,
             healthy_threshold=4,
+            unhealthy_threshold=5,
             ssl_health_check=gcp.compute.RegionHealthCheckSslHealthCheckArgs(
                 port_name="health-check-port",
                 port_specification="USE_NAMED_PORT",
-                proxy_header="NONE",
                 request="ARE YOU HEALTHY?",
+                proxy_header="NONE",
                 response="I AM HEALTHY",
-            ),
-            timeout_sec=1,
-            unhealthy_threshold=5)
+            ))
         ```
         ### Region Health Check Http
 
@@ -1079,11 +1095,12 @@ class RegionHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         http_region_health_check = gcp.compute.RegionHealthCheck("http-region-health-check",
+            name="http-region-health-check",
+            timeout_sec=1,
             check_interval_sec=1,
             http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
                 port=80,
-            ),
-            timeout_sec=1)
+            ))
         ```
         ### Region Health Check Http Logs
 
@@ -1092,6 +1109,7 @@ class RegionHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         http_region_health_check = gcp.compute.RegionHealthCheck("http-region-health-check",
+            name="http-region-health-check",
             timeout_sec=1,
             check_interval_sec=1,
             http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
@@ -1099,8 +1117,7 @@ class RegionHealthCheck(pulumi.CustomResource):
             ),
             log_config=gcp.compute.RegionHealthCheckLogConfigArgs(
                 enable=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Region Health Check Http Full
 
@@ -1109,19 +1126,20 @@ class RegionHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         http_region_health_check = gcp.compute.RegionHealthCheck("http-region-health-check",
-            check_interval_sec=1,
+            name="http-region-health-check",
             description="Health check via http",
+            timeout_sec=1,
+            check_interval_sec=1,
             healthy_threshold=4,
+            unhealthy_threshold=5,
             http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
-                host="1.2.3.4",
                 port_name="health-check-port",
                 port_specification="USE_NAMED_PORT",
-                proxy_header="NONE",
+                host="1.2.3.4",
                 request_path="/mypath",
+                proxy_header="NONE",
                 response="I AM HEALTHY",
-            ),
-            timeout_sec=1,
-            unhealthy_threshold=5)
+            ))
         ```
         ### Region Health Check Https
 
@@ -1130,11 +1148,12 @@ class RegionHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         https_region_health_check = gcp.compute.RegionHealthCheck("https-region-health-check",
+            name="https-region-health-check",
+            timeout_sec=1,
             check_interval_sec=1,
             https_health_check=gcp.compute.RegionHealthCheckHttpsHealthCheckArgs(
                 port=443,
-            ),
-            timeout_sec=1)
+            ))
         ```
         ### Region Health Check Https Full
 
@@ -1143,19 +1162,20 @@ class RegionHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         https_region_health_check = gcp.compute.RegionHealthCheck("https-region-health-check",
-            check_interval_sec=1,
+            name="https-region-health-check",
             description="Health check via https",
+            timeout_sec=1,
+            check_interval_sec=1,
             healthy_threshold=4,
+            unhealthy_threshold=5,
             https_health_check=gcp.compute.RegionHealthCheckHttpsHealthCheckArgs(
-                host="1.2.3.4",
                 port_name="health-check-port",
                 port_specification="USE_NAMED_PORT",
-                proxy_header="NONE",
+                host="1.2.3.4",
                 request_path="/mypath",
+                proxy_header="NONE",
                 response="I AM HEALTHY",
-            ),
-            timeout_sec=1,
-            unhealthy_threshold=5)
+            ))
         ```
         ### Region Health Check Http2
 
@@ -1164,11 +1184,12 @@ class RegionHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         http2_region_health_check = gcp.compute.RegionHealthCheck("http2-region-health-check",
+            name="http2-region-health-check",
+            timeout_sec=1,
             check_interval_sec=1,
             http2_health_check=gcp.compute.RegionHealthCheckHttp2HealthCheckArgs(
                 port=443,
-            ),
-            timeout_sec=1)
+            ))
         ```
         ### Region Health Check Http2 Full
 
@@ -1177,19 +1198,20 @@ class RegionHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         http2_region_health_check = gcp.compute.RegionHealthCheck("http2-region-health-check",
-            check_interval_sec=1,
+            name="http2-region-health-check",
             description="Health check via http2",
+            timeout_sec=1,
+            check_interval_sec=1,
             healthy_threshold=4,
+            unhealthy_threshold=5,
             http2_health_check=gcp.compute.RegionHealthCheckHttp2HealthCheckArgs(
-                host="1.2.3.4",
                 port_name="health-check-port",
                 port_specification="USE_NAMED_PORT",
-                proxy_header="NONE",
+                host="1.2.3.4",
                 request_path="/mypath",
+                proxy_header="NONE",
                 response="I AM HEALTHY",
-            ),
-            timeout_sec=1,
-            unhealthy_threshold=5)
+            ))
         ```
         ### Region Health Check Grpc
 
@@ -1198,11 +1220,12 @@ class RegionHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         grpc_region_health_check = gcp.compute.RegionHealthCheck("grpc-region-health-check",
+            name="grpc-region-health-check",
+            timeout_sec=1,
             check_interval_sec=1,
             grpc_health_check=gcp.compute.RegionHealthCheckGrpcHealthCheckArgs(
                 port=443,
-            ),
-            timeout_sec=1)
+            ))
         ```
         ### Region Health Check Grpc Full
 
@@ -1211,13 +1234,14 @@ class RegionHealthCheck(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         grpc_region_health_check = gcp.compute.RegionHealthCheck("grpc-region-health-check",
+            name="grpc-region-health-check",
+            timeout_sec=1,
             check_interval_sec=1,
             grpc_health_check=gcp.compute.RegionHealthCheckGrpcHealthCheckArgs(
-                grpc_service_name="testservice",
                 port_name="health-check-port",
                 port_specification="USE_NAMED_PORT",
-            ),
-            timeout_sec=1)
+                grpc_service_name="testservice",
+            ))
         ```
 
         ## Import

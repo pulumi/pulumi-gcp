@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := endpoints.LookupServiceIamPolicy(ctx, &endpoints.LookupServiceIamPolicyArgs{
-//				ServiceName: google_endpoints_service.Endpoints_service.Service_name,
+//				ServiceName: endpointsService.ServiceName,
 //			}, nil)
 //			if err != nil {
 //				return err

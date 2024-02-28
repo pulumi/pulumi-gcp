@@ -43,8 +43,8 @@ import * as utilities from "../utilities";
  *
  * const editor = new gcp.dataproc.JobIAMBinding("editor", {
  *     jobId: "your-dataproc-job",
- *     members: ["user:jane@example.com"],
  *     role: "roles/editor",
+ *     members: ["user:jane@example.com"],
  * });
  * ```
  *
@@ -56,8 +56,8 @@ import * as utilities from "../utilities";
  *
  * const editor = new gcp.dataproc.JobIAMMember("editor", {
  *     jobId: "your-dataproc-job",
- *     member: "user:jane@example.com",
  *     role: "roles/editor",
+ *     member: "user:jane@example.com",
  * });
  * ```
  *

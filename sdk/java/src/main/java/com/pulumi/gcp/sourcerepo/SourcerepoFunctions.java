@@ -203,8 +203,8 @@ public final class SourcerepoFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SourcerepoFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(google_sourcerepo_repository.my-repo().project())
-     *             .repository(google_sourcerepo_repository.my-repo().name())
+     *             .project(my_repo.project())
+     *             .repository(my_repo.name())
      *             .build());
      * 
      *     }
@@ -241,8 +241,8 @@ public final class SourcerepoFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SourcerepoFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(google_sourcerepo_repository.my-repo().project())
-     *             .repository(google_sourcerepo_repository.my-repo().name())
+     *             .project(my_repo.project())
+     *             .repository(my_repo.name())
      *             .build());
      * 
      *     }
@@ -279,8 +279,8 @@ public final class SourcerepoFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SourcerepoFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(google_sourcerepo_repository.my-repo().project())
-     *             .repository(google_sourcerepo_repository.my-repo().name())
+     *             .project(my_repo.project())
+     *             .repository(my_repo.name())
      *             .build());
      * 
      *     }
@@ -317,8 +317,8 @@ public final class SourcerepoFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SourcerepoFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(google_sourcerepo_repository.my-repo().project())
-     *             .repository(google_sourcerepo_repository.my-repo().name())
+     *             .project(my_repo.project())
+     *             .repository(my_repo.name())
      *             .build());
      * 
      *     }

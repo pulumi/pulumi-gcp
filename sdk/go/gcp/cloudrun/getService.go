@@ -30,8 +30,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrun.LookupService(ctx, &cloudrun.LookupServiceArgs{
-//				Location: "us-central1",
 //				Name:     "my-service",
+//				Location: "us-central1",
 //			}, nil)
 //			if err != nil {
 //				return err

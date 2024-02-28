@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.DataPlex
         /// {
         ///     var policy = Gcp.DataPlex.GetDatascanIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_dataplex_datascan.Basic_profile.Project,
-        ///         Location = google_dataplex_datascan.Basic_profile.Location,
-        ///         DataScanId = google_dataplex_datascan.Basic_profile.Data_scan_id,
+        ///         Project = basicProfile.Project,
+        ///         Location = basicProfile.Location,
+        ///         DataScanId = basicProfile.DataScanId,
         ///     });
         /// 
         /// });
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.DataPlex
         /// {
         ///     var policy = Gcp.DataPlex.GetDatascanIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_dataplex_datascan.Basic_profile.Project,
-        ///         Location = google_dataplex_datascan.Basic_profile.Location,
-        ///         DataScanId = google_dataplex_datascan.Basic_profile.Data_scan_id,
+        ///         Project = basicProfile.Project,
+        ///         Location = basicProfile.Location,
+        ///         DataScanId = basicProfile.DataScanId,
         ///     });
         /// 
         /// });

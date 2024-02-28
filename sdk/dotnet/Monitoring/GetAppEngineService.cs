@@ -43,11 +43,13 @@ namespace Pulumi.Gcp.Monitoring
         /// {
         ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
         ///     {
+        ///         Name = "appengine-static-content",
         ///         Location = "US",
         ///     });
         /// 
         ///     var @object = new Gcp.Storage.BucketObject("object", new()
         ///     {
+        ///         Name = "hello-world.zip",
         ///         Bucket = bucket.Name,
         ///         Source = new FileAsset("./test-fixtures/hello-world.zip"),
         ///     });
@@ -80,6 +82,7 @@ namespace Pulumi.Gcp.Monitoring
         ///         DeleteServiceOnDestroy = false,
         ///     });
         /// 
+        ///     // Monitors the default AppEngine service
         ///     var srv = Gcp.Monitoring.GetAppEngineService.Invoke(new()
         ///     {
         ///         ModuleId = myapp.Service,
@@ -125,11 +128,13 @@ namespace Pulumi.Gcp.Monitoring
         /// {
         ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
         ///     {
+        ///         Name = "appengine-static-content",
         ///         Location = "US",
         ///     });
         /// 
         ///     var @object = new Gcp.Storage.BucketObject("object", new()
         ///     {
+        ///         Name = "hello-world.zip",
         ///         Bucket = bucket.Name,
         ///         Source = new FileAsset("./test-fixtures/hello-world.zip"),
         ///     });
@@ -162,6 +167,7 @@ namespace Pulumi.Gcp.Monitoring
         ///         DeleteServiceOnDestroy = false,
         ///     });
         /// 
+        ///     // Monitors the default AppEngine service
         ///     var srv = Gcp.Monitoring.GetAppEngineService.Invoke(new()
         ///     {
         ///         ModuleId = myapp.Service,

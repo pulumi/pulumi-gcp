@@ -53,8 +53,8 @@ namespace Pulumi.Gcp.Iap
     /// 
     ///     var policy = new Gcp.Iap.WebTypeAppEngingIamPolicy("policy", new()
     ///     {
-    ///         Project = google_app_engine_application.App.Project,
-    ///         AppId = google_app_engine_application.App.App_id,
+    ///         Project = app.Project,
+    ///         AppId = app.AppId,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -94,8 +94,8 @@ namespace Pulumi.Gcp.Iap
     /// 
     ///     var policy = new Gcp.Iap.WebTypeAppEngingIamPolicy("policy", new()
     ///     {
-    ///         Project = google_app_engine_application.App.Project,
-    ///         AppId = google_app_engine_application.App.App_id,
+    ///         Project = app.Project,
+    ///         AppId = app.AppId,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -113,8 +113,8 @@ namespace Pulumi.Gcp.Iap
     /// {
     ///     var binding = new Gcp.Iap.WebTypeAppEngingIamBinding("binding", new()
     ///     {
-    ///         Project = google_app_engine_application.App.Project,
-    ///         AppId = google_app_engine_application.App.App_id,
+    ///         Project = app.Project,
+    ///         AppId = app.AppId,
     ///         Role = "roles/iap.httpsResourceAccessor",
     ///         Members = new[]
     ///         {
@@ -137,8 +137,8 @@ namespace Pulumi.Gcp.Iap
     /// {
     ///     var binding = new Gcp.Iap.WebTypeAppEngingIamBinding("binding", new()
     ///     {
-    ///         Project = google_app_engine_application.App.Project,
-    ///         AppId = google_app_engine_application.App.App_id,
+    ///         Project = app.Project,
+    ///         AppId = app.AppId,
     ///         Role = "roles/iap.httpsResourceAccessor",
     ///         Members = new[]
     ///         {
@@ -166,8 +166,8 @@ namespace Pulumi.Gcp.Iap
     /// {
     ///     var member = new Gcp.Iap.WebTypeAppEngingIamMember("member", new()
     ///     {
-    ///         Project = google_app_engine_application.App.Project,
-    ///         AppId = google_app_engine_application.App.App_id,
+    ///         Project = app.Project,
+    ///         AppId = app.AppId,
     ///         Role = "roles/iap.httpsResourceAccessor",
     ///         Member = "user:jane@example.com",
     ///     });
@@ -187,8 +187,8 @@ namespace Pulumi.Gcp.Iap
     /// {
     ///     var member = new Gcp.Iap.WebTypeAppEngingIamMember("member", new()
     ///     {
-    ///         Project = google_app_engine_application.App.Project,
-    ///         AppId = google_app_engine_application.App.App_id,
+    ///         Project = app.Project,
+    ///         AppId = app.AppId,
     ///         Role = "roles/iap.httpsResourceAccessor",
     ///         Member = "user:jane@example.com",
     ///         Condition = new Gcp.Iap.Inputs.WebTypeAppEngingIamMemberConditionArgs

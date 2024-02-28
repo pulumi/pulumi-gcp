@@ -34,6 +34,126 @@ import * as utilities from "../utilities";
  * In conclusion: Be extremely cautious.
  *
  * ## Example Usage
+ * ### Managed Ssl Certificate Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.ManagedSslCertificate("default", {
+ *     name: "test-cert",
+ *     managed: {
+ *         domains: ["sslcert.tf-test.club."],
+ *     },
+ * });
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ *     name: "http-health-check",
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: defaultHttpHealthCheck.id,
+ * });
+ * const defaultURLMap = new gcp.compute.URLMap("default", {
+ *     name: "url-map",
+ *     description: "a description",
+ *     defaultService: defaultBackendService.id,
+ *     hostRules: [{
+ *         hosts: ["sslcert.tf-test.club"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: defaultBackendService.id,
+ *         pathRules: [{
+ *             paths: ["/*"],
+ *             service: defaultBackendService.id,
+ *         }],
+ *     }],
+ * });
+ * const defaultTargetHttpsProxy = new gcp.compute.TargetHttpsProxy("default", {
+ *     name: "test-proxy",
+ *     urlMap: defaultURLMap.id,
+ *     sslCertificates: [_default.id],
+ * });
+ * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("default", {
+ *     name: "forwarding-rule",
+ *     target: defaultTargetHttpsProxy.id,
+ *     portRange: "443",
+ * });
+ * ```
+ * ### Managed Ssl Certificate Recreation
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
+ *
+ * function notImplemented(message: string) {
+ *     throw new Error(message);
+ * }
+ *
+ * const managedDomains = notImplemented("tolist([\"test.example.com\"])");
+ * const certificate = new random.RandomId("certificate", {
+ *     byteLength: 4,
+ *     prefix: "issue6147-cert-",
+ *     keepers: {
+ *         domains: std.join({
+ *             separator: ",",
+ *             input: managedDomains,
+ *         }).then(invoke => invoke.result),
+ *     },
+ * });
+ * const cert = new gcp.compute.ManagedSslCertificate("cert", {
+ *     name: certificate.hex,
+ *     managed: {
+ *         domains: managedDomains,
+ *     },
+ * });
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ *     name: "http-health-check",
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: defaultHttpHealthCheck.id,
+ * });
+ * const defaultURLMap = new gcp.compute.URLMap("default", {
+ *     name: "url-map",
+ *     description: "a description",
+ *     defaultService: defaultBackendService.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: defaultBackendService.id,
+ *         pathRules: [{
+ *             paths: ["/*"],
+ *             service: defaultBackendService.id,
+ *         }],
+ *     }],
+ * });
+ * // This example allows the list of managed domains to be modified and will
+ * // recreate the ssl certificate and update the target https proxy correctly
+ * const _default = new gcp.compute.TargetHttpsProxy("default", {
+ *     name: "test-proxy",
+ *     urlMap: defaultURLMap.id,
+ *     sslCertificates: [cert.id],
+ * });
+ * ```
  *
  * ## Import
  *

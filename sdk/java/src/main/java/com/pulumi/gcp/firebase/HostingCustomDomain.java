@@ -30,7 +30,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.firebase.HostingCustomDomain;
  * import com.pulumi.gcp.firebase.HostingCustomDomainArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -48,9 +47,7 @@ import javax.annotation.Nullable;
  *             .project(&#34;my-project-name&#34;)
  *             .siteId(&#34;site-id&#34;)
  *             .customDomain(&#34;custom.domain.com&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -66,7 +63,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.firebase.HostingSiteArgs;
  * import com.pulumi.gcp.firebase.HostingCustomDomain;
  * import com.pulumi.gcp.firebase.HostingCustomDomainArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -80,23 +76,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHostingSite = new HostingSite(&#34;defaultHostingSite&#34;, HostingSiteArgs.builder()        
+ *         var default_ = new HostingSite(&#34;default&#34;, HostingSiteArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .siteId(&#34;site-id-full&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultHostingCustomDomain = new HostingCustomDomain(&#34;defaultHostingCustomDomain&#34;, HostingCustomDomainArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
- *             .siteId(defaultHostingSite.siteId())
+ *             .siteId(default_.siteId())
  *             .customDomain(&#34;source.domain.com&#34;)
  *             .certPreference(&#34;GROUPED&#34;)
  *             .redirectTarget(&#34;destination.domain.com&#34;)
  *             .waitDnsVerification(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -120,7 +112,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.firebase.HostingReleaseArgs;
  * import com.pulumi.gcp.firebase.HostingCustomDomain;
  * import com.pulumi.gcp.firebase.HostingCustomDomainArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -134,15 +125,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHostingSite = new HostingSite(&#34;defaultHostingSite&#34;, HostingSiteArgs.builder()        
+ *         var default_ = new HostingSite(&#34;default&#34;, HostingSiteArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .siteId(&#34;site-id&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
+ *             .name(&#34;cloud-run-service-via-hosting&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .ingress(&#34;INGRESS_TRAFFIC_ALL&#34;)
  *             .template(ServiceTemplateArgs.builder()
@@ -150,12 +140,10 @@ import javax.annotation.Nullable;
  *                     .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultHostingVersion = new HostingVersion(&#34;defaultHostingVersion&#34;, HostingVersionArgs.builder()        
- *             .siteId(defaultHostingSite.siteId())
+ *             .siteId(default_.siteId())
  *             .config(HostingVersionConfigArgs.builder()
  *                 .rewrites(HostingVersionConfigRewriteArgs.builder()
  *                     .glob(&#34;/hello/**&#34;)
@@ -165,26 +153,20 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultHostingRelease = new HostingRelease(&#34;defaultHostingRelease&#34;, HostingReleaseArgs.builder()        
- *             .siteId(defaultHostingSite.siteId())
+ *             .siteId(default_.siteId())
  *             .versionName(defaultHostingVersion.name())
  *             .message(&#34;Cloud Run Integration&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultHostingCustomDomain = new HostingCustomDomain(&#34;defaultHostingCustomDomain&#34;, HostingCustomDomainArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
- *             .siteId(defaultHostingSite.siteId())
+ *             .siteId(default_.siteId())
  *             .customDomain(&#34;run.custom.domain.com&#34;)
  *             .waitDnsVerification(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

@@ -29,21 +29,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
+//			defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("workstation-cluster"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("workstation-cluster"),
 //				IpCidrRange: pulumi.String("10.0.0.0/24"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     defaultNetwork.Name,
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = workstations.NewWorkstationCluster(ctx, "defaultWorkstationCluster", &workstations.WorkstationClusterArgs{
+//			_, err = workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
 //				WorkstationClusterId: pulumi.String("workstation-cluster"),
 //				Network:              defaultNetwork.ID(),
 //				Subnetwork:           defaultSubnetwork.ID(),
@@ -54,7 +56,7 @@ import (
 //				Annotations: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -83,21 +85,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
+//			defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("workstation-cluster-private"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("workstation-cluster-private"),
 //				IpCidrRange: pulumi.String("10.0.0.0/24"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     defaultNetwork.Name,
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = workstations.NewWorkstationCluster(ctx, "defaultWorkstationCluster", &workstations.WorkstationClusterArgs{
+//			_, err = workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
 //				WorkstationClusterId: pulumi.String("workstation-cluster-private"),
 //				Network:              defaultNetwork.ID(),
 //				Subnetwork:           defaultSubnetwork.ID(),
@@ -111,7 +115,7 @@ import (
 //				Annotations: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -140,21 +144,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
+//			defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("workstation-cluster-custom-domain"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("workstation-cluster-custom-domain"),
 //				IpCidrRange: pulumi.String("10.0.0.0/24"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     defaultNetwork.Name,
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = workstations.NewWorkstationCluster(ctx, "defaultWorkstationCluster", &workstations.WorkstationClusterArgs{
+//			_, err = workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
 //				WorkstationClusterId: pulumi.String("workstation-cluster-custom-domain"),
 //				Network:              defaultNetwork.ID(),
 //				Subnetwork:           defaultSubnetwork.ID(),
@@ -171,7 +177,7 @@ import (
 //				Annotations: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

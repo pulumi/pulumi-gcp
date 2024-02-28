@@ -368,30 +368,32 @@ class SecurityPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        policy = gcp.compute.SecurityPolicy("policy", rules=[
-            gcp.compute.SecurityPolicyRuleArgs(
-                action="deny(403)",
-                description="Deny access to IPs in 9.9.9.0/24",
-                match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                    config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                        src_ip_ranges=["9.9.9.0/24"],
+        policy = gcp.compute.SecurityPolicy("policy",
+            name="my-policy",
+            rules=[
+                gcp.compute.SecurityPolicyRuleArgs(
+                    action="deny(403)",
+                    priority=1000,
+                    match=gcp.compute.SecurityPolicyRuleMatchArgs(
+                        versioned_expr="SRC_IPS_V1",
+                        config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
+                            src_ip_ranges=["9.9.9.0/24"],
+                        ),
                     ),
-                    versioned_expr="SRC_IPS_V1",
+                    description="Deny access to IPs in 9.9.9.0/24",
                 ),
-                priority=1000,
-            ),
-            gcp.compute.SecurityPolicyRuleArgs(
-                action="allow",
-                description="default rule",
-                match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                    config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                        src_ip_ranges=["*"],
+                gcp.compute.SecurityPolicyRuleArgs(
+                    action="allow",
+                    priority=2147483647,
+                    match=gcp.compute.SecurityPolicyRuleMatchArgs(
+                        versioned_expr="SRC_IPS_V1",
+                        config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
+                            src_ip_ranges=["*"],
+                        ),
                     ),
-                    versioned_expr="SRC_IPS_V1",
+                    description="default rule",
                 ),
-                priority=2147483647,
-            ),
-        ])
+            ])
         ```
         ### With ReCAPTCHA Configuration Options
 
@@ -411,6 +413,7 @@ class SecurityPolicy(pulumi.CustomResource):
                 allowed_domains=["localhost"],
             ))
         policy = gcp.compute.SecurityPolicy("policy",
+            name="my-policy",
             description="basic security policy",
             type="CLOUD_ARMOR",
             recaptcha_options_config=gcp.compute.SecurityPolicyRecaptchaOptionsConfigArgs(
@@ -423,40 +426,42 @@ class SecurityPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        policy = gcp.compute.SecurityPolicy("policy", rules=[
-            gcp.compute.SecurityPolicyRuleArgs(
-                action="allow",
-                description="default rule",
-                match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                    config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                        src_ip_ranges=["*"],
-                    ),
-                    versioned_expr="SRC_IPS_V1",
-                ),
-                priority=2147483647,
-            ),
-            gcp.compute.SecurityPolicyRuleArgs(
-                action="allow",
-                header_action=gcp.compute.SecurityPolicyRuleHeaderActionArgs(
-                    request_headers_to_adds=[
-                        gcp.compute.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs(
-                            header_name="reCAPTCHA-Warning",
-                            header_value="high",
+        policy = gcp.compute.SecurityPolicy("policy",
+            name="my-policy",
+            rules=[
+                gcp.compute.SecurityPolicyRuleArgs(
+                    action="allow",
+                    priority=2147483647,
+                    match=gcp.compute.SecurityPolicyRuleMatchArgs(
+                        versioned_expr="SRC_IPS_V1",
+                        config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
+                            src_ip_ranges=["*"],
                         ),
-                        gcp.compute.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs(
-                            header_name="X-Resource",
-                            header_value="test",
-                        ),
-                    ],
+                    ),
+                    description="default rule",
                 ),
-                match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                    expr=gcp.compute.SecurityPolicyRuleMatchExprArgs(
-                        expression="request.path.matches(\\"/login.html\\") && token.recaptcha_session.score < 0.2",
+                gcp.compute.SecurityPolicyRuleArgs(
+                    action="allow",
+                    priority=1000,
+                    match=gcp.compute.SecurityPolicyRuleMatchArgs(
+                        expr=gcp.compute.SecurityPolicyRuleMatchExprArgs(
+                            expression="request.path.matches(\\"/login.html\\") && token.recaptcha_session.score < 0.2",
+                        ),
+                    ),
+                    header_action=gcp.compute.SecurityPolicyRuleHeaderActionArgs(
+                        request_headers_to_adds=[
+                            gcp.compute.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs(
+                                header_name="reCAPTCHA-Warning",
+                                header_value="high",
+                            ),
+                            gcp.compute.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs(
+                                header_name="X-Resource",
+                                header_value="test",
+                            ),
+                        ],
                     ),
                 ),
-                priority=1000,
-            ),
-        ])
+            ])
         ```
         ### With EnforceOnKey Value As Empty String
         A scenario example that won't cause any conflict between `enforce_on_key` and `enforce_on_key_configs`, because `enforce_on_key` was specified as an empty string:
@@ -466,27 +471,28 @@ class SecurityPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         policy = gcp.compute.SecurityPolicy("policy",
+            name="%s",
             description="throttle rule with enforce_on_key_configs",
             rules=[gcp.compute.SecurityPolicyRuleArgs(
                 action="throttle",
-                description="default rule",
+                priority=2147483647,
                 match=gcp.compute.SecurityPolicyRuleMatchArgs(
+                    versioned_expr="SRC_IPS_V1",
                     config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
                         src_ip_ranges=["*"],
                     ),
-                    versioned_expr="SRC_IPS_V1",
                 ),
-                priority=2147483647,
+                description="default rule",
                 rate_limit_options=gcp.compute.SecurityPolicyRuleRateLimitOptionsArgs(
                     conform_action="allow",
+                    exceed_action="redirect",
                     enforce_on_key="",
                     enforce_on_key_configs=[gcp.compute.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs(
                         enforce_on_key_type="IP",
                     )],
-                    exceed_action="redirect",
                     exceed_redirect_options=gcp.compute.SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs(
-                        target="<https://www.example.com>",
                         type="EXTERNAL_302",
+                        target="<https://www.example.com>",
                     ),
                     rate_limit_threshold=gcp.compute.SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs(
                         count=10,
@@ -556,30 +562,32 @@ class SecurityPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        policy = gcp.compute.SecurityPolicy("policy", rules=[
-            gcp.compute.SecurityPolicyRuleArgs(
-                action="deny(403)",
-                description="Deny access to IPs in 9.9.9.0/24",
-                match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                    config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                        src_ip_ranges=["9.9.9.0/24"],
+        policy = gcp.compute.SecurityPolicy("policy",
+            name="my-policy",
+            rules=[
+                gcp.compute.SecurityPolicyRuleArgs(
+                    action="deny(403)",
+                    priority=1000,
+                    match=gcp.compute.SecurityPolicyRuleMatchArgs(
+                        versioned_expr="SRC_IPS_V1",
+                        config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
+                            src_ip_ranges=["9.9.9.0/24"],
+                        ),
                     ),
-                    versioned_expr="SRC_IPS_V1",
+                    description="Deny access to IPs in 9.9.9.0/24",
                 ),
-                priority=1000,
-            ),
-            gcp.compute.SecurityPolicyRuleArgs(
-                action="allow",
-                description="default rule",
-                match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                    config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                        src_ip_ranges=["*"],
+                gcp.compute.SecurityPolicyRuleArgs(
+                    action="allow",
+                    priority=2147483647,
+                    match=gcp.compute.SecurityPolicyRuleMatchArgs(
+                        versioned_expr="SRC_IPS_V1",
+                        config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
+                            src_ip_ranges=["*"],
+                        ),
                     ),
-                    versioned_expr="SRC_IPS_V1",
+                    description="default rule",
                 ),
-                priority=2147483647,
-            ),
-        ])
+            ])
         ```
         ### With ReCAPTCHA Configuration Options
 
@@ -599,6 +607,7 @@ class SecurityPolicy(pulumi.CustomResource):
                 allowed_domains=["localhost"],
             ))
         policy = gcp.compute.SecurityPolicy("policy",
+            name="my-policy",
             description="basic security policy",
             type="CLOUD_ARMOR",
             recaptcha_options_config=gcp.compute.SecurityPolicyRecaptchaOptionsConfigArgs(
@@ -611,40 +620,42 @@ class SecurityPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        policy = gcp.compute.SecurityPolicy("policy", rules=[
-            gcp.compute.SecurityPolicyRuleArgs(
-                action="allow",
-                description="default rule",
-                match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                    config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                        src_ip_ranges=["*"],
-                    ),
-                    versioned_expr="SRC_IPS_V1",
-                ),
-                priority=2147483647,
-            ),
-            gcp.compute.SecurityPolicyRuleArgs(
-                action="allow",
-                header_action=gcp.compute.SecurityPolicyRuleHeaderActionArgs(
-                    request_headers_to_adds=[
-                        gcp.compute.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs(
-                            header_name="reCAPTCHA-Warning",
-                            header_value="high",
+        policy = gcp.compute.SecurityPolicy("policy",
+            name="my-policy",
+            rules=[
+                gcp.compute.SecurityPolicyRuleArgs(
+                    action="allow",
+                    priority=2147483647,
+                    match=gcp.compute.SecurityPolicyRuleMatchArgs(
+                        versioned_expr="SRC_IPS_V1",
+                        config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
+                            src_ip_ranges=["*"],
                         ),
-                        gcp.compute.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs(
-                            header_name="X-Resource",
-                            header_value="test",
-                        ),
-                    ],
+                    ),
+                    description="default rule",
                 ),
-                match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                    expr=gcp.compute.SecurityPolicyRuleMatchExprArgs(
-                        expression="request.path.matches(\\"/login.html\\") && token.recaptcha_session.score < 0.2",
+                gcp.compute.SecurityPolicyRuleArgs(
+                    action="allow",
+                    priority=1000,
+                    match=gcp.compute.SecurityPolicyRuleMatchArgs(
+                        expr=gcp.compute.SecurityPolicyRuleMatchExprArgs(
+                            expression="request.path.matches(\\"/login.html\\") && token.recaptcha_session.score < 0.2",
+                        ),
+                    ),
+                    header_action=gcp.compute.SecurityPolicyRuleHeaderActionArgs(
+                        request_headers_to_adds=[
+                            gcp.compute.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs(
+                                header_name="reCAPTCHA-Warning",
+                                header_value="high",
+                            ),
+                            gcp.compute.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs(
+                                header_name="X-Resource",
+                                header_value="test",
+                            ),
+                        ],
                     ),
                 ),
-                priority=1000,
-            ),
-        ])
+            ])
         ```
         ### With EnforceOnKey Value As Empty String
         A scenario example that won't cause any conflict between `enforce_on_key` and `enforce_on_key_configs`, because `enforce_on_key` was specified as an empty string:
@@ -654,27 +665,28 @@ class SecurityPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         policy = gcp.compute.SecurityPolicy("policy",
+            name="%s",
             description="throttle rule with enforce_on_key_configs",
             rules=[gcp.compute.SecurityPolicyRuleArgs(
                 action="throttle",
-                description="default rule",
+                priority=2147483647,
                 match=gcp.compute.SecurityPolicyRuleMatchArgs(
+                    versioned_expr="SRC_IPS_V1",
                     config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
                         src_ip_ranges=["*"],
                     ),
-                    versioned_expr="SRC_IPS_V1",
                 ),
-                priority=2147483647,
+                description="default rule",
                 rate_limit_options=gcp.compute.SecurityPolicyRuleRateLimitOptionsArgs(
                     conform_action="allow",
+                    exceed_action="redirect",
                     enforce_on_key="",
                     enforce_on_key_configs=[gcp.compute.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs(
                         enforce_on_key_type="IP",
                     )],
-                    exceed_action="redirect",
                     exceed_redirect_options=gcp.compute.SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs(
-                        target="<https://www.example.com>",
                         type="EXTERNAL_302",
+                        target="<https://www.example.com>",
                     ),
                     rate_limit_threshold=gcp.compute.SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs(
                         count=10,

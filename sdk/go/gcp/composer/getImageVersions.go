@@ -32,6 +32,7 @@ import (
 //				return err
 //			}
 //			_, err = composer.NewEnvironment(ctx, "test", &composer.EnvironmentArgs{
+//				Name:   pulumi.String("test-env"),
 //				Region: pulumi.String("us-central1"),
 //				Config: &composer.EnvironmentConfigArgs{
 //					SoftwareConfig: &composer.EnvironmentConfigSoftwareConfigArgs{

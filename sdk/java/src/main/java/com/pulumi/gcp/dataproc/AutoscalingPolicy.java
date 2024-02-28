@@ -66,6 +66,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var basic = new Cluster(&#34;basic&#34;, ClusterArgs.builder()        
+ *             .name(&#34;dataproc-policy&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .clusterConfig(ClusterClusterConfigArgs.builder()
  *                 .autoscalingConfig(ClusterClusterConfigAutoscalingConfigArgs.builder()

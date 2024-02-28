@@ -55,9 +55,9 @@ import (
 //				return err
 //			}
 //			_, err = cloudfunctionsv2.NewFunctionIamPolicy(ctx, "policy", &cloudfunctionsv2.FunctionIamPolicyArgs{
-//				Project:       pulumi.Any(google_cloudfunctions2_function.Function.Project),
-//				Location:      pulumi.Any(google_cloudfunctions2_function.Function.Location),
-//				CloudFunction: pulumi.Any(google_cloudfunctions2_function.Function.Name),
+//				Project:       pulumi.Any(function.Project),
+//				Location:      pulumi.Any(function.Location),
+//				CloudFunction: pulumi.Any(function.Name),
 //				PolicyData:    *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -84,9 +84,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudfunctionsv2.NewFunctionIamBinding(ctx, "binding", &cloudfunctionsv2.FunctionIamBindingArgs{
-//				Project:       pulumi.Any(google_cloudfunctions2_function.Function.Project),
-//				Location:      pulumi.Any(google_cloudfunctions2_function.Function.Location),
-//				CloudFunction: pulumi.Any(google_cloudfunctions2_function.Function.Name),
+//				Project:       pulumi.Any(function.Project),
+//				Location:      pulumi.Any(function.Location),
+//				CloudFunction: pulumi.Any(function.Name),
 //				Role:          pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -116,9 +116,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudfunctionsv2.NewFunctionIamMember(ctx, "member", &cloudfunctionsv2.FunctionIamMemberArgs{
-//				Project:       pulumi.Any(google_cloudfunctions2_function.Function.Project),
-//				Location:      pulumi.Any(google_cloudfunctions2_function.Function.Location),
-//				CloudFunction: pulumi.Any(google_cloudfunctions2_function.Function.Name),
+//				Project:       pulumi.Any(function.Project),
+//				Location:      pulumi.Any(function.Location),
+//				CloudFunction: pulumi.Any(function.Name),
 //				Role:          pulumi.String("roles/viewer"),
 //				Member:        pulumi.String("user:jane@example.com"),
 //			})

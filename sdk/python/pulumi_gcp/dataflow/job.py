@@ -798,13 +798,14 @@ class Job(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        big_data_job = gcp.dataflow.Job("bigDataJob",
-            parameters={
-                "baz": "qux",
-                "foo": "bar",
-            },
+        big_data_job = gcp.dataflow.Job("big_data_job",
+            name="dataflow-job",
+            template_gcs_path="gs://my-bucket/templates/template_file",
             temp_gcs_location="gs://my-bucket/tmp_dir",
-            template_gcs_path="gs://my-bucket/templates/template_file")
+            parameters={
+                "foo": "bar",
+                "baz": "qux",
+            })
         ```
         ### Streaming Job
 
@@ -812,14 +813,17 @@ class Job(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        topic = gcp.pubsub.Topic("topic")
+        topic = gcp.pubsub.Topic("topic", name="dataflow-job1")
         bucket1 = gcp.storage.Bucket("bucket1",
+            name="tf-test-bucket1",
             location="US",
             force_destroy=True)
         bucket2 = gcp.storage.Bucket("bucket2",
+            name="tf-test-bucket2",
             location="US",
             force_destroy=True)
-        pubsub_stream = gcp.dataflow.Job("pubsubStream",
+        pubsub_stream = gcp.dataflow.Job("pubsub_stream",
+            name="tf-test-dataflow-job1",
             template_gcs_path="gs://my-bucket/templates/template_file",
             temp_gcs_location="gs://my-bucket/tmp_dir",
             enable_streaming_engine=True,
@@ -852,20 +856,20 @@ class Job(pulumi.CustomResource):
         big_data_job_subscription_id = config.get("bigDataJobSubscriptionId")
         if big_data_job_subscription_id is None:
             big_data_job_subscription_id = "projects/myproject/subscriptions/messages"
-        big_data_job_name_suffix = random.RandomId("bigDataJobNameSuffix",
+        big_data_job_name_suffix = random.RandomId("big_data_job_name_suffix",
             byte_length=4,
             keepers={
-                "region": var["region"],
+                "region": region,
                 "subscription_id": big_data_job_subscription_id,
             })
-        big_data_job = gcp.dataflow.FlexTemplateJob("bigDataJob",
-            region=var["region"],
+        big_data_job = gcp.dataflow.FlexTemplateJob("big_data_job",
+            name=big_data_job_name_suffix.dec.apply(lambda dec: f"dataflow-flextemplates-job-{dec}"),
+            region=region,
             container_spec_gcs_path="gs://my-bucket/templates/template.json",
             skip_wait_on_job_termination=True,
             parameters={
                 "inputSubscription": big_data_job_subscription_id,
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
 
         ## Import
@@ -924,13 +928,14 @@ class Job(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        big_data_job = gcp.dataflow.Job("bigDataJob",
-            parameters={
-                "baz": "qux",
-                "foo": "bar",
-            },
+        big_data_job = gcp.dataflow.Job("big_data_job",
+            name="dataflow-job",
+            template_gcs_path="gs://my-bucket/templates/template_file",
             temp_gcs_location="gs://my-bucket/tmp_dir",
-            template_gcs_path="gs://my-bucket/templates/template_file")
+            parameters={
+                "foo": "bar",
+                "baz": "qux",
+            })
         ```
         ### Streaming Job
 
@@ -938,14 +943,17 @@ class Job(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        topic = gcp.pubsub.Topic("topic")
+        topic = gcp.pubsub.Topic("topic", name="dataflow-job1")
         bucket1 = gcp.storage.Bucket("bucket1",
+            name="tf-test-bucket1",
             location="US",
             force_destroy=True)
         bucket2 = gcp.storage.Bucket("bucket2",
+            name="tf-test-bucket2",
             location="US",
             force_destroy=True)
-        pubsub_stream = gcp.dataflow.Job("pubsubStream",
+        pubsub_stream = gcp.dataflow.Job("pubsub_stream",
+            name="tf-test-dataflow-job1",
             template_gcs_path="gs://my-bucket/templates/template_file",
             temp_gcs_location="gs://my-bucket/tmp_dir",
             enable_streaming_engine=True,
@@ -978,20 +986,20 @@ class Job(pulumi.CustomResource):
         big_data_job_subscription_id = config.get("bigDataJobSubscriptionId")
         if big_data_job_subscription_id is None:
             big_data_job_subscription_id = "projects/myproject/subscriptions/messages"
-        big_data_job_name_suffix = random.RandomId("bigDataJobNameSuffix",
+        big_data_job_name_suffix = random.RandomId("big_data_job_name_suffix",
             byte_length=4,
             keepers={
-                "region": var["region"],
+                "region": region,
                 "subscription_id": big_data_job_subscription_id,
             })
-        big_data_job = gcp.dataflow.FlexTemplateJob("bigDataJob",
-            region=var["region"],
+        big_data_job = gcp.dataflow.FlexTemplateJob("big_data_job",
+            name=big_data_job_name_suffix.dec.apply(lambda dec: f"dataflow-flextemplates-job-{dec}"),
+            region=region,
             container_spec_gcs_path="gs://my-bucket/templates/template.json",
             skip_wait_on_job_termination=True,
             parameters={
                 "inputSubscription": big_data_job_subscription_id,
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
 
         ## Import

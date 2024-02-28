@@ -35,9 +35,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := logging.NewOrganizationExclusion(ctx, "my-exclusion", &logging.OrganizationExclusionArgs{
+//				Name:        pulumi.String("my-instance-debug-exclusion"),
+//				OrgId:       pulumi.String("123456789"),
 //				Description: pulumi.String("Exclude GCE instance debug logs"),
 //				Filter:      pulumi.String("resource.type = gce_instance AND severity <= DEBUG"),
-//				OrgId:       pulumi.String("123456789"),
 //			})
 //			if err != nil {
 //				return err

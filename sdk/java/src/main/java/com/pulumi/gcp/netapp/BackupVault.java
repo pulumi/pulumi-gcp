@@ -50,6 +50,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var testBackupVault = new BackupVault(&#34;testBackupVault&#34;, BackupVaultArgs.builder()        
+ *             .name(&#34;test-backup-vault&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .description(&#34;Terraform created vault&#34;)
  *             .labels(Map.of(&#34;creator&#34;, &#34;testuser&#34;))

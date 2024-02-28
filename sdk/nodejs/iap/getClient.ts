@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * });
  * const projectClient = project.then(project => gcp.iap.getClient({
  *     brand: `projects/${project.number}/brands/[BRAND_NUMBER]`,
- *     clientId: FOO.apps.googleusercontent.com,
+ *     clientId: apps.googleusercontent.com,
  * }));
  * ```
  */
@@ -72,7 +72,7 @@ export interface GetClientResult {
  * });
  * const projectClient = project.then(project => gcp.iap.getClient({
  *     brand: `projects/${project.number}/brands/[BRAND_NUMBER]`,
- *     clientId: FOO.apps.googleusercontent.com,
+ *     clientId: apps.googleusercontent.com,
  * }));
  * ```
  */

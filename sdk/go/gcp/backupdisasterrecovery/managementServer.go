@@ -29,41 +29,43 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil, pulumi.Provider(google_beta))
+//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name: pulumi.String("vpc-network"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			privateIpAddress, err := compute.NewGlobalAddress(ctx, "privateIpAddress", &compute.GlobalAddressArgs{
+//			privateIpAddress, err := compute.NewGlobalAddress(ctx, "private_ip_address", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("vpc-network"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				PrefixLength: pulumi.Int(20),
-//				Network:      defaultNetwork.ID(),
-//			}, pulumi.Provider(google_beta))
+//				Network:      _default.ID(),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultConnection, err := servicenetworking.NewConnection(ctx, "defaultConnection", &servicenetworking.ConnectionArgs{
-//				Network: defaultNetwork.ID(),
+//			_, err = servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
+//				Network: _default.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					privateIpAddress.Name,
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = backupdisasterrecovery.NewManagementServer(ctx, "ms-console", &backupdisasterrecovery.ManagementServerArgs{
 //				Location: pulumi.String("us-central1"),
+//				Name:     pulumi.String("ms-console"),
 //				Type:     pulumi.String("BACKUP_RESTORE"),
 //				Networks: backupdisasterrecovery.ManagementServerNetworkArray{
 //					&backupdisasterrecovery.ManagementServerNetworkArgs{
-//						Network:     defaultNetwork.ID(),
+//						Network:     _default.ID(),
 //						PeeringMode: pulumi.String("PRIVATE_SERVICE_ACCESS"),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
-//				defaultConnection,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

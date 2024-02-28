@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := pubsub.LookupSchemaIamPolicy(ctx, &pubsub.LookupSchemaIamPolicyArgs{
-//				Project: pulumi.StringRef(google_pubsub_schema.Example.Project),
-//				Schema:  google_pubsub_schema.Example.Name,
+//				Project: pulumi.StringRef(example.Project),
+//				Schema:  example.Name,
 //			}, nil)
 //			if err != nil {
 //				return err

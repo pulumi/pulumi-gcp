@@ -26,9 +26,9 @@ namespace Pulumi.Gcp.Spanner
         /// {
         ///     var foo = Gcp.Spanner.GetDatabaseIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_spanner_database.Database.Project,
-        ///         Database = google_spanner_database.Database.Name,
-        ///         Instance = google_spanner_database.Database.Instance,
+        ///         Project = database.Project,
+        ///         Database = database.Name,
+        ///         Instance = database.Instance,
         ///     });
         /// 
         /// });
@@ -52,9 +52,9 @@ namespace Pulumi.Gcp.Spanner
         /// {
         ///     var foo = Gcp.Spanner.GetDatabaseIamPolicy.Invoke(new()
         ///     {
-        ///         Project = google_spanner_database.Database.Project,
-        ///         Database = google_spanner_database.Database.Name,
-        ///         Instance = google_spanner_database.Database.Instance,
+        ///         Project = database.Project,
+        ///         Database = database.Name,
+        ///         Instance = database.Instance,
         ///     });
         /// 
         /// });

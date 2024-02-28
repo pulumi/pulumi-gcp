@@ -57,7 +57,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = diagflow.NewCxVersion(ctx, "version1", &diagflow.CxVersionArgs{
+//			_, err = diagflow.NewCxVersion(ctx, "version_1", &diagflow.CxVersionArgs{
 //				Parent:      agent.StartFlow,
 //				DisplayName: pulumi.String("1.0.0"),
 //				Description: pulumi.String("version 1.0.0"),

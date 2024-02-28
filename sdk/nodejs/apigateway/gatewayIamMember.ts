@@ -34,12 +34,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const policy = new gcp.apigateway.GatewayIamPolicy("policy", {
- *     project: google_api_gateway_gateway.api_gw.project,
- *     region: google_api_gateway_gateway.api_gw.region,
- *     gateway: google_api_gateway_gateway.api_gw.gateway_id,
+ *     project: apiGw.project,
+ *     region: apiGw.region,
+ *     gateway: apiGw.gatewayId,
  *     policyData: admin.then(admin => admin.policyData),
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *
@@ -50,13 +48,11 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.apigateway.GatewayIamBinding("binding", {
- *     project: google_api_gateway_gateway.api_gw.project,
- *     region: google_api_gateway_gateway.api_gw.region,
- *     gateway: google_api_gateway_gateway.api_gw.gateway_id,
+ *     project: apiGw.project,
+ *     region: apiGw.region,
+ *     gateway: apiGw.gatewayId,
  *     role: "roles/apigateway.viewer",
  *     members: ["user:jane@example.com"],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *
@@ -67,13 +63,11 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.apigateway.GatewayIamMember("member", {
- *     project: google_api_gateway_gateway.api_gw.project,
- *     region: google_api_gateway_gateway.api_gw.region,
- *     gateway: google_api_gateway_gateway.api_gw.gateway_id,
+ *     project: apiGw.project,
+ *     region: apiGw.region,
+ *     gateway: apiGw.gatewayId,
  *     role: "roles/apigateway.viewer",
  *     member: "user:jane@example.com",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

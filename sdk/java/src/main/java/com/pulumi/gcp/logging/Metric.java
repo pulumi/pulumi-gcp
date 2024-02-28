@@ -39,9 +39,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.logging.Metric;
  * import com.pulumi.gcp.logging.MetricArgs;
+ * import com.pulumi.gcp.logging.inputs.MetricMetricDescriptorArgs;
  * import com.pulumi.gcp.logging.inputs.MetricBucketOptionsArgs;
  * import com.pulumi.gcp.logging.inputs.MetricBucketOptionsLinearBucketsArgs;
- * import com.pulumi.gcp.logging.inputs.MetricMetricDescriptorArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -56,36 +56,37 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var loggingMetric = new Metric(&#34;loggingMetric&#34;, MetricArgs.builder()        
- *             .bucketOptions(MetricBucketOptionsArgs.builder()
- *                 .linearBuckets(MetricBucketOptionsLinearBucketsArgs.builder()
- *                     .numFiniteBuckets(3)
- *                     .offset(1)
- *                     .width(1)
- *                     .build())
- *                 .build())
+ *             .name(&#34;my-(custom)/metric&#34;)
  *             .filter(&#34;resource.type=gae_app AND severity&gt;=ERROR&#34;)
+ *             .metricDescriptor(MetricMetricDescriptorArgs.builder()
+ *                 .metricKind(&#34;DELTA&#34;)
+ *                 .valueType(&#34;DISTRIBUTION&#34;)
+ *                 .unit(&#34;1&#34;)
+ *                 .labels(                
+ *                     MetricMetricDescriptorLabelArgs.builder()
+ *                         .key(&#34;mass&#34;)
+ *                         .valueType(&#34;STRING&#34;)
+ *                         .description(&#34;amount of matter&#34;)
+ *                         .build(),
+ *                     MetricMetricDescriptorLabelArgs.builder()
+ *                         .key(&#34;sku&#34;)
+ *                         .valueType(&#34;INT64&#34;)
+ *                         .description(&#34;Identifying number for item&#34;)
+ *                         .build())
+ *                 .displayName(&#34;My metric&#34;)
+ *                 .build())
+ *             .valueExtractor(&#34;EXTRACT(jsonPayload.request)&#34;)
  *             .labelExtractors(Map.ofEntries(
  *                 Map.entry(&#34;mass&#34;, &#34;EXTRACT(jsonPayload.request)&#34;),
  *                 Map.entry(&#34;sku&#34;, &#34;EXTRACT(jsonPayload.id)&#34;)
  *             ))
- *             .metricDescriptor(MetricMetricDescriptorArgs.builder()
- *                 .displayName(&#34;My metric&#34;)
- *                 .labels(                
- *                     MetricMetricDescriptorLabelArgs.builder()
- *                         .description(&#34;amount of matter&#34;)
- *                         .key(&#34;mass&#34;)
- *                         .valueType(&#34;STRING&#34;)
- *                         .build(),
- *                     MetricMetricDescriptorLabelArgs.builder()
- *                         .description(&#34;Identifying number for item&#34;)
- *                         .key(&#34;sku&#34;)
- *                         .valueType(&#34;INT64&#34;)
- *                         .build())
- *                 .metricKind(&#34;DELTA&#34;)
- *                 .unit(&#34;1&#34;)
- *                 .valueType(&#34;DISTRIBUTION&#34;)
+ *             .bucketOptions(MetricBucketOptionsArgs.builder()
+ *                 .linearBuckets(MetricBucketOptionsLinearBucketsArgs.builder()
+ *                     .numFiniteBuckets(3)
+ *                     .width(1)
+ *                     .offset(1)
+ *                     .build())
  *                 .build())
- *             .valueExtractor(&#34;EXTRACT(jsonPayload.request)&#34;)
  *             .build());
  * 
  *     }
@@ -115,6 +116,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var loggingMetric = new Metric(&#34;loggingMetric&#34;, MetricArgs.builder()        
+ *             .name(&#34;my-(custom)/metric&#34;)
  *             .filter(&#34;resource.type=gae_app AND severity&gt;=ERROR&#34;)
  *             .metricDescriptor(MetricMetricDescriptorArgs.builder()
  *                 .metricKind(&#34;DELTA&#34;)
@@ -149,17 +151,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var loggingMetric = new Metric(&#34;loggingMetric&#34;, MetricArgs.builder()        
+ *             .name(&#34;my-(custom)/metric&#34;)
  *             .filter(&#34;resource.type=gae_app AND severity&gt;=ERROR&#34;)
- *             .labelExtractors(Map.of(&#34;mass&#34;, &#34;EXTRACT(jsonPayload.request)&#34;))
  *             .metricDescriptor(MetricMetricDescriptorArgs.builder()
- *                 .labels(MetricMetricDescriptorLabelArgs.builder()
- *                     .description(&#34;amount of matter&#34;)
- *                     .key(&#34;mass&#34;)
- *                     .valueType(&#34;STRING&#34;)
- *                     .build())
  *                 .metricKind(&#34;DELTA&#34;)
  *                 .valueType(&#34;INT64&#34;)
+ *                 .labels(MetricMetricDescriptorLabelArgs.builder()
+ *                     .key(&#34;mass&#34;)
+ *                     .valueType(&#34;STRING&#34;)
+ *                     .description(&#34;amount of matter&#34;)
+ *                     .build())
  *                 .build())
+ *             .labelExtractors(Map.of(&#34;mass&#34;, &#34;EXTRACT(jsonPayload.request)&#34;))
  *             .build());
  * 
  *     }
@@ -189,15 +192,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var loggingMetricProjectBucketConfig = new ProjectBucketConfig(&#34;loggingMetricProjectBucketConfig&#34;, ProjectBucketConfigArgs.builder()        
+ *         var loggingMetric = new ProjectBucketConfig(&#34;loggingMetric&#34;, ProjectBucketConfigArgs.builder()        
  *             .location(&#34;global&#34;)
  *             .project(&#34;my-project-name&#34;)
  *             .bucketId(&#34;_Default&#34;)
  *             .build());
  * 
  *         var loggingMetricMetric = new Metric(&#34;loggingMetricMetric&#34;, MetricArgs.builder()        
+ *             .name(&#34;my-(custom)/metric&#34;)
  *             .filter(&#34;resource.type=gae_app AND severity&gt;=ERROR&#34;)
- *             .bucketName(loggingMetricProjectBucketConfig.id())
+ *             .bucketName(loggingMetric.id())
  *             .build());
  * 
  *     }
@@ -227,12 +231,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var loggingMetric = new Metric(&#34;loggingMetric&#34;, MetricArgs.builder()        
- *             .disabled(true)
+ *             .name(&#34;my-(custom)/metric&#34;)
  *             .filter(&#34;resource.type=gae_app AND severity&gt;=ERROR&#34;)
  *             .metricDescriptor(MetricMetricDescriptorArgs.builder()
  *                 .metricKind(&#34;DELTA&#34;)
  *                 .valueType(&#34;INT64&#34;)
  *                 .build())
+ *             .disabled(true)
  *             .build());
  * 
  *     }

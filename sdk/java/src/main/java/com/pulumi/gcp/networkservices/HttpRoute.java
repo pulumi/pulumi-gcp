@@ -29,7 +29,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networkservices.HttpRoute;
  * import com.pulumi.gcp.networkservices.HttpRouteArgs;
  * import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -44,6 +43,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new HttpRoute(&#34;default&#34;, HttpRouteArgs.builder()        
+ *             .name(&#34;my-http-route&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .description(&#34;my description&#34;)
  *             .hostnames(&#34;example&#34;)
@@ -56,9 +56,7 @@ import javax.annotation.Nullable;
  *                     .fullPathMatch(&#34;example&#34;)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -80,7 +78,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleActionRequestMirrorPolicyArgs;
  * import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleActionRequestMirrorPolicyDestinationArgs;
  * import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleActionCorsPolicyArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -95,6 +92,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new HttpRoute(&#34;default&#34;, HttpRouteArgs.builder()        
+ *             .name(&#34;my-http-route&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .description(&#34;my description&#34;)
  *             .hostnames(&#34;example&#34;)
@@ -180,9 +178,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -208,7 +204,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleActionCorsPolicyArgs;
  * import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleActionRequestHeaderModifierArgs;
  * import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleActionResponseHeaderModifierArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -223,6 +218,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new HttpRoute(&#34;default&#34;, HttpRouteArgs.builder()        
+ *             .name(&#34;my-http-route&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .description(&#34;my description&#34;)
  *             .hostnames(&#34;example&#34;)
@@ -286,9 +282,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -305,7 +299,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networkservices.HttpRoute;
  * import com.pulumi.gcp.networkservices.HttpRouteArgs;
  * import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -319,18 +312,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultMesh = new Mesh(&#34;defaultMesh&#34;, MeshArgs.builder()        
+ *         var default_ = new Mesh(&#34;default&#34;, MeshArgs.builder()        
+ *             .name(&#34;my-http-route&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .description(&#34;my description&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultHttpRoute = new HttpRoute(&#34;defaultHttpRoute&#34;, HttpRouteArgs.builder()        
+ *             .name(&#34;my-http-route&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .description(&#34;my description&#34;)
  *             .hostnames(&#34;example&#34;)
- *             .meshes(defaultMesh.id())
+ *             .meshes(default_.id())
  *             .rules(HttpRouteRuleArgs.builder()
  *                 .matches(HttpRouteRuleMatchArgs.builder()
  *                     .queryParameters(HttpRouteRuleMatchQueryParameterArgs.builder()
@@ -340,9 +333,7 @@ import javax.annotation.Nullable;
  *                     .fullPathMatch(&#34;example&#34;)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

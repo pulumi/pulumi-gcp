@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultDataset = new Gcp.BigQuery.Dataset("defaultDataset", new()
+    ///     var @default = new Gcp.BigQuery.Dataset("default", new()
     ///     {
     ///         DatasetId = "foo",
     ///         FriendlyName = "test",
@@ -41,9 +41,9 @@ namespace Pulumi.Gcp.BigQuery
     ///         },
     ///     });
     /// 
-    ///     var defaultTable = new Gcp.BigQuery.Table("defaultTable", new()
+    ///     var defaultTable = new Gcp.BigQuery.Table("default", new()
     ///     {
-    ///         DatasetId = defaultDataset.DatasetId,
+    ///         DatasetId = @default.DatasetId,
     ///         TableId = "bar",
     ///         TimePartitioning = new Gcp.BigQuery.Inputs.TableTimePartitioningArgs
     ///         {
@@ -72,7 +72,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     ///     var sheet = new Gcp.BigQuery.Table("sheet", new()
     ///     {
-    ///         DatasetId = defaultDataset.DatasetId,
+    ///         DatasetId = @default.DatasetId,
     ///         TableId = "sheet",
     ///         ExternalDataConfiguration = new Gcp.BigQuery.Inputs.TableExternalDataConfigurationArgs
     ///         {
