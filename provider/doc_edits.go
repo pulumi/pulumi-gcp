@@ -1,6 +1,8 @@
 package gcp
 
 import (
+	"fmt"
+	"math/rand"
 	"regexp"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
@@ -11,6 +13,7 @@ func editRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
 		fixupEffectiveLabels,
 		removeSecretsInPlainTextNote,
 		removeBetaFromDescriptionField,
+		substituteRandomSuffix,
 	)
 }
 
@@ -68,3 +71,17 @@ var removeBetaFromDescriptionField = tfbridge.DocsEdit{
 		return content, nil
 	},
 }
+
+// Example HCL seems to employ `%{random_suffix}` which trips up the example conversion. Substitute
+// it out to an actual random suffix.
+var substituteRandomSuffix = (func() tfbridge.DocsEdit {
+	pattern := regexp.MustCompile(regexp.QuoteMeta("%{random_suffix}"))
+	return tfbridge.DocsEdit{
+		Path: "*",
+		Edit: func(path string, content []byte) ([]byte, error) {
+			return pattern.ReplaceAllFunc(content, func([]byte) []byte {
+				return []byte(fmt.Sprintf("_%d", rand.Intn(100000)))
+			}), nil
+		},
+	}
+})()
