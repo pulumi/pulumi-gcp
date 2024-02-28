@@ -31,7 +31,6 @@ plugins:
   - name: terraform
     version: "1.0.15"
     kind: converter
-team: ecosystem
 goBuildParallelism: 2
 skipGoReleaserHooks: true
 actions:
