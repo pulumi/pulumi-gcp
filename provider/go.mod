@@ -6,8 +6,8 @@ require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.29.0
 	github.com/hashicorp/terraform-provider-google-beta v0.0.0
 	github.com/pulumi/providertest v0.0.10
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.29.1-0.20240227144008-2da15b3d6f6e
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.76.1-0.20240227144008-2da15b3d6f6e
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.29.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.76.0
 	github.com/pulumi/pulumi/pkg/v3 v3.107.0
 	github.com/pulumi/pulumi/sdk/v3 v3.107.0
 	github.com/stretchr/testify v1.8.4
