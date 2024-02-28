@@ -373,7 +373,7 @@ import (
 //				CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 //					Bucket:         example.Name,
 //					FilenamePrefix: pulumi.String("pre-"),
-//					FilenameSuffix: pulumi.String("-_21237"),
+//					FilenameSuffix: pulumi.String("-_41819"),
 //					MaxBytes:       pulumi.Int(1000),
 //					MaxDuration:    pulumi.String("300s"),
 //				},
@@ -436,7 +436,7 @@ import (
 //				CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 //					Bucket:         example.Name,
 //					FilenamePrefix: pulumi.String("pre-"),
-//					FilenameSuffix: pulumi.String("-_86702"),
+//					FilenameSuffix: pulumi.String("-_75092"),
 //					MaxBytes:       pulumi.Int(1000),
 //					MaxDuration:    pulumi.String("300s"),
 //					AvroConfig: &pubsub.SubscriptionCloudStorageConfigAvroConfigArgs{

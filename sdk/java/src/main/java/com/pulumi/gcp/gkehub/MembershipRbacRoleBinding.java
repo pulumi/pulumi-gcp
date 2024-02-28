@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
- *             .membershipId(&#34;tf-test-membership_50076&#34;)
+ *             .membershipId(&#34;tf-test-membership_39249&#34;)
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
  *                     .resourceLink(primary.id().applyValue(id -&gt; String.format(&#34;//container.googleapis.com/%s&#34;, id)))
@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var membershipRbacRoleBinding = new MembershipRbacRoleBinding(&#34;membershipRbacRoleBinding&#34;, MembershipRbacRoleBindingArgs.builder()        
- *             .membershipRbacRoleBindingId(&#34;tf-test-membership-rbac-role-binding_68907&#34;)
+ *             .membershipRbacRoleBindingId(&#34;tf-test-membership-rbac-role-binding_74391&#34;)
  *             .membershipId(membership.membershipId())
  *             .user(String.format(&#34;service-%s@gcp-sa-anthossupport.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
  *             .role(MembershipRbacRoleBindingRoleArgs.builder()

@@ -185,7 +185,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_2653",
+ *         filenameSuffix: "-_41819",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
  *     },
@@ -215,7 +215,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_91643",
+ *         filenameSuffix: "-_75092",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
  *         avroConfig: {

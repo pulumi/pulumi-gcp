@@ -53,11 +53,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var scope = new Scope(&#34;scope&#34;, ScopeArgs.builder()        
- *             .scopeId(&#34;tf-test-scope_71484&#34;)
+ *             .scopeId(&#34;tf-test-scope_9106&#34;)
  *             .build());
  * 
  *         var scopeRbacRoleBinding = new ScopeRbacRoleBinding(&#34;scopeRbacRoleBinding&#34;, ScopeRbacRoleBindingArgs.builder()        
- *             .scopeRbacRoleBindingId(&#34;tf-test-scope-rbac-role-binding_23542&#34;)
+ *             .scopeRbacRoleBindingId(&#34;tf-test-scope-rbac-role-binding_27169&#34;)
  *             .scopeId(scope.scopeId())
  *             .user(&#34;test-email@gmail.com&#34;)
  *             .role(ScopeRbacRoleBindingRoleArgs.builder()

@@ -187,11 +187,11 @@ import * as utilities from "../utilities";
  *         foo: "bar",
  *     },
  *     alloydb: {
- *         clusterId: "tf-test-dbmsalloycluster_27185",
+ *         clusterId: "tf-test-dbmsalloycluster_85794",
  *         settings: {
  *             initialUser: {
- *                 user: "alloyuser_56747",
- *                 password: "alloypass_50375",
+ *                 user: "alloyuser_21197",
+ *                 password: "alloypass_52865",
  *             },
  *             vpcNetwork: _default.id,
  *             labels: {

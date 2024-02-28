@@ -22,9 +22,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_18398"});
+ * const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_9106"});
  * const scopeRbacRoleBinding = new gcp.gkehub.ScopeRbacRoleBinding("scope_rbac_role_binding", {
- *     scopeRbacRoleBindingId: "tf-test-scope-rbac-role-binding_38064",
+ *     scopeRbacRoleBindingId: "tf-test-scope-rbac-role-binding_27169",
  *     scopeId: scope.scopeId,
  *     user: "test-email@gmail.com",
  *     role: {

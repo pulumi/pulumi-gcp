@@ -697,11 +697,11 @@ class ConnectionProfile(pulumi.CustomResource):
                 "foo": "bar",
             },
             alloydb=gcp.databasemigrationservice.ConnectionProfileAlloydbArgs(
-                cluster_id="tf-test-dbmsalloycluster_40027",
+                cluster_id="tf-test-dbmsalloycluster_85794",
                 settings=gcp.databasemigrationservice.ConnectionProfileAlloydbSettingsArgs(
                     initial_user=gcp.databasemigrationservice.ConnectionProfileAlloydbSettingsInitialUserArgs(
-                        user="alloyuser_50268",
-                        password="alloypass_11484",
+                        user="alloyuser_21197",
+                        password="alloypass_52865",
                     ),
                     vpc_network=default.id,
                     labels={
@@ -945,11 +945,11 @@ class ConnectionProfile(pulumi.CustomResource):
                 "foo": "bar",
             },
             alloydb=gcp.databasemigrationservice.ConnectionProfileAlloydbArgs(
-                cluster_id="tf-test-dbmsalloycluster_40027",
+                cluster_id="tf-test-dbmsalloycluster_85794",
                 settings=gcp.databasemigrationservice.ConnectionProfileAlloydbSettingsArgs(
                     initial_user=gcp.databasemigrationservice.ConnectionProfileAlloydbSettingsInitialUserArgs(
-                        user="alloyuser_50268",
-                        password="alloypass_11484",
+                        user="alloyuser_21197",
+                        password="alloypass_52865",
                     ),
                     vpc_network=default.id,
                     labels={

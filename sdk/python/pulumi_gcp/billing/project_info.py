@@ -139,8 +139,8 @@ class ProjectInfo(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.Project("project",
-            project_id="tf-test_40110",
-            name="tf-test_70412",
+            project_id="tf-test_77884",
+            name="tf-test_15222",
             org_id="123456789")
         default = gcp.billing.ProjectInfo("default",
             project=project.project_id,
@@ -199,8 +199,8 @@ class ProjectInfo(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.Project("project",
-            project_id="tf-test_40110",
-            name="tf-test_70412",
+            project_id="tf-test_77884",
+            name="tf-test_15222",
             org_id="123456789")
         default = gcp.billing.ProjectInfo("default",
             project=project.project_id,

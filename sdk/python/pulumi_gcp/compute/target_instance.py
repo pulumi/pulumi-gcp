@@ -501,7 +501,7 @@ class TargetInstance(pulumi.CustomResource):
             ))
         policyddosprotection = gcp.compute.RegionSecurityPolicy("policyddosprotection",
             region="southamerica-west1",
-            name="tf-test-policyddos_28170",
+            name="tf-test-policyddos_81126",
             description="ddos protection security policy to set target instance",
             type="CLOUD_ARMOR_NETWORK",
             ddos_protection_config=gcp.compute.RegionSecurityPolicyDdosProtectionConfigArgs(
@@ -509,7 +509,7 @@ class TargetInstance(pulumi.CustomResource):
             ))
         edge_sec_service = gcp.compute.NetworkEdgeSecurityService("edge_sec_service",
             region="southamerica-west1",
-            name="tf-test-edgesec_14724",
+            name="tf-test-edgesec_88717",
             security_policy=policyddosprotection.self_link)
         regionsecuritypolicy = gcp.compute.RegionSecurityPolicy("regionsecuritypolicy",
             name="region-secpolicy",
@@ -689,7 +689,7 @@ class TargetInstance(pulumi.CustomResource):
             ))
         policyddosprotection = gcp.compute.RegionSecurityPolicy("policyddosprotection",
             region="southamerica-west1",
-            name="tf-test-policyddos_28170",
+            name="tf-test-policyddos_81126",
             description="ddos protection security policy to set target instance",
             type="CLOUD_ARMOR_NETWORK",
             ddos_protection_config=gcp.compute.RegionSecurityPolicyDdosProtectionConfigArgs(
@@ -697,7 +697,7 @@ class TargetInstance(pulumi.CustomResource):
             ))
         edge_sec_service = gcp.compute.NetworkEdgeSecurityService("edge_sec_service",
             region="southamerica-west1",
-            name="tf-test-edgesec_14724",
+            name="tf-test-edgesec_88717",
             security_policy=policyddosprotection.self_link)
         regionsecuritypolicy = gcp.compute.RegionSecurityPolicy("regionsecuritypolicy",
             name="region-secpolicy",

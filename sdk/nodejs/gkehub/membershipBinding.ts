@@ -31,16 +31,16 @@ import * as utilities from "../utilities";
  *     subnetwork: "default",
  * });
  * const membership = new gcp.gkehub.Membership("membership", {
- *     membershipId: "tf-test-membership_3252",
+ *     membershipId: "tf-test-membership_74000",
  *     endpoint: {
  *         gkeCluster: {
  *             resourceLink: pulumi.interpolate`//container.googleapis.com/${primary.id}`,
  *         },
  *     },
  * });
- * const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_39427"});
+ * const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_75125"});
  * const membershipBinding = new gcp.gkehub.MembershipBinding("membership_binding", {
- *     membershipBindingId: "tf-test-membership-binding_77132",
+ *     membershipBindingId: "tf-test-membership-binding_88722",
  *     scope: scope.name,
  *     membershipId: membership.membershipId,
  *     location: "global",

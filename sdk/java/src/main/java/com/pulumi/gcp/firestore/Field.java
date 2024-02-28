@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *         var basic = new Field(&#34;basic&#34;, FieldArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .database(database.name())
- *             .collection(&#34;chatrooms__52780&#34;)
+ *             .collection(&#34;chatrooms__64336&#34;)
  *             .field(&#34;basic&#34;)
  *             .indexConfig(FieldIndexConfigArgs.builder()
  *                 .indexes(                
@@ -171,7 +171,7 @@ import javax.annotation.Nullable;
  *         var matchOverride = new Field(&#34;matchOverride&#34;, FieldArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .database(database.name())
- *             .collection(&#34;chatrooms__87841&#34;)
+ *             .collection(&#34;chatrooms__34962&#34;)
  *             .field(&#34;field_with_same_configuration_as_ancestor&#34;)
  *             .indexConfig(FieldIndexConfigArgs.builder()
  *                 .indexes(                
