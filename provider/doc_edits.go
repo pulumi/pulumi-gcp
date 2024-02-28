@@ -80,6 +80,7 @@ var substituteRandomSuffix = (func() tfbridge.DocsEdit {
 		Path: "*",
 		Edit: func(path string, content []byte) ([]byte, error) {
 			return pattern.ReplaceAllFunc(content, func([]byte) []byte {
+				//nolint:gosec
 				return []byte(fmt.Sprintf("_%d", rand.Intn(100000)))
 			}), nil
 		},
