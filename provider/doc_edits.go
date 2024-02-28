@@ -76,12 +76,13 @@ var removeBetaFromDescriptionField = tfbridge.DocsEdit{
 // it out to an actual random suffix.
 var substituteRandomSuffix = (func() tfbridge.DocsEdit {
 	pattern := regexp.MustCompile(regexp.QuoteMeta("%{random_suffix}"))
+	randGen := rand.New(rand.NewSource(123456789))
 	return tfbridge.DocsEdit{
 		Path: "*",
 		Edit: func(path string, content []byte) ([]byte, error) {
 			return pattern.ReplaceAllFunc(content, func([]byte) []byte {
 				//nolint:gosec
-				return []byte(fmt.Sprintf("_%d", rand.Intn(100000)))
+				return []byte(fmt.Sprintf("_%d", randGen.Intn(100000)))
 			}), nil
 		},
 	}
