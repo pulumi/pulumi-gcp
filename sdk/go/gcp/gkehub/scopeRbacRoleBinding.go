@@ -21,6 +21,45 @@ import (
 //   - [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 //
 // ## Example Usage
+// ### Gkehub Scope Rbac Role Binding Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			scope, err := gkehub.NewScope(ctx, "scope", &gkehub.ScopeArgs{
+//				ScopeId: pulumi.String("tf-test-scope_35415"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkehub.NewScopeRbacRoleBinding(ctx, "scope_rbac_role_binding", &gkehub.ScopeRbacRoleBindingArgs{
+//				ScopeRbacRoleBindingId: pulumi.String("tf-test-scope-rbac-role-binding_56793"),
+//				ScopeId:                scope.ScopeId,
+//				User:                   pulumi.String("test-email@gmail.com"),
+//				Role: &gkehub.ScopeRbacRoleBindingRoleArgs{
+//					PredefinedRole: pulumi.String("ADMIN"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"key": pulumi.String("value"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

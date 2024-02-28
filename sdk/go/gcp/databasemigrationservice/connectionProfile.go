@@ -242,6 +242,92 @@ import (
 //	}
 //
 // ```
+// ### Database Migration Service Connection Profile Alloydb
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/databasemigrationservice"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name: pulumi.String("vpc-network"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "private_ip_alloc", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("private-ip-alloc"),
+//				AddressType:  pulumi.String("INTERNAL"),
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				PrefixLength: pulumi.Int(16),
+//				Network:      _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
+//				Network: _default.ID(),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					privateIpAlloc.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databasemigrationservice.NewConnectionProfile(ctx, "alloydbprofile", &databasemigrationservice.ConnectionProfileArgs{
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("my-profileid"),
+//				DisplayName:         pulumi.String("my-profileid_display"),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Alloydb: &databasemigrationservice.ConnectionProfileAlloydbArgs{
+//					ClusterId: pulumi.String("tf-test-dbmsalloycluster_14214"),
+//					Settings: &databasemigrationservice.ConnectionProfileAlloydbSettingsArgs{
+//						InitialUser: &databasemigrationservice.ConnectionProfileAlloydbSettingsInitialUserArgs{
+//							User:     pulumi.String("alloyuser_32412"),
+//							Password: pulumi.String("alloypass_40325"),
+//						},
+//						VpcNetwork: _default.ID(),
+//						Labels: pulumi.StringMap{
+//							"alloyfoo": pulumi.String("alloybar"),
+//						},
+//						PrimaryInstanceSettings: &databasemigrationservice.ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs{
+//							Id: pulumi.String("priminstid"),
+//							MachineConfig: &databasemigrationservice.ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs{
+//								CpuCount: pulumi.Int(2),
+//							},
+//							DatabaseFlags: nil,
+//							Labels: pulumi.StringMap{
+//								"alloysinstfoo": pulumi.String("allowinstbar"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

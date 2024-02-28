@@ -23,6 +23,38 @@ import * as utilities from "../utilities";
  * chosen location.
  *
  * ## Example Usage
+ * ### Firestore Field Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const database = new gcp.firestore.Database("database", {
+ *     project: "my-project-name",
+ *     name: "database-id",
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ *     deleteProtectionState: "DELETE_PROTECTION_ENABLED",
+ *     deletionPolicy: "DELETE",
+ * });
+ * const basic = new gcp.firestore.Field("basic", {
+ *     project: "my-project-name",
+ *     database: database.name,
+ *     collection: "chatrooms__79285",
+ *     field: "basic",
+ *     indexConfig: {
+ *         indexes: [
+ *             {
+ *                 order: "ASCENDING",
+ *                 queryScope: "COLLECTION_GROUP",
+ *             },
+ *             {
+ *                 arrayConfig: "CONTAINS",
+ *             },
+ *         ],
+ *     },
+ * });
+ * ```
  * ### Firestore Field Timestamp
  *
  * ```typescript
@@ -44,6 +76,40 @@ import * as utilities from "../utilities";
  *     field: "timestamp",
  *     ttlConfig: {},
  *     indexConfig: {},
+ * });
+ * ```
+ * ### Firestore Field Match Override
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const database = new gcp.firestore.Database("database", {
+ *     project: "my-project-name",
+ *     name: "database-id",
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ *     deleteProtectionState: "DELETE_PROTECTION_ENABLED",
+ *     deletionPolicy: "DELETE",
+ * });
+ * const matchOverride = new gcp.firestore.Field("match_override", {
+ *     project: "my-project-name",
+ *     database: database.name,
+ *     collection: "chatrooms__50054",
+ *     field: "field_with_same_configuration_as_ancestor",
+ *     indexConfig: {
+ *         indexes: [
+ *             {
+ *                 order: "ASCENDING",
+ *             },
+ *             {
+ *                 order: "DESCENDING",
+ *             },
+ *             {
+ *                 arrayConfig: "CONTAINS",
+ *             },
+ *         ],
+ *     },
  * });
  * ```
  *

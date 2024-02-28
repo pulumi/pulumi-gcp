@@ -135,6 +135,112 @@ import (
 //	}
 //
 // ```
+// ### Target Instance With Security Policy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("custom-default-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//				RoutingMode:           pulumi.String("REGIONAL"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:                    pulumi.String("custom-default-subnet"),
+//				IpCidrRange:             pulumi.String("10.1.2.0/24"),
+//				Network:                 _default.ID(),
+//				PrivateIpv6GoogleAccess: pulumi.String("DISABLE_GOOGLE_ACCESS"),
+//				Purpose:                 pulumi.String("PRIVATE"),
+//				Region:                  pulumi.String("southamerica-west1"),
+//				StackType:               pulumi.String("IPV4_ONLY"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vmimage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+//				Family:  pulumi.StringRef("debian-11"),
+//				Project: pulumi.StringRef("debian-cloud"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstance(ctx, "target-vm", &compute.InstanceArgs{
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+//							nil,
+//						},
+//						Network:    _default.SelfLink,
+//						Subnetwork: defaultSubnetwork.SelfLink,
+//					},
+//				},
+//				Name:        pulumi.String("target-vm"),
+//				MachineType: pulumi.String("e2-medium"),
+//				Zone:        pulumi.String("southamerica-west1-a"),
+//				BootDisk: &compute.InstanceBootDiskArgs{
+//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+//						Image: *pulumi.String(vmimage.SelfLink),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			policyddosprotection, err := compute.NewRegionSecurityPolicy(ctx, "policyddosprotection", &compute.RegionSecurityPolicyArgs{
+//				Region:      pulumi.String("southamerica-west1"),
+//				Name:        pulumi.String("tf-test-policyddos_84405"),
+//				Description: pulumi.String("ddos protection security policy to set target instance"),
+//				Type:        pulumi.String("CLOUD_ARMOR_NETWORK"),
+//				DdosProtectionConfig: &compute.RegionSecurityPolicyDdosProtectionConfigArgs{
+//					DdosProtection: pulumi.String("ADVANCED_PREVIEW"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNetworkEdgeSecurityService(ctx, "edge_sec_service", &compute.NetworkEdgeSecurityServiceArgs{
+//				Region:         pulumi.String("southamerica-west1"),
+//				Name:           pulumi.String("tf-test-edgesec_2707"),
+//				SecurityPolicy: policyddosprotection.SelfLink,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			regionsecuritypolicy, err := compute.NewRegionSecurityPolicy(ctx, "regionsecuritypolicy", &compute.RegionSecurityPolicyArgs{
+//				Name:        pulumi.String("region-secpolicy"),
+//				Region:      pulumi.String("southamerica-west1"),
+//				Description: pulumi.String("basic security policy for target instance"),
+//				Type:        pulumi.String("CLOUD_ARMOR_NETWORK"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewTargetInstance(ctx, "default", &compute.TargetInstanceArgs{
+//				Name:           pulumi.String("target-instance"),
+//				Zone:           pulumi.String("southamerica-west1-a"),
+//				Instance:       target_vm.ID(),
+//				SecurityPolicy: regionsecuritypolicy.SelfLink,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

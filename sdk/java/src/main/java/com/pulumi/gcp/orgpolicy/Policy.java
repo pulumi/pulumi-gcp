@@ -207,6 +207,63 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Dry_run_spec
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.orgpolicy.CustomConstraint;
+ * import com.pulumi.gcp.orgpolicy.CustomConstraintArgs;
+ * import com.pulumi.gcp.orgpolicy.Policy;
+ * import com.pulumi.gcp.orgpolicy.PolicyArgs;
+ * import com.pulumi.gcp.orgpolicy.inputs.PolicySpecArgs;
+ * import com.pulumi.gcp.orgpolicy.inputs.PolicyDryRunSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var constraint = new CustomConstraint(&#34;constraint&#34;, CustomConstraintArgs.builder()        
+ *             .name(&#34;custom.disableGkeAutoUpgrade_9684&#34;)
+ *             .parent(&#34;organizations/123456789&#34;)
+ *             .displayName(&#34;Disable GKE auto upgrade&#34;)
+ *             .description(&#34;Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.&#34;)
+ *             .actionType(&#34;ALLOW&#34;)
+ *             .condition(&#34;resource.management.autoUpgrade == false&#34;)
+ *             .methodTypes(&#34;CREATE&#34;)
+ *             .resourceTypes(&#34;container.googleapis.com/NodePool&#34;)
+ *             .build());
+ * 
+ *         var primary = new Policy(&#34;primary&#34;, PolicyArgs.builder()        
+ *             .name(constraint.name().applyValue(name -&gt; String.format(&#34;organizations/123456789/policies/%s&#34;, name)))
+ *             .parent(&#34;organizations/123456789&#34;)
+ *             .spec(PolicySpecArgs.builder()
+ *                 .rules(PolicySpecRuleArgs.builder()
+ *                     .enforce(&#34;FALSE&#34;)
+ *                     .build())
+ *                 .build())
+ *             .dryRunSpec(PolicyDryRunSpecArgs.builder()
+ *                 .inheritFromParent(false)
+ *                 .reset(false)
+ *                 .rules(PolicyDryRunSpecRuleArgs.builder()
+ *                     .enforce(&#34;FALSE&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

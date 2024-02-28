@@ -16,6 +16,29 @@ import * as utilities from "../utilities";
  *     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
  *
  * ## Example Usage
+ * ### Gkehub Namespace Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_245"});
+ * const namespace = new gcp.gkehub.Namespace("namespace", {
+ *     scopeNamespaceId: "tf-test-namespace_39773",
+ *     scopeId: scope.scopeId,
+ *     scope: scope.name,
+ *     namespaceLabels: {
+ *         keyb: "valueb",
+ *         keya: "valuea",
+ *         keyc: "valuec",
+ *     },
+ *     labels: {
+ *         keyb: "valueb",
+ *         keya: "valuea",
+ *         keyc: "valuec",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

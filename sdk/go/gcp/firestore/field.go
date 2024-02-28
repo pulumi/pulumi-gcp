@@ -30,6 +30,56 @@ import (
 // chosen location.
 //
 // ## Example Usage
+// ### Firestore Field Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/firestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			database, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
+//				Project:               pulumi.String("my-project-name"),
+//				Name:                  pulumi.String("database-id"),
+//				LocationId:            pulumi.String("nam5"),
+//				Type:                  pulumi.String("FIRESTORE_NATIVE"),
+//				DeleteProtectionState: pulumi.String("DELETE_PROTECTION_ENABLED"),
+//				DeletionPolicy:        pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firestore.NewField(ctx, "basic", &firestore.FieldArgs{
+//				Project:    pulumi.String("my-project-name"),
+//				Database:   database.Name,
+//				Collection: pulumi.String("chatrooms__81627"),
+//				Field:      pulumi.String("basic"),
+//				IndexConfig: &firestore.FieldIndexConfigArgs{
+//					Indexes: firestore.FieldIndexConfigIndexArray{
+//						&firestore.FieldIndexConfigIndexArgs{
+//							Order:      pulumi.String("ASCENDING"),
+//							QueryScope: pulumi.String("COLLECTION_GROUP"),
+//						},
+//						&firestore.FieldIndexConfigIndexArgs{
+//							ArrayConfig: pulumi.String("CONTAINS"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Firestore Field Timestamp
 //
 // ```go
@@ -62,6 +112,58 @@ import (
 //				Field:       pulumi.String("timestamp"),
 //				TtlConfig:   nil,
 //				IndexConfig: nil,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Firestore Field Match Override
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/firestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			database, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
+//				Project:               pulumi.String("my-project-name"),
+//				Name:                  pulumi.String("database-id"),
+//				LocationId:            pulumi.String("nam5"),
+//				Type:                  pulumi.String("FIRESTORE_NATIVE"),
+//				DeleteProtectionState: pulumi.String("DELETE_PROTECTION_ENABLED"),
+//				DeletionPolicy:        pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firestore.NewField(ctx, "match_override", &firestore.FieldArgs{
+//				Project:    pulumi.String("my-project-name"),
+//				Database:   database.Name,
+//				Collection: pulumi.String("chatrooms__89440"),
+//				Field:      pulumi.String("field_with_same_configuration_as_ancestor"),
+//				IndexConfig: &firestore.FieldIndexConfigArgs{
+//					Indexes: firestore.FieldIndexConfigIndexArray{
+//						&firestore.FieldIndexConfigIndexArgs{
+//							Order: pulumi.String("ASCENDING"),
+//						},
+//						&firestore.FieldIndexConfigIndexArgs{
+//							Order: pulumi.String("DESCENDING"),
+//						},
+//						&firestore.FieldIndexConfigIndexArgs{
+//							ArrayConfig: pulumi.String("CONTAINS"),
+//						},
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err

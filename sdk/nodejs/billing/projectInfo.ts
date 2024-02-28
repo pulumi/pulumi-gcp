@@ -14,6 +14,22 @@ import * as utilities from "../utilities";
  *     * [Enable, disable, or change billing for a project](https://cloud.google.com/billing/docs/how-to/modify-project)
  *
  * ## Example Usage
+ * ### Billing Project Info Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "tf-test_38849",
+ *     name: "tf-test_53629",
+ *     orgId: "123456789",
+ * });
+ * const _default = new gcp.billing.ProjectInfo("default", {
+ *     project: project.projectId,
+ *     billingAccount: "000000-0000000-0000000-000000",
+ * });
+ * ```
  *
  * ## Import
  *

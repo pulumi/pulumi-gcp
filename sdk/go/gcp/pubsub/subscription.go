@@ -335,6 +335,135 @@ import (
 //	}
 //
 // ```
+// ### Pubsub Subscription Push Cloudstorage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := storage.NewBucket(ctx, "example", &storage.BucketArgs{
+//				Name:                     pulumi.String("example-bucket"),
+//				Location:                 pulumi.String("US"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleTopic, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+//				Name: pulumi.String("example-topic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
+//				Name:  pulumi.String("example-subscription"),
+//				Topic: exampleTopic.ID(),
+//				CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
+//					Bucket:         example.Name,
+//					FilenamePrefix: pulumi.String("pre-"),
+//					FilenameSuffix: pulumi.String("-_21237"),
+//					MaxBytes:       pulumi.Int(1000),
+//					MaxDuration:    pulumi.String("300s"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = storage.NewBucketIAMMember(ctx, "admin", &storage.BucketIAMMemberArgs{
+//				Bucket: example.Name,
+//				Role:   pulumi.String("roles/storage.admin"),
+//				Member: pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Pubsub Subscription Push Cloudstorage Avro
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := storage.NewBucket(ctx, "example", &storage.BucketArgs{
+//				Name:                     pulumi.String("example-bucket"),
+//				Location:                 pulumi.String("US"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleTopic, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+//				Name: pulumi.String("example-topic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
+//				Name:  pulumi.String("example-subscription"),
+//				Topic: exampleTopic.ID(),
+//				CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
+//					Bucket:         example.Name,
+//					FilenamePrefix: pulumi.String("pre-"),
+//					FilenameSuffix: pulumi.String("-_86702"),
+//					MaxBytes:       pulumi.Int(1000),
+//					MaxDuration:    pulumi.String("300s"),
+//					AvroConfig: &pubsub.SubscriptionCloudStorageConfigAvroConfigArgs{
+//						WriteMetadata: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = storage.NewBucketIAMMember(ctx, "admin", &storage.BucketIAMMemberArgs{
+//				Bucket: example.Name,
+//				Role:   pulumi.String("roles/storage.admin"),
+//				Member: pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -132,6 +132,20 @@ class ProjectInfo(pulumi.CustomResource):
             * [Enable, disable, or change billing for a project](https://cloud.google.com/billing/docs/how-to/modify-project)
 
         ## Example Usage
+        ### Billing Project Info Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.Project("project",
+            project_id="tf-test_40110",
+            name="tf-test_70412",
+            org_id="123456789")
+        default = gcp.billing.ProjectInfo("default",
+            project=project.project_id,
+            billing_account="000000-0000000-0000000-000000")
+        ```
 
         ## Import
 
@@ -178,6 +192,20 @@ class ProjectInfo(pulumi.CustomResource):
             * [Enable, disable, or change billing for a project](https://cloud.google.com/billing/docs/how-to/modify-project)
 
         ## Example Usage
+        ### Billing Project Info Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.Project("project",
+            project_id="tf-test_40110",
+            name="tf-test_70412",
+            org_id="123456789")
+        default = gcp.billing.ProjectInfo("default",
+            project=project.project_id,
+            billing_account="000000-0000000-0000000-000000")
+        ```
 
         ## Import
 

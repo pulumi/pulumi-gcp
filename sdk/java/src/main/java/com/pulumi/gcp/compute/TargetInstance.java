@@ -147,6 +147,114 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Target Instance With Security Policy
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+ * import com.pulumi.gcp.compute.Instance;
+ * import com.pulumi.gcp.compute.InstanceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+ * import com.pulumi.gcp.compute.RegionSecurityPolicy;
+ * import com.pulumi.gcp.compute.RegionSecurityPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyDdosProtectionConfigArgs;
+ * import com.pulumi.gcp.compute.NetworkEdgeSecurityService;
+ * import com.pulumi.gcp.compute.NetworkEdgeSecurityServiceArgs;
+ * import com.pulumi.gcp.compute.TargetInstance;
+ * import com.pulumi.gcp.compute.TargetInstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+ *             .name(&#34;custom-default-network&#34;)
+ *             .autoCreateSubnetworks(false)
+ *             .routingMode(&#34;REGIONAL&#34;)
+ *             .build());
+ * 
+ *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;custom-default-subnet&#34;)
+ *             .ipCidrRange(&#34;10.1.2.0/24&#34;)
+ *             .network(default_.id())
+ *             .privateIpv6GoogleAccess(&#34;DISABLE_GOOGLE_ACCESS&#34;)
+ *             .purpose(&#34;PRIVATE&#34;)
+ *             .region(&#34;southamerica-west1&#34;)
+ *             .stackType(&#34;IPV4_ONLY&#34;)
+ *             .build());
+ * 
+ *         final var vmimage = ComputeFunctions.getImage(GetImageArgs.builder()
+ *             .family(&#34;debian-11&#34;)
+ *             .project(&#34;debian-cloud&#34;)
+ *             .build());
+ * 
+ *         var target_vm = new Instance(&#34;target-vm&#34;, InstanceArgs.builder()        
+ *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+ *                 .accessConfigs()
+ *                 .network(default_.selfLink())
+ *                 .subnetwork(defaultSubnetwork.selfLink())
+ *                 .build())
+ *             .name(&#34;target-vm&#34;)
+ *             .machineType(&#34;e2-medium&#34;)
+ *             .zone(&#34;southamerica-west1-a&#34;)
+ *             .bootDisk(InstanceBootDiskArgs.builder()
+ *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
+ *                     .image(vmimage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var policyddosprotection = new RegionSecurityPolicy(&#34;policyddosprotection&#34;, RegionSecurityPolicyArgs.builder()        
+ *             .region(&#34;southamerica-west1&#34;)
+ *             .name(&#34;tf-test-policyddos_72581&#34;)
+ *             .description(&#34;ddos protection security policy to set target instance&#34;)
+ *             .type(&#34;CLOUD_ARMOR_NETWORK&#34;)
+ *             .ddosProtectionConfig(RegionSecurityPolicyDdosProtectionConfigArgs.builder()
+ *                 .ddosProtection(&#34;ADVANCED_PREVIEW&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var edgeSecService = new NetworkEdgeSecurityService(&#34;edgeSecService&#34;, NetworkEdgeSecurityServiceArgs.builder()        
+ *             .region(&#34;southamerica-west1&#34;)
+ *             .name(&#34;tf-test-edgesec_75843&#34;)
+ *             .securityPolicy(policyddosprotection.selfLink())
+ *             .build());
+ * 
+ *         var regionsecuritypolicy = new RegionSecurityPolicy(&#34;regionsecuritypolicy&#34;, RegionSecurityPolicyArgs.builder()        
+ *             .name(&#34;region-secpolicy&#34;)
+ *             .region(&#34;southamerica-west1&#34;)
+ *             .description(&#34;basic security policy for target instance&#34;)
+ *             .type(&#34;CLOUD_ARMOR_NETWORK&#34;)
+ *             .build());
+ * 
+ *         var defaultTargetInstance = new TargetInstance(&#34;defaultTargetInstance&#34;, TargetInstanceArgs.builder()        
+ *             .name(&#34;target-instance&#34;)
+ *             .zone(&#34;southamerica-west1-a&#34;)
+ *             .instance(target_vm.id())
+ *             .securityPolicy(regionsecuritypolicy.selfLink())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

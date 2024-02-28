@@ -27,6 +27,48 @@ import javax.annotation.Nullable;
  *     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
  * 
  * ## Example Usage
+ * ### Gkehub Scope Rbac Role Binding Basic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.gkehub.Scope;
+ * import com.pulumi.gcp.gkehub.ScopeArgs;
+ * import com.pulumi.gcp.gkehub.ScopeRbacRoleBinding;
+ * import com.pulumi.gcp.gkehub.ScopeRbacRoleBindingArgs;
+ * import com.pulumi.gcp.gkehub.inputs.ScopeRbacRoleBindingRoleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var scope = new Scope(&#34;scope&#34;, ScopeArgs.builder()        
+ *             .scopeId(&#34;tf-test-scope_71484&#34;)
+ *             .build());
+ * 
+ *         var scopeRbacRoleBinding = new ScopeRbacRoleBinding(&#34;scopeRbacRoleBinding&#34;, ScopeRbacRoleBindingArgs.builder()        
+ *             .scopeRbacRoleBindingId(&#34;tf-test-scope-rbac-role-binding_23542&#34;)
+ *             .scopeId(scope.scopeId())
+ *             .user(&#34;test-email@gmail.com&#34;)
+ *             .role(ScopeRbacRoleBindingRoleArgs.builder()
+ *                 .predefinedRole(&#34;ADMIN&#34;)
+ *                 .build())
+ *             .labels(Map.of(&#34;key&#34;, &#34;value&#34;))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

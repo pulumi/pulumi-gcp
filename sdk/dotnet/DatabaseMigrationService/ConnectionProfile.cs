@@ -213,6 +213,85 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// 
     /// });
     /// ```
+    /// ### Database Migration Service Connection Profile Alloydb
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "vpc-network",
+    ///     });
+    /// 
+    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
+    ///     {
+    ///         Name = "private-ip-alloc",
+    ///         AddressType = "INTERNAL",
+    ///         Purpose = "VPC_PEERING",
+    ///         PrefixLength = 16,
+    ///         Network = @default.Id,
+    ///     });
+    /// 
+    ///     var vpcConnection = new Gcp.ServiceNetworking.Connection("vpc_connection", new()
+    ///     {
+    ///         Network = @default.Id,
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             privateIpAlloc.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var alloydbprofile = new Gcp.DatabaseMigrationService.ConnectionProfile("alloydbprofile", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "my-profileid",
+    ///         DisplayName = "my-profileid_display",
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Alloydb = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileAlloydbArgs
+    ///         {
+    ///             ClusterId = "tf-test-dbmsalloycluster_10807",
+    ///             Settings = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileAlloydbSettingsArgs
+    ///             {
+    ///                 InitialUser = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileAlloydbSettingsInitialUserArgs
+    ///                 {
+    ///                     User = "alloyuser_86581",
+    ///                     Password = "alloypass_80281",
+    ///                 },
+    ///                 VpcNetwork = @default.Id,
+    ///                 Labels = 
+    ///                 {
+    ///                     { "alloyfoo", "alloybar" },
+    ///                 },
+    ///                 PrimaryInstanceSettings = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs
+    ///                 {
+    ///                     Id = "priminstid",
+    ///                     MachineConfig = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs
+    ///                     {
+    ///                         CpuCount = 2,
+    ///                     },
+    ///                     DatabaseFlags = null,
+    ///                     Labels = 
+    ///                     {
+    ///                         { "alloysinstfoo", "allowinstbar" },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -403,6 +403,38 @@ class MembershipBinding(pulumi.CustomResource):
             * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
+        ### Gkehub Membership Binding Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            name="basic-cluster",
+            location="us-central1-a",
+            initial_node_count=1,
+            deletion_protection=True,
+            network="default",
+            subnetwork="default")
+        membership = gcp.gkehub.Membership("membership",
+            membership_id="tf-test-membership_16102",
+            endpoint=gcp.gkehub.MembershipEndpointArgs(
+                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
+                    resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                ),
+            ))
+        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_64261")
+        membership_binding = gcp.gkehub.MembershipBinding("membership_binding",
+            membership_binding_id="tf-test-membership-binding_63008",
+            scope=scope.name,
+            membership_id=membership.membership_id,
+            location="global",
+            labels={
+                "keyb": "valueb",
+                "keya": "valuea",
+                "keyc": "valuec",
+            })
+        ```
 
         ## Import
 
@@ -461,6 +493,38 @@ class MembershipBinding(pulumi.CustomResource):
             * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
+        ### Gkehub Membership Binding Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            name="basic-cluster",
+            location="us-central1-a",
+            initial_node_count=1,
+            deletion_protection=True,
+            network="default",
+            subnetwork="default")
+        membership = gcp.gkehub.Membership("membership",
+            membership_id="tf-test-membership_16102",
+            endpoint=gcp.gkehub.MembershipEndpointArgs(
+                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
+                    resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                ),
+            ))
+        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_64261")
+        membership_binding = gcp.gkehub.MembershipBinding("membership_binding",
+            membership_binding_id="tf-test-membership-binding_63008",
+            scope=scope.name,
+            membership_id=membership.membership_id,
+            location="global",
+            labels={
+                "keyb": "valueb",
+                "keya": "valuea",
+                "keyc": "valuec",
+            })
+        ```
 
         ## Import
 

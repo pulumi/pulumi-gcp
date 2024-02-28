@@ -348,6 +348,36 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Gkehub Membership Rbac Role Binding Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            name="basic-cluster",
+            location="us-central1-a",
+            initial_node_count=1,
+            deletion_protection=True,
+            network="default",
+            subnetwork="default")
+        membership = gcp.gkehub.Membership("membership",
+            membership_id="tf-test-membership_28663",
+            endpoint=gcp.gkehub.MembershipEndpointArgs(
+                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
+                    resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                ),
+            ))
+        project = gcp.organizations.get_project()
+        membership_rbac_role_binding = gcp.gkehub.MembershipRbacRoleBinding("membership_rbac_role_binding",
+            membership_rbac_role_binding_id="tf-test-membership-rbac-role-binding_49299",
+            membership_id=membership.membership_id,
+            user=f"service-{project.number}@gcp-sa-anthossupport.iam.gserviceaccount.com",
+            role=gcp.gkehub.MembershipRbacRoleBindingRoleArgs(
+                predefined_role="ANTHOS_SUPPORT",
+            ),
+            location="global")
+        ```
 
         ## Import
 
@@ -395,6 +425,36 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Gkehub Membership Rbac Role Binding Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            name="basic-cluster",
+            location="us-central1-a",
+            initial_node_count=1,
+            deletion_protection=True,
+            network="default",
+            subnetwork="default")
+        membership = gcp.gkehub.Membership("membership",
+            membership_id="tf-test-membership_28663",
+            endpoint=gcp.gkehub.MembershipEndpointArgs(
+                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
+                    resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                ),
+            ))
+        project = gcp.organizations.get_project()
+        membership_rbac_role_binding = gcp.gkehub.MembershipRbacRoleBinding("membership_rbac_role_binding",
+            membership_rbac_role_binding_id="tf-test-membership-rbac-role-binding_49299",
+            membership_id=membership.membership_id,
+            user=f"service-{project.number}@gcp-sa-anthossupport.iam.gserviceaccount.com",
+            role=gcp.gkehub.MembershipRbacRoleBindingRoleArgs(
+                predefined_role="ANTHOS_SUPPORT",
+            ),
+            location="global")
+        ```
 
         ## Import
 

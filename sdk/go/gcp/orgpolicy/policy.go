@@ -206,6 +206,68 @@ import (
 //	}
 //
 // ```
+// ### Dry_run_spec
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/orgpolicy"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			constraint, err := orgpolicy.NewCustomConstraint(ctx, "constraint", &orgpolicy.CustomConstraintArgs{
+//				Name:        pulumi.String("custom.disableGkeAutoUpgrade_71256"),
+//				Parent:      pulumi.String("organizations/123456789"),
+//				DisplayName: pulumi.String("Disable GKE auto upgrade"),
+//				Description: pulumi.String("Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced."),
+//				ActionType:  pulumi.String("ALLOW"),
+//				Condition:   pulumi.String("resource.management.autoUpgrade == false"),
+//				MethodTypes: pulumi.StringArray{
+//					pulumi.String("CREATE"),
+//				},
+//				ResourceTypes: pulumi.StringArray{
+//					pulumi.String("container.googleapis.com/NodePool"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = orgpolicy.NewPolicy(ctx, "primary", &orgpolicy.PolicyArgs{
+//				Name: constraint.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("organizations/123456789/policies/%v", name), nil
+//				}).(pulumi.StringOutput),
+//				Parent: pulumi.String("organizations/123456789"),
+//				Spec: &orgpolicy.PolicySpecArgs{
+//					Rules: orgpolicy.PolicySpecRuleArray{
+//						&orgpolicy.PolicySpecRuleArgs{
+//							Enforce: pulumi.String("FALSE"),
+//						},
+//					},
+//				},
+//				DryRunSpec: &orgpolicy.PolicyDryRunSpecArgs{
+//					InheritFromParent: pulumi.Bool(false),
+//					Reset:             pulumi.Bool(false),
+//					Rules: orgpolicy.PolicyDryRunSpecRuleArray{
+//						&orgpolicy.PolicyDryRunSpecRuleArgs{
+//							Enforce: pulumi.String("FALSE"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

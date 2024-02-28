@@ -671,6 +671,55 @@ class ConnectionProfile(pulumi.CustomResource):
                 static_service_ip_connectivity=gcp.databasemigrationservice.ConnectionProfileOracleStaticServiceIpConnectivityArgs(),
             ))
         ```
+        ### Database Migration Service Connection Profile Alloydb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        default = gcp.compute.Network("default", name="vpc-network")
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name="private-ip-alloc",
+            address_type="INTERNAL",
+            purpose="VPC_PEERING",
+            prefix_length=16,
+            network=default.id)
+        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
+            network=default.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_alloc.name])
+        alloydbprofile = gcp.databasemigrationservice.ConnectionProfile("alloydbprofile",
+            location="us-central1",
+            connection_profile_id="my-profileid",
+            display_name="my-profileid_display",
+            labels={
+                "foo": "bar",
+            },
+            alloydb=gcp.databasemigrationservice.ConnectionProfileAlloydbArgs(
+                cluster_id="tf-test-dbmsalloycluster_40027",
+                settings=gcp.databasemigrationservice.ConnectionProfileAlloydbSettingsArgs(
+                    initial_user=gcp.databasemigrationservice.ConnectionProfileAlloydbSettingsInitialUserArgs(
+                        user="alloyuser_50268",
+                        password="alloypass_11484",
+                    ),
+                    vpc_network=default.id,
+                    labels={
+                        "alloyfoo": "alloybar",
+                    },
+                    primary_instance_settings=gcp.databasemigrationservice.ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs(
+                        id="priminstid",
+                        machine_config=gcp.databasemigrationservice.ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs(
+                            cpu_count=2,
+                        ),
+                        database_flags={},
+                        labels={
+                            "alloysinstfoo": "allowinstbar",
+                        },
+                    ),
+                ),
+            ))
+        ```
 
         ## Import
 
@@ -868,6 +917,55 @@ class ConnectionProfile(pulumi.CustomResource):
                 password="password",
                 database_service="dbprovider",
                 static_service_ip_connectivity=gcp.databasemigrationservice.ConnectionProfileOracleStaticServiceIpConnectivityArgs(),
+            ))
+        ```
+        ### Database Migration Service Connection Profile Alloydb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        default = gcp.compute.Network("default", name="vpc-network")
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name="private-ip-alloc",
+            address_type="INTERNAL",
+            purpose="VPC_PEERING",
+            prefix_length=16,
+            network=default.id)
+        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
+            network=default.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_alloc.name])
+        alloydbprofile = gcp.databasemigrationservice.ConnectionProfile("alloydbprofile",
+            location="us-central1",
+            connection_profile_id="my-profileid",
+            display_name="my-profileid_display",
+            labels={
+                "foo": "bar",
+            },
+            alloydb=gcp.databasemigrationservice.ConnectionProfileAlloydbArgs(
+                cluster_id="tf-test-dbmsalloycluster_40027",
+                settings=gcp.databasemigrationservice.ConnectionProfileAlloydbSettingsArgs(
+                    initial_user=gcp.databasemigrationservice.ConnectionProfileAlloydbSettingsInitialUserArgs(
+                        user="alloyuser_50268",
+                        password="alloypass_11484",
+                    ),
+                    vpc_network=default.id,
+                    labels={
+                        "alloyfoo": "alloybar",
+                    },
+                    primary_instance_settings=gcp.databasemigrationservice.ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs(
+                        id="priminstid",
+                        machine_config=gcp.databasemigrationservice.ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs(
+                            cpu_count=2,
+                        ),
+                        database_flags={},
+                        labels={
+                            "alloysinstfoo": "allowinstbar",
+                        },
+                    ),
+                ),
             ))
         ```
 

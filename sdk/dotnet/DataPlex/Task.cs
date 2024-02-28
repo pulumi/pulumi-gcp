@@ -19,6 +19,250 @@ namespace Pulumi.Gcp.DataPlex
     ///     * [Official Documentation](https://cloud.google.com/dataplex/docs)
     /// 
     /// ## Example Usage
+    /// ### Dataplex Task Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var example = new Gcp.DataPlex.Lake("example", new()
+    ///     {
+    ///         Name = "tf-test-lake_54216",
+    ///         Location = "us-central1",
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    ///     var exampleTask = new Gcp.DataPlex.Task("example", new()
+    ///     {
+    ///         TaskId = "tf-test-task_61048",
+    ///         Location = "us-central1",
+    ///         Lake = example.Name,
+    ///         Description = "Test Task Basic",
+    ///         DisplayName = "task-basic",
+    ///         Labels = 
+    ///         {
+    ///             { "count", "3" },
+    ///         },
+    ///         TriggerSpec = new Gcp.DataPlex.Inputs.TaskTriggerSpecArgs
+    ///         {
+    ///             Type = "RECURRING",
+    ///             Disabled = false,
+    ///             MaxRetries = 3,
+    ///             StartTime = "2023-10-02T15:01:23Z",
+    ///             Schedule = "1 * * * *",
+    ///         },
+    ///         ExecutionSpec = new Gcp.DataPlex.Inputs.TaskExecutionSpecArgs
+    ///         {
+    ///             ServiceAccount = $"{project.Apply(getProjectResult =&gt; getProjectResult.Number)}-compute@developer.gserviceaccount.com",
+    ///             Project = "my-project-name",
+    ///             MaxJobExecutionLifetime = "100s",
+    ///             KmsKey = "234jn2kjn42k3n423",
+    ///         },
+    ///         Spark = new Gcp.DataPlex.Inputs.TaskSparkArgs
+    ///         {
+    ///             PythonScriptFile = "gs://dataproc-examples/pyspark/hello-world/hello-world.py",
+    ///         },
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dataplex Task Spark
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // VPC network
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "tf-test-workstation-cluster_84145",
+    ///         AutoCreateSubnetworks = true,
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var exampleSpark = new Gcp.DataPlex.Lake("example_spark", new()
+    ///     {
+    ///         Name = "tf-test-lake_72179",
+    ///         Location = "us-central1",
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    ///     var exampleSparkTask = new Gcp.DataPlex.Task("example_spark", new()
+    ///     {
+    ///         TaskId = "tf-test-task_39000",
+    ///         Location = "us-central1",
+    ///         Lake = exampleSpark.Name,
+    ///         TriggerSpec = new Gcp.DataPlex.Inputs.TaskTriggerSpecArgs
+    ///         {
+    ///             Type = "ON_DEMAND",
+    ///         },
+    ///         Description = "task-spark-terraform",
+    ///         ExecutionSpec = new Gcp.DataPlex.Inputs.TaskExecutionSpecArgs
+    ///         {
+    ///             ServiceAccount = $"{project.Apply(getProjectResult =&gt; getProjectResult.Number)}-compute@developer.gserviceaccount.com",
+    ///             Args = 
+    ///             {
+    ///                 { "TASK_ARGS", "--output_location,gs://spark-job/task-result, --output_format, json" },
+    ///             },
+    ///         },
+    ///         Spark = new Gcp.DataPlex.Inputs.TaskSparkArgs
+    ///         {
+    ///             InfrastructureSpec = new Gcp.DataPlex.Inputs.TaskSparkInfrastructureSpecArgs
+    ///             {
+    ///                 Batch = new Gcp.DataPlex.Inputs.TaskSparkInfrastructureSpecBatchArgs
+    ///                 {
+    ///                     ExecutorsCount = 2,
+    ///                     MaxExecutorsCount = 100,
+    ///                 },
+    ///                 ContainerImage = new Gcp.DataPlex.Inputs.TaskSparkInfrastructureSpecContainerImageArgs
+    ///                 {
+    ///                     Image = "test-image",
+    ///                     JavaJars = new[]
+    ///                     {
+    ///                         "test-java-jars.jar",
+    ///                     },
+    ///                     PythonPackages = new[]
+    ///                     {
+    ///                         "gs://bucket-name/my/path/to/lib.tar.gz",
+    ///                     },
+    ///                     Properties = 
+    ///                     {
+    ///                         { "name", "wrench" },
+    ///                         { "mass", "1.3kg" },
+    ///                         { "count", "3" },
+    ///                     },
+    ///                 },
+    ///                 VpcNetwork = new Gcp.DataPlex.Inputs.TaskSparkInfrastructureSpecVpcNetworkArgs
+    ///                 {
+    ///                     NetworkTags = new[]
+    ///                     {
+    ///                         "test-network-tag",
+    ///                     },
+    ///                     SubNetwork = @default.Id,
+    ///                 },
+    ///             },
+    ///             FileUris = new[]
+    ///             {
+    ///                 "gs://terrafrom-test/test.csv",
+    ///             },
+    ///             ArchiveUris = new[]
+    ///             {
+    ///                 "gs://terraform-test/test.csv",
+    ///             },
+    ///             SqlScript = "show databases",
+    ///         },
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dataplex Task Notebook
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // VPC network
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "tf-test-workstation-cluster_57787",
+    ///         AutoCreateSubnetworks = true,
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var exampleNotebook = new Gcp.DataPlex.Lake("example_notebook", new()
+    ///     {
+    ///         Name = "tf-test-lake_28235",
+    ///         Location = "us-central1",
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    ///     var exampleNotebookTask = new Gcp.DataPlex.Task("example_notebook", new()
+    ///     {
+    ///         TaskId = "tf-test-task_22897",
+    ///         Location = "us-central1",
+    ///         Lake = exampleNotebook.Name,
+    ///         TriggerSpec = new Gcp.DataPlex.Inputs.TaskTriggerSpecArgs
+    ///         {
+    ///             Type = "RECURRING",
+    ///             Schedule = "1 * * * *",
+    ///         },
+    ///         ExecutionSpec = new Gcp.DataPlex.Inputs.TaskExecutionSpecArgs
+    ///         {
+    ///             ServiceAccount = $"{project.Apply(getProjectResult =&gt; getProjectResult.Number)}-compute@developer.gserviceaccount.com",
+    ///             Args = 
+    ///             {
+    ///                 { "TASK_ARGS", "--output_location,gs://spark-job-jars-anrajitha/task-result, --output_format, json" },
+    ///             },
+    ///         },
+    ///         Notebook = new Gcp.DataPlex.Inputs.TaskNotebookArgs
+    ///         {
+    ///             Notebook = "gs://terraform-test/test-notebook.ipynb",
+    ///             InfrastructureSpec = new Gcp.DataPlex.Inputs.TaskNotebookInfrastructureSpecArgs
+    ///             {
+    ///                 Batch = new Gcp.DataPlex.Inputs.TaskNotebookInfrastructureSpecBatchArgs
+    ///                 {
+    ///                     ExecutorsCount = 2,
+    ///                     MaxExecutorsCount = 100,
+    ///                 },
+    ///                 ContainerImage = new Gcp.DataPlex.Inputs.TaskNotebookInfrastructureSpecContainerImageArgs
+    ///                 {
+    ///                     Image = "test-image",
+    ///                     JavaJars = new[]
+    ///                     {
+    ///                         "test-java-jars.jar",
+    ///                     },
+    ///                     PythonPackages = new[]
+    ///                     {
+    ///                         "gs://bucket-name/my/path/to/lib.tar.gz",
+    ///                     },
+    ///                     Properties = 
+    ///                     {
+    ///                         { "name", "wrench" },
+    ///                         { "mass", "1.3kg" },
+    ///                         { "count", "3" },
+    ///                     },
+    ///                 },
+    ///                 VpcNetwork = new Gcp.DataPlex.Inputs.TaskNotebookInfrastructureSpecVpcNetworkArgs
+    ///                 {
+    ///                     NetworkTags = new[]
+    ///                     {
+    ///                         "test-network-tag",
+    ///                     },
+    ///                     Network = @default.Id,
+    ///                 },
+    ///             },
+    ///             FileUris = new[]
+    ///             {
+    ///                 "gs://terraform-test/test.csv",
+    ///             },
+    ///             ArchiveUris = new[]
+    ///             {
+    ///                 "gs://terraform-test/test.csv",
+    ///             },
+    ///         },
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

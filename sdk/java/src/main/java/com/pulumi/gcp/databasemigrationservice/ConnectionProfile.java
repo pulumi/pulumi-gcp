@@ -255,6 +255,90 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Database Migration Service Connection Profile Alloydb
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.servicenetworking.Connection;
+ * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
+ * import com.pulumi.gcp.databasemigrationservice.ConnectionProfile;
+ * import com.pulumi.gcp.databasemigrationservice.ConnectionProfileArgs;
+ * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileAlloydbArgs;
+ * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileAlloydbSettingsArgs;
+ * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileAlloydbSettingsInitialUserArgs;
+ * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs;
+ * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+ *             .name(&#34;vpc-network&#34;)
+ *             .build());
+ * 
+ *         var privateIpAlloc = new GlobalAddress(&#34;privateIpAlloc&#34;, GlobalAddressArgs.builder()        
+ *             .name(&#34;private-ip-alloc&#34;)
+ *             .addressType(&#34;INTERNAL&#34;)
+ *             .purpose(&#34;VPC_PEERING&#34;)
+ *             .prefixLength(16)
+ *             .network(default_.id())
+ *             .build());
+ * 
+ *         var vpcConnection = new Connection(&#34;vpcConnection&#34;, ConnectionArgs.builder()        
+ *             .network(default_.id())
+ *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .reservedPeeringRanges(privateIpAlloc.name())
+ *             .build());
+ * 
+ *         var alloydbprofile = new ConnectionProfile(&#34;alloydbprofile&#34;, ConnectionProfileArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .connectionProfileId(&#34;my-profileid&#34;)
+ *             .displayName(&#34;my-profileid_display&#34;)
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .alloydb(ConnectionProfileAlloydbArgs.builder()
+ *                 .clusterId(&#34;tf-test-dbmsalloycluster_86505&#34;)
+ *                 .settings(ConnectionProfileAlloydbSettingsArgs.builder()
+ *                     .initialUser(ConnectionProfileAlloydbSettingsInitialUserArgs.builder()
+ *                         .user(&#34;alloyuser_32802&#34;)
+ *                         .password(&#34;alloypass_26199&#34;)
+ *                         .build())
+ *                     .vpcNetwork(default_.id())
+ *                     .labels(Map.of(&#34;alloyfoo&#34;, &#34;alloybar&#34;))
+ *                     .primaryInstanceSettings(ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs.builder()
+ *                         .id(&#34;priminstid&#34;)
+ *                         .machineConfig(ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs.builder()
+ *                             .cpuCount(2)
+ *                             .build())
+ *                         .databaseFlags()
+ *                         .labels(Map.of(&#34;alloysinstfoo&#34;, &#34;allowinstbar&#34;))
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

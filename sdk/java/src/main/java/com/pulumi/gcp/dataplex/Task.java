@@ -31,6 +31,254 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/dataplex/docs)
  * 
  * ## Example Usage
+ * ### Dataplex Task Basic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.dataplex.Lake;
+ * import com.pulumi.gcp.dataplex.LakeArgs;
+ * import com.pulumi.gcp.dataplex.Task;
+ * import com.pulumi.gcp.dataplex.TaskArgs;
+ * import com.pulumi.gcp.dataplex.inputs.TaskTriggerSpecArgs;
+ * import com.pulumi.gcp.dataplex.inputs.TaskExecutionSpecArgs;
+ * import com.pulumi.gcp.dataplex.inputs.TaskSparkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var example = new Lake(&#34;example&#34;, LakeArgs.builder()        
+ *             .name(&#34;tf-test-lake_22689&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .project(&#34;my-project-name&#34;)
+ *             .build());
+ * 
+ *         var exampleTask = new Task(&#34;exampleTask&#34;, TaskArgs.builder()        
+ *             .taskId(&#34;tf-test-task_56935&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .lake(example.name())
+ *             .description(&#34;Test Task Basic&#34;)
+ *             .displayName(&#34;task-basic&#34;)
+ *             .labels(Map.of(&#34;count&#34;, &#34;3&#34;))
+ *             .triggerSpec(TaskTriggerSpecArgs.builder()
+ *                 .type(&#34;RECURRING&#34;)
+ *                 .disabled(false)
+ *                 .maxRetries(3)
+ *                 .startTime(&#34;2023-10-02T15:01:23Z&#34;)
+ *                 .schedule(&#34;1 * * * *&#34;)
+ *                 .build())
+ *             .executionSpec(TaskExecutionSpecArgs.builder()
+ *                 .serviceAccount(String.format(&#34;%s-compute@developer.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *                 .project(&#34;my-project-name&#34;)
+ *                 .maxJobExecutionLifetime(&#34;100s&#34;)
+ *                 .kmsKey(&#34;234jn2kjn42k3n423&#34;)
+ *                 .build())
+ *             .spark(TaskSparkArgs.builder()
+ *                 .pythonScriptFile(&#34;gs://dataproc-examples/pyspark/hello-world/hello-world.py&#34;)
+ *                 .build())
+ *             .project(&#34;my-project-name&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Dataplex Task Spark
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.dataplex.Lake;
+ * import com.pulumi.gcp.dataplex.LakeArgs;
+ * import com.pulumi.gcp.dataplex.Task;
+ * import com.pulumi.gcp.dataplex.TaskArgs;
+ * import com.pulumi.gcp.dataplex.inputs.TaskTriggerSpecArgs;
+ * import com.pulumi.gcp.dataplex.inputs.TaskExecutionSpecArgs;
+ * import com.pulumi.gcp.dataplex.inputs.TaskSparkArgs;
+ * import com.pulumi.gcp.dataplex.inputs.TaskSparkInfrastructureSpecArgs;
+ * import com.pulumi.gcp.dataplex.inputs.TaskSparkInfrastructureSpecBatchArgs;
+ * import com.pulumi.gcp.dataplex.inputs.TaskSparkInfrastructureSpecContainerImageArgs;
+ * import com.pulumi.gcp.dataplex.inputs.TaskSparkInfrastructureSpecVpcNetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+ *             .name(&#34;tf-test-workstation-cluster_5877&#34;)
+ *             .autoCreateSubnetworks(true)
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var exampleSpark = new Lake(&#34;exampleSpark&#34;, LakeArgs.builder()        
+ *             .name(&#34;tf-test-lake_32896&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .project(&#34;my-project-name&#34;)
+ *             .build());
+ * 
+ *         var exampleSparkTask = new Task(&#34;exampleSparkTask&#34;, TaskArgs.builder()        
+ *             .taskId(&#34;tf-test-task_29139&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .lake(exampleSpark.name())
+ *             .triggerSpec(TaskTriggerSpecArgs.builder()
+ *                 .type(&#34;ON_DEMAND&#34;)
+ *                 .build())
+ *             .description(&#34;task-spark-terraform&#34;)
+ *             .executionSpec(TaskExecutionSpecArgs.builder()
+ *                 .serviceAccount(String.format(&#34;%s-compute@developer.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *                 .args(Map.of(&#34;TASK_ARGS&#34;, &#34;--output_location,gs://spark-job/task-result, --output_format, json&#34;))
+ *                 .build())
+ *             .spark(TaskSparkArgs.builder()
+ *                 .infrastructureSpec(TaskSparkInfrastructureSpecArgs.builder()
+ *                     .batch(TaskSparkInfrastructureSpecBatchArgs.builder()
+ *                         .executorsCount(2)
+ *                         .maxExecutorsCount(100)
+ *                         .build())
+ *                     .containerImage(TaskSparkInfrastructureSpecContainerImageArgs.builder()
+ *                         .image(&#34;test-image&#34;)
+ *                         .javaJars(&#34;test-java-jars.jar&#34;)
+ *                         .pythonPackages(&#34;gs://bucket-name/my/path/to/lib.tar.gz&#34;)
+ *                         .properties(Map.ofEntries(
+ *                             Map.entry(&#34;name&#34;, &#34;wrench&#34;),
+ *                             Map.entry(&#34;mass&#34;, &#34;1.3kg&#34;),
+ *                             Map.entry(&#34;count&#34;, &#34;3&#34;)
+ *                         ))
+ *                         .build())
+ *                     .vpcNetwork(TaskSparkInfrastructureSpecVpcNetworkArgs.builder()
+ *                         .networkTags(&#34;test-network-tag&#34;)
+ *                         .subNetwork(default_.id())
+ *                         .build())
+ *                     .build())
+ *                 .fileUris(&#34;gs://terrafrom-test/test.csv&#34;)
+ *                 .archiveUris(&#34;gs://terraform-test/test.csv&#34;)
+ *                 .sqlScript(&#34;show databases&#34;)
+ *                 .build())
+ *             .project(&#34;my-project-name&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Dataplex Task Notebook
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.dataplex.Lake;
+ * import com.pulumi.gcp.dataplex.LakeArgs;
+ * import com.pulumi.gcp.dataplex.Task;
+ * import com.pulumi.gcp.dataplex.TaskArgs;
+ * import com.pulumi.gcp.dataplex.inputs.TaskTriggerSpecArgs;
+ * import com.pulumi.gcp.dataplex.inputs.TaskExecutionSpecArgs;
+ * import com.pulumi.gcp.dataplex.inputs.TaskNotebookArgs;
+ * import com.pulumi.gcp.dataplex.inputs.TaskNotebookInfrastructureSpecArgs;
+ * import com.pulumi.gcp.dataplex.inputs.TaskNotebookInfrastructureSpecBatchArgs;
+ * import com.pulumi.gcp.dataplex.inputs.TaskNotebookInfrastructureSpecContainerImageArgs;
+ * import com.pulumi.gcp.dataplex.inputs.TaskNotebookInfrastructureSpecVpcNetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+ *             .name(&#34;tf-test-workstation-cluster_76530&#34;)
+ *             .autoCreateSubnetworks(true)
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var exampleNotebook = new Lake(&#34;exampleNotebook&#34;, LakeArgs.builder()        
+ *             .name(&#34;tf-test-lake_63296&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .project(&#34;my-project-name&#34;)
+ *             .build());
+ * 
+ *         var exampleNotebookTask = new Task(&#34;exampleNotebookTask&#34;, TaskArgs.builder()        
+ *             .taskId(&#34;tf-test-task_74230&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .lake(exampleNotebook.name())
+ *             .triggerSpec(TaskTriggerSpecArgs.builder()
+ *                 .type(&#34;RECURRING&#34;)
+ *                 .schedule(&#34;1 * * * *&#34;)
+ *                 .build())
+ *             .executionSpec(TaskExecutionSpecArgs.builder()
+ *                 .serviceAccount(String.format(&#34;%s-compute@developer.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *                 .args(Map.of(&#34;TASK_ARGS&#34;, &#34;--output_location,gs://spark-job-jars-anrajitha/task-result, --output_format, json&#34;))
+ *                 .build())
+ *             .notebook(TaskNotebookArgs.builder()
+ *                 .notebook(&#34;gs://terraform-test/test-notebook.ipynb&#34;)
+ *                 .infrastructureSpec(TaskNotebookInfrastructureSpecArgs.builder()
+ *                     .batch(TaskNotebookInfrastructureSpecBatchArgs.builder()
+ *                         .executorsCount(2)
+ *                         .maxExecutorsCount(100)
+ *                         .build())
+ *                     .containerImage(TaskNotebookInfrastructureSpecContainerImageArgs.builder()
+ *                         .image(&#34;test-image&#34;)
+ *                         .javaJars(&#34;test-java-jars.jar&#34;)
+ *                         .pythonPackages(&#34;gs://bucket-name/my/path/to/lib.tar.gz&#34;)
+ *                         .properties(Map.ofEntries(
+ *                             Map.entry(&#34;name&#34;, &#34;wrench&#34;),
+ *                             Map.entry(&#34;mass&#34;, &#34;1.3kg&#34;),
+ *                             Map.entry(&#34;count&#34;, &#34;3&#34;)
+ *                         ))
+ *                         .build())
+ *                     .vpcNetwork(TaskNotebookInfrastructureSpecVpcNetworkArgs.builder()
+ *                         .networkTags(&#34;test-network-tag&#34;)
+ *                         .network(default_.id())
+ *                         .build())
+ *                     .build())
+ *                 .fileUris(&#34;gs://terraform-test/test.csv&#34;)
+ *                 .archiveUris(&#34;gs://terraform-test/test.csv&#34;)
+ *                 .build())
+ *             .project(&#34;my-project-name&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

@@ -23,6 +23,44 @@ import javax.annotation.Nullable;
  *     * [Enable, disable, or change billing for a project](https://cloud.google.com/billing/docs/how-to/modify-project)
  * 
  * ## Example Usage
+ * ### Billing Project Info Basic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.billing.ProjectInfo;
+ * import com.pulumi.gcp.billing.ProjectInfoArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;tf-test_75998&#34;)
+ *             .name(&#34;tf-test_32564&#34;)
+ *             .orgId(&#34;123456789&#34;)
+ *             .build());
+ * 
+ *         var default_ = new ProjectInfo(&#34;default&#34;, ProjectInfoArgs.builder()        
+ *             .project(project.projectId())
+ *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

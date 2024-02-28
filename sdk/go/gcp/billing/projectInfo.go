@@ -21,6 +21,41 @@ import (
 //   - [Enable, disable, or change billing for a project](https://cloud.google.com/billing/docs/how-to/modify-project)
 //
 // ## Example Usage
+// ### Billing Project Info Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/billing"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("tf-test_70189"),
+//				Name:      pulumi.String("tf-test_33680"),
+//				OrgId:     pulumi.String("123456789"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = billing.NewProjectInfo(ctx, "default", &billing.ProjectInfoArgs{
+//				Project:        project.ProjectId,
+//				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

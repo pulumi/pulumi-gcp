@@ -11,6 +11,54 @@ namespace Pulumi.Gcp.GkeHub
 {
     /// <summary>
     /// ## Example Usage
+    /// ### Gkehub Membership Rbac Role Binding Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.Container.Cluster("primary", new()
+    ///     {
+    ///         Name = "basic-cluster",
+    ///         Location = "us-central1-a",
+    ///         InitialNodeCount = 1,
+    ///         DeletionProtection = true,
+    ///         Network = "default",
+    ///         Subnetwork = "default",
+    ///     });
+    /// 
+    ///     var membership = new Gcp.GkeHub.Membership("membership", new()
+    ///     {
+    ///         MembershipId = "tf-test-membership_77513",
+    ///         Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
+    ///         {
+    ///             GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
+    ///             {
+    ///                 ResourceLink = primary.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var membershipRbacRoleBinding = new Gcp.GkeHub.MembershipRbacRoleBinding("membership_rbac_role_binding", new()
+    ///     {
+    ///         MembershipRbacRoleBindingId = "tf-test-membership-rbac-role-binding_25634",
+    ///         MembershipId = membership.MembershipId,
+    ///         User = $"service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-anthossupport.iam.gserviceaccount.com",
+    ///         Role = new Gcp.GkeHub.Inputs.MembershipRbacRoleBindingRoleArgs
+    ///         {
+    ///             PredefinedRole = "ANTHOS_SUPPORT",
+    ///         },
+    ///         Location = "global",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
