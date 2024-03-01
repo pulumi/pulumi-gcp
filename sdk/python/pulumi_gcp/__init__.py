@@ -4199,10 +4199,42 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "firebase/appCheckAppAttestConfig",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig": "AppCheckAppAttestConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "firebase/appCheckDebugToken",
   "fqn": "pulumi_gcp.firebase",
   "classes": {
    "gcp:firebase/appCheckDebugToken:AppCheckDebugToken": "AppCheckDebugToken"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "firebase/appCheckPlayIntegrityConfig",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig": "AppCheckPlayIntegrityConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "firebase/appCheckRecaptchaEnterpriseConfig",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/appCheckRecaptchaEnterpriseConfig:AppCheckRecaptchaEnterpriseConfig": "AppCheckRecaptchaEnterpriseConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "firebase/appCheckRecaptchaV3Config",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config": "AppCheckRecaptchaV3Config"
   }
  },
  {
@@ -5431,6 +5463,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "migrationcenter/preferenceSet",
+  "fqn": "pulumi_gcp.migrationcenter",
+  "classes": {
+   "gcp:migrationcenter/preferenceSet:PreferenceSet": "PreferenceSet"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "ml/engineModel",
   "fqn": "pulumi_gcp.ml",
   "classes": {
@@ -5563,6 +5603,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.netapp",
   "classes": {
    "gcp:netapp/volume:Volume": "Volume"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "netapp/volumeReplication",
+  "fqn": "pulumi_gcp.netapp",
+  "classes": {
+   "gcp:netapp/volumeReplication:VolumeReplication": "VolumeReplication"
   }
  },
  {

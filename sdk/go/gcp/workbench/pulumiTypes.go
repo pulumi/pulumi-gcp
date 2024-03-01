@@ -22,6 +22,9 @@ type InstanceGceSetup struct {
 	// The definition of a boot disk.
 	// Structure is documented below.
 	BootDisk *InstanceGceSetupBootDisk `pulumi:"bootDisk"`
+	// Use a container image to start the workbench instance.
+	// Structure is documented below.
+	ContainerImage *InstanceGceSetupContainerImage `pulumi:"containerImage"`
 	// Data disks attached to the VM instance. Currently supports only one data disk.
 	// Structure is documented below.
 	DataDisks *InstanceGceSetupDataDisks `pulumi:"dataDisks"`
@@ -40,6 +43,11 @@ type InstanceGceSetup struct {
 	// The service account that serves as an identity for the VM instance. Currently supports only one service account.
 	// Structure is documented below.
 	ServiceAccounts []InstanceGceSetupServiceAccount `pulumi:"serviceAccounts"`
+	// A set of Shielded Instance options. See [Images using supported Shielded
+	// VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+	// Not all combinations are valid.
+	// Structure is documented below.
+	ShieldedInstanceConfig *InstanceGceSetupShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Optional. The Compute Engine tags to add to instance (see [Tagging
 	// instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
 	Tags []string `pulumi:"tags"`
@@ -69,6 +77,9 @@ type InstanceGceSetupArgs struct {
 	// The definition of a boot disk.
 	// Structure is documented below.
 	BootDisk InstanceGceSetupBootDiskPtrInput `pulumi:"bootDisk"`
+	// Use a container image to start the workbench instance.
+	// Structure is documented below.
+	ContainerImage InstanceGceSetupContainerImagePtrInput `pulumi:"containerImage"`
 	// Data disks attached to the VM instance. Currently supports only one data disk.
 	// Structure is documented below.
 	DataDisks InstanceGceSetupDataDisksPtrInput `pulumi:"dataDisks"`
@@ -87,6 +98,11 @@ type InstanceGceSetupArgs struct {
 	// The service account that serves as an identity for the VM instance. Currently supports only one service account.
 	// Structure is documented below.
 	ServiceAccounts InstanceGceSetupServiceAccountArrayInput `pulumi:"serviceAccounts"`
+	// A set of Shielded Instance options. See [Images using supported Shielded
+	// VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+	// Not all combinations are valid.
+	// Structure is documented below.
+	ShieldedInstanceConfig InstanceGceSetupShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
 	// Optional. The Compute Engine tags to add to instance (see [Tagging
 	// instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
@@ -187,6 +203,12 @@ func (o InstanceGceSetupOutput) BootDisk() InstanceGceSetupBootDiskPtrOutput {
 	return o.ApplyT(func(v InstanceGceSetup) *InstanceGceSetupBootDisk { return v.BootDisk }).(InstanceGceSetupBootDiskPtrOutput)
 }
 
+// Use a container image to start the workbench instance.
+// Structure is documented below.
+func (o InstanceGceSetupOutput) ContainerImage() InstanceGceSetupContainerImagePtrOutput {
+	return o.ApplyT(func(v InstanceGceSetup) *InstanceGceSetupContainerImage { return v.ContainerImage }).(InstanceGceSetupContainerImagePtrOutput)
+}
+
 // Data disks attached to the VM instance. Currently supports only one data disk.
 // Structure is documented below.
 func (o InstanceGceSetupOutput) DataDisks() InstanceGceSetupDataDisksPtrOutput {
@@ -224,6 +246,14 @@ func (o InstanceGceSetupOutput) NetworkInterfaces() InstanceGceSetupNetworkInter
 // Structure is documented below.
 func (o InstanceGceSetupOutput) ServiceAccounts() InstanceGceSetupServiceAccountArrayOutput {
 	return o.ApplyT(func(v InstanceGceSetup) []InstanceGceSetupServiceAccount { return v.ServiceAccounts }).(InstanceGceSetupServiceAccountArrayOutput)
+}
+
+// A set of Shielded Instance options. See [Images using supported Shielded
+// VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+// Not all combinations are valid.
+// Structure is documented below.
+func (o InstanceGceSetupOutput) ShieldedInstanceConfig() InstanceGceSetupShieldedInstanceConfigPtrOutput {
+	return o.ApplyT(func(v InstanceGceSetup) *InstanceGceSetupShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(InstanceGceSetupShieldedInstanceConfigPtrOutput)
 }
 
 // Optional. The Compute Engine tags to add to instance (see [Tagging
@@ -285,6 +315,17 @@ func (o InstanceGceSetupPtrOutput) BootDisk() InstanceGceSetupBootDiskPtrOutput 
 		}
 		return v.BootDisk
 	}).(InstanceGceSetupBootDiskPtrOutput)
+}
+
+// Use a container image to start the workbench instance.
+// Structure is documented below.
+func (o InstanceGceSetupPtrOutput) ContainerImage() InstanceGceSetupContainerImagePtrOutput {
+	return o.ApplyT(func(v *InstanceGceSetup) *InstanceGceSetupContainerImage {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerImage
+	}).(InstanceGceSetupContainerImagePtrOutput)
 }
 
 // Data disks attached to the VM instance. Currently supports only one data disk.
@@ -359,6 +400,19 @@ func (o InstanceGceSetupPtrOutput) ServiceAccounts() InstanceGceSetupServiceAcco
 		}
 		return v.ServiceAccounts
 	}).(InstanceGceSetupServiceAccountArrayOutput)
+}
+
+// A set of Shielded Instance options. See [Images using supported Shielded
+// VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+// Not all combinations are valid.
+// Structure is documented below.
+func (o InstanceGceSetupPtrOutput) ShieldedInstanceConfig() InstanceGceSetupShieldedInstanceConfigPtrOutput {
+	return o.ApplyT(func(v *InstanceGceSetup) *InstanceGceSetupShieldedInstanceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ShieldedInstanceConfig
+	}).(InstanceGceSetupShieldedInstanceConfigPtrOutput)
 }
 
 // Optional. The Compute Engine tags to add to instance (see [Tagging
@@ -712,6 +766,166 @@ func (o InstanceGceSetupBootDiskPtrOutput) KmsKey() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.KmsKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceGceSetupContainerImage struct {
+	// The path to the container image repository.
+	// For example: gcr.io/{project_id}/{imageName}
+	Repository string `pulumi:"repository"`
+	// The tag of the container image. If not specified, this defaults to the latest tag.
+	Tag *string `pulumi:"tag"`
+}
+
+// InstanceGceSetupContainerImageInput is an input type that accepts InstanceGceSetupContainerImageArgs and InstanceGceSetupContainerImageOutput values.
+// You can construct a concrete instance of `InstanceGceSetupContainerImageInput` via:
+//
+//	InstanceGceSetupContainerImageArgs{...}
+type InstanceGceSetupContainerImageInput interface {
+	pulumi.Input
+
+	ToInstanceGceSetupContainerImageOutput() InstanceGceSetupContainerImageOutput
+	ToInstanceGceSetupContainerImageOutputWithContext(context.Context) InstanceGceSetupContainerImageOutput
+}
+
+type InstanceGceSetupContainerImageArgs struct {
+	// The path to the container image repository.
+	// For example: gcr.io/{project_id}/{imageName}
+	Repository pulumi.StringInput `pulumi:"repository"`
+	// The tag of the container image. If not specified, this defaults to the latest tag.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
+}
+
+func (InstanceGceSetupContainerImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGceSetupContainerImage)(nil)).Elem()
+}
+
+func (i InstanceGceSetupContainerImageArgs) ToInstanceGceSetupContainerImageOutput() InstanceGceSetupContainerImageOutput {
+	return i.ToInstanceGceSetupContainerImageOutputWithContext(context.Background())
+}
+
+func (i InstanceGceSetupContainerImageArgs) ToInstanceGceSetupContainerImageOutputWithContext(ctx context.Context) InstanceGceSetupContainerImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGceSetupContainerImageOutput)
+}
+
+func (i InstanceGceSetupContainerImageArgs) ToInstanceGceSetupContainerImagePtrOutput() InstanceGceSetupContainerImagePtrOutput {
+	return i.ToInstanceGceSetupContainerImagePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceGceSetupContainerImageArgs) ToInstanceGceSetupContainerImagePtrOutputWithContext(ctx context.Context) InstanceGceSetupContainerImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGceSetupContainerImageOutput).ToInstanceGceSetupContainerImagePtrOutputWithContext(ctx)
+}
+
+// InstanceGceSetupContainerImagePtrInput is an input type that accepts InstanceGceSetupContainerImageArgs, InstanceGceSetupContainerImagePtr and InstanceGceSetupContainerImagePtrOutput values.
+// You can construct a concrete instance of `InstanceGceSetupContainerImagePtrInput` via:
+//
+//	        InstanceGceSetupContainerImageArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceGceSetupContainerImagePtrInput interface {
+	pulumi.Input
+
+	ToInstanceGceSetupContainerImagePtrOutput() InstanceGceSetupContainerImagePtrOutput
+	ToInstanceGceSetupContainerImagePtrOutputWithContext(context.Context) InstanceGceSetupContainerImagePtrOutput
+}
+
+type instanceGceSetupContainerImagePtrType InstanceGceSetupContainerImageArgs
+
+func InstanceGceSetupContainerImagePtr(v *InstanceGceSetupContainerImageArgs) InstanceGceSetupContainerImagePtrInput {
+	return (*instanceGceSetupContainerImagePtrType)(v)
+}
+
+func (*instanceGceSetupContainerImagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGceSetupContainerImage)(nil)).Elem()
+}
+
+func (i *instanceGceSetupContainerImagePtrType) ToInstanceGceSetupContainerImagePtrOutput() InstanceGceSetupContainerImagePtrOutput {
+	return i.ToInstanceGceSetupContainerImagePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceGceSetupContainerImagePtrType) ToInstanceGceSetupContainerImagePtrOutputWithContext(ctx context.Context) InstanceGceSetupContainerImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGceSetupContainerImagePtrOutput)
+}
+
+type InstanceGceSetupContainerImageOutput struct{ *pulumi.OutputState }
+
+func (InstanceGceSetupContainerImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGceSetupContainerImage)(nil)).Elem()
+}
+
+func (o InstanceGceSetupContainerImageOutput) ToInstanceGceSetupContainerImageOutput() InstanceGceSetupContainerImageOutput {
+	return o
+}
+
+func (o InstanceGceSetupContainerImageOutput) ToInstanceGceSetupContainerImageOutputWithContext(ctx context.Context) InstanceGceSetupContainerImageOutput {
+	return o
+}
+
+func (o InstanceGceSetupContainerImageOutput) ToInstanceGceSetupContainerImagePtrOutput() InstanceGceSetupContainerImagePtrOutput {
+	return o.ToInstanceGceSetupContainerImagePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGceSetupContainerImageOutput) ToInstanceGceSetupContainerImagePtrOutputWithContext(ctx context.Context) InstanceGceSetupContainerImagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceGceSetupContainerImage) *InstanceGceSetupContainerImage {
+		return &v
+	}).(InstanceGceSetupContainerImagePtrOutput)
+}
+
+// The path to the container image repository.
+// For example: gcr.io/{project_id}/{imageName}
+func (o InstanceGceSetupContainerImageOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceGceSetupContainerImage) string { return v.Repository }).(pulumi.StringOutput)
+}
+
+// The tag of the container image. If not specified, this defaults to the latest tag.
+func (o InstanceGceSetupContainerImageOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceGceSetupContainerImage) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+type InstanceGceSetupContainerImagePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceGceSetupContainerImagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGceSetupContainerImage)(nil)).Elem()
+}
+
+func (o InstanceGceSetupContainerImagePtrOutput) ToInstanceGceSetupContainerImagePtrOutput() InstanceGceSetupContainerImagePtrOutput {
+	return o
+}
+
+func (o InstanceGceSetupContainerImagePtrOutput) ToInstanceGceSetupContainerImagePtrOutputWithContext(ctx context.Context) InstanceGceSetupContainerImagePtrOutput {
+	return o
+}
+
+func (o InstanceGceSetupContainerImagePtrOutput) Elem() InstanceGceSetupContainerImageOutput {
+	return o.ApplyT(func(v *InstanceGceSetupContainerImage) InstanceGceSetupContainerImage {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceGceSetupContainerImage
+		return ret
+	}).(InstanceGceSetupContainerImageOutput)
+}
+
+// The path to the container image repository.
+// For example: gcr.io/{project_id}/{imageName}
+func (o InstanceGceSetupContainerImagePtrOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceGceSetupContainerImage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Repository
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tag of the container image. If not specified, this defaults to the latest tag.
+func (o InstanceGceSetupContainerImagePtrOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceGceSetupContainerImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tag
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1168,6 +1382,213 @@ func (o InstanceGceSetupServiceAccountArrayOutput) Index(i pulumi.IntInput) Inst
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceGceSetupServiceAccount {
 		return vs[0].([]InstanceGceSetupServiceAccount)[vs[1].(int)]
 	}).(InstanceGceSetupServiceAccountOutput)
+}
+
+type InstanceGceSetupShieldedInstanceConfig struct {
+	// Optional. Defines whether the VM instance has integrity monitoring
+	// enabled. Enables monitoring and attestation of the boot integrity of the VM
+	// instance. The attestation is performed against the integrity policy baseline.
+	// This baseline is initially derived from the implicitly trusted boot image
+	// when the VM instance is created. Enabled by default.
+	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
+	// Optional. Defines whether the VM instance has Secure Boot enabled.
+	// Secure Boot helps ensure that the system only runs authentic software by verifying
+	// the digital signature of all boot components, and halting the boot process
+	// if signature verification fails. Disabled by default.
+	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
+	// Optional. Defines whether the VM instance has the vTPM enabled.
+	// Enabled by default.
+	EnableVtpm *bool `pulumi:"enableVtpm"`
+}
+
+// InstanceGceSetupShieldedInstanceConfigInput is an input type that accepts InstanceGceSetupShieldedInstanceConfigArgs and InstanceGceSetupShieldedInstanceConfigOutput values.
+// You can construct a concrete instance of `InstanceGceSetupShieldedInstanceConfigInput` via:
+//
+//	InstanceGceSetupShieldedInstanceConfigArgs{...}
+type InstanceGceSetupShieldedInstanceConfigInput interface {
+	pulumi.Input
+
+	ToInstanceGceSetupShieldedInstanceConfigOutput() InstanceGceSetupShieldedInstanceConfigOutput
+	ToInstanceGceSetupShieldedInstanceConfigOutputWithContext(context.Context) InstanceGceSetupShieldedInstanceConfigOutput
+}
+
+type InstanceGceSetupShieldedInstanceConfigArgs struct {
+	// Optional. Defines whether the VM instance has integrity monitoring
+	// enabled. Enables monitoring and attestation of the boot integrity of the VM
+	// instance. The attestation is performed against the integrity policy baseline.
+	// This baseline is initially derived from the implicitly trusted boot image
+	// when the VM instance is created. Enabled by default.
+	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
+	// Optional. Defines whether the VM instance has Secure Boot enabled.
+	// Secure Boot helps ensure that the system only runs authentic software by verifying
+	// the digital signature of all boot components, and halting the boot process
+	// if signature verification fails. Disabled by default.
+	EnableSecureBoot pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
+	// Optional. Defines whether the VM instance has the vTPM enabled.
+	// Enabled by default.
+	EnableVtpm pulumi.BoolPtrInput `pulumi:"enableVtpm"`
+}
+
+func (InstanceGceSetupShieldedInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGceSetupShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i InstanceGceSetupShieldedInstanceConfigArgs) ToInstanceGceSetupShieldedInstanceConfigOutput() InstanceGceSetupShieldedInstanceConfigOutput {
+	return i.ToInstanceGceSetupShieldedInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceGceSetupShieldedInstanceConfigArgs) ToInstanceGceSetupShieldedInstanceConfigOutputWithContext(ctx context.Context) InstanceGceSetupShieldedInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGceSetupShieldedInstanceConfigOutput)
+}
+
+func (i InstanceGceSetupShieldedInstanceConfigArgs) ToInstanceGceSetupShieldedInstanceConfigPtrOutput() InstanceGceSetupShieldedInstanceConfigPtrOutput {
+	return i.ToInstanceGceSetupShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceGceSetupShieldedInstanceConfigArgs) ToInstanceGceSetupShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceGceSetupShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGceSetupShieldedInstanceConfigOutput).ToInstanceGceSetupShieldedInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceGceSetupShieldedInstanceConfigPtrInput is an input type that accepts InstanceGceSetupShieldedInstanceConfigArgs, InstanceGceSetupShieldedInstanceConfigPtr and InstanceGceSetupShieldedInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceGceSetupShieldedInstanceConfigPtrInput` via:
+//
+//	        InstanceGceSetupShieldedInstanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceGceSetupShieldedInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceGceSetupShieldedInstanceConfigPtrOutput() InstanceGceSetupShieldedInstanceConfigPtrOutput
+	ToInstanceGceSetupShieldedInstanceConfigPtrOutputWithContext(context.Context) InstanceGceSetupShieldedInstanceConfigPtrOutput
+}
+
+type instanceGceSetupShieldedInstanceConfigPtrType InstanceGceSetupShieldedInstanceConfigArgs
+
+func InstanceGceSetupShieldedInstanceConfigPtr(v *InstanceGceSetupShieldedInstanceConfigArgs) InstanceGceSetupShieldedInstanceConfigPtrInput {
+	return (*instanceGceSetupShieldedInstanceConfigPtrType)(v)
+}
+
+func (*instanceGceSetupShieldedInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGceSetupShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i *instanceGceSetupShieldedInstanceConfigPtrType) ToInstanceGceSetupShieldedInstanceConfigPtrOutput() InstanceGceSetupShieldedInstanceConfigPtrOutput {
+	return i.ToInstanceGceSetupShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceGceSetupShieldedInstanceConfigPtrType) ToInstanceGceSetupShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceGceSetupShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGceSetupShieldedInstanceConfigPtrOutput)
+}
+
+type InstanceGceSetupShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceGceSetupShieldedInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGceSetupShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o InstanceGceSetupShieldedInstanceConfigOutput) ToInstanceGceSetupShieldedInstanceConfigOutput() InstanceGceSetupShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o InstanceGceSetupShieldedInstanceConfigOutput) ToInstanceGceSetupShieldedInstanceConfigOutputWithContext(ctx context.Context) InstanceGceSetupShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o InstanceGceSetupShieldedInstanceConfigOutput) ToInstanceGceSetupShieldedInstanceConfigPtrOutput() InstanceGceSetupShieldedInstanceConfigPtrOutput {
+	return o.ToInstanceGceSetupShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGceSetupShieldedInstanceConfigOutput) ToInstanceGceSetupShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceGceSetupShieldedInstanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceGceSetupShieldedInstanceConfig) *InstanceGceSetupShieldedInstanceConfig {
+		return &v
+	}).(InstanceGceSetupShieldedInstanceConfigPtrOutput)
+}
+
+// Optional. Defines whether the VM instance has integrity monitoring
+// enabled. Enables monitoring and attestation of the boot integrity of the VM
+// instance. The attestation is performed against the integrity policy baseline.
+// This baseline is initially derived from the implicitly trusted boot image
+// when the VM instance is created. Enabled by default.
+func (o InstanceGceSetupShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceGceSetupShieldedInstanceConfig) *bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Defines whether the VM instance has Secure Boot enabled.
+// Secure Boot helps ensure that the system only runs authentic software by verifying
+// the digital signature of all boot components, and halting the boot process
+// if signature verification fails. Disabled by default.
+func (o InstanceGceSetupShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceGceSetupShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Defines whether the VM instance has the vTPM enabled.
+// Enabled by default.
+func (o InstanceGceSetupShieldedInstanceConfigOutput) EnableVtpm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceGceSetupShieldedInstanceConfig) *bool { return v.EnableVtpm }).(pulumi.BoolPtrOutput)
+}
+
+type InstanceGceSetupShieldedInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceGceSetupShieldedInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGceSetupShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o InstanceGceSetupShieldedInstanceConfigPtrOutput) ToInstanceGceSetupShieldedInstanceConfigPtrOutput() InstanceGceSetupShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o InstanceGceSetupShieldedInstanceConfigPtrOutput) ToInstanceGceSetupShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceGceSetupShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o InstanceGceSetupShieldedInstanceConfigPtrOutput) Elem() InstanceGceSetupShieldedInstanceConfigOutput {
+	return o.ApplyT(func(v *InstanceGceSetupShieldedInstanceConfig) InstanceGceSetupShieldedInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceGceSetupShieldedInstanceConfig
+		return ret
+	}).(InstanceGceSetupShieldedInstanceConfigOutput)
+}
+
+// Optional. Defines whether the VM instance has integrity monitoring
+// enabled. Enables monitoring and attestation of the boot integrity of the VM
+// instance. The attestation is performed against the integrity policy baseline.
+// This baseline is initially derived from the implicitly trusted boot image
+// when the VM instance is created. Enabled by default.
+func (o InstanceGceSetupShieldedInstanceConfigPtrOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceGceSetupShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableIntegrityMonitoring
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Defines whether the VM instance has Secure Boot enabled.
+// Secure Boot helps ensure that the system only runs authentic software by verifying
+// the digital signature of all boot components, and halting the boot process
+// if signature verification fails. Disabled by default.
+func (o InstanceGceSetupShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceGceSetupShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSecureBoot
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Defines whether the VM instance has the vTPM enabled.
+// Enabled by default.
+func (o InstanceGceSetupShieldedInstanceConfigPtrOutput) EnableVtpm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceGceSetupShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableVtpm
+	}).(pulumi.BoolPtrOutput)
 }
 
 type InstanceGceSetupVmImage struct {
@@ -1770,7 +2191,8 @@ func (o InstanceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 type InstanceUpgradeHistory struct {
 	// Optional. Action. Rolloback or Upgrade.
 	Action *string `pulumi:"action"`
-	// Optional. The container image before this instance upgrade.
+	// Use a container image to start the workbench instance.
+	// Structure is documented below.
 	ContainerImage *string `pulumi:"containerImage"`
 	// An RFC3339 timestamp in UTC time. This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
 	// The milliseconds portion (".SSS") is optional.
@@ -1806,7 +2228,8 @@ type InstanceUpgradeHistoryInput interface {
 type InstanceUpgradeHistoryArgs struct {
 	// Optional. Action. Rolloback or Upgrade.
 	Action pulumi.StringPtrInput `pulumi:"action"`
-	// Optional. The container image before this instance upgrade.
+	// Use a container image to start the workbench instance.
+	// Structure is documented below.
 	ContainerImage pulumi.StringPtrInput `pulumi:"containerImage"`
 	// An RFC3339 timestamp in UTC time. This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
 	// The milliseconds portion (".SSS") is optional.
@@ -1884,7 +2307,8 @@ func (o InstanceUpgradeHistoryOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceUpgradeHistory) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The container image before this instance upgrade.
+// Use a container image to start the workbench instance.
+// Structure is documented below.
 func (o InstanceUpgradeHistoryOutput) ContainerImage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceUpgradeHistory) *string { return v.ContainerImage }).(pulumi.StringPtrOutput)
 }
@@ -1955,12 +2379,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupAcceleratorConfigArrayInput)(nil)).Elem(), InstanceGceSetupAcceleratorConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupBootDiskInput)(nil)).Elem(), InstanceGceSetupBootDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupBootDiskPtrInput)(nil)).Elem(), InstanceGceSetupBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupContainerImageInput)(nil)).Elem(), InstanceGceSetupContainerImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupContainerImagePtrInput)(nil)).Elem(), InstanceGceSetupContainerImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupDataDisksInput)(nil)).Elem(), InstanceGceSetupDataDisksArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupDataDisksPtrInput)(nil)).Elem(), InstanceGceSetupDataDisksArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupNetworkInterfaceInput)(nil)).Elem(), InstanceGceSetupNetworkInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupNetworkInterfaceArrayInput)(nil)).Elem(), InstanceGceSetupNetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupServiceAccountInput)(nil)).Elem(), InstanceGceSetupServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupServiceAccountArrayInput)(nil)).Elem(), InstanceGceSetupServiceAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupShieldedInstanceConfigInput)(nil)).Elem(), InstanceGceSetupShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupShieldedInstanceConfigPtrInput)(nil)).Elem(), InstanceGceSetupShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupVmImageInput)(nil)).Elem(), InstanceGceSetupVmImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupVmImagePtrInput)(nil)).Elem(), InstanceGceSetupVmImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceHealthInfoInput)(nil)).Elem(), InstanceHealthInfoArgs{})
@@ -1977,12 +2405,16 @@ func init() {
 	pulumi.RegisterOutputType(InstanceGceSetupAcceleratorConfigArrayOutput{})
 	pulumi.RegisterOutputType(InstanceGceSetupBootDiskOutput{})
 	pulumi.RegisterOutputType(InstanceGceSetupBootDiskPtrOutput{})
+	pulumi.RegisterOutputType(InstanceGceSetupContainerImageOutput{})
+	pulumi.RegisterOutputType(InstanceGceSetupContainerImagePtrOutput{})
 	pulumi.RegisterOutputType(InstanceGceSetupDataDisksOutput{})
 	pulumi.RegisterOutputType(InstanceGceSetupDataDisksPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGceSetupNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(InstanceGceSetupNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(InstanceGceSetupServiceAccountOutput{})
 	pulumi.RegisterOutputType(InstanceGceSetupServiceAccountArrayOutput{})
+	pulumi.RegisterOutputType(InstanceGceSetupShieldedInstanceConfigOutput{})
+	pulumi.RegisterOutputType(InstanceGceSetupShieldedInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGceSetupVmImageOutput{})
 	pulumi.RegisterOutputType(InstanceGceSetupVmImagePtrOutput{})
 	pulumi.RegisterOutputType(InstanceHealthInfoOutput{})

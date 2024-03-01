@@ -7,9 +7,11 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.workbench.inputs.InstanceGceSetupAcceleratorConfigArgs;
 import com.pulumi.gcp.workbench.inputs.InstanceGceSetupBootDiskArgs;
+import com.pulumi.gcp.workbench.inputs.InstanceGceSetupContainerImageArgs;
 import com.pulumi.gcp.workbench.inputs.InstanceGceSetupDataDisksArgs;
 import com.pulumi.gcp.workbench.inputs.InstanceGceSetupNetworkInterfaceArgs;
 import com.pulumi.gcp.workbench.inputs.InstanceGceSetupServiceAccountArgs;
+import com.pulumi.gcp.workbench.inputs.InstanceGceSetupShieldedInstanceConfigArgs;
 import com.pulumi.gcp.workbench.inputs.InstanceGceSetupVmImageArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -60,6 +62,23 @@ public final class InstanceGceSetupArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<InstanceGceSetupBootDiskArgs>> bootDisk() {
         return Optional.ofNullable(this.bootDisk);
+    }
+
+    /**
+     * Use a container image to start the workbench instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="containerImage")
+    private @Nullable Output<InstanceGceSetupContainerImageArgs> containerImage;
+
+    /**
+     * @return Use a container image to start the workbench instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceGceSetupContainerImageArgs>> containerImage() {
+        return Optional.ofNullable(this.containerImage);
     }
 
     /**
@@ -176,6 +195,27 @@ public final class InstanceGceSetupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * A set of Shielded Instance options. See [Images using supported Shielded
+     * VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+     * Not all combinations are valid.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="shieldedInstanceConfig")
+    private @Nullable Output<InstanceGceSetupShieldedInstanceConfigArgs> shieldedInstanceConfig;
+
+    /**
+     * @return A set of Shielded Instance options. See [Images using supported Shielded
+     * VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+     * Not all combinations are valid.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceGceSetupShieldedInstanceConfigArgs>> shieldedInstanceConfig() {
+        return Optional.ofNullable(this.shieldedInstanceConfig);
+    }
+
+    /**
      * Optional. The Compute Engine tags to add to instance (see [Tagging
      * instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
      * 
@@ -216,6 +256,7 @@ public final class InstanceGceSetupArgs extends com.pulumi.resources.ResourceArg
     private InstanceGceSetupArgs(InstanceGceSetupArgs $) {
         this.acceleratorConfigs = $.acceleratorConfigs;
         this.bootDisk = $.bootDisk;
+        this.containerImage = $.containerImage;
         this.dataDisks = $.dataDisks;
         this.disablePublicIp = $.disablePublicIp;
         this.enableIpForwarding = $.enableIpForwarding;
@@ -223,6 +264,7 @@ public final class InstanceGceSetupArgs extends com.pulumi.resources.ResourceArg
         this.metadata = $.metadata;
         this.networkInterfaces = $.networkInterfaces;
         this.serviceAccounts = $.serviceAccounts;
+        this.shieldedInstanceConfig = $.shieldedInstanceConfig;
         this.tags = $.tags;
         this.vmImage = $.vmImage;
     }
@@ -306,6 +348,29 @@ public final class InstanceGceSetupArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder bootDisk(InstanceGceSetupBootDiskArgs bootDisk) {
             return bootDisk(Output.of(bootDisk));
+        }
+
+        /**
+         * @param containerImage Use a container image to start the workbench instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerImage(@Nullable Output<InstanceGceSetupContainerImageArgs> containerImage) {
+            $.containerImage = containerImage;
+            return this;
+        }
+
+        /**
+         * @param containerImage Use a container image to start the workbench instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerImage(InstanceGceSetupContainerImageArgs containerImage) {
+            return containerImage(Output.of(containerImage));
         }
 
         /**
@@ -483,6 +548,33 @@ public final class InstanceGceSetupArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder serviceAccounts(InstanceGceSetupServiceAccountArgs... serviceAccounts) {
             return serviceAccounts(List.of(serviceAccounts));
+        }
+
+        /**
+         * @param shieldedInstanceConfig A set of Shielded Instance options. See [Images using supported Shielded
+         * VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+         * Not all combinations are valid.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shieldedInstanceConfig(@Nullable Output<InstanceGceSetupShieldedInstanceConfigArgs> shieldedInstanceConfig) {
+            $.shieldedInstanceConfig = shieldedInstanceConfig;
+            return this;
+        }
+
+        /**
+         * @param shieldedInstanceConfig A set of Shielded Instance options. See [Images using supported Shielded
+         * VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+         * Not all combinations are valid.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shieldedInstanceConfig(InstanceGceSetupShieldedInstanceConfigArgs shieldedInstanceConfig) {
+            return shieldedInstanceConfig(Output.of(shieldedInstanceConfig));
         }
 
         /**

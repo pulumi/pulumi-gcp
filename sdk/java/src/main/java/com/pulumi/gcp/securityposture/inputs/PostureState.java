@@ -34,14 +34,14 @@ public final class PostureState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the posture.
+     * Description of the expression
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the posture.
+     * @return Description of the expression
      * 
      */
     public Optional<Output<String>> description() {
@@ -128,16 +128,12 @@ public final class PostureState extends com.pulumi.resources.ResourceArgs {
     /**
      * Id of the posture. It is an immutable field.
      * 
-     * ***
-     * 
      */
     @Import(name="postureId")
     private @Nullable Output<String> postureId;
 
     /**
      * @return Id of the posture. It is an immutable field.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> postureId() {
@@ -265,7 +261,7 @@ public final class PostureState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the posture.
+         * @param description Description of the expression
          * 
          * @return builder
          * 
@@ -276,7 +272,7 @@ public final class PostureState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the posture.
+         * @param description Description of the expression
          * 
          * @return builder
          * 
@@ -406,8 +402,6 @@ public final class PostureState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param postureId Id of the posture. It is an immutable field.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -418,8 +412,6 @@ public final class PostureState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param postureId Id of the posture. It is an immutable field.
-         * 
-         * ***
          * 
          * @return builder
          * 

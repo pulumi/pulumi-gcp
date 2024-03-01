@@ -173,7 +173,7 @@ export class Posture extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Description of the posture.
+     * Description of the expression
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -196,12 +196,9 @@ export class Posture extends pulumi.CustomResource {
      * List of policy sets for the posture.
      * Structure is documented below.
      */
-    public readonly policySets!: pulumi.Output<outputs.securityposture.PosturePolicySet[] | undefined>;
+    public readonly policySets!: pulumi.Output<outputs.securityposture.PosturePolicySet[]>;
     /**
      * Id of the posture. It is an immutable field.
-     *
-     *
-     * - - -
      */
     public readonly postureId!: pulumi.Output<string>;
     /**
@@ -256,6 +253,9 @@ export class Posture extends pulumi.CustomResource {
             if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
+            if ((!args || args.policySets === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'policySets'");
+            }
             if ((!args || args.postureId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'postureId'");
             }
@@ -289,7 +289,7 @@ export interface PostureState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Description of the posture.
+     * Description of the expression
      */
     description?: pulumi.Input<string>;
     /**
@@ -315,9 +315,6 @@ export interface PostureState {
     policySets?: pulumi.Input<pulumi.Input<inputs.securityposture.PosturePolicySet>[]>;
     /**
      * Id of the posture. It is an immutable field.
-     *
-     *
-     * - - -
      */
     postureId?: pulumi.Input<string>;
     /**
@@ -345,7 +342,7 @@ export interface PostureState {
  */
 export interface PostureArgs {
     /**
-     * Description of the posture.
+     * Description of the expression
      */
     description?: pulumi.Input<string>;
     /**
@@ -360,12 +357,9 @@ export interface PostureArgs {
      * List of policy sets for the posture.
      * Structure is documented below.
      */
-    policySets?: pulumi.Input<pulumi.Input<inputs.securityposture.PosturePolicySet>[]>;
+    policySets: pulumi.Input<pulumi.Input<inputs.securityposture.PosturePolicySet>[]>;
     /**
      * Id of the posture. It is an immutable field.
-     *
-     *
-     * - - -
      */
     postureId: pulumi.Input<string>;
     /**

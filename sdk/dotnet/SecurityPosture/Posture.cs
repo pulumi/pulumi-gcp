@@ -204,7 +204,7 @@ namespace Pulumi.Gcp.SecurityPosture
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the posture.
+        /// Description of the expression
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -242,9 +242,6 @@ namespace Pulumi.Gcp.SecurityPosture
 
         /// <summary>
         /// Id of the posture. It is an immutable field.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("postureId")]
         public Output<string> PostureId { get; private set; } = null!;
@@ -322,7 +319,7 @@ namespace Pulumi.Gcp.SecurityPosture
     public sealed class PostureArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the posture.
+        /// Description of the expression
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -339,7 +336,7 @@ namespace Pulumi.Gcp.SecurityPosture
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
 
-        [Input("policySets")]
+        [Input("policySets", required: true)]
         private InputList<Inputs.PosturePolicySetArgs>? _policySets;
 
         /// <summary>
@@ -354,9 +351,6 @@ namespace Pulumi.Gcp.SecurityPosture
 
         /// <summary>
         /// Id of the posture. It is an immutable field.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("postureId", required: true)]
         public Input<string> PostureId { get; set; } = null!;
@@ -384,7 +378,7 @@ namespace Pulumi.Gcp.SecurityPosture
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Description of the posture.
+        /// Description of the expression
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -428,9 +422,6 @@ namespace Pulumi.Gcp.SecurityPosture
 
         /// <summary>
         /// Id of the posture. It is an immutable field.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("postureId")]
         public Input<string>? PostureId { get; set; }

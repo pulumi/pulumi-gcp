@@ -131,14 +131,14 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Minimum number of ports allocated to a VM from this NAT.
+     * Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
      * 
      */
     @Import(name="minPortsPerVm")
     private @Nullable Output<Integer> minPortsPerVm;
 
     /**
-     * @return Minimum number of ports allocated to a VM from this NAT.
+     * @return Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
      * 
      */
     public Optional<Output<Integer>> minPortsPerVm() {
@@ -613,7 +613,7 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minPortsPerVm Minimum number of ports allocated to a VM from this NAT.
+         * @param minPortsPerVm Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
          * 
          * @return builder
          * 
@@ -624,7 +624,7 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minPortsPerVm Minimum number of ports allocated to a VM from this NAT.
+         * @param minPortsPerVm Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
          * 
          * @return builder
          * 

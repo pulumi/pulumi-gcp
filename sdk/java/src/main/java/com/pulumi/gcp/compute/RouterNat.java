@@ -496,18 +496,18 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maxPortsPerVm);
     }
     /**
-     * Minimum number of ports allocated to a VM from this NAT.
+     * Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
      * 
      */
     @Export(name="minPortsPerVm", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> minPortsPerVm;
+    private Output<Integer> minPortsPerVm;
 
     /**
-     * @return Minimum number of ports allocated to a VM from this NAT.
+     * @return Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
      * 
      */
-    public Output<Optional<Integer>> minPortsPerVm() {
-        return Codegen.optional(this.minPortsPerVm);
+    public Output<Integer> minPortsPerVm() {
+        return this.minPortsPerVm;
     }
     /**
      * Name of the NAT service. The name must be 1-63 characters long and

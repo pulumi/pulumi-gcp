@@ -3269,6 +3269,8 @@ func (o PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfi
 
 type PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelector struct {
 	// The resource types to run the detector on.
+	//
+	// ***
 	ResourceTypes []string `pulumi:"resourceTypes"`
 }
 
@@ -3285,6 +3287,8 @@ type PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigRe
 
 type PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelectorArgs struct {
 	// The resource types to run the detector on.
+	//
+	// ***
 	ResourceTypes pulumi.StringArrayInput `pulumi:"resourceTypes"`
 }
 
@@ -3366,6 +3370,8 @@ func (o PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfi
 }
 
 // The resource types to run the detector on.
+//
+// ***
 func (o PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelectorOutput) ResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelector) []string {
 		return v.ResourceTypes
@@ -3397,6 +3403,8 @@ func (o PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfi
 }
 
 // The resource types to run the detector on.
+//
+// ***
 func (o PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelectorPtrOutput) ResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelector) []string {
 		if v == nil {

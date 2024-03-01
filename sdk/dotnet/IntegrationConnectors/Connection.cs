@@ -434,7 +434,7 @@ namespace Pulumi.Gcp.IntegrationConnectors
         public Output<string> ConnectorVersion { get; private set; } = null!;
 
         /// <summary>
-        /// This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version.
+        /// This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
         /// Structure is documented below.
         /// </summary>
         [Output("connectorVersionInfraConfigs")]
@@ -828,7 +828,7 @@ namespace Pulumi.Gcp.IntegrationConnectors
         private InputList<Inputs.ConnectionConnectorVersionInfraConfigGetArgs>? _connectorVersionInfraConfigs;
 
         /// <summary>
-        /// This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version.
+        /// This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ConnectionConnectorVersionInfraConfigGetArgs> ConnectorVersionInfraConfigs

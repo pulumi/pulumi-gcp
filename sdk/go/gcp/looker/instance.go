@@ -235,6 +235,40 @@ import (
 //	}
 //
 // ```
+// ### Looker Instance Custom Domain
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/looker"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := looker.NewInstance(ctx, "looker-instance", &looker.InstanceArgs{
+//				Name:            pulumi.String("my-instance"),
+//				PlatformEdition: pulumi.String("LOOKER_CORE_STANDARD"),
+//				Region:          pulumi.String("us-central1"),
+//				OauthConfig: &looker.InstanceOauthConfigArgs{
+//					ClientId:     pulumi.String("my-client-id"),
+//					ClientSecret: pulumi.String("my-client-secret"),
+//				},
+//				CustomDomain: &looker.InstanceCustomDomainArgs{
+//					Domain: pulumi.String("my-custom-domain.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -278,6 +312,9 @@ type Instance struct {
 	// The time the instance was created in RFC3339 UTC "Zulu" format,
 	// accurate to nanoseconds.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Custom domain settings for a Looker instance.
+	// Structure is documented below.
+	CustomDomain InstanceCustomDomainPtrOutput `pulumi:"customDomain"`
 	// Maintenance denial period for this instance.
 	// You must allow at least 14 days of maintenance availability
 	// between any two deny maintenance periods.
@@ -384,6 +421,9 @@ type instanceState struct {
 	// The time the instance was created in RFC3339 UTC "Zulu" format,
 	// accurate to nanoseconds.
 	CreateTime *string `pulumi:"createTime"`
+	// Custom domain settings for a Looker instance.
+	// Structure is documented below.
+	CustomDomain *InstanceCustomDomain `pulumi:"customDomain"`
 	// Maintenance denial period for this instance.
 	// You must allow at least 14 days of maintenance availability
 	// between any two deny maintenance periods.
@@ -461,6 +501,9 @@ type InstanceState struct {
 	// The time the instance was created in RFC3339 UTC "Zulu" format,
 	// accurate to nanoseconds.
 	CreateTime pulumi.StringPtrInput
+	// Custom domain settings for a Looker instance.
+	// Structure is documented below.
+	CustomDomain InstanceCustomDomainPtrInput
 	// Maintenance denial period for this instance.
 	// You must allow at least 14 days of maintenance availability
 	// between any two deny maintenance periods.
@@ -539,6 +582,9 @@ type instanceArgs struct {
 	// Note that the consumer network may be in a different GCP project than the consumer
 	// project that is hosting the Looker Instance.
 	ConsumerNetwork *string `pulumi:"consumerNetwork"`
+	// Custom domain settings for a Looker instance.
+	// Structure is documented below.
+	CustomDomain *InstanceCustomDomain `pulumi:"customDomain"`
 	// Maintenance denial period for this instance.
 	// You must allow at least 14 days of maintenance availability
 	// between any two deny maintenance periods.
@@ -601,6 +647,9 @@ type InstanceArgs struct {
 	// Note that the consumer network may be in a different GCP project than the consumer
 	// project that is hosting the Looker Instance.
 	ConsumerNetwork pulumi.StringPtrInput
+	// Custom domain settings for a Looker instance.
+	// Structure is documented below.
+	CustomDomain InstanceCustomDomainPtrInput
 	// Maintenance denial period for this instance.
 	// You must allow at least 14 days of maintenance availability
 	// between any two deny maintenance periods.
@@ -758,6 +807,12 @@ func (o InstanceOutput) ConsumerNetwork() pulumi.StringPtrOutput {
 // accurate to nanoseconds.
 func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Custom domain settings for a Looker instance.
+// Structure is documented below.
+func (o InstanceOutput) CustomDomain() InstanceCustomDomainPtrOutput {
+	return o.ApplyT(func(v *Instance) InstanceCustomDomainPtrOutput { return v.CustomDomain }).(InstanceCustomDomainPtrOutput)
 }
 
 // Maintenance denial period for this instance.

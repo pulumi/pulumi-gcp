@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *             .enablementState(&#34;ENABLED&#34;)
  *             .type(&#34;CONFIGURABLE_BAD_IP&#34;)
  *             .description(&#34;My Event Threat Detection Custom Module&#34;)
- *             .cofig(serializeJson(
+ *             .config(serializeJson(
  *                 jsonObject(
  *                     jsonProperty(&#34;metadata&#34;, jsonObject(
  *                         jsonProperty(&#34;severity&#34;, &#34;LOW&#34;),

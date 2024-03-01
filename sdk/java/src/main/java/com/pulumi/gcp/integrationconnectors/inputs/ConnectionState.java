@@ -94,7 +94,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version.
+     * This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
      * Structure is documented below.
      * 
      */
@@ -102,7 +102,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<ConnectionConnectorVersionInfraConfigArgs>> connectorVersionInfraConfigs;
 
     /**
-     * @return This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version.
+     * @return This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
      * Structure is documented below.
      * 
      */
@@ -642,7 +642,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectorVersionInfraConfigs This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version.
+         * @param connectorVersionInfraConfigs This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
          * Structure is documented below.
          * 
          * @return builder
@@ -654,7 +654,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectorVersionInfraConfigs This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version.
+         * @param connectorVersionInfraConfigs This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
          * Structure is documented below.
          * 
          * @return builder
@@ -665,7 +665,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectorVersionInfraConfigs This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version.
+         * @param connectorVersionInfraConfigs This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
          * Structure is documented below.
          * 
          * @return builder

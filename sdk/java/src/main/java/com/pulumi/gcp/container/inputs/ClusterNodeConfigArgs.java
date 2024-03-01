@@ -26,6 +26,7 @@ import com.pulumi.gcp.container.inputs.ClusterNodeConfigTaintArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigWorkloadMetadataConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -548,6 +549,21 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+     * 
+     */
+    @Import(name="resourceManagerTags")
+    private @Nullable Output<Map<String,Object>> resourceManagerTags;
+
+    /**
+     * @return A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> resourceManagerTags() {
+        return Optional.ofNullable(this.resourceManagerTags);
+    }
+
+    /**
      * Sandbox configuration for this node.
      * 
      */
@@ -723,6 +739,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         this.preemptible = $.preemptible;
         this.reservationAffinity = $.reservationAffinity;
         this.resourceLabels = $.resourceLabels;
+        this.resourceManagerTags = $.resourceManagerTags;
         this.sandboxConfig = $.sandboxConfig;
         this.serviceAccount = $.serviceAccount;
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
@@ -1467,6 +1484,27 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder resourceLabels(Map<String,String> resourceLabels) {
             return resourceLabels(Output.of(resourceLabels));
+        }
+
+        /**
+         * @param resourceManagerTags A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceManagerTags(@Nullable Output<Map<String,Object>> resourceManagerTags) {
+            $.resourceManagerTags = resourceManagerTags;
+            return this;
+        }
+
+        /**
+         * @param resourceManagerTags A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceManagerTags(Map<String,Object> resourceManagerTags) {
+            return resourceManagerTags(Output.of(resourceManagerTags));
         }
 
         /**

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.netapp.inputs.VolumeExportPolicyArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeMountOptionArgs;
+import com.pulumi.gcp.netapp.inputs.VolumeRestoreParametersArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeSnapshotPolicyArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -49,6 +50,21 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> capacityGib() {
         return Optional.ofNullable(this.capacityGib);
+    }
+
+    /**
+     * Create time of the volume. A timestamp in RFC3339 UTC &#34;Zulu&#34; format. Examples: &#34;2023-06-22T09:13:01.617Z&#34;.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return Create time of the volume. A timestamp in RFC3339 UTC &#34;Zulu&#34; format. Examples: &#34;2023-06-22T09:13:01.617Z&#34;.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
     }
 
     /**
@@ -346,6 +362,23 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Used to create this volume from a snapshot (= cloning) or an backup.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="restoreParameters")
+    private @Nullable Output<VolumeRestoreParametersArgs> restoreParameters;
+
+    /**
+     * @return Used to create this volume from a snapshot (= cloning) or an backup.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<VolumeRestoreParametersArgs>> restoreParameters() {
+        return Optional.ofNullable(this.restoreParameters);
+    }
+
+    /**
      * List of actions that are restricted on this volume.
      * Each value may be one of: `DELETE`.
      * 
@@ -463,6 +496,36 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * State of the volume.
+     * 
+     */
+    @Import(name="state")
+    private @Nullable Output<String> state;
+
+    /**
+     * @return State of the volume.
+     * 
+     */
+    public Optional<Output<String>> state() {
+        return Optional.ofNullable(this.state);
+    }
+
+    /**
+     * State details of the volume.
+     * 
+     */
+    @Import(name="stateDetails")
+    private @Nullable Output<String> stateDetails;
+
+    /**
+     * @return State details of the volume.
+     * 
+     */
+    public Optional<Output<String>> stateDetails() {
+        return Optional.ofNullable(this.stateDetails);
+    }
+
+    /**
      * Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
      * 
      */
@@ -512,6 +575,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     private VolumeState(VolumeState $) {
         this.activeDirectory = $.activeDirectory;
         this.capacityGib = $.capacityGib;
+        this.createTime = $.createTime;
         this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
         this.effectiveLabels = $.effectiveLabels;
@@ -530,6 +594,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         this.protocols = $.protocols;
         this.psaRange = $.psaRange;
         this.pulumiLabels = $.pulumiLabels;
+        this.restoreParameters = $.restoreParameters;
         this.restrictedActions = $.restrictedActions;
         this.securityStyle = $.securityStyle;
         this.serviceLevel = $.serviceLevel;
@@ -537,6 +602,8 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         this.smbSettings = $.smbSettings;
         this.snapshotDirectory = $.snapshotDirectory;
         this.snapshotPolicy = $.snapshotPolicy;
+        this.state = $.state;
+        this.stateDetails = $.stateDetails;
         this.storagePool = $.storagePool;
         this.unixPermissions = $.unixPermissions;
         this.usedGib = $.usedGib;
@@ -600,6 +667,27 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder capacityGib(String capacityGib) {
             return capacityGib(Output.of(capacityGib));
+        }
+
+        /**
+         * @param createTime Create time of the volume. A timestamp in RFC3339 UTC &#34;Zulu&#34; format. Examples: &#34;2023-06-22T09:13:01.617Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime Create time of the volume. A timestamp in RFC3339 UTC &#34;Zulu&#34; format. Examples: &#34;2023-06-22T09:13:01.617Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         /**
@@ -1027,6 +1115,29 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param restoreParameters Used to create this volume from a snapshot (= cloning) or an backup.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreParameters(@Nullable Output<VolumeRestoreParametersArgs> restoreParameters) {
+            $.restoreParameters = restoreParameters;
+            return this;
+        }
+
+        /**
+         * @param restoreParameters Used to create this volume from a snapshot (= cloning) or an backup.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreParameters(VolumeRestoreParametersArgs restoreParameters) {
+            return restoreParameters(Output.of(restoreParameters));
+        }
+
+        /**
          * @param restrictedActions List of actions that are restricted on this volume.
          * Each value may be one of: `DELETE`.
          * 
@@ -1205,6 +1316,48 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder snapshotPolicy(VolumeSnapshotPolicyArgs snapshotPolicy) {
             return snapshotPolicy(Output.of(snapshotPolicy));
+        }
+
+        /**
+         * @param state State of the volume.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(@Nullable Output<String> state) {
+            $.state = state;
+            return this;
+        }
+
+        /**
+         * @param state State of the volume.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(String state) {
+            return state(Output.of(state));
+        }
+
+        /**
+         * @param stateDetails State details of the volume.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stateDetails(@Nullable Output<String> stateDetails) {
+            $.stateDetails = stateDetails;
+            return this;
+        }
+
+        /**
+         * @param stateDetails State details of the volume.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stateDetails(String stateDetails) {
+            return stateDetails(Output.of(stateDetails));
         }
 
         /**

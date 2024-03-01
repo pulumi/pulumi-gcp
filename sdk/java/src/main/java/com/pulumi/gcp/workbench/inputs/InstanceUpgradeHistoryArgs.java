@@ -31,14 +31,16 @@ public final class InstanceUpgradeHistoryArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Optional. The container image before this instance upgrade.
+     * Use a container image to start the workbench instance.
+     * Structure is documented below.
      * 
      */
     @Import(name="containerImage")
     private @Nullable Output<String> containerImage;
 
     /**
-     * @return Optional. The container image before this instance upgrade.
+     * @return Use a container image to start the workbench instance.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<String>> containerImage() {
@@ -212,7 +214,8 @@ public final class InstanceUpgradeHistoryArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param containerImage Optional. The container image before this instance upgrade.
+         * @param containerImage Use a container image to start the workbench instance.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -223,7 +226,8 @@ public final class InstanceUpgradeHistoryArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param containerImage Optional. The container image before this instance upgrade.
+         * @param containerImage Use a container image to start the workbench instance.
+         * Structure is documented below.
          * 
          * @return builder
          * 

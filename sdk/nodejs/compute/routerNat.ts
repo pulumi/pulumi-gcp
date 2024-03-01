@@ -297,9 +297,9 @@ export class RouterNat extends pulumi.CustomResource {
      */
     public readonly maxPortsPerVm!: pulumi.Output<number | undefined>;
     /**
-     * Minimum number of ports allocated to a VM from this NAT.
+     * Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
      */
-    public readonly minPortsPerVm!: pulumi.Output<number | undefined>;
+    public readonly minPortsPerVm!: pulumi.Output<number>;
     /**
      * Name of the NAT service. The name must be 1-63 characters long and
      * comply with RFC1035.
@@ -494,7 +494,7 @@ export interface RouterNatState {
      */
     maxPortsPerVm?: pulumi.Input<number>;
     /**
-     * Minimum number of ports allocated to a VM from this NAT.
+     * Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
      */
     minPortsPerVm?: pulumi.Input<number>;
     /**
@@ -623,7 +623,7 @@ export interface RouterNatArgs {
      */
     maxPortsPerVm?: pulumi.Input<number>;
     /**
-     * Minimum number of ports allocated to a VM from this NAT.
+     * Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
      */
     minPortsPerVm?: pulumi.Input<number>;
     /**

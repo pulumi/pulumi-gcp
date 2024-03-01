@@ -18,33 +18,29 @@ class PostureArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  parent: pulumi.Input[str],
+                 policy_sets: pulumi.Input[Sequence[pulumi.Input['PosturePolicySetArgs']]],
                  posture_id: pulumi.Input[str],
                  state: pulumi.Input[str],
-                 description: Optional[pulumi.Input[str]] = None,
-                 policy_sets: Optional[pulumi.Input[Sequence[pulumi.Input['PosturePolicySetArgs']]]] = None):
+                 description: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Posture resource.
         :param pulumi.Input[str] location: Location of the resource, eg: global.
         :param pulumi.Input[str] parent: The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
+        :param pulumi.Input[Sequence[pulumi.Input['PosturePolicySetArgs']]] policy_sets: List of policy sets for the posture.
+               Structure is documented below.
         :param pulumi.Input[str] posture_id: Id of the posture. It is an immutable field.
-               
-               
-               - - -
         :param pulumi.Input[str] state: State of the posture. Update to state field should not be triggered along with
                with other field updates.
                Possible values are: `DEPRECATED`, `DRAFT`, `ACTIVE`.
-        :param pulumi.Input[str] description: Description of the posture.
-        :param pulumi.Input[Sequence[pulumi.Input['PosturePolicySetArgs']]] policy_sets: List of policy sets for the posture.
-               Structure is documented below.
+        :param pulumi.Input[str] description: Description of the expression
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "parent", parent)
+        pulumi.set(__self__, "policy_sets", policy_sets)
         pulumi.set(__self__, "posture_id", posture_id)
         pulumi.set(__self__, "state", state)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if policy_sets is not None:
-            pulumi.set(__self__, "policy_sets", policy_sets)
 
     @property
     @pulumi.getter
@@ -71,13 +67,23 @@ class PostureArgs:
         pulumi.set(self, "parent", value)
 
     @property
+    @pulumi.getter(name="policySets")
+    def policy_sets(self) -> pulumi.Input[Sequence[pulumi.Input['PosturePolicySetArgs']]]:
+        """
+        List of policy sets for the posture.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "policy_sets")
+
+    @policy_sets.setter
+    def policy_sets(self, value: pulumi.Input[Sequence[pulumi.Input['PosturePolicySetArgs']]]):
+        pulumi.set(self, "policy_sets", value)
+
+    @property
     @pulumi.getter(name="postureId")
     def posture_id(self) -> pulumi.Input[str]:
         """
         Id of the posture. It is an immutable field.
-
-
-        - - -
         """
         return pulumi.get(self, "posture_id")
 
@@ -103,26 +109,13 @@ class PostureArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the posture.
+        Description of the expression
         """
         return pulumi.get(self, "description")
 
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="policySets")
-    def policy_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PosturePolicySetArgs']]]]:
-        """
-        List of policy sets for the posture.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "policy_sets")
-
-    @policy_sets.setter
-    def policy_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PosturePolicySetArgs']]]]):
-        pulumi.set(self, "policy_sets", value)
 
 
 @pulumi.input_type
@@ -143,7 +136,7 @@ class _PostureState:
         """
         Input properties used for looking up and filtering Posture resources.
         :param pulumi.Input[str] create_time: Time the Posture was created in UTC.
-        :param pulumi.Input[str] description: Description of the posture.
+        :param pulumi.Input[str] description: Description of the expression
         :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
         :param pulumi.Input[str] location: Location of the resource, eg: global.
         :param pulumi.Input[str] name: Immutable. The name of the custom constraint. This is unique within the organization.
@@ -151,9 +144,6 @@ class _PostureState:
         :param pulumi.Input[Sequence[pulumi.Input['PosturePolicySetArgs']]] policy_sets: List of policy sets for the posture.
                Structure is documented below.
         :param pulumi.Input[str] posture_id: Id of the posture. It is an immutable field.
-               
-               
-               - - -
         :param pulumi.Input[bool] reconciling: If set, there are currently changes in flight to the posture.
         :param pulumi.Input[str] revision_id: Revision_id of the posture.
         :param pulumi.Input[str] state: State of the posture. Update to state field should not be triggered along with
@@ -202,7 +192,7 @@ class _PostureState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the posture.
+        Description of the expression
         """
         return pulumi.get(self, "description")
 
@@ -276,9 +266,6 @@ class _PostureState:
     def posture_id(self) -> Optional[pulumi.Input[str]]:
         """
         Id of the posture. It is an immutable field.
-
-
-        - - -
         """
         return pulumi.get(self, "posture_id")
 
@@ -484,15 +471,12 @@ class Posture(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Description of the posture.
+        :param pulumi.Input[str] description: Description of the expression
         :param pulumi.Input[str] location: Location of the resource, eg: global.
         :param pulumi.Input[str] parent: The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PosturePolicySetArgs']]]] policy_sets: List of policy sets for the posture.
                Structure is documented below.
         :param pulumi.Input[str] posture_id: Id of the posture. It is an immutable field.
-               
-               
-               - - -
         :param pulumi.Input[str] state: State of the posture. Update to state field should not be triggered along with
                with other field updates.
                Possible values are: `DEPRECATED`, `DRAFT`, `ACTIVE`.
@@ -673,6 +657,8 @@ class Posture(pulumi.CustomResource):
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
+            if policy_sets is None and not opts.urn:
+                raise TypeError("Missing required property 'policy_sets'")
             __props__.__dict__["policy_sets"] = policy_sets
             if posture_id is None and not opts.urn:
                 raise TypeError("Missing required property 'posture_id'")
@@ -716,7 +702,7 @@ class Posture(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Time the Posture was created in UTC.
-        :param pulumi.Input[str] description: Description of the posture.
+        :param pulumi.Input[str] description: Description of the expression
         :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
         :param pulumi.Input[str] location: Location of the resource, eg: global.
         :param pulumi.Input[str] name: Immutable. The name of the custom constraint. This is unique within the organization.
@@ -724,9 +710,6 @@ class Posture(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PosturePolicySetArgs']]]] policy_sets: List of policy sets for the posture.
                Structure is documented below.
         :param pulumi.Input[str] posture_id: Id of the posture. It is an immutable field.
-               
-               
-               - - -
         :param pulumi.Input[bool] reconciling: If set, there are currently changes in flight to the posture.
         :param pulumi.Input[str] revision_id: Revision_id of the posture.
         :param pulumi.Input[str] state: State of the posture. Update to state field should not be triggered along with
@@ -764,7 +747,7 @@ class Posture(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the posture.
+        Description of the expression
         """
         return pulumi.get(self, "description")
 
@@ -802,7 +785,7 @@ class Posture(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="policySets")
-    def policy_sets(self) -> pulumi.Output[Optional[Sequence['outputs.PosturePolicySet']]]:
+    def policy_sets(self) -> pulumi.Output[Sequence['outputs.PosturePolicySet']]:
         """
         List of policy sets for the posture.
         Structure is documented below.
@@ -814,9 +797,6 @@ class Posture(pulumi.CustomResource):
     def posture_id(self) -> pulumi.Output[str]:
         """
         Id of the posture. It is an immutable field.
-
-
-        - - -
         """
         return pulumi.get(self, "posture_id")
 

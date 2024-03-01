@@ -424,7 +424,6 @@ import javax.annotation.Nullable;
  *                 .serviceAccountEmail(account.email())
  *                 .build())
  *             .eventTrigger(FunctionEventTriggerArgs.builder()
- *                 .triggerRegion(&#34;us-central1&#34;)
  *                 .eventType(&#34;google.cloud.storage.object.v1.finalized&#34;)
  *                 .retryPolicy(&#34;RETRY_POLICY_RETRY&#34;)
  *                 .serviceAccountEmail(account.email())

@@ -15673,6 +15673,10 @@ func (o ClusterEnableK8sBetaApisPtrOutput) EnabledApis() pulumi.StringArrayOutpu
 type ClusterFleet struct {
 	// Full resource name of the registered fleet membership of the cluster.
 	Membership *string `pulumi:"membership"`
+	// Short name of the fleet membership, for example "member-1".
+	MembershipId *string `pulumi:"membershipId"`
+	// Location of the fleet membership, for example "us-central1".
+	MembershipLocation *string `pulumi:"membershipLocation"`
 	// Whether the cluster has been registered via the fleet API.
 	PreRegistered *bool `pulumi:"preRegistered"`
 	// The name of the Fleet host project where this cluster will be registered.
@@ -15693,6 +15697,10 @@ type ClusterFleetInput interface {
 type ClusterFleetArgs struct {
 	// Full resource name of the registered fleet membership of the cluster.
 	Membership pulumi.StringPtrInput `pulumi:"membership"`
+	// Short name of the fleet membership, for example "member-1".
+	MembershipId pulumi.StringPtrInput `pulumi:"membershipId"`
+	// Location of the fleet membership, for example "us-central1".
+	MembershipLocation pulumi.StringPtrInput `pulumi:"membershipLocation"`
 	// Whether the cluster has been registered via the fleet API.
 	PreRegistered pulumi.BoolPtrInput `pulumi:"preRegistered"`
 	// The name of the Fleet host project where this cluster will be registered.
@@ -15781,6 +15789,16 @@ func (o ClusterFleetOutput) Membership() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterFleet) *string { return v.Membership }).(pulumi.StringPtrOutput)
 }
 
+// Short name of the fleet membership, for example "member-1".
+func (o ClusterFleetOutput) MembershipId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterFleet) *string { return v.MembershipId }).(pulumi.StringPtrOutput)
+}
+
+// Location of the fleet membership, for example "us-central1".
+func (o ClusterFleetOutput) MembershipLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterFleet) *string { return v.MembershipLocation }).(pulumi.StringPtrOutput)
+}
+
 // Whether the cluster has been registered via the fleet API.
 func (o ClusterFleetOutput) PreRegistered() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterFleet) *bool { return v.PreRegistered }).(pulumi.BoolPtrOutput)
@@ -15822,6 +15840,26 @@ func (o ClusterFleetPtrOutput) Membership() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Membership
+	}).(pulumi.StringPtrOutput)
+}
+
+// Short name of the fleet membership, for example "member-1".
+func (o ClusterFleetPtrOutput) MembershipId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterFleet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MembershipId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Location of the fleet membership, for example "us-central1".
+func (o ClusterFleetPtrOutput) MembershipLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterFleet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MembershipLocation
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -19119,6 +19157,8 @@ type ClusterNodeConfig struct {
 	// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
 	// for how these labels are applied to clusters, node pools and nodes.
 	ResourceLabels map[string]string `pulumi:"resourceLabels"`
+	// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+	ResourceManagerTags map[string]interface{} `pulumi:"resourceManagerTags"`
 	// Sandbox configuration for this node.
 	SandboxConfig *ClusterNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
@@ -19256,6 +19296,8 @@ type ClusterNodeConfigArgs struct {
 	// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
 	// for how these labels are applied to clusters, node pools and nodes.
 	ResourceLabels pulumi.StringMapInput `pulumi:"resourceLabels"`
+	// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+	ResourceManagerTags pulumi.MapInput `pulumi:"resourceManagerTags"`
 	// Sandbox configuration for this node.
 	SandboxConfig ClusterNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
@@ -19545,6 +19587,11 @@ func (o ClusterNodeConfigOutput) ReservationAffinity() ClusterNodeConfigReservat
 // for how these labels are applied to clusters, node pools and nodes.
 func (o ClusterNodeConfigOutput) ResourceLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) map[string]string { return v.ResourceLabels }).(pulumi.StringMapOutput)
+}
+
+// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+func (o ClusterNodeConfigOutput) ResourceManagerTags() pulumi.MapOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) map[string]interface{} { return v.ResourceManagerTags }).(pulumi.MapOutput)
 }
 
 // Sandbox configuration for this node.
@@ -19948,6 +19995,16 @@ func (o ClusterNodeConfigPtrOutput) ResourceLabels() pulumi.StringMapOutput {
 		}
 		return v.ResourceLabels
 	}).(pulumi.StringMapOutput)
+}
+
+// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+func (o ClusterNodeConfigPtrOutput) ResourceManagerTags() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterNodeConfig) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceManagerTags
+	}).(pulumi.MapOutput)
 }
 
 // Sandbox configuration for this node.
@@ -25592,6 +25649,8 @@ type ClusterNodePoolNodeConfig struct {
 	// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
 	// for how these labels are applied to clusters, node pools and nodes.
 	ResourceLabels map[string]string `pulumi:"resourceLabels"`
+	// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+	ResourceManagerTags map[string]interface{} `pulumi:"resourceManagerTags"`
 	// Sandbox configuration for this node.
 	SandboxConfig *ClusterNodePoolNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
@@ -25729,6 +25788,8 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
 	// for how these labels are applied to clusters, node pools and nodes.
 	ResourceLabels pulumi.StringMapInput `pulumi:"resourceLabels"`
+	// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+	ResourceManagerTags pulumi.MapInput `pulumi:"resourceManagerTags"`
 	// Sandbox configuration for this node.
 	SandboxConfig ClusterNodePoolNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
@@ -26032,6 +26093,11 @@ func (o ClusterNodePoolNodeConfigOutput) ReservationAffinity() ClusterNodePoolNo
 // for how these labels are applied to clusters, node pools and nodes.
 func (o ClusterNodePoolNodeConfigOutput) ResourceLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) map[string]string { return v.ResourceLabels }).(pulumi.StringMapOutput)
+}
+
+// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+func (o ClusterNodePoolNodeConfigOutput) ResourceManagerTags() pulumi.MapOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) map[string]interface{} { return v.ResourceManagerTags }).(pulumi.MapOutput)
 }
 
 // Sandbox configuration for this node.
@@ -26441,6 +26507,16 @@ func (o ClusterNodePoolNodeConfigPtrOutput) ResourceLabels() pulumi.StringMapOut
 		}
 		return v.ResourceLabels
 	}).(pulumi.StringMapOutput)
+}
+
+// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+func (o ClusterNodePoolNodeConfigPtrOutput) ResourceManagerTags() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceManagerTags
+	}).(pulumi.MapOutput)
 }
 
 // Sandbox configuration for this node.
@@ -34645,6 +34721,8 @@ type NodePoolNodeConfig struct {
 	ReservationAffinity *NodePoolNodeConfigReservationAffinity `pulumi:"reservationAffinity"`
 	// The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
 	ResourceLabels map[string]string `pulumi:"resourceLabels"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags map[string]interface{} `pulumi:"resourceManagerTags"`
 	// Sandbox configuration for this node.
 	SandboxConfig *NodePoolNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
 	// The Google Cloud Platform Service Account to be used by the node VMs.
@@ -34733,6 +34811,8 @@ type NodePoolNodeConfigArgs struct {
 	ReservationAffinity NodePoolNodeConfigReservationAffinityPtrInput `pulumi:"reservationAffinity"`
 	// The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
 	ResourceLabels pulumi.StringMapInput `pulumi:"resourceLabels"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags pulumi.MapInput `pulumi:"resourceManagerTags"`
 	// Sandbox configuration for this node.
 	SandboxConfig NodePoolNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
 	// The Google Cloud Platform Service Account to be used by the node VMs.
@@ -34977,6 +35057,11 @@ func (o NodePoolNodeConfigOutput) ReservationAffinity() NodePoolNodeConfigReserv
 // The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
 func (o NodePoolNodeConfigOutput) ResourceLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) map[string]string { return v.ResourceLabels }).(pulumi.StringMapOutput)
+}
+
+// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+func (o NodePoolNodeConfigOutput) ResourceManagerTags() pulumi.MapOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) map[string]interface{} { return v.ResourceManagerTags }).(pulumi.MapOutput)
 }
 
 // Sandbox configuration for this node.
@@ -35331,6 +35416,16 @@ func (o NodePoolNodeConfigPtrOutput) ResourceLabels() pulumi.StringMapOutput {
 		}
 		return v.ResourceLabels
 	}).(pulumi.StringMapOutput)
+}
+
+// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+func (o NodePoolNodeConfigPtrOutput) ResourceManagerTags() pulumi.MapOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfig) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceManagerTags
+	}).(pulumi.MapOutput)
 }
 
 // Sandbox configuration for this node.
@@ -42831,6 +42926,10 @@ func (o GetClusterEnableK8sBetaApiArrayOutput) Index(i pulumi.IntInput) GetClust
 type GetClusterFleet struct {
 	// Full resource name of the registered fleet membership of the cluster.
 	Membership string `pulumi:"membership"`
+	// Short name of the fleet membership, for example "member-1".
+	MembershipId string `pulumi:"membershipId"`
+	// Location of the fleet membership, for example "us-central1".
+	MembershipLocation string `pulumi:"membershipLocation"`
 	// Whether the cluster has been registered via the fleet API.
 	PreRegistered bool `pulumi:"preRegistered"`
 	// The project in which the resource belongs. If it
@@ -42852,6 +42951,10 @@ type GetClusterFleetInput interface {
 type GetClusterFleetArgs struct {
 	// Full resource name of the registered fleet membership of the cluster.
 	Membership pulumi.StringInput `pulumi:"membership"`
+	// Short name of the fleet membership, for example "member-1".
+	MembershipId pulumi.StringInput `pulumi:"membershipId"`
+	// Location of the fleet membership, for example "us-central1".
+	MembershipLocation pulumi.StringInput `pulumi:"membershipLocation"`
 	// Whether the cluster has been registered via the fleet API.
 	PreRegistered pulumi.BoolInput `pulumi:"preRegistered"`
 	// The project in which the resource belongs. If it
@@ -42913,6 +43016,16 @@ func (o GetClusterFleetOutput) ToGetClusterFleetOutputWithContext(ctx context.Co
 // Full resource name of the registered fleet membership of the cluster.
 func (o GetClusterFleetOutput) Membership() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterFleet) string { return v.Membership }).(pulumi.StringOutput)
+}
+
+// Short name of the fleet membership, for example "member-1".
+func (o GetClusterFleetOutput) MembershipId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterFleet) string { return v.MembershipId }).(pulumi.StringOutput)
+}
+
+// Location of the fleet membership, for example "us-central1".
+func (o GetClusterFleetOutput) MembershipLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterFleet) string { return v.MembershipLocation }).(pulumi.StringOutput)
 }
 
 // Whether the cluster has been registered via the fleet API.
@@ -45154,6 +45267,8 @@ type GetClusterNodeConfig struct {
 	ReservationAffinities []GetClusterNodeConfigReservationAffinity `pulumi:"reservationAffinities"`
 	// The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
 	ResourceLabels map[string]string `pulumi:"resourceLabels"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags map[string]interface{} `pulumi:"resourceManagerTags"`
 	// Sandbox configuration for this node.
 	SandboxConfigs []GetClusterNodeConfigSandboxConfig `pulumi:"sandboxConfigs"`
 	// The Google Cloud Platform Service Account to be used by the node VMs.
@@ -45242,6 +45357,8 @@ type GetClusterNodeConfigArgs struct {
 	ReservationAffinities GetClusterNodeConfigReservationAffinityArrayInput `pulumi:"reservationAffinities"`
 	// The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
 	ResourceLabels pulumi.StringMapInput `pulumi:"resourceLabels"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags pulumi.MapInput `pulumi:"resourceManagerTags"`
 	// Sandbox configuration for this node.
 	SandboxConfigs GetClusterNodeConfigSandboxConfigArrayInput `pulumi:"sandboxConfigs"`
 	// The Google Cloud Platform Service Account to be used by the node VMs.
@@ -45464,6 +45581,11 @@ func (o GetClusterNodeConfigOutput) ReservationAffinities() GetClusterNodeConfig
 // The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
 func (o GetClusterNodeConfigOutput) ResourceLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetClusterNodeConfig) map[string]string { return v.ResourceLabels }).(pulumi.StringMapOutput)
+}
+
+// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+func (o GetClusterNodeConfigOutput) ResourceManagerTags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClusterNodeConfig) map[string]interface{} { return v.ResourceManagerTags }).(pulumi.MapOutput)
 }
 
 // Sandbox configuration for this node.
@@ -49441,6 +49563,8 @@ type GetClusterNodePoolNodeConfig struct {
 	ReservationAffinities []GetClusterNodePoolNodeConfigReservationAffinity `pulumi:"reservationAffinities"`
 	// The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
 	ResourceLabels map[string]string `pulumi:"resourceLabels"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags map[string]interface{} `pulumi:"resourceManagerTags"`
 	// Sandbox configuration for this node.
 	SandboxConfigs []GetClusterNodePoolNodeConfigSandboxConfig `pulumi:"sandboxConfigs"`
 	// The Google Cloud Platform Service Account to be used by the node VMs.
@@ -49529,6 +49653,8 @@ type GetClusterNodePoolNodeConfigArgs struct {
 	ReservationAffinities GetClusterNodePoolNodeConfigReservationAffinityArrayInput `pulumi:"reservationAffinities"`
 	// The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
 	ResourceLabels pulumi.StringMapInput `pulumi:"resourceLabels"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags pulumi.MapInput `pulumi:"resourceManagerTags"`
 	// Sandbox configuration for this node.
 	SandboxConfigs GetClusterNodePoolNodeConfigSandboxConfigArrayInput `pulumi:"sandboxConfigs"`
 	// The Google Cloud Platform Service Account to be used by the node VMs.
@@ -49763,6 +49889,11 @@ func (o GetClusterNodePoolNodeConfigOutput) ReservationAffinities() GetClusterNo
 // The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
 func (o GetClusterNodePoolNodeConfigOutput) ResourceLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) map[string]string { return v.ResourceLabels }).(pulumi.StringMapOutput)
+}
+
+// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+func (o GetClusterNodePoolNodeConfigOutput) ResourceManagerTags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) map[string]interface{} { return v.ResourceManagerTags }).(pulumi.MapOutput)
 }
 
 // Sandbox configuration for this node.

@@ -24,7 +24,7 @@ public final class PosturePolicySet {
      * Structure is documented below.
      * 
      */
-    private @Nullable List<PosturePolicySetPolicy> policies;
+    private List<PosturePolicySetPolicy> policies;
     /**
      * @return ID of the policy set.
      * 
@@ -45,7 +45,7 @@ public final class PosturePolicySet {
      * 
      */
     public List<PosturePolicySetPolicy> policies() {
-        return this.policies == null ? List.of() : this.policies;
+        return this.policies;
     }
     /**
      * @return ID of the policy set.
@@ -65,7 +65,7 @@ public final class PosturePolicySet {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
-        private @Nullable List<PosturePolicySetPolicy> policies;
+        private List<PosturePolicySetPolicy> policies;
         private String policySetId;
         public Builder() {}
         public Builder(PosturePolicySet defaults) {
@@ -82,8 +82,10 @@ public final class PosturePolicySet {
             return this;
         }
         @CustomType.Setter
-        public Builder policies(@Nullable List<PosturePolicySetPolicy> policies) {
-
+        public Builder policies(List<PosturePolicySetPolicy> policies) {
+            if (policies == null) {
+              throw new MissingRequiredPropertyException("PosturePolicySet", "policies");
+            }
             this.policies = policies;
             return this;
         }

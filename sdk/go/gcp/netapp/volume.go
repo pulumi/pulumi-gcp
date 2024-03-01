@@ -26,7 +26,7 @@ import (
 //   - [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volumes/overview)
 //
 // ## Example Usage
-// ### Volume Basic
+// ### Netapp Volume Basic
 //
 // ```go
 // package main
@@ -107,6 +107,8 @@ type Volume struct {
 	ActiveDirectory pulumi.StringOutput `pulumi:"activeDirectory"`
 	// Capacity of the volume (in GiB).
 	CapacityGib pulumi.StringOutput `pulumi:"capacityGib"`
+	// Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Policy to determine if the volume should be deleted forcefully.
 	// Volumes may have nested snapshot resources. Deleting such a volume will fail.
 	// Setting this parameter to FORCE will delete volumes including nested snapshots.
@@ -155,6 +157,9 @@ type Volume struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// Used to create this volume from a snapshot (= cloning) or an backup.
+	// Structure is documented below.
+	RestoreParameters VolumeRestoreParametersPtrOutput `pulumi:"restoreParameters"`
 	// List of actions that are restricted on this volume.
 	// Each value may be one of: `DELETE`.
 	RestrictedActions pulumi.StringArrayOutput `pulumi:"restrictedActions"`
@@ -175,6 +180,10 @@ type Volume struct {
 	// To disable automatic snapshot creation you have to remove the whole snapshotPolicy block.
 	// Structure is documented below.
 	SnapshotPolicy VolumeSnapshotPolicyPtrOutput `pulumi:"snapshotPolicy"`
+	// State of the volume.
+	State pulumi.StringOutput `pulumi:"state"`
+	// State details of the volume.
+	StateDetails pulumi.StringOutput `pulumi:"stateDetails"`
 	// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
 	StoragePool pulumi.StringOutput `pulumi:"storagePool"`
 	// Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
@@ -237,6 +246,8 @@ type volumeState struct {
 	ActiveDirectory *string `pulumi:"activeDirectory"`
 	// Capacity of the volume (in GiB).
 	CapacityGib *string `pulumi:"capacityGib"`
+	// Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+	CreateTime *string `pulumi:"createTime"`
 	// Policy to determine if the volume should be deleted forcefully.
 	// Volumes may have nested snapshot resources. Deleting such a volume will fail.
 	// Setting this parameter to FORCE will delete volumes including nested snapshots.
@@ -285,6 +296,9 @@ type volumeState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// Used to create this volume from a snapshot (= cloning) or an backup.
+	// Structure is documented below.
+	RestoreParameters *VolumeRestoreParameters `pulumi:"restoreParameters"`
 	// List of actions that are restricted on this volume.
 	// Each value may be one of: `DELETE`.
 	RestrictedActions []string `pulumi:"restrictedActions"`
@@ -305,6 +319,10 @@ type volumeState struct {
 	// To disable automatic snapshot creation you have to remove the whole snapshotPolicy block.
 	// Structure is documented below.
 	SnapshotPolicy *VolumeSnapshotPolicy `pulumi:"snapshotPolicy"`
+	// State of the volume.
+	State *string `pulumi:"state"`
+	// State details of the volume.
+	StateDetails *string `pulumi:"stateDetails"`
 	// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
 	StoragePool *string `pulumi:"storagePool"`
 	// Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
@@ -318,6 +336,8 @@ type VolumeState struct {
 	ActiveDirectory pulumi.StringPtrInput
 	// Capacity of the volume (in GiB).
 	CapacityGib pulumi.StringPtrInput
+	// Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+	CreateTime pulumi.StringPtrInput
 	// Policy to determine if the volume should be deleted forcefully.
 	// Volumes may have nested snapshot resources. Deleting such a volume will fail.
 	// Setting this parameter to FORCE will delete volumes including nested snapshots.
@@ -366,6 +386,9 @@ type VolumeState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// Used to create this volume from a snapshot (= cloning) or an backup.
+	// Structure is documented below.
+	RestoreParameters VolumeRestoreParametersPtrInput
 	// List of actions that are restricted on this volume.
 	// Each value may be one of: `DELETE`.
 	RestrictedActions pulumi.StringArrayInput
@@ -386,6 +409,10 @@ type VolumeState struct {
 	// To disable automatic snapshot creation you have to remove the whole snapshotPolicy block.
 	// Structure is documented below.
 	SnapshotPolicy VolumeSnapshotPolicyPtrInput
+	// State of the volume.
+	State pulumi.StringPtrInput
+	// State details of the volume.
+	StateDetails pulumi.StringPtrInput
 	// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
 	StoragePool pulumi.StringPtrInput
 	// Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
@@ -429,6 +456,9 @@ type volumeArgs struct {
 	// The protocol of the volume. Allowed combinations are `['NFSV3']`, `['NFSV4']`, `['SMB']`, `['NFSV3', 'NFSV4']`, `['SMB', 'NFSV3']` and `['SMB', 'NFSV4']`.
 	// Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
 	Protocols []string `pulumi:"protocols"`
+	// Used to create this volume from a snapshot (= cloning) or an backup.
+	// Structure is documented below.
+	RestoreParameters *VolumeRestoreParameters `pulumi:"restoreParameters"`
 	// List of actions that are restricted on this volume.
 	// Each value may be one of: `DELETE`.
 	RestrictedActions []string `pulumi:"restrictedActions"`
@@ -485,6 +515,9 @@ type VolumeArgs struct {
 	// The protocol of the volume. Allowed combinations are `['NFSV3']`, `['NFSV4']`, `['SMB']`, `['NFSV3', 'NFSV4']`, `['SMB', 'NFSV3']` and `['SMB', 'NFSV4']`.
 	// Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
 	Protocols pulumi.StringArrayInput
+	// Used to create this volume from a snapshot (= cloning) or an backup.
+	// Structure is documented below.
+	RestoreParameters VolumeRestoreParametersPtrInput
 	// List of actions that are restricted on this volume.
 	// Each value may be one of: `DELETE`.
 	RestrictedActions pulumi.StringArrayInput
@@ -606,6 +639,11 @@ func (o VolumeOutput) CapacityGib() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.CapacityGib }).(pulumi.StringOutput)
 }
 
+// Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+func (o VolumeOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // Policy to determine if the volume should be deleted forcefully.
 // Volumes may have nested snapshot resources. Deleting such a volume will fail.
 // Setting this parameter to FORCE will delete volumes including nested snapshots.
@@ -708,6 +746,12 @@ func (o VolumeOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
+// Used to create this volume from a snapshot (= cloning) or an backup.
+// Structure is documented below.
+func (o VolumeOutput) RestoreParameters() VolumeRestoreParametersPtrOutput {
+	return o.ApplyT(func(v *Volume) VolumeRestoreParametersPtrOutput { return v.RestoreParameters }).(VolumeRestoreParametersPtrOutput)
+}
+
 // List of actions that are restricted on this volume.
 // Each value may be one of: `DELETE`.
 func (o VolumeOutput) RestrictedActions() pulumi.StringArrayOutput {
@@ -747,6 +791,16 @@ func (o VolumeOutput) SnapshotDirectory() pulumi.BoolPtrOutput {
 // Structure is documented below.
 func (o VolumeOutput) SnapshotPolicy() VolumeSnapshotPolicyPtrOutput {
 	return o.ApplyT(func(v *Volume) VolumeSnapshotPolicyPtrOutput { return v.SnapshotPolicy }).(VolumeSnapshotPolicyPtrOutput)
+}
+
+// State of the volume.
+func (o VolumeOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// State details of the volume.
+func (o VolumeOutput) StateDetails() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.StateDetails }).(pulumi.StringOutput)
 }
 
 // Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.

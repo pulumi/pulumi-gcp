@@ -17,6 +17,16 @@ public final class GetClusterFleet {
      */
     private String membership;
     /**
+     * @return Short name of the fleet membership, for example &#34;member-1&#34;.
+     * 
+     */
+    private String membershipId;
+    /**
+     * @return Location of the fleet membership, for example &#34;us-central1&#34;.
+     * 
+     */
+    private String membershipLocation;
+    /**
      * @return Whether the cluster has been registered via the fleet API.
      * 
      */
@@ -35,6 +45,20 @@ public final class GetClusterFleet {
      */
     public String membership() {
         return this.membership;
+    }
+    /**
+     * @return Short name of the fleet membership, for example &#34;member-1&#34;.
+     * 
+     */
+    public String membershipId() {
+        return this.membershipId;
+    }
+    /**
+     * @return Location of the fleet membership, for example &#34;us-central1&#34;.
+     * 
+     */
+    public String membershipLocation() {
+        return this.membershipLocation;
     }
     /**
      * @return Whether the cluster has been registered via the fleet API.
@@ -62,12 +86,16 @@ public final class GetClusterFleet {
     @CustomType.Builder
     public static final class Builder {
         private String membership;
+        private String membershipId;
+        private String membershipLocation;
         private Boolean preRegistered;
         private String project;
         public Builder() {}
         public Builder(GetClusterFleet defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.membership = defaults.membership;
+    	      this.membershipId = defaults.membershipId;
+    	      this.membershipLocation = defaults.membershipLocation;
     	      this.preRegistered = defaults.preRegistered;
     	      this.project = defaults.project;
         }
@@ -78,6 +106,22 @@ public final class GetClusterFleet {
               throw new MissingRequiredPropertyException("GetClusterFleet", "membership");
             }
             this.membership = membership;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder membershipId(String membershipId) {
+            if (membershipId == null) {
+              throw new MissingRequiredPropertyException("GetClusterFleet", "membershipId");
+            }
+            this.membershipId = membershipId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder membershipLocation(String membershipLocation) {
+            if (membershipLocation == null) {
+              throw new MissingRequiredPropertyException("GetClusterFleet", "membershipLocation");
+            }
+            this.membershipLocation = membershipLocation;
             return this;
         }
         @CustomType.Setter
@@ -99,6 +143,8 @@ public final class GetClusterFleet {
         public GetClusterFleet build() {
             final var _resultValue = new GetClusterFleet();
             _resultValue.membership = membership;
+            _resultValue.membershipId = membershipId;
+            _resultValue.membershipLocation = membershipLocation;
             _resultValue.preRegistered = preRegistered;
             _resultValue.project = project;
             return _resultValue;

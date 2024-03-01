@@ -36,20 +36,32 @@ __all__ = [
 @pulumi.input_type
 class PosturePolicySetArgs:
     def __init__(__self__, *,
+                 policies: pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyArgs']]],
                  policy_set_id: pulumi.Input[str],
-                 description: Optional[pulumi.Input[str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyArgs']]]] = None):
+                 description: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] policy_set_id: ID of the policy set.
-        :param pulumi.Input[str] description: Description of the policy set.
         :param pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyArgs']]] policies: List of security policy
                Structure is documented below.
+        :param pulumi.Input[str] policy_set_id: ID of the policy set.
+        :param pulumi.Input[str] description: Description of the policy set.
         """
+        pulumi.set(__self__, "policies", policies)
         pulumi.set(__self__, "policy_set_id", policy_set_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if policies is not None:
-            pulumi.set(__self__, "policies", policies)
+
+    @property
+    @pulumi.getter
+    def policies(self) -> pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyArgs']]]:
+        """
+        List of security policy
+        Structure is documented below.
+        """
+        return pulumi.get(self, "policies")
+
+    @policies.setter
+    def policies(self, value: pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyArgs']]]):
+        pulumi.set(self, "policies", value)
 
     @property
     @pulumi.getter(name="policySetId")
@@ -74,19 +86,6 @@ class PosturePolicySetArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyArgs']]]]:
-        """
-        List of security policy
-        Structure is documented below.
-        """
-        return pulumi.get(self, "policies")
-
-    @policies.setter
-    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyArgs']]]]):
-        pulumi.set(self, "policies", value)
 
 
 @pulumi.input_type
@@ -1306,6 +1305,8 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigR
                  resource_types: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types: The resource types to run the detector on.
+               
+               - - -
         """
         pulumi.set(__self__, "resource_types", resource_types)
 
@@ -1314,6 +1315,8 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigR
     def resource_types(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The resource types to run the detector on.
+
+        - - -
         """
         return pulumi.get(self, "resource_types")
 

@@ -367,7 +367,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         },
     ///         EventTrigger = new Gcp.CloudFunctionsV2.Inputs.FunctionEventTriggerArgs
     ///         {
-    ///             TriggerRegion = "us-central1",
     ///             EventType = "google.cloud.storage.object.v1.finalized",
     ///             RetryPolicy = "RETRY_POLICY_RETRY",
     ///             ServiceAccountEmail = account.Email,

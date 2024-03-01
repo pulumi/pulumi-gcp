@@ -400,10 +400,10 @@ namespace Pulumi.Gcp.Compute
         public Output<int?> MaxPortsPerVm { get; private set; } = null!;
 
         /// <summary>
-        /// Minimum number of ports allocated to a VM from this NAT.
+        /// Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
         /// </summary>
         [Output("minPortsPerVm")]
-        public Output<int?> MinPortsPerVm { get; private set; } = null!;
+        public Output<int> MinPortsPerVm { get; private set; } = null!;
 
         /// <summary>
         /// Name of the NAT service. The name must be 1-63 characters long and
@@ -617,7 +617,7 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? MaxPortsPerVm { get; set; }
 
         /// <summary>
-        /// Minimum number of ports allocated to a VM from this NAT.
+        /// Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
         /// </summary>
         [Input("minPortsPerVm")]
         public Input<int>? MinPortsPerVm { get; set; }
@@ -814,7 +814,7 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? MaxPortsPerVm { get; set; }
 
         /// <summary>
-        /// Minimum number of ports allocated to a VM from this NAT.
+        /// Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
         /// </summary>
         [Input("minPortsPerVm")]
         public Input<int>? MinPortsPerVm { get; set; }

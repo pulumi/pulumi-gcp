@@ -157,6 +157,25 @@ import * as utilities from "../utilities";
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-looker.iam.gserviceaccount.com`),
  * });
  * ```
+ * ### Looker Instance Custom Domain
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const looker_instance = new gcp.looker.Instance("looker-instance", {
+ *     name: "my-instance",
+ *     platformEdition: "LOOKER_CORE_STANDARD",
+ *     region: "us-central1",
+ *     oauthConfig: {
+ *         clientId: "my-client-id",
+ *         clientSecret: "my-client-secret",
+ *     },
+ *     customDomain: {
+ *         domain: "my-custom-domain.com",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -232,6 +251,11 @@ export class Instance extends pulumi.CustomResource {
      * accurate to nanoseconds.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Custom domain settings for a Looker instance.
+     * Structure is documented below.
+     */
+    public readonly customDomain!: pulumi.Output<outputs.looker.InstanceCustomDomain | undefined>;
     /**
      * Maintenance denial period for this instance.
      * You must allow at least 14 days of maintenance availability
@@ -350,6 +374,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["adminSettings"] = state ? state.adminSettings : undefined;
             resourceInputs["consumerNetwork"] = state ? state.consumerNetwork : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["customDomain"] = state ? state.customDomain : undefined;
             resourceInputs["denyMaintenancePeriod"] = state ? state.denyMaintenancePeriod : undefined;
             resourceInputs["egressPublicIp"] = state ? state.egressPublicIp : undefined;
             resourceInputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
@@ -372,6 +397,7 @@ export class Instance extends pulumi.CustomResource {
             const args = argsOrState as InstanceArgs | undefined;
             resourceInputs["adminSettings"] = args ? args.adminSettings : undefined;
             resourceInputs["consumerNetwork"] = args ? args.consumerNetwork : undefined;
+            resourceInputs["customDomain"] = args ? args.customDomain : undefined;
             resourceInputs["denyMaintenancePeriod"] = args ? args.denyMaintenancePeriod : undefined;
             resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
             resourceInputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
@@ -417,6 +443,11 @@ export interface InstanceState {
      * accurate to nanoseconds.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Custom domain settings for a Looker instance.
+     * Structure is documented below.
+     */
+    customDomain?: pulumi.Input<inputs.looker.InstanceCustomDomain>;
     /**
      * Maintenance denial period for this instance.
      * You must allow at least 14 days of maintenance availability
@@ -535,6 +566,11 @@ export interface InstanceArgs {
      * project that is hosting the Looker Instance.
      */
     consumerNetwork?: pulumi.Input<string>;
+    /**
+     * Custom domain settings for a Looker instance.
+     * Structure is documented below.
+     */
+    customDomain?: pulumi.Input<inputs.looker.InstanceCustomDomain>;
     /**
      * Maintenance denial period for this instance.
      * You must allow at least 14 days of maintenance availability

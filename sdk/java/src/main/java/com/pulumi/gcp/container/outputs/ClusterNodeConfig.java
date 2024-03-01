@@ -25,6 +25,7 @@ import com.pulumi.gcp.container.outputs.ClusterNodeConfigTaint;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigWorkloadMetadataConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -216,6 +217,11 @@ public final class ClusterNodeConfig {
      * 
      */
     private @Nullable Map<String,String> resourceLabels;
+    /**
+     * @return A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+     * 
+     */
+    private @Nullable Map<String,Object> resourceManagerTags;
     /**
      * @return Sandbox configuration for this node.
      * 
@@ -511,6 +517,13 @@ public final class ClusterNodeConfig {
         return this.resourceLabels == null ? Map.of() : this.resourceLabels;
     }
     /**
+     * @return A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+     * 
+     */
+    public Map<String,Object> resourceManagerTags() {
+        return this.resourceManagerTags == null ? Map.of() : this.resourceManagerTags;
+    }
+    /**
      * @return Sandbox configuration for this node.
      * 
      */
@@ -617,6 +630,7 @@ public final class ClusterNodeConfig {
         private @Nullable Boolean preemptible;
         private @Nullable ClusterNodeConfigReservationAffinity reservationAffinity;
         private @Nullable Map<String,String> resourceLabels;
+        private @Nullable Map<String,Object> resourceManagerTags;
         private @Nullable ClusterNodeConfigSandboxConfig sandboxConfig;
         private @Nullable String serviceAccount;
         private @Nullable ClusterNodeConfigShieldedInstanceConfig shieldedInstanceConfig;
@@ -657,6 +671,7 @@ public final class ClusterNodeConfig {
     	      this.preemptible = defaults.preemptible;
     	      this.reservationAffinity = defaults.reservationAffinity;
     	      this.resourceLabels = defaults.resourceLabels;
+    	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.sandboxConfig = defaults.sandboxConfig;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.shieldedInstanceConfig = defaults.shieldedInstanceConfig;
@@ -851,6 +866,12 @@ public final class ClusterNodeConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder resourceManagerTags(@Nullable Map<String,Object> resourceManagerTags) {
+
+            this.resourceManagerTags = resourceManagerTags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sandboxConfig(@Nullable ClusterNodeConfigSandboxConfig sandboxConfig) {
 
             this.sandboxConfig = sandboxConfig;
@@ -935,6 +956,7 @@ public final class ClusterNodeConfig {
             _resultValue.preemptible = preemptible;
             _resultValue.reservationAffinity = reservationAffinity;
             _resultValue.resourceLabels = resourceLabels;
+            _resultValue.resourceManagerTags = resourceManagerTags;
             _resultValue.sandboxConfig = sandboxConfig;
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.shieldedInstanceConfig = shieldedInstanceConfig;

@@ -31,6 +31,32 @@ namespace Pulumi.Gcp.Workbench
     /// 
     /// });
     /// ```
+    /// ### Workbench Instance Basic Container
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.Workbench.Instance("instance", new()
+    ///     {
+    ///         Name = "workbench-instance",
+    ///         Location = "us-west1-a",
+    ///         GceSetup = new Gcp.Workbench.Inputs.InstanceGceSetupArgs
+    ///         {
+    ///             ContainerImage = new Gcp.Workbench.Inputs.InstanceGceSetupContainerImageArgs
+    ///             {
+    ///                 Repository = "us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310",
+    ///                 Tag = "latest",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Workbench Instance Basic Gpu
     /// 
     /// ```csharp
@@ -83,6 +109,12 @@ namespace Pulumi.Gcp.Workbench
     ///         GceSetup = new Gcp.Workbench.Inputs.InstanceGceSetupArgs
     ///         {
     ///             MachineType = "e2-standard-4",
+    ///             ShieldedInstanceConfig = new Gcp.Workbench.Inputs.InstanceGceSetupShieldedInstanceConfigArgs
+    ///             {
+    ///                 EnableSecureBoot = false,
+    ///                 EnableVtpm = false,
+    ///                 EnableIntegrityMonitoring = false,
+    ///             },
     ///             ServiceAccounts = new[]
     ///             {
     ///                 new Gcp.Workbench.Inputs.InstanceGceSetupServiceAccountArgs
@@ -146,6 +178,12 @@ namespace Pulumi.Gcp.Workbench
     ///                     Type = "NVIDIA_TESLA_T4",
     ///                     CoreCount = "1",
     ///                 },
+    ///             },
+    ///             ShieldedInstanceConfig = new Gcp.Workbench.Inputs.InstanceGceSetupShieldedInstanceConfigArgs
+    ///             {
+    ///                 EnableSecureBoot = true,
+    ///                 EnableVtpm = true,
+    ///                 EnableIntegrityMonitoring = true,
     ///             },
     ///             DisablePublicIp = false,
     ///             ServiceAccounts = new[]

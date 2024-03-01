@@ -18,12 +18,16 @@ public final class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustom
     /**
      * The resource types to run the detector on.
      * 
+     * ***
+     * 
      */
     @Import(name="resourceTypes", required=true)
     private Output<List<String>> resourceTypes;
 
     /**
      * @return The resource types to run the detector on.
+     * 
+     * ***
      * 
      */
     public Output<List<String>> resourceTypes() {
@@ -57,6 +61,8 @@ public final class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustom
         /**
          * @param resourceTypes The resource types to run the detector on.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -68,6 +74,8 @@ public final class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustom
         /**
          * @param resourceTypes The resource types to run the detector on.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -77,6 +85,8 @@ public final class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustom
 
         /**
          * @param resourceTypes The resource types to run the detector on.
+         * 
+         * ***
          * 
          * @return builder
          * 

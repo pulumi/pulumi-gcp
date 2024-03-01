@@ -17,6 +17,8 @@ namespace Pulumi.Gcp.SecurityPosture.Inputs
 
         /// <summary>
         /// The resource types to run the detector on.
+        /// 
+        /// - - -
         /// </summary>
         public InputList<string> ResourceTypes
         {

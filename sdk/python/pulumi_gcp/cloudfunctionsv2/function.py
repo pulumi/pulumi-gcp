@@ -722,7 +722,6 @@ class Function(pulumi.CustomResource):
                 service_account_email=account.email,
             ),
             event_trigger=gcp.cloudfunctionsv2.FunctionEventTriggerArgs(
-                trigger_region="us-central1",
                 event_type="google.cloud.storage.object.v1.finalized",
                 retry_policy="RETRY_POLICY_RETRY",
                 service_account_email=account.email,
@@ -1334,7 +1333,6 @@ class Function(pulumi.CustomResource):
                 service_account_email=account.email,
             ),
             event_trigger=gcp.cloudfunctionsv2.FunctionEventTriggerArgs(
-                trigger_region="us-central1",
                 event_type="google.cloud.storage.object.v1.finalized",
                 retry_policy="RETRY_POLICY_RETRY",
                 service_account_email=account.email,

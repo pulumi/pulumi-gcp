@@ -185,14 +185,14 @@ public class Posture extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Description of the posture.
+     * Description of the expression
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the posture.
+     * @return Description of the expression
      * 
      */
     public Output<Optional<String>> description() {
@@ -260,20 +260,18 @@ public class Posture extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="policySets", refs={List.class,PosturePolicySet.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<PosturePolicySet>> policySets;
+    private Output<List<PosturePolicySet>> policySets;
 
     /**
      * @return List of policy sets for the posture.
      * Structure is documented below.
      * 
      */
-    public Output<Optional<List<PosturePolicySet>>> policySets() {
-        return Codegen.optional(this.policySets);
+    public Output<List<PosturePolicySet>> policySets() {
+        return this.policySets;
     }
     /**
      * Id of the posture. It is an immutable field.
-     * 
-     * ***
      * 
      */
     @Export(name="postureId", refs={String.class}, tree="[0]")
@@ -281,8 +279,6 @@ public class Posture extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Id of the posture. It is an immutable field.
-     * 
-     * ***
      * 
      */
     public Output<String> postureId() {

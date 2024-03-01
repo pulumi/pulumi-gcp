@@ -23,8 +23,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:firebase/androidApp:AndroidApp":
 		r = &AndroidApp{}
+	case "gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig":
+		r = &AppCheckAppAttestConfig{}
 	case "gcp:firebase/appCheckDebugToken:AppCheckDebugToken":
 		r = &AppCheckDebugToken{}
+	case "gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig":
+		r = &AppCheckPlayIntegrityConfig{}
+	case "gcp:firebase/appCheckRecaptchaEnterpriseConfig:AppCheckRecaptchaEnterpriseConfig":
+		r = &AppCheckRecaptchaEnterpriseConfig{}
+	case "gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config":
+		r = &AppCheckRecaptchaV3Config{}
 	case "gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig":
 		r = &AppCheckServiceConfig{}
 	case "gcp:firebase/appleApp:AppleApp":
@@ -69,7 +77,27 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"firebase/appCheckAppAttestConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"firebase/appCheckDebugToken",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"firebase/appCheckPlayIntegrityConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"firebase/appCheckRecaptchaEnterpriseConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"firebase/appCheckRecaptchaV3Config",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

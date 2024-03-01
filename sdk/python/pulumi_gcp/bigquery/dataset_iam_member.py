@@ -27,12 +27,13 @@ class DatasetIamMemberArgs:
                
                * `member/members` - (Required) Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
-               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
+               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `bigquery.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -55,12 +56,13 @@ class DatasetIamMemberArgs:
 
         * `member/members` - (Required) Identities that will be granted the privilege in `role`.
         Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
         """
         return pulumi.get(self, "dataset_id")
 
@@ -129,12 +131,13 @@ class _DatasetIamMemberState:
                
                * `member/members` - (Required) Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
-               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
+               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
         :param pulumi.Input[str] etag: (Computed) The etag of the dataset's IAM policy.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -172,12 +175,13 @@ class _DatasetIamMemberState:
 
         * `member/members` - (Required) Identities that will be granted the privilege in `role`.
         Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
         """
         return pulumi.get(self, "dataset_id")
 
@@ -338,12 +342,13 @@ class DatasetIamMember(pulumi.CustomResource):
                
                * `member/members` - (Required) Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
-               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
+               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] role: The role that should be applied. Only one
@@ -511,12 +516,13 @@ class DatasetIamMember(pulumi.CustomResource):
                
                * `member/members` - (Required) Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
-               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
+               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
         :param pulumi.Input[str] etag: (Computed) The etag of the dataset's IAM policy.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -549,12 +555,13 @@ class DatasetIamMember(pulumi.CustomResource):
 
         * `member/members` - (Required) Identities that will be granted the privilege in `role`.
         Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
         """
         return pulumi.get(self, "dataset_id")
 

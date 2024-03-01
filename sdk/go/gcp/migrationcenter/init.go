@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:migrationcenter/group:Group":
 		r = &Group{}
+	case "gcp:migrationcenter/preferenceSet:PreferenceSet":
+		r = &PreferenceSet{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +41,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"migrationcenter/group",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"migrationcenter/preferenceSet",
 		&module{version},
 	)
 }

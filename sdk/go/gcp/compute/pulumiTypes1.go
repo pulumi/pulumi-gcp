@@ -6946,6 +6946,1109 @@ func (o GetForwardingRuleServiceDirectoryRegistrationArrayOutput) Index(i pulumi
 	}).(GetForwardingRuleServiceDirectoryRegistrationOutput)
 }
 
+type GetForwardingRulesRule struct {
+	// The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
+	// Only packets addressed to ports in the specified range will be forwarded
+	// to the backends configured with this forwarding rule.
+	//
+	// The 'allPorts' field has the following limitations:
+	// * It requires that the forwarding rule 'IPProtocol' be TCP, UDP, SCTP, or
+	//   L3_DEFAULT.
+	// * It's applicable only to the following products: internal passthrough
+	//   Network Load Balancers, backend service-based external passthrough Network
+	//   Load Balancers, and internal and external protocol forwarding.
+	// * Set this field to true to allow packets addressed to any port or packets
+	//   lacking destination port information (for example, UDP fragments after the
+	//   first fragment) to be forwarded to the backends configured with this
+	//   forwarding rule. The L3_DEFAULT protocol requires 'allPorts' be set to
+	//   true.
+	AllPorts bool `pulumi:"allPorts"`
+	// This field is used along with the 'backend_service' field for
+	// internal load balancing or with the 'target' field for internal
+	// TargetInstance.
+	//
+	// If the field is set to 'TRUE', clients can access ILB from all
+	// regions.
+	//
+	// Otherwise only allows access from clients in the same region as the
+	// internal load balancer.
+	AllowGlobalAccess bool `pulumi:"allowGlobalAccess"`
+	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+	AllowPscGlobalAccess bool `pulumi:"allowPscGlobalAccess"`
+	// Identifies the backend service to which the forwarding rule sends traffic.
+	//
+	// Required for Internal TCP/UDP Load Balancing and Network Load Balancing;
+	// must be omitted for all other load balancer types.
+	BackendService string `pulumi:"backendService"`
+	// [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
+	BaseForwardingRule string `pulumi:"baseForwardingRule"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp string `pulumi:"creationTimestamp"`
+	// An optional description of this resource. Provide this property when
+	// you create the resource.
+	Description     string            `pulumi:"description"`
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// IP address for which this forwarding rule accepts traffic. When a client
+	// sends traffic to this IP address, the forwarding rule directs the traffic
+	// to the referenced 'target' or 'backendService'.
+	//
+	// While creating a forwarding rule, specifying an 'IPAddress' is
+	// required under the following circumstances:
+	//
+	// * When the 'target' is set to 'targetGrpcProxy' and
+	//   'validateForProxyless' is set to 'true', the
+	//   'IPAddress' should be set to '0.0.0.0'.
+	// * When the 'target' is a Private Service Connect Google APIs
+	//   bundle, you must specify an 'IPAddress'.
+	//
+	// Otherwise, you can optionally specify an IP address that references an
+	// existing static (reserved) IP address resource. When omitted, Google Cloud
+	// assigns an ephemeral IP address.
+	//
+	// Use one of the following formats to specify an IP address while creating a
+	// forwarding rule:
+	//
+	// * IP address number, as in '100.1.2.3'
+	// * IPv6 address range, as in '2600:1234::/96'
+	// * Full resource URL, as in
+	//   'https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name'
+	// * Partial URL or by name, as in:
+	//   * 'projects/project_id/regions/region/addresses/address-name'
+	//   * 'regions/region/addresses/address-name'
+	//   * 'global/addresses/address-name'
+	//   * 'address-name'
+	//
+	// The forwarding rule's 'target' or 'backendService',
+	// and in most cases, also the 'loadBalancingScheme', determine the
+	// type of IP address that you can use. For detailed information, see
+	// [IP address
+	// specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+	//
+	// When reading an 'IPAddress', the API always returns the IP
+	// address number.
+	IpAddress string `pulumi:"ipAddress"`
+	// The IP protocol to which this rule applies.
+	//
+	// For protocol forwarding, valid
+	// options are 'TCP', 'UDP', 'ESP',
+	// 'AH', 'SCTP', 'ICMP' and
+	// 'L3_DEFAULT'.
+	//
+	// The valid IP protocols are different for different load balancing products
+	// as described in [Load balancing
+	// features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
+	//
+	// A Forwarding Rule with protocol L3_DEFAULT can attach with target instance or
+	// backend service with UNSPECIFIED protocol.
+	// A forwarding rule with "L3_DEFAULT" IPProtocal cannot be attached to a backend service with TCP or UDP. Possible values: ["TCP", "UDP", "ESP", "AH", "SCTP", "ICMP", "L3_DEFAULT"]
+	IpProtocol string `pulumi:"ipProtocol"`
+	// The IP address version that will be used by this forwarding rule.
+	// Valid options are IPV4 and IPV6.
+	//
+	// If not set, the IPv4 address will be used by default. Possible values: ["IPV4", "IPV6"]
+	IpVersion string `pulumi:"ipVersion"`
+	// Indicates whether or not this load balancer can be used as a collector for
+	// packet mirroring. To prevent mirroring loops, instances behind this
+	// load balancer will not have their traffic mirrored even if a
+	// 'PacketMirroring' rule applies to them.
+	//
+	// This can only be set to true for load balancers that have their
+	// 'loadBalancingScheme' set to 'INTERNAL'.
+	IsMirroringCollector bool `pulumi:"isMirroringCollector"`
+	// The fingerprint used for optimistic locking of this resource.  Used
+	// internally during updates.
+	LabelFingerprint string `pulumi:"labelFingerprint"`
+	// Labels to apply to this forwarding rule.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
+	// Specifies the forwarding rule type.
+	//
+	// For more information about forwarding rules, refer to
+	// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts). Default value: "EXTERNAL" Possible values: ["EXTERNAL", "EXTERNAL_MANAGED", "INTERNAL", "INTERNAL_MANAGED"]
+	LoadBalancingScheme string `pulumi:"loadBalancingScheme"`
+	// Name of the resource; provided by the client when the resource is created.
+	// The name must be 1-63 characters long, and comply with
+	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
+	//
+	// Specifically, the name must be 1-63 characters long and match the regular
+	// expression 'a-z?' which means the first
+	// character must be a lowercase letter, and all following characters must
+	// be a dash, lowercase letter, or digit, except the last character, which
+	// cannot be a dash.
+	//
+	// For Private Service Connect forwarding rules that forward traffic to Google
+	// APIs, the forwarding rule name must be a 1-20 characters string with
+	// lowercase letters and numbers and must start with a letter.
+	Name string `pulumi:"name"`
+	// This field is not used for external load balancing.
+	//
+	// For Internal TCP/UDP Load Balancing, this field identifies the network that
+	// the load balanced IP should belong to for this Forwarding Rule.
+	// If the subnetwork is specified, the network of the subnetwork will be used.
+	// If neither subnetwork nor this field is specified, the default network will
+	// be used.
+	//
+	// For Private Service Connect forwarding rules that forward traffic to Google
+	// APIs, a network must be provided.
+	Network string `pulumi:"network"`
+	// This signifies the networking tier used for configuring
+	// this load balancer and can only take the following values:
+	// 'PREMIUM', 'STANDARD'.
+	//
+	// For regional ForwardingRule, the valid values are 'PREMIUM' and
+	// 'STANDARD'. For GlobalForwardingRule, the valid value is
+	// 'PREMIUM'.
+	//
+	// If this field is not specified, it is assumed to be 'PREMIUM'.
+	// If 'IPAddress' is specified, this value must be equal to the
+	// networkTier of the Address. Possible values: ["PREMIUM", "STANDARD"]
+	NetworkTier string `pulumi:"networkTier"`
+	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+	NoAutomateDnsZone bool `pulumi:"noAutomateDnsZone"`
+	// The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
+	// Only packets addressed to ports in the specified range will be forwarded
+	// to the backends configured with this forwarding rule.
+	//
+	// The 'portRange' field has the following limitations:
+	// * It requires that the forwarding rule 'IPProtocol' be TCP, UDP, or SCTP,
+	//   and
+	// * It's applicable only to the following products: external passthrough
+	//   Network Load Balancers, internal and external proxy Network Load
+	//   Balancers, internal and external Application Load Balancers, external
+	//   protocol forwarding, and Classic VPN.
+	// * Some products have restrictions on what ports can be used. See
+	//   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+	//   for details.
+	//
+	// For external forwarding rules, two or more forwarding rules cannot use the
+	// same '[IPAddress, IPProtocol]' pair, and cannot have overlapping
+	// 'portRange's.
+	//
+	// For internal forwarding rules within the same VPC network, two or more
+	// forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair, and
+	// cannot have overlapping 'portRange's.
+	//
+	// @pattern: \d+(?:-\d+)?
+	PortRange string `pulumi:"portRange"`
+	// The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
+	// Only packets addressed to ports in the specified range will be forwarded
+	// to the backends configured with this forwarding rule.
+	//
+	// The 'ports' field has the following limitations:
+	// * It requires that the forwarding rule 'IPProtocol' be TCP, UDP, or SCTP,
+	//   and
+	// * It's applicable only to the following products: internal passthrough
+	//   Network Load Balancers, backend service-based external passthrough Network
+	//   Load Balancers, and internal protocol forwarding.
+	// * You can specify a list of up to five ports by number, separated by
+	//   commas. The ports can be contiguous or discontiguous.
+	//
+	// For external forwarding rules, two or more forwarding rules cannot use the
+	// same '[IPAddress, IPProtocol]' pair if they share at least one port
+	// number.
+	//
+	// For internal forwarding rules within the same VPC network, two or more
+	// forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair if
+	// they share at least one port number.
+	//
+	// @pattern: \d+(?:-\d+)?
+	Ports []string `pulumi:"ports"`
+	// The name of the project.
+	Project string `pulumi:"project"`
+	// The PSC connection id of the PSC Forwarding Rule.
+	PscConnectionId string `pulumi:"pscConnectionId"`
+	// The PSC connection status of the PSC Forwarding Rule. Possible values: 'STATUS_UNSPECIFIED', 'PENDING', 'ACCEPTED', 'REJECTED', 'CLOSED'
+	PscConnectionStatus string `pulumi:"pscConnectionStatus"`
+	// The combination of labels configured directly on the resource
+	//  and default labels configured on the provider.
+	PulumiLabels      map[string]string `pulumi:"pulumiLabels"`
+	RecreateClosedPsc bool              `pulumi:"recreateClosedPsc"`
+	// The region you want to get the forwarding rules from.
+	//
+	// These arguments must be set in either the provider or the resouce in order for the information to be queried.
+	Region string `pulumi:"region"`
+	// The URI of the resource.
+	SelfLink string `pulumi:"selfLink"`
+	// Service Directory resources to register this forwarding rule with.
+	//
+	// Currently, only supports a single Service Directory resource.
+	ServiceDirectoryRegistrations []GetForwardingRulesRuleServiceDirectoryRegistration `pulumi:"serviceDirectoryRegistrations"`
+	// An optional prefix to the service name for this Forwarding Rule.
+	// If specified, will be the first label of the fully qualified service
+	// name.
+	//
+	// The label must be 1-63 characters long, and comply with RFC1035.
+	// Specifically, the label must be 1-63 characters long and match the
+	// regular expression 'a-z?' which means the first
+	// character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
+	//
+	// This field is only used for INTERNAL load balancing.
+	ServiceLabel string `pulumi:"serviceLabel"`
+	// The internal fully qualified service name for this Forwarding Rule.
+	//
+	// This field is only used for INTERNAL load balancing.
+	ServiceName string `pulumi:"serviceName"`
+	// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+	SourceIpRanges []string `pulumi:"sourceIpRanges"`
+	// This field identifies the subnetwork that the load balanced IP should
+	// belong to for this Forwarding Rule, used in internal load balancing and
+	// network load balancing with IPv6.
+	//
+	// If the network specified is in auto subnet mode, this field is optional.
+	// However, a subnetwork must be specified if the network is in custom subnet
+	// mode or when creating external forwarding rule with IPv6.
+	Subnetwork string `pulumi:"subnetwork"`
+	// The URL of the target resource to receive the matched traffic.  For
+	// regional forwarding rules, this target must be in the same region as the
+	// forwarding rule. For global forwarding rules, this target must be a global
+	// load balancing resource.
+	//
+	// The forwarded traffic must be of a type appropriate to the target object.
+	// *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+	// *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
+	//   *  'vpc-sc' - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
+	//   *  'all-apis' - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
+	//
+	// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
+	Target string `pulumi:"target"`
+}
+
+// GetForwardingRulesRuleInput is an input type that accepts GetForwardingRulesRuleArgs and GetForwardingRulesRuleOutput values.
+// You can construct a concrete instance of `GetForwardingRulesRuleInput` via:
+//
+//	GetForwardingRulesRuleArgs{...}
+type GetForwardingRulesRuleInput interface {
+	pulumi.Input
+
+	ToGetForwardingRulesRuleOutput() GetForwardingRulesRuleOutput
+	ToGetForwardingRulesRuleOutputWithContext(context.Context) GetForwardingRulesRuleOutput
+}
+
+type GetForwardingRulesRuleArgs struct {
+	// The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
+	// Only packets addressed to ports in the specified range will be forwarded
+	// to the backends configured with this forwarding rule.
+	//
+	// The 'allPorts' field has the following limitations:
+	// * It requires that the forwarding rule 'IPProtocol' be TCP, UDP, SCTP, or
+	//   L3_DEFAULT.
+	// * It's applicable only to the following products: internal passthrough
+	//   Network Load Balancers, backend service-based external passthrough Network
+	//   Load Balancers, and internal and external protocol forwarding.
+	// * Set this field to true to allow packets addressed to any port or packets
+	//   lacking destination port information (for example, UDP fragments after the
+	//   first fragment) to be forwarded to the backends configured with this
+	//   forwarding rule. The L3_DEFAULT protocol requires 'allPorts' be set to
+	//   true.
+	AllPorts pulumi.BoolInput `pulumi:"allPorts"`
+	// This field is used along with the 'backend_service' field for
+	// internal load balancing or with the 'target' field for internal
+	// TargetInstance.
+	//
+	// If the field is set to 'TRUE', clients can access ILB from all
+	// regions.
+	//
+	// Otherwise only allows access from clients in the same region as the
+	// internal load balancer.
+	AllowGlobalAccess pulumi.BoolInput `pulumi:"allowGlobalAccess"`
+	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+	AllowPscGlobalAccess pulumi.BoolInput `pulumi:"allowPscGlobalAccess"`
+	// Identifies the backend service to which the forwarding rule sends traffic.
+	//
+	// Required for Internal TCP/UDP Load Balancing and Network Load Balancing;
+	// must be omitted for all other load balancer types.
+	BackendService pulumi.StringInput `pulumi:"backendService"`
+	// [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
+	BaseForwardingRule pulumi.StringInput `pulumi:"baseForwardingRule"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringInput `pulumi:"creationTimestamp"`
+	// An optional description of this resource. Provide this property when
+	// you create the resource.
+	Description     pulumi.StringInput    `pulumi:"description"`
+	EffectiveLabels pulumi.StringMapInput `pulumi:"effectiveLabels"`
+	// IP address for which this forwarding rule accepts traffic. When a client
+	// sends traffic to this IP address, the forwarding rule directs the traffic
+	// to the referenced 'target' or 'backendService'.
+	//
+	// While creating a forwarding rule, specifying an 'IPAddress' is
+	// required under the following circumstances:
+	//
+	// * When the 'target' is set to 'targetGrpcProxy' and
+	//   'validateForProxyless' is set to 'true', the
+	//   'IPAddress' should be set to '0.0.0.0'.
+	// * When the 'target' is a Private Service Connect Google APIs
+	//   bundle, you must specify an 'IPAddress'.
+	//
+	// Otherwise, you can optionally specify an IP address that references an
+	// existing static (reserved) IP address resource. When omitted, Google Cloud
+	// assigns an ephemeral IP address.
+	//
+	// Use one of the following formats to specify an IP address while creating a
+	// forwarding rule:
+	//
+	// * IP address number, as in '100.1.2.3'
+	// * IPv6 address range, as in '2600:1234::/96'
+	// * Full resource URL, as in
+	//   'https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name'
+	// * Partial URL or by name, as in:
+	//   * 'projects/project_id/regions/region/addresses/address-name'
+	//   * 'regions/region/addresses/address-name'
+	//   * 'global/addresses/address-name'
+	//   * 'address-name'
+	//
+	// The forwarding rule's 'target' or 'backendService',
+	// and in most cases, also the 'loadBalancingScheme', determine the
+	// type of IP address that you can use. For detailed information, see
+	// [IP address
+	// specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+	//
+	// When reading an 'IPAddress', the API always returns the IP
+	// address number.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// The IP protocol to which this rule applies.
+	//
+	// For protocol forwarding, valid
+	// options are 'TCP', 'UDP', 'ESP',
+	// 'AH', 'SCTP', 'ICMP' and
+	// 'L3_DEFAULT'.
+	//
+	// The valid IP protocols are different for different load balancing products
+	// as described in [Load balancing
+	// features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
+	//
+	// A Forwarding Rule with protocol L3_DEFAULT can attach with target instance or
+	// backend service with UNSPECIFIED protocol.
+	// A forwarding rule with "L3_DEFAULT" IPProtocal cannot be attached to a backend service with TCP or UDP. Possible values: ["TCP", "UDP", "ESP", "AH", "SCTP", "ICMP", "L3_DEFAULT"]
+	IpProtocol pulumi.StringInput `pulumi:"ipProtocol"`
+	// The IP address version that will be used by this forwarding rule.
+	// Valid options are IPV4 and IPV6.
+	//
+	// If not set, the IPv4 address will be used by default. Possible values: ["IPV4", "IPV6"]
+	IpVersion pulumi.StringInput `pulumi:"ipVersion"`
+	// Indicates whether or not this load balancer can be used as a collector for
+	// packet mirroring. To prevent mirroring loops, instances behind this
+	// load balancer will not have their traffic mirrored even if a
+	// 'PacketMirroring' rule applies to them.
+	//
+	// This can only be set to true for load balancers that have their
+	// 'loadBalancingScheme' set to 'INTERNAL'.
+	IsMirroringCollector pulumi.BoolInput `pulumi:"isMirroringCollector"`
+	// The fingerprint used for optimistic locking of this resource.  Used
+	// internally during updates.
+	LabelFingerprint pulumi.StringInput `pulumi:"labelFingerprint"`
+	// Labels to apply to this forwarding rule.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Specifies the forwarding rule type.
+	//
+	// For more information about forwarding rules, refer to
+	// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts). Default value: "EXTERNAL" Possible values: ["EXTERNAL", "EXTERNAL_MANAGED", "INTERNAL", "INTERNAL_MANAGED"]
+	LoadBalancingScheme pulumi.StringInput `pulumi:"loadBalancingScheme"`
+	// Name of the resource; provided by the client when the resource is created.
+	// The name must be 1-63 characters long, and comply with
+	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
+	//
+	// Specifically, the name must be 1-63 characters long and match the regular
+	// expression 'a-z?' which means the first
+	// character must be a lowercase letter, and all following characters must
+	// be a dash, lowercase letter, or digit, except the last character, which
+	// cannot be a dash.
+	//
+	// For Private Service Connect forwarding rules that forward traffic to Google
+	// APIs, the forwarding rule name must be a 1-20 characters string with
+	// lowercase letters and numbers and must start with a letter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// This field is not used for external load balancing.
+	//
+	// For Internal TCP/UDP Load Balancing, this field identifies the network that
+	// the load balanced IP should belong to for this Forwarding Rule.
+	// If the subnetwork is specified, the network of the subnetwork will be used.
+	// If neither subnetwork nor this field is specified, the default network will
+	// be used.
+	//
+	// For Private Service Connect forwarding rules that forward traffic to Google
+	// APIs, a network must be provided.
+	Network pulumi.StringInput `pulumi:"network"`
+	// This signifies the networking tier used for configuring
+	// this load balancer and can only take the following values:
+	// 'PREMIUM', 'STANDARD'.
+	//
+	// For regional ForwardingRule, the valid values are 'PREMIUM' and
+	// 'STANDARD'. For GlobalForwardingRule, the valid value is
+	// 'PREMIUM'.
+	//
+	// If this field is not specified, it is assumed to be 'PREMIUM'.
+	// If 'IPAddress' is specified, this value must be equal to the
+	// networkTier of the Address. Possible values: ["PREMIUM", "STANDARD"]
+	NetworkTier pulumi.StringInput `pulumi:"networkTier"`
+	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+	NoAutomateDnsZone pulumi.BoolInput `pulumi:"noAutomateDnsZone"`
+	// The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
+	// Only packets addressed to ports in the specified range will be forwarded
+	// to the backends configured with this forwarding rule.
+	//
+	// The 'portRange' field has the following limitations:
+	// * It requires that the forwarding rule 'IPProtocol' be TCP, UDP, or SCTP,
+	//   and
+	// * It's applicable only to the following products: external passthrough
+	//   Network Load Balancers, internal and external proxy Network Load
+	//   Balancers, internal and external Application Load Balancers, external
+	//   protocol forwarding, and Classic VPN.
+	// * Some products have restrictions on what ports can be used. See
+	//   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+	//   for details.
+	//
+	// For external forwarding rules, two or more forwarding rules cannot use the
+	// same '[IPAddress, IPProtocol]' pair, and cannot have overlapping
+	// 'portRange's.
+	//
+	// For internal forwarding rules within the same VPC network, two or more
+	// forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair, and
+	// cannot have overlapping 'portRange's.
+	//
+	// @pattern: \d+(?:-\d+)?
+	PortRange pulumi.StringInput `pulumi:"portRange"`
+	// The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
+	// Only packets addressed to ports in the specified range will be forwarded
+	// to the backends configured with this forwarding rule.
+	//
+	// The 'ports' field has the following limitations:
+	// * It requires that the forwarding rule 'IPProtocol' be TCP, UDP, or SCTP,
+	//   and
+	// * It's applicable only to the following products: internal passthrough
+	//   Network Load Balancers, backend service-based external passthrough Network
+	//   Load Balancers, and internal protocol forwarding.
+	// * You can specify a list of up to five ports by number, separated by
+	//   commas. The ports can be contiguous or discontiguous.
+	//
+	// For external forwarding rules, two or more forwarding rules cannot use the
+	// same '[IPAddress, IPProtocol]' pair if they share at least one port
+	// number.
+	//
+	// For internal forwarding rules within the same VPC network, two or more
+	// forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair if
+	// they share at least one port number.
+	//
+	// @pattern: \d+(?:-\d+)?
+	Ports pulumi.StringArrayInput `pulumi:"ports"`
+	// The name of the project.
+	Project pulumi.StringInput `pulumi:"project"`
+	// The PSC connection id of the PSC Forwarding Rule.
+	PscConnectionId pulumi.StringInput `pulumi:"pscConnectionId"`
+	// The PSC connection status of the PSC Forwarding Rule. Possible values: 'STATUS_UNSPECIFIED', 'PENDING', 'ACCEPTED', 'REJECTED', 'CLOSED'
+	PscConnectionStatus pulumi.StringInput `pulumi:"pscConnectionStatus"`
+	// The combination of labels configured directly on the resource
+	//  and default labels configured on the provider.
+	PulumiLabels      pulumi.StringMapInput `pulumi:"pulumiLabels"`
+	RecreateClosedPsc pulumi.BoolInput      `pulumi:"recreateClosedPsc"`
+	// The region you want to get the forwarding rules from.
+	//
+	// These arguments must be set in either the provider or the resouce in order for the information to be queried.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The URI of the resource.
+	SelfLink pulumi.StringInput `pulumi:"selfLink"`
+	// Service Directory resources to register this forwarding rule with.
+	//
+	// Currently, only supports a single Service Directory resource.
+	ServiceDirectoryRegistrations GetForwardingRulesRuleServiceDirectoryRegistrationArrayInput `pulumi:"serviceDirectoryRegistrations"`
+	// An optional prefix to the service name for this Forwarding Rule.
+	// If specified, will be the first label of the fully qualified service
+	// name.
+	//
+	// The label must be 1-63 characters long, and comply with RFC1035.
+	// Specifically, the label must be 1-63 characters long and match the
+	// regular expression 'a-z?' which means the first
+	// character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
+	//
+	// This field is only used for INTERNAL load balancing.
+	ServiceLabel pulumi.StringInput `pulumi:"serviceLabel"`
+	// The internal fully qualified service name for this Forwarding Rule.
+	//
+	// This field is only used for INTERNAL load balancing.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+	SourceIpRanges pulumi.StringArrayInput `pulumi:"sourceIpRanges"`
+	// This field identifies the subnetwork that the load balanced IP should
+	// belong to for this Forwarding Rule, used in internal load balancing and
+	// network load balancing with IPv6.
+	//
+	// If the network specified is in auto subnet mode, this field is optional.
+	// However, a subnetwork must be specified if the network is in custom subnet
+	// mode or when creating external forwarding rule with IPv6.
+	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
+	// The URL of the target resource to receive the matched traffic.  For
+	// regional forwarding rules, this target must be in the same region as the
+	// forwarding rule. For global forwarding rules, this target must be a global
+	// load balancing resource.
+	//
+	// The forwarded traffic must be of a type appropriate to the target object.
+	// *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+	// *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
+	//   *  'vpc-sc' - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
+	//   *  'all-apis' - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
+	//
+	// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
+	Target pulumi.StringInput `pulumi:"target"`
+}
+
+func (GetForwardingRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardingRulesRule)(nil)).Elem()
+}
+
+func (i GetForwardingRulesRuleArgs) ToGetForwardingRulesRuleOutput() GetForwardingRulesRuleOutput {
+	return i.ToGetForwardingRulesRuleOutputWithContext(context.Background())
+}
+
+func (i GetForwardingRulesRuleArgs) ToGetForwardingRulesRuleOutputWithContext(ctx context.Context) GetForwardingRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetForwardingRulesRuleOutput)
+}
+
+// GetForwardingRulesRuleArrayInput is an input type that accepts GetForwardingRulesRuleArray and GetForwardingRulesRuleArrayOutput values.
+// You can construct a concrete instance of `GetForwardingRulesRuleArrayInput` via:
+//
+//	GetForwardingRulesRuleArray{ GetForwardingRulesRuleArgs{...} }
+type GetForwardingRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetForwardingRulesRuleArrayOutput() GetForwardingRulesRuleArrayOutput
+	ToGetForwardingRulesRuleArrayOutputWithContext(context.Context) GetForwardingRulesRuleArrayOutput
+}
+
+type GetForwardingRulesRuleArray []GetForwardingRulesRuleInput
+
+func (GetForwardingRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetForwardingRulesRule)(nil)).Elem()
+}
+
+func (i GetForwardingRulesRuleArray) ToGetForwardingRulesRuleArrayOutput() GetForwardingRulesRuleArrayOutput {
+	return i.ToGetForwardingRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetForwardingRulesRuleArray) ToGetForwardingRulesRuleArrayOutputWithContext(ctx context.Context) GetForwardingRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetForwardingRulesRuleArrayOutput)
+}
+
+type GetForwardingRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (GetForwardingRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardingRulesRule)(nil)).Elem()
+}
+
+func (o GetForwardingRulesRuleOutput) ToGetForwardingRulesRuleOutput() GetForwardingRulesRuleOutput {
+	return o
+}
+
+func (o GetForwardingRulesRuleOutput) ToGetForwardingRulesRuleOutputWithContext(ctx context.Context) GetForwardingRulesRuleOutput {
+	return o
+}
+
+// The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
+// Only packets addressed to ports in the specified range will be forwarded
+// to the backends configured with this forwarding rule.
+//
+// The 'allPorts' field has the following limitations:
+//   - It requires that the forwarding rule 'IPProtocol' be TCP, UDP, SCTP, or
+//     L3_DEFAULT.
+//   - It's applicable only to the following products: internal passthrough
+//     Network Load Balancers, backend service-based external passthrough Network
+//     Load Balancers, and internal and external protocol forwarding.
+//   - Set this field to true to allow packets addressed to any port or packets
+//     lacking destination port information (for example, UDP fragments after the
+//     first fragment) to be forwarded to the backends configured with this
+//     forwarding rule. The L3_DEFAULT protocol requires 'allPorts' be set to
+//     true.
+func (o GetForwardingRulesRuleOutput) AllPorts() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) bool { return v.AllPorts }).(pulumi.BoolOutput)
+}
+
+// This field is used along with the 'backend_service' field for
+// internal load balancing or with the 'target' field for internal
+// TargetInstance.
+//
+// If the field is set to 'TRUE', clients can access ILB from all
+// regions.
+//
+// Otherwise only allows access from clients in the same region as the
+// internal load balancer.
+func (o GetForwardingRulesRuleOutput) AllowGlobalAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) bool { return v.AllowGlobalAccess }).(pulumi.BoolOutput)
+}
+
+// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+func (o GetForwardingRulesRuleOutput) AllowPscGlobalAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) bool { return v.AllowPscGlobalAccess }).(pulumi.BoolOutput)
+}
+
+// Identifies the backend service to which the forwarding rule sends traffic.
+//
+// Required for Internal TCP/UDP Load Balancing and Network Load Balancing;
+// must be omitted for all other load balancer types.
+func (o GetForwardingRulesRuleOutput) BackendService() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.BackendService }).(pulumi.StringOutput)
+}
+
+// [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
+func (o GetForwardingRulesRuleOutput) BaseForwardingRule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.BaseForwardingRule }).(pulumi.StringOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o GetForwardingRulesRuleOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property when
+// you create the resource.
+func (o GetForwardingRulesRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetForwardingRulesRuleOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// IP address for which this forwarding rule accepts traffic. When a client
+// sends traffic to this IP address, the forwarding rule directs the traffic
+// to the referenced 'target' or 'backendService'.
+//
+// While creating a forwarding rule, specifying an 'IPAddress' is
+// required under the following circumstances:
+//
+//   - When the 'target' is set to 'targetGrpcProxy' and
+//     'validateForProxyless' is set to 'true', the
+//     'IPAddress' should be set to '0.0.0.0'.
+//   - When the 'target' is a Private Service Connect Google APIs
+//     bundle, you must specify an 'IPAddress'.
+//
+// Otherwise, you can optionally specify an IP address that references an
+// existing static (reserved) IP address resource. When omitted, Google Cloud
+// assigns an ephemeral IP address.
+//
+// Use one of the following formats to specify an IP address while creating a
+// forwarding rule:
+//
+//   - IP address number, as in '100.1.2.3'
+//   - IPv6 address range, as in '2600:1234::/96'
+//   - Full resource URL, as in
+//     'https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name'
+//   - Partial URL or by name, as in:
+//   - 'projects/project_id/regions/region/addresses/address-name'
+//   - 'regions/region/addresses/address-name'
+//   - 'global/addresses/address-name'
+//   - 'address-name'
+//
+// The forwarding rule's 'target' or 'backendService',
+// and in most cases, also the 'loadBalancingScheme', determine the
+// type of IP address that you can use. For detailed information, see
+// [IP address
+// specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+//
+// When reading an 'IPAddress', the API always returns the IP
+// address number.
+func (o GetForwardingRulesRuleOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// The IP protocol to which this rule applies.
+//
+// For protocol forwarding, valid
+// options are 'TCP', 'UDP', 'ESP',
+// 'AH', 'SCTP', 'ICMP' and
+// 'L3_DEFAULT'.
+//
+// The valid IP protocols are different for different load balancing products
+// as described in [Load balancing
+// features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
+//
+// A Forwarding Rule with protocol L3_DEFAULT can attach with target instance or
+// backend service with UNSPECIFIED protocol.
+// A forwarding rule with "L3_DEFAULT" IPProtocal cannot be attached to a backend service with TCP or UDP. Possible values: ["TCP", "UDP", "ESP", "AH", "SCTP", "ICMP", "L3_DEFAULT"]
+func (o GetForwardingRulesRuleOutput) IpProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.IpProtocol }).(pulumi.StringOutput)
+}
+
+// The IP address version that will be used by this forwarding rule.
+// Valid options are IPV4 and IPV6.
+//
+// If not set, the IPv4 address will be used by default. Possible values: ["IPV4", "IPV6"]
+func (o GetForwardingRulesRuleOutput) IpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.IpVersion }).(pulumi.StringOutput)
+}
+
+// Indicates whether or not this load balancer can be used as a collector for
+// packet mirroring. To prevent mirroring loops, instances behind this
+// load balancer will not have their traffic mirrored even if a
+// 'PacketMirroring' rule applies to them.
+//
+// This can only be set to true for load balancers that have their
+// 'loadBalancingScheme' set to 'INTERNAL'.
+func (o GetForwardingRulesRuleOutput) IsMirroringCollector() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) bool { return v.IsMirroringCollector }).(pulumi.BoolOutput)
+}
+
+// The fingerprint used for optimistic locking of this resource.  Used
+// internally during updates.
+func (o GetForwardingRulesRuleOutput) LabelFingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.LabelFingerprint }).(pulumi.StringOutput)
+}
+
+// Labels to apply to this forwarding rule.  A list of key->value pairs.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+func (o GetForwardingRulesRuleOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Specifies the forwarding rule type.
+//
+// For more information about forwarding rules, refer to
+// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts). Default value: "EXTERNAL" Possible values: ["EXTERNAL", "EXTERNAL_MANAGED", "INTERNAL", "INTERNAL_MANAGED"]
+func (o GetForwardingRulesRuleOutput) LoadBalancingScheme() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.LoadBalancingScheme }).(pulumi.StringOutput)
+}
+
+// Name of the resource; provided by the client when the resource is created.
+// The name must be 1-63 characters long, and comply with
+// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
+//
+// Specifically, the name must be 1-63 characters long and match the regular
+// expression 'a-z?' which means the first
+// character must be a lowercase letter, and all following characters must
+// be a dash, lowercase letter, or digit, except the last character, which
+// cannot be a dash.
+//
+// For Private Service Connect forwarding rules that forward traffic to Google
+// APIs, the forwarding rule name must be a 1-20 characters string with
+// lowercase letters and numbers and must start with a letter.
+func (o GetForwardingRulesRuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// This field is not used for external load balancing.
+//
+// For Internal TCP/UDP Load Balancing, this field identifies the network that
+// the load balanced IP should belong to for this Forwarding Rule.
+// If the subnetwork is specified, the network of the subnetwork will be used.
+// If neither subnetwork nor this field is specified, the default network will
+// be used.
+//
+// For Private Service Connect forwarding rules that forward traffic to Google
+// APIs, a network must be provided.
+func (o GetForwardingRulesRuleOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// This signifies the networking tier used for configuring
+// this load balancer and can only take the following values:
+// 'PREMIUM', 'STANDARD'.
+//
+// For regional ForwardingRule, the valid values are 'PREMIUM' and
+// 'STANDARD'. For GlobalForwardingRule, the valid value is
+// 'PREMIUM'.
+//
+// If this field is not specified, it is assumed to be 'PREMIUM'.
+// If 'IPAddress' is specified, this value must be equal to the
+// networkTier of the Address. Possible values: ["PREMIUM", "STANDARD"]
+func (o GetForwardingRulesRuleOutput) NetworkTier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.NetworkTier }).(pulumi.StringOutput)
+}
+
+// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+func (o GetForwardingRulesRuleOutput) NoAutomateDnsZone() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) bool { return v.NoAutomateDnsZone }).(pulumi.BoolOutput)
+}
+
+// The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
+// Only packets addressed to ports in the specified range will be forwarded
+// to the backends configured with this forwarding rule.
+//
+// The 'portRange' field has the following limitations:
+//   - It requires that the forwarding rule 'IPProtocol' be TCP, UDP, or SCTP,
+//     and
+//   - It's applicable only to the following products: external passthrough
+//     Network Load Balancers, internal and external proxy Network Load
+//     Balancers, internal and external Application Load Balancers, external
+//     protocol forwarding, and Classic VPN.
+//   - Some products have restrictions on what ports can be used. See
+//     [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+//     for details.
+//
+// For external forwarding rules, two or more forwarding rules cannot use the
+// same '[IPAddress, IPProtocol]' pair, and cannot have overlapping
+// 'portRange's.
+//
+// For internal forwarding rules within the same VPC network, two or more
+// forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair, and
+// cannot have overlapping 'portRange's.
+//
+// @pattern: \d+(?:-\d+)?
+func (o GetForwardingRulesRuleOutput) PortRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.PortRange }).(pulumi.StringOutput)
+}
+
+// The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
+// Only packets addressed to ports in the specified range will be forwarded
+// to the backends configured with this forwarding rule.
+//
+// The 'ports' field has the following limitations:
+//   - It requires that the forwarding rule 'IPProtocol' be TCP, UDP, or SCTP,
+//     and
+//   - It's applicable only to the following products: internal passthrough
+//     Network Load Balancers, backend service-based external passthrough Network
+//     Load Balancers, and internal protocol forwarding.
+//   - You can specify a list of up to five ports by number, separated by
+//     commas. The ports can be contiguous or discontiguous.
+//
+// For external forwarding rules, two or more forwarding rules cannot use the
+// same '[IPAddress, IPProtocol]' pair if they share at least one port
+// number.
+//
+// For internal forwarding rules within the same VPC network, two or more
+// forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair if
+// they share at least one port number.
+//
+// @pattern: \d+(?:-\d+)?
+func (o GetForwardingRulesRuleOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) []string { return v.Ports }).(pulumi.StringArrayOutput)
+}
+
+// The name of the project.
+func (o GetForwardingRulesRuleOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The PSC connection id of the PSC Forwarding Rule.
+func (o GetForwardingRulesRuleOutput) PscConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.PscConnectionId }).(pulumi.StringOutput)
+}
+
+// The PSC connection status of the PSC Forwarding Rule. Possible values: 'STATUS_UNSPECIFIED', 'PENDING', 'ACCEPTED', 'REJECTED', 'CLOSED'
+func (o GetForwardingRulesRuleOutput) PscConnectionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.PscConnectionStatus }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+//
+//	and default labels configured on the provider.
+func (o GetForwardingRulesRuleOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+func (o GetForwardingRulesRuleOutput) RecreateClosedPsc() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) bool { return v.RecreateClosedPsc }).(pulumi.BoolOutput)
+}
+
+// The region you want to get the forwarding rules from.
+//
+// These arguments must be set in either the provider or the resouce in order for the information to be queried.
+func (o GetForwardingRulesRuleOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The URI of the resource.
+func (o GetForwardingRulesRuleOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Service Directory resources to register this forwarding rule with.
+//
+// Currently, only supports a single Service Directory resource.
+func (o GetForwardingRulesRuleOutput) ServiceDirectoryRegistrations() GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) []GetForwardingRulesRuleServiceDirectoryRegistration {
+		return v.ServiceDirectoryRegistrations
+	}).(GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput)
+}
+
+// An optional prefix to the service name for this Forwarding Rule.
+// If specified, will be the first label of the fully qualified service
+// name.
+//
+// The label must be 1-63 characters long, and comply with RFC1035.
+// Specifically, the label must be 1-63 characters long and match the
+// regular expression 'a-z?' which means the first
+// character must be a lowercase letter, and all following characters
+// must be a dash, lowercase letter, or digit, except the last
+// character, which cannot be a dash.
+//
+// This field is only used for INTERNAL load balancing.
+func (o GetForwardingRulesRuleOutput) ServiceLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.ServiceLabel }).(pulumi.StringOutput)
+}
+
+// The internal fully qualified service name for this Forwarding Rule.
+//
+// This field is only used for INTERNAL load balancing.
+func (o GetForwardingRulesRuleOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+func (o GetForwardingRulesRuleOutput) SourceIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) []string { return v.SourceIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// This field identifies the subnetwork that the load balanced IP should
+// belong to for this Forwarding Rule, used in internal load balancing and
+// network load balancing with IPv6.
+//
+// If the network specified is in auto subnet mode, this field is optional.
+// However, a subnetwork must be specified if the network is in custom subnet
+// mode or when creating external forwarding rule with IPv6.
+func (o GetForwardingRulesRuleOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+// The URL of the target resource to receive the matched traffic.  For
+// regional forwarding rules, this target must be in the same region as the
+// forwarding rule. For global forwarding rules, this target must be a global
+// load balancing resource.
+//
+// The forwarded traffic must be of a type appropriate to the target object.
+// *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+// *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
+//   - 'vpc-sc' - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
+//   - 'all-apis' - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
+//
+// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
+func (o GetForwardingRulesRuleOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.Target }).(pulumi.StringOutput)
+}
+
+type GetForwardingRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetForwardingRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetForwardingRulesRule)(nil)).Elem()
+}
+
+func (o GetForwardingRulesRuleArrayOutput) ToGetForwardingRulesRuleArrayOutput() GetForwardingRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetForwardingRulesRuleArrayOutput) ToGetForwardingRulesRuleArrayOutputWithContext(ctx context.Context) GetForwardingRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetForwardingRulesRuleArrayOutput) Index(i pulumi.IntInput) GetForwardingRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetForwardingRulesRule {
+		return vs[0].([]GetForwardingRulesRule)[vs[1].(int)]
+	}).(GetForwardingRulesRuleOutput)
+}
+
+type GetForwardingRulesRuleServiceDirectoryRegistration struct {
+	// Service Directory namespace to register the forwarding rule under.
+	Namespace string `pulumi:"namespace"`
+	// Service Directory service to register the forwarding rule under.
+	Service string `pulumi:"service"`
+}
+
+// GetForwardingRulesRuleServiceDirectoryRegistrationInput is an input type that accepts GetForwardingRulesRuleServiceDirectoryRegistrationArgs and GetForwardingRulesRuleServiceDirectoryRegistrationOutput values.
+// You can construct a concrete instance of `GetForwardingRulesRuleServiceDirectoryRegistrationInput` via:
+//
+//	GetForwardingRulesRuleServiceDirectoryRegistrationArgs{...}
+type GetForwardingRulesRuleServiceDirectoryRegistrationInput interface {
+	pulumi.Input
+
+	ToGetForwardingRulesRuleServiceDirectoryRegistrationOutput() GetForwardingRulesRuleServiceDirectoryRegistrationOutput
+	ToGetForwardingRulesRuleServiceDirectoryRegistrationOutputWithContext(context.Context) GetForwardingRulesRuleServiceDirectoryRegistrationOutput
+}
+
+type GetForwardingRulesRuleServiceDirectoryRegistrationArgs struct {
+	// Service Directory namespace to register the forwarding rule under.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// Service Directory service to register the forwarding rule under.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (GetForwardingRulesRuleServiceDirectoryRegistrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardingRulesRuleServiceDirectoryRegistration)(nil)).Elem()
+}
+
+func (i GetForwardingRulesRuleServiceDirectoryRegistrationArgs) ToGetForwardingRulesRuleServiceDirectoryRegistrationOutput() GetForwardingRulesRuleServiceDirectoryRegistrationOutput {
+	return i.ToGetForwardingRulesRuleServiceDirectoryRegistrationOutputWithContext(context.Background())
+}
+
+func (i GetForwardingRulesRuleServiceDirectoryRegistrationArgs) ToGetForwardingRulesRuleServiceDirectoryRegistrationOutputWithContext(ctx context.Context) GetForwardingRulesRuleServiceDirectoryRegistrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetForwardingRulesRuleServiceDirectoryRegistrationOutput)
+}
+
+// GetForwardingRulesRuleServiceDirectoryRegistrationArrayInput is an input type that accepts GetForwardingRulesRuleServiceDirectoryRegistrationArray and GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput values.
+// You can construct a concrete instance of `GetForwardingRulesRuleServiceDirectoryRegistrationArrayInput` via:
+//
+//	GetForwardingRulesRuleServiceDirectoryRegistrationArray{ GetForwardingRulesRuleServiceDirectoryRegistrationArgs{...} }
+type GetForwardingRulesRuleServiceDirectoryRegistrationArrayInput interface {
+	pulumi.Input
+
+	ToGetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput() GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput
+	ToGetForwardingRulesRuleServiceDirectoryRegistrationArrayOutputWithContext(context.Context) GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput
+}
+
+type GetForwardingRulesRuleServiceDirectoryRegistrationArray []GetForwardingRulesRuleServiceDirectoryRegistrationInput
+
+func (GetForwardingRulesRuleServiceDirectoryRegistrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetForwardingRulesRuleServiceDirectoryRegistration)(nil)).Elem()
+}
+
+func (i GetForwardingRulesRuleServiceDirectoryRegistrationArray) ToGetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput() GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput {
+	return i.ToGetForwardingRulesRuleServiceDirectoryRegistrationArrayOutputWithContext(context.Background())
+}
+
+func (i GetForwardingRulesRuleServiceDirectoryRegistrationArray) ToGetForwardingRulesRuleServiceDirectoryRegistrationArrayOutputWithContext(ctx context.Context) GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput)
+}
+
+type GetForwardingRulesRuleServiceDirectoryRegistrationOutput struct{ *pulumi.OutputState }
+
+func (GetForwardingRulesRuleServiceDirectoryRegistrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardingRulesRuleServiceDirectoryRegistration)(nil)).Elem()
+}
+
+func (o GetForwardingRulesRuleServiceDirectoryRegistrationOutput) ToGetForwardingRulesRuleServiceDirectoryRegistrationOutput() GetForwardingRulesRuleServiceDirectoryRegistrationOutput {
+	return o
+}
+
+func (o GetForwardingRulesRuleServiceDirectoryRegistrationOutput) ToGetForwardingRulesRuleServiceDirectoryRegistrationOutputWithContext(ctx context.Context) GetForwardingRulesRuleServiceDirectoryRegistrationOutput {
+	return o
+}
+
+// Service Directory namespace to register the forwarding rule under.
+func (o GetForwardingRulesRuleServiceDirectoryRegistrationOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRuleServiceDirectoryRegistration) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// Service Directory service to register the forwarding rule under.
+func (o GetForwardingRulesRuleServiceDirectoryRegistrationOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRuleServiceDirectoryRegistration) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetForwardingRulesRuleServiceDirectoryRegistration)(nil)).Elem()
+}
+
+func (o GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput) ToGetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput() GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput {
+	return o
+}
+
+func (o GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput) ToGetForwardingRulesRuleServiceDirectoryRegistrationArrayOutputWithContext(ctx context.Context) GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput {
+	return o
+}
+
+func (o GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput) Index(i pulumi.IntInput) GetForwardingRulesRuleServiceDirectoryRegistrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetForwardingRulesRuleServiceDirectoryRegistration {
+		return vs[0].([]GetForwardingRulesRuleServiceDirectoryRegistration)[vs[1].(int)]
+	}).(GetForwardingRulesRuleServiceDirectoryRegistrationOutput)
+}
+
 type GetGlobalForwardingRuleMetadataFilter struct {
 	// The list of label value pairs that must match labels in the
 	// provided metadata based on filterMatchCriteria
@@ -24692,6 +25795,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskSourceSnapshotEncryptionKeyArrayInput)(nil)).Elem(), GetDiskSourceSnapshotEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRuleServiceDirectoryRegistrationInput)(nil)).Elem(), GetForwardingRuleServiceDirectoryRegistrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRuleServiceDirectoryRegistrationArrayInput)(nil)).Elem(), GetForwardingRuleServiceDirectoryRegistrationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRulesRuleInput)(nil)).Elem(), GetForwardingRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRulesRuleArrayInput)(nil)).Elem(), GetForwardingRulesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRulesRuleServiceDirectoryRegistrationInput)(nil)).Elem(), GetForwardingRulesRuleServiceDirectoryRegistrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRulesRuleServiceDirectoryRegistrationArrayInput)(nil)).Elem(), GetForwardingRulesRuleServiceDirectoryRegistrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalForwardingRuleMetadataFilterInput)(nil)).Elem(), GetGlobalForwardingRuleMetadataFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalForwardingRuleMetadataFilterArrayInput)(nil)).Elem(), GetGlobalForwardingRuleMetadataFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalForwardingRuleMetadataFilterFilterLabelInput)(nil)).Elem(), GetGlobalForwardingRuleMetadataFilterFilterLabelArgs{})
@@ -25046,6 +26153,10 @@ func init() {
 	pulumi.RegisterOutputType(GetDiskSourceSnapshotEncryptionKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetForwardingRuleServiceDirectoryRegistrationOutput{})
 	pulumi.RegisterOutputType(GetForwardingRuleServiceDirectoryRegistrationArrayOutput{})
+	pulumi.RegisterOutputType(GetForwardingRulesRuleOutput{})
+	pulumi.RegisterOutputType(GetForwardingRulesRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetForwardingRulesRuleServiceDirectoryRegistrationOutput{})
+	pulumi.RegisterOutputType(GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput{})
 	pulumi.RegisterOutputType(GetGlobalForwardingRuleMetadataFilterOutput{})
 	pulumi.RegisterOutputType(GetGlobalForwardingRuleMetadataFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetGlobalForwardingRuleMetadataFilterFilterLabelOutput{})

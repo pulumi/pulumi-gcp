@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Netapp
     ///     * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volumes/overview)
     /// 
     /// ## Example Usage
-    /// ### Volume Basic
+    /// ### Netapp Volume Basic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -103,6 +103,12 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Output("capacityGib")]
         public Output<string> CapacityGib { get; private set; } = null!;
+
+        /// <summary>
+        /// Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
         /// Policy to determine if the volume should be deleted forcefully.
@@ -226,6 +232,13 @@ namespace Pulumi.Gcp.Netapp
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
+        /// Used to create this volume from a snapshot (= cloning) or an backup.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("restoreParameters")]
+        public Output<Outputs.VolumeRestoreParameters?> RestoreParameters { get; private set; } = null!;
+
+        /// <summary>
         /// List of actions that are restricted on this volume.
         /// Each value may be one of: `DELETE`.
         /// </summary>
@@ -272,6 +285,18 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Output("snapshotPolicy")]
         public Output<Outputs.VolumeSnapshotPolicy?> SnapshotPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// State of the volume.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// State details of the volume.
+        /// </summary>
+        [Output("stateDetails")]
+        public Output<string> StateDetails { get; private set; } = null!;
 
         /// <summary>
         /// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
@@ -425,6 +450,13 @@ namespace Pulumi.Gcp.Netapp
             set => _protocols = value;
         }
 
+        /// <summary>
+        /// Used to create this volume from a snapshot (= cloning) or an backup.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("restoreParameters")]
+        public Input<Inputs.VolumeRestoreParametersArgs>? RestoreParameters { get; set; }
+
         [Input("restrictedActions")]
         private InputList<string>? _restrictedActions;
 
@@ -510,6 +542,12 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("capacityGib")]
         public Input<string>? CapacityGib { get; set; }
+
+        /// <summary>
+        /// Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
 
         /// <summary>
         /// Policy to determine if the volume should be deleted forcefully.
@@ -670,6 +708,13 @@ namespace Pulumi.Gcp.Netapp
             }
         }
 
+        /// <summary>
+        /// Used to create this volume from a snapshot (= cloning) or an backup.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("restoreParameters")]
+        public Input<Inputs.VolumeRestoreParametersGetArgs>? RestoreParameters { get; set; }
+
         [Input("restrictedActions")]
         private InputList<string>? _restrictedActions;
 
@@ -729,6 +774,18 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("snapshotPolicy")]
         public Input<Inputs.VolumeSnapshotPolicyGetArgs>? SnapshotPolicy { get; set; }
+
+        /// <summary>
+        /// State of the volume.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// State details of the volume.
+        /// </summary>
+        [Input("stateDetails")]
+        public Input<string>? StateDetails { get; set; }
 
         /// <summary>
         /// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.

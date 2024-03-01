@@ -38,16 +38,16 @@ public final class PosturePolicySetArgs extends com.pulumi.resources.ResourceArg
      * Structure is documented below.
      * 
      */
-    @Import(name="policies")
-    private @Nullable Output<List<PosturePolicySetPolicyArgs>> policies;
+    @Import(name="policies", required=true)
+    private Output<List<PosturePolicySetPolicyArgs>> policies;
 
     /**
      * @return List of security policy
      * Structure is documented below.
      * 
      */
-    public Optional<Output<List<PosturePolicySetPolicyArgs>>> policies() {
-        return Optional.ofNullable(this.policies);
+    public Output<List<PosturePolicySetPolicyArgs>> policies() {
+        return this.policies;
     }
 
     /**
@@ -119,7 +119,7 @@ public final class PosturePolicySetArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder policies(@Nullable Output<List<PosturePolicySetPolicyArgs>> policies) {
+        public Builder policies(Output<List<PosturePolicySetPolicyArgs>> policies) {
             $.policies = policies;
             return this;
         }
@@ -168,6 +168,9 @@ public final class PosturePolicySetArgs extends com.pulumi.resources.ResourceArg
         }
 
         public PosturePolicySetArgs build() {
+            if ($.policies == null) {
+                throw new MissingRequiredPropertyException("PosturePolicySetArgs", "policies");
+            }
             if ($.policySetId == null) {
                 throw new MissingRequiredPropertyException("PosturePolicySetArgs", "policySetId");
             }

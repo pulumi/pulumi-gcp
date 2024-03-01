@@ -12,6 +12,7 @@ import com.pulumi.gcp.netapp.VolumeArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeState;
 import com.pulumi.gcp.netapp.outputs.VolumeExportPolicy;
 import com.pulumi.gcp.netapp.outputs.VolumeMountOption;
+import com.pulumi.gcp.netapp.outputs.VolumeRestoreParameters;
 import com.pulumi.gcp.netapp.outputs.VolumeSnapshotPolicy;
 import java.lang.Boolean;
 import java.lang.String;
@@ -35,7 +36,7 @@ import javax.annotation.Nullable;
  *     * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volumes/overview)
  * 
  * ## Example Usage
- * ### Volume Basic
+ * ### Netapp Volume Basic
  * ```java
  * package generated_program;
  * 
@@ -141,6 +142,20 @@ public class Volume extends com.pulumi.resources.CustomResource {
      */
     public Output<String> capacityGib() {
         return this.capacityGib;
+    }
+    /**
+     * Create time of the volume. A timestamp in RFC3339 UTC &#34;Zulu&#34; format. Examples: &#34;2023-06-22T09:13:01.617Z&#34;.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return Create time of the volume. A timestamp in RFC3339 UTC &#34;Zulu&#34; format. Examples: &#34;2023-06-22T09:13:01.617Z&#34;.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
     }
     /**
      * Policy to determine if the volume should be deleted forcefully.
@@ -419,6 +434,22 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
+     * Used to create this volume from a snapshot (= cloning) or an backup.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="restoreParameters", refs={VolumeRestoreParameters.class}, tree="[0]")
+    private Output</* @Nullable */ VolumeRestoreParameters> restoreParameters;
+
+    /**
+     * @return Used to create this volume from a snapshot (= cloning) or an backup.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<VolumeRestoreParameters>> restoreParameters() {
+        return Codegen.optional(this.restoreParameters);
+    }
+    /**
      * List of actions that are restricted on this volume.
      * Each value may be one of: `DELETE`.
      * 
@@ -527,6 +558,34 @@ public class Volume extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<VolumeSnapshotPolicy>> snapshotPolicy() {
         return Codegen.optional(this.snapshotPolicy);
+    }
+    /**
+     * State of the volume.
+     * 
+     */
+    @Export(name="state", refs={String.class}, tree="[0]")
+    private Output<String> state;
+
+    /**
+     * @return State of the volume.
+     * 
+     */
+    public Output<String> state() {
+        return this.state;
+    }
+    /**
+     * State details of the volume.
+     * 
+     */
+    @Export(name="stateDetails", refs={String.class}, tree="[0]")
+    private Output<String> stateDetails;
+
+    /**
+     * @return State details of the volume.
+     * 
+     */
+    public Output<String> stateDetails() {
+        return this.stateDetails;
     }
     /**
      * Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.

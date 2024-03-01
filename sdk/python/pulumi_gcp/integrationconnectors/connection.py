@@ -362,7 +362,7 @@ class _ConnectionState:
                Structure is documented below.
         :param pulumi.Input[str] connection_revision: Connection revision. This field is only updated when the connection is created or updated by User.
         :param pulumi.Input[str] connector_version: connectorVersion of the Connector.
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionConnectorVersionInfraConfigArgs']]] connector_version_infra_configs: This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version.
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionConnectorVersionInfraConfigArgs']]] connector_version_infra_configs: This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
                Structure is documented below.
         :param pulumi.Input[str] connector_version_launch_stage: Flag to mark the version indicating the launch stage.
         :param pulumi.Input[str] create_time: Time the Namespace was created in UTC.
@@ -518,7 +518,7 @@ class _ConnectionState:
     @pulumi.getter(name="connectorVersionInfraConfigs")
     def connector_version_infra_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionConnectorVersionInfraConfigArgs']]]]:
         """
-        This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version.
+        This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
         Structure is documented below.
         """
         return pulumi.get(self, "connector_version_infra_configs")
@@ -1596,7 +1596,7 @@ class Connection(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] connection_revision: Connection revision. This field is only updated when the connection is created or updated by User.
         :param pulumi.Input[str] connector_version: connectorVersion of the Connector.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionConnectorVersionInfraConfigArgs']]]] connector_version_infra_configs: This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionConnectorVersionInfraConfigArgs']]]] connector_version_infra_configs: This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
                Structure is documented below.
         :param pulumi.Input[str] connector_version_launch_stage: Flag to mark the version indicating the launch stage.
         :param pulumi.Input[str] create_time: Time the Namespace was created in UTC.
@@ -1713,7 +1713,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="connectorVersionInfraConfigs")
     def connector_version_infra_configs(self) -> pulumi.Output[Sequence['outputs.ConnectionConnectorVersionInfraConfig']]:
         """
-        This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version.
+        This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
         Structure is documented below.
         """
         return pulumi.get(self, "connector_version_infra_configs")

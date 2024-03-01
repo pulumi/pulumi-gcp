@@ -21,6 +21,23 @@ import * as utilities from "../utilities";
  *     location: "us-west1-a",
  * });
  * ```
+ * ### Workbench Instance Basic Container
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.workbench.Instance("instance", {
+ *     name: "workbench-instance",
+ *     location: "us-west1-a",
+ *     gceSetup: {
+ *         containerImage: {
+ *             repository: "us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310",
+ *             tag: "latest",
+ *         },
+ *     },
+ * });
+ * ```
  * ### Workbench Instance Basic Gpu
  *
  * ```typescript
@@ -54,6 +71,11 @@ import * as utilities from "../utilities";
  *     location: "us-central1-a",
  *     gceSetup: {
  *         machineType: "e2-standard-4",
+ *         shieldedInstanceConfig: {
+ *             enableSecureBoot: false,
+ *             enableVtpm: false,
+ *             enableIntegrityMonitoring: false,
+ *         },
  *         serviceAccounts: [{
  *             email: "my@service-account.com",
  *         }],
@@ -93,6 +115,11 @@ import * as utilities from "../utilities";
  *             type: "NVIDIA_TESLA_T4",
  *             coreCount: "1",
  *         }],
+ *         shieldedInstanceConfig: {
+ *             enableSecureBoot: true,
+ *             enableVtpm: true,
+ *             enableIntegrityMonitoring: true,
+ *         },
  *         disablePublicIp: false,
  *         serviceAccounts: [{
  *             email: "my@service-account.com",

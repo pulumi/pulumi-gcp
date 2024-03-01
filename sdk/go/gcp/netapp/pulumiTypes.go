@@ -486,6 +486,562 @@ func (o VolumeMountOptionArrayOutput) Index(i pulumi.IntInput) VolumeMountOption
 	}).(VolumeMountOptionOutput)
 }
 
+type VolumeReplicationDestinationVolumeParameters struct {
+	// Description for the destination volume.
+	Description *string `pulumi:"description"`
+	// Share name for destination volume. If not specified, name of source volume's share name will be used.
+	ShareName *string `pulumi:"shareName"`
+	// Name of an existing storage pool for the destination volume with format: `projects/{{project}}/locations/{{location}}/storagePools/{{poolId}}`
+	StoragePool string `pulumi:"storagePool"`
+	// Name for the destination volume to be created. If not specified, the name of the source volume will be used.
+	VolumeId *string `pulumi:"volumeId"`
+}
+
+// VolumeReplicationDestinationVolumeParametersInput is an input type that accepts VolumeReplicationDestinationVolumeParametersArgs and VolumeReplicationDestinationVolumeParametersOutput values.
+// You can construct a concrete instance of `VolumeReplicationDestinationVolumeParametersInput` via:
+//
+//	VolumeReplicationDestinationVolumeParametersArgs{...}
+type VolumeReplicationDestinationVolumeParametersInput interface {
+	pulumi.Input
+
+	ToVolumeReplicationDestinationVolumeParametersOutput() VolumeReplicationDestinationVolumeParametersOutput
+	ToVolumeReplicationDestinationVolumeParametersOutputWithContext(context.Context) VolumeReplicationDestinationVolumeParametersOutput
+}
+
+type VolumeReplicationDestinationVolumeParametersArgs struct {
+	// Description for the destination volume.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Share name for destination volume. If not specified, name of source volume's share name will be used.
+	ShareName pulumi.StringPtrInput `pulumi:"shareName"`
+	// Name of an existing storage pool for the destination volume with format: `projects/{{project}}/locations/{{location}}/storagePools/{{poolId}}`
+	StoragePool pulumi.StringInput `pulumi:"storagePool"`
+	// Name for the destination volume to be created. If not specified, the name of the source volume will be used.
+	VolumeId pulumi.StringPtrInput `pulumi:"volumeId"`
+}
+
+func (VolumeReplicationDestinationVolumeParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeReplicationDestinationVolumeParameters)(nil)).Elem()
+}
+
+func (i VolumeReplicationDestinationVolumeParametersArgs) ToVolumeReplicationDestinationVolumeParametersOutput() VolumeReplicationDestinationVolumeParametersOutput {
+	return i.ToVolumeReplicationDestinationVolumeParametersOutputWithContext(context.Background())
+}
+
+func (i VolumeReplicationDestinationVolumeParametersArgs) ToVolumeReplicationDestinationVolumeParametersOutputWithContext(ctx context.Context) VolumeReplicationDestinationVolumeParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeReplicationDestinationVolumeParametersOutput)
+}
+
+func (i VolumeReplicationDestinationVolumeParametersArgs) ToVolumeReplicationDestinationVolumeParametersPtrOutput() VolumeReplicationDestinationVolumeParametersPtrOutput {
+	return i.ToVolumeReplicationDestinationVolumeParametersPtrOutputWithContext(context.Background())
+}
+
+func (i VolumeReplicationDestinationVolumeParametersArgs) ToVolumeReplicationDestinationVolumeParametersPtrOutputWithContext(ctx context.Context) VolumeReplicationDestinationVolumeParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeReplicationDestinationVolumeParametersOutput).ToVolumeReplicationDestinationVolumeParametersPtrOutputWithContext(ctx)
+}
+
+// VolumeReplicationDestinationVolumeParametersPtrInput is an input type that accepts VolumeReplicationDestinationVolumeParametersArgs, VolumeReplicationDestinationVolumeParametersPtr and VolumeReplicationDestinationVolumeParametersPtrOutput values.
+// You can construct a concrete instance of `VolumeReplicationDestinationVolumeParametersPtrInput` via:
+//
+//	        VolumeReplicationDestinationVolumeParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type VolumeReplicationDestinationVolumeParametersPtrInput interface {
+	pulumi.Input
+
+	ToVolumeReplicationDestinationVolumeParametersPtrOutput() VolumeReplicationDestinationVolumeParametersPtrOutput
+	ToVolumeReplicationDestinationVolumeParametersPtrOutputWithContext(context.Context) VolumeReplicationDestinationVolumeParametersPtrOutput
+}
+
+type volumeReplicationDestinationVolumeParametersPtrType VolumeReplicationDestinationVolumeParametersArgs
+
+func VolumeReplicationDestinationVolumeParametersPtr(v *VolumeReplicationDestinationVolumeParametersArgs) VolumeReplicationDestinationVolumeParametersPtrInput {
+	return (*volumeReplicationDestinationVolumeParametersPtrType)(v)
+}
+
+func (*volumeReplicationDestinationVolumeParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeReplicationDestinationVolumeParameters)(nil)).Elem()
+}
+
+func (i *volumeReplicationDestinationVolumeParametersPtrType) ToVolumeReplicationDestinationVolumeParametersPtrOutput() VolumeReplicationDestinationVolumeParametersPtrOutput {
+	return i.ToVolumeReplicationDestinationVolumeParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *volumeReplicationDestinationVolumeParametersPtrType) ToVolumeReplicationDestinationVolumeParametersPtrOutputWithContext(ctx context.Context) VolumeReplicationDestinationVolumeParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeReplicationDestinationVolumeParametersPtrOutput)
+}
+
+type VolumeReplicationDestinationVolumeParametersOutput struct{ *pulumi.OutputState }
+
+func (VolumeReplicationDestinationVolumeParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeReplicationDestinationVolumeParameters)(nil)).Elem()
+}
+
+func (o VolumeReplicationDestinationVolumeParametersOutput) ToVolumeReplicationDestinationVolumeParametersOutput() VolumeReplicationDestinationVolumeParametersOutput {
+	return o
+}
+
+func (o VolumeReplicationDestinationVolumeParametersOutput) ToVolumeReplicationDestinationVolumeParametersOutputWithContext(ctx context.Context) VolumeReplicationDestinationVolumeParametersOutput {
+	return o
+}
+
+func (o VolumeReplicationDestinationVolumeParametersOutput) ToVolumeReplicationDestinationVolumeParametersPtrOutput() VolumeReplicationDestinationVolumeParametersPtrOutput {
+	return o.ToVolumeReplicationDestinationVolumeParametersPtrOutputWithContext(context.Background())
+}
+
+func (o VolumeReplicationDestinationVolumeParametersOutput) ToVolumeReplicationDestinationVolumeParametersPtrOutputWithContext(ctx context.Context) VolumeReplicationDestinationVolumeParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeReplicationDestinationVolumeParameters) *VolumeReplicationDestinationVolumeParameters {
+		return &v
+	}).(VolumeReplicationDestinationVolumeParametersPtrOutput)
+}
+
+// Description for the destination volume.
+func (o VolumeReplicationDestinationVolumeParametersOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeReplicationDestinationVolumeParameters) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Share name for destination volume. If not specified, name of source volume's share name will be used.
+func (o VolumeReplicationDestinationVolumeParametersOutput) ShareName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeReplicationDestinationVolumeParameters) *string { return v.ShareName }).(pulumi.StringPtrOutput)
+}
+
+// Name of an existing storage pool for the destination volume with format: `projects/{{project}}/locations/{{location}}/storagePools/{{poolId}}`
+func (o VolumeReplicationDestinationVolumeParametersOutput) StoragePool() pulumi.StringOutput {
+	return o.ApplyT(func(v VolumeReplicationDestinationVolumeParameters) string { return v.StoragePool }).(pulumi.StringOutput)
+}
+
+// Name for the destination volume to be created. If not specified, the name of the source volume will be used.
+func (o VolumeReplicationDestinationVolumeParametersOutput) VolumeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeReplicationDestinationVolumeParameters) *string { return v.VolumeId }).(pulumi.StringPtrOutput)
+}
+
+type VolumeReplicationDestinationVolumeParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (VolumeReplicationDestinationVolumeParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeReplicationDestinationVolumeParameters)(nil)).Elem()
+}
+
+func (o VolumeReplicationDestinationVolumeParametersPtrOutput) ToVolumeReplicationDestinationVolumeParametersPtrOutput() VolumeReplicationDestinationVolumeParametersPtrOutput {
+	return o
+}
+
+func (o VolumeReplicationDestinationVolumeParametersPtrOutput) ToVolumeReplicationDestinationVolumeParametersPtrOutputWithContext(ctx context.Context) VolumeReplicationDestinationVolumeParametersPtrOutput {
+	return o
+}
+
+func (o VolumeReplicationDestinationVolumeParametersPtrOutput) Elem() VolumeReplicationDestinationVolumeParametersOutput {
+	return o.ApplyT(func(v *VolumeReplicationDestinationVolumeParameters) VolumeReplicationDestinationVolumeParameters {
+		if v != nil {
+			return *v
+		}
+		var ret VolumeReplicationDestinationVolumeParameters
+		return ret
+	}).(VolumeReplicationDestinationVolumeParametersOutput)
+}
+
+// Description for the destination volume.
+func (o VolumeReplicationDestinationVolumeParametersPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeReplicationDestinationVolumeParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Share name for destination volume. If not specified, name of source volume's share name will be used.
+func (o VolumeReplicationDestinationVolumeParametersPtrOutput) ShareName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeReplicationDestinationVolumeParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ShareName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of an existing storage pool for the destination volume with format: `projects/{{project}}/locations/{{location}}/storagePools/{{poolId}}`
+func (o VolumeReplicationDestinationVolumeParametersPtrOutput) StoragePool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeReplicationDestinationVolumeParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StoragePool
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name for the destination volume to be created. If not specified, the name of the source volume will be used.
+func (o VolumeReplicationDestinationVolumeParametersPtrOutput) VolumeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeReplicationDestinationVolumeParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeId
+	}).(pulumi.StringPtrOutput)
+}
+
+type VolumeReplicationTransferStat struct {
+	// (Output)
+	// The elapsed time since the creation of the snapshot on the source volume that was last replicated
+	// to the destination volume. Lag time represents the difference in age of the destination volume
+	// data in relation to the source volume data.
+	LagDuration *string `pulumi:"lagDuration"`
+	// (Output)
+	// Size of last completed transfer in bytes.
+	LastTransferBytes *string `pulumi:"lastTransferBytes"`
+	// (Output)
+	// Time taken during last completed transfer.
+	LastTransferDuration *string `pulumi:"lastTransferDuration"`
+	// (Output)
+	// Time when last transfer completed. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+	LastTransferEndTime *string `pulumi:"lastTransferEndTime"`
+	// (Output)
+	// A message describing the cause of the last transfer failure.
+	LastTransferError *string `pulumi:"lastTransferError"`
+	// (Output)
+	// Total time taken so far during current transfer.
+	TotalTransferDuration *string `pulumi:"totalTransferDuration"`
+	// (Output)
+	// Number of bytes transferred so far in current transfer.
+	TransferBytes *string `pulumi:"transferBytes"`
+	// (Output)
+	// Time when progress was updated last. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+	UpdateTime *string `pulumi:"updateTime"`
+}
+
+// VolumeReplicationTransferStatInput is an input type that accepts VolumeReplicationTransferStatArgs and VolumeReplicationTransferStatOutput values.
+// You can construct a concrete instance of `VolumeReplicationTransferStatInput` via:
+//
+//	VolumeReplicationTransferStatArgs{...}
+type VolumeReplicationTransferStatInput interface {
+	pulumi.Input
+
+	ToVolumeReplicationTransferStatOutput() VolumeReplicationTransferStatOutput
+	ToVolumeReplicationTransferStatOutputWithContext(context.Context) VolumeReplicationTransferStatOutput
+}
+
+type VolumeReplicationTransferStatArgs struct {
+	// (Output)
+	// The elapsed time since the creation of the snapshot on the source volume that was last replicated
+	// to the destination volume. Lag time represents the difference in age of the destination volume
+	// data in relation to the source volume data.
+	LagDuration pulumi.StringPtrInput `pulumi:"lagDuration"`
+	// (Output)
+	// Size of last completed transfer in bytes.
+	LastTransferBytes pulumi.StringPtrInput `pulumi:"lastTransferBytes"`
+	// (Output)
+	// Time taken during last completed transfer.
+	LastTransferDuration pulumi.StringPtrInput `pulumi:"lastTransferDuration"`
+	// (Output)
+	// Time when last transfer completed. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+	LastTransferEndTime pulumi.StringPtrInput `pulumi:"lastTransferEndTime"`
+	// (Output)
+	// A message describing the cause of the last transfer failure.
+	LastTransferError pulumi.StringPtrInput `pulumi:"lastTransferError"`
+	// (Output)
+	// Total time taken so far during current transfer.
+	TotalTransferDuration pulumi.StringPtrInput `pulumi:"totalTransferDuration"`
+	// (Output)
+	// Number of bytes transferred so far in current transfer.
+	TransferBytes pulumi.StringPtrInput `pulumi:"transferBytes"`
+	// (Output)
+	// Time when progress was updated last. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+}
+
+func (VolumeReplicationTransferStatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeReplicationTransferStat)(nil)).Elem()
+}
+
+func (i VolumeReplicationTransferStatArgs) ToVolumeReplicationTransferStatOutput() VolumeReplicationTransferStatOutput {
+	return i.ToVolumeReplicationTransferStatOutputWithContext(context.Background())
+}
+
+func (i VolumeReplicationTransferStatArgs) ToVolumeReplicationTransferStatOutputWithContext(ctx context.Context) VolumeReplicationTransferStatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeReplicationTransferStatOutput)
+}
+
+// VolumeReplicationTransferStatArrayInput is an input type that accepts VolumeReplicationTransferStatArray and VolumeReplicationTransferStatArrayOutput values.
+// You can construct a concrete instance of `VolumeReplicationTransferStatArrayInput` via:
+//
+//	VolumeReplicationTransferStatArray{ VolumeReplicationTransferStatArgs{...} }
+type VolumeReplicationTransferStatArrayInput interface {
+	pulumi.Input
+
+	ToVolumeReplicationTransferStatArrayOutput() VolumeReplicationTransferStatArrayOutput
+	ToVolumeReplicationTransferStatArrayOutputWithContext(context.Context) VolumeReplicationTransferStatArrayOutput
+}
+
+type VolumeReplicationTransferStatArray []VolumeReplicationTransferStatInput
+
+func (VolumeReplicationTransferStatArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VolumeReplicationTransferStat)(nil)).Elem()
+}
+
+func (i VolumeReplicationTransferStatArray) ToVolumeReplicationTransferStatArrayOutput() VolumeReplicationTransferStatArrayOutput {
+	return i.ToVolumeReplicationTransferStatArrayOutputWithContext(context.Background())
+}
+
+func (i VolumeReplicationTransferStatArray) ToVolumeReplicationTransferStatArrayOutputWithContext(ctx context.Context) VolumeReplicationTransferStatArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeReplicationTransferStatArrayOutput)
+}
+
+type VolumeReplicationTransferStatOutput struct{ *pulumi.OutputState }
+
+func (VolumeReplicationTransferStatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeReplicationTransferStat)(nil)).Elem()
+}
+
+func (o VolumeReplicationTransferStatOutput) ToVolumeReplicationTransferStatOutput() VolumeReplicationTransferStatOutput {
+	return o
+}
+
+func (o VolumeReplicationTransferStatOutput) ToVolumeReplicationTransferStatOutputWithContext(ctx context.Context) VolumeReplicationTransferStatOutput {
+	return o
+}
+
+// (Output)
+// The elapsed time since the creation of the snapshot on the source volume that was last replicated
+// to the destination volume. Lag time represents the difference in age of the destination volume
+// data in relation to the source volume data.
+func (o VolumeReplicationTransferStatOutput) LagDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeReplicationTransferStat) *string { return v.LagDuration }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Size of last completed transfer in bytes.
+func (o VolumeReplicationTransferStatOutput) LastTransferBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeReplicationTransferStat) *string { return v.LastTransferBytes }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Time taken during last completed transfer.
+func (o VolumeReplicationTransferStatOutput) LastTransferDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeReplicationTransferStat) *string { return v.LastTransferDuration }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Time when last transfer completed. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+func (o VolumeReplicationTransferStatOutput) LastTransferEndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeReplicationTransferStat) *string { return v.LastTransferEndTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A message describing the cause of the last transfer failure.
+func (o VolumeReplicationTransferStatOutput) LastTransferError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeReplicationTransferStat) *string { return v.LastTransferError }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Total time taken so far during current transfer.
+func (o VolumeReplicationTransferStatOutput) TotalTransferDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeReplicationTransferStat) *string { return v.TotalTransferDuration }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Number of bytes transferred so far in current transfer.
+func (o VolumeReplicationTransferStatOutput) TransferBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeReplicationTransferStat) *string { return v.TransferBytes }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Time when progress was updated last. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+func (o VolumeReplicationTransferStatOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeReplicationTransferStat) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+type VolumeReplicationTransferStatArrayOutput struct{ *pulumi.OutputState }
+
+func (VolumeReplicationTransferStatArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VolumeReplicationTransferStat)(nil)).Elem()
+}
+
+func (o VolumeReplicationTransferStatArrayOutput) ToVolumeReplicationTransferStatArrayOutput() VolumeReplicationTransferStatArrayOutput {
+	return o
+}
+
+func (o VolumeReplicationTransferStatArrayOutput) ToVolumeReplicationTransferStatArrayOutputWithContext(ctx context.Context) VolumeReplicationTransferStatArrayOutput {
+	return o
+}
+
+func (o VolumeReplicationTransferStatArrayOutput) Index(i pulumi.IntInput) VolumeReplicationTransferStatOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeReplicationTransferStat {
+		return vs[0].([]VolumeReplicationTransferStat)[vs[1].(int)]
+	}).(VolumeReplicationTransferStatOutput)
+}
+
+type VolumeRestoreParameters struct {
+	// Full name of the snapshot to use for creating this volume.
+	// `sourceSnapshot` and `sourceBackup` cannot be used simultaneously.
+	// Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
+	SourceBackup *string `pulumi:"sourceBackup"`
+	// Full name of the snapshot to use for creating this volume.
+	// `sourceSnapshot` and `sourceBackup` cannot be used simultaneously.
+	// Format: `projects/{{project}}/locations/{{location}}/volumes/{{volume}}/snapshots/{{snapshot}}`.
+	SourceSnapshot *string `pulumi:"sourceSnapshot"`
+}
+
+// VolumeRestoreParametersInput is an input type that accepts VolumeRestoreParametersArgs and VolumeRestoreParametersOutput values.
+// You can construct a concrete instance of `VolumeRestoreParametersInput` via:
+//
+//	VolumeRestoreParametersArgs{...}
+type VolumeRestoreParametersInput interface {
+	pulumi.Input
+
+	ToVolumeRestoreParametersOutput() VolumeRestoreParametersOutput
+	ToVolumeRestoreParametersOutputWithContext(context.Context) VolumeRestoreParametersOutput
+}
+
+type VolumeRestoreParametersArgs struct {
+	// Full name of the snapshot to use for creating this volume.
+	// `sourceSnapshot` and `sourceBackup` cannot be used simultaneously.
+	// Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
+	SourceBackup pulumi.StringPtrInput `pulumi:"sourceBackup"`
+	// Full name of the snapshot to use for creating this volume.
+	// `sourceSnapshot` and `sourceBackup` cannot be used simultaneously.
+	// Format: `projects/{{project}}/locations/{{location}}/volumes/{{volume}}/snapshots/{{snapshot}}`.
+	SourceSnapshot pulumi.StringPtrInput `pulumi:"sourceSnapshot"`
+}
+
+func (VolumeRestoreParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeRestoreParameters)(nil)).Elem()
+}
+
+func (i VolumeRestoreParametersArgs) ToVolumeRestoreParametersOutput() VolumeRestoreParametersOutput {
+	return i.ToVolumeRestoreParametersOutputWithContext(context.Background())
+}
+
+func (i VolumeRestoreParametersArgs) ToVolumeRestoreParametersOutputWithContext(ctx context.Context) VolumeRestoreParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeRestoreParametersOutput)
+}
+
+func (i VolumeRestoreParametersArgs) ToVolumeRestoreParametersPtrOutput() VolumeRestoreParametersPtrOutput {
+	return i.ToVolumeRestoreParametersPtrOutputWithContext(context.Background())
+}
+
+func (i VolumeRestoreParametersArgs) ToVolumeRestoreParametersPtrOutputWithContext(ctx context.Context) VolumeRestoreParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeRestoreParametersOutput).ToVolumeRestoreParametersPtrOutputWithContext(ctx)
+}
+
+// VolumeRestoreParametersPtrInput is an input type that accepts VolumeRestoreParametersArgs, VolumeRestoreParametersPtr and VolumeRestoreParametersPtrOutput values.
+// You can construct a concrete instance of `VolumeRestoreParametersPtrInput` via:
+//
+//	        VolumeRestoreParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type VolumeRestoreParametersPtrInput interface {
+	pulumi.Input
+
+	ToVolumeRestoreParametersPtrOutput() VolumeRestoreParametersPtrOutput
+	ToVolumeRestoreParametersPtrOutputWithContext(context.Context) VolumeRestoreParametersPtrOutput
+}
+
+type volumeRestoreParametersPtrType VolumeRestoreParametersArgs
+
+func VolumeRestoreParametersPtr(v *VolumeRestoreParametersArgs) VolumeRestoreParametersPtrInput {
+	return (*volumeRestoreParametersPtrType)(v)
+}
+
+func (*volumeRestoreParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeRestoreParameters)(nil)).Elem()
+}
+
+func (i *volumeRestoreParametersPtrType) ToVolumeRestoreParametersPtrOutput() VolumeRestoreParametersPtrOutput {
+	return i.ToVolumeRestoreParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *volumeRestoreParametersPtrType) ToVolumeRestoreParametersPtrOutputWithContext(ctx context.Context) VolumeRestoreParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeRestoreParametersPtrOutput)
+}
+
+type VolumeRestoreParametersOutput struct{ *pulumi.OutputState }
+
+func (VolumeRestoreParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeRestoreParameters)(nil)).Elem()
+}
+
+func (o VolumeRestoreParametersOutput) ToVolumeRestoreParametersOutput() VolumeRestoreParametersOutput {
+	return o
+}
+
+func (o VolumeRestoreParametersOutput) ToVolumeRestoreParametersOutputWithContext(ctx context.Context) VolumeRestoreParametersOutput {
+	return o
+}
+
+func (o VolumeRestoreParametersOutput) ToVolumeRestoreParametersPtrOutput() VolumeRestoreParametersPtrOutput {
+	return o.ToVolumeRestoreParametersPtrOutputWithContext(context.Background())
+}
+
+func (o VolumeRestoreParametersOutput) ToVolumeRestoreParametersPtrOutputWithContext(ctx context.Context) VolumeRestoreParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeRestoreParameters) *VolumeRestoreParameters {
+		return &v
+	}).(VolumeRestoreParametersPtrOutput)
+}
+
+// Full name of the snapshot to use for creating this volume.
+// `sourceSnapshot` and `sourceBackup` cannot be used simultaneously.
+// Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
+func (o VolumeRestoreParametersOutput) SourceBackup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeRestoreParameters) *string { return v.SourceBackup }).(pulumi.StringPtrOutput)
+}
+
+// Full name of the snapshot to use for creating this volume.
+// `sourceSnapshot` and `sourceBackup` cannot be used simultaneously.
+// Format: `projects/{{project}}/locations/{{location}}/volumes/{{volume}}/snapshots/{{snapshot}}`.
+func (o VolumeRestoreParametersOutput) SourceSnapshot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeRestoreParameters) *string { return v.SourceSnapshot }).(pulumi.StringPtrOutput)
+}
+
+type VolumeRestoreParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (VolumeRestoreParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeRestoreParameters)(nil)).Elem()
+}
+
+func (o VolumeRestoreParametersPtrOutput) ToVolumeRestoreParametersPtrOutput() VolumeRestoreParametersPtrOutput {
+	return o
+}
+
+func (o VolumeRestoreParametersPtrOutput) ToVolumeRestoreParametersPtrOutputWithContext(ctx context.Context) VolumeRestoreParametersPtrOutput {
+	return o
+}
+
+func (o VolumeRestoreParametersPtrOutput) Elem() VolumeRestoreParametersOutput {
+	return o.ApplyT(func(v *VolumeRestoreParameters) VolumeRestoreParameters {
+		if v != nil {
+			return *v
+		}
+		var ret VolumeRestoreParameters
+		return ret
+	}).(VolumeRestoreParametersOutput)
+}
+
+// Full name of the snapshot to use for creating this volume.
+// `sourceSnapshot` and `sourceBackup` cannot be used simultaneously.
+// Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
+func (o VolumeRestoreParametersPtrOutput) SourceBackup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeRestoreParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceBackup
+	}).(pulumi.StringPtrOutput)
+}
+
+// Full name of the snapshot to use for creating this volume.
+// `sourceSnapshot` and `sourceBackup` cannot be used simultaneously.
+// Format: `projects/{{project}}/locations/{{location}}/volumes/{{volume}}/snapshots/{{snapshot}}`.
+func (o VolumeRestoreParametersPtrOutput) SourceSnapshot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeRestoreParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceSnapshot
+	}).(pulumi.StringPtrOutput)
+}
+
 type VolumeSnapshotPolicy struct {
 	// Daily schedule policy.
 	// Structure is documented below.
@@ -1445,6 +2001,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeExportPolicyRuleArrayInput)(nil)).Elem(), VolumeExportPolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeMountOptionInput)(nil)).Elem(), VolumeMountOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeMountOptionArrayInput)(nil)).Elem(), VolumeMountOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeReplicationDestinationVolumeParametersInput)(nil)).Elem(), VolumeReplicationDestinationVolumeParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeReplicationDestinationVolumeParametersPtrInput)(nil)).Elem(), VolumeReplicationDestinationVolumeParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeReplicationTransferStatInput)(nil)).Elem(), VolumeReplicationTransferStatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeReplicationTransferStatArrayInput)(nil)).Elem(), VolumeReplicationTransferStatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeRestoreParametersInput)(nil)).Elem(), VolumeRestoreParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeRestoreParametersPtrInput)(nil)).Elem(), VolumeRestoreParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSnapshotPolicyInput)(nil)).Elem(), VolumeSnapshotPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSnapshotPolicyPtrInput)(nil)).Elem(), VolumeSnapshotPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSnapshotPolicyDailyScheduleInput)(nil)).Elem(), VolumeSnapshotPolicyDailyScheduleArgs{})
@@ -1461,6 +2023,12 @@ func init() {
 	pulumi.RegisterOutputType(VolumeExportPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(VolumeMountOptionOutput{})
 	pulumi.RegisterOutputType(VolumeMountOptionArrayOutput{})
+	pulumi.RegisterOutputType(VolumeReplicationDestinationVolumeParametersOutput{})
+	pulumi.RegisterOutputType(VolumeReplicationDestinationVolumeParametersPtrOutput{})
+	pulumi.RegisterOutputType(VolumeReplicationTransferStatOutput{})
+	pulumi.RegisterOutputType(VolumeReplicationTransferStatArrayOutput{})
+	pulumi.RegisterOutputType(VolumeRestoreParametersOutput{})
+	pulumi.RegisterOutputType(VolumeRestoreParametersPtrOutput{})
 	pulumi.RegisterOutputType(VolumeSnapshotPolicyOutput{})
 	pulumi.RegisterOutputType(VolumeSnapshotPolicyPtrOutput{})
 	pulumi.RegisterOutputType(VolumeSnapshotPolicyDailyScheduleOutput{})

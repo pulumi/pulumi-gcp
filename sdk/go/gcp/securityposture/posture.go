@@ -174,7 +174,7 @@ type Posture struct {
 
 	// Time the Posture was created in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Description of the posture.
+	// Description of the expression
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// For Resource freshness validation (https://google.aip.dev/154)
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -188,8 +188,6 @@ type Posture struct {
 	// Structure is documented below.
 	PolicySets PosturePolicySetArrayOutput `pulumi:"policySets"`
 	// Id of the posture. It is an immutable field.
-	//
-	// ***
 	PostureId pulumi.StringOutput `pulumi:"postureId"`
 	// If set, there are currently changes in flight to the posture.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
@@ -215,6 +213,9 @@ func NewPosture(ctx *pulumi.Context,
 	}
 	if args.Parent == nil {
 		return nil, errors.New("invalid value for required argument 'Parent'")
+	}
+	if args.PolicySets == nil {
+		return nil, errors.New("invalid value for required argument 'PolicySets'")
 	}
 	if args.PostureId == nil {
 		return nil, errors.New("invalid value for required argument 'PostureId'")
@@ -247,7 +248,7 @@ func GetPosture(ctx *pulumi.Context,
 type postureState struct {
 	// Time the Posture was created in UTC.
 	CreateTime *string `pulumi:"createTime"`
-	// Description of the posture.
+	// Description of the expression
 	Description *string `pulumi:"description"`
 	// For Resource freshness validation (https://google.aip.dev/154)
 	Etag *string `pulumi:"etag"`
@@ -261,8 +262,6 @@ type postureState struct {
 	// Structure is documented below.
 	PolicySets []PosturePolicySet `pulumi:"policySets"`
 	// Id of the posture. It is an immutable field.
-	//
-	// ***
 	PostureId *string `pulumi:"postureId"`
 	// If set, there are currently changes in flight to the posture.
 	Reconciling *bool `pulumi:"reconciling"`
@@ -279,7 +278,7 @@ type postureState struct {
 type PostureState struct {
 	// Time the Posture was created in UTC.
 	CreateTime pulumi.StringPtrInput
-	// Description of the posture.
+	// Description of the expression
 	Description pulumi.StringPtrInput
 	// For Resource freshness validation (https://google.aip.dev/154)
 	Etag pulumi.StringPtrInput
@@ -293,8 +292,6 @@ type PostureState struct {
 	// Structure is documented below.
 	PolicySets PosturePolicySetArrayInput
 	// Id of the posture. It is an immutable field.
-	//
-	// ***
 	PostureId pulumi.StringPtrInput
 	// If set, there are currently changes in flight to the posture.
 	Reconciling pulumi.BoolPtrInput
@@ -313,7 +310,7 @@ func (PostureState) ElementType() reflect.Type {
 }
 
 type postureArgs struct {
-	// Description of the posture.
+	// Description of the expression
 	Description *string `pulumi:"description"`
 	// Location of the resource, eg: global.
 	Location string `pulumi:"location"`
@@ -323,8 +320,6 @@ type postureArgs struct {
 	// Structure is documented below.
 	PolicySets []PosturePolicySet `pulumi:"policySets"`
 	// Id of the posture. It is an immutable field.
-	//
-	// ***
 	PostureId string `pulumi:"postureId"`
 	// State of the posture. Update to state field should not be triggered along with
 	// with other field updates.
@@ -334,7 +329,7 @@ type postureArgs struct {
 
 // The set of arguments for constructing a Posture resource.
 type PostureArgs struct {
-	// Description of the posture.
+	// Description of the expression
 	Description pulumi.StringPtrInput
 	// Location of the resource, eg: global.
 	Location pulumi.StringInput
@@ -344,8 +339,6 @@ type PostureArgs struct {
 	// Structure is documented below.
 	PolicySets PosturePolicySetArrayInput
 	// Id of the posture. It is an immutable field.
-	//
-	// ***
 	PostureId pulumi.StringInput
 	// State of the posture. Update to state field should not be triggered along with
 	// with other field updates.
@@ -445,7 +438,7 @@ func (o PostureOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Posture) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Description of the posture.
+// Description of the expression
 func (o PostureOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Posture) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -477,8 +470,6 @@ func (o PostureOutput) PolicySets() PosturePolicySetArrayOutput {
 }
 
 // Id of the posture. It is an immutable field.
-//
-// ***
 func (o PostureOutput) PostureId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Posture) pulumi.StringOutput { return v.PostureId }).(pulumi.StringOutput)
 }

@@ -12468,7 +12468,7 @@ export namespace cloudfunctionsv2 {
          * region as the function, a different region or multi-region, or the global
          * region. If not provided, defaults to the same region as the function.
          */
-        triggerRegion?: string;
+        triggerRegion: string;
     }
 
     export interface FunctionEventTriggerEventFilter {
@@ -20205,6 +20205,356 @@ export namespace compute {
     }
 
     export interface GetForwardingRuleServiceDirectoryRegistration {
+        /**
+         * Service Directory namespace to register the forwarding rule under.
+         */
+        namespace: string;
+        /**
+         * Service Directory service to register the forwarding rule under.
+         */
+        service: string;
+    }
+
+    export interface GetForwardingRulesRule {
+        /**
+         * The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
+         * Only packets addressed to ports in the specified range will be forwarded
+         * to the backends configured with this forwarding rule.
+         *
+         * The 'allPorts' field has the following limitations:
+         * * It requires that the forwarding rule 'IPProtocol' be TCP, UDP, SCTP, or
+         * L3_DEFAULT.
+         * * It's applicable only to the following products: internal passthrough
+         * Network Load Balancers, backend service-based external passthrough Network
+         * Load Balancers, and internal and external protocol forwarding.
+         * * Set this field to true to allow packets addressed to any port or packets
+         * lacking destination port information (for example, UDP fragments after the
+         * first fragment) to be forwarded to the backends configured with this
+         * forwarding rule. The L3_DEFAULT protocol requires 'allPorts' be set to
+         * true.
+         */
+        allPorts: boolean;
+        /**
+         * This field is used along with the 'backend_service' field for
+         * internal load balancing or with the 'target' field for internal
+         * TargetInstance.
+         *
+         * If the field is set to 'TRUE', clients can access ILB from all
+         * regions.
+         *
+         * Otherwise only allows access from clients in the same region as the
+         * internal load balancer.
+         */
+        allowGlobalAccess: boolean;
+        /**
+         * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+         */
+        allowPscGlobalAccess: boolean;
+        /**
+         * Identifies the backend service to which the forwarding rule sends traffic.
+         *
+         * Required for Internal TCP/UDP Load Balancing and Network Load Balancing;
+         * must be omitted for all other load balancer types.
+         */
+        backendService: string;
+        /**
+         * [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
+         */
+        baseForwardingRule: string;
+        /**
+         * Creation timestamp in RFC3339 text format.
+         */
+        creationTimestamp: string;
+        /**
+         * An optional description of this resource. Provide this property when
+         * you create the resource.
+         */
+        description: string;
+        effectiveLabels: {[key: string]: string};
+        /**
+         * IP address for which this forwarding rule accepts traffic. When a client
+         * sends traffic to this IP address, the forwarding rule directs the traffic
+         * to the referenced 'target' or 'backendService'.
+         *
+         * While creating a forwarding rule, specifying an 'IPAddress' is
+         * required under the following circumstances:
+         *
+         * * When the 'target' is set to 'targetGrpcProxy' and
+         * 'validateForProxyless' is set to 'true', the
+         * 'IPAddress' should be set to '0.0.0.0'.
+         * * When the 'target' is a Private Service Connect Google APIs
+         * bundle, you must specify an 'IPAddress'.
+         *
+         *
+         * Otherwise, you can optionally specify an IP address that references an
+         * existing static (reserved) IP address resource. When omitted, Google Cloud
+         * assigns an ephemeral IP address.
+         *
+         * Use one of the following formats to specify an IP address while creating a
+         * forwarding rule:
+         *
+         * * IP address number, as in '100.1.2.3'
+         * * IPv6 address range, as in '2600:1234::/96'
+         * * Full resource URL, as in
+         * 'https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name'
+         * * Partial URL or by name, as in:
+         *   * 'projects/project_id/regions/region/addresses/address-name'
+         *   * 'regions/region/addresses/address-name'
+         *   * 'global/addresses/address-name'
+         *   * 'address-name'
+         *
+         *
+         * The forwarding rule's 'target' or 'backendService',
+         * and in most cases, also the 'loadBalancingScheme', determine the
+         * type of IP address that you can use. For detailed information, see
+         * [IP address
+         * specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+         *
+         * When reading an 'IPAddress', the API always returns the IP
+         * address number.
+         */
+        ipAddress: string;
+        /**
+         * The IP protocol to which this rule applies.
+         *
+         * For protocol forwarding, valid
+         * options are 'TCP', 'UDP', 'ESP',
+         * 'AH', 'SCTP', 'ICMP' and
+         * 'L3_DEFAULT'.
+         *
+         * The valid IP protocols are different for different load balancing products
+         * as described in [Load balancing
+         * features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
+         *
+         * A Forwarding Rule with protocol L3_DEFAULT can attach with target instance or
+         * backend service with UNSPECIFIED protocol.
+         * A forwarding rule with "L3_DEFAULT" IPProtocal cannot be attached to a backend service with TCP or UDP. Possible values: ["TCP", "UDP", "ESP", "AH", "SCTP", "ICMP", "L3_DEFAULT"]
+         */
+        ipProtocol: string;
+        /**
+         * The IP address version that will be used by this forwarding rule.
+         * Valid options are IPV4 and IPV6.
+         *
+         * If not set, the IPv4 address will be used by default. Possible values: ["IPV4", "IPV6"]
+         */
+        ipVersion: string;
+        /**
+         * Indicates whether or not this load balancer can be used as a collector for
+         * packet mirroring. To prevent mirroring loops, instances behind this
+         * load balancer will not have their traffic mirrored even if a
+         * 'PacketMirroring' rule applies to them.
+         *
+         * This can only be set to true for load balancers that have their
+         * 'loadBalancingScheme' set to 'INTERNAL'.
+         */
+        isMirroringCollector: boolean;
+        /**
+         * The fingerprint used for optimistic locking of this resource.  Used
+         * internally during updates.
+         */
+        labelFingerprint: string;
+        /**
+         * Labels to apply to this forwarding rule.  A list of key->value pairs.
+         *
+         *
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field 'effective_labels' for all of the labels present on the resource.
+         */
+        labels: {[key: string]: string};
+        /**
+         * Specifies the forwarding rule type.
+         *
+         * For more information about forwarding rules, refer to
+         * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts). Default value: "EXTERNAL" Possible values: ["EXTERNAL", "EXTERNAL_MANAGED", "INTERNAL", "INTERNAL_MANAGED"]
+         */
+        loadBalancingScheme: string;
+        /**
+         * Name of the resource; provided by the client when the resource is created.
+         * The name must be 1-63 characters long, and comply with
+         * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
+         *
+         * Specifically, the name must be 1-63 characters long and match the regular
+         * expression 'a-z?' which means the first
+         * character must be a lowercase letter, and all following characters must
+         * be a dash, lowercase letter, or digit, except the last character, which
+         * cannot be a dash.
+         *
+         * For Private Service Connect forwarding rules that forward traffic to Google
+         * APIs, the forwarding rule name must be a 1-20 characters string with
+         * lowercase letters and numbers and must start with a letter.
+         */
+        name: string;
+        /**
+         * This field is not used for external load balancing.
+         *
+         * For Internal TCP/UDP Load Balancing, this field identifies the network that
+         * the load balanced IP should belong to for this Forwarding Rule.
+         * If the subnetwork is specified, the network of the subnetwork will be used.
+         * If neither subnetwork nor this field is specified, the default network will
+         * be used.
+         *
+         * For Private Service Connect forwarding rules that forward traffic to Google
+         * APIs, a network must be provided.
+         */
+        network: string;
+        /**
+         * This signifies the networking tier used for configuring
+         * this load balancer and can only take the following values:
+         * 'PREMIUM', 'STANDARD'.
+         *
+         * For regional ForwardingRule, the valid values are 'PREMIUM' and
+         * 'STANDARD'. For GlobalForwardingRule, the valid value is
+         * 'PREMIUM'.
+         *
+         * If this field is not specified, it is assumed to be 'PREMIUM'.
+         * If 'IPAddress' is specified, this value must be equal to the
+         * networkTier of the Address. Possible values: ["PREMIUM", "STANDARD"]
+         */
+        networkTier: string;
+        /**
+         * This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+         */
+        noAutomateDnsZone: boolean;
+        /**
+         * The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
+         * Only packets addressed to ports in the specified range will be forwarded
+         * to the backends configured with this forwarding rule.
+         *
+         * The 'portRange' field has the following limitations:
+         * * It requires that the forwarding rule 'IPProtocol' be TCP, UDP, or SCTP,
+         * and
+         * * It's applicable only to the following products: external passthrough
+         * Network Load Balancers, internal and external proxy Network Load
+         * Balancers, internal and external Application Load Balancers, external
+         * protocol forwarding, and Classic VPN.
+         * * Some products have restrictions on what ports can be used. See
+         * [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+         * for details.
+         *
+         * For external forwarding rules, two or more forwarding rules cannot use the
+         * same '[IPAddress, IPProtocol]' pair, and cannot have overlapping
+         * 'portRange's.
+         *
+         * For internal forwarding rules within the same VPC network, two or more
+         * forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair, and
+         * cannot have overlapping 'portRange's.
+         *
+         * @pattern: \d+(?:-\d+)?
+         */
+        portRange: string;
+        /**
+         * The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
+         * Only packets addressed to ports in the specified range will be forwarded
+         * to the backends configured with this forwarding rule.
+         *
+         * The 'ports' field has the following limitations:
+         * * It requires that the forwarding rule 'IPProtocol' be TCP, UDP, or SCTP,
+         * and
+         * * It's applicable only to the following products: internal passthrough
+         * Network Load Balancers, backend service-based external passthrough Network
+         * Load Balancers, and internal protocol forwarding.
+         * * You can specify a list of up to five ports by number, separated by
+         * commas. The ports can be contiguous or discontiguous.
+         *
+         * For external forwarding rules, two or more forwarding rules cannot use the
+         * same '[IPAddress, IPProtocol]' pair if they share at least one port
+         * number.
+         *
+         * For internal forwarding rules within the same VPC network, two or more
+         * forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair if
+         * they share at least one port number.
+         *
+         * @pattern: \d+(?:-\d+)?
+         */
+        ports: string[];
+        /**
+         * The name of the project.
+         */
+        project: string;
+        /**
+         * The PSC connection id of the PSC Forwarding Rule.
+         */
+        pscConnectionId: string;
+        /**
+         * The PSC connection status of the PSC Forwarding Rule. Possible values: 'STATUS_UNSPECIFIED', 'PENDING', 'ACCEPTED', 'REJECTED', 'CLOSED'
+         */
+        pscConnectionStatus: string;
+        /**
+         * The combination of labels configured directly on the resource
+         *  and default labels configured on the provider.
+         */
+        pulumiLabels: {[key: string]: string};
+        recreateClosedPsc: boolean;
+        /**
+         * The region you want to get the forwarding rules from.
+         *
+         * These arguments must be set in either the provider or the resouce in order for the information to be queried.
+         */
+        region: string;
+        /**
+         * The URI of the resource.
+         */
+        selfLink: string;
+        /**
+         * Service Directory resources to register this forwarding rule with.
+         *
+         * Currently, only supports a single Service Directory resource.
+         */
+        serviceDirectoryRegistrations: outputs.compute.GetForwardingRulesRuleServiceDirectoryRegistration[];
+        /**
+         * An optional prefix to the service name for this Forwarding Rule.
+         * If specified, will be the first label of the fully qualified service
+         * name.
+         *
+         * The label must be 1-63 characters long, and comply with RFC1035.
+         * Specifically, the label must be 1-63 characters long and match the
+         * regular expression 'a-z?' which means the first
+         * character must be a lowercase letter, and all following characters
+         * must be a dash, lowercase letter, or digit, except the last
+         * character, which cannot be a dash.
+         *
+         * This field is only used for INTERNAL load balancing.
+         */
+        serviceLabel: string;
+        /**
+         * The internal fully qualified service name for this Forwarding Rule.
+         *
+         * This field is only used for INTERNAL load balancing.
+         */
+        serviceName: string;
+        /**
+         * If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+         */
+        sourceIpRanges: string[];
+        /**
+         * This field identifies the subnetwork that the load balanced IP should
+         * belong to for this Forwarding Rule, used in internal load balancing and
+         * network load balancing with IPv6.
+         *
+         * If the network specified is in auto subnet mode, this field is optional.
+         * However, a subnetwork must be specified if the network is in custom subnet
+         * mode or when creating external forwarding rule with IPv6.
+         */
+        subnetwork: string;
+        /**
+         * The URL of the target resource to receive the matched traffic.  For
+         * regional forwarding rules, this target must be in the same region as the
+         * forwarding rule. For global forwarding rules, this target must be a global
+         * load balancing resource.
+         *
+         * The forwarded traffic must be of a type appropriate to the target object.
+         * *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+         * *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
+         *   *  'vpc-sc' - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
+         *   *  'all-apis' - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
+         *
+         *
+         * For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
+         */
+        target: string;
+    }
+
+    export interface GetForwardingRulesRuleServiceDirectoryRegistration {
         /**
          * Service Directory namespace to register the forwarding rule under.
          */
@@ -34426,6 +34776,14 @@ export namespace container {
          */
         membership: string;
         /**
+         * Short name of the fleet membership, for example "member-1".
+         */
+        membershipId: string;
+        /**
+         * Location of the fleet membership, for example "us-central1".
+         */
+        membershipLocation: string;
+        /**
          * Whether the cluster has been registered via the fleet API.
          */
         preRegistered: boolean;
@@ -34847,6 +35205,10 @@ export namespace container {
          * for how these labels are applied to clusters, node pools and nodes.
          */
         resourceLabels?: {[key: string]: string};
+        /**
+         * A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+         */
+        resourceManagerTags?: {[key: string]: any};
         /**
          * Sandbox configuration for this node.
          */
@@ -35560,6 +35922,10 @@ export namespace container {
          * for how these labels are applied to clusters, node pools and nodes.
          */
         resourceLabels?: {[key: string]: string};
+        /**
+         * A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+         */
+        resourceManagerTags?: {[key: string]: any};
         /**
          * Sandbox configuration for this node.
          */
@@ -36507,6 +36873,14 @@ export namespace container {
          */
         membership: string;
         /**
+         * Short name of the fleet membership, for example "member-1".
+         */
+        membershipId: string;
+        /**
+         * Location of the fleet membership, for example "us-central1".
+         */
+        membershipLocation: string;
+        /**
          * Whether the cluster has been registered via the fleet API.
          */
         preRegistered: boolean;
@@ -36843,6 +37217,10 @@ export namespace container {
          * The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
          */
         resourceLabels: {[key: string]: string};
+        /**
+         * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+         */
+        resourceManagerTags: {[key: string]: any};
         /**
          * Sandbox configuration for this node.
          */
@@ -37429,6 +37807,10 @@ export namespace container {
          * The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
          */
         resourceLabels: {[key: string]: string};
+        /**
+         * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+         */
+        resourceManagerTags: {[key: string]: any};
         /**
          * Sandbox configuration for this node.
          */
@@ -38174,6 +38556,10 @@ export namespace container {
          * The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
          */
         resourceLabels?: {[key: string]: string};
+        /**
+         * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+         */
+        resourceManagerTags?: {[key: string]: any};
         /**
          * Sandbox configuration for this node.
          */
@@ -60279,6 +60665,18 @@ export namespace looker {
         allowedEmailDomains?: string[];
     }
 
+    export interface InstanceCustomDomain {
+        /**
+         * Domain name
+         */
+        domain?: string;
+        /**
+         * (Output)
+         * Status of the custom domain.
+         */
+        state: string;
+    }
+
     export interface InstanceDenyMaintenancePeriod {
         /**
          * Required. Start date of the deny maintenance period
@@ -60589,6 +60987,160 @@ export namespace memcache {
          * - - -
          */
         memorySizeMb: number;
+    }
+
+}
+
+export namespace migrationcenter {
+    export interface PreferenceSetVirtualMachinePreferences {
+        /**
+         * Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+         * Possible values:
+         * COMMITMENT_PLAN_UNSPECIFIED
+         * COMMITMENT_PLAN_NONE
+         * COMMITMENT_PLAN_ONE_YEAR
+         * COMMITMENT_PLAN_THREE_YEARS
+         */
+        commitmentPlan?: string;
+        /**
+         * The user preferences relating to Compute Engine target platform.
+         * Structure is documented below.
+         */
+        computeEnginePreferences?: outputs.migrationcenter.PreferenceSetVirtualMachinePreferencesComputeEnginePreferences;
+        /**
+         * The user preferences relating to target regions.
+         * Structure is documented below.
+         */
+        regionPreferences?: outputs.migrationcenter.PreferenceSetVirtualMachinePreferencesRegionPreferences;
+        /**
+         * Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
+         * Possible values:
+         * SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED
+         * SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE
+         * SIZING_OPTIMIZATION_STRATEGY_MODERATE
+         * SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE
+         */
+        sizingOptimizationStrategy?: string;
+        /**
+         * Preferences concerning Sole Tenancy nodes and VMs.
+         * Structure is documented below.
+         */
+        soleTenancyPreferences?: outputs.migrationcenter.PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences;
+        /**
+         * Target product for assets using this preference set. Specify either target product or business goal, but not both.
+         * Possible values:
+         * COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED
+         * COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE
+         * COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE
+         * COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY
+         */
+        targetProduct?: string;
+        /**
+         * The user preferences relating to Google Cloud VMware Engine target platform.
+         * Structure is documented below.
+         */
+        vmwareEnginePreferences?: outputs.migrationcenter.PreferenceSetVirtualMachinePreferencesVmwareEnginePreferences;
+    }
+
+    export interface PreferenceSetVirtualMachinePreferencesComputeEnginePreferences {
+        /**
+         * License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
+         * Possible values:
+         * LICENSE_TYPE_UNSPECIFIED
+         * LICENSE_TYPE_DEFAULT
+         * LICENSE_TYPE_BRING_YOUR_OWN_LICENSE
+         */
+        licenseType?: string;
+        /**
+         * The type of machines to consider when calculating virtual machine migration insights and recommendations. Not all machine types are available in all zones and regions.
+         * Structure is documented below.
+         */
+        machinePreferences?: outputs.migrationcenter.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferences;
+    }
+
+    export interface PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferences {
+        /**
+         * Compute Engine machine series to consider for insights and recommendations. If empty, no restriction is applied on the machine series.
+         * Structure is documented below.
+         */
+        allowedMachineSeries?: outputs.migrationcenter.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeries[];
+    }
+
+    export interface PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeries {
+        /**
+         * Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
+         */
+        code?: string;
+    }
+
+    export interface PreferenceSetVirtualMachinePreferencesRegionPreferences {
+        /**
+         * A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
+         */
+        preferredRegions?: string[];
+    }
+
+    export interface PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences {
+        /**
+         * Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+         * Possible values:
+         * COMMITMENT_PLAN_UNSPECIFIED
+         * ON_DEMAND
+         * COMMITMENT_1_YEAR
+         * COMMITMENT_3_YEAR
+         */
+        commitmentPlan?: string;
+        /**
+         * CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive.
+         */
+        cpuOvercommitRatio?: number;
+        /**
+         * Sole Tenancy nodes maintenance policy.
+         * Possible values:
+         * HOST_MAINTENANCE_POLICY_UNSPECIFIED
+         * HOST_MAINTENANCE_POLICY_DEFAULT
+         * HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE
+         * HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP
+         */
+        hostMaintenancePolicy?: string;
+        /**
+         * A list of sole tenant node types. An empty list means that all possible node types will be considered.
+         * Structure is documented below.
+         */
+        nodeTypes?: outputs.migrationcenter.PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType[];
+    }
+
+    export interface PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType {
+        /**
+         * Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+         */
+        nodeName?: string;
+    }
+
+    export interface PreferenceSetVirtualMachinePreferencesVmwareEnginePreferences {
+        /**
+         * Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+         * Possible values:
+         * COMMITMENT_PLAN_UNSPECIFIED
+         * ON_DEMAND
+         * COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
+         * COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
+         * COMMITMENT_1_YEAR_UPFRONT_PAYMENT
+         * COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+         */
+        commitmentPlan?: string;
+        /**
+         * CPU overcommit ratio. Acceptable values are between 1.0 and 8.0, with 0.1 increment.
+         */
+        cpuOvercommitRatio?: number;
+        /**
+         * Memory overcommit ratio. Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.
+         */
+        memoryOvercommitRatio?: number;
+        /**
+         * The Deduplication and Compression ratio is based on the logical (Used Before) space required to store data before applying deduplication and compression, in relation to the physical (Used After) space required after applying deduplication and compression. Specifically, the ratio is the Used Before space divided by the Used After space. For example, if the Used Before space is 3 GB, but the physical Used After space is 1 GB, the deduplication and compression ratio is 3x. Acceptable values are between 1.0 and 4.0.
+         */
+        storageDeduplicationCompressionRatio?: number;
     }
 
 }
@@ -62203,6 +62755,85 @@ export namespace netapp {
          * Protocol to mount with.
          */
         protocol: string;
+    }
+
+    export interface VolumeReplicationDestinationVolumeParameters {
+        /**
+         * Description for the destination volume.
+         */
+        description?: string;
+        /**
+         * Share name for destination volume. If not specified, name of source volume's share name will be used.
+         */
+        shareName: string;
+        /**
+         * Name of an existing storage pool for the destination volume with format: `projects/{{project}}/locations/{{location}}/storagePools/{{poolId}}`
+         */
+        storagePool: string;
+        /**
+         * Name for the destination volume to be created. If not specified, the name of the source volume will be used.
+         */
+        volumeId: string;
+    }
+
+    export interface VolumeReplicationTransferStat {
+        /**
+         * (Output)
+         * The elapsed time since the creation of the snapshot on the source volume that was last replicated
+         * to the destination volume. Lag time represents the difference in age of the destination volume
+         * data in relation to the source volume data.
+         */
+        lagDuration: string;
+        /**
+         * (Output)
+         * Size of last completed transfer in bytes.
+         */
+        lastTransferBytes: string;
+        /**
+         * (Output)
+         * Time taken during last completed transfer.
+         */
+        lastTransferDuration: string;
+        /**
+         * (Output)
+         * Time when last transfer completed. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+         */
+        lastTransferEndTime: string;
+        /**
+         * (Output)
+         * A message describing the cause of the last transfer failure.
+         */
+        lastTransferError: string;
+        /**
+         * (Output)
+         * Total time taken so far during current transfer.
+         */
+        totalTransferDuration: string;
+        /**
+         * (Output)
+         * Number of bytes transferred so far in current transfer.
+         */
+        transferBytes: string;
+        /**
+         * (Output)
+         * Time when progress was updated last. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+         */
+        updateTime: string;
+    }
+
+    export interface VolumeRestoreParameters {
+        /**
+         * Full name of the snapshot to use for creating this volume.
+         * `sourceSnapshot` and `sourceBackup` cannot be used simultaneously.
+         * Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
+         */
+        sourceBackup?: string;
+        /**
+         * Full name of the snapshot to use for creating this volume.
+         * `sourceSnapshot` and `sourceBackup` cannot be used simultaneously.
+         * Format: `projects/{{project}}/locations/{{location}}/volumes/{{volume}}/snapshots/{{snapshot}}`.
+         */
+        sourceSnapshot?: string;
     }
 
     export interface VolumeSnapshotPolicy {
@@ -69126,7 +69757,7 @@ export namespace securityposture {
          * List of security policy
          * Structure is documented below.
          */
-        policies?: outputs.securityposture.PosturePolicySetPolicy[];
+        policies: outputs.securityposture.PosturePolicySetPolicy[];
         /**
          * ID of the policy set.
          */
@@ -69486,6 +70117,8 @@ export namespace securityposture {
     export interface PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelector {
         /**
          * The resource types to run the detector on.
+         *
+         * - - -
          */
         resourceTypes: string[];
     }
@@ -73615,6 +74248,11 @@ export namespace workbench {
          */
         bootDisk: outputs.workbench.InstanceGceSetupBootDisk;
         /**
+         * Use a container image to start the workbench instance.
+         * Structure is documented below.
+         */
+        containerImage?: outputs.workbench.InstanceGceSetupContainerImage;
+        /**
          * Data disks attached to the VM instance. Currently supports only one data disk.
          * Structure is documented below.
          */
@@ -73646,6 +74284,13 @@ export namespace workbench {
          * Structure is documented below.
          */
         serviceAccounts: outputs.workbench.InstanceGceSetupServiceAccount[];
+        /**
+         * A set of Shielded Instance options. See [Images using supported Shielded
+         * VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+         * Not all combinations are valid.
+         * Structure is documented below.
+         */
+        shieldedInstanceConfig: outputs.workbench.InstanceGceSetupShieldedInstanceConfig;
         /**
          * Optional. The Compute Engine tags to add to instance (see [Tagging
          * instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
@@ -73695,6 +74340,18 @@ export namespace workbench {
          * Learn more about using your own encryption keys.'
          */
         kmsKey?: string;
+    }
+
+    export interface InstanceGceSetupContainerImage {
+        /**
+         * The path to the container image repository.
+         * For example: gcr.io/{project_id}/{imageName}
+         */
+        repository: string;
+        /**
+         * The tag of the container image. If not specified, this defaults to the latest tag.
+         */
+        tag?: string;
     }
 
     export interface InstanceGceSetupDataDisks {
@@ -73753,6 +74410,29 @@ export namespace workbench {
         scopes: string[];
     }
 
+    export interface InstanceGceSetupShieldedInstanceConfig {
+        /**
+         * Optional. Defines whether the VM instance has integrity monitoring
+         * enabled. Enables monitoring and attestation of the boot integrity of the VM
+         * instance. The attestation is performed against the integrity policy baseline.
+         * This baseline is initially derived from the implicitly trusted boot image
+         * when the VM instance is created. Enabled by default.
+         */
+        enableIntegrityMonitoring?: boolean;
+        /**
+         * Optional. Defines whether the VM instance has Secure Boot enabled.
+         * Secure Boot helps ensure that the system only runs authentic software by verifying
+         * the digital signature of all boot components, and halting the boot process
+         * if signature verification fails. Disabled by default.
+         */
+        enableSecureBoot?: boolean;
+        /**
+         * Optional. Defines whether the VM instance has the vTPM enabled.
+         * Enabled by default.
+         */
+        enableVtpm?: boolean;
+    }
+
     export interface InstanceGceSetupVmImage {
         /**
          * Optional. Use this VM image family to find the image; the newest
@@ -73791,7 +74471,8 @@ export namespace workbench {
          */
         action?: string;
         /**
-         * Optional. The container image before this instance upgrade.
+         * Use a container image to start the workbench instance.
+         * Structure is documented below.
          */
         containerImage?: string;
         /**

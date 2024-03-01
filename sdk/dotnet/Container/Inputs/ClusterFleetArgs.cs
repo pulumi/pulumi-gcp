@@ -19,6 +19,18 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string>? Membership { get; set; }
 
         /// <summary>
+        /// Short name of the fleet membership, for example "member-1".
+        /// </summary>
+        [Input("membershipId")]
+        public Input<string>? MembershipId { get; set; }
+
+        /// <summary>
+        /// Location of the fleet membership, for example "us-central1".
+        /// </summary>
+        [Input("membershipLocation")]
+        public Input<string>? MembershipLocation { get; set; }
+
+        /// <summary>
         /// Whether the cluster has been registered via the fleet API.
         /// </summary>
         [Input("preRegistered")]

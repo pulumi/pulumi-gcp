@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volumes/overview)
  *
  * ## Example Usage
- * ### Volume Basic
+ * ### Netapp Volume Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -109,6 +109,10 @@ export class Volume extends pulumi.CustomResource {
      */
     public readonly capacityGib!: pulumi.Output<string>;
     /**
+     * Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
      * Policy to determine if the volume should be deleted forcefully.
      * Volumes may have nested snapshot resources. Deleting such a volume will fail.
      * Setting this parameter to FORCE will delete volumes including nested snapshots.
@@ -194,6 +198,11 @@ export class Volume extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Used to create this volume from a snapshot (= cloning) or an backup.
+     * Structure is documented below.
+     */
+    public readonly restoreParameters!: pulumi.Output<outputs.netapp.VolumeRestoreParameters | undefined>;
+    /**
      * List of actions that are restricted on this volume.
      * Each value may be one of: `DELETE`.
      */
@@ -228,6 +237,14 @@ export class Volume extends pulumi.CustomResource {
      */
     public readonly snapshotPolicy!: pulumi.Output<outputs.netapp.VolumeSnapshotPolicy | undefined>;
     /**
+     * State of the volume.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * State details of the volume.
+     */
+    public /*out*/ readonly stateDetails!: pulumi.Output<string>;
+    /**
      * Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
      */
     public readonly storagePool!: pulumi.Output<string>;
@@ -255,6 +272,7 @@ export class Volume extends pulumi.CustomResource {
             const state = argsOrState as VolumeState | undefined;
             resourceInputs["activeDirectory"] = state ? state.activeDirectory : undefined;
             resourceInputs["capacityGib"] = state ? state.capacityGib : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
@@ -273,6 +291,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["protocols"] = state ? state.protocols : undefined;
             resourceInputs["psaRange"] = state ? state.psaRange : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["restoreParameters"] = state ? state.restoreParameters : undefined;
             resourceInputs["restrictedActions"] = state ? state.restrictedActions : undefined;
             resourceInputs["securityStyle"] = state ? state.securityStyle : undefined;
             resourceInputs["serviceLevel"] = state ? state.serviceLevel : undefined;
@@ -280,6 +299,8 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["smbSettings"] = state ? state.smbSettings : undefined;
             resourceInputs["snapshotDirectory"] = state ? state.snapshotDirectory : undefined;
             resourceInputs["snapshotPolicy"] = state ? state.snapshotPolicy : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["stateDetails"] = state ? state.stateDetails : undefined;
             resourceInputs["storagePool"] = state ? state.storagePool : undefined;
             resourceInputs["unixPermissions"] = state ? state.unixPermissions : undefined;
             resourceInputs["usedGib"] = state ? state.usedGib : undefined;
@@ -310,6 +331,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["protocols"] = args ? args.protocols : undefined;
+            resourceInputs["restoreParameters"] = args ? args.restoreParameters : undefined;
             resourceInputs["restrictedActions"] = args ? args.restrictedActions : undefined;
             resourceInputs["securityStyle"] = args ? args.securityStyle : undefined;
             resourceInputs["shareName"] = args ? args.shareName : undefined;
@@ -319,6 +341,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["storagePool"] = args ? args.storagePool : undefined;
             resourceInputs["unixPermissions"] = args ? args.unixPermissions : undefined;
             resourceInputs["activeDirectory"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["encryptionType"] = undefined /*out*/;
             resourceInputs["hasReplication"] = undefined /*out*/;
@@ -329,6 +352,8 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["psaRange"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["serviceLevel"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stateDetails"] = undefined /*out*/;
             resourceInputs["usedGib"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -350,6 +375,10 @@ export interface VolumeState {
      * Capacity of the volume (in GiB).
      */
     capacityGib?: pulumi.Input<string>;
+    /**
+     * Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+     */
+    createTime?: pulumi.Input<string>;
     /**
      * Policy to determine if the volume should be deleted forcefully.
      * Volumes may have nested snapshot resources. Deleting such a volume will fail.
@@ -436,6 +465,11 @@ export interface VolumeState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Used to create this volume from a snapshot (= cloning) or an backup.
+     * Structure is documented below.
+     */
+    restoreParameters?: pulumi.Input<inputs.netapp.VolumeRestoreParameters>;
+    /**
      * List of actions that are restricted on this volume.
      * Each value may be one of: `DELETE`.
      */
@@ -469,6 +503,14 @@ export interface VolumeState {
      * Structure is documented below.
      */
     snapshotPolicy?: pulumi.Input<inputs.netapp.VolumeSnapshotPolicy>;
+    /**
+     * State of the volume.
+     */
+    state?: pulumi.Input<string>;
+    /**
+     * State details of the volume.
+     */
+    stateDetails?: pulumi.Input<string>;
     /**
      * Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
      */
@@ -538,6 +580,11 @@ export interface VolumeArgs {
      * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
      */
     protocols: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Used to create this volume from a snapshot (= cloning) or an backup.
+     * Structure is documented below.
+     */
+    restoreParameters?: pulumi.Input<inputs.netapp.VolumeRestoreParameters>;
     /**
      * List of actions that are restricted on this volume.
      * Each value may be one of: `DELETE`.

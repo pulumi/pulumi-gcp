@@ -563,6 +563,22 @@ class Instance(pulumi.CustomResource):
             name="workbench-instance",
             location="us-west1-a")
         ```
+        ### Workbench Instance Basic Container
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.workbench.Instance("instance",
+            name="workbench-instance",
+            location="us-west1-a",
+            gce_setup=gcp.workbench.InstanceGceSetupArgs(
+                container_image=gcp.workbench.InstanceGceSetupContainerImageArgs(
+                    repository="us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310",
+                    tag="latest",
+                ),
+            ))
+        ```
         ### Workbench Instance Basic Gpu
 
         ```python
@@ -595,6 +611,11 @@ class Instance(pulumi.CustomResource):
             location="us-central1-a",
             gce_setup=gcp.workbench.InstanceGceSetupArgs(
                 machine_type="e2-standard-4",
+                shielded_instance_config=gcp.workbench.InstanceGceSetupShieldedInstanceConfigArgs(
+                    enable_secure_boot=False,
+                    enable_vtpm=False,
+                    enable_integrity_monitoring=False,
+                ),
                 service_accounts=[gcp.workbench.InstanceGceSetupServiceAccountArgs(
                     email="my@service-account.com",
                 )],
@@ -631,6 +652,11 @@ class Instance(pulumi.CustomResource):
                     type="NVIDIA_TESLA_T4",
                     core_count="1",
                 )],
+                shielded_instance_config=gcp.workbench.InstanceGceSetupShieldedInstanceConfigArgs(
+                    enable_secure_boot=True,
+                    enable_vtpm=True,
+                    enable_integrity_monitoring=True,
+                ),
                 disable_public_ip=False,
                 service_accounts=[gcp.workbench.InstanceGceSetupServiceAccountArgs(
                     email="my@service-account.com",
@@ -736,6 +762,22 @@ class Instance(pulumi.CustomResource):
             name="workbench-instance",
             location="us-west1-a")
         ```
+        ### Workbench Instance Basic Container
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.workbench.Instance("instance",
+            name="workbench-instance",
+            location="us-west1-a",
+            gce_setup=gcp.workbench.InstanceGceSetupArgs(
+                container_image=gcp.workbench.InstanceGceSetupContainerImageArgs(
+                    repository="us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310",
+                    tag="latest",
+                ),
+            ))
+        ```
         ### Workbench Instance Basic Gpu
 
         ```python
@@ -768,6 +810,11 @@ class Instance(pulumi.CustomResource):
             location="us-central1-a",
             gce_setup=gcp.workbench.InstanceGceSetupArgs(
                 machine_type="e2-standard-4",
+                shielded_instance_config=gcp.workbench.InstanceGceSetupShieldedInstanceConfigArgs(
+                    enable_secure_boot=False,
+                    enable_vtpm=False,
+                    enable_integrity_monitoring=False,
+                ),
                 service_accounts=[gcp.workbench.InstanceGceSetupServiceAccountArgs(
                     email="my@service-account.com",
                 )],
@@ -804,6 +851,11 @@ class Instance(pulumi.CustomResource):
                     type="NVIDIA_TESLA_T4",
                     core_count="1",
                 )],
+                shielded_instance_config=gcp.workbench.InstanceGceSetupShieldedInstanceConfigArgs(
+                    enable_secure_boot=True,
+                    enable_vtpm=True,
+                    enable_integrity_monitoring=True,
+                ),
                 disable_public_ip=False,
                 service_accounts=[gcp.workbench.InstanceGceSetupServiceAccountArgs(
                     email="my@service-account.com",

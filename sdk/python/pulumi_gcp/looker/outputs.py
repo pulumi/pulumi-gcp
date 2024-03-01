@@ -12,6 +12,7 @@ from . import outputs
 
 __all__ = [
     'InstanceAdminSettings',
+    'InstanceCustomDomain',
     'InstanceDenyMaintenancePeriod',
     'InstanceDenyMaintenancePeriodEndDate',
     'InstanceDenyMaintenancePeriodStartDate',
@@ -51,6 +52,39 @@ class InstanceAdminSettings(dict):
     @pulumi.getter(name="allowedEmailDomains")
     def allowed_email_domains(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "allowed_email_domains")
+
+
+@pulumi.output_type
+class InstanceCustomDomain(dict):
+    def __init__(__self__, *,
+                 domain: Optional[str] = None,
+                 state: Optional[str] = None):
+        """
+        :param str domain: Domain name
+        :param str state: (Output)
+               Status of the custom domain.
+        """
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[str]:
+        """
+        Domain name
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        (Output)
+        Status of the custom domain.
+        """
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type
