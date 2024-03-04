@@ -346,8 +346,8 @@ func TestNodePoolGpuAcceleratorPanic(t *testing.T) {
 						"https://www.googleapis.com/auth/cloud-platform"
 					],
 					"preemptible": false,
-					"resourceManagerTags":{},
-					"spot": false,
+					"resourceManagerTags": {},
+					"spot": false
 				}
 			},
 			"preview": true
@@ -397,7 +397,7 @@ func TestNodePoolGpuAcceleratorPanic(t *testing.T) {
 				  "preemptible": false,
 				  "reservationAffinity": null,
 				  "resourceLabels": {},
-				  "resourceManagerTags":{},
+				  "resourceManagerTags": {},
 				  "sandboxConfig": null,
 				  "serviceAccount": "04da6b54-80e4-46f7-96ec-b56ff0331ba9",
 				  "shieldedInstanceConfig": "04da6b54-80e4-46f7-96ec-b56ff0331ba9",
