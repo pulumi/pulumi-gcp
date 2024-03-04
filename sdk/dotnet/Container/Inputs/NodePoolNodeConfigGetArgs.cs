@@ -222,6 +222,18 @@ namespace Pulumi.Gcp.Container.Inputs
             set => _resourceLabels = value;
         }
 
+        [Input("resourceManagerTags")]
+        private InputMap<object>? _resourceManagerTags;
+
+        /// <summary>
+        /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+        /// </summary>
+        public InputMap<object> ResourceManagerTags
+        {
+            get => _resourceManagerTags ?? (_resourceManagerTags = new InputMap<object>());
+            set => _resourceManagerTags = value;
+        }
+
         /// <summary>
         /// Sandbox configuration for this node.
         /// </summary>

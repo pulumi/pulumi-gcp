@@ -190,6 +190,11 @@ export const getForwardingRule: typeof import("./getForwardingRule").getForwardi
 export const getForwardingRuleOutput: typeof import("./getForwardingRule").getForwardingRuleOutput = null as any;
 utilities.lazyLoad(exports, ["getForwardingRule","getForwardingRuleOutput"], () => require("./getForwardingRule"));
 
+export { GetForwardingRulesArgs, GetForwardingRulesResult, GetForwardingRulesOutputArgs } from "./getForwardingRules";
+export const getForwardingRules: typeof import("./getForwardingRules").getForwardingRules = null as any;
+export const getForwardingRulesOutput: typeof import("./getForwardingRules").getForwardingRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getForwardingRules","getForwardingRulesOutput"], () => require("./getForwardingRules"));
+
 export { GetGlobalAddressArgs, GetGlobalAddressResult, GetGlobalAddressOutputArgs } from "./getGlobalAddress";
 export const getGlobalAddress: typeof import("./getGlobalAddress").getGlobalAddress = null as any;
 export const getGlobalAddressOutput: typeof import("./getGlobalAddress").getGlobalAddressOutput = null as any;

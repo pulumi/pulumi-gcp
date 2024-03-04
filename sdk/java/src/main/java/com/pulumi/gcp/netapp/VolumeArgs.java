@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.netapp.inputs.VolumeExportPolicyArgs;
+import com.pulumi.gcp.netapp.inputs.VolumeRestoreParametersArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeSnapshotPolicyArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -192,6 +193,23 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Used to create this volume from a snapshot (= cloning) or an backup.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="restoreParameters")
+    private @Nullable Output<VolumeRestoreParametersArgs> restoreParameters;
+
+    /**
+     * @return Used to create this volume from a snapshot (= cloning) or an backup.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<VolumeRestoreParametersArgs>> restoreParameters() {
+        return Optional.ofNullable(this.restoreParameters);
+    }
+
+    /**
      * List of actions that are restricted on this volume.
      * Each value may be one of: `DELETE`.
      * 
@@ -336,6 +354,7 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.protocols = $.protocols;
+        this.restoreParameters = $.restoreParameters;
         this.restrictedActions = $.restrictedActions;
         this.securityStyle = $.securityStyle;
         this.shareName = $.shareName;
@@ -603,6 +622,29 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder protocols(String... protocols) {
             return protocols(List.of(protocols));
+        }
+
+        /**
+         * @param restoreParameters Used to create this volume from a snapshot (= cloning) or an backup.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreParameters(@Nullable Output<VolumeRestoreParametersArgs> restoreParameters) {
+            $.restoreParameters = restoreParameters;
+            return this;
+        }
+
+        /**
+         * @param restoreParameters Used to create this volume from a snapshot (= cloning) or an backup.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreParameters(VolumeRestoreParametersArgs restoreParameters) {
+            return restoreParameters(Output.of(restoreParameters));
         }
 
         /**

@@ -4639,15 +4639,23 @@ class ClusterEnableK8sBetaApisArgs:
 class ClusterFleetArgs:
     def __init__(__self__, *,
                  membership: Optional[pulumi.Input[str]] = None,
+                 membership_id: Optional[pulumi.Input[str]] = None,
+                 membership_location: Optional[pulumi.Input[str]] = None,
                  pre_registered: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] membership: Full resource name of the registered fleet membership of the cluster.
+        :param pulumi.Input[str] membership_id: Short name of the fleet membership, for example "member-1".
+        :param pulumi.Input[str] membership_location: Location of the fleet membership, for example "us-central1".
         :param pulumi.Input[bool] pre_registered: Whether the cluster has been registered via the fleet API.
         :param pulumi.Input[str] project: The name of the Fleet host project where this cluster will be registered.
         """
         if membership is not None:
             pulumi.set(__self__, "membership", membership)
+        if membership_id is not None:
+            pulumi.set(__self__, "membership_id", membership_id)
+        if membership_location is not None:
+            pulumi.set(__self__, "membership_location", membership_location)
         if pre_registered is not None:
             pulumi.set(__self__, "pre_registered", pre_registered)
         if project is not None:
@@ -4664,6 +4672,30 @@ class ClusterFleetArgs:
     @membership.setter
     def membership(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "membership", value)
+
+    @property
+    @pulumi.getter(name="membershipId")
+    def membership_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Short name of the fleet membership, for example "member-1".
+        """
+        return pulumi.get(self, "membership_id")
+
+    @membership_id.setter
+    def membership_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "membership_id", value)
+
+    @property
+    @pulumi.getter(name="membershipLocation")
+    def membership_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Location of the fleet membership, for example "us-central1".
+        """
+        return pulumi.get(self, "membership_location")
+
+    @membership_location.setter
+    def membership_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "membership_location", value)
 
     @property
     @pulumi.getter(name="preRegistered")
@@ -5605,6 +5637,7 @@ class ClusterNodeConfigArgs:
                  preemptible: Optional[pulumi.Input[bool]] = None,
                  reservation_affinity: Optional[pulumi.Input['ClusterNodeConfigReservationAffinityArgs']] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  sandbox_config: Optional[pulumi.Input['ClusterNodeConfigSandboxConfigArgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  shielded_instance_config: Optional[pulumi.Input['ClusterNodeConfigShieldedInstanceConfigArgs']] = None,
@@ -5680,6 +5713,7 @@ class ClusterNodeConfigArgs:
         :param pulumi.Input['ClusterNodeConfigReservationAffinityArgs'] reservation_affinity: The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
                for how these labels are applied to clusters, node pools and nodes.
+        :param pulumi.Input[Mapping[str, Any]] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
         :param pulumi.Input['ClusterNodeConfigSandboxConfigArgs'] sandbox_config: Sandbox configuration for this node.
         :param pulumi.Input[str] service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
@@ -5759,6 +5793,8 @@ class ClusterNodeConfigArgs:
             pulumi.set(__self__, "reservation_affinity", reservation_affinity)
         if resource_labels is not None:
             pulumi.set(__self__, "resource_labels", resource_labels)
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if sandbox_config is not None:
             pulumi.set(__self__, "sandbox_config", sandbox_config)
         if service_account is not None:
@@ -6160,6 +6196,18 @@ class ClusterNodeConfigArgs:
     @resource_labels.setter
     def resource_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "resource_labels", value)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "resource_manager_tags", value)
 
     @property
     @pulumi.getter(name="sandboxConfig")
@@ -8009,6 +8057,7 @@ class ClusterNodePoolNodeConfigArgs:
                  preemptible: Optional[pulumi.Input[bool]] = None,
                  reservation_affinity: Optional[pulumi.Input['ClusterNodePoolNodeConfigReservationAffinityArgs']] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  sandbox_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigSandboxConfigArgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  shielded_instance_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigShieldedInstanceConfigArgs']] = None,
@@ -8084,6 +8133,7 @@ class ClusterNodePoolNodeConfigArgs:
         :param pulumi.Input['ClusterNodePoolNodeConfigReservationAffinityArgs'] reservation_affinity: The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
                for how these labels are applied to clusters, node pools and nodes.
+        :param pulumi.Input[Mapping[str, Any]] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
         :param pulumi.Input['ClusterNodePoolNodeConfigSandboxConfigArgs'] sandbox_config: Sandbox configuration for this node.
         :param pulumi.Input[str] service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
@@ -8163,6 +8213,8 @@ class ClusterNodePoolNodeConfigArgs:
             pulumi.set(__self__, "reservation_affinity", reservation_affinity)
         if resource_labels is not None:
             pulumi.set(__self__, "resource_labels", resource_labels)
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if sandbox_config is not None:
             pulumi.set(__self__, "sandbox_config", sandbox_config)
         if service_account is not None:
@@ -8564,6 +8616,18 @@ class ClusterNodePoolNodeConfigArgs:
     @resource_labels.setter
     def resource_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "resource_labels", value)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "resource_manager_tags", value)
 
     @property
     @pulumi.getter(name="sandboxConfig")
@@ -10898,6 +10962,7 @@ class NodePoolNodeConfigArgs:
                  preemptible: Optional[pulumi.Input[bool]] = None,
                  reservation_affinity: Optional[pulumi.Input['NodePoolNodeConfigReservationAffinityArgs']] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  sandbox_config: Optional[pulumi.Input['NodePoolNodeConfigSandboxConfigArgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  shielded_instance_config: Optional[pulumi.Input['NodePoolNodeConfigShieldedInstanceConfigArgs']] = None,
@@ -10936,6 +11001,7 @@ class NodePoolNodeConfigArgs:
         :param pulumi.Input[bool] preemptible: Whether the nodes are created as preemptible VM instances.
         :param pulumi.Input['NodePoolNodeConfigReservationAffinityArgs'] reservation_affinity: The reservation affinity configuration for the node pool.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
+        :param pulumi.Input[Mapping[str, Any]] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param pulumi.Input['NodePoolNodeConfigSandboxConfigArgs'] sandbox_config: Sandbox configuration for this node.
         :param pulumi.Input[str] service_account: The Google Cloud Platform Service Account to be used by the node VMs.
         :param pulumi.Input['NodePoolNodeConfigShieldedInstanceConfigArgs'] shielded_instance_config: Shielded Instance options.
@@ -11003,6 +11069,8 @@ class NodePoolNodeConfigArgs:
             pulumi.set(__self__, "reservation_affinity", reservation_affinity)
         if resource_labels is not None:
             pulumi.set(__self__, "resource_labels", resource_labels)
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if sandbox_config is not None:
             pulumi.set(__self__, "sandbox_config", sandbox_config)
         if service_account is not None:
@@ -11367,6 +11435,18 @@ class NodePoolNodeConfigArgs:
     @resource_labels.setter
     def resource_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "resource_labels", value)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "resource_manager_tags", value)
 
     @property
     @pulumi.getter(name="sandboxConfig")

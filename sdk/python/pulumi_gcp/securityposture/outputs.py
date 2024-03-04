@@ -54,20 +54,28 @@ class PosturePolicySet(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 policies: Sequence['outputs.PosturePolicySetPolicy'],
                  policy_set_id: str,
-                 description: Optional[str] = None,
-                 policies: Optional[Sequence['outputs.PosturePolicySetPolicy']] = None):
+                 description: Optional[str] = None):
         """
-        :param str policy_set_id: ID of the policy set.
-        :param str description: Description of the policy set.
         :param Sequence['PosturePolicySetPolicyArgs'] policies: List of security policy
                Structure is documented below.
+        :param str policy_set_id: ID of the policy set.
+        :param str description: Description of the policy set.
         """
+        pulumi.set(__self__, "policies", policies)
         pulumi.set(__self__, "policy_set_id", policy_set_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if policies is not None:
-            pulumi.set(__self__, "policies", policies)
+
+    @property
+    @pulumi.getter
+    def policies(self) -> Sequence['outputs.PosturePolicySetPolicy']:
+        """
+        List of security policy
+        Structure is documented below.
+        """
+        return pulumi.get(self, "policies")
 
     @property
     @pulumi.getter(name="policySetId")
@@ -84,15 +92,6 @@ class PosturePolicySet(dict):
         Description of the policy set.
         """
         return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter
-    def policies(self) -> Optional[Sequence['outputs.PosturePolicySetPolicy']]:
-        """
-        List of security policy
-        Structure is documented below.
-        """
-        return pulumi.get(self, "policies")
 
 
 @pulumi.output_type
@@ -1307,6 +1306,8 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigR
                  resource_types: Sequence[str]):
         """
         :param Sequence[str] resource_types: The resource types to run the detector on.
+               
+               - - -
         """
         pulumi.set(__self__, "resource_types", resource_types)
 
@@ -1315,6 +1316,8 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigR
     def resource_types(self) -> Sequence[str]:
         """
         The resource types to run the detector on.
+
+        - - -
         """
         return pulumi.get(self, "resource_types")
 

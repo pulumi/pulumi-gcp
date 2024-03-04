@@ -6,9 +6,11 @@ package com.pulumi.gcp.workbench.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.workbench.outputs.InstanceGceSetupAcceleratorConfig;
 import com.pulumi.gcp.workbench.outputs.InstanceGceSetupBootDisk;
+import com.pulumi.gcp.workbench.outputs.InstanceGceSetupContainerImage;
 import com.pulumi.gcp.workbench.outputs.InstanceGceSetupDataDisks;
 import com.pulumi.gcp.workbench.outputs.InstanceGceSetupNetworkInterface;
 import com.pulumi.gcp.workbench.outputs.InstanceGceSetupServiceAccount;
+import com.pulumi.gcp.workbench.outputs.InstanceGceSetupShieldedInstanceConfig;
 import com.pulumi.gcp.workbench.outputs.InstanceGceSetupVmImage;
 import java.lang.Boolean;
 import java.lang.String;
@@ -34,6 +36,12 @@ public final class InstanceGceSetup {
      * 
      */
     private @Nullable InstanceGceSetupBootDisk bootDisk;
+    /**
+     * @return Use a container image to start the workbench instance.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable InstanceGceSetupContainerImage containerImage;
     /**
      * @return Data disks attached to the VM instance. Currently supports only one data disk.
      * Structure is documented below.
@@ -74,6 +82,14 @@ public final class InstanceGceSetup {
      */
     private @Nullable List<InstanceGceSetupServiceAccount> serviceAccounts;
     /**
+     * @return A set of Shielded Instance options. See [Images using supported Shielded
+     * VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+     * Not all combinations are valid.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable InstanceGceSetupShieldedInstanceConfig shieldedInstanceConfig;
+    /**
      * @return Optional. The Compute Engine tags to add to instance (see [Tagging
      * instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
      * 
@@ -105,6 +121,14 @@ public final class InstanceGceSetup {
      */
     public Optional<InstanceGceSetupBootDisk> bootDisk() {
         return Optional.ofNullable(this.bootDisk);
+    }
+    /**
+     * @return Use a container image to start the workbench instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<InstanceGceSetupContainerImage> containerImage() {
+        return Optional.ofNullable(this.containerImage);
     }
     /**
      * @return Data disks attached to the VM instance. Currently supports only one data disk.
@@ -160,6 +184,16 @@ public final class InstanceGceSetup {
         return this.serviceAccounts == null ? List.of() : this.serviceAccounts;
     }
     /**
+     * @return A set of Shielded Instance options. See [Images using supported Shielded
+     * VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+     * Not all combinations are valid.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<InstanceGceSetupShieldedInstanceConfig> shieldedInstanceConfig() {
+        return Optional.ofNullable(this.shieldedInstanceConfig);
+    }
+    /**
      * @return Optional. The Compute Engine tags to add to instance (see [Tagging
      * instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
      * 
@@ -188,6 +222,7 @@ public final class InstanceGceSetup {
     public static final class Builder {
         private @Nullable List<InstanceGceSetupAcceleratorConfig> acceleratorConfigs;
         private @Nullable InstanceGceSetupBootDisk bootDisk;
+        private @Nullable InstanceGceSetupContainerImage containerImage;
         private @Nullable InstanceGceSetupDataDisks dataDisks;
         private @Nullable Boolean disablePublicIp;
         private @Nullable Boolean enableIpForwarding;
@@ -195,6 +230,7 @@ public final class InstanceGceSetup {
         private @Nullable Map<String,String> metadata;
         private @Nullable List<InstanceGceSetupNetworkInterface> networkInterfaces;
         private @Nullable List<InstanceGceSetupServiceAccount> serviceAccounts;
+        private @Nullable InstanceGceSetupShieldedInstanceConfig shieldedInstanceConfig;
         private @Nullable List<String> tags;
         private @Nullable InstanceGceSetupVmImage vmImage;
         public Builder() {}
@@ -202,6 +238,7 @@ public final class InstanceGceSetup {
     	      Objects.requireNonNull(defaults);
     	      this.acceleratorConfigs = defaults.acceleratorConfigs;
     	      this.bootDisk = defaults.bootDisk;
+    	      this.containerImage = defaults.containerImage;
     	      this.dataDisks = defaults.dataDisks;
     	      this.disablePublicIp = defaults.disablePublicIp;
     	      this.enableIpForwarding = defaults.enableIpForwarding;
@@ -209,6 +246,7 @@ public final class InstanceGceSetup {
     	      this.metadata = defaults.metadata;
     	      this.networkInterfaces = defaults.networkInterfaces;
     	      this.serviceAccounts = defaults.serviceAccounts;
+    	      this.shieldedInstanceConfig = defaults.shieldedInstanceConfig;
     	      this.tags = defaults.tags;
     	      this.vmImage = defaults.vmImage;
         }
@@ -226,6 +264,12 @@ public final class InstanceGceSetup {
         public Builder bootDisk(@Nullable InstanceGceSetupBootDisk bootDisk) {
 
             this.bootDisk = bootDisk;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder containerImage(@Nullable InstanceGceSetupContainerImage containerImage) {
+
+            this.containerImage = containerImage;
             return this;
         }
         @CustomType.Setter
@@ -277,6 +321,12 @@ public final class InstanceGceSetup {
             return serviceAccounts(List.of(serviceAccounts));
         }
         @CustomType.Setter
+        public Builder shieldedInstanceConfig(@Nullable InstanceGceSetupShieldedInstanceConfig shieldedInstanceConfig) {
+
+            this.shieldedInstanceConfig = shieldedInstanceConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
 
             this.tags = tags;
@@ -295,6 +345,7 @@ public final class InstanceGceSetup {
             final var _resultValue = new InstanceGceSetup();
             _resultValue.acceleratorConfigs = acceleratorConfigs;
             _resultValue.bootDisk = bootDisk;
+            _resultValue.containerImage = containerImage;
             _resultValue.dataDisks = dataDisks;
             _resultValue.disablePublicIp = disablePublicIp;
             _resultValue.enableIpForwarding = enableIpForwarding;
@@ -302,6 +353,7 @@ public final class InstanceGceSetup {
             _resultValue.metadata = metadata;
             _resultValue.networkInterfaces = networkInterfaces;
             _resultValue.serviceAccounts = serviceAccounts;
+            _resultValue.shieldedInstanceConfig = shieldedInstanceConfig;
             _resultValue.tags = tags;
             _resultValue.vmImage = vmImage;
             return _resultValue;

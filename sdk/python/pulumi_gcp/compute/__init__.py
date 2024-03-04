@@ -42,6 +42,7 @@ from .get_default_service_account import *
 from .get_disk import *
 from .get_disk_iam_policy import *
 from .get_forwarding_rule import *
+from .get_forwarding_rules import *
 from .get_global_address import *
 from .get_global_forwarding_rule import *
 from .get_hc_vpn_gateway import *

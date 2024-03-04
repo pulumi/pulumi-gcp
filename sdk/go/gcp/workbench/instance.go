@@ -41,6 +41,38 @@ import (
 //	}
 //
 // ```
+// ### Workbench Instance Basic Container
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/workbench"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
+//				Name:     pulumi.String("workbench-instance"),
+//				Location: pulumi.String("us-west1-a"),
+//				GceSetup: &workbench.InstanceGceSetupArgs{
+//					ContainerImage: &workbench.InstanceGceSetupContainerImageArgs{
+//						Repository: pulumi.String("us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310"),
+//						Tag:        pulumi.String("latest"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Workbench Instance Basic Gpu
 //
 // ```go
@@ -99,6 +131,11 @@ import (
 //				Location: pulumi.String("us-central1-a"),
 //				GceSetup: &workbench.InstanceGceSetupArgs{
 //					MachineType: pulumi.String("e2-standard-4"),
+//					ShieldedInstanceConfig: &workbench.InstanceGceSetupShieldedInstanceConfigArgs{
+//						EnableSecureBoot:          pulumi.Bool(false),
+//						EnableVtpm:                pulumi.Bool(false),
+//						EnableIntegrityMonitoring: pulumi.Bool(false),
+//					},
 //					ServiceAccounts: workbench.InstanceGceSetupServiceAccountArray{
 //						&workbench.InstanceGceSetupServiceAccountArgs{
 //							Email: pulumi.String("my@service-account.com"),
@@ -165,6 +202,11 @@ import (
 //							Type:      pulumi.String("NVIDIA_TESLA_T4"),
 //							CoreCount: pulumi.String("1"),
 //						},
+//					},
+//					ShieldedInstanceConfig: &workbench.InstanceGceSetupShieldedInstanceConfigArgs{
+//						EnableSecureBoot:          pulumi.Bool(true),
+//						EnableVtpm:                pulumi.Bool(true),
+//						EnableIntegrityMonitoring: pulumi.Bool(true),
 //					},
 //					DisablePublicIp: pulumi.Bool(false),
 //					ServiceAccounts: workbench.InstanceGceSetupServiceAccountArray{

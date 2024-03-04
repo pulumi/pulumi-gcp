@@ -32,6 +32,36 @@ public final class ClusterFleetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Short name of the fleet membership, for example &#34;member-1&#34;.
+     * 
+     */
+    @Import(name="membershipId")
+    private @Nullable Output<String> membershipId;
+
+    /**
+     * @return Short name of the fleet membership, for example &#34;member-1&#34;.
+     * 
+     */
+    public Optional<Output<String>> membershipId() {
+        return Optional.ofNullable(this.membershipId);
+    }
+
+    /**
+     * Location of the fleet membership, for example &#34;us-central1&#34;.
+     * 
+     */
+    @Import(name="membershipLocation")
+    private @Nullable Output<String> membershipLocation;
+
+    /**
+     * @return Location of the fleet membership, for example &#34;us-central1&#34;.
+     * 
+     */
+    public Optional<Output<String>> membershipLocation() {
+        return Optional.ofNullable(this.membershipLocation);
+    }
+
+    /**
      * Whether the cluster has been registered via the fleet API.
      * 
      */
@@ -65,6 +95,8 @@ public final class ClusterFleetArgs extends com.pulumi.resources.ResourceArgs {
 
     private ClusterFleetArgs(ClusterFleetArgs $) {
         this.membership = $.membership;
+        this.membershipId = $.membershipId;
+        this.membershipLocation = $.membershipLocation;
         this.preRegistered = $.preRegistered;
         this.project = $.project;
     }
@@ -106,6 +138,48 @@ public final class ClusterFleetArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder membership(String membership) {
             return membership(Output.of(membership));
+        }
+
+        /**
+         * @param membershipId Short name of the fleet membership, for example &#34;member-1&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder membershipId(@Nullable Output<String> membershipId) {
+            $.membershipId = membershipId;
+            return this;
+        }
+
+        /**
+         * @param membershipId Short name of the fleet membership, for example &#34;member-1&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder membershipId(String membershipId) {
+            return membershipId(Output.of(membershipId));
+        }
+
+        /**
+         * @param membershipLocation Location of the fleet membership, for example &#34;us-central1&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder membershipLocation(@Nullable Output<String> membershipLocation) {
+            $.membershipLocation = membershipLocation;
+            return this;
+        }
+
+        /**
+         * @param membershipLocation Location of the fleet membership, for example &#34;us-central1&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder membershipLocation(String membershipLocation) {
+            return membershipLocation(Output.of(membershipLocation));
         }
 
         /**

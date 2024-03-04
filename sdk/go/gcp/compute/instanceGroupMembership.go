@@ -14,11 +14,11 @@ import (
 
 // Represents the Instance membership to the Instance Group.
 //
-// **NOTE** You can use this resource instead of the `instances` field in the
+// > **NOTE** You can use this resource instead of the `instances` field in the
 // `compute.InstanceGroup`, however it's not recommended to use it alongside this field.
 // It might cause inconsistencies, as they can end up competing over control.
 //
-// **NOTE** This resource has been added to avoid a situation, where after
+// > **NOTE** This resource has been added to avoid a situation, where after
 // Instance is recreated, it's removed from Instance Group and it's needed to
 // perform `apply` twice. To avoid situations like this, please use this resource
 // with the lifecycle `updateTriggeredBy` method, with the passed Instance's ID.

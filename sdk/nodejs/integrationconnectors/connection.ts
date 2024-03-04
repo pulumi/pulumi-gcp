@@ -349,7 +349,7 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly connectorVersion!: pulumi.Output<string>;
     /**
-     * This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version.
+     * This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
      * Structure is documented below.
      */
     public /*out*/ readonly connectorVersionInfraConfigs!: pulumi.Output<outputs.integrationconnectors.ConnectionConnectorVersionInfraConfig[]>;
@@ -573,7 +573,7 @@ export interface ConnectionState {
      */
     connectorVersion?: pulumi.Input<string>;
     /**
-     * This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version.
+     * This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
      * Structure is documented below.
      */
     connectorVersionInfraConfigs?: pulumi.Input<pulumi.Input<inputs.integrationconnectors.ConnectionConnectorVersionInfraConfig>[]>;

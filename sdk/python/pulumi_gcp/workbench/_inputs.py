@@ -13,9 +13,11 @@ __all__ = [
     'InstanceGceSetupArgs',
     'InstanceGceSetupAcceleratorConfigArgs',
     'InstanceGceSetupBootDiskArgs',
+    'InstanceGceSetupContainerImageArgs',
     'InstanceGceSetupDataDisksArgs',
     'InstanceGceSetupNetworkInterfaceArgs',
     'InstanceGceSetupServiceAccountArgs',
+    'InstanceGceSetupShieldedInstanceConfigArgs',
     'InstanceGceSetupVmImageArgs',
     'InstanceHealthInfoArgs',
     'InstanceIamBindingConditionArgs',
@@ -28,6 +30,7 @@ class InstanceGceSetupArgs:
     def __init__(__self__, *,
                  accelerator_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGceSetupAcceleratorConfigArgs']]]] = None,
                  boot_disk: Optional[pulumi.Input['InstanceGceSetupBootDiskArgs']] = None,
+                 container_image: Optional[pulumi.Input['InstanceGceSetupContainerImageArgs']] = None,
                  data_disks: Optional[pulumi.Input['InstanceGceSetupDataDisksArgs']] = None,
                  disable_public_ip: Optional[pulumi.Input[bool]] = None,
                  enable_ip_forwarding: Optional[pulumi.Input[bool]] = None,
@@ -35,6 +38,7 @@ class InstanceGceSetupArgs:
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGceSetupNetworkInterfaceArgs']]]] = None,
                  service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGceSetupServiceAccountArgs']]]] = None,
+                 shielded_instance_config: Optional[pulumi.Input['InstanceGceSetupShieldedInstanceConfigArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vm_image: Optional[pulumi.Input['InstanceGceSetupVmImageArgs']] = None):
         """
@@ -43,6 +47,8 @@ class InstanceGceSetupArgs:
                Currently supports only one accelerator configuration.
                Structure is documented below.
         :param pulumi.Input['InstanceGceSetupBootDiskArgs'] boot_disk: The definition of a boot disk.
+               Structure is documented below.
+        :param pulumi.Input['InstanceGceSetupContainerImageArgs'] container_image: Use a container image to start the workbench instance.
                Structure is documented below.
         :param pulumi.Input['InstanceGceSetupDataDisksArgs'] data_disks: Data disks attached to the VM instance. Currently supports only one data disk.
                Structure is documented below.
@@ -55,6 +61,10 @@ class InstanceGceSetupArgs:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGceSetupServiceAccountArgs']]] service_accounts: The service account that serves as an identity for the VM instance. Currently supports only one service account.
                Structure is documented below.
+        :param pulumi.Input['InstanceGceSetupShieldedInstanceConfigArgs'] shielded_instance_config: A set of Shielded Instance options. See [Images using supported Shielded
+               VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+               Not all combinations are valid.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Optional. The Compute Engine tags to add to instance (see [Tagging
                instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
         :param pulumi.Input['InstanceGceSetupVmImageArgs'] vm_image: Definition of a custom Compute Engine virtual machine image for starting
@@ -65,6 +75,8 @@ class InstanceGceSetupArgs:
             pulumi.set(__self__, "accelerator_configs", accelerator_configs)
         if boot_disk is not None:
             pulumi.set(__self__, "boot_disk", boot_disk)
+        if container_image is not None:
+            pulumi.set(__self__, "container_image", container_image)
         if data_disks is not None:
             pulumi.set(__self__, "data_disks", data_disks)
         if disable_public_ip is not None:
@@ -79,6 +91,8 @@ class InstanceGceSetupArgs:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
         if service_accounts is not None:
             pulumi.set(__self__, "service_accounts", service_accounts)
+        if shielded_instance_config is not None:
+            pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if vm_image is not None:
@@ -111,6 +125,19 @@ class InstanceGceSetupArgs:
     @boot_disk.setter
     def boot_disk(self, value: Optional[pulumi.Input['InstanceGceSetupBootDiskArgs']]):
         pulumi.set(self, "boot_disk", value)
+
+    @property
+    @pulumi.getter(name="containerImage")
+    def container_image(self) -> Optional[pulumi.Input['InstanceGceSetupContainerImageArgs']]:
+        """
+        Use a container image to start the workbench instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "container_image")
+
+    @container_image.setter
+    def container_image(self, value: Optional[pulumi.Input['InstanceGceSetupContainerImageArgs']]):
+        pulumi.set(self, "container_image", value)
 
     @property
     @pulumi.getter(name="dataDisks")
@@ -199,6 +226,21 @@ class InstanceGceSetupArgs:
     @service_accounts.setter
     def service_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGceSetupServiceAccountArgs']]]]):
         pulumi.set(self, "service_accounts", value)
+
+    @property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> Optional[pulumi.Input['InstanceGceSetupShieldedInstanceConfigArgs']]:
+        """
+        A set of Shielded Instance options. See [Images using supported Shielded
+        VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+        Not all combinations are valid.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "shielded_instance_config")
+
+    @shielded_instance_config.setter
+    def shielded_instance_config(self, value: Optional[pulumi.Input['InstanceGceSetupShieldedInstanceConfigArgs']]):
+        pulumi.set(self, "shielded_instance_config", value)
 
     @property
     @pulumi.getter
@@ -352,6 +394,46 @@ class InstanceGceSetupBootDiskArgs:
     @kms_key.setter
     def kms_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kms_key", value)
+
+
+@pulumi.input_type
+class InstanceGceSetupContainerImageArgs:
+    def __init__(__self__, *,
+                 repository: pulumi.Input[str],
+                 tag: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] repository: The path to the container image repository.
+               For example: gcr.io/{project_id}/{imageName}
+        :param pulumi.Input[str] tag: The tag of the container image. If not specified, this defaults to the latest tag.
+        """
+        pulumi.set(__self__, "repository", repository)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter
+    def repository(self) -> pulumi.Input[str]:
+        """
+        The path to the container image repository.
+        For example: gcr.io/{project_id}/{imageName}
+        """
+        return pulumi.get(self, "repository")
+
+    @repository.setter
+    def repository(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repository", value)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        The tag of the container image. If not specified, this defaults to the latest tag.
+        """
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag", value)
 
 
 @pulumi.input_type
@@ -542,6 +624,77 @@ class InstanceGceSetupServiceAccountArgs:
 
 
 @pulumi.input_type
+class InstanceGceSetupShieldedInstanceConfigArgs:
+    def __init__(__self__, *,
+                 enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
+                 enable_secure_boot: Optional[pulumi.Input[bool]] = None,
+                 enable_vtpm: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enable_integrity_monitoring: Optional. Defines whether the VM instance has integrity monitoring
+               enabled. Enables monitoring and attestation of the boot integrity of the VM
+               instance. The attestation is performed against the integrity policy baseline.
+               This baseline is initially derived from the implicitly trusted boot image
+               when the VM instance is created. Enabled by default.
+        :param pulumi.Input[bool] enable_secure_boot: Optional. Defines whether the VM instance has Secure Boot enabled.
+               Secure Boot helps ensure that the system only runs authentic software by verifying
+               the digital signature of all boot components, and halting the boot process
+               if signature verification fails. Disabled by default.
+        :param pulumi.Input[bool] enable_vtpm: Optional. Defines whether the VM instance has the vTPM enabled.
+               Enabled by default.
+        """
+        if enable_integrity_monitoring is not None:
+            pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
+        if enable_secure_boot is not None:
+            pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
+        if enable_vtpm is not None:
+            pulumi.set(__self__, "enable_vtpm", enable_vtpm)
+
+    @property
+    @pulumi.getter(name="enableIntegrityMonitoring")
+    def enable_integrity_monitoring(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Defines whether the VM instance has integrity monitoring
+        enabled. Enables monitoring and attestation of the boot integrity of the VM
+        instance. The attestation is performed against the integrity policy baseline.
+        This baseline is initially derived from the implicitly trusted boot image
+        when the VM instance is created. Enabled by default.
+        """
+        return pulumi.get(self, "enable_integrity_monitoring")
+
+    @enable_integrity_monitoring.setter
+    def enable_integrity_monitoring(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_integrity_monitoring", value)
+
+    @property
+    @pulumi.getter(name="enableSecureBoot")
+    def enable_secure_boot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Defines whether the VM instance has Secure Boot enabled.
+        Secure Boot helps ensure that the system only runs authentic software by verifying
+        the digital signature of all boot components, and halting the boot process
+        if signature verification fails. Disabled by default.
+        """
+        return pulumi.get(self, "enable_secure_boot")
+
+    @enable_secure_boot.setter
+    def enable_secure_boot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_secure_boot", value)
+
+    @property
+    @pulumi.getter(name="enableVtpm")
+    def enable_vtpm(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Defines whether the VM instance has the vTPM enabled.
+        Enabled by default.
+        """
+        return pulumi.get(self, "enable_vtpm")
+
+    @enable_vtpm.setter
+    def enable_vtpm(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_vtpm", value)
+
+
+@pulumi.input_type
 class InstanceGceSetupVmImageArgs:
     def __init__(__self__, *,
                  family: Optional[pulumi.Input[str]] = None,
@@ -698,7 +851,8 @@ class InstanceUpgradeHistoryArgs:
                  vm_image: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] action: Optional. Action. Rolloback or Upgrade.
-        :param pulumi.Input[str] container_image: Optional. The container image before this instance upgrade.
+        :param pulumi.Input[str] container_image: Use a container image to start the workbench instance.
+               Structure is documented below.
         :param pulumi.Input[str] create_time: An RFC3339 timestamp in UTC time. This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
                The milliseconds portion (".SSS") is optional.
         :param pulumi.Input[str] framework: Optional. The framework of this workbench instance.
@@ -746,7 +900,8 @@ class InstanceUpgradeHistoryArgs:
     @pulumi.getter(name="containerImage")
     def container_image(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The container image before this instance upgrade.
+        Use a container image to start the workbench instance.
+        Structure is documented below.
         """
         return pulumi.get(self, "container_image")
 

@@ -54,6 +54,44 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Workbench Instance Basic Container
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.workbench.Instance;
+ * import com.pulumi.gcp.workbench.InstanceArgs;
+ * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
+ * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupContainerImageArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *             .name(&#34;workbench-instance&#34;)
+ *             .location(&#34;us-west1-a&#34;)
+ *             .gceSetup(InstanceGceSetupArgs.builder()
+ *                 .containerImage(InstanceGceSetupContainerImageArgs.builder()
+ *                     .repository(&#34;us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310&#34;)
+ *                     .tag(&#34;latest&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Workbench Instance Basic Gpu
  * ```java
  * package generated_program;
@@ -107,6 +145,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.workbench.Instance;
  * import com.pulumi.gcp.workbench.InstanceArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
+ * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupShieldedInstanceConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -125,6 +164,11 @@ import javax.annotation.Nullable;
  *             .location(&#34;us-central1-a&#34;)
  *             .gceSetup(InstanceGceSetupArgs.builder()
  *                 .machineType(&#34;e2-standard-4&#34;)
+ *                 .shieldedInstanceConfig(InstanceGceSetupShieldedInstanceConfigArgs.builder()
+ *                     .enableSecureBoot(false)
+ *                     .enableVtpm(false)
+ *                     .enableIntegrityMonitoring(false)
+ *                     .build())
  *                 .serviceAccounts(InstanceGceSetupServiceAccountArgs.builder()
  *                     .email(&#34;my@service-account.com&#34;)
  *                     .build())
@@ -152,6 +196,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.workbench.Instance;
  * import com.pulumi.gcp.workbench.InstanceArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
+ * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupShieldedInstanceConfigArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupBootDiskArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupDataDisksArgs;
  * import java.util.List;
@@ -187,6 +232,11 @@ import javax.annotation.Nullable;
  *                 .acceleratorConfigs(InstanceGceSetupAcceleratorConfigArgs.builder()
  *                     .type(&#34;NVIDIA_TESLA_T4&#34;)
  *                     .coreCount(1)
+ *                     .build())
+ *                 .shieldedInstanceConfig(InstanceGceSetupShieldedInstanceConfigArgs.builder()
+ *                     .enableSecureBoot(true)
+ *                     .enableVtpm(true)
+ *                     .enableIntegrityMonitoring(true)
  *                     .build())
  *                 .disablePublicIp(false)
  *                 .serviceAccounts(InstanceGceSetupServiceAccountArgs.builder()

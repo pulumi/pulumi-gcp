@@ -35,6 +35,13 @@ namespace Pulumi.Gcp.Workbench.Inputs
         public Input<Inputs.InstanceGceSetupBootDiskArgs>? BootDisk { get; set; }
 
         /// <summary>
+        /// Use a container image to start the workbench instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("containerImage")]
+        public Input<Inputs.InstanceGceSetupContainerImageArgs>? ContainerImage { get; set; }
+
+        /// <summary>
         /// Data disks attached to the VM instance. Currently supports only one data disk.
         /// Structure is documented below.
         /// </summary>
@@ -97,6 +104,15 @@ namespace Pulumi.Gcp.Workbench.Inputs
             get => _serviceAccounts ?? (_serviceAccounts = new InputList<Inputs.InstanceGceSetupServiceAccountArgs>());
             set => _serviceAccounts = value;
         }
+
+        /// <summary>
+        /// A set of Shielded Instance options. See [Images using supported Shielded
+        /// VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+        /// Not all combinations are valid.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("shieldedInstanceConfig")]
+        public Input<Inputs.InstanceGceSetupShieldedInstanceConfigArgs>? ShieldedInstanceConfig { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

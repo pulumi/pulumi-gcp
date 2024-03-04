@@ -11,6 +11,7 @@ from .backup_vault import *
 from .kmsconfig import *
 from .storage_pool import *
 from .volume import *
+from .volume_replication import *
 from .volume_snapshot import *
 from ._inputs import *
 from . import outputs

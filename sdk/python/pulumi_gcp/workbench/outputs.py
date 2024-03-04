@@ -14,9 +14,11 @@ __all__ = [
     'InstanceGceSetup',
     'InstanceGceSetupAcceleratorConfig',
     'InstanceGceSetupBootDisk',
+    'InstanceGceSetupContainerImage',
     'InstanceGceSetupDataDisks',
     'InstanceGceSetupNetworkInterface',
     'InstanceGceSetupServiceAccount',
+    'InstanceGceSetupShieldedInstanceConfig',
     'InstanceGceSetupVmImage',
     'InstanceHealthInfo',
     'InstanceIamBindingCondition',
@@ -33,6 +35,8 @@ class InstanceGceSetup(dict):
             suggest = "accelerator_configs"
         elif key == "bootDisk":
             suggest = "boot_disk"
+        elif key == "containerImage":
+            suggest = "container_image"
         elif key == "dataDisks":
             suggest = "data_disks"
         elif key == "disablePublicIp":
@@ -45,6 +49,8 @@ class InstanceGceSetup(dict):
             suggest = "network_interfaces"
         elif key == "serviceAccounts":
             suggest = "service_accounts"
+        elif key == "shieldedInstanceConfig":
+            suggest = "shielded_instance_config"
         elif key == "vmImage":
             suggest = "vm_image"
 
@@ -62,6 +68,7 @@ class InstanceGceSetup(dict):
     def __init__(__self__, *,
                  accelerator_configs: Optional[Sequence['outputs.InstanceGceSetupAcceleratorConfig']] = None,
                  boot_disk: Optional['outputs.InstanceGceSetupBootDisk'] = None,
+                 container_image: Optional['outputs.InstanceGceSetupContainerImage'] = None,
                  data_disks: Optional['outputs.InstanceGceSetupDataDisks'] = None,
                  disable_public_ip: Optional[bool] = None,
                  enable_ip_forwarding: Optional[bool] = None,
@@ -69,6 +76,7 @@ class InstanceGceSetup(dict):
                  metadata: Optional[Mapping[str, str]] = None,
                  network_interfaces: Optional[Sequence['outputs.InstanceGceSetupNetworkInterface']] = None,
                  service_accounts: Optional[Sequence['outputs.InstanceGceSetupServiceAccount']] = None,
+                 shielded_instance_config: Optional['outputs.InstanceGceSetupShieldedInstanceConfig'] = None,
                  tags: Optional[Sequence[str]] = None,
                  vm_image: Optional['outputs.InstanceGceSetupVmImage'] = None):
         """
@@ -77,6 +85,8 @@ class InstanceGceSetup(dict):
                Currently supports only one accelerator configuration.
                Structure is documented below.
         :param 'InstanceGceSetupBootDiskArgs' boot_disk: The definition of a boot disk.
+               Structure is documented below.
+        :param 'InstanceGceSetupContainerImageArgs' container_image: Use a container image to start the workbench instance.
                Structure is documented below.
         :param 'InstanceGceSetupDataDisksArgs' data_disks: Data disks attached to the VM instance. Currently supports only one data disk.
                Structure is documented below.
@@ -89,6 +99,10 @@ class InstanceGceSetup(dict):
                Structure is documented below.
         :param Sequence['InstanceGceSetupServiceAccountArgs'] service_accounts: The service account that serves as an identity for the VM instance. Currently supports only one service account.
                Structure is documented below.
+        :param 'InstanceGceSetupShieldedInstanceConfigArgs' shielded_instance_config: A set of Shielded Instance options. See [Images using supported Shielded
+               VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+               Not all combinations are valid.
+               Structure is documented below.
         :param Sequence[str] tags: Optional. The Compute Engine tags to add to instance (see [Tagging
                instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
         :param 'InstanceGceSetupVmImageArgs' vm_image: Definition of a custom Compute Engine virtual machine image for starting
@@ -99,6 +113,8 @@ class InstanceGceSetup(dict):
             pulumi.set(__self__, "accelerator_configs", accelerator_configs)
         if boot_disk is not None:
             pulumi.set(__self__, "boot_disk", boot_disk)
+        if container_image is not None:
+            pulumi.set(__self__, "container_image", container_image)
         if data_disks is not None:
             pulumi.set(__self__, "data_disks", data_disks)
         if disable_public_ip is not None:
@@ -113,6 +129,8 @@ class InstanceGceSetup(dict):
             pulumi.set(__self__, "network_interfaces", network_interfaces)
         if service_accounts is not None:
             pulumi.set(__self__, "service_accounts", service_accounts)
+        if shielded_instance_config is not None:
+            pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if vm_image is not None:
@@ -137,6 +155,15 @@ class InstanceGceSetup(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "boot_disk")
+
+    @property
+    @pulumi.getter(name="containerImage")
+    def container_image(self) -> Optional['outputs.InstanceGceSetupContainerImage']:
+        """
+        Use a container image to start the workbench instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "container_image")
 
     @property
     @pulumi.getter(name="dataDisks")
@@ -197,6 +224,17 @@ class InstanceGceSetup(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "service_accounts")
+
+    @property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> Optional['outputs.InstanceGceSetupShieldedInstanceConfig']:
+        """
+        A set of Shielded Instance options. See [Images using supported Shielded
+        VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+        Not all combinations are valid.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "shielded_instance_config")
 
     @property
     @pulumi.getter
@@ -358,6 +396,38 @@ class InstanceGceSetupBootDisk(dict):
         Learn more about using your own encryption keys.'
         """
         return pulumi.get(self, "kms_key")
+
+
+@pulumi.output_type
+class InstanceGceSetupContainerImage(dict):
+    def __init__(__self__, *,
+                 repository: str,
+                 tag: Optional[str] = None):
+        """
+        :param str repository: The path to the container image repository.
+               For example: gcr.io/{project_id}/{imageName}
+        :param str tag: The tag of the container image. If not specified, this defaults to the latest tag.
+        """
+        pulumi.set(__self__, "repository", repository)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter
+    def repository(self) -> str:
+        """
+        The path to the container image repository.
+        For example: gcr.io/{project_id}/{imageName}
+        """
+        return pulumi.get(self, "repository")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[str]:
+        """
+        The tag of the container image. If not specified, this defaults to the latest tag.
+        """
+        return pulumi.get(self, "tag")
 
 
 @pulumi.output_type
@@ -552,6 +622,86 @@ class InstanceGceSetupServiceAccount(dict):
 
 
 @pulumi.output_type
+class InstanceGceSetupShieldedInstanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableIntegrityMonitoring":
+            suggest = "enable_integrity_monitoring"
+        elif key == "enableSecureBoot":
+            suggest = "enable_secure_boot"
+        elif key == "enableVtpm":
+            suggest = "enable_vtpm"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGceSetupShieldedInstanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGceSetupShieldedInstanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGceSetupShieldedInstanceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_integrity_monitoring: Optional[bool] = None,
+                 enable_secure_boot: Optional[bool] = None,
+                 enable_vtpm: Optional[bool] = None):
+        """
+        :param bool enable_integrity_monitoring: Optional. Defines whether the VM instance has integrity monitoring
+               enabled. Enables monitoring and attestation of the boot integrity of the VM
+               instance. The attestation is performed against the integrity policy baseline.
+               This baseline is initially derived from the implicitly trusted boot image
+               when the VM instance is created. Enabled by default.
+        :param bool enable_secure_boot: Optional. Defines whether the VM instance has Secure Boot enabled.
+               Secure Boot helps ensure that the system only runs authentic software by verifying
+               the digital signature of all boot components, and halting the boot process
+               if signature verification fails. Disabled by default.
+        :param bool enable_vtpm: Optional. Defines whether the VM instance has the vTPM enabled.
+               Enabled by default.
+        """
+        if enable_integrity_monitoring is not None:
+            pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
+        if enable_secure_boot is not None:
+            pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
+        if enable_vtpm is not None:
+            pulumi.set(__self__, "enable_vtpm", enable_vtpm)
+
+    @property
+    @pulumi.getter(name="enableIntegrityMonitoring")
+    def enable_integrity_monitoring(self) -> Optional[bool]:
+        """
+        Optional. Defines whether the VM instance has integrity monitoring
+        enabled. Enables monitoring and attestation of the boot integrity of the VM
+        instance. The attestation is performed against the integrity policy baseline.
+        This baseline is initially derived from the implicitly trusted boot image
+        when the VM instance is created. Enabled by default.
+        """
+        return pulumi.get(self, "enable_integrity_monitoring")
+
+    @property
+    @pulumi.getter(name="enableSecureBoot")
+    def enable_secure_boot(self) -> Optional[bool]:
+        """
+        Optional. Defines whether the VM instance has Secure Boot enabled.
+        Secure Boot helps ensure that the system only runs authentic software by verifying
+        the digital signature of all boot components, and halting the boot process
+        if signature verification fails. Disabled by default.
+        """
+        return pulumi.get(self, "enable_secure_boot")
+
+    @property
+    @pulumi.getter(name="enableVtpm")
+    def enable_vtpm(self) -> Optional[bool]:
+        """
+        Optional. Defines whether the VM instance has the vTPM enabled.
+        Enabled by default.
+        """
+        return pulumi.get(self, "enable_vtpm")
+
+
+@pulumi.output_type
 class InstanceGceSetupVmImage(dict):
     def __init__(__self__, *,
                  family: Optional[str] = None,
@@ -695,7 +845,8 @@ class InstanceUpgradeHistory(dict):
                  vm_image: Optional[str] = None):
         """
         :param str action: Optional. Action. Rolloback or Upgrade.
-        :param str container_image: Optional. The container image before this instance upgrade.
+        :param str container_image: Use a container image to start the workbench instance.
+               Structure is documented below.
         :param str create_time: An RFC3339 timestamp in UTC time. This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
                The milliseconds portion (".SSS") is optional.
         :param str framework: Optional. The framework of this workbench instance.
@@ -739,7 +890,8 @@ class InstanceUpgradeHistory(dict):
     @pulumi.getter(name="containerImage")
     def container_image(self) -> Optional[str]:
         """
-        Optional. The container image before this instance upgrade.
+        Use a container image to start the workbench instance.
+        Structure is documented below.
         """
         return pulumi.get(self, "container_image")
 

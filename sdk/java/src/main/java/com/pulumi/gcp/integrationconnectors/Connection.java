@@ -456,7 +456,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.connectorVersion;
     }
     /**
-     * This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version.
+     * This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
      * Structure is documented below.
      * 
      */
@@ -464,7 +464,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
     private Output<List<ConnectionConnectorVersionInfraConfig>> connectorVersionInfraConfigs;
 
     /**
-     * @return This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version.
+     * @return This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
      * Structure is documented below.
      * 
      */

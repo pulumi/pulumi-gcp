@@ -15094,8 +15094,24 @@
                     }
                 }
             },
+            "google_firebase_app_check_app_attest_config": {
+                "current": "gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig",
+                "majorVersion": 7
+            },
             "google_firebase_app_check_debug_token": {
                 "current": "gcp:firebase/appCheckDebugToken:AppCheckDebugToken",
+                "majorVersion": 7
+            },
+            "google_firebase_app_check_play_integrity_config": {
+                "current": "gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig",
+                "majorVersion": 7
+            },
+            "google_firebase_app_check_recaptcha_enterprise_config": {
+                "current": "gcp:firebase/appCheckRecaptchaEnterpriseConfig:AppCheckRecaptchaEnterpriseConfig",
+                "majorVersion": 7
+            },
+            "google_firebase_app_check_recaptcha_v3_config": {
+                "current": "gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config",
                 "majorVersion": 7
             },
             "google_firebase_app_check_service_config": {
@@ -18067,6 +18083,9 @@
                             }
                         }
                     },
+                    "custom_domain": {
+                        "maxItemsOne": true
+                    },
                     "deny_maintenance_period": {
                         "maxItemsOne": true,
                         "elem": {
@@ -18148,6 +18167,59 @@
             "google_migration_center_group": {
                 "current": "gcp:migrationcenter/group:Group",
                 "majorVersion": 7
+            },
+            "google_migration_center_preference_set": {
+                "current": "gcp:migrationcenter/preferenceSet:PreferenceSet",
+                "majorVersion": 7,
+                "fields": {
+                    "virtual_machine_preferences": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "compute_engine_preferences": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "machine_preferences": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "allowed_machine_series": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "region_preferences": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "preferred_regions": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "sole_tenancy_preferences": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "node_types": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "vmware_engine_preferences": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "google_ml_engine_model": {
                 "current": "gcp:ml/engineModel:EngineModel",
@@ -18562,6 +18634,9 @@
                     "protocols": {
                         "maxItemsOne": false
                     },
+                    "restore_parameters": {
+                        "maxItemsOne": true
+                    },
                     "restricted_actions": {
                         "maxItemsOne": false
                     },
@@ -18586,6 +18661,18 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "google_netapp_volume_replication": {
+                "current": "gcp:netapp/volumeReplication:VolumeReplication",
+                "majorVersion": 7,
+                "fields": {
+                    "destination_volume_parameters": {
+                        "maxItemsOne": true
+                    },
+                    "transfer_stats": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -23480,6 +23567,9 @@
                                 "boot_disk": {
                                     "maxItemsOne": true
                                 },
+                                "container_image": {
+                                    "maxItemsOne": true
+                                },
                                 "data_disks": {
                                     "maxItemsOne": true
                                 },
@@ -23495,6 +23585,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "shielded_instance_config": {
+                                    "maxItemsOne": true
                                 },
                                 "tags": {
                                     "maxItemsOne": false
@@ -25296,6 +25389,28 @@
                     },
                     "source_ip_ranges": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "google_compute_forwarding_rules": {
+                "current": "gcp:compute/getForwardingRules:getForwardingRules",
+                "majorVersion": 7,
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ports": {
+                                    "maxItemsOne": false
+                                },
+                                "service_directory_registrations": {
+                                    "maxItemsOne": false
+                                },
+                                "source_ip_ranges": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -29210,6 +29325,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_netapp_volume_replication": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_netapp_volume_snapshot": [
                 "effective_labels",
                 "terraform_labels"
@@ -29499,6 +29618,10 @@
             "google_compute_forwarding_rule": [
                 "effective_labels",
                 "terraform_labels"
+            ],
+            "google_compute_forwarding_rules": [
+                "rules.$.effective_labels",
+                "rules.$.terraform_labels"
             ],
             "google_compute_global_forwarding_rule": [
                 "effective_labels",
@@ -30064,7 +30187,11 @@
             "gcp:filestore/instance:Instance": 0,
             "gcp:filestore/snapshot:Snapshot": 0,
             "gcp:firebase/androidApp:AndroidApp": 0,
+            "gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig": 0,
             "gcp:firebase/appCheckDebugToken:AppCheckDebugToken": 0,
+            "gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig": 0,
+            "gcp:firebase/appCheckRecaptchaEnterpriseConfig:AppCheckRecaptchaEnterpriseConfig": 0,
+            "gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config": 0,
             "gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig": 0,
             "gcp:firebase/appleApp:AppleApp": 0,
             "gcp:firebase/databaseInstance:DatabaseInstance": 0,
@@ -30218,6 +30345,7 @@
             "gcp:looker/instance:Instance": 0,
             "gcp:memcache/instance:Instance": 0,
             "gcp:migrationcenter/group:Group": 0,
+            "gcp:migrationcenter/preferenceSet:PreferenceSet": 0,
             "gcp:ml/engineModel:EngineModel": 0,
             "gcp:monitoring/alertPolicy:AlertPolicy": 0,
             "gcp:monitoring/customService:CustomService": 0,
@@ -30235,6 +30363,7 @@
             "gcp:netapp/kmsconfig:Kmsconfig": 0,
             "gcp:netapp/storagePool:StoragePool": 0,
             "gcp:netapp/volume:Volume": 0,
+            "gcp:netapp/volumeReplication:VolumeReplication": 0,
             "gcp:netapp/volumeSnapshot:VolumeSnapshot": 0,
             "gcp:networkconnectivity/hub:Hub": 0,
             "gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute": 0,
@@ -30525,6 +30654,7 @@
             "gcp:compute/getDisk:getDisk": 0,
             "gcp:compute/getDiskIamPolicy:getDiskIamPolicy": 0,
             "gcp:compute/getForwardingRule:getForwardingRule": 0,
+            "gcp:compute/getForwardingRules:getForwardingRules": 0,
             "gcp:compute/getGlobalAddress:getGlobalAddress": 0,
             "gcp:compute/getGlobalForwardingRule:getGlobalForwardingRule": 0,
             "gcp:compute/getHcVpnGateway:getHcVpnGateway": 0,

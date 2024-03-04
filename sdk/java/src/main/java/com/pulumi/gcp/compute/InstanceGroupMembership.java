@@ -17,11 +17,11 @@ import javax.annotation.Nullable;
 /**
  * Represents the Instance membership to the Instance Group.
  * 
- * **NOTE** You can use this resource instead of the `instances` field in the
+ * &gt; **NOTE** You can use this resource instead of the `instances` field in the
  * `gcp.compute.InstanceGroup`, however it&#39;s not recommended to use it alongside this field.
  * It might cause inconsistencies, as they can end up competing over control.
  * 
- * **NOTE** This resource has been added to avoid a situation, where after
+ * &gt; **NOTE** This resource has been added to avoid a situation, where after
  * Instance is recreated, it&#39;s removed from Instance Group and it&#39;s needed to
  * perform `apply` twice. To avoid situations like this, please use this resource
  * with the lifecycle `update_triggered_by` method, with the passed Instance&#39;s ID.

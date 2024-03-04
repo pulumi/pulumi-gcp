@@ -26,6 +26,7 @@ import com.pulumi.gcp.container.inputs.NodePoolNodeConfigTaintArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigWorkloadMetadataConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -474,6 +475,21 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+     * 
+     */
+    @Import(name="resourceManagerTags")
+    private @Nullable Output<Map<String,Object>> resourceManagerTags;
+
+    /**
+     * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> resourceManagerTags() {
+        return Optional.ofNullable(this.resourceManagerTags);
+    }
+
+    /**
      * Sandbox configuration for this node.
      * 
      */
@@ -625,6 +641,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         this.preemptible = $.preemptible;
         this.reservationAffinity = $.reservationAffinity;
         this.resourceLabels = $.resourceLabels;
+        this.resourceManagerTags = $.resourceManagerTags;
         this.sandboxConfig = $.sandboxConfig;
         this.serviceAccount = $.serviceAccount;
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
@@ -1290,6 +1307,27 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
          */
         public Builder resourceLabels(Map<String,String> resourceLabels) {
             return resourceLabels(Output.of(resourceLabels));
+        }
+
+        /**
+         * @param resourceManagerTags A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceManagerTags(@Nullable Output<Map<String,Object>> resourceManagerTags) {
+            $.resourceManagerTags = resourceManagerTags;
+            return this;
+        }
+
+        /**
+         * @param resourceManagerTags A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceManagerTags(Map<String,Object> resourceManagerTags) {
+            return resourceManagerTags(Output.of(resourceManagerTags));
         }
 
         /**

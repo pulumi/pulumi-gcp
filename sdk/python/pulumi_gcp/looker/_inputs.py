@@ -11,6 +11,7 @@ from .. import _utilities
 
 __all__ = [
     'InstanceAdminSettingsArgs',
+    'InstanceCustomDomainArgs',
     'InstanceDenyMaintenancePeriodArgs',
     'InstanceDenyMaintenancePeriodEndDateArgs',
     'InstanceDenyMaintenancePeriodStartDateArgs',
@@ -37,6 +38,47 @@ class InstanceAdminSettingsArgs:
     @allowed_email_domains.setter
     def allowed_email_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allowed_email_domains", value)
+
+
+@pulumi.input_type
+class InstanceCustomDomainArgs:
+    def __init__(__self__, *,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] domain: Domain name
+        :param pulumi.Input[str] state: (Output)
+               Status of the custom domain.
+        """
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        Domain name
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Status of the custom domain.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
 
 
 @pulumi.input_type

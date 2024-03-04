@@ -14,6 +14,9 @@ __all__ = [
     'VolumeExportPolicy',
     'VolumeExportPolicyRule',
     'VolumeMountOption',
+    'VolumeReplicationDestinationVolumeParameters',
+    'VolumeReplicationTransferStat',
+    'VolumeRestoreParameters',
     'VolumeSnapshotPolicy',
     'VolumeSnapshotPolicyDailySchedule',
     'VolumeSnapshotPolicyHourlySchedule',
@@ -297,6 +300,293 @@ class VolumeMountOption(dict):
         Protocol to mount with.
         """
         return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
+class VolumeReplicationDestinationVolumeParameters(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "storagePool":
+            suggest = "storage_pool"
+        elif key == "shareName":
+            suggest = "share_name"
+        elif key == "volumeId":
+            suggest = "volume_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VolumeReplicationDestinationVolumeParameters. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VolumeReplicationDestinationVolumeParameters.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VolumeReplicationDestinationVolumeParameters.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 storage_pool: str,
+                 description: Optional[str] = None,
+                 share_name: Optional[str] = None,
+                 volume_id: Optional[str] = None):
+        """
+        :param str storage_pool: Name of an existing storage pool for the destination volume with format: `projects/{{project}}/locations/{{location}}/storagePools/{{poolId}}`
+        :param str description: Description for the destination volume.
+        :param str share_name: Share name for destination volume. If not specified, name of source volume's share name will be used.
+        :param str volume_id: Name for the destination volume to be created. If not specified, the name of the source volume will be used.
+        """
+        pulumi.set(__self__, "storage_pool", storage_pool)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if share_name is not None:
+            pulumi.set(__self__, "share_name", share_name)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @property
+    @pulumi.getter(name="storagePool")
+    def storage_pool(self) -> str:
+        """
+        Name of an existing storage pool for the destination volume with format: `projects/{{project}}/locations/{{location}}/storagePools/{{poolId}}`
+        """
+        return pulumi.get(self, "storage_pool")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description for the destination volume.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="shareName")
+    def share_name(self) -> Optional[str]:
+        """
+        Share name for destination volume. If not specified, name of source volume's share name will be used.
+        """
+        return pulumi.get(self, "share_name")
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> Optional[str]:
+        """
+        Name for the destination volume to be created. If not specified, the name of the source volume will be used.
+        """
+        return pulumi.get(self, "volume_id")
+
+
+@pulumi.output_type
+class VolumeReplicationTransferStat(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lagDuration":
+            suggest = "lag_duration"
+        elif key == "lastTransferBytes":
+            suggest = "last_transfer_bytes"
+        elif key == "lastTransferDuration":
+            suggest = "last_transfer_duration"
+        elif key == "lastTransferEndTime":
+            suggest = "last_transfer_end_time"
+        elif key == "lastTransferError":
+            suggest = "last_transfer_error"
+        elif key == "totalTransferDuration":
+            suggest = "total_transfer_duration"
+        elif key == "transferBytes":
+            suggest = "transfer_bytes"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VolumeReplicationTransferStat. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VolumeReplicationTransferStat.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VolumeReplicationTransferStat.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 lag_duration: Optional[str] = None,
+                 last_transfer_bytes: Optional[str] = None,
+                 last_transfer_duration: Optional[str] = None,
+                 last_transfer_end_time: Optional[str] = None,
+                 last_transfer_error: Optional[str] = None,
+                 total_transfer_duration: Optional[str] = None,
+                 transfer_bytes: Optional[str] = None,
+                 update_time: Optional[str] = None):
+        """
+        :param str lag_duration: (Output)
+               The elapsed time since the creation of the snapshot on the source volume that was last replicated
+               to the destination volume. Lag time represents the difference in age of the destination volume
+               data in relation to the source volume data.
+        :param str last_transfer_bytes: (Output)
+               Size of last completed transfer in bytes.
+        :param str last_transfer_duration: (Output)
+               Time taken during last completed transfer.
+        :param str last_transfer_end_time: (Output)
+               Time when last transfer completed. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+        :param str last_transfer_error: (Output)
+               A message describing the cause of the last transfer failure.
+        :param str total_transfer_duration: (Output)
+               Total time taken so far during current transfer.
+        :param str transfer_bytes: (Output)
+               Number of bytes transferred so far in current transfer.
+        :param str update_time: (Output)
+               Time when progress was updated last. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+        """
+        if lag_duration is not None:
+            pulumi.set(__self__, "lag_duration", lag_duration)
+        if last_transfer_bytes is not None:
+            pulumi.set(__self__, "last_transfer_bytes", last_transfer_bytes)
+        if last_transfer_duration is not None:
+            pulumi.set(__self__, "last_transfer_duration", last_transfer_duration)
+        if last_transfer_end_time is not None:
+            pulumi.set(__self__, "last_transfer_end_time", last_transfer_end_time)
+        if last_transfer_error is not None:
+            pulumi.set(__self__, "last_transfer_error", last_transfer_error)
+        if total_transfer_duration is not None:
+            pulumi.set(__self__, "total_transfer_duration", total_transfer_duration)
+        if transfer_bytes is not None:
+            pulumi.set(__self__, "transfer_bytes", transfer_bytes)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="lagDuration")
+    def lag_duration(self) -> Optional[str]:
+        """
+        (Output)
+        The elapsed time since the creation of the snapshot on the source volume that was last replicated
+        to the destination volume. Lag time represents the difference in age of the destination volume
+        data in relation to the source volume data.
+        """
+        return pulumi.get(self, "lag_duration")
+
+    @property
+    @pulumi.getter(name="lastTransferBytes")
+    def last_transfer_bytes(self) -> Optional[str]:
+        """
+        (Output)
+        Size of last completed transfer in bytes.
+        """
+        return pulumi.get(self, "last_transfer_bytes")
+
+    @property
+    @pulumi.getter(name="lastTransferDuration")
+    def last_transfer_duration(self) -> Optional[str]:
+        """
+        (Output)
+        Time taken during last completed transfer.
+        """
+        return pulumi.get(self, "last_transfer_duration")
+
+    @property
+    @pulumi.getter(name="lastTransferEndTime")
+    def last_transfer_end_time(self) -> Optional[str]:
+        """
+        (Output)
+        Time when last transfer completed. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+        """
+        return pulumi.get(self, "last_transfer_end_time")
+
+    @property
+    @pulumi.getter(name="lastTransferError")
+    def last_transfer_error(self) -> Optional[str]:
+        """
+        (Output)
+        A message describing the cause of the last transfer failure.
+        """
+        return pulumi.get(self, "last_transfer_error")
+
+    @property
+    @pulumi.getter(name="totalTransferDuration")
+    def total_transfer_duration(self) -> Optional[str]:
+        """
+        (Output)
+        Total time taken so far during current transfer.
+        """
+        return pulumi.get(self, "total_transfer_duration")
+
+    @property
+    @pulumi.getter(name="transferBytes")
+    def transfer_bytes(self) -> Optional[str]:
+        """
+        (Output)
+        Number of bytes transferred so far in current transfer.
+        """
+        return pulumi.get(self, "transfer_bytes")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[str]:
+        """
+        (Output)
+        Time when progress was updated last. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class VolumeRestoreParameters(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceBackup":
+            suggest = "source_backup"
+        elif key == "sourceSnapshot":
+            suggest = "source_snapshot"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VolumeRestoreParameters. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VolumeRestoreParameters.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VolumeRestoreParameters.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source_backup: Optional[str] = None,
+                 source_snapshot: Optional[str] = None):
+        """
+        :param str source_backup: Full name of the snapshot to use for creating this volume.
+               `source_snapshot` and `source_backup` cannot be used simultaneously.
+               Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
+        :param str source_snapshot: Full name of the snapshot to use for creating this volume.
+               `source_snapshot` and `source_backup` cannot be used simultaneously.
+               Format: `projects/{{project}}/locations/{{location}}/volumes/{{volume}}/snapshots/{{snapshot}}`.
+        """
+        if source_backup is not None:
+            pulumi.set(__self__, "source_backup", source_backup)
+        if source_snapshot is not None:
+            pulumi.set(__self__, "source_snapshot", source_snapshot)
+
+    @property
+    @pulumi.getter(name="sourceBackup")
+    def source_backup(self) -> Optional[str]:
+        """
+        Full name of the snapshot to use for creating this volume.
+        `source_snapshot` and `source_backup` cannot be used simultaneously.
+        Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
+        """
+        return pulumi.get(self, "source_backup")
+
+    @property
+    @pulumi.getter(name="sourceSnapshot")
+    def source_snapshot(self) -> Optional[str]:
+        """
+        Full name of the snapshot to use for creating this volume.
+        `source_snapshot` and `source_backup` cannot be used simultaneously.
+        Format: `projects/{{project}}/locations/{{location}}/volumes/{{volume}}/snapshots/{{snapshot}}`.
+        """
+        return pulumi.get(self, "source_snapshot")
 
 
 @pulumi.output_type

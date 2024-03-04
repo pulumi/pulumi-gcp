@@ -17,7 +17,8 @@ public final class InstanceUpgradeHistory {
      */
     private @Nullable String action;
     /**
-     * @return Optional. The container image before this instance upgrade.
+     * @return Use a container image to start the workbench instance.
+     * Structure is documented below.
      * 
      */
     private @Nullable String containerImage;
@@ -70,7 +71,8 @@ public final class InstanceUpgradeHistory {
         return Optional.ofNullable(this.action);
     }
     /**
-     * @return Optional. The container image before this instance upgrade.
+     * @return Use a container image to start the workbench instance.
+     * Structure is documented below.
      * 
      */
     public Optional<String> containerImage() {

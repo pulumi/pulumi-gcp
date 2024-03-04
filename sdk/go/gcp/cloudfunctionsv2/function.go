@@ -423,7 +423,6 @@ import (
 //					ServiceAccountEmail:        account.Email,
 //				},
 //				EventTrigger: &cloudfunctionsv2.FunctionEventTriggerArgs{
-//					TriggerRegion:       pulumi.String("us-central1"),
 //					EventType:           pulumi.String("google.cloud.storage.object.v1.finalized"),
 //					RetryPolicy:         pulumi.String("RETRY_POLICY_RETRY"),
 //					ServiceAccountEmail: account.Email,

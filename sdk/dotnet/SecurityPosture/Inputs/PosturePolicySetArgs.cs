@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.SecurityPosture.Inputs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("policies")]
+        [Input("policies", required: true)]
         private InputList<Inputs.PosturePolicySetPolicyArgs>? _policies;
 
         /// <summary>

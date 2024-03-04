@@ -265,7 +265,6 @@ import * as utilities from "../utilities";
  *         serviceAccountEmail: account.email,
  *     },
  *     eventTrigger: {
- *         triggerRegion: "us-central1",
  *         eventType: "google.cloud.storage.object.v1.finalized",
  *         retryPolicy: "RETRY_POLICY_RETRY",
  *         serviceAccountEmail: account.email,

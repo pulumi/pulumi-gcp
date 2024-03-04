@@ -413,8 +413,8 @@ type RouterNat struct {
 	// Maximum number of ports allocated to a VM from this NAT.
 	// This field can only be set when enableDynamicPortAllocation is enabled.
 	MaxPortsPerVm pulumi.IntPtrOutput `pulumi:"maxPortsPerVm"`
-	// Minimum number of ports allocated to a VM from this NAT.
-	MinPortsPerVm pulumi.IntPtrOutput `pulumi:"minPortsPerVm"`
+	// Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
+	MinPortsPerVm pulumi.IntOutput `pulumi:"minPortsPerVm"`
 	// Name of the NAT service. The name must be 1-63 characters long and
 	// comply with RFC1035.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -531,7 +531,7 @@ type routerNatState struct {
 	// Maximum number of ports allocated to a VM from this NAT.
 	// This field can only be set when enableDynamicPortAllocation is enabled.
 	MaxPortsPerVm *int `pulumi:"maxPortsPerVm"`
-	// Minimum number of ports allocated to a VM from this NAT.
+	// Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
 	MinPortsPerVm *int `pulumi:"minPortsPerVm"`
 	// Name of the NAT service. The name must be 1-63 characters long and
 	// comply with RFC1035.
@@ -614,7 +614,7 @@ type RouterNatState struct {
 	// Maximum number of ports allocated to a VM from this NAT.
 	// This field can only be set when enableDynamicPortAllocation is enabled.
 	MaxPortsPerVm pulumi.IntPtrInput
-	// Minimum number of ports allocated to a VM from this NAT.
+	// Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
 	MinPortsPerVm pulumi.IntPtrInput
 	// Name of the NAT service. The name must be 1-63 characters long and
 	// comply with RFC1035.
@@ -701,7 +701,7 @@ type routerNatArgs struct {
 	// Maximum number of ports allocated to a VM from this NAT.
 	// This field can only be set when enableDynamicPortAllocation is enabled.
 	MaxPortsPerVm *int `pulumi:"maxPortsPerVm"`
-	// Minimum number of ports allocated to a VM from this NAT.
+	// Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
 	MinPortsPerVm *int `pulumi:"minPortsPerVm"`
 	// Name of the NAT service. The name must be 1-63 characters long and
 	// comply with RFC1035.
@@ -785,7 +785,7 @@ type RouterNatArgs struct {
 	// Maximum number of ports allocated to a VM from this NAT.
 	// This field can only be set when enableDynamicPortAllocation is enabled.
 	MaxPortsPerVm pulumi.IntPtrInput
-	// Minimum number of ports allocated to a VM from this NAT.
+	// Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
 	MinPortsPerVm pulumi.IntPtrInput
 	// Name of the NAT service. The name must be 1-63 characters long and
 	// comply with RFC1035.
@@ -972,9 +972,9 @@ func (o RouterNatOutput) MaxPortsPerVm() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RouterNat) pulumi.IntPtrOutput { return v.MaxPortsPerVm }).(pulumi.IntPtrOutput)
 }
 
-// Minimum number of ports allocated to a VM from this NAT.
-func (o RouterNatOutput) MinPortsPerVm() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RouterNat) pulumi.IntPtrOutput { return v.MinPortsPerVm }).(pulumi.IntPtrOutput)
+// Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
+func (o RouterNatOutput) MinPortsPerVm() pulumi.IntOutput {
+	return o.ApplyT(func(v *RouterNat) pulumi.IntOutput { return v.MinPortsPerVm }).(pulumi.IntOutput)
 }
 
 // Name of the NAT service. The name must be 1-63 characters long and

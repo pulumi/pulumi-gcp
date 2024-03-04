@@ -10,6 +10,11 @@ export type Group = import("./group").Group;
 export const Group: typeof import("./group").Group = null as any;
 utilities.lazyLoad(exports, ["Group"], () => require("./group"));
 
+export { PreferenceSetArgs, PreferenceSetState } from "./preferenceSet";
+export type PreferenceSet = import("./preferenceSet").PreferenceSet;
+export const PreferenceSet: typeof import("./preferenceSet").PreferenceSet = null as any;
+utilities.lazyLoad(exports, ["PreferenceSet"], () => require("./preferenceSet"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -17,9 +22,12 @@ const _module = {
         switch (type) {
             case "gcp:migrationcenter/group:Group":
                 return new Group(name, <any>undefined, { urn })
+            case "gcp:migrationcenter/preferenceSet:PreferenceSet":
+                return new PreferenceSet(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "migrationcenter/group", _module)
+pulumi.runtime.registerResourceModule("gcp", "migrationcenter/preferenceSet", _module)

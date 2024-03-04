@@ -18,6 +18,16 @@ public final class ClusterFleet {
      */
     private @Nullable String membership;
     /**
+     * @return Short name of the fleet membership, for example &#34;member-1&#34;.
+     * 
+     */
+    private @Nullable String membershipId;
+    /**
+     * @return Location of the fleet membership, for example &#34;us-central1&#34;.
+     * 
+     */
+    private @Nullable String membershipLocation;
+    /**
      * @return Whether the cluster has been registered via the fleet API.
      * 
      */
@@ -35,6 +45,20 @@ public final class ClusterFleet {
      */
     public Optional<String> membership() {
         return Optional.ofNullable(this.membership);
+    }
+    /**
+     * @return Short name of the fleet membership, for example &#34;member-1&#34;.
+     * 
+     */
+    public Optional<String> membershipId() {
+        return Optional.ofNullable(this.membershipId);
+    }
+    /**
+     * @return Location of the fleet membership, for example &#34;us-central1&#34;.
+     * 
+     */
+    public Optional<String> membershipLocation() {
+        return Optional.ofNullable(this.membershipLocation);
     }
     /**
      * @return Whether the cluster has been registered via the fleet API.
@@ -61,12 +85,16 @@ public final class ClusterFleet {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String membership;
+        private @Nullable String membershipId;
+        private @Nullable String membershipLocation;
         private @Nullable Boolean preRegistered;
         private @Nullable String project;
         public Builder() {}
         public Builder(ClusterFleet defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.membership = defaults.membership;
+    	      this.membershipId = defaults.membershipId;
+    	      this.membershipLocation = defaults.membershipLocation;
     	      this.preRegistered = defaults.preRegistered;
     	      this.project = defaults.project;
         }
@@ -75,6 +103,18 @@ public final class ClusterFleet {
         public Builder membership(@Nullable String membership) {
 
             this.membership = membership;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder membershipId(@Nullable String membershipId) {
+
+            this.membershipId = membershipId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder membershipLocation(@Nullable String membershipLocation) {
+
+            this.membershipLocation = membershipLocation;
             return this;
         }
         @CustomType.Setter
@@ -92,6 +132,8 @@ public final class ClusterFleet {
         public ClusterFleet build() {
             final var _resultValue = new ClusterFleet();
             _resultValue.membership = membership;
+            _resultValue.membershipId = membershipId;
+            _resultValue.membershipLocation = membershipLocation;
             _resultValue.preRegistered = preRegistered;
             _resultValue.project = project;
             return _resultValue;

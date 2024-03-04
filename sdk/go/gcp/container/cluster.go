@@ -11,16 +11,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages a Google Kubernetes Engine (GKE) cluster. For more information see
-// [the official documentation](https://cloud.google.com/container-engine/docs/clusters)
-// and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters).
+// Manages a Google Kubernetes Engine (GKE) cluster.
 //
-// > **Note**: On version 5.0.0+ of the provider, you must explicitly set `deletion_protection=false`
-// (and run `pulumi up` to write the field to state) in order to destroy a cluster.
-// It is recommended to not set this field (or set it to true) until you're ready to destroy.
+// To get more information about GKE clusters, see:
+//   - [The API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters)
+//   - How-to guides
+//   - [GKE overview](https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview)
+//   - [About cluster configuration choices](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters)
 //
-// > **Warning:** All arguments and attributes, including basic auth username and
-// passwords as well as certificate outputs will be stored in the raw state as
+// > On version 5.0.0+ of the provider, you must explicitly set `deletionProtection = false`
+// and run `pulumi up` to write the field to state in order to destroy a cluster.
+//
+// > All arguments and attributes (including certificate outputs) will be stored in the raw state as
 // plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 //
 // ## Example Usage

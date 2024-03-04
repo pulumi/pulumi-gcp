@@ -19,14 +19,14 @@ public final class PostureArgs extends com.pulumi.resources.ResourceArgs {
     public static final PostureArgs Empty = new PostureArgs();
 
     /**
-     * Description of the posture.
+     * Description of the expression
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the posture.
+     * @return Description of the expression
      * 
      */
     public Optional<Output<String>> description() {
@@ -68,22 +68,20 @@ public final class PostureArgs extends com.pulumi.resources.ResourceArgs {
      * Structure is documented below.
      * 
      */
-    @Import(name="policySets")
-    private @Nullable Output<List<PosturePolicySetArgs>> policySets;
+    @Import(name="policySets", required=true)
+    private Output<List<PosturePolicySetArgs>> policySets;
 
     /**
      * @return List of policy sets for the posture.
      * Structure is documented below.
      * 
      */
-    public Optional<Output<List<PosturePolicySetArgs>>> policySets() {
-        return Optional.ofNullable(this.policySets);
+    public Output<List<PosturePolicySetArgs>> policySets() {
+        return this.policySets;
     }
 
     /**
      * Id of the posture. It is an immutable field.
-     * 
-     * ***
      * 
      */
     @Import(name="postureId", required=true)
@@ -91,8 +89,6 @@ public final class PostureArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Id of the posture. It is an immutable field.
-     * 
-     * ***
      * 
      */
     public Output<String> postureId() {
@@ -148,7 +144,7 @@ public final class PostureArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the posture.
+         * @param description Description of the expression
          * 
          * @return builder
          * 
@@ -159,7 +155,7 @@ public final class PostureArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the posture.
+         * @param description Description of the expression
          * 
          * @return builder
          * 
@@ -217,7 +213,7 @@ public final class PostureArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder policySets(@Nullable Output<List<PosturePolicySetArgs>> policySets) {
+        public Builder policySets(Output<List<PosturePolicySetArgs>> policySets) {
             $.policySets = policySets;
             return this;
         }
@@ -247,8 +243,6 @@ public final class PostureArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param postureId Id of the posture. It is an immutable field.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -259,8 +253,6 @@ public final class PostureArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param postureId Id of the posture. It is an immutable field.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -300,6 +292,9 @@ public final class PostureArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.parent == null) {
                 throw new MissingRequiredPropertyException("PostureArgs", "parent");
+            }
+            if ($.policySets == null) {
+                throw new MissingRequiredPropertyException("PostureArgs", "policySets");
             }
             if ($.postureId == null) {
                 throw new MissingRequiredPropertyException("PostureArgs", "postureId");

@@ -30,6 +30,8 @@ import com.pulumi.gcp.compute.inputs.GetDiskIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetDiskPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetForwardingRuleArgs;
 import com.pulumi.gcp.compute.inputs.GetForwardingRulePlainArgs;
+import com.pulumi.gcp.compute.inputs.GetForwardingRulesArgs;
+import com.pulumi.gcp.compute.inputs.GetForwardingRulesPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetGlobalAddressArgs;
 import com.pulumi.gcp.compute.inputs.GetGlobalAddressPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetGlobalForwardingRuleArgs;
@@ -123,6 +125,7 @@ import com.pulumi.gcp.compute.outputs.GetDefaultServiceAccountResult;
 import com.pulumi.gcp.compute.outputs.GetDiskIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetDiskResult;
 import com.pulumi.gcp.compute.outputs.GetForwardingRuleResult;
+import com.pulumi.gcp.compute.outputs.GetForwardingRulesResult;
 import com.pulumi.gcp.compute.outputs.GetGlobalAddressResult;
 import com.pulumi.gcp.compute.outputs.GetGlobalForwardingRuleResult;
 import com.pulumi.gcp.compute.outputs.GetHcVpnGatewayResult;
@@ -1820,6 +1823,234 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetForwardingRuleResult> getForwardingRulePlain(GetForwardingRulePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getForwardingRule:getForwardingRule", TypeShape.of(GetForwardingRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all networks in a specified Google Cloud project.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetForwardingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-forwarding-rules = ComputeFunctions.getForwardingRules(GetForwardingRulesArgs.builder()
+     *             .project(&#34;my-cloud-project&#34;)
+     *             .region(&#34;us-central1&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetForwardingRulesResult> getForwardingRules() {
+        return getForwardingRules(GetForwardingRulesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * List all networks in a specified Google Cloud project.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetForwardingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-forwarding-rules = ComputeFunctions.getForwardingRules(GetForwardingRulesArgs.builder()
+     *             .project(&#34;my-cloud-project&#34;)
+     *             .region(&#34;us-central1&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetForwardingRulesResult> getForwardingRulesPlain() {
+        return getForwardingRulesPlain(GetForwardingRulesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * List all networks in a specified Google Cloud project.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetForwardingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-forwarding-rules = ComputeFunctions.getForwardingRules(GetForwardingRulesArgs.builder()
+     *             .project(&#34;my-cloud-project&#34;)
+     *             .region(&#34;us-central1&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetForwardingRulesResult> getForwardingRules(GetForwardingRulesArgs args) {
+        return getForwardingRules(args, InvokeOptions.Empty);
+    }
+    /**
+     * List all networks in a specified Google Cloud project.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetForwardingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-forwarding-rules = ComputeFunctions.getForwardingRules(GetForwardingRulesArgs.builder()
+     *             .project(&#34;my-cloud-project&#34;)
+     *             .region(&#34;us-central1&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetForwardingRulesResult> getForwardingRulesPlain(GetForwardingRulesPlainArgs args) {
+        return getForwardingRulesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List all networks in a specified Google Cloud project.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetForwardingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-forwarding-rules = ComputeFunctions.getForwardingRules(GetForwardingRulesArgs.builder()
+     *             .project(&#34;my-cloud-project&#34;)
+     *             .region(&#34;us-central1&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetForwardingRulesResult> getForwardingRules(GetForwardingRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getForwardingRules:getForwardingRules", TypeShape.of(GetForwardingRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all networks in a specified Google Cloud project.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetForwardingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-forwarding-rules = ComputeFunctions.getForwardingRules(GetForwardingRulesArgs.builder()
+     *             .project(&#34;my-cloud-project&#34;)
+     *             .region(&#34;us-central1&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetForwardingRulesResult> getForwardingRulesPlain(GetForwardingRulesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getForwardingRules:getForwardingRules", TypeShape.of(GetForwardingRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get the IP address from a static address reserved for a Global Forwarding Rule which are only used for HTTP load balancing. For more information see

@@ -28,6 +28,7 @@ class VolumeArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 restore_parameters: Optional[pulumi.Input['VolumeRestoreParametersArgs']] = None,
                  restricted_actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_style: Optional[pulumi.Input[str]] = None,
                  smb_settings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -59,6 +60,8 @@ class VolumeArgs:
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['VolumeRestoreParametersArgs'] restore_parameters: Used to create this volume from a snapshot (= cloning) or an backup.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] restricted_actions: List of actions that are restricted on this volume.
                Each value may be one of: `DELETE`.
         :param pulumi.Input[str] security_style: Security Style of the Volume. Use UNIX to use UNIX or NFSV4 ACLs for file permissions.
@@ -91,6 +94,8 @@ class VolumeArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if restore_parameters is not None:
+            pulumi.set(__self__, "restore_parameters", restore_parameters)
         if restricted_actions is not None:
             pulumi.set(__self__, "restricted_actions", restricted_actions)
         if security_style is not None:
@@ -260,6 +265,19 @@ class VolumeArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="restoreParameters")
+    def restore_parameters(self) -> Optional[pulumi.Input['VolumeRestoreParametersArgs']]:
+        """
+        Used to create this volume from a snapshot (= cloning) or an backup.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "restore_parameters")
+
+    @restore_parameters.setter
+    def restore_parameters(self, value: Optional[pulumi.Input['VolumeRestoreParametersArgs']]):
+        pulumi.set(self, "restore_parameters", value)
+
+    @property
     @pulumi.getter(name="restrictedActions")
     def restricted_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -343,6 +361,7 @@ class _VolumeState:
     def __init__(__self__, *,
                  active_directory: Optional[pulumi.Input[str]] = None,
                  capacity_gib: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -361,6 +380,7 @@ class _VolumeState:
                  protocols: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  psa_range: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 restore_parameters: Optional[pulumi.Input['VolumeRestoreParametersArgs']] = None,
                  restricted_actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_style: Optional[pulumi.Input[str]] = None,
                  service_level: Optional[pulumi.Input[str]] = None,
@@ -368,6 +388,8 @@ class _VolumeState:
                  smb_settings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  snapshot_directory: Optional[pulumi.Input[bool]] = None,
                  snapshot_policy: Optional[pulumi.Input['VolumeSnapshotPolicyArgs']] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 state_details: Optional[pulumi.Input[str]] = None,
                  storage_pool: Optional[pulumi.Input[str]] = None,
                  unix_permissions: Optional[pulumi.Input[str]] = None,
                  used_gib: Optional[pulumi.Input[str]] = None):
@@ -375,6 +397,7 @@ class _VolumeState:
         Input properties used for looking up and filtering Volume resources.
         :param pulumi.Input[str] active_directory: Reports the resource name of the Active Directory policy being used. Inherited from storage pool.
         :param pulumi.Input[str] capacity_gib: Capacity of the volume (in GiB).
+        :param pulumi.Input[str] create_time: Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
         :param pulumi.Input[str] deletion_policy: Policy to determine if the volume should be deleted forcefully.
                Volumes may have nested snapshot resources. Deleting such a volume will fail.
                Setting this parameter to FORCE will delete volumes including nested snapshots.
@@ -406,6 +429,8 @@ class _VolumeState:
         :param pulumi.Input[str] psa_range: Name of the Private Service Access allocated range. Inherited from storage pool.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input['VolumeRestoreParametersArgs'] restore_parameters: Used to create this volume from a snapshot (= cloning) or an backup.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] restricted_actions: List of actions that are restricted on this volume.
                Each value may be one of: `DELETE`.
         :param pulumi.Input[str] security_style: Security Style of the Volume. Use UNIX to use UNIX or NFSV4 ACLs for file permissions.
@@ -419,6 +444,8 @@ class _VolumeState:
         :param pulumi.Input['VolumeSnapshotPolicyArgs'] snapshot_policy: Snapshot policy defines the schedule for automatic snapshot creation.
                To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
                Structure is documented below.
+        :param pulumi.Input[str] state: State of the volume.
+        :param pulumi.Input[str] state_details: State details of the volume.
         :param pulumi.Input[str] storage_pool: Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
         :param pulumi.Input[str] unix_permissions: Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
         :param pulumi.Input[str] used_gib: Used capacity of the volume (in GiB). This is computed periodically and it does not represent the realtime usage.
@@ -427,6 +454,8 @@ class _VolumeState:
             pulumi.set(__self__, "active_directory", active_directory)
         if capacity_gib is not None:
             pulumi.set(__self__, "capacity_gib", capacity_gib)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
@@ -463,6 +492,8 @@ class _VolumeState:
             pulumi.set(__self__, "psa_range", psa_range)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if restore_parameters is not None:
+            pulumi.set(__self__, "restore_parameters", restore_parameters)
         if restricted_actions is not None:
             pulumi.set(__self__, "restricted_actions", restricted_actions)
         if security_style is not None:
@@ -477,6 +508,10 @@ class _VolumeState:
             pulumi.set(__self__, "snapshot_directory", snapshot_directory)
         if snapshot_policy is not None:
             pulumi.set(__self__, "snapshot_policy", snapshot_policy)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if state_details is not None:
+            pulumi.set(__self__, "state_details", state_details)
         if storage_pool is not None:
             pulumi.set(__self__, "storage_pool", storage_pool)
         if unix_permissions is not None:
@@ -507,6 +542,18 @@ class _VolumeState:
     @capacity_gib.setter
     def capacity_gib(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "capacity_gib", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter(name="deletionPolicy")
@@ -738,6 +785,19 @@ class _VolumeState:
         pulumi.set(self, "pulumi_labels", value)
 
     @property
+    @pulumi.getter(name="restoreParameters")
+    def restore_parameters(self) -> Optional[pulumi.Input['VolumeRestoreParametersArgs']]:
+        """
+        Used to create this volume from a snapshot (= cloning) or an backup.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "restore_parameters")
+
+    @restore_parameters.setter
+    def restore_parameters(self, value: Optional[pulumi.Input['VolumeRestoreParametersArgs']]):
+        pulumi.set(self, "restore_parameters", value)
+
+    @property
     @pulumi.getter(name="restrictedActions")
     def restricted_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -828,6 +888,30 @@ class _VolumeState:
         pulumi.set(self, "snapshot_policy", value)
 
     @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        State of the volume.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="stateDetails")
+    def state_details(self) -> Optional[pulumi.Input[str]]:
+        """
+        State details of the volume.
+        """
+        return pulumi.get(self, "state_details")
+
+    @state_details.setter
+    def state_details(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state_details", value)
+
+    @property
     @pulumi.getter(name="storagePool")
     def storage_pool(self) -> Optional[pulumi.Input[str]]:
         """
@@ -879,6 +963,7 @@ class Volume(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocols: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 restore_parameters: Optional[pulumi.Input[pulumi.InputType['VolumeRestoreParametersArgs']]] = None,
                  restricted_actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_style: Optional[pulumi.Input[str]] = None,
                  share_name: Optional[pulumi.Input[str]] = None,
@@ -903,7 +988,7 @@ class Volume(pulumi.CustomResource):
             * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volumes/overview)
 
         ## Example Usage
-        ### Volume Basic
+        ### Netapp Volume Basic
 
         ```python
         import pulumi
@@ -973,6 +1058,8 @@ class Volume(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] protocols: The protocol of the volume. Allowed combinations are `['NFSV3']`, `['NFSV4']`, `['SMB']`, `['NFSV3', 'NFSV4']`, `['SMB', 'NFSV3']` and `['SMB', 'NFSV4']`.
                Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
+        :param pulumi.Input[pulumi.InputType['VolumeRestoreParametersArgs']] restore_parameters: Used to create this volume from a snapshot (= cloning) or an backup.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] restricted_actions: List of actions that are restricted on this volume.
                Each value may be one of: `DELETE`.
         :param pulumi.Input[str] security_style: Security Style of the Volume. Use UNIX to use UNIX or NFSV4 ACLs for file permissions.
@@ -1009,7 +1096,7 @@ class Volume(pulumi.CustomResource):
             * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volumes/overview)
 
         ## Example Usage
-        ### Volume Basic
+        ### Netapp Volume Basic
 
         ```python
         import pulumi
@@ -1081,6 +1168,7 @@ class Volume(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocols: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 restore_parameters: Optional[pulumi.Input[pulumi.InputType['VolumeRestoreParametersArgs']]] = None,
                  restricted_actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_style: Optional[pulumi.Input[str]] = None,
                  share_name: Optional[pulumi.Input[str]] = None,
@@ -1114,6 +1202,7 @@ class Volume(pulumi.CustomResource):
             if protocols is None and not opts.urn:
                 raise TypeError("Missing required property 'protocols'")
             __props__.__dict__["protocols"] = protocols
+            __props__.__dict__["restore_parameters"] = restore_parameters
             __props__.__dict__["restricted_actions"] = restricted_actions
             __props__.__dict__["security_style"] = security_style
             if share_name is None and not opts.urn:
@@ -1127,6 +1216,7 @@ class Volume(pulumi.CustomResource):
             __props__.__dict__["storage_pool"] = storage_pool
             __props__.__dict__["unix_permissions"] = unix_permissions
             __props__.__dict__["active_directory"] = None
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["encryption_type"] = None
             __props__.__dict__["has_replication"] = None
@@ -1137,6 +1227,8 @@ class Volume(pulumi.CustomResource):
             __props__.__dict__["psa_range"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["service_level"] = None
+            __props__.__dict__["state"] = None
+            __props__.__dict__["state_details"] = None
             __props__.__dict__["used_gib"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -1152,6 +1244,7 @@ class Volume(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             active_directory: Optional[pulumi.Input[str]] = None,
             capacity_gib: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             deletion_policy: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1170,6 +1263,7 @@ class Volume(pulumi.CustomResource):
             protocols: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             psa_range: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            restore_parameters: Optional[pulumi.Input[pulumi.InputType['VolumeRestoreParametersArgs']]] = None,
             restricted_actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             security_style: Optional[pulumi.Input[str]] = None,
             service_level: Optional[pulumi.Input[str]] = None,
@@ -1177,6 +1271,8 @@ class Volume(pulumi.CustomResource):
             smb_settings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             snapshot_directory: Optional[pulumi.Input[bool]] = None,
             snapshot_policy: Optional[pulumi.Input[pulumi.InputType['VolumeSnapshotPolicyArgs']]] = None,
+            state: Optional[pulumi.Input[str]] = None,
+            state_details: Optional[pulumi.Input[str]] = None,
             storage_pool: Optional[pulumi.Input[str]] = None,
             unix_permissions: Optional[pulumi.Input[str]] = None,
             used_gib: Optional[pulumi.Input[str]] = None) -> 'Volume':
@@ -1189,6 +1285,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] active_directory: Reports the resource name of the Active Directory policy being used. Inherited from storage pool.
         :param pulumi.Input[str] capacity_gib: Capacity of the volume (in GiB).
+        :param pulumi.Input[str] create_time: Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
         :param pulumi.Input[str] deletion_policy: Policy to determine if the volume should be deleted forcefully.
                Volumes may have nested snapshot resources. Deleting such a volume will fail.
                Setting this parameter to FORCE will delete volumes including nested snapshots.
@@ -1220,6 +1317,8 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] psa_range: Name of the Private Service Access allocated range. Inherited from storage pool.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[pulumi.InputType['VolumeRestoreParametersArgs']] restore_parameters: Used to create this volume from a snapshot (= cloning) or an backup.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] restricted_actions: List of actions that are restricted on this volume.
                Each value may be one of: `DELETE`.
         :param pulumi.Input[str] security_style: Security Style of the Volume. Use UNIX to use UNIX or NFSV4 ACLs for file permissions.
@@ -1233,6 +1332,8 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['VolumeSnapshotPolicyArgs']] snapshot_policy: Snapshot policy defines the schedule for automatic snapshot creation.
                To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
                Structure is documented below.
+        :param pulumi.Input[str] state: State of the volume.
+        :param pulumi.Input[str] state_details: State details of the volume.
         :param pulumi.Input[str] storage_pool: Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
         :param pulumi.Input[str] unix_permissions: Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
         :param pulumi.Input[str] used_gib: Used capacity of the volume (in GiB). This is computed periodically and it does not represent the realtime usage.
@@ -1243,6 +1344,7 @@ class Volume(pulumi.CustomResource):
 
         __props__.__dict__["active_directory"] = active_directory
         __props__.__dict__["capacity_gib"] = capacity_gib
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
@@ -1261,6 +1363,7 @@ class Volume(pulumi.CustomResource):
         __props__.__dict__["protocols"] = protocols
         __props__.__dict__["psa_range"] = psa_range
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["restore_parameters"] = restore_parameters
         __props__.__dict__["restricted_actions"] = restricted_actions
         __props__.__dict__["security_style"] = security_style
         __props__.__dict__["service_level"] = service_level
@@ -1268,6 +1371,8 @@ class Volume(pulumi.CustomResource):
         __props__.__dict__["smb_settings"] = smb_settings
         __props__.__dict__["snapshot_directory"] = snapshot_directory
         __props__.__dict__["snapshot_policy"] = snapshot_policy
+        __props__.__dict__["state"] = state
+        __props__.__dict__["state_details"] = state_details
         __props__.__dict__["storage_pool"] = storage_pool
         __props__.__dict__["unix_permissions"] = unix_permissions
         __props__.__dict__["used_gib"] = used_gib
@@ -1288,6 +1393,14 @@ class Volume(pulumi.CustomResource):
         Capacity of the volume (in GiB).
         """
         return pulumi.get(self, "capacity_gib")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="deletionPolicy")
@@ -1447,6 +1560,15 @@ class Volume(pulumi.CustomResource):
         return pulumi.get(self, "pulumi_labels")
 
     @property
+    @pulumi.getter(name="restoreParameters")
+    def restore_parameters(self) -> pulumi.Output[Optional['outputs.VolumeRestoreParameters']]:
+        """
+        Used to create this volume from a snapshot (= cloning) or an backup.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "restore_parameters")
+
+    @property
     @pulumi.getter(name="restrictedActions")
     def restricted_actions(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
@@ -1507,6 +1629,22 @@ class Volume(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "snapshot_policy")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        State of the volume.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="stateDetails")
+    def state_details(self) -> pulumi.Output[str]:
+        """
+        State details of the volume.
+        """
+        return pulumi.get(self, "state_details")
 
     @property
     @pulumi.getter(name="storagePool")

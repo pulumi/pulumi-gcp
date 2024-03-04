@@ -19,7 +19,8 @@ namespace Pulumi.Gcp.Workbench.Inputs
         public Input<string>? Action { get; set; }
 
         /// <summary>
-        /// Optional. The container image before this instance upgrade.
+        /// Use a container image to start the workbench instance.
+        /// Structure is documented below.
         /// </summary>
         [Input("containerImage")]
         public Input<string>? ContainerImage { get; set; }

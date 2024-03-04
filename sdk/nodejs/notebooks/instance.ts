@@ -382,7 +382,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The Compute Engine tags to add to instance.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[]>;
     /**
      * Instance update time.
      */

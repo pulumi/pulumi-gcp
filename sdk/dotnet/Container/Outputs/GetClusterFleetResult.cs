@@ -18,6 +18,14 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string Membership;
         /// <summary>
+        /// Short name of the fleet membership, for example "member-1".
+        /// </summary>
+        public readonly string MembershipId;
+        /// <summary>
+        /// Location of the fleet membership, for example "us-central1".
+        /// </summary>
+        public readonly string MembershipLocation;
+        /// <summary>
         /// Whether the cluster has been registered via the fleet API.
         /// </summary>
         public readonly bool PreRegistered;
@@ -31,11 +39,17 @@ namespace Pulumi.Gcp.Container.Outputs
         private GetClusterFleetResult(
             string membership,
 
+            string membershipId,
+
+            string membershipLocation,
+
             bool preRegistered,
 
             string project)
         {
             Membership = membership;
+            MembershipId = membershipId;
+            MembershipLocation = membershipLocation;
             PreRegistered = preRegistered;
             Project = project;
         }

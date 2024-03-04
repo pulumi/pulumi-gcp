@@ -26111,6 +26111,14 @@ export namespace container {
          */
         membership?: pulumi.Input<string>;
         /**
+         * Short name of the fleet membership, for example "member-1".
+         */
+        membershipId?: pulumi.Input<string>;
+        /**
+         * Location of the fleet membership, for example "us-central1".
+         */
+        membershipLocation?: pulumi.Input<string>;
+        /**
          * Whether the cluster has been registered via the fleet API.
          */
         preRegistered?: pulumi.Input<boolean>;
@@ -26532,6 +26540,10 @@ export namespace container {
          * for how these labels are applied to clusters, node pools and nodes.
          */
         resourceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+         */
+        resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
         /**
          * Sandbox configuration for this node.
          */
@@ -27245,6 +27257,10 @@ export namespace container {
          * for how these labels are applied to clusters, node pools and nodes.
          */
         resourceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+         */
+        resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
         /**
          * Sandbox configuration for this node.
          */
@@ -28072,6 +28088,10 @@ export namespace container {
          * The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
          */
         resourceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+         */
+        resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
         /**
          * Sandbox configuration for this node.
          */
@@ -49648,6 +49668,18 @@ export namespace looker {
         allowedEmailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
+    export interface InstanceCustomDomain {
+        /**
+         * Domain name
+         */
+        domain?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Status of the custom domain.
+         */
+        state?: pulumi.Input<string>;
+    }
+
     export interface InstanceDenyMaintenancePeriod {
         /**
          * Required. Start date of the deny maintenance period
@@ -49957,6 +49989,159 @@ export namespace memcache {
          * - - -
          */
         memorySizeMb: pulumi.Input<number>;
+    }
+}
+
+export namespace migrationcenter {
+    export interface PreferenceSetVirtualMachinePreferences {
+        /**
+         * Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+         * Possible values:
+         * COMMITMENT_PLAN_UNSPECIFIED
+         * COMMITMENT_PLAN_NONE
+         * COMMITMENT_PLAN_ONE_YEAR
+         * COMMITMENT_PLAN_THREE_YEARS
+         */
+        commitmentPlan?: pulumi.Input<string>;
+        /**
+         * The user preferences relating to Compute Engine target platform.
+         * Structure is documented below.
+         */
+        computeEnginePreferences?: pulumi.Input<inputs.migrationcenter.PreferenceSetVirtualMachinePreferencesComputeEnginePreferences>;
+        /**
+         * The user preferences relating to target regions.
+         * Structure is documented below.
+         */
+        regionPreferences?: pulumi.Input<inputs.migrationcenter.PreferenceSetVirtualMachinePreferencesRegionPreferences>;
+        /**
+         * Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
+         * Possible values:
+         * SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED
+         * SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE
+         * SIZING_OPTIMIZATION_STRATEGY_MODERATE
+         * SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE
+         */
+        sizingOptimizationStrategy?: pulumi.Input<string>;
+        /**
+         * Preferences concerning Sole Tenancy nodes and VMs.
+         * Structure is documented below.
+         */
+        soleTenancyPreferences?: pulumi.Input<inputs.migrationcenter.PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences>;
+        /**
+         * Target product for assets using this preference set. Specify either target product or business goal, but not both.
+         * Possible values:
+         * COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED
+         * COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE
+         * COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE
+         * COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY
+         */
+        targetProduct?: pulumi.Input<string>;
+        /**
+         * The user preferences relating to Google Cloud VMware Engine target platform.
+         * Structure is documented below.
+         */
+        vmwareEnginePreferences?: pulumi.Input<inputs.migrationcenter.PreferenceSetVirtualMachinePreferencesVmwareEnginePreferences>;
+    }
+
+    export interface PreferenceSetVirtualMachinePreferencesComputeEnginePreferences {
+        /**
+         * License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
+         * Possible values:
+         * LICENSE_TYPE_UNSPECIFIED
+         * LICENSE_TYPE_DEFAULT
+         * LICENSE_TYPE_BRING_YOUR_OWN_LICENSE
+         */
+        licenseType?: pulumi.Input<string>;
+        /**
+         * The type of machines to consider when calculating virtual machine migration insights and recommendations. Not all machine types are available in all zones and regions.
+         * Structure is documented below.
+         */
+        machinePreferences?: pulumi.Input<inputs.migrationcenter.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferences>;
+    }
+
+    export interface PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferences {
+        /**
+         * Compute Engine machine series to consider for insights and recommendations. If empty, no restriction is applied on the machine series.
+         * Structure is documented below.
+         */
+        allowedMachineSeries?: pulumi.Input<pulumi.Input<inputs.migrationcenter.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeries>[]>;
+    }
+
+    export interface PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeries {
+        /**
+         * Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
+         */
+        code?: pulumi.Input<string>;
+    }
+
+    export interface PreferenceSetVirtualMachinePreferencesRegionPreferences {
+        /**
+         * A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
+         */
+        preferredRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences {
+        /**
+         * Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+         * Possible values:
+         * COMMITMENT_PLAN_UNSPECIFIED
+         * ON_DEMAND
+         * COMMITMENT_1_YEAR
+         * COMMITMENT_3_YEAR
+         */
+        commitmentPlan?: pulumi.Input<string>;
+        /**
+         * CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive.
+         */
+        cpuOvercommitRatio?: pulumi.Input<number>;
+        /**
+         * Sole Tenancy nodes maintenance policy.
+         * Possible values:
+         * HOST_MAINTENANCE_POLICY_UNSPECIFIED
+         * HOST_MAINTENANCE_POLICY_DEFAULT
+         * HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE
+         * HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP
+         */
+        hostMaintenancePolicy?: pulumi.Input<string>;
+        /**
+         * A list of sole tenant node types. An empty list means that all possible node types will be considered.
+         * Structure is documented below.
+         */
+        nodeTypes?: pulumi.Input<pulumi.Input<inputs.migrationcenter.PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType>[]>;
+    }
+
+    export interface PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType {
+        /**
+         * Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+         */
+        nodeName?: pulumi.Input<string>;
+    }
+
+    export interface PreferenceSetVirtualMachinePreferencesVmwareEnginePreferences {
+        /**
+         * Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+         * Possible values:
+         * COMMITMENT_PLAN_UNSPECIFIED
+         * ON_DEMAND
+         * COMMITMENT_1_YEAR_MONTHLY_PAYMENTS
+         * COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
+         * COMMITMENT_1_YEAR_UPFRONT_PAYMENT
+         * COMMITMENT_3_YEAR_UPFRONT_PAYMENT
+         */
+        commitmentPlan?: pulumi.Input<string>;
+        /**
+         * CPU overcommit ratio. Acceptable values are between 1.0 and 8.0, with 0.1 increment.
+         */
+        cpuOvercommitRatio?: pulumi.Input<number>;
+        /**
+         * Memory overcommit ratio. Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.
+         */
+        memoryOvercommitRatio?: pulumi.Input<number>;
+        /**
+         * The Deduplication and Compression ratio is based on the logical (Used Before) space required to store data before applying deduplication and compression, in relation to the physical (Used After) space required after applying deduplication and compression. Specifically, the ratio is the Used Before space divided by the Used After space. For example, if the Used Before space is 3 GB, but the physical Used After space is 1 GB, the deduplication and compression ratio is 3x. Acceptable values are between 1.0 and 4.0.
+         */
+        storageDeduplicationCompressionRatio?: pulumi.Input<number>;
     }
 }
 
@@ -51498,6 +51683,85 @@ export namespace netapp {
          * Protocol to mount with.
          */
         protocol?: pulumi.Input<string>;
+    }
+
+    export interface VolumeReplicationDestinationVolumeParameters {
+        /**
+         * Description for the destination volume.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Share name for destination volume. If not specified, name of source volume's share name will be used.
+         */
+        shareName?: pulumi.Input<string>;
+        /**
+         * Name of an existing storage pool for the destination volume with format: `projects/{{project}}/locations/{{location}}/storagePools/{{poolId}}`
+         */
+        storagePool: pulumi.Input<string>;
+        /**
+         * Name for the destination volume to be created. If not specified, the name of the source volume will be used.
+         */
+        volumeId?: pulumi.Input<string>;
+    }
+
+    export interface VolumeReplicationTransferStat {
+        /**
+         * (Output)
+         * The elapsed time since the creation of the snapshot on the source volume that was last replicated
+         * to the destination volume. Lag time represents the difference in age of the destination volume
+         * data in relation to the source volume data.
+         */
+        lagDuration?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Size of last completed transfer in bytes.
+         */
+        lastTransferBytes?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Time taken during last completed transfer.
+         */
+        lastTransferDuration?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Time when last transfer completed. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+         */
+        lastTransferEndTime?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * A message describing the cause of the last transfer failure.
+         */
+        lastTransferError?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Total time taken so far during current transfer.
+         */
+        totalTransferDuration?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Number of bytes transferred so far in current transfer.
+         */
+        transferBytes?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Time when progress was updated last. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+         */
+        updateTime?: pulumi.Input<string>;
+    }
+
+    export interface VolumeRestoreParameters {
+        /**
+         * Full name of the snapshot to use for creating this volume.
+         * `sourceSnapshot` and `sourceBackup` cannot be used simultaneously.
+         * Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
+         */
+        sourceBackup?: pulumi.Input<string>;
+        /**
+         * Full name of the snapshot to use for creating this volume.
+         * `sourceSnapshot` and `sourceBackup` cannot be used simultaneously.
+         * Format: `projects/{{project}}/locations/{{location}}/volumes/{{volume}}/snapshots/{{snapshot}}`.
+         */
+        sourceSnapshot?: pulumi.Input<string>;
     }
 
     export interface VolumeSnapshotPolicy {
@@ -57745,7 +58009,7 @@ export namespace securityposture {
          * List of security policy
          * Structure is documented below.
          */
-        policies?: pulumi.Input<pulumi.Input<inputs.securityposture.PosturePolicySetPolicy>[]>;
+        policies: pulumi.Input<pulumi.Input<inputs.securityposture.PosturePolicySetPolicy>[]>;
         /**
          * ID of the policy set.
          */
@@ -58105,6 +58369,8 @@ export namespace securityposture {
     export interface PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelector {
         /**
          * The resource types to run the detector on.
+         *
+         * - - -
          */
         resourceTypes: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -60594,6 +60860,11 @@ export namespace workbench {
          */
         bootDisk?: pulumi.Input<inputs.workbench.InstanceGceSetupBootDisk>;
         /**
+         * Use a container image to start the workbench instance.
+         * Structure is documented below.
+         */
+        containerImage?: pulumi.Input<inputs.workbench.InstanceGceSetupContainerImage>;
+        /**
          * Data disks attached to the VM instance. Currently supports only one data disk.
          * Structure is documented below.
          */
@@ -60625,6 +60896,13 @@ export namespace workbench {
          * Structure is documented below.
          */
         serviceAccounts?: pulumi.Input<pulumi.Input<inputs.workbench.InstanceGceSetupServiceAccount>[]>;
+        /**
+         * A set of Shielded Instance options. See [Images using supported Shielded
+         * VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+         * Not all combinations are valid.
+         * Structure is documented below.
+         */
+        shieldedInstanceConfig?: pulumi.Input<inputs.workbench.InstanceGceSetupShieldedInstanceConfig>;
         /**
          * Optional. The Compute Engine tags to add to instance (see [Tagging
          * instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
@@ -60674,6 +60952,18 @@ export namespace workbench {
          * Learn more about using your own encryption keys.'
          */
         kmsKey?: pulumi.Input<string>;
+    }
+
+    export interface InstanceGceSetupContainerImage {
+        /**
+         * The path to the container image repository.
+         * For example: gcr.io/{project_id}/{imageName}
+         */
+        repository: pulumi.Input<string>;
+        /**
+         * The tag of the container image. If not specified, this defaults to the latest tag.
+         */
+        tag?: pulumi.Input<string>;
     }
 
     export interface InstanceGceSetupDataDisks {
@@ -60732,6 +61022,29 @@ export namespace workbench {
         scopes?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
+    export interface InstanceGceSetupShieldedInstanceConfig {
+        /**
+         * Optional. Defines whether the VM instance has integrity monitoring
+         * enabled. Enables monitoring and attestation of the boot integrity of the VM
+         * instance. The attestation is performed against the integrity policy baseline.
+         * This baseline is initially derived from the implicitly trusted boot image
+         * when the VM instance is created. Enabled by default.
+         */
+        enableIntegrityMonitoring?: pulumi.Input<boolean>;
+        /**
+         * Optional. Defines whether the VM instance has Secure Boot enabled.
+         * Secure Boot helps ensure that the system only runs authentic software by verifying
+         * the digital signature of all boot components, and halting the boot process
+         * if signature verification fails. Disabled by default.
+         */
+        enableSecureBoot?: pulumi.Input<boolean>;
+        /**
+         * Optional. Defines whether the VM instance has the vTPM enabled.
+         * Enabled by default.
+         */
+        enableVtpm?: pulumi.Input<boolean>;
+    }
+
     export interface InstanceGceSetupVmImage {
         /**
          * Optional. Use this VM image family to find the image; the newest
@@ -60770,7 +61083,8 @@ export namespace workbench {
          */
         action?: pulumi.Input<string>;
         /**
-         * Optional. The container image before this instance upgrade.
+         * Use a container image to start the workbench instance.
+         * Structure is documented below.
          */
         containerImage?: pulumi.Input<string>;
         /**

@@ -146,6 +146,166 @@ func (o InstanceAdminSettingsPtrOutput) AllowedEmailDomains() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
+type InstanceCustomDomain struct {
+	// Domain name
+	Domain *string `pulumi:"domain"`
+	// (Output)
+	// Status of the custom domain.
+	State *string `pulumi:"state"`
+}
+
+// InstanceCustomDomainInput is an input type that accepts InstanceCustomDomainArgs and InstanceCustomDomainOutput values.
+// You can construct a concrete instance of `InstanceCustomDomainInput` via:
+//
+//	InstanceCustomDomainArgs{...}
+type InstanceCustomDomainInput interface {
+	pulumi.Input
+
+	ToInstanceCustomDomainOutput() InstanceCustomDomainOutput
+	ToInstanceCustomDomainOutputWithContext(context.Context) InstanceCustomDomainOutput
+}
+
+type InstanceCustomDomainArgs struct {
+	// Domain name
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
+	// (Output)
+	// Status of the custom domain.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (InstanceCustomDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceCustomDomain)(nil)).Elem()
+}
+
+func (i InstanceCustomDomainArgs) ToInstanceCustomDomainOutput() InstanceCustomDomainOutput {
+	return i.ToInstanceCustomDomainOutputWithContext(context.Background())
+}
+
+func (i InstanceCustomDomainArgs) ToInstanceCustomDomainOutputWithContext(ctx context.Context) InstanceCustomDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceCustomDomainOutput)
+}
+
+func (i InstanceCustomDomainArgs) ToInstanceCustomDomainPtrOutput() InstanceCustomDomainPtrOutput {
+	return i.ToInstanceCustomDomainPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceCustomDomainArgs) ToInstanceCustomDomainPtrOutputWithContext(ctx context.Context) InstanceCustomDomainPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceCustomDomainOutput).ToInstanceCustomDomainPtrOutputWithContext(ctx)
+}
+
+// InstanceCustomDomainPtrInput is an input type that accepts InstanceCustomDomainArgs, InstanceCustomDomainPtr and InstanceCustomDomainPtrOutput values.
+// You can construct a concrete instance of `InstanceCustomDomainPtrInput` via:
+//
+//	        InstanceCustomDomainArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceCustomDomainPtrInput interface {
+	pulumi.Input
+
+	ToInstanceCustomDomainPtrOutput() InstanceCustomDomainPtrOutput
+	ToInstanceCustomDomainPtrOutputWithContext(context.Context) InstanceCustomDomainPtrOutput
+}
+
+type instanceCustomDomainPtrType InstanceCustomDomainArgs
+
+func InstanceCustomDomainPtr(v *InstanceCustomDomainArgs) InstanceCustomDomainPtrInput {
+	return (*instanceCustomDomainPtrType)(v)
+}
+
+func (*instanceCustomDomainPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceCustomDomain)(nil)).Elem()
+}
+
+func (i *instanceCustomDomainPtrType) ToInstanceCustomDomainPtrOutput() InstanceCustomDomainPtrOutput {
+	return i.ToInstanceCustomDomainPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceCustomDomainPtrType) ToInstanceCustomDomainPtrOutputWithContext(ctx context.Context) InstanceCustomDomainPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceCustomDomainPtrOutput)
+}
+
+type InstanceCustomDomainOutput struct{ *pulumi.OutputState }
+
+func (InstanceCustomDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceCustomDomain)(nil)).Elem()
+}
+
+func (o InstanceCustomDomainOutput) ToInstanceCustomDomainOutput() InstanceCustomDomainOutput {
+	return o
+}
+
+func (o InstanceCustomDomainOutput) ToInstanceCustomDomainOutputWithContext(ctx context.Context) InstanceCustomDomainOutput {
+	return o
+}
+
+func (o InstanceCustomDomainOutput) ToInstanceCustomDomainPtrOutput() InstanceCustomDomainPtrOutput {
+	return o.ToInstanceCustomDomainPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceCustomDomainOutput) ToInstanceCustomDomainPtrOutputWithContext(ctx context.Context) InstanceCustomDomainPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceCustomDomain) *InstanceCustomDomain {
+		return &v
+	}).(InstanceCustomDomainPtrOutput)
+}
+
+// Domain name
+func (o InstanceCustomDomainOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceCustomDomain) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Status of the custom domain.
+func (o InstanceCustomDomainOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceCustomDomain) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type InstanceCustomDomainPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceCustomDomainPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceCustomDomain)(nil)).Elem()
+}
+
+func (o InstanceCustomDomainPtrOutput) ToInstanceCustomDomainPtrOutput() InstanceCustomDomainPtrOutput {
+	return o
+}
+
+func (o InstanceCustomDomainPtrOutput) ToInstanceCustomDomainPtrOutputWithContext(ctx context.Context) InstanceCustomDomainPtrOutput {
+	return o
+}
+
+func (o InstanceCustomDomainPtrOutput) Elem() InstanceCustomDomainOutput {
+	return o.ApplyT(func(v *InstanceCustomDomain) InstanceCustomDomain {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceCustomDomain
+		return ret
+	}).(InstanceCustomDomainOutput)
+}
+
+// Domain name
+func (o InstanceCustomDomainPtrOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceCustomDomain) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Domain
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Status of the custom domain.
+func (o InstanceCustomDomainPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceCustomDomain) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
 type InstanceDenyMaintenancePeriod struct {
 	// Required. Start date of the deny maintenance period
 	// Structure is documented below.
@@ -1804,6 +1964,8 @@ func (o InstanceUserMetadataPtrOutput) AdditionalViewerUserCount() pulumi.IntPtr
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAdminSettingsInput)(nil)).Elem(), InstanceAdminSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAdminSettingsPtrInput)(nil)).Elem(), InstanceAdminSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCustomDomainInput)(nil)).Elem(), InstanceCustomDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCustomDomainPtrInput)(nil)).Elem(), InstanceCustomDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDenyMaintenancePeriodInput)(nil)).Elem(), InstanceDenyMaintenancePeriodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDenyMaintenancePeriodPtrInput)(nil)).Elem(), InstanceDenyMaintenancePeriodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDenyMaintenancePeriodEndDateInput)(nil)).Elem(), InstanceDenyMaintenancePeriodEndDateArgs{})
@@ -1824,6 +1986,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceUserMetadataPtrInput)(nil)).Elem(), InstanceUserMetadataArgs{})
 	pulumi.RegisterOutputType(InstanceAdminSettingsOutput{})
 	pulumi.RegisterOutputType(InstanceAdminSettingsPtrOutput{})
+	pulumi.RegisterOutputType(InstanceCustomDomainOutput{})
+	pulumi.RegisterOutputType(InstanceCustomDomainPtrOutput{})
 	pulumi.RegisterOutputType(InstanceDenyMaintenancePeriodOutput{})
 	pulumi.RegisterOutputType(InstanceDenyMaintenancePeriodPtrOutput{})
 	pulumi.RegisterOutputType(InstanceDenyMaintenancePeriodEndDateOutput{})

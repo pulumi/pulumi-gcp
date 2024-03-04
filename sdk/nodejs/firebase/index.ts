@@ -10,10 +10,30 @@ export type AndroidApp = import("./androidApp").AndroidApp;
 export const AndroidApp: typeof import("./androidApp").AndroidApp = null as any;
 utilities.lazyLoad(exports, ["AndroidApp"], () => require("./androidApp"));
 
+export { AppCheckAppAttestConfigArgs, AppCheckAppAttestConfigState } from "./appCheckAppAttestConfig";
+export type AppCheckAppAttestConfig = import("./appCheckAppAttestConfig").AppCheckAppAttestConfig;
+export const AppCheckAppAttestConfig: typeof import("./appCheckAppAttestConfig").AppCheckAppAttestConfig = null as any;
+utilities.lazyLoad(exports, ["AppCheckAppAttestConfig"], () => require("./appCheckAppAttestConfig"));
+
 export { AppCheckDebugTokenArgs, AppCheckDebugTokenState } from "./appCheckDebugToken";
 export type AppCheckDebugToken = import("./appCheckDebugToken").AppCheckDebugToken;
 export const AppCheckDebugToken: typeof import("./appCheckDebugToken").AppCheckDebugToken = null as any;
 utilities.lazyLoad(exports, ["AppCheckDebugToken"], () => require("./appCheckDebugToken"));
+
+export { AppCheckPlayIntegrityConfigArgs, AppCheckPlayIntegrityConfigState } from "./appCheckPlayIntegrityConfig";
+export type AppCheckPlayIntegrityConfig = import("./appCheckPlayIntegrityConfig").AppCheckPlayIntegrityConfig;
+export const AppCheckPlayIntegrityConfig: typeof import("./appCheckPlayIntegrityConfig").AppCheckPlayIntegrityConfig = null as any;
+utilities.lazyLoad(exports, ["AppCheckPlayIntegrityConfig"], () => require("./appCheckPlayIntegrityConfig"));
+
+export { AppCheckRecaptchaEnterpriseConfigArgs, AppCheckRecaptchaEnterpriseConfigState } from "./appCheckRecaptchaEnterpriseConfig";
+export type AppCheckRecaptchaEnterpriseConfig = import("./appCheckRecaptchaEnterpriseConfig").AppCheckRecaptchaEnterpriseConfig;
+export const AppCheckRecaptchaEnterpriseConfig: typeof import("./appCheckRecaptchaEnterpriseConfig").AppCheckRecaptchaEnterpriseConfig = null as any;
+utilities.lazyLoad(exports, ["AppCheckRecaptchaEnterpriseConfig"], () => require("./appCheckRecaptchaEnterpriseConfig"));
+
+export { AppCheckRecaptchaV3ConfigArgs, AppCheckRecaptchaV3ConfigState } from "./appCheckRecaptchaV3Config";
+export type AppCheckRecaptchaV3Config = import("./appCheckRecaptchaV3Config").AppCheckRecaptchaV3Config;
+export const AppCheckRecaptchaV3Config: typeof import("./appCheckRecaptchaV3Config").AppCheckRecaptchaV3Config = null as any;
+utilities.lazyLoad(exports, ["AppCheckRecaptchaV3Config"], () => require("./appCheckRecaptchaV3Config"));
 
 export { AppCheckServiceConfigArgs, AppCheckServiceConfigState } from "./appCheckServiceConfig";
 export type AppCheckServiceConfig = import("./appCheckServiceConfig").AppCheckServiceConfig;
@@ -117,8 +137,16 @@ const _module = {
         switch (type) {
             case "gcp:firebase/androidApp:AndroidApp":
                 return new AndroidApp(name, <any>undefined, { urn })
+            case "gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig":
+                return new AppCheckAppAttestConfig(name, <any>undefined, { urn })
             case "gcp:firebase/appCheckDebugToken:AppCheckDebugToken":
                 return new AppCheckDebugToken(name, <any>undefined, { urn })
+            case "gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig":
+                return new AppCheckPlayIntegrityConfig(name, <any>undefined, { urn })
+            case "gcp:firebase/appCheckRecaptchaEnterpriseConfig:AppCheckRecaptchaEnterpriseConfig":
+                return new AppCheckRecaptchaEnterpriseConfig(name, <any>undefined, { urn })
+            case "gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config":
+                return new AppCheckRecaptchaV3Config(name, <any>undefined, { urn })
             case "gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig":
                 return new AppCheckServiceConfig(name, <any>undefined, { urn })
             case "gcp:firebase/appleApp:AppleApp":
@@ -149,7 +177,11 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "firebase/androidApp", _module)
+pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckAppAttestConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckDebugToken", _module)
+pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckPlayIntegrityConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckRecaptchaEnterpriseConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckRecaptchaV3Config", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckServiceConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/appleApp", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/databaseInstance", _module)

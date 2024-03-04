@@ -6,6 +6,7 @@ package com.pulumi.gcp.looker;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.looker.inputs.InstanceAdminSettingsArgs;
+import com.pulumi.gcp.looker.inputs.InstanceCustomDomainArgs;
 import com.pulumi.gcp.looker.inputs.InstanceDenyMaintenancePeriodArgs;
 import com.pulumi.gcp.looker.inputs.InstanceEncryptionConfigArgs;
 import com.pulumi.gcp.looker.inputs.InstanceMaintenanceWindowArgs;
@@ -56,6 +57,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> consumerNetwork() {
         return Optional.ofNullable(this.consumerNetwork);
+    }
+
+    /**
+     * Custom domain settings for a Looker instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="customDomain")
+    private @Nullable Output<InstanceCustomDomainArgs> customDomain;
+
+    /**
+     * @return Custom domain settings for a Looker instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceCustomDomainArgs>> customDomain() {
+        return Optional.ofNullable(this.customDomain);
     }
 
     /**
@@ -297,6 +315,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private InstanceArgs(InstanceArgs $) {
         this.adminSettings = $.adminSettings;
         this.consumerNetwork = $.consumerNetwork;
+        this.customDomain = $.customDomain;
         this.denyMaintenancePeriod = $.denyMaintenancePeriod;
         this.encryptionConfig = $.encryptionConfig;
         this.maintenanceWindow = $.maintenanceWindow;
@@ -375,6 +394,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder consumerNetwork(String consumerNetwork) {
             return consumerNetwork(Output.of(consumerNetwork));
+        }
+
+        /**
+         * @param customDomain Custom domain settings for a Looker instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customDomain(@Nullable Output<InstanceCustomDomainArgs> customDomain) {
+            $.customDomain = customDomain;
+            return this;
+        }
+
+        /**
+         * @param customDomain Custom domain settings for a Looker instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customDomain(InstanceCustomDomainArgs customDomain) {
+            return customDomain(Output.of(customDomain));
         }
 
         /**

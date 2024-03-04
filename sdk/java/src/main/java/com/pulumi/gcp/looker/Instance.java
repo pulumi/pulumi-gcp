@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.looker.InstanceArgs;
 import com.pulumi.gcp.looker.inputs.InstanceState;
 import com.pulumi.gcp.looker.outputs.InstanceAdminSettings;
+import com.pulumi.gcp.looker.outputs.InstanceCustomDomain;
 import com.pulumi.gcp.looker.outputs.InstanceDenyMaintenancePeriod;
 import com.pulumi.gcp.looker.outputs.InstanceEncryptionConfig;
 import com.pulumi.gcp.looker.outputs.InstanceMaintenanceWindow;
@@ -265,6 +266,46 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Looker Instance Custom Domain
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.looker.Instance;
+ * import com.pulumi.gcp.looker.InstanceArgs;
+ * import com.pulumi.gcp.looker.inputs.InstanceOauthConfigArgs;
+ * import com.pulumi.gcp.looker.inputs.InstanceCustomDomainArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var looker_instance = new Instance(&#34;looker-instance&#34;, InstanceArgs.builder()        
+ *             .name(&#34;my-instance&#34;)
+ *             .platformEdition(&#34;LOOKER_CORE_STANDARD&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .oauthConfig(InstanceOauthConfigArgs.builder()
+ *                 .clientId(&#34;my-client-id&#34;)
+ *                 .clientSecret(&#34;my-client-secret&#34;)
+ *                 .build())
+ *             .customDomain(InstanceCustomDomainArgs.builder()
+ *                 .domain(&#34;my-custom-domain.com&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -348,6 +389,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Custom domain settings for a Looker instance.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="customDomain", refs={InstanceCustomDomain.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceCustomDomain> customDomain;
+
+    /**
+     * @return Custom domain settings for a Looker instance.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InstanceCustomDomain>> customDomain() {
+        return Codegen.optional(this.customDomain);
     }
     /**
      * Maintenance denial period for this instance.

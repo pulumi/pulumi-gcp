@@ -861,14 +861,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> tags;
+    private Output<List<String>> tags;
 
     /**
      * @return The Compute Engine tags to add to instance.
      * 
      */
-    public Output<Optional<List<String>>> tags() {
-        return Codegen.optional(this.tags);
+    public Output<List<String>> tags() {
+        return this.tags;
     }
     /**
      * Instance update time.

@@ -18,6 +18,7 @@ class InstanceArgs:
     def __init__(__self__, *,
                  admin_settings: Optional[pulumi.Input['InstanceAdminSettingsArgs']] = None,
                  consumer_network: Optional[pulumi.Input[str]] = None,
+                 custom_domain: Optional[pulumi.Input['InstanceCustomDomainArgs']] = None,
                  deny_maintenance_period: Optional[pulumi.Input['InstanceDenyMaintenancePeriodArgs']] = None,
                  encryption_config: Optional[pulumi.Input['InstanceEncryptionConfigArgs']] = None,
                  maintenance_window: Optional[pulumi.Input['InstanceMaintenanceWindowArgs']] = None,
@@ -37,6 +38,8 @@ class InstanceArgs:
         :param pulumi.Input[str] consumer_network: Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
                Note that the consumer network may be in a different GCP project than the consumer
                project that is hosting the Looker Instance.
+        :param pulumi.Input['InstanceCustomDomainArgs'] custom_domain: Custom domain settings for a Looker instance.
+               Structure is documented below.
         :param pulumi.Input['InstanceDenyMaintenancePeriodArgs'] deny_maintenance_period: Maintenance denial period for this instance.
                You must allow at least 14 days of maintenance availability
                between any two deny maintenance periods.
@@ -82,6 +85,8 @@ class InstanceArgs:
             pulumi.set(__self__, "admin_settings", admin_settings)
         if consumer_network is not None:
             pulumi.set(__self__, "consumer_network", consumer_network)
+        if custom_domain is not None:
+            pulumi.set(__self__, "custom_domain", custom_domain)
         if deny_maintenance_period is not None:
             pulumi.set(__self__, "deny_maintenance_period", deny_maintenance_period)
         if encryption_config is not None:
@@ -133,6 +138,19 @@ class InstanceArgs:
     @consumer_network.setter
     def consumer_network(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "consumer_network", value)
+
+    @property
+    @pulumi.getter(name="customDomain")
+    def custom_domain(self) -> Optional[pulumi.Input['InstanceCustomDomainArgs']]:
+        """
+        Custom domain settings for a Looker instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_domain")
+
+    @custom_domain.setter
+    def custom_domain(self, value: Optional[pulumi.Input['InstanceCustomDomainArgs']]):
+        pulumi.set(self, "custom_domain", value)
 
     @property
     @pulumi.getter(name="denyMaintenancePeriod")
@@ -313,6 +331,7 @@ class _InstanceState:
                  admin_settings: Optional[pulumi.Input['InstanceAdminSettingsArgs']] = None,
                  consumer_network: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 custom_domain: Optional[pulumi.Input['InstanceCustomDomainArgs']] = None,
                  deny_maintenance_period: Optional[pulumi.Input['InstanceDenyMaintenancePeriodArgs']] = None,
                  egress_public_ip: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input['InstanceEncryptionConfigArgs']] = None,
@@ -340,6 +359,8 @@ class _InstanceState:
                project that is hosting the Looker Instance.
         :param pulumi.Input[str] create_time: The time the instance was created in RFC3339 UTC "Zulu" format,
                accurate to nanoseconds.
+        :param pulumi.Input['InstanceCustomDomainArgs'] custom_domain: Custom domain settings for a Looker instance.
+               Structure is documented below.
         :param pulumi.Input['InstanceDenyMaintenancePeriodArgs'] deny_maintenance_period: Maintenance denial period for this instance.
                You must allow at least 14 days of maintenance availability
                between any two deny maintenance periods.
@@ -394,6 +415,8 @@ class _InstanceState:
             pulumi.set(__self__, "consumer_network", consumer_network)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if custom_domain is not None:
+            pulumi.set(__self__, "custom_domain", custom_domain)
         if deny_maintenance_period is not None:
             pulumi.set(__self__, "deny_maintenance_period", deny_maintenance_period)
         if egress_public_ip is not None:
@@ -470,6 +493,19 @@ class _InstanceState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="customDomain")
+    def custom_domain(self) -> Optional[pulumi.Input['InstanceCustomDomainArgs']]:
+        """
+        Custom domain settings for a Looker instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_domain")
+
+    @custom_domain.setter
+    def custom_domain(self, value: Optional[pulumi.Input['InstanceCustomDomainArgs']]):
+        pulumi.set(self, "custom_domain", value)
 
     @property
     @pulumi.getter(name="denyMaintenancePeriod")
@@ -724,6 +760,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_settings: Optional[pulumi.Input[pulumi.InputType['InstanceAdminSettingsArgs']]] = None,
                  consumer_network: Optional[pulumi.Input[str]] = None,
+                 custom_domain: Optional[pulumi.Input[pulumi.InputType['InstanceCustomDomainArgs']]] = None,
                  deny_maintenance_period: Optional[pulumi.Input[pulumi.InputType['InstanceDenyMaintenancePeriodArgs']]] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['InstanceEncryptionConfigArgs']]] = None,
                  maintenance_window: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenanceWindowArgs']]] = None,
@@ -882,6 +919,24 @@ class Instance(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-looker.iam.gserviceaccount.com")
         ```
+        ### Looker Instance Custom Domain
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        looker_instance = gcp.looker.Instance("looker-instance",
+            name="my-instance",
+            platform_edition="LOOKER_CORE_STANDARD",
+            region="us-central1",
+            oauth_config=gcp.looker.InstanceOauthConfigArgs(
+                client_id="my-client-id",
+                client_secret="my-client-secret",
+            ),
+            custom_domain=gcp.looker.InstanceCustomDomainArgs(
+                domain="my-custom-domain.com",
+            ))
+        ```
 
         ## Import
 
@@ -920,6 +975,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] consumer_network: Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
                Note that the consumer network may be in a different GCP project than the consumer
                project that is hosting the Looker Instance.
+        :param pulumi.Input[pulumi.InputType['InstanceCustomDomainArgs']] custom_domain: Custom domain settings for a Looker instance.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['InstanceDenyMaintenancePeriodArgs']] deny_maintenance_period: Maintenance denial period for this instance.
                You must allow at least 14 days of maintenance availability
                between any two deny maintenance periods.
@@ -1112,6 +1169,24 @@ class Instance(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-looker.iam.gserviceaccount.com")
         ```
+        ### Looker Instance Custom Domain
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        looker_instance = gcp.looker.Instance("looker-instance",
+            name="my-instance",
+            platform_edition="LOOKER_CORE_STANDARD",
+            region="us-central1",
+            oauth_config=gcp.looker.InstanceOauthConfigArgs(
+                client_id="my-client-id",
+                client_secret="my-client-secret",
+            ),
+            custom_domain=gcp.looker.InstanceCustomDomainArgs(
+                domain="my-custom-domain.com",
+            ))
+        ```
 
         ## Import
 
@@ -1160,6 +1235,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_settings: Optional[pulumi.Input[pulumi.InputType['InstanceAdminSettingsArgs']]] = None,
                  consumer_network: Optional[pulumi.Input[str]] = None,
+                 custom_domain: Optional[pulumi.Input[pulumi.InputType['InstanceCustomDomainArgs']]] = None,
                  deny_maintenance_period: Optional[pulumi.Input[pulumi.InputType['InstanceDenyMaintenancePeriodArgs']]] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['InstanceEncryptionConfigArgs']]] = None,
                  maintenance_window: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenanceWindowArgs']]] = None,
@@ -1183,6 +1259,7 @@ class Instance(pulumi.CustomResource):
 
             __props__.__dict__["admin_settings"] = admin_settings
             __props__.__dict__["consumer_network"] = consumer_network
+            __props__.__dict__["custom_domain"] = custom_domain
             __props__.__dict__["deny_maintenance_period"] = deny_maintenance_period
             __props__.__dict__["encryption_config"] = encryption_config
             __props__.__dict__["maintenance_window"] = maintenance_window
@@ -1215,6 +1292,7 @@ class Instance(pulumi.CustomResource):
             admin_settings: Optional[pulumi.Input[pulumi.InputType['InstanceAdminSettingsArgs']]] = None,
             consumer_network: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            custom_domain: Optional[pulumi.Input[pulumi.InputType['InstanceCustomDomainArgs']]] = None,
             deny_maintenance_period: Optional[pulumi.Input[pulumi.InputType['InstanceDenyMaintenancePeriodArgs']]] = None,
             egress_public_ip: Optional[pulumi.Input[str]] = None,
             encryption_config: Optional[pulumi.Input[pulumi.InputType['InstanceEncryptionConfigArgs']]] = None,
@@ -1247,6 +1325,8 @@ class Instance(pulumi.CustomResource):
                project that is hosting the Looker Instance.
         :param pulumi.Input[str] create_time: The time the instance was created in RFC3339 UTC "Zulu" format,
                accurate to nanoseconds.
+        :param pulumi.Input[pulumi.InputType['InstanceCustomDomainArgs']] custom_domain: Custom domain settings for a Looker instance.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['InstanceDenyMaintenancePeriodArgs']] deny_maintenance_period: Maintenance denial period for this instance.
                You must allow at least 14 days of maintenance availability
                between any two deny maintenance periods.
@@ -1302,6 +1382,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["admin_settings"] = admin_settings
         __props__.__dict__["consumer_network"] = consumer_network
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["custom_domain"] = custom_domain
         __props__.__dict__["deny_maintenance_period"] = deny_maintenance_period
         __props__.__dict__["egress_public_ip"] = egress_public_ip
         __props__.__dict__["encryption_config"] = encryption_config
@@ -1349,6 +1430,15 @@ class Instance(pulumi.CustomResource):
         accurate to nanoseconds.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="customDomain")
+    def custom_domain(self) -> pulumi.Output[Optional['outputs.InstanceCustomDomain']]:
+        """
+        Custom domain settings for a Looker instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_domain")
 
     @property
     @pulumi.getter(name="denyMaintenancePeriod")

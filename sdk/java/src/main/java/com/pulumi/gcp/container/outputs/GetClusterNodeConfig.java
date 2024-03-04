@@ -26,6 +26,7 @@ import com.pulumi.gcp.container.outputs.GetClusterNodeConfigTaint;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigWorkloadMetadataConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -178,6 +179,11 @@ public final class GetClusterNodeConfig {
      * 
      */
     private Map<String,String> resourceLabels;
+    /**
+     * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+     * 
+     */
+    private Map<String,Object> resourceManagerTags;
     /**
      * @return Sandbox configuration for this node.
      * 
@@ -424,6 +430,13 @@ public final class GetClusterNodeConfig {
         return this.resourceLabels;
     }
     /**
+     * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+     * 
+     */
+    public Map<String,Object> resourceManagerTags() {
+        return this.resourceManagerTags;
+    }
+    /**
      * @return Sandbox configuration for this node.
      * 
      */
@@ -518,6 +531,7 @@ public final class GetClusterNodeConfig {
         private Boolean preemptible;
         private List<GetClusterNodeConfigReservationAffinity> reservationAffinities;
         private Map<String,String> resourceLabels;
+        private Map<String,Object> resourceManagerTags;
         private List<GetClusterNodeConfigSandboxConfig> sandboxConfigs;
         private String serviceAccount;
         private List<GetClusterNodeConfigShieldedInstanceConfig> shieldedInstanceConfigs;
@@ -558,6 +572,7 @@ public final class GetClusterNodeConfig {
     	      this.preemptible = defaults.preemptible;
     	      this.reservationAffinities = defaults.reservationAffinities;
     	      this.resourceLabels = defaults.resourceLabels;
+    	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.sandboxConfigs = defaults.sandboxConfigs;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.shieldedInstanceConfigs = defaults.shieldedInstanceConfigs;
@@ -846,6 +861,14 @@ public final class GetClusterNodeConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder resourceManagerTags(Map<String,Object> resourceManagerTags) {
+            if (resourceManagerTags == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfig", "resourceManagerTags");
+            }
+            this.resourceManagerTags = resourceManagerTags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sandboxConfigs(List<GetClusterNodeConfigSandboxConfig> sandboxConfigs) {
             if (sandboxConfigs == null) {
               throw new MissingRequiredPropertyException("GetClusterNodeConfig", "sandboxConfigs");
@@ -958,6 +981,7 @@ public final class GetClusterNodeConfig {
             _resultValue.preemptible = preemptible;
             _resultValue.reservationAffinities = reservationAffinities;
             _resultValue.resourceLabels = resourceLabels;
+            _resultValue.resourceManagerTags = resourceManagerTags;
             _resultValue.sandboxConfigs = sandboxConfigs;
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.shieldedInstanceConfigs = shieldedInstanceConfigs;

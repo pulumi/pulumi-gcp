@@ -220,6 +220,34 @@ namespace Pulumi.Gcp.Looker
     /// 
     /// });
     /// ```
+    /// ### Looker Instance Custom Domain
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var looker_instance = new Gcp.Looker.Instance("looker-instance", new()
+    ///     {
+    ///         Name = "my-instance",
+    ///         PlatformEdition = "LOOKER_CORE_STANDARD",
+    ///         Region = "us-central1",
+    ///         OauthConfig = new Gcp.Looker.Inputs.InstanceOauthConfigArgs
+    ///         {
+    ///             ClientId = "my-client-id",
+    ///             ClientSecret = "my-client-secret",
+    ///         },
+    ///         CustomDomain = new Gcp.Looker.Inputs.InstanceCustomDomainArgs
+    ///         {
+    ///             Domain = "my-custom-domain.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -275,6 +303,13 @@ namespace Pulumi.Gcp.Looker
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Custom domain settings for a Looker instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("customDomain")]
+        public Output<Outputs.InstanceCustomDomain?> CustomDomain { get; private set; } = null!;
 
         /// <summary>
         /// Maintenance denial period for this instance.
@@ -475,6 +510,13 @@ namespace Pulumi.Gcp.Looker
         public Input<string>? ConsumerNetwork { get; set; }
 
         /// <summary>
+        /// Custom domain settings for a Looker instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("customDomain")]
+        public Input<Inputs.InstanceCustomDomainArgs>? CustomDomain { get; set; }
+
+        /// <summary>
         /// Maintenance denial period for this instance.
         /// You must allow at least 14 days of maintenance availability
         /// between any two deny maintenance periods.
@@ -603,6 +645,13 @@ namespace Pulumi.Gcp.Looker
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Custom domain settings for a Looker instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("customDomain")]
+        public Input<Inputs.InstanceCustomDomainGetArgs>? CustomDomain { get; set; }
 
         /// <summary>
         /// Maintenance denial period for this instance.

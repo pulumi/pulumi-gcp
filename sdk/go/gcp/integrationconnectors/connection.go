@@ -379,7 +379,7 @@ type Connection struct {
 	ConnectionRevision pulumi.StringOutput `pulumi:"connectionRevision"`
 	// connectorVersion of the Connector.
 	ConnectorVersion pulumi.StringOutput `pulumi:"connectorVersion"`
-	// This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version.
+	// This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
 	// Structure is documented below.
 	ConnectorVersionInfraConfigs ConnectionConnectorVersionInfraConfigArrayOutput `pulumi:"connectorVersionInfraConfigs"`
 	// Flag to mark the version indicating the launch stage.
@@ -499,7 +499,7 @@ type connectionState struct {
 	ConnectionRevision *string `pulumi:"connectionRevision"`
 	// connectorVersion of the Connector.
 	ConnectorVersion *string `pulumi:"connectorVersion"`
-	// This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version.
+	// This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
 	// Structure is documented below.
 	ConnectorVersionInfraConfigs []ConnectionConnectorVersionInfraConfig `pulumi:"connectorVersionInfraConfigs"`
 	// Flag to mark the version indicating the launch stage.
@@ -579,7 +579,7 @@ type ConnectionState struct {
 	ConnectionRevision pulumi.StringPtrInput
 	// connectorVersion of the Connector.
 	ConnectorVersion pulumi.StringPtrInput
-	// This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version.
+	// This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
 	// Structure is documented below.
 	ConnectorVersionInfraConfigs ConnectionConnectorVersionInfraConfigArrayInput
 	// Flag to mark the version indicating the launch stage.
@@ -866,7 +866,7 @@ func (o ConnectionOutput) ConnectorVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ConnectorVersion }).(pulumi.StringOutput)
 }
 
-// This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version.
+// This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
 // Structure is documented below.
 func (o ConnectionOutput) ConnectorVersionInfraConfigs() ConnectionConnectorVersionInfraConfigArrayOutput {
 	return o.ApplyT(func(v *Connection) ConnectionConnectorVersionInfraConfigArrayOutput {

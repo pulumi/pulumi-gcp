@@ -26,6 +26,11 @@ namespace Pulumi.Gcp.Workbench.Outputs
         /// </summary>
         public readonly Outputs.InstanceGceSetupBootDisk? BootDisk;
         /// <summary>
+        /// Use a container image to start the workbench instance.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.InstanceGceSetupContainerImage? ContainerImage;
+        /// <summary>
         /// Data disks attached to the VM instance. Currently supports only one data disk.
         /// Structure is documented below.
         /// </summary>
@@ -58,6 +63,13 @@ namespace Pulumi.Gcp.Workbench.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.InstanceGceSetupServiceAccount> ServiceAccounts;
         /// <summary>
+        /// A set of Shielded Instance options. See [Images using supported Shielded
+        /// VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+        /// Not all combinations are valid.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.InstanceGceSetupShieldedInstanceConfig? ShieldedInstanceConfig;
+        /// <summary>
         /// Optional. The Compute Engine tags to add to instance (see [Tagging
         /// instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
         /// </summary>
@@ -75,6 +87,8 @@ namespace Pulumi.Gcp.Workbench.Outputs
 
             Outputs.InstanceGceSetupBootDisk? bootDisk,
 
+            Outputs.InstanceGceSetupContainerImage? containerImage,
+
             Outputs.InstanceGceSetupDataDisks? dataDisks,
 
             bool? disablePublicIp,
@@ -89,12 +103,15 @@ namespace Pulumi.Gcp.Workbench.Outputs
 
             ImmutableArray<Outputs.InstanceGceSetupServiceAccount> serviceAccounts,
 
+            Outputs.InstanceGceSetupShieldedInstanceConfig? shieldedInstanceConfig,
+
             ImmutableArray<string> tags,
 
             Outputs.InstanceGceSetupVmImage? vmImage)
         {
             AcceleratorConfigs = acceleratorConfigs;
             BootDisk = bootDisk;
+            ContainerImage = containerImage;
             DataDisks = dataDisks;
             DisablePublicIp = disablePublicIp;
             EnableIpForwarding = enableIpForwarding;
@@ -102,6 +119,7 @@ namespace Pulumi.Gcp.Workbench.Outputs
             Metadata = metadata;
             NetworkInterfaces = networkInterfaces;
             ServiceAccounts = serviceAccounts;
+            ShieldedInstanceConfig = shieldedInstanceConfig;
             Tags = tags;
             VmImage = vmImage;
         }

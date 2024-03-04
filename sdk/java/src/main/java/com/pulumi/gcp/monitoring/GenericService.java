@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 
 /**
  * A Service is a discrete, autonomous, and network-accessible unit,
- * designed to solve an individual concern (Wikipedia). In Cloud Monitoring,
+ * designed to solve an individual concern. In Cloud Monitoring,
  * a Service acts as the root resource under which operational aspects of
  * the service are accessible
  * 
@@ -30,6 +30,7 @@ import javax.annotation.Nullable;
  * * How-to Guides
  *     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
  *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+ *     * [Service-orientation on Wikipedia](https://en.wikipedia.org/wiki/Service-orientation)
  * 
  * ## Example Usage
  * ### Monitoring Service Example

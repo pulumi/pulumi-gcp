@@ -69,7 +69,7 @@ class RouterNatArgs:
                Structure is documented below.
         :param pulumi.Input[int] max_ports_per_vm: Maximum number of ports allocated to a VM from this NAT.
                This field can only be set when enableDynamicPortAllocation is enabled.
-        :param pulumi.Input[int] min_ports_per_vm: Minimum number of ports allocated to a VM from this NAT.
+        :param pulumi.Input[int] min_ports_per_vm: Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
         :param pulumi.Input[str] name: Name of the NAT service. The name must be 1-63 characters long and
                comply with RFC1035.
         :param pulumi.Input[str] nat_ip_allocate_option: How external IPs should be allocated for this NAT. Valid values are
@@ -263,7 +263,7 @@ class RouterNatArgs:
     @pulumi.getter(name="minPortsPerVm")
     def min_ports_per_vm(self) -> Optional[pulumi.Input[int]]:
         """
-        Minimum number of ports allocated to a VM from this NAT.
+        Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
         """
         return pulumi.get(self, "min_ports_per_vm")
 
@@ -474,7 +474,7 @@ class _RouterNatState:
                Structure is documented below.
         :param pulumi.Input[int] max_ports_per_vm: Maximum number of ports allocated to a VM from this NAT.
                This field can only be set when enableDynamicPortAllocation is enabled.
-        :param pulumi.Input[int] min_ports_per_vm: Minimum number of ports allocated to a VM from this NAT.
+        :param pulumi.Input[int] min_ports_per_vm: Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
         :param pulumi.Input[str] name: Name of the NAT service. The name must be 1-63 characters long and
                comply with RFC1035.
         :param pulumi.Input[str] nat_ip_allocate_option: How external IPs should be allocated for this NAT. Valid values are
@@ -648,7 +648,7 @@ class _RouterNatState:
     @pulumi.getter(name="minPortsPerVm")
     def min_ports_per_vm(self) -> Optional[pulumi.Input[int]]:
         """
-        Minimum number of ports allocated to a VM from this NAT.
+        Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
         """
         return pulumi.get(self, "min_ports_per_vm")
 
@@ -1108,7 +1108,7 @@ class RouterNat(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[int] max_ports_per_vm: Maximum number of ports allocated to a VM from this NAT.
                This field can only be set when enableDynamicPortAllocation is enabled.
-        :param pulumi.Input[int] min_ports_per_vm: Minimum number of ports allocated to a VM from this NAT.
+        :param pulumi.Input[int] min_ports_per_vm: Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
         :param pulumi.Input[str] name: Name of the NAT service. The name must be 1-63 characters long and
                comply with RFC1035.
         :param pulumi.Input[str] nat_ip_allocate_option: How external IPs should be allocated for this NAT. Valid values are
@@ -1492,7 +1492,7 @@ class RouterNat(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[int] max_ports_per_vm: Maximum number of ports allocated to a VM from this NAT.
                This field can only be set when enableDynamicPortAllocation is enabled.
-        :param pulumi.Input[int] min_ports_per_vm: Minimum number of ports allocated to a VM from this NAT.
+        :param pulumi.Input[int] min_ports_per_vm: Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
         :param pulumi.Input[str] name: Name of the NAT service. The name must be 1-63 characters long and
                comply with RFC1035.
         :param pulumi.Input[str] nat_ip_allocate_option: How external IPs should be allocated for this NAT. Valid values are
@@ -1624,9 +1624,9 @@ class RouterNat(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minPortsPerVm")
-    def min_ports_per_vm(self) -> pulumi.Output[Optional[int]]:
+    def min_ports_per_vm(self) -> pulumi.Output[int]:
         """
-        Minimum number of ports allocated to a VM from this NAT.
+        Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
         """
         return pulumi.get(self, "min_ports_per_vm")
 

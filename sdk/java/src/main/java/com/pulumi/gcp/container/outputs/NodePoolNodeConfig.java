@@ -25,6 +25,7 @@ import com.pulumi.gcp.container.outputs.NodePoolNodeConfigTaint;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigWorkloadMetadataConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -179,6 +180,11 @@ public final class NodePoolNodeConfig {
      * 
      */
     private @Nullable Map<String,String> resourceLabels;
+    /**
+     * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+     * 
+     */
+    private @Nullable Map<String,Object> resourceManagerTags;
     /**
      * @return Sandbox configuration for this node.
      * 
@@ -425,6 +431,13 @@ public final class NodePoolNodeConfig {
         return this.resourceLabels == null ? Map.of() : this.resourceLabels;
     }
     /**
+     * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+     * 
+     */
+    public Map<String,Object> resourceManagerTags() {
+        return this.resourceManagerTags == null ? Map.of() : this.resourceManagerTags;
+    }
+    /**
      * @return Sandbox configuration for this node.
      * 
      */
@@ -519,6 +532,7 @@ public final class NodePoolNodeConfig {
         private @Nullable Boolean preemptible;
         private @Nullable NodePoolNodeConfigReservationAffinity reservationAffinity;
         private @Nullable Map<String,String> resourceLabels;
+        private @Nullable Map<String,Object> resourceManagerTags;
         private @Nullable NodePoolNodeConfigSandboxConfig sandboxConfig;
         private @Nullable String serviceAccount;
         private @Nullable NodePoolNodeConfigShieldedInstanceConfig shieldedInstanceConfig;
@@ -559,6 +573,7 @@ public final class NodePoolNodeConfig {
     	      this.preemptible = defaults.preemptible;
     	      this.reservationAffinity = defaults.reservationAffinity;
     	      this.resourceLabels = defaults.resourceLabels;
+    	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.sandboxConfig = defaults.sandboxConfig;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.shieldedInstanceConfig = defaults.shieldedInstanceConfig;
@@ -753,6 +768,12 @@ public final class NodePoolNodeConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder resourceManagerTags(@Nullable Map<String,Object> resourceManagerTags) {
+
+            this.resourceManagerTags = resourceManagerTags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sandboxConfig(@Nullable NodePoolNodeConfigSandboxConfig sandboxConfig) {
 
             this.sandboxConfig = sandboxConfig;
@@ -837,6 +858,7 @@ public final class NodePoolNodeConfig {
             _resultValue.preemptible = preemptible;
             _resultValue.reservationAffinity = reservationAffinity;
             _resultValue.resourceLabels = resourceLabels;
+            _resultValue.resourceManagerTags = resourceManagerTags;
             _resultValue.sandboxConfig = sandboxConfig;
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.shieldedInstanceConfig = shieldedInstanceConfig;
