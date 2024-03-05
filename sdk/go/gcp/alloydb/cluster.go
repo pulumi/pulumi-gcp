@@ -165,7 +165,7 @@ import (
 //			source, err := alloydb.NewCluster(ctx, "source", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-source-cluster"),
 //				Location:  pulumi.String("us-central1"),
-//				Network:   *pulumi.String(_default.Id),
+//				Network:   pulumi.String(_default.Id),
 //				InitialUser: &alloydb.ClusterInitialUserArgs{
 //					Password: pulumi.String("alloydb-source-cluster"),
 //				},
@@ -195,7 +195,7 @@ import (
 //			_, err = alloydb.NewCluster(ctx, "restored_from_backup", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-backup-restored"),
 //				Location:  pulumi.String("us-central1"),
-//				Network:   *pulumi.String(_default.Id),
+//				Network:   pulumi.String(_default.Id),
 //				RestoreBackupSource: &alloydb.ClusterRestoreBackupSourceArgs{
 //					BackupName: sourceBackup.Name,
 //				},
@@ -206,7 +206,7 @@ import (
 //			_, err = alloydb.NewCluster(ctx, "restored_via_pitr", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-pitr-restored"),
 //				Location:  pulumi.String("us-central1"),
-//				Network:   *pulumi.String(_default.Id),
+//				Network:   pulumi.String(_default.Id),
 //				RestoreContinuousBackupSource: &alloydb.ClusterRestoreContinuousBackupSourceArgs{
 //					Cluster:     source.Name,
 //					PointInTime: pulumi.String("2023-08-03T19:19:00.094Z"),
@@ -224,13 +224,13 @@ import (
 //				AddressType:  pulumi.String("INTERNAL"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      *pulumi.String(_default.Id),
+//				Network:      pulumi.String(_default.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: *pulumi.String(_default.Id),
+//				Network: pulumi.String(_default.Id),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					privateIpAlloc.Name,

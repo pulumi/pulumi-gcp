@@ -57,7 +57,7 @@ import (
 //			_, err = apigee.NewEnvironmentIamPolicy(ctx, "policy", &apigee.EnvironmentIamPolicyArgs{
 //				OrgId:      pulumi.Any(apigeeEnvironment.OrgId),
 //				EnvId:      pulumi.Any(apigeeEnvironment.Name),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

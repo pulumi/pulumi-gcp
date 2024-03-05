@@ -57,7 +57,7 @@ import (
 //			_, err = gkehub.NewScopeIamPolicy(ctx, "policy", &gkehub.ScopeIamPolicyArgs{
 //				Project:    pulumi.Any(scope.Project),
 //				ScopeId:    pulumi.Any(scope.ScopeId),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

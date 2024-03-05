@@ -58,7 +58,7 @@ import (
 //				Project:    pulumi.Any(my_repo.Project),
 //				Location:   pulumi.Any(my_repo.Location),
 //				Repository: pulumi.Any(my_repo.Name),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

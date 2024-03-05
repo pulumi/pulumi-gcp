@@ -97,7 +97,7 @@ import (
 //				BackendMetastores: dataproc.MetastoreFederationBackendMetastoreArray{
 //					&dataproc.MetastoreFederationBackendMetastoreArgs{
 //						Rank:          pulumi.String("2"),
-//						Name:          *pulumi.String(project.Id),
+//						Name:          pulumi.String(project.Id),
 //						MetastoreType: pulumi.String("BIGQUERY"),
 //					},
 //					&dataproc.MetastoreFederationBackendMetastoreArgs{

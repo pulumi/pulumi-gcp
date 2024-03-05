@@ -56,7 +56,7 @@ import (
 //			_, err = spanner.NewDatabaseIAMPolicy(ctx, "database", &spanner.DatabaseIAMPolicyArgs{
 //				Instance:   pulumi.String("your-instance-name"),
 //				Database:   pulumi.String("your-database-name"),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

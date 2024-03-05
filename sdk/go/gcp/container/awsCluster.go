@@ -67,7 +67,7 @@ import (
 //					SubnetIds: pulumi.StringArray{
 //						pulumi.String("subnet-00000000000000000"),
 //					},
-//					Version:      *pulumi.String(versions.ValidVersions[0]),
+//					Version:      pulumi.String(versions.ValidVersions[0]),
 //					InstanceType: pulumi.String("t3.medium"),
 //					MainVolume: &container.AwsClusterControlPlaneMainVolumeArgs{
 //						Iops:       pulumi.Int(3000),
@@ -168,7 +168,7 @@ import (
 //					SubnetIds: pulumi.StringArray{
 //						pulumi.String("subnet-00000000000000000"),
 //					},
-//					Version:      *pulumi.String(versions.ValidVersions[0]),
+//					Version:      pulumi.String(versions.ValidVersions[0]),
 //					InstanceType: pulumi.String("t3.medium"),
 //					MainVolume: &container.AwsClusterControlPlaneMainVolumeArgs{
 //						Iops:       pulumi.Int(3000),
@@ -269,7 +269,7 @@ import (
 //					SubnetIds: pulumi.StringArray{
 //						pulumi.String("subnet-00000000000000000"),
 //					},
-//					Version:      *pulumi.String(versions.ValidVersions[0]),
+//					Version:      pulumi.String(versions.ValidVersions[0]),
 //					InstanceType: pulumi.String("t3.medium"),
 //					MainVolume: &container.AwsClusterControlPlaneMainVolumeArgs{
 //						Iops:       pulumi.Int(3000),

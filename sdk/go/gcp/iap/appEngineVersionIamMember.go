@@ -61,7 +61,7 @@ import (
 //				AppId:      pulumi.Any(version.Project),
 //				Service:    pulumi.Any(version.Service),
 //				VersionId:  pulumi.Any(version.VersionId),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -110,7 +110,7 @@ import (
 //				AppId:      pulumi.Any(version.Project),
 //				Service:    pulumi.Any(version.Service),
 //				VersionId:  pulumi.Any(version.VersionId),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

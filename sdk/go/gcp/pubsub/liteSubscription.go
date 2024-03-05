@@ -43,7 +43,7 @@ import (
 //			}
 //			example, err := pubsub.NewLiteTopic(ctx, "example", &pubsub.LiteTopicArgs{
 //				Name:    pulumi.String("example-topic"),
-//				Project: *pulumi.String(project.Number),
+//				Project: pulumi.String(project.Number),
 //				PartitionConfig: &pubsub.LiteTopicPartitionConfigArgs{
 //					Count: pulumi.Int(1),
 //					Capacity: &pubsub.LiteTopicPartitionConfigCapacityArgs{

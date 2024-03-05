@@ -66,7 +66,7 @@ import (
 //			}
 //			_, err = projects.NewIAMPolicy(ctx, "project", &projects.IAMPolicyArgs{
 //				Project:    pulumi.String("your-project-id"),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -112,7 +112,7 @@ import (
 //			}
 //			_, err = projects.NewIAMPolicy(ctx, "project", &projects.IAMPolicyArgs{
 //				Project:    pulumi.String("your-project-id"),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

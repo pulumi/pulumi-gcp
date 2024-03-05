@@ -54,7 +54,7 @@ import (
 //				Project:    pulumi.String("your-project"),
 //				Region:     pulumi.String("your-region"),
 //				Cluster:    pulumi.String("your-dataproc-cluster"),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
