@@ -893,8 +893,6 @@ public final class ComputeFunctions {
      * see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
      * and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
      * 
-     * ## Example Usage
-     * 
      */
     public static Output<GetBackendServiceResult> getBackendService(GetBackendServiceArgs args) {
         return getBackendService(args, InvokeOptions.Empty);
@@ -903,8 +901,6 @@ public final class ComputeFunctions {
      * Provide access to a Backend Service&#39;s attribute. For more information
      * see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
      * and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
-     * 
-     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetBackendServiceResult> getBackendServicePlain(GetBackendServicePlainArgs args) {
@@ -915,8 +911,6 @@ public final class ComputeFunctions {
      * see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
      * and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
      * 
-     * ## Example Usage
-     * 
      */
     public static Output<GetBackendServiceResult> getBackendService(GetBackendServiceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getBackendService:getBackendService", TypeShape.of(GetBackendServiceResult.class), args, Utilities.withVersion(options));
@@ -925,8 +919,6 @@ public final class ComputeFunctions {
      * Provide access to a Backend Service&#39;s attribute. For more information
      * see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
      * and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
-     * 
-     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetBackendServiceResult> getBackendServicePlain(GetBackendServicePlainArgs args, InvokeOptions options) {

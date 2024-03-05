@@ -14,41 +14,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://firebase.google.com/)
  *
  * ## Example Usage
- * ### Firebase Web App Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * function notImplemented(message: string) {
- *     throw new Error(message);
- * }
- *
- * const basicWebApp = new gcp.firebase.WebApp("basic", {
- *     project: "my-project-name",
- *     displayName: "Display Name Basic",
- * });
- * const basic = gcp.firebase.getWebAppConfigOutput({
- *     webAppId: basicWebApp.appId,
- * });
- * const _default = new gcp.storage.Bucket("default", {
- *     name: "fb-webapp-",
- *     location: "US",
- * });
- * const defaultBucketObject = new gcp.storage.BucketObject("default", {
- *     bucket: _default.name,
- *     name: "firebase-config.json",
- *     content: pulumi.jsonStringify({
- *         appId: basicWebApp.appId,
- *         apiKey: basic.apply(basic => basic.apiKey),
- *         authDomain: basic.apply(basic => basic.authDomain),
- *         databaseURL: notImplemented("lookup(data.google_firebase_web_app_config.basic,\"database_url\",\"\")"),
- *         storageBucket: notImplemented("lookup(data.google_firebase_web_app_config.basic,\"storage_bucket\",\"\")"),
- *         messagingSenderId: notImplemented("lookup(data.google_firebase_web_app_config.basic,\"messaging_sender_id\",\"\")"),
- *         measurementId: notImplemented("lookup(data.google_firebase_web_app_config.basic,\"measurement_id\",\"\")"),
- *     }),
- * });
- * ```
  * ### Firebase Web App Custom Api Key
  *
  * ```typescript

@@ -254,37 +254,6 @@ class WebApp(pulumi.CustomResource):
             * [Official Documentation](https://firebase.google.com/)
 
         ## Example Usage
-        ### Firebase Web App Basic
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_gcp as gcp
-
-
-        def not_implemented(msg):
-            raise NotImplementedError(msg)
-
-        basic_web_app = gcp.firebase.WebApp("basic",
-            project="my-project-name",
-            display_name="Display Name Basic")
-        basic = gcp.firebase.get_web_app_config_output(web_app_id=basic_web_app.app_id)
-        default = gcp.storage.Bucket("default",
-            name="fb-webapp-",
-            location="US")
-        default_bucket_object = gcp.storage.BucketObject("default",
-            bucket=default.name,
-            name="firebase-config.json",
-            content=pulumi.Output.json_dumps({
-                "appId": basic_web_app.app_id,
-                "apiKey": basic.api_key,
-                "authDomain": basic.auth_domain,
-                "databaseURL": not_implemented("lookup(data.google_firebase_web_app_config.basic,\\"database_url\\",\\"\\")"),
-                "storageBucket": not_implemented("lookup(data.google_firebase_web_app_config.basic,\\"storage_bucket\\",\\"\\")"),
-                "messagingSenderId": not_implemented("lookup(data.google_firebase_web_app_config.basic,\\"messaging_sender_id\\",\\"\\")"),
-                "measurementId": not_implemented("lookup(data.google_firebase_web_app_config.basic,\\"measurement_id\\",\\"\\")"),
-            }))
-        ```
         ### Firebase Web App Custom Api Key
 
         ```python
@@ -373,37 +342,6 @@ class WebApp(pulumi.CustomResource):
             * [Official Documentation](https://firebase.google.com/)
 
         ## Example Usage
-        ### Firebase Web App Basic
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_gcp as gcp
-
-
-        def not_implemented(msg):
-            raise NotImplementedError(msg)
-
-        basic_web_app = gcp.firebase.WebApp("basic",
-            project="my-project-name",
-            display_name="Display Name Basic")
-        basic = gcp.firebase.get_web_app_config_output(web_app_id=basic_web_app.app_id)
-        default = gcp.storage.Bucket("default",
-            name="fb-webapp-",
-            location="US")
-        default_bucket_object = gcp.storage.BucketObject("default",
-            bucket=default.name,
-            name="firebase-config.json",
-            content=pulumi.Output.json_dumps({
-                "appId": basic_web_app.app_id,
-                "apiKey": basic.api_key,
-                "authDomain": basic.auth_domain,
-                "databaseURL": not_implemented("lookup(data.google_firebase_web_app_config.basic,\\"database_url\\",\\"\\")"),
-                "storageBucket": not_implemented("lookup(data.google_firebase_web_app_config.basic,\\"storage_bucket\\",\\"\\")"),
-                "messagingSenderId": not_implemented("lookup(data.google_firebase_web_app_config.basic,\\"messaging_sender_id\\",\\"\\")"),
-                "measurementId": not_implemented("lookup(data.google_firebase_web_app_config.basic,\\"measurement_id\\",\\"\\")"),
-            }))
-        ```
         ### Firebase Web App Custom Api Key
 
         ```python

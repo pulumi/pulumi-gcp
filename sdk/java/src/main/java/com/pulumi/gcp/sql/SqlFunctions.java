@@ -193,8 +193,6 @@ public final class SqlFunctions {
      * and
      * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
      * 
-     * ## Example Usage
-     * 
      */
     public static Output<GetCaCertsResult> getCaCerts(GetCaCertsArgs args) {
         return getCaCerts(args, InvokeOptions.Empty);
@@ -204,8 +202,6 @@ public final class SqlFunctions {
      * [official documentation](https://cloud.google.com/sql/)
      * and
      * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
-     * 
-     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetCaCertsResult> getCaCertsPlain(GetCaCertsPlainArgs args) {
@@ -217,8 +213,6 @@ public final class SqlFunctions {
      * and
      * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
      * 
-     * ## Example Usage
-     * 
      */
     public static Output<GetCaCertsResult> getCaCerts(GetCaCertsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:sql/getCaCerts:getCaCerts", TypeShape.of(GetCaCertsResult.class), args, Utilities.withVersion(options));
@@ -228,8 +222,6 @@ public final class SqlFunctions {
      * [official documentation](https://cloud.google.com/sql/)
      * and
      * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
-     * 
-     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetCaCertsResult> getCaCertsPlain(GetCaCertsPlainArgs args, InvokeOptions options) {

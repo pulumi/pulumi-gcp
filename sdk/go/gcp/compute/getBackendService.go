@@ -14,43 +14,6 @@ import (
 // Provide access to a Backend Service's attribute. For more information
 // see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 // and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func notImplemented(message string) pulumi.AnyOutput {
-//		panic(message)
-//	}
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.LookupBackendService(ctx, &compute.LookupBackendServiceArgs{
-//				Name: "foobar",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
-//				Name:         pulumi.String("backend-service"),
-//				HealthChecks: notImplemented("tolist(data.google_compute_backend_service.baz.health_checks)")[0],
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupBackendService(ctx *pulumi.Context, args *LookupBackendServiceArgs, opts ...pulumi.InvokeOption) (*LookupBackendServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBackendServiceResult
