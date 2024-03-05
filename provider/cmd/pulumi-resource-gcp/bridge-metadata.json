@@ -2333,6 +2333,9 @@
                     "imported_libraries": {
                         "maxItemsOne": false
                     },
+                    "remote_function_options": {
+                        "maxItemsOne": true
+                    },
                     "spark_options": {
                         "maxItemsOne": true,
                         "elem": {
@@ -4265,6 +4268,31 @@
                         "maxItemsOne": true
                     }
                 }
+            },
+            "google_clouddeploy_target_iam_binding": {
+                "current": "gcp:clouddeploy/targetIamBinding:TargetIamBinding",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_clouddeploy_target_iam_member": {
+                "current": "gcp:clouddeploy/targetIamMember:TargetIamMember",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_clouddeploy_target_iam_policy": {
+                "current": "gcp:clouddeploy/targetIamPolicy:TargetIamPolicy",
+                "majorVersion": 7
             },
             "google_clouddomains_registration": {
                 "current": "gcp:clouddomains/registration:Registration",
@@ -6878,6 +6906,9 @@
                 "current": "gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy",
                 "majorVersion": 7,
                 "fields": {
+                    "certificate_manager_certificates": {
+                        "maxItemsOne": false
+                    },
                     "ssl_certificates": {
                         "maxItemsOne": false
                     }
@@ -24933,6 +24964,10 @@
                 "current": "gcp:clouddeploy/getDeliveryPipelineIamPolicy:getDeliveryPipelineIamPolicy",
                 "majorVersion": 7
             },
+            "google_clouddeploy_target_iam_policy": {
+                "current": "gcp:clouddeploy/getTargetIamPolicy:getTargetIamPolicy",
+                "majorVersion": 7
+            },
             "google_cloudfunctions2_function": {
                 "current": "gcp:cloudfunctionsv2/getFunction:getFunction",
                 "majorVersion": 7,
@@ -29873,6 +29908,9 @@
             "gcp:clouddeploy/deliveryPipelineIamMember:DeliveryPipelineIamMember": 0,
             "gcp:clouddeploy/deliveryPipelineIamPolicy:DeliveryPipelineIamPolicy": 0,
             "gcp:clouddeploy/target:Target": 0,
+            "gcp:clouddeploy/targetIamBinding:TargetIamBinding": 0,
+            "gcp:clouddeploy/targetIamMember:TargetIamMember": 0,
+            "gcp:clouddeploy/targetIamPolicy:TargetIamPolicy": 0,
             "gcp:clouddomains/registration:Registration": 0,
             "gcp:cloudfunctions/function:Function": 0,
             "gcp:cloudfunctions/functionIamBinding:FunctionIamBinding": 0,
@@ -30626,6 +30664,7 @@
             "gcp:cloudbuild/getTrigger:getTrigger": 0,
             "gcp:cloudbuildv2/getConnectionIamPolicy:getConnectionIamPolicy": 0,
             "gcp:clouddeploy/getDeliveryPipelineIamPolicy:getDeliveryPipelineIamPolicy": 0,
+            "gcp:clouddeploy/getTargetIamPolicy:getTargetIamPolicy": 0,
             "gcp:cloudfunctions/getFunction:getFunction": 0,
             "gcp:cloudfunctions/getFunctionIamPolicy:getFunctionIamPolicy": 0,
             "gcp:cloudfunctionsv2/getFunction:getFunction": 0,
