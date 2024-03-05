@@ -71,6 +71,52 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * With IAM Conditions:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.spanner.DatabaseIAMPolicy;
+ * import com.pulumi.gcp.spanner.DatabaseIAMPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role(&#34;roles/editor&#34;)
+ *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+ *                     .title(&#34;My Role&#34;)
+ *                     .description(&#34;Grant permissions on my_role&#34;)
+ *                     .expression(&#34;(resource.type == \&#34;spanner.googleapis.com/DatabaseRole\&#34; &amp;&amp; (resource.name.endsWith(\&#34;/myrole\&#34;)))&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var database = new DatabaseIAMPolicy(&#34;database&#34;, DatabaseIAMPolicyArgs.builder()        
+ *             .instance(&#34;your-instance-name&#34;)
+ *             .database(&#34;your-database-name&#34;)
+ *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## google\_spanner\_database\_iam\_binding
  * ```java
  * package generated_program;
@@ -98,6 +144,45 @@ import javax.annotation.Nullable;
  *             .database(&#34;your-database-name&#34;)
  *             .role(&#34;roles/compute.networkUser&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * With IAM Conditions:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.spanner.DatabaseIAMBinding;
+ * import com.pulumi.gcp.spanner.DatabaseIAMBindingArgs;
+ * import com.pulumi.gcp.spanner.inputs.DatabaseIAMBindingConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var database = new DatabaseIAMBinding(&#34;database&#34;, DatabaseIAMBindingArgs.builder()        
+ *             .instance(&#34;your-instance-name&#34;)
+ *             .database(&#34;your-database-name&#34;)
+ *             .role(&#34;roles/compute.networkUser&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
+ *             .condition(DatabaseIAMBindingConditionArgs.builder()
+ *                 .title(&#34;My Role&#34;)
+ *                 .description(&#34;Grant permissions on my_role&#34;)
+ *                 .expression(&#34;(resource.type == \&#34;spanner.googleapis.com/DatabaseRole\&#34; &amp;&amp; (resource.name.endsWith(\&#34;/myrole\&#34;)))&#34;)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -137,6 +222,45 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * With IAM Conditions:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.spanner.DatabaseIAMMember;
+ * import com.pulumi.gcp.spanner.DatabaseIAMMemberArgs;
+ * import com.pulumi.gcp.spanner.inputs.DatabaseIAMMemberConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var database = new DatabaseIAMMember(&#34;database&#34;, DatabaseIAMMemberArgs.builder()        
+ *             .instance(&#34;your-instance-name&#34;)
+ *             .database(&#34;your-database-name&#34;)
+ *             .role(&#34;roles/compute.networkUser&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
+ *             .condition(DatabaseIAMMemberConditionArgs.builder()
+ *                 .title(&#34;My Role&#34;)
+ *                 .description(&#34;Grant permissions on my_role&#34;)
+ *                 .expression(&#34;(resource.type == \&#34;spanner.googleapis.com/DatabaseRole\&#34; &amp;&amp; (resource.name.endsWith(\&#34;/myrole\&#34;)))&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * ### Importing IAM policies
@@ -166,9 +290,19 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:spanner/databaseIAMBinding:DatabaseIAMBinding")
 public class DatabaseIAMBinding extends com.pulumi.resources.CustomResource {
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     * 
+     */
     @Export(name="condition", refs={DatabaseIAMBindingCondition.class}, tree="[0]")
     private Output</* @Nullable */ DatabaseIAMBindingCondition> condition;
 
+    /**
+     * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     * 
+     */
     public Output<Optional<DatabaseIAMBindingCondition>> condition() {
         return Codegen.optional(this.condition);
     }

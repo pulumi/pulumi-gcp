@@ -37,6 +37,11 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.NewScope(ctx, "scope", &gkehub.ScopeArgs{
 //				ScopeId: pulumi.String("my-scope"),
+//				NamespaceLabels: pulumi.StringMap{
+//					"keyb": pulumi.String("valueb"),
+//					"keya": pulumi.String("valuea"),
+//					"keyc": pulumi.String("valuec"),
+//				},
 //				Labels: pulumi.StringMap{
 //					"keyb": pulumi.String("valueb"),
 //					"keya": pulumi.String("valuea"),
@@ -91,6 +96,12 @@ type Scope struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The unique identifier of the scope
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Scope-level cluster namespace labels. For the member clusters bound
+	// to the Scope, these labels are applied to each namespace under the
+	// Scope. Scope-level labels take precedence over Namespace-level
+	// labels (`namespaceLabels` in the Fleet Namespace resource) if they
+	// share a key. Keys and values must be Kubernetes-conformant.
+	NamespaceLabels pulumi.StringMapOutput `pulumi:"namespaceLabels"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -161,6 +172,12 @@ type scopeState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The unique identifier of the scope
 	Name *string `pulumi:"name"`
+	// Scope-level cluster namespace labels. For the member clusters bound
+	// to the Scope, these labels are applied to each namespace under the
+	// Scope. Scope-level labels take precedence over Namespace-level
+	// labels (`namespaceLabels` in the Fleet Namespace resource) if they
+	// share a key. Keys and values must be Kubernetes-conformant.
+	NamespaceLabels map[string]string `pulumi:"namespaceLabels"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -194,6 +211,12 @@ type ScopeState struct {
 	Labels pulumi.StringMapInput
 	// The unique identifier of the scope
 	Name pulumi.StringPtrInput
+	// Scope-level cluster namespace labels. For the member clusters bound
+	// to the Scope, these labels are applied to each namespace under the
+	// Scope. Scope-level labels take precedence over Namespace-level
+	// labels (`namespaceLabels` in the Fleet Namespace resource) if they
+	// share a key. Keys and values must be Kubernetes-conformant.
+	NamespaceLabels pulumi.StringMapInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -223,6 +246,12 @@ type scopeArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
+	// Scope-level cluster namespace labels. For the member clusters bound
+	// to the Scope, these labels are applied to each namespace under the
+	// Scope. Scope-level labels take precedence over Namespace-level
+	// labels (`namespaceLabels` in the Fleet Namespace resource) if they
+	// share a key. Keys and values must be Kubernetes-conformant.
+	NamespaceLabels map[string]string `pulumi:"namespaceLabels"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -239,6 +268,12 @@ type ScopeArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
+	// Scope-level cluster namespace labels. For the member clusters bound
+	// to the Scope, these labels are applied to each namespace under the
+	// Scope. Scope-level labels take precedence over Namespace-level
+	// labels (`namespaceLabels` in the Fleet Namespace resource) if they
+	// share a key. Keys and values must be Kubernetes-conformant.
+	NamespaceLabels pulumi.StringMapInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -361,6 +396,15 @@ func (o ScopeOutput) Labels() pulumi.StringMapOutput {
 // The unique identifier of the scope
 func (o ScopeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Scope) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Scope-level cluster namespace labels. For the member clusters bound
+// to the Scope, these labels are applied to each namespace under the
+// Scope. Scope-level labels take precedence over Namespace-level
+// labels (`namespaceLabels` in the Fleet Namespace resource) if they
+// share a key. Keys and values must be Kubernetes-conformant.
+func (o ScopeOutput) NamespaceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Scope) pulumi.StringMapOutput { return v.NamespaceLabels }).(pulumi.StringMapOutput)
 }
 
 // The ID of the project in which the resource belongs.

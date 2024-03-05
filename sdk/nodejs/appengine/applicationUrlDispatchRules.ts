@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * const adminV3 = new gcp.appengine.StandardAppVersion("admin_v3", {
  *     versionId: "v3",
  *     service: "admin",
- *     runtime: "nodejs10",
+ *     runtime: "nodejs20",
  *     entrypoint: {
  *         shell: "node ./app.js",
  *     },

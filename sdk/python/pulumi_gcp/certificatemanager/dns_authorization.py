@@ -19,6 +19,7 @@ class DnsAuthorizationArgs:
                  domain: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -30,6 +31,7 @@ class DnsAuthorizationArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the DNS Authorization resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[str] location: The Certificate Manager location. If not specified, "global" is used.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
@@ -44,6 +46,8 @@ class DnsAuthorizationArgs:
             pulumi.set(__self__, "description", description)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -91,6 +95,18 @@ class DnsAuthorizationArgs:
 
     @property
     @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Certificate Manager location. If not specified, "global" is used.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the resource; provided by the client when the resource is created.
@@ -128,6 +144,7 @@ class _DnsAuthorizationState:
                  domain: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -145,6 +162,7 @@ class _DnsAuthorizationState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the DNS Authorization resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[str] location: The Certificate Manager location. If not specified, "global" is used.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
@@ -166,6 +184,8 @@ class _DnsAuthorizationState:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -242,6 +262,18 @@ class _DnsAuthorizationState:
 
     @property
     @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Certificate Manager location. If not specified, "global" is used.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the resource; provided by the client when the resource is created.
@@ -292,6 +324,7 @@ class DnsAuthorization(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -307,7 +340,8 @@ class DnsAuthorization(pulumi.CustomResource):
 
         default = gcp.certificatemanager.DnsAuthorization("default",
             name="dns-auth",
-            description="The default dnss",
+            location="global",
+            description="The default dns",
             domain="subdomain.hashicorptest.com")
         pulumi.export("recordNameToInsert", default.dns_resource_records[0].name)
         pulumi.export("recordTypeToInsert", default.dns_resource_records[0].type)
@@ -318,24 +352,24 @@ class DnsAuthorization(pulumi.CustomResource):
 
         DnsAuthorization can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/dnsAuthorizations/{{name}}`
+         * `projects/{{project}}/locations/{{location}}/dnsAuthorizations/{{name}}`
 
-         * `{{project}}/{{name}}`
+         * `{{project}}/{{location}}/{{name}}`
 
-         * `{{name}}`
+         * `{{location}}/{{name}}`
 
          When using the `pulumi import` command, DnsAuthorization can be imported using one of the formats above. For example:
 
         ```sh
-        $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default projects/{{project}}/locations/global/dnsAuthorizations/{{name}}
+        $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default projects/{{project}}/locations/{{location}}/dnsAuthorizations/{{name}}
         ```
 
         ```sh
-        $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{project}}/{{name}}
+        $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{project}}/{{location}}/{{name}}
         ```
 
         ```sh
-        $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{name}}
+        $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{location}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -347,6 +381,7 @@ class DnsAuthorization(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the DNS Authorization resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[str] location: The Certificate Manager location. If not specified, "global" is used.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
@@ -374,7 +409,8 @@ class DnsAuthorization(pulumi.CustomResource):
 
         default = gcp.certificatemanager.DnsAuthorization("default",
             name="dns-auth",
-            description="The default dnss",
+            location="global",
+            description="The default dns",
             domain="subdomain.hashicorptest.com")
         pulumi.export("recordNameToInsert", default.dns_resource_records[0].name)
         pulumi.export("recordTypeToInsert", default.dns_resource_records[0].type)
@@ -385,24 +421,24 @@ class DnsAuthorization(pulumi.CustomResource):
 
         DnsAuthorization can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/dnsAuthorizations/{{name}}`
+         * `projects/{{project}}/locations/{{location}}/dnsAuthorizations/{{name}}`
 
-         * `{{project}}/{{name}}`
+         * `{{project}}/{{location}}/{{name}}`
 
-         * `{{name}}`
+         * `{{location}}/{{name}}`
 
          When using the `pulumi import` command, DnsAuthorization can be imported using one of the formats above. For example:
 
         ```sh
-        $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default projects/{{project}}/locations/global/dnsAuthorizations/{{name}}
+        $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default projects/{{project}}/locations/{{location}}/dnsAuthorizations/{{name}}
         ```
 
         ```sh
-        $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{project}}/{{name}}
+        $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{project}}/{{location}}/{{name}}
         ```
 
         ```sh
-        $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{name}}
+        $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{location}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -423,6 +459,7 @@ class DnsAuthorization(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -439,6 +476,7 @@ class DnsAuthorization(pulumi.CustomResource):
                 raise TypeError("Missing required property 'domain'")
             __props__.__dict__["domain"] = domain
             __props__.__dict__["labels"] = labels
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["dns_resource_records"] = None
@@ -461,6 +499,7 @@ class DnsAuthorization(pulumi.CustomResource):
             domain: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'DnsAuthorization':
@@ -483,6 +522,7 @@ class DnsAuthorization(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the DNS Authorization resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[str] location: The Certificate Manager location. If not specified, "global" is used.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
@@ -503,6 +543,7 @@ class DnsAuthorization(pulumi.CustomResource):
         __props__.__dict__["domain"] = domain
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["labels"] = labels
+        __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
@@ -554,6 +595,14 @@ class DnsAuthorization(pulumi.CustomResource):
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[Optional[str]]:
+        """
+        The Certificate Manager location. If not specified, "global" is used.
+        """
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter

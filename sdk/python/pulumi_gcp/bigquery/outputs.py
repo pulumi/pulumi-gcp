@@ -65,6 +65,7 @@ __all__ = [
     'JobStatusErrorResult',
     'ReservationAutoscale',
     'RoutineArgument',
+    'RoutineRemoteFunctionOptions',
     'RoutineSparkOptions',
     'TableEncryptionConfiguration',
     'TableExternalDataConfiguration',
@@ -3962,6 +3963,96 @@ class RoutineArgument(dict):
         The name of this argument. Can be absent for function return argument.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class RoutineRemoteFunctionOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxBatchingRows":
+            suggest = "max_batching_rows"
+        elif key == "userDefinedContext":
+            suggest = "user_defined_context"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RoutineRemoteFunctionOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RoutineRemoteFunctionOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RoutineRemoteFunctionOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection: Optional[str] = None,
+                 endpoint: Optional[str] = None,
+                 max_batching_rows: Optional[str] = None,
+                 user_defined_context: Optional[Mapping[str, str]] = None):
+        """
+        :param str connection: Fully qualified name of the user-provided connection object which holds
+               the authentication information to send requests to the remote service.
+               Format: "projects/{projectId}/locations/{locationId}/connections/{connectionId}"
+        :param str endpoint: Endpoint of the user-provided remote service, e.g.
+               `https://us-east1-my_gcf_project.cloudfunctions.net/remote_add`
+        :param str max_batching_rows: Max number of rows in each batch sent to the remote service. If absent or if 0,
+               BigQuery dynamically decides the number of rows in a batch.
+        :param Mapping[str, str] user_defined_context: User-defined context as a set of key/value pairs, which will be sent as function
+               invocation context together with batched arguments in the requests to the remote
+               service. The total number of bytes of keys and values must be less than 8KB.
+               An object containing a list of "key": value pairs. Example:
+               `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+        """
+        if connection is not None:
+            pulumi.set(__self__, "connection", connection)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if max_batching_rows is not None:
+            pulumi.set(__self__, "max_batching_rows", max_batching_rows)
+        if user_defined_context is not None:
+            pulumi.set(__self__, "user_defined_context", user_defined_context)
+
+    @property
+    @pulumi.getter
+    def connection(self) -> Optional[str]:
+        """
+        Fully qualified name of the user-provided connection object which holds
+        the authentication information to send requests to the remote service.
+        Format: "projects/{projectId}/locations/{locationId}/connections/{connectionId}"
+        """
+        return pulumi.get(self, "connection")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        """
+        Endpoint of the user-provided remote service, e.g.
+        `https://us-east1-my_gcf_project.cloudfunctions.net/remote_add`
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="maxBatchingRows")
+    def max_batching_rows(self) -> Optional[str]:
+        """
+        Max number of rows in each batch sent to the remote service. If absent or if 0,
+        BigQuery dynamically decides the number of rows in a batch.
+        """
+        return pulumi.get(self, "max_batching_rows")
+
+    @property
+    @pulumi.getter(name="userDefinedContext")
+    def user_defined_context(self) -> Optional[Mapping[str, str]]:
+        """
+        User-defined context as a set of key/value pairs, which will be sent as function
+        invocation context together with batched arguments in the requests to the remote
+        service. The total number of bytes of keys and values must be less than 8KB.
+        An object containing a list of "key": value pairs. Example:
+        `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+        """
+        return pulumi.get(self, "user_defined_context")
 
 
 @pulumi.output_type

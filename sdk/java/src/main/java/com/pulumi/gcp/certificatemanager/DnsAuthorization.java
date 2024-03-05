@@ -45,7 +45,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var default_ = new DnsAuthorization(&#34;default&#34;, DnsAuthorizationArgs.builder()        
  *             .name(&#34;dns-auth&#34;)
- *             .description(&#34;The default dnss&#34;)
+ *             .location(&#34;global&#34;)
+ *             .description(&#34;The default dns&#34;)
  *             .domain(&#34;subdomain.hashicorptest.com&#34;)
  *             .build());
  * 
@@ -60,24 +61,24 @@ import javax.annotation.Nullable;
  * 
  * DnsAuthorization can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/global/dnsAuthorizations/{{name}}`
+ *  * `projects/{{project}}/locations/{{location}}/dnsAuthorizations/{{name}}`
  * 
- *  * `{{project}}/{{name}}`
+ *  * `{{project}}/{{location}}/{{name}}`
  * 
- *  * `{{name}}`
+ *  * `{{location}}/{{name}}`
  * 
  *  When using the `pulumi import` command, DnsAuthorization can be imported using one of the formats above. For example:
  * 
  * ```sh
- * $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default projects/{{project}}/locations/global/dnsAuthorizations/{{name}}
+ * $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default projects/{{project}}/locations/{{location}}/dnsAuthorizations/{{name}}
  * ```
  * 
  * ```sh
- * $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{project}}/{{name}}
+ * $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{project}}/{{location}}/{{name}}
  * ```
  * 
  * ```sh
- * $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{name}}
+ * $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{location}}/{{name}}
  * ```
  * 
  */
@@ -166,6 +167,20 @@ public class DnsAuthorization extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> labels() {
         return Codegen.optional(this.labels);
+    }
+    /**
+     * The Certificate Manager location. If not specified, &#34;global&#34; is used.
+     * 
+     */
+    @Export(name="location", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> location;
+
+    /**
+     * @return The Certificate Manager location. If not specified, &#34;global&#34; is used.
+     * 
+     */
+    public Output<Optional<String>> location() {
+        return Codegen.optional(this.location);
     }
     /**
      * Name of the resource; provided by the client when the resource is created.

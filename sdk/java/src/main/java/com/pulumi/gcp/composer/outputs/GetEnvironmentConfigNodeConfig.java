@@ -20,6 +20,11 @@ public final class GetEnvironmentConfigNodeConfig {
      */
     private String composerInternalIpv4CidrBlock;
     /**
+     * @return PSC (Private Service Connect) Network entry point. Customers can pre-create the Network Attachment and point Cloud Composer environment to use. It is possible to share network attachment among many environments, provided enough IP addresses are available.
+     * 
+     */
+    private String composerNetworkAttachment;
+    /**
      * @return The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
      * 
      */
@@ -60,7 +65,7 @@ public final class GetEnvironmentConfigNodeConfig {
      */
     private String serviceAccount;
     /**
-     * @return The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. &#34;projects/{project}/regions/{region}/subnetworks/{subnetwork}&#34;), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment&#39;s project and region.
+     * @return The Compute Engine subnetwork to be used for machine communications, specified as a self-link, relative resource name (e.g. &#34;projects/{project}/regions/{region}/subnetworks/{subnetwork}&#34;), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment&#39;s project and region.
      * 
      */
     private String subnetwork;
@@ -82,6 +87,13 @@ public final class GetEnvironmentConfigNodeConfig {
      */
     public String composerInternalIpv4CidrBlock() {
         return this.composerInternalIpv4CidrBlock;
+    }
+    /**
+     * @return PSC (Private Service Connect) Network entry point. Customers can pre-create the Network Attachment and point Cloud Composer environment to use. It is possible to share network attachment among many environments, provided enough IP addresses are available.
+     * 
+     */
+    public String composerNetworkAttachment() {
+        return this.composerNetworkAttachment;
     }
     /**
      * @return The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -140,7 +152,7 @@ public final class GetEnvironmentConfigNodeConfig {
         return this.serviceAccount;
     }
     /**
-     * @return The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. &#34;projects/{project}/regions/{region}/subnetworks/{subnetwork}&#34;), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment&#39;s project and region.
+     * @return The Compute Engine subnetwork to be used for machine communications, specified as a self-link, relative resource name (e.g. &#34;projects/{project}/regions/{region}/subnetworks/{subnetwork}&#34;), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment&#39;s project and region.
      * 
      */
     public String subnetwork() {
@@ -171,6 +183,7 @@ public final class GetEnvironmentConfigNodeConfig {
     @CustomType.Builder
     public static final class Builder {
         private String composerInternalIpv4CidrBlock;
+        private String composerNetworkAttachment;
         private Integer diskSizeGb;
         private Boolean enableIpMasqAgent;
         private List<GetEnvironmentConfigNodeConfigIpAllocationPolicy> ipAllocationPolicies;
@@ -186,6 +199,7 @@ public final class GetEnvironmentConfigNodeConfig {
         public Builder(GetEnvironmentConfigNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.composerInternalIpv4CidrBlock = defaults.composerInternalIpv4CidrBlock;
+    	      this.composerNetworkAttachment = defaults.composerNetworkAttachment;
     	      this.diskSizeGb = defaults.diskSizeGb;
     	      this.enableIpMasqAgent = defaults.enableIpMasqAgent;
     	      this.ipAllocationPolicies = defaults.ipAllocationPolicies;
@@ -205,6 +219,14 @@ public final class GetEnvironmentConfigNodeConfig {
               throw new MissingRequiredPropertyException("GetEnvironmentConfigNodeConfig", "composerInternalIpv4CidrBlock");
             }
             this.composerInternalIpv4CidrBlock = composerInternalIpv4CidrBlock;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder composerNetworkAttachment(String composerNetworkAttachment) {
+            if (composerNetworkAttachment == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigNodeConfig", "composerNetworkAttachment");
+            }
+            this.composerNetworkAttachment = composerNetworkAttachment;
             return this;
         }
         @CustomType.Setter
@@ -307,6 +329,7 @@ public final class GetEnvironmentConfigNodeConfig {
         public GetEnvironmentConfigNodeConfig build() {
             final var _resultValue = new GetEnvironmentConfigNodeConfig();
             _resultValue.composerInternalIpv4CidrBlock = composerInternalIpv4CidrBlock;
+            _resultValue.composerNetworkAttachment = composerNetworkAttachment;
             _resultValue.diskSizeGb = diskSizeGb;
             _resultValue.enableIpMasqAgent = enableIpMasqAgent;
             _resultValue.ipAllocationPolicies = ipAllocationPolicies;

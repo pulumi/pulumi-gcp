@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * const myapp = new gcp.appengine.StandardAppVersion("myapp", {
  *     versionId: "v1",
  *     service: "myapp",
- *     runtime: "nodejs10",
+ *     runtime: "nodejs20",
  *     entrypoint: {
  *         shell: "node ./app.js",
  *     },
@@ -149,7 +149,7 @@ export interface GetAppEngineServiceResult {
  * const myapp = new gcp.appengine.StandardAppVersion("myapp", {
  *     versionId: "v1",
  *     service: "myapp",
- *     runtime: "nodejs10",
+ *     runtime: "nodejs20",
  *     entrypoint: {
  *         shell: "node ./app.js",
  *     },

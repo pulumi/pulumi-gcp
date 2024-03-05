@@ -55,7 +55,7 @@ import (
 //				VersionId:              pulumi.String("v1"),
 //				Service:                pulumi.String("internalapp"),
 //				DeleteServiceOnDestroy: pulumi.Bool(true),
-//				Runtime:                pulumi.String("nodejs10"),
+//				Runtime:                pulumi.String("nodejs20"),
 //				Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
 //					Shell: pulumi.String("node ./app.js"),
 //				},

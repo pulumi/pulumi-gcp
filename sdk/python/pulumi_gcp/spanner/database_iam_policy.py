@@ -252,6 +252,27 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="My Role",
+                description="Grant permissions on my_role",
+                expression="(resource.type == \\"spanner.googleapis.com/DatabaseRole\\" && (resource.name.endsWith(\\"/myrole\\")))",
+            ),
+        )])
+        database = gcp.spanner.DatabaseIAMPolicy("database",
+            instance="your-instance-name",
+            database="your-database-name",
+            policy_data=admin.policy_data)
+        ```
+
         ## google\\_spanner\\_database\\_iam\\_binding
 
         ```python
@@ -265,6 +286,24 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.spanner.DatabaseIAMBinding("database",
+            instance="your-instance-name",
+            database="your-database-name",
+            role="roles/compute.networkUser",
+            members=["user:jane@example.com"],
+            condition=gcp.spanner.DatabaseIAMBindingConditionArgs(
+                title="My Role",
+                description="Grant permissions on my_role",
+                expression="(resource.type == \\"spanner.googleapis.com/DatabaseRole\\" && (resource.name.endsWith(\\"/myrole\\")))",
+            ))
+        ```
+
         ## google\\_spanner\\_database\\_iam\\_member
 
         ```python
@@ -276,6 +315,24 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             database="your-database-name",
             role="roles/compute.networkUser",
             member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.spanner.DatabaseIAMMember("database",
+            instance="your-instance-name",
+            database="your-database-name",
+            role="roles/compute.networkUser",
+            member="user:jane@example.com",
+            condition=gcp.spanner.DatabaseIAMMemberConditionArgs(
+                title="My Role",
+                description="Grant permissions on my_role",
+                expression="(resource.type == \\"spanner.googleapis.com/DatabaseRole\\" && (resource.name.endsWith(\\"/myrole\\")))",
+            ))
         ```
 
         ## Import
@@ -358,6 +415,27 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="My Role",
+                description="Grant permissions on my_role",
+                expression="(resource.type == \\"spanner.googleapis.com/DatabaseRole\\" && (resource.name.endsWith(\\"/myrole\\")))",
+            ),
+        )])
+        database = gcp.spanner.DatabaseIAMPolicy("database",
+            instance="your-instance-name",
+            database="your-database-name",
+            policy_data=admin.policy_data)
+        ```
+
         ## google\\_spanner\\_database\\_iam\\_binding
 
         ```python
@@ -371,6 +449,24 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.spanner.DatabaseIAMBinding("database",
+            instance="your-instance-name",
+            database="your-database-name",
+            role="roles/compute.networkUser",
+            members=["user:jane@example.com"],
+            condition=gcp.spanner.DatabaseIAMBindingConditionArgs(
+                title="My Role",
+                description="Grant permissions on my_role",
+                expression="(resource.type == \\"spanner.googleapis.com/DatabaseRole\\" && (resource.name.endsWith(\\"/myrole\\")))",
+            ))
+        ```
+
         ## google\\_spanner\\_database\\_iam\\_member
 
         ```python
@@ -382,6 +478,24 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             database="your-database-name",
             role="roles/compute.networkUser",
             member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.spanner.DatabaseIAMMember("database",
+            instance="your-instance-name",
+            database="your-database-name",
+            role="roles/compute.networkUser",
+            member="user:jane@example.com",
+            condition=gcp.spanner.DatabaseIAMMemberConditionArgs(
+                title="My Role",
+                description="Grant permissions on my_role",
+                expression="(resource.type == \\"spanner.googleapis.com/DatabaseRole\\" && (resource.name.endsWith(\\"/myrole\\")))",
+            ))
         ```
 
         ## Import

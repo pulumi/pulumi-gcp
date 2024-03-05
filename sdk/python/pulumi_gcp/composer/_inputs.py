@@ -602,6 +602,7 @@ class EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs:
 class EnvironmentConfigNodeConfigArgs:
     def __init__(__self__, *,
                  composer_internal_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
+                 composer_network_attachment: Optional[pulumi.Input[str]] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  enable_ip_masq_agent: Optional[pulumi.Input[bool]] = None,
                  ip_allocation_policy: Optional[pulumi.Input['EnvironmentConfigNodeConfigIpAllocationPolicyArgs']] = None,
@@ -615,6 +616,7 @@ class EnvironmentConfigNodeConfigArgs:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] composer_internal_ipv4_cidr_block: IPv4 cidr range that will be used by Composer internal components.
+        :param pulumi.Input[str] composer_network_attachment: PSC (Private Service Connect) Network entry point. Customers can pre-create the Network Attachment and point Cloud Composer environment to use. It is possible to share network attachment among many environments, provided enough IP addresses are available.
         :param pulumi.Input[int] disk_size_gb: The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param pulumi.Input[bool] enable_ip_masq_agent: Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
         :param pulumi.Input['EnvironmentConfigNodeConfigIpAllocationPolicyArgs'] ip_allocation_policy: Configuration for controlling how IPs are allocated in the GKE cluster. Cannot be updated.
@@ -623,12 +625,14 @@ class EnvironmentConfigNodeConfigArgs:
         :param pulumi.Input[str] network: The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and region/zone. The network must belong to the environment's project. If unspecified, the "default" network ID in the environment's project is used. If a Custom Subnet Network is provided, subnetwork must also be provided.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] oauth_scopes: The set of Google API scopes to be made available on all node VMs. Cannot be updated. If empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param pulumi.Input[str] service_account: The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated. If given, note that the service account must have roles/composer.worker for any GCP resources created under the Cloud Composer Environment.
-        :param pulumi.Input[str] subnetwork: The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+        :param pulumi.Input[str] subnetwork: The Compute Engine subnetwork to be used for machine communications, specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
         :param pulumi.Input[str] zone: The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         """
         if composer_internal_ipv4_cidr_block is not None:
             pulumi.set(__self__, "composer_internal_ipv4_cidr_block", composer_internal_ipv4_cidr_block)
+        if composer_network_attachment is not None:
+            pulumi.set(__self__, "composer_network_attachment", composer_network_attachment)
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if enable_ip_masq_agent is not None:
@@ -663,6 +667,18 @@ class EnvironmentConfigNodeConfigArgs:
     @composer_internal_ipv4_cidr_block.setter
     def composer_internal_ipv4_cidr_block(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "composer_internal_ipv4_cidr_block", value)
+
+    @property
+    @pulumi.getter(name="composerNetworkAttachment")
+    def composer_network_attachment(self) -> Optional[pulumi.Input[str]]:
+        """
+        PSC (Private Service Connect) Network entry point. Customers can pre-create the Network Attachment and point Cloud Composer environment to use. It is possible to share network attachment among many environments, provided enough IP addresses are available.
+        """
+        return pulumi.get(self, "composer_network_attachment")
+
+    @composer_network_attachment.setter
+    def composer_network_attachment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "composer_network_attachment", value)
 
     @property
     @pulumi.getter(name="diskSizeGb")
@@ -764,7 +780,7 @@ class EnvironmentConfigNodeConfigArgs:
     @pulumi.getter
     def subnetwork(self) -> Optional[pulumi.Input[str]]:
         """
-        The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+        The Compute Engine subnetwork to be used for machine communications, specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
         """
         return pulumi.get(self, "subnetwork")
 

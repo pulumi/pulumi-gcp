@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *     versionId: "v1",
  *     service: "liveapp",
  *     deleteServiceOnDestroy: true,
- *     runtime: "nodejs10",
+ *     runtime: "nodejs20",
  *     entrypoint: {
  *         shell: "node ./app.js",
  *     },
@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *     versionId: "v2",
  *     service: "liveapp",
  *     noopOnDestroy: true,
- *     runtime: "nodejs10",
+ *     runtime: "nodejs20",
  *     entrypoint: {
  *         shell: "node ./app.js",
  *     },

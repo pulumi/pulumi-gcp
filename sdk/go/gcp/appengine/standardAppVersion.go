@@ -88,7 +88,7 @@ import (
 //			_, err = appengine.NewStandardAppVersion(ctx, "myapp_v1", &appengine.StandardAppVersionArgs{
 //				VersionId: pulumi.String("v1"),
 //				Service:   pulumi.String("myapp"),
-//				Runtime:   pulumi.String("nodejs10"),
+//				Runtime:   pulumi.String("nodejs20"),
 //				Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
 //					Shell: pulumi.String("node ./app.js"),
 //				},
@@ -126,7 +126,7 @@ import (
 //			_, err = appengine.NewStandardAppVersion(ctx, "myapp_v2", &appengine.StandardAppVersionArgs{
 //				VersionId:     pulumi.String("v2"),
 //				Service:       pulumi.String("myapp"),
-//				Runtime:       pulumi.String("nodejs10"),
+//				Runtime:       pulumi.String("nodejs20"),
 //				AppEngineApis: pulumi.Bool(true),
 //				Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
 //					Shell: pulumi.String("node ./app.js"),

@@ -14,7 +14,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceTemplateContainerResources {
     /**
-     * @return Determines whether CPU should be throttled or not outside of requests.
+     * @return Determines whether CPU is only allocated during requests. True by default if the parent `resources` field is not set. However, if
+     * `resources` is set, this field must be explicitly set to true to preserve the default behavior.
      * 
      */
     private @Nullable Boolean cpuIdle;
@@ -31,7 +32,8 @@ public final class ServiceTemplateContainerResources {
 
     private ServiceTemplateContainerResources() {}
     /**
-     * @return Determines whether CPU should be throttled or not outside of requests.
+     * @return Determines whether CPU is only allocated during requests. True by default if the parent `resources` field is not set. However, if
+     * `resources` is set, this field must be explicitly set to true to preserve the default behavior.
      * 
      */
     public Optional<Boolean> cpuIdle() {

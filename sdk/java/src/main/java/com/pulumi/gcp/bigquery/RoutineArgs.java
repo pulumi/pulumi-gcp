@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.inputs.RoutineArgumentArgs;
+import com.pulumi.gcp.bigquery.inputs.RoutineRemoteFunctionOptionsArgs;
 import com.pulumi.gcp.bigquery.inputs.RoutineSparkOptionsArgs;
 import java.lang.String;
 import java.util.List;
@@ -156,6 +157,23 @@ public final class RoutineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Remote function specific options.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="remoteFunctionOptions")
+    private @Nullable Output<RoutineRemoteFunctionOptionsArgs> remoteFunctionOptions;
+
+    /**
+     * @return Remote function specific options.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RoutineRemoteFunctionOptionsArgs>> remoteFunctionOptions() {
+        return Optional.ofNullable(this.remoteFunctionOptions);
+    }
+
+    /**
      * Optional. Can be set only if routineType = &#34;TABLE_VALUED_FUNCTION&#34;.
      * If absent, the return table type is inferred from definitionBody at query time in each query
      * that references this routine. If present, then the columns in the evaluated table result will
@@ -267,6 +285,7 @@ public final class RoutineArgs extends com.pulumi.resources.ResourceArgs {
         this.importedLibraries = $.importedLibraries;
         this.language = $.language;
         this.project = $.project;
+        this.remoteFunctionOptions = $.remoteFunctionOptions;
         this.returnTableType = $.returnTableType;
         this.returnType = $.returnType;
         this.routineId = $.routineId;
@@ -496,6 +515,29 @@ public final class RoutineArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param remoteFunctionOptions Remote function specific options.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder remoteFunctionOptions(@Nullable Output<RoutineRemoteFunctionOptionsArgs> remoteFunctionOptions) {
+            $.remoteFunctionOptions = remoteFunctionOptions;
+            return this;
+        }
+
+        /**
+         * @param remoteFunctionOptions Remote function specific options.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder remoteFunctionOptions(RoutineRemoteFunctionOptionsArgs remoteFunctionOptions) {
+            return remoteFunctionOptions(Output.of(remoteFunctionOptions));
         }
 
         /**

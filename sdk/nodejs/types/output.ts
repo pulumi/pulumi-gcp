@@ -5635,6 +5635,33 @@ export namespace bigquery {
         name?: string;
     }
 
+    export interface RoutineRemoteFunctionOptions {
+        /**
+         * Fully qualified name of the user-provided connection object which holds
+         * the authentication information to send requests to the remote service.
+         * Format: "projects/{projectId}/locations/{locationId}/connections/{connectionId}"
+         */
+        connection?: string;
+        /**
+         * Endpoint of the user-provided remote service, e.g.
+         * `https://us-east1-my_gcf_project.cloudfunctions.net/remote_add`
+         */
+        endpoint?: string;
+        /**
+         * Max number of rows in each batch sent to the remote service. If absent or if 0,
+         * BigQuery dynamically decides the number of rows in a batch.
+         */
+        maxBatchingRows?: string;
+        /**
+         * User-defined context as a set of key/value pairs, which will be sent as function
+         * invocation context together with batched arguments in the requests to the remote
+         * service. The total number of bytes of keys and values must be less than 8KB.
+         * An object containing a list of "key": value pairs. Example:
+         * `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+         */
+        userDefinedContext: {[key: string]: string};
+    }
+
     export interface RoutineSparkOptions {
         /**
          * Archive files to be extracted into the working directory of each executor. For more information about Apache Spark, see Apache Spark.
@@ -11795,6 +11822,18 @@ export namespace clouddeploy {
         internalIp?: boolean;
     }
 
+    export interface TargetIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface TargetIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface TargetMultiTarget {
         /**
          * Required. The targetIds of this multiTarget.
@@ -15623,7 +15662,8 @@ export namespace cloudrunv2 {
 
     export interface GetServiceTemplateContainerResource {
         /**
-         * Determines whether CPU should be throttled or not outside of requests.
+         * Determines whether CPU is only allocated during requests. True by default if the parent 'resources' field is not set. However, if
+         * 'resources' is set, this field must be explicitly set to true to preserve the default behavior.
          */
         cpuIdle: boolean;
         /**
@@ -16694,7 +16734,8 @@ export namespace cloudrunv2 {
 
     export interface ServiceTemplateContainerResources {
         /**
-         * Determines whether CPU should be throttled or not outside of requests.
+         * Determines whether CPU is only allocated during requests. True by default if the parent `resources` field is not set. However, if
+         * `resources` is set, this field must be explicitly set to true to preserve the default behavior.
          */
         cpuIdle?: boolean;
         /**
@@ -17490,6 +17531,10 @@ export namespace composer {
          */
         composerInternalIpv4CidrBlock: string;
         /**
+         * PSC (Private Service Connect) Network entry point. Customers can pre-create the Network Attachment and point Cloud Composer environment to use. It is possible to share network attachment among many environments, provided enough IP addresses are available.
+         */
+        composerNetworkAttachment: string;
+        /**
          * The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
          */
         diskSizeGb: number;
@@ -17522,9 +17567,9 @@ export namespace composer {
          */
         serviceAccount: string;
         /**
-         * The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+         * The Compute Engine subnetwork to be used for machine communications, specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
          */
-        subnetwork?: string;
+        subnetwork: string;
         /**
          * The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
          */
@@ -17961,6 +18006,10 @@ export namespace composer {
          */
         composerInternalIpv4CidrBlock: string;
         /**
+         * PSC (Private Service Connect) Network entry point. Customers can pre-create the Network Attachment and point Cloud Composer environment to use. It is possible to share network attachment among many environments, provided enough IP addresses are available.
+         */
+        composerNetworkAttachment: string;
+        /**
          * The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
          */
         diskSizeGb: number;
@@ -17993,7 +18042,7 @@ export namespace composer {
          */
         serviceAccount: string;
         /**
-         * The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+         * The Compute Engine subnetwork to be used for machine communications, specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
          */
         subnetwork: string;
         /**
@@ -70269,13 +70318,25 @@ export namespace spanner {
 
     export interface DatabaseIAMBindingCondition {
         description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: string;
     }
 
     export interface DatabaseIAMMemberCondition {
         description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: string;
     }
 

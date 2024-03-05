@@ -50,6 +50,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var scope = new Scope(&#34;scope&#34;, ScopeArgs.builder()        
  *             .scopeId(&#34;my-scope&#34;)
+ *             .namespaceLabels(Map.ofEntries(
+ *                 Map.entry(&#34;keyb&#34;, &#34;valueb&#34;),
+ *                 Map.entry(&#34;keya&#34;, &#34;valuea&#34;),
+ *                 Map.entry(&#34;keyc&#34;, &#34;valuec&#34;)
+ *             ))
  *             .labels(Map.ofEntries(
  *                 Map.entry(&#34;keyb&#34;, &#34;valueb&#34;),
  *                 Map.entry(&#34;keya&#34;, &#34;valuea&#34;),
@@ -163,6 +168,28 @@ public class Scope extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Scope-level cluster namespace labels. For the member clusters bound
+     * to the Scope, these labels are applied to each namespace under the
+     * Scope. Scope-level labels take precedence over Namespace-level
+     * labels (`namespace_labels` in the Fleet Namespace resource) if they
+     * share a key. Keys and values must be Kubernetes-conformant.
+     * 
+     */
+    @Export(name="namespaceLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> namespaceLabels;
+
+    /**
+     * @return Scope-level cluster namespace labels. For the member clusters bound
+     * to the Scope, these labels are applied to each namespace under the
+     * Scope. Scope-level labels take precedence over Namespace-level
+     * labels (`namespace_labels` in the Fleet Namespace resource) if they
+     * share a key. Keys and values must be Kubernetes-conformant.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> namespaceLabels() {
+        return Codegen.optional(this.namespaceLabels);
     }
     /**
      * The ID of the project in which the resource belongs.

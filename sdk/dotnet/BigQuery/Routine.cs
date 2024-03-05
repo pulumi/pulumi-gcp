@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.BigQuery
     ///     * [Routines Intro](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
     /// 
     /// ## Example Usage
-    /// ### Big Query Routine Basic
+    /// ### Bigquery Routine Basic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Big Query Routine Json
+    /// ### Bigquery Routine Json
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -85,7 +85,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Big Query Routine Tvf
+    /// ### Bigquery Routine Tvf
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -139,7 +139,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Big Query Routine Pyspark
+    /// ### Bigquery Routine Pyspark
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -196,7 +196,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Big Query Routine Pyspark Mainfile
+    /// ### Bigquery Routine Pyspark Mainfile
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -247,7 +247,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Big Query Routine Spark Jar
+    /// ### Bigquery Routine Spark Jar
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -290,6 +290,49 @@ namespace Pulumi.Gcp.BigQuery
     ///             {
     ///                 { "spark.dataproc.scaling.version", "2" },
     ///                 { "spark.reducer.fetchMigratedShuffle.enabled", "true" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Bigquery Routine Remote Function
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new Gcp.BigQuery.Dataset("test", new()
+    ///     {
+    ///         DatasetId = "dataset_id",
+    ///     });
+    /// 
+    ///     var testConnection = new Gcp.BigQuery.Connection("test", new()
+    ///     {
+    ///         ConnectionId = "connection_id",
+    ///         Location = "US",
+    ///         CloudResource = null,
+    ///     });
+    /// 
+    ///     var remoteFunction = new Gcp.BigQuery.Routine("remote_function", new()
+    ///     {
+    ///         DatasetId = test.DatasetId,
+    ///         RoutineId = "routine_id",
+    ///         RoutineType = "SCALAR_FUNCTION",
+    ///         DefinitionBody = "",
+    ///         ReturnType = "{\"typeKind\" :  \"STRING\"}",
+    ///         RemoteFunctionOptions = new Gcp.BigQuery.Inputs.RoutineRemoteFunctionOptionsArgs
+    ///         {
+    ///             Endpoint = "https://us-east1-my_gcf_project.cloudfunctions.net/remote_add",
+    ///             Connection = testConnection.Name,
+    ///             MaxBatchingRows = "10",
+    ///             UserDefinedContext = 
+    ///             {
+    ///                 { "z", "1.5" },
     ///             },
     ///         },
     ///     });
@@ -394,6 +437,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Remote function specific options.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("remoteFunctionOptions")]
+        public Output<Outputs.RoutineRemoteFunctionOptions?> RemoteFunctionOptions { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
@@ -554,6 +604,13 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Remote function specific options.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("remoteFunctionOptions")]
+        public Input<Inputs.RoutineRemoteFunctionOptionsArgs>? RemoteFunctionOptions { get; set; }
+
+        /// <summary>
         /// Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
         /// If absent, the return table type is inferred from definitionBody at query time in each query
         /// that references this routine. If present, then the columns in the evaluated table result will
@@ -686,6 +743,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Remote function specific options.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("remoteFunctionOptions")]
+        public Input<Inputs.RoutineRemoteFunctionOptionsGetArgs>? RemoteFunctionOptions { get; set; }
 
         /// <summary>
         /// Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".

@@ -18,7 +18,8 @@ import * as utilities from "../utilities";
  *
  * const _default = new gcp.certificatemanager.DnsAuthorization("default", {
  *     name: "dns-auth",
- *     description: "The default dnss",
+ *     location: "global",
+ *     description: "The default dns",
  *     domain: "subdomain.hashicorptest.com",
  * });
  * export const recordNameToInsert = _default.dnsResourceRecords.apply(dnsResourceRecords => dnsResourceRecords[0].name);
@@ -30,24 +31,24 @@ import * as utilities from "../utilities";
  *
  * DnsAuthorization can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/global/dnsAuthorizations/{{name}}`
+ *  * `projects/{{project}}/locations/{{location}}/dnsAuthorizations/{{name}}`
  *
- *  * `{{project}}/{{name}}`
+ *  * `{{project}}/{{location}}/{{name}}`
  *
- *  * `{{name}}`
+ *  * `{{location}}/{{name}}`
  *
  *  When using the `pulumi import` command, DnsAuthorization can be imported using one of the formats above. For example:
  *
  * ```sh
- * $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default projects/{{project}}/locations/global/dnsAuthorizations/{{name}}
+ * $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default projects/{{project}}/locations/{{location}}/dnsAuthorizations/{{name}}
  * ```
  *
  * ```sh
- * $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{project}}/{{name}}
+ * $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{project}}/{{location}}/{{name}}
  * ```
  *
  * ```sh
- * $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{name}}
+ * $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{location}}/{{name}}
  * ```
  */
 export class DnsAuthorization extends pulumi.CustomResource {
@@ -106,6 +107,10 @@ export class DnsAuthorization extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * The Certificate Manager location. If not specified, "global" is used.
+     */
+    public readonly location!: pulumi.Output<string | undefined>;
+    /**
      * Name of the resource; provided by the client when the resource is created.
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
@@ -143,6 +148,7 @@ export class DnsAuthorization extends pulumi.CustomResource {
             resourceInputs["domain"] = state ? state.domain : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
@@ -154,6 +160,7 @@ export class DnsAuthorization extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["domain"] = args ? args.domain : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["dnsResourceRecords"] = undefined /*out*/;
@@ -199,6 +206,10 @@ export interface DnsAuthorizationState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * The Certificate Manager location. If not specified, "global" is used.
+     */
+    location?: pulumi.Input<string>;
+    /**
      * Name of the resource; provided by the client when the resource is created.
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
@@ -239,6 +250,10 @@ export interface DnsAuthorizationArgs {
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The Certificate Manager location. If not specified, "global" is used.
+     */
+    location?: pulumi.Input<string>;
     /**
      * Name of the resource; provided by the client when the resource is created.
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,

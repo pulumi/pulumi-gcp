@@ -1488,6 +1488,8 @@ func (o EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput) Ind
 type EnvironmentConfigNodeConfig struct {
 	// IPv4 cidr range that will be used by Composer internal components.
 	ComposerInternalIpv4CidrBlock *string `pulumi:"composerInternalIpv4CidrBlock"`
+	// PSC (Private Service Connect) Network entry point. Customers can pre-create the Network Attachment and point Cloud Composer environment to use. It is possible to share network attachment among many environments, provided enough IP addresses are available.
+	ComposerNetworkAttachment *string `pulumi:"composerNetworkAttachment"`
 	// The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	// Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
@@ -1504,7 +1506,7 @@ type EnvironmentConfigNodeConfig struct {
 	OauthScopes []string `pulumi:"oauthScopes"`
 	// The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated. If given, note that the service account must have roles/composer.worker for any GCP resources created under the Cloud Composer Environment.
 	ServiceAccount *string `pulumi:"serviceAccount"`
-	// The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+	// The Compute Engine subnetwork to be used for machine communications, specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
 	Subnetwork *string `pulumi:"subnetwork"`
 	// The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
 	Tags []string `pulumi:"tags"`
@@ -1526,6 +1528,8 @@ type EnvironmentConfigNodeConfigInput interface {
 type EnvironmentConfigNodeConfigArgs struct {
 	// IPv4 cidr range that will be used by Composer internal components.
 	ComposerInternalIpv4CidrBlock pulumi.StringPtrInput `pulumi:"composerInternalIpv4CidrBlock"`
+	// PSC (Private Service Connect) Network entry point. Customers can pre-create the Network Attachment and point Cloud Composer environment to use. It is possible to share network attachment among many environments, provided enough IP addresses are available.
+	ComposerNetworkAttachment pulumi.StringPtrInput `pulumi:"composerNetworkAttachment"`
 	// The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	// Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
@@ -1542,7 +1546,7 @@ type EnvironmentConfigNodeConfigArgs struct {
 	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
 	// The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated. If given, note that the service account must have roles/composer.worker for any GCP resources created under the Cloud Composer Environment.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
-	// The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+	// The Compute Engine subnetwork to be used for machine communications, specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
 	// The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
@@ -1632,6 +1636,11 @@ func (o EnvironmentConfigNodeConfigOutput) ComposerInternalIpv4CidrBlock() pulum
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.ComposerInternalIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
+// PSC (Private Service Connect) Network entry point. Customers can pre-create the Network Attachment and point Cloud Composer environment to use. It is possible to share network attachment among many environments, provided enough IP addresses are available.
+func (o EnvironmentConfigNodeConfigOutput) ComposerNetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.ComposerNetworkAttachment }).(pulumi.StringPtrOutput)
+}
+
 // The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigNodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
@@ -1674,7 +1683,7 @@ func (o EnvironmentConfigNodeConfigOutput) ServiceAccount() pulumi.StringPtrOutp
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
-// The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+// The Compute Engine subnetwork to be used for machine communications, specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
 func (o EnvironmentConfigNodeConfigOutput) Subnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
 }
@@ -1720,6 +1729,16 @@ func (o EnvironmentConfigNodeConfigPtrOutput) ComposerInternalIpv4CidrBlock() pu
 			return nil
 		}
 		return v.ComposerInternalIpv4CidrBlock
+	}).(pulumi.StringPtrOutput)
+}
+
+// PSC (Private Service Connect) Network entry point. Customers can pre-create the Network Attachment and point Cloud Composer environment to use. It is possible to share network attachment among many environments, provided enough IP addresses are available.
+func (o EnvironmentConfigNodeConfigPtrOutput) ComposerNetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComposerNetworkAttachment
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1803,7 +1822,7 @@ func (o EnvironmentConfigNodeConfigPtrOutput) ServiceAccount() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+// The Compute Engine subnetwork to be used for machine communications, specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
 func (o EnvironmentConfigNodeConfigPtrOutput) Subnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) *string {
 		if v == nil {
@@ -5737,6 +5756,8 @@ func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput) 
 type GetEnvironmentConfigNodeConfig struct {
 	// IPv4 cidr range that will be used by Composer internal components.
 	ComposerInternalIpv4CidrBlock string `pulumi:"composerInternalIpv4CidrBlock"`
+	// PSC (Private Service Connect) Network entry point. Customers can pre-create the Network Attachment and point Cloud Composer environment to use. It is possible to share network attachment among many environments, provided enough IP addresses are available.
+	ComposerNetworkAttachment string `pulumi:"composerNetworkAttachment"`
 	// The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DiskSizeGb int `pulumi:"diskSizeGb"`
 	// Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
@@ -5753,7 +5774,7 @@ type GetEnvironmentConfigNodeConfig struct {
 	OauthScopes []string `pulumi:"oauthScopes"`
 	// The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated. If given, note that the service account must have roles/composer.worker for any GCP resources created under the Cloud Composer Environment.
 	ServiceAccount string `pulumi:"serviceAccount"`
-	// The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+	// The Compute Engine subnetwork to be used for machine communications, specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
 	Subnetwork string `pulumi:"subnetwork"`
 	// The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
 	Tags []string `pulumi:"tags"`
@@ -5775,6 +5796,8 @@ type GetEnvironmentConfigNodeConfigInput interface {
 type GetEnvironmentConfigNodeConfigArgs struct {
 	// IPv4 cidr range that will be used by Composer internal components.
 	ComposerInternalIpv4CidrBlock pulumi.StringInput `pulumi:"composerInternalIpv4CidrBlock"`
+	// PSC (Private Service Connect) Network entry point. Customers can pre-create the Network Attachment and point Cloud Composer environment to use. It is possible to share network attachment among many environments, provided enough IP addresses are available.
+	ComposerNetworkAttachment pulumi.StringInput `pulumi:"composerNetworkAttachment"`
 	// The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DiskSizeGb pulumi.IntInput `pulumi:"diskSizeGb"`
 	// Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
@@ -5791,7 +5814,7 @@ type GetEnvironmentConfigNodeConfigArgs struct {
 	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
 	// The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated. If given, note that the service account must have roles/composer.worker for any GCP resources created under the Cloud Composer Environment.
 	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
-	// The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+	// The Compute Engine subnetwork to be used for machine communications, specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
 	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
 	// The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
@@ -5855,6 +5878,11 @@ func (o GetEnvironmentConfigNodeConfigOutput) ComposerInternalIpv4CidrBlock() pu
 	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) string { return v.ComposerInternalIpv4CidrBlock }).(pulumi.StringOutput)
 }
 
+// PSC (Private Service Connect) Network entry point. Customers can pre-create the Network Attachment and point Cloud Composer environment to use. It is possible to share network attachment among many environments, provided enough IP addresses are available.
+func (o GetEnvironmentConfigNodeConfigOutput) ComposerNetworkAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) string { return v.ComposerNetworkAttachment }).(pulumi.StringOutput)
+}
+
 // The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o GetEnvironmentConfigNodeConfigOutput) DiskSizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) int { return v.DiskSizeGb }).(pulumi.IntOutput)
@@ -5897,7 +5925,7 @@ func (o GetEnvironmentConfigNodeConfigOutput) ServiceAccount() pulumi.StringOutp
 	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) string { return v.ServiceAccount }).(pulumi.StringOutput)
 }
 
-// The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+// The Compute Engine subnetwork to be used for machine communications, specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
 func (o GetEnvironmentConfigNodeConfigOutput) Subnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) string { return v.Subnetwork }).(pulumi.StringOutput)
 }

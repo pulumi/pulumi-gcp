@@ -24,6 +24,11 @@ import * as utilities from "../utilities";
  *
  * const scope = new gcp.gkehub.Scope("scope", {
  *     scopeId: "my-scope",
+ *     namespaceLabels: {
+ *         keyb: "valueb",
+ *         keya: "valuea",
+ *         keyc: "valuec",
+ *     },
  *     labels: {
  *         keyb: "valueb",
  *         keya: "valuea",
@@ -108,6 +113,14 @@ export class Scope extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
+     * Scope-level cluster namespace labels. For the member clusters bound
+     * to the Scope, these labels are applied to each namespace under the
+     * Scope. Scope-level labels take precedence over Namespace-level
+     * labels (`namespaceLabels` in the Fleet Namespace resource) if they
+     * share a key. Keys and values must be Kubernetes-conformant.
+     */
+    public readonly namespaceLabels!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -156,6 +169,7 @@ export class Scope extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namespaceLabels"] = state ? state.namespaceLabels : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["scopeId"] = state ? state.scopeId : undefined;
@@ -168,6 +182,7 @@ export class Scope extends pulumi.CustomResource {
                 throw new Error("Missing required property 'scopeId'");
             }
             resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["namespaceLabels"] = args ? args.namespaceLabels : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["scopeId"] = args ? args.scopeId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -214,6 +229,14 @@ export interface ScopeState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Scope-level cluster namespace labels. For the member clusters bound
+     * to the Scope, these labels are applied to each namespace under the
+     * Scope. Scope-level labels take precedence over Namespace-level
+     * labels (`namespaceLabels` in the Fleet Namespace resource) if they
+     * share a key. Keys and values must be Kubernetes-conformant.
+     */
+    namespaceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -256,6 +279,14 @@ export interface ScopeArgs {
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Scope-level cluster namespace labels. For the member clusters bound
+     * to the Scope, these labels are applied to each namespace under the
+     * Scope. Scope-level labels take precedence over Namespace-level
+     * labels (`namespaceLabels` in the Fleet Namespace resource) if they
+     * share a key. Keys and values must be Kubernetes-conformant.
+     */
+    namespaceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

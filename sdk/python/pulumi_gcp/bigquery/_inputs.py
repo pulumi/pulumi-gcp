@@ -64,6 +64,7 @@ __all__ = [
     'JobStatusErrorResultArgs',
     'ReservationAutoscaleArgs',
     'RoutineArgumentArgs',
+    'RoutineRemoteFunctionOptionsArgs',
     'RoutineSparkOptionsArgs',
     'TableEncryptionConfigurationArgs',
     'TableExternalDataConfigurationArgs',
@@ -3777,6 +3778,93 @@ class RoutineArgumentArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class RoutineRemoteFunctionOptionsArgs:
+    def __init__(__self__, *,
+                 connection: Optional[pulumi.Input[str]] = None,
+                 endpoint: Optional[pulumi.Input[str]] = None,
+                 max_batching_rows: Optional[pulumi.Input[str]] = None,
+                 user_defined_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] connection: Fully qualified name of the user-provided connection object which holds
+               the authentication information to send requests to the remote service.
+               Format: "projects/{projectId}/locations/{locationId}/connections/{connectionId}"
+        :param pulumi.Input[str] endpoint: Endpoint of the user-provided remote service, e.g.
+               `https://us-east1-my_gcf_project.cloudfunctions.net/remote_add`
+        :param pulumi.Input[str] max_batching_rows: Max number of rows in each batch sent to the remote service. If absent or if 0,
+               BigQuery dynamically decides the number of rows in a batch.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_defined_context: User-defined context as a set of key/value pairs, which will be sent as function
+               invocation context together with batched arguments in the requests to the remote
+               service. The total number of bytes of keys and values must be less than 8KB.
+               An object containing a list of "key": value pairs. Example:
+               `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+        """
+        if connection is not None:
+            pulumi.set(__self__, "connection", connection)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if max_batching_rows is not None:
+            pulumi.set(__self__, "max_batching_rows", max_batching_rows)
+        if user_defined_context is not None:
+            pulumi.set(__self__, "user_defined_context", user_defined_context)
+
+    @property
+    @pulumi.getter
+    def connection(self) -> Optional[pulumi.Input[str]]:
+        """
+        Fully qualified name of the user-provided connection object which holds
+        the authentication information to send requests to the remote service.
+        Format: "projects/{projectId}/locations/{locationId}/connections/{connectionId}"
+        """
+        return pulumi.get(self, "connection")
+
+    @connection.setter
+    def connection(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection", value)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Endpoint of the user-provided remote service, e.g.
+        `https://us-east1-my_gcf_project.cloudfunctions.net/remote_add`
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter(name="maxBatchingRows")
+    def max_batching_rows(self) -> Optional[pulumi.Input[str]]:
+        """
+        Max number of rows in each batch sent to the remote service. If absent or if 0,
+        BigQuery dynamically decides the number of rows in a batch.
+        """
+        return pulumi.get(self, "max_batching_rows")
+
+    @max_batching_rows.setter
+    def max_batching_rows(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_batching_rows", value)
+
+    @property
+    @pulumi.getter(name="userDefinedContext")
+    def user_defined_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        User-defined context as a set of key/value pairs, which will be sent as function
+        invocation context together with batched arguments in the requests to the remote
+        service. The total number of bytes of keys and values must be less than 8KB.
+        An object containing a list of "key": value pairs. Example:
+        `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+        """
+        return pulumi.get(self, "user_defined_context")
+
+    @user_defined_context.setter
+    def user_defined_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "user_defined_context", value)
 
 
 @pulumi.input_type

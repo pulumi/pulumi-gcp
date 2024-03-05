@@ -13,7 +13,8 @@ import java.util.Objects;
 @CustomType
 public final class GetServiceTemplateContainerResource {
     /**
-     * @return Determines whether CPU should be throttled or not outside of requests.
+     * @return Determines whether CPU is only allocated during requests. True by default if the parent &#39;resources&#39; field is not set. However, if
+     * &#39;resources&#39; is set, this field must be explicitly set to true to preserve the default behavior.
      * 
      */
     private Boolean cpuIdle;
@@ -30,7 +31,8 @@ public final class GetServiceTemplateContainerResource {
 
     private GetServiceTemplateContainerResource() {}
     /**
-     * @return Determines whether CPU should be throttled or not outside of requests.
+     * @return Determines whether CPU is only allocated during requests. True by default if the parent &#39;resources&#39; field is not set. However, if
+     * &#39;resources&#39; is set, this field must be explicitly set to true to preserve the default behavior.
      * 
      */
     public Boolean cpuIdle() {

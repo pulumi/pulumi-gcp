@@ -62,7 +62,7 @@ import (
 //			myapp, err := appengine.NewStandardAppVersion(ctx, "myapp", &appengine.StandardAppVersionArgs{
 //				VersionId: pulumi.String("v1"),
 //				Service:   pulumi.String("myapp"),
-//				Runtime:   pulumi.String("nodejs10"),
+//				Runtime:   pulumi.String("nodejs20"),
 //				Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
 //					Shell: pulumi.String("node ./app.js"),
 //				},

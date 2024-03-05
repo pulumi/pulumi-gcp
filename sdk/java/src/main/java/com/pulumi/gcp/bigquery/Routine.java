@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.bigquery.RoutineArgs;
 import com.pulumi.gcp.bigquery.inputs.RoutineState;
 import com.pulumi.gcp.bigquery.outputs.RoutineArgument;
+import com.pulumi.gcp.bigquery.outputs.RoutineRemoteFunctionOptions;
 import com.pulumi.gcp.bigquery.outputs.RoutineSparkOptions;
 import java.lang.Integer;
 import java.lang.String;
@@ -28,7 +29,7 @@ import javax.annotation.Nullable;
  *     * [Routines Intro](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
  * 
  * ## Example Usage
- * ### Big Query Routine Basic
+ * ### Bigquery Routine Basic
  * ```java
  * package generated_program;
  * 
@@ -67,7 +68,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Big Query Routine Json
+ * ### Bigquery Routine Json
  * ```java
  * package generated_program;
  * 
@@ -117,7 +118,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Big Query Routine Tvf
+ * ### Bigquery Routine Tvf
  * ```java
  * package generated_program;
  * 
@@ -177,7 +178,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Big Query Routine Pyspark
+ * ### Bigquery Routine Pyspark
  * ```java
  * package generated_program;
  * 
@@ -250,7 +251,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Big Query Routine Pyspark Mainfile
+ * ### Bigquery Routine Pyspark Mainfile
  * ```java
  * package generated_program;
  * 
@@ -307,7 +308,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Big Query Routine Spark Jar
+ * ### Bigquery Routine Spark Jar
  * ```java
  * package generated_program;
  * 
@@ -361,6 +362,61 @@ import javax.annotation.Nullable;
  *                     Map.entry(&#34;spark.dataproc.scaling.version&#34;, &#34;2&#34;),
  *                     Map.entry(&#34;spark.reducer.fetchMigratedShuffle.enabled&#34;, &#34;true&#34;)
  *                 ))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Bigquery Routine Remote Function
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Connection;
+ * import com.pulumi.gcp.bigquery.ConnectionArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionCloudResourceArgs;
+ * import com.pulumi.gcp.bigquery.Routine;
+ * import com.pulumi.gcp.bigquery.RoutineArgs;
+ * import com.pulumi.gcp.bigquery.inputs.RoutineRemoteFunctionOptionsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new Dataset(&#34;test&#34;, DatasetArgs.builder()        
+ *             .datasetId(&#34;dataset_id&#34;)
+ *             .build());
+ * 
+ *         var testConnection = new Connection(&#34;testConnection&#34;, ConnectionArgs.builder()        
+ *             .connectionId(&#34;connection_id&#34;)
+ *             .location(&#34;US&#34;)
+ *             .cloudResource()
+ *             .build());
+ * 
+ *         var remoteFunction = new Routine(&#34;remoteFunction&#34;, RoutineArgs.builder()        
+ *             .datasetId(test.datasetId())
+ *             .routineId(&#34;routine_id&#34;)
+ *             .routineType(&#34;SCALAR_FUNCTION&#34;)
+ *             .definitionBody(&#34;&#34;)
+ *             .returnType(&#34;{\&#34;typeKind\&#34; :  \&#34;STRING\&#34;}&#34;)
+ *             .remoteFunctionOptions(RoutineRemoteFunctionOptionsArgs.builder()
+ *                 .endpoint(&#34;https://us-east1-my_gcf_project.cloudfunctions.net/remote_add&#34;)
+ *                 .connection(testConnection.name())
+ *                 .maxBatchingRows(&#34;10&#34;)
+ *                 .userDefinedContext(Map.of(&#34;z&#34;, &#34;1.5&#34;))
  *                 .build())
  *             .build());
  * 
@@ -554,6 +610,22 @@ public class Routine extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * Remote function specific options.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="remoteFunctionOptions", refs={RoutineRemoteFunctionOptions.class}, tree="[0]")
+    private Output</* @Nullable */ RoutineRemoteFunctionOptions> remoteFunctionOptions;
+
+    /**
+     * @return Remote function specific options.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RoutineRemoteFunctionOptions>> remoteFunctionOptions() {
+        return Codegen.optional(this.remoteFunctionOptions);
     }
     /**
      * Optional. Can be set only if routineType = &#34;TABLE_VALUED_FUNCTION&#34;.

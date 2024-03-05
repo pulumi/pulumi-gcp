@@ -156,8 +156,10 @@ func (o DatabaseEncryptionConfigPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 
 type DatabaseIAMBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 // DatabaseIAMBindingConditionInput is an input type that accepts DatabaseIAMBindingConditionArgs and DatabaseIAMBindingConditionOutput values.
@@ -173,8 +175,10 @@ type DatabaseIAMBindingConditionInput interface {
 
 type DatabaseIAMBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (DatabaseIAMBindingConditionArgs) ElementType() reflect.Type {
@@ -258,10 +262,12 @@ func (o DatabaseIAMBindingConditionOutput) Description() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v DatabaseIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o DatabaseIAMBindingConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o DatabaseIAMBindingConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -299,6 +305,7 @@ func (o DatabaseIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o DatabaseIAMBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseIAMBindingCondition) *string {
 		if v == nil {
@@ -308,6 +315,7 @@ func (o DatabaseIAMBindingConditionPtrOutput) Expression() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o DatabaseIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseIAMBindingCondition) *string {
 		if v == nil {
@@ -319,8 +327,10 @@ func (o DatabaseIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 
 type DatabaseIAMMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 // DatabaseIAMMemberConditionInput is an input type that accepts DatabaseIAMMemberConditionArgs and DatabaseIAMMemberConditionOutput values.
@@ -336,8 +346,10 @@ type DatabaseIAMMemberConditionInput interface {
 
 type DatabaseIAMMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (DatabaseIAMMemberConditionArgs) ElementType() reflect.Type {
@@ -421,10 +433,12 @@ func (o DatabaseIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o DatabaseIAMMemberConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o DatabaseIAMMemberConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -462,6 +476,7 @@ func (o DatabaseIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o DatabaseIAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseIAMMemberCondition) *string {
 		if v == nil {
@@ -471,6 +486,7 @@ func (o DatabaseIAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o DatabaseIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseIAMMemberCondition) *string {
 		if v == nil {

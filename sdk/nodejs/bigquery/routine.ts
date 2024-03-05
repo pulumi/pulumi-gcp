@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *     * [Routines Intro](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
  *
  * ## Example Usage
- * ### Big Query Routine Basic
+ * ### Bigquery Routine Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *     definitionBody: "CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);",
  * });
  * ```
- * ### Big Query Routine Json
+ * ### Bigquery Routine Json
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -57,7 +57,7 @@ import * as utilities from "../utilities";
  *     returnType: "{\"typeKind\" :  \"FLOAT64\"}",
  * });
  * ```
- * ### Big Query Routine Tvf
+ * ### Bigquery Routine Tvf
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -87,7 +87,7 @@ import * as utilities from "../utilities";
  *     }),
  * });
  * ```
- * ### Big Query Routine Pyspark
+ * ### Bigquery Routine Pyspark
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -130,7 +130,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Big Query Routine Pyspark Mainfile
+ * ### Bigquery Routine Pyspark Mainfile
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -158,7 +158,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Big Query Routine Spark Jar
+ * ### Bigquery Routine Spark Jar
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -185,6 +185,34 @@ import * as utilities from "../utilities";
  *         properties: {
  *             "spark.dataproc.scaling.version": "2",
  *             "spark.reducer.fetchMigratedShuffle.enabled": "true",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Bigquery Routine Remote Function
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const test = new gcp.bigquery.Dataset("test", {datasetId: "dataset_id"});
+ * const testConnection = new gcp.bigquery.Connection("test", {
+ *     connectionId: "connection_id",
+ *     location: "US",
+ *     cloudResource: {},
+ * });
+ * const remoteFunction = new gcp.bigquery.Routine("remote_function", {
+ *     datasetId: test.datasetId,
+ *     routineId: "routine_id",
+ *     routineType: "SCALAR_FUNCTION",
+ *     definitionBody: "",
+ *     returnType: "{\"typeKind\" :  \"STRING\"}",
+ *     remoteFunctionOptions: {
+ *         endpoint: "https://us-east1-my_gcf_project.cloudfunctions.net/remote_add",
+ *         connection: testConnection.name,
+ *         maxBatchingRows: "10",
+ *         userDefinedContext: {
+ *             z: "1.5",
  *         },
  *     },
  * });
@@ -294,6 +322,11 @@ export class Routine extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * Remote function specific options.
+     * Structure is documented below.
+     */
+    public readonly remoteFunctionOptions!: pulumi.Output<outputs.bigquery.RoutineRemoteFunctionOptions | undefined>;
+    /**
      * Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
      * If absent, the return table type is inferred from definitionBody at query time in each query
      * that references this routine. If present, then the columns in the evaluated table result will
@@ -350,6 +383,7 @@ export class Routine extends pulumi.CustomResource {
             resourceInputs["language"] = state ? state.language : undefined;
             resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["remoteFunctionOptions"] = state ? state.remoteFunctionOptions : undefined;
             resourceInputs["returnTableType"] = state ? state.returnTableType : undefined;
             resourceInputs["returnType"] = state ? state.returnType : undefined;
             resourceInputs["routineId"] = state ? state.routineId : undefined;
@@ -377,6 +411,7 @@ export class Routine extends pulumi.CustomResource {
             resourceInputs["importedLibraries"] = args ? args.importedLibraries : undefined;
             resourceInputs["language"] = args ? args.language : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["remoteFunctionOptions"] = args ? args.remoteFunctionOptions : undefined;
             resourceInputs["returnTableType"] = args ? args.returnTableType : undefined;
             resourceInputs["returnType"] = args ? args.returnType : undefined;
             resourceInputs["routineId"] = args ? args.routineId : undefined;
@@ -445,6 +480,11 @@ export interface RoutineState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Remote function specific options.
+     * Structure is documented below.
+     */
+    remoteFunctionOptions?: pulumi.Input<inputs.bigquery.RoutineRemoteFunctionOptions>;
     /**
      * Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
      * If absent, the return table type is inferred from definitionBody at query time in each query
@@ -525,6 +565,11 @@ export interface RoutineArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Remote function specific options.
+     * Structure is documented below.
+     */
+    remoteFunctionOptions?: pulumi.Input<inputs.bigquery.RoutineRemoteFunctionOptions>;
     /**
      * Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
      * If absent, the return table type is inferred from definitionBody at query time in each query

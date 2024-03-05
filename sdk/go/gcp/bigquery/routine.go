@@ -21,7 +21,7 @@ import (
 //   - [Routines Intro](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
 //
 // ## Example Usage
-// ### Big Query Routine Basic
+// ### Bigquery Routine Basic
 //
 // ```go
 // package main
@@ -56,7 +56,7 @@ import (
 //	}
 //
 // ```
-// ### Big Query Routine Json
+// ### Bigquery Routine Json
 //
 // ```go
 // package main
@@ -102,7 +102,7 @@ import (
 //	}
 //
 // ```
-// ### Big Query Routine Tvf
+// ### Bigquery Routine Tvf
 //
 // ```go
 // package main
@@ -168,7 +168,7 @@ import (
 //	}
 //
 // ```
-// ### Big Query Routine Pyspark
+// ### Bigquery Routine Pyspark
 //
 // ```go
 // package main
@@ -239,7 +239,7 @@ import (
 //	}
 //
 // ```
-// ### Big Query Routine Pyspark Mainfile
+// ### Bigquery Routine Pyspark Mainfile
 //
 // ```go
 // package main
@@ -296,7 +296,7 @@ import (
 //	}
 //
 // ```
-// ### Big Query Routine Spark Jar
+// ### Bigquery Routine Spark Jar
 //
 // ```go
 // package main
@@ -341,6 +341,57 @@ import (
 //					Properties: pulumi.StringMap{
 //						"spark.dataproc.scaling.version":             pulumi.String("2"),
 //						"spark.reducer.fetchMigratedShuffle.enabled": pulumi.String("true"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Bigquery Routine Remote Function
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			test, err := bigquery.NewDataset(ctx, "test", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("dataset_id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testConnection, err := bigquery.NewConnection(ctx, "test", &bigquery.ConnectionArgs{
+//				ConnectionId:  pulumi.String("connection_id"),
+//				Location:      pulumi.String("US"),
+//				CloudResource: nil,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewRoutine(ctx, "remote_function", &bigquery.RoutineArgs{
+//				DatasetId:      test.DatasetId,
+//				RoutineId:      pulumi.String("routine_id"),
+//				RoutineType:    pulumi.String("SCALAR_FUNCTION"),
+//				DefinitionBody: pulumi.String(""),
+//				ReturnType:     pulumi.String("{\"typeKind\" :  \"STRING\"}"),
+//				RemoteFunctionOptions: &bigquery.RoutineRemoteFunctionOptionsArgs{
+//					Endpoint:        pulumi.String("https://us-east1-my_gcf_project.cloudfunctions.net/remote_add"),
+//					Connection:      testConnection.Name,
+//					MaxBatchingRows: pulumi.String("10"),
+//					UserDefinedContext: pulumi.StringMap{
+//						"z": pulumi.String("1.5"),
 //					},
 //				},
 //			})
@@ -409,6 +460,9 @@ type Routine struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Remote function specific options.
+	// Structure is documented below.
+	RemoteFunctionOptions RoutineRemoteFunctionOptionsPtrOutput `pulumi:"remoteFunctionOptions"`
 	// Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
 	// If absent, the return table type is inferred from definitionBody at query time in each query
 	// that references this routine. If present, then the columns in the evaluated table result will
@@ -506,6 +560,9 @@ type routineState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Remote function specific options.
+	// Structure is documented below.
+	RemoteFunctionOptions *RoutineRemoteFunctionOptions `pulumi:"remoteFunctionOptions"`
 	// Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
 	// If absent, the return table type is inferred from definitionBody at query time in each query
 	// that references this routine. If present, then the columns in the evaluated table result will
@@ -562,6 +619,9 @@ type RoutineState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Remote function specific options.
+	// Structure is documented below.
+	RemoteFunctionOptions RoutineRemoteFunctionOptionsPtrInput
 	// Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
 	// If absent, the return table type is inferred from definitionBody at query time in each query
 	// that references this routine. If present, then the columns in the evaluated table result will
@@ -616,6 +676,9 @@ type routineArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Remote function specific options.
+	// Structure is documented below.
+	RemoteFunctionOptions *RoutineRemoteFunctionOptions `pulumi:"remoteFunctionOptions"`
 	// Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
 	// If absent, the return table type is inferred from definitionBody at query time in each query
 	// that references this routine. If present, then the columns in the evaluated table result will
@@ -667,6 +730,9 @@ type RoutineArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Remote function specific options.
+	// Structure is documented below.
+	RemoteFunctionOptions RoutineRemoteFunctionOptionsPtrInput
 	// Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
 	// If absent, the return table type is inferred from definitionBody at query time in each query
 	// that references this routine. If present, then the columns in the evaluated table result will
@@ -837,6 +903,12 @@ func (o RoutineOutput) LastModifiedTime() pulumi.IntOutput {
 // If it is not provided, the provider project is used.
 func (o RoutineOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Routine) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Remote function specific options.
+// Structure is documented below.
+func (o RoutineOutput) RemoteFunctionOptions() RoutineRemoteFunctionOptionsPtrOutput {
+	return o.ApplyT(func(v *Routine) RoutineRemoteFunctionOptionsPtrOutput { return v.RemoteFunctionOptions }).(RoutineRemoteFunctionOptionsPtrOutput)
 }
 
 // Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".

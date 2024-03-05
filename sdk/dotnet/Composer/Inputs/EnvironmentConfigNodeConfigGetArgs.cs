@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.Composer.Inputs
         public Input<string>? ComposerInternalIpv4CidrBlock { get; set; }
 
         /// <summary>
+        /// PSC (Private Service Connect) Network entry point. Customers can pre-create the Network Attachment and point Cloud Composer environment to use. It is possible to share network attachment among many environments, provided enough IP addresses are available.
+        /// </summary>
+        [Input("composerNetworkAttachment")]
+        public Input<string>? ComposerNetworkAttachment { get; set; }
+
+        /// <summary>
         /// The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Input("diskSizeGb")]
@@ -73,7 +79,7 @@ namespace Pulumi.Gcp.Composer.Inputs
         public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
-        /// The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+        /// The Compute Engine subnetwork to be used for machine communications, specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
