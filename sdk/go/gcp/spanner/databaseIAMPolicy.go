@@ -67,6 +67,53 @@ import (
 //
 // ```
 //
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/spanner"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/editor",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//						Condition: {
+//							Title:       "My Role",
+//							Description: pulumi.StringRef("Grant permissions on my_role"),
+//							Expression:  "(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = spanner.NewDatabaseIAMPolicy(ctx, "database", &spanner.DatabaseIAMPolicyArgs{
+//				Instance:   pulumi.String("your-instance-name"),
+//				Database:   pulumi.String("your-database-name"),
+//				PolicyData: *pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## google\_spanner\_database\_iam\_binding
 //
 // ```go
@@ -98,6 +145,42 @@ import (
 //
 // ```
 //
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/spanner"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := spanner.NewDatabaseIAMBinding(ctx, "database", &spanner.DatabaseIAMBindingArgs{
+//				Instance: pulumi.String("your-instance-name"),
+//				Database: pulumi.String("your-database-name"),
+//				Role:     pulumi.String("roles/compute.networkUser"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//				Condition: &spanner.DatabaseIAMBindingConditionArgs{
+//					Title:       pulumi.String("My Role"),
+//					Description: pulumi.String("Grant permissions on my_role"),
+//					Expression:  pulumi.String("(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## google\_spanner\_database\_iam\_member
 //
 // ```go
@@ -117,6 +200,40 @@ import (
 //				Database: pulumi.String("your-database-name"),
 //				Role:     pulumi.String("roles/compute.networkUser"),
 //				Member:   pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/spanner"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := spanner.NewDatabaseIAMMember(ctx, "database", &spanner.DatabaseIAMMemberArgs{
+//				Instance: pulumi.String("your-instance-name"),
+//				Database: pulumi.String("your-database-name"),
+//				Role:     pulumi.String("roles/compute.networkUser"),
+//				Member:   pulumi.String("user:jane@example.com"),
+//				Condition: &spanner.DatabaseIAMMemberConditionArgs{
+//					Title:       pulumi.String("My Role"),
+//					Description: pulumi.String("Grant permissions on my_role"),
+//					Expression:  pulumi.String("(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))"),
+//				},
 //			})
 //			if err != nil {
 //				return err

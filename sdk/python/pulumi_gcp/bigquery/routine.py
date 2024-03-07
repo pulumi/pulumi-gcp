@@ -26,6 +26,7 @@ class RoutineArgs:
                  imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  language: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 remote_function_options: Optional[pulumi.Input['RoutineRemoteFunctionOptionsArgs']] = None,
                  return_table_type: Optional[pulumi.Input[str]] = None,
                  return_type: Optional[pulumi.Input[str]] = None,
                  spark_options: Optional[pulumi.Input['RoutineSparkOptionsArgs']] = None):
@@ -51,6 +52,8 @@ class RoutineArgs:
                Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['RoutineRemoteFunctionOptionsArgs'] remote_function_options: Remote function specific options.
+               Structure is documented below.
         :param pulumi.Input[str] return_table_type: Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
                If absent, the return table type is inferred from definitionBody at query time in each query
                that references this routine. If present, then the columns in the evaluated table result will
@@ -83,6 +86,8 @@ class RoutineArgs:
             pulumi.set(__self__, "language", language)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if remote_function_options is not None:
+            pulumi.set(__self__, "remote_function_options", remote_function_options)
         if return_table_type is not None:
             pulumi.set(__self__, "return_table_type", return_table_type)
         if return_type is not None:
@@ -221,6 +226,19 @@ class RoutineArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="remoteFunctionOptions")
+    def remote_function_options(self) -> Optional[pulumi.Input['RoutineRemoteFunctionOptionsArgs']]:
+        """
+        Remote function specific options.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "remote_function_options")
+
+    @remote_function_options.setter
+    def remote_function_options(self, value: Optional[pulumi.Input['RoutineRemoteFunctionOptionsArgs']]):
+        pulumi.set(self, "remote_function_options", value)
+
+    @property
     @pulumi.getter(name="returnTableType")
     def return_table_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -282,6 +300,7 @@ class _RoutineState:
                  language: Optional[pulumi.Input[str]] = None,
                  last_modified_time: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 remote_function_options: Optional[pulumi.Input['RoutineRemoteFunctionOptionsArgs']] = None,
                  return_table_type: Optional[pulumi.Input[str]] = None,
                  return_type: Optional[pulumi.Input[str]] = None,
                  routine_id: Optional[pulumi.Input[str]] = None,
@@ -310,6 +329,8 @@ class _RoutineState:
                epoch.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['RoutineRemoteFunctionOptionsArgs'] remote_function_options: Remote function specific options.
+               Structure is documented below.
         :param pulumi.Input[str] return_table_type: Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
                If absent, the return table type is inferred from definitionBody at query time in each query
                that references this routine. If present, then the columns in the evaluated table result will
@@ -349,6 +370,8 @@ class _RoutineState:
             pulumi.set(__self__, "last_modified_time", last_modified_time)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if remote_function_options is not None:
+            pulumi.set(__self__, "remote_function_options", remote_function_options)
         if return_table_type is not None:
             pulumi.set(__self__, "return_table_type", return_table_type)
         if return_type is not None:
@@ -492,6 +515,19 @@ class _RoutineState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="remoteFunctionOptions")
+    def remote_function_options(self) -> Optional[pulumi.Input['RoutineRemoteFunctionOptionsArgs']]:
+        """
+        Remote function specific options.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "remote_function_options")
+
+    @remote_function_options.setter
+    def remote_function_options(self, value: Optional[pulumi.Input['RoutineRemoteFunctionOptionsArgs']]):
+        pulumi.set(self, "remote_function_options", value)
+
+    @property
     @pulumi.getter(name="returnTableType")
     def return_table_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -578,6 +614,7 @@ class Routine(pulumi.CustomResource):
                  imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  language: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 remote_function_options: Optional[pulumi.Input[pulumi.InputType['RoutineRemoteFunctionOptionsArgs']]] = None,
                  return_table_type: Optional[pulumi.Input[str]] = None,
                  return_type: Optional[pulumi.Input[str]] = None,
                  routine_id: Optional[pulumi.Input[str]] = None,
@@ -594,7 +631,7 @@ class Routine(pulumi.CustomResource):
             * [Routines Intro](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
 
         ## Example Usage
-        ### Big Query Routine Basic
+        ### Bigquery Routine Basic
 
         ```python
         import pulumi
@@ -608,7 +645,7 @@ class Routine(pulumi.CustomResource):
             language="SQL",
             definition_body="CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);")
         ```
-        ### Big Query Routine Json
+        ### Bigquery Routine Json
 
         ```python
         import pulumi
@@ -633,7 +670,7 @@ class Routine(pulumi.CustomResource):
             ],
             return_type="{\\"typeKind\\" :  \\"FLOAT64\\"}")
         ```
-        ### Big Query Routine Tvf
+        ### Bigquery Routine Tvf
 
         ```python
         import pulumi
@@ -663,7 +700,7 @@ class Routine(pulumi.CustomResource):
                 }],
             }))
         ```
-        ### Big Query Routine Pyspark
+        ### Bigquery Routine Pyspark
 
         ```python
         import pulumi
@@ -704,7 +741,7 @@ class Routine(pulumi.CustomResource):
                 runtime_version="2.1",
             ))
         ```
-        ### Big Query Routine Pyspark Mainfile
+        ### Bigquery Routine Pyspark Mainfile
 
         ```python
         import pulumi
@@ -730,7 +767,7 @@ class Routine(pulumi.CustomResource):
                 archive_uris=["gs://test-bucket/distribute_in_executor.tar.gz"],
             ))
         ```
-        ### Big Query Routine Spark Jar
+        ### Bigquery Routine Spark Jar
 
         ```python
         import pulumi
@@ -756,6 +793,32 @@ class Routine(pulumi.CustomResource):
                 properties={
                     "spark.dataproc.scaling.version": "2",
                     "spark.reducer.fetchMigratedShuffle.enabled": "true",
+                },
+            ))
+        ```
+        ### Bigquery Routine Remote Function
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test = gcp.bigquery.Dataset("test", dataset_id="dataset_id")
+        test_connection = gcp.bigquery.Connection("test",
+            connection_id="connection_id",
+            location="US",
+            cloud_resource=gcp.bigquery.ConnectionCloudResourceArgs())
+        remote_function = gcp.bigquery.Routine("remote_function",
+            dataset_id=test.dataset_id,
+            routine_id="routine_id",
+            routine_type="SCALAR_FUNCTION",
+            definition_body="",
+            return_type="{\\"typeKind\\" :  \\"STRING\\"}",
+            remote_function_options=gcp.bigquery.RoutineRemoteFunctionOptionsArgs(
+                endpoint="https://us-east1-my_gcf_project.cloudfunctions.net/remote_add",
+                connection=test_connection.name,
+                max_batching_rows="10",
+                user_defined_context={
+                    "z": "1.5",
                 },
             ))
         ```
@@ -803,6 +866,8 @@ class Routine(pulumi.CustomResource):
                Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['RoutineRemoteFunctionOptionsArgs']] remote_function_options: Remote function specific options.
+               Structure is documented below.
         :param pulumi.Input[str] return_table_type: Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
                If absent, the return table type is inferred from definitionBody at query time in each query
                that references this routine. If present, then the columns in the evaluated table result will
@@ -838,7 +903,7 @@ class Routine(pulumi.CustomResource):
             * [Routines Intro](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
 
         ## Example Usage
-        ### Big Query Routine Basic
+        ### Bigquery Routine Basic
 
         ```python
         import pulumi
@@ -852,7 +917,7 @@ class Routine(pulumi.CustomResource):
             language="SQL",
             definition_body="CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);")
         ```
-        ### Big Query Routine Json
+        ### Bigquery Routine Json
 
         ```python
         import pulumi
@@ -877,7 +942,7 @@ class Routine(pulumi.CustomResource):
             ],
             return_type="{\\"typeKind\\" :  \\"FLOAT64\\"}")
         ```
-        ### Big Query Routine Tvf
+        ### Bigquery Routine Tvf
 
         ```python
         import pulumi
@@ -907,7 +972,7 @@ class Routine(pulumi.CustomResource):
                 }],
             }))
         ```
-        ### Big Query Routine Pyspark
+        ### Bigquery Routine Pyspark
 
         ```python
         import pulumi
@@ -948,7 +1013,7 @@ class Routine(pulumi.CustomResource):
                 runtime_version="2.1",
             ))
         ```
-        ### Big Query Routine Pyspark Mainfile
+        ### Bigquery Routine Pyspark Mainfile
 
         ```python
         import pulumi
@@ -974,7 +1039,7 @@ class Routine(pulumi.CustomResource):
                 archive_uris=["gs://test-bucket/distribute_in_executor.tar.gz"],
             ))
         ```
-        ### Big Query Routine Spark Jar
+        ### Bigquery Routine Spark Jar
 
         ```python
         import pulumi
@@ -1000,6 +1065,32 @@ class Routine(pulumi.CustomResource):
                 properties={
                     "spark.dataproc.scaling.version": "2",
                     "spark.reducer.fetchMigratedShuffle.enabled": "true",
+                },
+            ))
+        ```
+        ### Bigquery Routine Remote Function
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test = gcp.bigquery.Dataset("test", dataset_id="dataset_id")
+        test_connection = gcp.bigquery.Connection("test",
+            connection_id="connection_id",
+            location="US",
+            cloud_resource=gcp.bigquery.ConnectionCloudResourceArgs())
+        remote_function = gcp.bigquery.Routine("remote_function",
+            dataset_id=test.dataset_id,
+            routine_id="routine_id",
+            routine_type="SCALAR_FUNCTION",
+            definition_body="",
+            return_type="{\\"typeKind\\" :  \\"STRING\\"}",
+            remote_function_options=gcp.bigquery.RoutineRemoteFunctionOptionsArgs(
+                endpoint="https://us-east1-my_gcf_project.cloudfunctions.net/remote_add",
+                connection=test_connection.name,
+                max_batching_rows="10",
+                user_defined_context={
+                    "z": "1.5",
                 },
             ))
         ```
@@ -1051,6 +1142,7 @@ class Routine(pulumi.CustomResource):
                  imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  language: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 remote_function_options: Optional[pulumi.Input[pulumi.InputType['RoutineRemoteFunctionOptionsArgs']]] = None,
                  return_table_type: Optional[pulumi.Input[str]] = None,
                  return_type: Optional[pulumi.Input[str]] = None,
                  routine_id: Optional[pulumi.Input[str]] = None,
@@ -1077,6 +1169,7 @@ class Routine(pulumi.CustomResource):
             __props__.__dict__["imported_libraries"] = imported_libraries
             __props__.__dict__["language"] = language
             __props__.__dict__["project"] = project
+            __props__.__dict__["remote_function_options"] = remote_function_options
             __props__.__dict__["return_table_type"] = return_table_type
             __props__.__dict__["return_type"] = return_type
             if routine_id is None and not opts.urn:
@@ -1108,6 +1201,7 @@ class Routine(pulumi.CustomResource):
             language: Optional[pulumi.Input[str]] = None,
             last_modified_time: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            remote_function_options: Optional[pulumi.Input[pulumi.InputType['RoutineRemoteFunctionOptionsArgs']]] = None,
             return_table_type: Optional[pulumi.Input[str]] = None,
             return_type: Optional[pulumi.Input[str]] = None,
             routine_id: Optional[pulumi.Input[str]] = None,
@@ -1141,6 +1235,8 @@ class Routine(pulumi.CustomResource):
                epoch.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['RoutineRemoteFunctionOptionsArgs']] remote_function_options: Remote function specific options.
+               Structure is documented below.
         :param pulumi.Input[str] return_table_type: Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
                If absent, the return table type is inferred from definitionBody at query time in each query
                that references this routine. If present, then the columns in the evaluated table result will
@@ -1174,6 +1270,7 @@ class Routine(pulumi.CustomResource):
         __props__.__dict__["language"] = language
         __props__.__dict__["last_modified_time"] = last_modified_time
         __props__.__dict__["project"] = project
+        __props__.__dict__["remote_function_options"] = remote_function_options
         __props__.__dict__["return_table_type"] = return_table_type
         __props__.__dict__["return_type"] = return_type
         __props__.__dict__["routine_id"] = routine_id
@@ -1271,6 +1368,15 @@ class Routine(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="remoteFunctionOptions")
+    def remote_function_options(self) -> pulumi.Output[Optional['outputs.RoutineRemoteFunctionOptions']]:
+        """
+        Remote function specific options.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "remote_function_options")
 
     @property
     @pulumi.getter(name="returnTableType")

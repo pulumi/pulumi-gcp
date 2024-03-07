@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Composer.Outputs
         /// </summary>
         public readonly string? ComposerInternalIpv4CidrBlock;
         /// <summary>
+        /// PSC (Private Service Connect) Network entry point. Customers can pre-create the Network Attachment and point Cloud Composer environment to use. It is possible to share network attachment among many environments, provided enough IP addresses are available.
+        /// </summary>
+        public readonly string? ComposerNetworkAttachment;
+        /// <summary>
         /// The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         public readonly int? DiskSizeGb;
@@ -50,7 +54,7 @@ namespace Pulumi.Gcp.Composer.Outputs
         /// </summary>
         public readonly string? ServiceAccount;
         /// <summary>
-        /// The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+        /// The Compute Engine subnetwork to be used for machine communications, specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
         /// </summary>
         public readonly string? Subnetwork;
         /// <summary>
@@ -65,6 +69,8 @@ namespace Pulumi.Gcp.Composer.Outputs
         [OutputConstructor]
         private EnvironmentConfigNodeConfig(
             string? composerInternalIpv4CidrBlock,
+
+            string? composerNetworkAttachment,
 
             int? diskSizeGb,
 
@@ -89,6 +95,7 @@ namespace Pulumi.Gcp.Composer.Outputs
             string? zone)
         {
             ComposerInternalIpv4CidrBlock = composerInternalIpv4CidrBlock;
+            ComposerNetworkAttachment = composerNetworkAttachment;
             DiskSizeGb = diskSizeGb;
             EnableIpMasqAgent = enableIpMasqAgent;
             IpAllocationPolicy = ipAllocationPolicy;

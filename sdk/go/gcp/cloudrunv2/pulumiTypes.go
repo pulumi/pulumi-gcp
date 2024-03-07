@@ -6223,7 +6223,8 @@ func (o ServiceTemplateContainerPortArrayOutput) Index(i pulumi.IntInput) Servic
 }
 
 type ServiceTemplateContainerResources struct {
-	// Determines whether CPU should be throttled or not outside of requests.
+	// Determines whether CPU is only allocated during requests. True by default if the parent `resources` field is not set. However, if
+	// `resources` is set, this field must be explicitly set to true to preserve the default behavior.
 	CpuIdle *bool `pulumi:"cpuIdle"`
 	// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits map[string]string `pulumi:"limits"`
@@ -6243,7 +6244,8 @@ type ServiceTemplateContainerResourcesInput interface {
 }
 
 type ServiceTemplateContainerResourcesArgs struct {
-	// Determines whether CPU should be throttled or not outside of requests.
+	// Determines whether CPU is only allocated during requests. True by default if the parent `resources` field is not set. However, if
+	// `resources` is set, this field must be explicitly set to true to preserve the default behavior.
 	CpuIdle pulumi.BoolPtrInput `pulumi:"cpuIdle"`
 	// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits pulumi.StringMapInput `pulumi:"limits"`
@@ -6328,7 +6330,8 @@ func (o ServiceTemplateContainerResourcesOutput) ToServiceTemplateContainerResou
 	}).(ServiceTemplateContainerResourcesPtrOutput)
 }
 
-// Determines whether CPU should be throttled or not outside of requests.
+// Determines whether CPU is only allocated during requests. True by default if the parent `resources` field is not set. However, if
+// `resources` is set, this field must be explicitly set to true to preserve the default behavior.
 func (o ServiceTemplateContainerResourcesOutput) CpuIdle() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerResources) *bool { return v.CpuIdle }).(pulumi.BoolPtrOutput)
 }
@@ -6367,7 +6370,8 @@ func (o ServiceTemplateContainerResourcesPtrOutput) Elem() ServiceTemplateContai
 	}).(ServiceTemplateContainerResourcesOutput)
 }
 
-// Determines whether CPU should be throttled or not outside of requests.
+// Determines whether CPU is only allocated during requests. True by default if the parent `resources` field is not set. However, if
+// `resources` is set, this field must be explicitly set to true to preserve the default behavior.
 func (o ServiceTemplateContainerResourcesPtrOutput) CpuIdle() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateContainerResources) *bool {
 		if v == nil {
@@ -13631,7 +13635,8 @@ func (o GetServiceTemplateContainerPortArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetServiceTemplateContainerResource struct {
-	// Determines whether CPU should be throttled or not outside of requests.
+	// Determines whether CPU is only allocated during requests. True by default if the parent 'resources' field is not set. However, if
+	// 'resources' is set, this field must be explicitly set to true to preserve the default behavior.
 	CpuIdle bool `pulumi:"cpuIdle"`
 	// Only memory and CPU are supported. Use key 'cpu' for CPU limit and 'memory' for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits map[string]string `pulumi:"limits"`
@@ -13651,7 +13656,8 @@ type GetServiceTemplateContainerResourceInput interface {
 }
 
 type GetServiceTemplateContainerResourceArgs struct {
-	// Determines whether CPU should be throttled or not outside of requests.
+	// Determines whether CPU is only allocated during requests. True by default if the parent 'resources' field is not set. However, if
+	// 'resources' is set, this field must be explicitly set to true to preserve the default behavior.
 	CpuIdle pulumi.BoolInput `pulumi:"cpuIdle"`
 	// Only memory and CPU are supported. Use key 'cpu' for CPU limit and 'memory' for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits pulumi.StringMapInput `pulumi:"limits"`
@@ -13710,7 +13716,8 @@ func (o GetServiceTemplateContainerResourceOutput) ToGetServiceTemplateContainer
 	return o
 }
 
-// Determines whether CPU should be throttled or not outside of requests.
+// Determines whether CPU is only allocated during requests. True by default if the parent 'resources' field is not set. However, if
+// 'resources' is set, this field must be explicitly set to true to preserve the default behavior.
 func (o GetServiceTemplateContainerResourceOutput) CpuIdle() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerResource) bool { return v.CpuIdle }).(pulumi.BoolOutput)
 }

@@ -26,7 +26,8 @@ namespace Pulumi.Gcp.CertificateManager
     ///     var @default = new Gcp.CertificateManager.DnsAuthorization("default", new()
     ///     {
     ///         Name = "dns-auth",
-    ///         Description = "The default dnss",
+    ///         Location = "global",
+    ///         Description = "The default dns",
     ///         Domain = "subdomain.hashicorptest.com",
     ///     });
     /// 
@@ -43,24 +44,24 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// DnsAuthorization can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/global/dnsAuthorizations/{{name}}`
+    ///  * `projects/{{project}}/locations/{{location}}/dnsAuthorizations/{{name}}`
     /// 
-    ///  * `{{project}}/{{name}}`
+    ///  * `{{project}}/{{location}}/{{name}}`
     /// 
-    ///  * `{{name}}`
+    ///  * `{{location}}/{{name}}`
     /// 
     ///  When using the `pulumi import` command, DnsAuthorization can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    /// $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default projects/{{project}}/locations/global/dnsAuthorizations/{{name}}
+    /// $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default projects/{{project}}/locations/{{location}}/dnsAuthorizations/{{name}}
     /// ```
     /// 
     /// ```sh
-    /// $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{project}}/{{name}}
+    /// $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{project}}/{{location}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    /// $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{name}}
+    /// $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{location}}/{{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:certificatemanager/dnsAuthorization:DnsAuthorization")]
@@ -102,6 +103,12 @@ namespace Pulumi.Gcp.CertificateManager
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// The Certificate Manager location. If not specified, "global" is used.
+        /// </summary>
+        [Output("location")]
+        public Output<string?> Location { get; private set; } = null!;
 
         /// <summary>
         /// Name of the resource; provided by the client when the resource is created.
@@ -208,6 +215,12 @@ namespace Pulumi.Gcp.CertificateManager
         }
 
         /// <summary>
+        /// The Certificate Manager location. If not specified, "global" is used.
+        /// </summary>
+        [Input("location")]
+        public Input<string>? Location { get; set; }
+
+        /// <summary>
         /// Name of the resource; provided by the client when the resource is created.
         /// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         /// and all following characters must be a dash, underscore, letter or digit.
@@ -291,6 +304,12 @@ namespace Pulumi.Gcp.CertificateManager
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// The Certificate Manager location. If not specified, "global" is used.
+        /// </summary>
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Name of the resource; provided by the client when the resource is created.

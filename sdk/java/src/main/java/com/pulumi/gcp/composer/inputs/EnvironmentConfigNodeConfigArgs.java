@@ -35,6 +35,21 @@ public final class EnvironmentConfigNodeConfigArgs extends com.pulumi.resources.
     }
 
     /**
+     * PSC (Private Service Connect) Network entry point. Customers can pre-create the Network Attachment and point Cloud Composer environment to use. It is possible to share network attachment among many environments, provided enough IP addresses are available.
+     * 
+     */
+    @Import(name="composerNetworkAttachment")
+    private @Nullable Output<String> composerNetworkAttachment;
+
+    /**
+     * @return PSC (Private Service Connect) Network entry point. Customers can pre-create the Network Attachment and point Cloud Composer environment to use. It is possible to share network attachment among many environments, provided enough IP addresses are available.
+     * 
+     */
+    public Optional<Output<String>> composerNetworkAttachment() {
+        return Optional.ofNullable(this.composerNetworkAttachment);
+    }
+
+    /**
      * The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
      * 
      */
@@ -155,14 +170,14 @@ public final class EnvironmentConfigNodeConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. &#34;projects/{project}/regions/{region}/subnetworks/{subnetwork}&#34;), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment&#39;s project and region.
+     * The Compute Engine subnetwork to be used for machine communications, specified as a self-link, relative resource name (e.g. &#34;projects/{project}/regions/{region}/subnetworks/{subnetwork}&#34;), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment&#39;s project and region.
      * 
      */
     @Import(name="subnetwork")
     private @Nullable Output<String> subnetwork;
 
     /**
-     * @return The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. &#34;projects/{project}/regions/{region}/subnetworks/{subnetwork}&#34;), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment&#39;s project and region.
+     * @return The Compute Engine subnetwork to be used for machine communications, specified as a self-link, relative resource name (e.g. &#34;projects/{project}/regions/{region}/subnetworks/{subnetwork}&#34;), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment&#39;s project and region.
      * 
      */
     public Optional<Output<String>> subnetwork() {
@@ -203,6 +218,7 @@ public final class EnvironmentConfigNodeConfigArgs extends com.pulumi.resources.
 
     private EnvironmentConfigNodeConfigArgs(EnvironmentConfigNodeConfigArgs $) {
         this.composerInternalIpv4CidrBlock = $.composerInternalIpv4CidrBlock;
+        this.composerNetworkAttachment = $.composerNetworkAttachment;
         this.diskSizeGb = $.diskSizeGb;
         this.enableIpMasqAgent = $.enableIpMasqAgent;
         this.ipAllocationPolicy = $.ipAllocationPolicy;
@@ -253,6 +269,27 @@ public final class EnvironmentConfigNodeConfigArgs extends com.pulumi.resources.
          */
         public Builder composerInternalIpv4CidrBlock(String composerInternalIpv4CidrBlock) {
             return composerInternalIpv4CidrBlock(Output.of(composerInternalIpv4CidrBlock));
+        }
+
+        /**
+         * @param composerNetworkAttachment PSC (Private Service Connect) Network entry point. Customers can pre-create the Network Attachment and point Cloud Composer environment to use. It is possible to share network attachment among many environments, provided enough IP addresses are available.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder composerNetworkAttachment(@Nullable Output<String> composerNetworkAttachment) {
+            $.composerNetworkAttachment = composerNetworkAttachment;
+            return this;
+        }
+
+        /**
+         * @param composerNetworkAttachment PSC (Private Service Connect) Network entry point. Customers can pre-create the Network Attachment and point Cloud Composer environment to use. It is possible to share network attachment among many environments, provided enough IP addresses are available.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder composerNetworkAttachment(String composerNetworkAttachment) {
+            return composerNetworkAttachment(Output.of(composerNetworkAttachment));
         }
 
         /**
@@ -434,7 +471,7 @@ public final class EnvironmentConfigNodeConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param subnetwork The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. &#34;projects/{project}/regions/{region}/subnetworks/{subnetwork}&#34;), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment&#39;s project and region.
+         * @param subnetwork The Compute Engine subnetwork to be used for machine communications, specified as a self-link, relative resource name (e.g. &#34;projects/{project}/regions/{region}/subnetworks/{subnetwork}&#34;), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment&#39;s project and region.
          * 
          * @return builder
          * 
@@ -445,7 +482,7 @@ public final class EnvironmentConfigNodeConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param subnetwork The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. &#34;projects/{project}/regions/{region}/subnetworks/{subnetwork}&#34;), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment&#39;s project and region.
+         * @param subnetwork The Compute Engine subnetwork to be used for machine communications, specified as a self-link, relative resource name (e.g. &#34;projects/{project}/regions/{region}/subnetworks/{subnetwork}&#34;), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment&#39;s project and region.
          * 
          * @return builder
          * 

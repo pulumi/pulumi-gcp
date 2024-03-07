@@ -10,7 +10,10 @@ import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.clouddeploy.inputs.GetDeliveryPipelineIamPolicyArgs;
 import com.pulumi.gcp.clouddeploy.inputs.GetDeliveryPipelineIamPolicyPlainArgs;
+import com.pulumi.gcp.clouddeploy.inputs.GetTargetIamPolicyArgs;
+import com.pulumi.gcp.clouddeploy.inputs.GetTargetIamPolicyPlainArgs;
 import com.pulumi.gcp.clouddeploy.outputs.GetDeliveryPipelineIamPolicyResult;
+import com.pulumi.gcp.clouddeploy.outputs.GetTargetIamPolicyResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class ClouddeployFunctions {
@@ -169,5 +172,161 @@ public final class ClouddeployFunctions {
      */
     public static CompletableFuture<GetDeliveryPipelineIamPolicyResult> getDeliveryPipelineIamPolicyPlain(GetDeliveryPipelineIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:clouddeploy/getDeliveryPipelineIamPolicy:getDeliveryPipelineIamPolicy", TypeShape.of(GetDeliveryPipelineIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for target
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.clouddeploy.ClouddeployFunctions;
+     * import com.pulumi.gcp.clouddeploy.inputs.GetTargetIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ClouddeployFunctions.getTargetIamPolicy(GetTargetIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTargetIamPolicyResult> getTargetIamPolicy(GetTargetIamPolicyArgs args) {
+        return getTargetIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for target
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.clouddeploy.ClouddeployFunctions;
+     * import com.pulumi.gcp.clouddeploy.inputs.GetTargetIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ClouddeployFunctions.getTargetIamPolicy(GetTargetIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTargetIamPolicyResult> getTargetIamPolicyPlain(GetTargetIamPolicyPlainArgs args) {
+        return getTargetIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for target
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.clouddeploy.ClouddeployFunctions;
+     * import com.pulumi.gcp.clouddeploy.inputs.GetTargetIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ClouddeployFunctions.getTargetIamPolicy(GetTargetIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTargetIamPolicyResult> getTargetIamPolicy(GetTargetIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:clouddeploy/getTargetIamPolicy:getTargetIamPolicy", TypeShape.of(GetTargetIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for target
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.clouddeploy.ClouddeployFunctions;
+     * import com.pulumi.gcp.clouddeploy.inputs.GetTargetIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ClouddeployFunctions.getTargetIamPolicy(GetTargetIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTargetIamPolicyResult> getTargetIamPolicyPlain(GetTargetIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:clouddeploy/getTargetIamPolicy:getTargetIamPolicy", TypeShape.of(GetTargetIamPolicyResult.class), args, Utilities.withVersion(options));
     }
 }

@@ -126,6 +126,82 @@ import (
 //	}
 //
 // ```
+// ### Region Target Https Proxy Certificate Manager Certificate
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/cert.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile1, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/private-key.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultCertificate, err := certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
+//				Name:     pulumi.String("my-certificate"),
+//				Location: pulumi.String("us-central1"),
+//				SelfManaged: &certificatemanager.CertificateSelfManagedArgs{
+//					PemCertificate: invokeFile.Result,
+//					PemPrivateKey:  invokeFile1.Result,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegionBackendService, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+//				Name:                pulumi.String("backend-service"),
+//				Region:              pulumi.String("us-central1"),
+//				Protocol:            pulumi.String("HTTPS"),
+//				TimeoutSec:          pulumi.Int(30),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegionUrlMap, err := compute.NewRegionUrlMap(ctx, "default", &compute.RegionUrlMapArgs{
+//				Name:           pulumi.String("url-map"),
+//				DefaultService: defaultRegionBackendService.ID(),
+//				Region:         pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionTargetHttpsProxy(ctx, "default", &compute.RegionTargetHttpsProxyArgs{
+//				Name:   pulumi.String("target-http-proxy"),
+//				UrlMap: defaultRegionUrlMap.ID(),
+//				CertificateManagerCertificates: pulumi.StringArray{
+//					defaultCertificate.ID().ApplyT(func(id string) (string, error) {
+//						return fmt.Sprintf("//certificatemanager.googleapis.com/%v", id), nil
+//					}).(pulumi.StringOutput),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -159,6 +235,11 @@ import (
 type RegionTargetHttpsProxy struct {
 	pulumi.CustomResourceState
 
+	// URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+	// Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+	// sslCertificates and certificateManagerCertificates fields can not be defined together.
+	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
+	CertificateManagerCertificates pulumi.StringArrayOutput `pulumi:"certificateManagerCertificates"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
@@ -181,9 +262,9 @@ type RegionTargetHttpsProxy struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// A list of RegionSslCertificate resources that are used to authenticate
-	// connections between users and the load balancer. Currently, exactly
-	// one SSL certificate must be specified.
+	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+	// At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
+	// sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
 	SslCertificates pulumi.StringArrayOutput `pulumi:"sslCertificates"`
 	// A reference to the Region SslPolicy resource that will be associated with
 	// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
@@ -203,9 +284,6 @@ func NewRegionTargetHttpsProxy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.SslCertificates == nil {
-		return nil, errors.New("invalid value for required argument 'SslCertificates'")
-	}
 	if args.UrlMap == nil {
 		return nil, errors.New("invalid value for required argument 'UrlMap'")
 	}
@@ -232,6 +310,11 @@ func GetRegionTargetHttpsProxy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegionTargetHttpsProxy resources.
 type regionTargetHttpsProxyState struct {
+	// URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+	// Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+	// sslCertificates and certificateManagerCertificates fields can not be defined together.
+	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
+	CertificateManagerCertificates []string `pulumi:"certificateManagerCertificates"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
@@ -254,9 +337,9 @@ type regionTargetHttpsProxyState struct {
 	Region *string `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// A list of RegionSslCertificate resources that are used to authenticate
-	// connections between users and the load balancer. Currently, exactly
-	// one SSL certificate must be specified.
+	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+	// At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
+	// sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
 	SslCertificates []string `pulumi:"sslCertificates"`
 	// A reference to the Region SslPolicy resource that will be associated with
 	// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
@@ -270,6 +353,11 @@ type regionTargetHttpsProxyState struct {
 }
 
 type RegionTargetHttpsProxyState struct {
+	// URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+	// Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+	// sslCertificates and certificateManagerCertificates fields can not be defined together.
+	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
+	CertificateManagerCertificates pulumi.StringArrayInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource.
@@ -292,9 +380,9 @@ type RegionTargetHttpsProxyState struct {
 	Region pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// A list of RegionSslCertificate resources that are used to authenticate
-	// connections between users and the load balancer. Currently, exactly
-	// one SSL certificate must be specified.
+	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+	// At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
+	// sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
 	SslCertificates pulumi.StringArrayInput
 	// A reference to the Region SslPolicy resource that will be associated with
 	// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
@@ -312,6 +400,11 @@ func (RegionTargetHttpsProxyState) ElementType() reflect.Type {
 }
 
 type regionTargetHttpsProxyArgs struct {
+	// URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+	// Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+	// sslCertificates and certificateManagerCertificates fields can not be defined together.
+	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
+	CertificateManagerCertificates []string `pulumi:"certificateManagerCertificates"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Name of the resource. Provided by the client when the resource is
@@ -328,9 +421,9 @@ type regionTargetHttpsProxyArgs struct {
 	// The Region in which the created target https proxy should reside.
 	// If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
-	// A list of RegionSslCertificate resources that are used to authenticate
-	// connections between users and the load balancer. Currently, exactly
-	// one SSL certificate must be specified.
+	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+	// At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
+	// sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
 	SslCertificates []string `pulumi:"sslCertificates"`
 	// A reference to the Region SslPolicy resource that will be associated with
 	// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
@@ -345,6 +438,11 @@ type regionTargetHttpsProxyArgs struct {
 
 // The set of arguments for constructing a RegionTargetHttpsProxy resource.
 type RegionTargetHttpsProxyArgs struct {
+	// URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+	// Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+	// sslCertificates and certificateManagerCertificates fields can not be defined together.
+	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
+	CertificateManagerCertificates pulumi.StringArrayInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is
@@ -361,9 +459,9 @@ type RegionTargetHttpsProxyArgs struct {
 	// The Region in which the created target https proxy should reside.
 	// If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
-	// A list of RegionSslCertificate resources that are used to authenticate
-	// connections between users and the load balancer. Currently, exactly
-	// one SSL certificate must be specified.
+	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+	// At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
+	// sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
 	SslCertificates pulumi.StringArrayInput
 	// A reference to the Region SslPolicy resource that will be associated with
 	// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
@@ -463,6 +561,14 @@ func (o RegionTargetHttpsProxyOutput) ToRegionTargetHttpsProxyOutputWithContext(
 	return o
 }
 
+// URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+// Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+// sslCertificates and certificateManagerCertificates fields can not be defined together.
+// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
+func (o RegionTargetHttpsProxyOutput) CertificateManagerCertificates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RegionTargetHttpsProxy) pulumi.StringArrayOutput { return v.CertificateManagerCertificates }).(pulumi.StringArrayOutput)
+}
+
 // Creation timestamp in RFC3339 text format.
 func (o RegionTargetHttpsProxyOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionTargetHttpsProxy) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
@@ -506,9 +612,9 @@ func (o RegionTargetHttpsProxyOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionTargetHttpsProxy) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// A list of RegionSslCertificate resources that are used to authenticate
-// connections between users and the load balancer. Currently, exactly
-// one SSL certificate must be specified.
+// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+// At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
+// sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
 func (o RegionTargetHttpsProxyOutput) SslCertificates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RegionTargetHttpsProxy) pulumi.StringArrayOutput { return v.SslCertificates }).(pulumi.StringArrayOutput)
 }

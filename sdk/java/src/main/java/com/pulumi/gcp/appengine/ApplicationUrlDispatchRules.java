@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *         var adminV3 = new StandardAppVersion(&#34;adminV3&#34;, StandardAppVersionArgs.builder()        
  *             .versionId(&#34;v3&#34;)
  *             .service(&#34;admin&#34;)
- *             .runtime(&#34;nodejs10&#34;)
+ *             .runtime(&#34;nodejs20&#34;)
  *             .entrypoint(StandardAppVersionEntrypointArgs.builder()
  *                 .shell(&#34;node ./app.js&#34;)
  *                 .build())

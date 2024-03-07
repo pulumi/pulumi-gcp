@@ -58,6 +58,47 @@ namespace Pulumi.Gcp.Spanner
     /// });
     /// ```
     /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 {
+    ///                     Title = "My Role",
+    ///                     Description = "Grant permissions on my_role",
+    ///                     Expression = "(resource.type == \"spanner.googleapis.com/DatabaseRole\" &amp;&amp; (resource.name.endsWith(\"/myrole\")))",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var database = new Gcp.Spanner.DatabaseIAMPolicy("database", new()
+    ///     {
+    ///         Instance = "your-instance-name",
+    ///         Database = "your-database-name",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## google\_spanner\_database\_iam\_binding
     /// 
     /// ```csharp
@@ -82,6 +123,36 @@ namespace Pulumi.Gcp.Spanner
     /// });
     /// ```
     /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Gcp.Spanner.DatabaseIAMBinding("database", new()
+    ///     {
+    ///         Instance = "your-instance-name",
+    ///         Database = "your-database-name",
+    ///         Role = "roles/compute.networkUser",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Condition = new Gcp.Spanner.Inputs.DatabaseIAMBindingConditionArgs
+    ///         {
+    ///             Title = "My Role",
+    ///             Description = "Grant permissions on my_role",
+    ///             Expression = "(resource.type == \"spanner.googleapis.com/DatabaseRole\" &amp;&amp; (resource.name.endsWith(\"/myrole\")))",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## google\_spanner\_database\_iam\_member
     /// 
     /// ```csharp
@@ -98,6 +169,33 @@ namespace Pulumi.Gcp.Spanner
     ///         Database = "your-database-name",
     ///         Role = "roles/compute.networkUser",
     ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Gcp.Spanner.DatabaseIAMMember("database", new()
+    ///     {
+    ///         Instance = "your-instance-name",
+    ///         Database = "your-database-name",
+    ///         Role = "roles/compute.networkUser",
+    ///         Member = "user:jane@example.com",
+    ///         Condition = new Gcp.Spanner.Inputs.DatabaseIAMMemberConditionArgs
+    ///         {
+    ///             Title = "My Role",
+    ///             Description = "Grant permissions on my_role",
+    ///             Expression = "(resource.type == \"spanner.googleapis.com/DatabaseRole\" &amp;&amp; (resource.name.endsWith(\"/myrole\")))",
+    ///         },
     ///     });
     /// 
     /// });
@@ -132,6 +230,10 @@ namespace Pulumi.Gcp.Spanner
     [GcpResourceType("gcp:spanner/databaseIAMBinding:DatabaseIAMBinding")]
     public partial class DatabaseIAMBinding : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Output("condition")]
         public Output<Outputs.DatabaseIAMBindingCondition?> Condition { get; private set; } = null!;
 
@@ -226,6 +328,10 @@ namespace Pulumi.Gcp.Spanner
 
     public sealed class DatabaseIAMBindingArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.DatabaseIAMBindingConditionArgs>? Condition { get; set; }
 
@@ -281,6 +387,10 @@ namespace Pulumi.Gcp.Spanner
 
     public sealed class DatabaseIAMBindingState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.DatabaseIAMBindingConditionGetArgs>? Condition { get; set; }
 

@@ -39,6 +39,30 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "My Role",
+ *             description: "Grant permissions on my_role",
+ *             expression: "(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))",
+ *         },
+ *     }],
+ * });
+ * const database = new gcp.spanner.DatabaseIAMPolicy("database", {
+ *     instance: "your-instance-name",
+ *     database: "your-database-name",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
  * ## google\_spanner\_database\_iam\_binding
  *
  * ```typescript
@@ -53,6 +77,25 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const database = new gcp.spanner.DatabaseIAMBinding("database", {
+ *     instance: "your-instance-name",
+ *     database: "your-database-name",
+ *     role: "roles/compute.networkUser",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "My Role",
+ *         description: "Grant permissions on my_role",
+ *         expression: "(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))",
+ *     },
+ * });
+ * ```
+ *
  * ## google\_spanner\_database\_iam\_member
  *
  * ```typescript
@@ -64,6 +107,25 @@ import * as utilities from "../utilities";
  *     database: "your-database-name",
  *     role: "roles/compute.networkUser",
  *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const database = new gcp.spanner.DatabaseIAMMember("database", {
+ *     instance: "your-instance-name",
+ *     database: "your-database-name",
+ *     role: "roles/compute.networkUser",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "My Role",
+ *         description: "Grant permissions on my_role",
+ *         expression: "(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))",
+ *     },
  * });
  * ```
  *
@@ -121,6 +183,10 @@ export class DatabaseIAMMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === DatabaseIAMMember.__pulumiType;
     }
 
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     public readonly condition!: pulumi.Output<outputs.spanner.DatabaseIAMMemberCondition | undefined>;
     /**
      * The name of the Spanner database.
@@ -207,6 +273,10 @@ export class DatabaseIAMMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DatabaseIAMMember resources.
  */
 export interface DatabaseIAMMemberState {
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     condition?: pulumi.Input<inputs.spanner.DatabaseIAMMemberCondition>;
     /**
      * The name of the Spanner database.
@@ -247,6 +317,10 @@ export interface DatabaseIAMMemberState {
  * The set of arguments for constructing a DatabaseIAMMember resource.
  */
 export interface DatabaseIAMMemberArgs {
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     condition?: pulumi.Input<inputs.spanner.DatabaseIAMMemberCondition>;
     /**
      * The name of the Spanner database.

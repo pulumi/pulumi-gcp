@@ -7,6 +7,14 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * An `Automation` enables the automation of manually driven actions for a Delivery Pipeline, which includes Release promotion amongst Targets, Rollout repair and Rollout deployment strategy advancement.
+ *
+ * To get more information about Automation, see:
+ *
+ * * [API documentation](https://cloud.google.com/deploy/docs/api/reference/rest/v1/projects.locations.deliveryPipelines.automations)
+ * * How-to Guides
+ *     * [Automate your deployment](https://cloud.google.com/deploy/docs/automation)
+ *
  * ## Example Usage
  * ### Clouddeploy Automation Basic
  *

@@ -72,6 +72,43 @@ import * as utilities from "../utilities";
  *     sslCertificates: [defaultRegionSslCertificate.id],
  * });
  * ```
+ * ### Region Target Https Proxy Certificate Manager Certificate
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const defaultCertificate = new gcp.certificatemanager.Certificate("default", {
+ *     name: "my-certificate",
+ *     location: "us-central1",
+ *     selfManaged: {
+ *         pemCertificate: std.file({
+ *             input: "test-fixtures/cert.pem",
+ *         }).then(invoke => invoke.result),
+ *         pemPrivateKey: std.file({
+ *             input: "test-fixtures/private-key.pem",
+ *         }).then(invoke => invoke.result),
+ *     },
+ * });
+ * const defaultRegionBackendService = new gcp.compute.RegionBackendService("default", {
+ *     name: "backend-service",
+ *     region: "us-central1",
+ *     protocol: "HTTPS",
+ *     timeoutSec: 30,
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ * });
+ * const defaultRegionUrlMap = new gcp.compute.RegionUrlMap("default", {
+ *     name: "url-map",
+ *     defaultService: defaultRegionBackendService.id,
+ *     region: "us-central1",
+ * });
+ * const _default = new gcp.compute.RegionTargetHttpsProxy("default", {
+ *     name: "target-http-proxy",
+ *     urlMap: defaultRegionUrlMap.id,
+ *     certificateManagerCertificates: [pulumi.interpolate`//certificatemanager.googleapis.com/${defaultCertificate.id}`],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -132,6 +169,13 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
     }
 
     /**
+     * URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+     * Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+     * sslCertificates and certificateManagerCertificates fields can not be defined together.
+     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
+     */
+    public readonly certificateManagerCertificates!: pulumi.Output<string[] | undefined>;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -168,11 +212,11 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * A list of RegionSslCertificate resources that are used to authenticate
-     * connections between users and the load balancer. Currently, exactly
-     * one SSL certificate must be specified.
+     * URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+     * At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
+     * sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
      */
-    public readonly sslCertificates!: pulumi.Output<string[]>;
+    public readonly sslCertificates!: pulumi.Output<string[] | undefined>;
     /**
      * A reference to the Region SslPolicy resource that will be associated with
      * the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
@@ -201,6 +245,7 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionTargetHttpsProxyState | undefined;
+            resourceInputs["certificateManagerCertificates"] = state ? state.certificateManagerCertificates : undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -213,12 +258,10 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
             resourceInputs["urlMap"] = state ? state.urlMap : undefined;
         } else {
             const args = argsOrState as RegionTargetHttpsProxyArgs | undefined;
-            if ((!args || args.sslCertificates === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'sslCertificates'");
-            }
             if ((!args || args.urlMap === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'urlMap'");
             }
+            resourceInputs["certificateManagerCertificates"] = args ? args.certificateManagerCertificates : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -239,6 +282,13 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RegionTargetHttpsProxy resources.
  */
 export interface RegionTargetHttpsProxyState {
+    /**
+     * URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+     * Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+     * sslCertificates and certificateManagerCertificates fields can not be defined together.
+     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
+     */
+    certificateManagerCertificates?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
@@ -276,9 +326,9 @@ export interface RegionTargetHttpsProxyState {
      */
     selfLink?: pulumi.Input<string>;
     /**
-     * A list of RegionSslCertificate resources that are used to authenticate
-     * connections between users and the load balancer. Currently, exactly
-     * one SSL certificate must be specified.
+     * URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+     * At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
+     * sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
      */
     sslCertificates?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -301,6 +351,13 @@ export interface RegionTargetHttpsProxyState {
  * The set of arguments for constructing a RegionTargetHttpsProxy resource.
  */
 export interface RegionTargetHttpsProxyArgs {
+    /**
+     * URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+     * Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+     * sslCertificates and certificateManagerCertificates fields can not be defined together.
+     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
+     */
+    certificateManagerCertificates?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An optional description of this resource.
      */
@@ -326,11 +383,11 @@ export interface RegionTargetHttpsProxyArgs {
      */
     region?: pulumi.Input<string>;
     /**
-     * A list of RegionSslCertificate resources that are used to authenticate
-     * connections between users and the load balancer. Currently, exactly
-     * one SSL certificate must be specified.
+     * URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+     * At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
+     * sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
      */
-    sslCertificates: pulumi.Input<pulumi.Input<string>[]>;
+    sslCertificates?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A reference to the Region SslPolicy resource that will be associated with
      * the TargetHttpsProxy resource. If not set, the TargetHttpsProxy

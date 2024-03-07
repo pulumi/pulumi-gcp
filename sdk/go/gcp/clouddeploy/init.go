@@ -35,6 +35,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DeliveryPipelineIamPolicy{}
 	case "gcp:clouddeploy/target:Target":
 		r = &Target{}
+	case "gcp:clouddeploy/targetIamBinding:TargetIamBinding":
+		r = &TargetIamBinding{}
+	case "gcp:clouddeploy/targetIamMember:TargetIamMember":
+		r = &TargetIamMember{}
+	case "gcp:clouddeploy/targetIamPolicy:TargetIamPolicy":
+		r = &TargetIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -81,6 +87,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"clouddeploy/target",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"clouddeploy/targetIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"clouddeploy/targetIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"clouddeploy/targetIamPolicy",
 		&module{version},
 	)
 }

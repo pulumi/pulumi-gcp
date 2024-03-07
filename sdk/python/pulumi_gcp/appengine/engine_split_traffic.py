@@ -198,7 +198,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
             version_id="v1",
             service="liveapp",
             delete_service_on_destroy=True,
-            runtime="nodejs10",
+            runtime="nodejs20",
             entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
                 shell="node ./app.js",
             ),
@@ -214,7 +214,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
             version_id="v2",
             service="liveapp",
             noop_on_destroy=True,
-            runtime="nodejs10",
+            runtime="nodejs20",
             entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
                 shell="node ./app.js",
             ),
@@ -302,7 +302,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
             version_id="v1",
             service="liveapp",
             delete_service_on_destroy=True,
-            runtime="nodejs10",
+            runtime="nodejs20",
             entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
                 shell="node ./app.js",
             ),
@@ -318,7 +318,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
             version_id="v2",
             service="liveapp",
             noop_on_destroy=True,
-            runtime="nodejs10",
+            runtime="nodejs20",
             entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
                 shell="node ./app.js",
             ),

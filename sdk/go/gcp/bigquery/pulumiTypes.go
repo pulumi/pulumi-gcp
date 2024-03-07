@@ -10209,6 +10209,232 @@ func (o RoutineArgumentArrayOutput) Index(i pulumi.IntInput) RoutineArgumentOutp
 	}).(RoutineArgumentOutput)
 }
 
+type RoutineRemoteFunctionOptions struct {
+	// Fully qualified name of the user-provided connection object which holds
+	// the authentication information to send requests to the remote service.
+	// Format: "projects/{projectId}/locations/{locationId}/connections/{connectionId}"
+	Connection *string `pulumi:"connection"`
+	// Endpoint of the user-provided remote service, e.g.
+	// `https://us-east1-my_gcf_project.cloudfunctions.net/remote_add`
+	Endpoint *string `pulumi:"endpoint"`
+	// Max number of rows in each batch sent to the remote service. If absent or if 0,
+	// BigQuery dynamically decides the number of rows in a batch.
+	MaxBatchingRows *string `pulumi:"maxBatchingRows"`
+	// User-defined context as a set of key/value pairs, which will be sent as function
+	// invocation context together with batched arguments in the requests to the remote
+	// service. The total number of bytes of keys and values must be less than 8KB.
+	// An object containing a list of "key": value pairs. Example:
+	// `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+	UserDefinedContext map[string]string `pulumi:"userDefinedContext"`
+}
+
+// RoutineRemoteFunctionOptionsInput is an input type that accepts RoutineRemoteFunctionOptionsArgs and RoutineRemoteFunctionOptionsOutput values.
+// You can construct a concrete instance of `RoutineRemoteFunctionOptionsInput` via:
+//
+//	RoutineRemoteFunctionOptionsArgs{...}
+type RoutineRemoteFunctionOptionsInput interface {
+	pulumi.Input
+
+	ToRoutineRemoteFunctionOptionsOutput() RoutineRemoteFunctionOptionsOutput
+	ToRoutineRemoteFunctionOptionsOutputWithContext(context.Context) RoutineRemoteFunctionOptionsOutput
+}
+
+type RoutineRemoteFunctionOptionsArgs struct {
+	// Fully qualified name of the user-provided connection object which holds
+	// the authentication information to send requests to the remote service.
+	// Format: "projects/{projectId}/locations/{locationId}/connections/{connectionId}"
+	Connection pulumi.StringPtrInput `pulumi:"connection"`
+	// Endpoint of the user-provided remote service, e.g.
+	// `https://us-east1-my_gcf_project.cloudfunctions.net/remote_add`
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// Max number of rows in each batch sent to the remote service. If absent or if 0,
+	// BigQuery dynamically decides the number of rows in a batch.
+	MaxBatchingRows pulumi.StringPtrInput `pulumi:"maxBatchingRows"`
+	// User-defined context as a set of key/value pairs, which will be sent as function
+	// invocation context together with batched arguments in the requests to the remote
+	// service. The total number of bytes of keys and values must be less than 8KB.
+	// An object containing a list of "key": value pairs. Example:
+	// `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+	UserDefinedContext pulumi.StringMapInput `pulumi:"userDefinedContext"`
+}
+
+func (RoutineRemoteFunctionOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutineRemoteFunctionOptions)(nil)).Elem()
+}
+
+func (i RoutineRemoteFunctionOptionsArgs) ToRoutineRemoteFunctionOptionsOutput() RoutineRemoteFunctionOptionsOutput {
+	return i.ToRoutineRemoteFunctionOptionsOutputWithContext(context.Background())
+}
+
+func (i RoutineRemoteFunctionOptionsArgs) ToRoutineRemoteFunctionOptionsOutputWithContext(ctx context.Context) RoutineRemoteFunctionOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutineRemoteFunctionOptionsOutput)
+}
+
+func (i RoutineRemoteFunctionOptionsArgs) ToRoutineRemoteFunctionOptionsPtrOutput() RoutineRemoteFunctionOptionsPtrOutput {
+	return i.ToRoutineRemoteFunctionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i RoutineRemoteFunctionOptionsArgs) ToRoutineRemoteFunctionOptionsPtrOutputWithContext(ctx context.Context) RoutineRemoteFunctionOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutineRemoteFunctionOptionsOutput).ToRoutineRemoteFunctionOptionsPtrOutputWithContext(ctx)
+}
+
+// RoutineRemoteFunctionOptionsPtrInput is an input type that accepts RoutineRemoteFunctionOptionsArgs, RoutineRemoteFunctionOptionsPtr and RoutineRemoteFunctionOptionsPtrOutput values.
+// You can construct a concrete instance of `RoutineRemoteFunctionOptionsPtrInput` via:
+//
+//	        RoutineRemoteFunctionOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RoutineRemoteFunctionOptionsPtrInput interface {
+	pulumi.Input
+
+	ToRoutineRemoteFunctionOptionsPtrOutput() RoutineRemoteFunctionOptionsPtrOutput
+	ToRoutineRemoteFunctionOptionsPtrOutputWithContext(context.Context) RoutineRemoteFunctionOptionsPtrOutput
+}
+
+type routineRemoteFunctionOptionsPtrType RoutineRemoteFunctionOptionsArgs
+
+func RoutineRemoteFunctionOptionsPtr(v *RoutineRemoteFunctionOptionsArgs) RoutineRemoteFunctionOptionsPtrInput {
+	return (*routineRemoteFunctionOptionsPtrType)(v)
+}
+
+func (*routineRemoteFunctionOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoutineRemoteFunctionOptions)(nil)).Elem()
+}
+
+func (i *routineRemoteFunctionOptionsPtrType) ToRoutineRemoteFunctionOptionsPtrOutput() RoutineRemoteFunctionOptionsPtrOutput {
+	return i.ToRoutineRemoteFunctionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *routineRemoteFunctionOptionsPtrType) ToRoutineRemoteFunctionOptionsPtrOutputWithContext(ctx context.Context) RoutineRemoteFunctionOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutineRemoteFunctionOptionsPtrOutput)
+}
+
+type RoutineRemoteFunctionOptionsOutput struct{ *pulumi.OutputState }
+
+func (RoutineRemoteFunctionOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutineRemoteFunctionOptions)(nil)).Elem()
+}
+
+func (o RoutineRemoteFunctionOptionsOutput) ToRoutineRemoteFunctionOptionsOutput() RoutineRemoteFunctionOptionsOutput {
+	return o
+}
+
+func (o RoutineRemoteFunctionOptionsOutput) ToRoutineRemoteFunctionOptionsOutputWithContext(ctx context.Context) RoutineRemoteFunctionOptionsOutput {
+	return o
+}
+
+func (o RoutineRemoteFunctionOptionsOutput) ToRoutineRemoteFunctionOptionsPtrOutput() RoutineRemoteFunctionOptionsPtrOutput {
+	return o.ToRoutineRemoteFunctionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o RoutineRemoteFunctionOptionsOutput) ToRoutineRemoteFunctionOptionsPtrOutputWithContext(ctx context.Context) RoutineRemoteFunctionOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoutineRemoteFunctionOptions) *RoutineRemoteFunctionOptions {
+		return &v
+	}).(RoutineRemoteFunctionOptionsPtrOutput)
+}
+
+// Fully qualified name of the user-provided connection object which holds
+// the authentication information to send requests to the remote service.
+// Format: "projects/{projectId}/locations/{locationId}/connections/{connectionId}"
+func (o RoutineRemoteFunctionOptionsOutput) Connection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoutineRemoteFunctionOptions) *string { return v.Connection }).(pulumi.StringPtrOutput)
+}
+
+// Endpoint of the user-provided remote service, e.g.
+// `https://us-east1-my_gcf_project.cloudfunctions.net/remote_add`
+func (o RoutineRemoteFunctionOptionsOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoutineRemoteFunctionOptions) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// Max number of rows in each batch sent to the remote service. If absent or if 0,
+// BigQuery dynamically decides the number of rows in a batch.
+func (o RoutineRemoteFunctionOptionsOutput) MaxBatchingRows() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoutineRemoteFunctionOptions) *string { return v.MaxBatchingRows }).(pulumi.StringPtrOutput)
+}
+
+// User-defined context as a set of key/value pairs, which will be sent as function
+// invocation context together with batched arguments in the requests to the remote
+// service. The total number of bytes of keys and values must be less than 8KB.
+// An object containing a list of "key": value pairs. Example:
+// `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+func (o RoutineRemoteFunctionOptionsOutput) UserDefinedContext() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RoutineRemoteFunctionOptions) map[string]string { return v.UserDefinedContext }).(pulumi.StringMapOutput)
+}
+
+type RoutineRemoteFunctionOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (RoutineRemoteFunctionOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoutineRemoteFunctionOptions)(nil)).Elem()
+}
+
+func (o RoutineRemoteFunctionOptionsPtrOutput) ToRoutineRemoteFunctionOptionsPtrOutput() RoutineRemoteFunctionOptionsPtrOutput {
+	return o
+}
+
+func (o RoutineRemoteFunctionOptionsPtrOutput) ToRoutineRemoteFunctionOptionsPtrOutputWithContext(ctx context.Context) RoutineRemoteFunctionOptionsPtrOutput {
+	return o
+}
+
+func (o RoutineRemoteFunctionOptionsPtrOutput) Elem() RoutineRemoteFunctionOptionsOutput {
+	return o.ApplyT(func(v *RoutineRemoteFunctionOptions) RoutineRemoteFunctionOptions {
+		if v != nil {
+			return *v
+		}
+		var ret RoutineRemoteFunctionOptions
+		return ret
+	}).(RoutineRemoteFunctionOptionsOutput)
+}
+
+// Fully qualified name of the user-provided connection object which holds
+// the authentication information to send requests to the remote service.
+// Format: "projects/{projectId}/locations/{locationId}/connections/{connectionId}"
+func (o RoutineRemoteFunctionOptionsPtrOutput) Connection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoutineRemoteFunctionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Connection
+	}).(pulumi.StringPtrOutput)
+}
+
+// Endpoint of the user-provided remote service, e.g.
+// `https://us-east1-my_gcf_project.cloudfunctions.net/remote_add`
+func (o RoutineRemoteFunctionOptionsPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoutineRemoteFunctionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Max number of rows in each batch sent to the remote service. If absent or if 0,
+// BigQuery dynamically decides the number of rows in a batch.
+func (o RoutineRemoteFunctionOptionsPtrOutput) MaxBatchingRows() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoutineRemoteFunctionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBatchingRows
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-defined context as a set of key/value pairs, which will be sent as function
+// invocation context together with batched arguments in the requests to the remote
+// service. The total number of bytes of keys and values must be less than 8KB.
+// An object containing a list of "key": value pairs. Example:
+// `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+func (o RoutineRemoteFunctionOptionsPtrOutput) UserDefinedContext() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RoutineRemoteFunctionOptions) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.UserDefinedContext
+	}).(pulumi.StringMapOutput)
+}
+
 type RoutineSparkOptions struct {
 	// Archive files to be extracted into the working directory of each executor. For more information about Apache Spark, see Apache Spark.
 	ArchiveUris []string `pulumi:"archiveUris"`
@@ -15220,6 +15446,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAutoscalePtrInput)(nil)).Elem(), ReservationAutoscaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineArgumentInput)(nil)).Elem(), RoutineArgumentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineArgumentArrayInput)(nil)).Elem(), RoutineArgumentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineRemoteFunctionOptionsInput)(nil)).Elem(), RoutineRemoteFunctionOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineRemoteFunctionOptionsPtrInput)(nil)).Elem(), RoutineRemoteFunctionOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineSparkOptionsInput)(nil)).Elem(), RoutineSparkOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineSparkOptionsPtrInput)(nil)).Elem(), RoutineSparkOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableEncryptionConfigurationInput)(nil)).Elem(), TableEncryptionConfigurationArgs{})
@@ -15380,6 +15608,8 @@ func init() {
 	pulumi.RegisterOutputType(ReservationAutoscalePtrOutput{})
 	pulumi.RegisterOutputType(RoutineArgumentOutput{})
 	pulumi.RegisterOutputType(RoutineArgumentArrayOutput{})
+	pulumi.RegisterOutputType(RoutineRemoteFunctionOptionsOutput{})
+	pulumi.RegisterOutputType(RoutineRemoteFunctionOptionsPtrOutput{})
 	pulumi.RegisterOutputType(RoutineSparkOptionsOutput{})
 	pulumi.RegisterOutputType(RoutineSparkOptionsPtrOutput{})
 	pulumi.RegisterOutputType(TableEncryptionConfigurationOutput{})

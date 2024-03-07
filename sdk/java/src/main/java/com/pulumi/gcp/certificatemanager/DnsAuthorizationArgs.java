@@ -71,6 +71,21 @@ public final class DnsAuthorizationArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The Certificate Manager location. If not specified, &#34;global&#34; is used.
+     * 
+     */
+    @Import(name="location")
+    private @Nullable Output<String> location;
+
+    /**
+     * @return The Certificate Manager location. If not specified, &#34;global&#34; is used.
+     * 
+     */
+    public Optional<Output<String>> location() {
+        return Optional.ofNullable(this.location);
+    }
+
+    /**
      * Name of the resource; provided by the client when the resource is created.
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
@@ -116,6 +131,7 @@ public final class DnsAuthorizationArgs extends com.pulumi.resources.ResourceArg
         this.description = $.description;
         this.domain = $.domain;
         this.labels = $.labels;
+        this.location = $.location;
         this.name = $.name;
         this.project = $.project;
     }
@@ -207,6 +223,27 @@ public final class DnsAuthorizationArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
+        }
+
+        /**
+         * @param location The Certificate Manager location. If not specified, &#34;global&#34; is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder location(@Nullable Output<String> location) {
+            $.location = location;
+            return this;
+        }
+
+        /**
+         * @param location The Certificate Manager location. If not specified, &#34;global&#34; is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder location(String location) {
+            return location(Output.of(location));
         }
 
         /**

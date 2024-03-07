@@ -13,7 +13,8 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
     public sealed class ServiceTemplateContainerResourcesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Determines whether CPU should be throttled or not outside of requests.
+        /// Determines whether CPU is only allocated during requests. True by default if the parent `resources` field is not set. However, if
+        /// `resources` is set, this field must be explicitly set to true to preserve the default behavior.
         /// </summary>
         [Input("cpuIdle")]
         public Input<bool>? CpuIdle { get; set; }

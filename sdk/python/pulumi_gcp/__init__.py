@@ -1687,6 +1687,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "clouddeploy/targetIamBinding",
+  "fqn": "pulumi_gcp.clouddeploy",
+  "classes": {
+   "gcp:clouddeploy/targetIamBinding:TargetIamBinding": "TargetIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "clouddeploy/targetIamMember",
+  "fqn": "pulumi_gcp.clouddeploy",
+  "classes": {
+   "gcp:clouddeploy/targetIamMember:TargetIamMember": "TargetIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "clouddeploy/targetIamPolicy",
+  "fqn": "pulumi_gcp.clouddeploy",
+  "classes": {
+   "gcp:clouddeploy/targetIamPolicy:TargetIamPolicy": "TargetIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "clouddomains/registration",
   "fqn": "pulumi_gcp.clouddomains",
   "classes": {

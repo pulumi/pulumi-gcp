@@ -37,6 +37,30 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "My Role",
+ *             description: "Grant permissions on my_role",
+ *             expression: "(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))",
+ *         },
+ *     }],
+ * });
+ * const database = new gcp.spanner.DatabaseIAMPolicy("database", {
+ *     instance: "your-instance-name",
+ *     database: "your-database-name",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
  * ## google\_spanner\_database\_iam\_binding
  *
  * ```typescript
@@ -51,6 +75,25 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const database = new gcp.spanner.DatabaseIAMBinding("database", {
+ *     instance: "your-instance-name",
+ *     database: "your-database-name",
+ *     role: "roles/compute.networkUser",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "My Role",
+ *         description: "Grant permissions on my_role",
+ *         expression: "(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))",
+ *     },
+ * });
+ * ```
+ *
  * ## google\_spanner\_database\_iam\_member
  *
  * ```typescript
@@ -62,6 +105,25 @@ import * as utilities from "../utilities";
  *     database: "your-database-name",
  *     role: "roles/compute.networkUser",
  *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const database = new gcp.spanner.DatabaseIAMMember("database", {
+ *     instance: "your-instance-name",
+ *     database: "your-database-name",
+ *     role: "roles/compute.networkUser",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "My Role",
+ *         description: "Grant permissions on my_role",
+ *         expression: "(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))",
+ *     },
  * });
  * ```
  *

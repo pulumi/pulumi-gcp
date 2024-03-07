@@ -18,14 +18,16 @@ public final class ServiceTemplateContainerResourcesArgs extends com.pulumi.reso
     public static final ServiceTemplateContainerResourcesArgs Empty = new ServiceTemplateContainerResourcesArgs();
 
     /**
-     * Determines whether CPU should be throttled or not outside of requests.
+     * Determines whether CPU is only allocated during requests. True by default if the parent `resources` field is not set. However, if
+     * `resources` is set, this field must be explicitly set to true to preserve the default behavior.
      * 
      */
     @Import(name="cpuIdle")
     private @Nullable Output<Boolean> cpuIdle;
 
     /**
-     * @return Determines whether CPU should be throttled or not outside of requests.
+     * @return Determines whether CPU is only allocated during requests. True by default if the parent `resources` field is not set. However, if
+     * `resources` is set, this field must be explicitly set to true to preserve the default behavior.
      * 
      */
     public Optional<Output<Boolean>> cpuIdle() {
@@ -89,7 +91,8 @@ public final class ServiceTemplateContainerResourcesArgs extends com.pulumi.reso
         }
 
         /**
-         * @param cpuIdle Determines whether CPU should be throttled or not outside of requests.
+         * @param cpuIdle Determines whether CPU is only allocated during requests. True by default if the parent `resources` field is not set. However, if
+         * `resources` is set, this field must be explicitly set to true to preserve the default behavior.
          * 
          * @return builder
          * 
@@ -100,7 +103,8 @@ public final class ServiceTemplateContainerResourcesArgs extends com.pulumi.reso
         }
 
         /**
-         * @param cpuIdle Determines whether CPU should be throttled or not outside of requests.
+         * @param cpuIdle Determines whether CPU is only allocated during requests. True by default if the parent `resources` field is not set. However, if
+         * `resources` is set, this field must be explicitly set to true to preserve the default behavior.
          * 
          * @return builder
          * 

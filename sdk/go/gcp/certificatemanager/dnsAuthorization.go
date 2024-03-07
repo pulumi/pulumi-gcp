@@ -31,7 +31,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := certificatemanager.NewDnsAuthorization(ctx, "default", &certificatemanager.DnsAuthorizationArgs{
 //				Name:        pulumi.String("dns-auth"),
-//				Description: pulumi.String("The default dnss"),
+//				Location:    pulumi.String("global"),
+//				Description: pulumi.String("The default dns"),
 //				Domain:      pulumi.String("subdomain.hashicorptest.com"),
 //			})
 //			if err != nil {
@@ -56,24 +57,24 @@ import (
 //
 // DnsAuthorization can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/global/dnsAuthorizations/{{name}}`
+//   - `projects/{{project}}/locations/{{location}}/dnsAuthorizations/{{name}}`
 //
-//   - `{{project}}/{{name}}`
+//   - `{{project}}/{{location}}/{{name}}`
 //
-//   - `{{name}}`
+//   - `{{location}}/{{name}}`
 //
 //     When using the `pulumi import` command, DnsAuthorization can be imported using one of the formats above. For example:
 //
 // ```sh
-// $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default projects/{{project}}/locations/global/dnsAuthorizations/{{name}}
+// $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default projects/{{project}}/locations/{{location}}/dnsAuthorizations/{{name}}
 // ```
 //
 // ```sh
-// $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{project}}/{{name}}
+// $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{project}}/{{location}}/{{name}}
 // ```
 //
 // ```sh
-// $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{name}}
+// $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{location}}/{{name}}
 // ```
 type DnsAuthorization struct {
 	pulumi.CustomResourceState
@@ -95,6 +96,8 @@ type DnsAuthorization struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// The Certificate Manager location. If not specified, "global" is used.
+	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
@@ -164,6 +167,8 @@ type dnsAuthorizationState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
+	// The Certificate Manager location. If not specified, "global" is used.
+	Location *string `pulumi:"location"`
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
@@ -196,6 +201,8 @@ type DnsAuthorizationState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
+	// The Certificate Manager location. If not specified, "global" is used.
+	Location pulumi.StringPtrInput
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
@@ -225,6 +232,8 @@ type dnsAuthorizationArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
+	// The Certificate Manager location. If not specified, "global" is used.
+	Location *string `pulumi:"location"`
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
@@ -248,6 +257,8 @@ type DnsAuthorizationArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
+	// The Certificate Manager location. If not specified, "global" is used.
+	Location pulumi.StringPtrInput
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
@@ -376,6 +387,11 @@ func (o DnsAuthorizationOutput) EffectiveLabels() pulumi.StringMapOutput {
 // Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o DnsAuthorizationOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The Certificate Manager location. If not specified, "global" is used.
+func (o DnsAuthorizationOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // Name of the resource; provided by the client when the resource is created.

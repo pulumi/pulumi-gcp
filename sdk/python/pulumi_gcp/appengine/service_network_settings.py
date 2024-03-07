@@ -165,7 +165,7 @@ class ServiceNetworkSettings(pulumi.CustomResource):
             version_id="v1",
             service="internalapp",
             delete_service_on_destroy=True,
-            runtime="nodejs10",
+            runtime="nodejs20",
             entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
                 shell="node ./app.js",
             ),
@@ -247,7 +247,7 @@ class ServiceNetworkSettings(pulumi.CustomResource):
             version_id="v1",
             service="internalapp",
             delete_service_on_destroy=True,
-            runtime="nodejs10",
+            runtime="nodejs20",
             entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
                 shell="node ./app.js",
             ),
